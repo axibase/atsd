@@ -142,9 +142,9 @@ curl https://atsd_host:8443/api/v1/alerts/query \
 ### Entity Filter
 * [Multiple Entities](examples/query/alerts-query-multiple-entity.md)
 * [Entity Wildcard](examples/query/alerts-query-entity-wildcard.md)
-* [Entity Expression: Name]
-* [Entity Expression: Entity Tags]
-* [Entity Expression: Entity Properties]
+* [Entity Expression: Name](examples/query/alerts-query-entity-expression-name.md)
+* [Entity Expression: Entity Tags](examples/query/alerts-query-entity-expression-entity-tags.md)
+* [Entity Expression: Entity Properties](examples/query/alerts-query-entity-expression-entity-properties.md)
 * [Entity Group](examples/query/alerts-query-entity-group.md)
 
 ### Rule Filter

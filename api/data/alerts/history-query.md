@@ -137,8 +137,30 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
 ```
 
 ## Additional Examples
-* [History Query with Specified Rule](examples/history-query/alerts-history-query-with-specified-rule.md)
-* [History Query with Specified Metric](examples/history-query/alerts-history-query-with-specified-metric.md)
+
+### Entity Filter
+* [Multiple Entities](examples/history-query/alerts-history-query-multiple-entity.md)
+* [Entity Wildcard](examples/history-query/alerts-history-query-entity-wildcard.md)
+* [Entity Expression: Name](examples/history-query/alerts-history-query-entity-expression-name.md)
+* [Entity Expression: Entity Tags](examples/history-query/alerts-history-query-entity-expression-entity-tags.md)
+* [Entity Expression: Entity Properties](examples/history-query/alerts-history-query-entity-expression-entity-properties.md)
+* [Entity Group](examples/history-query/alerts-history-query-entity-group.md)
+
+### Rule Filter
+* [History-Alerts for Defined Rule](examples/history-query/alerts-history-query-defined-rule.md)
+* [Rules: All Value](examples/history-query/alerts-history-query-rules-all-value.md)
+* [Rule Wildcard](examples/history-query/alerts-history-query-rule-wildcard.md)
+
+### Metric Filter
+* [History-Alerts for Defined Metric](examples/history-query/alerts-history-query-defined-metric.md)
+* [Metrics: All Value](examples/history-query/alerts-history-query-metrics-all-value.md)
+* [Metric Wildcard](examples/history-query/alerts-history-query-metric-wildcard.md)
+* [History-Alerts for Message Commands](examples/history-query/alerts-history-query-message-commands.md)
+* [History-Alerts for Property Commands](examples/query/alerts-history-query-property-commands.md)
+
+### Date Filter
+
+* [Alerts for Last Hour]
 
 
 
