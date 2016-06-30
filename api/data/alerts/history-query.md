@@ -156,11 +156,14 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
 * [Metrics: All Value](examples/history-query/alerts-history-query-metrics-all-value.md)
 * [Metric Wildcard](examples/history-query/alerts-history-query-metric-wildcard.md)
 * [History-Alerts for Message Commands](examples/history-query/alerts-history-query-message-commands.md)
-* [History-Alerts for Property Commands](examples/query/alerts-history-query-property-commands.md)
+* [History-Alerts for Property Commands](examples/history-query/alerts-history-query-property-commands.md)
 
 ### Date Filter
 
-* [Alerts for Last Hour]
+* []
+
+### Control Fields
+* [Limit](examples/history-query/alerts-history-query-limit.md)
 
 
 
