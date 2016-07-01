@@ -159,8 +159,8 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
 * [History-Alerts for Property Commands](examples/history-query/alerts-history-query-property-commands.md)
 
 ### Date Filter
-
-* []
+* [History-Alerts for Last Day](examples/history-query/alerts-history-query-last-day.md)
+* [End Date and Interval](examples/history-query/alerts-history-query-enddate-interval.md)
 
 ### Control Fields
 * [Limit](examples/history-query/alerts-history-query-limit.md)

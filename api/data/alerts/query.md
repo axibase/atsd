@@ -159,6 +159,10 @@ curl https://atsd_host:8443/api/v1/alerts/query \
 * [Alerts for Message Commands](examples/query/alerts-query-message-commands.md)
 * [Alerts for Property Commands](examples/query/alerts-query-property-commands.md)
 
+### Multiple Queries
+* [Multiple Queries](examples/query/alerts-query-multiple-queries.md)
+* [Multiple Queries for Unknown Entity](examples/query/alerts-query-multiple-queries-unknown-entity.md)
+
 ### Time Range
 * [Alerts for Last Hour](examples/query/alerts-query-last-hour.md)
 
