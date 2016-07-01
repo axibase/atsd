@@ -158,6 +158,11 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
 * [History-Alerts for Message Commands](examples/history-query/alerts-history-query-message-commands.md)
 * [History-Alerts for Property Commands](examples/history-query/alerts-history-query-property-commands.md)
 
+### Multiple Queries
+* [Multiple History-Queries](examples/history-query/alerts-history-query-multiple-queries.md)
+* [Multiple History-Queries for Unknown Entity](examples/history-query/alerts-history-query-multiple-queries-unknown-entity.md)
+* [Multiple History-Queries with Limit](examples/history-query/alerts-history-query-multiple-queries-limit.md)
+
 ### Date Filter
 * [History-Alerts for Last Day](examples/history-query/alerts-history-query-last-day.md)
 * [End Date and Interval](examples/history-query/alerts-history-query-enddate-interval.md)
