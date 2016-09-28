@@ -782,7 +782,7 @@ WITH INTERPOLATE(30 SECOND)
 WITH INTERPOLATE (period [, inter_func[, boundary[, fill [, alignment]]]])
 ```
 
-`WITH INTERPOLATE` clause applies to all tables (metrics) referenced in the query and is included in the statement prior to the `ORDER BY` and `LIMIT` clauses.
+`WITH INTERPOLATE` clause is included prior to `ORDER BY` and `LIMIT` clauses and applies to all series retrieved by the query.
 
 **Example**:
 
@@ -795,16 +795,14 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, NAN, START_TIME)
 | **Name** | **Description**|
 |:---|:---|
 | `period` | Regular interval for aligning interpolated values, for example, `5 MINUTE`. Specified as `count unit`. |
-| `inter_func` | Interpolation function, linear or previous (step), to calculate values at regular timestamps based on adjacent values. |
+| `inter_func` | Interpolation function to calculate values at regular timestamps based on adjacent values. |
 | `boundary` | Should raw values outside of the selection interval be retrieved to interpolate leading and trailing values.  |
 | `fill` | Method for filling missing values at the beginning and the end of the selection interval. |
 | `alignment` | Aligns regular timestamps based on calendar or based on start time. |
 
-**Implementation Notes**:
+[![](images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
 
-* NaN (Not-A-Number) raw values are ignored from interpolation.
-* `value` condition in the `WHERE` clause applies to interpolated series values instead of raw values, i.e. filtering out raw values prior to interpolation is not supported.
-* In HBase 0.94.x the `OUTER` boundary mode fetches raw values of up to 1 hour before and after the hour-rounded selection interval.
+![INTERPOLATE Parameters](images/regularize_sinusoid.png)
 
 ### Interpolation Function
 
@@ -814,12 +812,17 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, NAN, START_TIME)
 | `PREVIOUS` | Sets the value at the desired timestamp based on peviously recorded raw value.<br>This step-like function is appropriate for metrics with discrete values (digital signal) or in cases where value is updated on change.|
 | `AUTO` | [**Default**] Applies an interpolation function (`LINEAR` or `PREVIOUS`) based on metric's Interpolation setting.<br>If multiple metrics are specified in the query, `AUTO` applies its own interpolation mode for each metric.  |
 
+* NaN (Not-A-Number) raw values are ignored from interpolation.
+* `value` condition in the `WHERE` clause applies to interpolated series values instead of raw values, <br>i.e. filtering out raw values prior to interpolation is not supported.
+
 ### Boundary
 
 | **Name** | **Description**|
 |:---|:---|
 | `INNER` | [**Default**] Performs calculation based on raw values located within the specified selection interval. |
 | `OUTER` | Retrieves prior and next raw values outside of the selection interval in order to interpolate leading and trailing values. |
+
+* In HBase 0.94.x the `OUTER` boundary mode fetches raw values of up to 1 hour before and after the hour-rounded selection interval.
 
 ### Fill
 
@@ -836,15 +839,12 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, NAN, START_TIME)
 | `CALENDAR` | [**Default**] Aligns regular timestamps according to server calendar. |
 | `START_TIME` | Starts regular timestamps at the start time of the selection interval .<br>This option requires that both start and end time are specified in the query. |
 
-![Interpolation Modes](images/interpolation_modes.png)
-
-
 ### Regularization Examples
 
-- [LINEAR Function](examples/regularize.md#interpolation-mode-linear)
-- [PREVIOUS (Step) Function](examples/regularize.md#interpolation-mode-previous)
-- [AUTO Function](examples/regularize.md#interpolation-mode-auto)
-- [Fill](examples/regularize.md#fill-mode-nan)
+- [LINEAR Function](examples/regularize.md#interpolation-function-linear)
+- [PREVIOUS (Step) Function](examples/regularize.md#interpolation-function-previous)
+- [AUTO Function](examples/regularize.md#interpolation-function-auto)
+- [Fill](examples/regularize.md#fill-nan)
 - [Alignment](examples/regularize.md#alignment)
 - [GROUP BY comparison](examples/regularize.md#group-by-period-compared-to-with-interpolate)
 - [JOIN regularized series](examples/regularize.md#join-example)

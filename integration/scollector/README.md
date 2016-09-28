@@ -55,7 +55,7 @@ Portals:
 
 Launch live scollector-Linux portal in Axibase Chart Lab.
 
-[Launch](http://apps.axibase.com/chartlab/f595d570)
+[Launch](https://apps.axibase.com/chartlab/f595d570)
 
 ![](resources/scollector-Linux1.png)
 
@@ -64,7 +64,7 @@ Launch live scollector-Linux portal in Axibase Chart Lab.
 
 Launch live scollector-Windows portal in Axibase Chart Lab.
 
-[Launch](/chartlab/db099fa9/2/)
+[Launch](https://apps.axibase.com/chartlab/db099fa9/2/)
 
 ![](resources/scollector-Windows1.png)
 
@@ -77,7 +77,7 @@ Launch live scollector-Windows portal in Axibase Chart Lab.
 
 Launch live scollector-MS SQL portal in Axibase Chart Lab.
 
-[Launch](/chartlab/1fc2721b)
+[Launch](https://apps.axibase.com/chartlab/1fc2721b)
 
 ![](resources/scollector_mssql_portal1.png)
 
@@ -86,7 +86,7 @@ Launch live scollector-MS SQL portal in Axibase Chart Lab.
 
 Launch live scollector-.NET portal in Axibase Chart Lab.
 
-[Launch](/chartlab/1fc2721b/2/)
+[Launch](https://apps.axibase.com/chartlab/1fc2721b/2/)
 
 ![](resources/scollector_dotnetl_portal.png)
 
