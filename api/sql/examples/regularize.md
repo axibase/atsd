@@ -4,9 +4,7 @@ The **WITH INTERPOLATE** clause provides a way to transform unevenly spaced time
 
 The underlying transformation calculates values at regular intervals using linear or step interpolation.
 
-Unlike the `GROUP BY PERIOD` clause with the `LINEAR` option, which interpolates missing periods, the `WITH INTERPOLATE` clause operates using raw values.
-
-Here is an example in [Chartlab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
+Unlike the `GROUP BY PERIOD` clause with the `LINEAR` option, which interpolates missing periods, the `WITH INTERPOLATE` clause operates using raw values. Here is an example in [Chartlab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
 
 The regularized series can be used in `JOIN` queries, `WHERE` conditions, `ORDER BY` and `GROUP BY` clauses, just as with the original series.
 
@@ -16,7 +14,9 @@ The regular times can be aligned to the server calendar or to begin with the sta
 
 The interpolated values are calculated based on two adjacent values.
 
-Irregular series:
+If a raw value exists at the regularized timestamp, it is used "as is" irrespective of neighboring values.
+
+### Irregular series:
 
 ```ls
 | time                 | value |
@@ -27,7 +27,7 @@ Irregular series:
 | 2016-09-17T08:01:30Z | 2.30  |
 ```
 
-Regular `30 SECOND` series calculated with the `LINEAR` function:
+### Regular `30 SECOND` series calculated with the `LINEAR` function
 
 ```ls
 | time                 | value |
@@ -38,7 +38,7 @@ Regular `30 SECOND` series calculated with the `LINEAR` function:
 | 2016-09-17T08:01:30Z | 2.30  | returned "as is" because raw value is available at 08:01:30Z
 ```
 
-Regular `30 SECOND` series calculated with the `PREVIOUS` function:
+### Regular `30 SECOND` series calculated with the `PREVIOUS` function
 
 ```ls
 | time                 | value |
@@ -51,9 +51,9 @@ Regular `30 SECOND` series calculated with the `PREVIOUS` function:
 
 ## Examples
 
-* [Chartlab examples](https://apps.axibase.com/chartlab/8ffeda09)
+[![](../images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
 
-![Interpolation Options](../images/interpolation_modes.png)
+![Interpolation Options](../images/regularize_sinusoid.png)
 
 ### Raw Values
 
@@ -91,9 +91,9 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
   WITH INTERPOLATE(30 SECOND, LINEAR)
 ```
 
-> A value at 08:00:00 is not returned because there is no prior value in `INNER` mode to interpolate between it and the value at 08:00:18.
+> A value at 08:00:00 is not returned because there is no prior value in the `INNER` mode to interpolate between it and the value at 08:00:18.
 
-> Values at 08:05:00 and 08:05:30 are not returned because there is no value after 08:04:48 in `INNER` mode.
+> Values at 08:05:00 and 08:05:30 are not returned because there is no value after 08:04:48 in the `INNER` mode.
 
 ```ls
 | datetime                 | value  |
@@ -226,7 +226,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:01:30Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, NONE)
 ```
 
-The value at 08:00:00 is `NaN` because the prior value in `INNER` mode was not available for linear interpolation.
+The value at 08:00:00 is `NaN` because the prior value in the `INNER` mode was not available for linear interpolation.
 
 ```ls
 | datetime                 | value  |
@@ -249,7 +249,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, EXTEND)
 ```
 
-The value at 08:00:00 is set to first raw value because the prior value in `INNER` mode was not available for linear interpolation.
+The value at 08:00:00 is set to first raw value because the prior value in the `INNER` mode was not available for linear interpolation.
 
 ```ls
 | datetime                 | value  |
@@ -265,7 +265,7 @@ The value at 08:00:00 is set to first raw value because the prior value in `INNE
 
 ### Alignment
 
-The default `CALENDAR` alignment defines regular timestamps according to the calendar. For example, a 30 second interval starts at 0 seconds each minute. Additionally, a 5 minute interval starts at 0 seconds every 5 minutes, beginning with 0 minute of the current hour.
+The default `CALENDAR` alignment defines regular timestamps according to the calendar. For example, a 30 second interval starts at 0 seconds each minute. Additionally, a 5 minute interval starts at 0 seconds every 5 minutes, beginning with the 0 minute of the current hour.
 
 #### `CALENDAR`
 
@@ -286,7 +286,7 @@ AND datetime >= '2016-09-17T08:00:10Z' AND datetime < '2016-09-17T08:01:40Z'
 
 #### `START_TIME`
 
-`START_TIME` alignment defines regular timestamps according to the start time specified in the query.
+The `START_TIME` alignment defines regular timestamps according to the start time specified in the query.
 
 ```sql
 SELECT datetime, value FROM metric1
@@ -309,7 +309,7 @@ The `GROUP BY PERIOD()` clause calculates for all values in each period by apply
 
 If the period doesn't have any values, the period is omitted from the results.
 
-An optional `LINEAR` directive for `GROUP BY PERIOD()` clause changes the default behavior and returns results from missing periods by applying linear interpolation between values of the neighboring periods.
+An optional `LINEAR` directive for the `GROUP BY PERIOD()` clause changes the default behavior and returns results from missing periods by applying linear interpolation between values of the neighboring periods.
 
 * [Chartlab examples](https://apps.axibase.com/chartlab/471a2a40)
 
@@ -366,7 +366,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 | 2016-09-17T08:01:30.000Z |  3.48 | -- Linearly interpolated between 9.00 at 08:01:14 and 2.10 at 08:01:34.
 ```
 
-If raw values had extra samples recorded within each period, such values would be ignored.
+If raw values had extra samples recorded within values in each period, such values would be ignored.
 
 ```ls
 | time     | value   |
