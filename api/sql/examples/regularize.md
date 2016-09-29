@@ -1,48 +1,48 @@
 # Transforming Unevenly Space Series to Regular Series
 
-**WITH INTERPOLATE** clause provides a way to transform unevenly spaced time series into regular series.
+The **WITH INTERPOLATE** clause provides a way to transform unevenly spaced time series into regularly spaced series.
 
-The underlying transformation calculates values at regular intervals using linear or step interpolation. 
+The underlying transformation calculates values at regular intervals using linear or step interpolation.
 
-Unlike `GROUP BY PERIOD` clause with `LINEAR` option, which interpolates missing periods, `WITH INTERPOLATE` clause operates on raw values. Refer to an example in [Chartlab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
+Unlike the `GROUP BY PERIOD` clause with the `LINEAR` option, which interpolates missing periods, the `WITH INTERPOLATE` clause operates using raw values. Here is an example in [Chartlab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
 
-The regularized series can be used in `JOIN` queries, `WHERE` condition, `ORDER BY` and `GROUP BY` clauses just like the original series.
+The regularized series can be used in `JOIN` queries, `WHERE` conditions, `ORDER BY` and `GROUP BY` clauses, just as with the original series.
 
-The regular times can be aligned based on server calendar or based on start time specified in the query.
+The regular times can be aligned to the server calendar or to begin with the start of the selection interval.
 
 ## Calculation
 
-The interpolated values are calculated from two adjacent values. 
+The interpolated values are calculated based on two adjacent values.
 
 If a raw value exists at the regularized timestamp, it is used "as is" irrespective of neighboring values.
 
 ### Irregular series:
 
 ```ls
-| time                 | value | 
-|----------------------|-------| 
+| time                 | value |
+|----------------------|-------|
 | 2016-09-17T08:00:00Z | 3.70  |
 | 2016-09-17T08:00:26Z | 4.40  |
 | 2016-09-17T08:01:14Z | 9.00  |
 | 2016-09-17T08:01:30Z | 2.30  |
 ```
 
-### Regular `30 SECOND` series calculated with `LINEAR` function
+### Regular `30 SECOND` series calculated with the `LINEAR` function
 
 ```ls
-| time                 | value | 
-|----------------------|-------| 
+| time                 | value |
+|----------------------|-------|
 | 2016-09-17T08:00:00Z | 3.70  | returned "as is" because raw value is available at 08:00:00Z
 | 2016-09-17T08:00:30Z | 4.78  | = 4.4 + (9.0-4.4) * ((00:30-00:26)/(01:14-00:26)) = 4.4 + 4.6*(4/48)  = 4.783
 | 2016-09-17T08:01:00Z | 7.66  | = 4.4 + (9.0-4.4) * ((01:00-00:26)/(01:14-00:26)) = 4.4 + 4.6*(34/48) = 7.658
 | 2016-09-17T08:01:30Z | 2.30  | returned "as is" because raw value is available at 08:01:30Z
 ```
 
-### Regular `30 SECOND` series calculated with `PREVIOUS` function
+### Regular `30 SECOND` series calculated with the `PREVIOUS` function
 
 ```ls
-| time                 | value | 
-|----------------------|-------| 
+| time                 | value |
+|----------------------|-------|
 | 2016-09-17T08:00:00Z | 3.70  | returned "as is" because raw value is available at 08:00:00Z
 | 2016-09-17T08:00:30Z | 4.40  | based on previous value of 4.40 recorded at 08:00:26Z
 | 2016-09-17T08:01:00Z | 4.40  | based on previous value of 4.40 recorded at 08:00:26Z
@@ -64,20 +64,20 @@ SELECT datetime, value FROM metric1
 ```
 
 ```ls
-| datetime                 | value   | 
-|--------------------------|---------| 
-| 2016-09-17T00:00:00.000Z |   4.500 | 
-| 2016-09-17T01:23:11.000Z |     NaN | 
-| 2016-09-17T02:00:05.000Z | -70.000 | 
-| 2016-09-17T08:00:18.000Z |  10.400 | 
-| 2016-09-17T08:00:26.000Z |   4.400 | 
-| 2016-09-17T08:01:14.000Z |   9.000 | 
-| 2016-09-17T08:01:34.000Z |   2.100 | 
-| 2016-09-17T08:01:52.000Z |  26.500 | 
-| 2016-09-17T08:02:10.000Z |   0.000 | 
-| 2016-09-17T08:03:00.000Z |   7.700 | 
-| 2016-09-17T08:04:48.000Z |   6.600 | 
-| 2016-09-17T23:04:00.000Z | -23.400 | 
+| datetime                 | value   |
+|--------------------------|---------|
+| 2016-09-17T00:00:00.000Z |   4.500 |
+| 2016-09-17T01:23:11.000Z |     NaN |
+| 2016-09-17T02:00:05.000Z | -70.000 |
+| 2016-09-17T08:00:18.000Z |  10.400 |
+| 2016-09-17T08:00:26.000Z |   4.400 |
+| 2016-09-17T08:01:14.000Z |   9.000 |
+| 2016-09-17T08:01:34.000Z |   2.100 |
+| 2016-09-17T08:01:52.000Z |  26.500 |
+| 2016-09-17T08:02:10.000Z |   0.000 |
+| 2016-09-17T08:03:00.000Z |   7.700 |
+| 2016-09-17T08:04:48.000Z |   6.600 |
+| 2016-09-17T23:04:00.000Z | -23.400 |
 ```
 
 ### Interpolation Function: LINEAR
@@ -91,25 +91,25 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
   WITH INTERPOLATE(30 SECOND, LINEAR)
 ```
 
-> Value at 08:00:00 is not returned because there is no prior value  in `INNER` mode to interpolate between it and value at 08:00:18.
+> A value at 08:00:00 is not returned because there is no prior value in the `INNER` mode to interpolate between it and the value at 08:00:18.
 
-> Values at 08:05:00 and 08:05:30 are not returned because there is no value after 08:04:48 in `INNER` mode.
+> Values at 08:05:00 and 08:05:30 are not returned because there is no value after 08:04:48 in the `INNER` mode.
 
 ```ls
-| datetime                 | value  | 
-|--------------------------|--------| 
-| 2016-09-17T08:00:30.000Z |  4.783 | 
-| 2016-09-17T08:01:00.000Z |  7.658 | 
-| 2016-09-17T08:01:30.000Z |  3.480 | 
-| 2016-09-17T08:02:00.000Z | 14.722 | 
-| 2016-09-17T08:02:30.000Z |  3.080 | 
-| 2016-09-17T08:03:00.000Z |  7.700 | 
-| 2016-09-17T08:03:30.000Z |  7.394 | 
-| 2016-09-17T08:04:00.000Z |  7.089 | 
+| datetime                 | value  |
+|--------------------------|--------|
+| 2016-09-17T08:00:30.000Z |  4.783 |
+| 2016-09-17T08:01:00.000Z |  7.658 |
+| 2016-09-17T08:01:30.000Z |  3.480 |
+| 2016-09-17T08:02:00.000Z | 14.722 |
+| 2016-09-17T08:02:30.000Z |  3.080 |
+| 2016-09-17T08:03:00.000Z |  7.700 |
+| 2016-09-17T08:03:30.000Z |  7.394 |
+| 2016-09-17T08:04:00.000Z |  7.089 |
 | 2016-09-17T08:04:30.000Z |  6.783 |
 ```
 
-Boundary parameter `OUTER` retrieves values outside of the selection interval to be used for interpolating leading/trailing values.
+The boundary parameter `OUTER` retrieves values outside of the selection interval to be used for interpolating leading/trailing values.
 
 ```sql
 SELECT datetime, value FROM metric1
@@ -118,23 +118,23 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, OUTER)
 ```
 
-Prior value outside of the interval, found at 02:00:05, is used to calculate an interpolated value between the outside value and the first raw value within the interval. 
+The prior value outside of the interval, found at 02:00:05, is used to calculate an interpolated value between the outside value and the first raw value within the interval.
 
-Next value outside the interval, found at 23:04:00, is used to interpolate last value within the interval.
+The next value outside the interval, found at 23:04:00, is used to interpolate the last value within the interval.
 
 ```ls
-| datetime                 | value  | 
-|--------------------------|--------| 
+| datetime                 | value  |
+|--------------------------|--------|
 | 2016-09-17T08:00:00.000Z | 10.333 | - interpolated between values at 02:00:05 and 08:00:26
-| 2016-09-17T08:00:30.000Z |  4.783 | 
-| 2016-09-17T08:01:00.000Z |  7.658 | 
-| 2016-09-17T08:01:30.000Z |  3.480 | 
-| 2016-09-17T08:02:00.000Z | 14.722 | 
-| 2016-09-17T08:02:30.000Z |  3.080 | 
-| 2016-09-17T08:03:00.000Z |  7.700 | 
-| 2016-09-17T08:03:30.000Z |  7.394 | 
-| 2016-09-17T08:04:00.000Z |  7.089 | 
-| 2016-09-17T08:04:30.000Z |  6.783 | 
+| 2016-09-17T08:00:30.000Z |  4.783 |
+| 2016-09-17T08:01:00.000Z |  7.658 |
+| 2016-09-17T08:01:30.000Z |  3.480 |
+| 2016-09-17T08:02:00.000Z | 14.722 |
+| 2016-09-17T08:02:30.000Z |  3.080 |
+| 2016-09-17T08:03:00.000Z |  7.700 |
+| 2016-09-17T08:03:30.000Z |  7.394 |
+| 2016-09-17T08:04:00.000Z |  7.089 |
+| 2016-09-17T08:04:30.000Z |  6.783 |
 | 2016-09-17T08:05:00.000Z |  6.593 | - interpolated between values at 08:04:48 and 23:04:00
 | 2016-09-17T08:05:30.000Z |  6.577 | - interpolated between values at 08:04:48 and 23:04:00
 ```
@@ -151,18 +151,18 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
 ```
 
 ```ls
-| datetime                 | value   | 
-|--------------------------|---------| 
+| datetime                 | value   |
+|--------------------------|---------|
 | 2016-09-17T08:00:00.000Z | -70.000 | - set to previous value at 02:00:05
 | 2016-09-17T08:00:30.000Z |   4.400 | - set to previous value at 08:00:26
-| 2016-09-17T08:01:00.000Z |   4.400 | 
-| 2016-09-17T08:01:30.000Z |   9.000 | 
-| 2016-09-17T08:02:00.000Z |  26.500 | 
-| 2016-09-17T08:02:30.000Z |   0.000 | 
-| 2016-09-17T08:03:00.000Z |   7.700 | 
-| 2016-09-17T08:03:30.000Z |   7.700 | 
-| 2016-09-17T08:04:00.000Z |   7.700 | 
-| 2016-09-17T08:04:30.000Z |   7.700 | 
+| 2016-09-17T08:01:00.000Z |   4.400 |
+| 2016-09-17T08:01:30.000Z |   9.000 |
+| 2016-09-17T08:02:00.000Z |  26.500 |
+| 2016-09-17T08:02:30.000Z |   0.000 |
+| 2016-09-17T08:03:00.000Z |   7.700 |
+| 2016-09-17T08:03:30.000Z |   7.700 |
+| 2016-09-17T08:04:00.000Z |   7.700 |
+| 2016-09-17T08:04:30.000Z |   7.700 |
 | 2016-09-17T08:05:00.000Z |   6.600 | - set to previous value at 08:04:48
 | 2016-09-17T08:05:30.000Z |   6.600 | - set to previous value at 08:04:48
 ```
@@ -175,7 +175,7 @@ In `AUTO` mode, values are interpolated based on **Interpolate** setting for eac
 * metric2 **Interpolate** setting: `PREVIOUS`
 
 ```sql
-SELECT metric, datetime, value FROM atsd_series 
+SELECT metric, datetime, value FROM atsd_series
   WHERE metric IN ('metric1', 'metric2')
 AND entity = 'e1'
   AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:01:30Z'
@@ -184,8 +184,8 @@ WITH INTERPOLATE(30 SECOND, AUTO, OUTER)
 ```
 
 ```ls
-| metric  | datetime                 | value   | 
-|---------|--------------------------|---------| 
+| metric  | datetime                 | value   |
+|---------|--------------------------|---------|
 | metric1 | 2016-09-17T08:00:00.000Z | 10.333  | - interpolated with LINEAR
 | metric1 | 2016-09-17T08:00:30.000Z | 4.783   | - interpolated with LINEAR
 | metric1 | 2016-09-17T08:01:00.000Z | 7.658   | - interpolated with LINEAR
@@ -205,14 +205,14 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:01:30Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, NONE)
 ```
 
-Value at 08:00:00 because prior value in `INNER` mode was no available for linear interpolation.
+The value at 08:00:00 was excluded because the prior value in the `INNER` mode was not available for linear interpolation.
 
 ```ls
-| datetime                 | value  | 
-|--------------------------|--------| 
+| datetime                 | value  |
+|--------------------------|--------|
 | no record @08:00:00.000Z |        | - row excluded
-| 2016-09-17T08:00:30.000Z |  4.783 | 
-| 2016-09-17T08:01:00.000Z |  7.658 | 
+| 2016-09-17T08:00:30.000Z |  4.783 |
+| 2016-09-17T08:01:00.000Z |  7.658 |
 ```
 
 ### Fill: NAN
@@ -226,14 +226,14 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:01:30Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, NONE)
 ```
 
-Value at 08:00:00 because prior value in `INNER` mode was no available for linear interpolation.
+The value at 08:00:00 is `NaN` because the prior value in the `INNER` mode was not available for linear interpolation.
 
 ```ls
-| datetime                 | value  | 
-|--------------------------|--------| 
-| 2016-09-17T08:00:00.000Z |    NaN | 
-| 2016-09-17T08:00:30.000Z |  4.783 | 
-| 2016-09-17T08:01:00.000Z |  7.658 | 
+| datetime                 | value  |
+|--------------------------|--------|
+| 2016-09-17T08:00:00.000Z |    NaN |
+| 2016-09-17T08:00:30.000Z |  4.783 |
+| 2016-09-17T08:01:00.000Z |  7.658 |
 ```
 
 ### Fill: EXTEND
@@ -249,23 +249,23 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, EXTEND)
 ```
 
-Value at 08:00:00 because prior value in `INNER` mode was no available for linear interpolation.
+The value at 08:00:00 is set to first raw value because the prior value in the `INNER` mode was not available for linear interpolation.
 
 ```ls
-| datetime                 | value  | 
-|--------------------------|--------| 
+| datetime                 | value  |
+|--------------------------|--------|
 | 2016-09-17T08:00:00.000Z | 10.400 | - set as first raw value at 08:00:18
-| 2016-09-17T08:00:30.000Z |  4.783 | 
-| 2016-09-17T08:01:00.000Z |  7.658 | 
+| 2016-09-17T08:00:30.000Z |  4.783 |
+| 2016-09-17T08:01:00.000Z |  7.658 |
 ...
-| 2016-09-17T08:04:30.000Z |  6.783 | 
+| 2016-09-17T08:04:30.000Z |  6.783 |
 | 2016-09-17T08:05:00.000Z |  6.600 | - set as last raw value at 08:04:48
 | 2016-09-17T08:05:30.000Z |  6.600 | - set as last raw value at 08:04:48
 ```
 
 ### Alignment
 
-The default `CALENDAR` alignment defines regular timestamps according to the calendar, for example, a 30 second interval starts at 0 seconds each minute, and 5 minute start at 0 seconds every 5 minutes starting with 0 minute of the current hour.
+The default `CALENDAR` alignment defines regular timestamps according to the calendar. For example, a 30 second interval starts at 0 seconds each minute. Additionally, a 5 minute interval starts at 0 seconds every 5 minutes, beginning with the 0 minute of the current hour.
 
 #### `CALENDAR`
 
@@ -277,16 +277,16 @@ AND datetime >= '2016-09-17T08:00:10Z' AND datetime < '2016-09-17T08:01:40Z'
 ```
 
 ```ls
-| datetime                 | value | 
-|--------------------------|-------| 
-| 2016-09-17T08:00:30.000Z | 4.783 | 
-| 2016-09-17T08:01:00.000Z | 7.658 | 
-| 2016-09-17T08:01:30.000Z | 3.480 | 
+| datetime                 | value |
+|--------------------------|-------|
+| 2016-09-17T08:00:30.000Z | 4.783 |
+| 2016-09-17T08:01:00.000Z | 7.658 |
+| 2016-09-17T08:01:30.000Z | 3.480 |
 ```
 
 #### `START_TIME`
 
-`START_TIME` alignment defines regular timestamps according to the start time specified in the query.
+The `START_TIME` alignment defines regular timestamps according to the start time specified in the query.
 
 ```sql
 SELECT datetime, value FROM metric1
@@ -296,20 +296,20 @@ AND datetime >= '2016-09-17T08:00:10Z' AND datetime < '2016-09-17T08:01:40Z'
 ```
 
 ```ls
-| datetime                 | value  | 
-|--------------------------|--------| 
-| 2016-09-17T08:00:10.000Z | 10.370 | 
+| datetime                 | value  |
+|--------------------------|--------|
+| 2016-09-17T08:00:10.000Z | 10.370 |
 | 2016-09-17T08:00:40.000Z | 5.742  |
 | 2016-09-17T08:01:10.000Z | 8.617  |
 ```
 
 ### `GROUP BY PERIOD` compared to `WITH INTERPOLATE`
 
-The `GROUP BY PERIOD()` clause calculates value for all values in each period by applying an aggregation function such as average, maximum, first, last etc.
+The `GROUP BY PERIOD()` clause calculates for all values in each period by applying an aggregation function such as average, maximum, first, last etc.
 
-If the period doesn't have any values, the period is omitted from results.
+If the period doesn't have any values, the period is omitted from the results.
 
-An optional `LINEAR` directive for `GROUP BY PERIOD()` clause changes the default behavior and returns results missing periods by applying linear interpolation between values of the neighboring periods.
+An optional `LINEAR` directive for the `GROUP BY PERIOD()` clause changes the default behavior and returns results from missing periods by applying linear interpolation between values of the neighboring periods.
 
 * [Chartlab examples](https://apps.axibase.com/chartlab/471a2a40)
 
@@ -318,13 +318,13 @@ An optional `LINEAR` directive for `GROUP BY PERIOD()` clause changes the defaul
 #### Data
 
 ```ls
-| datetime                 | value   | 
-|--------------------------|---------| 
-| 2016-09-17T02:00:05.000Z | -70.000 | 
-| 2016-09-17T08:00:18.000Z |  10.400 | 
-| 2016-09-17T08:00:26.000Z |   4.400 | 
-| 2016-09-17T08:01:14.000Z |   9.000 | 
-| 2016-09-17T08:01:34.000Z |   2.100 | 
+| datetime                 | value   |
+|--------------------------|---------|
+| 2016-09-17T02:00:05.000Z | -70.000 |
+| 2016-09-17T08:00:18.000Z |  10.400 |
+| 2016-09-17T08:00:26.000Z |   4.400 |
+| 2016-09-17T08:01:14.000Z |   9.000 |
+| 2016-09-17T08:01:34.000Z |   2.100 |
 ```
 
 #### `GROUP BY PERIOD`
@@ -337,8 +337,8 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 ```
 
 ```ls
-| datetime                 | first(value) | last(value) | avg(value) | 
-|--------------------------|--------------|-------------|------------| 
+| datetime                 | first(value) | last(value) | avg(value) |
+|--------------------------|--------------|-------------|------------|
 | 2016-09-17T08:00:00.000Z | 10.40        |  4.40       |  7.40      | -- The period has 2 values. Set to first value at 08:00:18, last value at 08:00:26 or using an aggregation function such as average
 | 2016-09-17T08:00:30.000Z |  9.70        |  6.70       |  8.20      | -- The period has no values. Linearly interpolated between 08:00:00 and 08:01:00; 10.40 + (9.00-10.40)* 30sec/60sec = 9.70
 | 2016-09-17T08:01:00.000Z |  9.00        |  9.00       |  9.00      | -- The period has only 1 record. last(), first(), and avg() return the same result.
@@ -347,7 +347,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 
 #### `WITH INTERPOLATE`
 
-`WITH INTERPOLATE` clause, on the other hand, calculates values at calendar-aligned timestamps using neighboring raw values.
+The `WITH INTERPOLATE` clause, on the other hand, calculates values at calendar-aligned timestamps using neighboring raw values.
 
 
 ```sql
@@ -358,8 +358,8 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 ```
 
 ```ls
-| datetime                 | value | 
-|--------------------------|-------| 
+| datetime                 | value |
+|--------------------------|-------|
 | 2016-09-17T08:00:00.000Z | 10.33 | -- Linearly interpolated between prior value of -70 at 02:00:05 and first value of 10.40 at 08:00:18.
 | 2016-09-17T08:00:30.000Z |  4.78 | -- Linearly interpolated between 4.40 at 08:00:26 and 9.00 at 08:01:14.
 | 2016-09-17T08:01:00.000Z |  7.66 | -- Linearly interpolated between 4.40 at 08:00:26 and 9.00 at 08:01:14.
@@ -369,8 +369,8 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 If raw values had extra samples recorded within values in each period, such values would be ignored.
 
 ```ls
-| time     | value   | 
-|----------|---------| 
+| time     | value   |
+|----------|---------|
 | 08:00:18 |   10.40 | -- used to interpolate value at 08:00:00 between 02:00:05 and 08:00:18
 | 08:00:19 |  100.50 | -- ignored
 | 08:00:20 |  200.40 | -- ignored
@@ -386,9 +386,9 @@ If raw values had extra samples recorded within values in each period, such valu
 
 #### `GROUP BY` Example
 
-The interpolation and `GROUP BY` clauses can be combined. 
+The interpolation and `GROUP BY` clauses can be combined.
 
-`WITH INTERPOLATE` transformation is performed first, with regular series subsequently processed by aggregation functions. 
+The `WITH INTERPOLATE` transformation is performed first, with regular series subsequently processed by aggregation functions.
 
 ```sql
 SELECT datetime, count(value), avg(value) FROM metric1
@@ -399,17 +399,17 @@ WITH INTERPOLATE(30 SECOND, LINEAR, OUTER)
 ```
 
 ```ls
-| datetime                 | count(value) | avg(value) | 
-|--------------------------|--------------|------------| 
-| 2016-09-17T08:00:00.000Z | 2.000        | 7.558      | 
-| 2016-09-17T08:01:00.000Z | 2.000        | 5.569      | 
+| datetime                 | count(value) | avg(value) |
+|--------------------------|--------------|------------|
+| 2016-09-17T08:00:00.000Z | 2.000        | 7.558      |
+| 2016-09-17T08:01:00.000Z | 2.000        | 5.569      |
 ```
 
-#### `JOIN` Example 
+#### `JOIN` Example
 
-`WITH INTERPOLATE` transformation regularizes all series returned by the query to the same timestamps so that their values can be joined.
+The `WITH INTERPOLATE` transformation regularizes all series returned by the query to the same timestamps, so that their values can be joined.
 
-Series **t1**. This series is interpolated with `PREVIOUS` function.
+Series **t1**. This series is interpolated with the `PREVIOUS` function.
 
 ```sql
 SELECT t1.entity, t1.datetime, t1.value
@@ -419,15 +419,15 @@ WHERE t1.datetime >= '2016-09-18T14:00:00.000Z' AND t1.datetime < '2016-09-18T14
 ```
 
 ```ls
-| t1.entity    | t1.datetime              | t1.value | 
-|--------------|--------------------------|----------| 
-| nurswgvml006 | 2016-09-18T14:00:06.000Z | 75336.0  | 
-| nurswgvml006 | 2016-09-18T14:00:21.000Z | 71260.0  | 
-| nurswgvml006 | 2016-09-18T14:00:36.000Z | 68904.0  | 
-| nurswgvml006 | 2016-09-18T14:00:51.000Z | 68156.0  | 
+| t1.entity    | t1.datetime              | t1.value |
+|--------------|--------------------------|----------|
+| nurswgvml006 | 2016-09-18T14:00:06.000Z | 75336.0  |
+| nurswgvml006 | 2016-09-18T14:00:21.000Z | 71260.0  |
+| nurswgvml006 | 2016-09-18T14:00:36.000Z | 68904.0  |
+| nurswgvml006 | 2016-09-18T14:00:51.000Z | 68156.0  |
 ```
 
-Series **t2**. This series is interpolated with `LINEAR` function.
+Series **t2**. This series is interpolated with the `LINEAR` function.
 
 ```sql
 SELECT t2.entity, t2.datetime, t2.value
@@ -437,12 +437,12 @@ WHERE t2.datetime >= '2016-09-18T14:00:00.000Z' AND t2.datetime < '2016-09-18T14
 ```
 
 ```ls
-| t2.entity    | t2.datetime              | t2.value | 
-|--------------|--------------------------|----------| 
-| nurswgvml006 | 2016-09-18T14:00:10.000Z | 100.0    | 
-| nurswgvml006 | 2016-09-18T14:00:26.000Z | 79.2     | 
-| nurswgvml006 | 2016-09-18T14:00:42.000Z | 16.2     | 
-| nurswgvml006 | 2016-09-18T14:00:58.000Z | 9.0      | 
+| t2.entity    | t2.datetime              | t2.value |
+|--------------|--------------------------|----------|
+| nurswgvml006 | 2016-09-18T14:00:10.000Z | 100.0    |
+| nurswgvml006 | 2016-09-18T14:00:26.000Z | 79.2     |
+| nurswgvml006 | 2016-09-18T14:00:42.000Z | 16.2     |
+| nurswgvml006 | 2016-09-18T14:00:58.000Z | 9.0      |
 ```
 
 JOINed multi-variate series:
@@ -457,18 +457,18 @@ AND t1.entity = 'nurswgvml006'
 ```
 
 ```ls
-| entity       | datetime                 | cpu     | mem  | 
-|--------------|--------------------------|---------|------| 
-| nurswgvml006 | 2016-09-18T14:00:15.000Z | 75336.0 | 93.5 | 
-| nurswgvml006 | 2016-09-18T14:00:30.000Z | 71260.0 | 63.4 | 
-| nurswgvml006 | 2016-09-18T14:00:45.000Z | 68904.0 | 14.8 | 
+| entity       | datetime                 | cpu     | mem  |
+|--------------|--------------------------|---------|------|
+| nurswgvml006 | 2016-09-18T14:00:15.000Z | 75336.0 | 93.5 |
+| nurswgvml006 | 2016-09-18T14:00:30.000Z | 71260.0 | 63.4 |
+| nurswgvml006 | 2016-09-18T14:00:45.000Z | 68904.0 | 14.8 |
 ```
 
 Without interpolation, a join of Series 1 and Series 2 would have produced an empty result because their raw times are different.
 
 ### `value` Filter
 
-value condition in `WHERE` clause is applied to interpolated values.
+value condition in which the `WHERE` clause is applied to interpolated values.
 
 ```sql
 SELECT datetime, value
@@ -478,15 +478,15 @@ WHERE datetime >= '2016-09-18T14:03:30.000Z' AND datetime <= '2016-09-18T14:04:3
 ```
 
 ```ls
-| datetime                 | value | 
-|--------------------------|-------| 
-| 2016-09-18T14:03:38.000Z | 4.0   | 
-| 2016-09-18T14:03:54.000Z | 3.0   | 
-| 2016-09-18T14:04:10.000Z | 7.1   | 
-| 2016-09-18T14:04:26.000Z | 100.0 | 
+| datetime                 | value |
+|--------------------------|-------|
+| 2016-09-18T14:03:38.000Z | 4.0   |
+| 2016-09-18T14:03:54.000Z | 3.0   |
+| 2016-09-18T14:04:10.000Z | 7.1   |
+| 2016-09-18T14:04:26.000Z | 100.0 |
 ```
 
-Without `INTERPOLATE` raw values can be filtered out with `value` condition as usual.
+Without the `INTERPOLATE` transformation, raw values can be filtered out with the `value` condition as usual.
 
 ```sql
 SELECT datetime, value
@@ -497,16 +497,16 @@ WHERE datetime >= '2016-09-18T14:03:30.000Z' AND datetime <= '2016-09-18T14:04:3
 ```
 
 ```ls
-| datetime                 | value | 
-|--------------------------|-------| 
-| 2016-09-18T14:03:38.000Z | 4.0   | 
-| 2016-09-18T14:03:54.000Z | 3.0   | 
-| 2016-09-18T14:04:10.000Z | 7.1   | 
+| datetime                 | value |
+|--------------------------|-------|
+| 2016-09-18T14:03:38.000Z | 4.0   |
+| 2016-09-18T14:03:54.000Z | 3.0   |
+| 2016-09-18T14:04:10.000Z | 7.1   |
 ```
 
-Once `INTERPOLATE` clause is added, the value filter is applied to interpolated values instead of raw values.
+Once the `INTERPOLATE` clause is added, the value filter is applied to the interpolated values instead of raw values.
 
-The following queries produce the same result because `value < 100` is no longer applied to raw values and as such sample at 14:04:26 remains in the series for the purpose of interpolation.
+The following queries produce the same result because `value < 100` is no longer applied to raw values. As such, the sample at 14:04:26 remains in the series for the purpose of interpolation.
 
 ```sql
 SELECT datetime, value
@@ -528,11 +528,11 @@ AND value < 100
 The above queries return the same result:
 
 ```ls
-| datetime                 | value | 
-|--------------------------|-------| 
-| 2016-09-18T14:03:45.000Z | 3.6   | 
-| 2016-09-18T14:04:00.000Z | 4.6   | 
-| 2016-09-18T14:04:15.000Z | 36.2  | 
+| datetime                 | value |
+|--------------------------|-------|
+| 2016-09-18T14:03:45.000Z | 3.6   |
+| 2016-09-18T14:04:00.000Z | 4.6   |
+| 2016-09-18T14:04:15.000Z | 36.2  |
 ```
 
 ### Input Commands
@@ -563,6 +563,3 @@ series e:e1   m:metric2=4.4 d:2016-09-17T08:00:26Z
 series e:e1   m:metric2=9.0 d:2016-09-17T08:01:14Z
 series e:e1   m:metric2=2.1 d:2016-09-17T08:01:34Z
 ```
-
-
-
