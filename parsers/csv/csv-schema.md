@@ -1,12 +1,12 @@
 # CSV Schema Settings
 
-Schema Parser implements position-aware parsing of CSV files. Once the file is converted into a tabular model each cell is assigned a unique address and its value can be retrieved using `cell(rowIndex, columnIndex)` function. The schema parser reads rows and columns from top left to bottom right. The number of rows and columns to be processed is controlled with start/end index and step arguments in `select``` functions.
+Schema Parser implements position-aware parsing of CSV files. Once the file is converted into a tabular model, each cell is assigned a unique address and its value can be retrieved using the `cell(rowIndex, columnIndex)` function. The schema parser reads rows and columns from top left to bottom right. The number of rows and columns to be processed is controlled with start/end index and step arguments in `select` functions.
 
-`select()` function implements [RFC 7111](https://tools.ietf.org/html/rfc7111) selections using URI Fragment Identifiers, including `row#`, `col#`, and `cell#` with a custom extension controlling iteration step. See extended ABNF syntax [here](#abnf).
+The `select()` function implements [RFC 7111](https://tools.ietf.org/html/rfc7111) selections using URI Fragment Identifiers, including `row#`, `col#`, and `cell#` with a custom extension controlling iteration step. See extended ABNF syntax [here](#abnf).
 
-The cell where the cursor is located is called the active cell. Its value is obtained with `cell(row, col)` function where ‘row’ and ‘col’ arguments represent indexes of the current row and column. Values of other cells can be obtained using absolute or relative references. For example, `cell(1, col)` refers to the cell located in the 1st row and the same column as the active cell. `cell(row, col-1)` refers to the cell located in the same row to the left of the active cell.
+The cell where the cursor is located is called the active cell. Its value is obtained with the `cell(row, col)` function where `row` and `col` arguments represent indexes of the current row and column. Values of other cells can be obtained using absolute or relative references. For example, `cell(1, col)` refers to the cell located in the 1st row and the same column as the active cell. `cell(row, col-1)` refers to the cell located in the same row to the left of the active cell.
 
-Value retrieved with `cell(rowIndex, columnIndex)` function can be used to set metric, entity, timestamp, and tag fields in order to assemble series, property, or message commands from the value of the active cell and referenced cells in the header and lead columns. JavaScript expressions are supported for modifying and filtering cell values.
+Value retrieved with the `cell(rowIndex, columnIndex)` function can be used to set metric, entity, timestamp, and tag fields in order to assemble series, property, or message commands from the value of the active cell and referenced cells in the header and lead columns. JavaScript expressions are supported for modifying and filtering cell values.
 
 Schema Parser example:
 
@@ -32,13 +32,13 @@ tag('status', cell(row, col+1).toLowerCase());
 Explanation:
 
 
-- `select("#row=2-*")` – RFC7111 selection. Read rows starting with 2nd row with step 1 > `'2015-10-29T00:00:00Z; 19.2; provis; 11.3; ok'`
-- `select("#col=2-*!2")` – RFC7111 selection Read columns in the current row starting with 2nd column with step 2: 2,4,6. etc. > `'19.2'`
-- `timestamp(cell(row, 1))` – Set time to `'2015-10-29T00:00:00Z'` which is value of cell located in the current row, 1st column.
+- `select("#row=2-*")` – RFC7111 selection. Read rows starting with 2nd row with step 1 > `'2015-10-29T00:00:00Z; 19.2; provis; 11.3; ok'`.
+- `select("#col=2-*!2")` – RFC7111 selection. Read columns in the current row starting with 2nd column with step 2: 2,4,6. etc. > `'19.2'`.
+- `timestamp(cell(row, 1))` – Set time to `'2015-10-29T00:00:00Z'` which is the value of the cell located in the current row, 1st column.
 - `entity(cell(1, col))` – Set entity to `'sensor01'` which is value of cell located in the 1st row, current column.
-- `metric('power_kwh') - Set metric name to a predefined value.`
-- `tag('status',cell(row, col+1).toLowerCase())` – Set tag `status` to `'provis'` which is lowercased value of cell located in the current row to the right of the current column `(col + 1)`.
-- Iterate to the next column with step 2, `select("#col=2-*!2")`, to cell `'11.3'`. Repeat chained functions after addSeries().
+- `metric('power_kwh')` - Set metric name to a predefined value.
+- `tag('status',cell(row, col+1).toLowerCase())` – Set tag `status` to `'provis'` which is the lowercased value of the cell located in the current row to the right of the current column `(col + 1)`.
+- Iterate to the next column with step 2, `select("#col=2-*!2")`, to cell `'11.3'`. Repeat chained functions after `addSeries()`.
 
 
 Commands:
@@ -76,7 +76,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 
 | Name | Required | Description | 
 | --- | --- | --- | 
-|  <p>`select(expression)`</p>  |  <p>Yes</p>  |  <p>Selects rows, columns or cell range to process using RFC 7111 selection syntax</p>  | 
+|  <p>`select(expression)`</p>  |  <p>Yes</p>  |  <p>Selects rows, columns, or cell range to process using RFC 7111 selection syntax.</p>  | 
 |  <p>`filter(condition)`</p>  |  <p>No</p>  |  <p>Optionally filter rows, columns and cells depending on rowText and cellText values, e.g. `rowText.indexOf('test')>=0`.</p>  | 
 
 
@@ -130,11 +130,11 @@ If Schema parsing is enabled, only the following fields from the parser configu
 
 
 - Row and column indexes start with 1.
-- Row index of the active cell can be referenced with `row` parameter
-- Column index of the active cell can be referenced with `col` parameter
+- Row index of the active cell can be referenced with the `row` parameter.
+- Column index of the active cell can be referenced with the `col` parameter.
 - Relative index is specified with `+/-`, for example `col+1`.
 - Row index can be smaller or equal to the index of the current row due to the streaming nature of the parser.
-- If index is not specified, current index is used. Same as `+0` or `-0`.
+- If index is not specified, the current index is used. Same as `+0` or `-0`.
 
 
 #### RFC 7111 Step Extension Syntax:
@@ -154,9 +154,9 @@ RFC 7111 base syntax: [https://tools.ietf.org/html/rfc7111#section-3](https://to
 Examples:
 
 
-- `#row=1-*!2`                       – Select odd rows.
+- `#row=1-*!2`                    – Select odd rows.
 - `#col=10-*!3`             – Select every 3rd column starting with column 10.
-- `#cell=1,2-5,*!1,2`      – Select even columns in the first 5 rows.
+- `#cell=1,2-5,*!1,2`     – Select even columns in the first 5 rows.
 
 
 #### Schema-based Parser Examples:
@@ -176,5 +176,3 @@ Examples:
 - [notEmptyLeft](examples/not-empty-left-schema.md)
 - [Versioned Series](examples/versioned-series-schema.md)
 - [Block-Appended](examples/block-appended-schema.md)
-
-

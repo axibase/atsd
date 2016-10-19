@@ -23,13 +23,13 @@ tag('status',cell(row, col+1)).
 timestamp(cell(1, 1) + ' ' + cell(row, 1));
 ```
 
-
-- For each cell in the cell range, starting with 4th row and until the last row and starting from 2nd column and until last column, iterating over EVEN columns (2 + step 2);
-- Set metric name to a constant (temperature);
-- Set entity name to value of cell located in 1nd row in the current column;
-- Set tag ‘status’ to value of cell located in the current row to the right from the current column (column + 1);
-- Set timestamp to value of cell located in 1rd row and 1st column (date part 2015-11-15) concatenated with value of cell located in the current row in the 1st column (hour part). The concatenated value will be parsed using ‘Timestamp Pattern’;
-- Set series value to value of current cell.
+Adhere to the following points to convert the CSV file into a tabular model:
+- For each cell in the cell range, starting with the 4th row and until the last row, and starting from the 2nd column and until the last column, iterating over EVEN columns (2 + step 2);
+- Set the metric name to a constant (temperature);
+- Set the entity name to the value of the cell located in the 2nd row in the current column;
+- Set the tag ‘status’ to the value of the cell located in the current row to the right of the current column (column + 1);
+- Set the timestamp to the value of the cell located in the 3rd row and 1st column (date part 2015-11-15) concatenated with the value of the cell located in the current row in the 1st column (hour part). The concatenated value will be parsed using the ‘Timestamp Pattern’;
+- Set the series value to the value of the current cell.
 
 
 #### Commands
@@ -40,4 +40,3 @@ series e:sensor-0020 d:2015-11-15T00:00:00Z m:temperature=20.4 t:status=ok
 series e:sensor-0001 d:2015-11-15T00:10:00Z m:temperature=35.6 t:status=ok
 series e:sensor-0020 d:2015-11-15T00:10:00Z m:temperature=20.5 t:status=ok
 ```
-

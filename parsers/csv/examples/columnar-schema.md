@@ -25,13 +25,13 @@ tag('model',cell(2, col)).
 timestamp(cell(3, 1) + ' ' + cell(row, 1));
 ```
 
-
-- For each cell in the cell range, starting with 4th row and until the last row and starting from 2nd column and until last column;
-- Set metric name to value of cell located in 3rd row in the current column: Temperature, Humidity, Pressure (repeated);
-- Set entity name to value of cell located in 2nd row in the current column;
-- Set tag ‘model’ to value of cell located in 3rd row in the current column;
-- Set timestamp to value of cell located in 3rd row and 1st column (date part 2015-11-15) concatenated with value of cell located in current row in the 1st column (hour part). The concatenated value will be parsed using ‘Timestamp Pattern’;
-- Set series value to value of current cell.
+Adhere to the following points to convert the input file into a tabular model:
+- For each cell in the cell range, starting with the 4th row and until the last row and starting from the 2nd column and until the last column;
+- Set the metric name to value of the cell located in the 3rd row in the current column: Temperature, Humidity, Pressure (repeated);
+- Set the entity name to the value of the cell located in the 2nd row in the current column;
+- Set the tag ‘model’ to the value of the cell located in 3rd row in the current column;
+- Set the timestamp to the value of the cell located in the 3rd row and 1st column (date part 2015-11-15) concatenated with the value of the cell located in the current row in the 1st column (hour part). The concatenated value will be parsed using the ‘Timestamp Pattern’;
+- Set the series value to the value of the current cell.
 
 
 #### Commands
@@ -42,4 +42,3 @@ series e:sensor-0020 d:2015-11-15T00:00:00Z m:temperature=20.4 m:humidity=60.8 m
 series e:sensor-0001 d:2015-11-15T00:10:00Z m:temperature=35.6 m:humidity=40.8 m:pressure=750 t:model=PV120000-XG1
 series e:sensor-0020 d:2015-11-15T00:10:00Z m:temperature=20.5 m:humidity=60.5 m:pressure=745 t:model=PV120000-XG1
 ```
-

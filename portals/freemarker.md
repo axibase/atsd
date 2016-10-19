@@ -12,9 +12,8 @@ getTags('metric', 'entity', 'tagKey'[, hours])
 
 Returns a string collection.
 
-Tag values for metric, entity and tagKey.
-[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.
-Default interval is 24 hours.
+Tag values for metric, entity, and tagKey.
+`[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values. The default interval is 24 hours.
 
 ```
 <#assign cpus = getTags("nmon.cpu.idle%", "${entity}", "id") >      
@@ -65,7 +64,7 @@ groupTag('nurswgvml007', 'cpu_busy_avg_15_min')
 getMetrics('entity')
 ```
 
-String collection
+String collection.
 
 Returns collected metrics for a particular entity.
 
@@ -104,7 +103,7 @@ Returns collected metrics for a particular entity.
 isMetric('metric')
 ```
 
-Boolean
+Boolean.
 
 Returns true if a metric exists.
 
@@ -122,9 +121,9 @@ Returns true if a metric exists.
 isMetricCollected('metric', 'entity')
 ```
 
-Boolean
+Boolean.
 
-Returns true if there is some data for metric and entity inserted in last 24 hours.
+Returns true if there is some data for metric and entity inserted in the last 24 hours.
 
 ```
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
@@ -142,7 +141,7 @@ getProperty('entity', 'property_type', 'tagKey')
 
 Returns a string collection.
 
-Retrieve a collection of property objects for specified entity, property type and tag.
+Retrieve a collection of property objects for a specified entity, property type, and tag.
 
 
 ```
@@ -159,10 +158,10 @@ Retrieve a collection of property objects for specified entity, property type an
 getSeriesProperties("{entity}", "{property_type}")
 ```
 
-Returns property objects for specified entity and property type.
+Returns property objects for a specified entity and property type.
 
-Retrieve a collection of property objects for specified entity and property type.
-If no entity is specified, then retrieves a collection of property objects for all entities with the specified property type.
+Retrieve a collection of property objects for a specified entity and property type.
+If no entity is specified, then the schema retrieves a collection of property objects for all entities with the specified property type.
 
 ```
 <#assign ebs_volume_tags = getSeriesProperties(volume, "aws_ec2.attachmentset") >
@@ -186,8 +185,7 @@ getTagMaps('metric', 'entity'[, hours])
 Returns collection of maps(string, string).
 
 Retrieve a collection of unique tag maps for metric and entity.
-[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.
-Default interval is 24 hours.
+`[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values. The default interval is 24 hours.
 
 ```
 <#assign procMaps = getTagMaps("nmon.process.%cpu", "${entity}") >  
@@ -210,9 +208,9 @@ Default interval is 24 hours.
 atsd_last("entity", "metric", "tag1=v1,tag2=v2")
 ```
 
-Retrieves last value (a number) for the specified entity, metric, and series tags. The value is searched for a timespan of 2 hours.
+Retrieves the last value (a number) for a specified entity, metric, and series tags. The value is searched for a timespan of 2 hours.
 
-If the series has multiple tags, the last argument must include all tags. 
+If the series has multiple tags, the last argument must include all tags.
 
 ```javascript
 atsd_last("nurswgvml007", "disk_size", "mount_point=/,file_system=/dev/mapper/vg_nurswgvml007-lv_root")
@@ -224,7 +222,7 @@ If the series has no tags, the last argument may be omitted or set to empty stri
 atsd_last("nurswgvml007", "cpu_busy")
 ```
 
-The returned value is formatted according to server locale, for example 13325 is formatted as 13,325. To remove formatting append ?c at the end of the function or assigned variable.
+The returned value is formatted according to server locale. For example 13325 is formatted as 13,325. To remove formatting append `?c` at the end of the function or assigned variable.
 
 ```javascript
 <#assign total = atsd_last("nurswgvml007", "disk_size", "mount_point=/,file_system=/dev/mapper/vg_nurswgvml007-lv_root") >
@@ -237,9 +235,9 @@ The returned value is formatted according to server locale, for example 13325 is
 memberOf('entity', 'group1', …, 'groupN')
 ```
 
-Boolean
+Boolean.
 
-Returns true if an entity belongs to any of specified entity groups.
+Returns true if an entity belongs to any of the specified entity groups.
 
 ```
 <#if memberOf("nurswgvml007", "aix-servers") >
@@ -255,7 +253,7 @@ Returns true if an entity belongs to any of specified entity groups.
 memberOfAll('entity', 'group1', …, 'groupN')
 ```
 
-Boolean
+Boolean.
 
 Returns true if an entity belongs to all of the entity groups.
 
@@ -278,7 +276,7 @@ lastInsertTime('entity'[, ‘metric’])
 lastInsertDate('entity'[, ‘metric’])
 ```
 
-Double
+Double.
 
 Returns the last insert time for the entity or entity/metric combination in milliseconds (Time) or ISO format (Date). Metric is an optional parameter.
 
@@ -311,9 +309,8 @@ getEntitiesForGroup('group', 'hours')
 
 Returns a string collection.
 
-Find all entities in a particular entity group, useful when building portals that compare entities from the same entity group.
-The method returns group member that have inserted data over the last N hours.
-If hours is not specified or non-positive, all group members are returned.
+Finds all entities in a particular entity group. This can be useful when building portals that compare entities from the same entity group. The method returns group member that have inserted data over the last N hours.
+If hours are not specified or are non-positive, all group members are returned.
 
 ```
 <#assign servers = getEntitiesForGroup("VMware Hosts") >   
@@ -337,7 +334,7 @@ getEntitiesForTags(expression)
 
 Returns a string collection.
 
-Find find entities by expression, based on tags.
+Finds entities by expression, based on tags.
 
 ```
 <#assign servers = getEntitiesForTags("", "(app == '${app}' OR '${app}' == '' AND app != '') AND 
@@ -356,25 +353,25 @@ Find find entities by expression, based on tags.
 </#list>
 ```
 
-In the first example we are searching for entities with two tags, the required value can be specified directly in the browser:
+In the first example, we are searching for entities with two tags. The required value can be specified directly in the browser:
 
 http://atsd.com/portal/1.xhtml?app=> value1&dc=> value2
 
-All entities where app tag is equal to > value1 and dc tag is equal to > value2 will be loaded into the portal.
+All entities, for which the `app` tag is => `value1` and `dc` tag is => `value2`, will be loaded into the portal.
 
-In the second example we are searching for entities with a specific application tag, the required value can be specified directly in the browser:
+In the second example, we are searching for entities with a specific application tag. The required value can be specified directly in the browser:
 
 http://atsd.com/portal/1.xhtml?application=> value
 
-All entities where the application tag is equal to > value will be loaded into the portal.
+All entities, for which the application tag is > `value`, will be loaded into the portal.
 
-A single line of freemarker code can be used to easily customize the results of the portal by searching for entity tags rather that specific entities giving extensive possibilities to create flexible portals.
+A single line of freemarker code can be used to easily customize the results of the portal by searching for entity tags rather that specific entities. This gives extensive possibilities to create flexible portals.
 
-The freemarker search can be for any combination of tags, for example: > application, > data center and > function, only entities that have all three specified tags will be loaded into the portal.
+The freemarker search can be for any combination of tags. For example: > `application` > `data center` > `function`. Only entities that have all three specified tags will be loaded into the portal.
 
-In the response, freemarker [series] are substituted with the matching entities, creating [series] for each of them.
+In the response, the `freemarker` [series] are substituted with the matching entities, creating [series] for each of them.
 
-##### Example output of a freemarker [series]:
+##### Example output of a `freemarker` [series]:
 
 ```
 [configuration]
@@ -411,9 +408,9 @@ entity = host1786
 metric = cpu_used
 ```
 
-Advanced functions and aggregations can be added to freemarker portals to enhance the resulting data prior to loading it into the portal. Below are two examples.
+Advanced functions and aggregations can be added to the freemarker portals to enhance the resulting data prior to loading it into the portal. Below are two examples:
 
-##### The freemarker [series] are given an alias, that can then be used to sum the loaded data as in the example below:
+##### The `freemarker` [series] is given an alias, that can then be used to sum the loaded data:
 
 ```
 <#assign servers = getEntitiesForGroup("Linux") >
@@ -425,7 +422,7 @@ Advanced functions and aggregations can be added to freemarker portals to enhanc
  </#list>
 ```
 
-##### The freemarker [series] data can be aggregated by ATSD prior to loading into the portal:
+##### The `freemarker` [series] data can be aggregated by ATSD prior to loading into the portal:
 
 ```
 [series]
@@ -437,24 +434,24 @@ Advanced functions and aggregations can be added to freemarker portals to enhanc
 
 | Name | Returns | Description | 
 | --- | --- | --- | 
-|  <p>`atsd_last('entity', 'metric', 'tag1=v1,tag2=v2')`</p>  |  <p>Double</p>  |  <p>Last value for time series or null</p>  | 
-|  <p>`groupTag('entity', 'tagKey')`</p>  |  <p>string collection</p>  |  <p>collection of tag values for tagKey of all entity groups an entity belongs to</p>  | 
-|  <p>`tag('entity', 'tagKey')`</p>  |  <p>string</p>  |  <p>Entity tag value</p>  | 
-|  <p>`memberOf('entity', 'group1', ..., 'groupN')`</p>  |  <p>boolean</p>  |  <p>returns true if an entity belongs to any of specified entity groups</p>  | 
-|  <p>`memberOfAll('entity', 'group1', ..., 'groupN')`</p>  |  <p>boolean</p>  |  <p>returns true if an entity belongs to all of the entity groups</p>  | 
-|  <p>`list('value' [, delimiter])`</p>  |  <p>string collection</p>  |  <p>splits a string by a delimeter. Default delimiter is comma character</p>  | 
-|  <p>`getTags('metric', 'entity', 'tagKey'[, hours])`</p>  |  <p>string collection</p>  |  <p>tag values for metric, entity and tagKey.</p>  <p>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.</p>  <p>Default interval is 24 hours.</p>  | 
-|  <p>`getEntitiesForTags(expression)`</p>  |  <p>string collection</p>  |  <p>find entities by expression</p>  | 
-|  <p>`getEntitiesForGroup("group")`</p>  |  <p>string collection</p>  |  <p>find all entities in a particular entity group, useful when building portals that compare entities from the same entity group</p>  | 
-|  <p>`getEntitiesForGroup(groupName, hours)`</p>  |  <p>string collection</p>  |  <p>find all entities in a particular entity group, useful when building portals that compare entities from the same entity group.</p>  <p>The method returns group member that have inserted data over the last N hours.</p>  <p>If hours is not specified or non-positive, all group members are returned.</p>  | 
+|  <p>`atsd_last('entity', 'metric', 'tag1=v1,tag2=v2')`</p>  |  <p>Double</p>  |  <p>Last value for time series or null.</p>  | 
+|  <p>`groupTag('entity', 'tagKey')`</p>  |  <p>string collection</p>  |  <p>Collection of tag values for tagKey of all entity groups an entity belongs to.</p>  | 
+|  <p>`tag('entity', 'tagKey')`</p>  |  <p>string</p>  |  <p>Entity tag value.</p>  | 
+|  <p>`memberOf('entity', 'group1', ..., 'groupN')`</p>  |  <p>boolean</p>  |  <p>Returns true if an entity belongs to any of specified entity groups.</p>  | 
+|  <p>`memberOfAll('entity', 'group1', ..., 'groupN')`</p>  |  <p>boolean</p>  |  <p>Returns true if an entity belongs to all of the entity groups.</p>  | 
+|  <p>`list('value' [, delimiter])`</p>  |  <p>string collection</p>  |  <p>Splits a string by a delimeter. Default delimiter is comma character.</p>  | 
+|  <p>`getTags('metric', 'entity', 'tagKey'[, hours])`</p>  |  <p>string collection</p>  |  <p>Tag values for metric, entity, and tagKey.</p>  <p>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.</p>  <p>Default interval is 24 hours.</p>  | 
+|  <p>`getEntitiesForTags(expression)`</p>  |  <p>string collection</p>  |  <p>Finds entities by expression.</p>  | 
+|  <p>`getEntitiesForGroup("group")`</p>  |  <p>string collection</p>  |  <p>Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.</p>  | 
+|  <p>`getEntitiesForGroup(groupName, hours)`</p>  |  <p>string collection</p>  |  <p>Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.</p>  <p>The method returns group members that have inserted data over the last N hours.</p>  <p>If hours are not specified or non-positive, all group members are returned.</p>  | 
 |  <p>`getMetrics('entity')`</p>  |  <p>string collection</p>  |  <p>Retrieve all collected metrics for a particular entity.</p>  | 
-|  <p>`isMetric('metric')`</p>  |  <p>boolean</p>  |  <p>returns true if a metric exists</p>  | 
-|  <p>`isMetricCollected('metric', 'entity')`</p>  |  <p>boolean</p>  |  <p>returns true if there is some data for metric and entity inserted in last 24 hours</p>  | 
-|  <p>`hasMetric('entity', 'metric' [,hours])`</p>  |  <p>boolean</p>  |  <p>Executes query for Last Insert Cache table and returns true if the entity collects specified metric, regardless of tags.</p>  <p>If optional hours argument is specified, only rows inserted for the last N hours are evaluated.</p>  | 
-|  <p>`getTagMaps('metric', 'entity'[, hours])`</p>  |  <p>collection of maps(string, string)</p>  |  <p>collection of unique tag maps for metric and entity.</p>  <p>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.</p>  <p>Default interval is 24 hours.</p>  | 
-|  <p>`getProperty('entity', 'property_type', 'tagKey')`</p>  |  <p>string collection</p>  |  <p>Retrieve a collection of property objects for specified entity, property type and tag.</p>  | 
-|  <p>`getSeriesProperties("{entity}", "{property_type}")`</p>  |  <p>property objects for specified entity and property type</p>  |  <p>Retrieve a collection of property objects for specified entity and property type.</p>  <p>If no entity is specified, then retrieves a collection of property objects for all entities with the specified property type.</p>  | 
-|  <p>`atsd_values(entity, metric, tags, type, interval, shift, duration)`</p>  |  <p>Aggregator object</p>  |  <p>see tables below</p>  | 
+|  <p>`isMetric('metric')`</p>  |  <p>boolean</p>  |  <p>Returns true if a metric exists.</p>  | 
+|  <p>`isMetricCollected('metric', 'entity')`</p>  |  <p>boolean</p>  |  <p>Returns true if there is some data for metric and entity inserted in last 24 hours.</p>  | 
+|  <p>`hasMetric('entity', 'metric' [,hours])`</p>  |  <p>boolean</p>  |  <p>Executes query for Last Insert Cache table. Returns true if the entity collects specified the metric, regardless of tags.</p>  <p>If the optional hours argument is specified, only rows inserted for the last N hours are evaluated.</p>  | 
+|  <p>`getTagMaps('metric', 'entity'[, hours])`</p>  |  <p>collection of maps(string, string)</p>  |  <p>Collection of unique tag maps for metric and entity.</p>  <p>`[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.</p>  <p>The default interval is 24 hours.</p>  | 
+|  <p>`getProperty('entity', 'property_type', 'tagKey')`</p>  |  <p>string collection</p>  |  <p>Retrieves a collection of property objects for specified entity, property type, and tag.</p>  | 
+|  <p>`getSeriesProperties("{entity}", "{property_type}")`</p>  |  <p>property objects for specified entity and property type</p>  |  <p>Retrieves a collection of property objects for a specified entity and property type.</p>  <p>If no entity is specified, then a collection of property objects for all entities with the specified property type is retrieved.</p>  | 
+|  <p>`atsd_values(entity, metric, tags, type, interval, shift, duration)`</p>  |  <p>Aggregator object</p>  |  <p>See tables below.</p>  | 
 |  <p>`lastInsertTime('entity'[, ‘metric’])`</p>  |  <p>Double</p>  |  <p>Returns last insert time for the entity or entity/metric combination in milliseconds. Metric is an optional parameter.</p>  | 
 |  <p>`lastInsertDate('entity'[, ‘metric’])`</p>  |  <p>Double</p>  |  <p>Returns last insert date for the entity or entity/metric combination in ISO format. Metric is an optional parameter.</p>  | 
 
@@ -482,5 +479,3 @@ Advanced functions and aggregations can be added to freemarker portals to enhanc
 |  <p>average()</p>  |  <p>Double</p>  | 
 |  <p>countOf()</p>  |  <p>Integer</p>  | 
 |  <p>asList()</p>  |  <p>Double collection</p>  | 
-
-

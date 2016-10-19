@@ -7,12 +7,12 @@ Read this page to learn about ATSD portals and see [Creating and Assigning Port
 ### Key Features
 
 
-- ATSD has a wide range of built-in portals that come out-of-the-box. You don’t need to spend time on their configuration and modeling.
-- You can create your personalized portals that will include only required widgets and metrics.
-- Not only that you can manage information on your portal, you can manage the way your portal looks. You can choose one of the theme that comes with ATSD, or you can upload your own themes.
+- ATSD has a wide range of built-in portals that come standard out of the box. You don’t need to spend time on their configuration and modeling.
+- You can create personalized portals that will include only your required widgets and metrics.
+- Not only can you manage the information on your portal, but also manage the way your portal looks. You can choose a theme that comes standard with ATSD, or you can upload your own one.
 
 
-Out-of-the-box, ATSD contains over 20 built-in portals for:
+Standard out of the box, ATSD contains over 20 built-in portals for:
 
 
 - ATSD host system
@@ -34,11 +34,11 @@ ATSD has two types of portals:
 
 Default Portals are automatically assigned to specific entities and entity groups. To learn more, see [Entities](https://axibase.com/products/axibase-time-series-database/data-model/entities/).
 
-Right after creation, the portal will appear on the Portals tab of the top menu and it will display entities, metrics and tags assigned by default.
+Right after creation, the portal will appear on the Portals tab at the top menu and will display entities, metrics, and tags as assigned by default.
 
 Template Portals can be assigned to an unlimited number of entities and entity groups.
 
-You can use placeholders while writing portal contents. When you assign the new portal to an entity, its name will automatically replace the placeholder.
+You can use placeholders while writing portal contents. When you assign a new portal to an entity, its name will automatically replace the placeholder.
 
 
 
@@ -62,4 +62,3 @@ You can use placeholders while writing portal contents. When you assign the new
 [Create Generic Widgets](http://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/)
 
 [Create Generic Tables](http://axibase.com/products/axibase-time-series-database/visualization/widgets/description-of-tables/)
-

@@ -39,21 +39,19 @@
 
 ![](resources/air_quality_csv_parser.png)
 
-#### Parser Configuration Description:
+#### Parser Configuration Description
 
 | Field | Setting | Reason | 
 | --- | --- | --- | 
-|  <p>Enabled</p>  |  <p>Set to true</p>  |  <p>Enable parsing of CSV files using this.</p>  <p>Also allows use of this parser configuration in Axibase Collector.</p>  | 
-|  <p>Name</p>  |  <p>Unique name – airnow-fresno</p>  |  <p>Unique name to distinguish this parser from others.</p>  <p>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.</p>  | 
+|  <p>Enabled</p>  |  <p>Set to true</p>  |  <p>Enables parsing of CSV files.</p>  <p>Use of this parser configuration is allowed in Axibase Collector.</p>  | 
+|  <p>Name</p>  |  <p>Unique name – airnow-fresno</p>  |  <p>Unique name to distinguish a particular parser from others.</p>  <p>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.</p>  | 
 |  <p>Put Type</p>  |  <p>Metric</p>  |  <p>The CSV file in question contains time series (metrics) environmental data.</p>  | 
 |  <p>Delimiter</p>  |  <p>Comma</p>  |  <p>A comma is used to separate columns.</p>  | 
-|  <p>Default Entity</p>  |  <p>Unique entity name – 060190011</p>  |  <p>No entity name is present in the CSV file, it is assigned manually to the ID of the monitoring station.</p>  <p>All data will be written to this unique entity, making it easy to distinguish from others.</p>  | 
+|  <p>Default Entity</p>  |  <p>Unique entity name – `060190011`</p>  |  <p>No entity name is present in the CSV file; it is assigned manually to the ID of the monitoring station.</p>  <p>All data will be written to this unique entity, making it easy to distinguish from others.</p>  | 
 |  <p>Metric Name Column</p>  |  <p>Parameter</p>  |  <p>Parameter column contains all metric names: CO, NO2, OZONE, PM10, PM2.5, SO2.</p>  | 
 |  <p>Metric Value Column</p>  |  <p>Concentration</p>  |  <p>Concentration column contains the values for the above metrics.</p>  <p>Note that values for all metrics are contained in a single column.</p>  | 
-|  <p>Timestamp Column</p>  |  <p>Time</p>  |  <p>Time column contains the timestamp, that will be used to import the time series.</p>  | 
-|  <p>Timestamp Pattern</p>  |  <p>`yyyy-MM-dd'T'HH:mm`</p>  |  <p>Patter matching the one contained in the original CSV file: `2015-07-09T00:00`</p>  | 
-|  <p>Filter</p>  |  <p>`number('Concentration') >= 0`</p>  |  <p>We only want to import data points that contain actual values that are greater than 0 (not empty).</p>  | 
-|  <p>Ignored Columns</p>  |  <p>`Latitude`</p>  <p>`Longitude`</p>  <p>`Unit`</p>  |  <p>Columns that will be not be imported.</p>  <p>For example: Latitude, Longitude and Unit do not add any value to the time series.</p>  <p>Can be added as metric tags using the API or UI.</p>  | 
+|  <p>Timestamp Column</p>  |  <p>Time</p>  |  <p>Time column contains the timestamp, which will be used to import the time series.</p>  | 
+|  <p>Timestamp Pattern</p>  |  <p>`yyyy-MM-dd'T'HH:mm`</p>  |  <p>Pattern matching the one contained in the original CSV file: `2015-07-09T00:00`.</p>  | 
+|  <p>Filter</p>  |  <p>`number('Concentration') >= 0`</p>  |  <p>Used to import data points that contain actual values that are greater than 0 (not empty).</p>  | 
+|  <p>Ignored Columns</p>  |  <p>`Latitude`</p>  <p>`Longitude`</p>  <p>`Unit`</p>  |  <p>Columns that will be not be imported.</p>  <p>For example: Latitude, Longitude, and Unit do not add any value to the time series.</p>  <p>Can be added as metric tags using the API or user interface.</p>  | 
 |  <p>Header</p>  |  <p>`"Latitude"`</p>  <p>`"Longitude"`</p>  <p>`"Time"`</p>  <p>`"Parameter"`</p>  <p>`"Concentration"`</p>  <p>`"Unit"`</p>  |  <p>Since the source CSV file does not have column headers, they are assigned and then referenced in the configuration.</p>  | 
-
-

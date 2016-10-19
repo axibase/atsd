@@ -10,7 +10,7 @@
 #### Parser Settings
 
 `Timestamp Pattern: yyyy.MM.dd HH:mm`      # Used to parse Measurement Time column values
-`Delimiter: Semicolon (;)`     # Non-default delimiter
+`Delimiter: Semicolon (;)`                     # Non-default delimiter
 
 #### Schema
 
@@ -30,4 +30,3 @@ tag('model', cell(row, 2));
 series e:sensor-0001 d:2015-10-15T00:00:00Z m:temperature=35.5 m:humidity=40.0 t:model=PV120000-XG1
 series e:sensor-0001 d:2015-10-15T00:10:00Z m:temperature=35.6 m:humidity=40.8 t:model=PV120000-XG1
 ```
-

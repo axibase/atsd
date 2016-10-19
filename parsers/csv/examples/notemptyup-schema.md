@@ -12,8 +12,7 @@
 #### Parser Settings
 
 `Timestamp Pattern:  yyyy.MM.dd HH:mm:ss`      # Used to parse Measurement Time column values
-
-`Delimiter: Semicolon (;)`      # Non-default delimiter
+`Delimiter: Semicolon (;)`                         # Non-default delimiter
 
 #### Schema
 
@@ -35,4 +34,3 @@ property e:sensor-0020 d:2015-10-15T00:00:00Z t:measurements t:model=PV120000-XG
 property e:sensor-0300 d:2015-10-15T00:00:00Z t:measurements t:model=PV120000-XG1
 property e:sensor-0001 d:2015-10-15T00:10:00Z t:measurements t:model=PV120000-XG1
 ```
-

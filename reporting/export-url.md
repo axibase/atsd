@@ -71,14 +71,13 @@ http://server:port/export?settings={"m":"cpu_used","e":"nurswgvml001","si":"1-WE
 
 #### Interpolation Functions:
 
-Interpolation function can insert missing intervals in returned aggregated data:
+Interpolation functions can insert missing intervals in returned aggregated data:
 
 | Function Name | Description | 
 | --- | --- | 
-|  <p>STEP</p>  |  <p>Missing value equals previous (last) value</p>  | 
-|  <p>LINEAR</p>  |  <p>Missing value is computed using linear interpolation between previous (last) and next available value</p>  | 
-|  <p>NONE</p>  |  <p>Missing values are not inserted</p>  | 
+|  <p>STEP</p>  |  <p>Missing value equals previous (last) value.</p>  | 
+|  <p>LINEAR</p>  |  <p>Missing value is computed using linear interpolation between previous (last) and next available value.</p>  | 
+|  <p>NONE</p>  |  <p>Missing values are not inserted.</p>  | 
 
 
 If the interpolation function is not specified in the request, missing intervals are not created.
-

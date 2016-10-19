@@ -11,8 +11,7 @@ Date;        Sensor Name;   Measurement;    10:00;  10:15;  10:30;   10:45
 #### Parser Settings
 
 `Timestamp Pattern:  yyyy-MM-ddHH:mm`      # Used to parse Measurement Time column values
-
-`Delimiter: Semicolon (;)`      # Non-default delimiter
+`Delimiter: Semicolon (;)`                     # Non-default delimiter
 
 #### Schema
 
@@ -37,4 +36,3 @@ series e:sensor-0020 d:2015-10-15T10:15:00Z m:humidity=60.8
 series e:sensor-0020 d:2015-10-15T10:30:00Z m:humidity=60.8
 series e:sensor-0020 d:2015-10-15T10:45:00Z m:humidity=60.8
 ```
-

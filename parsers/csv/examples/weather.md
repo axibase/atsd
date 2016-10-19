@@ -75,10 +75,8 @@
 |  <p>Put Type</p>  |  <p>Metric</p>  |  <p>The CSV file in question contains time series (metrics) weather data.</p>  | 
 |  <p>Delimiter</p>  |  <p>Comma</p>  |  <p>A comma is used to separate columns.</p>  | 
 |  <p>Default Entity</p>  |  <p>Unique entity name – Halifax</p>  |  <p>All data will be written to this unique entity, making it easy to distinguish from others.</p>  | 
-|  <p>Metric Prefix</p>  |  <p>Unique entity prefix- halifax</p>  |  <p>Prefix added at the start of metric name, used distinguish between metrics with similar or identical names.</p>  | 
+|  <p>Metric Prefix</p>  |  <p>Unique entity prefix- halifax</p>  |  <p>Prefix added at the start of metric name, used to distinguish between metrics with similar or identical names.</p>  | 
 |  <p>Timestamp Columns</p>  |  <p>Date</p>  |  <p>The `Date` column contains the timestamp.</p>  | 
-|  <p>Timestamp Pattern</p>  |  <p>`yyyy-MM-dd`</p>  |  <p>Timestamp Pattern must correspond to the original timestamp in the CSV file: 2015-01-01</p>  | 
+|  <p>Timestamp Pattern</p>  |  <p>`yyyy-MM-dd`</p>  |  <p>Timestamp Pattern must correspond to the original timestamp in the CSV file: `2015-01-01`.</p>  | 
 |  <p>Filter</p>  |  <p>`timestamp > 0`</p>  |  <p>Only import data that has a timestamp greater than 0 in epoch milliseconds.</p>  <p>Timestamps earlier than `1970-01-01T00:00:00Z` will not be imported.</p>  | 
 |  <p>Ignored Columns</p>  |  <p>`Year`</p>  <p>`Month`</p>  <p>`Day`</p>  <p>`Data Quality`</p>  <p>`Max Temp Flag`</p>  <p>`Min Temp Flag`</p>  <p>`Mean Temp Flag`</p>  <p>`Heat Deg Days Flag`</p>  <p>`Cool Deg Days Flag`</p>  <p>`Total Rain Flag`</p>  <p>`Total Snow Flag`</p>  <p>`Total Precip Flag`</p>  <p>`Snow on Grnd Flag`</p>  <p>`Dir of Max Gust (10s deg)`</p>  <p>`Dir of Max Gust Flag`</p>  <p>`Spd of Max Gust (kmh)`</p>  <p>`Spd of Max Gust Flag`</p>  |  <p>Columns that will not be imported.</p>  <p>Year, Month, Day are irrelevant because Date column is imported as the timestamp.</p>  <p>Other listed columns do not contain valuable data or often contain empty values, so its best to discard them.</p>  | 
-
-
