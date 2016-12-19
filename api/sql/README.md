@@ -160,11 +160,11 @@ Comments are not allowed after the statement termination character `;`.
 * **FROM** retrieves records from virtual tables.
 * **JOIN** merges records from different tables.
 * **WHERE** filters out records.
-* **GROUP BY** assigns records to buckets (groups, sets).
+* **GROUP BY** assigns records to groups (sets, buckets).
 * **HAVING** filters out the buckets.
 * **SELECT** creates rows containing columns.
 * **ORDER BY** sorts rows.
-* **LIMIT** selects a subset of rows.
+* **LIMIT** selects a subset of rows with optional **OFFSET**.
 
 ## Columns
 
@@ -549,7 +549,7 @@ The `time` column accepts Unix milliseconds, whereas `datetime` column accepts l
 ```sql
 SELECT datetime, entity, value
   FROM "mpstat.cpu_busy"
-WHERE time >= 1465685363345 AND datetime < '2016-06-10T14:00:15.020Z'
+WHERE time <= 1465685363345 AND datetime >= '2016-06-05T10:00:00.020Z'
 ```
 
 Both columns support [End Time](/end-time-syntax.md) syntax.
@@ -735,7 +735,7 @@ GROUP BY entity, PERIOD(10 MINUTE, START_TIME)
 
 ## Interpolation
 
-By default, if a period specified in the `GROUP BY` clause doesn't contain any detailed values, it will be excluded from the results.
+By default, if a period specified in the `GROUP BY` clause doesn't contain any detailed values or the period has been filtered out with the `HAVING` clause, it will be excluded from the results.
 
 The behavior can be changed by referencing an interpolation function as part of the `PERIOD` function.
 
@@ -769,6 +769,12 @@ SELECT entity, period(5 MINUTE), avg(value)
   FROM "mpstat.cpu_busy" WHERE datetime > current_hour
 GROUP BY entity, period(5 MINUTE, LINEAR, EXTEND)
 ```
+
+### `HAVING` Filter
+
+The interpolation function is applied after the `HAVING` filter, which can remove existing (non-empty) periods with other conditions.
+
+Periods removed by the `HAVING` filter will be interpolated similar to missing periods.
 
 ### Interpolation Examples
 
@@ -908,11 +914,7 @@ GROUP BY period(5 MINUTE)
 
 ### HAVING filter
 
-The `HAVING` clause enables filtering of grouped rows. It eliminates grouped rows that do not match the specified condition which may contain one or multiple aggregation functions.
-
-```sql
-HAVING aggregation_function operator value
-```
+The `HAVING` clause enables filtering of grouped rows. The clause supports only aggregation functions.
 
 ```sql
 SELECT entity, avg(value) AS Cpu_Avg
@@ -928,10 +930,6 @@ GROUP BY entity
 |--------------|---------|
 | nurswgvml006 | 99.8    |
 | nurswgvml007 | 14.3    |
-```
-
-```sql
-HAVING avg(value) > 10 OR max(value) > 90
 ```
 
 ## Partitioning
@@ -994,7 +992,7 @@ WHERE datetime >= "2016-06-18T12:00:00.000Z" AND datetime < "2016-06-18T12:00:30
 
 ### LAST_TIME Syntax
 
-The `last_time` function returns the last time, in milliseconds, when data was received for a given series. It enables filtering of records based on the last insertion date for the given series.
+The `last_time` function returns the last time in milliseconds when data was received for a given series. It enables filtering records for each series based on date, specific to the given series.
 
 ```sql
 WITH time comparision_operator last_time_expression
@@ -1002,19 +1000,19 @@ WITH last_time_expression comparision_operator time
 ```
 
 * `time` is the pre-defined time column which represents timestamp of the sample.
-* `comparision_operator` is one of the operators `>`, `>=`, `<`, `<=`, `=`.
+* `comparision_operator` is one of `>`, `>=`, `<`, `<=`, `=`.
 * `last_time_expression` consists of the `last_time` keyword and an optional `endtime` expression.
 
 ```sql
 WITH time > last_time - 1 * MINUTE
 ```
 
-Calculate `average` for the most recent hour for each series that received data in the current_month:
+Return avg() for the most recent hour for each series:
 
 ```sql
-SELECT entity, AVG(cpu_busy.value), date_format(max(time)) AS Last_Date
-  FROM mpstat.cpu_busy
-WHERE datetime > current_month
+SELECT entity, AVG(cpu_busy.value)
+  FROM cpu_busy
+WHERE datetime > previous_month
   GROUP BY entity
 WITH time > last_time - 1 * HOUR
 ```
@@ -1026,8 +1024,8 @@ The default sort order is undefined. Row ordering can be performed by adding the
 ```sql
 SELECT entity, avg(value) FROM "mpstat.cpu_busy"
   WHERE datetime > current_day
-GROUP BY entity
-  ORDER BY avg(value) DESC, entity
+  GROUP BY entity
+ORDER BY avg(value) DESC, entity
 ```
 
 ```ls
@@ -1046,11 +1044,11 @@ Column numbers can be used instead of column names. The number should be a posit
 ```sql
 SELECT entity, avg(value) FROM "mpstat.cpu_busy"
   WHERE datetime > current_day
-GROUP BY entity
-  ORDER BY 2 DESC, 1
+  GROUP BY entity
+ORDER BY 2 DESC, 1
 ```
 
-In combination with `LIMIT`, ordering can be used to execute **Top-N** queries.
+In combination with `LIMIT`, ordering can be used to execute **top-N** queries.
 
 ```sql
 SELECT entity, avg(value) FROM "mpstat.cpu_busy"
@@ -1615,16 +1613,6 @@ API SQL endpoint is located at `/api/sql` path.
 ### Specification
 
 [SQL Query API Endpoint](api.md)
-
-### Validation Query
-
-To test a connection, execute the following query:
-
-```sql
-SELECT 1
-```
-
-This query can be utilized as a validation query in database connection pool implementations such as [Apache Commons DBCP](https://commons.apache.org/proper/commons-dbcp/configuration.html).
 
 ### Sample Responses
 
