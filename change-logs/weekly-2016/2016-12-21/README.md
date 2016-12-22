@@ -33,7 +33,7 @@ Recently added to the [`docker`](https://github.com/axibase/axibase-collector-do
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
 that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status will initially be retained in ATSD for the specified time interval (for
-example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
+example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below. 
 
 ![Figure 2](Figure2.png)
 
