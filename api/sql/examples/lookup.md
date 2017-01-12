@@ -10,7 +10,7 @@ Replacement tables contain a collection of `key=value` mappings, specified one p
 
 ## Numeric Keys
 
-If the key argument is numeric, such as in `LOOKUP('table-1', value)` case, the number is formatted with `#.##` pattern to remove fractional `.0` part from integer values.
+If the key argument is numeric, such as in `LOOKUP('table-1', value)`, the number is formatted with a `#.##` pattern to remove the fractional `.0` part from integer values.
 
 * 3.0 -> `3`
 * 3.10 -> `3.1`
@@ -50,7 +50,7 @@ WHERE datetime > now - 15 * MINUTE
 
 ## Example: PI status codes
 
-The query translates numeric values into string codes for PI Tag digital tags.
+This query translates numeric values into string codes for PI Tag digital tags.
 
 ### Replacement Table `pi-pids`
 
@@ -102,7 +102,7 @@ FROM 'ba:phase.1'
 
 ## Example: Replacement Table from Metric Tag
 
-The query converts numeric values into string codes using a replacement table specified in the metric tag.
+This query converts numeric values into string codes using a replacement table specified in the metric tag.
 
 ### Query
 
@@ -125,7 +125,7 @@ FROM 'ba:active.1'
 
 ## Example: Multiple Replacement Tables from Metric Tags
 
-The query converts numeric values into string codes using different replacement tables specified in the metric tag, specific for each metric included in the query.
+This query converts numeric values into string codes using different replacement tables specified in the metric tag, and are specific for each metric included in the query.
 
 ### Query
 
@@ -151,7 +151,7 @@ AND datetime > '2016-11-02T18:00:00Z' AND datetime < '2016-11-02T18:30:00Z'
 
 ## Example: Single Replacement Table for Multiple Metrics
 
-The query converts numeric values into string codes using the single replacement table whose keys are comprised of both the metric tag name (digital_set) name and the value.
+The query below converts numeric values into string codes using the single replacement table, whose keys are comprised of both the metric tag name (digital_set) name and the value.
 
 ```ls
 ...
@@ -175,7 +175,7 @@ pialarm33:-262145=__ Lolo
 ...
 ```
 
-To extract all digital sets from PI server in the above format, use the following SQL query.
+To extract all digital sets from the PI server in the above format, use the following SQL query.
 
 * PI SQL query:
 

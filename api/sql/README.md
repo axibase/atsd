@@ -287,11 +287,11 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 
 #### Numeric Precedence
 
-If the `value` column in `atsd_series` query returns numbers for metrics with different [data types](/api/meta/metric/list.md#data-types), the prevailing data type is determined based on the following rules:
+If the `value` column in an `atsd_series` query returns numbers for metrics with different [data types](/api/meta/metric/list.md#data-types), the prevailing data type is determined based on the following rules:
 
-1. If all data types are integer (`short`, `integer`, `long`), return the prevailing integer type.
-2. If all data types are decimal (`float`, `double`, `decimal`), return the prevailing decimal type.
-3. If data types are both integer and decimal, return `decimal` type.
+1. If all data types are integers (`short`, `integer`, `long`), the prevailing integer type is returned.
+2. If all data types are decimals (`float`, `double`, `decimal`), the prevailing decimal type is returned.
+3. If the data types contains both integers and decimals, the `decimal` type is returned.
 
 ### Series Tag Columns
 
