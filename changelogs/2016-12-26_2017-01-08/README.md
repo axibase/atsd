@@ -1,46 +1,46 @@
-Weekly Change Log: December 25, 2016 - January 08, 2016
-=======================================
+Weekly Change Log: December 25, 2016 - January 08, 2017
+=======================================================
 
 ### ATSD
 
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3756](#issue-3756)          | sql             | Bug     | Tag filter for the 2nd table removes all rows in JOIN.                          |
-| [3751](#issue-3751)          | api-rest        | Bug     | `isEmpty()` function parsing error in series [query](https://github.com/axibase/atsd-docs/blob/master/api/data/series/query.md) method.                                               |
-| [3749](#issue-3749)          | sql             | Bug     | `LOCATE` function raises NPE in WHERE clause.                                     |
+| [3756](#issue-3756)          | sql             | Bug     | Tag filter for the 2nd table removes all rows in `JOIN`.                          |
+| [3751](#issue-3751)          | api-rest        | Bug     | `isEmpty()` function parsing error in the series [query](https://github.com/axibase/atsd-docs/blob/master/api/data/series/query.md) method.                                               |
+| [3749](#issue-3749)          | sql             | Bug     | `LOCATE` function raises NPE in the `WHERE` clause.                                     |
 | 3748          | test            | Support | ATSD CE web tests failing.                                                           |
 | [3747](#issue-3747)          | sql             | Feature | `CAST` doesn't allow `date_format`.                                                 |
-| [3746](#issue-3746)          | sql             | Feature | 'u' pattern in `date_format` function.                                            |
+| [3746](#issue-3746)          | sql             | Feature | `u` pattern in the `date_format` function.                                            |
 | [3741](#issue-3741)          | sql             | Bug     | `JOIN USING entity`.                                                              |
-| [3740](#issue-3740)          | api-rest        | Bug     | series [query](https://github.com/axibase/atsd-docs/blob/master/api/data/series/query.md) for versioned metric doesn't provide a history of text value. |
-| [3738](#issue-3738)          | sql             | Bug     | Math function `ABS()` does not accept 2nd aggregate expression. |
+| [3740](#issue-3740)          | api-rest        | Bug     | Series [query](https://github.com/axibase/atsd-docs/blob/master/api/data/series/query.md) for versioned metrics doesn't provide a history of text values. |
+| [3738](#issue-3738)          | sql             | Bug     | Math function `ABS()` does not accept 2nd aggregate expressions. |
 | [3721](#issue-3721)          | sql             | Feature | `LIKE` comparator.                                                                |
-| [3711](#issue-3711)          | sql             | Bug     | Slow parsing of queries with 30+ arguments in arithmetic expressions in `SELECT` clause. |
+| [3711](#issue-3711)          | sql             | Bug     | Slow parsing of queries with 30+ arguments in arithmetic expressions in the `SELECT` clause. |
 | [3695](#issue-3695)          | sql             | Bug     | `GROUP BY` with join fails to return records.                                     |
 | [3661](#issue-3661)          | sql             | Feature | [`CAST`](https://github.com/axibase/atsd-docs/tree/master/api/sql#cast) function implemented. |
-| 3527          | jdbc            | Bug     | DbVisualizer hangs after repetitive query cancellations with ATSD JDBC driver.  |
+| 3527          | jdbc            | Bug     | DbVisualizer hangs after repetitive query cancellations with the ATSD JDBC driver.  |
 
 ### Collector
 
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3743](#issue-3743)          | pi              | Feature | Develop PI Server emulator for `picomp2` and `pipoint2` tables.                   |
+| [3743](#issue-3743)          | pi              | Feature | Developed PI Server emulator for `picomp2` and `pipoint2` tables.                   |
 
 
 ### Charts
 
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3754](#issue-3754)          | bar             | Bug     | Columns not created for series with statistic and wildcard match.                          |
-| [3654](#issue-3654)          | widget-settings | Feature | Support for meta in label-format.                                           |
-| [3636](#issue-3636)          | data-loading    | Bug     | Series not displayed if requested for entity group or with entity expression.                                         |
-| [3143](#issue-3143)          | table           | Bug     | Value and time columns of series with shorter period are not displayed.         |
+| [3754](#issue-3754)          | bar             | Bug     | Columns not created for series with statistic and wildcard matches.                          |
+| [3654](#issue-3654)          | widget-settings | Feature | Support for meta fields in label-format.                                           |
+| [3636](#issue-3636)          | data-loading    | Bug     | Series not displayed if requested for the entity group or with the entity expression.                                         |
+| [3143](#issue-3143)          | table           | Bug     | Value and time columns of series with shorter periods are not displayed.         |
 
 
 ### Issue 3756
 -------------
 
-The SQL executor was fixed to return correct results for a query containing tag filter on a joined table `t64o.tags.city = 'New York'`.
+The SQL executor was fixed to return correct results for a query containing a tag filter on a joined table (`t64o.tags.city = 'New York'`).
 
 ```sql
 SELECT t1.datetime, count(t1.value), count(t2.value)
@@ -55,7 +55,7 @@ GROUP BY t1.tags, t1.period(1 year)
 ### Issue 3751
 -------------
 
-`entityExpression` error was addressed in [series](https://github.com/axibase/atsd-docs/blob/master/api/data/series/query.md) query method when `isEmpty()` was specified with brackets.
+An error for `entityExpression` was addressed in [series](https://github.com/axibase/atsd-docs/blob/master/api/data/series/query.md) query method when `isEmpty()` was specified with brackets.
 
 ```json
 [{
@@ -70,7 +70,7 @@ GROUP BY t1.tags, t1.period(1 year)
 ### Issue 3749
 -------------
 
-The SQL parser fixed to allow [`LOCATE`](https://github.com/axibase/atsd-docs/tree/master/api/sql#string-functions) function the `WHERE` clause.
+The SQL parser was fixed to allow for the [`LOCATE`](https://github.com/axibase/atsd-docs/tree/master/api/sql#string-functions) function to be used in the `WHERE` clause.
 
 ```sql
 SELECT sum(value)
@@ -99,7 +99,7 @@ GROUP BY date_format(time, 'EEE HH')
 ### Issue 3746
 -------------
 
-The `u` pattern returns a numeric value representing [day number](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) within a week (1 = Monday, ..., 7 = Sunday).
+The `u` pattern was updated to return a numeric value representing the [day number](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) within a week (1 = Monday, ..., 7 = Sunday).
 
 ```sql
 SELECT date_format(time, 'E'),
@@ -113,7 +113,7 @@ GROUP BY date_format(time, 'u')
 ### Issue 3741
 -------------
 
-[`JOIN USING ENTITY`](https://github.com/axibase/atsd-docs/tree/master/api/sql#join-with-using-entity) didn't merge rows as expected if tag names had the same names, but different values, for example, the same tag `tag1` with different values `a` and `b`.
+[`JOIN USING ENTITY`](https://github.com/axibase/atsd-docs/tree/master/api/sql#join-with-using-entity) didn't merge rows as expected if tag names had the same names but different values. For example, the same tag `tag1` with different values `a` and `b`.
 
 ```ls
 series d:2016-12-23T00:00:00.000Z e:e1 m:m3=1 t:tag1=a
@@ -129,7 +129,7 @@ SELECT *
 ### Issue 3740
 -------------
 
-The API processor was fixed to return history of `text` field for versioned metrics.
+The API processor was fixed to return the history of the `text` field for versioned metrics.
 
 ```ls
 series e:e-vers-text d:2016-12-22T00:00:00Z x:vers-text-m=hello1
@@ -177,7 +177,7 @@ series e:e-vers-text d:2016-12-22T00:00:00Z x:vers-text-m=hello2
 ### Issue 3738
 -------------
 
-The `ABS()` function produced an error when submitted an expression:
+The `ABS()` function produced an error when an expression was submitted:
 
 ```sql
 SELECT ABS(max(value)*avg(value))
@@ -202,7 +202,7 @@ WHERE entity = 'mr8w-325u'
 ### Issue 3711
 -------------
 
-The lexer was upgraded to resolve slow parsing of queries such as this:
+The lexer was upgraded to resolve slow parsing of queries such as shown below:
 
 ```sql
 SELECT value+value+value+value
@@ -218,7 +218,7 @@ FROM 'testmetric'
 ### Issue 3695
 -------------
 
-A defect with `GROUP BY` and `JOIN` clauses was fixed to return results for the following queries:
+A defect with the `GROUP BY` and `JOIN` clauses was fixed to return results for the following queries:
 
 ```sql
 SELECT sum(t1.value), sum(tot.value)
@@ -249,8 +249,8 @@ FROM disk.stats.used
 ### Issue 3743
 -------------
 
-Released an initial version of the PI Server emulator which returns results for queries against virtual `picomp2` and `pipoint2` tables.
-The emulator operates via ATSD JDBC driver (not the PI JDBC driver).
+Released an initial version of the PI Server emulator, which returns results for queries against the virtual `picomp2` and `pipoint2` tables.
+The emulator operates via the ATSD JDBC driver (not the PI JDBC driver).
 
 ```sql
 SELECT *
@@ -260,7 +260,7 @@ FROM pipoint..pipoint2
 ### Issue 3754
 -------------
 
-Fixed https://apps.axibase.com/chartlab/506da7c3
+Fixed an issue were columns were not being created for series with a statistic and wildcard match: https://apps.axibase.com/chartlab/506da7c3
 
 ### Issue 3654
 -------------
@@ -274,9 +274,9 @@ https://apps.axibase.com/chartlab/506da7c3
 ### Issue 3636
 -------------
 
-https://apps.axibase.com/chartlab/480bd642
+Updated charts to display series if requested for an entity group or with an entity expression: https://apps.axibase.com/chartlab/480bd642
 
 ### Issue 3143
 -------------
 
-Fixed https://apps.axibase.com/chartlab/adce7a9c
+Fixed an issue where the value and time columns of series with shorter period were not being displayed: https://apps.axibase.com/chartlab/adce7a9c
