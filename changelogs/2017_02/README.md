@@ -3,33 +3,33 @@ Weekly Change Log: January 09 - January 15, 2017
 
 ### ATSD
 
-| Issue         | Category        | Tracker | Subject                                                                             |
+| Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence. If several metrics with different datatypes are queried, no data will be lost by api clients because of a lack of precision. |
-| 3770 | api-rest        | Bug     | Removed exact match flags in series queries, which was resulting in empty result sets. |
-| [3769](#issue-3769) | sql             | Bug     | Updated the `LOOKUP` function to accept series, entity, and metric tags as parameters. |
-| [3768](#issue-3768) | sql             | Feature | Revised the `CONCAT` function to accept numeric arguments without `CAST`-ing. |
-| [3767](#issue-3767) | sql             | Feature | Updated the `CAST` function to convert numeric arguments to strings. |
-| [3764](#issue-3764) | sql             | Bug     | For created metrics without any data, updated the query response from NPE to return an empty result set. |
-| [3763](#issue-3763) | sql             | Bug     | Updated the `SELECT 1` query to return exactly one column containing rows included in the `SELECT` expression. |
-| [3480](#issue-3480) | api-rest        | Feature | Added support for text fields for series in HTTP API. |
-
-### Charts
-
-| Issue         | Category        | Tracker | Subject                                                                             |
-|---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3481](#issue-3481) | widget-settings | Feature | Updated `getTags` and `getSeries` requests for metadata for metrics and entities. Now tags or series can be provided in JSON format. | 
-| [3078](#issue-3078) | widget-settings | Feature | Add new series query settings `exact-match` and `interpolate-extend`. |
-| [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to `fill-value`. |
+| [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence in [`atsd_series`](/api/sql/examples/select-atsd_series.md) queries. If the query requests several metrics with different datatypes, no precision loss will occur. |
+| 3770 | api-rest        | Bug     | Removed versioning tags from [`exactMatch`](/api/data/series/query.md#series-filter-fields) checks to prevent empty result sets. |
+| [3769](#issue-3769) | sql             | Bug     | Updated the [`LOOKUP`](/api/sql#lookup) function to accept series, entity, and metric tags as parameters. |
+| [3768](#issue-3768) | sql             | Feature | Extended the [`CONCAT`](/api/sql#string-functions) function to accept numeric arguments without [`CAST`](/api/sql#cast)-ing. |
+| [3767](#issue-3767) | sql             | Feature | Updated the [`CAST`](/api/sql#cast) function to convert numeric arguments to strings. |
+| [3764](#issue-3764) | sql             | Bug     | Fixed NullPointException error when data was queried for a newly created metric without any data. |
+| [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](/api/sql#validation-query) validation query implementation to return exactly one row containing columns included in the `SELECT` expression. |
+| [3480](#issue-3480) | api-rest        | Feature | Added support for [`text`](/api/data/series/query.md#value-object) field in [series query](/api/data/series/query.md) method. |
 
 ### Collector
 
-| Issue         | Category        | Tracker | Subject                                                                             |
+| Issue         | Category        | Type | Subject                                                                             |
+|---------------|-----------------|---------|--------------------------------------------------|
+| [3755](#issue-3755) | docker          | Feature | Added new [size metrics](https://github.com/axibase/axibase-collector-docs/blob/master/jobs/docker/volume-size.md) for Docker containers: `docker.fs.size.rw` and `docker.fs.size.rootfs`. | 
+| 3752 | docker          | Bug     | Fixed issues with mis-matching volume labels by removing old records from the embedded database. | 
+| 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly sent into ATSD. | 
+| 3733 | docker          | Bug     | Eliminated database table locks, which resulted in the collection all statistics being stopped. |
+
+### Charts
+
+| Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3755](#issue-3755) | docker          | Feature | Added new metrics for the Docker container: `docker.fs.size.rw` and `docker.fs.size.rootfs`. | 
-| 3752 | docker          | Bug     | Implemented the removal of old, stored properties (from a local database) for Docker entities when their most recent properties are being requested. Added the initialization of entity tags (container, status) when properties are being requested. | 
-| 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly updated. | 
-| 3733 | docker          | Bug     | Eliminated Docker lock, which resulted in the collection all statistics being stopped. |
+| [3481](#issue-3481) | widget-settings | Feature | Implemented a JavaScript replacement for the freemarker `getSeries` method. | 
+| [3078](#issue-3078) | widget-settings | Feature | Added support for new series settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/). |
+| [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) to prevent collision.|
 
 
 ### Issue 3769
@@ -81,12 +81,12 @@ FROM 'ba:active.1'
 ### Issue 3763
 --------------
 
-Previously, the `SELECT 1` query only returned one row in a column. 
+Previously, the `SELECT 1` query didn't return any rows. 
 
 | 1 |
 |---|
 
-The `SELECT 1` query has been updated to return multiple rows in a single column included in the `SELECT` expression.
+The `SELECT 1` query has been updated to return one rows containing columns included in the `SELECT` expression.
 
 | 1 |
 |---|
@@ -95,10 +95,10 @@ The `SELECT 1` query has been updated to return multiple rows in a single column
 ### Issue 3480
 --------------
 
-Support was added for the text field (named `x`) in HTTP API for series queries and insert requests. Previously, `t`, `d`, `v`, and `s` were the allowable inputs. Now ATSD is capable of 
+Support was added for the text field (named `x`) in HTTP API for series [queries](/api/data/series/query.md#value-object) and [insert](/api/data/series/insert.md#value-object) requests. Previously, `t`, `d`, `v`, and `s` were the allowable inputs. Now ATSD is capable of 
 processing and saving `x` as text for a series sample. The empty string `""` is also supported and will be stored as `""`. 
 
-```ls
+```json
 {"d":"2016-06-01T12:08:42Z", "x": "Shutdown"}
 ``` 
  
