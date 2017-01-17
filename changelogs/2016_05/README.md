@@ -6,21 +6,21 @@ Weekly Change Log: December 12-18, 2016
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
 | 3710     | install         | Feature         | Added support for an embedded collector account with All Entities: read/write permission.                                      |
-| [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile was specified in denominator.                              |
-| [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an ungrouped column is included in a `SELECT` expression.                          |
-| [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
-| [3325](#issue-3325)     | sql             | Bug             | Allowed for columns other than `value` and `*` in the `COUNT` function.                                  |
+| 3704     | sql             | Bug             | Fixed 50% percentile division error where percentile was specified in denominator.                              |
+| 3702     | sql             | Bug             | Modified syntax error message in case an ungrouped column is included in a `SELECT` expression.                          |
+| 3701     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
+| 3325     | sql             | Bug             | Allowed for columns other than `value` and `*` in the `COUNT` function.                                  |
 
 ### Collector
 
 | Issue    | Category        | Type            | Subject                                                   |       
 |----------|-----------------|-----------------|-----------------------------------------------------------|
-| [3717](#issue-3717)     | docker          | Feature         | Set container label from environment variable `CONTAINER_NAME` for Mesos compatibility. |
+| 3717     | docker          | Feature         | Set container label from environment variable `CONTAINER_NAME` for Mesos compatibility. |
 | 3716     | docker          | Bug             | Fixed malformed label for images without a parent image. |
 | 3700     | docker          | Bug             | Replaced textarea with an Item List containing name expressions of processes to be excluded from the `top` process collection and count. |
 | 3699     | docker          | Bug             | Eliminated duplicate container names when setting volume labels.      |
 | 3692     | UI              | Bug             | Raised an error when the job is executed manually and the storage driver is not 'successful' at that time. |
-| [3685](#issue-3685)     | docker          | Feature         | Added a setting to remove deleted records from ATSD after a period of time. Containers can be removed after a certain number of days, images/volumes/networks can removed instantly. |
+| 3685     | docker          | Feature         | Added a setting to remove deleted records from ATSD after a period of time. Containers can be removed after a certain number of days, images/volumes/networks can removed instantly. |
 | 3684     | UI              | Bug             | Added Enable/Disable/Run buttons on the job list page to change status or run multiple jobs at a time using check boxes.                             |
 
 
@@ -33,7 +33,7 @@ Recently added to the [`docker`](https://github.com/axibase/axibase-collector-do
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
 that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status will initially be retained in ATSD for the specified time interval (for
-example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
+example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below. 
 
 ![Figure 2](Figure2.png)
 
@@ -133,40 +133,4 @@ Docker `inspect` snippet for a Mesos-managed container:
            "HOME=/root",
            "JAVA_HOME=/usr/lib/jvm/java-8-oracle"
        ]
-```
-
-### Issue 3704
---------------
-
-```sql
-SELECT tavg.tags.type, 
-    median(tmed.value), 
-    last(tmed.value),
-    last(tmed.value)/median(tmed.value)
-FROM "jmeter.ok.avg" tavg
-    JOIN "jmeter.ok.pct50" tmed
-WHERE tavg.entity = "hbs.axibase.com"
-    AND tavg.datetime >= current_day - 10*day
-GROUP BY tavg.tags.type
-  ORDER BY last(tmed.value) DESC
-```
-
-### Issue 3702
---------------
-
-```sql
-SELECT date_format(time, 'yyyy-MM-dd') as 'date', 
-  tags.city, tags.state, tags.region, sum(value)
-FROM cdc.all_deaths
-  WHERE entity = 'mr8w-325u' and tags.city IS NOT NULL
-GROUP BY entity, tags
-  WITH time >= last_time - 4*week
-ORDER BY sum(value) desc
-```
-
-### Issue 3325
---------------
-
-```sql
-SELECT count(*), count(value), count(entity) FROM cpu_busy WHERE datetime > previous_minute GROUP BY entity
 ```
