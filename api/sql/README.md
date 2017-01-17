@@ -60,7 +60,7 @@ Example:
 ```sql
 SELECT datetime, entity, value     -- SELECT expression
   FROM "mpstat.cpu_busy"           -- query
-WHERE datetime > NOW - 1 * HOUR    -- WHERE clause
+WHERE datetime >= NOW - 1*HOUR    -- WHERE clause
   LIMIT 1                          -- other clauses
 ```
 
@@ -79,7 +79,7 @@ A virtual table represents a subset of records for the given metric stored by th
 ```sql
 SELECT datetime, entity, value
   FROM "mpstat.cpu_busy"
-WHERE datetime > NOW - 1*MINUTE
+WHERE datetime >= NOW - 1*MINUTE
 ```
 
 In the example above, "mpstat.cpu_busy" table contains records for the `mpstat.cpu_busy` metric.
@@ -93,7 +93,7 @@ SELECT entity, metric, datetime, value
   FROM atsd_series
 WHERE metric = 'mpstat.cpu_busy'
 -- WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user')
-  AND datetime > current_hour
+  AND datetime >= CURRENT_HOUR
 ```
 
 Metric names in the `FROM` clause that contain reserved keywords, identifiers or special characters such as `-`,`*`,`,` should be enclosed in quotes or double quotes, for example, `FROM 'disk-io'`, `FROM "select"`, `FROM 'cpu.avg.percent'`.
@@ -122,7 +122,7 @@ Arithmetic operators, such as `*`, `-`, `+`, `/`, and `%` (modulo), may be appli
 ```sql
 SELECT entity, datetime, value, tags.*
   FROM "df.disk_used"
-WHERE datetime > NOW - 15 * MINUTE
+WHERE datetime >= NOW - 15*MINUTE
   AND (entity IN ('nurswgvml007', 'nurswgvml010')
        OR tags.file_system LIKE '/dev/*'
        OR value/1024 > 100000)
@@ -208,7 +208,7 @@ New columns can be created by applying functions and arithmetic expressions to e
 SELECT t1.datetime, t1.entity, t1.value + t2.value AS cpu_sysusr
   FROM "mpstat.cpu_system" t1
   JOIN "mpstat.cpu_user" t2
-WHERE t1.datetime > NOW - 1*MINUTE
+WHERE t1.datetime >= NOW - 1*MINUTE
 ```
 
 The list of available predefined columns may be requested with the `SELECT *` syntax, except for queries with the `GROUP BY` clause and when multiple metrics are requested from the `atsd_series` table.
@@ -304,7 +304,7 @@ If the property is not present, the `tags.{tag-name}` expression returns `NULL`.
 ```sql
 SELECT datetime, entity, value, tags.*, tags, tags.mount_point, tags.file_system
   FROM "df.disk_used"
-WHERE entity = 'nurswgvml010' AND datetime > NOW - 1*MINUTE
+WHERE entity = 'nurswgvml010' AND datetime >= NOW - 1*MINUTE
   ORDER BY datetime
 ```
 
@@ -321,7 +321,7 @@ To filter records with or without specified series tags, use the `IS NOT NULL` o
 ```sql
 SELECT entity, count(value), tags.*
  FROM "df.disk_used"
-WHERE datetime > NOW - 5 * MINUTE
+WHERE datetime >= NOW - 5*MINUTE
  AND entity = 'nurswgvml010'
  AND tags.mount_point = '/'
 GROUP BY entity, tags
@@ -344,7 +344,7 @@ If there is no record for the specified key, the `entity.tags.{tag-name}` expres
 ```sql
 SELECT entity, entity.tags.os, entity.tags.app, AVG(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime > current_hour
+WHERE datetime >= CURRENT_HOUR
   GROUP BY entity
 ```
 
@@ -365,7 +365,7 @@ To filter records with or without specified entity tags, use the `IS NOT NULL` o
 ```sql
 SELECT entity, entity.tags.os, entity.tags.app, AVG(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime > current_hour
+WHERE datetime >= CURRENT_HOUR
   AND entity.tags.os IS NULL
 GROUP BY entity
 ```
@@ -390,7 +390,7 @@ Metric tag columns are supported only in a `SELECT` expression.
 ```sql
 SELECT entity, AVG(value), metric.tags.*, metric.tags, metric.tags.table
   FROM "mpstat.cpu_busy"
-WHERE datetime > current_hour
+WHERE datetime >= CURRENT_HOUR
   GROUP BY entity
 ```
 
@@ -412,7 +412,7 @@ The column can be specified in the `SELECT` expression to print out the ordered 
 SELECT datetime, entity, value, entity.groups
   FROM "mpstat.cpu_busy"
 WHERE entity LIKE 'nurswgvml00*'
-  AND datetime > current_hour
+  AND datetime >= CURRENT_HOUR
 ORDER BY datetime
 ```
 
@@ -441,7 +441,7 @@ Entity Group names are case-sensitive.
 SELECT datetime, entity, value, entity.groups
   FROM "mpstat.cpu_busy"
 WHERE 'java-loggers' IN entity.groups
-  AND datetime > current_hour
+  AND datetime >= CURRENT_HOUR
 ORDER BY datetime
 ```
 
@@ -459,7 +459,7 @@ In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (
 ```sql
 SELECT entity, datetime, date_format(PERIOD(5 MINUTE)), AVG(value)
   FROM "mpstat.cpu_busy"
-WHERE time >= current_hour AND time < next_hour
+WHERE time >= CURRENT_HOUR AND time < NEXT_HOUR
   GROUP BY entity, PERIOD(5 MINUTE)
 ```
 
@@ -480,7 +480,7 @@ The `AS` keyword is optional.
 ```sql
 SELECT tbl.value*100 AS "cpu_percent", tbl.datetime 'sample-date'
   FROM "mpstat.cpu_busy" tbl
-WHERE datetime > NOW - 1*MINUTE
+WHERE datetime >= NOW - 1*MINUTE
 ```
 
 For aliased columns, the underlying column and table names, or expression text, are included in table schema section of the metadata.
@@ -512,7 +512,7 @@ Arithmetic operators, including `+`, `-`, `*`, `/`, and `%` (modulo) can be appl
 ```sql
 SELECT datetime, SUM(value), SUM(value + 100) / 2
   FROM gc_invocations_per_minute
-WHERE datetime > NOW - 10 * MINUTE
+WHERE datetime >= NOW - 10*MINUTE
   GROUP BY period(2 MINUTE)
 ```
 
@@ -520,7 +520,7 @@ WHERE datetime > NOW - 10 * MINUTE
 SELECT AVG(metric1.value*2), SUM(metric1.value + metric2.value)
   FROM metric1
   JOIN metric2
-WHERE metric1.datetime > NOW - 10 * MINUTE
+WHERE metric1.datetime >= NOW - 10*MINUTE
 ```
 
 The modulo operator `%` returns the remainder of one number divided by another, for instance `14 % 3` (= 2).
@@ -535,7 +535,7 @@ The modulo operator `%` returns the remainder of one number divided by another, 
 SELECT datetime, entity, value, tags.mount_point, tags.file_system
   FROM "df.disk_used_percent"
 WHERE tags.file_system LIKE '/dev/*'
-  AND datetime > NOW - 1*HOUR
+  AND datetime >= NOW - 1*HOUR
 ```
 
 ### REGEX Expression
@@ -546,7 +546,7 @@ The `REGEX` expression matches column value against a [regex](https://docs.oracl
 SELECT datetime, entity, value, tags.mount_point, tags.file_system
   FROM "df.disk_used_percent"
   WHERE tags.file_system REGEX '.*map.*|.*mnt.*'
-  AND datetime > NOW - 1*HOUR
+  AND datetime >= NOW - 1*HOUR
 ```
 
 `REGEX` can be used to match a complex condition or to conveniently collapse multiple `LIKE` expressions.
@@ -580,7 +580,7 @@ Both columns support [End Time](/end-time-syntax.md) syntax.
 ```sql
 SELECT datetime, entity, value
   FROM "mpstat.cpu_busy"
-WHERE time >= previous_minute AND datetime < current_minute
+WHERE time >= PREVIOUS_MINUTE AND datetime < CURRENT_MINUTE
 ```
 
 > Not_equal operators `!=` and `<>` are **not** supported with time columns `time` and `datetime`.
@@ -622,7 +622,7 @@ PERIOD(5 MINUTE, LINEAR, EXTEND)
 ```sql
 SELECT entity, date_format(PERIOD(5 MINUTE, END_TIME)), AVG(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime >= current_hour AND datetime < next_hour
+WHERE datetime >= CURRENT_HOUR AND datetime < NEXT_HOUR
   GROUP BY entity, PERIOD(5 MINUTE, END_TIME)
 ```
 
@@ -631,7 +631,7 @@ The period specified in the `GROUP BY` clause can be entered without option fiel
 ```sql
 SELECT entity, PERIOD(5 MINUTE), AVG(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime >= current_hour AND datetime < next_hour
+WHERE datetime >= CURRENT_HOUR AND datetime < NEXT_HOUR
   GROUP BY entity, PERIOD(5 MINUTE, END_TIME)
 ```
 
@@ -640,7 +640,7 @@ In grouping queries, the `time` column returns the same value as `PERIOD()`, and
 ```sql
 SELECT entity, datetime, AVG(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime >= current_hour AND datetime < next_hour
+WHERE datetime >= CURRENT_HOUR AND datetime < NEXT_HOUR
   GROUP BY entity, PERIOD(5 MINUTE, END_TIME)
 ```
 
@@ -771,7 +771,7 @@ The behavior can be changed by referencing an interpolation function as part of 
 
 ```sql
 SELECT entity, period(5 MINUTE), AVG(value)
-  FROM "mpstat.cpu_busy" WHERE datetime > current_hour
+  FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_HOUR
 GROUP BY entity, period(5 MINUTE, LINEAR)
 ```
 
@@ -789,7 +789,7 @@ Otherwise, in absence of the `VALUE {n}` function, the `EXTEND` option sets peri
 
 ```sql
 SELECT entity, period(5 MINUTE), AVG(value)
-  FROM "mpstat.cpu_busy" WHERE datetime > current_hour
+  FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_HOUR
 GROUP BY entity, period(5 MINUTE, LINEAR, EXTEND)
 ```
 
@@ -899,7 +899,7 @@ The `GROUP BY` clause groups records into rows that have matching values for the
 SELECT entity, AVG(value) AS Cpu_Avg
   FROM "mpstat.cpu_busy"
 WHERE entity IN ('nurswgvml007', 'nurswgvml006', 'nurswgvml011')
-  AND datetime > current_hour
+  AND datetime >= CURRENT_HOUR
 GROUP BY entity
 ```
 
@@ -917,7 +917,7 @@ A special grouping column `PERIOD` calculates the start and end of the period to
 SELECT datetime, AVG(value) AS Cpu_Avg
   FROM "mpstat.cpu_busy"
 WHERE entity IN ('nurswgvml007', 'nurswgvml006', 'nurswgvml011')
-  AND datetime > current_hour
+  AND datetime >= CURRENT_HOUR
 GROUP BY period(5 MINUTE)
 ```
 
@@ -941,7 +941,7 @@ HAVING aggregation_function operator value
 SELECT entity, AVG(value) AS Cpu_Avg
   FROM "mpstat.cpu_busy"
 WHERE entity IN ('nurswgvml007', 'nurswgvml006', 'nurswgvml011')
-  AND datetime > current_hour
+  AND datetime >= CURRENT_HOUR
 GROUP BY entity
   HAVING AVG(value) > 10
 ```
@@ -1024,7 +1024,7 @@ ORDER BY entity, datetime
 ```sql
 SELECT entity, AVG(value)
   FROM mpstat.cpu_busy
-WHERE datetime >= current_hour
+WHERE datetime >= CURRENT_HOUR
   WITH ROW_NUMBER(entity ORDER BY time DESC) <= 10
 GROUP BY entity
 ```
@@ -1044,7 +1044,7 @@ The `ROW_NUMBER` function can be included after the `WHERE` clause, as well as a
 ```sql
 SELECT entity, tags, MAX(value) -  MIN(value) AS 'Diff'
   FROM df.disk_used
-WHERE datetime > current_day
+WHERE datetime >= CURRENT_DAY
   -- fetch last 100 records for each series
   WITH ROW_NUMBER(entity, tags ORDER BY time DESC) <= 100
 GROUP BY entity, tags
@@ -1068,17 +1068,17 @@ WITH last_time_expression comparision_operator time
 * `last_time_expression` consists of the `last_time` keyword and an optional `endtime` expression.
 
 ```sql
-WITH time > last_time - 1 * MINUTE
+WITH time >= last_time - 1*MINUTE
 ```
 
-Calculate the `average` for the most recent hour for each series that received data in the current_month:
+Calculate the `average` for the most recent hour for each series that received data in the current month:
 
 ```sql
 SELECT entity, AVG(cpu_busy.value), date_format(MAX(time)) AS Last_Date
   FROM mpstat.cpu_busy
-WHERE datetime > current_month
+WHERE datetime >= CURRENT_MONTH
   GROUP BY entity
-WITH time > last_time - 1 * HOUR
+WITH time >= last_time - 1*HOUR
 ```
 
 ## Ordering
@@ -1087,7 +1087,7 @@ The default sort order is undefined. Row ordering can be performed by adding the
 
 ```sql
 SELECT entity, AVG(value) FROM "mpstat.cpu_busy"
-  WHERE datetime > current_day
+  WHERE datetime >= CURRENT_DAY
 GROUP BY entity
   ORDER BY AVG(value) DESC, entity
 ```
@@ -1107,7 +1107,7 @@ Column numbers can be used instead of column names. The number should be a posit
 
 ```sql
 SELECT entity, AVG(value) FROM "mpstat.cpu_busy"
-  WHERE datetime > current_day
+  WHERE datetime >= CURRENT_DAY
 GROUP BY entity
   ORDER BY 2 DESC, 1
 ```
@@ -1116,7 +1116,7 @@ In combination with `LIMIT`, ordering can be used to execute **Top-N** queries.
 
 ```sql
 SELECT entity, AVG(value) FROM "mpstat.cpu_busy"
-  WHERE datetime > current_day
+  WHERE datetime >= CURRENT_DAY
   GROUP BY entity
 ORDER BY AVG(value) DESC
   LIMIT 2
@@ -1270,7 +1270,7 @@ This allows merging of virtual tables with different tag columns, including merg
 SELECT t1.entity, t1.datetime, AVG(t1.value), AVG(t2.value), t1.tags.*, t2.tags.*
   FROM mpstat.cpu_busy t1
   JOIN USING entity df.disk_used t2
-WHERE t1.datetime > current_hour
+WHERE t1.datetime >= CURRENT_HOUR
   AND t1.entity = 'nurswgvml007'
 GROUP BY t1.entity, t1.tags, t2.tags, t1.PERIOD(1 MINUTE)
 ```
@@ -1410,7 +1410,7 @@ SELECT entity, datetime, metric.timeZone AS 'Metric TZ', entity.timeZone AS 'Ent
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', 'PDT') AS ' PDT t/z',
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', AUTO) AS 'AUTO: CST' -- nurswgvml006 is in CST
 FROM mpstat.cpu_busy
-  WHERE datetime > NOW - 5 * MINUTE
+  WHERE datetime >= NOW - 5*MINUTE
   AND entity = 'nurswgvml006'
   LIMIT 1
 ```
@@ -1441,7 +1441,7 @@ The `date_format` function can also be used to print out period start and end ti
 SELECT datetime AS period_start, date_format(time+60*60000) AS period_end, AVG(value)
   FROM mpstat.cpu_busy
 WHERE entity = 'nurswgvml007'
-  AND datetime >= current_day
+  AND datetime >= CURRENT_DAY
 GROUP BY PERIOD(1 HOUR)
 ```
 
@@ -1458,7 +1458,7 @@ In addition to formatting, the `date_format` function can be used in the `WHERE`
 ```sql
 SELECT date_format(time, 'EEE'), AVG(value)
 FROM mpstat.cpu_busy
-  WHERE datetime >= current_month
+  WHERE datetime >= CURRENT_MONTH
 GROUP BY date_format(time, 'EEE')
   ORDER BY 2 DESC
 ```
@@ -1496,7 +1496,7 @@ Refer to [diurnal](examples/diurnal.md) query examples.
 SELECT value, ABS(value), CEIL(value), FLOOR(value), ROUND(value), MOD(value, 3),
   POWER(value, 2), EXP(value), LN(value), LOG(10, value), SQRT(value)
   FROM mpstat.cpu_busy
-WHERE datetime >= NOW - 1 * MINUTE
+WHERE datetime >= NOW - 1*MINUTE
   AND entity = 'nurswgvml007'
 ```
 
@@ -1523,7 +1523,7 @@ WHERE datetime >= NOW - 1 * MINUTE
 SELECT datetime, UPPER(REPLACE(entity, 'nurswg', '')) AS 'entity', value,
   SUBSTR(tags.file_system, LOCATE('vg', tags.file_system)) AS fs
 FROM disk_used
-  WHERE datetime > NOW - 1*MINUTE
+  WHERE datetime >= NOW - 1*MINUTE
 AND LOWER(tags.file_system) LIKE '*root'
   ORDER BY datetime
 ```
@@ -1576,7 +1576,7 @@ SELECT entity, tags.*, value,
     ELSE 'local'
   END AS 'FS_Type'
   FROM df.disk_used
-WHERE datetime > current_hour
+WHERE datetime >= CURRENT_HOUR
   WITH ROW_NUMBER(entity, tags ORDER BY time DESC) <= 1
 ```
 
@@ -1598,7 +1598,7 @@ SELECT entity, AVG(value),
       ELSE 'right-sized'
     END AS 'Utilization'
   FROM cpu_busy
-WHERE datetime > current_hour
+WHERE datetime >= CURRENT_HOUR
   GROUP BY entity
 ```
 
@@ -1620,17 +1620,20 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 
 ### CAST
 
-The `CAST` function transforms a string into a number. This number can then be used in arithmetic expressions.
+The `CAST` function transforms a string into a number, or a number into a string. 
 
 ```sql
-CAST(inputString AS Number)
+CAST(inputString AS number)
+CAST(inputNumber AS string)
 ```
+
+The returned number can be used in arithmetic expressions, whereas the returned string can be passed as an argument into string functions.
 
 ```sql
 SELECT datetime, value, entity, tags,
-  value/CAST(LOOKUP('disk-size', concat(entity, ',', tags.file_system, ',', tags.mount_point)) AS Number) AS 'pct_used'
+  value/CAST(LOOKUP('disk-size', CONCAT(entity, ',', tags.file_system, ',', tags.mount_point)) AS number) AS 'pct_used'
 FROM disk.stats.used
-  WHERE datetime > current_hour
+  WHERE datetime >= CURRENT_HOUR
 ```
 
 ### LOOKUP
@@ -1650,7 +1653,7 @@ The primary purpose of a replacement table is to act as a dictionary for decodin
 ```sql
 SELECT datetime, entity, ISNULL(LOOKUP('tcp-status-codes', value), value)
   FROM 'docker.tcp-connect-status'
-WHERE datetime > NOW - 5 * MINUTE
+WHERE datetime >= NOW - 5*MINUTE
   AND LOOKUP('tcp-status-codes', value) NOT LIKE '*success*'
 ```
 
@@ -1668,7 +1671,7 @@ For `DIGSTRING(int code)`
 ```sql
 SELECT datetime, entity, value, LOOKUP('pi-system', value)
   FROM atsd_series
-WHERE metric = 'digtag-test' AND datetime > previous_hour
+WHERE metric = 'digtag-test' AND datetime >= PREVIOUS_HOUR
 ```
 
 * Fact Table
@@ -1721,7 +1724,7 @@ Tag column values are **case-sensitive**.
 ```sql
 SELECT metric, entity, datetime, value, tags.*
   FROM df.disk_used
-WHERE datetime > NOW - 5 * MINUTE
+WHERE datetime >= NOW - 5*MINUTE
   AND entity = 'NurSwgvml007' -- case-INsensitive
   AND tags.file_system = '/dev/mapper/vg_nurswgvml007-lv_root' -- case-sensitive
 ```
@@ -1817,7 +1820,7 @@ Example:
 ```sql
 SELECT entity, datetime, AVG(value), tags
   FROM df.disk_used
-WHERE datetime > current_day
+WHERE datetime >= CURRENT_DAY
   GROUP BY entity, tags, PERIOD(2 HOUR)
 ORDER BY entity, tags.file_system, datetime
   OPTION (ROW_MEMORY_THRESHOLD 10000)
@@ -1929,11 +1932,11 @@ Each query is assigned a unique identifier for correlating starting and closing 
 ```
 2016-08-15 18:44:01,183;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Starting sql query execution. [uid=218], user: user003, source: scheduled, sql: SELECT entity, AVG(value) AS 'Average', median(value), MAX(value), count(*),
    percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM mpstat.cpu_busy
-  WHERE time BETWEEN previous_day and current_day GROUP BY entity ORDER BY AVG(value) DESC
+  WHERE time BETWEEN PREVIOUS_DAY and CURRENT_DAY GROUP BY entity ORDER BY AVG(value) DESC
 
 2016-08-15 18:44:02,369;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Sql query execution took 1.19 s, rows returned 7. [uid=218], user: user003, sql: SELECT entity, AVG(value) AS 'Average', median(value), MAX(value), count(*),
    percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM mpstat.cpu_busy
-  WHERE time BETWEEN previous_day and current_day GROUP BY entity ORDER BY AVG(value) DESC
+  WHERE time BETWEEN PREVIOUS_DAY and CURRENT_DAY GROUP BY entity ORDER BY AVG(value) DESC
 ```
 
 ### Query Control Messages
@@ -1989,7 +1992,7 @@ Descending order:
 ```sql
 SELECT * FROM mpstat.cpu_busy ORDER BY time DESC LIMIT 1
 SELECT * FROM mpstat.cpu_busy ORDER BY datetime DESC LIMIT 1
-SELECT * FROM mpstat.cpu_busy WHERE datetime > current_day ORDER BY time DESC LIMIT 1
+SELECT * FROM mpstat.cpu_busy WHERE datetime >= CURRENT_DAY ORDER BY time DESC LIMIT 1
 SELECT * FROM mpstat.cpu_busy WHERE entity = 'nurswgvml007' ORDER BY datetime DESC LIMIT 1
 ```
 

@@ -31,6 +31,24 @@ precedence over expression.
 `window_length_time()` | Length of the time-based window in seconds, as configured.
 `window_length_count()` | Length of the count-based window, as configured.
 `windowStartTime()` | Time when the first command was received by the window, in UNIX milliseconds.
+`milliseconds(string isodate)` | Converts ISO8601 date string into epoch time in milliseconds.
+`seconds(string isodate)` | Converts ISO8601 date string into epoch time in seconds.
+`date(string isodate)` | Converts ISO8601 date string into [Joda-time](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. The object can return [numeric codes](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTimeConstants.html) or string names for calendar constants.
+
+```java
+/*
+  Return true if difference between event time and start time (ISO) retrieved 
+  from property record is greater than 5 minutes
+*/
+  timestamp - milliseconds(property('docker.container::startedAt')) >  5*60000
+
+/*
+  Return true if the specified date is a working day
+*/
+  property('config::deleted')).dayOfWeek().get() < 6
+```
+
+
 
 ### Aggregation Functions
 
@@ -51,16 +69,16 @@ precedence over expression.
 `slope()` | Linear regression slope.
 `intercept()` | Linear regression intercept.
 `first()` | First value. Same as `first(0)`.
-`first(N)` | Nth value from start. First value has index of 0.
+`first(integer N)` | Nth value from start. First value has index of 0.
 `last()` | Last value. Same as `last(0)`.
-`last(N)` | Nth value from end. Last value has index of 0.
+`last(integer N)` | Nth value from end. Last value has index of 0.
 `diff()` | Difference between `last` and `first` values. Same as `last() - first()`.
 `diff(N)` | Difference between `last(N)` and `first(N)` values. Same as` last(N)-first(N)`.
-`diff(interval)` | Difference between `last value` and `value` at `currentTime - interval`. <br>Interval specified as '`count unit`', i.e. '`5 minute`'.
+`diff(string interval)` | Difference between `last value` and `value` at `currentTime - interval`. <br>Interval specified as '`count unit`', i.e. '`5 minute`'.
 `new_maximum()` | Returns true if last value is greater than any previous value.
 `new_minimum()` | Returns true if last value is smaller than any previous value.
-`threshold_time(D)` | Number of minutes until the sample value reaches specified threshold D<br> based on extrapolation of difference between last and first value.
-`threshold_linear_time(D)` | Number of minutes until the sample value reaches specified threshold D<br> based on linear extrapolation.
+`threshold_time(double D)` | Number of minutes until the sample value reaches specified threshold D<br> based on extrapolation of difference between last and first value.
+`threshold_linear_time(double D)` | Number of minutes until the sample value reaches specified threshold D<br> based on linear extrapolation.
 `rate_per_second()` | Difference between last and first value per second. <br>Same as `diff()/(last.time-first.time)`. Time measured in epoch seconds.
 `rate_per_minute()` | Difference between last and first value per minute. Same as `rate_per_second()/60`.
 `rate_per_hour()` | Difference between last and first value per hour. Same as `rate_per_second()/3600`.
@@ -74,7 +92,7 @@ precedence over expression.
 :--- | :---
 `forecast()` | Forecast value for the entity, metric, and tags in the current window.
 `forecast_stdev()` | Forecast standard deviation.
-`forecast(name)` | Named forecast value for the entity, metric, and tags in the current window.
+`forecast(string name)` | Named forecast value for the entity, metric, and tags in the current window.
 `forecast_deviation()` | `(D-forecast())/forecast_stdev()`.
 
 ### Math functions
@@ -96,8 +114,8 @@ precedence over expression.
 
 **Function** | **Description**
 :--- | :---
-`upper(t)` | Convert string 't' to upper case.
-`lower(t)` | Convert string 't' to lower case.
+`upper(string t)` | Convert string 't' to upper case.
+`lower(string t)` | Convert string 't' to lower case.
 
 ## Numeric Operators
 
@@ -116,8 +134,8 @@ precedence over expression.
 :--- | :---
 `=` | Equal.
 `!=` | Not equal.
-`t.contains(str)` | Check if text 't' contains text 'str'.
-`t.startsWidth(str)` | Check if text 't' starts with text 'str'.
-`t.endsWidth(str)` | Check if text 't' ends with text 'str'.
+`t.contains(string t)` | Check if text 't' contains text 'str'.
+`t.startsWidth(string t)` | Check if text 't' starts with text 'str'.
+`t.endsWidth(string t)` | Check if text 't' ends with text 'str'.
 
 > Note: `=` and `!=` operators are case-insensitive.

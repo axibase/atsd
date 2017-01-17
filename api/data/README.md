@@ -4,27 +4,27 @@ The Data API lets you insert and retrieve series, properties, messages, and aler
 
 ## Categories
 
-* Series
+* [Series](series#data-api-series-methods)
   - [insert](series/insert.md)
-  - [csv insert](series/csv-insert.md)
   - [query](series/query.md)
+  - [csv insert](series/csv-insert.md) 
   - [url query](series/url-query.md)
-* Properties
+* [Properties](properties#data-api-properties-methods)
   - [insert](properties/insert.md)
   - [query](properties/query.md)
   - [url query](properties/url-query.md)
   - [type query](properties/type-query.md)
   - [delete](properties/delete.md)
-* Messages
+* [Messages](messages#data-api-messages-methods)
   - [insert](messages/insert.md)
   - [query](messages/query.md)
   - [statistics](messages/stats-query.md)
-* Alerts
+* [Alerts](alerts#data-api-alerts-methods)
   - [query](alerts/query.md)
   - [update](alerts/update.md)
   - [delete](alerts/delete.md)
   - [history query](alerts/history-query.md)
-* Extended
+* [Extended](ext#data-api-extended-methods)
   - [command insert](ext/command.md)
   - [csv upload](ext/csv-upload.md)
   - [nmon upload](ext/nmon-upload.md)
