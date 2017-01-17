@@ -12,7 +12,7 @@ Weekly Change Log: January 09 - January 15, 2017
 | [3767](#issue-3767) | sql             | Feature | Updated the [`CAST`](/api/sql#cast) function to convert numeric arguments to strings. |
 | [3764](#issue-3764) | sql             | Bug     | Fixed NullPointException error when data was queried for a newly created metric without any data. |
 | [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](/api/sql#validation-query) validation query implementation to return exactly one row containing columns included in the `SELECT` expression. |
-| [3480](#issue-3480) | api-rest        | Feature | Added support for [`text`](/api/data/series/query.md#value-object) field in [series query](/api/data/series/query.md) method. |
+| [3480](#issue-3480) | api-rest        | Feature | Added support for the [`text`](/api/data/series/query.md#value-object) field in the [series query](/api/data/series/query.md) method. |
 
 ### Collector
 
@@ -21,7 +21,7 @@ Weekly Change Log: January 09 - January 15, 2017
 | [3755](#issue-3755) | docker          | Feature | Added new [size metrics](https://github.com/axibase/axibase-collector-docs/blob/master/jobs/docker/volume-size.md) for Docker containers: `docker.fs.size.rw` and `docker.fs.size.rootfs`. | 
 | 3752 | docker          | Bug     | Fixed issues with mis-matching volume labels by removing old records from the embedded database. | 
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly sent into ATSD. | 
-| 3733 | docker          | Bug     | Eliminated database table locks, which resulted in the collection all statistics being stopped. |
+| 3733 | docker          | Bug     | Eliminated database table locks, which resulted in the collection of all statistics being stopped. |
 
 ### Charts
 
@@ -35,7 +35,7 @@ Weekly Change Log: January 09 - January 15, 2017
 ### Issue 3769
 --------------
 
-Fixed the `LOOKUP` function so that now it can accept series, metric, and entity tags as parameters. 
+Fixed the [`LOOKUP`](/api/sql#lookup) function so that now it can accept series, metric, and entity tags as parameters. 
 
 ```sql
 SELECT datetime, value, metric, metric.tags.digital_set 
@@ -55,7 +55,7 @@ FROM 'ba:active.1'
 ### Issue 3768
 --------------
 
-Revised the `CONCAT` function to accept numeric arguments without `CAST`-ing. Multiple strings are able to be joined into a single string. This function accepts numeric values, 
+Revised the [`CONCAT`](/api/sql#string-functions) function to accept numeric arguments without [`CAST`](/api/sql#cast)-ing. Multiple strings are able to be joined into a single string. This function accepts numeric values, 
 which are converted to strings using a `#.##` pattern. 
 
 ```sql
@@ -68,7 +68,7 @@ FROM 'ba:active.1'
 ### Issue 3767
 --------------
 
-The `CAST` function transforms a string into a number, or a number into a string. `CAST`-ing numbers to strings is required so that you can pass numeric values as arguments into string 
+The [`CAST`](/api/sql#cast) function transforms a string into a number, or a number into a string. `CAST`-ing numbers to strings is required so that you can pass numeric values as arguments into string 
 functions for series that collect discrete codes. Applying `CAST` to string returns a string for a numeric value formatted with a `#.##` pattern.
 
 ```sql
@@ -81,12 +81,12 @@ FROM 'ba:active.1'
 ### Issue 3763
 --------------
 
-Previously, the `SELECT 1` query didn't return any rows. 
+Previously, the [`SELECT 1`](/api/sql#validation-query) query didn't return any rows. 
 
 | 1 |
 |---|
 
-The `SELECT 1` query has been updated to return one rows containing columns included in the `SELECT` expression.
+The `SELECT 1` query has been updated to return the header and one row and all the corresponding columns included in the `SELECT` expression.
 
 | 1 |
 |---|
@@ -124,7 +124,7 @@ https://apps.axibase.com/chartlab/e452655a
 ### Issue 3078
 --------------
 
-Added new query settings `exact-match` and `interpolate-extend`. `exact-match` selects series with exactly the same `tags` as requested, with the default set to `false`. `interpolate-extend` 
+Added new query settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/). `exact-match` selects series with exactly the same `tags` as requested, with the default set to `false`. `interpolate-extend` 
 adds missing periods at the beginning and the end of a selection interval, with the default also being `false`.
 
 https://apps.axibase.com/chartlab/dada4561
@@ -132,7 +132,7 @@ https://apps.axibase.com/chartlab/dada4561
 ### Issue 2928
 --------------
 
-To cut back on overloading, the `interpolate` setting was renamed to `fill-value`, which is an interpolation mode applied to computed series in case the values are irregularly spaced. 
+To prevent collision, the `interpolate` setting was renamed to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/), which is an interpolation mode applied to computed series in case the values are irregularly spaced. 
 If set to true, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the 
 previous and preceding values.
 
@@ -141,7 +141,7 @@ https://apps.axibase.com/chartlab/e377b59a/3/
 ### Issue 3755
 --------------
 
-The following aggregate metrics for Docker container sizes were added:
+The following aggregate [metrics](https://github.com/axibase/axibase-collector-docs/blob/master/jobs/docker/volume-size.md) for Docker container sizes were added:
 
 * `docker.fs.total.size.rw`: the total size of all the files for all containers, in bytes. 
 * `docker.fs.total.size.rootfs` - the size of the files which have been created or changed for all containers. 
