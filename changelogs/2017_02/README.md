@@ -27,7 +27,7 @@ Weekly Change Log: January 09 - January 15, 2017
 
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3755](#issue-3755) | docker          | Feature | Added new condition to request container properties with or without specifying size metrics. | 
+| [3755](#issue-3755) | docker          | Feature | Implemented the removal of old properties for Docker entities when new request for container properties are made. Added initialization capability of entity tags without Docker events. | 
 | 3752 | docker          | Bug     | Implemented the removal of old, stored properties (from a local database) for Docker entities when their properties are being requested. Added the initialization of entity tags (container, status) without Docker events. | 
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly updated. | 
 | 3733 | docker          | Bug     | Eliminated Docker lock, which resulted in the collection all statistics being stopped. |
@@ -135,6 +135,19 @@ https://apps.axibase.com/chartlab/e377b59a/3/
 
 ### Issue 3755
 --------------
+
+The following aggregate metrics for Docker container sizes were added:
+
+* `docker.fs.total.size.rw`: the total size of all the files for all containers, in bytes. 
+* `docker.fs.total.size.rootfs` - the size of the files which have been created or changed for all containers. 
+* `docker.fs.running.size.rw` - the total size of all the files for all running containers, in bytes. 
+* `docker.fs.running.size.rootfs` - the size of the files which have been created or changed for running containers. 
+
+The following metrics are collected at the docker-host level.
+
+https://apps.axibase.com/chartlab/81932cd6
+
+The metrics are collected at 'Container Size Interval' for running containers and at 'Property Refresh Interval' for all containers.
 
 ![Figure 1](Images/Figure1.png)
 
