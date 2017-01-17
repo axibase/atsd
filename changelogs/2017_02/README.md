@@ -7,8 +7,8 @@ Weekly Change Log: January 09 - January 15, 2017
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence. If several metrics with different datatypes are queried, no data will be lost by api clients because of a lack of precision. |
 | 3770 | api-rest        | Bug     | Removed exact match flags in series queries, which was resulting in empty result sets. |
-| [3769](#issue-3769) | sql             | Bug     | Updated `LOOKUP` function to accept series, entity, and metric tags as parameters. |
-| [3768](#issue-3768) | sql             | Feature | Revised the `CONCAT` function to accept numeric arguments without using `CAST`-ing. |
+| [3769](#issue-3769) | sql             | Bug     | Updated the `LOOKUP` function to accept series, entity, and metric tags as parameters. |
+| [3768](#issue-3768) | sql             | Feature | Revised the `CONCAT` function to accept numeric arguments without `CAST`-ing. |
 | [3767](#issue-3767) | sql             | Feature | Updated the `CAST` function to convert numeric arguments to strings. |
 | [3764](#issue-3764) | sql             | Bug     | For created metrics without any data, updated the query response from NPE to return an empty result set. |
 | [3763](#issue-3763) | sql             | Bug     | Updated the `SELECT 1` query to return exactly one column containing rows included in the `SELECT` expression. |
@@ -18,7 +18,7 @@ Weekly Change Log: January 09 - January 15, 2017
 
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3481](#issue-3481) | widget-settings | Feature | Updated `getTags()` or `getSeries()` requests for metadata for metrics and entities. Now tags or series can be provided in JSON format. | 
+| [3481](#issue-3481) | widget-settings | Feature | Updated `getTags` and `getSeries` requests for metadata for metrics and entities. Now tags or series can be provided in JSON format. | 
 | [3078](#issue-3078) | widget-settings | Feature | Add new series query settings `exact-match` and `interpolate-extend`. |
 | [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to `fill-value`. |
 
@@ -27,7 +27,7 @@ Weekly Change Log: January 09 - January 15, 2017
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3755](#issue-3755) | docker          | Feature | Added new metrics for the Docker container: `docker.fs.size.rw` and `docker.fs.size.rootfs`. | 
-| 3752 | docker          | Bug     | Implemented the removal of old, stored properties (from a local database) for Docker entities when their properties are being requested. Added the initialization of entity tags (container, status) when properties are being requested. | 
+| 3752 | docker          | Bug     | Implemented the removal of old, stored properties (from a local database) for Docker entities when their most recent properties are being requested. Added the initialization of entity tags (container, status) when properties are being requested. | 
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly updated. | 
 | 3733 | docker          | Bug     | Eliminated Docker lock, which resulted in the collection all statistics being stopped. |
 
@@ -55,7 +55,7 @@ FROM 'ba:active.1'
 ### Issue 3768
 --------------
 
-Revised the `CONCAT` function to accept numeric arguments with using `CAST`-ing. Multiple strings are able to be joined into a single string. This function also accepts numeric values, 
+Revised the `CONCAT` function to accept numeric arguments without `CAST`-ing. Multiple strings are able to be joined into a single string. This function accepts numeric values, 
 which are converted to strings using a `#.##` pattern. 
 
 ```sql
@@ -68,7 +68,7 @@ FROM 'ba:active.1'
 ### Issue 3767
 --------------
 
-The `CAST` function transforms a string into a number, or a number into a string. `CAST`-ing numbers to string is required so that we can pass numeric values as arguments into string 
+The `CAST` function transforms a string into a number, or a number into a string. `CAST`-ing numbers to strings is required so that you can pass numeric values as arguments into string 
 functions for series that collect discrete codes. Applying `CAST` to string returns a string for a numeric value formatted with a `#.##` pattern.
 
 ```sql
@@ -124,8 +124,8 @@ https://apps.axibase.com/chartlab/e452655a
 ### Issue 3078
 --------------
 
-Added new query settings `exact-match` and `interpolate-extend`. `exact-match` selects series with exactly the same `tags` as requested, with the default as `false`. `interpolate-extend` 
-adds missing periods at the beginning and the end of a selection interval, with the default being set to `false`.
+Added new query settings `exact-match` and `interpolate-extend`. `exact-match` selects series with exactly the same `tags` as requested, with the default set to `false`. `interpolate-extend` 
+adds missing periods at the beginning and the end of a selection interval, with the default also being `false`.
 
 https://apps.axibase.com/chartlab/dada4561
 
