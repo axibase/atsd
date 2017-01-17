@@ -8,7 +8,7 @@ Weekly Change Log: January 09 - January 15, 2017
 | [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence. If several metrics with different datatypes are queried, no data will be lost because of a lack of precision. |
 | 3770 | api-rest        | Bug     | Removed exact match flags in series queries, which was resulting in empty result sets. |
 | [3769](#issue-3769) | sql             | Bug     | Updated `LOOKUP` function to include supported tags. |
-| [3768](#issue-3768) | sql             | Feature | Revised the `CONCAT` function to accept numeric arguments with using the `CAST` function. |
+| [3768](#issue-3768) | sql             | Feature | Revised the `CONCAT` function to accept numeric arguments without using `CAST`-ing. |
 | [3767](#issue-3767) | sql             | Feature | Updated the `CAST` function to accept string arguments. |
 | [3764](#issue-3764) | sql             | Bug     | For created metrics without any data, updated the query response from NPE to return an empty result set. |
 | [3763](#issue-3763) | sql             | Bug     | Updated the `SELECT 1` query to return exactly one column containing rows included in the `SELECT` expression. |
@@ -82,12 +82,12 @@ FROM 'ba:active.1'
 ### Issue 3763
 --------------
 
-Previously, the `SELECT 1` query only returned one row in a column, as shown below. 
+Previously, the `SELECT 1` query only returned one row in a column. 
 
 | 1 |
 |---|
 
-The `SELECT 1` query has been updated to return multiple rows in a single column included in the `SELECT` expression, as shown below.
+The `SELECT 1` query has been updated to return multiple rows in a single column included in the `SELECT` expression.
 
 | 1 |
 |---|
