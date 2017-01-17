@@ -5,15 +5,14 @@ Weekly Change Log: January 09 - January 15, 2017
 
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence. If several metrics with different datatypes are queried, no data will be lost because of a lack of precision. |
+| [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence. If several metrics with different datatypes are queried, no data will be lost by api clients because of a lack of precision. |
 | 3770 | api-rest        | Bug     | Removed exact match flags in series queries, which was resulting in empty result sets. |
-| [3769](#issue-3769) | sql             | Bug     | Updated `LOOKUP` function to include supported tags. |
+| [3769](#issue-3769) | sql             | Bug     | Updated `LOOKUP` function to accept series, entity, and metric tags as parameters. |
 | [3768](#issue-3768) | sql             | Feature | Revised the `CONCAT` function to accept numeric arguments without using `CAST`-ing. |
-| [3767](#issue-3767) | sql             | Feature | Updated the `CAST` function to accept string arguments. |
+| [3767](#issue-3767) | sql             | Feature | Updated the `CAST` function to convert numeric arguments to strings. |
 | [3764](#issue-3764) | sql             | Bug     | For created metrics without any data, updated the query response from NPE to return an empty result set. |
 | [3763](#issue-3763) | sql             | Bug     | Updated the `SELECT 1` query to return exactly one column containing rows included in the `SELECT` expression. |
-| [3480](#issue-3480) | api-rest        | Feature | Added series data text for the `text` field. |
-| 2814 | UI              | Bug     | Allowed for displaying the 'Name' field for unsaved item in the last breadcrumbs section. |
+| [3480](#issue-3480) | api-rest        | Feature | Added support for text fields for series in HTTP API. |
 
 ### Charts
 
@@ -27,8 +26,8 @@ Weekly Change Log: January 09 - January 15, 2017
 
 | Issue         | Category        | Tracker | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3755](#issue-3755) | docker          | Feature | Implemented the removal of old properties for Docker entities when new request for container properties are made. Added initialization capability of entity tags without Docker events. | 
-| 3752 | docker          | Bug     | Implemented the removal of old, stored properties (from a local database) for Docker entities when their properties are being requested. Added the initialization of entity tags (container, status) without Docker events. | 
+| [3755](#issue-3755) | docker          | Feature | Added new metrics for the Docker container: `docker.fs.size.rw` and `docker.fs.size.rootfs`. | 
+| 3752 | docker          | Bug     | Implemented the removal of old, stored properties (from a local database) for Docker entities when their properties are being requested. Added the initialization of entity tags (container, status) when properties are being requested. | 
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly updated. | 
 | 3733 | docker          | Bug     | Eliminated Docker lock, which resulted in the collection all statistics being stopped. |
 
@@ -36,7 +35,7 @@ Weekly Change Log: January 09 - January 15, 2017
 ### Issue 3769
 --------------
 
-Fixed the `LOOKUP` function so that now it can accept series, metric, and entity tags. 
+Fixed the `LOOKUP` function so that now it can accept series, metric, and entity tags as parameters. 
 
 ```sql
 SELECT datetime, value, metric, metric.tags.digital_set 
@@ -93,7 +92,6 @@ The `SELECT 1` query has been updated to return multiple rows in a single column
 |---|
 | 1 |
 
-
 ### Issue 3480
 --------------
 
@@ -101,13 +99,17 @@ Support was added for the text field (named `x`) in HTTP API for series queries 
 processing and saving `x` as text for a series sample. The empty string `""` is also supported and will be stored as `""`. 
 
 ```ls
-{"d":"2016-06-01T12:08:42Z", "v": null, "x": "Shutdown"}
+{"d":"2016-06-01T12:08:42Z", "x": "Shutdown"}
 ``` 
  
 ### Issue 3481
 --------------
 
-`getTags()` or `getSeries()` request metadata for `metric` and `entity`, so in `var` you would have tags or series in JSON format.
+`getTags()` and `getSeries()` functions now make simultaneous request to `/api/v1/metrics/{metric}/series`, which is described in further detail in
+ https://github.com/axibase/atsd-docs/blob/master/api/meta/metric/series.md
+ 
+`getSeries()` returns a list of series from a given response (in JSON). `getTags()` processes a list of series from a given response and returns a list of unique values for the 
+specified `tag`.
 
 ```ls
 getTags( metric, tagName [, entity, [ , minInsertDate [ , maxInsertDate [ , url ] ] ] ] )
@@ -117,19 +119,22 @@ getTags( metric, tagName [, entity, [ , minInsertDate [ , maxInsertDate [ , url 
 getSeries( metric, [, entity, [ , minInsertDate [ , maxInsertDate [ , url ] ] ] ] )
 ```
 
+https://apps.axibase.com/chartlab/e452655a
+
 ### Issue 3078
 --------------
 
-Added new query settings `exact-match` and `interpolate-extend`. `exact-match` selects series with exactly the same `tags` as requested. `interpolate-extend` adds missing periods at 
-the beginning and the end of a selection interval, with the Default being set to `false`.
+Added new query settings `exact-match` and `interpolate-extend`. `exact-match` selects series with exactly the same `tags` as requested, with the default as `false`. `interpolate-extend` 
+adds missing periods at the beginning and the end of a selection interval, with the default being set to `false`.
 
 https://apps.axibase.com/chartlab/dada4561
 
 ### Issue 2928
 --------------
 
-To cut back on overloading, the `interpolate` setting was renamed to `fill-value`, which specifies a number for filling in missing values in a merged time:value array and contains all 
-unique timestamps from the underlying series. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from previous and next values.
+To cut back on overloading, the `interpolate` setting was renamed to `fill-value`, which is an interpolation mode applied to computed series in case the values are irregularly spaced. 
+If set to true, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the 
+previous and preceding values.
 
 https://apps.axibase.com/chartlab/e377b59a/3/
 
