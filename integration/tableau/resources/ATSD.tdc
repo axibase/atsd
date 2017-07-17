@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+	<connection-customization class='genericodbc' enabled='true' version='10.3'>
+            <vendor name='Axibase' />
+            <driver name='Easysoft ODBC-JDBC Gateway' />
+            <customizations>
+              <customization name='CAP_CREATE_TEMP_TABLES' value='yes' />
+              <customization name='CAP_ISOLATION_LEVEL_READ_COMMITTED' value='no' />
+              <customization name='CAP_ISOLATION_LEVEL_READ_UNCOMMITTED' value='no' />
+              <customization name='CAP_ISOLATION_LEVEL_REPEATABLE_READS' value='no' />
+              <customization name='CAP_ISOLATION_LEVEL_SERIALIZABLE' value='no' />
+              <customization name='CAP_ODBC_BIND_DETECT_ALIAS_CASE_FOLDING' value='no' />
+              <customization name='CAP_ODBC_BIND_FORCE_DATETIME_AS_CHAR' value='yes' />
+              <customization name='CAP_ODBC_BIND_FORCE_DATE_AS_CHAR' value='yes' />
+              <customization name='CAP_ODBC_BIND_FORCE_MAX_STRING_BUFFERS' value='no' />
+              <customization name='CAP_ODBC_BIND_FORCE_MEDIUM_STRING_BUFFERS' value='no' />
+              <customization name='CAP_ODBC_BIND_FORCE_SIGNED' value='no' />
+              <customization name='CAP_ODBC_BIND_FORCE_SMALL_STRING_BUFFERS' value='no' />
+              <customization name='CAP_ODBC_BIND_SUPPRESS_INT64' value='no' />
+              <customization name='CAP_ODBC_BIND_SUPPRESS_PREFERRED_TYPES' value='no' />
+              <customization name='CAP_ODBC_BIND_SUPPRESS_WIDE_CHAR' value='no' />
+              <customization name='CAP_ODBC_CURSOR_DYNAMIC' value='no' />
+              <customization name='CAP_ODBC_CURSOR_FORWARD_ONLY' value='no' />
+              <customization name='CAP_ODBC_CURSOR_KEYSET_DRIVEN' value='no' />
+              <customization name='CAP_ODBC_CURSOR_STATIC' value='no' />
+              <customization name='CAP_ODBC_ERROR_IGNORE_FALSE_ALARM' value='yes' />
+              <customization name='CAP_ODBC_FETCH_BUFFERS_RESIZABLE' value='no' />
+              <customization name='CAP_ODBC_FETCH_BUFFERS_SIZE_MASSIVE' value='no' />
+              <customization name='CAP_ODBC_FETCH_CONTINUE_ON_ERROR' value='no' />
+              <customization name='CAP_ODBC_METADATA_STRING_LENGTH_UNKNOWN' value='no' />
+              <customization name='CAP_ODBC_METADATA_SUPPRESS_EXECUTED_QUERY' value='no' />
+              <customization name='CAP_ODBC_METADATA_SUPPRESS_PREPARED_QUERY' value='no' />
+              <customization name='CAP_ODBC_METADATA_SUPPRESS_SELECT_STAR' value='no' />
+              <customization name='CAP_ODBC_METADATA_SUPPRESS_SQLCOLUMNS_API' value='yes' />
+              <customization name='CAP_ODBC_METADATA_SUPPRESS_SQLFOREIGNKEYS_API' value='no' />
+              <customization name='CAP_ODBC_METADATA_SUPPRESS_SQLPRIMARYKEYS_API' value='no' />
+              <customization name='CAP_ODBC_METADATA_SUPPRESS_SQLSTATISTICS_API' value='no' />
+              <customization name='CAP_ODBC_REBIND_SKIP_UNBIND' value='no' />
+              <customization name='CAP_ODBC_TRIM_VARCHAR_PADDING' value='no' />
+              <customization name='CAP_ODBC_UNBIND_AUTO' value='no' />
+              <customization name='CAP_ODBC_UNBIND_BATCH' value='no' />
+              <customization name='CAP_ODBC_UNBIND_EACH' value='no' />
+              <customization name='CAP_QUERY_BOOLEXPR_TO_INTEXPR' value='yes' />
+              <customization name='CAP_QUERY_FROM_REQUIRES_ALIAS' value='no' />
+              <customization name='CAP_QUERY_GROUP_BY_ALIAS' value='no' />
+              <customization name='CAP_QUERY_GROUP_BY_DEGREE' value='no' />
+              <customization name='CAP_QUERY_HAVING_REQUIRES_GROUP_BY' value='yes' />
+              <customization name='CAP_QUERY_HAVING_UNSUPPORTED' value='no' />
+              <customization name='CAP_QUERY_JOIN_ACROSS_SCHEMAS' value='no' />
+              <customization name='CAP_QUERY_JOIN_ASSUME_CONSTRAINED' value='yes' />
+              <customization name='CAP_QUERY_JOIN_REQUIRES_SCOPE' value='no' />
+              <customization name='CAP_QUERY_JOIN_PUSH_DOWN_CONDITION_EXPRESSIONS' value='yes' />
+              <customization name='CAP_QUERY_NULL_REQUIRES_CAST' value='no' />
+              <customization name='CAP_QUERY_SELECT_ALIASES_SORTED' value='yes' />
+              <customization name='CAP_QUERY_SORT_BY_DEGREE' value='yes' />
+              <customization name='CAP_QUERY_GROUP_ALLOW_DUPLICATES' value='no' />
+
+              <!-- Changed  as tds-->
+              <customization name='CAP_QUERY_SUBQUERIES' value='yes' />
+
+              <customization name='CAP_QUERY_SUBQUERIES_WITH_TOP' value='no' />
+
+              <!-- Changed  as tds-->
+              <customization name='CAP_QUERY_SUBQUERY_QUERY_CONTEXT' value='yes' />
+
+              <customization name='CAP_QUERY_TOPSTYLE_LIMIT' value='yes' />
+              <customization name='CAP_QUERY_TOPSTYLE_ROWNUM' value='no' />
+              <customization name='CAP_QUERY_TOPSTYLE_TOP' value='no' />
+
+              <customization name='CAP_QUERY_TOP_0_METADATA' value='no' />
+              <customization name='CAP_QUERY_TOP_N' value='yes' />
+              <customization name='CAP_QUERY_WHERE_FALSE_METADATA' value='no' />
+              <customization name='CAP_SELECT_INTO' value='no' />
+              <customization name='CAP_SELECT_TOP_INTO' value='yes' />
+              <customization name='CAP_SET_ISOLATION_LEVEL_VIA_ODBC_API' value='no' />
+              <customization name='CAP_SET_ISOLATION_LEVEL_VIA_SQL' value='no' />
+              <customization name='CAP_SUPPRESS_CONNECTION_POOLING' value='no' />
+              <customization name='CAP_SUPPRESS_DISCOVERY_QUERIES' value='no' />
+
+              <!-- Supported SQL -->
+              <customization name='SQL_AGGREGATE_FUNCTIONS' value='63' />
+              <customization name='SQL_UNION' value='0' />
+              <customization name='SQL_CATALOG_NAME_SEPARATOR' value='0' />
+              <customization name='SQL_CATALOG_TERM' value='database' />
+              <customization name='SQL_CATALOG_USAGE' value='0' />
+              <customization name='SQL_COLUMN_ALIAS' value='N' /> 
+              <customization name='SQL_IDENTIFIER_QUOTE_CHAR' value='&quot;' />
+
+              <customization name='SQL_DBMS_NAME' value='Axibase' />
+              <customization name='SQL_DBMS_VER' value='Axibase Time Series Database, Community Edition, Revision: 16706' />
+              <customization name='SQL_SERVER_NAME' value='Axibase' />
+              <customization name='SQL_DRIVER_ODBC_VER' value='03.51' />
+              <customization name='SQL_DRIVER_VER' value='02.05.0003' />
+              <customization name='SQL_ODBC_INTERFACE_CONFORMANCE' value='1' />
+              <customization name='SQL_ODBC_VER' value='03.80.0000' />
+              <customization name='SQL_OJ_CAPABILITIES' value='127' />
+              <customization name='SQL_QUOTED_IDENTIFIER_CASE' value='2'/>
+              <customization name='SQL_SCHEMA_TERM' value='schema' />
+              <customization name='SQL_SCHEMA_USAGE' value='0' />
+              <customization name='SQL_SPECIAL_CHARACTERS' value='' />              
+              <customization name='SQL_SQL92_NUMERIC_VALUE_FUNCTIONS' value='0' />
+              <customization name='SQL_SQL92_PREDICATES' value='0' />
+              <customization name='SQL_SQL92_RELATIONAL_JOIN_OPERATORS' value='479' />
+
+              <!-- Changed  as tds-->
+              <customization name='SQL_SQL92_STRING_FUNCTIONS' value='6' />
+
+              <customization name='SQL_SQL92_VALUE_EXPRESSIONS' value='0' />
+              <customization name='SQL_SQL_CONFORMANCE' value='0' />              
+              <customization name='SQL_TABLE_TERM' value='table' />            
+              <customization name='SQL_TXN_CAPABLE' value='2' />
+              <customization name='SQL_SUBQUERIES' value='0' />              
+              <customization name='SQL_CORRELATION_NAME' value='0' />
+              <customization name='SQL_FILE_USAGE' value='0' />
+              <customization name='SQL_CA1_SELECT_FOR_UPDATE' value='0' />
+              <customization name='SQL_NON_NULLABLE_COLUMNS' value='2' />
+              <customization name='SQL_ORDER_BY_COLUMNS_IN_SELECT' value='N' />
+              <customization name='SQL_MULT_RESULT_SETS' value='N' />
+              <customization name='SQL_EXPRESSIONS_IN_ORDERBY' value='Y' />
+
+              <!-- SQL Limits -->
+              <customization name='SQL_MAX_COLUMNS_IN_ORDER_BY' value='0' />
+              <customization name='SQL_MAX_COLUMNS_IN_SELECT' value='0' />
+              <customization name='SQL_MAX_COLUMNS_IN_TABLE' value='0' />
+              <customization name='SQL_MAX_COLUMNS_IN_INDEX' value='0' />
+              <customization name='SQL_MAX_COLUMNS_IN_GROUP_BY' value='0' />
+              <customization name='SQL_MAX_CURSOR_NAME_LEN' value='0' />
+              <customization name='SQL_MAX_DRIVER_CONNECTIONS' value='0' />
+              <customization name='SQL_MAX_INDEX_SIZE' value='0' />
+              <customization name='SQL_MAX_PROCEDURE_NAME_LEN' value='0' />              
+              <customization name='SQL_MAX_ROW_SIZE' value='0' />
+              <customization name='SQL_MAX_SCHEMA_NAME_LEN' value='0' />
+              <customization name='SQL_MAX_STATEMENT_LEN' value='0' />
+              <customization name='SQL_MAX_TABLE_NAME_LEN' value='0' />
+              <customization name='SQL_MAX_TABLES_IN_SELECT' value='0' />              
+              <customization name='SQL_MAX_USER_NAME_LEN' value='0' />
+              <customization name='SQL_MAX_CONCURRENT_ACTIVITIES' value='0' />              
+              <customization name='SQL_MAX_COLUMN_NAME_LEN' value='0' />              
+              <customization name='SQL_MAX_CHAR_LITERAL_LEN' value='0' />
+              <customization name='SQL_MAX_CATALOG_NAME_LEN' value='0' />
+              <customization name='SQL_MAX_BINARY_LITERAL_LEN' value='0' />
+              
+              <!-- Changed  as tds-->
+              <customization name='SQL_MAX_IDENTIFIER_LEN' value='128' />
+
+              <customization name='SQL_DATA_SOURCE_READ_ONLY' value='Y' />   
+              <customization name='SQL_NULL_COLLATION' value='4' />  
+              <customization name='SQL_PROCEDURE_TERM' value='procedure' />  
+              <customization name='SQL_SEARCH_PATTERN_ESCAPE' value='\' /> 
+              <customization name='SQL_ALTER_TABLE' value='0' />  
+              <customization name='SQL_IDENTIFIER_CASE' value='2' />   
+              <customization name='SQL_GROUP_BY' value='24' />  
+              <customization name='SQL_DEFAULT_TXN_ISOLATION' value='0' /> 
+              <customization name='SQL_ACCESSIBLE_PROCEDURES' value='N' />       
+              <customization name='CAP_QUERY_JOIN_REQUIRES_SUBQUERY' value='no' /> 
+
+              <!--- Scalar Function Information -->
+              <customization name='SQL_TIMEDATE_ADD_INTERVALS' value='0' />
+              <customization name='SQL_TIMEDATE_DIFF_INTERVALS' value='0' />
+              <customization name='SQL_TIMEDATE_FUNCTIONS' value='2097151' />              
+              <customization name='SQL_SYSTEM_FUNCTIONS' value='0' />
+              <customization name='SQL_CONVERT_FUNCTIONS' value='0' />
+              
+              <!-- Changed  as tds-->
+              <customization name='SQL_NUMERIC_FUNCTIONS' value='16384' />
+              <customization name='SQL_STRING_FUNCTIONS' value='305' />
+ 
+              <!--- Conversion Information -->
+              <!-- <customization name='SQL_CONVERT_BIGINT' value='0' /> 
+              <customization name='SQL_CONVERT_BINARY' value='0' /> 
+              <customization name='SQL_CONVERT_BIT' value='0' /> 
+              <customization name='SQL_CONVERT_CHAR' value='0' /> 
+		
+		<customization name='SQL_CONVERT_DECIMAL' value='0' />
+		<customization name='SQL_CONVERT_DOUBLE' value='0' />
+		<customization name='SQL_CONVERT_FLOAT' value='0' />
+		<customization name='SQL_CONVERT_INTEGER' value='0' />  
+		<customization name='SQL_CONVERT_INTERVAL_YEAR_MONTH' value='0' />
+		<customization name='SQL_CONVERT_INTERVAL_DAY_TIME' value='0' /> 
+		<customization name='SQL_CONVERT_LONGVARBINARY' value='0' /> 
+		<customization name='SQL_CONVERT_LONGVARCHAR' value='0' /> 
+		<customization name='SQL_CONVERT_NUMERIC' value='0' /> 
+		<customization name='SQL_CONVERT_REAL' value='0' /> 
+		<customization name='SQL_CONVERT_SMALLINT' value='0' />
+              <customization name='SQL_CONVERT_DATE' value='0' />
+              <customization name='SQL_CONVERT_TIME' value='0' />               
+              <customization name='SQL_CONVERT_TIMESTAMP' value='0' />              
+              <customization name='SQL_CONVERT_TINYINT' value='0' />
+              <customization name='SQL_CONVERT_VARBINARY' value='0' /> 
+              <customization name='SQL_CONVERT_VARCHAR' value='0' />  -->
+               <!-- <customization name='SQL_CONVERT_GUID' value='0' />  -->              
+               
+       	<customization name='SQL_SQL92_DATETIME_FUNCTIONS' value='0' />	
+
+              <!-- Changed  as tds-->
+              <customization name='SQL_DATETIME_LITERALS' value='0' />
+
+              <customization name='CAP_STORED_PROCEDURE_PREFER_TEMP_TABLE' value='yes' />
+
+              <customization name='CAP_ODBC_SUPPRESS_PREPARED_QUERY_FOR_ALL_COMMAND_QUERIES' value='yes' />
+            </customizations>
+   </connection-customization>
+
+
