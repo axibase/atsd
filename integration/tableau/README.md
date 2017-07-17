@@ -21,6 +21,7 @@
 >  - `*java*` for metrics that contains word `java`
 >  - `custom.metric*` for metrics whose name starts with `custom.metric`
 >  - `*2017` for metrics whose name ends with `2017`
+>  - `*` for all metrics.
 
 ## Configure Database Connection
 
@@ -40,14 +41,14 @@ Example:
 ## Review Tables in the Data Source Pane
 
 - Specify required tables and press search icon. 
-- Drag&drop table to the Data Source Pane.
+- Drag table to the Data Source Pane.
 - Press 'Update Now'.
 
 Expected result:
 
 ![](images/search.JPG)      
 
-![](images/update_now.JPG)
+![](images/update_now.png)
 
 
 ## Visualization
@@ -71,17 +72,8 @@ Expected result:
 
 ![](images/summary.png)
 
-Or see all of your data from working sheet:
-- Select some points on view.
-- Right-click - 'View Data' - 'Full Data'
-
-Expected result:
-
-![](images/functionality_is_ok.JPG)
-
 See other examples of visualization:
 
 - [Month and day aggregation](month_and_day_aggregation.md)
-- [There will be example with several entities]()
-- [There will be example with several tags]()
-- [There will be some other examples]()
+- [Value aggregation](value_aggregation.md)
+- [Use of two metrics](use_of_two_metrics.md)
