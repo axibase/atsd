@@ -19,3 +19,22 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` metrics:
 It is possible to compare two metrics now:
 
 ![](images/two_metrcS.png)
+
+Let's try to see the difference between the total values of each year for consider metrics:
+
+- Clear Marks Card
+- Drop _Datetime_ to the column field
+- Drag both _Value_ to the rows field
+- Show Me Card -> _side-by-side bars_ 
+
+![](images/Sheet.png)
+
+It would be useful to add _Drop Lines_ and labels:
+
+- Select some column
+- _Right-Click -> Drop Lines -> Show Drop Lines_
+- _Right-Click -> Drop Lines -> Edit Drop Lines -> Labels -> Automatic_
+
+You can click Ctrl+W and swap columns and rows:
+
+![](images/drop_lines_and_labels.png)
