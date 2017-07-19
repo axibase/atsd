@@ -22,9 +22,11 @@ It is possible to compare two metrics now:
 
 Let's try to see the difference between the total values of each year for consider metrics:
 
-- Clear Marks Card
+- Clear columns and rows fields
 - Drop _Datetime_ to the column field
 - Drag both _Value_ to the rows field
+- Drag _Measure Values_ to Filters Card 
+- Drag _Measure Values_ to Marks Card, check only _Value_ boxes in appeared window, press **OK**
 - Show Me Card -> _side-by-side bars_ 
 
 ![](images/Sheet.png)
