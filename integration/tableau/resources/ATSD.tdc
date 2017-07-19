@@ -164,33 +164,8 @@
               <!-- Changed  as tds-->
               <customization name='SQL_NUMERIC_FUNCTIONS' value='16384' />
               <customization name='SQL_STRING_FUNCTIONS' value='305' />
- 
-              <!--- Conversion Information -->
-              <!-- <customization name='SQL_CONVERT_BIGINT' value='0' /> 
-              <customization name='SQL_CONVERT_BINARY' value='0' /> 
-              <customization name='SQL_CONVERT_BIT' value='0' /> 
-              <customization name='SQL_CONVERT_CHAR' value='0' /> 
-		
-		<customization name='SQL_CONVERT_DECIMAL' value='0' />
-		<customization name='SQL_CONVERT_DOUBLE' value='0' />
-		<customization name='SQL_CONVERT_FLOAT' value='0' />
-		<customization name='SQL_CONVERT_INTEGER' value='0' />  
-		<customization name='SQL_CONVERT_INTERVAL_YEAR_MONTH' value='0' />
-		<customization name='SQL_CONVERT_INTERVAL_DAY_TIME' value='0' /> 
-		<customization name='SQL_CONVERT_LONGVARBINARY' value='0' /> 
-		<customization name='SQL_CONVERT_LONGVARCHAR' value='0' /> 
-		<customization name='SQL_CONVERT_NUMERIC' value='0' /> 
-		<customization name='SQL_CONVERT_REAL' value='0' /> 
-		<customization name='SQL_CONVERT_SMALLINT' value='0' />
-              <customization name='SQL_CONVERT_DATE' value='0' />
-              <customization name='SQL_CONVERT_TIME' value='0' />               
-              <customization name='SQL_CONVERT_TIMESTAMP' value='0' />              
-              <customization name='SQL_CONVERT_TINYINT' value='0' />
-              <customization name='SQL_CONVERT_VARBINARY' value='0' /> 
-              <customization name='SQL_CONVERT_VARCHAR' value='0' />  -->
-               <!-- <customization name='SQL_CONVERT_GUID' value='0' />  -->              
                
-       	<customization name='SQL_SQL92_DATETIME_FUNCTIONS' value='0' />	
+       	      <customization name='SQL_SQL92_DATETIME_FUNCTIONS' value='0' />
 
               <!-- Changed  as tds-->
               <customization name='SQL_DATETIME_LITERALS' value='0' />

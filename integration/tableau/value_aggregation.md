@@ -1,30 +1,29 @@
 # Value aggregation
 
-Let's try to understand which metrics contain the biggest number of records.
+We will need `bi.ex_net1.m` metric:
 
-- Specify table in the URL: 
-```
-    jdbc:atsd://ATSD_HOSTNAME:8443; tables=log*
-```
+![](images/bi.ex_net1.m.png)
 
-We will need a 'log_event_counter' metric:
+Let's try to find year with min value:
 
-![](images/log_event_counter.png)
+- Drag _Value_ to the Marks Card, change aggregation from SUM to MIN, replace _Detail_ with _Size_
+- Drag _Datetime_ to the Marks Card, replace _Detail_ with _Color_
+- Drag _Datetime_ to the Marks Card, **Right-click** on the _QUARTER -> YEAR_, replace _Detail_ with _Label_
+- Change _Automatic_ to _Circle_ in drop-down at Marks Card
 
-- Drag 'Value' to the Marks Card, change aggregation from SUM to COUNT, replace 'Detail' with 'Size'
-- Drag 'Tags' to the Marks Card, replace 'Detail' with 'Color'
+![](images/min_aggr.png)
 
+You can see that in 1975 value was equal 109 and it is an absolute minimum among all measures in `bi.ex_net1.m` metric:
 
-Expected result:
-
-![](images/count_ggregation.png)
-
-Now we can see that metric with tags 
-
-`command = com.axibase.tsd.Server;
- level=INFO;
- logger=com.axibase.tsd.service.monitoring.GarbageCollectionPoller` 
+ ![](images/min_val.png)
  
- contains more than other rows:
+ Let's try to understand which day contains max number of measures:
  
- ![](images/the_biggest.png)
+ - Clear Marks Card
+ - Drop _Datetime_ to the Marks Card, **Right-click** on the _Year -> Day_, replace _Detail_ with _Color_
+ - Drag _Value_ to the Marks Card, change aggregation from SUM to COUNT, replace _Detail_ with _Angle_
+ - Drop _Datetime_ to the Marks Card, **Right-click** on the _Year -> Day_, replace _Detail_ with _Label_
+ 
+ The greatest number of records were made on the 31st:
+ 
+ ![](images/pie.png)

@@ -2,8 +2,8 @@
 
 - [Prerequisites](#prerequisites)
 - [Configure Database Connection](#configure-database-connection)
-- [Review Tables in the Data Source Pane](#review-tables-in-data-source-pane)
-- [Visualization](#vizualization)
+- [Review Tables in Data Source Pane](#review-tables-in-data-source-pane)
+- [Visualization](#visualization)
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@
 ### Install ODBC-JDBC gateway
 - Install [ODBC-JDBC gateway](../odbc/README.md)  
 > Note you should put ticks at 'Strip Quote' and 'Strip Escape'. 
-> Don't forget to choose some table (specify a JDBC URL like jdbc:atsd://ATSD_HOSTNAME:8443;tables=TABLE_NAME_FILTER).
+> You can choose some table (specify a JDBC URL like jdbc:atsd://ATSD_HOSTNAME:8443;tables=TABLE_NAME_FILTER).
 > `TABLE_NAME_FILTER` is a list of comma-separated metrics or metric expressions to be displayed as tables in the Tableau.
 > `TABLE_NAME_FILTER` examples:
 >  - `*java*` for metrics that contains word `java`
@@ -23,14 +23,28 @@
 >  - `*2017` for metrics whose name ends with `2017`
 >  - `*` for all metrics.
 
+> There is `tables=*` by default.
+
+### Load Sample Data
+
+To complete this exercise, sample data must be available in your ATSD instance.
+
+1. Log into the ATSD web interface
+2. Open **Metrics -> Data Entry**, select the **Commands** tab.
+3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
+
+![](images/metrics_entry.png)
+
+
+
 ## Configure Database Connection
 
 - launch Tableau.
-- Select 'Connect' - 'To a Server' - 'Other Databases(ODBC)'.
+- Select **Connect -> To a Server -> Other Databases(ODBC)**.
 - Select DSN from drop-down.
-- Press 'Connect', wait a few seconds.
-- Leave the 'Server','Port', 'Database' and 'String Extras' fields empty.
-- Press 'Sign In'.
+- Press **Connect**, wait a few seconds.
+- Leave the **Server**,**Port**, **Database** and **String Extras** fields empty.
+- Press **Sign In**.
 
 Example:
 
@@ -38,42 +52,47 @@ Example:
 
 `DSN` is DSN specified by you during ODBC-JDBC gateway configuration (DSN Setup).
 
-## Review Tables in the Data Source Pane
+## Review Tables in Data Source Pane
 
-- Specify required tables and press search icon. 
-- Drag table to the Data Source Pane.
-- Press 'Update Now'.
+- Specify required tables and press search icon. In our exercise we will need `bi.ex_net1.m` metric:
+
+![](images/search.png)  
+
+- Drag table to Data Source Pane.
+- Press **Update Now**.
 
 Expected result:
 
-![](images/search.JPG)      
-
-![](images/update_now.png)
+![](images/update_now1.png)
 
 
 ## Visualization
 
-- Press 'Sheet 1'.
-- Press 'Ok' in the limitations message.
-- Set 'Datetime' to the columns field.
-- Set 'Value' to the rows field.
+- Press **Sheet 1**.
+- Press **OK** in the limitations message.
+- Set _Datetime_ to the columns field.
+- Set _Value_ to the rows field.
+
+> Note you shouldn't use both _Time_ and _Datetime_ due to they are the same attributes and ATSD raises an error in some cases (for example, if your visualization requires query with more than one time column in the `GROUP BY` clause).
+ 
 
 Expected result:
 
-![](images/year_sum.png)
+![](images/sum_year.png)
+
 
 > Sometimes visualization process requests a few seconds, for example due to big volumes of data.
 
 You can inspect part of visualized data:
 - Select some points on view.
-- Right-click - 'View Data'
+- **Right-click -> View Data**.
 
 Expected result:
 
-![](images/summary.png)
+![](images/summary1.png)
 
 See other examples of visualization:
 
-- [Month and day aggregation](month_and_day_aggregation.md)
+- [Month and year aggregation](month_and_year_aggregation.md)
 - [Value aggregation](value_aggregation.md)
 - [Use of two metrics](use_of_two_metrics.md)

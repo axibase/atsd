@@ -2,20 +2,20 @@
 
 There is an explanation of how to visualize two metrics at one sheet.
 
-- Specify table in the URL: 
-```
-    jdbc:atsd://ATSD_HOSTNAME:8443; tables=jvm*
-```
+We will need `bi.ex_net1.m` and `bi.im_net1.m` metrics:
 
-We will need 'jvm_memory_used' and 'jvm_system_cpu_load' metrics, you should drop each of them to the Data Source Pane, select 'Inner Join' and specify 'Datetime' as equal fields:
+- Drop each of them to Data Source Pane.
+- Select _Inner Join_, specify _Time_ and _Entity_ as equal fields:
 
-![](images/join.png)
+![](images/inner_Join.png)
 
-- Drag 'Datetime' to the columns field (you can use any of 'Datetime'), change from YEAR aggregation to 'Exact Date' 
-- Drag both 'Value' to the rows field, change from SUM aggregation to 'Dimension'
-- Specify color:'Marks' - 'Value'  (you can use any of 'Value') - 'Color'
-- Specify shape:'Marks' - 'Value'  (you can use any of 'Value') - 'Shape'
+> Note you should specify at least time/datetime and entity, otherwise ATSD will rise an error.
 
-Expected result:
+- Drag _Datetime_ to the columns field (you can use any of _Datetime_), change from YEAR aggregation to _Exact Date_ 
+- Drag both _Value_ to the rows field, change from SUM aggregation to _Dimension_
+- Specify color:_Marks_ - _Value_ (you can use any of _Value_) - _Color_
+- Specify shape:_Marks_ - _Value_ (you can use any of _Value_) - _Shape_
 
-![](images/two_metrics.png)
+It is possible to compare two metrics now:
+
+![](images/two_metrcS.png)
