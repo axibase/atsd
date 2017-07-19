@@ -20,4 +20,4 @@ Let's see statistics for only 2007-2012 years:
 
 You can see next result:
 
-![](images/Sheet 1.png)
+![](images/Sheet_1.png)
