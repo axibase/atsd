@@ -95,4 +95,4 @@ See other examples of visualization:
 
 - [Month and year aggregation](month_and_year_aggregation.md)
 - [Value aggregation](value_aggregation.md)
-- [Use of two metrics](use_of_two_metrics.md)
+- [Use of several metrics](use_of_several_metrics.md)

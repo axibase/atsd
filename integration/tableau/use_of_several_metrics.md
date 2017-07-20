@@ -1,4 +1,4 @@
-# Use of two metrics
+# Use of several metrics
 
 There is an explanation of how to visualize two metrics at one sheet.
 
@@ -10,6 +10,9 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` metrics:
 ![](images/inner_Join.png)
 
 > Note you should specify at least time/datetime and entity, otherwise ATSD will rise an error.
+> You shouldn't combine INNER and FULL OUTER joins due to Tableau sends invalid queries into ATSD.
+> There is only the equals (=) comparison operator can used in  joins.
+> LEFT/RIGHT joins are not supported.
 
 - Drag _Datetime_ to the columns field (you can use any of _Datetime_), change from YEAR aggregation to _Exact Date_ 
 - Drag both _Value_ to the rows field, change from SUM aggregation to _Dimension_
