@@ -7,7 +7,7 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` metrics:
 - Drop each of them to Data Source Pane.
 - Select _Inner Join_, specify _Time_ and _Entity_ as equal fields:
 
-![](images/inner_Join.png)
+![](images/join_inner.png)
 
 > Note you should specify at least time/datetime and entity, otherwise ATSD will rise an error.
 > You shouldn't combine INNER and FULL OUTER joins due to Tableau sends invalid queries into ATSD.
