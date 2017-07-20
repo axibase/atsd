@@ -86,7 +86,6 @@
 
               <customization name='SQL_DBMS_NAME' value='Axibase' />
               <customization name='SQL_SERVER_NAME' value='Axibase' />
-              <customization name='SQL_DRIVER_VER' value='02.05.0003' /> -->
               <customization name='SQL_ODBC_INTERFACE_CONFORMANCE' value='1' />
               <customization name='SQL_QUOTED_IDENTIFIER_CASE' value='2'/>
               <customization name='SQL_SCHEMA_TERM' value='schema' />
