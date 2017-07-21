@@ -20,10 +20,15 @@ Instead, use "hbase.client.scanner.timeout.period".
 
 ## Upgrade Hadoop
 1. Stop old versions of ATSD, HBase and Hadoop.
+
+```Shell
+/opt/atsd/bin/atsd-all.sh stop
+```
+
 2. Download Hadoop-2.6.4 and unzip it into ATSD folder:
 
 ```Shell
-$ cwget https://archive.apache.org/dist/hadoop/core/hadoop-2.6.4/hadoop-2.6.4.tar.gz
+$ wget https://archive.apache.org/dist/hadoop/core/hadoop-2.6.4/hadoop-2.6.4.tar.gz
 $ tar -xf hadoop-2.6.4.tar.gz -C /opt/atsd/
 ```
 
@@ -308,7 +313,7 @@ $ export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/home/axibase/m
 Print usage:
 
 ```Shell
-$ yarn com.axibase.migration.mapreduce.DeleteTaskMigration -h
+$ /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -h
 ```
 
 Do migration:
