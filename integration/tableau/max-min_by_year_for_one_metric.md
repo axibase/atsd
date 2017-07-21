@@ -1,6 +1,6 @@
-# Max-Min by year for one metric
+# MAX-MIN by year for one metric
 
- Let's try to create the line showing the difference between the maximum and minimum export value in each year. There you can find explanation of making calculation.
+ Let's try to create the line showing the difference between the maximum and minimum export value in each year. There you can find explanation of making customer calculation.
  
  We will need `bi.ex_net1.m` table:
  

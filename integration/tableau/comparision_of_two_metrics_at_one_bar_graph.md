@@ -10,7 +10,7 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` tables:
 - Drag-and-drop both _Value_ to the rows field
 
 > You can rename values:
-> - Right click and choose **Rename**
+> - Right click щт _Value_ and choose **Rename**
 
 - Show Me Card > _side-by-side bars_ 
 
@@ -19,7 +19,7 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` tables:
 You can click Ctrl+W and swap columns and rows.
 
 ## Drop Lines
-It would be useful to add _Drop Lines_ and labels:
+It would be useful to add **Drop Lines** and **Labels**:
 
 - Select some column
 - Right click and choose **Drop Lines** > **Show Drop Lines**

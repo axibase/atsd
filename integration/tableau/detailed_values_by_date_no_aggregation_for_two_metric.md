@@ -4,7 +4,7 @@ There is an explanation of how to visualize two metrics at one sheet.
 
 We will need `bi.ex_net1.m` and `bi.im_net1.m` metrics:
 
-- Drop each of them to Data Source Pane.
+- Drag-and-drop each of them to the Data Source Pane.
 - Select _Inner Join_, specify _Time_ and _Entity_ as equal fields:
 
 ![](images/join_inner.png)

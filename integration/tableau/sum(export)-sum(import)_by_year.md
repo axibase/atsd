@@ -6,7 +6,6 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` tables:
 
 - Drag-and-drop _Datetime_ to the column field
 - Rename both _Value_ to 'Export Value' and 'Import Value'
-- Copy: _SUM([Export Value]) - SUM([Import Value ])_ > double-click to the rows field > paste > **Enter**
-- Select _Line_ in drop-down at Marks Card
+- Copy: `SUM([Export Value]) - SUM([Import Value])` > double-click to the rows field > paste > **Enter**
 
-![](images/sum_sum.png)
+![](images/sum.png)
