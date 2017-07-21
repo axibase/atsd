@@ -6,8 +6,8 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` tables:
 
 > Don't forget to specify at least time/datetime and entity in INNER/FULL OUTER join
 
-- Drop _Datetime_ to the column field
-- Drop both _Value_ to the rows field
+- Drag-and-drop _Datetime_ to the column field
+- Drag-and-drop both _Value_ to the rows field
 - Change _Automatic_ to _Bar_ in drop-down at Marks Card
 
 ![](images/sum_by_year_for_rwo_metrics.png)

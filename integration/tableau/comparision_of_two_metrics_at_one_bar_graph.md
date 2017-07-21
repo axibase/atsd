@@ -6,13 +6,13 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` tables:
 
 > Don't forget to specify at least time/datetime and entity in INNER/FULL OUTER join
 
-- Drop _Datetime_ to the column field
-- Drop both _Value_ to the rows field
+- Drag-and-drop _Datetime_ to the column field
+- Drag-and-drop both _Value_ to the rows field
 
 > You can rename values:
-> - _Right-click -> Rename_
+> - Right click and choose **Rename**
 
-- Show Me Card -> _side-by-side bars_ 
+- Show Me Card > _side-by-side bars_ 
 
 ![](images/bars.png)
 
@@ -22,8 +22,8 @@ You can click Ctrl+W and swap columns and rows.
 It would be useful to add _Drop Lines_ and labels:
 
 - Select some column
-- _Right-Click -> Drop Lines -> Show Drop Lines_
-- _Right-Click -> Drop Lines -> Edit Drop Lines -> Labels -> Automatic_
+- Right click and choose **Drop Lines** > **Show Drop Lines**
+- Right click and choose **Drop Lines** > **Edit Drop Lines** > **Labels** > **Automatic**
 
 
 ![](images/sswap.png)
