@@ -236,7 +236,7 @@ to your hardware.
 
 2. Start Yarn and History server:
 
-``Shell
+```Shell
 $ /opt/atsd/hadoop/sbin/start-yarn.sh
 $ /opt/atsd/hadoop/sbin/mr-jobhistory-daemon.sh --config /opt/atsd/hadoop/etc/hadoop/ start historyserver
 ```
@@ -261,7 +261,7 @@ $ 7057 HRegionServer
 
 ## Run ATSD Migration Map-Reduce Job in the Case Old ATSD Schema Uses 2 Bytes to Store metricId
 
-1. Get [`migration.jar`](migration.jar) and put it somewhere, for example:
+1. Get [`migration.jar`](bin/migration.jar) and put it somewhere, for example:
 `/home/axibase/migration.jar`
 
 2. Migration program and new ATSD version run on Java 8, so
