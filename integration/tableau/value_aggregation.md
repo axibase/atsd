@@ -13,17 +13,7 @@ Let's try to find year with min value:
 
 ![](images/min_aggr.png)
 
-You can see that in 1975 value was equal 109 and it is an absolute minimum among all measures in `bi.ex_net1.m` metric:
+We can see that in 1975 value was equal 109 and it is an absolute minimum among all measures in `bi.ex_net1.m` metric:
 
  ![](images/min_val.png)
  
- Let's try to understand which day contains max number of measures:
- 
- - Clear Marks Card
- - Drop _Datetime_ to the Marks Card, **Right-click** on the _Year -> Day_, replace _Detail_ with _Color_
- - Drag _Value_ to the Marks Card, change aggregation from SUM to COUNT, replace _Detail_ with _Angle_
- - Drop _Datetime_ to the Marks Card, **Right-click** on the _Year -> Day_, replace _Detail_ with _Label_
- 
- The greatest number of records were made on the 31st:
- 
- ![](images/pie.png)
