@@ -10,7 +10,7 @@ We will need `bi.ex_net1.m` and `bi.im_net1.m` tables:
 - Drag-and-drop both _Value_ to the rows field
 
 > You can rename values:
-> - Right click щт _Value_ and choose **Rename**
+> - Right click on _Value_ and choose **Rename**
 
 - Show Me Card > _side-by-side bars_ 
 

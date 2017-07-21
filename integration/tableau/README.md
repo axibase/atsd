@@ -4,6 +4,7 @@
 - [Configure Database Connection](#configure-database-connection)
 - [Review Tables in Data Source Pane](#review-tables-in-data-source-pane)
 - [Visualization](#visualization)
+- [Examples](#examples)
 
 ## Overview
 
