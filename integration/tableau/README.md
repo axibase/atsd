@@ -1,108 +1,78 @@
-# TABLEAU
+# Tableau
 
 - [Prerequisites](#prerequisites)
 - [Configure Database Connection](#configure-database-connection)
 - [Review Tables in Data Source Pane](#review-tables-in-data-source-pane)
 - [Visualization](#visualization)
 
+## Overview
+
+Tableau Desktop is visualization software providing tools to query, analyze and aggregate data from multiple datasources.  The following guide outlines the initial configuration steps and includes examples of using Tableau Desktop user interface in order to build charts from historical data stored in Axibase Time Series Database (ATSD).
+
+## Dataset
+
+For the purpose of instruction, we will use the following sample [series commands](resources/commands.txt). The series contain the national import and export statistics over a period of 30+ years. The series are seasonally adjusted and are collected on a monthly basis.
+
+To load the data, log in to ATSD and submit these commands on the **Metrics > Data Entry** page.
+
+![](images/metrics_entry.png)
+
 ## Prerequisites
 
 ### Install Tableau
 
 - Install [Tableau Desktop 10.2](https://www.tableau.com/support/releases/desktop/10.2) 
-- Add [ATSD.tdc](resources/ATSD.tdc) to your Tableau Repository on Windows, for example: C:\Users\You\Documents\My Tableau Repository\Datasources\ATSD.tdc
+- Copy [ATSD.tdc](resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory.
 
-### Install ODBC-JDBC gateway
+### Install ODBC-JDBC Bridge
+
 - Install [ODBC-JDBC gateway](../odbc/README.md)  
-> Note you should put ticks at 'Strip Quote' and 'Strip Escape'. 
-> You can choose some table (specify a JDBC URL like jdbc:atsd://ATSD_HOSTNAME:8443;tables=TABLE_NAME_FILTER).
-> `TABLE_NAME_FILTER` is a list of comma-separated metrics or metric expressions to be displayed as tables in the Tableau.
-> `TABLE_NAME_FILTER` examples:
->  - `*java*` for metrics that contains word `java`
->  - `custom.metric*` for metrics whose name starts with `custom.metric`
->  - `*2017` for metrics whose name ends with `2017`
->  - `*` for all metrics.
+- Make sure that 'Strip Quote' and 'Strip Escape' are checked (enabled).
 
-> There is `tables=*` by default.
-
-### Load Sample Data
-
-To complete this exercise, sample data must be available in your ATSD instance.
-
-1. Log into the ATSD web interface
-2. Open **Metrics -> Data Entry**, select the **Commands** tab.
-3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
-
-![](images/metrics_entry.png)
-
-
+If your ATSD installation has more than 10000 metrics, consider adding `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
 ## Configure Database Connection
 
-- launch Tableau.
-- Select **Connect -> To a Server -> Other Databases(ODBC)**.
-- Select DSN from drop-down.
-- Press **Connect**, wait a few seconds.
+- Launch Tableau.
+- Select **Connect > To a Server > Other Databases(ODBC)**.
+- Select the ATSD DSN from drop-down. This is the DSN you specified during ODBC-JDBC bridge setup.
+- Press **Connect** and wait a few seconds.
 - Leave the **Server**,**Port**, **Database** and **String Extras** fields empty.
 - Press **Sign In**.
 
-Example:
-
 ![](images/configure_connection.png)
 
-`DSN` is DSN specified by you during ODBC-JDBC gateway configuration (DSN Setup).
+## Review Tables
 
-## Review Tables in Data Source Pane
-
-- Specify required tables and press search icon. In our exercise we will need `bi.ex_net1.m` metric:
+- Enter a keyword and press on **Search** button. For this exercise, we will search for the `bi.ex_net1.m` table:
 
 ![](images/search.png)  
 
-- Drag table to Data Source Pane.
+- Drag-and-drop the table to the Data Source Pane.
 - Press **Update Now**.
 
-Expected result:
-
 ![](images/update_now1.png)
-
 
 ## Visualization
 
 - Press **Sheet 1**.
-- Press **OK** in the limitations message.
+- Press **OK** to acknowledge a warning about limitations.
 - Set _Datetime_ to the columns field.
 - Set _Value_ to the rows field.
 
-> Note you shouldn't use both _Time_ and _Datetime_ due to they are the same attributes and ATSD raises an error in some cases (for example, if your visualization requires query with more than one time column in the `GROUP BY` clause).
- 
-
-Expected result:
+> Since _time_ and _datetime_ represent record time with different data types (long and timestamp), make sure you select only one of these columns in your queries. 
 
 ![](images/sum_year.png)
 
+Inspect a subset of the visualized data:
 
-> Sometimes visualization process requests a few seconds, for example due to big volumes of data.
-
-You can inspect part of visualized data:
-- Select some points on view.
-- **Right-click -> View Data**.
-
-Expected result:
+- Select some data points on the view.
+- Right click and choose **View Data**.
 
 ![](images/summary1.png)
 
-See other examples of visualization:
+## Examples
 
 - [Month and year aggregation](month_and_year_aggregation.md)
 - [Value aggregation](value_aggregation.md)
-- [Max number of measures](max_number_of_measures.md)
-- [Comparision of two metrics at one bar graph](comparision_of_two_metrics_at_one_bar_graph.md)
-- [Detailed values by date (no aggregation) for one metric](detailed_values_by_date_for_one_metric.md)
-- [Detailed values by date (no aggregation) for two metric](detailed_values_by_date_no aggregation_for_two_metric.md)
-- [Average by year for one metric](average_by_year_for_one_metric.md)
-- [Sum by year for one metric](sum_by_year_for_one_metric.md)
-- [Min and Max by year for one metric](min_and_max_by_year_for_one_metric.md)
-- [Max-Min by year for one metric](max-min_by_year_for_one_metric.md)
-- [Sum by year for two metrics](sum_by_year_for_two_metrics.md)
-- [Export - Import by year](export-import_by_year.md)
-- [SUM(export)-SUM(import) by year](sum(export)-sum(import)_by_year.md)
+- [Use of several metrics](use_of_several_metrics.md)
