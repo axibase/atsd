@@ -41,7 +41,7 @@ $ cp /opt/atsd/hadoop/conf/core-site.xml /opt/atsd/hadoop-2.6.4/etc/hadoop/core-
 $ cp /opt/atsd/hadoop/conf/hdfs-site.xml /opt/atsd/hadoop-2.6.4/etc/hadoop/hdfs-site.xml
 ```
 
-Add lines in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file:
+Set `JAVA_HOME` and `HADOOP_PID_DIR` in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file:
 
 ```Shell
 # set path to java 8 home
@@ -52,7 +52,7 @@ export HADOOP_PID_DIR=/opt/atsd/pids
 4. Remove/archive old Hadoop folder, and set new instead of it.
 
 ```Shell
-$ rm -r hadoop
+$ rm -r /opt/atsd/hadoop
 $ mv /opt/atsd/hadoop-2.6.4 /opt/atsd/hadoop
 ```
 
