@@ -2,7 +2,7 @@
 
 ## Overview
 
-We already know how to see [difference between two metrics at one bar graph](comparision_of_two_metrics_at_one_bar_graph.md), let's find out how to do it at separate graphs.
+Report showing the difference between two metrics on separate graphs.
 
 ## Data Source
 
@@ -10,8 +10,7 @@ We already know how to see [difference between two metrics at one bar graph](com
 
 ## Steps
 
-> Don't forget to specify at least time/datetime and entity in INNER/FULL OUTER join
-
+- Specify at least time/datetime and entity in INNER/FULL OUTER join
 - Drag-and-drop _Datetime_ onto the column field
 - Drag-and-drop both _Value_ onto the rows field
 - Change _Automatic_ to _Bar_ in drop-down at _All_ section at Marks Card
