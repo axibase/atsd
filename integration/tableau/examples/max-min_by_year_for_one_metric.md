@@ -2,7 +2,7 @@
 
 ## Overview
 
-Let's build a report illustrating the difference between the maximum and minimum export value each year. There you can find explanation of creating customer calculation.
+Report illustrating the difference between the maximum and minimum export value each year. 
  
 ## Data Source
 
