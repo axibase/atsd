@@ -7,7 +7,7 @@
 ## Steps
 
 - Drag-and-drop `bi.ex_net1.m` to the data Source Pane
-- Go to **Sheet 1**: drag-and-drop _Datetime_ onto the columns field and _Value_ onto the rows field
+- Open **Sheet 1**: drag-and-drop _Datetime_ onto the columns field and _Value_ onto the rows field
 - _Value_ > _Right-click_ > _Dimension_
 - Marks Card > Drop-down > Line
 - _YEAR > +_, right click on the _QUARTER > MONTH_
@@ -17,12 +17,12 @@
 
 ![](../images/month_and_year.png)
 
-Let's see statistics for only 2007-2012 years:
+Review statistics for years 2007-2012:
 
 - Select 2007-2012 rows in YEAR(Datetime) Card (right side of the window) > **Keep Only**
 
 ![](../images/2007-2012.png)
 
-You can see next result:
+View results:
 
 ![](../images/Sheet_1.png)
