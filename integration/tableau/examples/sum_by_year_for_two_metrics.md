@@ -1,8 +1,8 @@
-# SUM by year for two metrics
+# SUM by Year for Two Metrics
 
 ## Overview
 
-Report showing the difference between two metrics on separate graphs.
+Report showing the differences between two metrics on separate graphs.
 
 ## Data Source
 
@@ -11,9 +11,9 @@ Report showing the difference between two metrics on separate graphs.
 ## Steps
 
 - Specify at least time/datetime and entity in INNER/FULL OUTER join
-- Drag-and-drop _Datetime_ onto the column field
-- Drag-and-drop both _Value_ onto the rows field
-- Change _Automatic_ to _Bar_ in drop-down at _All_ section at Marks Card
+- Drag-and-drop _Datetime_ in to the column field
+- Drag-and-drop both _Value_ in to the rows field
+- Change _Automatic_ to _Bar_ in the dropdown at the _All_ section on Marks Card
 
 ## Results
 
