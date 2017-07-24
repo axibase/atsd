@@ -547,7 +547,7 @@ WHERE datetime >= CURRENT_HOUR
 
 ### Entity Group Column
 
-An `entity.group` column contains a list of entity groups to which the entity belongs.
+An `entity.groups` column contains a list of entity groups to which the entity belongs.
 
 The column can be specified in the `SELECT` expression to print out the ordered list of entity group names, separated by semi-colons.
 
@@ -567,7 +567,7 @@ ORDER BY datetime
 | 2017-06-15T15:00:16Z | nurswgvml006 | 4.0   | nur-collectors;nmon-linux;nmon-sub-group |
 ```
 
-The `entity.group` column can be referenced in the `WHERE` clause to filter results based on group membership.
+The `entity.groups` column can be referenced in the `WHERE` clause to filter results based on group membership.
 
 Supported syntax:
 
