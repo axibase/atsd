@@ -2,7 +2,7 @@
 
 ## Overview
 
-There is example of visualization export statistics for several years.
+There is an example of visualization export statistics for several years.
  
 ## Data Source
 
@@ -10,9 +10,9 @@ There is example of visualization export statistics for several years.
 
 ## Steps
 
-- Drag-and-drop _Datetime_ onto the columns field, change from **YEAR** aggregation to _Exact Date_ 
-- Drag-and-drop _Value_ onto the rows field, change from **SUM** aggregation to _Dimension_
-- Select _Line_ in drop-down at Marks Card
+- Drag-and-drop _Datetime_ in to the columns field, change from **YEAR** aggregation to _Exact Date_ 
+- Drag-and-drop _Value_ in to the rows field, change from **SUM** aggregation to _Dimension_
+- Select _Line_ in the dropdown at Marks Card
 - Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results
