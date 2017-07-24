@@ -8,7 +8,7 @@
 
 ## Overview
 
-Tableau Desktop is visualization software providing tools to query, analyze and aggregate data from multiple datasources.  The following guide outlines the initial configuration steps and includes examples of using Tableau Desktop user interface in order to build charts from historical data stored in Axibase Time Series Database (ATSD).
+Tableau Desktop is a visualization software that provides tools to query, analyze, and aggregate data from multiple data sources.  The following guide outlines the initial configuration steps and includes examples of using the Tableau Desktop user interface in order to build charts from historical data stored in the Axibase Time Series Database (ATSD).
 
 ## Dataset
 
@@ -28,15 +28,15 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install ODBC-JDBC Bridge
 
 - Install [ODBC-JDBC gateway](../odbc/README.md)  
-- Make sure that 'Strip Quote' and 'Strip Escape' are checked (enabled).
+- Make sure that the 'Strip Quote' and 'Strip Escape' checkboxes are enabled.
 
-If your ATSD installation has more than 10000 metrics, consider adding `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
+If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
 ## Configure Database Connection
 
 - Launch Tableau.
 - Select **Connect > To a Server > Other Databases(ODBC)**.
-- Select the ATSD DSN from drop-down. This is the DSN you specified during ODBC-JDBC bridge setup.
+- Select the ATSD DSN from the dropdown. This is the DSN you specified during ODBC-JDBC bridge setup.
 - Press **Connect** and wait a few seconds.
 - Leave the **Server**,**Port**, **Database** and **String Extras** fields empty.
 - Press **Sign In**.
@@ -45,7 +45,7 @@ If your ATSD installation has more than 10000 metrics, consider adding `tables={
 
 ## Review Tables
 
-- Enter a keyword and press on **Search** button. For this exercise, we will search for the `bi.ex_net1.m` table:
+- Enter a keyword and click the **Search** button. For this exercise, we will search for the `bi.ex_net1.m` table:
 
 ![](images/search.png)  
 
@@ -57,11 +57,11 @@ If your ATSD installation has more than 10000 metrics, consider adding `tables={
 ## Visualization
 
 - Press **Sheet 1**.
-- Press **OK** to acknowledge a warning about limitations.
+- Press **OK** to acknowledge the warning about limitations.
 - Set _Datetime_ to the columns field.
 - Set _Value_ to the rows field.
 
-> Since _time_ and _datetime_ represent record time with different data types (long and timestamp), make sure you select only one of these columns in your queries. 
+> Since _time_ and _datetime_ represent recorded times composed of different data types (long and timestamp), make sure you select only one of these columns in your queries. 
 
 ![](images/sum_year.png)
 
