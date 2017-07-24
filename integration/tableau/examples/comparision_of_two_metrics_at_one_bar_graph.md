@@ -1,8 +1,8 @@
-# Comparision of two metrics at one bar graph
+# Comparision of Two Metrics in One Bar Graph
 
 ## Overview
 
-Build a report displaying monthly exports and import.
+Build a report displaying monthly exports and imports.
 
 ## Data Source
 
@@ -11,14 +11,14 @@ Build a report displaying monthly exports and import.
 ## Steps
 
 -Specify at least time/datetime and entity in INNER/FULL OUTER join
-- Drag-and-drop _Datetime_ onto the column field
-- Drag-and-drop both _Value_ onto the rows field
+- Drag-and-drop _Datetime_ in to the column field
+- Drag-and-drop both _Value_ in to the rows field
 - Rename values. Right click on _Value_ and choose **Rename**
 - Show Me Card > _side-by-side bars_ 
 
 ![](../images/bars.png)
 
-Click `Ctrl+W` and swap columns and rows.
+Enter `Ctrl+W` and swap columns and rows.
 
 ## Drop Lines
 
