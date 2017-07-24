@@ -1,20 +1,26 @@
 # Comparision of two metrics at one bar graph
 
+## Overview
+
 Let's try to see the difference between the total values of each year for export and import metrics.
 
-We will need `bi.ex_net1.m` and `bi.im_net1.m` tables:
+## Data Source
+
+- Tables: `bi.ex_net1.m` and `bi.im_net1.m`
+
+## Steps
 
 > Don't forget to specify at least time/datetime and entity in INNER/FULL OUTER join
 
-- Drag-and-drop _Datetime_ to the column field
-- Drag-and-drop both _Value_ to the rows field
+- Drag-and-drop _Datetime_ onto the column field
+- Drag-and-drop both _Value_ onto the rows field
 
 > You can rename values:
 > - Right click on _Value_ and choose **Rename**
 
 - Show Me Card > _side-by-side bars_ 
 
-![](images/bars.png)
+![](../images/bars.png)
 
 You can click Ctrl+W and swap columns and rows.
 
@@ -25,5 +31,6 @@ It would be useful to add **Drop Lines** and **Labels**:
 - Right click and choose **Drop Lines** > **Show Drop Lines**
 - Right click and choose **Drop Lines** > **Edit Drop Lines** > **Labels** > **Automatic**
 
+## Results
 
-![](images/sswap.png)
+![](../images/sswap.png)
