@@ -1,8 +1,8 @@
-# MAX number of measures
+# Max Records by Day of Month
 
 ## Overview
 
-Let's try to understand which day contains max number of export measures.
+Build a report showing the number of filings per day of month.
  
 ## Data Source
 
@@ -17,6 +17,6 @@ Let's try to understand which day contains max number of export measures.
  
  ## Results
  
- The greatest number of records was made the 31st:
+ Most records were reported on the 31st day of month:
  
  ![](../images/pie.png)
