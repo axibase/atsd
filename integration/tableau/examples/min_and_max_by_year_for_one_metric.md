@@ -2,7 +2,7 @@
 
 ## Overview
 
-Let's compare trends of min and max export value.
+Report comparing min and max exports per year.
 
 ## Data Source
 
