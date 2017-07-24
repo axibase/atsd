@@ -67,23 +67,21 @@ If your ATSD installation has more than 10000 metrics, consider adding `tables={
 
 Inspect a subset of the visualized data:
 
-- Select some data points on the view.
+- Select some data points in the view.
 - Right click and choose **View Data**.
 
 ![](images/summary1.png)
 
 ## Examples
 
-- [MONTH and YEAR aggregation](examples/month_and_year_aggregation.md)
-- [Value aggregation](examples/value_aggregation.md)
-- [MAX number of measures](examples/max_number_of_measures.md)
-- [Detailed values by date (no aggregation) for one metric](examples/detailed_values_by_date_no_aggregation_for_one_metric.md)
-- [Detailed values by date (no aggregation) for two metrics](examples/detailed_values_by_date_no_aggregation_for_two_metric.md)
-- [Comparision of two metrics at one bar graph](examples/comparision_of_two_metrics_at_one_bar_graph.md)
-- [Average by year for one metric](examples/average_by_year_for_one_metric.md)
-- [SUM by year for one metric](examples/sum_by_year_for_one_metric.md)
-- [MIN and MAX by year for one metric](examples/min_and_max_by_year_for_one_metric.md)
-- [MAX-MIN by year for one metric](examples/max-min_by_year_for_one_metric.md)
-- [SUM by year for two metrics](examples/sum_by_year_for_two_metrics.md)
+- [Monthly Exports](examples/detailed_values_by_date_no_aggregation_for_one_metric.md)
+- [Annual Export Baselines](examples/month_and_year_aggregation.md)
+- [Annual Exports](examples/sum_by_year_for_one_metric.md)
+- [Lowest Annual Imports](examples/value_aggregation.md)
+- [Monthly Export and Imports (JOIN)](examples/detailed_values_by_date_no_aggregation_for_two_metric.md)
+- [Monthly Export and Imports (JOIN) - bars](examples/comparision_of_two_metrics_at_one_bar_graph.md)
+- [Average Annual Imports](examples/average_by_year_for_one_metric.md)
+- [Minimum and Maximum Exports each Year](examples/min_and_max_by_year_for_one_metric.md)
+- [Annual Exports and Imports](examples/sum_by_year_for_two_metrics.md)
 - [Export - Import by year](examples/export-import_by_year.md)
-- [SUM(export)-SUM(import) by year](examples/sum(export)-sum(import)_by_year.md)
+- [Annual Trade Balance](examples/sum(export)-sum(import)_by_year.md)
