@@ -10,7 +10,9 @@ This instruction describes how to migrate Axibase Time Series Database running o
 | Old | 16999 and earlier | 1.7 | 0.94.29 | 1.0.3 |
 | New | 17000 and later | 1.8 | 1.2.5 | 2.6.4 |
 
-## Prepare For Upgrade
+Java 8 is required to run new version of ATSD, so install it on your machine/cluster.
+
+## Prepare ATSD For Upgrade and Stop It
 
 1. Login into ATSD, open **Admin -> Configuration Files -> `hadoop.properties`** file.
 2. Remove the following line:
@@ -23,24 +25,54 @@ This instruction describes how to migrate Axibase Time Series Database running o
   ```properties
   hbase.client.scanner.timeout.period=1200
   ```
+4. Stop ATSD:
+
+  ```sh
+  /opt/atsd/atsd/bin/stop-atsd.sh
+  ```
   
-## Stop Old ATSD
+Verify that the `Server` process is **not** represented in the `jps` command output.
+If necessary, follow the safe [ATSD shutdown](https://github.com/axibase/atsd/blob/master/administration/restarting.md#stop-atsd) procedure.
 
-Stop old versions of ATSD, HBase and Hadoop.
-
-```sh
-/opt/atsd/bin/atsd-all.sh stop
-```
-
-Verify that no Java processes are running by executing the `jps` commands.
-
-If necessary, follow the safe shutdown [procedure](https://github.com/axibase/atsd/blob/master/administration/restarting.md#stop-services).
 
 ## Backup Old ATSD
 
 ```sh
 cp -R /opt/atsd /opt/atsd-backup
 ```
+
+## Check HBase Status and Stop It
+
+```sh
+/opt/atsd/hbase/bin/hbase hbck
+```
+
+You shoud get message `Status: OK`. Follow [recovery](https://github.com/axibase/atsd/blob/master/administration/corrupted-file-recovery.md#repair-hbase) if some inconsistencies were detected.
+
+Stop HBase daemons:
+
+```sh
+/opt/atsd/hbase/bin/stop-hbase.sh
+```
+
+Verify that the `HMaster`, `HRegionServer`, and `HQuorumPeer` processes are **not** represented in the `jps` command output.
+If necessary, follow the safe [HBase shutdown](https://github.com/axibase/atsd/blob/master/administration/restarting.md#stop-atsd) procedure.
+
+## Check HDFS Status and Stop It
+
+```sh
+/opt/atsd/hadoop/bin/hdfs fsck /hbase/
+```
+
+You shoud get message `The filesystem under path '/hbase/' is HEALTHY`. Follow [recovery](https://github.com/axibase/atsd/blob/master/administration/corrupted-file-recovery.md#repair-hbase) if there are corrupted files.
+
+Stop HDFS daemons:
+
+```sh
+/opt/atsd/hadoop/bin/stop-dfs.sh
+```
+
+Verify that the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not** represented in the `jps` command output.
 
 ## Upgrade Hadoop
 
@@ -77,6 +109,7 @@ mv /opt/atsd/hadoop-2.6.4 /opt/atsd/hadoop
 
 4. Run Hadoop upgrade.
 
+<!--
 ```sh
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgrade
 ```
@@ -89,14 +122,33 @@ Stop the namenode process and start HDFS.
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh stop namenode
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
+-->
 
-Check that HDFS web interface has started execute the finalize command:
+```sh
+/opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
+/opt/atsd/hadoop/sbin/start-dfs.sh
+```
+
+
+Wait a bit and check that HDFS daemons were succeessfully started:
+
+```sh
+/opt/atsd/hadoop/bin/hdfs dfsadmin -report
+```
+
+You should get:
+
+```sh
+ ???
+```
+
+Finalize HDFS upgrade:
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
 ```
 
-The command should display the following message `Finalize upgrade successful`.
+The command should display the following message `Finalize upgrade successful`. The `jps` command should show `NameNode`, `SecondaryNameNode`, and `DataNode` are running.
 
 ## Upgrade HBase
 
@@ -144,17 +196,6 @@ Set HBase JVM heap size to 50% of available physical memory on the server. The s
 export HBASE_HEAPSIZE=8G
 ```
 
-Optionally, enable JMX in HBase. Modify `-p 22` to the port on which SSH daemon is running.
-
-```sh
-export HBASE_SSH_OPTS="-p 22"
-HBASE_JMX_OPTS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false" #-Djava.rmi.server.hostname=NURSWGHBS001"
-HBASE_JMX_OPTS="$HBASE_JMX_OPTS -Dcom.sun.management.jmxremote.password.file=$HBASE_HOME/conf/jmxremote.passwd"
-HBASE_JMX_OPTS="$HBASE_JMX_OPTS -Dcom.sun.management.jmxremote.access.file=$HBASE_HOME/conf/jmxremote.access"
-export HBASE_MASTER_OPTS="$HBASE_JMX_OPTS -Dcom.sun.management.jmxremote.port=10101"
-export HBASE_REGIONSERVER_OPTS="$HBASE_JMX_OPTS -Dcom.sun.management.jmxremote.port=10102"
-```
-
 3. Replace HBase directory.
 
 ```sh
@@ -184,10 +225,19 @@ mv /opt/atsd/hbase-1.2.5 /opt/atsd/hbase
 ```sh
 /opt/atsd/hbase/bin/start-hbase.sh
 ```
+Let HBase daemons to start, and check that `jps` command displays `HMaster`, `HRegionServer`, and `HQuorumPeer` are running.
 
-Check that the web interface of the HBase master is available on port 16010.
+5. Check that ATSD tables are available in HBase. For example, read a row of data from the 'atsd_d' table via HBase shell:
 
-5. Check that ATSD tables are available in HBase.
+```sh
+/opt/atsd/hbase/bin/hbase shell
+hbase(main):001:0> scan 'm_d', LIMIT => 1
+ROW                                                       COLUMN+CELL
+...
+1 row(s) in 0.0560 seconds
+hbase(main):002:0> exit
+
+```
 
 
 ## Prepare Hadoop to Run ATSD Migraton Map-Reduce Job
@@ -259,6 +309,8 @@ The following properties can be further adjusted based on available OS and VM/ha
 * `mapreduce.reduce.java.opts`
 * `mapreduce.reduce.cpu.vcores`
 
+View these articles [Zhu](https://mapr.com/blog/best-practices-yarn-resource-management/), [Lynch](https://discuss.pivotal.io/hc/en-us/articles/201462036-MapReduce-YARN-Memory-Parameters) for more details about memory/resources allocation for map-reduce jobs.
+
 2. Start Yarn and History server:
 
 ```sh
@@ -266,8 +318,10 @@ The following properties can be further adjusted based on available OS and VM/ha
 /opt/atsd/hadoop/sbin/mr-jobhistory-daemon.sh --config /opt/atsd/hadoop/etc/hadoop/ start historyserver
 ```
 
+<!--
 Check that Yarn resource manager and History server web interface is available on ports
 8088 and 19888 respectively.
+-->
 
 3. Run the `jps` command to check that all services are running:
 
@@ -305,9 +359,8 @@ java -version
 export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/home/axibase/migration.jar
 ```
 
-4. First migration step is make backup copies of tables 'atsd_d', 'atsd_li', 'atsd_metric', 'atsd_forecast', and 'atsd_delete_task'
-which are affected by migration. The below commands copy pointers to the same data in HBase as original tables,
-so they don't consume a lot of disk.
+4. First migration step is rename tables 'atsd_d', 'atsd_li', 'atsd_metric', 'atsd_forecast', and 'atsd_delete_task'
+which are affected by migration.
 
 Print usage:
 
@@ -315,14 +368,14 @@ Print usage:
 java com.axibase.migration.admin.TableCloner -h
 ```
 
-Backup copies of all tables:
+Rename all tables:
 
 ```sh
-java com.axibase.migration.admin.TableCloner
+java com.axibase.migration.admin.TableCloner -d
 ```
 
 Check that tables 'atsd_d_backup', 'atsd_li_backup', 'atsd_metric_backup', 'atsd_forecast_backup',
-and 'atsd_delete_task_backup' were created and have the same data as original tables.
+and 'atsd_delete_task_backup' were created.
 
 5. Set `HADOOP_CLASSPATH` for map-reduce jobs.
 
