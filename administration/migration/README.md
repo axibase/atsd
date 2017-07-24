@@ -56,7 +56,7 @@ Stop HBase daemons:
 ```
 
 Verify that the `HMaster`, `HRegionServer`, and `HQuorumPeer` processes are **not** represented in the `jps` command output.
-If necessary, follow the safe [HBase shutdown](https://github.com/axibase/atsd/blob/master/administration/restarting.md#stop-atsd) procedure.
+If necessary, follow the safe [HBase shutdown](https://github.com/axibase/atsd/blob/master/administration/restarting.md#stop-hbase) procedure.
 
 ## Check HDFS Status and Stop It
 
@@ -231,7 +231,7 @@ Let HBase daemons to start, and check that `jps` command displays `HMaster`, `HR
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
-hbase(main):001:0> scan 'm_d', LIMIT => 1
+hbase(main):001:0> scan 'atsd_d', LIMIT => 1
 ROW                                                       COLUMN+CELL
 ...
 1 row(s) in 0.0560 seconds
@@ -300,7 +300,7 @@ Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml`:
 </configuration>
 ```
 
-The following properties can be further adjusted based on available OS and VM/hardware configuration of the ATSD server:
+The following properties can be further adjusted based on available OS and VM/hardware configuration:
 
 * `mapreduce.map.memory.mb`
 * `mapreduce.map.memory.mb`
