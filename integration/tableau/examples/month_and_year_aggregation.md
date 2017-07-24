@@ -6,8 +6,8 @@
 
 ## Steps
 
-- Drag-and-drop `bi.ex_net1.m` to the data Source Pane
-- Open **Sheet 1**: drag-and-drop _Datetime_ onto the columns field and _Value_ onto the rows field
+- Drag-and-drop `bi.ex_net1.m` to the data Source window
+- Open **Sheet 1**: drag-and-drop _Datetime_ in to the columns field and _Value_ onto the rows field
 - _Value_ > _Right-click_ > _Dimension_
 - Marks Card > Drop-down > Line
 - _YEAR > +_, right click on the _QUARTER > MONTH_
