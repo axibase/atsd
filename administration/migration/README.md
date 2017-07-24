@@ -15,15 +15,15 @@ Java 8 is required to run new version of ATSD, so install it on your machine/clu
 ## Prepare ATSD For Upgrade and Stop It
 
 1. Login into ATSD, open **Admin -> Configuration Files -> `hadoop.properties`** file.
-2. Remove the following line:
+2. Remove the following line (if present):
 
   ```properties
-  hbase.regionserver.lease.period=1200
+  hbase.regionserver.lease.period=120000
   ```
 3. Add new setting:
 
   ```properties
-  hbase.client.scanner.timeout.period=1200
+  hbase.client.scanner.timeout.period=120000
   ```
 4. Stop ATSD:
 
@@ -61,7 +61,7 @@ If necessary, follow the safe [HBase shutdown](https://github.com/axibase/atsd/b
 ## Check HDFS Status and Stop It
 
 ```sh
-/opt/atsd/hadoop/bin/hdfs fsck /hbase/
+/opt/atsd/hadoop/bin/hadoop fsck /hbase/
 ```
 
 You shoud get message `The filesystem under path '/hbase/' is HEALTHY`. Follow [recovery](https://github.com/axibase/atsd/blob/master/administration/corrupted-file-recovery.md#repair-hbase) if there are corrupted files.
@@ -95,7 +95,7 @@ cp /opt/atsd/hadoop/conf/hdfs-site.xml /opt/atsd/hadoop-2.6.4/etc/hadoop/hdfs-si
 Set `JAVA_HOME` and `HADOOP_PID_DIR` in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file:
 
 ```sh
-# set path to java 8 home
+# set valid path to java 8 home here!
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export HADOOP_PID_DIR=/opt/atsd/pids
 ```
@@ -109,12 +109,12 @@ mv /opt/atsd/hadoop-2.6.4 /opt/atsd/hadoop
 
 4. Run Hadoop upgrade.
 
-<!--
 ```sh
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgrade
 ```
 
-Check that namenode web interface is available on port 50070.
+View namenode web interface on port 50070: `namenodeIP:50070`.
+The web page should contain information: `"Upgrade in progress. Not yet finalized."` and `SafeMode is ON`.
 
 Stop the namenode process and start HDFS.
 
@@ -122,13 +122,13 @@ Stop the namenode process and start HDFS.
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh stop namenode
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
--->
 
+<!--
 ```sh
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
-
+-->
 
 Wait a bit and check that HDFS daemons were succeessfully started:
 
@@ -136,11 +136,7 @@ Wait a bit and check that HDFS daemons were succeessfully started:
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
 ```
 
-You should get:
-
-```sh
- ???
-```
+You should get information about HDFS usage and available data nodes.
 
 Finalize HDFS upgrade:
 
@@ -227,7 +223,7 @@ mv /opt/atsd/hbase-1.2.5 /opt/atsd/hbase
 ```
 Let HBase daemons to start, and check that `jps` command displays `HMaster`, `HRegionServer`, and `HQuorumPeer` are running.
 
-5. Check that ATSD tables are available in HBase. For example, read a row of data from the 'atsd_d' table via HBase shell:
+5. Check that ATSD tables are available in HBase. For example, list all tables, read a row of data from the 'atsd_d' table via HBase shell:
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
@@ -257,7 +253,7 @@ Add these properties to `/opt/atsd/hadoop/etc/hadoop/yarn-site.xml`:
   </property>
 ```
 
-Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml`:
+Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` (copy  this file from `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` if it is not already presented):
 
 ```xml
 <configuration>
@@ -343,7 +339,7 @@ jps
 
 ## Run ATSD Migration Map-Reduce Job
 
-1. Download [`migration.jar`](bin/migration.jar) to `/home/axibase/migration.jar`
+1. Download [`migration.jar`](bin/migration.jar) to `/home/axibase/migration.jar`. If web interface 
 
 2. Migration program and new ATSD version run on Java 8, so set `JAVA_HOME` variable to Java 8.
 
@@ -359,8 +355,8 @@ java -version
 export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/home/axibase/migration.jar
 ```
 
-4. First migration step is rename tables 'atsd_d', 'atsd_li', 'atsd_metric', 'atsd_forecast', and 'atsd_delete_task'
-which are affected by migration.
+4. First migration step is rename tables 'atsd_d', 'atsd_li', 'atsd_metric', 'atsd_forecast', and 'atsd_delete_task' by adding them suffix '_backup'.
+Then data from these tables will be transformed to new schema and stored in new tables 'atsd_d', 'atsd_li', 'atsd_metric', 'atsd_forecast', 'atsd_delete_task', which will be compatible with new version of ATSD.
 
 Print usage:
 
@@ -376,6 +372,12 @@ java com.axibase.migration.admin.TableCloner -d
 
 Check that tables 'atsd_d_backup', 'atsd_li_backup', 'atsd_metric_backup', 'atsd_forecast_backup',
 and 'atsd_delete_task_backup' were created.
+
+```sh
+/opt/atsd/hbase/bin/hbase shell
+hbase(main):001:0> list
+hbase(main):002:0> exit
+```
 
 5. Set `HADOOP_CLASSPATH` for map-reduce jobs.
 
@@ -431,7 +433,7 @@ ERROR mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:802
 INFO mapreduce.LastInsertMigration: Last Insert table migration job took 37 seconds.
 ```
 
-In case of errors, check HDFS and delete this temporary directory.
+In case of errors, check HDFS and delete this temporary directory via Hadoop CLI.
 
 9. Migrate the 'atsd_metric' table.
 
@@ -497,7 +499,7 @@ Download [`tsd-hbase-1.0.0.jar`](bin/tsd-hbase-1.0.0.jar) to `/opt/atsd/hbase/li
 5. Delete backup copies of original tables via HBase shell.
 
 ```sh
-/opt/atsd/atsd/bin/hbase shell
+/opt/atsd/hbase/bin/hbase shell
 hbase(main):001:0> disable 'atsd_forecast_backup'
 hbase(main):002:0> drop 'atsd_forecast_backup'
 hbase(main):002:0> exit
