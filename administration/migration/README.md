@@ -367,7 +367,7 @@ $ /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -s '
 10. Migrate the `'atsd_d'` table:
 
 ```Shell
-$ /usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.FastDataMigration -s test_d_backup -d test_d -m 2
+$ /usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s test_d_backup -d test_d -m 2
 ```
 
 11. Migration completed - stop Yarn and History server. You should stop Yarn as it binds to the same port as ATSD.
