@@ -1,7 +1,8 @@
 # Value aggregation
 
 ## Overview
-Let's try to find year with min value.
+
+Display minimum exports each year.
 
 ## Data Source
 
