@@ -74,6 +74,21 @@ Verify that the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **
 cp -R /opt/atsd /opt/atsd-backup
 ```
 
+## Check `/etc/hosts` File
+In case your run HBase in standolone mode and your `/etc/hosts` file contains lines
+
+```sh
+127.0.0.1 localhost 
+127.0.1.1 myhostname
+```
+
+change them to
+
+```sh
+127.0.0.1 localhost myhostname
+```
+because otherwise new HBase will not work: Master will not be able connect to Region Server, as explained in [elazar](http://web.archive.org/web/20140104070155/http://blog.devving.com/why-does-hbase-care-about-etchosts/).
+
 ## Upgrade Hadoop
 
 1. Download Hadoop-2.6.4 and unzip it into ATSD folder.
@@ -432,8 +447,17 @@ ERROR mapreduce.LastInsertMigration: Deleting outputFolder hdfs://localhost:8020
 ERROR mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 not needed any more, and you can delete this outputFolder via hdfs cli.
 INFO mapreduce.LastInsertMigration: Last Insert table migration job took 37 seconds.
 ```
+In case of such an error, check if HDFS really still contains temporary folder:
 
-In case of errors, check HDFS and delete this temporary directory via Hadoop CLI.
+```sh
+/opt/atsd/hadoop/bin/hdfs dfs -ls /user/axibase/copytable/1609980393918240854
+```
+
+Delete this folder if it exists:
+
+```sh
+/opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable/1609980393918240854
+```
 
 9. Migrate the 'atsd_metric' table.
 
