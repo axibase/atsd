@@ -488,7 +488,7 @@ Stop HBase:
 /opt/atsd/hbase/bin/stop-hbase.sh
 ```
 
-Add coprocessors in `/opt/atsd/hbase-1.2.5/conf/hbase-site.xml`,
+Add coprocessors in `/opt/atsd/hbase/conf/hbase-site.xml`,
 
 ```xml
 <property>
