@@ -61,7 +61,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/search?expression=java*&length=10 \
+curl 'https://atsd_host:8443/api/v1/search?expression=java*&length=10' \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
