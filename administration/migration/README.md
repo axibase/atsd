@@ -468,7 +468,7 @@ Delete this folder if it exists:
 10. Migrate the 'atsd_d' table.
 
 ```sh
-$ /usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s test_d_backup -d test_d -m 2
+$ /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s atsd_d_backup -d atsd_d -m 2 -r
 ```
 
 11. Migration completed - stop Yarn and History server. You should stop Yarn as it binds to the same port as ATSD.
