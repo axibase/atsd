@@ -28,6 +28,7 @@ Refer to [expression reference](../../../search/README.md) for syntax, available
 | :-------------- | :------- | :------------------------------------------- |
 | recordsTotal    | number   | Total number of series in the database as of last index update.  |
 | recordsFiltered | number   | Total number of series that matched the specified expression. |
+| time            | number   | Query execution time, in milliseconds . |
 | data            | array    | Array of [series records](#series%20record)) |
 
 ### Series Record
