@@ -301,6 +301,7 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`entity.tags.{name}` |string| Entity tag value. Returns `NULL` if the specified tag doesn't exist for this entity.|
 |`entity.tags`    |string   | All entity tags, concatenated to `name1=value;name2=value` format.|
 |`entity.groups`  |string   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
+|`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
 
 The `{name}` in tag columns `tags.{name}`, `entity.tags.{name}`, and `metric.tags.{name}` must be enclosed in quotes or double quotes if `{name}` equals a reserved column or [keyword](#keywords), an SQL identifier, or contains special characters such as `-`,`*`,`,`.
 
