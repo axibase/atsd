@@ -34,13 +34,6 @@ Java 8 is required to run new version of ATSD, so install it on your machine/clu
 Verify that the `Server` process is **not** represented in the `jps` command output.
 If necessary, follow the safe [ATSD shutdown](https://github.com/axibase/atsd/blob/master/administration/restarting.md#stop-atsd) procedure.
 
-
-## Backup Old ATSD
-
-```sh
-cp -R /opt/atsd /opt/atsd-backup
-```
-
 ## Check HBase Status and Stop It
 
 ```sh
@@ -73,6 +66,13 @@ Stop HDFS daemons:
 ```
 
 Verify that the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not** represented in the `jps` command output.
+
+
+## Backup Old ATSD
+
+```sh
+cp -R /opt/atsd /opt/atsd-backup
+```
 
 ## Upgrade Hadoop
 
