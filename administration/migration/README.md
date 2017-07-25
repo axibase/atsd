@@ -500,27 +500,27 @@ Add coprocessors in `/opt/atsd/hbase/conf/hbase-site.xml`,
 </property>
 ```
 
-Start HBase:
-
-```sh
-/opt/atsd/hbase/bin/start-hbase.sh
-```
-
 2. Download new ATSD files.
 
 Download [`atsd-dfs.sh`](bin/atsd-dfs.sh) script to `/opt/atsd/bin/` folder.
 Download [`atsd-executable.jar`](bin/atsd-executable.jar) to `/opt/atsd/bin/` folder.
 Download [`tsd-hbase-1.0.0.jar`](bin/tsd-hbase-1.0.0.jar) to `/opt/atsd/hbase/lib/` folder.
 
-3. Start new version of ATSD.
+3. Start HBase:
+
+```sh
+/opt/atsd/hbase/bin/start-hbase.sh
+```
+
+4. Start new version of ATSD.
 
 ```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
-4. Check that all data are available in ATSD.
+5. Check that all data are available in ATSD.
 
-5. Delete backup copies of original tables via HBase shell.
+6. Delete backup copies of original tables via HBase shell.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
