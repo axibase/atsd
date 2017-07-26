@@ -445,7 +445,7 @@ jps
 
 ## Run ATSD Migration Map-Reduce Job
 
-1. Download [`migration.jar`](bin/migration.jar) to `/home/axibase/migration.jar`.
+1. Download [`migration.jar`](bin/migration.jar) to directory `/home/axibase/`.
 You can download this file by `wget` command.
 
 ```sh
