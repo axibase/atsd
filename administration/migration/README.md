@@ -28,7 +28,7 @@ Java 8 is required to run new version of ATSD, so install it on your machine/clu
 4. Stop ATSD:
 
   ```sh
-  /opt/atsd/atsd/bin/stop-atsd.sh
+  /opt/atsd/bin/atsd-tsd.sh stop
   ```
   
 Verify that the `Server` process is **not** represented in the `jps` command output.
@@ -45,7 +45,7 @@ You shoud get message `Status: OK`. Follow [recovery](https://github.com/axibase
 Stop HBase daemons:
 
 ```sh
-/opt/atsd/hbase/bin/stop-hbase.sh
+/opt/atsd/bin/atsd-hbase.sh stop
 ```
 
 Verify that the `HMaster`, `HRegionServer`, and `HQuorumPeer` processes are **not** represented in the `jps` command output.
@@ -62,7 +62,7 @@ You shoud get message `The filesystem under path '/hbase/' is HEALTHY`. Follow [
 Stop HDFS daemons:
 
 ```sh
-/opt/atsd/hadoop/bin/stop-dfs.sh
+/opt/atsd/bin/atsd-dfs.sh stop
 ```
 
 Verify that the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not** represented in the `jps` command output.
