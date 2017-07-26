@@ -100,7 +100,7 @@ Accept Java license agreement.
 
 2. RHEL 6/7 and CentOS 6/7. 
 
-Download `jdk-8u141-linux-x64.rpm` package from (Oracle Java 8 JDK)[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html] page.
+Download `jdk-8u141-linux-x64.rpm` package from [Oracle Java 8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page.
 Install java 8 (in directory /usr/java).
 
 ```sh
