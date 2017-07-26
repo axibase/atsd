@@ -290,6 +290,7 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`metric.minValue`| double | Minimum value for [Invalid Action](../meta/metric/list.md#invalid-actions) trigger.|
 |`metric.maxValue`| double | Maximum value for [Invalid Action](../meta/metric/list.md#invalid-actions) trigger.|
 |`metric.invalidValueAction` | string | [Invalid Action](../meta/metric/list.md#invalid-actions) type.|
+|`metric.units`| string | Measurement units. |
 
 #### Entity Columns
 
@@ -301,6 +302,7 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`entity.tags.{name}` |string| Entity tag value. Returns `NULL` if the specified tag doesn't exist for this entity.|
 |`entity.tags`    |string   | All entity tags, concatenated to `name1=value;name2=value` format.|
 |`entity.groups`  |string   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
+|`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
 
 The `{name}` in tag columns `tags.{name}`, `entity.tags.{name}`, and `metric.tags.{name}` must be enclosed in quotes or double quotes if `{name}` equals a reserved column or [keyword](#keywords), an SQL identifier, or contains special characters such as `-`,`*`,`,`.
 
@@ -547,7 +549,7 @@ WHERE datetime >= CURRENT_HOUR
 
 ### Entity Group Column
 
-An `entity.group` column contains a list of entity groups to which the entity belongs.
+An `entity.groups` column contains a list of entity groups to which the entity belongs.
 
 The column can be specified in the `SELECT` expression to print out the ordered list of entity group names, separated by semi-colons.
 
@@ -567,7 +569,7 @@ ORDER BY datetime
 | 2017-06-15T15:00:16Z | nurswgvml006 | 4.0   | nur-collectors;nmon-linux;nmon-sub-group |
 ```
 
-The `entity.group` column can be referenced in the `WHERE` clause to filter results based on group membership.
+The `entity.groups` column can be referenced in the `WHERE` clause to filter results based on group membership.
 
 Supported syntax:
 

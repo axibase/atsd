@@ -53,6 +53,10 @@ time-second = "s:" POSITIVE_INTEGER
 time-iso = "d:" ISO_DATE
 ```
 
+## Limits
+
+Refer to [limits](README.md#command-limits).
+
 ## Data Types
 
 New metrics will be initialized with the `float` data type by default.
@@ -63,8 +67,17 @@ To insert metric samples with another data type, create or update metric propert
 
 If the command references non-existent entities, metrics, or tags, they will be created as new records and registered automatically.
 
-Entity, metric, and tag names are case-insensitive and will be converted to lower case when inserted. Tag values are case-sensitive.
+## Case Sensitivity
 
+* Entity name, metric names, and tag names are case-insensitive and are converted to lower case when stored.
+* Tag values are case-sensitive and are stored as submitted.
+
+```ls
+# input command
+series e:nurSWG m:Temperature=38.5 t:Degrees=Celsius
+# stored record
+series e:nurswg m:temperature=38.5 t:degrees=Celsius
+```
 
 ## Examples
 

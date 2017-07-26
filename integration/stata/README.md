@@ -17,11 +17,11 @@
 
 Execute the following command in the Stata console: `set odbcdriver ansi`
 
-This confugures Stata to interface with ODBC in ANSI mode to prevent string values from being truncated.
+This configures Stata to interface with ODBC in ANSI mode to prevent string values from being truncated.
 
 ### Load Data using Import Wizard
 
-- Click on **File > Import > ODBC** data source
+- Click on **File > Import > ODBC data sources**
 - Select the ATSD connection in **ODBC data sources**
 - Select a table in the 'Tables' list
 - Choose one or multiple columns from the `Columns` list
@@ -40,7 +40,7 @@ This confugures Stata to interface with ODBC in ANSI mode to prevent string valu
 
 ![](resources/table_description.png)
 
-- Click on `load` to load the entire table as a dataset in memory.
+- Click on `load` to load the entire table as a dataset into memory.
 - Click on `query` to re-load the list of tables.
 
 ## Load Data with SQL Query
@@ -59,10 +59,10 @@ Description of resultset:
 
 ### Export Data using Export Wizard
 
-- Click on **File > Export > ODBC** data source.
+- Follow the path **File > Export > ODBC** data source.
 - Click on the ATSD connection in `ODBC data sources`.
-- Type table name into `Tables` field. This will be the metric name holding the exported data.
-- Choose variables to export in the `Variables` drop-down list.
+- Type the table name into `Tables` field. This will be the metric name holding the exported data.
+- Choose the variables to export in the `Variables` drop-down list.
 - Type column names from the target metric according to variables selected in the previous step.
 - Choose `Append data into existing table` in `Insertion options`.
 - Check `Use block inserts` option.
@@ -70,20 +70,20 @@ Description of resultset:
 
 ### Export Data using Stata Console
 
-Use [`odbc insert`](https://www.stata.com/manuals13/dodbc.pdf) command to write data from Stata memory into ATSD.
+Use the [`odbc insert`](https://www.stata.com/manuals13/dodbc.pdf) command to write data from Stata memory into ATSD.
 
 ```
 odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("target_metric_name") block
 ```
 
-> Make sure `block` flag is set, otherwise not all records may be inserted into ATSD.
+> Make sure the `block` flag is set, otherwise all available records may not be inserted into ATSD.
 
 Syntax:
 
-- `var1 var2 var3` is a list of variables from im-memory dataset in Stata.
-- `as("entity datetime value")` is a list of columns in ATSD metric. That list should be sorted according to list of variables.
+- `var1 var2 var3` is a list of variables from the in-memory dataset in Stata.
+- `as("entity datetime value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
 - `dsn("ATSD")` is a name of ODBC connection to ATSD.
-- `table("metric_name")` is a name of metric which will contain exported dataset.
+- `table("metric_name")` is a name of the metric which will contain exported dataset.
 - `block` is a parameter to force using block inserts.
 
 ## Calculating Derived Series
@@ -97,7 +97,7 @@ odbc load, exec("SELECT value as price, tags.category as category, datetime FROM
 save prices
 ```
 
-> We're saving the dataset to access it later
+> The data is saved for later access.
 
 Preview `prices`:
 
@@ -140,7 +140,7 @@ Preview the joined dataset:
 
 ### Merge Weights with Prices
 
-In this step we will append two tables to perform calculations within one table. This table will have a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
+In this step two tables will be appended to perform calculations within one table. This table will have a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
 
 ```
 merge 1:1 category datetime using prices
@@ -176,7 +176,7 @@ drop if dup>1
 drop dup inflation
 ```
 
-The operation will group records by datetime and calculate the sum of `inflation` values for each group.
+This operation will group records by `datetime` and calculate the sum of the `inflation` values for each group.
 
 Preview the dataset:
 

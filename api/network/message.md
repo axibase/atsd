@@ -17,7 +17,19 @@ The `severity` field is exposed in the rule engine for filtering and alerting.
 ## Syntax
 
 ```css
-message e:{entity} t:type={type} t:source={source} t:severity={severity} t:tag={tag-value} m:{message} s:{seconds}
+message e:{entity} t:type={type} t:source={source} t:severity={severity} t:{tag-name}={tag-value} m:{message} d:{time}
+```
+
+* If time fields are omitted, the record is inserted with the current server time.
+* Message text or at least one tag is required, otherwise the message will be dropped silently.
+* Entity name, tag names are case-insensitive and are converted to lower case when stored.
+* Tag values and message text are case-sensitive and are stored as submitted.
+
+```ls
+# input command
+message e:nurSWG t:Type=Security t:FS_type=NFS m:"Initiation complete"
+# stored record
+message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 ```
 
 ### Fields
@@ -28,12 +40,9 @@ message e:{entity} t:type={type} t:source={source} t:severity={severity} t:tag={
 | t         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../api/data/severity.md). |
 | m         | string       | Message text. |
 | p         | boolean      | Persist message in the database. Default: true.<br>If disabled, the message is only processed by the rule-engine. |
-| s         | integer      | Time in UNIX seconds. | 
-| ms        | integer      | Time in UNIX milliseconds. | 
-| d         | string       | Time in ISO format. | 
-
-* If time fields are omitted, the record is inserted with the current server time.
-* Message text or at least one tag is required, otherwise the message will be dropped silently.
+| s         | integer      | Time in UNIX seconds. |
+| ms        | integer      | Time in UNIX milliseconds. |
+| d         | string       | Time in ISO format. |
 
 ### ABNF Syntax
 
@@ -41,7 +50,7 @@ Rules inherited from [Base ABNF](base-abnf.md).
 
 ```properties
   ; message or at least one tag is required
-command = "message" MSP entity [MSP tag-type] [MSP tag-source] [MSP tag-severity] *(MSP tag) [MSP time] [MSP persist] [MSP message] 
+command = "message" MSP entity [MSP tag-type] [MSP tag-source] [MSP tag-severity] *(MSP tag) [MSP time] [MSP persist] [MSP message]
 entity = "e:" NAME
 tag-type = "t:type=" VALUE
 tag-source = "t:source=" VALUE
@@ -56,6 +65,10 @@ time-millisecond = "ms:" POSITIVE_INTEGER
 time-second = "s:" POSITIVE_INTEGER
 time-iso = "d:" ISO_DATE
 ```
+
+## Limits
+
+Refer to [limits](README.md#command-limits).
 
 ## Severity
 

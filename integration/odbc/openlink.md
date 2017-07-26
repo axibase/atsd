@@ -11,9 +11,8 @@ The bridge intercepts SQL queries from the client applications via the Microsoft
 - Download and install Java Runtime Environment 7 for the Windows Operating System.
 - [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
 - Add Windows Environment variable `Classpath` containing the path to the ATSD JDBC driver 'jar' file.
-It can be done using **System Settings** -> **Advanced system settings** -> **Advanced** tab -> **Environment variables**.
-Then click **New** button under **System variables** list.
-Type `Classpath` as **Variable name** and path to the ATSD JDBC driver 'jar' file as **Variable value**.
+Open **Environment variables**, click the **New** button under the **System variables** list.
+Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar' file as **Variable value**.
 
 ![](images/system_properties.png)
 
@@ -23,7 +22,7 @@ Type `Classpath` as **Variable name** and path to the ATSD JDBC driver 'jar' fil
 ![](images/openlink_license.png)
 
 - Choose the desired OS version
-- Receive the installation link and license files via email.
+- You will receive the installation link and license files via email.
 
 ### Install Bridge
 
@@ -37,7 +36,7 @@ Install and activate the bridge as follows:
 
 ### Configure ODBC Data Source
 
-Open **Start**, type `ODBC` and launch ODBC Data Source Manager under an Administrator account
+Open **Start**, type `ODBC` and launch the ODBC Data Source Manager from an Administrator account.
 
 ![](images/ODBC_1.PNG)
 
@@ -64,8 +63,8 @@ Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-con
 
 ![](images/openlink_ODBC_4.png)
 
-Click **Next** until last page to skip the remaining configuration steps.
+Click **Next** until the last page to skip the remaining configuration steps.
 
-Click **Test Data Source** button to verify connection
+Click **Test Data Source** button to verify the connection.
 
 ![](images/openlink_test_connection.png)

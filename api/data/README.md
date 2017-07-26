@@ -1,13 +1,13 @@
 ## Overview
 
-The Data API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database. 
+The Data API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database.
 
 ## Categories
 
 * [Series](series#data-api-series-methods)
   - [insert](series/insert.md)
   - [query](series/query.md)
-  - [csv insert](series/csv-insert.md) 
+  - [csv insert](series/csv-insert.md)
   - [url query](series/url-query.md)
 * [Properties](properties#data-api-properties-methods)
   - [insert](properties/insert.md)
@@ -80,14 +80,24 @@ Refer to [ISO 8601 date format examples](date-format.md).
 
 * Entity name, metric name, property type, and key/tag names must consist of printable characters.
 * Field names are case-insensitive and are converted to lower case when stored in the database.
-* Field values are case-sensitive and are stored as submitted, except for entity name, metric name, and property type, which are converted to lower case.
+* Field values are **case-sensitive** and are stored as submitted, except for entity name, metric name, and property type, which are converted to lower case.
 * Values are stripped of starting and trailing line breaks (CR,LF symbols).
+
+## Limits
+
+The number of tags in the record cannot exceed the following limit:
+
+| **Command** | **Maximum Tags** |
+|:---|:---|
+| series | 1024 series tags |
+| property | 1024 keys and tags |
+| message | 1024 message tags |
 
 ## Wildcards
 
-`*` and `?` wildcards are supported in entity names and tag values.
+When querying, wildcards `*` and `?` are supported in entity names and tag values.
 
-The literal symbols `?` and `*` should be escaped with a single backslash.
+The literal symbols `?` and `*` can be escaped with a single backslash.
 
 ## Response Codes
 
@@ -95,7 +105,7 @@ The literal symbols `?` and `*` should be escaped with a single backslash.
 * `401` status code in case of an unknown resource.
 * `403` status code in case of access denied error.
 * `4xx` status code in case of other client errors.
-* `5xx` status code in case of server error. 
+* `5xx` status code in case of server error.
 
 4xx or 5xx response codes are specific to each API method.
 
@@ -118,10 +128,10 @@ Processing errors are returned in JSON format:
 
 * The user must have the [**API_DATA_READ**/**API_DATA_WRITE**](../../administration/user-authorization.md#available-api-roles) role.
 * The user must have read/write [**entity permission**](../../administration/user-authorization.md#entity-permissions) for the entities specified in the request and/or returned in the results.
- 
+
 ## Cross-Domain Requests
 
-Cross-domain requests are allowed. 
+Cross-domain requests are allowed.
 
 ## Compression
 
@@ -146,7 +156,7 @@ cat json-in.log
 
 ## Examples
 
-Each Data API method provides a set of examples containing sample request and response objects. 
+Each Data API method provides a set of examples containing sample request and response objects.
 
 The response object illustrates all fields returned by the method.
 

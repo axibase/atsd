@@ -16,8 +16,8 @@ change over time and their history is visualized with different types of graphs.
 # Series 2 settings
   ```
   
-Each series is identified by a composite key which consists of an **entity**, **metric**, and optional key-value pairs 
-called **tags**. 
+Each series is identified by a composite key which consists of an **metric**, **entity**, and optional key-value pairs 
+called **series tags**, or simply **tags**. 
 
 ```ls
   [series]
@@ -31,11 +31,11 @@ called **tags**.
       fstype = ext4
 ```
 
-* An **Entity** is a physical or logical object being monitored such as `nurswgvml007` (computer name).
+* An **entity** is a physical or logical object being monitored such as `nurswgvml007` (computer name).
 
-* A **Metric** represents the name of a measurable numeric attribute such as `cpu_busy` or `temperature`.
+* A **metric** represents the name of a measurable numeric attribute such as `cpu_busy` or `temperature`.
 
-* **Tags** are optional, and they provide additional level of detail for measurements, for example the disk’s mount point 
+* **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point 
 for the `df.bytes.percentused` metric.
 
 An entity may be measured with a variety of metrics, just as the same metric could be collected for multiple entities.

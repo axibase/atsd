@@ -4,8 +4,9 @@
 
 Insert an array of properties.
 
-* Entity name, property type, key names, and tag names cannot contain non-printable characters. They are case-insensitive and are converted to lower case when stored. 
-* Key values and tag values are case-sensitive and are stored as submitted.
+* Entity name, property type, key names, and tag names cannot contain non-printable characters. They are case-insensitive and are converted to lower case when stored.
+* Key values and tag values are **case-sensitive** and are stored as submitted.
+* The number of keys and tags must not exceed 1024.
 
 Date limits:
 
@@ -80,4 +81,4 @@ curl https://atsd_host:8443/api/v1/properties/insert  \
   --data '[{"type":"disk","entity":"nurswgvml007","key":{"file_system":"/","mount_point":"sda1"},"tags":{"fs_type":"ext4"},"date":"2016-05-25T04:15:00Z"}]'
 ```
 
-## Response 
+## Response

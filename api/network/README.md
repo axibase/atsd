@@ -246,38 +246,50 @@ Use CSV escaping methods in core libraries where available, for example [StringE
 ### Case Sensitivity
 
 * Field names are case-insensitive and are converted to lower case when stored in the database.
-* Field values are case-sensitive and are stored as submitted, except for entity names, metric names, and property types, which are converted to lower case.
+* Field values are **case-sensitive** and are stored as submitted, except for entity names, metric names, and property types, which are converted to lower case.
 
-### Command Length Limits
+```ls
+# input command
+series e:nurSWG m:Temperature=38.5 t:Degrees=Celsius
+# stored record
+series e:nurswg m:temperature=38.5 t:degrees=Celsius
+```
 
-The server enforces the following maximum lengths for command lines:
+### Command Limits
 
-| **Command** | **Maximum Length, bytes** |
-|:---|:---|
-| series | 128*1024  |
-| property | 128*1024  |
-| message  | 128*1024  |
-| other | 1024  |
+#### Length Limit
+
+The command length cannot exceed **128 Kb** (1024 * 128 bytes).
 
 The client must split a command that is too long into multiple commands.
+
+#### Tag Count Limit
+
+The number of tags included in the command cannot exceed the following limit:
+
+| **Command** | **Maximum Tags** |
+|:---|:---|
+| series | 1024 series tags |
+| property | 1024 keys and tags |
+| message | 1024 message tags |
 
 ### Schema
 
 * New entities, metrics, and tags are created automatically when inserting data.
-* The number of unique identifiers is subject to the following default limits:
+* The number of unique identifiers is subject to the following limits:
 
 |**Type**| **Maximum Identifier**|
 |:---|:---|
 |metric| 65535 <br>16777215 in ATSD on HBase 1.x|
 |entity| 16777215|
 |tag_key| 65535|
-|tag_value| 16777215|
-|message_type| 65535|
-|message_source| 65535|
+|tag_value| 16777215 |
+|message_type| 65535 |
+|message_source| 65535 |
 
 ### Time Field
 
-The timestamp field encodes the time of an observation or an event as determined by the source and can be specified with `ms`, `s`, or `d` fields.
+The timestamp field records the time of an observation or an event as determined by the source and can be specified with `ms`, `s`, or `d` fields.
 
 |**Field**|**Type**|**Description**|
 |:---|:---|:---|

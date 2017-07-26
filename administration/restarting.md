@@ -1,6 +1,6 @@
 # Restarting
 
-ATSD provides scripts to control ATSD and its components.
+ATSD provides scripts to control the database and its components.
 
 Use these scripts to gracefully restart ATSD and to resolve startup issues.
 
@@ -54,7 +54,7 @@ docker exec -it atsd tail -f /opt/atsd/atsd/logs/atsd.log
 
 ## Processes
 
-Switch to `axibase` user and run the `jps` utility to display Java processes running under the current user.
+Switch to the`axibase` user and run the `jps` utility to display Java processes running under the current user.
 
 ```java
 27392 Jps
@@ -83,7 +83,7 @@ Switch to `axibase` user and run the `jps` utility to display Java processes run
 
 ### Stop Services
 
-* Stop ATSD
+#### Stop ATSD
 
 Stop ATSD and wait for the script to exit:
 
@@ -99,7 +99,9 @@ jps
 
 If the `Server` process is still running, kill it forcefully with `kill -9 {Server-pid}`:
 
-* Stop HBase and wait for the script to exit
+### Stop HBase
+
+Execute the following script and wait for the script to exit:
 
 ```sh
 /opt/atsd/bin/atsd-hbase.sh stop
@@ -120,17 +122,15 @@ The `jps` output should display only HDFS processes at this time:
 25587 NameNode
 ```
 
-If any HBase processes are still running, retry `./atsd-hbase.sh stop`.
+If any HBase processes are still running, retry `/opt/atsd/bin/atsd-hbase.sh stop`.
 
-If the above fails to stop HBase processes, execute the following commands:
+If the repeat attempt fails to stop HBase processes, execute the following commands:
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh stop regionserver
 /opt/atsd/hbase/bin/hbase-daemon.sh stop master
 /opt/atsd/hbase/bin/hbase-daemons.sh stop zookeeper
 ```
-
-
 
 If subsequent  `./atsd-hbase.sh stop` executions fail to stop HBase processes, kill HBase processes by PID with SIGTERM (no flags).
 
@@ -142,23 +142,35 @@ kill 18494
 
 If any HBase process fails to stop after that and is still visible in `jps`, contact Axibase support for further instructions to prevent data loss.
 
+#### Stop HDFS
+
+```sh
+/opt/atsd/bin/atsd-dfs.sh stop
+```
+
 ### Start Services
 
-Start HDFS, HBase and ATSD in the reverse order:
+Start HDFS, HBase, and ATSD in that order, opposite to the order they were shut down.
 
-* Start HDFS, if `jps` shows that no HDFS processes are running:
+#### Start HDFS
+
+Start HDFS, if `jps` shows that no HDFS processes are running:
 
 ```sh
 /opt/atsd/bin/atsd-dfs.sh start
 ```
 
-* Start HBase, if `jps` shows that no HBase processes are running:
+#### Start HBase
+
+Start HBase, if `jps` shows that no HBase processes are running:
 
 ```sh
 /opt/atsd/bin/atsd-hbase.sh start
 ```
 
-* Start ATSD, if `jps` shows that no ATSD process is running:
+#### Start ATSD
+
+Start ATSD, if `jps` shows that no ATSD processes are running:
 
 ```sh
 /opt/atsd/bin/atsd-tsd.sh start
@@ -200,7 +212,7 @@ If `jps` output is incomplete, the `atsd-all.sh` script aborts the startup proce
 nurswgvml007 atsdService: * [ATSD] DataNode is not running.
 ```
 
-* Solution: Stop all ATSD services. Remove `/tmp/hsperfdata_axibase` directory.
+* Solution: Stop all ATSD services. Remove the `/tmp/hsperfdata_axibase` directory.
 
 ### Temporary Files
 
@@ -214,7 +226,7 @@ chown -R axibase:axibase /tmp/atsd
 
 ### `/opt/atsd` directory
 
-ATSD uses `/opt/atsd` directory to store log files, backup files, and other files. If this directory is owned by root, ATSD cannot function properly.
+ATSD uses the `/opt/atsd` directory to store log files, backup files, and other files. If this directory is owned by root, ATSD cannot function properly.
 
 * Solution: Stop all ATSD services. Grant ownership to `/opt/atsd` directory to the 'axibase' user.
 

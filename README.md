@@ -53,10 +53,10 @@
   * [Alteryx Designer](integration/alteryx/README.md)
   * [IBM SPSS Modeler](integration/spss/modeler/README.md)
   * [IBM SPSS Statistics](integration/spss/statistics/README.md)
+  * [MatLab](integration/matlab/README.md)
   * [Pentaho Data Integration](integration/pentaho/data-integration/README.md)
   * [Pentaho Report Designer](integration/pentaho/report-designer/README.md)  
-  * [MatLab](integration/matlab/README.md)
-  * Stata
+  * [Stata](integration/stata/README.md)
   * Tableau
 
 ## Rule Engine
