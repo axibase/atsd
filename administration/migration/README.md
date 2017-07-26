@@ -75,7 +75,7 @@ cp -R /opt/atsd /opt/atsd-backup
 ```
 
 ## Check `/etc/hosts` File
-In case your run HBase in standolone mode and your `/etc/hosts` file contains lines
+In case your run HBase in standolone or pseudo-distributed mode and your `/etc/hosts` file contains lines
 
 ```sh
 127.0.0.1 localhost 
@@ -278,7 +278,7 @@ Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` (copy  thi
     </property>
     <property>
         <name>mapreduce.map.memory.mb</name>
-        <!-- set to 50% of available physical memory on the server -->
+        <!-- should not exceeds 50% of available physical memory on the server! -->
         <value>4096</value>
     </property>
     <property>
@@ -292,7 +292,7 @@ Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` (copy  thi
     </property>
     <property>
         <name>mapreduce.reduce.memory.mb</name>
-        <!-- set to 50% of available physical memory on the server -->
+        <!-- should not exceeds 50% of available physical memory on the server! -->
         <value>4096</value>
     </property>
     <property>
@@ -427,7 +427,6 @@ In case of errors, review logs for the job:
 7. Migrate the 'atsd_forecast' table:
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -h
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -s 'atsd_forecast_backup' -d 'atsd_forecast' -m 2 -r
 ```
 
@@ -509,13 +508,13 @@ Download [`tsd-hbase-1.0.0.jar`](bin/tsd-hbase-1.0.0.jar) to `/opt/atsd/hbase/li
 3. Start HBase:
 
 ```sh
-/opt/atsd/hbase/bin/start-hbase.sh
+/opt/atsd/bin/atsd-hbase.sh start
 ```
 
 4. Start new version of ATSD.
 
 ```sh
-/opt/atsd/atsd/bin/start-atsd.sh
+/opt/atsd/bin/atsd-tsd.sh start
 ```
 
 5. Check that all data are available in ATSD.
