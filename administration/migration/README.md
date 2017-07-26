@@ -10,33 +10,31 @@ This instruction describes how to migrate Axibase Time Series Database running o
 | Old | 16999 and earlier | 1.7 | 0.94.29 | 1.0.3 |
 | New | 17000 and later | 1.8 | 1.2.5 | 2.6.4 |
 
-## Java
-
-Install Java 8 on the ATSD server.
-
 ## Prepare ATSD For Upgrade
 
-1. Login into ATSD web interface, open **Admin > Configuration Files**. Select `hadoop.properties`file.
-2. Remove the following deprecated setting, if present:
+1. Switch user to 'axibase'.
 
-  ```properties
-  hbase.regionserver.lease.period=120000
-  ```
-3. Add new setting:
+```sh
+su axibase
+```
 
-  ```properties
-  hbase.client.scanner.timeout.period=120000
-  ```
-
-4. Save the file.  
-5. Stop ATSD.
+2. Stop ATSD.
 
   ```sh
   /opt/atsd/bin/atsd-tsd.sh stop
   ```
   
-6. Execute the `jps` command and verify that the `Server` process is **not present** in the `jps` output.
+3. Execute the `jps` command and verify that the `Server` process is **not present** in the `jps` output.
 If necessary, follow the safe [ATSD shutdown](../restarting.md#stop-atsd) procedure.
+
+4. Open configuration file `/opt/atsd/atsd/conf/hadoop.properties`.
+
+5. If this file contains property
+`hbase.regionserver.lease.period=120000`
+replace it by
+`hbase.client.scanner.timeout.period=120000`.
+
+6. Save the file.  
 
 ## Check HBase Status
 
@@ -83,8 +81,39 @@ If necessary, follow the safe [ATSD shutdown](../restarting.md#stop-atsd) proced
 Copy the entire ATSD installation directory to a backup directory:
 
   ```sh
-  cp -R /opt/atsd /opt/atsd-backup
+  cp -R /opt/atsd /home/axibase/atsd-backup
   ```
+
+## Java
+
+Install Java 8 on the ATSD server.
+
+1. Ubuntu 14.04.
+
+```sh
+sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+sudo apt install oracle-java8-set-default
+```
+Accept Java license agreement.
+
+2. RHEL 6/7 and CentOS 6/7. 
+
+Download `jdk-8u141-linux-x64.rpm` package from (Oracle Java 8 JDK)[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html] page.
+Install java 8 (in directory /usr/java).
+
+```sh
+sudo yum localinstall jdk-8u141-linux-x64.rpm
+```
+
+Set default java 8 as default java.
+
+```sh
+sudo alternatives --config java
+```
+
+Delete downloaded `jdk-8u141-linux-x64.rpm` file.
 
 ## Check `/etc/hosts` File
 In case your run HBase in standolone or pseudo-distributed mode and your `/etc/hosts` file contains lines
@@ -100,6 +129,26 @@ change them to
 127.0.0.1 localhost myhostname
 ```
 because otherwise new HBase will not work: Master will not be able connect to Region Server, as explained in [elazar](http://web.archive.org/web/20140104070155/http://blog.devving.com/why-does-hbase-care-about-etchosts/).
+
+## Setup passphraseless ssh
+Check that you can ssh to the localhost without a passphrase:
+
+```sh
+ssh localhost
+```
+
+If you cannot ssh to localhost without a passphrase, then create RSA key pair.
+Accept default private key path (should be `/home/axibase/.ssh/id_rsa`) and empty passphrase.
+
+```sh
+ssh-keygen 
+```
+
+Add public key to `authorized_keys` file.
+
+```sh
+cat /home/axibase/.ssh/id_rsa.pub >> /home/axibase/.ssh/authorized_keys
+```
 
 ## Upgrade Hadoop
 
@@ -119,12 +168,29 @@ cp /opt/atsd/hadoop/conf/core-site.xml /opt/atsd/hadoop-2.6.4/etc/hadoop/core-si
 cp /opt/atsd/hadoop/conf/hdfs-site.xml /opt/atsd/hadoop-2.6.4/etc/hadoop/hdfs-site.xml
 ```
 
-Set `JAVA_HOME` and `HADOOP_PID_DIR` in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file:
+Change `JAVA_HOME` variables in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file
+so it points to java 8.
+Check your current default java version is 8.
+
+```sh
+java -verson
+```
+
+Get path to java home.
+```sh
+$(dirname $(dirname $(readlink -f $(which javac))))
+```
 
 ```sh
 # set valid path to java 8 home here!
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+```
+
+Change `HADOOP_PID_DIR` and `HADOOP_SECURE_DN_PID_DIR` variables in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file.
+
+```sh
 export HADOOP_PID_DIR=/opt/atsd/pids
+export HADOOP_SECURE_DN_PID_DIR=/opt/atsd/pids
 ```
 
 3. Replace the Hadoop directory.
@@ -137,25 +203,33 @@ mv /opt/atsd/hadoop-2.6.4 /opt/atsd/hadoop
 4. Run Hadoop upgrade.
 
 ```sh
-/opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgrade
-```
-
-View namenode web interface on port 50070: `http://namenodeIP:50070`.
-The page should contain information: `"Upgrade in progress. Not yet finalized."` and `SafeMode is ON`.
-
-Stop the namenode process and start HDFS.
-
-```sh
-/opt/atsd/hadoop/sbin/hadoop-daemon.sh stop namenode
-/opt/atsd/hadoop/sbin/start-dfs.sh
-```
-
-<!--
-```sh
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
+```
+
+Check log file.
+
+```sh
+tail -n 10 /opt/atsd/hadoop/logs/hadoop-axibase-namenode-atsd.log
+```
+
+Expected output.
+
+```sh
+2017-07-26 16:16:16,974 INFO org.apache.hadoop.util.ExitUtil: Exiting with status 0
+2017-07-26 16:16:16,959 INFO org.apache.hadoop.ipc.Server: IPC Server Responder: starting
+2017-07-26 16:16:16,962 INFO org.apache.hadoop.ipc.Server: IPC Server listener on 8020: starting
+2017-07-26 16:16:16,986 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Starting CacheReplicationMonitor with interval 30000 milliseconds
+2017-07-26 16:16:16,986 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Rescanning after 1511498 milliseconds
+2017-07-26 16:16:16,995 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Scanned 0 directive(s) and 0 block(s) in 9 millisecond(s).
+2017-07-26 16:16:16,996 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at atsd/127.0.1.1
+************************************************************/
+```
+
+```sh
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
--->
 
 Wait while the upgrade is completed and check that HDFS daemons were succeessfully started:
 
@@ -209,13 +283,21 @@ If left unchanged, it will prevent HBase from starting.
 Modify `JAVA_HOME` and `HBASE_PID_DIR` settings in `/opt/atsd/hbase-1.2.5/conf/hbase-env.sh`:
 
 ```sh
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# set valid path to java 8 home here!
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export HBASE_PID_DIR=/opt/atsd/pids
 ```
 
-Set HBase JVM heap size to 50% of available physical memory on the server. The setting can be reverted to a lower value after migration is completed.
+View available server memory.
 
 ```sh
+cat /proc/meminfo | grep "MemTotal"
+```
+
+Set HBase JVM heap size to 50% of memory on the server. The setting can be reverted to a lower value after migration is completed.
+
+```sh
+# adjust for your server memory!
 export HBASE_HEAPSIZE=4G
 ```
 
@@ -271,7 +353,6 @@ ROW                  COLUMN+CELL
 hbase(main):002:0> exit
 ```
 
-
 ## Prepare Hadoop to Run ATSD Migraton Map-Reduce Job
 
 1. Configure Hadoop for map-reduce migration job: [yarn-site.xml](conf/yarn-site.xml), [mapred-site.xml](conf/mapred-site.xml).
@@ -289,7 +370,7 @@ Add these properties to `/opt/atsd/hadoop/etc/hadoop/yarn-site.xml`:
   </property>
 ```
 
-Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` (copy this file from `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` if it is not present):
+Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` (copy this file from `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml.template` if it is not present):
 
 ```xml
 <configuration>
@@ -365,10 +446,19 @@ jps
 ## Run ATSD Migration Map-Reduce Job
 
 1. Download [`migration.jar`](bin/migration.jar) to `/home/axibase/migration.jar`.
+You can download this file by `wget` command.
+
+```sh
+wget -P /home/axibase/ https://github.com/axibase/atsd/raw/migration/administration/migration/bin/migration.jar
+```
 
 2. Set `JAVA_HOME` variable to Java 8.
 
-Check that Java version 8 is available.
+```sh
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+```
+
+3. Check that current java version is 8.
 
 ```sh
 java -version
