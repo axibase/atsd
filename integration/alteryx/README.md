@@ -44,19 +44,23 @@ these commands on the **Metrics > Data Entry** page.
 
 - Open the **ODBC Data Source Administrator** window by pressing the **ODBC Admin** button in the **ODBC Connection** dialog.
 
-- Configure the datasource as described [here](../odbc/README.md#configure-odbc-data-source).
+- Configure the [datasource](../odbc/README.md#configure-odbc-data-source).
 
-- Append `tables` property to the DSN URL to filter metrics by name in the Query
-  Builder. For example, `tables=*` displays all ATSD metrics as tables whereas `tables=infla*`
-  shows only metrics that start with the characters 'infla'. The property `missingMetric=error` also required.
+- Add the [`missingMetric=error`](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) property to the DSN URL to ensure that the driver functions properly.
 
   ```text
-  jdbc:axibase:atsd:ATSD_HOST:8443;tables=*;missingMetric=error
+    jdbc:atsd:ATSD_HOST:8443;missingMetric=error
+  ```
+
+- If the target ATSD installation contains more than 10000 metrics, consider adding the `tables` property to the DSN URL to filter metrics by name in the Query Builder. For example, `tables=infla*` shows only metrics that start with the characters 'infla'. 
+
+  ```text
+    jdbc:atsd:ATSD_HOST:8443;missingMetric=error;tables=infla*
   ```
 
 > Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
 
-- Make sure the **Strip Quote** option is checked, press **OK**.
+- Check (enable) the **Strip Quote** and **Strip Escape** options, press **OK**.
 
   ![](images/odbc_quotes.png)
 
