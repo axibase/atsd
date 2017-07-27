@@ -23,23 +23,23 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install Tableau
 
 - Install [Tableau Desktop 10.2](https://www.tableau.com/support/releases/desktop/10.2) 
-- Copy [ATSD.tdc](resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory.
+- Copy [ATSD.tdc](resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory
 
 ### Install ODBC-JDBC Bridge
 
 - Install [ODBC-JDBC gateway](../odbc/README.md)  
-- Make sure that the 'Strip Quote' and 'Strip Escape' checkboxes are enabled.
+- Make sure that the 'Strip Quote' and 'Strip Escape' checkboxes are enabled
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
 ## Configure Database Connection
 
-- Launch Tableau.
-- Select **Connect > To a Server > Other Databases(ODBC)**.
-- Select the ATSD DSN from the dropdown. This is the DSN you specified during ODBC-JDBC bridge setup.
-- Press **Connect** and wait a few seconds.
-- Leave the **Server**,**Port**, **Database** and **String Extras** fields empty.
-- Press **Sign In**.
+- Launch Tableau
+- Select **Connect > To a Server > Other Databases(ODBC)**
+- Select the ATSD DSN from the dropdown. This is the DSN you specified during ODBC-JDBC bridge setup
+- Press **Connect** and wait a few seconds
+- Leave the **Server**,**Port**, **Database** and **String Extras** fields empty
+- Press **Sign In**
 
 ![](images/configure_connection.png)
 
@@ -49,17 +49,17 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 ![](images/search.png)  
 
-- Drag-and-drop the table to the Data Source Pane.
+- Drag-and-drop the table to Canvas area
 - Press **Update Now**.
 
 ![](images/update_now1.png)
 
 ## Visualization
 
-- Press **Sheet 1**.
-- Press **OK** to acknowledge the warning about limitations.
-- Set _Datetime_ to the columns field.
-- Set _Value_ to the rows field.
+- Press **Sheet 1**
+- Press **OK** to acknowledge the warning about limitations
+- Set _Datetime_ to the columns field
+- Set _Value_ to the rows field
 
 > Since _time_ and _datetime_ represent recorded times composed of different data types (long and timestamp), make sure you select only one of these columns in your queries. 
 
@@ -67,8 +67,8 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 Inspect a subset of the visualized data:
 
-- Select some data points in the view.
-- Right click and choose **View Data**.
+- Select some data points in the view
+- Right click and choose **View Data**
 
 ![](images/summary1.png)
 
