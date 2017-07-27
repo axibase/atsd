@@ -48,10 +48,10 @@ these commands on the **Metrics > Data Entry** page.
 
 - Append `tables` property to the DSN URL to filter metrics by name in the Query
   Builder. For example, `tables=*` displays all ATSD metrics as tables whereas `tables=infla*`
-  shows only metrics that start with the characters 'infla'. 
+  shows only metrics that start with the characters 'infla'. The property `missingMetric=error` also required.
 
   ```text
-  jdbc:axibase:atsd:ATSD_HOST:8443;tables=*
+  jdbc:axibase:atsd:ATSD_HOST:8443;tables=*;missingMetric=error
   ```
 
 > Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
@@ -129,7 +129,7 @@ You can download [this workflow](resources/atsd-workflow.yxmd) for review in you
 The workflow consists of the following steps (nodes):
 
 1. **Input Data** tool.
-   Repeat the steps in the previous section for this tool, choose
+   Repeat the steps in the [Create Database Connection](#create-database-connection) section for this tool, choose
    `inflation.cpi.categories.price` table. Select `datetime`,
    `value` columns and manually add `tags.category` as shown below.
 
@@ -198,7 +198,7 @@ The workflow consists of the following steps (nodes):
 Press **Run Workflow**.
 
 The data will be retrieved from the database and processed in Designer by the workflow
-with the new series stored back in the database. 
+with the new series stored back in the database.
 
 Click on the **Browse** node to view the results.
 
