@@ -19,7 +19,8 @@ Report showing the differences between two metrics on separate graphs.
 - Press **OK** to acknowledge the warning about limitations
 - Drag-and-drop _Datetime_ onto the column field
 - Drag-and-drop both _Value_ onto the rows field
-- Change _Automatic_ to _Bar_ in the dropdown at the _All_ section on Marks Card
+- Select _Bar_ in the dropdown at the _All_ section on Marks Card
+- Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results
 

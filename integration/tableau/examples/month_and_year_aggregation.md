@@ -6,8 +6,10 @@
 
 ## Steps
 
-- Drag-and-drop `bi.ex_net1.m` to Canvas area
-- Open **Sheet 1**: drag-and-drop _Datetime_ onto the columns field and _Value_ onto the rows field
+- Drag-and-drop the table to Canvas area
+- Press **Sheet 1**
+- Press **OK** to acknowledge the warning about limitations
+- Drag-and-drop _Datetime_ onto the columns field and _Value_ onto the rows field
 - _Value_ > _Right-click_ > _Dimension_
 - Marks Card > Drop-down > Line
 - _YEAR > +_, right click on the _QUARTER > MONTH_

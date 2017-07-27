@@ -20,7 +20,7 @@ Build a report displaying two metrics in one workspace.
 - Drag-and-drop _Datetime_ onto the columns field (you can use any of _Datetime_), change from **YEAR** aggregation to _Exact Date_ 
 - Drag-and-drop both _Value_ onto the rows field, change from **SUM** aggregation to _Dimension_
 - Specify color: _Marks_ > _Value_ (you can use any of _Value_) > _Color_
-- Specify shape: _Marks_ > _Value_ (you can use any of _Value_) > _Shape_
+- Specify shape: _Marks_ > _Value_ (you can use any of _Value_) > drop-down > _Shape_
 
 ## Results
 

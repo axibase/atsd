@@ -12,9 +12,10 @@ Let's build a report illustrating average monthly imports each year.
 - Drag-and-drop the table to Canvas area
 - Press **Sheet 1**
 - Press **OK** to acknowledge the warning about limitations
-- Drag-and-drop _Datetime_ column onto the columns field.
-- Drag-and-drop _Value_ column onto the rows field.
-- Change aggregation from **SUM** to **AVG**
+- Drag-and-drop _Datetime_ onto the columns field.
+- Drag-and-drop _Value_ onto the rows field.
+- Change value aggregation from **SUM** to **AVG**: right click > **Measure** > **Average**
+- Select _Line_ in the dropdown on Marks Card
 - Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results

@@ -19,7 +19,7 @@ Build a report displaying monthly exports and imports.
 - Press **OK** to acknowledge the warning about limitations
 - Drag-and-drop _Datetime_ onto the column field
 - Drag-and-drop both _Value_ onto the rows field
-- Rename values. Right click on _Value_ and choose **Rename**
+- Optionally rename values: right click on _Value_ and choose **Rename**
 - Show Me Card > _side-by-side bars_ 
 
 ![](../images/bars.png)

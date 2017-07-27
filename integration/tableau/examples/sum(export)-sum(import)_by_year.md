@@ -14,8 +14,11 @@
 - Press **Sheet 1**
 - Press **OK** to acknowledge the warning about limitations
 - Drag-and-drop _Datetime_ onto the column field
-- Rename both _Value_ to 'Export Value' and 'Import Value'
-- Copy: `SUM([Export Value]) - SUM([Import Value])` > double click on the rows field > paste > **Enter**
+- Rename both _Value_ to 'Export Value' and 'Import Value': right click on _Value_ and choose **Rename**
+- Copy: `SUM([Export Value])-SUM([Import Value])` > double click on the rows field > paste > **Enter**
+> In case of error remove ']' and select value from tooltip
+- Select _Line_ in the dropdown at Marks Card
+- Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results
 
