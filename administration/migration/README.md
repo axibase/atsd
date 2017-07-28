@@ -245,11 +245,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 4. Upgrade Hadoop.
 
 ```sh
-/opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode
-```
-
-```sh
-/opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
+/opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode -upgradeOnly
 ```
 
 5. Review the log file.
