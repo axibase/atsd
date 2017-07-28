@@ -336,6 +336,10 @@ export HBASE_HEAPSIZE=2G
 /opt/atsd/hbase/bin/hbase upgrade -check
 ```
 
+```sh
+tail /opt/atsd/hbase/logs/hbase.log
+```
+
 ```
   INFO  [main] util.HFileV1Detector: Count of HFileV1: 0
   INFO  [main] util.HFileV1Detector: Count of corrupted files: 0
