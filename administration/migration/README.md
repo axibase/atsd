@@ -1,7 +1,7 @@
 
 # Migrating ATSD to HBase 1.2.5
 
-This instruction describes how to migrate Axibase Time Series Database running on **HBase-0.94** to a version running on **HBase-1.2.5**.
+These instructions describe how to migrate an Axibase Time Series Database instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
 
 ## Versioning
 
@@ -47,7 +47,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## Prepare ATSD For Upgrade
 
-1. Switch user to 'axibase'.
+1. Switch users to 'axibase'.
 
 ```sh
 su axibase
@@ -61,13 +61,13 @@ su axibase
   
 3. Execute the `jps` command. Verify that the `Server` process is **not present** in the `jps` output.
 
-> If `Server` process continues running, follow the [safe ATSD shutdown](../restarting.md#stop-atsd) procedure.
+> If the `Server` process continues running, follow the [safe ATSD shutdown](../restarting.md#stop-atsd) procedure.
 
 4. Edit configuration file `/opt/atsd/atsd/conf/hadoop.properties`.
 
-    - Remove `hbase.regionserver.lease.period` setting, if present.
+    - Remove the `hbase.regionserver.lease.period` setting, if present.
 
-    - Add `hbase.client.scanner.timeout.period` setting, if missing:
+    - Add the `hbase.client.scanner.timeout.period` setting, if missing:
 
     ```
     hbase.client.scanner.timeout.period=120000
@@ -147,9 +147,9 @@ In case of error `'No package java-1.8.0-openjdk-devel available.'`, install Jav
 
 ### Option 2. Oracle JDK Installation From Archive
 
-1. Open [Oracle Java 8 JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page.
+1. Open the [Oracle Java 8 JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page.
 
-2. Accept the license and copy the link to the latest file with Java SE Development Kit for Linux x64, for example `jdk-8u144-linux-x64.tar.gz` file.
+2. Accept the license and copy the link to the latest file with the Java SE Development Kit for Linux x64, for example the `jdk-8u144-linux-x64.tar.gz` file.
 
 3. Copy the download URL into the `wget` command and download the `tar.gz` file.
 
@@ -195,14 +195,14 @@ tar -xf hadoop.tar.gz -C /opt/atsd/
 rm hadoop.tar.gz
 ```
 
-2. Configure Hadoop to use java 8.
+2. Configure Hadoop to use Java 8.
 
 Get path to Java home.
 ```sh
 $(dirname $(dirname $(readlink -f $(which javac))))
 ```
 
-Update `JAVA_HOME` variable in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file to Java 8.
+Update the `JAVA_HOME` variable in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file to Java 8.
 
 ```sh
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -261,7 +261,7 @@ The `jps` command output should report `NameNode`, `SecondaryNameNode`, and `Dat
 
 ## Upgrade HBase
 
-1. Download pre-configured HBase-1.2.5  and unarchive it into ATSD installation directory:
+1. Download a pre-configured version of HBase-1.2.5  and unarchive it into ATSD installation directory:
 
 ```sh
 wget https://axibase.com/public/atsd-125-migration/hbase.tar.gz
@@ -271,7 +271,7 @@ rm hbase.tar.gz
 
 2. Configure HBase.
 
-Update `JAVA_HOME` variable in the `/opt/atsd/hbase/conf/hbase-env.sh` file so it points to Java 8.
+Update the `JAVA_HOME` variable in the `/opt/atsd/hbase/conf/hbase-env.sh` file so it points to Java 8.
 
 ```sh
 # Set valid path to java 8 home
@@ -317,7 +317,7 @@ export HBASE_HEAPSIZE=2G
 /opt/atsd/hbase/bin/start-hbase.sh
 ```
 
-Verify that `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
+Verify that the `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
 
 5. Check that ATSD tables are available in HBase. 
 
@@ -339,7 +339,7 @@ ROW                  COLUMN+CELL
 hbase(main):002:0> exit
 ```
 
-## Prepare Hadoop to Run Migraton Map-Reduce Job
+## Prepare Hadoop to Run the Migraton Map-Reduce Job
 
 1. If the server has more than 2GB of physical memory available, increase the amount of memory allocated to Map-Reduce jobs.
 
@@ -351,7 +351,7 @@ cat /proc/meminfo | grep "MemTotal"
 
 2. Open `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
 
-* If server memory exceed 6Gb, set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072Mb. Otherwise set these settings to 50% of the available memory.
+* If server memory exceeds 6Gb, set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072Mb. Otherwise set them to 50% of the available memory.
 
 * Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
 
@@ -409,13 +409,13 @@ jps
 
 ### Configure Migration Job
 
-1. Download [`migration.jar`](https://axibase.com/public/atsd-125-migration/migration.jar) to `/opt/atsd` directory.
+1. Download [`migration.jar`](https://axibase.com/public/atsd-125-migration/migration.jar) to the `/opt/atsd` directory.
 
 ```sh
 wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/migration.jar
 ```
 
-2. Update `JAVA_HOME` variable to Java 8.
+2. Update the `JAVA_HOME` variable to Java 8.
 
 ```sh
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -461,7 +461,7 @@ export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migrati
 
 ### Migrate Records from Backup Tables
 
-1. Migrate data in the `'atsd_delete_task_backup'` table by launching the task and confirming the execution.
+1. Migrate data in the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -s 'atsd_delete_task_backup' -d 'atsd_delete_task' -m 2 -r
@@ -501,25 +501,25 @@ INFO mapreduce.LastInsertMigration: Last Insert table migration job took 37 seco
 ```
 
 
-Delete the folder containing the diagnostics file:
+Delete folder containing the diagnostics file:
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable
 ```
 
-4. Migrate data in the 'atsd_metric' table.
+4. Migrate data to the 'atsd_metric' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -s 'atsd_metric_backup' -d 'atsd_metric' -m 2 -r
 ```
 
-5. Migrate data in the 'atsd_d' table.
+5. Migrate data to the 'atsd_d' table.
 
 ```sh
 /usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s test_d_backup -d test_d -m 2
 ```
 
-6. Migration is now completed. 
+6. Migration is now complete. 
 
 7. Stop Map-Reduce servers.
 
@@ -528,7 +528,7 @@ Delete the folder containing the diagnostics file:
 /opt/atsd/hadoop/sbin/stop-yarn.sh
 ```
 
-## Start New ATSD Version
+## Start the New Version of ATSD
 
 1. Remove old ATSD application files.
 
@@ -555,13 +555,13 @@ tar -xf scripts.tar.gz -C /opt/atsd/
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-5. Login into ATSD web interface.
+5. Log in to the ATSD web interface.
 
-6. Open the [Metrics] tab. Verify that data is available by checking that historical data is availble for selected metrics.
+6. Open the [Metrics] tab. Verify that the data is available by checking that historical data is present for the selected metrics.
 
 ## Delete Backups
 
-1. Delete backup tables using HBase shell.
+1. Delete backup tables using the HBase shell.
 
 Execute 'disable' and 'drop' commands for each `_backup` table:
 
