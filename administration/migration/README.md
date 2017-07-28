@@ -189,15 +189,21 @@ javac -version
 
 ## Upgrade Hadoop
 
-1. Download a pre-configured Hadoop-2.6.4 and unarchive it into the ATSD installation directory.
+1. Delete the old Hadoop directory
 
-```shell
+```sh
+rm -rf /opt/atsd/hadoop
+```
+
+2. Download a pre-configured Hadoop-2.6.4 and unarchive it into the ATSD installation directory.
+
+```sh
 wget https://axibase.com/public/atsd-125-migration/hadoop.tar.gz
 tar -xf hadoop.tar.gz -C /opt/atsd/
 rm hadoop.tar.gz
 ```
 
-2. Configure Hadoop to use Java 8.
+3. Configure Hadoop to use Java 8.
 
 Get path to the Java home.
 
@@ -213,13 +219,13 @@ Update the `JAVA_HOME` variable in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.s
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-3. Upgrade Hadoop.
+4. Upgrade Hadoop.
 
 ```sh
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
 ```
 
-4. Review the log file.
+5. Review the log file.
 
 ```sh
 tail /opt/atsd/hadoop/logs/hadoop-axibase-namenode-atsd.log
@@ -240,13 +246,13 @@ SHUTDOWN_MSG: Shutting down NameNode at atsd/127.0.1.1
 ************************************************************/
 ```
 
-5. Start HDFS.
+6. Start HDFS.
 
 ```sh
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
 
-6. Check that HDFS daemons were succeessfully started.
+7. Check that HDFS daemons were succeessfully started.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
@@ -254,7 +260,7 @@ SHUTDOWN_MSG: Shutting down NameNode at atsd/127.0.1.1
 
 The command should return information about HDFS usage and available data nodes.
 
-7. Finalize HDFS upgrade.
+8. Finalize HDFS upgrade.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
@@ -266,7 +272,13 @@ The `jps` command output should report `NameNode`, `SecondaryNameNode`, and `Dat
 
 ## Upgrade HBase
 
-1. Download a pre-configured version of HBase-1.2.5  and unarchive it into ATSD installation directory:
+1. Delete the old HBase directory
+
+```sh
+rm -rf /opt/atsd/hbase
+```
+
+2. Download a pre-configured version of HBase-1.2.5  and unarchive it into ATSD installation directory:
 
 ```sh
 wget https://axibase.com/public/atsd-125-migration/hbase.tar.gz
@@ -274,7 +286,7 @@ tar -xf hbase.tar.gz -C /opt/atsd/
 rm hbase.tar.gz
 ```
 
-2. Configure HBase.
+3. Configure HBase.
 
 Update the `JAVA_HOME` variable in the `/opt/atsd/hbase/conf/hbase-env.sh` file so it points to Java 8.
 
@@ -283,7 +295,7 @@ Update the `JAVA_HOME` variable in the `/opt/atsd/hbase/conf/hbase-env.sh` file 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-3. View available physical memory on the server.
+4. View available physical memory on the server.
 
 ```sh
 cat /proc/meminfo | grep "MemTotal"
@@ -296,7 +308,7 @@ If the memory is greater than 2GB, increase HBase JVM heap size to 50% of availa
 export HBASE_HEAPSIZE=2G
 ```
 
-4. Upgrade HBase.
+5. Upgrade HBase.
 
 ```sh
 /opt/atsd/hbase/bin/hbase upgrade -check
@@ -316,7 +328,7 @@ export HBASE_HEAPSIZE=2G
 /opt/atsd/hbase/bin/hbase-daemon.sh stop zookeeper
 ```
 
-5. Start HBase.
+6. Start HBase.
 
 ```sh
 /opt/atsd/hbase/bin/start-hbase.sh
@@ -324,7 +336,7 @@ export HBASE_HEAPSIZE=2G
 
 Verify that the `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
 
-5. Check that ATSD tables are available in HBase. 
+7. Check that ATSD tables are available in HBase. 
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
@@ -333,7 +345,7 @@ hbase(main):001:0> list
 hbase(main):002:0> exit
 ```
 
-6. Execute a sample scan in HBase.
+8. Execute a sample scan in HBase.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
