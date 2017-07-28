@@ -224,7 +224,6 @@ rm -rf /opt/atsd/hadoop
 ```sh
 wget https://axibase.com/public/atsd-125-migration/hadoop.tar.gz
 tar -xf hadoop.tar.gz -C /opt/atsd/
-rm hadoop.tar.gz
 ```
 
 3. Configure Hadoop to use Java 8.
@@ -234,7 +233,7 @@ Get path to the Java home.
 ```sh
 $(dirname $(dirname $(readlink -f $(which javac))))
 -bash: /usr/lib/jvm/java-8-openjdk-amd64: Is a directory
-# Copy path as /usr/lib/jvm/java-8-openjdk-amd64
+# Java 8 home is /usr/lib/jvm/java-8-openjdk-amd64
 ```
 
 Update the `JAVA_HOME` variable in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file to Java 8.
