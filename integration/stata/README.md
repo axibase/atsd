@@ -89,7 +89,7 @@ Description of resultset:
 Use the [`odbc insert`](https://www.stata.com/manuals13/dodbc.pdf) command to write data from Stata memory into ATSD.
 
 ```
-odbc insert var1 var2 var3, as("entity time value") dsn("ATSD") table("target_metric_name") block
+odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("target_metric_name") block
 ```
 
 > Make sure the `block` flag is set, otherwise all available records may not be inserted into ATSD.
@@ -97,7 +97,7 @@ odbc insert var1 var2 var3, as("entity time value") dsn("ATSD") table("target_me
 Syntax:
 
 - `var1 var2 var3` is a list of variables from the in-memory dataset in Stata.
-- `as("entity time value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
+- `as("entity datetime value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
 - `dsn("ATSD")` is a name of ODBC connection to ATSD.
 - `table("metric_name")` is a name of the metric which will contain exported dataset.
 - `block` is a parameter to force using block inserts.
@@ -223,9 +223,9 @@ Resultset description:
 Stata doesn't support `TIMESTAMP` type. We need to convert `datetime` value to the UNIX Epoch milliseconds and insert it as `time` value:
 
 ```
-generate double time = datetime - tC(01jan1970 00:00:00)
+replace datetime = datetime - tC(01jan1970 00:00:00)
 set odbcdriver ansi
-odbc insert entity time value, as("entity time value") table("inflation.cpi.composite.price") dsn("ODBC_JDBC_SAMPLE") block
+odbc insert entity datetime value, as("entity datetime value") table("inflation.cpi.composite.price") dsn("ODBC_JDBC_SAMPLE") block
 ```
 
 #### datetime as STRING
