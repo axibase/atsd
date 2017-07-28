@@ -48,12 +48,28 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 - Execute [`odbc load`](https://www.stata.com/manuals13/dodbc.pdf) to load results for a custom SQL query results into memory:
 
 ```
-odbc load, exec("SELECT value, tags.name FROM 'java_method_invoke_last' ORDER BY datetime")
+odbc load, exec("SELECT time, value, tags.name FROM 'java_method_invoke_last' ORDER BY datetime LIMIT 100") bigintasdouble
+```
+
+Syntax:
+
+- `exec("SqlStmt")` allows to issue an SQL SELECT statement to generate a table to be read into Stata.
+- `bigintasdouble` specifies that data stored in 64-bit integer (BIGINT) database columns be converted to Stata doubles.
+
+Description of resultset:
+
+![](resources/describe_example_1.png)
+
+### Convert the UNIX Epoch milliseconds to the Stata milliseconds:
+
+```
+generate double datetime = time + tC(01jan1970 00:00:00)
+format %tcCCYY-NN-DD!THH:MM:SS.sss!Z datetime
 ```
 
 Description of resultset:
 
-![](resources/describe_example.png)
+![](resources/describe_example_2.png)
 
 ## Exporting Data
 
@@ -73,7 +89,7 @@ Description of resultset:
 Use the [`odbc insert`](https://www.stata.com/manuals13/dodbc.pdf) command to write data from Stata memory into ATSD.
 
 ```
-odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("target_metric_name") block
+odbc insert var1 var2 var3, as("entity time value") dsn("ATSD") table("target_metric_name") block
 ```
 
 > Make sure the `block` flag is set, otherwise all available records may not be inserted into ATSD.
@@ -81,7 +97,7 @@ odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("targe
 Syntax:
 
 - `var1 var2 var3` is a list of variables from the in-memory dataset in Stata.
-- `as("entity datetime value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
+- `as("entity time value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
 - `dsn("ATSD")` is a name of ODBC connection to ATSD.
 - `table("metric_name")` is a name of the metric which will contain exported dataset.
 - `block` is a parameter to force using block inserts.
@@ -204,10 +220,12 @@ Resultset description:
 
 #### datetime as NUMBER
 
+Stata doesn't support `TIMESTAMP` type. We need to convert `datetime` value to the UNIX Epoch milliseconds and insert it as `time` value:
+
 ```
-replace datetime = datetime - tC(01jan1970 00:00:00)
+generate double time = datetime - tC(01jan1970 00:00:00)
 set odbcdriver ansi
-odbc insert entity datetime value, as("entity datetime value") table("inflation.cpi.composite.price") dsn("ODBC_JDBC_SAMPLE") block
+odbc insert entity time value, as("entity time value") table("inflation.cpi.composite.price") dsn("ODBC_JDBC_SAMPLE") block
 ```
 
 #### datetime as STRING
