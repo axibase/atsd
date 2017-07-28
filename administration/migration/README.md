@@ -540,7 +540,7 @@ rm -rf /opt/atsd/atsd/bin/atsd*.jar
 
 ```sh
 wget /opt/atsd/atsd/bin https://axibase.com/public/atsd-125-migration/atsd.16855.jar
-wget /opt/atsd https://axibase.com/public/atsd-125-migration/scripts.jar
+wget /opt/atsd https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 ```
 
 3. Replace old script files.
