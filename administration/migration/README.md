@@ -87,7 +87,13 @@ Execute the remaining steps as the 'axibase' user.
   /opt/atsd/hbase/bin/hbase hbck
   ```
 
-  The expected message is `Status: OK`. 
+  The expected message is:
+  
+  ```
+  ...
+  0 inconsistencies detected.
+  Status: OK
+  ```
 
 > Follow [recovery](../corrupted-file-recovery.md#repair-hbase) procedures if inconsistencies are reported.
 
