@@ -306,7 +306,6 @@ rm -rf /opt/atsd/hbase
 ```sh
 wget https://axibase.com/public/atsd-125-migration/hbase.tar.gz
 tar -xf hbase.tar.gz -C /opt/atsd/
-rm hbase.tar.gz
 ```
 
 3. Configure HBase.
