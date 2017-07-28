@@ -530,20 +530,34 @@ Delete the folder containing the diagnostics file:
 
 ## Start New ATSD Version
 
-1. Download ATSD files.
+1. Remove old ATSD application files.
 
-* Download [`atsd-dfs.sh`](bin/atsd-dfs.sh) script to `/opt/atsd/bin/` directory.
-* Download [`atsd-executable.jar`](https://axibase.com/public/atsd-125-migration/atsd-executable.jar) to `/opt/atsd/bin/` directory.
+```sh
+rm -rf /opt/atsd/atsd/bin/atsd*.jar
+```
 
-2. Start ATSD.
+2. Download ATSD application files.
+
+```sh
+wget /opt/atsd/atsd/bin https://axibase.com/public/atsd-125-migration/atsd.16855.jar
+wget /opt/atsd https://axibase.com/public/atsd-125-migration/scripts.jar
+```
+
+3. Replace old script files.
+
+```sh
+tar -xf scripts.tar.gz -C /opt/atsd/
+```
+
+4. Start ATSD.
 
 ```sh
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-3. Login into ATSD web interface.
+5. Login into ATSD web interface.
 
-4. Open the [Metrics] tab. Verify that data is available by checking that historical data is availble for selected metrics.
+6. Open the [Metrics] tab. Verify that data is available by checking that historical data is availble for selected metrics.
 
 ## Delete Backups
 
