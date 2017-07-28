@@ -86,35 +86,66 @@ Copy the entire ATSD installation directory to a backup directory:
 
 ## Java
 
-Install Java 8 on the ATSD server.
+1. Install Java 8 on the ATSD server.
 
-1. Ubuntu 14.04.
+Option 1. 
 
-```sh
-sudo apt-add-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer
-sudo apt install oracle-java8-set-default
-```
-Accept Java license agreement.
-
-2. RHEL 6/7 and CentOS 6/7. 
-
-Download `jdk-8u141-linux-x64.rpm` package from [Oracle Java 8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page.
-Install java 8 (in directory /usr/java).
+<!--
+[comment]:<>(!-- http://openjdk.java.net/install/)
+-->
+* Debian, Ubuntu
 
 ```sh
-sudo yum localinstall jdk-8u141-linux-x64.rpm
+sudo apt-get install openjdk-8-jdk
 ```
 
-Set default java 8 as default java.
+In case of error `'Unable to locate package openjdk-8-jdk'`, install using Option 2.
+
+* Centos, Oracle Linux, Red Hat Enterprise Linux, SLES
 
 ```sh
-sudo alternatives --config java
+su -c "yum install java-1.8.0-openjdk-devel"
 ```
 
-Delete downloaded `jdk-8u141-linux-x64.rpm` file.
+In case of error `???`, install using Option 2.
 
+Option 2.
+
+Visit [ Oracle Java 8 JDK Download] (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page, accept the license and copy the link to the latest Java SE Development Kit for Linux x64, for example `jdk-8u144-linux-x64.tar.gz`.
+Use this link to download the java 8 package.
+
+```sh
+wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
+```
+Unpack.
+
+```sh
+sudo mkdir /opt/jdk
+sudo tar -xzf jdk-8u144-linux-x64.tar.gz -C /opt/jdk
+ls /opt/jdk
+```
+
+2. Remove prior java versions from alternatives
+
+```sh
+sudo update-alternatives --remove-all java
+sudo update-alternatives --remove-all javac
+```
+
+3. Add java 8 to alternatives
+
+``sh
+sudo update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_144/bin/java 100
+sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
+```
+
+4. Verify that java 8 is set as default.
+
+```sh
+java -version
+javac -version
+```
+<!--
 ## Check `/etc/hosts` File
 In case your run HBase in standolone or pseudo-distributed mode and your `/etc/hosts` file contains lines
 
@@ -149,58 +180,32 @@ Add public key to `authorized_keys` file.
 ```sh
 cat /home/axibase/.ssh/id_rsa.pub >> /home/axibase/.ssh/authorized_keys
 ```
-
+-->
 ## Upgrade Hadoop
 
-1. Download Hadoop-2.6.4 and unarchive it into the ATSD installation directory.
+1. Download Hadoop-2.6.4 with custom ATSD related changes and unarchive it into the ATSD installation directory.
 
 ```shell
-wget https://archive.apache.org/dist/hadoop/core/hadoop-2.6.4/hadoop-2.6.4.tar.gz
+wget ???
 tar -xf hadoop-2.6.4.tar.gz -C /opt/atsd/
 ```
 
-2. Configure Hadoop-2.6.4.
-
-Copy configuration files from the old installation.
-
-```sh
-cp /opt/atsd/hadoop/conf/core-site.xml /opt/atsd/hadoop-2.6.4/etc/hadoop/core-site.xml
-cp /opt/atsd/hadoop/conf/hdfs-site.xml /opt/atsd/hadoop-2.6.4/etc/hadoop/hdfs-site.xml
-```
-
-Change `JAVA_HOME` variables in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file
-so it points to java 8.
-Check your current default java version is 8.
-
-```sh
-java -verson
-```
+2. Configure Hadoop to use java 8.
 
 Get path to java home.
 ```sh
 $(dirname $(dirname $(readlink -f $(which javac))))
 ```
 
+Change `JAVA_HOME` variables in `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file
+so it points to java 8.
+
 ```sh
 # set valid path to java 8 home here!
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 ```
 
-Change `HADOOP_PID_DIR` and `HADOOP_SECURE_DN_PID_DIR` variables in `/opt/atsd/hadoop-2.6.4/etc/hadoop/hadoop-env.sh` file.
-
-```sh
-export HADOOP_PID_DIR=/opt/atsd/pids
-export HADOOP_SECURE_DN_PID_DIR=/opt/atsd/pids
-```
-
-3. Replace the Hadoop directory.
-
-```sh
-rm -r /opt/atsd/hadoop
-mv /opt/atsd/hadoop-2.6.4 /opt/atsd/hadoop
-```
-
-4. Run Hadoop upgrade.
+3. Run Hadoop upgrade.
 
 ```sh
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
@@ -226,19 +231,19 @@ Expected output.
 SHUTDOWN_MSG: Shutting down NameNode at atsd/127.0.1.1
 ************************************************************/
 ```
+Start HDFS.
 
 ```sh
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
 
-Wait while the upgrade is completed and check that HDFS daemons were succeessfully started:
+Check that HDFS daemons were succeessfully started:
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
 ```
 
 You should get information about HDFS usage and available data nodes.
-
 Finalize HDFS upgrade:
 
 ```sh
@@ -492,7 +497,7 @@ hbase(main):002:0> exit
 5. Set `HADOOP_CLASSPATH` for map-reduce jobs.
 
 ```sh
-$ export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/home/axibase/migration.jar
+export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/home/axibase/migration.jar
 ```
 
 6. Migrate `'atsd_delete_task_backup'` table to new schema and copy results to the `'atsd_delete_task'` table.
@@ -554,7 +559,7 @@ Delete this folder if it exists:
 10. Migrate the 'atsd_d' table.
 
 ```sh
-$ /usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s test_d_backup -d test_d -m 2
+/usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s test_d_backup -d test_d -m 2
 ```
 
 11. Migration is now completed. Stop Yarn and History server. Stop Yarn as it binds to the same port as ATSD.
