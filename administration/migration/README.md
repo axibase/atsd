@@ -228,7 +228,7 @@ tar -xf hadoop.tar.gz -C /opt/atsd/
 
 3. Configure Hadoop to use Java 8.
 
-Get path to the Java home.
+Get path to the Java 8 home.
 
 ```sh
 $(dirname $(dirname $(readlink -f $(which javac))))
@@ -236,7 +236,7 @@ $(dirname $(dirname $(readlink -f $(which javac))))
 # Java 8 home is /usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-Update the `JAVA_HOME` variable in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file to Java 8.
+Edit `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file. Update the `JAVA_HOME` variable to Java 8.
 
 ```sh
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -308,16 +308,16 @@ wget https://axibase.com/public/atsd-125-migration/hbase.tar.gz
 tar -xf hbase.tar.gz -C /opt/atsd/
 ```
 
-3. Configure HBase.
+3. Edit the `/opt/atsd/hbase/conf/hbase-env.sh` file.
 
-Update the `JAVA_HOME` variable in the `/opt/atsd/hbase/conf/hbase-env.sh` file so it points to Java 8.
+Update the `JAVA_HOME` to Java 8.
 
 ```sh
 # Set valid path to java 8 home
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-4. View available physical memory on the server.
+4. Check available physical memory on the server.
 
 ```sh
 cat /proc/meminfo | grep "MemTotal"
@@ -393,13 +393,13 @@ hbase(main):001:0> scan 'atsd_d', LIMIT => 1
 
 1. If the server has more than 2GB of physical memory available, increase the amount of memory allocated to Map-Reduce jobs.
 
-View available server memory.
+Check available server memory.
 
 ```sh
 cat /proc/meminfo | grep "MemTotal"
 ```
 
-2. Open `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
+2. Edit `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
 
 * If server memory exceeds 6Gb, set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072Mb. Otherwise set them to 50% of the available memory.
 
@@ -465,7 +465,7 @@ jps
 wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/migration.jar
 ```
 
-2. Update the `JAVA_HOME` variable to Java 8.
+2. Update the `JAVA_HOME` environment variable to Java 8.
 
 ```sh
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
