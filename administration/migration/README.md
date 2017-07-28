@@ -188,6 +188,7 @@ cat /home/axibase/.ssh/id_rsa.pub >> /home/axibase/.ssh/authorized_keys
 ```shell
 wget ???
 tar -xf hadoop.tar.gz -C /opt/atsd/
+rm hadoop.tar.gz
 ```
 
 2. Configure Hadoop to use java 8.
@@ -261,6 +262,7 @@ The command should display the following message `Finalize upgrade successful`. 
 ```sh
 wget ???
 tar -xf hbase.tar.gz -C /opt/atsd/
+rm hbase.tar.gz
 ```
 
 2. Configure HBase.
@@ -281,8 +283,8 @@ cat /proc/meminfo | grep "MemTotal"
 Set HBase JVM heap size to 50% of memory on the server in the same `hbase-env.sh` file. The setting can be reverted to a lower value after migration is completed.
 
 ```sh
-# adjust for your server memory!
-export HBASE_HEAPSIZE=4G
+# adjust for your server memory! Here heap size is set to 512 Mb.
+export HBASE_HEAPSIZE=512
 ```
 
 3. Upgrade and start HBase.
@@ -310,7 +312,7 @@ export HBASE_HEAPSIZE=4G
 
 Check that `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
 
-5. Check that ATSD tables are available in HBase. 
+4. Check that ATSD tables are available in HBase. 
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
@@ -319,7 +321,7 @@ hbase(main):001:0> list
 hbase(main):002:0> exit
 ```
 
-6. Execute a sample scan in HBase.
+5. Execute a sample scan in HBase.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
