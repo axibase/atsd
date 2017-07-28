@@ -111,7 +111,7 @@ In case of error `???`, install using Option 2.
 
 Option 2.
 
-Visit [ Oracle Java 8 JDK Download] (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page, accept the license and copy the link to the latest Java SE Development Kit for Linux x64, for example `jdk-8u144-linux-x64.tar.gz`.
+Visit [Oracle Java 8 JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page, accept the license and copy the link to the latest Java SE Development Kit for Linux x64, for example `jdk-8u144-linux-x64.tar.gz`.
 Use this link to download the java 8 package.
 
 ```sh
@@ -134,7 +134,7 @@ sudo update-alternatives --remove-all javac
 
 3. Add java 8 to alternatives
 
-``sh
+```sh
 sudo update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_144/bin/java 100
 sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
 ```
@@ -217,7 +217,7 @@ Check log file.
 tail -n 10 /opt/atsd/hadoop/logs/hadoop-axibase-namenode-atsd.log
 ```
 
-Expected output.
+Expected output:
 
 ```sh
 2017-07-26 16:16:16,974 INFO org.apache.hadoop.util.ExitUtil: Exiting with status 0
