@@ -485,14 +485,21 @@ export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/mig
 
 ### Create Backup Tables
 
-1. Rename tables to be migrated by appending a `'_backup'` suffix.
+1. Launch the table backup task and confirm its execution.
 
 ```sh
 java com.axibase.migration.admin.TableCloner -d
 ```
 
-Check that tables 'atsd_d_backup', 'atsd_li_backup', 'atsd_metric_backup', 'atsd_forecast_backup',
-and 'atsd_delete_task_backup' are present in the HBase table list.
+The task will create backups by appending a `'_backup'` suffix to the following tables:
+
+* 'atsd_d_backup'
+* 'atsd_li_backup'
+* 'atsd_metric_backup'
+* 'atsd_forecast_backup'
+* 'atsd_delete_task_backup'
+
+2. Check that the backup tables are present in the HBase table list.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
@@ -509,7 +516,7 @@ hbase(main):001:0> list
 hbase(main):002:0> exit
 ```
 
-2. Set `HADOOP_CLASSPATH` for the Map-Reduce job.
+3. Set `HADOOP_CLASSPATH` for the Map-Reduce job.
 
 ```sh
 export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migration.jar
