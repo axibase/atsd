@@ -568,7 +568,7 @@ Delete folder containing the diagnostics file:
 5. Migrate data to the 'atsd_d' table.
 
 ```sh
-/usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s atsd_d_backup -d atsd_d -m 2
+/usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s 'atsd_d_backup' -d 'atsd_d' -m 2 -r
 ```
 
 6. Migration is now complete. 
