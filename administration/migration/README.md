@@ -187,7 +187,7 @@ cat /home/axibase/.ssh/id_rsa.pub >> /home/axibase/.ssh/authorized_keys
 
 ```shell
 wget ???
-tar -xf hadoop-2.6.4.tar.gz -C /opt/atsd/
+tar -xf hadoop.tar.gz -C /opt/atsd/
 ```
 
 2. Configure Hadoop to use java 8.
@@ -231,7 +231,8 @@ Expected output:
 SHUTDOWN_MSG: Shutting down NameNode at atsd/127.0.1.1
 ************************************************************/
 ```
-Start HDFS.
+
+4. Start HDFS.
 
 ```sh
 /opt/atsd/hadoop/sbin/start-dfs.sh
@@ -244,7 +245,8 @@ Check that HDFS daemons were succeessfully started:
 ```
 
 You should get information about HDFS usage and available data nodes.
-Finalize HDFS upgrade:
+
+5. Finalize HDFS upgrade:
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
@@ -254,43 +256,20 @@ The command should display the following message `Finalize upgrade successful`. 
 
 ## Upgrade HBase
 
-1. Download HBase-1.2.5 and unzip it into ATSD directory:
+1. Download HBase-1.2.5 with custom ATSD related changes and unarchive it into ATSD directory:
 
 ```sh
-wget https://archive.apache.org/dist/hbase/1.2.5/hbase-1.2.5-bin.tar.gz
-tar -xf hbase-1.2.5-bin.tar.gz -C /opt/atsd/
+wget ???
+tar -xf hbase.tar.gz -C /opt/atsd/
 ```
 
 2. Configure HBase-1.2.5.
 
-Copy configuration files from the old installation.
-
-```sh
-cp /opt/atsd/hbase/conf/hbase-site.xml /opt/atsd/hbase-1.2.5/conf/hbase-site.xml
-```
-Comment `hbase.coprocessor.region.classes` property in `/opt/atsd/hbase-1.2.5/conf/hbase-site.xml`.
-If left unchanged, it will prevent HBase from starting.
-
-```xml
-<!--
-<property>
-  <name>hbase.coprocessor.region.classes</name>
-    <value>
-      com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint,
-      com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint,
-      com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint,
-      org.apache.hadoop.hbase.coprocessor.example.BulkDeleteEndpoint
-    </value>
-</property>
--->
-```
-
-Modify `JAVA_HOME` and `HBASE_PID_DIR` settings in `/opt/atsd/hbase-1.2.5/conf/hbase-env.sh`:
+Modify `JAVA_HOME` so it points to java 8 in `/opt/atsd/hbase-1.2.5/conf/hbase-env.sh`:
 
 ```sh
 # set valid path to java 8 home here!
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-export HBASE_PID_DIR=/opt/atsd/pids
 ```
 
 View available server memory.
@@ -299,21 +278,14 @@ View available server memory.
 cat /proc/meminfo | grep "MemTotal"
 ```
 
-Set HBase JVM heap size to 50% of memory on the server. The setting can be reverted to a lower value after migration is completed.
+Set HBase JVM heap size to 50% of memory on the server in the same `hbase-env.sh` file. The setting can be reverted to a lower value after migration is completed.
 
 ```sh
 # adjust for your server memory!
 export HBASE_HEAPSIZE=4G
 ```
 
-3. Replace HBase directory.
-
-```sh
-rm -r /opt/atsd/hbase
-mv /opt/atsd/hbase-1.2.5 /opt/atsd/hbase
-```
-
-4. Upgrade and start HBase.
+3. Upgrade and start HBase.
 
 ```sh
 /opt/atsd/hbase/bin/hbase upgrade -check
