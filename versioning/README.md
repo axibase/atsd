@@ -4,9 +4,9 @@ Versioning enables tracking of time-series value changes for the purpose of enab
 
 | Field Name | Description | 
 | --- | --- | 
-|  Version Time  |  Timestamp when the insert command was received. Set automatically by ATSD server with millisecond precision.  | 
-|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address.<br>Set to `user:{username}` by default for changes made through ATSD web interface.  | 
-|  Version Status  |  User-defined field to classify change events.<br>Set to `Invalid` code if inserted value triggers an Invalid Value Action. Set to `SET_VERSION_STATUS` in metric editor.  | 
+|  Version Time  |  Timestamp when the insert command was received. Set automatically by the ATSD server with millisecond precision.  | 
+|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address.<br>Set to `user:{username}` by default for changes made through the ATSD web interface.  | 
+|  Version Status  |  User-defined field to classify change events.<br>Set to `Invalid` code if an inserted value triggers an Invalid Value Action. Set to `SET_VERSION_STATUS` in metric editor.  | 
 
 
 #### Enabling Versioning
@@ -19,7 +19,7 @@ In addition, the Invalid Value Action can be set to `SET_VERSION_STATUS` to init
 
 #### Inserting Version Fields: Network Commands
 
-To insert versioning fields, use the reserved series tags `version_source` and `version_status`. These tags will be removed by the server to populate corresponding versioning fields. If the sample value is outside of minimum and maximum bounds specified in metric editor, `version_status` will be set to 'Invalid'.
+To insert versioning fields, use the reserved series tags `version_source` and `version_status`. These tags will be removed by the server to populate corresponding versioning fields. If the sample value is outside of minimum and maximum bounds specified in the metric editor, `version_status` will be set to 'Invalid'.
 
 Note that if metric is unversioned, the `version_source` and `version_status` tags will be processed as regular tags.
 
