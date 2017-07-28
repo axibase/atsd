@@ -561,7 +561,9 @@ tar -xf scripts.tar.gz -C /opt/atsd/
 
 ## Delete Backups
 
-1. Delete backup copies via HBase shell.
+1. Delete backup tables using HBase shell.
+
+Execute 'disable' and 'delete' for each table:
 
 * 'atsd_d_backup'
 * 'atsd_li_backup'
@@ -570,13 +572,13 @@ tar -xf scripts.tar.gz -C /opt/atsd/
 * 'atsd_delete_task_backup'
 
 ```sh
-/opt/atsd/hbase/bin/hbase shell
-hbase(main):001:0> disable 'atsd_forecast_backup'
-hbase(main):002:0> drop 'atsd_forecast_backup'
-hbase(main):002:0> exit
+  /opt/atsd/hbase/bin/hbase shell
+  hbase(main):001:0> disable 'atsd_forecast_backup'
+  hbase(main):002:0> drop 'atsd_forecast_backup'
+  ...
 ```
 
-2. Delete the backup directory
+2. Delete the backup directory.
 
 ```sh
 rm -rf /home/axibase/atsd-backup
