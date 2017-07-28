@@ -365,11 +365,15 @@ Verify that the `jps` command output contains `HMaster`, `HRegionServer`, and `H
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
+```
+
+```sh
 hbase(main):001:0> list
   TABLE                  
   atsd_calendar                                           
   atsd_collection                                         
   atsd_config 
+  ...
 ```
 
 8. Execute a sample scan in HBase.
