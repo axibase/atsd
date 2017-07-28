@@ -647,7 +647,7 @@ Execute 'disable' and 'drop' commands for each `_backup` table:
 rm -rf /home/axibase/atsd-backup
 ```
 
-2. Remove archives.
+3. Remove archives.
 
 ```sh
 rm /opt/atsd/hadoop.tar.gz
