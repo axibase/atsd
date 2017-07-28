@@ -461,7 +461,7 @@ export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migrati
 
 ### Migrate Records from Backup Tables
 
-1. Migrate `'atsd_delete_task_backup'` table.
+1. Migrate data in the `'atsd_delete_task_backup'` table by launching the task and confirming the execution.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -s 'atsd_delete_task_backup' -d 'atsd_delete_task' -m 2 -r
@@ -477,19 +477,19 @@ In case of errors, review job logs:
 /opt/atsd/hadoop/bin/yarn logs -applicationId application__xxxxxxxxxxxxx_xxxx | less
 ```
 
-2. Migrate the 'atsd_forecast' table.
+2. Migrate data in the 'atsd_forecast' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -s 'atsd_forecast_backup' -d 'atsd_forecast' -m 2 -r
 ```
 
-3. Migrate the 'atsd_li' table.
+3. Migrate data in the 'atsd_li' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -s 'atsd_li_backup' -d 'atsd_li' -m 2 -r
 ```
 
-This migration task writes intermediate results into a temporary directory for diagnostics.
+This migration task will write intermediate results into a temporary directory for diagnostics.
 
 ```sh
 INFO mapreduce.LastInsertMigration: Map-reduce job success, files from outputFolder 1609980393918240854 are ready for loading in table atsd_li.
@@ -507,13 +507,13 @@ Delete the folder containing the diagnostics file:
 /opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable
 ```
 
-4. Migrate the 'atsd_metric' table.
+4. Migrate data in the 'atsd_metric' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -s 'atsd_metric_backup' -d 'atsd_metric' -m 2 -r
 ```
 
-5. Migrate the 'atsd_d' table.
+5. Migrate data in the 'atsd_d' table.
 
 ```sh
 /usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s test_d_backup -d test_d -m 2
