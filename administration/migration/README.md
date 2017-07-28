@@ -10,6 +10,41 @@ This instruction describes how to migrate Axibase Time Series Database running o
 | Old | 16999 and earlier | 1.7 | 0.94.29 | 1.0.3 |
 | New | 17000 and later | 1.8 | 1.2.5 | 2.6.4 |
 
+## Check Disk Space
+
+The migration procedure requires sufficient disk space to store migrated records before old data can be deleted. 
+
+Make sure that sufficient disk space is available.
+
+* Determine the size of the ATSD installation directory.
+
+```sh
+du -hs /opt/atsd
+24G	/opt/atsd
+```
+
+The migration procedure would require up to 30% of the reported `/opt/atsd` size.
+
+* Check that free disk space is available on the file system containing the `/opt/atsd` directory.
+
+```sh
+df -h /opt/atsd
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/md2       1008G  262G  736G  27% /
+```
+
+* If the `/opt/atsd` backup, described [below](#backup), will be stored on the same file system, take this into consideration.
+
+| **Data** | **Size** |
+|---|---|
+| Original Data | 24G |
+| Backup | 24G |
+| Migrated Data | 7G (30% of 24G) |
+| Backup + Migrated | 31G |
+| Available | 736G |
+
+In the example above, 736G is sufficient to store the backup and migrated data on the same file system.
+
 ## Prepare ATSD For Upgrade
 
 1. Switch user to 'axibase'.
@@ -24,29 +59,33 @@ su axibase
   /opt/atsd/bin/atsd-tsd.sh stop
   ```
   
-3. Execute the `jps` command and verify that the `Server` process is **not present** in the `jps` output.
-If necessary, follow the safe [ATSD shutdown](../restarting.md#stop-atsd) procedure.
+3. Execute the `jps` command. Verify that the `Server` process is **not present** in the `jps` output.
 
-4. Open configuration file `/opt/atsd/atsd/conf/hadoop.properties`.
+If `Server` process continues running, follow the safe [ATSD shutdown](../restarting.md#stop-atsd) procedure.
 
-5. If this file contains property
-`hbase.regionserver.lease.period=120000`
-replace it by
-`hbase.client.scanner.timeout.period=120000`.
+4. Edit configuration file `/opt/atsd/atsd/conf/hadoop.properties`.
 
-6. Save the file.  
+    - Remove `hbase.regionserver.lease.period` setting, is present.
+
+    - Add `hbase.client.scanner.timeout.period` setting if missing:
+
+    ```
+    hbase.client.scanner.timeout.period=120000
+    ```
+
+5. Save the `hadoop.properties` file.  
 
 ## Check HBase Status
 
-1. Check HBase files for consistency.
+1. Check HBase for consistency.
 
   ```sh
-  /opt/atsd/hbase/bin/hbase hbck
+    /opt/atsd/hbase/bin/hbase hbck
   ```
 
   The expected message is `Status: OK`. 
 
-  Follow [recovery](../corrupted-file-recovery.md#repair-hbase) procedures if inconsistencies were detected.
+  Follow [recovery](../corrupted-file-recovery.md#repair-hbase) procedures if inconsistencies are reported.
 
 2. Stop HBase.
 
@@ -54,7 +93,9 @@ replace it by
   /opt/atsd/bin/atsd-hbase.sh stop
   ```
 
-3. Execute the `jps` command and verify that the `HMaster`, `HRegionServer`, and `HQuorumPeer` processes are **not present** in the `jps` command output. If necessary, follow the safe [HBase shutdown](../restarting.md#stop-hbase) procedure.
+3. Execute the `jps` command and verify that the `HMaster`, `HRegionServer`, and `HQuorumPeer` processes are **not present** in the `jps` command output. 
+
+Follow the safe [HBase shutdown](../restarting.md#stop-hbase) procedure, if one of the above processes continues running.
 
 ## Check HDFS Status
 
@@ -66,9 +107,9 @@ replace it by
 
   The expected message is  `The filesystem under path '/hbase/' is HEALTHY`. 
   
-  Follow [recovery](../corrupted-file-recovery.md#repair-hbase) if there are corrupted files.
+  Follow [recovery](../corrupted-file-recovery.md#repair-hbase) if corrupted files are reported.
 
-2. Stop HDFS daemons:
+2. Stop HDFS.
 
   ```sh
   /opt/atsd/bin/atsd-dfs.sh stop
@@ -76,9 +117,9 @@ replace it by
 
 3. Execute the `jps` command and verify that the the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not  present** in the `jps` command output.
 
-## Backup Old ATSD Files
+## Backup
 
-Copy the entire ATSD installation directory to a backup directory:
+Copy the ATSD installation directory to a backup directory:
 
   ```sh
   cp -R /opt/atsd /home/axibase/atsd-backup
@@ -86,107 +127,68 @@ Copy the entire ATSD installation directory to a backup directory:
 
 ## Install Java 8 on the ATSD server.
 
-1. There are two options how to install java.
+### Option 1. OpenJDK Installation From Repository
 
-Option 1. 
-
-<!--
-[comment]:<>(!-- http://openjdk.java.net/install/)
--->
 * Debian, Ubuntu
 
 ```sh
 sudo apt-get install openjdk-8-jdk
 ```
 
-In case of error `'Unable to locate package openjdk-8-jdk'`, install using Option 2.
+In case of error `'Unable to locate package openjdk-8-jdk'`, install Java using Option 2.
 
 * Centos, Oracle Linux, Red Hat Enterprise Linux, SLES
 
 ```sh
-su -c "yum install java-1.8.0-openjdk-devel"
+sudo yum install java-1.8.0-openjdk-devel
 ```
 
-In case of error `???`, install using Option 2.
+In case of error `'No package java-1.8.0-openjdk-devel available.'`, install Java using Option 2.
 
-Option 2.
+### Option 2. Oracle JDK Installation From Downloaded Archive
 
-Visit [Oracle Java 8 JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page, accept the license and copy the link to the latest Java SE Development Kit for Linux x64, for example `jdk-8u144-linux-x64.tar.gz`.
-Use this link to download the java 8 package.
+Open [Oracle Java 8 JDK Download](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) page, accept the license and copy the link to the latest Java SE Development Kit for Linux x64, for example `jdk-8u144-linux-x64.tar.gz`.
+
+Copy the link into the wget command and download the `tar.gz` file.
 
 ```sh
 wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
 ```
-Unpack.
+
+Expand the archive into the `/opt/jdk` directory.
 
 ```sh
 sudo mkdir /opt/jdk
 sudo tar -xzf jdk-8u144-linux-x64.tar.gz -C /opt/jdk
-ls /opt/jdk
 ```
 
-2. Remove prior java versions from alternatives
+2. Remove prior Java versions from alternatives
 
 ```sh
 sudo update-alternatives --remove-all java
 sudo update-alternatives --remove-all javac
 ```
 
-3. Add java 8 to alternatives
+3. Add Java 8 to alternatives
 
 ```sh
 sudo update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_144/bin/java 100
 sudo update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
 ```
 
-4. Verify that java 8 is set as default.
+4. Verify that Java 8 is set as the default executable.
 
 ```sh
 java -version
 javac -version
 ```
-<!--
-## Check `/etc/hosts` File
-In case your run HBase in standolone or pseudo-distributed mode and your `/etc/hosts` file contains lines
 
-```sh
-127.0.0.1 localhost 
-127.0.1.1 myhostname
-```
-
-change them to
-
-```sh
-127.0.0.1 localhost myhostname
-```
-because otherwise new HBase will not work: Master will not be able connect to Region Server, as explained in [elazar](http://web.archive.org/web/20140104070155/http://blog.devving.com/why-does-hbase-care-about-etchosts/).
-
-## Setup passphraseless ssh
-Check that you can ssh to the localhost without a passphrase:
-
-```sh
-ssh localhost
-```
-
-If you cannot ssh to localhost without a passphrase, then create RSA key pair.
-Accept default private key path (should be `/home/axibase/.ssh/id_rsa`) and empty passphrase.
-
-```sh
-ssh-keygen 
-```
-
-Add public key to `authorized_keys` file.
-
-```sh
-cat /home/axibase/.ssh/id_rsa.pub >> /home/axibase/.ssh/authorized_keys
-```
--->
 ## Upgrade Hadoop
 
-1. Download Hadoop-2.6.4 with custom ATSD related changes and unarchive it into the ATSD installation directory.
+1. Download a pre-configured Hadoop-2.6.4 and unarchive it into the ATSD installation directory.
 
 ```shell
-wget ???
+wget https://axibase.com/public/atsd-125-migration/hadoop.tar.gz
 tar -xf hadoop.tar.gz -C /opt/atsd/
 rm hadoop.tar.gz
 ```
@@ -198,12 +200,10 @@ Get path to java home.
 $(dirname $(dirname $(readlink -f $(which javac))))
 ```
 
-Change `JAVA_HOME` variables in `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file
-so it points to java 8.
+Change `JAVA_HOME` variable in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file so it points to Java 8.
 
 ```sh
-# set valid path to java 8 home here!
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
 3. Run Hadoop upgrade.
@@ -212,10 +212,10 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
 ```
 
-Check log file.
+Review the log file.
 
 ```sh
-tail -n 10 /opt/atsd/hadoop/logs/hadoop-axibase-namenode-atsd.log
+tail /opt/atsd/hadoop/logs/hadoop-axibase-namenode-atsd.log
 ```
 
 Expected output:
@@ -239,52 +239,54 @@ SHUTDOWN_MSG: Shutting down NameNode at atsd/127.0.1.1
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
 
-Check that HDFS daemons were succeessfully started:
+Check that HDFS daemons were succeessfully started.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
 ```
 
-You should get information about HDFS usage and available data nodes.
+The command should return information about HDFS usage and available data nodes.
 
-5. Finalize HDFS upgrade:
+5. Finalize HDFS upgrade.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
 ```
 
-The command should display the following message `Finalize upgrade successful`. The `jps` command should show `NameNode`, `SecondaryNameNode`, and `DataNode` processes are running.
+The command should display the following message `Finalize upgrade successful`. 
+
+The `jps` command output should report `NameNode`, `SecondaryNameNode`, and `DataNode` processes as running.
 
 ## Upgrade HBase
 
-1. Download HBase-1.2.5 with custom ATSD related changes and unarchive it into ATSD directory:
+1. Download pre-configured HBase-1.2.5  and unarchive it into ATSD installation directory:
 
 ```sh
-wget ???
+wget https://axibase.com/public/atsd-125-migration/hbase.tar.gz
 tar -xf hbase.tar.gz -C /opt/atsd/
 rm hbase.tar.gz
 ```
 
 2. Configure HBase.
 
-Modify `JAVA_HOME` so it points to java 8 in `/opt/atsd/hbase/conf/hbase-env.sh`:
+Modify `JAVA_HOME` so it points to Java 8 in the `/opt/atsd/hbase/conf/hbase-env.sh` file:
 
 ```sh
-# set valid path to java 8 home here!
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+# Set valid path to java 8 home
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
 View available server memory.
 
 ```sh
 cat /proc/meminfo | grep "MemTotal"
+MemTotal:        1922136 kB
 ```
 
-Set HBase JVM heap size to 50% of memory on the server in the same `hbase-env.sh` file. The setting can be reverted to a lower value after migration is completed.
+Optionally, increase HBase JVM heap size to 50% of available physical memory on the server in the `hbase-env.sh` file.
 
 ```sh
-# adjust for your server memory! Here heap size is set to 512 Mb.
-export HBASE_HEAPSIZE=512
+export HBASE_HEAPSIZE=1G
 ```
 
 3. Upgrade and start HBase.
@@ -294,6 +296,7 @@ export HBASE_HEAPSIZE=512
 ```
 
 ```
+  ...
   INFO  [main] util.HFileV1Detector: Count of HFileV1: 0
   INFO  [main] util.HFileV1Detector: Count of corrupted files: 0
   INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0
@@ -310,7 +313,7 @@ export HBASE_HEAPSIZE=512
 /opt/atsd/hbase/bin/start-hbase.sh
 ```
 
-Check that `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
+Verify that `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
 
 4. Check that ATSD tables are available in HBase. 
 
@@ -332,9 +335,9 @@ ROW                  COLUMN+CELL
 hbase(main):002:0> exit
 ```
 
-## Prepare Hadoop to Run ATSD Migraton Map-Reduce Job
+## Prepare Hadoop to Run Migraton Map-Reduce Job
 
-1. Configure Hadoop for map-reduce migration job.
+1. If the server has more than 2GB of physical memory available, increase the amount of memory allocated to Map-Reduce.
 
 View available server memory.
 
@@ -343,33 +346,33 @@ cat /proc/meminfo | grep "MemTotal"
 ```
 
 Change memory related properties in file `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml`.
-If server memory exceed 6&nbsp;Gb, then
-set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072&nbsp;Mb,
-else set this properties to 50% of the avilable memory.
-Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of
-`mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
-Example memory configuration for server memory 1&nbsp;Gb:
+
+* If server memory exceed 6Gb, set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072Mb. Otherwise set these settings to 50% of the available memory.
+
+* Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
+
+Sample memory configuration for a server with 4GB of RAM:
 
 ```xml
     <property>
         <name>mapreduce.map.memory.mb</name>
         <!-- should not exceed 50% of available physical memory on the server! -->
-        <value>512</value>
+        <value>2048</value>
     </property>
     <property>
         <name>mapreduce.map.java.opts</name>
         <!-- set to 80% of mapreduce.map.memory.mb -->
-        <value>-Xmx410m</value>
+        <value>-Xmx1638m</value>
     </property>
     <property>
         <name>mapreduce.reduce.memory.mb</name>
         <!-- should not exceed 50% of available physical memory on the server! -->
-        <value>512</value>
+        <value>2048</value>
     </property>
     <property>
         <!-- set to 80% of mapreduce.reduce.memory.mb -->
         <name>mapreduce.reduce.java.opts</name>
-        <value>-Xmx410m</value>
+        <value>-Xmx1638m</value>
     </property>
 ```
 
@@ -379,11 +382,6 @@ Example memory configuration for server memory 1&nbsp;Gb:
 /opt/atsd/hadoop/sbin/start-yarn.sh
 /opt/atsd/hadoop/sbin/mr-jobhistory-daemon.sh --config /opt/atsd/hadoop/etc/hadoop/ start historyserver
 ```
-
-<!--
-Check that Yarn resource manager and History server web interface is available on ports
-8088 and 19888 respectively.
--->
 
 3. Run the `jps` command to check that all processes are running:
 
@@ -405,20 +403,19 @@ jps
 
 ## Run ATSD Migration Map-Reduce Job
 
-1. Download [`migration.jar`](bin/migration.jar) to directory `/home/axibase/`.
-You can download this file by `wget` command.
+1. Download [`migration.jar`](https://axibase.com/public/atsd-125-migration/migration.jar) to `/opt/atsd` directory.
 
 ```sh
-wget -P /home/axibase/ https://github.com/axibase/atsd/raw/migration/administration/migration/bin/migration.jar
+wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/migration.jar
 ```
 
 2. Set `JAVA_HOME` variable to Java 8.
 
 ```sh
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-3. Check that current java version is 8.
+3. Check that current Java version is 8.
 
 ```sh
 java -version
@@ -427,21 +424,19 @@ java -version
 3. Add `migration.jar` and HBase classes to classpath.
 
 ```sh
-export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/home/axibase/migration.jar
+export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migration.jar
 ```
 
-4. Rename tables 'atsd_d', 'atsd_li', 'atsd_metric', 'atsd_forecast', and 'atsd_delete_task' by adding suffix `'_backup'`.
+4. Rename tables to be migrated by appending a suffix `'_backup'`.
 
- The records in these tables will be converted to the new schema and copied to new tables 'atsd_d', 'atsd_li', 'atsd_metric', 'atsd_forecast', 'atsd_delete_task'. The backup tables will be removed after a successful migration.
-
-Rename all tables:
+The backup tables will be removed after a successful migration.
 
 ```sh
 java com.axibase.migration.admin.TableCloner -d
 ```
 
 Check that tables 'atsd_d_backup', 'atsd_li_backup', 'atsd_metric_backup', 'atsd_forecast_backup',
-and 'atsd_delete_task_backup' were created.
+and 'atsd_delete_task_backup' are present in the HBase table list.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
@@ -449,13 +444,13 @@ hbase(main):001:0> list
 hbase(main):002:0> exit
 ```
 
-5. Set `HADOOP_CLASSPATH` for map-reduce jobs.
+5. Set `HADOOP_CLASSPATH` for the Map-Reduce job.
 
 ```sh
-export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/home/axibase/migration.jar
+export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migration.jar
 ```
 
-6. Migrate `'atsd_delete_task_backup'` table to new schema and copy results to the `'atsd_delete_task'` table.
+6. Migrate `'atsd_delete_task_backup'` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -s 'atsd_delete_task_backup' -d 'atsd_delete_task' -m 2 -r
@@ -483,26 +478,22 @@ In case of errors, review job logs:
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -s 'atsd_li_backup' -d 'atsd_li' -m 2 -r
 ```
 
-This migration task writes intermediate results into a temporary directory and reports if it fails to delete this directory:
+This migration task writes intermediate results into a temporary directory for diagnostics.
 
 ```sh
 INFO mapreduce.LastInsertMigration: Map-reduce job success, files from outputFolder 1609980393918240854 are ready for loading in table atsd_li.
 ...
 INFO mapreduce.LastInsertMigration: Files from outputFolder 1609980393918240854 are loaded in table atsd_li. Start deleting outputFolder.
-ERROR mapreduce.LastInsertMigration: Deleting outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 failed!
-ERROR mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 not needed any more, and you can delete this outputFolder via hdfs cli.
+WARN mapreduce.LastInsertMigration: Deleting outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 failed!
+WARN mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 not needed any more, and you can delete this outputFolder via hdfs cli.
 INFO mapreduce.LastInsertMigration: Last Insert table migration job took 37 seconds.
 ```
-In case of such an error, check if HDFS really still contains temporary folder:
+
+
+Delete the folder containing the diagnostics file:
 
 ```sh
-/opt/atsd/hadoop/bin/hdfs dfs -ls /user/axibase/copytable/1609980393918240854
-```
-
-Delete this folder if it exists:
-
-```sh
-/opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable/1609980393918240854
+/opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable
 ```
 
 9. Migrate the 'atsd_metric' table.
@@ -517,7 +508,9 @@ Delete this folder if it exists:
 /usr/local/hadoop-2.6.4/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s test_d_backup -d test_d -m 2
 ```
 
-11. Migration is now completed. Stop Yarn and History server. Stop Yarn as it binds to the same port as ATSD.
+11. Migration is now completed. 
+
+12. Stop Map-Reduce servers.
 
 ```sh
 /opt/atsd/hadoop/sbin/mr-jobhistory-daemon.sh --config /opt/atsd/hadoop/etc/hadoop/ stop historyserver
@@ -529,7 +522,7 @@ Delete this folder if it exists:
 1. Download ATSD files.
 
 * Download [`atsd-dfs.sh`](bin/atsd-dfs.sh) script to `/opt/atsd/bin/` directory.
-* Download [`atsd-executable.jar`](bin/atsd-executable.jar) to `/opt/atsd/bin/` directory.
+* Download [`atsd-executable.jar`](https://axibase.com/public/atsd-125-migration/atsd-executable.jar) to `/opt/atsd/bin/` directory.
 
 2. Start ATSD.
 
@@ -537,9 +530,15 @@ Delete this folder if it exists:
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-3. Check that all data are available in ATSD.
+3. Check that data is available in ATSD by opening the [Metrics] tab and checking that historical data is availble for selected metrics.
 
-4. Delete backup copies of original tables via HBase shell.
+4. Delete backup copies via HBase shell.
+
+* 'atsd_d_backup'
+* 'atsd_li_backup'
+* 'atsd_metric_backup'
+* 'atsd_forecast_backup'
+* 'atsd_delete_task_backup'
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
