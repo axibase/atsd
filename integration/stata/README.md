@@ -220,8 +220,6 @@ Resultset description:
 
 #### datetime as NUMBER
 
-Stata doesn't support `TIMESTAMP` type. We need to convert `datetime` value to the UNIX Epoch milliseconds and insert it as `time` value:
-
 ```
 replace datetime = datetime - tC(01jan1970 00:00:00)
 set odbcdriver ansi
