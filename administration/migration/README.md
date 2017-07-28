@@ -84,9 +84,9 @@ Copy the entire ATSD installation directory to a backup directory:
   cp -R /opt/atsd /home/axibase/atsd-backup
   ```
 
-## Java
+## Install Java 8 on the ATSD server.
 
-1. Install Java 8 on the ATSD server.
+1. There are two options how to install java.
 
 Option 1. 
 
@@ -263,9 +263,9 @@ wget ???
 tar -xf hbase.tar.gz -C /opt/atsd/
 ```
 
-2. Configure HBase-1.2.5.
+2. Configure HBase.
 
-Modify `JAVA_HOME` so it points to java 8 in `/opt/atsd/hbase-1.2.5/conf/hbase-env.sh`:
+Modify `JAVA_HOME` so it points to java 8 in `/opt/atsd/hbase/conf/hbase-env.sh`:
 
 ```sh
 # set valid path to java 8 home here!
