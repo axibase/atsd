@@ -563,7 +563,7 @@ tar -xf scripts.tar.gz -C /opt/atsd/
 
 1. Delete backup tables using HBase shell.
 
-Execute 'disable' and 'delete' for each table:
+Execute 'disable' and 'drop' commands for each `_backup` table:
 
 * 'atsd_d_backup'
 * 'atsd_li_backup'
