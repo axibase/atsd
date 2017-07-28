@@ -71,8 +71,10 @@ Execute the remaining steps as the 'axibase' user.
 
     - Add the `hbase.client.scanner.timeout.period` setting, if missing:
 
-    ```
-    hbase.client.scanner.timeout.period=120000
+    ```properties
+    hbase.zookeeper.quorum = localhost
+    hbase.rpc.timeout = 120000
+    hbase.client.scanner.timeout.period = 120000
     ```
 
 5. Save the `hadoop.properties` file.  
