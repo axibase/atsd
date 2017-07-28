@@ -222,8 +222,8 @@ rm -rf /opt/atsd/hadoop
 2. Download a pre-configured Hadoop-2.6.4 and unarchive it into the ATSD installation directory.
 
 ```sh
-wget https://axibase.com/public/atsd-125-migration/hadoop.tar.gz
-tar -xf hadoop.tar.gz -C /opt/atsd/
+wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/hadoop.tar.gz
+tar -xf /opt/atsd/hadoop.tar.gz -C /opt/atsd/
 ```
 
 3. Configure Hadoop to use Java 8.
@@ -304,8 +304,8 @@ rm -rf /opt/atsd/hbase
 2. Download a pre-configured version of HBase-1.2.5  and unarchive it into ATSD installation directory:
 
 ```sh
-wget https://axibase.com/public/atsd-125-migration/hbase.tar.gz
-tar -xf hbase.tar.gz -C /opt/atsd/
+wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/hbase.tar.gz
+tar -xf /opt/atsd/hbase.tar.gz -C /opt/atsd/
 ```
 
 3. Edit the `/opt/atsd/hbase/conf/hbase-env.sh` file.
@@ -602,8 +602,8 @@ rm -rf /opt/atsd/atsd/bin/atsd*.jar
 2. Download ATSD application files.
 
 ```sh
-wget /opt/atsd/atsd/bin https://axibase.com/public/atsd-125-migration/atsd.16855.jar
-wget /opt/atsd https://axibase.com/public/atsd-125-migration/scripts.tar.gz
+wget -P /opt/atsd/atsd/bin https://axibase.com/public/atsd-125-migration/atsd.16855.jar
+wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 ```
 
 3. Replace old script files.
@@ -645,4 +645,12 @@ Execute 'disable' and 'drop' commands for each `_backup` table:
 
 ```sh
 rm -rf /home/axibase/atsd-backup
+```
+
+2. Remove archives.
+
+```sh
+rm /opt/atsd/hadoop.tar.gz
+rm /opt/atsd/hbase.tar.gz
+rm /opt/atsd/scripts.tar.gz
 ```
