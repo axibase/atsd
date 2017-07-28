@@ -105,6 +105,14 @@ Execute the remaining steps as the 'axibase' user.
 
 3. Execute the `jps` command and verify that the `HMaster`, `HRegionServer`, and `HQuorumPeer` processes are **not present** in the `jps` command output. 
 
+```sh
+jps
+1200 DataNode
+1308 SecondaryNameNode
+5324 Jps
+1092 NameNode
+```
+
 > If one of the above processes continues running, follow the [safe HBase shutdown](../restarting.md#stop-hbase) procedure.
 
 ## Check HDFS Status
