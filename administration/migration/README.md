@@ -199,9 +199,12 @@ rm hadoop.tar.gz
 
 2. Configure Hadoop to use Java 8.
 
-Get path to Java home.
+Get path to the Java home.
+
 ```sh
 $(dirname $(dirname $(readlink -f $(which javac))))
+-bash: /usr/lib/jvm/java-8-openjdk-amd64: Is a directory
+# Copy path as /usr/lib/jvm/java-8-openjdk-amd64
 ```
 
 Update the `JAVA_HOME` variable in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file to Java 8.
