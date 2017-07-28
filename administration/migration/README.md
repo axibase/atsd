@@ -123,7 +123,11 @@ jps
   /opt/atsd/hadoop/bin/hadoop fsck /hbase/
   ```
 
-  The expected message is  `The filesystem under path '/hbase/' is HEALTHY`. 
+  The expected message is:
+  
+  ```
+  The filesystem under path '/hbase/' is HEALTHY.
+  ```
   
 > If corrupted files are reported, follow the [recovery](../corrupted-file-recovery.md#repair-hbase) procedure.
 
