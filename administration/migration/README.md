@@ -47,11 +47,13 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## Prepare ATSD For Upgrade
 
-1. Switch users to 'axibase'.
+1. Switch to 'axibase' user if necessary.
 
 ```sh
 su axibase
 ```
+
+Execute the remaining steps as the 'axibase' user.
 
 2. Stop ATSD.
 
