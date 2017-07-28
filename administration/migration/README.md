@@ -526,47 +526,20 @@ Delete this folder if it exists:
 
 ## Start New ATSD Version
 
-1. Modify HBase configuration to use ATSD coprocessors:
-
-Stop HBase:
-
-```sh
-/opt/atsd/hbase/bin/stop-hbase.sh
-```
-
-Add coprocessors in `/opt/atsd/hbase/conf/hbase-site.xml`,
-
-```xml
-<property>
-    <name>hbase.coprocessor.region.classes</name>
-    <value>
-        com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint,
-        com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint
-    </value>
-</property>
-```
-
-2. Download ATSD files.
+1. Download ATSD files.
 
 * Download [`atsd-dfs.sh`](bin/atsd-dfs.sh) script to `/opt/atsd/bin/` directory.
 * Download [`atsd-executable.jar`](bin/atsd-executable.jar) to `/opt/atsd/bin/` directory.
-* Download [`tsd-hbase-1.0.0.jar`](bin/tsd-hbase-1.0.0.jar) to `/opt/atsd/hbase/lib/` directory.
 
-3. Start HBase:
-
-```sh
-/opt/atsd/bin/atsd-hbase.sh start
-```
-
-4. Start ATSD.
+2. Start ATSD.
 
 ```sh
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-5. Check that all data are available in ATSD.
+3. Check that all data are available in ATSD.
 
-6. Delete backup copies of original tables via HBase shell.
+4. Delete backup copies of original tables via HBase shell.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
