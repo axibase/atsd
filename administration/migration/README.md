@@ -7,8 +7,8 @@ These instructions describe how to migrate an Axibase Time Series Database insta
 
 | **Code** | **ATSD Revision Number** | **Java Version** | **HBase Version** | **HDFS Version** |
 |---|---|---|---|---|
-| Old | 16999 and earlier | 1.7 | 0.94.29 | 1.0.3 |
-| New | 17000 and later | 1.8 | 1.2.5 | 2.6.4 |
+| Old | 16854 and earlier | 1.7 | 0.94.29 | 1.0.3 |
+| New | 16855 and later | 1.8 | 1.2.5 | 2.6.4 |
 
 ## Plan for Disk Space Utilization
 
@@ -44,6 +44,10 @@ Filesystem      Size  Used Avail Use% Mounted on
   In the example above, 736G is sufficient to store 31G of backup and migrated data on the same file system.
 
 5. Allocate additional disk space, if necessary.
+
+## Security
+
+* Java 8 installation requires root privileges.
 
 ## Prepare ATSD For Upgrade
 
