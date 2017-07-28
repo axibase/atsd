@@ -343,12 +343,12 @@ cat /proc/meminfo | grep "MemTotal"
 ```
 
 Change memory related properties in file `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml`.
-If server memory exceed 6 Gb, then
-set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072 Mb,
+If server memory exceed 6&nbsp;Gb, then
+set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072&nbsp;Mb,
 else set this properties to 50% of the avilable memory.
 Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of
 `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
-Example memory configuration for server memory 1 Gb:
+Example memory configuration for server memory 1&nbsp;Gb:
 
 ```xml
     <property>
