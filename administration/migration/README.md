@@ -245,6 +245,10 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 4. Upgrade Hadoop.
 
 ```sh
+/opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode
+```
+
+```sh
 /opt/atsd/hadoop/sbin/hadoop-daemon.sh start namenode –upgradeOnly
 ```
 
@@ -337,7 +341,6 @@ export HBASE_HEAPSIZE=2G
 ```
 
 ```
-  ...
   INFO  [main] util.HFileV1Detector: Count of HFileV1: 0
   INFO  [main] util.HFileV1Detector: Count of corrupted files: 0
   INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0
@@ -358,25 +361,29 @@ export HBASE_HEAPSIZE=2G
 
 Verify that the `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
 
-7. Check that ATSD tables are available in HBase. 
+7. Check that ATSD tables are available in HBase using HBase console. 
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
 hbase(main):001:0> list
-...
-hbase(main):002:0> exit
+  TABLE                  
+  atsd_calendar                                           
+  atsd_collection                                         
+  atsd_config 
 ```
 
 8. Execute a sample scan in HBase.
 
 ```sh
-/opt/atsd/hbase/bin/hbase shell
 hbase(main):001:0> scan 'atsd_d', LIMIT => 1
-ROW                  COLUMN+CELL
-...
-1 row(s) in 0.0560 seconds
-hbase(main):002:0> exit
+  ROW                  COLUMN+CELL
+  ...
+  1 row(s) in 0.0560 seconds
+  ...
+  hbase(main):002:0> exit
 ```
+
+9. Exit the HBase console.
 
 ## Prepare Hadoop to Run the Migraton Map-Reduce Job
 
@@ -448,7 +455,7 @@ jps
 
 ### Configure Migration Job
 
-1. Download [`migration.jar`](https://axibase.com/public/atsd-125-migration/migration.jar) to the `/opt/atsd` directory.
+1. Download the `migration.jar` file to the `/opt/atsd` directory.
 
 ```sh
 wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/migration.jar
@@ -476,8 +483,6 @@ export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/mig
 
 1. Rename tables to be migrated by appending a `'_backup'` suffix.
 
-The backup tables will be removed after a successful migration.
-
 ```sh
 java com.axibase.migration.admin.TableCloner -d
 ```
@@ -488,7 +493,15 @@ and 'atsd_delete_task_backup' are present in the HBase table list.
 ```sh
 /opt/atsd/hbase/bin/hbase shell
 hbase(main):001:0> list
-...
+  TABLE 
+  atsd_calendar
+  ...                                                 
+  atsd_d_backup                                              
+  atsd_delete_task_backup                                    
+  atsd_forecast_backup                                      
+  atsd_li_backup                                      
+  atsd_metric_backup                                                                                                         ...                                        
+  39 row(s) in 0.8710 seconds
 hbase(main):002:0> exit
 ```
 
