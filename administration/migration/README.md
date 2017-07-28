@@ -334,62 +334,43 @@ hbase(main):002:0> exit
 
 ## Prepare Hadoop to Run ATSD Migraton Map-Reduce Job
 
-1. Configure Hadoop for map-reduce migration job: [yarn-site.xml](conf/yarn-site.xml), [mapred-site.xml](conf/mapred-site.xml).
+1. Configure Hadoop for map-reduce migration job.
 
-Add these properties to `/opt/atsd/hadoop/etc/hadoop/yarn-site.xml`:
+View available server memory.
 
-```xml
-  <property>
-    <name>yarn.nodemanager.aux-services</name>
-    <value>mapreduce_shuffle</value>
-  </property>
-  <property>
-    <name>yarn.log-aggregation-enable</name>
-    <value>true</value>
-  </property>
+```sh
+cat /proc/meminfo | grep "MemTotal"
 ```
 
-Add these properties to `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` (copy this file from `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml.template` if it is not present):
+Change memory related properties in file `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml`.
+If server memory exceed 6 Gb, then
+set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072 Mb,
+else set this properties to 50% of the avilable memory.
+Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of
+`mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
+Example memory configuration for server memory 1 Gb:
 
 ```xml
-<configuration>
-    <property>
-        <name>mapreduce.framework.name</name>
-        <value>yarn</value>
-    </property>
     <property>
         <name>mapreduce.map.memory.mb</name>
         <!-- should not exceed 50% of available physical memory on the server! -->
-        <value>4096</value>
+        <value>512</value>
     </property>
     <property>
         <name>mapreduce.map.java.opts</name>
         <!-- set to 80% of mapreduce.map.memory.mb -->
-        <value>-Xmx3276m</value>
-    </property>
-    <property>
-        <name>mapreduce.map.cpu.vcores</name>
-        <value>1</value>
+        <value>-Xmx410m</value>
     </property>
     <property>
         <name>mapreduce.reduce.memory.mb</name>
         <!-- should not exceed 50% of available physical memory on the server! -->
-        <value>4096</value>
+        <value>512</value>
     </property>
     <property>
         <!-- set to 80% of mapreduce.reduce.memory.mb -->
         <name>mapreduce.reduce.java.opts</name>
-        <value>-Xmx3276m</value>
+        <value>-Xmx410m</value>
     </property>
-    <property>
-        <name>mapreduce.reduce.cpu.vcores</name>
-        <value>1</value>
-    </property>
-    <property>
-        <name>mapreduce.job.maps.speculative.execution</name>
-        <value>false</value>
-    </property>
-</configuration>
 ```
 
 2. Start Yarn and History server:
