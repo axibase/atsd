@@ -3,6 +3,8 @@
 
 These instructions describe how to migrate an Axibase Time Series Database instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
 
+The instructions apply only to single-node ATSD installations running in pseudo-distributed mode. Upgrades on clusters and Docker containers are not covered in this document.
+
 ## Versioning
 
 | **Code** | **ATSD Revision Number** | **Java Version** | **HBase Version** | **HDFS Version** |
@@ -10,7 +12,17 @@ These instructions describe how to migrate an Axibase Time Series Database insta
 | Old | 16854 and earlier | 1.7 | 0.94.29 | 1.0.3 |
 | New | 16855 and later | 1.8 | 1.2.5 | 2.6.4 |
 
-## Plan for Disk Space Utilization
+## Requirements
+
+### Installation Type
+
+* Single-node ATSD installation in pseudo-distributed mode (with HDFS).
+
+### Security
+
+* Java 8 installation requires root privileges.
+
+### Disk Space
 
 The migration procedure requires up to 30% of the reported `/opt/atsd` size to store migrated records before old data can be deleted. 
 
@@ -45,9 +57,6 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 5. Allocate additional disk space, if necessary.
 
-## Security
-
-* Java 8 installation requires root privileges.
 
 ## Prepare ATSD For Upgrade
 
