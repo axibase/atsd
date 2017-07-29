@@ -235,9 +235,9 @@ tar -xf /opt/atsd/hadoop.tar.gz -C /opt/atsd/
 Get path to the Java 8 home.
 
 ```sh
-$(dirname $(dirname $(readlink -f $(which javac))))
--bash: /usr/lib/jvm/java-8-openjdk-amd64: Is a directory
-# Java 8 home is /usr/lib/jvm/java-8-openjdk-amd64
+dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"
+...
+/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
 Edit `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file. Update the `JAVA_HOME` variable to Java 8.
