@@ -267,10 +267,7 @@ The expected output:
 2017-07-26 16:16:16,986 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Starting CacheReplicationMonitor with interval 30000 milliseconds
 2017-07-26 16:16:16,986 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Rescanning after 1511498 milliseconds
 2017-07-26 16:16:16,995 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Scanned 0 directive(s) and 0 block(s) in 9 millisecond(s).
-2017-07-26 16:16:16,996 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: SHUTDOWN_MSG: 
-/************************************************************
-SHUTDOWN_MSG: Shutting down NameNode at atsd/127.0.1.1
-************************************************************/
+...
 ```
 
 Start HDFS.
