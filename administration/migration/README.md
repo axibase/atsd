@@ -617,6 +617,13 @@ Replace old script files.
 tar -xf scripts.tar.gz -C /opt/atsd/
 ```
 
+Set `JAVA_HOME` in `/opt/atsd/atsd/bin/start-atsd.sh` file:
+
+```sh
+# set valid path to java 8 home here!
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+```
+
 Start ATSD.
 
 ```sh
