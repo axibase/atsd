@@ -7,7 +7,7 @@ Outer Join missing column values filled with `NULL`.
 ```sql
 SELECT *
   FROM mpstat.cpu_busy t1
-OUTER JOIN df.disk_used t2
+FULL OUTER JOIN df.disk_used t2
   WHERE t1.datetime > current_hour
   AND df.disk_used.entity = 'nurswgvml007'
 ```
@@ -31,7 +31,7 @@ OUTER JOIN df.disk_used t2
 ```sql
 SELECT datetime, COALESCE(t1.entity, t2.entity) AS server, t1.*, t2.*
   FROM mpstat.cpu_busy t1
-OUTER JOIN df.disk_used t2
+FULL OUTER JOIN df.disk_used t2
   WHERE t1.datetime > current_hour
   AND df.disk_used.entity = 'nurswgvml007'
 ```
@@ -55,7 +55,7 @@ OUTER JOIN df.disk_used t2
 ```sql
 SELECT datetime, COALESCE(t1.entity, t2.entity) AS server, t1.*, t2.*
   FROM mpstat.cpu_busy t1
-OUTER JOIN df.disk_used t2
+FULL OUTER JOIN df.disk_used t2
   WHERE t1.datetime >= '2017-05-31T06:00:00Z' AND t1.datetime < '2017-05-31T06:00:30Z'
   AND t2.entity = 'nurswgvml007'
   WITH INTERPOLATE(15 second, LINEAR, OUTER)
@@ -79,7 +79,7 @@ OUTER JOIN df.disk_used t2
 ```sql
 SELECT datetime, COALESCE(t1.entity, t2.entity) AS server, t1.*, t2.*
   FROM mpstat.cpu_busy t1
-OUTER JOIN USING ENTITY df.disk_used t2
+FULL OUTER JOIN USING ENTITY df.disk_used t2
   WHERE t1.datetime >= '2017-05-31T06:00:00Z' AND t1.datetime < '2017-05-31T06:00:30Z'
   AND t2.entity = 'nurswgvml007'
   WITH INTERPOLATE(15 second, LINEAR, OUTER)

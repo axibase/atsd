@@ -37,7 +37,7 @@ The nmon file format is supported in Axibase Time Series Database natively. As a
 
 ATSD supports two ways of automated data ingestion from servers gathering nmon statistics:
 
--   [Scheduled upload](https://github.com/axibase/nmon#upload-hourly-files-to-atsd-with-wget) using wget, nc, or Unix pipes. Latency depends on the collection interval.
+-   [Scheduled upload](https://github.com/axibase/nmon#upload-hourly-files-to-atsd-with-wget) using wget, nc, or Bash [tcp/udp pseudo-device](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP) files. Latency depends on the collection interval.
 -   Streaming transmission of nmon snapshots as they are written into nmon output file using [sender script](sender-script.md). This method results in no latency; however, it requires more effort to implement.
 
 nmon source code repository:

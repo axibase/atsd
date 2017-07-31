@@ -235,7 +235,6 @@ WITH INTERPOLATE(180 second, AUTO, OUTER, EXTEND, START_TIME)
 ## Limitations
 
 * The metric condition supports only `=`, `IN` and `LIKE` operators, as well as the `metrics(entity)` function.
-* When multiple metrics are specified, all columns in the `SELECT` expression must be specified explicitly. Namely, `SELECT *`, `SELECT tags.*`, `SELECT metric.tags.*` are not allowed.
 * The number of metrics retrieved with `metric LIKE '*expr*'` condition must not exceed 50.
 
 ## Numeric Precedence

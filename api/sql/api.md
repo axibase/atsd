@@ -2,7 +2,9 @@
 
 ## Description
 
-Execute an SQL query and retrieve results in CSV or JSON format.
+Execute an SQL query and retrieve query results in CSV or JSON format, including optional result metadata.
+
+To obtain result metadata without executing the query, submit the query to [`/api/sql/meta`](api-meta.md) endpoint.
 
 ## Authorization
 
@@ -84,53 +86,63 @@ The response can include optional metadata to assist API clients in processing r
 
 The metadata is specified as JSON-LD (JSON linked data) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/).
 
-ATSD JSON-LD schema is published [here](http://www.axibase.com/schemas/2015/11/atsd.jsonld).
+ATSD JSON-LD schema is published [here](https://www.axibase.com/schemas/2017/07/atsd.jsonld).
 
 Sample metadata:
 
 ```json
 {
-	"metadata": {
-		"@context": ["http://www.w3.org/ns/csvw", {
-			"atsd": "http://www.axibase.com/schemas/2015/11/atsd.jsonld#"
-		}],
-		"dc:created": {
-			"@value": "2016-06-28T14:28:05.424Z",
-			"@type": "xsd:date"
-		},
-		"dc:publisher": {
-			"schema:name": "Axibase Time Series Database",
-			"schema:url": {
-				"@id": "https://10.102.0.6:8443"
-			}
-		},
-		"dc:title": "SQL Query",
-		"rdfs:comment": "SELECT tbl.value*100 AS \"cpu_percent\", tbl.datetime 'sample-date'\r\n
-		                 FROM \"mpstat.cpu_busy\" tbl \r\nWHERE datetime > now - 1*MINUTE",
-		"@type": "Table",
-		"url": "sql.csv",
-		"tableSchema": {
-			"columns": [{
-				"columnIndex": 1,
-				"name": "cpu_percent",
-				"titles": "tbl.value*100",
-				"datatype": "float",
-				"table": "tbl"
-			}, {
-				"columnIndex": 2,
-				"name": "sample-date",
-				"titles": "datetime",
-				"datatype": "xsd:dateTimeStamp",
-				"table": "tbl",
-				"propertyUrl": "atsd:datetime",
-				"dc:description": "Sample time in ISO8601 format"
-			}]
+	"@context": ["http://www.w3.org/ns/csvw", {
+		"atsd": "http://www.axibase.com/schemas/2017/07/atsd.jsonld"
+	}],
+	"dc:created": {
+		"@value": "2017-07-04T16:59:19.908Z",
+		"@type": "xsd:date"
+	},
+	"dc:publisher": {
+		"schema:name": "Axibase Time-Series Database",
+		"schema:url": {
+			"@id": "https://ATSD_HOSTNAME:8443"
 		}
 	},
-	"data": [{
-		"tbl.value*100": "303.0",
-		"datetime": "2016-06-28T14:27:16.000Z"
-	}]
+	"dc:title": "SQL Query",
+	"rdfs:comment": "SELECT tbl.value*100 AS \"cpu_percent\", tbl.datetime 'sample-date'\n FROM \"cpu_busy\" tbl \n WHERE datetime > now - 1*MINUTE",
+	"@type": "Table",
+	"url": "sql.csv",
+	"tableSchema": {
+		"columns": [{
+			"columnIndex": 1,
+			"name": "tbl.value * 100",
+			"titles": "cpu_percent",
+			"datatype": "double",
+			"table": "cpu_busy",
+			"propertyUrl": "atsd:value"
+		}, {
+			"columnIndex": 2,
+			"name": "tbl.datetime",
+			"titles": "sample-date",
+			"datatype": "xsd:dateTimeStamp",
+			"table": "cpu_busy",
+			"propertyUrl": "atsd:datetime",
+			"dc:description": "Sample time in ISO8601 format"
+		}]
+	},
+	"dialect": {
+		"commentPrefix": "#",
+		"delimiter": ",",
+		"doubleQuote": true,
+		"quoteChar": "\"",
+		"headerRowCount": 1,
+		"encoding": "utf-8",
+		"header": true,
+		"lineTerminators": ["\r\n", "\n"],
+		"skipBlankRows": false,
+		"skipColumns": 0,
+		"skipRows": 0,
+		"skipInitialSpace": false,
+		"trim": false,
+		"@type": "Dialect"
+	}
 }
 ```
 

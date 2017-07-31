@@ -14,11 +14,11 @@ Retrieve a list of metrics matching the specified filter conditions.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| expression |string|Include metrics that match an [expression](../../../api/meta/expression.md) filter. Use the `name` variable for metric name. The wildcard `*` is supported.|
+| expression |string|Include metrics that match an [expression](../../../api/meta/expression.md) filter. Use the `name` variable for metric name. Supported wildcards: `*` and `?`.|
 | minInsertDate |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
 | maxInsertDate |string|Include metrics with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
 | limit |integer|Maximum number of metrics to retrieve, ordered by name.|
-| tags |string|Comma-separated list of metric tag names to be displayed in the response.<br>For example, `tags=OS,location`<br>Specify `tags=*` to print all metric tags.|
+| tags |string|Comma-separated list of metric tag names to be displayed in the response.<br>For example, `tags=OS,location`<br>Specify `tags=*` to request all metric tags.|
 
 ## Response
 
@@ -32,6 +32,7 @@ Retrieve a list of metrics matching the specified filter conditions.
 |tags| object | An object containing tags as names and values.<br>For example, `"tags": {"table": "axibase-collector"}`|
 |dataType| string | [Data Type](#data-types).|
 |interpolate| string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`. |ß
+|units| string | Measurement units. |
 |timeZone| string | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Java Time Zone](../../../api/network/timezone-list.md) table for a list of supported Time Zone IDs.<br>The timezone is applied by date-formatting functions to return local time in metric-specific timezone.|
 |timePrecision| string | Time precision: SECONDS or MILLISECONDS.|
 |enabled| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
@@ -125,7 +126,7 @@ curl https://atsd_host:8443/api/v1/metrics?limit=2 \
     "invalidAction": "NONE",
     "lastInsertDate": "2016-05-19T00:15:02.000Z",
     "versioned": true,
-	"interpolate":"LINEAR"
+    "interpolate":"LINEAR"
   },
   {
     "name": "temperature",
@@ -137,8 +138,8 @@ curl https://atsd_host:8443/api/v1/metrics?limit=2 \
     "invalidAction": "NONE",
     "lastInsertDate": "2016-05-18T00:35:12.000Z",
     "versioned": false,
-	"interpolate":"LINEAR",
-	"timeZone":"America/New_York"
+    "interpolate":"LINEAR",
+    "timeZone":"America/New_York"
   }
 ]
 ```
@@ -148,7 +149,7 @@ curl https://atsd_host:8443/api/v1/metrics?limit=2 \
 Expression text:
 
 ```text
-name!="" or tags.keyName!="" or label!="" or description!="" or enabled=true or persistent=true or persistenceFilter!="" or retentionDays=0 or dataType="FLOAT" or timePrecision="MILLISECONDS" or versioning=false and invalidAction="NONE" or timeZone="" or interpolate="LINEAR" or counter=false
+name!="" or tags.keyName!="" or label!="" or description!="" or enabled=true or persistent=true or persistenceFilter!="" or retentionDays=0 or dataType="FLOAT" or timePrecision="MILLISECONDS" or versioning=false and invalidAction="NONE" or timeZone="" or interpolate="LINEAR"
 ```
 
 ### Request
@@ -179,7 +180,6 @@ curl https://atsd_host:8443/api/v1/metrics?expression=versioning=true%20and%20re
     "name": "metric",
     "enabled": true,
     "dataType": "FLOAT",
-    "counter": false,
     "persistent": true,
     "timePrecision": "MILLISECONDS",
     "retentionDays": 3,
@@ -194,6 +194,7 @@ curl https://atsd_host:8443/api/v1/metrics?expression=versioning=true%20and%20re
 ## Additional Examples
 
 * [List metrics by name](examples/list-metrics-by-name.md)
+* [List metrics by name using wildcards](examples/list-metrics-by-name-wildcards.md)
 * [List metrics by name and tag](examples/list-metrics-by-name-and-tag.md)
 * [List metrics with tag `table`](examples/list-metrics-with-tag-table.md)
 * [List metrics by maxInsertDate](examples/list-metrics-by-maxinsertdate.md)

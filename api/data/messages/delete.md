@@ -21,13 +21,13 @@ Execute the following administrative commands one by one in the HBase shell to m
 ```bash
 disable 'atsd_message'
 
-alter 'atsd_message', NAME => 'c', TTL => 1209600
+alter 'atsd_message', NAME => 'c', TTL => 1209600, MIN_VERSIONS => 0
 
-alter 'atsd_message', NAME => 'e', TTL => 1209600
+alter 'atsd_message', NAME => 'e', TTL => 1209600, MIN_VERSIONS => 0
 
-alter 'atsd_message', NAME => 'm', TTL => 1209600
+alter 'atsd_message', NAME => 'm', TTL => 1209600, MIN_VERSIONS => 0
 
-alter 'atsd_message', NAME => 't', TTL => 1209600
+alter 'atsd_message', NAME => 't', TTL => 1209600, MIN_VERSIONS => 0
 
 enable 'atsd_message'
 

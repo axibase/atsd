@@ -2,7 +2,7 @@
 
 Network API provides a set of plain text commands for inserting numeric time series, key=value properties, and tagged messages into the Axibase Time Series Database (ATSD) via **TCP** and **UDP** network protocols.
 
-You can use `netcat`, `telnet`, `UNIX pipes`, and any programming language such as [Java](examples/AtsdTcpClient.java) that lets you connect to the ATSD server via TCP/UDP protocol.
+You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any programming language such as [Java](examples/AtsdTcpClient.java) that lets you connect to the ATSD server via TCP/UDP protocol.
 
 ## Supported Commands
 
@@ -54,27 +54,29 @@ Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text com
 
 ### Single Command
 
-To send a single command, connect to an ATSD server, and send the command in plain text and terminate the connection.
+To send a single command, connect to an ATSD server, send the command in plain text, and terminate the connection.
 
-* netcat:echo
+* netcat: echo
 
 ```ls
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc atsd_host 8081
 ```
 
-* netcat:printf
+* netcat: printf
 
 ```ls
 printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc atsd_host 8081
 ```
 
-* UNIX pipe
+* Bash [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
 
 ```ls
 echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_host/8081
 ```
 
-* telnet:one line
+> `/dev/tcp/host/port` and `/dev/udp/host/port` are built-in Bash pseudo-device files which can be used in redirection. If host is a valid hostname or Internet address, and port is an integer port number or service name, Bash attempts to open a TCP connection to the corresponding socket.
+
+* telnet: one line
 
 ```ls
 telnet atsd_host 8081 << EOF
@@ -82,7 +84,7 @@ series e:station_4 m:temperature=32.2 m:humidity=81.4
 EOF
 ```
 
-* telnet:session
+* telnet: session
 
 ```ls
 $ telnet atsd_host 8081
@@ -94,7 +96,7 @@ series e:station_5 m:temperature=32.2 m:humidity=81.4
 Connection closed by foreign host.
 ```
 
-* java:socket
+* java: socket
 
 ```java
 Socket s = new Socket("atsd_host", 8081);
@@ -107,9 +109,9 @@ The above examples insert timestamped **temperature** and **humidity** metric sa
 
 ### Multiple Commands
 
-Separate commands by line feed symbol `\n` (LF, `0x0A`) when sending a batch containing multiple commands over the same connection.
+Separate commands by a line feed symbol `\n` (LF, `0x0A`) when sending a batch containing multiple commands over the same connection.
 
-Trailing line feed is not required for the last command in the batch.
+A trailing line feed is not required for the last command in the batch.
 
 Use the `-e` flag in `echo` commands to enable interpretation of backslash escapes.
 
@@ -130,9 +132,9 @@ A client application can establish a persistent connection in order to continuou
 
 Trailing line feed is not required for the last command when the connection is closed.
 
-Commands are processed as they're received by the server, without buffering.
+Commands are processed as they are received by the server, without buffering.
 
-To prevent the connection from timing out the client may send [`ping`](ping.md) command at a regular interval.
+To prevent the connection from timing out the client may send a [`ping`](ping.md) command at a regular interval.
 
 Clients can submit different types of commands over the same connection.
 
@@ -160,7 +162,7 @@ Connection closed by foreign host.
 
 If the connection is terminated due to client error, all valid commands sent prior to the first invalid command will be stored.
 
-Due to the fact that channel closing on client error may take some time, the database may also store a few valid commands received after the discarded command.
+Due to the fact that closing the channel due to client error may take some time, the database may also store a few valid commands received after the discarded command.
 
 ```
 valid command   - stored
@@ -201,13 +203,13 @@ Multiple commands with the same timestamp and key fields may override each other
 
 If such commands are submitted at approximately the same time, there is no guarantee that they will be processed in the order they were received.
 
-* Duplicate example: same key, same current time  
+* Duplicate example: same key, same current time
 
 ```ls
 echo -e "series e:station_1 m:temperature=32.2\nseries e:station_1 m:temperature=42.1" | nc atsd_host 8081
 ```
 
-* Duplicate example: same key, same time  
+* Duplicate example: same key, same time
 
 ```ls
 echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=42.1  d:2016-05-15T00:10:00Z" | nc atsd_host 8081
@@ -224,12 +226,12 @@ command-name field-prefix:field-name[=field-value]
 ```
 
 * The order of fields is not important.
-* Refer to ABNF rules for particular commands for exact rules.
+* Refer to the ABNF rules of a particular command for its exact rules.
 
 Field name:
 
 * A field name can contain only printable characters.
-* If the field name contains a double-quote (") or equal (=) sign, it must be enclosed in double quotes. For example: `v:"os=name"=Ubuntu` or `v:"os""name"=Ubuntu`
+* If the field name contains a double-quote (") or an equal (=) sign, it must be enclosed in double quotes. For example: `v:"os=name"=Ubuntu` or `v:"os""name"=Ubuntu`
 * Any double quote character in the value must be escaped with another double quote.
 
 Field value:
@@ -244,38 +246,50 @@ Use CSV escaping methods in core libraries where available, for example [StringE
 ### Case Sensitivity
 
 * Field names are case-insensitive and are converted to lower case when stored in the database.
-* Field values are case-sensitive and are stored as submitted, except for entity name, metric name, and property type, which are converted to lower case.
+* Field values are **case-sensitive** and are stored as submitted, except for entity names, metric names, and property types, which are converted to lower case.
 
-### Command Length Limits
+```ls
+# input command
+series e:nurSWG m:Temperature=38.5 t:Degrees=Celsius
+# stored record
+series e:nurswg m:temperature=38.5 t:degrees=Celsius
+```
 
-The server enforces the following maximum lengths for command lines:
+### Command Limits
 
-| **Command** | **Maximum Length, bytes** |
-|:---|:---|
-| series | 128*1024  |
-| property | 128*1024  |
-| message  | 128*1024  |
-| other | 1024  |
+#### Length Limit
+
+The command length cannot exceed **128 Kb** (1024 * 128 bytes).
 
 The client must split a command that is too long into multiple commands.
+
+#### Tag Count Limit
+
+The number of tags included in the command cannot exceed the following limit:
+
+| **Command** | **Maximum Tags** |
+|:---|:---|
+| series | 1024 series tags |
+| property | 1024 keys and tags |
+| message | 1024 message tags |
 
 ### Schema
 
 * New entities, metrics, and tags are created automatically when inserting data.
-* The number of unique identifiers is subject to the following default limits:
+* The number of unique identifiers is subject to the following limits:
 
 |**Type**| **Maximum Identifier**|
 |:---|:---|
 |metric| 65535 <br>16777215 in ATSD on HBase 1.x|
 |entity| 16777215|
 |tag_key| 65535|
-|tag_value| 16777215|
-|message_type| 65535|
-|message_source| 65535|
+|tag_value| 16777215 |
+|message_type| 65535 |
+|message_source| 65535 |
 
 ### Time Field
 
-The timestamp field encodes the time of an observation or an event as determined by the source and can be specified with `ms`, `s`, or `d` fields.
+The timestamp field records the time of an observation or an event as determined by the source and can be specified with `ms`, `s`, or `d` fields.
 
 |**Field**|**Type**|**Description**|
 |:---|:---|:---|
@@ -285,16 +299,16 @@ The timestamp field encodes the time of an observation or an event as determined
 
 Date limits:
 
-* Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
-* Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
+* The minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
+* The maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
 * If the timestamp field is not specified, time is set to current server time.
 
 ### Number Formatting
 
-* Decimal separator is period (`.`).
+* The decimal separator is a period (`.`).
 * No thousands separator.
 * No digit grouping.
-* Negative numbers use negative sign (`-`) at the beginning of the number.
+* Negative numbers use the negative sign (`-`) at the beginning of the number.
 * Not-a-Number is literal `NaN`.
 
 ## Debugging

@@ -1,10 +1,10 @@
 {
 	"metadata": {
 		"@context": ["http://www.w3.org/ns/csvw", {
-			"atsd": "http://www.axibase.com/schemas/2015/11/atsd.jsonld#"
+			"atsd": "http://www.axibase.com/schemas/2017/07/atsd.jsonld"
 		}],
 		"dc:created": {
-			"@value": "2016-06-13T00:11:12.863Z",
+			"@value": "2017-07-04T17:11:12.293Z",
 			"@type": "xsd:date"
 		},
 		"dc:publisher": {
@@ -14,7 +14,7 @@
 			}
 		},
 		"dc:title": "SQL Query",
-		"rdfs:comment": "SELECT entity, avg(value) AS 'Average', median(value), max(value), count(*), \r\n   percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value)  \r\nFROM cpu_busy \r\n  WHERE time BETWEEN previous_day and current_day \r\n  GROUP BY entity \r\n  ORDER BY avg(value) DESC",
+		"rdfs:comment": "SELECT entity, avg(value) AS 'Average', median(value), max(value), count(*),   percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM cpu_busy  WHERE time BETWEEN previous_day and current_day  GROUP BY entity  ORDER BY avg(value) DESC",
 		"@type": "Table",
 		"url": "sql.csv",
 		"tableSchema": {
@@ -27,8 +27,8 @@
 				"propertyUrl": "atsd:entity"
 			}, {
 				"columnIndex": 2,
-				"name": "Average",
-				"titles": "avg(value)",
+				"name": "avg(value)",
+				"titles": "Average",
 				"datatype": "double",
 				"table": "cpu_busy",
 				"propertyUrl": "atsd:avg"
@@ -38,7 +38,7 @@
 				"titles": "median(value)",
 				"datatype": "double",
 				"table": "cpu_busy",
-				"propertyUrl": "atsd:percentile_50"
+				"propertyUrl": "atsd_median"
 			}, {
 				"columnIndex": 4,
 				"name": "max(value)",
@@ -50,34 +50,33 @@
 				"columnIndex": 5,
 				"name": "count(*)",
 				"titles": "count(*)",
-				"datatype": "double",
-				"table": "cpu_busy",
+				"datatype": "long",
 				"propertyUrl": "atsd:count"
 			}, {
 				"columnIndex": 6,
-				"name": "percentile(50,value)",
-				"titles": "percentile(50,value)",
+				"name": "percentile(50, value)",
+				"titles": "percentile(50, value)",
 				"datatype": "double",
 				"table": "cpu_busy",
 				"propertyUrl": "atsd:percentile_50"
 			}, {
 				"columnIndex": 7,
-				"name": "percentile(75,value)",
-				"titles": "percentile(75,value)",
+				"name": "percentile(75, value)",
+				"titles": "percentile(75, value)",
 				"datatype": "double",
 				"table": "cpu_busy",
 				"propertyUrl": "atsd:percentile_75"
 			}, {
 				"columnIndex": 8,
-				"name": "percentile(90,value)",
-				"titles": "percentile(90,value)",
+				"name": "percentile(90, value)",
+				"titles": "percentile(90, value)",
 				"datatype": "double",
 				"table": "cpu_busy",
 				"propertyUrl": "atsd:percentile_90"
 			}, {
 				"columnIndex": 9,
-				"name": "percentile(99,value)",
-				"titles": "percentile(99,value)",
+				"name": "percentile(99, value)",
+				"titles": "percentile(99, value)",
 				"datatype": "double",
 				"table": "cpu_busy",
 				"propertyUrl": "atsd:percentile_99"
@@ -85,64 +84,54 @@
 		}
 	},
 	"data": [{
-		"entity": "nurswgvml006",
-		"avg(value)": "18.4",
-		"median(value)": "4.0",
-		"max(value)": "100.0",
-		"count(*)": "5385.0",
-		"percentile(50,value)": "4.0",
-		"percentile(75,value)": "10.0",
-		"percentile(90,value)": "100.0",
-		"percentile(99,value)": "100.0"
-	}, {
 		"entity": "nurswgvml007",
-		"avg(value)": "8.9",
-		"median(value)": "5.0",
-		"max(value)": "100.0",
-		"count(*)": "5396.0",
-		"percentile(50,value)": "5.0",
-		"percentile(75,value)": "7.1",
-		"percentile(90,value)": "14.1",
-		"percentile(99,value)": "100.0"
+		"Average": 12.066748933011693,
+		"median(value)": 6.0,
+		"max(value)": 100.0,
+		"count(*)": 5389,
+		"percentile(50, value)": 6.0,
+		"percentile(75, value)": 11.11,
+		"percentile(90, value)": 26.0,
+		"percentile(99, value)": 98.02
 	}, {
-		"entity": "nurswgvml011",
-		"avg(value)": "5.0",
-		"median(value)": "2.0",
-		"max(value)": "100.0",
-		"count(*)": "5400.0",
-		"percentile(50,value)": "2.0",
-		"percentile(75,value)": "3.0",
-		"percentile(90,value)": "9.2",
-		"percentile(99,value)": "81.0"
+		"entity": "nurswgvml006",
+		"Average": 11.033629271916839,
+		"median(value)": 3.03,
+		"max(value)": 100.0,
+		"count(*)": 5384,
+		"percentile(50, value)": 3.03,
+		"percentile(75, value)": 6.0,
+		"percentile(90, value)": 29.25,
+		"percentile(99, value)": 100.0
 	}, {
 		"entity": "nurswgvml010",
-		"avg(value)": "4.5",
-		"median(value)": "0.8",
-		"max(value)": "96.8",
-		"count(*)": "5399.0",
-		"percentile(50,value)": "0.8",
-		"percentile(75,value)": "1.2",
-		"percentile(90,value)": "25.1",
-		"percentile(99,value)": "35.2"
+		"Average": 5.6942409057163985,
+		"median(value)": 0.5,
+		"max(value)": 100.0,
+		"count(*)": 5388,
+		"percentile(50, value)": 0.5,
+		"percentile(75, value)": 1.25,
+		"percentile(90, value)": 25.25,
+		"percentile(99, value)": 60.517599999999945
 	}, {
 		"entity": "nurswgvml502",
-		"avg(value)": "3.4",
-		"median(value)": "2.0",
-		"max(value)": "100.0",
-		"count(*)": "5397.0",
-		"percentile(50,value)": "2.0",
-		"percentile(75,value)": "4.5",
-		"percentile(90,value)": "7.0",
-		"percentile(99,value)": "26.0"
+		"Average": 3.062935609575052,
+		"median(value)": 1.49,
+		"max(value)": 100.0,
+		"count(*)": 5389,
+		"percentile(50, value)": 1.49,
+		"percentile(75, value)": 3.0,
+		"percentile(90, value)": 5.03,
+		"percentile(99, value)": 51.265000000000015
 	}, {
-		"entity": "nurswgvml102",
-		"avg(value)": "1.2",
-		"median(value)": "1.0",
-		"max(value)": "56.6",
-		"count(*)": "5398.0",
-		"percentile(50,value)": "1.0",
-		"percentile(75,value)": "2.0",
-		"percentile(90,value)": "3.0",
-		"percentile(99,value)": "6.0"
+		"entity": "nurswgvml301",
+		"Average": 0.7327426312005774,
+		"median(value)": 0.0,
+		"max(value)": 100.0,
+		"count(*)": 2782,
+		"percentile(50, value)": 0.0,
+		"percentile(75, value)": 1.01,
+		"percentile(90, value)": 2.0,
+		"percentile(99, value)": 4.0
 	}]
 }

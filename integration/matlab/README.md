@@ -1,7 +1,6 @@
 # MATLAB
 
 - [Prerequisites](#prerequisites)
-- [Install ATSD Driver](#install-atsd-driver)
 - [Configure Database Connection](#configure-database-connection)
 - [Verify Connection](#verify-connection)
 - [Review Tables in Database Explorer](#review-tables-in-database-explorer)
@@ -11,15 +10,31 @@
 
 ## Prerequisites
 
-Install MatLab R2017a with Database Toolbox
+### Install MatLab
 
-## Install ATSD Driver
+- Install [MatLab](https://www.mathworks.com/products/matlab.html) R2017a with Database Toolbox
+
+### Load Sample Data
+
+To complete this exercise, sample data must be available in your ATSD instance.
+
+1. Log into the ATSD web interface
+2. Open **Metrics -> Data Entry**, select the 'Commands' tab.
+3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
+
+![](resources/metrics_entry.png)
+
+The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](resources/eng_e02.xls).
+
+To calculate a weighted inflation index we need to multiply the CPI of each category by its weight divided by 1000 and sum the products.
+
+### Install ATSD Driver
 
 Download the ATSD [JDBC driver](https://github.com/axibase/atsd-jdbc/releases) with dependencies.
 
 There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynamic
 
-### Static
+#### Static
 
 - Run the `prefdir` command in the MatLab Command Window. This command displays the path to a directory used in subsequent steps.
 
@@ -30,7 +45,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 - Save and close `javaclasspath.txt`.
 - Restart MatLab.
 
-### Dynamic
+#### Dynamic
 
 - Run the `javaaddpath('dpath')` command in the MatLab Command Window, where `'dpath'` is the full path to the ATSD driver JAR file.
 
@@ -45,7 +60,7 @@ Example:
 - Click 'New - JDB'.
 - Select 'Vendor - OTHER'.
 - Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
-- Specify a JDBC URL like `jdbc:axibase:atsd:https://ATSD_HOSTNAME:8443/api/sql;catalog=atsd;tables="TABLE_NAME_FILTER";expandTags=true;trustServerCertificate=true`  
+- Specify a JDBC URL like `jdbc:atsd:ATSD_HOSTNAME:8443;expandTags=true`
 [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
 - Leave the Username and Password fields empty.
 - Now connect to ATSD using the "Data Source Name" button and log in on the Database Browser window.
@@ -56,12 +71,7 @@ Example:
 
 `ATSD_HOSTNAME` is the hostname address of the ATSD instance you want to connect to.
 
-`TABLE_NAME_FILTER` is a list of comma-separated metrics or metric expressions to be displayed as tables in the MatLab Database Browser.
-
-`TABLE_NAME_FILTER` examples:
-- `*java*` for metrics that contains word `java`
-- `custom.metric*` for metrics whose name starts with `custom.metric`
-- `*2017` for metrics whose name ends with `2017`
+> At the  moment the Database Explorer can not display tables with dots in their name.
 
 ### Connect to the MatLab Command Window
 
@@ -69,7 +79,7 @@ Example of https connection to ATSD:
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
-url = 'jdbc:axibase:atsd:https://ATSD_HOSTNAME:8443/api/sql;trustServerCertificate=true';
+url = 'jdbc:atsd:ATSD_HOSTNAME:8443';
 username = 'USERNAME';
 password = 'PASSWORD';
 conn_atsd = database('', username, password, driver, url);
@@ -139,7 +149,7 @@ insert(conn_atsd, 'METRIC_NAME', colnames, data);
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
-url = 'jdbc:axibase:atsd:https://ATSD_HOSTNAME:8443/api/sql;trustServerCertificate=true';
+url = 'jdbc:atsd:ATSD_HOSTNAME:8443';
 username = 'USERNAME';
 password = 'PASSWORD';
 conn_atsd = database('', username, password, driver, url);
@@ -242,6 +252,10 @@ colnames = {'entity', 'datetime', 'value'};
 % insert data into ATSD
 insert(conn_atsd, 'inflation.cpi.composite.price', colnames, payload);
 ```
+
+### MatLab script file
+
+- [Link to file](resources/script.m) that contains all the steps
 
 ## Reference
 

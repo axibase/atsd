@@ -1,0 +1,72 @@
+series e:boi.org.il m:inflation.cpi.categories.price=102.614073890195 t:category="Food (excl. fruit & veg.)" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=101.873677384962 t:category="Food (excl. fruit & veg.)" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=101.272913112087 t:category="Food (excl. fruit & veg.)" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.000000679809 t:category="Food (excl. fruit & veg.)" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.12 t:category="Food (excl. fruit & veg.)" d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=96.6165695376656 t:category="Fruit & veg." d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=96.2618152114577 t:category="Fruit & veg." d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.5027236931457 t:category="Fruit & veg." d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.9839556310458 t:category="Fruit & veg." d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=103.44 t:category="Fruit & veg." d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=93.3883695144102 t:category="Housing" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=95.716464845081 t:category="Housing" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=97.8947408623794 t:category="Housing" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.031902034676 t:category="Housing" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.82 t:category="Housing" d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=104.016076630355 t:category="Housing maintenance" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=105.390738436043 t:category="Housing maintenance" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=101.273270007114 t:category="Housing maintenance" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.9736563800397 t:category="Housing maintenance" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=101.58 t:category="Housing maintenance" d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=108.224635385944 t:category="Furniture & home equipment" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=104.629953023987 t:category="Furniture & home equipment" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=102.118203994783 t:category="Furniture & home equipment" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.017436844741 t:category="Furniture & home equipment" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=98.42 t:category="Furniture & home equipment" d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=102.441677203558 t:category="Clothing & footwear" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=101.479498647999 t:category="Clothing & footwear" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.194583993271 t:category="Clothing & footwear" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.9830780741766 t:category="Clothing & footwear" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=97.72 t:category="Clothing & footwear" d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=98.9279380742935 t:category="Education, culture & entertainment" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.183769822862 t:category="Education, culture & entertainment" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.242148382275 t:category="Education, culture & entertainment" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.008347453104 t:category="Education, culture & entertainment" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.86 t:category="Education, culture & entertainment" d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=98.9687438169465 t:category="Health" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.601598548683 t:category="Health" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.107906861287 t:category="Health" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.9834048628685 t:category="Health" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.54 t:category="Health" d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=109.38092125551 t:category="Transport & communic." d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=107.912281502058 t:category="Transport & communic." d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=103.847538406364 t:category="Transport & communic." d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.000001491724 t:category="Transport & communic." d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=98.48 t:category="Transport & communic." d:2017-01-01T00:00:00Z
+
+series e:boi.org.il m:inflation.cpi.categories.price=98.024260150347 t:category="Miscellaneous" d:2013-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.3570801302568 t:category="Miscellaneous" d:2014-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=99.7929050488964 t:category="Miscellaneous" d:2015-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=100.041413984853 t:category="Miscellaneous" d:2016-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.price=101.32 t:category="Miscellaneous" d:2017-01-01T00:00:00Z
+
+
+series e:boi.org.il m:inflation.cpi.categories.weight=137.21 t:category="Food (excl. fruit & veg.)" d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=29.38 t:category="Fruit & veg." d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=249.58 t:category="Housing" d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=93.7 t:category="Housing maintenance" d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=36.94 t:category="Furniture & home equipment" d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=32.38 t:category="Clothing & footwear" d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=118.68 t:category="Education, culture & entertainment" d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=58.273 t:category="Health" d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=193.44 t:category="Transport & communic." d:2017-01-01T00:00:00Z
+series e:boi.org.il m:inflation.cpi.categories.weight=50.42 t:category="Miscellaneous" d:2017-01-01T00:00:00Z
+

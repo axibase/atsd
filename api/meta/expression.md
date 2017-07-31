@@ -23,7 +23,7 @@ Collections operator: `IN`, for example `tags.location IN ('SVL', 'NUR')`
 
 Wildcard `*` means zero or more characters. 
 
-Wildcard `.` means any character.
+Wildcard `?` means any character.
 
 ## Examples
 

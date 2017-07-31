@@ -32,6 +32,8 @@ An array of query objects containing the following filtering fields:
 * [**Required**]
 * Refer to [entity filter](../filter-entity.md).
 
+> Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `'*'` matches all tags.
+
 #### Date Filter Fields
 
 * [**Required**]

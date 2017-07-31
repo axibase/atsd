@@ -1,16 +1,16 @@
 # Entity Filter Fields
 
-* One of the entity fields is **required**.
-* Entity name pattern may include `?` and `*` wildcards.
-* Field precedence, from high to low: `entity`, `entities`, `entityGroup`. Although multiple fields can be specified in the query object, only the field with higher precedence will be applied.
-* `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields.<br>For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
+* One of the below entity fields is **required**.
+* Field precedence, from high to low: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence will be applied.
+* `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
+* Entity name pattern supports `?` and `*` wildcards.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| entity   | string | Entity name or entity name pattern. |
-| entities | array | Array of entity names or entity name patterns. |
-| entityGroup | string | Entity group name. Return records for member entities of the specified group.<br>The result will be empty if the group doesn't exist or contains no entities. |
-| entityExpression | string | Filter entities by name, entity tag, and properties using [syntax](../../rule-engine/functions.md). <br>Example: `tags.location = 'SVL'`  |
+| entity   | string | Entity name or entity name pattern.<br>Example: `"entity":"nur007"` or `"entity":"svl*"` |
+| entities | array | Array of entity names or entity name patterns.<br>Example: `"entities":["nur007", "nur010", "svl*"]`|
+| entityGroup | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group doesn't exist or is empty.|
+| entityExpression | string | Matches entities by name, entity tag, and properties based on the specified [filter expression](../../rule-engine/functions.md). <br>Example: `"entityExpression":"tags.location = 'SVL'"`  |
 
 ## `entityExpression` Syntax
 
@@ -26,8 +26,23 @@ Supported functions:
 
 * [functions](../../rule-engine/functions.md)
 
+## Property Match Functions
 
-## Entity Name Match Examples
+#### Function `property_values(<path>)`
+
+The function returns a collection of tag values for the specified path, whereas such `<path>` consists of property type, key (optional), and tag name. Since the results represent a collection, it can be evaluated with such methods as `size()`, `isEmpty()`, `contains()`. The function returns an empty collection if no property records are found.
+
+#### Function `property(<path>)`
+
+The function return the first value in the collection of strings returned by the `property_values(<path>)` function. The function returns an empty string if no property records are found.
+
+#### Function `matches(<pattern>, <path>)`
+
+The function returns `true` if one the values in the returned collection matches the specified pattern.
+
+## Examples
+
+### Entity Name Match
 
 > Match entities with name starting with `nurswgvml`, for example `nurswgvml001`, `nurswgvml772`.
 
@@ -35,7 +50,7 @@ Supported functions:
 id LIKE 'nurswgvml*'
 ```
 
-## Entity Tag Match Examples
+### Entity Tag Match
 
 > Match entities with entity tag `environment` equal to `production`.
 
@@ -55,21 +70,7 @@ tags.location LIKE 'SVL*'
 tags.container_label.com.axibase.code = 'collector'
 ```
 
-## Property Match Functions
-
-#### Function `property_values(<path>)`
-
-The function returns a collection of tag values for the specified path, whereas such `<path>` consists of property type, key (optional), and tag name. Since the results represent a collection, it can be evaluated with such methods as `size()`, `isEmpty()`, `contains()`. The function returns an empty collection if no property records are found.
-
-#### Function `property(<path>)`
-
-The function return the first value in the collection of strings returned by the `property_values(<path>)` function. The function returns an empty string if no property records are found.
-
-#### Function `matches(<pattern>, <path>)`
-
-The function returns `true` if one the values in the returned collection matches the specified pattern.
-
-## Property Match Examples
+### Property Match
 
 > Match entities with a `java_home` stored in `docker.container.config.env` equal to '/usr/lib/jvm/java-8-openjdk-amd64/jre'.
 

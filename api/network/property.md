@@ -11,13 +11,20 @@ When a property record is inserted into the database, it overwrites an existing 
 ## Syntax
 
 ```css
-property e:{entity} t:{type} k:{key-1}={value} k:{key-2}={value} v:{tag-1}={text} v:{tag-2}={text} s:{seconds}
+property e:{entity} t:{type} k:{key-1}={value} k:{key-2}={value} v:{tag-1}={text} v:{tag-2}={text} d:{time}
 ```
 
-* Entity name, property type, key names, and tag names are case-insensitive and are converted to lower case when stored. 
+* Entity name, property type, key names, and tag names are case-insensitive and are converted to lower case when stored.
 * Key values and tag values are case-sensitive and are stored as submitted.
 * Tag names may duplicate key names specified in the same command.
 * At least one tag is required.
+
+```ls
+# input command
+property e:nurSWG t:DISK-config k:FS_type=NFS v:Initiator=Pre-fetch
+# stored record
+property e:nurswg t:disk-config k:fs_type=NFS v:initiator=Pre-fetch
+```
 
 ## Reserved Property Types
 
@@ -33,9 +40,9 @@ property e:{entity} t:{type} k:{key-1}={value} k:{key-2}={value} v:{tag-1}={text
 | t         | string           | **[Required]** Property type. |
 | k         | string           | Property key name and text value. Multiple. |
 | v         | string           | **[Required]** Property tag name and text value. At least one required. |
-| s         | integer          | Time in UNIX seconds. | 
-| ms        | integer          | Time in UNIX milliseconds. | 
-| d         | string           | Time in ISO format. | 
+| s         | integer          | Time in UNIX seconds. |
+| ms        | integer          | Time in UNIX milliseconds. |
+| d         | string           | Time in ISO format. |
 
 > If time fields are omitted, the record is inserted with the current server time.
 
@@ -55,6 +62,10 @@ time-millisecond = "ms:" POSITIVE_INTEGER
 time-second = "s:" POSITIVE_INTEGER
 time-iso = "d:" ISO_DATE
 ```
+
+## Limits
+
+Refer to [limits](README.md#command-limits).
 
 ## Examples
 

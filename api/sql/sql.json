@@ -3,47 +3,39 @@
     "@context": [
       "http://www.w3.org/ns/csvw",
       {
-        "atsd": "http://www.axibase.com/schemas/2015/11/atsd.jsonld#"
+        "atsd": "http://www.axibase.com/schemas/2017/07/atsd.jsonld"
       }
     ],
     "dc:created": {
-      "@value": "2016-06-28T14:47:10.196Z",
+      "@value": "2017-07-12T12:11:14.018Z",
       "@type": "xsd:date"
     },
     "dc:publisher": {
       "schema:name": "Axibase Time-Series Database",
       "schema:url": {
-        "@id": "https://nur.axibase.com"
+        "@id": "https://ATSD_HOSTNAME:8443"
       }
     },
     "dc:title": "SQL Query",
-    "rdfs:comment": "SELECT entity, value as \"cpu_busy_percent\", tbl.datetime 'sample-date'\r\n  FROM \"cpu_busy\" tbl \r\nWHERE datetime > now - 1*MINUTE",
+    "rdfs:comment": "SELECT tbl.value*100 AS \"cpu_percent\", tbl.datetime 'sample-date'\nFROM \"cpu_busy\" tbl\nWHERE datetime > now - 1*MINUTE",
     "@type": "Table",
     "url": "sql.csv",
     "tableSchema": {
       "columns": [
         {
           "columnIndex": 1,
-          "name": "entity",
-          "titles": "entity",
-          "datatype": "string",
-          "table": "cpu_busy",
-          "propertyUrl": "atsd:entity"
-        },
-        {
-          "columnIndex": 2,
-          "name": "cpu_busy_percent",
-          "titles": "value",
-          "datatype": "float",
+          "name": "tbl.value * 100",
+          "titles": "cpu_percent",
+          "datatype": "double",
           "table": "cpu_busy",
           "propertyUrl": "atsd:value"
         },
         {
-          "columnIndex": 3,
-          "name": "sample-date",
-          "titles": "datetime",
+          "columnIndex": 2,
+          "name": "tbl.datetime",
+          "titles": "sample-date",
           "datatype": "xsd:dateTimeStamp",
-          "table": "tbl",
+          "table": "cpu_busy",
           "propertyUrl": "atsd:datetime",
           "dc:description": "Sample time in ISO8601 format"
         }
@@ -51,150 +43,69 @@
     }
   },
   "data": [
-    {
-      "entity": "nurswgvml007",
-      "value": "5.0",
-      "datetime": "2016-06-28T14:46:13.000Z"
-    },
-    {
-      "entity": "nurswgvml007",
-      "value": "7.3",
-      "datetime": "2016-06-28T14:46:29.000Z"
-    },
-    {
-      "entity": "nurswgvml007",
-      "value": "5.9",
-      "datetime": "2016-06-28T14:46:45.000Z"
-    },
-    {
-      "entity": "nurswgvml007",
-      "value": "5.0",
-      "datetime": "2016-06-28T14:47:01.000Z"
-    },
-    {
-      "entity": "nurswgvml006",
-      "value": "2.0",
-      "datetime": "2016-06-28T14:46:17.000Z"
-    },
-    {
-      "entity": "nurswgvml006",
-      "value": "5.0",
-      "datetime": "2016-06-28T14:46:33.000Z"
-    },
-    {
-      "entity": "nurswgvml006",
-      "value": "10.0",
-      "datetime": "2016-06-28T14:46:49.000Z"
-    },
-    {
-      "entity": "nurswgvml006",
-      "value": "4.0",
-      "datetime": "2016-06-28T14:47:05.000Z"
-    },
-    {
-      "entity": "nurswgvml102",
-      "value": "1.0",
-      "datetime": "2016-06-28T14:46:15.000Z"
-    },
-    {
-      "entity": "nurswgvml102",
-      "value": "1.0",
-      "datetime": "2016-06-28T14:46:31.000Z"
-    },
-    {
-      "entity": "nurswgvml102",
-      "value": "1.0",
-      "datetime": "2016-06-28T14:46:47.000Z"
-    },
-    {
-      "entity": "nurswgvml102",
-      "value": "0.0",
-      "datetime": "2016-06-28T14:47:03.000Z"
-    },
-    {
-      "entity": "nurswgvml010",
-      "value": "0.5",
-      "datetime": "2016-06-28T14:46:20.000Z"
-    },
-    {
-      "entity": "nurswgvml010",
-      "value": "1.0",
-      "datetime": "2016-06-28T14:46:36.000Z"
-    },
-    {
-      "entity": "nurswgvml010",
-      "value": "0.5",
-      "datetime": "2016-06-28T14:46:52.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "0.0",
-      "datetime": "2016-06-28T14:46:13.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "3.0",
-      "datetime": "2016-06-28T14:46:29.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "1.0",
-      "datetime": "2016-06-28T14:46:45.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "3.0",
-      "datetime": "2016-06-28T14:47:01.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "2.0",
-      "datetime": "2016-06-28T14:47:17.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "4.0",
-      "datetime": "2016-06-28T14:47:33.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "2.0",
-      "datetime": "2016-06-28T14:47:49.000Z"
-    },
-    {
-      "entity": "nurswgvml011",
-      "value": "3.0",
-      "datetime": "2016-06-28T14:48:05.000Z"
-    },
-    {
-      "entity": "nurswgvml009",
-      "value": "3.0",
-      "datetime": "2016-06-28T14:46:25.000Z"
-    },
-    {
-      "entity": "nurswgvml009",
-      "value": "9.5",
-      "datetime": "2016-06-28T14:46:41.000Z"
-    },
-    {
-      "entity": "nurswgvml009",
-      "value": "3.0",
-      "datetime": "2016-06-28T14:46:57.000Z"
-    },
-    {
-      "entity": "nurswgvml502",
-      "value": "0.5",
-      "datetime": "2016-06-28T14:46:25.000Z"
-    },
-    {
-      "entity": "nurswgvml502",
-      "value": "5.6",
-      "datetime": "2016-06-28T14:46:41.000Z"
-    },
-    {
-      "entity": "nurswgvml502",
-      "value": "0.0",
-      "datetime": "2016-06-28T14:46:57.000Z"
-    }
+    [
+      102,
+      "2017-07-12T12:10:26.000Z"
+    ],
+    [
+      909,
+      "2017-07-12T12:10:42.000Z"
+    ],
+    [
+      600,
+      "2017-07-12T12:10:58.000Z"
+    ],
+    [
+      1122,
+      "2017-07-12T12:10:23.000Z"
+    ],
+    [
+      1019,
+      "2017-07-12T12:10:39.000Z"
+    ],
+    [
+      606,
+      "2017-07-12T12:10:55.000Z"
+    ],
+    [
+      792,
+      "2017-07-12T12:11:11.000Z"
+    ],
+    [
+      50,
+      "2017-07-12T12:10:20.000Z"
+    ],
+    [
+      25,
+      "2017-07-12T12:10:36.000Z"
+    ],
+    [
+      50,
+      "2017-07-12T12:10:52.000Z"
+    ],
+    [
+      75,
+      "2017-07-12T12:11:08.000Z"
+    ],
+    [
+      450,
+      "2017-07-12T12:10:25.000Z"
+    ],
+    [
+      300,
+      "2017-07-12T12:10:41.000Z"
+    ],
+    [
+      101,
+      "2017-07-12T12:10:57.000Z"
+    ],
+    [
+      0,
+      "2017-07-12T12:10:26.000Z"
+    ],
+    [
+      100,
+      "2017-07-12T12:10:57.000Z"
+    ]
   ]
 }

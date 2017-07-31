@@ -16,7 +16,7 @@ Membership in entity groups with non-empty expression is managed by the server. 
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| expression |string|Expression to include entity groups by name or tags. Use the `name` variable for group name. The wildcard `*` is supported.|
+| expression |string|Expression to include entity groups by name or tags. Use the `name` variable for group name. Supported wildcards: `*` and `?`.|
 | limit |integer|Maximum number of entity groups to retrieve, ordered by name.|
 | tags |string|Comma-separated list of entity group tag names to be displayed in the response.<br>For example, `tags=environment,os-type`<br>Specify `tags=*` to print all entity group tags.|
 

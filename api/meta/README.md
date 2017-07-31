@@ -1,6 +1,6 @@
 ## Overview
 
-The Meta API lets you query and update metadata about metrics, entities, and entity groups in the Axibase Time Series Database. 
+The Meta API lets you query and update metadata about metrics, entities, and entity groups in the Axibase Time Series Database.
 
 ## Categories
 
@@ -31,8 +31,9 @@ The Meta API lets you query and update metadata about metrics, entities, and ent
     - [set entities](entity-group/set-entities.md)
     - [delete entities](entity-group/delete-entities.md)
 * [Misc](misc)
-    - [version](misc/version.md)
+    - [search](misc/search.md)
     - [ping](misc/ping.md)
+    - [version](misc/version.md)
 
 ## Request Methods
 
@@ -66,7 +67,7 @@ Status Code: 500
 * `401` status code in case of an unknown resource.
 * `403` status code in case of access denied error.
 * `4xx` status code in case of other client errors.
-* `5xx` status code in case of server error. 
+* `5xx` status code in case of server error.
 
 4xx or 5xx response codes are specific to each API methods.
 
@@ -88,10 +89,10 @@ Processing errors are returned in JSON format:
 ## Authorization
 
 * User must have [**API_META_READ**/**API_META_WRITE**](../../administration/user-authorization.md#available-api-roles) role.
- 
+
 ## Cross-domain Requests
 
-Cross-domain requests are allowed. 
+Cross-domain requests are allowed.
 
 ## Compression
 

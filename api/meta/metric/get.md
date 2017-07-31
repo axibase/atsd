@@ -1,12 +1,12 @@
 # Metric: Get
 
-## Description 
+## Description
 
 Retrieve properties and tags for the specified metric.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/metrics/{metric}` |
 
@@ -36,7 +36,7 @@ GET https://atsd_host:8443/api/v1/metrics/cpu_busy
 
 None.
 
-#### curl 
+#### curl
 
 ```elm
 curl https://atsd_host:8443/api/v1/metrics/cpu_busy \
@@ -53,7 +53,6 @@ curl https://atsd_host:8443/api/v1/metrics/cpu_busy \
   "dataType": "FLOAT",
   "interpolate":"LINEAR",
   "timeZone":"America/New_York",
-  "counter": false,
   "persistent": true,
   "tags": {},
   "timePrecision": "MILLISECONDS",
@@ -65,6 +64,3 @@ curl https://atsd_host:8443/api/v1/metrics/cpu_busy \
 ```
 
 ## Additional Examples
-
-
-

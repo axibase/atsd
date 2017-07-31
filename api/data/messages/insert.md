@@ -5,9 +5,10 @@
 Insert messages.
 
 * Entity name, source, type, severity, and tag names cannot contain non-printable characters. They are case-insensitive and are converted to lower case when stored.
-* Message text and message tag values are case-sensitive and are stored as submitted.
+* Message text and message tag values are **case-sensitive** and are stored as submitted.
 * Field values are trimmed of leading and trailing non-printable characters including tab, line feed, and space.  
 * Primary key of the message is composed of type, source, entity, and time. Messages that have the same primary key but different values in other fields, such as message text or tags, are deduplicated by discarding all duplicates except one.
+* The number of message tags cannot exceed 1024.
 
 Date limits:
 
@@ -36,7 +37,7 @@ An array of message objects.
 | entity | string | Entity name. |
 | date | string | ISO 8601 date, for example `2016-05-25T00:15:00Z`.<br>Set to current server time if omitted. |
 | severity | string | [Severity](../severity.md) name. |
-| tags | object | An object containing `name=value` pairs, for example tags: `{"path": "/", "name": "sda"}`. | 
+| tags | object | An object containing `name=value` pairs, for example tags: `{"path": "/", "name": "sda"}`. |
 | message | string | Message text. |
 | persist | boolean | Persist message in the database. Default: true. <br>If disabled, the message is only processed by the rule-engine. |
 

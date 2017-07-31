@@ -1,48 +1,49 @@
 # Portals
 
-ATSD Portal is a set of widgets that allows you to gather required data on one page and visualize critical metrics for more convenient monitoring and analysis.
+A portal is a collection of graphs created with Axibase **Charts** - a declarative charting library designed for time-series visualization. 
 
-Read this page to learn about ATSD portals and see [Creating and Assigning Portals](http://axibase.com/products/axibase-time-series-database/visualization/portals/creating-and-assigning-portals/) to learn how to work with portals.
+The **Charts** library provides a simple yet powerful syntax, closely integrated with the ATSD [data model](https://axibase.com/products/axibase-time-series-database/data-model/), so that even a user with no programming experience can build and deploy real-time dashboards with minimal effort.
 
-### Key Features
+Syntax Examples:
 
+* [70 lines](https://apps.axibase.com/chartlab/3230deb6/8/)
+* [200 lines](https://apps.axibase.com/chartlab/2ef08f32)
 
-- ATSD has a wide range of built-in portals that come standard out of the box. You don’t need to spend time on their configuration and modeling.
-- You can create personalized portals that will include only your required widgets and metrics.
-- Not only can you manage the information on your portal, but also manage the way your portal looks. You can choose a theme that comes standard with ATSD, or you can upload your own one.
+The power user, on the other hand, can leverage [inheritance](https://axibase.com/products/axibase-time-series-database/visualization/widgets/inheritance), [wildcards](https://axibase.com/products/axibase-time-series-database/visualization/widgets/wildcards/), [control structures](https://axibase.com/products/axibase-time-series-database/visualization/widgets/control-structures), [computed series](https://axibase.com/products/axibase-time-series-database/visualization/widgets/computed-metrics), [display filters](https://axibase.com/products/axibase-time-series-database/visualization/widgets/display-filters), and other [advanced features](https://axibase.com/products/axibase-time-series-database/visualization/) to create data-driven applications such as [data sliders](http://apps.axibase.com/slider/energinet-2017/?slide=1), [cross-filters](http://apps.axibase.com/cross-filter/?table=Linux%20Performance), [statistic viewers](https://apps.axibase.com/chartlab/cde99874/2/#fullscreen) etc.
 
+## Custom Portals
 
-Standard out of the box, ATSD contains over 20 built-in portals for:
+Custom portals can be created on the **Configuration > Portals** page as described in the following [guide](creating-and-assigning-portals.md).
 
+## Built-in Portals
 
-- ATSD host system
-- nmon
-- Amazon Web Services
-- cAdvisor
-- docker
+ATSD contains built-in portals which are automatically enabled and are listed on the **Configuration > Portals** page.
+
+- ATSD (self monitoring)
+- Linux nmon
+- AIX nmon
+- Amazon Web Services EC2
+- Amazon Web Services EBS
+- Google cAdvisor
+- Docker Host, Container
+- Microsoft SCOM
+- ITM Operating System
+- Oracle Database
+- Oracle EM Host
+- Apache Tomcat Server
+- ActiveMQ Broker
 - SolarWinds
 - tcollector
-- VMware, etc.
+- scollector
+- VMware
+- JVM
+- MySQL Database
+- PostgreSQL Database
+- nginx Web Server
 
+The built-in portals can be customized by changing their configuration text or used as a foundation when developing custom portals.
 
-ATSD has two types of portals:
-
-
-- Default Portals
-- Template Portals
-
-
-Default Portals are automatically assigned to specific entities and entity groups. To learn more, see [Entities](https://axibase.com/products/axibase-time-series-database/data-model/entities/).
-
-Right after creation, the portal will appear on the Portals tab at the top menu and will display entities, metrics, and tags as assigned by default.
-
-Template Portals can be assigned to an unlimited number of entities and entity groups.
-
-You can use placeholders while writing portal contents. When you assign a new portal to an entity, its name will automatically replace the placeholder.
-
-
-
-## ATSD Built-in Portal Gallery
+## Built-in Portal Gallery
 
 |  |  |  |
 | --- | --- | --- |
@@ -52,13 +53,3 @@ You can use placeholders while writing portal contents. When you assign a new p
 | tcollector ![](resources/tcollector-portal1-705x472.png) | VMware Host ![](resources/vmware_host_portal-705x473.png) | VMware Host VM Breakdown ![](resources/vmware_hostvm_breakdown_portal-705x473.png) |
 | VMware Cluster ![](resources/vmware_cluster_portal-705x475.png) | Vmware VM ![](resources/vmware_vm_portal-705x476.png) | SCOM Server ![](resources/scom_server_portal-705x452.png)
 | nmon AIX ![](resources/nmon-aix-portal-1000-705x360.png) |
-
-### Learn How To
-
-[Create and Assign Portals](http://axibase.com/products/axibase-time-series-database/visualization/portals/creating-and-assigning-portals/)
-
-[Build Portal Layout](portal-settings.md)
-
-[Create Generic Widgets](http://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/)
-
-[Create Generic Tables](http://axibase.com/products/axibase-time-series-database/visualization/widgets/description-of-tables/)

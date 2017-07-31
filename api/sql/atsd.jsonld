@@ -1,6 +1,6 @@
 {
   "@context": {
-    "atsd": "http://www.axibase.com/schemas/2015/11/atsd.jsonld#",
+    "atsd": "http://www.axibase.com/schemas/2017/07/atsd.jsonld#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -10,7 +10,7 @@
     "subClassOf": { "@id": "rdfs:subClassOf", "@type": "@id" },
     "equivalentClass": { "@id": "owl:equivalentClass", "@type": "@id" }
   },
-  "@id": "http://www.axibase.com/schemas/2015/11/atsd.jsonld",
+  "@id": "http://www.axibase.com/schemas/2017/07/atsd.jsonld",
   "@type": "owl:Ontology",
   "label": "Ontology for Axibase Time-Series Database",
   "comment": "Ontology for Axibase Time-Series Database based on RFC6350",
@@ -24,78 +24,85 @@
       "@id": "atsd:metric",
       "@type": "owl:Class",
       "label": "Metric"
-    },	
+    },
     {
       "@id": "atsd:tag",
-	  "@type": "xsd:string",
+      "@type": "xsd:string",
       "subClassOf": "owl:DatatypeProperty",
       "label": "Generic Tag"
     },
     {
       "@id": "atsd:entityTag",
-	  "@type": "xsd:string",
+      "@type": "xsd:string",
       "subClassOf": "atsd:tag",
       "label": "Entity Tag"
-    },	
+    },
     {
       "@id": "atsd:metricTag",
-	  "@type": "xsd:string",
+      "@type": "xsd:string",
       "subClassOf": "atsd:tag",
       "label": "Metric Tag"
-    },	
+    },
     {
       "@id": "atsd:seriesTag",
-	  "@type": "xsd:string",
+      "@type": "xsd:string",
       "subClassOf": "atsd:tag",
       "label": "Series Tag"
-    },		
+    },
     {
       "@id": "atsd:datetime",
-	  "@type": "xsd:dateTimeStamp",
+      "@type": "xsd:dateTimeStamp",
       "subClassOf": "owl:DatatypeProperty",
       "label": "Datetime"
-    },	
+    },
     {
       "@id": "atsd:time",
-	  "@type": "xsd:long",
+      "@type": "xsd:long",
       "subClassOf": "owl:DatatypeProperty",
-	  "comment": "Unix milliseconds",
+      "comment": "Unix milliseconds",
       "label": "Time"
-    },		
+    },
     {
       "@id": "atsd:versionSource",
-	  "@type": "xsd:string",
+      "@type": "xsd:string",
       "subClassOf": "atsd:seriesTag",
       "label": "Version Source"
-    },	
+    },
     {
       "@id": "atsd:versionStatus",
-	  "@type": "xsd:string",
+      "@type": "xsd:string",
       "subClassOf": "atsd:seriesTag",
       "label": "Version Status"
-    },	
+    },
     {
       "@id": "atsd:versionDatetime",
-	  "@type": "xsd:dateTimeStamp",
+      "@type": "xsd:dateTimeStamp",
       "subClassOf": "atsd:datetime",
       "label": "Version Datetime"
     },
     {
       "@id": "atsd:versionTime",
-	  "@type": "xsd:long",
+      "@type": "xsd:long",
       "subClassOf": "atsd:time",
-	  "comment": "Unix milliseconds",
+      "comment": "Unix milliseconds",
       "label": "Version Time"
     },
     {
       "@id": "atsd:value",
-	  "@type": "xsd:double",
+      "@type": "xsd:double",
       "subClassOf": "owl:DatatypeProperty",
       "label": "Value"
-    },		
+    },
+    {
+      "@id": "atsd:text",
+      "@type": "xsd:string",
+      "subClassOf": "owl:DatatypeProperty",
+      "comment": "Annotation",
+      "label": "Text"
+    },
     {
       "@id": "atsd:aggregator",
-	  "@type": "xsd:double",
+      "@type": "xsd:double",
       "subClassOf": "owl:DatatypeProperty",
       "label": "Aggregator"
     },
@@ -103,145 +110,145 @@
       "@id": "atsd:min",
       "@type": "xsd:double",
       "label": "Minimum",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:max",
       "@type": "xsd:double",
       "label": "Maximum",
-	  "subClassOf": "atsd:aggregator"
-    },	
+      "subClassOf": "atsd:aggregator"
+    },
     {
       "@id": "atsd:avg",
       "@type": "xsd:double",
       "label": "Average",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:mean",
       "@type": "xsd:double",
       "label": "Mean",
-	  "equivalentClass": "atsd:average"
-    },	
+      "equivalentClass": "atsd:average"
+    },
     {
       "@id": "atsd:sum",
       "@type": "xsd:double",
       "label": "Sum",
-	  "subClassOf": "atsd:aggregator"
-    },	
+      "subClassOf": "atsd:aggregator"
+    },
     {
       "@id": "atsd:count",
       "@type": "xsd:double",
       "label": "Count",
-	  "subClassOf": "atsd:aggregator"
-    },	
+      "subClassOf": "atsd:aggregator"
+    },
     {
       "@id": "atsd:delta",
       "@type": "xsd:double",
       "label": "Delta",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:counter",
       "@type": "xsd:double",
       "label": "Counter",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:first",
       "@type": "xsd:double",
       "label": "First",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:last",
       "@type": "xsd:double",
       "label": "Last",
-	  "subClassOf": "atsd:aggregator"
-    },	
+      "subClassOf": "atsd:aggregator"
+    },
     {
       "@id": "atsd:wavg",
       "@type": "xsd:double",
       "label": "Weighted Average",
-	  "subClassOf": "atsd:aggregator"
-    },	
+      "subClassOf": "atsd:aggregator"
+    },
     {
       "@id": "atsd:wtavg",
       "@type": "xsd:double",
       "label": "Weighted Time Average",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:minValueTime",
       "@type": "xsd:double",
       "label": "Minimum Value Time",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:maxValueTime",
       "@type": "xsd:double",
       "label": "Maximum Value Time",
-	  "subClassOf": "atsd:aggregator"
-    },	
+      "subClassOf": "atsd:aggregator"
+    },
     {
       "@id": "atsd:median",
       "@type": "xsd:double",
       "label": "Median",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:standardDeviation",
       "@type": "xsd:double",
       "label": "Standard Deviation",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:percentile",
       "@type": "xsd:double",
       "label": "Percentile",
-	  "subClassOf": "atsd:aggregator"
+      "subClassOf": "atsd:aggregator"
     },
     {
       "@id": "atsd:percentile_50",
       "@type": "xsd:double",
       "label": "50% Percentile",
-	  "subClassOf": "atsd:percentile"
+      "subClassOf": "atsd:percentile"
     },
     {
       "@id": "atsd:percentile_75",
       "@type": "xsd:double",
       "label": "70% Percentile",
-	  "subClassOf": "atsd:percentile"
+      "subClassOf": "atsd:percentile"
     },
     {
       "@id": "atsd:percentile_90",
       "@type": "xsd:double",
       "label": "90% Percentile",
-	  "subClassOf": "atsd:percentile"
+      "subClassOf": "atsd:percentile"
     },
     {
       "@id": "atsd:percentile_95",
       "@type": "xsd:double",
       "label": "95% Percentile",
-	  "subClassOf": "atsd:percentile"
+      "subClassOf": "atsd:percentile"
     },
     {
       "@id": "atsd:percentile_99",
       "@type": "xsd:double",
       "label": "99% Percentile",
-	  "subClassOf": "atsd:percentile"
+      "subClassOf": "atsd:percentile"
     },
     {
       "@id": "atsd:percentile_999",
       "@type": "xsd:double",
       "label": "99.9% Percentile",
-	  "subClassOf": "atsd:percentile"
+      "subClassOf": "atsd:percentile"
     },
     {
       "@id": "atsd:median",
       "@type": "xsd:double",
       "label": "Median",
-	  "equivalentClass": "atsd:percentile_50"
+      "equivalentClass": "atsd:percentile_50"
     }
   ]
 }

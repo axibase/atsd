@@ -16,6 +16,10 @@ The search interface allows finding series records by matching keywords against 
 * Metric tag values
 * Last Insert Date
 
+## Example
+
+![](resources/search-results.png)
+
 ## Syntax
 
 A search query consists of terms and boolean operators. There are two types of terms: keywords and phrases.
@@ -154,6 +158,29 @@ date:2017-06-*
 
 ### Scheduling
 
-The index containing search terms is refreshed on schedule and may not reflect changes such as a new series or modifications of existing series that have occurred since the last refresh.
+The search index is continuosly refreshed on schedule and as such it may not reflect the latest changes such as a new series or modifications of existing series that have occurred since the last refresh.
 
-The administrators can refresh the index manually on the **Admin: Diagnostics: Search Index** page as well as customize the `search.indexing.schedule` setting on **Admin: Server Properties** page.
+The frequency of incremental refreshes can be controlled with `search.indexing.incremental.schedule` setting. Each refresh operation takes up to 10 seconds.
+
+The frequency of rebuild tasks can be controlled with `search.indexing.full.schedule` setting. The full rebuild takes up to 10 minutes.
+
+The administrators can refresh the index manually on the **Admin: Diagnostics: Search Index** page.
+
+### Monitoring
+
+The database collects the following measurements to facilitate monitoring of the background index tasks:
+
+* Metrics
+
+```ls
+series e:atsd t:host={hostname} m:index.build_time={time in millis} type=incremental OR full
+series e:atsd t:host={hostname} m:index.directory_size={disk size in megabytes}
+series e:atsd t:host={hostname} m:index.series_count={number of series}
+```
+
+* Control Messages
+
+```ls
+message e:atsd t:host={hostname} t:type=search t:source={scheduled | manual} t:task=re-index t:scope={full | incremental} m:"Starting search re-indexing."
+message e:atsd t:host={hostname} t:type=search t:source={scheduled | manual} t:task=re-index t:scope={full | incremental} m:"Completed search re-indexing in {time in millis} ms."
+```

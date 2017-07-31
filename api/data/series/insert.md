@@ -2,10 +2,11 @@
 
 ## Description
 
-Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags. 
+Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags.
 
 * Entity name, metric name, and tag names can contain only printable characters. Names are case-insensitive and are converted to lower case when stored.
-* Tag values are case-sensitive and are stored as submitted.
+* Tag values are **case-sensitive** and are stored as submitted.
+* The number of series tags cannot exceed 1024.
 * New entities, metrics, and tag names are created automatically.
 * New metrics are initialized with the `float` data type by default.
 * If an insert for a new metric contains `version` in the first [Sample](#sample-object), the metric will be created as versioned.
@@ -23,7 +24,7 @@ None.
 
 ### Fields
 
-The request contains an array of series objects, each containing an array of timestamped value objects. 
+The request contains an array of series objects, each containing an array of timestamped value objects.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -63,7 +64,7 @@ The request contains an array of series objects, each containing an array of tim
 
 * The string representation of the inserted number consists of an optional sign, '+' ('\u002B') or '-' ('\u002D'), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent.
 * The exponent consists of the character 'e' ('\u0065') or 'E' ('\u0045') followed by an optional sign, '+' ('\u002B') or '-' ('\u002D'), followed by one or more decimal digits.
-* The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. 
+* The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction.
 * The number formed by the sign, the integer, and the fraction is referred to as the [**significand**](https://en.wikipedia.org/wiki/Significand).
 * The **significand** value stripped from trailing zeros should be within Long.MAX_VALUE `9223372036854775807` and Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database will throw an **llegalArgumentException: BigDecimal significand overflows the long type** for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and will be rounded to `1.121212121212121212` if inserted for non-decimal metric.
 
@@ -81,7 +82,7 @@ None.
 | 400 | IllegalArgumentException: Negative timestamp.|
 | 400 | IllegalArgumentException: No data. |
 | 400 | IllegalArgumentException: BigDecimal significand overflows the long type. |
-| 500 | JsonParseException: Unexpected character "}" | 
+| 500 | JsonParseException: Unexpected character "}" |
 | 500 | JsonMappingException: No enum constant in field type.|
 
 ## Example
@@ -118,7 +119,7 @@ curl https://atsd_host:8443/api/v1/series/insert \
   --request POST \
   --data '[{"entity": "nurswgvml007", "metric": "mpstat.cpu_busy", "data": [{ "t": 1462427358127, "v": 22.0 }]}]'
   ```
-  
+
 * file
 
 ```elm

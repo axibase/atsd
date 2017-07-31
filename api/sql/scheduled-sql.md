@@ -18,7 +18,7 @@ The SQL queries are executed with administrative permissions and no records are 
 
 The scheduling frequency is controlled with the `Schedule` field containing a `cron` expression that determines when the task should be executed.
 
-> The `cron` expression is evaluated based on the timezone of the server where the database is running. The timezone is displayed on the **Admin: System Information** page. 
+> The `cron` expression is evaluated based on the timezone of the server where the database is running. The timezone is displayed on the **Admin: System Information** page.
 
 Fields in a cron expression have the following order:
 
@@ -166,20 +166,20 @@ Table schema object provides the following information about the columns in the 
 {
 	"metadata": {
 		"@context": ["http://www.w3.org/ns/csvw", {
-			"atsd": "http://www.axibase.com/schemas/2015/11/atsd.jsonld#"
+			"atsd": "http://www.axibase.com/schemas/2017/07/atsd.jsonld"
 		}],
 		"dc:created": {
-			"@value": "2016-06-13T08:41:25.451Z",
+			"@value": "2017-07-04T17:08:39.745Z",
 			"@type": "xsd:date"
 		},
 		"dc:publisher": {
-			"schema:name": "Axibase Time Series Database",
+			"schema:name": "Axibase Time-Series Database",
 			"schema:url": {
 				"@id": "https://nur.axibase.com"
 			}
 		},
 		"dc:title": "SQL Query",
-		"rdfs:comment": "SELECT entity, datetime, metric, avg(value) AS 'Average'  \r\nFROM cpu_busy \r\n  WHERE datetime > current_minute \r\n  GROUP BY entity, period(1 minute) \r\n  ORDER BY avg(value) DESC",
+		"rdfs:comment": "SELECT entity, datetime, avg(value) AS 'Average' FROM cpu_busy  WHERE datetime > current_minute  GROUP BY entity, period(1 minute) ORDER BY avg(value) DESC",
 		"@type": "Table",
 		"url": "sql.csv",
 		"tableSchema": {
@@ -200,21 +200,20 @@ Table schema object provides the following information about the columns in the 
 				"dc:description": "Sample time in ISO8601 format"
 			}, {
 				"columnIndex": 3,
-				"name": "metric",
-				"titles": "metric",
-				"datatype": "string",
-				"table": "cpu_busy",
-				"propertyUrl": "atsd:metric"
-			}, {
-				"columnIndex": 4,
-				"name": "Average",
-				"titles": "avg(value)",
+				"name": "avg(value)",
+				"titles": "Average",
 				"datatype": "double",
 				"table": "cpu_busy",
 				"propertyUrl": "atsd:avg"
 			}]
 		}
 	},
-	"data": []
+	"data": [
+		["nurswgvml007", "2017-07-04T17:08:00.000Z", 11.756666666666664],
+		["nurswgvml006", "2017-07-04T17:08:00.000Z", 3.3499999999999996],
+		["nurswgvml502", "2017-07-04T17:08:00.000Z", 2.9966666666666666],
+		["nurswgvml010", "2017-07-04T17:08:00.000Z", 0.375],
+		["nurswgvml301", "2017-07-04T17:08:00.000Z", 0.0]
+	]
 }
 ```

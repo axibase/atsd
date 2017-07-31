@@ -7,7 +7,7 @@ Returns database version including licensing details as well as a `date` object 
 ## Request
 
 | **Method** | **Path** | 
-|:---|:---|---:|
+|:---|:---|
 | GET | `/api/v1/version` |
 
 ## Response

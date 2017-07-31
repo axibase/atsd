@@ -1,8 +1,8 @@
 # Select All Series Tags
 
-If multiple series contains different tags, the `tags.*` expression will be expanded to all unique tag names.
+If rows for the retrieved series contain different tags, the `tags.*` expression will be expanded to all unique tag names.
 
-If multiple series doesn't contain a given series tag, the tag's value will be set to `null` in the corresponding column.
+If series don't contain the given series tag, the tag's value will be set to `null` in the corresponding column.
 
 ## Data
 

@@ -5,7 +5,7 @@
 ```sql
 SELECT datetime, coalesce(t1.entity, t2.entity) AS server, AVG(t1.value), AVG(t2.value), t2.tags
   FROM mpstat.cpu_busy t1
-OUTER JOIN USING ENTITY df.disk_used t2
+FULL OUTER JOIN USING ENTITY df.disk_used t2
   WHERE t1.datetime >= '2017-05-31T06:00:00Z' AND t1.datetime < '2017-05-31T06:30:00Z'
 GROUP BY server, PERIOD(15 MINUTE), t2.tags
   HAVING t2.tags IS NOT NULL

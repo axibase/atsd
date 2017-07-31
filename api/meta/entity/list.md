@@ -14,7 +14,7 @@ Retrieve a list of entities matching the specified filter conditions.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| expression |string|Include entities that match an [expression](../../../api/meta/expression.md) filter. Use the `name` variable for entity name. The wildcard `*` is supported.|
+| expression |string|Include entities that match an [expression](../../../api/meta/expression.md) filter. Use the `name` variable for entity name. Supported wildcards: `*` and `?`.|
 | minInsertDate |string|Include entities with `lastInsertDate` equal or greater than specified time. <br>`minInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
 | maxInsertDate |string|Include entities with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
 | limit |integer|Maximum number of entities to retrieve, ordered by name.|
