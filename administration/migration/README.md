@@ -255,7 +255,7 @@ Upgrade Hadoop.
 Review the log file.
 
 ```sh
-tail /opt/atsd/hadoop/logs/hadoop-axibase-namenode-atsd.log
+tail /opt/atsd/hadoop/logs/hadoop-axibase-namenode-*.log
 ```
 
 The expected output:
@@ -533,7 +533,7 @@ export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migrati
 1. Migrate data in the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -s 'atsd_delete_task_backup' -d 'atsd_delete_task' -m 2 -r
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration
 ```
 
 ```
@@ -549,13 +549,13 @@ In case of errors, review job logs:
 2. Migrate data in the 'atsd_forecast' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -s 'atsd_forecast_backup' -d 'atsd_forecast' -m 2 -r
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration
 ```
 
 3. Migrate data in the 'atsd_li' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -s 'atsd_li_backup' -d 'atsd_li' -m 2 -r
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration
 ```
 
 This migration task will write intermediate results into a temporary directory for diagnostics.
@@ -578,13 +578,13 @@ Delete the diagnostics folder:
 4. Migrate data to the 'atsd_metric' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -s 'atsd_metric_backup' -d 'atsd_metric' -m 2 -r
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration
 ```
 
 5. Migrate data to the 'atsd_d' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -s 'atsd_d_backup' -d 'atsd_d' -m 2 -r
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator
 ```
 
 6. Migration is now complete. 
