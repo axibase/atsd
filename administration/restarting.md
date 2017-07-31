@@ -129,7 +129,7 @@ If the repeat attempt fails to stop HBase processes, execute the following comma
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh stop regionserver
 /opt/atsd/hbase/bin/hbase-daemon.sh stop master
-/opt/atsd/hbase/bin/hbase-daemons.sh stop zookeeper
+/opt/atsd/hbase/bin/hbase-daemon.sh stop zookeeper
 ```
 
 If subsequent  `./atsd-hbase.sh stop` executions fail to stop HBase processes, kill HBase processes by PID with SIGTERM (no flags).
