@@ -611,7 +611,7 @@ wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 Replace old script files.
 
 ```sh
-tar -xf scripts.tar.gz -C /opt/atsd/
+tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/
 ```
 
 Set `JAVA_HOME` in `/opt/atsd/atsd/bin/start-atsd.sh` file:
