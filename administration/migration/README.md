@@ -599,6 +599,12 @@ Delete the diagnostics folder:
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator
 ```
 
+```
+...
+17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 15 minutes.
+...
+```
+
 The `atsd_d` table migration may take a long time to complete. You can monitor the job progress in the Yarn web interface at http://ATSD_HOSTNAME:8050/.
 
 6. Migration is now complete.
