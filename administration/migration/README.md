@@ -17,6 +17,7 @@ The instructions apply only to single-node ATSD installations running in pseudo-
 ### Installation Type
 
 * Single-node ATSD installation in pseudo-distributed mode (with HDFS).
+* ATSD revision 16000 and greater. Older ATSD revisions must be upgraded to revision 16000+.
 
 ### Security
 
@@ -325,10 +326,10 @@ cat /proc/meminfo | grep "MemTotal"
 MemTotal:        1922136 kB
 ```
 
-If the memory is greater than 2GB, increase HBase JVM heap size to 50% of available physical memory on the server in the `hbase-env.sh` file.
+If the memory is greater than 4 gigabytes, increase HBase JVM heap size to 50% of available physical memory on the server in the `hbase-env.sh` file.
 
 ```sh
-export HBASE_HEAPSIZE=2G
+export HBASE_HEAPSIZE=4096
 ```
 
 Upgrade HBase.
@@ -337,24 +338,47 @@ Upgrade HBase.
 /opt/atsd/hbase/bin/hbase upgrade -check
 ```
 
-Review the log file:
+Review the hbase.log file:
 
 ```sh
 tail /opt/atsd/hbase/logs/hbase.log
 ```
 
 ```
-  INFO  [main] util.HFileV1Detector: Count of HFileV1: 0
-  INFO  [main] util.HFileV1Detector: Count of corrupted files: 0
-  INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0
-  INFO  [main] migration.UpgradeTo96: No HFileV1 found.
+INFO  [main] util.HFileV1Detector: Count of HFileV1: 0
+INFO  [main] util.HFileV1Detector: Count of corrupted files: 0
+INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0
+INFO  [main] migration.UpgradeTo96: No HFileV1 found.
 ```
 
 Start and stop Zookeper in upgrade mode.
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh start zookeeper
+```
+
+```sh
 /opt/atsd/hbase/bin/hbase upgrade -execute
+```
+
+Review the hbase.log file:
+
+```sh
+tail -n 20 /opt/atsd/hbase/logs/hbase.log
+```
+
+```
+...
+2017-08-01 09:32:44,047 INFO  migration.UpgradeTo96 - Successfully completed Namespace upgrade
+2017-08-01 09:32:44,049 INFO  migration.UpgradeTo96 - Starting Znode upgrade
+...
+2017-08-01 09:32:44,083 INFO  migration.UpgradeTo96 - Successfully completed Znode upgrade
+...
+```
+
+Stop Zookeeper:
+
+```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh stop zookeeper
 ```
 
