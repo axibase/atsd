@@ -599,12 +599,17 @@ Delete the diagnostics folder:
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator
 ```
 
-6. Migration is now complete. 
+The `atsd_d` table migration may take a long time to complete. You can monitor the job progress in the Yarn web interface at http://ATSD_HOSTNAME:8050/.
+
+6. Migration is now complete.
 
 7. Stop Map-Reduce servers.
 
 ```sh
 /opt/atsd/hadoop/sbin/mr-jobhistory-daemon.sh --config /opt/atsd/hadoop/etc/hadoop/ stop historyserver
+```
+
+```sh
 /opt/atsd/hadoop/sbin/stop-yarn.sh
 ```
 
