@@ -60,7 +60,7 @@ Allocate additional disk space, if necessary.
 
 ## Check Record Count for Testing
 
-Login into ATSD web interface.
+Log in to the ATSD web interface.
 
 Open the **SQL** tab.
 
@@ -240,7 +240,7 @@ Delete the old Hadoop directory
 rm -rf /opt/atsd/hadoop
 ```
 
-Download a pre-configured Hadoop-2.6.4 archive and unpack it into the ATSD installation directory.
+Download a pre-configured Hadoop-2.6.4 archive and unpack it in the ATSD installation directory.
 
 ```sh
 wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/hadoop.tar.gz
@@ -544,7 +544,7 @@ hbase(main):002:0> exit
 
 ### Migrate Records from Backup Tables
 
-1. Migrate data in the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
+1. Migrate data from the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration
@@ -566,19 +566,19 @@ In case of insufficient virtual memory error, adjust Map-Reduce [settings](mr-se
 Container [...2] is running beyond virtual memory limits... Killing container.
 ```
 
-In case of other errors, review job logs for the application id displayed above:
+In case of other errors, review job logs for the application ID displayed above:
 
 ```sh
 /opt/atsd/hadoop/bin/yarn logs -applicationId application_1501581371115_0001 | less
 ```
 
-2. Migrate data in the 'atsd_forecast' table.
+2. Migrate data from the 'atsd_forecast' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration
 ```
 
-3. Migrate data in the 'atsd_li' table.
+3. Migrate data from the 'atsd_li' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration
@@ -669,7 +669,7 @@ Start ATSD.
 
 ## Check Migration Results
 
-Login into ATSD web interface.
+Log in to the ATSD web interface.
 
 Open the **SQL** tab.
 
