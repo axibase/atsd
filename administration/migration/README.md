@@ -537,13 +537,18 @@ hbase(main):002:0> exit
 ```
 
 ```
-INFO mapreduce.Job: Job job_xxxxxxxxxxxxx_xxxx completed successfully
+...
+17/08/01 10:14:27 INFO mapreduce.Job: Job job_1501581371115_0001 completed successfully
+17/08/01 10:14:27 INFO mapreduce.Job: Counters: 62
+	File System Counters
+		FILE: Number of bytes read=6
+...
 ```
 
-In case of errors, review job logs:
+In case of errors, review job logs for the application id displayed above:
 
 ```sh
-/opt/atsd/hadoop/bin/yarn logs -applicationId application__xxxxxxxxxxxxx_xxxx | less
+/opt/atsd/hadoop/bin/yarn logs -applicationId application_1501581371115_0001 | less
 ```
 
 2. Migrate data in the 'atsd_forecast' table.
