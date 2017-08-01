@@ -494,20 +494,27 @@ The task will create backups by appending a `'_backup'` suffix to the following 
 * 'atsd_forecast_backup'
 * 'atsd_delete_task_backup'
 
-Check that the backup tables are present in the HBase table list.
+```
+...
+Table 'atsd_li' successfully deleted.
+Snapshot 'atsd_metric_snapshot_1501582066133' of the table 'atsd_metric' created.
+Table 'atsd_metric_backup' is cloned from snapshot 'atsd_metric_snapshot_1501582066133'. The original data are available in this table.
+Snapshot 'atsd_metric_snapshot_1501582066133' deleted.
+Table 'atsd_metric' successfully disabled.
+Table 'atsd_metric' successfully deleted.
+```
+
+Check that the above backup tables are present in the HBase table list.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
-hbase(main):001:0> list
-  TABLE 
-  atsd_calendar
-  ...                                                 
-  atsd_d_backup                                              
-  atsd_delete_task_backup                                    
-  atsd_forecast_backup                                      
-  atsd_li_backup                                      
-  atsd_metric_backup                                                                                                         ...                                        
-  39 row(s) in 0.8710 seconds
+hbase(main):001:0> list '.*backup'
+  TABLE
+  atsd_d_backup
+  atsd_delete_task_backup
+  atsd_li_backup                                          
+  atsd_metric_backup           
+  5 row(s) in 0.0020 seconds
 hbase(main):002:0> exit
 ```
 
