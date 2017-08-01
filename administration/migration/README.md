@@ -476,6 +476,12 @@ Add `migration.jar` and HBase classes to classpath.
 export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migration.jar
 ```
 
+Set `HADOOP_CLASSPATH` for the Map-Reduce job.
+
+```sh
+export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migration.jar
+```
+
 ## Run Migration Map-Reduce Job
 
 ### Create Backup Tables
@@ -508,20 +514,18 @@ Check that the above backup tables are present in the HBase table list.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
-hbase(main):001:0> list '.*backup'
-  TABLE
-  atsd_d_backup
-  atsd_delete_task_backup
-  atsd_li_backup                                          
-  atsd_metric_backup           
-  5 row(s) in 0.0020 seconds
-hbase(main):002:0> exit
 ```
 
-Set `HADOOP_CLASSPATH` for the Map-Reduce job.
-
-```sh
-export HADOOP_CLASSPATH=$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migration.jar
+```
+hbase(main):001:0> list '.*backup'
+  TABLE
+    atsd_d_backup
+    atsd_delete_task_backup
+    atsd_forecast_backup
+    atsd_li_backup                                          
+    atsd_metric_backup           
+  5 row(s) in 0.0020 seconds
+hbase(main):002:0> exit
 ```
 
 ### Migrate Records from Backup Tables
