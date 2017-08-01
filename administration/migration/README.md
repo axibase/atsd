@@ -545,7 +545,14 @@ hbase(main):002:0> exit
 ...
 ```
 
-In case of errors, review job logs for the application id displayed above:
+In case of insufficient virtual memory error, adjust Map-Reduce [settings](mr-settings.md) and retry the command with the `-r` flag.
+
+```
+17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
+Container [...2] is running beyond virtual memory limits... Killing container.
+```
+
+In case of other errors, review job logs for the application id displayed above:
 
 ```sh
 /opt/atsd/hadoop/bin/yarn logs -applicationId application_1501581371115_0001 | less
