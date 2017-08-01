@@ -1,5 +1,5 @@
 
-# Migrating ATSD to HBase 1.2.5
+# ATSD Migration
 
 These instructions describe how to migrate an Axibase Time Series Database instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
 
@@ -420,66 +420,34 @@ Exit the HBase console.
 
 ## Customize Map-Reduce Settings
 
-Check available server memory.
-
-```sh
-cat /proc/meminfo | grep "MemTotal"
-```
-
-Skip this step if the server has less than 4GB of available physical memory. 
-
-If the memory is 4GB or higher, edit `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
-
-* If server memory exceeds 6Gb, set `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb` to 3072Mb. Otherwise set them to 50% of the available memory.
-
-* Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
-
-Sample memory configuration for a server with 4GB of RAM:
-
-```xml
-    <property>
-        <name>mapreduce.map.memory.mb</name>
-        <!-- should not exceed 50% of available physical memory on the server! -->
-        <value>2048</value>
-    </property>
-    <property>
-        <name>mapreduce.map.java.opts</name>
-        <!-- set to 80% of mapreduce.map.memory.mb -->
-        <value>-Xmx1638m</value>
-    </property>
-    <property>
-        <name>mapreduce.reduce.memory.mb</name>
-        <!-- should not exceed 50% of available physical memory on the server! -->
-        <value>2048</value>
-    </property>
-    <property>
-        <!-- set to 80% of mapreduce.reduce.memory.mb -->
-        <name>mapreduce.reduce.java.opts</name>
-        <value>-Xmx1638m</value>
-    </property>
-```
+If the available memory is greater than **8 gigabytes** on the server, customize Map-Reduce [settings](mr-settings.md).
 
 ## Start Map-Reduce Services
 
-Start Yarn and History server:
+Start Yarn servers:
 
 ```sh
 /opt/atsd/hadoop/sbin/start-yarn.sh
+```
+
+Start Job History server:
+
+```sh
 /opt/atsd/hadoop/sbin/mr-jobhistory-daemon.sh --config /opt/atsd/hadoop/etc/hadoop/ start historyserver
 ```
 
 Run the `jps` command to check that the following processes are running:
 
 ```
-9849 ResourceManager
-25902 NameNode
-6857 HQuorumPeer
-26050 DataNode
+9849 ResourceManager  # M/R
+25902 NameNode # HDFS
+6857 HQuorumPeer # HBase
+26050 DataNode # HDFS
 26262 SecondaryNameNode
-10381 JobHistoryServer
-10144 NodeManager
-6940 HMaster
-7057 HRegionServer
+10381 JobHistoryServer  # M/R
+10144 NodeManager # M/R
+6940 HMaster # HBase
+7057 HRegionServer # HBase
 ```
 
 ## Configure Migration Job
