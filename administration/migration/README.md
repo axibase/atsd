@@ -58,6 +58,20 @@ Calculate disk space requirements.
 
 Allocate additional disk space, if necessary.
 
+## Check Record Count for Testing
+
+Login into ATSD web interface.
+
+Open the **SQL** tab.
+
+Execute the following query to count rows for one of the key metrics in the ATSD server.
+
+```sql
+SELECT COUNT(*) FROM mymetric
+```
+
+The number of records should match the results after the migration.
+
 ## Prepare ATSD For Upgrade
 
 Switch to 'axibase' user if necessary. Execute the remaining steps as the 'axibase' user.
@@ -68,9 +82,9 @@ su axibase
 
 Stop ATSD.
 
-  ```sh
-  /opt/atsd/bin/atsd-tsd.sh stop
-  ```
+```sh
+/opt/atsd/bin/atsd-tsd.sh stop
+```
   
 Execute the `jps` command. Verify that the `Server` process is **not present** in the `jps` output.
 
@@ -653,9 +667,19 @@ Start ATSD.
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-Log in to the ATSD web interface.
+## Check Migration Results
 
-Open the [Metrics] tab. Verify that the data is available by checking that historical data is present for the selected metrics.
+Login into ATSD web interface.
+
+Open the **SQL** tab.
+
+Execute the query and compare the row count. 
+
+```sql
+SELECT COUNT(*) FROM mymetric
+```
+
+The number of records should match the results prior to migration.
 
 ## Delete Backups
 
