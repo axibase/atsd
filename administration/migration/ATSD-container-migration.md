@@ -464,13 +464,11 @@ Run the `jps` command to check that the following processes are running:
 ```
 9849 ResourceManager  # M/R
 25902 NameNode # HDFS
-6857 HQuorumPeer # HBase
 26050 DataNode # HDFS
-26262 SecondaryNameNode
+26262 SecondaryNameNode #HDFS
 10381 JobHistoryServer  # M/R
 10144 NodeManager # M/R
 6940 HMaster # HBase
-7057 HRegionServer # HBase
 ```
 
 ## Configure Migration Job
