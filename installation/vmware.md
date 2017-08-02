@@ -73,10 +73,10 @@ for ATSD and Components to start.
 
 ![](images/vm-login.png "vm login")
 
-​9. Check the IP address of the VM:
+9. Check the IP address of the VM:
 
 ```sh
- ip addr                                                                  
+ ip addr
 ```
 
 ![](images/screenshot_280415_15-22-59.png "screenshot_280415_15-22-59")

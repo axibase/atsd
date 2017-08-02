@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Minimum RAM: 1 GB 
+- Minimum RAM: 1 GB
 - See [Requirements](../administration/requirements.md) for additional information.
 
 > On ARM devices, make sure that the device has at least a 16GB hard drive or SD card. <br>
@@ -25,7 +25,7 @@ Download tar.gz archive to the target server:
  sudo /opt/atsd/install_sudo.sh
 ```
 
-```sh                    
+```sh
  sudo /opt/atsd/install_user.sh
 ```
 
@@ -34,7 +34,7 @@ It may take up to 5 minutes to initialize the database. Installation on ARM devi
 ## Check Installation
 
 ```sh
-tail -f /opt/atsd/atsd/logs/start.log                                   
+tail -f /opt/atsd/atsd/logs/start.log
 ```
 
 You should see an **ATSD start completed** message at the end of the `start.log`.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The installation process involves downloading dependencies to an intermediate machine with Internet access  
+The installation process involves downloading dependencies to an intermediate machine with Internet access
 and copying them to the target machine with similar characteristics for offline installation.
 
 ## Supported Versions
@@ -73,7 +73,7 @@ sudo rpm -Uvh --prefix=/mnt/atsd atsd_ce_amd64.rpm
 ## Check Installation
 
 ```sh
-tail -f /opt/atsd/atsd/logs/start.log                                   
+tail -f /opt/atsd/atsd/logs/start.log
 ```
 
 You should see an **ATSD start completed** message at the end of the `start.log`.

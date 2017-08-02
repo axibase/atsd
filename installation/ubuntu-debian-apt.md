@@ -9,7 +9,7 @@
 
 ## Requirements
 
-- Minimum RAM: 1 GB 
+- Minimum RAM: 1 GB
 - See [Requirements](../administration/requirements.md) for additional information.
 
 ## Installation Steps
@@ -19,7 +19,7 @@
 This step is required **only on Ubuntu 16.04** (Xenial Xerus).
 
 ```sh
-sudo add-apt-repository ppa:openjdk-r/ppa  
+sudo add-apt-repository ppa:openjdk-r/ppa
 ```
 
 #### Update Repositories
@@ -32,7 +32,7 @@ sudo apt-get update
 
 ```sh
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
---recv-keys 26AEE425A57967CFB323846008796A6514F3CB79                             
+--recv-keys 26AEE425A57967CFB323846008796A6514F3CB79
 ```
 
 ```sh
@@ -43,7 +43,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./"
 #### Update Repositories and Follow the Prompts to Install ATSD
 
 ```sh
-sudo apt-get update && sudo apt-get install atsd                       
+sudo apt-get update && sudo apt-get install atsd
 ```
 
 It may take up to 5 minutes to initialize the database.
@@ -53,7 +53,7 @@ It may take up to 5 minutes to initialize the database.
 If the installation is performed in a Docker container, the `apt-get` command will exit with the following message:
 
 ```
-Docker container installation. Initialization deferred. 
+Docker container installation. Initialization deferred.
 ```
 
 Execute the following additional step to complete the installation:
@@ -72,7 +72,7 @@ Start the database:
 ## Check Installation
 
 ```sh
-tail -f /opt/atsd/atsd/logs/start.log                                   
+tail -f /opt/atsd/atsd/logs/start.log
 ```
 
 You should see an **ATSD start completed** message at the end of the `start.log`.

@@ -81,7 +81,7 @@ Start the database:
 ## Check Installation
 
 ```sh
-tail -f /opt/atsd/atsd/logs/start.log                                  
+tail -f /opt/atsd/atsd/logs/start.log
 ```
 
 You should see an **ATSD start completed** message at the end of the `start.log`.

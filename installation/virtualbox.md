@@ -76,7 +76,7 @@ Wait for ATSD to initialize.
 10. Determine the external IP address of the virtual machine, if necessary:
 
 ```sh
- ip addr                                                                  
+ ip addr
 ```
 
 ![](images/screenshot_280415_15-22-59.png "screenshot_280415_15-22-59")

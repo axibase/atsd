@@ -3,7 +3,7 @@
 ## Overview
 
 The installation process involves downloading dependencies to an intermediate machine with Internet access
-and copying them to the target machine with similar characteristics for offline installation. 
+and copying them to the target machine with similar characteristics for offline installation.
 
 ## Supported Versions
 
@@ -12,7 +12,7 @@ and copying them to the target machine with similar characteristics for offline 
 
 ## Requirements
 
-- Minimum RAM: 1 GB 
+- Minimum RAM: 1 GB
 - See [Requirements](../administration/requirements.md) for additional information.
 
 ## Install Dependencies
@@ -70,7 +70,7 @@ Download the ATSD rpm package to the target machine:
 Follow the prompts to install ATSD:
 
 ```sh
- sudo zypper -n install atsd_ce_amd64.rpm                                  
+ sudo zypper -n install atsd_ce_amd64.rpm
 ```
 
 It may take up to 5 minutes to initialize the database.
@@ -78,7 +78,7 @@ It may take up to 5 minutes to initialize the database.
 ## Check Installation
 
 ```sh
-tail -f /opt/atsd/atsd/logs/start.log                                   
+tail -f /opt/atsd/atsd/logs/start.log
 ```
 
 You should see an **ATSD start completed** message at the end of the `start.log`.

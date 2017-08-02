@@ -20,33 +20,33 @@ Recommendations for installing MapR M3:
 Copy ATSD distribution archive to the target machine:
 
 ```sh
- /opt/atsd.tar.gz                                                         
+ /opt/atsd.tar.gz
 ```
 
 Unpack the package:
 
 ```sh
- cd /opt                                                                  
- tar -xzvf atsd.tar.gz                                                    
+ cd /opt
+ tar -xzvf atsd.tar.gz
 ```
 
 Stop the HBase process:
 
-```sh            
- sudo service mapr-warden stop                                            
+```sh
+ sudo service mapr-warden stop
 ```
 
 Copy the `atsd.jar` file containing coprocessors to the `hbase/lib` directory:
 
 ```sh
- cp /opt/atsd/hbase/lib/atsd.jar /opt/mapr/hbase/hbase-0.94.24/lib/       
+ cp /opt/atsd/hbase/lib/atsd.jar /opt/mapr/hbase/hbase-0.94.24/lib/
 ```
 
 Start HBase. Make sure that all services are started. This may take a few
 minutes:
 
 ```sh
- sudo service mapr-warden start                                           
+ sudo service mapr-warden start
 ```
 
 Start HBase master and regionserver services:
@@ -67,7 +67,7 @@ services:
 Start ATSD:
 
 ```sh
- /opt/atsd/atsd/bin/start-atsd.sh                                         
+ /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
 Verify that the ATSD web interface is available at http://atsd_hostname:8099

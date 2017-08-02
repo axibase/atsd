@@ -32,7 +32,7 @@ baseurl=https://axibase.com/public/repository/rpm
 enabled=1
 gpgcheck=0
 protect=1
-EOF"      
+EOF"
 ```
 
 Update repositories:
@@ -44,7 +44,7 @@ sudo yum clean expire-cache
 Follow the prompts to install ATSD:
 
 ```sh
-sudo yum install -y atsd                     
+sudo yum install -y atsd
 ```
 
 It may take up to 5 minutes to initialize the database.
@@ -72,7 +72,7 @@ Start the database:
 ## Check Installation
 
 ```sh
-tail -f /opt/atsd/atsd/logs/start.log                                   
+tail -f /opt/atsd/atsd/logs/start.log
 ```
 
 You should see an **ATSD start completed** message at the end of the `start.log`.

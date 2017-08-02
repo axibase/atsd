@@ -9,12 +9,12 @@
 
 ## Requirements
 
-- Minimum RAM: 1 GB 
+- Minimum RAM: 1 GB
 - See [Requirements](../administration/requirements.md) for additional information.
 
 ## Check Connection
 
-If the target machine is not connected to public repositories to install dependencies with APT, 
+If the target machine is not connected to public repositories to install dependencies with APT,
 use the [offline installation option](ubuntu-debian-offline.md).
 
 ## Download
@@ -31,7 +31,7 @@ Download deb package to the target server:
 This step is required **only on Ubuntu 16.04** (Xenial Xerus).
 
 ```sh
-sudo add-apt-repository ppa:openjdk-r/ppa  
+sudo add-apt-repository ppa:openjdk-r/ppa
 ```
 
 #### Update Repositories and Install Dependencies
@@ -55,7 +55,7 @@ It may take up to 5 minutes to initialize the database.
 If the installation is performed in a Docker container, the `dpkg` command will exit with the following message:
 
 ```
-Docker container installation. Initialization deferred. 
+Docker container installation. Initialization deferred.
 ```
 
 Execute the following additional step to complete the installation:
@@ -73,7 +73,7 @@ Start the database:
 ## Check Installation
 
 ```sh
-tail -f /opt/atsd/atsd/logs/start.log                           
+tail -f /opt/atsd/atsd/logs/start.log
 ```
 
 You should see an **ATSD start completed** message at the end of the `start.log`.
