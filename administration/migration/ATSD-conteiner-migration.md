@@ -1,14 +1,14 @@
 
-# ATSD Conteiner Migration
+# ATSD Container Migration
 
 These instructions describe how to migrate an Axibase Time Series Database instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
 
-The instructions apply only to ATSD installation running in standolone mode, such as ATSD container for Doker.
+The instructions apply only to ATSD installation running in standolone mode, such as ATSD container for Docker.
 
 ## Versioning
 
 | **Code** | **ATSD Revision Number** | **Java Version** | **HBase Version** |
-|---|---|---|---|---|
+|---|---|---|---|
 | Old | 16854 and earlier | 1.7 | 0.94.29 |
 | New | 16855 and later | 1.8 | 1.2.5 |
 
@@ -213,9 +213,7 @@ wget -P /opt/atsd https://axibase.com/public/atsd-125-migration/hbase.tar.gz
 tar -xf /opt/atsd/hbase.tar.gz -C /opt/atsd/
 ```
 
-Edit the `/opt/atsd/hbase/conf/hbase-env.sh` file.
-
-Update the `JAVA_HOME` to Java 8.
+Update the `JAVA_HOME` to Java 8 in `/opt/atsd/hbase/conf/hbase-env.sh` file.
 
 ```sh
 # Set valid path to java 8 home
@@ -251,7 +249,7 @@ INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0
 INFO  [main] migration.UpgradeTo96: No HFileV1 found.
 ```
 
-Start and stop Zookeper and execute upgrade.
+Start Zookeper and execute upgrade.
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh start zookeeper
@@ -340,7 +338,7 @@ Add `migration.jar` and HBase classes to classpath.
 export CLASSPATH=$CLASSPATH:$(/opt/atsd/hbase/bin/hbase classpath):/opt/atsd/migration.jar
 ```
 
-## Run Migration Map-Reduce Job
+## Run Migration 
 
 ### Create Backup Tables
 
