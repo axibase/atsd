@@ -204,8 +204,7 @@ dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"
 Update the `JAVA_HOME` variable to Java 8 in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file.
 
 ```sh
-java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`
-sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/hadoop/etc/hadoop/hadoop-env.sh
+java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/hadoop/etc/hadoop/hadoop-env.sh
 ```
 
 Upgrade Hadoop.
@@ -274,8 +273,7 @@ tar -xf /opt/atsd/hbase.tar.gz -C /opt/atsd/
 Update the `JAVA_HOME` to Java 8 in the `/opt/atsd/hbase/conf/hbase-env.sh` file.
 
 ```sh
-java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`
-sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/hbase/conf/hbase-env.sh
+java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/hbase/conf/hbase-env.sh
 ```
 
 Check available physical memory on the server.
@@ -584,8 +582,7 @@ tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/
 Set `JAVA_HOME` in `/opt/atsd/atsd/bin/start-atsd.sh` file:
 
 ```sh
-java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`
-sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/atsd/atsd/bin/start-atsd.sh
+java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/atsd/atsd/bin/start-atsd.sh
 ```
 
 Start ATSD.
