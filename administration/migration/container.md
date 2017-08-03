@@ -81,10 +81,11 @@ The number of records should match the results after the migration.
 
 [Install Oracle JDK 8](install-java-8.md#oracle-jdk) on the ATSD server as described.
 
-Switch to the 'axibase' user.
+Switch to the 'axibase' user: logout and login into the container as axibase:
 
 ```sh
-su axibase
+exit
+docker exec -it -u axibase atsd bash
 ```
 
 Execute the remaining steps as the 'axibase' user.
