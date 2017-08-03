@@ -201,10 +201,11 @@ dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"
 /usr/lib/jvm/java-8-openjdk-amd64
 ```
 
-Edit `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file. Update the `JAVA_HOME` variable to Java 8.
+Update the `JAVA_HOME` variable to Java 8 in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file.
 
 ```sh
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`
+sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/hadoop/etc/hadoop/hadoop-env.sh
 ```
 
 Upgrade Hadoop.
@@ -270,13 +271,11 @@ curl -o /opt/atsd/hbase.tar.gz https://axibase.com/public/atsd-125-migration/hba
 tar -xf /opt/atsd/hbase.tar.gz -C /opt/atsd/
 ```
 
-Edit the `/opt/atsd/hbase/conf/hbase-env.sh` file.
-
-Update the `JAVA_HOME` to Java 8.
+Update the `JAVA_HOME` to Java 8 in the `/opt/atsd/hbase/conf/hbase-env.sh` file.
 
 ```sh
-# Set valid path to java 8 home
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`
+sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/hbase/conf/hbase-env.sh
 ```
 
 Check available physical memory on the server.
@@ -585,8 +584,8 @@ tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/
 Set `JAVA_HOME` in `/opt/atsd/atsd/bin/start-atsd.sh` file:
 
 ```sh
-# set valid path to java 8 home here!
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+java_path=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`
+sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$java_path,g" /opt/atsd/atsd/atsd/bin/start-atsd.sh
 ```
 
 Start ATSD.
