@@ -347,14 +347,14 @@ Start all HBase services.
 
 Verify that the `jps` command output contains `HMaster`, `HRegionServer`, and `HQuorumPeer` processes.
 
-Check that ATSD tables are available in HBase using HBase console.
+Check that ATSD tables are available in HBase:
 
 ```sh
-/opt/atsd/hbase/bin/hbase shell
+echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
 ```sh
-hbase(main):001:0> list
+  ...
   TABLE                  
   atsd_calendar                                           
   atsd_collection                                         
@@ -365,15 +365,14 @@ hbase(main):001:0> list
 Execute a sample scan in HBase.
 
 ```sh
-hbase(main):001:0> scan 'atsd_d', LIMIT => 1
+echo "scan 'atsd_d', LIMIT => 1" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null
+```
+```sh
+  ...
   ROW                  COLUMN+CELL
   ...
   1 row(s) in 0.0560 seconds
-  ...
-  hbase(main):002:0> exit
 ```
-
-Exit the HBase console.
 
 ## Customize Map-Reduce Settings
 
@@ -413,12 +412,6 @@ Download the `migration.jar` file to the `/opt/atsd` directory.
 
 ```sh
 curl -o /opt/atsd/migration.jar https://axibase.com/public/atsd-125-migration/migration.jar
-```
-
-Update the `JAVA_HOME` environment variable to Java 8.
-
-```sh
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
 Check that current Java version is 8.
@@ -609,7 +602,7 @@ The number of records should match the results prior to migration.
 
 1. Delete backup tables using the HBase shell.
 
-Execute 'disable' and 'drop' commands for each `_backup` table:
+Execute 'disable' and 'drop' commands for `_backup` table:
 
 * 'atsd_d_backup'
 * 'atsd_li_backup'
@@ -619,9 +612,9 @@ Execute 'disable' and 'drop' commands for each `_backup` table:
 
 ```sh
   /opt/atsd/hbase/bin/hbase shell
-  hbase(main):001:0> disable 'atsd_forecast_backup'
-  hbase(main):002:0> drop 'atsd_forecast_backup'
-  ...
+  hbase(main):001:0> disable_all '.*_backup'
+  hbase(main):002:0> drop_all '.*_backup'
+  hbase(main):003:0> exit
 ```
 
 2. Delete the backup directory.
