@@ -1,4 +1,4 @@
-﻿﻿# Time Zones
+# Time Zones
 
 | **Offset** | **Time Zone ID** | **Time Zone Name** |
 |:---|:---|:---|
@@ -402,12 +402,6 @@
 | GMT+03:00 | Israel | Israel Standard Time |
 | GMT+03:00 | Turkey | Eastern European Time |
 | GMT+03:00 | W-SU | Moscow Standard Time |
-| GMT+03:07 | Asia/Riyadh87 | | GMT+03:07 |
-| GMT+03:07 | Asia/Riyadh88 | | GMT+03:07 |
-| GMT+03:07 | Asia/Riyadh89 | | GMT+03:07 |
-| GMT+03:07 | Mideast/Riyadh87 | | GMT+03:07 |
-| GMT+03:07 | Mideast/Riyadh88 | | GMT+03:07 |
-| GMT+03:07 | Mideast/Riyadh89 | | GMT+03:07 |
 | GMT+03:30 | Asia/Tehran | Iran Standard Time |
 | GMT+03:30 | Iran | Iran Standard Time |
 | GMT+04:00 | Asia/Dubai | Gulf Standard Time |
