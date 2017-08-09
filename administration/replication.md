@@ -128,7 +128,7 @@ Verify that ATSD tables are present.
 Start HBase shell and list tables:
 
 ```bash
- echo "list" | /opt/atsd/hbase/bin/hbase shell
+echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\[" 
 ```
 The output should contain a list of ATSD tables, all starting with `atsd_`:
 
@@ -186,7 +186,7 @@ Start ATSD:
 Verify that ATSD tables are present: list tables
 
 ```bash
- echo "list" | /opt/atsd/hbase/bin/hbase shell
+ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\[" 
 ```
 
 Output should contain a list of ATSD tables, all starting with `atsd_`:
