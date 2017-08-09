@@ -89,21 +89,11 @@ Start HBase:
 
 Check HBase shell:
 
-```sh
- /opt/atsd/hbase/bin/hbase shell                                          
+```bash
+ echo "list" | /opt/atsd/hbase/bin/hbase shell                                          
 ```
 
-The console should start. Execute the `list` command:
-
-```sh
- list                                                                     
-```
-
-The output should be a list of tables. Close the console:
-
-```sh
- exit                                                                     
-```
+The console should start, the output should be a list of tables. 
 
 Start ATSD:
 

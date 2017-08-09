@@ -8,83 +8,108 @@ The messages are stored in the database within the TTL (time-to-live) interval, 
 
 ### Modifying the Default TTL
 
-Login into HBase shell:
-
-```bash
-/opt/atsd/hbase/bin/hbase shell
-```
-
 Convert the desired TTL to seconds, for example `3600 * 24 * 14 = 1209600` (14 days).
 
-Execute the following administrative commands one by one in the HBase shell to modify the TTL attribute:
+Execute the following administrative commands one by one to modify the TTL attribute:
 
 ```bash
-disable 'atsd_message'
+echo "disable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 
-alter 'atsd_message', NAME => 'c', TTL => 1209600, MIN_VERSIONS => 0
+echo "alter 'atsd_message', NAME => 'c', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
 
-alter 'atsd_message', NAME => 'e', TTL => 1209600, MIN_VERSIONS => 0
+echo "alter 'atsd_message', NAME => 'e', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
 
-alter 'atsd_message', NAME => 'm', TTL => 1209600, MIN_VERSIONS => 0
+echo "alter 'atsd_message', NAME => 'm', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
 
-alter 'atsd_message', NAME => 't', TTL => 1209600, MIN_VERSIONS => 0
+echo "alter 'atsd_message', NAME => 't', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
 
-enable 'atsd_message'
+echo "enable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 
-major_compact 'atsd_message'
+echo "major_compact 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 
-exit
 ```
 
 The response should look as follows:
 
 ```
-hbase(main):004:0> disable 'atsd_message'
-0 row(s) in 2.3310 seconds
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
 
-hbase(main):005:0> alter 'atsd_message', NAME => 'c', TTL => 1209600
+disable 'atsd_message'
+0 row(s) in 1.4720 seconds
+
+
+
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
+
+alter 'atsd_message', NAME => 'c', TTL => 1209600, MIN_VERSIONS => 0
 Updating all regions with the new schema...
 1/1 regions updated.
 Done.
-0 row(s) in 1.4560 seconds
+0 row(s) in 1.4390 seconds
 
-hbase(main):006:0> alter 'atsd_message', NAME => 'e', TTL => 1209600
+
+
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
+
+alter 'atsd_message', NAME => 'e', TTL => 1209600, MIN_VERSIONS => 0
 Updating all regions with the new schema...
 1/1 regions updated.
 Done.
-0 row(s) in 1.1890 seconds
+0 row(s) in 1.3900 seconds
 
-hbase(main):007:0> alter 'atsd_message', NAME => 'm', TTL => 1209600
+
+
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
+
+alter 'atsd_message', NAME => 'm', TTL => 1209600, MIN_VERSIONS => 0
 Updating all regions with the new schema...
 1/1 regions updated.
 Done.
-0 row(s) in 1.0550 seconds
+0 row(s) in 1.3870 seconds
 
-hbase(main):008:0> alter 'atsd_message', NAME => 't', TTL => 1209600
+
+
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
+
+alter 'atsd_message', NAME => 't', TTL => 1209600, MIN_VERSIONS => 0
 Updating all regions with the new schema...
 1/1 regions updated.
 Done.
-0 row(s) in 1.0760 seconds
+0 row(s) in 1.4120 seconds
 
-hbase(main):010:0> enable 'atsd_message'
-0 row(s) in 2.7690 seconds
 
-hbase(main):011:0> major_compact 'atsd_message'
-0 row(s) in 0.4270 seconds
+
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
+
+enable 'atsd_message'
+0 row(s) in 1.3640 seconds
+
+
+
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
+
+major_compact 'atsd_message'
+0 row(s) in 0.2950 seconds
 ```
 
 ### Deleting All Messages
 
-Login into HBase shell:
+Execute the following administrative command:
 
 ```bash
-/opt/atsd/hbase/bin/hbase shell
-```
-
-Execute the following administrative commands one by one in the HBase shell:
-
-```bash
-truncate 'atsd_message'
-
-exit
+echo "truncate 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 ```

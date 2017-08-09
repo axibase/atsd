@@ -190,9 +190,7 @@ kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hba
 Open HBase shell and execute the `grant` command to grant **RWXC** permissions to `axibase` principal.
 
 ```bash
-hbase shell
-grant 'axibase', 'RWXC'
-exit
+echo "grant 'axibase', 'RWXC'" | /opt/atsd/hbase/bin/hbase shell  
 ```
 
 ### Configure Kerberos Configuration Information in `krb5.conf` File

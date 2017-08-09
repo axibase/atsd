@@ -33,24 +33,21 @@ ATSD:
 
 ATSD Community Edition:
 
-```sh
- /opt/atsd/hbase/bin/hbase shell                                          
-     disable 'atsd_d'                                                     
-     alter 'atsd_d', {NAME => 'r', DATA_BLOCK_ENCODING => 'PREFIX'}       
-     enable 'atsd_d'                                                      
-     describe 'atsd_d'                                                    
- exit                                                                     
+```bash
+echo "disable 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell
+echo "alter 'atsd_d', {NAME => 'r', DATA_BLOCK_ENCODING => 'PREFIX'}" | /opt/atsd/hbase/bin/hbase shell
+echo "enable 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell
+echo "describe 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell                                                                    
 ```
 
 ATSD Standard/Enterprise Edition:
 
-```sh
- /opt/atsd/hbase/bin/hbase shell                                          
-     disable 'atsd_d'                                                     
-     alter 'atsd_d', {NAME => 'r', COMPRESSION => 'GZ'}                   
-     enable 'atsd_d'                                                      
-     describe 'atsd_d'                                                    
- exit                                                                     
+```bash
+echo "disable 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell
+echo "alter 'atsd_d', {NAME => 'r', COMPRESSION => 'GZ'}" | /opt/atsd/hbase/bin/hbase shell
+echo "enable 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell
+echo "describe 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell 
+                                                                   
 ```
 
 Record the initial table size:
@@ -97,11 +94,9 @@ After compaction has been fully completed, stop ATSD:
 
 Perform `major_compaction` and record the size:
 
-```sh
- /opt/atsd/hbase/bin/hbase shell                                          
-     major_compact 'atsd_d'                                               
-     flush 'atsd_d'                                                       
-     exit                                                                 
+```bash
+echo "major_compact 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell                                              
+echo "flush 'atsd_d'" | /opt/atsd/hbase/bin/hbase shell                                                             
  /opt/atsd/hadoop/bin/hadoop fs -dus /hbase/atsd_d  >> atsd_d_size.out    
 ```
 

@@ -186,16 +186,10 @@ Caused by:
   org.apache.hadoop.hbase.TableExistsException: atsd_message
 ```
 
-Open Zookeper shell:
+Execute the command to remove the ephemeral `/hbase` directory from Zookeeper cache using Zookeeper shell:
 
-```sh
-/opt/atsd/hbase/bin/hbase zkcli
-```
-
-Execute the command to remove the ephemeral `/hbase` directory from Zookeeper cache:
-
-```sh
-rmr /hbase
+```bash
+echo "rmr /hbase" | /opt/atsd/hbase/bin/hbase zkcli
 ```
 
 ## File Permissions

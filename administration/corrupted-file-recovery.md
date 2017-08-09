@@ -128,9 +128,9 @@ rsync -r /opt/atsd/hdfs-cache ~/backup/hdfs-cache
 
 * Check that HBase tables are available
 
-```sh
-/opt/atsd/hbase/bin/hbase shell
-hbase(main):003:0> scan "atsd_entity"
+```bash
+echo "scan 'atsd_entity'" | /opt/atsd/hbase/bin/hbase shell
+
 ROW COLUMN+CELL                                                                                                                                                
 ERROR: Unknown table atsd_entity!
 ```

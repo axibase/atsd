@@ -125,25 +125,14 @@ This command truncates all ATSD tables.
 
 Verify that ATSD tables are present.
 
-Start HBase shell:
+Start HBase shell and list tables:
 
-```sh
- /opt/atsd/hbase/bin/hbase shell
-```
-
-List tables:
-```sh
- list
+```bash
+ echo "list" | /opt/atsd/hbase/bin/hbase shell
 ```
 The output should contain a list of ATSD tables, all starting with `atsd_`:
 
 ![](images/atsd_tables.png "atsd_tables")
-
-Stop HBase shell:
-
-```sh
-exit
-```
 
 **MASTER: the following steps must be executed only on the
 master machine.**
@@ -155,18 +144,11 @@ Start Hadoop and HBase:
 /opt/atsd/bin/atsd-hbase.sh start
 ```
 
-Start HBase shell:
-
-```sh
-/opt/atsd/hbase/bin/hbase shell
-```
-
 Execute the `add_peer` command:
 
-```sh
-add_peer '1', "atsd_slave:2181:/hbase"
+```bash
+echo "add_peer '1', \"atsd_slave:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
 ```
-
 
 > Note:: If your ATSD installation has suffered an unexpected shutdown or
 ungraceful stop and your Zookeeper is corrupted, [after solving this
@@ -177,16 +159,13 @@ replication.
 
 Make sure that the peer has been added:
 
-```SQL
-list_peers
-  PEER_ID CLUSTER_KEY STATE
-  1 atsd_slave:2181:/hbase ENABLED
-1 row(s) in 0.0930 seconds
-```
-Stop HBase shell:
+```bash
+echo "list_peers" | /opt/atsd/hbase/bin/hbase shell
 
-```sh
-exit
+
+PEER_ID CLUSTER_KEY STATE
+1 atsd_slave:2181:/hbase ENABLED
+1 row(s) in 0.0930 seconds
 ```
 
 Run replication configuration script:
@@ -204,29 +183,16 @@ Start ATSD:
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-Verify that ATSD tables are present:
+Verify that ATSD tables are present: list tables
 
-Start HBase shell:
-
-```sh
-/opt/atsd/hbase/bin/hbase shell
-```
-
-List tables:
-
-```sh
-list
+```bash
+ echo "list" | /opt/atsd/hbase/bin/hbase shell
 ```
 
 Output should contain a list of ATSD tables, all starting with `atsd_`:
 
 ![](images/atsd_tables.png "atsd_tables")
 
-Stop HBase shell:
-
-```sh
-exit
-```
 
 #### Enabling Replication for New Tables
 
@@ -256,7 +222,7 @@ machine.**
 
 Create the new table in the slave database:
 
-```sh
+```bash
 /opt/atsd/hbase/bin/hbase shell < /tmp/atsd_new_schema.txt
 ```
 
@@ -324,50 +290,27 @@ Then click SAVE.
 
 ![](images/rule_editor1.png "rule_editor")
 
-Start HBase shell:
-
-```sh
- /opt/atsd/hbase/bin/hbase shell
-```
-
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:
 
-```sh
-scan 'atsd_rule'
+```bash
+echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
 Output:
 
-![](images/atsd_rule_table_scan1.png "atsd_rule_table_scan")
-
-Stop HBase shell:
-
-```sh
- exit
-```
+![](images/atsd_rule_table_scan1.png)
 
 **SLAVE: the following steps must be executed only on the slave
 machine.**
 
-Start HBase shell:
+Scan the `atsd_rule` table and note down the amount of line contained in the
+table:
 
-```sh
-/opt/atsd/hbase/bin/hbase shell
-```
-
-Scan `atsd_rule` table:
-
-```sh
-scan 'atsd_rule'
+```bash
+echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
 The output should contain the same amount of rows as on the master:
 
 ![](images/atsd_rule_table_scan1.png "atsd_rule_table_scan")
-
-Stop HBase shell:
-
-```sh
-exit
-```
