@@ -15,7 +15,7 @@ Also check that `yarn.log-aggregation-enable` property is set to `true` in the `
 Download jar file with the DataTableReporter class.
 
 ```sh
-curl -o /opt/atsd/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
+curl -o /opt/atsd/reporter/reporter.jar https://axibase.com/public/atsd-cdh-migration/reporter.jar
 ```
 
 Set HBase configuration folder `/usr/lib/hbase/conf`, and classes used to support HBase interaction during map-reduce job, and reporter.jar in `HADOOP_CLASSPATH`.
