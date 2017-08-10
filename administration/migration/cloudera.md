@@ -1,16 +1,14 @@
 
 # ATSD Cloudera Cluster Migration
 
-These instructions describe how to upgrade an Axibase Time Series Database instance running on the Cloudera cluster.
-
-The instructions apply to ATSD instance running on cluster governed by the Cloudera Manager. For host-base installations, refer to the following [migration guide](README.md).
+These instructions describe how to upgrade an Axibase Time Series Database instance running on the Cloudera cluster. For host-base installations, refer to the following [migration guide](README.md).
 
 ## Versioning
 
 | **Code** | **ATSD Revision Number** | **Java Version** | **Cloudera Manager Version**| **CDH Version** |
 |---|---|---|---|---|
-| Old | 16854 and earlier | 1.7 | 5.1 - 5.9| 5.1 - 5.9 |
-| New | 16855 and later   | 1.8 | 5.10     | 5.10    |
+| Old | 16854 and earlier | 1.7 | 5.1 - 5.11| 5.1 - 5.9 |
+| New | 16855 and later   | 1.8 | 5.12     | 5.10    |
 
 
 ## Requirements
@@ -37,10 +35,6 @@ Stop ATSD.
 /opt/atsd/atsd/bin/stop-atsd.sh
 ```
 
-Execute the `jps` command. Verify that the `Server` process is **not present** in the `jps` output.
-
-> If the `Server` process continues running, follow the [safe ATSD shutdown](../restarting.md#stop-atsd) procedure.
-
 Remove deprecated settings.
 
 ```
@@ -57,17 +51,17 @@ Make full backup of all ATSD data.
 
 ## Upgrade Cloudera Claster
 
-Follow ??? guide to upgrade Cloudera Manager and CDH to version 5.10, and update Java to version 8.
+Follow ??? guide to update Java to version 8, upgrade Cloudera Manager to version 5.12, and upgrade CDH to version 5.10.
 
 ## Start Map-Reduce Services
 
-After upgrade to CDH 5.10 start HBase, Yarn services and HistoryServer in order to run ATSD migration as map-reduce job.
+After upgrade to CDH 5.10 start HDFS, HBase, Yarn services and HistoryServer in order to run ATSD migration as map-reduce job.
 
 ## Customize Map-Reduce Settings
 
-???
+Communicate with Axibase support to set up correct memory settings for map-reduce migration job.
 
-## Configure Migration Job
+## Configure Classpaths for Migration Job
 
 Download the `migration.jar` file to the `/opt/atsd` directory.
 
@@ -98,12 +92,11 @@ Launch the table backup task and confirm its execution.
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
 
-This command creates `atsd_d_backup` table in HBase which points to the same data as the `atsd_d` table.
+This command creates `atsd_d_backup` table which points to the same data as the `atsd_d` table.
 
 ### Migrate Records from Backup Table
 
 Run migration map-reduce job. The job will create new empty `atsd_d` table with new schema, converts data from `atsd_d_backup` table to new format, and store converted data in the `atsd_d` table.
-
 
 ```sh
 nohup yarn com.axibase.migration.mapreduce.DataMigrator -r &> migration.log &
@@ -117,7 +110,7 @@ As the job will be completed the `migration.log` file should contain the line:
 ...
 ```
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://\<ResourceManager hostname\>:8088`. The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
+The `DataMigrator` job may take a long time to complete. You can monitor the job progress via ResourseManager web interface available via ResourseManager page at Cloudera Manager. The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
 
 Migration is now complete.
 
@@ -146,7 +139,8 @@ Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib` directory on eac
 
 ### Enable ATSD Coprocessors
 
-Open Cloudera Manager, select the target HBase cluster/service, open Configuration tab, search for the setting `hbase.coprocessor.region.classes` and enter the following names.
+Open Cloudera Manager, select the target HBase cluster/service, open Configuration tab, search for the setting `hbase.coprocessor.region.classes`. Delete `com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint` coprocessor, and set following
+axibase coprocessors.
 
 * com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint
 * com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
