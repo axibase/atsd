@@ -34,9 +34,9 @@ metric m:{metric} b:{enabled} p:{data-type} l:{label} d:{description} i:{interpo
 | z         | string           | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Java Time Zone](timezone-list.md) table for a list of supported Time Zone IDs.<br>The timezone is applied by date-formatting functions to return local time in a metric-specific timezone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`.|
 | v         | boolean          | Versioning enabled/disabled. |
 | a         | string           | Invalid action. |
-| tp        | string           | Time precision  |
+| tp        | string           | Time precision.  |
 | pe        | boolean          | Persistent. |
-| rd        | number           | Retention Interval Days |
+| rd        | number           | Retention Interval Days. |
 | min       | number           | Minimum value. |
 | max       | number           | Maximum value. |
 | t         | string           | [Multiple] Metric tag name and value.  |
