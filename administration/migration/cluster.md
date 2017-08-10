@@ -21,11 +21,7 @@ It is suggested to make backup of all ATSD data before migration. Migration proc
 
 ## Check Record Count for Testing
 
-Log in to the ATSD web interface.
-
-Open the **SQL** tab.
-
-Execute the following query to count rows for one of the key metrics in the ATSD server.
+Log in to the ATSD web interface and open the **SQL** tab. Execute the following query to count rows for one of the key metrics in the ATSD server.
 
 ```sql
 SELECT COUNT(*) FROM mymetric
@@ -38,7 +34,7 @@ The number of records should match the results after the migration.
 Stop ATSD.
 
 ```sh
-/opt/atsd/bin/atsd-tsd.sh stop
+/opt/atsd/atsd/bin/stop-atsd.sh
 ```
 
 Execute the `jps` command. Verify that the `Server` process is **not present** in the `jps` output.
@@ -51,7 +47,9 @@ Remove deprecated settings.
 sed -i '/^hbase.regionserver.lease.period/d' /opt/atsd/atsd/conf/hadoop.properties
 ```
 
-## Inspect the `atsd_d` table
+## Prepare `atsd_d` Table Survey
+
+Follow [this](data_table_survey.md) instruction in order to prepare and report `atsd_d` table survey. This survey is used to make correct memory settings for migration map-reduce job.
 
 The migration is a map-reduce job which transforms data in the `atsd_d` table. During migration all data for the same metric, entity and date should be collected in memory and processed. This amount of data can be large especially if there are a lot of series with the same metric and entity, and different tags. The memory allocated to mappers during migration should be enough to retain that amount of data. 
 
@@ -64,13 +62,13 @@ Start Yarn and HistoryServer, and check that `yarn.log-aggregation-enable` prope
 Download jar file with the DataTableReporter class.
 
 ```sh
-curl https://axibase.com/public/atsd-125-migration/reporter.jar
+curl -o /opt/atsd/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
 ```
 
 Set required classes in `HADOOP_CLASSPATH`.
 
 ```sh
-export HADOOP_CLASSPATH=$(hbase classpath):reporter.jar
+export HADOOP_CLASSPATH=$(hbase classpath):/opt/atsd/reporter/reporter.jar
 ```
 
 Initiate Kerberos session if Kerberos is used.
@@ -79,15 +77,16 @@ Initiate Kerberos session if Kerberos is used.
 kinit -k -t axibase.keytab axibase
 ```
 
-As reporter job can take a while you can run it with nohup command, and save output in a file.
+As reporter job can take a while you can run it with `nohup` command, and save output in a file.
+
 ```sh
-nohup yarn com.axibase.reporter.mapreduce.DataTableReporter &> data_table_reporter.log &
+nohup yarn com.axibase.reporter.mapreduce.DataTableReporter &> /opt/atsd/reporter/reporter.log &
 ```
 
-View reporter's log file to monitor job progress. When job will be comleted the log will contain information about job counters, and files where job results are stored:
+View `reporter.log` to monitor job progress. When job will be comleted the log will contain information about job counters, and files where job results are stored:
 
 ```sh
-less data_table_reporter.log
+less /opt/atsd/reporter/reporter.log
 ``` 
 
 ```sh
@@ -148,7 +147,7 @@ Here there are several custom counters:
 * VERSIONED_VALUES_COUNT - the total number of samples which have several versions of values for the same timestamp.
 * VERSIONS_COUNT - the total number of all versions for all series samples.
 
-Also you see information about estimated maximum physical memory required by the migration mapper to store it's objects. In the above listing:
+Also you see estimated maximum physical memory required by the migration mapper to store it's objects. This maximum reported for each region in the `atsd_d` table. In the above listing:
 
 * Region hashed name is `427ae8f2fc8926a7fefe3c984f6027cf`.
 * Mapper need `25` MiB of heap memory to store objects while processing data from the region.
@@ -171,8 +170,8 @@ The last two lines of the log file point to two files `summary`, and `maximum-pe
 Copy these files to local file system, use appropriate paths to files :
 
 ```sh
-hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/summary /home/axibase/
-hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/maximum-per-region /home/axibase/
+hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/summary /opt/atsd/reporter/
+hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/maximum-per-region /opt/atsd/reporter/
 ```
 
 Send `maximum-per-region`, `summary`, and `data_table_reporter.log` files to axibase support
