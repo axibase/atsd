@@ -59,10 +59,9 @@ kinit -k -t /tmp/reporter/axibase.keytab axibase
 ## Run Map-Reduce Job
 
 The reporter can take a while to complete. Launch it with the `nohup` command and save output to a file.
-In Cloudera distribution Hadoop home directory is '/usr/lib/hadoop/' if you have different Hadoop home use it in the command.
 
 ```sh
-nohup /usr/lib/hadoop/bin/yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
+nohup /usr/lib/hadoop-yarn/bin/yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
 ```
 
 View the log file in order to monitor the job progress. 
