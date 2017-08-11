@@ -16,6 +16,7 @@ These instructions describe how to upgrade an Axibase Time Series Database insta
 The migration procedure requires 30% of the currently used disk space in ATSD tables to store migrated records before old data can be deleted.
 
 Make sure that enough disk space is available in HDFS. To review HDFS usage login into Cloudera Manager and open **Clusters > Cluster > HDFS-2 > Status**.
+
 ![](./images/hdfs-status.png)
 
 ### Memory
@@ -82,6 +83,8 @@ export CLASSPATH=$CLASSPATH:/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/migration
 export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/migration/migration.jar
 ```
 
+Contact with Axibase support by email `support-atsd@axibase.com` to configure Map-Reduce memory [settings](mr-settings.md).
+
 ### Initiate Kerberos Session
 
 Copy the `/opt/atsd/atsd/conf/axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal from the ATSD server to the `/tmp/migration/` directory on the YARN ResourceManager server.
@@ -104,7 +107,7 @@ java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 
 ### Migrate Records
 
-Start the Map-Reduce job.
+Start the Map-Reduce job on the Resourse Manager server.
 The job can take some time to complete. 
 Launch it with the `nohup` command and save the output to a file to serve as a log.
 
@@ -181,7 +184,7 @@ Check that following ATSD coprocessors are added to HBase CoprocessorRegion Clas
 
 ## Start ATSD
 
-Start ATSD.
+Login into ATSD Server, switch to the 'axibase' user, and start ATSD.
 
 ```sh
 /opt/atsd/atsd/bin/start-atsd.sh
