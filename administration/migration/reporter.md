@@ -14,7 +14,7 @@ The DataTableReporter is implemented as Map-Reduce job.
 
 ## Running Reporter
 
-Execute the below steps on the server running the Resourse Manager on target cluster.
+Execute the below steps on the server running the Resourse Manager on the target cluster.
 
 ### Check Services
 
@@ -38,7 +38,7 @@ curl -o /tmp/reporter/reporter.jar https://axibase.com/public/atsd-125-migration
 Set `HADOOP_CLASSPATH` setting. In Cloudera distribution HBase home directory should be `/usr/lib/hbase`, if you have different HBase home folder use it in `export` command. 
 
 ```sh
-export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(/usr/lib/hbase/bin/hbase mapredcp):/tmp/reporter/reporter.jar
+export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/reporter/reporter.jar
 ```
 
 Check that HBase classes are present in output.
@@ -61,7 +61,7 @@ kinit -k -t /tmp/reporter/axibase.keytab axibase
 The reporter can take a while to complete. Launch it with the `nohup` command and save output to a file.
 
 ```sh
-nohup /usr/lib/hadoop-yarn/bin/yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
+nohup yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
 ```
 
 View the log file in order to monitor the job progress. 
