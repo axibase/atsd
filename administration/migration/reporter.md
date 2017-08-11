@@ -19,53 +19,56 @@ Executed the below steps on the server running the Axibase Time Series Database 
 ### Check Services
 
 * Login into Cloudera Manager.
-* Open **Hosts > Roles** and verify that ResourceManager, NodeManagers and HistoryServer services are running. 
-* Open **Settings** and check  in the `yarn-site.xml` file that `yarn.log-aggregation-enable` property is set to `true`.
+* Open **Hosts > All Hosts**, expand the **Roles** and verify that ResourceManager, NodeManagers and HistoryServer services are running on cluster. 
+* Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**, search for 'yarn.log-aggregation-enable' and check that this property is checked.
+
+![](./images/cloudera-log-aggregation-settings.jpeg)
 
 ### Prepare Map-Reduce Job
 
-Login into ATSD server.
+Login into server where YARN ResourceManager is running.
 
-Download the DataTableReporter jar file.
+Create temporary directory and download the DataTableReporter jar file.
 
 ```sh
-curl -o /home/axibase/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
+mkdir /tmp/reporter
+curl -o /tmp/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
 ```
 
-Set `HADOOP_CLASSPATH` setting.
+Set `HADOOP_CLASSPATH` setting. In Cloudera distribution HBase home directory should be `/usr/lib/hbase`, if you have different HBase home folder use it in `export` command. 
 
 ```sh
-export HADOOP_CLASSPATH=/opt/atsd/hbase/conf:$(/opt/atsd/hbase/bin/hbase mapredcp):/home/axibase/reporter/reporter.jar
+export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(/usr/lib/hbase/bin/hbase mapredcp):/tmp/reporter/reporter.jar
 ```
 
 Check that HBase classes are present in output.
 
 ```
-
+echo $HADOOP_CLASSPATH
+/usr/lib/hbase/conf:/usr/lib/hbase/lib/hbase-hadoop-compat-1.2.5.jar:/usr/lib/hbase/lib/hbase-server-1.2.5.jar:/usr/lib/hbase/lib/guava-12.0.1.jar:/usr/lib/hbase/lib/hbase-prefix-tree-1.2.5.jar:/usr/lib/hbase/lib/hbase-client-1.2.5.jar:/usr/lib/hbase/lib/hbase-common-1.2.5.jar:/usr/lib/hbase/lib/netty-all-4.0.23.Final.jar:/usr/lib/hbase/lib/hbase-protocol-1.2.5.jar:/usr/lib/hbase/lib/protobuf-java-2.5.0.jar:/usr/lib/hbase/lib/zookeeper-3.4.6.jar:/usr/lib/hbase/lib/metrics-core-2.2.0.jar:/usr/lib/hbase/lib/htrace-core-3.1.0-incubating.jar:/tmp/reporter/reporter.jar
 ```
 
 ### Initiate Kerberos Session
 
-Initiate a Kerberos session.
-
-> Use the `axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal.
+Copy the `/opt/atsd/atsd/conf/axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal from ATSD server to folder `/tmp/reporter/`  in ResourceManager server, and initiate Kerberos session.
 
 ```sh
-kinit -k -t /opt/atsd/atsd/conf/axibase.keytab axibase
+kinit -k -t /tmp/reporter/axibase.keytab axibase
 ```
 
 ## Run Map-Reduce Job
 
 The reporter can take a while to complete. Launch it with the `nohup` command and save output to a file.
+In Cloudera distribution Hadoop home directory is '/usr/lib/hadoop/' if you have different Hadoop home use it in the command.
 
 ```sh
-nohup /opt/atsd/hadoop/bin/yarn com.axibase.reporter.mapreduce.DataTableReporter &> /home/axibase/reporter/reporter.log &
+nohup /usr/lib/hadoop/bin/yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
 ```
 
 View the log file in order to monitor the job progress. 
 
 ```sh
-tail -F /home/axibase/reporter/reporter.log
+tail -F /tmp/reporter/reporter.log
 ``` 
 
 When the job is comleted, the log will display a summary as follows:
@@ -115,19 +118,19 @@ stop key: \x00\x00y\x00\x00\x04X/\x96\x00...
 17/08/09 12:15:57 INFO zookeeper.ClientCnxn: EventThread shut down
 17/08/09 12:15:57 INFO zookeeper.ZooKeeper: Session: 0x15dc5f8cb520260 closed
 17/08/09 12:15:57 INFO mapreduce.DataTableReporter: Results are written to files:
-17/08/09 12:15:57 INFO mapreduce.DataTableReporter: hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/summary
-17/08/09 12:15:57 INFO mapreduce.DataTableReporter: hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/maximum-per-region
+17/08/09 12:15:57 INFO mapreduce.DataTableReporter: hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/summary.log
+17/08/09 12:15:57 INFO mapreduce.DataTableReporter: hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/maximum-per-region.log
 ```
 
 ## Collect Results
 
-The last two lines of the log file identify two files: `summary`, and `maximum-per-region` where the DataTableReporter class stored results.
+The last two lines of the log file identify two files: `summary.log`, and `maximum-per-region.log` where the DataTableReporter class stored results.
 
 Copy these files from HDFS to the local file system.
 
 ```sh
-hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/summary.log /home/axibase/reporter/
-hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/maximum-per-region.log /home/axibase/reporter/
+hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/summary.log /tmp/reporter/
+hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/maximum-per-region.log /tmp/reporter/
 ```
 
 Email `reporter.log`, `summary.log`, and `maximum-per-region.log` files to `support-atsd@axibase.com` for review and calculation of resources required for the subsequent migration.
