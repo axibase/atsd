@@ -85,7 +85,7 @@ export CLASSPATH=$CLASSPATH:/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/migration
 export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/migration/migration.jar
 ```
 
-Contact with Axibase support by email `support-atsd@axibase.com` to configure Map-Reduce memory [settings](mr-settings.md).
+Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axibase support based on the [Data Reporter](reporter.md) logs.
 
 ### Initiate Kerberos Session
 
@@ -121,9 +121,9 @@ nohup yarn com.axibase.migration.mapreduce.DataMigrator -r &> /tmp/migration/mig
 
 The job will create an empty `atsd_d` table, convert data from the old `atsd_d_backup` table to the new format, and store converted data in the `atsd_d` table.
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the ResourseManager web interface available in Cloudera Manager:
+The `DataMigrator` job may take a long time to complete. 
 
-* Clusters > Cluster > YARN > Web UI > ResourseManager Web UI
+Monitor the job progress in the ResourseManager web interface available in Cloudera Manager in **Clusters > Cluster > YARN > Web UI > ResourseManager Web UI**.
 
 The Yarn interface will stop automatically once the `DataMigrator` job is finished.
 
@@ -192,7 +192,15 @@ Check that following ATSD coprocessors are added to HBase CoprocessorRegion Clas
 
 ## Start ATSD
 
-Login into ATSD Server, switch to the 'axibase' user, and start ATSD.
+Login into ATSD Server.
+
+Switch to the 'axibase' user.
+
+```sh
+su axibase
+```
+
+Start ATSD.
 
 ```sh
 /opt/atsd/atsd/bin/start-atsd.sh
@@ -221,7 +229,7 @@ The number of records should match the results prior to migration.
 ## Delete the `atsd_d_backup` Table
 
 ```sh
-  /opt/atsd/hbase/bin/hbase shell
+/usr/lib/hbase/bin/hbase shell
   hbase(main):001:0> disable 'atsd_d_backup'
   hbase(main):002:0> drop 'atsd_d_backup'
   hbase(main):003:0> exit
