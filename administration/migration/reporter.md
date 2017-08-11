@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DataTableReporter is a Map-Reduce job that identifies the largest daily rows in the 'atsd_d' table in order to estimate RAM memory required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
+The DataTableReporter is a Map-Reduce job that identifies the largest daily rows in the 'atsd_d' table in order to estimate the RAM required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
 
 The reporter scans the 'atsd_d' table and estimates the physical memory required to process the data during the migration.
 
@@ -16,13 +16,13 @@ Execute the below steps on the server running YARN Resourse Manager on the targe
 
 * Login into Cloudera Manager.
 * Open **Hosts > All Hosts**, expand the **Roles** and verify that ResourceManager, NodeManagers and HistoryServer services are running on the cluster. 
-* Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**, search for the 'yarn.log-aggregation-enable' property and verify that it's checked.
+* Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**, search for the 'yarn.log-aggregation-enable' property and verify that it is checked.
 
 ![](./images/cloudera-log-aggregation-settings.jpeg)
 
 ### Prepare Map-Reduce Job
 
-Login into the server where YARN ResourceManager is running.
+Log in to the server where YARN ResourceManager is running.
 
 Create a temporary directory and download the DataTableReporter jar file.
 
@@ -31,7 +31,7 @@ mkdir /tmp/reporter
 curl -o /tmp/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
 ```
 
-Set `HADOOP_CLASSPATH` setting. In Cloudera distributions, the HBase home directory should be is `/usr/lib/hbase`.
+Set the `HADOOP_CLASSPATH` setting. In Cloudera distributions, the HBase home directory should be `/usr/lib/hbase`.
 
 ```sh
 export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/reporter/reporter.jar
@@ -59,7 +59,7 @@ kinit -k -t /tmp/reporter/axibase.keytab axibase
 
 ## Run Map-Reduce Job
 
-The reporter can take a while to complete. Launch it with the `nohup` command and save output to a file.
+The reporter can take some time to complete. Launch it with the `nohup` command and save the output to a file to serve as a log.
 
 ```sh
 nohup yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
@@ -71,7 +71,7 @@ View the log file in order to monitor the job progress.
 tail -F /tmp/reporter/reporter.log
 ``` 
 
-When the job is comleted, the log will display a summary:
+When the job is completed, the log will display a summary:
 
 ```sh
 ...
@@ -124,7 +124,7 @@ stop key: \x00\x00y\x00\x00\x04X/\x96\x00...
 
 ## Collect Results
 
-The last two lines of the log file identify two files: `summary.log`, and `maximum-per-region.log` where the DataTableReporter class stored its reports.
+The last two lines of the log identify two files: `summary.log`, and `maximum-per-region.log` where the DataTableReporter class has stored its reports.
 
 Copy these files from HDFS to the local file system.
 
@@ -133,7 +133,7 @@ hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_tab
 hdfs dfs -copyToLocal hdfs://nurswgvml303.axibase.com:8020/user/axibase/data_table_report/000009/maximum-per-region.log /tmp/reporter/
 ```
 
-Email `reporter.log`, `summary.log`, and `maximum-per-region.log` files to `support-atsd@axibase.com` for review and calculation of resources required for the subsequent migration.
+Email the `reporter.log`, `summary.log`, and `maximum-per-region.log` files to `support-atsd@axibase.com` for review and calculation of resources required for the subsequent migration.
 
 ### Report Result Files
 
@@ -159,7 +159,7 @@ The report includes memory required by the mapper. This maximum is reported for 
 * Number of rows in current `atsd_d` table with given combination of the metric, entity, and date equals to `5784`.
 * Maximum estimated size of a row among these 5784 rows is `84` KB.
 * There are `5761` different series for the given combination of metric, entity, and day. These series differ by tags, so there are `5761` different combinations of tags.
-* Total number of time series samples for the given metric, entity , and day is `11520`.
-* There are no annotations and no versioned samples.
+* Total number of time series samples for the given metric, entity , and day are `11520`.
+* There are no annotations and non-versioned samples.
 * The `atsd_d` table stores data for the displayed metric, the entity, and the day in rows from the specifed `start key` (inclusive) to `stop key` (exclusive).
 
