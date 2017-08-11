@@ -14,7 +14,7 @@ The DataTableReporter is implemented as Map-Reduce job.
 
 ## Running Reporter
 
-Executed the below steps on the server running the Axibase Time Series Database instance connected to the target cluster.
+Execute the below steps on the server running the Resourse Manager on target cluster.
 
 ### Check Services
 
