@@ -4,7 +4,7 @@
 
 Add entities as members to the specified entity group.
 
-> Entity group must have an empty expression in order to be manageable with this method.
+> Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
 
 ## Request
 
@@ -12,13 +12,13 @@ Add entities as members to the specified entity group.
 |:---|:---|---:|
 | POST | `/api/v1/entity-groups/{group}/entities/add` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | group |string|Entity group name.|
 
-### Query Parameters 
+### Query Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -63,7 +63,7 @@ POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/add
 
 ```json
 [
-  "nurswgvml010", 
+  "nurswgvml010",
   "nurswgvml011"
 ]
 ```
@@ -77,10 +77,9 @@ curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/add \
   --request POST \
   --data '["nurswgvml010", "nurswgvml011"]'
   ```
-  
+
 ### Response
 
 None.
 
 ## Additional examples
-

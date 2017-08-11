@@ -26,8 +26,7 @@ resources available:
 -   Have virtualization enabled in your BIOS. This is normally enabled
     by default, but in some cases you may have to enter your system BIOS
     manually to enable virtualization.
--   At least 4 GB of RAM on the host machine and at least 1 GB of RAM
-    allocated to the virtual machine.
+-   At least 2 GB of RAM allocated to the virtual machine.
 
 ## Installing ATSD in VMware ESXi Server/vSphere
 

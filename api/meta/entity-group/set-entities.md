@@ -6,9 +6,9 @@ Set members of the entity group from the specified entity list.
 
 All existing members that are not included in the request will be removed from members.
 
-If the array in the request is empty, all entities are removed from the group and are replaced with an empty list.
+If the array in the request is empty, all entities are **removed** from the group and are replaced with an empty list.
 
-> Entity group must have an empty expression in order to be manageable with this method.
+> Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
 
 ## Request
 
@@ -16,13 +16,13 @@ If the array in the request is empty, all entities are removed from the group an
 |:---|:---|---:|
 | POST | `/api/v1/entity-groups/{group}/entities/set` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | group |string|Entity group name.|
 
-### Query Parameters 
+### Query Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -59,7 +59,7 @@ POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/set?createEnt
 
 ```json
 [
-  "nurswgvml010", 
+  "nurswgvml010",
   "nurswgvml011"
 ]
 ```
@@ -78,5 +78,3 @@ curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/set?createEnt
 None.
 
 ## Additional examples
-
-

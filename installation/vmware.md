@@ -24,8 +24,7 @@ resources available:
 -   Have virtualization enabled in your BIOS. This is normally enabled
     by default, but in some cases you may have to enter your system bios
     manually to enable virtualization.
--   At least 4 GB of RAM on the host machine and at least 1 GB of RAM
-    allocated to the virtual machine.
+-   At least 2 GB of RAM allocated to the virtual machine.
 
 ## Installing ATSD in VMware Player
 
@@ -47,7 +46,7 @@ popup window.
 
 ![](images/wait.png "wait")
 
-​5. Navigate to: Edit virtual machine settings. Allocate at least 1 GB
+​5. Navigate to: Edit virtual machine settings. Allocate at least 2 GB
 of RAM and at least 1 CPU to the virtual machine.
 
 ![](images/ram1.png "ram")

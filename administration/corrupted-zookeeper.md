@@ -90,7 +90,7 @@ Start HBase:
 Check HBase shell:
 
 ```bash
- echo "list" | /opt/atsd/hbase/bin/hbase shell                                          
+ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["                                        
 ```
 
 The console should start, the output should be a list of tables. 

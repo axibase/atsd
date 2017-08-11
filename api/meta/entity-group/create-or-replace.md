@@ -4,13 +4,12 @@
 
 Create an entity group with specified fields and tags or replace the fields and tags of an existing entity group.
 
-In case of an existing entity group, all the current tags will be replaced with tags specified in the request.
+The following rules apply if the specified group exists:
 
-If the replace request for an existing entity group doesn't contain any tags, the current tags will be deleted.
-
-Fields that are set to `null` are ignored by the server and are set to their default value.
-
-The replace request for an existing entity group doesn't affect the list of its member entities, since the internal identifier of the entity group remains the same.
+* The groups current tags will be replaced with tags specified in the request.
+* If the request doesn't contain any tags, the current tags will be deleted.
+* The request does **not** change the list of members.
+* If the `expression` field is set to 'null' in the request, the expression will be deleted.
 
 ## Request
 
@@ -18,7 +17,7 @@ The replace request for an existing entity group doesn't affect the list of its 
 |:---|:---|---:|
 | PUT | `/api/v1/entity-groups/{group}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -35,7 +34,7 @@ The replace request for an existing entity group doesn't affect the list of its 
 
 ### Fields
 
-None. 
+None.
 
 ## Example
 
@@ -66,16 +65,9 @@ curl https://atsd_host:8443/api/v1/entity-groups/nmon-collectors \
   --request PUT \
   --data '{"tags": {"collector": "nmon"}}
  ```
- 
+
 ### Response
 
 None.
 
 ## Additional examples
-
-
-
-
-
-
-

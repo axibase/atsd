@@ -2,13 +2,11 @@
 
 ## Description
 
-Retrieve information about the specified entity group including its tags.
-
-Membership in entity groups with non-empty expression is managed by the server. Adding/removing members of expression-based groups is not supported.
+Retrieve information about the specified entity group including its name and user-defined tags.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entity-groups/{group}` |
 
@@ -45,16 +43,14 @@ curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix \
   --insecure --verbose --user {username}:{password} \
   --request GET
   ```
-  
+
 ### Response
 
 ```json
 {
     "name": "nmon-aix",
     "tags": {
-        "os_level": "aix 6.3" 
+        "os_level": "aix 6.3"
     }
 }
 ```
-
-## Additional examples

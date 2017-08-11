@@ -2,11 +2,11 @@
 
 ## Description
 
-Remove specified entities from members of the specified entity group.
+Remove the specified members from the entity group.
 
-To delete all entities, submit an empty array `[]` with the [set entities](set-entities.md) method.
+To delete all entities from the group, submit an empty array `[]` with the [set entities](set-entities.md) method.
 
-> Entity group must have an empty expression in order to be manageable with this method.
+> Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
 
 ## Request
 
@@ -14,7 +14,7 @@ To delete all entities, submit an empty array `[]` with the [set entities](set-e
 |:---|:---|---:|
 | POST | `/api/v1/entity-groups/{group}/entities/delete` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -51,7 +51,7 @@ POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/delete
 
 ```json
 [
-  "nurswgvml010", 
+  "nurswgvml010",
   "nurswgvml011"
 ]
 ```

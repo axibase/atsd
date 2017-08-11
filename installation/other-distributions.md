@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Minimum RAM: 1 GB
+- Minimum RAM: 2 GB
 - See [Requirements](../administration/requirements.md) for additional information.
 
 > On ARM devices, make sure that the device has at least a 16GB hard drive or SD card. <br>

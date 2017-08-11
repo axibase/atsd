@@ -14,12 +14,11 @@ The process takes a few minutes with minimal input required from the user.
 ## Requirements
 
 * A 64-bit host machine with a processor that supports virtualization.
-* At least 2 GB of RAM on the host machine and at least 1 GB of RAM allocated to the virtual machine.
+* At least 2 GB of RAM allocated to the virtual machine.
 
 ## Virtual Machine Details
 
 * Operating System: Ubuntu 14.04 LTS 64-bit
-* RAM: 1 GB
 * Disk: 30 GB
 
 ## Installing ATSD in Oracle VirtualBox
@@ -50,7 +49,7 @@ The process takes a few minutes with minimal input required from the user.
 
 6. Open **Settings > System**.
 
-Allocate at least 1 GB of RAM and 1 virtual CPU to the virtual machine.
+Allocate at least 2 GB of RAM and 1 virtual CPU to the virtual machine.
 
 ![](images/ram.png "ram")
 

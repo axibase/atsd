@@ -6,7 +6,7 @@ Retrieve a list of entities that are members of the specified entity group and a
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entity-groups/{group}/entities` |
 
@@ -16,11 +16,11 @@ Retrieve a list of entities that are members of the specified entity group and a
 |:---|:---|
 | group | **[Required]** Entity group name. |
 
-### Query Parameters 
+### Query Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| expression |string|Expression to include entities by name or by entity tags. Use the `name` variable for entity name. The wildcard `*` is supported.|
+| expression |string|Expression to include entities by name or by entity tags. Use the `name` field for entity name. The wildcard `*` is supported.|
 | minInsertDate |string|Include entities with last insert date at or greater than specified time. <br>`minInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
 | maxInsertDate |string|Include entities with last insert date less than specified time.<br>`maxInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
 | limit |integer|Maximum number of entities to retrieve, ordered by name.|
@@ -51,9 +51,9 @@ None.
 ```elm
 curl https://atsd_host:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3 \
   --insecure --verbose --user {username}:{password} \
-  --request GET 
+  --request GET
   ```
-  
+
 ### Response
 
 ```json

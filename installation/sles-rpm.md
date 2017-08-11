@@ -7,7 +7,7 @@
 
 ## Requirements
 
-- Minimum RAM: 1 GB 
+- Minimum RAM: 2 GB 
 - See [Requirements](../administration/requirements.md) for additional information.
 
 ## Connection
