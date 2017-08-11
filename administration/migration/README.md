@@ -600,21 +600,14 @@ The number of records should match the results prior to migration.
 
 ## Delete Backups
 
-1. Delete backup tables using the HBase shell.
-
-Execute 'disable' and 'drop' commands for `_backup` table:
-
-* 'atsd_d_backup'
-* 'atsd_li_backup'
-* 'atsd_metric_backup'
-* 'atsd_forecast_backup'
-* 'atsd_delete_task_backup'
+1. Delete backup tables in HBase.
 
 ```sh
-  /opt/atsd/hbase/bin/hbase shell
-  hbase(main):001:0> disable_all '.*_backup'
-  hbase(main):002:0> drop_all '.*_backup'
-  hbase(main):003:0> exit
+echo "disable_all '.*_backup'" | /opt/atsd/hbase/bin/hbase shell
+```
+
+```sh
+echo "drop_all '.*_backup'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
 2. Delete the backup directory.

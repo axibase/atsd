@@ -751,11 +751,18 @@ WHERE time >= 1500300000000
 
 > Equality operators `!=` and `<>`  **cannot** be applied to `time` and `datetime` columns.
 
-Avoid using the [`date_format`](#date-formatting-functions) function in the `WHERE` condition as it will cause the database to perform a full scan comparing literal strings. Instead, filter dates using the indexed `datetime` column.
+### Optimizing Interval Queries
+
+Avoid using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause as it will cause the database to perform a full scan comparing literal strings or numbers. Instead, filter dates using the indexed `time`/`datetime` columns and apply the `PERIOD` function to aggregate records by time.
 
 ```sql
 WHERE date_format(time, 'yyyy') > '2014' -- Anti-pattern: Full scan with string comparison.
-WHERE datetime >= '2015-01-01T00:00:00Z' -- Recommended:  Range scan on indexed column.
+WHERE YEAR(time) > 2014                  -- Anti-pattern: Full scan with number comparison.
+WHERE datetime >= '2015-01-01T00:00:00Z' -- Recommended:  Range scan on an indexed column.
+
+GROUP BY date_format(time, 'yyyy')       -- Anti-pattern.
+GROUP BY YEAR(time)                      -- Anti-pattern.
+GROUP BY PERIOD(1 YEAR)                  -- Recommended.
 ```
 
 ### Endtime Syntax
