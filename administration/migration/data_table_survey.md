@@ -4,7 +4,7 @@
 The migration is a map-reduce job which transforms data in the `atsd_d` table. During migration all data for the same metric, entity and date should be collected in memory and processed. This amount of data can be large especially if there are a lot of series with the same metric and entity, and different tags. The memory allocated to mappers during migration should be enough to retain that amount of data. 
 
 DataTableReporter class estimates physical memory required to store processed data during migration. 
-It estimates size of java objects created by a mapper for each combination (metric, entity, date), and reports maximal size for each region of 'atsd_d' table. This estimations are quite less than actual needs of mappers in physical memory, but they can be used to choose right memory settings.
+It estimates size of java objects created by a mapper for each combination (metric, entity, date), and reports maximal size for each region of `atsd_d` table. This estimations are quite less than actual needs of mappers in physical memory, but they can be used to choose right memory settings.
 
 ## Check That Map-Reduce Services Are Launched
 
