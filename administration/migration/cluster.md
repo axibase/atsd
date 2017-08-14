@@ -178,7 +178,7 @@ JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$
 
 Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib/` directory on each HBase Region Server.
 
-### ATSD Coprocessors
+### Remove Coprocessor Definitions
 
 ATSD coprocessors that were added to HBase CoprocessorRegion Classes are now loaded automatically and therefore must be removed from the HBase settings. 
 
@@ -188,11 +188,7 @@ Select the **Clusters > Cluster > HBase-2**, and open the **Configuration** tab.
 
 Search for the `hbase.coprocessor.region.classes` setting.
 
-Delete the following ATSD coprocessors:
-
-* com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint
-* com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint
-* com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
+Remove all ATSD coprocessors and save settings:
 
 ![](./images/atsd-coprocessors.png)
 
