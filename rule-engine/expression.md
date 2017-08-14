@@ -30,7 +30,7 @@ The condition can reference fields, apply [functions](functions.md) to them, and
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `OR` | Boolean OR, also `||`. |
+| `OR` | Boolean OR, also `\|\|`. |
 | `AND` | Boolean AND, also `&&`. |
 | `NOT` | Boolean NOT, also `!`. |
 
