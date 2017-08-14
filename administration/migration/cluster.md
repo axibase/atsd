@@ -167,11 +167,10 @@ Set `JAVA_HOME` in the `start-atsd.sh` file:
 jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
-Set `ATSD_HEAPSIZE` in the `/opt/atsd/atsd/conf/atsd-env.sh` file:
+Set custom `JAVA_OPTS` in the `/opt/atsd/atsd/conf/atsd-env.sh` file:
 
 ```bash
-# The maximum amount of heap to use. Default is 1024M.
-# export ATSD_HEAPSIZE=1024M
+JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
 ```
 ## Deploy ATSD Coprocessors
 
