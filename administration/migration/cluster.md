@@ -173,7 +173,9 @@ jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -
 
 Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib/` directory on each HBase Region Server.
 
-### Enable ATSD Coprocessors
+### ATSD Coprocessors
+
+ATSD coprocessors that were added to HBase CoprocessorRegion Classes are now loaded automatically and therefore must be removed from the HBase settings. 
 
 Open Cloudera Manager.
 
@@ -181,10 +183,9 @@ Select the **Clusters > Cluster > HBase-2**, and open the **Configuration** tab.
 
 Search for the `hbase.coprocessor.region.classes` setting.
 
-Delete `com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint` coprocessor.
+Delete the following ATSD coprocessors:
 
-Check that following ATSD coprocessors are added to HBase CoprocessorRegion Classes.
-
+* com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint
 * com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint
 * com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
 
