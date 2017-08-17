@@ -91,11 +91,11 @@ Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axi
 
 Copy the `/opt/atsd/atsd/conf/axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal from the ATSD server to the `/tmp/migration/` directory on the YARN ResourceManager server.
 
-#### Add admin permissions to the existent `axibase` principal.
+#### Grant Admin Permissions
 
-The `axibase` principal requires admin permissions to perform table cloning during migration.
+The `axibase` principal requires administrative permissions to perform table cloning during the migration process.
 
-That permission will be revoked after migration succeed.
+These elevated permissions will be revoked after the migration is completed.
      
  Login into the HMaster server and locate the `hbase.keytab` file.
  
@@ -110,13 +110,13 @@ That permission will be revoked after migration succeed.
  hostname -f
  ```
  
- Authenticate with Kerberos using the `hbase.keytab` file and HMaster full hostname.
+Authenticate with Kerberos using the `hbase.keytab` file. Substitute `{master_full_hostname}` with the HMaster full hostname.
  
  ```bash
  kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hbase/{master_full_hostname}
  ```
  
- Open HBase shell and execute the `grant` command to grant **RWXCA** permissions to `axibase` principal.
+ Execute the `grant` command to grant **RWXCA** permissions to the `axibase` principal.
  
  ```bash
  echo "grant 'axibase', 'RWXCA'" | hbase shell  
@@ -134,11 +134,19 @@ Run the job on the YARN ResourseManager server.
 
 ### Rename `atsd_d` Table
 
-Run `TableCloner` task to rename `atsd_d` table into `atsd_d_backup` table.
+Run the `TableCloner` task to rename `atsd_d` table into `atsd_d_backup` table.
 
 ```sh
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
+
+#### Revoke Admin Permissions
+ 
+Execute the `grant` command on the HMaster server to remove **A** (Admin) permission from the `axibase` principal.
+
+ ```bash
+ echo "grant 'axibase', 'RWXC'" | hbase shell  
+ ```
 
 ### Migrate Records
 
@@ -203,6 +211,7 @@ Set custom `JAVA_OPTS` in the `/opt/atsd/atsd/conf/atsd-env.sh` file:
 ```bash
 JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
 ```
+
 ## Deploy ATSD Coprocessors
 
 ### Copy Comprocessors into HBase
@@ -273,30 +282,3 @@ The number of records should match the results prior to migration.
 ```sh
 rm -rf /tmp/migration
 ```
-
-#### Revoke admin permissions from `axibase` principal.
-
- Login into the HMaster server and locate the `hbase.keytab` file.
- 
- ```bash
- find / -name "hbase.keytab" | xargs ls -la
- -rw------- 1 hbase        hbase        448 Jul 29 16:44 /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab
- ```
- 
- Obtain the fully qualified hostname of the HMaster server.
- 
- ```bash
- hostname -f
- ```
- 
- Authenticate with Kerberos using the `hbase.keytab` file and HMaster full hostname.
- 
- ```bash
- kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hbase/{master_full_hostname}
- ```
- 
- Open HBase shell and execute the `grant` command to grant only **RWXC** permissions to `axibase` principal.
- 
- ```bash
- echo "grant 'axibase', 'RWXC'" | hbase shell  
- ```
