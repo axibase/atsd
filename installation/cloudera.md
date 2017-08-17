@@ -162,7 +162,9 @@ If the HBase Secure Authorization is disabled you can access HBase as is. Procee
 
 Otherwise, you need to allow the newly created `axibase` principal to access HBase using one of the following options:
 
-1. Add the `axibase` principal to the HBase superusers via HBase Configuration.
+1. Add the `axibase` principal to the HBase superusers via HBase Configuration. 
+
+> Don't forget to deploy updated configuration and restart HBase.
 
  ![](images/cloudera-manager-superuser.png)
 
@@ -190,7 +192,7 @@ kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hba
 Open HBase shell and execute the `grant` command to grant **RWXC** permissions to `axibase` principal.
 
 ```bash
-echo "grant 'axibase', 'RWXC'" | /opt/atsd/hbase/bin/hbase shell  
+echo "grant 'axibase', 'RWXC'" | hbase shell  
 ```
 
 ### Configure Kerberos Configuration Information in `krb5.conf` File

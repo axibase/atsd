@@ -91,7 +91,34 @@ Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axi
 
 Copy the `/opt/atsd/atsd/conf/axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal from the ATSD server to the `/tmp/migration/` directory on the YARN ResourceManager server.
 
-Initiate a Kerberos session.
+#### Add admin permissions to the existent `axibase` principal.
+     
+ Login into the HMaster server and locate the `hbase.keytab` file.
+ 
+ ```bash
+ find / -name "hbase.keytab" | xargs ls -la
+ -rw------- 1 hbase        hbase        448 Jul 29 16:44 /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab
+ ```
+ 
+ Obtain the fully qualified hostname of the HMaster server.
+ 
+ ```bash
+ hostname -f
+ ```
+ 
+ Authenticate with Kerberos using the `hbase.keytab` file and HMaster full hostname.
+ 
+ ```bash
+ kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hbase/{master_full_hostname}
+ ```
+ 
+ Open HBase shell and execute the `grant` command to grant **RWXCA** permissions to `axibase` principal.
+ 
+ ```bash
+ echo "grant 'axibase', 'RWXCA'" | hbase shell  
+ ```
+
+#### Initiate a Kerberos session.
 
 ```sh
 kinit -k -t /tmp/migration/axibase.keytab axibase

@@ -31,7 +31,11 @@ mkdir /tmp/reporter
 curl -o /tmp/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
 ```
 
-Set the `HADOOP_CLASSPATH` setting. In Cloudera distributions, the HBase home directory should be `/usr/lib/hbase`.
+Set the `HADOOP_CLASSPATH` setting. In Cloudera distributions, the HBase configuration directory should be `/usr/lib/hbase/conf` by default.
+
+> Please, set appropriate configuration directory:
+> CDH 5.5.2 by default:             `/usr/lib/hbase/conf`
+> CDH 5.10.0 installed via parcels: `/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/conf`
 
 ```sh
 export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/reporter/reporter.jar
@@ -42,9 +46,9 @@ Check that HBase classes are present in the output.
 ```sh
 echo $HADOOP_CLASSPATH
 ```
-echo $HADOOP_CLASSPATH
-/usr/lib/hbase/conf:/usr/lib/hbase/lib/hbase-hadoop-compat-1.2.5.jar:/usr/lib/hbase/lib/hbase-server-1.2.5.jar:/usr/lib/hbase/lib/guava-12.0.1.jar:/usr/lib/hbase/lib/hbase-prefix-tree-1.2.5.jar:/usr/lib/hbase/lib/hbase-client-1.2.5.jar:/usr/lib/hbase/lib/hbase-common-1.2.5.jar:/usr/lib/hbase/lib/netty-all-4.0.23.Final.jar:/usr/lib/hbase/lib/hbase-protocol-1.2.5.jar:/usr/lib/hbase/lib/protobuf-java-2.5.0.jar:/usr/lib/hbase/lib/zookeeper-3.4.6.jar:/usr/lib/hbase/lib/metrics-core-2.2.0.jar:/usr/lib/hbase/lib/htrace-core-3.1.0-incubating.jar:/tmp/reporter/reporter.jar
+
 ```
+/usr/lib/hbase/conf:/usr/lib/hbase/lib/hbase-hadoop-compat-1.2.5.jar:/usr/lib/hbase/lib/hbase-server-1.2.5.jar:/usr/lib/hbase/lib/guava-12.0.1.jar:/usr/lib/hbase/lib/hbase-prefix-tree-1.2.5.jar:/usr/lib/hbase/lib/hbase-client-1.2.5.jar:/usr/lib/hbase/lib/hbase-common-1.2.5.jar:/usr/lib/hbase/lib/netty-all-4.0.23.Final.jar:/usr/lib/hbase/lib/hbase-protocol-1.2.5.jar:/usr/lib/hbase/lib/protobuf-java-2.5.0.jar:/usr/lib/hbase/lib/zookeeper-3.4.6.jar:/usr/lib/hbase/lib/metrics-core-2.2.0.jar:/usr/lib/hbase/lib/htrace-core-3.1.0-incubating.jar:/tmp/reporter/reporter.jar
 /usr/lib/hbase/conf:/usr/lib/hbase/lib/htrace-core-3.2.0-incubating.jar:/usr/lib/hbase/lib/hbase-client-1.0.0-cdh5.5.2.jar:/usr/lib/zookeeper/zookeeper-3.4.5-cdh5.5.2.jar:/usr/lib/hbase/lib/hbase-server-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/hbase-protocol-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/netty-3.6.6.Final.jar:/usr/lib/hbase/lib/hbase-common-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/hbase-hadoop-compat-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/protobuf-java-2.5.0.jar:/usr/lib/hbase/lib/guava-12.0.1.jar:/tmp/reporter/reporter.jar
 ```
 
