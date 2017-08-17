@@ -46,7 +46,7 @@ The report file can be written to a file on the local file system, sent to email
 
 ### File System
 
-To store reports on a disk, enable the **Export** section by clicking on the header and specify a output path.
+To store reports on a disk, enable the **Export** section by clicking on the header and specify an output path.
 
 ![File](images/sql-scheduled-file.png)
 
