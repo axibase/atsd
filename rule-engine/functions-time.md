@@ -13,6 +13,16 @@ Converts the datetime string into UNIX time in milliseconds according to the spe
 ### The `date_format` function
 Converts timestamp to a formatted time string according to the format pattern and the timezone. 
 
+### The `formatInterval` function
+Converts millisecond interval to a formatted interval printing non-zero years, days, hours, minutes, and seconds.
+
+### The `formatIntervalShort` function
+Converts millisecond interval to a formatted interval printing one or two greatest subsequent non-zero period type, where period type is one of: years, days, hours, minutes, and seconds.
+
+### The `elapsedTime` function
+Calculates number of milliseconds since provided timestamp to current instant
+
+
 ## Syntax
 
 ```java
@@ -57,4 +67,9 @@ date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS Z
 /* Return formatted time string  "2017-02-22 11:18:00:000 Europe/Berlin" */
 date_format(1487758680000L, "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 
+/* Return formatted interval: 2y 139d 16h 47m 15s */
+formatInterval(75228435000L)
+
+/* Return formatted interval: 2y 139d */
+formatIntervalShort(75228435000L)
 ```

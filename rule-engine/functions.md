@@ -101,6 +101,9 @@
 | `seconds(S datetime [,S format [,S timezone]])` | Same arguments as the `milliseconds` function except the result is returned in UNIX time seconds. |
 | `date_parse(S datetime [,S format [,S timezone]])` | Same arguments as the `milliseconds` function except the result is returned as [Joda-time](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) DateTime object. |
 | `date_format(L timestamp, S pattern, S timezone)` | Convert timestamp to a formatted time string according to the format pattern and the timezone. Timestamp is an epoch timestamp in milliseconds. The format string syntax is described in the [datetime format](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html). List of available [time zones](../api/network/timezone-list.md). |
+| `formatInterval(L interval)` | Convert millisecond interval to a formatted interval printing non-zero years, days, hours, minutes, and seconds. |
+| `formatIntervalShort(L interval)` | Convert millisecond interval to a formatted interval printing one or two greatest subsequent non-zero period type, where period type is one of: years, days, hours, minutes, and seconds. |
+| `elapsedTime(L timestamp)` | Calculate number of milliseconds since `timestamp` to current instant |
 
 Refer to the time functions [examples](functions-time.md).
 
