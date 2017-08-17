@@ -81,8 +81,8 @@ java -version
 Add `migration.jar`, HBase configuration files, and HBase classes used by the Map-Reduce job to Java and Hadoop classpaths.
 
 ```sh
-export CLASSPATH=$CLASSPATH:$(hbase classpath:/tmp/migration/migration.jar
-export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/migration/migration.jar
+export CLASSPATH=$CLASSPATH:$(hbase classpath):/tmp/migration/migration.jar
+export HADOOP_CLASSPATH=/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf:$(hbase mapredcp):/tmp/migration/migration.jar
 ```
 
 Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axibase support based on the [Data Reporter](reporter.md) logs.
@@ -91,38 +91,7 @@ Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axi
 
 Copy the `/opt/atsd/atsd/conf/axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal from the ATSD server to the `/tmp/migration/` directory on the YARN ResourceManager server.
 
-#### Grant Admin Permissions
-
-The `axibase` principal requires administrative permissions to perform table cloning during the migration process.
-
-These elevated permissions will be revoked after the migration is completed.
-     
- Login into the HMaster server and locate the `hbase.keytab` file.
- 
- ```bash
- find / -name "hbase.keytab" | xargs ls -la
- -rw------- 1 hbase        hbase        448 Jul 29 16:44 /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab
- ```
- 
- Obtain the fully qualified hostname of the HMaster server.
- 
- ```bash
- hostname -f
- ```
- 
-Authenticate with Kerberos using the `hbase.keytab` file. Substitute `{master_full_hostname}` with the HMaster full hostname.
- 
- ```bash
- kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hbase/{master_full_hostname}
- ```
- 
- Execute the `grant` command to grant **RWXCA** permissions to the `axibase` principal.
- 
- ```bash
- echo "grant 'axibase', 'RWXCA'" | hbase shell  
- ```
-
-#### Initiate a Kerberos session.
+Initiate a Kerberos session.
 
 ```sh
 kinit -k -t /tmp/migration/axibase.keytab axibase
@@ -139,14 +108,6 @@ Run the `TableCloner` task to rename `atsd_d` table into `atsd_d_backup` table.
 ```sh
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
-
-#### Revoke Admin Permissions
- 
-Execute the `grant` command on the HMaster server to remove **A** (Admin) permission from the `axibase` principal.
-
- ```bash
- echo "grant 'axibase', 'RWXC'" | hbase shell  
- ```
 
 ### Migrate Records
 
@@ -216,7 +177,7 @@ JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$
 
 ### Copy Comprocessors into HBase
 
-Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib/` directory on each HBase Region Server.
+Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../lib/` directory on each HBase Region Server.
 
 ### Remove Coprocessor Definitions
 
