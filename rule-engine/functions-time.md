@@ -14,13 +14,17 @@ Converts the datetime string into UNIX time in milliseconds according to the spe
 Converts timestamp to a formatted time string according to the format pattern and the timezone. 
 
 ### The `formatInterval` function
-Converts millisecond interval to a formatted interval printing non-zero years, days, hours, minutes, and seconds.
+Converts interval in UNIX milliseconds to a formatted interval consisting of non-zero years, days, hours, minutes, and seconds.
 
 ### The `formatIntervalShort` function
-Converts millisecond interval to a formatted interval printing one or two greatest subsequent non-zero period type, where period type is one of: years, days, hours, minutes, and seconds.
+Converts interval in UNIX milliseconds to a formatted interval consisting of up to two highest subsequent non-zero time units, where unit is one of years, days, hours, minutes, and seconds.
 
 ### The `elapsedTime` function
-Calculates number of milliseconds since provided timestamp to current instant
+Calculates the number of milliseconds between the current time and the specified time. The function accepts time in UNIX milliseconds or in one of the following formats:
+
+```
+yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
+```
 
 
 ## Syntax
@@ -72,4 +76,10 @@ formatInterval(75228435000L)
 
 /* Return formatted interval: 2y 139d */
 formatIntervalShort(75228435000L)
+
+/* Assuming current time of 2017-08-15T00:01:30Z, return elapsed time: 90000 */
+elapsedTime("2017-08-15T00:00:00Z")
+
+/* Assuming current time of 2017-08-15T00:01:30Z, return short interval of elapsed time: 1m 30s */
+formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))
 ```
