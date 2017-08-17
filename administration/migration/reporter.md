@@ -15,41 +15,58 @@ Execute the below steps on the server running YARN Resourse Manager on the targe
 ### Check Services
 
 * Login into Cloudera Manager.
-* Open **Hosts > All Hosts**, expand the **Roles** and verify that ResourceManager, NodeManagers and HistoryServer services are running on the cluster. 
-* Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**, search for the 'yarn.log-aggregation-enable' property and verify that it is checked.
+
+* Open **Hosts > All Hosts**, expand the **Roles**.
+
+  * Verify that ResourceManager, NodeManagers and HistoryServer services are running on the cluster. 
+
+* Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**.
+
+  * Search for the 'yarn.log-aggregation-enable' property and verify that it is checked.
 
 ![](./images/cloudera-log-aggregation-settings.jpeg)
 
 ### Prepare Map-Reduce Job
 
-Log in to the server where YARN ResourceManager is running.
+Login to the server where YARN ResourceManager is running.
 
-Create a temporary directory and download the DataTableReporter jar file.
+Set the `HADOOP_CLASSPATH` setting to include Java libraries and HBase connection settings.
 
-```sh
-mkdir /tmp/reporter
-curl -o /tmp/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
-```
-
-Set the `HADOOP_CLASSPATH` setting. In Cloudera distributions, the HBase configuration directory should be `/usr/lib/hbase/conf` by default.
-
-> Please, set appropriate configuration directory:
-> CDH 5.5.2 by default:             `/usr/lib/hbase/conf`
-> CDH 5.10.0 installed via parcels: `/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/conf`
+Locate the path to the HBase configuration directory:
 
 ```sh
-export HADOOP_CLASSPATH=/usr/lib/hbase/conf:$(hbase mapredcp):/tmp/reporter/reporter.jar
+hbase classpath | cut -f 1 -d ":"
 ```
 
-Check that HBase classes are present in the output.
+```
+# CDH 5.5 Package installation.
+/usr/lib/hbase/conf
+
+# CDH 5.10 Parcels installation.
+/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf
+```
+
+Copy  the HBase configuration directory and set `HADOOP_CLASSPATH`:
+
+```sh
+export HADOOP_CLASSPATH=/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf:$(hbase mapredcp):/tmp/reporter/reporter.jar
+```
+
+Check that the HBase configuration directory and HBase classes are present in the output.
 
 ```sh
 echo $HADOOP_CLASSPATH
 ```
 
 ```
-/usr/lib/hbase/conf:/usr/lib/hbase/lib/hbase-hadoop-compat-1.2.5.jar:/usr/lib/hbase/lib/hbase-server-1.2.5.jar:/usr/lib/hbase/lib/guava-12.0.1.jar:/usr/lib/hbase/lib/hbase-prefix-tree-1.2.5.jar:/usr/lib/hbase/lib/hbase-client-1.2.5.jar:/usr/lib/hbase/lib/hbase-common-1.2.5.jar:/usr/lib/hbase/lib/netty-all-4.0.23.Final.jar:/usr/lib/hbase/lib/hbase-protocol-1.2.5.jar:/usr/lib/hbase/lib/protobuf-java-2.5.0.jar:/usr/lib/hbase/lib/zookeeper-3.4.6.jar:/usr/lib/hbase/lib/metrics-core-2.2.0.jar:/usr/lib/hbase/lib/htrace-core-3.1.0-incubating.jar:/tmp/reporter/reporter.jar
-/usr/lib/hbase/conf:/usr/lib/hbase/lib/htrace-core-3.2.0-incubating.jar:/usr/lib/hbase/lib/hbase-client-1.0.0-cdh5.5.2.jar:/usr/lib/zookeeper/zookeeper-3.4.5-cdh5.5.2.jar:/usr/lib/hbase/lib/hbase-server-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/hbase-protocol-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/netty-3.6.6.Final.jar:/usr/lib/hbase/lib/hbase-common-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/hbase-hadoop-compat-1.0.0-cdh5.5.2.jar:/usr/lib/hbase/lib/protobuf-java-2.5.0.jar:/usr/lib/hbase/lib/guava-12.0.1.jar:/tmp/reporter/reporter.jar
+/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/protobuf-java-2.5.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-hadoop-compat-1.2.0-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-prefix-tree-1.2.0-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/guava-12.0.1.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/netty-all-4.0.23.Final.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/htrace-core-3.2.0-incubating.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-common-1.2.0-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-client-1.2.0-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-protocol-1.2.0-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/zookeeper-3.4.5-cdh5.10.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/metrics-core-2.2.0.jar:/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/jars/hbase-server-1.2.0-cdh5.10.0.jar:/tmp/reporter/reporter.jar
+```
+
+Create a temporary directory and download the DataTableReporter jar file.
+
+```sh
+mkdir /tmp/reporter
+curl -o /tmp/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter.jar
 ```
 
 ### Initiate Kerberos Session
