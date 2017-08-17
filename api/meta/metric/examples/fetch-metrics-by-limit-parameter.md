@@ -14,7 +14,7 @@ https://atsd_host:8443/api/v1/metrics?limit=3
       "dataType":"FLOAT",
       "persistent":true,
       "timePrecision":"MILLISECONDS",
-      "retentionInterval":0,
+      "retentionDays":0,
       "invalidAction":"NONE",
       "lastInsertTime":1463129522969,
       "versioned":false
@@ -26,7 +26,7 @@ https://atsd_host:8443/api/v1/metrics?limit=3
       "description":"it is description",
       "persistent":true,
       "timePrecision":"MILLISECONDS",
-      "retentionInterval":2,
+      "retentionDays":2,
       "minValue":21.0,
       "maxValue":125.0,
       "invalidAction":"RAISE_ERROR",
@@ -40,7 +40,7 @@ https://atsd_host:8443/api/v1/metrics?limit=3
       "dataType":"FLOAT",
       "persistent":true,
       "timePrecision":"MILLISECONDS",
-      "retentionInterval":0,
+      "retentionDays":0,
       "invalidAction":"NONE",
       "lastInsertTime":1463129525000,
       "versioned":false

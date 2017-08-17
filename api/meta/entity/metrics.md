@@ -65,7 +65,7 @@ curl https://atsd_host:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
         "dataType": "FLOAT",
         "persistent": true,
         "timePrecision": "MILLISECONDS",
-        "retentionInterval": 0,
+        "retentionDays": 0,
         "invalidAction": "NONE",
         "lastInsertDate": "2015-09-04T16:10:21.000Z"
     },
@@ -75,7 +75,7 @@ curl https://atsd_host:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
         "dataType": "FLOAT",
         "persistent": true,
         "timePrecision": "MILLISECONDS",
-        "retentionInterval": 0,
+        "retentionDays": 0,
         "invalidAction": "NONE",
         "lastInsertDate": "2015-09-04T16:10:21.000Z"
     }

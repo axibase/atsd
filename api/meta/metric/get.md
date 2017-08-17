@@ -56,7 +56,7 @@ curl https://atsd_host:8443/api/v1/metrics/cpu_busy \
   "persistent": true,
   "tags": {},
   "timePrecision": "MILLISECONDS",
-  "retentionInterval": 0,
+  "retentionDays": 0,
   "invalidAction": "NONE",
   "lastInsertDate": "2016-10-05T12:10:26.000Z",
   "versioned": false

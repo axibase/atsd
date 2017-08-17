@@ -26,7 +26,7 @@ tags.table != ''
             "table": "axibase-collector"
         },
         "timePrecision": "MILLISECONDS",
-        "retentionInterval": 0,
+        "retentionDays": 0,
         "invalidAction": "NONE",
         "lastInsertDate": "2016-05-19T10:38:26.731Z",
         "versioned": false
@@ -40,7 +40,7 @@ tags.table != ''
             "table": "axibase-collector"
         },
         "timePrecision": "MILLISECONDS",
-        "retentionInterval": 0,
+        "retentionDays": 0,
         "invalidAction": "NONE",
         "lastInsertDate": "2016-05-19T10:38:26.731Z",
         "versioned": false

@@ -27,7 +27,7 @@ expression=name like '*disk*'
         "persistent": true,
         "tags": {},
         "timePrecision": "MILLISECONDS",
-        "retentionInterval": 0,
+        "retentionDays": 0,
         "invalidAction": "NONE",
         "lastInsertDate": "2016-05-18T00:35:12.000Z",
         "versioned": false
@@ -39,7 +39,7 @@ expression=name like '*disk*'
         "persistent": true,
         "tags": {},
         "timePrecision": "MILLISECONDS",
-        "retentionInterval": 0,
+        "retentionDays": 0,
         "invalidAction": "NONE",
         "lastInsertDate": "2016-05-18T00:35:12.000Z",
         "versioned": false
@@ -51,7 +51,7 @@ expression=name like '*disk*'
         "persistent": true,
         "tags": {},
         "timePrecision": "MILLISECONDS",
-        "retentionInterval": 0,
+        "retentionDays": 0,
         "invalidAction": "NONE",
         "lastInsertDate": "2016-05-18T00:35:12.000Z",
         "versioned": false

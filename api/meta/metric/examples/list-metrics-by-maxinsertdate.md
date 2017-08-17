@@ -16,7 +16,7 @@ GET https://atsd_host:8443/api/v1/metrics?maxInsertDate=2016-05-19T08:13:40.000Z
       "dataType":"FLOAT",
       "persistent":true,
       "timePrecision":"MILLISECONDS",
-      "retentionInterval":0,
+      "retentionDays":0,
       "invalidAction":"NONE",
       "lastInsertDate":"2016-05-18T22:50:00.000Z",
       "versioned":false
@@ -27,7 +27,7 @@ GET https://atsd_host:8443/api/v1/metrics?maxInsertDate=2016-05-19T08:13:40.000Z
       "dataType":"FLOAT",
       "persistent":true,
       "timePrecision":"MILLISECONDS",
-      "retentionInterval":0,
+      "retentionDays":0,
       "invalidAction":"NONE",
       "lastInsertDate":"2016-05-18T22:50:00.000Z",
       "versioned":false
@@ -38,7 +38,7 @@ GET https://atsd_host:8443/api/v1/metrics?maxInsertDate=2016-05-19T08:13:40.000Z
       "dataType":"FLOAT",
       "persistent":true,
       "timePrecision":"MILLISECONDS",
-      "retentionInterval":0,
+      "retentionDays":0,
       "invalidAction":"NONE",
       "lastInsertDate":"2016-05-05T05:50:18.312Z",
       "versioned":false
