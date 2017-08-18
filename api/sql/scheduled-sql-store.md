@@ -6,7 +6,7 @@ The **Store** option in scheduled SQL queries enables writing the results of the
 
 ## Use Cases
 
-* Create derived series that are frequently accesses but require expensive processing and calculations from the underlying data.
+* Create derived series that are frequently accessed but require expensive processing and calculation from the underlying data.
 * Create cleansed series by discarding invalid values and interpolating sample values in missing interval gaps.
 * Create normalized series by replacing synonyms, for example by storing data for `tag.country=China` and `tag.country=Republic of China` in one derived series.
 * Store temporal aggregations for long-term retention based on detailed data that is subject to pruning after a certain expiration date.
@@ -47,20 +47,20 @@ series e:dc-1 d:2017-08-02T00:00:00Z m:temp_daily_avg=22.20 m:temp_daily_perc_90
 
 ### Column Requirements
 
-The columns are mapped to command fields based on the column name and the data type.
-Column aliases can be defined to ensure that the query results meet the following requirements.
+The columns are mapped to command fields based on column name and data type.
+Column aliases can be defined to ensure that the query results meet the following requirements:
 
 #### Required Columns
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| datetime | string | `0-1` | The date of the record in the ISO-8601 format (1).|
+| datetime | string | `0-1` | The date of the record in ISO-8601 format (1).|
 | time | long | `0-1` | The date of the record in UNIX milliseconds (1). |
 | entity | string | `1` | Name of the entity under which the new series will be stored. |
 | - any - | numeric | `1-*` | Metric name for the stored series (2). |
 
 * (1) Only one of the date columns, `datetime` or `time`, must be included in the results.
-* (2) The column is classified as 'metric' if it has a numeric datatype and does not match the rules applicable to other column types.
+* (2) The column is classified as a 'metric' if it has a numeric datatype and does not match the rules applicable to other column types.
 
 #### Optional Series Tag Columns
 
@@ -85,7 +85,7 @@ Column aliases can be defined to ensure that the query results meet the followin
 | metric.{field-name} | string | `0-*` | [Metric field](README.MD#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
 | entity.{field-name} | string | `0-*` | [Entity field](README.MD#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
 
-* The following metadata fields are read-only and can be not be set: 'metric.name', 'metric.lastInsertTime', 'entity. groups'.
+* The following metadata fields are read-only and can be not be set: 'metric.name', 'metric.lastInsertTime', 'entity. groups':
 
 ### Table Names
 
@@ -133,21 +133,21 @@ series e:dc-1 d:2017-08-02T00:00:00Z m:temp_daily_perc_90=28.24
 
 ### Duplicates
 
-Since the query may create series commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
+Since a query can create series commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
 
 If **Check Last Time** is enabled, the series command is inserted if its datetime is greater than the timestamp of the previously stored values for the given series key.
 
 ### Validation
 
-To test a query that complies with [requirements](#column-requirements), execute the query in the SQL console and click on the **Store** button. 
+To test that a query complies with [requirements](#column-requirements), execute the query in the SQL console and click on the **Store** button. 
 
-Click **Test** to review the produced commands and to resolve any errors.
+Click **Test** to review the produced commands and resolve any errors.
 
 ![SQL Store Test](images/sql-store-test.png)
 
-Click **Store** to persist the new derived series in the database.
+Click **Store** to load the new derived series in the database.
 
-Click **Schedule** to created a scheduled SQL job to persist new records for derived series continously.
+Click **Schedule** to created a scheduled SQL job to create and store new records for derived series continously.
 
 ### Monitoring
 
