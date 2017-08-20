@@ -1,10 +1,10 @@
 # Inline View
 
-Inline view is a subquery used in the `FROM` clause of a containing query. It allows the containing query to operate on the results of the subquery instead of the actual table.
+Inline view is a subquery used in the `FROM` clause of some parent query. It allows the parent query to operate on the results of some subquery.
 
 ## Query
 
-Calculate hourly maximums for each hour and then calculate average hourly maximum for the days in the week.
+Using Inline view, identify the maximum value in each hour and then calculate the average hourly maximum for each day of the week.
 
 ```sql
 SELECT datetime, AVG(value) AS "daily_average" 
@@ -33,7 +33,7 @@ GROUP BY PERIOD(1 DAY)
 
 ## Query
 
-Calculate maximum average hourly maximum.
+Calculate the hourly maximum for a defined time period, and then return the maximum value from that resultset.
 
 ```sql
 SELECT MAX(value) FROM (
@@ -48,7 +48,7 @@ SELECT MAX(value) FROM (
 
 ### Results
 
-The number of nested subqueries in the inline view is not limited. 
+Unlimited nested subqueries are supported.. 
 
 ```ls
 | max(value) |
@@ -58,7 +58,7 @@ The number of nested subqueries in the inline view is not limited.
 
 ## Query
 
-Group results by a subset of series tags and regularize series in the subquery, and apply aggregation functions to subquery results in the containing query.
+Group results by a subset of series tags and regularize the series in the subquery, then apply aggregation functions to the subquery results in the parent query.
 
 ```sql
 SELECT datetime, tags.application, tags.transaction, 
