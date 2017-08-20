@@ -1,6 +1,6 @@
 # Inline View
 
-Inline view is a subquery used in the `FROM` clause of some parent query. It allows the parent query to operate on the results of some subquery.
+Inline view is a subquery specified in the `FROM` clause instead of the actual table.
 
 ## Query
 
@@ -33,12 +33,16 @@ GROUP BY PERIOD(1 DAY)
 
 ## Query
 
-Calculate the hourly maximum for a defined time period, and then return the maximum value from that resultset.
+This query is processed in three stages using nested inline views:
+
+1. Stage 1. Calculate the maximum value in each hour. 
+2. Stage 2. Calculate the average hourly maximum in each day. 
+3. Stage 3. Calculate the maximum for all daily averages.
 
 ```sql
-SELECT MAX(value) FROM (
-  SELECT datetime, AVG(value) AS "value" FROM (
-    SELECT datetime, MAX(value) AS "value"
+SELECT MAX(value) FROM (                        -- Stage 3
+  SELECT datetime, AVG(value) AS "value" FROM ( -- Stage 2
+    SELECT datetime, MAX(value) AS "value"      -- Stage 1
       FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_WEEK
     GROUP BY PERIOD(1 HOUR)
   )
@@ -48,8 +52,6 @@ SELECT MAX(value) FROM (
 
 ### Results
 
-Unlimited nested subqueries are supported.. 
-
 ```ls
 | max(value) |
 |------------|
@@ -58,7 +60,7 @@ Unlimited nested subqueries are supported..
 
 ## Query
 
-Group results by a subset of series tags and regularize the series in the subquery, then apply aggregation functions to the subquery results in the parent query.
+Group results by a subset of series tags and regularize the series in the subquery, then apply aggregation functions to the subquery results in the containing query.
 
 ```sql
 SELECT datetime, tags.application, tags.transaction, 
