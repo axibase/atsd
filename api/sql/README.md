@@ -1618,7 +1618,7 @@ The above query would read all samples contained in the 'm-1' metric in the data
 
 ## Inline Views
 
-Inline view is a subquery specified in the `FROM` clause instead of the actual table. It defines a virtual table to be operated on by a containing (parent) query. The inline view provides a way to implement multi-stage processing. For example, a subquery can first calculate hourly maximums from which the parent query will compute an average hourly maximum for the days in the week.
+Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be operated on by the primary or parent query. The inline view implements multi-stage processing. For example, a subquery can first calculate hourly maximums from which the parent query will compute an average hourly maximum for the days in the week.
  
 ```sql
 SELECT datetime, AVG(value) AS "daily_average" 
@@ -1643,8 +1643,8 @@ GROUP BY PERIOD(1 DAY)
 | 2017-08-20 00:00:00 | 93.8          | 
 ```
 
-Subquery can contain only columns with [predefined](#predefined-columns) names such as 'metric', 'entity', 'value', 'datetime', etc.
-If the subquery column is based on an expression or function, use aliases to rename it to be one of the predefined names.
+A subquery can contain only columns with [predefined](#predefined-columns) names such as 'metric', 'entity', 'value', 'datetime', etc.
+If the subquery column is based on an expression or function, use aliases to rename it as some predefined name.
 
 ```sql
 MAX(value) AS "value"
@@ -1663,7 +1663,7 @@ SELECT MAX(value) FROM (
 )
 ```
 
-The number of nested subqueries in the inline view is not limited. 
+Unlimited nested subqueries are supported. 
 
 ```ls
 | max(value) |
