@@ -2,11 +2,11 @@
 
 ## Overview
 
-In order to offload detailed data from the ITM infrastructure with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to dump incoming analytical data into CSV files on the local file system. The dump directory will be continously monitored by an `inotify` script, which will upload new CSV files into ATSD as soon as they are created.
+In order to offload detailed data from IBM Trivoli Monitoing (ITM) infrastructure with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to dump incoming analytical data into CSV files on the local file system. The dump directory will be continously monitored by an `inotify` script, which will upload new CSV files into ATSD as soon as they are created.
 
-This enables ATSD to serve as a long-term repository of historical data. This data is typically deleted after a few months by ITM in order to minimize the disk space usage in the Tivoli Data Warehouse.
+This feature enables ATSD to act as a long-term repository of historical data which is typically deleted after a few months by ITM in order to minimize disk space usage in the Tivoli Data Warehouse.
 
-Since statistics from ITM agents will be received by ATSD without any delay, the integration can be used for real-time analytics and peformance dashboards.
+Because statistics from ITM agents will be received by ATSD without any delay, the integration can be used for real-time analytics and peformance dashboards.
 
 ![](images/itm_diag.png "Warehouse Proxy Agent diagram")
 
@@ -43,7 +43,7 @@ Since statistics from ITM agents will be received by ATSD without any delay, the
     - [VMware](csv-configs/agents/vm_situations.xml)
     - [WebSphere MQ](csv-configs/agents/mq_situations.xml)
 
-* Copy the configuration file to the `localconfig/${PRODUCT_CODE}/` directory on the agent machine, where `${PRODUCT_CODE}` is the agent product code. You can lookup commonly used product codes [here](http://www-01.ibm.com/support/docview.wss?uid=swg21265222).
+* Copy the configuration file to the `localconfig/${PRODUCT_CODE}/` directory on the agent machine, where `${PRODUCT_CODE}` is the agent product code. You can look up commonly used product codes [here](http://www-01.ibm.com/support/docview.wss?uid=swg21265222).
 
     > Agent situation files adhere to the following naming convention: ${PRODUCT_CODE}_situations.xml
 
@@ -62,10 +62,10 @@ Since statistics from ITM agents will be received by ATSD without any delay, the
 
 ### Upload CSV Parsers into ATSD
 
-- Login into the ATSD web interface.
+- Log in to the ATSD web interface.
 - Open the `Configuration->CSV:Parsers` page.
 - Click the [Import] button.
-- Upload CSV parser xml files that you downloaded previously.
+- Upload the CSV parser xml files that you downloaded previously.
 
 ### Configure `inotify` Script to Read CSV files and Upload Them into ATSD
 
@@ -101,8 +101,8 @@ Since statistics from ITM agents will be received by ATSD without any delay, the
 
 ## Verifying Data in ATSD
 
-* Login into ATSD.
-* Click on Metrics tab and filter metrics by following prefixes:
+* Log in to ATSD.
+* Click to the Metrics tab and filter metrics with the following prefixes:
 
  - `klz`
   ![](images/klz_metrics.png)
