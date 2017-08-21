@@ -7,7 +7,7 @@ The Rule Engine enables automation of repetitive tasks based on the analysis of 
 email](email-action.md),
 or raising a ticket in the centralized incident management system.
 
-In abstract syntactical terms, the rule engine evaluates a set of `IF-THEN` statements on incoming data:
+In abstract syntax notation, the rule engine evaluates a set of `IF-THEN` statements on incoming data:
 
 ```javascript
     IF expression == true THEN action
@@ -150,8 +150,7 @@ The Rule Engine supports two types of windows:
 Count based windows analyze the last N sample regardless
 of when they occurred. The count window holds up to N samples, to which
 aggregate function such as `avg()` or `max()` can be applied as part of an expression. When the
-COUNT-based window becomes full, the oldest data sample is removed to
-free up space for an incoming sample.
+COUNT-based window becomes full, the oldest data sample is replaced with an incoming sample.
 
 ![Count Based Window](images/count_based_window3.png "count_based_window")
 
