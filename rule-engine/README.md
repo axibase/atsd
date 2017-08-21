@@ -7,14 +7,13 @@ The Rule Engine enables automation of repetitive tasks based on the analysis of 
 email](email-action.md),
 or raising a ticket in the centralized incident management system.
 
-In abstract syntax notation, the rule engine evaluates a set of `IF-THEN` statements on incoming data:
+The rule engine evaluates a set of `IF-THEN` expressions on incoming data:
 
 ```javascript
-    IF expression == true THEN action
+    IF condition == true THEN action
 ```
 
-If the expression specified in the rule evaluates to `true`, one or
-multiple automation procedures are triggered, for instance:
+If the condition specified in the rule evaluates to `true`, one or multiple automation procedures are triggered, for instance:
 
 ```javascript
     IF avg() > 75 THEN create_ticket
