@@ -175,9 +175,19 @@ JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$
 
 ## Deploy ATSD Coprocessors
 
-### Copy Comprocessors into HBase
+### Put Coprocessors into HDFS
 
-Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../lib/` directory on each HBase Region Server.
+Login into NameNode Server as 'hbase' user.
+
+Put `/opt/atsd/hbase/lib/atsd-hbase.17108.jar` to the HDFS `hbase.dynamic.jars.dir`. 
+It is set to `${hbase.rootdir}/lib` by default in HBase.
+
+```
+hadoop fs -ls /hbase/lib/       #   check existence
+hadoop fs -mkdir /hbase/lib/    #   if not exists
+curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17108.jar
+hadoop fs -put atsd-hbase.17108.jar /hbase/lib/
+```
 
 ### Remove Coprocessor Definitions
 
@@ -201,6 +211,12 @@ Switch to the 'axibase' user.
 
 ```sh
 su axibase
+```
+
+Set in `/opt/atsd/atsd/conf/server.properties` file current path to coprocessors `/hbase/lib/atsd-hbase.17108.jar`:
+
+```properties
+coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.17108.jar
 ```
 
 Start ATSD.
