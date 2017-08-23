@@ -253,8 +253,8 @@ su axibase
 
 Set in `/opt/atsd/atsd/conf/server.properties` file current path to coprocessors `/hbase/lib/atsd-hbase.jar`:
 
-```properties
-coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar
+```bash
+echo "coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar" >> /opt/atsd/atsd/conf/server.properties
 ```
 
 Start ATSD.
