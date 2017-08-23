@@ -106,17 +106,23 @@ Run the job on the YARN ResourseManager server.
 Run the `TableCloner` task to rename `atsd_d` table into `atsd_d_backup` table.
 
 ```sh
-java com.axibase.migration.admin.TableCloner --table_name=atsd_d
+java com.axibase.migration.admin.TableCloner --table_name=atsd_d --prefix=atsd_ --suffix=_backup
 ```
 
 ### Migrate Records
+
+Switch to the 'yarn' user.
+
+```sh
+sudo su yarn
+```
 
 Start the Map-Reduce job.
 The job can take some time to complete. 
 Launch it with the `nohup` command and save the output to a file to serve as a log.
 
 ```sh
-nohup yarn com.axibase.migration.mapreduce.DataMigrator -r &> /tmp/migration/migration.log &
+nohup yarn com.axibase.migration.mapreduce.DataMigrator --rewrite --source=atsd_d_backup --d=destination=atsd_d &> /tmp/migration.log &
 ```
 
 The job will create an empty `atsd_d` table, convert data from the old `atsd_d_backup` table to the new format, and store converted data in the `atsd_d` table.
@@ -153,12 +159,11 @@ Upgrade jar files and startup scripts.
 
 ```sh
 rm -f /opt/atsd/atsd/bin/*
-curl -o /opt/atsd/atsd/bin/atsd.17039.jar https://axibase.com/public/atsd-125-migration/atsd.17039.jar
+curl -o /opt/atsd/atsd/bin/atsd.17137.jar https://axibase.com/public/atsd-125-migration/atsd.17137.jar
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/  atsd
 rm /opt/atsd/scripts.tar.gz
 rm -f /opt/atsd/hbase/lib/*
-curl -o /opt/atsd/hbase/lib/atsd-hbase.17039.jar https://axibase.com/public/atsd-125-migration/atsd-hbase.17039.jar
 ```
 
 Set `JAVA_HOME` in the `start-atsd.sh` file:
@@ -177,9 +182,15 @@ JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$
 
 ### Put Coprocessors into HDFS
 
-Login into NameNode Server as 'hbase' user.
+Login into NameNode Server.
+ 
+Switch to the 'hbase' user.
 
-Put `/opt/atsd/hbase/lib/atsd-hbase.17137.jar` to the HDFS `hbase.dynamic.jars.dir`. 
+```sh
+sudo su hbase
+```
+
+Put `atsd-hbase.17137.jar` to the HDFS `hbase.dynamic.jars.dir`. 
 It is set to `${hbase.rootdir}/lib` by default in HBase.
 
 ```
