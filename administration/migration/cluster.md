@@ -215,8 +215,8 @@ hadoop fs -put -f atsd-hbase.17140.jar /hbase/lib/atsd-hbase.jar
 
 ATSD coprocessors that were added to HBase CoprocessorRegion Classes are now loaded automatically and therefore must be removed from 
 
-    1. HBase settings 
-    2. Each Region Servers  
+   1. HBase settings 
+   2. Each Region Server  
 
 #### Remove Coprocessor from HBase settings
 
