@@ -123,7 +123,7 @@ Run the job on the YARN ResourseManager server.
 Run the `TableCloner` task to rename `atsd_d` table into `atsd_d_backup` table.
 
 ```sh
-java com.axibase.migration.admin.TableCloner --table_name=atsd_d --prefix=atsd_ --suffix=_backup
+java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
 
 ### Migrate Records
@@ -133,7 +133,7 @@ The job can take some time to complete.
 Launch it with the `nohup` command and save the output to a file to serve as a log.
 
 ```sh
-nohup yarn com.axibase.migration.mapreduce.DataMigrator -f --rewrite --source=atsd_d_backup --d=destination=atsd_d &> /tmp/migration/migration.log &
+nohup yarn com.axibase.migration.mapreduce.DataMigrator --force --rewrite --source=atsd_d_backup --destination=atsd_d &> /tmp/migration/migration.log &
 ```
 
 The job will create an empty `atsd_d` table, convert data from the old `atsd_d_backup` table to the new format, and store converted data in the `atsd_d` table.
