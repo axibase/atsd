@@ -2,9 +2,16 @@
 
 ## Overview
 
-In order to offload detailed data from IBM Trivoli Monitoing (ITM) infrastructure with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to dump incoming analytical data into CSV files on the local file system. The dump directory will be continously monitored by an `inotify` script, which will upload new CSV files into ATSD as soon as they are created.
+There are two options of integrating ATSD with IBM Tivoli Monitoring (ITM):
 
-This feature enables ATSD to act as a long-term repository of historical data which is typically deleted after a few months by ITM in order to minimize disk space usage in the Tivoli Data Warehouse.
+* Run a scheduled JDBC job in Axibase Collector to copy incremental data from detailed tables in Tivoli Data Warehouse into ATSD
+* Configure ITM Warehouse Proxy Agent (WPA) to store analytical data in CSV files.
+
+This document describes the second option which provides minimal latency at the expense of introducing additional overhead on the WPA server.
+
+In order to offload detailed data from ITM-managed system with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to write incoming analytical data from ITM agents into CSV files on the local file system. The CSV directory will be continously monitored by an `inotify` script, which will upload new CSV files into ATSD as soon as they are created.
+
+This integration enables ATSD to act as a long-term repository for historical data including attrobute groups with aggressive pruning settings such as Process tables that are typically configured for pruning with a retention interval of 3-7 days.
 
 Because statistics from ITM agents will be received by ATSD without any delay, the integration can be used for real-time analytics and peformance dashboards.
 
