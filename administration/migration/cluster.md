@@ -186,7 +186,7 @@ It is set to `${hbase.rootdir}/lib` by default in HBase.
 hadoop fs -ls /hbase/lib/       #   check existence
 hadoop fs -mkdir /hbase/lib/    #   if not exists
 curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17137.jar
-hadoop fs -put atsd-hbase.17137.jar /hbase/lib/atsd-hbase.jar
+hadoop fs -put -f atsd-hbase.17137.jar /hbase/lib/atsd-hbase.jar
 ```
 
 ### Remove Coprocessor Definitions
