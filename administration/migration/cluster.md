@@ -133,7 +133,7 @@ The job can take some time to complete.
 Launch it with the `nohup` command and save the output to a file to serve as a log.
 
 ```sh
-nohup yarn com.axibase.migration.mapreduce.DataMigrator --force --source=atsd_d_backup --destination=atsd_d &> /tmp/migration/migration.log &
+nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced --source=atsd_d_backup --destination=atsd_d &> /tmp/migration/migration.log &
 ```
 
 The job will create an empty `atsd_d` table, convert data from the old `atsd_d_backup` table to the new format, and store converted data in the `atsd_d` table.
@@ -174,7 +174,8 @@ curl -o /opt/atsd/atsd/bin/atsd.17140.jar https://axibase.com/public/atsd-125-mi
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/  atsd
 rm /opt/atsd/scripts.tar.gz
-rm -f /opt/atsd/hbase/lib/*
+rm -rf /opt/atsd/hbase
+rm -rf /opt/atsd/collectors
 ```
 
 Set `JAVA_HOME` in the `start-atsd.sh` file:
@@ -238,7 +239,7 @@ In order to locate ATSD coprocessors jar file execute on each Region Server:
 sudo find /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/ -name "atsd*.jar"
 ```
 
-Remove found files.
+Remove found files and restart HBase.
 
 ## Start ATSD
 
