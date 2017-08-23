@@ -179,14 +179,14 @@ JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$
 
 Login into NameNode Server as 'hbase' user.
 
-Put `/opt/atsd/hbase/lib/atsd-hbase.17108.jar` to the HDFS `hbase.dynamic.jars.dir`. 
+Put `/opt/atsd/hbase/lib/atsd-hbase.17137.jar` to the HDFS `hbase.dynamic.jars.dir`. 
 It is set to `${hbase.rootdir}/lib` by default in HBase.
 
 ```
 hadoop fs -ls /hbase/lib/       #   check existence
 hadoop fs -mkdir /hbase/lib/    #   if not exists
-curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17108.jar
-hadoop fs -put atsd-hbase.17108.jar /hbase/lib/
+curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17137.jar
+hadoop fs -put atsd-hbase.17137.jar /hbase/lib/atsd-hbase.jar
 ```
 
 ### Remove Coprocessor Definitions
@@ -213,10 +213,10 @@ Switch to the 'axibase' user.
 su axibase
 ```
 
-Set in `/opt/atsd/atsd/conf/server.properties` file current path to coprocessors `/hbase/lib/atsd-hbase.17108.jar`:
+Set in `/opt/atsd/atsd/conf/server.properties` file current path to coprocessors `/hbase/lib/atsd-hbase.jar`:
 
 ```properties
-coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.17108.jar
+coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar
 ```
 
 Start ATSD.
