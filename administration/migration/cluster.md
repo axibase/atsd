@@ -17,7 +17,7 @@ The migration procedure requires 30% of the currently used disk space in ATSD ta
 
 Make sure that enough disk space is available in HDFS. To review HDFS usage login into Cloudera Manager and open 
 
-**Clusters > Cluster > HDFS-2 > Status**.
+**Clusters > Cluster > HDFS > Status**.
 
 ![](./images/hdfs-status.png)
 
@@ -65,6 +65,33 @@ Backup ATSD tables in HBase prior to migration by copying `/hbase` directory in 
 
 Log in to the server where YARN ResourceManager is running.
 
+Switch to the 'yarn' user.
+
+```bash
+sudo su yarn
+```
+
+### Initiate a Kerberos session.
+
+Locate the `yarn.keytab` file.
+
+```bash
+find / -name "yarn.keytab" | xargs ls -la
+-rw------- 1 yarn        hadoop        448 Jul 29 16:44 /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab
+```
+
+Obtain the fully qualified hostname of the YARN ResourceManager server.
+
+```bash
+hostname -f
+```
+
+Authenticate with Kerberos using the `yarn.keytab` file and YARN ResourceManager full hostname.
+
+```bash
+kinit -k -t /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab yarn/{yarn_rm_full_hostname}
+```
+
 Download the `migration.jar` file to the temporary `/tmp/migration/` directory.
 
 ```sh
@@ -91,12 +118,6 @@ Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axi
 
 Copy the `/opt/atsd/atsd/conf/axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal from the ATSD server to the `/tmp/migration/` directory on the YARN ResourceManager server.
 
-Initiate a Kerberos session.
-
-```sh
-kinit -k -t /tmp/migration/axibase.keytab axibase
-```
-
 ## Run Migration Map-Reduce Job
 
 Run the job on the YARN ResourseManager server.
@@ -111,18 +132,12 @@ java com.axibase.migration.admin.TableCloner --table_name=atsd_d --prefix=atsd_ 
 
 ### Migrate Records
 
-Switch to the 'yarn' user.
-
-```sh
-sudo su yarn
-```
-
 Start the Map-Reduce job.
 The job can take some time to complete. 
 Launch it with the `nohup` command and save the output to a file to serve as a log.
 
 ```sh
-nohup yarn com.axibase.migration.mapreduce.DataMigrator --rewrite --source=atsd_d_backup --d=destination=atsd_d &> /tmp/migration.log &
+nohup yarn com.axibase.migration.mapreduce.DataMigrator -f --rewrite --source=atsd_d_backup --d=destination=atsd_d &> /tmp/migration/migration.log &
 ```
 
 The job will create an empty `atsd_d` table, convert data from the old `atsd_d_backup` table to the new format, and store converted data in the `atsd_d` table.
@@ -159,7 +174,7 @@ Upgrade jar files and startup scripts.
 
 ```sh
 rm -f /opt/atsd/atsd/bin/*
-curl -o /opt/atsd/atsd/bin/atsd.17137.jar https://axibase.com/public/atsd-125-migration/atsd.17137.jar
+curl -o /opt/atsd/atsd/bin/atsd.17140.jar https://axibase.com/public/atsd-125-migration/atsd.17140.jar
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/  atsd
 rm /opt/atsd/scripts.tar.gz
@@ -190,19 +205,24 @@ Switch to the 'hbase' user.
 sudo su hbase
 ```
 
-Put `atsd-hbase.17137.jar` to the HDFS `hbase.dynamic.jars.dir`. 
+Put `atsd-hbase.17140.jar` to the HDFS `hbase.dynamic.jars.dir`. 
 It is set to `${hbase.rootdir}/lib` by default in HBase.
 
 ```
 hadoop fs -ls /hbase/lib/       #   check existence
 hadoop fs -mkdir /hbase/lib/    #   if not exists
-curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17137.jar
-hadoop fs -put -f atsd-hbase.17137.jar /hbase/lib/atsd-hbase.jar
+curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17140.jar
+hadoop fs -put -f atsd-hbase.17140.jar /hbase/lib/atsd-hbase.jar
 ```
 
 ### Remove Coprocessor Definitions
 
-ATSD coprocessors that were added to HBase CoprocessorRegion Classes are now loaded automatically and therefore must be removed from the HBase settings. 
+ATSD coprocessors that were added to HBase CoprocessorRegion Classes are now loaded automatically and therefore must be removed from 
+
+    1. HBase settings 
+    2. Each Region Servers  
+
+#### Remove Coprocessor from HBase settings
 
 Open Cloudera Manager.
 
@@ -213,6 +233,14 @@ Search for the `hbase.coprocessor.region.classes` setting.
 Remove all ATSD coprocessors and save settings:
 
 ![](./images/atsd-coprocessors.png)
+
+#### Remove Coprocessor from Each Region Server
+
+In order to locate ATSD coprocessors jar file execute on each Region Server:
+
+```bash
+sudo find /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/ -name "atsd*.jar"
+```
 
 ## Start ATSD
 
