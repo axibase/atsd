@@ -2,18 +2,18 @@
 
 ## Overview
 
-There are two options of integrating ATSD with IBM Tivoli Monitoring (ITM):
+There are two options to integrate ATSD with IBM Tivoli Monitoring (ITM):
 
-* Run a scheduled JDBC job in Axibase Collector to copy incremental data from detailed tables in Tivoli Data Warehouse into ATSD
+* Run a scheduled JDBC job with Axibase Collector to copy incremental data from detailed tables in Tivoli Data Warehouse to ATSD.
 * Configure ITM Warehouse Proxy Agent (WPA) to store analytical data in CSV files.
 
-This document describes the second option which provides minimal latency at the expense of introducing additional overhead on the WPA server.
+This document describes the second option, which provides minimal latency at the expense of introducing additional overhead on the WPA server.
 
-In order to offload detailed data from ITM-managed system with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to write incoming analytical data from ITM agents into CSV files on the local file system. The CSV directory will be continously monitored by an `inotify` script, which will upload new CSV files into ATSD as soon as they are created.
+In order to offload detailed data from an ITM-managed system with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to write incoming analytical data from ITM agents into CSV files on the local file system. The CSV directory is continously monitored by an `inotify` script, which uploads new CSV files into ATSD the moment they are created.
 
-This integration enables ATSD to act as a long-term repository for historical data including attrobute groups with aggressive pruning settings such as Process tables that are typically configured for pruning with a retention interval of 3-7 days.
+This integration enables ATSD to act as a long-term repository for historical data such as attribute groups with aggressive pruning settings like process tables, which are typically configured to only retain old data for an interval of 3 to 7 days.
 
-Because statistics from ITM agents will be received by ATSD without any delay, the integration can be used for real-time analytics and peformance dashboards.
+Because statistics from ITM agents are received by ATSD with no delay, this type of integration can be used for real-time analytics and peformance dashboards with no display latency.
 
 ![](images/itm_diag.png "Warehouse Proxy Agent diagram")
 
