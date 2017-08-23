@@ -50,7 +50,7 @@ Stop ATSD.
 Take note of the **table prefix** specified in the `/opt/atsd/atsd/conf/server.properties` file. 
 
 ```sh
-cat /opt/atsd/atsd/conf/server.properties | grep "hbase.table.prefix"
+cat /opt/atsd/atsd/conf/server.properties | grep "hbase.table.prefix" | cut -f 2 -d "="
 ```
 
 The prefix will be required in subsequent steps.
@@ -71,6 +71,13 @@ The prefix will be required in subsequent steps.
 
 Login into the server where YARN ResourceManager is running.
 
+Locate the `yarn.keytab` file.
+
+```bash
+sudo find / -name "yarn.keytab" | xargs ls -la | tail -n 1
+-rw------- 1 yarn        hadoop        448 Jul 29 16:44 /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab
+```
+
 Switch to the 'yarn' user.
 
 ```bash
@@ -79,20 +86,13 @@ sudo su yarn
 
 ### Initiate a Kerberos session.
 
-Locate the `yarn.keytab` file.
-
-```bash
-find / -name "yarn.keytab" | xargs ls -la
--rw------- 1 yarn        hadoop        448 Jul 29 16:44 /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab
-```
-
 Obtain the fully qualified hostname of the YARN ResourceManager server.
 
 ```bash
 hostname -f
 ```
 
-Authenticate with Kerberos using the `yarn.keytab` file and the full hostname of the YARN ResourceManager.
+Authenticate with Kerberos using the located `yarn.keytab` file and the full hostname of the YARN ResourceManager.
 
 ```bash
 kinit -k -t /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab yarn/{yarn_rm_full_hostname}
@@ -194,7 +194,7 @@ curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17140.jar
 hadoop fs -put -f atsd-hbase.17140.jar /hbase/lib/atsd-hbase.jar
 hadoop fs -ls /hbase/lib
     Found 1 items
-    -rw-r--r--   3 hbase hbase     547320 2017-08-23 13:03 /hbase/lib/atsd-hbase.jar
+    -rw-r--r--   3 hdfs hbase     547320 2017-08-23 13:03 /hbase/lib/atsd-hbase.jar
 ```
 
 Note that this path should match the `coprocessors.jar` setting specified in the `/opt/atsd/atsd/conf/server.properties` file in ATSD server as outlined below.
