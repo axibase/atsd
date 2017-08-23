@@ -166,6 +166,13 @@ Remove deprecated settings.
 sed -i '/^hbase.regionserver.lease.period/d' /opt/atsd/atsd/conf/hadoop.properties
 ```
 
+Set current HDFS path to coprocessors `/hbase/lib/atsd-hbase.jar` in `/opt/atsd/atsd/conf/server.properties` file.
+
+```bash
+echo "coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar" >> /opt/atsd/atsd/conf/server.properties
+```
+
+
 Upgrade jar files and startup scripts.
 
 ```sh
@@ -210,6 +217,9 @@ hadoop fs -ls /hbase/lib/       #   check existence
 hadoop fs -mkdir /hbase/lib/    #   if not exists
 curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17140.jar
 hadoop fs -put -f atsd-hbase.17140.jar /hbase/lib/atsd-hbase.jar
+hadoop fs -ls /hbase/lib
+    Found 1 items
+    -rw-r--r--   3 hbase hbase     547320 2017-08-23 13:03 /hbase/lib/atsd-hbase.jar
 ```
 
 ### Remove Coprocessor Definitions
@@ -249,12 +259,6 @@ Switch to the 'axibase' user.
 
 ```sh
 su axibase
-```
-
-Set in `/opt/atsd/atsd/conf/server.properties` file current path to coprocessors `/hbase/lib/atsd-hbase.jar`:
-
-```bash
-echo "coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar" >> /opt/atsd/atsd/conf/server.properties
 ```
 
 Start ATSD.
