@@ -114,10 +114,6 @@ export HADOOP_CLASSPATH=/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/h
 
 Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axibase support based on the [Data Reporter](reporter.md) logs.
 
-### Initiate Kerberos Session
-
-Copy the `/opt/atsd/atsd/conf/axibase.keytab` file [generated](../../installation/cloudera.md#generate-keytab-file-for-axibase-principal) for the `axibase` principal from the ATSD server to the `/tmp/migration/` directory on the YARN ResourceManager server.
-
 ## Run Migration Map-Reduce Job
 
 Run the job on the YARN ResourseManager server.
@@ -241,6 +237,8 @@ In order to locate ATSD coprocessors jar file execute on each Region Server:
 ```bash
 sudo find /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/ -name "atsd*.jar"
 ```
+
+Remove found files.
 
 ## Start ATSD
 
