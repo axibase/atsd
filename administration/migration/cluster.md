@@ -19,7 +19,7 @@ The migration procedure requires up to 30% of the current `atsd_d` table size to
 
 Open **Clusters > Cluster > HDFS > Status** page in Clouder Manager.
 
-Make sure that enough configured capacity is available in HDFS.
+Be sure that enough configured capacity is available in HDFS.
 
 ![](./images/hdfs-status.png)
 
@@ -29,7 +29,7 @@ The migration task is implemented as a Map-Reduce job and requires at least 4 GB
 
 ## Check Record Count for Testing
 
-Login into ATSD and open the **SQL** tab.
+Log in to ATSD and open the **SQL** tab.
 
 Execute the following query to count rows for one of the key metrics.
 
@@ -53,7 +53,7 @@ Take note of the **table prefix** specified in the `/opt/atsd/atsd/conf/server.p
 cat /opt/atsd/atsd/conf/server.properties | grep "hbase.table.prefix" | cut -f 2 -d "="
 ```
 
-The prefix will be required in subsequent steps.
+This prefix will be required in subsequent steps.
 
 ## Install Java 8
 
@@ -69,7 +69,7 @@ The prefix will be required in subsequent steps.
 
 ## Configure Migration Map-Reduce Job
 
-Login into the server where YARN ResourceManager is running.
+Log in to the server where YARN ResourceManager is running.
 
 Locate the `yarn.keytab` file.
 
@@ -105,7 +105,7 @@ mkdir /tmp/migration
 curl -o /tmp/migration/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.0-cdh5.10.0.jar
 ```
 
-Check that current Java version is 8.
+Check that the current Java version is 8.
 
 ```sh
 java -version
@@ -126,7 +126,7 @@ Execute the below steps under the 'yarn' user on the YARN ResourceManager server
 
 ### Backup `atsd_d` Table
 
-Run the `TableCloner` task to rename `atsd_d` table into `atsd_d_backup` table.
+Run the `TableCloner` task to rename `atsd_d` table as `atsd_d_backup`.
 
 ```sh
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
@@ -182,7 +182,7 @@ Once the job is complete, the `migration.log` file should contain the following 
 
 ### Copy New Coprocessors into HDFS
 
-Login into HDFS NameNode server or another server with the DFS client.
+Log in to HDFS NameNode server or another server with the DFS client.
  
 Switch to the 'hdfs' user.
 
@@ -203,11 +203,11 @@ hadoop fs -ls /hbase/lib
     -rw-r--r--   3 hdfs hbase     547320 2017-08-23 13:03 /hbase/lib/atsd-hbase.jar
 ```
 
-Note that this path should match the `coprocessors.jar` setting specified in the `/opt/atsd/atsd/conf/server.properties` file in ATSD server as outlined below.
+Note that this path should match the `coprocessors.jar` setting specified in the `/opt/atsd/atsd/conf/server.properties` file in the ATSD server as outlined below.
 
 ### Remove Old Coprocessors
 
-ATSD coprocessors that were added to HBase CoprocessorRegion Classes are now loaded automatically and therefore must be removed from HBase settings in Cloudera Manager. 
+ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager. 
 
 The old jar files should be removed from the local file system on each HBase Region Server.
 
@@ -231,13 +231,13 @@ Find ATSD coprocessors jar files on each Region Server:
 sudo find /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/ -name "atsd*.jar"
 ```
 
-Remove the found files.
+Remove files found by the above search.
 
 Restart HBase.
 
 ## Configure ATSD
 
-Login into ATSD Server.
+Log in to the ATSD Server.
 
 Switch to the 'axibase' user.
 
@@ -251,13 +251,13 @@ Remove deprecated settings.
 sed -i '/^hbase.regionserver.lease.period/d' /opt/atsd/atsd/conf/hadoop.properties
 ```
 
-Add path to coprocessor jar file.
+Add path to co-processor jar file.
 
 ```bash
 echo "coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar" >> /opt/atsd/atsd/conf/server.properties
 ```
 
-Upgrade jar files and startup scripts.
+Upgrade jar files and start-up scripts.
 
 ```sh
 rm -f /opt/atsd/atsd/bin/*
@@ -295,7 +295,7 @@ Review the start log for any errors:
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
-You should see a **ATSD start completed** message at the end of the `start.log`.
+You should see the **ATSD start completed** message at the end of the `start.log`.
 
 ## Check Migration Results
 
@@ -311,9 +311,9 @@ The number of records should match the results prior to migration.
 
 ## Delete Backup Table
 
-Login into HBase shell.
+Log in to  HBase shell.
 
-Drop `atsd_d_backup` table. Adjust the table name if a custom prefix is specified in the `server.properties` file.
+Delete `atsd_d_backup` table. Adjust the table name if a custom prefix is specified in the `server.properties` file.
 
 ```sh
 /usr/lib/hbase/bin/hbase shell
