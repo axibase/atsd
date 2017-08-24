@@ -222,7 +222,7 @@ Upgrade Hadoop.
 Review the log file.
 
 ```sh
-tail /opt/atsd/hadoop/logs/hadoop-axibase-namenode-*.log
+tail /opt/atsd/hadoop/logs/hadoop-*-namenode-*.log
 ```
 
 The expected output:
