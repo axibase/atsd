@@ -102,7 +102,7 @@ Download the `migration.jar` file to the temporary `/tmp/migration/` directory.
 
 ```sh
 mkdir /tmp/migration 
-curl -o /tmp/migration/migration.jar https://axibase.com/public/atsd-125-migration/migration.jar
+curl -o /tmp/migration/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.0-cdh5.10.0.jar
 ```
 
 Check that current Java version is 8.

@@ -421,7 +421,7 @@ Run the `jps` command to check that the following processes are running:
 Download the `migration.jar` file to the `/opt/atsd` directory.
 
 ```sh
-curl -o /opt/atsd/migration.jar https://axibase.com/public/atsd-125-migration/migration.jar
+curl -o /opt/atsd/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.5.jar
 ```
 
 Check that current Java version is 8.
