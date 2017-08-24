@@ -1279,7 +1279,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 | **Name** | **Description**|
 |:---|:---|
-| `null` | [**Default**] The database time zone is used tp split the selection interval into perios greater than 1 day. |
+| `null` | [**Default**] The database time zone is used to split the selection interval into periods greater than 1 day. |
 | `timezone id` | The literal string with the time zone [identifier](../../api/network/timezone-list.md). |
 | `entity.timeZone` or<br>`metric.timeZone` | The time zone of the entity or metric. |
 
