@@ -578,7 +578,7 @@ rm -rf /opt/atsd/atsd/bin/atsd*.jar
 Download ATSD application files.
 
 ```sh
-curl -o /opt/atsd/atsd/bin/atsd.17140.jar https://axibase.com/public/atsd-125-migration/atsd.17140.jar
+curl -o /opt/atsd/atsd/bin/atsd.17178.jar https://axibase.com/public/atsd-125-migration/atsd.17178.jar
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 ```
 

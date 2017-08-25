@@ -190,14 +190,14 @@ Switch to the 'hdfs' user.
 sudo su hdfs
 ```
 
-Copy `atsd-hbase.17140.jar` to the HDFS `hbase.dynamic.jars.dir` directory.
+Copy `atsd-hbase.17178.jar` to the HDFS `hbase.dynamic.jars.dir` directory.
 The path to this directory is set to `${hbase.rootdir}/lib` by default in HBase.
 
 ```
 hadoop fs -ls /hbase/lib/       #   check existence
 hadoop fs -mkdir /hbase/lib/    #   if not exists
-curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17140.jar
-hadoop fs -put -f atsd-hbase.17140.jar /hbase/lib/atsd-hbase.jar
+curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17178.jar
+hadoop fs -put -f atsd-hbase.17178.jar /hbase/lib/atsd-hbase.jar
 hadoop fs -ls /hbase/lib
     Found 1 items
     -rw-r--r--   3 hdfs hbase     547320 2017-08-23 13:03 /hbase/lib/atsd-hbase.jar
@@ -261,7 +261,7 @@ Upgrade jar files and start-up scripts.
 
 ```sh
 rm -f /opt/atsd/atsd/bin/*
-curl -o /opt/atsd/atsd/bin/atsd.17140.jar https://axibase.com/public/atsd-125-migration/atsd.17140.jar
+curl -o /opt/atsd/atsd/bin/atsd.17178.jar https://axibase.com/public/atsd-125-migration/atsd.17178.jar
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/  atsd
 rm /opt/atsd/scripts.tar.gz
