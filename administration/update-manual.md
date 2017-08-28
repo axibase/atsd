@@ -10,11 +10,13 @@ su axibase
 
 Select an archive to download based on **HBase Version** displayed on the **Admin: System Information** page.
 
-* [hbase 0.94.x](http://axibase.com/public/atsd_ce_update_latest.htm)
+* [hbase 0.94.x](https://axibase.com/public/atsd_ce_update_latest.htm)
 
 * [hbase 1.0.3](https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz)
 
 * [hbase 1.2.2](https://www.axibase.com/public/atsd_ee_hbase_1.2.2.tar.gz)
+
+* [hbase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
 
 The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd_15500.tar.gz`.
 

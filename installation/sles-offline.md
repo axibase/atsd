@@ -64,13 +64,13 @@ sudo zypper -n install sles_dependencies/*.rpm
 
 Download the ATSD rpm package to the target machine:
 
-* `curl -O https://axibase.com/public/atsd_ce_amd64.rpm`
-* [https://axibase.com/public/atsd_ce_rpm_latest.htm](https://axibase.com/public/atsd_ce_rpm_latest.htm)
+* `curl -O https://axibase.com/public/atsd_amd64.rpm`
+* [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm)
 
 Follow the prompts to install ATSD:
 
 ```sh
- sudo zypper -n install atsd_ce_amd64.rpm
+ sudo zypper -n install atsd_amd64.rpm
 ```
 
 It may take up to 5 minutes to initialize the database.

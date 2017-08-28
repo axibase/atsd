@@ -29,8 +29,8 @@ To customize the installation directory, specify `--prefix` option as described 
 
 Download the ATSD rpm package to an intermediate machine with Internet access:
 
-* `curl -O https://www.axibase.com/public/atsd_ce_amd64.rpm`
-* [https://axibase.com/public/atsd_ce_rpm_latest.htm](https://axibase.com/public/atsd_ce_rpm_latest.htm)
+* `curl -O https://www.axibase.com/public/atsd_amd64.rpm`
+* [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm)
 
 Download the ATSD dependencies to an intermediate machine with connected repositories:
 
@@ -55,7 +55,7 @@ sudo yum install -y ./folder_with_dependencies/*
 Follow the prompts to install ATSD:
 
 ```sh
-sudo yum install -y atsd_ce_amd64.rpm
+sudo yum install -y atsd_amd64.rpm
 ```
 
 It may take up to 5 minutes to initialize the database.
@@ -65,7 +65,7 @@ It may take up to 5 minutes to initialize the database.
 To install ATSD in a custom directory, specify `--prefix` parameter:
 
 ```sh
-sudo rpm -Uvh --prefix=/mnt/atsd atsd_ce_amd64.rpm
+sudo rpm -Uvh --prefix=/mnt/atsd atsd_amd64.rpm
 ```
 
 > ATSD cannot be installed in a `/home/user` directory other than `/home/axibase` due to permission issues.

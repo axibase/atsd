@@ -29,15 +29,15 @@ dependencies, use the [offline installation option](redhat-centos-offline.md).
 
 Download the rpm package to the target server:
 
-* `curl -O https://www.axibase.com/public/atsd_ce_amd64.rpm`
-* [https://axibase.com/public/atsd_ce_rpm_latest.htm](https://axibase.com/public/atsd_ce_rpm_latest.htm)
+* `curl -O https://www.axibase.com/public/atsd_amd64.rpm`
+* [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm)
 
 ## Installation Steps
 
 Install ATSD with dependencies:
 
 ```sh
-sudo yum install -y atsd_ce_amd64.rpm
+sudo yum install -y atsd_amd64.rpm
 ```
 
 It may take up to 5 minutes to initialize the database.
@@ -53,7 +53,7 @@ sudo yum install java-1.7.0-openjdk-devel sysstat which curl net-tools iproute
 Install ATSD in a custom directory by specifying `--prefix` parameter:
 
 ```sh
-sudo rpm -Uvh --prefix=/mnt/atsd atsd_ce_amd64.rpm
+sudo rpm -Uvh --prefix=/mnt/atsd atsd_amd64.rpm
 ```
 
 > ATSD cannot be installed in a `/home/user` directory other than `/home/axibase` due to permission issues.
