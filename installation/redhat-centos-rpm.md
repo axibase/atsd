@@ -44,7 +44,7 @@ It may take up to 5 minutes to initialize the database.
 Install ATSD dependencies:
 
 ```sh
-sudo yum install java-1.8.0-openjdk-devel sysstat which curl net-tools iproute
+sudo yum install java-1.8.0-openjdk-devel which curl net-tools iproute
 ```
 
 Install ATSD in a custom directory by specifying `--prefix` parameter:

@@ -19,7 +19,7 @@ and copying them to the target machine with similar characteristics for offline 
 ### Option 1: Install Dependencies from Local Repositories.
 
 ```sh
-sudo zypper -n install java-1_8_0-openjdk-devel sysstat which net-tools iproute
+sudo zypper -n install java-1_8_0-openjdk-devel which net-tools iproute
 ```
 
 ### Option 2: Copy Dependencies from a Connected Machine.
@@ -63,7 +63,7 @@ sudo zypper -n install sles_dependencies/*.rpm
 
 Download the ATSD rpm package to the target machine:
 
-* `curl -O https://axibase.com/public/atsd_amd64.rpm`
+* `curl -O https://axibase.com/public/atsd_amd64_sles.rpm`
 * [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm)
 
 Follow the prompts to install ATSD:
