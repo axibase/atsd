@@ -14,7 +14,7 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 |API_DATA_READ | Query Data API to read series, properties, messages, and alerts from the database.|
 |API_DATA_WRITE | Submit Data API requests to insert series, properties, and messages into the database.|
 |API_META_READ | Query Meta Data API to read metric, entity, and entity group settings.|
-|API_META_WRITE | Submit Meta Data API requests to change metric and entity settings. <br>Requests to change entity groups or add/remove their members require an `ENTITY_GROUP_ADMIN` role.|
+|API_META_WRITE | Submit Meta Data API requests to change metric and entity settings. <br>Requests to change entity groups or add/remove members require an `ENTITY_GROUP_ADMIN` role.|
 
 ### User Interface Roles
 
@@ -51,11 +51,11 @@ User Groups to which they belong.
 
 Since non-existent entities cannot be assigned to a group, the `All Entities: Write` permission is required to create
 entities either in the user interface or by inserting data via API. User with a `API_DATA_WRITE` role but without the
-`All Entities: Write` permission will be able to insert data only for existing entities.
+`All Entities: Write` permission are able to insert data only for existing entities.
 
 ### Wildcard Requests
 
-Users without the `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. In both cases, the results will be filtered based on users effective permissions, therefore different users may see different results for the same API request or SQL query depending on their entity permissions.
+Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results will be filtered based on the user's effective permissions, therefore different users may see different results for the same API request or SQL query depending on their entity permissions.
 
 ## Entity View Permissions
 
@@ -71,10 +71,8 @@ The permissions are enforced both for template and regular portals.
 
 ### All Portals Permission
 
-The user group can be granted an 'All Portal' permission in which case its members are authorized to view all portals enabled in the system.
-The permission to view all portals is automatically granted to users with `ADMIN` role.
-
-
+A user group can be granted an 'All Portal' permission whereby its members are authorized to view all portals enabled in the system.
+The permission to view all portals is automatically granted to users with an `ADMIN` role.
 
 ## Implementation Notes
 
