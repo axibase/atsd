@@ -41,7 +41,7 @@ nano dep-download.sh
 #!/bin/sh
 SCRIPT=$(readlink -f $0)
 DIR=$(dirname $SCRIPT)
-list="java-1_8_0-openjdk-devel sysstat which net-tools iproute"
+list="java-1_8_0-openjdk-devel which net-tools iproute"
 zypper -n install -df $list
 for package in $list; do
     find /var/cache/zypp/packages -name $package*.rpm -exec cp {} $DIR \;
@@ -64,12 +64,12 @@ sudo zypper -n install sles_dependencies/*.rpm
 Download the ATSD rpm package to the target machine:
 
 * `curl -O https://axibase.com/public/atsd_amd64_sles.rpm`
-* [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm)
+* [https://axibase.com/public/atsd_rpm_sles_latest.htm](https://axibase.com/public/atsd_rpm_sles_latest.htm)
 
 Follow the prompts to install ATSD:
 
 ```sh
- sudo zypper -n install atsd_amd64.rpm
+ sudo zypper -n install atsd_amd64_sles.rpm
 ```
 
 It may take up to 5 minutes to initialize the database.
