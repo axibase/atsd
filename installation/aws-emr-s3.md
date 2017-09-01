@@ -4,15 +4,15 @@
 
 Axibase Time Series Database can be deployed on HBase using [AWS S3](http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
 
-This installation option simplifies backup and recovery as well as allows right-sizing the HBase cluster based on CPU and memory demands as opposed to storage requirements.
+This installation option simplifies backup and recovery in addition to right-sizing the HBase cluster based on CPU and memory demands, as opposed to storage requirements.
 
 ## Mini-cluster
 
-The smallest cluster size for testing and development is two EC2 instances one of which can be shared by HBase Master and ATSD.
+The smallest cluster size for testing and development is two EC2 instances, one of which can be shared by the HBase Master and ATSD.
 
 ## Create Cluster Configuration File
 
-The configuration enables S3 storage mode with [consistency](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) view, and specifies full path to the HBase root directory in S3.
+This configuration enables S3 storage mode with a [consistent view](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html), and specifies the full path to the HBase root directory in S3.
 
 
 ```sh
@@ -91,9 +91,9 @@ aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
     Total Size: 555.1 KiB
 ```
 
-The `atsd-hbase.jar` should be stored in a directory identified with `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
+The `atsd-hbase.jar` should be stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
-> When uploading the jar file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the jar file is replaced.
+> When uploading the jar file to the `hbase.rootdir/lib` directory, the revision is removed to avoid changing the `coprocessor.jar` setting in ATSD when the jar file is replaced.
 
 ## Launch Cluster
 
@@ -143,7 +143,7 @@ Determine the public IP address of the HBase Master node.
 export MASTER_IP=$(aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | cut -d "\"" -f 4) ; echo $MASTER_IP
 ```
 
-Specify the path to private ssh key and login into the node.
+Specify the path to private ssh key and log in to the node.
 
 ```sh
 ssh -i /path/to/<key-name>.pem hadoop@$MASTER_IP
@@ -176,7 +176,7 @@ Wait until the error `Server is not running yet` disappears.
 
 ## Install ATSD
 
-Login into a server where ATSD will be installed (HMasted node in case of mini-cluster).
+Log in to the server where ATSD will be installed (HMasted node in case of mini-cluster).
 
 ```sh
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP
@@ -254,13 +254,13 @@ Monitor the startup progress using the log file.
 tail -f atsd/atsd/logs/atsd.log
 ```
 
-The process may take several minutes to complete until ATSD is initialized:
+This process may take several minutes to complete before ATSD is initialized:
 
 ```
 ATSD start completed
 ```
 
-Login to the ATSD web interface on https://atsd_hostname:8443 or https://atsd_hostname:9443 if port settings were previously changed.
+Log in to the ATSD web interface on https://atsd_hostname:8443 or https://atsd_hostname:9443 if port settings were previously changed.
 
 ## Port Access
 
