@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Linux 64-bit: Ubuntu 16.04, RHEL/Centos 7.x, SLES 12.x.
+* Linux 64-bit: Ubuntu 16.04, Debian 8.x/9.x, RHEL/Centos 7.x, SLES 12.x.
 * Operating system and hardware [requirements](../administration/requirements.md)
 
 ## Installation Guides
@@ -24,15 +24,6 @@
 | :--- | --- | :---: |
 | Docker | official image | [View](docker.md)|
 | RedHat Docker | certified image | [View](docker-redhat.md)|
-
-<!--
-### Virtual Machines
-
-| **Host** | **Format** | **Installation Guide** |
-| :--- | --- | :---: |
-| VMware  | [ova](https://axibase.com/public/atsd_ce.ova)  | [View](vmware-esxi-server-vsphere.md)|
-| Oracle VirtualBox | [ova](https://axibase.com/public/atsd_ce.ova)  | [View](virtualbox.md)|
--->
 
 ### Cloud
 

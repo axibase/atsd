@@ -3,7 +3,7 @@
 ## Supported Versions
 
 - Ubuntu 16.04
-- Debian 7.x
+- Debian 8.x/9.x
 
 ## Requirements
 
