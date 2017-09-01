@@ -25,4 +25,4 @@ and the machine where it's installed.
 
 ![](images/atsd_portal.png "ATSD Host")
 
-> Note *Data Tables* chart  maybe be empty for a few minutes after start
+> Note *Data Tables* chart  can be empty for a few minutes after start
