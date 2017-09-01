@@ -2,7 +2,7 @@
 
 The database logs are located in the `/opt/atsd/atsd/logs` directory.
 
-The logs can be also downloaded from the **Admin:Server Logs** page.
+The logs can be also downloaded from the **Admin > Server Logs** page.
 
 Logs are rolled over and archived according to the `/opt/atsd/atsd/conf/logback.xml` settings.
 
@@ -14,11 +14,13 @@ Logs are rolled over and archived according to the `/opt/atsd/atsd/conf/logback.
 |`command.log`| Received commands log.|
 |`command_malformed.log`| Malformed commands log. Includes commands with invalid syntax.|
 |`command_discarded.log`| Discarded commands log. Includes commands received for disabled entities/metrics.|
-|`gc.log`| Garbage collection log. |
+|`command_ignored.log`| Ignored commands log. |
+|`update.log`| Update log. |
 |`metrics.txt`| Snapshot of current database metrics. Refreshed every 15 seconds. |
-|`stopstart.log`| Start/Stop log.|
-|`stdout.log`| Standard out. |
+|`start.log`| Start log.|
+|`stop.log`| Stop log.|
 |`err.log`| Standard error. |
+|`alert.log`| Alert log. |
 
 ## Logging Properties
 
@@ -57,12 +59,12 @@ To adjust tracing level, add a logging declaration containing the full class nam
 
 ## Applying Changes
 
-Changes in logging properties can be made by modifying the `logback.xml` file on the file system or using the **Admin: Configuration Files** editor.
+Changes in logging properties can be made by modifying the `logback.xml` file on the file system or using the **Admin > Configuration Files** editor.
 
 Database restart is **not** required, the changes are automatically refreshed and applied every 60 seconds.
 
 ## Enabling Command Logging
 
-For performance purposes, logging to `command*.log` files is controlled both by loggers configured in the `logback.xml` file as well as with controls on **Admin: Input Settings** page.
+For performance purposes, logging to `command*.log` files is controlled both by loggers configured in the `logback.xml` file as well as with controls on **Admin > Input Settings** page.
 
-![Input Settings](images/logging-input.png)
+![Input Settings](images/logging_input.png)

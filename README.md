@@ -83,13 +83,18 @@
     * [RedHat/CentOS (rpm)](installation/redhat-centos-rpm.md)
     * [SUSE Linux Enterprise Server (rpm)](installation/sles-rpm.md)
     * [Docker (image)](installation/docker.md)
-    * [VMware VM](installation/vmware-esxi-server-vsphere.md)
-    * [Oracle VirtualBox VM](installation/virtualbox.md)
+    <!--
+    * [VMware VM](installation/vmware-esxi-server-vsphere.md)    
+    -->
     * [Other](installation/other-distributions.md)
+  * Cloud
+    * [HBase on AWS S3](installation/aws-emr-s3.md)
   * Cluster Distributions
-    * [Cloudera Hadoop Distribution (CDH)](installation/cloudera.md)  	
+    * [Cloudera Hadoop Distribution (CDH)](installation/cloudera.md)  
+    <!--
     * [Ambari](installation/ambari.md)	  
     * [HBase Cluster](installation/hbase-cluster.md)
+    -->
   * [Uninstalling](administration/uninstalling.md)
   * [Updating](administration/update.md)   
 
@@ -111,7 +116,6 @@
   * [Configuration Files](administration/editing-configuration-files.md)
   * [Network Settings](administration/networking-settings.md)  
   * [Enabling Swap Space](administration/enabling-swap-space.md)
-  * [Entity Lookup](administration/entity-lookup.md)
   * [Logging](administration/logging.md)
   * [Metric Persistence Filter](administration/metric-persistence-filter.md)
   * [Monitoring](administration/monitoring.md)

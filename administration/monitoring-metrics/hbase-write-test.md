@@ -1,7 +1,6 @@
 # Monitoring Metrics using the HBase Write Test
 
-The HBase Write Test can be run directly from the ATSD user interface under Admin -\>
-HBase Test.
+The HBase Write Test can be run directly from the ATSD user interface under **Admin > Diagnostics > I/O Tests**.
 
 Direct url: `atsd_hostname:8088/admin/hbase-test`
 

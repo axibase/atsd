@@ -20,7 +20,7 @@ If **Admin > System Information** page on your current instance displays HBase v
 
 ## Check Revision
 
-* Open the **Admin / System Information** page
+* Open the **Admin > System Information** page
 * Take note of the current Revision Number
 
 ## Update Command
@@ -54,10 +54,10 @@ To verify that ATSD is working correctly, open the ATSD web interface:
  https://atsd_host:8443/
 ```
 
-* Open the **Admin / System Information** page
+* Open the **Admin > System Information** page
 * Verify that the Revision Number has changed compared to the pre-installation stage
 
-![](images/ATSD_build_info.png "ATSD_build_info")
+![](images/revision.png)
 
 ## Restart
 

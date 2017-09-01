@@ -12,39 +12,13 @@ sudo adduser axibase
 
 Install Oracle JDK or Open JDK.
 
-### Oracle JDK Installation
-
-http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
-
-### Open JDK Installation
-
-* RHEL/CentOS
-
-```
-sudo yum install java-1.7.0-openjdk-devel.x86_64
-```
-
-* Ubuntu/Debian
-
-```
-sudo apt-get update
-sudo apt-get install openjdk-7-jdk
-```
-
-### Verify Java Installation
-
-```
-java -version
-java version "1.7.0_101"
-OpenJDK Runtime Environment (rhel-2.6.6.1.el7_2-x86_64 u101-b00)
-OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
-```
+[Install Java 8](migration/install-java-8.md)
 
 Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
 
 ```
 sudo su axibase
-echo "export JAVA_HOME=${absolute path to JDK 7 home directory}" >> ~/.bashrc
+jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; echo $jp
 exit
 ```
 

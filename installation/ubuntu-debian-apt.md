@@ -12,14 +12,6 @@
 
 ## Installation Steps
 
-#### Add openjdk Repository
-
-This step is required **only on Ubuntu 14.04**.
-
-```sh
-sudo add-apt-repository ppa:openjdk-r/ppa
-```
-
 #### Update Repositories
 
 ```sh

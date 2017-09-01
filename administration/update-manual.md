@@ -8,11 +8,11 @@ su axibase
 
 ## Download the Latest ATSD Distribution Files
 
-Select an archive to download based on **HBase Version** displayed on the **Admin: System Information** page.
+Select an archive to download based on **HBase Version** displayed on the **Admin > System Information** page.
 
 * [hbase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
 
-The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd_17206.tar.gz`.
+The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd_17239.tar.gz`.
 
 Copy the archive to the ATSD server.
 
@@ -66,4 +66,4 @@ https://atsd_host:8443/
 * Open the **Admin: System Information** page.
 * Verify that the Revision Number has been updated.
 
-![](images/revision.png "ATSD Revision")
+![](images/revision.png)
