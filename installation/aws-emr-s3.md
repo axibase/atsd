@@ -38,7 +38,7 @@ tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 
 The `atsd-hbase.$REVISION.jar` file contains ATSD co-processors and filters.
 
-By storing the jar file in S3, Java classes in this file are automatically available to all regional servers when they are started.
+By storing the jar file in S3, Java classes in this file are automatically available to all region servers when they are started.
 
 ```sh
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
