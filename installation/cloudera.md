@@ -10,9 +10,7 @@ sudo adduser axibase
 
 ## Install Java
 
-Install Oracle JDK or Open JDK.
-
-[Install Java 8](migration/install-java-8.md)
+[Install Oracle JDK or Open JDK.](../migration/install-java-8.md)
 
 Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
 
