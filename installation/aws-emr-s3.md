@@ -6,7 +6,7 @@ Axibase Time Series Database can be deployed on HBase using [AWS S3](http://docs
 
 This installation option simplifies backup and recovery as well as allows right-sizing the cluster based on CPU and memory demands as opposed to storage requirements.
 
-The minimum cluster size for testing and development is two EC2 instances one of which can be shared by HBase Master and ATSD.
+The minimum cluster size for testing and development is two EC2 instances one of which can be shared by the HBase Master and ATSD.
 
 ## Create S3 Bucket
 
@@ -38,7 +38,7 @@ tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 
 The `atsd-hbase.$REVISION.jar` file contains ATSD co-processors and filters.
 
-By storing the jar file in S3, one makes Java classes in this file automatically available to all region servers when they are started.
+By storing the jar file in S3, Java classes in this file are automatically available to all regional servers when they are started.
 
 ```sh
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
@@ -57,7 +57,7 @@ aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
     Total Size: 555.1 KiB
 ```
 
-The `atsd-hbase.jar` should be stored in a directory identified with `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
+The `atsd-hbase.jar` should be stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
 > When uploading the jar file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the jar file is replaced.
 
@@ -91,7 +91,7 @@ aws emr create-cluster          \
 
 Replace `<key-name>` and `<subnet>` parameters.
 
-The `<key-name>` parameter corresponds to the name of the private key used to login into cluster nodes.
+The `<key-name>` parameter corresponds to the name of the private key used to log in to cluster nodes.
 
 The `<subnet>` parameter is required when launching particular instance types. To find out the correct subnet for your account, launch a sample cluster manually in the AWS EMR console and review the settings using AWS CLI export.
 
@@ -103,7 +103,7 @@ The `<subnet>` parameter is required when launching particular instance types. T
 
 ### Specify Initial Cluster Size
 
-Adjust EC2 instance types and the total instance count for the `RegionServers` group as appropriate. Review [AWS documentation](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
+Adjust EC2 instance types and total instance count for the `RegionServers` group as appropriate. Review [AWS documentation](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
 
 The cluster size can be adjusted at runtime.
 
@@ -116,7 +116,7 @@ The minimum number of nodes in each instance group is 1, therefore the smallest 
 
 ### Enable Consistent S3 View
 
-For long-running production clusters, consider enabling EMR [Consistent View](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) for S3 which identifies inconsistencies between listings of objects returned by S3 and their metadata and attempts to resolve such inconsistencies using retries with expotential timeouts. When this option is enabled, the medatada about HBase files is stored in a [DynamoDB table](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html).
+For long-running production clusters, consider enabling EMR [Consistent View](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) for S3 which identifies inconsistencies between object listings returned by S3 and their metadata and attempts to resolve such inconsistencies using retries with expotential timeouts. When this option is enabled, the medatada from HBase files is stored in a [DynamoDB table](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html).
 
 The consistensy checks are enabled by adding the `Consistent` setting in the launch command. 
 
@@ -124,31 +124,31 @@ The consistensy checks are enabled by adding the `Consistent` setting in the lau
 --emrfs Consistent=true,Args=[fs.s3.consistent.metadata.tableName=EmrFSMetadata]   \
 ```
 
-Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is terminated. Delete the DynamoDB table manually after cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`).
+Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is terminated. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`).
 
 ![](images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
 
 ## Launch Cluster
 
-Launch the cluster by executing the above command. The command returns cluster ID and stores it into an environment variable.
+Launch the cluster by executing the above command. The command returns a cluster ID and stores it as an environment variable.
 
 ## Verify HBase Status
 
-### Login into Master Node
+### Log in to Master Node
 
-Monitor the cluster status until the bootstrapping process is complete.
+Monitor cluster status until the bootstrapping process is complete.
 
 ```sh
 watch 'aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | cut -d "\"" -f 4'
 ```
 
-Determine the public IP address of the HBase Master node.
+Determine public IP address of the HBase Master node.
 
 ```
 export MASTER_IP=$(aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | cut -d "\"" -f 4) ; echo $MASTER_IP
 ```
 
-Specify the path to private ssh key and login into the node.
+Specify path to private ssh key and log in to the node.
 
 ```sh
 ssh -i /path/to/<key-name>.pem -o StrictHostKeyChecking=no hadoop@$MASTER_IP
@@ -173,7 +173,7 @@ Verify HBase version (1.2.3+) and rerun the status command until the cluster bec
 echo "status" | hbase shell
 ```
 
-Wait until the cluster is initialized and "Master is initializing" error is no longer displayed.
+Wait until the cluster is initialized and the "Master is initializing" error is no longer displayed.
 
 ```
 status
@@ -182,7 +182,7 @@ status
 
 ## Install ATSD
 
-Login into a server where ATSD will be installed.
+Log in to the server where ATSD will be installed.
 
 ```sh
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP
@@ -200,7 +200,7 @@ df -h
 cd /mnt
 ```
 
-Download the ATSD distribution files.
+Download ATSD distribution files.
 
 ```sh
 curl -o atsd-cluster.tar.gz https://axibase.com/public/atsd-cluster.tar.gz
@@ -222,7 +222,7 @@ Set Path to ATSD coprocessor file.
 echo "coprocessors.jar=s3://atsd/hbase-root/lib/atsd-hbase.jar" >> atsd/atsd/conf/server.properties ; grep atsd/atsd/conf/server.properties -e "coprocessors.jar"
 ```
 
-If installing ATSD on HMaster node where ports might be taken, replace the default ATSD port numbers to 9081, 9082, 9084, 9088, 9443 respectively.
+If installing ATSD on HMaster node where ports might be taken, replace the default ATSD port numbers to 9081, 9082, 9084, 9088, 9443, respectively.
 
 ```sh
 sed -i 's/=.*80/=90/g; s/=.*8443/=9443/g' atsd/atsd/conf/server.properties ; grep atsd/atsd/conf/server.properties -e "port"
@@ -256,13 +256,13 @@ Start ATSD.
 ./atsd/atsd/bin/start-atsd.sh
 ```
 
-Monitor the startup progress using the log file.
+Monitor startup progress using the log file.
 
 ```
 tail -f atsd/atsd/logs/atsd.log
 ```
 
-It may take ATSD several minites to create tables initialize the system.
+It may take ATSD several minutes to create tables after initializing the system.
 
 ```
 ...
@@ -280,7 +280,7 @@ Login to the ATSD web interface on https://atsd_hostname:8443. Modify the port t
 
 ### Port Access
 
-Make sure that the Security Group associated with the EC2 instance where ATSD is running allows access to the ATSD listening ports. 
+Make sure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports. 
 
 If necessary, add security group rules to open inbound access to ports 8081, 8082/udp, 8084, 8088, 8443 or 9081, 9082/udp, 9084, 9088, 9443 respectively.
 
