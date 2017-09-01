@@ -1,6 +1,6 @@
 # Functions
 
-> For the purpose of this documentation, function arguments have the following data types: `D` - double, `L` - long, `I` - integer, `B` - boolean, `S` - string, `[S]` - array of strings. String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')` and `coalesce([tags.location, 'Unknown'])`.
+> For the purpose of this documentation, function arguments have the following data types: `D` - double, `L` - long, `I` - integer, `B` - boolean, `S` - string, `[S]` - array of strings. String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')` and `coalesce([tags.location, 'Unknown'])`. Function names are case-sensitive.
 
 ## Statistical Functions
 
@@ -68,6 +68,8 @@
 * `sqrt(D)`
 * `exp(D)`
 * `log(D)`
+* `convert(D, S)` Convert value to given unit, where unit is one of 'k', 'Ki', 'M', 'Mi', 'G', 'Gi'. For example, `convert(20480, 'Ki')` evaluates to `20.0`
+* `formatNumber(D, S)` Format given number by applying specified DecimalFormat pattern, e.g. `formatNumber(3.14159, '#.##')` evaluates to `'3.14'`
 
 ## String Functions
 
@@ -100,8 +102,8 @@
 | `windowStartTime()` | Time when the first command was received by the window, in UNIX milliseconds. |
 | `milliseconds(S datetime [,S format [,S timezone]])` | Convert the datetime string into UNIX time in milliseconds according to the specified format string and timezone (or offset from UTC). Available timezones and their standard offsets are listed in [time zones](../api/network/timezone-list.md). If the timezone (or offset from UTC) is specified in the datetime string, and it differs from the timezone (offset) provided as the third argument, then the function will throw an exception. If the format is omitted, the datetime argument must be specified in ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ`. If the timezone is omitted, the server timezone is used. |
 | `seconds(S datetime [,S format [,S timezone]])` | Same arguments as the `milliseconds` function except the result is returned in UNIX time seconds. |
-| `date_parse(S datetime [,S format [,S timezone]])` | Same arguments as the `milliseconds` function except the result is returned as [Joda-time](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) DateTime object. |
-| `date_format(L timestamp, S pattern, S timezone)` | Convert timestamp to a formatted time string according to the format pattern and the timezone. Timestamp is an epoch timestamp in milliseconds. The format string syntax is described in the [datetime format](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html). List of available [time zones](../api/network/timezone-list.md). |
+| `date_parse(S datetime [,S format [,S timezone]])` | Same arguments as the `milliseconds` function except the result is returned as [Joda-time](https://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) DateTime object. |
+| `date_format(L timestamp, S pattern, S timezone)` | Convert timestamp to a formatted time string according to the format pattern and the timezone. Timestamp is an epoch timestamp in milliseconds. The format string syntax is described in the [datetime format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html). List of available [time zones](../api/network/timezone-list.md). |
 | `formatInterval(L interval)` | Convert millisecond interval to a formatted interval printing non-zero years, days, hours, minutes, and seconds. |
 | `formatIntervalShort(L interval)` | Convert millisecond interval to a formatted interval printing one or two greatest subsequent non-zero period type, where period type is one of: years, days, hours, minutes, and seconds. |
 | `elapsedTime(L timestamp)` | Calculate number of milliseconds since `timestamp` to current instant |
