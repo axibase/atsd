@@ -118,7 +118,7 @@ The minimum number of nodes in each instance group is 1, therefore the smallest 
 
 For long-running production clusters, consider enabling EMR [Consistent View](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) for S3 which identifies inconsistencies between object listings returned by S3 and their metadata and attempts to resolve such inconsistencies using retries with expotential timeouts. When this option is enabled, the medatada from HBase files is stored in a [DynamoDB table](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html).
 
-The consistensy checks are enabled by adding the `Consistent` setting in the launch command. 
+The consistensy checks are enabled by adding the `Consistent` setting to the launch command. 
 
 ```ls
 --emrfs Consistent=true,Args=[fs.s3.consistent.metadata.tableName=EmrFSMetadata]   \
