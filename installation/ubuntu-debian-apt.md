@@ -3,7 +3,7 @@
 ## Supported Versions
 
 - Ubuntu 16.04
-- Debian 7.x
+- Debian 8.x/9.x
 
 ## Requirements
 
@@ -11,14 +11,6 @@
 - See [Requirements](../administration/requirements.md) for additional information.
 
 ## Installation Steps
-
-#### Add openjdk Repository
-
-This step is required **only on Ubuntu 14.04**.
-
-```sh
-sudo add-apt-repository ppa:openjdk-r/ppa
-```
 
 #### Update Repositories
 
