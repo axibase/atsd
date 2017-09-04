@@ -14,41 +14,19 @@ The current timezone is displayed on the **Admin > System Information** page.
 
 * Select Timezone ID from the following [list](../api/network/timezone-list.md), for example, "US/Pacific".
 
-* Open `/opt/atsd/atsd/bin/start-atsd.sh` file and scroll down to the section with uncommented $java_command for "GC logs disabled".
+* Open /opt/atsd/atsd/conf/atsd-env.sh
 
-  ```
-  echo " * [ATSD] ATSD `$java_command -version 2>&1 | head -n 1`"
-  #GC logs disabled
-  if grep -qi "arm" /proc/cpuinfo; then
-      JAVA_OPTS="$JAVA_OPTS -XX:+PrintCommandLineFlags $DParams"
-      "$java_command" $JAVA_OPTS -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >/dev/null 2>${errorLog} &
-      #uncomment to enable atsd output logging
-      #"$java_command" $JAVA_OPTS -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >>${outLog} 2>>${errorLog} &
-  else
-      JAVA_OPTS="$JAVA_OPTS $DParams"
-      "$java_command" $JAVA_OPTS -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >/dev/null 2>>${errorLog} &
-      #uncomment to enable atsd output logging
-      #"$java_command" $JAVA_OPTS -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >>${outLog} 2>>${errorLog} &
-  fi
-  ```
+```bash
+#!/bin/bash
+export JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumDumpPath="$atsd_home"/logs"
+```
 
-* Add property `-Duser.timezone` to the second command (not "arm").
+* Add property `-Duser.timezone`:
 
-  ```
-  echo " * [ATSD] ATSD `$java_command -version 2>&1 | head -n 1`"
-    #GC logs disabled
-    if grep -qi "arm" /proc/cpuinfo; then
-        JAVA_OPTS="$JAVA_OPTS -XX:+PrintCommandLineFlags $DParams"
-        "$java_command" $JAVA_OPTS -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >/dev/null 2>${errorLog} &
-        #uncomment to enable atsd output logging
-        #"$java_command" $JAVA_OPTS -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >>${outLog} 2>>${errorLog} &
-    else
-        JAVA_OPTS="$JAVA_OPTS $DParams"
-        "$java_command" $JAVA_OPTS -Duser.timezone=US/Pacific -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >/dev/null 2>>${errorLog} &
-        #uncomment to enable atsd output logging
-        #"$java_command" $JAVA_OPTS -classpath "$atsd_home"/conf:"$atsd_executable""${lib_jars}" com.axibase.tsd.Server >>${outLog} 2>>${errorLog} &
-    fi
-  ```
+```bash
+#!/bin/bash
+export JAVA_OPTS="-Duser.timezone=US/Pacific -server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumDumpPath="$atsd_home"/logs"
+```
 
 * Restart ATSD.
 
