@@ -253,7 +253,7 @@ Remove comments in the `/opt/atsd/atsd/conf/hbase-site.xml` file and replace the
 
 ### Debugging Kerberos
 
-Debugging for Kerberos authentication can be enabled by changing the ATSD start script `/opt/atsd/atsd/conf/atsd-env.sh`.
+Debugging for Kerberos authentication can be enabled by changing the ATSD environment settings `/opt/atsd/atsd/conf/atsd-env.sh`.
 
 ```ls
 # Uncomment to enable Kerberos debug
