@@ -14,40 +14,20 @@ The current timezone is displayed on the **Admin > System Information** page.
 
 * Select Timezone ID from the following [list](../api/network/timezone-list.md), for example, "US/Pacific".
 
-* Open /opt/atsd/atsd/conf/atsd-env.sh
+* Open /opt/atsd/atsd/conf/atsd-env.sh scroll to `# Uncomment to set custom timezone`
 
 ```bash
-#!/bin/bash
-
-export JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDum$
-
 # Uncomment to set custom timezone
 #TIME_ZONE=US/Pacific
 #export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
-
-# Uncomment to enable Kerberos debug
-#export JAVA_PROPERTIES="-Dsun.security.krb5.debug=true $JAVA_PROPERTIES"
-
-# Uncomment to enable ATSD output logging
-#export outLog="${atsd_home}/logs/out.log"
 ```
 
-* Uncomment TIME_ZONE and export JAVA_PROPERTIES below:
+* Uncomment and set selected ID:
 
 ```bash
-#!/bin/bash
-
-export JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDum$
-
 # Uncomment to set custom timezone
 TIME_ZONE=US/Pacific
 export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
-
-# Uncomment to enable Kerberos debug
-#export JAVA_PROPERTIES="-Dsun.security.krb5.debug=true $JAVA_PROPERTIES"
-
-# Uncomment to enable ATSD output logging
-#export outLog="${atsd_home}/logs/out.log"
 ```
 
 * Restart ATSD.
