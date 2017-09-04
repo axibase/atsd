@@ -203,7 +203,7 @@ curl http://localhost:8088/api/v1/series/query \
 * [Unknown Tag](examples/query-tags-unknown.md)
 * [Tag Expression](examples/query-tag-expression.md)
 
-## Special Values
+### Special Values
 
 * [Not-a-Number (NaN)](examples/query-nan.md)
 
