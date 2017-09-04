@@ -14,15 +14,7 @@ The current timezone is displayed on the **Admin > System Information** page.
 
 * Select Timezone ID from the following [list](../api/network/timezone-list.md), for example, "US/Pacific".
 
-* Open /opt/atsd/atsd/conf/atsd-env.sh scroll to `# Uncomment to set custom timezone`
-
-```bash
-# Uncomment to set custom timezone
-#TIME_ZONE=US/Pacific
-#export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
-```
-
-* Uncomment and set selected ID:
+* Uncomment the `TIME_ZONE` line block in the ATSD environment settings file `/opt/atsd/atsd/conf/atsd-env.sh`.
 
 ```bash
 # Uncomment to set custom timezone
