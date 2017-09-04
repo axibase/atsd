@@ -18,14 +18,36 @@ The current timezone is displayed on the **Admin > System Information** page.
 
 ```bash
 #!/bin/bash
-export JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumDumpPath="$atsd_home"/logs"
+
+export JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDum$
+
+# Uncomment to set custom timezone
+#TIME_ZONE=US/Pacific
+#export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
+
+# Uncomment to enable Kerberos debug
+#export JAVA_PROPERTIES="-Dsun.security.krb5.debug=true $JAVA_PROPERTIES"
+
+# Uncomment to enable ATSD output logging
+#export outLog="${atsd_home}/logs/out.log"
 ```
 
-* Add property `-Duser.timezone`:
+* Uncomment TIME_ZONE and export JAVA_PROPERTIES below:
 
 ```bash
 #!/bin/bash
-export JAVA_OPTS="-Duser.timezone=US/Pacific -server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumDumpPath="$atsd_home"/logs"
+
+export JAVA_OPTS="-server -Xmx1024M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDum$
+
+# Uncomment to set custom timezone
+TIME_ZONE=US/Pacific
+export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
+
+# Uncomment to enable Kerberos debug
+#export JAVA_PROPERTIES="-Dsun.security.krb5.debug=true $JAVA_PROPERTIES"
+
+# Uncomment to enable ATSD output logging
+#export outLog="${atsd_home}/logs/out.log"
 ```
 
 * Restart ATSD.
