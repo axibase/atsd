@@ -29,7 +29,7 @@ Membership in entity groups with non-empty expression is managed by the server. 
 | name | string| Entity group name. |
 | expression | string | Group membership expression. The expression is applied to entities to automatically add/remove members of this group.|
 | tags | object | Entity group tags, as requested with the `tags` parameter. |
-| enabled | boolean | Flag indicating that the list of linked entities is updated on schedule |
+| enabled | boolean | Disabled groups are not visible to users. Disabled expression-based groups are empty and are not updated on schedule. |
 
 ## Example
 
