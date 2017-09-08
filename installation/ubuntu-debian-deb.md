@@ -27,36 +27,24 @@ Download deb package to the target server:
 #### Update Repositories and Install Dependencies
 
 ```sh
-sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname
+sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname 
+```
+
+**Docker container installation:**
+
+```sh
+sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
 ```
 
 #### Install ATSD
+
+Follow the prompts to install ATSD:
 
 ```sh
 sudo dpkg -i atsd_amd64.deb
 ```
 
 It may take up to 5 minutes to initialize the database.
-
-#### Docker Container Installation
-
-If the installation is performed in a Docker container, the `dpkg` command will exit with the following message:
-
-```
-Docker container installation. Initialization deferred.
-```
-
-Execute the following additional step to complete the installation:
-
-```sh
-/opt/atsd/install_user.sh
-```
-
-Start the database:
-
-```sh
-/opt/atsd/bin/atsd-all.sh start
-```
 
 ## Check Installation
 
