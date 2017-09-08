@@ -53,7 +53,7 @@ The `SELECT` statement consists of a `SELECT` expression, a `FROM` query, a `WHE
 ```sql
 SELECT { * | { expr [ .* | [ AS ] alias ] } }
   FROM table [[ AS ] alias ]
-    [ { INNER | [ FULL ] OUTER } JOIN table [[ AS ] alias ] [ ON joinExpr | USING ENTITY ] ]
+    [ { INNER | [ FULL ] OUTER } JOIN [ USING ENTITY ] table [[ AS ] alias ] [ ON joinExpr ] ]
 [ WHERE expr(boolean) ]
   [ WITH ROW_NUMBER expr ]
 [ GROUP BY expr [, ...] ]
@@ -1693,9 +1693,9 @@ Since joined tables in ATSD always contain the same predefined columns, an `ON` 
 | **Compact Syntax** | **Standard Syntax** |
 |:---|---|
 | `... JOIN speed t2` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... JOIN speed t2 USING ENTITY` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
+| `... JOIN USING ENTITY speed t2` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
 | `... FULL OUTER JOIN speed t2` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... FULL OUTER JOIN speed t2 USING ENTITY` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
+| `... FULL OUTER JOIN USING ENTITY speed t2` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
 
 The `ON` condition, if specified, can refer only to `entity`, `time/datetime`, and `tags` columns.
 
