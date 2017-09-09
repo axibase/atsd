@@ -5,20 +5,20 @@ Weekly Change Log: July 31, 2017 - August 06, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4452 | UI | Bug | Fix response bidy formatting in the built-in API client. |
-| 4443 | email | Bug | Add support for UTF-8 characters email subjects. |
-| 4435 | UI | Feature | Add red alert message on Users and Entity Group pages if `api.guest.access.enabled` is enabled. |
+| 4452 | UI | Bug | Fix response body formatting in the built-in API client. |
+| 4443 | email | Bug | Add support for UTF-8 characters in email subjects. |
+| 4435 | UI | Feature | Display alert message on Users and Entity Group pages if `api.guest.access.enabled` is enabled. |
 | 4433 | UI | Bug | Fix Delete button on the Portal Editor page. |
-| 4432 | core | Bug | Read hostname from `/proc/sys/kernel/hostname` if the hostname command is not installed on the Linux server. |
+| 4432 | installation | Bug | Read hostname from `/proc/sys/kernel/hostname` if the hostname command is not installed on the Linux server. |
 | 4428 | installation | Bug | Set file ownership to `axibase:axibase` instead of `axibase:root` when installing ATSD from deb/rpm package. |
-| 4421 | sql | Bug | Revert a change which caused empty results to be returned for a non-existing metric, without raising an error.M |
+| 4421 | sql | Bug | Revert a change which caused empty results to be returned for a non-existing table without raising an error. |
 | [4420](#issue-4420) | sql | Bug | Return data type as `bigint` for columns that previously were classified as `long`. |
 | [4406](#issue-4406) | UI | Feature | Highlight error if tag value is not allowed by a dictionary tag specified in the metric or entity tag template. |
 | 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Configuration > Tag Templates** page. |
 | [4395](#issue-4395) | jdbc | Feature | Add support for [wildcards](https://github.com/axibase/atsd-jdbc/blob/master/README.md#database-metadata) in `getTables` and `getColumns` methods. |
 | [4389](#issue-4389) | jdbc | Feature | Add support for inserting metric and entity [tags and fields](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#metric-metadata-columns) in `INSERT` statements. |
 | [4388](#issue-4388) | jdbc | Feature | Add support for local [datetime](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#date) format `yyyy-MM-dd HH:mm:ss[.fffffffff]` in `INSERT` statements. |
-| 4385 | jdbc | Feature | Add `missingMetric` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) to control driver behavior in case of unknown table/metric.|
+| 4385 | jdbc | Feature | Add `missingMetric` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) to control driver behavior in case of unknown table.|
 | 4383 | jdbc | Bug | Include the reserved `atsd_series` if `tables=*` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) selects all tables. |
 | 4379 | jdbc | Bug | Fixed an error with `NULL` values in [`INSERT`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) statements. |
 | 4374 | sql | Feature | [SQL Metadata API](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) method should return metadata for the pre-defined columns even if the metric doesn't exist.|
@@ -26,7 +26,7 @@ Weekly Change Log: July 31, 2017 - August 06, 2017
 | [4372](#issue-4372) | jdbc | Bug | Add support for [inserting series tags](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#insert-syntax). |
 | 4371 | jdbc | Bug | Fix bug with `INSERT` statements if the table name is quoted. |
 | 4370 | jdbc | Bug | Avoid sending a duplicate [metadata](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) query when inserting data. |
-| 4369 | jdbc | Feature | Add support for [`timestamptz`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#time-zone) connection property to control how timestamps are parser and formatted when inserting data. |
+| 4369 | jdbc | Feature | Add support for [`timestamptz`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#time-zone) connection property to control how timestamps are parsed and formatted when inserting data. |
 | 4368 | sql | Bug | Handle placeholders in prepared statements in [SQL Metadata API](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) method. |
 | 4366 | jdbc | Feature | Refactor [JDBC URL](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-url). |
 | 4365 | sql | Bug | Fixed a bug which caused the server to use an incorrect timezone in `GROUP BY PERIOD` [queries](https://github.com/axibase/atsd/tree/master/api/sql#period) if the database is running in a user-defined timezone. |
@@ -35,8 +35,8 @@ Weekly Change Log: July 31, 2017 - August 06, 2017
 | [4328](#issue-4328) | sql | Feature | Add support for [`LAG`](https://github.com/axibase/atsd/blob/master/api/sql/README.md#lag) function in `JOIN` queries. |
 | [4303](#issue-4303) | jdbc | Feature | Add support for inserting data with JDBC driver using [`INSERT` and `UPDATE`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) queries. |
 | 4278 | core | Bug | Fix a bug causing the data compaction to hang when multiple detailed column families are present. |
-| 3983 | api-rest	| Bug |	Data API: tags are incorrectly concatenated with 'group' processor. |
-| 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with append flag. |
+| 3983 | api-rest	| Bug |	Data API: tags are incorrectly concatenated with [`group`](https://github.com/axibase/atsd/blob/master/api/data/series/group.md) processor. |
+| 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with [append flag](https://github.com/axibase/atsd/blob/master/api/network/series.md#text-append). |
 
 ### ATSD
 
