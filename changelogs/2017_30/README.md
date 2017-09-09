@@ -54,7 +54,7 @@ FROM ( select * from table_size ) TableauSQL
 
 #### Issue 4361
 
-Follow the path **Configuration** > **SQL Queries** to view this window, use the Compression dropdown menu to select ZIP.
+Compression for CSV report files can be selected on the **Configuration > SQL Queries** page.
 
 ![](Images/4361.png)
 
