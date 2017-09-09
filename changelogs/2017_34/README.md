@@ -3,22 +3,22 @@ Weekly Change Log: August 21, 2017 - August 28, 2017
 ### ATSD
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4512 | core | Bug | Unsupported compression algorithm name normalized among new installation software |
-| 4493 | core | Bug | Reporter error repaired |
-| 4459 | UI | Bug | Replacement tables re-formatted |
-| 4451 | UI | Bug | Button order standardized throughout database interface |
-| 4444 | sql | Bug | Double datatype enabled for negative integers |
-| [4133](#issue-4133) | sql | Feature | Support for the Oracle-native method of [Inline Views](https://github.com/axibase/atsd/tree/master/api/sql#inline-views) added. |
-| 4111 | UI | Bug | Unexpected error message on export page for some special tag keys |
-| 3948 | api-rest | Bug | Bug repaired which incorrectly handled OPTIONS requests containing a [wildcard symbol](https://github.com/axibase/atsd/tree/master/api/sql#match-expressions) | 
+| 4512 | core | Bug | Normalize compression algorithm names supported by `hbase.compression.type` and `hbase.compression.type.raw` settings: `none`, `gz`, `lzo`. |
+| 4493 | core | Bug | Fix an issue with region bounderies with [migration reporter](https://github.com/axibase/atsd/blob/master/administration/migration/reporter.md). |
+| 4459 | UI | Bug | Apply syntax highligting to **Configuration > Replacement Tables**. |
+| 4451 | UI | Bug | Standartize the order of form buttons throughout the interface. |
+| 4444 | sql | Bug | Fix metadata error which caused negative integers to be classified as Double columns. |
+| [4133](#issue-4133) | sql | Feature | Add support for [inline views](https://github.com/axibase/atsd/tree/master/api/sql#inline-views). |
+| 4111 | UI | Bug | Fix error message if unknown tags are displayed on the Export tab. |
+| 3948 | api-rest | Bug | Set correct headers for `OPTIONS` requests. | 
 
 ### Issue 4133
 
-* Inline Views allow nested sub-queries to be operated on by the parent query.
+* [Inline View](https://github.com/axibase/atsd/tree/master/api/sql#inline-views) allows a nested sub-query to be operated on by the containing query.
 
 * Sub-query values must use reserved column names such as "datetime" and "value."
 
-* Unlimited sub-queries supported.
+* Unlimited sub-queries are supported.
 
 **Sample Query**
 
