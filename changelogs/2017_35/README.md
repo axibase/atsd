@@ -5,28 +5,41 @@ Weekly Change Log: May 22, 2017 - May 28, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| [4532](#issue-4532) | security | Feature | Guest access option enabled for portals to allow unauthenticated users the ability to view selected portals via a direct URL, for example. |
-| 4531 | api-rest | Bug | Bug fixed whereby message inserts were displayed as series commands. |
-| 4528 | statistics | Bug | ** Series Statistics: schedule is incorrect ** |
-| [4525](#issue-4525) | UI | Feature | Summary Table added to "Database Tables" page, helpful for monitoring and measuring compression. |
-| 4519 | core | Feature | ** License: compression ** |
-| 4503 | UI | Bug | Data modification disabled for non-authenticated users. |
-| 4502 | sql | Bug | Add the `encodeTags` parameter to [SQL Console](https://github.com/axibase/atsd/tree/master/api/sql) |
-| 4477 | core | Feature | ** Coprocessor configuration ** |
-| 4410 | Bug | Java API | ** Client: metric and series issues ** |
-| 4351 | jdbc | Feature | ResultSet extended with `getTags()` method. |
+| [4532](#issue-4532) | security | Feature | Add support for Guest access to portals to allow unauthenticated users to view selected portals. |
+| 4531 | api-rest | Bug | Fix bug causing message commands to be logged as series commands in the command log. |
+| 4528 | statistics | Bug | Fix estimated scheduled for series that are collected once a month. |
+| [4525](#issue-4525) | UI | Feature | Summary Table added to "Database Tables" page to simplify monitoring. |
+| 4519 | core | Feature | Remove licensing restriction to allow all database editions to compress data with gz and lzo algorithms. |
+| 4503 | UI | Bug | Restrict access to Rules and Entity Views pages for users without editor role. |
+| 4502 | sql | Bug | Add the `encodeTags` parameter to [SQL API](https://github.com/axibase/atsd/tree/master/api/sql) method. |
+| 4477 | core | Feature | Add HBase coprocessors to ATSD tables programmatically to avoid changing `hbase-site.xml`. |
+| 4410 | Bug | Java API | Add missing metric methods to the [Java API Client](https://github.com/axibase/atsd-api-java). |
+| [4351](#issue-4351) | jdbc | Feature | Add support for extended [tag methods](https://github.com/axibase/atsd-jdbc#tag-columns) in the JDBC driver. |
 
 ### ATSD
 
 #### Issue 4532
 
-Follow the path **Configuration** > **Portals** to the list of portal configurations. In a given portal configuration, the
-"Guest Access" check box controls unauthenticated access to a desired portal.
+The "Guest Access" check box controls unauthenticated access to a selected portal.
 
 ![](Images/issue-4532.png)
 
 #### Issue 4525
 
-Follow the path **Configuration** > **Database Tables** to view the Summary Table. 
+The Summary Table in **Configuration** > **Database Tables** displays totals for key data tables. 
 
 ![](Images/issue-4525.png)
+
+#### Issue 4351
+
+```java
+//serialize
+Map<String, String> seriesTags = new HashMap<String, String>();
+seriesTags.put("surface", "Outer");
+seriesTags.put("status", "Initial");
+// ...
+aps.setTags(2, seriesTags);
+
+// de-serialize
+Map<String, String> seriesTags = rs.getTags(3);
+```
