@@ -7,7 +7,7 @@
 ```sql
 SELECT datetime, metric, value
   FROM atsd_series
-WHERE metric LIKE 'tv6.pack*'
+WHERE metric LIKE 'tv6.pack%'
   AND datetime BETWEEN '2016-10-04T00:00:00Z' AND '2016-10-05T00:00:00Z'
   AND entity = 'br-1211'
 ORDER BY metric, datetime
@@ -84,7 +84,7 @@ FROM atsd_series t1
   JOIN "TV6.Elapsed_Time" t2
   JOIN "TV6.Unit_BatchID" t3
   JOIN "TV6.Unit_Procedure" t4
-WHERE t1.metric LIKE 'tv6.pack*'
+WHERE t1.metric LIKE 'tv6.pack%'
   AND t1.datetime BETWEEN '2016-10-04T00:00:00Z' AND '2016-10-05T00:00:00Z'
   AND t1.entity = 'br-1211'
 WITH INTERPOLATE(1 MINUTE, LINEAR, INNER, NONE, START_TIME)
@@ -148,7 +148,7 @@ FROM atsd_series t1
   JOIN "TV6.Elapsed_Time" t2
   JOIN "TV6.Unit_BatchID" t3
   JOIN "TV6.Unit_Procedure" t4
-WHERE t1.metric LIKE 'tv6.pack*'
+WHERE t1.metric LIKE 'tv6.pack%'
   -- subquery in the datatime condition
   AND t1.datetime BETWEEN (
     SELECT datetime FROM "TV6.Unit_BatchID"
@@ -200,7 +200,7 @@ FROM atsd_series t1
   JOIN "TV6.Elapsed_Time" t2
   JOIN "TV6.Unit_BatchID" t3
   JOIN "TV6.Unit_Procedure" t4
-WHERE t1.metric LIKE 'tv6.pack*'
+WHERE t1.metric LIKE 'tv6.pack%'
   AND t1.datetime BETWEEN (
       SELECT datetime FROM "TV6.Unit_BatchID"
       WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800')
@@ -241,7 +241,7 @@ WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, EXTEND, START_TIME)
 SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', "US/Eastern") AS "Local Date",
   max(value), min(value)
   FROM atsd_series
-WHERE metric LIKE 'tv6.p*'
+WHERE metric LIKE 'tv6.p%'
   AND datetime BETWEEN '2016-10-03T00:00:00Z' AND '2016-10-05T00:00:00Z'
   AND entity = 'br-1211'
   GROUP BY PERIOD(1 DAY, "US/Eastern")
@@ -263,7 +263,7 @@ FROM atsd_series t1
   JOIN "TV6.Elapsed_Time" t2
   JOIN "TV6.Unit_BatchID" t3
   JOIN "TV6.Unit_Procedure" t4
-WHERE t1.metric LIKE 'tv6.pack*'
+WHERE t1.metric LIKE 'tv6.pack%'
   AND t1.datetime BETWEEN (
     SELECT datetime FROM "TV6.Unit_BatchID"
     WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800')

@@ -29,7 +29,7 @@ Accept the license.
 Copy the 'Linux 64: *tar.gz' download link for 'Java SE Development Kit 8u144' into the `curl` command below.
 
 ```sh
-curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
+curl -k -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
 ```
 
 Download the archive.
@@ -41,24 +41,38 @@ mkdir /opt/jdk
 tar -xzf jdk-8u144-linux-x64.tar.gz -C /opt/jdk
 ```
 
-Remove prior Java versions from alternatives.
+Add Oracle JDK to the java alternatives.
 
-```sh
-update-alternatives --remove-all java
-```
-
-```sh
-update-alternatives --remove-all javac
-```
-
-Add Java 8 executable and compiler to alternatives.
+* Ubuntu, Debian
 
 ```sh
 update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_144/bin/java 100
+update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
 ```
 
+* Red Hat Enterprise Linux, SLES, Centos, Oracle Linux
+
 ```sh
-update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
+alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_144/bin/java 100
+alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_144/bin/javac 100
+```
+
+## Update Alternatives for Java Executables
+
+Review available Java installations and select Java 8 as the default option.
+
+* Ubuntu, Debian
+
+```sh
+update-alternatives --config java
+update-alternatives --config javac
+```
+
+* Red Hat Enterprise Linux, SLES, Centos, Oracle Linux
+
+```sh
+alternatives --config java
+alternatives --config javac
 ```
 
 ## Verify Installation

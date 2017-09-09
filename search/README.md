@@ -4,7 +4,7 @@
 
 ![](images/search.png)
 
-The search interface allows finding series by matching search keywords against series fields.
+The search interface finds series by matching search keywords against series fields.
 
 ## Available Series Fields
 
@@ -32,7 +32,7 @@ Multiple terms can be combined together using boolean operators to form a more c
 
 A keyword may be prefixed with a field name to narrow the scope of the search to a particular series property, for example `entity:nurswgvml007`.
 
-If the field is not specified, the search is performed in all fields.
+If the field is not specified, the search is performed for all fields.
 
 ### Fields
 
@@ -48,7 +48,7 @@ If the field is not specified, the search is performed in all fields.
 
 ### Operators
 
-To combine multiple terms, use boolean operators `AND`, `OR`, and `NOT`. The operators must be specified in upper case.
+To combine multiple terms, use boolean operators `AND`, `OR`, and `NOT`. Operators must be specified with upper case letters.
 
 ```ls
 entity:nurswgvml007* AND mount_point:\/opt
@@ -67,11 +67,11 @@ location nur
 | `OR` | One of the conditions must be satisfied. | `location OR nur` |
 | `NOT` | The condition must not be satisfied. | `location NOT nur` |
 
-> The expression cannot start with the `NOT` operator.
+> An expression cannot start with the `NOT` operator.
 
 ### Wildcards
 
-The keywords support single and multiple character wildcards.
+Keywords support both single and multiple character wildcards.
 
 * "*" symbol matches multiple characters.
 
@@ -85,13 +85,13 @@ he*
 h?llo
 ```
 
-> The wildcards can be used at the end or in the middle of a keyword.
+> Wildcards can be used at the end or in the middle of a keyword.
 
 ### Reserved Characters
 
 The following characters are reserved: `+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`.
 
-To escape the reserved characters use double-quotes or backslash:
+To escape the reserved characters use double-quotes or a backslash:
 
 ```ls
 mount_point:"/opt"
@@ -157,17 +157,17 @@ date:2017-06-*
 
 ### Scheduling
 
-The search index is continuosly refreshed on schedule and as such it may not reflect the latest changes such as a new series or modifications of existing series that have occurred since the last refresh.
+The search index is continuosly refreshed on schedule and as such it may not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
 
-The frequency of incremental refreshes can be controlled with `search.indexing.incremental.schedule` setting. Each refresh operation takes up to 10 seconds.
+The frequency of incremental refreshes can be controlled with the `search.indexing.incremental.schedule` setting. Each refresh operation takes up to 10 seconds.
 
-The frequency of rebuild tasks can be controlled with `search.indexing.full.schedule` setting. The full rebuild takes up to 10 minutes.
+The frequency of rebuild tasks can be controlled with the `search.indexing.full.schedule` setting. The full rebuild takes up to 10 minutes.
 
-The administrators can refresh the index manually on the **Admin: Diagnostics: Search Index** page.
+Administrators can refresh the index manually on the **Admin: Diagnostics: Search Index** page.
 
 ### Monitoring
 
-The database collects the following measurements to facilitate monitoring of the background index tasks:
+The database collects the following measurements to facilitate monitoring of background index tasks:
 
 * Metrics
 

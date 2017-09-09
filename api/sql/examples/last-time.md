@@ -15,7 +15,7 @@ Returns data for the most recent 30 second interval for each series.
 ```sql
 SELECT * FROM "mpstat.cpu_busy"
   WHERE datetime > current_day
-AND entity LIKE 'n*00*'
+AND entity LIKE 'n%00%'
   WITH time > last_time - 30*SECOND
 ```
 

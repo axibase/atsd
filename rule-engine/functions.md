@@ -1,6 +1,6 @@
 # Functions
 
-> For the purpose of this documentation, function arguments have the following data types: `D` - double, `L` - long, `I` - integer, `B` - boolean, `S` - string, `[S]` - array of strings. String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')` and `coalesce([tags.location, 'Unknown'])`.
+> For the purpose of this documentation, function arguments have the following data types: `D` - double, `L` - long, `I` - integer, `B` - boolean, `S` - string, `[S]` - array of strings. String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')` and `coalesce([tags.location, 'Unknown'])`. Function names are case-sensitive.
 
 ## Statistical Functions
 
@@ -68,6 +68,8 @@
 * `sqrt(D)`
 * `exp(D)`
 * `log(D)`
+* `convert(D, S)` Convert value to given unit, where unit is one of 'k', 'Ki', 'M', 'Mi', 'G', 'Gi'. For example, `convert(20480, 'Ki')` evaluates to `20.0`
+* `formatNumber(D, S)` Format given number by applying specified DecimalFormat pattern, e.g. `formatNumber(3.14159, '#.##')` evaluates to `'3.14'`
 
 ## String Functions
 
@@ -84,6 +86,7 @@
 
 | **Name** | **Description** |
 | :--- | :--- |
+| `IN` | Returns true if collection contains the specified string. <br>`tags.location IN ('NUR', 'SVL')`|
 | `contains(S)` | Returns true if collection contains the specified string. <br>`properties['command'].toString().contains('java')`|
 | `isEmpty()` | Returns true if collection has no elements. <br>`entity.tags.isEmpty()`|
 | `size()` | Returns number of elements in the collection. <br>`entity.tags.size() > 1`|

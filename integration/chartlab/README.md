@@ -34,7 +34,7 @@ The widgets can be configured to load data from the following sources:
   Add the following setting:
 
   ```properties
-  api.anonymous.access.enabled = true
+  api.guest.access.enabled = true
   ```
 
   Save the file.

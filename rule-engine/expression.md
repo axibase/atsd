@@ -10,7 +10,7 @@ triggers is invoked.
 
 The expression consists of one or multiple conditions combined with `OR` (`||`) and `AND` (`&&`) operators.
 
-The condition can reference fields, apply [functions](functions.md) to them, and compare them with operators.
+The condition can reference fields, apply [functions](functions.md) to them, and compare them with operators. Function names are case-sensitive.
 
 > Exceptions specified in the Thresholds table take precedence over the expression.
 

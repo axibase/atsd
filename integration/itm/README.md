@@ -2,11 +2,18 @@
 
 ## Overview
 
-In order to offload detailed data from the ITM infrastructure with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to dump incoming analytical data into CSV files on the local file system. The dump directory will be continously monitored by an `inotify` script, which will upload new CSV files into ATSD as soon as they are created.
+There are two options to integrate ATSD with IBM Tivoli Monitoring (ITM):
 
-This enables ATSD to serve as a long-term repository of historical data. This data is typically deleted after a few months by ITM in order to minimize the disk space usage in the Tivoli Data Warehouse.
+* Run a scheduled JDBC job with Axibase Collector to copy incremental data from detailed tables in Tivoli Data Warehouse to ATSD.
+* Configure ITM Warehouse Proxy Agent (WPA) to store analytical data in CSV files.
 
-Since statistics from ITM agents will be received by ATSD without any delay, the integration can be used for real-time analytics and peformance dashboards.
+This document describes the second option, which provides minimal latency at the expense of introducing additional overhead on the WPA server.
+
+In order to offload detailed data from ITM-managed systems with minimal latency you need to enable an ITM Warehouse Proxy Agent (WPA) to write incoming analytical data from ITM agents into CSV files on the local file system. The CSV directory is continously monitored by an `inotify` script, which uploads new CSV files into ATSD the moment they are created.
+
+This integration enables ATSD to act as a long-term repository for historical data such as attribute groups with aggressive pruning settings like process tables, which are typically configured to only retain old data for an interval of 3 to 7 days.
+
+Because statistics from ITM agents are received by ATSD with no delay, this type of integration can be used for real-time analytics and peformance dashboards with no display latency.
 
 ![](images/itm_diag.png "Warehouse Proxy Agent diagram")
 
@@ -43,7 +50,7 @@ Since statistics from ITM agents will be received by ATSD without any delay, the
     - [VMware](csv-configs/agents/vm_situations.xml)
     - [WebSphere MQ](csv-configs/agents/mq_situations.xml)
 
-* Copy the configuration file to the `localconfig/${PRODUCT_CODE}/` directory on the agent machine, where `${PRODUCT_CODE}` is the agent product code. You can lookup commonly used product codes [here](http://www-01.ibm.com/support/docview.wss?uid=swg21265222).
+* Copy the configuration file to the `localconfig/${PRODUCT_CODE}/` directory on the agent machine, where `${PRODUCT_CODE}` is the agent product code. You can look up commonly used product codes [here](http://www-01.ibm.com/support/docview.wss?uid=swg21265222).
 
     > Agent situation files adhere to the following naming convention: ${PRODUCT_CODE}_situations.xml
 
@@ -62,10 +69,10 @@ Since statistics from ITM agents will be received by ATSD without any delay, the
 
 ### Upload CSV Parsers into ATSD
 
-- Login into the ATSD web interface.
+- Log in to the ATSD web interface.
 - Open the `Configuration->CSV:Parsers` page.
 - Click the [Import] button.
-- Upload CSV parser xml files that you downloaded previously.
+- Upload the CSV parser xml files that you downloaded previously.
 
 ### Configure `inotify` Script to Read CSV files and Upload Them into ATSD
 
@@ -101,8 +108,8 @@ Since statistics from ITM agents will be received by ATSD without any delay, the
 
 ## Verifying Data in ATSD
 
-* Login into ATSD.
-* Click on Metrics tab and filter metrics by following prefixes:
+* Log in to ATSD.
+* Click to the Metrics tab and filter metrics with the following prefixes:
 
  - `klz`
   ![](images/klz_metrics.png)

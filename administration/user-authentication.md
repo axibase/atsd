@@ -85,12 +85,27 @@ The following password rules apply to **Local** accounts:
 
 * If the account being reset is configured as LDAP type, the type will be changed to Local.
 
-## Anonymous API Access
+## Guest Access to Data API
 
--   To enable anonymous API access, set `api.anonymous.access.enabled=true` in the `server.properties` file.
+To enable anonymous access to Data API query methods, set `api.guest.access.enabled=true` in the `server.properties` file and restart the ATSD process.
+
+## Guest Access to Portals
+
+To expose the portal to all visitors, open **Configuration > Portals** page, open the portal editor and check the 'Guest Access' field.
+
+Since charts displayed in the portals are loaded via Data API, the Guest Access option is available only when Data API is configured for anonymous access.
+
+![portal guest](images/portal-guest.png)
+
+## Guest Access to SQL Reports
+
+SQL query results can be published to all visitors by checking 'Guest Access' field on the SQL configuration page.
+
+![sql guest](images/sql-guest-access.png)
+
+> Note that guest access to Data API is not required in this case.
 
 ## HTTP Basic Authorization Examples
-
 
 * Java Example:
 

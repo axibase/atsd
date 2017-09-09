@@ -110,7 +110,7 @@ The maximum number of metrics matched with the `LIKE` operator is limited to 50.
 ```sql
 SELECT entity, metric, datetime, value, tags
   FROM atsd_series
-WHERE metric LIKE 'cpu_s*' -- up to 50 metrics
+WHERE metric LIKE 'cpu_s%' -- up to 50 metrics
   AND datetime >= CURRENT_HOUR
 WITH ROW_NUMBER (entity, metric, tags ORDER BY time DESC) <= 1
   ORDER BY entity, metric, tags, time
@@ -141,8 +141,8 @@ The `metrics()` function retrieves all metrics collected by the specified entity
 SELECT metric, datetime, value
   FROM atsd_series
 WHERE metric IN metrics('nurswgvml007')
-  AND metric LIKE 'mpstat.cpu*'
-  -- AND metric NOT LIKE 'df.*'
+  AND metric LIKE 'mpstat.cpu%'
+  -- AND metric NOT LIKE 'df.%'
   AND datetime >= CURRENT_HOUR
 ORDER BY datetime
   LIMIT 10
@@ -206,7 +206,7 @@ SELECT t1.entity, t1.metric, t1.datetime,
     JOIN "SV6.Unit_BatchID" t5
     JOIN "SV6.Unit_Procedure" t6
 WHERE t1.metric IN metrics('br-1470')
-  AND t1.metric NOT LIKE 'sv7*'
+  AND t1.metric NOT LIKE 'sv7%'
   AND t1.datetime BETWEEN '2016-10-04T02:00:00Z' AND '2016-10-04T02:10:00Z'
   AND t1.entity = 'br-1470'
 WITH INTERPOLATE(180 second, AUTO, OUTER, EXTEND, START_TIME)
@@ -235,7 +235,7 @@ WITH INTERPOLATE(180 second, AUTO, OUTER, EXTEND, START_TIME)
 ## Limitations
 
 * The metric condition supports only `=`, `IN` and `LIKE` operators, as well as the `metrics(entity)` function.
-* The number of metrics retrieved with `metric LIKE '*expr*'` condition must not exceed 50.
+* The number of metrics retrieved with `metric LIKE '%expr%'` condition must not exceed 50.
 
 ## Numeric Precedence
 

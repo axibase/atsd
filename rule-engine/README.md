@@ -4,17 +4,16 @@
 
 The Rule Engine enables automation of repetitive tasks based on the analysis of incoming data. Such tasks may include invoking a script to resolve a problem,  
 [sending an
-email](email-action.md)
+email](email-action.md),
 or raising a ticket in the centralized incident management system.
 
-In abstract syntax terms, the rule engine evaluates a set of `IF-THEN` statements on incoming data:
+The rule engine evaluates a set of `IF-THEN` expressions on incoming data:
 
 ```javascript
-    IF expression == true THEN action
+    IF condition == true THEN action
 ```
 
-If the expression specified in the rule evaluates to `true`, one or
-multiple automation procedures are triggered, for instance:
+If the condition specified in the rule evaluates to `true`, one or multiple automation procedures are triggered, for instance:
 
 ```javascript
     IF avg() > 75 THEN create_ticket
@@ -45,7 +44,7 @@ The incoming data samples are processed by a chain of filters prior to reaching 
 
 * **Status Filter**. Samples are discarded for metrics and entities that are disabled.
 
-* [Rule Filters](filters.md) ignore samples that do not match a specific metric, entity and filter expression.
+* [Rule Filters](filters.md) ignore samples that do not match a specific metric, entity, or filter expression.
 
 ### Grouping
 
@@ -57,7 +56,7 @@ windows grouped by metric, entity, and optional tags. Each window maintains its 
 ### Evaluation
 
 Windows are continuously updated as new samples are added and old samples are
-removed to maintain the size of the given window at constant interval length or sample count.
+removed to maintain the size of the given window at a constant interval length or sample count.
 
 When a window is updated, the rule engine evaluates the expression that returns a boolean value:
 
@@ -86,13 +85,13 @@ status or on every n-th `REPEAT` status occurrence.
 
 Windows can be count-based or time-based. A count-based window maintains
 an ordered array of elements. Once the array reaches the specified
-length, new elements replace the oldest elements. A time-based window
-includes all elements that are timestamped within the time interval which
+length, new elements begin to replace older elements chronologically. A time-based window
+includes all elements that are timestamped within a time interval that
 ends with the current time and starts with the current time minus a specified
-window interval. For example, a 5-minute time-based window includes all
+interval. For example, a 5-minute time-based window includes all
 elements that arrived over the last 5 minutes. As the current time
 increases, the start time is incremented accordingly, as if the window is
-sliding along the timeline.
+sliding along a timeline.
 
 ## Developing Rules
 
@@ -129,7 +128,7 @@ specific for each time series:
 
 The default expression can be superseded for a given entity or
 an entity group by adding an entry to the Overrides table. The
-override entry can be also created by clicking on the `Override` link on the Alerts tab
+override entry can also be created by clicking on the `Override` link under the Alerts tab
 or on a link in the email notification message.
 
 In the example below, an alert will be created when
@@ -149,16 +148,15 @@ The Rule Engine supports two types of windows:
 
 Count based windows analyze the last N sample regardless
 of when they occurred. The count window holds up to N samples, to which
-aggregate function such as `avg()` or `max()` can be applied as part of expression. When the
-COUNT-based window becomes full, the oldest (last) data sample is removed to
-free up space for an incoming sample.
+aggregate function such as `avg()` or `max()` can be applied as part of an expression. When the
+COUNT-based window becomes full, the oldest data sample is replaced with an incoming sample.
 
 ![Count Based Window](images/count_based_window3.png "count_based_window")
 
 ### Time Based Windows – 3 Second Window Example
 
 Time based windows analyze data samples that were recorded in the last N
-seconds (or minutes, hours). The time window doesn't limit how many samples can be held by the window. It automatically removes data samples that move
+seconds, minutes, or hours. The time window doesn't limit how many samples can be held by the window. It automatically removes data samples that move
 outside of the time interval as time passes.
 
 ![Time Based Window](images/time_based_window3.png "time_based_window")
@@ -169,9 +167,9 @@ Alerts can be [logged](alert-logging.md) in the database as well as in log files
 
 ## Alert Severity
 
-Severity of alerts raised by the rule engine is specified on the Alerts tab in Rule Editor.
+The severity of alerts raised by the rule engine is specified under the Alerts tab in the Rule Editor.
 
-If an alert is raised by an expression defined in the Threshold table, its severity overrides
+If an alert is raised by an expression defined in the Threshold table, its severity overrides the
 severity set on the Alert tab.
 
 > For 'message' rules, the alert severity can be inherited from the underlying message.

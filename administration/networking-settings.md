@@ -26,3 +26,8 @@ udp.receive.buffer.size.kb = 20000
 ```
 
 ## Restart ATSD
+
+```bash
+/opt/atsd/bin/atsd-all.sh stop
+/opt/atsd/bin/atsd-all.sh start
+```

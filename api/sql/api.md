@@ -40,7 +40,7 @@ This query can be utilized as a validation query in database connection pool imp
 | queryId | string | User-defined handle submitted at the request time in order to identify the query, if it needs to be cancelled. |
 | limit | integer | Maximum number of rows to return. Default: 0 (not applied).<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
 | discardOutput | boolean | If set to true, discards the produced content without sending it to the client. |
-
+| encodeTags | boolean | If set to true, the `tags` column is encoded in JSON format for safe deserialization on the client. |
 
 As an alternative, the query can be submitted with Content-Type `text/plain` as text payload with the other parameters included in the query string.
 
@@ -152,7 +152,7 @@ Results in the JSON output format incorporates metadata by default, including ta
 
 ### Metadata in CSV Output Format
 
-The `metadataFormat` parameter controls how to incorporate metadata into the CSV text.
+The `metadataFormat` parameter specifies how metadata is incorporated into the CSV response.
 
 | **Value**| **Description** |
 |:---|:---|
@@ -161,7 +161,7 @@ The `metadataFormat` parameter controls how to incorporate metadata into the CSV
 | EMBED | Append JSON-LD metadata to CSV header as comments prefixed by hash symbol. |
 | COMMENTS | Append CSV metadata to CSV header as comments prefixed by hash symbol. |
 
-## Example
+## Examples
 
 ### `curl` Query Example
 
@@ -192,7 +192,20 @@ Bash client [parameters](client/README.md).
 
 [SQL to CSV example in Java](client/SqlCsvExample.java).
 
-## Response
+### Encoding Tags
 
-* [Sample CSV response](sql.csv)
-* [Sample JSON response](sql.json)
+```ls
+encodeTags=true&q=SELECT entity, datetime, value, tags FROM df.disk_used WHERE datetime > current_hour LIMIT 1
+```
+
+* Encoding in CSV Format
+
+```
+"entity","datetime","value","tags"
+"nurswgvml007","2017-08-25T12:00:05.000Z",8932448,"{""file_system"":""/dev/mapper/vg_nurswgvml007-lv_root"",""mount_point"":""/""}"
+```
+
+## Response Examples
+
+* [CSV response](sql.csv)
+* [JSON response](sql.json)

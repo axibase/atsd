@@ -7,7 +7,7 @@
 ## Images
 
 * Image name: `axibase/atsd:latest`
-* Base: ubuntu:14.04
+* Base Image: Ubuntu 16.04
 * [Dockerfile](https://github.com/axibase/dockers/blob/master/Dockerfile)
 * [Docker Hub](https://hub.docker.com/r/axibase/atsd/)
 
@@ -99,7 +99,7 @@ You should see an _ATSD start completed_ message at the end of the `start.log` f
 ...
  * [ATSD] Starting ATSD ...
  * [ATSD] ATSD not running.
- * [ATSD] ATSD java version "1.7.0_111"
+...
  * [ATSD] Waiting for ATSD to start. Checking ATSD web-interface port 8088 ...
  * [ATSD] Waiting for ATSD to bind to port 8088 ...( 1 of 20 )
 ...
@@ -157,19 +157,6 @@ docker run \
 ## Troubleshooting
 
 * Review [Troubleshooting Guide](troubleshooting.md).
-* Kernel Incompatibility
-
-Verify that your Docker host runs on a supported kernel level if the container fails to start or the installation script stalls.
-
-```
-uname -a
-```
-
-* 3.13.0-79.123+
-* 3.19.0-51.57+
-* 4.2.0-30.35+
-
-See "Workarounds" in [#18180](https://github.com/docker/docker/issues/18180#issuecomment-193708192)
 
 ## Validation
 

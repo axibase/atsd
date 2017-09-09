@@ -7,9 +7,20 @@ copying files, and gracefully restarting ATSD services.
 
 > Access to axibase.com from the target server is required to download installation files. If the server is not connected to the Internet, switch to the [manual update](update-manual.md) option.
 
+
+## Migration
+
+ATSD for HBase 1.2.5 was released in August 2017. 
+
+If **Admin > System Information** page on your current instance displays HBase version 0.94.x, execute the following steps depending on the installation mode.
+
+* [Cluster](migration/cluster.md)
+* [Container](migration/container.md)
+* [All Other](migration/README.md)
+
 ## Check Revision
 
-* Open the **Admin / System Information** page
+* Open the **Admin > System Information** page
 * Take note of the current Revision Number
 
 ## Update Command
@@ -43,10 +54,10 @@ To verify that ATSD is working correctly, open the ATSD web interface:
  https://atsd_host:8443/
 ```
 
-* Open the **Admin / System Information** page
+* Open the **Admin > System Information** page
 * Verify that the Revision Number has changed compared to the pre-installation stage
 
-![](images/ATSD_build_info.png "ATSD_build_info")
+![](images/revision.png)
 
 ## Restart
 

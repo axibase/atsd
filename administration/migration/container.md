@@ -9,8 +9,8 @@ The instructions apply only to ATSD installed in a Docker container. For host-ba
 
 | **Code** | **ATSD Revision Number** | **Java Version** | **HBase Version** | **HDFS Version** |
 |---|---|---|---|---|
-| Old | 16854 and earlier | 1.7 | 0.94.29 | 1.0.3 |
-| New | 16855 and later | 1.8 | 1.2.5 | 2.6.4 |
+| Old | 16999 and earlier | 1.7 | 0.94.29 | 1.0.3 |
+| New | 17000 and later | 1.8 | 1.2.5 | 2.6.4 |
 
 ## Requirements
 
@@ -222,7 +222,7 @@ Upgrade Hadoop.
 Review the log file.
 
 ```sh
-tail /opt/atsd/hadoop/logs/hadoop-axibase-namenode-*.log
+tail /opt/atsd/hadoop/logs/hadoop-*-namenode-*.log
 ```
 
 The expected output:
@@ -398,6 +398,12 @@ Start Yarn servers:
 /opt/atsd/hadoop/sbin/start-yarn.sh
 ```
 
+Ensure that `USER` environment setting is set:
+
+```sh
+export USER=axibase
+```
+
 Start Job History server:
 
 ```sh
@@ -421,7 +427,7 @@ Run the `jps` command to check that the following processes are running:
 Download the `migration.jar` file to the `/opt/atsd` directory.
 
 ```sh
-curl -o /opt/atsd/migration.jar https://axibase.com/public/atsd-125-migration/migration.jar
+curl -o /opt/atsd/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.5.jar
 ```
 
 Check that current Java version is 8.
@@ -475,7 +481,7 @@ Table 'atsd_metric' successfully deleted.
 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -m 2
 ```
 
 ```
@@ -503,13 +509,13 @@ In case of other errors, review job logs for the application ID displayed above:
 2. Migrate data from the 'atsd_forecast' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -m 2
 ```
 
 3. Migrate data from the 'atsd_li' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -m 2
 ```
 
 This migration task will write intermediate results into a temporary directory for diagnostics.
@@ -532,13 +538,13 @@ Delete the diagnostics folder:
 4. Migrate data to the 'atsd_metric' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -m 2
 ```
 
 5. Migrate data to the 'atsd_d' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -m 2
 ```
 
 ```
@@ -572,7 +578,7 @@ rm -rf /opt/atsd/atsd/bin/atsd*.jar
 Download ATSD application files.
 
 ```sh
-curl -o /opt/atsd/atsd/bin/atsd.16855.jar https://axibase.com/public/atsd-125-migration/atsd.16855.jar
+curl -o /opt/atsd/atsd/bin/atsd.17206.jar https://axibase.com/public/atsd-125-migration/atsd.17206.jar
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 ```
 
@@ -614,9 +620,18 @@ The number of records should match the results prior to migration.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
-  hbase(main):001:0> disable 'atsd_d_backup'
-  hbase(main):002:0> drop 'atsd_d_backup'
-  hbase(main):003:0> exit
+```
+
+```sh
+disable_all '.*_backup'
+```
+
+```sh
+drop_all '.*_backup'
+```
+
+```sh
+exit
 ```
 
 2. Delete the backup directory.

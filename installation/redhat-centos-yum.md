@@ -2,12 +2,9 @@
 
 ## Supported Versions
 
-- RedHat Enterprise Linux 6.x
 - RedHat Enterprise Linux 7.x
-- CentOS 6.x
 - CentOS 7.x
-- Amazon Linux 6.x
-- Amazon Linux 7.x
+- Amazon Linux 2014.09.x+
 
 ## Requirements
 

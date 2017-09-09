@@ -1,65 +1,63 @@
 # Manual Update
 
-### Login into Axibase Time Series Database Server
+## Login into Axibase Time Series Database Server
 
 ```sh
 su axibase
 ```
 
-### Download the Latest ATSD Build Files
+## Download the Latest ATSD Distribution Files
 
-Select an archive to download based on **HBase Version** displayed on the **Admin: System Information** page.
+Select an archive to download based on **HBase Version** displayed on the **Admin > System Information** page.
 
-* [hbase 0.94.x](http://axibase.com/public/atsd_ce_update_latest.htm)
+* [hbase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
 
-* [hbase 1.0.3](https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz)
-
-* [hbase 1.2.2](https://www.axibase.com/public/atsd_ee_hbase_1.2.2.tar.gz)
-
-The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd_15500.tar.gz`.
+The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd_17239.tar.gz`.
 
 Copy the archive to the ATSD server.
 
-### Unpack the Archive
+## Unpack the Archive
 
 ```sh
 tar xzf atsd.tar.gz
 ```
 
-### View Files in the Archive
+## View Files in the Archive
 
 ```sh
 cd target
 ls
 atsd-executable.jar
-atsd.jar
+atsd-hbase.jar
 ```
 
-### Stop ATSD
+## Stop ATSD
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-### Copy JAR Files
+## Copy JAR Files
 
 ```sh
-cp atsd.jar /opt/atsd/hbase/lib
+rm -rf /opt/atsd/hbase/lib/atsd*jar
+cp atsd-hbase.jar /opt/atsd/hbase/lib/atsd.hbase.jar
 ```
 
 ```sh
-cp atsd-executable.jar /opt/atsd/atsd/bin
+rm -rf /opt/atsd/atsd/bin/atsd*jar
+cp atsd-executable.jar /opt/atsd/atsd/bin/atsd.executable.jar
 ```
 
-### Start ATSD
+## Start ATSD
 
 ```sh
 /opt/atsd/bin/atsd-all.sh start
 ```
 
-It may take up to 15 minutes for the database to initialize.
+It may take up to 5 minutes for the database to initialize.
 
-### Login into ATSD user interface
+## Login into ATSD user interface
 
 ```sh
 https://atsd_host:8443/
@@ -68,4 +66,4 @@ https://atsd_host:8443/
 * Open the **Admin: System Information** page.
 * Verify that the Revision Number has been updated.
 
-![](images/revision.png "ATSD Revision")
+![](images/revision.png)

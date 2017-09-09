@@ -8,11 +8,11 @@ files directly in the user interface. Only files that are located in the
 This is especially useful and convenient when editing `graphite.conf` to
 support new metrics that are being written in graphite format.
 
-The Configuration Files Editor can be found under the Admin Tab -\>
-Configuration Files:
+The Configuration Files Editor can be found under the **Admin >
+Configuration Files**:
 
-![](images/configuration_files.png "configuration_files")
+![](images/configuration_files_new.png "configuration_files")
 
 Configuration Files Editor:
 
-![](images/configuration_files_editor.png "configuration_files_editor")
+![](images/configuration_files_editor_new.png "configuration_files_editor")

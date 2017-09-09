@@ -29,7 +29,7 @@ requirements.](requirements.md)
 
 The same versions of ATSD must be installed on both machines. [See ATSD
 installation
-guides.](http://axibase.com/products/axibase-time-series-database/download-atsd/ "ATSD Install Guides")
+guides.](../installation/README.md "ATSD Install Guides")
 
 #### Installation
 
@@ -273,9 +273,9 @@ replicated on the slave machine:
 **MASTER: the following steps must be executed only on the
 master machine.**
 
-Open ATSD user interface and navigate to Rules tab located on the main menu.
+Open ATSD user interface and navigate to **Configuration > Rules** page.
 
-![](images/atsd_rules.png "atsd_rules")
+![](images/atsd_rules_new.png)
 
 Click the [CREATE] button to create a new rule. Complete the following
 fields as specified below:
@@ -288,7 +288,7 @@ fields as specified below:
 
 Then click SAVE.
 
-![](images/rule_editor1.png "rule_editor")
+![](images/rule_editor.png "rule_editor")
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:

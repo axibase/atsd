@@ -103,7 +103,7 @@ ORDER BY datetime
 ```sql
 SELECT datetime, entity, value
   FROM "mpstat.cpu_busy"
-WHERE entity LIKE 'nurswgvml00*'
+WHERE entity LIKE 'nurswgvml00%'
   AND datetime > current_hour
 ORDER BY datetime  
 ```

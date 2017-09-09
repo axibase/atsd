@@ -17,7 +17,7 @@ SELECT datetime, entity, metric, value,
   entity.label, entity.timezone, ISNULL(entity.interpolate, 'N/A')  
 FROM atsd_series WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user', 'mpstat.cpu_system')
   AND datetime BETWEEN '2016-10-16T17:10:00Z' AND '2016-10-16T17:10:20Z'
-  AND entity LIKE 'nurswgvml0*'
+  AND entity LIKE 'nurswgvml0%'
   ORDER BY datetime
 ```
 

@@ -63,7 +63,7 @@ SELECT tags."double""quote",
   FROM "m-eq-1"
 WHERE tags."double""quote" = 'tv1'  
   AND tags."both'quo""tes" IS NOT NULL
-  AND tags."single'quote" LIKE '*2'
+  AND tags."single'quote" LIKE '%2'
 ORDER BY tags."single'quote"
 ```
 

@@ -53,7 +53,7 @@ The `SELECT` statement consists of a `SELECT` expression, a `FROM` query, a `WHE
 ```sql
 SELECT { * | { expr [ .* | [ AS ] alias ] } }
   FROM table [[ AS ] alias ]
-    [ { INNER | [ FULL ] OUTER } JOIN table [[ AS ] alias ] [ ON joinExpr | USING ENTITY ] ]
+    [ { INNER | [ FULL ] OUTER } JOIN [ USING ENTITY ] table [[ AS ] alias ] [ ON joinExpr ] ]
 [ WHERE expr(boolean) ]
   [ WITH ROW_NUMBER expr ]
 [ GROUP BY expr [, ...] ]
@@ -108,7 +108,7 @@ SELECT entity, metric, datetime, value
   FROM atsd_series
 WHERE metric = 'mpstat.cpu_busy'
   -- WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user')
-  -- WHERE metric LIKE 'mpstat.cpu*'
+  -- WHERE metric LIKE 'mpstat.cpu%'
   AND entity = 'nurswgvml007'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
@@ -139,7 +139,7 @@ SELECT entity, datetime, value, tags.*
   FROM "df.disk_used"
 WHERE datetime >= '2017-06-15T00:00:00Z'
   AND (entity IN ('nurswgvml007', 'nurswgvml010')
-       OR tags.file_system LIKE '/dev/*'
+       OR tags.file_system LIKE '/dev/%'
        OR value/1024 > 100000)
 ```
 
@@ -545,7 +545,7 @@ The column can be specified in the `SELECT` expression to print out the ordered 
 ```sql
 SELECT datetime, entity, value, entity.groups
   FROM "mpstat.cpu_busy"
-WHERE entity LIKE 'nurswgvml00*'
+WHERE entity LIKE 'nurswgvml00%'
   AND datetime >= CURRENT_HOUR
 ORDER BY datetime
 ```
@@ -714,15 +714,15 @@ The modulo operator `%` returns the remainder of one number divided by another, 
 
 ### LIKE Expression
 
-The `LIKE` expression supports `?` and `*` wildcards which can be escaped with backslash `\`, if the symbol occurs in the matched value.
+The `LIKE` expression supports `%` and `_` wildcards which can be escaped with backslash `\`, if the symbol occurs in the matched value.
 
 The comparison is case-sensitive, even for entity and metric names.
 
 ```sql
 SELECT datetime, entity, value, tags.mount_point, tags.file_system
   FROM "df.disk_used_percent"
-WHERE tags.file_system LIKE '/dev/*'
-  AND datetime >= NOW - 1*HOUR
+WHERE tags.file_system LIKE '/dev/%'
+  AND datetime >= PREVIOUS_HOUR
 ```
 
 ### REGEX Expression
@@ -742,9 +742,9 @@ SELECT datetime, entity, value, tags.mount_point, tags.file_system
 
 ```sql
 WHERE entity = 'nurswgvml007'
-  AND (tags.file_system LIKE '*map*'
-    OR tags.file_system LIKE '*mnt*'
-    OR tags.file_system LIKE '*dev*')
+  AND (tags.file_system LIKE '%map%'
+    OR tags.file_system LIKE '%mnt%'
+    OR tags.file_system LIKE '%dev%')
 ```
 
 ```sql
@@ -1279,7 +1279,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 | **Name** | **Description**|
 |:---|:---|
-| `null` | [**Default**] The database time zone is used tp split the selection interval into perios greater than 1 day. |
+| `null` | [**Default**] The database time zone is used to split the selection interval into periods greater than 1 day. |
 | `timezone id` | The literal string with the time zone [identifier](../../api/network/timezone-list.md). |
 | `entity.timeZone` or<br>`metric.timeZone` | The time zone of the entity or metric. |
 
@@ -1669,6 +1669,19 @@ SELECT MAX(value) FROM (
 | 98.8       |
 ```
 
+An inline view may contain subqueries that join multiple tables.
+
+```sql
+SELECT datetime, MAX(value) AS "5-min Peak" FROM (
+  SELECT datetime, AVG(t1.value * t2.value) AS "value"
+    FROM "cpu_allocated_units" t1
+    JOIN "cpu_used_percent" t2 
+    WHERE datetime >= PREVIOUS_HOUR
+    GROUP BY PERIOD(5 MINUTE)
+)
+GROUP BY PERIOD (1 HOUR)
+```
+
 ## Joins
 
 Data for multiple virtual tables (metrics) can be merged with the `JOIN` and `FULL OUTER JOIN` clauses.
@@ -1680,9 +1693,9 @@ Since joined tables in ATSD always contain the same predefined columns, an `ON` 
 | **Compact Syntax** | **Standard Syntax** |
 |:---|---|
 | `... JOIN speed t2` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... JOIN speed t2 USING ENTITY` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
+| `... JOIN USING ENTITY speed t2` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
 | `... FULL OUTER JOIN speed t2` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... FULL OUTER JOIN speed t2 USING ENTITY` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
+| `... FULL OUTER JOIN USING ENTITY speed t2` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
 
 The `ON` condition, if specified, can refer only to `entity`, `time/datetime`, and `tags` columns.
 
@@ -2342,7 +2355,7 @@ SELECT datetime, UPPER(REPLACE(entity, 'nurswg', '')) AS "entity", value,
   SUBSTR(tags.file_system, LOCATE('vg', tags.file_system)) AS fs
 FROM "df.disk_used"
   WHERE datetime >= NOW - 1*MINUTE
-AND LOWER(tags.file_system) LIKE '*root'
+AND LOWER(tags.file_system) LIKE '%root'
   ORDER BY datetime
 ```
 
@@ -2510,8 +2523,8 @@ The list of metrics can be then optional filtered with additional conditions as 
 SELECT metric, datetime, value
   FROM atsd_series
 WHERE metric IN metrics('nurswgvml007')
-  AND metric LIKE 'mpstat.cpu*'
-  -- AND metric NOT LIKE 'df.*'
+  AND metric LIKE 'mpstat.cpu%'
+  -- AND metric NOT LIKE 'df.%'
   AND datetime >= CURRENT_HOUR
 ORDER BY datetime
   LIMIT 10
@@ -2581,7 +2594,7 @@ The primary purpose of a replacement table is to act as a dictionary for decodin
 SELECT datetime, entity, ISNULL(LOOKUP('tcp-status-codes', value), value)
   FROM "docker.tcp-connect-status"
 WHERE datetime >= NOW - 5*MINUTE
-  AND LOOKUP('tcp-status-codes', value) NOT LIKE '*success*'
+  AND LOOKUP('tcp-status-codes', value) NOT LIKE '%success%'
 ```
 
 If the searched key is a number provided by the `value` column or an arithmetic expression, it is formatted into a string with a `#.##` pattern.
@@ -3065,10 +3078,9 @@ SELECT * FROM "mpstat.cpu_busy" WHERE entity = 'nurswgvml007' ORDER BY datetime 
 
 While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabilities.md#database-capabilities) between SQL dialect implemented in ATSD and SQL specification standards are numerous, the following exceptions to widely used constructs are worth mentioning:
 
-* Wildcard symbols are `*`/`?` instead of `%`/`_`.
 * Self-joins are not supported.
-* `LEFT OUTER JOIN` and `RIGHT OUTER JOIN` operations are not supported.
-* Subqueries are supported only by the `BETWEEN` operator applied to time|datetime column.
+* `LEFT OUTER JOIN` and `RIGHT OUTER JOIN` queries are not supported.
+* Subqueries are supported only by the `BETWEEN` operator applied to the `time` and `datetime` columns.
 * `UNION`, `EXCEPT` and `INTERSECT` operators are not supported. Query [atsd_series](examples/select-atsd_series.md) table as a `UNION ALL` alternative.
 * In case of division by zero, the database returns `NaN` according to the IEEE 754-2008 standard instead of terminating processing with a computational error.
 * The `WITH` operator is supported only in the following clauses: `WITH ROW_NUMBER`, `WITH INTERPOLATE`.

@@ -10,6 +10,7 @@ The following rules apply if the specified group exists:
 * If the request doesn't contain any tags, the current tags will be deleted.
 * The request does **not** change the list of members.
 * If the `expression` field is set to 'null' in the request, the expression will be deleted.
+* If the `enabled` field is not included, it will be set to `true`
 
 ## Request
 

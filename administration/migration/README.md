@@ -11,8 +11,8 @@ ATSD upgrades on [Docker containers](container.md) and [Hadoop clusters](cluster
 
 | **Code** | **ATSD Revision Number** | **Java Version** | **HBase Version** | **HDFS Version** |
 |---|---|---|---|---|
-| Old | 16854 and earlier | 1.7 | 0.94.29 | 1.0.3 |
-| New | 16855 and later | 1.8 | 1.2.5 | 2.6.4 |
+| Old | 16999 and earlier | 1.7 | 0.94.29 | 1.0.3 |
+| New | 17000 and later | 1.8 | 1.2.5 | 2.6.4 |
 
 ## Requirements
 
@@ -193,7 +193,7 @@ curl -o /opt/atsd/hadoop.tar.gz https://axibase.com/public/atsd-125-migration/ha
 tar -xf /opt/atsd/hadoop.tar.gz -C /opt/atsd/
 ```
 
-Get path to the Java 8 home.
+Verify path to the Java 8 home.
 
 ```sh
 dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"
@@ -204,7 +204,7 @@ dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"
 Update the `JAVA_HOME` variable to Java 8 in the `/opt/atsd/hadoop/etc/hadoop/hadoop-env.sh` file.
 
 ```sh
-jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" /opt/atsd/hadoop/etc/hadoop/hadoop-env.sh
+jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" /opt/atsd/hadoop/etc/hadoop/hadoop-env.sh ; echo $jp
 ```
 
 Upgrade Hadoop.
@@ -273,7 +273,7 @@ tar -xf /opt/atsd/hbase.tar.gz -C /opt/atsd/
 Update the `JAVA_HOME` to Java 8 in the `/opt/atsd/hbase/conf/hbase-env.sh` file.
 
 ```sh
-jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" /opt/atsd/hbase/conf/hbase-env.sh
+jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" /opt/atsd/hbase/conf/hbase-env.sh ; echo $jp
 ```
 
 Check available physical memory on the server.
@@ -411,7 +411,7 @@ Run the `jps` command to check that the following processes are running:
 Download the `migration.jar` file to the `/opt/atsd` directory.
 
 ```sh
-curl -o /opt/atsd/migration.jar https://axibase.com/public/atsd-125-migration/migration.jar
+curl -o /opt/atsd/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.5.jar
 ```
 
 Check that current Java version is 8.
@@ -460,12 +460,29 @@ Table 'atsd_metric' successfully disabled.
 Table 'atsd_metric' successfully deleted.
 ```
 
+### Map/Reduce Settings
+
+When running Map/Reduce jobs specified in the next section, the system may encounter a virtual memory error.
+
+```
+17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
+Container [...2] is running beyond virtual memory limits... Killing container.
+```
+
+In case of this error, adjust Map-Reduce [settings](mr-settings.md) and retry the job by appending the `-r` flag as follows `.DeleteTaskMigration -m 2 -r`.
+
+In case of other errors, review job logs for the application ID displayed above:
+
+```sh
+/opt/atsd/hadoop/bin/yarn logs -applicationId application_1501581371115_0001 | less
+```
+
 ### Migrate Records from Backup Tables
 
 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -m 2
 ```
 
 ```
@@ -477,43 +494,28 @@ Table 'atsd_metric' successfully deleted.
 ...
 ```
 
-In case of insufficient virtual memory error, adjust Map-Reduce [settings](mr-settings.md) and retry the command with the `-r` flag.
-
-```
-17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
-Container [...2] is running beyond virtual memory limits... Killing container.
-```
-
-In case of other errors, review job logs for the application ID displayed above:
-
-```sh
-/opt/atsd/hadoop/bin/yarn logs -applicationId application_1501581371115_0001 | less
-```
-
 2. Migrate data from the 'atsd_forecast' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -m 2
 ```
 
 3. Migrate data from the 'atsd_li' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -m 2
 ```
 
 This migration task will write intermediate results into a temporary directory for diagnostics.
 
 ```sh
-INFO mapreduce.LastInsertMigration: Map-reduce job success, files from outputFolder 1609980393918240854 are ready for loading in table atsd_li.
 ...
-INFO mapreduce.LastInsertMigration: Files from outputFolder 1609980393918240854 are loaded in table atsd_li. Start deleting outputFolder.
 WARN mapreduce.LastInsertMigration: Deleting outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 failed!
 WARN mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 not needed any more, and you can delete this outputFolder via hdfs cli.
 INFO mapreduce.LastInsertMigration: Last Insert table migration job took 37 seconds.
 ```
 
-Delete the diagnostics folder:
+Delete the diagnostics folder manually:
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable
@@ -522,13 +524,13 @@ Delete the diagnostics folder:
 4. Migrate data to the 'atsd_metric' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -m 2
 ```
 
 5. Migrate data to the 'atsd_d' table.
 
 ```sh
-/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator
+/opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -m 2
 ```
 
 ```
@@ -562,7 +564,7 @@ rm -rf /opt/atsd/atsd/bin/atsd*.jar
 Download ATSD application files.
 
 ```sh
-curl -o /opt/atsd/atsd/bin/atsd.16855.jar https://axibase.com/public/atsd-125-migration/atsd.16855.jar
+curl -o /opt/atsd/atsd/bin/atsd.17206.jar https://axibase.com/public/atsd-125-migration/atsd.17206.jar
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
 ```
 
@@ -604,9 +606,18 @@ The number of records should match the results prior to migration.
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
-  hbase(main):001:0> disable 'atsd_d_backup'
-  hbase(main):002:0> drop 'atsd_d_backup'
-  hbase(main):003:0> exit
+```
+
+```sh
+disable_all '.*_backup'
+```
+
+```sh
+drop_all '.*_backup'
+```
+
+```sh
+exit
 ```
 
 2. Delete the backup directory.

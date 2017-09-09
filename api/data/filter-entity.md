@@ -70,6 +70,12 @@ tags.location LIKE 'SVL*'
 tags.container_label.com.axibase.code = 'collector'
 ```
 
+> Match entities with entity tag `docker-host` contained in the collection.
+
+```javascript
+tags.docker-host IN ('dock1', 'dock2')
+```
+
 ### Property Match
 
 > Match entities with a `java_home` stored in `docker.container.config.env` equal to '/usr/lib/jvm/java-8-openjdk-amd64/jre'.

@@ -112,7 +112,7 @@ SELECT t1.entity, t1.value AS "busy", t2.value AS "sys", t3.value AS "usr",
   FROM "mpstat.cpu_busy" t1
   JOIN "mpstat.cpu_system" t2
   JOIN "mpstat.cpu_user" t3
-WHERE t1.entity LIKE 'nurswgvml0*'
+WHERE t1.entity LIKE 'nurswgvml0%'
 AND t1.datetime >= '2016-10-10T10:00:00.000Z' and t1.datetime < '2016-10-10T10:01:00.000Z'
   WITH INTERPOLATE(60 SECOND, AUTO, OUTER)
   ORDER BY t1.datetime

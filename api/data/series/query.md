@@ -117,7 +117,7 @@ The response contains an array of series objects, each containing series identif
 |:---|:---|:---|
 | t | integer | Sample time in Epoch milliseconds.|
 | d | string | Sample time in ISO format. |
-| v | number | Numeric sample value at time `t`/`d`. |
+| v | number | Numeric sample value at time `t`/`d`. <br>The field is set to `null` if the value is Not a Number: `{"d":"2017-09-14T17:00:03.000Z","v":null}`|
 | x | string | Text sample value at time `t`/`d`. |
 | version | object | Object containing version source and status fields for versioned metrics. |
 
@@ -135,8 +135,8 @@ POST https://atsd_host:8443/api/v1/series/query
 
 ```json
 [{
-  "startDate": "2016-10-14T17:00:00Z",
-  "endDate":   "2016-10-14T18:00:00Z",
+  "startDate": "2017-09-14T17:00:00Z",
+  "endDate":   "2017-09-14T18:00:00Z",
   "entity": "nurswgvml007",
   "metric": "mpstat.cpu_busy"
 }]
@@ -154,9 +154,9 @@ POST https://atsd_host:8443/api/v1/series/query
 	  "type": "DETAIL"
 	},
 	"data": [
-		{"d":"2016-10-14T17:00:03.000Z","v":24.24},
-		{"d":"2016-10-14T17:00:19.000Z","v":39.8},
-		{"d":"2016-10-14T17:00:35.000Z","v":39.18}
+		{"d":"2017-09-14T17:00:03.000Z","v":24.24},
+		{"d":"2017-09-14T17:00:19.000Z","v":39.8},
+		{"d":"2017-09-14T17:00:35.000Z","v":39.18}
 	]
 }]
 ```
@@ -202,6 +202,10 @@ curl http://localhost:8088/api/v1/series/query \
 * [Exact Tag Match](examples/query-tags-exact-match.md)
 * [Unknown Tag](examples/query-tags-unknown.md)
 * [Tag Expression](examples/query-tag-expression.md)
+
+### Special Values
+
+* [Not-a-Number (NaN)](examples/query-nan.md)
 
 ### Entity Filter
 

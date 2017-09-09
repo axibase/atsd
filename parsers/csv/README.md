@@ -36,7 +36,7 @@ series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda
 |  Entity Column  |  Name of column in CSV file containing the entities. For example: host or node.<br>Multiple columns can be specified in the Entity Column field in order to concatenate their values into a composite entity name using a dash symbol `–` as a token.<br>For example:<br>Souce CSV file:<br>`Year,Source,Destination,Travelers`<br>`1995,Moscow,Berlin,2000000`<br>Entity Columns:<br>`Source,Destination`<br>Resulting Entity:<br>`Moscow-Berlin`  |
 |  Entity Prefix  |  Prefix added to entity names.  |
 |  Default Entity  |  All data written to specific entity.  |
-|  Replace Entities  |  Replace entity names in the input file with their aliases from the selected [Replacement Table](../../administration/entity-lookup.md).<br>For example, if the Replacement Table contains a mapping `103323213=sensor001` and the entity of the CSV file is named `103323213`, then it will be saved in ATSD as `sensor001`.  |
+|  Replace Entities  |  Replace entity names in the input file with their aliases from the selected Replacement Table|
 |  Process Events  |  Process incoming data in the [Rule Engine](/rule-engine) in addition to storing it in the database.  |
 |  Metric Prefix  |  Prefix added to metric names.  |
 |  Metric Name Column  |  Column containing metric names.  |

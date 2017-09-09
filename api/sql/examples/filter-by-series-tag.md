@@ -8,7 +8,7 @@ Filter by entity and series tag using the `LIKE` pattern.
 SELECT datetime, value, tags.file_system 
   FROM "df.disk_used"_percent 
 WHERE entity = 'nurswgvml007'
-  AND tags.file_system LIKE '/d*' 
+  AND tags.file_system LIKE '/d%' 
   AND datetime >= now - 1 * hour
 ```
 

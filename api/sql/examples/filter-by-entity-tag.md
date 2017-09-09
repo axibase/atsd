@@ -33,7 +33,7 @@ ORDER BY datetime
 ```sql
 SELECT datetime, entity, value, entity.tags.app
   FROM "mpstat.cpu_busy"
-WHERE entity.tags.app LIKE 'H*'
+WHERE entity.tags.app LIKE 'H%'
   AND datetime > current_hour
 ORDER BY datetime 
 ```

@@ -2,8 +2,8 @@
 
 ## Requirements
 
-* Linux 64-bit
-* OS and hardware [requirements](../administration/requirements.md)
+* Linux 64-bit: Ubuntu 16.04, Debian 8.x/9.x, RHEL/Centos 7.x, SLES 12.x.
+* Operating system and hardware [requirements](../administration/requirements.md)
 
 ## Installation Guides
 
@@ -12,33 +12,30 @@
 | **Distribution** | **Format** | **Installation Guide** |
 | :--- | --- | :---: |
 | Ubuntu/Debian | apt | [View](ubuntu-debian-apt.md)|
-| Ubuntu/Debian  | [deb](https://axibase.com/public/atsd_ce_deb_latest.htm) | [View](ubuntu-debian-deb.md) |
+| Ubuntu/Debian | [deb](https://axibase.com/public/atsd_deb_latest.htm) | [View](ubuntu-debian-deb.md) |
 | RedHat/CentOS| yum | [View](redhat-centos-yum.md)|
-| RedHat/CentOS| [rpm](https://axibase.com/public/atsd_ce_rpm_latest.htm) | [View](redhat-centos-rpm.md)|
-| SUSE Linux Enterprise Server | [rpm](https://axibase.com/public/atsd_ce_rpm_latest.htm)   | [View](sles-rpm.md)|
-| Other (including ARM) | [tar.gz](https://axibase.com/public/atsd_ce_distrib_latest.htm) | [View](other-distributions.md)|
+| RedHat/CentOS| [rpm](https://axibase.com/public/atsd_rpm_latest.htm) | [View](redhat-centos-rpm.md)|
+| SLES| [rpm](https://axibase.com/public/atsd_rpm_sles_latest.htm)   | [View](sles-rpm.md)|
+| Other | [tar.gz](https://axibase.com/public/atsd_distrib_latest.htm) | [View](other-distributions.md)|
 
 ### Container Images
 
 | **Distribution** | **Format** | **Installation Guide** |
 | :--- | --- | :---: |
-| Docker | image | [View](docker.md)|
+| Docker | official image | [View](docker.md)|
 | RedHat Docker | certified image | [View](docker-redhat.md)|
 
-### Virtual Machines
+### Cloud
 
-| **Host** | **Format** | **Installation Guide** |
-| :--- | --- | :---: |
-| VMware  | [ova](https://axibase.com/public/atsd_ce.ova)  | [View](vmware-esxi-server-vsphere.md)|
-| Oracle VirtualBox | [ova](https://axibase.com/public/atsd_ce.ova)  | [View](virtualbox.md)|
+| **Hadoop Distribution** | **Installation Guide** |
+| :--- | :--- |
+| HBase on AWS S3  | [View](aws-emr-s3.md)|
 
 ### Hadoop Cluster
 
 | **Hadoop Distribution** | **Installation Guide** |
 | :--- | :--- |
 | Cloudera Distribution Hadoop (CDH)  | [View](cloudera.md) |
-| Ambari  | [View](ambari.md) |
-| HBase Cluster | [View](hbase-cluster.md)|
 
 ## Technical Support
 

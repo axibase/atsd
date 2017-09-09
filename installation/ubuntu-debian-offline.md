@@ -7,10 +7,8 @@ and copying them to the target machine with similar characteristics for offline 
 
 ## Supported Versions
 
-- Ubuntu 14.x
-- Ubuntu 15.x
-- Debian 6.x
-- Debian 7.x
+- Ubuntu 16.04
+- Debian 8.x/9.x
 
 ## Requirements
 

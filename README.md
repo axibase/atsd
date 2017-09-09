@@ -83,13 +83,11 @@
     * [RedHat/CentOS (rpm)](installation/redhat-centos-rpm.md)
     * [SUSE Linux Enterprise Server (rpm)](installation/sles-rpm.md)
     * [Docker (image)](installation/docker.md)
-    * [VMware VM](installation/vmware-esxi-server-vsphere.md)
-    * [Oracle VirtualBox VM](installation/virtualbox.md)
     * [Other](installation/other-distributions.md)
   * Cluster Distributions
     * [Cloudera Hadoop Distribution (CDH)](installation/cloudera.md)  	
-    * [Ambari](installation/ambari.md)	  
-    * [HBase Cluster](installation/hbase-cluster.md)
+  * Cloud Services
+    * [AWS EMR](installation/aws-emr-s3.md)    
   * [Uninstalling](administration/uninstalling.md)
   * [Updating](administration/update.md)   
 
@@ -101,25 +99,20 @@
 ## Administration
 
   * [Overview](administration#administration)
-  * [Configuring Email Client](administration/setting-up-email-client.md)
-  * [Configuring Time Zone](administration/timezone.md)
+  * [Email Client](administration/setting-up-email-client.md)
+  * [Time Zone](administration/timezone.md)
   * [Allocating Memory](administration/allocating-memory.md)
-  * [Changing Data Directory](administration/changing-data-directory.md)
+  * [Data Directory](administration/changing-data-directory.md)
   * [Compaction Test](administration/compaction-test.md)
   * [Compaction](administration/compaction.md)
-  * [Deployment](administration/deployment.md)
   * [Configuration Files](administration/editing-configuration-files.md)
   * [Network Settings](administration/networking-settings.md)  
   * [Enabling Swap Space](administration/enabling-swap-space.md)
-  * [Entity Lookup](administration/entity-lookup.md)
   * [Logging](administration/logging.md)
   * [Metric Persistence Filter](administration/metric-persistence-filter.md)
-  * [Upgrading Java](administration/upgrade-java.md)
   * [Monitoring](administration/monitoring.md)
   * [Replication](administration/replication.md)
   * [Restarting](administration/restarting.md)
-  * [Restoring Corrupted Zookeeper](administration/corrupted-zookeeper.md)
-  * [Restoring Corrupted Files](administration/corrupted-file-recovery.md)
 
 ## Data Collection Examples
 

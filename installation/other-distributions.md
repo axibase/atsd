@@ -12,13 +12,13 @@ Use SD cards with 60mb/s+ write speeds.
 
 Download tar.gz archive to the target server:
 
-* `curl -O https://www.axibase.com/public/atsd_ce.tar.gz`
-* [https://axibase.com/public/atsd_ce_distrib_latest.htm](https://axibase.com/public/atsd_ce_distrib_latest.htm)
+* `curl -O https://www.axibase.com/public/atsd-distrib.tar.gz`
+* [https://axibase.com/public/atsd_distrib_latest.htm](https://axibase.com/public/atsd_distrib_latest.htm)
 
 ## Installation
 
 ```sh
- sudo tar -xzvf atsd_ce.tar.gz -C /opt/
+ sudo tar -xzvf atsd-distrib.tar.gz -C /opt/
 ```
 
 ```sh

@@ -2,7 +2,6 @@
 
 ## Supported Versions
 
-- SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 12.x
 
 ## Requirements
@@ -19,15 +18,15 @@ dependencies, use the [offline installation option](sles-offline.md).
 
 Download the rpm package to the target server:
 
-* `curl -O https://www.axibase.com/public/atsd_ce_amd64.rpm`
-* [https://axibase.com/public/atsd_ce_rpm_latest.htm](https://axibase.com/public/atsd_ce_rpm_latest.htm)
+* `curl -O https://www.axibase.com/public/atsd_amd64_sles.rpm`
+* [https://axibase.com/public/atsd_rpm_sles_latest.htm](https://axibase.com/public/atsd_rpm_sles_latest.htm)
 
 ## Installation Steps
 
 Install ATSD with dependencies:
 
 ```sh
-sudo zypper -n install atsd_ce_amd64.rpm
+sudo zypper -n install atsd_amd64_sles.rpm
 ```
 
 It may take up to 5 minutes to initialize the database.
