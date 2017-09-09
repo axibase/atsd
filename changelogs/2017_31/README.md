@@ -5,79 +5,166 @@ Weekly Change Log: July 31, 2017 - August 06, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4452 | UI | Bug | ** UI: API Client: Format Body check box does not work ** |
-| 4443 | email | Bug | Cyrillic symbols enabled for reporting emails. |
-| 4435 | security | Bug | ** Security: unauthorized view ** |
-| 4433 | UI | Bug | Delete button repaired in Portal Editor. |
-| 4432 | core | Bug | ** Hostname discovery ** |
-| 4428 | installation | Bug | ** UserGroup set to root ** |
-| 4421 | sql | Bug | Modified handling procedure to return error, instead of empty table, for queries to metrics which do not exist |
-| 4420 | sql | Bug | Data return type standardized to bigint in [SQL Console](https://github.com/axibase/atsd/tree/master/api/sql). |
-| 4406 | UI | Bug | ** UI: Metric Editor - display and highlight unexpected value in tag set ** |
-| [4405](#issue-4405) | UI | Feature | ** Tag Templates: import and export ** (please tell me what you'd like me to show here) |
-| [4395](#issue-4395) | jdbc | Feature | Support added for [wildcard expressions](https://github.com/axibase/atsd/tree/master/api/sql#sql-compatibility) in `getTables` and `getColumns` methods. |
-| [4389](#issue-4389) | jdbc | Feature | Support added for metric and entity tags and fields in INSERT statements (can't find INSERT statement documentation to link to, please recommend a link to post below as well) |
-| [4388](#issue-4388) | jdbc | Feature | Support added for the following [datetime](https://github.com/axibase/atsd/tree/master/api/sql#predefined-columns) format: `yyyy-MM-dd HH:mm:ss[.fffffffff]` |
-| [4385](#issue-4385) | jdbc | Feature | Support added for configurable behavior on 'Metric not found' error (please tell me what kind of screenshot you'd like to show here)|
-| 4383 | jdbc | Bug | Fixed a bug which did not include atsd_series when tables were queried with a [wildcard expressions](https://github.com/axibase/atsd/tree/master/api/sql#sql-compatibility). |
-| 4379 | jdbc | Bug | Fixed an error which raised an exception upon invalid text insertion using an INSERT statement. |
-| [4374](#issue-4374) | sql | Feature | ** SQL: /api/sql/meta to obtain query metadata for non-existent metric ** (please tell me what you'd like to show for a screenshot here.)|
-| 4373 | jdbc | Bug | ** JDBC driver: fails on tags column ** |
-| 4372 | jdbc | Bug | ** JDBC driver: fails on tags column **|
-| 4371 | jdbc | Bug | Bug fixed which caused INSERT statements to not be applied to tables with escaped symbols |
-| 4370 | jdbc | Bug | ** JDBC driver: duplicate metadata query ** |
-| 4369 | jdbc | Bug | ** JDBC: Connection timezone ** |
-| 4368 | sql | Bug | Placeholder recognition enabled in prepared statements in [SQL Console](https://github.com/axibase/atsd/tree/master/api/sql) |
-| 4366 | jdbc | Bug | ** JDBC driver: refactor settings and JDBC url ** |
-| 4365 | sql | Bug | Fixed a bug which incorrectly modified [datetime](https://github.com/axibase/atsd/tree/master/api/sql#predefined-columns) based on local timezone. |
-| [4363](#issue-4363) | sql | ** Feature | SQL: /api/sql/meta to obtain query metadata without executing the query ** (Please tell me what kind of screenshot you'd like to see here) |
-| 4345 | forecast | Bug | ** Forecast improperly calculates prediction when series contains multiple tags **|
-| 4328 | sql | Bug | Fixed an exception error which resulted from using the [`Lag` function](https://github.com/axibase/atsd/blob/master/api/sql/README.md#lag) in a [`WHERE` clause](https://github.com/axibase/atsd/blob/master/api/sql/README.md#where-clause) |
-| [4303](#issue-4303) | jdbc | Feature | Support enabled for `INSERT` queries. (Do we have documentation for this?) |
-| 4278 | core | Bug | ** ATSD: compaction hangs when multiple detailed column families are present ** |
-| 3983 | api-rest	| Bug |	** Data API: tags are incorrectly concatenated with 'group' processor ** |
-| 3874 | api-network | Bug | ** Data API: series command fails to overwrite value when inserted in batch with append flag ** |
+| 4452 | UI | Bug | Fix response bidy formatting in the built-in API client. |
+| 4443 | email | Bug | Add support for UTF-8 characters email subjects. |
+| 4435 | UI | Feature | Add red alert message on Users and Entity Group pages if `api.guest.access.enabled` is enabled. |
+| 4433 | UI | Bug | Fix Delete button on the Portal Editor page. |
+| 4432 | core | Bug | Read hostname from `/proc/sys/kernel/hostname` if the hostname command is not installed on the Linux server. |
+| 4428 | installation | Bug | Set file ownership to `axibase:axibase` instead of `axibase:root` when installing ATSD from deb/rpm package. |
+| 4421 | sql | Bug | Revert a change which caused empty results to be returned for a non-existing metric, without raising an error.M |
+| [4420](#issue-4420) | sql | Bug | Return data type as `bigint` for columns that previously were classified as `long`. |
+| [4406](#issue-4406) | UI | Feature | Highlight error if tag value is not allowed by a dictionary tag specified in the metric or entity tag template. |
+| 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Configuration > Tag Templates** page. |
+| [4395](#issue-4395) | jdbc | Feature | Add support for [wildcards](https://github.com/axibase/atsd-jdbc/blob/master/README.md#database-metadata) in `getTables` and `getColumns` methods. |
+| [4389](#issue-4389) | jdbc | Feature | Add support for inserting metric and entity [tags and fields](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#metric-metadata-columns) in `INSERT` statements. |
+| [4388](#issue-4388) | jdbc | Feature | Add support for local [datetime](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#date) format `yyyy-MM-dd HH:mm:ss[.fffffffff]` in `INSERT` statements. |
+| 4385 | jdbc | Feature | Add `missingMetric` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) to control driver behavior in case of unknown table/metric.|
+| 4383 | jdbc | Bug | Include the reserved `atsd_series` if `tables=*` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) selects all tables. |
+| 4379 | jdbc | Bug | Fixed an error with `NULL` values in [`INSERT`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) statements. |
+| 4374 | sql | Feature | [SQL Metadata API](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) method should return metadata for the pre-defined columns even if the metric doesn't exist.|
+| [4373](#issue-4373) | jdbc | Bug | Raise exception if parameter data type is not valid.  |
+| [4372](#issue-4372) | jdbc | Bug | Add support for [inserting series tags](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#insert-syntax). |
+| 4371 | jdbc | Bug | Fix bug with `INSERT` statements if the table name is quoted. |
+| 4370 | jdbc | Bug | Avoid sending a duplicate [metadata](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) query when inserting data. |
+| 4369 | jdbc | Feature | Add support for [`timestamptz`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#time-zone) connection property to control how timestamps are parser and formatted when inserting data. |
+| 4368 | sql | Bug | Handle placeholders in prepared statements in [SQL Metadata API](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) method. |
+| 4366 | jdbc | Feature | Refactor [JDBC URL](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-url). |
+| 4365 | sql | Bug | Fixed a bug which caused the server to use an incorrect timezone in `GROUP BY PERIOD` [queries](https://github.com/axibase/atsd/tree/master/api/sql#period) if the database is running in a user-defined timezone. |
+| 4363 | sql | Feature | Implement an `/api/sql/meta` method to obtain [query metadata](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) without executing the query. |
+| 4345 | forecast | Bug | Add support for tag wildcards in [series queries](https://github.com/axibase/atsd/blob/master/api/data/series/query.md#entity-filter-fields) for forecast data: `type=FORECAST`. |
+| [4328](#issue-4328) | sql | Feature | Add support for [`LAG`](https://github.com/axibase/atsd/blob/master/api/sql/README.md#lag) function in `JOIN` queries. |
+| [4303](#issue-4303) | jdbc | Feature | Add support for inserting data with JDBC driver using [`INSERT` and `UPDATE`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) queries. |
+| 4278 | core | Bug | Fix a bug causing the data compaction to hang when multiple detailed column families are present. |
+| 3983 | api-rest	| Bug |	Data API: tags are incorrectly concatenated with 'group' processor. |
+| 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with append flag. |
 
 ### ATSD
 
-##### Issue 4405
+##### Issue 4420
+
+```sql
+SELECT time FROM jvm_memory_used LIMIT 1
+```
+
+```json
+        {
+          "columnIndex": 1,
+          "name": "time",
+          "titles": "time",
+          "datatype": "bigint",
+          "table": "jvm_memory_used",
+          "propertyUrl": "atsd:time",
+          "dc:description": "Sample time in epoch milliseconds"
+        }
+```
+
+Now all columns that returned `long` will be returning `bigint`.
+
+```sql
+SELECT COUNT(*) FROM test_m
+```
+
+```json
+        {
+          "columnIndex": 1,
+          "name": "count(*)",
+          "titles": "count(*)",
+          "datatype": "long",
+          "propertyUrl": "atsd:count"
+        }
+```
+
+##### Issue 4406
+
+![](Images/4406.png)
 
 ##### Issue 4395
 
-_Sample Syntax_
+ The expression uses `%` and `_` wildcards to match tables and columns by name.
 
-```sql
-//will match disk_used
+```java
+ // Match tables disk_used, disk_used_percent
  ResultSet rs = dmd.getTables(null, null, "_isk_%", null);
  ```
- The above query uses standard wildcard expressions `%` and `_` to match tables and columns by name.
  
 ##### Issue 4389
 
-##### Issue 4388
+```sql
+INSERT INTO "temperature"
+         (entity, datetime, value, tags.surface, metric.units, entity.tags.location)
+  VALUES ('sensor-01', '2017-08-21T00:00:00Z', 24.5, 'Outer', 'Celsius', 'SVL')
+```
 
-_Sample Query and Result_
+##### Issue 4388
 
 ```sql
 INSERT INTO 'my-metric' (entity, value, datetime) VALUES ('e-1', 123, '2017-07-12 04:05:00.34567')
 ```
 
-If `timestamp = true`, the query returns the following:
+##### Issue 4373
 
-```sql
-series e:e-1 d:2017-07-12T04:05:00.345Z m:my-metric=123
+```java
+final String sql = "INSERT INTO metric1 (time, entity, value, tags) VALUES (?,?,?,?)";
+try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+    stmt.setLong(1, System.currentTimeMillis());
+    stmt.setString(2, "entity1");
+    stmt.setString(3, "Hello"); //must be a number
+    stmt.setString(4, null);
+    stmt.executeUpdate();
+}
 ```
 
-If `timestamp = false`, the query returns the following:
+##### Issue 4372
 
-```sql
-series e:e-1 d:2017-07-12T00:05:00.345Z m:my-metric=123
+Multiple tag pairs must be separated by semi-colon or inserted with [`setTags`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#parameterized-queries) method.
+
+```css
+tag1=abc;tag2=cde
 ```
 
-##### Issue 4385
+```java
+                String query = "INSERT INTO minsert1 (datetime, entity, value, tags) VALUES (?, ?, ?, ?)";
+                PreparedStatement st = conn.prepareStatement(query);
+                st.setTimestamp(1, new Timestamp(time));
+                st.setString(2, entityName);
+                st.setDouble(3, val);
+                st.setString(4, "tag1=abc;tag2=cde");
+```
 
-##### Issue 4374
+##### Issue 4365
 
-##### Issue 4363
+```sql
+SELECT time, date_format(time, 'yyyy-MM-dd HH:mm', 'Europe/Vienna')
+  FROM m1 
+GROUP BY period(1 DAY, 'Europe/Vienna')
+```
+
+##### Issue 4328
+
+```sql
+SELECT t1.tags.company_name, datetime, 
+  t1.value, t2.value, 
+  t1.value - t2.value, 
+  t1.value - LAG(t1.value)
+FROM assets t1 
+  JOIN liabilities t2 
+WHERE t1.tags.company_name = 'Mutual of Omaha Insurance Company'
+  --ORDER BY datetime
+  WITH ROW_NUMBER(t1.tags.company_name ORDER BY datetime) <= 2
+```
 
 ##### Issue 4303
+
+The JDBC driver provides support for writing data into ATSD using INSERT and UPDATE statements. These statements are parsed by the driver into network commands which are inserted into the database with the Data API [command](https://github.com/axibase/atsd/blob/master/api/data/ext/command.md) method.
+
+```sql
+INSERT INTO temperature (entity, datetime, value, tags.surface)
+                 VALUES ('sensor-01', '2017-08-21T00:00:00Z', 24.5, 'Outer')
+                 
+UPDATE temperature SET value = 24.5 
+  WHERE entity = 'sensor-01' AND datetime = '2017-08-21T00:00:00Z' AND tags.surface = 'Outer'                 
+```
+
+```ls
+series e:sensor-01 d:2017-08-21T00:00:00Z m:temperature=24.5 t:surface=Outer
+```
