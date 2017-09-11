@@ -5,7 +5,7 @@ Weekly Change Log: August 14, 2017 - August 20, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4498 | core | Bug | Add warning if Zookeeper returns TableExistsException which requires clearing [Zookeeper cache](https://github.com/axibase/atsd/blob/master/administration/restarting.md#zookeeper-cache). |
+| 4498 | core | Bug | Added warning if Zookeeper returns TableExistsException which requires clearing [Zookeeper cache](https://github.com/axibase/atsd/blob/master/administration/restarting.md#zookeeper-cache). |
 | 4496 | entity_views | Bug | Fixed an error which created duplicate entity views on each database start. |
 | 4481 | core | Bug | Fixed an error caused by a parent tag template referencing a child tag template in a loop. |
 | [4480](#issue-4480) | entity_views | Feature | Implement `formatInterval` and `formatIntervalShort` [functions](https://github.com/axibase/atsd/blob/master/rule-engine/functions-time.md) in Entity Views. |
@@ -16,8 +16,8 @@ Weekly Change Log: August 14, 2017 - August 20, 2017
 | [4415](#issue-4415) | UI | Feature | Refactor metric and entity list editors to support group actions.   |
 | 4408 | UI | Bug | Refactor Metrics and Entity tabs. |
 | 4362 | client | Feature | Add support for HTTP `HEAD` method in the built-in API client. |
-| [4317](#issue-4317) | sql | Feature | Add support for [publishing](https://github.com/axibase/atsd/blob/master/api/sql/scheduled-sql.md#link) scheduled SQL report files.|
-| [4297](#issue-4297) | sql | Feature | Add support for [storing derived series](https://github.com/axibase/atsd/blob/master/api/sql/scheduled-sql-store.md). |
+| [4317](#issue-4317) | sql | Feature | Added support for [publishing](https://github.com/axibase/atsd/blob/master/api/sql/scheduled-sql.md#link) scheduled SQL report files.|
+| [4297](#issue-4297) | sql | Feature | Added support for [storing derived series](https://github.com/axibase/atsd/blob/master/api/sql/scheduled-sql-store.md). |
 
 ### ATSD
 
