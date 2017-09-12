@@ -131,4 +131,4 @@ CREATE TABLE TradeHistoryPlain(
 CREATE INDEX idx_tradehistoryplain ON TradeHistoryPlain (Company, Time DESC);
 ```
 
-* Upload data and measure disk space as described above
+* Upload data and measure disk space as described [above](#table-with-metrics-columns-not-compressed)
