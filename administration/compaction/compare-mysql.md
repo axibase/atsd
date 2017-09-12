@@ -109,7 +109,7 @@ WHERE
 
 * Drop **TradeHistoryPlain** if it exists
 
-```
+```sql
 DROP TABLE TradeHistoryPlain;
 ```
 
