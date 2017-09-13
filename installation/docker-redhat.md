@@ -141,9 +141,6 @@ The ATSD web interface is accessible on port 8088/http and 8443/https.
 
 | **Name** | **Required** | **Description** |
 |:---|:---|:---|
-|`--env login` | No | User name for the built-in administrator account. |
-|`--env password` | No | [Password](https://github.com/axibase/atsd-docs/blob/master/administration/user-authentication.md#password-requirements) for the built-in administrator.|
-|`--env timezone` | No | Database timezone.|
 |`--env COLLECTOR_USER_NAME` | No | User name for a data collector account. |
 |`--env COLLECTOR_USER_PASSWORD` | No | [Password](https://github.com/axibase/atsd-docs/blob/master/administration/user-authentication.md#password-requirements) for a data collector account.|
 |`--env COLLECTOR_USER_TYPE` | No | User group for a data collector account, default value is `writer`.|
