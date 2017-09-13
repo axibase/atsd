@@ -127,12 +127,12 @@ The ATSD web interface is accessible on port 8088/http and 8443/https.
 
 | **Name** | **Required** | **Description** |
 |:---|:---|:---|
-|`--env login` | No | User name for the built-in administrator account. |
-|`--env password` | No | [Password](https://github.com/axibase/atsd-docs/blob/master/administration/user-authentication.md#password-requirements) for the built-in administrator.|
-|`--env timezone` | No | Database timezone.|
+|`--env ADMIN_USER_NAME` | No | User name for the built-in administrator account. |
+|`--env ADMIN_USER_PASSWORD` | No | [Password](https://github.com/axibase/atsd-docs/blob/master/administration/user-authentication.md#password-requirements) for the built-in administrator.|
 |`--env COLLECTOR_USER_NAME` | No | User name for a data collector account. |
 |`--env COLLECTOR_USER_PASSWORD` | No | [Password](https://github.com/axibase/atsd-docs/blob/master/administration/user-authentication.md#password-requirements) for a data collector account.|
 |`--env COLLECTOR_USER_TYPE` | No | User group for a data collector account, default value is `writer`.|
+|`--env DB_TIMEZONE` | No | Database [timezone identifier](https://github.com/axibase/atsd/blob/master/api/network/timezone-list.md).|
 
 View additional launch examples [here](https://github.com/axibase/atsd-docs/blob/master/installation/docker.md#option-1-configure-collector-account-automatically).
 
