@@ -72,7 +72,7 @@ CREATE TABLE TradeHistoryPlain(
 CREATE INDEX idx_tradehistoryplain ON TradeHistoryPlain (Company, Time DESC);
 ```
 
-* Insert [dataset](IBM_adjusted.txt) using csv upload query (specify data file path on a local machine in a query)
+* Insert [dataset](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest) using csv upload query (specify data file path on a local machine in a query)
 
 ```sql
 LOAD DATA LOCAL INFILE '/home/user/IBM_adjusted.txt'
