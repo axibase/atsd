@@ -42,7 +42,7 @@ docker exec -it mysql bash
 mysql mysqldb -u user -p < /data/test.sql 
 ```
 
-* Data consumption statistics will be printed after test finish
+* Data consumption statistics will be printed after the test is completed
 
 ```
 Table with metrics columns size (not compressed) in MB
@@ -51,7 +51,7 @@ Table with metrics columns size (compressed) in MB
 79.66406250
 Table with foreign key to metrics size (not compressed) in MB
 849.70312500
-Table with foreign key to metrics size (not compressed) in MB
+Table with foreign key to metrics size (compressed) in MB
 389.35937500
 
 ```
