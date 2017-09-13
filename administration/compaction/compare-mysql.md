@@ -12,46 +12,62 @@
 
 ## Test description
 
-* Download [dataset](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest) file and test [script](scripts/test.sql) and put them in one directory (here **/home/alexey/Downloads/data**)
+* Create directory **/tmp/storage-test**
+
+```
+mkdir /tmp/storage-test
+cd /tmp/storage-test
+```
+
+* Download dataset and script files
+
+```
+curl -o IBM_adjusted.txt "http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest"
+curl -o test.sql "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table.sql"
+curl -o test.sql "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table.sql"
+```
+
+* Check that files are not empty
+
+```
+wc -l *
+```
+
+Output should look like the following
+
+```
+2045926 IBM_adjusted.txt
+       95 mysql-trade-table.sql
+      182 mysql-universal-table.sql
+  2046203 total
+
+```
 
 * Install MySQL docker image. Mount directory to container filesystem (-v parameter).
 
 ```
-docker run --name mysql \
-    -e MYSQL_ROOT_PASSWORD=root_password \
-    -e MYSQL_DATABASE=mysqldb \
-    -e MYSQL_USER=user \
-    -e MYSQL_PASSWORD=password \
-    -e MYSQL_ROOT_HOST=172.17.0.1 \
+docker run --name mysql-axibase-storage-test \
+    -e MYSQL_ROOT_PASSWORD=axibase \
+    -e MYSQL_DATABASE=axibase \
+    -e MYSQL_USER=axibase \
+    -e MYSQL_PASSWORD=axibase \
     --publish 3306:3306  \
-    -v /home/alexey/Downloads/data:/data \
+    -v /tmp/storage-test:/data \
     -d mysql/mysql-server:5.7
 ```
 
-MYSQL_ROOT_HOST option is required to allow external connections to the docker container. *172.17.0.1* is a default docker gateway.
-
-* Enter **mysql** container
+* Run **mysql-trade-table.sql** and **mysql-universal-table.sql**
 
 ```
-docker exec -it mysql bash
-```
-
-* Run **test.sql**. Note that test may last up to 30 minutes.
-
-```
-mysql mysqldb -u user -p < /data/test.sql 
+docker exec mysql-axibase-storage-test bash -c "mysql --user=axibase --password=axibase --database=axibase < /data/mysql-trade-table.sql"
+docker exec mysql-axibase-storage-test bash -c "mysql --user=axibase --password=axibase --database=axibase < /data/mysql-universal-table.sql"
 ```
 
 * Data consumption statistics will be printed after the test is completed
 
 ```
-Table with metrics columns size (not compressed) in MB
-145.26562500
-Table with metrics columns size (compressed) in MB
-79.66406250
-Table with foreign key to metrics size (not compressed) in MB
-849.70312500
-Table with foreign key to metrics size (compressed) in MB
-389.35937500
-
+Data (not compressed)	Index (not compressed)	Total (not compressed)
+127582208	42565632	170147840
+Data (compressed)	Index (compressed)	Total (compressed)
+62758912	21815296	84574208
 ```
