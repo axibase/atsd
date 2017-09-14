@@ -111,12 +111,12 @@ wc -l IBM_adjusted.txt
 ## Download SQL Scripts
 
 ```sh
-curl -o /tmp/storage-testmysql-trade-table.sql \
+curl -o mysql-trade-table.sql \
  "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table.sql"
  ```
  
 ```sh
-curl -o /tmp/storage-test/mysql-universal-table.sql \
+curl -o mysql-universal-table.sql \
  "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table.sql"
 ```
 
@@ -137,13 +137,7 @@ docker run --name mysql-axibase-storage-test \
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-docker exec -d mysql-axibase-storage-test sh -c "cat /data/mysql-trade-table.sql | mysql --password=axibase --database=axibase --table > /data/result.log"
-```
-
-View test results.
-
-```sh
-docker exec -it mysql-axibase-storage-tes tail -f /data/result.log
+cat mysql-trade-table.sql | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
 ```
 
 ```sh
@@ -162,7 +156,7 @@ docker exec -it mysql-axibase-storage-tes tail -f /data/result.log
 Target data table row count
 
 ```sh
-docker exec mysql-axibase-storage-test sh -c "mysql --password=axibase --database=axibase --table --execute 'SELECT COUNT(*) FROM TradeHistory;'"
+echo "SELECT COUNT(*) FROM TradeHistory;" | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
 ```
 
 ```sh
@@ -176,13 +170,7 @@ docker exec mysql-axibase-storage-test sh -c "mysql --password=axibase --databas
 ### Execute SQL scripts for the **Universal Table** Schema.
 
 ```sh
-docker exec -d mysql-axibase-storage-test sh -c "cat /data/mysql-universal-table.sql | mysql --password=axibase --database=axibase --table > /data/result.log"
-```
-
-View test results.
-
-```sh
-docker exec -it mysql-axibase-storage-tes tail -f /data/result.log
+cat mysql-universal-table.sql | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
 ```
 
 ```sh
@@ -201,7 +189,7 @@ docker exec -it mysql-axibase-storage-tes tail -f /data/result.log
 Target data table row count
 
 ```sh
-docker exec mysql-axibase-storage-test sh -c "mysql --password=axibase --database=axibase --table --execute 'SELECT COUNT(*) FROM UniversalHistory;'"
+echo "SELECT COUNT(*) FROM UniversalHistory;" | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
 ```
 
 ```sh
