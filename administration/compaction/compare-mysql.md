@@ -15,11 +15,32 @@ On the other hand, the **Universal Table** schema provides flexibility of adding
 
 ### DESCRIBE for **Trade Table** Schema
 
--- print schema
+```
++------------+---------------+------+-----+----------------------+--------------------------------+
+| Field      | Type          | Null | Key | Default              | Extra                          |
++------------+---------------+------+-----+----------------------+--------------------------------+
+| Instrument | int(11)       | NO   | MUL | NULL                 |                                |
+| Open       | decimal(10,4) | YES  |     | NULL                 |                                |
+| High       | decimal(10,4) | YES  |     | NULL                 |                                |
+| Low        | decimal(10,4) | YES  |     | NULL                 |                                |
+| Close      | decimal(10,4) | YES  |     | NULL                 |                                |
+| Volume     | decimal(10,4) | YES  |     | NULL                 |                                |
+| Time       | timestamp(3)  | NO   |     | CURRENT_TIMESTAMP(3) | on update CURRENT_TIMESTAMP(3) |
++------------+---------------+------+-----+----------------------+--------------------------------+
+```
 
 ### DESCRIBE for **Universal Table** Schema
 
--- print schema
+```
++------------+---------------+------+-----+----------------------+--------------------------------+
+| Field      | Type          | Null | Key | Default              | Extra                          |
++------------+---------------+------+-----+----------------------+--------------------------------+
+| Instrument | int(11)       | NO   | MUL | NULL                 |                                |
+| TradeField | int(11)       | NO   |     | NULL                 |                                |
+| Time       | timestamp(3)  | NO   |     | CURRENT_TIMESTAMP(3) | on update CURRENT_TIMESTAMP(3) |
+| Value      | decimal(10,4) | YES  |     | NULL                 |                                |
++------------+---------------+------+-----+----------------------+--------------------------------+
+```
 
 ## Dataset
 
@@ -55,10 +76,10 @@ volume = 10031
 
 | **Schema** | **Compression** | **Data Size** | **Index Size** | **Total Size** | **Bytes per Sample** |
 |---|---:|---:|---:|---:|---:|
-| Trade Table | Disabled | 123,342,434 | 123,342,434 | 123,342,434 | 17.20 |
-| Trade Table | Enabled | 123,342,434 | 123,342,434 | 123,342,434 | 18.40 |
-| Universal Table | Disabled | 123,342,434 | 123,342,434 | 123,342,434 | 18.40 |
-| Universal Table | Enabled | 123,342,434 | 123,342,434 | 123,342,434 | 18.40 |
+| Trade Table | Disabled | 126,533,632 | 42,565,632 | 169,099,264 | 82.67 |
+| Trade Table | Enabled | 63,283,200 | 22,339,584 | 85,622,784 | 41.86 |
+| Universal Table | Disabled | 480,280,576 | 257,933,312 | 738,213,888 | 360,89 |
+| Universal Table | Enabled | 213,417,984 | 121,610,240 | 335,028,224 | 163.79 |
 
 ## Executing Tests
 
@@ -84,7 +105,7 @@ wc -l IBM_adjusted.txt
 ```
 
 ```
-2045926 IBM_adjusted.txt
+2045514 IBM_adjusted.txt
 ```
 
 ## Download SQL Scripts
@@ -116,37 +137,77 @@ docker run --name mysql-axibase-storage-test \
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-docker exec mysql-axibase-storage-test bash -c "mysql --user=axibase --password=axibase --database=axibase < /data/mysql-trade-table.sql"
+docker exec -d mysql-axibase-storage-test sh -c "cat /data/mysql-trade-table.sql | mysql --password=axibase --database=axibase --table > /data/result.log"
 ```
 
 View test results.
 
 ```sh
-docker logs -f mysql-axibase-storage-test ?????
+docker exec -it mysql-axibase-storage-tes tail -f /data/result.log
 ```
 
-```
-data index total
-123 456 789
+```sh
++-------------+-----------+----------+-----------+
+| Compression | Data      | Index    | Total     |
++-------------+-----------+----------+-----------+
+| Disabled    | 126533632 | 42565632 | 169099264 |
++-------------+-----------+----------+-----------+
++-------------+----------+----------+----------+
+| Compression | Data     | Index    | Total    |
++-------------+----------+----------+----------+
+| Enabled     | 63283200 | 22339584 | 85622784 |
++-------------+----------+----------+----------+
 ```
 
-Also display row count in the target data table.
+Target data table row count
+
+```sh
+docker exec mysql-axibase-storage-test sh -c "mysql --password=axibase --database=axibase --table --execute 'SELECT COUNT(*) FROM TradeHistory;'"
+```
+
+```sh
++----------+
+| COUNT(*) |
++----------+
+|  2045514 |
++----------+
+```
 
 ### Execute SQL scripts for the **Universal Table** Schema.
 
 ```sh
-docker exec mysql-axibase-storage-test bash -c "mysql --user=axibase --password=axibase --database=axibase < /data/mysql-universal-table.sql"
+docker exec -d mysql-axibase-storage-test sh -c "cat /data/mysql-universal-table.sql | mysql --password=axibase --database=axibase --table > /data/result.log"
 ```
 
 View test results.
 
 ```sh
-docker logs -f mysql-axibase-storage-test ?????
+docker exec -it mysql-axibase-storage-tes tail -f /data/result.log
 ```
 
-```
-data index total
-123 456 789
+```sh
++-------------+-----------+-----------+-----------+
+| Compression | Data      | Index     | Total     |
++-------------+-----------+-----------+-----------+
+| Disabled    | 480280576 | 257933312 | 738213888 |
++-------------+-----------+-----------+-----------+
++-------------+-----------+-----------+-----------+
+| Compression | Data      | Index     | Total     |
++-------------+-----------+-----------+-----------+
+| Enabled     | 213417984 | 121610240 | 335028224 |
++-------------+-----------+-----------+-----------+
 ```
 
-Also display row count in the target data table.
+Target data table row count
+
+```sh
+docker exec mysql-axibase-storage-test sh -c "mysql --password=axibase --database=axibase --table --execute 'SELECT COUNT(*) FROM UniversalHistory;'"
+```
+
+```sh
++----------+
+| COUNT(*) |
++----------+
+| 10227570 |
++----------+
+```

@@ -93,13 +93,15 @@ SET
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 
 SELECT 
-	SUM(data_length) "Data (not compressed)", 
-	SUM(index_length) "Index (not compressed)", 
-	SUM(data_length + index_length) "Total (not compressed)"
+	"Disabled" AS "Compression",
+	SUM(data_length) "Data", 
+	SUM(index_length) "Index", 
+	SUM(data_length + index_length) "Total"
 FROM 
    information_schema.TABLES 
 WHERE 
    table_schema='axibase';
+
 
 -- Table with foreign key to metrics (compressed)
 
@@ -171,12 +173,14 @@ SET
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 
 SELECT 
-	SUM(data_length) "Data (compressed)", 
-	SUM(index_length) "Index (compressed)", 
-	SUM(data_length + index_length) "Total (compressed)"
+	"Enabled" AS "Compression",
+	SUM(data_length) "Data", 
+	SUM(index_length) "Index", 
+	SUM(data_length + index_length) "Total"
 FROM 
    information_schema.TABLES 
 WHERE 
    table_schema='axibase';
+
 
 
