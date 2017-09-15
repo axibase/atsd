@@ -78,7 +78,7 @@ volume = 10031
 |---|---:|---:|---:|---:|---:|
 | Trade Table | Disabled | 114,982,912 | 36,257,792 | 151,240,704 | 73.94 |
 | Trade Table | Enabled | 57,491,456 | 18,661,376 | 76,152,832 | 37.23 |
-| Universal Table | Disabled | 461,389,824 | 240,041,984 | 701,431,808 | 342,91 |
+| Universal Table | Disabled | 461,389,824 | 240,041,984 | 701,431,808 | 342.91 |
 | Universal Table | Enabled | 226,525,184 | 120,553,472 | 347,078,656 | 169.68 |
 
 ## Executing Tests
@@ -183,7 +183,12 @@ Database file size
 Target data table row count
 
 ```sh
-echo "SELECT COUNT(*) FROM TradeHistory;" | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
+echo "SELECT COUNT(*) FROM TradeHistory;" | \
+    docker exec -i mysql-axibase-storage-test mysql \
+     --user=axibase \
+     --password=axibase \
+     --database=axibase \
+     --table
 ```
 
 ```sh
@@ -227,7 +232,12 @@ Database file size
 Target data table row count
 
 ```sh
-echo "SELECT COUNT(*) FROM UniversalHistory;" | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
+echo "SELECT COUNT(*) FROM UniversalHistory;" | \
+    docker exec -i mysql-axibase-storage-test mysql \
+     --user=axibase \
+     --password=axibase \
+     --database=axibase \
+     --table
 ```
 
 ```sh
