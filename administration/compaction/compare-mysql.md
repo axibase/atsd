@@ -36,7 +36,7 @@ On the other hand, the **Universal Table** schema provides flexibility of adding
 | Field      | Type          | Null | Key | Default           | Extra |
 +------------+---------------+------+-----+-------------------+-------+
 | Instrument | int(11)       | NO   | MUL | NULL              |       |
-| TradeField | int(11)       | NO   |     | NULL              |       |
+| Metric     | int(11)       | NO   |     | NULL              |       |
 | Time       | timestamp     | NO   |     | CURRENT_TIMESTAMP |       |
 | Value      | decimal(10,4) | YES  |     | NULL              |       |
 +------------+---------------+------+-----+-------------------+-------+

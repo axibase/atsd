@@ -8,27 +8,27 @@ CREATE TABLE Instruments(
    Name VARCHAR(20)
 );
 
-CREATE TABLE TradeFields(
+CREATE TABLE Metrics(
    Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
    Name VARCHAR(20)
 );
 
 INSERT INTO Instruments (Name) VALUES ("IBM");
 
-INSERT INTO TradeFields (Name) VALUES ("Open");
-INSERT INTO TradeFields (Name) VALUES ("High");
-INSERT INTO TradeFields (Name) VALUES ("Low");
-INSERT INTO TradeFields (Name) VALUES ("Close");
-INSERT INTO TradeFields (Name) VALUES ("Volume");
+INSERT INTO Metrics (Name) VALUES ("Open");
+INSERT INTO Metrics (Name) VALUES ("High");
+INSERT INTO Metrics (Name) VALUES ("Low");
+INSERT INTO Metrics (Name) VALUES ("Close");
+INSERT INTO Metrics (Name) VALUES ("Volume");
 
 CREATE TABLE UniversalHistory(
    Instrument INT NOT NULL REFERENCES Instruments(Id),
-   TradeField INT NOT NULL REFERENCES TradeFields(Id),
+   Metric INT NOT NULL REFERENCES Metrics(Id),
    Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
    Value DECIMAL(10,4)
 ) ROW_FORMAT=COMPRESSED;
 
-CREATE INDEX Idx_UniversalHistory ON UniversalHistory (Instrument, TradeField, Time);
+CREATE INDEX Idx_UniversalHistory ON UniversalHistory (Instrument, Metric, Time);
 
 LOAD DATA LOCAL INFILE '/data/IBM_adjusted.txt'
 INTO TABLE UniversalHistory
@@ -37,7 +37,7 @@ LINES TERMINATED BY '\n'
 (@col1, @col2, @col3, @col4, @col5, @col6, @col7)
 SET 
 	Instrument=1,
-	TradeField=1,
+	Metric=1,
 	value=@col3,
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 	
@@ -48,7 +48,7 @@ LINES TERMINATED BY '\n'
 (@col1, @col2, @col3, @col4, @col5, @col6, @col7)
 SET 
 	Instrument=1,
-	TradeField=2,
+	Metric=2,
 	value=@col4,
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 	
@@ -59,7 +59,7 @@ LINES TERMINATED BY '\n'
 (@col1, @col2, @col3, @col4, @col5, @col6, @col7)
 SET 
 	Instrument=1,
-	TradeField=3,
+	Metric=3,
 	value=@col5,
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 	
@@ -70,7 +70,7 @@ LINES TERMINATED BY '\n'
 (@col1, @col2, @col3, @col4, @col5, @col6, @col7)
 SET 
 	Instrument=1,
-	TradeField=4,
+	Metric=4,
 	value=@col6,
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 	
@@ -81,7 +81,7 @@ LINES TERMINATED BY '\n'
 (@col1, @col2, @col3, @col4, @col5, @col6, @col7)
 SET 
 	Instrument=1,
-	TradeField=5,
+	Metric=5,
 	value=@col7,
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 
