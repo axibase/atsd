@@ -16,30 +16,30 @@ On the other hand, the **Universal Table** schema provides flexibility of adding
 ### DESCRIBE for **Trade Table** Schema
 
 ```
-+------------+---------------+------+-----+----------------------+--------------------------------+
-| Field      | Type          | Null | Key | Default              | Extra                          |
-+------------+---------------+------+-----+----------------------+--------------------------------+
-| Instrument | int(11)       | NO   | MUL | NULL                 |                                |
-| Open       | decimal(10,4) | YES  |     | NULL                 |                                |
-| High       | decimal(10,4) | YES  |     | NULL                 |                                |
-| Low        | decimal(10,4) | YES  |     | NULL                 |                                |
-| Close      | decimal(10,4) | YES  |     | NULL                 |                                |
-| Volume     | decimal(10,4) | YES  |     | NULL                 |                                |
-| Time       | timestamp(3)  | NO   |     | CURRENT_TIMESTAMP(3) | on update CURRENT_TIMESTAMP(3) |
-+------------+---------------+------+-----+----------------------+--------------------------------+
++------------+---------------+------+-----+-------------------+-------+
+| Field      | Type          | Null | Key | Default           | Extra |
++------------+---------------+------+-----+-------------------+-------+
+| Instrument | int(11)       | NO   | MUL | NULL              |       |
+| Open       | decimal(10,4) | YES  |     | NULL              |       |
+| High       | decimal(10,4) | YES  |     | NULL              |       |
+| Low        | decimal(10,4) | YES  |     | NULL              |       |
+| Close      | decimal(10,4) | YES  |     | NULL              |       |
+| Volume     | decimal(10,4) | YES  |     | NULL              |       |
+| Time       | timestamp     | NO   |     | CURRENT_TIMESTAMP |       |
++------------+---------------+------+-----+-------------------+-------+
 ```
 
 ### DESCRIBE for **Universal Table** Schema
 
 ```
-+------------+---------------+------+-----+----------------------+--------------------------------+
-| Field      | Type          | Null | Key | Default              | Extra                          |
-+------------+---------------+------+-----+----------------------+--------------------------------+
-| Instrument | int(11)       | NO   | MUL | NULL                 |                                |
-| TradeField | int(11)       | NO   |     | NULL                 |                                |
-| Time       | timestamp(3)  | NO   |     | CURRENT_TIMESTAMP(3) | on update CURRENT_TIMESTAMP(3) |
-| Value      | decimal(10,4) | YES  |     | NULL                 |                                |
-+------------+---------------+------+-----+----------------------+--------------------------------+
++------------+---------------+------+-----+-------------------+-------+
+| Field      | Type          | Null | Key | Default           | Extra |
++------------+---------------+------+-----+-------------------+-------+
+| Instrument | int(11)       | NO   | MUL | NULL              |       |
+| TradeField | int(11)       | NO   |     | NULL              |       |
+| Time       | timestamp     | NO   |     | CURRENT_TIMESTAMP |       |
+| Value      | decimal(10,4) | YES  |     | NULL              |       |
++------------+---------------+------+-----+-------------------+-------+
 ```
 
 ## Dataset
@@ -76,10 +76,10 @@ volume = 10031
 
 | **Schema** | **Compression** | **Data Size** | **Index Size** | **Total Size** | **Bytes per Sample** |
 |---|---:|---:|---:|---:|---:|
-| Trade Table | Disabled | 126,533,632 | 42,565,632 | 169,099,264 | 82.67 |
-| Trade Table | Enabled | 63,283,200 | 22,339,584 | 85,622,784 | 41.86 |
-| Universal Table | Disabled | 480,280,576 | 257,933,312 | 738,213,888 | 360,89 |
-| Universal Table | Enabled | 213,417,984 | 121,610,240 | 335,028,224 | 163.79 |
+| Trade Table | Disabled | 114,982,912 | 36,257,792 | 151,240,704 | 73.94 |
+| Trade Table | Enabled | 57,491,456 | 18,661,376 | 76,152,832 | 37.23 |
+| Universal Table | Disabled | 461,389,824 | 240,041,984 | 701,431,808 | 342,91 |
+| Universal Table | Enabled | 226,525,184 | 120,553,472 | 347,078,656 | 169.68 |
 
 ## Executing Tests
 
@@ -111,13 +111,29 @@ wc -l IBM_adjusted.txt
 ## Download SQL Scripts
 
 ```sh
-curl -o mysql-trade-table.sql \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table.sql"
- ```
+curl -o mysql-trade-table-raw.sql \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table-raw.sql"
+ 
+curl -o mysql-trade-table-compressed.sql \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table-compressed.sql"
+ 
+curl -o trade-table.sh \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/trade-table.sh"
+ 
+chmod +x trade-table.sh
+```
  
 ```sh
-curl -o mysql-universal-table.sql \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table.sql"
+curl -o mysql-universal-table-raw.sql \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table-raw.sql"
+ 
+curl -o mysql-universal-table-compressed.sql \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table-compressed.sql"
+ 
+curl -o universal-table.sh \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/universal-table.sh"
+ 
+chmod +x universal-table.sh
 ```
 
 ### Launch MySQL Database Container
@@ -137,20 +153,31 @@ docker run --name mysql-axibase-storage-test \
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-cat mysql-trade-table.sql | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
+./trade-table.sh 
 ```
 
 ```sh
-+-------------+-----------+----------+-----------+
-| Compression | Data      | Index    | Total     |
-+-------------+-----------+----------+-----------+
-| Disabled    | 126533632 | 42565632 | 169099264 |
-+-------------+-----------+----------+-----------+
-+-------------+----------+----------+----------+
-| Compression | Data     | Index    | Total    |
-+-------------+----------+----------+----------+
-| Enabled     | 63283200 | 22339584 | 85622784 |
-+-------------+----------+----------+----------+
+Database size provided by storage engine
+mysql: [Warning] Using a password on the command line interface can be insecure.
++----------------+------------+-----------+----------+-----------+
+| Storage engine | Row format | Data      | Index    | Total     |
++----------------+------------+-----------+----------+-----------+
+| InnoDB         | Dynamic    | 114982912 | 36257792 | 151240704 |
++----------------+------------+-----------+----------+-----------+
+
+Database file size
+180355072 /var/lib/mysql/axibase/TradeHistory.ibd
+
+Database size provided by storage engine
+mysql: [Warning] Using a password on the command line interface can be insecure.
++----------------+------------+----------+----------+----------+
+| Storage engine | Row format | Data     | Index    | Total    |
++----------------+------------+----------+----------+----------+
+| InnoDB         | Compressed | 57491456 | 18661376 | 76152832 |
++----------------+------------+----------+----------+----------+
+
+Database file size
+92274688 /var/lib/mysql/axibase/TradeHistory.ibd
 ```
 
 Target data table row count
@@ -170,20 +197,31 @@ echo "SELECT COUNT(*) FROM TradeHistory;" | docker exec -i mysql-axibase-storage
 ### Execute SQL scripts for the **Universal Table** Schema.
 
 ```sh
-cat mysql-universal-table.sql | docker exec -i mysql-axibase-storage-test mysql --user=axibase --password=axibase --database=axibase --table
+./universal-table.sh 
 ```
 
 ```sh
-+-------------+-----------+-----------+-----------+
-| Compression | Data      | Index     | Total     |
-+-------------+-----------+-----------+-----------+
-| Disabled    | 480280576 | 257933312 | 738213888 |
-+-------------+-----------+-----------+-----------+
-+-------------+-----------+-----------+-----------+
-| Compression | Data      | Index     | Total     |
-+-------------+-----------+-----------+-----------+
-| Enabled     | 213417984 | 121610240 | 335028224 |
-+-------------+-----------+-----------+-----------+
+Database size provided by storage engine
+mysql: [Warning] Using a password on the command line interface can be insecure.
++----------------+------------+-----------+-----------+-----------+
+| Storage engine | Row format | Data      | Index     | Total     |
++----------------+------------+-----------+-----------+-----------+
+| InnoDB         | Dynamic    | 461389824 | 240041984 | 701431808 |
++----------------+------------+-----------+-----------+-----------+
+
+Database file size
+729808896 /var/lib/mysql/axibase/UniversalHistory.ibd
+
+Database size provided by storage engine
+mysql: [Warning] Using a password on the command line interface can be insecure.
++----------------+------------+-----------+-----------+-----------+
+| Storage engine | Row format | Data      | Index     | Total     |
++----------------+------------+-----------+-----------+-----------+
+| InnoDB         | Compressed | 226525184 | 120553472 | 347078656 |
++----------------+------------+-----------+-----------+-----------+
+
+Database file size
+360710144 /var/lib/mysql/axibase/UniversalHistory.ibd
 ```
 
 Target data table row count
