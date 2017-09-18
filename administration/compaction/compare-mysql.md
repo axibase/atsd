@@ -76,10 +76,10 @@ volume = 10031
 
 | **Schema** | **Compression** | **Data Size** | **Index Size** | **Total Size** | **Bytes per Sample** |
 |---|---:|---:|---:|---:|---:|
-| Trade Table | Disabled | 114,982,912 | 36,257,792 | 151,240,704 | 73.94 |
-| Trade Table | Enabled | 57,491,456 | 18,661,376 | 76,152,832 | 37.23 |
-| Universal Table | Disabled | 461,389,824 | 240,041,984 | 701,431,808 | 342.91 |
-| Universal Table | Enabled | 226,525,184 | 120,553,472 | 347,078,656 | 169.68 |
+| Trade Table | Disabled | 129,679,360 | 40,468,480 | 170,147,840 | 83.18 |
+| Trade Table | Enabled | 63,266,816 | 20,234,240 | 83,501,056 | 40.82 |
+| Universal Table | Disabled | 468,729,856 | 243,187,712 | 711,917,568 | 348.04 |
+| Universal Table | Enabled | 228,622,336 | 121,602,048 | 350,224,384 | 171.22 |
 
 ## Executing Tests
 
@@ -112,28 +112,10 @@ wc -l IBM_adjusted.txt
 
 ```sh
 curl -o mysql-trade-table-raw.sql \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table-raw.sql"
- 
-curl -o mysql-trade-table-compressed.sql \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table-compressed.sql"
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table.sql"
  
 curl -o trade-table.sh \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/trade-table.sh"
- 
-chmod +x trade-table.sh
-```
- 
-```sh
-curl -o mysql-universal-table-raw.sql \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table-raw.sql"
- 
-curl -o mysql-universal-table-compressed.sql \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table-compressed.sql"
- 
-curl -o universal-table.sh \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/universal-table.sh"
- 
-chmod +x universal-table.sh
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table.sql"
 ```
 
 ### Launch MySQL Database Container
@@ -144,8 +126,6 @@ Start a MySQL 5.7 container. Mount `/tmp/storage-test` directory to the containe
 docker run --name mysql-axibase-storage-test \
     -e MYSQL_DATABASE=axibase \
     -e MYSQL_ROOT_PASSWORD=axibase \
-    -e MYSQL_USER=axibase \
-    -e MYSQL_PASSWORD=axibase \
     -v /tmp/storage-test:/data \
     -d mysql/mysql-server:5.7
 ```
@@ -153,31 +133,36 @@ docker run --name mysql-axibase-storage-test \
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-./trade-table.sh 
+cat mysql-trade-table.sql | \
+ docker exec -i mysql-axibase-storage-test mysql \
+  --user=root \
+  --password=axibase \
+  --database=axibase \
+  --table
 ```
 
 ```sh
-Database size provided by storage engine
 mysql: [Warning] Using a password on the command line interface can be insecure.
++----------------------+---------+----------+----------+
+| Table                | Op      | Msg_type | Msg_text |
++----------------------+---------+----------+----------+
+| axibase.TradeHistory | analyze | status   | OK       |
++----------------------+---------+----------+----------+
 +----------------+------------+-----------+----------+-----------+
 | Storage engine | Row format | Data      | Index    | Total     |
 +----------------+------------+-----------+----------+-----------+
-| InnoDB         | Dynamic    | 114982912 | 36257792 | 151240704 |
+| InnoDB         | Dynamic    | 129679360 | 40468480 | 170147840 |
 +----------------+------------+-----------+----------+-----------+
-
-Database file size
-180355072 /var/lib/mysql/axibase/TradeHistory.ibd
-
-Database size provided by storage engine
-mysql: [Warning] Using a password on the command line interface can be insecure.
++----------------------+---------+----------+----------+
+| Table                | Op      | Msg_type | Msg_text |
++----------------------+---------+----------+----------+
+| axibase.TradeHistory | analyze | status   | OK       |
++----------------------+---------+----------+----------+
 +----------------+------------+----------+----------+----------+
 | Storage engine | Row format | Data     | Index    | Total    |
 +----------------+------------+----------+----------+----------+
-| InnoDB         | Compressed | 57491456 | 18661376 | 76152832 |
+| InnoDB         | Compressed | 63266816 | 20234240 | 83501056 |
 +----------------+------------+----------+----------+----------+
-
-Database file size
-92274688 /var/lib/mysql/axibase/TradeHistory.ibd
 ```
 
 Target data table row count
@@ -185,7 +170,7 @@ Target data table row count
 ```sh
 echo "SELECT COUNT(*) FROM TradeHistory;" | \
     docker exec -i mysql-axibase-storage-test mysql \
-     --user=axibase \
+     --user=root \
      --password=axibase \
      --database=axibase \
      --table
@@ -202,31 +187,36 @@ echo "SELECT COUNT(*) FROM TradeHistory;" | \
 ### Execute SQL scripts for the **Universal Table** Schema.
 
 ```sh
-./universal-table.sh 
+cat mysql-universal-table.sql | \
+ docker exec -i mysql-axibase-storage-test mysql \
+  --user=root \
+  --password=axibase \
+  --database=axibase \
+  --table
 ```
 
 ```sh
-Database size provided by storage engine
 mysql: [Warning] Using a password on the command line interface can be insecure.
++--------------------------+---------+----------+----------+
+| Table                    | Op      | Msg_type | Msg_text |
++--------------------------+---------+----------+----------+
+| axibase.UniversalHistory | analyze | status   | OK       |
++--------------------------+---------+----------+----------+
 +----------------+------------+-----------+-----------+-----------+
 | Storage engine | Row format | Data      | Index     | Total     |
 +----------------+------------+-----------+-----------+-----------+
-| InnoDB         | Dynamic    | 461389824 | 240041984 | 701431808 |
+| InnoDB         | Dynamic    | 468729856 | 243187712 | 711917568 |
 +----------------+------------+-----------+-----------+-----------+
-
-Database file size
-729808896 /var/lib/mysql/axibase/UniversalHistory.ibd
-
-Database size provided by storage engine
-mysql: [Warning] Using a password on the command line interface can be insecure.
++--------------------------+---------+----------+----------+
+| Table                    | Op      | Msg_type | Msg_text |
++--------------------------+---------+----------+----------+
+| axibase.UniversalHistory | analyze | status   | OK       |
++--------------------------+---------+----------+----------+
 +----------------+------------+-----------+-----------+-----------+
 | Storage engine | Row format | Data      | Index     | Total     |
 +----------------+------------+-----------+-----------+-----------+
-| InnoDB         | Compressed | 226525184 | 120553472 | 347078656 |
+| InnoDB         | Compressed | 228622336 | 121602048 | 350224384 |
 +----------------+------------+-----------+-----------+-----------+
-
-Database file size
-360710144 /var/lib/mysql/axibase/UniversalHistory.ibd
 ```
 
 Target data table row count
@@ -234,7 +224,7 @@ Target data table row count
 ```sh
 echo "SELECT COUNT(*) FROM UniversalHistory;" | \
     docker exec -i mysql-axibase-storage-test mysql \
-     --user=axibase \
+     --user=root \
      --password=axibase \
      --database=axibase \
      --table
