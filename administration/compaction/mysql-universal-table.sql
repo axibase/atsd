@@ -86,18 +86,20 @@ SET
 	value=@col7,
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 
-ANALYZE TABLE UniversalHistory;
+ANALYZE TABLE UniversalHistory \G;
 
 SELECT 
-	MIN(Engine) AS "Storage engine",
-	MIN(Row_format) AS "Row format",
-	SUM(data_length) "Data", 
-	SUM(index_length) "Index", 
-	SUM(data_length + index_length) "Total"
+	engine,
+	table_name,
+	row_format,
+	table_rows,
+	data_length, 
+	index_length, 
+	data_length + index_length AS "total_length"
 FROM 
    information_schema.TABLES 
 WHERE 
-   table_schema='axibase';
+   table_schema='axibase' AND table_name = 'UniversalHistory';
 
 DROP DATABASE IF EXISTS axibase;
 CREATE DATABASE axibase;
@@ -107,12 +109,12 @@ USE axibase;
 CREATE TABLE Instruments(
    Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
    Name VARCHAR(20)
-);
+) ROW_FORMAT=COMPRESSED;
 
 CREATE TABLE Metrics(
    Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
    Name VARCHAR(20)
-);
+) ROW_FORMAT=COMPRESSED;
 
 INSERT INTO Instruments (Name) VALUES ("IBM");
 
@@ -186,16 +188,20 @@ SET
 	value=@col7,
 	Time=CONCAT(DATE_FORMAT(STR_TO_DATE(@col1, '%m/%d/%Y'), '%Y-%m-%d'), ' ', @col2);
 
-ANALYZE TABLE UniversalHistory;
+ANALYZE TABLE UniversalHistory \G;
 
 SELECT 
-	MIN(Engine) AS "Storage engine",
-	MIN(Row_format) AS "Row format",
-	SUM(data_length) "Data", 
-	SUM(index_length) "Index", 
-	SUM(data_length + index_length) "Total"
+	engine,
+	table_name,
+	row_format,
+	table_rows,
+	data_length, 
+	index_length, 
+	data_length + index_length AS "total_length"
 FROM 
    information_schema.TABLES 
 WHERE 
-   table_schema='axibase';
+   table_schema='axibase' AND table_name = 'UniversalHistory';
+
+SELECT COUNT(*) AS "row_count", min(time) AS "min_time", max(time) AS "max_time" FROM UniversalHistory;
 
