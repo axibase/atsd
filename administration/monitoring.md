@@ -3,8 +3,8 @@
 ATSD performance metrics can be retrieved via JMX, file, or a http/JSON
 request.
 
-These metrics are updated every 15 seconds and can be used to monitor
-the internal components of the Axibase Time Series Database, such as the
+These metrics are updated every 15 to 60 seconds and can be used to monitor
+the database state and the status of its individual components, such as the
 amount of data received, memory usage, and read/write activity.
 
 You can retrieve, test, or view the metrics using the following methods:
@@ -19,21 +19,21 @@ You can retrieve, test, or view the metrics using the following methods:
 -   [HBase Write Test](monitoring-metrics/hbase-write-test.md)
 -   [Portals](monitoring-metrics/portals.md)
 
-## Collected Metrics
+## Example
 
-Retrieve a full list of collected metrics in JSON:
+Retrieving a full list of collected metrics in JSON:
 
 ```sh
  http://atsd_server:8088/jmx?query=com.axibase.tsd:name=metrics           
 ```
 
-List of collected metrics:
+## Collected metrics
 
-| Metric | Description |
+| **Metric** | **Description** |
 | --- | --- |
-|api_command_malformed_per_second| Average number of API commands were dropped because they were not valid.|	
-|cache.size| Number of used memory bytes by the cache.|	
-|cache.used_percent| Percentage of memory used by the cache.|	
+|api_command_malformed_per_second| Number of malformed (invalid) API commands discarded, per second.|	
+|cache.size| Number of records kept in cache. Cache size and usage are also displayed on **Admin>Cache Management** page.|	
+|cache.used_percent| Cache used percentage. The cache size is displayed on on **Admin>Cache Management** page.|
 |disabled_entity_received_per_second|Average number of series commands with disabled entity received per second.|	
 |disabled_metric_received_per_second|Average number of series commands with disabled metric received per second.|	
 |disabled_properties_received_per_second|Average number of properties commands received by ATSD with skipped `Property Enabled` input setting per second.|	
