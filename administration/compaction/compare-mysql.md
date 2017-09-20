@@ -2,39 +2,54 @@
 
 ## Overview
 
-The following tests estimate the amount of disk space required to store 10+ million `time:value` samples in a MySQL database, version 5.7. The insertion tests are performed into two schema versions: 
+The following tests calculate the amount of disk space required to store 10+ million `time:value` samples in a MySQL database, version 5.7. 
 
-* **Trade Table** which contains named numeric columns for each of the 5 metrics.
-* **Universal Table** which contains a metric Id column and metric value column.
+## Dataset
 
-The **Trade Table** is most optimal if all instruments collect the same set of metrics. Adding a new metric requires altering the table populated with `NULL` values for instruments that do not collect the new measurement.
+The dataset represents 20+ years of historical minute stock trade data available from [Kibot](http://www.kibot.com/buy.aspx) company.
 
-On the other hand, the **Universal Table** schema provides flexibility of adding new metrics without altering the tables. This can be done by adding a new metric record to the referenced metric table (dictionary) and using its id when inserting data into the trade data table. The **Universal Table** schema provides the level of flexibility comparable to schema-on-read architectures often implemented in non-relational databases such Axibase Time Series Database.
+The one minute trade statistics are available for IBM stock traded on the New York Stock Exchange. The recording starts on February 1st, 1998 and lasts until the last trading day. 
 
-## Schemas
+The data is provided in the commonly used OHLCV [format](http://www.kibot.com/support.aspx#data_format).
 
-### DESCRIBE for **Trade Table** Schema
-
-* Instruments
-
-```sql
-DESCRIBE Instruments;
-+-------+-------------+------+-----+---------+----------------+
-| Field | Type        | Null | Key | Default | Extra          |
-+-------+-------------+------+-----+---------+----------------+
-| Id    | int(11)     | NO   | PRI | NULL    | auto_increment |
-| Name  | varchar(20) | YES  |     | NULL    |                |
-+-------+-------------+------+-----+---------+----------------+
-
-SELECT * FROM Instruments;
-+----+------+
-| Id | Name |
-+----+------+
-|  1 | IBM  |
-+----+------+
+```csv
+Date,Time,Open,High,Low,Close,Volume
+01/02/1998,09:30,104.5,104.5,104.5,104.5,67000
+...
+09/08/2017,17:38,142.45,142.45,142.45,142.45,3556
 ```
 
-* TradeHistory
+The records be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
+
+The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` timezone.
+
+Each row consists of 5 metrics for a given 1-minute interval:
+
+```
+09/08/2017,15:42,142.53,142.5399,142.49,142.49,10031
+...
+time   = 09/08/2017 15:42
+open   = 142.53
+high   = 142.5399
+low    = 142.49
+close  = 142.49
+volume = 10031
+```
+
+## Schema Alternatives
+
+The tests are performed using two schema options: 
+
+* **Trade Table** schema uses named columns for each input metric.
+* **Universal Table** schema uses metric Id column for all input metrics.
+
+The **Trade Table** schema requires less disk space however the underlying table can not be extended to store different sets of columns for different intrument types. As such, mutliple tables needs to be created to store data for various instrument types.
+
+The **Universal Table** schema allows adding new metrics without altering the tables. This can be done by inserting a new  record to the `Metrics` table (a dictionary) and using foreign keys when inserting data into the data table.
+
+### **Trade Table** Schema
+
+* TradeHistory Table
 
 ```sql
 DESCRIBE TradeHistory;
@@ -62,9 +77,7 @@ SELECT * FROM TradeHistory LIMIT 5;
 +------------+----------+----------+----------+----------+------------+---------------------+
 ```
 
-### DESCRIBE for **Universal Table** Schema
-
-* Instruments
+* Instruments Table
 
 ```sql
 DESCRIBE Instruments;
@@ -83,30 +96,9 @@ SELECT * FROM Instruments;
 +----+------+
 ```
 
-* Metrics
+### **Universal Table** Schema
 
-```sql
-DESCRIBE Metrics;
-+-------+-------------+------+-----+---------+----------------+
-| Field | Type        | Null | Key | Default | Extra          |
-+-------+-------------+------+-----+---------+----------------+
-| Id    | int(11)     | NO   | PRI | NULL    | auto_increment |
-| Name  | varchar(20) | YES  |     | NULL    |                |
-+-------+-------------+------+-----+---------+----------------+
-
-SELECT * FROM Metrics;
-+----+--------+
-| Id | Name   |
-+----+--------+
-|  1 | Open   |
-|  2 | High   |
-|  3 | Low    |
-|  4 | Close  |
-|  5 | Volume |
-+----+--------+
-```
-
-* UniversalHistory
+* UniversalHistory Table
 
 ```sql
 DESCRIBE UniversalHistory;
@@ -131,34 +123,46 @@ SELECT * FROM UniversalHistory LIMIT 5;
 +------------+--------+---------------------+----------+
 ```
 
-## Dataset
+* Instruments Table
 
-The dataset represents 20+ years of historical minute stock trade data made available from [Kibot](http://www.kibot.com/buy.aspx) company.
+```sql
+DESCRIBE Instruments;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| Id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| Name  | varchar(20) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
 
-The one minute trade statistics are available for IBM stock traded on the New York Stock Exchange starting from February 1st, 1998 in the commonly used OHLCV [format](http://www.kibot.com/support.aspx#data_format).
-
-```csv
-Date,Time,Open,High,Low,Close,Volume
-01/02/1998,09:30,104.5,104.5,104.5,104.5,67000
-...
-09/08/2017,17:38,142.45,142.45,142.45,142.45,3556
+SELECT * FROM Instruments;
++----+------+
+| Id | Name |
++----+------+
+|  1 | IBM  |
++----+------+
 ```
 
-The records be downloaded at the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
+* Metrics Table
 
-The file contains over 2 million lines. The price metrics OHLC contain values with up to four decimal places whereas the volume metric is an integer. The dates are recorded in the `US/Eastern` timezone.
+```sql
+DESCRIBE Metrics;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| Id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| Name  | varchar(20) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
 
-Each row consists of 5 metrics for the given 1-minute interval:
-
-```
-09/08/2017,15:42,142.53,142.5399,142.49,142.49,10031
-...
-time   = 09/08/2017 15:42
-open   = 142.53
-high   = 142.5399
-low    = 142.49
-close  = 142.49
-volume = 10031
+SELECT * FROM Metrics;
++----+--------+
+| Id | Name   |
++----+--------+
+|  1 | Open   |
+|  2 | High   |
+|  3 | Low    |
+|  4 | Close  |
+|  5 | Volume |
++----+--------+
 ```
 
 ## Results
@@ -172,18 +176,18 @@ volume = 10031
 
 ## Executing Tests
 
-### Download Data
+### Download Input Data
 
-Create directory `/tmp/storage-test`.
+Create directory `/tmp/test`.
 
 ```sh
-mkdir /tmp/storage-test
+mkdir /tmp/test
 ```
 
 Download the dataset.
 
 ```sh
-curl -o /tmp/storage-test/IBM_adjusted.txt \
+curl -o /tmp/test/IBM_adjusted.txt \
   "http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest"
 ```
 
@@ -197,32 +201,27 @@ wc -l IBM_adjusted.txt
 2045514 IBM_adjusted.txt
 ```
 
-## Download SQL Scripts
-
-```sh
-curl -o mysql-trade-table-raw.sql \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table.sql"
- 
-curl -o trade-table.sh \
- "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table.sql"
-```
-
 ### Launch MySQL Database Container
 
-Start a MySQL 5.7 container. Mount `/tmp/storage-test` directory to the container.
+Start a MySQL 5.7 container. Mount `/tmp/test` directory to the container.
 
 ```properties
 docker run --name mysql-axibase-storage-test \
     -e MYSQL_DATABASE=axibase \
     -e MYSQL_ROOT_PASSWORD=axibase \
-    -v /tmp/storage-test:/data \
+    -v /tmp/test:/data \
     -d mysql/mysql-server:5.7
 ```
 
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-cat mysql-trade-table.sql | \
+curl -o /tmp/test/mysql-trade-table-raw.sql \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-trade-table.sql"
+```
+
+```sh
+cat /tmp/test/mysql-trade-table.sql | \
  docker exec -i mysql-axibase-storage-test mysql \
   --user=root \
   --password=axibase \
@@ -231,17 +230,18 @@ cat mysql-trade-table.sql | \
 ```
 
 ```sh
-mysql: [Warning] Using a password on the command line interface can be insecure.
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name   | row_format | table_rows | data_length | index_length | total_length |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 | InnoDB | TradeHistory | Dynamic    |    2037812 |   129662976 |     40468480 |    170131456 |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
+
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name   | row_format | table_rows | data_length | index_length | total_length |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 | InnoDB | TradeHistory | Compressed |    2031025 |    63266816 |     20234240 |     83501056 |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
+
 +-----------+---------------------+---------------------+
 | row_count | min_time            | max_time            |
 +-----------+---------------------+---------------------+
@@ -252,7 +252,12 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 ### Execute SQL scripts for the **Universal Table** Schema.
 
 ```sh
-cat mysql-universal-table.sql | \
+curl -o /tmp/test/mysql-universal-table.sql \
+ "https://raw.githubusercontent.com/axibase/atsd/administration/compaction/mysql-universal-table.sql"
+```
+
+```sh
+cat /tmp/test/mysql-universal-table.sql | \
  docker exec -i mysql-axibase-storage-test mysql \
   --user=root \
   --password=axibase \
@@ -261,17 +266,18 @@ cat mysql-universal-table.sql | \
 ```
 
 ```sh
-mysql: [Warning] Using a password on the command line interface can be insecure.
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name       | row_format | table_rows | data_length | index_length | total_length |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 | InnoDB | UniversalHistory | Dynamic    |    9943788 |   468697088 |    243187712 |    711884800 |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
+
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name       | row_format | table_rows | data_length | index_length | total_length |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 | InnoDB | UniversalHistory | Compressed |    9947969 |   228589568 |    121602048 |    350191616 |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
+
 +-----------+---------------------+---------------------+
 | row_count | min_time            | max_time            |
 +-----------+---------------------+---------------------+
