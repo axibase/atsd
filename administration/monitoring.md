@@ -31,47 +31,49 @@ Retrieving a full list of collected metrics in JSON:
 
 | **Metric** | **Description** |
 | --- | --- |
-|api_command_malformed_per_second| Number of malformed (invalid) API commands discarded, per second.|	
+|api_command_malformed_per_second| Number of malformed (invalid) API commands discarded.|	
 |cache.size| Number of records kept in cache. Cache size and usage are also displayed on **Admin>Cache Management** page.|	
 |cache.used_percent| Cache used percentage. The cache size is displayed on **Admin>Cache Management** page.|
-|disabled_entity_received_per_second|Number of series commands with disabled entity received, per second.|	
-|disabled_metric_received_per_second|Number of series commands with disabled metric received, per second.|	
-|disabled_properties_received_per_second|Number of properties commands received by ATSD with skipped `Property Enabled` input setting, per second.|	
-|disk_totalspace|Size of the ATSD store, in bytes.|	
-|disk_unallocatedspace|Number of unallocated bytes in the ATSD store.|	
-|disk_usablespace|Number of bytes available to this Java virtual machine on the ATSD store.|	
-|email_notifications_per_minute |Number of email notifications sent by ATSD Rule Engine per minute. |	
-|expired_metric_received_per_second |Number of metrics that satisfy the following rule: `now - timestamp > 1 hour`. |	
-|filtered_metric_received_per_second|Number of metrics which have been filtered due to triggering of `Invalid Value Action`.|	
-|forward_metric_received_per_second |Number of metrics that satisfy the following rule: `timestamp - now > 1 hour`. |	
-|gc_invocations_per_minute_MarkSweepCompact |Number of garbage collection calls per minute.|
-|gc_time_percent_MarkSweepCompact |The percentage of time in between calls that garbage collection took.|	
-|hbase.thread_pool_active|Size (number of active clients) of the `htable.executor.PoolSize`.|	
-|hbase_scans_per_second |Number of HBase searches, per second. |
-|http.sessions|Number of Jetty sessions.|	
-|http.thread_pool_idle|Number of Jetty threads in waiting state. |	
-|http.thread_pool_max|The maximum number of Jetty threads that can be in the pool.|	
-|http.thread_pool_used|Number of Jetty threads that are in use.|	
-|http.thread_pool_used_percent|Percentage of active threads of the maximum number of threads in the pool.|	
-|invalid_message_received_per_second | Number of invalid message commands received, per second. |
-|invalid_property_received_per_second| Number of invalid property commands received, per second.|	
-|java_method_invoke_average java_method_invoke_count_per_second java_method_invoke_last | Tracks storage performance methods. Three different aggregations, `average`, `count per second` and `last`, are collected for the following methods: `dao.MessageDaoImpl.putBatch` `dao.PropertyDaoImpl.search` `dao.TimeSeriesDaoImpl.putBatch` `service.TimeSeriesServiceImpl.putBatch` Last and Average are collected as time in ms. |	
-|jvm_committed_virtual_memory_size|Amount of virtual memory that is guaranteed to be available to the running process, in bytes.|	
-|jvm_free_physical_memory_size|Amount of free physical memory, in bytes.|	
-|jvm_free_swap_space_size| Amount of free swap space, in bytes.|	
+|disabled_entity_received_per_second|Number of series commands with disabled entity received.|	
+|disabled_metric_received_per_second|Number of series commands with disabled metric received.|	
+|disabled_properties_received_per_second|Number of property commands received by the database when `Property Enabled` was checked on Input Settings page.|	
+|disk_totalspace|Total size of the file system where database is installed, in bytes.|	
+|disk_unallocatedspace|Available space on the file system where database is installed, in bytes.|	
+|disk_usablespace|Used space on the file system where database is installed, in bytes.|	
+|email_notifications_per_minute |Number of email notifications sent by the rule engine. |	
+|expired_metric_received_per_second |Number of series commands with timestamp earlier than specified by Time Filter in the rule engine. |	
+|forward_metric_received_per_second |Number of series commands with timestamp greater than specified by Time Filter in the rule engine. |	
+|filtered_metric_received_per_second|Number of metrics which have been discarded due to `Invalid Value Action`.|	
+|gc_invocations_per_minute |Number of the Java garbage collection calls.|
+|gc_time_percent |The percentage of cpu time used by the Java garbage collector.|	
+|hbase.thread_pool_active|Number of active clients writing into HBase.|	
+|hbase_scans_per_second |Number of HBase scans. |
+|http.sessions|Number of http sessions.|	
+|http.thread_pool_idle|Number of http server threads in waiting state. |	
+|http.thread_pool_max|The maximum number of http server threads.|	
+|http.thread_pool_used|Number of http server threads that are in use.|	
+|http.thread_pool_used_percent|Percentage of used http server threads.|	
+|invalid_message_received_per_second | Number of invalid message commands received. |
+|invalid_property_received_per_second| Number of invalid property commands received.|	
+|java_method_invoke_average | Number of times a Java method was invoked in a given period, in milliseconds. |
+|java_method_invoke_count_per_second | Rate of Java method invokation in a given period. |
+|java_method_invoke_last | Last execution time for the Java method in a given period, in milliseconds. |
+|jvm_committed_virtual_memory_size|Committed JVM virtual memory, in bytes.|	
+|jvm_free_physical_memory_size|Free physical memory on the machine, in bytes.|	
+|jvm_free_swap_space_size| Free swap space on the machine, in bytes.|	
 |jvm_max_file_descriptor_count|The maximum number of file descriptors.|	
-|jvm_memory_free | Number of free memory bytes available to the java virtual machine. |	
-|jvm_memory_max | Maximum number of memory space available to the java virtual machine, in bytes. |
-|jvm_memory_used | Number of used memory bytes by the java virtual machine. |	
-|jvm_memory_used_percent | Percentage of memory used by the java virtual machine. |
-|jvm_memorypool_used|An estimate of the current usage of a memory pool.|
+|jvm_memory_free | Free memory available to the java virtual machine, in bytes. |	
+|jvm_memory_max | Maximum memory available to the JVM, in bytes. |
+|jvm_memory_used | Memory used by the JVM, in bytes. |	
+|jvm_memory_used_percent | Percentage of memory by the JVM. |
+|jvm_memorypool_used|JVM memory pool usage, in bytes.|
 |jvm_open_file_descriptor_count|Number of open file descriptors.|	
-|jvm_process_cpu_load|The "recent cpu usage" for the Java Virtual Machine process.|	
-|jvm_system_cpu_load|The "recent cpu usage" for the whole system.|	
-|jvm_system_load_average|System load average for the last minute. The system load average is the sum of the number of runnable entities queued to the available processors and the number of runnable entities running on the available processors averaged over a period of time. The way in which the load average is calculated is operating system specific but is typically a damped time-dependent average.|	
-|jvm_total_physical_memory_size|Total amount of physical memory, in bytes.|	
-|jvm_total_swap_space_size| Total amount of swap space, in bytes.|	
-|last.series.cache.count|Current size of the cache of table li.|	
+|jvm_process_cpu_load|CPU used by the JVM process.|	
+|jvm_system_cpu_load|CPU busy on the machine.|	
+|jvm_system_load_average|System load average for the last minute on the machine. |	
+|jvm_total_physical_memory_size|Total amount of physical memory on the machine, in bytes.|	
+|jvm_total_swap_space_size| Total amount of swap spaceon the machine, in bytes.|	
+|last.series.cache.count|Number of records in the 'last insert' cache.|	
 |last.series.cache.write-count|How many times during the period was made the record to the table li.|	
 |last.series.cache.write-keys|Number of keys recorded in li.|	
 |last.series.cache.write-new-keys|Number of the recorded keys that are not in the cache.|	
