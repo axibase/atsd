@@ -10,11 +10,11 @@ INSERT INTO instruments (name) VALUES ('IBM');
 
 CREATE TABLE trade_history (
    instrument INT NOT NULL REFERENCES instruments(id), 
-   open DECIMAL(12,4),
-   high DECIMAL(12,4),
-   low DECIMAL(12,4),
-   close DECIMAL(12,4),
-   volume DECIMAL(12,4),
+   open DECIMAL(7,4),
+   high DECIMAL(7,4),
+   low DECIMAL(7,4),
+   close DECIMAL(7,4),
+   volume INT,
    time TIMESTAMP(0) NOT NULL
 );
 
@@ -23,11 +23,11 @@ CREATE INDEX idx_trade_history ON trade_history (instrument, time);
 INSERT INTO trade_history (instrument, open, high, low, close, volume, time)
 	SELECT 
 		1, 
-		CAST(open AS DECIMAL(12,4)),
-		CAST(high AS DECIMAL(12,4)),
-		CAST(low AS DECIMAL(12,4)),
-		CAST(close AS DECIMAL(12,4)),
-		CAST(volume AS DECIMAL(12,4)),
+		CAST(open AS DECIMAL(7,4)),
+		CAST(high AS DECIMAL(7,4)),
+		CAST(low AS DECIMAL(7,4)),
+		CAST(close AS DECIMAL(7,4)),
+		CAST(volume AS INT),
 		to_timestamp(CONCAT(date, ' ', time), 'MM/dd/YYY HH24:MI:SS')
 	FROM temp;
 
