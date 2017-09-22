@@ -8,10 +8,10 @@ The following tests calculate the amount of disk space required to store 10+ mil
 
 | **Schema** | **Compressed** | **Data Size** | **Index Size** | **Total Size** | **Row Count** | **Bytes per Row** | **Bytes per Sample** |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Trade Table | No | 129,662,976 | 40,468,480 | 170,131,456 | 2,045,514 | 83.2 | 16.6 |
-| Trade Table | Yes | 63,266,816 | 20,234,240 | 83,501,056 | 2,045,514 | 40.8 | 8.2 |
-| Universal Table | No | 468,697,088 | 243,187,712 | 711,884,800 | 10,227,570 | 69.6 | 69.6 |
-| Universal Table | Yes | 228,589,568 | 121,602,048 | 350,191,616 | 10,227,570 | 34.2 | 34.2 |
+| Trade Table | No | 141,213,696 | 40,468,480 | 181,682,176 | 2,045,514 | 88.8 | 17.8 |
+| Trade Table | Yes | 65,888,256 | 20,234,240 | 86,122,496 | 2,045,514 | 42.1 | 8.4 |
+| Universal Table | No | 480,247,808 | 243,187,712 | 723,435,520 | 10,227,570 | 70.7 | 70.7 |
+| Universal Table | Yes | 231,735,296 | 121,602,048 | 353,337,344 | 10,227,570 | 34.5 | 34.5 |
 | [ATSD](atsd.md) | Yes | - | - | 19,590,510 | 10,227,570 | 1.9 | 1.9 |
 
 ## Dataset
@@ -67,11 +67,11 @@ DESCRIBE TradeHistory;
 | Field      | Type          | Null | Key | Default           | Extra |
 +------------+---------------+------+-----+-------------------+-------+
 | Instrument | int(11)       | NO   | MUL | NULL              |       |
-| Open       | decimal(10,4) | YES  |     | NULL              |       |
-| High       | decimal(10,4) | YES  |     | NULL              |       |
-| Low        | decimal(10,4) | YES  |     | NULL              |       |
-| Close      | decimal(10,4) | YES  |     | NULL              |       |
-| Volume     | decimal(10,4) | YES  |     | NULL              |       |
+| Open       | decimal(12,4) | YES  |     | NULL              |       |
+| High       | decimal(12,4) | YES  |     | NULL              |       |
+| Low        | decimal(12,4) | YES  |     | NULL              |       |
+| Close      | decimal(12,4) | YES  |     | NULL              |       |
+| Volume     | decimal(12,4) | YES  |     | NULL              |       |
 | Time       | timestamp     | NO   |     | CURRENT_TIMESTAMP |       |
 +------------+---------------+------+-----+-------------------+-------+
 
@@ -118,7 +118,7 @@ DESCRIBE UniversalHistory;
 | Instrument | int(11)       | NO   | MUL | NULL              |       |
 | Metric     | int(11)       | NO   |     | NULL              |       |
 | Time       | timestamp     | NO   |     | CURRENT_TIMESTAMP |       |
-| Value      | decimal(10,4) | YES  |     | NULL              |       |
+| Value      | decimal(12,4) | YES  |     | NULL              |       |
 +------------+---------------+------+-----+-------------------+-------+
 
 SELECT * FROM UniversalHistory LIMIT 5;
@@ -234,13 +234,13 @@ cat /tmp/test/mysql-trade-table.sql | \
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name   | row_format | table_rows | data_length | index_length | total_length |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
-| InnoDB | TradeHistory | Dynamic    |    2037812 |   129662976 |     40468480 |    170131456 |
+| InnoDB | TradeHistory | Dynamic    |    2037280 |   141213696 |     40468480 |    181682176 |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name   | row_format | table_rows | data_length | index_length | total_length |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
-| InnoDB | TradeHistory | Compressed |    2031025 |    63266816 |     20234240 |     83501056 |
+| InnoDB | TradeHistory | Compressed |    2038858 |    65888256 |     20234240 |     86122496 |
 +--------+--------------+------------+------------+-------------+--------------+--------------+
 
 +-----------+---------------------+---------------------+
@@ -270,13 +270,13 @@ cat /tmp/test/mysql-universal-table.sql | \
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name       | row_format | table_rows | data_length | index_length | total_length |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
-| InnoDB | UniversalHistory | Dynamic    |    9943788 |   468697088 |    243187712 |    711884800 |
+| InnoDB | UniversalHistory | Dynamic    |    9943125 |   480247808 |    243187712 |    723435520 |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 | engine | table_name       | row_format | table_rows | data_length | index_length | total_length |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
-| InnoDB | UniversalHistory | Compressed |    9947969 |   228589568 |    121602048 |    350191616 |
+| InnoDB | UniversalHistory | Compressed |    9979839 |   231735296 |    121602048 |    353337344 |
 +--------+------------------+------------+------------+-------------+--------------+--------------+
 
 +-----------+---------------------+---------------------+

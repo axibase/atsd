@@ -26,7 +26,7 @@ CREATE TABLE UniversalHistory(
    Instrument INT NOT NULL REFERENCES Instruments(Id),
    Metric INT NOT NULL REFERENCES Metrics(Id),
    Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   Value DECIMAL(10,4)
+   Value DECIMAL(12,4)
 );
 
 CREATE INDEX Idx_UniversalHistory ON UniversalHistory (Instrument, Metric, Time);
@@ -128,7 +128,7 @@ CREATE TABLE UniversalHistory(
    Instrument INT NOT NULL REFERENCES Instruments(Id),
    Metric INT NOT NULL REFERENCES Metrics(Id),
    Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   Value DECIMAL(10,4)
+   Value DECIMAL(12,4)
 ) ROW_FORMAT=COMPRESSED;
 
 CREATE INDEX Idx_UniversalHistory ON UniversalHistory (Instrument, Metric, Time);

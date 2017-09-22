@@ -13,11 +13,11 @@ INSERT INTO Instruments (Name) VALUES ("IBM");
 
 CREATE TABLE TradeHistory(
    Instrument INT NOT NULL REFERENCES Instruments(Id), 
-   Open DECIMAL(10,4),
-   High DECIMAL(10,4),
-   Low DECIMAL(10,4),
-   Close DECIMAL(10,4),
-   Volume DECIMAL(10,4),
+   Open DECIMAL(12,4),
+   High DECIMAL(12,4),
+   Low DECIMAL(12,4),
+   Close DECIMAL(12,4),
+   Volume DECIMAL(12,4),
    Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -65,11 +65,11 @@ INSERT INTO Instruments (Name) VALUES ("IBM");
 
 CREATE TABLE TradeHistory(
    Instrument INT NOT NULL REFERENCES Instruments(Id), 
-   Open DECIMAL(10,4),
-   High DECIMAL(10,4),
-   Low DECIMAL(10,4),
-   Close DECIMAL(10,4),
-   Volume DECIMAL(10,4),
+   Open DECIMAL(12,4),
+   High DECIMAL(12,4),
+   Low DECIMAL(12,4),
+   Close DECIMAL(12,4),
+   Volume DECIMAL(12,4),
    Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ROW_FORMAT=COMPRESSED;
 
