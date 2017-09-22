@@ -215,14 +215,14 @@ docker run --name postgres \
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-curl -o /tmp/test/postgres-trade-table.sql \
+curl -o /tmp/test/postgres-trade-table-raw.sql \
  "https://raw.githubusercontent.com/axibase/atsd/master/administration/compaction/postgres-trade-table.sql"
 ```
 
 ```sh
 docker exec -i postgres \
     sh -c "dropdb -U axibase --if-exists axibase && createdb -U axibase axibase" && \
-    cat /tmp/test/postgres-trade-table.sql | \
+    cat postgres-trade-table.sql | \
     docker exec -i postgres psql -U axibase -q -P "footer=off" -P "border=2"
 ```
 
@@ -250,7 +250,7 @@ curl -o /tmp/test/postgres-universal-table.sql \
 ```sh
 docker exec -i postgres \
     sh -c "dropdb -U axibase --if-exists axibase && createdb -U axibase axibase" && \
-    cat /tmp/test/postgres-universal-table.sql | \
+    cat postgres-universal-table.sql | \
     docker exec -i postgres psql -U axibase -q -P "footer=off" -P "border=2"
 ```
 
