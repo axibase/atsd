@@ -220,10 +220,10 @@ curl -o /tmp/test/postgres-trade-table-raw.sql \
 ```
 
 ```sh
-docker exec -i postgres dropdb -U axibase --if-exists axibase && \
- docker exec -i postgres createdb -U axibase axibase && \
- cat postgres-trade-table.sql | docker exec -i postgres \
- psql -U axibase -q -P "footer=off" -P "border=2"
+docker exec -i postgres \
+    sh -c "dropdb -U axibase --if-exists axibase && createdb -U axibase axibase" && \
+    cat postgres-trade-table.sql | \
+    docker exec -i postgres psql -U axibase -q -P "footer=off" -P "border=2"
 ```
 
 ```sh
@@ -248,10 +248,10 @@ curl -o /tmp/test/postgres-universal-table.sql \
 ```
 
 ```sh
-docker exec -i postgres dropdb -U axibase --if-exists axibase && \
- docker exec -i postgres createdb -U axibase axibase && \
- cat postgres-universal-table.sql | docker exec -i postgres \
- psql -U axibase -q -P "footer=off" -P "border=2"
+docker exec -i postgres \
+    sh -c "dropdb -U axibase --if-exists axibase && createdb -U axibase axibase" && \
+    cat postgres-universal-table.sql | \
+    docker exec -i postgres psql -U axibase -q -P "footer=off" -P "border=2"
 ```
 
 ```sh
