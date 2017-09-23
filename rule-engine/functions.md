@@ -81,7 +81,7 @@
 | `t.startsWidth(S)` | Check if field 't' starts with the specified string. |
 | `t.endsWidth(S)` | Check if field 't' ends with the specified string. |
 | `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
-| `urlencode([S])` | Translate a string into x-www-form-urlencoded format. |
+| `urlencode([S])` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
 
 ## Collection Functions
 
