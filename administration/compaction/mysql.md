@@ -16,7 +16,7 @@ The following tests calculate the amount of disk space required to store 10+ mil
 
 ## Dataset
 
-The dataset represents 20+ years of historical minute stock trade data available from [Kibot](http://www.kibot.com/buy.aspx) company.
+The dataset represents 20+ years of historical minute stock trade data available from the [Kibot](http://www.kibot.com/buy.aspx) company.
 
 The one minute trade statistics are available for IBM stock traded on the New York Stock Exchange. The recording starts on February 1st, 1998 and lasts until the last trading day. 
 
@@ -31,7 +31,7 @@ Date,Time,Open,High,Low,Close,Volume
 
 The records be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
 
-The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` timezone.
+The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in `US/Eastern` time.
 
 Each row consists of 5 metrics for a given 1-minute interval:
 
@@ -51,7 +51,7 @@ volume = 10031
 The tests are performed using two schema options: 
 
 * **Trade Table** [schema](mysql-trade-table.sql) uses a named column for each input metric.
-* **Universal Table** [schema](mysql-universal-table.sql) uses a single metric Id column for all input metrics.
+* **Universal Table** [schema](mysql-universal-table.sql) uses a single metric ID column for all input metrics.
 
 The **Trade Table** schema requires less disk space however the underlying table can not be extended to store different sets of columns for different instrument types. As such, mutliple tables needs to be created to store data for various instrument types.
 
