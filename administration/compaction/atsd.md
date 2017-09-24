@@ -12,9 +12,9 @@ The following test calculates the amount of disk space required to store 10+ mil
 
 ## Dataset
 
-The dataset represents 20+ years of historical minute stock trade data available from [Kibot](http://www.kibot.com/buy.aspx) company.
+The dataset represents 20+ years of historical minute stock trade data available from the [Kibot](http://www.kibot.com/buy.aspx) company.
 
-The one minute trade statistics are available for IBM stock traded on the New York Stock Exchange. The recording starts on February 1st, 1998 and lasts until the last trading day. 
+The minutely trade statistics are available for IBM stock traded on the New York Stock Exchange. The recording starts on February 1st, 1998 and lasts until the last trading day. 
 
 The data is provided in the commonly used OHLCV [format](http://www.kibot.com/support.aspx#data_format).
 
