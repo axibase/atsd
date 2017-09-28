@@ -102,7 +102,7 @@ SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='INDEX' and segment_name='TRADEHISTORY_COMPRESSED_PK';
 
--- Retrieve row count in the compressed TradeHistory table
+-- Retrieve row count in the compressed TradeHistory_Compressed table
 SELECT 
   'TRADEHISTORY_COMPRESSED' AS "TABLE_NAME",
   COUNT(*) ROWS_COUNT
