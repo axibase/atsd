@@ -8,8 +8,8 @@ The following tests calculate the amount of disk space required to store 10+ mil
 
 | **Schema** | **Compressed** | **Data Size** | **Index Size** | **Total Size** | **Row Count** | **Bytes per Row** | **Bytes per Sample** |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Trade Table | No |  |  |  |  |  |  |
-| Trade Table | Yes |  |  |  |  |  |  |
+| Trade Table | No | 92,274,688 | 45,088,768 | 137,363,456 | 2,045,514 | 67.2 | 13.4 |
+| Trade Table | Yes | 53,477,376 | 42,991,616 | 96,468,992 | 2,045,514 | 47.2 | 9.4 |
 | Universal Table | No |  |  |  |  |  |  |
 | Universal Table | Yes |  |  |  |  |  |  |
 | [ATSD](atsd.md) | Yes | - | - | 19,590,510 | 10,227,570 | 1.9 | 1.9 |
