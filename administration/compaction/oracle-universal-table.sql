@@ -30,10 +30,10 @@ INSERT INTO Metrics (Name) VALUES ('Low');
 INSERT INTO Metrics (Name) VALUES ('Close');
 INSERT INTO Metrics (Name) VALUES ('Volume');
 
--- Create external table using csv-formatted file IBM_adjusted.txt as storage.
--- Oracle would write access logs to directory containing storage file, so decalre it explicitly
+-- Create a directory from which IBM_adjusted.txt will be loaded.
 CREATE directory data_dir as '/data';
 
+-- Create external table to load IBM_adjusted.txt CSV file.
 CREATE TABLE tempotary_csv_data_table (
    date_str VARCHAR2(20),
    time_str VARCHAR2(20),
@@ -60,87 +60,86 @@ CREATE TABLE UniversalHistory(
 );
 
 -- Load data from external table
+-- Each OHLCV column is loaded with a separate INSERT INTO query
+
+-- open
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
-   SELECT 
-	1, 
-	1,
+   SELECT  1, 1,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	open
    FROM tempotary_csv_data_table;
 
+-- high
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
-   SELECT 
-	1, 
-	2,
+   SELECT 1, 2,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	high
    FROM tempotary_csv_data_table;
 
+-- low
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
-   SELECT 
-	1, 
-	3,
+   SELECT 1, 3,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	low
    FROM tempotary_csv_data_table;
 
+-- close
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
-   SELECT 
-	1, 
-	4,
+   SELECT 1, 4,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	close
    FROM tempotary_csv_data_table;
 
+-- volume
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
-   SELECT 
-	1, 
-	5,
+   SELECT 1, 5,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	volume
    FROM tempotary_csv_data_table;
 
--- Remove external table
+-- Delete external csv table
 DROP TABLE tempotary_csv_data_table;
 
--- Change query output table style
+-- Enable tabular presentation of query results.
 SET COLSEP '|'
 COLUMN SEGMENT_NAME FORMAT A30
 
--- Get table and index size
+-- Retrieve table size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='TABLE' and segment_name='UNIVERSALHISTORY';
 
+-- Retrieve index size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='INDEX' and segment_name='UNIVERSALHISTORY_PK';
 
--- Get rows count
+-- Retrieve row count in the UniversalHistory table
 SELECT 
   'UNIVERSALHISTORY' AS "TABLE_NAME",
   COUNT(*) ROWS_COUNT
 FROM UniversalHistory;
 
--- Create compressed table with data from UniversalHistory table
+-- Create compressed table containing all records from UniversalHistory table
 CREATE TABLE UniversalHistory_Compressed COMPRESS AS SELECT * FROM UniversalHistory;
+
+-- Enable keys and index in the compressed table
 ALTER TABLE UniversalHistory_Compressed ADD CONSTRAINT UniversalHistory_Compressed_Instrument_fk FOREIGN KEY (Instrument) REFERENCES Instruments(Id);
 ALTER TABLE UniversalHistory_Compressed ADD CONSTRAINT UniversalHistory_Compressed_Metric_fk FOREIGN KEY (Metric) REFERENCES Metrics(Id);
-
--- Add compressed index
 ALTER TABLE UniversalHistory_Compressed ADD CONSTRAINT UniversalHistory_Compressed_pk PRIMARY KEY (Instrument, Metric, Time);
 ALTER INDEX UniversalHistory_Compressed_pk REBUILD COMPRESS;
 
--- Get compressed table and index size
+-- Retrieve table size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='TABLE' and segment_name='UNIVERSALHISTORY_COMPRESSED';
 
+-- Retrieve index size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='INDEX' and segment_name='UNIVERSALHISTORY_COMPRESSED_PK';
 
--- Get rows count
+-- Retrieve row count in the compressed UniversalHistory_Compressed table
 SELECT 
   'UNIVERSALHISTORY_COMPRESSED' AS "TABLE_NAME",
   COUNT(*) ROWS_COUNT
