@@ -5,7 +5,7 @@ DROP TABLE UniversalHistory CASCADE CONSTRAINTS PURGE;
 DROP TABLE UniversalHistory_Compressed CASCADE CONSTRAINTS PURGE;
 DROP TABLE Instruments CASCADE CONSTRAINTS PURGE;
 DROP TABLE Metrics CASCADE CONSTRAINTS PURGE;
-DROP TABLE tempotary_csv_data_table CASCADE CONSTRAINTS PURGE;
+DROP TABLE temporary_csv_data_table CASCADE CONSTRAINTS PURGE;
 DROP DIRECTORY data_dir;
 
 -- Create Instruments table with auto-increment index
@@ -34,7 +34,7 @@ INSERT INTO Metrics (Name) VALUES ('Volume');
 CREATE directory data_dir as '/data';
 
 -- Create external table to load IBM_adjusted.txt CSV file.
-CREATE TABLE tempotary_csv_data_table (
+CREATE TABLE temporary_csv_data_table (
    date_str VARCHAR2(20),
    time_str VARCHAR2(20),
    open NUMBER(7,4),
@@ -67,38 +67,38 @@ INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
    SELECT  1, 1,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	open
-   FROM tempotary_csv_data_table;
+   FROM temporary_csv_data_table;
 
 -- high
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
    SELECT 1, 2,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	high
-   FROM tempotary_csv_data_table;
+   FROM temporary_csv_data_table;
 
 -- low
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
    SELECT 1, 3,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	low
-   FROM tempotary_csv_data_table;
+   FROM temporary_csv_data_table;
 
 -- close
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
    SELECT 1, 4,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	close
-   FROM tempotary_csv_data_table;
+   FROM temporary_csv_data_table;
 
 -- volume
 INSERT INTO UniversalHistory (Instrument, Metric, Time, Value)
    SELECT 1, 5,
 	TO_TIMESTAMP(date_str || ' ' || time_str, 'MM/dd/YYYY HH24:MI:SS'),
 	volume
-   FROM tempotary_csv_data_table;
+   FROM temporary_csv_data_table;
 
 -- Delete external csv table
-DROP TABLE tempotary_csv_data_table;
+DROP TABLE temporary_csv_data_table;
 
 -- Enable tabular presentation of query results.
 SET COLSEP '|'

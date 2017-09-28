@@ -4,7 +4,7 @@ DROP TABLE TradeHistory_Compressed CASCADE CONSTRAINTS PURGE;
 DROP TABLE UniversalHistory CASCADE CONSTRAINTS PURGE;
 DROP TABLE Instruments CASCADE CONSTRAINTS PURGE;
 DROP TABLE Metrics CASCADE CONSTRAINTS PURGE;
-DROP TABLE tempotary_csv_data_table PURGE;
+DROP TABLE temporary_csv_data_table PURGE;
 DROP DIRECTORY data_dir;
 
 -- Create Instruments table with auto-increment index
@@ -21,7 +21,7 @@ INSERT INTO Instruments (Name) VALUES ('IBM');
 CREATE directory data_dir as '/data';
 
 -- Create external table to load IBM_adjusted.txt CSV file.
-CREATE TABLE tempotary_csv_data_table (
+CREATE TABLE temporary_csv_data_table (
    date_str VARCHAR2(20),
    time_str VARCHAR2(20),
    open NUMBER(7,4),
@@ -49,7 +49,7 @@ CREATE TABLE TradeHistory(
    CONSTRAINT TradeHistory_pk PRIMARY KEY (Instrument, Time)
 );
 
--- Load records into TradeHistory from tempotary_csv_data_table (INSERT SELECT)
+-- Load records into TradeHistory from temporary_csv_data_table (INSERT SELECT)
 INSERT INTO TradeHistory (Instrument, Time, Open, High, Low, Close, Volume)
    SELECT 
 	1, 
@@ -59,10 +59,10 @@ INSERT INTO TradeHistory (Instrument, Time, Open, High, Low, Close, Volume)
 	low,
 	close,
 	volume
-   FROM tempotary_csv_data_table;
+   FROM temporary_csv_data_table;
 
 -- Delete external csv table
-DROP TABLE tempotary_csv_data_table;
+DROP TABLE temporary_csv_data_table;
 
 -- Enable tabular presentation of query results.
 SET COLSEP '|'
