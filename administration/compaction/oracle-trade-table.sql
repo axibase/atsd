@@ -16,10 +16,11 @@ CREATE TABLE Instruments(
 
 INSERT INTO Instruments (Name) VALUES ('IBM');
 
--- Create external table using csv-formatted file IBM_adjusted.txt as storage.
--- Oracle would write access logs to directory containing storage file, so decalre it explicitly
+
+-- Create a directory from which IBM_adjusted.txt will be loaded.
 CREATE directory data_dir as '/data';
 
+-- Create external table to load IBM_adjusted.txt CSV file.
 CREATE TABLE tempotary_csv_data_table (
    date_str VARCHAR2(20),
    time_str VARCHAR2(20),
@@ -48,7 +49,7 @@ CREATE TABLE TradeHistory(
    CONSTRAINT TradeHistory_pk PRIMARY KEY (Instrument, Time)
 );
 
--- Load data from external table
+-- Load records into TradeHistory from tempotary_csv_data_table (INSERT SELECT)
 INSERT INTO TradeHistory (Instrument, Time, Open, High, Low, Close, Volume)
    SELECT 
 	1, 
@@ -60,46 +61,48 @@ INSERT INTO TradeHistory (Instrument, Time, Open, High, Low, Close, Volume)
 	volume
    FROM tempotary_csv_data_table;
 
--- Remove external table
+-- Delete external csv table
 DROP TABLE tempotary_csv_data_table;
 
--- Change query output table style
+-- Enable tabular presentation of query results.
 SET COLSEP '|'
 COLUMN SEGMENT_NAME FORMAT A26
 
--- Get table and index size
+-- Retrieve table size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='TABLE' and segment_name='TRADEHISTORY';
 
+-- Retrieve index size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='INDEX' and segment_name='TRADEHISTORY_PK';
 
--- Get rows count
+-- Retrieve row count in the TradeHistory table
 SELECT 
   'TRADEHISTORY' AS "TABLE_NAME",
   COUNT(*) ROWS_COUNT
 FROM TradeHistory;
 
--- Create compressed table with data from TradeHistory table
+-- Create compressed table containing all records from TradeHistory table
 CREATE TABLE TradeHistory_Compressed COMPRESS AS SELECT * FROM TradeHistory;
-ALTER TABLE TradeHistory_Compressed ADD CONSTRAINT TradeHistory_Compressed_fk FOREIGN KEY (Instrument) REFERENCES Instruments(Id);
 
--- Add compressed index
+-- Enable keys and index in the compressed table
+ALTER TABLE TradeHistory_Compressed ADD CONSTRAINT TradeHistory_Compressed_fk FOREIGN KEY (Instrument) REFERENCES Instruments(Id);
 ALTER TABLE TradeHistory_Compressed ADD CONSTRAINT TradeHistory_Compressed_pk PRIMARY KEY (Instrument, Time);
 ALTER INDEX TradeHistory_Compressed_pk REBUILD COMPRESS;
 
--- Get compressed table and index size
+-- Retrieve table size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='TABLE' and segment_name='TRADEHISTORY_COMPRESSED';
 
+-- Retrieve index size in bytes
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='INDEX' and segment_name='TRADEHISTORY_COMPRESSED_PK';
 
--- Get rows count
+-- Retrieve row count in the compressed TradeHistory table
 SELECT 
   'TRADEHISTORY_COMPRESSED' AS "TABLE_NAME",
   COUNT(*) ROWS_COUNT
