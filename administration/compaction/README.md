@@ -14,4 +14,8 @@ The following tests estimate the amount of disk space required to store the same
 | MySQL      | 5.7   | Specific   | No  | 15.6 | [view](mysql.md) |
 | MySQL      | 5.7   | Universal  | Yes | 34.5 | [view](mysql.md) |
 | MySQL      | 5.7   | Universal  | No  | 70.7 | [view](mysql.md) |
+| Oracle      | EE, 12c (12.2.0.1)   | Specific   | Yes | 9.4  | [view](oracle.md) |
+| Oracle      | EE, 12c (12.2.0.1)   | Specific   | No  | 13.4 | [view](oracle.md) |
+| Oracle      | EE, 12c (12.2.0.1)   | Universal  | Yes | 39.3 | [view](oracle.md) |
+| Oracle      | EE, 12c (12.2.0.1)   | Universal  | No  | 52.5 | [view](oracle.md) |
 | **ATSD**       | **17340** | **Universal**  | **Yes** | **1.9**  | [view](atsd.md)  |
