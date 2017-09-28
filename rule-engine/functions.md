@@ -85,7 +85,8 @@
 | `t.startsWidth(S)` | Check if field 't' starts with the specified string. |
 | `t.endsWidth(S)` | Check if field 't' ends with the specified string. |
 | `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
-| `urlencode([S])` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
+| `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
+| `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
 
 ## Collection Functions
 
@@ -124,3 +125,10 @@ Refer to the time functions [examples](functions-time.md).
 | `property(S search)` |  Returns the first value in a collection of strings returned by the `property_values()` function. The function returns an empty string if no property records are found.  |
 | `property_compare_except([S key])` | Compares previous and current property tags and returns a difference map containing the list of changed tag values.   |
 | `property_compare_except([S key], [S prevValue])` |   Same as `property_compare_except([S key])`, which shows the list of previous values that are excluded from the difference map. |
+
+## Entity Tag Functions
+
+| **Name** | **Description** |
+| :--- | :--- |
+| `entity_tags(S entity)` | Returns entity tags' keys and values map for provided entity. |
+| `entity_tag(S entity, S tagName)` | Returns tag value for provided tag name and entity. |
