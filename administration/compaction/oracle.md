@@ -12,7 +12,6 @@ The following tests calculate the amount of disk space required to store 10+ mil
 | Trade Table | Yes | 53,477,376 | 42,991,616 | 96,468,992 | 2,045,514 | 47.2 | 9.4 |
 | Universal Table | No |  |  |  |  |  |  |
 | Universal Table | Yes |  |  |  |  |  |  |
-| [ATSD](atsd.md) | Yes | - | - | 19,590,510 | 10,227,570 | 1.9 | 1.9 |
 
 ## Dataset
 
@@ -66,7 +65,7 @@ DESCRIBE TradeHistory;
 
  Name				     Null?    Type
  ----------------------------------- -------- ------------------------
- INSTRUMENT			     NOT NULL NUMBER(38)
+ INSTRUMENT			     NOT NULL NUMBER(7)
  OPEN					      NUMBER(7,4)
  HIGH					      NUMBER(7,4)
  LOW					      NUMBER(7,4)
@@ -94,7 +93,7 @@ DESCRIBE Instruments;
 
  Name			 Null?	  Type
  ----------------------- -------- ----------------
- ID			 NOT NULL NUMBER(38)
+ ID			 NOT NULL NUMBER(7)
  NAME				  VARCHAR2(20)
 
 
@@ -177,13 +176,13 @@ docker run --name oracle \
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-curl -o /tmp/test/oracle-trade-table-raw.sql \
+curl -o /tmp/test/oracle-trade-table.sql \
  "https://raw.githubusercontent.com/axibase/atsd/master/administration/compaction/oracle-trade-table.sql"
 ```
 
 ```sh
 docker exec -u root oracle bash -c "chmod 777 /data" && \
- cat oracle-trade-table.sql | \
+ cat /tmp/test/oracle-trade-table.sql | \
  docker exec -i oracle sqlplus -S system/axibase | grep '|' --color=never
 ```
 
@@ -198,6 +197,11 @@ SEGMENT_NAME		  |	BYTES
 TRADEHISTORY_PK 	  |  45088768
 
 
+TABLE_NAME  |ROWS_COUNT
+------------|----------
+TRADEHISTORY|	2045514
+
+
 SEGMENT_NAME		  |	BYTES
 --------------------------|----------
 TRADEHISTORY_COMPRESSED   |  53477376
@@ -208,9 +212,9 @@ SEGMENT_NAME		  |	BYTES
 TRADEHISTORY_COMPRESSED_PK|  42991616
 
 
-TABLE_NAME   |ROWS_COUNT
--------------|----------
-TRADE_HISTORY|	 2045514
+TABLE_NAME	       |ROWS_COUNT
+-----------------------|----------
+TRADEHISTORY_COMPRESSED|   2045514
 ```
 
 ### Execute SQL scripts for the **Universal Table** Schema.

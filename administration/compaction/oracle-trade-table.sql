@@ -1,29 +1,33 @@
+-- Drop all data before test
 DROP TABLE TradeHistory PURGE;
 DROP TABLE TradeHistory_Compressed PURGE;
 DROP TABLE UniversalHistory PURGE;
 DROP TABLE Instruments PURGE;
 DROP TABLE Metrics PURGE;
-DROP TABLE data_ext PURGE;
+DROP TABLE tempotary_csv_data_table PURGE;
 DROP DIRECTORY data_dir;
 
+-- Create Instruments table with auto-increment index
 CREATE TABLE Instruments(
-   Id INTEGER GENERATED ALWAYS as IDENTITY NOT NULL,
+   Id NUMBER(7) GENERATED ALWAYS as IDENTITY NOT NULL,
    Name VARCHAR(20),
    CONSTRAINT Instruments_pk PRIMARY KEY (Id)
 );
 
 INSERT INTO Instruments (Name) VALUES ('IBM');
 
+-- Create external table using csv-formatted file IBM_adjusted.txt as storage.
+-- Oracle would write access logs to directory containing storage file, so decalre it explicitly
 CREATE directory data_dir as '/data';
 
-CREATE TABLE data_ext (
+CREATE TABLE tempotary_csv_data_table (
    date_str VARCHAR2(20),
    time_str VARCHAR2(20),
-   open DECIMAL(7,4),
-   high DECIMAL(7,4),
-   low  DECIMAL(7,4),
-   close DECIMAL(7,4),
-   volume DECIMAL(8))
+   open NUMBER(7,4),
+   high NUMBER(7,4),
+   low  NUMBER(7,4),
+   close NUMBER(7,4),
+   volume NUMBER(8))
 Organization external
 (type oracle_loader
 default directory data_dir
@@ -32,17 +36,19 @@ fields terminated by ',')
 location ('IBM_adjusted.txt'))
 REJECT LIMIT 0;
 
+-- Create TradeHistory table
 CREATE TABLE TradeHistory(
-   Instrument INT NOT NULL REFERENCES Instruments(Id), 
-   Open DECIMAL(7,4),
-   High DECIMAL(7,4),
-   Low DECIMAL(7,4),
-   Close DECIMAL(7,4),
-   Volume DECIMAL(8),
+   Instrument NUMBER(7) NOT NULL REFERENCES Instruments(Id), 
+   Open NUMBER(7,4),
+   High NUMBER(7,4),
+   Low NUMBER(7,4),
+   Close NUMBER(7,4),
+   Volume NUMBER(8),
    Time TIMESTAMP(0) NOT NULL,
    CONSTRAINT TradeHistory_pk PRIMARY KEY (Instrument, Time)
 );
 
+-- Load data from external table
 INSERT INTO TradeHistory (Instrument, Time, Open, High, Low, Close, Volume)
    SELECT 
 	1, 
@@ -52,11 +58,16 @@ INSERT INTO TradeHistory (Instrument, Time, Open, High, Low, Close, Volume)
 	low,
 	close,
 	volume
-   FROM data_ext;
+   FROM tempotary_csv_data_table;
 
-SET COLSEP |
+-- Remove external table
+DROP TABLE tempotary_csv_data_table;
+
+-- Change query output table style
+SET COLSEP '|'
 COLUMN SEGMENT_NAME FORMAT A26
 
+-- Get table and index size
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='TABLE' and segment_name='TRADEHISTORY';
@@ -65,11 +76,21 @@ SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='INDEX' and segment_name='TRADEHISTORY_PK';
 
+-- Get rows count
+SELECT 
+  'TRADEHISTORY' AS "TABLE_NAME",
+  COUNT(*) ROWS_COUNT
+FROM TradeHistory;
+
+-- Create compressed table with data from TradeHistory table
 CREATE TABLE TradeHistory_Compressed COMPRESS AS SELECT * FROM TradeHistory;
-ALTER TABLE TradeHistory_Compressed ADD CONSTRAINT TradeHistory_Compressed_pk PRIMARY KEY (Instrument, Time);
 ALTER TABLE TradeHistory_Compressed ADD CONSTRAINT TradeHistory_Compressed_fk FOREIGN KEY (Instrument) REFERENCES Instruments(Id);
+
+-- Add compressed index
+ALTER TABLE TradeHistory_Compressed ADD CONSTRAINT TradeHistory_Compressed_pk PRIMARY KEY (Instrument, Time);
 ALTER INDEX TradeHistory_Compressed_pk REBUILD COMPRESS;
 
+-- Get compressed table and index size
 SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='TABLE' and segment_name='TRADEHISTORY_COMPRESSED';
@@ -78,6 +99,8 @@ SELECT segment_name, bytes
  FROM dba_segments
  WHERE segment_type='INDEX' and segment_name='TRADEHISTORY_COMPRESSED_PK';
 
-
-SELECT 'TRADE_HISTORY' AS "TABLE_NAME", COUNT(*) ROWS_COUNT
-  FROM TradeHistory;
+-- Get rows count
+SELECT 
+  'TRADEHISTORY_COMPRESSED' AS "TABLE_NAME",
+  COUNT(*) ROWS_COUNT
+FROM TradeHistory_Compressed;
