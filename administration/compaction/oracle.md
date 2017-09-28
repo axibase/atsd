@@ -10,8 +10,8 @@ The following tests calculate the amount of disk space required to store 10+ mil
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Trade Table | No | 92,274,688 | 45,088,768 | 137,363,456 | 2,045,514 | 67.2 | 13.4 |
 | Trade Table | Yes | 53,477,376 | 42,991,616 | 96,468,992 | 2,045,514 | 47.2 | 9.4 |
-| Universal Table | No |  |  |  |  |  |  |
-| Universal Table | Yes |  |  |  |  |  |  |
+| Universal Table | No | 276824064 | 260046848 | 536870912 | 10227570 | 52.5 | 52.5 |
+| Universal Table | Yes | 184549376 | 218103808 | 402653184 | 10227570 | 39.3 | 39.3 |
 
 ## Dataset
 
@@ -111,8 +111,23 @@ SELECT * FROM Instruments;
 ```sql
 DESCRIBE UniversalHistory;
 
-SELECT * FROM UniversalHistory LIMIT 5;
+Name				     Null?    Type
+ ----------------------------------- -------- ------------------------
+ INSTRUMENT			     NOT NULL NUMBER(7)
+ METRIC 			     NOT NULL NUMBER(7)
+ TIME				     NOT NULL TIMESTAMP(0)
+ VALUE					      NUMBER(12,4)
 
+
+SELECT * FROM UniversalHistory FETCH FIRST 5 ROWS ONLY;
+
+INSTRUMENT|    METRIC|TIME									 |     VALUE
+----------|----------|---------------------------------------------------------------------------|----------
+	 1|	    1|02-JAN-98 09.30.00 AM							 |     104.5
+	 1|	    1|02-JAN-98 09.31.00 AM							 |    104.38
+	 1|	    1|02-JAN-98 09.32.00 AM							 |    104.44
+	 1|	    1|02-JAN-98 09.33.00 AM							 |    104.44
+	 1|	    1|02-JAN-98 09.34.00 AM							 |    104.38
 ```
 
 * Instruments Table
@@ -120,8 +135,16 @@ SELECT * FROM UniversalHistory LIMIT 5;
 ```sql
 DESCRIBE Instruments;
 
+Name				     Null?    Type
+ ----------------------------------- -------- ------------------------
+ ID				     NOT NULL NUMBER(7)
+ NAME					      VARCHAR2(20)
+
 SELECT * FROM Instruments;
 
+	ID|NAME
+----------|--------------------
+	 1|IBM
 ```
 
 * Metrics Table
@@ -129,8 +152,21 @@ SELECT * FROM Instruments;
 ```sql
 DESCRIBE Metrics;
 
+Name				     Null?    Type
+ ----------------------------------- -------- ------------------------
+ ID				     NOT NULL NUMBER(7)
+ NAME					      VARCHAR2(20)
+
+
 SELECT * FROM Metrics;
 
+	ID|NAME
+----------|--------------------
+	 1|Open
+	 2|High
+	 3|Low
+	 4|Close
+	 5|Volume
 ```
 
 ## Executing Tests
@@ -191,11 +227,9 @@ SEGMENT_NAME		  |	BYTES
 --------------------------|----------
 TRADEHISTORY		  |  92274688
 
-
 SEGMENT_NAME		  |	BYTES
 --------------------------|----------
 TRADEHISTORY_PK 	  |  45088768
-
 
 TABLE_NAME  |ROWS_COUNT
 ------------|----------
@@ -206,11 +240,9 @@ SEGMENT_NAME		  |	BYTES
 --------------------------|----------
 TRADEHISTORY_COMPRESSED   |  53477376
 
-
 SEGMENT_NAME		  |	BYTES
 --------------------------|----------
 TRADEHISTORY_COMPRESSED_PK|  42991616
-
 
 TABLE_NAME	       |ROWS_COUNT
 -----------------------|----------
@@ -225,9 +257,35 @@ curl -o /tmp/test/oracle-universal-table.sql \
 ```
 
 ```sh
-
+docker exec -u root oracle bash -c "chmod 777 /data" && \
+ cat /tmp/test/oracle-universal-table.sql | \
+ docker exec -i oracle sqlplus -S system/axibase | grep '|' --color=never
 ```
 
 ```sh
+SEGMENT_NAME		      |     BYTES
+------------------------------|----------
+UNIVERSALHISTORY	      | 276824064
 
+SEGMENT_NAME		      |     BYTES
+------------------------------|----------
+UNIVERSALHISTORY_PK	      | 260046848
+
+TABLE_NAME	|ROWS_COUNT
+----------------|----------
+UNIVERSALHISTORY|  10227570
+
+
+
+SEGMENT_NAME		      |     BYTES
+------------------------------|----------
+UNIVERSALHISTORY_COMPRESSED   | 184549376
+
+SEGMENT_NAME		      |     BYTES
+------------------------------|----------
+UNIVERSALHISTORY_COMPRESSED_PK| 218103808
+
+TABLE_NAME		   |ROWS_COUNT
+---------------------------|----------
+UNIVERSALHISTORY_COMPRESSED|  10227570
 ```
