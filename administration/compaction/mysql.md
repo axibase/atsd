@@ -216,7 +216,7 @@ docker run --name mysql-axibase-storage-test \
 ### Execute SQL scripts for the **Trade Table** Schema.
 
 ```sh
-curl -o /tmp/test/mysql-trade-table-raw.sql \
+curl -o /tmp/test/mysql-trade-table.sql \
  "https://raw.githubusercontent.com/axibase/atsd/master/administration/compaction/mysql-trade-table.sql"
 ```
 
