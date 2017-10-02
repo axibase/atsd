@@ -9,7 +9,7 @@ The following tests calculate the amount of disk space required to store 10+ mil
 | **Schema** | **Compressed** | **Total Size** | **Row Count** | **Bytes per Row** | **Bytes per Sample** |
 |---|---:|---:|---:|---:|---:|
 | Trade Table | Yes | 24,230,537 | 2,045,514 | 11.8 | 2.4 |
-| Universal Table | Yes | 56,604,757 | 10,227,570 | 27.7 | 5.6 |
+| Universal Table | Yes | 56,604,757 | 10,227,570 | 5.6 | 5.6 |
 
 ## Dataset
 
