@@ -18,4 +18,6 @@ The following tests estimate the amount of disk space required to store the same
 | Oracle      | EE, 12c (12.2.0.1)   | Specific   | No  | 13.4 | [view](oracle.md) |
 | Oracle      | EE, 12c (12.2.0.1)   | Universal  | Yes | 39.3 | [view](oracle.md) |
 | Oracle      | EE, 12c (12.2.0.1)   | Universal  | No  | 52.5 | [view](oracle.md) |
+| Vertica | 7.1.1-0   | Specific   | Yes | 2.4 | [view](vertica.md) |
+| Vertica | 7.1.1-0   | Universal  | Yes | 5.6 | [view](vertica.md) |
 | **ATSD**       | **17340** | **Universal**  | **Yes** | **1.9**  | [view](atsd.md)  |

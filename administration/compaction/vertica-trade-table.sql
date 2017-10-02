@@ -1,7 +1,9 @@
 -- Drop all data before test
 DROP TABLE IF EXISTS temporary_csv_data_table CASCADE;
+DROP TABLE IF EXISTS UniversalHistory CASCADE;
 DROP TABLE IF EXISTS TradeHistory CASCADE;
 DROP TABLE IF EXISTS Instruments CASCADE;
+DROP TABLE IF EXISTS Metrics CASCADE;
 
 -- Create Instruments table with auto-increment index
 CREATE TABLE Instruments(
@@ -61,11 +63,11 @@ INSERT INTO TradeHistory(instrument, time, open, high, low, close, volume)
 
 COMMIT;
 
+-- flush all data from memory storage (wos) to disk (ros)
+SELECT DO_TM_TASK('moveout', 'TradeHistory');
+
 -- Delete csv table
 DROP TABLE temporary_csv_data_table CASCADE;
-
--- Wait for columns statistics being updated
-SELECT SLEEP(300);
 
 -- Enable tabular presentation of query results.
 \pset border 2

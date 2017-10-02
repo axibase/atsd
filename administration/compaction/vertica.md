@@ -6,10 +6,10 @@ The following tests calculate the amount of disk space required to store 10+ mil
 
 ## Results
 
-| **Schema** | **Compressed** | **Data Size** | **Index Size** | **Total Size** | **Row Count** | **Bytes per Row** | **Bytes per Sample** |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Trade Table | Yes |  |  |  | 2,045,514 |  |  |
-| Universal Table | Yes |  |  |  | 10,227,570 |  |  |
+| **Schema** | **Compressed** | **Total Size** | **Row Count** | **Bytes per Row** | **Bytes per Sample** |
+|---|---:|---:|---:|---:|---:|
+| Trade Table | Yes | 24,230,537 | 2,045,514 | 11.8 | 2.4 |
+| Universal Table | Yes | 56,604,757 | 10,227,570 | 27.7 | 5.6 |
 
 ## Dataset
 
@@ -59,21 +59,77 @@ The **Universal Table** schema allows adding new metrics without altering the ta
 * TradeHistory Table
 
 ```sql
-DESCRIBE TradeHistory;
+\d TradeHistory;
 
++--------+--------------+------------+--------------+------+---------+----------+-------------+------------------------+
+| Schema |    Table     |   Column   |     Type     | Size | Default | Not Null | Primary Key |      Foreign Key       |
++--------+--------------+------------+--------------+------+---------+----------+-------------+------------------------+
+| public | TradeHistory | instrument | int          |    8 |         | t        | t           | public.Instruments(id) |
+| public | TradeHistory | "time"     | timestamp(0) |    8 |         | t        | t           |                        |
+| public | TradeHistory | open       | numeric(7,4) |    8 |         | f        | f           |                        |
+| public | TradeHistory | high       | numeric(7,4) |    8 |         | f        | f           |                        |
+| public | TradeHistory | low        | numeric(7,4) |    8 |         | f        | f           |                        |
+| public | TradeHistory | close      | numeric(7,4) |    8 |         | f        | f           |                        |
+| public | TradeHistory | volume     | int          |    8 |         | f        | f           |                        |
++--------+--------------+------------+--------------+------+---------+----------+-------------+------------------------+
+
+SELECT column_name, encodings, compressions FROM column_storage WHERE ANCHOR_TABLE_NAME='TradeHistory';
+
++-------------+--------------+--------------+
+| column_name |  encodings   | compressions |
++-------------+--------------+--------------+
+| instrument  | Uncompressed | gzip         |
+| time        | Uncompressed | gzip         |
+| open        | Uncompressed | gzip         |
+| high        | Uncompressed | gzip         |
+| low         | Uncompressed | gzip         |
+| close       | Uncompressed | gzip         |
+| volume      | Uncompressed | gzip         |
+| epoch       | Int_Delta    | none         |
++-------------+--------------+--------------+
 
 SELECT * FROM TradeHistory LIMIT 5;
 
++------------+---------------------+----------+----------+----------+----------+--------+
+| instrument |        time         |   open   |   high   |   low    |  close   | volume |
++------------+---------------------+----------+----------+----------+----------+--------+
+|          1 | 1998-01-02 09:30:00 | 104.5000 | 104.5000 | 104.5000 | 104.5000 |  67000 |
+|          1 | 1998-01-02 09:31:00 | 104.3800 | 104.5000 | 104.3800 | 104.3800 |  10800 |
+|          1 | 1998-01-02 09:32:00 | 104.4400 | 104.5000 | 104.3800 | 104.5000 |  13300 |
+|          1 | 1998-01-02 09:33:00 | 104.4400 | 104.5000 | 104.3800 | 104.3800 |  16800 |
+|          1 | 1998-01-02 09:34:00 | 104.3800 | 104.5000 | 104.3800 | 104.3800 |   4801 |
++------------+---------------------+----------+----------+----------+----------+--------+
 ```
 
 * Instruments Table
 
 ```sql
-DESCRIBE Instruments;
+\d Instruments;
 
++--------+-------------+--------+-------------+------+---------+----------+-------------+-------------+
+| Schema |    Table    | Column |    Type     | Size | Default | Not Null | Primary Key | Foreign Key |
++--------+-------------+--------+-------------+------+---------+----------+-------------+-------------+
+| public | Instruments | id     | int         |    8 |         | t        | t           |             |
+| public | Instruments | name   | varchar(20) |   20 |         | f        | f           |             |
++--------+-------------+--------+-------------+------+---------+----------+-------------+-------------+
+
+SELECT column_name, encodings, compressions FROM column_storage WHERE ANCHOR_TABLE_NAME='Instruments';
+
++-------------+--------------+--------------+
+| column_name |  encodings   | compressions |
++-------------+--------------+--------------+
+| id          | Uncompressed | int delta    |
+| name        | String       | lzo          |
+| epoch       | Int_Delta    | none         |
++-------------+--------------+--------------+
 
 SELECT * FROM Instruments;
 
++----+------+
+| id | name |
++----+------+
+|  1 | IBM  |
++----+------+
 ```
 
 ### **Universal Table** Schema
@@ -81,31 +137,107 @@ SELECT * FROM Instruments;
 * UniversalHistory Table
 
 ```sql
-DESCRIBE UniversalHistory;
+\d UniversalHistory;
 
++--------+------------------+------------+---------------+------+---------+----------+-------------+------------------------+
+| Schema |      Table       |   Column   |     Type      | Size | Default | Not Null | Primary Key |      Foreign Key       |
++--------+------------------+------------+---------------+------+---------+----------+-------------+------------------------+
+| public | UniversalHistory | Instrument | int           |    8 |         | t        | t           | public.Instruments(id) |
+| public | UniversalHistory | Metric     | int           |    8 |         | t        | t           | public.Metrics(Id)     |
+| public | UniversalHistory | "Time"     | timestamp(0)  |    8 |         | t        | t           |                        |
+| public | UniversalHistory | Value      | numeric(12,4) |    8 |         | f        | f           |                        |
++--------+------------------+------------+---------------+------+---------+----------+-------------+------------------------+
+
+SELECT column_name, encodings, compressions FROM column_storage WHERE ANCHOR_TABLE_NAME='UniversalHistory';
+
++-------------+--------------+--------------+
+| column_name |  encodings   | compressions |
++-------------+--------------+--------------+
+| instrument  | Uncompressed | gzip         |
+| metric      | Uncompressed | gzip         |
+| time        | Uncompressed | gzip         |
+| value       | Uncompressed | gzip         |
+| epoch       | Int_Delta    | none         |
++-------------+--------------+--------------+
 
 SELECT * FROM UniversalHistory LIMIT 5;
 
++------------+--------+---------------------+----------+
+| Instrument | Metric |        Time         |  Value   |
++------------+--------+---------------------+----------+
+|          1 |      1 | 1998-01-02 09:30:00 | 104.5000 |
+|          1 |      1 | 1998-01-02 09:31:00 | 104.3800 |
+|          1 |      1 | 1998-01-02 09:32:00 | 104.4400 |
+|          1 |      1 | 1998-01-02 09:33:00 | 104.4400 |
+|          1 |      1 | 1998-01-02 09:34:00 | 104.3800 |
++------------+--------+---------------------+----------+
 ```
 
 * Instruments Table
 
 ```sql
-DESCRIBE Instruments;
+\d Instruments;
 
++--------+-------------+--------+-------------+------+---------+----------+-------------+-------------+
+| Schema |    Table    | Column |    Type     | Size | Default | Not Null | Primary Key | Foreign Key |
++--------+-------------+--------+-------------+------+---------+----------+-------------+-------------+
+| public | Instruments | id     | int         |    8 |         | t        | t           |             |
+| public | Instruments | name   | varchar(20) |   20 |         | f        | f           |             |
++--------+-------------+--------+-------------+------+---------+----------+-------------+-------------+
+
+SELECT column_name, encodings, compressions FROM column_storage WHERE ANCHOR_TABLE_NAME='Instruments';
+
++-------------+--------------+--------------+
+| column_name |  encodings   | compressions |
++-------------+--------------+--------------+
+| id          | Uncompressed | int delta    |
+| name        | String       | lzo          |
+| epoch       | Int_Delta    | none         |
++-------------+--------------+--------------+
 
 SELECT * FROM Instruments;
 
++----+------+
+| id | name |
++----+------+
+|  1 | IBM  |
++----+------+
 ```
 
 * Metrics Table
 
 ```sql
-DESCRIBE Metrics;
+\d Metrics;
+
++--------+---------+--------+-------------+------+---------+----------+-------------+-------------+
+| Schema |  Table  | Column |    Type     | Size | Default | Not Null | Primary Key | Foreign Key |
++--------+---------+--------+-------------+------+---------+----------+-------------+-------------+
+| public | Metrics | Id     | int         |    8 |         | t        | t           |             |
+| public | Metrics | Name   | varchar(20) |   20 |         | f        | f           |             |
++--------+---------+--------+-------------+------+---------+----------+-------------+-------------+
+
+SELECT column_name, encodings, compressions FROM column_storage WHERE ANCHOR_TABLE_NAME='Metrics';
+
++-------------+--------------+--------------+
+| column_name |  encodings   | compressions |
++-------------+--------------+--------------+
+| Id          | Uncompressed | int delta    |
+| Name        | String       | lzo          |
+| epoch       | Int_Delta    | none         |
++-------------+--------------+--------------+
 
 
 SELECT * FROM Metrics;
 
++----+--------+
+| Id |  Name  |
++----+--------+
+|  1 | Open   |
+|  2 | High   |
+|  3 | Low    |
+|  4 | Close  |
+|  5 | Volume |
++----+--------+
 ```
 
 ## Executing Tests
@@ -151,7 +283,7 @@ curl -o /tmp/test/vertica-trade-table.sql \
 ```
 
 ```sh
-cat vertica-trade-table.sql | \
+cat /tmp/test/vertica-trade-table.sql | \
   docker exec -i vertica /opt/vertica/bin/vsql docker dbadmin -q | \
   grep -E '\+|\|' --color=never
 ```
@@ -172,9 +304,15 @@ curl -o /tmp/test/vertica-universal-table.sql \
 ```
 
 ```sh
-
+cat /tmp/test/vertica-universal-table.sql | \
+  docker exec -i vertica /opt/vertica/bin/vsql docker dbadmin -q | \
+  grep -E '\+|\|' --color=never
 ```
 
 ```sh
-
++-------------------+-----------+------------+
+| ANCHOR_TABLE_NAME | ROW_COUNT | table_size |
++-------------------+-----------+------------+
+| UniversalHistory  |  10227570 |   56604757 |
++-------------------+-----------+------------+
 ```
