@@ -9,17 +9,17 @@ rm /opt/atsd/atsd/conf/server.keystore
 
 Follow the prompts to create certificate.
  
-> Note since self-signed certificates mean the lack of the root CA signature only `first and last name` must be specified.
+> Note since self-signed certificates mean the lack of the root CA signature only `first and last name` require to be specified.
 
 ```bash
-keytool -genkeypair -keystore /opt/atsd/atsd/conf/server.keystore -alias atsd -keyalg RSA -keysize 2048 -validity 365
+keytool -genkeypair -keystore /opt/atsd/atsd/conf/server.keystore -keyalg RSA -keysize 2048 -validity 365
 ```
   
 ```bash
-Enter keystore password: NEW_KEYSTORE_PASS  
-Re-enter new password: NEW_KEYSTORE_PASS
+Enter keystore password: NEW_PASS  
+Re-enter new password: NEW_PASS
 What is your first and last name?
-  [Unknown]:  localhost
+  [Unknown]:  ATSD_HOSTNAME
 What is the name of your organizational unit?
   [Unknown]:  
 What is the name of your organization?
@@ -30,21 +30,26 @@ What is the name of your State or Province?
   [Unknown]:  
 What is the two-letter country code for this unit?
   [Unknown]:  
-Is CN=localhost, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown correct?
+Is CN=ATSD_HOSTNAME, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown correct?
   [no]:  yes
 
-Enter key password for <atsd>
-	(RETURN if same as keystore password): NEW_ALIAS_PASS
-Re-enter new password: NEW_ALIAS_PASS
+Enter key password for <mykey>
+	(RETURN if same as keystore password): <press RETURN>
 ```
 
 ## Update passwords in the server.properties file
 
-Replace `NEW_KEYSTORE_PASS` server.keystore.
+Replace default password at `https.keyStorePassword` and `https.keyManagerPassword` with `NEW_PASS` in /opt/atsd/atsd/conf/server.properties file.
 
 ```bash
-sed -i "s,^https.keyStorePassword=.*,https.keyStorePassword=NEW_KEYSTORE_PASS,g" /opt/atsd/atsd/conf/server.properties; \
-sed -i "s,^https.keyManagerPassword=.*,https.keyManagerPassword=NEW_ALIAS_PASS,g" /opt/atsd/atsd/conf/server.properties
+nano /opt/atsd/atsd/conf/server.properties
+```
+
+```bash
+...
+https.keyStorePassword=NEW_PASS
+https.keyManagerPassword=NEW_PASS
+...
 ```
 
 ## Restart ATSD
