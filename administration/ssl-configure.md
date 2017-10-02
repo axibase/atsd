@@ -1,4 +1,4 @@
-# Installing CA-signed Certificate Files into ATSD
+# Installing self-signed Certificate Files into ATSD
 
 ## Remove old ATSD keystore
 
