@@ -1,17 +1,16 @@
-# Installing CA-signed Certificate Files into ATSD
+# Installing CA-signed Certificate
 
 ## Overview
 
 The following instructions assume that you have obtained the following files from a certificate authority:
 
-* `example.crt` - SSL Certificate for the DNS name where ATSD is running
-* `example.key` - SSL Certificate Key File
-* `example.ca-bundle` - Intermediate SSL Certificates
-
+* `example.crt` - SSL сertificate for the DNS name where ATSD is running
+* `example.key` - SSL сertificate key file
+* `example.ca-bundle` - Intermediate SSL сertificates
 
 ## Combine the Chained Certificates 
 
-Combine the SSL Certificate for the DNS name and intermediate SSL Certificates into one file.
+Combine the SSL сertificate for the DNS name and intermediate SSL сertificates into one file.
 
 ```bash
 cat example.crt intermediate.crt [intermediate2.crt]... rootCA.crt > cert-chain.txt
@@ -23,17 +22,17 @@ Example:
 cat example.ca-bundle example.crt > cert-chain.txt
 ```
 
-## Export the Key and Certificates
+## Create PKCS12 Keystore
 
-Create intermediate PKCS12 keystore containing combined at previous step certificates and private key file.
+Create a PKCS12 keystore containing the chained certificate file and the private key file.
 
 ```bash
 openssl pkcs12 -export -inkey example.key -in cert-chain.txt -out example.pkcs12
 ```
 
 ```bash
-Enter Export Password: EXPORT_KEYSTORE_PASS
-Verifying - Enter Export Password: EXPORT_KEYSTORE_PASS
+Enter Export Password: NEW_PASS
+Verifying - Enter Export Password: NEW_PASS
 ```
 
 ## Remove Keystore File
@@ -44,22 +43,18 @@ Delete the current Java keystore file from the configuration directory.
 rm /opt/atsd/atsd/conf/server.keystore
 ```
 
-```bash
-rm: remove regular file `/opt/atsd/atsd/conf/server.keystore'? yes
-```
-
-## Import the Certificate	
+## Create JKS Keystore	
 	
-Use the keytool to create new ATSD keystore and import the PKCS12 file.
+Use the keytool to create a new JKS keystore by importing the PKCS12 keystore file.
 
 ```bash
 keytool -importkeystore -srckeystore example.pkcs12 -srcstoretype PKCS12 -destkeystore /opt/atsd/atsd/conf/server.keystore
 ```
 
 ```bash
-Enter destination keystore password: NEW_KEYSTORE_PASS
-Re-enter new password: NEW_KEYSTORE_PASS
-Enter source keystore password: EXPORT_KEYSTORE_PASS
+Enter destination keystore password: NEW_PASS
+Re-enter new password: NEW_PASS
+Enter source keystore password: NEW_PASS
 Entry for alias 1 successfully imported.
 Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
 ```
@@ -76,8 +71,8 @@ Specify the new password in `https.keyStorePassword` and `https.keyManagerPasswo
 
 ```properties
 ...
-https.keyStorePassword=NEW_KEYSTORE_PASS
-https.keyManagerPassword=EXPORT_KEYSTORE_PASS
+https.keyStorePassword=NEW_PASS
+https.keyManagerPassword=NEW_PASS
 https.trustStorePassword=
 ```
 
@@ -95,18 +90,25 @@ Login into ATSD by entering its DNS name in the browser address bar.
 
 ## Troubleshooting
 
-Verify the correct settings in the `/opt/atsd/atsd/conf/server.properties` file.
-
-```properties
-...
-https.port=8443
-https.keyStorePassword=NEW_KEYSTORE_PASS
-https.keyManagerPassword=EXPORT_KEYSTORE_PASS
-https.trustStorePassword=
-```
-
-Check the content of keystore.
+Check the contents of the keystore.
 
 ```bash
 keytool -list -v -keystore /opt/atsd/atsd/conf/server.keystore
+```
+
+The output should contain at least 1 entry consisting of the DNS certificate and intermediate certificates.
+
+```
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 1 entries
+
+Alias name: 1
+Creation date: Jan 18, 2017
+Entry type: PrivateKeyEntry
+Certificate chain length: 4
+Certificate[1]:
+Owner: CN=atsd.customer_domain.com, OU=PositiveSSL Wildcard, OU=Domain Control Validated
+...
 ```
