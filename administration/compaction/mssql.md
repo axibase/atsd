@@ -73,7 +73,7 @@ Close                |decimal              |no                   |          5|7 
 Volume               |decimal              |no                   |          5|8    |0    |yes                  |(n/a)                |(n/a)                |NULL                 
 Time                 |datetime2            |no                   |          6|19   |0    |no                   |(n/a)                |(n/a)                |NULL                 
 
-SELECT * FROM TradeHistory FETCH FIRST 5 ROWS ONLY;
+SELECT TOP 5 * FROM TradeHistory;
 
 Instrument|Open     |High     |Low      |Close    |Volume    |Time                                  
 ----------|---------|---------|---------|---------|----------|--------------------------------------
