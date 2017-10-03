@@ -38,10 +38,6 @@ Verifying - Enter Export Password: EXPORT_KEYSTORE_PASS
 ```bash
 rm /opt/atsd/atsd/conf/server.keystore
 ```
-```bash
-rm: remove write-protected regular file '/opt/atsd/atsd/conf/server.keystore'? yes
-```
-
 ### Import the Certificate	
 	
 Use the keytool to create new ATSD keystore and import the PKCS12 file.
