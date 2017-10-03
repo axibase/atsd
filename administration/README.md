@@ -19,6 +19,9 @@
     - [Inserting Data for New Entities](user-authorization.md#inserting-data-for-new-entities)
     - [Wildcard Requests](user-authorization.md#wildcard-requests)
   - [Implementation Notes](user-authorization.md#implementation-notes)
+- SSL
+  - [Installing CA-signed Certificate](ssl-ca-signed.md)
+  - [Installing Self-signed SSL Certificate](ssl-self-signed.md)
 - [Restarting](restarting.md#restarting)
   - [Script Directory](restarting.md#script-directory)
   - [Scripts](restarting.md#scripts)
