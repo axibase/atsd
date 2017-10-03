@@ -8,7 +8,7 @@ GO
 
 -- Create Instruments table with auto-increment index
 CREATE TABLE Instruments(
-   Id DECIMAL(7) IDENTITY(1,1),
+   Id INT IDENTITY(1,1),
    Name VARCHAR(20),
    CONSTRAINT Instruments_pk PRIMARY KEY (Id)
 );
@@ -23,7 +23,7 @@ CREATE TABLE temporary_csv_data_table (
    [High] DECIMAL(7,4),
    [Low]  DECIMAL(7,4),
    [Close] DECIMAL(7,4),
-   [Volume] DECIMAL(8));
+   [Volume] INT);
 GO
 
 -- Load CSV file
@@ -37,14 +37,14 @@ GO
 
 -- Create TradeHistory table
 CREATE TABLE TradeHistory(
-   [Instrument] DECIMAL(7) NOT NULL FOREIGN KEY REFERENCES Instruments(Id), 
+   [Instrument] INT NOT NULL FOREIGN KEY REFERENCES Instruments(Id), 
    [Open] DECIMAL(7,4),
    [High] DECIMAL(7,4),
    [Low] DECIMAL(7,4),
    [Close] DECIMAL(7,4),
-   [Volume] DECIMAL(8),
+   [Volume] INT,
    [Time] DATETIME2(0) NOT NULL,
-   CONSTRAINT TradeHistory_pk PRIMARY KEY (Instrument, Time)
+   CONSTRAINT TradeHistory_pk PRIMARY KEY NONCLUSTERED (Instrument, Time)
 );
 GO
 
@@ -77,7 +77,7 @@ SELECT
 	sp.data_compression_desc 
 FROM sys.partitions SP 
 INNER JOIN sys.tables ST ON st.object_id = sp.object_id 
-WHERE st.name = 'TradeHistory';
+WHERE st.name = 'TradeHistory' AND sp.index_id = 0;
 GO
 
 -- Retrieve row count and size of the TradeHistory table
@@ -94,7 +94,7 @@ SELECT
 	sp.data_compression_desc 
 FROM sys.partitions SP 
 INNER JOIN sys.tables ST ON st.object_id = sp.object_id 
-WHERE st.name = 'TradeHistory';
+WHERE st.name = 'TradeHistory' AND sp.index_id = 0;
 GO
 
 -- Retrieve row count and size of the TradeHistory table

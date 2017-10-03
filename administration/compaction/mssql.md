@@ -8,8 +8,8 @@ The following tests calculate the amount of disk space required to store 10+ mil
 
 | **Schema** | **Compressed** | **Data Size** | **Index Size** | **Total Size** | **Row Count** | **Bytes per Row** | **Bytes per Sample** |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Trade Table | No | 122,314,752 | 671,744 | 122,986,496 | 2,045,514 | 60.1 | 12.0 |
-| Trade Table | Yes | 47,988,736 | 139,264 | 48,128,000 | 2,045,514 | 23.6 | 4.7 |
+| Trade Table | No | 118,013,952 | 79,101,952 | 197,115,904 | 2,045,514 | 96.3 | 19.3 |
+| Trade Table | Yes | 46,080,000 | 49,872,896 | 95,952,896 | 2,045,514 | 46.9 | 9.4 |
 | Universal Table | No |  |  |  | 10,227,570 |  |  |
 | Universal Table | Yes |  |  |  | 10,227,570 |  |  |
 
@@ -61,38 +61,53 @@ The **Universal Table** schema allows adding new metrics without altering the ta
 * TradeHistory Table
 
 ```sql
-sp_help TradeHistory
+SELECT 
+    COLUMN_NAME, 
+    IS_NULLABLE, 
+    DATA_TYPE, 
+    NUMERIC_PRECISION, 
+    NUMERIC_SCALE, 
+    DATETIME_PRECISION 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'TradeHistory';
 
-Column_name          |Type                 |Computed             |Length     |Prec |Scale|Nullable             |TrimTrailingBlanks   |FixedLenNullInSource |Collation            
----------------------|---------------------|---------------------|-----------|-----|-----|---------------------|---------------------|---------------------|---------------------
-Instrument           |decimal              |no                   |          5|7    |0    |no                   |(n/a)                |(n/a)                |NULL                 
-Open                 |decimal              |no                   |          5|7    |4    |yes                  |(n/a)                |(n/a)                |NULL                 
-High                 |decimal              |no                   |          5|7    |4    |yes                  |(n/a)                |(n/a)                |NULL                 
-Low                  |decimal              |no                   |          5|7    |4    |yes                  |(n/a)                |(n/a)                |NULL                 
-Close                |decimal              |no                   |          5|7    |4    |yes                  |(n/a)                |(n/a)                |NULL                 
-Volume               |decimal              |no                   |          5|8    |0    |yes                  |(n/a)                |(n/a)                |NULL                 
-Time                 |datetime2            |no                   |          6|19   |0    |no                   |(n/a)                |(n/a)                |NULL                 
+COLUMN_NAME          |IS_NULLABLE|DATA_TYPE            |NUMERIC_PRECISION|NUMERIC_SCALE|DATETIME_PRECISION
+---------------------|-----------|---------------------|-----------------|-------------|------------------
+Instrument           |NO         |int                  |               10|            0|              NULL
+Open                 |YES        |decimal              |                7|            4|              NULL
+High                 |YES        |decimal              |                7|            4|              NULL
+Low                  |YES        |decimal              |                7|            4|              NULL
+Close                |YES        |decimal              |                7|            4|              NULL
+Volume               |YES        |int                  |               10|            0|              NULL
+Time                 |NO         |datetime2            |             NULL|         NULL|                 0
 
 SELECT TOP 5 * FROM TradeHistory;
 
-Instrument|Open     |High     |Low      |Close    |Volume    |Time                                  
-----------|---------|---------|---------|---------|----------|--------------------------------------
-         1| 104.5000| 104.5000| 104.5000| 104.5000|     67000|                   1998-01-02 09:30:00
-         1| 104.3800| 104.5000| 104.3800| 104.3800|     10800|                   1998-01-02 09:31:00
-         1| 104.4400| 104.5000| 104.3800| 104.5000|     13300|                   1998-01-02 09:32:00
-         1| 104.4400| 104.5000| 104.3800| 104.3800|     16800|                   1998-01-02 09:33:00
-         1| 104.3800| 104.5000| 104.3800| 104.3800|      4801|                   1998-01-02 09:34:00
+Instrument |Open     |High     |Low      |Close    |Volume     |Time                                  
+-----------|---------|---------|---------|---------|-----------|--------------------------------------
+          1|  99.0000|  99.0000|  99.0000|  99.0000|       6600|                   1998-03-11 14:59:00
+          1|  99.0000|  99.0600|  99.0000|  99.0600|       2400|                   1998-03-11 15:00:00
+          1|  99.1200|  99.1900|  99.0600|  99.1900|      18300|                   1998-03-11 15:01:00
+          1|  99.0600|  99.2500|  99.0600|  99.2500|      12700|                   1998-03-11 15:02:00
+          1|  99.3100|  99.3700|  99.1200|  99.2500|      13600|                   1998-03-11 15:03:00
 ```
 
 * Instruments Table
 
 ```sql
-sp_help Instruments;
+SELECT 
+    COLUMN_NAME, 
+    IS_NULLABLE, 
+    DATA_TYPE, 
+    NUMERIC_PRECISION, 
+    NUMERIC_SCALE
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'Instruments';
 
-Column_name          |Type                 |Computed             |Length     |Prec |Scale|Nullable             |TrimTrailingBlanks   |FixedLenNullInSource |Collation            
----------------------|---------------------|---------------------|-----------|-----|-----|---------------------|---------------------|---------------------|---------------------
-Id                   |decimal              |no                   |          5|7    |0    |no                   |(n/a)                |(n/a)                |NULL                 
-Name                 |varchar              |no                   |         20|     |     |yes                  |no                   |yes                  |SQL_Latin1_General_CP
+COLUMN_NAME          |IS_NULLABLE|DATA_TYPE            |NUMERIC_PRECISION|NUMERIC_SCALE
+---------------------|-----------|---------------------|-----------------|-------------
+Id                   |NO         |int                  |               10|            0
+Name                 |YES        |varchar              |             NULL|         NULL
 
 SELECT * FROM Instruments;
 
@@ -186,11 +201,11 @@ cat /tmp/test/mssql-trade-table.sql |\
 ```sh
 name                 |data_compression_desc
 ---------------------|---------------------
-TradeHistory         |NONE                
- 
+TradeHistory         |NONE                 
+
 name                 |rows                |reserved          |data              |index_size        |unused            
 ---------------------|--------------------|------------------|------------------|------------------|------------------
-TradeHistory         |2045514             |120200 KB         |119448 KB         |656 KB            |96 KB             
+TradeHistory         |2045514             |192592 KB         |115248 KB         |77248 KB          |96 KB             
 
 name                 |data_compression_desc
 ---------------------|---------------------
@@ -198,7 +213,7 @@ TradeHistory         |PAGE
 
 name                 |rows                |reserved          |data              |index_size        |unused            
 ---------------------|--------------------|------------------|------------------|------------------|------------------
-TradeHistory         |2045514             |47048 KB          |46864 KB          |136 KB            |48 KB             
+TradeHistory         |2045514             |93968 KB          |45008 KB          |48704 KB          |256 KB            
 
 ```
 
