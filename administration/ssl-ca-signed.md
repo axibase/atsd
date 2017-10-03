@@ -19,7 +19,7 @@ cat example.crt intermediate.crt [intermediate2.crt]... rootCA.crt > cert-chain.
 Example:
 
 ```bash
-cat example.ca-bundle example.crt > cert-chain.txt
+cat example.crt example.ca-bundle > cert-chain.txt
 ```
 
 ## Create PKCS12 Keystore
