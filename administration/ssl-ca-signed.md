@@ -66,7 +66,6 @@ nano /opt/atsd/atsd/conf/server.properties
 ...
 https.keyStorePassword=NEW_KEYSTORE_PASS
 https.keyManagerPassword=EXPORT_KEYSTORE_PASS
-...
 ```
 
 ### Restart ATSD
@@ -78,7 +77,7 @@ https.keyManagerPassword=EXPORT_KEYSTORE_PASS
 
 ### Verify SSL
 
-Enter ATSD SSL url in the browser address bar: https://ATSD_DNS_NAME:8443
+Enter ATSD SSL url in the browser address bar: https://atsd.customer_domain.com:8443
 
 
 ### Troubleshooting
