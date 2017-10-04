@@ -20,4 +20,8 @@ The following tests estimate the amount of disk space required to store the same
 | Oracle      | EE, 12c (12.2.0.1)   | Universal  | No  | 52.5 | [view](oracle.md) |
 | Vertica | 7.1.1-0   | Specific   | Yes | 2.4 | [view](vertica.md) |
 | Vertica | 7.1.1-0   | Universal  | Yes | 5.6 | [view](vertica.md) |
+| Microsoft SQL Server | 14.0.1000.169   | Specific   | Yes | 9.4  | [view](mssql.md) |
+| Microsoft SQL Server | 14.0.1000.169   | Specific   | No  | 19.3 | [view](mssql.md) |
+| Microsoft SQL Server | 14.0.1000.169   | Universal  | Yes | 42.9 | [view](mssql.md) |
+| Microsoft SQL Server | 14.0.1000.169   | Universal  | No  | 89.5 | [view](mssql.md) |
 | **ATSD**       | **17340** | **Universal**  | **Yes** | **1.9**  | [view](atsd.md)  |

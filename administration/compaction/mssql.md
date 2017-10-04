@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following tests calculate the amount of disk space required to store 10+ million `time:value` samples in a Microsoft SQL Server 2017 (RC2) 14.0.900.75 database. 
+The following tests calculate the amount of disk space required to store 10+ million `time:value` samples in a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 database. 
 
 ## Results
 
@@ -10,8 +10,8 @@ The following tests calculate the amount of disk space required to store 10+ mil
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Trade Table | No | 118,013,952 | 79,101,952 | 197,115,904 | 2,045,514 | 96.3 | 19.3 |
 | Trade Table | Yes | 46,080,000 | 49,872,896 | 95,952,896 | 2,045,514 | 46.9 | 9.4 |
-| Universal Table | No |  |  |  | 10,227,570 |  |  |
-| Universal Table | Yes |  |  |  | 10,227,570 |  |  |
+| Universal Table | No | 476053504 | 439107584 | 915161088 | 10,227,570 | 89.5 | 89.5 |
+| Universal Table | Yes | 148013056 | 290766848 | 438779904 | 10,227,570 | 42.9 | 42.9 |
 
 ## Dataset
 
@@ -121,28 +121,84 @@ Id       |Name
 * UniversalHistory Table
 
 ```sql
-DESCRIBE UniversalHistory;
+SELECT 
+    COLUMN_NAME, 
+    IS_NULLABLE, 
+    DATA_TYPE, 
+    NUMERIC_PRECISION, 
+    NUMERIC_SCALE, 
+    DATETIME_PRECISION 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'UniversalHistory';
 
-SELECT * FROM UniversalHistory FETCH FIRST 5 ROWS ONLY;
+COLUMN_NAME          |IS_NULLABLE|DATA_TYPE            |NUMERIC_PRECISION|NUMERIC_SCALE|DATETIME_PRECISION
+---------------------|-----------|---------------------|-----------------|-------------|------------------
+Instrument           |NO         |int                  |               10|            0|              NULL
+Metric               |NO         |int                  |               10|            0|              NULL
+Value                |YES        |decimal              |               12|            4|              NULL
+Time                 |NO         |datetime2            |             NULL|         NULL|                 0
 
+SELECT TOP 5 * FROM UniversalHistory;
+
+Instrument |Metric     |Value         |Time                                  
+-----------|-----------|--------------|--------------------------------------
+          1|          1|      104.5000|                   1998-01-02 09:30:00
+          1|          1|      104.3800|                   1998-01-02 09:31:00
+          1|          1|      104.4400|                   1998-01-02 09:32:00
+          1|          1|      104.4400|                   1998-01-02 09:33:00
+          1|          1|      104.3800|                   1998-01-02 09:34:00
 ```
 
 * Instruments Table
 
 ```sql
-DESCRIBE Instruments;
+SELECT 
+    COLUMN_NAME, 
+    IS_NULLABLE, 
+    DATA_TYPE, 
+    NUMERIC_PRECISION, 
+    NUMERIC_SCALE
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'Instruments';
+
+COLUMN_NAME          |IS_NULLABLE|DATA_TYPE            |NUMERIC_PRECISION|NUMERIC_SCALE
+---------------------|-----------|---------------------|-----------------|-------------
+Id                   |NO         |int                  |               10|            0
+Name                 |YES        |varchar              |             NULL|         NULL
 
 SELECT * FROM Instruments;
 
+Id       |Name                
+---------|--------------------
+        1|IBM                 
 ```
 
 * Metrics Table
 
 ```sql
-DESCRIBE Metrics;
+SELECT 
+    COLUMN_NAME, 
+    IS_NULLABLE, 
+    DATA_TYPE, 
+    NUMERIC_PRECISION, 
+    NUMERIC_SCALE
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'Metrics';
+
+COLUMN_NAME          |IS_NULLABLE|DATA_TYPE            |NUMERIC_PRECISION|NUMERIC_SCALE
+---------------------|-----------|---------------------|-----------------|-------------
+Id                   |NO         |int                  |               10|            0
+Name                 |YES        |varchar              |             NULL|         NULL
 
 SELECT * FROM Metrics;
 
+Id         |Name                
+-----------|--------------------
+          1|Open                
+          2|High                
+          3|Low                 
+          4|Close               
+          5|Volume              
 ```
 
 ## Executing Tests
@@ -174,7 +230,7 @@ wc -l IBM_adjusted.txt
 
 ### Launch Microsoft SQL Server Database Container
 
-Start a Microsoft SQL Server 2017 (RC2) 14.0.900.75 container.
+Start a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 container.
 Mount `/tmp/test` directory to the container and start using following command.
 
 ```properties
@@ -182,7 +238,7 @@ docker run --name=mssql \
   -e 'ACCEPT_EULA=Y' \
   -e 'SA_PASSWORD=Axibase123' \
   -v /tmp/test:/data \
-  -d microsoft/mssql-server-linux
+  -d microsoft/mssql-server-linux:2017-latest
 ```
 
 ### Execute SQL scripts for the **Trade Table** Schema.
@@ -225,9 +281,25 @@ curl -o /tmp/test/mssql-universal-table.sql \
 ```
 
 ```sh
-
+cat /tmp/test/mssql-universal-table.sql |\
+ docker exec -i mssql /opt/mssql-tools/bin/sqlcmd -U sa -P Axibase123 | \
+ grep '|' --color=never
 ```
 
 ```sh
+name                 |data_compression_desc
+---------------------|---------------------
+UniversalHistory     |NONE                 
 
+name                 |rows                |reserved          |data              |index_size        |unused            
+---------------------|--------------------|------------------|------------------|------------------|------------------
+UniversalHistory     |10227570            |894096 KB         |464896 KB         |428816 KB         |384 KB
+            
+name                 |data_compression_desc
+---------------------|---------------------
+UniversalHistory     |PAGE                
+
+name                 |rows                |reserved          |data              |index_size        |unused            
+---------------------|--------------------|------------------|------------------|------------------|------------------
+UniversalHistory     |10227570            |428752 KB         |144544 KB         |283952 KB         |256 KB            
 ```
