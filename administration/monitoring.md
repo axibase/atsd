@@ -129,7 +129,8 @@ Retrieving a full list of collected metrics in JSON:
 |disabled_properties_received_per_second|Number of property commands received when `Property Enabled` was checked on **Admin>Input Settings** page.|
 |filtered_metric_received_per_second|Number of series samples discarded due to `Invalid Value Action`.|	
 |invalid_message_received_per_second | Number of invalid message commands received. |
-|invalid_property_received_per_second| Number of invalid property commands received.|	
+|invalid_property_received_per_second| Number of invalid property commands received.|
+|message_gets_per_second|Number of requests to `/messages` endpoint|
 |message_reads_per_second|Number of messages read.|	
 |message_received_per_second | Number of messages received. |	
 |message_writes_per_second | Number of messages written. |	
