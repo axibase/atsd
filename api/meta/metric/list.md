@@ -38,6 +38,7 @@ Retrieve a list of metrics matching the specified filter conditions.
 |enabled| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
 |persistent | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |filter | string | Persistence filter [expression](../../../api/meta/expression.md). Discards series that do not match this filter.|
+|createdDate| string | Date when this metric was created in ISO-8601 format.|
 |lastInsertDate| string | Last time a value was received for this metric by any series in ISO-8601 format.|
 |retentionDays| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
 |seriesRetentionDays| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
@@ -121,7 +122,8 @@ curl https://atsd_host:8443/api/v1/metrics?limit=2 \
     "invalidAction": "NONE",
     "lastInsertDate": "2016-05-19T00:15:02.000Z",
     "versioned": true,
-    "interpolate":"LINEAR"
+    "interpolate":"LINEAR",
+    "createdDate": "2015-10-03T07:03:45.558Z"
   },
   {
     "name": "temperature",

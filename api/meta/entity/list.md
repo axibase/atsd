@@ -31,6 +31,7 @@ Retrieve a list of entities matching the specified filter conditions.
 | enabled | boolean | Enabled status. Incoming data is discarded for disabled entities. |
 | interpolate | string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`.|
 | timeZone | string | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to the [Java Time Zone](../../../api/network/timezone-list.md) table for a list of supported Time Zone IDs.<br>The timezone is applied by date-formatting functions to return local time in entity-specific timezone.|
+| createdDate| string | Date when this entity was created in ISO-8601 format.|
 | lastInsertDate | string |Last time, in ISO format, when a value was received by the database for this entity. |
 | tags | object | Entity tags, as requested with the `tags` parameter. |
 
@@ -77,7 +78,8 @@ curl https://atsd_host:8443/api/v1/entities?timeFormat=iso&limit=2&expression=na
     {
         "name": "nurswgdkr002",
         "enabled": true,
-        "lastInsertDate": "2015-09-04T15:43:36.000Z"
+        "lastInsertDate": "2015-09-04T15:43:36.000Z",
+        "createdDate": "2014-10-03T07:09:54.551Z"
     },
     {
         "name": "nurswgvml001",
