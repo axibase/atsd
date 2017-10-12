@@ -97,7 +97,7 @@
 | `isEmpty()` | Returns true if collection has no elements. <br>`entity.tags.isEmpty()`|
 | `size()` | Returns number of elements in the collection. <br>`entity.tags.size() > 1`|
 | `matches(S pattern, [S])` | Returns true if one of the collection elements matches the specified pattern. <br>`matches('*atsd*', property_values('docker.container::image'))`|
-
+| `lookup(S replacementTable, S key)` | Returns value by specified key in the given replacement table.|
 
 ## Time Functions
 
