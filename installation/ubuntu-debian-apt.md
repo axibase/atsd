@@ -12,14 +12,6 @@
 
 ## Installation Steps
 
-#### Add backports repository
-
-This step is required only for Debian 8.x (jessie)
-
-```sh
-sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
-```
-
 #### Update Repositories
 
 ```sh
@@ -44,12 +36,6 @@ Follow the prompts to install ATSD:
 
 ```sh
 sudo apt-get update && sudo apt-get install atsd
-```
-
-On Debian 8.x (jessie)
-
-```sh
-sudo apt-get update && sudo apt-get -t jessie-backports install atsd
 ```
 
 It may take up to 5 minutes to initialize the database.

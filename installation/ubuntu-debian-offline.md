@@ -2,8 +2,8 @@
 
 ## Overview
 
-The installation process involves downloading dependencies (deb packages) to an intermediate machine with Internet access
-and copying them to the target machine for offline installation.
+The installation process involves downloading dependencies to an intermediate machine with Internet access
+and copying them to the target machine with similar characteristics for offline installation.
 
 ## Supported Versions
 
@@ -17,13 +17,7 @@ and copying them to the target machine for offline installation.
 
 ## Installation Steps
 
-Add jessie-backports repository. This command is required only for Debian 8.x (jessie).
-
-```sh
-sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
-```
-
-Enable the `axibase.com/public/repository/deb/` repository on the machine with Internet access:
+Enable the **axibase.com/public/repository/deb/** repository on the machine with Internet access:
 
 ```sh
 sudo apt-get update
@@ -39,71 +33,27 @@ sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./"
 >> /etc/apt/sources.list.d/axibase.list'
 ```
 
-Update the repository.
+Download the ATSD package, including its dependencies, to the `atsd_with_dependencies` directory.
+
+```
+sudo apt-get update
+mkdir atsd_with_dependencies
+cd atsd_with_dependencies
+apt-get --print-uris --yes install atsd | grep ^\' | cut -d\' -f2 | xargs wget
+```
+
+Copy the `atsd_with_dependencies` directory to the target machine where ATSD will be installed.
+
+Install dependencies:
 
 ```sh
-sudo apt-get update
+sudo dpkg -i atsd_with_dependencies/*
 ```
 
-Download the ATSD package, including its dependencies, to the `dependencies` directory.
+Follow the prompts to install ATSD:
 
-```bash
-mkdir ~/dependencies
-cd ~/dependencies
-apt-get download atsd $(apt-cache depends --recurse --no-recommends --no-suggests \
-  --no-conflicts --no-breaks --no-replaces --no-enhances \
-  --no-pre-depends atsd | grep "Depends" | cut -d ":" -f2 |  grep "^\ \w")
-```
-
-Download Java 8. This step is required only for Debian 8.x (jessie). Execute the following commands:
-
-```bash
-rm openj* 
-
-apt-get -t jessie-backports download openjdk-8-jdk $(apt-cache depends --recurse --no-recommends --no-suggests \
-  --no-conflicts --no-breaks --no-replaces --no-enhances \
-  --no-pre-depends openjdk-8-jdk | grep "Depends" | cut -d ":" -f2 |  grep "^\ \w")
-```
-Make sure that the download directory isn't empty:
-
-```bash
-...
-libtinfo5_5.9+20140913-1+b1_amd64.deb
-lsb-base_4.1+Debian13+nmu1_all.deb
-mount_2.25.2-6_amd64.deb
-net-tools_1.60-26+b1_amd64.deb
-procps_2%3a3.3.9-9_amd64.deb
-sensible-utils_0.0.9_all.deb
-startpar_0.59-3_amd64.deb
-sysvinit-utils_2.88dsf-59_amd64.deb
-sysv-rc_2.88dsf-59_all.deb
-zlib1g_1%3a1.2.8.dfsg-2+b1_amd64.deb
-```
-
-Copy the `dependencies` directory to the target machine where ATSD will be installed.
-
-Install dependencies.
-
-```bash
-dir dependencies/* | grep -v "atsd*" | xargs sudo dpkg -i
-```
-
-Sample output:
-
-```bash
-...
-Processing triggers for man-db (2.7.5-1) ...
-Processing triggers for install-info (6.1.0.dfsg.1-5) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-Processing triggers for systemd (229-4ubuntu19) ...
-Processing triggers for libc-bin (2.23-0ubuntu9) ...
-Processing triggers for mime-support (3.59ubuntu1) ...
-```
-
-Install ATSD.
-
-```bash
-sudo dpkg -i dependencies/atsd*
+```sh
+sudo dpkg -i atsd_with_dependencies/atsd*
 ```
 
 It may take up to 5 minutes to initialize the database.
