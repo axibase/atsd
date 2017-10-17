@@ -52,17 +52,14 @@ mkdir ~/dependencies
 cd ~/dependencies
 apt-get download atsd $(apt-cache depends --recurse --no-recommends --no-suggests \
   --no-conflicts --no-breaks --no-replaces --no-enhances \
-  --no-pre-depends atsd | grep "Depends" | cut -d ":" -f2 |  grep "^\ \w")
+  atsd | grep "Depends" | cut -d ":" -f2 | grep "^\ \w" | grep -v file-rc)
 ```
 
-Download Java 8. This step is required only for Debian 8.x (jessie). Execute the following commands:
+Download newer `ca-certificates-java`. This step is required only for Debian 8.x (jessie).
 
 ```bash
-rm openj* 
-
-apt-get -t jessie-backports download openjdk-8-jdk $(apt-cache depends --recurse --no-recommends --no-suggests \
-  --no-conflicts --no-breaks --no-replaces --no-enhances \
-  --no-pre-depends openjdk-8-jdk | grep "Depends" | cut -d ":" -f2 |  grep "^\ \w")
+rm ca-certificates-java*
+apt-get -t jessie-backports download ca-certificates-java
 ```
 Make sure that the download directory isn't empty:
 
@@ -85,7 +82,7 @@ Copy the `dependencies` directory to the target machine where ATSD will be insta
 Install dependencies.
 
 ```bash
-dir dependencies/* | grep -v "atsd*" | xargs sudo dpkg -i
+sudo dpkg -i $(ls | grep -v atsd*)
 ```
 
 Sample output:
@@ -103,7 +100,7 @@ Processing triggers for mime-support (3.59ubuntu1) ...
 Install ATSD.
 
 ```bash
-sudo dpkg -i dependencies/atsd*
+sudo dpkg -i atsd*
 ```
 
 It may take up to 5 minutes to initialize the database.

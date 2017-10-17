@@ -14,68 +14,26 @@ and copying them to the target machine with similar characteristics for offline 
 - Minimum RAM: 2 GB
 - See [Requirements](../administration/requirements.md) for additional information.
 
-## Install Dependencies
+## Check Dependencies
 
-### Option 1: Install Dependencies from Local Repositories
-
-```bash
-sudo zypper -n install java-1_8_0-openjdk-devel which net-tools iproute2
-```
-
-### Option 2: Copy Dependencies from a Connected Machine
-
-On a separate machine with internet access create a directory to download the RPM packages which are required by ATSD.
+Check that required dependencies are present on the target machine
 
 ```bash
-mkdir ./sles_dependencies
-cd sles_dependencies
+sudo zypper search -i java-1_8_0-openjdk-devel which net-tools iproute2
 ```
 
-Create `dep-download.sh` script file and execute it to download the packages: `java-1_8_0-openjdk-devel which net-tools iproute2`.
+Verify that all of these dependencies were found
 
-```bash
-nano dep-download.sh
+```text
+S  | Name                     | Summary                                                     | Type
+---+--------------------------+-------------------------------------------------------------+--------
+i+ | iproute2                 | Linux network configuration utilities                       | package
+i+ | java-1_8_0-openjdk-devel | OpenJDK 8 Development Environment                           | package
+i  | net-tools                | Important Programs for Networking                           | package
+i  | which                    | Displays where a particular program in your path is located | package
 ```
 
-```bash
-#!/bin/sh
-SCRIPT=$(readlink -f $0)
-DIR=$(dirname ${SCRIPT})
-list="java-1_8_0-openjdk-devel which net-tools iproute2"
-zypper -n install -df ${list}
-for package in ${list}; do
-find /var/cache/zypp/packages -name ${package}*.rpm -exec cp {} $DIR \;
-done
-```
-
-```bash
-chmod a+x dep-download.sh
-sudo ./dep-download.sh
-```
-
-Make sure that the download directory contains the following packages:
-
-```
-iproute2-4.4-14.7.x86_64.rpm
-java-1_8_0-openjdk-devel-1.8.0.101-14.3.x86_64.rpm
-net-tools-1.60-764.185.x86_64.rpm
-which-2.20-3.180.x86_64.rpm
-```
-
-Copy the RPM files in the download directory to the target machine and install the packages:
-
-```bash
-sudo zypper -n install ~/sles_dependencies/*.rpm
-```
-
-Sample output:
-
-```
-...
-update-alternatives: using /usr/lib64/jvm/java-1.8.0-openjdk/bin/javac to provide /usr/bin/javac (javac) in auto mode
-update-alternatives: using /usr/lib64/jvm/java-1.8.0-openjdk to provide /usr/lib64/jvm/java-opnejdk (java_sdk_openjdk) in auto mode
-update-alternatives: using /usr/lib64/jvm/java-1.8.0-openjdk to provide /usr/lib64/jvm/java-1.8.0 (java_sdk_1.8.0) in auto mode
-```
+Install these dependencies if needed.
 
 ## Install ATSD
 
