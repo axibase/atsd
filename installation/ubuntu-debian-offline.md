@@ -82,7 +82,7 @@ Copy the `dependencies` directory to the target machine where ATSD will be insta
 Install dependencies.
 
 ```bash
-sudo dpkg -i $(ls | grep -v atsd*)
+ls dependencies/* | grep -v "atsd*" | xargs sudo dpkg -i
 ```
 
 Sample output:
@@ -100,7 +100,7 @@ Processing triggers for mime-support (3.59ubuntu1) ...
 Install ATSD.
 
 ```bash
-sudo dpkg -i atsd*
+sudo dpkg -i dependencies/atsd*
 ```
 
 It may take up to 5 minutes to initialize the database.
