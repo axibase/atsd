@@ -21,7 +21,7 @@ This document describes how to reconfigure the ODBC datasource if the list of ta
     jdbc:atsd://ATSD_HOST:8443;tables=infla%,%finance%
   ```
   
-![](images/table_config_3.png)
+![](images/table_config.png)
 
 > Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
 
