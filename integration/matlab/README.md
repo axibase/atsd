@@ -12,14 +12,14 @@
 
 ### Install MatLab
 
-- Install [MatLab](https://www.mathworks.com/products/matlab.html) R2017a with Database Toolbox
+- Install [MatLab](https://www.mathworks.com/products/matlab.html) R2017b with Database Toolbox
 
 ### Load Sample Data
 
 To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics -> Data Entry**, select the 'Commands' tab.
+2. Open **Metrics > Data Entry**, select the 'Commands' tab.
 3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
 
 ![](resources/metrics_entry.png)
@@ -57,21 +57,20 @@ Example:
 
 ### Connect in Database Explorer
 
-- Click 'New - JDB'.
-- Select 'Vendor - OTHER'.
-- Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
-- Specify a JDBC URL like `jdbc:atsd:ATSD_HOSTNAME:8443;expandTags=true`
+- **Apps > Database Explorer**
+- Click **Configure Data Source > Configure JDBC Data Source**
+- Select **Vendor > OTHER**.
+- Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
+- Specify a JDBC URL like `jdbc:atsd://ATSD_HOSTNAME:8443;expandTags=true`
 [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
-- Leave the Username and Password fields empty.
-- Now connect to ATSD using the "Data Source Name" button and log in on the Database Browser window.
+- Click **Test**, specify ATSD login and password
+- If connection is successful click **Save** and close _JDBC Data Source Configuration_ window
 
 Example:
 
-![](resources/new_jdbc_data_source.png)
+![](resources/jdbc_data_source_new.png)
 
 `ATSD_HOSTNAME` is the hostname address of the ATSD instance you want to connect to.
-
-> At the  moment the Database Explorer can not display tables with dots in their name.
 
 ### Connect to the MatLab Command Window
 
@@ -79,7 +78,7 @@ Example of https connection to ATSD:
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
-url = 'jdbc:atsd:ATSD_HOSTNAME:8443';
+url = 'jdbc:atsd://ATSD_HOSTNAME:8443';
 username = 'USERNAME';
 password = 'PASSWORD';
 conn_atsd = database('', username, password, driver, url);
@@ -103,15 +102,18 @@ Expected result:
 
 ## Review Tables in the Database Explorer
 
-For example, set the `TABLE_NAME_FILTER` variable to `*java*`. The Database Browser would display a set of tables matching the expression:
+- Specify a JDBC URL like `jdbc:atsd://ATSD_HOSTNAME:8443;tables=%jvm%` at _JDBC Data Source Configuration_ window
+- Click **New Query**, select _ATSD_ at _Data Source_ drop-down, specify ATSD login and password
+
+The _Database Browser_ would display a set of tables matching the expression:
 
 ![](resources/database_browser.png)
 
-Select one or more columns to open the Data Preview window displaying the first N rows of the resultset (25 by default).
+Select one or more columns to open the Data Preview window displaying the first N rows of the resultset (10 by default).
 
 An example with the datetime, value, and text fields selected:
 
-![](resources/data_preview.png)
+![](resources/prewiew_data.png)
 
 The complete resultset can be imported with the Import button, highlighted with a green arrow.
 
@@ -120,7 +122,7 @@ The complete resultset can be imported with the Import button, highlighted with 
 Execute the SQL query to import the resultset into a MatLab variable:
 
 ```matlab
-sqlquery = 'SELECT * FROM gc_time_percent LIMIT 50';
+sqlquery = "SELECT * FROM gc_time_percent LIMIT 50";
 curs = exec(conn_atsd, sqlquery);
 res = fetch(curs);
 data = res.Data;
@@ -149,7 +151,7 @@ insert(conn_atsd, 'METRIC_NAME', colnames, data);
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
-url = 'jdbc:atsd:ATSD_HOSTNAME:8443';
+url = 'jdbc:atsd://ATSD_HOSTNAME:8443';
 username = 'USERNAME';
 password = 'PASSWORD';
 conn_atsd = database('', username, password, driver, url);
@@ -159,7 +161,7 @@ conn_atsd = database('', username, password, driver, url);
 
 ```matlab
 % SQL query to get prices for a date range
-sqlquery = 'SELECT datetime, tags.category, value FROM inflation.cpi.categories.price WHERE datetime BETWEEN "2013-01-01T00:00:00Z" AND "2017-01-01T00:00:00Z" ORDER BY 1, 2';
+sqlquery = "SELECT datetime, tags.category, value FROM inflation.cpi.categories.price WHERE datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z' ORDER BY 1, 2";
 % get cursor from ATSD
 curs = exec(conn_atsd, sqlquery);
 % fetch data from cursor
@@ -196,7 +198,7 @@ prices = cell2mat(prices_resultset(:,3));
 
 ```matlab
 % SQL query to get weights
-sqlquery = 'SELECT tags.category, value FROM inflation.cpi.categories.weight WHERE datetime = "2017-01-01T00:00:00Z" ORDER BY 1';
+sqlquery = "SELECT tags.category, value FROM inflation.cpi.categories.weight WHERE datetime = '2017-01-01T00:00:00Z' ORDER BY 1";
 % get cursor from ATSD
 curs = exec(conn_atsd, sqlquery);
 % fetch data from cursor

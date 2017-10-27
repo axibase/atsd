@@ -1,26 +1,19 @@
 ### Configuring the Data Source in IBM SPSS Statistics
 
-Open the attached [script](resources/Syntax1.sps)
+* Open the attached scripts:
 
-![](images/spss_1.PNG)
+[weight.sps](resources/weight.sps)
 
-```
-* Encoding: UTF-8.
+![](images/spss_1.png)
 
-GET DATA
-  /TYPE=ODBC
-  /CONNECT='DSN=ATSD;'
-  /SQL='SELECT datetime, value ' +
-       'FROM gc_time_percent ' +
-       'LIMIT 10'
-  /ASSUMEDSTRWIDTH=255.
+[price.sps](resources/price.sps)
+ 
+![](images/price.sps.png)
 
-CACHE.
-EXECUTE.
-DATASET NAME DataSet5 WINDOW=FRONT.
-```
+* Right click on the script window and select **Run All** to export the data into ATSD.
 
+![](images/run_all.png)
 
-The script will connect to ATSD (`CONNECT='DSN=ATSD'`), execute the query specified in the `SQL` variable and display the dataset.
+The scripts will connect to ATSD (`CONNECT='DSN=ATSD'`), execute the query specified in the `SQL` variable and display the dataset.
 
-![](images/spss_2.PNG)
+![](images/script_results.png)

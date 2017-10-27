@@ -247,7 +247,7 @@ following query
 
 ```sql
 SELECT entity, datetime, value 
-  FROM 'inflation.cpi.composite.price'
+  FROM inflation.cpi.composite.price
 ```
 
   ![](images/atsd_query_result.png)

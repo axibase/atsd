@@ -49,13 +49,13 @@ these commands on the **Metrics > Data Entry** page.
 - Add the [`missingMetric=error`](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) property to the DSN URL to ensure that the driver functions properly.
 
   ```text
-    jdbc:atsd:ATSD_HOST:8443;missingMetric=error
+    jdbc:atsd://ATSD_HOST:8443;missingMetric=error
   ```
 
 - If the target ATSD installation contains more than 10000 metrics, consider adding the `tables` property to the DSN URL to filter metrics by name in the Query Builder. For example, `tables=infla*` shows only metrics that start with the characters 'infla'. 
 
   ```text
-    jdbc:atsd:ATSD_HOST:8443;missingMetric=error;tables=infla*
+    jdbc:atsd://ATSD_HOST:8443;missingMetric=error;tables=infla%
   ```
 
 > Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
@@ -91,7 +91,7 @@ text manually.
 
   ```sql
    SELECT datetime, sum(value) AS sum_value
-     FROM 'inflation.cpi.categories.price'
+     FROM inflation.cpi.categories.price
    GROUP BY datetime
      HAVING sum_value > 1010
    ORDER BY datetime
@@ -143,9 +143,9 @@ The workflow consists of the following steps (nodes):
    `inflation.cpi.categories.weight` table.
 
 3. **Filter** tool. Specify the condition `>= January 1st, 2010`
-   and use the **T** (_true_) node output to retrieve the series created after 2009 only.
+   and use the **T** (_true_) node output to retrieve the series created after 2010 only.
 
-   ![](images/filter.png)
+   ![](images/filter_date.png)
 
    ![](images/true_output.png)
 
@@ -154,9 +154,9 @@ The workflow consists of the following steps (nodes):
 5. **Join** tool. Join prices and weights by `tags.category` field. Deselect
    fields as shown on the image. Rename `value` fields for
    `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` to
-   `price` and `weight` respectively.
+   `price` and `weight` respectively, `inflation.cpi.categories.price.datetime` to `datetime` and `inflation.cpi.categories.price.tags.category` to `tags.category`.
 
-   ![](images/join.png)
+   ![](images/inner.png)
 
    > **Note**
    >
@@ -183,9 +183,8 @@ The workflow consists of the following steps (nodes):
 
    ![](images/sort.png)
 
-9. **Formula** tool. Add an `entity` column with the **Formula** tool. Name it
-   `bls.gov`. The default data type `V_WString` is not supported yet by the ATSD JDBC driver,
-   use `String` or `WString` (for Unicode) instead.
+9. **Formula** tool. Сreate a new column named `entity` with the **Formula** tool. Name it
+   `"bls.gov`. 
 
    ![](images/entity.png)
 

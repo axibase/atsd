@@ -1,10 +1,10 @@
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
-url = 'jdbc:atsd:ATSD_HOSTNAME:8443';
+url = 'jdbc:atsd://ATSD_HOSTNAME:8443';
 username = 'axibase';
 password = 'axibase';
 conn_atsd = database('', username, password, driver, url);
 % sql query to get prices for a date range
-sqlquery = 'SELECT datetime, tags.category, value FROM inflation.cpi.categories.price WHERE datetime BETWEEN "2013-01-01T00:00:00Z" AND "2017-01-01T00:00:00Z" ORDER BY 1, 2';
+sqlquery = "SELECT datetime, tags.category, value FROM inflation.cpi.categories.price WHERE datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z' ORDER BY 1, 2";
 % get cursor from ATSD
 curs = exec(conn_atsd, sqlquery);
 % fetch data from cursor
@@ -19,7 +19,7 @@ datetimes = datetimes(1:10:length(datetimes))
 % convert column to numeric array
 prices = cell2mat(prices_resultset(:,3))
 % sql query to get weights
-sqlquery = 'SELECT tags.category, value FROM inflation.cpi.categories.weight WHERE datetime = "2017-01-01T00:00:00Z" ORDER BY 1';
+sqlquery = "SELECT tags.category, value FROM inflation.cpi.categories.weight WHERE datetime = '2017-01-01T00:00:00Z' ORDER BY 1";
 % get cursor from ATSD
 curs = exec(conn_atsd, sqlquery);
 % fetch data from cursor

@@ -92,8 +92,8 @@ Make sure that there is no output as it may indicate missing dependencies or con
 
 After starting the collectors, verify in the ATSD web interface that metrics are coming from the target host.
 
-> http://atsd_host:port/entities/metrics.xhtml?entity=hostname
+> https://atsd_host:8443/entities/hostname/metrics
 
 Each collector script collects metrics with the appropriate prefix.
 
-![](resources/collector-script-check.png)
+![](resources/collector-script-check_new.png)

@@ -70,8 +70,8 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 ### Upload CSV Parsers into ATSD
 
 - Log in to the ATSD web interface.
-- Open the `Configuration->CSV:Parsers` page.
-- Click the [Import] button.
+- Open the **Configuration > Parsers: CSV** page.
+- Click the [Сreate] drop-down, select [Import].
 - Upload the CSV parser xml files that you downloaded previously.
 
 ### Configure `inotify` Script to Read CSV files and Upload Them into ATSD

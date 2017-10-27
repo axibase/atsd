@@ -48,7 +48,7 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 - Execute [`odbc load`](https://www.stata.com/manuals13/dodbc.pdf) to load results for a custom SQL query results into memory:
 
 ```
-odbc load, exec("SELECT time, value, tags.name FROM 'java_method_invoke_last' ORDER BY datetime LIMIT 100") bigintasdouble
+odbc load, exec("SELECT time, value, tags.name FROM java_method_invoke_last ORDER BY datetime LIMIT 100") bigintasdouble
 ```
 
 Syntax:
@@ -109,7 +109,7 @@ To calculate the category-weighted consumer price index (CPI) for each year, the
 ### Load and Save Prices
 
 ```
-odbc load, exec("SELECT value as price, tags.category as category, datetime FROM 'inflation.cpi.categories.price' ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
+odbc load, exec("SELECT value as price, tags.category as category, datetime FROM inflation.cpi.categories.price ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
 save prices
 ```
 
@@ -127,7 +127,7 @@ Preview `prices`:
 
 ```
 clear
-odbc load, exec("SELECT datetime FROM 'inflation.cpi.categories.price' GROUP BY datetime ORDER BY datetime") dsn("ODBC_JDBC_SAMPLE")
+odbc load, exec("SELECT datetime FROM inflation.cpi.categories.price GROUP BY datetime ORDER BY datetime") dsn("ODBC_JDBC_SAMPLE")
 save datetimes
 ```
 
@@ -139,7 +139,7 @@ Preview `datetimes` dataset:
 
 ```
 clear
-odbc load, exec("SELECT tags.category as category, value as weight FROM 'inflation.cpi.categories.weight' ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
+odbc load, exec("SELECT tags.category as category, value as weight FROM inflation.cpi.categories.weight ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
 ```
 
 Since the `Weights` are available for only one year, we will assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
@@ -239,7 +239,7 @@ odbc insert entity datetime_str value, as("entity datetime value") table("inflat
 Log in to ATSD and execute the following query in the SQL tab to verify the results:
 
 ```sql
-SELECT entity, datetime, value FROM 'inflation.cpi.composite.price'
+SELECT entity, datetime, value FROM inflation.cpi.composite.price
 ```
 
 ```ls

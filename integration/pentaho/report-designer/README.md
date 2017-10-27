@@ -24,7 +24,7 @@
 To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics -> Data Entry**, select the 'Commands' tab.
+2. Open **Metrics > Data Entry**, select the 'Commands' tab.
 3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
 
 ![](resources/metrics_entry.png)
@@ -39,7 +39,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ![](resources/data_pane.png)
 
-- Select 'Add Data Sources' button in the toolbar.
+- Select 'Add Data Sources' button in the toolbar, click 'JDBC'.
 - Select 'Add a new connection' (green plus icon).
 
 ![](resources/new_connection.png)
@@ -52,7 +52,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 - Enter JDBC URL into the `Custom Connection URL` field, for example:
 
-  `jdbc:atsd:ATSD_HOSTNAME:8443;tables=inflation*;expandTags=true`
+  `jdbc:atsd://ATSD_HOSTNAME:8443;tables=inflation%;expandTags=true`
 
 > `ATSD_HOSTNAME` is the hostname of the target ATSD instance
 > Review ATSD JDBC [URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md) for additional details.
@@ -69,6 +69,10 @@ ATSD connection can be verified using the SELECT 1 query. The returned data shou
 
 Example of `SELECT 1` test query:
 
+- Select 'Add a new connection' (green plus icon).
+- Input query row `SELECT 1` to the 'SQL Query Designer'.
+- Click 'Preview'.
+
 ![](resources/select_1.png)
 
 Result of `SELECT 1` test query:
@@ -81,12 +85,12 @@ Result of `SELECT 1` test query:
 - Edit `tables=TABLE_NAME_FILTER` in `Custom Connection URL` field
 - SET `TABLE_NAME_FILTER` to your table name filter
 
-`TABLE_NAME_FILTER` is a list of comma-separated metrics or metric expressions to be displayed as tables in the MatLab Database Browser.
+`TABLE_NAME_FILTER` is a list of comma-separated metrics or metric expressions to be displayed as tables in the Pentaho Report Designer.
 
 `TABLE_NAME_FILTER` examples:
-- `*java*` for metrics that contains word `java`
-- `custom.metric*` for metrics whose name starts with `custom.metric`
-- `*2017` for metrics whose name ends with `2017`
+- `%java%` for metrics that contains word `java`
+- `custom.metric%` for metrics whose name starts with `custom.metric`
+- `%2017` for metrics whose name ends with `2017`
 
 ATSD Schema can be viewed in SQL Query Designer tool:
 

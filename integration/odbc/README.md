@@ -100,7 +100,7 @@ URL         :   jdbc:atsd://atsd_hostname:8443
 
 Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver)  for additional details about the URL format and the driver properties.
 
-  ![](images/ODBC_4.PNG)
+ ![](images/ODBC_conf.png)
 
 * Check (enable) **'Strip Quote'** option to remove the quotes from table and column names.
 

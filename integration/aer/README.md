@@ -10,7 +10,7 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 ## Enable the `table` Tag in the Metrics List
 
 * Login into ATSD.
-* Open the **Admin:Server Properties** page.
+* Open the **Admin > Server Properties** page.
 * Add the `table` tag to the `metric.display.tags` property.
 
 ![Server Properties](metric-table-tags.png)

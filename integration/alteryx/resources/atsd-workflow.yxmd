@@ -3,12 +3,12 @@
   <Nodes>
     <Node ToolID="1">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="54" />
+        <Position x="54" y="90" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <Passwords />
-          <File RecordLimit="" FileFormat="23">odbc:DSN=ATSD|||Select "inflation.cpi.categories.price".tags.category, "inflation.cpi.categories.price".datetime, "inflation.cpi.categories.price"."value" From "inflation.cpi.categories.price"</File>
+          <File RecordLimit="" FileFormat="23">odbc:DSN=ATSD|||Select "inflation.cpi.categories.price".datetime, "inflation.cpi.categories.price"."value", "inflation.cpi.categories.price".tags.category From "inflation.cpi.categories.price"</File>
           <FormatSpecificOptions>
             <PreSQL />
             <NoProgress>True</NoProgress>
@@ -19,102 +19,258 @@
           </FormatSpecificOptions>
         </Configuration>
         <Annotation DisplayMode="0">
-          <Name>Input Price</Name>
-          <AnnotationText>inflation.cpi.categories.price</AnnotationText>
+          <Name />
+          <AnnotationText>Input price inflation.cpi.categories.price</AnnotationText>
           <DefaultAnnotationText>DSN=ATSD
-Table=Select "inflation.cpi.categories.price".tags.category, "inflation.cpi.categories.price".datetime, "inflation.cpi.categories.price"."value" From "inflation.cpi.categories.price"</DefaultAnnotationText>
+Table=Select "inflation.cpi.categories.price".datetime, "inflation.cpi.categories.price"."value", "inflation.cpi.categories.price".tags.category From "inflation.cpi.categories.price"</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="tags.category" size="131072" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.price&quot;.tags.category, &quot;inflation.cpi.categories.price&quot;.datetime, &quot;inflation.cpi.categories.price&quot;.&quot;value&quot; From &quot;inflation.cpi.categories.price&quot;" type="V_String" />
-            <Field name="datetime" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.price&quot;.tags.category, &quot;inflation.cpi.categories.price&quot;.datetime, &quot;inflation.cpi.categories.price&quot;.&quot;value&quot; From &quot;inflation.cpi.categories.price&quot;" type="DateTime" />
-            <Field name="value" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.price&quot;.tags.category, &quot;inflation.cpi.categories.price&quot;.datetime, &quot;inflation.cpi.categories.price&quot;.&quot;value&quot; From &quot;inflation.cpi.categories.price&quot;" type="Double" />
+            <Field name="inflation.cpi.categories.price.datetime" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.price&quot;.datetime, &quot;inflation.cpi.categories.price&quot;.&quot;value&quot;, &quot;inflation.cpi.categories.price&quot;.tags.category From &quot;inflation.cpi.categories.price&quot;" type="DateTime" />
+            <Field name="inflation.cpi.categories.price.value" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.price&quot;.datetime, &quot;inflation.cpi.categories.price&quot;.&quot;value&quot;, &quot;inflation.cpi.categories.price&quot;.tags.category From &quot;inflation.cpi.categories.price&quot;" type="Double" />
+            <Field name="inflation.cpi.categories.price.tags.category" size="131072" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.price&quot;.datetime, &quot;inflation.cpi.categories.price&quot;.&quot;value&quot;, &quot;inflation.cpi.categories.price&quot;.tags.category From &quot;inflation.cpi.categories.price&quot;" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
     </Node>
-    <Node ToolID="4">
+    <Node ToolID="2">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-        <Position x="54" y="186" />
+        <Position x="54" y="258" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <Passwords />
-          <File RecordLimit="" FileFormat="23">odbc:DSN=ATSD|||Select "inflation.cpi.categories.weight".tags.category, "inflation.cpi.categories.weight".datetime, "inflation.cpi.categories.weight"."value" From "inflation.cpi.categories.weight"</File>
+          <File RecordLimit="" FileFormat="23">odbc:DSN=ATSD|||Select "inflation.cpi.categories.weight".datetime, "inflation.cpi.categories.weight"."value", "inflation.cpi.categories.weight".tags.category From "inflation.cpi.categories.weight"</File>
           <FormatSpecificOptions>
             <PreSQL />
             <NoProgress>True</NoProgress>
             <CacheData>False</CacheData>
-            <TableStyle>Quoted</TableStyle>
+            <TableStyle>None</TableStyle>
             <ReadUncommitted>False</ReadUncommitted>
             <PostSQL />
           </FormatSpecificOptions>
         </Configuration>
         <Annotation DisplayMode="0">
-          <Name>Input Weight</Name>
-          <AnnotationText>inflation.cpi.categories.weight</AnnotationText>
+          <Name />
+          <AnnotationText>Input weight inflation.cpi.categories.weight</AnnotationText>
           <DefaultAnnotationText>DSN=ATSD
-Table=Select "inflation.cpi.categories.weight".tags.category, "inflation.cpi.categories.weight".datetime, "inflation.cpi.categories.weight"."value" From "inflation.cpi.categories.weight"</DefaultAnnotationText>
+Table=Select "inflation.cpi.categories.weight".datetime, "inflation.cpi.categories.weight"."value", "inflation.cpi.categories.weight".tags.category From "inflation.cpi.categories.weight"</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
         <MetaInfo connection="Output">
           <RecordInfo>
-            <Field name="tags.category" size="131072" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.weight&quot;.tags.category, &quot;inflation.cpi.categories.weight&quot;.datetime, &quot;inflation.cpi.categories.weight&quot;.&quot;value&quot; From &quot;inflation.cpi.categories.weight&quot;" type="V_String" />
-            <Field name="datetime" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.weight&quot;.tags.category, &quot;inflation.cpi.categories.weight&quot;.datetime, &quot;inflation.cpi.categories.weight&quot;.&quot;value&quot; From &quot;inflation.cpi.categories.weight&quot;" type="DateTime" />
-            <Field name="value" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.weight&quot;.tags.category, &quot;inflation.cpi.categories.weight&quot;.datetime, &quot;inflation.cpi.categories.weight&quot;.&quot;value&quot; From &quot;inflation.cpi.categories.weight&quot;" type="Double" />
+            <Field name="inflation.cpi.categories.weight.datetime" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.weight&quot;.datetime, &quot;inflation.cpi.categories.weight&quot;.&quot;value&quot;, &quot;inflation.cpi.categories.weight&quot;.tags.category From &quot;inflation.cpi.categories.weight&quot;" type="DateTime" />
+            <Field name="inflation.cpi.categories.weight.value" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.weight&quot;.datetime, &quot;inflation.cpi.categories.weight&quot;.&quot;value&quot;, &quot;inflation.cpi.categories.weight&quot;.tags.category From &quot;inflation.cpi.categories.weight&quot;" type="Double" />
+            <Field name="inflation.cpi.categories.weight.tags.category" size="131072" source="File: odbc:DSN=ATSD|||Select &quot;inflation.cpi.categories.weight&quot;.datetime, &quot;inflation.cpi.categories.weight&quot;.&quot;value&quot;, &quot;inflation.cpi.categories.weight&quot;.tags.category From &quot;inflation.cpi.categories.weight&quot;" type="V_String" />
           </RecordInfo>
         </MetaInfo>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
     </Node>
-    <Node ToolID="13">
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="246" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Field>inflation.cpi.categories.price.datetime</Field>
+            <Operator>&gt;=</Operator>
+            <Operands>
+              <Operand>2010-01-01</Operand>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Filter date of price &gt;= "2010-01-01"</AnnotationText>
+          <DefaultAnnotationText>DateTimeFormat([inflation.cpi.categories.price.datetime],"%Y-%m-%d") &gt;= "2010-01-01"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="246" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Field>inflation.cpi.categories.weight.datetime</Field>
+            <Operator>&gt;=</Operator>
+            <Operands>
+              <Operand>2010-01-01</Operand>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Filter date of weight&gt;= "2010-01-01"</AnnotationText>
+          <DefaultAnnotationText>DateTimeFormat([inflation.cpi.categories.weight.datetime],"%Y-%m-%d") &gt;= "2010-01-01"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="402" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="inflation.cpi.categories.price.tags.category" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="inflation.cpi.categories.weight.tags.category" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Left_inflation.cpi.categories.price.datetime" selected="True" rename="datetime" />
+                <SelectField field="Left_inflation.cpi.categories.price.value" selected="True" rename="price" type="Float" size="4" />
+                <SelectField field="Left_inflation.cpi.categories.price.tags.category" selected="True" rename="tags.category" />
+                <SelectField field="Right_inflation.cpi.categories.weight.datetime" selected="False" />
+                <SelectField field="Right_inflation.cpi.categories.weight.value" selected="True" rename="weight" type="Float" size="4" />
+                <SelectField field="Right_inflation.cpi.categories.weight.tags.category" selected="False" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Join price-weight</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="6">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="474" y="114" />
+        <Position x="510" y="162" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="price * weight / 1000" field="value" size="4" type="Float" />
+            <FormulaField expression="price*weight/1000" field="value" size="4" type="Float" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
-          <Name>Calculate weighted price</Name>
-          <AnnotationText><![CDATA[value = price * weight / 1000
+          <Name />
+          <AnnotationText><![CDATA[Calculate weighted price value = price*weight/1000
 ]]></AnnotationText>
-          <DefaultAnnotationText><![CDATA[value = price * weight / 1000
+          <DefaultAnnotationText><![CDATA[value = price*weight/1000
 ]]></DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
     </Node>
-    <Node ToolID="14">
+    <Node ToolID="7">
       <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
-        <Position x="594" y="114" />
+        <Position x="618" y="162" />
       </GuiSettings>
       <Properties>
         <Configuration>
           <SummarizeFields>
-            <SummarizeField field="datetime" action="GroupBy" rename="datetime" />
             <SummarizeField field="value" action="Sum" rename="value" />
+            <SummarizeField field="datetime" action="GroupBy" rename="datetime" />
           </SummarizeFields>
         </Configuration>
         <Annotation DisplayMode="0">
-          <Name>Summarize</Name>
+          <Name />
+          <AnnotationText>Summarize</AnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
     </Node>
-    <Node ToolID="16">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-        <Position x="990" y="186" />
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="702" y="162" />
       </GuiSettings>
       <Properties>
         <Configuration>
+          <SortInfo locale="0">
+            <Field field="datetime" order="Ascending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Sort by datetime datetime - Ascending</AnnotationText>
+          <DefaultAnnotationText>datetime - Ascending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="822" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;bls.gov&quot;" field="entity" size="64" type="String" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText><![CDATA[Add column entity = "bls.gov"
+]]></AnnotationText>
+          <DefaultAnnotationText><![CDATA[entity = "bls.gov"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1050" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="23">odbc:DSN=ATSD|||inflation.cpi.composite.price</File>
+          <Passwords />
+          <FormatSpecificOptions>
+            <TransactionSize>10000</TransactionSize>
+            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+            <PostSQL />
+            <TableStyle>Quoted</TableStyle>
+            <PreSQL />
+            <TransactionMessages>False</TransactionMessages>
+            <OutputOption>Append</OutputOption>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Store data inflation.cpi.composite.price</AnnotationText>
+          <DefaultAnnotationText>DSN=ATSD
+Table=inflation.cpi.composite.price</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="1062" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\IEUser\AppData\Local\Temp\Engine_6228_b97d335ae567493a89dca5da07c3a95e_\Engine_2484_6aed0cbd1e9542a08bead11fb6cbb4ff_.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -129,213 +285,62 @@ Table=Select "inflation.cpi.categories.weight".tags.category, "inflation.cpi.cat
           </Layout>
         </Configuration>
         <Annotation DisplayMode="0">
-          <Name>Browse Result</Name>
+          <Name />
+          <AnnotationText>Browse result</AnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
     </Node>
-    <Node ToolID="19">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="174" y="54" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Mode>Simple</Mode>
-          <Simple>
-            <Field>datetime</Field>
-            <Operator>&gt;=</Operator>
-            <Operands>
-              <Operand>2010-01-01</Operand>
-            </Operands>
-          </Simple>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name>Filter date of price</Name>
-          <AnnotationText>&gt;= "2010-01-01"</AnnotationText>
-          <DefaultAnnotationText>DateTimeFormat([datetime],"%Y-%m-%d") &gt;= "2010-01-01"</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="20">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-        <Position x="174" y="186" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <Mode>Simple</Mode>
-          <Simple>
-            <Field>datetime</Field>
-            <Operator>&gt;=</Operator>
-            <Operands>
-              <Operand>2010-01-01</Operand>
-            </Operands>
-          </Simple>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name>Filter date of weight</Name>
-          <AnnotationText>&gt;="2010-01-01"</AnnotationText>
-          <DefaultAnnotationText>DateTimeFormat([datetime],"%Y-%m-%d") &gt;= "2010-01-01"</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
-    </Node>
-    <Node ToolID="25">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="366" y="114" />
-      </GuiSettings>
-      <Properties>
-        <Configuration joinByRecordPos="False">
-          <JoinInfo connection="Left">
-            <Field field="tags.category" />
-          </JoinInfo>
-          <JoinInfo connection="Right">
-            <Field field="tags.category" />
-          </JoinInfo>
-          <SelectConfiguration>
-            <Configuration outputConnection="Join">
-              <OrderChanged value="True" />
-              <CommaDecimal value="False" />
-              <SelectFields>
-                <SelectField field="Left_datetime" selected="True" />
-                <SelectField field="Left_value" selected="True" rename="price" />
-                <SelectField field="Right_value" selected="True" rename="weight" />
-                <SelectField field="Left_tags.category" selected="True" />
-                <SelectField field="Right_datetime" selected="False" rename="Right_datetime" />
-                <SelectField field="Right_tags.category" selected="False" rename="Right_tags.category" />
-                <SelectField field="*Unknown" selected="True" />
-              </SelectFields>
-            </Configuration>
-          </SelectConfiguration>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name>Join price-weight</Name>
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
-    </Node>
-    <Node ToolID="26">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
-        <Position x="702" y="114" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <SortInfo locale="0">
-            <Field field="datetime" order="Ascending" />
-          </SortInfo>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name>Sort by datetime</Name>
-          <DefaultAnnotationText>datetime - Ascending</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
-    </Node>
-    <Node ToolID="27">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="822" y="114" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <FormulaFields>
-            <FormulaField expression="&quot;bls.gov&quot;" field="entity" size="7" type="String" />
-          </FormulaFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name>Add column</Name>
-          <AnnotationText><![CDATA[entity = "bls.gov"
-]]></AnnotationText>
-          <DefaultAnnotationText><![CDATA[entity = "bls.gov"
-]]></DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
-    </Node>
-    <Node ToolID="28">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="990" y="66" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File MaxRecords="" FileFormat="23">odbc:DSN=ATSD|||inflation.cpi.composite.price</File>
-          <Passwords />
-          <FormatSpecificOptions>
-            <TransactionSize>10000</TransactionSize>
-            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
-            <PostSQL />
-            <TableStyle>None</TableStyle>
-            <PreSQL />
-            <TransactionMessages>False</TransactionMessages>
-            <OutputOption>Append</OutputOption>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name>Store data</Name>
-          <AnnotationText>inflation.cpi.composite.price</AnnotationText>
-          <DefaultAnnotationText>DSN=ATSD
-Table=inflation.cpi.composite.price</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
-    </Node>
   </Nodes>
   <Connections>
     <Connection>
       <Origin ToolID="1" Connection="Output" />
-      <Destination ToolID="19" Connection="Input" />
+      <Destination ToolID="3" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="4" Connection="Output" />
-      <Destination ToolID="20" Connection="Input" />
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="13" Connection="Output" />
-      <Destination ToolID="14" Connection="Input" />
+      <Origin ToolID="3" Connection="True" />
+      <Destination ToolID="5" Connection="Left" />
     </Connection>
     <Connection>
-      <Origin ToolID="14" Connection="Output" />
-      <Destination ToolID="26" Connection="Input" />
+      <Origin ToolID="4" Connection="True" />
+      <Destination ToolID="5" Connection="Right" />
     </Connection>
     <Connection>
-      <Origin ToolID="19" Connection="True" />
-      <Destination ToolID="25" Connection="Left" />
+      <Origin ToolID="5" Connection="Join" />
+      <Destination ToolID="6" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="20" Connection="True" />
-      <Destination ToolID="25" Connection="Right" />
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="25" Connection="Join" />
-      <Destination ToolID="13" Connection="Input" />
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="26" Connection="Output" />
-      <Destination ToolID="27" Connection="Input" />
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="27" Connection="Output" />
-      <Destination ToolID="16" Connection="Input" />
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="27" Connection="Output" />
-      <Destination ToolID="28" Connection="Input" />
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
     <Memory default="True" />
     <GlobalRecordLimit value="0" />
     <TempFiles default="True" />
-    <Annotation on="True" includeToolName="True" />
+    <Annotation on="True" includeToolName="False" />
     <ConvErrorLimit value="10" />
     <ConvErrorLimit_Stop value="False" />
     <CancelOnError value="False" />
@@ -349,7 +354,7 @@ Table=inflation.cpi.composite.price</DefaultAnnotationText>
     <LayoutType>Horizontal</LayoutType>
     <MetaInfo>
       <NameIsFileName value="True" />
-      <Name>CPI derived series workflow</Name>
+      <Name>atsd-workflow</Name>
       <Description />
       <RootToolName />
       <ToolVersion />

@@ -99,7 +99,7 @@ chmod 600 ./conf/jmx.password
 ```
 
 * Restart ActiveMQ server.
-* 
+
 ```sh
 ./bin/activemq stop
 ./bin/activemq start

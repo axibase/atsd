@@ -1,8 +1,18 @@
 # IBM SPSS Data Analysis.
 
+- [Load Sample Data into ATSD](#load-sample-data-into-atsd)
+- [Import Data into SPSS](#import-data-into-spss)
+     * [Import Data from Database](#import-data-from-database)
+     * [Import from CSV Files](#import-from-csv-files)
+- [Merge Datasets](#merge-datasets)
+- [Analyze Dataset](#analyze-dataset)
+- [Export Derived Series into ATSD](#export-derived-series-into-atsd)
+- [Verify Insertion](#verify-insertion)
+- [Exporting Data from ATSD into CSV Files](#exporting-data-from-atsd-into-csv-files)
+
 ## Overview
 
-The [IBM Statistical Package for the Social Sciences](https://www.ibm.com/analytics/us/en/technology/spss/) (SPSS) is an advanced statistical analysis tool. This guide describes the process of loading data from the Axibase Time Series Database into SPSS and demonstrates how to calculate the value of a derived series using Weighted Consumer Price Indices as an example.
+The [IBM Statistical Package for the Social Sciences 24](https://www.ibm.com/analytics/us/en/technology/spss/) (SPSS) is an advanced statistical analysis tool. This guide describes the process of loading data from the Axibase Time Series Database into SPSS and demonstrates how to calculate the value of a derived series using Weighted Consumer Price Indices as an example.
 
 SPSS provides several options for loading datasets from external data sources, such as Excel files or remote databases. To complete this exercise, sample data must be available in your instance of ATSD.
 
@@ -20,7 +30,7 @@ Analyze | Apply statistical functions to the dataset.
 ## Load Sample Data into ATSD
 
 1. Log into the ATSD web interface
-2. Open **Metrics -> Data Entry**, select the 'Commands' tab.
+2. Open **Metrics > Data Entry**, select the 'Commands' tab.
 3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
 
 ![](resources/metrics_entry.png)
@@ -37,7 +47,17 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 #### Prerequisites
 
-* Configure an [ODBC-JDBC bridge](https://github.com/axibase/atsd/tree/master/integration/odbc) for ATSD.
+* Configure an [ODBC-JDBC bridge](https://github.com/axibase/atsd/tree/master/integration/odbc) for ATSD:
+
+    - specify URL property `compatibility=odbc2`: `jdbc:atsd://ATSD_HOST:ATSD_PORT/;compatibility=odbc2`.
+* Disable UNICODE mode:
+
+    - launch SPSS Statistics;
+    - do not open any existing data file;
+    - select the 'Edit' menu;
+    - select the 'Options' menu;
+    - select the 'Language' tab; 
+    - in the section labeled 'Character Encoding for Data and Syntax', select 'Locale's writing system'.
 
 #### Option 1: Load Prices and Weights As Separate Datasets
 
@@ -57,37 +77,36 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 > Alternatively, you can execute [SPSS scripts](data-source.md) to load records from a datasources automatically.
 
+* Proceed to the [Merge Datasets](#merge-datasets) section below.
+
 #### Option 2: Loaded Merged Prices and Weights Dataset
 
+* Open **File > Import Data > Database > New query...**.
 * Select the `datetime` column from both the `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` tables.
 ![](images/merged_import/step1.png)
 * Skip the next steps until a query editor is displayed. 
 * Enter the following query which executes a FULL OUTER JOIN with interpolation for the missing weight records:
 
 ```sql
-SELECT T0."datetime", T0."value", T0."tags", 
-  T1."datetime" AS datetime1, T1."value" AS value1, T1."tags" AS tags1 
+SELECT T0."value" AS price,  T1."datetime" AS datetime, T1."value" AS weight, T1."tags" AS tags 
 FROM "inflation.cpi.categories.price" T0 
   OUTER JOIN "inflation.cpi.categories.weight" T1 
 WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
   WITH INTERPOLATE (1 YEAR, PREVIOUS, INNER, EXTEND)
 ```
+![](images/merged_import/step_3.png)
 
-![](images/merged_import/step3.png)
-* Save the dataset as `merged.sav`.
-![](images/merged_import/step4.png)
-* Click the `Variable View` tab, rename the column `value1` as `weight` and remove the columns `datetime1` and `tags1`.
-![](images/merged_import/step5.png)
-![](images/merged_import/step6.png)
-![](images/merged_import/step7.png)
-![](images/merged_import/step8.png)
+* Click 'Finish'
+* Save the dataset as `prices_merged.sav`.
+
+![](images/merged_data1.png)
 
 * Proceed to the [Analyze Dataset](#analyze-dataset) section below.
  
 ### Import from CSV Files
 
-* Export data from ATSD into CSV files as described in the **Exporting Data from ATSD** section at the end of this article.
-* Open **File -> Import Data -> CSV Data...**.
+* Export data from ATSD into CSV files as described in the [Exporting Data from ATSD](#exporting-data-from-atsd-into-csv-files) section at the end of this article.
+* Open **File > Import Data > CSV Data...**.
 * Select the desired CSV files and click Open to import the `prices.sav` and `weights.sav` files.
 
 ![](images/import_dataset.png)
@@ -102,28 +121,28 @@ SPSS merges datasets using matching column names, similar to the `SELF JOIN` com
 
 To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS will only contain data for 2017.
 
-![](images/variable_view.png)
+![](images/variable_View.png)
+
+Also rename `value` to `price` in the `prices.sav` dataset.
 
 ### Merge
 
 Merge the two datasets by adding the `weight` column from the `weights.sav` dataset to the `prices.sav` dataset.
 
-* Open **Data -> Merge Files... -> Add Variables...**
+* Open **Data > Merge Files... > Add Variables...**
 * Select `weights.sav` dataset.
-* Select the desired table you want to merge it with. 
-* Choose the "One-to-Many" option and open the 'Variables' tab in the dialog window.
-* Import `datetime` from the current dataset, and add `value` and `weight` to the included list.
-* Move `timedate` from the second dataset to the excluded list.
-* Add `tags.category` and `entity` to 'Key Variables' to join the dataset with these columns.
+* Check 'Match cases on key variables'.
+* Select `time` in the 'New Active Dataset' pane, add to 'Key Variables' Pane. 
 
-![](images/merge_p1.png)
-![](images/merge_p2.png)
+![](images/merge_editor.png)
+* Click 'Ok'.
+* Remove `time` column using `Variable View`.
 
-> Because the two datasets have different row counts, be sure you select all the rows. The final dataset should have 27 rows.
+![](images/time_clear.png)
 
 Save the merged dataset as a new file `prices_merged.sav`.
 
-![](images/merged_data.png)
+![](images/merged_data1.png)
 
 ## Analyze Dataset
 
@@ -131,18 +150,18 @@ To calculate the weighted CPI for each year, the CPI value for a given category 
 
 ### Calculate Weighted CPI per Category
 
-Open the `prices_merged.sav` dataset and create the new column `categ_ind`.
+Open the `prices_merged.sav` dataset and create the new column `categ_index`.
 
-* Open **Transform -> Compute Variable...**  
+* Open **Transform > Compute Variable...**  
 * Place the columns from the left into the expression editor and specify a formula. 
-* Select the `value` and `weight` columns, divide `weight` by 1000 and multiply `value` by the adjusted `weight`. 
+* Select the `price` and `weight` columns, divide `weight` by 1000 and multiply `price` by the adjusted `weight`. 
 * Assign a name to the new column.
 
-![](images/transform_compute_variable.png)
+![](images/compute_variable.png)
 
-The `categ_ind` column is now available in the dataset.
+The `categ_index` column is now available in the dataset.
 
-![](images/create_new_column.png)
+![](images/new_column.png)
 
 ### Calculate Annual CPI
 
@@ -150,34 +169,34 @@ SPSS provides two alternatives to aggregate data by period.
   
 #### Aggregation using the Analyze Menu
     
-* Open **Analyze -> Reports -> Report Summaries in Columns...** 
+* Open **Analyze > Reports > Report Summaries in Columns...** 
 * Move the `categ_index` column to the 'Summary Variables' field and select the `SUM` aggregation function. 
 * Set the `datetime` column as the break variable, which is used to group the resulting data. You can format aggregation columns in the dialog window.
 
-![](images/analysis_reports_summary_columns.png)
+![](images/analysis_reports_summary.png)
     
-* Publish the report by selecting **File -> Export As a Web Report** in the output window.
+* Publish the report by selecting **File > Export As a Web Report** in the output window.
 * The output contains the processing log in the results window.
     
     ![](images/htm_report_spss.png)
     
-* The report is also available in [HTML format]((resources/index_calculation.htm)).
+* The report is also available in [HTML format](resources/index_calculation.htm).
 
     ![](images/htm_version_output.png)
 
 #### Aggregation using the Data Menu
     
-* Open **Data -> Aggregate...** 
-* Set `categ_ind` as the summary variable and apply the `SUM` function
-* Set `datetime` as the break variable
-* Customize column formats and output options
-* Create a new dataset with the break and aggregated variables 
+* Open **Data > Aggregate...**.
+* Set `categ_index` as the summary variable and apply the `SUM` function.
+* Set `datetime` as the break variable.
+* Customize column formats and output options.
+* Create a new dataset with the break and aggregated variables.
 
-    ![](images/data_aggregate_data.png)
+    ![](images/aggregate_data.png)
     
-* Create a new dataset with final columns `datetime` and `CPI`.
+* Create a new dataset with final columns `datetime` and `value`.
 
-    ![](images/aggr_data_new_column.png)
+    ![](images/cpi_annual.png)
  
 
 ## Export Derived Series into ATSD
@@ -193,7 +212,7 @@ metric m:cpi_price
  
 - Open the previously created dataset in SPSS.
 
-- Select **Transform** - **Compute Variable...**
+- Select **Transform > Compute Variable...**
 
 ![](images/atsd_export_2.png)
 
@@ -214,7 +233,7 @@ metric m:cpi_price
 
 ![](images/atsd_export_6.png)
 
-- Open the **File** menu and select **Export** -> **Database...**.
+- Open the **File** menu and select **Export > Database...**.
 
 ![](images/atsd_export_7.png)
 
@@ -232,11 +251,11 @@ metric m:cpi_price
 
 - Associate table columns with metric fields.
 
-![](images/atsd_export_11.png)
+![](images/atsd_export11.png)
 
 The result should look as follows. Click **Next**
  
-![](images/atsd_export_12.png)
+![](images/atsd_export12.png)
  
  - Select **ODBC** - **Row-wise binding**, select **Paste the syntax** and click **Finish**
  
@@ -267,11 +286,10 @@ To check that data is successfully exported to ATSD, open the ATSD web interface
 - Open the **SQL** tab and execute the following query:
 
 ```sql
-SELECT entity, datetime, value 
-  FROM 'cpi_price'
+SELECT entity, datetime, value FROM cpi_price
 ```
 
-![](images/atsd_query_result.png)
+![](images/query_result.png)
 
 ---
 
@@ -291,13 +309,13 @@ SELECT entity, datetime, value, tags.category
 ORDER BY tags.category, datetime
 ```
 
-![](images/sql_run.png)
+![](images/sql_run.png)    
 
 Export query results into `prices.csv`.
 
 ![](images/sql_export.png)
 
-### Weight
+### Weights
 
 Obtain weight data by executing the following query: 
 

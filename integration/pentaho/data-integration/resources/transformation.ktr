@@ -454,7 +454,7 @@
       </attribute>
       <attribute>
         <code>CUSTOM_URL</code>
-        <attribute>jdbc:atsd:127.0.0.1:8443;catalog=atsd;tables=inflation*</attribute>
+        <attribute>jdbc:atsd://127.0.0.1:8443;tables=inflation%</attribute>
       </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -641,7 +641,7 @@
     </partitioning>
     <connection>ATSD Connection</connection>
     <sql>SELECT datetime
-FROM 'inflation.cpi.categories.price'
+FROM inflation.cpi.categories.price
 GROUP BY datetime
 ORDER BY datetime</sql>
     <limit />
@@ -911,7 +911,7 @@ ORDER BY datetime</sql>
     </partitioning>
     <connection>ATSD Connection</connection>
     <sql>SELECT value, tags.category, datetime
-FROM 'inflation.cpi.categories.price'
+FROM inflation.cpi.categories.price
 ORDER BY datetime, tags.category</sql>
     <limit />
     <lookup />
@@ -980,7 +980,7 @@ ORDER BY datetime, tags.category</sql>
     </partitioning>
     <connection>ATSD Connection</connection>
     <sql>SELECT tags.category, value
-FROM 'inflation.cpi.categories.weight'
+FROM inflation.cpi.categories.weight
 ORDER BY datetime, tags.category</sql>
     <limit />
     <lookup />
