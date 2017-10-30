@@ -61,7 +61,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](images/modeler_8.png)
   
-- Click **Select...** to view the list of available ATSD tables. The list of tables is based on the `tables=` property specified in the JDBC URL. If you don't see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md), delete your connection in SPSS Modeler and create it again. Specify `tables=*` to view all tables in ATSD.
+- Click **Select...** to view the list of available ATSD tables. The list of tables is based on the `tables=` property specified in the JDBC URL. If you don't see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md), delete your connection in SPSS Modeler and create it again. Specify `tables=%` to view all tables in ATSD.
 
   ![](images/modeler_9.png)
   
@@ -250,7 +250,7 @@ SELECT entity, datetime, value
   FROM inflation.cpi.composite.price
 ```
 
-  ![](images/atsd_query_result.png)
+  ![](images/query_result.png)
   
 ## Stream File
 
