@@ -92,9 +92,9 @@ If tests are ok, check **Enable**, click **Save**
 
 * Download the file [rules.xml](resources/rules.xml)
 * Open **Alerts > Rules > Import** 
-* Check (enable) **Auto-enable New Rules**, click on **Choose File**, select the downloaded XML file, click **Import**.
-* Open the imported rule, go to the **Web Notifications** tab, select Slack from **Notification** drop-down
-* Fill text field with `Alert open: ${entity}, ${metric}.`
+* Check (enable) **Auto-enable New Rules**, click on **Choose File**, select the downloaded XML file, click **Import**
+* Open the imported rule, go to the **Email Notifications** tab, replace **Recipients** field
+* Go to the **Web Notifications** tab, select Slack from **Endpoint** drop-down
 * Save the rule by clicking on the **Save** button
 
 ## Test
@@ -105,4 +105,6 @@ If tests are ok, check **Enable**, click **Save**
 series e:server001 m:test_metric=8
 ```
 
-![](images/slack_test1.png) 
+![](images/slack_test_1.png) 
+
+![](images/slack_test_2.png)

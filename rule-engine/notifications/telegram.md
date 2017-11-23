@@ -156,9 +156,9 @@ If tests are ok, check **Enable**, click **Save**
 
 * Download the file [rules.xml](resources/rules.xml)
 * Open **Alerts > Rules > Import** 
-* Check (enable) **Auto-enable New Rules**, click on **Choose File**, select the downloaded XML file, click **Import**.
-* Open the imported rule, go to the **Web Notifications** tab, select Telegram from **Notification** drop-down
-* Fill text field with `Alert open: ${entity}, ${metric}.`
+* Check (enable) **Auto-enable New Rules**, click on **Choose File**, select the downloaded XML file, click **Import**
+* Open the imported rule, go to the **Email Notifications** tab, replace **Recipients** field
+* Go to the **Web Notifications** tab, select Telegram from **Endpoint** drop-down
 * Save the rule by clicking on the **Save** button
 
 ## Test
@@ -168,11 +168,11 @@ If tests are ok, check **Enable**, click **Save**
 ```ls
 series e:server001 m:test_metric=8
 ```
-![](images/test1.png) 
+![](images/test_1.png)
 
-Content of _test notifications_server001_open_20171120_1158083.txt_:
+Content of _atsd.jvm.low_memory_atsd_open_20171123_1349355.txt_:
 
-![](images/test2.png)
+![](images/test_2.png)
 
 ## Notifications examples
 
