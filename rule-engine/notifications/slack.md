@@ -69,7 +69,7 @@ Install a [Web Driver binary](README.md#install-web-driver)
    
 * Select **Test Portal**
  
-   ![](images/test_portal.png)   
+   ![](images/new_test_portal.png)   
    
 * Click **Send Screenshot**
 
@@ -99,11 +99,7 @@ If tests are ok, check **Enable**, click **Save**
 
 ## Test
 
-* Go to **Data > Data Entry** and run the following command:
-
-```ls
-series e:server001 m:test_metric=8
-```
+* Wait a little, check the channel
 
 ![](images/slack_test_1.png) 
 

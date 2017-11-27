@@ -133,7 +133,7 @@ Install [WebDriver](README.md#install-web-driver)
    
 * Select **Test Portal**
  
-   ![](images/test_portal.png)   
+   ![](images/new_test_portal.png)   
    
 * Click **Send Screenshot**
 
@@ -163,11 +163,8 @@ If tests are ok, check **Enable**, click **Save**
 
 ## Test
 
-* Go to **Data > Data Entry** and run the following command:
+* Wait a little, check the channel
 
-```ls
-series e:server001 m:test_metric=8
-```
 ![](images/test_1.png)
 
 Content of _atsd.jvm.low_memory_atsd_open_20171123_1349355.txt_:
@@ -179,4 +176,6 @@ Content of _atsd.jvm.low_memory_atsd_open_20171123_1349355.txt_:
 ![](images/example1.png)
 
 ![](images/example2.png)
+
+![](images/example3.png)
 
