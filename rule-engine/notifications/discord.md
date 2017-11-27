@@ -6,7 +6,7 @@ https://discordapp.com/
 
 Install a [Web Driver binary](README.md#install-web-driver)
 
-## Create new server
+## Create server
 
  * Click on the big plus at the left panel
 
@@ -22,7 +22,7 @@ Install a [Web Driver binary](README.md#install-web-driver)
     
  * Invite members to receive notifications from ATSD (you can do it later), click **Done**
  
-## Create new channel
+## Create channel
  
  * Click on **Create Channel**
  
@@ -42,7 +42,7 @@ Install a [Web Driver binary](README.md#install-web-driver)
      
 > At the **Invite** tab you can create invite link and send it to users.  To join server created for notifications user should click **Create new server**, select **Join** and paste received invite.
 
-## Create new webhook
+## Create webhook
 
  * Go to **Webhook** tab, click **Create Webhook**, specify name, select channel 
 
