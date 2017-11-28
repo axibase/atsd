@@ -1,12 +1,16 @@
-# Discord
+# Discord Notifications
 
-https://discordapp.com/
+## Overview
+
+The `DISCORD` notification type provides a built-in capability to send alert messages, alert detail tables, and charts into Discord channels. The integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
 
 ## Prerequisites
 
-Install a [Web Driver binary](README.md#install-web-driver)
+Install and configure the [Web Driver](README.md#install-web-driver) in order to enable sending chart screenshots into Discord.
 
 ## Create server
+
+If necessary, create a new server.
 
  * Click on the big plus at the left panel
 
@@ -44,20 +48,19 @@ Install a [Web Driver binary](README.md#install-web-driver)
 
 ## Create webhook
 
- * Go to **Webhook** tab, click **Create Webhook**, specify name, select channel
+ * Open the **Webhook** tab, click **Create Webhook**, specify name, select channel
 
       ![](images/create_webhook.png)
 
  * Copy Webhook URL, click **Save**
 
-## Configure Web Notifications
+## Create Discord Notification in ATSD
 
-* Log in to ATSD web UI
-* Go to **Admin > Web Notifications > Discord**
-* Specify `Webhook URL`
-* Fill in the `Content` field
+* Open **Alerts > Web Notifications** page.
+* Click on an existing `DISCORD` template, or click the **Create** button below and switch the form to `SLACK` type.
+* Specify `Webhook URL` parameter. See parameter descriptions below.
 
-    ![](images/discord_parameters.png)
+    ![](images/discord-settings.png)
 
 * Click **Test**
 
@@ -81,21 +84,39 @@ The following parameters are supported:
 
 If tests are ok, check **Enable**, click **Save**   
 
-## Configure Rule
+## Testing Notification Rule
 
-* Download the file [rules.xml](resources/rules.xml)
-* Open **Alerts > Rules > Import**
-* Check (enable) **Auto-enable New Rules**, click on **Choose File**, select the downloaded XML file, click **Import**
-* Open the imported rule, go to the **Email Notifications** tab, replace **Recipients** field
-* Go to the **Web Notifications** tab, select Discord from **Endpoint** drop-down
-* Save the rule by clicking on the **Save** button
+### Create/import rule
 
-## Test
+* Create a new rule or import an existing rule for a built-in metric as described below.
+* Download the file [rules.xml](resources/rules.xml).
+* Open the **Alerts > Rules > Import** page.
+* Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
-* Wait a little, check the channel
+### Configure notification
 
-    ![](images/discord_test_1.png)
+* Open **Alerts > Rules** page and select a rule.
+* Open the **Web Notifications** tab.
+* Select Discord from the **Endpoint** drop-down.
+* Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
+* Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-    Content of _atsd.jvm.low_memory_atsd_open_20171127_1408043.txt_:
+```ls
+    OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
+    REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+    CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+```
 
-    ![](images/discord_test_2.png)
+* Save the rule by clicking on the **Save** button.
+
+    ![](images/discord_notification.png)
+    
+* The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+
+## Example
+
+   ![](images/discord_test_1.png)
+
+   Content of _atsd.jvm.low_memory_atsd_open_20171127_1408043.txt_:
+
+   ![](images/discord_test_2.png)
