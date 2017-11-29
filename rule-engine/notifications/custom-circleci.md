@@ -19,7 +19,7 @@ Replace \<CIRCLE USER TOKEN> in Endpoint URL with CircleCI user token
 
 Body:
 
-```json
+```
 {
   "parallel": ${parallel},
   "build_parameters": { 
