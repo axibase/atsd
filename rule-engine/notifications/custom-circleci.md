@@ -2,19 +2,26 @@
 
 ## Overview
 
-The following documentation demonstrates starting CircleCI build using [CircleCI API](https://circleci.com/docs/api/v1-reference/) and ATSD custom web notifications
+The following documentation demonstrates starting CircleCI build using [CircleCI API](https://circleci.com/docs/api/v1-reference/) and ATSD custom web notifications.
+
 [Documentation](https://circleci.com/docs/api/v1-reference/#new-build-branch) for method used in tutorial.
+
+Web notification and rule configuration can be imported from following xml files
+
+[Web Notification configuration](resources/custom-circleci-notification.xml)
+
+[Rule configuration](resources/custom-circleci-rule.xml)
 
 ## Configuration
 
-Replace \<CIRCLE USER TOKEN> in Endpoint URL with CircleCI user token
+Replace \<CIRCLE_USER_TOKEN> in Endpoint URL with CircleCI user token
 
 
 | Parameter | Value |
 | :-------- | :---- |
 | Method | POST  |
 | Content Type | application/json |
-| Endpoint URL | https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=<CIRCLE USER TOKEN> |
+| Endpoint URL | https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=\<CIRCLE_USER_TOKEN> |
 | Headers | Accept: application/json |
 
 Body:
@@ -41,7 +48,11 @@ Base test rule settings:
 
 ![](images/circle_rule_overview.png)
 
-Test rule notification settings:
+Enable **Web Notifications**
+
+Enable **Open** and **Repeat**, set **Repeat Interval** to **All**
+
+Set same settings for **Open** and **Repeat**:
 
 | Parameter | Value |
 | :-------- | :---- |
@@ -59,7 +70,6 @@ In order to test rule, open and close it using following series commands:
 
 ```
 series e:test_e m:test_m=2
-series e:test_e m:test_m=1
 ```
 
 ![](images/rule_test_commands.png)

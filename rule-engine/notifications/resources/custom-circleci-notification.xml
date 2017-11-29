@@ -1,0 +1,21 @@
+<list>
+  <com.axibase.tsd.model.notifications.WebNotificationConfig>
+    <enabled>true</enabled>
+    <ignoreSslErrors>true</ignoreSslErrors>
+    <name>Web Test (Circle)</name>
+    <description></description>
+    <method>POST</method>
+    <contentType>application/json</contentType>
+    <url>https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=&lt;CIRCLE_USER_TOKEN&gt;</url>
+    <headers>Accept: application/json</headers>
+    <body>{&#xd;
+  &quot;parallel&quot;: ${parallel},&#xd;
+  &quot;build_parameters&quot;: { &#xd;
+    &quot;RUN_EXTRA_TESTS&quot;: ${run_extra_tests}&#xd;
+  }&#xd;
+}</body>
+    <exposedTableModelParams class="sorted-set">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+    </exposedTableModelParams>
+  </com.axibase.tsd.model.notifications.WebNotificationConfig>
+</list>
