@@ -2,18 +2,16 @@
 
 ## Overview
 
-The following documentation demonstrates starting CircleCI build using CircleCI HTTP API and ATSD custom web notifications
+The following documentation demonstrates starting CircleCI build using [CircleCI API](https://circleci.com/docs/api/v1-reference/) and ATSD custom web notifications
 
-## Endpoint
+## Configuration
 
-[CircleCI API v1.1](https://circleci.com/docs/api/v1-reference/)
+Replace \<CIRCLE USER TOKEN> in Endpoint URL with CircleCI user token
 
 ```
-Name: Web Test (Circle)
-Endpoint Type: CUSTOM
 Method: POST
 Content Type: application/x-www-form-urlencoded
-Endpoint URL: https://circleci.com/api/v1.1/project/${vsc_type}/${user_name}/${project_name}/tree/${branch}?circle-token=${ci_user_token}
+Endpoint URL: https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=<CIRCLE USER TOKEN>
 Headers:
     Accept: application/json
 ```
@@ -35,12 +33,8 @@ Condition: value > 1
 Test rule notification settings:
 
 ```
-Endpoint: [CUSTOM] Web Test (Circle)
-branch: <github branch>
-ci_user_token: <ci user token allowed to start build>
-project_name: <github repository name>
-user_name: <github user name>
-vcs_type: github <github is used for this example, you can setup another repository>
+branch: master
+project_name: atsd-api-java
 ```
 
 ![](images/circle_rule_notification.png)
