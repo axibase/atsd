@@ -60,9 +60,9 @@ To join a server, the user should click **Create new server**, select **Join** a
 
 * Open the **Alerts > Web Notifications** page.
 * Click on an existing `DISCORD` template, or click the **Create** button below the table and switch the form to `DISCORD` type.
-* Enter the `Webhook URL` parameter copied from the Discord client. See parameter descriptions below.
+* Copy the `Webhook URL` from Discord Client and Paste it into `Webhook URL` field in Web Configuration form. The `Webhook ID` and `Webhook Token` will get filled automatically when the input loses focus.
 
-    ![](images/discord-settings.png)
+    ![](images/discord_settings.png)
 
 * Click **Test**.
 
@@ -82,7 +82,9 @@ To join a server, the user should click **Create new server**, select **Join** a
 
 |**Parameter**|**Description**|
 |---|---|
-|Webhook URL|Webhook URL generated on **Webhook** tab in channel settings.|
+|Webhook URL|Webhook URL generated on **Webhook** tab in channel settings. Will be cleared on configuration save save.|
+|Webhook ID|The ID of the webhook. Automatically resolved from Webhook URL.|
+|Webhook Token|The secure token of the webhook. Automatically resolved from Webhook URL.|
 |Bot Username|Overwrite your bot's user name.|
 |Content|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 
