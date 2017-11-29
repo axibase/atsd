@@ -14,14 +14,14 @@ Web notification and rule configuration can be imported from following xml files
 
 ## Configuration
 
-Replace \<CIRCLE_USER_TOKEN> in Endpoint URL with CircleCI user token
+Replace `<CIRCLE_USER_TOKEN>` in Endpoint URL with CircleCI user token
 
 
 | Parameter | Value |
 | :-------- | :---- |
 | Method | POST  |
 | Content Type | application/json |
-| Endpoint URL | https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=\<CIRCLE_USER_TOKEN> |
+| Endpoint URL | `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=<CIRCLE_USER_TOKEN>` |
 | Headers | Accept: application/json |
 
 Body:
