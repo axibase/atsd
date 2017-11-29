@@ -3,17 +3,29 @@
 ## Overview
 
 The following documentation demonstrates starting CircleCI build using [CircleCI API](https://circleci.com/docs/api/v1-reference/) and ATSD custom web notifications
+[Documentation](https://circleci.com/docs/api/v1-reference/#new-build-branch) for method used in tutorial.
 
 ## Configuration
 
 Replace \<CIRCLE USER TOKEN> in Endpoint URL with CircleCI user token
 
-```
-Method: POST
-Content Type: application/x-www-form-urlencoded
-Endpoint URL: https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=<CIRCLE USER TOKEN>
-Headers:
-    Accept: application/json
+
+| Parameter | Value |
+| :-------- | :---- |
+| Method | POST  |
+| Content Type | application/json |
+| Endpoint URL | https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=<CIRCLE USER TOKEN> |
+| Headers | Accept: application/json |
+
+Body:
+
+```json
+{
+  "parallel": ${parallel},
+  "build_parameters": { 
+    "RUN_EXTRA_TESTS": ${run_extra_tests}
+  }
+}
 ```
 
 ![](images/circle_endpoint.png)
@@ -22,20 +34,22 @@ Headers:
 
 Base test rule settings:
 
-```
-Name: Rule (Circle)
-Metric: test_m
-Condition: value > 1
-```
+| Parameter | Value |
+| :-------- | :---- |
+| Metric | test_m |
+| Condition | value > 1 |
 
 ![](images/circle_rule_overview.png)
 
 Test rule notification settings:
 
-```
-branch: master
-project_name: atsd-api-java
-```
+| Parameter | Value |
+| :-------- | :---- |
+| branch | master |
+| parallel | 4 |
+| project_name | atsd-api-java |
+| run_extra_tests  | true |
+
 
 ![](images/circle_rule_notification.png)
 
