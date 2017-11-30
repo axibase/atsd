@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) build job for a github project using a [`CUSTOM`](../custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) build job for a github project using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
 To integration relies on the [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) `Job with parameters` method for triggering a new build job.
 

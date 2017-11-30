@@ -1,0 +1,22 @@
+<list>
+  <com.axibase.tsd.model.notifications.WebNotificationConfig>
+    <enabled>true</enabled>
+    <ignoreSslErrors>true</ignoreSslErrors>
+    <logResponse>false</logResponse>
+    <name>Web Test (Jenkins)</name>
+    <description></description>
+    <method>POST</method>
+    <contentType>application/json</contentType>
+    <url>https://jenkins.example.org/jenkins/job/${job_name}/build</url>
+    <headers>Authorization: Basic AbC123B64</headers>
+    <body>{&#xd;
+  &quot;parameter&quot;: [&#xd;
+    {&quot;name&quot;:&quot;timezone&quot;, &quot;value&quot;:&quot;${timezone}&quot;},&#xd;
+    {&quot;name&quot;:&quot;run_extra_tests&quot;, &quot;value&quot;:&quot;${run_extra_tests}&quot;}&#xd;
+  ]&#xd;
+}</body>
+    <exposedTableModelParams class="sorted-set">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+    </exposedTableModelParams>
+  </com.axibase.tsd.model.notifications.WebNotificationConfig>
+</list>
