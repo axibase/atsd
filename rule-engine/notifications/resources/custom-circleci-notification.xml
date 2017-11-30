@@ -7,12 +7,13 @@
     <description></description>
     <method>POST</method>
     <contentType>application/json</contentType>
-    <url>https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=462089cad85044e9823a07b19f4cc1d33ba527ff</url>
+    <url>https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=1111111111</url>
     <headers>Accept: application/json</headers>
     <body>{&#xd;
   &quot;parallel&quot;: ${parallel},&#xd;
   &quot;build_parameters&quot;: { &#xd;
-    &quot;RUN_EXTRA_TESTS&quot;: ${run_extra_tests}&#xd;
+    &quot;RUN_EXTRA_TESTS&quot;: ${run_extra_tests},&#xd;
+    &quot;timezone&quot;: &quot;${timezone}&quot;&#xd;
   }&#xd;
 }</body>
     <exposedTableModelParams class="sorted-set">

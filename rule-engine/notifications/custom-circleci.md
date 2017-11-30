@@ -37,7 +37,8 @@ The web notification can be configured to send a JSON document to the Circle CI 
 {
   "parallel": ${parallel},
   "build_parameters": { 
-    "RUN_EXTRA_TESTS": ${run_extra_tests}
+    "RUN_EXTRA_TESTS": ${run_extra_tests},
+    "timezone": "${timezone}"
   }
 }
 ```
@@ -75,7 +76,8 @@ Specify the same settings for **Open** and **Repeat** triggers:
 | branch | master |
 | parallel | 4 |
 | project_name | atsd-api-java |
-| run_extra_tests  | true |
+| run_extra_tests  | false |
+| timezone  | Etc/UTC |
 
 ![](images/circle_rule_notification.png)
 
@@ -89,7 +91,8 @@ When the notification is executed, all placeholders in the request URL and the p
 {
   "parallel": 4,
   "build_parameters": { 
-    "RUN_EXTRA_TESTS": true
+    "RUN_EXTRA_TESTS": false,
+    "timezone": "Etc/UTC"
   }
 }
 ```
