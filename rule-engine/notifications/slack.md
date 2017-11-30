@@ -6,7 +6,7 @@ The `SLACK` [notification](../web-notifications.md) provides a built-in capabili
 
 ## Prerequisites
 
-Install and configure the [Web Driver](README.md#install-web-driver) in order to enable sending chart screenshots into Slack.
+Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into Slack.
 
 ## Create Workspace
 

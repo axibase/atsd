@@ -6,7 +6,7 @@ The `TELEGRAM` [notification](../web-notifications.md) provides a built-in capab
 
 ## Prerequisites
 
-Install and configure the [Web Driver](README.md#install-web-driver) in order to enable sending chart screenshots into Telegram.
+Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into Telegram.
 
 ## Create Bot
 

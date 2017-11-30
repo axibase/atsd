@@ -6,7 +6,7 @@ The `DISCORD` [notification](../web-notifications.md) allows sending alert messa
 
 ## Prerequisites
 
-Install and configure the [Web Driver](README.md#install-web-driver) in order to enable sending chart screenshots into Discord.
+Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into Discord.
 
 ## Create Discord Server
 
@@ -67,7 +67,7 @@ To join a server, the user should click **Create new server**, select **Join** a
 
 * Click **Test**.
 
-   ![](images/discord_message_test.png)
+   ![](images/discord_hello_from_atsd.png)
 
 * Select **Test Portal** to test the screenshot.
 
@@ -75,9 +75,9 @@ To join a server, the user should click **Create new server**, select **Join** a
 
 * Click **Send Screenshot**.
 
-   ![](images/discord_send_screen.png)
+   ![](images/discord_send_screenshot.png)
    
-* If tests are OK, set the status **Enabled** and click **Save**   
+* If tests are OK, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.  
 
 ## Notification Parameters
 
