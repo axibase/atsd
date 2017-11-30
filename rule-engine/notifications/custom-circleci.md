@@ -43,7 +43,9 @@ The web notification can be configured to send a JSON document to the Circle CI 
 }
 ```
 
-You can leave the `Body` field empty if you don't need to customize the build settings.
+Make sure that you enclose fields with double quotes, if necessary.
+
+You can leave the `Body` field empty if you don't need to pass custom build parameters.
 
 ![](images/circle_endpoint.png)
 
