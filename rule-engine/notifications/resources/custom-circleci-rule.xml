@@ -13,7 +13,7 @@
 <intervalCount>5</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </alertStrategy>
-<lastUpdated>1511968346134</lastUpdated>
+<lastUpdated>1512023170968</lastUpdated>
 <enabled>true</enabled>
 <disableEntityGrouping>false</disableEntityGrouping>
 <leavingEvents>true</leavingEvents>
@@ -24,6 +24,10 @@
 <intervalCount>5</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </actionStrategy>
+<timeFilter>
+<intervalCount>1</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</timeFilter>
 <discardPreviousValues>true</discardPreviousValues>
 <webNotification>
 <disabled>false</disabled>

@@ -6,7 +6,7 @@
     <description></description>
     <method>POST</method>
     <contentType>application/json</contentType>
-    <url>https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=&lt;CIRCLE_USER_TOKEN&gt;</url>
+    <url>https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=462089cad85044e9823a07b19f4cc1d33ba527bb</url>
     <headers>Accept: application/json</headers>
     <body>{&#xd;
   &quot;parallel&quot;: ${parallel},&#xd;

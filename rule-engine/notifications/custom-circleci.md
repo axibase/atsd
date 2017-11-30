@@ -8,20 +8,20 @@ The following documentation demonstrates starting CircleCI build using [CircleCI
 
 Web notification and rule configuration can be imported from following xml files
 
-[Web Notification configuration](resources/custom-circleci-notification.xml)
-
-[Rule configuration](resources/custom-circleci-rule.xml)
-
 ## Configuration
 
-Replace `<CIRCLE_USER_TOKEN>` in Endpoint URL with CircleCI user token
+You can import prepared web notification configuration from this [file](resources/custom-circleci-notification.xml)
+
+Replace `<CIRCLE_USER_TOKEN>` in Endpoint URL with CircleCI user token and `<GITHUB_USER>` with github user name.
+
+Endpoint URL should looks like `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=462089cad85044e9823a07b19f4cc1d33ba527bb`
 
 
 | Parameter | Value |
 | :-------- | :---- |
 | Method | POST  |
 | Content Type | application/json |
-| Endpoint URL | `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=<CIRCLE_USER_TOKEN>` |
+| Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}?circle-token=<CIRCLE_USER_TOKEN>` |
 | Headers | Accept: application/json |
 
 Body:
@@ -38,6 +38,8 @@ Body:
 ![](images/circle_endpoint.png)
 
 ## Rule
+
+You can import prepared rule configuration from this [file](resources/custom-circleci-rule.xml)
 
 Base test rule settings:
 
