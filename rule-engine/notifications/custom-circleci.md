@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to trigger a [CircleCI](https://circleci.com) build for a github-hosted project using a [`CUSTOM`](../custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to trigger a [CircleCI](https://circleci.com) build for a github project using a [`CUSTOM`](../custom.md) web notification in the ATSD rule engine.
 
 To integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-reference/#new-build-branch) `new-build-branch` method for triggering a new build of the specified branch.
 
@@ -31,7 +31,7 @@ The `${project_name}` and `${branch}` should remain in the URL as placeholders w
 
 ### Payload
 
-The web notification can be configured to send a json content to the Circle CI endpoint in order to control extended build parameters and the `Body` field can include the following text:
+The web notification can be configured to send a JSON document to the Circle CI endpoint in order to control extended build parameters and the `Body` field can include the following text:
 
 ```
 {
@@ -81,7 +81,7 @@ Specify the same settings for **Open** and **Repeat** triggers:
 
 Note that these four parameters are visible in the rule editor because their placeholders were specified in the `Endpoint URL` and the JSON payload.
 
-When the notification will be exexcuted, all placeholders in the request URL and the payload will be resolved as follows:
+When the notification is executed, all placeholders in the request URL and the payload will be resolved as follows:
 
 `https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master?circle-token=1111111111`
 
@@ -93,6 +93,8 @@ When the notification will be exexcuted, all placeholders in the request URL and
   }
 }
 ```
+
+If the placeholder is not found or its value is not set, it will be set to an empty string.
 
 ## Test
 
