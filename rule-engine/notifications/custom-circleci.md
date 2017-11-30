@@ -60,7 +60,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/circle_rule_overview.png)
+![](images/rule_overview.png)
 
 Open the **Web Notifications** tab.
 
