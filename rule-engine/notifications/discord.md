@@ -59,8 +59,9 @@ To join a server, the user should click **Create new server**, select **Join** a
 ## Create Discord Notification in ATSD
 
 * Open the **Alerts > Web Notifications** page.
-* Click on an existing `DISCORD` template, or click the **Create** button below the table and switch the form to `DISCORD` type.
-* Copy the `Webhook URL` from Discord client and paste it into `Webhook URL` field in Web Configuration form. The `Webhook ID` and `Webhook Token` will get filled automatically when the input loses focus.
+* Click on an existing `DISCORD` template, or click the **Create** button and switch the type to `DISCORD`.
+* Copy the `Webhook URL` from the Discord client into the `Webhook URL` field in the configuration form. 
+* The `Webhook ID` and `Webhook Token` will be filled automatically when you finish editing the `Webhook URL` field.
 
     ![](images/discord_settings.png)
 
