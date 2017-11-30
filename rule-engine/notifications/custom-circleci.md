@@ -2,32 +2,36 @@
 
 ## Overview
 
-The following documentation demonstrates starting CircleCI build using [CircleCI API](https://circleci.com/docs/api/v1-reference/) and ATSD custom web notifications.
+The following example demonstrates how to trigger a [CircleCI](https://circleci.com) build for a github-hosted project using a [`CUSTOM`](../custom.md) web notification in the ATSD rule engine.
 
-[Documentation](https://circleci.com/docs/api/v1-reference/#new-build-branch) for method used in tutorial.
-
-Web notification and rule configuration can be imported from following xml files
+To integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-reference/#new-build-branch) `new-build-branch` method for triggering a new build of the specified branch.
 
 ## Configuration
 
-You can import prepared web notification configuration from this [file](resources/custom-circleci-notification.xml)
+Create a new `CUSTOM` web notification from scratch or import the [template](resources/custom-circleci-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
-To create new notification go to **Alerts** - **Web Notifications** and click **Create**.
+To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
-Fill the form with following parameters. 
+### Parameters
 
-| Parameter | Value |
-| :-------- | :---- |
-| Method | POST  |
-| Content Type | application/json |
+Enter a name and specify the following parameters:
+
+| **Name** | **Value** |
+| :--- | :--- |
+| Method | `POST`  |
+| Content Type | `application/json` |
 | Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}?circle-token=<CIRCLE_USER_TOKEN>` |
-| Headers | Accept: application/json |
+| Headers | `Accept: application/json` |
 
-Replace `<CIRCLE_USER_TOKEN>` in Endpoint URL with CircleCI user token and `<GITHUB_USER>` with github user name.
+Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name and the `<CIRCLE_USER_TOKEN>` field with your CircleCI user token.
 
-Endpoint URL should looks like `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=462089cad85044e9823a07b19f4cc1d33ba527ff`
+The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=1111111111`
 
-Body:
+The `${project_name}` and `${branch}` should remain in the URL as placeholders which you will be able to specify in the rule editor. This would allow re-using the same notification to trigger builds for different projects and branches.
+
+### Payload
+
+The web notification can be configured to send a json content to the Circle CI endpoint in order to control extended build parameters and the `Body` field can include the following text:
 
 ```
 {
@@ -38,34 +42,35 @@ Body:
 }
 ```
 
+You can leave the `Body` field empty if you don't need to customize the build settings.
+
 ![](images/circle_endpoint.png)
 
 ## Rule
 
-You can import prepared rule configuration from this [file](resources/custom-circleci-rule.xml)
+Create a new rule or import the [rule template](resources/custom-circleci-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
-To create new rule go to **Alerts** - **Rules** and click **Create**.
+To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Fill the **Overview** form with following parameters. 
+Specify the key settings on the **Overview** tab. 
 
-Base test rule settings:
-
-| Parameter | Value |
+| **Name** | **Value** |
 | :-------- | :---- |
+| Status | Enabled |
 | Metric | test_m |
-| Condition | value > 1 |
+| Condition | `value > 1` |
 
 ![](images/circle_rule_overview.png)
 
-Go to **Web Notifications** tab.
+Open the **Web Notifications** tab.
 
-Set **Enabled** to **Yes** and **Endpoint** to your web notification.
+Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
 
-Enable **Open** and **Repeat**, set **Repeat Interval** to **All**
+Enable **Open** and **Repeat** triggers. Set the **Repeat Interval** to **All**.
 
-Set the same settings for **Open** and **Repeat**:
+Specify the same settings for **Open** and **Repeat** triggers:
 
-| Parameter | Value |
+| **Name** | **Value** |
 | :-------- | :---- |
 | branch | master |
 | parallel | 4 |
@@ -74,24 +79,36 @@ Set the same settings for **Open** and **Repeat**:
 
 ![](images/circle_rule_notification.png)
 
-If the alert is opened with this parameters, URL should looks like the following
+Note that these four parameters are visible in the rule editor because their placeholders were specified in the `Endpoint URL` and the JSON payload.
 
-`https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master?circle-token=462089cad85044e9823a07b19f4cc1d33ba527ff`
+When the notification will be exexcuted, all placeholders in the request URL and the payload will be resolved as follows:
+
+`https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master?circle-token=1111111111`
+
+```json
+{
+  "parallel": 4,
+  "build_parameters": { 
+    "RUN_EXTRA_TESTS": true
+  }
+}
+```
 
 ## Test
 
-In order to test rule, go to **Data** - **Data Entry** and send following series commands:
+In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data> Data Entry** page and submit the following command:
 
 ```
-series e:test_e m:test_m=2
+  series e:test_e m:test_m=2
 ```
 
 ![](images/rule_test_commands.png)
 
-This value should open the alert. Go to **Alerts** - **Open Alerts** and check that your alert was opened
+The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](images/circle_alert_open.png)
 
-Ensure that your build was started at CircleCI
+Check the CircleCI user interface to make sure the target build was triggered.
 
 ![](images/circle_test.png)
