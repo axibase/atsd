@@ -12,10 +12,9 @@ Web notification and rule configuration can be imported from following xml files
 
 You can import prepared web notification configuration from this [file](resources/custom-circleci-notification.xml)
 
-Replace `<CIRCLE_USER_TOKEN>` in Endpoint URL with CircleCI user token and `<GITHUB_USER>` with github user name.
+To create new notification go to **Alerts** - **Web Notifications** and click **Create**.
 
-Endpoint URL should looks like `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=462089cad85044e9823a07b19f4cc1d33ba527bb`
-
+Fill the form with following parameters. 
 
 | Parameter | Value |
 | :-------- | :---- |
@@ -23,6 +22,10 @@ Endpoint URL should looks like `https://circleci.com/api/v1.1/project/github/axi
 | Content Type | application/json |
 | Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}?circle-token=<CIRCLE_USER_TOKEN>` |
 | Headers | Accept: application/json |
+
+Replace `<CIRCLE_USER_TOKEN>` in Endpoint URL with CircleCI user token and `<GITHUB_USER>` with github user name.
+
+Endpoint URL should looks like `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=462089cad85044e9823a07b19f4cc1d33ba527ff`
 
 Body:
 
@@ -41,6 +44,10 @@ Body:
 
 You can import prepared rule configuration from this [file](resources/custom-circleci-rule.xml)
 
+To create new rule go to **Alerts** - **Rules** and click **Create**.
+
+Fill the **Overview** form with following parameters. 
+
 Base test rule settings:
 
 | Parameter | Value |
@@ -50,11 +57,13 @@ Base test rule settings:
 
 ![](images/circle_rule_overview.png)
 
-Enable **Web Notifications**
+Go to **Web Notifications** tab.
+
+Set **Enabled** to **Yes** and **Endpoint** to your web notification.
 
 Enable **Open** and **Repeat**, set **Repeat Interval** to **All**
 
-Set same settings for **Open** and **Repeat**:
+Set the same settings for **Open** and **Repeat**:
 
 | Parameter | Value |
 | :-------- | :---- |
@@ -63,12 +72,15 @@ Set same settings for **Open** and **Repeat**:
 | project_name | atsd-api-java |
 | run_extra_tests  | true |
 
-
 ![](images/circle_rule_notification.png)
+
+If the alert is opened with this parameters, URL should looks like the following
+
+`https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master?circle-token=462089cad85044e9823a07b19f4cc1d33ba527ff`
 
 ## Test
 
-In order to test rule, open and close it using following series commands:
+In order to test rule, go to **Data** - **Data Entry** and send following series commands:
 
 ```
 series e:test_e m:test_m=2
@@ -76,6 +88,10 @@ series e:test_e m:test_m=2
 
 ![](images/rule_test_commands.png)
 
-Ensure that your build has been started at CircleCI
+This value should open the alert. Go to **Alerts** - **Open Alerts** and check that your alert was opened
+
+![](images/circle_alert_open.png)
+
+Ensure that your build was started at CircleCI
 
 ![](images/circle_test.png)
