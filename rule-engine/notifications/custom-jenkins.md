@@ -20,7 +20,7 @@ Enter a name and specify the following parameters:
 | :--- | :--- |
 | Method | `POST`  |
 | Content Type | `application/json` |
-| Endpoint URL | `https://jenkins.example.org/jenkins/job/${job_name}/build` |
+| Endpoint URL | `https://jenkins.example.org/job/${job_name}/build` |
 | Headers | `Authorization: Basic AbC123B64` |
 
 The `${job_name}` should remain in the URL as placeholders which you will be able to specify in the rule editor. This would allow re-using the same notification to trigger different jobs.
@@ -80,7 +80,7 @@ Note that these three parameters are visible in the rule editor because their pl
 
 When the notification is executed, all placeholders in the request URL and the payload will be resolved as follows:
 
-`https://jenkins.example.org/jenkins/job/atsd-api-test/build`
+`https://jenkins.example.org/job/atsd-api-test/build`
 
 ```json
 {

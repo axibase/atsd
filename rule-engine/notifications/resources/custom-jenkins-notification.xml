@@ -7,7 +7,7 @@
     <description></description>
     <method>POST</method>
     <contentType>application/json</contentType>
-    <url>https://jenkins.example.org/jenkins/job/${job_name}/build</url>
+    <url>https://jenkins.example.org/job/${job_name}/build</url>
     <headers>Authorization: Basic AbC123B64</headers>
     <body>{&#xd;
   &quot;parameter&quot;: [&#xd;
