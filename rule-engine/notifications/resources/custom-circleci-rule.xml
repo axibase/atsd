@@ -13,7 +13,7 @@
 <intervalCount>5</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </alertStrategy>
-<lastUpdated>1512028095668</lastUpdated>
+<lastUpdated>1512043796322</lastUpdated>
 <enabled>true</enabled>
 <disableEntityGrouping>false</disableEntityGrouping>
 <leavingEvents>true</leavingEvents>
@@ -24,10 +24,6 @@
 <intervalCount>5</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </actionStrategy>
-<timeFilter>
-<intervalCount>1</intervalCount>
-<intervalUnit>MINUTE</intervalUnit>
-</timeFilter>
 <discardPreviousValues>true</discardPreviousValues>
 <webNotification>
 <disabled>false</disabled>
@@ -60,7 +56,11 @@
 </firstWebConfigParameters>
 <firstWebConfigParameters>
 <key>run_extra_tests</key>
-<value>true</value>
+<value>false</value>
+</firstWebConfigParameters>
+<firstWebConfigParameters>
+<key>timezone</key>
+<value>Etc/UTC</value>
 </firstWebConfigParameters>
 <repeatWebConfigParameters>
 <key>branch</key>
@@ -76,7 +76,11 @@
 </repeatWebConfigParameters>
 <repeatWebConfigParameters>
 <key>run_extra_tests</key>
-<value>true</value>
+<value>false</value>
+</repeatWebConfigParameters>
+<repeatWebConfigParameters>
+<key>timezone</key>
+<value>Etc/UTC</value>
 </repeatWebConfigParameters>
 <cancelWebConfigParameters>
 <key>branch</key>
@@ -92,6 +96,10 @@
 </cancelWebConfigParameters>
 <cancelWebConfigParameters>
 <key>run_extra_tests</key>
+<value/>
+</cancelWebConfigParameters>
+<cancelWebConfigParameters>
+<key>timezone</key>
 <value/>
 </cancelWebConfigParameters>
 <first-enabled>true</first-enabled>
