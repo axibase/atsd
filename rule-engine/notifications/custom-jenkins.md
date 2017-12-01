@@ -2,9 +2,9 @@
 
 ## Overview
 
-The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) build job using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) job using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-To integration relies on the [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) `Job with parameters` method for triggering a new build job.
+The integration relies on the [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) `'Job with parameters'` method for triggering a new build job.
 
 ## Configuration
 
@@ -23,39 +23,39 @@ Enter a name and specify the following parameters:
 | Endpoint URL | `https://jenkins.example.org/job/${job_name}/build` |
 | Headers | `Authorization: Basic AbC123B64` |
 
-The `${job_name}` should remain in the URL as placeholders which you will be able to specify in the rule editor. This would allow re-using the same notification to trigger different jobs.
+Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
 
-Header `Authorization` should contain authorization type `Basic` and base64-encoded credentials in format `username:api_token`. 
+Keep the `${job_name}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to trigger different jobs using the same web notification.
 
-Token can be found in Jenkins web interface. Go to `User Configuration` 
+The `Authorization` header should contain authorization type `Basic` and base64-encoded credentials in the format `username:api_token`. 
+
+The API token can be found in the Jenkins web interface on the `User Configuration` page.
 
 ![](images/jenkins_token_1.png)
 
-Click `Show API Token` button
+Click `Show API Token` button.
 
 ![](images/jenkins_token_2.png)
 
-Your token is in `API Token` field
+Your token is displayed in the `API Token` field.
 
 ![](images/jenkins_token_3.png)
 
 ### Payload
 
-If your build job have parameters, you may send its values in a request body. 
+If your Jenkins job is parameterized, you can send the additional parameters in the request payload. 
 
-To inspect which parameters your build have, go to Jenkins web interface and select your build job.
-
-![](images/jenkins_param_build_1.png)
-
-Select `Configure`
+To inspect which parameters are exposed by the project, open the job configuration page in Jenkins.
 
 ![](images/jenkins_param_build_2.png)
 
-If `This project is parametrized` checkbox is disabled, your build have no parameters. If enabled, you can see them
+The parameters will be displayed if `This project is parametrized` checkbox is enabled.
 
 ![](images/jenkins_param_build_3.png)
 
-The web notification can be configured to send a JSON document to the Jenkins endpoint in order to control extended build parameters and the `Body` field can include the following text:
+The web notification can be configured to send a JSON document to the Jenkins server in order to pass extended parameters.
+
+In this case, use the `Body` field to enumerate the job parameters in a JSON document as follows:
 
 ```
 {
@@ -66,7 +66,7 @@ The web notification can be configured to send a JSON document to the Jenkins en
 }
 ```
 
-You can leave the `Body` field empty if you don't need to customize the build settings.
+You can leave the `Body` field empty for non-parameterized jobs.
 
 ![](images/jenkins_endpoint.png)
 
@@ -102,9 +102,9 @@ Specify the same settings for **Open** and **Repeat** triggers:
 
 ![](images/jenkins_rule_notification.png)
 
-Note that these three parameters are visible in the rule editor because their placeholders were specified in the `Endpoint URL` and the JSON payload.
+Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
 
-When the notification is executed, all placeholders in the request URL and the payload will be resolved as follows:
+When the notification is executed, all placeholders will be resolved as follows:
 
 `https://jenkins.example.org/job/atsd-api-test/build`
 
@@ -117,7 +117,7 @@ When the notification is executed, all placeholders in the request URL and the p
 }
 ```
 
-If the placeholder is not found or its value is not set, it will be set to an empty string.
+If the placeholder is not found, it will be substituted with an empty string.
 
 ## Test
 
