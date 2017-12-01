@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) build job for a github project using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) build job using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
 To integration relies on the [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) `Job with parameters` method for triggering a new build job.
 
@@ -25,11 +25,37 @@ Enter a name and specify the following parameters:
 
 The `${job_name}` should remain in the URL as placeholders which you will be able to specify in the rule editor. This would allow re-using the same notification to trigger different jobs.
 
-Header `Authorization` should contain authorization type `Basic` and base64-encoded credentials in format `username:api_token`.
+Header `Authorization` should contain authorization type `Basic` and base64-encoded credentials in format `username:api_token`. 
+
+Token can be found in Jenkins web interface. Go to `User Configuration` 
+
+![](images/jenkins_token_1.png)
+
+Click `Show API Token` button
+
+![](images/jenkins_token_2.png)
+
+Your token is in `API Token` field
+
+![](images/jenkins_token_3.png)
 
 ### Payload
 
-The web notification can be configured to send a JSON document to the Jenkins endpoint in order to control extended job parameters and the `Body` field can include the following text:
+If your build job have parameters, you may send its values in a request body. 
+
+To inspect which parameters your build have, go to Jenkins web interface and select your build job.
+
+![](images/jenkins_param_build_1.png)
+
+Select `Configure`
+
+![](images/jenkins_param_build_2.png)
+
+If `This project is parametrized` checkbox is disabled, your build have no parameters. If enabled, you can see them
+
+![](images/jenkins_param_build_3.png)
+
+The web notification can be configured to send a JSON document to the Jenkins endpoint in order to control extended build parameters and the `Body` field can include the following text:
 
 ```
 {
