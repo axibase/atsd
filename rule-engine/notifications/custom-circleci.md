@@ -2,9 +2,9 @@
 
 ## Overview
 
-The following example demonstrates how to trigger a [CircleCI](https://circleci.com) build for a github project using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to trigger a [CircleCI](https://circleci.com) build for a Github project using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-To integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-reference/#new-build-branch) `new-build-branch` method for triggering a new build of the specified branch.
+The integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-reference/#new-build-branch) `new-build-branch` method for triggering a new build of the specified branch.
 
 ## Configuration
 
