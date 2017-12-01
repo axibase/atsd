@@ -27,22 +27,22 @@ Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your githu
 
 The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=1111111111`
 
-The `${project_name}` and `${branch}` should remain in the URL as placeholders which you will be able to specify in the rule editor. This would allow re-using the same notification to trigger builds for different projects and branches.
+Keep the `${project_name}` and `${branch}` placeholders in the URL path so that one can customize them in the rule editor. This would allow you to trigger builds for different projects using the same web notification.
 
 ### Payload
 
-The web notification can be configured to send a JSON document to the Circle CI endpoint in order to control extended build parameters and the `Body` field can include the following text:
+The web notification can be configured to send a JSON document to the Circle CI endpoint in order to pass extended build parameters and the `Body` field can include the following text:
 
 ```
 {
-  "parallel": ${parallel},
+  "parallel": "${parallel}",
   "build_parameters": { 
-    "RUN_EXTRA_TESTS": ${run_extra_tests}
+    "RUN_EXTRA_TESTS": "${run_extra_tests}"
   }
 }
 ```
 
-You can leave the `Body` field empty if you don't need to customize the build settings.
+Leave the `Body` field empty for non-parameterized projects.
 
 ![](images/circle_endpoint.png)
 
@@ -79,7 +79,7 @@ Specify the same settings for **Open** and **Repeat** triggers:
 
 ![](images/circle_rule_notification.png)
 
-Note that these four parameters are visible in the rule editor because their placeholders were specified in the `Endpoint URL` and the JSON payload.
+Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
 
 When the notification is executed, all placeholders in the request URL and the payload will be resolved as follows:
 
@@ -87,14 +87,14 @@ When the notification is executed, all placeholders in the request URL and the p
 
 ```json
 {
-  "parallel": 4,
+  "parallel": "4",
   "build_parameters": { 
-    "RUN_EXTRA_TESTS": true
+    "RUN_EXTRA_TESTS": "true"
   }
 }
 ```
 
-If the placeholder is not found or its value is not set, it will be set to an empty string.
+If the placeholder is not found, it will be substituted with an empty string.
 
 ## Test
 
