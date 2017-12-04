@@ -4,7 +4,7 @@
 
 The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) job using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-The integration relies on the [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) `'Job with parameters'` method for triggering a new build job.
+The integration relies on the [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) `'Job with parameters'` method for triggering a new build job. If you are going to trigger a job without parameters, you have to use `'Jobs without parameters'` method.
 
 ## Configuration
 
@@ -18,28 +18,18 @@ Enter a name and specify the following parameters:
 
 | **Name** | **Value** |
 | :--- | :--- |
-| Method | `POST`  |
-| Content Type | `application/json` |
-| Endpoint URL | `https://jenkins.example.org/job/${job_name}/build` |
-| Headers | `Authorization: Basic AbC123B64` |
+| Method | `POST` |
+| Content Type | `application/x-www-form-urlencoded` |
+| Authentication | `Basic` |
+| Username | `<JENKINS_USER_NAME>` |
+| Password | `<JENKINS_USER_PASSWORD>` |
+| Endpoint URL | `https://jenkins.example.org/job/${job_name}/buildWithParameters` |
 
-Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
+Enter the Jenkins user name into the `Username` field and password into the `Password` field.
+
+Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address. If your Jenkins job is not parameterized, you have to use `https://jenkins.example.org/job/${job_name}/build` Endpoint Url.
 
 Keep the `${job_name}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to trigger different jobs using the same web notification.
-
-The `Authorization` header should contain authorization type `Basic` and base64-encoded credentials in the format `username:api_token`. 
-
-The API token can be found in the Jenkins web interface on the `User Configuration` page.
-
-![](images/jenkins_token_1.png)
-
-Click `Show API Token` button.
-
-![](images/jenkins_token_2.png)
-
-Your token is displayed in the `API Token` field.
-
-![](images/jenkins_token_3.png)
 
 ### Payload
 
@@ -53,22 +43,13 @@ The parameters will be displayed if `This project is parametrized` checkbox is e
 
 ![](images/jenkins_param_build_3.png)
 
-The web notification can be configured to send a JSON document to the Jenkins server in order to pass extended parameters.
+The web notification can be configured to send a `x-www-form-urlencoded` data to the Jenkins server in order to pass extended parameters.
 
-In this case, use the `Body` field to enumerate the job parameters in a JSON document as follows:
-
-```
-{
-  "parameter": [
-    {"name":"timezone", "value":"${timezone}"},
-    {"name":"run_extra_tests", "value":"${run_extra_tests}"}
-  ]
-}
-```
-
-You can leave the `Body` field empty for non-parameterized jobs.
+In this case, add parameters names to the `Parameters` and enable their checkboxes in order to customize them in the rule editor.
 
 ![](images/jenkins_endpoint.png)
+
+You can leave the `Parameters` empty for non-parameterized jobs.
 
 ## Rule
 
@@ -102,19 +83,15 @@ Specify the same settings for **Open** and **Repeat** triggers:
 
 ![](images/jenkins_rule_notification.png)
 
-Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
+Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and `Parameters` marked as editable.
 
 When the notification is executed, all placeholders will be resolved as follows:
 
-`https://jenkins.example.org/job/atsd-api-test/build`
+`https://jenkins.example.org/job/atsd-api-test/buildWithParameters`
 
-```json
-{
-  "parameter": [
-    {"name":"timezone", "value":"Etc/UTC"},
-    {"name":"run_extra_tests", "value":"false"}
-  ]
-}
+```
+timezone=Etc/UTC
+run_extra_tests=false
 ```
 
 If the placeholder is not found, it will be substituted with an empty string.

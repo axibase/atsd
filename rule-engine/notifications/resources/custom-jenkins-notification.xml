@@ -3,20 +3,20 @@
     <enabled>true</enabled>
     <ignoreSslErrors>true</ignoreSslErrors>
     <logResponse>false</logResponse>
-    <name>Web Test (Jenkins)</name>
+    <name>jenkins-notif</name>
     <description></description>
     <method>POST</method>
-    <contentType>application/json</contentType>
-    <url>https://jenkins.example.org/job/${job_name}/build</url>
-    <headers>Authorization: Basic AbC123B64</headers>
-    <body>{&#xd;
-  &quot;parameter&quot;: [&#xd;
-    {&quot;name&quot;:&quot;timezone&quot;, &quot;value&quot;:&quot;${timezone}&quot;},&#xd;
-    {&quot;name&quot;:&quot;run_extra_tests&quot;, &quot;value&quot;:&quot;${run_extra_tests}&quot;}&#xd;
-  ]&#xd;
-}</body>
+    <contentType>application/x-www-form-urlencoded</contentType>
+    <url>https://jenkins.example.org/job/${job_name}/buildWithParameters</url>
+    <headers></headers>
+    <body>timezone=Etc%2FUTC&amp;run_extra_tests=false</body>
+    <authType>BASIC</authType>
+    <username>username</username>
+    <password>password</password>
     <exposedTableModelParams class="sorted-set">
       <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+      <string>run_extra_tests</string>
+      <string>timezone</string>
     </exposedTableModelParams>
   </com.axibase.tsd.model.notifications.WebNotificationConfig>
 </list>
