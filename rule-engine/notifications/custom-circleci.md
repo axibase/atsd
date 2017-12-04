@@ -25,11 +25,11 @@ Enter a name and specify the following parameters:
 | Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}` |
 | Headers | `Accept: application/json` |
 
-Set your Circle CI user token in `Username` field and left `Password` field empty.
-
 Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name.
 
 The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
+
+Enter the Circle CI user token into the `Username` field and leave the `Password` field empty.
 
 Keep the `${project_name}` and `${branch}` placeholders in the URL path so that one can customize them in the rule editor. This would allow you to trigger builds for different projects using the same web notification.
 
