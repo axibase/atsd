@@ -22,14 +22,26 @@ Enter a name and specify the following parameters:
 | Content Type | `application/x-www-form-urlencoded` |
 | Authentication | `Basic` |
 | Username | `<JENKINS_USER_NAME>` |
-| Password | `<JENKINS_USER_PASSWORD>` |
+| Password | `<JENKINS_USER_TOKEN>` |
 | Endpoint URL | `https://jenkins.example.org/job/${job_name}/buildWithParameters` |
-
-Enter the Jenkins user name into the `Username` field and password into the `Password` field.
 
 Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address. If your Jenkins job is not parameterized, you have to use `https://jenkins.example.org/job/${job_name}/build` Endpoint Url.
 
 Keep the `${job_name}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to trigger different jobs using the same web notification.
+
+Enter the Jenkins user name into the `Username` field and user API token into the `Password` field.
+
+The API token can be found in the Jenkins web interface on the `User Configuration` page.
+
+![](images/jenkins_token_1.png)
+
+Click `Show API Token` button.
+
+![](images/jenkins_token_2.png)
+
+Your token is displayed in the `API Token` field.
+
+![](images/jenkins_token_3.png)
 
 ### Payload
 

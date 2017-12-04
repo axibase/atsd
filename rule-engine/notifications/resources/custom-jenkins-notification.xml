@@ -12,7 +12,7 @@
     <body>timezone=Etc%2FUTC&amp;run_extra_tests=false</body>
     <authType>BASIC</authType>
     <username>username</username>
-    <password>password</password>
+    <password>111111</password>
     <exposedTableModelParams class="sorted-set">
       <comparator class="java.lang.String$CaseInsensitiveComparator"/>
       <string>run_extra_tests</string>
