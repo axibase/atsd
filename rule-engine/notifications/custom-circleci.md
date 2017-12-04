@@ -20,12 +20,16 @@ Enter a name and specify the following parameters:
 | :--- | :--- |
 | Method | `POST`  |
 | Content Type | `application/json` |
-| Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}?circle-token=<CIRCLE_USER_TOKEN>` |
+| Authentication | `Basic` |
+| Username | `<CIRCLE_USER_TOKEN>` |
+| Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}` |
 | Headers | `Accept: application/json` |
 
-Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name and the `<CIRCLE_USER_TOKEN>` field with your CircleCI user token.
+Set your Circle CI user token in `Username` field and left `Password` field empty.
 
-The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=1111111111`
+Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name.
+
+The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
 
 Keep the `${project_name}` and `${branch}` placeholders in the URL path so that one can customize them in the rule editor. This would allow you to trigger builds for different projects using the same web notification.
 
@@ -87,7 +91,7 @@ Note that these parameters are visible in the rule editor because their placehol
 
 When the notification is executed, all placeholders in the request URL and the payload will be resolved as follows:
 
-`https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master?circle-token=1111111111`
+`https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master`
 
 ```json
 {

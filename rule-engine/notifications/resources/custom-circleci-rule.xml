@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><rules>
 <rule>
-<name>custom-circleci</name>
+<name>CircleCI</name>
 <metric>test_m</metric>
 <expression><![CDATA[value > 1]]></expression>
 <window>length(1)</window>
@@ -13,7 +13,7 @@
 <intervalCount>5</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </alertStrategy>
-<lastUpdated>1512043796322</lastUpdated>
+<lastUpdated>1512386861363</lastUpdated>
 <enabled>true</enabled>
 <disableEntityGrouping>false</disableEntityGrouping>
 <leavingEvents>true</leavingEvents>
@@ -27,13 +27,12 @@
 <discardPreviousValues>true</discardPreviousValues>
 <webNotification>
 <disabled>false</disabled>
-<rule-name>custom-circleci</rule-name>
+<rule-name>CircleCI</rule-name>
 <repeat-interval>
 <type>ALL</type>
 <intervalCount>6</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </repeat-interval>
-<name>Web Service Notification id=1</name>
 <use-in-threshold-only>false</use-in-threshold-only>
 <first-details>false</first-details>
 <repeat-details>false</repeat-details>
@@ -41,7 +40,7 @@
 <first-screenshot>false</first-screenshot>
 <repeat-screenshot>false</repeat-screenshot>
 <cancel-screenshot>false</cancel-screenshot>
-<webNotificationConfigName>Web Test (Circle)</webNotificationConfigName>
+<webNotificationConfigName>circleci-notif</webNotificationConfigName>
 <firstWebConfigParameters>
 <key>branch</key>
 <value>master</value>

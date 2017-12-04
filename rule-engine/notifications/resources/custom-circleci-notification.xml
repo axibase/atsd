@@ -3,19 +3,22 @@
     <enabled>true</enabled>
     <ignoreSslErrors>true</ignoreSslErrors>
     <logResponse>false</logResponse>
-    <name>Web Test (Circle)</name>
+    <name>circleci-notif</name>
     <description></description>
     <method>POST</method>
     <contentType>application/json</contentType>
-    <url>https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}?circle-token=1111111111</url>
+    <url>https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}</url>
     <headers>Accept: application/json</headers>
     <body>{&#xd;
-  &quot;parallel&quot;: ${parallel},&#xd;
+  &quot;parallel&quot;: &quot;${parallel}&quot;,&#xd;
   &quot;build_parameters&quot;: { &#xd;
-    &quot;RUN_EXTRA_TESTS&quot;: ${run_extra_tests},&#xd;
+    &quot;RUN_EXTRA_TESTS&quot;: &quot;${run_extra_tests}&quot;,&#xd;
     &quot;timezone&quot;: &quot;${timezone}&quot;&#xd;
   }&#xd;
 }</body>
+    <authType>BASIC</authType>
+    <username>1111111</username>
+    <password></password>
     <exposedTableModelParams class="sorted-set">
       <comparator class="java.lang.String$CaseInsensitiveComparator"/>
     </exposedTableModelParams>
