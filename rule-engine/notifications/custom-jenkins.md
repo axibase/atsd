@@ -4,11 +4,16 @@
 
 The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) job using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-The integration relies on the [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) `'Job with parameters'` method for triggering a new build job. If you are going to trigger a job without parameters, you have to use `'Jobs without parameters'` method.
+The integration relies on the following [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) methods:
+
+* `'Job with parameters'` method.
+* `'Jobs without parameters'` method.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the [template](resources/custom-jenkins-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification from scratch or import the [template](resources/custom-jenkins-notification.xml) used in this example. 
+
+To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -25,13 +30,15 @@ Enter a name and specify the following parameters:
 | Password | `<JENKINS_USER_TOKEN>` |
 | Endpoint URL | `https://jenkins.example.org/job/${job_name}/buildWithParameters` |
 
-Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address. If your Jenkins job is not parameterized, you have to use `https://jenkins.example.org/job/${job_name}/build` Endpoint Url.
+If the Jenkins job is not parameterized, use the `https://jenkins.example.org/job/${job_name}/build` url.
+
+Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address. 
 
 Keep the `${job_name}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to trigger different jobs using the same web notification.
 
-Enter the Jenkins user name into the `Username` field and user API token into the `Password` field.
+Enter the Jenkins user name into the `Username` field and the User API token into the `Password` field.
 
-The API token can be found in the Jenkins web interface on the `User Configuration` page.
+The API token can be located on the `User Configuration` page in the Jenkins web interface.
 
 ![](images/jenkins_token_1.png)
 
@@ -61,7 +68,7 @@ In this case, add parameters names to the `Parameters` and enable their checkbox
 
 ![](images/jenkins_endpoint.png)
 
-You can leave the `Parameters` empty for non-parameterized jobs.
+Leave the `Parameters` table empty for non-parameterized jobs.
 
 ## Rule
 
