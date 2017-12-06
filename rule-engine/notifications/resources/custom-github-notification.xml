@@ -15,8 +15,8 @@ Authorization: token 1111111</headers>
 }&#xd;
 </body>
     <authType>NONE</authType>
-    <username>alexey</username>
-    <password>alexey123</password>
+    <username></username>
+    <password></password>
     <exposedTableModelParams class="sorted-set">
       <comparator class="java.lang.String$CaseInsensitiveComparator"/>
     </exposedTableModelParams>
