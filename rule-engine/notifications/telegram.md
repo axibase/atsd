@@ -91,8 +91,8 @@ Lookup the chat id as described below and copy the chat id for future reference.
   * Click on the channel name and check its URL:
 
    `/#/im?p=c1354757644_16698643680908793939`
-
-    ![](images/channel_url.png)
+    
+   ![](images/channel_url.png)
 
   * Copy numbers before underscore and replace `c` with `-100`, so that the chat id looks like `-1001354757644`.
 
