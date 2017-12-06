@@ -88,9 +88,7 @@ Lookup the chat id as described below and copy the chat id for future reference.
 
 ### For Private Channel
 
-  * Click on the channel name and check its URL:
-
-   `/#/im?p=c1354757644_16698643680908793939`
+  * Click on the channel name and check its URL, for example `/#/im?p=c1354757644_16698643680908793939`
     
    ![](images/channel_url.png)
 
@@ -98,7 +96,7 @@ Lookup the chat id as described below and copy the chat id for future reference.
 
 #### For Public Channel
 
-  * Click on the channel name and check its URL: `/#/im?p=@atsd_notifications`
+  * Click on the channel name and check its URL, for example `/#/im?p=@atsd_notifications`
 
      ![](images/public_channel_url.png)    
 
