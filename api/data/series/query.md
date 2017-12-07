@@ -118,6 +118,7 @@ The response contains an array of series objects, each containing series identif
 | type | string | Type of inserted data: `HISTORY`, `FORECAST`. |
 | aggregate | string | Type of aggregation. |
 | data | array | Array of [Value](#value-object) objects.|
+| meta | object | Metric and entity metadata. Included if `addMeta` was set to `true` |
 
 #### Value Object
 
