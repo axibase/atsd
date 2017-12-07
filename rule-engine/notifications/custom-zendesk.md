@@ -31,6 +31,8 @@ The `Endpoint URL` should look as follows: `https://axibase.zendesk.com/api/v2/r
 
 Keep the `${request_id}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to add a comments for different requests using the same web notification.
 
+Enter the Zendesk user name into the `Username` field and the password into the `Password` field.
+
 ### Payload
 
 The web notification can be configured to send a JSON document to the Zendesk endpoint in order to add a comment and the `Body` field can include the following text:
