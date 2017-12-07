@@ -2,31 +2,33 @@
 
 ## Overview
 
-The `AWS-SNS [notification](../web-notifications.md) publish a message to an [Amazon SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic.
+The `AWS-SNS` [notification](../web-notifications.md) provides a way to publish signed messages to an [Amazon SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic on window status events.
 
-## Method
+## Request
 
-The message is sent using the `POST` method with `application/x-www-form-urlencoded` content type.
+### Method 
 
-## Headers
+The message is submitted using the `POST` method with `application/x-www-form-urlencoded` content type.
 
-The request will include the standard HTTP headers (such as Content-Type, Host, User-Agent etc.) and AWS headers (such as Authorization, X-Amz-Date)
+### Headers
 
-## Signature
+The request includes both the standard HTTP headers (such as Content-Type, Host, User-Agent etc.) as well as AWS headers (Authorization, X-Amz-Date).
 
-The request will be signed with the [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+### Signature
 
-## Message
+The request are signed with the [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+
+### Message
 
 The default JSON message includes all fields that are relevant to the alert, including entity and metric metadata.
 
-# Message Formats
+#### Message Formats
 
 |**Setting**|**Description**|
 |---|---|
-|`RAW`|The message will be sent as simple text.|
-|`JSON`|The same as `RAW`, but the message editor supports highlight for JSON.|
-|`SNS_JSON`|Select this format if you want to send [a different message for each protocol](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) ([example](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html)).|
+|`RAW`|The message will be sent as plain text.|
+|`JSON`|The same as `RAW` format except that the JSON content is highlighted.|
+|`SNS_JSON`|Select this format to send [a different message for each protocol](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) ([example](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html)).|
 
 ## Response
 
@@ -35,12 +37,9 @@ The response status code and response content is recorded in `atsd.log` if the `
 ## Configure Web Notification in ATSD
 
 * Open **Alerts > Web Notifications** page.
-* Click on an existing `AWS-SNS` template, or click the **Create** button below and switch the form to `AWS-SNS` type.
-* Enter the `Name` value.
-* Select the `Region` value.
-* Enter the `Access Key Id` value.
-* Enter the `Secret Access Key` value.
-* Enter the `Topic ARN` value.
+* Click the **Create** button and switch the form to `AWS-SNS` type.
+* Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
+* Specify the `Topic ARN`. The topic address is marked as an editable field so it can be customized in the rule editor. This allows publishing messages to different topics using the same web notification. 
 
   ![](images/aws_sns_config.png)
 
@@ -52,7 +51,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 * If tests are passing OK, check **Enable**, click **Save**.
 
-In order to view the actual payload, create a sample rule, and enable the created `AWS-SNS` notification on the `Web Notifications` tab.
+In order to test the actual payload, create a sample rule, and enable the `AWS-SNS` notification on the `Web Notifications` tab.
 
 ## Notification Settings
 
@@ -61,7 +60,7 @@ In order to view the actual payload, create a sample rule, and enable the create
 |Region|The [Amazon SNS Region](http://docs.aws.amazon.com/general/latest/gr/rande.html#sns_region).|
 |Access Key Id|[Access Key Id](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
 |Secret Access Key|[Secret Access Key](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
-|Topic ARN|The topic you want to publish to.|
+|Topic ARN|The topic you want to publish messages to.|
 |Subject|The subject of the message to be sent.|
 |Message Format|The format of the message to be sent.|
 |Message|The text of message to be sent.|
