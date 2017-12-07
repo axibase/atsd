@@ -31,7 +31,7 @@ The built-in notification types for chat and collaboration services deliver aler
 | --- | --- | --- |
 | [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
 | [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. |
-| [AWS SNS](notifications/aws-sns.md) | Message and Subject | Publish a message to an [AWS SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic. |
+| [AWS-SNS](notifications/aws-sns.md) | Message and Subject | Publish a message to an [AWS SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic. |
 
 ## Window Status
 
