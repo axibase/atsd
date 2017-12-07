@@ -2,13 +2,13 @@
 
 ## Overview
 
-The following example demonstrates how to add a comment to an existing request at [Zendesk](https://www.zendesk.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to add a comment to an existing request/ticket in [Zendesk](https://www.zendesk.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-The integration relies on the [Zendesk API](https://developer.zendesk.com/rest_api/docs/core/requests#update-request) `update-request` method for adding a single comment to a specified request.
+The integration relies on the [Zendesk API](https://developer.zendesk.com/rest_api/docs/core/requests#update-request) `update-request` method.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the [template](resources/custom-zendesk-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification or import the [template](resources/custom-zendesk-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -25,29 +25,31 @@ Enter a name and specify the following parameters:
 | Password | `<ZENDESK_PASSWORD>` |
 | Endpoint URL | `https://<COMPANY_NAME>.zendesk.com/api/v2/requests/${request_id}.json` |
 
-Modify the `Endpoint URL` by replacing the `<COMPANY_NAME>` field with your zendesk company name.
+Modify the `Endpoint URL` by replacing the `<COMPANY_NAME>` field with your Zendesk subdomain.
 
 The `Endpoint URL` should look as follows: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
 
-Keep the `${request_id}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to add a comments for different requests using the same web notification.
+Keep the `${request_id}` placeholder in the URL path so that it can be customized in the rule editor. This would allow you to add comments to different requests using the same web notification.
 
 Enter the Zendesk user name into the `Username` field and the password into the `Password` field.
 
 ### Payload
 
-The web notification can be configured to send a JSON document to the Zendesk endpoint in order to add a comment and the `Body` field can include the following text:
+Enter the following text into the `Body` field:
 
 ```
 {
   "request": {
     "comment": {
-      "html_body": "${message}<br><a href=${chartLink}>Chart</a><br>${alertTable}"
+      "html_body": "${message}<br><a href=${chartLink}>Chart</a><br>${htmlDetailsTable}"
     }
   }
 }
 ```
 
-Make sure that you enclose fields with double quotes, if necessary.
+The `html_body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+
+The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
 ![](images/zendesk_endpoint.png)
 
@@ -71,39 +73,27 @@ Open the **Web Notifications** tab.
 
 Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
 
-Enable **Open**, **Repeat** and **Close** triggers. Set the **Repeat Interval** to **All**.
+Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**.
 
-Specify the following settings for **Open** trigger:
+Specify the Zendesk request identifier into the `request_id` parameter for all triggers. The request must exist in the Zendesk system.
 
-| **Name** | **Value** |
-| :-------- | :---- |
-| alertTable  | `${htmlDetailsTable}` |
-| chartLink | `${chartLink}` |
-| request_id | `1` |
-| message | `[${status}] ${rule} for ${entity} ${tags}` |
-
-![](images/zendesk_rule_notification_open.png)
-
-For **Repeat** and **Cancel** triggers:
-
-| **Name** | **Value** |
-| :-------- | :---- |
-| alertTable  | `${htmlDetailsTable}` |
-| chartLink | `${chartLink}` |
-| issue_id | `1` |
-| message | `[${status}] ${rule} for ${entity} ${tags}`<br>`Duration: ${alert_duration_interval}` |
+To override the default `message` parameter which is set to  `[${status}] ${rule} for ${entity} ${tags}`, enter a new value, for example `[${status}] ${rule} for ${entity} ${tags}`<br>`Duration: ${alert_duration_interval}`.
 
 ![](images/zendesk_rule_notification_repeat_close.png)
 
-Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
-
-When the notification is executed, all placeholders in the request URL will be resolved as follows:
+The request Id placeholder in the request URL as well as payload placeholders will be automatically resolved when the notification is triggered:
 
 `https://axibase.zendesk.com/api/v2/requests/1.json`
 
-Request body parameters will be resolved in the same way.
-
-If the placeholder is not found, it will be substituted with an empty string.
+```
+{
+  "request": {
+    "comment": {
+      "html_body": "[OPEN] Zendesk for test_e {}<br><a href="chart link">Chart</a><br><table>... alert table</table>"
+    }
+  }
+}
+```
 
 ## Test
 
