@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messages, alert detail tables, and charts into HipChat channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
+The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messages, alert detail tables, and charts into [HipChat Data Center](https://www.atlassian.com/software/hipchat/enterprise/data-center) channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
 
 ## Prerequisites
 
@@ -10,38 +10,36 @@ The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messa
 
 ## Create Bot
 
-* Log in to HipChat as admin.
-* Click **System**.
+* Login into HipChat as an administrator.
+* Click on **System**.
 
     ![](images/system.png)
 
-* Go to **Team Info**.
-* Navigate to invite URL, click **Enable**.
+* Open **Team Info**.
+* Navigate to the invitation URL, click **Enable**.
 
     ![](images/invite_url.png)
 
 * Copy the link.
-* Sign out (right upper corner).
+* Sign out.
 
     ![](images/sign_out.png)
 
-* Paste link to browser, press **Enter**.
+* Paste the above link into the browser address bar, press **Enter**.
 * Fill in the fields, click **Sign Up**.
 
     ![](images/hipchat_atsd_bot.png)
     
 ## Generate Tokens
 
-* Click on bot icon (right upper corner).
+* Click on the bot icon in the upper right corner.
 
     ![](images/bot_icon.png)
     
-* Click **Profile**.
-* Go to **API tokens**.
+* Click on **Profile**.
+* Open **API tokens**. Make sure you are using API **v2**: otherwise you'll see warning.
 
-> Make sure you are using API v2: there should be no warnings
-
-* Select **Send Message** and **Send Notification** from the **Scopes** field.
+* Choose the **Send Message** and the **Send Notification** options from the **Scopes** field.
 * Fill in the **Label** field.
 * Click **Create**.
 
@@ -52,42 +50,42 @@ The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messa
 
 ## Create Room
 
-* Log in to HipChat as admin.
+* Login into HipChat again as an administrator.
 * Click **Start chatting**.
 * Click **Create a room**.
     
     ![](images/create_room.png)
     
-* Fill in the fields, check (enable) **Private room**, click **Create room**.
+* Fill in the fields, check **Private room**, click **Create room**.
 
     ![](images/private_room.png)
     
-* Enter members to receive notifications from ATSD (you can do it later), enter bot user, click **Invite people**.
+* Specify members that will receive notifications from ATSD, including the above bot user, click **Invite people**.
 
     ![](images/invite_bot.png)
 
-## Get Room Id
+## Lookup Room Id
 
-* Click on team name.
+* Click on the team name.
     
     ![](images/team_name.png)
     
-* Click on recently created room.
+* Click on the recently created room.
     
     ![](images/created_room.png)
     
-* Look at URL, last number is the room id.
+* Check the URL. The last number is the room Id.
     
     ![](images/room_url.png) 
 
-In addition, you can use room name as room id, for example `test-axibase`.
+In addition to roomId, you can use room name, for example `test-axibase`, when sending messages.
     
 ## Create HipChat Notification in ATSD
 
 * Open the **Alerts > Web Notifications** page.
 * Click on an existing `HIPCHAT` template, or click the **Create** button and switch the type to `HIPCHAT`.
 * Copy the `Token` from the HipChat Data Center client into the `Auth Token` field in the configuration form.
-* Copy the `Room ID` from the HipChat Data Center client into the `Room ID` field in the configuration form. 
+* Copy the room Id or room name from the HipChat Data Center client into the `Room ID` field in the configuration form. 
 
     ![](images/hipchat_settings.png)
 
@@ -103,7 +101,7 @@ In addition, you can use room name as room id, for example `test-axibase`.
 
    ![](images/hipchat_send_screenshot.png)
    
-* If tests are OK, set the status **Enabled** and click **Save**.  
+* If tests are OK, set the status to **Enabled** and click **Save**.  
 
 ## Notification Parameters
 
@@ -116,17 +114,16 @@ In addition, you can use room name as room id, for example `test-axibase`.
 |Message Format|Change how messages are formatted. See [message_format](https://www.hipchat.com/docs/apiv2/method/send_room_notification).|
 |Notify|Notify users when bot sends a message.|
 
-
 ## Testing Notification
 
-### Create/import rule
+### Create/import Rule
 
 * Create a new rule or import an existing rule for a built-in metric as described below.
 * Download the file [rules.xml](resources/rules.xml).
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
-### Configure notification
+### Configure Notification
 
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Web Notifications** tab.
@@ -148,13 +145,13 @@ In addition, you can use room name as room id, for example `test-axibase`.
 
 ## Example
 
-Notification's color depends on alert severity level specified at **Logging** tab. 
+> Note that the alert color depends on the severity level specified in the **Logging** tab. 
 
-**Warning**:
+* Warning alert:
 
    ![](images/hipchat_test_1.png)
    
-**Critical**:
+* Critital alert:
 
    ![](images/hipchat_test_2.png)
 
