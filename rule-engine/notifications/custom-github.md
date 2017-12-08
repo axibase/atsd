@@ -2,13 +2,13 @@
 
 ## Overview
 
-The following example demonstrates how to add a comment to an existing issue at [GitHub](https://github.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to add a comment to an existing issue in [GitHub](https://github.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-The integration relies on the [GitHub API](https://developer.github.com/v3/issues/comments/#create-a-comment) `create-a-comment` method for adding a single comment to a specified issue.
+The integration relies on the [GitHub API](https://developer.github.com/v3/issues/comments/#create-a-comment) `create-a-comment` method.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the [template](resources/custom-github-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification or import the [template](resources/custom-github-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -28,7 +28,7 @@ Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your githu
 
 The `Endpoint URL` should look as follows: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
 
-Keep the `${repository_name}` and `${issue_id}` placeholders in the URL path so that one can customize them in the rule editor. This would allow you to add a comments for different issues using the same web notification.
+Keep the `${repository_name}` and `${issue_id}` placeholders in the URL path so that one can customize them in the rule editor. This would allow you to add a comments to different issues using the same web notification.
 
 Enter an existing authorization token in `Authorization` header or create a new one.
 
@@ -42,6 +42,8 @@ curl \
     -X POST https://api.github.com/authorizations \
     -d '{"note": "ATSD authorization", "scopes": ["public_repo"]}'
 ```
+
+You will be asked to enter a user password.
 
 If operation succeeds, new authorization token will be presented in response (field `token`)
 
@@ -68,17 +70,39 @@ If operation succeeds, new authorization token will be presented in response (fi
 }
 ``` 
 
+Also token may be created using Github web interface. Go to user settings
+
+![](images/github_ui_token_1.png)
+
+Open developer settings tab
+
+![](images/github_ui_token_2.png)
+
+Click **Generate new token** button
+
+![](images/github_ui_token_3.png)
+
+Enter token description, choose **public_repo** scope and click **Generate token**.
+
+![](images/github_ui_token_4.png)
+
+Your new token will be available at **Personal access tokens** page. Copy this token because you would not be able to see it again.
+
+![](images/github_ui_token_5.png)
+
 ### Payload
 
-The web notification can be configured to send a JSON document to the GitHub endpoint in order to add a comment and the `Body` field can include the following text:
+Enter the following text into the `Body` field:
 
 ```
 {
-  "body": "${message}\n\n[Chart](${chartLink})\n\n${alertTable}"
+  "body": "${message}\n\n[Chart](${chartLink})\n\n${htmlDetailsTable}"
 }
 ```
 
-Make sure that you enclose fields with double quotes, if necessary.
+The `body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+
+The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
 ![](images/github_endpoint.png)
 
@@ -102,14 +126,12 @@ Open the **Web Notifications** tab.
 
 Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
 
-Enable **Open**, **Repeat** and **Close** triggers. Set the **Repeat Interval** to **All**.
+Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave **chartLink** and **markdownDetailsTable** empty.
 
 Specify the following settings for **Open** trigger:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| alertTable  | `${markdownDetailsTable}` |
-| chartLink | `${chartLink}` |
 | issue_id | `1` |
 | message | `[${status}] ${rule} for ${entity} ${tags}` |
 | repository_name | `github_repository` |
@@ -120,8 +142,6 @@ For **Repeat** and **Cancel** triggers:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| alertTable  | `${markdownDetailsTable}` |
-| chartLink | `${chartLink}` |
 | issue_id | `1` |
 | message | `[${status}] ${rule} for ${entity} ${tags}`<br>`Duration: ${alert_duration_interval}` |
 | repository_name | `github_repository` |
@@ -134,9 +154,11 @@ When the notification is executed, all placeholders in the request URL will be r
 
 `https://api.github.com/repos/username/github_repository/issues/1/comments`
 
-Request body parameters will be resolved in the same way.
-
-If the placeholder is not found, it will be substituted with an empty string.
+```
+{
+  "body": "[OPEN] Github for test_e {}\n\n[Chart](chart link)\n\n| **Name** | **Value**|..."
+}
+```
 
 ## Test
 
