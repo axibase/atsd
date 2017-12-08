@@ -1,0 +1,24 @@
+<list>
+  <com.axibase.tsd.model.notifications.WebNotificationConfig>
+    <enabled>true</enabled>
+    <logResponse>true</logResponse>
+    <name>github-notif</name>
+    <description></description>
+    <ignoreSslErrors>true</ignoreSslErrors>
+    <method>POST</method>
+    <contentType>application/json</contentType>
+    <url>https://api.github.com/repos/username/${repository_name}/issues/${issue_id}/comments</url>
+    <headers>Accept: application/vnd.github.v3+json&#xd;
+Authorization: token 1111111</headers>
+    <body>{&#xd;
+  &quot;body&quot;: &quot;${message}\n\n[Chart](${chartLink})\n\n${markdownDetailsTable}&quot;&#xd;
+}&#xd;
+</body>
+    <authType>NONE</authType>
+    <username></username>
+    <password></password>
+    <exposedTableModelParams class="sorted-set">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+    </exposedTableModelParams>
+  </com.axibase.tsd.model.notifications.WebNotificationConfig>
+</list>

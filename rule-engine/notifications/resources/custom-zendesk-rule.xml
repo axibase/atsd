@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><rules>
+<rule>
+<name>Zendesk</name>
+<metric>test_m</metric>
+<tagsGroupingStrategy>ALL_TAGS</tagsGroupingStrategy>
+<expression><![CDATA[value > 1]]></expression>
+<window>length(1)</window>
+<severity>WARNING</severity>
+<alertOpenMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertOpenMessage>
+<alertMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertMessage>
+<alertCancellationMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertCancellationMessage>
+<alertStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</alertStrategy>
+<lastUpdated>1512734037199</lastUpdated>
+<enabled>true</enabled>
+<disableEntityGrouping>false</disableEntityGrouping>
+<leavingEvents>true</leavingEvents>
+<logOutput>false</logOutput>
+<owner>alexey</owner>
+<actionStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</actionStrategy>
+<timeFilter>
+<intervalCount>1</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</timeFilter>
+<discardPreviousValues>true</discardPreviousValues>
+<webNotification>
+<disabled>false</disabled>
+<rule-name>Zendesk</rule-name>
+<repeat-interval>
+<type>ALL</type>
+<intervalCount>6</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</repeat-interval>
+<name>Web Service Notification id=1</name>
+<use-in-threshold-only>false</use-in-threshold-only>
+<first-details>false</first-details>
+<repeat-details>false</repeat-details>
+<cancel-details>false</cancel-details>
+<first-screenshot>false</first-screenshot>
+<repeat-screenshot>false</repeat-screenshot>
+<cancel-screenshot>false</cancel-screenshot>
+<webNotificationConfigName>custom-zendesk</webNotificationConfigName>
+<firstWebConfigParameters>
+<key>chartLink</key>
+<value/>
+</firstWebConfigParameters>
+<firstWebConfigParameters>
+<key>htmlDetailsTable</key>
+<value/>
+</firstWebConfigParameters>
+<firstWebConfigParameters>
+<key>message</key>
+<value>[${status}] ${rule} for ${entity} ${tags}</value>
+</firstWebConfigParameters>
+<firstWebConfigParameters>
+<key>request_id</key>
+<value>1</value>
+</firstWebConfigParameters>
+<repeatWebConfigParameters>
+<key>chartLink</key>
+<value/>
+</repeatWebConfigParameters>
+<repeatWebConfigParameters>
+<key>htmlDetailsTable</key>
+<value/>
+</repeatWebConfigParameters>
+<repeatWebConfigParameters>
+<key>message</key>
+<value>[${status}] ${rule} for ${entity} ${tags}&#13;
+Duration: ${alert_duration_interval}</value>
+</repeatWebConfigParameters>
+<repeatWebConfigParameters>
+<key>request_id</key>
+<value>1</value>
+</repeatWebConfigParameters>
+<cancelWebConfigParameters>
+<key>chartLink</key>
+<value/>
+</cancelWebConfigParameters>
+<cancelWebConfigParameters>
+<key>htmlDetailsTable</key>
+<value/>
+</cancelWebConfigParameters>
+<cancelWebConfigParameters>
+<key>message</key>
+<value>[${status}] ${rule} for ${entity} ${tags}&#13;
+Duration: ${alert_duration_interval}</value>
+</cancelWebConfigParameters>
+<cancelWebConfigParameters>
+<key>request_id</key>
+<value>1</value>
+</cancelWebConfigParameters>
+<first-enabled>true</first-enabled>
+<repeat-enabled>true</repeat-enabled>
+<cancel-enabled>true</cancel-enabled>
+</webNotification>
+<ruleTable/>
+<alertLoggerName>atsd.alert.default</alertLoggerName>
+<derivedCommandEnabled>false</derivedCommandEnabled>
+<derivedCommandStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</derivedCommandStrategy>
+</rule>
+</rules>

@@ -1,0 +1,26 @@
+<list>
+  <com.axibase.tsd.model.notifications.WebNotificationConfig>
+    <enabled>true</enabled>
+    <logResponse>true</logResponse>
+    <name>custom-zendesk</name>
+    <description></description>
+    <ignoreSslErrors>true</ignoreSslErrors>
+    <method>PUT</method>
+    <contentType>application/json</contentType>
+    <url>https://axibase.zendesk.com/api/v2/requests/${request_id}.json</url>
+    <headers></headers>
+    <body>{&#xd;
+  &quot;request&quot;: {&#xd;
+    &quot;comment&quot;: {&#xd;
+      &quot;html_body&quot;: &quot;${message}&lt;br&gt;&lt;a href=${chartLink}&gt;Chart&lt;/a&gt;&lt;br&gt;${htmlDetailsTable}&quot;&#xd;
+    }&#xd;
+  }&#xd;
+}</body>
+    <authType>BASIC</authType>
+    <username>user@mail.com</username>
+    <password>password</password>
+    <exposedTableModelParams class="sorted-set">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+    </exposedTableModelParams>
+  </com.axibase.tsd.model.notifications.WebNotificationConfig>
+</list>

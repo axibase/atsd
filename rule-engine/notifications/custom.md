@@ -8,6 +8,8 @@ The integration enables sending HTTP requests with customized content to the spe
 
 ## Examples
 
+* Updating a [Github issue](custom-github.md)
+* Updating a [Zendesk ticket](custom-zendesk.md)
 * Triggering a [CircleCI project build](custom-circlecpi.md)
 * Starting a [Jenkins job](custom-jenkins.md)
 

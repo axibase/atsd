@@ -1,6 +1,6 @@
 # Alert Logging
 
-Alert Logging enables recording of [window](window.md) status changes in the database as well as in log files located on the local file system for testing, intergation and audit trailing.
+Alert Logging enables recording of [window](window.md) status changes in the ATSD database and in log files located on the local file system for testing, integration and audit trailing.
 
 ## Logging to Database
 
@@ -12,7 +12,9 @@ In addition, the 'Log to ATSD' checkbox can be enabled for each rule separately 
 
 Logging to files or even remote systems can be enabled for each rule separately by selecting one of the pre-configured loggers in the `File Logger` drop-down.
 
-Loggers are defined by users with administrative privileges on the **Settings > Configuration Files > logback.xml** page. Once a new logger is created and the `logback.xml` file is re-scanned, the new logger is available in the Rule Editor in the `Alert Logger` drop-down.
+Loggers can be added and modified by administrators on the **Settings > Configuration Files > logback.xml** page. Once a new logger is created and the `logback.xml` file is re-scanned, the new logger will appear in the `Alert Logger` drop-down.
+
+![](images/logging-loggers.png)
 
 By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging of `REPEAT` changes, set Repeat Interval from `None` to a valid interval on the 'Alerts' tab in the Rule Editor.
 

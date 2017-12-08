@@ -116,13 +116,14 @@ The response contains an array of series objects, each containing series identif
 | metric | string | Metric name |
 | tags | object | Object containing series tags. |
 | type | string | Type of inserted data: `HISTORY`, `FORECAST`. |
-| aggregate | string | Type of aggregation. |
+| aggregate | string | Type of statistical aggregation: `DETAIL`, `AVG`, `MAX`, etc. |
 | data | array | Array of [Value](#value-object) objects.|
+| meta | object | Metric and entity metadata fields, if requested with the `addMeta` parameter. |
 
 #### Value Object
 
-* The value object contains a numeric and/or text value and the time when it was observed.
-* The object may contain sample time in Epoch milliseconds (`t` field) or ISO format (`d` field).
+* The value object contains a sample time and a numeric (`v` field) and/or text (`x` field) value.
+* The sample time can be specified in Epoch milliseconds (`t` field) or ISO format (`d` field).
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|

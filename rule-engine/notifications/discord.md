@@ -4,6 +4,8 @@
 
 The `DISCORD` [notification](../web-notifications.md) allows sending alert messages, alert detail tables, and charts into Discord channels. The integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
 
+![](images/discord.png)
+
 ## Prerequisites
 
 Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into Discord.
@@ -60,7 +62,7 @@ To join a server, the user should click **Create new server**, select **Join** a
 
 * Open the **Alerts > Web Notifications** page.
 * Click on an existing `DISCORD` template, or click the **Create** button and switch the type to `DISCORD`.
-* Copy the `Webhook URL` from the Discord client into the `Webhook URL` field in the configuration form. 
+* Copy the `Webhook URL` from the Discord client into the `Webhook URL` field in the configuration form.
 * The `Webhook ID` and `Webhook Token` will be filled automatically when you finish editing the `Webhook URL` field.
 
     ![](images/discord_settings.png)
@@ -76,7 +78,7 @@ To join a server, the user should click **Create new server**, select **Join** a
 * Click **Send Screenshot**.
 
    ![](images/discord_send_screenshot.png)
-   
+
 * If tests are OK, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.  
 
 ## Notification Parameters
@@ -115,7 +117,7 @@ To join a server, the user should click **Create new server**, select **Join** a
 * Save the rule by clicking on the **Save** button.
 
     ![](images/discord_notification.png)
-    
+
 * The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Example
