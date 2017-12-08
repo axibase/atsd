@@ -96,7 +96,7 @@ Enter the following text into the `Body` field:
 
 ```
 {
-  "body": "${message}\n\n[Chart](${chartLink})\n\n${htmlDetailsTable}"
+  "body": "${message}\n\n[Chart](${chartLink})\n\n${markdownDetailsTable}"
 }
 ```
 
