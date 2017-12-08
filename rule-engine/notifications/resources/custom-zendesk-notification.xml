@@ -12,7 +12,7 @@
     <body>{&#xd;
   &quot;request&quot;: {&#xd;
     &quot;comment&quot;: {&#xd;
-      &quot;html_body&quot;: &quot;${message}&lt;br&gt;&lt;a href=${chartLink}&gt;Chart&lt;/a&gt;&lt;br&gt;${alertTable}&quot;&#xd;
+      &quot;html_body&quot;: &quot;${message}&lt;br&gt;&lt;a href=${chartLink}&gt;Chart&lt;/a&gt;&lt;br&gt;${htmlDetailsTable}&quot;&#xd;
     }&#xd;
   }&#xd;
 }</body>
