@@ -87,7 +87,7 @@ In addition, you can use room name as room id, for example `test-axibase`.
 * Open the **Alerts > Web Notifications** page.
 * Click on an existing `HIPCHAT` template, or click the **Create** button and switch the type to `HIPCHAT`.
 * Copy the `Token` from the HipChat Data Center client into the `Auth Token` field in the configuration form.
-* Copy the `Room ID` from the HipChat client into the `Room ID` field in the configuration form. 
+* Copy the `Room ID` from the HipChat Data Center client into the `Room ID` field in the configuration form. 
 
     ![](images/hipchat_settings.png)
 
