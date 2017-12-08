@@ -28,11 +28,13 @@ Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your githu
 
 The `Endpoint URL` should look as follows: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
 
-Keep the `${repository_name}` and `${issue_id}` placeholders in the URL path so that one can customize them in the rule editor. This would allow you to add a comments to different issues using the same web notification.
+Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that one can customize them in the rule editor. This would allow you to add comments to different issues re-using the same web notification configuration.
 
 Enter an existing authorization token in `Authorization` header or create a new one.
 
-In order to create new token, execute the [Create a new authorization](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) command. Replace the `<GITHUB_USER>` field with your github user name.
+#### Create Authorization Token with `curl`
+
+Execute the [`Create a new authorization`](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) command. Replace the `<GITHUB_USER>` field with your github user name.
 
 ```sh
 curl \
@@ -45,9 +47,9 @@ curl \
 
 You will be asked to enter a user password.
 
-If operation succeeds, new authorization token will be presented in response (field `token`)
+If the operation succeeds, an authorization token will be present in the `token` field in the response:
 
-```
+```json
 {
   "id": 141939406,
   "url": "https://api.github.com/authorizations/141939406",
@@ -70,11 +72,13 @@ If operation succeeds, new authorization token will be presented in response (fi
 }
 ``` 
 
-Also token may be created using Github web interface. Go to user settings
+#### Generate Authorization Token using UI
+
+Go to user settings.
 
 ![](images/github_ui_token_1.png)
 
-Open developer settings tab
+Open developer settings tab.
 
 ![](images/github_ui_token_2.png)
 
@@ -82,11 +86,11 @@ Click **Generate new token** button
 
 ![](images/github_ui_token_3.png)
 
-Enter token description, choose **public_repo** scope and click **Generate token**.
+Enter a description, choose the `public_repo` scope and click **Generate token**.
 
 ![](images/github_ui_token_4.png)
 
-Your new token will be available at **Personal access tokens** page. Copy this token because you would not be able to see it again.
+Your new token will be available on the **Personal access tokens** page. Copy the token value for future reference.
 
 ![](images/github_ui_token_5.png)
 
