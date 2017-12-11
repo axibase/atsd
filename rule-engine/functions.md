@@ -62,9 +62,9 @@ Univariate statistical functions listed below perform a calculation on the array
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `countIf(S condition [, S interval | I count])` | Count of elements matching the specified condition. |
-| `avgIf(S condition [, S interval | I count])` | Average of elements matching the specified condition. |
-| `sumIf(S condition [, S interval | I count])` | Sum of elements matching the specified condition. |
+| <code> countIf(S condition [, S interval &#124; I count])</code> | Count of elements matching the specified condition. |
+| <code> avgIf(S condition [, S interval &#124; I count])</code> | Average of elements matching the specified condition. |
+| <code> sumIf(S condition [, S interval &#124; I count])</code> | Sum of elements matching the specified condition. |
 
 The condition is a boolean expression that can refer to `value` field and compare it as a number.
 
