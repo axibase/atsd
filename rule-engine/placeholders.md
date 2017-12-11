@@ -2,7 +2,7 @@
 
 ## Overview
 
-Placeholders can be used to include [window](window.md) fields, [entity fields](../api/meta/entity/list.md#fields), [metric fields](../api/meta/metric/list.md#fields), and [function](function.md) values into email messages, web notifications, system commands, and logging messages.
+Placeholders can be used to include [window](window.md) fields, [entity fields](../api/meta/entity/list.md#fields), [metric fields](../api/meta/metric/list.md#fields), and [function](functions.md) values into email messages, web notifications, system commands, and logging messages.
 
 Specified using the `${name}` syntax, the placeholder is resolved, evaluated and replaced with the actual value of the named field, variable or function at the time the trigger is executed.
 
