@@ -16,7 +16,7 @@ The request includes both the standard HTTP headers (such as Content-Type, Host,
 
 ### Signature
 
-The request are signed with the [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+The request is signed with the [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 ### Message
 
@@ -27,7 +27,6 @@ The default JSON message includes all fields that are relevant to the alert, inc
 |**Setting**|**Description**|
 |---|---|
 |`RAW`|The message will be sent as plain text.|
-|`JSON`|The same as `RAW` format except that the JSON content is highlighted.|
 |`SNS_JSON`|Select this format to send [a different message for each protocol](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) ([example](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html)).|
 
 ## Response
