@@ -8,55 +8,55 @@ The integration relies on the [IFTTT Webhook](https://ifttt.com/maker_webhooks) 
 
 ## Create IFTTT Applet
 
-Log in to [ifttt.com](https://ifttt.com) and go to **My Applets**
+Log in to [ifttt.com](https://ifttt.com) and go to **My Applets**.
 
 ![](images/ifttt_applet_1.png)
 
-Click **New Applet**
+Click **New Applet**.
 
 ![](images/ifttt_applet_2.png)
 
-Click **this** to create a trigger
+Click **this** to create a trigger.
 
 ![](images/ifttt_applet_3.png)
 
-Search for **Webhooks** and select it
+Search for **Webhooks** and select it.
 
 ![](images/ifttt_applet_4.png)
 
-Click **Connect** to setup webhook trigger
+Click **Connect** to setup a webhook trigger.
 
 ![](images/ifttt_applet_5.png)
 
-Choose **Receive a web request**
+Choose **Receive a web request**.
 
 ![](images/ifttt_applet_6.png)
 
-Enter event name **atsd_custom_trigger** and click **Create trigger**
+Enter an event name such as **atsd_custom_trigger** and click **Create trigger**.
 
 ![](images/ifttt_applet_7.png)
 
-Click **that** to create a event
+Click **that** to create a event.
 
 ![](images/ifttt_applet_8.png)
 
-Search for **SMS** and select it
+Search for **SMS** and select it.
 
 ![](images/ifttt_applet_9.png)
 
-Click **Connect** to setup event
+Click **Connect** to setup event.
 
 ![](images/ifttt_applet_10.png)
 
-Enter phone number to receive messages from ATSD and click **Send PIN**. Enter received PIN and click **Connect**. For test purposes you can use virtual phone number (for example, [sms.sellaite.com](http://sms.sellaite.com/))
+Enter a phone number to receive messages from ATSD and click **Send PIN**. Check your device and enter the received PIN. Click **Connect**.
 
 ![](images/ifttt_applet_11.png)
 
-Choose **Send me an SMS**
+Choose **Send me an SMS**.
 
 ![](images/ifttt_applet_12.png)
 
-Enter following text into **Message** field and click **Create action**
+Enter following text into **Message** field and click **Create action**.
 
 ```
 [{{Value1}}] {{Value2}} for {{Value3}}
@@ -64,7 +64,7 @@ Enter following text into **Message** field and click **Create action**
 
 ![](images/ifttt_applet_13.png)
 
-Review changes and click **Finish**
+Review changes and click **Finish**.
 
 ## Configuration
 
@@ -83,19 +83,19 @@ Enter a name and specify the following parameters:
 | Authentication | `None` |
 | Endpoint URL | `https://maker.ifttt.com/trigger/${webhook_name}/with/key/<IFTTT_KEY>` |
 
-Modify the `Endpoint URL` by replacing the `<IFTTT_KEY>` field with your github user name.
+Modify the `Endpoint URL` by replacing the `<IFTTT_KEY>` field with the IFTTT webhook token.
 
 The `Endpoint URL` should look as follows: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
 
-Keep the `${webhook_name}` placeholder in the URL path so that it can be customized in the rule editor. This would allow you to send SMS from different applets using the same web notification.
-
-You can find your IFTTT key in `Webhooks` examples. Go to [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**
+You can find your IFTTT token in the `Webhooks` examples. Go to [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**.
 
 ![](images/ifttt_key_1.png)
 
-Here is your key
+Copy the key.
 
 ![](images/ifttt_key_2.png)
+
+Keep the `${webhook_name}` placeholder in the URL path so that it can be customized in the rule editor. This would allow you to send SMS from different applets using the same web notification.
 
 ### Payload
 
@@ -110,6 +110,8 @@ Enter the following text into the `Body` field:
 ```
 
 The `body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+
+Only `valueN` naming convention for JSON fields is supported by the IFTTT platform.
 
 The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
@@ -157,7 +159,7 @@ The `webhook_name` placeholder in the request URL as well as payload placeholder
 
 In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 
@@ -168,6 +170,4 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](images/ifttt_alert_open.png)
 
-Check the phone or virtual number to make sure the SMS was sent.
-
-![](images/ifttt_test.png)
+Check your device phone to make sure the SMS was received.
