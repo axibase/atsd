@@ -54,4 +54,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 In order to test the actual payload, create a sample rule, and enable the `AWS-SNS` notification on the `Web Notifications` tab.
 
+## Examples
 
+* [RAW Message Format](aws-sns-raw.md)
+* [SNS JSON Message Format](aws-sns-json.md)
