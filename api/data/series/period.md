@@ -6,7 +6,7 @@ Period is a repeating time interval used to group samples occurred within each i
 |:---|:---|:---|
 | count  | number | Number of time units contained in the period. |
 | unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
-| align | string | Alignment of the period's start/end time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
+| align | string | Alignment of the period's start/end time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`. Not supported for [Group Processor](group.md)|
 
 ## Examples
 
