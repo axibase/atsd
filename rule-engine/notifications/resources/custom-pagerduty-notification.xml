@@ -1,0 +1,34 @@
+<list>
+  <com.axibase.tsd.model.notifications.WebNotificationConfig>
+    <enabled>true</enabled>
+    <logResponse>true</logResponse>
+    <name>custom-pagerduty</name>
+    <description></description>
+    <ignoreSslErrors>true</ignoreSslErrors>
+    <method>POST</method>
+    <contentType>application/json</contentType>
+    <url>https://api.pagerduty.com/incidents</url>
+    <headers>Accept: application/vnd.pagerduty+json;version=2&#xd;
+Authorization: Token token=111111</headers>
+    <body>{&#xd;
+  &quot;incident&quot;: {&#xd;
+    &quot;type&quot;: &quot;incident&quot;,&#xd;
+    &quot;title&quot;: &quot;${incident_name}&quot;,&#xd;
+    &quot;service&quot;: {&#xd;
+      &quot;id&quot;: &quot;${service_id}&quot;,&#xd;
+      &quot;type&quot;: &quot;service_reference&quot;&#xd;
+    },&#xd;
+    &quot;body&quot;: {&#xd;
+      &quot;type&quot;: &quot;incident_body&quot;,&#xd;
+      &quot;details&quot;: &quot;${asciiDetailsTable}&quot;&#xd;
+    }&#xd;
+  }&#xd;
+}</body>
+    <authType>NONE</authType>
+    <username></username>
+    <password></password>
+    <exposedTableModelParams class="sorted-set">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+    </exposedTableModelParams>
+  </com.axibase.tsd.model.notifications.WebNotificationConfig>
+</list>
