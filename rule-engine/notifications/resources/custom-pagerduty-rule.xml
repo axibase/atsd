@@ -14,7 +14,7 @@
 <intervalCount>5</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </alertStrategy>
-<lastUpdated>1513077664321</lastUpdated>
+<lastUpdated>1513082999850</lastUpdated>
 <enabled>true</enabled>
 <disableEntityGrouping>false</disableEntityGrouping>
 <leavingEvents>true</leavingEvents>
@@ -25,6 +25,10 @@
 <intervalCount>5</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </actionStrategy>
+<timeFilter>
+<intervalCount>1</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</timeFilter>
 <discardPreviousValues>true</discardPreviousValues>
 <webNotification>
 <disabled>false</disabled>
@@ -44,7 +48,7 @@
 <cancel-screenshot>false</cancel-screenshot>
 <webNotificationConfigName>custom-pagerduty</webNotificationConfigName>
 <firstWebConfigParameters>
-<key>asciiDetailsTable</key>
+<key>detailsTable('ascii')</key>
 <value/>
 </firstWebConfigParameters>
 <firstWebConfigParameters>
@@ -56,7 +60,7 @@
 <value>PKB8I6U</value>
 </firstWebConfigParameters>
 <repeatWebConfigParameters>
-<key>asciiDetailsTable</key>
+<key>detailsTable('ascii')</key>
 <value/>
 </repeatWebConfigParameters>
 <repeatWebConfigParameters>
@@ -68,7 +72,7 @@
 <value>PKB8I6U</value>
 </repeatWebConfigParameters>
 <cancelWebConfigParameters>
-<key>asciiDetailsTable</key>
+<key>detailsTable('ascii')</key>
 <value/>
 </cancelWebConfigParameters>
 <cancelWebConfigParameters>

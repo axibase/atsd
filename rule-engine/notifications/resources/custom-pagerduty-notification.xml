@@ -9,7 +9,7 @@
     <contentType>application/json</contentType>
     <url>https://api.pagerduty.com/incidents</url>
     <headers>Accept: application/vnd.pagerduty+json;version=2&#xd;
-Authorization: Token token=111111</headers>
+Authorization: Token token=1111111</headers>
     <body>{&#xd;
   &quot;incident&quot;: {&#xd;
     &quot;type&quot;: &quot;incident&quot;,&#xd;
@@ -20,7 +20,7 @@ Authorization: Token token=111111</headers>
     },&#xd;
     &quot;body&quot;: {&#xd;
       &quot;type&quot;: &quot;incident_body&quot;,&#xd;
-      &quot;details&quot;: &quot;${asciiDetailsTable}&quot;&#xd;
+      &quot;details&quot;: &quot;${detailsTable(&apos;ascii&apos;)}&quot;&#xd;
     }&#xd;
   }&#xd;
 }</body>
