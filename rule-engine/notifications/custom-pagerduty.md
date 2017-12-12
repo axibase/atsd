@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to trigger an incident in [PagerDuty](https://www.pagerduty.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to register an incident in [PagerDuty](https://www.pagerduty.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
 The integration relies on the [PagerDuty API](https://v2.developer.pagerduty.com/v2/page/api-reference#!/Incidents/post_incidents) `create-an-incident` method.
 
@@ -24,19 +24,19 @@ Enter a name and specify the following parameters:
 | Endpoint URL | `https://api.pagerduty.com/incidents` |
 | Headers | `Accept: application/vnd.pagerduty+json;version=2`<br/>`Authorization: Token token=1111111` |
 
-You can create authorization token at the user profile page.
+You can generate an authorization token on the user profile page.
 
 ![](images/pagerduty_key_1.png)
 
-Open **User settings** tab and click **Create API User Token**
+Open the **User settings** tab and click **Create API User Token**.
 
 ![](images/pagerduty_key_2.png)
 
-Enter token description, choose **v2 Current** API version and click **Create Token**
+Enter a token description, choose **v2 Current** API version and click **Create Token**.
 
 ![](images/pagerduty_key_3.png)
 
-Copy your new token
+Copy the token.
 
 ![](images/pagerduty_key_4.png)
 
@@ -89,24 +89,26 @@ Set **Enabled** to **Yes** and choose the previously created web notification fr
 
 Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave **detailsTable('ascii')** empty.
 
-Specify the following settings for **Open** trigger:
+Specify the following settings for the **Open** trigger:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| incident_name | `[${status}] ${rule} for ${entity} ${tags}` |
 | service_id | `<SERVICE_ID>` |
+| incident_name | `[${status}] ${rule} for ${entity} ${tags}` |
 
 ![](images/pagerduty_rule_notification_open.png)
 
-`service_id` is an id of a service for which incident will be triggered. You can obtain the service id at PagerDuty **Services** page. Click **Configuration** > **Services**
+The `service_id` parameter indicates which service is affected by the incident. You can obtain the service id on the PagerDuty **Services** page. 
+
+Click **Configuration > Services**.
 
 ![](images/pagerduty_service_id_1.png)
 
-Choose your service
+Choose your service.
 
 ![](images/pagerduty_service_id_2.png)
 
-Get an id from url
+Get an id from url.
 
 ![](images/pagerduty_service_id_3.png)
 
@@ -140,6 +142,7 @@ In order to test the integration, submit sample data for the `test_m` metric int
 ![](images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](images/pagerduty_alert_open.png)
