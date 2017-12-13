@@ -162,6 +162,9 @@ Refer to the database function [syntax and examples](functions-db.md).
 | `size()` | Returns number of elements in the collection. <br>`entity.tags.size() > 1`|
 | `matches(S pattern, [S])` | Returns true if one of the collection elements matches the specified pattern. <br>`matches('*atsd*', property_values('docker.container::image'))`|
 | `lookup(S replacementTable, S key)` | Returns value for the specified key in the given replacement table.|
+| `replacementTable(S replacementTableName)` | Returns replacement table by name as key-value mapping.|
+| `randomItem(Collection values)` | Given the collection of any objects, returns a random element converted to String assuming uniform distribution.|
+| `randomKey(Map keyToProbabilityMap)` | Returns a random key from the map taking predefined probabilities (map values) into account. The sum of probabilities doesn't have to equal one as the inputs will be weighted to total one.|
 
 ## Time Functions
 
