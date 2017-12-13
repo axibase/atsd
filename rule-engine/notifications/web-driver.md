@@ -7,7 +7,7 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 > If you are installing the Web Driver inside the Docker container, log in as root and execute the commands without `sudo`
 >
 > ```bash
-> docker exec -it atsd -u root bash
+> docker exec -it -u root atsd bash
 > ```
 
 ## Option 1: PhantomJS
