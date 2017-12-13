@@ -6,10 +6,10 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
 ## Option 1: PhantomJS
 
-* Check if bzip2 compression codec is installed.
+* Install wget and bzip2 compression codec if necessary.
 
 ```bash
-sudo apt-get install bzip2
+sudo apt-get update && sudo apt-get install wget bzip2
 ```
 
 * Download and install PhantomJS:
@@ -18,6 +18,12 @@ sudo apt-get install bzip2
 cd /home/axibase
 wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
 tar xjf phantomjs-2.1.1-linux-x86_64.tar.bz2
+```
+
+* Make phantomjs executable available to axibase user 
+
+```bash
+sudo chown -R axibase /home/axibase/phantomjs-2.1.1-linux-x86_64
 ```
 
 * Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties > webdriver.phantomjs.path**.
@@ -38,9 +44,10 @@ tar xjf phantomjs-2.1.1-linux-x86_64.tar.bz2
 Ubuntu:
 
 ```bash
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-sudo apt-get update && sudo apt-get install google-chrome-stable --no-install-recommends
+sudo apt-get update && sudo apt-get install wget
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install -f --no-install-recommends
 ```
 
 RedHat, CentOS:
