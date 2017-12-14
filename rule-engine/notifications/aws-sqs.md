@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `AWS SQS` [notification](../web-notifications.md) provides a way to send signed messages to an [Amazon SQS](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue on window status events.
+The `AWS SQS` [notification](../web-notifications.md) provides a way to send messages to an [Amazon SQS](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue on window status events.
 
 ## Notification Settings
 
@@ -11,17 +11,17 @@ The `AWS SQS` [notification](../web-notifications.md) provides a way to send sig
 |Region|The [Amazon SQS Region](http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region).|
 |Access Key Id|[Access Key Id](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
 |Secret Access Key|[Secret Access Key](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
-|Queue Path|The path of the queue to which a message is sent.|
-|Queue Type|The type of the queue to which a message is sent.|
-|Message Group Id|The tag that specifies that a message belongs to a specific message group.|
-|Message|The default text of the message to be sent.|
+|Queue Path|The path of the receiving queue.|
+|Queue Type|The type of the receiving queue.|
+|Message Group Id|Optional tag that associates the messages with a specific message group.|
+|Message|The default message text.|
 
 #### Queue Types
 
 |**Setting**|**Description**|
 |---|---|
-|`Standard`|Standard queue offer maximum throughput, best-effort ordering, and at-least-once delivery.|
-|`FIFO`|FIFO (first-in-first-out) queue is designed to guarantee that messages are processed exactly once, in the exact order that they are sent, with limited throughput.|
+|`Standard`|The **Standard** queue offers maximum throughput, best-effort ordering, and `at-least-once` delivery.|
+|`FIFO`|The **FIFO** (first-in-first-out) queue guarantees that messages are processed `exactly once`, in the order that they are received, with reduced throughput.|
 
 ## Message
 
@@ -29,7 +29,7 @@ Each window status event can produce only one AWS SQS message.
 
 The message is submitted to the specified AWS SQS endpoint using the `POST` method with `application/x-www-form-urlencoded` content type. The request includes additional AWS headers (Authorization, X-Amz-Date) and is signed with [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
-The default message uses the JSON format and includes all fields, including entity and metric metadata.
+The default message template uses the JSON format and includes all fields, including entity and metric metadata.
 
 ## Response
 
