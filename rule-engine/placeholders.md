@@ -66,11 +66,13 @@ threshold | max() > 20
 * event_datetime
 * window_first_time
 * window_first_datetime
+* timestamp
 * now
 
 > Placeholders ending with `_time` contain time in local server timezone, for example 2017-05-30 14:05:39 PST.
 > Placeholders ending with `_datetime` contain time in ISO 8601 format in UTC timezone, for example 2017-05-30T06:05:39Z.
-> `now` returns a DateTime object representing current timestamp in server time zone. Its properties can be accessed via getters, e.g. `now.getDayOfWeek()`
+> `timestamp` returns `event_time` in Unix milliseconds.
+> `now` returns a [Joda-time](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) DateTime object object representing the current server time in the server timezone. Its properties can be accessed via `get` methods, e.g. `now.getDayOfWeek()`.
 
 ## Link Placeholders
 
