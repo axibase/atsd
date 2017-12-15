@@ -121,8 +121,6 @@ Refer to the database function [syntax and examples](functions-db.md).
 | `floor(D)` | Returns the largest integer that is less than or equal to the specified number. |
 | `pow(D, D)`  | Number raised to the specified power (2nd argument). |
 | `round(D[,I])` | Returns the number rounded to the specified decimal places. <br>The precision argument `I` is 0 if omitted.<br>`round(D, 0)` rounds the number to the nearest integer.<br>If `I` is less than 0, the number is rounded to the left of the decimal point.|
-| `random()` | Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.|
-| `randomNormal()` | Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.|
 | `max(D, D)` | Returns the greater of two double values.|
 | `min(D, D)` | Returns the smallest of two double values.|
 | `sqrt(D)` | Returns the square root of the specified number.|
@@ -153,7 +151,6 @@ Refer to the database function [syntax and examples](functions-db.md).
 
 | **Name** | **Description** |
 | :--- | :--- |
-|`collection(S)` | Return a list of items for a named collection listed on **Data > Named Collections** page.<br>Example: `collection('ip_white_list')`|
 | `likeAny(S, List)` | Returns true if the text is contained in the named collection. The collection may include expressions with wildcards.<br>Example: `likeAny(tags.request_ip, collection('ip_white_list'))`|
 | `matchList(S, S)` | Same as `likeAny` except the second argument specifies collection by name.<br>Example: `matchList(tags.request_ip, 'ip_white_list')`|
 | `IN` | Returns true if collection contains the specified string. <br>`tags.location IN ('NUR', 'SVL')`|
@@ -161,11 +158,24 @@ Refer to the database function [syntax and examples](functions-db.md).
 | `isEmpty()` | Returns true if collection has no elements. <br>`entity.tags.isEmpty()`|
 | `size()` | Returns number of elements in the collection. <br>`entity.tags.size() > 1`|
 | `matches(S pattern, [S])` | Returns true if one of the collection elements matches the specified pattern. <br>`matches('*atsd*', property_values('docker.container::image'))`|
+| `excludeKeys(Map map, Collection keysToExclude)` | Returns a copy of the input map without specified keys.|
+
+## Lookup Functions
+
+| **Name** | **Description** |
+| :--- | :--- |
+|`collection(S)` | Return a list of items for a named collection listed on **Data > Named Collections** page.<br>Example: `collection('ip_white_list')`|
 | `lookup(S replacementTable, S key)` | Returns value for the specified key in the given replacement table.|
-| `replacementTable(S replacementTableName)` | Returns replacement table by name as key-value mapping.|
-| `excludeKeys(Map map, Collection keysToExclude)` | Returns a copy of the map without specified keys.|
-| `randomItem(Collection values)` | Given the collection of any objects, returns a random element converted to String assuming uniform distribution.|
-| `randomKey(Map keyToProbabilityMap)` | Returns a random key from the map taking predefined probabilities (map values) into account. The sum of probabilities doesn't have to equal one as the inputs will be weighted to total one.|
+| `replacementTable(S replacementTable)` | Returns replacement table by name as key-value mapping.|
+
+## Random & Distribution Functions
+
+| **Name** | **Description** |
+| :--- | :--- |
+| `random()` | Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.|
+| `randomNormal()` | Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.|
+| `randomItem(Collection values)` | Returns a random element from the specified collection, converted to String assuming uniform distribution.|
+| `randomKey(Map keyToProbabilityMap)` | Returns a random key from the map based on numeric probabilities specified in map values.<br>The sum of probabilities doesn't have to equal one as the inputs will be weighted to total one.<br>Example: `randomKey(replacementTable('oncall-person'))`<br>Example: `randomKey(excludeKeys(replacementTable('oncall-person'),['John']))`|
 
 ## Time Functions
 
