@@ -67,15 +67,32 @@ Examples:
 
 ## Examples
 
-These series are used for examples
+**Dataset**
 
 ```
-series e:nurswgvml007 m:cpu_busy=0 d:2017-01-01T00:30:00Z
-series e:nurswgvml007 m:cpu_busy=2 d:2017-01-01T02:30:00Z
-series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
+series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
+series e:nurswgvml007 m:cpu_busy=0  d:2017-01-01T00:30:00Z
+series e:nurswgvml007 m:cpu_busy=2  d:2017-01-01T02:30:00Z
+series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
+series e:nurswgvml007 m:cpu_busy=6  d:2017-01-01T06:30:00Z
 ```
 
-### Request: Fill Gap using LINEAR Interpolation
+> Samples at 01:30, 04:30 and 5:30 are missing.
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2016-12-31 23:30 | -1    | 
+| 2017-01-01 00:30 | 0     | 
+| 2017-01-01 01:30 | ...   | 
+| 2017-01-01 02:30 | 2     | 
+| 2017-01-01 03:30 | 3     | 
+| 2017-01-01 04:30 | ...   | 
+| 2017-01-01 05:30 | ...   | 
+| 2017-01-01 06:30 | 6     | 
+```
+
+### Fill Gaps with LINEAR Function
 
 ```json
 [{
@@ -92,16 +109,26 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 
 **Response**
 
+In the default `INNER` mode the values outside of the selection interval are ignored.
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
+```
+
 ```json
 [{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
 "data":[
-	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
-	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
-	{"d":"2017-01-01T03:00:00.000Z","v":2.5}
+	{"d":"2017-01-01T01:00:00Z","v":0.5},
+	{"d":"2017-01-01T02:00:00Z","v":1.5},
+	{"d":"2017-01-01T03:00:00Z","v":2.5}
 ]}]
 ```
 
-### Request: Fill Gap using PREVIOUS Interpolation
+### Fill Gaps using PREVIOUS Function
 
 ```json
 [{
@@ -118,16 +145,17 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 
 **Response**
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T01:00:00.000Z","v":0.0},
-	{"d":"2017-01-01T02:00:00.000Z","v":0.0},
-	{"d":"2017-01-01T03:00:00.000Z","v":2.0}
-]}]
+In the default `INNER` mode the values outside of the selection interval are ignored.
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 01:00 | 0.0   | 
+| 2017-01-01 02:00 | 0.0   | 
+| 2017-01-01 03:00 | 2.0   | 
 ```
 
-### Request: 30 Minutes Period LINEAR Interpolation
+### 30 Minutes Period LINEAR Interpolation
 
 ```json
 [{
@@ -157,7 +185,7 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 ]}]
 ```
 
-### Request: LINEAR Interpolation with START_TIME Align
+### LINEAR Interpolation with START_TIME Align
 
 ```json
 [{
@@ -184,7 +212,7 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 ]}]
 ```
 
-### Request: PREVIOUS Interpolation with END_TIME Align
+### PREVIOUS Interpolation with END_TIME Align
 
 ```json
 [{
@@ -211,7 +239,7 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 ]}]
 ```
 
-### Request: LINEAR Interpolation with FIRST_VALUE_TIME Align
+### LINEAR Interpolation with FIRST_VALUE_TIME Align
 
 ```json
 [{
@@ -238,7 +266,7 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 ]}]
 ```
 
-### Request: LINEAR Interpolation with Missing Values Filling
+### LINEAR Interpolation with Missing Values Filling
 
 ```json
 [{
@@ -268,7 +296,7 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 ]}]
 ```
 
-### Request: LINEAR Interpolation with Missing Values Filling with -1
+### LINEAR Interpolation with Missing Values Filling with -1
 
 ```json
 [{
@@ -298,7 +326,7 @@ series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
 ]}]
 ```
 
-### Request: PREVIOUS Interpolation with OUTER Boundary
+### PREVIOUS Interpolation with OUTER Boundary
 
 ```json
 [{
