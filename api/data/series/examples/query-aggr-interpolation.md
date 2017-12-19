@@ -319,7 +319,7 @@ Data:
 
 ---
 
-There are other examples with manually inserted series
+Additional examples using manually inserted data.
 
 ## Data
 
