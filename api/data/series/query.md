@@ -250,6 +250,7 @@ curl http://localhost:8088/api/v1/series/query \
 
 ### Regularize / Downsample
 
+* [Interpolate Transformation](interpolate.md)
 * [EndTime: Hour to now](examples/query-regularize.md)
 
 ### Aggregation

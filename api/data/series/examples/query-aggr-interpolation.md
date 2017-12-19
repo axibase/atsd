@@ -316,3 +316,198 @@ Data:
 	{"d":"2016-02-19T13:32:50.000Z","v":-10.0}
 ]}]
 ```
+
+---
+
+There are other examples with manually inserted series
+
+## Data
+
+```
+series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
+series e:nurswgvml007 m:cpu_busy=0  d:2017-01-01T00:30:00Z
+series e:nurswgvml007 m:cpu_busy=2  d:2017-01-01T02:30:00Z
+series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
+```
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2016-12-31 23:30 | -1    | 
+| 2017-01-01 00:30 | 0     | 
+| 2017-01-01 01:30 | ...   | -- Sample at 01:30 is missing.
+| 2017-01-01 02:30 | 2     | 
+| 2017-01-01 03:30 | 3     | 
+```
+
+### NONE Interpolation type
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "aggregate" : {
+     "type": "MAX",
+     "period": {"count": 1, "unit": "HOUR"},
+     "interpolate" : {"type": "NONE"}
+  }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 02:00 | 2.0   | 
+| 2017-01-01 03:00 | 3.0   | 
+```
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY",
+"aggregate":{"type":"MAX","period":{"count":1,"unit":"HOUR","align":"CALENDAR"}},
+"data":[
+    {"d":"2017-01-01T00:00:00.000Z","v":0.0},
+    {"d":"2017-01-01T02:00:00.000Z","v":2.0},
+    {"d":"2017-01-01T03:00:00.000Z","v":3.0}
+]}]
+```
+
+### PREVIOUS Interpolation type
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "aggregate" : {
+     "type": "MAX",
+     "period": {"count": 1, "unit": "HOUR"},
+     "interpolate" : {"type": "PREVIOUS"}
+  }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 01:00 | 0.0   | 
+| 2017-01-01 02:00 | 2.0   | 
+| 2017-01-01 03:00 | 3.0   | 
+```
+
+### NEXT Interpolation type
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "aggregate" : {
+     "type": "MAX",
+     "period": {"count": 1, "unit": "HOUR"},
+     "interpolate" : {"type": "NEXT"}
+  }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 01:00 | 2.0   | 
+| 2017-01-01 02:00 | 2.0   | 
+| 2017-01-01 03:00 | 3.0   | 
+```
+
+### LINEAR Interpolation type
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "aggregate" : {
+     "type": "MAX",
+     "period": {"count": 1, "unit": "HOUR"},
+     "interpolate" : {"type": "LINEAR"}
+  }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 01:00 | 1.0   | 
+| 2017-01-01 02:00 | 2.0   | 
+| 2017-01-01 03:00 | 3.0   | 
+```
+
+### VALUE Interpolation type
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "aggregate" : {
+     "type": "MAX",
+     "period": {"count": 1, "unit": "HOUR"},
+     "interpolate" : {"type": "VALUE", "value": "-1"}
+  }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 01:00 | -1.0  | 
+| 2017-01-01 02:00 | 2.0   | 
+| 2017-01-01 03:00 | 3.0   | 
+```
+
+### PREVIOUS Interpolation Function with EXTEND
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "aggregate" : {
+     "type": "MAX",
+     "period": {"count": 1, "unit": "HOUR"},
+     "interpolate" : {"type": "PREVIOUS", "extend": true}
+  }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 01:00 | 0.0   | 
+| 2017-01-01 02:00 | 2.0   | 
+| 2017-01-01 03:00 | 3.0   | 
+| 2017-01-01 04:00 | 3.0   | 
+```
