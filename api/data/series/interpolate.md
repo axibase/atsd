@@ -176,10 +176,9 @@ In the default `INNER` mode the values outside of the selection interval are ign
 | 2017-01-01 01:00 | 0.0   | 
 | 2017-01-01 02:00 | 0.0   | 
 | 2017-01-01 03:00 | 2.0   | 
-| 2017-01-01 04:00 | 3.0   | 
 ```
 
-### PREVIOUS Interpolation with OUTER Boundary
+### LINEAR Interpolation with OUTER Boundary
 
 ```json
 [{
@@ -188,7 +187,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
   "interpolate" : {
-        "function": "PREVIOUS",
+        "function": "LINEAR",
         "period": {"count": 1, "unit": "HOUR"},
         "boundary": "OUTER"
     }
@@ -202,19 +201,18 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 ```ls
 | datetime         | value | 
 |------------------|-------| 
-| 2017-01-01 00:00 | -1.0  | 
-| 2017-01-01 01:00 | 0.0   | 
-| 2017-01-01 02:00 | 0.0   | 
-| 2017-01-01 03:00 | 2.0   | 
-| 2017-01-01 04:00 | 3.0   | - ???
+| 2017-01-01 00:00 | -0.5  | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
 ```
 
 ### LINEAR Interpolation with START_TIME Align
 
 ```json
 [{
-  "startDate": "2017-01-01T00:30:00Z",
-  "endDate":   "2017-01-01T04:00:00Z",
+  "startDate": "2017-01-01T00:15:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
   "interpolate" : {
@@ -229,13 +227,12 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 ```ls
 | datetime         | value | 
 |------------------|-------| 
-| 2017-01-01 00:30 | 0.0   | 
-| 2017-01-01 01:30 | 1.0   | 
-| 2017-01-01 02:30 | 2.0   | 
-| 2017-01-01 03:30 | 3.0   | 
+| 2017-01-01 01:15 | 0.75  | 
+| 2017-01-01 02:15 | 1.75  | 
+| 2017-01-01 03:15 | 2.75  | 
 ```
 
-### PREVIOUS Interpolation with END_TIME Align
+### LINEAR Interpolation with END_TIME Align
 
 ```json
 [{
@@ -244,7 +241,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
   "interpolate" : {
-        "function": "PREVIOUS",
+        "function": "LINEAR",
         "period": {"count": 1, "unit": "HOUR", "align": "END_TIME"}
     }
 }]
@@ -255,10 +252,9 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 ```ls
 | datetime         | value | 
 |------------------|-------| 
-| 2017-01-01 00:45 | 0.0   | 
-| 2017-01-01 01:45 | 0.0   | 
-| 2017-01-01 02:45 | 2.0   | 
-| 2017-01-01 03:45 | 3.0   | 
+| 2017-01-01 00:45 | 0.25  | 
+| 2017-01-01 01:45 | 1.25  | 
+| 2017-01-01 02:45 | 2.25  | 
 ```
 
 ### LINEAR Interpolation with FIRST_VALUE_TIME Align
@@ -292,7 +288,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 ```json
 [{
   "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T06:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
   "interpolate" : {
@@ -313,7 +309,6 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 02:00 | 1.5   | 
 | 2017-01-01 03:00 | 2.5   | 
 | 2017-01-01 04:00 | 3.0   | 
-| 2017-01-01 05:00 | 3.0   | 
 ```
 
 ### LINEAR Interpolation with Missing Values Filling with NaN
@@ -321,7 +316,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 ```json
 [{
   "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T06:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
   "interpolate" : {
@@ -342,5 +337,4 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 02:00 | 1.5   | 
 | 2017-01-01 03:00 | 2.5   | 
 | 2017-01-01 04:00 | null  | 
-| 2017-01-01 05:00 | null  | 
 ```
