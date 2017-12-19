@@ -327,7 +327,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
   "interpolate" : {
         "function": "LINEAR",
         "period": {"count": 1, "unit": "HOUR"},
-        "fill": "-1"
+        "fill": "NaN"
     }
 }]
 ```
