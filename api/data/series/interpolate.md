@@ -122,6 +122,35 @@ In the default `INNER` mode the values outside of the selection interval are ign
 ]}]
 ```
 
+### 30 Minutes Period LINEAR Interpolation
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 30, "unit": "MINUTE"}
+    }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:30 | 0.0   | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 01:30 | 1.0   | 
+| 2017-01-01 02:00 | 1.5   |
+| 2017-01-01 02:30 | 2.0   | 
+| 2017-01-01 03:00 | 2.5   | 
+| 2017-01-01 03:30 | 3.0   | 
+```
+
 ### Fill Gaps using PREVIOUS Function
 
 ```json
@@ -147,36 +176,37 @@ In the default `INNER` mode the values outside of the selection interval are ign
 | 2017-01-01 01:00 | 0.0   | 
 | 2017-01-01 02:00 | 0.0   | 
 | 2017-01-01 03:00 | 2.0   | 
+| 2017-01-01 04:00 | 3.0   | 
 ```
 
-### 30 Minutes Period LINEAR Interpolation
+### PREVIOUS Interpolation with OUTER Boundary
 
 ```json
 [{
   "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T04:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
   "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 30, "unit": "MINUTE"}
+        "function": "PREVIOUS",
+        "period": {"count": 1, "unit": "HOUR"},
+        "boundary": "OUTER"
     }
 }]
 ```
 
 **Response**
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T00:30:00.000Z","v":0.0},
-	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
-	{"d":"2017-01-01T01:30:00.000Z","v":1.0},
-	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
-	{"d":"2017-01-01T02:30:00.000Z","v":2.0},
-	{"d":"2017-01-01T03:00:00.000Z","v":2.5},
-	{"d":"2017-01-01T03:30:00.000Z","v":3.0}
-]}]
+In the `OUTER` mode the values outside of the selection interval are used to interpolate leading and trailing values.
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | -1.0  | 
+| 2017-01-01 01:00 | 0.0   | 
+| 2017-01-01 02:00 | 0.0   | 
+| 2017-01-01 03:00 | 2.0   | 
+| 2017-01-01 04:00 | 3.0   | - ???
 ```
 
 ### LINEAR Interpolation with START_TIME Align
@@ -196,14 +226,13 @@ In the default `INNER` mode the values outside of the selection interval are ign
 
 **Response**
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T00:30:00.000Z","v":0.0},
-	{"d":"2017-01-01T01:30:00.000Z","v":1.0},
-	{"d":"2017-01-01T02:30:00.000Z","v":2.0},
-	{"d":"2017-01-01T03:30:00.000Z","v":3.0}
-]}]
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:30 | 0.0   | 
+| 2017-01-01 01:30 | 1.0   | 
+| 2017-01-01 02:30 | 2.0   | 
+| 2017-01-01 03:30 | 3.0   | 
 ```
 
 ### PREVIOUS Interpolation with END_TIME Align
@@ -223,14 +252,13 @@ In the default `INNER` mode the values outside of the selection interval are ign
 
 **Response**
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T00:45:00.000Z","v":0.0},
-	{"d":"2017-01-01T01:45:00.000Z","v":0.0},
-	{"d":"2017-01-01T02:45:00.000Z","v":2.0},
-	{"d":"2017-01-01T03:45:00.000Z","v":3.0}
-]}]
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:45 | 0.0   | 
+| 2017-01-01 01:45 | 0.0   | 
+| 2017-01-01 02:45 | 2.0   | 
+| 2017-01-01 03:45 | 3.0   | 
 ```
 
 ### LINEAR Interpolation with FIRST_VALUE_TIME Align
@@ -250,14 +278,13 @@ In the default `INNER` mode the values outside of the selection interval are ign
 
 **Response**
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T00:30:00.000Z","v":0.0},
-	{"d":"2017-01-01T01:30:00.000Z","v":1.0},
-	{"d":"2017-01-01T02:30:00.000Z","v":2.0},
-	{"d":"2017-01-01T03:30:00.000Z","v":3.0}
-]}]
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:30 | 0.0   | 
+| 2017-01-01 01:30 | 1.0   | 
+| 2017-01-01 02:30 | 2.0   | 
+| 2017-01-01 03:30 | 3.0   | 
 ```
 
 ### LINEAR Interpolation with Missing Values Filling
@@ -278,19 +305,18 @@ In the default `INNER` mode the values outside of the selection interval are ign
 
 **Response**
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T00:00:00.000Z","v":0.0},
-	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
-	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
-	{"d":"2017-01-01T03:00:00.000Z","v":2.5},
-	{"d":"2017-01-01T04:00:00.000Z","v":3.0},
-	{"d":"2017-01-01T05:00:00.000Z","v":3.0}
-]}]
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
+| 2017-01-01 04:00 | 3.0   | 
+| 2017-01-01 05:00 | 3.0   | 
 ```
 
-### LINEAR Interpolation with Missing Values Filling with -1
+### LINEAR Interpolation with Missing Values Filling with NaN
 
 ```json
 [{
@@ -308,42 +334,13 @@ In the default `INNER` mode the values outside of the selection interval are ign
 
 **Response**
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T00:00:00.000Z","v":-1.0},
-	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
-	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
-	{"d":"2017-01-01T03:00:00.000Z","v":2.5},
-	{"d":"2017-01-01T04:00:00.000Z","v":-1.0},
-	{"d":"2017-01-01T05:00:00.000Z","v":-1.0}
-]}]
-```
-
-### PREVIOUS Interpolation with OUTER Boundary
-
-```json
-[{
-  "startDate": "2017-01-01T01:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "PREVIOUS",
-        "period": {"count": 1, "unit": "HOUR"},
-        "boundary": "OUTER"
-    }
-}]
-```
-
-**Response**
-
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-	{"d":"2017-01-01T01:00:00.000Z","v":0.0},
-	{"d":"2017-01-01T02:00:00.000Z","v":0.0},
-	{"d":"2017-01-01T03:00:00.000Z","v":2.0},
-	{"d":"2017-01-01T04:00:00.000Z","v":3.0}
-]}]
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | null  | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
+| 2017-01-01 04:00 | null  | 
+| 2017-01-01 05:00 | null  | 
 ```
