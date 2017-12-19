@@ -74,22 +74,16 @@ series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
 series e:nurswgvml007 m:cpu_busy=0  d:2017-01-01T00:30:00Z
 series e:nurswgvml007 m:cpu_busy=2  d:2017-01-01T02:30:00Z
 series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
-series e:nurswgvml007 m:cpu_busy=6  d:2017-01-01T06:30:00Z
 ```
-
-> Samples at 01:30, 04:30 and 5:30 are missing.
 
 ```ls
 | datetime         | value | 
 |------------------|-------| 
 | 2016-12-31 23:30 | -1    | 
 | 2017-01-01 00:30 | 0     | 
-| 2017-01-01 01:30 | ...   | 
+| 2017-01-01 01:30 | ...   | -- Sample at 01:30 is missing.
 | 2017-01-01 02:30 | 2     | 
 | 2017-01-01 03:30 | 3     | 
-| 2017-01-01 04:30 | ...   | 
-| 2017-01-01 05:30 | ...   | 
-| 2017-01-01 06:30 | 6     | 
 ```
 
 ### Fill Gaps with LINEAR Function
@@ -97,13 +91,13 @@ series e:nurswgvml007 m:cpu_busy=6  d:2017-01-01T06:30:00Z
 ```json
 [{
   "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T04:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
-    "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 1, "unit": "HOUR"}
-    }
+  "interpolate" : {
+    "function": "LINEAR",
+    "period": {"count": 1, "unit": "HOUR"}
+  }
 }]
 ```
 
@@ -133,7 +127,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 ```json
 [{
   "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T04:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
   "entity": "nurswgvml007",
   "metric": "cpu_busy",
     "interpolate" : {
