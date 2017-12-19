@@ -14,6 +14,7 @@ The integration enables sending HTTP requests with customized content to the spe
 * Send SMS message via [IFTTT](custom-ifttt.md)
 * Trigger [CircleCI project build](custom-circlecpi.md)
 * Start [Jenkins job](custom-jenkins.md)
+* Send message to [Amazon SQS](custom-aws.md)
 
 ## Supported HTTP Methods
 
@@ -32,6 +33,13 @@ The integration enables sending HTTP requests with customized content to the spe
 * `application/x-www-form-urlencoded`
 
 If the selected HTTP method such as `GET` doesn't allow payload, the request parameters specified in the Parameters section are appended to the Endpoint URL a a query string.
+
+## Supported Authentication Types
+
+| Type | Description |
+|---|---|
+| Basic | The HTTP client sends the user name and password as unencrypted base64 encoded text. |
+| AWS Signature, v4 | The request is signed with [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html). |
 
 ## Placeholders
 
