@@ -67,15 +67,261 @@ Examples:
 
 ## Examples
 
-* 5-minute linear interpolation
+These series are used for examples
+
+```
+series e:nurswgvml007 m:cpu_busy=0 d:2017-01-01T00:30:00Z
+series e:nurswgvml007 m:cpu_busy=2 d:2017-01-01T02:30:00Z
+series e:nurswgvml007 m:cpu_busy=3 d:2017-01-01T03:30:00Z
+```
+
+### Request: Fill Gap using LINEAR Interpolation
 
 ```json
-{
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T04:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
     "interpolate" : {
         "function": "LINEAR",
-        "period": {"count": 5, "unit": "MINUTE"},
-        "boundary": "OUTER",
-        "fill": false,
+        "period": {"count": 1, "unit": "HOUR"}
     }
-}
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
+	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
+	{"d":"2017-01-01T03:00:00.000Z","v":2.5}
+]}]
+```
+
+### Request: Fill Gap using PREVIOUS Interpolation
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T04:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+    "interpolate" : {
+        "function": "PREVIOUS",
+        "period": {"count": 1, "unit": "HOUR"}
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T01:00:00.000Z","v":0.0},
+	{"d":"2017-01-01T02:00:00.000Z","v":0.0},
+	{"d":"2017-01-01T03:00:00.000Z","v":2.0}
+]}]
+```
+
+### Request: 30 Minutes Period LINEAR Interpolation
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T04:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 30, "unit": "MINUTE"}
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T00:30:00.000Z","v":0.0},
+	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
+	{"d":"2017-01-01T01:30:00.000Z","v":1.0},
+	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
+	{"d":"2017-01-01T02:30:00.000Z","v":2.0},
+	{"d":"2017-01-01T03:00:00.000Z","v":2.5},
+	{"d":"2017-01-01T03:30:00.000Z","v":3.0}
+]}]
+```
+
+### Request: LINEAR Interpolation with START_TIME Align
+
+```json
+[{
+  "startDate": "2017-01-01T00:30:00Z",
+  "endDate":   "2017-01-01T04:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR", "align": "START_TIME"}
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T00:30:00.000Z","v":0.0},
+	{"d":"2017-01-01T01:30:00.000Z","v":1.0},
+	{"d":"2017-01-01T02:30:00.000Z","v":2.0},
+	{"d":"2017-01-01T03:30:00.000Z","v":3.0}
+]}]
+```
+
+### Request: PREVIOUS Interpolation with END_TIME Align
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T04:45:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "PREVIOUS",
+        "period": {"count": 1, "unit": "HOUR", "align": "END_TIME"}
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T00:45:00.000Z","v":0.0},
+	{"d":"2017-01-01T01:45:00.000Z","v":0.0},
+	{"d":"2017-01-01T02:45:00.000Z","v":2.0},
+	{"d":"2017-01-01T03:45:00.000Z","v":3.0}
+]}]
+```
+
+### Request: LINEAR Interpolation with FIRST_VALUE_TIME Align
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR", "align": "FIRST_VALUE_TIME"}
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T00:30:00.000Z","v":0.0},
+	{"d":"2017-01-01T01:30:00.000Z","v":1.0},
+	{"d":"2017-01-01T02:30:00.000Z","v":2.0},
+	{"d":"2017-01-01T03:30:00.000Z","v":3.0}
+]}]
+```
+
+### Request: LINEAR Interpolation with Missing Values Filling
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T06:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR"},
+        "fill": true
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T00:00:00.000Z","v":0.0},
+	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
+	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
+	{"d":"2017-01-01T03:00:00.000Z","v":2.5},
+	{"d":"2017-01-01T04:00:00.000Z","v":3.0},
+	{"d":"2017-01-01T05:00:00.000Z","v":3.0}
+]}]
+```
+
+### Request: LINEAR Interpolation with Missing Values Filling with -1
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T06:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR"},
+        "fill": "-1"
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T00:00:00.000Z","v":-1.0},
+	{"d":"2017-01-01T01:00:00.000Z","v":0.5},
+	{"d":"2017-01-01T02:00:00.000Z","v":1.5},
+	{"d":"2017-01-01T03:00:00.000Z","v":2.5},
+	{"d":"2017-01-01T04:00:00.000Z","v":-1.0},
+	{"d":"2017-01-01T05:00:00.000Z","v":-1.0}
+]}]
+```
+
+### Request: PREVIOUS Interpolation with OUTER Boundary
+
+```json
+[{
+  "startDate": "2017-01-01T01:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "PREVIOUS",
+        "period": {"count": 1, "unit": "HOUR"},
+        "boundary": "OUTER"
+    }
+}]
+```
+
+**Response**
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T01:00:00.000Z","v":0.0},
+	{"d":"2017-01-01T02:00:00.000Z","v":0.0},
+	{"d":"2017-01-01T03:00:00.000Z","v":2.0},
+	{"d":"2017-01-01T04:00:00.000Z","v":3.0}
+]}]
 ```
