@@ -152,9 +152,10 @@ The functions retrieve message counts or specific messages.
 | :--- | :--- |
 | `upper(S)` | Convert string to upper case. |
 | `lower(S)` | Convert string to lower case. |
+| `truncate(S, I)` | Truncate the string to given number of characters. |
 | `t.contains(S)` | Check if field 't' contains the specified string. |
-| `t.startsWidth(S)` | Check if field 't' starts with the specified string. |
-| `t.endsWidth(S)` | Check if field 't' ends with the specified string. |
+| `t.startsWith(S)` | Check if field 't' starts with the specified string. |
+| `t.endsWith(S)` | Check if field 't' ends with the specified string. |
 | `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
 | `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
 | `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
@@ -233,3 +234,9 @@ Refer to time function [examples](functions-time.md).
 | :--- | :--- |
 | `entity_tags(S entity)` | Returns entity tags' keys and values map for provided entity. |
 | `entity_tag(S entity, S tagName)` | Returns tag value for provided tag name and entity. |
+
+## External Script Execution Functions
+
+| **Name** | **Description** |
+| :--- | :--- |
+| `scriptOut(S relativePathToScript, List arguments)` | Executes a specified script located in atsd/conf/script directory. Script execution timeout is 15 seconds. |
