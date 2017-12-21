@@ -150,15 +150,18 @@ The functions retrieve message counts or specific messages.
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `upper(S)` | Convert string to upper case. |
-| `lower(S)` | Convert string to lower case. |
-| `truncate(S, I)` | Truncate the string to given number of characters. |
-| `t.contains(S)` | Check if field 't' contains the specified string. |
-| `t.startsWith(S)` | Check if field 't' starts with the specified string. |
-| `t.endsWith(S)` | Check if field 't' ends with the specified string. |
+
+| `upper(S)` | Convert the input string to **upper** case. |
+| `lower(S)` | Convert the input string to **lower** case. |
+| `truncate(S, I)` | Truncate the input string to the specified number of characters. |
+| `contains(S, S)` | Return `true` if the first string **contains** the second string. |
+| `startsWith(S, S)` | Return `true` if the first string **starts** with the second string. |
+| `endsWith(S, S)` | Return `true` if the first string **ends** with the second string. |
 | `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
 | `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
 | `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
+
+> The functions return `null` or `false` if the arguments are `null`.
 
 ## Formatting Functions
 
@@ -235,8 +238,10 @@ Refer to time function [examples](functions-time.md).
 | `entity_tags(S entity)` | Returns entity tags' keys and values map for provided entity. |
 | `entity_tag(S entity, S tagName)` | Returns tag value for provided tag name and entity. |
 
-## External Script Execution Functions
+
+## Script Functions
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `scriptOut(S relativePathToScript, List arguments)` | Executes a specified script located in atsd/conf/script directory. Script execution timeout is 15 seconds. |
+| `scriptOut(S, Collection args)` | Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.<br>Example: `${scriptOut('ping.sh', ['2', 'example.org'])}` |
+

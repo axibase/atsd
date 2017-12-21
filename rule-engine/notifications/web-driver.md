@@ -12,18 +12,18 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
 ## Option 1: PhantomJS
 
-* Install wget and bzip2 compression codec if necessary.
+* Install wget if necessary.
 
 ```bash
-sudo apt-get update && sudo apt-get install wget bzip2
+sudo apt-get update && sudo apt-get install wget
 ```
 
 * Download and install PhantomJS:
 
 ```bash
 cd /home/axibase
-wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-tar xjf phantomjs-2.1.1-linux-x86_64.tar.bz2
+wget https://axibase.com/public/phantomjs-2.1.1-linux-x86_64.tar.gz
+tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
 ```
 
 * Make phantomjs executable available to axibase user 
