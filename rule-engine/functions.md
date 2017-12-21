@@ -150,7 +150,6 @@ The functions retrieve message counts or specific messages.
 
 | **Name** | **Description** |
 | :--- | :--- |
-
 | `upper(S)` | Convert the input string to **upper** case. |
 | `lower(S)` | Convert the input string to **lower** case. |
 | `truncate(S, I)` | Truncate the input string to the specified number of characters. |
@@ -237,7 +236,6 @@ Refer to time function [examples](functions-time.md).
 | :--- | :--- |
 | `entity_tags(S entity)` | Returns entity tags' keys and values map for provided entity. |
 | `entity_tag(S entity, S tagName)` | Returns tag value for provided tag name and entity. |
-
 
 ## Script Functions
 
