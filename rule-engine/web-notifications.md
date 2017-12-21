@@ -29,11 +29,11 @@ The built-in notification types for chat and collaboration services deliver aler
 
 | Type | Customizable Fields | Description |
 | --- | --- | --- |
+| [AWS-API](notifications/aws-api.md) | All | Integrate with [AWS](https://aws.amazon.com). |
 | [AWS-SNS](notifications/aws-sns.md) | Message and Subject | Publish a message to an [AWS SNS](https://aws.amazon.com/sns/?p=tile) topic. |
 | [AWS-SQS](notifications/aws-sqs.md) | Message | Send a message to an [AWS SQS](https://aws.amazon.com/sqs/?p=tile) queue. |
 | [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
 | [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [pagerduty](notifications/custom-pagerduty.md), [zendesk](notifications/custom-zendesk.md), [github](notifications/custom-github.md), [circleci](notifications/custom-circleci.md), [jenkins](notifications/custom-jenkins.md), [ifttt](notifications/custom-ifttt.md)|
-
 
 ## Window Status
 

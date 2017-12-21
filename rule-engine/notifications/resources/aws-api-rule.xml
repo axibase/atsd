@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><rules>
     <rule>
-        <name>custom-aws</name>
+        <name>aws-api</name>
         <metric>test_m</metric>
         <tagsGroupingStrategy>ALL_TAGS</tagsGroupingStrategy>
         <expression><![CDATA[value > 1]]></expression>
@@ -14,7 +14,7 @@
             <intervalCount>5</intervalCount>
             <intervalUnit>MINUTE</intervalUnit>
         </alertStrategy>
-        <lastUpdated>1513664984650</lastUpdated>
+        <lastUpdated>1513836717510</lastUpdated>
         <enabled>true</enabled>
         <disableEntityGrouping>false</disableEntityGrouping>
         <leavingEvents>true</leavingEvents>
@@ -28,7 +28,7 @@
         <discardPreviousValues>true</discardPreviousValues>
         <webNotification>
             <disabled>false</disabled>
-            <rule-name>custom-aws</rule-name>
+            <rule-name>aws-api</rule-name>
             <first-delay>
                 <intervalCount>15</intervalCount>
                 <intervalUnit>SECOND</intervalUnit>
@@ -38,7 +38,6 @@
                 <intervalCount>15</intervalCount>
                 <intervalUnit>SECOND</intervalUnit>
             </repeat-interval>
-            <name>Web Service Notification id=3</name>
             <use-in-threshold-only>false</use-in-threshold-only>
             <first-details>false</first-details>
             <repeat-details>false</repeat-details>
@@ -46,38 +45,38 @@
             <first-screenshot>false</first-screenshot>
             <repeat-screenshot>false</repeat-screenshot>
             <cancel-screenshot>false</cancel-screenshot>
-            <webNotificationConfigName>custom-aws</webNotificationConfigName>
+            <webNotificationConfigName>aws-test</webNotificationConfigName>
             <firstWebConfigParameters>
                 <key>MessageBody</key>
                 <value>{&#13;
-  "status": "${status}",&#13;
-   "entity": "${entity}",&#13;
-   "rule": "${rule}",&#13;
-   "tags": "${tags}",&#13;
-   "message": "The rule is open"&#13;
-}</value>
+                    "status": "${status}",&#13;
+                    "entity": "${entity}",&#13;
+                    "rule": "${rule}",&#13;
+                    "tags": "${tags}",&#13;
+                    "message": "The rule is open"&#13;
+                    }</value>
             </firstWebConfigParameters>
             <repeatWebConfigParameters>
                 <key>MessageBody</key>
                 <value>{&#13;
-  "status": "${status}",&#13;
-   "entity": "${entity}",&#13;
-   "rule": "${rule}",&#13;
-   "tags": "${tags}",&#13;
-   "repeatCount": "${repeat_count}",&#13;
-   "message": "The rule is still open"&#13;
-}</value>
+                    "status": "${status}",&#13;
+                    "entity": "${entity}",&#13;
+                    "rule": "${rule}",&#13;
+                    "tags": "${tags}",&#13;
+                    "repeatCount": "${repeat_count}",&#13;
+                    "message": "The rule is still open"&#13;
+                    }</value>
             </repeatWebConfigParameters>
             <cancelWebConfigParameters>
                 <key>MessageBody</key>
                 <value>{&#13;
-  "status": "${status}",&#13;
-   "entity": "${entity}",&#13;
-   "rule": "${rule}",&#13;
-   "tags": "${tags}",&#13;
-   "repeatCount": "${repeat_count}",&#13;
-   "message": "The rule is cancel"&#13;
-}</value>
+                    "status": "${status}",&#13;
+                    "entity": "${entity}",&#13;
+                    "rule": "${rule}",&#13;
+                    "tags": "${tags}",&#13;
+                    "repeatCount": "${repeat_count}",&#13;
+                    "message": "The rule is cancel"&#13;
+                    }</value>
             </cancelWebConfigParameters>
             <first-enabled>true</first-enabled>
             <repeat-enabled>true</repeat-enabled>

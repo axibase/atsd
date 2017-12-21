@@ -1,8 +1,8 @@
-# AWS SQS Integration
+# AWS API Integration with SQS
 
 ## Overview
 
-The following example demonstrates how to send a signed message to an [Amazon SQS](https://aws.amazon.com/documentation/sqs) queue using a [`CUSTOM`](custom.md) web notification.
+The following example demonstrates how to send a signed message to an [Amazon SQS](https://aws.amazon.com/documentation/sqs) queue using a [`AWS API`](aws-api.md) web notification.
 
 The message is signed with **AWS Signature, v4** implemented in ATSD. The implementation enables submitting AWS API requests to **any** AWS service that accepts **AWS Signature, v4**.
 
@@ -10,7 +10,7 @@ The example described below invokes the [Amazon SQS API](http://docs.aws.amazon.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification or import the [template](resources/custom-aws-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `AWS API` web notification or import the [template](resources/aws-api-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -20,11 +20,10 @@ Enter a name and specify the following parameters:
 
 | **Name** | **Value** |
 | :--- | :--- |
+| Endpoint URL | `https://sqs.<AWS_REGION>.amazonaws.com` |
 | Method | `POST` |
-| Authentication | `AWS Signature, v4` |
 | Access Key Id | `<AWS_ACCESS_KEY_ID>` |
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
-| Endpoint URL | `https://sqs.<AWS_REGION>.amazonaws.com` |
 | Action | `SendMessage`|
 
 Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your AWS region, for example: `https://sqs.us-east-1.amazonaws.com`.
@@ -58,11 +57,11 @@ Modify the `QueueUrl` by replacing the `<AWS_SQS_QUEUE_URL>` value with your url
 https://sqs.us-east-1.amazonaws.com/568708720055/test
 ```
 
-![](images/custom_aws_notification_config.png)
+![](images/aws_api_sqs_notification_config.png)
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/custom-aws-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](resources/aws-api-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -74,7 +73,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/custom_aws_rule_overview.png)
+![](images/aws_api_sqs_rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -84,7 +83,7 @@ Enable **Open**, **Repeat** and **Cancel** triggers.
 
 Specify the message text into the `MessageBody` parameter for all triggers.
 
-![](images/custom_aws_rule_notification.png)
+![](images/aws_api_sqs_rule_notification.png)
 
 ## Test
 
@@ -99,8 +98,8 @@ In order to test the integration, submit sample data for the `test_m` metric int
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/custom_aws_alert_open.png)
+![](images/aws_api_sqs_alert_open.png)
 
 Check the AWS SQS queue to make sure the new messages were received:
 
-![](images/custom_aws_test.png)
+![](images/aws_api_sqs_test.png)
