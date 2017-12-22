@@ -247,7 +247,8 @@ Example:
     tag.event = commit
     tag.result = ok
   ```
-The reserved parameter mappings have the following precedence:
+  
+The reserved parameters have the following precedence:
 
 1) Literal Value Parameters
 2) Command Parameters
@@ -255,25 +256,37 @@ The reserved parameter mappings have the following precedence:
 
 Example:
 
-```
-/api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
-```
-```
-User-Agent: GitHub-Hookshot/5ee1da1
-```
-```
- {
-    "server": "test-2"
- }
-```
-```
-type=github
-source=webhook
-entity=test-1
-tags:
-    server=test-2
-    request_ip=...
-```
+Request URL:
+
+  ```
+    /api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
+  ```
+
+Request Headers:
+
+  ```
+    User-Agent: GitHub-Hookshot/5ee1da1
+  ```
+
+Request Payload:
+
+  ```
+    {
+      "server": "test-2"
+    }
+  ```
+
+Message Command:
+
+  ```
+	type=github
+	source=webhook
+	entity=test-1
+	tags:
+	    server=test-2
+	    request_ip=...
+  ```
+
 #### Control Parameters
 
 | **Name** | **Description** |
