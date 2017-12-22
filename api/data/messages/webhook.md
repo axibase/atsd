@@ -35,7 +35,7 @@ Request parameters, except for reserved parameters, are converted into message *
 
 Request URL:
 
-`/api/v1/messages/webhook/incoming?action=started&Repeat=1`
+`/api/v1/messages/webhook/incoming?entity=test-1&action=started&Repeat=1`
 
 Message tags:
 
@@ -158,7 +158,7 @@ Command parameters set message field values from JSON field values.
 |---|---|
 | command.type | Message type. If not specified, set to `webhook`. |
 | command.source | Message source. If not specified, set to URL path after `./webhook/`. |
-| command.entity | [**Required**] Message entity |
+| command.entity | [**Required**] Message entity. |
 | command.date | Message datetime in ISO format. |
 | command.message | Message text. |
 | command.severity | Message severity specified as an integer or as a constant. |
@@ -185,7 +185,7 @@ Header parameters set message field values from header values.
 |---|---|
 | header.type | Message type. If not specified, set to `webhook`. |
 | header.source | Message source. If not specified, set to URL path after `./webhook/`. |
-| header.entity | [**Required**] Message entity |
+| header.entity | [**Required**] Message entity. |
 | header.date | Message datetime in ISO format. |
 | header.message | Message text. |
 | header.tag.{name} | Message tag. |
