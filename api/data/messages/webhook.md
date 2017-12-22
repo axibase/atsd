@@ -247,7 +247,15 @@ Example:
     tag.event = commit
     tag.result = ok
   ```
-  
+
+#### Control Parameters
+
+| **Name** | **Description** |
+|---|---|
+| debug | If set to `true`, the response includes the message record in JSON format. |
+
+### Parameter Precedence
+
 The reserved parameters have the following precedence:
 
 1) Literal Value Parameters
@@ -256,19 +264,19 @@ The reserved parameters have the following precedence:
 
 Example:
 
-Request URL:
+* Request URL:
 
   ```
     /api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
   ```
 
-Request Headers:
+* Request Headers:
 
   ```
     User-Agent: GitHub-Hookshot/5ee1da1
   ```
 
-Request Payload:
+* Request Payload:
 
   ```
     {
@@ -276,7 +284,7 @@ Request Payload:
     }
   ```
 
-Message Command:
+* Message Command:
 
   ```
 	type=github
@@ -287,11 +295,6 @@ Message Command:
 	    request_ip=...
   ```
 
-#### Control Parameters
-
-| **Name** | **Description** |
-|---|---|
-| debug | If set to `true`, the response includes the message record in JSON format. |
 
 ## Example
 
