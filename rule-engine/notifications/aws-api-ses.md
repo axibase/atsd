@@ -4,9 +4,9 @@
 
 The following example demonstrates how to send an email via [Amazon SES](https://aws.amazon.com/ses) using a [`AWS API`](aws-api.md) web notification.
 
-The request is signed with **AWS Signature, v4** implemented in ATSD. The implementation enables submitting AWS API requests to **any** AWS service that accepts **AWS Signature, v4**.
+The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
-The example described below invokes the [Amazon SES API](http://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html) `SendEmail` action.
+The example invokes the [Amazon SES API](http://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html) `SendEmail` action.
 
 ## Configuration
 
