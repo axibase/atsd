@@ -2,11 +2,11 @@
 
 ## Overview
 
-The following example demonstrates how to send a signed message to an [Amazon SQS](https://aws.amazon.com/documentation/sqs) queue using a [`AWS API`](aws-api.md) web notification.
+The following example demonstrates how to send a message to an [Amazon SQS](https://aws.amazon.com/documentation/sqs) queue using a [`AWS API`](aws-api.md) web notification.
 
-The message is signed with **AWS Signature, v4** implemented in ATSD. The implementation enables submitting AWS API requests to **any** AWS service that accepts **AWS Signature, v4**.
+The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
-The example described below invokes the [Amazon SQS API](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) `SendMessage` action.
+The example invokes the [Amazon SQS API](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) `SendMessage` action.
 
 ## Configuration
 
