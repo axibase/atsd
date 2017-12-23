@@ -49,34 +49,34 @@
             <firstWebConfigParameters>
                 <key>MessageBody</key>
                 <value>{&#13;
-                    "status": "${status}",&#13;
-                    "entity": "${entity}",&#13;
-                    "rule": "${rule}",&#13;
-                    "tags": "${tags}",&#13;
-                    "message": "The rule is open"&#13;
-                    }</value>
+  "status": "${status}",&#13;
+   "entity": "${entity}",&#13;
+   "rule": "${rule}",&#13;
+   "tags": "${tags}",&#13;
+   "message": "The rule is open"&#13;
+}</value>
             </firstWebConfigParameters>
             <repeatWebConfigParameters>
                 <key>MessageBody</key>
                 <value>{&#13;
-                    "status": "${status}",&#13;
-                    "entity": "${entity}",&#13;
-                    "rule": "${rule}",&#13;
-                    "tags": "${tags}",&#13;
-                    "repeatCount": "${repeat_count}",&#13;
-                    "message": "The rule is still open"&#13;
-                    }</value>
+  "status": "${status}",&#13;
+   "entity": "${entity}",&#13;
+   "rule": "${rule}",&#13;
+   "tags": "${tags}",&#13;
+   "repeatCount": "${repeat_count}",&#13;
+   "message": "The rule is still open"&#13;
+}</value>
             </repeatWebConfigParameters>
             <cancelWebConfigParameters>
                 <key>MessageBody</key>
                 <value>{&#13;
-                    "status": "${status}",&#13;
-                    "entity": "${entity}",&#13;
-                    "rule": "${rule}",&#13;
-                    "tags": "${tags}",&#13;
-                    "repeatCount": "${repeat_count}",&#13;
-                    "message": "The rule is cancel"&#13;
-                    }</value>
+  "status": "${status}",&#13;
+   "entity": "${entity}",&#13;
+   "rule": "${rule}",&#13;
+   "tags": "${tags}",&#13;
+   "repeatCount": "${repeat_count}",&#13;
+   "message": "The rule is cancel"&#13;
+}</value>
             </cancelWebConfigParameters>
             <first-enabled>true</first-enabled>
             <repeat-enabled>true</repeat-enabled>

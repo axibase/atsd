@@ -1,0 +1,38 @@
+<list>
+  <com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
+    <enabled>true</enabled>
+    <logResponse>true</logResponse>
+    <name>aws-cwe-test</name>
+    <description></description>
+    <parameters class="tree-map">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+      <entry>
+        <string>action</string>
+        <string></string>
+      </entry>
+    </parameters>
+    <accessKeyId>keyId</accessKeyId>
+    <secretAccessKey></secretAccessKey>
+    <url>https://events.us-east-1.amazonaws.com</url>
+    <body>{&#xd;
+   &quot;Entries&quot;:[&#xd;
+      {&#xd;
+         &quot;Source&quot;:&quot;com.mycompany.myapp&quot;,&#xd;
+         &quot;Detail&quot;:&quot;{ \&quot;key1\&quot;: \&quot;value1\&quot;, \&quot;key2\&quot;: \&quot;value2\&quot; }&quot;,&#xd;
+         &quot;Resources&quot;:[&#xd;
+            &quot;resource1&quot;,&#xd;
+            &quot;resource2&quot;&#xd;
+         ],&#xd;
+         &quot;DetailType&quot;:&quot;myDetailType&quot;&#xd;
+      }&#xd;
+   ]&#xd;
+}</body>
+    <contentType>application/json</contentType>
+    <method>POST</method>
+    <exposedTableModelParams class="sorted-set">
+      <comparator class="java.lang.String$CaseInsensitiveComparator" reference="../../parameters/comparator"/>
+    </exposedTableModelParams>
+    <headers>Content-Type: application/x-amz-json-1.1&#xd;
+X-Amz-Target: AWSEvents.PutEvents</headers>
+  </com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
+</list>

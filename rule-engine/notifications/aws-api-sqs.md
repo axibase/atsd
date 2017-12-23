@@ -1,4 +1,4 @@
-# AWS API Integration with SQS
+# Integration with Amazon SQS
 
 ## Overview
 
@@ -10,7 +10,7 @@ The example described below invokes the [Amazon SQS API](http://docs.aws.amazon.
 
 ## Configuration
 
-Create a new `AWS API` web notification or import the [template](resources/aws-api-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `AWS API` web notification or import the [template](resources/aws-api-sqs-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -22,11 +22,16 @@ Enter a name and specify the following parameters:
 | :--- | :--- |
 | Endpoint URL | `https://sqs.<AWS_REGION>.amazonaws.com` |
 | Method | `POST` |
+| Content Type | `application/x-www-form-urlencoded` |
 | Access Key Id | `<AWS_ACCESS_KEY_ID>` |
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Action | `SendMessage`|
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your AWS region, for example: `https://sqs.us-east-1.amazonaws.com`.
+Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SQS region](http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region), for example:
+
+```
+https://sqs.us-east-1.amazonaws.com
+```
 
 Enter the AWS key id into the `Access Key Id` field and the secret key into the `Secret Access Key` field.
 
@@ -45,7 +50,7 @@ Modify the `MessageBody` by replacing the `<MESSAGE_TEXT>` value with your text,
    "entity": "${entity}",
    "rule": "${rule}",
    "tags": "${tags}",
-   "message": "test"
+   "message": ""
 }
 ```
 
@@ -61,7 +66,7 @@ https://sqs.us-east-1.amazonaws.com/568708720055/test
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/aws-api-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](resources/aws-api-sqs-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -73,7 +78,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/aws_api_sqs_rule_overview.png)
+![](images/aws_api_rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -100,6 +105,6 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](images/aws_api_sqs_alert_open.png)
 
-Check the AWS SQS queue to make sure the new messages were received:
+Check the Amazon SQS queue to make sure the new messages were received:
 
 ![](images/aws_api_sqs_test.png)

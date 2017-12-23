@@ -55,4 +55,7 @@ Both fixed and editable parameter values can include placeholders.
 
 ## Examples
 
-* [Integration with SQS](aws-api-sqs.md)
+* [Integration with Amazon CWE](aws-api-cwe.md)
+* [Integration with Amazon SES](aws-api-ses.md)
+* [Integration with Amazon SQS](aws-api-sqs.md)
+* [Integration with AWS Batch](aws-api-batch.md)

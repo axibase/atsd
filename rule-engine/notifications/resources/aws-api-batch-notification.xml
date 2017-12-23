@@ -1,0 +1,25 @@
+<list>
+  <com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
+    <enabled>true</enabled>
+    <logResponse>true</logResponse>
+    <name>aws-batch-test</name>
+    <parameters class="tree-map">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+      <entry>
+        <string>action</string>
+        <string></string>
+      </entry>
+    </parameters>
+    <accessKeyId>keyId</accessKeyId>
+    <secretAccessKey></secretAccessKey>
+    <url>https://batch.us-east-1.amazonaws.com/v1/submitjob</url>
+    <body>{&#xd;
+  &quot;jobName&quot;: &quot;forecast-energy-job&quot;,&#xd;
+  &quot;jobQueue&quot;: &quot;hourly-forecast-energy-01&quot;,&#xd;
+  &quot;jobDefinition&quot;: &quot;job-definition&quot;&#xd;
+}</body>
+    <contentType>application/json</contentType>
+    <method>POST</method>
+    <exposedTableModelParams class="empty-set"/>
+  </com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
+</list>

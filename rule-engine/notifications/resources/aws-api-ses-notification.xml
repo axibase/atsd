@@ -1,0 +1,27 @@
+<list>
+    <com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
+        <enabled>true</enabled>
+        <logResponse>true</logResponse>
+        <name>aws-ses-test</name>
+        <description></description>
+        <parameters class="tree-map">
+            <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+            <entry>
+                <string>action</string>
+                <string>SendEmail</string>
+            </entry>
+        </parameters>
+        <accessKeyId>keyId</accessKeyId>
+        <secretAccessKey></secretAccessKey>
+        <url>https://email.us-east-1.amazonaws.com</url>
+        <body>action=SendEmail&amp;Destination.ToAddresses.member.1=destination@example.com&amp;Source=source@example.com&amp;Message.Body.Text.Data=%7B%0A%20%20%22status%22%3A%20%22%24%7Bstatus%7D%22%2C%0A%20%20%20%22entity%22%3A%20%22%24%7Bentity%7D%22%2C%0A%20%20%20%22rule%22%3A%20%22%24%7Brule%7D%22%2C%0A%20%20%20%22tags%22%3A%20%22%24%7Btags%7D%22%2C%0A%20%20%20%22message%22%3A%20%22%22%0A%7D&amp;Message.Subject.Data=ATSD%20Alert</body>
+        <contentType>application/x-www-form-urlencoded</contentType>
+        <method>POST</method>
+        <exposedTableModelParams class="sorted-set">
+            <comparator class="java.lang.String$CaseInsensitiveComparator" reference="../../parameters/comparator"/>
+            <string>Message.Body.Text.Data</string>
+            <string>Message.Subject.Data</string>
+        </exposedTableModelParams>
+        <headers></headers>
+    </com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
+</list>
