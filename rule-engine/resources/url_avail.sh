@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-url=$1
-
-curl --head ${url} 2>/dev/null | head -n 1 | grep -q "HTTP/... [23].."
-if [[ $? -eq 0 ]] ; then
-  echo URL ${url} is available
+url=${1}
+status=$(curl --head ${1} 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*")
+if [[ $? == 0 ]] ; then
+  echo ${status}
 else
-  echo URL ${url} is unavailable
+  echo "Incorrect url ${1}"
 fi

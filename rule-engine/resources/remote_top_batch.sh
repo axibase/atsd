@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-host=$1
-id_file=$2
-count=$3
-delay=$4
+key_location=${1}
+host=${2}
+user=${3}
+count=${4}
+delay=${5}
+rows_n=${6}
 
-ssh -i ${id_file} ${host} top -b -n ${count} -d ${delay}
+
+ssh -i ${key_location} ${host} top -u ${user} -b -n ${count} -d ${delay} | head -n ${rows_n}

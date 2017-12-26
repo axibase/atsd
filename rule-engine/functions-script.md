@@ -99,21 +99,12 @@ timeout 3 traceroute axibase.com; echo $?
 
 ```bash
 traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
- 1  172.17.0.1 (172.17.0.1)  0.271 ms  0.237 ms  0.219 ms
- 2  192.168.1.1 (192.168.1.1)  1.578 ms  1.722 ms  1.743 ms
- 3  195.144.234.105 (195.144.234.105)  2.946 ms  3.349 ms  3.375 ms
- 4  10.78.242.161 (10.78.242.161)  3.366 ms  3.389 ms  3.380 ms
- 5  78.25.80.94 (78.25.80.94)  11.125 ms  11.267 ms  11.453 ms
- 6  10.222.78.125 (10.222.78.125)  37.343 ms  36.109 ms  36.438 ms
- 7  83.169.204.78 (83.169.204.78)  16.013 ms  14.191 ms  14.533 ms
- 8  83.169.204.104 (83.169.204.104)  33.581 ms  33.207 ms  33.549 ms
- 9  37.29.109.222 (37.29.109.222)  34.547 ms  33.527 ms  33.519 ms
-10  core4.fra.hetzner.com (213.239.203.237)  33.867 ms core1.fra.hetzner.com (213.239.245.6)  34.520 ms  34.791 ms
-11  core24.fsn1.hetzner.com (213.239.229.78)  38.259 ms  37.819 ms core23.fsn1.hetzner.com (213.239.229.74)  43.815 ms
-12  ex9k2.dc8.fsn1.hetzner.com (213.239.229.18)  38.443 ms ex9k2.dc8.fsn1.hetzner.com (213.239.229.22)  38.388 ms ex9k2.dc8.fsn1.hetzner.com (213.239.229.18)  37.721 ms
-13  cnode3.6.fsn1.your-cloud.host (136.243.180.196)  38.035 ms  38.038 ms  38.031 ms
-14  axibase.com (78.47.207.156)  38.607 ms  38.005 ms  37.997 ms124
-
+ 1  NURSWGVML102(10.102.0.1)  0.149 ms  0.059 ms  0.032 ms
+ 2  static.129.38.9.5.clients.your-server.de (5.9.38.129)  0.438 ms  0.430 ms  0.481 ms
+ 3  core23.fsn1.hetzner.com (213.239.229.233)  0.402 ms core24.fsn1.hetzner.com (213.239.229.237)  0.341 ms core23.fsn1.hetzner.com (213.239.229.233)  0.399 ms
+ 4  ex9k2.dc8.fsn1.hetzner.com (213.239.229.18)  0.442 ms  0.438 ms ex9k2.dc8.fsn1.hetzner.com (213.239.229.22)  0.416 ms
+ 5  cnode3.6.fsn1.your-cloud.host (136.243.180.196)  0.306 ms  0.297 ms  0.313 ms
+ 6  axibase.com (78.47.207.156)  0.348 ms  0.363 ms  0.308 ms
 ```
 
 #### Notification Example
@@ -140,58 +131,61 @@ Script that returns [output of top](resources/remote_top_batch.sh) (in batch mod
 ```bash
 #!/usr/bin/env bash
 
-host=$1
-id_file=$2
-count=$3
-delay=$4
+key_location=${1}
+host=${2}
+user=${3}
+count=${4}
+delay=${5}
+rows_n=${6}
 
-ssh -i ${id_file} ${host} top -b -n ${count} -d ${delay}
+
+ssh -i ${key_location} ${host} top -u ${user} -b -n ${count} -d ${delay} | head -n ${rows_n}
 
 ```
 #### Function command
 
 ```bash
-Output is: ${scriptOut('remote_top_batch.sh', ['axibase.com','/home/axibase/ssh_host_rsa_key', '1', '1'])}
+${scriptOut('remote_top_batch.sh', ['/home/axibase/ssh_host_rsa_key','axibase.com','www-data', '1', '1', '15'])}
 ```
 #### Launch command
 
 ```bash
-ssh -i /home/axibase/ssh_host_rsa_key axibase.com top -b -n 1 -d 1
+ssh -i /home/axibase/ssh_host_rsa_key axibase.com top -u www-data -b -n 1 -d 1 | head -n 15
 ```
 
 #### Output
 
 ```bash
-top - 07:02:11 up 13 min,  1 user,  load average: 0.00, 0.19, 0.27
-Tasks: 105 total,   1 running, 104 sleeping,   0 stopped,   0 zombie
-%Cpu(s):  5.8 us,  0.7 sy,  0.2 ni, 86.9 id,  4.9 wa,  0.0 hi,  1.4 si,  0.0 st
-KiB Mem :  2048272 total,   281016 free,  1163632 used,   603624 buff/cache
-KiB Swap:  2095100 total,  2095100 free,        0 used.   720312 avail Mem 
+top - 13:01:25 up 96 days, 23:05,  1 user,  load average: 0.02, 0.04, 0.05
+Tasks: 139 total,   1 running, 138 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.3 us,  0.6 sy,  0.0 ni, 97.8 id,  0.2 wa,  0.0 hi,  0.1 si,  0.0 st
+KiB Mem:   2049052 total,  1951460 used,    97592 free,    25364 buffers
+KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 
-  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
-    1 root      20   0   37720   5768   3984 S  0.0  0.3   0:00.98 systemd
-    2 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kthreadd
-    3 root      20   0       0      0      0 S  0.0  0.0   0:00.05 ksoftirqd/0
-    5 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 kworker/0:0H
-    6 root      20   0       0      0      0 S  0.0  0.0   0:00.05 kworker/u2:0
-    7 root      20   0       0      0      0 S  0.0  0.0   0:00.12 rcu_sched
-    8 root      20   0       0      0      0 S  0.0  0.0   0:00.00 rcu_bh
-    9 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 migration/0
-   10 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 watchdog/0
-   11 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kdevtmpfs
-   12 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 netns
-   13 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 perf
-   14 root      20   0       0      0      0 S  0.0  0.0   0:00.00 khungtaskd
-   15 root       0 -20       0      0      0 S  0.0  0.0   0:00.00 writeback
-   16 root      25   5       0      0      0 S  0.0  0.0   0:00.00 ksmd
-...
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 8831 www-data  20   0  346044  67436  50140 S   0.0  3.3   0:05.49 php5-fpm
+10145 www-data  20   0  341676  58756  45816 S   0.0  2.9   1:16.71 php5-fpm
+21890 www-data  20   0  338204  54772  43288 S   0.0  2.7   0:14.65 php5-fpm
+25001 www-data  20   0   94860   8576   2724 S   0.0  0.4  55:42.36 nginx
+25002 www-data  20   0   93864   7488   2552 S   0.0  0.4  56:01.59 nginx
+25003 www-data  20   0   93816   6408   1536 S   0.0  0.3  53:06.12 nginx
+25005 www-data  20   0   96512   8184    696 S   0.0  0.4  54:38.85 nginx
+28047 www-data  20   0  339860  57372  44236 S   0.0  2.8   0:02.34 php5-fpm
 ```
 
 #### Notification Example
 
-Slack:
-
-![](images/script-top-slack.png)   
+ Telegram:
+ 
+ ![](images/script-top-telegram.png)
+ 
+ Discord:
+ 
+ ![](images/script-top-discord.png)
+ 
+ Slack:
+ 
+ ![](images/script-top-slack.png) 
    
       
 ### ps
@@ -252,30 +246,29 @@ Script that tests [URL availability](resources/url_avail.sh).
 ```bash
 #!/usr/bin/env bash
 
-url=$1
-
-curl --head ${url} 2>/dev/null | head -n 1 | grep -q "HTTP/... [23].."
-if [[ $? -eq 0 ]] ; then
-  echo URL ${url} is available
+url=${1}
+status=$(curl --head ${1} 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*")
+if [[ $? == 0 ]] ; then
+  echo ${status} 
 else
-  echo URL ${url} is unavailable
+  echo "Incorrect url ${1}"
 fi
 ```
 
 #### Function command
 
 ```bash
-Output is: ${scriptOut('url_avail.sh', ['axibase.com'])}
+Status code is: ${scriptOut('url_avail.sh', ['https://axibase.com'])}
 ```
 #### Launch command
 
 ```bash
-curl --head axibase.com 2>/dev/null | head -n 1 | grep -q "HTTP/... [23].."
+curl --head https://axibase.com 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*"
 ```
 #### Output
 
 ```bash
-URL axibase.com is available
+200 OK
 ```
 #### Notification Example  
 
@@ -345,7 +338,7 @@ TCP port 443 is available
 
 ### osquery
 
-Script that [executes a osquery](resources/osquery.sh) query against a remote server via ssh command (key stored in a known location).
+[Script](resources/osquery.sh) that executes a [osquery](https://osquery.io/) query against a remote server via ssh command (key stored in a known location).
 
 #### Script text
 
@@ -355,28 +348,35 @@ Script that [executes a osquery](resources/osquery.sh) query against a remote se
 key_location=${1}
 host=${2}
 
-ssh -i ${key_location} ${host} 'osqueryi --json  "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
+ssh -i ${key_location} ${host} 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
 #### Function command
 
 ```bash
-Output is: ${scriptOut('osquery.sh', ['/home/axibase/ssh_host_rsa_key', 'axibase.com'])}
+${scriptOut('osquery.sh', ['/home/axibase/ssh_host_rsa_key', 'axibase.com'])}
 ```
+`scriptOut` should be surround with backticks for output formatting:
+
+ ![](images/script-osquery-bacticks.png)  
+ 
+ 
 #### Launch command
 
 ```bash
-ssh -i /home/axibase/ssh_host_rsa_key axibase.com 'osqueryi --json  "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
+ssh -i /home/axibase/ssh_host_rsa_key axibase.com 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
 #### Output
 
-```json
-[
-  {"name":"java","pid":"1887","port":"50010"},
-  {"name":"java","pid":"1887","port":"50075"},
-  {"name":"java","pid":"1887","port":"50020"},
-  {"name":"java","pid":"2181","port":"50090"},
-  {"name":"java","pid":"1728","port":"50070"}
-]
+```markdown
++------+-------+------+
+| name | port  | pid  |
++------+-------+------+
+| java | 50010 | 9112 |
+| java | 50075 | 9112 |
+| java | 50020 | 9112 |
+| java | 50090 | 9365 |
+| java | 50070 | 8921 |
++------+-------+------+
 ```
 #### Notification Example
 

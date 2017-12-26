@@ -241,5 +241,4 @@ Refer to time function [examples](functions-time.md).
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `scriptOut(S, Collection args)` | Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.<br>Example: `${scriptOut('ping.sh', ['2', 'example.org'])}` |
-
+| [`scriptOut(S, Collection args)`](functions-script.md) | Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.<br>Example: `${scriptOut('ping.sh', ['2', 'example.org'])}` |
