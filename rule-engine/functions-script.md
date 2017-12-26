@@ -15,7 +15,7 @@ scriptOut(String scriptFileName, List arguments)
 
 ### ping
 
-Script to [test ping](resources/ping.sh) of host n number of times.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ping.sh) to test ping of host n number of times.
 
 #### Script text
 
@@ -70,7 +70,7 @@ Slack:
 
 ### traceroute
 
-Script to [return traceroute](resources/traceroute.sh) to host.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/traceroute.sh) to return traceroute to host.
 
 #### Script text
 
@@ -124,7 +124,7 @@ traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
 
 ### top
 
-Script that returns [output of top](resources/remote_top_batch.sh) (in batch mode) from a remote server (using ssh with key authentication, key stored in a known location).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of top (in batch mode) from a remote server (using ssh with key authentication, key stored in a known location).
 
 #### Script text
 
@@ -190,7 +190,7 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
       
 ### ps
 
- Script that returns [ps output](resources/ps.sh) for the specified grep pattern
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) that returns ps output for the specified grep pattern
  
 #### Script text
 
@@ -239,7 +239,7 @@ root      6015  0.0  0.0  12944  1016 ?        S+   11:24   0:00 grep --color=au
 
 ### URL availability
 
-Script that tests [URL availability](resources/url_avail.sh).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/url_avail.sh) that tests URL availability.
 
 #### Script text
 
@@ -287,7 +287,7 @@ curl --head https://axibase.com 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-
 
 ### TCP availability
 
-Script that tests [TCP availability](resources/tcp.sh).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/tcp.sh) that tests TCP availability.
 
 #### Script text
 
@@ -338,7 +338,7 @@ TCP port 443 is available
 
 ### osquery
 
-[Script](resources/osquery.sh) that executes a [osquery](https://osquery.io/) query against a remote server via ssh command (key stored in a known location).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/osquery.sh) that executes a [osquery](https://osquery.io/) query against a remote server via ssh command (key stored in a known location).
 
 #### Script text
 
@@ -355,7 +355,7 @@ ssh -i ${key_location} ${host} 'osqueryi "SELECT DISTINCT processes.name, listen
 ```bash
 ${scriptOut('osquery.sh', ['/home/axibase/ssh_host_rsa_key', 'axibase.com'])}
 ```
-`scriptOut` should be surround with backticks for output formatting:
+`scriptOut` should be surrounded with backticks for output formatting:
 
  ![](images/script-osquery-bacticks.png)  
  
