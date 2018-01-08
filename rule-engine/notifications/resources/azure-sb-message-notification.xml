@@ -1,0 +1,37 @@
+<list>
+  <com.axibase.tsd.model.notifications.AzureServiceBusWebNotificationConfig>
+    <enabled>true</enabled>
+    <logResponse>true</logResponse>
+    <name>azure-test</name>
+    <description></description>
+    <parameters class="tree-map">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+      <entry>
+        <string>destination</string>
+        <string>alert-queue</string>
+      </entry>
+      <entry>
+        <string>message</string>
+        <string>{&#xd;
+   &quot;status&quot;: &quot;${status}&quot;,&#xd;
+   &quot;entity&quot;: &quot;${entity}&quot;,&#xd;
+   &quot;rule&quot;: &quot;${rule}&quot;,&#xd;
+   &quot;tags&quot;: &quot;${tags}&quot;,&#xd;
+   &quot;message&quot;: &quot;&quot;&#xd;
+}</string>
+      </entry>
+      <entry>
+        <string>pathParameters</string>
+        <string>timeout=60</string>
+      </entry>
+      <entry>
+        <string>servicebusNamespace</string>
+        <string>atsd-test</string>
+      </entry>
+    </parameters>
+    <keyName>keyName</keyName>
+    <primaryKey></primaryKey>
+    <url>https://atsd-test.servicebus.windows.net/alert-queue/messages</url>
+    <headers></headers>
+  </com.axibase.tsd.model.notifications.AzureServiceBusWebNotificationConfig>
+</list>
