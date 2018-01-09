@@ -31,5 +31,5 @@ Format given number by applying specified DecimalFormat pattern.
 
 Example:
  
-`formatNumber(3.14159, '#.##')` returns to `'3.14'
+`formatNumber(3.14159, '#.##')` returns to `'3.14'`
 
