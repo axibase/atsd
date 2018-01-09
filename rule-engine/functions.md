@@ -165,7 +165,7 @@ The text functions transform or compare strings the input string.
 The formatting functions perform the conversion according to the specified unit or pattern.
 
 * [convert](functions-formatting.md#convert)
-* [formatNumber](functions-formatting.md#formatNumber)
+* [formatNumber](functions-formatting.md#formatnumber)
 
 ## Collection Functions
 
@@ -183,7 +183,7 @@ The collection functions return information about the collection or check it for
 The lookup functions allow to access to the values of the replacement tables.
 
 * [lookup](functions-lookup.md#lookup)
-* [replacementTable](functions-lookup.md#replacementTable)
+* [replacementTable](functions-lookup.md#replacementtable)
 
 ## Random Distribution Functions
 
