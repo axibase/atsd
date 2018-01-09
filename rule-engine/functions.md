@@ -148,7 +148,7 @@ The math functions perform basic numeric operations on the input number and retu
 
 ## Text Functions
 
-The text functions tranform or compare strings the input string.
+The text functions transform or compare strings the input string.
 
 * [upper](functions-text.md#upper)
 * [lower](functions-text.md#lower)
@@ -162,10 +162,10 @@ The text functions tranform or compare strings the input string.
 
 ## Formatting Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `convert(D, S)` | Convert value to given unit, where unit is one of 'k', 'Ki', 'M', 'Mi', 'G', 'Gi'. <br>Example: `convert(20480, 'Ki')` returns to `20.0` |
-| `formatNumber(D, S)` | Format given number by applying specified DecimalFormat pattern.<br>Example: `formatNumber(3.14159, '#.##')` returns to `'3.14'`
+The formatting functions perform the conversion according to the specified unit or pattern.
+
+* [convert](functions-formatting.md#convert)
+* [formatNumber](functions-formatting.md#formatNumber)
 
 ## Collection Functions
 
@@ -180,11 +180,10 @@ The collection functions return information about the collection or check it for
 
 ## Lookup Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-|`collection(S)` | Return a list of items for a named collection listed on **Data > Named Collections** page.<br>Example: `collection('ip_white_list')`|
-| `lookup(S replacementTable, S key)` | Returns value for the specified key in the given replacement table.|
-| `replacementTable(S replacementTable)` | Returns replacement table by name as a key-value map.|
+The lookup functions allow to access to the values of the replacement tables.
+
+* [lookup](functions-lookup.md#lookup)
+* [replacementTable](functions-lookup.md#replacementTable)
 
 ## Random Distribution Functions
 

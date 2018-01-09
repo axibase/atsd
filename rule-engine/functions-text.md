@@ -1,4 +1,4 @@
-# Math Functions
+# Text Functions
 
 ## Overview
 
