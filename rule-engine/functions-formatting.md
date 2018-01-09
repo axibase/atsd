@@ -28,7 +28,7 @@ Example:
 
   ```javascript
     convert(20480, 'Ki')
-    //returns 20.0
+    // returns 20.0
   ```
 
 ### `formatNumber`
@@ -41,7 +41,7 @@ Formats number `x` according to the specified [DecimalFormat](https://docs.oracl
 
 Example:
  
-  ```
+  ```javascript
     formatNumber(3.14159, '#.##')
-        //returns 3.14
+    // returns 3.14
   ```

@@ -1,14 +1,37 @@
 # Random Functions
 
-## `randomItem` Function
+## Overview
 
-Returns a random element from the specified collection using the **uniform** distribution. The probability of each element to be selected is `1/{collection size}`.
 
-Syntax:
+## Reference
+
+* [random](#random)
+* [randomNormal](#randomnormal)
+* [randomItem](#randomitem)
+* [randomKey](#randomkey)
+
+### `random`
 
 ```javascript
-  randomItem(Collection values)
+random() double
 ```
+Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.
+
+### `randomNormal`
+
+```javascript
+randomNormal() double
+```
+
+Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.
+
+## `randomItem` 
+
+```javascript
+randomItem([] c) string
+```
+
+Returns a random element from the specified collection `c` using the **uniform** distribution. The probability of each element to be selected is `1/{collection size}`.
 
 The function returns the selected element object converted to string.
 
@@ -80,17 +103,15 @@ An input collection can contain elements of any type, such as strings or numbers
 	  // returns Thomas=415.555-0001
 	```
 
-## `randomKey` Function
-
-Returns a random element from the specified map of objects using the **uniform** distribution.
-
-The keys in the map can be of any type, whereas the values must be numeric and represent probabilities of the given key to be selected.
-
-Syntax:
+## `randomKey` 
 
 ```javascript
-  randomKey(Map mapOfObjects)
+randomKey({} m) string
 ```
+
+Returns a random element from the specified map `m` of objects using the **uniform** distribution.
+
+The keys in the map can be of any type, whereas the values must be numeric and represent probabilities of the given key to be selected.
 
 The function returns the randomly selected key converted to string.
 
