@@ -2,7 +2,7 @@
 
 ## Overview
 
-The formatting functions perform conversion according to specified unit or pattern.
+The functions format numbers to strings according to the specified pattern.
 
 ## Reference
 
@@ -12,24 +12,36 @@ The formatting functions perform conversion according to specified unit or patte
 ### `convert`
 
 ```javascript
-  convert(double x, string s) double
+  convert(double x, string s) string
 ```
 
-Convert value to given unit, where unit is one of 'k', 'Ki', 'M', 'Mi', 'G', 'Gi'.
+Divides number `x` by the specified measurement unit `s`: 
+
+* 'k' (1000)
+* 'Ki' (1024)
+* 'M' (1000^2)
+* 'Mi' (1024^2)
+* 'G' (1000^3)
+* 'Gi' (1024^3)
 
 Example: 
 
-`convert(20480, 'Ki')` returns to `20.0`
+  ```javascript
+    convert(20480, 'Ki')
+    //returns 20.0
+  ```
 
 ### `formatNumber`
 
 ```javascript
-  formatNumber(double x, string s) double
+  formatNumber(double x, string s) string
 ```
 
-Format given number by applying specified DecimalFormat pattern.
+Formats number `x` according to the specified [DecimalFormat](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) pattern `s` using the default database locale.
 
 Example:
  
-`formatNumber(3.14159, '#.##')` returns to `'3.14'`
-
+  ```
+    formatNumber(3.14159, '#.##')
+        //returns 3.14
+  ```
