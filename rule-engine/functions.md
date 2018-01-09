@@ -180,8 +180,10 @@ The collection functions return information about the collection or check it for
 
 ## Lookup Functions
 
-The lookup functions retrieve records from replacement tables and collections.
+The lookup functions retrieve records from replacement tables, collections, and other entities.
 
+* [entity_tag](functions-lookup.md#entity_tag)
+* [entity_tags](functions-lookup.md#entity_tags)
 * [collection](functions-lookup.md#collection)
 * [lookup](functions-lookup.md#lookup)
 * [replacementTable](functions-lookup.md#replacementtable)
@@ -195,7 +197,7 @@ The lookup functions retrieve records from replacement tables and collections.
 
 ## Time Functions
 
-The time functions transform and retrieve timestamps.
+Time functions perform varios operations on dates, timestamps and intervals.
 
 * [window_length_time](functions-time.md#window_length_time)
 * [window_length_count](functions-time.md#window_length_count)
@@ -210,18 +212,11 @@ The time functions transform and retrieve timestamps.
 
 ## Property Functions
 
-Property functions provide a set of convenience methods to retrieve and compare property keys and tags.
+Property functions retrieve and compare property keys and tags.
 
-* [property_values(string s)](functions-property.md#property_valuesstring-s)
-* [property_values(string s, string e)](functions-property.md#property_valuesstring-s-string-e)
+* [property_values](functions-property.md#property_valuesstring-s)
 * [property](functions-property.md#property)
-* [property_compare_except([string k])](functions-property.md#property_compare_exceptstring-k)
-* [property_compare_except([string k], [string e])](functions-property.md#property_compare_exceptstring-c-string-e)
-
-## Entity Tag Functions
-
-* [entity_tags](functions-entity-tag.md#entity_tags)
-* [entity_tag](functions-entity-tag.md#entity_tag)
+* [property_compare_except](functions-property.md#property_compare_exceptstring-k)
 
 ## Script Functions
 

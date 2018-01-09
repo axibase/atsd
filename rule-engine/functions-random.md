@@ -2,7 +2,6 @@
 
 ## Overview
 
-
 ## Reference
 
 * [random](#random)
@@ -13,14 +12,14 @@
 ### `random`
 
 ```javascript
-random() double
+  random() double
 ```
 Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.
 
 ### `randomNormal`
 
 ```javascript
-randomNormal() double
+  randomNormal() double
 ```
 
 Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.
@@ -28,12 +27,12 @@ Returns a normally distributed double number, with mean `0.0` and standard devia
 ## `randomItem` 
 
 ```javascript
-randomItem([] c) string
+  randomItem([] c) string
 ```
 
-Returns a random element from the specified collection `c` using the **uniform** distribution. The probability of each element to be selected is `1/{collection size}`.
+Returns a random element from collection `c` using the **uniform** distribution. The probability of each element to be selected is `1/c.size()`.
 
-The function returns the selected element object converted to string.
+The function returns the selected element converted to string.
 
 An input collection can contain elements of any type, such as strings or numbers, and can be specified as follows:
 
@@ -106,7 +105,7 @@ An input collection can contain elements of any type, such as strings or numbers
 ## `randomKey` 
 
 ```javascript
-randomKey({} m) string
+  randomKey({} m) string
 ```
 
 Returns a random element from the specified map `m` of objects using the **uniform** distribution.

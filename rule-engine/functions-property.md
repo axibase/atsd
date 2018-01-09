@@ -2,9 +2,7 @@
 
 ## Overview
 
-Property functions provide a set of convenience methods to retrieve and compare property keys and tags.
-
-Refer to [property search](property-search.md) syntax.
+Property functions provide a set of convenience methods to retrieve and compare property keys and tags using [property search](property-search.md) syntax.
 
 ## Reference
 
@@ -14,12 +12,12 @@ Refer to [property search](property-search.md) syntax.
 * [property_compare_except([string k])](#property_compare_exceptstring-k)
 * [property_compare_except([string k], [string e])](#property_compare_exceptstring-c-string-e)
 
-
 ### `property_values(string s)`
 
 ```javascript
-property_values(string s) list
+  property_values(string s) [string]
 ```
+
 Returns a list of property tag values for the current entity given the property [search string](property-search.md) `s`.
 
 The list is empty if the property or tag is not found.
@@ -37,7 +35,7 @@ Examples:
 ### `property_values(string s, string e)`
 
 ```javascript
-property_values(string s, string e) list
+  property_values(string s, string e) [string]
 ```
 
 Same as `property_values(string s)`, except for an explicitly specified entity `e`.
@@ -55,8 +53,9 @@ Examples:
 ### `property`
 
 ```javascript
-property(string s) string
+  property(string s) string
 ```
+
 Returns the first value in the list of strings returned by the `property_values(string s)` function. The function returns an empty string if no property records are found.
 
 ```javascript
@@ -66,8 +65,9 @@ Returns the first value in the list of strings returned by the `property_values(
 ### `property_compare_except([string k])`
 
 ```javascript
-property_compare_except([string k]) map
+  property_compare_except([string k]) map
 ```
+
 Compares previous and current property tags and returns a difference map containing a list of changed tag values.
 
 Sample difference map:
@@ -89,7 +89,7 @@ Returns true if property tags have changed except for the `name` tag and any tag
 ### `property_compare_except([string c], [string e])`
 
 ```javascript
-property_compare_except([string c], [string e]) map
+  property_compare_except([string c], [string e]) map
 ```
 
 Same as `property_compare_except(keys)` with a list `e` of previous values that are excluded from the difference map.
