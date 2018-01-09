@@ -2,7 +2,7 @@
 
 ## Overview
 
-The text functions tranform or compare strings the input string.
+The functions tranform or compare strings.
 
 The functions return `null` or `false` if one of the inputs is `null`.
 
