@@ -148,7 +148,7 @@ The math functions perform basic numeric operations on the input number and retu
 
 ## Text Functions
 
-The text functions transform or compare strings the input string.
+The text functions transform and compare strings.
 
 * [upper](functions-text.md#upper)
 * [lower](functions-text.md#lower)
@@ -180,7 +180,7 @@ The collection functions return information about the collection or check it for
 
 ## Lookup Functions
 
-The functions retrieve records from replacement tables and collections.
+The lookup functions retrieve records from replacement tables and collections.
 
 * [collection](functions-lookup.md#collection)
 * [lookup](functions-lookup.md#lookup)
