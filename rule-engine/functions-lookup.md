@@ -9,7 +9,7 @@ The replacement tables are listed on the **Data > Replacement Tables** page.
 ## Reference
 
 * [lookup](#lookup)
-* [replacementTable](#replacementTable)
+* [replacementTable](#replacementtable)
 
 ### `lookup`
 

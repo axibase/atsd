@@ -7,7 +7,7 @@ The formatting functions perform conversion according to specified unit or patte
 ## Reference
 
 * [convert](#convert)
-* [formatNumber](#formatNumber)
+* [formatNumber](#formatnumber)
 
 ### `convert`
 
