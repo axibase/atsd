@@ -72,10 +72,10 @@ Returns `true` if `s` ends with `w`.
 ### `split`
 
 ```javascript
-  split(string s, string sep) [string]
+  split(string s, string p) [string]
 ```
 
-Splits the input string using the specified separator while treating double quote as an escape character.
+Splits `s` into an array of strings using separator `p` while treating double quote as an escape character.
 
 Examples:
 
