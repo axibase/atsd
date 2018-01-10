@@ -18,7 +18,7 @@ rm /opt/atsd/atsd/conf/server.keystore
 Generate a new self-signed certificate using the [`keytool`](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) utility.
 
 ```bash
-keytool -genkeypair -keystore /opt/atsd/atsd/conf/server.keystore -keyalg RSA -keysize 2048 -validity 3650
+keytool -genkeypair -keystore /opt/atsd/atsd/conf/server.keystore -alias atsd -keyalg RSA -keysize 2048 -validity 3650
 ```
 
 The self-signed certificate requires only `first and last name` question to be answered. It should be set to the DNS name used by clients when connecting to the ATSD server, such as `atsd.customer_domain.com` in the example below. The remaining fields are optional.

@@ -63,3 +63,4 @@
 - [Compaction Test](compaction-test.md#compaction-test)
 - [Monitoring](monitoring.md#monitoring)
   - [Collected Metrics](monitoring.md#collected-metrics)
+- [Installing GCP Service Account Key](gcp-service-account-key.md)
