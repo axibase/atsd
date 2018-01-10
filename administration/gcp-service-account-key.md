@@ -33,7 +33,7 @@ Replace `{KEY_PASSWORD}` with your key manager password (The property `https.key
 Check the contents of the keystore:
 
 ```bash
-keytool -list -keystore server.keystore
+keytool -list -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 
 The output should contain at least 2 entries: atsd and gcp keys.
