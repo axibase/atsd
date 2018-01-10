@@ -16,6 +16,7 @@ The functions return a new string with the original input string left unchanged.
 * [contains](#contains)
 * [startsWith](#startsWith)
 * [endsWith](#endsWith)
+* [split](#split)
 * [coalesce](#coalesce)
 * [urlencode](#urlencode)
 * [jsonencode](#jsonencode)
@@ -67,6 +68,22 @@ Returns `true` if `s` starts with `w`.
 ```
 
 Returns `true` if `s` ends with `w`.
+
+### `split`
+
+```javascript
+  split(string s, string sep) [string]
+```
+
+Splits the input string using the specified separator while treating double quote as an escape character.
+
+Examples:
+
+  * Returns ['Hello', 'brave new world']
+
+  ```java
+    split('hello "brave new world"', ' ')
+  ```
 
 ### `coalesce`
 

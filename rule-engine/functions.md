@@ -156,6 +156,7 @@ The text functions transform and compare strings.
 * [contains](functions-text.md#contains)
 * [startsWith](functions-text.md#startswith)
 * [endsWith](functions-text.md#endswith)
+* [split](functions-text.md#split)
 * [coalesce](functions-text.md#coalesce)
 * [urlencode](functions-text.md#urlencode)
 * [jsonencode](functions-text.md#jsonencode)
