@@ -9,7 +9,7 @@ The functions retrieve message counts or specific messages.
 * [db_last](functions-db.md#db_laststring-m)
 * [db_statistic](functions-db.md#db_statistic)
 * [db_message_count](functions-db.md#db_message_count)
-* [db_message_last()](functions-db.md#db_message_last)
+* [db_message_last](functions-db.md#db_message_last)
 
 The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
 
@@ -65,7 +65,7 @@ Example:
 
 ### `db_statistic` 
 
-The first required argument `s` accepts a [statistical function](`../api/data/aggregation.md`) name such as `avg` which is applied to values within the selection interval.
+The first required argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to values within the selection interval.
 
 The second required argument `i` is the duration of selection interval specified as `count unit`, for example, '1 HOUR'. The end of the selection interval is set to current time.
 
