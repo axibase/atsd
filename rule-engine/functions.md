@@ -94,20 +94,15 @@ The condition evaluates to `true` if the 1-minute average is greater than the 1-
 
 ## Statistical Forecast Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `forecast()` | Forecast value for the entity, metric, and tags in the current window. |
-| `forecast_stdev()` | Forecast standard deviation. |
-| `forecast(S)` | Named forecast value for the entity, metric, and tags in the current window, for example `forecast('ltm')` |
-| `forecast_deviation(D)` | Difference between a number (such as last value) and forecast, divided by forecast standard deviation.<br>Formula: `(number - forecast())/forecast_stdev()`.|
+* [forecast](functions-forecast.md#forecast)
+* [forecast_stdev](functions-forecast.md#forecast_stdev)
+* [forecast_deviation](functions-forecast.md#forecast_deviation)
 
 ## Value Functions
 
-The [value](functions-value.md) functions provide a way to retrieve values for other metrics contained in the same command.
+The value functions provide a way to retrieve values for other metrics contained in the same command.
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [`value(S)`](functions-value.md) | Retrieve the value for the specified metric received in the same series command or parsed from the same row in the CSV file. |
+* [value](functions-value.md) 
 
 ## Database Functions
 
@@ -117,20 +112,16 @@ The [database](functions-db.md) functions provide a way to retrieve data from th
 
 The functions retrieve values for a series which may be different from the series in the current window.
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [`db_last`](functions-db.md#db_last-function) | Retrieves the last value stored in the database for the specified series. |
-| [`db_statistic`](functions-db.md#db_last-function) | Retrieves an aggregated value from the database for the specified series. |
+* [db_last](functions-db.md#db_laststring-m) 
+* [db_statistic](functions-db.md#db_statistic)
 
 ### Database Message Functions
 
 The functions retrieve message counts or specific messages.
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [`db_message_count`](functions-db.md#db_message_count-function) | Retrieves message count for the specified filters. |
-| [`db_message_last`](functions-db.md#db_message_last-function) | Retrieves the last message for the specified filters. |
-
+* [db_message_count](functions-db.md#db_message_count) 
+* [db_message_last](functions-db.md#db_message_last) 
+ 
 ## Mathematical Functions
 
 The math functions perform basic numeric operations on the input number and return a number as the result.
@@ -197,7 +188,7 @@ The lookup functions retrieve records from replacement tables, collections, and 
 
 ## Time Functions
 
-Time functions perform varios operations on dates, timestamps and intervals.
+Time functions perform various operations on dates, timestamps and intervals.
 
 * [window_length_time](functions-time.md#window_length_time)
 * [window_length_count](functions-time.md#window_length_count)
@@ -220,6 +211,6 @@ Property functions retrieve and compare property keys and tags.
 
 ## Script Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [`scriptOut(S, Collection args)`](functions-script.md) | Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.<br>Example: `${scriptOut('ping.sh', ['2', 'example.org'])}` |
+Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.
+
+* [scriptOut](functions-script.md) 

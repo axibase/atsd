@@ -2,13 +2,12 @@
 
 ## Overview
 
-## `value` Function
-
-* Retrieves value for the specified metric received in the same `series` command or parsed from the same row in the CSV file.
+### `value`
 
 ```java
-  value(S metric)
+  value(string m) number
 ```
+Retrieves value for the specified metric `m` received in the same `series` command or parsed from the same row in the CSV file.
 
 Example:
 
