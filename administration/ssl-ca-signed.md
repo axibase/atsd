@@ -102,7 +102,7 @@ Keystore provider: SUN
 
 Your keystore contains 1 entries
 
-Alias name: 1
+Alias name: atsd
 Creation date: Jan 18, 2017
 Entry type: PrivateKeyEntry
 Certificate chain length: 4

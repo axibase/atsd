@@ -29,3 +29,23 @@ keytool -v -importkeystore -srckeystore {P12_FILE_NAME} -srcstoretype PKCS12 -al
 Replace `{P12_FILE_NAME}` with saved file name.<br/>
 Replace `{GCP_KEY_ALIAS}` with your alias. The alias must start with `gcp` prefix.<br/>
 Replace `{KEY_PASSWORD}` with your key manager password (The property `https.keyManagerPassword` in the `/opt/atsd/atsd/conf/server.properties` file. Before using the value of property, deobfuscate it).
+
+Check the contents of the keystore:
+
+```bash
+keytool -list -keystore server.keystore
+```
+
+The output should contain at least 2 entries: atsd and gcp keys.
+
+```bash
+Keystore type: JKS
+Keystore provider: SUN
+
+Your keystore contains 2 entries
+
+atsd, Dec 5, 2014, PrivateKeyEntry,
+Certificate fingerprint (SHA1): ...
+gcp_publisher, Dec 28, 2017, PrivateKeyEntry,
+Certificate fingerprint (SHA1): ...
+```
