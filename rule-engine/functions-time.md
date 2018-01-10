@@ -99,6 +99,8 @@ Converts the provided datetime string into a [Joda-time](http://joda-time.source
 
 Available timezones and their standard offsets are listed in [time zones](http://joda-time.sourceforge.net/timezones.html). If the timezone (or offset from UTC) is specified in the datetime string, and it differs from the timezone (offset) provided as the third argument, then the function will throw an exception.
 
+If the format is omitted, the datetime argument must be specified in ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ`. If the timezone is omitted, the server timezone is used.
+
 Examples:
 
 ```javascript
