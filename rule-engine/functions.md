@@ -188,7 +188,7 @@ The lookup functions retrieve records from replacement tables, collections, and 
 
 ## Time Functions
 
-Time functions perform various operations on dates, timestamps and intervals.
+Time functions perform varios operations on dates, timestamps and intervals.
 
 * [window_length_time](functions-time.md#window_length_time)
 * [window_length_count](functions-time.md#window_length_count)
