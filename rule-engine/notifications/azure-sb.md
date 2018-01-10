@@ -1,4 +1,4 @@
-# Azure Service Bus Messaging
+# Azure Service Bus Notification
 
 ## Overview
 
