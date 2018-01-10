@@ -49,3 +49,10 @@ Certificate fingerprint (SHA1): ...
 gcp_publisher, Dec 28, 2017, PrivateKeyEntry,
 Certificate fingerprint (SHA1): ...
 ```
+
+## Restart ATSD
+
+```bash
+/opt/atsd/atsd/bin/stop-atsd.sh
+/opt/atsd/atsd/bin/start-atsd.sh
+```
