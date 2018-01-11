@@ -120,6 +120,13 @@ The fields of the DateTime object can be accessed with getter methods:
 * `getYearOfCentury()`
 * `getYearOfEra()`
 
+|**Method**| **Value** |
+|:---|:---|
+|date_parse('2018-01-13T16:45:22.303Z').getWeekyear()|2018|
+|date_parse('2018-01-13T16:45:22.303Z').getYear()|2018|
+|date_parse('2018-01-13T16:45:22.303Z').getYearOfCentury()|18|
+|date_parse('2018-01-13T16:45:22.303Z').getYearOfEra()|2018|
+
 Examples:
 
   ```javascript
