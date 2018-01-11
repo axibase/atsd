@@ -1,0 +1,38 @@
+<list>
+  <com.axibase.tsd.model.notifications.GcpPubSubWebNotificationConfig>
+    <enabled>true</enabled>
+    <logResponse>true</logResponse>
+    <name>gcp-test</name>
+    <description></description>
+    <parameters class="tree-map">
+      <comparator class="java.lang.String$CaseInsensitiveComparator"/>
+      <entry>
+        <string>message</string>
+        <string>{&#xd;
+   &quot;status&quot;: &quot;${status}&quot;,&#xd;
+   &quot;entity&quot;: &quot;${entity}&quot;,&#xd;
+   &quot;rule&quot;: &quot;${rule}&quot;,&#xd;
+   &quot;tags&quot;: &quot;${tags}&quot;,&#xd;
+   &quot;message&quot;: &quot;&quot;&#xd;
+}</string>
+      </entry>
+      <entry>
+        <string>privateKeyAlias</string>
+        <string>gcp_publisher</string>
+      </entry>
+      <entry>
+        <string>projectId</string>
+        <string>charged-thought-189815</string>
+      </entry>
+      <entry>
+        <string>serviceAccount</string>
+        <string>publisher</string>
+      </entry>
+      <entry>
+        <string>topic</string>
+        <string>my-topic</string>
+      </entry>
+    </parameters>
+    <url>https://pubsub.googleapis.com/v1/projects/charged-thought-189815/topics/my-topic:publish</url>
+  </com.axibase.tsd.model.notifications.GcpPubSubWebNotificationConfig>
+</list>
