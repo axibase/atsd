@@ -101,47 +101,32 @@ The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default
 
 The fields of the DateTime object can be accessed with getter methods:
 
-* `getCenturyOfEra()`
-* `getDayOfMonth()`
-* `getDayOfWeek()`
-* `getDayOfYear()`
-* `getEra()`
-* `getHourOfDay()`
-* `getMillisOfDay()`
-* `getMillisOfSecond()`
-* `getMinuteOfDay()`
-* `getMinuteOfHour()`
-* `getMonthOfYear()`
-* `getSecondOfDay()`
-* `getSecondOfMinute()`
-* `getWeekOfWeekyear()`
-* `getWeekyear()`
-* `getYear()`
-* `getYearOfCentury()`
-* `getYearOfEra()`
+```javascript
+  date_parse('2018-01-13T16:45:22.303Z').getDayOfWeek()
+```
 
-Examples for '2018-01-13T16:45:22.303Z':
+Method values for sample date 2018-01-13T16:45:22.303Z (Saturday):
 
 |**Method**| **Value** |
 |:---|:---|
-|getCenturyOfEra|20|
-|getDayOfMonth|13|
-|getDayOfWeek|6|
-|getDayOfYear|13|
-|getEra|1|
-|getHourOfDay|16|
-|getMillisOfDay|60322303|
-|getMillisOfSecond|303|
-|getMinuteOfDay|1005|
-|getMinuteOfHour|45|
-|getMonthOfYear|1|
-|getSecondOfDay|60322|
-|getSecondOfMinute|22|
-|getWeekOfWeekyear|2|
-|getWeekyear|2018|
-|getYear|2018|
-|getYearOfCentury|18|
-|getYearOfEra|2018|
+|getCenturyOfEra()|20|
+|getDayOfMonth()|13|
+|getDayOfWeek()|6|
+|getDayOfYear()|13|
+|getEra()|1|
+|getHourOfDay()|16|
+|getMillisOfDay()|60322303|
+|getMillisOfSecond()|303|
+|getMinuteOfDay()|1005|
+|getMinuteOfHour()|45|
+|getMonthOfYear()|1|
+|getSecondOfDay()|60322|
+|getSecondOfMinute()|22|
+|getWeekOfWeekyear()|2|
+|getWeekyear()|2018|
+|getYear()|2018|
+|getYearOfCentury()|18|
+|getYearOfEra()|2018|
 
 Examples:
 
