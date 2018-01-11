@@ -20,6 +20,15 @@ The functions return a new string with the original input string left unchanged.
 * [coalesce](#coalesce)
 * [urlencode](#urlencode)
 * [jsonencode](#jsonencode)
+* [keepAfter](#keepafter)
+* [keepAfterLast](#keepafterlast)
+* [keepBefore](#keepbefore)
+* [keepBeforeLast](#keepbeforelast)
+* [replace](#replace)
+* [capFirst](#capfirst)
+* [capitalize](#capitalize)
+* [removeBeginning](#removebeginning)
+* [removeEnding](#removeending)
 
 ### `upper`
 
@@ -131,3 +140,137 @@ Encodes `s` into the URL format by replacing unsafe characters with "%" followed
 ```
 
 Escapes special symbols such as double-quote with backslash to safely use the input string within a JSON object.
+
+### `keepAfter`
+
+```javascript
+  keepAfter(string s, string p) string
+```
+
+Removes part of the string `s` before the first occurrence of the given substring `p`.
+
+Example:
+
+```javascript
+  /* Return "cabc" */
+  keepAfter("abcabc", "b") 
+```
+
+### `keepAfterLast`
+
+```javascript
+  keepAfterLast(string s, string p) string
+```
+
+Removes part of the string `s` before the last occurrence of the given substring `p`.
+
+Example:
+
+```javascript
+  /* Return "c" */
+  keepAfterLast("abcabc", "b") 
+```
+
+### `keepBefore`
+
+```javascript
+  keepBefore(string s, string p) string
+```
+Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
+
+Example:
+
+```javascript
+  /* Return "a" */
+  keepBefore("abcabc", "b") 
+```
+
+### `keepBeforeLast`
+
+```javascript
+  keepBeforeLast(string s, string p) string
+```
+Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
+
+Example:
+
+```javascript
+  /* Return "abca" */
+  KeepBeforeLast("abcabc", "b") 
+```
+
+### `replace`
+
+```javascript
+  replace(string s, string p, string r) string
+```
+Replace all occurrences of the given string `p` in the original string `s` with another string `r`.
+
+Example:
+
+```javascript
+  /* Return "adcadc" */
+  replace("abcabc", "b", "d")
+```
+
+### `capFirst`
+
+```javascript
+  capFirst(string s) string
+```
+Capitalize first word.
+
+Example:
+
+```javascript
+  /* Return "AbC abC abC" */
+  capFirst("abC abC abC")
+```
+
+### `capitalize`
+
+```javascript
+  capitalize(string s) string
+```
+Capitalize all words.
+
+Example:
+
+```javascript
+  /* Return "Abc Abc Abc" */
+  capitalize("abC abC abC")
+```
+
+### `removeBeginning`
+
+```javascript
+  removeBeginning(string s, string r) string
+```
+Removes the given substring `r` from the beginning of the string `s`.
+
+Examples:
+
+```javascript
+  /* Return "bcabc" */
+  removeBeginning("abcabc", "a")
+  
+  /* Return "abcabc" */
+  removeBeginning("abcabc", "b")
+```
+
+### `removeEnding`
+
+```javascript
+  removeEnding(string s, string r) string
+```
+Removes the given substring `r` from the end of the string `s`.
+
+Examples:
+
+```javascript
+  /* Return "abca" */
+  removeEnding("abcabc", "bc")
+  
+  /* Return "abcabc" */
+  removeEnding("abcabc", "ab")
+```

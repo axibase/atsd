@@ -2,13 +2,13 @@
 
 ## Overview
 
-Placeholders can be used to include [window](window.md) fields, [entity fields](../api/meta/entity/list.md#fields), [metric fields](../api/meta/metric/list.md#fields), and [function](functions.md) values into email messages, web notifications, system commands, and logging messages.
+Placeholders can be used to include [window](window.md) fields, [entity fields](../api/meta/entity/list.md#fields), [metric fields](../api/meta/metric/list.md#fields), user-defined [variables](variables.md), and [function](functions.md) values into email messages, web notifications, system commands, and logging messages.
 
 Specified using the `${name}` syntax, the placeholders are resolved and replaced with the actual value of the named field, variable or function at the time the trigger is executed.
 
 ![](images/placeholders.png)
 
-Non-existing placeholders are substituted with empty strings.
+> If the specified placeholder doesn't exist, it is substituted with an empty string.
 
 ## Base Placeholders
 
@@ -39,7 +39,6 @@ threshold | string | Override rule | max() > 20
 |---|---|---|--|
 | value | number | Last value | 3.1415 |
 | open_value | number | First value | 1.0 |
-
 
 ## Message Command Placeholders
 
@@ -104,55 +103,10 @@ threshold | string | Override rule | max() > 20
 * [detailsTable('csv')](details-table.md#csv)
 * [detailsTable('json')](details-table.md#json)
 
-## Placeholders for Custom Variables
+## User-defined Variables
 
-Variables defined on the **Overview** tab can be referenced by name in the condition and actions, similar to the other fields.
+Refer to [variables](variables.md).
 
-```sh
-${idle}
-```
-
-![](images/variables.png)
-
-The variables can be declared in one of the following types:
-
-### Number Variables
-
-  ```javascript
-  avar = 123
-  bvar = 3.1415
-  ```
-
-### String Variables
-
-  ```javascript
-  state = CA
-  ```
-
-### List Variables
-
-  ```javascript
-  alist = ['a', 'b', 'c']
-  blist = ["a", "b"]
-  ```
-
-### Map Variables
-
-  ```javascript
-  ['type' : 'park', 'state': 'CA']
-  ```
-
-### Function Variables
-
-  ```javascript
-  last_msg = db_message_last('1 week', 'alert', 'rule-engine', 'rule=abc')
-  ```
-
-### Expression Variables
-
-  ```javascript
-  last_place = last_msg == null ? '' : last_msg.message
-  ```
 
 ## Examples
 

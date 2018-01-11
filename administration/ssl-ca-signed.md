@@ -48,15 +48,13 @@ rm /opt/atsd/atsd/conf/server.keystore
 Use the keytool to create a new JKS keystore by importing the PKCS12 keystore file.
 
 ```bash
-keytool -importkeystore -srckeystore example.pkcs12 -srcstoretype PKCS12 -destkeystore /opt/atsd/atsd/conf/server.keystore
+keytool -importkeystore -srckeystore example.pkcs12 -srcstoretype PKCS12 -alias 1 -destkeystore /opt/atsd/atsd/conf/server.keystore -destalias atsd
 ```
 
 ```bash
 Enter destination keystore password: NEW_PASS
 Re-enter new password: NEW_PASS
 Enter source keystore password: NEW_PASS
-Entry for alias 1 successfully imported.
-Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
 ```
 
 ## Update Keystore Passwords
@@ -104,7 +102,7 @@ Keystore provider: SUN
 
 Your keystore contains 1 entries
 
-Alias name: 1
+Alias name: atsd
 Creation date: Jan 18, 2017
 Entry type: PrivateKeyEntry
 Certificate chain length: 4
