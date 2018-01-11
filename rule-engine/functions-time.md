@@ -120,12 +120,28 @@ The fields of the DateTime object can be accessed with getter methods:
 * `getYearOfCentury()`
 * `getYearOfEra()`
 
+Examples for '2018-01-13T16:45:22.303Z':
+
 |**Method**| **Value** |
 |:---|:---|
-|date_parse('2018-01-13T16:45:22.303Z').getWeekyear()|2018|
-|date_parse('2018-01-13T16:45:22.303Z').getYear()|2018|
-|date_parse('2018-01-13T16:45:22.303Z').getYearOfCentury()|18|
-|date_parse('2018-01-13T16:45:22.303Z').getYearOfEra()|2018|
+|getCenturyOfEra|20|
+|getDayOfMonth|13|
+|getDayOfWeek|6|
+|getDayOfYear|13|
+|getEra|1|
+|getHourOfDay|16|
+|getMillisOfDay|60322303|
+|getMillisOfSecond|303|
+|getMinuteOfDay|1005|
+|getMinuteOfHour|45|
+|getMonthOfYear|1|
+|getSecondOfDay|60322|
+|getSecondOfMinute|22|
+|getWeekOfWeekyear|2|
+|getWeekyear|2018|
+|getYear|2018|
+|getYearOfCentury|18|
+|getYearOfEra|2018|
 
 Examples:
 
