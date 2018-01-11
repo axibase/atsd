@@ -151,6 +151,15 @@ The text functions transform and compare strings.
 * [coalesce](functions-text.md#coalesce)
 * [urlencode](functions-text.md#urlencode)
 * [jsonencode](functions-text.md#jsonencode)
+* [keepAfter](functions-text.md#keepafter)
+* [keepAfterLast](functions-text.md#keepafterlast)
+* [keepBefore](functions-text.md#keepbefore)
+* [keepBeforeLast](functions-text.md#keepbeforelast)
+* [replace](functions-text.md#replace)
+* [capFirst](functions-text.md#capfirst)
+* [capitalize](functions-text.md#capitalize)
+* [removeBeginning](functions-text.md#removebeginning)
+* [removeEnding](functions-text.md#removeending)
 
 ## Formatting Functions
 
