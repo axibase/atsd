@@ -36,13 +36,13 @@ Modify the `Topic` by replacing the `<TOPIC>` value with your topic name, for ex
 my-topic
 ```
 
-Modify the `Service Account` by replacing the `<SERVICE_ACCOUNT>` value with your [service account](../../administration/gcp-service-account-key.md#create-service-account), for example:
+Modify the `Service Account` by replacing the `<SERVICE_ACCOUNT>` value with your [service account](gcp-service-account-key.md#create-service-account), for example:
 
 ```
 publisher
 ```
 
-Modify the `Private Key Alias` by selecting the alias for [imported account's private key](../../administration/gcp-service-account-key.md#import-accounts-private-key), for example:
+Modify the `Private Key Alias` by selecting the alias for [imported account's private key](gcp-service-account-key.md#import-accounts-private-key), for example:
 
 ```
 gcp_publisher
