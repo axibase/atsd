@@ -110,6 +110,15 @@ The fields of the DateTime object can be accessed with getter methods:
 * `getMillisOfDay()`
 * `getMillisOfSecond()`
 * `getMinuteOfDay()`
+* `getMinuteOfHour()`
+* `getMonthOfYear()`
+* `getSecondOfDay()`
+* `getSecondOfMinute()`
+* `getWeekOfWeekyear()`
+* `getWeekyear()`
+* `getYear()`
+* `getYearOfCentury()`
+* `getYearOfEra()`
 
 Examples:
 

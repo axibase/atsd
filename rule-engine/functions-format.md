@@ -68,8 +68,8 @@ The input timestamp is specified as UNIX milliseconds.
 Example:
 
 ```javascript
-  /* Return formatted time string  "2017-02-22 11:18:00:000 Europe/Berlin" */
-  date_format(seconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+  /* Return formatted time string  "2018-01-09 15:23:40:000 Europe/Berlin" */
+  date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```
 
 Datetime Pattern reference:

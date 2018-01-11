@@ -6,91 +6,59 @@ Function calls in expressions and placeholders are replaced during evaluation by
 
 Functions can accept arguments of the following data types:
 
-* `D` - double
-* `L` - long
-* `I` - integer
-* `B` - boolean
-* `S` - string
-* `[S]` - array of strings
+* `double`
+* `long`
+* `integer`
+* `boolean`
+* `string`
+* `[string]` - array of strings
+* `{}` - key-value map
+* `[]` - collection
 
-For example, the `percentile(D)` function accepts one argument of the `double` type, such as `percentile(50.0)`.
+For example, the `percentile(double n)` function accepts one argument of the `double` type, such as `percentile(50.0)`.
 
-String literal arguments (`S`) must be enclosed in single quotes, for instance `diff('1 minute')`.
+String literal arguments (`string`) must be enclosed in single quotes, for instance `diff('1 minute')`.
 
 Function names are case-**sensitive**.
 
 ## Statistical Functions
 
-Univariate statistical functions listed below perform a calculation on the array of numeric values stored in the window. For example, the `avg()` function for a `5-minute` time-based window returns an average value for all samples received within this period of time.
+Univariate statistical functions listed below perform a calculation on the array of numeric values stored in the window.
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `avg()` | Average value. |
-| `mean()` | Average value. Same as `avg()`. |
-| `sum()` | Sum of values. |
-| `min()` | Minimum value. |
-| `max()` | Maximum value. |
-| `wavg()` | Weighted average. Weight = sample index which starts from 0 for the first sample. |
-| `wtavg()` | Weighted time average.<br>`Weight = (sample.time - first.time)/(last.time - first.time + 1)`. <br>Time measured in epoch seconds. |
-| `count()` | Count of values. |
-| `percentile(D)` | N-th percentile. D can be a fractional number. |
-| `median()` | 50% percentile. Same as `percentile(50)`. |
-| `variance()` | Standard deviation. |
-| `stdev()` | Standard deviation. Aliases: `variance`, `stdev`, `std_dev`. |
-| `slope()` | Linear regression slope. |
-| `intercept()` | Linear regression intercept. |
-| `first()` | First value. Same as `first(0)`. |
-| `first(I)` | I-th value from start. First value has index of 0. |
-| `last()` | Last value. Same as `last(0)`. |
-| `last(I)` | I-th value from end. Last value has index of 0. |
-| `diff()` | Difference between `last` and `first` values. Same as `last() - first()`. |
-| `diff(I)` | Difference between `last(I)` and `first(I)` values. Same as` last(I)-first(I)`. |
-| `diff(S)` | Difference between the last value and value at 'currentTime - interval'. <br>Interval specified as 'count unit', for example '5 minute'. |
-| `delta()` | Same as `diff()`. |
-| `new_maximum()` | Returns true if last value is greater than any previous value. |
-| `new_minimum()` | Returns true if last value is smaller than any previous value. |
-| `threshold_time(D)` | Number of minutes until the sample value reaches specified threshold `D` based on extrapolation of the difference between the last and first value. |
-| `threshold_linear_time(D)` | Number of minutes until the sample value reaches the specified threshold `D` based on linear extrapolation. |
-| `rate_per_second()` | Difference between last and first value per second. <br>Same as `diff()/(last.time-first.time)`. Time measured in epoch seconds. |
-| `rate_per_minute()` | Difference between last and first value per minute. Same as `rate_per_second()/60`. |
-| `rate_per_hour()` | Difference between last and first value per hour. Same as `rate_per_second()/3600`. |
-| `slope_per_second()` | Same as` slope()`. |
-| `slope_per_minute()` | `slope_per_second()/60`. |
-| `slope_per_hour()` | `slope_per_second()/3600`. |
+* [avg](functions-statistical.md#avg)
+* [mean](functions-statistical.md#mean)
+* [sum](functions-statistical.md#sum)
+* [min](functions-statistical.md#min)
+* [max](functions-statistical.md#max)
+* [wavg](functions-statistical.md#wavg)
+* [wtavg](functions-statistical.md#wtavg)
+* [count](functions-statistical.md#count)
+* [percentile](functions-statistical.md#percentile)
+* [median](functions-statistical.md#median)
+* [variance](functions-statistical.md#variance)
+* [stdev](functions-statistical.md#stdev)
+* [intercept](functions-statistical.md#intercept)
+* [first](functions-statistical.md#first)
+* [last](functions-statistical.md#last)
+* [diff](functions-statistical.md#diff)
+* [delta](functions-statistical.md#delta)
+* [new_maximum](functions-statistical.md#new_maximum)
+* [new_minimum](functions-statistical.md#new_minimum)
+* [threshold_time](functions-statistical.md#threshold_time)
+* [threshold_linear_time](functions-statistical.md#threshold_linear_time)
+* [rate_per_second](functions-statistical.md#rate_per_second)
+* [rate_per_minute](functions-statistical.md#rate_per_minute)
+* [rate_per_hour](functions-statistical.md#rate_per_hour)
+* [slope](functions-statistical.md#slope)
+* [slope_per_second](functions-statistical.md#slope_per_second)
+* [slope_per_minute](functions-statistical.md#slope_per_minute)
+* [slope_per_hour](functions-statistical.md#slope_per_hour)
 
 ### Conditional Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| <code> countIf(S condition [, S interval &#124; I count])</code> | Count of elements matching the specified condition. |
-| <code> avgIf(S condition [, S interval &#124; I count])</code> | Average of elements matching the specified condition. |
-| <code> sumIf(S condition [, S interval &#124; I count])</code> | Sum of elements matching the specified condition. |
-
-The condition is a boolean expression that can refer to `value` field and compare it as a number.
-
-Example: `countIf('value > 10')`for values `[0, 15, 5, 40]` will return `2`.
-
-### Interval Selection
-
-By default, the statistical functions calculate the result based on all samples stored in the window. The range of samples can be adjusted by passing an optional argument - specified as sample count (`I`) or interval (`S`) - in which case the function will calculate the result based on the most recent samples.
-
-```javascript
-avg([S interval | I count])
-```
-
-* `avg(5)` - Average value for the last 5 samples.
-* `avg('1 HOUR)` - Average value for the last 1 hour.
-* `max('2 minute')` - Maximum value for the last 2 minutes.
-* `percentile(95, '1 hour')` - 95% percentile for the last hour.
-* `countIf('value > 0', 10)` - Count of values exceeding 5 within the last 10 samples.
-
-Example:
-
-The condition evaluates to `true` if the 1-minute average is greater than the 1-hour average by more than `20` and a maximum was reached in the last 5 samples.
-
-```javascript
-  avg('1 minute') - avg() > 20 && max(5) = max()
-```
+* [countIf](functions-statistical.md#countIf)
+* [avgIf](functions-statistical.md#avgIf)
+* [sumIf](functions-statistical.md#sumIf)
 
 ## Statistical Forecast Functions
 
