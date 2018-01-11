@@ -183,3 +183,10 @@ Property functions retrieve and compare property keys and tags.
 Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.
 
 * [scriptOut](functions-script.md) 
+
+## Rule Functions
+
+The rule functions provide a way to check the status of windows created by other rules. 
+
+* [rule_open](functions-rule.md#rule_open)
+* [rule_window](functions-rule.md#rule_window)
