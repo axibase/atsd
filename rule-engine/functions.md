@@ -56,9 +56,9 @@ Univariate statistical functions listed below perform a calculation on the array
 
 ### Conditional Functions
 
-* [countIf](functions-statistical.md#countIf)
-* [avgIf](functions-statistical.md#avgIf)
-* [sumIf](functions-statistical.md#sumIf)
+* [countIf](functions-statistical.md#countif)
+* [avgIf](functions-statistical.md#avgif)
+* [sumIf](functions-statistical.md#sumif)
 
 ## Statistical Forecast Functions
 

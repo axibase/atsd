@@ -34,9 +34,9 @@ Univariate statistical functions listed below perform a calculation on the array
 * [slope_per_second](#slope_per_second)
 * [slope_per_minute](#slope_per_minute)
 * [slope_per_hour](#slope_per_hour)
-* [countIf](#countIf)
-* [avgIf](#avgIf)
-* [sumIf](#sumIf)
+* [countIf](#countif)
+* [avgIf](#avgif)
+* [sumIf](#sumif)
 
 ### `avg`
 
