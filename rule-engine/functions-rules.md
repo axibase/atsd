@@ -4,9 +4,6 @@
 
 The rule functions provide a way to check the status of windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. The functions can be used for correlation purposes.
 
-* The `rule_open` function checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule and the same entity and tags as defined in the current window.
-* The `rule_window` function returns the first matching window for the specified rule and the same entity and tags as defined in the current window.
-
 If the current rule and the referenced rules have different grouping settings, the following match conditions are applied:
 
 | Current Rule | Referenced Rule | rule_open() Result |
@@ -18,11 +15,12 @@ If the current rule and the referenced rules have different grouping settings, t
 
 > Open window means a window with status `OPEN` or `REPEAT`.
 
-## `rule_open` Function
+## `rule_open`
 
 ```java
-  rule_open(S ruleName)
+  rule_open(string r) boolean
 ```
+Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r` and the same entity and tags as defined in the current window.
 
 > The function returns `false` if a matching window is not found.
 
@@ -34,14 +32,14 @@ Example:
 
 The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if rule 'disk_used_check' is open for the same entity and tags as defined in this window.
 
-
-## `rule_window` Function
+## `rule_window`
 
 ```java
-  rule_window(S ruleName)
+  rule_window(string r) EventWindow
 ```
+Returns the first matching window for the specified rule `r` and the same entity and tags as defined in the current window.
 
-  Example:
+Example:
 
 ```java
   avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'CANCEL'
