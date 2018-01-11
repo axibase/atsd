@@ -266,7 +266,7 @@ Same as `slope_per_second()/60`.
 ```
 Same as `slope_per_second()/3600`.
 
-### Conditional Functions
+## Conditional Functions
 
 The condition is a boolean expression that can refer to `value` field and compare it as a number.
 
@@ -310,10 +310,10 @@ avg([string i | integer c]) double
 ```
 
 * `avg(5)` - Average value for the last 5 samples.
-* `avg('1 HOUR)` - Average value for the last 1 hour.
+* `avg('1 HOUR')` - Average value for the last 1 hour.
 * `max('2 minute')` - Maximum value for the last 2 minutes.
 * `percentile(95, '1 hour')` - 95% percentile for the last hour.
-* `countIf('value > 0', 10)` - Count of values exceeding 5 within the last 10 samples.
+* `countIf('value > 5', 10)` - Count of values exceeding 5 within the last 10 samples.
 
 Example:
 
