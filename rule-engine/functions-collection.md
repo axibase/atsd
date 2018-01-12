@@ -160,7 +160,7 @@ Example:
 ### `excludeKeys`
 
 ```javascript
-  excludeKeys({} m, [] c) boolean
+  excludeKeys([] m, [] c) boolean
 ```
 
 Returns a copy of the input map `m` without the keys specified in collection `c`.

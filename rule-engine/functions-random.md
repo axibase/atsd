@@ -105,7 +105,7 @@ An input collection can contain elements of any type, such as strings or numbers
 ## `randomKey` 
 
 ```javascript
-  randomKey({} m) string
+  randomKey([] m) string
 ```
 
 Returns a random element from the specified map `m` of objects using the **uniform** distribution.
