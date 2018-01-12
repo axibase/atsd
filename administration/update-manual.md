@@ -4,15 +4,14 @@
 
 ```sh
 su axibase
+cd /opt/atsd
 ```
 
 ## Download the Latest ATSD Distribution Files
 
-Select an archive to download based on **HBase Version** displayed on the **Settings > System Information** page.
-
 * [hbase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
 
-The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd_17239.tar.gz`.
+The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd.17239.tar.gz`.
 
 Copy the archive to the ATSD server.
 
@@ -27,8 +26,8 @@ tar xzf atsd.tar.gz
 ```sh
 cd target
 ls
-atsd-executable.jar
-atsd-hbase.jar
+atsd.<revision number>.jar
+atsd-hbase.<revision number>.jar
 ```
 
 ## Stop ATSD
@@ -37,16 +36,16 @@ atsd-hbase.jar
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-## Copy JAR Files
+## Replace JAR Files
 
 ```sh
 rm -rf /opt/atsd/hbase/lib/atsd*jar
-cp atsd-hbase.jar /opt/atsd/hbase/lib/atsd.hbase.jar
+mv atsd-hbase* /opt/atsd/hbase/lib/
 ```
 
 ```sh
 rm -rf /opt/atsd/atsd/bin/atsd*jar
-cp atsd-executable.jar /opt/atsd/atsd/bin/atsd.executable.jar
+mv atsd* /opt/atsd/atsd/bin/
 ```
 
 ## Start ATSD
@@ -63,7 +62,13 @@ It may take up to 5 minutes for the database to initialize.
 https://atsd_host:8443/
 ```
 
-* Open the **Admin: System Information** page.
+* Open the **Settings > System Information** page.
 * Verify that the Revision Number has been updated.
 
 ![](images/revision.png)
+
+## Remove the Archive
+
+```markdown
+rm /opt/atsd/atsd.tar.gz
+```
