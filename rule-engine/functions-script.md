@@ -271,7 +271,7 @@ ${scriptOut('ps.sh', ['axibase.com','bash'])}
 #### Command
 
 ```bash
-ssh -i /home/axibase/.ssh/def.key ps aux | grep bash
+ssh -i /home/axibase/.ssh/def.key axibase.com ps aux | grep bash
 ```
 
 #### Output
