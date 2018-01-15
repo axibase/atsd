@@ -150,6 +150,9 @@ The text functions transform and compare strings.
 * [removeEnding](functions-text.md#removeending)
 * [urlencode](functions-text.md#urlencode)
 * [jsonencode](functions-text.md#jsonencode)
+* [unquote](functions-text.md#unquote)
+* [countMatches](functions-text.md#countMatches)
+* [abbreviate](functions-text.md#abbreviate)
 
 ## Formatting Functions
 
