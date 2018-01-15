@@ -30,7 +30,7 @@ The functions return a new string with the original input string left unchanged.
 * [urlencode](#urlencode)
 * [jsonencode](#jsonencode)
 * [unquote](#unquote)
-* [countMatches](#countMatches)
+* [countMatches](#countmatches)
 * [abbreviate](#abbreviate)
 
 ### `upper`

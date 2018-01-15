@@ -151,7 +151,7 @@ The text functions transform and compare strings.
 * [urlencode](functions-text.md#urlencode)
 * [jsonencode](functions-text.md#jsonencode)
 * [unquote](functions-text.md#unquote)
-* [countMatches](functions-text.md#countMatches)
+* [countMatches](functions-text.md#countmatches)
 * [abbreviate](functions-text.md#abbreviate)
 
 ## Formatting Functions
