@@ -136,9 +136,7 @@ Examples:
 
 Removes part of the string `s` before the first occurrence of the given substring `p`. 
 
-If the parameter string `p` is not found, it will return an empty string. 
-
-If the parameter string `p` is a 0-length string, it will return the original string `s` unchanged.
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
 
 Example:
 
@@ -155,7 +153,7 @@ Example:
 
 Removes part of the string `s` before the last occurrence of the given substring `p`.
 
-If the parameter string `p` is not found or is a 0-length string, it will return an empty string.
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
 
 Example:
 
@@ -171,9 +169,7 @@ Example:
 ```
 Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
 
-If the parameter string `p` is not found, it will return the original string `s` unchanged. 
-
-If the parameter string `p` is a 0-length string, it will return an empty string.
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
 
 Example:
 
@@ -189,7 +185,7 @@ Example:
 ```
 Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
 
-If the parameter string `p` is not found or is a 0-length string, it will return the original string `s` unchanged.
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
 
 Example:
 
@@ -205,7 +201,7 @@ Example:
 ```
 Replace all occurrences of the given string `p` in the original string `s` with another string `r`.
 
-If the `p` parameter is an empty string, it will return the original string `s` unchanged.
+If the `p` parameter is empty `''`/ null / not found, it will return the original string `s` unchanged.
 
 Examples:
 
@@ -327,6 +323,9 @@ Examples:
 ```javascript
   /* Return "abc..." */
   abbreviate("abcdefg", 6)
+  
+  /* Return "abcd..." */
+  abbreviate("abcdefghi", 7)
   
   /* IllegalArgumentException */
   abbreviate("abcdefg", 3)  
