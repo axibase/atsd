@@ -224,3 +224,9 @@ The rule functions provide a way to check the status of windows created by other
 
 * [rule_open](functions-rules.md#rule_open)
 * [rule_window](functions-rules.md#rule_window)
+
+## Portal Functions
+
+Portal functions provide a way to attach any portals if the chat configuration supports sending screenshots
+
+* [addPortal](functions-portals.md#addPortal)
