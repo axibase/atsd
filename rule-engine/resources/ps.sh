@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-pattern=${1}
+host=${1}
+pattern=${2}
 
-ps aux | grep ${pattern}
+ssh -i /home/axibase/.ssh/def.key ${host} ps aux | grep ${pattern}
