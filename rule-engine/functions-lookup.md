@@ -25,12 +25,16 @@ The named collections are listed on the **Data > Named Collections** page.
 
 Returns value of tag `t` for entity `e`.
 
+If the tag or the entity is not found, `null` is returned.
+
 ### `entity_tags`
 
 ```javascript
   entity_tags(string e) map
 ```
 Returns entity tags as a map for entity `e`.
+
+If the entity is not found, an empty map is returned.
 
 ### `collection`
 
@@ -68,6 +72,8 @@ Example:
 ```
 
 Retrieves the replacement table identified by name `s` as a key-value map.
+
+If the table is not found, an empty map is returned.
 
 ### `property`
 

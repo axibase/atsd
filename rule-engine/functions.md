@@ -224,3 +224,7 @@ The rule functions provide a way to check the status of windows created by other
 
 * [rule_open](functions-rules.md#rule_open)
 * [rule_window](functions-rules.md#rule_window)
+
+# Utility Functions
+
+* [ifEmpty](functions-utility.md#ifempty)
