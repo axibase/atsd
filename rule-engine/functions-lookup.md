@@ -83,7 +83,7 @@ If the table is not found, an empty map is returned.
 
 Retrieves tag value for the entity in the current window given the [property search](property-search.md) expression `s`.
 
-The function returns an empty string is the expression matches no properties.
+The function returns an empty string if the expression matches no properties.
 
 Example:
 
