@@ -5,10 +5,10 @@
 ### `ifEmpty`
 
 ```javascript
-  ifEmpty(object f, object s) object
+  ifEmpty(object a, object b) object
 ```
 
-Returns the 2nd argument if the 1st is null or empty string.
+The function returns `b` if `a` is `null` or an empty string.
 
 Example:
 
@@ -16,6 +16,6 @@ Example:
     /* Returns 2 */  
     ifEmpty(null, 2)
     
-    /* Returns 1 */  
-    ifEmpty(1, 2)
+    /* Returns hello */  
+    ifEmpty('hello', 'world')
   ```
