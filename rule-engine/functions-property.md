@@ -9,30 +9,43 @@ Property functions provide a set of convenience methods to retrieve and compare 
 * [property](#property)
 * [property_values](#property_values)
 * [property_compare_except](#property_compare_except)
+* [property_map](#property_map)
+* [property_maps](#property_maps)
 
 ### `property`
 
 ```javascript
-  property(string s) string
+  property([string e, ]string s[, string d]) string
 ```
 
 Returns the first value in the list of strings returned by the `property_values(string s)` function. 
 
+By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+
+An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded and an empty string is returned. `d` can be an `iso` date or [endtime keyword](shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
+
 The function returns an empty string if no property records are found.
+
+Examples:
 
 ```javascript
   property('docker.container::image')
+  
+  /* Returns the most recent value if it received later than 2018-01-16T15:38:04.000Z, otherwise returns an empty string */
+  property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
 
 ### `property_values`
 
 ```javascript
-  property_values([string e, ]string s) [string]
+  property_values([string e, ]string s[, string d]) [string]
 ```
 
 Returns a list of property tag values for the given entity for the specified [property search](property-search.md) expression `s`.
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+
+An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded. `d` can be an `iso` date or [endtime keyword](shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
 
 The function returns an empty list if the entity, property or tag is not found.
 
@@ -48,6 +61,14 @@ Examples:
 
 ```javascript
   property_values('nurswgvml007', 'docker.container::image')
+```
+
+```javascript
+  /* Returns property tag values received later than 2018-01-16T15:38:04.000Z */
+  property_values('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
+  
+  /* Returns property tag values received later than 00:00:00 of the current day */
+  property_values('nurswgvml007', 'docker.container::image', 'today')
 ```
 
 ### `property_compare_except`
@@ -93,3 +114,59 @@ Examples:
   ``` java
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
   ```
+
+### `property_map`
+
+```javascript
+  property_map([string e,] string s[, string d]) map
+```
+
+Returns a map containing tag names and values for the specified [property search](property-search.md) expression `s`.
+
+By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+
+Since the function loads all tags, the search expression `s` can either omit the <tag_name> or specify a string to match tags with `*` used as a wildcard.
+
+An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded and an empty map is returned. `d` can be an `iso` date or [endtime keyword](shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
+
+The function returns an empty map if the entity, property or tag is not found.
+
+Examples:
+
+```javascript
+  /* Returns map with tags starting with 'cpu' in the 'configuration' type */
+  property_map('configuration::cpu*')
+  
+  /* Returns map of the 'configuration' type for the entity 'nurswgvml007' */
+  property_map('nurswgvml007','configuration::')
+  
+  /* Returns map if the most recent propery record received later than 00:00:00 of the current day, otherwise returns an empty map */
+  property_map('nurswgvml007','configuration::', 'today')
+```
+
+### `property_map`
+
+```javascript
+  property_maps([string e,] string s[, string d]) [map]
+```
+
+Returns a list of maps to hold all matched property records for the specified [property search](property-search.md) expression `s`.
+
+Since the function loads all tags, the search expression `s` can either omit the <tag_name> or specify a string to match tags with `*` used as a wildcard.
+
+An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded. `d` can be an `iso` date or [endtime keyword](shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
+
+The function returns an empty list if the entity, property or tag is not found.
+
+Examples:
+
+```javascript
+  /* Returns list of maps with tags starting with 'cpu' in the 'configuration' type */
+  property_maps('configuration::cpu*')
+  
+  /* Returns list of maps of the 'configuration' type for the entity 'nurswgvml007' */
+  property_maps('nurswgvml007','configuration::')
+  
+  /* Returns list of maps of propery records received later than 00:00:00 of the previous day */
+  property_maps('nurswgvml007','configuration::', 'yesterday')
+```

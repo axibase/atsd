@@ -211,6 +211,8 @@ Property functions retrieve and compare property keys and tags.
 * [property](functions-property.md#property)
 * [property_values](functions-property.md#property_values)
 * [property_compare_except](functions-property.md#property_compare_except)
+* [property_map](functions-property.md#property_map)
+* [property_maps](functions-property.md#property_maps)
 
 ## Script Functions
 
