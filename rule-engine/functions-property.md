@@ -22,9 +22,9 @@ Returns the first value in the list of strings returned by the `property_values(
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded and an empty string is returned. `d` can be an `iso` date or [endtime keyword](../shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
-The function returns an empty string if no property records are found.
+The function returns an empty string if no matching roperty records are found.
 
 Examples:
 
@@ -45,7 +45,7 @@ Returns a list of property tag values for the given entity for the specified [pr
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded. `d` can be an `iso` date or [endtime keyword](../shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
 The function returns an empty list if the entity, property or tag is not found.
 
@@ -127,7 +127,7 @@ By the default, the search is performed for the current entity that is initializ
 
 Since the function loads all tags, the search expression `s` can either omit the <tag_name> or specify a string to match tags with `*` used as a wildcard.
 
-An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded and an empty map is returned. `d` can be an `iso` date or [endtime keyword](../shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
 The function returns an empty map if the entity, property or tag is not found.
 
@@ -154,7 +154,7 @@ Returns a list of maps to hold all matched property records for the specified [p
 
 Since the function loads all tags, the search expression `s` can either omit the <tag_name> or specify a string to match tags with `*` used as a wildcard.
 
-An optional start date `d` argument controls which property records to include. If specified, property records received earlier than start date are discarded. `d` can be an `iso` date or [endtime keyword](../shared/calendar.md#keywords). If `d` is specified the entity `e` must be specified too.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
 The function returns an empty list if the entity, property or tag is not found.
 
