@@ -31,6 +31,7 @@ The functions return a new string with the original input string left unchanged.
 * [jsonencode](#jsonencode)
 * [unquote](#unquote)
 * [countMatches](#countmatches)
+* [abbreviate](#abbreviate)
 * [indexOf](#indexof)
 * [locate](#locate)
 
