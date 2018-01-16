@@ -31,7 +31,8 @@ The functions return a new string with the original input string left unchanged.
 * [jsonencode](#jsonencode)
 * [unquote](#unquote)
 * [countMatches](#countmatches)
-* [abbreviate](#abbreviate)
+* [indexOf](#indexof)
+* [locate](#locate)
 
 ### `upper`
 
@@ -150,7 +151,7 @@ If the parameter string `p` is empty `''`/ null / not found, it will return the 
 Example:
 
 ```javascript
-  /* Return "cabc" */
+  /* Returns "cabc" */
   keepAfter("abcabc", "b") 
 ```
 
@@ -167,7 +168,7 @@ If the parameter string `p` is empty `''`/ null / not found, it will return the 
 Example:
 
 ```javascript
-  /* Return "c" */
+  /* Returns "c" */
   keepAfterLast("abcabc", "b") 
 ```
 
@@ -183,7 +184,7 @@ If the parameter string `p` is empty `''`/ null / not found, it will return the 
 Example:
 
 ```javascript
-  /* Return "a" */
+  /* Returns "a" */
   keepBefore("abcabc", "b") 
 ```
 
@@ -199,7 +200,7 @@ If the parameter string `p` is empty `''`/ null / not found, it will return the 
 Example:
 
 ```javascript
-  /* Return "abca" */
+  /* Returns "abca" */
   KeepBeforeLast("abcabc", "b") 
 ```
 
@@ -215,7 +216,7 @@ If the `p` parameter is empty `''`/ null / not found, it will return the origina
 Examples:
 
 ```javascript
-  /* Return "adcadc" */
+  /* Returns "adcadc" */
   replace("abcabc", "b", "d")
 ```
 
@@ -229,7 +230,7 @@ Capitalize first word.
 Example:
 
 ```javascript
-  /* Return "AbC abC abC" */
+  /* Returns "AbC abC abC" */
   capFirst("abC abC abC")
 ```
 
@@ -243,7 +244,7 @@ Capitalize all words.
 Example:
 
 ```javascript
-  /* Return "Abc Abc Abc" */
+  /* Returns "Abc Abc Abc" */
   capitalize("abC abC abC")
 ```
 
@@ -257,10 +258,10 @@ Removes the given substring `r` from the beginning of the string `s`.
 Examples:
 
 ```javascript
-  /* Return "bcabc" */
+  /* Returns "bcabc" */
   removeBeginning("abcabc", "a")
   
-  /* Return "abcabc" */
+  /* Returns "abcabc" */
   removeBeginning("abcabc", "b")
 ```
 
@@ -274,10 +275,10 @@ Removes the given substring `r` from the end of the string `s`.
 Examples:
 
 ```javascript
-  /* Return "abca" */
+  /* Returns "abca" */
   removeEnding("abcabc", "bc")
   
-  /* Return "abcabc" */
+  /* Returns "abcabc" */
   removeEnding("abcabc", "ab")
 ```
 
@@ -330,12 +331,46 @@ Abbreviates a string `s` using ellipses. `n` is maximum length of result string,
 Examples:
 
 ```javascript
-  /* Return "abc..." */
+  /* Returns "abc..." */
   abbreviate("abcdefg", 6)
   
-  /* Return "abcd..." */
+  /* Returns "abcd..." */
   abbreviate("abcdefghi", 7)
   
   /* IllegalArgumentException */
   abbreviate("abcdefg", 3)  
 ```
+
+### `indexOf`
+
+```javascript
+  indexOf(string s, string p[, int i]) integer
+```
+
+Returns non-negative index starting with 0 of the first occurrence of substring `p` contained in the string `s` starting with index `i`.
+
+If the substring `p` is not found, `-1` is returned.
+
+Examples:
+
+```javascript
+  /* Returns 1 */
+  indexOf("abcabc", "b")
+  
+  /* Returns -1 */
+  indexOf("abcabc", "z")
+  
+  /* Returns 4 */
+  indexOf("abcabc", "b", 2) 
+  
+  /* Returns -1 */
+  indexOf("abcabc", "a", 4) 
+```
+
+### `locate`
+
+```javascript
+  locate(string s, string p[, int i]) integer
+```
+
+Same as `indexOf()`.

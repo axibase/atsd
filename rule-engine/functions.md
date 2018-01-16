@@ -153,6 +153,8 @@ The text functions transform and compare strings.
 * [unquote](functions-text.md#unquote)
 * [countMatches](functions-text.md#countmatches)
 * [abbreviate](functions-text.md#abbreviate)
+* [indexOf](functions-text.md#indexof)
+* [locate](functions-text.md#locate)
 
 ## Formatting Functions
 
