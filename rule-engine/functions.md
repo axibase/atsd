@@ -186,6 +186,7 @@ The lookup functions retrieve records from replacement tables, collections, and 
 * [collection](functions-lookup.md#collection)
 * [lookup](functions-lookup.md#lookup)
 * [replacementTable](functions-lookup.md#replacementtable)
+* [getEntity](functions-lookup.md#getentity)
 
 ## Random Distribution Functions
 

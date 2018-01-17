@@ -16,6 +16,7 @@ The named collections are listed on the **Data > Named Collections** page.
 * [lookup](#lookup)
 * [replacementTable](#replacementtable)
 * [property](#property)
+* [getEntity](#getentity)
 
 ### `entity_tag`
 
@@ -93,3 +94,17 @@ Example:
 
 Refer to [property functions](functions-property.md#property) for additional syntax options.
 
+
+### `getEntity`
+
+```javascript
+  getEntity(string e) object
+```
+Retrieves an entity object by name. The function returns null if the entity `e` is not found. The returned object's fields also can be retrieved.
+
+Example:
+
+```javascript
+  /* Returns a label of 'nurswgvml007' entity object */
+  getEntity('nurswgvml007').label
+```
