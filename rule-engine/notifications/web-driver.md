@@ -88,6 +88,6 @@ sudo mv chromedriver /usr/bin/chromedriver
 
 * Open Rules > Web Notifications page. Create and test one of TYPE-specific web notifications such as Telegram or Slack. Verify that screenshot was successfully received in the chat client.
 
-* Review Web Driver settings on **Settings > System** Information page, no error should be displayed.
+* Review Web Driver settings on **Settings > System Information** page, no error should be displayed.
 
     ![](images/webdriver-settings_2.png)
