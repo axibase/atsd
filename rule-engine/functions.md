@@ -1,5 +1,24 @@
 # Functions
 
+## Reference
+
+* [Statistical Functions](#statistical-functions)
+* [Statistical Forecast Functions](#statistical-forecast-functions)
+* [Value Functions](#value-functions)
+* [Database Functions](#database-functions)
+* [Mathematical Functions](#mathematical-functions)
+* [Text Functions](#text-functions)
+* [Formatting Functions](#formatting-functions)
+* [Collection Functions](#collection-functions)
+* [Lookup Functions](#lookup-functions)
+* [Random Distribution Functions](#random-distribution-functions)
+* [Time Functions](#time-functions)
+* [Property Functions](#property-functions)
+* [Script Functions](#script-functions)
+* [Rule Functions](#rule-functions)
+* [Utility Functions](#rule-functions)
+* [Link Functions](#link-functions)
+
 ## Overview
 
 Functions are predefined procedures that perform a task or calculate a value.
