@@ -7,10 +7,10 @@
 ```javascript
   getEntityLink(string e) string
 ```
-Returns link to entity `e`.
+Returns link to entity `e`. Entity will be searched by label if it is not found by name.
 
 Example:
 
-```bash
-https://axibase.com:8443/entities/docker
+```elm
+https://axibase.com:8443/entities/nurswgvml007
 ```
