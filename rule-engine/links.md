@@ -65,7 +65,7 @@ https://axibase.com:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%
 ### `htmlExportLink`
 
 ```bash
-${csvExportLink}
+${htmlExportLink}
 ```
 Retrieves link to **Data > Export** page for the current entity that is initialized in the rule window.
 
