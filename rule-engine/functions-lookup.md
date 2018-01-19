@@ -40,10 +40,9 @@ If the entity is not found, an empty map is returned.
 ### `getEntity`
 
 ```javascript
-  getEntity(string e) object
+  getEntity(string e[,boolean l]) object
 ```
-
-Retrieves an entity object by name. 
+Retrieves an entity object by name. If `l` set to `true` entity will be searched by label if it is not found by name. By default `l` is false.
 
 The object's [fields](../api/meta/entity/list.md#fields) can be accessed using the dot notation, for example `getEntity('nurswgvml007').label`.
 
@@ -52,8 +51,8 @@ The function returns `null` if the entity `e` is not found.
 Example:
 
 ```javascript
-  /* Returns a label of 'nurswgvml007' entity object */
-  getEntity('nurswgvml007').label
+  /* Returns an interpolation mode of 'nurswgvml007' entity object */
+  getEntity('nurswgvml007').interpolate
 ```
 
 ### `collection`
