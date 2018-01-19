@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
 url=${1}
-status=$(curl --head ${1} 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*")
+dir=$(dirname $(readlink -f $0))
+status=$(curl -sS --insecure -X GET -D ${dir}/headers -w "\nResponse Time: %{time_total}\n" "${url}" > ${dir}/response 2>&1)
 if [[ $? == 0 ]] ; then
-  echo ${status}
+  code=$(head -n 1 ${dir}/headers | grep -oiE "[0-9]{3}[a-z ]*")
+  echo "Status code: ${code}"
+  echo "$(tail -n 1 ${dir}/response)" # Response Time
+  length=$(head -n -1 ${dir}/response | wc -c)
+  echo "Content Length: ${length} bytes"
 else
-  echo "Incorrect url ${1}"
+  head -n 1 ${dir}/response
 fi
+
+rm  ${dir}/response  ${dir}/headers
