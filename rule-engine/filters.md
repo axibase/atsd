@@ -33,36 +33,42 @@ To match the rule, the incoming series command must have the same metric name as
 
 ## Filter Expression
 
-The filter allows commands for which the condition returns `true`.
+The filter matches commands for which the filter expression returns `true`.
 
-The expression must return a boolean value and may consist of one or multiple boolean checks joined with `AND`, `OR`, and `NOT` operators.
+The expression may consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
 
 ```javascript
 entity != 'nurswgvml007'
 ```
 
 ```javascript
-entity LIKE 'nurswgvml*' AND entity NOT IN ('nurswgvml007', 'nurswgvml006') 
+entity LIKE 'nurswgvml*' AND entity IN ('nurswgvml007', 'nurswgvml006')
 ```
 
-The expression may reference fields present in the command using [placeholders](placeholders.md) as well as apply string, formatting, and collection [functions](functions.md):
+The expression may reference command [fields](window.md#window-fields) as well as apply various [functions](functions.md):
 
-* metric
+Base fields:
+
 * entity
-* tags.tag-name
-* entity.tags.tag-name
+* tags.{tag-name}
+* entity.tags.{tag-name}
 * entity.field
-* metric.tags.tag-name
+* metric.tags.{tag-name}
 * metric.field
 
-For message commands:
+`series` command fields:
+
+* metric
+* value
+
+`message` command fields:
 
 * type
 * source
 * severity
 * message
 
-For property commands:
+`property` command fields:
 
 * type
 * keys

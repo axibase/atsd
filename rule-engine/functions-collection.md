@@ -176,5 +176,5 @@ Returns a copy of the input map `m` without the keys specified in collection `c`
 Example:
 
   ```javascript
-    excludeKeys(replacementTable('oncall-emails'),[last_oncall_email])
+    excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
   ```
