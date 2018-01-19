@@ -2,18 +2,8 @@
 
 ## Overview
 
-Link placeholders allow to retrieve links based on `server.url` property at **Settings > Server Properties > Other** page.
+Link placeholders contain URLs to various pages based on the current [window](window.md) field values and the `server.url` property configured on the **Settings > Server Properties > Other** page.
 
-To resolve links in messengers following settings must be checked at Web Notification editor:
-
-* Slack
- 
-   **Parse Mode** must be set to *Default*.
-   
-* HipChat Data Center 
- 
-   **Message Format** must be set to *html*.
-   
 ## Reference
 
 * [ruleLink](#rulelink)
@@ -28,7 +18,7 @@ To resolve links in messengers following settings must be checked at Web Notific
 ```bash
 ${ruleLink}
 ```
-Retrieves link to rule. 
+Link to the current rule. 
 
 Example: 
    
@@ -41,7 +31,9 @@ https://atsd_host:8443/rule/edit.xhtml?name=docker-container-lifecycle-restart
 ```bash
 ${chartLink}
 ```
-Retrieves link to default chart. 
+Link to the default portal for the current metric, entity, and tags. 
+
+> Available only in rules with `Series` data type.
 
 Example:
 
@@ -54,7 +46,10 @@ https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007&add%20pa
 ```bash
 ${csvExportLink}
 ```
-Retrieves link to csv file for the current entity that is initialized in the rule window.
+
+Link to the **CSV** file with historical statistics for the current metric, entity, and tags. 
+
+> Available only in rules with `Series` data type.
 
 Example:
 
@@ -67,7 +62,10 @@ https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22
 ```bash
 ${htmlExportLink}
 ```
-Retrieves link to **Data > Export** page for the current entity that is initialized in the rule window.
+
+Link to the **Data > Export** page for the current metric, entity, and tags. 
+
+> Available only in rules with `Series` data type.
 
 Example:
 
@@ -80,7 +78,8 @@ https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22
 ```bash
 ${serverLink}
 ```
-Retrieves link to the server specified in `server.url` property at **Settings > Server Properties > Other** page.
+
+Link to the ATSD server specified in `server.url` property on the **Settings > Server Properties > Other** page.
 
 Example:
 
@@ -93,10 +92,24 @@ https://atsd_host:8443/
 ```bash
 ${entityLink}
 ```
-Retrieves link to entity that is initialized in the rule window.
+
+Link to current entity that is initialized in the rule window.
 
 Example:
 
 ```elm
 https://atsd_host:8443/entities/nurswgvml007
 ```
+
+## Inline Links
+
+To display the above links in inline mode (where label is displayed instead of URL), make sure the following settings are specified in the Web Notification editor:
+
+* Slack
+ 
+   **Parse Mode** must be set to *Default* or `false`.
+   
+* HipChat Data Center
+ 
+   **Message Format** must be set to *html*.
+   
