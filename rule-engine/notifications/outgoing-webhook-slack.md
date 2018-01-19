@@ -2,17 +2,23 @@
 
 ## Overview
 
-Slack [Events API](https://api.slack.com/events-api#receiving_events) allows to send messages from Slack bot to ATSD using [webhook](../api/data/messages/webhook.md) endpoint.
+The Slack [Events API](https://api.slack.com/events-api#receiving_events) allows sending messages into ATSD using its [webhook](../api/data/messages/webhook.md) endpoint. 
 
-## Add Bot User
+The following document describes how to create a Slack Bot that will copy messages received from other Slack users in the same workspace into ATSD.
+
+The ATSD can then be programmed to respond to received commands by means of sending information back into Slack using the `SLACK` web notification type.
+
+## Create Slack Bot
+
+Slack Bot is a special account created specifically for automation purposes.
 
 * Open https://api.slack.com/apps/
    
    ![](images/outgoing_webhook_slack_1.png)
    
-* Select already existing or create a new app.
+* Select an existing app or create a new one.
 
-* Configure a new bot user, if necessary.
+* Create a bot user.
 
     * Click on **Bot Users**.
 
@@ -28,7 +34,7 @@ Slack [Events API](https://api.slack.com/events-api#receiving_events) allows to 
    
     * Click on **Save Changes**.
 
-## Add Event Subscription
+## Subscribe to Bot Messages
 
 * Click on **Basic Information**.
 
@@ -42,12 +48,17 @@ Slack [Events API](https://api.slack.com/events-api#receiving_events) allows to 
  
    ![](images/outgoing_webhook_slack_7.png)
    
-* Fill in the **Request URL** field. 
+* Fill in the **Request URL** field.
 
-   ```ls
+  Specify [user credentials](../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance. 
+  
+  The target ATSD server must be accessible and have a valid CA-signed [SSL certificate](/administration/ssl-ca-signed.md) installed. Self-signed certificates are not supported by Slack at this time.
+
+   ```elm
    https://user:password@atsd_host:port/api/v1/messages/webhook/slack?entity=slack
    ```
-   *Verified* status should appear.
+   
+   *Verified* status should be displayed if the request evaluates correctly.
 
    ![](images/outgoing_webhook_slack_8.png)   
    
@@ -55,7 +66,7 @@ Slack [Events API](https://api.slack.com/events-api#receiving_events) allows to 
 
    ![](images/outgoing_webhook_slack_9.png)
    
-* Enter `message.im` to limit subscriptions to subscribe only to messages sent directly to bot.
+* Enter `message.im` to limit subscriptions only to messages sent **directly** to bot.
 
    ![](images/outgoing_webhook_slack_10.png)
    
@@ -69,11 +80,11 @@ Slack [Events API](https://api.slack.com/events-api#receiving_events) allows to 
 
    ![](images/outgoing_webhook_slack_12.png)
    
-* Review permissions, click on **Authorize**.
+* Review permissions, click **Authorize**.
 
    ![](images/outgoing_webhook_slack_13.png)
    
-* Go to workspace, make sure app is visible in **Apps** section.
+* Go to Slack workspace, make sure the app is visible in the **Apps** section.
 
    ![](images/outgoing_webhook_slack_14.png)
    
@@ -103,7 +114,7 @@ Slack [Events API](https://api.slack.com/events-api#receiving_events) allows to 
 
     ![](images/outgoing_webhook_slack_15.png)
     
-* Go to workspace and send direct message to recently created bot.
+* Go to the Slack workspace and send direct message to recently created bot.
 
     ![](images/outgoing_webhook_slack_16.png)
     
