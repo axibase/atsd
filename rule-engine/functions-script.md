@@ -138,7 +138,11 @@ Slack:
 kill_after=${1}
 host=${2}
 
-timeout ${kill_after} traceroute ${host}; echo $?
+timeout ${kill_after}s traceroute ${host}
+
+if [[ $? != 0 ]] ; then
+  echo -e "\nExceeded ${kill_after} seconds"
+fi
 ```
 
 #### Function
@@ -152,7 +156,7 @@ ${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
 #### Command
 
 ```bash
-timeout 3 traceroute axibase.com; echo $?
+timeout 3 traceroute axibase.com
 ```
 
 #### Output
@@ -305,30 +309,39 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 #!/usr/bin/env bash
 
 url=${1}
-status=$(curl --head ${1} 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*")
+dir=$(dirname $(readlink -f $0))
+status=$(curl -sS --insecure -X GET -D ${dir}/headers -w "\nResponse Time: %{time_total}\n" "${url}" > ${dir}/response 2>&1)
 if [[ $? == 0 ]] ; then
-  echo ${status}
+  code=$(head -n 1 ${dir}/headers | grep -oiE "[0-9]{3}[a-z ]*")
+  echo "Status code: ${code}"
+  echo "$(tail -n 1 ${dir}/response)" # Response Time
+  length=$(head -n -1 ${dir}/response | wc -c)
+  echo "Content Length: ${length} bytes"
 else
-  echo "Incorrect url ${1}"
+  head -n 1 ${dir}/response
 fi
+
+rm  ${dir}/response  ${dir}/headers
 ```
 
 #### Function
 
 ```javascript
-Status code is: ${scriptOut('url_avail.sh', ['https://axibase.com'])}
+${scriptOut('url_avail.sh', ['https://axibase.com'])}
 ```
 
 #### Command
 
 ```bash
-curl --head https://axibase.com 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*"
+curl -sS --insecure -X GET -D ./atsd/conf/script/headers -w "\nResponse Time: %{time_total}\n" "https://axibase.com" > ./atsd/conf/script/response 2>&1
 ```
 
 #### Output
 
 ```bash
-200 OK
+Status code: 200 OK
+Response Time: 0.618
+Content Length: 35214 bytes
 ```
 
 #### Notification  
