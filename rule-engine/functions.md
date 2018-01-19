@@ -232,3 +232,7 @@ The rule functions provide a way to check the status of windows created by other
 # Utility Functions
 
 * [ifEmpty](functions-utility.md#ifempty)
+
+# Link functions
+
+* [getEntityLink](functions-link.md#getentitylink)

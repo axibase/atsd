@@ -89,10 +89,12 @@ threshold | string | Override rule | max() > 20
 
 ## Link Placeholders
 
-* `ruleLink`
-* `chartLink`
-* `csvExportLink`
-* `htmlExportLink`
+* [ruleLink](links.md#rulelink)
+* [chartLink](links.md#chartlink)
+* [csvExportLink](links.md#csvexportlink)
+* [htmlExportLink](links.md#htmlexportlink)
+* [serverLink](links.md#serverlink)
+* [entityLink](links.md#entitylink)
 
 ## Details Table Placeholders
 
