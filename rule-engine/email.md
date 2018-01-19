@@ -88,6 +88,8 @@ When using placeholders that maybe replaced with arbitrarily long text, apply th
   [${status}] Rule ${rule} for ${entity}: ${truncate(message, 100)}`
 ```
 
+The subject can be customized using [control flow](control-flow.md) statements for conditional processing.
+
 ### Text
 
 The message text (body) may include [placeholders](placeholders.md).
@@ -97,6 +99,16 @@ Use the html tag `<br>` to split content into multiple lines.
 ```html
   Window Start Time: ${windowStartTime}<br>
   Window Duration in ms: ${(timestamp / 1000 - windowStartTime) * 1000}
+```
+
+The message text can include [control flow](control-flow.md) statements for conditional processing.
+
+```javascript
+[${upper(tags.status)}] ${entityLink} Ω ${getEntityLink(tags.docker-host)}
+<span style='color: orange'>${marker}</span>
+@if{is_launch}
+  ${addTable(entity.tags, 'html')}
+@end{}
 ```
 
 ### Header and Footer

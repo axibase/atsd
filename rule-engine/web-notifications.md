@@ -121,8 +121,6 @@ The administrator can specify which settings are fixed and which can be modified
 
 For example, an API Bot identifier or authentication token is a fixed setting, whereas the text message is customizable and is resolved dynamically based on the window status and placeholder values.
 
-
-
 ## Testing Notifications
 
 Fill out the required fields for the given notification type.
@@ -167,7 +165,7 @@ If the window remains in the `REPEAT` status, it can be configured to repetitive
 
 ### Message Text
 
-The editor displays a `Text` field where the alert message can be customized with [placeholders](placeholder.md).
+The editor displays a `Text` field where the alert message can be customized with [placeholders](placeholders.md).
 
 Sample alert message with placeholders:
 
@@ -179,6 +177,16 @@ The alert message can include links to ATSD resources using [link placeholders](
 
 ```javascript
 ${chartLink}
+```
+
+The text can include [control flow](control-flow.md) statements for conditional processing.
+
+```javascript
+*[${tags.status}]* <${entityLink}|${ifEmpty(entity.label, entity)}> Ω <${getEntityLink(tags.docker-host)}|${ifEmpty(getEntity(tags.docker-host).label, tags.docker-host)}>
+
+@if{is_launch}
+  ${addTable(entity.tags, 'ascii')}
+@end{}
 ```
 
 ### Attachments

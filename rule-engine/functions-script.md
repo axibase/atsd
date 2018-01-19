@@ -19,7 +19,7 @@ The function executes the named script with the specified parameters and returns
 ## Syntax
 
 ```java
-scriptOut(String scriptFileName, List arguments)
+scriptOut(string scriptFileName, collection arguments)
 ```
 
 * [**required**] `scriptFileName` - Name of the script file located in the `./atsd/conf/script/` directory.
@@ -87,7 +87,9 @@ ping -c ${count} ${host}
 #### Function
 
 ```javascript
-Host ping report: ${scriptOut('ping.sh', ['axibase.com', '3'])}
+Host ping report: 
+
+${scriptOut('ping.sh', ['axibase.com', '3'])}
 ```
 
 #### Command
@@ -142,7 +144,9 @@ timeout ${kill_after} traceroute ${host}; echo $?
 #### Function
 
 ```javascript
-Trace report: ${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
+Trace report: 
+
+${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
 ```
 
 #### Command
@@ -251,21 +255,23 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 ```bash
 #!/usr/bin/env bash
 
-pattern=${1}
+host=${1}
+pattern=${2}
 
-ps aux | grep ${pattern}
+ssh -i /home/axibase/.ssh/def.key ${host} ps aux | grep ${pattern}
 ```
 
 #### Function
 
 ```javascript
-Output is: ${scriptOut('ps.sh', ['bash'])}
+Output is: 
+${scriptOut('ps.sh', ['axibase.com','bash'])}
 ```
 
 #### Command
 
 ```bash
-ps aux | grep bash
+ssh -i /home/axibase/.ssh/def.key axibase.com ps aux | grep bash
 ```
 
 #### Output
@@ -287,7 +293,7 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 
  Slack:
 
- ![](images/script-ps-slack.png)   
+ ![](images/script-ps-slack.png) 
 
 ### URL availability
 
@@ -402,23 +408,25 @@ TCP port 443 is available
 #### Script
 
 ```bash
+
 #!/usr/bin/env bash
 
 host=${1}
+query=${2}
 
-ssh -i /home/axibase/.ssh/def.key ${host} 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
+ssh -i /home/axibase/.ssh/def.key ${host} "osqueryi \"${query}\""
 ```
 
 #### Function
 
 ```javascript
-${scriptOut('osquery.sh', ['/home/axibase/ssh_host_rsa_key', 'axibase.com'])}
+${scriptOut('osquery.sh', ['axibase.com', "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '0.0.0.0';"])}
 ```
 
 #### Command
 
 ```bash
-ssh -i /home/axibase/ssh_host_rsa_key axibase.com 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
+ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
 
 #### Output
