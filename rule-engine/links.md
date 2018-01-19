@@ -123,8 +123,8 @@ To display the above links in inline mode (where label is displayed instead of U
    
 |Placeholder|Raw Link|Inline Link|
 |---|---|---|
-|ruleLink|`<a href="https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu"> nmon_cpu </a>`|![](images/links-hipchat-ruleLink.png)|
-|chartLink|`<a href="https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007...."> Default </a>`|![](images/links-hipchat-chartLink.png)|
-|csvExportLink|`<a href="https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007...."> CSV Export </a>`|![](images/links-hipchat-csvExportLink.png)|
-|htmlExportLink|`<a href="https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007...."> HTML Export </a>`|![](images/links-hipchat-htmlExportLink.png)|
-|entityLink|`<a href="https://atsd_host:8443/entities/nurswgvml007"> nurswgvml007 </a>`|![](images/links-hipchat-entityLink.png)|
+|ruleLink|`<a href="https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu"> nmon_cpu </a>`|nmon_cpu|
+|chartLink|`<a href="https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007...."> Default </a>`|Default|
+|csvExportLink|`<a href="https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007...."> CSV Export </a>`|CSV Export|
+|htmlExportLink|`<a href="https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007...."> HTML Export </a>`|HTML Export|
+|entityLink|`<a href="https://atsd_host:8443/entities/nurswgvml007"> nurswgvml007 </a>`|nurswgvml007|
