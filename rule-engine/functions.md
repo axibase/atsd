@@ -258,6 +258,12 @@ The rule functions provide a way to check the status of windows created by other
 ## Utility Functions
 
 * [ifEmpty](functions-utility.md#ifempty)
+* [getURLHost](functions-utility.md#geturlhost)
+* [getURLPort](functions-utility.md#geturlport)
+* [getURLProtocol](functions-utility.md#geturlprotocol)
+* [getURLPath](functions-utility.md#geturlpath)
+* [getURLQuery](functions-utility.md#geturlquery)
+* [getURLUserInfo](functions-utility.md#geturluserinfo)
 
 # Link functions
 
