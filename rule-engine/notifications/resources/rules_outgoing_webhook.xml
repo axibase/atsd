@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><rules>
+<rule>
+<name>outgoing_webhook</name>
+<metric>message</metric>
+<tagsGroupingStrategy>NO_TAGS</tagsGroupingStrategy>
+<expression><![CDATA[true]]></expression>
+<window>length(1)</window>
+<filter>type = 'webhook' &amp;&amp; source = 'slack' || source = 'telegram' &amp;&amp; entity = 'slack' || entity = 'telegram'</filter>
+<severity>WARNING</severity>
+<alertOpenMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertOpenMessage>
+<alertMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertMessage>
+<alertCancellationMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertCancellationMessage>
+<alertStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</alertStrategy>
+<lastUpdated>1516376983060</lastUpdated>
+<enabled>false</enabled>
+<disableEntityGrouping>false</disableEntityGrouping>
+<leavingEvents>true</leavingEvents>
+<loadHistory>false</loadHistory>
+<logOutput>false</logOutput>
+<owner>Anna Striganova</owner>
+<actionStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</actionStrategy>
+<discardPreviousValues>false</discardPreviousValues>
+<webNotification>
+<disabled>false</disabled>
+<rule-name>slack-bot-notify-test</rule-name>
+<repeat-interval>
+<type>ALL</type>
+<intervalCount>6</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</repeat-interval>
+<name>Web Service Notification id=484</name>
+<use-in-threshold-only>false</use-in-threshold-only>
+<first-details>false</first-details>
+<repeat-details>false</repeat-details>
+<cancel-details>true</cancel-details>
+<first-screenshot>false</first-screenshot>
+<repeat-screenshot>false</repeat-screenshot>
+<cancel-screenshot>false</cancel-screenshot>
+<webNotificationConfigName>slack-devops</webNotificationConfigName>
+<firstWebConfigParameters>
+<key>text</key>
+<value>Received `${message}` from &lt;@${tags.event.user}&gt;</value>
+</firstWebConfigParameters>
+<repeatWebConfigParameters>
+<key>text</key>
+<value>Received `${message}` from &lt;@${tags.event.user}&gt;</value>
+</repeatWebConfigParameters>
+<cancelWebConfigParameters>
+<key>text</key>
+<value>[${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}</value>
+</cancelWebConfigParameters>
+<first-enabled>true</first-enabled>
+<repeat-enabled>true</repeat-enabled>
+<cancel-enabled>false</cancel-enabled>
+</webNotification>
+<ruleTable/>
+<alertLoggerName>atsd.alert.default</alertLoggerName>
+<derivedCommand>series e:${entity} m:metric_123=${100 - value} ${commandTags}</derivedCommand>
+<derivedCommandEnabled>false</derivedCommandEnabled>
+<derivedCommandStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</derivedCommandStrategy>
+<alertOpenMessageEnabled>false</alertOpenMessageEnabled>
+<alertMessageEnabled>false</alertMessageEnabled>
+<alertCancellationMessageEnabled>false</alertCancellationMessageEnabled>
+<alertOpenScriptEnabled>false</alertOpenScriptEnabled>
+<scriptEnabled>false</scriptEnabled>
+<alertCancellationScriptEnabled>false</alertCancellationScriptEnabled>
+</rule>
+</rules>

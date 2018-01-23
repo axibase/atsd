@@ -16,7 +16,7 @@ Install and configure the [Web Driver](web-driver.md) in order to enable sending
     ![](images/botfather.png)
 
 * Send the `/newbot` command and follow the prompts to create a bot user and obtain its token.
-* Send the `/mybots` command to the BotFather](https://telegram.me/botfather).
+* Send the `/mybots` command to the [BotFather](https://telegram.me/botfather).
 * Select the current bot.
 
   ![](images/telegram-my-bots.png)
