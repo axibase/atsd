@@ -99,9 +99,10 @@ Slack Bot is a special account created specifically for automation purposes.
 
 ### Configure Notification
 
+* Create any of [Collaboration Services](https://github.com/axibase/atsd/blob/master/rule-engine/web-notifications.md#collaboration-services) notification or use existing.
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Web Notifications** tab.
-* Select `SLACK` from the **Endpoint** drop-down.
+* Select the notification from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
