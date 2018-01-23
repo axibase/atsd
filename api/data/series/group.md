@@ -1,16 +1,16 @@
 # Group Processor
 
-Groups multiple input series into one series and applies a statistical function to grouped values. 
+Groups multiple input series into one series and applies a statistical function to grouped values.
 
 The group process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
 2. Group multiple series:
-- If `period` is specified in the query:
-<br> Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time. 
-- If `period` is not specified:
+  - If `period` is specified in the query:
+<br> Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
+  - If `period` is not specified:
 Multiple series samples are grouped at all unique timestamps in the input series.
-Each group has an ordered list of pairs: (timestap, samples of several series with given timestamp).
+Each group has an ordered list of pairs: [timestamp | samples of several series with given timestamp].
 3. Interpolate grouped series according to the `interpolate` field.
 4. Truncate grouped series if `truncate` field is `true`.
 5. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a `time:value` array, where time is the period start time and value is the result of the statistical function.
@@ -44,7 +44,7 @@ Each group has an ordered list of pairs: (timestap, samples of several series wi
 * PERCENTILE_05
 * PERCENTILE_01
 * MEDIAN
-* STANDARD_DEVIATION 
+* STANDARD_DEVIATION
 * FIRST
 * LAST
 * MIN_VALUE_TIME
@@ -82,42 +82,42 @@ Values added by `extend` setting are determined as follows:
 #### Detailed Data by Series
 
 ```ls
-| entity | datetime                 | value | 
-|--------|--------------------------|-------| 
-| e-1    | 2016-06-25T08:00:00.000Z | 1     | 
-| e-2    | 2016-06-25T08:00:00.000Z | 11    | 
-| e-1    | 2016-06-25T08:00:05.000Z | 3     | e-1 only
-| e-1    | 2016-06-25T08:00:10.000Z | 5     | e-1 only
-| e-1    | 2016-06-25T08:00:15.000Z | 8     | 
-| e-2    | 2016-06-25T08:00:15.000Z | 8     | 
-| e-1    | 2016-06-25T08:00:30.000Z | 3     | 
-| e-2    | 2016-06-25T08:00:30.000Z | 13    | 
-| e-1    | 2016-06-25T08:00:45.000Z | 5     | 
-| e-2    | 2016-06-25T08:00:45.000Z | 15    | 
-| e-2    | 2016-06-25T08:00:59.000Z | 19    | e-2 only
+| entity | datetime             | value |
+|--------|----------------------|-------|
+| e-1    | 2016-06-25T08:00:00Z | 1     |
+| e-2    | 2016-06-25T08:00:00Z | 11    |
+| e-1    | 2016-06-25T08:00:05Z | 3     | e-1 only
+| e-1    | 2016-06-25T08:00:10Z | 5     | e-1 only
+| e-1    | 2016-06-25T08:00:15Z | 8     |
+| e-2    | 2016-06-25T08:00:15Z | 8     |
+| e-1    | 2016-06-25T08:00:30Z | 3     |
+| e-2    | 2016-06-25T08:00:30Z | 13    |
+| e-1    | 2016-06-25T08:00:45Z | 5     |
+| e-2    | 2016-06-25T08:00:45Z | 15    |
+| e-2    | 2016-06-25T08:00:59Z | 19    | e-2 only
 ```
 
 #### Detailed Data Grouped by Timestamp
 
 ```ls
-| datetime                 | e1.value | e2.value | 
-|--------------------------|----------|----------| 
-| 2016-06-25T08:00:00.000Z | 1        | 11       | 
-| 2016-06-25T08:00:05.000Z | 3        | -        | 
-| 2016-06-25T08:00:10.000Z | 5        | -        | 
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 
-| 2016-06-25T08:00:59.000Z | -        | 19       | 
+| datetime             | e1.value | e2.value |
+|----------------------|----------|----------|
+| 2016-06-25T08:00:00Z | 1        | 11       |
+| 2016-06-25T08:00:05Z | 3        | -        |
+| 2016-06-25T08:00:10Z | 5        | -        |
+| 2016-06-25T08:00:15Z | 8        | 8        |
+| 2016-06-25T08:00:30Z | 3        | 13       |
+| 2016-06-25T08:00:45Z | 5        | 15       |
+| 2016-06-25T08:00:59Z | -        | 19       |
 ```
 
 ### No Aggregation
 
 When aggregation is disabled, the `group` function is applied to values for all unique timestamps in the merged series.
 
-In the example below, the `SUM` function returns 12 (1+11) at 2016-06-25T08:00:00Z as a total of e-1 and e-2 series values, both of which have samples this timestamp.
+In the example below, the `SUM` function returns 12 (1+11) at `2016-06-25T08:00:00Z` as a total of e-1 and e-2 series values, both of which have samples this timestamp.
 
-On the other hand, the `SUM` returns 3 (3 + null->0) at 2016-06-25T08:00:05Z because only e-1 series has a value at that timestamp.
+On the other hand, the `SUM` returns 3 (3 + null->0) at `2016-06-25T08:00:05Z` because only e-1 series has a value at that timestamp.
 
 ```json
 [
@@ -138,54 +138,54 @@ On the other hand, the `SUM` returns 3 (3 + null->0) at 2016-06-25T08:00:05Z bec
 	"aggregate":{"type":"DETAIL"},
 	"group":{"type":"SUM","order":0},
   "data":[
-	{"d":"2016-06-25T08:00:00.000Z","v":12.0},
-	{"d":"2016-06-25T08:00:05.000Z","v":3.0},
-	{"d":"2016-06-25T08:00:10.000Z","v":5.0},
-	{"d":"2016-06-25T08:00:15.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:30.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:45.000Z","v":20.0},
-	{"d":"2016-06-25T08:00:59.000Z","v":19.0}
+	{"d":"2016-06-25T08:00:00Z","v":12.0},
+	{"d":"2016-06-25T08:00:05Z","v":3.0},
+	{"d":"2016-06-25T08:00:10Z","v":5.0},
+	{"d":"2016-06-25T08:00:15Z","v":16.0},
+	{"d":"2016-06-25T08:00:30Z","v":16.0},
+	{"d":"2016-06-25T08:00:45Z","v":20.0},
+	{"d":"2016-06-25T08:00:59Z","v":19.0}
 ]}]
 ```
 
 ```ls
-| datetime                 | e1.value | e2.value | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:00.000Z | 1        | 11       | 12  | 
-| 2016-06-25T08:00:05.000Z | 3        | -        | 3   | 
-| 2016-06-25T08:00:10.000Z | 5        | -        | 5   | 
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 16  | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 16  | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 20  | 
-| 2016-06-25T08:00:59.000Z | -        | 19       | 19  |
+| datetime             | e1.value | e2.value | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:00Z | 1        | 11       | 12  |
+| 2016-06-25T08:00:05Z | 3        | -        | 3   |
+| 2016-06-25T08:00:10Z | 5        | -        | 5   |
+| 2016-06-25T08:00:15Z | 8        | 8        | 16  |
+| 2016-06-25T08:00:30Z | 3        | 13       | 16  |
+| 2016-06-25T08:00:45Z | 5        | 15       | 20  |
+| 2016-06-25T08:00:59Z | -        | 19       | 19  |
 ```
 
 ### Truncation
 
 Truncation discards timestamps at the beginning of the interval until all of the merged values have a value.
 
-The example below uses `startDate` of **2016-06-25T08:00:01Z**
+The example below uses `startDate` of `2016-06-25T08:00:01Z`.
 
-The first time is MAX(MIN(series_sample_time)), the last time is MIN(MAX(series_sample_time)).
+The first time is `MAX(MIN(series_sample_time))`, the last time is `MIN(MAX(series_sample_time))`.
 
-MAX(MIN(series_sample_time)) = 2016-06-25T08:00:15.000Z.
+`MAX(MIN(series_sample_time))` = `2016-06-25T08:00:15Z`.
 
-MIN(MAX(series_sample_time)) = 2016-06-25T08:00:45.000Z.
+`MIN(MAX(series_sample_time))` = `2016-06-25T08:00:45Z`.
 
 ```ls
-| datetime                 | e1.value | e2.value | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:05.000Z | 3        | -        | 3   | discarded because time < MAX(MIN(series_sample_time))
-| 2016-06-25T08:00:10.000Z | 5        | -        | 5   | discarded because time < MAX(MIN(series_sample_time))
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 16  | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 16  | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 20  | 
-| 2016-06-25T08:00:59.000Z | -        | 19       | 19  | discarded because time > MIN(MAX(series_sample_time))
+| datetime             | e1.value | e2.value | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:05Z | 3        | -        | 3   | discarded because time < MAX(MIN(series_sample_time))
+| 2016-06-25T08:00:10Z | 5        | -        | 5   | discarded because time < MAX(MIN(series_sample_time))
+| 2016-06-25T08:00:15Z | 8        | 8        | 16  |
+| 2016-06-25T08:00:30Z | 3        | 13       | 16  |
+| 2016-06-25T08:00:45Z | 5        | 15       | 20  |
+| 2016-06-25T08:00:59Z | -        | 19       | 19  | discarded because time > MIN(MAX(series_sample_time))
 ```
 
-Samples for series e-1 at 2016-06-25T08:00:05.000Z and at 2016-06-25T08:00:10.000Z are discarded because there is no value for series e-2 until 2016-06-25T08:00:15.000Z.
+Samples for series `e-1` at `2016-06-25T08:00:05Z` and at `2016-06-25T08:00:10Z` are discarded because there is no value for series e-2 until `2016-06-25T08:00:15Z`.
 
-Sample for series e-2 at 2016-06-25T08:00:59.000Z is discarded because there is no value for series e-1 after 2016-06-25T08:00:45.000Z.
+Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is no value for series `e-1` after `2016-06-25T08:00:45Z`.
 
 ```json
 [
@@ -207,18 +207,18 @@ Sample for series e-2 at 2016-06-25T08:00:59.000Z is discarded because there is 
 	"aggregate":{"type":"DETAIL"},
 	"group":{"type":"SUM","truncate":true,"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:15.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:30.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:45.000Z","v":20.0}
+	{"d":"2016-06-25T08:00:15Z","v":16.0},
+	{"d":"2016-06-25T08:00:30Z","v":16.0},
+	{"d":"2016-06-25T08:00:45Z","v":20.0}
 ]}]
 ```
 
 ```ls
-| datetime                 | e1.value | e2.value | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 16  | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 16  | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 20  | 
+| datetime             | e1.value | e2.value | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:15Z | 8        | 8        | 16  |
+| 2016-06-25T08:00:30Z | 3        | 13       | 16  |
+| 2016-06-25T08:00:45Z | 5        | 15       | 20  |
 ```
 
 ### Extend
@@ -226,14 +226,14 @@ Sample for series e-2 at 2016-06-25T08:00:59.000Z is discarded because there is 
 An opposite operation to truncation, extend adds missing values at the beginning and end of the interval so that all merged series have values when the `group` function is applied.
 
 ```ls
-| datetime                 | e1.value | e2.value | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:05.000Z | 3        | 8 +      | 11  | e2.value extended to start at the beginning of the interval
-| 2016-06-25T08:00:10.000Z | 5        | 8 +      | 13  | e2.value extended to start at the beginning of the interval
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 16  | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 16  | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 20  | 
-| 2016-06-25T08:00:59.000Z | 5 +      | 19       | 24  | e1.value extended until the end of the interval
+| datetime             | e1.value | e2.value | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:05Z | 3        | 8 +      | 11  | e2.value extended to start at the beginning of the interval
+| 2016-06-25T08:00:10Z | 5        | 8 +      | 13  | e2.value extended to start at the beginning of the interval
+| 2016-06-25T08:00:15Z | 8        | 8        | 16  |
+| 2016-06-25T08:00:30Z | 3        | 13       | 16  |
+| 2016-06-25T08:00:45Z | 5        | 15       | 20  |
+| 2016-06-25T08:00:59Z | 5 +      | 19       | 24  | e1.value extended until the end of the interval
 ```
 
 ```json
@@ -256,26 +256,26 @@ An opposite operation to truncation, extend adds missing values at the beginning
 	"aggregate":{"type":"DETAIL"},
 	"group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:05.000Z","v":11.0},
-	{"d":"2016-06-25T08:00:10.000Z","v":13.0},
-	{"d":"2016-06-25T08:00:15.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:30.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:45.000Z","v":20.0},
-	{"d":"2016-06-25T08:00:59.000Z","v":24.0}
+	{"d":"2016-06-25T08:00:05Z","v":11.0},
+	{"d":"2016-06-25T08:00:10Z","v":13.0},
+	{"d":"2016-06-25T08:00:15Z","v":16.0},
+	{"d":"2016-06-25T08:00:30Z","v":16.0},
+	{"d":"2016-06-25T08:00:45Z","v":20.0},
+	{"d":"2016-06-25T08:00:59Z","v":24.0}
 ]}]
 ```
 
 Extend is similar to interpolation where missing values at the beginning of in interval are interpolated with `NEXT` type, and missing values at the end of the interval are interpolated with `PREVIOUS` type.
 
 ```ls
-| datetime                 | e1.value | e2.value | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:05.000Z | 3        | 8 +(NEXT)| 11  |
-| 2016-06-25T08:00:10.000Z | 5        | 8 +(NEXT)| 13  |
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 16  | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 16  | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 20  | 
-| 2016-06-25T08:00:59.000Z | 5 +(PREV)| 19       | 24  |
+| datetime             | e1.value | e2.value | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:05Z | 3        | 8 +(NEXT)| 11  |
+| 2016-06-25T08:00:10Z | 5        | 8 +(NEXT)| 13  |
+| 2016-06-25T08:00:15Z | 8        | 8        | 16  |
+| 2016-06-25T08:00:30Z | 3        | 13       | 16  |
+| 2016-06-25T08:00:45Z | 5        | 15       | 20  |
+| 2016-06-25T08:00:59Z | 5 +(PREV)| 19       | 24  |
 ```
 
 Since `extend` is performed prior to truncation, `truncate` setting has no effect on extended results.
@@ -311,28 +311,28 @@ Response:
 	"aggregate":{"type":"DETAIL"},
 	"group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00.000Z","v":12.0},
-	{"d":"2016-06-25T08:00:05.000Z","v":14.0},
-	{"d":"2016-06-25T08:00:10.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:15.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:30.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:45.000Z","v":20.0},
-	{"d":"2016-06-25T08:00:59.000Z","v":19.0}
+	{"d":"2016-06-25T08:00:00Z","v":12.0},
+	{"d":"2016-06-25T08:00:05Z","v":14.0},
+	{"d":"2016-06-25T08:00:10Z","v":16.0},
+	{"d":"2016-06-25T08:00:15Z","v":16.0},
+	{"d":"2016-06-25T08:00:30Z","v":16.0},
+	{"d":"2016-06-25T08:00:45Z","v":20.0},
+	{"d":"2016-06-25T08:00:59Z","v":19.0}
 ]}]
 ```
 
 Two interpolated values were added to the second series:
 
 ```ls
-| datetime                 | e1.value | e2.value | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:00.000Z | 1        | 11       | 12  | 
-| 2016-06-25T08:00:05.000Z | 3        | 11 (PREV)| 14  | 
-| 2016-06-25T08:00:10.000Z | 5        | 11 (PREV)| 16  | 
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 16  | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 16  | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 20  | 
-| 2016-06-25T08:00:59.000Z | -        | 19       | 19  | 
+| datetime             | e1.value | e2.value | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:00Z | 1        | 11       | 12  |
+| 2016-06-25T08:00:05Z | 3        | 11 (PREV)| 14  |
+| 2016-06-25T08:00:10Z | 5        | 11 (PREV)| 16  |
+| 2016-06-25T08:00:15Z | 8        | 8        | 16  |
+| 2016-06-25T08:00:30Z | 3        | 13       | 16  |
+| 2016-06-25T08:00:45Z | 5        | 15       | 20  |
+| 2016-06-25T08:00:59Z | -        | 19       | 19  |
 ```
 #### `period` parameter is specified.
 
@@ -359,12 +359,12 @@ Response
 [{
     "entity": "*", ...,
     "data": [
-      {"d": "2016-06-25T08:00:00.000Z", "v": 15},
-      {"d": "2016-06-25T08:00:10.000Z", "v": 21},
-      {"d": "2016-06-25T08:00:20.000Z", "v": 16},
-      {"d": "2016-06-25T08:00:30.000Z", "v": 16},
-      {"d": "2016-06-25T08:00:40.000Z", "v": 20},
-      {"d": "2016-06-25T08:00:50.000Z", "v": 19}
+      {"d": "2016-06-25T08:00:00Z", "v": 15},
+      {"d": "2016-06-25T08:00:10Z", "v": 21},
+      {"d": "2016-06-25T08:00:20Z", "v": 16},
+      {"d": "2016-06-25T08:00:30Z", "v": 16},
+      {"d": "2016-06-25T08:00:40Z", "v": 20},
+      {"d": "2016-06-25T08:00:50Z", "v": 19}
     ]
 }]
 ```
@@ -413,11 +413,11 @@ To split values into periods, specify a period.
 	"aggregate":{"type":"DETAIL"},
 	"group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00.000Z","v":15.0},
-	{"d":"2016-06-25T08:00:10.000Z","v":21.0},
-	{"d":"2016-06-25T08:00:30.000Z","v":16.0},
-	{"d":"2016-06-25T08:00:40.000Z","v":20.0},
-	{"d":"2016-06-25T08:00:50.000Z","v":19.0}
+	{"d":"2016-06-25T08:00:00Z","v":15.0},
+	{"d":"2016-06-25T08:00:10Z","v":21.0},
+	{"d":"2016-06-25T08:00:30Z","v":16.0},
+	{"d":"2016-06-25T08:00:40Z","v":20.0},
+	{"d":"2016-06-25T08:00:50Z","v":19.0}
 ]}]
 ```
 
@@ -450,14 +450,14 @@ The `Aggregation -> Group` order creates aggregate series for each of the merged
 The timestamps used for grouping combine period start times from the underlying aggregated series.
 
 ```ls
-| 10-second period start   | e1.COUNT | e2.COUNT | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:00.000Z | 2        | 1        | 3   |
-| 2016-06-25T08:00:10.000Z | 2        | 1        | 3   |
-| 2016-06-25T08:00:20.000Z | -        | -        | -   | Period not created because there are no detailed values in the [00:20-00:30) period for any series.
-| 2016-06-25T08:00:30.000Z | 1        | 1        | 2   | 
-| 2016-06-25T08:00:40.000Z | 1        | 1        | 2   | 
-| 2016-06-25T08:00:50.000Z | 0        | 1        | 1   |
+| 10-sec period start  | e1.COUNT | e2.COUNT | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:00Z | 2        | 1        | 3   |
+| 2016-06-25T08:00:10Z | 2        | 1        | 3   |
+| 2016-06-25T08:00:20Z | -        | -        | -   | Period not created because there are no detailed values in the [00:20-00:30) period for any series.
+| 2016-06-25T08:00:30Z | 1        | 1        | 2   |
+| 2016-06-25T08:00:40Z | 1        | 1        | 2   |
+| 2016-06-25T08:00:50Z | 0        | 1        | 1   |
 ```
 
 ```json
@@ -485,15 +485,15 @@ The timestamps used for grouping combine period start times from the underlying 
 "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
 "group":{"type":"SUM","order":1},
 "data":[
-	{"d":"2016-06-25T08:00:00.000Z","v":3.0},
-	{"d":"2016-06-25T08:00:10.000Z","v":3.0},
-	{"d":"2016-06-25T08:00:30.000Z","v":2.0},
-	{"d":"2016-06-25T08:00:40.000Z","v":2.0},
-	{"d":"2016-06-25T08:00:50.000Z","v":1.0}
+	{"d":"2016-06-25T08:00:00Z","v":3.0},
+	{"d":"2016-06-25T08:00:10Z","v":3.0},
+	{"d":"2016-06-25T08:00:30Z","v":2.0},
+	{"d":"2016-06-25T08:00:40Z","v":2.0},
+	{"d":"2016-06-25T08:00:50Z","v":1.0}
 ]}]
 ```
 
-### Group -> Aggregation 
+### Group -> Aggregation
 
 The `Group -> Aggregation` merges series first, and then splits the merged series into periods.
 
@@ -514,15 +514,15 @@ At the first stage, grouping produces the following `SUM` series:
 ```
 
 ```ls
-| datetime                 | e1.value | e2.value | SUM | 
-|--------------------------|----------|----------|-----| 
-| 2016-06-25T08:00:00.000Z | 1        | 11       | 12  | 
-| 2016-06-25T08:00:05.000Z | 3        | -        | 3   | 
-| 2016-06-25T08:00:10.000Z | 5        | -        | 5   | 
-| 2016-06-25T08:00:15.000Z | 8        | 8        | 16  | 
-| 2016-06-25T08:00:30.000Z | 3        | 13       | 16  | 
-| 2016-06-25T08:00:45.000Z | 5        | 15       | 20  | 
-| 2016-06-25T08:00:59.000Z | -        | 19       | 19  |
+| datetime             | e1.value | e2.value | SUM |
+|----------------------|----------|----------|-----|
+| 2016-06-25T08:00:00Z | 1        | 11       | 12  |
+| 2016-06-25T08:00:05Z | 3        | -        | 3   |
+| 2016-06-25T08:00:10Z | 5        | -        | 5   |
+| 2016-06-25T08:00:15Z | 8        | 8        | 16  |
+| 2016-06-25T08:00:30Z | 3        | 13       | 16  |
+| 2016-06-25T08:00:45Z | 5        | 15       | 20  |
+| 2016-06-25T08:00:59Z | -        | 19       | 19  |
 ```
 
 The grouped `SUM` series is then aggregated into periods.
@@ -551,13 +551,13 @@ The grouped `SUM` series is then aggregated into periods.
 ```
 
 ```ls
-| datetime                 | COUNT(SUM(value)) | 
-|--------------------------|-------------------| 
-| 2016-06-25T08:00:00.000Z | 2                 | 
-| 2016-06-25T08:00:10.000Z | 2                 | 
-| 2016-06-25T08:00:30.000Z | 1                 | 
-| 2016-06-25T08:00:40.000Z | 1                 | 
-| 2016-06-25T08:00:50.000Z | 1                 |
+| datetime             | COUNT(SUM(value)) |
+|----------------------|-------------------|
+| 2016-06-25T08:00:00Z | 2                 |
+| 2016-06-25T08:00:10Z | 2                 |
+| 2016-06-25T08:00:30Z | 1                 |
+| 2016-06-25T08:00:40Z | 1                 |
+| 2016-06-25T08:00:50Z | 1                 |
 ```
 
 ```json
@@ -565,10 +565,10 @@ The grouped `SUM` series is then aggregated into periods.
 	"aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
 	"group":{"type":"SUM","period":{"count":1,"unit":"MILLISECOND","align":"CALENDAR"},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00.000Z","v":2.0},
-	{"d":"2016-06-25T08:00:10.000Z","v":2.0},
-	{"d":"2016-06-25T08:00:30.000Z","v":1.0},
-	{"d":"2016-06-25T08:00:40.000Z","v":1.0},
-	{"d":"2016-06-25T08:00:50.000Z","v":1.0}
+	{"d":"2016-06-25T08:00:00Z","v":2.0},
+	{"d":"2016-06-25T08:00:10Z","v":2.0},
+	{"d":"2016-06-25T08:00:30Z","v":1.0},
+	{"d":"2016-06-25T08:00:40Z","v":1.0},
+	{"d":"2016-06-25T08:00:50Z","v":1.0}
 ]}]
 ```
