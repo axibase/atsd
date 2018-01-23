@@ -198,7 +198,7 @@ The collection functions return information about the collection or check it for
 * [matches](functions-collection.md#matches)
 * [contains](functions-collection.md#contains)
 * [size](functions-collection.md#size)
-* [isEmpty](functions-collection.md#isEmpty)
+* [isEmpty](functions-collection.md#isempty)
 * [excludeKeys](functions-collection.md#excludekeys)
 
 ## Lookup Functions

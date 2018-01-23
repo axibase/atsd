@@ -27,7 +27,7 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 * [matches](#matches)
 * [contains](#contains)
 * [size](#size)
-* [isEmpty](#isEmpty)
+* [isEmpty](#isempty)
 * [excludeKeys](#excludekeys)
 
 ### `collection`
