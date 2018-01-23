@@ -21,7 +21,7 @@ So each group is a pair: (timestap, samples of several series with given timesta
 | period      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately.<br>Default value: `undefined`. If period is undefined, and the query includes both `group` and `aggregate` objects, the group's period is inherited from `aggregate` object.|
 | interpolate   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). Default value: `NONE` |
 | truncate      | boolean           | Discards samples at the beginning of the interval until values for all input series are established. Default: false.  |
-| order         | integer           | Controls the processing order between the `group`, the `rate` and the `aggregate` stage.<br>The stage with the smallest order is executed first.<br>If the stages have the same order, then the execution order is: `group`, `rate`, and `aggregate`.<br> Default value: 0.  |
+| order         | integer           | Controls the processing order between the `group`, the `rate` and the `aggregate` stage. The stage with the smallest order is executed first. If the stages have the same order, then the execution order is: `group`, `rate`, and `aggregate`. Default value: 0.  |
 
 ## Grouping Functions
 
