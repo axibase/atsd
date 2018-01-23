@@ -2,18 +2,18 @@
 
 Groups multiple input series into one series and applies a statistical function to grouped values. 
 
-Grouping process:
+The group process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
 2. Group multiple series:
-- If `period` is specified in the query.
-<br> Split each series' time:value array into periods based on the `period`  parameter. Discard periods if its start time is earlier than `startDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time. 
-- If `period` is not specified.
+- If `period` is specified in the query:
+<br> Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time. 
+- If `period` is not specified:
 Multiple series samples are grouped at all unique timestamps in the input series.
-So each group is a pair: (timestap, samples of several series with given timestamp).
+Each group has an ordered list of pairs: (timestap, samples of several series with given timestamp).
 3. Interpolate grouped series according to the `interpolate` field.
 4. Truncate grouped series if `truncate` field is `true`.
-5. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a time:value array, where time is the period start time and value is the result of the statistical function.
+5. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a `time:value` array, where time is the period start time and value is the result of the statistical function.
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
@@ -21,7 +21,7 @@ So each group is a pair: (timestap, samples of several series with given timesta
 | period      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately.<br>Default value: `undefined`. If period is undefined, and the query includes both `group` and `aggregate` objects, the group's period is inherited from `aggregate` object.|
 | interpolate   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). Default value: `NONE` |
 | truncate      | boolean           | Discards samples at the beginning of the interval until values for all input series are established. Default: false.  |
-| order         | integer           | Controls the processing order between the `group`, the `rate` and the `aggregate` stage. The stage with the smallest order is executed first. If the stages have the same order, then the execution order is: `group`, `rate`, and `aggregate`. Default value: 0.  |
+| order         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
 ## Grouping Functions
 
@@ -74,8 +74,6 @@ Values added by `extend` setting are determined as follows:
 | NEXT | Set value for the period based on the next period's value. |
 | LINEAR | Calculate period value using linear interpolation between previous and next period values. |
 | VALUE| Set value for the period to a specific number. |
-
-View examples below to grasp how interpolation works.
 
 ## Examples
 
@@ -283,10 +281,11 @@ Extend is similar to interpolation where missing values at the beginning of in i
 Since `extend` is performed prior to truncation, `truncate` setting has no effect on extended results.
 
 ### Interpolation
-Interpolation fills the gaps in raw series. Its behavior depends on if the `period`
- parameter is provided to the group processor.
+
+Interpolation fills the gaps in the raw series. Its behavior depends on the `period` parameter specified in the group processor.
 
 #### `period` parameter is not specified.
+
 The `interpolate` function is applied to two consecutive samples of the same series to calculate an interim value for a known timestamp.
 
 Query:
@@ -306,6 +305,7 @@ Query:
 ```
 
 Response:
+
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
 	"aggregate":{"type":"DETAIL"},
@@ -320,7 +320,9 @@ Response:
 	{"d":"2016-06-25T08:00:59.000Z","v":19.0}
 ]}]
 ```
+
 Two interpolated values were added to the second series:
+
 ```ls
 | datetime                 | e1.value | e2.value | SUM | 
 |--------------------------|----------|----------|-----| 
@@ -333,10 +335,11 @@ Two interpolated values were added to the second series:
 | 2016-06-25T08:00:59.000Z | -        | 19       | 19  | 
 ```
 #### `period` parameter is specified.
-Let t1, t2, t3 are timestamps of subsequent periods, and a series has no samples in the period with timestamp t2. Then interpolated value with timestamp t2 will be calculated based on two samples: (t1, v1) and (t3, v3),
-where v1 - is the last series value within the first period, and v3 is the first series value within the period with timestamp t3.
+
+Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and lets assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period will be calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
 
 Query:
+
 ```json
 [ {
     "startDate": "2016-06-25T08:00:00Z",
@@ -365,7 +368,9 @@ Response
     ]
 }]
 ```
-An interpolated values were added to each of grouped series:
+
+Interpolated values were added to each of the grouped series:
+
 ```ls
 |                      |          |          | group                | e1 grouped   | e2 grouped   |     |
 | datetime             | e1.value | e2.value | timestamp            | interpolated | interpolated | SUM |
@@ -385,8 +390,8 @@ An interpolated values were added to each of grouped series:
 
 ### Group Aggregation
 
-By default, the `group` function is applied at all unique sample times from the merged series.
-To split values into periods, specify period.
+By default, the `group` function is applied to all unique sample times from the merged series.
+To split values into periods, specify a period.
 
 ```json
 [
