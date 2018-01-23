@@ -38,7 +38,7 @@ Retrieves the **host** part from URL string `u`. If the URL `u` is null, empty o
 ### `getURLPort`
 
 ```javascript
-  getURLPort(string u) string
+  getURLPort(string u) integer
 ```
 Retrieves the **port** part from URL string `u`. If the URL `u` is `null`, empty or invalid, exception is thrown.
 
