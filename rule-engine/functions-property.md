@@ -194,19 +194,19 @@ Examples:
   getPropertyTypes(string e[, string s[, string e]]) collection
 ```
 
-Returns a collection of sorted strings representing property types stored for the specified entity `e`.
+Returns a sorted collection of property types for the specified entity `e`.
 
-Optional start date `s` and end date `e` arguments control which property records to include. If specified, only property records received in matched period are included. The dates `s` and `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
+Optional start date `s` and end date `e` arguments control the time range for selecting property records. The dates `s` and `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
 Examples:
 
 ```javascript
-  /* Returns a collection of sorted property types for entity nurswgvml007*/
+  /* Returns property types for entity nurswgvml007*/
   getPropertyTypes('nurswgvml007')
   
-  /* Returns a collection of sorted property types received later than 2018-01-23T13:30:04.000Z */
+  /* Returns property types received after 2018-01-23T13:30:04.000Z */
   getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
   
-  /* Returns a collection of sorted property types received later than 00:00:00 of the previous day and earlier than 00:00:00 of the current day*/
+  /* Returns property types received after 00:00:00 of the previous day and before 00:00:00 of the current day*/
   getPropertyTypes('nurswgvml007','yesterday', 'today')
 ```
