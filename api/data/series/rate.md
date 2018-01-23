@@ -10,8 +10,9 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 | **Name** | **Type**    | **Description**  |
 |:---|:---|:---|
-| period | object | [**Required**] Rate period. Supports NANOSECOND time unit. |
+| period | object | Rate period. Supports NANOSECOND time unit. |
 | counter | boolean | If true, negative differences between consecutive samples are ignored. Default: true |
+| order         | number           | Change the order in which `group`, `rate`, and `aggregate` are executed, the higher the value of `order` the later in the sequence will it be executed. Default: 0. |
 
 ## Request
 
@@ -37,14 +38,17 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ## Rate Period
 
-If rate period is specified, the function computes rate of change for the specified time period: 
+- If rate period is not specified, the function computes difference between values of two susequent series samples. So if samples are `(previousTimestamp, previousValue)` and `(timestamp, value)`, then result would be `(timestamp, value - previousValue)`.
+
+
+- If rate period is specified, the function computes rate of change for the specified time period: 
 
 `(value - previousValue) * ratePeriod / (timestamp - previousTimestamp)`.
 
 ```java
   ratePeriod = rate.count * rate.unit (in milliseconds)
   if (value > previousValue) {
-    resultValue = (value - previousValue) / (time - previousTime) * ratePeriod;
+    resultValue = (value - previousValue) / (timestamp - previousTime) * ratePeriod;
     aggregator.addValue(timestamp, resultValue);
   }
 ```

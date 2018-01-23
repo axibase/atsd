@@ -22,7 +22,7 @@ Aggregation process:
 | threshold    | object  | Object containing minimum and and maximum range for a `THRESHOLD_*` aggregator.  |
 | calendar     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
 | workingMinutes | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
-| order         | number           | Change the order in which `aggregate` and `group` are executed, the higher the value of `order` the later in the sequence will it be executed.             |
+| order         | number           | Change the order in which `group`, `rate`, and `aggregate` are executed, the higher the value of `order` the later in the sequence will it be executed. Default: 0. |
 
 ### period
 
@@ -33,7 +33,7 @@ Aggregation process:
 | unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | count  | number | Number of time units contained in the period. |
 | align | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
-
+| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the ATSD timezone. (Refer to the `/admin/system-information` page to view the ATSD timezone).|
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
 ### calendar
