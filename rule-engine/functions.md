@@ -174,6 +174,8 @@ The text functions transform and compare strings.
 * [abbreviate](functions-text.md#abbreviate)
 * [indexOf](functions-text.md#indexof)
 * [locate](functions-text.md#locate)
+* [trim](functions-text.md#trim)
+* [length](functions-text.md#length)
 
 ## Formatting Functions
 
@@ -194,6 +196,9 @@ The collection functions return information about the collection or check it for
 * [likeAny](functions-collection.md#likeany)
 * [matchList](functions-collection.md#matchlist)
 * [matches](functions-collection.md#matches)
+* [contains](functions-collection.md#contains)
+* [size](functions-collection.md#size)
+* [isEmpty](functions-collection.md#isEmpty)
 * [excludeKeys](functions-collection.md#excludekeys)
 
 ## Lookup Functions
@@ -235,6 +240,7 @@ Property functions retrieve and compare property keys and tags.
 * [property_compare_except](functions-property.md#property_compare_except)
 * [property_map](functions-property.md#property_map)
 * [property_maps](functions-property.md#property_maps)
+* [getPropertyTypes](functions-property.md#getpropertytypes)
 
 ## Script Functions
 
@@ -256,3 +262,8 @@ The rule functions provide a way to check the status of windows created by other
 # Link functions
 
 * [getEntityLink](functions-link.md#getentitylink)
+* [getPropertyLink](functions-link.md#getpropertylink)
+* [getRuleLink](functions-link.md#getrulelink)
+* [getCsvExportLink](functions-link.md#getcsvexportlink)
+* [getHtmlExportLink](functions-link.md#gethtmlexportlink)
+* [getChartLink](functions-link.md#getchartlink)

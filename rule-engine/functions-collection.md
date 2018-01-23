@@ -25,6 +25,9 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 * [likeAny](#likeany)
 * [matchList](#matchlist)
 * [matches](#matches)
+* [contains](#contains)
+* [size](#size)
+* [isEmpty](#isEmpty)
 * [excludeKeys](#excludekeys)
 
 ### `collection`
@@ -173,8 +176,13 @@ Example:
 
 Returns a copy of the input map `m` without the keys specified in collection `c`.
 
-Example:
+The keys in collection `c` may contain wildcards ? and * to remove multiple matching keys from the map.
+
+Examples:
 
   ```javascript
     excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
+    
+    /* Returns ["b1": "w1", "b2": "w2"] */
+    excludeKeys(["a1": "v1", "a2": "v2", "b1": "w1", "b2": "w2", "c1": "z1"], ['a*', 'c1'])
   ```

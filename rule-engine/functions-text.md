@@ -34,6 +34,8 @@ The functions return a new string with the original input string left unchanged.
 * [abbreviate](#abbreviate)
 * [indexOf](#indexof)
 * [locate](#locate)
+* [trim](#trim)
+* [length](#length)
 
 ### `upper`
 
@@ -375,3 +377,19 @@ Examples:
 ```
 
 Same as `indexOf()`.
+
+### `trim`
+
+```javascript
+  trim(string s) string
+```
+
+Removes leading and trailing non-printable characters.
+
+### `length`
+
+```javascript
+  length(string s) string
+```
+
+Returns length of the string `s`. If the `s` is null, returns -1.
