@@ -21,6 +21,7 @@
   - [Implementation Notes](user-authorization.md#implementation-notes)
 - SSL
   - [Installing CA-signed Certificate](ssl-ca-signed.md)
+  - [Installing Let's Encrypt Certificate](ssl-letsencrypt.md)
   - [Installing Self-signed SSL Certificate](ssl-self-signed.md)
 - [Restarting](restarting.md#restarting)
   - [Script Directory](restarting.md#script-directory)
