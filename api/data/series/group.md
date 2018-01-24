@@ -245,7 +245,7 @@ An opposite operation to truncation, extend adds missing values at the beginning
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "interpolate": { 
+      "interpolate": { 
         "type": "NONE",
         "extend": true 
       }
