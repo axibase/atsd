@@ -13,6 +13,7 @@ The named collections are listed on the **Data > Named Collections** page.
 * [entity_tag](#entity_tag)
 * [entity_tags](#entity_tags)
 * [getEntity](#getentity)
+* [getEntityName](#getentityname)
 * [collection](#collection)
 * [lookup](#lookup)
 * [replacementTable](#replacementtable)
@@ -96,6 +97,15 @@ Example:
   /* Returns an interpolation mode of 'nurswgvml007' entity object */
   getEntity('nurswgvml007').interpolate
 ```
+
+### `getEntityName`
+
+```javascript
+  getEntityName(string e) string
+```
+Returns normalized (lower-cased) entity name for the input string `e`. The function searches for entity by name `e` in case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in case-insensitive manner. 
+
+If the entity cannot be found, the original input string `e` is returned.
 
 ### `collection`
 
