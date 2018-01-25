@@ -37,7 +37,7 @@ curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegr
         
 ```bash
 curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram" \
-  -F "certificate=@/opt/atsd/atsd/conf/server.properties.pem" \
+  -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
   https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
 
