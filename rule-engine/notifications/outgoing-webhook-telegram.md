@@ -4,7 +4,7 @@
 
 ## Create Telegram Bot
 
-Use an existing bot or create a new one.
+The bot is special user account created for automation and integration purposes. You can use an existing bot or create a new one.
 
 * Search for the `BotFather` user in the Telegram client.
 * Start a conversation with the [BotFather](https://telegram.me/botfather) user.
@@ -16,30 +16,32 @@ Use an existing bot or create a new one.
 
 ## Set Webhook
 
-Webhook url must contain [user credentials](../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance. 
+The webhook URL must contain [user credentials](../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance, for example:
       
 ```elm
 https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram
 ```
         
-The target ATSD server must be accessible on port 443,80,88 or 8443 and have a valid [CA-signed](/administration/ssl-ca-signed.md) or [self-signed](/administration/ssl-self-signed.md) SSL certificate installed. 
+The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443) and have a valid [CA-signed](/administration/ssl-ca-signed.md) or [self-signed](/administration/ssl-self-signed.md) SSL certificate installed. 
 
-In case of use self-signed SSL certificate you'll need to export it in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate).
+In case of using a self-signed SSL certificate you'll need to export it in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate).
 
-### CA-signed SSL certificate installed
-    
-```bash
-curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram" \
-  https://api.telegram.org/botBOT_TOKEN/setWebhook
-```
-    
-### Self-signed SSL certificate installed
-        
-```bash
-curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram" \
-  -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
-  https://api.telegram.org/botBOT_TOKEN/setWebhook
-```
+Execute one of the following command to setup a webhook.
+
+* CA-signed SSL certificate installed
+
+    ```bash
+    curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram" \
+      https://api.telegram.org/botBOT_TOKEN/setWebhook
+    ```
+
+* Self-signed SSL certificate installed
+
+    ```bash
+    curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram" \
+      -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
+      https://api.telegram.org/botBOT_TOKEN/setWebhook
+    ```
 
 ## Testing Webhook
 
@@ -68,7 +70,7 @@ curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegr
 
     ![](images/outgoing_webhook_telegram_1.png)
     
-* Go to the Telegram and send direct message to recently created bot.
+* Go to the Telegram and send a direct message to the recently created bot.
 
     ![](images/outgoing_webhook_telegram_2.png)
     
