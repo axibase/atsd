@@ -162,7 +162,7 @@ If the key or value is null, the row for such map.entry is omitted from the tabl
 
 The numbers in the map can be rounded depending on context.
 
-The function returns an empty string if the map m is empty.
+The function returns an empty string if the map `m` is empty.
 
 Example:
 
@@ -231,7 +231,7 @@ The following table is returned:
 ```
 
 ```javascript
-  addTable([['2018-01-25T19:00:12.346Z', '1'], ['2018-01-25T19:00:27.347Z', '1']], 'ascii', ['date', 'count'])
+addTable([['2018-01-25T19:00:12.346Z', '1'], ['2018-01-25T19:00:27.347Z', '1']], 'ascii', ['date', 'count'])
 ```
 The following table is returned:
 
