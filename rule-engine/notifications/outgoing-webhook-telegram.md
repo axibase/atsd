@@ -32,7 +32,7 @@ keytool -importkeystore -srckeystore /opt/atsd/atsd/conf/server.keystore -destke
 openssl pkcs12 -in /opt/atsd/atsd/conf/server.keystore.p12 -out /opt/atsd/atsd/conf/server.keystore.pem -nokeys
 ```
 
-Execute one of the following command to setup a webhook.
+Execute one of the following commands to setup a webhook.
 
 * CA-signed SSL certificate installed
 
@@ -48,7 +48,7 @@ Execute one of the following command to setup a webhook.
       -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
     ```
-Make sure `getWebhookInfo` method doesn't return any SSL errors:
+Make sure that the `getWebhookInfo` method doesn't return any SSL errors:
 
 ```bash
 curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
