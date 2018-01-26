@@ -24,7 +24,13 @@ https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=tel
         
 The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443) and have a valid [CA-signed](/administration/ssl-ca-signed.md) or [self-signed](/administration/ssl-self-signed.md) SSL certificate installed. 
 
-In case of using a self-signed SSL certificate you'll need to export it in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate).
+In case of using a self-signed SSL certificate you'll need to export it in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate):
+
+```bash
+keytool -importkeystore -srckeystore /opt/atsd/atsd/conf/server.keystore -destkeystore /opt/atsd/atsd/conf/server.keystore.p12 -srcstoretype jks -deststoretype pkcs12
+
+openssl pkcs12 -in /opt/atsd/atsd/conf/server.keystore.p12 -out /opt/atsd/atsd/conf/server.keystore.pem -nokeys
+```
 
 Execute one of the following command to setup a webhook.
 
@@ -42,6 +48,22 @@ Execute one of the following command to setup a webhook.
       -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
     ```
+Make sure `getWebhookInfo` method doesn't return any SSL errors:
+
+```bash
+curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
+```
+```json
+{
+  "ok": true,
+  "result": {
+    "url": "https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram",
+    "has_custom_certificate": true,
+    "pending_update_count": 0,
+    "max_connections": 40
+  }
+}
+```
 
 ## Testing Webhook
 
