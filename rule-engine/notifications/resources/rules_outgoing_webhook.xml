@@ -30,7 +30,7 @@
 <discardPreviousValues>false</discardPreviousValues>
 <webNotification>
 <disabled>false</disabled>
-<rule-name>slack-bot-notify-test</rule-name>
+<rule-name>outgoing_webhook</rule-name>
 <repeat-interval>
 <type>ALL</type>
 <intervalCount>6</intervalCount>
