@@ -15,12 +15,21 @@ If the current rule and the referenced rules have different grouping settings, t
 
 > Open window means a window with status `OPEN` or `REPEAT`.
 
+Current window is excluded from matching.
+
 ## `rule_open`
 
 ```java
-  rule_open(string r) boolean
+  rule_open(string r[, string e [, string|[] t [, string m]]]) boolean
 ```
-Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r` and the same entity and tags as defined in the current window.
+Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r`, entity `e`, tags string or tags map `t` and message `m`.
+
+The message argument `m` compares the text value (which is equal to 'message' field in case of message command). Wildcards are supported in the message argument.
+
+If the tags `t` are specified the window matches the condition if it has the same tags with the same values (it may have other tags as well).
+
+By default the same entity and tags as defined in the current window are used.
+
 
 > The function returns `false` if a matching window is not found.
 
@@ -35,9 +44,15 @@ The above expression will evaluate to `true` if the average value of samples in 
 ## `rule_window`
 
 ```java
-  rule_window(string r) EventWindow
+  rule_window(string r[, string e [, string|[] t [, string m]]]) EventWindow
 ```
-Returns the first matching window for the specified rule `r` and the same entity and tags as defined in the current window.
+Returns the first matching window for the specified rule `r`, entity `e`, tags string or tags map `t` and message `m`.
+
+The message argument `m` compares the text value (which is equal to 'message' field in case of message command). Wildcards are supported in the message argument.
+
+If the tags `t` are specified the window matches the condition if it has the same tags with the same values (it may have other tags as well).
+
+By default the same entity and tags as defined in the current window are used.
 
 Example:
 

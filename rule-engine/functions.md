@@ -169,6 +169,7 @@ The text functions transform and compare strings.
 * [removeEnding](functions-text.md#removeending)
 * [urlencode](functions-text.md#urlencode)
 * [jsonencode](functions-text.md#jsonencode)
+* [htmlDecode](functions-text.md#htmldecode)
 * [unquote](functions-text.md#unquote)
 * [countMatches](functions-text.md#countmatches)
 * [abbreviate](functions-text.md#abbreviate)
@@ -186,6 +187,7 @@ The functions format dates and numbers to strings according to the specified pat
 * [date_format](functions-format.md#date_format)
 * [formatInterval](functions-format.md#formatinterval)
 * [formatIntervalShort](functions-format.md#formatintervalshort)
+* [addTable](functions-format.md#addtable)
 
 ## Collection Functions
 
@@ -265,6 +267,7 @@ The rule functions provide a way to check the status of windows created by other
 * [getURLPath](functions-utility.md#geturlpath)
 * [getURLQuery](functions-utility.md#geturlquery)
 * [getURLUserInfo](functions-utility.md#geturluserinfo)
+* [executeSqlQuery](functions-utility.md#executesqlquery)
 
 # Link functions
 

@@ -29,6 +29,7 @@ The functions return a new string with the original input string left unchanged.
 * [removeEnding](#removeending)
 * [urlencode](#urlencode)
 * [jsonencode](#jsonencode)
+* [htmlDecode](#htmldecode)
 * [unquote](#unquote)
 * [countMatches](#countmatches)
 * [abbreviate](#abbreviate)
@@ -300,6 +301,14 @@ Encodes `s` into the URL format by replacing unsafe characters with "%" followed
 ```
 
 Escapes special symbols such as double-quote with backslash to safely use the input string within a JSON object.
+
+### `htmlDecode`
+
+```javascript
+  htmlDecode(string s) string
+```
+
+Replaces HTML entities in string `s` with appropriate characters.
 
 ### `unquote`
 

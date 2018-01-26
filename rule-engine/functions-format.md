@@ -17,6 +17,10 @@ Date formatting functions:
 * [formatInterval](#formatinterval)
 * [formatIntervalShort](#formatintervalshort)
 
+Map formatting functions:
+
+* [addTable](#addtable)
+
 ### `formatNumber`
 
 ```javascript
@@ -140,3 +144,102 @@ Examples:
   /* Assuming current time of 2017-08-15T00:01:30Z, return short interval of elapsed time: 1m 30s */
   formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))  
 ```  
+
+### `addTable`
+
+The functions are not accessible when declaring **Variables**.
+
+* `addTable([] m, string f)`
+
+```javascript
+  addTable([] m, string f) string
+```
+Returns the input map `m` in the specified format `f`. Map `m` is a key/value map, such as entity.tags, tags or variables.
+
+`f` is one of the supported formats: 'markdown', 'ascii', 'property', 'csv', 'html'.
+
+If the key or value is null, the row for such map.entry is omitted from the table.
+
+The numbers in the map can be rounded depending on context.
+
+The function returns an empty string if the map m is empty.
+
+Example:
+
+```javascript
+addTable(getEntity('nurswgvml007').tags, 'csv')
+```
+The following table is returned:
+
+```css
+Name,Value
+alias,007
+app,ATSD
+cpu_count,1
+os,Linux
+```
+
+* `addTable([[] m], string f[, [string h]])`  
+
+```javascript
+  addTable([[] m], string f[, [string h]]) string
+```
+The function accepts a collection of maps `m` and creates one table with multiple columns (one value column for each map).
+
+If headers provided and headers list `h` is not empty, it's values used as header, otherwise first column is 'Name', others are 'Value {n - 1}', where n is column index starting with 1.
+
+Example:
+
+```javascript
+addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
+```  
+The following table is returned:
+
+```markdown
+| **Name** | **Value 1** | **Value 2**  |
+|:---|:---|:--- |
+| id | / | /boot |
+| jfs_filespace_%used | 60.5 | 30.8 |
+```
+
+* `addTable([[string]] m, string f[, [string h] | boolean r])`
+
+```javascript
+  addTable([[string]] m, string f[, [string h] | boolean r]) string
+```
+The function accepts a collection of collections of strings `m` and creates one table with multiple columns.
+
+If headers provided and headers list `h` is not empty, it's values used as header, otherwise headers will be Value {n}, where n is column index starting with 1.
+
+If `r` is true, first row used as header and others as value rows. If collection of strings `m` is empty, empty string is returned. Otherwise headers will be Value {n}.
+
+Examples:
+
+```javascript
+query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
+addTable(executeSqlQuery(query), 'ascii', true)
+```  
+The following table is returned:
+
+```css
++--------------------------+-------+
+| datetime                 | value |
++--------------------------+-------+
+| 2018-01-26T13:00:14.098Z | 23    |
+| 2018-01-26T13:00:29.110Z | 22    |
++--------------------------+-------+
+```
+
+```javascript
+  addTable([['2018-01-25T19:00:12.346Z', '1'], ['2018-01-25T19:00:27.347Z', '1']], 'ascii', ['date', 'count'])
+```
+The following table is returned:
+
+```css
++--------------------------+-------+
+| date                     | count |
++--------------------------+-------+
+| 2018-01-25T19:00:12.346Z | 10    |
+| 2018-01-25T19:00:27.347Z | 18    |
++--------------------------+-------+
+```
