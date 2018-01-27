@@ -6,7 +6,7 @@ The functions return URLs to ATSD pages based on the database URL (set the `serv
 
 The URLs are automatically [inlined](#inline-links) in email notifications and in web notifications that support inline links.
 
-The functions are not accessible when declaring **Variables**.
+> The functions **cannot** be used in the filter, condition and when declaring variables.
 
 ## Reference
 

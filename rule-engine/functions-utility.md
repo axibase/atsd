@@ -118,21 +118,3 @@ Example:
     getURLUserInfo('https://atsd_user:atsd_password@axibase.com/en/products?type=database&status=1')
   ```
   
-### `executeSqlQuery`
-
-```javascript
-  executeSqlQuery(string q) collection[collection[string]]
-```
-Returns the result of SQL query `q` to ATSD. The first row contains headers. 
-
-Example:
-
-```javascript
-executeSqlQuery('SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2')
-```
-
-The following result is returned:
-
-```css
-[[datetime, value], [2018-01-25T19:00:12.346Z, 1], [2018-01-25T19:00:27.347Z, 1]]
-``` 

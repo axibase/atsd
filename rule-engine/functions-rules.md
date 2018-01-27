@@ -22,16 +22,18 @@ Current window is excluded from matching.
 ```java
   rule_open(string r[, string e [, string|[] t [, string m]]]) boolean
 ```
-Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r`, entity `e`, tags string or tags map `t` and message `m`.
 
-The message argument `m` compares the text value (which is equal to 'message' field in case of message command). Wildcards are supported in the message argument.
+Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r`, entity `e`, tags `t` and message `m`.
 
-If the tags `t` are specified the window matches the condition if it has the same tags with the same values (it may have other tags as well).
+The function returns `true` if a matching window is found, `false` otherwise.
 
 By default the same entity and tags as defined in the current window are used.
 
+The tags `t` argument can be specified as a string or as a map.
 
-> The function returns `false` if a matching window is not found.
+If `t` is specified, the window matches the condition if it has the same tags with the same values (it may have other tags as well).
+
+The message argument `m` compares the specified pattern, which supports wildcards, with 'message' field in open windows.
 
 Example:
 
@@ -46,13 +48,18 @@ The above expression will evaluate to `true` if the average value of samples in 
 ```java
   rule_window(string r[, string e [, string|[] t [, string m]]]) EventWindow
 ```
-Returns the first matching window for the specified rule `r`, entity `e`, tags string or tags map `t` and message `m`.
 
-The message argument `m` compares the text value (which is equal to 'message' field in case of message command). Wildcards are supported in the message argument.
+Returns the first matching window in 'OPEN' or 'REPEAT' for the specified rule `r`, entity `e`, tags `t` and message `m`.
 
-If the tags `t` are specified the window matches the condition if it has the same tags with the same values (it may have other tags as well).
+The function returns `null` if a matching window is not found.
 
 By default the same entity and tags as defined in the current window are used.
+
+The tags `t` argument can be specified as a string or as a map.
+
+If `t` is specified, the window matches the condition if it has the same tags with the same values (it may have other tags as well).
+
+The message argument `m` compares the specified pattern, which supports wildcards, with 'message' field in open windows.
 
 Example:
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The functions format numbers and dates to strings according to the specified pattern.
+The functions format numbers, dates, collections, and maps to strings according to the specified format.
 
 ## Reference
 
@@ -17,9 +17,11 @@ Date formatting functions:
 * [formatInterval](#formatinterval)
 * [formatIntervalShort](#formatintervalshort)
 
-Map formatting functions:
+Map and list formatting functions:
 
-* [addTable](#addtable)
+* [addTable for map](#addtable-for-map)
+* [addTable for maps](#addtable-for-maps)
+* [addTable for list](#addtable-for-list)
 
 ### `formatNumber`
 
@@ -42,7 +44,7 @@ Example:
   convert(double x, string s) string
 ```
 
-Divides number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit: 
+Divides number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit:
 
   * 'k' (1000)
   * 'Ki' (1024)
@@ -145,33 +147,49 @@ Examples:
   formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))  
 ```  
 
-### `addTable`
-
-The functions are not accessible when declaring **Variables**.
-
-* `addTable([] m, string f)`
+### `addTable` for map
 
 ```javascript
-  addTable([] m, string f) string
+   addTable([] m, string f) string
 ```
-Returns the input map `m` in the specified format `f`. Map `m` is a key/value map, such as entity.tags, tags or variables.
 
-`f` is one of the supported formats: 'markdown', 'ascii', 'property', 'csv', 'html'.
+The function prints the input map `m` as a two-column table in the specified format `f`.
 
-If the key or value is null, the row for such map.entry is omitted from the table.
+The first column in the table contains map keys, whereas the second column contains the corresponding map values.
 
-The numbers in the map can be rounded depending on context.
+The input map `m` typically references an existing field such as `tags`, `entity.tags`, or `variables`.
 
-The function returns an empty string if the map `m` is empty.
+Supported formats:
 
-Example:
+* 'markdown'
+* 'ascii'
+* 'property'
+* 'csv'
+* 'html'
+
+An empty string is returned if the map `m` is `null` or has no records.
+
+Map records with empty or `null` values are ignored.
+
+Numeric values are automatically rounded in web and email notifications and are printed `as is` in other cases.
+
+The default table header is 'Name, Value'.
+
+Examples:
+
+* `markdown` format
+
+```ls
+
+```
+
+* `csv` format
 
 ```javascript
-addTable(getEntity('nurswgvml007').tags, 'csv')
+  addTable(entity.tags, 'csv')
 ```
-The following table is returned:
 
-```css
+```ls
 Name,Value
 alias,007
 app,ATSD
@@ -179,21 +197,56 @@ cpu_count,1
 os,Linux
 ```
 
-* `addTable([[] m], string f[, [string h]])`  
+* `ascii` format
+
+```javascript
+  addTable(entity_tags(tags.host, true, true), 'ascii')
+```
+
+```ls
+
+```
+
+* `html` format
+
+```javascript
+  addTable(property_maps(entity, 'docker.container.state::*'), 'html')
+```
+
+```ls
+
+```
+
+* `property` format
+
+```javascript
+  addTable(excludeKeys(tags, ['image.id']) , 'property')
+```
+
+```ls
+
+```
+
+
+* `addTable` for maps
 
 ```javascript
   addTable([[] m], string f[, [string h]]) string
 ```
-The function accepts a collection of maps `m` and creates one table with multiple columns (one value column for each map).
 
-If headers provided and headers list `h` is not empty, it's values used as header, otherwise first column is 'Name', others are 'Value {n - 1}', where n is column index starting with 1.
+The function prints a collection of maps `m` as a multiple-column table in the specified format `f`, with optional header `h`.
+
+The first column in the table contains unique keys from all maps in the collection, whereas the second and subsequent columns contain map values for the corresponding key in the first column.
+
+The default table header is 'Name, Value-1, ..., Value-N'.
+
+If the header argument `h` is specified as a collection of strings, it replaces the default header. The number of elements in the header collection must be the same as the number of maps plus `1`.
 
 Example:
 
 ```javascript
 addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
 ```  
-The following table is returned:
 
 ```markdown
 | **Name** | **Value 1** | **Value 2**  |
@@ -202,26 +255,35 @@ The following table is returned:
 | jfs_filespace_%used | 60.5 | 30.8 |
 ```
 
-* `addTable([[string]] m, string f[, [string h] | boolean r])`
+* `addTable` for list
 
 ```javascript
-  addTable([[string]] m, string f[, [string h] | boolean r]) string
+  addTable([[string]] c, string f[, [string] | boolean h]) string
 ```
-The function accepts a collection of collections of strings `m` and creates one table with multiple columns.
 
-If headers provided and headers list `h` is not empty, it's values used as header, otherwise headers will be Value {n}, where n is column index starting with 1.
+The function prints a list of collections `c` as a multiple-column table in the specified format `f`. Each element in the list is serialized into its own row in the table.
 
-If `r` is true, first row used as header and others as value rows. If collection of strings `m` is empty, empty string is returned. Otherwise headers will be Value {n}.
+The number of elements in each collection must be the same.
+
+The default table header is 'Value-1, ..., Value-N'.
+
+The header argument `h` can be used to customize the header.
+
+If `h` is specified as a collection, its elements replace the default header. The size of the header collection must be the same as the number of cells in each row.
+
+If `h` argument is specified as a boolean value `true`, the first row in the table will be used as a header.
+
+An empty string is returned if the list `c` is empty.
 
 Examples:
 
 ```javascript
 query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
+//
 addTable(executeSqlQuery(query), 'ascii', true)
 ```  
-The following table is returned:
 
-```css
+```ls
 +--------------------------+-------+
 | datetime                 | value |
 +--------------------------+-------+
@@ -231,15 +293,13 @@ The following table is returned:
 ```
 
 ```javascript
-addTable([['2018-01-25T19:00:12.346Z', '1'], ['2018-01-25T19:00:27.347Z', '1']], 'ascii', ['date', 'count'])
+query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
+//
+addTable(executeSqlQuery(query), 'csv', ['date', 'count'])
 ```
-The following table is returned:
 
-```css
-+--------------------------+-------+
-| date                     | count |
-+--------------------------+-------+
-| 2018-01-25T19:00:12.346Z | 10    |
-| 2018-01-25T19:00:27.347Z | 18    |
-+--------------------------+-------+
+```ls
+date,count
+2018-01-25T19:00:12.346Z,10
+2018-01-25T19:00:27.347Z,18
 ```

@@ -308,7 +308,14 @@ Escapes special symbols such as double-quote with backslash to safely use the in
   htmlDecode(string s) string
 ```
 
-Replaces HTML entities in string `s` with appropriate characters.
+Example:
+
+```javascript
+  /* Returns 'World > city' */
+  htmlDecode("World &gt; city")
+```
+
+Rethrn a new string with HTML entities in string `s` replaced with corresponding characters.
 
 ### `unquote`
 
@@ -323,6 +330,7 @@ Removes leading and trailing double and single quotation marks from the string `
 ```javascript
   countMatches(string s, string p) int
 ```
+
 Example:
 
 ```javascript

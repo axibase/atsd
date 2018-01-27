@@ -2,7 +2,7 @@
 
 ## Overview
 
-The functions retrieve series and message records from database.
+The `db_*` functions retrieve series and message records from database. The `executeSqlQuery` function retrieves results of an SQL query executed against the database.
 
 The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
 
@@ -17,6 +17,7 @@ The `db_message_count` and `db_message_last` functions allow one to correlate di
 * [db_statistic](functions-db.md#db_statistic)
 * [db_message_count](functions-db.md#db_message_count)
 * [db_message_last](functions-db.md#db_message_last)
+* [executeSqlQuery](functions-db.md#executesqlquery)
 
 ## Series Functions
 
@@ -320,3 +321,23 @@ Example:
 ```java
   db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'docker start sftp*')
 ```
+
+## SQL Functions
+
+### `executeSqlQuery`
+
+```javascript
+  executeSqlQuery(string q, [[string]] c) [map]
+```
+
+Returns the result of SQL query `q` as a collection of maps. The first row contains headers consisting of column labels. 
+
+Example:
+
+```javascript
+executeSqlQuery('SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2')
+```
+
+```css
+[[datetime, value], [2018-01-25T19:00:12.346Z, 1], [2018-01-25T19:00:27.347Z, 1]]
+``` 
