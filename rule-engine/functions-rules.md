@@ -46,14 +46,23 @@ The above expression will evaluate to `true` if the average value of samples in 
 ## `rule_window`
 
 ```java
-  rule_window(string r[, string e [, string|[] t [, string m]]]) EventWindow
+  rule_window(string r[, string e [, string|[] t [, string m]]]) window
 ```
 
-Returns the first matching window in 'OPEN' or 'REPEAT' for the specified rule `r`, entity `e`, tags `t` and message `m`.
+Returns the first matching window in `OPEN` or `REPEAT` status for the specified rule `r`, entity `e`, tags `t`, and message `m`.
 
-The function returns `null` if a matching window is not found.
+The function returns `null` if no matching windows are found.
 
-By default the same entity and tags as defined in the current window are used.
+The arguments can be specified as literal values or as fields of the current window (`rule`, `entity`, `tags`, `message`):
+
+```javascript
+# literal values
+rule_window('disk_used_check', 'nurswgvml007', 'disk=/')
+# fields
+rule_window(rule, entity, 'disk=/')
+```
+
+If only the required rule parameter `r` is specified, the match is performed for the same entity and tags as defined in the current window, whereas the message comparison is ignored.
 
 The tags `t` argument can be specified as a string or as a map.
 
@@ -70,3 +79,6 @@ Example:
 > The function returns `null` if a matching window is not found.
 
 The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the first window for rule 'disk_used_check' and the same entity and tags as defined in this window has any other status except `CANCEL`.
+
+
+
