@@ -49,7 +49,7 @@ Assume that there is the following windows with status 'REPEAT' and function is 
 +----------------+------------------------------+
 | Entity         | nurswgvml007                 |
 | Entity Label   | NURswgvml007                 |
-| Metric	     | message                      |
+| Metric	 | message                      |
 | Tags	         | container-name = axibase     | 
 |                | external-port = 41022        |
 |                | host = 172.17.0.3            |
@@ -63,7 +63,7 @@ Assume that there is the following windows with status 'REPEAT' and function is 
 +----------------+------------------------------+
 | Entity         | atsd                         |
 | Entity Label   | ATSD                         |
-| Metric	     | message                      |
+| Metric	 | message                      |
 | Tags	         | container-name = axibase2    |
 |                | container-status = UP        |
 |                | external-port = 43022        |
@@ -78,14 +78,14 @@ Assume that there is the following windows with status 'REPEAT' and function is 
 
 * Same tags with the same values
 
-```javasript
+```javascript
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', 'host=172.17.0.3')
 ```
 
 * Same tags with a different value
 
-```javasript
+```javascript
   /* Returns 'false' */
   rule_open('jvm_derived', 'nurswgvml007', 'port='+tags.port)
   
@@ -98,14 +98,14 @@ Assume that there is the following windows with status 'REPEAT' and function is 
 
 * Match with wildcard
 
-```javasript
+```javascript
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', 'container-name=axi*')
 ```
 
 * Match with message
 
-```javasript
+```javascript
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', 'container-name=axibase', 'Starting *')
 ```
