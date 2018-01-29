@@ -96,6 +96,24 @@ type = 'activemq_service' and keys.service = 'health'
 tags.type != 'security' && message NOT IN collection('linux-ignore-commands')
 ```
 
+If the value of field contains single quote, wrap the value with double quotes, for example:
+
+```javascript
+message = "Illegal value 'test'"
+```
+
+To escape double quotes use the backslash (\\) character, for example:
+
+```javascript
+message = "Illegal value \"test\""
+```
+
+If the tag name contains special characters (-,+,= or other), use square brackets, for example:
+
+```javascript
+tags['mount-point'] = '/'
+```
+
 ## Entity Filter
 
 The filter discards commands for an entity not equal to one of entities specified in the rule. The filter is applied only if the list of selected entities is not empty.
