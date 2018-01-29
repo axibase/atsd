@@ -23,7 +23,7 @@ Current window is excluded from matching.
   rule_open(string r[, string e [, string|[] t [, string m]]]) boolean
 ```
 
-Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r`, entity `e`, tags `t` and message `m`.
+Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r`, entity `e`, command tags `t` and message `m`.
 
 The function returns `true` if a matching window is found, `false` otherwise.
 
@@ -35,13 +35,80 @@ If `t` is specified, the window matches the condition if it has the same tags wi
 
 The message argument `m` compares the specified pattern, which supports wildcards, with 'message' field in open windows.
 
-Example:
+Examples:
+
+The following expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if rule 'disk_used_check' is open for the same entity and tags as defined in this window.
 
 ```java
   avg() > 10 && rule_open('disk_used_check')
 ```
 
-The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if rule 'disk_used_check' is open for the same entity and tags as defined in this window.
+Assume that there is the following windows with status 'REPEAT' and function is called from the rule 'test_rule_open':
+
+```
++----------------+------------------------------+
+| Entity         | nurswgvml007                 |
+| Entity Label   | NURswgvml007                 |
+| Metric	     | message                      |
+| Tags	         | container-name = axibase     | 
+|                | external-port = 41022        |
+|                | host = 172.17.0.3            |
+|                | port = 22                    |
+| Rule	         | jvm_derived                  |
+| Rule Expression| true                         |
+| Text Value	 | Starting sql query execution.|
++----------------+------------------------------+
+```
+```
++----------------+------------------------------+
+| Entity         | atsd                         |
+| Entity Label   | ATSD                         |
+| Metric	     | message                      |
+| Tags	         | container-name = axibase2    |
+|                | container-status = UP        |
+|                | external-port = 43022        |
+|                | file_system = ext4           |
+|                | host = 172.17.0.3            |
+|                | port = 23                    |
+| Rule	         | test_rule_open               |
+| Rule Expression| true                         |
+| Text Value	 | Starting sql query execution.|
++----------------+------------------------------+
+```
+
+* Same tags with the same values
+
+```javasript
+  /* Returns 'true' */
+  rule_open('jvm_derived', 'nurswgvml007', 'host=172.17.0.3')
+```
+
+* Same tags with a different value
+
+```javasript
+  /* Returns 'false' */
+  rule_open('jvm_derived', 'nurswgvml007', 'port='+tags.port)
+  
+  /* Returns 'false' */
+  rule_open('jvm_derived', 'nurswgvml007', tags)
+  
+  /* Returns 'true' */
+  rule_open('jvm_derived', 'nurswgvml007', ["port":22,"container-name":"axibase"])
+```
+
+* Match with wildcard
+
+```javasript
+  /* Returns 'true' */
+  rule_open('jvm_derived', 'nurswgvml007', 'container-name=axi*')
+```
+
+* Match with message
+
+```javasript
+  /* Returns 'true' */
+  rule_open('jvm_derived', 'nurswgvml007', 'container-name=axibase', 'Starting *')
+```
 
 ## `rule_window`
 
@@ -49,7 +116,7 @@ The above expression will evaluate to `true` if the average value of samples in 
   rule_window(string r[, string e [, string|[] t [, string m]]]) window
 ```
 
-Returns the first matching window in `OPEN` or `REPEAT` status for the specified rule `r`, entity `e`, tags `t`, and message `m`.
+Returns the first matching window in `OPEN` or `REPEAT` status for the specified rule `r`, entity `e`, command tags `t`, and message `m`.
 
 The function returns `null` if no matching windows are found.
 
