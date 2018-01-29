@@ -179,8 +179,19 @@ Examples:
 
 * `markdown` format
 
-```ls
+```javascript
+  addTable(property_map('nurswgvml007','disk::', 'today'), 'markdown')
+```
 
+```ls
+| **Name** | **Value**  |
+|:---|:--- |
+| id | sda5 |
+| disk_%busy | 0.6 |
+| disk_block_size | 16.1 |
+| disk_read_kb/s | 96.8 |
+| disk_transfers_per_second | 26.0 |
+| disk_write_kb/s | 8.1 |
 ```
 
 * `csv` format
@@ -204,31 +215,44 @@ os,Linux
 ```
 
 ```ls
-
++-------------+------------+
+| Name        | Value      |
++-------------+------------+
+| alias       | 007        |
+| app         | ATSD       |
+| cpu_count   | 1          |
+| os          | Linux      |
++-------------+------------+
 ```
 
 * `html` format
 
 ```javascript
-  addTable(property_maps(entity, 'docker.container.state::*'), 'html')
+  addTable(property_map('nurswgvml007', 'cpu::*'), 'html')
 ```
 
 ```ls
-
+<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">Name</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value</th></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">id</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">1</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">cpu.idle%</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">91.5</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">cpu.steal%</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td></tr>
+</tbody></table>
 ```
 
 * `property` format
 
 ```javascript
-  addTable(excludeKeys(tags, ['image.id']) , 'property')
+  addTable(excludeKeys(entity.tags, ['ip', 'loc_code', 'loc_area']), 'property')
 ```
 
 ```ls
-
+alias=007
+app=ATSD
+cpu_count=1
+os=Linux
 ```
 
-
-* `addTable` for maps
+### `addTable` for maps
 
 ```javascript
   addTable([[] m], string f[, [string h]]) string
@@ -255,7 +279,7 @@ addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
 | jfs_filespace_%used | 60.5 | 30.8 |
 ```
 
-* `addTable` for list
+### `addTable` for list
 
 ```javascript
   addTable([[string]] c, string f[, [string] | boolean h]) string
