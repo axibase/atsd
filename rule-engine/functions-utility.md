@@ -9,7 +9,6 @@
 * [getURLPath](#geturlpath)
 * [getURLQuery](#geturlquery)
 * [getURLUserInfo](#geturluserinfo)
-* [executeSqlQuery](#executesqlquery)
 
 ### `ifEmpty`
 

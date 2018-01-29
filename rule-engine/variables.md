@@ -146,3 +146,11 @@ The current value of variables can be accessed on the window detail page.
 ![](images/variables-window-2.png)
 
 ![](images/variables-window.png)
+
+## Restrictions
+
+The following functions cannot be used in variable definitions:
+
+* [Link Functions](#functions-link.md)
+* [Map and list formatting functions](functions-format.md#reference)
+* [Script Functions](#functions-script.md)

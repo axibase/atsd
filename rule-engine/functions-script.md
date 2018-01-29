@@ -1,4 +1,4 @@
-# Functions: script
+# Script Functions
 
 ## Overview
 

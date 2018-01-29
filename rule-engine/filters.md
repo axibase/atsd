@@ -135,3 +135,11 @@ While the same condition such as `tags.mount_point = '/'` can be evaluated both 
 For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (e.g. mount_point = /dev) will be discarded early in the process without causing extra windows to be created.
 
 The `avg()` function, on the other hand, operates on an array of values stored in the window object and should therefore be used in the alert condition, because the window object is not available at the filtering stage.
+
+## Restrictions
+
+The following functions cannot be used in filter expressions:
+
+* [Link Functions](#functions-link.md)
+* [Map and list formatting functions](functions-format.md#reference)
+* [Script Functions](#functions-script.md)

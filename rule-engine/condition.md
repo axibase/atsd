@@ -130,3 +130,11 @@ The condition is `true` if the average exceeds `90` at any time or if the averag
 ```javascript
   avg() > 90 || avg() > 50 && now.hourOfDay() BETWEEN 8 AND 17
 ```
+
+## Restrictions
+
+The following functions cannot be used in condition expressions:
+
+* [Link Functions](#functions-link.md)
+* [Map and list formatting functions](functions-format.md#reference)
+* [Script Functions](#functions-script.md)

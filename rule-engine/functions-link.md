@@ -1,4 +1,4 @@
-# Link functions
+# Link Functions
 
 ## Overview
 
