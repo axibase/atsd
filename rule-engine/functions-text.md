@@ -17,6 +17,7 @@ The functions return a new string with the original input string left unchanged.
 * [startsWith](#startsWith)
 * [endsWith](#endsWith)
 * [split](#split)
+* [list](#list)
 * [coalesce](#coalesce)
 * [keepAfter](#keepafter)
 * [keepAfterLast](#keepafterlast)
@@ -110,6 +111,20 @@ To access the n-th element in the collection, use square brackets and index (sta
     authors = split(tags.authors, ',')
     authors.size() == 0 ? 'n/a' : authors[0]
   ```
+
+### `list`
+
+```javascript
+  list(string s[, string p]) [string]
+```
+Splits the given string by separator (default is ',') deduplicating equal items. First occurrence is preserved. In opposite to `split()`, this function doesn't care about quoted values.
+
+Example:
+
+```javascript
+  /* Returns ['hello', '"brave', 'new', 'world"'] */
+  list('hello "brave new world"', ' ')
+```
 
 ### `coalesce`
 
