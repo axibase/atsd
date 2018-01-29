@@ -161,6 +161,7 @@ The text functions transform and compare strings.
 * [startsWith](functions-text.md#startswith)
 * [endsWith](functions-text.md#endswith)
 * [split](functions-text.md#split)
+* [list](functions-text.md#list)
 * [coalesce](functions-text.md#coalesce)
 * [keepAfter](functions-text.md#keepafter)
 * [keepAfterLast](functions-text.md#keepafterlast)
