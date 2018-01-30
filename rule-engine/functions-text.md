@@ -117,13 +117,16 @@ To access the n-th element in the collection, use square brackets and index (sta
 ```javascript
   list(string s[, string p]) [string]
 ```
-Splits the given string by separator (default is ',') deduplicating equal items. First occurrence is preserved. In opposite to `split()`, this function doesn't care about quoted values.
+
+Splits string `s` using separator `p` (default is comma ',') into an array of string values. The function discards duplicate items by preserving the first occurrence of each element. 
+
+Unlike the `split()` function, `list()` doesn't handle quotes treating them as regular characters.
 
 Example:
 
 ```javascript
   /* Returns ['hello', '"brave', 'new', 'world"'] */
-  list('hello "brave new world"', ' ')
+  list('hello "brave new world" hello', ' ')
 ```
 
 ### `coalesce`
