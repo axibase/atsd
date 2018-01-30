@@ -275,7 +275,7 @@ The rule functions provide a way to check the status of windows created by other
 * [getURLQuery](functions-utility.md#geturlquery)
 * [getURLUserInfo](functions-utility.md#geturluserinfo)
 
-# Link functions
+## Link functions
 
 * [getEntityLink](functions-link.md#getentitylink)
 * [getPropertyLink](functions-link.md#getpropertylink)

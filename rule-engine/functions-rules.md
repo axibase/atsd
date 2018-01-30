@@ -4,7 +4,7 @@
 
 The rule functions provide a way to check the status of windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. The functions can be used for correlation purposes.
 
-If the current rule and the referenced rules have different grouping settings, the following match conditions are applied:
+If the current rule and the referenced rules have different grouping settings and no optional parameters are specified, the following match conditions are applied:
 
 | Current Rule | Referenced Rule | rule_open() Result |
 |---|---|---|
@@ -94,13 +94,6 @@ Assume that there is the following windows with status 'REPEAT' and function is 
   
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', ["port":22,"container-name":"axibase"])
-```
-
-* Match with wildcard
-
-```javascript
-  /* Returns 'true' */
-  rule_open('jvm_derived', 'nurswgvml007', 'container-name=axi*')
 ```
 
 * Match with message

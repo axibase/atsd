@@ -19,8 +19,6 @@ Date formatting functions:
 
 Map and list formatting functions:
 
-> The functions **cannot** be used in the filter, condition and when declaring variables.
-
 * [addTable for map](#addtable-for-map)
 * [addTable for maps](#addtable-for-maps)
 * [addTable for list](#addtable-for-list)
