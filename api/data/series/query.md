@@ -76,6 +76,13 @@ tags.location LIKE 'nur*'
 | versioned | boolean |Returns version status, source, and change date if the metric is versioned. Default: false. |
 | versionFilter | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
 
+### Value Filter
+
+| **Name**  | **Type** | **Description**  |
+|:---|:---|:---|
+| valueFilter | string | Expression to fetch only detailed samples that satisfy a condition, for example, `value != 0`. Value Filter is applied before any series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` word in expression refers to the series value. <br>Examples:<br> `value % 5 == 0` - fetch series samples which are integer numbers divisible by 5; <br> `value > 36.4 && value <= 36.7` - samples with value in specified range; <br> `Math.sin(value) < 0.5` - math functions of the [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) class could be used; <br> `Double.isNaN(value)` - only NaN values pass this filter.  |
+
+
 ### Control Fields
 
 | **Name**  | **Type** | **Description**  |
