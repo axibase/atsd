@@ -42,6 +42,13 @@ If no parameters are expected by the script, an empty list `[]` must be passed a
 ```javascript
 scriptOut('check_service.sh', [])
 ```
+Script `scriptFileName` is executed until reached the timeout value configurable at **Settings > Server Properties** page.
+
+If timeout value was reached the `SIGTERM` is send to the process and the following string is added to output:
+
+```
+Script terminated on timeout: {current timeout value}
+```
 
 ## Permissions
 
@@ -68,6 +75,14 @@ The output of the `scriptOut` function can be formatted with backticks in case o
  ![](images/script-format-html-result.png)  
 
 ## Examples
+
+* [ping](#ping)
+* [traceroute](#traceroute)
+* [top](#top)
+* [ps](#ps)
+* [URL availability](#url-availability)
+* [TCP availability](#tcp-availability)
+* [osquery](#osquery)
 
 ### `ping`
 
