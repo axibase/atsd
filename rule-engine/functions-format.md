@@ -266,17 +266,79 @@ The default table header is 'Name, Value-1, ..., Value-N'.
 
 If the header argument `h` is specified as a collection of strings, it replaces the default header. The number of elements in the header collection must be the same as the number of maps plus `1`.
 
-Example:
+Examples:
+
+`property_maps('nurswgvml007','jfs::', 'today')` returns following collection:
+
+```ls
+[{id=/, jfs_filespace_%used=12.8}, 
+{id=/dev, jfs_filespace_%used=0.0}, 
+{id=/mnt/u113452, jfs_filespace_%used=34.9}, 
+{id=/run, jfs_filespace_%used=7.5}, 
+{id=/var/lib/lxcfs, jfs_filespace_%used=0.0}]
+```
+* `markdown` format
+
+```javascript  
+  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
+```
+
+```ls
+| **Name** | **Value 1** | **Value 2** | **Value 3** | **Value 4** | **Value 5**  |
+|:---|:---|:---|:---|:---|:--- |
+| id | / | /dev | /mnt/u113452 | /run | /var/lib/lxcfs |
+| jfs_filespace_%used | 12.8 | 0.0 | 34.9 | 7.5 | 0.0 |
+```
+
+* `csv` format
+
+```javascript  
+  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'csv')
+```
+
+```ls
+Name,Value 1,Value 2,Value 3,Value 4,Value 5
+id,/,/dev,/mnt/u113452,/run,/var/lib/lxcfs
+jfs_filespace_%used,12.7,0.0,34.9,7.5,0.0
+```
+
+* `ascii` format
 
 ```javascript
-addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
-```  
+  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'ascii', ['property', 'root', 'dev', 'mount', 'run', 'var'])
+```
 
-```markdown
-| **Name** | **Value 1** | **Value 2**  |
-|:---|:---|:--- |
-| id | / | /boot |
-| jfs_filespace_%used | 60.5 | 30.8 |
+```ls
++---------------------+------+------+--------------+------+----------------+
+| property            | root | dev  | mount        | run  | var            |
++---------------------+------+------+--------------+------+----------------+
+| id                  | /    | /dev | /mnt/u113452 | /run | /var/lib/lxcfs |
+| jfs_filespace_%used | 12.8 | 0.0  | 34.9         | 7.5  | 0.0            |
++---------------------+------+------+--------------+------+----------------+
+```
+
+* `html` format
+
+```javascript
+  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'html')
+```
+
+```ls
+<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">Name</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 1</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 2</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 3</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 4</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 5</th></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">id</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/dev</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/mnt/u113452</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/run</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/var/lib/lxcfs</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">jfs_filespace_%used</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">12.8</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">34.9</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">7.5</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td></tr>
+</tbody></table>
+```
+
+* `property` format
+
+```javascript
+  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'property')
+```
+
+```ls
+id=/=/dev=/mnt/u113452=/run=/var/lib/lxcfs
+jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
 ```
 
 ### `addTable` for list
@@ -303,27 +365,91 @@ Examples:
 
 ```javascript
 query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
-//
-addTable(executeSqlQuery(query), 'ascii', true)
+```
+
+`executeSqlQuery(query)` returns following collection:
+
+```ls
+[[datetime, value], [2018-01-31T12:00:13.242Z, 37], [2018-01-31T12:00:28.253Z, 36]]
+```
+
+* `markdown` format
+
+```javascript
+  addTable(executeSqlQuery(query), 'markdown', true)
+```
+
+```ls
+| **datetime** | **value**  |
+|:---|:--- |
+| 2018-01-31T12:00:13.242Z | 37 |
+| 2018-01-31T12:00:28.253Z | 36 |
+```
+
+* `csv` format
+
+```javascript
+  addTable([['2018-01-31T12:00:13.242Z', '37'], ['2018-01-31T12:00:28.253Z', '36']], 'csv', ['date', 'count'])
+```
+
+```ls
+date,count
+2018-01-31T12:00:13.242Z,37
+2018-01-31T12:00:28.253Z,36
+```
+
+* `ascii` format
+
+```javascript
+  addTable(executeSqlQuery(query), 'ascii', true)
 ```  
 
 ```ls
 +--------------------------+-------+
 | datetime                 | value |
 +--------------------------+-------+
-| 2018-01-26T13:00:14.098Z | 23    |
-| 2018-01-26T13:00:29.110Z | 22    |
+| 2018-01-31T12:00:13.242Z | 37    |
+| 2018-01-31T12:00:28.253Z | 36    |
 +--------------------------+-------+
 ```
 
+* `html` format
+
 ```javascript
-query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
-//
-addTable(executeSqlQuery(query), 'csv', ['date', 'count'])
+  addTable(executeSqlQuery(query), 'html', true)
 ```
 
 ```ls
-date,count
-2018-01-25T19:00:12.346Z,10
-2018-01-25T19:00:27.347Z,18
+<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">datetime</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">value</th></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">2018-01-31T12:00:13.242Z</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">37</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">2018-01-31T12:00:28.253Z</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">36</td></tr>
+</tbody></table>
+```
+
+* `property` format
+
+```javascript
+  addTable(executeSqlQuery(query), 'property')
+```
+```ls
+datetime=value
+2018-01-31T12:00:13.242Z=37
+2018-01-31T12:00:28.253Z=36
+```
+
+```javascript
+  addTable(executeSqlQuery(query), 'property', true)
+```
+```ls
+2018-01-31T12:00:13.242Z=37
+2018-01-31T12:00:28.253Z=36
+```
+
+```javascript
+  addTable(executeSqlQuery(query), 'property', false)
+```
+```ls
+datetime=value
+2018-01-31T12:00:13.242Z=37
+2018-01-31T12:00:28.253Z=36
 ```
