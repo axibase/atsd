@@ -80,7 +80,7 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| valueFilter | string | Expression to fetch only detailed samples that satisfy a condition, for example, `value != 0`. Value Filter is applied before any series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` word in expression refers to the series value. <br>Examples:<br> `value % 5 == 0` - fetch series samples which are integer numbers divisible by 5; <br> `value > 36.4 && value <= 36.7` - samples with value in specified range; <br> `Math.sin(value) < 0.5` - math functions of the [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) class could be used; <br> `Double.isNaN(value)` - only NaN values pass this filter.  |
+| valueFilter | string | The field contains a boolean expression applied to detailed samples. Samples that satisfy the condition are included, for example, `value > 100`. Value filter is applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` field in the expression refers to the sample value. <br>Examples:<br> `value > 0` - retrieve samples which are positive numbers; <br> `value > 36.4 && value <= 36.7` - retrieve samples within the specified range; <br> `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported; <br> `Double.isNaN(value)` - only NaN values pass this check.  |
 
 
 ### Transformation Fields
