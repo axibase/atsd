@@ -83,18 +83,6 @@ tags.location LIKE 'nur*'
 | valueFilter | string | Expression to fetch only detailed samples that satisfy a condition, for example, `value != 0`. Value Filter is applied before any series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` word in expression refers to the series value. <br>Examples:<br> `value % 5 == 0` - fetch series samples which are integer numbers divisible by 5; <br> `value > 36.4 && value <= 36.7` - samples with value in specified range; <br> `Math.sin(value) < 0.5` - math functions of the [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) class could be used; <br> `Double.isNaN(value)` - only NaN values pass this filter.  |
 
 
-### Control Fields
-
-| **Name**  | **Type** | **Description**  |
-|:---|:---|:---|
-| limit   | integer | Maximum number of `time:value` samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
-| direction| string | Order for applying the `limit` parameter: `ASC` - ascending, `DESC` - descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
-| seriesLimit   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database will raise a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
-| cache | boolean | If `true`, execute the query against the Last Insert table, which is the fastest way to retrieve the last value for a query. Default: `false`.<br>Values in the Last Insert table may be delayed up to 15 seconds , controlled with `last.insert.write.period.seconds` setting. Only 1 value is returned for each series.|
-| requestId | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |
-| timeFormat |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
-| addMeta | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
-
 ### Transformation Fields
 
 | **Name**  | **Type** | **Description**  |
@@ -116,6 +104,18 @@ The default processing sequence is as follows:
 The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before it's passed to group/rate/aggregate stages.
 
 The default sequence of group/rate/aggregate transformations can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
+
+### Control Fields
+
+| **Name**  | **Type** | **Description**  |
+|:---|:---|:---|
+| limit   | integer | Maximum number of `time:value` samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
+| direction| string | Order for applying the `limit` parameter: `ASC` - ascending, `DESC` - descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
+| seriesLimit   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database will raise a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
+| cache | boolean | If `true`, execute the query against the Last Insert table, which is the fastest way to retrieve the last value for a query. Default: `false`.<br>Values in the Last Insert table may be delayed up to 15 seconds , controlled with `last.insert.write.period.seconds` setting. Only 1 value is returned for each series.|
+| requestId | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |
+| timeFormat |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
+| addMeta | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
 
 ## Response
 
