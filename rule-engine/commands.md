@@ -61,7 +61,7 @@ Only **one** command can be executed for each status change. If you need to exec
 docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/start.sh
 ```
 
-Command is executed until reached the timeout value configurable at **Settings > Server Properties** page.
+Command is executed until reached the timeout value configurable at **Settings > Server Properties > system.commands.timeout.seconds**.
 
 If timeout value was reached the `SIGTERM` is send to the process and the following string is added to output:
 

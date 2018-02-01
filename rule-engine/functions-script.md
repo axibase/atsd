@@ -42,7 +42,7 @@ If no parameters are expected by the script, an empty list `[]` must be passed a
 ```javascript
 scriptOut('check_service.sh', [])
 ```
-Script `scriptFileName` is executed until reached the timeout value configurable at **Settings > Server Properties** page.
+Script `scriptFileName` is executed until reached the timeout value configurable at **Settings > Server Properties > system.commands.timeout.seconds**.
 
 If timeout value was reached the `SIGTERM` is send to the process and the following string is added to output:
 
