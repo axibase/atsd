@@ -33,7 +33,7 @@ Refer to [operators](operators.md).
 
 ## Collections
 
-The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](../../rule-engine/functions.md#lookup-functions) functions.
+The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](functions.md#lookup-functions) functions.
 
 ## Functions
 

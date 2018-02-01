@@ -16,13 +16,13 @@ The bot is special user account created for automation and integration purposes.
 
 ## Set Webhook
 
-The webhook URL must contain [user credentials](../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance, for example:
+The webhook URL must contain [user credentials](../../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance, for example:
       
 ```elm
 https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram
 ```
         
-The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443) and have a valid [CA-signed](/administration/ssl-ca-signed.md) or [self-signed](/administration/ssl-self-signed.md) SSL certificate installed. 
+The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443) and have a valid [CA-signed](/administration/ssl-ca-signed.md) or [self-signed](/administration/ssl-self-signed.md) SSL certificate installed.
 
 In case of using a self-signed SSL certificate you'll need to export it in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate):
 

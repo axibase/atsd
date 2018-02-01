@@ -54,7 +54,7 @@ Possible variables:
 |  atsd.patterns  |  Patterns to parse statsd metric names  |  –  |
 
 
-[Other variables used by StatsD can be specified.](http://github.com/etsy/statsd/blob/master/exampleConfig.js')
+[Other variables used by StatsD can be specified.](http://github.com/etsy/statsd/blob/master/exampleConfig.js)
 
 StatsD has an [open bug](https://github.com/etsy/statsd/issues/462) regarding the inability of the configuration to sometimes reload during operation. Changing the configuration file while StatsD is running may result in StatsD crashing. Until the bug is fixed, add `automaticConfigReload: false` to your configuration and restart StatsD for the changed configuration to take effect.
 
