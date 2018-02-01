@@ -61,6 +61,14 @@ Only **one** command can be executed for each status change. If you need to exec
 docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/start.sh
 ```
 
+The command must complete within the timeout value specified in **Settings > Server Properties > system.commands.timeout.seconds**. The default timeout is 15 seconds.
+
+If the command times out, the script process is terminated with `SIGTERM` flag and the following text is added to the output:
+
+```
+Script terminated on timeout: {current timeout value}
+```
+
 ## Working Directory
 
 The working directory is set in the `user.dir` setting on the **Settings > System Information** page.

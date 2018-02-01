@@ -44,10 +44,9 @@ entity != 'nurswgvml007'
 ```javascript
 entity LIKE 'nurswgvml*' AND entity IN ('nurswgvml007', 'nurswgvml006')
 ```
-
 The expression may reference command [fields](window.md#window-fields) as well as apply various [functions](functions.md) except [Statistical Functions](functions-statistical.md):
 
-Base fields:
+Base command fields:
 
 * entity
 * tags.{tag-name}
@@ -77,23 +76,23 @@ Base fields:
 ![](images/filter-expression.png)
 
 ```javascript
-tags.method = 'get' AND tags.site = 'OperationsManager2007WebConsole' 	
+tags.method == 'get' AND tags.site == 'OperationsManager2007WebConsole' 	
+```
+
+Tag values can be accessed using dot notation `tags.{tag-name}` or square brackets `tags['tag-name']`. 
+
+> Square brackets are required if the tag name contains special characters `(-,+,=, etc)`.
+
+```javascript
+tags['mount-point'] NOT LIKE '*u113452*'
 ```
 
 ```javascript
-tags.mount_point NOT LIKE '*u113452*'
+type == 'activemq_service' AND keys.service == 'health'
 ```
 
 ```javascript
-tags.mount_point = '/'
-```
-
-```javascript
-type = 'activemq_service' and keys.service = 'health'
-```
-
-```javascript
-tags.type != 'security' && message NOT IN collection('linux-ignore-commands')
+entity.tags.environment != 'test' && message NOT IN collection('linux-ignore-commands')
 ```
 
 ## Entity Filter

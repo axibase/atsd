@@ -43,6 +43,14 @@ If no parameters are expected by the script, an empty list `[]` must be passed a
 scriptOut('check_service.sh', [])
 ```
 
+The script must complete within the timeout value specified in **Settings > Server Properties > system.commands.timeout.seconds**. The default timeout is 15 seconds.
+
+If the script times out, its process is terminated with `SIGTERM` flag and the following text is appended to the output:
+
+```
+Script terminated on timeout: {current timeout value}
+```
+
 ## Permissions
 
 Only scripts in the  `./atsd/conf/script/` directory can be executed. The scripts should have the permission bit `+x` enabled.
@@ -68,6 +76,14 @@ The output of the `scriptOut` function can be formatted with backticks in case o
  ![](images/script-format-html-result.png)  
 
 ## Examples
+
+* [ping](#ping)
+* [traceroute](#traceroute)
+* [top](#top)
+* [ps](#ps)
+* [URL availability](#url-availability)
+* [TCP availability](#tcp-availability)
+* [osquery](#osquery)
 
 ### `ping`
 

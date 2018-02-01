@@ -18,7 +18,13 @@ Count-based windows accumulate up to the specified number of samples. The sample
 
 ### Time Based Windows
 
-Time-based windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window doesn't limit how many samples are held by the window. Its time range is continuously updated. Old records are automatically removed from the window once they're outside of the time range. Time windows are often called _sliding_ windows.
+Time-based windows store samples that were recorded within the specified interval of time and as such they don't limit how many samples are stored in the window. 
+
+The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time goes by. Such windows are often called _sliding_ windows. If the timestamp of the incoming command is equal or greater than the start time, the command is added to the window.
+
+> The **end** time in time-based windows is not set (in particular, it is not set to current time) and the window will accept commands with future timestamps unless they're discarded with the [Time filter](filters.md#time-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
+
+Old commands are automatically removed from the window once their timestamp is earlier than the window start time.
 
 ![Time Based Window](images/time_based_window3.png)
 
@@ -30,9 +36,9 @@ As the new data is received and old data is removed from the window, the rule en
 
 ### Initial Status
 
-New windows are created based on incoming data and no historical data is loaded from the database.
+New windows are created based on incoming data and no historical data is loaded from the database, unless 'Load History' setting is turned on.
 
-The window for the given metric/entity/tags is created when the first command for this series is received by the rule engine.
+The window for the given [grouping](grouping.md) key is created when the first matching command is received by the rule engine.
 
 The new windows are assigned initial status of `CANCEL` which is then updated based on the results of the boolean (`true` or `false`) condition.
 
@@ -69,11 +75,13 @@ When the window is in `REPEAT` status, the actions can be executed with the freq
 
 `CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the condition changes from `true` to `false` or when the window is destroyed on rule modification.
 
-Windows in `CANCEL` status do not trigger repeat actions. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
+Windows in `CANCEL` status do not trigger _repeat_ actions. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
+
+The window can change to `CANCEL` status when the condition changes from `true` to `false` as well as when the rule is modified, deleted, or the database is orderly shutdown. `On Cancel` triggers are not invoked, even if enabled, when the rule is modified/deleted or in case of shutdown.  This behavior is controlled with `cancel.on.rule.change` server property.
 
 ## Window Fields
 
-The window fields can be accessed by the [condition](condition.md) and [filter](filters.md) expressions as well as by [placeholders](placeholder.md).
+The window fields can be included in the [condition](condition.md), [filter](filters.md) and [variables](variables.md).
 
 ### Base Fields
 

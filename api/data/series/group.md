@@ -18,8 +18,8 @@ Each group has an ordered list of pairs: [timestamp | samples of several series 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
 | type          | string          | **[Required]** Grouping [function](#grouping-functions) applied to values of the input series. |
-| period      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately.<br>Default value: `undefined`. If period is undefined, and the query includes both `group` and `aggregate` objects, the group's period is inherited from `aggregate` object.|
-| interpolate   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). Default value: `NONE` |
+| period      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
+| interpolate   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
 | truncate      | boolean           | Discards samples at the beginning of the interval until values for all input series are established. Default: false.  |
 | order         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
@@ -245,7 +245,10 @@ An opposite operation to truncation, extend adds missing values at the beginning
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "interpolate": { "extend": true }
+      "interpolate": { 
+        "type": "NONE",
+        "extend": true 
+      }
     }
   }
 ]
