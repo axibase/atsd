@@ -28,6 +28,8 @@ Old commands are automatically removed from the window once their timestamp is e
 
 ![Time Based Window](images/time_based_window3.png)
 
+> As time-based windows are limited only by the lower bound, it might be useful to filter out series with future timestamps that deviate from the current time too much. It is possible by specifying [time filter](filters.md#time-filter) or [filter expression](filters.md#filter-expression) like `timestamp <= now.getMillis() + 10000`
+
 ## Window Status
 
 The response actions are triggered on window status events.
