@@ -4,6 +4,8 @@
 
 Univariate statistical functions listed below perform a calculation on the array of numeric values stored in the window.
 
+Shouldn't be used in [filter](filters.md#filter-expression) expressions.
+
 ## Reference
 
 * [avg](#avg)

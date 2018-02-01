@@ -45,7 +45,7 @@ entity != 'nurswgvml007'
 entity LIKE 'nurswgvml*' AND entity IN ('nurswgvml007', 'nurswgvml006')
 ```
 
-The expression may reference command [fields](window.md#window-fields) as well as apply various [functions](functions.md):
+The expression may reference command [fields](window.md#window-fields) as well as apply various [functions](functions.md) except [Statistical Functions](functions-statistical.md):
 
 Base fields:
 
@@ -134,4 +134,4 @@ While the same condition such as `tags.mount_point = '/'` can be evaluated both 
 
 For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (e.g. mount_point = /dev) will be discarded early in the process without causing extra windows to be created.
 
-The `avg()` function, on the other hand, operates on an array of values stored in the window object and should therefore be used in the alert condition, because the window object is not available at the filtering stage.
+The [Statistical Functions](functions-statistical.md), on the other hand, operate on an array of values stored in the window object and should therefore be used in the alert condition, because the window data is empty at the filtering stage and statistical functions always return `0`.
