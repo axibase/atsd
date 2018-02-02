@@ -33,7 +33,7 @@ Refer to [operators](operators.md).
 
 ## Collections
 
-The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](../../rule-engine/functions.md#lookup-functions) functions.
+The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](functions.md#lookup-functions) functions.
 
 ## Functions
 
@@ -127,6 +127,5 @@ Alternatively, the metric's last value can be retrieved with the `db_last` and `
 
 The condition is `true` if the average exceeds `90` at any time or if the average exceeds `50` during the working hours (between `08:00:00` and `17:59:59`).
 
-```javascript
-  avg() > 90 || avg() > 50 && now.hourOfDay() BETWEEN 8 AND 17
+  avg() > 90 || avg() > 50 && now.getHourOfDay() BETWEEN 8 AND 17
 ```

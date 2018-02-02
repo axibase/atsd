@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Slack [Events API](https://api.slack.com/events-api#receiving_events) allows sending messages into ATSD using its [webhook](../api/data/messages/webhook.md) endpoint. 
+The Slack [Events API](https://api.slack.com/events-api#receiving_events) allows sending messages into ATSD using its [webhook](../../api/data/messages/webhook.md) endpoint.
 
 The following document describes how to create a Slack Bot that will copy messages received from other Slack users in the same workspace into ATSD.
 
@@ -50,7 +50,7 @@ Slack Bot is a special account created specifically for automation purposes.
    
 * Fill in the **Request URL** field.
 
-  Specify [user credentials](../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance. 
+  Specify [user credentials](../../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance.
   
   The target ATSD server must be accessible and have a valid CA-signed [SSL certificate](/administration/ssl-ca-signed.md) installed. Self-signed certificates are not supported by Slack at this time.
 
