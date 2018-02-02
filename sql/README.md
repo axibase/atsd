@@ -2968,7 +2968,7 @@ The data returned by SQL statements can be exported in the following formats:
 |Web Console  |CSV, JSON, HTML|
 |Scheduler|CSV, JSON, Excel|
 
-The [**Store** option](sql-scheduled-store.md) allows for query results to be stored back in the database as new derived series.
+The [**Store** option](scheduled-sql-store.md) allows for query results to be stored back in the database as new derived series.
 
 ## Monitoring
 

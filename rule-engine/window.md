@@ -178,6 +178,5 @@ The details table contains entity, entity label, entity tags, command tags, and 
 * [detailsTable('html')](details-table.md#html)
 * [detailsTable('property')](details-table.md#property)
 * [detailsTable('csv')](details-table.md#csv)
-* [detailsTable('json')](details-table.md#json)
 
 

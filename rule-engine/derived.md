@@ -24,7 +24,7 @@ The template can include plain text and [placeholders](placeholders.md).
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-The calculated metrics can reference other metrics using [`db_last`](functions-db.md#db_last-function) and [`db_statistic`](functions-db.md#db_statistic-function) functions.
+The calculated metrics can reference other metrics using [`db_last`](functions-db.md#db_laststring-m) and [`db_statistic`](functions-db.md#db_statistic) functions.
 
 ```ls
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}
@@ -54,7 +54,7 @@ In order to store derived commands with the current server time, omit the date/t
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
-Alternatively, use the [`now`](window.md##time-fields) placeholder to access the current server time.
+Alternatively, use the [`now`](window.md#time-fields) placeholder to access the current server time.
 
 ```ls
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.getMillis()}
@@ -68,7 +68,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMi
 
 #### Received Time
 
-To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window.md##time-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
+To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window.md#time-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
 
 ```ls
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}

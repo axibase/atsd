@@ -41,7 +41,7 @@ The built-in notification types for chat and collaboration services deliver aler
 
 The notifications are triggered on window status events.
 
-A [window](window) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
+A [window](window.md) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
 As the new data is received and old data is removed from the window, the rule engine re-evaluates the condition which can cause the status of the current window to change, triggering a notification.
 

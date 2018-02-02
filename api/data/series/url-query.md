@@ -25,7 +25,7 @@ Retrieve series values for the specified entity, metric, and optional series tag
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 |t:name|string|Tag name, prefixed by `t:`. Tag value specified as a parameter value, for example, `&t:file_system=/tmp`. <br>Multiple values for the same tag can be specified by repeating the parameter, for example, `&t:file_system=/tmp&&t:file_system=/home/export`|
-|aggregate|string|[Statistical function](../../../api/data/aggregation.md#statistics) to compute aggregate results from detailed values in each period.|
+|aggregate|string|[Statistical function](../../../api/data/aggregation.md#statistical-functions) to compute aggregate results from detailed values in each period.|
 |period|string|Duration of the aggregation period specified as `count-timeunit`, for example, `1-hour`.|
 |limit|integer|Maximum number of samples returned in the response. Default value: 0 (unlimited). |
 |columns|string|Columns included in CSV format response. <br>Possible values: time, date (time in ISO), entity, metric, t:{name}, value. <br>Default: time, entity, metric, requested tag names, value
@@ -46,7 +46,7 @@ Retrieve series values for the specified entity, metric, and optional series tag
 
 #### json
 
-See response fields in [Series: Query](query.md#response-fields).
+See response fields in [Series: Query](query.md#response).
 
 #### csv
 

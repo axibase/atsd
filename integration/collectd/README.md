@@ -4,7 +4,7 @@ collectd is a system statistics daemon that collects operating system performanc
 
 collectd can be configured to stream data into the Axibase Time Series Database via TCP or UDP protocol using the `write_atsd` plugin.
 
-See the [collectd plugin installation](https://github.com/axibase/atsd-collectd-plugin/blob/master/README.md) instructions for technical details.
+See the [collectd plugin installation](https://github.com/axibase/atsd-collectd-plugin/blob/master/docs/README.write_atsd.md) instructions for technical details.
 
 ##### collectd Portal
 

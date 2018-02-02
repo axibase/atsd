@@ -82,8 +82,8 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| metric.{field-name} | string | `0-*` | [Metric field](README.MD#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
-| entity.{field-name} | string | `0-*` | [Entity field](README.MD#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
+| metric.{field-name} | string | `0-*` | [Metric field](README.md#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
+| entity.{field-name} | string | `0-*` | [Entity field](README.md#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
 
 * The following metadata fields are read-only and can be not be set: 'metric.name', 'metric.lastInsertTime', 'entity. groups':
 

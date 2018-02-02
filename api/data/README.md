@@ -127,7 +127,7 @@ Processing errors are returned in JSON format:
 
 ## Authorization
 
-* The user must have the [**API_DATA_READ**/**API_DATA_WRITE**](../../administration/user-authorization.md#available-api-roles) role.
+* The user must have the [**API_DATA_READ**/**API_DATA_WRITE**](../../administration/user-authorization.md#api-roles) role.
 * The user must have read/write [**entity permission**](../../administration/user-authorization.md#entity-permissions) for the entities specified in the request and/or returned in the results.
 
 ## Cross-Domain Requests
