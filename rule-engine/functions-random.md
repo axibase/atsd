@@ -24,7 +24,7 @@ Returns a uniformly distributed double number, greater than or equal to `0.0` an
 
 Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.
 
-## `randomItem` 
+### `randomItem` 
 
 ```javascript
   randomItem([] c) string
@@ -102,7 +102,7 @@ An input collection can contain elements of any type, such as strings or numbers
 	  // returns Thomas=415.555-0001
 	```
 
-## `randomKey` 
+### `randomKey` 
 
 ```javascript
   randomKey([] m) string

@@ -115,14 +115,14 @@ Count of values.
 ```javascript
   variance() double
 ```
-Standard deviation.
+Variance.
 
 ### `stdev`
 
 ```javascript
   stdev() double
 ```
-Standard deviation. Aliases: `variance`, `stdev`, `std_dev`.
+Standard deviation. Aliases: `stdev`, `std_dev`.
 
 ### `intercept`
 

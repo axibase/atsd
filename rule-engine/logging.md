@@ -98,14 +98,14 @@ entity_label | Axibase TSD
 entity_tags | {version=community}
 entity_tags.tag_name | community
 event_tags | {location=dc-5}
-expression | value < 512*1024*1024
+expression | value < 512 * 1024 * 1024
 metric | jvm_memory_free
 open_value | 3103100000
 properties |
 repeat_count | 0
 repeat_interval | 1 MINUTE
 rule | memory_low
-rule_expression | value < 512*1024*1024
+rule_expression | value < 512 * 1024 * 1024
 rule_filter | entity != 'nurswghbs001'
 rule_name | memory_low
 schedule | * * * * MON-FRI
