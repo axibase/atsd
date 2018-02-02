@@ -13,7 +13,6 @@ The functions return a new string with the original input string left unchanged.
 * [upper](#upper)
 * [lower](#lower)
 * [truncate](#truncate)
-* [contains](#contains)
 * [startsWith](#startsWith)
 * [endsWith](#endsWith)
 * [split](#split)
@@ -60,14 +59,6 @@ Converts `s` to lower case.
 ```
 
 If `s` length exceeds `i` characters, truncates `s` to the specified number of characters and returns it as a result.
-
-### `contains`
-
-```javascript
-  contains(string s, string w) boolean
-```
-
-Returns `true` if `s` contains `w`.
 
 ### `startsWith`
 
