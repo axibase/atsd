@@ -6,6 +6,26 @@ The functions return URLs to ATSD pages based on the database URL (set the `serv
 
 The URLs are automatically [inlined](#inline-links) in email notifications and in web notifications that support inline links.
 
+The inline links can be also assembled manually using the syntax supported by the notification channel:
+
+* `markdown`
+
+```markdown
+[Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity})
+```
+
+* `pipe` (used by Slack)
+
+```ls
+<${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}|Error Messages>
+```
+
+* HTML
+
+```html
+<a href="${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}">Error Messages</a>
+```
+
 ## Reference
 
 * [getEntityLink](#getentitylink)
