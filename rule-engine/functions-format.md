@@ -157,7 +157,7 @@ The function prints the input map `m` as a two-column table in the specified for
 
 The first column in the table contains map keys, whereas the second column contains the corresponding map values.
 
-The input map `m` typically references an existing field such as `tags`, `entity.tags`, or `variables`.
+The input map `m` typically refers to map fields such as `tags`, `entity.tags`, or `variables`.
 
 Supported formats:
 
@@ -227,11 +227,13 @@ os,Linux
 
 * `html` format
 
+The HTML format includes the response rendered as a `<table>` node with inline CSS styles for better compatibility with legacy email clients such as Microsoft Outlook.
+
 ```javascript
   addTable(property_map('nurswgvml007', 'cpu::*'), 'html')
 ```
 
-```ls
+```html
 <table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">Name</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value</th></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">id</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">1</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">cpu.idle%</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">91.5</td></tr>
@@ -271,19 +273,22 @@ Examples:
 `property_maps('nurswgvml007','jfs::', 'today')` returns following collection:
 
 ```ls
-[{id=/, jfs_filespace_%used=12.8}, 
-{id=/dev, jfs_filespace_%used=0.0}, 
-{id=/mnt/u113452, jfs_filespace_%used=34.9}, 
-{id=/run, jfs_filespace_%used=7.5}, 
-{id=/var/lib/lxcfs, jfs_filespace_%used=0.0}]
+[
+  {id=/, jfs_filespace_%used=12.8}, 
+  {id=/dev, jfs_filespace_%used=0.0}, 
+  {id=/mnt/u113452, jfs_filespace_%used=34.9}, 
+  {id=/run, jfs_filespace_%used=7.5}, 
+  {id=/var/lib/lxcfs, jfs_filespace_%used=0.0}
+  ]
 ```
+
 * `markdown` format
 
 ```javascript  
   addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
 ```
 
-```ls
+```markdown
 | **Name** | **Value 1** | **Value 2** | **Value 3** | **Value 4** | **Value 5**  |
 |:---|:---|:---|:---|:---|:--- |
 | id | / | /dev | /mnt/u113452 | /run | /var/lib/lxcfs |
@@ -419,7 +424,7 @@ date,count
   addTable(executeSqlQuery(query), 'html', true)
 ```
 
-```ls
+```html
 <table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">datetime</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">value</th></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">2018-01-31T12:00:13.242Z</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">37</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">2018-01-31T12:00:28.253Z</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">36</td></tr>
