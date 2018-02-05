@@ -11,15 +11,15 @@ The `addPortal` function provides a way to enrich notifications with any predefi
 
 ## Syntax
 
-```java
+```javascript
 addPortal(string portal)
 addPortal(string portal, string entity)
 addPortal(string portal, string entity, string comment)
 addPortal(string portal, string entity, string comment, [] additionalParams)
 ```
 * [**required**] `portal` - Name of the preconfigured portal. If asterisk `*` is specified, all portals for the given entity will be attached to notification. If portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, e.g. 'tcollector - Linux' becomes 'tcollectorlinux'and returned the first matching portal.
-* `entity` - Entity for which the portal will be generated. Required if the portal type is [template](portals/creating-and-assigning-portals.md#template-portals). If entity is not found by name, it's matched by label (case insensitive match).
-* `comment` - Optional description for the chart. If not specified or empty, default comment is generated as `${portalName} for ${ifEmpty(entity_label, entity)}`and can be retrieved with special placeholder `caption`. Default comment contains links to portal, entity and rule for [Email](email.md), [Slack](notifications/slack.md) and [Discord](notifications/discord.md) notifications.
+* `entity` - Entity for which the portal will be generated. Required if the portal type is [template](../portals/creating-and-assigning-portals.md#template-portals). If entity is not found by name, it's matched by label (case insensitive match).
+* `comment` - Optional description for the chart. If not specified or empty, default comment is generated as `${portalName} for ${ifEmpty(entity_label, entity)}`and can be retrieved with special placeholder `caption`. Default comment contains links to the portal, entity and rule for [Email](email.md), [Slack](notifications/slack.md) and [Discord](notifications/discord.md) notifications.
 * `additionalParams` - Map to be provided to portal configuration template.
 
 The parameters may include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.

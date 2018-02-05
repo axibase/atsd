@@ -205,7 +205,7 @@ The option `Attach Details` allows to send alert details table.
 
 ![](images/notify-attach-3.png)
 
-The option `Attach Portal` allows to send one or more portals. If a portal is a [template](portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
+The option `Attach Portal` allows to send one or more portals. If a portal is a [template](../portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
 
 ![](images/notify-attach-4.png)
 

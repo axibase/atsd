@@ -169,6 +169,7 @@ To attach other additional portals, specify them at the `Attach Portal` drop-dow
 
 ![](images/email-screenshot-portals.png)
 
+If a portal is a [template](../portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
 
 ## Email Client
 
