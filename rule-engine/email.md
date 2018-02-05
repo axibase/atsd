@@ -145,11 +145,11 @@ Decimal numbers are rounded to the 5 significant digits for readability.
 
 ### Chart Screenshot
 
-The screenshot feature requires a [web driver](notifications/web-driver.md) to be installed and configured. To attach charts to outgoing messages for the selected rule, check on the `Attach Screenshot` option.
+The screenshot features require a [web driver](notifications/web-driver.md) to be installed and configured. To attach default portal for the current metric, entity and tags to outgoing messages, check on the `Attach Chart` option.
 
 ![](images/email-screenshot-enable.png)
 
-The chart may include multiple series depending on statistical functions  referenced in the condition.
+The chart may include multiple series depending on statistical functions referenced in the condition.
 
 ```javascript
   abs(forecast_deviation(median())) > 2 && (median() < 200 || median() > 600)
@@ -164,6 +164,11 @@ Similarly, if the rule correlates multiple metrics using [database functions](fu
 ```
 
 ![](images/email-screenshot-correlate.png)
+
+To attach other additional portals, specify them at the `Attach Portal` drop-down.
+
+![](images/email-screenshot-portals.png)
+
 
 ## Email Client
 

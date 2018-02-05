@@ -18,6 +18,7 @@
 * [Rule Functions](#rule-functions)
 * [Utility Functions](#rule-functions)
 * [Link Functions](#link-functions)
+* [Portal Functions](#portal-functions)
 
 ## Overview
 
@@ -283,3 +284,9 @@ The rule functions provide a way to check the status of windows created by other
 * [getCsvExportLink](functions-link.md#getcsvexportlink)
 * [getHtmlExportLink](functions-link.md#gethtmlexportlink)
 * [getChartLink](functions-link.md#getchartlink)
+
+## Portal Functions
+
+Portal functions provide a way to attach any portals if the chat configuration supports sending screenshots
+
+* [addPortal](functions-portal.md#addportal)
