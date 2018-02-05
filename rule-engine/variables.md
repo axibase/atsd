@@ -47,6 +47,9 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
   ```javascript
   curtime = 1515758392702
   ```  
+> Classify large integers as Long (64-bit integer) or as a floating number to avoid numeric overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
+
+![](images/variables-large-integers.png)
 
 ### string
 
