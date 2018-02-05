@@ -129,9 +129,7 @@ The dependent variable must be declared **after** the variable that it refers to
 
 ### References
 
-Variables that are dependent on other variables cannot be included in the condition.
-
-The following example will cause a `PropertyAccessException` error.
+Variables that are dependent on other variables can be included in the condition.
 
 ![](images/variables-refer-indirect.png)
 

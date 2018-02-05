@@ -6,7 +6,7 @@ The condition consists of one or multiple boolean checks combined with [boolean 
 
 The expression can include fields from the command, window, entity and metric, user-defined variables and apply [functions](functions.md) to data.
 
-When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of `On Cancel` triggers.
+When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of 'On Cancel' triggers.
 
 Note that [`Overrides`](overrides.md) take precedence over the condition.
 
@@ -111,13 +111,13 @@ The condition is `true` when all values in the window are equal `50`.
 
 ### Multiple metrics
 
-If metrics were submitted with the same 'series' command, their last value can be accessed with the `value(S name)` function.
+If metrics were submitted with the same 'series' command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
 
 ```javascript
   value > 90 AND value('disk_used') < 1000000000
 ```
 
-Alternatively, the metric's last value can be retrieved with the `db_last` and `db_statistic` functions.
+Alternatively, the metric's last value can be retrieved with the [`db_last`](functions-db.md#db_laststring-m) and [`db_statistic`](functions-db.md#db_statistic) functions.
 
 ```javascript
   value > 90 AND db_last('io_nodes_used_precent') < 80
