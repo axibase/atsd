@@ -2,7 +2,7 @@
 
 url=${1}
 dir=$(dirname $(readlink -f $0))
-status=$(curl -sS --insecure -X GET -D ${dir}/headers -w "\nResponse Time: %{time_total}\n" "${url}" > ${dir}/response 2>&1)
+status=$(curl -sS --insecure -X GET -m 10 -D ${dir}/headers -w "\nResponse Time: %{time_total}\n" "${url}" > ${dir}/response 2>&1)
 if [[ $? == 0 ]] ; then
   code=$(head -n 1 ${dir}/headers | grep -oiE "[0-9]{3}[a-z ]*")
   echo "Status code: ${code}"
