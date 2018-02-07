@@ -173,7 +173,7 @@ Download [service file](resources/tcollector.service) for tcollector and place i
 From tcollector root direcotry run this command to edit service file
 
 ```
-sed "/\(start\|stop\|restart\)/s|=|=$(pwd)/tcollector-wrapper|" /lib/systemd/system/tcollector.service
+sudo sed "/\(start\|stop\|restart\)/s|=|=$(pwd)/tcollector-wrapper|" /lib/systemd/system/tcollector.service
 ```
 
 Enable autostart
