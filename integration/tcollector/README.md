@@ -1,42 +1,226 @@
 # tcollector
 
-[tcollector](https://github.com/OpenTSDB/tcollector) is a data collection framework for Linux operating system. tcollector can be configured to stream data into the Axibase Time Series Database for storage, analysis, forecasting, and visualization.
+## Overview
 
-To setup tcollector using Puppet, please use our guide and distribution on [GitHub](https://github.com/axibase/axibase-puppet-modules/tree/master/tcollector).
+[tcollector](https://github.com/OpenTSDB/tcollector) is a data collection framework for Linux operating system. tcollector can be configured to stream data into the Axibase Time Series Database for storage, analysis, forecasting, and visualization. Documentation can be found here: http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html
 
-#### Setting up tcollector to Stream Data into ATSD
+## Installation
+
+### Requirements
+
+tcollector depends on Python 2 (2.5 or higher)
+
+Install Python on Ubuntu 14.04:
 
 ```sh
-sudo apt-get update
+sudo apt-get install python
+```
+
+Install Python on Ubuntu 16.04:
+
+```sh
+sudo apt install python
+```
+
+Install Python on Centos 6.x/7.x and RHEL 6.x/7.x
+
+```sh
+sudo yum install python
+```
+
+### Getting the source code
+
+The source code can be obtained by cloning the project repository or by downloading source code archive
+
+#### Cloning repostory
+
+To clone repository you need git to be installed.
+
+Install git on Ubuntu 14.04
+
+```
 sudo apt-get install git
-git clone git://github.com/OpenTSDB/tcollector.git
+```
+
+Install git on Ubuntu 16.04
+
+```
+sudo apt install git
+```
+
+Install git on Centos 6.x/7.x and RHEL 6.x/7.x
+
+```
+sudo yum install git
+```
+
+Next, clone clone repository
+
+```sh
+git clone https://github.com/OpenTSDB/tcollector.git
 cd tcollector
 ```
 
-Modify startstop wrapper script by specifying the ATSD hostname and TCP port.
+#### Downloading the source code archive
 
-```sh
-nano startstop
+As the second option, the lateset source code can be downloaded from the [latest release](https://github.com/OpenTSDB/tcollector/releases/latest) page of the project. Download it using wget or curl and copy to the target machine, if necessary.
+
+```
+wget -O tcollector.tar.gz https://github.com/OpenTSDB/tcollector/archive/v1.3.2.tar.gz
+mkdir tcollector
+tar -xzf tcollector.tar.gz -C tcollector --strip-components=1
+cd tcollector
 ```
 
-```sh
-TSD_HOST=10.102.0.6
-TSD_PORT=8081
-...
-ARGS="-c $TCOLLECTOR_PATH/collectors -H $TSD_HOST -p $TSD_PORT -t host=$HOSTNAME -P $PIDFILE --logfile $LOG"
-```
+## Starting tcollector
 
-Start tcollector:
+### Manual start
+
+Start tcollector from source code directory with command
 
 ```sh
-sudo ./startstop start
+sudo ./tcollector start --host [atsd_host] --port 8081
 ```
 
-tcollector documentation can be found here: [http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html](http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html)
+where `[atsd_host]` must be replaced with ATSD host name.
 
-To enable launching and auto-starting of tcollector both as a regular and a super user, read our [tcollector Startup guide](https://axibase.com/products/axibase-time-series-database/writing-data/tcollector/tcollector-startup/).
+### Autostart
 
-#### Default Entity Group and Portal for tcollector in ATSD
+#### Create config
+
+In tcollector root directory create `tcollector.conf` file
+
+```sh
+cat <<EOF > tcollector.conf
+ATSD_HOST=[atsd_host]
+ATSD_PORT=8081
+EOF
+```
+
+where `[atsd_host]` must be replaced with ATSD host name.
+
+#### Ubuntu 14.04
+
+Download [init script](resources/tcollector) and place it into `/etc/init.d` directory.
+From root directory of tcollector installation run the following command
+
+```sh
+sudo sed -i "/^TCOLLECTOR_HOME=/{s|=.*|=\"$(pwd)\"|}" /etc/init.d/tcollector
+```
+
+Make the script executable
+
+```
+sudo chmod u+x /etc/init.d/tcollector
+```
+
+Add tcollector to autostart
+
+```sh
+sudo update-rc.d tcollector defaults
+```
+
+To start tcollector immidiately run
+
+```sh
+sudo service tcollector start
+```
+
+#### Centos 6.x and RHEL 6.x
+
+Download [init script](resources/tcollector) and place it into `/etc/init.d` directory.
+From root directory of tcollector installation run the following command
+
+```sh
+sudo sed -i "/^TCOLLECTOR_HOME=/{s|=.*|=\"$(pwd)\"|}" /etc/init.d/tcollector
+```
+
+Make the script executable
+
+```
+sudo chmod u+x /etc/init.d/tcollector
+```
+
+Add tcollector to autostart
+
+```sh
+sudo chkconfig --add tcollector
+```
+
+To start tcollector immidiately run
+
+```sh
+sudo service tcollector start
+```
+
+#### Ubuntu 16.04, Centos 7.x, RHEL 7.x
+
+Download [init script](resources/tcollector) and place it into tcollector root directory directory, name it `tcollector-wrapper`.
+From root directory of tcollector installation run the following command
+
+```sh
+sed -i "/^TCOLLECTOR_HOME=/{s|=.*|=\"$(pwd)\"|}" tcollector-wrapper
+```
+
+Make the script executable
+
+```
+chmod +x tcollector-wrapper
+```
+
+Download [service file](resources/tcollector.service) for tcollector and place it into `/lib/systemd/system` directory.
+
+From tcollector root direcotry run this command to edit service file
+
+```
+sed "/\(start\|stop\|restart\)/s|=|=$(pwd)/tcollector-wrapper|" /lib/systemd/system/tcollector.service
+```
+
+Enable autostart
+
+```sh
+sudo systemctl enable tcollector
+```
+
+To start tcollector immidiately run
+
+```sh
+sudo systemctl start tcollector
+```
+
+### Autostart as a non-root user
+
+Add `LOGFILE` and `PIDFILE` options to tcollector config
+
+```
+echo "LOGFILE=[log_file_path]" >> tcollector.conf
+echo "PIDFILE=[pid_file_path]" >> tcollector.conf
+```
+
+`[log_file_path]` and `[pid_file_path]` must be absolute paths to files in existing directory (or directories), where user has write access to.
+
+#### Ubuntu 14.01, Centos 6.x, RHEL 6.x
+
+Add `RUN_AS_USER` option to tcollector config
+
+```
+echo "RUN_AS_USER=[user_name]" >> tcollector.conf
+```
+
+where `[user_name]` must be replaced with user name.
+
+#### Ubuntu 16.04, Centos 7.x, RHEL 7.x
+
+Add `User` option to `[Service]` section of the service file
+
+```
+ sudo sed -i '/\[Service\]/a User=[user_name]' /lib/systemd/system/tcollector.service
+ sudo systemctl daemon-reload
+```
+
+where `[user_name]` must be replaced with user name.
+
+## Default Entity Group and Portal for tcollector in ATSD
 
 Entities collecting tcollector data are automatically grouped into the `tcollector - linux` entity group.
 
@@ -55,7 +239,7 @@ Launch live tcollector portal in Axibase Chart Lab.
 
 ![](resources/tcollector-portal1.png)
 
-#### List of tcollector metrics
+## List of tcollector metrics
 
 ```css
 df.bytes.free	

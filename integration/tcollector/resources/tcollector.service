@@ -1,0 +1,12 @@
+[Unit]
+Description=tcollector daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart= start
+ExecStop= stop
+ExecReload= restart
+
+[Install]
+WantedBy=multi-user.target
