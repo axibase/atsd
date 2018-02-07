@@ -93,6 +93,7 @@ metric | string | Metric name | memory_free
 entity | string | Entity name | nurswgvml007
 tags | map | Command tags | memtype=buffered
 tags.memtype | string | Command tag by name | buffered
+entity.displayName | string | Label, if not empty. Name otherwise | NURswgvml007
 entity.tags | map | Entity tags | {version=community}
 entity.tags.version | string | Entity tag by name | community
 entity.label | string | Entity field by name | NURswgvml007
