@@ -199,7 +199,7 @@ echo "PIDFILE=[pid_file_path]" >> tcollector.conf
 
 `[log_file_path]` and `[pid_file_path]` must be absolute paths to files in existing directory (or directories), where user has write access to.
 
-#### Ubuntu 14.01, Centos 6.x, RHEL 6.x
+#### Ubuntu 14.04, Centos 6.x, RHEL 6.x
 
 Add `RUN_AS_USER` option to tcollector config
 
