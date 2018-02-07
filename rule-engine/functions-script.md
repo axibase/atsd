@@ -153,12 +153,17 @@ Slack:
 
 kill_after=${1}
 host=${2}
+dir=$(dirname $(readlink -f $0))
 
-timeout ${kill_after}s traceroute ${host}
+timeout ${kill_after}s traceroute ${host} 2>${dir}/error
 
-if [[ $? != 0 ]] ; then
+if [ $? != 0 ] && [ $(wc -c < ${dir}/error) == 0 ]; then
   echo -e "\nExceeded ${kill_after} seconds"
+else
+  cat ${dir}/error
 fi
+
+rm  ${dir}/error
 ```
 
 #### Function
@@ -326,7 +331,7 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 
 url=${1}
 dir=$(dirname $(readlink -f $0))
-status=$(curl -sS --insecure -X GET -D ${dir}/headers -w "\nResponse Time: %{time_total}\n" "${url}" > ${dir}/response 2>&1)
+status=$(curl -sS --insecure -X GET -m 10 -D ${dir}/headers -w "\nResponse Time: %{time_total}\n" "${url}" > ${dir}/response 2>&1)
 if [[ $? == 0 ]] ; then
   code=$(head -n 1 ${dir}/headers | grep -oiE "[0-9]{3}[a-z ]*")
   echo "Status code: ${code}"
