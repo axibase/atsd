@@ -54,7 +54,7 @@ Install git on Centos 6.x/7.x and RHEL 6.x/7.x
 sudo yum install git
 ```
 
-Next, clone clone repository
+Next, clone the repository
 
 ```sh
 git clone https://github.com/OpenTSDB/tcollector.git
