@@ -33,7 +33,9 @@ Examples:
 ```javascript
   toBoolean(object a) boolean
 ```
-Converts object to boolean, treats all strings as `false` by default. Exceptions are: "true", "yes", "on", "1".
+Converts object `a` to boolean, treats all strings as `false` by default. Exceptions are: "true", "yes", "on", "1".
+
+Returns `true` if object `a` is a number that is not equal 0. In other cases returns `false`.
 
 Value table:
 
@@ -48,6 +50,23 @@ hello | false
 1 | true
 on | true
   
+Examples:
+
+```javascript
+  // Returns false 
+  
+  toBoolean('hello')  
+  toBoolean(0)
+  toBoolean('off')  
+  toBoolean(getEntity('atsd'))
+  
+  // Returns true 
+  
+  toBoolean('YES')    
+  toBoolean(5)  
+  toBoolean(-10)
+```
+
 ### `getURLHost`
 
 ```javascript
