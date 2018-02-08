@@ -17,26 +17,26 @@ Enabled | Enabled or disabled status. Disabled entity views are not visible in t
 Entity Group | Entity Group which members are included in the view.
 Entity Expression | A additional condition that entity group members must satisfy in order to be included in the view. The syntax is the same as supported by expression-based entity groups.
 Dynamic Filter | The default [dynamic filter](#dynamic-filters) applied to entities on initial page load.
-Split Table by Tag | Group entities by entity tag value into separate tables.
-Display in Left Menu | If enabled, the view is accessible under its own tab in the left menu.
+Split Table by Column | Enter column header (name) or its value to group entities into separate tables.
+Display in Main Menu | If enabled, the view is accessible under its own tab in the main menu.
 Display Index | Applies if entity view is displayed in the top menu. Specifies relative position of the tab. The tabs are sorted by index in ascending order.
-Multi-Entity Portal | [Portal](#portal) with time series charts for entities displayed in the view.
-Menu Icon | Icon to be displayed with view at the left menu.
+Multi-Entity Portal | [Portal](#portal) with time series charts for multiple entities displayed in the view. If no multi-entity portal is assigned, the default portal containing metrics in Series Value column is displayed.
+Menu Icon | Icon assigned to the view in the main menu.
 
 ## Filters
 
 The list of displayed entities is established as follows:
 
-* The list of entities is initially set to the current members of the linked entity group.
-* If Entity Expression is specified, the member entities are checked with this expression. Members that fail to satisfy this condition are discarded.
-* If a Dynamic Filter is applied by the user, the entities are additionally checked again the selected filter. Entities that fail to satisfy the filter condition are hidden.
-* If a Search text is specified, only entities with a column value containing the search keyword are displayed.
+* The list of entities is initially set to the current members of the selected entity group.
+* If the **Entity Expression** is specified, the members are checked with this expression. Members that fail to satisfy the condition are hidden.
+* If a **Dynamic Filter** is set by the user, the entities are additionally checked with the filter. Entities that fail to satisfy the filter condition are hidden.
+* If a **Search** text is specified, only entities with a column value containing the search keyword are displayed.
 
 > While the Dynamic Filter can be toggled by the user, the Entity Group and Entity Expression (if specified) are enforced at all times.
 
 ## Search
 
-The search is performed based on column values displayed in the table. An entity meets the search condition if one of the column values for the entity row contains the specified search keyword.
+The search is performed based on column values displayed in the table. An entity meets the condition if one of the column values for the entity row contains the specified search keyword.
 
 ## Table
 
@@ -58,15 +58,15 @@ Formatting | A [function](#formatting) or an expression to round numbers and con
 
 **Name** | **Description**
 ---|---
+Enabled Column | Entity status.
 Entity Tag | Name of the entity tag.
-Property Tag | [Property search expression](../rule-engine/property-search.md) in the format of `type:{key-name=key-value}:tag-name`.
-Series Value | Name of the metric for which the last value for this entity will be displayed.<br>If multiple series match the specified metric and entity, the value for first one will be displayed.
+Property Tag | [Property search expression](../rule-engine/property-search.md) in the format of `type:[{key-name=key-value}]:tag-name`.
+Series Value | Name of the metric for which the last value for this entity will be displayed.<br>If multiple series match the specified metric and entity, the value for the latest series will be displayed.
 Name Column | Entity name with a link to the editor page for the entity.
 Label Column | Entity label with a link to the editor page for the entity.
-Portals Column | Link to the portals page.
+Portals Column | Link to the portals page for the entity.
 Properties Column | Link to the properties page for the entity.
-Last Insert | Last insert date for the specified metric with a link to the list of last insert dates for metrics of the given entity.<br>Value must be specified as `metric:[threshold]`, where the optional parameter `threshold` is the permissible lag.<br>If `lastInsertDate < now - threshold`, the cell is highlighted with orange background.
-Enabled Column | Entity status.
+Last Insert | Last insert date for all or one metric collected by the entity with a link to the last insert table.<br>If the column value is not specified, the last insert date is calculated for all metrics. The column value accepts settings in the format of `metric:[lag]`, where the optional `lag` parameter denotes the maximum delay in seconds. If the last insert date for the entity is before `now - lag`, the cell is highlighted with orange background.
 
 ### Links
 
@@ -76,6 +76,7 @@ Entity | Entity editor page.
 Property | Portal with a property widget for the given entity and property type.
 Chart | Portal with a time chart displaying the data for the specified metric and entity.
 Entity Property | Portal with a property widget for another entity retrieved with the property expression.
+Entity Tag | Displays the value of the specified entity tag for another entity, whose name is set in the tag of the current entity.
 
 ### Formatting
 
@@ -151,7 +152,9 @@ tags['configuration::codename'] = 'Santiago'
 
 ## Portal
 
-If the Multi-Entity Portal is defined manually or the entity view contains at least one 'Series Value' column, the statistics for entities can be viewed on a portal accessible with the [View Portal] button. If no portal is selected, the default portal displays metrics for columns of type 'Series Value'.
+If the Multi-Entity Portal is defined manually or the entity view contains at least one 'Series Value' column, the statistics for entities can be viewed on a portal accessible with the [View Portal] button. 
+
+If no portal is selected, the default portal displays metrics for columns of type 'Series Value'.
 
 The multi-entity portal is any portal that displays a metric for multiple entities using the `${entities}` placeholder.
 
