@@ -2,68 +2,33 @@
 
 ## Overview
 
-[tcollector](https://github.com/OpenTSDB/tcollector) is a data collection framework for Linux operating system. tcollector can be configured to stream data into the Axibase Time Series Database for storage, analysis, forecasting, and visualization. Documentation can be found here: http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html
+[tcollector](https://github.com/OpenTSDB/tcollector) is a data collection agent for Linux. tcollector can be configured to send operating system and application metrics into Axibase Time Series Database for long-term retention and analytics.
 
 ## Installation
 
-### Requirements
+### Install Python
 
-tcollector depends on Python 2 (2.5 or higher)
+tcollector requires Python 2.5 and higher.
 
-Install Python on Ubuntu 14.04:
+Install Python on Ubuntu 14.04.
 
 ```sh
 sudo apt-get install python
 ```
 
-Install Python on Ubuntu 16.04:
+Install Python on Ubuntu 16.04.
 
 ```sh
 sudo apt install python
 ```
 
-Install Python on Centos 6.x/7.x and RHEL 6.x/7.x
+Install Python on Centos 6.x/7.x and RHEL 6.x/7.x.
 
 ```sh
 sudo yum install python
 ```
 
-### Getting the source code
-
-The source code can be obtained by cloning the project repository or by downloading source code archive
-
-#### Cloning repostory
-
-To clone repository you need git to be installed.
-
-Install git on Ubuntu 14.04
-
-```
-sudo apt-get install git
-```
-
-Install git on Ubuntu 16.04
-
-```
-sudo apt install git
-```
-
-Install git on Centos 6.x/7.x and RHEL 6.x/7.x
-
-```
-sudo yum install git
-```
-
-Next, clone the repository
-
-```sh
-git clone https://github.com/OpenTSDB/tcollector.git
-cd tcollector
-```
-
-#### Downloading the source code archive
-
-As the second option, the lateset source code can be downloaded from the [latest release](https://github.com/OpenTSDB/tcollector/releases/latest) page of the project. Download it using wget or curl and copy to the target machine, if necessary.
+### Download tcollector
 
 ```
 wget -O tcollector.tar.gz https://github.com/OpenTSDB/tcollector/archive/v1.3.2.tar.gz
@@ -72,55 +37,52 @@ tar -xzf tcollector.tar.gz -C tcollector --strip-components=1
 cd tcollector
 ```
 
-## Starting tcollector
+## Start tcollector
 
-### Manual start
+### Manual Start
 
-Start tcollector from source code directory with command
+Start tcollector from the source code directory. Replace `atsd_hostname` with the ATSD hostname or IP address.
 
 ```sh
-sudo ./tcollector start --host [atsd_host] --port 8081
+sudo ./tcollector start --host atsd_hostname --port 8081
 ```
-
-where `[atsd_host]` must be replaced with ATSD host name.
 
 ### Autostart
 
-#### Create config
-
-In tcollector root directory create `tcollector.conf` file
+Create `tcollector.conf` file in the tcollector home directory.
 
 ```sh
 cat <<EOF > tcollector.conf
-ATSD_HOST=[atsd_host]
+ATSD_HOST=atsd_hostname
 ATSD_PORT=8081
 EOF
 ```
 
-where `[atsd_host]` must be replaced with ATSD host name.
+Replace `atsd_hostname` with the ATSD hostname or IP address.
 
 #### Ubuntu 14.04
 
-Download [init script](resources/tcollector) and place it into `/etc/init.d` directory.
-From root directory of tcollector installation run the following command
+Download [init script](resources/tcollector) and copy it into `/etc/init.d` directory.
+
+Change to the tcollector home directory and run the following command.
 
 ```sh
 sudo sed -i "/^TCOLLECTOR_HOME=/{s|=.*|=\"$(pwd)\"|}" /etc/init.d/tcollector
 ```
 
-Make the script executable
+Make the script executable.
 
 ```
 sudo chmod u+x /etc/init.d/tcollector
 ```
 
-Add tcollector to autostart
+Add tcollector to autostart.
 
 ```sh
 sudo update-rc.d tcollector defaults
 ```
 
-To start tcollector immidiately run
+Start tcollector.
 
 ```sh
 sudo service tcollector start
@@ -128,26 +90,27 @@ sudo service tcollector start
 
 #### Centos 6.x and RHEL 6.x
 
-Download [init script](resources/tcollector) and place it into `/etc/init.d` directory.
-From root directory of tcollector installation run the following command
+Download [init script](resources/tcollector) and copy it into `/etc/init.d` directory.
+
+Change to the tcollector home directory and run the following command.
 
 ```sh
 sudo sed -i "/^TCOLLECTOR_HOME=/{s|=.*|=\"$(pwd)\"|}" /etc/init.d/tcollector
 ```
 
-Make the script executable
+Make the script executable.
 
 ```
 sudo chmod u+x /etc/init.d/tcollector
 ```
 
-Add tcollector to autostart
+Add tcollector to autostart.
 
 ```sh
 sudo chkconfig --add tcollector
 ```
 
-To start tcollector immidiately run
+Start tcollector.
 
 ```sh
 sudo service tcollector start
@@ -155,34 +118,35 @@ sudo service tcollector start
 
 #### Ubuntu 16.04, Centos 7.x, RHEL 7.x
 
-Download [init script](resources/tcollector) and place it into tcollector root directory directory, name it `tcollector-wrapper`.
-From root directory of tcollector installation run the following command
+Download [init script](resources/tcollector) and place it into tcollector **home** directory directory, name it `tcollector-wrapper`.
+
+Change to the tcollector home directory and run the following command.
 
 ```sh
 sed -i "/^TCOLLECTOR_HOME=/{s|=.*|=\"$(pwd)\"|}" tcollector-wrapper
 ```
 
-Make the script executable
+Make the script executable.
 
 ```
 chmod +x tcollector-wrapper
 ```
 
-Download [service file](resources/tcollector.service) for tcollector and place it into `/lib/systemd/system` directory.
+Download [service file](resources/tcollector.service) for tcollector and copy it into `/lib/systemd/system` directory.
 
-From tcollector root direcotry run this command to edit service file
+Change to the tcollector home directory and run the following command.
 
 ```
 sudo sed "/\(start\|stop\|restart\)/s|=|=$(pwd)/tcollector-wrapper|" /lib/systemd/system/tcollector.service
 ```
 
-Enable autostart
+Enable autostart.
 
 ```sh
 sudo systemctl enable tcollector
 ```
 
-To start tcollector immidiately run
+Start tcollector.
 
 ```sh
 sudo systemctl start tcollector
