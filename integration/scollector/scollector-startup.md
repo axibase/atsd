@@ -40,9 +40,14 @@ Host = "http://atsd_username:atsd_password@atsd_server:8088/"
 
 ### Auto-start scollector under sudo user
 
-Create an init script called `scollector` in the `/etc/init.d/` directory with the following contents:
+> The init scripts in this section for systems without systemd do not support daemon stopping and do not check if service is already running
 
-```
+#### Ubuntu 14.04
+
+Create `/etc/init.d/scollector` file from scollector installation directory and make it executable
+
+```sh
+sudo cat <<EOF > /etc/init.d/scollector
 #chkconfig: 2345 90 10
 #description: scollector is a framework to collect data points and store them in a TSDB.
 ### BEGIN INIT INFO
@@ -55,38 +60,82 @@ Create an init script called `scollector` in the `/etc/init.d/` directory with t
 # Description:
 ### END INIT INFO
  
-SCOLLECTOR_BIN=/home/axibase/scollector-linux-amd64
-SCOLLECTOR_CONF=/home/axibase/scollector.toml
+SCOLLECTOR_BIN=$(pwd)/scollector-linux-amd64
+SCOLLECTOR_CONF=$(pwd)/scollector.toml
  
-"$SCOLLECTOR_BIN" -conf="$SCOLLECTOR_CONF"
-```
-
-Be sure to change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
-
-Set execute flag:
-
-```
+"\$SCOLLECTOR_BIN" -conf="\$SCOLLECTOR_CONF"
+EOF
 chmod a+x /etc/init.d/scollector
 ```
 
 Add scollector to startup:
 
-On Ubuntu/Debian:
-
 ```
 sudo update-rc.d scollector defaults 90 10
 ```
 
-On RHEL/SUSE/SLES:
+#### Centos 6.x and RHEL 6.x
+
+Create `/etc/init.d/scollector` file from scollector installation directory and make it executable
+
+```sh
+sudo cat <<EOF > /etc/init.d/scollector
+#chkconfig: 2345 90 10
+#description: scollector is a framework to collect data points and store them in a TSDB.
+### BEGIN INIT INFO
+# Provides: scollector
+# Required-Start:
+# Required-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: start scollector
+# Description:
+### END INIT INFO
+ 
+SCOLLECTOR_BIN=$(pwd)/scollector-linux-amd64
+SCOLLECTOR_CONF=$(pwd)/scollector.toml
+ 
+"\$SCOLLECTOR_BIN" -conf="\$SCOLLECTOR_CONF"
+EOF
+chmod a+x /etc/init.d/scollector
+```
+
+Add scollector to startup:
 
 ```
 sudo chkconfig --add scollector
-sudo touch /var/lock/subsys/scollector
 ```
 
-###### Auto-start scollector as a non-sudo user
+#### Ubuntu 16.04, Centos 7.x and RHEL 7.x
 
-Modify the `/etc/init.d/tcollector` content:
+Create service file for scollector
+
+```
+sudo cat <<EOF > /lib/systemd/system/scollector.service
+[Unit]
+Description=scollector daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=$(pwd)/scollector-linux-amd64
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Add scollector to startup
+
+```
+sudo systemctl enable scollector
+```
+
+### Auto-start scollector as a non-sudo user
+
+#### Ubuntu 14.04, Centos 6.x and RHEL 6.x
+
+Modify the `/etc/init.d/tcollector` content
 
 ```
 #chkconfig: 2345 90 10
@@ -104,7 +153,7 @@ Modify the `/etc/init.d/tcollector` content:
 SCOLLECTOR_BIN=/home/axibase/scollector-linux-amd64
 SCOLLECTOR_CONF=/home/axibase/scollector.toml
 SCOLLECTOR_USER=axibase
- 
+
 if [ `whoami` != "$SCOLLECTOR_USER" ]; then
 su - "$SCOLLECTOR_USER" -c "$SCOLLECTOR_BIN" -conf="$SCOLLECTOR_CONF"
 else
@@ -113,9 +162,16 @@ fi
 ```
 
 Be sure to change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
-
 Set `SCOLLECTOR_USER` to the user that will run scollector.
 
+#### Ubuntu 16.04, Centos 7.x and RHEL 7.x
+
+Add `User` option to `[Service]` section of the service file
+
+```sh
+ sudo sed -i '/\[Service\]/a User=[user_name]' /lib/systemd/system/scollector.service
+ sudo systemctl daemon-reload
+```
 
 ## Windows
 
