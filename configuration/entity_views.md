@@ -18,10 +18,10 @@ Entity Group | Entity Group which members are included in the view.
 Entity Expression | A additional condition that entity group members must satisfy in order to be included in the view. The syntax is the same as supported by expression-based entity groups.
 Dynamic Filter | The default [dynamic filter](#dynamic-filters) applied to entities on initial page load.
 Split Table by Tag | Group entities by entity tag value into separate tables.
-Display in Top Menu | If enabled, the view is accessible under its own tab in the top menu.
+Display in Left Menu | If enabled, the view is accessible under its own tab in the left menu.
 Display Index | Applies if entity view is displayed in the top menu. Specifies relative position of the tab. The tabs are sorted by index in ascending order.
 Multi-Entity Portal | [Portal](#portal) with time series charts for entities displayed in the view.
-Page Size | Number of entities displayed in the view. The limit is applied to the total record count even if the table is split by tag.
+Menu Icon | Icon to be displayed with view at the left menu.
 
 ## Filters
 
@@ -48,11 +48,11 @@ The table consists of multiple columns, one row per entity. Each cell displays a
 ---|---
 Type | Column type.
 Header | Column name.
-Value | Applicable to 'Entity Tag', 'Property Tag', and 'Series Value' [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
+Value | Applicable to 'Entity Tag', 'Property Tag', 'Series Value' and 'Last Insert' [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Specifies if the cell value should also be clickable as a link. See [Links](#links) options.
 Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
 Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
-Formatting | A [function](../rule-engine/functions.md#formatting-functions) to round numbers or to convert units, for example `formatNumber(value, "0.0")`.
+Formatting | A [function](#formatting) or an expression to round numbers and convert units.
 
 ### Column Types
 
@@ -63,8 +63,9 @@ Property Tag | [Property search expression](../rule-engine/property-search.md) i
 Series Value | Name of the metric for which the last value for this entity will be displayed.<br>If multiple series match the specified metric and entity, the value for first one will be displayed.
 Name Column | Entity name with a link to the editor page for the entity.
 Label Column | Entity label with a link to the editor page for the entity.
+Portals Column | Link to the portals page.
 Properties Column | Link to the properties page for the entity.
-Metric Column | Last insert date for the entity with a link to the list of last insert dates by metric.
+Last Insert | Last insert date for the specified metric with a link to the list of last insert dates for metrics of the given entity.<br>Value must be specified as `metric:[threshold]`, where the optional parameter `threshold` is the permissible lag.<br>If `lastInsertDate < now - threshold`, the cell is highlighted with orange background.
 Enabled Column | Entity status.
 
 ### Links
@@ -75,6 +76,49 @@ Entity | Entity editor page.
 Property | Portal with a property widget for the given entity and property type.
 Chart | Portal with a time chart displaying the data for the specified metric and entity.
 Entity Property | Portal with a property widget for another entity retrieved with the property expression.
+
+### Formatting
+
+The following functions are available in 'Formatting' section:
+
+#### Text Functions 
+
+* [upper](functions-text.md#upper)
+* [lower](functions-text.md#lower)
+* [truncate](functions-text.md#truncate)
+* [coalesce](functions-text.md#coalesce)
+* [keepAfter](functions-text.md#keepafter)
+* [keepAfterLast](functions-text.md#keepafterlast)
+* [keepBefore](functions-text.md#keepbefore)
+* [keepBeforeLast](functions-text.md#keepbeforelast)
+* [replace](functions-text.md#replace)
+* [capFirst](functions-text.md#capfirst)
+* [capitalize](functions-text.md#capitalize)
+* [removeBeginning](functions-text.md#removebeginning)
+* [removeEnding](functions-text.md#removeending)
+* [urlencode](functions-text.md#urlencode)
+* [jsonencode](functions-text.md#jsonencode)
+* [htmlDecode](functions-text.md#htmldecode)
+* [unquote](functions-text.md#unquote)
+* [countMatches](functions-text.md#countmatches)
+* [abbreviate](functions-text.md#abbreviate)
+* [indexOf](functions-text.md#indexof)
+* [locate](functions-text.md#locate)
+* [trim](functions-text.md#trim)
+* [length](functions-text.md#length)
+
+#### Formatting Functions 
+
+* [convert](functions-format.md#convert)
+* [formatNumber](functions-format.md#formatnumber)
+* [date_format](functions-format.md#date_format)
+* [formatInterval](functions-format.md#formatinterval)
+* [formatIntervalShort](functions-format.md#formatintervalshort)
+
+#### Time Functions
+
+* [elapsedTime](#elapsedtime)
+
 
 ## Dynamic Filters
 
