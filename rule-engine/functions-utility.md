@@ -33,22 +33,24 @@ Examples:
 ```javascript
   toBoolean(object a) boolean
 ```
-Converts object `a` to boolean, treats all strings as `false` by default. Exceptions are: "true", "yes", "on", "1".
 
-Returns `true` if object `a` is a number that is not equal 0. In other cases returns `false`.
+Converts the input string or number `a` to a boolean value. The `true` value is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-INsensisitve) or if `a` equals number `1`.
 
 Value table:
 
-Text | boolean
-----|-------
-yes | true
-YES | true
-no | false
-NO | false
-hello | false 
-0 | false
-1 | true
-on | true
+Input | Type | boolean
+----|---|---
+yes | string | true
+YES | string | true
+on | string | true
+1 | string | true
+1 | number | true
+no | string | false
+NO | string | false
+hello | string | false 
+0 | string | false
+0 | number | false
+3 | number | false
   
 Examples:
 
@@ -58,13 +60,12 @@ Examples:
   toBoolean('hello')  
   toBoolean(0)
   toBoolean('off')  
-  toBoolean(getEntity('atsd'))
   
   // Returns true 
   
   toBoolean('YES')    
-  toBoolean(5)  
-  toBoolean(-10)
+  toBoolean(1)  
+  toBoolean('On')
 ```
 
 ### `getURLHost`
