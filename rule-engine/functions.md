@@ -157,7 +157,6 @@ The text functions transform and compare strings.
 * [upper](functions-text.md#upper)
 * [lower](functions-text.md#lower)
 * [truncate](functions-text.md#truncate)
-* [contains](functions-text.md#contains)
 * [startsWith](functions-text.md#startswith)
 * [endsWith](functions-text.md#endswith)
 * [split](functions-text.md#split)
@@ -268,6 +267,7 @@ The rule functions provide a way to check the status of windows created by other
 ## Utility Functions
 
 * [ifEmpty](functions-utility.md#ifempty)
+* [toBoolean](functions-utility.md#toboolean)
 * [getURLHost](functions-utility.md#geturlhost)
 * [getURLPort](functions-utility.md#geturlport)
 * [getURLProtocol](functions-utility.md#geturlprotocol)

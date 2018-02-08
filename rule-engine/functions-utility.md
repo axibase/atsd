@@ -3,6 +3,7 @@
 ## Reference
 
 * [ifEmpty](#ifempty)
+* [toBoolean](#toboolean)
 * [getURLHost](#geturlhost)
 * [getURLPort](#geturlport)
 * [getURLProtocol](#geturlprotocol)
@@ -27,7 +28,26 @@ Examples:
     /* Returns hello */  
     ifEmpty('hello', 'world')
   ```
+### `toBoolean`
 
+```javascript
+  toBoolean(object a) boolean
+```
+Converts object to boolean, treats all strings as `false` by default. Exceptions are: "true", "yes", "on", "1".
+
+Value table:
+
+Text | boolean
+----|-------
+yes | true
+YES | true
+no | false
+NO | false
+hello | false 
+0 | false
+1 | true
+on | true
+  
 ### `getURLHost`
 
 ```javascript
