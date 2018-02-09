@@ -114,7 +114,7 @@ sudo service tcollector start
 
 #### Ubuntu 16.04, Centos 7.x, RHEL 7.x
 
-Download [init script](resources/tcollector) and place it into tcollector **home** directory directory, name it `tcollector-wrapper`.
+Download [init script](resources/tcollector) and place it into tcollector **home** directory, name it `tcollector-wrapper`.
 
 Make the script executable.
 
