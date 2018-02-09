@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart= start
-ExecStop= stop
-ExecReload= restart
+ExecStart=tcollector-wrapper start
+ExecStop=tcollector-wrapper stop
+ExecReload=tcollector-wrapper restart
 
 [Install]
 WantedBy=multi-user.target

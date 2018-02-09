@@ -8,7 +8,7 @@
 # Short-Description: Starts tcollector
 ### END INIT INFO
 
-TCOLLECTOR_HOME=
+TCOLLECTOR_HOME=$(dirname $(readlink -f $0))
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 TCOLLECTOR=${TCOLLECTOR_HOME}/tcollector
 
