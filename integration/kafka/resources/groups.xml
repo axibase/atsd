@@ -1,0 +1,13 @@
+<list>
+  <com.axibase.tsd.model.EntityGroup>
+    <name>Kafka</name>
+    <tags/>
+    <portals>
+      <long>175</long>
+      <long>176</long>
+    </portals>
+    <entityTags/>
+    <expression>properties(&apos;jmx.kafka.app-info&apos;).size() &gt; 0</expression>
+    <enabled>true</enabled>
+  </com.axibase.tsd.model.EntityGroup>
+</list>
