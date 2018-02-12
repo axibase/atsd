@@ -2,7 +2,7 @@
 
 ## Overview
 
-Security functions provide the way to check permission settings specified at **Settings > Users** and **Settings > Users Groups** pages.
+Security functions provide the way to check user roles and permissions as part of the rule notification logic. For example, these functions can be used to allow or deny certain actions such as sending portals or invoking scripts.
 
 ## Reference
 
