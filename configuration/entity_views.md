@@ -172,48 +172,51 @@ tags['configuration::codename'] = 'Santiago'
 
 ## Split Table by Column
 
-If **Split Table by Column** is specified, the table rows are splitted into groups. Existing column header or its value can be specified in this field.
+If **Split Table by Column** is specified, the entities are grouped into multiple tables. 
 
-For instance, there are 5 entities `(server*)` with entity tag `location` and properties `start_time` and `status` of type `runtime_info`. Sample Entity View configuration:
+The **Split Table by Column** field accepts an existing column header or its value.
+
+### Split Examples
+
+Assuming there are five entities in the selected entity group:
+
+* Entity name starts with `server*`.
+* Each entity has entity tag `location`
+* Each entity has properties `start_time` and `status` of type `runtime_info`.
+
+Default entity view configuration:
 
 ![](images/entity-view-split-config-empty.png)
 
-Entity View without table splitting would be looks like following
+The entity view without table splitting is displayed as follows, with all entities places into one table:
 
 ![](images/entity-view-split-empty.png)
 
-In order to split table by entity tag, specify this tag in **Split Table by Column**
+To split the table by entity tag 'location', specify the tag's name in the **Split Table by Column** field:
 
 ![](images/entity-view-split-config-location.png)
 
-Result
+  ![](images/entity-view-split-location.png)
 
-![](images/entity-view-split-location.png)
-
-Also table may be splitted by column header
+To group entities by column **header**, set the header name in the **Split Table by Column** field:
 
 ![](images/entity-view-split-config-state.png)
 
-Result
+  ![](images/entity-view-split-state.png)
 
-![](images/entity-view-split-state.png)
-
-If column header is specified, splitting performs after column values formatting
+If splitting by column **header** is enabled, grouping is performed based on formatted values.
 
 ![](images/entity-view-split-config-start-time.png)
-
-Result
 
 ![](images/entity-view-split-start-time.png)
 
 ## Portal
 
-If the Multi-Entity Portal is defined manually or the entity view contains at least one 'Series Value' column, the statistics for entities can be viewed on a portal accessible with the [View Portal] button. 
+If the Multi-Entity Portal is assigned manually or the entity view contains 'Series Value' columns, the statistics for entities can be viewed on a portal accessible with the [View Portal] button. 
 
 If no portal is selected, the default portal displays metrics for columns of type 'Series Value'.
 
 The multi-entity portal is any portal that displays a metric for multiple entities using the `${entities}` placeholder.
-
 
 ```ls
 [widget]
