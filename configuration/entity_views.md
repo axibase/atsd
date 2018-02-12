@@ -186,17 +186,23 @@ In order to split table by entity tag, specify this tag in **Split Table by Colu
 
 ![](images/entity-view-split-config-location.png)
 
+Result
+
 ![](images/entity-view-split-location.png)
 
 Also table may be splitted by column header
 
 ![](images/entity-view-split-config-state.png)
 
+Result
+
 ![](images/entity-view-split-state.png)
 
 If column header is specified, splitting performs after column values formatting
 
 ![](images/entity-view-split-config-start-time.png)
+
+Result
 
 ![](images/entity-view-split-start-time.png)
 
