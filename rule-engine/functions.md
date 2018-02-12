@@ -268,6 +268,7 @@ The rule functions provide a way to check the status of windows created by other
 
 * [ifEmpty](functions-utility.md#ifempty)
 * [toBoolean](functions-utility.md#toboolean)
+* [printObject](functions-utility.md#printobject)
 * [getURLHost](functions-utility.md#geturlhost)
 * [getURLPort](functions-utility.md#geturlport)
 * [getURLProtocol](functions-utility.md#geturlprotocol)

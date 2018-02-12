@@ -4,6 +4,7 @@
 
 * [ifEmpty](#ifempty)
 * [toBoolean](#toboolean)
+* [printObject](#printobject)
 * [getURLHost](#geturlhost)
 * [getURLPort](#geturlport)
 * [getURLProtocol](#geturlprotocol)
@@ -67,6 +68,82 @@ Examples:
   toBoolean(1)  
   toBoolean('On')
 ```
+
+### `printObject`
+
+```javascript
+  printObject(object o, string f) string
+```
+
+The function prints the input object `o` as a two-column table in the specified format `f`.
+
+The first column in the table contains field name, whereas the second column contains the corresponding value.
+
+Object `o` can be an Entity or a Window object. There are following ways to retrieve such objects:
+
+* [getEntity](functions-lookup.md#getentity)
+* [rule_window](functions-rules.md#rule_window)
+* [rule_windows](functions-rules.md#rule_windows)
+
+Supported formats:
+
+* 'markdown'
+* 'ascii'
+* 'property'
+* 'csv'
+* 'html'
+
+An empty string is returned if the object `o` is `null`.
+
+Examples:
+
+```javascript
+  printObject(getEntity('atsd'), 'ascii')
+```
+
+```ls
++--------------------------+------------------------------------+
+| Name                     | Value                              |
++--------------------------+------------------------------------+
+| created                  | 1516996501692                      |
+| enabled                  | true                               |
+| id                       | 1                                  |
+| interpolate              | LINEAR                             |
+| label                    | ATSD                               |
+| name                     | atsd                               |
+| portalConfigs            | []                                 |
+| portalConfigsEnabled     | []                                 |
+| tags                     | {container=axibase/atsd:latest}    |
+| timeZone                 | null                               |
+...
+``` 
+
+```javascript
+  printObject(rule_window('jvm_derived'), 'csv')
+``` 
+
+```ls
+Name,Value
+empty,false
+lastText,null
+status,OPEN
+windowStatus,OPEN
+...
+```  
+
+```javascript
+  printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
+``` 
+
+```ls
+| **Name** | **Value**  |
+|:---|:--- |
+| empty | false |
+| lastText | Send 300 commands to ATSD. |
+| status | REPEAT |
+| windowStatus | REPEAT |
+...
+``` 
 
 ### `getURLHost`
 
