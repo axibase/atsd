@@ -287,7 +287,7 @@ The rule functions provide a way to check the status of windows created by other
 * [getChartLink](functions-link.md#getchartlink)
 
 
-# Security Functions
+## Security Functions
 
 * [userInGroup](functions-security.md#useringroup)
 * [userHasRole](functions-security.md#userhasrole)
