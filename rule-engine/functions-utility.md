@@ -4,13 +4,13 @@
 
 * [ifEmpty](#ifempty)
 * [toBoolean](#toboolean)
-* [printObject](#printobject)
 * [getURLHost](#geturlhost)
 * [getURLPort](#geturlport)
 * [getURLProtocol](#geturlprotocol)
 * [getURLPath](#geturlpath)
 * [getURLQuery](#geturlquery)
 * [getURLUserInfo](#geturluserinfo)
+* [printObject](#printobject)
 
 ### `ifEmpty`
 
@@ -77,14 +77,6 @@ Examples:
 
 The function prints the input object `o` as a two-column table in the specified format `f`.
 
-The first column in the table contains field name, whereas the second column contains the corresponding value.
-
-Object `o` can be an Entity or a Window object. There are following ways to retrieve such objects:
-
-* [getEntity](functions-lookup.md#getentity)
-* [rule_window](functions-rules.md#rule_window)
-* [rule_windows](functions-rules.md#rule_windows)
-
 Supported formats:
 
 * 'markdown'
@@ -92,6 +84,14 @@ Supported formats:
 * 'property'
 * 'csv'
 * 'html'
+
+The first column in the table contains field names, whereas the second column contains corresponding field values.
+
+Object `o` can be an 'Entity' or a 'Window' object which can be retrieved as follows:
+
+* [getEntity](functions-lookup.md#getentity)
+* [rule_window](functions-rules.md#rule_window)
+* [rule_windows](functions-rules.md#rule_windows)
 
 An empty string is returned if the object `o` is `null`.
 
