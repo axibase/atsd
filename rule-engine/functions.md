@@ -18,6 +18,7 @@
 * [Rule Functions](#rule-functions)
 * [Utility Functions](#rule-functions)
 * [Link Functions](#link-functions)
+* [Security Functions](#security-functions)
 
 ## Overview
 
