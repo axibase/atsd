@@ -15,7 +15,7 @@ The `addPortal` function provides a way to enrich notifications with any predefi
 addPortal(string portal)
 addPortal(string portal, entity / List entities)
 addPortal(string portal, entity / List entities, string comment)
-addPortal(string portal, entity / List entities entities, string comment, [] additionalParams)
+addPortal(string portal, entity / List entities, string comment, [] additionalParams)
 ```
 * [**required**] `portal` - Name of the preconfigured portal. If asterisk `*` is specified, all portals for the given entity will be attached to notification. If portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, e.g. 'tcollector - Linux' becomes 'tcollectorlinux'and returned the first matching portal.
 * `entity` or `entities` - Entities for which the portal will be generated. Required if the portal type is [template](../portals/creating-and-assigning-portals.md#template-portals).
