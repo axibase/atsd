@@ -20,7 +20,7 @@
 <leavingEvents>true</leavingEvents>
 <loadHistory>false</loadHistory>
 <logOutput>false</logOutput>
-<owner>Rustam Makulov</owner>
+<owner>User</owner>
 <actionStrategy>
 <type>ALL</type>
 <intervalCount>5</intervalCount>
