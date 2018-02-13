@@ -249,7 +249,7 @@
   </com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
   <com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
     <portalConfig>
-      <name>Kafka Cluster</name>
+      <name>Kafka</name>
       <enabled>true</enabled>
       <showInMenu>true</showInMenu>
       <displayIndex>0</displayIndex>

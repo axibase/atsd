@@ -142,7 +142,7 @@
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
         </trackingMBeans>
-        <entity>kafka</entity>
+        <entity></entity>
         <metricPrefix>jmx.${domain}.${type}.${name}.</metricPrefix>
         <propertyTypePrefix></propertyTypePrefix>
         <serviceName></serviceName>
@@ -169,32 +169,42 @@
         <password></password>
         <trackingMBeans>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.log:name=*,partition=*,topic=t*,type=Log</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
+              <objectName>kafka.server:name=*,type=KafkaServer</objectName>
+              <attributes>Value</attributes>
+              <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.cluster:name=*,partition=*,topic=t*,type=Partition</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
+              <objectName>kafka.log:name=*,partition=*,topic=t*,type=Log</objectName>
+              <attributes>Value</attributes>
+              <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:type=app-info</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
+              <objectName>kafka.cluster:name=*,partition=*,topic=t*,type=Partition</objectName>
+              <attributes>Value</attributes>
+              <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.log:name=*,partition=*,topic=a*,type=Log</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
+              <objectName>kafka.server:type=app-info</objectName>
+              <attributes>commit-id</attributes>
+              <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.cluster:name=*,partition=*,topic=a*,type=Partition</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
+              <objectName>kafka.controller:name=*,type=KafkaController</objectName>
+              <attributes>Value</attributes>
+              <propertyType></propertyType>
+          </com.axibase.collector.model.job.jmx.TrackingMBean>
+          <com.axibase.collector.model.job.jmx.TrackingMBean>
+              <objectName>kafka.log:name=*,partition=*,topic=a*,type=Log</objectName>
+              <attributes>Value</attributes>
+              <propertyType></propertyType>
+          </com.axibase.collector.model.job.jmx.TrackingMBean>
+          <com.axibase.collector.model.job.jmx.TrackingMBean>
+              <objectName>kafka.cluster:name=*,partition=*,topic=a*,type=Partition</objectName>
+              <attributes>Value</attributes>
+              <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
         </trackingMBeans>
-        <entity>kafka</entity>
+        <entity></entity>
         <metricPrefix></metricPrefix>
         <propertyTypePrefix>jmx.kafka.</propertyTypePrefix>
         <serviceName></serviceName>

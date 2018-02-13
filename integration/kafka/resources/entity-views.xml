@@ -108,7 +108,6 @@
     </filters>
     <grouping>jmx.kafka.kafkaserver:name=ClusterId:value</grouping>
     <displayIndex>3</displayIndex>
-    <multiEntityPortalId>173</multiEntityPortalId>
     <icon>pt-icon-exchange</icon>
   </com.axibase.tsd.model.EntityView>
 </linked-list>
