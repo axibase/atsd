@@ -125,15 +125,22 @@ Examples:
   ent1 = entities.get(0).name+' '+date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss ", "UTC")
 ```
 
+* Match using entity object's field
+
 ```javascript
-  /* Matching expression contains entity object's field */
   getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")  
-  
-  /* Matching expression contains wildcard */
+```
+
+* Match using wildcard
+
+```javascript
   getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
-  
-  /* Matching expression contains window field */
-  getEntities('cpu_busy', 'yesterday', 'now', "tags.app!='" + entity.tags.app + "'")
+```
+
+* Match using window field 
+
+```javascript
+  getEntities('cpu_busy', 'yesterday', 'now', "interpolate='LINEAR' && tags.app!='" + entity.tags.app + "'")
 ```
 
 ### `getEntitiyCount`
