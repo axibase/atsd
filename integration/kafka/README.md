@@ -1,6 +1,6 @@
 # Monitoring Kafka with ATSD
 
-This document describes the process of configuring availability and performance monitoring of [Apache Kafka](https://kafka.apache.org/) middleware services using Axibase Collector and the Axibase Time Series Database.
+This document describes the process of configuring availability and performance monitoring of [Apache Kafka](https://kafka.apache.org/) using Axibase Time Series Database.
 
 ## Step 1: Configure Axibase Collector
 
@@ -86,7 +86,7 @@ cd /opt/kafka/bin
 # create consumer config
 echo "exclude.internal.topics=false" > /tmp/consumer.config
 
-# Consume all offsets
+# read all offsets
 ./kafka-console-consumer.sh --consumer.config /tmp/consumer.config --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" \
 --zookeeper localhost:2181 --topic __consumer_offsets --from-beginning | grep -v "\[.*\,.*_.*\,.*\]::.*" | awk \
 'match($0, /\[([^\]]+)/) { meta=substr( $0, RSTART+1, RLENGTH-1 ) } \
@@ -94,9 +94,9 @@ echo "exclude.internal.topics=false" > /tmp/consumer.config
  match($0, /CommitTime\ ([^,]+)/) { print meta "," meta_offset "," substr( $0, RSTART+11, RLENGTH-11 ) }' > consumer_offset.csv
 ```  
 
-1. Import [csv-parser](resources/csv-parser-consumer-offset.xml) into ATSD on `Data -> CSV Parsers` page
-1. Select imported consumer-offset parser and upload the consumer_offset.csv file.
-1. Check that entity `kafka` created and metric `consumer_offset` is available on the Metrics tab in ATSD.
-1. Import the following [portal](resources/consumer-lag.xml) into ATSD and customize the topic name to view the consumer lag.
+1. Import [csv-parser](resources/csv-parser-consumer-offset.xml) into ATSD on the `Data > CSV Parsers` page
+1. Select the imported 'consumer-offset' parser and upload the 'consumer_offset.csv' file.
+1. Check that `kafka` entity was created and that metric `consumer_offset` is available on the Metrics tab in ATSD.
+1. Import [consumer lag portal](resources/consumer-lag.xml) into ATSD and change the topic name to view the consumer lag.
 
 ![](images/consumer_lag.png)
