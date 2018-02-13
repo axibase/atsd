@@ -107,7 +107,7 @@ Example:
 ```
 Returns a list of entity objects matching the specified pattern `p` and the metric `m` with `lastIsertDate` between start date `s` and end date `e`. 
 
-Expression `p` can contain any [fields](../api/meta/entity/list.md#fields) except `lastInsertDate`, wildcards are supported.
+Expression `p` can be built using entity [fields](../api/meta/entity/list.md#fields) except `lastInsertDate`, wildcards and [window fields](window.md#window-fields).
 
 Start date `s` and end date `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
@@ -126,8 +126,14 @@ Examples:
 ```
 
 ```javascript
+  /* Matching expression contains entity object's field */
   getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")  
+  
+  /* Matching expression contains wildcard */
   getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
+  
+  /* Matching expression contains window field */
+  getEntities('cpu_busy', 'yesterday', 'now', "tags.app!='" + entity.tags.app + "'")
 ```
 
 ### `getEntitiyCount`
