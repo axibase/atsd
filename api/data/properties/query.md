@@ -28,7 +28,7 @@ An array of query objects containing the following filtering fields:
 | keyTagExpression| string | Expression for matching properties with specified keys or tags.<br>Example: `keys.file_system LIKE '/u*'` or `tags.fs_type == 'ext4'`.<br>Use `lower()` function to ignore case, for example `lower(keys.file_system) LIKE '/u*'`|
 
 * Key values and tag values are case-sensitive.
-* Key names and tags names are care-sensitive.
+* Key names and tag names are case-insensitive.
 
 #### Entity Filter Fields
 

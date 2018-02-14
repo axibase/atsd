@@ -19,6 +19,8 @@
 * [Utility Functions](#rule-functions)
 * [Link Functions](#link-functions)
 * [Portal Functions](#portal-functions)
+* [Security Functions](#security-functions)
+
 
 ## Overview
 
@@ -158,7 +160,6 @@ The text functions transform and compare strings.
 * [upper](functions-text.md#upper)
 * [lower](functions-text.md#lower)
 * [truncate](functions-text.md#truncate)
-* [contains](functions-text.md#contains)
 * [startsWith](functions-text.md#startswith)
 * [endsWith](functions-text.md#endswith)
 * [split](functions-text.md#split)
@@ -269,6 +270,8 @@ The rule functions provide a way to check the status of windows created by other
 ## Utility Functions
 
 * [ifEmpty](functions-utility.md#ifempty)
+* [toBoolean](functions-utility.md#toboolean)
+* [printObject](functions-utility.md#printobject)
 * [getURLHost](functions-utility.md#geturlhost)
 * [getURLPort](functions-utility.md#geturlport)
 * [getURLProtocol](functions-utility.md#geturlprotocol)
@@ -290,3 +293,12 @@ The rule functions provide a way to check the status of windows created by other
 Portal functions provide a way to attach any portals if the chat configuration supports sending screenshots.
 
 * [addPortal](functions-portal.md#addportal)
+
+## Security Functions
+
+* [userInGroup](functions-security.md#useringroup)
+* [userHasRole](functions-security.md#userhasrole)
+* [userAllowEntity](functions-security.md#userallowentity)
+* [userAllowEntityGroup](functions-security.md#userallowentitygroup)
+* [userAllowPortal](functions-security.md#userallowportal)
+

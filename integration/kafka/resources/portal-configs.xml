@@ -1,0 +1,467 @@
+<list>
+  <com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
+    <portalConfig>
+      <name>Broker</name>
+      <enabled>true</enabled>
+      <showInMenu>true</showInMenu>
+      <displayIndex>0</displayIndex>
+      <style>black.css</style>
+      <content>[configuration]
+  title = Kafka
+  offset-right = 50
+  height-units = 5
+  width-units = 3
+  server-aggregate = true
+  entity = ${entity}
+
+[group]
+
+  [widget]
+    title = Kafka Bytes / Sec
+    type = chart
+    format = bytes
+    timespan = 1 day
+    statistics = sum
+    merge-fields = entity
+
+    [series]
+      label-format = entity:in
+      metric =  jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+    [tags]
+      topic = *
+
+    [series]
+      axis = right
+      label-format = entity:out
+      metric = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+
+  [widget]
+    title = Messages In / Sec
+    type = chart
+    timespan = 1 day
+    max-range = 100
+    metric =  jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+    statistics = sum
+    merge-fields = entity
+
+    [series]
+      label-format = entity
+
+  [widget]
+    type = chart
+    timespan = 1 day
+    title = ZooKeeper latency, ms
+    [series]
+      label-format = entity
+      metric = jmx.kafka.server.zookeeperclientmetrics.zookeeperrequestlatencyms.count
+
+[group]
+  [widget]
+    title = Producer Request Time / Sec
+    type = chart
+    timespan = 1 day
+    max-range = 100
+    statistics = sum
+    merge-fields = entity
+    [series]
+      label-format = entity
+      metric = jmx.kafka.server.brokertopicmetrics.totalproducerequestspersec.meanrate
+
+  [widget]
+    title = Consumer Fetch Time / Sec
+    type = chart
+    timespan = 1 day
+    max-range = 100
+    statistics = sum
+    merge-fields = entity
+    [series]
+      label-format = entity
+      metric = jmx.kafka.server.brokertopicmetrics.totalfetchrequestspersec.meanrate
+
+  [widget]
+    title = Consumer Failed Fetch Time / Sec
+    type = chart
+    timespan = 1 day
+    max-range = 100
+    statistics = sum
+    merge-fields = entity
+    alert-expression = value &gt; 0
+    alert-style = fill: red; stroke: red
+    [series]
+      label-format = entity
+      metric = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+
+[group]
+
+  [widget]
+    statistics = sum
+    title = Kafka Bytes / Sec
+    format = bytes
+    type = chart
+    timespan = 1 day
+    statistics = sum
+    merge-fields = topic
+
+    [series]
+      label-format = tags.topic:in
+      metric =  jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+      [tags]
+      topic = *
+
+    [series]
+      label-format = tags.topic:out
+      metric = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+      axis = right
+      [tags]
+      topic = *
+
+  [widget]
+    title = Messages In / Sec
+    type = chart
+    timespan = 1 day
+    metric =  jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+    statistics = sum
+    merge-fields = topic
+
+    [series]
+      label-format = tags.topic
+      [tags]
+      topic = *
+
+  [widget]
+    type = chart
+    timespan = 1 day
+    title = Request Queue Size
+
+    [series]
+      label-format = entity
+      metric = jmx.kafka.server.request.request.queue-size
+
+
+[group]
+  [widget]
+    title = Producer Request Time / Sec
+    type = chart
+    timespan = 1 day
+    max-range = 100
+    statistics = sum
+    merge-fields = topic
+    [series]
+      label-format = tags.topic
+      metric = jmx.kafka.server.brokertopicmetrics.totalproducerequestspersec.meanrate
+      [tags]
+      topic = *
+
+  [widget]
+    title = Consumer Fetch Time / Sec
+    type = chart
+    timespan = 1 day
+    max-range = 100
+    statistics = sum
+    merge-fields = topic
+    [series]
+      label-format = tags.topic
+      metric = jmx.kafka.server.brokertopicmetrics.totalfetchrequestspersec.meanrate
+      [tags]
+      topic = *
+
+  [widget]
+    title = Consumer Failed Fetch Time / Sec
+    type = chart
+    timespan = 1 day
+    max-range = 100
+    statistics = sum
+    merge-fields = topic
+    alert-expression = value &gt; 0
+    alert-style = fill: red; stroke: red
+  [series]
+      label-format = tags.topic
+      metric = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+      [tags]
+      topic = *
+
+[group]
+  [widget]
+    type = table
+    last = true
+    timespan = 1 day
+    width-units = 3
+    column-entity = null
+    column-metric = null
+    column-value = null
+    column-time = null
+
+
+    merge-columns = tags
+    sort = jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate desc
+
+    [column]
+      label = Topic
+      position = first
+      tag = topic
+    [column]
+      format = bytes
+      key = jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+      label = Bytes In / Sec
+    [column]
+      format = bytes
+      key = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+      label = Bytes Out / Sec
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+      label = Failed Fetch Requests / Sec
+      alert-expression = value &gt; 0
+      alert-style = background-color: red
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.failedproducerequestspersec.oneminuterate
+      label = Failed Produce Requests / Sec
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+      label = Messages In / Sec
+
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.failedproducerequestspersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+        [tags]
+        topic = *
+</content>
+      <lastModified>2018-02-08 10:19:10.491 UTC</lastModified>
+      <guestAccess>false</guestAccess>
+    </portalConfig>
+    <groupsAssignedToPortal>
+      <string>Kafka</string>
+    </groupsAssignedToPortal>
+  </com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
+  <com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
+    <portalConfig>
+      <name>Kafka</name>
+      <enabled>true</enabled>
+      <showInMenu>true</showInMenu>
+      <displayIndex>0</displayIndex>
+      <style>black.css</style>
+      <content>[configuration]
+  title = Kafka
+  offset-right = 50
+  height-units = 5
+  width-units = 4
+  server-aggregate = true
+  timespan = 1 day
+  entities = ${entities}
+  auto-scale = true
+  widgets-per-row = 4
+
+[group]
+  label-format = entity
+   exact-match = true
+
+  [widget]
+    title = Messages In / Sec
+    type = chart
+    metric =  jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+    [series]
+
+  [widget]
+    type = chart
+    title = ZooKeeper latency, ms
+    [series]
+      metric = jmx.kafka.server.zookeeperclientmetrics.zookeeperrequestlatencyms.count
+
+  [widget]
+    type = chart
+    title = Bytes In / Sec
+    format = bytes
+
+    [series]
+      metric =  jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+
+  [widget]
+    type = chart
+    title = Bytes Out / Sec
+    format = bytes
+
+    [series]
+      metric = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+
+[group]
+  exact-match = true
+  label-format = entity
+
+  [widget]
+    title = Producer Request Time / Sec
+    type = chart
+    [series]
+      metric = jmx.kafka.server.brokertopicmetrics.totalproducerequestspersec.meanrate
+
+  [widget]
+    title = Consumer Fetch Time / Sec
+    type = chart
+    [series]
+      metric = jmx.kafka.server.brokertopicmetrics.totalfetchrequestspersec.meanrate
+
+  [widget]
+    title = Consumer Failed Fetch Time / Sec
+    type = chart
+    alert-expression = value &gt; 0
+    alert-style = fill: red; stroke: red
+    [series]
+      metric = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+
+
+  [widget]
+    type = chart
+    title = Request Queue Size
+
+    [series]
+      metric = jmx.kafka.server.request.request.queue-size
+
+[group]
+  statistics = avg
+  period = 1 hour
+  mode = column-stack
+  label-format = tags.topic
+
+  [widget]
+    title = Messages In / Sec
+    type = chart
+    metric =  jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+    merge-fields = topic
+
+    [series]
+      [tags]
+      topic = *
+
+  [widget]
+    title = Topic Bytes In / Sec
+    format = bytes
+    type = chart
+    merge-fields = topic
+
+    [series]
+      metric =  jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+      [tags]
+      topic = *
+
+  [widget]
+    title = Topic Bytes Out / Sec
+    format = bytes
+    type = chart
+    merge-fields = topic
+
+    [series]
+      metric = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+      [tags]
+      topic = *
+
+[group]
+  [widget]
+    title = Producer Request Time / Sec
+    type = chart
+    merge-fields = topic
+    [series]
+      label-format = tags.topic
+      metric = jmx.kafka.server.brokertopicmetrics.totalproducerequestspersec.meanrate
+      [tags]
+      topic = *
+
+  [widget]
+    title = Consumer Fetch Time / Sec
+    type = chart
+    merge-fields = topic
+    [series]
+      label-format = tags.topic
+      metric = jmx.kafka.server.brokertopicmetrics.totalfetchrequestspersec.meanrate
+      [tags]
+      topic = *
+
+  [widget]
+    title = Consumer Failed Fetch Requests / Sec
+    type = chart
+    merge-fields = topic
+    alert-expression = value &gt; 0
+    alert-style = fill: red; stroke: red
+    [series]
+      label-format = tags.topic
+      metric = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+      [tags]
+      topic = *
+
+[group]
+  [widget]
+    type = table
+    last = true
+    timespan = 1 hour
+    width-units = 3
+    column-entity = null
+    column-metric = null
+    column-value = null
+    column-time = null
+
+    merge-columns = tags
+    sort = jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate desc
+
+    [column]
+      label = Topic
+      position = first
+      tag = topic
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+      label = Messages In / Sec
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+      label = Bytes In / Sec
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+      label = Bytes Out / Sec
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+      label = Failed Fetch Requests / Sec
+      alert-expression = value &gt; 0
+      alert-style = background-color: red
+    [column]
+      key = jmx.kafka.server.brokertopicmetrics.failedproducerequestspersec.oneminuterate
+      label = Failed Produce Requests / Sec
+
+      [series]
+        format = bytes
+        metric = jmx.kafka.server.brokertopicmetrics.messagesinpersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        format = bytes
+        metric = jmx.kafka.server.brokertopicmetrics.bytesinpersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.failedfetchrequestspersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.failedproducerequestspersec.oneminuterate
+        [tags]
+        topic = *
+      [series]
+        metric = jmx.kafka.server.brokertopicmetrics.bytesoutpersec.oneminuterate
+        [tags]
+        topic = *
+</content>
+      <lastModified>2018-02-12 11:35:03.792 UTC</lastModified>
+      <guestAccess>false</guestAccess>
+    </portalConfig>
+    <groupsAssignedToPortal/>
+  </com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
+</list>

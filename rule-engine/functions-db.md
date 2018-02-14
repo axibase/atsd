@@ -58,7 +58,13 @@ Example:
   db_last(string m, string e, string t) number
   db_last(string m, string e, [] t) number
 ```
-Retrieve the last value for the specified metric `m`, entity `e`, and series tags `t`. The tags can be specified as an empty string `''` (no tags), as `key1=value1,key2=value`, or as `tags` field representing the grouping tags of the current window.
+Retrieve the last value for the specified metric `m`, entity `e`, and series tags `t`. 
+
+The `tags` argument `t` can be specified as follows:
+
+* Empty string `''` (no tags).
+* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
+* As `tags` field representing the grouping tags of the current window.
 
 Example:
 
@@ -117,7 +123,13 @@ Example:
   db_statistic(string s, string i, string m, string e, string t) number
   db_statistic(string s, string i, string m, string e, [] t) number
 ```
-Retrieve an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. The tags can be specified as an empty string `''` (no tags), as `key1=value1,key2=value`, or as `tags` field representing the grouping tags of the current window.
+Retrieve an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. 
+
+The `tags` argument `t` can be specified as follows:
+
+* Empty string `''` (no tags).
+* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
+* As `tags` field representing the grouping tags of the current window.
 
 Example:
 
@@ -274,11 +286,24 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 ```
 Calculate the number of messages matching the specified interval, message type, message source, tags, and entity.
 
-Arguments `tags` and `entity` are optional.
+Arguments `tags` and `entity` are optional. 
+
+If the `entity` is not specified, the request retrieves messages for the **current** entity. To count messages for all entities, use `*` wildcard.
+
+```javascript
+# count messages within the previous 60 minutes 
+# for type=compaction, any source, any tags, and all entities
+db_message_count('1 hour', 'compaction', '',  '', '*')
+```
 
 If the `type`, `source`, or `tags` arguments are set to `null` or empty string, they are ignored when matching messages.
 
-If the `entity` is not specified, the request retrieves messages for the current entity.
+The `tags` argument can be specified as follows:
+
+* Empty string `''` (no tags).
+* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
+
+
 
 Examples:
 
@@ -300,11 +325,16 @@ Return the most recent [message](../api/data/messages/query.md#fields-1) record 
 
 Arguments `tags`, `entity`, and `message` are optional.
 
+If the `entity` is not specified, the request retrieves messages for the **current** entity. To search messages for all entities, use `*` wildcard.
+
 If the `type`, `source`, or `tags` arguments are set to `null` or empty string, they are ignored when matching messages.
 
-The `tags` argument matches records that include the specified tags but may also include other tags.
+The `tags` argument can be specified as follows:
 
-If the `entity` is not specified, the request retrieves messages for the current entity.
+* Empty string `''` (no tags).
+* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
+
+The `tags` argument matches records that include the specified tags but may also include other tags.
 
 The `message` argument supports wildcards `?` and `*`.
 

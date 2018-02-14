@@ -30,7 +30,6 @@ Entity Groups:
 
 
 - `scollector-linux`
-- `scollector-macos`
 - `scollector-windows`
 - `scollector-dotnet`
 - `scollector-iis`
@@ -43,7 +42,6 @@ Portals:
 
 
 - `scollector-Linux`
-- `scollector-MacOS`
 - `scollector-Windows`
 - `scollector-IIS`
 - `scollector-.NET`
@@ -67,10 +65,6 @@ Launch live scollector-Windows portal in Axibase Chart Lab.
 [Launch](https://apps.axibase.com/chartlab/db099fa9/2/)
 
 ![](resources/scollector-Windows1.png)
-
-##### scollector-MacOS Portal:
-
-![](resources/scollector-MacOS2.png)
 
 ##### scollector-MS SQL Portal:
 
@@ -689,68 +683,4 @@ win.system.processes
 win.system.syscall
 win.system.threads
 win.system.uptime
-```
-
-#### MacOS
-
-```
-darwin.cpu.idle
-darwin.cpu.sys
-darwin.cpu.user
-darwin.disk.fs.free
-darwin.disk.fs.inodes.free
-darwin.disk.fs.inodes.total
-darwin.disk.fs.inodes.used
-darwin.disk.fs.total
-darwin.disk.fs.used
-darwin.disk.kilobytes_transfer
-darwin.disk.megabytes
-darwin.disk.transactions
-darwin.loadavg_15_min
-darwin.loadavg_1_min
-darwin.loadavg_5_min
-darwin.mem.vm.4kpages.active
-darwin.mem.vm.4kpages.copy-on-write
-darwin.mem.vm.4kpages.free
-darwin.mem.vm.4kpages.inactive
-darwin.mem.vm.4kpages.occupiedbycompressor
-darwin.mem.vm.4kpages.purgeable
-darwin.mem.vm.4kpages.purged
-darwin.mem.vm.4kpages.reactivated
-darwin.mem.vm.4kpages.speculative
-darwin.mem.vm.4kpages.storedincompressor
-darwin.mem.vm.4kpages.throttled
-darwin.mem.vm.4kpages.wireddown
-darwin.mem.vm.4kpages.zerofilled
-darwin.mem.vm.pageins
-darwin.mem.vm.pageouts
-ntp.current_source
-ntp.delay
-ntp.jitter
-ntp.offset
-ntp.poll
-ntp.reach
-ntp.stratum
-ntp.when
-os.mem.free
-os.mem.percent_free
-os.mem.total
-os.mem.used
-scollector.collect.alloc
-scollector.collect.dropped
-scollector.collect.goroutines
-scollector.collect.post.count
-scollector.collect.post.duration_95
-scollector.collect.post.duration_99
-scollector.collect.post.duration_avg
-scollector.collect.post.duration_count
-scollector.collect.post.duration_max
-scollector.collect.post.duration_median
-scollector.collect.post.duration_min
-scollector.collect.post.error
-scollector.collect.post.restore
-scollector.collect.post.total_duration
-scollector.collect.queued
-scollector.collect.sent
-scollector.version
 ```

@@ -47,6 +47,9 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
   ```javascript
   curtime = 1515758392702
   ```  
+> Classify large integers as Long (64-bit integer) or as a floating number to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
+
+![](images/variables-large-integers.png)
 
 ### string
 
@@ -129,9 +132,7 @@ The dependent variable must be declared **after** the variable that it refers to
 
 ### References
 
-Variables that are dependent on other variables cannot be included in the condition.
-
-The following example will cause a `PropertyAccessException` error.
+Variables that are dependent on other variables can be included in the condition.
 
 ![](images/variables-refer-indirect.png)
 

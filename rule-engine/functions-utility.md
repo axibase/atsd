@@ -3,12 +3,14 @@
 ## Reference
 
 * [ifEmpty](#ifempty)
+* [toBoolean](#toboolean)
 * [getURLHost](#geturlhost)
 * [getURLPort](#geturlport)
 * [getURLProtocol](#geturlprotocol)
 * [getURLPath](#geturlpath)
 * [getURLQuery](#geturlquery)
 * [getURLUserInfo](#geturluserinfo)
+* [printObject](#printobject)
 
 ### `ifEmpty`
 
@@ -27,6 +29,121 @@ Examples:
     /* Returns hello */  
     ifEmpty('hello', 'world')
   ```
+### `toBoolean`
+
+```javascript
+  toBoolean(object a) boolean
+```
+
+Converts the input string or number `a` to a boolean value. The `true` value is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-INsensisitve) or if `a` equals number `1`.
+
+Value table:
+
+Input | Type | boolean
+----|---|---
+yes | string | true
+YES | string | true
+on | string | true
+1 | string | true
+1 | number | true
+no | string | false
+NO | string | false
+hello | string | false 
+0 | string | false
+0 | number | false
+3 | number | false
+  
+Examples:
+
+```javascript
+  // Returns false 
+  
+  toBoolean('hello')  
+  toBoolean(0)
+  toBoolean('off')  
+  
+  // Returns true 
+  
+  toBoolean('YES')    
+  toBoolean(1)  
+  toBoolean('On')
+```
+
+### `printObject`
+
+```javascript
+  printObject(object o, string f) string
+```
+
+The function prints the input object `o` as a two-column table in the specified format `f`.
+
+Supported formats:
+
+* 'markdown'
+* 'ascii'
+* 'property'
+* 'csv'
+* 'html'
+
+The first column in the table contains field names, whereas the second column contains corresponding field values.
+
+Object `o` can be an 'Entity' or a 'Window' object which can be retrieved as follows:
+
+* [getEntity](functions-lookup.md#getentity)
+* [rule_window](functions-rules.md#rule_window)
+* [rule_windows](functions-rules.md#rule_windows)
+
+An empty string is returned if the object `o` is `null`.
+
+Examples:
+
+```javascript
+  printObject(getEntity('atsd'), 'ascii')
+```
+
+```ls
++--------------------------+------------------------------------+
+| Name                     | Value                              |
++--------------------------+------------------------------------+
+| created                  | 1516996501692                      |
+| enabled                  | true                               |
+| id                       | 1                                  |
+| interpolate              | LINEAR                             |
+| label                    | ATSD                               |
+| name                     | atsd                               |
+| portalConfigs            | []                                 |
+| portalConfigsEnabled     | []                                 |
+| tags                     | {container=axibase/atsd:latest}    |
+| timeZone                 | null                               |
+...
+``` 
+
+```javascript
+  printObject(rule_window('jvm_derived'), 'csv')
+``` 
+
+```ls
+Name,Value
+empty,false
+lastText,null
+status,OPEN
+windowStatus,OPEN
+...
+```  
+
+```javascript
+  printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
+``` 
+
+```ls
+| **Name** | **Value**  |
+|:---|:--- |
+| empty | false |
+| lastText | Send 300 commands to ATSD. |
+| status | REPEAT |
+| windowStatus | REPEAT |
+...
+``` 
 
 ### `getURLHost`
 

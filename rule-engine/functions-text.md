@@ -214,7 +214,7 @@ Example:
 
 ```javascript
   /* Returns "abca" */
-  KeepBeforeLast("abcabc", "b") 
+  keepBeforeLast("abcabc", "b") 
 ```
 
 ### `replace`
