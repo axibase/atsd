@@ -75,28 +75,32 @@ The producer offset is collected by the JMX Job above.
 
 The consumer offset is collected with a Kafka client reading events from  the `__consumer_offset` topic on one of the Kafka servers in the cluster. 
 
-This information can be retrieved continously using an offset reader provided by Axibase support or manually.
+This information can be retrieved continuously using an offset reader provided by Axibase support or manually.
 
-For initial verification for a particular topic, login into the Kafka server and retrieve the data manually using the following command:
+For initial verification for all topic, login into the Kafka server and copy the [script](resources/series.sh) into Kafka binary folder.
+
+> for Kafka versions before 0.10.2.0 use --zookeeper option instead bootstrap-server in script
+
+Allow script execution and consumer reading from internal topics:
 
 ```
-# change directory into kafka bin
-cd /opt/kafka/bin  
+# assign execute permission
+chmod +x /opt/kafka_2.12-1.0.0/bin/series.sh
 
 # create consumer config
 echo "exclude.internal.topics=false" > /tmp/consumer.config
+```
 
-# read all offsets
-./kafka-console-consumer.sh --consumer.config /tmp/consumer.config --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" \
---zookeeper localhost:2181 --topic __consumer_offsets --from-beginning | grep -v "\[.*\,.*_.*\,.*\]::.*" | awk \
-'match($0, /\[([^\]]+)/) { meta=substr( $0, RSTART+1, RLENGTH-1 ) } \
- match($0, /OffsetMetadata\[([^,]+)/) { meta_offset=substr( $0, RSTART+15, RLENGTH-15 ) } \
- match($0, /CommitTime\ ([^,]+)/) { print meta "," meta_offset "," substr( $0, RSTART+11, RLENGTH-11 ) }' > consumer_offset.csv
-```  
+Launch the script using the following command (replace `ATSD_HOST` and `TCP_PORT` with actual values):
 
-1. Import [csv-parser](resources/csv-parser-consumer-offset.xml) into ATSD on the `Data > CSV Parsers` page
-1. Select the imported 'consumer-offset' parser and upload the 'consumer_offset.csv' file.
-1. Check that `kafka` entity was created and that metric `consumer_offset` is available on the Metrics tab in ATSD.
+```# launch the script 
+nohup /opt/kafka_2.12-1.0.0/bin/series.sh ATSD_HOST TCP_PORT &
+
+# use third argument set entity name that different from hostname like in JMX Job 
+# nohup /opt/kafka_2.12-1.0.0/bin/series.sh ATSD_HOST TCP_PORT ENTITY &
+```
+
+1. Check that metric `kafka.consumer_offset` is available on the Metrics tab in ATSD.
 1. Import [consumer lag portal](resources/consumer-lag.xml) into ATSD and change the topic name to view the consumer lag.
 
 ![](images/consumer_lag.png)
