@@ -1,6 +1,6 @@
 # Monitoring Kafka with ATSD
 
-This document describes the process of configuring availability and performance monitoring of [Apache Kafka](https://kafka.apache.org/) using Axibase Time Series Database.
+This document describes how monitor availability and performance of [Apache Kafka](https://kafka.apache.org/) using Axibase Time Series Database.
 
 ## Step 1: Configure Axibase Collector
 
@@ -69,35 +69,41 @@ Other parameters are optional. For more information on JMX configuration, see [J
 
 ## Consumer Lag
 
-Consumer lag calculation requires information about log end offset (producer offset recorded by Kafka brokers) and consumer offset. 
+Consumer lag calculation requires information about producer offset and consumer offset. 
 
-The producer offset is collected by the JMX Job above.
+The producer offset is collected from Kafka brokers by the JMX Job above.
 
-The consumer offset is collected with a Kafka client reading events from  the `__consumer_offset` topic on one of the Kafka servers in the cluster. 
+The consumer offset is collected using a Kafka console consumer reading events from  the `__consumer_offset` topic on one of the Kafka servers in the cluster. 
 
-This information can be retrieved continuously using an offset reader provided by Axibase support or manually.
+Login into the Kafka server.
 
-For initial verification for all topic, login into the Kafka server and copy the [script](resources/series.sh) into Kafka binary folder.
-
-> for Kafka versions before 0.10.2.0 use --zookeeper option instead bootstrap-server in script
-
-Allow script execution and consumer reading from internal topics:
+Download the [script](resources/series.sh) into Kafka `bin` directory.
 
 ```
 # assign execute permission
 chmod +x /opt/kafka_2.12-1.0.0/bin/series.sh
 
-# create consumer config
+# create consumer configuration file
 echo "exclude.internal.topics=false" > /tmp/consumer.config
 ```
 
-Launch the script using the following command (replace `ATSD_HOST` and `TCP_PORT` with actual values):
+For Kafka versions before 0.10.2.0 use `--zookeeper` option instead `bootstrap-server` in the script.
 
-```# launch the script 
+Replace `ATSD_HOST` and `TCP_PORT` with actual values and launch the script. 
+
+> The default ATSD TCP command port is `8081`. 
+
+The script will read topic offsets and send them to ATSD under the hostname entity.
+
+```
+# launch the script 
 nohup /opt/kafka_2.12-1.0.0/bin/series.sh ATSD_HOST TCP_PORT &
+```
 
-# use third argument set entity name that different from hostname like in JMX Job 
-# nohup /opt/kafka_2.12-1.0.0/bin/series.sh ATSD_HOST TCP_PORT ENTITY &
+If the hostname is different from the entity name used in the JMX job, specify the entity manually.
+
+```
+nohup /opt/kafka_2.12-1.0.0/bin/series.sh ATSD_HOST TCP_PORT ENTITY &
 ```
 
 1. Check that metric `kafka.consumer_offset` is available on the Metrics tab in ATSD.
