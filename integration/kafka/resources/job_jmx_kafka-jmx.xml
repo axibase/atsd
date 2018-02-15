@@ -174,12 +174,12 @@
               <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.log:name=*,partition=*,topic=t*,type=Log</objectName>
+              <objectName>kafka.log:name=*,partition=*,topic!=_*,type=Log</objectName>
               <attributes>Value</attributes>
               <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.cluster:name=*,partition=*,topic=t*,type=Partition</objectName>
+              <objectName>kafka.cluster:name=*,partition=*,topic!=_*,type=Partition</objectName>
               <attributes>Value</attributes>
               <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
@@ -194,12 +194,12 @@
               <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.log:name=*,partition=*,topic=a*,type=Log</objectName>
+              <objectName>kafka.log:name=*,partition=*,topic!=_*,type=Log</objectName>
               <attributes>Value</attributes>
               <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.cluster:name=*,partition=*,topic=a*,type=Partition</objectName>
+              <objectName>kafka.cluster:name=*,partition=*,topic!=_*,type=Partition</objectName>
               <attributes>Value</attributes>
               <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
