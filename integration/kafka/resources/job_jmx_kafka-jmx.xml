@@ -127,17 +127,17 @@
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.log:name=*,partition=*,topic=*-*,type=Log</objectName>
+            <objectName>kafka.log:name=*,partition=*,topic!=_*,type=Log</objectName>
             <attributes>*</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.cluster:name=*,partition=0*,topic=*-*,type=Partition</objectName>
+            <objectName>kafka.cluster:name=*,partition=*,topic!=_*,type=Partition</objectName>
             <attributes>*</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:name=*,topic=*-*,type=BrokerTopicMetrics</objectName>
+            <objectName>kafka.server:name=*,topic!=_*,type=BrokerTopicMetrics</objectName>
             <attributes>*</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
