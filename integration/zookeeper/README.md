@@ -72,7 +72,7 @@ Go to Metrics page and verify that `jmx.zookeeper.*` metrics are available.
 
 ### Import entity group
 
-1. Go to `Settings -> Entity Groups` and import [Zookeeper](resources/groups.xml) entity group.
+1. Go to `Settings -> Entity Groups` and import [entity group](resources/groups.xml).
 1. Locate `Zookeeper Nodes` group, click on it
 1. Check that entities were discovered
 
@@ -80,14 +80,14 @@ Go to Metrics page and verify that `jmx.zookeeper.*` metrics are available.
 
 ### Import portals
 
-1. Go to `Portals -> Configure` and import [Zookeeper](resources/portal-configs.xml) portals (check on the Auto-enable New Portals check box).
+1. Go to `Portals -> Configure` and import [portals](resources/portal-configs.xml) (check on the Auto-enable New Portals check box).
 2. Verify that new portals are displayed on `Portals -> Configure` page
 
 ![](images/test_portals.png)
 
 ### Import rules
 
-1. Go to `Alerts -> Rules` and import [Zookeeper](resources/rules.xml) rules (check on the Auto-enable New Rules check box).
+1. Go to `Alerts -> Rules` and import [rules](resources/rules.xml) (check on the Auto-enable New Rules check box).
 2. Check that rules were imported
 
 ![](images/rules_list.png)
@@ -126,7 +126,7 @@ For more information on Rule Engine, see [ATSD Rule Engine](https://github.com/a
 
 ### Import entity view
 
-1. Go to `Entity Views -> Configure` and import [Zookeeper](resources/entity-views.xml) entity view.
+1. Go to `Entity Views -> Configure` and import [entity view](resources/entity-views.xml).
 2. Check entity view. Go to `Entity Views -> Zookeeper`
 
 ![](images/entity_view.png)
