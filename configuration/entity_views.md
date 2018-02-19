@@ -132,6 +132,7 @@ The following functions are available in 'Formatting' section:
 
 * [convert](../rule-engine/functions-format.md#convert)
 * [formatNumber](../rule-engine/functions-format.md#formatnumber)
+* [formatBytes](../rule-engine/functions-format.md#formatbytes)
 * [date_format](../rule-engine/functions-format.md#date_format)
 * [formatInterval](../rule-engine/functions-format.md#formatinterval)
 * [formatIntervalShort](../rule-engine/functions-format.md#formatintervalshort)

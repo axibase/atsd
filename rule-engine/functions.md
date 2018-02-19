@@ -189,6 +189,7 @@ The functions format dates and numbers to strings according to the specified pat
 
 * [convert](functions-format.md#convert)
 * [formatNumber](functions-format.md#formatnumber)
+* [formatBYtes](functions-format.md#formatbytes)
 * [date_format](functions-format.md#date_format)
 * [formatInterval](functions-format.md#formatinterval)
 * [formatIntervalShort](functions-format.md#formatintervalshort)

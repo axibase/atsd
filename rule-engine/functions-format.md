@@ -9,6 +9,7 @@ The functions format numbers, dates, collections, and maps to strings according 
 Number formatting functions:
 
 * [formatNumber](#formatnumber)
+* [formatBytes](#formatbytes)
 * [convert](#convert)
 
 Date formatting functions:
@@ -37,6 +38,30 @@ Example:
     // returns 3.14  
     formatNumber(3.14159, '#.##')
   ```
+  
+### `formatNumber`
+  
+```javascript
+formatBytes(object x, boolean si) string
+```
+
+Convert number of bytes `x` into human-readable format. 
+Formatting applies if object `x` is either Number or String parseable as Number, otherwise the object's toString representation is returned.
+The second parameter sets the multiplication factor: if `si` is true, then it will be decimal-based (1000), otherwise binary (1024).
+
+Examples:
+
+```javascript
+  formatBytes(42, true) // 42.0 B
+  formatBytes(42, false) // 42.0 B
+  formatBytes(1000, true) // 1.0 kB
+  formatBytes(1000, false) // 1000.0 B
+  formatBytes(1024, false) // 1.0 KiB
+  formatBytes("1024", false) // 1.0 KiB
+  formatBytes("gb", true) // gb
+  formatBytes("gb", false) // gb
+  formatBytes("gb", false) // gb
+```
 
 ### `convert`
 
@@ -44,21 +69,29 @@ Example:
   convert(double x, string s) string
 ```
 
-Divides number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit:
+Divides number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit. The unit prefix should be one of:
 
-  * 'k' (1000)
+  * 'k', 'K' (1000)
   * 'Ki' (1024)
   * 'M' (1000^2)
   * 'Mi' (1024^2)
   * 'G' (1000^3)
   * 'Gi' (1024^3)
+  * 'T' (1000^4)
+  * 'Ti' (1024^4)
+  * 'P' (1000^5)
+  * 'Pi' (1024^5)
+  * 'E' (1000^6)
+  * 'Ei' (1024^6)
+  
 
-Example:
+Examples:
 
   ```javascript
     // returns 20.0
     // same as formatNumber(20480/1024, '#.#')
-    convert(20480, 'Ki')
+    convert(20480, 'KiB') // 20.0
+    convert(1000 * 1000, 'M') // 1.0
   ```
 
 ### `date_format`
