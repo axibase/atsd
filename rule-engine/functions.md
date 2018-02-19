@@ -285,6 +285,7 @@ The rule functions provide a way to check the status of windows created by other
 * [getCsvExportLink](functions-link.md#getcsvexportlink)
 * [getHtmlExportLink](functions-link.md#gethtmlexportlink)
 * [getChartLink](functions-link.md#getchartlink)
+* [addLink](functions-link.md#addlink)
 
 
 ## Security Functions

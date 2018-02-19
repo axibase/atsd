@@ -4,27 +4,9 @@
 
 The functions return URLs to ATSD pages based on the database URL (set the `server.url` property) and the current [window](window.md) context.
 
-The URLs are automatically [inlined](#inline-links) in email notifications and in web notifications that support inline links.
+The URLs are automatically [inlined](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in email notifications and in web notifications that support inline links.
 
-The inline links can be also assembled manually using the syntax supported by the notification channel:
-
-* `markdown`
-
-```markdown
-[Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity})
-```
-
-* `pipe` (used by Slack)
-
-```ls
-<${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}|Error Messages>
-```
-
-* HTML
-
-```html
-<a href="${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}">Error Messages</a>
-```
+The inline links can be also assembled manually using the [`addLink`](#addlink) function and syntax supported by the notification channel.
 
 ## Reference
 
@@ -34,6 +16,7 @@ The inline links can be also assembled manually using the syntax supported by th
 * [getCsvExportLink](#getcsvexportlink)
 * [getHtmlExportLink](#gethtmlexportlink)
 * [getChartLink](#getchartlink)
+* [addLink](#addlink)
 
 ### `getEntityLink`
 
@@ -154,4 +137,48 @@ The following inline link is returned:
 
 ```elm
 [Default](https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007...)
+```
+
+### `addLink`
+
+```javascript
+  addLink(string l, string u[,string f]) string
+```
+Returns the URL `u` inlined according to the [inline format](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) `f` using label `l`.
+
+If inline format `f` is not specified, link is formatted according to the specified endpoint's parse settings.
+
+Examples:
+
+* `markdown`
+
+```javascript
+addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity, 'markdown')
+```
+The following inline link is returned:
+
+```markdown
+[Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity})
+```
+
+* `pipe` (used by Slack)
+
+```javascript
+addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity, 'pipe')
+```
+The following inline link is returned:
+
+```ls
+<${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity}|Error Messages>
+```
+
+* HTML
+
+```javascript
+addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity, 'html')
+```
+The following inline link is returned:
+
+```html
+<a href="${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity}">Error Messages</a>
 ```
