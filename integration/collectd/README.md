@@ -3,7 +3,7 @@
 collectd is a system statistics daemon that collects operating system performance metrics.
 collectd can be configured to stream data into the Axibase Time Series Database via TCP or UDP protocol using the `write_atsd` plugin.
 
-See the [collectd plugin installation](https://github.com/axibase/atsd-collectd-plugin/blob/master/docs/README.write_atsd.md) instructions for technical details.
+See the `write_atsd` plugin [documentation](https://github.com/axibase/atsd-collectd-plugin/blob/master/docs/README.write_atsd.md) for details.
 
 ## Installation
 
@@ -74,8 +74,21 @@ Edit `/ect/collect.conf` by replacing atsd_host with ATSD IP address or host nam
 ...
 ```
 
-[ATSD plugin parameters]
-More info about other plugins
+Description of `write_atsd` plugin options below
+
+
+ **Setting**      | **Required** | **Description**                                                                                                                                        | **Default Value**
+------------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------
+ `AtsdUrl`        | no           | Protocol to transfer data: `tcp` or `udp`, hostname and port of target ATSD server                                                                     | `tcp://localhost:8081`
+ `Entity`         | no           | Default entity under which all metrics will be stored. By default (if setting is left commented out), entity will be set to the machine hostname.      | `hostname`
+  `ShortHostname` | no           | Convert entity from fully qualified domain name to short name                                                                                          | `false`
+ `Prefix`         | no           | Metric prefix to group `collectd` metrics                                                                                                              | `collectd`
+ `Cache`          | no           | Name of read plugins whose metrics will be cached. Cache feature is used to save disk space in the database by not resending the same values.          | `-`
+ `Interval`       | no           | Time in seconds during which values within the threshold are not sent.                                                                                 | `-`
+ `Threshold`      | no           | Deviation threshold, in %, from the previously sent value. If threshold is exceeded, then the value is sent regardless of the cache interval.          | `-`
+ `StoreRates`     | no           | If set to true, convert counter values to rates. If set to false counter values are stored as is, i. e. as an increasing integer number.               | true
+
+More information about collectd configuration in [collectd.conf.5](https://collectd.org/documentation/manpages/collectd.conf.5.shtml) manual page.
 
 ## Autostart
 
