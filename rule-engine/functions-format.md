@@ -39,10 +39,10 @@ Example:
     formatNumber(3.14159, '#.##')
   ```
   
-### `formatNumber`
+### `formatBytes`
   
 ```javascript
-formatBytes(object x, boolean si) string
+  formatBytes(object x, boolean si) string
 ```
 
 Convert number of bytes `x` into human-readable format. 
