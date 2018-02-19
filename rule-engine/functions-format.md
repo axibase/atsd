@@ -60,7 +60,6 @@ Examples:
   formatBytes("1024", false) // 1.0 KiB
   formatBytes("gb", true) // gb
   formatBytes("gb", false) // gb
-  formatBytes("gb", false) // gb
 ```
 
 ### `convert`
