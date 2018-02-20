@@ -57,7 +57,15 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
   state = 'CA'
   ```
 
-Single or double quotes must be used when declaring a string variable.
+Single or double quotes must be used when declaring a string variable. Single quiotes inside singe-quoted strings must be escaped by `\` character, same for double-quoted strings.
+
+  ```javascript
+  sqlQuery = 'SELECT round(value/(1024*1024)) AS used_mb FROM "docker.fs.size.rw" WHERE entity = \'' + entity + '\''
+  ```
+
+  ```javascript
+  sqlQuery = "SELECT round(value/(1024*1024)) AS used_mb FROM \"docker.fs.size.rw\" WHERE entity = '" + entity + "'"
+  ```
 
 ### collection
 
