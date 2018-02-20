@@ -11,10 +11,10 @@
     <configurations>
       <com.axibase.collector.model.job.jmx.JmxConfiguration>
         <name>zookeeper-series</name>
-        <host>${ITEM?split(&apos;,&apos;)[0]}</host>
-        <port>${ITEM?split(&apos;,&apos;)[1]}</port>
-        <userName>${ITEM?split(&apos;,&apos;)[2]}</userName>
-        <password>Wzpkrb4SPyaz+/ZoE46oLxehhnJA/aZF</password>
+        <host>${ITEM?column(&apos;host&apos;)}</host>
+        <port>${ITEM?column(&apos;port&apos;)}</port>
+        <userName>${ITEM?column(&apos;username&apos;)}</userName>
+        <password>MnfWy/fs9frIwJ5QvYTjQZfvBj1iGrPY/c4BdkOOVoQ=</password>
         <trackingMBeans>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
             <objectName>org.apache.ZooKeeperService:name0=*,name1=*,name2=*</objectName>
@@ -32,7 +32,7 @@
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
         </trackingMBeans>
-        <entity>${ITEM?split(&apos;,&apos;)[4]}</entity>
+        <entity>${ITEM?column(&apos;entity&apos;)}</entity>
         <metricPrefix>jmx.zookeeper.</metricPrefix>
         <propertyTypePrefix></propertyTypePrefix>
         <serviceName></serviceName>
@@ -58,7 +58,7 @@
         <predefinedTags>
           <entry>
             <string>cluster</string>
-            <string>${ITEM?split(&apos;,&apos;)[5]}</string>
+            <string>${ITEM?column(&apos;cluster&apos;)}</string>
           </entry>
         </predefinedTags>
         <putType>SERIES</putType>
@@ -67,6 +67,7 @@
           <type>TEXT</type>
           <discardDuplicates>false</discardDuplicates>
           <entities>
+            <string>#host,port,username,password,entity,cluster</string>
             <string>host1.com,9010,user,pass,prod-zoo-host1,prod</string>
             <string>host2.com,9010,user,pass,prod-zoo-host2,prod</string>
             <string>host3.com,9010,user,pass,prod-zoo-host3,prod</string>
@@ -76,10 +77,10 @@
       </com.axibase.collector.model.job.jmx.JmxConfiguration>
       <com.axibase.collector.model.job.jmx.JmxConfiguration>
         <name>zookeeper-properties</name>
-        <host>${ITEM?split(&apos;,&apos;)[0]}</host>
-        <port>${ITEM?split(&apos;,&apos;)[1]}</port>
-        <userName>${ITEM?split(&apos;,&apos;)[2]}</userName>
-        <password>Wzpkrb4SPyaz+/ZoE46oLxehhnJA/aZF</password>
+        <host>${ITEM?column(&apos;host&apos;)}</host>
+        <port>${ITEM?column(&apos;port&apos;)}</port>
+        <userName>${ITEM?column(&apos;username&apos;)}</userName>
+        <password>MnfWy/fs9frIwJ5QvYTjQZfvBj1iGrPY/c4BdkOOVoQ=</password>
         <trackingMBeans>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
             <objectName>org.apache.ZooKeeperService:name0=*,name1=*,name2=*</objectName>
@@ -102,7 +103,7 @@
             <propertyType>Replica</propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
         </trackingMBeans>
-        <entity>${ITEM?split(&apos;,&apos;)[4]}</entity>
+        <entity>${ITEM?column(&apos;entity&apos;)}</entity>
         <metricPrefix></metricPrefix>
         <propertyTypePrefix>jmx.zookeeper.</propertyTypePrefix>
         <serviceName></serviceName>
@@ -113,7 +114,7 @@
         <predefinedTags>
           <entry>
             <string>cluster</string>
-            <string>${ITEM?split(&apos;,&apos;)[5]}</string>
+            <string>${ITEM?column(&apos;cluster&apos;)}</string>
           </entry>
         </predefinedTags>
         <putType>PROPERTY</putType>
