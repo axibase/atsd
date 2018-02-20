@@ -12,7 +12,12 @@ This document describes how to monitor availability and performance of [Apache Z
 
 3) Click `Add` button and create item list with zookeeper hosts. 
 Enter name `zookeeper-jmx-hosts`, choose type `TEXT` and add comma-separated addresses of zookeeper hosts in format:
-`host,port,username,password,entity,cluster`
+```
+#host,port,username,password,entity,cluster
+host1.com,9010,user,pass,prod-zoo-host1,prod
+host2.com,9010,user,pass,prod-zoo-host2,prod
+host3.com,9010,user,pass,prod-zoo-host3,prod
+```
 
    **host** — Zookeeper hostname.  
    **port** — JMX port.  
@@ -20,14 +25,6 @@ Enter name `zookeeper-jmx-hosts`, choose type `TEXT` and add comma-separated add
    **password** — Password for JMX user.  
    **entity** — ATSD entity for zookeeper node.  
    **cluster** — ATSD series tag for indicating that nodes are in the same cluster.
-   
-For example:
-
-```
-host1.com,9010,user,pass,prod-zoo-host1,prod
-host2.com,9010,user,pass,prod-zoo-host2,prod
-host3.com,9010,user,pass,prod-zoo-host3,prod
-```
 
 ![](images/items_list_config.png)
 
@@ -35,24 +32,24 @@ Save changes.
 
 ### Import job
 
-Click the Jobs tab in the top menu and press the Import button.
-1. Import the [zookeeper-jmx](resources/jobs.xml) job.
-2. Locate the `zookeeper-jmx` job in the list of jobs.
-3. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).
-4. Select a target ATSD database for storing data.
-5. Click Save.
+1. Click the Jobs tab in the top menu and press the Import button.
+2. Import the [zookeeper-jmx](resources/jobs.xml) job.
+3. Locate the `zookeeper-jmx` job in the list of jobs.
+4. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).
+5. Select a target ATSD database for storing data.
+6. Click Save.
 
 ![JMX_JOB](images/jmx_job_configuration.png)
 
-6. Test job configurations. Click on `zookeeper-series`.
+7. Test job configurations. Click on `zookeeper-series`.
 If it is required, change default parameters.
 For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md). Click **Test** button
 
 ![](images/jmx_job_series_config.png)
 
-7. Repeat test for `zookeeper-properties`.
+8. Repeat test for `zookeeper-properties`.
 
-8. On the **JMX Job** page set **Enabled** checkbox and save job.
+9. On the **JMX Job** page set **Enabled** checkbox and save job.
 
 ### Check data collection
 
@@ -96,10 +93,11 @@ Go to Metrics page and verify that `jmx.zookeeper.*` metrics are available.
  * `Zookeeper cluster not serving requests` - alert opens when node status is `leaderelection`, which means that nodes cannot choose leader.
  * `Zookeeper dead cluster` - opens when no data was collected from cluster in 2 minutes.
  * `Zookeeper dead node` - opens when no data was collected from a single node in 2 minutes.
+ * `Zookeeper dead nodes list` - same as single dead node, but checks all nodes by timer.
  * `Zookeeper node high latency` - opens when node average latency is above 100 in 3 consecutive measurements.
  * `Zookeeper rate metrics` - always open. Used for transform `packetsreceived` and `packetssent` metrics from cumulative to difference (packets per minute) metrics. Uses derived commands.
 
-3. Verify rules. Stop one node and check that `Zookeeper dead node` rule opens (it may take up to 2 minutes). Go to Alerts - Open Alerts to see all opened rules.
+3. Verify rules. Stop one node and check that `Zookeeper dead node` and `Zookeeper dead nodes list` rule opens (it may take up to 2 minutes). Go to Alerts - Open Alerts to see all opened rules.
 
 ![](images/rule_dead_node_test.png)
 
