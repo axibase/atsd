@@ -37,7 +37,7 @@ The result is the original text with inserted blocks of text for each item in th
 
 Note that the items in the collection are referenced using `@{}` syntax instead of the default placeholder `${}` syntax.
 
-The following example add the details table with entity tags only if the tags.status is equal to `start`.
+The following example adds the details table with entity tags only if the tags.status is equal to `start`.
 
 ```javascript
 @foreach{srv : servers}
