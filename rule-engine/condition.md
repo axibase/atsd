@@ -4,7 +4,7 @@ Condition is a boolean expression which is evaluated when data is received by or
 
 The condition consists of one or multiple boolean checks combined with [boolean operators](operators.md#boolean-operators) `AND` (`&&`), `OR` (`||`), and `NOT` (`!`).
 
-The expression can include constant values, fields from the command, window, entity and metric, user-defined variables and apply [functions](functions.md) to data. The [data types](variables.md#data-types) are the same as for [variables](variables.md).
+The expression can include command fields, literal values, window/entity/metric fields, user-defined variables and [functions](functions.md).
 
 When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of 'On Cancel' triggers.
 
