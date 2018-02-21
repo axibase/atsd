@@ -190,7 +190,7 @@ The following inline link is returned:
 <${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity}|Error Messages>
 ```
 
-* `html`parse mode (Telegram, HipChat, Discord)
+* `html`parse mode (Telegram, HipChat, Discord):
 
 ```javascript
 addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity)
