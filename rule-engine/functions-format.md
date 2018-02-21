@@ -42,48 +42,63 @@ Example:
 ### `formatBytes`
   
 ```javascript
-  formatBytes(object x, boolean si) string
+  formatBytes(number x, boolean si) string
 ```
 
-Convert number of bytes `x` into human-readable format. 
-Formatting applies if object `x` is either Number or String parseable as Number, otherwise the object's toString representation is returned.
-The second parameter sets the multiplication factor: if `si` is true, then it will be decimal-based (1000), otherwise binary (1024).
+Display number of bytes `x` in a human-readable format. The function identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal or exceeds 1 such unit. Units are decimal-based (1000) if the `si` parameter is set to `true`, and binary (1024) otherwise.
+
+For example, if the unit is `1000` (`si` set to `true`):
+
+```
+ 999 -> 999.0 B  (unit is byte)
+1000 ->   1.0 kB (unit is kilobyte)
+```
+
+The formatted number always contains one fractional digit.
 
 Examples:
 
-```javascript
-  formatBytes(42, true) // 42.0 B
-  formatBytes(42, false) // 42.0 B
-  formatBytes(1000, true) // 1.0 kB
-  formatBytes(1000, false) // 1000.0 B
-  formatBytes(1024, false) // 1.0 KiB
-  formatBytes("1024", false) // 1.0 KiB
-  formatBytes("gb", true) // gb
-  formatBytes("gb", false) // gb
 ```
+                        si=false    si=true
+                   0:        0 B        0 B
+                  27:       27 B       27 B
+                 999:      999 B      999 B
+                1000:     1.0 kB     1000 B
+                1023:     1.0 kB     1023 B
+                1024:     1.0 kB    1.0 KiB
+                1728:     1.7 kB    1.7 KiB
+              110592:   110.6 kB  108.0 KiB
+             7077888:     7.1 MB    6.8 MiB
+           452984832:   453.0 MB  432.0 MiB
+         28991029248:    29.0 GB   27.0 GiB
+       1855425871872:     1.9 TB    1.7 TiB
+```
+
+> If the `x` argument is a string or an object that cannot be parsed into a number, its value is returned 'as is'.
 
 ### `convert`
 
 ```javascript
-  convert(double x, string s) string
+  convert(number x, string s) string
 ```
 
-Divides number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit. The unit prefix should be one of:
+Divides number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit. 
 
-  * 'k', 'K' (1000)
-  * 'Ki' (1024)
-  * 'M' (1000^2)
-  * 'Mi' (1024^2)
-  * 'G' (1000^3)
-  * 'Gi' (1024^3)
-  * 'T' (1000^4)
-  * 'Ti' (1024^4)
-  * 'P' (1000^5)
-  * 'Pi' (1024^5)
-  * 'E' (1000^6)
-  * 'Ei' (1024^6)
+The unit prefix is case-insensitive and should be one of:
+
+  * 'K', 'Kb' (1000)
+  * 'Ki', 'KiB' (1024)
+  * 'M', 'Mb' (1000^2)
+  * 'Mi', 'MiB' (1024^2)
+  * 'G', 'Gb' (1000^3)
+  * 'Gi', 'GiB' (1024^3)
+  * 'T', 'Tb' (1000^4)
+  * 'Ti', 'TiB' (1024^4)
+  * 'P', 'Pb' (1000^5)
+  * 'Pi', 'PiB' (1024^5)
+  * 'E', 'Eb' (1000^6)
+  * 'Ei', 'EiB' (1024^6)
   
-
 Examples:
 
   ```javascript
