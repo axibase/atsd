@@ -4,7 +4,7 @@
 
 The functions return URLs to ATSD pages based on the database URL (set the `server.url` property) and the current [window](window.md) context.
 
-The URLs are automatically [inlined](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in email notifications and in web notifications that support inline links.
+The URLs are automatically [inlined](links.md#inline-links) in email notifications and in web notifications that support inline links.
 
 The inline links can be also assembled manually using the syntax supported by the notification channel:
 	
@@ -46,7 +46,7 @@ Returns the URL to the entity `e` page on the target ATSD instance. The entity n
 
 If match entity parameter `m` is set to `true`, the entity will be matched by label if it's not found by name.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Example:
 
@@ -76,7 +76,7 @@ Returns the URL to the property table for entity `e` and property type `t` on th
 
 If match entity parameter `m` is set to `true`, the entity will be matched by label if it's not found by name.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as the value of type `t` in inline mode.
 
@@ -100,7 +100,7 @@ Returned inline link:
 
 Returns the URL to the current rule.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as rule name in inline mode.
 
@@ -112,7 +112,7 @@ Displayed as rule name in inline mode.
 
 Returns the URL to the **CSV** file with historical statistics for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as 'CSV Export' link in inline mode.
 
@@ -126,7 +126,7 @@ Displayed as 'CSV Export' link in inline mode.
 
 Returns the URL to the **Data > Export** page for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as 'HTML Export' link in inline mode.
 
@@ -140,7 +140,7 @@ Displayed as 'HTML Export' link in inline mode.
 
 Returns the URL to the default portal for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as 'Default' link in inline mode.
 
