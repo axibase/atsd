@@ -43,7 +43,7 @@ Used with other configurations, the function will evaluate to an empty string.
 
 * No optional parameters
 
-```java
+```javascript
 addPortal('atsd')
 ```
 ![](images/functions-portal-1.png)
@@ -51,7 +51,7 @@ addPortal('atsd')
 
 * Entity is specified
 
-```java
+```javascript
 addPortal('Linux nmon', 'nurswgvml007')
 ```
 ![](images/functions-portal-2.png)
@@ -59,7 +59,7 @@ addPortal('Linux nmon', 'nurswgvml007')
 
 * Entity and comment are specified
 
-```java
+```javascript
 addPortal('collectd', 'nurswgvml007', '$caption | <@' + tags.event.user + '>')
 ```
 ![](images/functions-portal-3.png)
