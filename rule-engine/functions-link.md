@@ -11,19 +11,19 @@ The inline links can be also assembled manually using the syntax supported by th
 * `markdown`	
 	
 ```markdown	
-[Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity})	
+[Error Messages](${serverLink}/messages?entity=${entity})	
 ```	
 	
 * `pipe` (used by Slack)	
 	
 ```ls	
-<${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}|Error Messages>	
+<${serverLink}/messages?entity=${entity}|Error Messages>	
 ```	
 	
 * `html`
 	
 ```html	
-<a href="${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}">Error Messages</a>	
+<a href="${serverLink}/messages?entity=${entity}">Error Messages</a>	
 ```
 
 ## Reference
@@ -162,41 +162,45 @@ The following inline link is returned:
 ```javascript
   addLink(string l, string u) string
 ```
-Returns the URL `u` formatted according to the specified notification endpoint's parse settings using label `l`.
 
-If no settings are available returns link as is.
+Returns the url `u` with a short name `l` based on the current endpoint settings.
+
+If no settings are available, the function returns the original url `u`.
 
 Examples:
 
-* `markdown` parse mode (Telegram):
+* `markdown` (Telegram):
 
 ```javascript
-addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity)
+addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 ```
+
 The following inline link is returned:
 
 ```markdown
-[Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity})
+[Error Messages](https://atsd_host:8443/messages?entity=nurswgvml007)
 ```
 
-* `pipe` parse mode (Slack):
+* `pipe` (Slack):
 
 ```javascript
-addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity)
+addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 ```
+
 The following inline link is returned:
 
 ```ls
-<${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity}|Error Messages>
+<https://atsd_host:8443/messages?entity=nurswgvml007|Error Messages>
 ```
 
-* `html`parse mode (Telegram, HipChat, Discord):
+* `html` (Email, HipChat, Discord):
 
 ```javascript
-addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity)
+addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 ```
+
 The following inline link is returned:
 
 ```html
-<a href="${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity}">Error Messages</a>
+<a href="https://atsd_host:8443/messages?entity=nurswgvml007">Error Messages</a>
 ```
