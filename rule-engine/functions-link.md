@@ -6,7 +6,25 @@ The functions return URLs to ATSD pages based on the database URL (set the `serv
 
 The URLs are automatically [inlined](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in email notifications and in web notifications that support inline links.
 
-The inline links can be also assembled manually using the [`addLink`](#addlink) function and syntax supported by the notification channel.
+The inline links can be also assembled manually using the syntax supported by the notification channel:
+	
+* `markdown`	
+	
+```markdown	
+[Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity})	
+```	
+	
+* `pipe` (used by Slack)	
+	
+```ls	
+<${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}|Error Messages>	
+```	
+	
+* `html`
+	
+```html	
+<a href="${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}">Error Messages</a>	
+```
 
 ## Reference
 
@@ -142,18 +160,18 @@ The following inline link is returned:
 ### `addLink`
 
 ```javascript
-  addLink(string l, string u[,string f]) string
+  addLink(string l, string u) string
 ```
-Returns the URL `u` inlined according to the [inline format](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) `f` using label `l`.
+Returns the URL `u` formatted according to the specified notification endpoint's parse settings using label `l`.
 
-If inline format `f` is not specified, link is formatted according to the specified endpoint's parse settings.
+If no settings are available returns link as is.
 
 Examples:
 
-* `markdown`
+* `markdown` parse mode (Telegram):
 
 ```javascript
-addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity, 'markdown')
+addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity)
 ```
 The following inline link is returned:
 
@@ -161,10 +179,10 @@ The following inline link is returned:
 [Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity})
 ```
 
-* `pipe` (used by Slack)
+* `pipe` parse mode (Slack):
 
 ```javascript
-addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity, 'pipe')
+addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity)
 ```
 The following inline link is returned:
 
@@ -172,10 +190,10 @@ The following inline link is returned:
 <${serverLink}/messages?search=1&severity=CRITICAL&entity=${entity}|Error Messages>
 ```
 
-* HTML
+* `html`parse mode (Telegram, HipChat, Discord)
 
 ```javascript
-addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity, 'html')
+addLink('Error Messages', serverLink + '/messages?search=1&severity=CRITICAL&entity=' + entity)
 ```
 The following inline link is returned:
 
