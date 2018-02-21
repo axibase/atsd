@@ -53,29 +53,31 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
 
 ### string
 
+Use single or double **quotes** when declaring a string variable. 
+
   ```javascript
   state = 'CA'
   ```
 
-Single or double quotes must be used when declaring a string variable. Single quiotes inside singe-quoted strings must be escaped by `\` character, same for double-quoted strings.
+Inner quotes can be escaped with backslash.
 
   ```javascript
-  sqlQuery = 'SELECT round(value/(1024*1024)) AS used_mb FROM "docker.fs.size.rw" WHERE entity = \'' + entity + '\''
+  sqlQuery = 'SELECT value AS used_mb FROM "fs.rw" WHERE entity = \'' + entity + '\''
   ```
 
   ```javascript
-  sqlQuery = "SELECT round(value/(1024*1024)) AS used_mb FROM \"docker.fs.size.rw\" WHERE entity = '" + entity + "'"
+  sqlQuery = "SELECT value AS used_mb FROM \"fs.rw\" WHERE entity = '" + entity + "'"
   ```
 
 ### collection
 
-A collection can include elements of different types.
-
   ```javascript
   errorCodes = [401, 403, 404]
   ```  
+  
+A collection can include elements of different types.
 
-Both single and double quote can be used to specify elements of string type.   
+Both single and double quotes can be used to specify elements of string type.   
 
   ```javascript
   stateList = ['CA', 'WA']
