@@ -72,24 +72,21 @@ In case of sending messages to a public or private channel you can just use the 
 ## Create Slack Notification in ATSD
 
 * Open **Alerts > Web Notifications** page.
-* Click on an existing `SLACK` template, or click the **Create** button below and switch the form to `SLACK` type.
+* Click on an existing `SLACK` template, or click the **Create** button below and select the `SLACK` type.
+* Specify the unique `Name` of the notification.
+
+    ![](images/slack_1.png) 
+
 * Specify the `Auth Token` and `Channels` parameters. See parameter descriptions below.
+* Select **Test Portal** to verify screenshot delivery.
 
     ![](images/slack-settings.png)   
 
 * Click **Test**
 
-   ![](images/slack_message_test.png)
+   ![](images/slack_2.png)
 
-* Select **Test Portal** to verify screenshot delivery.
-
-   ![](images/new_test_portal.png)   
-
-* Click **Send Screenshot**
-
-   ![](images/slack_send_screen.png)
-
-* If tests are passing OK, check **Enable**, click **Save**.
+* If test is passing OK, check **Enable**, click **Save**.
 
 ## Proxy Settings
 

@@ -117,6 +117,10 @@ Lookup the chat id as described below and copy the chat id for future reference.
 
 * Open **Alerts > Web Notifications** page.
 * Click on an existing `TELEGRAM` template, or click the **Create** button below and select the `TELEGRAM` type.
+* Specify the unique `Name` of the notification.
+
+    ![](images/telegram_2.png)
+    
 * Enter the `BOT_TOKEN` value into the `Bot ID` field.
 * Enter the chat id into the `Chat ID` field.
 * Select **Test Portal** to verify screenshot delivery.
