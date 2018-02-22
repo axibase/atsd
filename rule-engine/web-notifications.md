@@ -203,7 +203,7 @@ The option `Series Chart` allows to send default portal for the current metric, 
 
 ![](images/notify-attach-1.png)
 
-The option `Attach Details` allows to send alert details table. It is possible to specify the [format](details-table.md#format) of the details table or the [Telegram](../notifications/telegram.md) endpoint.
+The option `Attach Details` allows to send alert details table. It is possible to specify the [format](details-table.md#formats) of the details table or the [Telegram](./notifications/telegram.md) endpoint.
 
 ![](images/notify-attach-2.png)
 
