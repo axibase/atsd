@@ -116,25 +116,18 @@ Lookup the chat id as described below and copy the chat id for future reference.
 ## Configure Web Notification in ATSD
 
 * Open **Alerts > Web Notifications** page.
-* Click on an existing `TELEGRAM` template, or click the **Create** button below and switch the form to `TELEGRAM` type.
-* Enter the `BOT_TOKEN` value into the `bot_id` field.
-* Enter the chat id into the `chat_id` field.
+* Click on an existing `TELEGRAM` template, or click the **Create** button below and select the `TELEGRAM` type.
+* Enter the `BOT_TOKEN` value into the `Bot ID` field.
+* Enter the chat id into the `Chat ID` field.
+* Select **Test Portal** to verify screenshot delivery.
 
   ![](images/telegram_config.png)
 
-* Click **Test**.
+* Click **Test**.    
 
-   ![](images/test_message.png)
+  ![](images/telegram_1.png)
 
-* Select **Test Portal** to verify screenshot delivery.
-
-   ![](images/new_test_portal.png)   
-
-* Click **Send Screenshot**.
-
-   ![](images/send_screen.png)
-
-* If tests are passing OK, check **Enable**, click **Save**.
+* If test is passing OK, check **Enable**, click **Save**.
 
 ## Proxy Settings
 
@@ -158,6 +151,9 @@ NGINX API Gateway Path for Telegram:
 |Parse Mode|Send [Markdown](https://core.telegram.org/bots/api#markdown-style) or [HTML](https://core.telegram.org/bots/api#html-style) if you want show bold, italic, fixed-width text or inline URLs in your message.|
 |Disable Notifications|Sends the message silently. Users will receive a notification with no sound.|
 |Disable Web Page Preview|Disables link previews for links in this message.|
+|Details Table Format|The default format for the alerts detail table.|
+|Add Links to Portals|Send a follow up message with links to chart and portal configuration after each message with chart screenshot.|
+|Receive Updates|Collect update events for the bot user and store them as ATSD messages. See [Telegram Outgoing Webhook](outgoing-webhook-telegram.md).|
 
 ## Testing Notification Rule
 
