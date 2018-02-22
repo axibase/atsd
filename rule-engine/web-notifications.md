@@ -224,7 +224,9 @@ To temporarily disable sending alerts from all rules through the selected notifi
 
 Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
 
+```elm
 https://atsd_host:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
+```
 
 ![](images/notify-error.png)
 
