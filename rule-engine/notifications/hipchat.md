@@ -83,25 +83,23 @@ In addition to roomId, you can use room name, for example `test-axibase`, when s
 ## Create HipChat Notification in ATSD
 
 * Open the **Alerts > Web Notifications** page.
-* Click on an existing `HIPCHAT` template, or click the **Create** button and switch the type to `HIPCHAT`.
+* Click on an existing `HIPCHAT` template, or click the **Create** button and select the `HIPCHAT`type.
+* Specify the unique `Name` of the notification.
+
+    ![](images/hipchat_1.png) 
+    
+* Specify the `Endpoint URL`.
 * Copy the `Token` from the HipChat Data Center client into the `Auth Token` field in the configuration form.
 * Copy the room Id or room name from the HipChat Data Center client into the `Room ID` field in the configuration form.
+* Select **Test Portal** to test the screenshot.
 
     ![](images/hipchat_settings.png)
 
 * Click **Test**.
 
-   ![](images/hipchat_hello_from_atsd.png)
+   ![](images/hipchat_2.png)
 
-* Select **Test Portal** to test the screenshot.
-
-   ![](images/new_test_portal.png)   
-
-* Click **Send Screenshot**.
-
-   ![](images/hipchat_send_screenshot.png)
-
-* If tests are OK, set the status to **Enabled** and click **Save**.  
+* If test is OK, set the status to **Enabled** and click **Save**.  
 
 ## Proxy Settings
 
@@ -117,6 +115,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 |Message|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 |Message Format|Change how messages are formatted. See [message_format](https://www.hipchat.com/docs/apiv2/method/send_room_notification). To ensure that the references returned by the [link placeholders](../links.md#reference) and the [link functions](../functions-link.md#reference) are automatically inlined, specify `html` format.|
 |Notify|Notify users when bot sends a message.|
+|Add Links to Portals|Send a follow up message with links to chart and portal configuration after each message with chart screenshot.|
 
 ## Testing Notification
 
@@ -155,6 +154,6 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
    ![](images/hipchat_test_1.png)
 
-* Critital alert:
+* Critical alert:
 
    ![](images/hipchat_test_2.png)
