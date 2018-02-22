@@ -11,7 +11,7 @@ See the `write_atsd` plugin [documentation](https://github.com/axibase/atsd-coll
 
 Download package
 ```sh
-wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7-atsd-binary/collectd_ubuntu_14.04_amd64.deb
+wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_ubuntu_14.04_amd64.deb
 ```
 Install package
 ```sh
@@ -22,7 +22,7 @@ sudo dpkg -i collectd_ubuntu_14.04_amd64.deb
 
 Download package
 ```sh
-wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7-atsd-binary/collectd_ubuntu_16.04_amd64.deb
+wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_ubuntu_16.04_amd64.deb
 ```
 Install package
 ```sh
@@ -34,7 +34,7 @@ sudo dpkg -i collectd_ubuntu_16.04_amd64.deb
 Download package
 ```sh
 curl -L --output collectd.rpm \
-    https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7-atsd-binary/collectd_rhel_6_amd64.rpm
+    https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_rhel_6_amd64.rpm
 ```
 Install package
 ```sh
@@ -46,7 +46,7 @@ sudo yum install collectd.rpm
 Download package
 ```sh
 curl -L --output collectd.rpm \
-    https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7-atsd-binary/collectd_rhel_7_amd64.rpm
+    https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_rhel_7_amd64.rpm
 ```
 
 Install collectd with utility for managing SELinux policies
@@ -123,77 +123,123 @@ Launch live collectd Portal in Axibase Chart Lab.
 ## Collected Metrics
 
 ```css
-contextswitch.contextswitch
-cpu.aggregation.busy.average
-cpu.aggregation.idle.average
-cpu.aggregation.interrupt.average
-cpu.aggregation.nice.average
-cpu.aggregation.softirq.average
-cpu.aggregation.steal.average
-cpu.aggregation.system.average
-cpu.aggregation.user.average
-cpu.aggregation.wait.average
-cpu.busy
-cpu.idle
-cpu.interrupt
-cpu.nice
-cpu.softirq
-cpu.steal
-cpu.system
-cpu.user
-cpu.wait
-df.inodes.free
-df.inodes.free.percent
-df.inodes.reserved
-df.inodes.reserved.percent
-df.inodes.used
-df.inodes.used.percent
-df.space.free
-df.space.free.percent
-df.space.reserved
-df.space.reserved.percent
-df.space.used
-df.space.used-reserved.percent
-df.space.used.percent
-disk.disk_io_time.io_time
-disk.disk_io_time.weighted_io_time
-disk.disk_merged.read
-disk.disk_merged.write
-disk.disk_octets.read
-disk.disk_octets.write
-disk.disk_ops.read
-disk.disk_ops.write
-disk.disk_time.read
-disk.disk_time.write
-disk.pending_operations
-entropy.available
-interface.if_errors.received
-interface.if_errors.sent
-interface.if_octets.received
-interface.if_octets.sent
-interface.if_packets.received
-interface.if_packets.sent
-io.swap_in
-io.swap_out
-load.loadavg.15m
-load.loadavg.1m
-load.loadavg.5m
-memory.buffered
-memory.cached
-memory.free
-memory.slab_recl
-memory.slab_unrecl
-memory.swap_cached
-memory.swap_free
-memory.swap_used
-memory.used
-processes.blocked
-processes.fork_rate
-processes.paging
-processes.running
-processes.sleeping
-processes.stopped
-processes.zombies
-uptime.uptime
-users.logged_in
+collectd.aggregation.cpu.idle
+collectd.aggregation.cpu.interrupt
+collectd.aggregation.cpu.nice
+collectd.aggregation.cpu.softirq
+collectd.aggregation.cpu.steal
+collectd.aggregation.cpu.system
+collectd.aggregation.cpu.user
+collectd.aggregation.cpu.wait
+collectd.contextswitch.contextswitch
+collectd.cpu.cpu.busy
+collectd.cpu.cpu.idle
+collectd.cpu.cpu.interrupt
+collectd.cpu.cpu.nice
+collectd.cpu.cpu.softirq
+collectd.cpu.cpu.steal
+collectd.cpu.cpu.system
+collectd.cpu.cpu.user
+collectd.cpu.cpu.wait
+collectd.df.df_complex.free
+collectd.df.df_complex.reserved
+collectd.df.df_complex.used
+collectd.df.df_inodes.free
+collectd.df.df_inodes.reserved
+collectd.df.df_inodes.used
+collectd.df.percent_bytes.free
+collectd.df.percent_bytes.reserved
+collectd.df.percent_bytes.used
+collectd.df.percent_bytes.used_reserved
+collectd.df.percent_inodes.free
+collectd.df.percent_inodes.reserved
+collectd.df.percent_inodes.used
+collectd.disk.disk_io_time.io_time
+collectd.disk.disk_io_time.weighted_io_time
+collectd.disk.disk_merged.read
+collectd.disk.disk_merged.write
+collectd.disk.disk_octets.read
+collectd.disk.disk_octets.write
+collectd.disk.disk_ops.read
+collectd.disk.disk_ops.write
+collectd.disk.disk_time.read
+collectd.disk.disk_time.write
+collectd.disk.pending_operations
+collectd.entropy.entropy
+collectd.interface.if_dropped.rx
+collectd.interface.if_dropped.tx
+collectd.interface.if_errors.rx
+collectd.interface.if_errors.tx
+collectd.interface.if_octets.rx
+collectd.interface.if_octets.tx
+collectd.interface.if_packets.rx
+collectd.interface.if_packets.tx
+collectd.load.load.longterm
+collectd.load.load.midterm
+collectd.load.load.shortterm
+collectd.memory.memory.buffered
+collectd.memory.memory.cached
+collectd.memory.memory.free
+collectd.memory.memory.slab_recl
+collectd.memory.memory.slab_unrecl
+collectd.memory.memory.used
+collectd.processes.fork_rate
+collectd.processes.ps_state.blocked
+collectd.processes.ps_state.paging
+collectd.processes.ps_state.running
+collectd.processes.ps_state.sleeping
+collectd.processes.ps_state.stopped
+collectd.processes.ps_state.zombies
+collectd.swap.swap.cached
+collectd.swap.swap.free
+collectd.swap.swap.used
+collectd.swap.swap_io.in
+collectd.swap.swap_io.out
+collectd.uptime.uptime
+collectd.users.users
+collectd.vmem.vmpage_action.dirtied
+collectd.vmem.vmpage_action.written
+collectd.vmem.vmpage_faults.majflt
+collectd.vmem.vmpage_faults.minflt
+collectd.vmem.vmpage_io.memory.in
+collectd.vmem.vmpage_io.memory.out
+collectd.vmem.vmpage_io.swap.in
+collectd.vmem.vmpage_io.swap.out
+collectd.vmem.vmpage_number.active_anon
+collectd.vmem.vmpage_number.active_file
+collectd.vmem.vmpage_number.anon_pages
+collectd.vmem.vmpage_number.anon_transparent_hugepages
+collectd.vmem.vmpage_number.bounce
+collectd.vmem.vmpage_number.dirty
+collectd.vmem.vmpage_number.dirty_background_threshold
+collectd.vmem.vmpage_number.dirty_threshold
+collectd.vmem.vmpage_number.file_pages
+collectd.vmem.vmpage_number.free_cma
+collectd.vmem.vmpage_number.free_pages
+collectd.vmem.vmpage_number.inactive_anon
+collectd.vmem.vmpage_number.inactive_file
+collectd.vmem.vmpage_number.isolated_anon
+collectd.vmem.vmpage_number.isolated_file
+collectd.vmem.vmpage_number.kernel_stack
+collectd.vmem.vmpage_number.mapped
+collectd.vmem.vmpage_number.mlock
+collectd.vmem.vmpage_number.page_table_pages
+collectd.vmem.vmpage_number.shmem
+collectd.vmem.vmpage_number.shmem_hugepages
+collectd.vmem.vmpage_number.shmem_pmdmapped
+collectd.vmem.vmpage_number.slab_reclaimable
+collectd.vmem.vmpage_number.slab_unreclaimable
+collectd.vmem.vmpage_number.unevictable
+collectd.vmem.vmpage_number.unstable
+collectd.vmem.vmpage_number.vmscan_immediate_reclaim
+collectd.vmem.vmpage_number.vmscan_write
+collectd.vmem.vmpage_number.writeback
+collectd.vmem.vmpage_number.writeback_temp
+collectd.vmem.vmpage_number.zone_active_anon
+collectd.vmem.vmpage_number.zone_active_file
+collectd.vmem.vmpage_number.zone_inactive_anon
+collectd.vmem.vmpage_number.zone_inactive_file
+collectd.vmem.vmpage_number.zone_unevictable
+collectd.vmem.vmpage_number.zone_write_pending
+collectd.vmem.vmpage_number.zspages
 ```
