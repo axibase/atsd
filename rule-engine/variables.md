@@ -93,7 +93,7 @@ To access the n-th element, use square brackets and index starting with `0` for 
 
   ```java
   authors = split(tags.authors, ',')
-  authors.size() == 0 ? 'n/a' : authors[0]
+  authors.size() == 0 ? 'n/a' : authors.get(0)
   ```  
 
 ### map
