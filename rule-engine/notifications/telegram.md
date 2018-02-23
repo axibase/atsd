@@ -156,8 +156,14 @@ NGINX API Gateway Path for Telegram:
 |Disable Notifications|Sends the message silently. Users will receive a notification with no sound.|
 |Disable Web Page Preview|Disables link previews for links in this message.|
 |Details Table Format|The default format for the alerts detail table.|
-|Add Links to Portals|Send a follow up message with links to chart and portal configuration after each message with chart screenshot.|
-|Receive Updates|Collect update events for the bot user and store them as ATSD messages. See [Telegram Outgoing Webhook](outgoing-webhook-telegram.md).|
+|Add Links to Portals|Send a follow up message with chart links after each message containing portal screenshots.|
+|Receive Updates|Poll for messages addressed to the bot user and process them in ATSD as messages.|
+
+## Reacting to Bot Messages
+
+The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself. 
+
+In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
 
 ## Testing Notification Rule
 
