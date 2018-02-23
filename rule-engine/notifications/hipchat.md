@@ -115,7 +115,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 |Message|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 |Message Format|Change how messages are formatted. See [message_format](https://www.hipchat.com/docs/apiv2/method/send_room_notification). To ensure that the references returned by the [link placeholders](../links.md#reference) and the [link functions](../functions-link.md#reference) are automatically inlined, specify `html` format.|
 |Notify|Notify users when bot sends a message.|
-|Add Links to Portals|Send a follow up message with links to chart and portal configuration after each message with chart screenshot.|
+|Add Links to Portals|Send a follow up message with chart links after each message containing portal screenshots.|
 
 ## Testing Notification
 
