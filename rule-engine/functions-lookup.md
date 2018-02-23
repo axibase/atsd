@@ -14,7 +14,7 @@ The named collections are listed on the **Data > Named Collections** page.
 * [entity_tags](#entity_tags)
 * [getEntity](#getentity)
 * [getEntities](#getentities)
-* [getEntitiyCount](#getentitiycount)
+* [getEntityCount](#getentitycount)
 * [getEntityName](#getentityname)
 * [collection](#collection)
 * [lookup](#lookup)
@@ -103,17 +103,15 @@ Example:
 ### `getEntities`
 
 ```javascript
-  getEntities(string m, string s, string e, object p) [object]
+  getEntities(string m, string s, string e, string p) [object]
 ```
-Returns a list of entity objects matching the specified pattern `p` and the metric `m` with `lastIsertDate` between start date `s` and end date `e`. 
+Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`. 
 
-Expression `p` can be built using entity [fields](../api/meta/entity/list.md#fields) except `lastInsertDate`, wildcards and [window fields](window.md#window-fields).
+Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be refered to using the dot notation.
 
-Start date `s` and end date `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
+Start date `s` and end date `e` is an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
-The objects' [fields](entity-fields.md) can be accessed using the dot notation.
-
-The function returns an empty list if no entity is found.
+The elements in the list can be retrieved with `.get(index)` method. The first element has an index of `0`.
 
 Examples:
 
@@ -121,11 +119,12 @@ Examples:
   /* Variable 'ent1' will contain string with entity name and formatted lastInsertTime
   for the first entity in list 'entities',e.g. 
   'nurswgvml007 2017-06-21 13:24:52' */
-  entities = getEntities('docker.activecontainers', 'now - 14*HOUR', 'now - 5 * MINUTE', "tags.status != 'deleted'")
-  ent1 = entities.get(0).name+' '+date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss ", "UTC")
+  entities = getEntities('docker.activecontainers', 'now - 1 * HOUR', 'now', "tags.status != 'deleted'")
+  // entities.get(0).name
+  // date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss", "UTC")
 ```
 
-* Match using entity object's field
+* Match using entity object field
 
 ```javascript
   getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")  
@@ -140,15 +139,16 @@ Examples:
 * Match using window field 
 
 ```javascript
-  getEntities('cpu_busy', 'yesterday', 'now', "interpolate='LINEAR' && tags.app!='" + entity.tags.app + "'")
+  getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
 ```
 
-### `getEntitiyCount`
+### `getEntityCount`
 
 ```javascript
   getEntitiyCount(string m, string s, string e, object p) integer
 ```
-The same as `getEntities(string m, string s, string e, object p).size()`.
+
+Same as `getEntities(string m, string s, string e, object p).size()`.
 
 ### `getEntityName`
 
