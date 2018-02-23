@@ -4,7 +4,6 @@ The following fields can be accessed using the dot notation, for example `getEnt
 
 |**Name**|**Description** |
 |:---|:---|
-| class                    | |
 | created                  | |
 | enabled                  | Enabled status. Incoming data is discarded for disabled entities.|
 | id                       | |
@@ -12,9 +11,5 @@ The following fields can be accessed using the dot notation, for example `getEnt
 | label                    | Entity label. |
 | lastInsertTime           | |
 | name                     | Entity name. |
-| portalConfigs            | |
-| portalConfigsEnabled     | |
 | tags                     | Entity tags.|
-| timeZone                 | |
-| withDefaultConfiguration | |
-| withDefaultSettings      | |           
+| timeZone                 | |     
