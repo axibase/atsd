@@ -17,6 +17,12 @@ For example, if the window is grouped by entity and tags `t1` and `t2` and the e
 
 Current window is excluded from matching.
 
+## Reference
+
+* [rule_open](#rule_open)
+* [rule_window](#rule_window)
+* [rule_windows](#rule_windows)
+
 ## `rule_open`
 
 ```javascript
