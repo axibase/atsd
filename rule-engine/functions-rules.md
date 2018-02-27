@@ -8,7 +8,7 @@ The following match conditions are applied:
 
 * If the entity argument `e` is not specified, the same entity is used for matching regardless of grouping tags and message.
 * If the entity argument `e` is specified as null or empty string, any entity is matched.
-* The expression `p` can include any tags and message, wildcards are supported.
+* The expression `p` can be built using tags, message, wildcards and [window fields](window.md#window-fields).
 
 The windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command. 
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such expression will return `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
@@ -19,8 +19,8 @@ Current window is excluded from matching.
 
 ## `rule_open`
 
-```java
-  rule_open(string r[, string e[, string p]) boolean
+```javascript
+  rule_open(string r[, string e[, string p]]) boolean
 ```
 
 Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r`, entity `e` and expression `p`.
@@ -31,7 +31,7 @@ Examples:
 
 The following expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if rule 'disk_used_check' is open for the same entity.
 
-```java
+```javascript
   avg() > 10 && rule_open('disk_used_check')
 ```
 
@@ -116,8 +116,8 @@ Assume that there is the following windows with status 'REPEAT' and function is 
 
 ## `rule_window`
 
-```java
-  rule_window(string r[, string e[, string p]) window
+```javascript
+  rule_window(string r[, string e[, string p]]) object
 ```
 
 Returns the first matching window in `OPEN` or `REPEAT` status for the specified rule `r`, entity `e` and expression `p` to match other windows.
@@ -126,13 +126,27 @@ The function returns `null` if no matching windows are found.
 
 Example:
 
-```java
+```javascript
   avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'CANCEL'
 ```
-
-> The function returns `null` if a matching window is not found.
 
 The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the first window for rule 'disk_used_check' for the same entity has any other status except `CANCEL`.
 
 
+## `rule_windows`
 
+```javascript
+  rule_windows(string r, string p) [object]
+```
+
+Returns the collection of windows in `OPEN` or `REPEAT` status for the specified rule `r`, expression `p` and the same entity as in the current window.
+
+Example:
+
+```javascript
+  /* 
+  Returns open windows of 'jvm_derived' rule 
+  with the same value for 'tags.host' as at the current window. 
+  */
+  rule_windows('jvm_derived',"tags.host='" + tags.host + "'")
+```
