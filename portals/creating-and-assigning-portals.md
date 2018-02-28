@@ -7,6 +7,7 @@ Portal is a collection of time-series [widgets](https://axibase.com/products/axi
 ## Reference
 
 * [Creating Portal](#creating-portal)
+* [Portals Page](#portals-page)
 * [Portal Configuration](#portal-configuration)
 * [Portal Types](#portal-types)
 * [Portal Links](#portal-links)
@@ -34,9 +35,11 @@ Portal is a collection of time-series [widgets](https://axibase.com/products/axi
 | Theme | Select a graphics style to render the widgets: Default or Black. Custom themes can be installed as described [below](#portal-themes).|
 | Content | Portal [configuration](portal-settings.md) text specified using the Charts syntax. |
 
+## Portals Page
+
 All portals are listed at the **Portals** page located at `https://atsd_host:8443/portals/list`. 
 
-To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click again on the **Configure** button.
+To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
 
 ![](resources/creating-and-assigning-portals_3.png)
 
@@ -152,17 +155,17 @@ The actual configuration displayed contains the specific entity name as follows:
     entity = nurswgvml013
 ```
 
-To open a template portal directly in the browser address bar, substitute the `{portal_id}` below with _portal identifier_ displayed at the **Portals** page and specify a valid entity name in the `{entity}` request parameter.
+To open a template portal directly in the browser address bar, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
 
 ```elm
 https://atsd_host:8443/portal/{portal_id}.xhtml?entity={entity}
 ```
 
-Alternatively, assign an entity group to the template portal so that the link to this portal is available on the **Entities** page for all entities that are members of the entity group.
+Alternatively, assign an entity group to the template portal so that the link to this portal is available on the **Entities** page for all entities that are members of the entity group:
 
 ![](resources/creating-and-assigning-portals_6.png)
 
-* Open the **Portals** page.
+* Open the [Portals Page](#portals-page).
 * Locate the template portal that you'd like to assign.
 * Click on the **Assign** button.
 
@@ -188,7 +191,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 
 The portals are available at the following URLs:
 
-* Using portal id displayed on the **Portals** page:
+* Using portal id displayed on the [Portals Page](#portals-page):
 
 ```elm
 https://atsd_host:8443/portal/{portal_id}.xhtml
