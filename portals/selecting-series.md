@@ -1,7 +1,17 @@
-Selecting Series
-===
+# Selecting Series
 
-### Database Schema
+## Reference
+
+* [Database Schema](#database-schema)
+* [Exploring Series](#exploring-series)
+* [Selecting Specific Series](#selecting-specific-series)
+* [Selecting Multiple Series with Tags](#selecting-multiple-series-with-tags)
+* [Merging Series](#merging-series)
+* [Selecting Series for Multiple Entities](#selecting-series-for-multiple-entities)
+* [Retrieving Series from the Database](#retrieving-series-from-the-database)
+* [Controlling Displayed Series](#controlling-displayed-series)
+
+## Database Schema
 
 The Widget configuration syntax provides a way to load and display data for time series stored in a database. Series values 
 change over time and their history is visualized with different types of graphs.
@@ -40,15 +50,15 @@ for the `df.bytes.percentused` metric.
 
 An entity may be measured with a variety of metrics, just as the same metric could be collected for multiple entities.
 
-### Exploring Series
+## Exploring Series
 
-Available series can be reviewed in the database on the **Metrics > metric > [Series]** page or on the **Entities > entity > Metrics > [Series]** page.
+Available series can be reviewed in the database at the **Series** tab of the main menu.  
 
 Alternatively, if the entity is already known, the metrics and series can be explored via a portal containing drop-down selectors.
 
 [![](resources/button.png)](https://apps.axibase.com/chartlab/d6e73e37/2)
 
-### Selecting Specific Series
+## Selecting Specific Series
 
 To display values for a specific series, the `[series]` section should specify its exact composite key which can be looked 
 up in the database:
@@ -59,7 +69,7 @@ up in the database:
   entity = nurswgvml007
 ```
 
-![](resources/metric-entity.png)
+![](resources/selecting-series_1.png)
 
 ```ls
   # Series with Tags
@@ -70,11 +80,11 @@ up in the database:
     fstype = ext4
 ```
 
-![](resources/metric-tags.png)
+![](resources/selecting-series_2.png)
 
 [![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/3)
 
-### Selecting Multiple Series with Tags
+## Selecting Multiple Series with Tags
 
 By default, the database will return all series matching the request, including series with extra tags not enumerated in 
 the request.
@@ -89,7 +99,7 @@ This enables loading series using only a subset of tags that are still sufficien
     mount = /
 ```
 
-The above configuration will match all series with `mount=/ tag`, **including** series that may have other tags.
+The above configuration will match all series with `mount=/` tag, **including** series that may have other tags.
 
 To disable partial tag match, use the `'exact-match = true | false'` setting:
 
@@ -108,7 +118,7 @@ the request.
 The partial match, while making the configuration compact, can produce undetermined results if the partial key matches multiple 
 series where only one series is expected:
 
-```sql
+```ls
   # Series with Tags
   metric = df.bytes.percentused
   entity = nurswgvml006
@@ -184,7 +194,7 @@ The default value of the `multiple-series` setting is `true` in the following ca
 
 ![](resources/select-tags.png)
 
-### Merging Series
+## Merging Series
 
 Merging multiple series into one series could be a useful feature in situations where the underlying series describe the 
 same object despite having different keys. Often, such series are recorded sequentially and therefore do not overlap.
@@ -201,7 +211,7 @@ same object despite having different keys. Often, such series are recorded seque
 
 [![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/15/)
 
-### Selecting Series for Multiple Entities
+## Selecting Series for Multiple Entities
 
 The `[widget]` syntax provides a number of options to select series for multiple entities and the same metric:
 
@@ -243,7 +253,7 @@ Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) for a
 
 [![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/8)
 
-### Retrieving Series from the Database
+## Retrieving Series from the Database
 
 As an alternative to specifying the `[series]` settings manually and using wildcards, the widget syntax provides the `getSeries()` and 
 `getTags()` methods to retrieve the list of existing series from the database.
@@ -276,7 +286,7 @@ As an alternative to specifying the `[series]` settings manually and using wildc
 
 [![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/14/)
 
-### Controlling Displayed Series
+## Controlling Displayed Series
 
 The `series-limit = int` setting enables limiting the number of possible series returned by the database for wildcard queries. 
 Since the limit is applied to an unsorted list of matched series, the results may vary between requests, which makes the setting 
