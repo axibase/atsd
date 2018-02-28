@@ -2,23 +2,45 @@
 
 ## Overview
 
-Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created usign the Charts syntax and presented in a [grid](portal-settings.md) layout.
+Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created using the Charts syntax and presented in a [grid](portal-settings.md) layout.
+
+## Reference
+
+* [Creating Portal](#creating-portal)
+* [Portal Configuration](#portal-configuration)
+* [Portal Types](#portal-types)
+* [Portal Links](#portal-links)
+* [Portal Themes](#portal-themes)
 
 ## Creating Portal
 
-- Open the **Configuration > Portals** page, click **Create**.
-- Specify new portal properties.
+* Click on **Portals** at the right upper corner of the ATSD web interface.
+  
+  ![](resources/creating-and-assigning-portals_1.png)
+
+* Click on **Create**.
+
+  ![](resources/creating-and-assigning-portals_2.png)
+    
+* Specify new portal properties.
 
 | **Property** | **Description** |
 |---|---|
 | Name | User-friendly portal name.|
 | Enabled | Portal status. Disabled portals are not visible to users. |
-| Template | Portal type: regular or template. See type descriptions below.  |
-| Display Index | Applicable to template portals. The order in which portals are assigned to an entity are listed in the portals toolbar. |
-| Theme | Select a graphics style to render the widgets: Default or Black. Custom themes can be installed as described below.|
+| Guest Access| Enable anonymous view of the portal.|
+| Type | Portal type: regular or template. See type descriptions [below](#portal-types).  |
+| Display Index | Applicable to template portals. The order in which portals are assigned to an entity are listed at the portals page. |
+| Theme | Select a graphics style to render the widgets: Default or Black. Custom themes can be installed as described [below](#portal-themes).|
 | Content | Portal [configuration](portal-settings.md) text specified using the Charts syntax. |
 
-![](resources/config_portal.png)
+All portals are listed at the **Portals** page located at `https://atsd_host:8443/portals/list`. 
+
+To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click again on the **Configure** button.
+
+![](resources/creating-and-assigning-portals_3.png)
+
+![](resources/creating-and-assigning-portals_4.png)
 
 ## Portal Configuration  
 
@@ -27,7 +49,7 @@ Portal is a collection of time-series [widgets](https://axibase.com/products/axi
 The portal is configured using the **Charts** syntax which is a domain-specific language implemented in ATSD to assemble visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
 
 * **Section** is enclosed in square brackets, for example, `[widget]`. The section may include the nested sections and settings. The section terminates when another section is specified.
-* **Setting** includes name and value, separated by equal sign, for example, `type = treemap`.
+* **Setting** includes name and value, separated by equal sign, for example, `timespan = 1 hour`.
 
 ```ls
 # this is a section named [widget]
@@ -67,9 +89,9 @@ The following example creates a grid containing 6 units, with 3 widgets placed i
 
 ![](resources/portal_config_ex_32.png)
 
-Review the following [guide](selecting-series.md) describing the basic syntax required to load series data from ATSD.
+Review the following guides describing the basic syntax:
 
-### Reference
+* [Selecting Series](selecting-series.md)
 
 * [Portal Settings](portal-settings.md)
 
@@ -81,31 +103,33 @@ Review the following [guide](selecting-series.md) describing the basic syntax re
 
 Two types of portals are supported:
 
-1. Regular portals. 
-2. Template portals. 
+* [Regular portals](#regular-portals)
+* [Template portals](#template-portals)
 
 ### Regular Portals
 
 The regular portal doesn't depend on external parameters and can be rendered as is.
 
-* Sample Link for a Regular Portal
+Sample link for a regular portal:
 
+```elm
+https://atsd_host:8443/portal/4.xhtml
 ```
-https://atsd_hostname:8443/portal/4.xhtml
-```
 
-Regular portals are listed under the `[Portals]` tab in the top menu.
+Enabled regular portals are listed under the **Portals** drop-down at the right upper corner of the ATSD web interface.
 
-![](resources/portals_dropdown.1.png)
+![](resources/creating-and-assigning-portals_5.png)
 
 ### Template Portals
 
-The template portals exist so that the same generic portal can be accessed for all entities of the same type. It requires an entity name to be passed as a request parameter.
+The template portals exist so that the same generic portal can be accessed for all entities of the same type. 
 
-* Sample Link for a Template Portal
+It requires an entity name to be passed as a request parameter. Additional parameters can be passed in the query string to customize the portal as described [below](#request-parameters).
 
-```
-https://atsd_hostname:8443/portal/111.xhtml?entity=nurswgvml013
+Sample link for a template portal:
+
+```elm
+https://atsd_host:8443/portal/111.xhtml?entity=nurswgvml013
 ```
 
 The above link passes the `entity` parameter to a template portal which substitutes all `${entity}` placeholders in the portal configuration text. 
@@ -128,42 +152,52 @@ The actual configuration displayed contains the specific entity name as follows:
     entity = nurswgvml013
 ```
 
-To open a template portal directly in the browser address bar, substibute the `${portal_id}` below with Portal identifier displayed on the **Configuration > Portals** page and specify a valid entity name in the `${entity}` request parameter.
+To open a template portal directly in the browser address bar, substitute the `{portal_id}` below with _portal identifier_ displayed at the **Portals** page and specify a valid entity name in the `{entity}` request parameter.
 
+```elm
+https://atsd_host:8443/portal/{portal_id}.xhtml?entity={entity}
 ```
-https://atsd_hostname:8443/portal/${portal_id}.xhtml?entity=${entity}
-```
 
-Alternatively, assign an entity group to the template portal so that the link to this portal is available on the [Entities] tab for all entities that are members of the entity group.
+Alternatively, assign an entity group to the template portal so that the link to this portal is available on the **Entities** page for all entities that are members of the entity group.
 
-* Open **Configuration > Portals** page.
+![](resources/creating-and-assigning-portals_6.png)
+
+* Open the **Portals** page.
 * Locate the template portal that you'd like to assign.
-* Open the portal editor, click on the **Assign** link below.
+* Click on the **Assign** button.
+
+    ![](resources/creating-and-assigning-portals_7.png)
+
 * Select entity groups to which the portal will be assigned.
-* Click **Save** at the bottom of the page.
 
-![](resources/portal_assign.png)
+    ![](resources/creating-and-assigning-portals_8.png)
+    
+> Note an entity group can be assigned to the portal from portal editor:
+> ![](resources/creating-and-assigning-portals_9.png)
+    
+* Click on **Save** at the bottom of the page.
+* Open the **Entities** page.
+* Select an entity group in the drop-down filter.    
+* Click on the _portals_ icon for an entity and verify that the portal was assigned.    
 
-* Open **Entities** tab
-* Select an entity group in the drop-down filter
-* Click on the 'portals' icon for an entity and verify that the portal was assigned.
-
-![](resources/portals_icon.png)
+    ![](resources/creating-and-assigning-portals_10.png)
+    
+    ![](resources/creating-and-assigning-portals_11.png)
 
 ## Portal Links
 
 The portals are available at the following URLs:
 
-* Using portal id displayed on the Portal list page:
+* Using portal id displayed on the **Portals** page:
 
-```
-https://atsd_hostname:8443/portal/name/{name}
+```elm
+https://atsd_host:8443/portal/{portal_id}.xhtml
 ```
 
 * Using portal name match (case-sensitive):
 
-```
-https://atsd_hostname:8443/portal/name/{name}
+```elm
+https://atsd_host:8443/portal/name/{name}
 ```
 
 > Names containing whitespace and other special properties must be url-encoded.
@@ -172,18 +206,18 @@ https://atsd_hostname:8443/portal/name/{name}
 
 The template portal requires the `entity` parameter to be present in the query string regardless if the portal is accessed with an identifier or name.
 
-```
-https://atsd_hostname:8443/portal/name/linux-os?entity=nurswgvml008
+```elm
+https://atsd_host:8443/portal/name/linux-os?entity=nurswgvml008
 ```
 
 Additional parameters can be passed in the query string to customize the portal.
 
-```
+```elm
 # add extra dtype parameter
-https://atsd_hostname:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
+https://atsd_host:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 ```
 
-Such request parameter values can be referenced with `${name}` placeholders in the portal configuration text.
+Such request parameter values can be referenced with `${parameter_name}` placeholders in the portal configuration text.
 
 ```ls
   [series]
