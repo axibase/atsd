@@ -1,5 +1,18 @@
 # Portal Settings
 
+## Reference
+
+* [Layout](#layout)
+* [[configuration] Section](#[configuration]-section)
+ 
+    * [General Settings](#general-settings)
+    * [Interval Settings](#interval-settings)
+    * [Layout Settings](#layout-settings)
+    * [Connection Settings](#connection-settings)
+
+* [Comments](#comments)
+* [Freemarker Expressions](#freemarker-expressions)
+
 ## Layout
 
 Widget are positioned on the portal page using a **grid** layout. The dimensions of the grid are specified under the `[configuration]` tag.
@@ -53,7 +66,6 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
   [widget]
   [widget]
 ```
-
 
 [2x3 Group Layout (per row grouping)](http://apps.axibase.com/chartlab/adfe0fe2)
 ![](resources/6_widget_portal.png)
