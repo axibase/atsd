@@ -1,19 +1,15 @@
-# Creating Portals
-
-## Overview
-
-Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created using the Charts syntax and presented in a [grid](portal-settings.md) layout.
+# Portals Overview
 
 ## Reference
 
-* [Creating Portal](#creating-portal)
+* [Create Portal](#create-portal)
+* [Configure Portal](#configure-portal)
 * [Portals Page](#portals-page)
-* [Portal Configuration](#portal-configuration)
 * [Portal Types](#portal-types)
 * [Portal Links](#portal-links)
 * [Portal Themes](#portal-themes)
 
-## Creating Portal
+## Create Portal
 
 * Click on **Portals** at the right upper corner of the ATSD web interface.
   
@@ -33,23 +29,9 @@ Portal is a collection of time-series [widgets](https://axibase.com/products/axi
 | Type | Portal type: regular or template. See type descriptions [below](#portal-types).  |
 | Display Index | Applicable to template portals. The order in which portals are assigned to an entity are listed at the portals page. |
 | Theme | Select a graphics style to render the widgets: Default or Black. Custom themes can be installed as described [below](#portal-themes).|
-| Content | Portal [configuration](portal-settings.md) text specified using the Charts syntax. |
+| Content | Portal [configuration](#configure-portal) text specified using the [Axibase Charts](https://github.com/axibase/charts#axibase-charts) syntax. |
 
-## Portals Page
-
-All portals are listed at the **Portals** page located at `https://atsd_host:8443/portals/list`. 
-
-To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
-
-![](resources/creating-and-assigning-portals_3.png)
-
-![](resources/creating-and-assigning-portals_4.png)
-
-Use drop-down at the bottom of the page to manage portals:
-
-![](resources/creating-and-assigning-portals_5.png)
-
-## Portal Configuration  
+## Configure Portal  
 
 ### Syntax
 
@@ -88,10 +70,14 @@ The following example creates a grid containing 6 units, with 3 widgets placed i
        [tags]
          page_name = index.htm
   [widget]
+    type = chart
   [widget]
+    type = pie
 [group]
   [widget]
+    type = chart
   [widget]
+    type = chart
 ```
 
 ![](resources/portal_config_ex_32.png)
@@ -105,6 +91,20 @@ Review the following guides describing the basic syntax:
 * [Generic Widget Settings](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/)
 
 * [Widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
+
+## Portals Page
+
+All portals are listed at the **Portals** page located at `https://atsd_host:8443/portals/list`. 
+
+To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
+
+![](resources/creating-and-assigning-portals_3.png)
+
+![](resources/creating-and-assigning-portals_4.png)
+
+Use drop-down at the bottom of the page to manage portals:
+
+![](resources/creating-and-assigning-portals_5.png)
 
 ## Portal Types
 
@@ -123,7 +123,7 @@ Sample link for a regular portal:
 https://atsd_host:8443/portal/4.xhtml
 ```
 
-Enabled regular portals are listed under the **Portals** drop-down at the right upper corner of the ATSD web interface.
+Enabled regular portals are listed at the **Portals** drop-down at the right upper corner of the ATSD web interface.
 
 ![](resources/creating-and-assigning-portals_6.png)
 
@@ -139,7 +139,7 @@ Sample link for a template portal:
 https://atsd_host:8443/portal/111.xhtml?entity=nurswgvml013
 ```
 
-The above link passes the `entity` parameter to a template portal which substitutes all `${entity}` placeholders in the portal configuration text. 
+The above link passes the `entity` parameter to a template portal which substitutes all `${entity}` placeholders in the Configure Portal text. 
 
 ```ls
 [widget]
@@ -171,7 +171,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 
 * Open the [Portals Page](#portals-page).
 * Locate the template portal that you'd like to assign.
-* Click on the **Assign** button.
+* Click on the _assign_ icon.
 
     ![](resources/creating-and-assigning-portals_8.png)
 
@@ -195,7 +195,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 
 The portals are available at the following URLs:
 
-* Using portal id displayed on the [Portals Page](#portals-page):
+* Using portal id displayed at the [Portals Page](#portals-page):
 
 ```elm
 https://atsd_host:8443/portal/{portal_id}.xhtml
@@ -226,7 +226,7 @@ Additional parameters can be passed in the query string to customize the portal.
 https://atsd_host:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 ```
 
-Such request parameter values can be referenced with `${parameter_name}` placeholders in the portal configuration text.
+Such request parameter values can be referenced with `${parameter_name}` placeholders in the Configure Portal text.
 
 ```ls
   [series]
