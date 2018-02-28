@@ -27,7 +27,7 @@
 <intervalCount>1</intervalCount>
 <intervalUnit>MINUTE</intervalUnit>
 </timeFilter>
-<discardPreviousValues>true</discardPreviousValues>
+<discardPreviousValues>false</discardPreviousValues>
 <ruleTable/>
 </rule>
 </rules>

@@ -2,17 +2,25 @@
 
 ### Export Data
 
-Open the [Export] tab located in the top menu.
+Open the **Data > Export** page.
+
+![](resources/getting-started-3_1.png)
 
 Complete the form to download data for the `my-entity` and `my-metric` into a CSV file as well as to displayed it as HTML.
 
-![](resources/export.png)
+![](resources/getting-started-3_5.png)
 
 ### Execute API Requests
 
 Experiment with [Data API](../api/data/README.md) by executing sample [series query](../api/data/series/query.md) requests using the built-in API client.
 
-Open **Admin: API Client** page, select Series: Query Detailed template.
+Open **Data > API Client** page.
+
+![](resources/getting-started-3_2.png)
+ 
+Select _Series > Query Detailed_ template.
+
+![](resources/getting-started-3_3.png)
 
 Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field values accordingly.
 
@@ -20,8 +28,8 @@ Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field val
 
 ```json
 [{
-  "startDate": "2017-05-01T00:00:00Z",
-  "endDate":   "2017-05-02T00:00:00Z",
+  "startDate": "2018-02-26T00:00:00Z",
+  "endDate":   "2018-02-28T00:00:00Z",
   "entity": "my-entity",
   "metric": "my-metric"
 }]
@@ -40,14 +48,14 @@ Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field val
       "type": "DETAIL"
     },
     "data": [ 
-      { "d": "2017-05-01T20:10:00.000Z", "v": 15 },
-      { "d": "2017-05-01T20:20:00.000Z", "v": 10.8 },
-      { "d": "2017-05-01T20:30:00.000Z", "v": 24 }
+      { "d": "2018-02-26T20:10:00.000Z", "v": 15 },
+      { "d": "2018-02-26T20:20:00.000Z", "v": 10.8 },
+      { "d": "2018-02-26T20:30:00.000Z", "v": 24 }
     ]
   }
 ]
 ```
 
-![](resources/api-client.png)
+![](resources/getting-started-3_4.png)
 
 [Continue to Next Page](getting-started-4.md).
