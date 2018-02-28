@@ -3,7 +3,7 @@
 ## Reference
 
 * [Layout](#layout)
-* [[configuration] Section](#[configuration]-section)
+* [[configuration] Section](#configuration-section)
  
     * [General Settings](#general-settings)
     * [Interval Settings](#interval-settings)
