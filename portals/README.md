@@ -1,8 +1,8 @@
 # Portals
 
-A portal is a collection of graphs created with Axibase **Charts** - a declarative charting library designed for time-series visualization. 
+Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created using the [Axibase Charts](https://github.com/axibase/charts#axibase-charts) and presented in a [grid](portal-settings.md#layout) layout.
 
-The **Charts** library provides a simple yet powerful syntax, closely integrated with the ATSD [data model](https://axibase.com/products/axibase-time-series-database/data-model/), so that even a user with no programming experience can build and deploy real-time dashboards with minimal effort.
+The Axibase Charts library provides a simple yet powerful syntax, closely integrated with the ATSD [data model](https://axibase.com/products/axibase-time-series-database/data-model/), so that even a user with no programming experience can build and deploy real-time dashboards with minimal effort.
 
 Syntax Examples:
 
@@ -13,12 +13,12 @@ The power user, on the other hand, can leverage [inheritance](https://axibase.co
 
 ## Custom Portals
 
-Custom portals can be created on the **Configuration > Portals** page as described in the following [guide](creating-and-assigning-portals.md).
+Custom portals can be created as described in the following [guide](portals-overview.md#create-portal).
 
 ## Built-in Portals
 
-ATSD contains built-in portals which are automatically enabled and are listed on the **Configuration > Portals** page.
-
+ATSD contains built-in portals which are automatically enabled and listed at the [Portals Page](portals-overview.md#portals-page).
+                                                                   
 - ATSD (self monitoring)
 - Linux nmon
 - AIX nmon
@@ -28,17 +28,13 @@ ATSD contains built-in portals which are automatically enabled and are listed on
 - Docker Host, Container
 - Microsoft SCOM
 - ITM Operating System
-- Oracle Database
-- Oracle EM Host
-- Apache Tomcat Server
 - ActiveMQ Broker
 - SolarWinds
 - tcollector
 - scollector
+- collectd
 - VMware
 - JVM
-- MySQL Database
-- PostgreSQL Database
 - nginx Web Server
 
 The built-in portals can be customized by changing their configuration text or used as a foundation when developing custom portals.
