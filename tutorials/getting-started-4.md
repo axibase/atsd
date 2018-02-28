@@ -2,7 +2,7 @@
 
 ### Alerts
 
-Open the **Alerts > Rules** page and click on **Create** to configure an alert rule for `my-entity` and `my-metric` using the build-in [Rule Engine](../rule-engine).
+Open the **Alerts > Rules** page and click on **Create** to configure an alert rule for `my-entity` and `my-metric` using the built-in [Rule Engine](../rule-engine).
 
 ![](resources/getting-started-4_1.png)
 
