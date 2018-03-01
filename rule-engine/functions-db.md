@@ -13,24 +13,32 @@ The `db_message_count` and `db_message_last` functions allow one to correlate di
 
 ## Reference
 
+Series functions:
+
 * [db_last](functions-db.md#db_laststring-m)
 * [db_statistic](functions-db.md#db_statistic)
+
+Message functions:
+
 * [db_message_count](functions-db.md#db_message_count)
 * [db_message_last](functions-db.md#db_message_last)
+
+SQL functions:
+
 * [executeSqlQuery](functions-db.md#executesqlquery)
 
 ## Series Functions
 
 ### `db_last(string m)` 
 
-```java
+```javascript
   db_last(string m) number
 ```
-Retrieve the last value for the specified metric `m` and the same entity and tags as defined in the current window.
+Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window.
 
 Example:
 
-```java
+```javascript
   value > 60 && db_last('temperature') < 30
 ```
 
@@ -38,14 +46,14 @@ Example:
 
 ### `db_last(string m, string e)` 
 
-```java
+```javascript
 db_last(string m, string e) number
 ```
-Retrieve the last value for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field (current entity in the window).
+Retrieves the last value for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field (current entity in the window).
 
 Example:
 
-```java
+```javascript
   value > 60 && db_last('temperature', 'sensor-01') < 30
 
   // same as db_last('temperature')
@@ -54,21 +62,22 @@ Example:
 
 ### `db_last(string m, string e, string t | [] t)` 
 
-```java
+```javascript
   db_last(string m, string e, string t) number
   db_last(string m, string e, [] t) number
 ```
-Retrieve the last value for the specified metric `m`, entity `e`, and series tags `t`. 
+Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`. 
 
-The `tags` argument `t` can be specified as follows:
+The tags argument `t` can be specified as follows:
 
 * Empty string `''` (no tags).
-* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
+* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value2`.
+* As key-value map, for example `["key1":"value1","key2":"value2"]`
 * As `tags` field representing the grouping tags of the current window.
 
 Example:
 
-```java
+```javascript
   value > 60 && db_last('temperature', 'sensor-01', 'stage=heating') < 30
 ```
 
@@ -76,64 +85,65 @@ Example:
 
 The first required argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to values within the selection interval.
 
-The second required argument `i` is the duration of selection interval specified as `count unit`, for example, '1 HOUR'. The end of the selection interval is set to current time.
+The second required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 HOUR'. The end of the selection interval is set to current time.
 
 #### `db_statistic(string s, string i)`
 
-```java
+```javascript
   db_statistic(string s, string i) number
 ```
-Retrieve an aggregated value from the database for the same metric, entity and tags as defined in the current window.
+Retrieves an aggregated value from the database for the same metric, entity and tags as defined in the current window.
 
 Example:
 
-```java
+```javascript
   value > 60 && db_statistic('avg', '3 hour') > 30
 ```
 
 #### `db_statistic(string s, string i, string m)`
 
-```java
+```javascript
   db_statistic(string s, string i, string m) number
 ```
-Retrieve an aggregated value from the database for the specified metric `m` and the same entity and series tags as defined in the current window.
+Retrieves an aggregated value from the database for the specified metric `m` and the same entity and series tags as defined in the current window.
 
 Example:
 
-```java
+```javascript
   value > 60 && db_statistic('avg', '3 hour', 'temperature') < 50
 ```
 
 #### `db_statistic(string s, string i, string m, string e)`
 
-```java
+```javascript
   db_statistic(string s, string i, string m, string e) number
 ```
-Retrieve an aggregated value from the database for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field  current entity in the window).
+Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field  current entity in the window).
 
 Example:
 
-```java
+```javascript
   value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01') < 50
 ```
 
 #### `db_statistic(string s, string i, string m, string e, string t | [] t)`
 
-```java
+```javascript
   db_statistic(string s, string i, string m, string e, string t) number
   db_statistic(string s, string i, string m, string e, [] t) number
 ```
-Retrieve an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. 
+Retrieves an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. 
 
-The `tags` argument `t` can be specified as follows:
+The tags argument `t` can be specified as follows:
 
 * Empty string `''` (no tags).
-* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
+* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value2`.
+* As key-value map, for example `["key1":"value1","key2":"value2"]`
 * As `tags` field representing the grouping tags of the current window.
 
 Example:
 
-```java
+```javascript
   value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', '') < 50
 ```
 
@@ -279,77 +289,93 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 
 ## Message Functions
 
-### `db_message_count` 
+The first required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 HOUR'. The end of the selection interval is set to the alert open time.
 
-```java
-  db_message_count(string interval, string type, string source[, string tags, [string entity]]) long
-```
-Calculate the number of messages matching the specified interval, message type, message source, tags, and entity.
+Arguments tags `t`, entity `e` and expression `p` are optional.
 
-Arguments `tags` and `entity` are optional. 
+The following match conditions are applied:
 
-If the `entity` is not specified, the request retrieves messages for the **current** entity. To count messages for all entities, use `*` wildcard.
+* If the entity argument `e` is not specified, the **current** entity is used for matching.
+* If the entity argument `e` is specified as `null` / `''` / `*`, any entity is matched.
+* The expression `p` can be built using tags, wildcards and the following string variables:
 
-```javascript
-# count messages within the previous 60 minutes 
-# for type=compaction, any source, any tags, and all entities
-db_message_count('1 hour', 'compaction', '',  '', '*')
-```
+    * `message`
+    * `type`
+    * `source`
+    * `severity`
+    * `entity`
+    * `tags`
+    
+* The current command is excluded from matching.
+* If the type `g`, source `s` or tags `t` arguments are set to `null`/ `''`, they are ignored when matching messages.
+* The tags `t` argument matches records that include the specified tags but may also include other tags.
 
-If the `type`, `source`, or `tags` arguments are set to `null` or empty string, they are ignored when matching messages.
-
-The `tags` argument can be specified as follows:
+The tags `t` argument can be specified as follows:
 
 * Empty string `''` (no tags).
-* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
+* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value2`.
+* As key-value map, for example `["key1":"value1","key2":"value2"]`
+* As `tags` field representing the grouping tags of the current window.
 
+### `db_message_count` 
 
+```javascript
+  db_message_count(string i, string g, string s[, string t | [] t[, string e[, string p]]]) long
+```
+Returns the number of message records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
 Examples:
 
-```java
-  // Check if the average exceeds 20 and the 'compaction' message was not received within the last hour for the current entity.
+```javascript
+  /* 
+  Check if the average exceeds 20 and the 'compaction' message was not received 
+  within the last hour for the current entity.
+  */
   avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
 
-  // Check if the average exceeds 80 and there is an event with type=backup-error received within the last 15 minutes for entity 'nurswgvml006'.
+  /*
+  Check if the average exceeds 80 and there is an event with 'type=backup-error'
+  received within the last 15 minutes for entity 'nurswgvml006'.
+  */
   avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
+  
+  /*
+  Count messages within the previous 60 minutes 
+  for 'type=compaction', any source, any tags and all entities.
+  */
+  db_message_count('1 hour', 'compaction', '',  '', '*')
+  
+  db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
 ```
 
 ### `db_message_last` 
 
-```java
-db_message_last(string interval, string type, string source [, string tags, [string entity [, message]]]) message object
+```javascript
+  db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
 ```
+Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-Return the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval, message type, message source, tags, entity, and message text.
-
-Arguments `tags`, `entity`, and `message` are optional.
-
-If the `entity` is not specified, the request retrieves messages for the **current** entity. To search messages for all entities, use `*` wildcard.
-
-If the `type`, `source`, or `tags` arguments are set to `null` or empty string, they are ignored when matching messages.
-
-The `tags` argument can be specified as follows:
-
-* Empty string `''` (no tags).
-* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value`.
-
-The `tags` argument matches records that include the specified tags but may also include other tags.
-
-The `message` argument supports wildcards `?` and `*`.
-
-The returned object contains `type`, `source`, and `tags.{name}` [fields](../api/data/messages/query.md#fields-1) of string type and the `date` long field which contains the record's time in Unix milliseconds.
+The object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').date`.
 
 Example:
 
-```java
+```javascript
   last_msg = db_message_last('60 minute', 'logger', '')
-  // Check that the average exceeds 50 and the severity of the last message with type 'logger' for the current entity is greater or equal `ERROR`.
-  value > 50 && last_msg != null && last_msg.severity.toString() >= "6"
+  /* 
+  Check that the average exceeds 50 and the severity of the last message with type 'logger' 
+  for the current entity is greater or equal 'ERROR'. 
+  */
+  avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 ```
 
-```java
-  db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'docker start sftp*')
+```javascript
+  db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
+  
+  /* 
+  Returns the most recent message within 1 day for the current entity,
+  containg tag 'api_app_id=583' and regardless of type and source. 
+  */
+  db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
 ```
 
 ## SQL Functions
