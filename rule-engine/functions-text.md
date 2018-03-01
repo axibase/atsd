@@ -338,7 +338,7 @@ Removes leading and trailing double and single quotation marks from the string `
 ```javascript
   countMatches(string s, string p) int
 ```
-Counts how many times the substring `p` appears in the larger string `s`.
+Counts how many times the substring `p` appears in the input string `s`.
 
 Example:
 
