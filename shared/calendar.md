@@ -22,8 +22,8 @@ Calendar arithmetic such as adding or subtracting an interval is implemented wit
 
 | **Name** | **Description** |
 |:---|:---|
-| `next_month + 3 * day` | 00:00:00 on the 3rd day of next month |
-| `today – 1 * month` | 00:00:00 on the same day of previous month. |
+| `next_month + 3 * day` | 00:00:00 on the 3rd day of the next month |
+| `today – 1 * month` | 00:00:00 on the same day of the previous month. |
 
 ## Keywords
 
@@ -49,12 +49,12 @@ Calendar arithmetic such as adding or subtracting an interval is implemented wit
 | next_day | tomorrow | 00:00:00 of the next day |
 | next_working_day | | 00:00:00 of the next working day |
 | next_vacation_day | | 00:00:00 of the next vacation day |
-| next_week | | 00:00:00 on Monday of next week |
+| next_week | | 00:00:00 on Monday of the next week |
 | last_working_day | | 00:00:00 of the last working day of the current month |
 | last_vacation_day | | 00:00:00 of the last vacation day of the current month |
-| next_month | | 00:00:00 on the first day of next month |
-| next_quarter | | 00:00:00 on the first day of next quarter |
-| next_year | | 00:00:00 on the first day of next year |
+| next_month | | 00:00:00 on the first day of the next month |
+| next_quarter | | 00:00:00 on the first day of the next quarter |
+| next_year | | 00:00:00 on the first day of the next year |
 
 ### Previous Time
 
@@ -74,11 +74,11 @@ Calendar arithmetic such as adding or subtracting an interval is implemented wit
 | current_week | | 00:00:00 on Monday of the current week |
 | previous_week | | 00:00:00 on Monday of the previous week |
 | current_month | | 00:00:00 on the first day of the current month |
-| previous_month | | 00:00:00 on the first day of previous month |
+| previous_month | | 00:00:00 on the first day of the previous month |
 | current_quarter | | 00:00:00 on the first day of the current quarter |
-| previous_quarter | | 00:00:00 on the first day of of previous quarter |
+| previous_quarter | | 00:00:00 on the first day of the previous quarter |
 | current_year | | 00:00:00 on the first day of the current year |
-| previous_year | | 00:00:00 on the first day of previous year |
+| previous_year | | 00:00:00 on the first day of the previous year |
 
 ### Days of Week
 

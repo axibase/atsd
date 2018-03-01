@@ -94,7 +94,7 @@ Review the following guides describing the basic syntax:
 
 ## Portals Page
 
-The portals portals are listed on the **Portals** page located at `https://atsd_host:8443/portals/list`. 
+The portals are listed on the **Portals** page located at `https://atsd_host:8443/portals/list`. 
 
 To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
 

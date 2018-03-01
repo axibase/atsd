@@ -116,9 +116,6 @@ The elements in the list can be retrieved with `.get(index)` method. The first e
 Examples:
 
 ```javascript
-  /* Variable 'ent1' will contain string with entity name and formatted lastInsertTime
-  for the first entity in list 'entities',e.g. 
-  'nurswgvml007 2017-06-21 13:24:52' */
   entities = getEntities('docker.activecontainers', 'now - 1 * HOUR', 'now', "tags.status != 'deleted'")
   // entities.get(0).name
   // date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss", "UTC")

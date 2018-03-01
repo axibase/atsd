@@ -316,6 +316,7 @@ Escapes special symbols such as double-quote with backslash to safely use the in
 ```javascript
   htmlDecode(string s) string
 ```
+Returns a new string with HTML entities in string `s` replaced with corresponding characters.
 
 Example:
 
@@ -323,8 +324,6 @@ Example:
   /* Returns 'World > city' */
   htmlDecode("World &gt; city")
 ```
-
-Rethrn a new string with HTML entities in string `s` replaced with corresponding characters.
 
 ### `unquote`
 
@@ -339,6 +338,7 @@ Removes leading and trailing double and single quotation marks from the string `
 ```javascript
   countMatches(string s, string p) int
 ```
+Counts how many times the substring `p` appears in the larger string `s`.
 
 Example:
 
@@ -346,8 +346,6 @@ Example:
   /* Return 2 */
   countMatches("abba", "a")
 ```
-
-Counts how many times the substring `p` appears in the larger string `s`.
 
 ### `abbreviate`
 
