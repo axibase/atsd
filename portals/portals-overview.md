@@ -11,7 +11,7 @@
 
 ## Create Portal
 
-* Click on **Portals** at the right upper corner of the ATSD web interface.
+* Click on the **Portals** link in the top menu.
   
   ![](resources/creating-and-assigning-portals_1.png)
 
@@ -19,23 +19,23 @@
 
   ![](resources/creating-and-assigning-portals_2.png)
     
-* Specify new portal properties.
+* Specify portal settings.
 
 | **Property** | **Description** |
 |---|---|
 | Name | User-friendly portal name.|
 | Enabled | Portal status. Disabled portals are not visible to users. |
 | Guest Access| Enable anonymous view of the portal.|
-| Type | Portal type: regular or template. See type descriptions [below](#portal-types).  |
-| Display Index | Applicable to template portals. The order in which portals are assigned to an entity are listed at the portals page. |
-| Theme | Select a graphics style to render the widgets: Default or Black. Custom themes can be installed as described [below](#portal-themes).|
-| Content | Portal [configuration](#configure-portal) text specified using the [Axibase Charts](https://github.com/axibase/charts#axibase-charts) syntax. |
+| Type | Portal type: **regular** or **template**. See type descriptions [below](#portal-types).  |
+| Display Index | Applicable to template portals. The order in which portals are listed on multiple-portal pages. |
+| Theme | Graphics style to render the widgets: Default or Black. Custom themes can be installed as described [below](#portal-themes).|
+| Content | Portal [configuration](#configure-portal) text specified using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax. |
 
 ## Configure Portal  
 
 ### Syntax
 
-The portal is configured using the [Axibase Charts](https://github.com/axibase/charts#axibase-charts) syntax which is a domain-specific language implemented in ATSD to assemble visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
+The portal is configured using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax which is a domain-specific language for assembling visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
 
 * **Section** is enclosed in square brackets, for example, `[widget]`. The section may include the nested sections and settings. The section terminates when another section is specified.
 * **Setting** includes name and value, separated by equal sign, for example, `timespan = 1 hour`.
@@ -94,7 +94,7 @@ Review the following guides describing the basic syntax:
 
 ## Portals Page
 
-All portals are listed at the **Portals** page located at `https://atsd_host:8443/portals/list`. 
+The portals portals are listed on the **Portals** page located at `https://atsd_host:8443/portals/list`. 
 
 To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
 
@@ -123,17 +123,17 @@ Sample link for a regular portal:
 https://atsd_host:8443/portal/4.xhtml
 ```
 
-Enabled regular portals are listed at the **Portals** drop-down at the right upper corner of the ATSD web interface.
+Enabled regular portals are listed under the **Portals** link in the top menu.
 
 ![](resources/creating-and-assigning-portals_6.png)
 
 ### Template Portals
 
-The template portals exist so that the same generic portal can be accessed for all entities of the same type. 
+The template portal requires an entity name to be passed as a request parameter. It allows the same parameterized portal to be viewed for all entities of the same type. 
 
-It requires an entity name to be passed as a request parameter. Additional parameters can be passed in the query string to customize the portal as described [below](#request-parameters).
+Additional parameters can be passed in the query string to customize the portal as described [below](#request-parameters).
 
-Sample link for a template portal:
+Sample link to a template portal:
 
 ```elm
 https://atsd_host:8443/portal/111.xhtml?entity=nurswgvml013
@@ -149,7 +149,7 @@ The above link passes the `entity` parameter to a template portal which substitu
     entity = ${entity}
 ```
 
-The actual configuration displayed contains the specific entity name as follows:
+The actual configuration displayed replaces the `${entity}` placeholder with the parameter value as follows:
 
 ```ls
 [widget]
@@ -202,7 +202,7 @@ https://atsd_host:8443/portal/{portal_id}.xhtml
 ```
 ![](resources/creating-and-assigning-portals_13.png)
 
-* Using portal name match (case-sensitive):
+* Using portal name (case-sensitive):
 
 ```elm
 https://atsd_host:8443/portal/name/{name}
