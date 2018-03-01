@@ -17,7 +17,7 @@ Custom portals can be created as described in the following [guide](portals-over
 
 ## Built-in Portals
 
-ATSD contains built-in portals which are automatically enabled and listed at the [Portals Page](portals-overview.md#portals-page).
+ATSD contains built-in portals which are listed on the [Portals](portals-overview.md#portals-page) page.
                                                                    
 - ATSD (self monitoring)
 - Linux nmon
@@ -37,7 +37,7 @@ ATSD contains built-in portals which are automatically enabled and listed at the
 - JVM
 - nginx Web Server
 
-The built-in portals can be customized by changing their configuration text or used as a foundation when developing custom portals.
+The built-in portals can be customized by changing their configuration text and used as a foundation when developing custom portals.
 
 ## Built-in Portal Gallery
 
