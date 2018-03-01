@@ -82,9 +82,6 @@ Download the [script](resources/send_offset.sh) into Kafka `bin` directory.
 ```
 # assign execute permission
 chmod +x /opt/kafka_2.12-1.0.0/bin/send_offset.sh
-
-# create consumer configuration file
-echo "exclude.internal.topics=false" > /tmp/consumer.config
 ```
 
 For Kafka versions before 0.10.2.0 use `--zookeeper` option instead `bootstrap-server` in the script.
@@ -105,6 +102,8 @@ If the hostname is different from the entity name used in the JMX job, specify t
 ```
 nohup /opt/kafka_2.12-1.0.0/bin/send_offset.sh ATSD_HOST TCP_PORT ENTITY &
 ```
+
+Series commands would be sent in ATSD and standard output
 
 1. Check that metric `kafka.consumer_offset` is available on the Metrics tab in ATSD.
 1. Import [consumer lag portal](resources/consumer-lag.xml) into ATSD and change the topic name to view the consumer lag.
