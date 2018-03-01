@@ -111,7 +111,7 @@ Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (e
 
 Start date `s` and end date `e` is an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
-The elements in the list can be retrieved with `.get(index)` method. The first element has an index of `0`.
+To access the n-th element in the collection, use `get(integer n)` method (starting with 0 for the first element).
 
 Examples:
 
