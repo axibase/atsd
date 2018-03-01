@@ -52,7 +52,7 @@ An entity may be measured with a variety of metrics, just as the same metric cou
 
 ## Exploring Series
 
-Available series can be reviewed in the database at the **Series** tab of the main menu.  
+Available series can be searched on the **Series** tab in the main menu.  
 
 Alternatively, if the entity is already known, the metrics and series can be explored via a portal containing drop-down selectors.
 
@@ -60,8 +60,7 @@ Alternatively, if the entity is already known, the metrics and series can be exp
 
 ## Selecting Specific Series
 
-To display values for a specific series, the `[series]` section should specify its exact composite key which can be looked 
-up in the database:
+To display values for a specific series, the `[series]` section should specify the exact key:
 
 ```ls
   # Series without Tags
