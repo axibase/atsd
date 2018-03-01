@@ -2,7 +2,7 @@
 
 ### Create Portal
 
-* Click on **Portals** at the right upper corner of the ATSD web interface.
+* Click on **Portals** link in the top menu.
   
   ![](resources/getting-started-2_1.png)
 
