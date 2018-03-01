@@ -103,7 +103,14 @@ If the hostname is different from the entity name used in the JMX job, specify t
 nohup /opt/kafka_2.12-1.0.0/bin/send_offset.sh ATSD_HOST TCP_PORT ENTITY &
 ```
 
-Series commands would be sent in ATSD and standard output
+The script will continuously read consumer offsets from Kafka and send the offsets to ATSD as series commands. The commands will also be copied to stdout for debugging.
+
+```ls
+series e:nurswgvml702 m:kafka.consumer_offset=455 t:groupid="console-consumer-72620" t:topic="test" t:partition=0 ms:1519893731570
+series e:nurswgvml702 m:kafka.consumer_offset=492 t:groupid="console-consumer-72620" t:topic="test" t:partition=0 ms:1519893736569
+series e:nurswgvml702 m:kafka.consumer_offset=492 t:groupid="console-consumer-72620" t:topic="test" t:partition=0 ms:1519893741570
+series e:nurswgvml702 m:kafka.consumer_offset=550 t:groupid="console-consumer-72620" t:topic="test" t:partition=0 ms:1519893746570
+```
 
 1. Check that metric `kafka.consumer_offset` is available on the Metrics tab in ATSD.
 1. Import [consumer lag portal](resources/consumer-lag.xml) into ATSD and change the topic name to view the consumer lag.
