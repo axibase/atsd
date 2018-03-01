@@ -12,7 +12,7 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 ### Export Certificate using a Web Brower such as Mozilla Firefox 
 
-* Enter https, ldap hostname and SSL port in the browser address bar, for example `https://nur.axibase.com:636/`
+* Enter https, ldap hostname and SSL port in the browser address bar, for example `https://ldap_host:636`
 
 * Press the [Advanced] button and then `Add exception` to retrieve the certificate.
 
