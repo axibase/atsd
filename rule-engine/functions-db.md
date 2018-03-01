@@ -85,7 +85,7 @@ Example:
 
 The first required argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to values within the selection interval.
 
-The second required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 HOUR'. The end of the selection interval is set to current time.
+The second required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
 
 #### `db_statistic(string s, string i)`
 
@@ -289,7 +289,7 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 
 ## Message Functions
 
-The first required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 HOUR'. The end of the selection interval is set to the alert open time.
+The first required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to the alert open time.
 
 Arguments tags `t`, entity `e` and expression `p` are optional.
 
