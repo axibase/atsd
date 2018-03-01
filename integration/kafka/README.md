@@ -77,11 +77,11 @@ The consumer offset is collected using a Kafka console consumer reading events f
 
 Login into the Kafka server.
 
-Download the [script](resources/series.sh) into Kafka `bin` directory.
+Download the [script](resources/send_offset.sh) into Kafka `bin` directory.
 
 ```
 # assign execute permission
-chmod +x /opt/kafka_2.12-1.0.0/bin/series.sh
+chmod +x /opt/kafka_2.12-1.0.0/bin/send_offset.sh
 
 # create consumer configuration file
 echo "exclude.internal.topics=false" > /tmp/consumer.config
@@ -97,13 +97,13 @@ The script will read topic offsets and send them to ATSD under the hostname enti
 
 ```
 # launch the script 
-nohup /opt/kafka_2.12-1.0.0/bin/series.sh ATSD_HOST TCP_PORT &
+nohup /opt/kafka_2.12-1.0.0/bin/send_offset.sh ATSD_HOST TCP_PORT &
 ```
 
 If the hostname is different from the entity name used in the JMX job, specify the entity manually.
 
 ```
-nohup /opt/kafka_2.12-1.0.0/bin/series.sh ATSD_HOST TCP_PORT ENTITY &
+nohup /opt/kafka_2.12-1.0.0/bin/send_offset.sh ATSD_HOST TCP_PORT ENTITY &
 ```
 
 1. Check that metric `kafka.consumer_offset` is available on the Metrics tab in ATSD.
