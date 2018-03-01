@@ -104,7 +104,7 @@ series e:${entity} m:jvm_memory_free_min_percent=${round(100 - max(), 3)}
 To create multiple metrics within the same command, use the `for` loop to iterate over a collection or an array.
 
 ```ls
-series e:${entity} @{s = ""; for (stat : stats) {s = s + " m:" + stat.split(":").get(0) + "=" + stat.split(":").get(0);} return s;}
+series e:${entity} @{s = ""; for (stat : stats) {s = s + " m:" + stat.split(":").get(0) + "=" + stat.split(":").get(1);} return s;}
 ```
 
 Assuming the `stats` collection is equal `['a:10', 'b:20', 'c:30']`, the produced command will look as follows:
