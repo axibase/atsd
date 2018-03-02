@@ -70,10 +70,10 @@ Retrieves the last value for the specified metric `m`, entity `e`, and series ta
 
 The tags argument `t` can be specified as follows:
 
-* Empty string `''` (no tags).
-* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value2`.
-* As key-value map, for example `["key1":"value1","key2":"value2"]`
-* As `tags` field representing the grouping tags of the current window.
+* Empty string `''` which means no tags.
+* String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
+* Map: `["tag1":"value1","tag2":"value2"]`
+* The `tags` field representing the grouping tags of the current window.
 
 Example:
 
@@ -136,10 +136,10 @@ Retrieves an aggregated value from the database for the specified metric `m`, en
 
 The tags argument `t` can be specified as follows:
 
-* Empty string `''` (no tags).
-* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value2`.
-* As key-value map, for example `["key1":"value1","key2":"value2"]`
-* As `tags` field representing the grouping tags of the current window.
+* Empty string `''` which means no tags.
+* String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
+* Map: `["tag1":"value1","tag2":"value2"]`
+* The `tags` field representing the grouping tags of the current window.
 
 Example:
 
@@ -289,33 +289,6 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 
 ## Message Functions
 
-The first required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to the alert open time.
-
-Arguments tags `t`, entity `e` and expression `p` are optional.
-
-The following match conditions are applied:
-
-* If the entity argument `e` is not specified, the **current** entity is used for matching.
-* If the entity argument `e` is specified as `null` / `''` / `*`, any entity is matched.
-* The expression `p` can be built using tags, wildcards and the following string variables:
-
-    * `message`
-    * `type`
-    * `source`
-    * `severity`
-    * `entity`
-    * `tags`
-    
-* The current command is excluded from matching.
-* If the type `g`, source `s` or tags `t` arguments are set to `null`/ `''`, they are ignored when matching messages.
-* The tags `t` argument matches records that include the specified tags but may also include other tags.
-
-The tags `t` argument can be specified as follows:
-
-* Empty string `''` (no tags).
-* One or multiple `name=value` pairs separated with comma, for example `key1=value1,key2=value2`.
-* As key-value map, for example `["key1":"value1","key2":"value2"]`
-* As `tags` field representing the grouping tags of the current window.
 
 ### `db_message_count` 
 
@@ -324,7 +297,51 @@ The tags `t` argument can be specified as follows:
 ```
 Returns the number of message records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-Examples:
+### `db_message_last`
+
+```javascript
+  db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
+```
+Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
+
+The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').date`.
+
+---
+
+The following matching rules apply:
+
+* Interval:
+  * The selection interval `i` is specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'.
+  * The end of the selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
+  
+* Type:
+  * If the message type argument `g` is specified as `null` or empty string `''`, all types are matched.
+  
+* Source:
+  * If the message source argument `s` is specified as `null` or empty string `''`, all sources are matched. 
+
+* Entity:
+  * If the entity argument `e` is not specified, the **current** entity in the window is used for matching.
+  * If the entity argument `e` is specified as `null` or empty string `''` or `*` wildcard, all entities are matched.
+
+* Tags:
+  * If the tags `t` argument is specified as `null` or empty string `''`, all tags are matched.
+  * The tags `t` argument matches records that include the specified tags but may also include other tags.
+  * The tags `t` argument can be specified as follows:
+    - String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
+    - Map: `["tag1":"value1", "tag2":"value2"]`
+    - The `tags` field representing the grouping tags of the current window.
+
+* Expression:
+  * The expression `p` can include the following fields and supports wildcards in field values:
+    - `message`
+    - `type`
+    - `source`
+    - `severity`
+    - `entity`
+    - `tags` and `tags.{name}`
+
+### `db_message_count` Examples
 
 ```javascript
   /* 
@@ -345,19 +362,13 @@ Examples:
   */
   db_message_count('1 hour', 'compaction', '',  '', '*')
   
+  /*
+  Count messages with the same text as in the last command, but from different users
+  */
   db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
 ```
 
-### `db_message_last` 
-
-```javascript
-  db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
-```
-Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
-
-The object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').date`.
-
-Example:
+### `db_message_last` Examples
 
 ```javascript
   last_msg = db_message_last('60 minute', 'logger', '')
@@ -369,8 +380,13 @@ Example:
 ```
 
 ```javascript
+  /*
+  Retrieve last message with text starting with 'docker start sftp*'
+  */
   db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
-  
+```
+
+```javascript 
   /* 
   Returns the most recent message within 1 day for the current entity,
   containg tag 'api_app_id=583' and regardless of type and source. 
