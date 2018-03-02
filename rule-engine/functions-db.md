@@ -304,7 +304,8 @@ Returns the number of message records matching the specified interval `i`, messa
 ```
 Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').date`.
+The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
+> Note `date` is `null` due to milliseconds time format used by message object and stored in the `timestamp` field. 
 
 ---
 
