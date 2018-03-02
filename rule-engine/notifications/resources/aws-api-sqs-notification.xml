@@ -2,7 +2,8 @@
     <com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
         <enabled>true</enabled>
         <logResponse>true</logResponse>
-        <name>aws-test</name>
+        <name>aws-api-sqs-test</name>
+        <description></description>
         <parameters class="tree-map">
             <comparator class="java.lang.String$CaseInsensitiveComparator"/>
             <entry>
@@ -14,9 +15,11 @@
         <secretAccessKey></secretAccessKey>
         <url>https://sqs.us-east-1.amazonaws.com</url>
         <body>action=SendMessage&amp;MessageBody=%7B%0A%20%20%20%22status%22%3A%20%22%24%7Bstatus%7D%22%2C%0A%20%20%20%20%22entity%22%3A%20%22%24%7Bentity%7D%22%2C%0A%20%20%20%20%22rule%22%3A%20%22%24%7Brule%7D%22%2C%0A%20%20%20%20%22tags%22%3A%20%22%24%7Btags%7D%22%2C%0A%20%20%20%20%22message%22%3A%20%22123%22%0A%7D&amp;QueueUrl=https%3A%2F%2Fsqs.us-east-1.amazonaws.com%2F568708720055%2Ftest</body>
+        <contentType>application/x-www-form-urlencoded</contentType>
         <method>POST</method>
         <exposedTableModelParams>
             <string>MessageBody</string>
         </exposedTableModelParams>
+        <headers></headers>
     </com.axibase.tsd.model.notifications.AwsApiNotificationConfig>
 </list>
