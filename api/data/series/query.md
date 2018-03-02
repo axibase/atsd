@@ -42,7 +42,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
-| tags | object  | Object with `name=value` fields. <br>Matches series that contain the specified series tags. <br>Tag values support `?` and `*` wildcards. |
+| tags | object  | Object with `name:value` fields. <br>Matches series that contain the specified series tags. <br>Tag values support `?` and `*` wildcards. |
 | exactMatch | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`. Default: **false** (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
 | tagExpression | string | An expression to include series with tags that satisfy the specified condition. |
 
