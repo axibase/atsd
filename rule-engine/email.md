@@ -43,8 +43,8 @@ For the `REPEAT` status, adjust the 'Repeat Interval' to the desired notificatio
 | Repeat Interval | Interval for sending `REPEAT` status notifications. If the Repeat Interval is set in time units, the exact interval may vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications will not be sent if the data stops flowing in. |
 | Subject | Custom subject text for each status separately. List of supported placeholders is provided below. In addition to built-in placeholders you can use expressions containing built-in functions, for example: `${round(threshold_linear_time(99))/60}` or `${round(avg())}` |
 | Text | Custom message text for each status separately. List of supported placeholders is provided below. In addition to built-in placeholders, you can use expressions containing built-in functions. For example: `${round(threshold_linear_time(99))/60}` or `${round(avg())}`. |
-| Attach Details | Include a table containing series statistics and action links. |
-| Attach Portals | One or more portals that will be attached to notification message. If a portal is a template, placeholders such as entity, metric, tags will be resolved from alert time series key.<br> *Series Chart* - attach a screenshot containing series processed by this rule. |
+| Attach Details | Include a summary table with window statistics and action links. |
+| Attach Portals | One or more portals attached to the notification message. If a portal is a template, placeholders such as entity, metric, tags will be resolved from the window fields.<br> *Series Chart* - attach a screenshot containing series monitored by this rule. |
 
 ## Grouping
 
@@ -151,7 +151,7 @@ Decimal numbers are rounded to the 5 significant digits for readability.
 
 ### Portals 
 
-The screenshot features require a [web driver](notifications/web-driver.md) to be installed and configured. To attach default portal for the current metric, entity and tags to outgoing messages, check on the `Series Chart` option.
+In order to attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured. To attach default portal for the current metric, entity and tags to the outgoing message, check the `Series Chart` option.
 
 ![](images/email-screenshot-enable.png)
 
@@ -171,11 +171,11 @@ Similarly, if the rule correlates multiple metrics using [database functions](fu
 
 ![](images/email-screenshot-correlate.png)
 
-To attach other additional portals, specify them at the `Additional Portal` drop-down.
+To attach additional portals, select them at the `Additional Portal` drop-down.
 
 ![](images/email-screenshot-portals.png)
 
-If a portal is a [template](../portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
+If a portal is a [template](../portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be set based on the current window fields.
 
 ## Monitoring
 
