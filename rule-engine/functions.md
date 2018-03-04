@@ -290,7 +290,7 @@ The rule functions provide a way to check the status of windows created by other
 
 ## Portal Functions
 
-Portal functions provide a way to attach any portals if the chat configuration supports sending screenshots.
+Portal functions allow attaching custom portals to email and web notifications.
 
 * [addPortal](functions-portal.md#addportal)
 
