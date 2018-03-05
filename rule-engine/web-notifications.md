@@ -195,7 +195,7 @@ Attachments options are enabled in the rule editor if the capability is implemen
 
 ![](images/notify-attach.png)
 
-The option `Attach Portals` allows to send one or more portals. If a portal is a [template](../portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
+The option `Attach Portals` allows to send one or more portals. If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
 
 ![](images/notify-attach-4.png)
 
