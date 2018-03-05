@@ -21,7 +21,7 @@ Weekly Change Log: December 18, 2017 - December 25, 2017
 | 4765	| rule engine	| Feature	| Implement [derived commands](../../rule-engine/derived.md#derived-commands). |
 | 4749	| UI	| Bug	| Delete entity error after delete is cancelled. |
 | 4711	| UI	| Feature	| UI: Multiple Enhancements. |
-| 3560	| core	| Feature	| Implement ['Units'](../../api/meta/metric/list.md#fields) field in the Metric class. |
+| 3560	| core	| Feature	| Implement [`units`](../../api/meta/metric/list.md#fields) field in the Metric class. |
 | 2613	| portal	| Feature	| Implement a [redirect to view portal](../../portals/portals-overview.md#portal-links) by name as well as by id. |
 
 ## Charts
