@@ -13,7 +13,7 @@ addPortal(string portal, string entity / List<?> entities, string comment)
 addPortal(string portal, string entity / List<?> entities, string comment, [] additionalParams)
 ```
 * [**required**] `portal` - Name of the preconfigured portal. If asterisk `*` is specified, all portals for the given entity will be attached to the notification. If the portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, e.g. 'tcollector - Linux' becomes 'tcollectorlinux' and the function returns the first matching portal.
-* `entity` or `entities` - Entities for which the portal will be generated. Required if the portal type is [template](../portals/creating-and-assigning-portals.md#template-portals).
+* `entity` or `entities` - Entities for which the portal will be generated. Required if the portal type is [template](../portals/portals-overview.md#template-portals).
   * `entity` - Entity name `string` is converted to `entity` url parameter (`&entity=test_e`). If entity is not found by name, it's matched by label (case insensitive match).
   * `entities` - `List<?>` are converted to `entities` url parameter as comma-separated list (`&entities=test_e,test_e1,test_e2`). If element type is `Entity`, entity.name would be substituted.
 * `comment` - Chart caption. If not specified or empty, default caption is generated as `${portalName} for ${ifEmpty(entity_label, entity)}` and can be retrieved with special placeholder `$caption`. The default comment contains links to the portal, entity and rule for [Email](email.md), [Slack](notifications/slack.md) and [Discord](notifications/discord.md) notifications.

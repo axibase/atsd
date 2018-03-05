@@ -175,7 +175,7 @@ To attach additional portals, select them at the `Additional Portal` drop-down.
 
 ![](images/email-screenshot-portals.png)
 
-If a portal is a [template](../portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be set based on the current window fields.
+If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags will be set based on the current window fields.
 
 ## Monitoring
 
