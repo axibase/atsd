@@ -327,7 +327,7 @@ The following matching rules apply:
 
 * Tags:
   * If the tags `t` argument is specified as `null` or empty string `''`, all tags are matched.
-  * To match records with empty tags use `'tags.isEmpty()=true'` or `tags.size()=0` in expression `p`.
+  * To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
   * The tags `t` argument matches records that include the specified tags but may also include other tags.
   * The tags `t` argument can be specified as follows:
     - String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
