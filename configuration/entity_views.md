@@ -2,35 +2,48 @@
 
 ## Overview
 
-Entity Views provide a way to construct customized tabular presentations for subsets of entities that typically share similar attributes. The enabled entity views are listed under the [Entities] tab drop-down in the top menu.
+Entity Views provide a way to construct customized tabular presentations for subsets of entities that typically share similar attributes. All entity views are listed at the `https://atsd_host:8443/entities/views` page which can be accessed via ATSD web interface.
+
+![](images/entity_views_5.png)
+
+## Reference
+
+* [Access Controls](#access-controls)
+* [Settings](#settings)
+* [Filters](#filters)
+* [Search](#search)
+* [Table](#table)
+* [Dynamic Filters](#dynamic-filters)
+* [Split Table by Column](#split-table-by-column)
+* [Portal](#portal)
 
 ## Access Controls
 
-The view can be accessed by users with a 'read' permission for the entity group to which the view is linked.
+The view can be accessed by users with a [**READ**](user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
 
 ## Settings
 
 **Name** | **Description**
 ---|---
-Name | View name displayed in the [Entities] tab drop-down.
-Enabled | Enabled or disabled status. Disabled entity views are not visible in the [Entities] tab drop-down.
+Name | View name displayed at the entity views page.
+Enabled | Enabled or disabled status. Disabled entity views are not visible in the **Entity Views** tab of the main menu.
 Entity Group | Entity Group which members are included in the view.
-Entity Expression | A optional boolean condition that members must satisfy in order to be included in the view. The syntax is the same as supported by expression-based entity groups.
+Entity Expression | An optional boolean condition that members must satisfy in order to be included in the view. The syntax is the same as supported by expression-based entity groups.
 Dynamic Filter | The default [dynamic filter](#dynamic-filters) applied to entities on initial page load.
 Split Table by Column | Enter column header (name) or its value to group entities into separate tables.
 Display in Main Menu | If enabled, the view is accessible under its own tab in the main menu.
-Display Index | Applies if entity view is displayed in the top menu. Specifies relative position of the tab. The tabs are sorted by index in ascending order.
-Multi-Entity Portal | [Portal](#portal) with time series charts for multiple entities displayed in the view. If no multi-entity portal is assigned, the default portal containing metrics in Series Value column is displayed.
+Display Index | Applies if entity view is displayed in the main menu. Specifies relative position of the tab. The tabs are sorted by index in ascending order.
 Menu Icon | Icon assigned to the view in the main menu.
+Multi-Entity Portal | [Portal](#portal) with time series charts for multiple entities displayed in the view. If no multi-entity portal is assigned, the default portal containing metrics in _Series Value_ [column](#column-types) is displayed.
 
 ## Filters
 
 The list of displayed entities is established as follows:
 
 * The list of entities is initially set to the current members of the selected entity group.
-* If the **Entity Expression** is specified, the members are checked with this expression. Members that fail to satisfy the condition are hidden.
-* If a **Dynamic Filter** is set by the user, the entities are additionally checked with the filter. Entities that fail to satisfy the filter condition are hidden.
-* If a **Search** text is specified, only entities with a column value containing the search keyword are displayed.
+* If the [**Entity Expression**](#settings) is specified, the members are checked with this expression. Members that fail to satisfy the condition are hidden.
+* If a [**Dynamic Filter**](#dynamic-filters) is set by the user, the entities are additionally checked with the filter. Entities that fail to satisfy the filter condition are hidden.
+* If a [**Search**](#search) text is specified, only entities with a column value containing the search keyword are displayed.
 
 > While the Dynamic Filter can be toggled by the user, the Entity Group and Entity Expression (if specified) are enforced at all times.
 
@@ -48,7 +61,7 @@ The table consists of multiple columns, one row per entity. Each cell displays a
 ---|---
 Type | Column type.
 Header | Column name.
-Value | Applicable to 'Entity Tag', 'Property Tag', 'Series Value' and 'Last Insert' [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
+Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Specifies if the cell value should also be clickable as a link. See [Links](#links) options.
 Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
 Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
@@ -66,17 +79,17 @@ Name Column | Entity name with a link to the editor page for the entity.
 Label Column | Entity label with a link to the editor page for the entity.
 Portals Column | Link to the portals page for the entity.
 Properties Column | Link to the properties page for the entity.
-Last Insert | Last insert date for all or one metric collected by the entity with a link to the last insert table.<br>If the column value is not specified, the last insert date is calculated for all metrics. The column value accepts settings in the format of `metric:[lag]`, where the optional `lag` parameter denotes the maximum delay in seconds. If the last insert date for the entity is before `now - lag`, the cell is highlighted with orange background.
+Last Insert | Last insert date for all or one metric collected by the entity with a link to the last insert table.<br>If the column value is not specified, the last insert date is calculated for all metrics. The column value accepts settings in the format of `metric:[lag]`, where the optional `lag` parameter denotes the maximum delay in seconds.<br> If the last insert date for the entity is before `now - lag`, the cell is highlighted with orange background. <br> See examples [below](#last-insert).
 
 #### Last Insert
 
-  * Highlight entitities if last insert date for **all** metrics is before `now - 900 seconds`
+  * Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
 
   ```javascript
   :900
   ```
   
-  * Highlight entitities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
+  * Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
 
   ```javascript
   cpu_busy:900
@@ -141,7 +154,6 @@ The following functions are available in 'Formatting' section:
 
 * [elapsedTime](../rule-engine/functions-time.md#elapsedtime)
 
-
 ## Dynamic Filters
 
 **Name** | **Description**
@@ -187,37 +199,39 @@ Assuming there are five entities in the selected entity group:
 
 Default entity view configuration:
 
-![](images/entity-view-split-config-empty.png)
+![](images/entity_views_1.png)
 
 The entity view without table splitting is displayed as follows, with all entities places into one table:
 
 ![](images/entity-view-split-empty.png)
 
-To split the table by entity tag 'location', specify the tag's name in the **Split Table by Column** field:
+To split the table by entity tag _'location'_, specify the tag's name in the **Split Table by Column** field:
 
-![](images/entity-view-split-config-location.png)
+![](images/entity_views_2.png)
 
-  ![](images/entity-view-split-location.png)
+![](images/entity-view-split-location.png)
 
 To group entities by column **header**, set the header name in the **Split Table by Column** field:
 
-![](images/entity-view-split-config-state.png)
+![](images/entity_views_3.png)
 
-  ![](images/entity-view-split-state.png)
+![](images/entity-view-split-state.png)
 
 If splitting by column **header** is enabled, grouping is performed based on formatted values.
 
-![](images/entity-view-split-config-start-time.png)
+![](images/entity_views_4.png)
 
 ![](images/entity-view-split-start-time.png)
 
 ## Portal
 
-If the Multi-Entity Portal is assigned manually or the entity view contains 'Series Value' columns, the statistics for entities can be viewed on a portal accessible with the [View Portal] button. 
+If the _Multi-Entity Portal_ is assigned manually or the entity view contains _Series Value_ [columns](#column-types), the statistics for entities can be viewed on a portal accessible with the **View Portal** button. 
 
-If no portal is selected, the default portal displays metrics for columns of type 'Series Value'.
+![](images/entity_views_6.png)
 
-The multi-entity portal is any portal that displays a metric for multiple entities using the `${entities}` placeholder.
+If no portal is selected, the default portal displays metrics for [columns](#column-types) of type _Series Value_.
+
+The multi-entity portal is any portal that displays a metric for [multiple entities](../portals/portals-overview.md#template-portals) using the `${entities}` placeholder. 
 
 ```ls
 [widget]
