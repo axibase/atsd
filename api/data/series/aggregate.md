@@ -34,6 +34,7 @@ The aggregation process is implemented as follows:
 | count  | number | Number of time units contained in the period. |
 | align | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
 | timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone displayed on the **Settings > System Information** page.|
+
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
 ### calendar
