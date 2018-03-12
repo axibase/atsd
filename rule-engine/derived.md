@@ -2,7 +2,7 @@
 
 ## Overview
 
-The derived command action allows storing new calculated metrics in the database by creating and processing custom commands defined using the [Network API](../api/network/README.md#network-api) syntax.
+Derived command actions store new calculated metrics in the database by creating and processing custom commands defined using the [Network API](../api/network/README.md#network-api) syntax.
 
 ## Command Template
 
@@ -74,7 +74,7 @@ To store derived commands with exactly the same time as the incoming command, se
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
-> If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` field will return the time of the oldest command, rounded to seconds.
+> If the 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` field will return the time of the oldest command, rounded to seconds.
 
 To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical-functions) function:
 
@@ -84,7 +84,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp
 
 ## Frequency
 
-The derived commands can be stored each time a command is received or removed from the window by setting the **Repeat** parameter to 'All'.
+Derived commands can be stored each time a command is received or removed from the window by setting the **Repeat** parameter to 'All'.
 
 The frequency can be lowered by adjusting the repeat interval.
 
@@ -121,7 +121,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 
 ## Examples
 
-### Moving Average (Last N Count)
+### Moving Average (Last *N* Count)
 
 * Window type: count-based
 * Window length: 10
@@ -133,12 +133,12 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 	series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
-### Moving Average (Last N Time)
+### Moving Average (Last *N* Time)
 
 * Window type: time-based
 * Window length: 10 minute
 * Condition: `true`
-* Frequency: All or Every N Minutes = 1 minute
+* Frequency: All or Every *N* Minutes = 1 minute
 * Command Template:
 
 ```ls
