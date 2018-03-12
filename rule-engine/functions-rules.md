@@ -6,16 +6,16 @@ The `rule` functions provide a way to check the status of windows created by oth
 
 The following match conditions are applied:
 
-* If the entity argument `e` is not specified, the same entity is used for matching regardless of grouping tags and message.
+* If the entity argument `e` is not specified, the same entity is used for matching regardless of grouping tags or message.
 * If the entity argument `e` is specified as null or empty string, any entity is matched.
 * The expression `p` can be built using tags, message, wildcards and [window fields](window.md#window-fields).
 
 The windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command. 
-For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such expression will return `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
+For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression will return `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
 
 > Open window means a window with status `OPEN` or `REPEAT`.
 
-Current window is excluded from matching.
+The current window is excluded from matching.
 
 ## Reference
 
@@ -35,7 +35,7 @@ The function returns `true` if a matching window is found, `false` otherwise.
 
 Examples:
 
-The following expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if rule 'disk_used_check' is open for the same entity.
+The following expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the 'disk_used_check' rule is open for the same entity.
 
 ```javascript
   avg() > 10 && rule_open('disk_used_check')
@@ -136,7 +136,7 @@ Example:
   avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'CANCEL'
 ```
 
-The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the first window for rule 'disk_used_check' for the same entity has any other status except `CANCEL`.
+The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the first window for 'disk_used_check' rule in the same entity has any other status except `CANCEL`.
 
 
 ## `rule_windows`
