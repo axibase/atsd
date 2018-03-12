@@ -25,7 +25,7 @@ By the default, the search is performed for the current entity that is initializ
 
 An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
-The function returns an empty string if no matching roperty records are found.
+The function returns an empty string if no matching property records are found.
 
 Examples:
 
@@ -116,7 +116,7 @@ Examples:
     NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
   ```
 
-  Returns true if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` would ignore changes such as:
+Returns true if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` would ignore changes such as:
 
   ``` java
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
@@ -132,7 +132,7 @@ Returns a map containing keys and tags for the specified [property search](prope
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must be specified as well.
 
 The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags will be returned.
 
@@ -166,9 +166,9 @@ Examples:
 
 Returns a list of maps, each map containing keys and tags for the specified [property search](property-search.md) expression `s`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
-By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity argument `e` must be specified as well.
 
 The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags will be returned.
 
