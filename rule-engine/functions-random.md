@@ -22,7 +22,7 @@ Returns a uniformly distributed double number, greater than or equal to `0.0` an
   randomNormal() double
 ```
 
-Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.
+Returns a normally distributed double number, with a mean value of `0.0` and standard deviation `1.0`.
 
 ### `randomItem` 
 
@@ -32,7 +32,7 @@ Returns a normally distributed double number, with mean `0.0` and standard devia
 
 Returns a random element from collection `c` using the **uniform** distribution. The probability of each element to be selected is `1/c.size()`.
 
-The function returns the selected element converted to string.
+The function returns the selected element converted to string format.
 
 An input collection can contain elements of any type, such as strings or numbers, and can be specified as follows:
 
@@ -48,7 +48,7 @@ An input collection can contain elements of any type, such as strings or numbers
 	  randomItem([1, 2, 3])
 	```
 
-	Note that although the input collection contains numbers, the returned element will be a string which has to be parsed to a number if necessary.
+Note that although the input collection contains numbers, the returned element will be a string which has to be parsed to a number if necessary.
 
 	```javascript
 	  randomItem([1, 2, 3]) = '2'
@@ -114,7 +114,7 @@ The keys in the map can be of any type, whereas the values must be numeric and r
 
 The function returns the randomly selected key converted to string.
 
-The sum of probabilities doesn't have to equal one as the inputs will be weighted to total one.
+The sum of probabilities doesn't have to equal 1.0 as the inputs will be weighted to total 1.0.
 
 An input map can be obtained using the `replacementTable()` lookup function.
 
