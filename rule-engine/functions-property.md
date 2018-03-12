@@ -50,10 +50,16 @@ An optional start date `d` argument controls which property records to include. 
 
 The function returns an empty list if the entity, property or tag is not found.
 
+To access the n-th element in the collection, use square brackets or `get(index)` method (starting with 0 for the first element).
+
 Examples:
 
 ```javascript
   property_values('docker.container::image')
+  
+  /* Returns the second value of the list */
+  property_values('docker.container::image')[1]
+  property_values('docker.container::image').get(1)
 ```
 
 ```javascript
@@ -175,11 +181,17 @@ Supported syntax options:
 
 The function returns an empty list if the entity, property or tag is not found.
 
+To access the n-th element in the collection, use square brackets or `get(index)` method (starting with 0 for the first element).
+
 Examples:
 
 ```javascript
   /* Returns list of maps with tags starting with 'cpu' in the 'configuration' type */
   property_maps('configuration::cpu*')
+  
+  /* Returns value of the 'host' key for the first map in the collection */
+  property_maps('configuration::cpu*')[0].get('host')
+  property_maps('configuration::cpu*').get(0).get('host')
   
   /* Returns list of maps of the 'configuration' type for the entity 'nurswgvml007' */
   property_maps('nurswgvml007','configuration::')
@@ -191,18 +203,24 @@ Examples:
 ### `getPropertyTypes`
 
 ```javascript
-  getPropertyTypes(string e[, string s[, string e]]) collection
+  getPropertyTypes(string e[, string s[, string e]]) [string]
 ```
 
-Returns a sorted collection of property types for the specified entity `e`.
+Returns a sorted set of property types for the specified entity `e`.
 
 Optional start date `s` and end date `e` arguments control the time range for selecting property records. The dates `s` and `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
+
+To access the n-th element in the collection, use square brackets or `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
 ```javascript
   /* Returns property types for entity nurswgvml007*/
   getPropertyTypes('nurswgvml007')
+  
+  /* Returns the first property type for entity nurswgvml007*/
+  getPropertyTypes('nurswgvml007')[0]
+  getPropertyTypes('nurswgvml007').get(0)
   
   /* Returns property types received after 2018-01-23T13:30:04.000Z */
   getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
