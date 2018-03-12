@@ -42,10 +42,10 @@ The named collections are listed on the **Data > Named Collections** page.
 
 To check the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use `get(integer n)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
-  ```java
-    author = (authors.size() == 0) ? 'n/a' : authors.get(0)
+  ```javascript
+    author = (authors.size() == 0) ? 'n/a' : authors[0]
   ```
 
 ### `IN`

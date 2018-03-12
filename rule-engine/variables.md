@@ -89,11 +89,11 @@ Both single and double quotes can be used to specify elements of string type.
   
 To check the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use `get(integer n)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
-  ```java
+  ```javascript
   authors = split(tags.authors, ',')
-  authors.size() == 0 ? 'n/a' : authors.get(0)
+  authors.size() == 0 ? 'n/a' : authors[0]
   ```  
 
 ### map
