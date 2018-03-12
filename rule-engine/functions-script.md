@@ -59,7 +59,7 @@ Only scripts in the  `./atsd/conf/script/` directory can be executed. The script
 chmod u=rwx,g=rx,o=r ./atsd/conf/script/*
 ```
 
-These scripts are executed by the `axibase` user.
+These scripts are executed under the `axibase` user context.
 
 ## Formatting
 
