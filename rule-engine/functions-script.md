@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `scriptOut` function provides a way to enrich notifications with extended information about the monitored object retrieved with a bash or a Python script.
+The `scriptOut` function provides a way to enrich notifications with extended information about the monitored object retrieved with a bash or Python script.
 
 The function executes the named script with the specified parameters and returns the script's response (stdout/stderr). The parameters often include window [placeholders](placeholders.md) such as `entity` or `tags` so that the same rule can enrich alerts for different entities.
 
@@ -59,11 +59,11 @@ Only scripts in the  `./atsd/conf/script/` directory can be executed. The script
 chmod u=rwx,g=rx,o=r ./atsd/conf/script/*
 ```
 
-The scripts are executed under the `axibase` user.
+These scripts are executed by the `axibase` user.
 
 ## Formatting
 
-The output of the `scriptOut` function can be formatted with backticks in case of markdown (chat messages) or with `<pre>` tag in case of html (email).
+The output of the `scriptOut` function can be formatted with backticks when using markdown (chat messages) or with `<pre>` tag when using HTML (email).
 
 ### Markdown Format
 
