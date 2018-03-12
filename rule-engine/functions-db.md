@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `db_*` functions retrieve series and message records from database. The `executeSqlQuery` function retrieves results of an SQL query executed against the database.
+The `db_*` functions retrieve series and message records from the database. The `executeSqlQuery` function retrieves the results of an SQL query executed against the database.
 
 The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
 
@@ -42,7 +42,7 @@ Example:
   value > 60 && db_last('temperature') < 30
 ```
 
-> As an alternative, if the specified metric was received in the same command, use [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command, even if they're not yet stored in the database.
+> As an alternative, if the specified metric was received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command, even if they're not yet stored in the database.
 
 ### `db_last(string m, string e)` 
 
@@ -255,7 +255,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 
 #### Example `Different Tags`
 
-In the example below, the `db_last('io_disk_percent_util')` function will search for first series with **any** tags (including no tags) because the io_disk_percent_util and disk_used metrics have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax option.
+In the example below, the `db_last('io_disk_percent_util')` function will search for the first series with **any** tags (including no tags) because the io_disk_percent_util and disk_used metrics have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax option.
 
 * Current Window
 
@@ -304,8 +304,8 @@ Returns the number of message records matching the specified interval `i`, messa
 ```
 Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
-> Note `date` is `null` due to milliseconds time format used by message object and stored in the `timestamp` field. 
+The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
+> Note `date` is `null` due to the use of millisecond time format by the message object and stored in the `timestamp` field. 
 
 ---
 
@@ -316,17 +316,17 @@ The following matching rules apply:
   * The end of the selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
   
 * Type:
-  * If the message type argument `g` is specified as `null` or empty string `''`, all types are matched.
+  * If the message type argument `g` is specified as `null` or an empty string `''`, all types are matched.
   
 * Source:
-  * If the message source argument `s` is specified as `null` or empty string `''`, all sources are matched. 
+  * If the message source argument `s` is specified as `null` or an empty string `''`, all sources are matched. 
 
 * Entity:
   * If the entity argument `e` is not specified, the **current** entity in the window is used for matching.
   * If the entity argument `e` is specified as `null` or empty string `''` or `*` wildcard, all entities are matched.
 
 * Tags:
-  * If the tags `t` argument is specified as `null` or empty string `''`, all tags are matched.
+  * If the tags `t` argument is specified as `null` or an empty string `''`, all tags are matched.
   * To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
   * The tags `t` argument matches records that include the specified tags but may also include other tags.
   * The tags `t` argument can be specified as follows:
@@ -376,20 +376,20 @@ The following matching rules apply:
   last_msg = db_message_last('60 minute', 'logger', '')
   /* 
   Check that the average exceeds 50 and the severity of the last message with type 'logger' 
-  for the current entity is greater or equal 'ERROR'. 
+  for the current entity is greater than or equal to 'ERROR'. 
   */
   avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 ```
 
 ```javascript
   /*
-  Retrieve last message with text starting with 'docker start sftp*'
+  Retrieve the last message with text beginning 'docker start sftp*'
   */
   db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
 
   /* 
   Returns the most recent message within 1 day for the current entity,
-  containg tag 'api_app_id=583' and regardless of type and source. 
+  containing tag 'api_app_id=583' and regardless of type or source. 
   */
   db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
   
