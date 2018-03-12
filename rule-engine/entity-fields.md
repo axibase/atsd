@@ -1,6 +1,6 @@
 # Entity Object Fields
 
-The following fields can be accessed using the dot notation, for example `getEntity('nurswgvml007').tags`.
+The following fields may be accessed using dot notation, for example `getEntity('nurswgvml007').tags`.
 
 |**Name**|**Description** |
 |:---|:---|
@@ -12,4 +12,4 @@ The following fields can be accessed using the dot notation, for example `getEnt
 | lastInsertTime           | Timestamp of the most recent series insert for any metric of the entity.|
 | name                     | Unique entity name. |
 | tags                     | Custom tags to store meta-data about the entity for grouping and filtering purposes.|
-| timeZone                 | Timezone for applying in date formatting functions returning datetime in local time.|     
+| timeZone                 | Local timezone will be used for applying in date formatting functions .|     
