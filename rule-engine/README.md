@@ -2,7 +2,7 @@
 
 ## Overview
 
-The rule engine enables automation of repetitive tasks based on real-time statistical analysis of the incoming data.
+The rule engine enables automation of repetitive tasks based on real-time statistical analysis of incoming data.
 
 Such tasks may include triggering a webhook, executing a system command, sending an alert to an [email](email.md) or [Slack channel](web-notifications.md), or generating derived metrics.
 
@@ -18,7 +18,7 @@ Example
     IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
-The [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value functions`](functions-value.md), [`database functions`](functions-db.md), and [`rule functions`](functions-rules.md).
+A [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value functions`](functions-value.md), [`database functions`](functions-db.md), and [`rule functions`](functions-rules.md).
 
 ## Concepts
 
@@ -37,7 +37,7 @@ The [condition](condition.md) can operate on a single metric defined in the curr
 
 ## In-Memory Processing
 
-The incoming data is processed by the rule engine in-memory, before the data is stored on disk.
+The incoming data is processed by the rule engine in-memory, before the data is stored on a disk.
 
 ![](images/atsd_rule_engine.png)
 
@@ -47,18 +47,17 @@ The data is maintained in [windows](window.md) which are in-memory structures in
 
 ### Filtering
 
-The incoming data samples are processed by a chain of filters prior to reaching the grouping stage. Such filters include:
+The incoming data samples are processed by a chain of filters prior to the grouping stage. Such filters include:
 
 * **Input Filter**. All samples are discarded if the **Settings:Input Settings > Rule Engine** option is disabled.
 
 * **Status Filter**. Samples are discarded for metrics and entities that are disabled.
 
-* [Rule Filters](filters.md) accept only data that satisfies the metric, entity, and tag filters specified in the rule.
+* [Rule Filters](filters.md) only accept data that satisfies the metric, entity, and tag filters specified in the rule.
 
 ### Grouping
 
-Once the sample passes through the filter chain, it is added to matching
-[windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples.
+Once the sample passes through the filter chain, it is added to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples.
 
 The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
 
@@ -75,16 +74,16 @@ The rule engine supports two types of windows:
 * Count-based
 * Time-based
 
-**Count-based** windows accumulate up to the specified number of samples. The samples are sorted in order of arrival, with the most recently received sample placed at the end of the array. When the window becomes full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample.
+**Count-based** windows accumulate up to the specified number of samples. The samples are sorted in order of arrival, with the most recently received sample being placed at the end of the array. When the window becomes full based on user specifications, the first sample (oldest arrival time) is removed from the window to free up space at the end of the array for an incoming sample to be added there.
 
-**Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window doesn't limit how many samples are held by the window. Its time range is continuously updated. Old records are automatically removed from the window once they're outside of the time range.
+**Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window does not limit how many samples may be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
 
 ### Condition Checking
 
 [Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
 
-When a window is updated, the rule engine checks the [condition](condition.md) that triggers response actions.
+When a window is updated, the rule engine checks the [condition](condition.md) that will trigger response actions.
 
 Condition example:
 
@@ -94,7 +93,7 @@ Condition example:
 
 ## Window Status
 
-[Windows](window.md) are stateful. When the condition for a given window becomes `true`, it is maintained in memory with status `OPEN`.
+[Windows](window.md) are stateful. When the condition for a given window becomes `true`, it is maintained in memory with the status `OPEN`.
 
 On subsequent `true` evaluations, the window status changes to `REPEAT`.
 
@@ -106,7 +105,7 @@ Window status can be accessed on the **Alerts > Rule Windows** page.
 
 ## Actions
 
-Actions are triggered on window status changes, for example on `OPEN` status or on every N-th `REPEAT` status occurrence.
+Actions are triggered on window status changes, for example upon window `OPEN` status or every N-th `REPEAT` status occurrence.
 
 Supported response actions:
 
@@ -117,7 +116,7 @@ Supported response actions:
 * [Generate derived metrics](derived.md)
 * [Log events to file](logging.md)
 
-The triggers for each action are configured separately. For example, it's possible to configure the rule so that logging events are generated on all repeat occurrences whereas email messages are sent every 6 hours.
+Triggers for all actions may be configured separately. For example, it's possible to configure a rule so that logging events are generated on all repeated occurrences whereas email messages are sent every 6 hours.
 
 ## Correlation
 
@@ -149,7 +148,7 @@ re-occurring.
 In order to minimize the number of rules with manual thresholds, the rule engine provides the following capabilities:
 
 - Condition [overrides](overrides.md).
-- Ability to compare windows of different length.
+- Comparison of windows with different lengths.
 - Automated thresholds determined by the `forecast()` function.
 
 ## Setting Thresholds
@@ -162,9 +161,9 @@ Thresholds can be set manually.
   value > 90
 ```
 
-This approach requires some effort to discover and maintain thresholds at a level that strikes a balance between `false` positives and missed alerts. [`Overrides`](#overrides) can be used to handle exceptions to the default baseline.
+This method of setting thresholds often requires some trial and error efforts to ascertain and preserve thresholds at such a level that arbitrates the balance between `false` positives and missed alerts. [`Overrides`](#overrides) can be used to handle exceptions to the default baseline.
 
-To reduce `false` positives, apply averaging functions to longer windows.
+To reduce `false` positives, apply an averaging functions to longer windows.
 
 ```javascript
   avg() > 90
@@ -176,7 +175,7 @@ To reduce a possible distortion caused by a small number of observations (outlie
   percetile(75) > 90
 ```
 
-Alternatively, use the `minimum` or a below-median percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that last-N consequitive samples are above the threshold.
+Alternatively, use the `minimum` or a below-median percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that the last *N* consecutive samples are above the threshold.
 
 
 ```javascript
@@ -213,13 +212,13 @@ Similarly, the `forecast_deviation` function can be utilized to compare actual a
 
 In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-db.md) to identify abnormal behavior in one of the metrics.
 
-The primary metric is expected to be below `50` as long as the second metric remains below `100`. Raise an alert otherwise.
+The primary metric is expected to be below `50` as long as the second metric remains below `100`. Otherwise, an alert will be raised.
 
 ```javascript
     avg() > 50 && db_statistic('avg', '1 hour', 'page_views_per_minute') < 100
 ```
 
-The same condition can be generalized with a ratio.
+The same condition can be generalized with a ratio as well.
 
 ```javascript
     avg() / db_statistic('avg', '1 hour', 'page_views_per_minute') > 2
@@ -248,7 +247,7 @@ To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
 
 ## Logging
 
-Status changes can be [logged](logging.md) in a customizable format to log files for integration and audit.
+Status changes can be [logged](logging.md) in a customizable format to separate log files for integration and audit.
 
 ## Viewing Alerts and Windows
 
