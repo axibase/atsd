@@ -4,7 +4,7 @@
 
 The `detailsTable` function assembles a table consisting of window and command fields printed in the specified format.
 
-Decimal numbers present in the table are rounded to 5 significant digits, except on the **Logging** and **Derived Commands** tabs.
+Decimal numbers presented in the table are rounded to 5 significant digits, except on the **Logging** and **Derived Commands** tabs.
 
 ## Syntax
 
