@@ -59,7 +59,7 @@ The condition is `true` when the last value is greater than `75`.
 
 ### Threshold Range
 
-The condition is `true` when the last value is between `75` and `90`, exclusive of any boundaries.
+The condition is `true` when the last value is greater than `75` and smaller than `90`.
 
 ```javascript
   value > 75 && value < 90
