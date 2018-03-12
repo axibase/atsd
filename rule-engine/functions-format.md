@@ -45,7 +45,7 @@ Example:
   formatBytes(number x, boolean si) string
 ```
 
-Display the total number of bytes `x` in a human-readable format. The function identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal to or exceeds 1 such unit. Units are decimal-based (1000) if the `si` parameter is set to `true`, and binary (1024) otherwise.
+The function returns the total number of bytes `x` in a human-readable format. The function identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal to or exceeds 1 such unit. Units are decimal-based (1000) if the `si` parameter is set to `true`, and binary (1024) otherwise.
 
 For example, if the unit is `1000` (`si` set to `true`):
 
@@ -82,7 +82,7 @@ Examples:
   convert(number x, string s) string
 ```
 
-The above command divides the number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit.
+The function divides the number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit.
 
 The unit prefix is case-insensitive and should be one of the following:
 
@@ -399,7 +399,7 @@ jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
   addTable([[string]] c, string f[, [string] | boolean h]) string
 ```
 
-This function prints a list of collection `c` as a multi-column table in the specified format `f`. Each element in the list is serialized into its own row in the table.
+This function prints `c` (list of lists) as a multi-column table in the specified format `f`. Each nested list in the parent list `c` is serialized into its own row in the table.
 
 The number of elements in each collection must be the same.
 
