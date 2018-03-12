@@ -2,14 +2,14 @@
 
 ## Overview
 
-Filters determine which commands should be processed by the rule. Commands that satisfy all filters are allocated to the rule [windows](window.md) for further processing such as adding data and evaluating the alert condition.
+Filters determine which commands should be processed by a rule. Commands that satisfy all filters are allocated to the rule [windows](window.md) for further processing such as adding data and evaluating the alert condition.
 
 ### Built-in Filters
 
 | **Name** | **Description** |
 | --- | --- |
 | Data Type | Checks that the command is of the specified type: `series`, `property`, `message`. |
-| Metric | Checks that metric is equal to the metric name specified in the rule. |
+| Metric | Checks that a metric is equal to the metric name specified in the rule. |
 
 ![](images/filter-dt-metric.png)
 
@@ -20,7 +20,7 @@ Filters determine which commands should be processed by the rule. Commands that 
 | Expression | Accepts commands for which the filter expression  returns `true`. |
 | Entity | Accepts commands only for entities selected in the rule. |
 | Entity Group | Accepts commands for entities that belong only to one of entity groups selected in the rule. |
-| Time | Accepts commands with timestamp that deviates by less than the specified interval from the current server time. |
+| Time | Accepts commands with a timestamp that deviates by less than the specified interval from the current server time. |
 
 ## Data Type Filter
 
@@ -118,13 +118,13 @@ entity.tags.location = 'SVL'
 
 ## Entity Group Filter
 
-The filter discards commands for entities that do not belong to one of entity groups specified in the rule. The filter is applied only if the list of selected entity groups is not empty.
+The filter discards commands for entities that do not belong to one of the entity groups specified in the rule. The filter is applied only if the list of selected entity groups is not empty.
 
 ![](images/filter-entity-group.png)
 
 ## Time Filter
 
-If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified 'grace' interval from the current server time. The filter is commonly used to ignore historical data.
+If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified 'grace' interval from the current server time. This filter is typically used to ignore historical data.
 
 ![](images/filter-time.png)
 
@@ -134,4 +134,4 @@ While the same condition such as `tags.mount_point = '/'` can be evaluated both 
 
 For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (e.g. mount_point = /dev) will be discarded early in the process without causing extra windows to be created.
 
-The [statistical functions](functions-statistical.md), on the other hand, operate on values stored in the window and therefore cannot be used during filtering stage. Since the window is not available at the filtering stage, the statistical functions return `zero` if included in the filter expression.
+[Statistical functions](functions-statistical.md), on the other hand, operate on values stored in the window and therefore cannot be used during the filtering stage. Since the window is not available at the filtering stage, the statistical functions shall return `zero` if included in a filter expression.
