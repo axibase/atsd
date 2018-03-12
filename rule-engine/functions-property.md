@@ -50,7 +50,7 @@ An optional start date `d` argument controls which property records to include. 
 
 The function returns an empty list if the entity, property or tag is not found.
 
-To access the n-th element in the collection, use square brackets or `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
@@ -181,7 +181,7 @@ Supported syntax options:
 
 The function returns an empty list if the entity, property or tag is not found.
 
-To access the n-th element in the collection, use square brackets or `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
@@ -210,7 +210,7 @@ Returns a sorted set of property types for the specified entity `e`.
 
 Optional start date `s` and end date `e` arguments control the time range for selecting property records. The dates `s` and `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
-To access the n-th element in the collection, use square brackets or `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
