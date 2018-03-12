@@ -12,7 +12,7 @@ Example: [Slack](notifications/slack.md) Alert
 
 ## Notification Types
 
-The rule engine supports various types of web notification types some of which encapsulate the integration details of the remote web services while [others](notifications/custom.md) provide maximum flexibility.
+The rule engine supports various types of web notifications, some of which encapsulate the integration details of the remote web services while [others](notifications/custom.md) provide maximum flexibility.
 
 ### Collaboration Services
 
@@ -39,7 +39,7 @@ The built-in notification types for chat and collaboration services deliver aler
 
 ## Window Status
 
-The notifications are triggered on window status events.
+Notifications are triggered on window status events.
 
 A [window](window.md) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
@@ -59,7 +59,7 @@ All windows for the current rule are deleted from memory if the rule is deleted 
 
 ### Triggers
 
-The web notification can be triggered whenever the window changes its status as well as at scheduled intervals when the status is `REPEAT`.
+The web notification can be triggered whenever the window changes its status as well as at scheduled intervals while the status is `REPEAT`.
 
 ### Status Events
 
@@ -80,7 +80,7 @@ The `OPEN` status is assigned to the window when the condition changes value fro
 
 The `REPEAT` status is assigned to an `OPEN` window when the condition returns `true` based on the second received command.
 
-When the window is in `REPEAT` status, the notification can be sent with the frequency specified in the rule editor.
+While the window is in `REPEAT` status, a notification can be sent with the frequency specified in the rule editor.
 
 ### `CANCEL` State
 
@@ -90,11 +90,11 @@ Triggering a repeat notification in `CANCEL` status is not supported. Such behav
 
 ## Payload
 
-The payload is determined by the notification type. Typically the payload is text content in the form of JSON document or form fields. Some built-in notification types support sending chart screenshots in addition to text content.
+The payload is determined by the notification type. Typically the payload is text content in the form of a JSON document or form fields. Some built-in notification types support sending chart screenshots in addition to text content.
 
 ## Creating Notification
 
-Open **Alerts > Web Notifications** page and click 'Create'.
+Open the **Alerts > Web Notifications** page and click 'Create'.
 
 Select the notification type in the drop-down.
 
@@ -160,8 +160,8 @@ If the window remains in the `REPEAT` status, it can be configured to repetitive
 | Frequency | Description |
 | --- | --- |
 | All | The notification is triggered each time the window is updated and remains in the `REPEAT` status (expression continues to be `true`). |
-| Every N events | The notification is triggered every Nth occurrence of the new data being added to the window. |
-| Every N minutes | The notification is triggered when the window is updated but no more frequently than the specified interval. |
+| Every *N* events | The notification is triggered every Nth occurrence of the new data being added to the window. |
+| Every *N* minutes | The notification is triggered when the window is updated but no more frequently than the specified interval. |
 
 ### Message Text
 
@@ -195,15 +195,15 @@ Attachments options are enabled in the rule editor if the capability is implemen
 
 ![](images/notify-attach.png)
 
-The option `Attach Portals` allows to send one or more portals. If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
+The option `Attach Portals` sends one or more portals when active. If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags will be resolved from the alert time series key.
 
 ![](images/notify-attach-4.png)
 
-The option `Series Chart` allows to send default portal for the current metric, entity and tags as an image. 
+The option `Series Chart` sends the default portal for the current metric, entity and tags as an image when active. 
 
 ![](images/notify-attach-1.png)
 
-The option `Attach Details` allows to send alert details table. It is possible to specify the [format](details-table.md#formats) of the details table or the [Telegram](./notifications/telegram.md) endpoint.
+The option `Attach Details` sends an alert details table when active. It is possible to specify the [format](details-table.md#formats) of the details table or a [Telegram](./notifications/telegram.md) endpoint.
 
 ![](images/notify-attach-2.png)
 
@@ -212,7 +212,7 @@ The option `Attach Details` allows to send alert details table. It is possible t
 
 ### Multiple Endpoints
 
-In order to update multiple endpoints for the same status change event, add notifications, identified by unique name, in the rule editor. The order in which notifications are delivered is non-deterministic.
+In order to update multiple endpoints for the same status change event, add notifications, identified by unique name, in the rule editor. The order in which notifications are delivered is nondeterministic.
 
 ## Stopping Messages
 
@@ -246,7 +246,7 @@ The notification request is delivered successfully if the endpoint returns `200`
 
 **No retry** is attempted in case of error. If the notification fails, the rule engine writes an `ERROR` event in the `atsd.log` and stores a corresponding messages with `CRITICAL` severity in the database.
 
-If the error occurs during the chart preparation, the rule engine falls back to sending a text message containing the chart link and the error details, if available.
+If the error occurs during chart preparation, the rule engine falls back to sending a text message containing the chart link and the error details, if available.
 
 ## Network Settings
 
