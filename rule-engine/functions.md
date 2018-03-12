@@ -16,7 +16,7 @@
 * [Property Functions](#property-functions)
 * [Script Functions](#script-functions)
 * [Rule Functions](#rule-functions)
-* [Utility Functions](#rule-functions)
+* [Utility Functions](#utility-functions)
 * [Link Functions](#link-functions)
 * [Portal Functions](#portal-functions)
 * [Security Functions](#security-functions)
