@@ -28,6 +28,7 @@ Supported fields:
 
    * [property(string s)](../../rule-engine/functions-property.md#property)
    * [property_values(string s)](../../rule-engine/functions-property.md#property_values), access to returned objects isn't supported
+   * [properties](./series/examples/query-entity-expr-entity-properties.md#description)
 
 * Lookup Functions
 
