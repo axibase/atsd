@@ -20,10 +20,10 @@ The bot is special user account created for automation and integration purposes.
 
 ## Set Webhook
 
-The webhook URL must contain [user credentials](../../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance, for example:
+The webhook URL must contain [user credentials](../../api/data/messages/webhook.md#authentication), [`command.message`](../../api/data/messages/webhook.md#command-parameters) parameter and the hostname/port of your ATSD instance, for example:
       
 ```elm
-https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram
+https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text 
 ```
         
 The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443) and have a valid [CA-signed](/administration/ssl-ca-signed.md) or [self-signed](/administration/ssl-self-signed.md) SSL certificate installed.
@@ -41,14 +41,14 @@ Execute one of the following commands to setup a webhook.
 * CA-signed SSL certificate installed
 
     ```bash
-    curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram" \
+    curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
     ```
 
 * Self-signed SSL certificate installed
 
     ```bash
-    curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram" \
+    curl -F "url=https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text" \
       -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
     ```
@@ -61,7 +61,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 {
   "ok": true,
   "result": {
-    "url": "https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram",
+    "url": "https://user:password@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text",
     "has_custom_certificate": true,
     "pending_update_count": 0,
     "max_connections": 40
