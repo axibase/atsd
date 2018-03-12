@@ -34,6 +34,6 @@ Forecast standard deviation.
 ```javascript
   forecast_deviation(double n) double
 ```
-Difference between a number `n` (such as last value) and forecast, divided by forecast standard deviation.
+Difference between a number `n` (such as the last value) and a forecasted value, divided by the forecast standard deviation.
 
 Formula: `(n - forecast())/forecast_stdev()`.
