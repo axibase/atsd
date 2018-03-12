@@ -2,7 +2,7 @@
 
 ## Overview
 
-The functions format numbers, dates, collections, and maps to strings according to the specified format.
+These functions format numbers, dates, collections, and maps to strings according to the specified format.
 
 ## Reference
 
@@ -45,7 +45,7 @@ Example:
   formatBytes(number x, boolean si) string
 ```
 
-Display number of bytes `x` in a human-readable format. The function identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal or exceeds 1 such unit. Units are decimal-based (1000) if the `si` parameter is set to `true`, and binary (1024) otherwise.
+Display the total number of bytes `x` in a human-readable format. The function identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal to or exceeds 1 such unit. Units are decimal-based (1000) if the `si` parameter is set to `true`, and binary (1024) otherwise.
 
 For example, if the unit is `1000` (`si` set to `true`):
 
@@ -82,9 +82,9 @@ Examples:
   convert(number x, string s) string
 ```
 
-Divides number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit. 
+The above command divides the number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit.
 
-The unit prefix is case-insensitive and should be one of:
+The unit prefix is case-insensitive and should be one of the following:
 
   * 'K', 'Kb' (1000)
   * 'Ki', 'KiB' (1024)
@@ -114,7 +114,7 @@ Examples:
   date_format(long t, string p, string z) string
 ```
 
-Converts timestamp `t` to string according to the specified [datetime pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and the [timezone](../shared/timezone-list.md) `z`.
+Converts timestamp `t` to a string according to the specified [datetime pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and the [timezone](../shared/timezone-list.md) `z`.
 
 The input timestamp is specified as UNIX milliseconds.
 
@@ -182,7 +182,7 @@ Example:
   formatIntervalShort(long interval) string
 ```
 
-Converts interval in UNIX milliseconds to a formatted interval consisting of up to two highest subsequent non-zero time units, where unit is one of years, days, hours, minutes, and seconds.
+Converts interval in UNIX milliseconds to a formatted interval consisting of up to the two highest subsequent non-zero time units, where the unit comprises years, days, hours, minutes, and seconds.
 
 Examples:
 
@@ -190,7 +190,7 @@ Examples:
   /* Return formatted interval: 2y 139d */
   formatIntervalShort(75228435000L)
 
-  /* Assuming current time of 2017-08-15T00:01:30Z, return short interval of elapsed time: 1m 30s */
+  /* Assuming current time of 2017-08-15T00:01:30Z, returns a short interval of elapsed time: 1m 30s */
   formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))  
 ```  
 
@@ -200,7 +200,7 @@ Examples:
    addTable([] m, string f) string
 ```
 
-The function prints the input map `m` as a two-column table in the specified format `f`.
+This function prints the input map `m` as a two-column table in the specified format `f`.
 
 The first column in the table contains map keys, whereas the second column contains the corresponding map values.
 
@@ -317,7 +317,7 @@ If the header argument `h` is specified as a collection of strings, it replaces 
 
 Examples:
 
-`property_maps('nurswgvml007','jfs::', 'today')` returns following collection:
+`property_maps('nurswgvml007','jfs::', 'today')` returns the following collection:
 
 ```ls
 [
@@ -399,7 +399,7 @@ jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
   addTable([[string]] c, string f[, [string] | boolean h]) string
 ```
 
-The function prints a list of collections `c` as a multiple-column table in the specified format `f`. Each element in the list is serialized into its own row in the table.
+This function prints a list of collection `c` as a multi-column table in the specified format `f`. Each element in the list is serialized into its own row in the table.
 
 The number of elements in each collection must be the same.
 
