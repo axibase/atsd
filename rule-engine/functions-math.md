@@ -2,7 +2,7 @@
 
 ## Overview
 
-The math functions perform basic numeric operations on the input number and return a number as the result.
+Math functions perform basic numeric operations on the input number and return a number as the result.
 
 ## Reference
 
@@ -34,7 +34,7 @@ Returns the absolute value of `x`.
   ceil(double x) long
 ```
 
-Returns the smallest integer that is greater than or equal `x`.
+Returns the smallest integer that is greater than or equal to `x`.
 
 ### `floor`
 
@@ -42,7 +42,7 @@ Returns the smallest integer that is greater than or equal `x`.
   floor(double x) long
 ```
 
-Returns the largest integer that is less than or equal `x`.
+Returns the largest integer that is less than or equal to `x`.
 
 ### `pow`
 
@@ -58,13 +58,13 @@ Return `x` raised to the power of `y`.
   round(double x[, int y]) long
 ```
 
-Returns `x` rounded to the `y` decimal places (precision). 
+Returns `x` rounded to `y` decimal places (precision). 
 
 The precision is 0 if omitted.
 
 `round(x, 0)` rounds the number to the nearest integer.
 
-If `y` is less than 0, the number is rounded to the left of the decimal point.
+If `y` is less than 0, the number is rounded to the left of the decimal point by the indicated number of places.
 
 ### `max`
 
