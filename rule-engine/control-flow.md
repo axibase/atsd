@@ -15,7 +15,7 @@ The `if` and `else` branches accept boolean conditions.
 @end{}
 ```
 
-The result of applying this template is the original text without text contained in branches that evaluated to `false`.
+The result of applying this template is the original text less any text contained in branches that evaluated to `false`.
 
 The following example adds the table with entity tags only for `nurswgvml007` entity.
 
@@ -33,7 +33,7 @@ The following example adds the table with entity tags only for `nurswgvml007` en
 @end{}
 ```
 
-The result is the original text with inserted blocks of text for each item in the collection.
+The result is the original text plus inserted blocks of text for each item in the collection.
 
 Note that the items in the collection are referenced using `@{}` syntax instead of the default placeholder `${}` syntax.
 
