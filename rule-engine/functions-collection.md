@@ -2,9 +2,9 @@
 
 ## Overview
 
-The collection functions return information about the collection or check it for the presence of the specified element.
+The collection functions return information about the collection or check it for the presence of a specified element.
 
-The collection can be created by declaring its elements inline, enclosed in square brackets:
+A collection can be created by declaring its elements inline, enclosed in square brackets:
 
 
 ```javascript
@@ -36,13 +36,13 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
   collection(string s) [string]
 ```
 
-Returns an array of strings loaded for the specified named collection `s`.
+Returns an array of strings which have been loaded with the specified string `s`.
 
 The named collections are listed on the **Data > Named Collections** page.
 
 To check the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
 
   ```javascript
     author = (authors.size() == 0) ? 'n/a' : authors[0]
@@ -92,7 +92,7 @@ Examples:
   matchList(string s, string c) boolean
 ```
 
-Returns `true` if `s` is contained in the named collection identified by name `c`.
+Returns `true` if `s` is contained in the collection named `c`.
 
 The collection `c` may include expressions with wildcards.
 
