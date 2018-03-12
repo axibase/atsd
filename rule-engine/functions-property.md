@@ -203,12 +203,12 @@ Examples:
 ### `getPropertyTypes`
 
 ```javascript
-  getPropertyTypes(string e[, string s[, string e]]) [string]
+  getPropertyTypes(string e[, string s[, string d]]) [string]
 ```
 
 Returns a sorted set of property types for the specified entity `e`.
 
-Optional start date `s` and end date `e` arguments control the time range for selecting property records. The dates `s` and `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
+Optional start date `s` and end date `d` arguments control the time range for selecting property records. The dates `s` and `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
 To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
