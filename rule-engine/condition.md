@@ -1,12 +1,12 @@
 # Condition
 
-Condition is a boolean expression which is evaluated when data is received by or removed from the window. For example, the condition `value > 50` returns `true` if the last received value exceeds 50.
+A condition is a boolean expression which is evaluated when data is received by or removed from the window. For example, the condition `value > 50` returns `true` if the last received value exceeds 50.
 
 The condition consists of one or multiple boolean checks combined with [boolean operators](operators.md#boolean-operators) `AND` (`&&`), `OR` (`||`), and `NOT` (`!`).
 
 The expression can include command fields, literal values, window/entity/metric fields, user-defined variables and [functions](functions.md).
 
-When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of 'On Cancel' triggers.
+When the condition evaluates to `true` for the first time, the [window](window.md) status will change to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window reassumes the `CANCEL` status triggering a corresponding set of 'On Cancel' triggers.
 
 Note that [`Overrides`](overrides.md) take precedence over the condition.
 
@@ -59,7 +59,7 @@ The condition is `true` when the last value is greater than `75`.
 
 ### Threshold Range
 
-The condition is `true` when the last value is between `75` and `90`, exclusive of the boundaries.
+The condition is `true` when the last value is between `75` and `90`, exclusive of any boundaries.
 
 ```javascript
   value > 75 && value < 90
@@ -77,13 +77,13 @@ The number of values in the window is less than `5` from the time the window is 
 
 ### Latest-N Average
 
-For a time-based window with a duration of 5 minutes, the condition is `true` when average of values with timestamps greater than current time minus window duration exceeds `75`.
+For a time-based window with a duration of 5 minutes, the condition is `true` when the average of values with timestamps greater than the current time minus window duration exceeds `75`.
 
 ```javascript
   avg() > 75
 ```
 
-The number of samples in the window can range from 0 (when the oldest value exits the window) to unlimited.
+The number of samples in the window can range from 0 (when the oldest value exits the window) to infinity.
 
 ### All Values Are Above Threshold
 
