@@ -11,5 +11,5 @@ The following fields may be accessed using dot notation, for example `getEntity(
 | label                    | User-friendly entity label. |
 | lastInsertTime           | Timestamp of the most recent series insert for any metric of the entity.|
 | name                     | Unique entity name. |
-| tags                     | Custom tags to store meta-data about the entity for grouping and filtering purposes.|
-| timeZone                 | Local timezone will be used for applying in date formatting functions .|     
+| tags                     | Custom attributes to store metadata about the entity.|
+| timeZone                 | Timezone in which the entity is located.|     
