@@ -2,7 +2,7 @@
 
 ## Overview
 
-Security functions check user permissions as part of the rule notification logic. These functions can be used to allow or deny certain response actions such as sending portals or invoking scripts.
+Security functions check user permissions as part of rule notification logic. These functions can be used to allow or deny certain response actions such as sending portals or invoking scripts.
 
 ## Reference
 
