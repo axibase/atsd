@@ -2,7 +2,7 @@
 
 ## Overview
 
-The functions retrieve collections and maps of strings from replacement tables, collections, and other entities.
+These functions retrieve collections and maps of strings from replacement tables, collections, and other entities.
 
 The replacement tables are listed on the **Data > Replacement Tables** page.
 
@@ -40,7 +40,7 @@ Returns entity tags for entity `e` as a map.
 
 If the entity is not found, an empty map is returned.
 
-If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using applicable entity tag templates which are listed on **Settings > Tag Templates** page.
+If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using the applicable entity tag templates which are listed on **Settings > Tag Templates** page.
 
 To exclude specific tags from the results, use the `excludeKeys()` function:
 
@@ -89,7 +89,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 ```
 Retrieves an entity object by name. If `l` set to `true` entity will be searched by label if it is not found by name. By default `l` is false.
 
-The object's [fields](entity-fields.md) can be accessed using the dot notation, for example `getEntity('nurswgvml007').label`.
+The object's [fields](entity-fields.md) can be accessed using dot notation, for example `getEntity('nurswgvml007').label`.
 
 The function returns `null` if the entity `e` is not found.
 
@@ -152,7 +152,7 @@ Same as `getEntities(string m, string s, string e, object p).size()`.
 ```javascript
   getEntityName(string e) string
 ```
-Returns normalized (lower-cased) entity name for the input string `e`. The function searches for entity by name `e` in case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in case-insensitive manner. 
+Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner. 
 
 If the entity cannot be found, the original input string `e` is returned.
 
@@ -164,9 +164,9 @@ If the entity cannot be found, the original input string `e` is returned.
 
 Retrieves a list of strings for the specified named collection `s`. Named collections are defined on the **Data > Named Collections** page.
 
-If the collection is not found, an empty list is returned.
+If no collection is found, an empty list is returned.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
