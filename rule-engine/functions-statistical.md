@@ -2,7 +2,7 @@
 
 ## Overview
 
-Univariate statistical functions listed below perform a calculation on the array of numeric values stored in the window.
+The univariate statistical functions listed below perform calculations on an array of numeric values stored in a window.
 
 > The functions cannot be invoked in [filter](filters.md#filter-expression) expressions.
 
@@ -45,21 +45,21 @@ Univariate statistical functions listed below perform a calculation on the array
 ```javascript
   avg() double
 ```
-Average value. For example, the `avg()` function for a `5-minute` time-based window returns an average value for all samples received within this period of time.
+Average value function. For example, `avg()` for a `5-minute` time-based window returns the average value for all samples received within this period of time.
 
 ### `mean`
 
 ```javascript
   mean() double
 ```
-Average value. Same as `avg()`. 
+Average value function. Same as `avg()`. 
 
 ### `sum`
 
 ```javascript
   sum() double 
 ```
-Sum of values.
+Sum of all included values.
 
 ### `min`
 
@@ -96,21 +96,21 @@ Time measured in epoch seconds.
 ```javascript
   count() long
 ```
-Count of values. 
+Value count. 
 
 ### `percentile`
 
 ```javascript
   percentile(double n) double
 ```
-`n`-th percentile. `n` can be a fractional number.
+`n`-th percentile function. `n` multipled by the number of vaules is the index for the function. `n` can be a fractional number.
 
 ### `median`
 
 ```javascript
   median() double
 ```
-50% percentile. Same as `percentile(50)`.
+50% percentile (median) function. Same as `percentile(50)`.
 
 ### `variance`
 
@@ -210,7 +210,7 @@ Returns true if last value is smaller than any previous value.
 ```javascript
   threshold_time(double t) double
 ```
-Number of minutes until the sample value reaches specified threshold `t` based on extrapolation of the difference between the last and first value.
+Number of minutes until the sample value reaches the specified threshold `t` based on extrapolation of the difference between the last and first value.
 
 ### `threshold_linear_time`
 
@@ -238,7 +238,7 @@ Difference between last and first value per minute. Same as `rate_per_second()/6
 ```javascript
   rate_per_hour() double
 ```
-Difference between last and first value per hour. Same as `rate_per_second()/3600`. 
+Hourly difference between last and first value input. Same as `rate_per_second()/3600`. 
 
 ### `slope`
 
@@ -305,7 +305,7 @@ Sum of elements matching the specified condition `c` within interval `i` or with
 
 ## Interval Selection
 
-By default, the statistical functions calculate the result based on all samples stored in the window. The range of samples can be adjusted by passing an optional argument - specified as sample count `c` or interval `i` - in which case the function will calculate the result based on the most recent samples.
+By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `c` or interval `i` - in which case the function will calculate the result based on the most recent samples.
 
 ```javascript
 avg([string i | integer c]) double
