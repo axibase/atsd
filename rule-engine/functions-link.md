@@ -2,7 +2,7 @@
 
 ## Overview
 
-The functions return URLs to ATSD pages based on the database URL (set the `server.url` property) and the current [window](window.md) context.
+These functions return URLs to ATSD pages based on the database URL (set the `server.url` property) and the current [window](window.md) context.
 
 The URLs are automatically [inlined](links.md#inline-links) in email notifications and in web notifications that support inline links.
 
@@ -44,7 +44,7 @@ The inline links can be also assembled manually using the syntax supported by th
 
 Returns the URL to the entity `e` page on the target ATSD instance. The entity name is URL-encoded if necessary.
 
-If match entity parameter `m` is set to `true`, the entity will be matched by label if it's not found by name.
+If the match entity parameter `m` is set to `true`, the entity will be matched by label if it cannot found by name.
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
@@ -54,7 +54,7 @@ Example:
 getEntityLink('nurswgvml007')
 ```
 
-The returned link includes path to the entity page on the target database server:
+The returned link includes the path to the entity page on the target database server:
 
 ```elm
 https://atsd_host:8443/entities/nurswgvml007
@@ -74,7 +74,7 @@ serverLink + '/entity/' + urlencode(entity)
 
 Returns the URL to the property table for entity `e` and property type `t` on the target database server.
 
-If match entity parameter `m` is set to `true`, the entity will be matched by label if it's not found by name.
+If the match entity parameter `m` is set to `true`, the entity will be matched by label if it cannot be found by name.
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
@@ -144,7 +144,7 @@ Optional `f` parameter creates an [inline link](links.md#inline-links) in one of
 
 Displayed as 'Default' link in inline mode.
 
-> Available only in rules with `Series` data type.
+> Available only for rules with `Series` data type.
 
 Example:
 
