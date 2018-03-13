@@ -7,7 +7,7 @@
 ```java
   value(string m) number
 ```
-Retrieves value for the specified metric `m` received in the same `series` command or parsed from the same row in the CSV file.
+Retrieves the value for the specified metric `m` received in the same `series` command or parsed from the same row in the CSV file.
 
 Example:
 
@@ -19,7 +19,7 @@ Example:
 series e:sensor01 m:pressure=3.5 m:temperature=80
 ```
 
-Assuming the rule was created for the `pressure` metric, the condition will resolve and evaluate to `true` for the above series command.
+Assuming the rule was created for the `pressure` metric, the condition will resolve and evaluate to `true` for the above series command. If the value of the `pressure` metric was less than the value condition defined by the first condition (`value > 1.5`) the condition will evaluate to `false`.
 
 ```ls
 3.5 > 1.5 && 80 > 50
