@@ -11,7 +11,7 @@ The integration relies on the following [Jenkins API](https://wiki.jenkins.io/di
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the [template](resources/custom-jenkins-notification.xml) used in this example. 
+Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-jenkins-notification.xml), used in this example. 
 
 To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
@@ -92,7 +92,7 @@ Set **Enabled** to **Yes** and choose the previously created web notification fr
 
 Enable **Open** and **Repeat** triggers. Set the **Repeat Interval** to **All**.
 
-Specify the same settings for **Open** and **Repeat** triggers:
+Specify the same settings for the **Open** and **Repeat** triggers:
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -102,7 +102,7 @@ Specify the same settings for **Open** and **Repeat** triggers:
 
 ![](images/jenkins_rule_notification.png)
 
-Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and `Parameters` marked as editable.
+Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and `Parameters` are marked as editable.
 
 When the notification is executed, all placeholders will be resolved as follows:
 
@@ -113,11 +113,11 @@ timezone=Etc/UTC
 run_extra_tests=false
 ```
 
-If the placeholder is not found, it will be substituted with an empty string.
+If the placeholder is not found, it will be replaced with an empty string.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the page **Data > Data Entry** and submit the following command:
 
 ```
   series e:test_e m:test_m=2
