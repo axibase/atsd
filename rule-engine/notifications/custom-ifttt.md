@@ -4,7 +4,7 @@
 
 The following example demonstrates how to trigger an action in [IFTTT](https://ifttt.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-The integration relies on the [IFTTT Webhook](https://ifttt.com/maker_webhooks) trigger.
+This type integration relies on the [IFTTT Webhook](https://ifttt.com/maker_webhooks) trigger.
 
 ## Create IFTTT Applet
 
@@ -16,7 +16,7 @@ Click **New Applet**.
 
 ![](images/ifttt_applet_2.png)
 
-Click **this** to create a trigger.
+Click **(+) this** to create a trigger.
 
 ![](images/ifttt_applet_3.png)
 
@@ -24,7 +24,7 @@ Search for **Webhooks** and select it.
 
 ![](images/ifttt_applet_4.png)
 
-Click **Connect** to setup a webhook trigger.
+Click **Connect** to set up a webhook trigger.
 
 ![](images/ifttt_applet_5.png)
 
@@ -36,7 +36,7 @@ Enter an event name such as **atsd_custom_trigger** and click **Create trigger**
 
 ![](images/ifttt_applet_7.png)
 
-Click **that** to create a event.
+Click **(+) that** to create a event.
 
 ![](images/ifttt_applet_8.png)
 
@@ -48,7 +48,7 @@ Click **Connect** to setup event.
 
 ![](images/ifttt_applet_10.png)
 
-Enter a phone number to receive messages from ATSD and click **Send PIN**. Check your device and enter the received PIN. Click **Connect**.
+Enter a phone number to receive messages from ATSD and click **Send PIN**. Check your device and enter the PIN you've received. Click **Connect**.
 
 ![](images/ifttt_applet_11.png)
 
@@ -85,7 +85,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<IFTTT_KEY>` field with the IFTTT webhook token.
 
-The `Endpoint URL` should look as follows: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
+The `Endpoint URL` should look like this: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
 
 You can find your IFTTT token in the `Webhooks` examples. Go to [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**.
 
@@ -95,7 +95,7 @@ Copy the key.
 
 ![](images/ifttt_key_2.png)
 
-Keep the `${webhook_name}` placeholder in the URL path so that it can be customized in the rule editor. This would allow you to send SMS from different applets using the same web notification.
+Keep the `${webhook_name}` placeholder in the URL path so that it can be customized in the rule editor. This will allow you to send SMS messages from different applets using the same web notification.
 
 ### Payload
 
@@ -139,7 +139,7 @@ Set **Enabled** to **Yes** and choose the previously created web notification fr
 
 Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**.
 
-Specify the webhook identifier `atsd_custom_webhook` into the `webhook_name` parameter for all triggers.
+Specify the webhook identifier `atsd_custom_webhook` in the `webhook_name` parameter for all triggers.
 
 ![](images/ifttt_rule_notification_open.png)
 
@@ -170,4 +170,4 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](images/ifttt_alert_open.png)
 
-Check your device phone to make sure the SMS was received.
+Check your device to make sure the SMS was received.
