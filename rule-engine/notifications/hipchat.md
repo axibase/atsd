@@ -2,15 +2,15 @@
 
 ## Overview
 
-The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messages, alert detail tables, and charts into [HipChat Data Center](https://www.atlassian.com/software/hipchat/enterprise/data-center) channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
+`HIPCHAT` [notifications](../web-notifications.md) send alert messages, alert detail tables, and charts into [HipChat Data Center](https://www.atlassian.com/software/hipchat/enterprise/data-center) channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
 
 ## Prerequisites
 
-* Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into HipChat.
+* Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots into HipChat.
 
 ## Create Bot
 
-* Login into HipChat as an administrator.
+* Log in to HipChat as an administrator.
 * Click on **System**.
 
     ![](images/system.png)
@@ -37,9 +37,9 @@ The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messa
     ![](images/bot_icon.png)
 
 * Click on **Profile**.
-* Open **API tokens**. Make sure you are using API **v2**: otherwise you'll see warning.
+* Open **API tokens**. Make sure you are using API **v2**: otherwise you will receive a warning from the system.
 
-* Choose the **Send Message** and the **Send Notification** options from the **Scopes** field.
+* Choose **Send Message** and the **Send Notification** options from the **Scopes** field.
 * Fill in the **Label** field.
 * Click **Create**.
 
@@ -50,7 +50,7 @@ The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messa
 
 ## Create Room
 
-* Login into HipChat again as an administrator.
+* Log in to HipChat again as an administrator.
 * Click **Start chatting**.
 * Click **Create a room**.
 
@@ -64,21 +64,21 @@ The `HIPCHAT` [notification](../web-notifications.md) allows sending alert messa
 
     ![](images/invite_bot.png)
 
-## Lookup Room Id
+## Look Up Room ID
 
 * Click on the team name.
 
     ![](images/team_name.png)
 
-* Click on the recently created room.
+* Click on the newly created room.
 
     ![](images/created_room.png)
 
-* Check the URL. The last number is the room Id.
+* Check the URL. The last number is the room ID.
 
     ![](images/room_url.png)
 
-In addition to roomId, you can use room name, for example `test-axibase`, when sending messages.
+In addition to the room ID, you can search by room name, for example `test-axibase`, when sending messages.
 
 ## Create HipChat Notification in ATSD
 
@@ -89,8 +89,8 @@ In addition to roomId, you can use room name, for example `test-axibase`, when s
     ![](images/hipchat_1.png) 
     
 * Specify the `Endpoint URL`.
-* Copy the `Token` from the HipChat Data Center client into the `Auth Token` field in the configuration form.
-* Copy the room Id or room name from the HipChat Data Center client into the `Room ID` field in the configuration form.
+* Copy the `Token` from the HipChat Data Center client into the `Auth Token` field of the configuration form.
+* Copy the room ID or room name from the HipChat Data Center client into the `Room ID` field in the configuration form.
 * Select **Test Portal** to test the screenshot.
 
     ![](images/hipchat_settings.png)
@@ -99,7 +99,7 @@ In addition to roomId, you can use room name, for example `test-axibase`, when s
 
    ![](images/hipchat_2.png)
 
-* If test is OK, set the status to **Enabled** and click **Save**.  
+* If test is passed, set the status to **Enabled** and click **Save**.  
 
 ## Proxy Settings
 
@@ -140,11 +140,11 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
     CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
 ```
 
-* Save the rule by clicking on the **Save** button.
+* Save the rule by clicking the **Save** button.
 
     ![](images/hipchat_notification.png)
 
-* The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+* The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Example
 
