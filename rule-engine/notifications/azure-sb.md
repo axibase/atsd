@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `AZURE SB` [notification](../web-notifications.md) provides a way to send messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic on window status events.
+`AZURE SB` [notifications](../web-notifications.md) send messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic upon window status events.
 
 ## Notification Settings
 
@@ -30,9 +30,9 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 ## Placeholders
 
-The [placeholders](../placeholders.md) are supported in the request parameter values.
+[Placeholders](../placeholders.md) are supported in the request parameter values.
 
-The placeholders are substituted with actual field values when the request is initiated.
+Placeholders are substituted with actual field values when the request is initiated.
 
 If the placeholder doesn't exist, it is substituted with an empty string.
 
