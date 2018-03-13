@@ -10,14 +10,14 @@ The payload is sent using the `POST` method.
 
 ## Content Types
 
-You can choose to send the payload as a `JSON` document or an HTML form.
+You can choose to send the payload as a `JSON` document or HTML form parameters.
 
 * `application/json`
 * `application/x-www-form-urlencoded`
 
 ## Headers
 
-By default, the request will include standard HTTP headers such as Content-Length, Content-Type, User-Agent etc.
+The request will include standard HTTP headers: Content-Length, Content-Type, User-Agent, Host, Connection, Accept-Encoding.
 
 ## Message Signature
 
@@ -35,7 +35,7 @@ Request headers are not included in the signed message content.
 
 ## Payload
 
-The JSON payload includes all fields that are relevant to the alert, including entity and metric metadata.
+The JSON payload includes all available alert fields as well as entity and metric metadata.
 
 ## Response
 
