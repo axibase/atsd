@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **webhook** [notification](../web-notifications.md) provides a way to send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribing service is responsible for parsing, handling, and reacting to the received event.
+**Webhook** [notifications](../web-notifications.md) send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribed service is responsible for parsing, handling, and reacting to the received event.
 
 ## Method
 
@@ -10,14 +10,14 @@ The payload is sent using the `POST` method.
 
 ## Content Types
 
-You can choose to send the payload as a `JSON` document or an html form.
+You can choose to send the payload as a `JSON` document or an HTML form.
 
 * `application/json`
 * `application/x-www-form-urlencoded`
 
 ## Headers
 
-The request will include the standard HTTP headers such as Content-Length, Content-Type, User-Agent etc.
+By default, the request will include standard HTTP headers such as Content-Length, Content-Type, User-Agent etc.
 
 ## Message Signature
 
@@ -29,7 +29,7 @@ This header contains the lower-cased `HMAC-SHA1` hex digest of the payload.
 x-axi-signature: sha1=232c3cd1dedf9f5a5ac42bf63275b8b686ae53b6
 ```
 
-In case of `application/x-www-form-urlencoded` content type, the message is prepared for signing by sorting request parameters by name, URL-encoding both parameter names and values, and then concatenating the sorted list of `name=value` pairs into a string using ampersand `&` character as a separator.
+When using the `application/x-www-form-urlencoded` content type, the message is prepared for signing by sorting request parameters by name, URL-encoding both parameter names and values, and then concatenating the sorted list of `name=value` pairs into a string using the ampersand `&` character as a separator.
 
 Request headers are not included in the signed message content.
 
