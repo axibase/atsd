@@ -28,7 +28,7 @@ Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your githu
 
 The `Endpoint URL` should look as follows: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
 
-Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that one can customize them in the rule editor. This would allow you to add comments to different issues re-using the same web notification configuration.
+Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that may be customized in the rule editor. This  allows you to add comments to different issues re-using the same web notification configuration.
 
 Enter an existing authorization token in `Authorization` header or create a new one.
 
@@ -78,7 +78,7 @@ Go to user settings.
 
 ![](images/github_ui_token_1.png)
 
-Open developer settings tab.
+Open the Developer Settings tab.
 
 ![](images/github_ui_token_2.png)
 
@@ -179,6 +179,6 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](images/github_alert_open.png)
 
-Check the Github issue to make sure the new comment was added.
+Check the issue on Github to make sure the new comment was added.
 
 ![](images/github_test.png)
