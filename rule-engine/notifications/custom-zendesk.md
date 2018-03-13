@@ -2,13 +2,13 @@
 
 ## Overview
 
-The following example demonstrates how to add a comment to an existing request/ticket in [Zendesk](https://www.zendesk.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to add a comment to an existing request / ticket in [Zendesk](https://www.zendesk.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-The integration relies on the [Zendesk API](https://developer.zendesk.com/rest_api/docs/core/requests#update-request) `update-request` method.
+This integration relies on the [Zendesk API](https://developer.zendesk.com/rest_api/docs/core/requests#update-request) `update-request` method.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification or import the [template](resources/custom-zendesk-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification or import the [template](resources/custom-zendesk-notification.xml) used in this example. To import an XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -49,7 +49,7 @@ Enter the following text into the `Body` field:
 
 The `html_body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
 
-The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
+Placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
 ![](images/zendesk_endpoint.png)
 
@@ -75,13 +75,13 @@ Set **Enabled** to **Yes** and choose the previously created web notification fr
 
 Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**.
 
-Specify the Zendesk request identifier into the `request_id` parameter for all triggers. The request must exist in the Zendesk system.
+Specify the Zendesk request identifier into the `request_id` parameter for all triggers. The request must already exist in the Zendesk system for the entry to be valid.
 
 To override the default `message` parameter which is set to  `[${status}] ${rule} for ${entity} ${tags}`, enter a new value, for example `[${status}] ${rule} for ${entity} ${tags}`<br>`Duration: ${alert_duration_interval}`.
 
 ![](images/zendesk_rule_notification_repeat_close.png)
 
-The request Id placeholder in the request URL as well as payload placeholders will be automatically resolved when the notification is triggered:
+The request ID placeholder in the request URL as well as payload placeholders will be automatically resolved when the notification is triggered:
 
 `https://axibase.zendesk.com/api/v2/requests/1.json`
 
@@ -97,7 +97,7 @@ The request Id placeholder in the request URL as well as payload placeholders wi
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+To test for successful integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
 
 ```
   series e:test_e m:test_m=2
@@ -106,7 +106,7 @@ In order to test the integration, submit sample data for the `test_m` metric int
 ![](images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert was raised, open **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](images/zendesk_alert_open.png)
 
