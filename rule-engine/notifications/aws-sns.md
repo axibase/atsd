@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `AWS SNS` [notification](../web-notifications.md) provides a way to publish signed messages to an [Amazon SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic on window status events.
+`AWS SNS` [notifications](../web-notifications.md) publish signed messages to an [Amazon SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic upon window status events.
 
 ## Notification Settings
 
@@ -40,7 +40,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 * Open **Alerts > Web Notifications** page.
 * Click the **Create** button and select the `AWS-SNS` type.
 * Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
-* Enter the `Topic ARN`. The topic address is marked as an editable field so it can be later customized in the rule editor. This allows publishing messages to different topics using the same web notification. 
+* Enter the `Topic ARN`. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same web notification. 
 
   ![](images/aws_sns_config.png)
 
@@ -50,7 +50,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
    ![](images/aws_sns_test_response.png)
 
-* If tests are passing OK, check **Enable**, click **Save**.
+* If test is passed, check **Enable**, click **Save**.
 
 In order to test the actual payload, create a sample rule, and enable the `AWS-SNS` notification on the `Web Notifications` tab.
 
