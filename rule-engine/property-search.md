@@ -4,10 +4,10 @@
 <property_type>:[<key>=<value>[,<key>=<value>]]:<tag_name>
 ```
 
-The expression returns tag values for the specified property type, optional key-value pairs, and the tag name.
+The above expression returns tag values for the specified property type, optional key-value pairs, and the tag name.
 
 * `<property_type>` is required.
-* `<key>=<value>` section is optional. Multiple key-value pairs must be separated with comma. <br>`<value>` supports `?` and `*` wildcards.
+* `<key>=<value>` section is optional. Multiple key-value pairs must be separated by comma. <br>`<value>` supports `?` and `*` wildcards.
 * `<tag_name>` is required, supports `?` and `*` wildcards.
 
 The returned set contains only distinct values.

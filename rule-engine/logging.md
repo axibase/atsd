@@ -1,6 +1,6 @@
 # Alert Logging
 
-Alert Logging enables recording of [window](window.md) status changes in the ATSD database and in log files located on the local file system for testing, integration and audit trailing.
+Alert Logging records [window](window.md) status changes in the ATSD database and in log files located on the local file system for testing, integration and audit trailing.
 
 ## Logging to Database
 
@@ -20,7 +20,7 @@ By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging
 
 ### Default Logger
 
-The default logger named `atsd.alert.default` is available even if it's not defined in the `logback.xml `file. To modify the default logger behavior, copy the following text to logback.xml file and adjust its properties as required.
+The default logger named `atsd.alert.default` is available even if it's not defined in the `logback.xml` file. To modify default logger behavior, copy the following text to logback.xml file and adjust its properties as required.
 
 ```xml
 <appender name="defaultAlertAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -56,7 +56,7 @@ The default logger named `atsd.alert.default` is available even if it's not defi
 
 ### Custom Logger
 
-Custom logger names must start with `atsd.alert.` prefix and should specify a unique file name (including roll-over pattern) that is different from file names used by other loggers. Similarly, custom loggers must specify unique appender names.
+Custom logger names must start with `atsd.alert.` and should specify a unique file name (including roll-over pattern) that is different from file names used by other loggers. Similarly, custom loggers must specify unique appender names.
 
 Multiple custom loggers can be created to customize alert logging for various rules.
 
@@ -129,5 +129,5 @@ threshold | max() > 20
 * window_first_time
 * window_first_datetime
 
-> Placeholders ending with `_time` contain time in local server timezone, for example 2017-05-30 14:05:39 PST.
-> Placeholders ending with `_datetime` contain time in ISO 8601 format in UTC timezone, for example 2017-05-30T06:05:39Z.
+> Placeholders ending with `_time` keep time in the local server timezone, for example 2017-05-30 14:05:39 PST.
+> Placeholders ending with `_datetime` keep time in ISO 8601 format in UTC timezone, for example 2017-05-30T06:05:39Z.

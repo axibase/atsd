@@ -48,7 +48,7 @@ Functions are invoked when the expression is evaluated and replaced with the val
 
 The parameters passed to the function in brackets are called arguments.
 
-Functions can accept arguments and return value in one of the following data types:
+Functions can accept arguments and return values in one of the following data types:
 
 | **Notation** | **Name** | **Example** |
 |---|:---|:---|
@@ -109,24 +109,22 @@ Univariate statistical functions listed below perform a calculation on the array
 
 ## Value Functions
 
-The value functions provide a way to retrieve values for other metrics contained in the same command.
-
-* [value](functions-value.md)
+[Value](functions-value.md) functions provide a way to retrieve values for other metrics contained in the same command.
 
 ## Database Functions
 
-The [database](functions-db.md) functions provide a way to retrieve data from the database for complex comparisons and correlation.
+[Database](functions-db.md) functions provide a way to retrieve data from the database for complex comparisons and correlation.
 
 ### Database Series Functions
 
-The functions retrieve values for a series which may be different from the series in the current window.
+Database Series functions retrieve values for a series which may be different from the series in the current window.
 
 * [db_last](functions-db.md#db_laststring-m)
 * [db_statistic](functions-db.md#db_statistic)
 
 ### Database Message Functions
 
-The functions retrieve message counts or specific messages.
+Database Message functions retrieve message counts or specific messages.
 
 * [db_message_count](functions-db.md#db_message_count)
 * [db_message_last](functions-db.md#db_message_last)
@@ -137,7 +135,7 @@ The functions retrieve message counts or specific messages.
 
 ## Mathematical Functions
 
-The math functions perform basic numeric operations on the input number and return a number as the result.
+Math functions perform basic numeric operations on the input number and return a number as the result.
 
 * [abs](functions-math.md#abs)
 * [ceil](functions-math.md#ceil)
@@ -155,7 +153,7 @@ The math functions perform basic numeric operations on the input number and retu
 
 ## Text Functions
 
-The text functions transform and compare strings.
+Text functions transform and compare strings.
 
 * [upper](functions-text.md#upper)
 * [lower](functions-text.md#lower)
@@ -187,7 +185,7 @@ The text functions transform and compare strings.
 
 ## Formatting Functions
 
-The functions format dates and numbers to strings according to the specified pattern.
+These functions format dates and numbers to strings according to the specified pattern.
 
 * [convert](functions-format.md#convert)
 * [formatNumber](functions-format.md#formatnumber)
@@ -201,7 +199,7 @@ The functions format dates and numbers to strings according to the specified pat
 
 ## Collection Functions
 
-The collection functions return information about the collection or check it for the presence of the specified element.
+Collection functions return information about the collection or check it for the presence of the specified element.
 
 * [collection](functions-collection.md#collection)
 * [IN](functions-collection.md#in)
@@ -215,7 +213,7 @@ The collection functions return information about the collection or check it for
 
 ## Lookup Functions
 
-The lookup functions retrieve records from replacement tables, collections, and other entities.
+Lookup functions retrieve records from replacement tables, collections, and other entities.
 
 * [entity_tag](functions-lookup.md#entity_tag)
 * [entity_tags](functions-lookup.md#entity_tags)

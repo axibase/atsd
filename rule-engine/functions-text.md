@@ -2,11 +2,11 @@
 
 ## Overview
 
-The functions transform or compare strings.
+These functions transform and compare strings.
 
-The functions return `null` or `false` if one of the inputs is `null`.
+These functions return `null` or `false` if one of the inputs is `null`.
 
-The functions return a new string with the original input string left unchanged.
+These functions return a new string and the unaltered input string.
 
 ## Reference
 
@@ -44,7 +44,7 @@ The functions return a new string with the original input string left unchanged.
   upper(string s) string
 ```
 
-Converts `s` to upper case.
+Converts `s` to uppercase letters.
 
 ### `lower`
 
@@ -52,7 +52,7 @@ Converts `s` to upper case.
   lower(string s) string
 ```
 
-Converts `s` to lower case.
+Converts `s` to lowercase letters.
 
 ### `truncate`
 
@@ -60,7 +60,7 @@ Converts `s` to lower case.
   truncate(string s, integer i) string
 ```
 
-If `s` length exceeds `i` characters, truncates `s` to the specified number of characters and returns it as a result.
+If `s` length exceeds `i` characters, this function truncates `s` to the specified number of characters and returns it as the result.
 
 ### `startsWith`
 
@@ -84,7 +84,7 @@ Returns `true` if `s` ends with `w`.
   split(string s, string p) [string]
 ```
 
-Splits `s` into a collection of strings using separator `p` while treating double quote as an escape character.
+Splits `s` into a collection of strings using separator `p`. Quotation marks (`"escaped_text"`) are used as escape characters.
 
 Example:
 
@@ -109,9 +109,9 @@ To access the n-th element in the collection, use square brackets `[index]` or `
   list(string s[, string p]) [string]
 ```
 
-Splits string `s` using separator `p` (default is comma ',') into an array of string values. The function discards duplicate items by preserving the first occurrence of each element. 
+Splits string `s` using separator `p` (default is comma ',') into an array of string values. The function discards duplicate items by preserving only the first occurrence of each element. 
 
-Unlike the `split()` function, `list()` doesn't handle quotes treating them as regular characters.
+Unlike the `split()` function, `list()` doesn't handle quotes, but treats them as regular characters.
 
 Example:
 
@@ -148,8 +148,8 @@ Examples:
     coalesce([entity.label, entity])
   ```
 
-  Returns the value of the `entity.label` field if it is not an empty string, otherwise the value of the `entity` field will be returned.
-  If both fields are empty, an empty string is returned.
+Returns the value of the `entity.label` field if it is not an empty string, otherwise the value of the `entity` field will be returned.
+If both fields are empty, an empty string is returned.
 
 ### `keepAfter`
 
@@ -192,7 +192,7 @@ Example:
 ```
 Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
 
-If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
+If the parameter string `p` is empty `''`/ null / not found, the function will return the original string `s` unchanged.
 
 Example:
 
@@ -224,7 +224,7 @@ Example:
 ```
 Replace all occurrences of the given string `p` in the original string `s` with another string `r`.
 
-If the `p` parameter is empty `''`/ null / not found, it will return the original string `s` unchanged.
+If the `p` parameter is empty `''`/ null / not found, the function will return the original string `s` unchanged.
 
 Examples:
 
@@ -238,7 +238,7 @@ Examples:
 ```javascript
   capFirst(string s) string
 ```
-Capitalize first word.
+Capitalizes the first letter in the string.
 
 Example:
 
@@ -252,7 +252,7 @@ Example:
 ```javascript
   capitalize(string s) string
 ```
-Capitalize all words.
+Capitalizes the first letter of all words in the string.
 
 Example:
 
@@ -301,7 +301,7 @@ Examples:
   urlencode(string s) string
 ```
 
-Encodes `s` into the URL format by replacing unsafe characters with "%" followed by 2 digits.
+Encodes `s` into URL format by replacing unsafe characters with "%" followed by 2 digits.
 
 ### `jsonencode`
 
@@ -309,14 +309,14 @@ Encodes `s` into the URL format by replacing unsafe characters with "%" followed
   jsonencode(string s) string
 ```
 
-Escapes special symbols such as double-quote with backslash to safely use the input string within a JSON object.
+Escapes special symbols such as double-quotes with a backslash to safely use the input string within a JSON object.
 
 ### `htmlDecode`
 
 ```javascript
   htmlDecode(string s) string
 ```
-Returns a new string with HTML entities in string `s` replaced with corresponding characters.
+Returns a new string with HTML entities in string `s`, replaced with the corresponding characters.
 
 Example:
 
@@ -333,12 +333,19 @@ Example:
 
 Removes leading and trailing double and single quotation marks from the string `s`.
 
+Example:
+
+```javascript
+  /* Returns 'Hello, Brave New World!' */ 
+  unquote('"Hello, Brave New World!"')
+```  
+
 ### `countMatches`
 
 ```javascript
   countMatches(string s, string p) int
 ```
-Counts how many times the substring `p` appears in the input string `s`.
+Counts how many times the substring `p` appears in input string `s`.
 
 Example:
 
@@ -353,7 +360,7 @@ Example:
   abbreviate(string s, integer n) string
 ```
 
-Abbreviates a string `s` using ellipses. `n` is maximum length of result string, must be at least 4 otherwise an IllegalArgumentException is thrown.
+Abbreviates string `s` using ellipses in order to truncate extraneous text. `n` is the desired length of the result string. The minimum length of any result string is 4 characters: 1 in string `s` plus 3 as ellipses (`...`). Input parameter integer must be `n` >= 4 otherwise an IllegalExceptionError will be thrown.
 
 Examples:
 

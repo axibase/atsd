@@ -2,7 +2,7 @@
 
 ## Overview
 
-The time functions perform various operations on dates, timestamps, and intervals.
+Time functions perform various operations on dates, timestamps, and intervals.
 
 ## Reference
 
@@ -48,7 +48,7 @@ Parses the datetime string `d` into UNIX milliseconds according to the specified
 
 The function returns `0` if the datetime `d` is `null` or empty.
 
-Available timezones and their offsets are listed in [time zones](../shared/timezone-list.md).
+Available timezones and their offsets are listed in [timezones](../shared/timezone-list.md).
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
 
@@ -68,7 +68,7 @@ Example:
   seconds(string d [,string p [,string z]]) long
 ```
 
-The function is implemented exactly as the `milliseconds` function except the result is returned in UNIX seconds.
+This function provides the same arguments as the [`milliseconds`](#milliseconds) function except the result is returned in UNIX seconds instead of milliseconds.
 
 ### `elapsedTime`
 
@@ -107,15 +107,15 @@ Parses the input string `d` into a [DateTime](http://joda-time.sourceforge.net/a
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` and it differs from the timezone (offset) `z`.
+> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` differs from the timezone (offset) `z`. See Exception Examples below.
 
-The fields of the DateTime object can be accessed with getter methods:
+The fields of the `DateTime` object can be accessed using the following methods:
 
 ```javascript
   date_parse('2018-01-13T16:45:22.303Z').getDayOfWeek()
 ```
 
-Method values for sample date 2018-01-13T16:45:22.303Z (Saturday):
+Results for sample date `2018-01-13T16:45:22.303Z` (Saturday):
 
 |**Method**| **Value** |
 |:---|:---|
@@ -175,6 +175,7 @@ Examples:
     it should be exactly the same as provided by the third argument. */
     date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
   ```
+Exception Examples:
 
   ```javascript
     /* These expressions lead to exceptions. */

@@ -29,7 +29,7 @@ Unknown fields and variables are evaluated to `null`.
 
 If the expression itself evaluates to `null`, the placeholder is substituted with an **empty** string.
 
-If the expression cannot be evaluated due to an error, the placeholder is left unchanged and the error message is presented on the **Rule Errors** page.
+If the expression cannot be evaluated due to an error, the placeholder is left unchanged and an error message is presented on the **Rule Errors** page.
 
 ## Examples
 

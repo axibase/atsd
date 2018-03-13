@@ -105,7 +105,7 @@ ${htmlExportLink}
 
 Link to the **Data > Export** page for the current metric, entity, and tags.
 
-Displayed as 'HTML Export' link in inline mode.
+Displayed as an 'HTML Export' link in inline mode.
 
 > Available only in rules with `Series` data type.
 
@@ -124,7 +124,7 @@ ${entityLink}
 
 Link to current entity that is initialized in the rule window. 
 
-Displayed as entity label in inline mode.
+Displayed as an entity label in inline mode.
 
 Example:
 
@@ -142,7 +142,7 @@ ${getEntityLink(tags.docker-host)}
 
 ## Inline Links
 
-The inline link mode improves readability by replacing URLs with user-friendly link labels. The URL are converted to inline links in one of the following formats:
+The inline link mode improves readability by replacing URLs with user-friendly link labels. URLs are converted to inline links in one of the following formats:
 
 ### `html`
 

@@ -38,7 +38,7 @@ The filter matches the window if it satisfies **all** filter columns including:
 
 ![](images/override-rule-filter.png)
 
-> In the example above, the rule matches entities with name starting with 'nurswg' that are members of the 'disk_prod' group and applies only to windows with  tag 'file_system' equal '/tmp'.
+> In the example above, the rule matches entities with a name beginning with 'nurswg' that are members of the 'disk_prod' group and applies only to windows with  tag 'file_system' equal '/tmp'.
 
 The tag columns are present when the rule is grouped by tags on the 'Overview' tab.
 
@@ -73,7 +73,7 @@ percentile(75) <= 50
 max() = 60
 ```
 
-An alert is triggered if either `ERROR` or `WARNING` condition returns `true`.
+An alert is triggered if either the `ERROR` or `WARNING` condition returns `true`.
 
 ### Alert Severity
 
