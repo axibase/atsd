@@ -2,13 +2,13 @@
 
 ## Overview
 
-The `AWS API` [notification](../web-notifications.md) provides a way to integrate the ATSD rule engine with [Amazon Web Service](https://aws.amazon.com/) that supports the HTTP or HTTPs protocol.
+`AWS API` [notifications](../web-notifications.md) integrate the ATSD rule engine with [Amazon Web Services] (https://aws.amazon.com/) that support HTTP or HTTPs protocol.
 
 ## Notification Settings
 
 |**Setting**|**Description**|
 |---|---|
-|Endpoint URL|The service url|
+|Endpoint URL|AWS url|
 |Method|The HTTP method|
 |Access Key Id|[Access Key Id](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
 |Secret Access Key|[Secret Access Key](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
@@ -33,13 +33,13 @@ The request is submitted to the specified AWS endpoint using the selected method
 
 ## Response
 
-The response status code and response content is recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content are recorded in `atsd.log` if the `Log Response` setting is enabled.
 
 ## Placeholders
 
-The [placeholders](../placeholders.md) are supported in the Endpoint URL, request parameter names and values.
+[Placeholders](../placeholders.md) are supported in the Endpoint URL, request parameter names, and values.
 
-The placeholders are substituted with actual field values when the request is initiated.
+Placeholders are substituted with actual field values when the request is initiated.
 
 If the placeholder doesn't exist, it is substituted with an empty string.
 
