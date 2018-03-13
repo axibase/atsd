@@ -98,7 +98,7 @@ Specify the following settings for the **Open** trigger:
 
 ![](images/pagerduty_rule_notification_open.png)
 
-The `service_id` parameter indicates which service is affected by the incident. You can obtain the service id on the PagerDuty **Services** page. 
+The `service_id` parameter indicates which service is affected by the incident. You can obtain the service ID on the PagerDuty **Services** page. 
 
 Click **Configuration > Services**.
 
@@ -108,11 +108,11 @@ Choose your service.
 
 ![](images/pagerduty_service_id_2.png)
 
-Get an id from url.
+Get an ID from url.
 
 ![](images/pagerduty_service_id_3.png)
 
-The payload placeholders will be automatically resolved when the notification is triggered:
+Payload placeholders will automatically be resolved when the notification is triggered:
 
 ```
 {
