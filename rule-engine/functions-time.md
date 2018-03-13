@@ -68,7 +68,7 @@ Example:
   seconds(string d [,string p [,string z]]) long
 ```
 
-This function supports the same performance as the `milliseconds` function except the result is returned in UNIX seconds.
+This function provides the same arguments as the [`milliseconds`](#milliseconds) function except the result is returned in UNIX seconds instead of milliseconds.
 
 ### `elapsedTime`
 
@@ -109,13 +109,13 @@ The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default
 
 > The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` differs from the timezone (offset) `z`. See Exception Examples below.
 
-The fields of the DateTime object can be accessed with Getter Methods:
+The fields of the `DateTime` object can be accessed using the following methods:
 
 ```javascript
   date_parse('2018-01-13T16:45:22.303Z').getDayOfWeek()
 ```
 
-Method values for sample date 2018-01-13T16:45:22.303Z (Saturday):
+Results for sample date `2018-01-13T16:45:22.303Z` (Saturday):
 
 |**Method**| **Value** |
 |:---|:---|
