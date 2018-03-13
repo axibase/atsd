@@ -4,7 +4,7 @@
 
 The following example demonstrates how to trigger an action in [IFTTT](https://ifttt.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
 
-This type integration relies on the [IFTTT Webhook](https://ifttt.com/maker_webhooks) trigger.
+This type of integration relies on the [IFTTT Webhook](https://ifttt.com/maker_webhooks) trigger.
 
 ## Create IFTTT Applet
 
