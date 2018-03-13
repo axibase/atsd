@@ -2,11 +2,11 @@
 
 ## Overview
 
-The `SLACK` [notification](../web-notifications.md) provides a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
+`SLACK` [notifications](../web-notifications.md) provide a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into Slack.
+Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots into Slack.
 
 ## Create Workspace
 
@@ -65,9 +65,9 @@ If necessary, go to https://slack.com/create and follow the prompts to create a 
 
      ![](images/slack_channel_id.png)
 
- * Copy the channel Id which is specified between the `messages/` and `/team` parts, for example `D822261LK`.
+ * Copy the channel ID, which is specified between the `messages/` and `/team` parts, for example `D822261LK`.
 
-In case of sending messages to a public or private channel you can just use the name of the channel instead of its Id, for example `devops` or `general`.
+When sending messages to either a public or private channel you can just use the name of the channel instead of its ID, for example `devops` or `general`.
 
 ## Create Slack Notification in ATSD
 
@@ -86,7 +86,7 @@ In case of sending messages to a public or private channel you can just use the 
 
    ![](images/slack_2.png)
 
-* If test is passing OK, check **Enable**, click **Save**.
+* If test is passed, check **Enable**, then click **Save**.
 
 ## Proxy Settings
 
@@ -111,7 +111,7 @@ NGINX API Gateway Path for Slack:
 |Bot Username|Set your bot's user name.|
 |Channels|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be a name or an encoded ID.|
 |Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
-|Parse Mode|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting)|
+|Parse Mode|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting) for more information.|
 |Names as Links|Find and link channel names and usernames.|
 
 ## Testing Notification Rule
@@ -142,7 +142,7 @@ NGINX API Gateway Path for Slack:
   ![](images/slack_notification.png)
 
 * The rule will create new windows based on incoming data.
-It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It may take a few seconds for the first commands to arrive and trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Example
 
