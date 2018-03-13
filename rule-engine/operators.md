@@ -19,20 +19,20 @@
 ```javascript
   NOT tags.isEmpty()
 ```		
-
+```
 ## Ternary Operator
 
 | **Name** | **Description** |
 | :--- | :--- |
 | `?:` | Ternary conditional |
 
-The ternary `?:` operator allows choosing of the two values on the right based on the result of the boolean condition on the left.
+The ternary `?:` operator simplifies the syntax of a boolean conditional, but expands the functionality. The example below has a binary query (`==`) and subsequent conditional action based of the results of that query.
+
+Example:
 
 ```javascript
    tags.mount_point == '/' ? 90.0 : 75.0
 ```  
-
-The operator allows implementing `if-else` statement in a compact syntax.
 
 The above example is equivalent to:
 
