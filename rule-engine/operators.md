@@ -24,9 +24,15 @@
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `?:` | Ternary conditional |
+| `?` | Ternary conditional |
 
-The ternary `?:` operator simplifies the syntax of a boolean conditional, but expands the functionality. The example below has a binary query (`==`) and subsequent conditional action based of the results of that query.
+The ternary `?` operator simplifies `if/else` syntax. The operator chooses one of the two options based on the boolean expression. 
+
+If the expression `expr` evaluates to `true`, the operator selects `value1` option. Otherwise, `value2` is chosen.
+
+```javascript
+   boolean expr ? value1 : value2
+```
 
 Example:
 
