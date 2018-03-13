@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `CUSTOM` [notification](../web-notifications.md) provides a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
+`CUSTOM` [notifications](../web-notifications.md) provide a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
 
-The integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
+This integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
 
 ## Examples
 
@@ -31,7 +31,7 @@ The integration enables sending HTTP requests with customized content to the spe
 * `application/json`
 * `application/x-www-form-urlencoded`
 
-If the selected HTTP method such as `GET` doesn't allow payload, the request parameters specified in the Parameters section are appended to the Endpoint URL a a query string.
+If the selected HTTP method such as `GET` doesn't support a payload, the request parameters specified in the Parameters section are appended to the Endpoint URL as a query string.
 
 ## Supported Authentication Mechanisms
 
@@ -53,7 +53,7 @@ Authorization: Bearer YOUR_JWT
 
 ## Placeholders
 
-The [placeholders](../placeholders.md) are supported in the Endpoint URL, request parameter names and values, request headers, and the payload content.
+[Placeholders](../placeholders.md) are supported in the Endpoint URL, request parameter names and values, request headers, and the payload content.
 
 The placeholders are substituted with actual field values when the request is initiated.
 
