@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `AWS SQS` [notification](../web-notifications.md) provides a way to send messages to an [Amazon SQS](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue on window status events.
+`AWS SQS` [notifications](../web-notifications.md) send messages to an [Amazon SQS](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
 
 ## Notification Settings
 
@@ -14,7 +14,7 @@ The `AWS SQS` [notification](../web-notifications.md) provides a way to send mes
 |Queue Path|The path of the receiving queue.|
 |Queue Type|The type of the receiving queue.|
 |Message Group Id|Optional tag that associates the messages with a specific message group.|
-|Message|The default message text.|
+|Message|Default message text.|
 
 #### Queue Types
 
