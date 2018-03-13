@@ -2,11 +2,11 @@
 
 ## Overview
 
-The `TELEGRAM` [notification](../web-notifications.md) provides a built-in capability to send alert messages, alert detail tables, and charts into Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
+`TELEGRAM` [notifications](../web-notifications.md) provides a built-in capability to send alert messages, alert detail tables, and charts directly to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into Telegram.
+Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots into Telegram.
 
 ## Create Bot
 
@@ -34,11 +34,11 @@ Install and configure the [Web Driver](web-driver.md) in order to enable sending
    ![](images/new_group.png)
 
 * Enter the group name, click **Next**.
-* Add the previously created bot as a member of this group, for example, `@atsd_bot`
+* Add the newly created bot as a member of this group, for example, `@atsd_bot`
 
    ![](images/atsd_bot.png)
 
-* Add other members to receive notifications from ATSD.
+* Add other members who should receive notifications from ATSD.
 * Click **Create**.
 
 ### Create Channel
@@ -47,7 +47,7 @@ Install and configure the [Web Driver](web-driver.md) in order to enable sending
 
    ![](images/new_channel.png)
 
-* Enter the channel name. Click **Create**.
+* Enter a channel name. Click **Create**.
 * Select the channel type and click the **Invite link** field if necessary.
 * Click **Save**.
 
@@ -64,19 +64,19 @@ Install and configure the [Web Driver](web-driver.md) in order to enable sending
 
    ![](images/add_admin.png)
 
-   Click on bot and confirm **OK**.
+   Click on the bot and confirm > **OK**.
 
    ![](images/ok.png)
 
-   Review the settings and click **Save > Close**.
+   Review settings and click **Save > Close**.
 
    ![](images/admin_settings.png)
 
 ## Get Chat Id
 
-The easiest way to locate the `chat id` for the group or channel is to log into [Telegram Web](https://web.telegram.org). The chart id is required for the Telegram notification to function properly.
+The easiest way to locate the `chat id` for the group or channel is to log in to [Telegram Web](https://web.telegram.org). The chat id is required for the Telegram notification to function properly.
 
-Lookup the chat id as described below and copy the chat id for future reference.
+Look up the chat id as described below and copy the chat id for future reference.
 
 ### For Group  
 
@@ -84,7 +84,7 @@ Lookup the chat id as described below and copy the chat id for future reference.
 
   ![](images/id_group.png)
 
-* Substitute the `g` character with the minus sign, so that the number is like `-306974066`.
+* Substitute the `g` character with the minus sign, so that the number looks like this, `-306974066`.
 
 ### For Private Channel
 
@@ -92,7 +92,7 @@ Lookup the chat id as described below and copy the chat id for future reference.
 
    ![](images/channel_url.png)
 
-  * Copy numbers before underscore and replace `c` with `-100`, so that the chat id looks like `-1001354757644`.
+  * Copy numbers before the underscore and replace `c` with `-100`, so that the chat id looks like this, `-1001354757644`.
 
 #### For Public Channel
 
@@ -100,14 +100,14 @@ Lookup the chat id as described below and copy the chat id for future reference.
 
      ![](images/public_channel_url.png)    
 
-  * Copy symbols after `=`, so the chat id looks like `@atsd_notifications`
+  * Copy symbols after `=`, so the chat id looks like this, `@atsd_notifications`
 
 ### For Direct Message Chat
 
   * Go to `https://t.me/BOT_NAME`, for example https://t.me/atsd_bot
   * Click **Open in Web**.
   * Click **Start**.
-  * Send a message to bot.
+  * Send a message to the bot.
   * Go to https://api.telegram.org/botBOT_TOKEN/getUpdates (replace BOT_TOKEN with the actual value).
   * Review the `Chat Object`
 
@@ -131,7 +131,7 @@ Lookup the chat id as described below and copy the chat id for future reference.
 
   ![](images/telegram_1.png)
 
-* If test is passing OK, check **Enable**, click **Save**.
+* If the test is passed, check **Enable**, click **Save**.
 
 ## Proxy Settings
 
@@ -197,7 +197,7 @@ It may take a few seconds for the first commands to arrive and to trigger the no
 
 ## Test
 
-* Check the channel messages.
+* Check channel messages.
 
 ![](images/test_1.png)
 
