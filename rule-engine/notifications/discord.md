@@ -2,13 +2,13 @@
 
 ## Overview
 
-The `DISCORD` [notification](../web-notifications.md) allows sending alert messages, alert detail tables, and charts into Discord channels. The integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
+`DISCORD` [notifications](../web-notifications.md) send alert messages, alert detail tables, and charts into Discord channels. This integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
 
 ![](images/discord.png)
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) in order to enable sending chart screenshots into Discord.
+Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots directly into Discord.
 
 ## Create Discord Server
 
@@ -48,11 +48,11 @@ Configure a new Discord server, if necessary.
 
 On the **Invite** tab you can create an invitation link and distribute it to new users.  
 
-To join a server, the user should click **Create new server**, select **Join** and paste the received invitation link.
+To join a server, click **Create new server**, select **Join** and paste the received invitation link.
 
 ## Create Webhook
 
- * Open the **Webhook** tab, click **Create Webhook**, enter a name, select channel.
+ * Open the **Webhook** tab, click **Create Webhook**, enter a name and select a channel.
 
       ![](images/create_webhook.png)
 
@@ -76,7 +76,7 @@ To join a server, the user should click **Create new server**, select **Join** a
 
    ![](images/discord_2.png)
 
-* If test is OK, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.  
+* If test is passed, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.  
 
 ## Proxy Settings
 
