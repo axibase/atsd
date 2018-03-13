@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `GCP PS` [notification](../web-notifications.md) provides a way to send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic on window status events.
+`GCP PS` [notifications](../web-notifications.md) send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic upon window status events.
 
 ## Notification Settings
 
@@ -12,7 +12,7 @@ The `GCP PS` [notification](../web-notifications.md) provides a way to send mess
 |Topic|The name of the receiving topic.|
 |Service Account|The account that belongs to the application instead of to an individual end user. Create account as described [here](gcp-service-account-key.md#create-service-account)|
 |Private Key Alias|The alias of the account's private key which was imported as described [here](gcp-service-account-key.md#import-accounts-private-key)|
-|Message|The default message text.|
+|Message|Default message text.|
 
 ## Message
 
