@@ -2,26 +2,26 @@
 
 ## Overview
 
-Incoming commands are assigned to in-memory [windows](window.md) based on the grouping key which consists from the following field values:
+Incoming commands are assigned to in-memory [windows](window.md) based on the grouping key which consists of the following field values:
 
 * Data Type (`series`, `message`, or `property`)
 * Metric Name
 * Entity Name
 * Command Tags
 
-Commands with equal grouping key are assigned to the same window.
+Commands with equal grouping keys are assigned to the same window.
 
 The `Data Type` and `Metric Name` fields are mandatory parts of the key whereas grouping by entity and tags is optional and is configured for each rule separately.
 
-For `series` commands, the default grouping is set by entity and **all** tags.
+For `series` commands, default grouping is set by the entity and **all** tags. See **Example: Group By Entity and All Tags** below.
 
 For `message` and `property` commands, grouping by tags is disabled because these commands have many tags with unique values which would otherwise create too many windows in the application memory.
 
-Entity grouping can be disabled when one needs to apply an aggregate function to data coming from multiple entities, for example, to calculate an average for all entities that matched filters.
+Entity grouping can be disabled when one needs to apply an aggregate function to data coming from multiple entities, for example, to calculate an average for all entities that matched certain filters.
 
 ## Examples
 
-Assuming that incoming data is represented with the following 3 series commands, the examples below will illustrate the effect of rule settings on window formations.
+Assuming that incoming data is represented with the 3 series commands shown here, the examples below will illustrate the effect of rule settings on window formations.
 
 | Data Type | Metric | Entity | Tags |
 |---|---|---|:---|
