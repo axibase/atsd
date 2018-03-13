@@ -12,7 +12,7 @@ Windows are displayed on the **Alerts > Rule Windows** page.
 
 ### Count Based Windows
 
-Count-based windows accumulate up to the specified number of samples. The samples are sorted in **order of arrival**, with the most recently received sample placed at the end of the array. When the window is full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample.
+Count-based windows accumulate up to the specified number of samples. Samples are sorted in **order of arrival**, with the most recently received sample placed at the end of the array. When the window is full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample.
 
 ![Count Based Window](images/count_based_window3.png "count_based_window")
 
@@ -20,23 +20,23 @@ Count-based windows accumulate up to the specified number of samples. The sample
 
 Time-based windows store samples received within the specified time interval. The number of samples in such windows is not limited. 
 
-The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time goes by. Such windows are often called _sliding_ windows. If the timestamp of the incoming command is equal or greater than the window start time, the command is added to the window.
+The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time passes, these windows are sometimes refered to as _sliding_ windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
 
-> The **end** time in time-based windows is not set (in particular, it is not set to current time) and the window will accept commands with future timestamps unless they're discarded with the [Time filter](filters.md#time-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
+> The **end** time in time-based windows is not set (in particular, it is not set to current time) and the window will accept commands with future timestamps unless they are to be discarded with the [Time filter](filters.md#time-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
 
-Old commands are automatically removed from the window once their timestamp is before the window start time.
+Old commands are automatically removed from the window once their timestamp is earlier than the defined window start time.
 
 ![Time Based Window](images/time_based_window3.png)
 
 ## Window Status
 
-The response actions are triggered on window status changes.
+Response actions are triggered on window status changes.
 
-As the new data is received and old data is removed from the window, the rule engine re-evaluates the condition which can cause the status of the current window to change, triggering response actions.
+As new data is received and old data is removed from the window, the rule engine re-evaluates the condition which can cause the status of the current window to change, triggering response actions.
 
 ### Initial Status
 
-New windows are created based on incoming data and no historical data is loaded from the database, unless 'Load History' setting is turned on.
+New windows are created based on incoming data, no historical data is loaded from the database unless the 'Load History' setting is turned on.
 
 The window for the given [grouping](grouping.md) key is created when the first matching command is received by the rule engine.
 
@@ -44,7 +44,7 @@ The new windows are assigned initial status of `CANCEL` which is then updated ba
 
 ### Triggers
 
-The response actions can be triggered whenever the window changes its status as well as at scheduled intervals when the status is `REPEAT`. The triggers for each action type are configured and executed separately.
+Response actions can be triggered whenever the window changes its status as well as at scheduled intervals when the status is `REPEAT`. Triggers for each action type are configured and executed separately.
 
 ### Status Events
 
@@ -59,21 +59,21 @@ The response actions can be triggered whenever the window changes its status as 
 
 ### `OPEN` Status
 
-The `OPEN` status is assigned to the window when the condition changes value from `false` to `true`.
+`OPEN` status is assigned to the window when the condition changes value from `false` to `true`.
 
 ### `REPEAT` Status
 
-The `REPEAT` status is assigned to an `OPEN` window when the condition returns `true` based on the second received command.
+`REPEAT` status is assigned to an `OPEN` window when the following sequential condition is evaluated as `true` and retains this status for all subsequent `true` evaluations. The minimum number of evaluations that must have been performed on any window for it to have the `REPEAT` status is two consectutive `true` evaluations.
 
-When the window is in `REPEAT` status, the actions can be executed with the frequency specified in the rule editor.
+When the window is in `REPEAT` status, actions can be executed with the frequency specified in the rule editor based on a certain number of evaluations, for example.
 
 ### `CANCEL` Status
 
 `CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the condition changes from `true` to `false` or when the window is destroyed on rule modification.
 
-Windows in `CANCEL` status do not trigger _repeat_ actions. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
+Windows in `CANCEL` status do not trigger _repeat_ actions upon subsequent `false` evaluations. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
 
-The window can change to `CANCEL` status when the condition changes from `true` to `false` as well as when the rule is modified, deleted, or the database is orderly shutdown. `On Cancel` triggers are not invoked, even if enabled, when the rule is modified/deleted or in case of shutdown.  This behavior is controlled with `cancel.on.rule.change` server property.
+A window may assume the `CANCEL` status when the condition changes from `true` to `false` as well as when the rule is modified, deleted, or the database is orderly shutdown. `On Cancel` triggers are not invoked, even if enabled, when the rule is modified/deleted or in case of shutdown.  This behavior is controlled with `cancel.on.rule.change` server property.
 
 ## Lifecycle
 
