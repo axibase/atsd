@@ -8,9 +8,9 @@ The integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-r
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the [template](resources/custom-circleci-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Web Notifications**, select **Import** in the multi-action button located below the table and follow the prompts.
 
-To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
+To create a new notification, open **Alerts > Web Notifications** and click **Create**.
 
 ### Parameters
 
@@ -25,13 +25,13 @@ Enter a name and specify the following parameters:
 | Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}` |
 | Headers | `Accept: application/json` |
 
-Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name.
+Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your GitHub user name.
 
 The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
 
-Enter the Circle CI user token into the `Username` field and leave the `Password` field empty.
+Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 
-Keep the `${project_name}` and `${branch}` placeholders in the URL path so that one can customize them in the rule editor. This would allow you to trigger builds for different projects using the same web notification.
+Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they may be customized in the rule editor. This will allow you to trigger builds for different projects using the same web notification.
 
 ### Payload
 
@@ -55,9 +55,9 @@ Leave the `Body` field empty for non-parameterized projects.
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/custom-circleci-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
-To create a new rule, open the **Alerts > Rules** page and click **Create**.
+To create a new rule, open the page **Alerts > Rules** and click **Create**.
 
 Specify the key settings on the **Overview** tab. 
 
@@ -75,7 +75,7 @@ Set **Enabled** to **Yes** and choose the previously created web notification fr
 
 Enable **Open** and **Repeat** triggers. Set the **Repeat Interval** to **All**.
 
-Specify the same settings for **Open** and **Repeat** triggers:
+Specify the same settings for the **Open** and **Repeat** triggers:
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -87,7 +87,7 @@ Specify the same settings for **Open** and **Repeat** triggers:
 
 ![](images/circle_rule_notification.png)
 
-Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
+Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and JSON payload.
 
 When the notification is executed, all placeholders in the request URL and the payload will be resolved as follows:
 
@@ -103,7 +103,7 @@ When the notification is executed, all placeholders in the request URL and the p
 }
 ```
 
-If the placeholder is not found, it will be substituted with an empty string.
+If the placeholder is not found, it will be replaced with an empty string.
 
 ## Test
 
@@ -116,7 +116,7 @@ In order to test the integration, submit sample data for the `test_m` metric int
 ![](images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert was raised, open the page **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](images/circle_alert_open.png)
 
