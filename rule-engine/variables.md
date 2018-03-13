@@ -16,7 +16,7 @@ The user-defined variables can be referenced in the rule [condition](condition.m
 
 ### Response Actions
 
-Similar to the built-in window [fields](window.md#window-fields), the variables can be included by name in the notifications messages, system commands, and logging messages using [placeholders](placeholders.md):
+Similar to the built-in window [fields](window.md#window-fields), variables can be included by name in the notifications messages, system commands, and logging messages using [placeholders](placeholders.md):
 
 ```css
 ${busy}
@@ -26,7 +26,7 @@ ${busy}
 
 ### Filter
 
-Variables **cannot** be included in the [filter](filters.md) expression because filters are evaluated prior to the command is assigned to windows.
+Variables **cannot** be included in a [filter](filters.md) expression because filters are evaluated prior to the command being added to a window.
 
 ## Data Types
 
@@ -47,7 +47,7 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
   ```javascript
   curtime = 1515758392702
   ```  
-> Classify large integers as Long (64-bit integer) or as a floating number to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
+> Classify large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
 
 ![](images/variables-large-integers.png)
 
@@ -89,7 +89,7 @@ Both single and double quotes can be used to specify elements of string type.
   
 To check the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with 0 for the first element).
 
   ```javascript
   authors = split(tags.authors, ',')
@@ -106,7 +106,7 @@ To access the n-th element in the collection, use square brackets `[index]` or `
   stateMap = ["CA": 0.8, "WA": 0.2]
   ```
 
-  > Both single and double quote can be used to specify map keys and values.
+  > Both single and double quotes can be used to specify map keys and values.
 
 ### function
 
@@ -130,29 +130,29 @@ To access the n-th element in the collection, use square brackets `[index]` or `
 
 ## Cross-Reference
 
-The variables can refer to other variables declared in the same rule.
+These variables can refer to other variables declared in the same rule.
 
 ![](images/variables-reference.png)
 
 ### Order
 
-The variables are evaluated in the order defined on the **Overview** tab.
+Variables are evaluated in the order defined on the **Overview** tab.
 
-The dependent variable must be declared **after** the variable that it refers to.
+A dependent variable must be declared **after** the variable that it refers to.
 
 ### References
 
-Variables that are dependent on other variables can be included in the condition.
+Variables that are dependent on other variables can be included in a condition.
 
 ![](images/variables-refer-indirect.png)
 
 ## Execution
 
-The variables are evaluated for each incoming command regardless of the window status.
+Variables are evaluated for each incoming command regardless of the window status.
 
-If the variable invokes an external function such as [`scriptOut`](functions-script.md) it must execute quickly (less than a few seconds). The long-running functions should not be included in variables.
+If the variable invokes an external function such as [`scriptOut`](functions-script.md) it must execute quickly (less than a few seconds). Long-running functions should not be included in variables.
 
-The current value of variables can be accessed on the window detail page.
+The current value of a variable can be accessed on the window detail page.
 
 ![](images/variables-window-2.png)
 
