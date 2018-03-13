@@ -18,7 +18,7 @@
   ifEmpty(object a, object b) object
 ```
 
-The function returns `b` if `a` is `null` or an empty string.
+The function returns `b` if `a` is either `null` or an empty string.
 
 Examples:
 
@@ -35,7 +35,7 @@ Examples:
   toBoolean(object a) boolean
 ```
 
-Converts the input string or number `a` to a boolean value. The `true` value is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-INsensisitve) or if `a` equals number `1`.
+Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-INsensisitve) or if `a` is equal to the number `1`.
 
 Value table:
 
@@ -150,7 +150,7 @@ windowStatus,OPEN
 ```javascript
   getURLHost(string u) string
 ```
-Retrieves the **host** part from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
+Retrieves the **host** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -164,9 +164,9 @@ Example:
 ```javascript
   getURLPort(string u) integer
 ```
-Retrieves the **port** part from URL string `u`. If the URL `u` is `null`, empty or invalid, exception is thrown.
+Retrieves the **port** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
-If the the URL `u` doesn't contain port, returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
+If the the URL `u` doesn't contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
 
 Example:
 
@@ -208,7 +208,7 @@ Example:
 ```javascript
   getURLQuery(string u) string
 ```
-Retrieves the **query string** part from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
+Retrieves the **query string** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -222,7 +222,7 @@ Example:
 ```javascript
   getURLUserInfo(string u) string
 ```
-Retrieves the `user:password` part from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
+Retrieves the `user:password` from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
 
 Example:
 
