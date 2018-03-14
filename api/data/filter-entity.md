@@ -78,10 +78,10 @@ Supported fields:
 
 ```javascript
   /* Match enabled entities. */
-  enabled
+  enabled = true
   
   /* Match disabled entities. */
-  not enabled
+  enabled = false
   
 ```
 
