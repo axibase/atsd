@@ -42,7 +42,7 @@ Supported fields:
    * [collection](../../rule-engine/functions-collection.md#collection)
    * [IN](../../rule-engine/functions-collection.md#in)
    * [likeAny](../../rule-engine/functions-collection.md#likeany)
-   * [matches](../../rule-engine/functions-collection.md#matches)§
+   * [matches](../../rule-engine/functions-collection.md#matches)
    * [contains](../../rule-engine/functions-collection.md#contains)
    * [size](../../rule-engine/functions-collection.md#size)
    * [isEmpty](../../rule-engine/functions-collection.md#isempty)
