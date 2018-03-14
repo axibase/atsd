@@ -20,6 +20,8 @@ Supported fields:
 
 * id (entity id)
 * name (entity id)
+* label
+* enabled
 * tags.tag-name or tags['tag-name']
 
 ### Supported Functions
@@ -40,7 +42,7 @@ Supported fields:
    * [collection](../../rule-engine/functions-collection.md#collection)
    * [IN](../../rule-engine/functions-collection.md#in)
    * [likeAny](../../rule-engine/functions-collection.md#likeany)
-   * [matches](../../rule-engine/functions-collection.md#matches)
+   * [matches](../../rule-engine/functions-collection.md#matches)§
    * [contains](../../rule-engine/functions-collection.md#contains)
    * [size](../../rule-engine/functions-collection.md#size)
    * [isEmpty](../../rule-engine/functions-collection.md#isempty)
@@ -61,6 +63,26 @@ Supported fields:
   for example 'nurswgvml001', 'nurswgvml772'.
   */
   id LIKE 'nurswgvml*'
+```
+
+### Entity Label Match
+
+```javascript
+  /*
+  Match entities whose label does not contain the 'nur' substring.
+  */
+  label NOT LIKE '*nur*'
+```
+
+### Enabled/Disabled Entity Match
+
+```javascript
+  /* Match enabled entities. */
+  enabled
+  
+  /* Match disabled entities. */
+  not enabled
+  
 ```
 
 ### Entity Tag Match
