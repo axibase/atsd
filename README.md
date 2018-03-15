@@ -5,7 +5,7 @@
   * [Data](api/data#overview)
     * [Series](api/data/series/README.md): [query](api/data/series/query.md), [insert](api/data/series/insert.md), [csv insert](api/data/series/csv-insert.md), [url query](api/data/series/url-query.md)
     * [Properties](api/data/properties/README.md): [query](api/data/properties/query.md), [insert](api/data/properties/insert.md), [url query](api/data/properties/url-query.md), [type query](api/data/properties/type-query.md), [delete](api/data/properties/delete.md)
-    * [Messages](api/data/messages/README.md): [query](api/data/messages/query.md), [insert](api/data/messages/insert.md), [statistics](api/data/messages/stats-query.md)
+    * [Messages](api/data/messages/README.md): [query](api/data/messages/query.md), [insert](api/data/messages/insert.md), [webhook](api/data/messages/webhook.md), [delete](api/data/messages/delete.md), [statistics](api/data/messages/stats-query.md)
     * [Alerts](api/data/alerts/README.md): [query](api/data/alerts/query.md), [update](api/data/alerts/update.md), [delete](api/data/alerts/delete.md), [history query](api/data/alerts/history-query.md)
     * [Extended](api/data/ext/README.md): [csv-upload](api/data/ext/csv-upload.md), [nmon-upload](api/data/ext/nmon-upload.md), [command](api/data/ext/command.md)
   * [Meta](api/meta#overview)
