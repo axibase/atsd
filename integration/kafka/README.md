@@ -18,7 +18,7 @@ This document describes how to monitor availability and performance of [Apache K
 ### Configure series collection
 
 1. Select 'kafka-series' configuration.
-1. On the JMX Configuration page, enter the JMX connection parameters:
+1. On the JMX Configuration page, enter the JMX connection parameters or use [Item List](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md#connection-parameters) with predefined kafka parameters:
 
    **Host** — Kafka hostname.  
    **Port** — JMX port.  

@@ -1,8 +1,8 @@
 <list>
   <com.axibase.collector.model.job.jmx.JmxJobConfig>
     <name>kafka-jmx</name>
-    <cronExpression>R 0/10 * * * ?</cronExpression>
-    <enabled>false</enabled>
+    <cronExpression>R 0/2 * * * ?</cronExpression>
+    <enabled>true</enabled>
     <jobType>JMX</jobType>
     <defaultTags/>
     <checkLastTime>false</checkLastTime>
@@ -11,138 +11,43 @@
     <configurations>
       <com.axibase.collector.model.job.jmx.JmxConfiguration>
         <name>kafka-series</name>
-        <host>kafka-host</host>
-        <port>1099</port>
-        <userName></userName>
-        <password></password>
+        <host>${ITEM?column(&apos;host&apos;)}</host>
+        <port>${ITEM?column(&apos;port&apos;)}</port>
+        <userName>${ITEM?column(&apos;user&apos;)}</userName>
+        <password>MnfWy/fs9frIwJ5QvYTjQZfvBj1iGrPY/c4BdkOOVoQ=</password>
         <trackingMBeans>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
             <objectName>kafka.server:name=*,type=BrokerTopicMetrics</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.controller:name=*,type=ControllerStats</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:fetcherType=*,name=*,type=DelayedFetchMetrics</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:delayedOperation=*,name=*,type=DelayedOperationPurgatory</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:type=Fetch</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:clientId=*,name=*,partition=*,topic=*,type=FetcherLagMetrics</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:brokerHost=*,brokerPort=*,clientId=*,name=*,type=FetcherStats</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.coordinator.group:name=*,type=GroupMetadataManager</objectName>
-            <attributes>*</attributes>
+            <attributes>OneMinuteRate,FiveMinuteRate,FifteenMinuteRate</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
             <objectName>kafka.controller:name=*,type=KafkaController</objectName>
-            <attributes>*</attributes>
+            <attributes>Value</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:name=*,type=KafkaRequestHandlerPool</objectName>
-            <attributes>*</attributes>
+            <objectName>kafka.log:name=LogEndOffset,partition=*,topic!=_*,type=Log</objectName>
+            <attributes>Value</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:name=*,type=KafkaServer</objectName>
-            <attributes>*</attributes>
+            <objectName>kafka.cluster:name=UnderReplicated,partition=*,topic!=_*,type=Partition</objectName>
+            <attributes>Value</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:type=LeaderReplication</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:type=Produce</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:name=*,type=ReplicaManager</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:type=Request</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.network:name=*,processor=*,type=RequestChannel</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.network:name=*,type=SocketServer</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:name=*,type=ZooKeeperClientMetrics</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:type=kafka-metrics-count</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:broker-id=*,fetcher-id=*,type=replica-fetcher-metrics</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:listener=*,networkProcessor=*,type=socket-server-metrics</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.server:type=txn-marker-channel-metrics</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.log:name=*,partition=*,topic!=_*,type=Log</objectName>
-            <attributes>*</attributes>
-            <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-            <objectName>kafka.cluster:name=*,partition=*,topic!=_*,type=Partition</objectName>
-            <attributes>*</attributes>
+            <objectName>kafka.server:name=BrokerState,type=KafkaServer</objectName>
+            <attributes>Value</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
             <objectName>kafka.server:name=*,topic!=_*,type=BrokerTopicMetrics</objectName>
-            <attributes>*</attributes>
+            <attributes>OneMinuteRate,FiveMinuteRate,FifteenMinuteRate</attributes>
             <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
         </trackingMBeans>
-        <entity></entity>
+        <entity>${ITEM?column(&apos;host&apos;)}</entity>
         <metricPrefix>jmx.${domain}.${type}.${name}.</metricPrefix>
         <propertyTypePrefix></propertyTypePrefix>
         <serviceName></serviceName>
@@ -151,60 +56,54 @@
           <string>95thPercentile</string>
           <string>98thPercentile</string>
           <string>999thPercentile</string>
+          <string>Count</string>
           <string>EventType</string>
-          <string>FifteenMinuteRate</string>
           <string>LatencyUnit</string>
+          <string>Max</string>
+          <string>Min</string>
           <string>RateUnit</string>
           <string>StdDev</string>
         </excludedMetrics>
         <excludedProperties/>
-        <seriesTags/>
+        <predefinedTags/>
         <putType>SERIES</putType>
+        <entitySet>
+          <name>kafka-cluster-jmx</name>
+          <type>TEXT</type>
+          <discardDuplicates>false</discardDuplicates>
+          <entities>
+            <string>#host,port,user,password</string>
+            <string>host1,port1,,</string>
+            <string>host2,port2,,</string>
+            <string>host3,port3,,</string>
+          </entities>
+          <separator>,</separator>
+        </entitySet>
       </com.axibase.collector.model.job.jmx.JmxConfiguration>
       <com.axibase.collector.model.job.jmx.JmxConfiguration>
-        <name>kafka-properties</name>
-        <host>kafka-host</host>
-        <port>1099</port>
-        <userName></userName>
-        <password></password>
+        <name>kafka-property</name>
+        <host>${ITEM?column(&apos;host&apos;)}</host>
+        <port>${ITEM?column(&apos;port&apos;)}</port>
+        <userName>${ITEM?column(&apos;user&apos;)}</userName>
+        <password>MnfWy/fs9frIwJ5QvYTjQZfvBj1iGrPY/c4BdkOOVoQ=</password>
         <trackingMBeans>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.server:name=*,type=KafkaServer</objectName>
-              <attributes>Value</attributes>
-              <propertyType></propertyType>
+            <objectName>kafka.server:name=*,type=KafkaServer</objectName>
+            <attributes>*</attributes>
+            <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.log:name=*,partition=*,topic!=_*,type=Log</objectName>
-              <attributes>Value</attributes>
-              <propertyType></propertyType>
+            <objectName>kafka.server:type=app-info</objectName>
+            <attributes>50thPercentile</attributes>
+            <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
           <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.cluster:name=*,partition=*,topic!=_*,type=Partition</objectName>
-              <attributes>Value</attributes>
-              <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.server:type=app-info</objectName>
-              <attributes>commit-id</attributes>
-              <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.controller:name=*,type=KafkaController</objectName>
-              <attributes>Value</attributes>
-              <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.log:name=*,partition=*,topic!=_*,type=Log</objectName>
-              <attributes>Value</attributes>
-              <propertyType></propertyType>
-          </com.axibase.collector.model.job.jmx.TrackingMBean>
-          <com.axibase.collector.model.job.jmx.TrackingMBean>
-              <objectName>kafka.cluster:name=*,partition=*,topic!=_*,type=Partition</objectName>
-              <attributes>Value</attributes>
-              <propertyType></propertyType>
+            <objectName>kafka.controller:name=*,type=KafkaController</objectName>
+            <attributes>50thPercentile</attributes>
+            <propertyType></propertyType>
           </com.axibase.collector.model.job.jmx.TrackingMBean>
         </trackingMBeans>
-        <entity></entity>
+        <entity>${ITEM?column(&apos;host&apos;)}</entity>
         <metricPrefix></metricPrefix>
         <propertyTypePrefix>jmx.kafka.</propertyTypePrefix>
         <serviceName></serviceName>
@@ -219,9 +118,13 @@
           <string>RateUnit</string>
           <string>StdDev</string>
         </excludedMetrics>
-        <excludedProperties/>
-        <seriesTags/>
+        <excludedProperties>
+          <string>commit-id</string>
+          <string>yammer-metrics-count</string>
+        </excludedProperties>
+        <predefinedTags/>
         <putType>PROPERTY</putType>
+        <entitySet reference="../../com.axibase.collector.model.job.jmx.JmxConfiguration/entitySet"/>
       </com.axibase.collector.model.job.jmx.JmxConfiguration>
     </configurations>
   </com.axibase.collector.model.job.jmx.JmxJobConfig>
