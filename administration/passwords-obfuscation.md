@@ -1,17 +1,23 @@
-# Passwords Obfuscation
+# Password Obfuscation
 
-## Password Obfuscation using ATSD
+## Obfuscation
 
-To generate an obfuscated password using ATSD, go to `Settings / Diagnostics / Passwords`. Type the plain text password and press the `Obfuscate` button. Insert the result into the `server.properties` file.
+To obfuscate a password, open the **Settings > Diagnostics > Passwords** page.
+
+Enter the plain text password and click `Obfuscate`. 
+
+The result will be an obfuscated string with `OBF:` prefix which can be specified in the `server.properties` file.
 
 ![](images/password-obfuscation.png)
 
-## Passwords Obfuscation without ATSD
-
-Follow the [guide](https://docs.oracle.com/cd/E35822_01/server.740/es_admin/src/tadm_ssl_jetty_passwords.html) to obfuscate the password before ATSD started.
-
 ## Deobfuscation
 
-To generate a plain-text password from obfuscated one, go to `Settings / Diagnostics / Passwords`. The deobfuscation candidate should have `OBF:` prefix and be created using this form or [Jetty Passwords](http://www.eclipse.org/jetty/documentation/current/configuring-security-secure-passwords.html) utility.
+To convert an obfuscated text back to plain text, open the **Settings > Diagnostics > Passwords** page. 
 
-![](images/password-deobfuscation.png)
+The input text should start with `OBF:` prefix.
+
+Enter the text  and click `Deobfuscate` to view the plain text.
+
+## Security
+
+Obfuscation is not based on encryption and cannot be considered a secure way to store passwords. The above procedures can be performed on any ATSD instance or using a Jetty server as described in this [article](https://docs.oracle.com/cd/E35822_01/server.740/es_admin/src/tadm_ssl_jetty_passwords.html).
