@@ -10,6 +10,15 @@ The result will be an obfuscated string with `OBF:` prefix which can be specifie
 
 ![](images/password-obfuscation.png)
 
+Sample `server.properties` file with obfuscated passwords:
+
+```
+...
+https.keyStorePassword=OBF:1s3g1zlo1y0y1rpg1ri31vv11vu91rib1rp61y0s1zlu1s3m
+https.keyManagerPassword=OBF:1s3g1zlo1y0y1rpg1ri31vv11vu91rib1rp61y0s1zlu1s3m
+...
+```
+
 ## Deobfuscation
 
 To convert an obfuscated text back to plain text, open the **Settings > Diagnostics > Passwords** page. 
@@ -17,6 +26,8 @@ To convert an obfuscated text back to plain text, open the **Settings > Diagnost
 The input text should start with `OBF:` prefix.
 
 Enter the text  and click `Deobfuscate` to view the plain text.
+
+![](images/password-deobfuscation.png)
 
 ## Security
 
