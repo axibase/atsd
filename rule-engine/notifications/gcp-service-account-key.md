@@ -28,7 +28,7 @@ keytool -v -importkeystore -srckeystore {P12_FILE_NAME} -srcstoretype PKCS12 -al
 
 Replace `{P12_FILE_NAME}` with saved file name.<br/>
 Replace `{GCP_KEY_ALIAS}` with your alias. The alias must start with `gcp` prefix.<br/>
-Replace `{KEY_PASSWORD}` with your key manager password (The property `https.keyManagerPassword` in the `/opt/atsd/atsd/conf/server.properties` file. Before using the value of property, deobfuscate it).
+Replace `{KEY_PASSWORD}` with your key manager password (The property `https.keyManagerPassword` in the `/opt/atsd/atsd/conf/server.properties` file. Before using the value of property, [deobfuscate](../../administration/passwords-obfuscation.md#deobfuscation) it).
 
 Check the contents of the keystore:
 

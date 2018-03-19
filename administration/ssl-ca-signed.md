@@ -65,7 +65,7 @@ Open `/opt/atsd/atsd/conf/server.properties` file.
 nano /opt/atsd/atsd/conf/server.properties
 ```
 
-Specify the new password (in plain text or [obfuscated](https://docs.oracle.com/cd/E35822_01/server.740/es_admin/src/tadm_ssl_jetty_passwords.html)) in `https.keyStorePassword` and `https.keyManagerPassword` settings. Leave `https.trustStorePassword` blank.
+Specify the new password (in plain text or [obfuscated](passwords-obfuscation.md)) in `https.keyStorePassword` and `https.keyManagerPassword` settings. Leave `https.trustStorePassword` blank.
 
 ```properties
 ...
