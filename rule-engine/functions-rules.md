@@ -85,26 +85,26 @@ Assume that there is the following windows with status 'REPEAT' and function is 
 +----------------+------------------------------+
 | Entity         | nurswgvml007                 |
 | Entity Label   | NURswgvml007                 |
-| Metric	       | message                      |
+| Metric	 | message                      |
 | Tags	         | container-name = axibase     | 
 |                | container-status = UP        |
 |                | host = 172.17.0.3            |
 |                | port = 22                    |
 | Rule	         | jvm_derived                  |
 | Rule Expression| true                         |
-| Text Value	   | Starting sql query execution.|
+| Text Value	 | Starting sql query execution.|
 +----------------+------------------------------+
 ```
 ```
 +----------------+------------------------------+
 | Entity         | atsd                         |
 | Entity Label   | ATSD                         |
-| Metric	       | message                      |
+| Metric	 | message                      |
 | Tags	         | container-name = axibase2    |
 |                | external-port = 43022        |
 | Rule	         | test_rule_open               |
 | Rule Expression| true                         |
-| Text Value	   | Send 300 commands to ATSD.   |
+| Text Value	 | Send 300 commands to ATSD.   |
 +----------------+------------------------------+
 ```
 
