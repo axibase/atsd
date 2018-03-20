@@ -62,7 +62,7 @@ The following match conditions are applied:
     |message |The text value, which is equal to 'message' field in case of message command.|
     |tags and tags.{name}|Command tags.|
     |status|Window [status](README.md#window-status).|  
-  * The expression `p` can include window [fields](window.md#window-fields).  
+  * The expression `p` can include window [fields](window.md#window-fields) as placeholders.  
 
 ### `rule_open` Examples 
 
@@ -202,7 +202,7 @@ The following match conditions are applied:
     |message |The text value, which is equal to 'message' field in case of message command.|
     |tags and tags.{name}|Command tags.|
     |status|Window [status](README.md#window-status).|  
-* The expression `p` can include window [fields](window.md#window-fields).  
+* The expression `p` can include window [fields](window.md#window-fields) as placeholders.  
  
 To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
