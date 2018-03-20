@@ -42,9 +42,9 @@ The following window fields can be accessed via the dot notation, for example `r
  * `lastText`
 
 > Note: 
-> `tags` and `entity.tags` are the same as in the last window command;
-> if minimum interval is not set then `min_interval_expired = true`;
-> `threshold` - the threshold matched by the last command.
+> * `tags` and `entity.tags` are the same as in the last window command;
+> * if minimum interval is not set then `min_interval_expired = true`;
+> * `threshold` - the threshold matched by the last command.
 
 ---
 
@@ -74,7 +74,7 @@ The following match conditions are applied:
   avg() > 10 && rule_open('disk_used_check')
 
   /*
-  Match using [Message Fields](window.md#message-fields)
+  Match using Message Fields
   */
   rule_open('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
@@ -212,9 +212,9 @@ The following window fields can be accessed via the dot notation, for example `r
  * `lastText`
 
 > Note: 
-> `tags` and `entity.tags` are the same as in the last window command;
-> if minimum interval is not set then `min_interval_expired = true`;
-> `threshold` - the threshold matched by the last command.
+> * `tags` and `entity.tags` are the same as in the last window command;
+> * if minimum interval is not set then `min_interval_expired = true`;
+> * `threshold` - the threshold matched by the last command.
 
 Examples:
 
@@ -230,7 +230,7 @@ Examples:
   rule_windows('jvm_derived',"tags.port='22'").lastText
 
   /*
-  Match using [Message Fields](window.md#message-fields)
+  Match using Message Fields
   */
   rule_windows('jvm_derived', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
