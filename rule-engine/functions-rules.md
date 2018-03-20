@@ -2,18 +2,11 @@
 
 ## Overview
 
-The `rule` functions provide a way to check the status of windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. The functions can be used for correlation purposes.
+The `rule` functions provide a way to check the windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. The functions can be used for correlation purposes.
 
-The following match conditions are applied:
-
-* If the entity argument `e` is not specified, the same entity is used for matching regardless of grouping tags or message.
-* If the entity argument `e` is specified as null or empty string, any entity is matched.
-* The expression `p` can be built using tags, message, wildcards and [window fields](window.md#window-fields).
 
 The windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command. 
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression will return `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
-
-> Open window means a window with status `OPEN` or `REPEAT`.
 
 The current window is excluded from matching.
 
@@ -29,16 +22,61 @@ The current window is excluded from matching.
   rule_open(string r[, string e[, string p]]) boolean
 ```
 
-Checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule `r`, entity `e` and expression `p`.
+Checks if there is at least one window with the 'OPEN' or 'REPEAT' [status](README.md#window-status) for the specified rule `r`, entity `e` and expression `p` to match other windows.
 
 The function returns `true` if a matching window is found, `false` otherwise.
 
-Examples:
-
-The following expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the 'disk_used_check' rule is open for the same entity.
+## `rule_window`
 
 ```javascript
+  rule_window(string r[, string e[, string p]]) object
+```
+
+Returns the first matching window for the specified rule `r`, entity `e` and expression `p` to match other windows.
+
+The function returns `null` if no matching windows are found.
+
+The following window fields can be accessed via the dot notation, for example `rule_window('jvm_derived').entity`:
+
+ * [base fields](window.md#base-fields), excluding `repeat_interval`
+ * `lastText`
+
+> Note: 
+> `tags` and `entity.tags` are the same as in the last window command;
+> if minimum interval is not set then `min_interval_expired = true`;
+> `threshold` - the threshold matched by the last command.
+
+---
+
+The following match conditions are applied:
+
+* Entity:
+  * If the entity argument `e` is not specified, the **current** entity in the window is used for matching.
+  * If the entity argument `e` is specified as `null` or empty string `''`, all entities are matched.
+
+* Expression:
+  * The expression `p` can include the following fields and supports wildcards in field values:
+   
+    |**Name**|**Description**|
+    |---|---|
+    |message |The text value, which is equal to 'message' field in case of message command.|
+    |tags and tags.{name}|Command tags.|
+    |status|Window [status](README.md#window-status).|  
+  * The expression `p` can include window [fields](window.md#window-fields).  
+
+### `rule_open` Examples 
+
+```javascript
+  /*
+  Evaluates to `true` if the average value of samples in the current window exceeds 10 
+  and if the 'disk_used_check' rule is open for the same entity.
+  */
   avg() > 10 && rule_open('disk_used_check')
+
+  /*
+  Match using [Message Fields](window.md#message-fields)
+  */
+  rule_open('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
 
 Assume that there is the following windows with status 'REPEAT' and function is called from the rule 'test_rule_open':
@@ -73,7 +111,9 @@ Assume that there is the following windows with status 'REPEAT' and function is 
 * No optional parameters
 
 ```javascript
-  /* Returns 'false' because the entity in window of the referenced rule is different */
+  /* 
+  Returns 'false' because the entity in window of the referenced rule is different 
+  */
   rule_open('jvm_derived')
 ```
 
@@ -118,26 +158,32 @@ Assume that there is the following windows with status 'REPEAT' and function is 
   
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', "tags.port != '23' && message LIKE 'Starting*'")
+  
 ```
-
-## `rule_window`
+### `rule_window` Examples
 
 ```javascript
-  rule_window(string r[, string e[, string p]]) object
-```
+  /*
+  Evaluates to `true` if the average value of samples in the current window exceeds 10 
+  and if the first window for 'disk_used_check' rule in the same entity has any other status except 'OPEN'.
+  */
+  avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'OPEN'
 
-Returns the first matching window in `OPEN` or `REPEAT` status for the specified rule `r`, entity `e` and expression `p` to match other windows.
+  /*
+  Match using [Message Fields](window.md#message-fields).
+  */
+  rule_window('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 
-The function returns `null` if no matching windows are found.
+  /*
+  Match using wildcard.
+  */
+  rule_window('jvm_derived', 'nurswgvml007', "tags.container-name LIKE 'axi*'").repeat_count
 
-Example:
-
-```javascript
-  avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'CANCEL'
-```
-
-The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the first window for 'disk_used_check' rule in the same entity has any other status except `CANCEL`.
-
+  /*
+  Used the same entity as in the current window.
+  */
+  rule_window('slack-bot-cmd-confirm', entity, 'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
+  ```
 
 ## `rule_windows`
 
@@ -145,9 +191,32 @@ The above expression will evaluate to `true` if the average value of samples in 
   rule_windows(string r, string p) [object]
 ```
 
-Returns the collection of windows in `OPEN` or `REPEAT` status for the specified rule `r`, expression `p` and the same entity as in the current window.
+Returns the collection of windows for the specified rule `r`, expression `p` and the same entity as in the current window (regardless of the entity specified in the expression).
 
-Example:
+The following match conditions are applied:
+
+* The expression `p` can include the following fields and supports wildcards in field values:
+   
+    |**Name**|**Description**|
+    |---|---|
+    |message |The text value, which is equal to 'message' field in case of message command.|
+    |tags and tags.{name}|Command tags.|
+    |status|Window [status](README.md#window-status).|  
+* The expression `p` can include window [fields](window.md#window-fields).  
+ 
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+
+The following window fields can be accessed via the dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`:
+
+ * [base fields](window.md#base-fields), excluding `repeat_interval`
+ * `lastText`
+
+> Note: 
+> `tags` and `entity.tags` are the same as in the last window command;
+> if minimum interval is not set then `min_interval_expired = true`;
+> `threshold` - the threshold matched by the last command.
+
+Examples:
 
 ```javascript
   /* 
@@ -155,4 +224,13 @@ Example:
   with the same value for 'tags.host' as at the current window. 
   */
   rule_windows('jvm_derived',"tags.host='" + tags.host + "'")
+
+  rule_windows('slack-bot-cmd-confirm', 'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
+
+  rule_windows('jvm_derived',"tags.port='22'").lastText
+
+  /*
+  Match using [Message Fields](window.md#message-fields)
+  */
+  rule_windows('jvm_derived', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
