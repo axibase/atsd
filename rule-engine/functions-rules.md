@@ -4,7 +4,6 @@
 
 The `rule` functions provide a way to check the windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. The functions can be used for correlation purposes.
 
-
 The windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command. 
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression will return `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
 
@@ -42,7 +41,7 @@ The following window fields can be accessed via the dot notation, for example `r
  * `lastText`
 
 > Note: 
-> * `tags` and `entity.tags` are the same as in the last window command;
+> * `entity` and `tags` are the same as in the last window command;
 > * if minimum interval is not set then `min_interval_expired = true`;
 > * `threshold` - the threshold matched by the last command.
 
@@ -61,7 +60,7 @@ The following match conditions are applied:
     |---|---|
     |message |The text value, which is equal to 'message' field in case of message command.|
     |tags and tags.{name}|Command tags.|
-    |status|Window [status](README.md#window-status).|  
+    |status|Window [status](README.md#window-status).|
   * The expression `p` can include window [fields](window.md#window-fields) as placeholders.  
 
 ### `rule_open` Examples 
@@ -74,7 +73,7 @@ The following match conditions are applied:
   avg() > 10 && rule_open('disk_used_check')
 
   /*
-  Match using Message Fields
+  Match using Message Fields.
   */
   rule_open('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
@@ -170,7 +169,7 @@ Assume that there is the following windows with status 'REPEAT' and function is 
   avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'OPEN'
 
   /*
-  Match using Message Fields
+  Match using Message Fields.
   */
   rule_window('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 
@@ -201,7 +200,7 @@ The following match conditions are applied:
     |---|---|
     |message |The text value, which is equal to 'message' field in case of message command.|
     |tags and tags.{name}|Command tags.|
-    |status|Window [status](README.md#window-status).|  
+    |status|Window [status](README.md#window-status).|
 * The expression `p` can include window [fields](window.md#window-fields) as placeholders.  
  
 To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
@@ -212,7 +211,7 @@ The following window fields can be accessed via the dot notation, for example `r
  * `lastText`
 
 > Note: 
-> * `tags` and `entity.tags` are the same as in the last window command;
+> * `tags` are the same as in the last window command;
 > * if minimum interval is not set then `min_interval_expired = true`;
 > * `threshold` - the threshold matched by the last command.
 
@@ -236,7 +235,7 @@ Examples:
   rule_windows('jvm_derived',"tags.port='22'").lastText
 
   /*
-  Match using Message Fields
+  Match using Message Fields.
   */
   rule_windows('jvm_derived', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
