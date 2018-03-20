@@ -191,7 +191,7 @@ Assume that there is the following windows with status 'REPEAT' and function is 
   rule_windows(string r, string p) [object]
 ```
 
-Returns the collection of windows for the specified rule `r`, expression `p` and the same entity as in the current window (regardless of the entity specified in the expression).
+Returns the collection of windows for the specified rule `r`, expression `p` and the same entity as in the current window.
 
 The following match conditions are applied:
 
