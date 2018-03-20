@@ -170,7 +170,7 @@ Assume that there is the following windows with status 'REPEAT' and function is 
   avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'OPEN'
 
   /*
-  Match using [Message Fields](window.md#message-fields).
+  Match using Message Fields
   */
   rule_window('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 
@@ -225,8 +225,14 @@ Examples:
   */
   rule_windows('jvm_derived',"tags.host='" + tags.host + "'")
 
+  /*
+  Match with tags, message and status.
+  */
   rule_windows('slack-bot-cmd-confirm', 'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
 
+  /*
+  Access to window fields.
+  */
   rule_windows('jvm_derived',"tags.port='22'").lastText
 
   /*
