@@ -6,16 +6,16 @@ The Slack [Events API](https://api.slack.com/events-api#receiving_events) allows
 
 The following document describes how to create a Slack Bot that will copy messages received from other Slack users in the same workspace into ATSD.
 
-The ATSD can then be programmed to respond to received commands by means of sending information back into Slack using the `SLACK` web notification type.
+The ATSD can then be programmed to respond to received commands by means of sending information back into Slack.
 
 ## Create Slack Bot
 
 Slack Bot is a special account created specifically for automation purposes.
 
 * Open https://api.slack.com/apps/
-   
+
    ![](images/outgoing_webhook_slack_1.png)
-   
+
 * Select an existing app or create a new one.
 
 * Create a bot user.
@@ -23,15 +23,15 @@ Slack Bot is a special account created specifically for automation purposes.
     * Click on **Bot Users**.
 
         ![](images/outgoing_webhook_slack_2.png)
-        
+
     * Click on **Add a Bot User**.
-    
+
        ![](images/outgoing_webhook_slack_3.png)
-   
+
     * Review Settings, click on **Add Bot User**.
 
         ![](images/outgoing_webhook_slack_4.png)
-   
+
     * Click on **Save Changes**.
 
 ## Subscribe to Bot Messages
@@ -43,33 +43,39 @@ Slack Bot is a special account created specifically for automation purposes.
 * Click on **Add features and functionality**.
 
    ![](images/outgoing_webhook_slack_6.png)
-   
-* Click on **Event Subscriptions**, check **Enable Events**.
- 
-   ![](images/outgoing_webhook_slack_7.png)
-   
-* Fill in the **Request URL** field.
 
-  Specify [user credentials](../../api/data/messages/webhook.md#authentication) and the hostname/port of your ATSD instance.
-  
-  The target ATSD server must be accessible and have a valid CA-signed [SSL certificate](/administration/ssl-ca-signed.md) installed. Self-signed certificates are not supported by Slack at this time.
+* Click on **Event Subscriptions**, check **Enable Events**.
+
+   ![](images/outgoing_webhook_slack_7.png)
+
+* Perform the following actions to prepare a **Request URL** for accepting notifications from Slack servers.
+
+  Open the **Settings > Users > Create Webhook User** wizard in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Slack.
+
+  ![](images/outgoing_webhook_slack_user.png)
+
+  Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
    ```elm
-   https://user:password@atsd_host:8443/api/v1/messages/webhook/slack?entity=slack&command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
-   ```
-   
-   *Verified* status should be displayed if the request evaluates correctly.
+   https://slack:12345678@atsd_host:8443/api/v1/messages/webhook/slack?entity=slack&command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
+   ```  
+
+  > The receiving ATSD server (or the intermediate reverse proxy) must be externally accessible on the DNS name and have a valid CA-signed [SSL certificate](/administration/ssl-ca-signed.md) installed. Self-signed certificates are **not supported** by Slack at this time.
+
+* Enter the above URL into the **Request URL** field.
+
+   **Verified** status should be displayed if the request evaluates correctly.
 
    ![](images/outgoing_webhook_slack_8.png)   
-   
+
 * Click on **Add Bot User Event** at the **Subscribe to Bot Events** section.
 
    ![](images/outgoing_webhook_slack_9.png)
-   
+
 * Enter `message.im` to limit subscriptions only to messages sent **directly** to bot.
 
    ![](images/outgoing_webhook_slack_10.png)
-   
+
 * Click on **Save Changes**.
 
 * Click on **Install App**.
@@ -79,15 +85,15 @@ Slack Bot is a special account created specifically for automation purposes.
 * Click on **Install App to Workspace**.
 
    ![](images/outgoing_webhook_slack_12.png)
-   
+
 * Review permissions, click **Authorize**.
 
    ![](images/outgoing_webhook_slack_13.png)
-   
+
 * Go to Slack workspace, make sure the app is visible in the **Apps** section.
 
    ![](images/outgoing_webhook_slack_14.png)
-   
+
 ## Testing Webhook
 
 ### Create/Import Rule
@@ -114,19 +120,17 @@ Slack Bot is a special account created specifically for automation purposes.
 * Save the rule by clicking on the **Save** button.
 
     ![](images/outgoing_webhook_slack_15.png)
-    
+
 * Go to the Slack workspace and send direct message to recently created bot.
 
     ![](images/outgoing_webhook_slack_16.png)
-    
-    
+
+
 > Note that message fields in json payload sent by Slack servers contain HTML entities for [3 characters](https://api.slack.com/docs/message-formatting#how_to_escape_characters):
 >  * ampersand `&` replaced with `&amp;`
 >  * less-than sign, `<` replaced with `&lt;`
 >  * greater-than sign, `>` replaced with `&gt;`  
-    
+
 * It may take a few seconds for the commands to arrive and to trigger the notifications. The rule will create new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
     ![](images/outgoing_webhook_slack_17.png)    
-
-

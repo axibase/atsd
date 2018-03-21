@@ -74,6 +74,36 @@ The permissions are enforced both for template and regular portals.
 A user group can be granted an `All Portal` permission whereby its members are authorized to view all portals enabled in the system.
 The permission to view all portals is automatically granted to users with an `ADMIN` role.
 
+## User Wizards
+
+To simplify the process of creating user account for typical use cases, the database provides wizards to create a **webhook** user and a **collector** user.
+
+### Webhook User
+
+The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/data/messages/webhook.md) endpoint and requires only the `API_DATA_WRITE` role and `write` permissions for one specific entity.
+
+To create a new user of this type, open the **Settings > Users** page and select **Create Webhook User** option from the split button located below the 'Users' table.
+
+![](images/webhook-user.png)
+
+The wizard will automatically create a new user account, user and entity groups and grant necessary permissions.
+
+![](images/webhook-permissions.png)
+
+### Collector User
+
+The **collector** user inserts data of all types (series, properties, and messages) for many entities, including new entities, and requires both the `API_DATA_WRITE` and `API_META_WRITE` roles and `write` permissions for all entities.
+
+The instruments inserting data under the **collector** account are typically located within a specific network segment and an option to specify the allowed IP range could be used to enhance access security.
+
+To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the 'Users' table.
+
+![](images/collector-user-wizard.png)
+
+The wizard will automatically create a new user account and assign it as a member to the 'Data Collectors' user group with all entity `write` permissions.
+
+![](images/collector-user-permissions.png)
+
 ## Implementation Notes
 
 The User's role, group membership, and entity permissions are cached while the user's session is active. The session is invalidated in case the user's authorization is changed by an administrator, in which case the user has to re-login.

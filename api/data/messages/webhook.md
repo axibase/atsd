@@ -31,6 +31,16 @@ https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/jenkins?entity=jen01
 
 The user must have the `API_DATA_WRITE` role and `write` permissions for the target entity.
 
+### Webhook User Wizard
+
+To create a new user with permissions to write data for one specific entity, open **Settings > Users** page and select **Create Webhook User** option from the split button located below the 'Users' table.
+
+![](images/webhook-user.png)
+
+The wizard will automatically create user and entity groups and grant necessary permissions.
+
+![](images/webhook-permissions.png)
+
 ### Parameters
 
 Request parameters, except for reserved parameters, are converted into message **tags** where tag name equals parameter name and tag value equals parameter value. Tag names are lowercased. Non-printable characters such as whitespace in tag names are replaced with underscore.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Web notifications provide a mechanism for event-driven integration of the ATSD rule engine with external HTTP services.
+Web notifications provide a mechanism for event-driven integration of the database with external HTTP services.
 
 They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing to an AWS SNS topic, or controlling IoT devices.
 
@@ -12,7 +12,7 @@ Example: [Slack](notifications/slack.md) Alert
 
 ## Notification Types
 
-The rule engine supports various types of web notifications, some of which encapsulate the integration details of the remote web services while [others](notifications/custom.md) provide maximum flexibility.
+The rule engine supports both built-in and custom web notification types.
 
 ### Collaboration Services
 

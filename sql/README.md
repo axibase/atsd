@@ -264,7 +264,7 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`tags.{name}`    |string   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
 |`tags`           |string   | All series tags, concatenated to `name1=value;name2=value` format.|
 |`tags.*`         |string   | Expands to multiple columns, each column containing a separate series tag.|
-|`datetime`       |datetime | Sample time in ISO 8601 format, for example `2016-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period's **start** time in ISO format, same as `date_format(PERIOD(...))`.|
+|`datetime`       |datetime | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period's **start** time in ISO format, same as `date_format(PERIOD(...))`.|
 |`time`           |long     | Sample time in Unix milliseconds since 1970-01-01T00:00:00Z, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period's **start** time.|
 
 #### Metric Columns
@@ -398,9 +398,9 @@ Each series sample can contain a:
 The text value can be inserted with [`series`](../api/network/series.md#fields) command and the series [insert](../api/data/series/insert.md) method in Data API.
 
 ```ls
-series d:2016-10-13T08:00:00Z e:sensor-1 m:temperature=20.3
-series d:2016-10-13T08:15:00Z e:sensor-1 m:temperature=24.4 x:temperature="Provisional"
-series d:2016-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
+series d:2017-10-13T08:00:00Z e:sensor-1 m:temperature=20.3
+series d:2017-10-13T08:15:00Z e:sensor-1 m:temperature=24.4 x:temperature="Provisional"
+series d:2017-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
 ```
 
 ```sql
@@ -786,14 +786,14 @@ An interval condition determines the selection interval and is specified in the 
 
 | **Name** | **Pattern** | **Examples** |
 |---|---|---|
-| ISO-8601 | `yyyy-MM-dd'T'HH:mm:ss[.NNN]'Z'` | 2016-12-10T15:30:00.077Z<br>2016-12-10T15:30:00Z |
-| Local | `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]` | 2016-12-10 15:30:00.077<br>2016-12-10 15:30:00 |
+| ISO-8601 | `yyyy-MM-dd'T'HH:mm:ss[.NNN]'Z'` | 2017-12-10T15:30:00.077Z<br>2017-12-10T15:30:00Z |
+| Local | `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]` | 2017-12-10 15:30:00.077<br>2017-12-10 15:30:00 |
 
 ```sql
 SELECT datetime, entity, value
   FROM "mpstat.cpu_busy"
-WHERE datetime BETWEEN '2016-12-10T14:00:15Z' AND '2016-12-10T14:30:00.077Z'
--- WHERE datetime BETWEEN '2016-12-10 14:00:15' AND '2016-12-11 14:30:00.077'
+WHERE datetime BETWEEN '2017-12-10T14:00:15Z' AND '2017-12-10T14:30:00.077Z'
+-- WHERE datetime BETWEEN '2017-12-10 14:00:15' AND '2017-12-11 14:30:00.077'
 ```
 
 The dates in the Local format are evaluated based on the server time zone.
@@ -816,9 +816,9 @@ WHERE time >= 1500300000000
 Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
 ```sql
-WHERE date_format(time, 'yyyy') > '2014'   -- Inefficient: Full scan with string comparison.
-WHERE YEAR(time) > 2014                    -- Inefficient: Full scan with number comparison.
-WHERE datetime >= '2015-01-01T00:00:00Z'  -- Recommended:  Date range scan using an indexed column.
+WHERE date_format(time, 'yyyy') > '2018'   -- Inefficient: Full scan with string comparison.
+WHERE YEAR(time) > 2018                    -- Inefficient: Full scan with number comparison.
+WHERE datetime >= '2018-01-01T00:00:00Z'  -- Recommended:  Date range scan using an indexed column.
 
 GROUP BY date_format(time, 'yyyy')         -- Inefficient.
 GROUP BY YEAR(time)                        -- Inefficient.
@@ -1072,22 +1072,22 @@ Examples:
 ```ls
 | Period     | Start Time        | End Time          | _base time_       | Initial Period    | 2nd Period        | Last Period      |
 |------------|-------------------|-------------------|-------------------|-------------------|-------------------|------------------|
-| 45 MINUTE  | 2016-06-20 15:05  | 2016-06-24 00:00  | 2016-06-20 15:00  | 2016-06-20 15:00  | 2016-06-20 15:45  | 2016-06-23 23:15 |
-| 45 MINUTE  | 2016-06-20 15:00  | 2016-06-24 00:00  | 2016-06-20 15:00  | 2016-06-20 15:00  | 2016-06-20 15:45  | 2016-06-23 23:15 |
-| 45 MINUTE  | 2016-06-20 15:55  | 2016-06-24 00:00  | 2016-06-20 15:00  | 2016-06-20 15:45  | 2016-06-20 16:30  | 2016-06-23 23:15 |
-| 60 MINUTE  | 2016-06-20 15:30  | 2016-06-24 00:00  | 2016-06-20 15:00  | 2016-06-20 15:00  | 2016-06-20 16:00  | 2016-06-23 23:00 |
-| 1 HOUR     | 2016-06-20 15:30  | 2016-06-24 00:00  | 2016-06-20 00:00  | 2016-06-20 15:00  | 2016-06-20 16:00  | 2016-06-23 23:00 |
-| 1 HOUR     | 2016-06-20 16:00  | 2016-06-24 00:00  | 2016-06-20 00:00  | 2016-06-20 16:00  | 2016-06-20 17:00  | 2016-06-23 23:00 |
-| 1 HOUR     | 2016-06-20 16:05  | 2016-06-23 23:55  | 2016-06-20 00:00  | 2016-06-20 16:00  | 2016-06-20 17:00  | 2016-06-23 23:00 |
-| 7 HOUR     | 2016-06-20 16:00  | 2016-06-24 00:00  | 2016-06-20 00:00  | 2016-06-20 14:00  | 2016-06-20 21:00  | 2016-06-23 19:00 |
-| 10 HOUR    | 2016-06-20 16:00  | 2016-06-24 00:00  | 2016-06-20 00:00  | 2016-06-20 10:00  | 2016-06-20 20:00  | 2016-06-23 18:00 |
-| 1 DAY      | 2016-06-01 16:00  | 2016-06-24 00:00  | 2016-06-01 00:00  | 2016-06-01 00:00  | 2016-06-02 00:00  | 2016-06-23 00:00 |
-| 2 DAY      | 2016-06-01 16:00  | 2016-06-24 00:00  | 2016-06-01 00:00  | 2016-06-01 00:00  | 2016-06-03 00:00  | 2016-06-23 00:00 |
-| 5 DAY      | 2016-06-01 16:00  | 2016-06-24 00:00  | 2016-06-01 00:00  | 2016-06-01 00:00  | 2016-06-11 00:00  | 2016-06-21 00:00 |
-| 1 WEEK     | 2016-06-01 16:00  | 2016-06-24 00:00  | 2016-06-06 00:00  | 2016-05-30 00:00  | 2016-06-06 00:00  | 2016-06-20 00:00 |
-| 1 WEEK     | 2016-06-07 16:00  | 2016-06-24 00:00  | 2016-06-06 00:00  | 2016-06-06 00:00  | 2016-06-13 00:00  | 2016-06-20 00:00 |
-| 1 WEEK     | 2016-05-01 16:00  | 2016-05-24 00:00  | 2016-05-02 00:00  | 2016-04-25 00:00  | 2016-05-02 00:00  | 2016-05-23 00:00 |
-| 1 WEEK     | 2016-06-01 00:00  | 2016-06-02 00:00  | 2016-06-06 00:00  | 2016-05-30 00:00  | -                 | -                |
+| 45 MINUTE  | 2017-06-20 15:05  | 2017-06-24 00:00  | 2017-06-20 15:00  | 2017-06-20 15:00  | 2017-06-20 15:45  | 2017-06-23 23:15 |
+| 45 MINUTE  | 2017-06-20 15:00  | 2017-06-24 00:00  | 2017-06-20 15:00  | 2017-06-20 15:00  | 2017-06-20 15:45  | 2017-06-23 23:15 |
+| 45 MINUTE  | 2017-06-20 15:55  | 2017-06-24 00:00  | 2017-06-20 15:00  | 2017-06-20 15:45  | 2017-06-20 16:30  | 2017-06-23 23:15 |
+| 60 MINUTE  | 2017-06-20 15:30  | 2017-06-24 00:00  | 2017-06-20 15:00  | 2017-06-20 15:00  | 2017-06-20 16:00  | 2017-06-23 23:00 |
+| 1 HOUR     | 2017-06-20 15:30  | 2017-06-24 00:00  | 2017-06-20 00:00  | 2017-06-20 15:00  | 2017-06-20 16:00  | 2017-06-23 23:00 |
+| 1 HOUR     | 2017-06-20 16:00  | 2017-06-24 00:00  | 2017-06-20 00:00  | 2017-06-20 16:00  | 2017-06-20 17:00  | 2017-06-23 23:00 |
+| 1 HOUR     | 2017-06-20 16:05  | 2017-06-23 23:55  | 2017-06-20 00:00  | 2017-06-20 16:00  | 2017-06-20 17:00  | 2017-06-23 23:00 |
+| 7 HOUR     | 2017-06-20 16:00  | 2017-06-24 00:00  | 2017-06-20 00:00  | 2017-06-20 14:00  | 2017-06-20 21:00  | 2017-06-23 19:00 |
+| 10 HOUR    | 2017-06-20 16:00  | 2017-06-24 00:00  | 2017-06-20 00:00  | 2017-06-20 10:00  | 2017-06-20 20:00  | 2017-06-23 18:00 |
+| 1 DAY      | 2017-06-01 16:00  | 2017-06-24 00:00  | 2017-06-01 00:00  | 2017-06-01 00:00  | 2017-06-02 00:00  | 2017-06-23 00:00 |
+| 2 DAY      | 2017-06-01 16:00  | 2017-06-24 00:00  | 2017-06-01 00:00  | 2017-06-01 00:00  | 2017-06-03 00:00  | 2017-06-23 00:00 |
+| 5 DAY      | 2017-06-01 16:00  | 2017-06-24 00:00  | 2017-06-01 00:00  | 2017-06-01 00:00  | 2017-06-11 00:00  | 2017-06-21 00:00 |
+| 1 WEEK     | 2017-06-01 16:00  | 2017-06-24 00:00  | 2017-06-06 00:00  | 2017-05-30 00:00  | 2017-06-06 00:00  | 2017-06-20 00:00 |
+| 1 WEEK     | 2017-06-07 16:00  | 2017-06-24 00:00  | 2017-06-06 00:00  | 2017-06-06 00:00  | 2017-06-13 00:00  | 2017-06-20 00:00 |
+| 1 WEEK     | 2017-05-01 16:00  | 2017-05-24 00:00  | 2017-05-02 00:00  | 2017-04-25 00:00  | 2017-05-02 00:00  | 2017-05-23 00:00 |
+| 1 WEEK     | 2017-06-01 00:00  | 2017-06-02 00:00  | 2017-06-06 00:00  | 2017-05-30 00:00  | -                 | -                |
 ```
 
 For `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units, the start of the day is determined according to the **database timezone**, unless a user-defined timezone is specified as an option, for example `GROUP BY entity, PERIOD(1 MONTH, 'UTC')`.
@@ -1099,7 +1099,7 @@ For `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units, the start of the day is
 ```sql
 SELECT entity, datetime, COUNT(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime >= '2016-06-18T10:02:00Z' AND datetime < '2016-06-18T10:32:00Z'
+WHERE datetime >= '2017-06-18T10:02:00Z' AND datetime < '2017-06-18T10:32:00Z'
   AND entity = 'nurswgvml007'
 GROUP BY entity, PERIOD(10 MINUTE, END_TIME)
 ```
@@ -1107,15 +1107,15 @@ GROUP BY entity, PERIOD(10 MINUTE, END_TIME)
 ```ls
 | entity       | datetime                 | COUNT(value) |
 |--------------|--------------------------|--------------|
-| nurswgvml007 | 2016-06-18T10:02:00.000Z | 38.0         |
-| nurswgvml007 | 2016-06-18T10:12:00.000Z | 37.0         |
-| nurswgvml007 | 2016-06-18T10:22:00.000Z | 38.0         |
+| nurswgvml007 | 2017-06-18T10:02:00.000Z | 38.0         |
+| nurswgvml007 | 2017-06-18T10:12:00.000Z | 37.0         |
+| nurswgvml007 | 2017-06-18T10:22:00.000Z | 38.0         |
 ```
 
 ```sql
 SELECT entity, datetime, COUNT(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime >= '2016-06-18T10:02:00Z' AND datetime <= '2016-06-18T10:32:00Z'
+WHERE datetime >= '2017-06-18T10:02:00Z' AND datetime <= '2017-06-18T10:32:00Z'
   AND entity = 'nurswgvml007'
 GROUP BY entity, PERIOD(10 MINUTE, END_TIME)
 ```
@@ -1123,9 +1123,9 @@ GROUP BY entity, PERIOD(10 MINUTE, END_TIME)
 ```ls
 | entity       | datetime                 | COUNT(value) |
 |--------------|--------------------------|--------------|
-| nurswgvml007 | 2016-06-18T10:02:00.001Z | 38.0         |
-| nurswgvml007 | 2016-06-18T10:12:00.001Z | 37.0         |
-| nurswgvml007 | 2016-06-18T10:22:00.001Z | 38.0         |
+| nurswgvml007 | 2017-06-18T10:02:00.001Z | 38.0         |
+| nurswgvml007 | 2017-06-18T10:12:00.001Z | 37.0         |
+| nurswgvml007 | 2017-06-18T10:22:00.001Z | 38.0         |
 ```
 
 #### `START_TIME` Alignment
@@ -1135,7 +1135,7 @@ GROUP BY entity, PERIOD(10 MINUTE, END_TIME)
 ```sql
 SELECT entity, datetime, COUNT(value)
   FROM "mpstat.cpu_busy"
-WHERE datetime > '2016-06-18T10:02:00Z' AND datetime < '2016-06-18T10:32:00Z'
+WHERE datetime > '2017-06-18T10:02:00Z' AND datetime < '2017-06-18T10:32:00Z'
   AND entity = 'nurswgvml007'
 GROUP BY entity, PERIOD(10 MINUTE, START_TIME)
 ```
@@ -1143,9 +1143,9 @@ GROUP BY entity, PERIOD(10 MINUTE, START_TIME)
 ```ls
 | entity       | datetime                 | COUNT(value) |
 |--------------|--------------------------|--------------|
-| nurswgvml007 | 2016-06-18T10:02:00.001Z | 38.0         |
-| nurswgvml007 | 2016-06-18T10:12:00.001Z | 37.0         |
-| nurswgvml007 | 2016-06-18T10:22:00.001Z | 38.0         |
+| nurswgvml007 | 2017-06-18T10:02:00.001Z | 38.0         |
+| nurswgvml007 | 2017-06-18T10:12:00.001Z | 37.0         |
+| nurswgvml007 | 2017-06-18T10:22:00.001Z | 38.0         |
 ```
 
 ## Interpolation
@@ -1203,14 +1203,14 @@ The underlying transformation applies a linear interpolation or step function to
 SELECT datetime, value
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
-  AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
+  AND datetime >= '2017-09-17T08:00:00Z' AND datetime < '2017-09-17T08:02:00Z'
 WITH INTERPOLATE(30 SECOND)
 ```
 
 ```ls
 | raw time             | regular time         |
 |----------------------|----------------------|
-| 2016-09-17T08:00:00Z | 2016-09-17T08:00:00Z |
+| 2017-09-17T08:00:00Z | 2017-09-17T08:00:00Z |
 | ...........08:00:26Z | ...........08:00:30Z |
 | ...........08:01:14Z | ...........08:01:00Z |
 | ...........08:01:30Z | ...........08:01:30Z |
@@ -1339,9 +1339,9 @@ GROUP BY period(5 MINUTE)
 ```ls
 | datetime             | Cpu_Avg |
 |----------------------|---------|
-| 2016-06-18T22:00:00Z | 43.2    |
-| 2016-06-18T22:05:00Z | 35.3    |
-| 2016-06-18T22:10:00Z | 5.0     |
+| 2017-06-18T22:00:00Z | 43.2    |
+| 2017-06-18T22:05:00Z | 35.3    |
+| 2017-06-18T22:10:00Z | 5.0     |
 ```
 
 ### HAVING filter
@@ -1382,14 +1382,14 @@ For example, a result set partitioned by entity and ordered by time would have t
 
 ```ls
 |--------------|----------------------|-------| ROW_NUMBER
-| nurswgvml006 | 2016-06-18T12:00:05Z | 66.0  |     1
-| nurswgvml006 | 2016-06-18T12:00:21Z | 8.1   |     2
-| nurswgvml007 | 2016-06-18T12:00:03Z | 18.2  |     1
-| nurswgvml007 | 2016-06-18T12:00:19Z | 67.7  |     2
-| nurswgvml010 | 2016-06-18T12:00:14Z | 0.5   |     1
-| nurswgvml011 | 2016-06-18T12:00:10Z | 100.0 |     1
-| nurswgvml011 | 2016-06-18T12:00:26Z | 4.0   |     2
-| nurswgvml011 | 2016-06-18T12:00:29Z | 0.0   |     3
+| nurswgvml006 | 2017-06-18T12:00:05Z | 66.0  |     1
+| nurswgvml006 | 2017-06-18T12:00:21Z | 8.1   |     2
+| nurswgvml007 | 2017-06-18T12:00:03Z | 18.2  |     1
+| nurswgvml007 | 2017-06-18T12:00:19Z | 67.7  |     2
+| nurswgvml010 | 2017-06-18T12:00:14Z | 0.5   |     1
+| nurswgvml011 | 2017-06-18T12:00:10Z | 100.0 |     1
+| nurswgvml011 | 2017-06-18T12:00:26Z | 4.0   |     2
+| nurswgvml011 | 2017-06-18T12:00:29Z | 0.0   |     3
 ```
 
 ### ROW_NUMBER Syntax
@@ -1398,14 +1398,17 @@ For example, a result set partitioned by entity and ordered by time would have t
 ROW_NUMBER({partitioning columns} ORDER BY {ordering columns [direction]})
 ```
 
-* `{partitioning columns}` can be `entity`, `tags`, or `entity, tags`
-* `{ordering columns [direction]}` can be any columns of the `FROM` clause with an optional `ASC/DESC` direction.
+The `{partitioning columns}` clause is one or multiple columns for splitting the rows, for example `entity`, `tags`, or `entity, tags`.
+
+The `{ordering columns [direction]}` can be any columns of the `FROM` clause with an optional `ASC/DESC` direction.
 
 Examples:
 
 * `ROW_NUMBER(entity ORDER BY time)`
 
 * `ROW_NUMBER(entity, tags ORDER BY time DESC)`
+
+* `ROW_NUMBER(value ORDER BY value DESC)`
 
 * `ROW_NUMBER(entity, tags ORDER BY time DESC, AVG(value))`
 
@@ -1418,7 +1421,7 @@ The assigned row numbers can be used to filter rows within each partition for th
 ```sql
 SELECT entity, datetime, value
   FROM "mpstat.cpu_busy"
-WHERE datetime >= '2016-06-18T12:00:00Z' AND datetime < '2016-06-18T12:00:30Z'
+WHERE datetime >= '2017-06-18T12:00:00Z' AND datetime < '2017-06-18T12:00:30Z'
   WITH ROW_NUMBER(entity ORDER BY time) <= 1
 ORDER BY entity, datetime
 ```
@@ -1426,12 +1429,12 @@ ORDER BY entity, datetime
 ```ls
 | entity       | datetime             | value |
 |--------------|----------------------|-------|
-| nurswgvml006 | 2016-06-18T12:00:05Z | 66.0  |
-| nurswgvml007 | 2016-06-18T12:00:03Z | 18.2  |
-| nurswgvml010 | 2016-06-18T12:00:14Z | 0.5   |
-| nurswgvml011 | 2016-06-18T12:00:10Z | 100.0 |
-| nurswgvml102 | 2016-06-18T12:00:02Z | 0.0   |
-| nurswgvml502 | 2016-06-18T12:00:01Z | 13.7  |
+| nurswgvml006 | 2017-06-18T12:00:05Z | 66.0  |
+| nurswgvml007 | 2017-06-18T12:00:03Z | 18.2  |
+| nurswgvml010 | 2017-06-18T12:00:14Z | 0.5   |
+| nurswgvml011 | 2017-06-18T12:00:10Z | 100.0 |
+| nurswgvml102 | 2017-06-18T12:00:02Z | 0.0   |
+| nurswgvml502 | 2017-06-18T12:00:01Z | 13.7  |
 ```
 
 * Apply an aggregate function to Last-N records:
@@ -1873,17 +1876,17 @@ If the timestamps for joined metrics are identical, the `JOIN` operation merges 
 ```ls
 | datetime             | entity       | t1.value | t2.value | t3.value |
 |----------------------|--------------|---------:|---------:|---------:|
-| 2016-06-16T13:00:01Z | nurswgvml006 | 13.3     | 21.0     | 2.9      |
-| 2016-06-16T13:00:17Z | nurswgvml006 | 1.0      | 2.0      | 13.0     |
-| 2016-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
+| 2017-06-16T13:00:01Z | nurswgvml006 | 13.3     | 21.0     | 2.9      |
+| 2017-06-16T13:00:17Z | nurswgvml006 | 1.0      | 2.0      | 13.0     |
+| 2017-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
 ```
 
 As in the example above, 'cpu_system', 'cpu_user', 'cpu_iowait' were recorded and inserted with the same time.
 
 ```ls
-datetime d:2016-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
-datetime d:2016-06-16T13:00:17Z e:nurswgvml006 m:mpstat.cpu_system=1.0 m.mpstat.cpu_user=2.0 m:mpstat.cpu_iowait=13.0
-datetime d:2016-06-16T13:00:33Z e:nurswgvml006 m:mpstat.cpu_system=0.0 m.mpstat.cpu_user=1.0 m:mpstat.cpu_iowait=0.0
+datetime d:2017-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
+datetime d:2017-06-16T13:00:17Z e:nurswgvml006 m:mpstat.cpu_system=1.0 m.mpstat.cpu_user=2.0 m:mpstat.cpu_iowait=13.0
+datetime d:2017-06-16T13:00:33Z e:nurswgvml006 m:mpstat.cpu_system=0.0 m.mpstat.cpu_user=1.0 m:mpstat.cpu_iowait=0.0
 ```
 
 However, when merging independent metrics, `JOIN` results may contain only rows with identical times.
@@ -1892,7 +1895,7 @@ However, when merging independent metrics, `JOIN` results may contain only rows 
 SELECT t1.datetime, t1.entity, t1.value AS cpu, t2.value AS mem
   FROM "mpstat.cpu_busy" t1
   JOIN "meminfo.memfree" t2
-WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
+WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:00Z'
   AND t1.entity = 'nurswgvml006'
 ```
 
@@ -1901,8 +1904,8 @@ The result contains only 2 records out of 75 total. This is because for `JOIN` t
 ```ls
 | datetime             | entity       | cpu  | mem     |
 |----------------------|--------------|-----:|--------:|
-| 2016-06-16T13:02:57Z | nurswgvml006 | 16.0 | 74588.0 |
-| 2016-06-16T13:07:17Z | nurswgvml006 | 16.0 | 73232.0 |
+| 2017-06-16T13:02:57Z | nurswgvml006 | 16.0 | 74588.0 |
+| 2017-06-16T13:07:17Z | nurswgvml006 | 16.0 | 73232.0 |
 ```
 
 To join irregular series, use `GROUP BY PERIOD` or `WITH INTERPOLATE` clauses to equalize the timestamps.
@@ -1933,17 +1936,17 @@ Series with tags can be joined without enumerating all possible tag names in the
 SELECT t1.datetime, t1.entity, t1.value, t2.value, t1.tags.*
   FROM "df.disk_used" t1
   JOIN "df.disk_used_percent" t2
-WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
+WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:00Z'
   AND t1.entity = 'nurswgvml006'
 ```
 
 ```ls
 | datetime             | entity       | t1.value     | t2.value | t1.tags.file_system             | t1.tags.mount_point |
 |----------------------|--------------|--------------|----------|---------------------------------|---------------------|
-| 2016-06-16T13:00:14Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
-| 2016-06-16T13:00:29Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
-| 2016-06-16T13:00:44Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
-| 2016-06-16T13:00:59Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
+| 2017-06-16T13:00:14Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
+| 2017-06-16T13:00:29Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
+| 2017-06-16T13:00:44Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
+| 2017-06-16T13:00:59Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
 ```
 
 
@@ -1958,7 +1961,7 @@ SELECT t1.datetime, t1.entity, t1.value AS cpu,
   FULL OUTER JOIN "meminfo.memfree" t2
     -- FULL JOIN "meminfo.memfree" t2
     -- OUTER JOIN "meminfo.memfree" t2
-WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
+WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:00Z'
   AND t1.entity = 'nurswgvml006'
 ```
 
@@ -1967,10 +1970,10 @@ WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:
 ```ls
 | t1.datetime          | t1.entity    | cpu  | t2.datetime          | t2.entity    | mem   |
 |----------------------|--------------|------|----------------------|--------------|-------|
-| 2016-06-16T13:00:01Z | nurswgvml006 | 37   | null                 | null         | null  |
-| null                 | null         | null | 2016-06-16T13:00:12Z | nurswgvml006 | 67932 |
-| 2016-06-16T13:00:17Z | nurswgvml006 | 16   | null                 | null         | null  |
-| null                 | null         | null | 2016-06-16T13:00:27Z | nurswgvml006 | 73620 |
+| 2017-06-16T13:00:01Z | nurswgvml006 | 37   | null                 | null         | null  |
+| null                 | null         | null | 2017-06-16T13:00:12Z | nurswgvml006 | 67932 |
+| 2017-06-16T13:00:17Z | nurswgvml006 | 16   | null                 | null         | null  |
+| null                 | null         | null | 2017-06-16T13:00:27Z | nurswgvml006 | 73620 |
 ```
 
 
@@ -1983,7 +1986,7 @@ SELECT t1.datetime, t1.entity, t1.value AS cpu,
        t2.datetime, t2.entity, t2.value AS mem
   FROM "mpstat.cpu_busy" t1
   FULL OUTER JOIN "meminfo.memfree" t2
-WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
+WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:00Z'
   AND t1.entity = 'nurswgvml006'
   WITH INTERPOLATE(15 SECOND, LINEAR, OUTER)
 ```
@@ -1991,9 +1994,9 @@ WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:
 ```ls
 | t1.datetime          | t1.entity    | cpu  | t2.datetime          | t2.entity    | mem     |
 |----------------------|--------------|------|----------------------|--------------|---------|
-| 2016-06-16T13:00:00Z | nurswgvml006 | 34.9 | 2016-06-16T13:00:00Z | nurswgvml006 | 69903.2 |
-| 2016-06-16T13:00:15Z | nurswgvml006 | 18.6 | 2016-06-16T13:00:15Z | nurswgvml006 | 69069.6 |
-| 2016-06-16T13:00:30Z | nurswgvml006 | 3.8  | 2016-06-16T13:00:30Z | nurswgvml006 | 74041.6 |
+| 2017-06-16T13:00:00Z | nurswgvml006 | 34.9 | 2017-06-16T13:00:00Z | nurswgvml006 | 69903.2 |
+| 2017-06-16T13:00:15Z | nurswgvml006 | 18.6 | 2017-06-16T13:00:15Z | nurswgvml006 | 69069.6 |
+| 2017-06-16T13:00:30Z | nurswgvml006 | 3.8  | 2017-06-16T13:00:30Z | nurswgvml006 | 74041.6 |
 ```
 
 * Aggregation
@@ -2005,7 +2008,7 @@ SELECT datetime, ISNULL(t1.entity, t2.entity) AS server,
   AVG(t1.value) AS avg_cpu, AVG(t2.value) AS avg_mem
 FROM "mpstat.cpu_busy" t1
   FULL OUTER JOIN "meminfo.memfree" t2
-WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
+WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:00Z'
 GROUP BY PERIOD(1 MINUTE), server
   ORDER BY datetime
 ```
@@ -2013,10 +2016,10 @@ GROUP BY PERIOD(1 MINUTE), server
 ```ls
 | datetime             | server       | avg_cpu | avg_mem  |
 |----------------------|--------------|---------|----------|
-| 2016-06-16T13:00:00Z | nurswgvml006 | 15.8    | 73147.0  |
-| 2016-06-16T13:00:00Z | nurswgvml007 | 9.8     | 259757.0 |
-| 2016-06-16T13:01:00Z | nurswgvml006 | 2.8     | 69925.0  |
-| 2016-06-16T13:01:00Z | nurswgvml007 | 3.5     | 252451.0 |
+| 2017-06-16T13:00:00Z | nurswgvml006 | 15.8    | 73147.0  |
+| 2017-06-16T13:00:00Z | nurswgvml007 | 9.8     | 259757.0 |
+| 2017-06-16T13:01:00Z | nurswgvml006 | 2.8     | 69925.0  |
+| 2017-06-16T13:01:00Z | nurswgvml007 | 3.5     | 252451.0 |
 ```
 
 >  Note that records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
@@ -2210,14 +2213,14 @@ FROM "mpstat.cpu_busy"
 | format                                                    | date_format value          |
 |-----------------------------------------------------------|----------------------------|
 | time                                                      | 1468411675000              |
-| date_format(time)                                         | 2016-07-13T12:07:55.000Z   |
-| date_format(time+60000)                                   | 2016-07-13T12:08:55.000Z   |
-| date_format(time,'yyyy-MM-dd''T''HH:mm:ss.SSS''Z'','UTC') | 2016-07-13T12:07:55.000Z   |
-| date_format(time,'yyyy-MM-dd HH:mm:ss')                   | 2016-07-13 12:07:55        |
-| date_format(time,'yyyy-MM-dd HH:mm:ss','PST')             | 2016-07-13 05:07:55        |
-| date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')       | 2016-07-13 04:07:55        |
-| date_format(time,'yyyy-MM-dd HH:mm:ssZ','PST')            | 2016-07-13 05:07:55-0700   |
-| date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')           | 2016-07-13 05:07:55-07:00  |
+| date_format(time)                                         | 2017-07-13T12:07:55.000Z   |
+| date_format(time+60000)                                   | 2017-07-13T12:08:55.000Z   |
+| date_format(time,'yyyy-MM-dd''T''HH:mm:ss.SSS''Z'','UTC') | 2017-07-13T12:07:55.000Z   |
+| date_format(time,'yyyy-MM-dd HH:mm:ss')                   | 2017-07-13 12:07:55        |
+| date_format(time,'yyyy-MM-dd HH:mm:ss','PST')             | 2017-07-13 05:07:55        |
+| date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')       | 2017-07-13 04:07:55        |
+| date_format(time,'yyyy-MM-dd HH:mm:ssZ','PST')            | 2017-07-13 05:07:55-0700   |
+| date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')           | 2017-07-13 05:07:55-07:00  |
 ```
 
 The `date_format` function can also be used to print period start and end times:
@@ -2233,9 +2236,9 @@ GROUP BY PERIOD(1 HOUR)
 ```ls
 | period_start             | period_end               | AVG(value) |
 |--------------------------|--------------------------|------------|
-| 2016-08-25T00:00:00.000Z | 2016-08-25T01:00:00.000Z | 7.7        |
-| 2016-08-25T01:00:00.000Z | 2016-08-25T02:00:00.000Z | 8.2        |
-| 2016-08-25T02:00:00.000Z | 2016-08-25T03:00:00.000Z | 6.7        |
+| 2017-08-25T00:00:00.000Z | 2017-08-25T01:00:00.000Z | 7.7        |
+| 2017-08-25T01:00:00.000Z | 2017-08-25T02:00:00.000Z | 8.2        |
+| 2017-08-25T02:00:00.000Z | 2017-08-25T03:00:00.000Z | 6.7        |
 ```
 
 In addition to formatting, the `date_format` function can be used in the `WHERE`, `GROUP BY`, and `HAVING` clauses to filter and group dates by month, day, or hour.
@@ -2261,6 +2264,29 @@ GROUP BY date_format(time, 'EEE')
 ```
 
 Refer to [diurnal](examples/diurnal.md) query examples.
+
+By retrieving date parts from the `time` column, the records can be filtered by calendar.
+The following query includes only daytime hours (from 08:00 till 17:59) during weekdays (Monday till Friday).
+
+```sql
+SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)
+  FROM "mpstat.cpu_busy"
+WHERE entity = 'nurswgvml007'
+  AND datetime >= previous_week AND datetime < current_week
+  AND CAST(date_format(time, 'H') AS number) BETWEEN 8 AND 17
+  AND date_format(time, 'u') < 6
+GROUP BY PERIOD(1 hour)
+```
+
+```ls
+| datetime             | day of week  | avg(value)  | count(value) | 
+|----------------------|--------------|-------------|--------------| 
+| 2018-03-12 08:00:00  | Mon          | 14.535      | 223          | 
+| 2018-03-12 09:00:00  | Mon          | 12.626      | 225          | 
+| 2018-03-12 10:00:00  | Mon          | 12.114      | 225          | 
+| 2018-03-12 11:00:00  | Mon          | 11.314      | 225          | 
+...
+```
 
 ### DATE_PARSE
 
@@ -2475,8 +2501,8 @@ AND LOWER(tags.file_system) LIKE '%root'
 ```ls
 | datetime             | entity | value     | fs                      |
 |----------------------|--------|-----------|-------------------------|
-| 2016-09-30T07:57:28Z | VML006 | 8298304.0 | vg_nurswgvml006-lv_root |
-| 2016-09-30T07:57:29Z | VML007 | 8052512.0 | vg_nurswgvml007-lv_root |
+| 2017-09-30T07:57:28Z | VML006 | 8298304.0 | vg_nurswgvml006-lv_root |
+| 2017-09-30T07:57:29Z | VML007 | 8052512.0 | vg_nurswgvml007-lv_root |
 ```
 
 ## Other Functions
@@ -2546,14 +2572,14 @@ WHERE entity = 'qz-1211'
 ```ls
 | datetime             | text     | lag(text) |
 |----------------------|----------|-----------|
-| 2016-10-04T01:52:05Z | 700      | null      | -- excluded: text is '900' and LAG is null
-| 2016-10-04T02:00:34Z | Inactive | 700       | -- excluded: text is 'Inactive' and LAG = '700'  
-| 2016-10-04T02:01:20Z | 800      | Inactive  |
-| 2016-10-04T02:03:05Z | Inactive | 800       |
-| 2016-10-04T02:03:10Z | 800      | Inactive  |
-| 2016-10-04T02:07:05Z | Inactive | 800       |
-| 2016-10-04T02:09:09Z | 900      | Inactive  | -- excluded: text is '900' and LAG = 'Inactive'
-| 2016-10-04T02:12:30Z | Inactive | 900       | -- excluded: text is 'Inactive' and LAG = '900'
+| 2017-10-04T01:52:05Z | 700      | null      | -- excluded: text is '900' and LAG is null
+| 2017-10-04T02:00:34Z | Inactive | 700       | -- excluded: text is 'Inactive' and LAG = '700'  
+| 2017-10-04T02:01:20Z | 800      | Inactive  |
+| 2017-10-04T02:03:05Z | Inactive | 800       |
+| 2017-10-04T02:03:10Z | 800      | Inactive  |
+| 2017-10-04T02:07:05Z | Inactive | 800       |
+| 2017-10-04T02:09:09Z | 900      | Inactive  | -- excluded: text is '900' and LAG = 'Inactive'
+| 2017-10-04T02:12:30Z | Inactive | 900       | -- excluded: text is 'Inactive' and LAG = '900'
 ```
 
 The `LAG` function in the `SELECT` expression is applied to the filtered result set, after some rows have been excluded by the `LAG` function as part of the `WHERE` clause. Therefore, `LAG()` in `SELECT` and `LAG()` in `WHERE` clauses may return different values.
@@ -2764,7 +2790,7 @@ ORDER BY datetime DESC
 ```ls
 | date       | value | tags.city | tags.state | region      | population | cases_per_pop |
 |------------|-------|-----------|------------|-------------|------------|---------------|
-| 2016-10-01 | 131.0 | Boston    | MA         | New-England | 667137     | 0.2           |
+| 2017-10-01 | 131.0 | Boston    | MA         | New-England | 667137     | 0.2           |
 ```
 
 ## CASE Expression
@@ -2838,7 +2864,7 @@ SELECT entity, datetime, value, text,
   END
   FROM atsd_series
 WHERE metric IN ('temperature', 'status')
-  AND datetime >= '2016-10-13T08:00:00Z'
+  AND datetime >= '2017-10-13T08:00:00Z'
 ```
 
 ### Simple `CASE` Expression
@@ -2917,7 +2943,7 @@ WHERE datetime >= NOW - 5*MINUTE
 ```ls
 | metric       | entity       | datetime             | value     | tags.mount_point | tags.file_system                    |
 |--------------|--------------|----------------------|-----------|------------------|-------------------------------------|
-| df.disk_used | nurswgvml007 | 2016-06-19T06:12:26Z | 8715136.0 | /                | /dev/mapper/vg_nurswgvml007-lv_root |
+| df.disk_used | nurswgvml007 | 2017-06-19T06:12:26Z | 8715136.0 | /                | /dev/mapper/vg_nurswgvml007-lv_root |
 ```
 
 Changing the case of a tag value condition `tags.file_system = '/DEV/mapper/vg_nurswgvml007-lv_root'` would cause the error **TAG_VALUE not found**.
@@ -3120,11 +3146,11 @@ Queries executed by the database are recorded in the main application log `atsd.
 Each query is assigned a unique identifier for correlating starting and closing events.
 
 ```
-2016-08-15 18:44:01,183;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Starting sql query execution. [uid=218], user: user003, source: scheduled, sql: SELECT entity, AVG(value) AS "Average", median(value), MAX(value), count(*),
+2017-08-15 18:44:01,183;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Starting sql query execution. [uid=218], user: user003, source: scheduled, sql: SELECT entity, AVG(value) AS "Average", median(value), MAX(value), count(*),
    percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM "mpstat.cpu_busy"
   WHERE time BETWEEN PREVIOUS_DAY and CURRENT_DAY GROUP BY entity ORDER BY AVG(value) DESC
 
-2016-08-15 18:44:02,369;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Sql query execution took 1.19 s, rows returned 7. [uid=218], user: user003, sql: SELECT entity, AVG(value) AS "Average", median(value), MAX(value), count(*),
+2017-08-15 18:44:02,369;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Sql query execution took 1.19 s, rows returned 7. [uid=218], user: user003, sql: SELECT entity, AVG(value) AS "Average", median(value), MAX(value), count(*),
    percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM "mpstat.cpu_busy"
   WHERE time BETWEEN PREVIOUS_DAY and CURRENT_DAY GROUP BY entity ORDER BY AVG(value) DESC
 ```

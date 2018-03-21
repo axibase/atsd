@@ -4,7 +4,7 @@
 
 The `ROW_NUMBER` function returns the sequential number of a row within a partition of a result set, starting at 1 for the first row in each partition.
 
-Partition is a subset of all rows in the result set grouped by entity and/or tags as specified in the `ROW_NUMBER` function. Each row in the result set may belong to only one partition.
+Partition is a subset of all rows in the result set grouped by columns specified in the `ROW_NUMBER` function. Each row in the result set may belong to only one partition.
 
 Assuming that the below result set was partitioned by entity and then ordered by time within each partition, the row numbers would be as follows:
 
@@ -26,13 +26,14 @@ Assuming that the below result set was partitioned by entity and then ordered by
 ROW_NUMBER({partitioning columns} ORDER BY {ordering columns [direction]})
 ```
 
-* {partitioning columns} can be `entity`, `tags`, or `entity, tags`
+* {partitioning columns} is one or multiple columns for combining the rows
 * {ordering columns [direction]} can be any in the `FROM` clause with optional ASC|DESC direction.
 
 Examples:
 
 * `ROW_NUMBER(entity ORDER BY datetime)`
 * `ROW_NUMBER(entity, tags ORDER BY datetime DESC)`
+* `ROW_NUMBER(value ORDER BY value)`
 * `ROW_NUMBER(entity, tags ORDER BY datetime DESC, avg(value))`
 
  The returned number can be used to filter rows within each partition.
