@@ -49,9 +49,9 @@ Supported fields:
   
 * Text Functions
 
-   * [upper](../../rule-engine/functions-collection.md#upper)
-   * [lower](../../rule-engine/functions-collection.md#lower)
-   * [list](../../rule-engine/functions-collection.md#list)
+   * [upper](../../rule-engine/functions-text.md#upper)
+   * [lower](../../rule-engine/functions-text.md#lower)
+   * [list](../../rule-engine/functions-text.md#list)
    
 ## Examples
 
