@@ -12,6 +12,7 @@ The named collections are listed on the **Data > Named Collections** page.
 
 * [entity_tag](#entity_tag)
 * [entity_tags](#entity_tags)
+* [entity_label](#entity_label)
 * [getEntity](#getentity)
 * [getEntities](#getentities)
 * [getEntityCount](#getentitycount)
@@ -81,6 +82,16 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 | Image Repo Tags         | axibase/jmeter:latest                        |
 ...
 ```
+
+### `entity_label`
+
+```javascript
+  entity_label(string e) string
+```
+
+Returns label for entity `e`. 
+
+If the entity is not found or doesn't have label, the argument is returned.
 
 ### `getEntity`
 

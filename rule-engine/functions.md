@@ -217,6 +217,7 @@ Lookup functions retrieve records from replacement tables, collections, and othe
 
 * [entity_tag](functions-lookup.md#entity_tag)
 * [entity_tags](functions-lookup.md#entity_tags)
+* [entity_label](functions-lookup.md#entity_label)
 * [getEntity](functions-lookup.md#getentity)
 * [getEntities](functions-lookup.md#getentities)
 * [getEntitiyCount](functions-lookup.md#getentitiycount)
