@@ -91,7 +91,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 
 Returns label for entity `e`. 
 
-If the entity is not found or doesn't have label, the argument is returned.
+If the entity is not found or it doesn't have a label, the input string `e` is returned.
 
 ### `getEntity`
 
