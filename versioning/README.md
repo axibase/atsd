@@ -8,26 +8,26 @@ Once enabled, ATSD tracks changes made to stored values with the following versi
 
 | Field Name | Description | 
 | --- | --- | 
-|  Version Time  |  Timestamp when the insert command was received. Set automatically by the ATSD server with millisecond precision.  | 
+|  Version Time  |  Timestamp when insert command was received. Set automatically by ATSD server with millisecond precision.  | 
 |  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [ATSD web interface](#updating-series-value).| 
 |  Version Status  |  User-defined field to classify change events. <br> Set to 'invalid' for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** | 
 
 ## Enabling Versioning
 
-Versioning is disabled by default. It can be enabled for particular metrics by using the **Versioning** toggle button on the Metric Editor page:
+Versioning is disabled by default. It can be enabled for desired metrics by using the **Versioning** toggle button on the Metric Editor page:
 
 ![](resources/1.png)
 
-In addition, the **Invalid Value Action** can be set to `SET_VERSION_STATUS` to initialize the _Version Status_ field to an 'invalid' value if the inserted sample is `NaN` or outside of the specified minimum and maximum bounds.
+In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to initialize the _Version Status_ field with an 'invalid' value if the inserted sample is `NaN` or outside of the specified minimum and maximum bounds.
 
 ## Inserting Version Fields
 
-To insert versioned series, use the reserved version tags:
+To insert a versioned series, use the reserved version tags:
 
  * `$version_source` 
  * `$version_status`
 
-These tags will be converted to the corresponding [versioning fields](#versioning-fields). `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger. 
+These tags will be converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger. 
 
 Options to insert versioned series:
 
@@ -45,8 +45,8 @@ To insert versioned samples, use the [series](../api/network/series.md) command 
 ```
 
 > Note:
-> * if the command references to existing metric with _Versioning = No_, an error will be produced;
-> * if the command references to non-existent metric, it will be created as new record with _Versioning = Yes_ and no error will be produced.
+> * if the command references an existing metric with _Versioning = No_, an error will be produced;
+> * if the command references a non-existent metric, it will be created as a new record with _Versioning = Yes_. No error will be produced.
 
 Example:
 
@@ -56,11 +56,11 @@ series e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1 d
 
 ### Data Entry Series form
 
-Versioned samples can be added at the **Data > Data Entry > Series** form by specifying the version tags:
+Versioned samples can be added by following the path **Data > Data Entry > Series** and completing the form specifying version tags:
 
 ![](resources/8.png)
 
-> Note: _Metric_ field must reference to existing metric with _Versioning = Yes_ 
+> Note: _Metric_ field must reference an existing metric with _Versioning = Yes_ 
 
 ### CSV Parser using Default Tags
 
@@ -73,8 +73,8 @@ $version_source={source}
 ![](resources/2.png)
 
 > Note:
-> * if the CSV Parser references to existing metric with _Versioning = No_, an error will be produced;
-> * if the CSV Parser references to non-existent metric, it will be created as new record with _Versioning = Yes_ and no error will be produced.
+> * if the CSV Parser references to existing metric with _Versioning = No_, **an error will be produced**;
+> * if the CSV Parser references to non-existent metric, it will be created as new record with _Versioning = Yes_. No error will be produced.
 
 ### CSV Parser using Renamed Columns
 
@@ -83,18 +83,18 @@ To extract versioning fields from CSV file columns, add the version tags to the 
 ![](resources/3.png)
 
 > Note:
-> * if the CSV Parser references to existing metric with _Versioning = No_, an error will be produced;
+> * if the CSV Parser references an existing metric with _Versioning = No_, **an error will be produced**;
 > * if the CSV Parser references to non-existent metric, it will be created as new record with _Versioning = Yes_ and no error will be produced.
 
 ## View Versions
 
-Version history can be retrieved at the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page or via a scheduled [Export Job](../reporting/scheduled-exporting.md).
+Version history can be retrieved on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page or via a scheduled [Export Job](../reporting/scheduled-exporting.md).
 
 The settings are the same for both options.
 
 ### Ad-hoc Export page
 
-Click on the **Display Versions** toggle button to view version history at the **Filters** section of metric export page:
+Click the **Display Versions** toggle button to view version history in the **Filters** section of the metric export page:
 
 ![](resources/4.png)
 
@@ -105,7 +105,7 @@ Click on the **Display Versions** toggle button to view version history at the *
 #### Options to filter versions
 |**Name**|**Description**|
 |---|---|
-|**Revisions Only** |Display only values with version history. Values that haven’t been modified will be hidden.|
+|**Revisions Only** |Displays only values with version history. First versions will be hidden.|
 |**Version Filter**| An expression to filter version history. May contain the `version_source`, `version_status` and `version_time` fields. <br> The `version_time` field supports [calendar](../shared/calendar.md) syntax with the `date()` function.<br> The `version_source` and `version_status` fields support wildcards. <br> To display deleted values, use `Double.isNaN(value)`|
 
 Examples:
@@ -144,7 +144,7 @@ Examples:
 
 ## Updating Series Value
 
-Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with the versioning mode enabled.
+Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with versioning mode enabled.
 
 Click on timestamp for the selected record to open the **Data Entry** page.
 
@@ -158,9 +158,9 @@ Change version _Status_ and _Source_, change the _Value_ and click **Update**.
 
 ## Deleting Series Value
 
-Create a report in HTML format at the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with the versioning mode enabled.
+Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with versioning mode enabled.
 
-Click on timestamp for the selected record to open the **Data Entry** page.
+Click the timestamp for the selected record to open the **Data Entry** page.
 
 ![](resources/9.png)
 
@@ -168,16 +168,16 @@ Change version _Status_ and _Source_, change the _Value_ and click **Delete**.
 
 ![](resources/12.png)
 
-Note that the value will not be actually deleted. Rather, the current value for the selected timestamp will be replaced with a `NaN` marker.
+Note that the value will not actually be deleted. Rather, the current value for the selected timestamp will be replaced with a `NaN` marker.
 
 ![](resources/13.png)
 
-In addition, value can be deleted using checkbox and the **Delete** button at the export page.
+A value can also be deleted using the selection checkbox and **Delete** button on the export page.
 
 ![](resources/14.png)
 
 ### Deleting Multiple Series Values
 
-To delete multiple values, select checkboxes for the selected rows or click the top checkbox to select all rows, and then click **Delete**.
+To delete multiple values, set the flags in the checkboxes for all desired rows or select all with the uppermost checkbox. Click **Delete**.
 
 ![](resources/15.png)
