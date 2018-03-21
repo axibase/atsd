@@ -1,102 +1,183 @@
 # Versioning
 
-Versioning enables tracking of time-series value changes for the purpose of enabling an audit trail and traceable data reconciliation. Once enabled, ATSD tracks changes made to stored values with the following versioning fields:
+Versioning enables tracking of time-series value changes for the purpose of enabling an audit trail and traceable data reconciliation. 
+
+## Versioning Fields
+
+Once enabled, ATSD tracks changes made to stored values with the following versioning fields:
 
 | Field Name | Description | 
 | --- | --- | 
 |  Version Time  |  Timestamp when the insert command was received. Set automatically by the ATSD server with millisecond precision.  | 
-|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address.<br>Set to `user:{username}` by default for changes made through the ATSD web interface.  | 
-|  Version Status  |  User-defined field to classify change events.<br>Set to `Invalid` code if an inserted value triggers an Invalid Value Action. Set to `SET_VERSION_STATUS` in metric editor.  | 
+|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [ATSD web interface](#updating-series-value).| 
+|  Version Status  |  User-defined field to classify change events. <br> Set to 'invalid' for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** | 
 
+## Enabling Versioning
 
-#### Enabling Versioning
+Versioning is disabled by default. It can be enabled for particular metrics by using the **Versioning** toggle button on the Metric Editor page:
 
-Versioning is disabled by default. It can be enabled for particular metrics by selecting the Versioning checkbox on the Metric Editor page:
+![](resources/1.png)
 
-![](resources/metric-versioning.png)
+In addition, the **Invalid Value Action** can be set to `SET_VERSION_STATUS` to initialize the _Version Status_ field to an 'invalid' value if the inserted sample is `NaN` or outside of the specified minimum and maximum bounds.
 
-In addition, the Invalid Value Action can be set to `SET_VERSION_STATUS` to initialize the Version Status field to an 'invalid' value if the inserted sample is outside of the specified minimum and maximum bounds.
+## Inserting Version Fields
 
-#### Inserting Version Fields: Network Commands
+To insert versioned series, use the reserved version tags:
 
-To insert versioning fields, use the reserved series tags `version_source` and `version_status`. These tags will be removed by the server to populate corresponding versioning fields. If the sample value is outside of minimum and maximum bounds specified in the metric editor, `version_status` will be set to 'Invalid'.
+ * `$version_source` 
+ * `$version_status`
 
-Note that if metric is unversioned, the `version_source` and `version_status` tags will be processed as regular tags.
+These tags will be converted to the corresponding [versioning fields](#versioning-fields). `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger. 
 
-#### Inserting Versions with CSV Parser using Default Tags
+Options to insert versioned series:
 
-If all records in a CSV file should have the same versioning fields, specify `version_source` and `version_status` in Default Tags.
+* [Network Commands](#network-commands)
+* [Data Entry Series form](#data-entry-series-form)
+* [CSV Parser using Default Tags](#csv-parser-using-default-tags)
+* [CSV Parser using Renamed Columns](#csv-parser-using-renamed-columns)
 
-![](resources/img_55cca7df4596f.png)
+### Network Commands
 
-Note that the `version_source` and `version_status` tags will be applied only to metrics that are enabled for versioning. These reserved tags will be ignored for unversioned metrics.
+To insert versioned samples, use the [series](../api/network/series.md) command with the version tags:
 
-#### Inserting Versions with CSV Parser using Renamed Columns
+```ls
+  series e:{entity} m:{metric}={number} t:$version_status={status} t:$version_source={source} d:{iso-date}
+```
 
-To extract versioning fields from CSV file columns, add the `version_source` and `version_status` to Tag Columns and specify mappings between the original column names and reserved tag names in the Renamed Columns field.
+> Note:
+> * if the command references to existing metric with _Versioning = No_, an error will be produced;
+> * if the command references to non-existent metric, it will be created as new record with _Versioning = Yes_ and no error will be produced.
 
-![](resources/img_55ccaafb69579.png)
+Example:
 
-Note that the `version_source` and `version_status` tags will be applied only to metrics that are enabled for versioning. These reserved tags will be ignored for unversioned metrics.
+```ls
+series e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1 d:2018-03-20T15:25:40Z
+```
 
-#### Viewing Versions
+### Data Entry Series form
 
-Version history can be retrieved on the Ad-hoc Export page or via a scheduled export job.
+Versioned samples can be added at the **Data > Data Entry > Series** form by specifying the version tags:
 
-Click on the Versioning checkbox to view version history on the Ad-hoc Export page:
+![](resources/8.png)
 
-![](resources/img_55cc9fb5b3517.png)
+> Note: _Metric_ field must reference to existing metric with _Versioning = Yes_ 
 
+### CSV Parser using Default Tags
 
-- Records with version history are highlighted with blue and brown-colored borders.
-- Blue border represents the latest value. Brown border represents a historical, overwritten value.
-- NaN (Not a Number) represents deleted values. Deleted values are excluded from aggregation functions.
-- For the purpose of API requests, aggregation functions, and other calculations, historical values and deleted values are ignored.
+To specify the same versioning fields for all records in a CSV file fill in the **Default Tags** field at the [CSV File Upload](../parsers/csv#uploading-csv-files-into-axibase-time-series-database) page with the version tags:
 
+```ls
+$version_status={status}
+$version_source={source}
+```
+![](resources/2.png)
 
-#### Viewing Versions with Filters
+> Note:
+> * if the CSV Parser references to existing metric with _Versioning = No_, an error will be produced;
+> * if the CSV Parser references to non-existent metric, it will be created as new record with _Versioning = Yes_ and no error will be produced.
 
+### CSV Parser using Renamed Columns
 
-- Click on the 'Revisions Only' checkbox to display only values with version history. Values that haven’t been modified will be hidden.
-- To display deleted values, enter `Double.isNaN(value)` into the Value Filter field.
-- To filter version history, enter an expression into the Version Filter containing the `version_source`, `version_status`, and `version_time` fields. Note that the `version_time` field supports endtime syntax with the `date()`` function.
-` version_source LIKE 'api*'`
-` version_status = 'revised'`
-` version_time > date('2015-08-13 00:00:00') AND version_time < date('previous_day')`
+To extract versioning fields from CSV file columns, add the version tags to the **Tag Columns** field and specify mappings between the original column names and version tag names in the **Renamed Columns** field.
 
+![](resources/3.png)
 
-#### Updating Series Value
+> Note:
+> * if the CSV Parser references to existing metric with _Versioning = No_, an error will be produced;
+> * if the CSV Parser references to non-existent metric, it will be created as new record with _Versioning = Yes_ and no error will be produced.
 
-Create a report in HTML format on the Ad-hoc Export page with the Versioning mode enabled.
+## View Versions
 
-Click on Timestamp for the selected record to open the Data Entry page.
+Version history can be retrieved at the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page or via a scheduled [Export Job](../reporting/scheduled-exporting.md).
 
-![](resources/img_55ccad5d81bc2.png)
+The settings are the same for both options.
 
-Set version Status and Source, change the value, and click Update.
+### Ad-hoc Export page
 
-![](resources/img_55ccb9f02509b.png)
+Click on the **Display Versions** toggle button to view version history at the **Filters** section of metric export page:
 
-#### Deleting Series Value
+![](resources/4.png)
 
-Create a report in HTML format on Ad-hoc Export page, with Versioning mode enabled.
+- Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
+- `NaN` represents deleted values. 
+- API requests, aggregation functions and other calculations ignore historical and deleted values.
 
-Click on Timestamp for the selected record, optionally modify Status and Source, and click the [Delete] button to delete the value.
+#### Options to filter versions
+|**Name**|**Description**|
+|---|---|
+|**Revisions Only** |Display only values with version history. Values that haven’t been modified will be hidden.|
+|**Version Filter**| An expression to filter version history. May contain the `version_source`, `version_status` and `version_time` fields. <br> The `version_time` field supports [calendar](../shared/calendar.md) syntax with the `date()` function.<br> The `version_source` and `version_status` fields support wildcards. <br> To display deleted values, use `Double.isNaN(value)`|
 
-![](resources/img_55ccad5d81bc2.png)
+Examples:
 
-Note that the value will not be actually deleted. Rather, the current value for the selected timestamp will be replaced with a NaN (Not a Number) marker.
+* match using wildcards
 
-![](resources/img_55ccad87da9cf.png)
+    ```ls
+    version_source LIKE 'col*'
+    ```
+    ![](resources/5.png)
 
-#### Deleting Multiple Series Values
+* match using date function
 
-To delete multiple values, select checkboxes for the selected rows or click the top checkbox to select all rows, and then click Delete.
+    ```ls
+    version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
+    ```
+    ![](resources/6.png)
+    
+* match using exact value
 
-![](resources/img_55ccae2dc3361.png)
+    ```ls 
+    version_status = 'OK'
+    ```
+    ![](resources/7.png)
+    
+* display `NaN` values
 
-#### Scheduled Version Reports
+    ```ls
+    Double.isNaN(value)
+    ```
+    ![](resources/16.png)
+    
+* display only modified values
 
-Open the Scheduled Export editor, click the Versioning checkbox, and optionally limit the report only to modified values by checking the 'Revision Only' field.
+    ![](resources/17.png)
 
-![](resources/img_55ccc02973864.png)
+## Updating Series Value
+
+Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with the versioning mode enabled.
+
+Click on timestamp for the selected record to open the **Data Entry** page.
+
+![](resources/9.png)
+
+Change version _Status_ and _Source_, change the _Value_ and click **Update**.
+
+![](resources/10.png)
+
+![](resources/11.png)
+
+## Deleting Series Value
+
+Create a report in HTML format at the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with the versioning mode enabled.
+
+Click on timestamp for the selected record to open the **Data Entry** page.
+
+![](resources/9.png)
+
+Change version _Status_ and _Source_, change the _Value_ and click **Delete**.
+
+![](resources/12.png)
+
+Note that the value will not be actually deleted. Rather, the current value for the selected timestamp will be replaced with a `NaN` marker.
+
+![](resources/13.png)
+
+In addition, value can be deleted using checkbox and the **Delete** button at the export page.
+
+![](resources/14.png)
+
+### Deleting Multiple Series Values
+
+To delete multiple values, select checkboxes for the selected rows or click the top checkbox to select all rows, and then click **Delete**.
+
+![](resources/15.png)
