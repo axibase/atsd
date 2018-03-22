@@ -28,11 +28,58 @@ Select current members in the left pane and click 'Remove' to delete members fro
 
 ### Expression
 
-Specify a boolean expression to add/remove entities automatically. The expression may refer to entity names, entity tags, properties, and [utility functions](#utility-functions) in order to find matching entities.
+Specify a boolean expression to add/remove entities automatically. 
+
+The expression can include the following fields and supports wildcards in field values:
+
+    * `name`
+    * `label`
+    * `enabled`
+    * `tags.{name}` or `tags['name']`
+
+The expression may refer to entity properties and [functions](#supported-functions) in order to find matching entities.
 
 > Expression-based groups are continuously updated by the server at a frequency specified with the `entity.group.update.schedule` setting.
 
-Common expressions:
+#### Supported Functions
+
+* Property Functions
+
+   * [property](functions-entity-groups-expression.md#property)
+   * [properties](functions-entity-groups-expression.md#properties)
+   * [property_values](functions-entity-groups-expression.md#property_values), access to returned objects isn't supported
+
+* Lookup Functions
+
+   * [entity_tags](functions-entity-groups-expression.md#entity_tags)
+   
+* Collection Functions
+
+   * [collection](functions-entity-groups-expression.md#collection)
+   * [likeAll](functions-entity-groups-expression.md#likeall)
+   * [likeAny](functions-entity-groups-expression.md#likeany)
+   * [matches](functions-entity-groups-expression.md#matches)
+   * [collection_contains](functions-entity-groups-expression.md#collection_contains)
+   * [collection_intersects](functions-entity-groups-expression.md#collection_intersects)   
+   * [contains](functions-entity-groups-expression.md#contains)
+   * [size](functions-entity-groups-expression.md#size)
+   * [isEmpty](functions-entity-groups-expression.md#isempty)
+   * [IN](functions-entity-groups-expression.md#in)
+  
+* Text Functions
+
+   * [upper](functions-entity-groups-expression.md#upper)
+   * [lower](functions-entity-groups-expression.md#lower)
+   * [list](functions-entity-groups-expression.md#list)
+   * [startsWithAny](functions-entity-groups-expression.md#startswithany)
+   
+* Utility functions
+
+   * [hasMetric](functions-entity-groups-expression.md#hasmetric)
+   * [memberOf](functions-entity-groups-expression.md#memberof)
+   * [memberOfAll](functions-entity-groups-expression.md#memberofall)
+   
+#### Examples:
 
 * Entity name contains the specified string
 
@@ -76,7 +123,7 @@ Common expressions:
 	hasMetric('mpstat.cpu_busy', 24*7)
 	```
 
-* Entity matches the given [property search](../rule-engine/property-search.md) expression
+* Entity property tag value matches the given expression
 
 	```java
 	properties('cfg').prog != '' && properties('cfg').prog NOT LIKE 'topas*'
@@ -84,55 +131,6 @@ Common expressions:
 
 * Entity is a member of another group
 
-		```java
-		memberOf('all-linux-servers') && tags.location = 'SVL'
-		```
-
-
-## Utility Functions
-
-```java
-Collection<String> list(String value);
-
-Collection<String> list(String value, String delimiter);
-
-boolean likeAll(Object message, Collection<String> values);
-
-boolean likeAny(Object message, Collection<String> values);
-
-boolean matches(String pattern, Collection<String> values);
-
-boolean startsWithAny(Object message, Collection<String> values);
-
-boolean collection_contains(Object value, List list);
-
-boolean collection_intersects(Collection one, Collection two);
-
-String upper(Object value);
-
-String lower(Object value);
-
-Collection<String> collection(String name);
-
-Map<String, String> properties(String type);
-
-boolean hasMetric(String metricName);
-
-boolean hasMetric(String metricName, int hours);
-
-boolean memberOf(String groupName);
-
-boolean memberOf(String group);
-
-boolean memberOf(List<String> groups);
-
-boolean memberOfAll(List<String> groups);
-
-Set<String> property_values(String config);
-
-Set<String> property_values(String entity, String config);
-
-String property(String config);
-
-String property(String entity, String config);
-```
+    ```java
+	 memberOf('all-linux-servers') && tags.location = 'SVL'
+    ```
