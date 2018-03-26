@@ -23,52 +23,47 @@ Install and configure the [Web Driver](web-driver.md) in order to send chart scr
     ```
 * Copy the API token for future reference.
 
-## Create Group or Channel
+## Add Bot to Group or Channel
 
-### Create Group
+If necessary, follow the prompts to create a new [group](https://telegram.org/faq#q-how-do-i-create-a-grou) or [channel](https://telegram.org/faq_channels#q-what-39s-a-channel).
 
-* Open profile settings > **New Group**.
+### Add Bot to Group
 
-   ![](images/new_group.png)
+* Click on **Group Settings > Add Members**.
 
-* Enter the group name, click **Next**.
-* Add the newly created bot as a member of this group, for example, `@atsd_bot`
+   ![](images/telegram_3.png)
 
-   ![](images/atsd_bot.png)
+* Specify the name of the newly created bot, for example, `@atsd_bot`.
 
-* Add other members who should receive notifications from ATSD.
-* Click **Create**.
+   ![](images/telegram_4.png)
 
-### Create Channel
+* Click on the bot name and click on **Invite**.
 
-* Open profile settings **New Channel**.
+### Add Bot to Channel
 
-   ![](images/new_channel.png)
+* Click on **Channel Settings > Manage Channel**.
 
-* Enter a channel name. Click **Create**.
-* Select the channel type and click the **Invite link** field if necessary.
-* Click **Save**.
+   ![](images/telegram_5.png)       
 
-   ![](images/private_channel.png)
+* At the **Manage Channel** window click on **Administrators**.
 
-* Add members to receive notifications from ATSD > **Invite**.
-* Click on **Channel Settings > View channel info**
+   ![](images/telegram_6.png)    
+   
+* At the **Administrators** window click on **ADD ADMINISTRATOR**.
 
-   ![](images/channel_settings.png)       
+   ![](images/telegram_7.png)
 
-   ![](images/channel_inf.png)
+* Specify the name of the newly created bot, for example, `@atsd_bot`.
 
-* Channels allow publishing messages only to administrators. Add the bot user using **N administrators > Add administrator** > copy bot name into the search field.
+   ![](images/telegram_8.png)
 
-   ![](images/add_admin.png)
+* Click on the bot name and confirm.
 
-   Click on the bot name and confirm.
+   ![](images/telegram_9.png)
+   
+* Review the settings, make sure _Post messages_ is enabled and click on **Save** > **Close** > **Cancel**.
 
-   ![](images/ok.png)
-
-   Review settings and click **Save > Close**.
-
-   ![](images/admin_settings.png)
+   ![](images/telegram_10.png)
 
 ## Get Chat Id
 
@@ -92,7 +87,7 @@ Look up the chat id as described below and copy the chat id for future reference
 
   * Copy numbers before the underscore and replace `c` with `-100`, so that the chat id looks like this, `-1001354757644`.
 
-#### For Public Channel
+### For Public Channel
 
   * Click on the channel name and check its URL, for example `/#/im?p=@atsd_notifications`
 
@@ -102,10 +97,7 @@ Look up the chat id as described below and copy the chat id for future reference
 
 ### For Direct Message Chat
 
-  * Go to `https://t.me/BOT_NAME`, for example https://t.me/atsd_bot
-  * Click **Open in Web**.
-  * Click **Start**.
-  * Send a message to the bot.
+  * Start conversation with the bot and send any message.
   * Go to https://api.telegram.org/botBOT_TOKEN/getUpdates (replace BOT_TOKEN with the actual value).
   * Review the `Chat Object`
 
@@ -147,7 +139,7 @@ NGINX API Gateway Path for Telegram:
 
 |**Setting**|**Description**|
 |---|---|
-|Bot ID|Each bot is given a unique authentication token when it is created.|
+|Bot API Token|Each bot is given a unique authentication token when it is created.|
 |Chat ID|Unique identifier for the target chat or the target channel.|
 |Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 |Parse Mode|Send [Markdown](https://core.telegram.org/bots/api#markdown-style) or [HTML](https://core.telegram.org/bots/api#html-style) if you want show bold, italic, fixed-width text or inline URLs in your message.|
@@ -155,7 +147,6 @@ NGINX API Gateway Path for Telegram:
 |Disable Web Page Preview|Disables link previews for links in this message.|
 |Details Table Format|The default format for the alerts detail table.|
 |Add Links to Portals|Send a follow up message with chart links after each message containing portal screenshots.|
-|Receive Updates|Poll for messages addressed to the bot user and process them in ATSD as messages.|
 
 ## Reacting to Bot Messages
 
@@ -181,14 +172,12 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```ls
-    OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
-    REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
-    CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+  [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
 ```
 
 * Save the rule by clicking on the **Save** button.
 
-  ![](images/telegram_notification.png)
+  ![](images/telegram_11.png)
 
 * The rule will create new windows based on incoming data.
 It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
