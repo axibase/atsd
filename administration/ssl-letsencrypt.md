@@ -2,8 +2,8 @@
 
 ## Overview
 
-[Let’s Encrypt](https://letsencrypt.org) is a free, automated, and open certificate authority (CA), run for the public’s benefit. 
-This manual is based on [Installing CA-signed Certificate](ssl-ca-signed.md) and [Certbot](https://certbot.eff.org/#ubuntuxenial-other) instructions.
+[Let’s Encrypt](https://letsencrypt.org) is a free, automated, and open certificate authority (CA), operated for public benefit. 
+This guide is based on [Installing CA-signed Certificate](ssl-ca-signed.md) and [Certbot](https://certbot.eff.org/#ubuntuxenial-other) instructions.
 
 ## Installing software
 
@@ -33,7 +33,7 @@ Obtain certificate
 sudo certbot certonly --webroot -w /var/www/html -d example.com
 ```
 
-If certificate is successfully obtained, following message will be displayed
+If certificate is successfully obtained, the following message will be displayed
 
 ```sh
 - Congratulations! Your certificate and chain have been saved at:
@@ -50,7 +50,7 @@ If certificate is successfully obtained, following message will be displayed
    Donating to EFF:                    https://eff.org/donate-le
 ```
 
-Now Apache web server can be removed.
+Now Apache web server may be removed.
 
 ## Create PKCS12 Keystore
 
