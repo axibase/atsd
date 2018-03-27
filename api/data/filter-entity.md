@@ -1,7 +1,7 @@
 # Entity Filter Fields
 
 * One of the below entity fields is **required**.
-* Field precedence, from high to low: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence will be applied.
+* Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence will be applied.
 * `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
 * Entity name pattern supports `?` and `*` wildcards.
 
@@ -29,7 +29,7 @@ Supported fields:
 * Property Functions
 
    * [property(string s)](../../rule-engine/functions-property.md#property)
-   * [property_values(string s)](../../rule-engine/functions-property.md#property_values), access to returned objects isn't supported
+   * [property_values(string s)](../../rule-engine/functions-property.md#property_values), access to returned objects is not supported
    * [properties](./series/examples/query-entity-expr-entity-properties.md#description)
 
 * Lookup Functions
