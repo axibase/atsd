@@ -1,102 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?><rules>
-<rule>
-<name>atsd.jvm.low_memory</name>
-<metric>jvm_memory_used_percent</metric>
-<expression><![CDATA[avg() > 10 || max() > 85]]></expression>
-<window>time(15 minute)</window>
-<severity>WARNING</severity>
-<alertOpenMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertOpenMessage>
-<alertMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertMessage>
-<alertCancellationMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertCancellationMessage>
-<alertStrategy>
-<type>NONE</type>
-<intervalCount>5</intervalCount>
-<intervalUnit>MINUTE</intervalUnit>
-</alertStrategy>
-<lastUpdated>1511405931639</lastUpdated>
-<enabled>false</enabled>
-<disableEntityGrouping>false</disableEntityGrouping>
-<leavingEvents>false</leavingEvents>
-<logOutput>false</logOutput>
-<description><![CDATA[The rule creates an alert when the JVM memory is too low.
+    <rule>
+        <name>atsd.jvm.low_memory</name>
+        <metric>jvm_memory_used_percent</metric>
+        <tagsGroupingStrategy>NO_TAGS</tagsGroupingStrategy>
+        <expression><![CDATA[avg() > 10 || max() > 85]]></expression>
+        <window>time(15 minute)</window>
+        <severity>WARNING</severity>
+        <alertOpenMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertOpenMessage>
+        <alertMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertMessage>
+        <alertMessageAsOpen>false</alertMessageAsOpen>
+        <alertCancellationMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity}	${tags}	${value}]]></alertCancellationMessage>
+        <alertCancellationMessageAsOpen>false</alertCancellationMessageAsOpen>
+        <alertStrategy>
+            <type>ALL</type>
+            <intervalCount>5</intervalCount>
+            <intervalUnit>MINUTE</intervalUnit>
+        </alertStrategy>
+        <lastUpdated>1522246281784</lastUpdated>
+        <enabled>true</enabled>
+        <disableEntityGrouping>false</disableEntityGrouping>
+        <leavingEvents>false</leavingEvents>
+        <loadHistory>false</loadHistory>
+        <scriptAsOpen>false</scriptAsOpen>
+        <alertCancellationScriptAsOpen>false</alertCancellationScriptAsOpen>
+        <logOutput>false</logOutput>
+        <description><![CDATA[The rule creates an alert when the JVM memory is too low.
 The recommended expression is: value > 95 || avg() > 75.
 The threshold below is set to an artificially low level to quickly create an alert.]]></description>
-<actionStrategy>
-<type>NONE</type>
-<intervalCount>5</intervalCount>
-<intervalUnit>MINUTE</intervalUnit>
-</actionStrategy>
-<entityFilter>atsd</entityFilter>
-<discardPreviousValues>true</discardPreviousValues>
-<emailNotification>
-<disabled>false</disabled>
-<rule-name>atsd.jvm.low_memory</rule-name>
-<repeat-interval>
-<type>INTERVAL</type>
-<intervalCount>12</intervalCount>
-<intervalUnit>HOUR</intervalUnit>
-</repeat-interval>
-<name>default-email</name>
-<use-in-threshold-only>false</use-in-threshold-only>
-<first-details>true</first-details>
-<repeat-details>true</repeat-details>
-<cancel-details>true</cancel-details>
-<first-screenshot>true</first-screenshot>
-<repeat-screenshot>true</repeat-screenshot>
-<cancel-screenshot>true</cancel-screenshot>
-<recipients>test@example.com</recipients>
-<first-subject>[${status}] JVM memory low: ${round(value,1)}</first-subject>
-<repeat-subject>[${status}] JVM memory low: ${round(value,1)}. Duration: ${alert_duration_interval}</repeat-subject>
-<cancel-subject>[${status}] JVM memory low: ${round(value,1)}. Duration: ${alert_duration_interval}</cancel-subject>
-<merge>false</merge>
-<priority>0</priority>
-</emailNotification>
-<webNotification>
-<disabled>false</disabled>
-<rule-name>atsd.jvm.low_memory</rule-name>
-<repeat-interval>
-<type>INTERVAL</type>
-<intervalCount>12</intervalCount>
-<intervalUnit>HOUR</intervalUnit>
-</repeat-interval>
-<name>default-endpoint</name>
-<use-in-threshold-only>false</use-in-threshold-only>
-<first-details>true</first-details>
-<repeat-details>true</repeat-details>
-<cancel-details>true</cancel-details>
-<first-screenshot>true</first-screenshot>
-<repeat-screenshot>true</repeat-screenshot>
-<cancel-screenshot>true</cancel-screenshot>
-<webNotificationConfigName>telegram-axibase-devops-with-attachments</webNotificationConfigName>
-<firstWebConfigParameters>
-<key>disable_notification</key>
-<value/>
-</firstWebConfigParameters>
-<firstWebConfigParameters>
-<key>text</key>
-<value>[${status}] JVM memory low: ${round(value,1)}</value>
-</firstWebConfigParameters>
-<repeatWebConfigParameters>
-<key>disable_notification</key>
-<value/>
-</repeatWebConfigParameters>
-<repeatWebConfigParameters>
-<key>text</key>
-<value>[${status}] JVM memory low: ${round(value,1)}. Duration: ${alert_duration_interval}</value>
-</repeatWebConfigParameters>
-<cancelWebConfigParameters>
-<key>disable_notification</key>
-<value/>
-</cancelWebConfigParameters>
-<cancelWebConfigParameters>
-<key>text</key>
-<value>[${status}] JVM memory low: ${round(value,1)}. Duration: ${alert_duration_interval}</value>
-</cancelWebConfigParameters>
-<first-enabled>true</first-enabled>
-<repeat-enabled>true</repeat-enabled>
-<cancel-enabled>true</cancel-enabled>
-</webNotification>
-<ruleTable/>
-<alertLoggerName>atsd.alert.default</alertLoggerName>
-</rule>
+        <actionStrategy>
+            <type>ALL</type>
+            <intervalCount>5</intervalCount>
+            <intervalUnit>MINUTE</intervalUnit>
+        </actionStrategy>
+        <entityFilter>atsd</entityFilter>
+        <timeFilter>
+            <intervalCount>1</intervalCount>
+            <intervalUnit>MINUTE</intervalUnit>
+        </timeFilter>
+        <discardPreviousValues>true</discardPreviousValues>
+        <webNotification>
+            <disabled>false</disabled>
+            <rule-name>atsd.jvm.low_memory</rule-name>
+            <repeat-interval>
+                <type>COUNT</type>
+                <intervalCount>6</intervalCount>
+                <intervalUnit>MINUTE</intervalUnit>
+            </repeat-interval>
+            <name>Web Service Notification id=6</name>
+            <use-in-threshold-only>false</use-in-threshold-only>
+            <first-details>true</first-details>
+            <repeat-details>true</repeat-details>
+            <cancel-details>true</cancel-details>
+            <first-screenshot>true</first-screenshot>
+            <repeat-screenshot>true</repeat-screenshot>
+            <cancel-screenshot>true</cancel-screenshot>
+            <repeat-as-open>true</repeat-as-open>
+            <cancel-as-open>true</cancel-as-open>
+            <webNotificationConfigName>Telegram</webNotificationConfigName>
+            <firstWebConfigParameters>
+                <key>disable_notification</key>
+                <value/>
+            </firstWebConfigParameters>
+            <firstWebConfigParameters>
+                <key>details_table_format</key>
+                <value>ascii</value>
+            </firstWebConfigParameters>
+            <firstWebConfigParameters>
+                <key>text</key>
+                <value>[${status}] ${rule} for ${entity} ${tags}. ${ruleLink}</value>
+            </firstWebConfigParameters>
+            <repeatWebConfigParameters>
+                <key>disable_notification</key>
+                <value/>
+            </repeatWebConfigParameters>
+            <repeatWebConfigParameters>
+                <key>details_table_format</key>
+                <value>ascii</value>
+            </repeatWebConfigParameters>
+            <repeatWebConfigParameters>
+                <key>text</key>
+                <value>[${status}] ${rule} for ${entity} ${tags}. ${ruleLink}</value>
+            </repeatWebConfigParameters>
+            <cancelWebConfigParameters>
+                <key>disable_notification</key>
+                <value/>
+            </cancelWebConfigParameters>
+            <cancelWebConfigParameters>
+                <key>details_table_format</key>
+                <value>ascii</value>
+            </cancelWebConfigParameters>
+            <cancelWebConfigParameters>
+                <key>text</key>
+                <value>[${status}] ${rule} for ${entity} ${tags}. ${ruleLink}</value>
+            </cancelWebConfigParameters>
+            <first-enabled>true</first-enabled>
+            <repeat-enabled>true</repeat-enabled>
+            <cancel-enabled>true</cancel-enabled>
+        </webNotification>
+        <ruleTable/>
+        <alertLoggerName>atsd.alert.default</alertLoggerName>
+        <derivedCommand>series e:${entity} m:metric_123=${100 - value} ${commandTags}</derivedCommand>
+        <derivedCommandEnabled>false</derivedCommandEnabled>
+        <derivedCommandStrategy>
+            <type>ALL</type>
+            <intervalCount>5</intervalCount>
+            <intervalUnit>MINUTE</intervalUnit>
+        </derivedCommandStrategy>
+        <alertOpenMessageEnabled>false</alertOpenMessageEnabled>
+        <alertMessageEnabled>false</alertMessageEnabled>
+        <alertCancellationMessageEnabled>false</alertCancellationMessageEnabled>
+        <alertOpenScriptEnabled>false</alertOpenScriptEnabled>
+        <scriptEnabled>false</scriptEnabled>
+        <alertCancellationScriptEnabled>false</alertCancellationScriptEnabled>
+    </rule>
 </rules>

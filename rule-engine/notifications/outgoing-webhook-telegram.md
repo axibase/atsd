@@ -15,7 +15,13 @@ The bot is special user account created for automation and integration purposes.
 
     ![](images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token.
+* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot's username must end with `_bot` and cannot contain dash `-` symbol.
+
+    ```
+    Use this token to access the HTTP API:
+    5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
+    ```
+* Copy the API token for future reference.
 
 ## Prepare Webhook URL
 
@@ -104,8 +110,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```ls
-    OPEN = User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${tags.message.text}"
-    REPEAT = User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${tags.message.text}"
+  User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${message}"
 ```
 
 * Save the rule by clicking on the **Save** button.
