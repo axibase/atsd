@@ -90,7 +90,7 @@ Slack Bot is a special account created specifically for automation purposes.
 
    ![](images/outgoing_webhook_slack_13.png)
 
-* Go to Slack workspace, make sure the app is visible in the **Apps** section.
+* Go to Slack workspace https://my.slack.com/, make sure the app is visible in the **Apps** section.
 
    ![](images/outgoing_webhook_slack_14.png)
 
@@ -113,8 +113,7 @@ Slack Bot is a special account created specifically for automation purposes.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```ls
-    OPEN = Received `${message}` from <@${tags.event.user}>
-    REPEAT = Received `${message}` from <@${tags.event.user}>
+  Received `${message}` from <@${tags.event.user}>
 ```
 
 * Save the rule by clicking on the **Save** button.
