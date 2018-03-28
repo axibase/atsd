@@ -4,6 +4,19 @@
 
 `TELEGRAM` [notifications](../web-notifications.md) provides a built-in capability to send alert messages, alert detail tables, and charts directly to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
 
+## Reference
+
+ * [Prerequisites](#prerequisites)
+ * [Create Bot](#create-bot)
+ * [Add Bot to Group or Channel](#add-bot-to-group-or-channel)
+ * [Get Chat Id](#get-chat-id)
+ * [Configure Web Notification in ATSD](#configure-web-notification-in-atsd)
+ * [Proxy Settings](#proxy-settings)
+ * [Notification Settings](#notification-settings)
+ * [Reacting to Bot Messages](#reacting-to-bot-messages)
+ * [Testing Notification Rule](#testing-notification-rule)
+ * [Notifications Examples](#notifications-examples)
+
 ## Prerequisites
 
 Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots into Telegram.
@@ -137,7 +150,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 * The rule will create new windows based on incoming data.
 It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
-## Test
+### Test
 
 * Check channel messages.
 
@@ -147,7 +160,7 @@ Sample alert table file.
 
 ![](images/test_2.png)
 
-## Notifications examples
+## Notifications Examples
 
 ![](images/example1.png)
 

@@ -1,4 +1,4 @@
-### Get Chat ID using Telegram Web
+## Get Chat ID using Telegram Web
 
 This option is applicable only for groups and channels.
  
