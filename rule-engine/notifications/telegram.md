@@ -110,7 +110,6 @@ NGINX API Gateway Path for Telegram:
 |Bot API Token|Each bot is given a unique authentication token when it is created.|
 |Chat ID|Unique identifier for the target chat or the target channel.|
 |Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
-|Parse Mode|Send [Markdown](https://core.telegram.org/bots/api#markdown-style) or [HTML](https://core.telegram.org/bots/api#html-style) if you want show bold, italic, fixed-width text or inline URLs in your message.|
 |Disable Notifications|Sends the message silently. Users will receive a notification with no sound.|
 |Disable Web Page Preview|Disables link previews for links in this message.|
 |Details Table Format|The default format for the alerts detail table.|
@@ -141,7 +140,6 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 ```ls
   *[${status}]* ${ruleLink} for ${entity} ${tags}
 ```
-> Note for proper links resolving check that [_Parse Mode_](#notification-settings) set to Markdown or HTML.
 
 * Save the rule by clicking on the **Save** button.
 
