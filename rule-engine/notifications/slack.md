@@ -14,50 +14,19 @@ If necessary, go to https://slack.com/create and follow the prompts to create a 
 
 ## Create Channel
 
-* Click **Create a channel**
-
-  ![](images/create_channel.png)
-
-* Check (enable) **Private** option to restrict access to the channel.
-* Invite users to join the channel in order to receive alerts from the ATSD rule engine
-
-    ![](images/create_channel2.png)   
-
-* Click **Create Channel**.
+If necessary, create new channel as described [here](https://get.slack.help/hc/en-us/articles/201402297-Create-a-channel).
 
 ## Create ATSD Slack Bot
 
-* Open https://my.slack.com/services/new/bot
-* Check Workspace
+* Open https://api.slack.com/apps
 
-    ![](images/check_workspace.png)  
+* Click on **Create New App**.
 
-* Specify the username.
-* Click **Add bot integration**.
+    ![](images/slack_3.png)
 
-    ![](images/atsd_bot_slack.png)  
+* Specify app settings, click on **Create App**.
 
-* Review the setup instructions.
-* Copy the API Token for future reference. Click **Save Integration**.
-
-    ![](images/api_token.png)
-
-* Invite the bot user to the channel.
-
-    * Go back to https://my.slack.com/
-    * Click **Invite others to this private channel**.
-
-    ![](images/add_atsd_bot.png)
-
-    * Choose any option for the channel.
-
-    ![](images/channel_option.png)
-
-    * Enter the bot name into the search field.
-
-    ![](images/add_atsd_bot_to_slack.png)
-
-    * Click **Invite**.
+    ![](images/slack_4.png)
 
 ## Get Channel Id
 

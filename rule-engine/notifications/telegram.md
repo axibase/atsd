@@ -114,6 +114,8 @@ NGINX API Gateway Path for Telegram:
 |Disable Web Page Preview|Disables link previews for links in this message.|
 |Details Table Format|The default format for the alerts detail table.|
 
+> Note parse mode is set to [markdown](https://core.telegram.org/bots/api#markdown-style) by default.
+
 ## Reacting to Bot Messages
 
 The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself. 
