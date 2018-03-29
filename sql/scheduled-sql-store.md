@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Store** option in scheduled SQL queries enables writing the results of the query back into the database.
+The **Store** option for scheduled SQL queries may be used to write the results of a query back into the database.
 
 ## Use Cases
 
@@ -85,7 +85,7 @@ Column aliases can be defined to ensure that the query results meet the followin
 | metric.{field-name} | string | `0-*` | [Metric field](README.md#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
 | entity.{field-name} | string | `0-*` | [Entity field](README.md#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
 
-* The following metadata fields are read-only and can be not be set: 'metric.name', 'metric.lastInsertTime', 'entity. groups':
+* The following metadata fields are read-only and cannot be set: 'metric.name', 'metric.lastInsertTime', 'entity. groups':
 
 ### Table Names
 
@@ -139,7 +139,7 @@ If **Check Last Time** is enabled, the series command is inserted if its datetim
 
 ### Validation
 
-To test that a query complies with [requirements](#column-requirements), execute the query in the SQL console and click on the **Store** button.
+To test that a query complies with all [requirements](#column-requirements), execute the query in the SQL console and click the **Store** button.
 
 Click **Test** to review the produced commands and resolve any errors.
 
