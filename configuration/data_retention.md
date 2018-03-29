@@ -46,7 +46,7 @@ The amount of time series data stored in the database may be controlled using on
 * Deleting [expired data](#delete-expired-data) outside a specified retention period.
 * Deleting [expired series](#deleted-expired-series) if no data has been received for the series within a specified retention period.
 
-Since the data is deleted by [background tasks](#scheduled-tasks), applying these settings on disk utilization requires the scheduled tasks to be completed before their expected effects are observable. It may take a few days for any new settings to fully materialize as appreciably reduced disk usage.
+Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for any new settings to fully materialize as appreciably reduced disk usage.
 
 ### Disable Metric
 
