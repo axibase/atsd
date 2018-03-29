@@ -2,7 +2,7 @@
 
 ## Overview
 
-SQL Scheduler allows distributing query results via email, file system, and http URLs as well as to persist query results as calculated/derived metrics.
+SQL Scheduler is able to distribute query results via email, file system, and http URLs as well as to persist query results as calculated/derived metrics.
 
 ## Sample Configuration
 
@@ -29,7 +29,7 @@ Scheduled queries are executed with **All Entities: Read** permission. No record
 
 CSV files can be optionally archived with zip or gzip compression.
 
-The HTML format is optimized for compatibility with common desktop and email clients.
+HTML format is optimized for compatibility with common desktop and email clients.
 
 ### Sample Reports
 
@@ -70,15 +70,15 @@ To distribute report files via email, enable the **Export** section, specify an 
 
 ![File](images/sql-scheduled-email.png)
 
-The `Send Empty Report` and `Send Error Report` settings control whether the report should be emailed in case of an empty result or an error.
+`Send Empty Report` and `Send Error Report` settings control whether a report should be emailed in case of an empty result or error.
 
-The `Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the resultset is not empty.
+`Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the resultset is not empty.
 
-The `Email Subject` field supports the date and form [placeholders](#placeholders), for example `${name} for ${yyyy-MM-dd}`.
+The `Email Subject` field supports date and form [placeholders](#placeholders), for example `${name} for ${yyyy-MM-dd}`.
 
 ### Publishing
 
-To make the report available for download by end-users, enable the **Publish** section. The report will contain rows that were prepared by the server when the task was last executed.
+To make a report available for download by end-users, enable the **Publish** section. The report will contain rows that were prepared by the server when the task was last executed.
 
 ![File](images/sql-scheduled-publish.png)
 
@@ -95,7 +95,7 @@ To make links accessible for unauthenticated users, enable the `Guest Access` op
 
 ### Placeholders
 
-The placeholders can be included in the `Output Path` and `Email Subject` fields.
+Placeholders can be included in the `Output Path` and `Email Subject` fields.
 
 #### Date placeholder
 
@@ -116,7 +116,7 @@ Examples:
 - `${yyyy/MM/dd}`
 - `${yyyy-MM-dd-HH-mm-ss.SSS}`
 
-The date placeholder is evaluated **after** the query is completed.
+A date placeholder will be evaluated **after** the query is completed.
 
 #### Form placeholders
 
