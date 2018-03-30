@@ -2,11 +2,11 @@
 
 ## Overview
 
-Entity Views provide a way to construct customized tables displaying key attributes for entities belonging to the same entity group. The views are listed under the **Entity Views** link in the main menu on the left.
+Entity Views provide a way to construct customized tables displaying key attributes for entities belonging to the same entity group. These views are listed under the **Entity Views** tab in the main menu on the left.
 
 ![](images/entity_views_5.png)
 
-An entity view table consists of columns of various types including icons, links, text, series values:
+An entity view table consists several columns: icons, links, text, series values:
 
 ![](images/entity-view-table.png)
 
@@ -24,7 +24,7 @@ An entity view table consists of columns of various types including icons, links
 
 ## Authorization
 
-The view can be accessed by users with a [**READ**](user-authorization.md#entity-permissions) `read` permission for the [entity group](entity_groups.md#members) to which the view is linked.
+The view can be accessed by users with [`read`](user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
 
 ## Settings
 
@@ -118,7 +118,7 @@ Entity Tag | Displays the value of the specified entity tag for another entity, 
 
 ### Formatting
 
-The following functions are available in 'Formatting' section:
+The following functions are available in the 'Formatting' section:
 
 #### Text Functions
 
@@ -163,8 +163,8 @@ The following functions are available in 'Formatting' section:
 
 **Name** | **Description**
 ---|---
-Name | Filter name displayed in the drop-down.
-Expression | A condition that entities must satisfy when the filter is selected in the drop-down. The expression may refer to `name` and `tags.{name}` columns defined in the entity view.
+Name | Filter name displayed in the drop-down menu.
+Expression | A condition that entities must satisfy when the filter is selected in the drop-down menu. The expression may refer to `name` and `tags.{name}` columns defined in the entity view.
 
 Filter expression examples:
 
@@ -206,7 +206,7 @@ Default entity view configuration:
 
 ![](images/entity_views_1.png)
 
-The entity view without table splitting is displayed as follows, with all entities places into one table:
+The entity view without table splitting is displayed as follows, with all entities placed into one table:
 
 ![](images/entity-view-split-empty.png)
 
@@ -286,7 +286,7 @@ The link displays the value of the entity tag of another entity, which name is s
     
 #### Customized Entity Tag
 
-Tag value can be formatted to convenient representation.
+Tag value can be formatted for convenient representation.
 
   * Configuration
 
@@ -300,7 +300,7 @@ Tag value can be formatted to convenient representation.
 
 #### Text Link to Specific Entity Property
 
-The text displays property tag value with a link to the property type.
+Text displays property tag value with a link to property type.
 
 1. Set 'Type' setting to Property Tag.
 
@@ -352,7 +352,7 @@ The link displays the latest inserted value for the specific metric.
 
 1. Specify the metric name in the 'Value' setting.
 
-2. Set 'Link' setting to Chart.
+2. Apply the 'Link' setting to Chart.
 
 3. Specify an expression in the 'Formatting' setting to display one digit after dot:
 
@@ -423,7 +423,7 @@ Use the following configuration to specify the custom icon which opens a link to
 
 #### Text with Entity Label
 
-The text contains entity label if the label is set. Otherwise, entity name will be displayed.
+Entity labels may be defined for entries. Otherwise, entity name will be displayed.
 
 * Configuration
 
