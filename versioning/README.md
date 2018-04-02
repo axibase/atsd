@@ -112,7 +112,7 @@ Open the **Filters** section and enable **Display Versions** setting on export p
 |**Name**|**Description**|
 |---|---|
 |**Revisions Only** |Displays only modified values.|
-|**Version Filter**| An expression to filter version history.<br>The expression may contain the `version_source`, `version_status` and `version_time` fields.<br>The `version_time` field supports [calendar](../shared/calendar.md) syntax using the `date()` function.<br> The `version_source` and `version_status` fields support wildcards.<br>To display deleted values, specify `Double.isNaN(value)` as an expression.|
+|**Version Filter**| An expression to filter version history.<br>The expression may contain the `version_source`, `version_status` and `version_time` fields.<br>The `version_time` field supports [calendar](../shared/calendar.md) syntax using the `date()` function.<br> The `version_source` and `version_status` fields support wildcards.|
 
 Examples:
 
@@ -136,13 +136,6 @@ Examples:
     version_status = 'OK'
     ```
     ![](resources/7.png)
-    
-* Display deleted values
-
-    ```ls
-    Double.isNaN(value)
-    ```
-    ![](resources/16.png)
     
 * Display only modified values
 
