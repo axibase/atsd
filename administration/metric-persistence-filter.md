@@ -11,6 +11,8 @@ found in the rule engine editor. Commands for which the expression returns `fals
 |:---|:---|:---|:---|
 | `value` | number|Series command value. | `value > 0`|
 | `enity` | string|Entity name. | `entity LIKE "?tsd"`|
+| `message` | string|Series command text value. | `message = "a"`|
+|`timestamp`| number| Series command timestamp. |`timestamp < 1522683114614`|
 | `tags.{name}` or `tags['name']` | string|Value of command tag with name `name`. Tag names are case-insensitive. |`tags.location NOT IN ('a', 'b', 'c')`<br>`tags['fs'] LIKE "ext*"`. |
 
 ### Operators
@@ -123,6 +125,8 @@ Example:
 
 ```javascript
 matches(entity, collection('hosts'))
+
+matches(message, ['OK', 'stable'])
 ```  
 
 ### `startsWithAny`
