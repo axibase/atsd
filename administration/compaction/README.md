@@ -28,9 +28,9 @@ The following tests estimate the amount of disk space required to store the same
 
 ## Dataset
 
-The dataset represents 20+ years of historical minute stock trade data available from the [Kibot](http://www.kibot.com/buy.aspx) company.
+The dataset represents 20+ years of historical minutely stock trade data available from the [Kibot](http://www.kibot.com/buy.aspx) company.
 
-The one minute trade statistics are available for IBM stock traded on the New York Stock Exchange. The recording starts on February 1st, 1998 and lasts until the last trading day.
+Minutely trade statistics are available for IBM stock traded on the New York Stock Exchange. Recording begins on February 1st, 1998 and continues until the most recent trading day.
 
 The data is provided in the commonly used OHLCV [format](http://www.kibot.com/support.aspx#data_format).
 
@@ -66,7 +66,7 @@ The tests are performed using two schema options:
 
 The **Specific Table** schema uses a named column for each metric.
 
-Under this option, the table is configured to store a fixed set of metrics for the given entity type. A separate table is required for each type of entities.
+Under this option, the table is configured to store a fixed set of metrics for the given entity type. A separate table is required for each type of entity.
 
 Example: IBM Tivoli Data Warehouse
 
