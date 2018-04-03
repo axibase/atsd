@@ -110,8 +110,8 @@ NGINX API Gateway Path for Telegram:
 |Bot API Token|Unique authentication token given to the bot when it is created.|
 |Chat ID|Unique identifier for the target chat or the target channel.|
 |Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
-|Notifications|If disabled, sends the message silently, and the users will receive a notification with no sound.|
-|Web Page Preview|If enabled, renders link previews for links in the message.|
+|Notifications|If disabled, the users will receive a silent notification.|
+|Web Page Preview|If enabled, displays short previews for URLs in the message.|
 |Details Table Format|The default format for the alerts detail table.|
 
 > Note parse mode is set to [markdown](https://core.telegram.org/bots/api#markdown-style) by default.
