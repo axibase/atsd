@@ -1,6 +1,6 @@
 # Metric Persistence Filter
 
-The metric persistence filter, configurable in the metric editor, can be used to discard incoming series commands based results of a filter expression. Commands for which the expression returns `false` are not stored in the database.
+The metric persistence filter, configurable in the metric editor, can be used to discard incoming series commands according to a filter expression. Commands for which the expression returns `false` will not be stored in the database.
 
 ## Expression Syntax
 
@@ -52,11 +52,11 @@ Logical operators: `AND`, `OR`, `NOT` as well as `&&` , `||`, `!`
 
 Returns an array of strings which have been loaded with the specified string `s`.
 
-The named collections are listed on the **Data > Named Collections** page.
+Named collections are listed on the **Data > Named Collections** page.
 
 To check the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
+To access the *n*-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
 
 ```javascript
 entity = collection('hosts')[0]
@@ -117,7 +117,7 @@ likeAny(tags.request_ip, collection('ip_white_list'))
   matches(string p, [string] c) boolean
 ```
 
-Returns `true` if one of the collection `c` elements matches (satisfies) the specified pattern `p`.  The collection `c` can be specified inline as an array of strings or reference a named collection.
+Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.  The collection `c` can be specified inline as an array of strings or reference a named collection.
 
 The pattern supports `?` and `*` wildcards.
 
@@ -135,7 +135,7 @@ matches(message, ['OK', 'stable'])
   startsWithAny(object s, [string] c) boolean
 ```
 
-Returns `true`, if the first argument `s` starts with any of strings from collection `c`. The collection `c` can be specified inline as an array of strings or reference a named collection.
+Returns `true`, if the first argument `s` starts with any of strings from collection `c`. Collection `c` can be specified inline as an array of strings or reference a named collection.
 
 Examples:
 
@@ -207,7 +207,7 @@ Converts `s` to lowercase letters.
 
 Returns the number of elements in the collection.
 
-> This function can be applied to collections of any type (string, number) as well as to maps.
+> This function can be applied to collections of any type (string, number) as well as maps.
 
 Examples:
 
@@ -223,7 +223,7 @@ tags.size() > 1
 
 Returns `true` if the number of elements in the collection is zero.
 
-> This function can be applied to collections of any type (string, number) as well as to maps.
+> This function can be applied to collections of any type (string, number) as well as maps.
 
 Example:
 
