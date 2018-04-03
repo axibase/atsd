@@ -1,31 +1,31 @@
 # Metric Persistence Filter
 
-The metric persistence filter field in the metric editor is used to discard inserts based on a filter expression, similar to the filter expressions
-found in the rule engine editor. Commands for which the expression returns `false` are not persisted.
+The metric persistence filter, configurable in the metric editor, can be used to discard incoming series commands based results of a filter expression. Commands for which the expression returns `false` are not stored in the database.
 
-## Syntax
+## Expression Syntax
 
-### Variables
+The filter is a boolean condition that can include fields, operators, and functions.
 
-| Name | Type| Description | Examples|
+### Fields
+
+| **Name** | **Type**| **Description** | **Example** |
 |:---|:---|:---|:---|
-| `value` | number|Series command value. | `value > 0`|
-| `enity` | string|Entity name. | `entity LIKE "?tsd"`|
-| `message` | string|Series command text value. | `message = "a"`|
-|`timestamp`| number| Series command timestamp. |`timestamp < 1522683114614`|
-| `tags.{name}` or `tags['name']` | string|Value of command tag with name `name`. Tag names are case-insensitive. |`tags.location NOT IN ('a', 'b', 'c')`<br>`tags['fs'] LIKE "ext*"`. |
+| `entity` | string|Entity name. | `entity LIKE "?tsd"`|
+| `value` | number|Numeric value. | `value > 0`|
+| `message` | string|Text value (annotation). | `message = "a"`|
+| `timestamp`| number| Series command timestamp. |`timestamp < 1522683114614`|
+| `tags.{name}` or `tags['name']` | string|Value of command tag with name `name`. <br>Tag names are case-**in**sensitive.<br> |`tags.location NOT IN ('a', 'b', 'c')`<br>`tags['fs'] LIKE "ext*"`. |
 
 ### Operators
 
-Comparison operators: `=`, `==`, `!=`, `LIKE`
+Comparison operators: `=`, `==`, `!=`, `LIKE`.
 
 Logical operators: `AND`, `OR`, `NOT` as well as `&&` , `||`, `!`
 
 ### Wildcards
 
-Wildcard `*` means zero or more characters. 
-
-Wildcard `?` means any character.
+* Wildcard `*` means zero or more characters. 
+* Wildcard `?` means any character.
 
 ### Functions
 
@@ -247,29 +247,25 @@ entity IN ('nurswgvml007', 'nurswgvml008')
 tags.location IN ('NUR', 'SVL')
 ```  
 
-## Example
+## Using Persistence Filter
 
-Below is a use case example of how the metric persistence filter can be used.
-
-To see which metrics have the most amount of inserts navigate to **Settings > Receive Statistics**:
+If space utilization needs to be controlled, open the **Settings > Receive Statistics** page to view metrics with the highest number of inserted commands:
 
 ![](images/metric_persistence_filter_1.png "top_hourly_metrics")
 
-The _Series_ icon provides a list of unique tags for the given metric. 
+The _Series_ icon opens a list of unique tags for the selected metric. 
 
 ![](images/metric_persistence_filter_2.png)
 
-Often it is not worth storing many short-lived processes:
+If some of the incoming data is of low value it may not be worth storing it.
 
 ![](images/series.png)
 
-To stop storing the short-lived processes, create a collection
-containing filter expressions (collections can be found under the **Data > Named Collections**):
+To stop storing such series, create a collection with filter patterns on the **Data > Named Collections** page.
 
 ![](images/metric_persistence_filter_3.png "names_collections")
 
-Finally, apply the filter to the metric in order to ignore processes
-matching any of those expressions:
+Open the metric editor and create a filter expression to ignore matching series.
 
 ```bash
 !likeAny(tags.command, collection('ignore-collector-process-commands'))
@@ -277,7 +273,6 @@ matching any of those expressions:
 
 ![](images/metric_persistence_filter_4.png "metric_editor")
 
-As a result, the amount of short-lived processes being stored is
-substantially reduced without modifying the collector scripts:
+As a result, the number of stored series will be reduced.
 
 ![](images/screenshot_5_1421925689.png)
