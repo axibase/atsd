@@ -13,6 +13,8 @@ Open the **Data Entry** form located under the **Data** tab in the main menu.
 
 ![](resources/getting-started_1.png)
 
+Select type **Series**
+
 ![](resources/getting-started_2.png)
 
 Fill out the **Entity**, **Metric**, and **Value** fields, press **Send**:
