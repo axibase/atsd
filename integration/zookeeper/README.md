@@ -42,8 +42,8 @@ Save changes.
 ![JMX_JOB](images/jmx_job_configuration.png)
 
 7. Test job configurations. Click on `zookeeper-series`.
-If it is required, change default parameters.
-For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md). Click **Test** button
+If needed, change default parameters.
+For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md). Click **Test**.
 
 ![](images/jmx_job_series_config.png)
 
@@ -89,7 +89,7 @@ Go to **Metrics** page and verify that `jmx.zookeeper.*` metrics are available.
 
 ![](images/rules_list.png)
 
- * `Zookeeper cluster high latency` - alert opens when more than 50% nodes in a cluster have average latency more than 100 ms in 3 minutes.
+ * `Zookeeper cluster high latency` - alert opens when more than 50% of the nodes in a cluster have average latency greater than 100 ms in 3 minutes.
  * `Zookeeper cluster not serving requests` - alert opens when node status is `leaderelection`, which means that nodes cannot choose leader.
  * `Zookeeper dead cluster` - opens when no data was collected from cluster in 2 minutes.
  * `Zookeeper dead node` - opens when no data was collected from a single node in 2 minutes.
