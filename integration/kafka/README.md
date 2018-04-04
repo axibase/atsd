@@ -4,65 +4,65 @@ This document describes how to monitor availability and performance of [Apache K
 
 ## Step 1: Configure Axibase Collector
 
-1. Login into Axibase Collector at https://collector_hostname:9443
-1. Click the Jobs tab in the top menu and press the Import button.
-1. Import the [kafka-jmx](resources/job_jmx_kafka-jmx.xml) job.
-1. Locate the `kafka-jmx` job in the list of jobs.
-1. On the JMX Job page, enable the job status by checking on the Enabled check box.
-1. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).  
-1. Select a target ATSD database for storing data.
-1. Click Save.
+1. Log in to Axibase Collector at https://collector_hostname:9443
+2. Select the Jobs tab in the top menu and click the **Import** button.
+3. Import the following [kafka-jmx](resources/job_jmx_kafka-jmx.xml) job.
+4. Locate the newly-imported `kafka-jmx` job on the **Jobs** page.
+5. On the JMX Job page, enable the job status by setting the flag in the **Enabled** checkbox.
+6. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).  
+7. Select a target ATSD database for storing data.
+8. Click **Save**.
 
 ![JMX_JOB](images/jmx_job_to_configuration.png)
 
 ### Configure series collection
 
 1. Select 'kafka-series' configuration.
-1. On the JMX Configuration page, enter the JMX connection parameters or use [Item List](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md#connection-parameters) with predefined kafka parameters:
+2. On the JMX Configuration page, enter the JMX connection parameters or use [Item List](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md#connection-parameters) with predefined kafka parameters:
 
    **Host** — Kafka hostname.  
    **Port** — JMX port.  
    **User Name** — JMX user name.  
    **Password** — Password for JMX user.  
-   **Entity** — Optionally, specify the output of the hostname command on the Kafka server if it’s different from `kafka_hostname` (for example if `kafka_hostname` represents a fully qualified name).  
+   **Entity** — Optionally, specify the output of the hostname command on the Kafka server if it is different from `kafka_hostname` (for example if `kafka_hostname` represents a fully qualified name).  
 Other parameters are optional. For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md).   
 
-1. Click Test to validate the configuration.  
-1. Click Save.
+3. Click **Test** to validate the configuration.  
+4. Click **Save**.
 
     ![](images/series_config.png)
 
 ### Configure properties collection
 
 1. Select 'kafka-properties' configuration.
-1. Set Host, Port, User Name, Password, and Entity fields as described in the previous section.
-1. Click Test to validate the configuration.
-1. Click Save.
+2. Set Host, Port, User Name, Password, and Entity fields as described in the previous section.
+3. Click **Test** to validate the configuration.
+4. Click **Save**.
 
     ![](images/properties_config.png)
 
 ## Step 2: Configure Kafka in ATSD
 
-1. Login into the target Axibase Time Series Database instance at https://atsd_hostname:8443.
-1. Go to Metrics page and verify that `jmx.kafka.*` metrics are available.
-1. Go to Entities page and verify that `jmx.kafka.*` properties are available for entities from `kafka-properties` configuration.
-1. Go to `Settings -> Entity Groups` and import [Kafka](resources/groups.xml) entity group.
-1. Go to `Portals -> Configure` and import [Kafka](resources/portal-configs.xml) portals (check on the Auto-enable New Portals check box).
-1. Go to ![](images/alerts.png) `Alerts -> Rules` and import [Kafka](resources/rules.xml) rules (check on the Auto-enable New Rules check box).
-1. Go to ![](images/entity_views.png) `Entity Views -> Configure` and import [Kafka](resources/entity-views.xml) entity view.
+1. Log in to the target Axibase Time Series Database instance at https://atsd_hostname:8443.
+2. Go to the Metrics page and verify that `jmx.kafka.*` metrics are available.
+3. Go to the Entities page and verify that `jmx.kafka.*` properties are available for entities from `kafka-properties` configuration.
+4. Go to `Settings -> Entity Groups` and import [Kafka](resources/groups.xml) entity group.
+5. Go to `Portals -> Configure` and import [Kafka](resources/portal-configs.xml) portals (check on the Auto-enable New Portals check box).
+6. Go to ![](images/alerts.png) `Alerts -> Rules` and import [Kafka](resources/rules.xml) rules (check on the Auto-enable New Rules check box).
+7. Go to ![](images/entity_views.png) `Entity Views -> Configure` and import [Kafka](resources/entity-views.xml) entity view.
 
 
 ## Step 3: Verification
 
-1. Select `Kafka` on `Entity Views` menu and open it:
+1. Select an open `Kafka` on the `Entity Views` menu:
 
     ![](images/entity_view.png)
 
-1. Verify that portal in table header is available and refer to Kafka portal:
+2. Verify that the portal in the table header is available and refer to Kafka portal:
 
     ![](images/kafka_cluster.png)
 
-1. Verify that portals for each entity is refer to Broker portal:
+3. Verify that portals for each entity refer to the Broker portal:
 
     ![](images/kafka_broker.png)
 
@@ -71,11 +71,11 @@ Other parameters are optional. For more information on JMX configuration, see [J
 
 Consumer lag calculation requires information about producer offset and consumer offset. 
 
-The producer offset is collected from Kafka brokers by the JMX Job above.
+Producer offset is collected from Kafka brokers by the JMX Job above.
 
-The consumer offset is collected using a Kafka console consumer reading events from  the `__consumer_offset` topic on one of the Kafka servers in the cluster. 
+Consumer offset is collected using a Kafka console consumer reading events from  the `__consumer_offset` topic on one of the Kafka servers in the cluster. 
 
-Login into the Kafka server.
+Log in to the Kafka server.
 
 Download the [script](resources/send_offset.sh) into Kafka `bin` directory.
 
