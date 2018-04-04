@@ -2,7 +2,7 @@
 
 #### Patterns and `graphite.conf`
 
-To improve ATSD's ability to ingest data in the Graphite format, save the `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory.
+The `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory controls how graphite commands are mapped into ATSD commands.
 
 `graphite.conf` contains patterns used to parse incoming metrics:
 
