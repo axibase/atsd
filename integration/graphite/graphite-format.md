@@ -2,9 +2,9 @@
 
 #### Patterns and `graphite.conf`
 
-To improve ATSDs ability to ingest data in the Graphite format, save the `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory.
+To improve ATSD's ability to ingest data in the Graphite format, save the `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory.
 
-`graphite.conf` contains patterns used to parse the incoming metrics:
+`graphite.conf` contains patterns used to parse incoming metrics:
 
 `pattern =` is used to match incoming metrics.
 
@@ -14,11 +14,11 @@ If a metric name matches the regex `pattern`, it will be parsed according to `at
 
 > NOTE: every `\` in `pattern` must be duplicated.
 
-`graphite.conf` is parsed from top to bottom, meaning that metric names are matched to patterns in the same order as they are in the file. Matching stops as soon as a `pattern` in satisfied. It is worth noting that if a `pattern` is added at the bottom of the file, but the target metric name is matched to a different `pattern` contained higher up in the file, then it will not be used.
+`graphite.conf` is parsed from top to bottom, meaning that metric names are matched to patterns in the same order they are placed in the file. Matching stops as soon as a `pattern` in satisfied. It is worth noting that if a `pattern` is added at the bottom of the file, but the target metric name is matched to a different `pattern` contained higher up in the file, then it will not be used.
 
 If a metric name has more tokens than `atsd-pattern`, extra tokens are cropped.
 
-If a metric name has less tokens than `atsd-pattern`, but satisfies `pattern`, then the metric will not be parsed.
+If a metric name has less tokens than `atsd-pattern`, but still satisfies `pattern`, then the metric will not be parsed.
 
 If there is no `atsd-pattern` for an incoming metric name, then everything before the first period is recorded as the entity and the rest is recorded as the metric. If there are no periods in the metric name, then the default entity will be `graphite`, and the metric name will be recorded as the metric.
 
@@ -128,7 +128,7 @@ OUTPUT: e:nurdkr002 m:collectd.df.percent_bytes-used t:id=run-shm
 
 #### Collectl Example
 
-[Collectl](http://collectl.sourceforge.net/index.html) is a universal system performance monitoring tool for linux systems. Collectl can monitor a broad set of subsystems, which currently include buddyinfo, cpu, disk, inodes, infiniband, lustre, memory, network, nfs, processes, quadrics, slabs, sockets, and tcp.
+[Collectl](http://collectl.sourceforge.net/index.html) is a universal system performance monitoring tool for Linux systems. Collectl can monitor a broad set of subsystems, which currently include buddyinfo, cpu, disk, inodes, infiniband, lustre, memory, network, nfs, processes, quadrics, slabs, sockets, and tcp.
 
 You can instrument Collectl to send data to ATSD using the Graphite format.
 
@@ -199,7 +199,7 @@ Official guide covering Sensu installation and configuration:
 
 [https://sensuapp.org/docs/latest/installation-overview](https://sensuapp.org/docs/latest/installation-overview)
 
-To setup the server and client on separate machines please refer to the following guide:
+To set up the server and client on separate machines please refer to the following guide:
 
 [https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04)
 
@@ -250,7 +250,7 @@ Next you have to create a check, for example:
 }
 ```
 
-The `debug` handler is included for logging purposes and can be omitted.
+The `debug` handler is included for logging purposes and may be omitted.
 
 At least one element of `subscribers` has to match an element of the `subscriptions` in your client configuration file.
 
