@@ -6,7 +6,7 @@
 
 ## Setup Email Client
 
-* See [note](../administration/setting-up-email-client.md).
+* See [note](../administration/mail-client.md).
 
 ## Verify System Time
 

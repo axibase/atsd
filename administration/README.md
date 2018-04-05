@@ -1,5 +1,5 @@
 # Administration
-- [Setup Email Client](setting-up-email-client.md)
+- [Setup Email Client](mail-client.md)
 - [Time Zone](timezone.md)
 - [User Authentication](user-authentication.md#user-authentication)
   - [Authentication Mechanisms](user-authentication.md#authentication-mechanisms)

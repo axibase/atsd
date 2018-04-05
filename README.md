@@ -103,7 +103,7 @@
 ## Administration
 
   * [Overview](administration#administration)
-  * [Email Client](administration/setting-up-email-client.md)
+  * [Email Client](administration/mail-client.md)
   * [Time Zone](administration/timezone.md)
   * [Allocating Memory](administration/allocating-memory.md)
   * [Data Directory](administration/changing-data-directory.md)
