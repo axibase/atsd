@@ -6,6 +6,14 @@ The document describes how to relay messages addressed to a Telegram Bot into AT
 
 The integration relies on the Telegram Bot API [setWebhook](https://core.telegram.org/bots/api#setwebhook) method to send messages and on the ATSD [webhook](../../api/data/messages/webhook.md) endpoint to receive HTTP requests from Telegram servers and to convert them into message commands that can be stored and processed by the rule engine.
 
+## Reference
+
+ * [Create Telegram Bot](#create-telegram-bot)
+ * [Prepare Webhook URL](#prepare-webhook-url)
+ * [Set Webhook](#set-webhook)
+ * [Check Webhook](#check-webhook)
+ * [Test Integration](#test-integration)
+
 ## Create Telegram Bot
 
 The bot is special user account created for automation and integration purposes. You can use an existing bot or create a new one.
@@ -116,9 +124,21 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 
     ![](images/outgoing_webhook_telegram_1.png)
 
+### Verify Webhook Delivery
+
 * Go to the Telegram and send a direct message to the recently created bot.
 
     ![](images/outgoing_webhook_telegram_2.png)
+    
+* Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
+
+    ![](images/outgoing_webhook_slack_18.png)
+    
+    ![](images/outgoing_webhook_slack_19.png)
+    
+* If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which will display an error in case the user credentials are mis-configured.
+
+    ![](images/outgoing_webhook_slack_20.png)
 
 * It may take a few seconds for the commands to arrive and to trigger the notifications. The rule will create new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
