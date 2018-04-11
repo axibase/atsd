@@ -8,6 +8,12 @@ The following document describes how to create a Slack Bot that will copy messag
 
 The ATSD can then be programmed to respond to received commands by means of sending information back into Slack.
 
+## Reference
+
+ * [Create Slack Bot](#create-slack-bot)
+ * [Subscribe to Bot Messages](#subscribe-to-bot-messages)
+ * [Testing Webhook](#testing-webhook)
+
 ## Create Slack Bot
 
 Slack Bot is a special account created specifically for automation purposes.
@@ -117,17 +123,28 @@ Slack Bot is a special account created specifically for automation purposes.
 
 * Save the rule by clicking on the **Save** button.
 
-    ![](images/outgoing_webhook_slack_15.png)
+    ![](images/outgoing_webhook_slack_15.png)    
+
+### Verify Webhook Delivery
 
 * Go to the Slack workspace and send direct message to recently created bot.
 
     ![](images/outgoing_webhook_slack_16.png)
 
-
 > Note that message fields in json payload sent by Slack servers contain HTML entities for [3 characters](https://api.slack.com/docs/message-formatting#how_to_escape_characters):
 >  * ampersand `&` replaced with `&amp;`
 >  * less-than sign, `<` replaced with `&lt;`
->  * greater-than sign, `>` replaced with `&gt;`  
+>  * greater-than sign, `>` replaced with `&gt;` 
+
+* Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
+
+    ![](images/outgoing_webhook_slack_18.png)
+    
+    ![](images/outgoing_webhook_slack_19.png)
+    
+* If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which will display an error in case the user credentials are mis-configured.
+
+    ![](images/outgoing_webhook_slack_20.png)
 
 * It may take a few seconds for the commands to arrive and to trigger the notifications. The rule will create new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
