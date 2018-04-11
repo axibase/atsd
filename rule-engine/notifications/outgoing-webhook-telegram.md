@@ -139,6 +139,8 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 * If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which will display an error in case the user credentials are mis-configured.
 
     ![](images/outgoing_webhook_slack_20.png)
+    
+    ![](images/outgoing_webhook_slack_21.png)
 
 * It may take a few seconds for the commands to arrive and to trigger the notifications. The rule will create new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
