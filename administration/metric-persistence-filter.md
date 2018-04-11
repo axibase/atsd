@@ -29,6 +29,8 @@ Logical operators: `AND`, `OR`, `NOT` as well as `&&` , `||`, `!`
 
 ### Functions
 
+The following built-in functions can be used in the filter expression:
+
 * [collection](#collection)
 * [list](#list)
 * [likeAll](#likeall)
@@ -43,6 +45,12 @@ Logical operators: `AND`, `OR`, `NOT` as well as `&&` , `||`, `!`
 * [size](#size)
 * [isEmpty](#isempty)
 * [IN](#in)
+
+Filter expression may contain [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions:
+
+```javascript
+Math.sin(Math.toRadians(value)) < 0.5
+```
 
 ### `collection`
 

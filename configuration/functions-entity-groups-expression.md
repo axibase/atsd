@@ -57,7 +57,7 @@ To access the n-th element in the collection, use square brackets as in `[index]
 Examples:
 
 ```javascript
-name = list('atsd, nurswgvml007').get(0) 
+name = list('atsd,nurswgvml007').get(0) 
 ```
 
 ### `likeAll`
