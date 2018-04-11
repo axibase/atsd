@@ -34,13 +34,21 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
 ```
 
 ```sh
-sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./" \
+sudo sh -c 'echo "deb [arch=amd64] https://axibase.com/public/repository/deb/ ./" \
 >> /etc/apt/sources.list.d/axibase.list'
 ```
 
 #### Update Repositories and Install ATSD
 
+Install HTTPS transport support for APT
+
+```sh
+sudo apt-get install apt-transport-https
+```
+
 Follow the prompts to install ATSD:
+
+On Ubuntu 16.04 and Debian 9.x (stretch)
 
 ```sh
 sudo apt-get update && sudo apt-get install atsd
