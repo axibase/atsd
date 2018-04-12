@@ -37,6 +37,8 @@ These functions return a new string and the unaltered input string.
 * [locate](#locate)
 * [trim](#trim)
 * [length](#length)
+* [concat](#concat)
+* [concatLines](#concatlines)
 
 ### `upper`
 
@@ -424,3 +426,25 @@ Removes leading and trailing non-printable characters.
 ```
 
 Returns length of the string `s`. If the `s` is null, returns -1.
+
+### `concat`
+
+```javascript
+  concat([string] c, string s) string
+```
+
+Joins the elements of the provided collection into a single string 
+containing the provided list of elements divided by separator s. 
+No delimiter is added before or after the list. 
+Null objects or empty strings within the collection are represented by empty strings.
+
+### `concatLines`
+
+```javascript
+  concatLines([string] c) string
+```
+
+Joins the elements of the provided collection into a single string 
+containing the provided list of elements divided by line feed character ('\n'). 
+No delimiter is added before or after the list. 
+Null objects or empty strings within the collection are represented by empty strings.
