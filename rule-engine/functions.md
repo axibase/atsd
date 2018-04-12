@@ -203,6 +203,7 @@ Collection functions return information about the collection or check it for the
 
 * [collection](functions-collection.md#collection)
 * [IN](functions-collection.md#in)
+* [LIKE](functions-collection.md#like)
 * [likeAny](functions-collection.md#likeany)
 * [matchList](functions-collection.md#matchlist)
 * [matches](functions-collection.md#matches)
