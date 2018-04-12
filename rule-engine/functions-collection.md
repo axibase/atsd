@@ -22,6 +22,7 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 
 * [collection](#collection)
 * [IN](#in)
+* [LIKE](#like)
 * [likeAny](#likeany)
 * [matchList](#matchlist)
 * [matches](#matches)
@@ -65,6 +66,24 @@ Examples:
   ```javascript
     tags.location IN ('NUR', 'SVL')
   ```  
+  
+### `LIKE`
+
+```javascript
+  string s LIKE (string a[, string b[...]]) boolean
+```
+
+Returns `true` if `s` matches any element in the collection of strings enclosed in round brackets.
+
+Examples:
+
+  ```javascript
+    entity LIKE ('nurswgvml*', 'nurswghbs*')
+  ```
+
+  ```javascript
+    tags.version LIKE ('1.2.*', '1.3.?')
+  ``` 
 
 ### `likeAny`
 
