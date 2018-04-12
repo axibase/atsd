@@ -430,13 +430,24 @@ Returns length of the string `s`. If the `s` is null, returns -1.
 ### `concat`
 
 ```javascript
-  concat([string] c, string s) string
+  concat([string] c [, string s]) string
 ```
 
-Joins the elements of the provided collection into a single string 
-containing the provided list of elements divided by separator s. 
-No delimiter is added before or after the list. 
-Null objects or empty strings within the collection are represented by empty strings.
+Joins the elements of the collection `c` into a single string containing the elements separated by the optional delimiter `s`.
+
+* The default delimiter is comma (`,`).
+* No delimiter is added before or after the list. 
+* `null` objects or empty strings within the collection are represented by empty strings.
+
+```javascript
+  /* Returns a:b */
+  concat(['a', 'b'], ':')
+```
+
+```javascript
+  /* Returns a--b */
+  concat(['a', null, 'b'], '-')
+```
 
 ### `concatLines`
 
@@ -444,7 +455,17 @@ Null objects or empty strings within the collection are represented by empty str
   concatLines([string] c) string
 ```
 
-Joins the elements of the provided collection into a single string 
-containing the provided list of elements divided by line feed character ('\n'). 
-No delimiter is added before or after the list. 
-Null objects or empty strings within the collection are represented by empty strings.
+Joins the elements of the collection `c` into a single string containing the elements separated by line breaks `\n`.
+
+* No delimiter is added before or after the list.
+* `null` objects or empty strings within the collection are represented by empty strings.
+
+```javascript
+  /* 
+    Assuming the entity.tags map contains {"location": "NUR", "state": "CA"},
+    the function returns text consisting of two lines:
+      NUR
+      CA
+  */
+  concatLines(entity.tags.values())
+```
