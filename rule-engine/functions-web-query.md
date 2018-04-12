@@ -2,15 +2,14 @@
 
 ## Overview
 
-The functions in this section perform an HTTP request to external web service 
-and return the result in the object with following fields:
+The functions execute an HTTP request to an external web service and return the `response` object with the following fields:
 
 **Field**    | **Type** | **Description**
 -------------|----------|----------------
-content      | string   | Response body
-headers      | map      | Map of HTTP headers. Header values with the same name are separated by a comma.
-status       | int      | HTTP response code
-duration     | long     | Time in milliseconds between creating a request object and receiving response
+content      | string   | Response body text.
+status       | int      | Status code, such as `200` or `401`.
+headers      | map      | Response headers. Header values with the same name are separated by a comma.
+duration     | long     | Time, in milliseconds, between initiating a request and downloading the response.
 
 ### `webNotify`
 
@@ -18,12 +17,18 @@ duration     | long     | Time in milliseconds between creating a request object
   webNotify(string c, map p) response
 ```
 
-Perform a request using an existing web configuration `c` passing to it the parameters `p`
+Execute an HTTP request using an existing web notification `c` and passing it a map of parameters `p`.
+
+* The web notification must be listed on the **Alerts > Web Notifications** page.
+* The name of the web notification `c` is case-sensitive.
+* The web notification must be enabled.
+
+The parameter map `p` is used to substitute placeholders in the given web notification.
 
 Example:
 
 ```javascript
-  webNotify("Telegram", ["text": "Alert"])
+  webNotify("slack-devops", ["text": "Alert"])
 ```
 
 ### `queryUrl`
@@ -32,12 +37,15 @@ Example:
   queryUrl(map c, map p) response
 ```
 
-Perform a request using a temporary custom configuration 
-built using web configuration parameters `c`. 
-Request body is built from request parameters `p` according to provided content type.
-Allowed configuration parameters: "url", "method", "contentType".
-Default method is `POST`.
-Default contentType is `application/json`
+Execute an HTTP request to the specified URL and return the `response` object.
+
+The request configuration map `c` may contain the following request parameters:
+
+* `url` (**required**) - Request URL including the schema, optional credentials, hostname, port, and path with query string.
+* `contentType` - Content type of the request. Default contentType is `application/json`.
+* `method` - HTTP request method. Default method is `POST`.
+
+The parameter map `p` contains optional request parameters sent to the server.
 
 Example:
 
@@ -51,7 +59,9 @@ Example:
   queryUrl(string u) response
 ```
 
-Perform a GET request to URL `u` using a temporary custom configuration
+Execute a `GET` request to the specified request URL `u`. 
+
+The request URL must include the schema, optional user credentials, hostname, port, and path with query string.
 
 Example:
 
