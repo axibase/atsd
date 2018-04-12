@@ -183,6 +183,8 @@ Text functions transform and compare strings.
 * [locate](functions-text.md#locate)
 * [trim](functions-text.md#trim)
 * [length](functions-text.md#length)
+* [concat](functions-text.md#concat)
+* [concatLines](functions-text.md#concatlines)
 
 ## Formatting Functions
 
@@ -304,6 +306,13 @@ The rule functions provide a way to check the status of windows created by other
 Portal functions allow attaching custom portals to email and web notifications.
 
 * [addPortal](functions-portal.md#addportal)
+
+## Web Query Functions
+
+Web Query functions allow to perform requests to external web services.
+
+* [webNotify](functions-web-query.md#webnotify)
+* [queryUrl](functions-web-query.md#queryUrl)
 
 ## Security Functions
 
