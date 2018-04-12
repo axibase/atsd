@@ -37,13 +37,13 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
   collection(string s) [string]
 ```
 
-Returns an array of strings which have been loaded with the specified string `s`.
+Returns an array of strings for the named collection `s`.
 
 The named collections are listed on the **Data > Named Collections** page.
 
-To check the size of the collection, use the `.size()` method.
+To access the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method. The index starts with `0` for the first element.
 
   ```javascript
     author = (authors.size() == 0) ? 'n/a' : authors[0]
@@ -73,7 +73,7 @@ Examples:
   string s LIKE (string a[, string b[...]]) boolean
 ```
 
-Returns `true` if `s` matches any element in the collection of strings enclosed in round brackets.
+Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards.
 
 Examples:
 
@@ -131,7 +131,7 @@ Example:
   matches(string p, [string] c) boolean
 ```
 
-Returns `true` if one of the collection `c` elements matches (satisfies) the specified pattern `p`.
+Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.
 
 The pattern supports `?` and `*` wildcards.
 
