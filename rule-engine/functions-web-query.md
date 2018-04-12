@@ -25,6 +25,13 @@ Execute an HTTP request using an existing web notification `c` and passing it a 
 
 The parameter map `p` is used to substitute placeholders in the given web notification.
 
+If content type in configuration `c` is `application/x-www-form-urlencoded`, the exposed parameters and placeholders
+with corresponding name will be substituted by values from `p`.
+
+If content type in configuration `c` is `application/json`, the placeholders with corresponding name will be substituted by values from `p`.
+
+Entries with unknown names in `p` will be ignored;
+
 Example:
 
 ```javascript
@@ -67,4 +74,17 @@ Example:
 
 ```javascript
   queryUrl("https://ipinfo.io/8.8.8.8/json")
+  
+   /* print response json values each on a separate line
+    8.8.8.8
+    google-public-dns-a.google.com
+    Mountain View
+    California
+    US
+    37.3860,-122.0840
+    94035
+    650
+    AS15169 Google LLC
+   */
+  concatLines(flattenJson(queryUrl("https://ipinfo.io/8.8.8.8/json").content).values())
 ```

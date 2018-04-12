@@ -39,6 +39,7 @@ These functions return a new string and the unaltered input string.
 * [length](#length)
 * [concat](#concat)
 * [concatLines](#concatlines)
+* [flattenJson](#flattenjson)
 
 ### `upper`
 
@@ -468,4 +469,17 @@ Joins the elements of the collection `c` into a single string containing the ele
       CA
   */
   concatLines(entity.tags.values())
+```
+
+### `flattenJson`
+
+```javascript
+  flattenJson(string j) map
+```
+
+Converts a JSON-object string into map. If element is nested, its key will be a 
+concatenation of all parent elements' names with own name, each separated by dot.
+
+```javascript
+  flattenJson(message)
 ```

@@ -185,6 +185,7 @@ Text functions transform and compare strings.
 * [length](functions-text.md#length)
 * [concat](functions-text.md#concat)
 * [concatLines](functions-text.md#concatlines)
+* [flattenJson](functions-text.md#flattenjson)
 
 ## Formatting Functions
 
