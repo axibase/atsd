@@ -57,7 +57,7 @@ The parameter map `p` contains optional request parameters sent to the server.
 Example:
 
 ```javascript
-  queryUrl(["url": "https://api.chucknorris.io/jokes/random", "method": "GET"], ["category", "dev"])
+  queryUrl(["url": "https://api.chucknorris.io/jokes/random", "method": "GET"], ["category": "dev"])
 ```
 
 ### `queryUrl`
