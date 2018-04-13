@@ -75,16 +75,53 @@ Example:
 ```javascript
   queryUrl("https://ipinfo.io/8.8.8.8/json")
   
-   /* print response json values each on a separate line
-    8.8.8.8
-    google-public-dns-a.google.com
-    Mountain View
-    California
-    US
-    37.3860,-122.0840
-    94035
-    650
-    AS15169 Google LLC
+  
+  /*
+      return basic geoinformation about the city by IP address, e.g.:
+      {
+          "city": "Research",
+          "country": {
+              "name": "Australia",
+              "code": "AU"
+          },
+          "location": {
+              "accuracy_radius": 1000,
+              "latitude": -37.7,
+              "longitude": 145.1833,
+              "time_zone": "Australia/Melbourne"
+          },
+          "ip": "1.1.1.1"
+      }
+  */
+  queryUrl("https://geoip.nekudo.com/api/1.1.1.1/en/short").content
+  
+  
+  /*
+      return the information as a key-value map. The result should be equal to creating the map in Rule Engine syntax like:
+      [
+          "city" : "Research",
+          "country.name" : "Australia",
+          "country.code" : "AU",
+          "location.accuracy_radius" : 1000,
+          "location.latitude" : -37.7,
+          "location.longitude" : 145.1833,
+          "location.time_zone" : "Australia/Melbourne",
+          "ip" : "1.1.1.1"
+      ]
    */
-  concatLines(flattenJson(queryUrl("https://ipinfo.io/8.8.8.8/json").content).values())
+  flattenJson(queryUrl("https://geoip.nekudo.com/api/1.1.1.1/en/short").content)
+  
+  
+  /*
+        Print response values each in a separate line, e.g.:
+            Research
+            Australia
+            AU
+            1000
+            -37.7
+            145.1833
+            Australia/Melbourne
+            1.1.1.1
+     */
+  concatLines(flattenJson(queryUrl("https://geoip.nekudo.com/api/1.1.1.1/en/short").content).values())
 ```
