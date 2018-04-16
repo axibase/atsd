@@ -6,6 +6,10 @@
 
 ![](images/discord.png)
 
+```diff
+- You can not secure links to to attachments to be only accessible to users of a server. 
+- The screenshots and other attachments are publicly accessible on the URL.
+```
 ## Prerequisites
 
 Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots directly into Discord.
