@@ -337,7 +337,7 @@ The collection contains as many maps as there are leaf objects in the JSON docum
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The common suffix until the first element array is discarded from key names.
+The common prefix until the first element array is discarded from key names.
 
 ### `jsonToLists`
 
@@ -345,12 +345,12 @@ The common suffix until the first element array is discarded from key names.
   jsonToLists(string s) [[string]]
 ```
 
-The function parses the input string `s` into a JSON document and returns a collection of string lists of the same size containing field values from this ISON document.
+The function parses the input string `s` into a JSON document and returns a collection of string lists of the same size containing field values from this JSON document.
 
 The first list in the collection contains all possible key names in the leaf objects and their parents.
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The common suffix until the first element array is discarded from key names.
+The common prefix until the first element array is discarded from key names.
 
-The subsequent lists in the collection contains field values of the associated leaf object itself as well as field values from the parent objects.
+The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in iterated object, the list on the given index will contain an empty string.
