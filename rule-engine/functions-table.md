@@ -332,7 +332,7 @@ datetime=value
   jsonToMaps(string s) [map]
 ```
 
-The function parses the input string `s` into a JSON document and returns a collection of maps containing keys and values from this ISON document.
+The function parses the input string `s` into a JSON document and returns a collection of maps containing keys and values from this JSON document.
 
 The collection contains as many maps as there are leaf objects in the JSON document. Each map contains keys and values of the leaf object itself as well as keys and values from the parent objects.
 
