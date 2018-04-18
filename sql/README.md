@@ -113,7 +113,9 @@ WHERE metric = 'mpstat.cpu_busy'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
 
-> The number of metrics retrieved with the `metric LIKE (expr)` condition is limited to 50.
+> The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
+
+> Note that `LIKE` operator is case-**sensitive**.
 
 ### WHERE Clause
 
@@ -550,6 +552,8 @@ WHERE entity LIKE 'nurswgvml00%'
 ORDER BY datetime
 ```
 
+> Note that `LIKE` operator is case-**sensitive**.
+
 ```ls
 | datetime             | entity       | value | entity.groups                            |
 |----------------------|--------------|-------|------------------------------------------|
@@ -739,7 +743,7 @@ The `LIKE` expression returns true if the value matches the specified string pat
 
 * Underscore `_` matches exactly one character in the value.
 
-The comparison is case-sensitive, including **entity and metric** names.
+The comparison is case-**sensitive**, including **entity and metric** names which are converted to lower case when stored in the database.
 
 ```sql
 SELECT datetime, entity, value, tags.mount_point, tags.file_system
@@ -2948,9 +2952,9 @@ GROUP BY PERIOD(1 DAY)
 ## Case Sensitivity
 
 * SQL keywords are case-insensitive.
-* Entity column values, metric column values, and tag names are case-insensitive, except in `LIKE` and `REGEX` operators.
-* Text column values are **case-sensitive**.
-* Tag column values are **case-sensitive**.
+* Entity column values, metric column values, and tag names are case-**insensitive**, except in `LIKE` and `REGEX` operators.
+* Text column values are case-**sensitive**.
+* Tag column values are case-**sensitive**.
 
 ```sql
 SELECT metric, entity, datetime, value, tags.*

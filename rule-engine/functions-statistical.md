@@ -52,26 +52,26 @@ Average value function. For example, `avg()` for a `5-minute` time-based window 
 ```javascript
   mean() double
 ```
-Average value function. Same as `avg()`. 
+Average value function. Same as `avg()`.
 
 ### `sum`
 
 ```javascript
-  sum() double 
+  sum() double
 ```
 Sum of all included values.
 
 ### `min`
 
 ```javascript
-  min() double 
+  min() double
 ```
-Minimum value. 
+Minimum value.
 
 ### `max`
 
 ```javascript
-  max() double 
+  max() double
 ```
 Maximum value.
 
@@ -87,7 +87,7 @@ Weighted average. Weight = sample index which starts from 0 for the first sample
 ```javascript
   wtavg() double
 ```
-Weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`. 
+Weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
 
 Time measured in epoch seconds.
 
@@ -96,14 +96,15 @@ Time measured in epoch seconds.
 ```javascript
   count() long
 ```
-Value count. 
+Value count.
 
 ### `percentile`
 
 ```javascript
   percentile(double n) double
 ```
-`n`-th percentile function. `n` multipled by the number of vaules is the index for the function. `n` can be a fractional number.
+
+`n`-th percentile function. `n` multiplied by the number of values is the index for the function. `n` can be a fractional number.
 
 ### `median`
 
@@ -157,7 +158,7 @@ Last value. Same as `last(0)`.
 ### `last(integer i)`
 
 ```javascript
-  last(integer i) double 
+  last(integer i) double
 ```
 `i`-th value from end. Last value has index of 0.
 
@@ -171,7 +172,7 @@ Difference between `last` and `first` values. Same as `last() - first()`.
 ### `diff(integer i)`
 
 ```javascript
-  diff(integer i) double 
+  diff(integer i) double
 ```
 Difference between `last(integer i)` and `first(integer i)` values. Same as` last(integer i)-first(integer i)`.
 
@@ -180,9 +181,9 @@ Difference between `last(integer i)` and `first(integer i)` values. Same as` las
 ```javascript
   diff(string i) double
 ```
-Difference between the last value and value at 'currentTime - interval'. 
+Difference between the last value and value at 'currentTime - interval'.
 
-Interval `i` specified as 'count unit', for example '5 minute'. 
+Interval `i` specified as 'count unit', for example '5 minute'.
 
 ### `delta`
 
@@ -194,14 +195,14 @@ Same as `diff()`.
 ### `new_maximum`
 
 ```javascript
-  new_maximum() boolean 
+  new_maximum() boolean
 ```
 Returns true if last value is greater than any previous value.
 
 ### `new_minimum`
 
 ```javascript
-  new_minimum() boolean 
+  new_minimum() boolean
 ```
 Returns true if last value is smaller than any previous value.
 
@@ -217,7 +218,7 @@ Number of minutes until the sample value reaches the specified threshold `t` bas
 ```javascript
   threshold_linear_time(double t) double
 ```
-Number of minutes until the sample value reaches the specified threshold `t` based on linear extrapolation. 
+Number of minutes until the sample value reaches the specified threshold `t` based on linear extrapolation.
 
 ### `rate_per_second`
 
@@ -238,7 +239,7 @@ Difference between last and first value per minute. Same as `rate_per_second()/6
 ```javascript
   rate_per_hour() double
 ```
-Hourly difference between last and first value input. Same as `rate_per_second()/3600`. 
+Hourly difference between last and first value input. Same as `rate_per_second()/3600`.
 
 ### `slope`
 
@@ -264,7 +265,7 @@ Same as `slope_per_second()/60`.
 ### `slope_per_hour`
 
 ```javascript
-  slope_per_hour() double 
+  slope_per_hour() double
 ```
 Same as `slope_per_second()/3600`.
 
@@ -284,7 +285,7 @@ Examples:
 ```javascript
   /* For values [0, 15, 5, 40] will return 2. */
   countIf('value > 10')
-  
+
   /* Count of values exceeding 5 within the last 10 samples. */
   countIf('value > 5', 10)
 ```

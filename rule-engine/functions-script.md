@@ -43,7 +43,7 @@ If no parameters are expected by the script, an empty list `[]` must be passed a
 scriptOut('check_service.sh', [])
 ```
 
-The script must complete within the timeout value specified in **Settings > Server Properties > system.commands.timeout.seconds**. The default timeout is 15 seconds.
+The script must complete within the timeout value specified in **Settings > Server Properties** `system.commands.timeout.seconds`. The default timeout is 15 seconds.
 
 If the script times out, its process is terminated with `SIGTERM` flag and the following text is appended to the output:
 
@@ -103,7 +103,7 @@ ping -c ${count} ${host}
 #### Function
 
 ```javascript
-Host ping report: 
+Host ping report:
 
 ${scriptOut('ping.sh', ['axibase.com', '3'])}
 ```
@@ -169,7 +169,7 @@ rm  ${dir}/error
 #### Function
 
 ```javascript
-Trace report: 
+Trace report:
 
 ${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
 ```
@@ -289,7 +289,7 @@ ssh -i /home/axibase/.ssh/def.key ${host} ps aux | grep ${pattern}
 #### Function
 
 ```javascript
-Output is: 
+Output is:
 ${scriptOut('ps.sh', ['axibase.com','bash'])}
 ```
 
@@ -318,7 +318,7 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 
  Slack:
 
- ![](images/script-ps-slack.png) 
+ ![](images/script-ps-slack.png)
 
 ### URL availability
 

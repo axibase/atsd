@@ -6,6 +6,13 @@
 
 ![](images/discord.png)
 
+## Security
+
+```diff
+- Note that attachments (images, files) in Discord messages cannot be securely shared at this time (API v6).
+- The attachments, even if sent to a private server, are accessible by any unauthorized user via the URL.
+```
+
 ## Prerequisites
 
 Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots directly into Discord.
@@ -25,6 +32,8 @@ Configure a new Discord server, if necessary.
  * Specify **Server Name**. Click **Create**.
 
      ![](images/create_server3.png)
+     
+ * Configure the server for [private](https://support.discordapp.com/hc/en-us/articles/206143407-How-do-I-set-up-private-servers-without-passwords-) access.
 
  * Invite new members to the server, click **Done**.
 

@@ -24,13 +24,15 @@ Returns a uniformly distributed double number, greater than or equal to `0.0` an
 
 Returns a normally distributed double number, with a mean value of `0.0` and standard deviation `1.0`.
 
-### `randomItem` 
+### `randomItem`
 
 ```javascript
   randomItem([] c) string
 ```
 
-Returns a random element from collection `c` using the **uniform** distribution. The probability of each element to be selected is `1/c.size()`.
+Returns a random element from collection `c` using the **uniform** distribution.
+
+The probability of each element to be selected is `1/c.size()`.
 
 The function returns the selected element converted to string format.
 
@@ -102,7 +104,7 @@ Note that although the input collection contains numbers, the returned element w
 	  // returns Thomas=415.555-0001
 	```
 
-### `randomKey` 
+### `randomKey`
 
 ```javascript
   randomKey([] m) string
@@ -133,7 +135,7 @@ Assuming the table contains the following records, the second element has a 20% 
   Stacy=0.3
 ```
 
-The `excludeKeys` function can be used to remove some elements from the input map prior to invoking the `randomKey` function.	
+The `excludeKeys` function can be used to remove some elements from the input map prior to invoking the `randomKey` function.
 
 ```javascript
   randomKey(excludeKeys(replacementTable('oncall-person'),['Stacy']))

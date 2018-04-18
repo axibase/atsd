@@ -25,7 +25,7 @@ Examples:
   ```javascript
     /* Returns 2 */  
     ifEmpty(null, 2)
-    
+
     /* Returns hello */  
     ifEmpty('hello', 'world')
   ```
@@ -35,7 +35,7 @@ Examples:
   toBoolean(object a) boolean
 ```
 
-Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-INsensisitve) or if `a` is equal to the number `1`.
+Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-**IN**sensitive) or if `a` is equal to the number `1`.
 
 Value table:
 
@@ -48,22 +48,22 @@ on | string | true
 1 | number | true
 no | string | false
 NO | string | false
-hello | string | false 
+hello | string | false
 0 | string | false
 0 | number | false
 3 | number | false
-  
+
 Examples:
 
 ```javascript
-  // Returns false 
-  
+  // Returns false
+
   toBoolean('hello')  
   toBoolean(0)
   toBoolean('off')  
-  
-  // Returns true 
-  
+
+  // Returns true
+
   toBoolean('YES')    
   toBoolean(1)  
   toBoolean('On')
@@ -116,11 +116,11 @@ Examples:
 | tags                     | {container=axibase/atsd:latest}    |
 | timeZone                 | null                               |
 ...
-``` 
+```
 
 ```javascript
   printObject(rule_window('jvm_derived'), 'csv')
-``` 
+```
 
 ```ls
 Name,Value
@@ -133,7 +133,7 @@ windowStatus,OPEN
 
 ```javascript
   printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
-``` 
+```
 
 ```ls
 | **Name** | **Value**  |
@@ -143,7 +143,7 @@ windowStatus,OPEN
 | status | REPEAT |
 | windowStatus | REPEAT |
 ...
-``` 
+```
 
 ### `getURLHost`
 
@@ -204,7 +204,7 @@ Example:
     /* Returns "/en/products" */  
     getURLPath('https://axibase.com/en/products?type=database&status=1')
   ```
-  
+
 ### `getURLQuery`
 
 ```javascript
@@ -218,7 +218,7 @@ Example:
     /* Returns "type=database&status=1" */  
     getURLQuery('https://axibase.com/en/products?type=database&status=1')
   ```
-  
+
 ### `getURLUserInfo`
 
 ```javascript
@@ -232,8 +232,7 @@ Example:
   ```javascript
     /* Returns null */  
     getURLUserInfo('https://axibase.com/en/products?type=database&status=1')
-    
+
     /* Returns "atsd_user:atsd_password" */  
     getURLUserInfo('https://atsd_user:atsd_password@axibase.com/en/products?type=database&status=1')
   ```
-  

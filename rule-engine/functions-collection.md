@@ -22,6 +22,7 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 
 * [collection](#collection)
 * [IN](#in)
+* [LIKE](#like)
 * [likeAny](#likeany)
 * [matchList](#matchlist)
 * [matches](#matches)
@@ -36,13 +37,13 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
   collection(string s) [string]
 ```
 
-Returns an array of strings which have been loaded with the specified string `s`.
+Returns an array of strings contained in the named collection `s`.
 
 The named collections are listed on the **Data > Named Collections** page.
 
-To check the size of the collection, use the `.size()` method.
+To access the size of the array, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method. The index starts with `0` for the first element.
 
   ```javascript
     author = (authors.size() == 0) ? 'n/a' : authors[0]
@@ -65,6 +66,28 @@ Examples:
   ```javascript
     tags.location IN ('NUR', 'SVL')
   ```  
+  
+### `LIKE`
+
+```javascript
+  string s LIKE (string a[, string b[...]]) boolean
+```
+
+Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection may contain string literals and variables.
+
+Examples:
+
+  ```javascript
+    entity LIKE ('nurswgvml*', 'nurswghbs*')
+  ```
+
+  ```javascript
+    tags.version LIKE ('1.2.*', '1.3.?')
+  ``` 
+  
+  ```javascript
+    tags.location LIKE ('NUR*', entity.tags.location)
+  ```   
 
 ### `likeAny`
 
@@ -72,9 +95,9 @@ Examples:
   likeAny(string s, [string] c) boolean
 ```
 
-Returns `true` if `s` is contained in the string collection `c`.
+Returns `true` if string `s` matches any element in the string collection `c`.
 
-The collection `c` can be specified inline as an array of strings or reference a named collection. The collection may include expressions with wildcards.
+The collection `c` can be initialized by referencing a named collection by name or it can be specified inline as an array of strings. The collection may include patterns with `?` and `*` wildcards.
 
 Examples:
 
@@ -98,7 +121,7 @@ Examples:
 
 Returns `true` if `s` is contained in the collection named `c`.
 
-The collection `c` may include expressions with wildcards.
+The collection `c` may include patterns with `?` and `*` wildcards.
 
 Example:
 
@@ -112,7 +135,7 @@ Example:
   matches(string p, [string] c) boolean
 ```
 
-Returns `true` if one of the collection `c` elements matches (satisfies) the specified pattern `p`.
+Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.
 
 The pattern supports `?` and `*` wildcards.
 

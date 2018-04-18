@@ -53,7 +53,7 @@ Variables **cannot** be included in a [filter](filters.md) expression because fi
 
 ### string
 
-Use single or double **quotes** when declaring a string variable. 
+Use single or double **quotes** when declaring a string variable.
 
   ```javascript
   state = 'CA'
@@ -74,7 +74,7 @@ Inner quotes can be escaped with backslash.
   ```javascript
   errorCodes = [401, 403, 404]
   ```  
-  
+
 A collection can include elements of different types.
 
 Both single and double quotes can be used to specify elements of string type.   
@@ -86,7 +86,7 @@ Both single and double quotes can be used to specify elements of string type.
   ```javascript
   stateList = ["CA", "WA"]
   ```  
-  
+
 To check the size of the collection, use the `.size()` method.
 
 To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with 0 for the first element).

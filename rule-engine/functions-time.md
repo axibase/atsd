@@ -44,15 +44,15 @@ Time when the first command was received by the window, in UNIX milliseconds.
   milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the datetime string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
+Parses the date string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
 
-The function returns `0` if the datetime `d` is `null` or empty.
+The function returns `0` if the date `d` is `null` or empty.
 
 Available timezones and their offsets are listed in [timezones](../shared/timezone-list.md).
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` and it differs from the timezone (offset) `z`.
+> The function will raise an error if the timezone (or offset from UTC) is specified in the date string `d` and it differs from the timezone (offset) `z`.
 
 Example:
 
@@ -82,7 +82,7 @@ This function provides the same arguments as the [`milliseconds`](#milliseconds)
 
 Calculates the number of milliseconds between the current time and time `t` which is specified in UNIX milliseconds.
 
-The function accepts time `t` in UNIX milliseconds or the datetime `d` in the following format:
+The function accepts time `t` in UNIX milliseconds or the date `d` in the following format:
 
 ```
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
@@ -103,40 +103,17 @@ Example:
   date_parse(string d [,string p [,string z]]) DateTime
 ```
 
-Parses the input string `d` into a [DateTime](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) object according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the input string `d` into a [DateTime](object-datetime.md) object according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](../shared/timezone-list.md) `z` (or offset from UTC).
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` differs from the timezone (offset) `z`. See Exception Examples below.
+> The function will raise an error if the timezone (or offset from UTC) is specified in the date string `d` differs from the timezone (offset) `z`. See Exception Examples below.
 
 The fields of the `DateTime` object can be accessed using the following methods:
 
 ```javascript
   date_parse('2018-01-13T16:45:22.303Z').getDayOfWeek()
 ```
-
-Results for sample date `2018-01-13T16:45:22.303Z` (Saturday):
-
-|**Method**| **Value** |
-|:---|:---|
-|getCenturyOfEra()|20|
-|getDayOfMonth()|13|
-|getDayOfWeek()|6|
-|getDayOfYear()|13|
-|getEra()|1|
-|getHourOfDay()|16|
-|getMillisOfDay()|60322303|
-|getMillisOfSecond()|303|
-|getMinuteOfDay()|1005|
-|getMinuteOfHour()|45|
-|getMonthOfYear()|1|
-|getSecondOfDay()|60322|
-|getSecondOfMinute()|22|
-|getWeekOfWeekyear()|2|
-|getWeekyear()|2018|
-|getYear()|2018|
-|getYearOfCentury()|18|
-|getYearOfEra()|2018|
 
 Examples:
 

@@ -9,9 +9,10 @@
 * [Mathematical Functions](#mathematical-functions)
 * [Text Functions](#text-functions)
 * [Formatting Functions](#formatting-functions)
+* [Table Functions](#table-functions)
 * [Collection Functions](#collection-functions)
 * [Lookup Functions](#lookup-functions)
-* [Random Distribution Functions](#random-distribution-functions)
+* [Distribution Functions](#distribution-functions)
 * [Time Functions](#time-functions)
 * [Property Functions](#property-functions)
 * [Script Functions](#script-functions)
@@ -196,22 +197,28 @@ These functions format dates and numbers to strings according to the specified p
 * [date_format](functions-format.md#date_format)
 * [formatInterval](functions-format.md#formatinterval)
 * [formatIntervalShort](functions-format.md#formatintervalshort)
-* [addTable for map](functions-format.md#addtable-for-map)
-* [addTable for maps](functions-format.md#addtable-for-maps)
-* [addTable for list](functions-format.md#addtable-for-list)
+
+## Table Functions
+
+* [addTable for map](functions-table.md#addtable-for-map)
+* [addTable for maps](functions-table.md#addtable-for-maps)
+* [addTable for list](functions-table.md#addtable-for-list)
+* [jsonToMaps](functions-table.md#jsontomaps)
+* [jsonToLists](functions-table.md#jsontolists)
 
 ## Collection Functions
 
-Collection functions return information about the collection or check it for the presence of the specified element.
+Collection functions (and operators) check if the collection contains the specified element.
 
-* [collection](functions-collection.md#collection)
 * [IN](functions-collection.md#in)
+* [LIKE](functions-collection.md#like)
 * [likeAny](functions-collection.md#likeany)
 * [matchList](functions-collection.md#matchlist)
 * [matches](functions-collection.md#matches)
 * [contains](functions-collection.md#contains)
 * [size](functions-collection.md#size)
 * [isEmpty](functions-collection.md#isempty)
+* [collection](functions-collection.md#collection)
 * [excludeKeys](functions-collection.md#excludekeys)
 
 ## Lookup Functions
@@ -229,7 +236,7 @@ Lookup functions retrieve records from replacement tables, collections, and othe
 * [lookup](functions-lookup.md#lookup)
 * [replacementTable](functions-lookup.md#replacementtable)
 
-## Random Distribution Functions
+## Distribution Functions
 
 * [random](functions-random.md#random)
 * [randomNormal](functions-random.md#randomnormal)
