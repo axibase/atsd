@@ -312,8 +312,9 @@ Portal functions allow attaching custom portals to email and web notifications.
 
 Web Query functions allow to perform requests to external web services.
 
-* [webNotify](functions-web-query.md#webnotify)
-* [queryUrl](functions-web-query.md#queryUrl)
+* [queryConfig](functions-web-query.md#queryconfig)
+* [queryGet](functions-web-query.md#queryget)
+* [queryPost](functions-web-query.md#querypost)
 
 ## Security Functions
 

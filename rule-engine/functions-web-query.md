@@ -11,10 +11,10 @@ status       | int      | Status code, such as `200` or `401`.
 headers      | map      | Response headers. Header values with the same name are separated by a comma.
 duration     | long     | Time, in milliseconds, between initiating a request and downloading the response.
 
-### `webNotify`
+### `queryConfig`
 
 ```javascript
-  webNotify(string c, map p) response
+  queryConfig(string c, map p) response
 ```
 
 Execute an HTTP request using an existing web notification `c` and passing it a map of parameters `p`.
@@ -35,45 +35,29 @@ Entries with unknown names in `p` will be ignored;
 Example:
 
 ```javascript
-  webNotify("slack-devops", ["text": "Alert"])
+  queryConfig("slack-devops", ["text": "Alert"])
 ```
 
-### `queryUrl`
+### `queryGet`
 
 ```javascript
-  queryUrl(map c, map p) response
-```
-
-Execute an HTTP request to the specified URL and return the `response` object.
-
-The request configuration map `c` may contain the following request parameters:
-
-* `url` (**required**) - Request URL including the schema, optional credentials, hostname, port, and path with query string.
-* `contentType` - Content type of the request. Default contentType is `application/json`.
-* `method` - HTTP request method. Default method is `POST`.
-
-The parameter map `p` contains optional request parameters sent to the server.
-
-Example:
-
-```javascript
-  queryUrl(["url": "https://api.chucknorris.io/jokes/random", "method": "GET"], ["category": "dev"])
-```
-
-### `queryUrl`
-
-```javascript
-  queryUrl(string u) response
+  queryGet(string u, [map c]) response
 ```
 
 Execute a `GET` request to the specified request URL `u`. 
 
 The request URL must include the schema, optional user credentials, hostname, port, and path with query string.
 
+The request configuration map `c` may contain the following request parameters:
+
+* `headers` - a map of request headers keys and values, or a collection of header entries separated by `:`.
+* `params` - a map of request parameters sent to the server. They will be appended to query string parameters.
+* `ignoreSsl` - skip SSL certificate validation. Default is `true`.
+
 Example:
 
 ```javascript
-  queryUrl("https://ipinfo.io/8.8.8.8/json")
+  queryGet("https://ipinfo.io/8.8.8.8/json")
   
   
   /*
@@ -93,7 +77,7 @@ Example:
           "ip": "1.1.1.1"
       }
   */
-  queryUrl("https://geoip.nekudo.com/api/1.1.1.1/en/short").content
+  queryGet("https://geoip.nekudo.com/api/1.1.1.1/en/short").content
   
   
   /*
@@ -109,11 +93,11 @@ Example:
           "ip" : "1.1.1.1"
       ]
    */
-  flattenJson(queryUrl("https://geoip.nekudo.com/api/1.1.1.1/en/short").content)
+  flattenJson(queryGet("https://geoip.nekudo.com/api/1.1.1.1/en/short").content)
   
   
   /*
-        Print response values each in a separate line, e.g.:
+        Print response values each on a separate line, e.g.:
             Research
             Australia
             AU
@@ -123,5 +107,30 @@ Example:
             Australia/Melbourne
             1.1.1.1
      */
-  concatLines(flattenJson(queryUrl("https://geoip.nekudo.com/api/1.1.1.1/en/short").content).values())
+  concatLines(flattenJson(queryGet("https://geoip.nekudo.com/api/1.1.1.1/en/short").content).values())
+```
+
+### `queryPost`
+
+```javascript
+  queryPost(string u, [map c]) response
+```
+
+Execute a `POST` request to the specified request URL `u`. 
+
+The request URL must include the schema, optional user credentials, hostname, port, and path with query string.
+
+The request configuration map `c` may contain the following request parameters:
+
+* `contentType` - Content type of the request. Default contentType is `application/json`.
+* `headers` - a map of request headers keys and values, or a collection of header entries separated by `:`.
+* `content` - request body. Either `content` or `params` may be specified.
+* `params` - a map of request parameters sent to the server. They will be pre-processed according to the `contentType`.
+* `ignoreSsl` - skip SSL certificate validation. Default is `true`.
+
+Example:
+
+```javascript
+  // Post a message to Rocket.Chat
+  queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", ['params': ['channel': '#devops', 'text': message]])
 ```
