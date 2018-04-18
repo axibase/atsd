@@ -132,5 +132,30 @@ Example:
 
 ```javascript
   // Post a message to Rocket.Chat
-  queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", ['params': ['channel': '#devops', 'text': message]])
+  queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", ['params': ['channel': '#devops', 'text': "hello world"]])
+  // request body: {"channel":"#devops","text":"hello world"}
+```
+
+```javascript
+  printObject(queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", ["params": ["channel": "#devops", "text": "hello world"]]), "ascii")
+```
+
+```
++--------------+---------------------------------------------------------+
+| Name         | Value                                                   |
++--------------+---------------------------------------------------------+
+| class        | class                                                   |
+|              |  com.axibase.tsd.model.notifications.WebRequestResult   |
+| content      | {"success":true}                                        |
+| contentType  | application/json                                        |
+| duration     | 133                                                     |
+| headers      | {Access-Control-Allow-Headers=Origin, X-Requested-With, |
+|              |  Content-Type, Accept, Access-Control-Allow-Origin=*,   |
+|              |  Cache-Control=no-store, Content-Type=application/json, |
+|              |  Date=Wed, 18 Apr 2018 14:23:56 GMT, Pragma=no-cache,   |
+|              |  Server=Caddy, Vary=Accept-Encoding,                    |
+|              |  X-Instance-Id=gz6wtH9rkYaJpju99}                       |
+| reasonPhrase | OK                                                      |
+| status       | 200                                                     |
++--------------+---------------------------------------------------------+
 ```
