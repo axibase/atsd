@@ -65,7 +65,7 @@ Supported date input formats:
 
 Refer to [ISO 8601 date format examples](date-format.md).
 
-* The minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 millisecond from Epoch time.
+* The minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
 * The maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
 * The maximum date that can be specified in ISO format when querying data is **9999-12-31T23:59:59.999** UTC.
 
@@ -80,8 +80,8 @@ Refer to [ISO 8601 date format examples](date-format.md).
 ## Syntax
 
 * Entity name, metric name, property type, and key/tag names must consist of printable characters.
-* Field names are case-insensitive and are converted to lower case when stored in the database.
-* Field values are **case-sensitive** and are stored as submitted, except for entity name, metric name, and property type, which are converted to lower case.
+* Field names are case-insensitive and are converted to lowercase when stored in the database.
+* Field values are **case-sensitive** and are stored as submitted, except for entity name, metric name, and property type, which are converted to lowercase.
 * Values are stripped of starting and trailing line breaks (CR,LF symbols).
 
 ## Limits
@@ -104,7 +104,7 @@ The literal symbols `?` and `*` can be escaped with a single backslash.
 
 * `200` status code if the request is successful.
 * `401` status code in case of an unknown resource.
-* `403` status code in case of access denied error.
+* `403` status code in case of an access denied error.
 * `4xx` status code in case of other client errors.
 * `5xx` status code in case of server error.
 
