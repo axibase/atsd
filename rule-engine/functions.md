@@ -185,7 +185,6 @@ Text functions transform and compare strings.
 * [length](functions-text.md#length)
 * [concat](functions-text.md#concat)
 * [concatLines](functions-text.md#concatlines)
-* [flattenJson](functions-text.md#flattenjson)
 
 ## Formatting Functions
 
@@ -205,6 +204,7 @@ These functions format dates and numbers to strings according to the specified p
 * [addTable for list](functions-table.md#addtable-for-list)
 * [jsonToMaps](functions-table.md#jsontomaps)
 * [jsonToLists](functions-table.md#jsontolists)
+* [flattenJson](functions-table.md#flattenjson)
 
 ## Collection Functions
 
