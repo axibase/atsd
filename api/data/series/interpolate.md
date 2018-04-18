@@ -7,7 +7,7 @@ The interpolation process transforms an input time series to a regularized serie
 The process consists of the following steps:
 
 1. Load detailed data for the selection interval specified with `startDate` and `endDate` parameters.
-2. If `OUTER` boundary mode is enabled, also load one value before and one value after the selection interval in order to interpolate leading and trailing values.
+2. If `OUTER` boundary mode is enabled, load one value before and one value after the selection interval in order to interpolate leading and trailing values.
 3. Create evenly spaced timestamps within the selection interval. The timestamps can be aligned to the calendar or start/end time of the selection interval.
 4. For each timestamp, calculate the value from the two neighboring samples using a linear or step interpolation function.
 5. If `fill` parameter is enabled, add missing leading and trailing values.
@@ -36,7 +36,7 @@ Examples:
 | **Name** | **Description**   |
 |:---|:---|
 | `LINEAR`  | Calculates the value by adding a difference between neighboring detailed values proportional to their time difference. |
-| `PREVIOUS`  | Sets the value to equal the previous value. |
+| `PREVIOUS`  | Sets the value equal to the previous value. |
 | `AUTO`  | Applies the interpolation function specified in the metric's [interpolate](../../meta/metric/list.md#fields) field (set to `LINEAR` by default).  |
 
 > Detailed values with timestamps that are equal interpolated timestamps are returned `as is`, without changes.
