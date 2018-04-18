@@ -2,7 +2,7 @@
 
 ## Overview 
 
-Computes difference between consecutive samples per unit of time (rate period). 
+Computes the difference between consecutive samples per unit of time (rate period). 
 
 Used to compute rate of change when the underlying metric measures a continuously incrementing counter.
 
