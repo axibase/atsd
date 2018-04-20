@@ -8,7 +8,7 @@ The following instructions assume that you have obtained certificate files in `P
 * `atsd.company.com.ca-bundle` - Intermediate and Root CA SSL certificates
 * `atsd.company.com.key` - Private key file
 
-## Combine the Chained Certificates
+## Combine Chained Certificates
 
 Combine the SSL сertificates into one file to create a full certificate chain containing both the DNS and intermediate certificates.
 
@@ -16,15 +16,15 @@ Combine the SSL сertificates into one file to create a full certificate chain c
 cat atsd.company.com.crt atsd.company.com.ca-bundle > atsd.company.com.fullchain
 ```
 
-## Install Certificates into ATSD
+## Install Certificates in ATSD
 
 The certificates can be either uploaded into ATSD or installed by deploying a keystore file on the local file system.
 
-### Upload Certificates into ATSD
+### Upload Certificates to ATSD
 
-If the certificate files are in `PEM` format, you can upload them into ATSD using `curl`.
+If the certificate files are in `PEM` format, you can upload them to ATSD using `curl`.
 
-Alternatively, proceed to create a PKCS12 keystore as described below.
+Alternatively, create a PKCS12 keystore as described below.
 
 Replace `{USR}` with the username, `{PWD}` with the password and `{HOST}` with the hostname or IP address of the target ATSD server in the command below.
 
@@ -41,7 +41,7 @@ The certificates will be installed without an ATSD restart.
 
 #### Create PKCS12 Keystore
 
-Login into ATSD server shell.
+Log in to ATSD server shell.
 
 Create a PKCS12 keystore.
 
@@ -84,7 +84,7 @@ Open `/opt/atsd/atsd/conf/server.properties` file.
 nano /opt/atsd/atsd/conf/server.properties
 ```
 
-Specify the new password (in plain text or [obfuscated](passwords-obfuscation.md)) in `https.keyStorePassword` and `https.keyManagerPassword` settings. 
+Specify the new password (in plain or [obfuscated](passwords-obfuscation.md) text) in `https.keyStorePassword` and `https.keyManagerPassword` settings. 
 
 Leave `https.trustStorePassword` blank.
 
@@ -104,7 +104,7 @@ https.trustStorePassword=
 
 ## Verify Certificate
 
-Login into ATSD by entering its DNS name in the browser address bar and check its certificate by clicking on the SSL security icon.
+Log in to ATSD by entering its DNS name in the browser address bar and check its certificate by clicking on the SSL security icon.
 
 ## Troubleshooting
 
