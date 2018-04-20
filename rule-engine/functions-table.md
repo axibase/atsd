@@ -13,7 +13,6 @@ Table functions perform various operations on strings, lists, and maps to create
 * [jsonToLists](#jsontolists)
 * [flattenJson](#flattenjson)
 
-
 ### `addTable` for map
 
 ```javascript
@@ -151,7 +150,7 @@ Examples:
 
 * `markdown` format
 
-```javascript  
+```javascript
   addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
 ```
 
@@ -303,6 +302,7 @@ date,count
 ```javascript
   addTable(executeSqlQuery(query), 'property')
 ```
+
 ```ls
 datetime=value
 2018-01-31T12:00:13.242Z=37
@@ -312,6 +312,7 @@ datetime=value
 ```javascript
   addTable(executeSqlQuery(query), 'property', true)
 ```
+
 ```ls
 2018-01-31T12:00:13.242Z=37
 2018-01-31T12:00:28.253Z=36
@@ -320,6 +321,7 @@ datetime=value
 ```javascript
   addTable(executeSqlQuery(query), 'property', false)
 ```
+
 ```ls
 datetime=value
 2018-01-31T12:00:13.242Z=37
@@ -362,12 +364,51 @@ The subsequent lists in the collection contain field values of the associated le
   flattenJson(string j) map
 ```
 
-Converts a JSON-object string into map. 
-The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
+The function converts a string representation of a JSON document `j` into a map consisting of keys and values.
 
-## Examples:
+Processing rules:
 
-The operations below will use the following json (GitHub GraphQL result):
+* String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function will raise an exception.
+* The JSON object is traversed to extract fields of primitive types: `number`, `string`, and `boolean`.
+* The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
+* If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
+* Fields with `null` and empty string values are ignored.
+
+Input JSON document:
+
+```json
+{
+  "event": "commit",
+  "merged": true,
+  "type": null,
+  "repo": {
+    "name": "atsd",
+    "Full Name": "Axibase TSD",
+    "authors": [
+      "john",
+      "sam",
+      ""
+    ]
+  }
+}
+```
+
+Output map:
+
+```json
+{
+  "event": "commit",
+  "merged": true,
+  "repo.name": "atsd",
+  "repo.Full Name": "Axibase TSD",
+  "repo.authors[0]": "john",
+  "repo.authors[1]": "sam"
+}
+```
+
+## Examples
+
+The examples below are based on the following JSON document which represents output of a GraphQL query:
 
 ```json
 {
@@ -429,7 +470,7 @@ The operations below will use the following json (GitHub GraphQL result):
 ```
 
 ```json
-[ 
+[
   [ "url", "author.login", "mergeable", "baseRefName", "headRefName", "title" ],
   [ "https://github.com/axibase/atsd-api-test/pull/487", "unrealwork", "MERGEABLE", "master", "5208-series-tag-query-with-wildcard-without-entity", "5208: Series tags query with wildcard without entity" ],
   [ "https://github.com/axibase/atsd-api-test/pull/406", "vtols", "MERGEABLE", "master", "vtols-4397", "Test #4397" ]

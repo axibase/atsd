@@ -68,7 +68,6 @@ Tag names are lowercased. Non-printable characters such as whitespace in tag nam
 
 Input document:
 
-
 ```json
 {
   "event": "commit",
@@ -77,7 +76,7 @@ Input document:
     "public": true,
     "Full Name": "Axibase TSD",
     "references": [],
-    "authors": ["john", "sam"],
+    "authors": ["john", "sam"]
   }
 }
 ```

@@ -2,7 +2,9 @@
 
 ## Overview
 
-The functions execute an HTTP request to an external web service and return the `response` object with the following fields:
+The web query functions execute an HTTP request to an external web service and return the `WebRequestResult` response object for further processing.
+
+### Response Object
 
 **Field**    | **Type** | **Description**
 -------------|----------|----------------
@@ -10,137 +12,36 @@ content      | string   | Response body text.
 status       | int      | Status code, such as `200` or `401`.
 headers      | map      | Response headers. Header values with the same name are separated by a comma.
 duration     | long     | Time, in milliseconds, between initiating a request and downloading the response.
+content      | string   | Response body text.
+reasonPhrase | string   | Status line such as `OK`.
+contentType  | string   | Response content type, such as `application/json`.
 
-### `queryConfig`
+```
+WebRequestResult(
+  status=200,
+  reasonPhrase=OK,
+  contentType=application/json; charset=utf-8,
+  content={
+    "ip": "8.8.8.8",
+    "country": "US",
+    "org": "Example"
+  },
+  headers={
+    Content-Type=application/json; charset=utf-8,
+    Access-Control-Allow-Origin=*,
+    Transfer-Encoding=chunked
+  },
+  duration=225
+)
+```
+
+Response object can be introspected using the `printObject` function.
 
 ```javascript
-  queryConfig(string c, map p) response
+printObject(queryPost({}))
 ```
 
-Execute an HTTP request using an existing web notification `c` and passing it a map of parameters `p`.
-
-* The web notification must be listed on the **Alerts > Web Notifications** page.
-* The name of the web notification `c` is case-sensitive.
-* The web notification must be enabled.
-
-The parameter map `p` is used to substitute placeholders in the given web notification.
-
-If content type in configuration `c` is `application/x-www-form-urlencoded`, the exposed parameters and placeholders
-with corresponding name will be substituted by values from `p`.
-
-If content type in configuration `c` is `application/json`, the placeholders with corresponding name will be substituted by values from `p`.
-
-Entries with unknown names in `p` will be ignored;
-
-Example:
-
-```javascript
-  queryConfig("slack-devops", ["text": "Alert"])
-```
-
-### `queryGet`
-
-```javascript
-  queryGet(string u, [map c]) response
-```
-
-Execute a `GET` request to the specified request URL `u`. 
-
-The request URL must include the schema, optional user credentials, hostname, port, and path with query string.
-
-The request configuration map `c` may contain the following request parameters:
-
-* `headers` - a map of request headers keys and values, or a collection of header entries separated by `:`.
-* `params` - a map of request parameters sent to the server. They will be appended to query string parameters.
-* `ignoreSsl` - skip SSL certificate validation. Default is `true`.
-
-Example:
-
-```javascript
-  queryGet("https://ipinfo.io/8.8.8.8/json")
-  
-  
-  /*
-      return basic geoinformation about the city by IP address, e.g.:
-      {
-          "city": "Research",
-          "country": {
-              "name": "Australia",
-              "code": "AU"
-          },
-          "location": {
-              "accuracy_radius": 1000,
-              "latitude": -37.7,
-              "longitude": 145.1833,
-              "time_zone": "Australia/Melbourne"
-          },
-          "ip": "1.1.1.1"
-      }
-  */
-  queryGet("https://geoip.nekudo.com/api/1.1.1.1/en/short").content
-  
-  
-  /*
-      return the information as a key-value map. The result should be equal to creating the map in Rule Engine syntax like:
-      [
-          "city" : "Research",
-          "country.name" : "Australia",
-          "country.code" : "AU",
-          "location.accuracy_radius" : 1000,
-          "location.latitude" : -37.7,
-          "location.longitude" : 145.1833,
-          "location.time_zone" : "Australia/Melbourne",
-          "ip" : "1.1.1.1"
-      ]
-   */
-  flattenJson(queryGet("https://geoip.nekudo.com/api/1.1.1.1/en/short").content)
-  
-  
-  /*
-        Print response values each on a separate line, e.g.:
-            Research
-            Australia
-            AU
-            1000
-            -37.7
-            145.1833
-            Australia/Melbourne
-            1.1.1.1
-     */
-  concatLines(flattenJson(queryGet("https://geoip.nekudo.com/api/1.1.1.1/en/short").content).values())
-```
-
-### `queryPost`
-
-```javascript
-  queryPost(string u, [map c]) response
-```
-
-Execute a `POST` request to the specified request URL `u`. 
-
-The request URL must include the schema, optional user credentials, hostname, port, and path with query string.
-
-The request configuration map `c` may contain the following request parameters:
-
-* `contentType` - Content type of the request. Default contentType is `application/json`.
-* `headers` - a map of request headers keys and values, or a collection of header entries separated by `:`.
-* `content` - request body. Either `content` or `params` may be specified.
-* `params` - a map of request parameters sent to the server. They will be pre-processed according to the `contentType`.
-* `ignoreSsl` - skip SSL certificate validation. Default is `true`.
-
-Example:
-
-```javascript
-  // Post a message to Rocket.Chat
-  queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", ['params': ['channel': '#devops', 'text': "hello world"]])
-  // request body: {"channel":"#devops","text":"hello world"}
-```
-
-```javascript
-  printObject(queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", ["params": ["channel": "#devops", "text": "hello world"]]), "ascii")
-```
-
-```
+```ls
 +--------------+---------------------------------------------------------+
 | Name         | Value                                                   |
 +--------------+---------------------------------------------------------+
@@ -158,4 +59,245 @@ Example:
 | reasonPhrase | OK                                                      |
 | status       | 200                                                     |
 +--------------+---------------------------------------------------------+
+```
+
+### `queryConfig`
+
+```javascript
+  queryConfig(string c, map p) response
+```
+
+Executes an HTTP request using a predefined [web notification](web-notifications.md), identified by name `c`.
+
+The function returns a `WebRequestResult` response object.
+
+* The web notification must exist and be listed on the **Alerts > Web Notifications** page.
+* The web notification must be enabled.
+* The name `c` is case-sensitive.
+
+The map of parameters `p` is used to set parameters and replace placeholders defined in the web notification.
+
+#### Content Type is `application/x-www-form-urlencoded`
+
+The form-based web notification defines a set of parameters that can be edited in the rule editor.
+
+The values for such parameters are retrieved from the input map `p`.
+
+Unknown parameters in the map `p` are ignored.
+
+![query config form](images/query-config-form.png)
+
+```javascript
+queryConfig("rc-hook", ["repository": "atsd-site", "channel": "devops"])
+```
+
+The payload sent to the target web service will be assembled as follows.
+
+```ls
+channel=devops&repository=atsd-site
+```
+
+#### Content Type is `application/json`
+
+The JSON payload in the web notification includes placeholders using `${name}` syntax.
+
+Such placeholders are substituted with corresponding parameter values from the input map `p`.
+
+Unknown parameters in the map `p` are ignored.
+
+![query config json](images/query-config-json.png)
+
+```javascript
+queryConfig("rc-hook", ["repository": "atsd-site", "channel": "devops"])
+```
+
+The JSON document sent to the target web service will be as follows.
+
+```json
+{
+  "channel": "devops",
+  "repository": "atsd-site"
+}
+```
+
+### `queryGet`
+
+```javascript
+  queryGet(string u, [map c]) response
+```
+
+Execute a `GET` request to the specified request URL `u`.
+
+The function returns a `WebRequestResult` response object.
+
+The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
+
+  ```ls
+  scheme:[//[user:password@]host[:port]][/path][?query]
+  ```
+
+Sample URL:
+
+  ```ls
+  https://cuser:cpass@10.102.0.9:8443/service?load=true
+  ```
+
+The configuration object `c` may contain the following fields:
+
+* `headers` - Map of request headers keys and values, or a collection of header entries separated by `:`.
+* `params` - Map of request parameters appended to query string.
+* `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
+
+Sample query to download a JSON document from a trusted web service without passing any headers or parameters.
+
+### `queryPost`
+
+```javascript
+  queryPost(string u, [map c]) response
+```
+
+Execute a `POST` request to the specified request URL `u`.
+
+The function returns a `WebRequestResult` response object.
+
+The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
+
+  ```ls
+  scheme:[//[user:password@]host[:port]][/path][?query]
+  ```
+
+Sample URL:
+
+  ```ls
+  https://cuser:cpass@10.102.0.9:8443/service?load=true
+  ```
+
+The configuration object `c` may contain the following fields:
+
+* `contentType` - Content type of the request. Default contentType is `application/json`.
+* `content` - request body text. Either `content` or `params` may be specified.
+* `headers` - Map of request headers keys and values, or a collection of header entries separated by `:`.
+* `params` - Map of request parameters serialized to text payload depending on the `contentType`.
+* `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
+
+The `params` map is serialized as a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
+
+`params` map:
+
+```javascript
+["repository": "atsd-site", "channel": "devops"]
+```
+
+**JSON content type:**
+
+```javascript
+  queryPost(_url, ["params": ["repository": "atsd-site", "channel": "devops"]])
+```
+
+Payload:
+
+```json
+{ "repository": "atsd-site", "channel": "devops" }
+```
+
+**Form content type:**
+
+```javascript
+  queryPost(_url, ["contentType": "application/x-www-form-urlencoded", "params": ["repository": "atsd-site", "channel": "devops"]])
+```
+
+Payload:
+
+```ls
+repository=atsd-site&channel=devops
+```
+
+#### Example: Webhook
+
+Post message to an Incoming Webhook in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/)
+
+```javascript
+  queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/xox-token", ['params': ['channel': '#devops', 'text': "Hello from ATSD!"]])
+  // request body is: {"channel":"#devops","text":"hello world"}
+```
+
+#### Example: GraphQL
+
+Retrieve results of a GraphQL query into [GitHub API v4](https://developer.github.com/v4/query/)
+
+```graphql
+
+```
+
+```javascript
+  queryPost("https://api.github.com/graphql", [
+    "headers": ["Authorization" : "bearer TOKEN"],
+    "params": ["query": "{ user(login:\"octocat\") { name login websiteUrl bio company createdAt location organizations(first: 1) {nodes { name login location description websiteUrl url }}}}"]
+  ])
+```
+
+```json
+{
+  "data": {
+    "user": {
+      "name": "The Octocat",
+      "login": "octocat",
+      "websiteUrl": "http://www.github.com/blog",
+      "bio": null,
+      "company": "GitHub",
+      "createdAt": "2011-01-25T18:44:36Z",
+      "location": "San Francisco",
+      "organizations": {
+        "nodes": []
+      }
+    }
+  }
+}
+```
+
+### Result Processing Examples
+
+Display text content.
+
+```javascript
+  queryGet("https://ipinfo.io/1.1.1.1/json").content
+```
+
+```json
+  {
+      "city": "Melbourne",
+      "location": {
+          "latitude": -37.7,
+          "longitude": 145.1833
+      },
+      "ip": "1.1.1.1"
+  }
+```
+
+Convert the JSON response to a flat structure.
+
+```javascript
+  flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content)
+```
+
+```json
+  [
+    "city" : "Melbourne",
+    "location.latitude" : -37.7,
+    "location.longitude" : 145.1833,
+    "ip" : "1.1.1.1"
+  ]
+```
+
+Display field values in the JSON response in a compact format.
+
+```javascript
+  concatLines(flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content).values())
+```
+
+```ls
+  Melbourne
+  -37.7
+  145.1833
+  1.1.1.1
 ```
