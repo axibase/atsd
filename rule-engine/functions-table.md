@@ -470,11 +470,7 @@ The examples below are based on the following JSON document which represents out
 ```
 
 ```json
-<<<<<<< HEAD
-[
-=======
 [ 
->>>>>>> 799ea1b8a7196a09a9d83cc8b2f7192a8968dc39
   [ "url", "author.login", "mergeable", "baseRefName", "headRefName", "title" ],
   [ "https://github.com/axibase/atsd-api-test/pull/487", "unrealwork", "MERGEABLE", "master", "5208-series-tag-query-with-wildcard-without-entity", "5208: Series tags query with wildcard without entity" ],
   [ "https://github.com/axibase/atsd-api-test/pull/406", "vtols", "MERGEABLE", "master", "vtols-4397", "Test #4397" ]
