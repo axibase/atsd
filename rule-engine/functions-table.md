@@ -386,23 +386,13 @@ The operations below will use the following json (GitHub GraphQL result):
             "title": "5208: Series tags query with wildcard without entity"
           },
           {
-            "url": "https://github.com/axibase/atsd-api-test/pull/478",
-            "author": {
-              "login": "alexey-kravtsov"
-            },
-            "mergeable": "MERGEABLE",
-            "baseRefName": "master",
-            "headRefName": "kravtsov-5070",
-            "title": "SQL: inline queries - time/datetime column requirement #5070"
-          },
-          {
             "url": "https://github.com/axibase/atsd-api-test/pull/406",
             "author": {
               "login": "vtols"
             },
             "mergeable": "MERGEABLE",
             "baseRefName": "master",
-            "headRefName": "tolstov-4397",
+            "headRefName": "vtols-4397",
             "title": "Test #4397"
           }
         ]
@@ -425,36 +415,13 @@ The operations below will use the following json (GitHub GraphQL result):
   "headRefName" : "5208-series-tag-query-with-wildcard-without-entity",
   "title" : "5208: Series tags query with wildcard without entity"
 }, {
-  "url" : "https://github.com/axibase/atsd-api-test/pull/478",
-  "author.login" : "alexey-kravtsov",
-  "mergeable" : "MERGEABLE",
-  "baseRefName" : "master",
-  "headRefName" : "kravtsov-5070",
-  "title" : "SQL: inline queries - time/datetime column requirement #5070"
-}, {
   "url" : "https://github.com/axibase/atsd-api-test/pull/406",
   "author.login" : "vtols",
   "mergeable" : "MERGEABLE",
   "baseRefName" : "master",
-  "headRefName" : "tolstov-4397",
+  "headRefName" : "vtols-4397",
   "title" : "Test #4397"
 } ]
-```
-
-```javascript
-  addTable(jsonToMaps(json), 'ascii')
-```
-```
-+--------------+------------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------+
-| Name         | Value 1                                              | Value 2                                                      | Value 3                                           |
-+--------------+------------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------+
-| url          | https://github.com/axibase/atsd-api-test/pull/487    | https://github.com/axibase/atsd-api-test/pull/478            | https://github.com/axibase/atsd-api-test/pull/406 |
-| author.login | unrealwork                                           | alexey-kravtsov                                              | vtols                                             |
-| mergeable    | MERGEABLE                                            | MERGEABLE                                                    | MERGEABLE                                         |
-| baseRefName  | master                                               | master                                                       | master                                            |
-| headRefName  | 5208-series-tag-query-with-wildcard-without-entity   | kravtsov-5070                                                | tolstov-4397                                      |
-| title        | 5208: Series tags query with wildcard without entity | SQL: inline queries - time/datetime column requirement #5070 | Test #4397                                        |
-+--------------+------------------------------------------------------+--------------------------------------------------------------+---------------------------------------------------+
 ```
 
 ```javascript
@@ -465,8 +432,7 @@ The operations below will use the following json (GitHub GraphQL result):
 [ 
   [ "url", "author.login", "mergeable", "baseRefName", "headRefName", "title" ],
   [ "https://github.com/axibase/atsd-api-test/pull/487", "unrealwork", "MERGEABLE", "master", "5208-series-tag-query-with-wildcard-without-entity", "5208: Series tags query with wildcard without entity" ],
-  [ "https://github.com/axibase/atsd-api-test/pull/478", "alexey-kravtsov", "MERGEABLE", "master", "kravtsov-5070", "SQL: inline queries - time/datetime column requirement #5070" ],
-  [ "https://github.com/axibase/atsd-api-test/pull/406", "vtols", "MERGEABLE", "master", "tolstov-4397", "Test #4397" ]
+  [ "https://github.com/axibase/atsd-api-test/pull/406", "vtols", "MERGEABLE", "master", "vtols-4397", "Test #4397" ]
 ]
 ```
 
@@ -479,8 +445,7 @@ The operations below will use the following json (GitHub GraphQL result):
 | url                                               | author.login    | mergeable | baseRefName | headRefName                                        | title                                                        |
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
 | https://github.com/axibase/atsd-api-test/pull/487 | unrealwork      | MERGEABLE | master      | 5208-series-tag-query-with-wildcard-without-entity | 5208: Series tags query with wildcard without entity         |
-| https://github.com/axibase/atsd-api-test/pull/478 | alexey-kravtsov | MERGEABLE | master      | kravtsov-5070                                      | SQL: inline queries - time/datetime column requirement #5070 |
-| https://github.com/axibase/atsd-api-test/pull/406 | vtols           | MERGEABLE | master      | tolstov-4397                                       | Test #4397                                                   |
+| https://github.com/axibase/atsd-api-test/pull/406 | vtols           | MERGEABLE | master      | vtols-4397                                       | Test #4397                                                   |
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
 ```
 
@@ -496,17 +461,11 @@ The operations below will use the following json (GitHub GraphQL result):
   "data.repository.pullRequests.nodes[0].baseRefName" : "master",
   "data.repository.pullRequests.nodes[0].headRefName" : "5208-series-tag-query-with-wildcard-without-entity",
   "data.repository.pullRequests.nodes[0].title" : "5208: Series tags query with wildcard without entity",
-  "data.repository.pullRequests.nodes[1].url" : "https://github.com/axibase/atsd-api-test/pull/478",
-  "data.repository.pullRequests.nodes[1].author.login" : "alexey-kravtsov",
+  "data.repository.pullRequests.nodes[1].url" : "https://github.com/axibase/atsd-api-test/pull/406",
+  "data.repository.pullRequests.nodes[1].author.login" : "vtols",
   "data.repository.pullRequests.nodes[1].mergeable" : "MERGEABLE",
   "data.repository.pullRequests.nodes[1].baseRefName" : "master",
-  "data.repository.pullRequests.nodes[1].headRefName" : "kravtsov-5070",
-  "data.repository.pullRequests.nodes[1].title" : "SQL: inline queries - time/datetime column requirement #5070",
-  "data.repository.pullRequests.nodes[2].url" : "https://github.com/axibase/atsd-api-test/pull/406",
-  "data.repository.pullRequests.nodes[2].author.login" : "vtols",
-  "data.repository.pullRequests.nodes[2].mergeable" : "MERGEABLE",
-  "data.repository.pullRequests.nodes[2].baseRefName" : "master",
-  "data.repository.pullRequests.nodes[2].headRefName" : "tolstov-4397",
-  "data.repository.pullRequests.nodes[2].title" : "Test #4397"
+  "data.repository.pullRequests.nodes[1].headRefName" : "vtols-4397",
+  "data.repository.pullRequests.nodes[1].title" : "Test #4397"
 }
 ```
