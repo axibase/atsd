@@ -72,6 +72,6 @@ https.trustStorePassword=
 
 ## Verify Certificate
 
-Login into ATSD by entering its DNS name in the browser address bar.
+Log in to ATSD by entering DNS name in the browser address bar.
 
-Review the new certificate and check its validity date which is set to 10 years from now.
+Review the new certificate and check its validity date, which is set to 10 years from now.
