@@ -2,7 +2,7 @@
 
 ## Overview
 
-The text functions compare and transform strings.
+Text functions compare and transform strings.
 
 The functions are `null`-safe - they return `null` or `false` if one of the inputs is `null`.
 
@@ -44,7 +44,7 @@ The functions are `null`-safe - they return `null` or `false` if one of the inpu
   upper(string s) string
 ```
 
-Converts `s` to uppercase letters.
+Converts string `s` to uppercase letters.
 
 ### `lower`
 
@@ -52,7 +52,7 @@ Converts `s` to uppercase letters.
   lower(string s) string
 ```
 
-Converts `s` to lowercase letters.
+Converts string `s` to lowercase letters.
 
 ### `truncate`
 
@@ -60,7 +60,7 @@ Converts `s` to lowercase letters.
   truncate(string s, integer i) string
 ```
 
-If `s` length exceeds `i` characters, this function truncates `s` to the specified number of characters and returns it as the result.
+If string `s` length exceeds `i` characters, this function truncates `s` to the specified number of characters and returns it as the result.
 
 ### `startsWith`
 
@@ -84,7 +84,7 @@ Returns `true` if `s` ends with `w`.
   split(string s, string p) [string]
 ```
 
-Splits `s` into a collection of strings using separator `p`.
+Splits string `s` into a collection of strings using separator `p`.
 
 ```javascript
     // Returns ['Hello', 'world']
@@ -177,9 +177,9 @@ Example:
   keepAfterLast(string s, string p) string
 ```
 
-Removes part of the string `s` before the last occurrence of the given substring `p`.
+Removes the part of string `s` before the last occurrence of the given substring `p`.
 
-If `p` is empty or `null` or if it's not found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
 
 Example:
 
@@ -196,7 +196,7 @@ Example:
 
 Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
 
-If `p` is empty or `null` or if it's not found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
 
 Example:
 
@@ -213,7 +213,7 @@ Example:
 
 Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
 
-If `p` is empty or `null` or if it's not found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
 
 Example:
 
@@ -228,9 +228,9 @@ Example:
   replace(string s, string p, string r) string
 ```
 
-Replaces all occurrences of the given string `p` in the original string `s` with another string `r`.
+Replaces all occurrences of the given substring `p` in the original string `s` with a second substring `r`.
 
-If `p` is empty or `null` or if it's not found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
 
 Examples:
 
@@ -275,7 +275,7 @@ Example:
   removeBeginning(string s, string r) string
 ```
 
-Removes the given substring `r` from the beginning of the string `s`.
+Removes substring `r` from the beginning of string `s`.
 
 Examples:
 
@@ -295,7 +295,7 @@ Examples:
   removeEnding(string s, string r) string
 ```
 
-Removes the given substring `r` from the end of the string `s`.
+Removes given substring `r` from the end of string `s`.
 
 ```javascript
   // Returns 'hello wor'
@@ -349,7 +349,7 @@ Example:
   unquote(string s) string
 ```
 
-Removes leading and trailing double and single quotation marks from the string `s`.
+Removes leading and trailing double and single quotation marks from string `s`.
 
 ```javascript
   // Returns 'hello world'
@@ -377,11 +377,11 @@ Example:
   abbreviate(string s, integer n) string
 ```
 
-Truncates string `s` using ellipses by hiding extraneous text. `n` is the desired length of the output string.
+Truncates string `s` using ellipses to hide extraneous text. `n` is the desired length of the output string.
 
 The minimum length of the output string is `4` characters: `1` character is string `s` plus `3` characters used for ellipses (`...`).
 
-`n` must be greater than 3 otherwise an exception is raised.
+Integer `n` must be set greater than 3 otherwise an exception is raised.
 
 ```javascript
   // Returns 'hel...'
@@ -409,7 +409,7 @@ The minimum length of the output string is `4` characters: `1` character is stri
   indexOf(string s, string p[, int i]) integer
 ```
 
-Returns the integer index starting with `0` of the first occurrence of substring `p` contained in the string `s` starting with index `i`.
+Returns the integer index starting with `0` of the first occurrence of substring `p` contained in string `s` starting with index `i`.
 
 If the substring `p` is not found, `-1` is returned.
 
@@ -462,7 +462,7 @@ Removes leading and trailing non-printable characters.
   length(string s) string
 ```
 
-Returns length of the string `s`. If the `s` is `null`, returns -1.
+Returns the length of string `s`. If string `s` is `null`, function returns -1.
 
 ### `concat`
 
