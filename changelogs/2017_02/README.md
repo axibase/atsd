@@ -10,7 +10,7 @@ Weekly Change Log: January 09 - January 15, 2017
 | [3769](#issue-3769) | sql             | Feature     | Extended the [`LOOKUP`](../../sql#lookup) function to accept series, entity, and metric tags as parameters. |
 | [3768](#issue-3768) | sql             | Feature | Extended the [`CONCAT`](../../sql#string-functions) function to accept numeric arguments. |
 | [3767](#issue-3767) | sql             | Feature | Extended the [`CAST`](../../sql#cast) function to convert numbers to strings. |
-| 3764 | sql             | Bug     | Fixed NullPointException error when data was requested with the [series query](../../api/data/series/query.md) method for a newly created metric without any data. |
+| 3764 | sql             | Bug     | Fixed NullPointerException error when data was requested with the [series query](../../api/data/series/query.md) method for a newly created metric without any data. |
 | [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](../../sql#validation-query) validation query implementation to return exactly one row. |
 | [3480](#issue-3480) | api-rest        | Feature | Added support for the [`text`](../../api/data/series/query.md#value-object) field in the [series query](../../api/data/series/query.md) method. The `text` field allows annotating numeric samples with text.|
 
