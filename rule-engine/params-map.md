@@ -22,7 +22,6 @@ queryConfig("Discord", ["username":"ATSD BOT", "content":"Hello, Discord!"])
 |Message|`message`|
 |Message Format|`message_format`|
 |Notify|`notify`|
-|Add Links to Portals|`add_links_to_portals`|
 
 Example:
 
@@ -57,5 +56,5 @@ queryConfig("Slack", ["username":"ATSD BOT", "channels":"devops", "text":"Hello,
 Example:
 
 ```javascript
-queryConfig("Telegram", ["text":"Hello, Telegram!", "disable_web_page_preview":"false"])
+queryConfig("Telegram", ["text":"Hello, Telegram! https://axibase.com", "disable_web_page_preview":"false"])
 ```

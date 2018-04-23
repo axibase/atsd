@@ -7,8 +7,8 @@ Web query functions execute an HTTP request to an external web service and retur
 ## Reference
 
 * [`queryConfig`](#queryconfig)
-    * [Content Type is `application/x-www-form-urlencoded`](#content-type-is-applicationx-www-form-urlencoded)
-    * [Content Type is `application/json`](#content-type-is-applicationjson)    
+    * [`application/x-www-form-urlencoded`](#content-type-is-applicationx-www-form-urlencoded)
+    * [`application/json`](#content-type-is-applicationjson)    
 * [`queryGet`](#queryget)
 * [`queryPost`](#querypost)
 * [Response Object](#response-object)
@@ -169,12 +169,43 @@ repository=atsd-site&channel=devops
 
 #### Example: Webhook
 
-Post message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/)
+Post message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
 
 ```javascript
-  queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/xox-token", ['params': ['channel': '#devops', 'text': "Hello from ATSD!"]])
+  queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", ['params': ['channel': '#devops', 'text': "Hello from ATSD!"]])
   // request body is: {"channel":"#devops","text":"hello world"}
 ```
+
+#### Example: REST API
+
+Post message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs/developer-guides/rest-api/chat/sendmessage/) REST API method.
+
+```javascript
+  queryPost("https://chat_server:3000/api/v1/chat.sendMessage", [
+     "headers":[
+        "X-Auth-Token": "botUserToken",
+        "X-User-Id": "botUserId"
+     ],
+     "params": [
+        "message": [
+           "rid": "roomID", 
+           "msg": "Hello, Rocket.Chat"
+        ]
+     ]
+  ])
+```
+
+```json
+{
+  "data": {
+    "message": {
+      "msg": "Hello, Rocket.Chat",
+      "rid": "roomID"
+    }
+  }
+}
+```
+
 
 #### Example: GraphQL
 
@@ -214,7 +245,6 @@ Retrieve results of a [GitHub GraphQL](https://developer.github.com/v4/query/) q
 `status`       | integer      | Status code, such as `200` or `401`.
 `headers`      | map      | Response headers. Header values with the same name are separated by a comma.
 `duration`     | long     | Time, in milliseconds, between initiating a request and downloading the response.
-`content`      | string   | Response body text.
 `reasonPhrase` | string   | Status line such as `OK`.
 `contentType`  | string   | Response content type, such as `application/json`.
 
