@@ -157,7 +157,7 @@ repository=atsd-site&channel=devops
 
 #### Example: Webhook
 
-Post message to an incoming Webhook in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/)
+Post message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/)
 
 ```javascript
   queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/xox-token", ['params': ['channel': '#devops', 'text': "Hello from ATSD!"]])
@@ -166,7 +166,7 @@ Post message to an incoming Webhook in [Rocket.Chat](https://rocket.chat/docs/ad
 
 #### Example: GraphQL
 
-Deliver results of a GraphQL query to [GitHub API v4](https://developer.github.com/v4/query/)
+Retrieve results of a [GitHub GraphQL](https://developer.github.com/v4/query/) query.
 
 ```javascript
   queryPost("https://api.github.com/graphql", [
