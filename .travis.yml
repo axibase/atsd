@@ -10,4 +10,4 @@ script:
   - find . -name \*.md -exec markdown-link-check {} \;
 cache:
   directories:
-    - "node_modules"
+    - $(npm config get prefix)/lib/node_modules
