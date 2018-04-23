@@ -2,7 +2,7 @@
 
 ## Overview
 
-The web query functions execute an HTTP request to an external web service and return the [`WebRequestResult`](#response-object) response object for further processing.
+Web query functions execute an HTTP request to an external web service and return a [`WebRequestResult`](#response-object) response object for further processing.
 
 ### `queryConfig`
 
@@ -10,7 +10,7 @@ The web query functions execute an HTTP request to an external web service and r
   queryConfig(string c, map p) response
 ```
 
-Executes an HTTP request using a predefined [web notification](web-notifications.md), identified by name `c`.
+This command executes an HTTP request using a predefined [web notification](web-notifications.md), identified by name string `c`.
 
 The function returns a `WebRequestResult` response object.
 
@@ -26,7 +26,7 @@ The form-based web notification defines a set of parameters that can be edited i
 
 The values for such parameters are retrieved from the input map `p`.
 
-Unknown parameters in the map `p` are ignored.
+Unknown parameters in map `p` are ignored.
 
 ![query config form](images/query-config-form.png)
 
@@ -34,7 +34,7 @@ Unknown parameters in the map `p` are ignored.
 queryConfig("rc-hook", ["repository": "atsd-site", "channel": "devops"])
 ```
 
-The payload sent to the target web service will be assembled as follows.
+The payload sent to the target web service will be assembled as follows:
 
 ```ls
 channel=devops&repository=atsd-site
@@ -54,7 +54,7 @@ Unknown parameters in the map `p` are ignored.
 queryConfig("rc-hook", ["repository": "atsd-site", "channel": "devops"])
 ```
 
-The JSON document sent to the target web service will be as follows.
+The JSON document sent to the target web service is as follows:
 
 ```json
 {
@@ -118,9 +118,9 @@ Sample URL:
 The configuration object `c` may contain the following fields:
 
 * `contentType` - Content type of the request. Default content type is `application/json`.
-* `content` - request body text. Either `content` or `params` may be specified.
+* `content` - Request body text. Either `content` or `params` may be specified.
 * `headers` - Map of request headers keys and values, or a collection of header entries separated by `:`.
-* `params` - Map of request parameters serialized to text payload depending on the content type`.
+* `params` - Map of request parameters serialized to text payload depending on the content type.
 * `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
 
 The `params` map is serialized as a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
@@ -157,7 +157,7 @@ repository=atsd-site&channel=devops
 
 #### Example: Webhook
 
-Post message to an Incoming Webhook in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/)
+Post message to an incoming Webhook in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/)
 
 ```javascript
   queryPost("https://chat.company.com/hooks/1A1AbbbAAAa1bAAAa/xox-token", ['params': ['channel': '#devops', 'text': "Hello from ATSD!"]])
@@ -166,7 +166,7 @@ Post message to an Incoming Webhook in [Rocket.Chat](https://rocket.chat/docs/ad
 
 #### Example: GraphQL
 
-Retrieve results of a GraphQL query into [GitHub API v4](https://developer.github.com/v4/query/)
+Deliver results of a GraphQL query to [GitHub API v4](https://developer.github.com/v4/query/)
 
 ```javascript
   queryPost("https://api.github.com/graphql", [
