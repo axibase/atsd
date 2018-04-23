@@ -28,7 +28,7 @@ Weekly Change Log: May 01, 2017 - May 07, 2017
 
 ### Issue 4153
 
-![ChangeLog1](Images/ChangeLogDemo4.png)
+![](Images/ChangeLogDemo4.png)
 
 [![](Images/button.png)](https://apps.axibase.com/chartlab/27dc8b67)
 

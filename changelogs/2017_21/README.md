@@ -20,8 +20,8 @@ Weekly Change Log: May 22, 2017 - May 28, 2017
 
 #### Issue 3834
 
-![Issue3834](Images/3834.2.png)
+![](Images/3834.2.png)
 
-Modifying these fields no longer requires preforming the query a second time.
+Modifying these fields no longer requires performing the query a second time.
 
-![Issue3834.2](Images/3834.3.png)
+![](Images/3834.3.png)
