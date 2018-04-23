@@ -4,12 +4,12 @@ node_js:
   - "8"
 install:
   - npm install -g yaspeller
-  - npm install -g markdown-spellcheck
+  - npm install -g spellchecker-cli
   - npm install -g markdown-link-check
   - awk '{printf("%s\0", $0)}' .spelling | jq -csR 'split("\u0000")' > .yaspeller-dictionary.json
-script: 
+script:
   - yaspeller --dictionary .yaspeller-dictionary.json -e ".md" ./
-  - mdspell --en-us --ignore-numbers --ignore-acronyms --report "**/*.md"
+  - spellchecker --language=en-US --ignore "[A-Z0-9_-]+" --dictionary=.spelling --files **/*.md
   - find . -name \*.md -exec markdown-link-check {} \;
 cache:
   directories:
