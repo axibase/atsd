@@ -20,6 +20,7 @@
 * [Utility Functions](#utility-functions)
 * [Link Functions](#link-functions)
 * [Portal Functions](#portal-functions)
+* [Web Query Functions](#web-query-functions)
 * [Security Functions](#security-functions)
 
 ## Overview

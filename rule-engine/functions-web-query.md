@@ -4,6 +4,16 @@
 
 Web query functions execute an HTTP request to an external web service and return a [`WebRequestResult`](#response-object) response object for further processing.
 
+## Reference
+
+* [`queryConfig`](#queryconfig)
+    * [Content Type is `application/x-www-form-urlencoded`](#content-type-is-applicationx-www-form-urlencoded)
+    * [Content Type is `application/json`](#content-type-is-applicationjson)    
+* [`queryGet`](#queryget)
+* [`queryPost`](#querypost)
+* [Response Object](#response-object)
+* [Result Processing Examples](#result-processing-examples)
+
 ### `queryConfig`
 
 ```javascript
@@ -19,6 +29,8 @@ The function returns a `WebRequestResult` response object.
 * The name `c` is case-sensitive.
 
 The map of parameters `p` is used to set parameters and replace placeholders defined in the web notification.
+
+Aliases used in `p` for built-in notifications described [here](params-map.md).
 
 #### Content Type is `application/x-www-form-urlencoded`
 
@@ -71,7 +83,7 @@ The JSON document sent to the target web service is as follows:
 
 Execute a `GET` request to the specified request URL `u`.
 
-The function returns a `WebRequestResult` response object.
+The function returns a [`WebRequestResult`](#response-object) response object.
 
 The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
 
@@ -101,7 +113,7 @@ Sample query to download a JSON document from a trusted web service without pass
 
 Execute a `POST` request to the specified request URL `u`.
 
-The function returns a `WebRequestResult` response object.
+The function returns a [`WebRequestResult`](#response-object) response object.
 
 The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
 
