@@ -369,7 +369,7 @@ The function converts a string representation of JSON document `j` into a map co
 Processing rules:
 
 * String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function will raise an exception.
-* The JSON object is traversed to extract primitive fields: `number`, `string`, and `boolean`.
+* The JSON object is traversed to locate fields with primitive data types: `number`, `string`, and `boolean`.
 * The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
 * If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
 * Fields with `null` and empty string values are ignored.
