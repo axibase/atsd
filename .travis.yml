@@ -4,11 +4,9 @@ node_js:
   - "8"
 install:
   - npm install -g yaspeller
-  - npm install -g markdown-spellcheck
   - npm install -g markdown-link-check
 script: 
   - yaspeller -e ".md" ./
-  - mdspell --en-us --ignore-numbers --ignore-acronyms --dictionary=.spellcheck --report "**/*.md"
   - find . -name \*.md -exec markdown-link-check {} \;
 cache:
   directories:
