@@ -6,10 +6,11 @@ install:
   - npm install -g yaspeller
   - npm install -g spellchecker-cli
   - npm install -g markdown-link-check
+  # generate dictionary in JSON format
   - awk '{printf("%s\0", $0)}' .spelling | jq -csR 'split("\u0000")' > .yaspeller-dictionary.json
 script:
   - yaspeller --dictionary .yaspeller-dictionary.json -e ".md" ./
-  - spellchecker --language=en-US --ignore "[A-Z0-9_-]+" --dictionary=.spelling --files **/*.md
+  - spellchecker --language=en-US --ignore "[A-Zx0-9_-]+" --dictionary=.spelling --files **/*.md
   - find . -name \*.md -exec markdown-link-check {} \;
 cache:
   directories:
