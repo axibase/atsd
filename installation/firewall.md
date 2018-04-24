@@ -39,7 +39,7 @@ iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
 ```
 
-### RHEL / Centos
+### RHEL / CentOS
 
 ```sh
 sed -i "s/IPTABLES_SAVE_ON_STOP=\"no\"/IPTABLES_SAVE_ON_STOP=\"yes\"/g" /etc/sysconfig/iptables-config

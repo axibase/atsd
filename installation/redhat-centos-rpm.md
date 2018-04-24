@@ -1,4 +1,4 @@
-# RedHat/Centos: rpm Package
+# RedHat/CentOS: rpm Package
 
 ## Supported Versions
 

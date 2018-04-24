@@ -1,4 +1,4 @@
-# RedHat/Centos: YUM
+# RedHat/CentOS: YUM
 
 ## Supported Versions
 

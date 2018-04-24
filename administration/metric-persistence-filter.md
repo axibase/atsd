@@ -114,7 +114,7 @@ Returns `true`, if the first argument `s` matches **at least one** element in th
 Examples:
 
 ```javascript
-likeAny(tags.os, ['Ubuntu*', 'Centos*'])
+likeAny(tags.os, ['Ubuntu*', 'CentOS*'])
 
 likeAny(tags.request_ip, collection('ip_white_list'))
 ```

@@ -22,7 +22,7 @@ Install Python on Ubuntu 16.04.
 sudo apt install python
 ```
 
-Install Python on Centos 6.x/7.x and RHEL 6.x/7.x.
+Install Python on CentOS 6.x/7.x and RHEL 6.x/7.x.
 
 ```sh
 sudo yum install python
@@ -85,7 +85,7 @@ Start tcollector.
 sudo service tcollector start
 ```
 
-#### Centos 6.x and RHEL 6.x
+#### CentOS 6.x and RHEL 6.x
 
 Download [init script](resources/tcollector) and copy it into `/etc/init.d` directory.
 Set `TCOLLECTOR_HOME` variable to tcollector home directory, for example
@@ -112,7 +112,7 @@ Start tcollector.
 sudo service tcollector start
 ```
 
-#### Ubuntu 16.04, Centos 7.x, RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x, RHEL 7.x
 
 Download [init script](resources/tcollector) and place it into tcollector **home** directory, name it `tcollector-wrapper`.
 
@@ -155,7 +155,7 @@ PIDFILE=pid_file_path
 
 `log_file_path` and `pid_file_path` must be absolute paths to files in existing directory (or directories), where user has write access to.
 
-#### Ubuntu 14.04, Centos 6.x, RHEL 6.x
+#### Ubuntu 14.04, CentOS 6.x, RHEL 6.x
 
 Add `RUN_AS_USER` option to tcollector config.
 
@@ -165,7 +165,7 @@ RUN_AS_USER=user_name
 
 Replace `user_name` with user name.
 
-#### Ubuntu 16.04, Centos 7.x, RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x, RHEL 7.x
 
 Add `User` option to `[Service]` section in `/lib/systemd/system/tcollector.service` file.
 

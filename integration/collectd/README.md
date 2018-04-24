@@ -29,7 +29,7 @@ Install package
 sudo dpkg -i collectd_ubuntu_16.04_amd64.deb
 ```
 
-### Centos 6.x and RHEL 6.x
+### CentOS 6.x and RHEL 6.x
 
 Download package
 ```sh
@@ -41,7 +41,7 @@ Install package
 sudo yum install collectd.rpm
 ```
 
-### Centos 7.x and RHEL 7.x
+### CentOS 7.x and RHEL 7.x
 
 Download package
 ```sh
@@ -100,13 +100,13 @@ On Ubuntu 14.04
 sudo update-rc.d collectd-axibase defaults 90 10
 ```
 
-On Centos 6.x and RHEL 6.x
+On CentOS 6.x and RHEL 6.x
 
 ```sh
 sudo chkconfig --add collectd-axibase
 ```
 
-On Ubuntu 16.04, Centos 7.x and RHEL 7.x
+On Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
 ```sh
 sudo systemctl enable collectd-axibase

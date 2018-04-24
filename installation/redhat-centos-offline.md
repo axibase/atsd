@@ -1,4 +1,4 @@
-# RedHat/Centos: Offline
+# RedHat/CentOS: Offline
 
 ## Overview
 

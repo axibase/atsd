@@ -12,7 +12,7 @@ apt-get install openjdk-8-jdk
 
 In case of 'Unable to locate package' error, install Oracle JDK.
 
-* Red Hat Enterprise Linux, SLES, Centos, Oracle Linux
+* Red Hat Enterprise Linux, SLES, CentOS, Oracle Linux
 
 ```sh
 yum install java-1.8.0-openjdk-devel
@@ -57,7 +57,7 @@ update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_152/bin/java 
 update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_152/bin/javac 100
 ```
 
-* Red Hat Enterprise Linux, SLES, Centos, Oracle Linux
+* Red Hat Enterprise Linux, SLES, CentOS, Oracle Linux
 
 ```sh
 alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_152/bin/java 100
@@ -81,7 +81,7 @@ update-alternatives --config java
 update-alternatives --config javac
 ```
 
-* Red Hat Enterprise Linux, SLES, Centos, Oracle Linux
+* Red Hat Enterprise Linux, SLES, CentOS, Oracle Linux
 
 ```sh
 alternatives --config java

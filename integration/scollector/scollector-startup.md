@@ -86,7 +86,7 @@ Enable scollector launch when the system is started.
   sudo update-rc.d scollector defaults 90 10
 ```
 
-#### Centos 6.x and RHEL 6.x
+#### CentOS 6.x and RHEL 6.x
 
 Create `/etc/init.d/scollector` file by running the following command in the scollector installation directory.
 
@@ -126,7 +126,7 @@ Enable scollector launch when the system is started.
 sudo chkconfig --add scollector
 ```
 
-#### Ubuntu 16.04, Centos 7.x and RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
 Create service file for scollector `/lib/systemd/system/scollector.service` by running the following command in the scollector installation directory.
 
@@ -153,7 +153,7 @@ sudo systemctl enable scollector
 
 ### Auto-start scollector as a non-sudo user
 
-#### Ubuntu 14.04, Centos 6.x and RHEL 6.x
+#### Ubuntu 14.04, CentOS 6.x and RHEL 6.x
 
 Modify the `/etc/init.d/tcollector` content
 
@@ -184,7 +184,7 @@ fi
 Be sure to change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
 Set `SCOLLECTOR_USER` to the user that will run scollector.
 
-#### Ubuntu 16.04, Centos 7.x and RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
 Add `User` option to `[Service]` section of the service file
 

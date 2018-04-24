@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Linux 64-bit: Ubuntu 16.04, Debian 8.x/9.x, RHEL/Centos 7.x, SLES 12.x.
+* Linux 64-bit: Ubuntu 16.04, Debian 8.x/9.x, RHEL/CentOS 7.x, SLES 12.x.
 * Operating system and hardware [requirements](../administration/requirements.md)
 
 ## Installation Guides
