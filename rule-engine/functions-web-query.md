@@ -318,7 +318,7 @@ Convert the JSON response to a flat structure.
   flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content)
 ```
 
-```json
+```elm
   [
     "city" : "Melbourne",
     "location.latitude" : -37.7,
