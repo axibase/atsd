@@ -19,7 +19,7 @@ The replacements in the original input text, such as email subject, are performe
 
 The expression may refer to:
 
-* Literal values (constants) of different [data types](variable.md#data-types)
+* Literal values (constants) of different [data types](variables.md#data-types)
 * [Window](window.md#window-fields) fields
 * [Entity](../api/meta/entity/list.md#fields) fields
 * User-defined [variables](variables.md)

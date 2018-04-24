@@ -102,7 +102,7 @@ Sample metadata:
 	"dc:publisher": {
 		"schema:name": "Axibase Time-Series Database",
 		"schema:url": {
-			"@id": "https://ATSD_HOSTNAME:8443"
+			"@id": "https://atsd_hostname:8443"
 		}
 	},
 	"dc:title": "SQL Query",

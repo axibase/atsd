@@ -2,16 +2,13 @@
 
 ## Overview
 
-The `db_*` functions retrieve series and message records from the database.
+The database functions provide a way to retrieve series and message records from the database at any stage of the rule evaluation process.
 
-The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
+The `db_last` and `db_statistic` functions allow retrieving the last stored value or to calculate a statistic from stored values. The queried series may be different from the series in the current window.
 
-* The `db_last` function retrieves the last value stored in the database for the specified series.
-* The `db_statistic` function retrieves an aggregated value from the database for the specified series.
+The `db_message_count` and `db_message_last` functions can be used to test events for presence as well as to correlate time series and messages.
 
-The `db_message_count` and `db_message_last` functions allow one to add conditions based on existence of messages as well as to correlate time series and messages.
-
-The `executeSqlQuery` function retrieves the results of an SQL query executed against the database.
+The `executeSqlQuery` function retrieves the results of a user-defined SQL query.
 
 ## Reference
 
@@ -31,13 +28,19 @@ SQL functions:
 
 ## Series Functions
 
+### `db_last`
+
+The `db_last` function retrieves the last (most recent) value stored in the database for the specified series, regardless when it was stored. 
+
+The functions return `Double.NaN` if no matching series is found.
+
 ### `db_last(string m)`
 
 ```javascript
   db_last(string m) number
 ```
 
-Retrieves the last (most recent) value for the specified metric `m` and the same entity and tags as defined in the current window. The last value is retrieved regardless when it was stored.
+Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window. 
 
 Example:
 
@@ -45,7 +48,7 @@ Example:
   value > 60 && db_last('temperature') < 30
 ```
 
-> As an alternative, if the specified metric was received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command, even if they're not yet stored in the database.
+> As an alternative, if the specified metric was received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command, even before it is stored in the database.
 
 ### `db_last(string m, string e)`
 
@@ -53,13 +56,17 @@ Example:
 db_last(string m, string e) number
 ```
 
-Retrieves the last value for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field (current entity in the window).
+Retrieves the last value for the specified metric `m` and entity `e`. 
+
+The entity `e` can be specified as a string literal value or with an `entity` field in which case it represents the name of the entity in the current window.
 
 Example:
 
 ```javascript
   value > 60 && db_last('temperature', 'sensor-01') < 30
+```
 
+```javascript
   // same as db_last('temperature')
   value > 60 && db_last('temperature', entity) < 30
 ```
@@ -68,6 +75,9 @@ Example:
 
 ```javascript
   db_last(string m, string e, string t) number
+```
+
+```javascript
   db_last(string m, string e, [] t) number
 ```
 
@@ -90,7 +100,9 @@ Example:
 
 The first required argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to values within the selection interval.
 
-The second required argument `i` is the duration of selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
+The second required argument `i` is the duration of the selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
+
+The function returns `Double.NaN` if no matching series is found or if no values were recorded within the selection interval.
 
 #### `db_statistic(string s, string i)`
 
@@ -138,6 +150,9 @@ Example:
 
 ```javascript
   db_statistic(string s, string i, string m, string e, string t) number
+```
+
+```javascript
   db_statistic(string s, string i, string m, string e, [] t) number
 ```
 

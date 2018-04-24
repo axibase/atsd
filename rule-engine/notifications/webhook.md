@@ -43,11 +43,11 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 ## Testing
 
-Click the `Test` button in the web notification form to send a test alert payload to the specified endpoint.
+Click the `Test` button in the web notification form to send a sample request to the specified endpoint.
 
-In order to view the actual payload, create a sample rule, and enable the selected webhook on the `Web Notifications` tab.
+In order to test the actual payload, create a sample rule, and enable notifications on the `Web Notifications` tab.
 
-You can use online resources such as [https://webhook.site](https://webhook.site) for additional testing.
+You can use online resources such as `https://webhook.site` for troubleshooting.
 
 ## Examples
 

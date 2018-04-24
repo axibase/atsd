@@ -6,7 +6,7 @@ This guide describes how to monitor availability and performance of an [Apache Z
 
 ### Create hosts list
 
-1) Log in to Axibase Collector at https://collector_hostname:9443
+1) Log in to Axibase Collector at `https://collector_hostname:9443`
 
 2) Click the `Collections` tab in the top menu and select `Item Lists`.
 
@@ -54,7 +54,7 @@ For more information on JMX configuration, see [JMX](https://github.com/axibase/
 
 ### Check data collection
 
-Log in to the target Axibase Time Series Database instance at https://atsd_hostname:8443.
+Log in to the target Axibase Time Series Database instance at `https://atsd_hostname:8443`.
 
 Go to **Metrics** page and verify that `jmx.zookeeper.*` metrics are available.
 

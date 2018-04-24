@@ -44,7 +44,7 @@ ATSD JSON-LD schema is published [here](https://www.axibase.com/schemas/2017/07/
 	"dc:publisher": {
 		"schema:name": "Axibase Time-Series Database",
 		"schema:url": {
-			"@id": "https://ATSD_HOSTNAME:8443"
+			"@id": "https://atsd_hostname:8443"
 		}
 	},
 	"dc:title": "SQL Query",

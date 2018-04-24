@@ -2,8 +2,6 @@
 
 I/O Tests can be run directly from the ATSD user interface under **Settings > Diagnostics > I/O Tests**.
 
-Direct url: `atsd_hostname:8088/admin/io-tests`
-
 I/O Tests allow you to:
 
 -   Execute disk read and write tests for the server on which the ATSD

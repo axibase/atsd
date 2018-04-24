@@ -36,8 +36,8 @@ Retrieve series values for the specified entity, metric, and optional series tag
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `startDate` | string | Start date in ISO format or [calendar](../../shared/calendar.md) syntax. |
-| `endDate` | string | End date in ISO format or [calendar](../../shared/calendar.md) syntax. |
+| `startDate` | string | Start date in ISO format or [calendar](../../../shared/calendar.md) syntax. |
+| `endDate` | string | End date in ISO format or [calendar](../../../shared/calendar.md) syntax. |
 | `interval` | string | Interval specified as `{count}-{timeunit}`, for example `1-hour`. |
 
 ## Response

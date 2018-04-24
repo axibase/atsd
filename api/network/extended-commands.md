@@ -12,7 +12,7 @@ put `<metric> <timestamp> <value> <tagk1=tagv1[ tagk2=tagv2 ...tagkN=tagvN]>`
 put sys.cpu.user 1356998400 42.5 host=webserver01 cpu=0
 ```
 
-[tcollector integration](https://axibase.com/products/axibase-time-series-database/writing-data/tcollector/)
+[tcollector integration](../../integration/tcollector/README.md)
 
 ATSD uses the `host` tag as the entity. If the `host` tag is missing then entity will be `tcollector`.
 
@@ -22,7 +22,7 @@ ATSD uses the `host` tag as the entity. If the `host` tag is missing then entity
 servers.nurswgvml007.cpu_busy 24.5 1232312313
 ```
 
-[Graphite integration](http://axibase.com/products/axibase-time-series-database/writing-data/graphite-format/)
+[Graphite integration](../../integration/graphite/README.md)
 
 ## StatsD
 
@@ -38,7 +38,7 @@ nurswfvml007/cpu.busy:20.5|c
 nurswgvml007.disk_used_percent:24.5|c|@0.5|#mount_point:/,disk_name:/sda
 ```
 
-[StatsD integration](http://axibase.com/products/axibase-time-series-database/writing-data/statsd/)
+[StatsD integration](../../integration/statsd/README.md)
 
 Forward slash is supported as a control character to extract the entity name. 
 

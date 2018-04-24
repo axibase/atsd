@@ -1541,12 +1541,12 @@ ORDER BY row_number() DESC
 The `last_time` function returns the last time, in milliseconds, when data was received for a given series. It enables filtering of records based on the last insertion date for the given series.
 
 ```sql
-WITH time comparision_operator last_time_expression
-WITH last_time_expression comparision_operator time
+WITH time comparison_operator last_time_expression
+WITH last_time_expression comparison_operator time
 ```
 
 * `time` is the pre-defined time column which represents the timestamp of the sample.
-* A `comparision_operator` is one of the following operators: `>`, `>=`, `<`, `<=`, `=`.
+* A `comparison_operator` is one of the following operators: `>`, `>=`, `<`, `<=`, `=`.
 * A `last_time_expression` consists of the `last_time` keyword and an optional calendar expression.
 
 ```sql

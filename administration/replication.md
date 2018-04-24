@@ -1,8 +1,6 @@
 # Replication
 
-
-This article describes how to configure replication for the Axibase Time
-Series Database.
+This article describes how to configure replication for the Axibase Time Series Database.
 
 The replication process is from master to slave, meaning where all transactions on the master
 cluster are replayed to the slave cluster.
@@ -130,6 +128,7 @@ Start HBase shell and list tables:
 ```sh
 echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\[" 
 ```
+
 The output should contain a list of ATSD tables, all starting with `atsd_`:
 
 ![](images/atsd_tables.png "atsd_tables")
@@ -150,19 +149,13 @@ Execute the `add_peer` command:
 echo "add_peer '1', \"atsd_slave:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-> Note:: If your ATSD installation has suffered an unexpected shutdown or
-ungraceful stop and your Zookeeper is corrupted, [after solving this
-issue using our
-guide](corrupted-zookeeper.md),
-be sure to execute the `add_peer` commands again to restart the
-replication.
-
 Make sure that the peer has been added:
 
 ```sh
 echo "list_peers" | /opt/atsd/hbase/bin/hbase shell
+```
 
-
+```txt
 PEER_ID CLUSTER_KEY STATE
 1 atsd_slave:2181:/hbase ENABLED
 1 row(s) in 0.0930 seconds
@@ -170,7 +163,7 @@ PEER_ID CLUSTER_KEY STATE
 
 Run replication configuration script:
 
-```
+```sh
 /opt/atsd/hbase_util/configure_replication.sh master
 ```
 
@@ -192,7 +185,6 @@ Verify that ATSD tables are present: list tables
 Output should contain a list of ATSD tables, all starting with `atsd_`:
 
 ![](images/atsd_tables.png "atsd_tables")
-
 
 #### Enabling Replication for New Tables
 

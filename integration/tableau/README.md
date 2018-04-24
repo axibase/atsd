@@ -79,7 +79,7 @@ Inspect a subset of the visualized data:
 - [Annual Exports](examples/sum_by_year_for_one_metric.md)
 - [Lowest Annual Imports](examples/value_aggregation.md)
 - [Monthly Export and Imports (JOIN)](examples/detailed_values_by_date_no_aggregation_for_two_metric.md)
-- [Monthly Export and Imports (JOIN) - bars](examples/comparision_of_two_metrics_at_one_bar_graph.md)
+- [Monthly Export and Imports (JOIN) - bars](examples/comparison_of_two_metrics_at_one_bar_graph.md)
 - [Average Annual Imports](examples/average_by_year_for_one_metric.md)
 - [Minimum and Maximum Exports each Year](examples/min_and_max_by_year_for_one_metric.md)
 - [Annual Exports and Imports](examples/sum_by_year_for_two_metrics.md)

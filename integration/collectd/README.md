@@ -116,13 +116,13 @@ sudo systemctl enable collectd-axibase
 
 Launch live collectd Portal in Axibase Chart Lab.
 
-[Launch](https://axibase.com/chartlab/ff756c10)
+[Launch](https://apps.axibase.com/chartlab/ff756c10)
 
 ![](resources/collectd_portal.png)
 
 ## Collected Metrics
 
-```css
+```elm
 collectd.aggregation.cpu.idle
 collectd.aggregation.cpu.interrupt
 collectd.aggregation.cpu.nice

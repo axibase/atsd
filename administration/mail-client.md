@@ -46,6 +46,8 @@ The header and footer can be specified as plain text of HTML. If enabled, they a
 
 The number of messages sent per minute can be monitored with the [`email_notifications_per_minute`](monitoring.md#rule-engine) setting collected by ATSD.
 
-https://atsd_host:8443/portals/series?entity=atsd&metric=email_notifications_per_minute
+```elm
+    https://atsd_host:8443/portals/series?entity=atsd&metric=email_notifications_per_minute
+```
 
 ![](images/monitor-email.png)

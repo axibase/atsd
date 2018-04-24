@@ -13,7 +13,7 @@ Weekly Change Log: October 16, 2017 - October 22, 2017
 | 4632 |UI| Bug | Export page - aggregate function drop down broken. |
 | 4631 | sql | Bug | Metrics not filtered if specified with `WHERE metric.name = {name}` syntax. |
 | 4629 |UI| Bug | Export page fails to display tag values when aggregator is selected. |
-| 4615 | rule-engine | Feature | Add support for `metric.label` and other `entity.*` and `metric.*` fields in the [rule engine](../../rule-engine/expression.md). |
+| 4615 | rule-engine | Feature | Add support for `metric.label` and other `entity.*` and `metric.*` fields in the [rule engine](../../rule-engine/window-fields.md). |
 | 4614 | rule-engine | Bug | `entity_tags` placeholder doesn't work. |
 | [4590](#issue-4590) | client | Feature | Python API client examples. |
 | 4555 | sql | Bug | Fix SQL `datetime NOT BETWEEN` condition. |

@@ -24,7 +24,7 @@ An entity view table consists several columns: icons, links, text, series values
 
 ## Authorization
 
-The view can be accessed by users with [`read`](user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
+The view can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
 
 ## Settings
 

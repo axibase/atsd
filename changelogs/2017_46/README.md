@@ -5,8 +5,8 @@ Weekly Change Log: November 13, 2017 - November 19, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| [4718](#issue-4718) | data-api | Feature | Add support for additional [percentile functions](../api/data/aggregation.md) in the [series query](../api/data/series/query.md) method:<br>PERCENTILE_25 = 25% percentile<br>PERCENTILE_10 = 10% percentile<br>PERCENTILE_5 =  5% percentile<br>PERCENTILE_1 = 1% percentile<br>PERCENTILE_05 = 0.5% percentile<br>PERCENTILE_01 = 0.1% percentile |
-| [4714](#issue-4714) | data-api | Bug | Fix error when the [series query](../api/data/series/query.md) request includes two queries with aggregations using different periods. |
+| [4718](#issue-4718) | data-api | Feature | Add support for additional [percentile functions](../../api/data/aggregation.md) in the [series query](../../api/data/series/query.md) method:<br>PERCENTILE_25 = 25% percentile<br>PERCENTILE_10 = 10% percentile<br>PERCENTILE_5 =  5% percentile<br>PERCENTILE_1 = 1% percentile<br>PERCENTILE_05 = 0.5% percentile<br>PERCENTILE_01 = 0.1% percentile |
+| [4714](#issue-4714) | data-api | Bug | Fix error when the [series query](../../api/data/series/query.md) request includes two queries with aggregations using different periods. |
 | 4709 | portal | Support | Upgrade the built-in portals to the latest syntax by removing Freemarker functions where possible. |
 | [4708](#issue-4708) | sql | Bug | `LIMIT` clause not applied correctly with `ORDER BY datetime DESC`. |
 | [4707](#issue-4707) |UI| Feature | Multiple user interface enhancements. |

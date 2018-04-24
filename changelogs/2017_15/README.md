@@ -45,4 +45,4 @@ Weekly Change Log: April 10 - April 16, 2017
 ### Issue 4043
 --------------
 
-http://apps.axibase.com/chartlab/bbc5e671/5/
+https://apps.axibase.com/chartlab/bbc5e671/5/

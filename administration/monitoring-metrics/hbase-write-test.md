@@ -2,8 +2,6 @@
 
 The HBase Write Test can be run directly from the ATSD user interface under **Settings > Diagnostics > I/O Tests**.
 
-Direct url: `atsd_hostname:8088/admin/hbase-test`
-
 HBase Write Test allows you to:
 
 -   Analyze the data being ingested, i.e. the number of unique

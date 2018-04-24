@@ -170,7 +170,7 @@ sudo collectl --export graphite,atsdserver:8081,d=1,s=dn --rawtoo -f /var/log/co
 
 The output will contain a log of data streamed to ATSD:
 
-```
+```txt
 nurswgvml031.disktotals.reads 0 1434010410
 nurswgvml031.disktotals.readkbs 0 1434010410
 nurswgvml031.disktotals.writes 40 1434010410
@@ -193,11 +193,7 @@ The entity and metrics collected by Collectl will be visible under the Entity an
 
 You can instrument Sensu to send data to ATSD using the Graphite format.
 
-Review the complete Sensu documentation [here](https://sensuapp.org/docs/latest/overview).
-
-Official guide covering Sensu installation and configuration:
-
-[https://sensuapp.org/docs/latest/installation-overview](https://sensuapp.org/docs/latest/installation-overview)
+Review the complete Sensu documentation.
 
 To set up the server and client on separate machines please refer to the following guide:
 
@@ -230,8 +226,6 @@ You have to find and download a check plugin (or write one yourself).
 A large variety of Sensu community plugins, mainly written in Ruby, is available here: [https://github.com/sensu-plugins](https://github.com/sensu-plugins)
 
 Next you have to create a check, for example:
-
-[Official Sensu Checks Guide.](https://sensuapp.org/docs/latest/getting-started-with-checks)
 
 ```json
 {

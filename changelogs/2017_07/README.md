@@ -8,7 +8,7 @@ Weekly Change Log: February 13 - February 19, 2017
 | 3925 | api-rest        | Feature     | Added column alias to metadata with [`metadataFormat=COMMENTS`](../../sql/api.md#parameters) and `outputFormat=csv`.                                                       |
 | [3919](#issue-3919) | csv        | Feature | Added an option to ignore top-N header lines in [CSV Parser](../../parsers/csv/README.md).                                                                  |
 | 3898 | rule engine     | Bug     | Fixed incorrect error validation of user-defined `column` aliases.                                                      |
-| [3889](#issue-3889) | rule engine     | Bug     | Fixed `entity.label` field not accessible in filter [`expressions`](../../rule-engine/expression.md).                                                                 |
+| [3889](#issue-3889) | rule engine     | Bug     | Fixed `entity.label` field not accessible in filter [`expressions`](../../rule-engine/filters.md).                                                                 |
 
 ### Collector
 

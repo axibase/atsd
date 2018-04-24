@@ -80,7 +80,7 @@ In `local_settings.py` change the `SECRET_KEY` setting to a random number.
 
 Configure your finders:
 
-In the `local_settings.py` file specify the storage finders, ATSD hostname/IP, ATSD port, ATSD username, and ATSD password ([as described here](https://axibase.com/products/axibase-time-series-database/writing-data/graphite-format/storage-finder/)):
+In the `local_settings.py` file specify the storage finders, ATSD hostname/IP, ATSD port, ATSD username, and ATSD password ([as described here](storage-finder.md)):
 
 ```python
 STORAGE_FINDERS = (

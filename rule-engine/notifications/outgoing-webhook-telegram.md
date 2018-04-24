@@ -63,7 +63,7 @@ Execute one of the following commands to setup a webhook.
 
 * If ATSD runs on a self-signed SSL certificate
 
-  Export the [self-signed](/administration/ssl-self-signed.md) SSL certificate in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate):
+  Export the [self-signed](../../administration/ssl-self-signed.md) SSL certificate in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate):
 
 ```sh
   keytool -importkeystore -srckeystore /opt/atsd/atsd/conf/server.keystore -destkeystore /opt/atsd/atsd/conf/server.keystore.p12 -srcstoretype jks -deststoretype pkcs12

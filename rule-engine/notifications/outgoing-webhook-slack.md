@@ -66,7 +66,7 @@ Slack Bot is a special account created specifically for automation purposes.
    https://slack:12345678@atsd_host:8443/api/v1/messages/webhook/slack?command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
 ```
 
-  > The receiving ATSD server (or the intermediate reverse proxy) must be externally accessible on the DNS name and have a valid CA-signed [SSL certificate](/administration/ssl-ca-signed.md) installed. Self-signed certificates are **not supported** by Slack at this time.
+  > The receiving ATSD server (or the intermediate reverse proxy) must be externally accessible on the DNS name and have a valid CA-signed [SSL certificate](../../administration/ssl-ca-signed.md) installed. Self-signed certificates are **not supported** by Slack at this time.
 
 * Enter the above URL into the **Request URL** field.
 

@@ -1,7 +1,6 @@
 # User Authorization
 
-
-Axibase Time Series Database implements Role Based Access Control (RBAC) to restrict user access to protected information.
+Axibase Time Series Database implements Role Based Access Control to restrict user access to protected information.
 
 ## Role Based Access Control
 
@@ -20,8 +19,8 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 
 | Role | Description |
 | --- | --- |
-| USER | View information on all pages except Configuration, Entity Group, and Admin pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
-| EDITOR | View and edit information on all pages except Admin and Entity Group pages. <br>Includes `USER` role. |
+| USER | View information on all pages except Configuration and Settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
+| EDITOR | View and edit information on all pages except Settings pages. <br>Includes `USER` role. |
 | ENTITY_GROUP_ADMIN | Edit entity groups. <br>Includes `USER` role. |
 | ADMIN | View and edit information on all pages. <br>Includes all roles. |
 

@@ -2,7 +2,6 @@
 
 - [Graphite Format](../../integration/graphite/graphite-format.md)
 - [Storage Finder](../../integration/graphite/storage-finder.md)
-- [Graphite Integration](../../integration/graphite/graphite-integration.md)
 - [Pickle Protocol](../../integration/graphite/pickle-protocol.md)
 - [Data Migration from Graphite to ATSD](../../integration/graphite/data-migration.md)
 - [Installing Graphite-Web with ATSD Storage Finder](../../integration/graphite/installation.md)

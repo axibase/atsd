@@ -2,7 +2,7 @@
 
 ## Overview
 
-Table functions perform various operations on strings, lists, and maps to create their tabular representations.
+Table functions perform various operations on strings, lists, and maps to create tabular representations.
 
 ## Reference
 
@@ -21,7 +21,7 @@ Table functions perform various operations on strings, lists, and maps to create
 
 This function prints the input map `m` as a two-column table in the specified format `f`.
 
-The first column in the table contains map keys, whereas the second column contains the corresponding map values.
+The first column in the table contains map keys, whereas the second column contains their corresponding map values.
 
 The input map `m` typically refers to map fields such as `tags`, `entity.tags`, or `variables`.
 
@@ -33,7 +33,7 @@ Supported formats:
 * 'csv'
 * 'html'
 
-An empty string is returned if the map `m` is `null` or has no records.
+An empty string is returned if map `m` is `null` or has no records.
 
 Map records with empty or `null` values are ignored.
 
@@ -126,7 +126,7 @@ os=Linux
   addTable([[] m], string f[, [string h]]) string
 ```
 
-The function prints a collection of maps `m` as a multiple-column table in the specified format `f`, with optional header `h`.
+The function prints a collection of maps `m` as a multi-column table in the specified format `f`, with optional header `h`.
 
 The first column in the table contains unique keys from all maps in the collection, whereas the second and subsequent columns contain map values for the corresponding key in the first column.
 
@@ -334,7 +334,7 @@ datetime=value
   jsonToMaps(string s) [map]
 ```
 
-The function parses the input string `s` into a JSON document and returns a collection of maps containing keys and values from this JSON document.
+This function parses the input string `s` into a JSON document and returns a collection of maps containing keys and values from the JSON document.
 
 The collection contains as many maps as there are leaf objects in the JSON document. Each map contains keys and values of the leaf object itself as well as keys and values from the parent objects.
 
@@ -354,7 +354,7 @@ The first list in the collection contains all possible key names in the leaf obj
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The common prefix until the first element array is discarded from key names.
+The common prefix until the first element of the array is discarded from key names.
 
 The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in iterated object, the list on the given index will contain an empty string.
 
@@ -364,12 +364,12 @@ The subsequent lists in the collection contain field values of the associated le
   flattenJson(string j) map
 ```
 
-The function converts a string representation of a JSON document `j` into a map consisting of keys and values.
+The function converts a string representation of JSON document `j` into a map consisting of keys and values.
 
 Processing rules:
 
 * String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function will raise an exception.
-* The JSON object is traversed to extract fields of primitive types: `number`, `string`, and `boolean`.
+* The JSON object is traversed to locate fields with primitive data types: `number`, `string`, and `boolean`.
 * The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
 * If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
 * Fields with `null` and empty string values are ignored.

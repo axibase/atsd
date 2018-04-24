@@ -292,7 +292,7 @@ It may take ATSD several minutes to create tables after initializing the system.
 2017-08-31 22:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:9443
 ```
 
-Login to the ATSD web interface on https://atsd_hostname:8443. Modify the port to `9443` if port settings were previously replaced.
+Login to the ATSD web interface on `https://atsd_hostname:8443`. Modify the port to `9443` if port settings were previously replaced.
 
 
 ## Troubleshooting

@@ -35,7 +35,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
         KHD_CSV_MAXSIZE=400
         KHD_CSV_EVAL_INTERVAL=60
 ```
-        
+
     * Restart WareHouse Proxy agent:
 
 ```sh
@@ -86,8 +86,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
         url="http://atsd_host:8088"
     fi
 ```
-	
-	
+
 * Set username and password in the `inotify_sender.sh` script
 
 ```sh
@@ -95,14 +94,17 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 ```
 
 * Set permissions to execute the script:
+
 ```sh
     chmod a+x inotify_sender.sh
 ```
 
 * Run the script with the following command:
+
 ```sh
     ./inotify_sender.sh
 ```
+
 * Review script logs in the `/tmp/itm/logs` directory.
 
 * Add script to auto-start. The auto-start configuration is dependent on your operating system.
@@ -137,6 +139,6 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 - `ITM - Linux OS`
 
 ### Portals
-- [ITM – Linux OS Portal](http://apps.axibase.com/chartlab/43f054ee)
+- [ITM – Linux OS Portal](https://apps.axibase.com/chartlab/43f054ee)
 
 ![](images/itm_linux_portal.png "itm_linux_portal")

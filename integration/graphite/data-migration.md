@@ -10,7 +10,7 @@ Below are the available configurations and examples.
 
 `migrate.py` supports only Whisper files (`.wsp`).
 
-Data sent into ATSD by the `migrate.py` utility is parsed according to rules specified in the `graphite.conf `file. [Learn about Graphite format and graphite.conf settings here](https://axibase.com/products/axibase-time-series-database/writing-data/graphite-format/).
+Data sent into ATSD by the `migrate.py` utility is parsed according to rules specified in the `graphite.conf `file.
 
 Using `migrate.py`:
 
@@ -18,7 +18,7 @@ Using `migrate.py`:
 migrate.py [-h] [--whisper-base BASE] [-R] path atsd_server atsd_tcp_port
 ```
 
-#### migrate.py settings:
+#### migrate.py settings
 
 | Setting | Required | Description | 
 | --- | --- | --- | 

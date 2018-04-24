@@ -89,7 +89,7 @@ A license manager window will appear after exiting from the installation wizard.
 
 * Enter the following settings in the DSN Setup window:
 
-```
+```txt
 DSN         :   ATSD
 User name   :   <atsd username>
 Password    :   <atsd password>

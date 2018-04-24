@@ -17,7 +17,7 @@ Report comparing minimum and maximum exports per year.
 - Drag-and-drop `Value` onto the rows field, change aggregation from **SUM** to **MIN**: right click > **Measure** > **Minimum**
 - Drag-and-drop `Value` onto the rows field, change aggregation from **SUM** to **MAX**: right click > **Measure** > **Maximum**
 - Select `Line` in the dropdown at the _All_ section on Marks Card
-- Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
+- Optionally add [drop lines](comparison_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results
 

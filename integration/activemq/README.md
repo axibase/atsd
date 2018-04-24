@@ -113,8 +113,8 @@ chmod 600 ./conf/jmx.password
 
 ## Step 2: View Collected Logs in ATSD
 
-1. Log in to the ATSD web interface at https://atsd_hostname:8443;
-2. Click the Entities tab in the top menu;
+1. Log in to the ATSD web interface at `https://atsd_hostname:8443`
+2. Click the Entities tab in the main menu
 3. Locate the ActiveMQ host in the Entities list or enter its name in the Name Mask field at the bottom of the list;
 4. Click the Portals icon next to the host.
 ![](https://axibase.com/wp-content/uploads/2016/03/enitites_list_full.png)
@@ -132,7 +132,7 @@ If the `activemq_hostname` cannot be resolved, add it to `/etc/hosts` manually.
 
 ## Step 3: Configure ActiveMQ JMX Job
 
-1. Log in to Axibase Collector at https://collector_hostname:9443
+1. Log in to Axibase Collector at `https://collector_hostname:9443`
 2. Click the Jobs tab in the top menu.
 3. Locate the `jmx-activemq` job.
 4. On the JMX Job page, enable collection by setting the flag in the Enabled check box.
@@ -167,7 +167,7 @@ If the existing configuration passes, this indicates that there are no errors or
 ## Step 4: View ActiveMQ Statistics in ATSD
 
 
-1. Log in to ATSD web interface at https://atsd_hostname:8443
+1. Log in to ATSD web interface at `https://atsd_hostname:8443`
 2. Click the Entities tab in the top menu.
 3. Locate the ActiveMQ host in the Entities list or enter its name in Name Mask field at the bottom of the list.
 4. Click the Portals icon next to the host.

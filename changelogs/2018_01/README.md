@@ -3,15 +3,15 @@ Monthly Change Log: January 2018
 
 ## ATSD
 
-Issue| Category    | Type    | Subject              
+Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 4940 | rule engine | Feature | Add administrative [setting](../../rule-engine/window.md#cancel-status) to control 'On Cancel' behavior.
-4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../changelogs/rule-engine#rule-engine) XML export.
+4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../rule-engine#rule-engine) XML export.
 4929 | rule engine | Bug | Web notifications: [Telegram](../../rule-engine/notifications/telegram.md) discards long messages.
-4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../changelogs/sql#where-clause).
+4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../sql#where-clause).
 4923 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) `400` error doesn't contain information about the message.
-4921 | security | Bug | [Built-in](../../changelogs/administration/user-authentication.md#built-in-account) user can't log in to take portal screenshot.
-4920 | security | Bug | Disabled [user](../../changelogs/administration/user-authentication.md#user-authentication) is able to execute SQL queries.
+4921 | security | Bug | [Built-in](../../administration/user-authentication.md#built-in-account) user can't log in to take portal screenshot.
+4920 | security | Bug | Disabled [user](../../administration/user-authentication.md#user-authentication) is able to execute SQL queries.
 4914 | rule engine | Bug | Add details to error messages in [HipChat](../../rule-engine/notifications/hipchat.md).
 4913 | client | Feature | Upgrade [R client](https://github.com/axibase/atsd-api-r/blob/master/README.md) to remove dependency on user home directory.
 4911 | rule engine | Bug | Pass query into an [SQL client](../..//sql/client/README.md) containing `>` character.
@@ -25,7 +25,7 @@ Issue| Category    | Type    | Subject
 4893 | UI | Feature | Statistics page: display tag names based on associated metric and entity tag templates.
 4892 | rule engine | Feature | Extend [`excludeKeys`](../../rule-engine/functions-collection.md#excludekeys) function - add support for patterns.
 4889 | rule engine | Bug | Round numbers in [web notifications](../../rule-engine/web-notifications.md).
-4888 | rule engine | Bug | Email [subject](../../administration/setting-up-email-client.md) should not include inline links.
+4888 | rule engine | Bug | Email [subject](../../administration/mail-client.md) should not include inline links.
 4883 | rule engine | Bug | Window remains in [`OPEN`](../../rule-engine/window.md#open-status) status after all commands are removed.
 4879 | rule engine | Feature | Add support for [control flow](../../rule-engine/control-flow.md) in notifications.
 4877 | rule engine | Bug | [`entity_tags`](../../rule-engine/window.md#base-fields) expression fails if used without key.

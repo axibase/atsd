@@ -28,7 +28,7 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 * Select the `Servers` tab and click on the required AD server certificate to export it.
 
-![](resources/cert&export.png)
+![](resources/cert-export.png)
 
 ## Import Server Certificate into ATSD Keystore File
 

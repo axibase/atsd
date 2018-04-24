@@ -7,7 +7,7 @@ Weekly Change Log: January 23 - January 29, 2017
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3831 | api-rest    | Bug     | Fixed metric [`series`](../../api/meta/entity/get.md#entity-get) request processing if series count exceeds 1000. Added a warning message to web UI when the threshold is reached. |
 | 3825 | sql         | Bug     | Removed extra rows from the result set when the [`VALUE {n}`](../../sql/examples/interpolate-extend.md#interpolate-with-extend) interpolation function was specified in a `GROUP BY` period clause. |
-| 3816 | UI          | Bug     | Fixed ordering of timestamps on the Interval tab on the [Series Statistics](../../tree/collector-changes/changelogs/2017_03#issue-3680) page. Intervals smaller than the median minus standard deviation are now not displayed. |
+| 3816 | UI          | Bug     | Fixed ordering of timestamps on the Interval tab on the Series Statistics page. Intervals smaller than the median minus standard deviation are now not displayed. |
 | 3813 | UI          | Bug     | Fixed 'series not found' issue when displaying series with multiple tags on the Series Statistics page. |
 | 3808 | metric      | Bug     | Corrected a defect where an incorrect `NaN` count was shown on the Series Statistics page. |
 | [3742](#issue-3742) | UI          | Feature | Added a `Text Column` button to the UI Export form. |

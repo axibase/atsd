@@ -4,7 +4,7 @@ This document describes how to monitor availability and performance of [Apache K
 
 ## Step 1: Configure Axibase Collector
 
-1. Log in to Axibase Collector at https://collector_hostname:9443
+1. Log in to Axibase Collector at `https://collector_hostname:9443`
 2. Select the Jobs tab in the top menu and click the **Import** button.
 3. Import the following [kafka-jmx](resources/job_jmx_kafka-jmx.xml) job.
 4. Locate the newly-imported `kafka-jmx` job on the **Jobs** page.
@@ -43,7 +43,7 @@ Other parameters are optional. For more information on JMX configuration, see [J
 
 ## Step 2: Configure Kafka in ATSD
 
-1. Log in to the target Axibase Time Series Database instance at https://atsd_hostname:8443.
+1. Log in to the target Axibase Time Series Database instance at `https://atsd_hostname:8443`.
 2. Go to the Metrics page and verify that `jmx.kafka.*` metrics are available.
 3. Go to the Entities page and verify that `jmx.kafka.*` properties are available for entities from `kafka-properties` configuration.
 4. Go to `Settings -> Entity Groups` and import [Kafka](resources/groups.xml) entity group.

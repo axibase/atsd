@@ -5,7 +5,7 @@
 ### URI
 
 ```elm
-http://atsd_hostname:8088/api/v1/entities?timeFormat=iso&expression=name%20LIKE%20%27nurswgvml00*%27&tags=*
+https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&expression=name%20LIKE%20%27nurswgvml00*%27&tags=*
 ```
 
 ### Expression 

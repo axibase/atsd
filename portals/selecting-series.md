@@ -26,8 +26,7 @@ change over time and their history is visualized with different types of graphs.
 # Series 2 settings
 ```
 
-Each series is identified by a composite key which consists of an **metric**, **entity**, and optional key-value pairs 
-called **series tags**, or simply **tags**. 
+Each series is identified by a composite key which consists of a **metric**, **entity**, and optional name/value pairs called **series tags**, or simply **tags**.
 
 ```ls
   [series]

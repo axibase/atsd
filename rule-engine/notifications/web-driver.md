@@ -42,10 +42,9 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
     ![](images/webdriver-settings_1.png)
 
-
 ## Option 2: Chrome Driver
 
-* Install Chrome (see https://www.google.com/linuxrepositories/).
+* Install Chrome from Google Linux Repositories.
 
 Ubuntu:
 

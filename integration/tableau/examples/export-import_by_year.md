@@ -23,7 +23,7 @@ Build a report illustrating the differences between exports and imports each yea
 > In case of error remove ']' and select value from tooltip
 - Right click on calculation > **Dimension**
 - Select `Line` in the dropdown at Marks Card
-- Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
+- Optionally add [drop lines](comparison_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results
 

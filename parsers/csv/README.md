@@ -37,7 +37,7 @@ series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda
 |  `Entity Prefix`  |  Prefix added to entity names.  |
 |  `Default Entity`  |  All data written to specific entity.  |
 |  `Replace Entities`  |  Replace entity names in the input file with their aliases from the selected Replacement Table|
-|  `Process Events`  |  Process incoming data in the [Rule Engine](/rule-engine) in addition to storing it in the database.  |
+|  `Process Events`  |  Process incoming data in the [Rule Engine](../../rule-engine) in addition to storing it in the database.  |
 |  `Metric Prefix`  |  Prefix added to metric names.  |
 |  `Metric Name Column`  |  Column containing metric names.  |
 |  `Metric Value Column`  |  Column containing metric values.  |

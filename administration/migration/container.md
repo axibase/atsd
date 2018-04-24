@@ -127,12 +127,12 @@ Check HBase for consistency.
 
 The expected message is:
 
-```
+```txt
   0 inconsistencies detected.
   Status: OK
 ```
 
-> Follow [recovery](../corrupted-file-recovery.md#repair-hbase) procedures if inconsistencies are reported.
+> Follow recovery procedures if inconsistencies are reported.
 
 Stop HBase.
 
@@ -142,7 +142,7 @@ Stop HBase.
 
 Execute the `jps` command and verify that the `HMaster` process is **not present** in the output.
 
-```sh
+```txt
 jps
 1200 DataNode
 1308 SecondaryNameNode
@@ -166,7 +166,7 @@ The expected message is:
   The filesystem under path '/hbase/' is HEALTHY.
 ```
 
-> If corrupted files are reported, follow the [recovery](../corrupted-file-recovery.md#repair-hbase) procedure.
+> If corrupted files are reported, follow the recovery procedure.
 
 Stop HDFS.
 
@@ -554,7 +554,9 @@ Delete the diagnostics folder:
 ...
 ```
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at http://ATSD_HOSTNAME:8050/. The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
+The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
+
+The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
 
 6. Migration is now complete.
 

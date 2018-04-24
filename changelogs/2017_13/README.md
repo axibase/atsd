@@ -180,4 +180,4 @@ LIMIT 10
 ### Issue 3850
 --------------
 
-http://apps.axibase.com/chartlab/55840d5c/2/
+https://apps.axibase.com/chartlab/55840d5c/2/

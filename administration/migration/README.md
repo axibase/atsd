@@ -126,7 +126,7 @@ The expected message is:
 Status: OK
 ```
 
-> Follow [recovery](../corrupted-file-recovery.md#repair-hbase) procedures if inconsistencies are reported.
+> Follow recovery procedures if inconsistencies are reported.
 
 Stop HBase.
 
@@ -160,7 +160,7 @@ The expected message is:
   The filesystem under path '/hbase/' is HEALTHY.
 ```
 
-> If corrupted files are reported, follow the [recovery](../corrupted-file-recovery.md#repair-hbase) procedure.
+> If corrupted files are reported, follow the recovery procedure.
 
 Stop HDFS.
 
@@ -540,7 +540,9 @@ Delete the diagnostics folder manually:
 ...
 ```
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at http://ATSD_HOSTNAME:8050/. The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
+The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`. 
+
+The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
 
 6. Migration is now complete.
 
@@ -603,7 +605,7 @@ The number of records should match the results prior to migration.
 
 ## Delete Backups
 
-1. Delete backup tables in HBase.
+### Delete backup tables in HBase
 
 ```sh
 /opt/atsd/hbase/bin/hbase shell
@@ -621,13 +623,13 @@ drop_all '.*_backup'
 exit
 ```
 
-2. Delete the backup directory.
+### Delete the backup directory
 
 ```sh
 rm -rf /home/axibase/atsd-backup
 ```
 
-3. Remove archives.
+### Remove archives
 
 ```sh
 rm /opt/atsd/hadoop.tar.gz

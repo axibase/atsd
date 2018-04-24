@@ -38,6 +38,10 @@ Forecast standard deviation.
   forecast_deviation(double n) double
 ```
 
-Difference between a number `n` (such as the last value) and a forecasted value, divided by the forecast standard deviation.
+Difference between a number `n` (such as the last value) and the forecast value (returned by `forecast()` function), divided by the forecast standard deviation.
 
-Formula: `(n - forecast())/forecast_stdev()`.
+The formula is:
+
+```javascript
+  (n - forecast())/forecast_stdev()
+```
