@@ -18,13 +18,13 @@ cat atsd.company.com.crt atsd.company.com.ca-bundle > atsd.company.com.fullchain
 
 ## Install Certificates in ATSD
 
-The certificates can be either uploaded into ATSD or installed by deploying a keystore file on the local file system.
+The certificates can be either [uploaded](#upload-certificates-to-atsd) into ATSD or installed by [deploying](#deploy-keystore-file) a keystore file on the local file system.
 
 ### Upload Certificates to ATSD
 
 If the certificate files are in `PEM` format, you can upload them to ATSD using `curl`.
 
-Alternatively, create a PKCS12 keystore as described below.
+Alternatively, create a PKCS12 keystore as described [below](#deploy-keystore-file).
 
 Replace `{USR}` with the username, `{PWD}` with the password and `{HOST}` with the hostname or IP address of the target ATSD server in the command below.
 
