@@ -7,7 +7,7 @@ install:
   - npm install -g markdown-link-check
 script: 
   - yaspeller -e ".md" ./
-  - find . -name \*.md -exec markdown-link-check {} \;
+  - find . -name \*.md -print0 | xargs -0 -n1 markdown-link-check
 cache:
   directories:
     - $(npm config get prefix)/lib/node_modules
