@@ -242,19 +242,32 @@ Post message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs
         "X-User-Id": "botUserId"
      ],
      "params": [
-        "message": [ "rid": "#general", "msg": "Hello, Rocket.Chat"]
+        "message": [ "rid": "GENERAL", "msg": "Hello, Rocket.Chat"]
      ]
   ])
 ```
 
+Response `content`:
+
 ```json
 {
-  "data": {
-    "message": {
-      "msg": "Hello, Rocket.Chat",
-      "rid": "#general"
-    }
-  }
+  "message": {
+    "rid": "GENERAL",
+    "msg": "Hello, Rocket.Chat",
+    "ts": "2018-04-24T11:31:45.728Z",
+    "alias": "ATSD BOT",
+    "u": {
+      "_id": "userId",
+      "username": "atsd_bot",
+      "name": "ATSD BOT"
+    },
+    "unread": true,
+    "mentions": [],
+    "channels": [],
+    "_updatedAt": "2018-04-24T11:31:45.731Z",
+    "_id": "messageId"
+  },
+  "success": true
 }
 ```
 
