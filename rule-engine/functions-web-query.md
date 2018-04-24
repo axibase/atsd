@@ -7,66 +7,63 @@ Web query functions execute an HTTP request to an external web service and retur
 ## Reference
 
 * [`queryConfig`](#queryconfig)
-    * [`application/x-www-form-urlencoded`](#content-type-is-applicationx-www-form-urlencoded)
-    * [`application/json`](#content-type-is-applicationjson)    
+    * [Form](#content-type-is-form)
+    * [JSON](#content-type-is-json)    
 * [`queryGet`](#queryget)
 * [`queryPost`](#querypost)
+* [Request URL](#request-url)
 * [Response Object](#response-object)
-* [Result Processing Examples](#result-processing-examples)
+* [Examples](#examples)
 
 ### `queryConfig`
 
 ```javascript
-  queryConfig(string c, map p) response
+  queryConfig(string n, [map p]) response
 ```
 
-This command executes an HTTP request using a predefined [web notification](web-notifications.md), identified by name string `c`.
+This function executes an HTTP request using a predefined [web notification](web-notifications.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
 
-The function returns a `WebRequestResult` response object.
+> The web notification `n` must be listed as `enabled` on the **Alerts > Web Notifications** page.
 
-* The web notification must exist and be listed on the **Alerts > Web Notifications** page.
-* The web notification must be enabled.
-* The name `c` is case-sensitive.
+Parameters and placeholders defined in the web notification are replaced using the input map `p`.
 
-The map of parameters `p` is used to set parameters and replace placeholders defined in the web notification.
+Available parameters for built-in notification types are enumerated [here](params-map.md).
 
-Aliases used in `p` for built-in notifications described [here](params-map.md).
+#### Content Type is Form
 
-#### Content Type is `application/x-www-form-urlencoded`
+The form-based web notification defines parameters that can be modified in the rule editor.
 
-The form-based web notification defines a set of parameters that can be edited in the rule editor.
-
-The values for such parameters are retrieved from the input map `p`.
-
-Unknown parameters in map `p` are ignored.
+The values for such parameters are retrieved from the input map `p`. Unknown parameters in map `p` are ignored.
 
 ![query config form](images/query-config-form.png)
 
 ```javascript
-queryConfig("rc-hook", ["repository": "atsd-site", "channel": "devops"])
+queryConfig("rc-hook", 
+  ["channel": "devops", "repository": "atsd-site"]
+)
 ```
 
-The payload sent to the target web service will be assembled as follows:
+The target URL will receive the following payload sent as `application/x-www-form-urlencoded`:
 
 ```ls
 channel=devops&repository=atsd-site
 ```
 
-#### Content Type is `application/json`
+#### Content Type is JSON
 
-The JSON payload in the web notification includes placeholders using `${name}` syntax.
+The JSON document defined in the web notification may include placeholders using `${name}` syntax.
 
-Such placeholders are substituted with corresponding parameter values from the input map `p`.
-
-Unknown parameters in the map `p` are ignored.
+Such placeholders are substituted with corresponding parameter values from the input map `p`. Unknown parameters in the map `p` are ignored.
 
 ![query config json](images/query-config-json.png)
 
 ```javascript
-queryConfig("rc-hook", ["repository": "atsd-site", "channel": "devops"])
+queryConfig("rc-hook", 
+  ["channel": "devops", "repository": "atsd-site"]
+)
 ```
 
-The JSON document sent to the target web service is as follows:
+The target URL will receive the following JSON payload sent as `application/json`:
 
 ```json
 {
@@ -81,29 +78,17 @@ The JSON document sent to the target web service is as follows:
   queryGet(string u, [map c]) response
 ```
 
-Execute a `GET` request to the specified request URL `u`.
+Execute a `GET` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
-The function returns a [`WebRequestResult`](#response-object) response object.
+The configuration map `c` may contain the following fields:
 
-The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
-
-```ls
-  scheme:[//[user:password@]host[:port]][/path][?query]
-```
-
-Sample URL:
-
-```ls
-  https://cuser:cpass@10.102.0.9:8443/service?load=true
-```
-
-The configuration object `c` may contain the following fields:
-
-* `headers` - Map of request headers keys and values, or a collection of header entries separated by `:`.
+* `headers` - Map of request headers keys and values.
 * `params` - Map of request parameters appended to query string.
 * `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
 
-Sample query to download a JSON document from a trusted web service without passing any headers or parameters.
+```javascript
+  queryGet("https://ipinfo.io/1.1.1.1/json").content
+```
 
 ### `queryPost`
 
@@ -111,42 +96,26 @@ Sample query to download a JSON document from a trusted web service without pass
   queryPost(string u, [map c]) response
 ```
 
-Execute a `POST` request to the specified request URL `u`.
+Execute a `POST` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
-The function returns a [`WebRequestResult`](#response-object) response object.
+The configuration map `c` may contain the following fields:
 
-The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
-
-```ls
-  scheme:[//[user:password@]host[:port]][/path][?query]
-```
-
-Sample URL:
-
-```ls
-  https://cuser:cpass@10.102.0.9:8443/service?load=true
-```
-
-The configuration object `c` may contain the following fields:
-
-* `contentType` - Content type of the request. Default content type is `application/json`.
-* `content` - Request body text. Either `content` or `params` may be specified.
-* `headers` - Map of request headers keys and values, or a collection of header entries separated by `:`.
-* `params` - Map of request parameters serialized to text payload depending on the content type.
+* `contentType` - Content type of the request. Default is `application/json`.
+* `content` - Request body text. 
+* `headers` - Map of request headers keys and values.
+* `params` - Map of request parameters.
 * `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
 
-The `params` map is serialized as a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
+The request payload can be specified using either `content` text or `params` map. 
 
-`params` map:
-
-```javascript
-["repository": "atsd-site", "channel": "devops"]
-```
+The `params` map is serialized into a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
 
 **JSON content type:**
 
 ```javascript
-  queryPost(_url, ["params": ["repository": "atsd-site", "channel": "devops"]])
+  queryPost(_url, 
+    ["params": ["repository": "atsd-site", "channel": "devops"]]
+  )
 ```
 
 Payload:
@@ -158,7 +127,10 @@ Payload:
 **Form content type:**
 
 ```javascript
-  queryPost(_url, ["contentType": "application/x-www-form-urlencoded", "params": ["repository": "atsd-site", "channel": "devops"]])
+  queryPost(_url, [
+     "contentType": "application/x-www-form-urlencoded", 
+     "params": ["repository": "atsd-site", "channel": "devops"]
+  ])
 ```
 
 Payload:
@@ -167,74 +139,22 @@ Payload:
 repository=atsd-site&channel=devops
 ```
 
-#### Example: Webhook
+### Request URL
 
-Post message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
+The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
 
-```javascript
-  queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", ['params': ['channel': '#devops', 'text': "Hello from ATSD!"]])
-  // request body is: {"channel":"#devops","text":"hello world"}
+```ls
+  scheme:[//[user:password@]host[:port]][/path][?query]
 ```
 
-#### Example: REST API
+Examples:
 
-Post message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs/developer-guides/rest-api/chat/sendmessage/) REST API method.
-
-```javascript
-  queryPost("https://chat_server:3000/api/v1/chat.sendMessage", [
-     "headers":[
-        "X-Auth-Token": "botUserToken",
-        "X-User-Id": "botUserId"
-     ],
-     "params": [
-        "message": [
-           "rid": "roomID", 
-           "msg": "Hello, Rocket.Chat"
-        ]
-     ]
-  ])
+```elm
+  https://cuser:cpass@10.102.0.9:8443/service?load=true
 ```
 
-```json
-{
-  "data": {
-    "message": {
-      "msg": "Hello, Rocket.Chat",
-      "rid": "roomID"
-    }
-  }
-}
-```
-
-
-#### Example: GraphQL
-
-Retrieve results of a [GitHub GraphQL](https://developer.github.com/v4/query/) query.
-
-```javascript
-  queryPost("https://api.github.com/graphql", [
-    "headers": ["Authorization" : "bearer TOKEN"],
-    "params": ["query": "{ user(login:\"octocat\") { name login websiteUrl bio company createdAt location organizations(first: 1) {nodes { name login location description websiteUrl url }}}}"]
-  ])
-```
-
-```json
-{
-  "data": {
-    "user": {
-      "name": "The Octocat",
-      "login": "octocat",
-      "websiteUrl": "http://www.github.com/blog",
-      "bio": null,
-      "company": "GitHub",
-      "createdAt": "2011-01-25T18:44:36Z",
-      "location": "San Francisco",
-      "organizations": {
-        "nodes": []
-      }
-    }
-  }
-}
+```elm
+  https://api.slack.com/sendMessage
 ```
 
 ### Response Object
@@ -242,7 +162,7 @@ Retrieve results of a [GitHub GraphQL](https://developer.github.com/v4/query/) q
 **Field**    | **Type** | **Description**
 -------------|----------|----------------
 `content`      | string   | Response body text.
-`status`       | integer      | Status code, such as `200` or `401`.
+`status`       | integer  | Status code, such as `200` or `401`.
 `headers`      | map      | Response headers. Header values with the same name are separated by a comma.
 `duration`     | long     | Time, in milliseconds, between initiating a request and downloading the response.
 `reasonPhrase` | string   | Status line such as `OK`.
@@ -250,20 +170,20 @@ Retrieve results of a [GitHub GraphQL](https://developer.github.com/v4/query/) q
 
 ```txt
 WebRequestResult(
-  status=200,
-  reasonPhrase=OK,
-  contentType=application/json; charset=utf-8,
   content={
     "ip": "8.8.8.8",
     "country": "US",
     "org": "Example"
   },
+  status=200,
   headers={
     Content-Type=application/json; charset=utf-8,
     Access-Control-Allow-Origin=*,
     Transfer-Encoding=chunked
   },
-  duration=225
+  duration=225,  
+  reasonPhrase=OK,
+  contentType=application/json; charset=utf-8
 )
 ```
 
@@ -293,13 +213,92 @@ printObject(queryPost({}))
 +--------------+---------------------------------------------------------+
 ```
 
-### Result Processing Examples
+### Examples
 
-Display text content.
+#### Send Request to a Webhook
+
+Post message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
+
+```javascript
+  queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", [  
+      "params": ["channel": "#devops", "text": "Hello from ATSD!"]
+  ])
+```
+
+Request payload:
+
+```json
+  {"channel":"#devops","text":"hello world"}
+```
+
+#### Post Message using REST API
+
+Post message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs/developer-guides/rest-api/chat/sendmessage/) REST API method.
+
+```javascript
+  queryPost("https://chat_server:3000/api/v1/chat.sendMessage", [
+     "headers":[
+        "X-Auth-Token": "botUserToken",
+        "X-User-Id": "botUserId"
+     ],
+     "params": [
+        "message": [ "rid": "#general", "msg": "Hello, Rocket.Chat"]
+     ]
+  ])
+```
+
+```json
+{
+  "data": {
+    "message": {
+      "msg": "Hello, Rocket.Chat",
+      "rid": "#general"
+    }
+  }
+}
+```
+
+#### Execute a GraphQL Query
+
+Retrieve results of a [GitHub GraphQL](https://developer.github.com/v4/query/) query.
+
+```javascript
+  queryPost("https://api.github.com/graphql", [
+    "headers": ["Authorization" : "bearer TOKEN"],
+    "params": [
+      "query": "{ user(login:\"octocat\") { name login websiteUrl bio company createdAt location organizations(first: 1) {nodes { name login location description websiteUrl url }}}}"
+    ]
+  ])
+```
+
+Response `content`:
+
+```json
+{
+  "data": {
+    "user": {
+      "name": "The Octocat",
+      "login": "octocat",
+      "websiteUrl": "http://www.github.com/blog",
+      "bio": null,
+      "company": "GitHub",
+      "createdAt": "2011-01-25T18:44:36Z",
+      "location": "San Francisco",
+      "organizations": {
+        "nodes": []
+      }
+    }
+  }
+}
+```
+
+#### Display Text Content
 
 ```javascript
   queryGet("https://ipinfo.io/1.1.1.1/json").content
 ```
+
+Response `content`:
 
 ```json
   {
@@ -312,7 +311,7 @@ Display text content.
   }
 ```
 
-Convert the JSON response to a flat structure.
+#### Convert JSON response to a flat structure
 
 ```javascript
   flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content)
@@ -327,7 +326,7 @@ Convert the JSON response to a flat structure.
   ]
 ```
 
-Display field values in the JSON response in a compact format.
+#### Display field values in the JSON response in a compact format
 
 ```javascript
   concatLines(flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content).values())
