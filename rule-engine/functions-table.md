@@ -341,11 +341,11 @@ The collection contains as many maps as there are leaf objects in the JSON docum
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The function attempts to shorten key names by removing common prefix where appropriate.
+The function attempts to shorten key names by removing a common prefix where appropriate.
 
 Examples:
 
-* common prefix is discarded 
+* Common prefix `data.` is discarded:
 
 ```javascript
 {
@@ -362,14 +362,16 @@ Examples:
 }
 ```
 
-Output maps:
+Output:
 
 ```ls
-[{d=2018-04-24, v=1},
- {d=2018-04-25, v=2}]
+[
+ {d=2018-04-24, v=1},
+ {d=2018-04-25, v=2}
+]
 ```
 
-* no common prefix is matched
+* No prefix is discarded:
 
 ```javascript
 {
@@ -384,11 +386,13 @@ Output maps:
 }
 ```
 
-Output maps:
+Output:
 
 ```ls
-[{"chat_1.d":"2018-04-24", "chat_1.v":"a",
-  "chat_2.d":"2018-04-25", "chat_2.v":"b"}]
+[
+  {"chat_1.d":"2018-04-24", "chat_1.v":"a",
+   "chat_2.d":"2018-04-25", "chat_2.v":"b"}
+]
 ```
 
 See additional examples [below](#examples).
@@ -405,13 +409,13 @@ The first list in the collection contains all possible key names in the leaf obj
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The function attempts to shorten key names by removing common prefix where appropriate.
+The function attempts to shorten key names by removing a common prefix where appropriate.
 
 The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in iterated object, the list on the given index will contain an empty string.
 
 Examples:
 
-* common prefix is discarded
+* Common prefix `data.` is discarded
 
 ```javascript
 {
@@ -436,7 +440,7 @@ Output lists:
  [2018-04-25, 2]]
 ```
 
-* no common prefix is matched
+* No prefix is discarded
 
 ```javascript
 {
@@ -451,11 +455,13 @@ Output lists:
 }
 ```
 
-Output lists:
+Output:
 
 ```ls
-[[chat_1.d,   chat_1.v, chat_2.d,   chat_2.v],
- [2018-04-24, a,        2018-04-25, b       ]]
+[
+ [chat_1.d,   chat_1.v, chat_2.d,   chat_2.v],
+ [2018-04-24, a,        2018-04-25, b       ]
+]
 ```
 
 See additional examples [below](#examples).
