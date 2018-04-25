@@ -12,6 +12,7 @@ Table functions perform various operations on strings, lists, and maps to create
 * [`jsonToMaps`](#jsontomaps)
 * [`jsonToLists`](#jsontolists)
 * [`flattenJson`](#flattenjson)
+* [Examples](#examples)
 
 ### `addTable` for map
 
@@ -340,7 +341,57 @@ The collection contains as many maps as there are leaf objects in the JSON docum
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The common prefix until the first element array is discarded from key names.
+The function attempts to shorten key names by removing common prefix where appropriate.
+
+Examples:
+
+* common prefix is discarded 
+
+```javascript
+{
+  "data": [
+    {
+      "d": "2018-04-24",
+      "v": 1
+    },
+    {
+      "d": "2018-04-25",
+      "v": 2
+    }
+  ]
+}
+```
+
+Output maps:
+
+```ls
+[{d=2018-04-24, v=1},
+ {d=2018-04-25, v=2}]
+```
+
+* no common prefix is matched
+
+```javascript
+{
+  "chat_1": {
+    "d": "2018-04-24",
+    "v": "a"
+  },
+  "chat_2": {
+    "d": "2018-04-25",
+    "v": "b"
+  }
+}
+```
+
+Output maps:
+
+```ls
+[{"chat_1.d":"2018-04-24", "chat_1.v":"a",
+  "chat_2.d":"2018-04-25", "chat_2.v":"b"}]
+```
+
+See additional examples [below](#examples).
 
 ### `jsonToLists`
 
@@ -354,9 +405,60 @@ The first list in the collection contains all possible key names in the leaf obj
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The common prefix until the first element of the array is discarded from key names.
+The function attempts to shorten key names by removing common prefix where appropriate.
 
 The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in iterated object, the list on the given index will contain an empty string.
+
+Examples:
+
+* common prefix is discarded
+
+```javascript
+{
+  "data": [
+    {
+      "d": "2018-04-24",
+      "v": 1
+    },
+    {
+      "d": "2018-04-25",
+      "v": 2
+    }
+  ]
+}
+```
+
+Output lists:
+
+```ls
+[[d, v], 
+ [2018-04-24, 1], 
+ [2018-04-25, 2]]
+```
+
+* no common prefix is matched
+
+```javascript
+{
+  "chat_1": {
+    "d": "2018-04-24",
+    "v": "a"
+  },
+  "chat_2": {
+    "d": "2018-04-25",
+    "v": "b"
+  }
+}
+```
+
+Output lists:
+
+```ls
+[[chat_1.d,   chat_1.v, chat_2.d,   chat_2.v],
+ [2018-04-24, a,        2018-04-25, b       ]]
+```
+
+See additional examples [below](#examples).
 
 ### `flattenJson`
 
