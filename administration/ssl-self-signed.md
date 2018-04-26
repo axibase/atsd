@@ -13,6 +13,8 @@ There are to options to create and import self-signed certificates into ATSD:
 * [ATSD UI](#atsd-ui)
 * [HTTP Query](#http-query)
 
+The certificates will be installed without an ATSD restart.
+
 ### ATSD UI
 
 Navigate to **Settings > Certificates** page and click on **Self Signed Certificate** on the multi-action button:
@@ -43,7 +45,7 @@ curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/self-signed \
 
 302
 ```
-> Note only _domainName_ field is required, _countryCode_ must contain two letters if specified.
+> Note only `domainName` field is required, `countryCode` must contain two letters if specified.
 
 ## Verify Certificate
 
