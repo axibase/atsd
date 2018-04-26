@@ -2,50 +2,59 @@
 
 ## Overview
 
-The default certificate installed in ATSD is generated for DNS name 'atsd'. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name used by clients when accessing ATSD user interface and HTTP API.
+The default certificate installed in ATSD is generated for DNS name (`commonName`) 'atsd'. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name (fully qualified hostname) at which the ATSD server will be accessible.
 
 As with all self-signed certificates, the new certificate will still cause a security exception in user browsers and will require passing `-k/--insecure` parameter when connecting to ATSD using `curl` and similar tools in order to skip certificate validation.
 
 ## Create and Import Certificate
 
-There are to options to create and import self-signed certificates into ATSD:
+There are two options to create and import self-signed certificates into ATSD:
 
-* [ATSD UI](#atsd-ui)
-* [HTTP Query](#http-query)
+* [User Interface](#user-interface)
+* [Endpoint Request](#endpoint-request)
 
 The certificates will be installed without an ATSD restart.
 
-### ATSD UI
+### User Interface
 
-Navigate to **Settings > Certificates** page and click on **Self Signed Certificate** on the multi-action button:
+Login as a user with administrative privileges.
+
+Open the **Settings > Certificates** page and click **Self Signed Certificate** in the multi-action button:
 
 ![](images/ssl_self_signed_1.png)
 
 ![](images/ssl_self_signed_2.png)
 
-Fill in the fields and click on **Create And Import**:
+Enter the certificate information and click on **Create And Import**. Only the `Domain Name` field is required.
 
 ![](images/ssl_self_signed_3.png)
 
-> Note only _Domain Name_ field is required, _Country Code_ must contain two letters if specified.
+> `Country Code` must contain two letters if specified.
 
-### HTTP Query
+### Endpoint Request
 
-Replace `{USR}` with the username, `{PWD}` with the password, `{HOST}` with the hostname or IP address of the target ATSD server and specify appropriate parameters in the command below.
+Replace `{USR}` and `{PWD}` with administrator credentials, `{atsd_hostname}` with the hostname or IP address of the ATSD server and specify appropriate parameters in the command below.
+
+```sh
+curl -k -u {USR}:{PWD} https://{atsd_hostname}:8443/admin/certificates/self-signed \
+  -d "domainName=atsd.customer_domain.com" 
+  -w "\n%{http_code}\n"
+```
+
+The response status code should be `2xx` or `3xx`.
+
+You can specify additional fields if necessary. The `countryCode` field must contain two letters if specified.
 
 ```elm
-curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/self-signed \
+curl -v -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/self-signed \
   -d "domainName=atsd.customer_domain.com" \
   -d "organizationalUnit=Software Group" \
-  -d "organization=Axibase Corporation" \
-  -d "cityOrLocality=Cupertino" \
+  -d "organization=ExampleCo" \
+  -d "cityOrLocality=Fresno" \
   -d "stateOrProvince=CA" \
   -d "countryCode=US" \
   -w "\n%{http_code}\n"
-
-302
 ```
-> Note only `domainName` field is required, `countryCode` must contain two letters if specified.
 
 ## Verify Certificate
 
