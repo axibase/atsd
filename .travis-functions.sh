@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 function list_modified_md_files {
     if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
         find . -name \*.md -print || true
@@ -24,7 +25,7 @@ function linkcheck {
     list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
 }
 
-function print_modified_files {
+function print_modified_markdown_files {
     echo "Files to be checked:"
     list_modified_md_files
 }

@@ -7,7 +7,7 @@ install:
   - source .travis-functions.sh
   - generate_yaspeller_dictionary .spelling
 script:
-  - print_modified_files
+  - print_modified_markdown_files
   - spellcheck
   - linkcheck
 cache:
