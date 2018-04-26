@@ -5,7 +5,7 @@ node_js:
 install:
   - npm install --global --production yaspeller spellchecker-cli markdown-link-check
   - source .travis-functions.sh
-  - generate_generate_yaspeller_dictionary .spelling
+  - generate_yaspeller_dictionary .spelling
 script:
   - print_modified_files
   - spellcheck
