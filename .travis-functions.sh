@@ -1,8 +1,8 @@
 function list_modified_md_files {
     if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
-        find . -name \*.md -print
+        find . -name \*.md -print || true
     else
-        git diff --name-only $(git merge-base HEAD master) | grep "\.md$"
+        git diff --name-only $(git merge-base HEAD master) | grep "\.md$" || true
     fi
 }
 
