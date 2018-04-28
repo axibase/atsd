@@ -319,7 +319,7 @@ Example:
 
 Examples:
 
-* **Form content type:**
+* **Form content type**
 
 `/api/v1/messages/webhook/travis-ci?json.parse=payload`
 
@@ -341,7 +341,7 @@ payload.number=217
 payload.config.os=linux
 ```
 
-* **JSON content type:**
+* **JSON content type**
 
 `/api/v1/messages/webhook/aws-cloudwatch?json.parse=Message`
 
