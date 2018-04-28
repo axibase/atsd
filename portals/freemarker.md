@@ -358,13 +358,17 @@ Finds entities by expression, based on tags.
 
 In the first example, we are searching for entities with two tags. The required value can be specified directly in the browser:
 
+```elm
 http://atsd.com/portal/1.xhtml?app=> value1&dc=> value2
+```
 
 All entities, for which the `app` tag is => `value1` and `dc` tag is => `value2`, will be loaded into the portal.
 
 In the second example, we are searching for entities with a specific application tag. The required value can be specified directly in the browser:
 
+```elm
 http://atsd.com/portal/1.xhtml?application=> value
+```
 
 All entities, for which the application tag is > `value`, will be loaded into the portal.
 

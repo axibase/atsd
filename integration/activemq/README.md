@@ -41,7 +41,7 @@ See [Aggregation Log Filter](https://github.com/axibase/aggregation-log-filter) 
 Search for the `ACTIVEMQ_SUNJMX_START` setting and change it as specified below.
 Replace `activemq_hostname` with the full hostname or IP address of the ActiveMQ server.
 This should be the same hostname that Axibase Collector use when connecting to ActiveMQ server.
-For more information on configuring JMX in ActiveMQ, see [ActiveMQ JMX notes](http://activemq.apache.org/jmx.html)
+For more information on configuring JMX in ActiveMQ, see [ActiveMQ JMX notes](https://activemq.apache.org/jmx.html)
 
 ActiveMQ 5.11.x and later:
 

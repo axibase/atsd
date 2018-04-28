@@ -42,7 +42,7 @@ By default, the ATSD server listens for incoming commands on the following ports
 
 ## Encryption
 
-To encrypt TCP traffic, setup an [SSH tunnel](http://axibase.com/products/axibase-time-series-database/writing-data/nmon/ssh-tunneling/) or create a VPN connection.
+To encrypt TCP traffic, setup an [SSH tunnel](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/ssh-tunneling/) or create a VPN connection.
 
 ## Authentication
 

@@ -26,8 +26,3 @@ POST https://atsd_hostname:8443/api/v1/series/insert
     ]
 }]
 ```
-
-## Response
-
-```
-```

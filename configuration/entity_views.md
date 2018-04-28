@@ -68,7 +68,7 @@ Type | Column type.
 Header | Column name.
 Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Specifies if the cell value should also be clickable as a link. See [Links](#links) options.
-Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
+Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
 Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
 Formatting | A [function](#formatting) or an expression to round numbers and convert units.
 
@@ -328,7 +328,7 @@ The message search link template contains tag value.
 
 2. Specify [property search expression](../rule-engine/property-search.md) in the 'Value' setting, for example `docker.container.config::hostname`.
 
-3. Set 'Link Label' setting to [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
+3. Set 'Link Label' setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
 
 4. Specify a portal link in the 'Link Template' setting, for example `/messages?search&entity=${value}`.
 
@@ -403,7 +403,7 @@ Use the following configuration to specify the custom icon which opens a link to
 
 1. Set 'Type' setting to Name Column.
 
-2. Set 'Link Label' setting to [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
+2. Set 'Link Label' setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
 
 3. Specify a portal link in the 'Link Template' setting, for example `/portal/name/collectd?entity=${entity}`.
 

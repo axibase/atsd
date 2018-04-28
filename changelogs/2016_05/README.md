@@ -90,7 +90,7 @@ SELECT count(*), count(value), count(entity) FROM cpu_busy WHERE datetime > prev
 
 While Axibase Collector gathers container properties and statistics using full Docker identifiers, it sends container names as entity labels into ATSD. This makes it possible to refer
 to human-readable container names in graphs and alerts. There are however several orchestration frameworks which use container names to store their own identifiers, for
-instance [Mesos](http://mesos.apache.org/):
+instance [Mesos](https://mesos.apache.org/):
 
 * Mesos Container ID:
 

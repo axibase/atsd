@@ -2,7 +2,7 @@
 
 ## Overview
 
-Axibase Time Series Database can be deployed on HBase using [AWS S3](http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
+Axibase Time Series Database can be deployed on HBase using [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
 
 ## Operational Advantages
 
@@ -110,7 +110,7 @@ The `<subnet>` parameter is required when launching particular instance types. T
 
 ### Specify Initial Cluster Size
 
-Adjust EC2 instance types and total instance count for the `RegionServers` group as appropriate. Review [AWS documentation](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
+Adjust EC2 instance types and total instance count for the `RegionServers` group as appropriate. Review [AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
 
 The cluster size can be adjusted at runtime.
 
@@ -123,7 +123,7 @@ The minimum number of nodes in each instance group is 1, therefore the smallest 
 
 ### Enable Consistent S3 View
 
-For long-running production clusters, enable [EMR Consistent View](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) which identifies inconsistencies in S3 object listings and resolves them using retries with exponential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
+For long-running production clusters, enable [EMR Consistent View](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) which identifies inconsistencies in S3 object listings and resolves them using retries with exponential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
 
 The checks are enabled by adding the `Consistent` setting to the launch command.
 

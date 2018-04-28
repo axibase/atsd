@@ -6,7 +6,7 @@ The following example demonstrates how to start an [AWS Batch](https://aws.amazo
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
-The example described below invokes the [AWS Batch API](http://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitJob.html) `SubmitJob` action.
+The example described below invokes the [AWS Batch API](https://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitJob.html) `SubmitJob` action.
 
 ## Configuration
 
@@ -27,7 +27,7 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Body | `<JSON_CONTENT>` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with the target [region](http://docs.aws.amazon.com/general/latest/gr/rande.html#batch_region), for example:
+Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with the target [region](https://docs.aws.amazon.com/general/latest/gr/rande.html#batch_region), for example:
 
 ```elm
 https://batch.us-east-1.amazonaws.com/v1/submitjob

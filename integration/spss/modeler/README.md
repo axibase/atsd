@@ -22,7 +22,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Prerequisites
 
-- Install [IBM SPSS Modeler](http://www-01.ibm.com/support/docview.wss?uid=swg24039399), version 18
+- Install IBM SPSS Modeler, version 18
 - Install [ODBC-JDBC bridge](../../odbc/README.md).
 
 ## Create Data Source

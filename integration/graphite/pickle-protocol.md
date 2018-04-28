@@ -2,7 +2,7 @@
 
 Pickle is a binary protocol for serializing and de-serializing Python objects. > Pickling is the process where a Python object hierarchy is converted into a byte stream. > Unpickling is the process in reverse, where a byte stream is converted back into an object hierarchy.
 
-[Learn more about Pickle protocol in Graphite.](http://graphite.readthedocs.io/en/latest/feeding-carbon.html#the-pickle-protocol)
+[Learn more about Pickle protocol in Graphite.](https://graphite.readthedocs.io/en/latest/feeding-carbon.html#the-pickle-protocol)
 
 Axibase Time Series Database supports Pickle protocol when ingesting messages produced by Carbon daemons.
 

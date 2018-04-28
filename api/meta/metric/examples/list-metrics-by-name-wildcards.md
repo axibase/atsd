@@ -11,46 +11,47 @@ The wildcards are evaluated when the operator is 'LIKE'.
 
 * List metrics whose names **start with** the specified text 'disk'
 
-```
+```javascript
 name LIKE 'disk*'
 ```
 
 * List metrics whose names **end with** the specified text
 
-```
+```javascript
 name LIKE '*percent'
 ```
 
 * List metrics whose names **contain** the specified text
 
-```
+```javascript
 name LIKE '*used*'
 ```
 
 * List metrics whose names **match** any single character in a specific position
 
-```
-# matches disk_used
+```javascript
+// matches disk_used
 name LIKE 'disk?used'
 ```
 
 * List metrics whose names **start with** the specified text and **match** any single character in a specific position
 
-```
-# matches disk_used, disk_used_percent
+```javascript
+// matches disk_used, disk_used_percent
 name LIKE 'disk?used*'
 ```
 
 ## Request
 
 ### URI
+
 ```elm
 GET https://atsd_hostname:8443/api/v1/metrics?expression=name%20LIKE%20%27disk%3Fused*%27
 ```
 
 ### Expression
 
-```
+```javascript
 name LIKE 'disk?used*'
 ```
 

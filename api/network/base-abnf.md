@@ -36,7 +36,7 @@ TB = %x09     ; tab
   ; printable character except double-quote (") and equal (=) characters
 CHAR_SAFE = %x21 / %x23-3C / %x3E-7E / UNICODE
   ; Unicode character
-  ; http://tools.ietf.org/html/rfc6531#section-3.3
+  ; https://tools.ietf.org/html/rfc6531#section-3.3
 UNICODE = %x80-FF / ; Latin-1 Supplement
           %x100-17F / ; Latin Extended-A
           %x370-3FF / ; Greek and Coptic

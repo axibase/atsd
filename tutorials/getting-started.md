@@ -43,6 +43,6 @@ Click _all_ in the timespan control to view all data instead of the last 24 hour
 
 ![](resources/hello_world_time_chart4.png)
 
-Spend a moment learning the basic [time chart controls](http://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/).
+Spend a moment learning the basic [time chart controls](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/).
 
 [Continue to Next Page](getting-started-2.md).

@@ -21,7 +21,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 ### Configure ITM Warehouse Proxy Agent
 
-* Configure WPA to store analytical data received from agents into CSV files on the local file system as described [here](http://www-01.ibm.com/support/knowledgecenter/SSATHD_7.7.0/com.ibm.itm.doc_6.3fp2/adminuse/history_analytics_scenarios.htm "WPA").
+* Configure WPA to store analytical data received from agents into CSV files on the local file system as described [here](https://www.ibm.com/support/knowledgecenter/SSATHD_7.7.0/com.ibm.itm.doc_6.3fp2/adminuse/history_analytics_scenarios.htm "WPA").
 
 * Set the `hd.ini` settings to activate private history streaming:
 
@@ -51,7 +51,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
     - [VMware](csv-configs/agents/vm_situations.xml)
     - [WebSphere MQ](csv-configs/agents/mq_situations.xml)
 
-* Copy the configuration file to the `localconfig/${PRODUCT_CODE}/` directory on the agent machine, where `${PRODUCT_CODE}` is the agent product code. You can look up commonly used product codes [here](http://www-01.ibm.com/support/docview.wss?uid=swg21265222).
+* Copy the configuration file to the `localconfig/${PRODUCT_CODE}/` directory on the agent machine, where `${PRODUCT_CODE}` is the agent product code. You can look up commonly used product codes [here](https://www.ibm.com/support/knowledgecenter/en/SS4EKN_7.2.0/com.ibm.itm.doc_6.3/install/pc_codes.htm).
 
     > Agent situation files adhere to the following naming convention: ${PRODUCT_CODE}_situations.xml
 
@@ -77,7 +77,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 ### Configure `inotify` Script to Read CSV files and Upload Them into ATSD
 
-* Download [inotify_sender](inotify_sender.sh) script to your WPA server.
+* Download [`inotify_sender`](inotify_sender.sh) script to your WPA server.
 
 * Specify the ATSD hostname by editing the following line:
 

@@ -106,6 +106,11 @@ https.trustStorePassword=
 
 Log in to ATSD by entering its DNS name in the browser address bar and check its certificate by clicking on the SSL security icon.
 
+Check the status of the new certificate on the **Settings > Certificates** page. The record is highlighted in green if:
+
+* The certificate is trusted by the default trust manager of the Java Runtime Environment.
+* The certificate dates are valid and the expiration date is no earlier than 30 days from now.
+
 ## Troubleshooting
 
 Check the contents of the keystore.

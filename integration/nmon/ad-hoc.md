@@ -33,7 +33,7 @@ This is a one time task.
 - Keep a note of the hostname for which you have just uploaded the data.
 
 You can learn more about uploading nmon files into ATSD
-[here](http://axibase.com/products/axibase-time-series-database/writing-data/nmon/file-upload/).
+[here](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/file-upload/).
 
 ![](resources/nmon_upload1.png "nmon_upload")
 

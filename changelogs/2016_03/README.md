@@ -158,7 +158,7 @@ The query executor was changed to raise an error if too many tag combinations ar
 exceeded, the following error message is returned to the client so that the user can refactor the query and add conditions to the `WHERE` clause to reduce the number of series.
 Previously, an error was not raised and the result set was truncated behind the scenes, leading to unexpected results.
 
-```
+```txt
 IllegalStateException: Too many tags combinations for metric 'df.disk_used' and entity 'nurswghbs001'. Limit: 1000.
 ```
 

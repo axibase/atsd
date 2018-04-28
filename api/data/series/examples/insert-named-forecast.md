@@ -2,6 +2,7 @@
 
 ## Request
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/series/insert
 ```
@@ -21,7 +22,4 @@ POST https://atsd_hostname:8443/api/v1/series/insert
         ]
     }
 ]
-```
-## Response 
-```
 ```

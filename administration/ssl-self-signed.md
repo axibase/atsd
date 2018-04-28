@@ -60,4 +60,6 @@ curl -v -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/self-signed \
 
 Log in to ATSD by entering DNS name in the browser address bar.
 
-Review the new certificate and check its **Days to Expiration**, which is set to 364 from now.
+Review the new certificate on the **Settings > Certificates** page and check its **Days to Expiration** field, which is set to 364 days from now.
+
+The certificate is highlighted in orange which means it's self-signed.

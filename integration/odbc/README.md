@@ -10,13 +10,13 @@ The bridge intercepts SQL queries from the client applications via the Microsoft
 
 * Windows 7, 8, 10 operating system, **64-bit edition**.
 * Java 7.
-* [ODBC-JDBC](http://www.easysoft.com/products/data_access/odbc_jdbc_gateway/#section=tab-1) bridge.
+* [ODBC-JDBC](https://www.easysoft.com/products/data_access/odbc_jdbc_gateway/#section=tab-1) bridge.
 
 ### Downloads
 
 1. Download and install **Java 7**. Note that **Java 8** is not fully supported by the ODBC-JDBC bridge vendor.
-2. [Register](http://www.easysoft.com/cgi-bin/account/register.cgi) an account with the bridge vendor. The account is required for trial license activation.
-3. [Download](http://www.easysoft.com/products/data_access/odbc_jdbc_gateway/#section=tab-1) the trial version of the ODBC-JDBC bridge.
+2. [Register](https://www.easysoft.com/cgi-bin/account/register.cgi) an account with the bridge vendor. The account is required for trial license activation.
+3. [Download](https://www.easysoft.com/products/data_access/odbc_jdbc_gateway/#section=tab-1) the trial version of the ODBC-JDBC bridge.
 4. [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
 
 ### Bridge Installation

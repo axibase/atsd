@@ -791,7 +791,7 @@ WHERE entity = 'nurswgvml007'
    AND tags.file_system REGEX '.*map.*|.*mnt.*|.*dev.*'
 ```
 
-Special constructs such as `(?i)` can be applied to enable a [case-insensitive match](http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) as an example.
+Special constructs such as `(?i)` can be applied to enable a [case-insensitive match](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) as an example.
 
 ```sql
   WHERE entity REGEX '(?i)Nurswgvml00.*'

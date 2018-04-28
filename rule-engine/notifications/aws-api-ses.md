@@ -6,7 +6,7 @@ The following example demonstrates how to send an email via [Amazon SES](https:/
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
-The example invokes the [Amazon SES API](http://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html) `SendEmail` action.
+The example invokes the [Amazon SES API](https://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html) `SendEmail` action.
 
 ## Configuration
 
@@ -27,7 +27,7 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Action | `SendEmail` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SES region](http://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region), for example:
+Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SES region](https://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region), for example:
 
 ```elm
 https://email.us-east-1.amazonaws.com

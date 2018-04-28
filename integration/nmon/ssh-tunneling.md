@@ -2,7 +2,7 @@
 
 #### User Guide for Setting up an SSH Tunnel
 
-For this guide you will require an atsdreadonly account and an SSH key, which are created automatically during the ATSD installation process. If you have chosen not to setup an atsdreadonly account during ATSD installation, while running the `install_sudo.sh` script please start by executing our [User Account Setup Guide](http://axibase.com/products/axibase-time-series-database/writing-data/nmon/user-account/).
+For this guide you will require an atsdreadonly account and an SSH key, which are created automatically during the ATSD installation process. If you have chosen not to setup an atsdreadonly account during ATSD installation, while running the `install_sudo.sh` script please start by executing our [User Account Setup Guide](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/user-account/).
 
 The guide uses `atsd-tst` as the hostname of the ATSD server.
 
@@ -10,7 +10,7 @@ The guide uses `nurswgvml001` as the hostname of the remote system.
 
 In the guide, `-p` specifies the port of the ATSD machine. Indicate the correct available port. For example: `-p 22`.
 
-Copy the `/opt/atsd/id_rsa_atsdreadonly` key generated during ATSD installation (or the one created using our [User Account Setup Guide](http://axibase.com/products/axibase-time-series-database/writing-data/nmon/user-account/)) to a remote system into the directory `/opt/nmon`.
+Copy the `/opt/atsd/id_rsa_atsdreadonly` key generated during ATSD installation (or the one created using our [User Account Setup Guide](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/user-account/)) to a remote system into the directory `/opt/nmon`.
 
 Add the ATSD host to known hosts on the target machine:
 

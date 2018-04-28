@@ -270,7 +270,7 @@ Fixed an issue were columns were not being created for series with a statistic a
 
 Added support for meta fields in label-format (and series tooltips) so that `meta.metric.tag` and `meta.entity.tag` can be replaced with metadata values, loaded from the server.
 
-Meta-data examples are documented [here](http://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/).
+Meta-data examples are documented [here](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/).
 
 https://apps.axibase.com/chartlab/506da7c3
 

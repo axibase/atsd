@@ -214,7 +214,7 @@ The `extend` setting adds missing periods at the beginning and the end of the in
 
 Data:
 
-```
+```ls
 | datetime                 | avg(value) | 
 |--------------------------|------------| 
 | 2016-02-19T13:30:10.000Z | 4.0        | 
@@ -323,7 +323,7 @@ Additional examples using manually inserted data.
 
 ## Data
 
-```
+```ls
 series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
 series e:nurswgvml007 m:cpu_busy=0  d:2017-01-01T00:30:00Z
 series e:nurswgvml007 m:cpu_busy=2  d:2017-01-01T02:30:00Z
