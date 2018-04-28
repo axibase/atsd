@@ -9,6 +9,7 @@ script:
   - print_modified_markdown_files
   - spellcheck
   - linkcheck
+  - stylecheck
 cache:
   directories:
     - $(npm config get prefix)/lib/node_modules
