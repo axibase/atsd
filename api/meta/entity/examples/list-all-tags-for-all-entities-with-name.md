@@ -10,7 +10,7 @@ https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&expression=name%20LIKE
 
 ### Expression 
 
-```sh
+```elm
 expression=name LIKE 'nurswgvml00*'
 ```
 
