@@ -230,6 +230,7 @@ codec
 codecs
 compactions
 comparator
+comparators
 config
 coprocessor
 coprocessors
@@ -374,5 +375,6 @@ millis
 kB
 Maven
 Sonatype
+Codacy
 log4j
 slf4j
