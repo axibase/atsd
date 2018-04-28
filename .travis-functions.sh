@@ -34,7 +34,7 @@ function linkcheck {
 }
 
 function stylecheck {
-    if [ "$ENABLE_CHECK" = "true" ] && [ -n $(list_modified_md_files) ]; then
+    if [ "$ENABLE_CHECK" = "true" ]; then
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
             markdownlint .
         else

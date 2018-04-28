@@ -102,7 +102,7 @@ Since each message must be associated with an entity, the request should instruc
   /api/v1/messages/webhook/jenkins?hello=world
 ```
 
-```
+```elm
   entity = jenkins
 ```
 
