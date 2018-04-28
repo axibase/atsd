@@ -12,7 +12,7 @@ GET https://atsd_server:8443/api/v1/metrics?expression=name%20like%20%27*disk*%2
 
 ### Expression
 
-```sql
+```javascript
 expression=name like '*disk*'
 ```
 
