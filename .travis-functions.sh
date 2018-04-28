@@ -21,7 +21,7 @@ function spellcheck {
             fi
         fi
     else
-        echo "Link checking will be skipped"
+        echo "Spell checking will be skipped"
     fi
 }
 
@@ -30,6 +30,18 @@ function linkcheck {
         list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
     else
         echo "Link checking will be skipped"
+    fi
+}
+
+function stylecheck {
+    if [ "$ENABLE_CHECK" = "true" ]; then
+        if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
+            markdownlint .
+        else
+            list_modified_md_files | xargs -d '\n' -n1 markdownlint
+        fi
+    else
+        echo "Style checking will be skipped"
     fi
 }
 
