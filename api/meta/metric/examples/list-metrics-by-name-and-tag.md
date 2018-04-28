@@ -10,7 +10,7 @@ GET https://atsd_hostname:8443/api/v1/metrics?tags=table&limit=2&expression=name
 
 ### Expression
 
-```sql
+```javascript
 name LIKE 'nmon*' and tags.table LIKE '*CPU*'
 ```
 
