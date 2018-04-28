@@ -33,3 +33,21 @@ function print_modified_markdown_files {
 function generate_yaspeller_dictionary {
     cat "$@" | awk '{$1=$1};1' | sort -u | jq -csR 'split("\n")' > .yaspeller-dictionary.json
 }
+
+function install_checkers {
+    npm install --global --production yaspeller spellchecker-cli markdown-link-check markdownlint-cli
+    if [ "$TRAVIS_REPO_SLUG" != "axibase/atsd" ]; then
+        wget https://raw.githubusercontent.com/axibase/atsd/master/.spelling -O .spelling-atsd
+        cat .spelling-atsd .dictionary > .spelling
+        if [ ! -f .dictionary ]; then
+            touch .dictionary
+        fi
+        if [ ! -f .markdownlint.json ]; then
+            wget https://raw.githubusercontent.com/axibase/atsd/master/.markdownlint.json
+        fi
+        if [ ! -f .yaspellerrc ]; then
+            wget https://raw.githubusercontent.com/axibase/atsd/master/.yaspellerrc
+        fi
+    fi
+    generate_yaspeller_dictionary .spelling
+}
