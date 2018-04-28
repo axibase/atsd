@@ -8,21 +8,29 @@ function list_modified_md_files {
 }
 
 function spellcheck {
-    if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
-        yaspeller --max-requests 10 --dictionary .yaspeller-dictionary.json -e ".md" ./
-        if [ "$1" != "--single" ]; then
-            spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files '**/*.md'
+    if [ "$ENABLE_CHECK" = "true" ]; then
+        if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
+            yaspeller --max-requests 10 --dictionary .yaspeller-dictionary.json -e ".md" ./
+            if [ "$1" != "--single" ]; then
+                spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files '**/*.md'
+            fi
+        else
+            list_modified_md_files | xargs -d '\n' -n1 yaspeller --dictionary .yaspeller-dictionary.json {}
+            if [ "$1" != "--single" ]; then
+                list_modified_md_files | xargs -d '\n' -n1 spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files {}
+            fi
         fi
     else
-        list_modified_md_files | xargs -d '\n' -n1 yaspeller --dictionary .yaspeller-dictionary.json {}
-        if [ "$1" != "--single" ]; then
-            list_modified_md_files | xargs -d '\n' -n1 spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files {}
-        fi
+        echo "Link checking will be skipped"
     fi
 }
 
 function linkcheck {
-    list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
+    if [ "$ENABLE_CHECK" = "true" ]; then
+        list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
+    else
+        echo "Link checking will be skipped"
+    fi
 }
 
 function print_modified_markdown_files {
@@ -51,3 +59,14 @@ function install_checkers {
     fi
     generate_yaspeller_dictionary .spelling
 }
+
+function install_checkers_in_non_doc_project {
+    if [ "$TRAVIS_JOB_NUMBER" = "$TRAVIS_BUILD_NUMBER.1" ]; then
+        nvm install 8 && nvm use 8
+        install_checkers
+    else
+        export ENABLE_CHECK=false
+    fi
+}
+
+export ENABLE_CHECK=true
