@@ -335,7 +335,7 @@ payload={
 
 Message tags:
 
-```
+```sh
 payload.id=371662529
 payload.number=217
 payload.config.os=linux
@@ -357,7 +357,7 @@ payload.config.os=linux
 ```
 Message tags:
 
-```
+```sh
 type=Notification
 message.version=0
 message.source=aws.ec2
@@ -441,7 +441,7 @@ Subscribe to build status events from Jenkins.
 
 Subscribe to build status events from Travis CI.
 
-```
+```sh
 /api/v1/messages/webhook/travis-ci?json.parse=payload&exclude=payload.id;payload.number;payload.config*;payload.repository*;payload.matrix*;payload.*commit*;payload.status_message;payload.result&include=payload.repository.name&command.message=payload.result_message
 ```
 
