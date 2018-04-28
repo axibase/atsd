@@ -24,13 +24,13 @@ The Metrics library provides 5 types of metrics:
 
 TCP
 
-```javascript
+```java
 final AtsdTCPSender sender = new AtsdTCPSender(new InetSocketAddress("atsd.example.com", 8081));
 ```
 
 UDP
 
-```javascript
+```java
 final AtsdUDPSender sender = new AtsdUDPSender("atsd.example.com", 8082);
 ```
 
