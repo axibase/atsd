@@ -12,7 +12,7 @@ Retrieve time series objects for the specified metric, entity, tag, and interval
 
 The request payload is a JSON document containing an array of query objects.
 
-```json
+```sh
 [{
   /* query 1: filter, process, control */
 },{
