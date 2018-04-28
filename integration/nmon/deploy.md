@@ -60,7 +60,7 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 
 Example `deploy.properties` file:
 
-```javascript
+```elm
 nmon.s = 60
 nmon.c = 1440
 nmon.cron.hour = 12
