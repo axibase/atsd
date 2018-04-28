@@ -106,6 +106,12 @@ https.trustStorePassword=
 
 Log in to ATSD by entering its DNS name in the browser address bar and check its certificate by clicking on the SSL security icon.
 
+Review the new certificate at the **Settings > Certificates** page and ensure certificate is highlighted in green which means the following:
+ 
+ * certificate is already valid
+ * certificate is not expired and will be expired in more than 30 days
+ * certificate is not self-signed
+
 ## Troubleshooting
 
 Check the contents of the keystore.
