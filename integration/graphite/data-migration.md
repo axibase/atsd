@@ -14,7 +14,7 @@ Data sent into ATSD by the `migrate.py` utility is parsed according to rules spe
 
 Using `migrate.py`:
 
-```python
+```sh
 migrate.py [-h] [--whisper-base BASE] [-R] path atsd_server atsd_tcp_port
 ```
 
@@ -36,13 +36,13 @@ Base path to the Whisper database directory is set with `-R` to migrate all the 
 
 Command:
 
-```python
+```sh
 ./migrate.py -R --whisper-root=/var/lib/graphite/whisper/ /var/lib/graphite/whisper/ atsd_server 8081
 ```
 
 Messages sent to ATSD:
 
-```txt
+```sh
 carbon.agents.NURSWGDKR002-a.avgUpdateTime 9.41753387451e-05 1436859240
 carbon.agents.NURSWGDKR002-a.avgUpdateTime 9.3019925631e-05 1436859300
 carbon.agents.NURSWGDKR002-a.avgUpdateTime 9.33683835543e-05 1436859360
@@ -56,13 +56,13 @@ Direct path to a specific `.wsp` file is set without `-R` to migrate only the 
 
 Command:
 
-```python
+```sh
 ./migrate.py --whisper-root=/opt/graphite/whisper/ /opt/graphite/whisper/collectd/NURSWGDKR002/memory/memory-free.wsp atsd_server 8081
 ```
 
 Messages sent to ATSD:
 
-```txt
+```sh
 collectd.NURSWGDKR002.memory.memory-free 31467552768.0 1436867280
 collectd.NURSWGDKR002.memory.memory-free 31480631296.0 1436867340
 collectd.NURSWGDKR002.memory.memory-free 31409938432.0 1436867400
@@ -73,11 +73,11 @@ collectd.NURSWGDKR002.memory.memory-free 31384133632.0 1436867460
 
 To test data migration, run the following commands. Substitute `path`, `--whisper-base`, `atsd_server`, and `atsd_tcp_port` with your correct parameters. The results will be a text file containing all metrics that were migrated by the utility.
 
-```python
+```sh
 nc -lk 8081 > test.txt &
 ```
 
-```python
+```sh
 date +%s && ./migrate.py -R --whisper-base=/var/lib/graphite/whisper/ /var/lib/graphite/whisper/ atsd_server 8081 && date +%s
 ```
 
@@ -85,7 +85,7 @@ From the prompt and the resulting `test.txt` file, you can determine how long t
 
 Out test migration results:
 
-```txt
+```sh
 9 seconds
 730236 lines
 49246203 bytes
