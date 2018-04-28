@@ -60,7 +60,7 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 
 Example `deploy.properties` file:
 
-```
+```javascript
 nmon.s = 60
 nmon.c = 1440
 nmon.cron.hour = 12
@@ -88,7 +88,7 @@ deploy.target = nurswgvml009:22
 
 Once the `deploy.properties` file is set up and paths to the required files are set, deploy nmon and the sender script to remote target machines:
 
-```
+```sh
 ./nmon_deploy.sh
 ```
 

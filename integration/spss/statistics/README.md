@@ -263,7 +263,7 @@ The result should look as follows. Click **Next**
 
 - Paste the following script into the dialog window:
 
-```
+```sh
 SAVE TRANSLATE /TYPE=ODBC
   /BULKLOADING BATCHSIZE=10000 METHOD=ODBC BINDING=ROW 
   /CONNECT='DSN=ATSD;'

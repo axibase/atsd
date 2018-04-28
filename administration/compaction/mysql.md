@@ -197,7 +197,7 @@ Verify the row count:
 wc -l IBM_adjusted.txt
 ```
 
-```
+```sh
 2045514 IBM_adjusted.txt
 ```
 

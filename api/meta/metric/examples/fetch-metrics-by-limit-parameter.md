@@ -2,9 +2,11 @@
 Fetch first three metrics, ordered by name.
 ## Request
 ### URI
-```
+
+```elm
 https://atsd_hostname:8443/api/v1/metrics?limit=3
 ```
+
 ## Response
 ```json
 [

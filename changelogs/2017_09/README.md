@@ -129,7 +129,7 @@ https://apps.axibase.com/chartlab/25551747
 
 Functions `meta()`, `entityTag()`, and `metricTag()`, which return entity or metric tags retrieved from the server, are now available in widget settings:  
 
-```
+```python
 meta('alias') – returns ‘meta’ object for series with alias ‘alias’.
 meta() – returns ‘meta’ object for the current series.
 entityTag('alias', 'tag_name') – return entity tag value for series with the specified alias

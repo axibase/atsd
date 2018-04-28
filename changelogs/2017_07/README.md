@@ -36,7 +36,7 @@ The option allows ignoring top-N header lines in the imported CSV file. This ena
 
 * Example: Skip 1 line `Title: "ORO.csv"` since it contains no separators.
 
-```
+```txt
 Title: "ORO.csv"
 1148,PST,'RESERVOIR ELEVATION (feet)'
 20130101,0000,828.09
@@ -46,8 +46,7 @@ Title: "ORO.csv"
 
 * Example 2. Skip 8 lines (empty and prefixed with `:`) to start with line `.A ORO 20160312 PS DH0000 /LSH 2325491`.
 
-```
-
+```txt
 :CDEC data from OROVILLE DAM
 :RESERVOIR STORAGE af
 :Station ID ORO, sensor number 15, duration H
@@ -75,7 +74,7 @@ The `entity.label` parameter is now supported in the rule filter.
 
 Added an `escape()` method to `list` and `var` arrays, so that this collections can now be serialized as follows  `@{arrayName.escape()}`. The `escape()` method escapes commas and backslashes in each element in an array.
 
-```
+```javascript
   [dropdown]
     options = @{countries.escape()}
     change-field = series.tags.ctyname

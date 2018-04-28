@@ -65,7 +65,7 @@ The widgets can be configured to load data from the following sources:
 
 * Verify that the data is displayed for the following example for a built-in entity/metric:
 
-```
+```javascript
   [configuration]
     offset-right = 50
     height-units = 2

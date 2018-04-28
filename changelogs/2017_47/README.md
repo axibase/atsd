@@ -45,7 +45,7 @@ The `matchList` functions is a less verbose alternative to `likeAny` function.
 
 Support for `addMeta` parameter added to the [series](../../api/meta/metric/series.md#query-parameters) method.
 
-```
+```javascript
 /api/v1/metrics/gc_time_percent/series?addMeta=true
 ```
 
@@ -109,7 +109,7 @@ The `rule_window` function returns the first matching window for the specified r
 
 The [series tags](../../api/meta/metric/series-tags.md) method returns unique series tags values for the specified metric.
 
-```
+```javascript
 /api/v1/metrics/disk_used/series/tags?entity=nurswgvml007
 ```
 

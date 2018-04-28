@@ -26,7 +26,3 @@ POST https://atsd_hostname:8443/api/v1/messages/insert
     "source": "atsd"
 }]
 ```
-
-## Response
-```
-```

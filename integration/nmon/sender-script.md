@@ -24,7 +24,7 @@ Unpack the script to the `/opt/nmon directory`, as described in the [Telnet File
 
 Example crontab setup:
 
-```
+```sh
 0 0 * * * /opt/nmon/nmon -f -s 60 -c 1440 -T -m /opt/nmon/nmon_logs/
 0 0 * * * /opt/nmon/nmon_sender_ssh.sh {atsdhostname} -p 22 -s 60 -c 1440 -m /opt/nmon/nmon_logs/ -i /opt/nmon/id_rsa_atsdreadonly >>/opt/nmon/full.log 2>&1
 ```
@@ -41,13 +41,13 @@ All arguments, except `-h`, must have a value.
 
 To stop the script and all involved processes, just run (with the correct pid of nmon sender script):
 
-```
+```sh
 kill $nmonsenderPID
 ```
 
 You can find the right `$nmonsenderPID` in output of command:
 
-```
+```sh
 ps -ef | grep nmon_sender_ssh.sh
 ```
 

@@ -38,7 +38,7 @@ Locate the path to the HBase configuration directory:
 hbase classpath | cut -f 1 -d ":"
 ```
 
-```
+```sh
 # CDH 5.5 Package installation.
 /usr/lib/hbase/conf
 

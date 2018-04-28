@@ -28,7 +28,3 @@ POST https://atsd_hostname:8443/api/v1/messages/insert
     "date": "2016-06-13T09:12:00Z"
 }]
 ```
-
-## Response
-```
-```

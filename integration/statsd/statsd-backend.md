@@ -75,7 +75,7 @@ If a metric name has more tokens than `atsd_pattern`, extra tokens are cropped.
 
 `entity` – entity token to replace the default entity; multiple occurrences are combined.
 
-```
+```sh
 [garbageCollections]
 pattern = garbageCollections$
 atsd-pattern = <tag:type>.<tag:dep>.<entity>.<metric>.<metric>.<metric>
@@ -85,19 +85,19 @@ atsd-pattern = <tag:type>.<tag:dep>.<entity>.<metric>.<metric>.<metric>
 
 `tag:tag_name` – token for the tag named `tag_name`.
 
-```
+```ls
 atsd-pattern = <entity>.<tag:test>.<metric>.<metric>
 result = series e:alfa m:charlie.delta t:test=bravo ...
 ```
 
 `metrics` – any number of metric tokens; can be used once per pattern; can also be omitted.
 
-```sh
+```ls
 atsd-pattern = <entity>.<tag:test>.<metrics>
 result = series e:alfa m:charlie.delta t:test=bravo ...
 ```
 
-```
+```ls
 <> - token to be excluded
 atsd-pattern = <entity>.<tag:test>.<>.<metric>
 result = series e:alfa m:delta t:test=bravo ...

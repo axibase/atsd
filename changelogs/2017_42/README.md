@@ -69,7 +69,7 @@ In the example above, the underscore is evaluated as a regular character (not as
 
 Refer to [API documentation](../../api/meta/misc/search.md) for additional details.
 
-```
+```sh
 GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,dataType&entityTags=*&entityFields=timeZone
 ```
 

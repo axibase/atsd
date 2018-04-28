@@ -12,7 +12,7 @@ Below are the header and system commands extracts from an nmon file.
 
 #### Header Extract
 
-```
+```txt
 AAA,progname,topas_nmon
 AAA,command,/usr/bin/topas_nmon -ftdTWALM -s 1200 -c 72 -o /opt/NMON/day/ -youtput_dir=/opt/NMON/day/ -ystart_time=20:00:01,Oct14,2014
 AAA,version,TOPAS-NMON
@@ -39,7 +39,7 @@ AAA,timestampsize,0
 
 #### System Command Extract
 
-```
+```txt
 BBBB,0000,name,size(GB),disc attach type
 BBBB,0001,hdisk10,343.42,Hitachi-HDS
 BBBC,000,hdisk10:
@@ -72,7 +72,7 @@ BBBC,218,PDIsapdata5Lv 1999 1999 400..400..399..400..400 /oracle/PDI/sapdata5
 <a name="properties"></a>
 #### List of nmon Configuration Properties with Examples
 
-```
+```txt
 "aix": "7.1.3.16",
 "build": "AIX",
 "capped": "0",

@@ -163,7 +163,7 @@ INSERT INTO temperature (entity, datetime, value, tags.surface)
 ```
 
 ```sql
-UPDATE temperature S```ET value = 24.5 
+UPDATE temperature SET value = 24.5 
   WHERE entity = 'sensor-01' AND datetime = '2017-08-21T00:00:00Z' AND tags.surface = 'Outer'
 ```
 

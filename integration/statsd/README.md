@@ -8,13 +8,13 @@ The StatsD format is supported in ATSD.
 
 Basic Format:
 
-```
+```ls
 {metricname}:{value}|{type}
 ```
 
 Extended Format:
 
-```
+```ls
 metric.name:value|type|@sample_rate|#tag1:value,tag2
 ```
 
@@ -95,7 +95,7 @@ define('STATSD_PORT', xxxx);
 
 Metrics collected by StatsD from WordPress:
 
-```
+```txt
 Logins (success, fails, logout)
 Password resets (attempts/successes)
 User count (guage)

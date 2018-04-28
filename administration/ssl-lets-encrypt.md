@@ -94,7 +94,7 @@ drwxr-xr-x 2 root root 4096 Mar 17 12:03 atsd.company.com
 sudo certbot --preferred-challenges dns --manual certonly
 ```
 
-```
+```txt
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator manual, Installer None
 Please enter in your domain name(s) (comma and/or space separated)  (Enter 'c'

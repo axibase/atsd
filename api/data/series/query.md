@@ -12,7 +12,7 @@ Retrieve time series objects for the specified metric, entity, tag, and interval
 
 The request payload is a JSON document containing an array of query objects.
 
-```
+```json
 [{
   /* query 1: filter, process, control */
 },{
@@ -185,7 +185,7 @@ POST https://atsd_hostname:8443/api/v1/series/query
 
 ## `curl` Example
 
-```
+```json
 curl http://localhost:8088/api/v1/series/query \
   -v -u {username}:{password} \
   -H "Content-Type: application/json" \

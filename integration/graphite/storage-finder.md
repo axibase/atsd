@@ -19,7 +19,7 @@ There are two versions of the ATSD Storage Finder:
 
 ATSD Storage Finder settings in `local_settings.py`:
 
-```
+```python
 STORAGE_FINDERS = (
     'atsd_finder.AtsdFinder',
     'atsd_finder.AtsdFinderV',
@@ -31,7 +31,7 @@ ATSD Storage Finder and ATSD Storage Finder Virtual can be used together (their
 
 #### ATSD Storage Finder Default
 
-```
+```python
 STORAGE_FINDERS = (
     'atsd_finder.AtsdFinder',
 )
@@ -57,7 +57,7 @@ For example:
 
 ##ATSD Storage Finder `local_settings.py` example:##
 
-```
+```python
 ATSD_CONF = {
     'url': 'http://atsd_server:8088',
     'username': 'atsd_user',
@@ -85,7 +85,7 @@ ATSD_CONF = {
 
 #### ATSD Storage Finder Virtual
 
-```
+```python
 STORAGE_FINDERS = (
     'atsd_finder.AtsdFinderV',
 )
@@ -110,7 +110,7 @@ Under `views`, use `type` to control which folders and the order you would like 
 
 ##`local_settings.py` example with "views":##
 
-```
+```python
 ATSD_CONF = {
  
     'views': {'DistributedGeoMon': [{'type': 'entity folder',
@@ -183,7 +183,7 @@ ATSD_CONF = {
 
 ![](resources/01.png)
 
-```
+```python
 {'type': 'entity folder',
  'value': [{'com.axibase'  : 'com.axibase'},
            {'com.axibase.*': 'com.axibase.*'}]}
@@ -193,7 +193,7 @@ Below two entity folders are shown. One filters out only the entity `com.axibas
 
 ![](resources/02.png)
 
-```
+```python
 {'type': 'entity',
  'value': ['*']}
 ```
@@ -202,7 +202,7 @@ List of entities filtered by the folder they’re in.
 
 ![](resources/03.png)
 
-```
+```python
 {'type': 'tag',
  'value': ['path'],
  'global': [{'type': 'metric',
@@ -213,7 +213,7 @@ Values of the tag path. To retrieve tags we need a metric; however, it hasn’t 
 
 ![](resources/04.png)
 
-```
+```python
 {'type': 'tag',
  'value': ['geo-target', 'geo-source']}
 ```
@@ -222,7 +222,7 @@ Values of tags `geo-target` and `geo-source` separated by a comma.
 
 ![](resources/05.png)
 
-```
+```python
 {'type': 'metric folder',
  'value': [{'distgeomon.response*': 'response'},
            {'distgeomon.connect*' : 'connect'}]}
@@ -232,7 +232,7 @@ Two metric folders.
 
 ![](resources/06.png)
 
-```
+```python
 {'type': 'metric',
  'value': ['*']}
 ```
@@ -241,7 +241,7 @@ List of metrics.
 
 ![](resources/07.png)
 
-```
+```python
 {'type': 'interval',
  'value': [{'count': 30,
             'unit': 'minute',
@@ -258,7 +258,7 @@ List of aggregation intervals.
 
 ![](resources/08.png)
 
-```
+```python
 {'type': 'collection',
  'value': [{'type': 'aggregator',
             'value': [{'detail': 'Detail'}],
@@ -272,7 +272,7 @@ If we want to make two different types of tokens at the same level, i.e. a leaf 
 
 ![](resources/09.png)
 
-```
+```python
 {'type': 'aggregator',
  'value': [{'count'        : 'Count'},
            {'min'          : 'Minimum'},
@@ -288,7 +288,7 @@ Here is a list of aggregators. First we define an ATSD aggregator we want to use
 
 ![](resources/10.png)
 
-```
+```python
 {'type': 'period',
  'value': [{'count': 30,
             'unit': 'second',

@@ -7,7 +7,7 @@
 2. Launch the nmon console to make sure nmon works correctly:
 
 
-```
+```sh
 /opt/nmon/nmon
 ```
 
@@ -19,7 +19,7 @@ Perform the following steps to start uploading files to ATSD every hour with `wg
 
 Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the cron schedule:
 
-```
+```sh
 0 * * * * /opt/nmon/nmon_script.sh
 ```
 
@@ -35,7 +35,7 @@ To start uploading files to ATSD every hour with UNIX socket perform the follow
 
 Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the cron schedule:
 
-```
+```sh
 0 * * * * /opt/nmon/nmon_script.sh
 ```
 
@@ -51,7 +51,7 @@ To start uploading files to ATSD every hour with Netcat, perform the following s
 
 Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the cron schedule:
 
-```
+```sh
 0 * * * * /opt/nmon/nmon_script.sh
 ```
 

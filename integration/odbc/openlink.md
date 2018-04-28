@@ -52,7 +52,7 @@ Enter a new connection name into the `Name` field and click **Next**.
 
 Enter the following settings in the DSN Configuration window:
 
-```
+```txt
 JDBC driver:   com.axibase.tsd.driver.jdbc.AtsdDriver
 URL string :   <ATSD URL, for example jdbc:atsd://atsd_hostname:ATSD_PORT>
 Login ID   :   <atsd login>
