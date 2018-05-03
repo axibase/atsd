@@ -38,7 +38,7 @@ function stylecheck {
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
             markdownlint .
         else
-            if [ -n $(list_modified_md_files) ]; then
+            if [[ -n "$(list_modified_md_files)" ]]; then
                 list_modified_md_files | xargs -d '\n' -n1 markdownlint
             fi;
         fi
