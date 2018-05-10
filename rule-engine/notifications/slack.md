@@ -45,7 +45,7 @@ Slack Bot is a special account created specifically for automation purposes.
 
   * Click on **Bot Users**.
 
-        ![](images/outgoing_webhook_slack_2.png)
+       ![](images/outgoing_webhook_slack_2.png)
 
   * Click on **Add a Bot User**.
 
@@ -53,7 +53,7 @@ Slack Bot is a special account created specifically for automation purposes.
 
   * Review Settings, click on **Add Bot User**.
 
-        ![](images/outgoing_webhook_slack_4.png)
+       ![](images/outgoing_webhook_slack_4.png)
 
   * Click on **Save Changes**.
 
