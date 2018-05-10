@@ -9,6 +9,7 @@ Table functions perform various operations on strings, lists, and maps to create
 * [`addTable` for map](#addtable-for-map)
 * [`addTable` for maps](#addtable-for-maps)
 * [`addTable` for list](#addtable-for-list)
+* [`jsonPathFilter`](#jsonpathfilter)
 * [`jsonToMaps`](#jsontomaps)
 * [`jsonToLists`](#jsontolists)
 * [`flattenJson`](#flattenjson)
@@ -329,6 +330,53 @@ datetime=value
 2018-01-31T12:00:28.253Z=36
 ```
 
+```json
+  jsonPathFilter(s, jp) [object]
+```
+
+This function parses the input string `s` into a JSON document and returns a list of objects matching the [JSONPath expression](https://github.com/json-path/JsonPath).
+
+Examples:
+
+```javascript
+{
+  "data": [
+    {
+      "d": "2018-04-24",
+      "v": 1
+    },
+    {
+      "d": "2018-04-25",
+      "v": 2
+    }
+  ]
+}
+```
+
+```javascript
+  jsonPathFilter(s, "$.data[*].v")
+```
+
+Output:
+
+```ls
+[1,2]
+```
+
+```javascript
+  jsonPathFilter(s, "$.data[?(@.d > '2018-04-24')]")
+```
+
+Output:
+
+```ls
+[{
+  "d":"2018-04-25",
+  "v":2
+}]
+```
+See additional examples [below](#examples).
+
 ### `jsonToMaps`
 
 ```javascript
@@ -480,7 +528,7 @@ Processing rules:
 * The JSON object is traversed to locate fields with primitive data types: `number`, `string`, and `boolean`.
 * The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
 * If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
-* Fields with `null` and empty string values are ignored.
+* Fields with `null`, empty string, empty array, and empty object values are ignored.
 
 Input JSON document:
 
@@ -594,7 +642,7 @@ The examples below are based on the following JSON document which represents out
 | url                                               | author.login    | mergeable | baseRefName | headRefName                                        | title                                                        |
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
 | https://github.com/axibase/atsd-api-test/pull/487 | unrealwork      | MERGEABLE | master      | 5208-series-tag-query-with-wildcard-without-entity | 5208: Series tags query with wildcard without entity         |
-| https://github.com/axibase/atsd-api-test/pull/406 | vtols           | MERGEABLE | master      | vtols-4397                                       | Test #4397                                                   |
+| https://github.com/axibase/atsd-api-test/pull/406 | vtols           | MERGEABLE | master      | vtols-4397                                         | Test #4397                                                   |
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
 ```
 
@@ -617,4 +665,20 @@ The examples below are based on the following JSON document which represents out
   "data.repository.pullRequests.nodes[1].headRefName" : "vtols-4397",
   "data.repository.pullRequests.nodes[1].title" : "Test #4397"
 }
+```
+
+```javascript
+  jsonPathFilter(json, "$..pullRequests.nodes[*][?(@.mergeable == 'MERGEABLE')]['url','author','title']")
+```
+
+```json
+[{
+  "url" : "https://github.com/axibase/atsd-api-test/pull/487",
+  "author":{"login":"unrealwork"},
+  "title":"5208: Series tags query with wildcard without entity"
+}, {
+  "url":"https://github.com/axibase/atsd-api-test/pull/406",
+  "author":{"login":"vtols"},
+  "title":"Test #4397"
+}]
 ```

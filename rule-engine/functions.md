@@ -203,6 +203,7 @@ These functions format dates and numbers to strings according to the specified p
 * [`addTable for map`](functions-table.md#addtable-for-map)
 * [`addTable for maps`](functions-table.md#addtable-for-maps)
 * [`addTable for list`](functions-table.md#addtable-for-list)
+* [`jsonPathFilter`](functions-table.md#jsonpathfilter)
 * [`jsonToMaps`](functions-table.md#jsontomaps)
 * [`jsonToLists`](functions-table.md#jsontolists)
 * [`flattenJson`](functions-table.md#flattenjson)
