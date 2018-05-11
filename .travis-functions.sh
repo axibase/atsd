@@ -60,7 +60,7 @@ function install_checkers {
     npm install --global --production yaspeller spellchecker-cli markdown-link-check markdownlint-cli
     if [ "$TRAVIS_REPO_SLUG" != "axibase/atsd" ]; then
         wget https://raw.githubusercontent.com/axibase/atsd/master/.spelling -O .spelling-atsd
-        cat .spelling-atsd .dictionary > .spelling
+        awk 'FNR==1{print}1' .spelling-atsd .dictionary | sort -u > .spelling
         if [ ! -f .dictionary ]; then
             touch .dictionary
         fi
