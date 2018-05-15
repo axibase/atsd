@@ -21,6 +21,7 @@ Message functions:
 
 * [`db_message_count`](functions-db.md#db_message_count)
 * [`db_message_last`](functions-db.md#db_message_last)
+* [`db_messages`](functions-db.md#db_messages)
 
 SQL functions:
 
@@ -319,7 +320,7 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
   db_message_count(string i, string g, string s[, string t | [] t[, string e[, string p]]]) long
 ```
 
-Returns the number of message records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
+Returns the number of message records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See matching rules [below](#matching-rules).
 
 ### `db_message_last`
 
@@ -327,13 +328,31 @@ Returns the number of message records matching the specified interval `i`, messa
   db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
 ```
 
-Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
+Returns the most recent [message](../api/data/messages/query.md) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See matching rules [below](#matching-rules).
 
 The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
 
 > Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
 
----
+### `db_messages`
+
+```javascript
+  db_messages(string i, string g, string s[, string t | [] t[, string e[, string p]]]) [object]
+```
+
+Returns a list of [message](../api/data/messages/query.md) records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. 
+
+The messages are ordered by time (similar to the Message Search page). See matching rules [below](#matching-rules). 
+
+If no messages are found, an empty `[]` list is returned.
+
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+
+The returned objects' [fields](../api/data/messages/query.md#fields-1) can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
+
+> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
+
+#### Matching Rules
 
 The following matching rules apply:
 
@@ -391,7 +410,7 @@ The following matching rules apply:
   db_message_count('1 hour', 'compaction', '',  '', '*')
 
   /*
-  Count messages with the same text as in the last command, but from different users
+  Count messages with the same text as in the last command, but from different users.
   */
   db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
 ```
@@ -399,7 +418,7 @@ The following matching rules apply:
 ### `db_message_last` Examples
 
 ```javascript
-  last_msg = db_message_last('60 minute', 'logger', ''
+  last_msg = db_message_last('60 minute', 'logger', '')
   /*
   Check that the average exceeds 50 and the severity of the last message with type 'logger'
   for the current entity is greater than or equal to 'ERROR'.
@@ -409,7 +428,7 @@ The following matching rules apply:
 
 ```javascript
   /*
-  Retrieve the last message with text beginning 'docker start sftp*'
+  Retrieve the last message with text beginning 'docker start sftp*'.
   */
   db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
 
@@ -423,6 +442,26 @@ The following matching rules apply:
   Returns message with type 'webhook' and empty tags.
   */
   db_message_last('15 second', 'webhook', '',  '', '', "tags.isEmpty()=true")
+```
+
+### `db_messages` Examples
+
+```javascript
+  /*
+  Retrieve messages with the text ending '*Selected' and any tags.
+  */
+  db_messages('30 second', 'webhook', 'axibase-bot', '', 'slack', 'message LIKE "*Selected"')
+```
+
+```javascript
+  /*
+  Retrieve messages with severety 'Warning' within 15 second and send values of 'command' tag in notification.
+  */
+  msgs = db_messages('15 second', 'logger', '', '', '', 'severity="warning"')
+
+  @foreach{m : msgs}
+  @{m.tags.get('command')}
+  @end{}
 ```
 
 ## SQL Functions

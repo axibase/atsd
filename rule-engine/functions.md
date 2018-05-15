@@ -129,6 +129,7 @@ Database Message functions retrieve message counts or specific messages.
 
 * [`db_message_count`](functions-db.md#db_message_count)
 * [`db_message_last`](functions-db.md#db_message_last)
+* [`db_messages`](functions-db.md#db_messages)
 
 ### Database SQL Functions
 
