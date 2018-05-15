@@ -340,9 +340,9 @@ The returned object's [fields](../api/data/messages/query.md#fields-1) can be ac
   db_messages(string i, string g, string s[, string t | [] t[, string e[, string p]]]) [object]
 ```
 
-Returns a list of [message](../api/data/messages/query.md) records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. 
+Returns a list of [message](../api/data/messages/query.md) records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-The messages are ordered by time (similar to the Message Search page). See matching rules [below](#matching-rules). 
+The messages are ordered by time (similar to the Message Search page). See matching rules [below](#matching-rules).
 
 If no messages are found, an empty `[]` list is returned.
 
