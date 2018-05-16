@@ -2,13 +2,13 @@
 
 ## Overview
 
-The database functions provide a way to retrieve series and message records from the database at any stage of the rule evaluation process.
+Database functions provide a way to retrieve series and message records from the database at any stage of the rule evaluation process.
 
-The `db_last` and `db_statistic` functions allow retrieving the last stored value or to calculate a statistic from stored values. The queried series may be different from the series in the current window.
+The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series may be different from the series in the current window.
 
-The `db_message_count` and `db_message_last` functions can be used to test events for presence as well as to correlate time series and messages.
+The `db_message_count` and `db_message_last` functions may be used to verify the existence of or establish a correlation between time series and messages.
 
-The `executeSqlQuery` function retrieves the results of a user-defined SQL query.
+The `executeSqlQuery` function returns the results of a user-defined SQL query.
 
 ## Reference
 
@@ -31,7 +31,7 @@ SQL functions:
 
 ### `db_last`
 
-The `db_last` function retrieves the last (most recent) value stored in the database for the specified series, regardless when it was stored.
+The `db_last` function retrieves the most recent value stored in the database for the specified series, regardless of when it was stored.
 
 The functions return `Double.NaN` if no matching series is found.
 
@@ -84,10 +84,10 @@ Example:
 
 Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`.
 
-The tags argument `t` can be specified as follows:
+Tags argument `t` may be specified as follows:
 
-* Empty string `''` which means no tags.
-* String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
+* Empty string `''` for no series tags.
+* String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
 * Map: `["tag1":"value1","tag2":"value2"]`
 * The `tags` field representing the grouping tags of the current window.
 
@@ -99,11 +99,13 @@ Example:
 
 ### `db_statistic`
 
-The first required argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to values within the selection interval.
+This function has two required arguments: `s` and `i`.
 
-The second required argument `i` is the duration of the selection interval specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
+Argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to all values within the selection interval.
 
-The function returns `Double.NaN` if no matching series is found or if no values were recorded within the selection interval.
+Argument `i` is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
+
+The function returns `Double.NaN` if no matching series are found or if no values were recorded within the selection interval.
 
 #### `db_statistic(string s, string i)`
 
@@ -139,7 +141,7 @@ Example:
   db_statistic(string s, string i, string m, string e) number
 ```
 
-Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field  current entity in the window).
+Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity may either be specified as a string or as `entity` to invoke current entity in the window.
 
 Example:
 
@@ -161,8 +163,8 @@ Retrieves an aggregated value from the database for the specified metric `m`, en
 
 The tags argument `t` can be specified as follows:
 
-* Empty string `''` which means no tags.
-* String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
+* Empty string `''` for no series tags.
+* String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
 * Map: `["tag1":"value1","tag2":"value2"]`
 * The `tags` field representing the grouping tags of the current window.
 
@@ -174,11 +176,11 @@ Example:
 
 ### Series Match
 
-Both `db_last` and `db_statistic` functions search the database for matching series based on the specified metric/entity/tags filter and return a numeric value for the first matched series. If the series in the current window has tags which are not collected by the specified metric and entity, such tags are excluded from the filter.
+Both `db_last` and `db_statistic` functions search the database for matching series based on the specified metric/entity/tags filter and return a numeric value for the first matched series. If the series in the current window has tags which are not collected by the specified metric and entity, those tags are excluded from the filter.
 
 #### Example `Tags : No Tags`
 
-In the example below, the `db_last('cpu_busy')` function ignores mount_point and file_system tags because these tags are not collected by the cpu_busy metric.
+In the example below, the `db_last('cpu_busy')` function ignores the tags `mount_point` and `file_system` because they are not collected by the metric `cpu_busy`.
 
 * Current Window
 
@@ -212,7 +214,7 @@ In the example below, the `db_last('cpu_busy')` function ignores mount_point and
 
 #### Example `Same Tags`
 
-In the example below, the `db_last('disk_used_percent')` function uses the same series tags as in the current window because all of these tags are collected by the disk_used_percent metric.
+In this example, the function `db_last('disk_used_percent')` uses the same series tags as in the current window because all of these tags are collected by the metric `disk_used_percent`.
 
 * Current Window
 
@@ -246,7 +248,7 @@ In the example below, the `db_last('disk_used_percent')` function uses the same 
 
 #### Example `No Tags : Tags`
 
-In the example below, the `db_last('disk_used_percent')` function will search for first series with **any** tags (including no tags) because the cpu_busy metric in the current window has no tags. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax option.
+In this example, the function `db_last('disk_used_percent')` will search for a series with **any** tags configuration; the metric `cpu_busy` in the current window has no tags. This search will likely match multiple series, the first of which will be used as the returned value. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax.
 
 * Current Window
 
@@ -280,7 +282,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 
 #### Example `Different Tags`
 
-In the example below, the `db_last('io_disk_percent_util')` function will search for the first series with **any** tags (including no tags) because the `io_disk_percent_util` and `disk_used metrics` have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` option.
+In this example, the function `db_last('io_disk_percent_util')` will search for the first series with **any** tags configuration; the metrics `io_disk_percent_util` and `disk_used` have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used as the returned value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax.
 
 * Current Window
 
@@ -328,9 +330,9 @@ Returns the number of message records matching the specified interval `i`, messa
   db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
 ```
 
-Returns the most recent [message](../api/data/messages/query.md) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See matching rules [below](#matching-rules).
+Returns the most recent [message](../api/data/messages/query.md) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See [Matching Rules](#matching-rules).
 
-The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
+[Fields](../api/data/messages/query.md#fields-1) of a returned object may be invoked using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
 
 > Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
 
@@ -342,13 +344,13 @@ The returned object's [fields](../api/data/messages/query.md#fields-1) can be ac
 
 Returns a list of [message](../api/data/messages/query.md) records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-The messages are ordered by time (similar to the Message Search page). See matching rules [below](#matching-rules).
+The messages are ordered by time (similar to the **Message Search** page). See [Matching Rules](#matching-rules).
 
 If no messages are found, an empty `[]` list is returned.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method. The first indexed element is `0`.
 
-The returned objects' [fields](../api/data/messages/query.md#fields-1) can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
+[Fields](../api/data/messages/query.md#fields-1) of a returned object may be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
 
 > Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
 
@@ -357,7 +359,7 @@ The returned objects' [fields](../api/data/messages/query.md#fields-1) can be ac
 The following matching rules apply:
 
 * Interval:
-  * The selection interval `i` is specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'.
+  * The selection interval `i` is specified in `count [units](../shared/calendar.md#interval-units)`, for example, `1 hour`.
   * The end of the selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
 
 * Type:
@@ -371,10 +373,10 @@ The following matching rules apply:
   * If the entity argument `e` is specified as `null` or empty string `''` or `*` wildcard, all entities are matched.
 
 * Tags:
-  * If the tags `t` argument is specified as `null` or an empty string `''`, all tags are matched.
+  * If tags argument `t` is specified as `null` or an empty string `''`, all tags are matched.
   * To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
-  * The tags `t` argument matches records that include the specified tags but may also include other tags.
-  * The tags `t` argument can be specified as follows:
+  * Tags argument `t` matches records that include the specified tags but may also include other tags.
+  * Tags argument `t` may be specified as follows:
     * String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
     * Map: `["tag1":"value1", "tag2":"value2"]`
     * The `tags` field representing the grouping tags of the current window.
