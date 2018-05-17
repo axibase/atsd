@@ -11,7 +11,7 @@
 | 4191 | UI | Bug | Clone button in the scheduled SQL configuration fails to redirect to the new configuration. |
 | 4189 | sql | Bug | Fix [`LIKE`](../../sql#where-clause) comparator when comparing tags using wildcards. |
 | [4184](#issue-4184) | core | Feature | Add support for comments (hash symbol) in replacement tables. |
-| 4182 | sql | Bug |Fix parsing error when [`CAST`](../../sql/#cast) function is used within [`ISNULL`](../../sql/README.md/#isnull) function with a string argument: `CAST(ISNULL(LOOKUP('tab-1', entity), '0') AS NUMBER)`.|
+| 4182 | sql | Bug |Fix parsing error when [`CAST`](../../sql/#cast) function is used within [`ISNULL`](../../sql/README.md#isnull) function with a string argument: `CAST(ISNULL(LOOKUP('tab-1', entity), '0') AS NUMBER)`.|
 | [4179](#issue-4179) | sql | Feature | Add an option to exclude queries from the SQL query statistics page using `!` as the negation symbol. |
 | 4178 | export | Bug | Fixed a bug with email notifications when Output Path was not specified. |
 | 4175 | sql | Bug | Incorrect period start calculated for YEAR period and END_TIME alignment.  |

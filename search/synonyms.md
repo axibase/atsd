@@ -6,7 +6,7 @@ Synonym search allows finding series with metadata fields containing values with
 
 For example, a user searching for series with 'currency' keyword might be interested in locating series with keywords `money`, `cash` as well as `geld` (German) and `dinero` (Spanish).
 
-The synonyms can be created for all [metadata fields](README.md/#overview).
+The synonyms can be created for all [metadata fields](README.md#overview).
 
 ## Configuration
 
