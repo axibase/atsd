@@ -163,11 +163,11 @@ ATSD_CONF = {
                                      'is leaf': True}]}
 ```
 
-![](resources/00.png)
+![](./resources/00.png)
 
 ## "views" example breakdown
 
-![](resources/01.png)
+![](./resources/01.png)
 
 ```python
 {'type': 'entity folder',
@@ -177,7 +177,7 @@ ATSD_CONF = {
 
 Below two entity folders are shown. One filters out only the entity `com.axibase`. The other one filters out entities that start with `com.axibase`.
 
-![](resources/02.png)
+![](./resources/02.png)
 
 ```python
 {'type': 'entity',
@@ -186,7 +186,7 @@ Below two entity folders are shown. One filters out only the entity `com.axibas
 
 List of entities filtered by the folder they’re in.
 
-![](resources/03.png)
+![](./resources/03.png)
 
 ```python
 {'type': 'tag',
@@ -197,7 +197,7 @@ List of entities filtered by the folder they’re in.
 
 Values of the tag path. To retrieve tags we need a metric; however, it hasn’t been established yet. We can make a global token inside this one to make the metric become `distgeomon.connect-dns` until stated otherwise.
 
-![](resources/04.png)
+![](./resources/04.png)
 
 ```python
 {'type': 'tag',
@@ -206,7 +206,7 @@ Values of the tag path. To retrieve tags we need a metric; however, it hasn’t 
 
 Values of tags `geo-target` and `geo-source` separated by a comma.
 
-![](resources/05.png)
+![](./resources/05.png)
 
 ```python
 {'type': 'metric folder',
@@ -216,7 +216,7 @@ Values of tags `geo-target` and `geo-source` separated by a comma.
 
 Two metric folders.
 
-![](resources/06.png)
+![](./resources/06.png)
 
 ```python
 {'type': 'metric',
@@ -225,7 +225,7 @@ Two metric folders.
 
 List of metrics.
 
-![](resources/07.png)
+![](./resources/07.png)
 
 ```python
 {'type': 'interval',
@@ -242,7 +242,7 @@ List of metrics.
 
 List of aggregation intervals.
 
-![](resources/08.png)
+![](./resources/08.png)
 
 ```python
 {'type': 'collection',
@@ -255,7 +255,7 @@ List of aggregation intervals.
 
 If we want to make two different types of tokens at the same level, i.e. a leaf and a branch (as shown below), we can make a collection. In this collection, there is a detail aggregator, which is a leaf. We can click on it and see the plot and a constant folder Aggregate, which will lead us further into the tree.
 
-![](resources/09.png)
+![](./resources/09.png)
 
 ```python
 {'type': 'aggregator',
@@ -271,7 +271,7 @@ If we want to make two different types of tokens at the same level, i.e. a leaf 
 
 Here is a list of aggregators. First we define an ATSD aggregator we want to use, and then can assign any name we would like to it.
 
-![](resources/10.png)
+![](./resources/10.png)
 
 ```python
 {'type': 'period',
@@ -293,4 +293,4 @@ When the storage finder is enabled, metrics from ATSD become available for visua
 
 ATSD metrics visualization in Graphite-web application:
 
-![](resources/graphite.png)
+![](./resources/graphite.png)

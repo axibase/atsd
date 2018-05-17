@@ -31,4 +31,4 @@ Multiple `nmon` files can be uploaded simultaneously if archived. It is possible
 
 ## Below is a Screenshot of nmon File User Interface Upload
 
-![](resources/upload-nmon-file.png "upload nmon file")
+![](./resources/upload-nmon-file.png "upload nmon file")

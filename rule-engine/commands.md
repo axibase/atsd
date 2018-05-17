@@ -31,7 +31,7 @@ $ which bash
 
 Specify optional arguments to be passed to the executable, one argument per line.
 
-![](images/command-script.png)
+![](./images/command-script.png)
 
 Arguments that contains whitespace or quotes will be quoted automatically.
 
@@ -39,13 +39,13 @@ Arguments that contains whitespace or quotes will be quoted automatically.
 
 The command interpreter in ATSD doesn't support piping, I/O redirection or shell expansion. If the command includes these operations, delegate its interpretation and handling to a spawned process using `bash -c` flag.
 
-![](images/command-bash-c.png)
+![](./images/command-bash-c.png)
 
 ### Window Fields
 
 The arguments may include window [fields](window.md#window-fields) and [variables](variables.md) using [placeholder](placeholders.md) syntax, for example `${entity}`. If the placeholder is not found, it is resolved to an empty string.
 
-![](images/command-placeholder.png)
+![](./images/command-placeholder.png)
 
 ## Command Execution
 
@@ -121,7 +121,7 @@ By using the `${upper(entity)}` placeholder, the script executes the disk cleanu
 
 A follow-up action, at the `REPEAT` status, can be further configured to cleanup other directories, in order to bring disk space usage down.
 
-![](images/command-tacmd.png)
+![](./images/command-tacmd.png)
 
 #### Prerequisites
 
@@ -200,4 +200,4 @@ The rule is configured to calculate a derived metric for the same entity. The de
   2017-11-30 14:46:50,424;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, echo $0 > /dev/tcp/localhost/8081, series e:nurswgvml212 m:derived_cpu_busy=0.5433333317438761]'
 ```
 
-![](images/system-command-derived.png)
+![](./images/system-command-derived.png)

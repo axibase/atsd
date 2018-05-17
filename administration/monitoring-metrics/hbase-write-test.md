@@ -18,7 +18,7 @@ HBase Write Test allows you to:
 
 Auto Test Example Results:
 
-![](images/auto-test-1.png "auto-test-1")
+![](./images/auto-test-1.png "auto-test-1")
 
 | Field | Description |
 | --- | --- |
@@ -35,4 +35,4 @@ Auto Test Example Results:
 | Log interval, seconds | Interval between log outputs. |
 | Auto test delay, seconds | Delay between finishing one test and starting the next test in Auto Test mode. |
 
-![](images/hbase_test_atsd.png "hbase_test_atsd")
+![](./images/hbase_test_atsd.png "hbase_test_atsd")

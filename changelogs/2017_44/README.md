@@ -44,9 +44,9 @@ The `tags` parameter in [Entity Group: Get Entities](../../api/meta/entity-group
 
 The 'Entity Link' field resolves the tag value to an entity and displays a link to its editor page. The tooltip contains entity label, if available.
 
-![](Images/entity-link.png)
+![](./Images/entity-link.png)
 
-![](Images/editor-entity-link.png)
+![](./Images/editor-entity-link.png)
 
 ### Issue 4684
 
@@ -54,7 +54,7 @@ The 'Entity Link' field resolves the tag value to an entity and displays a link 
 
 * The member type options were renamed with a new status message.
 
-![](Images/entity-group-editor.png)
+![](./Images/entity-group-editor.png)
 
 ### Issue 4652
 
@@ -68,4 +68,4 @@ The 'Entity Link' field resolves the tag value to an entity and displays a link 
 
 * Entity views can be added to the top menu with a custom icon.
 
- ![](Images/top-menu-portal.png)
+ ![](./Images/top-menu-portal.png)

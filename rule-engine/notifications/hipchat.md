@@ -13,28 +13,28 @@
 * Log in to HipChat as an administrator.
 * Click on **System**.
 
-    ![](images/system.png)
+    ![](./images/system.png)
 
 * Open **Team Info**.
 * Navigate to the invitation URL, click **Enable**.
 
-    ![](images/invite_url.png)
+    ![](./images/invite_url.png)
 
 * Copy the link.
 * Sign out.
 
-    ![](images/sign_out.png)
+    ![](./images/sign_out.png)
 
 * Paste the above link into the browser address bar, press **Enter**.
 * Fill in the fields, click **Sign Up**.
 
-    ![](images/hipchat_atsd_bot.png)
+    ![](./images/hipchat_atsd_bot.png)
 
 ## Generate Tokens
 
 * Click on the bot icon in the upper right corner.
 
-    ![](images/bot_icon.png)
+    ![](./images/bot_icon.png)
 
 * Click on **Profile**.
 * Open **API tokens**. Make sure you are using API **v2**: otherwise you will receive a warning from the system.
@@ -43,7 +43,7 @@
 * Fill in the **Label** field.
 * Click **Create**.
 
-    ![](images/hipchat_token.png)
+    ![](./images/hipchat_token.png)
 
 * Copy the token for future reference.
 * Log out.
@@ -54,29 +54,29 @@
 * Click **Start chatting**.
 * Click **Create a room**.
 
-    ![](images/create_room.png)
+    ![](./images/create_room.png)
 
 * Fill in the fields, check **Private room**, click **Create room**.
 
-    ![](images/private_room.png)
+    ![](./images/private_room.png)
 
 * Specify members that will receive notifications from ATSD, including the above bot user, click **Invite people**.
 
-    ![](images/invite_bot.png)
+    ![](./images/invite_bot.png)
 
 ## Look Up Room ID
 
 * Click on the team name.
 
-    ![](images/team_name.png)
+    ![](./images/team_name.png)
 
 * Click on the newly created room.
 
-    ![](images/created_room.png)
+    ![](./images/created_room.png)
 
 * Check the URL. The last number is the room ID.
 
-    ![](images/room_url.png)
+    ![](./images/room_url.png)
 
 In addition to the room ID, you can search by room name, for example `test-axibase`, when sending messages.
 
@@ -86,18 +86,18 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 * Click on an existing `HIPCHAT` template, or click the **Create** button and select the `HIPCHAT`type.
 * Specify the unique `Name` of the notification.
 
-    ![](images/hipchat_1.png)
+    ![](./images/hipchat_1.png)
 
 * Specify the `Endpoint URL`.
 * Copy the `Token` from the HipChat Data Center client into the `Auth Token` field of the configuration form.
 * Copy the room ID or room name from the HipChat Data Center client into the `Room ID` field in the configuration form.
 * Select **Test Portal** to test the screenshot.
 
-    ![](images/hipchat_settings.png)
+    ![](./images/hipchat_settings.png)
 
 * Click **Test**.
 
-   ![](images/hipchat_2.png)
+   ![](./images/hipchat_2.png)
 
 * If test is passed, set the status to **Enabled** and click **Save**.
 
@@ -142,7 +142,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
 * Save the rule by clicking the **Save** button.
 
-    ![](images/hipchat_notification.png)
+    ![](./images/hipchat_notification.png)
 
 * The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
@@ -152,8 +152,8 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
 * Warning alert:
 
-   ![](images/hipchat_test_1.png)
+   ![](./images/hipchat_test_1.png)
 
 * Critical alert:
 
-   ![](images/hipchat_test_2.png)
+   ![](./images/hipchat_test_2.png)

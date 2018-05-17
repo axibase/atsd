@@ -23,8 +23,8 @@
 
 ### Issue 4085a
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
 ### Issue 4134
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)

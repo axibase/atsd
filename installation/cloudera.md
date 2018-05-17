@@ -142,7 +142,7 @@ Copy the `axibase.keytab` file to the `/opt/atsd/atsd/conf` directory on the ATS
 
 Check the HBase Secure Authorization settings in the Cloudera HBase configuration.
 
-![](images/cloudera-manager-authorization.png)
+![](./images/cloudera-manager-authorization.png)
 
 If the HBase Secure Authorization is disabled you can access HBase as is. Proceed to [Kerberos Settings](#kerberos-settings).
 
@@ -152,7 +152,7 @@ Otherwise, you need to allow the newly created `axibase` principal to access HBa
 
 > Don't forget to deploy updated configuration and restart HBase.
 
-![](images/cloudera-manager-superuser.png)
+![](./images/cloudera-manager-superuser.png)
 
 #### Option 2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal
 
@@ -325,11 +325,11 @@ Open Cloudera Manager, select the target HBase cluster/service, open Configurati
 * `com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint`
 * `com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint`
 
-![](images/cloudera-manager-coprocessor-config.png)
+![](./images/cloudera-manager-coprocessor-config.png)
 
 ### Increase Maximum Heap Size on Region Servers
 
-![](images/cdh-region-heap.png)
+![](./images/cdh-region-heap.png)
 
 ### Restart HBase Service
 
@@ -355,7 +355,7 @@ By default ATSD triggers major HBase compaction of its key data tables on a dail
 
 Since major compactions may overload the cluster, it is recommended to trigger them less frequently or to schedule them externally, for example via Cloudera Manager:
 
-![](images/cm_major_compaction.png)
+![](./images/cm_major_compaction.png)
 
 To disable built-in compaction of data tables, adjust the following settings on the **Settings > Server Properties** page:
 
@@ -391,7 +391,7 @@ To enable encryption of RPC traffic between ATSD and HBase, add the following pr
 
 Similarly, enable the `hbase.rpc.protection` property on the HBase cluster:
 
-![](images/rpc-hbase.png)
+![](./images/rpc-hbase.png)
 
 ## Start ATSD
 

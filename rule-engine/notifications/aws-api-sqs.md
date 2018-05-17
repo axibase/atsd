@@ -62,7 +62,7 @@ Modify the `QueueUrl` by replacing the `<AWS_SQS_QUEUE_URL>` value with your url
 https://sqs.us-east-1.amazonaws.com/568708720055/test
 ```
 
-![](images/aws_api_sqs_notification_config.png)
+![](./images/aws_api_sqs_notification_config.png)
 
 ## Rule
 
@@ -78,7 +78,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/aws_api_rule_overview.png)
+![](./images/aws_api_rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -88,7 +88,7 @@ Enable **Open**, **Repeat** and **Cancel** triggers.
 
 Specify the message text into the `MessageBody` parameter for all triggers.
 
-![](images/aws_api_sqs_rule_notification.png)
+![](./images/aws_api_sqs_rule_notification.png)
 
 ## Test
 
@@ -98,13 +98,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/aws_api_sqs_alert_open.png)
+![](./images/aws_api_sqs_alert_open.png)
 
 Check the Amazon SQS queue to make sure the new messages were received:
 
-![](images/aws_api_sqs_test.png)
+![](./images/aws_api_sqs_test.png)

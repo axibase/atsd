@@ -6,7 +6,7 @@ Depending on the available resources, it can take 5-20 minutes for ATSD to initi
 
 At the end of the installation process the script displays the ATSD IP address and ports.
 
-![](images/atsd_install_shell.png )
+![](./images/atsd_install_shell.png )
 
 Access the ATSD web interface on the secure port (8443 by default):
 
@@ -27,7 +27,7 @@ Click on Portals tab in the ATSD web interface. A pre-defined **ATSD**
 portal displays application, operating system, and usage metrics for the database itself
 and the machine where it's installed.
 
-![](images/atsd_portal.png "ATSD Host")
+![](./images/atsd_portal.png "ATSD Host")
 
 > Note *Data Tables* chart  can be empty for a few minutes after start
 

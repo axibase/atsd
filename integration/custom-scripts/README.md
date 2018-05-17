@@ -99,4 +99,4 @@ After starting the collectors, verify in the ATSD web interface that metrics are
 
 Each collector script collects metrics with the appropriate prefix.
 
-![](resources/collector-script-check_new.png)
+![](./resources/collector-script-check_new.png)

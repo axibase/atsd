@@ -12,7 +12,7 @@
 
 ### Issue 4398
 
-![](Images/4398.png)
+![](./Images/4398.png)
 
 **Feature Details**:
 

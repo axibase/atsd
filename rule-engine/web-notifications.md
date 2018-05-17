@@ -8,7 +8,7 @@ They can be used to automate tasks such as sending an alert into a Slack channel
 
 Example: [Slack](notifications/slack.md) Alert
 
-![](images/slack-alert.png)
+![](./images/slack-alert.png)
 
 ## Notification Types
 
@@ -115,7 +115,7 @@ Each notification type supports its own set of settings:
 
 The customizable settings are marked with an enabled checkbox.
 
-![](images/slack-text-check.png)
+![](./images/slack-text-check.png)
 
 The administrator can specify which settings are fixed and which can be modified in the rule editor.
 
@@ -131,7 +131,7 @@ If the notification type supports sending charts, select one of the portals from
 
 The notification request is successful if the endpoint returns status `200` (OK).
 
-![](images/slack-test.png)
+![](./images/slack-test.png)
 
 ## Using Notifications in Rules
 
@@ -143,7 +143,7 @@ Choose one of the notifications from the 'Endpoint' drop-down.
 
 Configure when the notification are triggered by enabling triggers for different status change events: on `Open`, `Repeat`, and on `Cancel`.
 
-![](images/notify-triggers.png)
+![](./images/notify-triggers.png)
 
 Multiple notifications to different endpoints can be enabled for the same rule.
 
@@ -193,7 +193,7 @@ Utilize [control flow](control-flow.md) statements for conditional processing.
 
 Attachment options are displayed in the rule editor if supported by the given notification type.
 
-![](images/notify-attach.png)
+![](./images/notify-attach.png)
 
 #### Attach Portals
 
@@ -201,21 +201,21 @@ The `Attach Portals` option sends one or more portals as an image to the target 
 
 If the selected portal is a [template](../portals/portals-overview.md#template-portals) portal, its entity, metric, and series tags will be resolved from the alert details in the current window.
 
-![](images/notify-attach-4.png)
+![](./images/notify-attach-4.png)
 
 #### Attach Chart
 
 The `Series Chart` option sends the default portal for the metric, entity and series tags in the current window.
 
-![](images/notify-attach-1.png)
+![](./images/notify-attach-1.png)
 
 #### Attach Details
 
 The `Attach Details` option sends an alert details table as a separate message with a choice of [formats](details-table.md#formats).
 
-![](images/notify-attach-2.png)
+![](./images/notify-attach-2.png)
 
-![](images/notify-attach-3.png)
+![](./images/notify-attach-3.png)
 
 ### Multiple Endpoints
 
@@ -237,7 +237,7 @@ Notification results are recorded in the database as messages and can be viewed 
 https://atsd_hostname:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
 ```
 
-![](images/notify-error.png)
+![](./images/notify-error.png)
 
 ## Monitoring
 
@@ -247,7 +247,7 @@ The number of notifications sent per minute can be monitored with the [`web_serv
 https://atsd_hostname:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
 ```
 
-![](images/notifications-monitoring.png)
+![](./images/notifications-monitoring.png)
 
 ## Error Handling
 
@@ -294,7 +294,7 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   Modify the `Base URL` by replacing it with the corresponding API gateway URL.
 
-  ![](images/notify-network-base.png)
+  ![](./images/notify-network-base.png)
 
 * **HTTP/HTTPS/SOCKS Proxy**
 
@@ -302,7 +302,7 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   Keep the `Base URL` as originally specified and instead fill out the `Proxy URL` and optional client credentials fields.
 
-  ![](images/notify-proxy.png)
+  ![](./images/notify-proxy.png)
 
   Supported protocols are HTTP/HTTPS and SOCKS v5.
 

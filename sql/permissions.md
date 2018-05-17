@@ -24,7 +24,7 @@ The `jane.doe` user is a member of the `users-nur` user group that is allowed to
 
 The `john.doe` user is a member of the `users-aws` user group that is allowed to read data for `srv-aws` entity group.
 
-![](images/sql-permissions.png)
+![](./images/sql-permissions.png)
 
 ---
 
@@ -32,19 +32,19 @@ The `john.doe` user is a member of the `users-aws` user group that is allowed to
 
 * All users:
 
-![users](images/users.png)
+![users](./images/users.png)
 
 * User `joe.bloggs`:
 
-![joe-bloggs-user](images/joe-bloggs-user.png)
+![joe-bloggs-user](./images/joe-bloggs-user.png)
 
 * User `jane.doe`:
 
-![](images/jane-doe-user.png)
+![](./images/jane-doe-user.png)
 
 * User `john.doe`:
 
-![](images/john-doe-user.png)
+![](./images/john-doe-user.png)
 
 ---
 
@@ -52,15 +52,15 @@ The `john.doe` user is a member of the `users-aws` user group that is allowed to
 
 * User Group `users-all`:
 
-![](images/users-all.png)
+![](./images/users-all.png)
 
 * User Group `users-nur`:
 
-![](images/users-nur.png)
+![](./images/users-nur.png)
 
 * User Group `users-aws`:
 
-![](images/users-aws.png)
+![](./images/users-aws.png)
 
 ---
 
@@ -68,11 +68,11 @@ The `john.doe` user is a member of the `users-aws` user group that is allowed to
 
 * Entity Group `srv-nur`:
 
-![](images/srv-nur.png)
+![](./images/srv-nur.png)
 
 * Entity Group `srv-aws`:
 
-![](images/srv-aws.png)
+![](./images/srv-aws.png)
 
 ---
 
@@ -92,12 +92,12 @@ ORDER BY entity
 
 * Results for user `joe.bloggs`:
 
-![](images/joe-bloggs-sql.png)
+![](./images/joe-bloggs-sql.png)
 
 * Results for user `jane.doe`:
 
-![](images/jane-doe-sql.png)
+![](./images/jane-doe-sql.png)
 
 * Results for user `john.doe`:
 
-![](images/john-doe-sql.png)
+![](./images/john-doe-sql.png)

@@ -8,9 +8,9 @@ Supported algorithms for auto-regressive time series extrapolation include **Hol
 
 **Forecasting Example with Abnormal Deviation**:
 
-![](resources/forecasts.png)
+![](./resources/forecasts.png)
 
-![](resources/forecasts_2.png)
+![](./resources/forecasts_2.png)
 
 ## Reference
 
@@ -22,13 +22,13 @@ Supported algorithms for auto-regressive time series extrapolation include **Hol
 
 Forecasting can be enabled on the **Data > Forecasts** page.
 
-![](resources/forecasts_3.png)
+![](./resources/forecasts_3.png)
 
-![](resources/forecasts_1.png)
+![](./resources/forecasts_1.png)
 
 ### General Settings
 
-![](resources/forecasts_4.png)
+![](./resources/forecasts_4.png)
 
 Enabled forecasts are prepared by background jobs on schedule according to `cron` [expressions](../shared/scheduling.md). Forecasting jobs are typically executed during off-peak hours.
 
@@ -38,7 +38,7 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 
 ### Data Selection Settings
 
-![](resources/forecasts_5.png)
+![](./resources/forecasts_5.png)
 
 | Setting | Description |
 | --- | --- |
@@ -56,7 +56,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 ### Aggregation Settings
 
-![](resources/forecasts_6.png)
+![](./resources/forecasts_6.png)
 
 | Setting | Description |
 | --- | --- |
@@ -67,7 +67,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 ### Algorithm Parameters
 
-![](resources/forecasts_7.png)
+![](./resources/forecasts_7.png)
 
 | Setting | Description |
 | --- | --- |
@@ -79,7 +79,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 ### Persistence Settings
 
-![](resources/forecasts_8.png)
+![](./resources/forecasts_8.png)
 
 | Setting | Description |
 | --- | --- |
@@ -92,39 +92,39 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 Forecast Settings Editor provides the following tools:
 
-![](resources/forecasts_9.png)
+![](./resources/forecasts_9.png)
 
 - **Calculate Parameters**
 
   This option calculates algorithm parameters:
 
-  ![](resources/forecasts_11.png)
+  ![](./resources/forecasts_11.png)
 
 - **Run**
 
   This option runs the forecast job and may be used for tests:
 
-  ![](resources/forecasts_12.png)
+  ![](./resources/forecasts_12.png)
 
 - **Export**
 
   Export forecast data in csv:
 
-  ![](resources/forecasts_13.png)
+  ![](./resources/forecasts_13.png)
 
-  ![](resources/forecasts_14.png)
+  ![](./resources/forecasts_14.png)
 
 - **Show Meta**
 
    This option displays values of the main settings by which this forecast is calculated:
 
-   ![](resources/forecasts_16.png)
+   ![](./resources/forecasts_16.png)
 
    Metadata is stored with the forecast. Collection interval is an interval within the real data were extracted to build the forecast.
 
 Split button on the **Data > Forecasts** page may be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
-![](resources/forecasts_10.png)
+![](./resources/forecasts_10.png)
 
 ## Using Forecasts
 
@@ -142,7 +142,7 @@ This setting compares the actual [average value](../rule-engine/functions-statis
 
 Set Data Type setting to 'Forecast', optionally specify the forecast name:
 
-![](resources/forecasts_15.png)
+![](./resources/forecasts_15.png)
 
 ### Data API
 

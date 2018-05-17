@@ -49,7 +49,7 @@ Authorization: Token OAUTH-TOKEN
 Authorization: Bearer YOUR_JWT
 ```
 
-![](images/custom-token.png)
+![](./images/custom-token.png)
 
 ## Placeholders
 
@@ -71,10 +71,10 @@ Otherwise, if the checkbox enabled, the parameter will be displayed on the 'Web 
 
 Both fixed and editable parameter values can include placeholders.
 
-![](images/custom_editable.png)
+![](./images/custom_editable.png)
 
-![](images/custom-editable-editor.png)
+![](./images/custom-editable-editor.png)
 
 ## Example
 
-![](images/custom-json.png)
+![](./images/custom-json.png)

@@ -18,30 +18,30 @@
 
 Admin > Server Properties, modified to display differences between actual and default property values:
 
-![4163](Images/4163.1.png)
+![4163](./Images/4163.1.png)
 
 Admin > System Information, table headers added to user interface:
 
-![4163.2](Images/4163.2.png)
+![4163.2](./Images/4163.2.png)
 
 Configuration > Portals, `View` button allows for viewing of
 Portal during configuration:
 
-![4163.3](Images/4163.3.1.png)
+![4163.3](./Images/4163.3.1.png)
 
 'Remember Me' tooltip added:
 
-![4163.4](Images/4163.4.png)
+![4163.4](./Images/4163.4.png)
 
 Admin > Users. `ROLE_` prefix removed:
 
-![4163.5](Images/4163.5.png)
+![4163.5](./Images/4163.5.png)
 
 Detailed columns removed from the Entities tab.
 
 Alerts, second precision added to date column, `ACKNOWLEDGE` column shortened to `ACK`:
 
-![4163.6](Images/4163.6.png)
+![4163.6](./Images/4163.6.png)
 
 Messages, Millisecond precision added to date column.
 
@@ -49,6 +49,6 @@ Messages, Millisecond precision added to date column.
 
 Configuration > Rules
 
-![4144](Images/4144.png)
+![4144](./Images/4144.png)
 
 Subscribers button displays all email subscribers.

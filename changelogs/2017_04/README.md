@@ -39,7 +39,7 @@ A `Text Column` button was added to the user interface export form. By enabling 
 Now, a [text value](../../api/network/series.md#series-tags-text-value-messages) can be used to annotate a numeric observation without changing the series primary key. See
 [Issue 3480](../../changelogs/2017_02#issue-3480) for more information.
 
-![Figure 1](Images/Figure1.png)
+![Figure 1](./Images/Figure1.png)
 
 ### Issue 3818
 
@@ -137,7 +137,7 @@ The [Test] result now includes a list of columns from the underlying dataset and
 ]
 ```
 
-![Figure 3](Images/Figure3.png)
+![Figure 3](./Images/Figure3.png)
 
 ### Issue 3772
 
@@ -145,4 +145,4 @@ In order to simplify processing of JSON documents created with [Open Data](https
 
 The configuration options implemented in the Socrata job provide a way to convert the dataset into series, property, and message fields in ATSD.
 
-![Figure 2](Images/Figure2.png)
+![Figure 2](./Images/Figure2.png)

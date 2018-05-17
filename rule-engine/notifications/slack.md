@@ -37,7 +37,7 @@ Slack Bot is a special account created specifically for automation purposes.
 
 * Open [Slack Apps](https://api.slack.com/apps/)
 
-   ![](images/outgoing_webhook_slack_1.png)
+   ![](./images/outgoing_webhook_slack_1.png)
 
 * Select an existing app or create a new one.
 
@@ -45,15 +45,15 @@ Slack Bot is a special account created specifically for automation purposes.
 
   * Click on **Bot Users**.
 
-       ![](images/outgoing_webhook_slack_2.png)
+       ![](./images/outgoing_webhook_slack_2.png)
 
   * Click on **Add a Bot User**.
 
-       ![](images/outgoing_webhook_slack_3.png)
+       ![](./images/outgoing_webhook_slack_3.png)
 
   * Review Settings, click on **Add Bot User**.
 
-       ![](images/outgoing_webhook_slack_4.png)
+       ![](./images/outgoing_webhook_slack_4.png)
 
   * Click on **Save Changes**.
 
@@ -61,37 +61,37 @@ Slack Bot is a special account created specifically for automation purposes.
 
 * Click on **Install App**.
 
-    ![](images/slack_3.png)
+    ![](./images/slack_3.png)
 
 * Click on **Install App to Workspace**.
 
-   ![](images/outgoing_webhook_slack_12.png)
+   ![](./images/outgoing_webhook_slack_12.png)
 
 * Review permissions, click **Authorize**.
 
-   ![](images/outgoing_webhook_slack_13.png)
+   ![](./images/outgoing_webhook_slack_13.png)
 
 * Copy the **Bot User OAuth Access Token** for future reference.
 
-   ![](images/slack_4.png)
+   ![](./images/slack_4.png)
 
 * Open Slack [workspace](https://my.slack.com/), click on bot name in the **Apps** section.
 
-   ![](images/outgoing_webhook_slack_14.png)
+   ![](./images/outgoing_webhook_slack_14.png)
 
 * Click on **Conversation Settings**  and **Add this app to a channel ...**.
 
-    ![](images/slack_5.png)
+    ![](./images/slack_5.png)
 
 * Select the channel, click on **Add**.
 
-    ![](images/slack_6.png)
+    ![](./images/slack_6.png)
 
 ## Get Channel Id
 
 * Click on the target IM/public/private channel to display the channel URL, for example `messages/D822261LK/team/U81D8UY64/`.
 
-     ![](images/slack_channel_id.png)
+     ![](./images/slack_channel_id.png)
 
 * Copy the channel ID, which is specified between the `messages/` and `/team` parts, for example `D822261LK`.
 
@@ -103,16 +103,16 @@ When sending messages to either a public or private channel you can just use the
 * Click on an existing `SLACK` template, or click the **Create** button below and select the `SLACK` type.
 * Specify the unique `Name` of the notification.
 
-    ![](images/slack_1.png)
+    ![](./images/slack_1.png)
 
 * Specify the `Auth Token` and `Channels` parameters. See parameter descriptions below.
 * Select **Test Portal** to verify screenshot delivery.
 
-    ![](images/slack-settings.png)
+    ![](./images/slack-settings.png)
 
 * Click **Test**
 
-   ![](images/slack_2.png)
+   ![](./images/slack_2.png)
 
 * If test is passed, check **Enable**, then click **Save**.
 
@@ -171,7 +171,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 
 * Save the rule by clicking on the **Save** button.
 
-  ![](images/slack_7.png)
+  ![](./images/slack_7.png)
 
 * The rule will create new windows based on incoming data.
 
@@ -179,6 +179,6 @@ It may take a few seconds for the first commands to arrive and trigger notificat
 
 ## Example
 
-![](images/slack_test_1.png)
+![](./images/slack_test_1.png)
 
-![](images/slack_test_2.png)
+![](./images/slack_test_2.png)

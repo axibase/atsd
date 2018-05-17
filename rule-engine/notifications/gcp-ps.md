@@ -33,13 +33,13 @@ The response status code and response content is recorded in `atsd.log` if the `
 * Fill out the `Name` field.
 * Enter the `Project ID`, `Topic`, `Service Account` and select `Private Key Alias`.
 
-  ![](images/gcp_ps_config.png)
+  ![](./images/gcp_ps_config.png)
 
 * Click **Test**.
 
-   ![](images/gcp_ps_test_request.png)
+   ![](./images/gcp_ps_test_request.png)
 
-   ![](images/gcp_ps_test_response.png)
+   ![](./images/gcp_ps_test_response.png)
 
 * If tests are passing OK, check **Enable**, click **Save**.
 

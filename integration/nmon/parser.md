@@ -17,4 +17,4 @@ During the installation of ATSD, a default nmon parser is created for ingesting 
 |  Ignore Errors  |  Ignore all errors. Parses only known metrics and properties.  |  No  |
 |  Retention Interval  |  How long the uploaded nmon file will be stored on the ATSD server. 2 days by default.  |  2 days  |
 
-![](resources/nmon-parser-default.png)
+![](./resources/nmon-parser-default.png)

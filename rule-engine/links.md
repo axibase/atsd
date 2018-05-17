@@ -10,7 +10,7 @@ The link fields can be included in email and web notification messages using pla
 [${tags.status}] ${entityLink} on Docker host ${getEntityLink(tags.docker-host)}
 ```
 
-![](images/inline-links.png)
+![](./images/inline-links.png)
 
 The URLs are automatically [inlined](#inline-links) in email notifications and in web notifications that support inline links.
 

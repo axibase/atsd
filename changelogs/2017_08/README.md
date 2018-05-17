@@ -38,7 +38,7 @@ The values can also be seen in atsd.log:
 
 Custom network commands specified in `Raw Commands` textarea can be executed.
 
-![](Images/Figure_01.png)
+![](./Images/Figure_01.png)
 
 The following [placeholders](https://github.com/axibase/axibase-collector/blob/master/jobs/json.md#placeholders) together with [string functions](https://github.com/axibase/axibase-collector/blob/master/jobs/placeholders.md#string-functions) are supported:
 
@@ -48,15 +48,15 @@ The following [placeholders](https://github.com/axibase/axibase-collector/blob/m
 * DIRECTORY
 * [JSON Path expressions](https://github.com/jayway/JsonPath#operators)
 
-![](Images/Figure_02.png)
-![](Images/Figure_03.png)
+![](./Images/Figure_02.png)
+![](./Images/Figure_03.png)
 
 ### Issue 3926
 
 Fields accessed by the array index have been added to dropdown menu.
 
-![](Images/Figure_04.png)
-![](Images/Figure_05.png)
+![](./Images/Figure_04.png)
+![](./Images/Figure_05.png)
 
 ## Charts
 
@@ -66,4 +66,4 @@ Rendering time of a [chart with about 300 legend units](https://apps.axibase.com
 
 | Before | After |
 |--------|-------|
-|![](Images/Figure_06.png) | ![](Images/Figure_07.png) |
+|![](./Images/Figure_06.png) | ![](./Images/Figure_07.png) |

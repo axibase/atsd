@@ -163,4 +163,4 @@ Values added by the `extend` setting are determined as follows:
 
 [ChartLab Examples](https://apps.axibase.com/chartlab/d8c03f11/3/)
 
-![Interpolation Example](aggregate_interpolate.png)
+![Interpolation Example](./aggregate_interpolate.png)

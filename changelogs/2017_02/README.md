@@ -139,7 +139,7 @@ The following metrics are collected at the docker-host level.
 
 The metrics are collected at 'Container Size Interval' for running containers and at 'Property Refresh Interval' for all containers.
 
-![Figure 1](Images/Figure1.png)
+![Figure 1](./Images/Figure1.png)
 
 ### Issue 3481
 

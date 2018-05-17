@@ -16,15 +16,15 @@ Current data table sizes are displayed on the **Settings > Storage > Database Ta
 
 The table which stores time series data is `atsd_d`.
 
-![](images/retention-atsd_d-size.png)
+![](./images/retention-atsd_d-size.png)
 
 Click on the 'Store File Size' value to view file size growth over time. The size of the `atsd_d` table varies throughout the day as compaction / pruning tasks defragment and delete data in the background.
 
- ![](images/retention-atsd_d-chart.png)
+ ![](./images/retention-atsd_d-chart.png)
 
 To view daily changes in tabular format, open the 'ATSD' portal in the top menu. The table widget in the bottom left corner contains both the current table size as well as the daily change.
 
-![](images/retention-atsd-portal.png)
+![](./images/retention-atsd-portal.png)
 
 ## Space Usage Breakdown
 
@@ -32,7 +32,7 @@ While the breakdown of space usage within the `atsd_d` is not available, the dat
 
 The 'Top Inserts' table is accessible on the **Settings > Receive Statistics** page.
 
-![](images/retention-top-inserts.png)
+![](./images/retention-top-inserts.png)
 
 You can refer to this view in order to identify series with the largest amount of data being inserted.
 
@@ -54,7 +54,7 @@ If the metric is **disabled**, its data is discarded when received. The data com
 
 To disable a metric, open the Metric Editor, expand 'Settings' section, set 'Enabled' switch to 'No', and click **Save**.
 
-![](images/retention-metrics-disabled.png)
+![](./images/retention-metrics-disabled.png)
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
@@ -72,7 +72,7 @@ If a metric is **non-persistent**, it is not stored on disk. The metric will sti
 
 To disable persistence for a metric, open the Metric Editor, expand 'Settings' section, set 'Persistent' switch to 'No', and click **Save**.
 
-![](images/retention-metrics-non-persistent.png)
+![](./images/retention-metrics-non-persistent.png)
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
@@ -92,7 +92,7 @@ Only series that satisfy the condition are stored on disk. All series for this m
 
 To set the filter for a metric, open the Metric Editor, expand the 'Settings' section, enter an expression into the 'Persistence Filter' field, and click Save.
 
-![](images/retention-metrics-persistence-filter.png)
+![](./images/retention-metrics-persistence-filter.png)
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
@@ -159,7 +159,7 @@ To delete **old data** beyond the retention period for the selected metric, open
 
 To disable deletion, set the **Retention Days** field back to zero.
 
-![](images/retention-metrics-edit.png)
+![](./images/retention-metrics-edit.png)
 
 This will cause expired data, older than current time minus the specified retention period, to be deleted by a [background task](#scheduled-tasks) which is executed once a day during night-time hours.
 
@@ -167,15 +167,15 @@ This will cause expired data, older than current time minus the specified retent
 
 In order to apply this setting to multiple metrics at once, open the Metrics tab and enter a pattern for matching multiple metrics by name.
 
-![](images/retention-metrics-search.png)
+![](./images/retention-metrics-search.png)
 
 Check individual records or select all records by checking the box in the header.
 
-![](images/retention-metrics-select.png)
+![](./images/retention-metrics-select.png)
 
 Open the group editor and modify the 'Retention Days' setting. To disable deletion, set 'Retention Days' to zero.
 
-![](images/retention-metrics-group-edit.png)
+![](./images/retention-metrics-group-edit.png)
 
 ### Delete Expired Series
 
@@ -183,7 +183,7 @@ To delete **all data** for an old series, open the Metric Editor, expand the 'Se
 
 To disable deletion, set the **Series Retention Days** field back to zero.
 
-![](images/retention-metrics-edit.png)
+![](./images/retention-metrics-edit.png)
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
@@ -191,7 +191,7 @@ This setting causes all data to be deleted for those series which have not recei
 
 If **Series Retention Days** were set to '1 year' in the example below, it would cause 3 highlighted series that have not been updated since 2015/2016 to be deleted. The data for the remaining active series would be left untouched.
 
-![](images/retention-series-retention.png)
+![](./images/retention-series-retention.png)
 
 The data will be deleted by a [background task](#scheduled-tasks) which is executed once a day during off-peak hours.
 
@@ -199,7 +199,7 @@ The data will be deleted by a [background task](#scheduled-tasks) which is execu
 
 The expired data is deleted from the database on a schedule which is synchronized with other data management tasks.
 
-![](images/retention-scheduled-tasks.png)
+![](./images/retention-scheduled-tasks.png)
 
 The sequence of tasks should be as follows:
 
@@ -213,7 +213,7 @@ It is recommended that the tasks are executed once a day during off-peak/night-t
 
 To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and execute them manually.
 
-![](images/retention-delete-tasks-brief.png)
+![](./images/retention-delete-tasks-brief.png)
 
 ## Deleting Data using API
 
@@ -235,11 +235,11 @@ Schedule the queries to execute before the raw data is deleted.
 
 In the example below, the query runs every night (at 00:15) to calculate hourly average and maximum for each series in the underlying metrics.
 
-![](images/retention-summarize.png)
+![](./images/retention-summarize.png)
 
 The derived metrics are then stored under new names.
 
-![](images/retention-summarize-result.png)
+![](./images/retention-summarize-result.png)
 
 ```sql
 SELECT datetime, entity, tags.*,
@@ -259,7 +259,7 @@ In addition to more data being collected for existing series, data may be appear
 
 In order to monitor these key parameters, create a new [portal](../portals/portals-overview.md#create-portal) with the following table widget:
 
-![](images/retention-record-growth.png)
+![](./images/retention-record-growth.png)
 
 The widget displays the current number of records as well as weekly change.
 

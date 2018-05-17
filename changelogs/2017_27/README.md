@@ -17,7 +17,7 @@
 
 ### Issue 4320
 
-![](Images/4320.png)
+![](./Images/4320.png)
 
 > Live Search Search
 
@@ -25,4 +25,4 @@
 
 > The `COALESCE` function returns the first argument that is not `NULL` or `NaN`.
 
-![](Images/4226.png)
+![](./Images/4226.png)

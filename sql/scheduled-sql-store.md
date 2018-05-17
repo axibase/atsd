@@ -144,7 +144,7 @@ To test that a query complies with all [requirements](#column-requirements), exe
 
 Click **Test** to review the produced commands and resolve any errors.
 
-![SQL Store Test](images/sql-store-test.png)
+![SQL Store Test](./images/sql-store-test.png)
 
 Click **Store** to load the new derived series in the database.
 
@@ -154,7 +154,7 @@ Click **Schedule** to created a scheduled SQL job to create and store new record
 
 The results of scheduled SQL jobs with the **Store** option can be monitored by processing messages with `type=Application`, `source=atsd_export` and `report_type=sql`.
 
-![SQL Store Messages](images/sql-store-messages.png)
+![SQL Store Messages](./images/sql-store-messages.png)
 
 ### Examples
 
@@ -166,11 +166,11 @@ Schedule such queries to execute before the raw data is deleted.
 
 In the example below, the query runs every night (at 00:15) to calculate hourly average and maximum for each series in the underlying metrics.
 
-![](images/sql-scheduled-summarize.png)
+![](./images/sql-scheduled-summarize.png)
 
 The derived metrics are then stored under new names. You can adopt a naming convention for derived metrics such as `{metric}_{function}_{period}`.
 
-![](images/sql-scheduled-summarize-result.png)
+![](./images/sql-scheduled-summarize-result.png)
 
 ```sql
 SELECT datetime, entity, tags.*,

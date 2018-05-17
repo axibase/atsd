@@ -94,13 +94,13 @@ To expose the portal to all visitors, open **Configuration > Portals** page, ope
 
 Since charts displayed in the portals are loaded via Data API, the Guest Access option is available only when Data API is configured for anonymous access.
 
-![portal guest](images/portal-guest.png)
+![portal guest](./images/portal-guest.png)
 
 ## Guest Access to SQL Reports
 
 SQL query results can be published to all visitors by checking 'Guest Access' field on the SQL configuration page.
 
-![sql guest](images/sql-guest-access.png)
+![sql guest](./images/sql-guest-access.png)
 
 > Note that guest access to Data API is not required in this case.
 

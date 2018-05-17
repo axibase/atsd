@@ -115,15 +115,15 @@ The 'Text' field supports [control flow](control-flow.md#control-flow) syntax wh
 
 The incoming data is [grouped](grouping.md) into windows by metric, entity, and command tags with each window generating emails separately from the others.
 
-![](images/email-group-settings.png)
+![](./images/email-group-settings.png)
 
 If the rule creates too many windows, restrict the rule [filter](filters.md) or add [`Override`](overrides.md) exceptions that disable alerting for a particular series.
 
-![](images/email-group-tags.png)
+![](./images/email-group-tags.png)
 
 The override table below contains rules that will always return `false` for the matching series since the value cannot exceed 100%.
 
-![](images/email-override-group.png)
+![](./images/email-override-group.png)
 
 ## Message Composition
 
@@ -141,9 +141,9 @@ The override table below contains rules that will always return `false` for the 
   * Attachments
     * Files (CSV, Excel, PDF, etc)
 
-![](images/email-message-composition-top.png)
+![](./images/email-message-composition-top.png)
 
-![](images/email-message-composition-bottom.png)
+![](./images/email-message-composition-bottom.png)
 
 ### Subject
 
@@ -198,19 +198,19 @@ The header and footer do **not** support any placeholders.
 <p style="color: #8db600;">END of MESSAGE</p>
 ```
 
-![](images/email-header.png)
+![](./images/email-header.png)
 
 ### Details Table
 
 The details table is optional and is formatted with styles for enhanced readability in commonly used email client software.
 
-![](images/email-attach-details.png)
+![](./images/email-attach-details.png)
 
 The table includes multiple parts which are compiled depending on the alert context.
 
 At the end of the table, the links are provided to view extended alert information, open charts and export underlying data.
 
-![](images/email-detail-table-bottom.png)
+![](./images/email-detail-table-bottom.png)
 
 Decimal numbers are rounded to 5 significant digits for readability.
 
@@ -218,7 +218,7 @@ Decimal numbers are rounded to 5 significant digits for readability.
 
 In order to attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured. To attach default portal for the current metric, entity and tags to the outgoing message, check the `Series Chart` option.
 
-![](images/email-screenshot-enable.png)
+![](./images/email-screenshot-enable.png)
 
 The chart may include multiple series depending on statistical functions referenced in the condition.
 
@@ -226,7 +226,7 @@ The chart may include multiple series depending on statistical functions referen
   abs(forecast_deviation(median())) > 2 && (median() < 200 || median() > 600)
 ```
 
-![](images/email-screenshot-series.png)
+![](./images/email-screenshot-series.png)
 
 Similarly, if the rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) such metrics may be included in the screenshot on the right axis.
 
@@ -234,11 +234,11 @@ Similarly, if the rule correlates multiple metrics using [database functions](fu
   avg() > 10 && db_last('memfree') < 500000
 ```
 
-![](images/email-screenshot-correlate.png)
+![](./images/email-screenshot-correlate.png)
 
 To attach additional portals, select them from the `Additional Portal` drop-down.
 
-![](images/email-screenshot-portals.png)
+![](./images/email-screenshot-portals.png)
 
 If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags will be set based on the current window fields.
 

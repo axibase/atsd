@@ -53,7 +53,7 @@ FROM ( select * from table_size ) TableauSQL
 
 Compression for CSV report files can be selected on the **Configuration > SQL Queries** page.
 
-![](Images/4361.png)
+![](./Images/4361.png)
 
 ### Issue 3918
 

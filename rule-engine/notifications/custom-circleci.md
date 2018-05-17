@@ -51,7 +51,7 @@ Make sure that you enclose fields with double quotes, if necessary.
 
 Leave the `Body` field empty for non-parameterized projects.
 
-![](images/circle_endpoint.png)
+![](./images/circle_endpoint.png)
 
 ## Rule
 
@@ -67,7 +67,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/rule_overview.png)
+![](./images/rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -85,7 +85,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 | `run_extra_tests`  | false |
 | `timezone`  | Etc/UTC |
 
-![](images/circle_rule_notification.png)
+![](./images/circle_rule_notification.png)
 
 Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and JSON payload.
 
@@ -113,13 +113,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open the page **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/circle_alert_open.png)
+![](./images/circle_alert_open.png)
 
 Check the CircleCI user interface to make sure the target build was triggered.
 
-![](images/circle_test.png)
+![](./images/circle_test.png)

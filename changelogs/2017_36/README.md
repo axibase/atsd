@@ -35,7 +35,7 @@ WHERE datetime >= PREVIOUS_HOUR
 
 Group membership can be modified using the checkbox at the left of the screen, under the **Members** Tab.
 
-![](Images/issue4533.png)
+![](./Images/issue4533.png)
 
 #### Issue 4235
 

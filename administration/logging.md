@@ -67,4 +67,4 @@ Database restart is **not** required, the changes are automatically refreshed an
 
 For performance purposes, logging to `command*.log` files is controlled both by loggers configured in the `logback.xml` file as well as with controls on **Settings > Input Settings** page.
 
-![Input Settings](images/logging_input.png)
+![Input Settings](./images/logging_input.png)

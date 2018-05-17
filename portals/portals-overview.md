@@ -13,11 +13,11 @@
 
 * Click on the **Portals** link in the top menu.
 
-  ![](resources/creating-and-assigning-portals_1.png)
+  ![](./resources/creating-and-assigning-portals_1.png)
 
 * Click on **Create**.
 
-  ![](resources/creating-and-assigning-portals_2.png)
+  ![](./resources/creating-and-assigning-portals_2.png)
 
 * Specify portal settings.
 
@@ -80,7 +80,7 @@ The following example creates a grid containing 6 units, with 3 widgets placed i
     type = chart
 ```
 
-![](resources/portal_config_ex_32.png)
+![](./resources/portal_config_ex_32.png)
 
 Review the following guides describing the basic syntax:
 
@@ -98,13 +98,13 @@ The portals are listed on the **Portals** page located at `https://atsd_hostname
 
 To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
 
-![](resources/creating-and-assigning-portals_3.png)
+![](./resources/creating-and-assigning-portals_3.png)
 
-![](resources/creating-and-assigning-portals_4.png)
+![](./resources/creating-and-assigning-portals_4.png)
 
 Use drop-down at the bottom of the page to manage portals:
 
-![](resources/creating-and-assigning-portals_5.png)
+![](./resources/creating-and-assigning-portals_5.png)
 
 ## Portal Types
 
@@ -125,7 +125,7 @@ https://atsd_hostname:8443/portal/4.xhtml
 
 Enabled regular portals are listed under the **Portals** link in the top menu.
 
-![](resources/creating-and-assigning-portals_6.png)
+![](./resources/creating-and-assigning-portals_6.png)
 
 ### Template Portals
 
@@ -167,29 +167,29 @@ https://atsd_hostname:8443/portal/{portal_id}.xhtml?entity={entity}
 
 Alternatively, assign an entity group to the template portal so that the link to this portal is available on the **Entities** page for all entities that are members of the entity group:
 
-![](resources/creating-and-assigning-portals_7.png)
+![](./resources/creating-and-assigning-portals_7.png)
 
 * Open the [Portals Page](#portals-page).
 * Locate the template portal that you'd like to assign.
 * Click on the _assign_ icon.
 
-    ![](resources/creating-and-assigning-portals_8.png)
+    ![](./resources/creating-and-assigning-portals_8.png)
 
 * Select entity groups to which the portal will be assigned.
 
-    ![](resources/creating-and-assigning-portals_9.png)
+    ![](./resources/creating-and-assigning-portals_9.png)
 
 > Note an entity group can be assigned to the portal from portal editor:
-> ![](resources/creating-and-assigning-portals_10.png)
+> ![](./resources/creating-and-assigning-portals_10.png)
 
 * Click on **Save** at the bottom of the page.
 * Open the **Entities** page.
 * Select an entity group in the drop-down filter.
 * Click on the _portals_ icon for an entity and verify that the portal was assigned.
 
-    ![](resources/creating-and-assigning-portals_11.png)
+    ![](./resources/creating-and-assigning-portals_11.png)
 
-    ![](resources/creating-and-assigning-portals_12.png)
+    ![](./resources/creating-and-assigning-portals_12.png)
 
 ## Portal Links
 
@@ -201,7 +201,7 @@ The portals are available at the following URLs:
 https://atsd_hostname:8443/portal/{portal_id}.xhtml
 ```
 
-![](resources/creating-and-assigning-portals_13.png)
+![](./resources/creating-and-assigning-portals_13.png)
 
 * Using portal name (case-sensitive):
 
@@ -211,7 +211,7 @@ https://atsd_hostname:8443/portal/name/{name}
 
 > Names containing whitespace and other special properties must be url-encoded.
 
-![](resources/creating-and-assigning-portals_14.png)
+![](./resources/creating-and-assigning-portals_14.png)
 
 ### Request Parameters
 
@@ -243,7 +243,7 @@ Such request parameter values can be referenced with `${parameter_name}` placeho
 
 | Default Theme| Black Theme |
 |---|---|
-| ![](resources/portal_theme_default.png) | ![](resources/portal_theme_dark.png) |
+| ![](./resources/portal_theme_default.png) | ![](./resources/portal_theme_dark.png) |
 
 You can install your own themes by modifying the default CSS theme files and uploading them to the `/opt/atsd/conf/portal/themes/` directory.
 

@@ -372,4 +372,4 @@ Reasons why ATSD server can drop commands:
 
 To review dropped commands, `open command*.log` files in ATSD.
 
-![](dropped-commands-logs.png)
+![](./dropped-commands-logs.png)

@@ -24,7 +24,7 @@ A rule [condition](condition.md) can operate on a single metric defined in the c
 
 The incoming data is consumed by the rule engine independently of the persistance path.
 
-![](images/atsd_rule_engine.png)
+![](./images/atsd_rule_engine.png)
 
 The data is maintained in [windows](window.md) which are `in-memory` structures initialized for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
 
@@ -46,9 +46,9 @@ Once the sample passes through the filter chain, it is allocated to matching [wi
 
 The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
 
-![](images/grouping-tags.png)
+![](./images/grouping-tags.png)
 
-![](images/grouping-series-tags.png)
+![](./images/grouping-series-tags.png)
 
 If the 'Group by Entity' option is unchecked, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
 
@@ -86,7 +86,7 @@ When the condition becomes `false`, the window status is reverted to `CANCEL`.
 
 Window status can be accessed on the **Alerts > Rule Windows** page.
 
-![](images/rule-windows.png)
+![](./images/rule-windows.png)
 
 Windows are updated when the command enters or exits the window. Scheduled rules can be emulated using the built-in [`timer`](scheduled-rules.md) metrics.
 
@@ -222,7 +222,7 @@ value > 75 && value('page_views_per_minute') < 1000
 
 The default baseline can be adjusted for particular series using the [Overrides](overrides.md) table.
 
-![](images/override-example.png)
+![](./images/override-example.png)
 
 ## Alert Severity
 
@@ -255,7 +255,7 @@ HAVING percentile(90, value) > 1000
 
 As a result, the query will trigger actions only when it returns at least one row.
 
-![](images/sql-scheduled.png)
+![](./images/sql-scheduled.png)
 
 ## Monitoring
 
@@ -263,7 +263,7 @@ As a result, the query will trigger actions only when it returns at least one ro
 
 Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrieved with [`/alert/query`](../api/data/alerts/README.md) Data API query and incorporated into portals using the [console](https://axibase.com/products/axibase-time-series-database/visualization/widgets/alert-console-widget/) widget.
 
-![](images/open-alerts.png)
+![](./images/open-alerts.png)
 
 ### Rule Windows
 

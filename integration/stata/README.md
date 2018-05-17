@@ -27,18 +27,18 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 * Choose one or multiple columns from the `Columns` list
 * Click **OK** to import rows containing data in these columns into Stata memory
 
-![](resources/import_wizard.png)
+![](./resources/import_wizard.png)
 
 ### Load Data with Stata Console
 
 * Type [`odbc list`](https://stata.com/manuals13/dodbc.pdf) in the Stata Console.
 * Click on the ATSD Data Source Name (DSN) that you have configured in the ODBC-JDBC Bridge
 
-![](resources/metric_list.png)
+![](./resources/metric_list.png)
 
 * Click on a table from the list to view the table's description:
 
-![](resources/table_description.png)
+![](./resources/table_description.png)
 
 * Click on `load` to load the entire table as a dataset into memory.
 * Click on `query` to re-load the list of tables.
@@ -58,7 +58,7 @@ Syntax:
 
 Description of resultset:
 
-![](resources/describe_example_1.png)
+![](./resources/describe_example_1.png)
 
 ### Convert the UNIX Epoch milliseconds to the Stata milliseconds
 
@@ -69,7 +69,7 @@ format %tcCCYY-NN-DD!THH:MM:SS.sss!Z datetime
 
 Description of resultset:
 
-![](resources/describe_example_2.png)
+![](./resources/describe_example_2.png)
 
 ## Exporting Data
 
@@ -117,11 +117,11 @@ save prices
 
 Preview `prices`:
 
-![](resources/prices_preview.png)
+![](./resources/prices_preview.png)
 
 `prices` dataset description:
 
-![](resources/prices_desc.png)
+![](./resources/prices_desc.png)
 
 ### Load and Save `Datetimes`
 
@@ -133,7 +133,7 @@ save datetimes
 
 Preview `datetimes` dataset:
 
-![](resources/datetimes_preview.png)
+![](./resources/datetimes_preview.png)
 
 ### Load Category Weights
 
@@ -152,7 +152,7 @@ cross using datetimes
 
 Preview the joined dataset:
 
-![](resources/cross_preview.png)
+![](./resources/cross_preview.png)
 
 ### Merge Weights with Prices
 
@@ -165,7 +165,7 @@ drop category _merge
 
 Preview the merged dataset:
 
-![](resources/merge_preview.png)
+![](./resources/merge_preview.png)
 
 ### Calculate New Variable
 
@@ -178,7 +178,7 @@ drop weight price
 
 Preview the dataset:
 
-![](resources/inflation_preview.png)
+![](./resources/inflation_preview.png)
 
 ### Group Rows by Date and Aggregate SUM
 
@@ -196,7 +196,7 @@ This operation will group records by `datetime` and calculate the sum of the `in
 
 Preview the dataset:
 
-![](resources/group_by_preview.png)
+![](./resources/group_by_preview.png)
 
 ### Add Entity Constant
 
@@ -210,13 +210,13 @@ This operation will add a new column `entity` with value `bls.gov` in each row.
 
 Preview the dataset:
 
-![](resources/entity_preview.png)
+![](./resources/entity_preview.png)
 
 ### Insert Data into ATSD
 
 Resultset description:
 
-![](resources/resultset_desc.png)
+![](./resources/resultset_desc.png)
 
 #### `datetime` as NUMBER
 

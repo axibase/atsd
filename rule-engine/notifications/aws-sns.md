@@ -42,13 +42,13 @@ The response status code and response content is recorded in `atsd.log` if the `
 * Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
 * Enter the `Topic ARN`. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same web notification.
 
-  ![](images/aws_sns_config.png)
+  ![](./images/aws_sns_config.png)
 
 * Click **Test**.
 
-   ![](images/aws_sns_test_request.png)
+   ![](./images/aws_sns_test_request.png)
 
-   ![](images/aws_sns_test_response.png)
+   ![](./images/aws_sns_test_response.png)
 
 * If test is passed, check **Enable**, click **Save**.
 

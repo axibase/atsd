@@ -40,13 +40,13 @@ drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
 
 * Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties** `webdriver.phantomjs.path`.
 
-    ![](images/webdriver.phantomjs.path.png)
+    ![](./images/webdriver.phantomjs.path.png)
 
 * Open Rules > Web Notifications page. Create and test one of TYPE-specific web notifications such as [Telegram](telegram.md) or [Slack](slack.md). Verify that screenshot was successfully received in the chat client.
 
 * Review Web Driver settings on **Settings > System Information** page, no error should be displayed.
 
-    ![](images/webdriver-settings_1.png)
+    ![](./images/webdriver-settings_1.png)
 
 ## Option 2: Chrome Driver
 
@@ -120,10 +120,10 @@ sudo mv chromedriver /usr/bin/chromedriver
 
 * Set path to `/usr/bin/chromedriver` and `/usr/bin/google-chrome-stable` in **Settings > Server Properties** `webdriver.chromedriver.path` and `webdriver.chromebrowser.path`.
 
-    ![](images/webdriver-google.png)
+    ![](./images/webdriver-google.png)
 
 * Open Rules > Web Notifications page. Create and test one of TYPE-specific web notifications such as Telegram or Slack. Verify that screenshot was successfully received in the chat client.
 
 * Review Web Driver settings on **Settings > System Information** page, no error should be displayed.
 
-    ![](images/webdriver-settings_2.png)
+    ![](./images/webdriver-settings_2.png)

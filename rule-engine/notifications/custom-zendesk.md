@@ -51,7 +51,7 @@ The `html_body` text contains placeholders that will be substituted with actual 
 
 Placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
-![](images/zendesk_endpoint.png)
+![](./images/zendesk_endpoint.png)
 
 ## Rule
 
@@ -67,7 +67,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/rule_overview.png)
+![](./images/rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -79,7 +79,7 @@ Specify the Zendesk request identifier into the `request_id` parameter for all t
 
 To override the default `message` parameter which is set to  `[${status}] ${rule} for ${entity} ${tags}`, enter a new value, for example `[${status}] ${rule} for ${entity} ${tags}`<br>`Duration: ${alert_duration_interval}`.
 
-![](images/zendesk_rule_notification_repeat_close.png)
+![](./images/zendesk_rule_notification_repeat_close.png)
 
 The request ID placeholder in the request URL as well as payload placeholders will be automatically resolved when the notification is triggered:
 
@@ -103,13 +103,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/zendesk_alert_open.png)
+![](./images/zendesk_alert_open.png)
 
 Check the Zendesk request to make sure the new comment was added.
 
-![](images/zendesk_test.png)
+![](./images/zendesk_test.png)

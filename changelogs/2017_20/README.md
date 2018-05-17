@@ -33,16 +33,16 @@ Sample curl command:
 
 ### Issue 4184
 
-![4184](Images/4184.png)
+![4184](./Images/4184.png)
 
 ### Issue 4179
 
 In SQL Console > Query Statistics
 
-![4179](Images/4179.png)
+![4179](./Images/4179.png)
 
 Using an exclamation point in the Query Text search bar will hide results that include the
 indicated text, in this case `!SELECT 1` hides results which include `SELECT 1` in the
 query text, as shown below:
 
-![4179.2](Images/4179.2.png)
+![4179.2](./Images/4179.2.png)

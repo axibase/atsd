@@ -15,7 +15,7 @@ function which returns current database time in Unix milliseconds.
 
 The [`DBTIMEZONE`](../../sql#dbtimezone) function returns the current database time zone name or GMT offset.
 
-![](Images/4375.png)
+![](./Images/4375.png)
 
 ### Issue 4360
 
@@ -25,28 +25,28 @@ A custom aggregation function such as `MAX` can now be selected in Forecast sett
 
 Averages the values during a period.
 
-![](Images/4360.1.1.png)
+![](./Images/4360.1.1.png)
 
 #### MAX
 
 Displays the maximum value during a period.
 
-![](Images/4360.2.png)
+![](./Images/4360.2.png)
 
 #### MIN
 
 Displays the minimum value during a period.
 
-![](Images/4360.3.png)
+![](./Images/4360.3.png)
 
 #### SUM
 
 Sums the values during a period.
 
-![](Images/4360.4.png)
+![](./Images/4360.4.png)
 
 #### COUNT
 
 Displays the number of samples for a period.
 
-![](Images/4360.5.png)
+![](./Images/4360.5.png)

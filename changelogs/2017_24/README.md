@@ -25,20 +25,20 @@
 
 #### Issue 4273
 
-![4273](Images/4273.png)
+![4273](./Images/4273.png)
 
 #### Issue 4247
 
 Compare [`NaN`](../../sql#not-a-number-nan) values similar to [`NULL`](../../sql#null).
 
-![4247](Images/4247.png)
+![4247](./Images/4247.png)
 
 #### Issue 4187
 
-![4187](Images/4187.png)
+![4187](./Images/4187.png)
 
 #### Issue 4166
 
 Apply user-applied date format on the SQL console.
 
-![4166](Images/4166.png)
+![4166](./Images/4166.png)

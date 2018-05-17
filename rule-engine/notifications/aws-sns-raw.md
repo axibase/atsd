@@ -2,7 +2,7 @@
 
 Create a `AWS SNS` notification with `Message Format = RAW`, for example:
 
-![](images/aws_sns_web_notification_config_raw.png)
+![](./images/aws_sns_web_notification_config_raw.png)
 
 * Create a new rule and open the **Web Notifications** tab.
 * Select `[AWS-SNS] test` from the **Endpoint** drop-down.
@@ -47,7 +47,7 @@ Create a `AWS SNS` notification with `Message Format = RAW`, for example:
     }
 ```
 
-  ![](images/aws_sns_web_notification_raw.png)
+  ![](./images/aws_sns_web_notification_raw.png)
 
 * Save the rule by clicking on the **Save** button.
 
@@ -59,34 +59,34 @@ It may take a few seconds for the first commands to arrive and to trigger the no
 
 The AWS SNS Subscriptions:
 
-![](images/aws_sns_subscriptions.png)
+![](./images/aws_sns_subscriptions.png)
 
 ## Notifications examples
 
 ### Email protocol
 
-![](images/aws_sns_web_notification_raw_test_1.png)
+![](./images/aws_sns_web_notification_raw_test_1.png)
 
-![](images/aws_sns_web_notification_raw_test_2.png)
+![](./images/aws_sns_web_notification_raw_test_2.png)
 
-![](images/aws_sns_web_notification_raw_test_3.png)
+![](./images/aws_sns_web_notification_raw_test_3.png)
 
 ### Http protocol
 
 The `HTTP` subscription with parameter `raw message delivery = false`:
 
-![](images/aws_sns_web_notification_raw_test_4.png)
+![](./images/aws_sns_web_notification_raw_test_4.png)
 
-![](images/aws_sns_web_notification_raw_test_5.png)
+![](./images/aws_sns_web_notification_raw_test_5.png)
 
-![](images/aws_sns_web_notification_raw_test_6.png)
+![](./images/aws_sns_web_notification_raw_test_6.png)
 
 ### Http protocol
 
 The `HTTP` subscription with parameter `raw message delivery = true`:
 
-![](images/aws_sns_web_notification_raw_test_7.png)
+![](./images/aws_sns_web_notification_raw_test_7.png)
 
-![](images/aws_sns_web_notification_raw_test_8.png)
+![](./images/aws_sns_web_notification_raw_test_8.png)
 
-![](images/aws_sns_web_notification_raw_test_9.png)
+![](./images/aws_sns_web_notification_raw_test_9.png)

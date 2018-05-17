@@ -35,7 +35,7 @@ The form-based web notification defines parameters that can be modified in the r
 
 The values for such parameters are retrieved from the input map `p`. Unknown parameters in map `p` are ignored.
 
-![query config form](images/query-config-form.png)
+![query config form](./images/query-config-form.png)
 
 ```javascript
 queryConfig("rc-hook",
@@ -55,7 +55,7 @@ The JSON document defined in the web notification may include placeholders using
 
 Such placeholders are substituted with corresponding parameter values from the input map `p`. Unknown parameters in the map `p` are ignored.
 
-![query config json](images/query-config-json.png)
+![query config json](./images/query-config-json.png)
 
 ```javascript
 queryConfig("rc-hook",

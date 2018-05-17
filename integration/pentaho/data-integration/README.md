@@ -24,7 +24,7 @@ To complete this exercise, sample data must be available in your ATSD instance.
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
 3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
 
-![](resources/metrics_entry.png)
+![](./resources/metrics_entry.png)
 
 The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](resources/eng_e02.xls).
 
@@ -35,7 +35,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 * Create new **Transformation** by selecting **File > New > Transformation**
 * Open `View` pane:
 
-![](resources/view_pane.png)
+![](./resources/view_pane.png)
 
 * Right-click on **Database connections > New**.
 * Select 'General' in the left menu.
@@ -54,7 +54,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 * Enter ATSD account credentials in the 'User Name' and 'Password' fields.
 * Set 'Connection Name' to `ATSD Connection`.
 
-![](resources/atsd_connection.png)
+![](./resources/atsd_connection.png)
 
 * Click 'Test' to verify connection.
 
@@ -71,7 +71,7 @@ Filter examples:
 
 Click on the `Explore` button to view the schema:
 
-![](resources/database_explorer.png)
+![](./resources/database_explorer.png)
 
 ## Load Data
 
@@ -80,7 +80,7 @@ Click on the `Explore` button to view the schema:
 * Write an SQL query used as a `Table input` for this transformation.
 * Click `Preview` to verify query results.
 
-![](resources/table_input.png)
+![](./resources/table_input.png)
 
 ## Calculate Derived Series
 
@@ -115,7 +115,7 @@ SELECT tags.category, value
 ORDER BY datetime, tags.category
 ```
 
-![](resources/datetimes.png)
+![](./resources/datetimes.png)
 
 ### Duplicate Weights
 
@@ -126,17 +126,17 @@ Since the `Weights` are available for only one year, we will assume that the cat
 * Drag and drop it to the `Transformation` pane.
 * Connect your `Join Rows (cartesian product)` with `Datetimes` and `Weights` using `Input Connection` button. That button is displayed when the mouse hovers over `Join Rows` or any item inside the `Transformation` pane.
 
-![](resources/connections.png)
+![](./resources/connections.png)
 
 * Use 'connect':
 
 Diagram example:
 
-![](resources/join_diagram.png)
+![](./resources/join_diagram.png)
 
 `Join Rows (cartesian product)` preview:
 
-![](resources/join_preview.png)
+![](./resources/join_preview.png)
 
 > Note to preview data right-click on step icon and select 'Preview' > 'Quick Launch'
 
@@ -150,15 +150,15 @@ In this step we will append two tables to perform calculations inside one table.
 * Configure `Merge Join` as shown in the screenshot below:
 > That operation will join 2 tables into one table
 
-![](resources/merge_join.png)
+![](./resources/merge_join.png)
 
 Preview of `Merge Join`:
 
-![](resources/merge_preview.png)
+![](./resources/merge_preview.png)
 
 Diagram example:
 
-![](resources/merge_diagram.png)
+![](./resources/merge_diagram.png)
 
 ### Remove Redundant Columns
 
@@ -168,11 +168,11 @@ Diagram example:
 * Connect `Select values` to `Merge Join`.
 * Configure `Select values` as shown in the screenshot below:
 
-![](resources/remove.png)
+![](./resources/remove.png)
 
 Preview of `Remove columns`:
 
-![](resources/remove_preview.png)
+![](./resources/remove_preview.png)
 
 ### Calculations
 
@@ -187,11 +187,11 @@ Multiply two columns element-wise:
 
 > This operation will calculate a new field `P*W` (price multiplied by weight)
 
-![](resources/calculator_1.png)
+![](./resources/calculator_1.png)
 
 `Price * Weight` preview:
 
-![](resources/PW_preview.png)
+![](./resources/PW_preview.png)
 
 #### Add Column With a Constant
 
@@ -204,11 +204,11 @@ Multiply two columns element-wise:
 
 > This operation will add a new column `1000` that has a value of `1000` in each row.
 
-![](resources/constants_1.png)
+![](./resources/constants_1.png)
 
 Constant Column Preview:
 
-![](resources/1000_preview.png)
+![](./resources/1000_preview.png)
 
 #### Divide by 1000
 
@@ -221,11 +221,11 @@ Add a new column that has `Price * Weight` divided by 1000 due to the fact that 
 
 > This operation will calculate a new field `P*W/1000` as price multiplied by weight and divided by 1000.
 
-![](resources/calculator_2.png)
+![](./resources/calculator_2.png)
 
 Division preview:
 
-![](resources/division_preview.png)
+![](./resources/division_preview.png)
 
 #### Group By
 
@@ -238,11 +238,11 @@ Group rows by `datetime` and sum weighted price values for each year.
 
 > The operation will group records by `datetime` and calculate the sum of `P*W/1000` values for each group.
 
-![](resources/group_by.png)
+![](./resources/group_by.png)
 
 `Group By` preview:
 
-![](resources/group_by_preview.png)
+![](./resources/group_by_preview.png)
 
 #### Add Entity Column
 
@@ -255,11 +255,11 @@ The entity column is required to store computed metrics back in ATSD.
 
 > This operation will add a new column `entity` that has the value `bls.gov` in each row.
 
-![](resources/constants_2.png)
+![](./resources/constants_2.png)
 
 `Entity` preview:
 
-![](resources/entity_preview.png)
+![](./resources/entity_preview.png)
 
 ### Store Derived Series in ATSD
 
@@ -270,14 +270,14 @@ The entity column is required to store computed metrics back in ATSD.
 
 > This operation will insert calculated data into ATSD.
 
-![](resources/insert.png)
+![](./resources/insert.png)
 
 * The `Target table` is the name of the metric which will contain the calculated series.
 * The metric doesn't have to be visible in the Schema
 
 Complete diagram:
 
-![](resources/result.png)
+![](./resources/result.png)
 
 ### Check Results
 

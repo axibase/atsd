@@ -4,11 +4,11 @@
 
 * Click on **Portals** link in the top menu.
 
-  ![](resources/getting-started-2_1.png)
+  ![](./resources/getting-started-2_1.png)
 
 * Click on **Create**.
 
-  ![](resources/getting-started-2_2.png)
+  ![](./resources/getting-started-2_2.png)
 
 * Copy the following configuration into the **Content** area:
 
@@ -37,13 +37,13 @@
 * Enter a portal name.
 * Press **Save**.
 
-    ![](resources/getting-started-2_3.png)
+    ![](./resources/getting-started-2_3.png)
 
 The above configuration defines two widgets: a linear time chart and a gauge.
 
 To view the portal, click on **View By Id** or **View By Name**.
 
-![](resources/getting-started-2_4.png)
+![](./resources/getting-started-2_4.png)
 
 Review the [basic syntax](https://axibase.com/products/axibase-time-series-database/visualization/widgets/selecting-series/) used to select series.
 
