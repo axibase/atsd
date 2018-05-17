@@ -38,7 +38,7 @@ Install and activate the bridge as follows:
 
 Open **Start**, type `ODBC` and launch the ODBC Data Source Manager from an Administrator account.
 
-![](./images/ODBC_1.PNG)
+![](./images/ODBC_1.png)
 
 Open **System DSN** tab, click **Add...**
 
