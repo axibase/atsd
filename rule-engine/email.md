@@ -136,7 +136,7 @@ The override table below contains rules that will always return `false` for the 
     * Alert fields
     * Command/Event tags
     * User variables
-  * Portal Screenshots (inline images in png format)
+  * Portal Screenshots (inline images in `png` format)
   * Footer
   * Attachments
     * Files (CSV, Excel, PDF, etc)
