@@ -103,6 +103,22 @@ const restApiMenu = [
     },
 ]
 
+const ruleEngineMenu = [
+    ['','Overview'],
+    ['window.md','Windows'],
+    ['grouping.md','Grouping'],
+    ['condition.md','Condition'],
+    ['filters.md','Filters'],
+    ['functions.md','Functions'],
+    ['placeholders.md','Placeholders'],
+    ['overrides.md','Overrides'],
+    ['web-notifications.md','Web Notifications'],
+    ['email.md','Email Notifications'],
+    ['commands.md','System Commands'],
+    ['derived.md','Derived Commands'],
+    ['logging.md','Logging'],
+]
+
 module.exports = {
     title: 'ATSD Documentation (DRAFT)',
     themeConfig: {
@@ -112,9 +128,9 @@ module.exports = {
         sidebar: {
             '/api/data/': restApiMenu,
             '/api/meta/': restApiMenu,
-            '/': [
-                ['api/', "Stub (API)"],
-                ['sql/', "Stub (SQL)"]
+            '/rule-engine/': ruleEngineMenu,
+            '/sql/': [
+                ''
             ]
         },
 
