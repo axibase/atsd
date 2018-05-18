@@ -28,6 +28,12 @@ Alternatively, create a PKCS12 keystore as described [below](#deploy-keystore-fi
 
 Replace `{USR}` with the username, `{PWD}` with the password and `{HOST}` with the hostname or IP address of the target ATSD server in the command below.
 
+> Note the following validation is applied:
+> * if `{HOST}` specified as `localhost` or `IP` (for example, '10.10.8.2'), ATSD compares certificate's FQDN with hostname from **Settings > Server Properties > server.url** setting;
+> * if `{HOST}` specified as hostname (for example, 'atsd.company.com'), ATSD compares certificate's FQDN with specified hostname.
+>
+> If validation fails an error will be produced: `Wrong domain name in the certificate: atsd.company.com, current: a9c271d28f3d`.
+
 ```sh
 sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
   -F "privkey=@atsd.company.com.key" \
