@@ -10,7 +10,7 @@ const topNavMenu = [
         items: [
             { text: "Rest API", link: '/api/data/' },
             { text: "Network API", link: '/api/network/' },
-            { text: "API Clients", link: '/api/' },
+            { text: "API Clients", link: '/api/clients/' },
         ]
     },
     { text: 'SQL', link: '/sql/' },
@@ -20,7 +20,7 @@ const topNavMenu = [
 
 
 const restApiMenu = [
-    // ['', 'Overview'], // Waiting for New overview page
+    ['', 'Overview'], // Waiting for New overview page
     {
         title: 'Series', children: [
             `/api/data/series/insert`,
