@@ -18,7 +18,7 @@ Example
     IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
-A [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value functions`](functions-value.md), [`database functions`](functions-db.md), and [`rule functions`](functions-rules.md).
+A [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value functions`](functions-value.md), [`database functions`](functions-series.md), and [`rule functions`](functions-rules.md).
 
 ## In-Memory Processing
 
@@ -105,7 +105,7 @@ Triggers for all actions may be configured separately. For example, it's possibl
 
 ## Correlation
 
-Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-db.md), and [rule](functions-rules.md) functions.
+Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-series.md), and [rule](functions-rules.md) functions.
 
 * Value functions:
 
@@ -194,7 +194,7 @@ Similarly, the `forecast_deviation` function can be utilized to compare actual a
 
 ### Correlation Thresholds
 
-In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-db.md) to identify abnormal behavior in one of the metrics.
+In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-series.md) to identify abnormal behavior in one of the metrics.
 
 The primary metric is expected to be below `50` as long as the second metric remains below `100`. Otherwise, an alert will be raised.
 

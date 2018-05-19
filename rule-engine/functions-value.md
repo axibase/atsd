@@ -38,4 +38,4 @@ series e:sensor01 m:pressure=3.5 m:temperature=33
 // returns false
 ```
 
-Compared to the [`db_last`](functions-db.md) function, the `value()` function retrieves metric values from the incoming command, even if they're not yet stored in the database.
+Compared to the [`db_last`](functions-series.md) function, the `value()` function retrieves metric values from the incoming command, even if they're not yet stored in the database.

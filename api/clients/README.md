@@ -5,7 +5,7 @@
 The API Client for [Python](https://www.python.org/) simplifies the process of interacting with the Axibase Time Series Database (ATSD) through REST API and SQL endpoints.
 
 * [GitHub Repository](https://github.com/axibase/atsd-api-python)
-* [PyPi](https://pypi.python.org/pypi/atsd_client)
+* [`PyPi`](https://pypi.python.org/pypi/atsd_client)
 
 ## Java
 

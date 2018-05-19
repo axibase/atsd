@@ -6,7 +6,7 @@ The `executeSqlQuery` function returns the results of a user-defined SQL query.
 
 ## Reference
 
-* [`executeSqlQuery`](functions-db.md#executesqlquery)
+* [`executeSqlQuery`](#executesqlquery)
 
 ## `executeSqlQuery`
 

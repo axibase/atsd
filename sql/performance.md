@@ -104,7 +104,7 @@ Consider the following recommendations when developing queries:
 
 ### Optimizing Interval Queries
 
-Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause is not efficient as it causes the database to perform a full scan while comparing literal strings or numbers. 
+Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause is not efficient as it causes the database to perform a full scan while comparing literal strings or numbers.
 
 Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
@@ -150,7 +150,7 @@ SELECT * FROM "mpstat.cpu_busy" ORDER BY datetime LIMIT 1
 ```
 
 ```sql
-SELECT * FROM "mpstat.cpu_busy" 
+SELECT * FROM "mpstat.cpu_busy"
   WHERE entity = 'nurswgvml007' ORDER BY datetime LIMIT 1
 ```
 

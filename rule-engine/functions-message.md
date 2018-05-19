@@ -8,9 +8,9 @@ The `db_message_count` and `db_message_last` functions may be used to verify the
 
 ## Reference
 
-* [`db_message_count`](functions-db.md#db_message_count)
-* [`db_message_last`](functions-db.md#db_message_last)
-* [`db_messages`](functions-db.md#db_messages)
+* [`db_message_count`](#db_message_count)
+* [`db_message_last`](#db_message_last)
+* [`db_messages`](#db_messages)
 
 ## `db_message_count`
 

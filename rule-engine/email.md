@@ -228,7 +228,7 @@ The chart may include multiple series depending on statistical functions referen
 
 ![](images/email-screenshot-series.png)
 
-Similarly, if the rule correlates multiple metrics using [database functions](functions-db.md) or [rules functions](functions-rules.md) such metrics may be included in the screenshot on the right axis.
+Similarly, if the rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) such metrics may be included in the screenshot on the right axis.
 
 ```javascript
   avg() > 10 && db_last('memfree') < 500000

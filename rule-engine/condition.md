@@ -117,7 +117,7 @@ If metrics were submitted with the same 'series' command, their last value can b
   value > 90 AND value('disk_used') < 1000000000
 ```
 
-Alternatively, the metric last value can be retrieved with the [`db_last`](functions-db.md#db_laststring-m) and [`db_statistic`](functions-db.md#db_statistic) functions.
+Alternatively, the metric last value can be retrieved with the [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
 
 ```javascript
   value > 90 AND db_last('io_nodes_used_precent') < 80

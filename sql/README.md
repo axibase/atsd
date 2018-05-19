@@ -2376,7 +2376,7 @@ AND datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY, '
 
 #### INTERVAL_NUMBER
 
-The `INTERVAL_NUMBER` function can be referenced in the `SELECT` expression. 
+The `INTERVAL_NUMBER` function can be referenced in the `SELECT` expression.
 
 It returns an index, starting with `1`, of the current time interval in queries selecting [multiple intervals](#interval-condition) using a `datetime` `OR` condition or `datetime` subquery.
 
