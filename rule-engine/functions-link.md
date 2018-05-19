@@ -36,7 +36,7 @@ The inline links can be also assembled manually using the syntax supported by th
 * [`getChartLink`](#getchartlink)
 * [`addLink`](#addlink)
 
-### `getEntityLink`
+## `getEntityLink`
 
 ```javascript
   getEntityLink(string e [, boolean m [, string f]]) string
@@ -66,7 +66,7 @@ The above URL could also be assembled manually:
 serverLink + '/entity/' + urlencode(entity)
 ```
 
-### `getPropertyLink`
+## `getPropertyLink`
 
 ```javascript
   getPropertyLink(string e, string t [, boolean m [, string f]])) string
@@ -92,7 +92,7 @@ Returned inline link:
 [configuration](https://atsd_hostname:8443/entities/nurswgvml007/properties?type=configuration)
 ```
 
-### `getRuleLink`
+## `getRuleLink`
 
 ```javascript
   getRuleLink([string f]) string
@@ -104,7 +104,7 @@ Optional `f` parameter creates an [inline link](links.md#inline-links) in one of
 
 Displayed as rule name in inline mode.
 
-### `getCsvExportLink`
+## `getCsvExportLink`
 
 ```javascript
   getCsvExportLink([string f]) string
@@ -118,7 +118,7 @@ Displayed as 'CSV Export' link in inline mode.
 
 > Available only in rules with `Series` data type.
 
-### `getHtmlExportLink`
+## `getHtmlExportLink`
 
 ```javascript
   getHtmlExportLink([string f]) string
@@ -132,7 +132,7 @@ Displayed as 'HTML Export' link in inline mode.
 
 > Available only in rules with `Series` data type.
 
-### `getChartLink`
+## `getChartLink`
 
 ```javascript
   getChartLink([string f]) string
@@ -158,7 +158,7 @@ The following inline link is returned:
 [Default](https://atsd_hostname:8443/portals/series?metric=docker&entity=nurswgvml007...)
 ```
 
-### `addLink`
+## `addLink`
 
 ```javascript
   addLink(string l, string u) string

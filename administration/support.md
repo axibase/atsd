@@ -4,11 +4,9 @@ Provide the following artifacts as part of your support request related to a ser
 
 ## 1. ATSD Version Information
 
-* A. **Admin: Build Info** page: Revision Number and HBase Version.
+* A. **Settings > System Information** page: Select/copy rows to a text file.
 
-* B. **Admin: Server Properties** page. Select/copy rows to a text file.
-
-* C. **Admin: System Info** page. Select/copy rows to a text file.
+* B. **Settings > Server Properties** page. Select/copy rows to a text file.
 
 ## 2. Operating System Information
 

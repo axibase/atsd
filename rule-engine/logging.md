@@ -18,7 +18,7 @@ Loggers can be added and modified by administrators on the **Settings > Configur
 
 By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging of `REPEAT` changes, set Repeat Interval from `None` to a valid interval on the 'Alerts' tab in the Rule Editor.
 
-### Default Logger
+## Default File Logger
 
 The default logger named `atsd.alert.default` is available even if it's not defined in the `logback.xml` file. To modify default logger behavior, copy the following text to logback.xml file and adjust its properties as required.
 
@@ -54,7 +54,7 @@ The default logger named `atsd.alert.default` is available even if it's not defi
 </logger>
 ```
 
-### Custom Logger
+## Custom File Logger
 
 Custom logger names must start with `atsd.alert.` and should specify a unique file name (including roll-over pattern) that is different from file names used by other loggers. Similarly, custom loggers must specify unique appender names.
 
@@ -82,15 +82,17 @@ Multiple custom loggers can be created to customize alert logging for various ru
 </logger>
 ```
 
-### Placeholders
+## File Placeholders
 
-Placeholders can be incorporated in the encoder pattern using the `%X{name}` syntax, for example `%X{entity}` or `%X{alert_open_datetime}`.
+Placeholders can be incorporated in the `encoder:pattern` tag using the `%X{field-name}` syntax, for example `%X{entity}` or `%X{alert_open_datetime}`.
+
+### Base Fields
 
 **Name**|**Example**
 :---|:---
 alert_duration | `00:00:05:12`
 alert_duration_interval |
-alert_message | `Alert open: ${entity}, ${metric}, ${tags}.`
+alert_message | `Alert open.`
 alert_type | `OPEN`
 columns | `{memkb = round(value/1024)}` - variables
 entity | `atsd`
@@ -118,7 +120,11 @@ value | `3103100000`
 window | `length(1)`
 threshold | `max() > 20`
 
-#### Time Placeholders
+### Date Fields
+
+Date fields ending with `_time` contain time in the local server time zone, for example `2017-05-30 14:05:39 PST`.
+
+Date fields ending with `_datetime` contain time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.
 
 * `alert_open_time`
 * `alert_open_datetime`
@@ -128,6 +134,3 @@ threshold | `max() > 20`
 * `event_datetime`
 * `window_first_time`
 * `window_first_datetime`
-
-> Placeholders ending with `_time` keep time in the local server time zone, for example `2017-05-30 14:05:39 PST`.
-> Placeholders ending with `_datetime` keep time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.

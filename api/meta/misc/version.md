@@ -19,6 +19,7 @@ Returns database version including licensing details as well as a `date` object 
 | `buildInfo`  | object | Database version information. |
 | `license` | object | Database license details.  |
 | `date` | object | Current date, start date, time zone, and offset information.  |
+| `settings` | object | Basic database settings such as the `server.url` and `hostname`.  |
 
 ### Errors
 

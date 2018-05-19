@@ -26,17 +26,16 @@ When submitting a payload in JSON format, add the `Content-Type: application/jso
 
 ### URI Encoding
 
-Request parameters and path segments, such as [`/api/v1/properties/{entity}/types`](../../api/meta/entity/property-types.md), should be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters, such as `: / ? # [ ] @`, into a percent format that can be transmitted safely as part of the request URI.
+Request parameters and path segments, such as [`/api/v1/properties/{entity}/types`](../meta/entity/property-types.md), should be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters, such as `: / ? # [ ] @`, into a percent format that can be transmitted safely as part of the request URI.
 
 | **Input** | **Encoded Value** | **URI** |
 |:---|:---|:---|
 |`jvm/memory(max)`|`jvm%2Fmemory%28max%29`| `/api/v1/metrics/jvm%2Fmemory%28max%29` |
 |`station/24`|`station%2F24`| `/api/v1/properties/station%2F24/types` |
 
-Failure to encode URI components may result in 4xx and 5xx errors:
+Failure to encode URI components may result in `4xx` and `5xx` errors:
 
 ```json
-Status Code: 500
 {"error":"...HttpRequestMethodNotSupportedException: Request method 'GET' not supported"}
 ```
 
@@ -135,7 +134,7 @@ Processing errors are returned in JSON format:
 {"error":"Empty first row"}
 ```
 
-Authentication and authorization error codes are listed in the [Administation](../../administration/user-authentication.md#authentication-and-authorization-errors) guide.
+Authentication and authorization error codes are listed in the [Administration](../../administration/user-authentication.md#authentication-and-authorization-errors) guide.
 
 ## Troubleshooting
 
@@ -160,3 +159,96 @@ cat json-in.log
 ```
 
 Each API method in this guide provides links to examples containing sample request and response objects.
+
+## Data API Endpoints
+
+The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/series/insert`.
+
+### Series
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `POST` | [`/series/insert`](insert.md) | Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
+| `POST` | [`/series/query`](query.md) | Retrieve series with timestamped values for specified filters.|
+| `POST` | [`/series/csv/{entity}`](csv-insert.md) | Insert series values for the specified entity and series tags in CSV format.|
+| `GET` | [`/series/{format}/{entity}/{metric}`](url-query.md)  | Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
+| `POST` | [`/series/delete`](delete.md) | Delete series for the specified entity, metric, and optional series tags. |
+
+### Messages
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `POST` | [`/messages/insert`](insert.md) | Insert an array of messages.
+| `POST` | [`/messages/webhook/`](webhook.md) | Create message from any HTTP request with optional JSON payload and insert it.
+| `POST` | [`/messages/query`](query.md)  | Retrieve message records for the specified filters. |
+| - | [-](delete.md) | Execute administrative actions to delete message records. |
+| `POST` | [`/messages/stats/query`](stats-query.md)  |  Retrieve message counters as series for the specified filters.  |
+
+### Properties
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `POST` | [`/properties/insert`](insert.md) | Insert an array of properties. |
+| `POST` | [`/properties/query`](query.md) | Retrieve property records matching specified filters. |
+| `GET` | [`/properties/{entity}/types/{type}`](url-query.md) | Retrieve property records for the specified entity and type. |
+| `GET` | [`/properties/{entity}/types`](type-query.md) |  Retrieve an array of property types for the entity.  |
+| `POST` | [`/properties/delete`](delete.md) | Delete property records that match specified filters. |
+
+### Extended
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `POST` | [`/command`](command.md) | Insert data using commands in Network API via HTTP. |
+| `POST` | [`/csv`](csv-upload.md) | Upload CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser. |
+| `POST` | [`/nmon`](nmon-upload.md) | Upload nmon file for parsing. |
+
+## Meta API Endpoints
+
+The endpoints, except `/ping` are accessed under context path `/api/v1/`, for example `/api/v1/version`.
+
+### Metric
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `GET` | [`/metrics/{metric}`](../meta/metric/get.md) |  Retrieve properties and tags for the specified metric. |
+| `GET` | [`/metrics`](../meta/metric/list.md) |  Retrieve a list of metrics matching the specified filter conditions. |
+| `PATCH` | [`/metrics/{metric}`](../meta/metric/update.md) | Update fields and tags of the specified metric. |
+| `PUT` | [`/metrics/{metric}`](../meta/metric/create-or-replace.md) | Create a metric with specified fields and tags or replace the fields and tags of an existing metric. |
+| `DELETE` | [`/metrics/{metric}`](../meta/metric/delete.md) | Delete the specified metric. |
+| `GET` | [`/metrics/{metric}/series`](../meta/metric/series.md) | Returns a list of series for the metric. |
+| `GET` | [`/metrics/{metric}/series/tags`](../meta/metric/series-tags.md) | Returns a list of unique series tag values for the metric. |
+
+### Entity
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `GET` | [`/entities/{entity}`](../meta/entity/get.md) |  Retrieve information about the specified entity including its tags. |
+| `GET` | [`/entities`](../meta/entity/list.md) |  Retrieve a list of entities matching the specified filter conditions. |
+| `PATCH` | [`/entities/{entity}`](../meta/entity/update.md) | Update fields and tags of the specified entity.  |
+| `PUT` | [`/entities/{entity}`](../meta/entity/create-or-replace.md) | Create an entity with specified fields and tags or replace the fields and tags of an existing entity.  |
+| `DELETE` | [`/entities/{entity}`](../meta/entity/delete.md) | Delete the specified entity and delete it as member from any entity groups that it belongs to.  |
+| `GET` | [`/entities/{entity}/groups`](../meta/entity/entity-groups.md) | Retrieve a list of entity groups to which the specified entity belongs. |
+| `GET` | [`/entities/{entity}/metrics`](../meta/entity/metrics.md) | Retrieve a list of metrics collected by the entity. |
+| `GET` | [`/entities/{entity}/property-types`](../meta/entity/property-types.md) | Retrieve a list property types for the entity. |
+
+### Entity Group
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `GET` | [`/entity-groups/{group}`](../meta/entity-group/get.md) |  Retrieve information about the specified entity group including its tags. |
+| `GET` | [`/entity-groups`](../meta/entity-group/list.md) |  Retrieve a list of entity groups. |
+| `PATCH` | [`/entity-groups/{group}`](../meta/entity-group/update.md) |  Update fields and tags of the specified entity group.  |
+| `PUT` | [`/entity-groups/{group}`](../meta/entity-group/create-or-replace.md) |  Create an entity group with specified fields and tags or replace the fields and tags of an existing entity group.  |
+| `DELETE` | [`/entity-groups/{group}`](../meta/entity-group/delete.md) | Delete the specified entity group.  |
+| `GET` | [`/entity-groups/{group}/entities`](../meta/entity-group/get-entities.md) | Retrieve a list of entities that are members of the specified entity group and are matching the specified filter conditions.  |
+| `POST` | [`/entity-groups/{group}/entities/add`](../meta/entity-group/add-entities.md) |  Add entities as members to the specified entity group. |
+| `POST` | [`/entity-groups/{group}/entities/set`](../meta/entity-group/set-entities.md) | Set members of the entity group from the specified entity list. |
+| `POST` | [`/entity-groups/{group}/entities/delete`](../meta/entity-group/delete-entities.md) | Remove specified entities from members of the specified entity group. |
+
+### Misc
+
+| **Method** | **Path** | **Description** |
+|:---|:---|:---|
+| `GET` | [`/version`](../meta/misc/version.md) | Returns database version including licensing details as well as a date object with local time and offset. |
+| `GET` | [`/ping`](../meta/misc/ping.md) | Returns `200` status code to check connectivity, authentication and to maintain an active session. <br>Accessed without `/api/v1` context path.|
+| `GET` | [`/search`](../meta/misc/search.md) |  Search series by an expression. |

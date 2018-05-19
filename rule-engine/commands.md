@@ -109,9 +109,11 @@ KUIEXC000I: Executecommand request was performed successfully. The return value 
 2017-11-30 13:32:26,597;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m NURSWGVML007:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /opt/atsd/atsd/backup/* -mtime +15 -type f" && /opt/IBM/ITM/bin/tacmd logout > /dev/null]'
 ```
 
-## Example. Clean up disk space on a remote system using IBM Tivoli `tacmd` command
+## Examples
 
-### Description
+### Clean up disk space on a remote system using IBM Tivoli `tacmd` command
+
+#### Description
 
 If disk space is low, the command reads user credentials from the `itm.pwd` file located in the `axibase` user home directory. After a successful login to the ITM hub server, [`tacmd executecommand`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm)) is launched on the remote server `${upper(entity)}:LZ` where it finds old files in `/tmp` directory (older than 15 days) and deletes them with logging. Finally, the process logs out from the ITM hub server.
 
@@ -121,7 +123,7 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
 
 ![](images/command-tacmd.png)
 
-### Prerequisites
+#### Prerequisites
 
 * Tivoli Enterprise Services User Interface Extensions installed on the ATSD server. To install the component, launch the `install.sh` script and select the `KUE` module from the list.
 
@@ -140,20 +142,20 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
 
   > Note that TEMS restart is required to activate this setting.
 
-### Path
+#### Path
 
 ```sh
   /bin/bash
 ```
 
-### Arguments
+#### Arguments
 
-```sh
+```bash
   -c
   cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m ${upper(entity)}:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /tmp -mtime +15 -type f -delete -print" && /opt/IBM/ITM/bin/tacmd logout > /dev/null
 ```
 
-### Output Log
+#### Output Log
 
 ```txt
   2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;
@@ -172,27 +174,27 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
   2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m NURSWGVML007:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /tmp -mtime +15 -type f -delete -print" && /opt/IBM/ITM/bin/tacmd logout > /dev/null]'
 ```
 
-## Example. Store Derived Metrics
+### Store Derived Metrics
 
-### Description
+#### Description
 
 The rule is configured to calculate a derived metric for the same entity. The derived value is calculated by subtracting the average of values in the window from 100. The new command is inserted back into ATSD under the metric name `derived_cpu_busy` using UNIX bash pseudo-file `/dev/tcp/localhost/8081` connected to the ATSD TCP port. The rule is configured to execute the command upon `OPEN` and `REPEAT` statuses with a `15 minute` frequency.
 
-### Path
+#### Path
 
 ```sh
     /bin/bash
 ```
 
-### Arguments
+#### Arguments
 
-```sh
+```bash
   -c
   echo $0 > /dev/tcp/localhost/8081
   series e:${entity} m:derived_cpu_busy=${100-avg()}
 ```
 
-### Output Log
+#### Output Log
 
 ```txt
   2017-11-30 14:46:50,424;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, echo $0 > /dev/tcp/localhost/8081, series e:nurswgvml212 m:derived_cpu_busy=0.5433333317438761]'

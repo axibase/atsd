@@ -40,7 +40,7 @@
 
 The alert details table can embedded into the target document using the same format as the host document.
 
-```javascript
+```bash
 ${detailsTable('markdown')}
 ${detailsTable('ascii')}
 ${detailsTable('html')}
@@ -59,7 +59,7 @@ The new settings automatically creates as many series as there are incoming seri
 
 The derived command action allows storing new calculated metrics in the database by executing custom command templates in the [Network API](../../api/network/README.md) syntax.
 
-```ls
+```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 

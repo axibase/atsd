@@ -18,7 +18,7 @@ Date formatting functions:
 * [`formatInterval`](#formatinterval)
 * [`formatIntervalShort`](#formatintervalshort)
 
-### `formatNumber`
+## `formatNumber`
 
 ```javascript
   formatNumber(double x, string s) string
@@ -33,7 +33,7 @@ Example:
     formatNumber(3.14159, '#.##')
 ```
 
-### `formatBytes`
+## `formatBytes`
 
 ```javascript
   formatBytes(number x, boolean si) string
@@ -70,7 +70,7 @@ Examples:
 
 > If the `x` argument is a string or an object that cannot be parsed into a number, its value is returned 'as is'.
 
-### `convert`
+## `convert`
 
 ```javascript
   convert(number x, string s) string
@@ -102,7 +102,7 @@ Examples:
     convert(1000 * 1000, 'M') // 1.0
 ```
 
-### `date_format`
+## `date_format`
 
 ```javascript
   date_format(long t, string p, string z) string
@@ -157,7 +157,7 @@ Date Pattern reference:
    ''      single quote                 literal       '
 ```
 
-### `formatInterval`
+## `formatInterval`
 
 ```javascript
   formatInterval(long interval) string
@@ -176,7 +176,7 @@ Examples:
   formatInterval(elapsedTime(milliseconds(tags.last_updated)))
 ```
 
-### `formatIntervalShort`
+## `formatIntervalShort`
 
 ```javascript
   formatIntervalShort(long interval) string

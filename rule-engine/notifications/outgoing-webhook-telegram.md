@@ -118,7 +118,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 * Enable the `OPEN`, `REPEAT` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-```ls
+```bash
   User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${message}"
 ```
 

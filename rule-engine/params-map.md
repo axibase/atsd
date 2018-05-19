@@ -13,7 +13,7 @@ Example:
 queryConfig("Discord", ["username":"ATSD BOT", "content":"Hello, Discord!"])
 ```
 
-## [HipChat Data Center](./notifications/hipchat.md)
+## [HipChat](./notifications/hipchat.md)
 
 | Parameter Label | `p` map alias |
 | ---| ---|

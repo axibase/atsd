@@ -36,7 +36,7 @@ Status Code: 500
 * `4xx` status code in case of other client errors.
 * `5xx` status code in case of server error.
 
-4xx or 5xx response codes are specific to each API methods.
+`4xx` or `5xx` response codes are specific to each API methods.
 
 ## Errors
 
@@ -67,7 +67,7 @@ Cross-domain requests are allowed.
 
 ## Troubleshooting
 
-* Review error logs on the **Admin:Server Logs** page in case the payload is rejected
+* Review error logs on the **Settings > Diagnostics > Server Logs** page in case the payload is rejected
 * To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to netcat port, and dump the incoming data to file:
 
 ```elm

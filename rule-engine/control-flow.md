@@ -2,13 +2,13 @@
 
 The following syntax options for conditional processing and iteration are supported in response actions.
 
-## If / Else
+## Conditional Processing
 
 The `if/else` syntax below enables condition processing.
 
 The `if` and `else` branches accept boolean conditions.
 
-```javascript
+```css
 @if{condition}
   @else{condition}
   @else{}
@@ -27,7 +27,7 @@ The following example adds the table with entity tags only for `nurswgvml007` en
 
 ## Iteration
 
-```javascript
+```css
 @foreach{item : collection}
   @{item.field}
 @end{}

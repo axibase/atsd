@@ -91,7 +91,7 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 
 #### Script
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 host=${1}
@@ -147,7 +147,7 @@ Slack:
 
 #### Script
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 kill_after=${1}
@@ -211,7 +211,7 @@ traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
 
 #### Script
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 host=${1}
@@ -275,7 +275,7 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 
 #### Script
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 host=${1}
@@ -324,7 +324,7 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 
 #### Script
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 url=${1}
@@ -384,7 +384,7 @@ Content Length: 35214 bytes
 
 #### Script
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 kill_after=${1}
@@ -438,7 +438,7 @@ TCP port 443 is available
 
 #### Script
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 host=${1}

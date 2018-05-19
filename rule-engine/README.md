@@ -20,21 +20,6 @@ Example
 
 A [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value functions`](functions-value.md), [`database functions`](functions-db.md), and [`rule functions`](functions-rules.md).
 
-## Concepts
-
-* [Windows](window.md)
-* [Grouping](grouping.md)
-* [Condition](condition.md)
-* [Filters](filters.md)
-* [Functions](functions.md)
-* [Placeholders](placeholders.md)
-* [Overrides](overrides.md)
-* [Web Notifications](web-notifications.md)
-* [Email Notifications](email.md)
-* [System Commands](commands.md)
-* [Derived Commands](derived.md)
-* [Logging](logging.md)
-
 ## In-Memory Processing
 
 The incoming data is processed by the rule engine in-memory, before the data is stored on a disk.

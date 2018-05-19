@@ -117,7 +117,7 @@ Slack Bot is a special account created for automation purposes.
 * Enable the `OPEN`, `REPEAT` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-```ls
+```bash
   Received `${message}` from <@${tags.event.user}>
 ```
 

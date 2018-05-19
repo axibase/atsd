@@ -1,4 +1,4 @@
-# Command: Insert
+# Command Insert
 
 ## Description
 

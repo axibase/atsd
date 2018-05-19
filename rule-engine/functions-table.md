@@ -15,7 +15,7 @@ Table functions perform various operations on strings, lists, and maps to create
 * [`flattenJson`](#flattenjson)
 * [Examples](#examples)
 
-### `addTable` for map
+## `addTable` for map
 
 ```javascript
    addTable([] m, string f) string
@@ -122,7 +122,7 @@ cpu_count=1
 os=Linux
 ```
 
-### `addTable` for maps
+## `addTable` for maps
 
 ```javascript
   addTable([[] m], string f[, [string h]]) string
@@ -214,7 +214,7 @@ id=/=/dev=/mnt/u113452=/run=/var/lib/lxcfs
 jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
 ```
 
-### `addTable` for list
+## `addTable` for list
 
 ```javascript
   addTable([[string]] c, string f[, [string] | boolean h]) string
@@ -378,7 +378,7 @@ Output:
 
 See additional examples [below](#examples).
 
-### `jsonToMaps`
+## `jsonToMaps`
 
 ```javascript
   jsonToMaps(string s) [map]
@@ -446,7 +446,7 @@ Output:
 
 See additional examples [below](#examples).
 
-### `jsonToLists`
+## `jsonToLists`
 
 ```javascript
   jsonToLists(string s) [[string]]
@@ -515,7 +515,7 @@ Output:
 
 See additional examples [below](#examples).
 
-### `flattenJson`
+## `flattenJson`
 
 ```javascript
   flattenJson(string j) map

@@ -1,8 +1,8 @@
-# Time Functions
+# Date Functions
 
 ## Overview
 
-Time functions perform various operations on dates, timestamps, and intervals.
+Date functions perform various operations on dates, timestamps, and intervals.
 
 ## Reference
 

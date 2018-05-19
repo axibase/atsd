@@ -8,7 +8,7 @@
 * [`forecast_stdev`](#forecast_stdev)
 * [`forecast_deviation`](#forecast_deviation)
 
-### `forecast()`
+## `forecast()`
 
 ```javascript
   forecast() double
@@ -16,7 +16,7 @@
 
 Forecast value for the entity, metric, and tags in the current window.
 
-### `forecast(string n)`
+## `forecast(string n)`
 
 ```javascript
   forecast(string n) double
@@ -24,7 +24,7 @@ Forecast value for the entity, metric, and tags in the current window.
 
 Named forecast value for the entity, metric, and tags in the current window, for example `forecast('ltm')` .
 
-### `forecast_stdev`
+## `forecast_stdev`
 
 ```javascript
   forecast_stdev() double
@@ -32,7 +32,7 @@ Named forecast value for the entity, metric, and tags in the current window, for
 
 Forecast standard deviation.
 
-### `forecast_deviation`
+## `forecast_deviation`
 
 ```javascript
   forecast_deviation(double n) double

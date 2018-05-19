@@ -16,7 +16,7 @@ nmon p:{parser} e:{entity} f:{file_name} z:{timezone} t:{timeout}
 
 | **Field** | **Type** | **Description**                            |
 |:---|:---|:---|
-| p         | string          | **[Required]**  nmon parser name from **Admin:nmon Parsers** page. <br>Specify `p:default` to use the default parser. |
+| p         | string          | **[Required]**  nmon parser name from **Data > nmon Parsers** page. <br>Specify `p:default` to use the default parser. |
 | e         | string          | **[Required]**  Entity name.                                     |
 | f         | string          | **[Required]**  Name of the nmon file.                      |
 | z         | string          | Time zone ID applied to dates specified in snapshot samples, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.|

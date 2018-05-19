@@ -134,8 +134,8 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-```ls
-    OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
+```bash
+      OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
     REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
     CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
 ```

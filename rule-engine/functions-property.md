@@ -13,7 +13,7 @@ Property functions provide a set of convenience methods to retrieve and compare 
 * [`property_maps`](#property_maps)
 * [`getPropertyTypes`](#getpropertytypes)
 
-### `property`
+## `property`
 
 ```javascript
   property([string e, ]string s[, string d]) string
@@ -38,7 +38,7 @@ Examples:
   property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
 
-### `property_values`
+## `property_values`
 
 ```javascript
   property_values([string e, ]string s[, string d]) [string]
@@ -84,7 +84,7 @@ Examples:
   property_values('nurswgvml007', 'docker.container::image', 'today')
 ```
 
-### `property_compare_except`
+## `property_compare_except`
 
 * `property_compare_except([string k])`
 
@@ -128,7 +128,7 @@ Returns true if property tags have changed, except for the `name` tag, any tags 
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
 ```
 
-### `property_map`
+## `property_map`
 
 ```javascript
   property_map([string e,] string s[, string d]) map
@@ -168,7 +168,7 @@ Examples:
   property_map('nurswgvml007','configuration::', 'today')
 ```
 
-### `property_maps`
+## `property_maps`
 
 ```javascript
   property_maps([string e,] string s[, string d]) [map]
@@ -216,7 +216,7 @@ Examples:
   property_maps('nurswgvml007','configuration::', 'yesterday')
 ```
 
-### `getPropertyTypes`
+## `getPropertyTypes`
 
 ```javascript
   getPropertyTypes(string e[, string s[, string d]]) [string]

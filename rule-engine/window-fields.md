@@ -4,7 +4,7 @@
 
 Each window maintains a set of continuously updated fields that can be included in the [condition](condition.md) expression, the [filter](filters.md) expression and the user-defined [variables](variables.md).
 
-### Base Fields
+## Base Fields
 
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
@@ -28,14 +28,14 @@ Each window maintains a set of continuously updated fields that can be included 
 `window` | string | Window type and duration | `length(1)`
 `threshold` | string | Override rule | `max() > 20`
 
-### Series Fields
+## Series Fields
 
 |**Name**|**Type**|**Description**|**Example**|
 |---|---|---|--|
 | `value` | number | Last value | `3.1415` |
 | `open_value` | number | First value | `1.0` |
 
-### Message Fields
+## Message Fields
 
 |**Name**|**Type**|**Description**|
 |---|---|---|
@@ -46,7 +46,7 @@ Each window maintains a set of continuously updated fields that can be included 
 > The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
 > Alert `severity` value is inherited from message `severity` when the Logging: Severity is set to 'Undefined'.
 
-### Properties Fields
+## Properties Fields
 
 |**Name**|**Type**|**Description**|
 |---|---|---|
@@ -56,7 +56,7 @@ Each window maintains a set of continuously updated fields that can be included 
 
 > The `tags` field for the `property` command contains the `keys` map and the `type` field.
 
-### Time Fields
+## Date Fields
 
 **Name**|**Time Zone**|**Description**
 :---|---|:---
@@ -78,7 +78,7 @@ Each window maintains a set of continuously updated fields that can be included 
 > If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` placeholder will return the time of the command being removed (oldest command), rounded to seconds.
 > The `now` object's fields can be accessed with [`get`](object-datetime.md) methods, e.g. `now.getDayOfWeek() == 4`.
 
-### Details Tables
+## Details Tables
 
 The built-in 'details' table contains entity name, entity label, entity tags, command tags, and user-defined variables. This data structure can be conveniently accessed to print out full alert information.
 
@@ -88,7 +88,7 @@ The built-in 'details' table contains entity name, entity label, entity tags, co
 * [`detailsTable('property')`](details-table.md#property)
 * [`detailsTable('csv')`](details-table.md#csv)
 
-### Link Fields
+## Link Fields
 
 * [`serverLink`](links.md#serverlink)
 * [`entityLink`](links.md#entitylink)

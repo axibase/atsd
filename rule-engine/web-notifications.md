@@ -175,7 +175,7 @@ Sample alert message with placeholders:
 
 The alert message can include links to ATSD resources using [link placeholders](links.md) such as the `${chartLink}`.
 
-```javascript
+```bash
 ${chartLink}
 ```
 

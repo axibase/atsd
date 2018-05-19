@@ -4,7 +4,7 @@
 
 Filters determine which commands should be processed by a rule. Commands that satisfy all filters are allocated to the rule [windows](window.md) for further processing such as adding data and evaluating the alert condition.
 
-### Built-in Filters
+## Built-in Filters
 
 | **Name** | **Description** |
 | --- | --- |
@@ -13,7 +13,7 @@ Filters determine which commands should be processed by a rule. Commands that sa
 
 ![](images/filter-dt-metric.png)
 
-### User-Defined Filters
+## User-Defined Filters
 
 | **Name** | **Description** |
 | --- | --- |
@@ -122,7 +122,7 @@ The filter discards commands for entities that do not belong to one of the entit
 
 ![](images/filter-entity-group.png)
 
-## Time Filter
+## Date Filter
 
 If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified 'grace' interval from the current server time. This filter is typically used to ignore historical data.
 

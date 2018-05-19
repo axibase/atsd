@@ -57,7 +57,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 * Restart the agent:
 
-```sh
+```bash
     bin/itmcmd stop ${PRODUCT_CODE}
     bin/itmcmd start ${PRODUCT_CODE}
 ```
