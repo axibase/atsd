@@ -114,7 +114,7 @@ POST https://atsd_hostname:8443/api/v1/series/insert
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/series/insert \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data '[{"entity": "nurswgvml007", "metric": "mpstat.cpu_busy", "data": [{ "t": 1462427358127, "v": 22.0 }]}]'
@@ -124,7 +124,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/series/insert \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data @file.json

@@ -56,7 +56,7 @@ None.
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006 \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --request GET
 ```
 

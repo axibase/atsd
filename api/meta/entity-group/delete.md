@@ -42,7 +42,7 @@ None.
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --request DELETE
 ```
 

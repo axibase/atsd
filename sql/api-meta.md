@@ -94,7 +94,7 @@ ATSD JSON-LD schema is published [here](https://www.axibase.com/schemas/2017/07/
 
 ```sh
 curl https://atsd_hostname:8443/api/sql/meta  \
-  --insecure  --verbose --user {username}:{password} \
+  --insecure  --include --user {username}:{password} \
   --request POST \
   --data 'q=SELECT entity, value FROM "mpstat.cpu_busy" WHERE datetime > now - 1*MINUTE'
 ```

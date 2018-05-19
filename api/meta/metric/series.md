@@ -61,7 +61,7 @@ None.
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --request GET
 ```
 

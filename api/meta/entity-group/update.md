@@ -56,7 +56,7 @@ PATCH https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \
   --data '{"tags": {"os_type": "AIX"}}

@@ -104,7 +104,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/query
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/alerts/query \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data '[{"metrics":["loadavg.5m","message"],"entity":"nurswgvml007","minSeverity":"CRITICAL"}]'

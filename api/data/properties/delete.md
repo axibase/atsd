@@ -120,7 +120,7 @@ POST https://atsd_hostname:8443/api/v1/properties/delete
 
 ```sh
 curl https://atsd_hostname:8443/api/v1/properties/delete \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data '[{ "type":"disk", "entity":"nurswgvml007", "key":{"file_system":"/","name":"sda1"} }]'

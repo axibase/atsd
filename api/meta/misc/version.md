@@ -41,7 +41,7 @@ None.
 
 ```elm
 curl https://atsd_hostname:8443/version \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --request GET
 ```
 

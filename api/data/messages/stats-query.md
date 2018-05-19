@@ -97,7 +97,7 @@ POST https://atsd_hostname:8443/api/v1/messages/stats/query
 
 ```elm
 curl  https://atsd_hostname:8443/api/v1/messages/stats/query \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data @file.json
