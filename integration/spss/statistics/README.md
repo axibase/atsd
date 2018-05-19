@@ -31,7 +31,7 @@ Analyze | Apply statistical functions to the dataset.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
 
 ![](resources/metrics_entry.png)
 

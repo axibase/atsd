@@ -102,7 +102,7 @@ If the hostname is different from the entity name used in the JMX job, specify t
 nohup /opt/kafka_2.12-1.0.0/bin/send_offset.sh ATSD_HOST TCP_PORT ENTITY &
 ```
 
-The script will continuously read consumer offsets from Kafka and send the offsets to ATSD as series commands. The commands will also be copied to `stdout` for debugging.
+The script will continuously read consumer offsets from Kafka and send the offsets to ATSD as `series` commands. The commands will also be copied to `stdout` for debugging.
 
 ```ls
 series e:nurswgvml702 m:kafka.consumer_offset=455 t:groupid="console-consumer-72620" t:topic="test" t:partition=0 ms:1519893731570

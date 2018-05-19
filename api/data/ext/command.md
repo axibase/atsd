@@ -79,7 +79,7 @@ message e:server001 d:2015-03-04T12:43:20+00:00 t:subject="my subject" m:"Hello,
 
 ### curl
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/v1/command \
   --insecure --verbose --user collector:******** \
   --header "Content-Type: text/plain" \

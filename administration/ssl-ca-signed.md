@@ -132,7 +132,7 @@ Creation date: Apr 18, 2018
 Entry type: PrivateKeyEntry
 Certificate chain length: 2
 Certificate[1]:
-Owner: CN=nur.axibase.com
+Owner: CN=atsd.company.com
 Issuer: CN=Let's Encrypt Authority X3, O=Let's Encrypt, C=US
 ...
 ```

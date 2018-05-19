@@ -255,7 +255,7 @@ Header parameters set message field values from header values.
 
 ### Filter Parameters
 
-The filter parameters contain patterns that the converted message tags must satisfy in order to be included in the generated message command.
+The filter parameters contain patterns that the converted message tags must satisfy in order to be included in the generated `message` command.
 
 | **Name** | **Description** |
 |---|---|

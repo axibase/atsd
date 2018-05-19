@@ -16,7 +16,7 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3823 | socrata     | Bug     | Added a record to the Statistics Detail page to display tasks with active downloads. |
-| 3821 | socrata     | Bug     | Added 'Add Row Number' field to add an extra metric with the name `{prefix}row_number` added to series commands in case the data row doesn't contain any numeric columns. |
+| 3821 | socrata     | Bug     | Added 'Add Row Number' field to add an extra metric with the name `{prefix}row_number` added to `series` commands in case the data row doesn't contain any numeric columns. |
 | 3820 | docker      | Bug     | Fixed missing 'path' entity tag for volumes. |
 | 3819 | docker      | Feature     | Updated to construct volume label from the container label instead of the container name. |
 | [3818](#issue-3818) | socrata     | Feature | In `Test` mode, added a table displaying columns from the metadata section. |

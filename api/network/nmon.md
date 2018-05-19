@@ -6,8 +6,8 @@ Initiate line-by-line streaming of a `nmon` file. The transmission can be resume
 
 ## Syntax
 
-```ls
-nmon p:{parser} e:{entity} f:{file_name} z:{timezone} t:{timeout}
+```bash
+nmon p:${parser} e:${entity} f:${file_name} z:${timezone} t:${timeout}
 ... nmon file header ...
 ... nmon snapshot ...
 ```

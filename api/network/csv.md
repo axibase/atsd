@@ -10,8 +10,8 @@ The client may keep a persistent connection. To prevent the server from timing o
 
 ## Syntax
 
-```css
-csv p:{parser} e:{entity} r:{metric_prefix} z:{timezone} t:{timeout}
+```bash
+csv p:${parser} e:${entity} r:${metric_prefix} z:${timezone} t:${timeout}
 ... Header Row ...
 ... Data Rows  ...
 ```

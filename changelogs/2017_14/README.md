@@ -24,7 +24,7 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 4090 | jdbc | Bug | Don't log error if `InterpolateType` value is `NULL`. |
-| 4078 | core | Bug | Fix parsing series commands with '=' symbol in the text field.  |
+| 4078 | core | Bug | Fix parsing `series` commands with '=' symbol in the text field.  |
 | 4061 | file | Bug | Save error messages if FTP connection fails. |
 
 ### Issue 4057

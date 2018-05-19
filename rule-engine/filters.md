@@ -29,7 +29,7 @@ For example, a `series` rule ignores `message` and `property` commands.
 
 ## Metric Filter
 
-To match the rule, the incoming series command must have the same metric name as the one specified in the Rule Editor. This filter applies to `series` commands.
+To match the rule, the incoming `series` command must have the same metric name as the one specified in the Rule Editor. This filter applies to `series` commands.
 
 ## Filter Expression
 

@@ -8,8 +8,8 @@ If the entity doesn't exist, it will be created automatically.
 
 ## Syntax
 
-```css
-entity e:{entity} b:{enabled} l:{label} i:{interpolate} z:{timezone} t:{tag-1}={text} t:{tag-2}={text}
+```bash
+entity e:${entity} b:${enabled} l:${label} i:${interpolate} z:${timezone} t:${tag-1}=${text} t:${tag-2}=${text}
 ```
 
 * Entity name and tag names are case-insensitive and are converted to lower case when stored.

@@ -6,14 +6,14 @@ Use the `series` command to insert a timestamped value (number or text) into a s
 
 ## Syntax
 
-```css
-series d:{iso-date} e:{entity} t:{tag-1}={val-1} m:{metric-1}={number}
+```bash
+series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number}
 ```
 
 The command may include multiple values for different metrics, which inherit the same entity, time, and tags.
 
-```css
-series d:{iso-date} e:{entity} t:{tag-1}={val-1} m:{metric-1}={number} m:{metric-2}={number} x:{metric-3}={text}
+```bash
+series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:${metric-2}=${number} x:${metric-3}=${text}
 ```
 
 ### Fields

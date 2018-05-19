@@ -55,7 +55,7 @@ The following match conditions are applied:
 
     |**Name**|**Description**|
     |---|---|
-    |message |The text value, which is equal to 'message' field in case of message command.|
+    |message |The text value, which is equal to 'message' field in case of `message` command.|
     |tags and tags.{name}/tags['name']|Command tags.|
     |status|Window [status](README.md#window-status).|
   * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
@@ -196,7 +196,7 @@ The following match conditions are applied:
 
     |**Name**|**Description**|
     |---|---|
-    |message |The text value, which is equal to 'message' field in case of message command.|
+    |message |The text value, which is equal to 'message' field in case of `message` command.|
     |tags and tags.{name}/tags['name']|Command tags.|
     |status|Window [status](README.md#window-status).|
 
