@@ -77,7 +77,6 @@ POST https://atsd_hostname:8443/api/v1/properties/insert
 curl https://atsd_hostname:8443/api/v1/properties/insert  \
   --insecure  --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request  POST \
   --data '[{"type":"disk","entity":"nurswgvml007","key":{"file_system":"/","mount_point":"sda1"},"tags":{"fs_type":"ext4"},"date":"2016-05-25T04:15:00Z"}]'
 ```
 

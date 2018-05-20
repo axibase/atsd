@@ -12,9 +12,12 @@ Provide the following artifacts as part of your support request related to a ser
 
 * A. Output of system commands:
 
-```sh
-   cat /etc/*-release
-   cat /proc/version
+```bash
+cat /etc/*-release
+```
+
+```bash
+cat /proc/version
 ```
 
 ## 3. Log Files

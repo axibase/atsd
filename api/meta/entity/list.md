@@ -81,7 +81,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expression=name%20like%20%27nurs*%27 \
   --insecure --include --user {username}:{password} \
   --request GET
@@ -127,7 +127,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entities?expression=label!=%22%22%20and%20enabled=true%20and%20interpolate!=%22%22%20and%20timeZone!=%22%22 \
   --insecure --include --user {username}:{password} \
   --request GET

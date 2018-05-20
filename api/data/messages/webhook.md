@@ -431,7 +431,7 @@ Subscribe to build status events from Jenkins.
 
 Subscribe to build status events from Travis CI.
 
-```sh
+```elm
 /api/v1/messages/webhook/travis-ci?json.parse=payload&exclude=payload.id;payload.number;payload.config*;payload.repository*;payload.matrix*;payload.*commit*;payload.status_message;payload.result&include=payload.repository.name&command.message=payload.result_message
 ```
 

@@ -65,7 +65,7 @@ sudo certbot certonly --standalone --agree-tos --no-eff-email \
 
 The following message will be displayed if the request was successfully processed.
 
-```sh
+```txt
 - Congratulations! Your certificate and chain have been saved at:
    /etc/letsencrypt/live/atsd.company.com/fullchain.pem
    Your key file has been saved at:
@@ -79,7 +79,10 @@ The following message will be displayed if the request was successfully processe
 Check that the `/etc/letsencrypt/live/` directory contains a sub-directory with the target DNS name.
 
 ```sh
-$ sudo ls -all /etc/letsencrypt/live/
+sudo ls -all /etc/letsencrypt/live/
+```
+
+```txt
 total 12
 drwx------ 3 root root 4096 Mar 17 12:03 .
 drwxr-xr-x 9 root root 4096 Apr 18 12:47 ..

@@ -45,7 +45,7 @@ Change `/etc/hosts` to form:
 sudo nano /etc/hosts
 ```
 
-```sh
+```elm
  127.0.0.1    localhost
  master_ip    master_hostname
  slave_ip     slave_hostname
@@ -54,17 +54,17 @@ sudo nano /etc/hosts
 > Note: the following lines should not be contained in the `hosts` file.
 This is the case for both master and slave.
 
-```sh
+```elm
 127.0.1.1    atsd_master
 ```
 
-```sh
+```elm
  127.0.1.1    atsd_slave
 ```
 
 Example of a correct `hosts` file:
 
-```sh
+```elm
  127.0.0.1    localhost
  172.30.0.66    atsd_master
  172.30.0.78    atsd_slave
@@ -91,7 +91,7 @@ sudo nano /opt/atsd/bin/atsd-all.sh
 
 Comment out the following strings in the `start_all` function:
 
-```sh
+```bash
      ${ATSD_TSD} start
      if [ ! $? -eq 0 ]; then
          return 1
@@ -100,7 +100,7 @@ Comment out the following strings in the `start_all` function:
 
 Result:
 
-```sh
+```bash
  #   ${ATSD_TSD} start
  #   if [ ! $? -eq 0 ]; then
  #       return 1
@@ -140,6 +140,9 @@ Start Hadoop and HBase:
 
 ```sh
 /opt/atsd/bin/atsd-dfs.sh start
+```
+
+```sh
 /opt/atsd/bin/atsd-hbase.sh start
 ```
 
@@ -248,7 +251,7 @@ tail -n 1000 /opt/atsd/hbase/logs/hbase-axibase-regionserver-atsd_slave.log | gr
 The output should contain replication activity and the of amount tables
 replicated on the slave machine:
 
-```sh
+```txt
  2015-07-17 16:39:22,926 INFO  regionserver.ReplicationSink (ReplicationS
  ink.java:replicateEntries(158)) - Total replicated: 4
  2015-07-17 16:39:24,019 INFO  regionserver.ReplicationSink (ReplicationS

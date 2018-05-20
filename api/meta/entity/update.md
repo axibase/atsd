@@ -54,7 +54,7 @@ PATCH https://atsd_hostname:8443/api/v1/entities/{entity}
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \

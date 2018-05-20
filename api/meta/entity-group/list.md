@@ -47,7 +47,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups?tags=os_level&limit=2&expression=name%20like%20%27nmon*%27 \
  --insecure --include --user {username}:{password} \
  --request GET

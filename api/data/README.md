@@ -150,7 +150,6 @@ nc -lk 0.0.0.0 20088 > json-in.log &
 curl http://localhost:20088/api/v1/series/insert \
   -v -u {username}:{password} \
   -H "Content-Type: application/json" \
-  -X POST \
   -d '[{"entity": "nurswgvml007", "metric": "mpstat.cpu_busy", "data": [{ "t": 1462427358127, "v": 22.0 }]}]'
 ```
 

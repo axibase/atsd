@@ -39,6 +39,9 @@ On RHEL:
 
 ```sh
 sudo systemctl stop atsd
+```
+
+```sh
 sudo systemctl start atsd
 ```
 
@@ -46,6 +49,9 @@ On other Linux distributions:
 
 ```sh
 sudo service atsd stop
+```
+
+```sh
 sudo service atsd start
 ```
 

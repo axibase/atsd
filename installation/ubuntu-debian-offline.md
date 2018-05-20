@@ -49,7 +49,13 @@ Download the ATSD package, including its dependencies, to the `dependencies` dir
 
 ```sh
 mkdir ~/dependencies
+```
+
+```sh
 cd ~/dependencies
+```
+
+```sh
 apt-get download atsd $(apt-cache depends --recurse --no-recommends --no-suggests \
   --no-conflicts --no-breaks --no-replaces --no-enhances \
   atsd | grep "Depends" | cut -d ":" -f2 | grep "^\ \w" | grep -v file-rc)
@@ -59,12 +65,15 @@ Download newer `ca-certificates-java`. This step is required only for Debian 8.x
 
 ```sh
 rm ca-certificates-java*
+```
+
+```sh
 apt-get -t jessie-backports download ca-certificates-java
 ```
 
 Make sure that the download directory isn't empty:
 
-```sh
+```txt
 ...
 libtinfo5_5.9+20140913-1+b1_amd64.deb
 lsb-base_4.1+Debian13+nmu1_all.deb
@@ -88,7 +97,7 @@ ls dependencies/* | grep -v "atsd*" | xargs sudo dpkg -i
 
 Sample output:
 
-```sh
+```txt
 ...
 Processing triggers for man-db (2.7.5-1) ...
 Processing triggers for install-info (6.1.0.dfsg.1-5) ...

@@ -45,7 +45,7 @@ The response status code should be `2xx` or `3xx`.
 
 You can specify additional fields if necessary. The `countryCode` field must contain two letters if specified.
 
-```elm
+```bash
 curl -v -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/self-signed \
   -d "domainName=atsd.customer_domain.com" \
   -d "organizationalUnit=Software Group" \

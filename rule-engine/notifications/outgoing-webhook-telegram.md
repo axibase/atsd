@@ -56,7 +56,7 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
 
   Set webhook by specifying the webhook URL
 
-```sh
+```bash
     curl -F "url=https://telegram:12345678@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```

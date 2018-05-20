@@ -49,7 +49,7 @@ None.
 
 #### curl
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
   --insecure --include --user {username}:{password} \
   --request GET

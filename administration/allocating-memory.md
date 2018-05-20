@@ -12,6 +12,9 @@ Restart ATSD
 
 ```sh
 /opt/atsd/bin/atsd-tsd.sh stop
+```
+
+```sh
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
@@ -32,8 +35,17 @@ Restart ATSD and HBase:
 
 ```sh
 /opt/atsd/bin/atsd-tsd.sh stop
+```
+
+```sh
 /opt/atsd/bin/atsd-hbase.sh stop
+```
+
+```sh
 /opt/atsd/bin/atsd-hbase.sh start
+```
+
+```sh
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
@@ -54,6 +66,9 @@ Restart all services:
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
+```
+
+```sh
 /opt/atsd/bin/atsd-all.sh start
 ```
 

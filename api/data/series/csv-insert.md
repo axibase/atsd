@@ -78,21 +78,19 @@ time,cpu_user,cpu_system,waitio
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007 \
  --insecure --include --user {username}:{password} \
  --header "Content-Type: text/csv" \
- --request POST \
  --data-binary $'date,lx.cpu_busy\n2016-05-21T00:00:00Z,12.45\n2016-05-21T00:00:15Z,10.8\n'
 ```
 
 > `--data-binary $` is used to prevent `curl` from dropping line feed characters.
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007 \
  --insecure --include --user {username}:{password} \
  --header "Content-Type: text/csv" \
- --request POST \
  --data-binary @file.csv
 ```
 

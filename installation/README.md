@@ -64,6 +64,11 @@ Available packages:
 | :--- | :--- |
 | Cloudera Distribution Hadoop (CDH)  | [View](cloudera.md) |
 
+## Installing Updates
+
+* Review [Change Log](../changelogs/README.md)
+* Refer to [Update Guide](../administration/update.md)
+
 ## Technical Support
 
 Email us at **support-atsd@axibase.com** in case of installation questions.

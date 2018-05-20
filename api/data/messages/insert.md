@@ -85,7 +85,6 @@ POST https://atsd_hostname:8443/api/v1/messages/insert
 curl https://atsd_hostname:8443/api/v1/messages/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data @file.json
 ```
 

@@ -11,8 +11,8 @@ its forecast. In the example below, a forecast is generated for the
 tool. Based on the forecast a rule is created with the following
 expression:
 
-```sh
- abs(forecast_deviation(wavg())) > 2
+```javascript
+abs(forecast_deviation(wavg())) > 2
 ```
 
 This rule will raise an alert if the absolute forecast deviates from the

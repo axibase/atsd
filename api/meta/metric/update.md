@@ -55,7 +55,7 @@ PATCH https://atsd_hostname:8443/api/v1/metrics/cpu_busy
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \

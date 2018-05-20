@@ -59,6 +59,9 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 ```bash
     bin/itmcmd stop ${PRODUCT_CODE}
+```
+
+```bash
     bin/itmcmd start ${PRODUCT_CODE}
 ```
 
@@ -81,7 +84,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 * Specify the ATSD hostname by editing the following line:
 
-```sh
+```bash
     if [ "$url" = "" ]; then
         url="http://atsd_hostname:8088"
     fi

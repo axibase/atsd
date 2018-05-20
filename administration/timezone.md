@@ -16,7 +16,7 @@ The current time zone is displayed on the **Settings > System Information** page
 
 * Uncomment the `TIME_ZONE` line block in the ATSD environment settings file `/opt/atsd/atsd/conf/atsd-env.sh`.
 
-```sh
+```bash
 # Uncomment to set custom time zone
 TIME_ZONE=US/Pacific
 export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
@@ -24,8 +24,11 @@ export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
 
 * Restart ATSD.
 
-```sh
+```bash
 /opt/atsd/atsd/bin/stop-atsd.sh
+```
+
+```bash
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 

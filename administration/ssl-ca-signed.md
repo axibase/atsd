@@ -46,7 +46,8 @@ Log in to ATSD server shell.
 Create a PKCS12 keystore.
 
 ```sh
-openssl pkcs12 -export -inkey atsd.company.com.key -in atsd.company.com.fullchain -out atsd.company.com.pkcs12
+openssl pkcs12 -export -inkey atsd.company.com.key \
+  -in atsd.company.com.fullchain -out atsd.company.com.pkcs12
 ```
 
 ```sh
@@ -67,7 +68,8 @@ mv /opt/atsd/atsd/conf/server.keystore /opt/atsd/atsd/conf/server.keystore.backu
 Use the `keytool` command to create a new JKS keystore by importing the PKCS12 keystore file.
 
 ```sh
-keytool -importkeystore -srckeystore atsd.company.com.pkcs12 -srcstoretype PKCS12 -alias 1 -destkeystore /opt/atsd/atsd/conf/server.keystore -destalias atsd
+keytool -importkeystore -srckeystore atsd.company.com.pkcs12 \
+  -srcstoretype PKCS12 -alias 1 -destkeystore /opt/atsd/atsd/conf/server.keystore -destalias atsd
 ```
 
 ```txt
@@ -98,6 +100,9 @@ https.trustStorePassword=
 
 ```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
+```
+
+```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 

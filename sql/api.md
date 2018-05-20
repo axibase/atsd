@@ -165,7 +165,7 @@ The `metadataFormat` parameter specifies how metadata is incorporated into the C
 
 ### `curl` Query Example
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/sql  \
   --insecure  --include --compressed \
   --user {username}:{password} \
@@ -174,7 +174,7 @@ curl https://atsd_hostname:8443/api/sql  \
 
 Use `'\'` to escape single quotes inside the query payload.
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/sql  \
   --insecure  --include --compressed \
   --user {username}:{password} \

@@ -22,6 +22,9 @@ cd /opt/apache-activemq-5.13.1
 ```sh
 wget --content-disposition -P ./lib/ \
    "https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.axibase&a=aggregation-log-filter&v=LATEST"
+```
+
+```sh
 wget --content-disposition -P ./lib/ \
    "https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.axibase&a=aggregation-log-filter-log4j&v=LATEST"
 ```
@@ -50,7 +53,7 @@ ActiveMQ 5.11.x and later:
 vi ./bin/env
 ```
 
-```sh
+```bash
 ACTIVEMQ_SUNJMX_START="$ACTIVEMQ_SUNJMX_START -Dcom.sun.management.jmxremote"
 ACTIVEMQ_SUNJMX_START="$ACTIVEMQ_SUNJMX_START -Dcom.sun.management.jmxremote.port=1090"
 ACTIVEMQ_SUNJMX_START="$ACTIVEMQ_SUNJMX_START -Dcom.sun.management.jmxremote.rmi.port=1090"
@@ -66,7 +69,7 @@ ActiveMQ 5.10.x and earlier:
 vi ./bin/activemq
 ```
 
-```sh
+```bash
 ACTIVEMQ_SUNJMX_START="-Dcom.sun.management.jmxremote \
    -Dcom.sun.management.jmxremote.port=1090 \
    -Dcom.sun.management.jmxremote.rmi.port=1090 \

@@ -39,7 +39,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/version \
   --insecure --include --user {username}:{password} \
   --request GET

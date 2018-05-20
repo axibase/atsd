@@ -24,9 +24,21 @@ Download and install StatsD:
 
 ```sh
 sudo apt-get install git nodejs devscripts debhelper
+```
+
+```sh
 mkdir ~/build && cd ~/build
+```
+
+```sh
 git clone https://github.com/etsy/statsd.git
+```
+
+```sh
 cd statsd
+```
+
+```sh
 dpkg-buildpackage
 ```
 
@@ -41,6 +53,9 @@ Stop and configure StatsD:
 
 ```sh
 sudo service statsd stop
+```
+
+```sh
 sudo nano /etc/statsd/localConfig.js
 ```
 

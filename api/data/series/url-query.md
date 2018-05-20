@@ -75,7 +75,7 @@ GET https://atsd_hostname:8443/api/v1/series/json/nurswgvml007/mpstat.cpu_busy?s
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso \
   --insecure --include -user {username}:{password} \
   --request GET

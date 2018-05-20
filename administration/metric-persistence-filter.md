@@ -253,7 +253,9 @@ Examples:
 
 ```javascript
 entity IN ('nurswgvml007', 'nurswgvml008')
+```
 
+```javascript
 tags.location IN ('NUR', 'SVL')
 ```
 
@@ -277,7 +279,7 @@ To stop storing such series, create a collection with filter patterns on the **D
 
 Open the metric editor and create a filter expression to ignore matching series.
 
-```sh
+```javascript
 !likeAny(tags.command, collection('ignore-collector-process-commands'))
 ```
 

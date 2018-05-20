@@ -29,5 +29,8 @@ udp.receive.buffer.size.kb = 20000
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
+```
+
+```sh
 /opt/atsd/bin/atsd-all.sh start
 ```

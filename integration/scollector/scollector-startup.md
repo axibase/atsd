@@ -189,7 +189,7 @@ Set `SCOLLECTOR_USER` to the user that will run scollector.
 Add `User` option to `[Service]` section of the service file
 
 ```sh
- sudo sed -i '/\[Service\]/a User=[user_name]' /lib/systemd/system/scollector.service
+ sudo sed -i '/\[Service\]/a User=[user_name]' /lib/systemd/system/scollector.service 
  sudo systemctl daemon-reload
 ```
 

@@ -66,7 +66,8 @@ Create a temporary directory and download the DataTableReporter jar file.
 
 ```sh
 mkdir /tmp/reporter
-curl -o /tmp/reporter/reporter.jar https://axibase.com/public/atsd-125-migration/reporter_5.10_v2.jar
+curl -o /tmp/reporter/reporter.jar \
+  https://axibase.com/public/atsd-125-migration/reporter_5.10_v2.jar
 ```
 
 ### Initiate Kerberos Session

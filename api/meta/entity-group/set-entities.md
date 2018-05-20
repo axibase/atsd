@@ -66,11 +66,10 @@ POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/set?creat
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/set?createEntities=true \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data '["nurswgvml010", "nurswgvml011"]'
 ```
 

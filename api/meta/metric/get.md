@@ -38,7 +38,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy \
   --insecure --include --user {username}:{password} \
   --request GET

@@ -61,7 +61,7 @@ PUT https://atsd_hostname:8443/api/v1/metrics/my-metric
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/metrics/my-metric \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \

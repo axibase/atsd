@@ -116,7 +116,6 @@ POST https://atsd_hostname:8443/api/v1/series/insert
 curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data '[{"entity": "nurswgvml007", "metric": "mpstat.cpu_busy", "data": [{ "t": 1462427358127, "v": 22.0 }]}]'
 ```
 
@@ -126,7 +125,6 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
 curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data @file.json
 ```
 

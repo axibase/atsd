@@ -13,14 +13,14 @@
 
 ## Start Container
 
-```elm
+```bash
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   axibase/atsd:latest
 ```
 
 To automatically create an [account](../administration/collector-account.md) for data collection agents, replace `cuser` and `cpassword` credential variables in the command below.
 
-```elm
+```bash
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   --env COLLECTOR_USER_NAME=cuser \
   --env COLLECTOR_USER_PASSWORD=cpassword \
@@ -88,12 +88,12 @@ View additional launch examples [here](#start-container).
 
 Change port mappings in the launch command in case of port allocation error.
 
-```sh
+```txt
 Cannot start container <container_id>: failed to create endpoint atsd on network bridge:
 Bind for 0.0.0.0:8088 failed: port is already allocated
 ```
 
-```elm
+```bash
 docker run -d --name=atsd \
   --publish 9088:8088 \
   --publish 9443:8443 \

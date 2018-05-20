@@ -353,7 +353,8 @@ ${scriptOut('url_avail.sh', ['https://axibase.com'])}
 #### Command
 
 ```sh
-curl -sS -L --insecure -X GET -m 10 -D ./atsd/conf/script/headers -w "\nResponse Time: %{time_total}\n" "https://axibase.com" > ./atsd/conf/script/response 2>&1
+curl -sS -L --insecure -X GET -m 10 -D ./atsd/conf/script/headers \
+  -w "\nResponse Time: %{time_total}\n" "https://axibase.com" > ./atsd/conf/script/response 2>&1
 ```
 
 #### Output

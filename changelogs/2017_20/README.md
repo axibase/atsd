@@ -24,8 +24,11 @@
 
 Sample curl command:
 
-```sh
- curl -k -X POST --data-binary @command.txt.gz http://atsd_hostname:8443/api/v1/command --header "Content-Encoding:gzip" --header "Content-Type:text/plain;charset=UTF-8"
+```bash
+ curl -k -X POST --data-binary @command.txt.gz \
+   http://atsd_hostname:8443/api/v1/command \
+   --header "Content-Encoding:gzip" \
+   --header "Content-Type:text/plain;charset=UTF-8"
 ```
 
 ### Issue 4184

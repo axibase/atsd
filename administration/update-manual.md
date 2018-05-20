@@ -25,6 +25,9 @@ tar xzf atsd.tar.gz
 
 ```sh
 cd target
+```
+
+```sh
 ls
 atsd.<revision number>.jar
 atsd-hbase.<revision number>.jar
@@ -40,11 +43,17 @@ atsd-hbase.<revision number>.jar
 
 ```sh
 rm -rf /opt/atsd/hbase/lib/atsd*jar
+```
+
+```sh
 mv atsd-hbase* /opt/atsd/hbase/lib/
 ```
 
 ```sh
 rm -rf /opt/atsd/atsd/bin/atsd*jar
+```
+
+```sh
 mv atsd* /opt/atsd/atsd/bin/
 ```
 

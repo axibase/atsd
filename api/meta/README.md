@@ -70,14 +70,18 @@ Cross-domain requests are allowed.
 * Review error logs on the **Settings > Diagnostics > Server Logs** page in case the payload is rejected
 * To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to netcat port, and dump the incoming data to file:
 
-```elm
+```bash
 nc -lk localhost 20088 > json-in.log &
+```
 
+```bash
 curl http://localhost:20088/api/v1/metrics/cpu-used-total \
   -v -u {username}:{password} \
   -H "Content-Type: application/json" \
   -X PATCH \
   -d '{ "label": "CPU Busy Average" }'
+```
 
+```bash
 cat json-in.log
 ```

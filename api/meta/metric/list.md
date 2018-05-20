@@ -122,7 +122,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
   --insecure --include --user {username}:{password} \
   --request GET
@@ -183,7 +183,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/metrics?expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22 \
   --insecure --include --user {username}:{password} \
   --request GET
