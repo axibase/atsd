@@ -1,10 +1,14 @@
-# Entity Permissions in SQL Queries
+# Query Permissions
 
 ## Overview
 
-ATSD implements row-level security by controlling that users can view only records that belong to an entity that they're authorized to access based on [entity permissions](../administration/user-authorization.md#entity-permissions).
+The database implements row-level security so that users can view only records that belong to an entity that they're authorized to access based on [entity permissions](../administration/user-authorization.md#entity-permissions).
 
 The row-level security is enforced in all types of queries by filtering rows at the time they're read from the database.
+
+As a result, the same query executed by different users may produce different result sets.
+
+[Scheduled SQL](scheduled-sql.md) queries are executed with [All Entities: Read](../administration/user-authorization.md#all-entities-permissions) permission and are **not filtered**.
 
 ## Example
 
