@@ -7,25 +7,25 @@
 Download scollector binary for Linux.
 
 ```sh
- mkdir scollector
+mkdir scollector
 ```
 
 ```sh
- cd scollector
+cd scollector
 ```
 
 ```sh
- wget https://github.com/bosun-monitor/bosun/releases/download/0.6.0-beta1/scollector-linux-amd64
+wget https://github.com/bosun-monitor/bosun/releases/download/0.6.0-beta1/scollector-linux-amd64
 ```
 
 ```sh
- chmod 700 scollector-linux-amd64
+chmod 700 scollector-linux-amd64
 ```
 
 Replace username, password, hostname and port number with actual connection parameters.
 
 ```sh
- echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
+echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
 ```
 
 The default ATSD http port is `8088`, https port is `8443`.
@@ -33,13 +33,13 @@ The default ATSD http port is `8088`, https port is `8443`.
 scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
 
 ```sh
- echo 'Host = "https://username:password@atsd_hostname:8443/"' > scollector.toml
+echo 'Host = "https://username:password@atsd_hostname:8443/"' > scollector.toml
 ```
 
 Start scollector.
 
 ```sh
- nohup ./scollector-linux-amd64 &
+nohup ./scollector-linux-amd64 &
 ```
 
 ### Auto-start under sudo user
@@ -76,13 +76,13 @@ EOF
 Make the `/etc/init.d/scollector` file executable.
 
 ```sh
-  chmod a+x /etc/init.d/scollector
+chmod a+x /etc/init.d/scollector
 ```
 
 Enable scollector launch when the system is started.
 
 ```sh
-  sudo update-rc.d scollector defaults 90 10
+sudo update-rc.d scollector defaults 90 10
 ```
 
 #### CentOS 6.x and RHEL 6.x
@@ -130,7 +130,7 @@ Change to the scollector installation directory.
 
 Create a service file for scollector `/lib/systemd/system/scollector.service`:
 
-```sh
+```bash
 sudo cat <<EOF > /lib/systemd/system/scollector.service
 [Unit]
 Description=scollector daemon
@@ -157,7 +157,7 @@ sudo systemctl enable scollector
 
 Modify the `/etc/init.d/tcollector` file:
 
-```txt
+```bash
 #chkconfig: 2345 90 10
 #description: collect OS metrics and store them in ATSD
 ### BEGIN INIT INFO
@@ -189,8 +189,8 @@ Set `SCOLLECTOR_USER` to the user that will run scollector.
 Add `User` option to `[Service]` section of the service file
 
 ```sh
- sudo sed -i '/\[Service\]/a User=[user_name]' /lib/systemd/system/scollector.service 
- sudo systemctl daemon-reload
+sudo sed -i '/\[Service\]/a User=[user_name]' /lib/systemd/system/scollector.service
+sudo systemctl daemon-reload
 ```
 
 ## Windows
@@ -204,25 +204,25 @@ Navigate to the directory with the `exe` file and create a `scollector.toml` fil
 Add `Host` setting to `scollector.toml`:
 
 ```toml
- Host = "http://username:password@atsd_hostname:8088/"
+Host = "http://username:password@atsd_hostname:8088/"
 ```
 
 scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure https endpoint.
 
 ```toml
- Host = "https://username:password@atsd_hostname:8443/"
+Host = "https://username:password@atsd_hostname:8443/"
 ```
 
 Open the prompt as Administrator and create an scollector service with automated startup:
 
-```txt
- scollector-windows-amd64.exe -winsvc=install
+```bash
+scollector-windows-amd64.exe -winsvc=install
 ```
 
 Start scollector service:
 
-```txt
- scollector-windows-amd64.exe -winsvc=start
+```bash
+scollector-windows-amd64.exe -winsvc=start
 ```
 
 If the service exits a few seconds after startup, check the following:
