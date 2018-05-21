@@ -270,7 +270,7 @@ wc -l IBM_adjusted.txt
 
 Start a Vertica v7.1.1-0 container. Mount `/tmp/test` directory to the container.
 
-```elm
+```bash
 docker run --name=vertica -v /tmp/test:/data -d sumitchawla/vertica
 ```
 

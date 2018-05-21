@@ -58,7 +58,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/update
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/alerts/update \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \

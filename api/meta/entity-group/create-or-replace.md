@@ -59,7 +59,7 @@ PUT https://atsd_hostname:8443/api/v1/entity-groups/nmon-collectors
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-collectors \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \

@@ -1,4 +1,4 @@
-# Monitoring Kafka with ATSD
+# Kafka
 
 This document describes how to monitor availability and performance of [Apache Kafka](https://kafka.apache.org/) using Axibase Time Series Database.
 

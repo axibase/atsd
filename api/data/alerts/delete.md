@@ -53,7 +53,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/delete
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/alerts/delete \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \

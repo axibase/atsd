@@ -47,7 +47,7 @@ GET https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk \
   --insecure --include --user {username}:{password} \
   --request GET

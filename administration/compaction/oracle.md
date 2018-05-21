@@ -199,7 +199,7 @@ wc -l IBM_adjusted.txt
 Build a Oracle EE 12c 12.2.0.1 container as described [here](https://github.com/oracle/docker-images/tree/master/OracleDatabase).
 Start the container with `/tmp/test` directory.
 
-```elm
+```bash
 docker run --name oracle \
   -e ORACLE_SID=axibase \
   -e ORACLE_PWD=axibase \

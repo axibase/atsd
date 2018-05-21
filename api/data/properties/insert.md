@@ -73,7 +73,7 @@ POST https://atsd_hostname:8443/api/v1/properties/insert
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/properties/insert  \
   --insecure  --include --user {username}:{password} \
   --header "Content-Type: application/json" \
