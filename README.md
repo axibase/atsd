@@ -60,7 +60,7 @@
 * [Functions](rule-engine/functions.md)
 * [Placeholders](rule-engine/placeholders.md)
 * [Overrides](rule-engine/overrides.md)
-* [Web Notifications](rule-engine/web-notifications.md)
+* [Web Notifications](rule-engine/notifications/README.md)
 * [Email Notifications](rule-engine/email.md)
 * [System Commands](rule-engine/commands.md)
 * [Derived Commands](rule-engine/derived.md)

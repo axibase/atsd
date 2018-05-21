@@ -12,7 +12,7 @@
 5159 | sql | Feature | Add name, author and description placeholders in [scheduled SQL](../../sql/scheduled-sql.md#sql-scheduler) queries.
 5155 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): NPE on commands store.
 5153 | rule engine | Bug | [Rule Engine](../../rule-engine): Generic type is not resolved for `TagsMap`.
-5151 | core | Feature | Add User-Agent header in [outgoing](../../rule-engine/web-notifications.md#web-notifications) http requests.
+5151 | core | Feature | Add User-Agent header in [outgoing](../../rule-engine/notifications/README.md#web-notifications) http requests.
 5150 | sql | Feature | Implement short ISO formats for [`datetime`](../../sql/README.md#interval-condition) literal.
 5146 | security | Bug | Rename built-in collector [groups](../../administration/user-authorization.md#collector-user).
 5144 | rule engine | Bug | [`entity_label`](../../rule-engine/functions-lookup.md#entity_label) function.
@@ -42,8 +42,8 @@
 5078 | installation | Bug | [Installation](../../installation#installation): apply `nohup` to default startup scripts.
 5070 | sql | Feature | [Inline queries](../../sql#inline-views): remove `time`/`datetime` column requirement.
 5067 | rule engine | Bug | [`getEntityLink`](../../rule-engine/functions-link.md#getentitylink) function raises NPE on empty entity.
-5066 | rule engine | Bug | [AWS API](../../rule-engine/web-notifications.md#integration-services): Fix test mode for configuration.
-5065 | rule engine | Feature | [Web Notifications](../../rule-engine/web-notifications.md#web-notifications): Add type, toggle fields.
+5066 | rule engine | Bug | [AWS API](../../rule-engine/notifications/README.md#integration-services): Fix test mode for configuration.
+5065 | rule engine | Feature | [Web Notifications](../../rule-engine/notifications/README.md#web-notifications): Add type, toggle fields.
 5063 | export | Bug | [Tag filter](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) with wildcard allows any tag values.
 5055 | csv | Bug | Incorrect version fields are stored from [uploaded](../../parsers/csv#uploading-csv-files-into-axibase-time-series-database) .csv file.
 5051 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Output Path collision.

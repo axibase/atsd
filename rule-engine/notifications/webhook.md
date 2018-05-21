@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Webhook** [notifications](../web-notifications.md) send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribed service is responsible for parsing, handling, and reacting to the received event.
+**Webhook** [notifications](../notifications/README.md) send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribed service is responsible for parsing, handling, and reacting to the received event.
 
 ## Method
 

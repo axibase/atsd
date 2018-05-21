@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AWS SQS` [notifications](../web-notifications.md) send messages to an [Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
+`AWS SQS` [notifications](../notifications/README.md) send messages to an [Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
 
 ## Notification Settings
 

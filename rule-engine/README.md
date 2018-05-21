@@ -4,7 +4,7 @@
 
 The rule engine enables automation of repetitive tasks based on real-time statistical analysis of incoming data.
 
-Such tasks may include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](web-notifications.md) alert, or generating derived statistics and roll-ups metrics.
+Such tasks may include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](notifications/README.md) alert, or generating derived statistics and roll-ups metrics.
 
 The engine evaluates incoming `series`, `message`, and `property` commands and executes response actions when appropriate:
 
@@ -97,7 +97,7 @@ Actions are triggered on window status changes, for example upon window `OPEN` s
 Supported response actions:
 
 * [Send email](email.md)
-* [Send chat message](web-notifications.md#collaboration-services)
+* [Send chat message](notifications/README.md#collaboration-services)
 * [Trigger webhook](notifications/webhook.md)
 * [Execute script](commands.md)
 * [Generate derived metrics](derived.md)

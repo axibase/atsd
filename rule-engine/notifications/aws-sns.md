@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AWS SNS` [notifications](../web-notifications.md) publish signed messages to an [Amazon SNS](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic upon window status events.
+`AWS SNS` [notifications](../notifications/README.md) publish signed messages to an [Amazon SNS](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic upon window status events.
 
 ## Notification Settings
 

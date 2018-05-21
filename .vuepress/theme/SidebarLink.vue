@@ -1,5 +1,5 @@
 <script>
-import { isActive, hashRE, groupHeaders } from './util'
+import { isActive, hashRE, groupHeaders, isExternal } from './util'
 
 export default {
   functional: true,
@@ -30,6 +30,18 @@ export default {
 }
 
 function renderLink (h, to, text, active) {
+  if (isExternal(to)) {
+    return h('a', {
+      attrs: {
+        href: to,
+        rel: "noopener, noreferrer",
+        target: "_blank",
+      },
+      class: {
+        'sidebar-link': true
+      }
+    }, text)
+  }
   return h('router-link', {
     props: {
       to,

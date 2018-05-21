@@ -22,7 +22,7 @@ You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any progr
 ### Control Commands
 
 * [ping](ping.md)
-* [debug](#debugging)
+* [debug](#enable-debug-mode)
 * [time](time.md)
 * [version](version.md)
 * [exit](exit.md)

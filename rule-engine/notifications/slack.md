@@ -2,7 +2,7 @@
 
 ## Overview
 
-`SLACK` [notifications](../web-notifications.md) provide a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
+`SLACK` [notifications](../notifications/README.md) provide a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
 
 ## Reference
 
@@ -118,7 +118,7 @@ When sending messages to either a public or private channel you can just use the
 
 ## Proxy Settings
 
-If the Slack API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../web-notifications.md#network-settings).
+If the Slack API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Slack:
 

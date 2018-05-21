@@ -21,7 +21,7 @@ Web query functions execute an HTTP request to an external web service and retur
   queryConfig(string n, [map p]) response
 ```
 
-This function executes an HTTP request using a predefined [web notification](web-notifications.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
+This function executes an HTTP request using a predefined [web notification](notifications/README.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
 
 > The web notification `n` must be listed as `enabled` on the **Alerts > Web Notifications** page.
 

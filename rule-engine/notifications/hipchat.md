@@ -2,7 +2,7 @@
 
 ## Overview
 
-`HIPCHAT` [notifications](../web-notifications.md) send alert messages, alert detail tables, and charts into [HipChat Data Center](https://www.atlassian.com/software/hipchat/enterprise/data-center) channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
+`HIPCHAT` [notifications](../notifications/README.md) send alert messages, alert detail tables, and charts into [HipChat Data Center](https://www.atlassian.com/software/hipchat/enterprise/data-center) channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
 
 ## Prerequisites
 
@@ -103,7 +103,7 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 
 ## Proxy Settings
 
-If the HipChat API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../web-notifications.md#network-settings).
+If the HipChat API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 ## Notification Parameters
 

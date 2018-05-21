@@ -2,7 +2,7 @@
 
 ## Overview
 
-`TELEGRAM` [notifications](../web-notifications.md) provides a built-in capability to send alert messages, alert detail tables, and charts directly to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
+`TELEGRAM` [notifications](../notifications/README.md) provides a built-in capability to send alert messages, alert detail tables, and charts directly to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Reference
 
@@ -94,7 +94,7 @@ There are two options to obtain chat id:
 
 ## Proxy Settings
 
-If the Telegram API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../web-notifications.md#network-settings).
+If the Telegram API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Telegram:
 

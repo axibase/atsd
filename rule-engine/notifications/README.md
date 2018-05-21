@@ -6,7 +6,7 @@ Web notifications implement a webhook mechanism for event-driven integration of 
 
 They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing an event to an AWS SNS topic, or controlling IoT devices.
 
-Example: [Slack](notifications/slack.md) Alert
+Example: [Slack](./slack.md) Alert
 
 ![](./images/slack-alert.png)
 
@@ -20,22 +20,22 @@ The built-in notification types for chat and collaboration services deliver aler
 
 | Type | Send Message | Send Chart | Integration Model | Hosting Model |
 | --- | --- | --- | --- | --- |
-| [SLACK](notifications/slack.md) | Yes | Yes | [Slack Bot API](https://api.slack.com/bot-users) | Cloud |
-| [TELEGRAM](notifications/telegram.md) | Yes | Yes | [Telegram Bot API](https://core.telegram.org/bots/api) | Cloud |
-| [DISCORD](notifications/discord.md) | Yes | Yes | [Discord API](https://discordapp.com/developers/docs/intro) | Cloud |
-| [HIPCHAT](notifications/hipchat.md) | Yes | Yes | [HipChat Data Center API](https://www.hipchat.com/docs/apiv2/) | Self-hosted |
+| [SLACK](./slack.md) | Yes | Yes | [Slack Bot API](https://api.slack.com/bot-users) | Cloud |
+| [TELEGRAM](./telegram.md) | Yes | Yes | [Telegram Bot API](https://core.telegram.org/bots/api) | Cloud |
+| [DISCORD](./discord.md) | Yes | Yes | [Discord API](https://discordapp.com/developers/docs/intro) | Cloud |
+| [HIPCHAT](./hipchat.md) | Yes | Yes | [HipChat Data Center API](https://www.hipchat.com/docs/apiv2/) | Self-hosted |
 
 ### Integration Services
 
 | Type | Customizable Fields | Description |
 | --- | --- | --- |
-| [AWS-API](notifications/aws-api.md) | All | Integrate with [AWS](https://aws.amazon.com). |
-| [AWS-SNS](notifications/aws-sns.md) | Topic, Message and Subject | Publish a message to an [AWS SNS](https://aws.amazon.com/sns/?p=tile) topic. |
-| [AWS-SQS](notifications/aws-sqs.md) | Queue and Message| Send a message to an [AWS SQS](https://aws.amazon.com/sqs/?p=tile) queue. |
-| [AZURE-SB](notifications/azure-sb.md) | Queue/Topic and Message | Send a message to an [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging) |
-| [GCP-PS](notifications/gcp-ps.md) | Topic and Message | Send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) topic. |
-| [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
-| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [`pagerduty`](notifications/custom-pagerduty.md), [`zendesk`](notifications/custom-zendesk.md), [`github`](notifications/custom-github.md), [`circleci`](notifications/custom-circleci.md), [`jenkins`](notifications/custom-jenkins.md), [`ifttt`](notifications/custom-ifttt.md)|
+| [AWS-API](./aws-api.md) | All | Integrate with [AWS](https://aws.amazon.com). |
+| [AWS-SNS](./aws-sns.md) | Topic, Message and Subject | Publish a message to an [AWS SNS](https://aws.amazon.com/sns/?p=tile) topic. |
+| [AWS-SQS](./aws-sqs.md) | Queue and Message| Send a message to an [AWS SQS](https://aws.amazon.com/sqs/?p=tile) queue. |
+| [AZURE-SB](./azure-sb.md) | Queue/Topic and Message | Send a message to an [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging) |
+| [GCP-PS](./gcp-ps.md) | Topic and Message | Send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) topic. |
+| [WEBHOOK](./webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
+| [CUSTOM](./custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [`pagerduty`](./custom-pagerduty.md), [`zendesk`](./custom-zendesk.md), [`github`](./custom-github.md), [`circleci`](./custom-circleci.md), [`jenkins`](./custom-jenkins.md), [`ifttt`](./custom-ifttt.md)|
 
 ## Window Status
 
@@ -102,7 +102,7 @@ Set the status to 'Enabled'.
 
 Enter a name by which the notification will be listed on the 'Web Notifications' tab in the rule editor.
 
-> If the notification type supports sending charts as images, configure the web driver as described [here](notifications/web-driver.md).
+> If the notification type supports sending charts as images, configure the web driver as described [here](./web-driver.md).
 
 The same notification can be re-used by multiple rules.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-`CUSTOM` [notifications](../web-notifications.md) provide a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
+`CUSTOM` [notifications](../notifications/README.md) provide a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
 
 This integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
 

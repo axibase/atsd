@@ -18,6 +18,38 @@ const topNavMenu = [
     { text: 'Integration', link: '/integration/' }
 ]
 
+const integrationMenu = [
+    {
+        title: 'Collectors', children: [
+            ['https://github.com/axibase/axibase-collector', 'Axibase Collector'],
+            'collectd/',
+            'graphite/',
+            'java-metrics/',
+            'nmon/',
+            'scollector/',
+            'statsd/',
+            'tcollector/',
+        ]
+    },
+
+    {
+        title: 'Reporting Tools', children: [
+            'aer/',
+            'alteryx/',
+            'chartlab/',
+            'matlab/',
+            'odbc/',
+            'pentaho/',
+            'spss/modeler/',
+            'spss/statistics/',
+            'stata/',
+            'tableau/',
+        ]
+    },
+
+    ['https://github.com/axibase/atsd-use-cases', 'Examples'],
+];
+
 
 const restApiMenu = [
     ['', 'Overview'], // Waiting for New overview page
@@ -101,37 +133,92 @@ const restApiMenu = [
             `/api/meta/misc/version`,
         ]
     },
+];
+
+const networkApiMenu = [
+    ['', 'Overview'],
+    { title:"Data Commands", children: [
+        ['series.md', 'series'],
+        ['property.md', 'property'],
+        ['message.md', 'message'],
+        ['csv.md', 'csv'],
+        ['nmon.md', 'nmon'],
+        ['tcollector.md', 'tcollector'],
+        ['graphite.md', 'Graphite'],
+        ['statsd.md', 'StatsD'],
+    ]},
+    { title:"Meta Commands", children: [
+        ['entity.md', 'entity'],
+        ['metric.md', 'metric'],
+    ]},
+    { title:"Control Commands", children: [
+        ['ping.md', 'ping'],
+        ['time.md', 'time'],
+        ['version.md', 'version'],
+        ['exit.md', 'exit'],
+    ]},
 ]
 
 const ruleEngineMenu = [
-    ['','Overview'],
-    ['window.md','Windows'],
-    ['grouping.md','Grouping'],
-    ['condition.md','Condition'],
-    ['filters.md','Filters'],
-    ['functions.md','Functions'],
-    ['placeholders.md','Placeholders'],
-    ['overrides.md','Overrides'],
-    ['web-notifications.md','Web Notifications'],
-    ['email.md','Email Notifications'],
-    ['commands.md','System Commands'],
-    ['derived.md','Derived Commands'],
-    ['logging.md','Logging'],
-]
+    ['', 'Overview'],
+    ['window.md', 'Windows'],
+    ['grouping.md', 'Grouping'],
+    ['filters.md', 'Filters'],
+    ['condition.md', 'Condition'],
+    ['operators.md', 'Operators'],
+    ['window-fields.md', 'Fields'],
+    ['variables.md', 'Variables'],
+    ['functions.md', 'Functions'],
+    ['placeholders.md', 'Placeholders'],
+    ['control-flow.md', 'Control Flow'],
+    ['overrides.md', 'Overrides'],
+    ['email.md', 'Email'],
+    ['incoming-webhooks.md', 'Incoming Webhooks'],
+    ['notifications/', 'Outgoing Webhooks'],
+    ['commands.md', 'System Commands'],
+    ['derived.md', 'Derived Commands'],
+    ['logging.md', 'Logging'],
+];
+
+const ruleNotificationsMenu = [
+    ['', 'Overview'],    
+    ['slack.md', 'Slack'],
+    ['telegram.md', 'Telegram'],
+    ['discord.md', 'Discord'],
+    ['hipchat.md', 'HipChat'],
+    ['aws-api.md', 'AWS API'],
+    ['aws-sns.md', 'Amazon SNS'],
+    ['aws-sqs.md', 'Amazon SQS'],
+    ['azure-sb.md', 'Azure Service Bus'],
+    ['gcp-ps.md', 'Google Cloud Pub/Sub'],
+    ['webhook.md', 'Webhook'],
+    'custom.md',
+];
 
 module.exports = {
     title: 'ATSD Documentation (DRAFT)',
     themeConfig: {
         nav: topNavMenu,
-        
+
         sidebarDepth: 1,
         sidebar: {
             '/api/data/': restApiMenu,
             '/api/meta/': restApiMenu,
+            '/api/network/': networkApiMenu,
+            '/rule-engine/notifications/': ruleNotificationsMenu,
             '/rule-engine/': ruleEngineMenu,
+            '/integration/': integrationMenu,
             '/sql/': [
-                ''
-            ]
+                '',
+                ['scheduled-sql.md', 'Scheduled Queries'],
+                ['scheduled-sql-store.md', 'Materialized Views'],
+                ['permissions.md', 'Permissions'],
+                ['performance.md', 'Query Optimization'],
+                ['api.md', 'API Endpoint'],
+                ['https://github.com/axibase/atsd-jdbc#jdbc-driver', 'JDBC Driver'],
+                ['client/', 'Bash Client'],
+            ],
+            '/': []
         },
 
         searchMaxSuggestions: 10,
