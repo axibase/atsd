@@ -80,7 +80,7 @@ The function returns `0` if the date `d` is `null` or empty.
 
 Available time zones and their offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSS'Z'` and the default time zone is the server time zone.
+The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss[.SSS]'Z'` and the default time zone is the server time zone.
 
 > The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
 
