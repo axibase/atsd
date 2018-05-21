@@ -2,7 +2,7 @@
 
 Network API provides a set of plain text commands for inserting numeric time series, key=value properties, and tagged messages into the Axibase Time Series Database (ATSD) via **TCP** and **UDP** network protocols.
 
-You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any programming language such as [Java](examples/AtsdTcpClient.java) that lets you connect to the ATSD server via TCP/UDP protocol.
+You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any programming language such as [Java](https://github.com/axibase/atsd/tree/master/api/network/examples/AtsdTcpClient.java) that lets you connect to the ATSD server via TCP/UDP protocol.
 
 ## Supported Commands
 
@@ -217,9 +217,9 @@ echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:
 
 ### TCP Client Examples
 
-* [Java: AtsdTcpClient.java](examples/AtsdTcpClient.java)
-* [Java: AtsdSendExample.java](examples/AtsdTcpClient.java)
-* [Java: AtsdParseExample.java](examples/AtsdParseExample.java)
+* [Java: AtsdTcpClient.java](https://github.com/axibase/atsd/tree/master/api/network/examples/AtsdTcpClient.java)
+* [Java: AtsdSendExample.java](https://github.com/axibase/atsd/tree/master/api/network/examples/AtsdTcpClient.java)
+* [Java: AtsdParseExample.java](https://github.com/axibase/atsd/tree/master/api/network/examples/AtsdParseExample.java)
 
 ## Syntax
 

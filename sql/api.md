@@ -199,7 +199,7 @@ Bash client [parameters](client/README.md).
 
 ### Java Client Example
 
-[SQL to CSV example in Java](client/SqlCsvExample.java).
+[SQL to CSV example in Java](https://github.com/axibase/atsd/tree/master/sql/client/SqlCsvExample.java).
 
 ### Encoding Tags
 
@@ -216,5 +216,5 @@ encodeTags=true&q=SELECT entity, datetime, value, tags FROM df.disk_used WHERE d
 
 ## Response Examples
 
-* [CSV response](sql.csv)
-* [JSON response](sql.json)
+* [CSV response](https://github.com/axibase/atsd/tree/master/sql/sql.csv)
+* [JSON response](https://github.com/axibase/atsd/tree/master/sql/sql.json)

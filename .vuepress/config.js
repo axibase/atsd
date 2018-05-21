@@ -143,6 +143,7 @@ const networkApiMenu = [
         ['message.md', 'message'],
         ['csv.md', 'csv'],
         ['nmon.md', 'nmon'],
+        ['picomp2.md', 'picomp2'],
         ['tcollector.md', 'tcollector'],
         ['graphite.md', 'Graphite'],
         ['statsd.md', 'StatsD'],
@@ -195,8 +196,23 @@ const ruleNotificationsMenu = [
     'custom.md',
 ];
 
+const sqlMenu = [
+    '',
+    ['scheduled-sql.md', 'Scheduled Queries'],
+    ['scheduled-sql-store.md', 'Materialized Views'],
+    ['permissions.md', 'Permissions'],
+    ['performance.md', 'Query Optimization'],
+    ['api.md', 'API Endpoint'],
+    ['https://github.com/axibase/atsd-jdbc#jdbc-driver', 'JDBC Driver'],
+    ['client/', 'Bash Client'],
+];
+
 module.exports = {
-    title: 'ATSD Documentation (DRAFT)',
+    title: 'Axibase® Time Series Database',
+    description: "User manual and API reference of Axibase® Time Series Database",
+    head: [
+        ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
+    ],
     themeConfig: {
         nav: topNavMenu,
 
@@ -208,16 +224,7 @@ module.exports = {
             '/rule-engine/notifications/': ruleNotificationsMenu,
             '/rule-engine/': ruleEngineMenu,
             '/integration/': integrationMenu,
-            '/sql/': [
-                '',
-                ['scheduled-sql.md', 'Scheduled Queries'],
-                ['scheduled-sql-store.md', 'Materialized Views'],
-                ['permissions.md', 'Permissions'],
-                ['performance.md', 'Query Optimization'],
-                ['api.md', 'API Endpoint'],
-                ['https://github.com/axibase/atsd-jdbc#jdbc-driver', 'JDBC Driver'],
-                ['client/', 'Bash Client'],
-            ],
+            '/sql/': sqlMenu,
             '/': []
         },
 
