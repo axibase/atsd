@@ -145,9 +145,9 @@ The interval in milliseconds can be formatted with [`formatInterval`](functions-
   date_parse(string d [,string p [,string z]]) DateTime
 ```
 
-Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default time zone is the server time zone.
+The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss[.SSS]'Z'` and the default time zone is the server time zone.
 
 > The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
 

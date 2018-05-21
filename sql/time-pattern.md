@@ -2,7 +2,7 @@
 
 ## Pattern Letters
 
-```ls
+```txt
 | Symbol | Date or Time Component        | Presentation       | Examples                                       |
 |--------|-------------------------------|--------------------|------------------------------------------------|
 | G      | Era                           | text               | AD; Anno Domini; A                             |
