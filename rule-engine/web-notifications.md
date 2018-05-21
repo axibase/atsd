@@ -2,9 +2,9 @@
 
 ## Overview
 
-Web notifications provide a mechanism for event-driven integration of the database with external HTTP services.
+Web notifications implement a webhook mechanism for event-driven integration of the database with external HTTP services.
 
-They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing to an AWS SNS topic, or controlling IoT devices.
+They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing an event to an AWS SNS topic, or controlling IoT devices.
 
 Example: [Slack](notifications/slack.md) Alert
 
@@ -90,7 +90,7 @@ Triggering a repeat notification in `CANCEL` status is not supported. Such behav
 
 ## Payload
 
-The payload is determined by the notification type. Typically the payload is text content in the form of a JSON document or form fields. Some built-in notification types support sending chart screenshots in addition to text content.
+The payload is determined by the notification type. Typically the payload is text content in the form of a JSON document or form fields. Some built-in notification types support sending chart screenshots as image files in addition to text content.
 
 ## Creating Notification
 
@@ -108,10 +108,10 @@ The same notification can be re-used by multiple rules.
 
 ### Parameters
 
-Each notification type has displays its own set of settings:
+Each notification type supports its own set of settings:
 
 * Fixed settings that can not be customized in the rule editor.
-* Editable which can be changed in the rule editor.
+* Editable settings which can be changed in the rule editor.
 
 The customizable settings are marked with an enabled checkbox.
 
@@ -119,7 +119,7 @@ The customizable settings are marked with an enabled checkbox.
 
 The administrator can specify which settings are fixed and which can be modified in the rule editor.
 
-For example, an API Bot identifier or authentication token is a fixed setting, whereas the text message is customizable and is resolved dynamically based on the window status and placeholder values.
+For example, an API Bot identifier or authentication token is a fixed setting, whereas the channel name and the text message are customizable.
 
 ## Testing Notifications
 
@@ -169,19 +169,19 @@ The editor displays a `Text` field where the alert message can be customized wit
 
 Sample alert message with placeholders:
 
-```ls
+```bash
 [${status}] ${rule} for ${entity} ${tags}.
 ```
 
 The alert message can include links to ATSD resources using [link placeholders](links.md) such as the `${chartLink}`.
 
-```javascript
+```bash
 ${chartLink}
 ```
 
-The text can include [control flow](control-flow.md) statements for conditional processing.
+Utilize [control flow](control-flow.md) statements for conditional processing.
 
-```javascript
+```bash
 *[${tags.status}]* <${entityLink}|${ifEmpty(entity.label, entity)}> Ω <${getEntityLink(tags.docker-host)}|${ifEmpty(getEntity(tags.docker-host).label, tags.docker-host)}>
 
 @if{is_launch}
@@ -191,19 +191,27 @@ The text can include [control flow](control-flow.md) statements for conditional 
 
 ### Attachments
 
-Attachments options are enabled in the rule editor if the capability is implemented by the API of the receiving service.
+Attachment options are displayed in the rule editor if supported by the given notification type.
 
 ![](images/notify-attach.png)
 
-The option `Attach Portals` sends one or more portals when active. If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags will be resolved from the alert time series key.
+#### Attach Portals
+
+The `Attach Portals` option sends one or more portals as an image to the target chat channel/group/user.
+
+If the selected portal is a [template](../portals/portals-overview.md#template-portals) portal, its entity, metric, and series tags will be resolved from the alert details in the current window.
 
 ![](images/notify-attach-4.png)
 
-The option `Series Chart` sends the default portal for the current metric, entity and tags as an image when active.
+#### Attach Chart
+
+The `Series Chart` option sends the default portal for the metric, entity and series tags in the current window.
 
 ![](images/notify-attach-1.png)
 
-The option `Attach Details` sends an alert details table when active. It is possible to specify the [format](details-table.md#formats) of the details table or a [Telegram](./notifications/telegram.md) endpoint.
+#### Attach Details
+
+The `Attach Details` option sends an alert details table as a separate message with a choice of [formats](details-table.md#formats).
 
 ![](images/notify-attach-2.png)
 
@@ -211,13 +219,15 @@ The option `Attach Details` sends an alert details table when active. It is poss
 
 ### Multiple Endpoints
 
-To send requests to multiple endpoints for the same status change event, add multiple notifications in the rule editor. The order in which notifications are delivered is non-deterministic.
+To send requests to multiple endpoints for the same status change event, add multiple notifications in the rule editor.
+
+The order in which notifications are delivered is non-deterministic.
 
 ## Stopping Messages
 
 The rule engine ignores alerts initiated for disabled notifications.
 
-To temporarily disable sending alerts from all rules through the selected notification, set its status to 'Disabled' on the **Alerts > Web Notifications** page.
+To disable sending alerts from any rule through the selected notification, set its status to 'Disabled' on the **Alerts > Web Notifications** page.
 
 ## Delivery Control
 

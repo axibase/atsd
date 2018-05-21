@@ -37,8 +37,8 @@ You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any progr
 
 By default, the ATSD server listens for incoming commands on the following ports:
 
-* 8081 TCP
-* 8082 UDP
+* `8081` TCP
+* `8082` UDP
 
 ## Encryption
 
@@ -59,13 +59,13 @@ To send a single command, connect to an ATSD server, send the command in plain t
 * netcat: `echo`
 
 ```ls
-echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc atsd_host 8081
+echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc -w 1 atsd_host 8081
 ```
 
 * netcat: `printf`
 
 ```ls
-printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc atsd_host 8081
+printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_host 8081
 ```
 
 * Bash [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
@@ -74,7 +74,7 @@ printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc
 echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_host/8081
 ```
 
-> `/dev/tcp/host/port` and `/dev/udp/host/port` are built-in Bash pseudo-device files which can be used in redirection. If host is a valid hostname or Internet address, and port is an integer port number or service name, Bash attempts to open a TCP connection to the corresponding socket.
+> `/dev/tcp/host/port` and `/dev/udp/host/port` are `bash` pseudo-device files which can be used in redirection.
 
 * telnet: one line
 
@@ -116,7 +116,7 @@ A trailing line feed is not required for the last command in the batch.
 Use the `-e` flag in `echo` commands to enable interpretation of backslash escapes.
 
 ```ls
-echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc atsd_host 8081
+echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_host 8081
 ```
 
 ```java
@@ -184,17 +184,17 @@ The UDP protocol doesn't guarantee delivery but may have a higher throughput com
 In addition, sending commands with UDP datagrams decouples the client application from the server to minimize the risk of blocking I/O time-outs.
 
 ```ls
-echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" | nc -u -w1 atsd_host 8082
+echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" | nc -u -w 1 atsd_host 8082
 ```
 
 ```ls
-printf 'series e:station_3 m:temperature=32.2 m:humidity=81.4' | nc -u -w1 atsd_host 8082
+printf 'series e:station_3 m:temperature=32.2 m:humidity=81.4' | nc -u -w 1 atsd_host 8082
 ```
 
 Unlike TCP, the last command in a multi-command UDP datagram must be terminated with the line feed character.
 
 ```ls
-echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperature=32.1 m:humidity=82.4\n" | nc -u -w1 atsd_host 8082
+echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperature=32.1 m:humidity=82.4\n" | nc -u -w 1 atsd_host 8082
 ```
 
 ### Duplicate Commands
@@ -215,18 +215,24 @@ echo -e "series e:station_1 m:temperature=32.2\nseries e:station_1 m:temperature
 echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=42.1  d:2016-05-15T00:10:00Z" | nc atsd_host 8081
 ```
 
+### TCP Client Examples
+
+* [Java: AtsdTcpClient.java](examples/AtsdTcpClient.java)
+* [Java: AtsdSendExample.java](examples/AtsdTcpClient.java)
+* [Java: AtsdParseExample.java](examples/AtsdParseExample.java)
+
 ## Syntax
 
 ### Line Syntax
 
-* A command must start with a name such as `series` followed by space-separated fields each identified with a prefix, followed by a (:) colon symbol and field name=value.
+A command must start with a name such as `series` followed by space-separated fields each identified with a prefix, followed by `:` colon, and `name=value`.
 
 ```ls
-command-name field-prefix:field-name[=field-value]
+command-name field-prefix:[field-name=]field-value
 ```
 
 * The order of fields is not important.
-* Refer to the ABNF rules of a particular command for its exact rules.
+* Refer to the `ABNF` rules of a particular command for its exact rules.
 
 Field name:
 
@@ -250,6 +256,7 @@ Use CSV escaping methods in core libraries where available, for example [`String
 ```ls
 # input command
 series e:nurSWG m:Temperature=38.5 t:Degrees=Celsius
+
 # stored record
 series e:nurswg m:temperature=38.5 t:degrees=Celsius
 ```
@@ -286,7 +293,7 @@ The number of tags included in the command cannot exceed the following limit:
 |`message_type`| 65535 |
 |`message_source`| 65535 |
 
-### Time Field
+### Date Field
 
 The timestamp field records the time of an observation or an event as determined by the source and can be specified with `ms`, `s`, or `d` fields.
 
@@ -298,19 +305,21 @@ The timestamp field records the time of an observation or an event as determined
 
 Date limits:
 
-* The minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
-* The maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
+* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or `0` milliseconds from Epoch time.
+* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or `4294969199999` milliseconds from Epoch time.
 * If the timestamp field is not specified, time is set to current server time.
 
 ### Number Formatting
 
 * The decimal separator is a period (`.`).
-* No thousands separator.
-* No digit grouping.
+* No thousands separator is allowed.
+* No digit grouping is allowed.
 * Negative numbers use the negative sign (`-`) at the beginning of the number.
 * Not-a-Number is literal `NaN`.
 
-## Debugging
+## Troubleshooting
+
+### Enable Debug Mode
 
 By default, ATSD doesn't return acknowledgements to the client after processing data commands.
 Include the `debug` command at the start of the line to instruct the server to respond with `ok` for each processed command.
@@ -318,36 +327,37 @@ Include the `debug` command at the start of the line to instruct the server to r
 * `debug` with valid command
 
 ```ls
-$ echo -e "debug series e:station_1 m:temperature=32.2" | nc atsd_host 8081
+$ echo -e "debug series e:station_1 m:temperature=32.2" \
+  | nc -w 1 atsd_host 8081
 ok
 ```
 
 * `debug` with unknown command
 
 ```ls
-$ echo -e "debug my_command e:station_1 m:temperature=32.2" | nc atsd_host 8081
+$ echo -e "debug my_command e:station_1 m:temperature=32.2" \
+  | nc -w 1 atsd_host 8081
 >no response, connection closed
 ```
 
-## Command Validation
+### Review Client Commands
 
-To validate a network received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to the netcat port, and dump incoming data to file:
+To review a sequence of commands sent by the client, launch the `netcat` utility in server mode, reconfigure the client to send data to the netcat port.
 
-```elm
+```bash
 nc -lk 0.0.0.0 2081 > command-in.log &
+```
 
-echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc localhost 2081
+```bash
+echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" \
+  | nc -w 1 localhost 2081
+```
 
+```bash
 cat command-in.log
 ```
 
-## TCP Client Examples
-
-* [Java: AtsdTcpClient.java](examples/AtsdTcpClient.java)
-* [Java: AtsdSendExample.java](examples/AtsdTcpClient.java)
-* [Java: AtsdParseExample.java](examples/AtsdParseExample.java)
-
-## Dropped Commands
+### Dropped Commands
 
 Reasons why ATSD server can drop commands:
 

@@ -40,6 +40,9 @@ The widgets can be configured to load data from the following sources:
 
 ```sh
   /opt/atsd/bin/atsd-tsd.sh stop
+```
+
+```sh
   /opt/atsd/bin/atsd-tsd.sh start
 ```
 

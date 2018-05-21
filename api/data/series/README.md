@@ -6,4 +6,4 @@
 | [Query](query.md) | POST | `/api/v1/series/query` | `application/json` | Retrieve series with timestamped values for specified filters.|
 | [CSV Insert](csv-insert.md) | POST | `api/v1/series/csv/{entity}` | `text/csv` | Insert series values for the specified entity and series tags in CSV format.|
 | [URL Query](url-query.md) | GET | `/api/v1/series/{format}/{entity}/{metric}` |  | Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
-| [Delete](delete.md) | GET | `/api/v1/series/delete` | `application/json` | Delete series for the specified entity, metric, and optional series tags. |
+| [Delete](delete.md) | POST | `/api/v1/series/delete` | `application/json` | Delete series for the specified entity, metric, and optional series tags. |

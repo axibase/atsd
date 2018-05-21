@@ -74,7 +74,7 @@ If a metric name has more tokens than `atsd_pattern`, extra tokens are cropped.
 
 `entity` – entity token to replace the default entity; multiple occurrences are combined.
 
-```sh
+```txt
 [garbageCollections]
 pattern = garbageCollections$
 atsd-pattern = <tag:type>.<tag:dep>.<entity>.<metric>.<metric>.<metric>

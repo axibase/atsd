@@ -1,4 +1,4 @@
-# MATLAB
+# MatLab
 
 * [Prerequisites](#prerequisites)
 * [Configure Database Connection](#configure-database-connection)
@@ -20,7 +20,7 @@ To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [series commands](resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
 
 ![](resources/metrics_entry.png)
 

@@ -18,7 +18,7 @@ The boolean functions below return `true` if the user is valid and is allowed to
 
 As an alternative to `if/else` syntax, set the optional `err` parameter to `true`, which will cause the function to terminate processing altogether in case of insufficient permissions.
 
-### `userInGroup`
+## `userInGroup`
 
 ```javascript
   userInGroup(string u, string g [, boolean err]) boolean
@@ -26,7 +26,7 @@ As an alternative to `if/else` syntax, set the optional `err` parameter to `true
 
 Returns `true` if the user `u` exists, is enabled, and belongs to the specified user group `g`.
 
-### `userHasRole`
+## `userHasRole`
 
 ```javascript
   userHasRole(string u, string r [, boolean err]) boolean
@@ -34,7 +34,7 @@ Returns `true` if the user `u` exists, is enabled, and belongs to the specified 
 
 Returns `true` if the user `u` exists, is enabled, and has the specified role [`r`](../administration/user-authorization.md#role-based-access-control).
 
-### `userAllowEntity`
+## `userAllowEntity`
 
 ```javascript
   userAllowEntity(string u, string e [, boolean err]) boolean
@@ -42,7 +42,7 @@ Returns `true` if the user `u` exists, is enabled, and has the specified role [`
 
 Returns `true` if the user `u` exists, is enabled, has [READ](../administration/user-authorization.md#entity-permissions) permission for the specified entity `e`.
 
-### `userAllowEntityGroup`
+## `userAllowEntityGroup`
 
 ```javascript
   userAllowEntityGroup(string u, string g [, boolean err]) boolean
@@ -50,7 +50,7 @@ Returns `true` if the user `u` exists, is enabled, has [READ](../administration/
 
 Returns `true` if the user `u` exists, is enabled, and has [READ](../administration/user-authorization.md#entity-permissions) permission to the specified entity group `g`.
 
-### `userAllowPortal`
+## `userAllowPortal`
 
 ```javascript
   userAllowPortal(string u, string p [, boolean err]) boolean

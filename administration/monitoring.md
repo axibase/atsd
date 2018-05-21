@@ -49,8 +49,8 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 | **Metric** | **Description** |
 |:--- | :--- |
 |`properties_pool_active_count` | Number of active threads writing property records.|
-|`properties_queue_size` | Number of property commands in the queue.|
-|`properties_rejected_count` | Number of property commands discarded due to absence of free space in the queue.|
+|`properties_queue_size` | Number of `property` commands in the queue.|
+|`properties_rejected_count` | Number of `property` commands discarded due to absence of free space in the queue.|
 |`series_pool_active_count` |Number of active threads which are series records.|
 |`series_queue_size` |Number of series samples in the queue.|
 |`series_rejected_count` |Number of series samples discarded due to absence of free space in the queue.|
@@ -116,8 +116,8 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |:--- | :--- |
 |`email_notifications_per_minute` |Number of email notifications sent. |
 |`web_service_notifications_per_minute` | Number of web service notifications sent.|
-|`expired_metric_received_per_second` |Number of series commands with timestamp earlier than specified by Time Filter ignored by the rule engine. |
-|`forward_metric_received_per_second` |Number of series commands with timestamp greater than specified by Time Filter ignored by the rule engine. |
+|`expired_metric_received_per_second` |Number of `series` commands with timestamp earlier than specified by Time Filter ignored by the rule engine. |
+|`forward_metric_received_per_second` |Number of `series` commands with timestamp greater than specified by Time Filter ignored by the rule engine. |
 
 ### Activity
 
@@ -126,10 +126,10 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`api_command_malformed_per_second` | Number of malformed (invalid) API commands discarded.|
 |`disabled_entity_received_per_second` |Number of series samples for disabled entity received.|
 |`disabled_metric_received_per_second` |Number of series samples for disabled metric received.|
-|`disabled_properties_received_per_second` |Number of property commands received when `Property Enabled` was checked on **Settings>Input Settings** page.|
+|`disabled_properties_received_per_second` |Number of `property` commands received when `Property Enabled` was checked on **Settings>Input Settings** page.|
 |`filtered_metric_received_per_second` |Number of series samples discarded due to `Invalid Value Action`.|
-|`invalid_message_received_per_second` | Number of invalid message commands received. |
-|`invalid_property_received_per_second` | Number of invalid property commands received.|
+|`invalid_message_received_per_second` | Number of invalid `message` commands received. |
+|`invalid_property_received_per_second` | Number of invalid `property` commands received.|
 |`message_gets_per_second` |Number of requests to `/messages` endpoint.|
 |`message_reads_per_second` |Number of messages read.|
 |`message_received_per_second` | Number of messages received. |
@@ -144,5 +144,5 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`non_persistent_metric_received_per_second` | Number of non-persisted series samples.|
 |`property_deleted_per_second` | Number of properties records deleted.|
 |`property_reads_per_second` | Number of property records read. |
-|`property_received_per_second` | Number of property commands received.|
+|`property_received_per_second` | Number of `property` commands received.|
 |`property_writes_per_second` |Number of properties records written. |

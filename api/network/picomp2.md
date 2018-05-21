@@ -8,8 +8,8 @@ The uploaded data is stored as a series. If the PI Point data type is `string`, 
 
 ## Syntax
 
-```css
-picomp2 z:{timezone} e:{entity} i:{ignore-defaults} t:{tag-name}={tag-value}
+```bash
+picomp2 z:${timezone} e:${entity} i:${ignore-defaults} t:${tag-name}=${tag-value}
 ... pointtypex, picomp2 column values ...
 ```
 

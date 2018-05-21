@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns 200 status code. Typically used to check connectivity, authentication, and to maintain an active session.
+Returns `200` status code. Typically used to check connectivity, authentication, and to maintain an active session.
 
 ## Request
 

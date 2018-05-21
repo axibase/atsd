@@ -1,6 +1,6 @@
 # Metric Persistence Filter
 
-The metric persistence filter, configurable in the metric editor, can be used to discard incoming series commands according to a filter expression. Commands for which the expression returns `false` will not be stored in the database.
+The metric persistence filter, configurable in the metric editor, can be used to discard incoming `series` commands according to a filter expression. Commands for which the expression returns `false` will not be stored in the database.
 
 ## Expression Syntax
 
@@ -13,7 +13,7 @@ The filter is a boolean condition that can include fields, operators, and functi
 | `entity` | string|Entity name. | `entity LIKE "?tsd"`|
 | `value` | number|Numeric value. | `value > 0`|
 | `message` | string|Text value (annotation). | `message = "a"`|
-| `timestamp`| number| Series command timestamp. |`timestamp < 1522683114614`|
+| `timestamp`| number| `series` command timestamp. |`timestamp < 1522683114614`|
 | `tags.{name}` or `tags['name']` | string|Value of command tag with name `name`. <br>Tag names are case-**in**sensitive.<br> |`tags.location NOT IN ('a', 'b', 'c')`<br>`tags['fs'] LIKE "ext*"`. |
 
 ### Operators
@@ -253,7 +253,9 @@ Examples:
 
 ```javascript
 entity IN ('nurswgvml007', 'nurswgvml008')
+```
 
+```javascript
 tags.location IN ('NUR', 'SVL')
 ```
 
@@ -277,7 +279,7 @@ To stop storing such series, create a collection with filter patterns on the **D
 
 Open the metric editor and create a filter expression to ignore matching series.
 
-```sh
+```javascript
 !likeAny(tags.command, collection('ignore-collector-process-commands'))
 ```
 

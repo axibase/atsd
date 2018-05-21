@@ -4,48 +4,33 @@
 
 The rule engine enables automation of repetitive tasks based on real-time statistical analysis of incoming data.
 
-Such tasks may include triggering a webhook, executing a system command, sending an alert to an [email](email.md) or [Slack channel](web-notifications.md), or generating derived metrics.
+Such tasks may include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](web-notifications.md) alert, or generating derived statistics and roll-ups metrics.
 
-The engine evaluates rule conditions against incoming series, message, and property commands and executes response actions when appropriate:
+The engine evaluates incoming `series`, `message`, and `property` commands and executes response actions when appropriate:
 
 ```javascript
-    IF condition = true THEN action-1, ... action-N
+IF condition = true THEN action-1, ... action-N
 ```
 
 Example
 
 ```javascript
-    IF percentile(75) > 300 THEN alert_slack_channel
+IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
-A [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value functions`](functions-value.md), [`database functions`](functions-db.md), and [`rule functions`](functions-rules.md).
+A rule [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value`](functions-value.md), [`database`](functions-series.md), and [`rule`](functions-rules.md) functions.
 
-## Concepts
+## Processing Pipeline
 
-* [Windows](window.md)
-* [Grouping](grouping.md)
-* [Condition](condition.md)
-* [Filters](filters.md)
-* [Functions](functions.md)
-* [Placeholders](placeholders.md)
-* [Overrides](overrides.md)
-* [Web Notifications](web-notifications.md)
-* [Email Notifications](email.md)
-* [System Commands](commands.md)
-* [Derived Commands](derived.md)
-* [Logging](logging.md)
-
-## In-Memory Processing
-
-The incoming data is processed by the rule engine in-memory, before the data is stored on a disk.
+The incoming data is consumed by the rule engine independently of the persistence path.
 
 ![](images/atsd_rule_engine.png)
 
-The data is maintained in [windows](window.md) which are in-memory structures initialized for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
+The data is maintained in [windows](window.md) which are `in-memory` structures initialized for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
 
-## Processing Stages
+The rule engine processing pipeline consists of the following stages:
 
-### Filtering
+## Filtering
 
 The incoming data samples are processed by a chain of filters prior to the grouping stage. Such filters include:
 
@@ -53,11 +38,11 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 * **Status Filter**. Samples are discarded for metrics and entities that are disabled.
 
-* [Rule Filters](filters.md) only accept data that satisfies the metric, entity, and tag filters specified in the rule.
+* [Rule Filter](filters.md) accepts data that satisfies the metric, entity, and tag filters specified in the rule.
 
-### Grouping
+## Grouping
 
-Once the sample passes through the filter chain, it is added to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples.
+Once the sample passes through the filter chain, it is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
 
 The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
 
@@ -65,9 +50,9 @@ The commands can be associated with windows in a 1-to-1 fashion by enumerating a
 
 ![](images/grouping-series-tags.png)
 
-If the 'Group by Entity' option is unchecked, the window is grouped only by metric and optional tags.
+If the 'Group by Entity' option is unchecked, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
 
-## Window Length
+### Window Length
 
 The rule engine supports two types of windows:
 
@@ -78,7 +63,7 @@ The rule engine supports two types of windows:
 
 **Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window does not limit how many samples may be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
 
-### Condition Checking
+## Condition Checking
 
 [Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
@@ -88,20 +73,22 @@ When a window is updated, the rule engine checks the [condition](condition.md) t
 Condition example:
 
 ```javascript
-    avg() > 80
+avg() > 80
 ```
 
-## Window Status
+### Window Status
 
 [Windows](window.md) are stateful. When the condition for a given window becomes `true`, it is maintained in memory with the status `OPEN`.
 
 On subsequent `true` evaluations, the window status changes to `REPEAT`.
 
-When the condition returns `false`, the window status is reverted to `CANCEL`.
+When the condition becomes `false`, the window status is reverted to `CANCEL`.
 
 Window status can be accessed on the **Alerts > Rule Windows** page.
 
 ![](images/rule-windows.png)
+
+Windows are updated when the command enters or exits the window. Scheduled rules can be emulated using the built-in [`timer`](scheduled-rules.md) metrics.
 
 ## Actions
 
@@ -111,75 +98,77 @@ Supported response actions:
 
 * [Send email](email.md)
 * [Send chat message](web-notifications.md#collaboration-services)
-* [Send webhook](notifications/webhook.md)
-* [Execute system command](commands.md)
+* [Trigger webhook](notifications/webhook.md)
+* [Execute script](commands.md)
 * [Generate derived metrics](derived.md)
-* [Log events to file](logging.md)
+* [Log alert to file](logging.md)
 
 Triggers for all actions may be configured separately. For example, it's possible to configure a rule so that logging events are generated on all repeated occurrences whereas email messages are sent every 6 hours.
 
 ## Correlation
 
-Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-db.md), and [rule](functions-rules.md) functions.
+Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-series.md), and [rule](functions-rules.md) functions.
 
 * Value functions:
 
 ```javascript
-    percentile(95) > 80 && values('metric2') != 0
+percentile(95) > 80 && values('metric2') != 0
 ```
 
 * Database functions:
 
 ```javascript
-    percentile(95) > 80 && db_statistic('max', '1 hour', 'metric2') < 10*1024
+percentile(95) > 80 && db_statistic('max', '1 hour', 'metric2') < 10*1024
 ```
 
 * Rule functions:
 
 ```javascript
-    percentile(95) > 80 && rule_open('inside_temperature_check')
+percentile(95) > 80 && rule_open('inside_temperature_check')
 ```
 
 ## Developing Rules
 
-Alerting rules usually cover only key metrics to minimize the maintenance effort and are typically created to prevent newly discovered problems from
-re-occurring.
+Rules can be considered software programs in their own right and as such involve initial development, testing, documentation and maintenance efforts.
 
-In order to minimize the number of rules with manual thresholds, the rule engine provides the following capabilities:
+In order to minimize the number of rules with manual thresholds, the rule engine in ATSD provides the following capabilities:
 
 * Condition [overrides](overrides.md).
 * Comparison of windows with different lengths.
-* Automated thresholds determined by the `forecast()` function.
-
-## Setting Thresholds
+* Automated thresholds.
 
 ### Manual Thresholds
 
 Thresholds can be set manually.
 
 ```javascript
-  value > 90
+value > 90
 ```
 
-This method of setting thresholds often requires some trial and error efforts to ascertain and preserve thresholds at such a level that arbitrates the balance between `false` positives and missed alerts. [`Overrides`](#overrides) can be used to handle exceptions to the default baseline.
+This method of setting baselines using constant values often requires some trial and error testing to determine a level that strokes a balance between `false` positives and missed alerts. [`Overrides`](#overrides) can be used to handle exceptions to the default baseline.
 
 To reduce `false` positives, apply an averaging functions to longer windows.
 
 ```javascript
-  avg() > 90
+avg() > 90
 ```
 
 To reduce a possible distortion caused by a small number of observations (outliers), use percentiles instead of averages.
 
 ```javascript
-  percetile(75) > 90
+percetile(75) > 90
 ```
 
-Alternatively, use the `minimum` or a below-median percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that the last *N* consecutive samples are above the threshold.
+Alternatively, use the `minimum` or a below-median percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that the last `N` consecutive samples are above the threshold.
 
 ```javascript
-  min() > 90 -- all samples are above 90
-  percentile(10) >= 90 -- only 10% of the smallest samples are below 90
+// all samples are above 90
+min() > 90
+```
+
+```javascript
+// only 10% of the smallest samples are below 90
+percentile(10) >= 90
 ```
 
 ### Deviation Thresholds
@@ -189,7 +178,7 @@ Short-term anomalies can be spotted by comparing statistical functions for diffe
 The condition below activates an alert if the 5-minute average exceeds the 1-hour average by more than `20` and by more than `10%`.
 
 ```javascript
-  avg('5 minute') - avg() > 20 && avg('5 minute') / avg() > 1.1
+avg('5 minute') - avg() > 20 && avg('5 minute') / avg() > 1.1
 ```
 
 ### Forecast Thresholds
@@ -198,35 +187,35 @@ The  `forecast` function returns an estimated value for the current series based
 The condition fires if the window average deviates from the expected value by more than `25%` in any direction.
 
 ```javascript
-    abs(avg() - forecast()) > 25
+abs(avg() - forecast()) > 25
 ```
 
 Similarly, the `forecast_deviation` function can be utilized to compare actual and expected values as a ratio of standard deviation.
 
 ```javascript
-    abs(forecast_deviation(avg())) > 2
+abs(forecast_deviation(avg())) > 2
 ```
 
 ### Correlation Thresholds
 
-In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-db.md) to identify abnormal behavior in one of the metrics.
+In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-series.md) to identify abnormal behavior in one of the metrics.
 
 The primary metric is expected to be below `50` as long as the second metric remains below `100`. Otherwise, an alert will be raised.
 
 ```javascript
-    avg() > 50 && db_statistic('avg', '1 hour', 'page_views_per_minute') < 100
+avg() > 50 && db_statistic('avg', '1 hour', 'page_views_per_minute') < 100
 ```
 
 The same condition can be generalized with a ratio as well.
 
 ```javascript
-    avg() / db_statistic('avg', '1 hour', 'page_views_per_minute') > 2
+avg() / db_statistic('avg', '1 hour', 'page_views_per_minute') > 2
 ```
 
-As an alternative, use the [`value(metric)`](functions-value.md) function to access the last value for metrics submitted within the same series command or parsed from the same row in CSV files.
+As an alternative, use the [`value(metric)`](functions-value.md) function to access the last value for metrics submitted within the same `series` command or parsed from the same row in CSV files.
 
 ```javascript
-    value > 75 && value('page_views_per_minute') < 1000
+value > 75 && value('page_views_per_minute') < 1000
 ```
 
 ### Overrides
@@ -241,20 +230,10 @@ Severity is a measure of criticality assigned to alerts generated by the rule. T
 
 If an alert is raised by a condition defined in the `Overrides` table, its severity supersedes the default severity.
 
-> For rules operating on 'message' commands, the alert severity can be inherited from the 'severity' field of the underlying message.
-To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
+In rules operating on `message` commands, the alert severity can be inherited from the 'severity' field of the underlying message.
+To enable this behavior, set Severity on the 'Logging' tab to `unknown`.
 
-## Logging
-
-Status changes can be [logged](logging.md) in a customizable format to separate log files for integration and audit.
-
-## Viewing Alerts and Windows
-
-Open alerts are displayed on the **Alerts > Open Alerts** page. The list of alerts can be retrieved with [`Data API`](../api/data/alerts/README.md) and incorporated into portals using the console widget.
-
-![](images/open-alerts.png)
-
-## Analyzing Data with SQL
+## Complex Rules
 
 In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../sql/scheduled-sql.md) queries.
 
@@ -263,10 +242,11 @@ In order to trigger a notification by an SQL query:
 * Develop a query such that it returns an empty result if the situation is normal.
 
 ```sql
-    SELECT entity, tags, percentile(90, value) FROM page_views
-      WHERE datetime >= current_day
-      GROUP BY entity, tags, period(1 DAY)
-    HAVING percentile(90, value) > 1000 -- HAVING clause acts as a filter
+SELECT entity, tags, percentile(90, value) FROM page_views
+  WHERE datetime >= current_day
+  GROUP BY entity, tags, period(1 DAY)
+HAVING percentile(90, value) > 1000
+-- HAVING condition acts as a rule filter
 ```
 
 * Create a scheduled SQL query.
@@ -276,3 +256,21 @@ In order to trigger a notification by an SQL query:
 As a result, the query will trigger actions only when it returns at least one row.
 
 ![](images/sql-scheduled.png)
+
+## Monitoring
+
+### Open Alerts
+
+Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrieved with [`/alert/query`](../api/data/alerts/README.md) Data API query and incorporated into portals using the [console](https://axibase.com/products/axibase-time-series-database/visualization/widgets/alert-console-widget/) widget.
+
+![](images/open-alerts.png)
+
+### Rule Windows
+
+ Rule windows are initialized in memory and are displayed on the **Alerts > Rule Errors** page. If no windows are present for the given rule, check that the rule is enabled and that data is not discarded by one of the [filters](filters.md).
+
+![](./images/alert-rule-windows.png)
+
+### Rule Errors
+
+Rule Errors can occur in case of invalid or malformed expressions. The **Alerts > Rule Errors** page contains the list of most recent errors as well as the relevant context and the command details.

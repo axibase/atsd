@@ -13,7 +13,8 @@ wget --header="Content-type: text/csv" --post-file=file.nmon 'http://server:port
 ## GZIP
 
 ```sh
-wget --header="Content-type: text/csv" --header="Content-Encoding: gzip" --post-file=file.nmon.gz 'http://server:port/nmon/wget?config=config_name&amp;entity=entity_name&amp;timeZone=time_zone_id'
+wget --header="Content-type: text/csv" --header="Content-Encoding: gzip" \
+  --post-file=file.nmon.gz 'http://server:port/nmon/wget?config=config_name&amp;entity=entity_name&amp;timeZone=time_zone_id'
 ```
 
 ## Special Parameters

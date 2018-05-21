@@ -29,7 +29,7 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 * [`isEmpty`](#isempty)
 * [`excludeKeys`](#excludekeys)
 
-### `collection`
+## `collection`
 
 ```javascript
   collection(string s) [string]
@@ -47,7 +47,7 @@ To access the n-th element in the collection, use square brackets as in `[index]
     author = (authors.size() == 0) ? 'n/a' : authors[0]
 ```
 
-### `IN`
+## `IN`
 
 ```javascript
   string s IN (string a[, string b[...]]) boolean
@@ -65,7 +65,7 @@ Examples:
     tags.location IN ('NUR', 'SVL')
 ```
 
-### `LIKE`
+## `LIKE`
 
 ```javascript
   string s LIKE (string a[, string b[...]]) boolean
@@ -87,7 +87,7 @@ Examples:
     tags.location LIKE ('NUR*', entity.tags.location)
 ```
 
-### `likeAny`
+## `likeAny`
 
 ```javascript
   likeAny(string s, [string] c) boolean
@@ -111,7 +111,7 @@ Examples:
     likeAny(tags.request_ip, collection('ip_white_list'))
 ```
 
-### `matchList`
+## `matchList`
 
 ```javascript
   matchList(string s, string c) boolean
@@ -127,7 +127,7 @@ Example:
     matchList(tags.request_ip, 'ip_white_list')
 ```
 
-### `matches`
+## `matches`
 
 ```javascript
   matches(string p, [string] c) boolean
@@ -143,7 +143,7 @@ Example:
     matches('*atsd*', property_values('docker.container::image'))
 ```
 
-### `contains`
+## `contains`
 
 ```javascript
   [string].contains(string s) boolean
@@ -157,7 +157,7 @@ Example:
     collection('ip_white_list').contains(tags.request_ip)
 ```
 
-### `size`
+## `size`
 
 ```javascript
   [].size() integer
@@ -177,7 +177,7 @@ Examples:
     entity.tags.size()
 ```
 
-### `isEmpty`
+## `isEmpty`
 
 ```javascript
   [].isEmpty() boolean
@@ -193,7 +193,7 @@ Example:
     collection('ip_white_list').isEmpty()
 ```
 
-### `excludeKeys`
+## `excludeKeys`
 
 ```javascript
   excludeKeys([] m, [] c) map

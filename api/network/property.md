@@ -10,8 +10,8 @@ When a property record is inserted into the database, it overwrites an existing 
 
 ## Syntax
 
-```css
-property e:{entity} t:{type} k:{key-1}={value} k:{key-2}={value} v:{tag-1}={text} v:{tag-2}={text} d:{time}
+```bash
+property e:${entity} t:${type} k:${key-1}=${value} k:${key-2}=${value} v:${tag-1}=${text} v:${tag-2}=${text} d:${time}
 ```
 
 * Entity name, property type, key names, and tag names are case-**insensitive** and are converted to lower case when stored.

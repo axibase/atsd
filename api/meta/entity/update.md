@@ -54,9 +54,9 @@ PATCH https://atsd_hostname:8443/api/v1/entities/{entity}
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \
   --data '{"tags": {"alias": "vmware_host"}}'

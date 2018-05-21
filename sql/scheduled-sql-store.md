@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Store** option for scheduled SQL queries may be used to write the results of a query back into the database.
+The **Store** option for scheduled SQL queries may be used to write the results of a query back into the database resembling the materialized view capability in traditional databases.
 
 ## Use Cases
 
@@ -31,7 +31,7 @@ WHERE datetime >= CURRENT_MONTH
   GROUP BY PERIOD(1 DAY)
 ```
 
-Rows containing multiple numeric columns produce a corresponding number of series commands.
+Rows containing multiple numeric columns produce a corresponding number of `series` commands.
 
 ```ls
 | datetime             | entity | temp_daily_avg | temp_daily_perc_90 |
@@ -40,7 +40,7 @@ Rows containing multiple numeric columns produce a corresponding number of serie
 | 2017-08-02T00:00:00Z | DC-1   | 22.20          | 28.24              |
 ```
 
-The result set is converted into series commands and stored in the database:
+The result set is converted into `series` commands and stored in the database:
 
 ```ls
 series e:dc-1 d:2017-08-01T00:00:00Z m:temp_daily_avg=21.01 m:temp_daily_perc_90=27.17
@@ -134,9 +134,9 @@ series e:dc-1 d:2017-08-02T00:00:00Z m:temp_daily_perc_90=28.24
 
 ### Duplicates
 
-Since a query can create series commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
+Since a query can create `series` commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
 
-If **Check Last Time** is enabled, the series command is inserted if its timestamp is greater than the timestamp of the previously stored values for the given series key.
+If **Check Last Time** is enabled, the `series` command is inserted if its timestamp is greater than the timestamp of the previously stored values for the given series key.
 
 ### Validation
 

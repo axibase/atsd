@@ -22,19 +22,30 @@ Login into the ATSD server and execute the following administrative commands in 
 
 ```sh
 echo "disable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
+```
 
+```sh
 echo "alter 'atsd_message', NAME => 'c', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
+```
 
+```sh
 echo "alter 'atsd_message', NAME => 'e', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
+```
 
+```sh
 echo "alter 'atsd_message', NAME => 'm', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
+```
 
+```sh
 echo "alter 'atsd_message', NAME => 't', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
+```
 
+```sh
 echo "enable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
+```
 
+```sh
 echo "major_compact 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
-
 ```
 
 The response should look as follows:

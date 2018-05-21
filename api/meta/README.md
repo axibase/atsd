@@ -2,40 +2,6 @@
 
 The Meta API lets you query and update metadata about metrics, entities, and entity groups in the Axibase Time Series Database.
 
-## Categories
-
-* [Metric](metric)
-  * [get](metric/get.md)
-  * [list](metric/list.md)
-  * [update](metric/update.md)
-  * [create or replace](metric/create-or-replace.md)
-  * [delete](metric/delete.md)
-  * [series](metric/series.md)
-  * [series tags](metric/series-tags.md)
-* [Entity](entity)
-  * [get](entity/get.md)
-  * [list](entity/list.md)
-  * [update](entity/update.md)
-  * [create or replace](entity/create-or-replace.md)
-  * [delete](entity/delete.md)
-  * [entity groups](entity/entity-groups.md)
-  * [metrics](entity/metrics.md)
-  * [property types](entity/property-types.md)
-* [Entity group](entity-group)
-  * [get](entity-group/get.md)
-  * [list](entity-group/list.md)
-  * [update](entity-group/update.md)
-  * [create or replace](entity-group/create-or-replace.md)
-  * [delete](entity-group/delete.md)
-  * [get entities](entity-group/get-entities.md)
-  * [add entities](entity-group/add-entities.md)
-  * [set entities](entity-group/set-entities.md)
-  * [delete entities](entity-group/delete-entities.md)
-* [Miscellaneous](misc)
-  * [search](misc/search.md)
-  * [ping](misc/ping.md)
-  * [version](misc/version.md)
-
 ## Request Methods
 
 The API uses `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` methods to read and write data.
@@ -52,8 +18,8 @@ Requested parameter values and parameterized path segments such as [`/api/v1/met
 
 | **Input** | **Encoded Value** | **URI** |
 |:---|:---|:---|
-|`jvm/memory(max)`|`jvm%2Fmemory%28max%29`| /api/v1/metrics/**jvm%2Fmemory%28max%29** |
-|`name LIKE 'cpu*'`|`name%20LIKE%20%27cpu*%27`| /api/v1/metrics?**expression=name%20LIKE%20%27cpu*%27** |
+|`jvm/memory(max)`|`jvm%2Fmemory%28max%29`| `/api/v1/metrics/jvm%2Fmemory%28max%29` |
+|`name LIKE 'cpu*'`|`name%20LIKE%20%27cpu*%27`| `/api/v1/metrics?expression=name%20LIKE%20%27cpu*%27` |
 
 Failure to encode URI components may result in 4xx and 5xx errors:
 
@@ -70,7 +36,7 @@ Status Code: 500
 * `4xx` status code in case of other client errors.
 * `5xx` status code in case of server error.
 
-4xx or 5xx response codes are specific to each API methods.
+`4xx` or `5xx` response codes are specific to each API methods.
 
 ## Errors
 
@@ -101,17 +67,21 @@ Cross-domain requests are allowed.
 
 ## Troubleshooting
 
-* Review error logs on the **Admin:Server Logs** page in case the payload is rejected
+* Review error logs on the **Settings > Diagnostics > Server Logs** page in case the payload is rejected
 * To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to netcat port, and dump the incoming data to file:
 
-```elm
+```bash
 nc -lk localhost 20088 > json-in.log &
+```
 
+```bash
 curl http://localhost:20088/api/v1/metrics/cpu-used-total \
   -v -u {username}:{password} \
   -H "Content-Type: application/json" \
   -X PATCH \
   -d '{ "label": "CPU Busy Average" }'
+```
 
+```bash
 cat json-in.log
 ```

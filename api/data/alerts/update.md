@@ -58,11 +58,10 @@ POST https://atsd_hostname:8443/api/v1/alerts/update
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/alerts/update \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data '[{"id":10, "acknowledged": true},{"id":14, "acknowledged": true}]'
 ```
 

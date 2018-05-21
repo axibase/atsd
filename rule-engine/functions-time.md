@@ -1,8 +1,8 @@
-# Time Functions
+# Date Functions
 
 ## Overview
 
-Time functions perform various operations on dates, timestamps, and intervals.
+Date functions perform various operations on dates, timestamps, and intervals.
 
 ## Reference
 
@@ -14,6 +14,12 @@ Time functions perform various operations on dates, timestamps, and intervals.
 * [`seconds`](#seconds)
 * [`elapsedTime`](#elapsedtime)
 * [`date_parse`](#date_parse)
+
+## Related Formatting Functions
+
+* [`date_format`](functions-format.md#date_format)
+* [`formatInterval`](functions-format.md#formatinterval)
+* [`formatIntervalShort`](functions-format.md#formatintervalshort)
 
 ### `now`
 
@@ -197,7 +203,7 @@ Examples:
 
 Date Pattern reference:
 
-```ls
+```txt
 | Symbol | Date or Time Component        | Presentation       | Examples                                       |
 |--------|-------------------------------|--------------------|------------------------------------------------|
 | G      | Era                           | text               | AD; Anno Domini; A                             |

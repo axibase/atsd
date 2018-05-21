@@ -16,7 +16,7 @@ GET https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?st
 
 ```css
 curl --insecure https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&columns=date,entity,metric,value \
-  --verbose --user {username}:{password} \
+  --include --user {username}:{password} \
   --request GET
 ```
 

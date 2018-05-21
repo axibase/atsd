@@ -12,8 +12,8 @@ HBase Write Test allows you to:
     the ATSD `server.properties` file:
 
 ```elm
- series.batch.size = 1024
- series.queue.pool.size = 4
+series.batch.size = 1024
+series.queue.pool.size = 4
 ```
 
 Auto Test Example Results:

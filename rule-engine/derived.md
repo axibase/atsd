@@ -20,13 +20,13 @@ When configuring a command action, you need to specify a template consisting of 
 
 The template can include plain text and [placeholders](placeholders.md).
 
-```ls
+```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-The calculated metrics can reference other metrics using [`db_last`](functions-db.md#db_laststring-m) and [`db_statistic`](functions-db.md#db_statistic) functions.
+The calculated metrics can reference other metrics using [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
 
-```ls
+```bash
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}
 ```
 
@@ -34,7 +34,7 @@ series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_b
 
 A special placeholder `${commandTags}` is provided to print out all window tags in the [Network API](../api/network/series.md#syntax) syntax. It allows appending all tags to the command without knowing the tag names in advance.
 
-```ls
+```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
@@ -50,19 +50,19 @@ series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
 
 In order to store derived commands with the current server time, omit the date/time fields (`ms`, `s`, `d`) from the derived command.
 
-```ls
+```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
 Alternatively, use the [`now`](window.md#time-fields) placeholder to access the current server time.
 
-```ls
+```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.getMillis()}
 ```
 
 To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical-functions) function and the seconds field `s:`:
 
-```ls
+```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMillis()/1000)}
 ```
 
@@ -70,7 +70,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMi
 
 To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window.md#time-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
 
-```ls
+```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
@@ -78,7 +78,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 
 To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical-functions) function:
 
-```ls
+```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp/1000)}
 ```
 
@@ -96,14 +96,14 @@ The produced commands are queued in memory and are persisted to the database onc
 
 Multiple commands, including commands of different type, can be specified at the same time. Each command must be specified on a separate line.
 
-```ls
+```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 series e:${entity} m:jvm_memory_free_min_percent=${round(100 - max(), 3)}
 ```
 
 To create multiple metrics within the same command, use the `for` loop to iterate over a collection or an array.
 
-```ls
+```bash
 series e:${entity} @{s = ""; for (stat : stats) {s = s + " m:" + stat.split(":")[0] + "=" + stat.split(":")[1];} return s;}
 ```
 
@@ -129,7 +129,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Frequency: All
 * Command Template:
 
-```ls
+```bash
   series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
@@ -141,7 +141,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Frequency: All or Every *N* Minutes = 1 minute
 * Command Template:
 
-```ls
+```bash
   series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
@@ -154,7 +154,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Frequency: Every N Minutes = 1 minute
 * Command Template:
 
-```ls
+```bash
   series e:total m:${metric}_sum=${sum()}
 ```
 
@@ -166,11 +166,11 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Frequency: All
 * Command Template:
 
-```ls
+```bash
   series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
 ```
 
-```ls
+```bash
   series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} ${commandTags}
 ```
 
@@ -182,7 +182,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Frequency: All
 * Command Template:
 
-```ls
+```bash
   series e:${entity} m:${metric}_percent=${100 * value/value('total')} ${commandTags}
 ```
 
@@ -194,6 +194,6 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Frequency: All
 * Command Template:
 
-```ls
+```bash
   series e:${entity} m:job_execution_time=${tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
 ```

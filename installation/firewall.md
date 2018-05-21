@@ -9,8 +9,17 @@ Allow access to particular ports on the target ATSD server.
 
 ```sh
 iptables -I INPUT -p tcp --dport 8081 -j ACCEPT
+```
+
+```sh
 iptables -I INPUT -p udp --dport 8082 -j ACCEPT
+```
+
+```sh
 iptables -I INPUT -p tcp --dport 8088 -j ACCEPT
+```
+
+```sh
 iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
 ```
 
@@ -36,6 +45,9 @@ The saved rules can be updated:
 
 ```sh
 iptables-save > /etc/iptables/rules.v4
+```
+
+```sh
 ip6tables-save > /etc/iptables/rules.v6
 ```
 
@@ -43,7 +55,13 @@ ip6tables-save > /etc/iptables/rules.v6
 
 ```sh
 sed -i "s/IPTABLES_SAVE_ON_STOP=\"no\"/IPTABLES_SAVE_ON_STOP=\"yes\"/g" /etc/sysconfig/iptables-config
+```
+
+```sh
 sed -i "s/IPTABLES_SAVE_ON_RESTART=\"no\"/IPTABLES_SAVE_ON_RESTART=\"yes\"/g" /etc/sysconfig/iptables-config
+```
+
+```sh
 /etc/init.d/iptables save
 ```
 
@@ -51,5 +69,8 @@ sed -i "s/IPTABLES_SAVE_ON_RESTART=\"no\"/IPTABLES_SAVE_ON_RESTART=\"yes\"/g" /e
 
 ```sh
 echo "FW_SERVICES_EXT_TCP=\"8081 8082 8088 8443\"" >> /etc/sysconfig/SuSEfirewall2
+```
+
+```sh
 /sbin/SuSEfirewall2
 ```

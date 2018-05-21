@@ -186,10 +186,9 @@ POST https://atsd_hostname:8443/api/v1/series/query
 ## `curl` Example
 
 ```json
-curl http://localhost:8088/api/v1/series/query \
-  -v -u {username}:{password} \
-  -H "Content-Type: application/json" \
-  -X POST \
+curl https://atsd_hostname:8443/api/v1/series/insert \
+  --insecure --include --user {username}:{password} \
+  --header "Content-Type: application/json" \
   -d '[{"metric":"mpstat.cpu_busy", "entity":"nurswgvml007", "startDate":"previous_day", "endDate": "now"}]' > response.json
 ```
 

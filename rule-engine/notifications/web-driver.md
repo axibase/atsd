@@ -17,19 +17,25 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 * Download and install PhantomJS
 
 ```sh
-    cd /home/axibase
-    wget https://axibase.com/public/phantomjs-2.1.1-linux-x86_64.tar.gz
-    tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
+cd /home/axibase
+```
+
+```sh
+wget https://axibase.com/public/phantomjs-2.1.1-linux-x86_64.tar.gz
+```
+
+```sh
+tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
 ```
 
 * Make sure that `axibase` user is allowed to execute the binary
 
 ```sh
-    ls -all /home/axibase | grep phantomjs-2.1.1-linux-x86_64
+ls -all /home/axibase | grep phantomjs-2.1.1-linux-x86_64
 ```
 
 ```txt
-    drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
+drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
 ```
 
 * Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties** `webdriver.phantomjs.path`.
@@ -50,8 +56,17 @@ Ubuntu:
 
 ```sh
 sudo apt-get update && sudo apt-get install wget
+```
+
+```sh
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+```
+
+```sh
 sudo dpkg -i google-chrome-stable_current_amd64.deb
+```
+
+```sh
 sudo apt-get install -f --no-install-recommends
 ```
 
@@ -59,6 +74,9 @@ RedHat, CentOS:
 
 ```sh
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+```
+
+```sh
 sudo yum install ./google-chrome-stable_current_*.rpm
 ```
 
@@ -68,8 +86,17 @@ Ubuntu:
 
 ```sh
 sudo apt-get install unzip
+```
+
+```sh
 wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
+```
+
+```sh
 unzip chromedriver_linux64.zip
+```
+
+```sh
 sudo mv chromedriver /usr/bin/chromedriver
 ```
 
@@ -77,8 +104,17 @@ RedHat, CentOS:
 
 ```sh
 sudo yum install unzip
+```
+
+```sh
 wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
+```
+
+```sh
 unzip chromedriver_linux64.zip
+```
+
+```sh
 sudo mv chromedriver /usr/bin/chromedriver
 ```
 

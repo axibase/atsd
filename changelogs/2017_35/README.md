@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | [4532](#issue-4532) | security | Feature | Add support for **Guest** access to portals. |
-| 4531 | api-rest | Bug | Fix bug causing message commands to be logged as series commands in the `command.log`. |
+| 4531 | api-rest | Bug | Fix bug causing `message` commands to be logged as `series` commands in the `command.log`. |
 | 4528 | statistics | Bug | Fix the estimated schedule for series that are collected with monthly frequency. |
 | [4525](#issue-4525) | UI | Feature | Summary Table added to **Database Tables** page to simplify data growth monitoring. |
 | 4519 | core | Feature | Licensing restrictions removed to allow all database editions to compress data with `gz` and `lzo` algorithms. |

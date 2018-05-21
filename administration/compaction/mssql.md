@@ -234,7 +234,7 @@ Start a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 container.
 
 Start the database container with `/tmp/test` directory.
 
-```elm
+```bash
 docker run --name=mssql \
   -e 'ACCEPT_EULA=Y' \
   -e 'SA_PASSWORD=Axibase123' \

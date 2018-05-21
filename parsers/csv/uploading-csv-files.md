@@ -10,13 +10,13 @@ wget --header="Content-type: text/csv" --post-file=file.csv 'http://atsd_hostnam
 
 The CSV parser accepts single CSV files, as well as archives containing multiple CSV files for bulk import. Supported archive formats include zip, tar, tar.gz, and tar.bz2.
 
-Parsing of CSV files occurs asynchronously in the background. The status of each upload task can be controlled on the Admin: CSV Parsers: CSV Tasks page.
+Parsing of CSV files occurs asynchronously in the background. The status of each upload task can be controlled on the **Data > CSV Parsers > CSV Tasks** page.
 
 #### Request Parameters
 
 | Name | Default | Description | Example |
 | --- | --- | --- | --- |
-|  `config`  |  |  [**Required**] CSV parser configuration name from the Admin:CSV Parsers page.  |  `?config=KLZCPU`  |
+|  `config`  |  |  [**Required**] CSV parser configuration name from the **Data > CSV Parsers** page.  |  `?config=KLZCPU`  |
 |  `encoding`  |  UTF8  |  File encoding.  |  `?encoding=UTF8`  |
 |  `rules`  |  true  |  Send metrics into the rule engine.  |  `?rules=false`  |
 |  `wait`  |  true  |  Enable synchronous processing. Wait until file is parsed to process errors, if any.  |  `?wait=false`  |

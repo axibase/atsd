@@ -64,8 +64,17 @@ You can find example files in the `/opt/graphite/conf` directory.
 
 ```sh
 cd /opt/graphite/conf
+```
+
+```sh
 sudo cp carbon.conf.example carbon.conf
+```
+
+```sh
 sudo cp storage-schemas.conf.example storage-schemas.conf
+```
+
+```sh
 sudo cp graphite.wsgi.example /opt/graphite/conf/graphite.wsgi
 ```
 
@@ -73,6 +82,9 @@ Create `local_settings.py`:
 
 ```sh
 cd /opt/graphite/webapp/graphite
+```
+
+```sh
 sudo cp local_settings.py.example local_settings.py
 ```
 
@@ -102,6 +114,9 @@ Configure Apache2 `wsgi`:
 
 ```sh
 cd /opt/graphite/examples
+```
+
+```sh
 sudo cp example-graphite-vhost.conf /etc/apache2/sites-available/graphite-web.conf
 ```
 
@@ -141,6 +156,9 @@ Run carbon-cache:
 
 ```sh
 cd /opt/graphite/bin
+```
+
+```sh
 sudo python carbon-cache.py start
 ```
 

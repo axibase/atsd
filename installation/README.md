@@ -9,6 +9,14 @@
 
 ### Container Images
 
+Quick start:
+
+```bash
+docker run -d --name=atsd \
+  -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
+  axibase/atsd:latest
+```
+
 | **Distribution** | **Format** | **Installation Guide** |
 | :--- | --- | :---: |
 | Docker | official image | [View](docker.md)|
@@ -16,6 +24,24 @@
 | Kubernetes | official image | [View](https://github.com/axibase/axibase-collector/blob/master/installation-on-kubernetes.md)|
 
 ### Packages
+
+Quick start:
+
+```bash
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+--recv-keys 26AEE425A57967CFB323846008796A6514F3CB79
+```
+
+```bash
+sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./" \
+  >> /etc/apt/sources.list.d/axibase.list'
+```
+
+```bash
+sudo apt-get update && sudo apt-get install atsd
+```
+
+Available packages:
 
 | **Distribution** | **Format** | **Installation Guide** |
 | :--- | --- | :---: |
@@ -37,6 +63,11 @@
 | **Hadoop Distribution** | **Installation Guide** |
 | :--- | :--- |
 | Cloudera Distribution Hadoop (CDH)  | [View](cloudera.md) |
+
+## Installing Updates
+
+* Review [Change Log](../changelogs/README.md)
+* Refer to [Update Guide](../administration/update.md)
 
 ## Technical Support
 

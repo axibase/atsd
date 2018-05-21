@@ -26,8 +26,8 @@
 5124 | rule editor | Bug | Fix slow rendering if the [rule](../../rule-engine#concepts) has web notifications.
 5122 | security | Feature | Add wizards for creating [collector](../../administration/user-authorization.md#collector-user) and [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) users.
 5120 | api-rest | Feature | [Webhook API](../../api/data/messages/webhook.md#messages-webhook): auto-subscribe to [AWS notifications](../../api/data/messages/webhook.md#amazon-ws).
-5117 | rule engine | Bug | [db_message](../../rule-engine/functions-db.md#database-functions) functions: do not throw an exception if type or source not found.
-5116 | rule engine | Bug |[`db_message_count`](../../rule-engine/functions-db.md#db_message_count) function returns different results.
+5117 | rule engine | Bug | [db_message](../../rule-engine/functions-message.md#database-functions) functions: do not throw an exception if type or source not found.
+5116 | rule engine | Bug |[`db_message_count`](../../rule-engine/functions-message.md#db_message_count) function returns different results.
 5115 | rule engine | Feature | [`rule_window`](../../rule-engine/functions-rules.md#rule_window) fields.
 5113 | security | Bug | New [user group](../../administration/user-authorization.md#portal-permissions) is allowed to view all portals by default.
 5107 | sql | Feature | Join using subqueries - support for [ON](../../sql#join-syntax) condition.

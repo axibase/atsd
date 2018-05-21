@@ -61,9 +61,9 @@ PUT https://atsd_hostname:8443/api/v1/metrics/my-metric
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/metrics/my-metric \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \
   --data '{"enabled":true,"persistent":true,"dataType":"DOUBLE","interpolate": "PREVIOUS","timePrecision":"MILLISECONDS","retentionDays":0}'

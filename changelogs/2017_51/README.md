@@ -12,7 +12,7 @@
 | 4816    | api-rest    | Bug    | Series query: fix [PREVIOUS](../../api/data/series/interpolate.md#function) interpolation. |
 | 4815    | entity    | Feature    | Entity groups: add field to specify the default tag template. |
 | 4811    | portal    | Feature    | Use entity and metric labels in the default rule engine portal. |
-| 4808    | rule engine    | Feature    | Implement [access to metric values by name](../../rule-engine/functions-value.md#value) if metrics are in the same series command. |
+| 4808    | rule engine    | Feature    | Implement [access to metric values by name](../../rule-engine/functions-value.md#value) if metrics are in the same `series` command. |
 | 4807    | rule engine    | Feature    | Web notifications: implement [AWS API type](../../rule-engine/web-notifications.md#integration-services). |
 | 4803    | sql    | Bug    | Refactor setting to allow [filling interpolated values](../../sql#fill) with any value. |
 | 4790    | rule engine    | Bug    | Web Notifications: UI Enhancements. |

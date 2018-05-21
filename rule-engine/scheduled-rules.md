@@ -19,7 +19,7 @@ By reacting to a `timer` metric, the rule can be evaluated at the desired freque
 
 ## Analyzing Data
 
-To analyze data for the metric of interest (not the `timer` metric itself), use [db](functions-db.md) and [lookup](functions-lookup.md) functions.
+To analyze data for the metric of interest (not the `timer` metric itself), use [database](functions-series.md) and [lookup](functions-lookup.md) functions.
 
 * Example:
 

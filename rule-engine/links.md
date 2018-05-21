@@ -6,7 +6,7 @@ Link fields contain URLs to ATSD pages based on the current [window](window.md) 
 
 The link fields can be included in email and web notification messages using placeholders:
 
-```css
+```bash
 [${tags.status}] ${entityLink} on Docker host ${getEntityLink(tags.docker-host)}
 ```
 
@@ -23,9 +23,9 @@ The URLs are automatically [inlined](#inline-links) in email notifications and i
 * [`htmlExportLink`](#htmlexportlink)
 * [`entityLink`](#entitylink)
 
-### `serverLink`
+## `serverLink`
 
-```css
+```bash
 ${serverLink}
 ```
 
@@ -45,9 +45,9 @@ ${serverLink}/metrics/metric.xhtml?metricName=${metric}
 
 The field is **not** replaced in inline mode.
 
-### `ruleLink`
+## `ruleLink`
 
-```css
+```bash
 ${ruleLink}
 ```
 
@@ -61,9 +61,9 @@ Example:
 https://atsd_hostname:8443/rule/edit.xhtml?name=docker-container-lifecycle-restart
 ```
 
-### `chartLink`
+## `chartLink`
 
-```css
+```bash
 ${chartLink}
 ```
 
@@ -79,9 +79,9 @@ Example:
 https://atsd_hostname:8443/portals/series?metric=docker&entity=nurswgvml007&add%20params%3D%7B%22markers%22%3A%22false%22%2C%22timespan%22%3A%221%20HOUR%22%7D
 ```
 
-### `csvExportLink`
+## `csvExportLink`
 
-```css
+```bash
 ${csvExportLink}
 ```
 
@@ -97,9 +97,9 @@ Example:
 https://atsd_hostname:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007%22%2C%22si%22%3A%221-DAY%22%2C%22t%22%3A%22HISTORY%22%2C%22v%22%3Afalse%7D
 ```
 
-### `htmlExportLink`
+## `htmlExportLink`
 
-```css
+```bash
 ${htmlExportLink}
 ```
 
@@ -115,9 +115,9 @@ Example:
 https://atsd_hostname:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007%22%2C%22si%22%3A%221-HOUR%22%2C%22t%22%3A%22HISTORY%22%7D
 ```
 
-### `entityLink`
+## `entityLink`
 
-```css
+```bash
 ${entityLink}
 ```
 
@@ -133,11 +133,9 @@ https://atsd_hostname:8443/entities/nurswgvml007
 
 To retrieve the link for another entity, use the [`getEntityLink`](functions-link.md#getentitylink) function.
 
-```css
+```bash
 ${getEntityLink(tags.docker-host)}
 ```
-
----
 
 ## Inline Links
 

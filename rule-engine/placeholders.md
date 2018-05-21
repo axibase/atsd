@@ -10,7 +10,7 @@ Placeholders can be used to include contextual information in email messages, we
 
 The placeholder is declared with the dollar sign `$` and curly braces `{}`.
 
-```php
+```bash
   ${expression}
 ```
 
@@ -20,9 +20,9 @@ The replacements in the original input text, such as email subject, are performe
 
 The expression may refer to:
 
-* Literal values (constants) of different [data types](variables.md#data-types)
 * [Window](window.md#window-fields) fields
 * [Entity](../api/meta/entity/list.md#fields) fields
+* Literal values (constants) of different [data types](variables.md#data-types)
 * User-defined [variables](variables.md)
 * [Function](functions.md) results
 
@@ -34,7 +34,7 @@ If the expression cannot be evaluated due to an error, the placeholder is left u
 
 ## Examples
 
-```css
+```bash
 ActiveMQ on ${entity} recorded unauthorized connection from ${tags.remoteaddress}.
 ```
 
@@ -44,7 +44,7 @@ ActiveMQ on nurswgvml007 recorded unauthorized connection from 10.102.0.106.
 
 ---
 
-```css
+```bash
 Average CPU usage on ${entity} is high: ${round(avg()*100,1)}%
 ```
 
@@ -54,7 +54,7 @@ Average CPU usage on nurswgvml007 exceeds threshold: 70.2%
 
 ---
 
-```css
+```bash
 File System '${tags.file_system}' is low on disk space: ${value} (used)
 ```
 
@@ -64,7 +64,7 @@ File System '/opt/apps' is low on disk space: 95.567 (used)
 
 ---
 
-```css
+```bash
 Server ${entity.label}/${entity} located at site ${lower(entity.tags.location)} is shutting down.
 ```
 

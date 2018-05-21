@@ -15,7 +15,7 @@ Web query functions execute an HTTP request to an external web service and retur
 * [Response Object](#response-object)
 * [Examples](#examples)
 
-### `queryConfig`
+## `queryConfig`
 
 ```javascript
   queryConfig(string n, [map p]) response
@@ -29,7 +29,7 @@ Parameters and placeholders defined in the web notification are replaced using t
 
 Available parameters for built-in notification types are enumerated [here](params-map.md).
 
-#### Content Type is Form
+### Content Type is Form
 
 The form-based web notification defines parameters that can be modified in the rule editor.
 
@@ -49,7 +49,7 @@ The target URL will receive the following payload sent as `application/x-www-for
 channel=devops&repository=atsd-site
 ```
 
-#### Content Type is JSON
+### Content Type is JSON
 
 The JSON document defined in the web notification may include placeholders using `${name}` syntax.
 
@@ -72,7 +72,7 @@ The target URL will receive the following JSON payload sent as `application/json
 }
 ```
 
-### `queryGet`
+## `queryGet`
 
 ```javascript
   queryGet(string u, [map c]) response
@@ -90,7 +90,7 @@ The configuration map `c` may contain the following fields:
   queryGet("https://ipinfo.io/1.1.1.1/json").content
 ```
 
-### `queryPost`
+## `queryPost`
 
 ```javascript
   queryPost(string u, [map c]) response

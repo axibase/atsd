@@ -40,9 +40,9 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml001 \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --request DELETE
 ```
 

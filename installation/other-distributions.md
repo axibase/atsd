@@ -9,22 +9,22 @@
 
 Download [`atsd-distrib.tar.gz`](https://axibase.com/public/atsd_distrib_latest.htm) archive to the target server.
 
-```sh
-    curl -O https://www.axibase.com/public/atsd-distrib.tar.gz
+```bash
+curl -O https://www.axibase.com/public/atsd-distrib.tar.gz
 ```
 
 ## Installation
 
 ```sh
- sudo tar -xzvf atsd-distrib.tar.gz -C /opt/
+sudo tar -xzvf atsd-distrib.tar.gz -C /opt/
 ```
 
 ```sh
- sudo /opt/atsd/install_sudo.sh
+sudo /opt/atsd/install_sudo.sh
 ```
 
 ```sh
- sudo /opt/atsd/install_user.sh
+sudo /opt/atsd/install_user.sh
 ```
 
 It may take up to 5 minutes to initialize the database.
