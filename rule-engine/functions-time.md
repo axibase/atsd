@@ -68,13 +68,13 @@ Time when the first command was received by the window, in UNIX milliseconds.
   milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the date string `d` into UNIX milliseconds according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
+Parses the date string `d` into UNIX milliseconds according to the specified [date pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
 The function returns `0` if the date `d` is `null` or empty.
 
 Available time zones and their offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default time zone is the server time zone.
+The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSS'Z'` and the default time zone is the server time zone.
 
 > The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
 
@@ -148,7 +148,7 @@ The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default
 The fields of the `DateTime` object can be accessed using the following methods:
 
 ```javascript
-  date_parse('2018-01-13T16:45:22.303Z').getDayOfWeek()
+  date_parse("2018-01-13T16:45:22.303Z").getDayOfWeek()
 ```
 
 Examples:
@@ -165,12 +165,12 @@ Examples:
 
 ```javascript
     /* Uses the offset specified in the datetime string to construct a DateTime object. */
-    date_parse("31.01.2017 12:36:03:283 -08:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ")
+    date_parse("31.01.2017 12:36:03:283 -08:00", "dd.MM.yyyy HH:mm:ss:SSS XXX")
 ```
 
 ```javascript
     /* Uses the time zone specified in the datetime string to construct a DateTime object. */
-    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ")
+    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS VV")
 ```
 
 ```javascript
@@ -186,47 +186,53 @@ Examples:
 ```javascript
     /* If the time zone (offset) is specified in the datetime string,
     it should be exactly the same as provided by the third argument. */
-    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS VV", "Europe/Berlin")
 ```
 
 ```javascript
     /* These expressions lead to exceptions. */
-    date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ", "Europe/Berlin")
-    date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+    date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS XXX", "Europe/Berlin")
+    date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS VV", "Europe/Berlin")
 ```
 
 Date Pattern reference:
 
-```txt
-   Symbol  Meaning                      Presentation  Examples
-   ------  -------                      ------------  -------
-   G       era                          text          AD
-   C       century of era (>=0)         number        20
-   Y       year of era (>=0)            year          1996
-
-   x       weekyear                     year          1996
-   w       week of weekyear             number        27
-   e       day of week                  number        2
-   E       day of week                  text          Tuesday; Tue
-
-   y       year                         year          1996
-   D       day of year                  number        189
-   M       month of year                month         July; Jul; 07
-   d       day of month                 number        10
-
-   a       halfday of day               text          PM
-   K       hour of halfday (0~11)       number        0
-   h       clockhour of halfday (1~12)  number        12
-
-   H       hour of day (0~23)           number        0
-   k       clockhour of day (1~24)      number        24
-   m       minute of hour               number        30
-   s       second of minute             number        55
-   S       fraction of second           number        978
-
-   z       time zone                    text          Pacific Standard Time; PST
-   Z       time zone offset/id          zone          -0800; -08:00; America/Los_Angeles
-
-   '       escape for text              delimiter
-   ''      single quote                 literal       '
+```ls
+| Symbol | Date or Time Component        | Presentation       | Examples                                       |
+|--------|-------------------------------|--------------------|------------------------------------------------|
+| G      | Era                           | text               | AD; Anno Domini; A                             |
+| u      | Year                          | year               | 2004; 04                                       |
+| y      | Year of era                   | year               | 2004; 04                                       |
+| D      | Day of year                   | number             | 189                                            |
+| M/L    | Month of year                 | number/text        | 7; 07; Jul; July; J                            |
+| d      | Day of month                  | number             | 10                                             |
+| Q/q    | Quarter of year               | number/text        | 3; 03; Q3; 3rd quarter                         |
+| Y      | Week-based year               | year               | 1996; 96                                       |
+| w      | Week of week-based-year       | number             | 27                                             |
+| W      | Week of month                 | number             | 4                                              |
+| E      | Day of week                   | text               | Tue; Tuesday; T                                |
+| e/c    | Localized day of week         | number/text        | 2; 02; Tue; Tuesday; T                         |
+| F      | Week of month                 | number             | 3                                              |
+| a      | AM-PM of day                  | text               | PM                                             |
+| h      | Clock hour of AM-PM (1-12)    | number             | 12                                             |
+| K      | Hour of AM-PM (0-11)          | number             | 0                                              |
+| k      | Clock hour of AM-PM (1-24)    | number             | 0                                              |
+| H      | Hour of day (0-23)            | number             | 0                                              |
+| m      | Minute of hour                | number             | 30                                             |
+| s      | Second of minute              | number             | 55                                             |
+| S      | Fraction of second            | fraction           | 978                                            |
+| A      | Milli of day                  | number             | 1234                                           |
+| n      | Nano of second                | number             | 987654321                                      |
+| N      | Nano of day                   | number             | 1234000000                                     |
+| V      | Time-zone ID                  | zone-id            | America/Los_Angeles; Z; -08:30                 |
+| z      | Time-zone name                | zone-name          | Pacific Standard Time; PST                     |
+| O      | Localized zone-offset         | offset-O           | GMT+8; GMT+08:00; UTC-08:00;                   |
+| X      | Zone-offset 'Z' for zero      | offset-X           | Z; -08; -0830; -08:30; -083015; -08:30:15;     |
+| x      | Zone-offset                   | offset-x           | +0000; -08; -0830; -08:30; -083015; -08:30:15; |
+| Z      | Zone-offset                   | offset-Z           | +0000; -0800; -08:00;                          |
+| p      | Pad next                      | pad modifier       | 1                                              |
+| '      | Escape for text               | delimiter          |                                                |
+| ''     | Single quote                  | literal            | '                                              |
+| [      | Optional section start        |                    |                                                |
+| ]      | Optional section end          |                    |                                                |
 ```

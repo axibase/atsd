@@ -3,31 +3,47 @@
 ## Pattern Letters
 
 ```ls
-| Letter | Date or Time Component                     | Presentation       | Examples                              |
-|--------|--------------------------------------------|--------------------|---------------------------------------|
-| G      | Era designator                             | Text               | AD                                    |
-| y      | Year                                       | Year               | 1996; 96                              |
-| Y      | Week year                                  | Year               | 2009; 09                              |
-| M      | Month in year                              | Month              | July; Jul; 07                         |
-| w      | Week in year                               | Number             | 27                                    |
-| W      | Week in month                              | Number             | 2                                     |
-| D      | Day in year                                | Number             | 189                                   |
-| d      | Day in month                               | Number             | 10                                    |
-| F      | Day of week in month                       | Number             | 2                                     |
-| E      | Day name in week                           | Text               | Tuesday; Tue                          |
-| u      | Day number of week (1 = Mon, ..., 7 = Sun) | Number             | 1                                     |
-| a      | Am/pm marker                               | Text               | PM                                    |
-| H      | Hour in day (0-23)                         | Number             | 0                                     |
-| k      | Hour in day (1-24)                         | Number             | 24                                    |
-| K      | Hour in am/pm (0-11)                       | Number             | 0                                     |
-| h      | Hour in am/pm (1-12)                       | Number             | 12                                    |
-| m      | Minute in hour                             | Number             | 30                                    |
-| s      | Second in minute                           | Number             | 55                                    |
-| S      | Millisecond                                | Number             | 978                                   |
-| z      | Time zone                                  | General time zone  | Pacific Standard Time; PST; GMT-08:00 |
-| Z      | Time zone                                  | RFC 822 time zone  | -0800                                 |
-| X      | Time zone                                  | ISO 8601 time zone | -08; -0800; -08:00                    |
+| Symbol | Date or Time Component        | Presentation       | Examples                                       |
+|--------|-------------------------------|--------------------|------------------------------------------------|
+| G      | Era                           | text               | AD; Anno Domini; A                             |
+| u      | Year                          | year               | 2004; 04                                       |
+| y      | Year of era                   | year               | 2004; 04                                       |
+| D      | Day of year                   | number             | 189                                            |
+| M/L    | Month of year                 | number/text        | 7; 07; Jul; July; J                            |
+| d      | Day of month                  | number             | 10                                             |
+| Q/q    | Quarter of year               | number/text        | 3; 03; Q3; 3rd quarter                         |
+| Y      | Week-based year               | year               | 1996; 96                                       |
+| w      | Week of week-based-year       | number             | 27                                             |
+| W      | Week of month                 | number             | 4                                              |
+| E      | Day of week                   | text               | Tue; Tuesday; T                                |
+| e/c    | Localized day of week         | number/text        | 2; 02; Tue; Tuesday; T                         |
+| F      | Week of month                 | number             | 3                                              |
+| a      | AM-PM of day                  | text               | PM                                             |
+| h      | Clock hour of AM-PM (1-12)    | number             | 12                                             |
+| K      | Hour of AM-PM (0-11)          | number             | 0                                              |
+| k      | Clock hour of AM-PM (1-24)    | number             | 0                                              |
+| H      | Hour of day (0-23)            | number             | 0                                              |
+| m      | Minute of hour                | number             | 30                                             |
+| s      | Second of minute              | number             | 55                                             |
+| S      | Fraction of second            | fraction           | 978                                            |
+| A      | Milli of day                  | number             | 1234                                           |
+| n      | Nano of second                | number             | 987654321                                      |
+| N      | Nano of day                   | number             | 1234000000                                     |
+| V      | Time-zone ID                  | zone-id            | America/Los_Angeles; Z; -08:30                 |
+| z      | Time-zone name                | zone-name          | Pacific Standard Time; PST                     |
+| O      | Localized zone-offset         | offset-O           | GMT+8; GMT+08:00; UTC-08:00;                   |
+| X      | Zone-offset 'Z' for zero      | offset-X           | Z; -08; -0830; -08:30; -083015; -08:30:15;     |
+| x      | Zone-offset                   | offset-x           | +0000; -08; -0830; -08:30; -083015; -08:30:15; |
+| Z      | Zone-offset                   | offset-Z           | +0000; -0800; -08:00;                          |
+| p      | Pad next                      | pad modifier       | 1                                              |
+| '      | Escape for text               | delimiter          |                                                |
+| ''     | Single quote                  | literal            | '                                              |
+| [      | Optional section start        |                    |                                                |
+| ]      | Optional section end          |                    |                                                |
 ```
+
+Note: localized day of week pattern (`e`/`c`) prints day number of week in US locale, i.e. starting with Sunday.
+To print day number of week starting from Monday, use the patern `ccccc`.
 
 ## Examples
 
@@ -35,19 +51,19 @@
 | Date and Time Pattern            | Result                               |
 |----------------------------------|--------------------------------------|
 | 'yyyy.MM.dd G ''at'' HH:mm:ss z' | 2001.07.04 AD at 12:08:56 PDT        |
-| 'EEE, MMM d, ''yy'               | Wed, Jul 4, '01                      |
-| 'h:mm a'                         | 12:08 PM                             |
-| 'hh o''clock' a, zzzz'           | 12 o'clock PM, Pacific Daylight Time |
+| 'EEE, MMM d, ''''yy'             | Wed, Jul 4, '01                      |
+| 'hh:mm a'                        | 12:08 PM                             |
+| 'hh ''o''''clock'' a, zzzz'      | 12 o'clock PM, Pacific Daylight Time |
 | 'K:mm a, z'                      | 0:08 PM, PDT                         |
-| 'yyyyy.MMMMM.dd GGG hh:mm aaa'   | 02001.July.04 AD 12:08 PM            |
-| "EEE, d MMM yyyy HH:mm:ss Z'     | Wed, 4 Jul 2001 12:08:56 -0700       |
+| 'yyyyy.MMMM.dd GGG hh:mm a'      | 02001.July.04 AD 12:08 PM            |
+| 'EEE, d MMM yyyy HH:mm:ss Z'     | Wed, 4 Jul 2001 12:08:56 -0700       |
 | 'yyMMddHHmmssZ'                  | 010704120856-0700                    |
 | 'yyyy-MM-dd''T''HH:mm:ss.SSSZ'   | 2001-07-04T12:08:56.235-0700         |
 | 'yyyy-MM-dd''T''HH:mm:ss.SSSXXX' | 2001-07-04T12:08:56.235-07:00        |
-| 'YYYY-''W''ww-u'                 | 2001-W27-3                           |
+| 'YYYY-''W''ww-ccccc'             | 2001-W27-3                           |
 ```
 
- > See Java [documentation](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) for supported fields (pattern letters).
+ > See Java [documentation](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) for supported fields (pattern letters).
 
 ## Custom Formatting
 
