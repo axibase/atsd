@@ -43,7 +43,7 @@
 ```
 
 Note: localized day of week pattern (`e`/`c`) prints day number of week in US locale, i.e. starting with Sunday.
-To print day number of week starting from Monday, use the patern `ccccc`.
+To print day number of week starting from Monday, use the pattern `ccccc`.
 
 ## Examples
 
