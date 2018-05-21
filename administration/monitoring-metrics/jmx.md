@@ -15,21 +15,21 @@ Add the following lines to the `/opt/atsd/atsd/conf/server.properties`
 file:
 
 ```elm
- jmx.port=1099
- jmx.host=atsd_ip
- jmx.access.file=/opt/atsd/atsd/conf/jmx.access
- jmx.password.file=/opt/atsd/atsd/conf/jmx.password
- jmx.enabled=true
+jmx.port=1099
+jmx.host=atsd_ip
+jmx.access.file=/opt/atsd/atsd/conf/jmx.access
+jmx.password.file=/opt/atsd/atsd/conf/jmx.password
+jmx.enabled=true
 ```
 
 Restart ATSD:
 
 ```sh
- /opt/atsd/bin/atsd-tsd.sh stop
+/opt/atsd/bin/atsd-tsd.sh stop
 ```
 
 ```sh
- /opt/atsd/bin/atsd-tsd.sh start
+/opt/atsd/bin/atsd-tsd.sh start
 ```
 
 Now you can access ATSD on `service:jmx:rmi:///jndi/rmi://atsd_ip:1099/atsd`, with the username and password established earlier in the guide.

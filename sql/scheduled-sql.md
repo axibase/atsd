@@ -2,9 +2,9 @@
 
 ## Overview
 
-SQL Scheduler provides a way to create reports from query results which can be distributed via email, written to a file system, and published as links accessible over HTTP.
+SQL Scheduler provides a way to create reports from query results which can be distributed via email, written to a file system, and published as web pages.
 
-In addition, it allows to [store query results](scheduled-sql-store.md) back in the database as calculated metrics.
+In addition, it allows to [store](scheduled-sql-store.md) query results back in the database as calculated metrics.
 
 ## Sample Configuration
 

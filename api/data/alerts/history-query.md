@@ -96,7 +96,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/history/query
 
 #### curl
 
-```elm
+```bash
 curl  https://atsd_hostname:8443/api/v1/alerts/history \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \

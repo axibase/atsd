@@ -48,7 +48,7 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3 \
   --insecure --include --user {username}:{password} \
   --request GET

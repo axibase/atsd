@@ -1,4 +1,4 @@
-# MATLAB
+# MatLab
 
 * [Prerequisites](#prerequisites)
 * [Configure Database Connection](#configure-database-connection)

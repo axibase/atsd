@@ -31,7 +31,7 @@ None.
 | `type` | string | [**Required**] Property type name. <br>Use reserved `$entity_tags` type to insert entity tags.|
 | `entity` | string | [**Required**] Entity name. |
 | `key` | object | Object containing `name=value` fields that uniquely identify the property record. <br>Example: `{"file_system": "/","mount_point":"sda1"}`|
-| `tags` | object | Object containing `name=value` fields that are not part of the key and contain descriptive information about the property record. <br>Example: `{"fs_type": "ext4"}`. |
+| `tags` | object | [**Required**] Object containing `name=value` fields that are not part of the key and contain descriptive information about the property record. <br>Example: `{"fs_type": "ext4"}`. At least one required.|
 | `date` | string | ISO 8601 date, for example `2016-05-25T00:15:00Z`. <br>Set to current server time if omitted. |
 
 ## Response
@@ -73,7 +73,7 @@ POST https://atsd_hostname:8443/api/v1/properties/insert
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/properties/insert  \
   --insecure  --include --user {username}:{password} \
   --header "Content-Type: application/json" \

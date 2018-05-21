@@ -1,4 +1,4 @@
-# IBM SPSS Modeler
+# SPSS Modeler
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# IBM SPSS Data Analysis
+# SPSS Data Analysis
 
 * [Load Sample Data into ATSD](#load-sample-data-into-atsd)
 * [Import Data into SPSS](#import-data-into-spss)

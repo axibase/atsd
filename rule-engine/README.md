@@ -4,7 +4,7 @@
 
 The rule engine enables automation of repetitive tasks based on real-time statistical analysis of incoming data.
 
-Such tasks may include triggering a webhook, executing a python script, sending an alert to an [email](email.md) or [Slack channel](web-notifications.md), or generating derived rollup metrics.
+Such tasks may include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](web-notifications.md) alert, or generating derived statistics and roll-ups metrics.
 
 The engine evaluates incoming `series`, `message`, and `property` commands and executes response actions when appropriate:
 
@@ -22,7 +22,7 @@ A rule [condition](condition.md) can operate on a single metric defined in the c
 
 ## Processing Pipeline
 
-The incoming data is consumed by the rule engine independently of the persistance path.
+The incoming data is consumed by the rule engine independently of the persistence path.
 
 ![](./images/atsd_rule_engine.png)
 

@@ -165,13 +165,21 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/s
 
 ### Series
 
-| **Method** | **Path** | **Description** |
-|:---|:---|:---|
-| `POST` | [`/series/insert`](insert.md) | Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
-| `POST` | [`/series/query`](query.md) | Retrieve series with timestamped values for specified filters.|
-| `POST` | [`/series/csv/{entity}`](csv-insert.md) | Insert series values for the specified entity and series tags in CSV format.|
-| `GET` | [`/series/{format}/{entity}/{metric}`](url-query.md)  | Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
-| `POST` | [`/series/delete`](delete.md) | Delete series for the specified entity, metric, and optional series tags. |
+* `POST` [`/series/insert`](insert.md)
+
+  Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags.
+
+* `POST` [`/series/insert`](insert.md)
+
+  Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags.
+
+| **Method** | **Path** / **Description** |
+|:---|:---|
+| `POST` | [`/series/insert`](insert.md)<br>Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
+| `POST` | [`/series/query`](query.md) <br> Retrieve series with timestamped values for specified filters.|
+| `POST` | [`/series/csv/{entity}`](csv-insert.md) <br> Insert series values for the specified entity and series tags in CSV format.|
+| `GET` | [`/series/{format}/{entity}/{metric}`](url-query.md) <br> Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
+| `POST` | [`/series/delete`](delete.md) <br> Delete series for the specified entity, metric, and optional series tags. |
 
 ### Messages
 

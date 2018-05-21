@@ -112,7 +112,7 @@ POST https://atsd_hostname:8443/api/v1/series/insert
 
 * `--data` Payload
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
@@ -121,7 +121,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
 
 * file
 
-```elm
+```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
