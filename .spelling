@@ -120,7 +120,7 @@ WebSphere
 MatLab
 OpenSUSE
 resultset
-Backend
+backend
 cAdvisor
 Freemarker
 jps
@@ -379,3 +379,6 @@ Codacy
 log4j
 slf4j
 JSONPath
+scalability
+econometrics
+pre-integrated
