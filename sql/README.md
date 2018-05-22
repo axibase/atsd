@@ -1,4 +1,4 @@
-﻿# Overview
+﻿# SQL
 
 The Axibase Time Series Database supports SQL (Structured Query Language) for retrieving time series records from the database.
 
