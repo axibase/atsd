@@ -52,15 +52,6 @@ Storage capacity can be scaled by adding data nodes to the underlying HDFS clust
 * Data Lake component for time series data.
 * Econometrics data store.
 
-## Key Differentiators
-
-* Time-series optimized schema allows growing the dataset without compromising query performance.
-* Value versioning is an essential functionality for EDM systems that require data provenance and reconciliation capabilities.
-* ATSD implements SQL while being a non-relational database.
-* Time series and metadata are co-located to accelerate analytical queries.
-
-ATSD provides extensive functionality so your developers don't have to re-invent the wheel when implementing a metrics backend.
-
 ## Components
 
 ATSD is a modular systems which includes the following components in addition to the core storage engine:
@@ -99,10 +90,10 @@ New objects and attributes are registered automatically and allow collecting dat
 
 The following protocols are supported for compatibility with external sources:
 
-* tcollector
-* graphite
-* statsd
-* osisoft pi
+* `tcollector`
+* `graphite`
+* `statsd`
+* `osisoft pi`
 
 ## Schema
 
@@ -123,7 +114,7 @@ To store some temperature observations for bioreactor `BR1740` enclosure located
 Metadata commands contain descriptive attributes and can be sent only once (or whenever these attributes change).
 
 ```elm
-entity e:BR1740 t:type=Bioreactor t:city=Sunnyvale t:site=SVL2 
+entity e:BR1740 t:type=Bioreactor t:city=Sunnyvale t:site=SVL2
 entity e:SVL2   t:type=site       t:city=Sunnyvale
 metric m:Temperature t:units=Celsius
 ```
