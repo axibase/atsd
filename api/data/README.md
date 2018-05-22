@@ -1,6 +1,6 @@
-# Overview
+# REST API
 
-The Rest API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database as well as to manipulate metadata about the metrics and entities.
+The REST API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database as well as to manipulate metadata about the metrics and entities.
 
 ## Requests
 

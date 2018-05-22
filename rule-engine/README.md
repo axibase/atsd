@@ -1,7 +1,5 @@
 # Rule Engine
 
-## Overview
-
 The rule engine enables automation of repetitive tasks based on real-time statistical analysis of incoming data.
 
 Such tasks may include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](notifications/README.md) alert, or generating derived statistics and roll-ups metrics.
