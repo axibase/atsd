@@ -19,7 +19,7 @@ A prototype was ready by June 2013 and an MVP was released in October 2013. The 
 ```
 
 * ATSD is written in Java. It is supported on most Linux 64-bit distributions and requires a Java 8 runtime environment.
-* Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as the persistence layer for reading and writing key values in the underlying file system.
+* Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as the persistence layer for reading and writing key-values in the underlying file system.
 * HBase is supported on local (`ext4`) and distributed file systems such as [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) and [Amazon S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase.html).
 
 ATSD can be installed from `deb` and `rpm` [packages](./installation#packages) or launched as a [container](./installation/docker.md#start-container).
@@ -86,7 +86,7 @@ echo "series e:sns-001 m:temperature=15.4 m:rpm=302 t:panel=front" \
 
 The commands can be streamed into ATSD on ports `8081/tcp` and port `8082/udp`. Alternatively, the commands can be uploaded by posting them to the `/api/v1/command` REST API endpoint.
 
-New objects and attributes are registered automatically and may collect data from different domain models in a single extensible schema.
+New objects and attributes are registered automatically and allow collecting data from different domain models in a single extensible schema.
 
 The following protocols are supported for compatibility with external sources:
 
