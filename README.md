@@ -4,7 +4,7 @@ Axibase Time Series Database (ATSD) is a non-relational database optimized for c
 
 ## Origins
 
-ATSD is developed by [Axibase Corporation](https://axibase.com/about-us/), established in 2004, based on our decade-long experience with IT infrastructure management systems. We sought to build a specialized database with a focus on data quality where historical data was treated like a first-class citizen. More specifically, ATSD was designed to overcome intrinsic issues with data warehouse systems backed by relational DBs like [Tivoli DW](https://www.ibm.com/support/knowledgecenter/en/SS4EKN_7.2.0/com.ibm.itm.doc_6.3/install/tdw_overview.htm), which suffer from stale/invalid records and slow analytical queries due to a lack of indexes.
+ATSD is developed by [Axibase Corporation](https://axibase.com/about-us/), established in 2004, based on our decade-long experience with IT infrastructure management systems. We sought to build a specialized database with a focus on data quality where historical data was treated like a first-class citizen. More specifically, ATSD was designed to overcome intrinsic issues with write-heavy warehouse systems backed by relational databases like [Tivoli DW](https://www.ibm.com/support/knowledgecenter/en/SS4EKN_7.2.0/com.ibm.itm.doc_6.3/install/tdw_overview.htm), which suffer from stale/invalid records and slow analytical queries due to a lack of indexes.
 
 A prototype was ready by June 2013 and an MVP was released in October 2013. The first licensed ATSD instance was delivered to a customer in mid-2014.
 
@@ -33,7 +33,7 @@ docker run -d -p 8088:8088 -p 8443:8443 -p 8081:8081 \
 
 Single-node ATSD instance can process up to 200,000 metrics per second with millisecond accuracy and without numeric precision loss.
 
-Compute scalability increases the system's read and write ability throughout (number of metrics inserted per second) and is achieved by adding **region servers** to the HBase cluster.
+Compute scalability increases the system's read and write throughput (number of metrics inserted per second) and is achieved by adding **region servers** to the HBase cluster.
 
 ## Storage Footprint
 
@@ -49,7 +49,7 @@ Storage capacity can be scaled by adding data nodes to the underlying HDFS clust
 * Consolidated statistics repository.
 * Centralized monitoring system.
 * EDM database.
-* Data lake component for time series data.
+* Data Lake component for time series data.
 * Econometrics data store.
 
 ## Components
@@ -97,7 +97,7 @@ The following protocols are supported for compatibility with external sources:
 
 ## Schema
 
-The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such doesn't require changes when inserting data of different object types.
+The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such doesn't require changes when inserting data from objects of different types.
 
 ### Glossary
 
