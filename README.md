@@ -2,9 +2,9 @@
 
 Axibase Time Series Database (ATSD) is a non-relational database optimized for collecting, storing, and analyzing temporal data from IT infrastructure, industrial equipment, smart meters, and IoT devices.
 
-## The Origins
+## Origins
 
-ATSD is developed by [Axibase Corporation](https://axibase.com/about-us/), established in 2004, based on our decade-long experience with IT infrastructure management systems. We wanted to build a specialized database with focus on data quality and where historical data was a first-class citizen. More specifically, ATSD was designed to overcome intrinsic issues with data warehouse systems backed by relational DBs such as [Tivoli DW](https://www.ibm.com/support/knowledgecenter/en/SS4EKN_7.2.0/com.ibm.itm.doc_6.3/install/tdw_overview.htm) which suffer from stale/invalid records and slow analytical queries due to lack of indexes.
+ATSD is developed by [Axibase Corporation](https://axibase.com/about-us/), established in 2004, based on our decade-long experience with IT infrastructure management systems. We sought to build a specialized database with a focus on data quality where historical data was treated like a first-class citizen. More specifically, ATSD was designed to overcome intrinsic issues with data warehouse systems backed by relational DBs like [Tivoli DW](https://www.ibm.com/support/knowledgecenter/en/SS4EKN_7.2.0/com.ibm.itm.doc_6.3/install/tdw_overview.htm), which suffer from stale/invalid records and slow analytical queries due to a lack of indexes.
 
 A prototype was ready by June 2013 and an MVP was released in October 2013. The first licensed ATSD instance was delivered to a customer in mid-2014.
 
@@ -19,7 +19,7 @@ A prototype was ready by June 2013 and an MVP was released in October 2013. The 
 ```
 
 * ATSD is written in Java. It is supported on most Linux 64-bit distributions and requires a Java 8 runtime environment.
-* Underneath ATSD is the [Apache HBase](https://hbase.apache.org/) which serves as the persistence layer for writing and reading key-values in the underlying file system.
+* Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as the persistence layer for reading and writing key values in the underlying file system.
 * HBase is supported on local (`ext4`) and distributed file systems such as [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) and [Amazon S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase.html).
 
 ATSD can be installed from `deb` and `rpm` [packages](./installation#packages) or launched as a [container](./installation/docker.md#start-container).
@@ -33,11 +33,11 @@ docker run -d -p 8088:8088 -p 8443:8443 -p 8081:8081 \
 
 Single-node ATSD instance can process up to 200,000 metrics per second with millisecond accuracy and without numeric precision loss.
 
-Compute scalability increases the system's write and read throughout (number of metrics inserted per second) and is achieved by adding **region servers** to the HBase cluster.
+Compute scalability increases the system's read and write ability throughout (number of metrics inserted per second) and is achieved by adding **region servers** to the HBase cluster.
 
 ## Storage Footprint
 
-Storage efficiency determines how many metrics and individual series can be stored overall in the system.
+Storage efficiency determines how many metrics and individual series can be stored in the system.
 
 Compared to traditional databases, ATSD requires up to **50 times** less disk space. Refer to [compression tests](./administration/compaction#compression-tests) for more details.
 
@@ -49,7 +49,7 @@ Storage capacity can be scaled by adding data nodes to the underlying HDFS clust
 * Consolidated statistics repository.
 * Centralized monitoring system.
 * EDM database.
-* Data Lake component for time series data.
+* Data lake component for time series data.
 * Econometrics data store.
 
 ## Components
@@ -86,7 +86,7 @@ echo "series e:sns-001 m:temperature=15.4 m:rpm=302 t:panel=front" \
 
 The commands can be streamed into ATSD on ports `8081/tcp` and port `8082/udp`. Alternatively, the commands can be uploaded by posting them to the `/api/v1/command` REST API endpoint.
 
-New objects and attributes are registered automatically and allow collecting data from different domain models in a single extensible schema.
+New objects and attributes are registered automatically and may collect data from different domain models in a single extensible schema.
 
 The following protocols are supported for compatibility with external sources:
 
@@ -97,7 +97,7 @@ The following protocols are supported for compatibility with external sources:
 
 ## Schema
 
-The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such doesn't require changes when inserting data from different object types.
+The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such doesn't require changes when inserting data of different object types.
 
 ### Glossary
 
@@ -148,4 +148,4 @@ WHERE metric = 'Temperature'
 
 * Stand-alone ATSD installation is free.
 * Axibase Collector instances are available at no cost.
-* Licensing fee for distributed edition is based on the cluster size.
+* Licensing fee for distributed edition is based on cluster size.
