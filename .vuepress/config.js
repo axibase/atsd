@@ -299,7 +299,8 @@ module.exports = {
             '/tutorials/': [],
             '/versioning/': [],
             // Keep it last
-            '': landingPageMenu,
+            '/': landingPageMenu,
+            '': [],
         },
 
         searchMaxSuggestions: 10,
