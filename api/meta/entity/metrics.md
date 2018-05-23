@@ -36,11 +36,14 @@ String literals must be enclosed in single or double quotes.
 Examples:
 
 ```javascript
-
 label IN ('Employed full time', 'OECD')
+```
 
+```javascript
 tags.fs='ext4'
+```
 
+```javascript
 name LIKE 'cpu*' AND dataType!='FLOAT'
 ```
 
@@ -68,7 +71,7 @@ None.
 
 ```sh
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --user {username}:{password} \
   --request GET
 ```
 
@@ -127,7 +130,7 @@ None.
 
 ```sh
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityInsertTime=true&tags=*&limit=2 \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --user {username}:{password} \
   --request GET
 ```
 
