@@ -38,7 +38,7 @@ tags:   part=Enclosure
 
 Series values change over time and their history can be analyzed with SQL and visualized with graphs.
 
-Series [Example](https://apps.axibase.com/chartlab/075941a0/2/)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/075941a0/2/)
 
 Review the following [overview](./portals/selecting-series.md) on how to retrieve Series from the database for visualization purposes.
 
@@ -52,7 +52,7 @@ date         time       type   source    message
 2018-05-20   00:42:00   etl    cp-data   backup job completed
 ```
 
-Messages [Example](https://apps.axibase.com/chartlab/007721aa)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/007721aa)
 
 ## Properties
 
@@ -73,4 +73,4 @@ CREATE TABLE disk_info (
 );
 ```
 
-Properties [Example](https://apps.axibase.com/chartlab/6d918310/2)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/6d918310/2)

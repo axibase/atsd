@@ -1,4 +1,4 @@
-# Ubuntu/Debian: Debian Package
+# Installation: `deb` package
 
 ## Supported Versions
 

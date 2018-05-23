@@ -1,4 +1,4 @@
-# Ubuntu/Debian: APT
+# Installation: APT
 
 ## Supported Versions
 
