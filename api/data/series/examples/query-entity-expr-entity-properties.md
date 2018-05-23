@@ -4,7 +4,7 @@
 
 Query data for entities with specified properties.
 
-Properties can be accessed with the properties [functions](../filter-entity.md#supported-functions), for example,
+Properties can be accessed with the property [functions](../filter-entity.md#supported-functions), for example,
 [`property_values`](functions-entity-groups-expression.md#property_values).
 
 ## Request
