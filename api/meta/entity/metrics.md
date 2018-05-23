@@ -29,31 +29,34 @@ Retrieve a list of metrics collected by the entity.
 
 #### Expression
 
-The expression can include any field specified in [Metrics List](../metric/list.md#fields) method, such as name, label, and minValue, except the lastInsertDate field which can be filtered using minInsertDate and maxInsertDate parameters for performance reasons.
+The expression can include any field specified in [Metrics List](../metric/list.md#fields) method, such as `name`, `label`, and `minValue`, except the `filter` field and `lastInsertDate` which can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
 
 String literals must be enclosed in single or double quotes.
 
 Examples:
 
-```ls
+```javascript
 
 label IN ('Employed full time', 'OECD')
 
 tags.fs='ext4'
+
+name LIKE 'cpu*' AND dataType!='FLOAT'
 ```
+
 ## Response
 
 ### Fields
 
 Refer to Fields specified in [Metrics List](../metric/list.md#fields) method.
 
-## Example
+## Example 1
 
 ### Request
 
 #### URI
 
-```elm
+```http
 GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2
 ```
 
@@ -106,4 +109,60 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
 ]
 ```
 
+## Example 2
+
+### Request
+
+#### URI
+
+```http
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityInsertTime=true&tags=*&limit=2
+```
+
+#### Payload
+
+None.
+
+#### curl
+
+```sh
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityInsertTime=true&tags=*&limit=2 \
+  --insecure --verbose --user {username}:{password} \
+  --request GET
+```
+
+### Response
+
+```json
+[
+  {
+    "name": "disk_used_percent",
+    "enabled": true,
+    "dataType": "DECIMAL",
+    "label": "Disk Used, %",
+    "persistent": true,
+    "tags": {
+      "table": "Disk (script)",
+      "unit": "Percent (%)"
+    },
+    "timePrecision": "MILLISECONDS",
+    "retentionDays": 0,
+    "seriesRetentionDays": 60,
+    "minValue": 0,
+    "maxValue": 100,
+    "invalidAction": "TRANSFORM",
+    "lastInsertDate": "2018-05-23T16:58:47.000Z",
+    "filter": "!likeAny(tags.mount_point, collection('ignore-collector-mount-points'))",
+    "versioned": false,
+    "interpolate": "LINEAR"
+  }
+]
+```
+
 ## Additional examples
+
+- [List Entity Metrics by Name and Tag](examples/list-entity-metrics-by-name-and-tag.md)
+- [List Entity Metrics by Persistence Status](examples/list-entity-metrics-by-persistence.md)
+- [List Entity Metrics by Tags and Description](examples/list-entity-metrics-by-tags-and-description.md)
+- [List Entity Metrics by Min and Max Value](examples/list-entity-metrics-by-min-max-value.md)
+- [List Entity Metrics for Last Insert Date Range](examples/list-entity-metrics-for-last-insert-range.md)
