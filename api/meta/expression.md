@@ -12,6 +12,7 @@
 * All tags are string variables.
 * Tag names are case-insensitive, for example, `tags.location` and `tags.Location` are equal.
 * If the tag `tag-name` is not defined, the `tags.{tag-name}` variable returns an empty string.
+* String literals must be enclosed in single or double quotes.
 
 ## Operators
 
