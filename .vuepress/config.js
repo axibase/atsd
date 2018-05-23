@@ -5,6 +5,7 @@ const githubSettings = {
 }
 
 const topNavMenu = [
+    { text: 'Installation', link: '/installation/' },
     {
         text: 'API',
         items: [
@@ -15,7 +16,21 @@ const topNavMenu = [
     },
     { text: 'SQL', link: '/sql/' },
     { text: 'Rule Engine', link: '/rule-engine/' },
+    { text: 'Administration', link: '/administration/' },
     { text: 'Integration', link: '/integration/' }
+]
+
+const installationMenu = [
+    ['', 'Overview'],
+    'docker.md',
+    'docker-redhat.md',
+    ['https://github.com/axibase/axibase-collector/blob/master/installation-on-kubernetes.md', 'Kubernetes'],
+    'ubuntu-debian-apt.md',
+    'ubuntu-debian-deb.md',
+    'redhat-centos-rpm.md',
+    'redhat-centos-yum.md',
+    'sles-rpm.md',
+    'other-distributions.md',
 ]
 
 const integrationMenu = [
@@ -207,8 +222,36 @@ const sqlMenu = [
     ['client/', 'Bash Client'],
 ];
 
+const administrationMenu = [
+    ['mail-client.md', 'Setup Email Client'],
+    ['timezone.md', 'Time Zone'],
+    ['user-authentication.md', 'User Authentication'],
+    ['user-authorization.md', 'User Authorization'],
+    { title: "SSL", children: [
+        ['ssl-ca-signed.md', 'CA-signed Cetificate'],
+        ['ssl-self-signed.md', 'Self-signed Cetificate'],
+        ['ssl-lets-encrypt.md', 'Let\'s Encrypt'],
+    ]},
+    ['restarting.md', 'Restarting'],
+    ['update.md', 'Updating'],
+    ['uninstalling.md', 'Uninstalling'],
+    { title: "Configuration", children: [
+        ['networking-settings.md', 'Network Settings'],
+        ['enabling-swap-space.md', 'Enabling Swap Space'],
+        ['replication.md', 'Replication'],
+        ['allocating-memory.md', 'Allocating Memory to components'],
+        ['changing-data-directory.md', 'Changing Data Directory'],
+        ['editing-configuration-files.md', 'Configuration Files'],
+    ]},
+    ['logging.md', 'Logging'],
+    ['metric-persistence-filter.md', 'Metric Persistence Filter'],
+    ['compaction.md', 'Compaction'],
+    ['compaction-test.md', 'Compaction Test'],
+    ['monitoring.md', 'Monitoring'],
+]
+
 module.exports = {
-    title: 'Axibase® Time Series Database',
+    title: 'Axibase Time Series Database',
     description: "User manual and API reference of Axibase® Time Series Database",
     head: [
         ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
@@ -218,11 +261,13 @@ module.exports = {
 
         sidebarDepth: 1,
         sidebar: {
+            '/installation/': installationMenu,
             '/api/data/': restApiMenu,
             '/api/meta/': restApiMenu,
             '/api/network/': networkApiMenu,
             '/rule-engine/notifications/': ruleNotificationsMenu,
             '/rule-engine/': ruleEngineMenu,
+            '/administration/': administrationMenu,
             '/integration/': integrationMenu,
             '/sql/': sqlMenu,
             '/': []

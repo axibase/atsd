@@ -29,8 +29,6 @@ export default {
 
 <style lang="stylus">
 .sidebar-group
-  &:not(.first)
-    margin-top 1em
   .sidebar-group
     padding-left 0.5em
   &:not(.collapsable)
@@ -39,23 +37,25 @@ export default {
       color inherit
 
 .sidebar-heading
-  color #999
-  transition color .15s ease
   cursor pointer
-  font-size 1.1em
-  font-weight bold
-  // text-transform uppercase
-  padding-left 1.5rem
+  padding 0.35rem 1rem 0.35rem 1.5rem
   margin-top 0
-  margin-bottom 0.5rem
-  &.open, &:hover
+  margin-bottom 0
+  &.open
     color inherit
+  &:hover
+    color #f08d49
   .arrow
     position relative
     top -0.12em
     left 0.5em
-  &:.open .arrow
+  &:hover .arrow
+    border-left-color #f08d49 
+  &.open .arrow
     top -0.18em
+  &.open:hover .arrow    
+    border-left-color transparent 
+    border-top-color #f08d49 
 
 .sidebar-group-items
   transition height .1s ease-out
