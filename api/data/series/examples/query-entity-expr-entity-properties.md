@@ -4,7 +4,8 @@
 
 Query data for entities with specified properties.
 
-Properties can be accessed with the `properties('{property-type}').{key-name or tag-name}` function.
+Properties can be accessed with the properties [functions](../filter-entity.md#supported-functions), for example,
+[`property_values`](functions-entity-groups-expression.md#property_values).
 
 ## Request
 
@@ -21,7 +22,7 @@ POST https://atsd_hostname:ame:8443/api/v1/series/query
     {
         "startDate": "2016-02-22T13:30:00Z",
         "endDate":   "2016-02-22T13:31:00Z",
-        "entityExpression": "name LIKE 'nurswgvml00*' && properties('vmware.vm').power_state = 'On'",
+        "entityExpression": "name LIKE 'nurswgvml00*' && property_values('disk:mount_point=/sda1:fs_type').contains('ext4')",
         "metric": "mpstat.cpu_busy"
     }
 ]
@@ -88,4 +89,6 @@ POST https://atsd_hostname:ame:8443/api/v1/series/query
     ]
   }
 ]
+
+
 ```
