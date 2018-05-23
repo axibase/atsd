@@ -18,7 +18,7 @@ Set status to `Enabled` and enter one or multiple email addresses, separated by 
 
 Click 'Enabled' for each trigger (`OPEN`, `REPEAT`, `CANCEL`) that you would like to be subscribed to.
 
-![](images/email_config_all.png)
+![](./images/email_config_all.png)
 
 For the `REPEAT` status, adjust the 'Repeat Interval' to the desired notification frequency, for example, every **6 hours** or every **10 events**.
 
@@ -55,7 +55,7 @@ Warning! Rule JVM Memory Low for server nurswgvml007 is active.
 
 The 'Subject' field may include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
 
-![](images/email-subject.png)
+![](./images/email-subject.png)
 
 Note that the 'Subject' field is recommended to be limited to `78` characters according to [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt), Section `2.1.1` and may be truncated or rejected by mail servers. The actual limit is often higher but is implementation-specific.
 

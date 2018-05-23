@@ -22,16 +22,18 @@ const topNavMenu = [
 
 const installationMenu = [
     ['', 'Overview'],
-    'docker.md',
-    'docker-redhat.md',
+    ['docker.md', 'Docker Image'],
+    ['docker-redhat.md', 'RedHat Certified Image'],
     ['https://github.com/axibase/axibase-collector/blob/master/installation-on-kubernetes.md', 'Kubernetes'],
-    'ubuntu-debian-apt.md',
-    'ubuntu-debian-deb.md',
-    'redhat-centos-rpm.md',
-    'redhat-centos-yum.md',
-    'sles-rpm.md',
-    'other-distributions.md',
-]
+    ['aws-emr-s3.md','Amazon EMRFS'],
+    ['cloudera.md','Cloudera/CDH'],
+    ['ubuntu-debian-apt.md','Ubuntu/Debian\\: apt'],
+    ['ubuntu-debian-deb.md','Ubuntu/Debian\\: deb'],
+    ['redhat-centos-rpm.md','RHEL/Centos\\: yum'],
+    ['redhat-centos-yum.md','RHEL/Centos\\: rpm'],
+    ['sles-rpm.md','SLES\\: rpm'],
+    ['other-distributions.md','Other distributions'],
+];
 
 const integrationMenu = [
     {
@@ -150,29 +152,42 @@ const restApiMenu = [
     },
 ];
 
+const landingPageMenu = [
+    '',
+    'editions.md',
+    'architecture.md',
+    'schema.md',
+];
+
 const networkApiMenu = [
     ['', 'Overview'],
-    { title:"Data Commands", children: [
-        ['series.md', 'series'],
-        ['property.md', 'property'],
-        ['message.md', 'message'],
-        ['csv.md', 'csv'],
-        ['nmon.md', 'nmon'],
-        ['picomp2.md', 'picomp2'],
-        ['tcollector.md', 'tcollector'],
-        ['graphite.md', 'Graphite'],
-        ['statsd.md', 'StatsD'],
-    ]},
-    { title:"Meta Commands", children: [
-        ['entity.md', 'entity'],
-        ['metric.md', 'metric'],
-    ]},
-    { title:"Control Commands", children: [
-        ['ping.md', 'ping'],
-        ['time.md', 'time'],
-        ['version.md', 'version'],
-        ['exit.md', 'exit'],
-    ]},
+    {
+        title: "Data Commands", children: [
+            ['series.md', 'series'],
+            ['property.md', 'property'],
+            ['message.md', 'message'],
+            ['csv.md', 'csv'],
+            ['nmon.md', 'nmon'],
+            ['picomp2.md', 'picomp2'],
+            ['tcollector.md', 'tcollector'],
+            ['graphite.md', 'Graphite'],
+            ['statsd.md', 'StatsD'],
+        ]
+    },
+    {
+        title: "Meta Commands", children: [
+            ['entity.md', 'entity'],
+            ['metric.md', 'metric'],
+        ]
+    },
+    {
+        title: "Control Commands", children: [
+            ['ping.md', 'ping'],
+            ['time.md', 'time'],
+            ['version.md', 'version'],
+            ['exit.md', 'exit'],
+        ]
+    },
 ]
 
 const ruleEngineMenu = [
@@ -197,7 +212,7 @@ const ruleEngineMenu = [
 ];
 
 const ruleNotificationsMenu = [
-    ['', 'Overview'],    
+    ['', 'Overview'],
     ['slack.md', 'Slack'],
     ['telegram.md', 'Telegram'],
     ['discord.md', 'Discord'],
@@ -227,22 +242,26 @@ const administrationMenu = [
     ['timezone.md', 'Time Zone'],
     ['user-authentication.md', 'User Authentication'],
     ['user-authorization.md', 'User Authorization'],
-    { title: "SSL", children: [
-        ['ssl-ca-signed.md', 'CA-signed Cetificate'],
-        ['ssl-self-signed.md', 'Self-signed Cetificate'],
-        ['ssl-lets-encrypt.md', 'Let\'s Encrypt'],
-    ]},
+    {
+        title: "SSL", children: [
+            ['ssl-ca-signed.md', 'CA-signed Cetificate'],
+            ['ssl-self-signed.md', 'Self-signed Cetificate'],
+            ['ssl-lets-encrypt.md', 'Let\'s Encrypt'],
+        ]
+    },
     ['restarting.md', 'Restarting'],
     ['update.md', 'Updating'],
     ['uninstalling.md', 'Uninstalling'],
-    { title: "Configuration", children: [
-        ['networking-settings.md', 'Network Settings'],
-        ['enabling-swap-space.md', 'Enabling Swap Space'],
-        ['replication.md', 'Replication'],
-        ['allocating-memory.md', 'Allocating Memory to components'],
-        ['changing-data-directory.md', 'Changing Data Directory'],
-        ['editing-configuration-files.md', 'Configuration Files'],
-    ]},
+    {
+        title: "Configuration", children: [
+            ['networking-settings.md', 'Network Settings'],
+            ['enabling-swap-space.md', 'Enabling Swap Space'],
+            ['replication.md', 'Replication'],
+            ['allocating-memory.md', 'Allocating Memory to components'],
+            ['changing-data-directory.md', 'Changing Data Directory'],
+            ['editing-configuration-files.md', 'Configuration Files'],
+        ]
+    },
     ['logging.md', 'Logging'],
     ['metric-persistence-filter.md', 'Metric Persistence Filter'],
     ['compaction.md', 'Compaction'],
@@ -261,16 +280,25 @@ module.exports = {
 
         sidebarDepth: 1,
         sidebar: {
-            '/installation/': installationMenu,
+            '/administration/': administrationMenu,
             '/api/data/': restApiMenu,
             '/api/meta/': restApiMenu,
             '/api/network/': networkApiMenu,
+            '/changelogs/': [],
+            '/forecasting/': [],
+            '/installation/': installationMenu,
+            '/integration/': integrationMenu,
+            '/parsers/': [],
+            '/portals/': [],
             '/rule-engine/notifications/': ruleNotificationsMenu,
             '/rule-engine/': ruleEngineMenu,
-            '/administration/': administrationMenu,
-            '/integration/': integrationMenu,
+            '/search/': [],
+            '/shared/': [],
             '/sql/': sqlMenu,
-            '/': []
+            '/tutorials/': [],
+            '/versioning/': [],
+            // Keep it last
+            '': landingPageMenu,
         },
 
         searchMaxSuggestions: 10,

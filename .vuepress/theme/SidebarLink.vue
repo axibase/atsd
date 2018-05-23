@@ -52,7 +52,7 @@ function renderLink (h, to, text, active) {
       active,
       'sidebar-link': true
     }
-  }, text.replace(/^[\w\s]+:\s+/, ''))
+  }, text.replace(/^[\w\s]+:\s+/, '').replace(/\\:/g, ':'))
 }
 
 function renderChildren (h, children, path, route, maxDepth, depth = 1) {

@@ -8,7 +8,7 @@ The table schema supports the following record types:
 
 The records are always associated with an `entity`, a generic class, which represents a physical or logical object being monitored such as `Br1740` (a bioreactor), or `eia.gov` (an institution).
 
-![](images/atsd_schema.png)
+![](./images/atsd_schema.png)
 
 ## Series
 
