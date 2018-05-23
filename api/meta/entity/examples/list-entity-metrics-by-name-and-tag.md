@@ -15,7 +15,7 @@ GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?tags=table&l
 ```javascript
 name LIKE 'nmon*' and tags.table LIKE '*CPU*'
 ```
- 
+
 ## Response
 
 ```json

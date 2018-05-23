@@ -1,4 +1,4 @@
-# List Entity Metrics by Persistence Status.
+# List Entity Metrics by Persistence Status
 
 List metrics for entity `nurswgvml007` that are not stored in the database and are only processed by the rule engine.
 
