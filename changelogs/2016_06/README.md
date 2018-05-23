@@ -33,7 +33,7 @@
 | 3732 | core        | Feature | Modified Collector start-up routine to wait until ATSD is ready when running jobs from the [docker-compose](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/resources/docker-compose.yml) file. |
 | 3724 | core        | Feature     | Created a `docker-compose` file to launch `socrata-cdc` and the ATSD/Collector container bundle, used for computing [mortality statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md). |
 | 3723 | data-source | Bug     | Added missing Avatica package dependencies to the ATSD JDBC driver. |
-| 3722 | core        | Feature | Send property command with collector details to ATSD after a startup is completed. |
+| 3722 | core        | Feature | Send `property` command with collector details to ATSD after a startup is completed. |
 | 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://github.com/axibase/axibase-collector/blob/master/job-autostart.md). |
 | 3571 | admin       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
 

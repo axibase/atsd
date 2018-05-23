@@ -1,4 +1,4 @@
-# Installation on AWS HBase S3
+# Installation: AWS HBase S3
 
 ## Overview
 

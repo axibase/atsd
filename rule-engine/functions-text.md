@@ -39,7 +39,7 @@ The functions are `null`-safe - they return `null` or `false` if one of the inpu
 * [`concat`](#concat)
 * [`concatLines`](#concatlines)
 
-### `upper`
+## `upper`
 
 ```javascript
   upper(string s) string
@@ -47,7 +47,7 @@ The functions are `null`-safe - they return `null` or `false` if one of the inpu
 
 Converts string `s` to uppercase letters.
 
-### `lower`
+## `lower`
 
 ```javascript
   lower(string s) string
@@ -55,7 +55,7 @@ Converts string `s` to uppercase letters.
 
 Converts string `s` to lowercase letters.
 
-### `truncate`
+## `truncate`
 
 ```javascript
   truncate(string s, integer i) string
@@ -63,7 +63,7 @@ Converts string `s` to lowercase letters.
 
 If string `s` length exceeds `i` characters, this function truncates `s` to the specified number of characters and returns it as the result.
 
-### `startsWith`
+## `startsWith`
 
 ```javascript
   startsWith(string s, string w) boolean
@@ -71,7 +71,7 @@ If string `s` length exceeds `i` characters, this function truncates `s` to the 
 
 Returns `true` if `s` starts with `w`.
 
-### `endsWith`
+## `endsWith`
 
 ```javascript
   endsWith(string s, string w) boolean
@@ -79,7 +79,7 @@ Returns `true` if `s` starts with `w`.
 
 Returns `true` if `s` ends with `w`.
 
-### `split`
+## `split`
 
 ```javascript
   split(string s, string p) [string]
@@ -108,7 +108,7 @@ To access the n-th element in the collection, use square brackets `[index]` or `
     authors.size() == 0 ? 'n/a' : authors[0]
 ```
 
-### `list`
+## `list`
 
 ```javascript
   list(string s[, string p]) [string]
@@ -125,7 +125,7 @@ Example:
   list('hello "brave new world" hello', ' ')
 ```
 
-### `ifEmpty`
+## `ifEmpty`
 
 ```javascript
   ifEmpty(string a, string b) object
@@ -142,7 +142,7 @@ Examples:
     ifEmpty(tags.location, 'N/A')
 ```
 
-### `coalesce`
+## `coalesce`
 
 ```javascript
   coalesce([string] c) string
@@ -172,7 +172,7 @@ Examples:
     coalesce([entity.label, entity])
 ```
 
-### `keepAfter`
+## `keepAfter`
 
 ```javascript
   keepAfter(string s, string p) string
@@ -189,7 +189,7 @@ Example:
   keepAfter("hello.new.world", ".")
 ```
 
-### `keepAfterLast`
+## `keepAfterLast`
 
 ```javascript
   keepAfterLast(string s, string p) string
@@ -206,7 +206,7 @@ Example:
   keepAfterLast("hello.new.world", ".")
 ```
 
-### `keepBefore`
+## `keepBefore`
 
 ```javascript
   keepBefore(string s, string p) string
@@ -223,7 +223,7 @@ Example:
   keepBefore("hello.new.world", ".")
 ```
 
-### `keepBeforeLast`
+## `keepBeforeLast`
 
 ```javascript
   keepBeforeLast(string s, string p) string
@@ -240,7 +240,7 @@ Example:
   keepBeforeLast("hello.new.world", ".")
 ```
 
-### `replace`
+## `replace`
 
 ```javascript
   replace(string s, string p, string r) string
@@ -257,7 +257,7 @@ Examples:
   replace("hello.new.world", "w", "2")
 ```
 
-### `capFirst`
+## `capFirst`
 
 ```javascript
   capFirst(string s) string
@@ -272,7 +272,7 @@ Example:
   capFirst("hello world")
 ```
 
-### `capitalize`
+## `capitalize`
 
 ```javascript
   capitalize(string s) string
@@ -287,7 +287,7 @@ Example:
   capitalize("hello world")
 ```
 
-### `removeBeginning`
+## `removeBeginning`
 
 ```javascript
   removeBeginning(string s, string r) string
@@ -307,7 +307,7 @@ Examples:
   removeBeginning("hello world", "be")
 ```
 
-### `removeEnding`
+## `removeEnding`
 
 ```javascript
   removeEnding(string s, string r) string
@@ -325,7 +325,7 @@ Removes given substring `r` from the end of string `s`.
   removeEnding("hello world", "LD")
 ```
 
-### `urlencode`
+## `urlencode`
 
 ```javascript
   urlencode(string s) string
@@ -338,7 +338,7 @@ Replaces special characters in string `s` with URL-safe characters using percent
   urlencode("hello world")
 ```
 
-### `jsonencode`
+## `jsonencode`
 
 ```javascript
   jsonencode(string s) string
@@ -346,7 +346,7 @@ Replaces special characters in string `s` with URL-safe characters using percent
 
 Escapes special JSON characters in string `s` such as double quotes with a backslash to safely include the string within a JSON object.
 
-### `htmlDecode`
+## `htmlDecode`
 
 ```javascript
   htmlDecode(string s) string
@@ -361,7 +361,7 @@ Example:
   htmlDecode("hello &gt; world")
 ```
 
-### `unquote`
+## `unquote`
 
 ```javascript
   unquote(string s) string
@@ -374,7 +374,7 @@ Removes leading and trailing double and single quotation marks from string `s`.
   unquote('"hello world"')
 ```
 
-### `countMatches`
+## `countMatches`
 
 ```javascript
   countMatches(string s, string p) int
@@ -389,7 +389,7 @@ Example:
   countMatches("hello world", "o")
 ```
 
-### `abbreviate`
+## `abbreviate`
 
 ```javascript
   abbreviate(string s, integer n) string
@@ -421,7 +421,7 @@ Integer `n` must be set greater than 3 otherwise an exception is raised.
   abbreviate("abcdefg", 3)
 ```
 
-### `indexOf`
+## `indexOf`
 
 ```javascript
   indexOf(string s, string p[, int i]) integer
@@ -453,7 +453,7 @@ Examples:
   indexOf("hello world", "o", 10)
 ```
 
-### `locate`
+## `locate`
 
 ```javascript
   locate(string s, string p[, int i]) integer
@@ -461,7 +461,7 @@ Examples:
 
 Same as `indexOf()`.
 
-### `trim`
+## `trim`
 
 ```javascript
   trim(string s) string
@@ -474,7 +474,7 @@ Removes leading and trailing non-printable characters.
   trim(" hello world    ")
 ```
 
-### `length`
+## `length`
 
 ```javascript
   length(string s) string
@@ -482,7 +482,7 @@ Removes leading and trailing non-printable characters.
 
 Returns the length of string `s`. If string `s` is `null`, function returns -1.
 
-### `concat`
+## `concat`
 
 ```javascript
   concat([string] c [, string s]) string
@@ -504,7 +504,7 @@ Joins the elements of the collection `c` into a single string containing the ele
   concat(['a', null, 'b'], '-')
 ```
 
-### `concatLines`
+## `concatLines`
 
 ```javascript
   concatLines([string] c) string

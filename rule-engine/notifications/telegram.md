@@ -140,7 +140,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-```ls
+```bash
   *[${status}]* ${ruleLink} for ${entity} ${tags}
 ```
 

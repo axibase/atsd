@@ -8,8 +8,8 @@ If the metric doesn't exist, it will be created automatically.
 
 ## Syntax
 
-```css
-metric m:{metric} b:{enabled} p:{data-type} l:{label} d:{description} i:{interpolate} u:{units} f:{filter} z:{timezone} v:{versioning} a:{invalid_action} min:{minimum_value} max:{maximum_value} t:{tag-1}={text} t:{tag-2}={text}
+```bash
+metric m:${metric} b:${enabled} p:${data-type} l:${label} d:${description} i:${interpolate} u:${units} f:${filter} z:${timezone} v:${versioning} a:${invalid_action} min:${minimum_value} max:${maximum_value} t:${tag-1}=${text} t:${tag-2}=${text}
 ```
 
 * Metric name and tag names are case-insensitive and are converted to lower case when stored.

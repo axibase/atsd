@@ -165,18 +165,18 @@ The `metadataFormat` parameter specifies how metadata is incorporated into the C
 
 ### `curl` Query Example
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/sql  \
-  --insecure  --verbose --compressed \
+  --insecure  --include --compressed \
   --user {username}:{password} \
   --data 'q=SELECT entity, value FROM "mpstat.cpu_busy" WHERE datetime > now - 1*MINUTE'
 ```
 
 Use `'\'` to escape single quotes inside the query payload.
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/sql  \
-  --insecure  --verbose --compressed \
+  --insecure  --include --compressed \
   --user {username}:{password} \
   --data 'q=SELECT * FROM "mpstat.cpu_busy" WHERE entity =  '\''nurswghbs001'\'' AND datetime between '\''2018-03-01T17:00:00Z'\'' AND '\''2018-03-02T17:00:00Z'\'''
 ```

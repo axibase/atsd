@@ -10,7 +10,7 @@ GET https://atsd_hostname:8443/api/v1/metrics?tags=table&expression=tags.table%2
 
 ### Expression
 
-```sh
+```javascript
 tags.table != ''
 ```
 

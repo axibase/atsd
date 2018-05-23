@@ -7,13 +7,13 @@ The collection functions return information about the collection or check it for
 A collection can be created by declaring its elements inline, enclosed in square brackets:
 
 ```javascript
-  ['a@example.org', 'b@example.org']
+['a@example.org', 'b@example.org']
 ```
 
 Alternatively, it can be loaded using the `collection()` or another [lookup](functions-lookup.md) function.
 
 ```javascript
-  collection('oncall-emails')
+collection('oncall-emails')
 ```
 
 ## Reference
@@ -27,12 +27,13 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 * [`contains`](#contains)
 * [`size`](#size)
 * [`isEmpty`](#isempty)
+* [`replacementTable`](#replacementtable)
 * [`excludeKeys`](#excludekeys)
 
-### `collection`
+## `collection`
 
 ```javascript
-  collection(string s) [string]
+collection(string s) [string]
 ```
 
 Returns an array of strings contained in the named collection `s`.
@@ -44,13 +45,13 @@ To access the size of the array, use the `.size()` method.
 To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method. The index starts with `0` for the first element.
 
 ```javascript
-    author = (authors.size() == 0) ? 'n/a' : authors[0]
+author = (authors.size() == 0) ? 'n/a' : authors[0]
 ```
 
-### `IN`
+## `IN`
 
 ```javascript
-  string s IN (string a[, string b[...]]) boolean
+string s IN (string a[, string b[...]]) boolean
 ```
 
 Returns `true` if `s` is contained in the collection of strings enclosed in round brackets.
@@ -58,17 +59,17 @@ Returns `true` if `s` is contained in the collection of strings enclosed in roun
 Examples:
 
 ```javascript
-    entity IN ('nurswgvml007', 'nurswgvml008')
+entity IN ('nurswgvml007', 'nurswgvml008')
 ```
 
 ```javascript
-    tags.location IN ('NUR', 'SVL')
+tags.location IN ('NUR', 'SVL')
 ```
 
-### `LIKE`
+## `LIKE`
 
 ```javascript
-  string s LIKE (string a[, string b[...]]) boolean
+string s LIKE (string a[, string b[...]]) boolean
 ```
 
 Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection may contain string literals and variables.
@@ -76,21 +77,21 @@ Returns `true` if `s` matches any pattern in the collection of strings enclosed 
 Examples:
 
 ```javascript
-    entity LIKE ('nurswgvml*', 'nurswghbs*')
+entity LIKE ('nurswgvml*', 'nurswghbs*')
 ```
 
 ```javascript
-    tags.version LIKE ('1.2.*', '1.3.?')
+tags.version LIKE ('1.2.*', '1.3.?')
 ```
 
 ```javascript
-    tags.location LIKE ('NUR*', entity.tags.location)
+tags.location LIKE ('NUR*', entity.tags.location)
 ```
 
-### `likeAny`
+## `likeAny`
 
 ```javascript
-  likeAny(string s, [string] c) boolean
+likeAny(string s, [string] c) boolean
 ```
 
 Returns `true` if string `s` matches any element in the string collection `c`.
@@ -100,21 +101,21 @@ The collection `c` can be initialized by referencing a named collection by name 
 Examples:
 
 ```javascript
-    likeAny(tags.request_ip, ['10.50.102.1', '10.50.102.2'])
+likeAny(tags.request_ip, ['10.50.102.1', '10.50.102.2'])
 ```
 
 ```javascript
-    likeAny(tags.location, ['NUR', 'SVL*'])
+likeAny(tags.location, ['NUR', 'SVL*'])
 ```
 
 ```javascript
-    likeAny(tags.request_ip, collection('ip_white_list'))
+likeAny(tags.request_ip, collection('ip_white_list'))
 ```
 
-### `matchList`
+## `matchList`
 
 ```javascript
-  matchList(string s, string c) boolean
+matchList(string s, string c) boolean
 ```
 
 Returns `true` if `s` is contained in the collection named `c`.
@@ -124,13 +125,13 @@ The collection `c` may include patterns with `?` and `*` wildcards.
 Example:
 
 ```javascript
-    matchList(tags.request_ip, 'ip_white_list')
+matchList(tags.request_ip, 'ip_white_list')
 ```
 
-### `matches`
+## `matches`
 
 ```javascript
-  matches(string p, [string] c) boolean
+matches(string p, [string] c) boolean
 ```
 
 Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.
@@ -140,13 +141,13 @@ The pattern supports `?` and `*` wildcards.
 Example:
 
 ```javascript
-    matches('*atsd*', property_values('docker.container::image'))
+matches('*atsd*', property_values('docker.container::image'))
 ```
 
-### `contains`
+## `contains`
 
 ```javascript
-  [string].contains(string s) boolean
+[string].contains(string s) boolean
 ```
 
 Returns `true` if `s` is contained in the collection.
@@ -154,13 +155,13 @@ Returns `true` if `s` is contained in the collection.
 Example:
 
 ```javascript
-    collection('ip_white_list').contains(tags.request_ip)
+collection('ip_white_list').contains(tags.request_ip)
 ```
 
-### `size`
+## `size`
 
 ```javascript
-  [].size() integer
+[].size() integer
 ```
 
 Returns the number of elements in the collection.
@@ -170,17 +171,17 @@ Returns the number of elements in the collection.
 Examples:
 
 ```javascript
-    collection('ip_white_list').size()
+collection('ip_white_list').size()
 ```
 
 ```javascript
-    entity.tags.size()
+entity.tags.size()
 ```
 
-### `isEmpty`
+## `isEmpty`
 
 ```javascript
-  [].isEmpty() boolean
+[].isEmpty() boolean
 ```
 
 Returns `true` if the number of elements in the collection is zero.
@@ -190,13 +191,43 @@ Returns `true` if the number of elements in the collection is zero.
 Example:
 
 ```javascript
-    collection('ip_white_list').isEmpty()
+collection('ip_white_list').isEmpty()
 ```
 
-### `excludeKeys`
+## `replacementTable`
 
 ```javascript
-  excludeKeys([] m, [] c) map
+replacementTable(string s) map
+```
+
+Retrieves the replacement table identified by name `s` as a key-value map.
+
+If the table is not found, an empty map is returned.
+
+```javascript
+// .keySet() returns a collection of keys in the replacement table
+replacementTable('oncall-emails').keySet()
+```
+
+```javascript
+// .values() returns a collection of values in the replacement table
+replacementTable('oncall-emails').values()
+```
+
+```javascript
+// returns a random value in the replacement table
+randomItem(replacementTable('oncall-emails').values())
+```
+
+```javascript
+// returns a random key-value object from the replacement table
+randomItem(replacementTable('oncall-emails'))
+```
+
+## `excludeKeys`
+
+```javascript
+excludeKeys([] m, [] c) map
 ```
 
 Returns a copy of the input map `m` without the keys specified in collection `c`.
@@ -206,10 +237,10 @@ The keys in collection `c` may contain wildcards ? and * to remove multiple matc
 Examples:
 
 ```javascript
-    excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
+excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
 ```
 
 ```javascript
     /* Returns ["b1": "w1", "b2": "w2"] */
-    excludeKeys(["a1": "v1", "a2": "v2", "b1": "w1", "b2": "w2", "c1": "z1"], ['a*', 'c1'])
+excludeKeys(["a1": "v1", "a2": "v2", "b1": "w1", "b2": "w2", "c1": "z1"], ['a*', 'c1'])
 ```

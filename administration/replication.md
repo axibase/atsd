@@ -45,29 +45,29 @@ Change `/etc/hosts` to form:
 sudo nano /etc/hosts
 ```
 
-```sh
- 127.0.0.1    localhost
- master_ip    master_hostname
- slave_ip     slave_hostname
+```elm
+127.0.0.1    localhost
+master_ip    master_hostname
+slave_ip     slave_hostname
 ```
 
 > Note: the following lines should not be contained in the `hosts` file.
 This is the case for both master and slave.
 
-```sh
+```elm
 127.0.1.1    atsd_master
 ```
 
-```sh
- 127.0.1.1    atsd_slave
+```elm
+127.0.1.1    atsd_slave
 ```
 
 Example of a correct `hosts` file:
 
-```sh
- 127.0.0.1    localhost
- 172.30.0.66    atsd_master
- 172.30.0.78    atsd_slave
+```elm
+127.0.0.1    localhost
+172.30.0.66    atsd_master
+172.30.0.78    atsd_slave
 ```
 
 Add the `hbase.replication` property to the `configuration` tag in the
@@ -91,7 +91,7 @@ sudo nano /opt/atsd/bin/atsd-all.sh
 
 Comment out the following strings in the `start_all` function:
 
-```sh
+```bash
      ${ATSD_TSD} start
      if [ ! $? -eq 0 ]; then
          return 1
@@ -100,7 +100,7 @@ Comment out the following strings in the `start_all` function:
 
 Result:
 
-```sh
+```bash
  #   ${ATSD_TSD} start
  #   if [ ! $? -eq 0 ]; then
  #       return 1
@@ -140,6 +140,9 @@ Start Hadoop and HBase:
 
 ```sh
 /opt/atsd/bin/atsd-dfs.sh start
+```
+
+```sh
 /opt/atsd/bin/atsd-hbase.sh start
 ```
 
@@ -179,10 +182,10 @@ Start ATSD:
 Verify that ATSD tables are present: list tables
 
 ```sh
- echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
+echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
-Output should contain a list of ATSD tables, all starting with `atsd_`:
+Output should contain a list of ATSD tables, all starting with `atsd_`.
 
 ![](images/atsd_tables.png "atsd_tables")
 
@@ -193,8 +196,7 @@ in HBase with the name containing `atsd_` (for example `atsd_new`),
 execute the following steps to make sure this table is added to
 replication.
 
-**MASTER: the following steps must be executed only on the
-master machine.**
+> MASTER: the following steps must be executed only on the master machine.
 
 Write the table schema to a file:
 
@@ -208,8 +210,7 @@ Copy table schema file to the slave machine:
 scp atsd_new_schema.txt atsd_slave:/tmp
 ```
 
-**SLAVE: the following steps must be executed only on the slave
-machine.**
+> SLAVE: the following steps must be executed only on the slave machine.
 
 Create the new table in the slave database:
 
@@ -217,8 +218,7 @@ Create the new table in the slave database:
 /opt/atsd/hbase/bin/hbase shell < /tmp/atsd_new_schema.txt
 ```
 
-**MASTER: the following steps must be executed only on the
-master machine.**
+> MASTER: the following steps must be executed only on the master machine.
 
 Enable replication for the new table:
 
@@ -236,8 +236,7 @@ steps:
 
 ### Option 1
 
-**SLAVE: the following steps must be executed only on the slave
-machine.**
+> SLAVE: the following steps must be executed only on the slave machine.
 
 Check HBase logs for replication activity:
 
@@ -245,10 +244,9 @@ Check HBase logs for replication activity:
 tail -n 1000 /opt/atsd/hbase/logs/hbase-axibase-regionserver-atsd_slave.log | grep replicated
 ```
 
-The output should contain replication activity and the of amount tables
-replicated on the slave machine:
+The output should contain replication activity and the of amount tables replicated on the slave machine:
 
-```sh
+```txt
  2015-07-17 16:39:22,926 INFO  regionserver.ReplicationSink (ReplicationS
  ink.java:replicateEntries(158)) - Total replicated: 4
  2015-07-17 16:39:24,019 INFO  regionserver.ReplicationSink (ReplicationS
@@ -261,14 +259,13 @@ replicated on the slave machine:
 
 ### Option 2
 
-**MASTER: the following steps must be executed only on the
-master machine.**
+> MASTER: the following steps must be executed only on the master machine.
 
-Open ATSD user interface and navigate to **Configuration > Rules** page.
+Open ATSD user interface and navigate to **Alert > Rules** page.
 
 ![](images/atsd_rules_new.png)
 
-Click the [CREATE] button to create a new rule. Complete the following
+Click the [Create] button to create a new rule. Complete the following
 fields as specified below:
 
 `Name` – `testrule`
@@ -277,7 +274,7 @@ fields as specified below:
 
 `Expression` – true
 
-Then click SAVE.
+Click Save.
 
 ![](images/rule_editor.png "rule_editor")
 
@@ -292,8 +289,7 @@ Output:
 
 ![](images/atsd_rule_table_scan1.png)
 
-**SLAVE: the following steps must be executed only on the slave
-machine.**
+> SLAVE: the following steps must be executed only on the slave machine.
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:

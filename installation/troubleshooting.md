@@ -21,6 +21,9 @@ In case you're not able to connect to an ATSD network service, make sure that: a
 
 ```sh
 netstat -tulnp | grep 8081
+```
+
+```txt
 ...
 tcp        0      0 0.0.0.0:8081            0.0.0.0:*               LISTEN
 ```

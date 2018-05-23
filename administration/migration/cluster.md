@@ -102,7 +102,11 @@ Download the `migration.jar` file to the temporary `/tmp/migration/` directory.
 
 ```sh
 mkdir /tmp/migration
-curl -o /tmp/migration/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.0-cdh5.10.0.jar
+```
+
+```sh
+curl -o /tmp/migration/migration.jar \
+  https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.0-cdh5.10.0.jar
 ```
 
 Check that the current Java version is 8.
@@ -149,13 +153,17 @@ The optional `drop-annotations` flag discards duplicate series annotations when 
 #### Custom Table Prefix
 
 ```sh
-nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced --drop_annotations --source=atsd_custom_d_backup --destination=atsd_custom_d &> /tmp/migration/migration.log &
+nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced \
+  --drop_annotations --source=atsd_custom_d_backup \
+  --destination=atsd_custom_d &> /tmp/migration/migration.log &
 ```
 
 #### Default Table Prefix
 
 ```sh
-nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced --drop_annotations --source=atsd_d_backup --destination=atsd_d &> /tmp/migration/migration.log &
+nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced \
+  --drop_annotations --source=atsd_d_backup \
+  --destination=atsd_d &> /tmp/migration/migration.log &
 ```
 
 #### Monitoring Job Progress
@@ -263,7 +271,7 @@ Upgrade jar files and start-up scripts.
 rm -f /opt/atsd/atsd/bin/*
 curl -o /opt/atsd/atsd/bin/atsd.17370.jar https://axibase.com/public/atsd-125-migration/atsd.17370.jar
 curl -o /opt/atsd/scripts.tar.gz https://axibase.com/public/atsd-125-migration/scripts.tar.gz
-tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/  atsd
+tar -xf /opt/atsd/scripts.tar.gz -C /opt/atsd/ atsd
 rm /opt/atsd/scripts.tar.gz
 rm -rf /opt/atsd/hbase
 rm -rf /opt/atsd/collectors

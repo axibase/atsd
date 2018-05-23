@@ -35,7 +35,7 @@
 | [4303](#issue-4303) | jdbc | Feature | Add support for inserting data with JDBC driver using [`INSERT` and `UPDATE`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) queries. |
 | 4278 | core | Bug | Fix a bug causing the data compaction to hang when multiple detailed column families are present. |
 | 3983 | api-rest    | Bug |    Data API: tags are incorrectly concatenated with [`group`](../../api/data/series/group.md) processor. |
-| 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with [append flag](../../api/network/series.md#text-append). |
+| 3874 | api-network | Bug | Data API: `series` command fails to overwrite value when inserted in batch with [append flag](../../api/network/series.md#text-append). |
 
 ### Issue 4420
 

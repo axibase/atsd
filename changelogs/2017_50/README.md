@@ -30,7 +30,7 @@ value > 1.5 && value('temperature') > 50
 series e:sensor01 m:pressure=3.5 m:temperature=80
 ```
 
-Assuming the rule was created for the pressure metric, the condition will evaluate to `true` for the above series command.
+Assuming the rule was created for the pressure metric, the condition will evaluate to `true` for the above `series` command.
 
 ```javascript
 3.5 > 1.5 && 80 > 50

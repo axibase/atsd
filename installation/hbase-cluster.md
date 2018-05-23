@@ -1,4 +1,4 @@
-# Installation on Distributed HBase Cluster
+# Installation: HBase Cluster
 
 ## Create `axibase` User
 
@@ -57,6 +57,9 @@ curl -O https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 
 ```sh
 sudo tar -xzvf atsd_ee_hbase_1.0.3.tar.gz -C /opt
+```
+
+```sh
 sudo chown -R axibase:axibase /opt/atsd
 ```
 

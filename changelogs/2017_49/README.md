@@ -9,8 +9,8 @@
 | 4782 | security | Bug | Prevent browser auto-complete to submit user credentials on the web notification forms. |
 | 4779 | api-rest | Bug | Series query: invalid JSON returned if `addMeta` parameter for unknown metric is specified. |
 | [4778](#issue-4778) | rule editor | Feature | Implement placeholders for the [Details Table](../../rule-engine/placeholders.md#alert-table-placeholders). |
-| 4776 | rule engine | Feature | Extract functions from the [`db_last`](../../rule-engine/functions-db.md#db_last-function) and [`db_statistic`](../../rule-engine/functions-db.md#db_statistic-function) functions to include in notification charts. |
-| 4775 | rule editor | Bug | Raise error on invalid syntax in [database](../../rule-engine/functions-db.md) functions. |
+| 4776 | rule engine | Feature | Extract functions from the [`db_last`](../../rule-engine/functions-series.md#db_last-function) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic-function) functions to include in notification charts. |
+| 4775 | rule editor | Bug | Raise error on invalid syntax in [database](../../rule-engine/functions-series.md) functions. |
 | 4773 | api-rest | Bug | Series query: fix for empty response when `seriesLimit` is enforced. |
 | [4772](#issue-4772) | rule editor | Feature | Add setting 'Group by All Tags'. |
 | 4767 | rule engine | Bug | Web Notifications: Timeout waiting for connection from pool on CircleCI. |
@@ -40,7 +40,7 @@
 
 The alert details table can embedded into the target document using the same format as the host document.
 
-```javascript
+```bash
 ${detailsTable('markdown')}
 ${detailsTable('ascii')}
 ${detailsTable('html')}
@@ -59,7 +59,7 @@ The new settings automatically creates as many series as there are incoming seri
 
 The derived command action allows storing new calculated metrics in the database by executing custom command templates in the [Network API](../../api/network/README.md) syntax.
 
-```ls
+```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 

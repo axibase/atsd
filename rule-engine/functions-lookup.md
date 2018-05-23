@@ -22,7 +22,7 @@ The named collections are listed on the **Data > Named Collections** page.
 * [`replacementTable`](#replacementtable)
 * [`property`](#property)
 
-### `entity_tag`
+## `entity_tag`
 
 ```javascript
   entity_tag(string e, string t) string
@@ -32,7 +32,7 @@ Returns value of tag `t` for entity `e`.
 
 If the tag or the entity is not found, an empty string is returned.
 
-### `entity_tags`
+## `entity_tags`
 
 ```javascript
   entity_tags(string e [, boolean f]) map
@@ -84,7 +84,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 ...
 ```
 
-### `entity_label`
+## `entity_label`
 
 ```javascript
   entity_label(string e) string
@@ -94,7 +94,7 @@ Returns label for entity `e`.
 
 If the entity is not found or it doesn't have a label, the input string `e` is returned.
 
-### `getEntity`
+## `getEntity`
 
 ```javascript
   getEntity(string e[,boolean l]) object
@@ -113,7 +113,7 @@ Example:
   getEntity('nurswgvml007').interpolate
 ```
 
-### `getEntities`
+## `getEntities`
 
 ```javascript
   getEntities(string m, string s, string e, string p) [object]
@@ -153,7 +153,7 @@ Examples:
   getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
 ```
 
-### `getEntityCount`
+## `getEntityCount`
 
 ```javascript
   getEntitiyCount(string m, string s, string e, object p) integer
@@ -161,7 +161,7 @@ Examples:
 
 Same as `getEntities(string m, string s, string e, object p).size()`.
 
-### `getEntityName`
+## `getEntityName`
 
 ```javascript
   getEntityName(string e) string
@@ -171,7 +171,7 @@ Returns normalized (lowercase) entity name for input string `e`. The function se
 
 If the entity cannot be found, the original input string `e` is returned.
 
-### `collection`
+## `collection`
 
 ```javascript
   collection(string s) [string]
@@ -193,7 +193,7 @@ tags.location NOT IN collection('dc-locations')
 collection('dc-locations').contains(tags.location)
 ```
 
-### `lookup`
+## `lookup`
 
 ```javascript
   lookup(string s, string k[, boolean b]) string
@@ -212,7 +212,7 @@ Example:
   lookup('on-call', 'john', true)
 ```
 
-### `replacementTable`
+## `replacementTable`
 
 ```javascript
   replacementTable(string s) map
@@ -222,7 +222,7 @@ Retrieves the replacement table identified by name `s` as a key-value map.
 
 If the table is not found, an empty map is returned.
 
-### `property`
+## `property`
 
 ```javascript
   property(string s) string

@@ -41,7 +41,7 @@ Command:
 
 Messages sent to ATSD:
 
-```sh
+```txt
 carbon.agents.NURSWGDKR002-a.avgUpdateTime 9.41753387451e-05 1436859240
 carbon.agents.NURSWGDKR002-a.avgUpdateTime 9.3019925631e-05 1436859300
 carbon.agents.NURSWGDKR002-a.avgUpdateTime 9.33683835543e-05 1436859360
@@ -61,7 +61,7 @@ Command:
 
 Messages sent to ATSD:
 
-```sh
+```txt
 collectd.NURSWGDKR002.memory.memory-free 31467552768.0 1436867280
 collectd.NURSWGDKR002.memory.memory-free 31480631296.0 1436867340
 collectd.NURSWGDKR002.memory.memory-free 31409938432.0 1436867400

@@ -12,7 +12,7 @@
 * [`getURLUserInfo`](#geturluserinfo)
 * [`printObject`](#printobject)
 
-### `ifEmpty`
+## `ifEmpty`
 
 ```javascript
   ifEmpty(object a, object b) object
@@ -30,7 +30,7 @@ Examples:
     ifEmpty('hello', 'world')
 ```
 
-### `toBoolean`
+## `toBoolean`
 
 ```javascript
   toBoolean(object a) boolean
@@ -70,7 +70,7 @@ Examples:
   toBoolean('On')
 ```
 
-### `printObject`
+## `printObject`
 
 ```javascript
   printObject(object o, string f) string
@@ -146,7 +146,7 @@ windowStatus,OPEN
 ...
 ```
 
-### `getURLHost`
+## `getURLHost`
 
 ```javascript
   getURLHost(string u) string
@@ -161,7 +161,7 @@ Example:
     getURLHost('https://axibase.com/en/products?type=database&status=1')
 ```
 
-### `getURLPort`
+## `getURLPort`
 
 ```javascript
   getURLPort(string u) integer
@@ -178,7 +178,7 @@ Example:
     getURLPort('https://axibase.com/en/products?type=database&status=1')
 ```
 
-### `getURLProtocol`
+## `getURLProtocol`
 
 ```javascript
   getURLProtocol(string u) string
@@ -193,7 +193,7 @@ Example:
     getURLProtocol('https://axibase.com/en/products?type=database&status=1')
 ```
 
-### `getURLPath`
+## `getURLPath`
 
 ```javascript
   getURLPath(string u) string
@@ -208,7 +208,7 @@ Example:
     getURLPath('https://axibase.com/en/products?type=database&status=1')
 ```
 
-### `getURLQuery`
+## `getURLQuery`
 
 ```javascript
   getURLQuery(string u) string
@@ -223,7 +223,7 @@ Example:
     getURLQuery('https://axibase.com/en/products?type=database&status=1')
 ```
 
-### `getURLUserInfo`
+## `getURLUserInfo`
 
 ```javascript
   getURLUserInfo(string u) string

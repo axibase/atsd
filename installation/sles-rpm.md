@@ -1,4 +1,4 @@
-# SUSE Linux Enterprise Server: rpm Package
+# Installation: SLES
 
 ## Supported Versions
 

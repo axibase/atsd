@@ -36,7 +36,7 @@ Enter an existing authorization token in `Authorization` header or create a new 
 
 Execute the [`Create a new authorization`](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) command. Replace the `<GITHUB_USER>` field with your github user name.
 
-```sh
+```bash
 curl \
     -u <GITHUB_USER> \
     -H "Accept: application/vnd.github.v3+json" \

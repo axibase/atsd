@@ -24,7 +24,13 @@ Copy data to the target directory:
 
 ```sh
 cp -a /opt/atsd/hdfs-data/  /data/
+```
+
+```sh
 cp -a /opt/atsd/hdfs-data-name/  /data/
+```
+
+```sh
 cp -a /opt/atsd/hdfs-cache/ /data/
 ```
 
@@ -38,6 +44,9 @@ Backup the configuration files:
 
 ```sh
 cp /opt/atsd/hadoop/conf/hdfs-site.xml /opt/atsd/hadoop/conf/hdfs-site.xml.backup
+```
+
+```sh
 cp /opt/atsd/hadoop/conf/core-site.xml /opt/atsd/hadoop/conf/core-site.xml.backup
 ```
 
@@ -79,6 +88,12 @@ Delete the old data and configuration files:
 
 ```sh
 rm -r /opt/atsd/old
+```
+
+```sh
 rm /opt/atsd/hadoop/conf/core-site.xml.backup
+```
+
+```sh
 rm /opt/atsd/hadoop/conf/hdfs-site.xml.backup
 ```

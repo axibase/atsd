@@ -6,7 +6,7 @@ CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually thr
 
 ![](resources/csv.gif)
 
-To process a CSV file you need to create a CSV parser, which splits the file into lines (rows) consisting of multiple columns and converts the lines into series, properties, and message commands.
+To process a CSV file you need to create a CSV parser, which splits the file into lines (rows) consisting of multiple columns and converts the lines into `series`, `property`, and `message` commands.
 
 ### Configuration Settings
 
@@ -77,7 +77,7 @@ tag(cell(1, 3),cell(row, 3)).
 timestamp(cell(row, 1));
 ```
 
-Produced series commands:
+Produced `series` commands:
 
 ```ls
 series e:nurswgvml007 d:2015-11-15T00:00:00Z m:space_used_%=72.2 t:disk=/dev/sda

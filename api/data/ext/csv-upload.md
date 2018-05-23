@@ -142,7 +142,8 @@ time,cpu_user,cpu_system,waitio
 ### curl upload
 
 ```sh
-curl --insecure -X POST --user admin:pwd -T csv-3120.csv "https://atsd_hostname:8443/api/v1/csv?config=parser-3120&wait=true"
+curl --insecure -X POST --user admin:pwd \
+  -T csv-3120.csv "https://atsd_hostname:8443/api/v1/csv?config=parser-3120&wait=true"
 ```
 
 > Make sure that request parameter values in query string are URL-encoded, e.g. `&time=now%20-%201%20*%20hour`

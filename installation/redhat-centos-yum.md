@@ -1,4 +1,4 @@
-# RedHat/CentOS: YUM
+# Installation: `yum`
 
 ## Supported Versions
 

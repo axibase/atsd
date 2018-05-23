@@ -155,7 +155,7 @@ The following functions are available in the 'Formatting' section:
 * [`formatInterval`](../rule-engine/functions-format.md#formatinterval)
 * [`formatIntervalShort`](../rule-engine/functions-format.md#formatintervalshort)
 
-#### Time Functions
+#### Date Functions
 
 * [`elapsedTime`](../rule-engine/functions-time.md#elapsedtime)
 
@@ -238,7 +238,7 @@ If no portal is selected, the default portal displays metrics for [columns](#col
 
 The multi-entity portal is any portal that displays a metric for [multiple entities](../portals/portals-overview.md#template-portals) using the `${entities}` placeholder.
 
-```ls
+```bash
 [widget]
   type = chart
   [series]

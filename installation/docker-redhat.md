@@ -1,4 +1,4 @@
-# Installation from RedHat Certified Image
+# Installation: RedHat Certified Container
 
 ## Host Requirements
 
@@ -8,7 +8,13 @@ Install Docker:
 
 ```sh
 yum install docker device-mapper-libs device-mapper-event-libs
+```
+
+```sh
 systemctl start docker.service
+```
+
+```sh
 systemctl enable docker.service
 ```
 
@@ -26,14 +32,14 @@ systemctl enable docker.service
 
 ## Start Container
 
-```elm
+```bash
 docker run -d  --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   registry.connect.redhat.com/axibase/atsd:latest
 ```
 
 To automatically create an [account](../administration/collector-account.md) for data collection agents and storage drivers, replace `cuser` and `cpassword` credential variables in the command below.
 
-```elm
+```bash
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   --env COLLECTOR_USER_NAME=cuser \
   --env COLLECTOR_USER_PASSWORD=cpassword \
@@ -47,7 +53,7 @@ The password is subject to the following [requirements](../administration/user-a
 
 Launch the container with `docker run`.
 
-```sh
+```txt
 $ docker run \
 >   --detach \
 >   --name=atsd \
@@ -75,7 +81,7 @@ It may take up to 5 minutes to initialize the database.
 
 ## Check Installation
 
-```elm
+```bash
 docker logs -f atsd
 ```
 
@@ -132,12 +138,12 @@ View additional launch examples [here](https://github.com/axibase/atsd-docs/blob
 
 Depending on your Docker host network configuration, you may need to change port mappings in case some of the published ports are already taken.
 
-```sh
+```txt
 Cannot start container <container_id>: failed to create endpoint atsd on network bridge:
 Bind for 0.0.0.0:8088 failed: port is already allocated
 ```
 
-```elm
+```bash
 docker run -d \
   --name=atsd \
   --publish 9088:8088 \

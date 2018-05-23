@@ -122,10 +122,29 @@ SQL query results can be published to all visitors by checking 'Guest Access' fi
 
 * `curl` Example:
 
-```sh
-curl http://10.102.0.6:8088/api/v1/properties/query \
-  --user {username}:{password} \
+```bash
+curl https://atsd_hostname:8443/api/v1/properties/query \
+  --insecure --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data '[{"type":"disk","entity":"nurswgvml007","startDate":"2016-05-25T04:00:00Z","endDate":"now"}]'
 ```
+
+## Authentication and Authorization Errors
+
+**Code** | **Description**
+---|---
+01 | General Server Error
+02 | Username Not Found
+03 | Bad Credentials
+04 | Disabled Ldap Service
+05 | Corrupted Configuration
+06 | MS Active Directory
+07 | Account Disabled
+08 | Account Expired
+09 | Account Locked
+10 | Logon Not Permitted At Time
+11 | Logon Not Permitted At Workstation
+12 | Password Expired
+13 | Password Reset Required
+14 | Wrong IP Address
+15 | Access Denied

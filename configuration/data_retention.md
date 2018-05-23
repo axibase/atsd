@@ -217,10 +217,11 @@ To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and 
 
 ## Deleting Data using API
 
-* Metric [delete](https://github.com/axibase/atsd/blob/master/api/meta/metric/delete.md)
-* Entity [delete](https://github.com/axibase/atsd/blob/master/api/meta/entity/delete.md)
-* Properties [delete](https://github.com/axibase/atsd/blob/master/api/data/properties/delete.md)
-* Message [delete](https://github.com/axibase/atsd/blob/master/api/data/messages/delete.md)
+* Metric [delete](../api/meta/metric/delete.md)
+* Entity [delete](../api/meta/entity/delete.md)
+* Series [delete](../api/data/series/delete.md)
+* Properties [delete](../api/data/properties/delete.md)
+* Message [delete](../api/data/messages/delete.md)
 
 ## Deleting Data using API Clients
 

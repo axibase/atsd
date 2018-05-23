@@ -74,11 +74,10 @@ POST https://atsd_hostname:8443/api/v1/series/delete
 
 ### curl
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/v1/series/delete \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data '[{ "metric":"tcp-connect-status", "entity":"nurswgvml007", "exactMatch": true, "tags": {"port": 22080}}]'
 ```
 
@@ -102,10 +101,9 @@ POST https://atsd_hostname:8443/api/v1/series/delete
 
 ### curl
 
-```sh
+```bash
 curl https://atsd_hostname:8443/api/v1/series/delete \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data '[{ "metric":"tcp-connect-status", "entity":"nurswgvml007", "exactMatch": false}]'
 ```

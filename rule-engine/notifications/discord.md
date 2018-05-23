@@ -126,8 +126,8 @@ NGINX API Gateway Path for Discord:
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-```ls
-    OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
+```bash
+      OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
     REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
     CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
 ```
@@ -142,6 +142,6 @@ NGINX API Gateway Path for Discord:
 
    ![](images/discord_test_1.png)
 
-   Content of _atsd.jvm.low_memory_atsd_open_20171127_1408043.txt_:
+   Content of `atsd.jvm.low_memory_atsd_open_20171127_1408043.txt`:
 
    ![](images/discord_test_2.png)

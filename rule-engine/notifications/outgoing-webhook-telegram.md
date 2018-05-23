@@ -4,7 +4,7 @@
 
 The document describes how to relay messages addressed to a Telegram Bot into ATSD for subsequent processing. Typical use cases include replying to information requests and executing predefined actions.
 
-The integration relies on the Telegram Bot API [setWebhook](https://core.telegram.org/bots/api#setwebhook) method to send messages and on the ATSD [webhook](../../api/data/messages/webhook.md) endpoint to receive HTTP requests from Telegram servers and to convert them into message commands that can be stored and processed by the rule engine.
+The integration relies on the Telegram Bot API [setWebhook](https://core.telegram.org/bots/api#setwebhook) method to send messages and on the ATSD [webhook](../../api/data/messages/webhook.md) endpoint to receive HTTP requests from Telegram servers and to convert them into `message` commands that can be stored and processed by the rule engine.
 
 ## Reference
 
@@ -56,7 +56,7 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
 
   Set webhook by specifying the webhook URL
 
-```sh
+```bash
     curl -F "url=https://telegram:12345678@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
@@ -118,7 +118,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 * Enable the `OPEN`, `REPEAT` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-```ls
+```bash
   User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${message}"
 ```
 

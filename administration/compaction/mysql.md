@@ -205,7 +205,7 @@ wc -l IBM_adjusted.txt
 
 Start a MySQL 5.7 container. Mount `/tmp/test` directory to the container.
 
-```elm
+```bash
 docker run --name mysql-axibase-storage-test \
     -e MYSQL_DATABASE=axibase \
     -e MYSQL_ROOT_PASSWORD=axibase \

@@ -31,7 +31,7 @@ If **Settings > System Information** page on your current instance displays HBas
 
 Assuming `atsd` is the name of the container:
 
-```elm
+```bash
 docker exec -it atsd /bin/bash
 /opt/atsd/bin/update.sh
 ```
@@ -48,8 +48,8 @@ The update process may take a few minutes to complete.
 
 To verify that ATSD is working correctly, open the ATSD web interface:
 
-```sh
- https://atsd_hostname:8443/
+```elm
+https://atsd_hostname:8443/
 ```
 
 * Open the **Settings > System Information** page

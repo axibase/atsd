@@ -25,7 +25,13 @@ Create nmon directories:
 
 ```sh
 sudo mkdir -p /opt/nmon/nmon_logs
+```
+
+```sh
 sudo chown -R `whoami` /opt/nmon
+```
+
+```sh
 cd /opt/nmon
 ```
 
@@ -108,7 +114,13 @@ nmon will run and the collected data will be streamed into ATSD. New entity and 
 
 ```sh
 /usr/bin/nmon -F `hostname`.nmon -s 2 -c 30
+```
+
+```sh
 ./nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 2 -c 30 -f `hostname`.
+```
+
+```sh
 nmon
 ```
 
@@ -116,7 +128,13 @@ nmon
 
 ```sh
 ./nmon -F `hostname`.nmon -s 2 -c 30
+```
+
+```sh
 ./nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 2 -c 30 -f `hostname`.
+```
+
+```sh
 nmon
 ```
 
@@ -128,19 +146,17 @@ ATSD will receive the stream of data as it is written into the nmon file.
 
 #### Setup nmon File Streaming with Sender Script – Installed from Repositories
 
-```sh
+```txt
 0 0 * * * /usr/bin/nmon -f -s 60 -c 1440 -T -m /opt/nmon/nmon_logs/
-0 0 * * * /opt/nmon/nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 60 -
-c 1440 -m /opt/nmon/nmon_logs/ >> /opt/nmon/full.log 2>&1
+0 0 * * * /opt/nmon/nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 60 -c 1440 -m /opt/nmon/nmon_logs/ >> /opt/nmon/full.log 2>&1
 ```
 
 **Setup nmon File Streaming with Sender Script – Installed from Axibase
 GitHub or Binaries:**
 
-```sh
+```txt
 0 0 * * * /opt/nmon/nmon -f -s 60 -c 1440 -T -m /opt/nmon/nmon_logs/
-0 0 * * * /opt/nmon/nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 60 -
-c 1440 -m /opt/nmon/nmon_logs/ >> /opt/nmon/full.log 2>&1         `
+0 0 * * * /opt/nmon/nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 60 -c 1440 -m /opt/nmon/nmon_logs/ >> /opt/nmon/full.log 2>&1         `
 ```
 
 Entities collecting nmon data are automatically added to the `nmon-linux` and `nmon-aix` entity groups.

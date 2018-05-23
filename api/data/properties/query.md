@@ -144,11 +144,10 @@ POST https://atsd_hostname:8443/api/v1/properties/query
 
 #### curl
 
-```elm
+```bash
 curl  https://atsd_hostname:8443/api/v1/properties/query \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --request POST \
   --data '[{"type":"disk","entity":"nurswgvml007","key":{"file_system":"/"},"startDate":"2016-05-25T04:00:00Z","endDate":"2016-05-25T05:00:00Z"}]'
 ```
 

@@ -163,7 +163,7 @@ The frequency of incremental refreshes can be controlled with the `search.indexi
 
 The frequency of rebuild tasks can be controlled with the `search.indexing.full.schedule` setting. The full rebuild takes up to 10 minutes.
 
-Administrators can refresh the index manually on the **Admin: Diagnostics: Search Index** page.
+Administrators can refresh the index manually on the **Settings > Diagnostics > Search Index** page.
 
 ### Monitoring
 

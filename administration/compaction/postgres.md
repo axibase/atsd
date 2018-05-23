@@ -203,7 +203,7 @@ wc -l IBM_adjusted.txt
 
 Start a PostgreSQL 9.6 container. Mount `/tmp/test` directory to the container.
 
-```elm
+```bash
 docker run --name postgres \
    -e POSTGRES_USER=axibase \
    -e POSTGRES_PASSWORD=axibase \

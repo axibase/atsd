@@ -1,4 +1,4 @@
-# Installation on Distributed HBase Cluster using Cloudera Manager
+# Installation: Cloudera / CDH
 
 ## Create `axibase` user
 
@@ -459,6 +459,9 @@ Update start/script files. Required for ATSD installations older than revision 1
 
 ```sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/stop-atsd.sh
+```
+
+```sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/start-atsd.sh
 ```
 

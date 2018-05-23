@@ -19,6 +19,7 @@ Returns database version including licensing details as well as a `date` object 
 | `buildInfo`  | object | Database version information. |
 | `license` | object | Database license details.  |
 | `date` | object | Current date, start date, time zone, and offset information.  |
+| `settings` | object | Basic database settings such as the `server.url` and `hostname`.  |
 
 ### Errors
 
@@ -38,9 +39,9 @@ None.
 
 #### curl
 
-```elm
+```bash
 curl https://atsd_hostname:8443/version \
-  --insecure --verbose --user {username}:{password} \
+  --insecure --include --user {username}:{password} \
   --request GET
 ```
 
