@@ -270,6 +270,7 @@ const administrationMenu = [
 ]
 
 module.exports = {
+    base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
     description: "User manual and API reference of Axibase® Time Series Database",
     head: [
