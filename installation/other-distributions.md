@@ -1,4 +1,4 @@
-# Other Distributions
+# Installation: Other Distributions
 
 ## Requirements
 

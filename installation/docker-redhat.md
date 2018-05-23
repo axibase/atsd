@@ -1,4 +1,4 @@
-# Installation from RedHat Certified Image
+# Installation: RedHat Certified Container
 
 ## Host Requirements
 

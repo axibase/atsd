@@ -1,4 +1,4 @@
-# Installation on Distributed HBase Cluster using Cloudera Manager
+# Installation: Cloudera / CDH
 
 ## Create `axibase` user
 

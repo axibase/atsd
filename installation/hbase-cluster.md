@@ -1,4 +1,4 @@
-# Installation on Distributed HBase Cluster
+# Installation: HBase Cluster
 
 ## Create `axibase` User
 
