@@ -80,13 +80,13 @@ kill 31326
 
 ### Load `id_rsa_atsdreadonly` into the `puttygen` program
 
-![](resources/ssh-tunnel-1.png)
+![](./resources/ssh-tunnel-1.png)
 
 ### Click on the [Save private key] button and save the file in `*.ppk` format to the local disk
 
 ### Open the `putty` client and connect it to the ATSD server under atsdreadonly with the `ppk` file
 
-![](resources/ssh-tunnel-2.png)
+![](./resources/ssh-tunnel-2.png)
 
 ### Copy private key to remote systems
 

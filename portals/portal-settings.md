@@ -66,10 +66,10 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 ```
 
 [2x3 Group Layout (per row grouping)](https://apps.axibase.com/chartlab/adfe0fe2)
-![](resources/6_widget_portal.png)
+![](./resources/6_widget_portal.png)
 
 [3x2 Grid Layout (manual grouping)](https://apps.axibase.com/chartlab/adfe0fe2/18/)
-![](resources/portal-per-row.png)
+![](./resources/portal-per-row.png)
 
 ## [configuration] Section
 

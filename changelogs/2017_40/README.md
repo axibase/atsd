@@ -32,6 +32,6 @@ Refer to [entity](../../api/meta/entity/list.md#additional-examples) examples an
 
 ### Issue 4589
 
-![](Images/region_split.png)
+![](./Images/region_split.png)
 
-![](Images/region_merge.png)
+![](./Images/region_merge.png)

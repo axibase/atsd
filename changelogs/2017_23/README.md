@@ -31,10 +31,10 @@ Admin > Diagnostics > Backup, daily .xml backups made for the following object t
 * User Groups (with membership)
 * Entities (with entity tags, and non-default settings)
 
-![4243](Images/4243.png)
+![4243](./Images/4243.png)
 
 #### Issue 3556
 
 Text field added to Metrics > Data Entry form.
 
-![3556](Images/3556.png)
+![3556](./Images/3556.png)

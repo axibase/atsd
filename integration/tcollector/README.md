@@ -193,7 +193,7 @@ Launch live tcollector portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/bdad4416/3/)
 
-![](resources/tcollector-portal1.png)
+![](./resources/tcollector-portal1.png)
 
 ## List of tcollector metrics
 

@@ -11,7 +11,7 @@ Filters determine which commands should be processed by a rule. Commands that sa
 | Data Type | Checks that the command is of the specified type: `series`, `property`, `message`. |
 | Metric | Checks that a metric is equal to the metric name specified in the rule. |
 
-![](images/filter-dt-metric.png)
+![](./images/filter-dt-metric.png)
 
 ## User-Defined Filters
 
@@ -74,7 +74,7 @@ Base command fields:
 * keys
 * properties
 
-![](images/filter-expression.png)
+![](./images/filter-expression.png)
 
 ```javascript
 tags.method == 'get' AND tags.site == 'OperationsManager2007WebConsole'
@@ -100,7 +100,7 @@ entity.tags.environment != 'test' && message NOT IN collection('linux-ignore-com
 
 The filter discards commands for an entity not equal to one of entities specified in the rule. The filter is applied only if the list of selected entities is not empty.
 
-![](images/filter-entity.png)
+![](./images/filter-entity.png)
 
 As a more flexible alternative, the entity condition can be encoded in the filter expression:
 
@@ -120,13 +120,13 @@ entity.tags.location = 'SVL'
 
 The filter discards commands for entities that do not belong to one of the entity groups specified in the rule. The filter is applied only if the list of selected entity groups is not empty.
 
-![](images/filter-entity-group.png)
+![](./images/filter-entity-group.png)
 
 ## Date Filter
 
 If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified 'grace' interval from the current server time. This filter is typically used to ignore historical data.
 
-![](images/filter-time.png)
+![](./images/filter-time.png)
 
 ## Filter vs Condition
 

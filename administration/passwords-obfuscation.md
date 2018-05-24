@@ -8,7 +8,7 @@ Enter the plain text password and click `Obfuscate`.
 
 The result will be an obfuscated string with `OBF:` prefix which can be specified in the `server.properties` file.
 
-![](images/password-obfuscation.png)
+![](./images/password-obfuscation.png)
 
 Sample `server.properties` file with obfuscated passwords:
 
@@ -25,7 +25,7 @@ The input text should start with `OBF:` prefix.
 
 Enter the text  and click `Deobfuscate` to view the plain text.
 
-![](images/password-deobfuscation.png)
+![](./images/password-deobfuscation.png)
 
 ## Security
 

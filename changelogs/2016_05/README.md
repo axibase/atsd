@@ -147,13 +147,13 @@ Docker `inspect` snippet for a Mesos-managed container:
 
 Recently added to the [`docker`](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md#docker-job) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
 
-![Figure 1](Figure1.png)
+![Figure 1](./Figure1.png)
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
 that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status will initially be retained in ATSD for the specified time interval (for
 example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
 
-![Figure 2](Figure2.png)
+![Figure 2](./Figure2.png)
 
 By default such records with the status `deleted` are not actually removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 

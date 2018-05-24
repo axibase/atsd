@@ -1517,9 +1517,9 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, VALUE NAN, START_TIME)
 | `alignment` | Aligns regular timestamps based on calendar or start time. Default: `CALENDAR`. |
 | `timezone` | Time zone applied in `CALENDAR` alignment to periods equal or greater than 1 day. |
 
-[![](images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
+[![](./images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
 
-![INTERPOLATE Parameters](images/regularize_sinusoid.png)
+![INTERPOLATE Parameters](./images/regularize_sinusoid.png)
 
 ### Interpolation Period
 
@@ -3073,7 +3073,7 @@ The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executi
 
 **Example**. Temporary Table Grouping and In-Memory Ordering
 
-![Temp Table Grouping and In-Memory Ordering](images/in-memory-ordering.png)
+![Temp Table Grouping and In-Memory Ordering](./images/in-memory-ordering.png)
 
 ## Scheduler
 

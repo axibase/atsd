@@ -28,7 +28,7 @@ SELECT datetime, date_format(time), date_format(time, 'yyyy-MM-dd HH:mm:ss z')
 LIMIT 3
 ```
 
-![4166](Images/4166.png)
+![4166](./Images/4166.png)
 
 #### Issue 4146
 
@@ -51,8 +51,8 @@ The period starting at '2017-05-01T00:00:00Z' is now included even though it sta
 
 #### Issue 4140
 
-![4140](Images/4140.1.png)
+![4140](./Images/4140.1.png)
 
 These links have been compressed to a dropdown menu, as shown below:
 
-![4104](Images/4104.2.png)
+![4104](./Images/4104.2.png)

@@ -19,7 +19,7 @@ year 2017.
 To load the data into ATSD, login into the database web interface and submit
 these commands on the **Metrics > Data Entry** page.
 
-![](images/metrics_entry.png)
+![](./images/metrics_entry.png)
 
 ## Prerequisites
 
@@ -32,14 +32,14 @@ these commands on the **Metrics > Data Entry** page.
 
 * Add the **Input Data** tool to your workflow.
 
-  ![](images/input_data.png)
+  ![](./images/input_data.png)
 
 * Choose **Other Databases > ODBC...** in the 'Input Data' configuration window.
 * Open **ODBC Connection** dialog.
 
-  ![](images/choose_odbc.png)
+  ![](./images/choose_odbc.png)
 
-  ![](images/no_dsn.png)
+  ![](./images/no_dsn.png)
 
 * Open the **ODBC Data Source Administrator** window by pressing the **ODBC Admin** button in the **ODBC Connection** dialog.
 
@@ -61,18 +61,18 @@ these commands on the **Metrics > Data Entry** page.
 
 * Check (enable) the **Strip Quote** and **Strip Escape** options, press **OK**.
 
-  ![](images/odbc_quotes.png)
+  ![](./images/odbc_quotes.png)
 
 * Select the name you specified for DSN during bridge configuration from the **Data
   Source Name** list and press **OK**.
 
-  ![](images/dsn_list.png)
+  ![](./images/dsn_list.png)
 
 ## Building Queries
 
 After creating a connection you will see the **Choose Table or Specify Query** dialog.
 
-![](images/choose_table.png)
+![](./images/choose_table.png)
 
 This allows you build a query by choosing a table or entering query
 text manually.
@@ -81,7 +81,7 @@ text manually.
   specified in the DSN URL. Click the **Refresh** button to reload the list, if
   necessary.
 
-  ![](images/metrics_list.png)
+  ![](./images/metrics_list.png)
 
 * In the **Visual Query Tab**, you can specify particular columns in the `SELECT` expression as well as add optional
   sorting and grouping to prepare your
@@ -96,7 +96,7 @@ text manually.
    ORDER BY datetime
 ```
 
-  ![](images/visual_builder.png)
+  ![](./images/visual_builder.png)
 
 * The **SQL Editor** allows you to review and modify pre-built queries or write
   your own.
@@ -104,7 +104,7 @@ text manually.
 * The **Test Query** button truncates the query after the `FROM` clause and sends only the remaining
   `SELECT ... FROM ...` expression to the database for validation.
 
-  ![](images/sql_editor.png)
+  ![](./images/sql_editor.png)
 
 Press **OK** when the query is ready for processing.
 
@@ -112,9 +112,9 @@ Press **OK** when the query is ready for processing.
 
 Press **Run Workflow**, to see the result of the query.
 
-![](images/run_workflow.png)
+![](./images/run_workflow.png)
 
-![](images/results.png)
+![](./images/results.png)
 
 ## Calculate and Store Derived Series
 
@@ -125,7 +125,7 @@ its weight divided by 1000 and sum the products.
 
 The resulting workflow will be implemented as follows:
 
-![](images/workflow.png)
+![](./images/workflow.png)
 
 You can download [this workflow](resources/atsd-workflow.yxmd) for review in your own Alteryx Designer installation.
 
@@ -136,7 +136,7 @@ The workflow consists of the following steps (nodes):
    `inflation.cpi.categories.price` table. Select `datetime`,
    `value` columns and manually add `tags.category` as shown below.
 
-   ![](images/select_columns.png)
+   ![](./images/select_columns.png)
 
 2. **Input Data** tool. Follow the same procedure as above for the
    `inflation.cpi.categories.weight` table.
@@ -144,9 +144,9 @@ The workflow consists of the following steps (nodes):
 3. **Filter** tool. Specify the condition `>= January 1st, 2010`
    and use the **T** (_true_) node output to retrieve the series created after 2009 only.
 
-   ![](images/filter_date.png)
+   ![](./images/filter_date.png)
 
-   ![](images/true_output.png)
+   ![](./images/true_output.png)
 
 4. **Filter** tool. Follow the same procedure as above.
 
@@ -155,45 +155,45 @@ The workflow consists of the following steps (nodes):
    `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` to
    `price` and `weight` respectively, `inflation.cpi.categories.price.datetime` to `datetime` and `inflation.cpi.categories.price.tags.category` to `tags.category`.
 
-   ![](images/inner.png)
+   ![](./images/inner.png)
 
    > **Note**
    >
    > To check input or output of any node, _run the workflow_ and click its
    > input/output.
    >
-   > ![](images/join_output.png)
+   > ![](./images/join_output.png)
 
 6. **Formula** tool. Connect its input to the **J** (_inner join_)
    output of the **Join** node. Next, create a new column named `value` to
    store the result. Fill in the expression to calculate it, and specify the
    correct data type.
 
-   ![](images/add_column.png)
+   ![](./images/add_column.png)
 
-   ![](images/formula.png)
+   ![](./images/formula.png)
 
 7. **Summarize** tool. Select fields from above to get the actions list as shown
    below on the image. Input `value` into  **Output Field Name**.
 
-   ![](images/summarize.png)
+   ![](./images/summarize.png)
 
 8. **Sort** tool. Apply it to sort records by date.
 
-   ![](images/sort.png)
+   ![](./images/sort.png)
 
 9. **Formula** tool. Create a new column named `entity` with the **Formula** tool. Name it
    `"bls.gov`.
 
-   ![](images/entity.png)
+   ![](./images/entity.png)
 
 10. **Output Data** tool. Choose ODBC Connection as before and enter a name for
     the new metric, in this case `inflation.cpi.composite.price`.
     Edit **Output Options** in the configuration dialog.
 
-    ![](images/metric_name.png)
+    ![](./images/metric_name.png)
 
-    ![](images/output.png)
+    ![](./images/output.png)
 
 11. **Browse** tool. View the final result.
 
@@ -204,4 +204,4 @@ with the new series stored back in the database.
 
 Click on the **Browse** node to view the results.
 
-   ![](images/calc_results.png)
+   ![](./images/calc_results.png)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-![](images/search.png)
+![](./images/search.png)
 
 The search interface finds series by matching search keywords against series fields.
 

@@ -25,67 +25,67 @@ Install and activate the bridge:
 
 * Run the installer under an Administrator account
 
-  ![](images/easysoft_install_0.PNG)
+  ![](./images/easysoft_install_0.png)
 
 * Skip the welcome page
 
-  ![](images/easysoft_install_1.PNG)
+  ![](./images/easysoft_install_1.png)
 
 * Accept the license agreement
 
-  ![](images/easysoft_install_2.PNG)
+  ![](./images/easysoft_install_2.png)
 
 * Choose an installation path
 
-  ![](images/easysoft_install_3.PNG)
+  ![](./images/easysoft_install_3.png)
 
 * Confirm the installation
 
-  ![](images/easysoft_install_4.PNG)
+  ![](./images/easysoft_install_4.png)
 
 * Check the **License Manager** box and finish
 
-  ![](images/easysoft_install_5.PNG)
+  ![](./images/easysoft_install_5.png)
 
 ## License Activation
 
 A license manager window will appear after exiting from the installation wizard. If the window fails to appear go to **Start** and search for **License Manager**. Fill out the form fields as entered in the registered account and click **Request License**
 
-  ![](images/easysoft_activate_1.PNG)
+  ![](./images/easysoft_activate_1.png)
 
 * Choose **Trial**, click Next
 
-  ![](images/easysoft_activate_2.PNG)
+  ![](./images/easysoft_activate_2.png)
 
 * Choose **ODBC JDBC Gateway**, click Next
 
-  ![](images/easysoft_activate_3.PNG)
+  ![](./images/easysoft_activate_3.png)
 
 * Click **Online request**
 
-  ![](images/easysoft_activate_4.PNG)
+  ![](./images/easysoft_activate_4.png)
 
 * If the activation succeeds, a pop-up window will appear
 
-  ![](images/easysoft_activate_5.PNG)
+  ![](./images/easysoft_activate_5.png)
 
 * Also a window with the new license will be displayed in the License Manager
 
-  ![](images/easysoft_activate_6.PNG)
+  ![](./images/easysoft_activate_6.png)
 
 ## Configure ODBC Data Source
 
 * Go to **Start**, type `ODBC` and launch ODBC Data Source Manager under an Administrator account.
 
-  ![](images/ODBC_1.PNG)
+  ![](./images/ODBC_1.png)
 
 * Open **System DSN** tab, click **Add...**.
 
-  ![](images/ODBC_2.PNG)
+  ![](./images/ODBC_2.png)
 
 * Choose the **ODBC-JDBC Gateway**, click **Finish**.
 
-  ![](images/ODBC_3.PNG)
+  ![](./images/ODBC_3.png)
 
 * Enter the following settings in the DSN Setup window:
 
@@ -100,7 +100,7 @@ URL         :   jdbc:atsd://atsd_hostname:8443
 
 Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver)  for additional details about the URL format and the driver properties.
 
- ![](images/ODBC_conf.png)
+ ![](./images/ODBC_conf.png)
 
 * Check (enable) **'Strip Quote'** option to remove the quotes from table and column names.
 
@@ -112,4 +112,4 @@ Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-con
 
 * The System DSN tab should now display the new data source.
 
-  ![](images/ODBC_5.PNG)
+  ![](./images/ODBC_5.png)

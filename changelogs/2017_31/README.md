@@ -73,7 +73,7 @@ SELECT COUNT(*) FROM test_m
 
 ### Issue 4406
 
-![](Images/4406.png)
+![](./Images/4406.png)
 
 ### Issue 4395
 

@@ -18,4 +18,4 @@ The statistics allows you to:
 [Learn how to configure the metric persistence filter
 here.](../metric-persistence-filter.md)
 
-![](images/ingestion_statistics_new.png "ingestion_statistics")
+![](./images/ingestion_statistics_new.png "ingestion_statistics")

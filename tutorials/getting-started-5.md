@@ -4,7 +4,7 @@
 
 Open the SQL console:
 
-![](resources/getting-started-5_1.png)
+![](./resources/getting-started-5_1.png)
 
 Enter the following query, modify the `datetime` condition:
 
@@ -16,7 +16,7 @@ WHERE entity = 'my-entity'
 ORDER BY datetime
 ```
 
-![](resources/getting-started-5_2.png)
+![](./resources/getting-started-5_2.png)
 
 Modify the query to add aggregation and groupings:
 
@@ -29,7 +29,7 @@ GROUP BY entity, PERIOD(1 HOUR)
   ORDER BY datetime
 ```
 
-![](resources/getting-started-5_3.png)
+![](./resources/getting-started-5_3.png)
 
 Review the [SQL syntax](../sql/README.md) and experiment by executing your own queries.
 

@@ -2,7 +2,7 @@
 
 Create a `AWS SNS` notification with `Message Format = SNS JSON`, for example:
 
-![](images/aws_sns_web_notification_config_json.png)
+![](./images/aws_sns_web_notification_config_json.png)
 
 Create a new rule and open the **Web Notifications** tab.
 
@@ -39,7 +39,7 @@ Customize the alert messages using [placeholders](../placeholders.md) as necessa
      }
 ```
 
-  ![](images/aws_sns_web_notification_json.png)
+  ![](./images/aws_sns_web_notification_json.png)
 
 * Save the rule by clicking on the **Save** button.
 
@@ -51,34 +51,34 @@ It may take a few seconds for the first commands to arrive and to trigger the no
 
 The AWS SNS Subscriptions:
 
-![](images/aws_sns_subscriptions.png)
+![](./images/aws_sns_subscriptions.png)
 
 ## Notifications examples
 
 ### Email protocol
 
-![](images/aws_sns_web_notification_json_test_1.png)
+![](./images/aws_sns_web_notification_json_test_1.png)
 
-![](images/aws_sns_web_notification_json_test_2.png)
+![](./images/aws_sns_web_notification_json_test_2.png)
 
-![](images/aws_sns_web_notification_json_test_3.png)
+![](./images/aws_sns_web_notification_json_test_3.png)
 
 ### Http protocol
 
 The `HTTP` subscription with parameter `raw message delivery = false`:
 
-![](images/aws_sns_web_notification_json_test_4.png)
+![](./images/aws_sns_web_notification_json_test_4.png)
 
-![](images/aws_sns_web_notification_json_test_5.png)
+![](./images/aws_sns_web_notification_json_test_5.png)
 
-![](images/aws_sns_web_notification_json_test_6.png)
+![](./images/aws_sns_web_notification_json_test_6.png)
 
 ### Http protocol
 
 The `HTTP` subscription with parameter `raw message delivery = true`:
 
-![](images/aws_sns_web_notification_json_test_7.png)
+![](./images/aws_sns_web_notification_json_test_7.png)
 
-![](images/aws_sns_web_notification_json_test_8.png)
+![](./images/aws_sns_web_notification_json_test_8.png)
 
-![](images/aws_sns_web_notification_json_test_9.png)
+![](./images/aws_sns_web_notification_json_test_9.png)

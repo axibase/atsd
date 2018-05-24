@@ -25,9 +25,9 @@
 
 ### Issue 3827
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)
 
 ### Issue 3956
 

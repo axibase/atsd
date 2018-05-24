@@ -37,7 +37,7 @@
 
 ## Parser Configuration Screenshot
 
-![](resources/air_quality_csv_parser.png)
+![](./resources/air_quality_csv_parser.png)
 
 ## Parser Configuration Description
 

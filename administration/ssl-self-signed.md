@@ -21,13 +21,13 @@ Login as a user with administrative privileges.
 
 Open the **Settings > Certificates** page and click **Self Signed Certificate** in the multi-action button:
 
-![](images/ssl_self_signed_1.png)
+![](./images/ssl_self_signed_1.png)
 
-![](images/ssl_self_signed_2.png)
+![](./images/ssl_self_signed_2.png)
 
 Enter the certificate information and click on **Create And Import**. Only the `Domain Name` field is required.
 
-![](images/ssl_self_signed_3.png)
+![](./images/ssl_self_signed_3.png)
 
 > `Country Code` must contain two letters if specified.
 

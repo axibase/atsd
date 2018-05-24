@@ -26,9 +26,9 @@
 formatInterval(elapsedTime(value)) + " ago"
 ```
 
-![](Images/issue-4480-1.png)
+![](./Images/issue-4480-1.png)
 
-![](Images/issue-4480-2.png)
+![](./Images/issue-4480-2.png)
 
 #### Issue 4476
 
@@ -49,22 +49,22 @@ The Limit setting controls the number of samples contained in the resultset.
 
 #### Issue 4460
 
-![](Images/issue-4460.jpg)
+![](./Images/issue-4460.jpg)
 
 Query execution time highlighted above.
 
 #### Issue 4415
 
-![](Images/issue-4415.png)
+![](./Images/issue-4415.png)
 
 #### Issue 4317
 
 Files produced by an SQL report can be made available for [downloading](../../sql/scheduled-sql.md#link) by end-users. The report files contain records that were prepared by the server when the scheduled task was last executed.
 
-![](Images/issue-4317.png)
+![](./Images/issue-4317.png)
 
 #### Issue 4297
 
 The Store option enables [writing the results](../../sql/scheduled-sql-store.md) of the query back into the database.
 
-![](Images/issue-4297.png)
+![](./Images/issue-4297.png)

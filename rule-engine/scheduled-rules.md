@@ -15,7 +15,7 @@ To evaluate the rule on schedule instead of event, use **timer** metrics which a
 
 By reacting to a `timer` metric, the rule can be evaluated at the desired frequency, for example, every 15 minutes:
 
-![](images/timer.png)
+![](./images/timer.png)
 
 ## Analyzing Data
 
@@ -47,4 +47,4 @@ The [`now`](window-fields.md#time-fields) field represents current server time a
 now.getHourOfDay() = 15
 ```
 
-![](images/timer-calendar.png)
+![](./images/timer-calendar.png)

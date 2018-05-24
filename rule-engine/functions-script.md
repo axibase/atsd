@@ -67,13 +67,13 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 
 ### Markdown Format
 
- ![](images/script-osquery-bacticks.png)
+ ![](./images/script-osquery-bacticks.png)
 
 ### HTML Format
 
- ![](images/script-format-html.png)
+ ![](./images/script-format-html.png)
 
- ![](images/script-format-html-result.png)
+ ![](./images/script-format-html-result.png)
 
 ## Examples
 
@@ -131,15 +131,15 @@ rtt min/avg/max/mdev = 40.078/43.189/45.588/2.305 ms
 
 Telegram:
 
-![](images/script-ping-telegram.png)
+![](./images/script-ping-telegram.png)
 
 Discord:
 
-![](images/script-ping-discord.png)
+![](./images/script-ping-discord.png)
 
 Slack:
 
-![](images/script-ping-slack.png)
+![](./images/script-ping-slack.png)
 
 ### `traceroute`
 
@@ -195,15 +195,15 @@ traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
 
  Telegram:
 
- ![](images/script-traceroute-telegram.png)
+ ![](./images/script-traceroute-telegram.png)
 
  Discord:
 
- ![](images/script-traceroute-discord.png)
+ ![](./images/script-traceroute-discord.png)
 
  Slack:
 
- ![](images/script-traceroute-slack.png)
+ ![](./images/script-traceroute-slack.png)
 
 ### `top`
 
@@ -259,15 +259,15 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 
  Telegram:
 
- ![](images/script-top-telegram.png)
+ ![](./images/script-top-telegram.png)
 
  Discord:
 
- ![](images/script-top-discord.png)
+ ![](./images/script-top-discord.png)
 
  Slack:
 
- ![](images/script-top-slack.png)
+ ![](./images/script-top-slack.png)
 
 ### `ps`
 
@@ -308,15 +308,15 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 
  Telegram:
 
- ![](images/script-ps-telegram.png)
+ ![](./images/script-ps-telegram.png)
 
  Discord:
 
- ![](images/script-ps-discord.png)
+ ![](./images/script-ps-discord.png)
 
  Slack:
 
- ![](images/script-ps-slack.png)
+ ![](./images/script-ps-slack.png)
 
 ### URL availability
 
@@ -369,15 +369,15 @@ Content Length: 35214 bytes
 
  Telegram:
 
- ![](images/script-url_avail-telegram.png)
+ ![](./images/script-url_avail-telegram.png)
 
  Discord:
 
- ![](images/script-url_avail-discord.png)
+ ![](./images/script-url_avail-discord.png)
 
  Slack:
 
- ![](images/script-url_avail-slack.png)
+ ![](./images/script-url_avail-slack.png)
 
 ### TCP availability
 
@@ -423,15 +423,15 @@ TCP port 443 is available
 
  Telegram:
 
- ![](images/script-tcp-telegram.png)
+ ![](./images/script-tcp-telegram.png)
 
  Discord:
 
- ![](images/script-tcp-discord.png)
+ ![](./images/script-tcp-discord.png)
 
  Slack:
 
- ![](images/script-tcp-slack.png)
+ ![](./images/script-tcp-slack.png)
 
 ### `osquery`
 
@@ -478,12 +478,12 @@ ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT process
 
  Telegram:
 
- ![](images/script-osquery-telegram.png)
+ ![](./images/script-osquery-telegram.png)
 
  Discord:
 
- ![](images/script-osquery-discord.png)
+ ![](./images/script-osquery-discord.png)
 
  Slack:
 
- ![](images/script-osquery-slack.png)
+ ![](./images/script-osquery-slack.png)

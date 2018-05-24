@@ -28,23 +28,23 @@
 
 Email notifications can include screenshots of the underlying metric captured using the built-in portal.
 
-![](Images/screenshot-enabled.png)
+![](./Images/screenshot-enabled.png)
 
-![](Images/screenshot-attach.png)
+![](./Images/screenshot-attach.png)
 
 ### Issue 4658
 
 Entity view can be added to the top menu with a custom icon.
 
-![](Images/entity-view-icon.png)
+![](./Images/entity-view-icon.png)
 
 ### Issue 4600
 
 Successful user authentication requests are stored in the database and can be reviewed by administrators to identify idle accounts and to measure user activity.
 
-![](Images/last-login.png)
+![](./Images/last-login.png)
 
-![](Images/login-audit.png)
+![](./Images/login-audit.png)
 
 ### Issue 4585
 

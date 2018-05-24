@@ -28,4 +28,4 @@ FROM m1
 
 ### Issue 4094
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)

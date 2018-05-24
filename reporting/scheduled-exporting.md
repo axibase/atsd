@@ -82,4 +82,4 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 
 Clicking on the `Test` button will export the first file, display the file name, and provide a link to download the file.
 
-![](images/export_job_test_button.png)
+![](./images/export_job_test_button.png)

@@ -45,7 +45,7 @@ Modify the `Body` by replacing the `<JSON_CONTENT>` value with actual values, fo
 }
 ```
 
-![](images/aws_api_batch_notification_config.png)
+![](./images/aws_api_batch_notification_config.png)
 
 ## Rule
 
@@ -61,7 +61,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/aws_api_rule_overview.png)
+![](./images/aws_api_rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -69,7 +69,7 @@ Set **Enabled** to **Yes** and choose the previously created web notification fr
 
 Enable **Open** trigger.
 
-![](images/aws_api_batch_rule_notification.png)
+![](./images/aws_api_batch_rule_notification.png)
 
 ## Test
 
@@ -79,13 +79,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/aws_api_batch_alert_open.png)
+![](./images/aws_api_batch_alert_open.png)
 
 Check the AWS Batch job status:
 
-![](images/aws_api_batch_test.png)
+![](./images/aws_api_batch_test.png)

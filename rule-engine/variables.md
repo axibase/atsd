@@ -4,7 +4,7 @@
 
 Variables are defined on the **Overview** tab and consist of a unique name and an expression.
 
-![](images/variables.png)
+![](./images/variables.png)
 
 ## Usage
 
@@ -12,7 +12,7 @@ Variables are defined on the **Overview** tab and consist of a unique name and a
 
 The user-defined variables can be referenced in the rule [condition](condition.md).
 
-![](images/variables-condition.png)
+![](./images/variables-condition.png)
 
 ### Response Actions
 
@@ -22,7 +22,7 @@ Similar to the built-in window [fields](window.md#window-fields), variables can 
 ${busy}
 ```
 
-![](images/variables-refer.png)
+![](./images/variables-refer.png)
 
 ### Filter
 
@@ -50,7 +50,7 @@ Variables **cannot** be included in a [filter](filters.md) expression because fi
 
 > Classify large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
 
-![](images/variables-large-integers.png)
+![](./images/variables-large-integers.png)
 
 ### string
 
@@ -133,7 +133,7 @@ To access the n-th element in the collection, use square brackets `[index]` or t
 
 These variables can refer to other variables declared in the same rule.
 
-![](images/variables-reference.png)
+![](./images/variables-reference.png)
 
 ### Order
 
@@ -145,7 +145,7 @@ A dependent variable must be declared **after** the variable that it refers to.
 
 Variables that are dependent on other variables can be included in a condition.
 
-![](images/variables-refer-indirect.png)
+![](./images/variables-refer-indirect.png)
 
 ## Execution
 
@@ -155,6 +155,6 @@ If the variable invokes an external function such as [`scriptOut`](functions-scr
 
 The current value of a variable can be accessed on the window detail page.
 
-![](images/variables-window-2.png)
+![](./images/variables-window-2.png)
 
-![](images/variables-window.png)
+![](./images/variables-window.png)

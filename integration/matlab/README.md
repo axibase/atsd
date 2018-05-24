@@ -22,7 +22,7 @@ To complete this exercise, sample data must be available in your ATSD instance.
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
 3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
 
-![](resources/metrics_entry.png)
+![](./resources/metrics_entry.png)
 
 The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](resources/eng_e02.xls).
 
@@ -38,7 +38,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 
 * Run the `prefdir` command in the MatLab Command Window. This command displays the path to a directory used in subsequent steps.
 
-![](resources/prefdir.png)
+![](./resources/prefdir.png)
 
 * Close MatLab if it's running.
 * Navigate to the `prefdir` directory above and create a file named `javaclasspath.txt`.
@@ -52,7 +52,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 
 Example:
 
-![](resources/java_add_path.png)
+![](./resources/java_add_path.png)
 
 ## Configure Database Connection
 
@@ -68,7 +68,7 @@ Example:
 
 Example:
 
-![](resources/jdbc_data_source_new.png)
+![](./resources/jdbc_data_source_new.png)
 
 `atsd_hostname` is the hostname address of the ATSD instance you want to connect to.
 
@@ -98,7 +98,7 @@ data = res.Data
 
 Expected result:
 
-![](resources/verify_example.png)
+![](./resources/verify_example.png)
 
 ## Review Tables in the Database Explorer
 
@@ -107,13 +107,13 @@ Expected result:
 
 The _Database Browser_ would display a set of tables matching the expression:
 
-![](resources/database_browser.png)
+![](./resources/database_browser.png)
 
 Select one or more columns to open the Data Preview window displaying the first N rows of the resultset (10 by default).
 
 An example with the `datetime`, `value`, and `text` fields selected:
 
-![](resources/prewiew_data.png)
+![](./resources/prewiew_data.png)
 
 The complete resultset can be imported with the Import button, highlighted with a green arrow.
 
@@ -132,7 +132,7 @@ data = res.Data;
 
 `data` example:
 
-![](resources/data_example.png)
+![](./resources/data_example.png)
 
 To insert data into ATSD (assuming the `data` variable has required values):
 
@@ -170,21 +170,21 @@ res = fetch(curs);
 prices_resultset = res.Data;
 ```
 
-![](resources/prices_resultset.png)
+![](./resources/prices_resultset.png)
 
 ```matlab
 % fetch datetime column
 datetimes = prices_resultset(:,1);
 ```
 
-![](resources/datetimes_1.png)
+![](./resources/datetimes_1.png)
 
 ```matlab
 % get every 10th record from datetimes to form list of years
 datetimes = datetimes(1:10:length(datetimes));
 ```
 
-![](resources/datetimes_2.png)
+![](./resources/datetimes_2.png)
 
 ```matlab
 % fetch third column from prices resultset (value field)
@@ -192,7 +192,7 @@ datetimes = datetimes(1:10:length(datetimes));
 prices = cell2mat(prices_resultset(:,3));
 ```
 
-![](resources/prices.png)
+![](./resources/prices.png)
 
 ### Load weights data into the variable `weights`
 
@@ -212,7 +212,7 @@ weights = cell2mat(weights_resultset(:,2));
 weights = repmat(weights, 5, 1);
 ```
 
-![](resources/weights.png)
+![](./resources/weights.png)
 
 ### Calculate Weighted Index
 
@@ -221,7 +221,7 @@ weights = repmat(weights, 5, 1);
 inflation_cpi_price = prices .* weights / 1000;
 ```
 
-![](resources/inflation_1.png)
+![](./resources/inflation_1.png)
 
 ```matlab
 % sum inflation prices for each year
@@ -230,7 +230,7 @@ inflation_cpi_composite_price = sum(reshape(inflation_cpi_price, 10, 5));
 inflation_cpi_composite_price = inflation_cpi_composite_price';
 ```
 
-![](resources/inflation_2.png)
+![](./resources/inflation_2.png)
 
 ### Create cell-matrix to insert into ATSD
 
@@ -240,14 +240,14 @@ entity = 'bls.gov';
 entities = repmat(cellstr(entity), size(datetimes, 1), 1);
 ```
 
-![](resources/entities.png)
+![](./resources/entities.png)
 
 ```matlab
 % append Entity, Datetime and Inflation columns
 payload = [entities, datetimes, num2cell(inflation_cpi_composite_price)];
 ```
 
-![](resources/payload.png)
+![](./resources/payload.png)
 
 ```matlab
 % define colnames which is a cell array describing names and order of columns in payload

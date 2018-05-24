@@ -54,7 +54,7 @@ Available series can be searched on the **Series** tab in the main menu.
 
 Alternatively, if the entity is already known, the metrics and series can be explored via a portal containing drop-down selectors.
 
-[![](resources/button.png)](https://apps.axibase.com/chartlab/d6e73e37/2)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/d6e73e37/2)
 
 ## Selecting Specific Series
 
@@ -66,7 +66,7 @@ To display values for a specific series, the `[series]` section should specify t
   entity = nurswgvml007
 ```
 
-![](resources/selecting-series_1.png)
+![](./resources/selecting-series_1.png)
 
 ```ls
   # Series with Tags
@@ -77,9 +77,9 @@ To display values for a specific series, the `[series]` section should specify t
     fstype = ext4
 ```
 
-![](resources/selecting-series_2.png)
+![](./resources/selecting-series_2.png)
 
-[![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/3)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/3)
 
 ## Selecting Multiple Series with Tags
 
@@ -127,7 +127,7 @@ mount points: `/`, `/boot/`, `/media/datadrive`.
 
 The resulting series is merged from 3 underlying different series and provides a meaningless result in this case.
 
-[![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/7)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/7)
 
 To control how multiple matched series are processed, use the `'multiple-series = true | false'` setting.
 
@@ -159,7 +159,7 @@ The default value of the `multiple-series` setting is `true` in the following ca
 
 * `entity-expression`, `entity-group`, or `tag-expression` is present
 
-![](resources/multiple-series-1.png)
+![](./resources/multiple-series-1.png)
 
 ```ls
 # Select series using tag value wildcards. multiple-series is TRUE
@@ -188,7 +188,7 @@ The default value of the `multiple-series` setting is `true` in the following ca
   tag-expression = tags.mount NOT LIKE '/m*'
 ```
 
-![](resources/select-tags.png)
+![](./resources/select-tags.png)
 
 ## Merging Series
 
@@ -203,9 +203,9 @@ same object despite having different keys. Often, such series are recorded seque
 
 * Measurements recorded during a set of scientific experiments are tagged with an experiment ID and input parameters.
 
-![](resources/multiple-series-off.png)
+![](./resources/multiple-series-off.png)
 
-[![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/15/)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/15/)
 
 ## Selecting Series for Multiple Entities
 
@@ -245,9 +245,9 @@ Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) for a
       fstype = ext4
 ```
 
-![](resources/select-entity.png)
+![](./resources/select-entity.png)
 
-[![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/8)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/8)
 
 ## Retrieving Series from the Database
 
@@ -279,7 +279,7 @@ As an alternative to specifying the `[series]` settings manually and using wildc
   endfor
 ```
 
-[![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/14/)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/14/)
 
 ## Controlling Displayed Series
 
@@ -305,9 +305,9 @@ For a more flexible visibility control on the client, use the display and enable
       fstype = ext4
 ```
 
-![](resources/series-display-1.png)
+![](./resources/series-display-1.png)
 
 In addition, the `limit = int` setting can reduce the number of samples displayed for each series. It makes queries
 execute faster when loading data for high-frequency series from the server, in particular during design and validation stages.
 
-[![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/13/)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/13/)

@@ -17,4 +17,4 @@ I/O Tests allow you to:
 | Disk force | Force the data to be written to disk. |
 | Read the same file | Use a single prepared file to test all threads. |
 
-![](images/atsd_io_tests.png "atsd_io_tests")
+![](./images/atsd_io_tests.png "atsd_io_tests")
