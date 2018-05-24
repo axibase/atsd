@@ -41,7 +41,7 @@ The built-in notification types for chat and collaboration services deliver aler
 
 Notifications are triggered on window status events.
 
-A [window](window.md) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
+A [window](../window.md) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
 As the new data is received and old data is removed from the window, the rule engine re-evaluates the condition which can cause the status of the current window to change, triggering a notification.
 
@@ -165,7 +165,7 @@ If the window remains in the `REPEAT` status, it can be configured to repetitive
 
 ### Message Text
 
-The editor displays a `Text` field where the alert message can be customized with [placeholders](placeholders.md).
+The editor displays a `Text` field where the alert message can be customized with [placeholders](../placeholders.md).
 
 Sample alert message with placeholders:
 
@@ -173,13 +173,13 @@ Sample alert message with placeholders:
 [${status}] ${rule} for ${entity} ${tags}.
 ```
 
-The alert message can include links to ATSD resources using [link placeholders](links.md) such as the `${chartLink}`.
+The alert message can include links to ATSD resources using [link placeholders](../links.md) such as the `${chartLink}`.
 
 ```bash
 ${chartLink}
 ```
 
-Utilize [control flow](control-flow.md) statements for conditional processing.
+Utilize [control flow](../control-flow.md) statements for conditional processing.
 
 ```bash
 *[${tags.status}]* <${entityLink}|${ifEmpty(entity.label, entity)}> Ω <${getEntityLink(tags.docker-host)}|${ifEmpty(getEntity(tags.docker-host).label, tags.docker-host)}>
@@ -199,7 +199,7 @@ Attachment options are displayed in the rule editor if supported by the given no
 
 The `Attach Portals` option sends one or more portals as an image to the target chat channel/group/user.
 
-If the selected portal is a [template](../portals/portals-overview.md#template-portals) portal, its entity, metric, and series tags will be resolved from the alert details in the current window.
+If the selected portal is a [template](../../portals/portals-overview.md#template-portals) portal, its entity, metric, and series tags will be resolved from the alert details in the current window.
 
 ![](./images/notify-attach-4.png)
 
@@ -211,7 +211,7 @@ The `Series Chart` option sends the default portal for the metric, entity and se
 
 #### Attach Details
 
-The `Attach Details` option sends an alert details table as a separate message with a choice of [formats](details-table.md#formats).
+The `Attach Details` option sends an alert details table as a separate message with a choice of [formats](../details-table.md#formats).
 
 ![](./images/notify-attach-2.png)
 
@@ -241,7 +241,7 @@ https://atsd_hostname:8443/messages?search=1&search=&type=notification&interval.
 
 ## Monitoring
 
-The number of notifications sent per minute can be monitored with the [`web_service_notifications_per_minute`](../administration/monitoring.md#rule-engine) metric collected by the database.
+The number of notifications sent per minute can be monitored with the [`web_service_notifications_per_minute`](../../administration/monitoring.md#rule-engine) metric collected by the database.
 
 ```elm
 https://atsd_hostname:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
