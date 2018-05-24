@@ -2,9 +2,9 @@
 
 ## Overview
 
-`DISCORD` [notifications](../web-notifications.md) send alert messages, alert detail tables, and charts into Discord channels. This integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
+`DISCORD` [notifications](../notifications/README.md) send alert messages, alert detail tables, and charts into Discord channels. This integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
 
-![](images/discord.png)
+![](./images/discord.png)
 
 ## Security
 
@@ -23,15 +23,15 @@ Configure a new Discord server, if necessary.
 
 * Click on the plus icon in the left panel.
 
-     ![](images/create_server.png)
+     ![](./images/create_server.png)
 
 * Click on **Create a Server**.
 
-     ![](images/create_server2.png)
+     ![](./images/create_server2.png)
 
 * Specify **Server Name**. Click **Create**.
 
-     ![](images/create_server3.png)
+     ![](./images/create_server3.png)
 
 * Configure the server for [private](https://support.discordapp.com/hc/en-us/articles/206143407-How-do-I-set-up-private-servers-without-passwords-) access.
 
@@ -41,19 +41,19 @@ Configure a new Discord server, if necessary.
 
 * Click on **Create Channel**.
 
-     ![](images/create_discord_channel.png)
+     ![](./images/create_discord_channel.png)
 
 * Specify **Channel name**, check (enable) **Text Channel**, click **Create Channel**.
 
-     ![](images/create_discord_channel2.png)
+     ![](./images/create_discord_channel2.png)
 
 * Click **Edit channel**.
 
-     ![](images/create_discord_channel3.png)
+     ![](./images/create_discord_channel3.png)
 
 * Open the **Permissions** tab and review the settings.
 
-     ![](images/create_discord_channel4.png)
+     ![](./images/create_discord_channel4.png)
 
 On the **Invite** tab you can create an invitation link and distribute it to new users.
 
@@ -63,7 +63,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 * Open the **Webhook** tab, click **Create Webhook**, enter a name and select a channel.
 
-      ![](images/create_webhook.png)
+      ![](./images/create_webhook.png)
 
 * Copy the Webhook URL for future reference, click **Save**.
 
@@ -73,23 +73,23 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 * Click on an existing `DISCORD` template, or click the **Create** button and select the `DISCORD` type.
 * Specify the unique `Name` of the notification.
 
-    ![](images/discord_1.png)
+    ![](./images/discord_1.png)
 
 * Copy the `Webhook URL` from the Discord client into the `Webhook URL` field in the configuration form.
 * The `Webhook ID` and `Webhook Token` will be filled automatically when you finish editing the `Webhook URL` field.
 * Select **Test Portal** to test the screenshot.
 
-    ![](images/discord_settings.png)
+    ![](./images/discord_settings.png)
 
 * Click **Test**.
 
-   ![](images/discord_2.png)
+   ![](./images/discord_2.png)
 
 * If test is passed, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.
 
 ## Proxy Settings
 
-If the Discord API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../web-notifications.md#network-settings).
+If the Discord API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Discord:
 
@@ -134,14 +134,14 @@ NGINX API Gateway Path for Discord:
 
 * Save the rule by clicking on the **Save** button.
 
-    ![](images/discord_notification.png)
+    ![](./images/discord_notification.png)
 
 * The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Example
 
-   ![](images/discord_test_1.png)
+   ![](./images/discord_test_1.png)
 
    Content of `atsd.jvm.low_memory_atsd_open_20171127_1408043.txt`:
 
-   ![](images/discord_test_2.png)
+   ![](./images/discord_test_2.png)

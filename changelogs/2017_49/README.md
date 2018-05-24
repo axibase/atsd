@@ -53,7 +53,7 @@ ${detailsTable('json')}
 
 The new settings automatically creates as many series as there are incoming series to simplify the initial configuration. For `message` and `property` commands, the setting is set to 'No Tags'.
 
-![](Images/group_all_tags.png)
+![](./Images/group_all_tags.png)
 
 ### Issue 4765
 
@@ -65,7 +65,7 @@ series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 
 The new commands can be executed at the frequency of incoming commands or decreased with a custom repeat interval.
 
-![](Images/derived_repeat.png)
+![](./Images/derived_repeat.png)
 
 ### Issue 4781
 

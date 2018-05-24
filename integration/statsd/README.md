@@ -84,15 +84,15 @@ sudo service statsd start
 
 Go to the Plugins menu on your WordPress administration page:
 
-![](resources/plugins_menu.png)
+![](./resources/plugins_menu.png)
 
 Click [Add New]. Find and install the [StatsD WordPress Client](https://wordpress.org/plugins/statsd/) plugin:
 
-![](resources/statsd_plugin1.png)
+![](./resources/statsd_plugin1.png)
 
 Activate the plugin:
 
-![](resources/activate_plugin.png)
+![](./resources/activate_plugin.png)
 
 If StatsD is not on the localhost or port, you have to define the local daemon IP in `wp-config.php`.
 

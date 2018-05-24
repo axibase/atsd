@@ -44,7 +44,7 @@ When used with other configurations, the function will return an empty string.
 addPortal('ATSD')
 ```
 
-![](images/functions-portal-1.png)
+![](./images/functions-portal-1.png)
 
 * Template Portal for Specific Entity
 
@@ -52,7 +52,7 @@ addPortal('ATSD')
 addPortal('Linux nmon', 'nurswgvml007')
 ```
 
-![](images/functions-portal-2.png)
+![](./images/functions-portal-2.png)
 
 * Custom Caption
 
@@ -60,4 +60,4 @@ addPortal('Linux nmon', 'nurswgvml007')
 addPortal('collectd', 'nurswgvml007', '$caption | <@' + tags.event.user + '>')
 ```
 
-![](images/functions-portal-3.png)
+![](./images/functions-portal-3.png)

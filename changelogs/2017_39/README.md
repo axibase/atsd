@@ -37,7 +37,7 @@ count() = 0 AND entity_tag(entity.tags['collector-host'], 'status') = 'running'
 
 ### Issue 4586
 
-![](Images/entity_created_date.png)
+![](./Images/entity_created_date.png)
 
 ### Issue 4581
 

@@ -62,7 +62,7 @@ Modify the `Message` by replacing the `<MESSAGE_TEXT>` value with your text, for
 
 The `Message` text contains placeholders that will be substituted with actual values when the notification is triggered. The placeholders specified in the message are visible as editable parameters in the rule editor.
 
-![](images/gcp_ps_message_notification_config.png)
+![](./images/gcp_ps_message_notification_config.png)
 
 ## Rule
 
@@ -78,7 +78,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/rule_overview.png)
+![](./images/rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -88,7 +88,7 @@ Enable **Open**, **Repeat** and **Cancel** triggers.
 
 Specify the message text into the `Message` parameter for all triggers.
 
-![](images/gcp_ps_message_rule_notification.png)
+![](./images/gcp_ps_message_rule_notification.png)
 
 ## Test
 
@@ -98,13 +98,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/gcp_ps_message_alert_open.png)
+![](./images/gcp_ps_message_alert_open.png)
 
 Check the Google Cloud Pub/Sub topic statistics to make sure the new messages were received:
 
-![](images/gcp_ps_message_test.png)
+![](./images/gcp_ps_message_test.png)

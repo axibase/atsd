@@ -6,7 +6,7 @@ A window is an in-memory structure created by the rule engine for each unique co
 
 Windows are displayed on the **Alerts > Rule Windows** page.
 
-![](images/rule-windows.png)
+![](./images/rule-windows.png)
 
 ## Window Length
 
@@ -14,7 +14,7 @@ Windows are displayed on the **Alerts > Rule Windows** page.
 
 Count-based windows accumulate up to the specified number of samples. Samples are sorted in **order of arrival**, with the most recently received sample placed at the end of the array. When the window is full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample.
 
-![Count Based Window](images/count_based_window3.png "count_based_window")
+![Count Based Window](./images/count_based_window3.png "count_based_window")
 
 ### Time Based Windows
 
@@ -26,7 +26,7 @@ The start of the interval is initially set to current time minus the window leng
 
 Old commands are automatically removed from the window once their timestamp is earlier than the defined window start time.
 
-![Time Based Window](images/time_based_window3.png)
+![Time Based Window](./images/time_based_window3.png)
 
 ## Window Status
 
@@ -81,7 +81,7 @@ When the rule is deleted or modified with the rule editor, all windows for the g
 
 Newly created windows contain only **new commands**, unless 'Load History' setting is enabled. Such windows load historical values received over the same interval as the window duration, or the same number of commands as the window length.
 
-![](images/load-history.png)
+![](./images/load-history.png)
 
 ## Timers
 

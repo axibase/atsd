@@ -263,19 +263,19 @@ tags.location IN ('NUR', 'SVL')
 
 If space utilization needs to be controlled, open the **Settings > Receive Statistics** page to view metrics with the highest number of inserted commands:
 
-![](images/metric_persistence_filter_1.png "top_hourly_metrics")
+![](./images/metric_persistence_filter_1.png "top_hourly_metrics")
 
 The _Series_ icon opens a list of unique tags for the selected metric.
 
-![](images/metric_persistence_filter_2.png)
+![](./images/metric_persistence_filter_2.png)
 
 If some of the incoming data is of low value it may not be worth storing it.
 
-![](images/series.png)
+![](./images/series.png)
 
 To stop storing such series, create a collection with filter patterns on the **Data > Named Collections** page.
 
-![](images/metric_persistence_filter_3.png "names_collections")
+![](./images/metric_persistence_filter_3.png "names_collections")
 
 Open the metric editor and create a filter expression to ignore matching series.
 
@@ -283,8 +283,8 @@ Open the metric editor and create a filter expression to ignore matching series.
 !likeAny(tags.command, collection('ignore-collector-process-commands'))
 ```
 
-![](images/metric_persistence_filter_4.png "metric_editor")
+![](./images/metric_persistence_filter_4.png "metric_editor")
 
 As a result, the number of stored series will be reduced.
 
-![](images/screenshot_5_1421925689.png)
+![](./images/screenshot_5_1421925689.png)

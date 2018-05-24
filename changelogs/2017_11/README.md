@@ -88,7 +88,7 @@ See the [guide](https://redash.io/help/data-sources/axibase_tsd.html) on how to 
 
 Replacement tables are deprecated. Similar functionality is provided by the `LOOKUP` function.
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
 ### Issue 4006
 
@@ -100,6 +100,6 @@ Replacement tables are deprecated. Similar functionality is provided by the `LOO
 
 ### Issue 3997
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)
 
 [ChartLab](https://apps.axibase.com/chartlab/075941a0/2/)

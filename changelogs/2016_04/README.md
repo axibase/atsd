@@ -34,7 +34,7 @@ administrator, it would not apply until the user's active sessions would timeout
 active sessions are invalided instantly if the authorization is changed by an administrator. As a result, the administrator doesn't have to manually request the user to logout in order to
 apply any new settings. In addition, the administrator is now able to view which users are online.
 
-![Figure 5](Images/Figure5.png)
+![Figure 5](./Images/Figure5.png)
 
 ### Issue 3688
 
@@ -58,7 +58,7 @@ The administrative interface in ATSD has been simplified by consolidating multip
 
 1. **Build Information**
 
-   ![Figure 1](Images/Figure1.png)
+   ![Figure 1](./Images/Figure1.png)
 
    The section provides information about the installed ATSD version (Revision Number), as well as the HBase compatibility version. The ATSD revision number is an always
    incrementing counter, meaning it doesn't adhere to semantic versioning. Each change to the ATSD code will increment the revision number. Note that the revision number of the ATSD
@@ -68,19 +68,19 @@ The administrative interface in ATSD has been simplified by consolidating multip
 
 2. **JVM System Properties**
 
-   ![Figure 2](Images/Figure2.png)
+   ![Figure 2](./Images/Figure2.png)
 
    JVM system properties contains detailed settings for the Java Virtual Machine including JMX, IO, User, and Operating System settings.
 
 3. **JVM Environment Variables**
 
-   ![Figure 3](Images/Figure3.png)
+   ![Figure 3](./Images/Figure3.png)
 
    This section provides a list of environment variables for the user, under which the ATSD java process is running.
 
 4. **System Time**
 
-   ![Figure 4](Images/Figure4.png)
+   ![Figure 4](./Images/Figure4.png)
 
    The section displays Current and Start times, as well as the applicable Time Zone.
 
@@ -128,19 +128,19 @@ WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
 
 In Collector, the following metrics were added for each active container. These metrics are collected only when the Docker command `TOP` is enabled.
 
-![Figure 6](Images/Figure6.png)
+![Figure 6](./Images/Figure6.png)
 
 If the container was running in a prior iteration, and is not running in the next iteration, 0 will be sent for both all and filtered metrics.
 
-![Figure 7](Images/Figure7.png)
+![Figure 7](./Images/Figure7.png)
 
-![Figure 8](Images/Figure8.png)
+![Figure 8](./Images/Figure8.png)
 
 ### Issue 3559
 
 `METRIC` and `ENTITY` commands have been implemented in the JDBC job to allow you to configure collected metrics and entities in ATSD.
 
-![Figure 9](Images/Figure9.png)
+![Figure 9](./Images/Figure9.png)
 
 Additionally, some user interface improvements were recently made to the JDBC configuration page:
 
@@ -153,8 +153,8 @@ As a result, PI tags can be retrieved using the JDBC job, and a [tutorial](https
 
 #### PI Server Tag Information
 
-![Figure 10](Images/Figure10.png)
+![Figure 10](./Images/Figure10.png)
 
 #### ATSD Metric Information
 
-![Figure 11](Images/Figure11.png)
+![Figure 11](./Images/Figure11.png)

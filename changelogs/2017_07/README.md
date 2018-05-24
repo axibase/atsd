@@ -53,13 +53,13 @@ Title: "ORO.csv"
 .A ORO 20160312 PS DH0000 /LSH 2325491
 ```
 
-![](Images/Figure4.png)
+![](./Images/Figure4.png)
 
 ### Issue 3889
 
 The `entity.label` parameter is now supported in the rule filter.
 
-![](Images/Figure3.png)
+![](./Images/Figure3.png)
 
 ### Issue 3921
 
@@ -92,6 +92,6 @@ New generic table settings:
 
 [ChartLab](https://apps.axibase.com/chartlab/e02b8303/6)
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)

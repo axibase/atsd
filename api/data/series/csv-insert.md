@@ -100,6 +100,6 @@ None.
 
 ## Java Example
 
-* [Series CSV Insert](examples/DataApiSeriesCsvInsertExample.java)
+* [Series CSV Insert](https://github.com/axibase/atsd/tree/master/api/data/series/examples/DataApiSeriesCsvInsertExample.java)
 
 ## Additional Examples

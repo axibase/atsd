@@ -60,10 +60,10 @@ Modify the `Body` by replacing the `<MESSAGE_TEXT>` value with your text, for ex
 }
 ```
 
-![](images/aws_api_cwe_notification_config.png)
+![](./images/aws_api_cwe_notification_config.png)
 
 Click **Test**.
 
-![](images/aws_api_cwe_test_request.png)
+![](./images/aws_api_cwe_test_request.png)
 
-![](images/aws_api_cwe_test_response.png)
+![](./images/aws_api_cwe_test_response.png)

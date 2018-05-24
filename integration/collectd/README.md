@@ -129,7 +129,7 @@ Launch live collectd Portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/ff756c10)
 
-![](resources/collectd_portal.png)
+![](./resources/collectd_portal.png)
 
 ## Collected Metrics
 

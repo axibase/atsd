@@ -38,7 +38,7 @@ The `matchList` functions is a less verbose alternative to `likeAny` function.
 
 ### Issue 4734
 
-![](Images/rule-engine-variables.png)
+![](./Images/rule-engine-variables.png)
 
 ### Issue 4730
 
@@ -123,7 +123,7 @@ The [series tags](../../api/meta/metric/series-tags.md) method returns unique se
 
 The inline screenshots are positioned after the message content and before the message footer.
 
-![](Images/rule-inline-screenshots.png)
+![](./Images/rule-inline-screenshots.png)
 
 ### Issue 4599
 
@@ -133,4 +133,4 @@ The checks are enforced to requests made over the HTTP and HTTPs protocols.
 
 Both IPv4 and IPv6 protocols are supported.
 
-![](Images/user-ip-filter.png)
+![](./Images/user-ip-filter.png)

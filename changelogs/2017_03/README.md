@@ -149,34 +149,34 @@ The following characteristics are available.
 
 * Value Statistics: provides summary statistics for values of the time series for the specified time interval. There are three tables included within this tab: **Timespan**, **Value Statistics**, and **Value Percentiles**. **Timespan** provides the dates for the first and last value of the time series and their respective values. **Value Statistics** provides the Count (total number of samples), NaN count (number of Not-a-Number samples), as well as the Average, Standard Deviation, and Sum of all values. **Value Percentiles** provides a list of the maximum and minimum values of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 75% of all values in this series fall below 7.1).
 
-  ![Figure 1](Images/Figure1.png)
+  ![Figure 1](./Images/Figure1.png)
 
 * Interval Statistics: provides time duration statistics for values included in the specific time interval. All values are presented in two forms: as milliseconds and in a human readable format (ie, 1d 2h 3m 4s). Two tables are included in under this tab: **Interval Statistics, ms** and **Interval Percentiles, ms**. The **Interval Statistics** table provides a concise summary of the time characteristics of the series, including the Count (number of intervals between the samples), the average interval time, the total time range for the series (difference between last and first value), among several other points. The **Interval Percentiles, ms** table provides a list of the maximum and minimum time intervals of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 99.9% of all time intervals in this series fall under 18 seconds).
 
-  ![Figure 2](Images/Figure2.png)
+  ![Figure 2](./Images/Figure2.png)
 
 * Min/Max Values: provides the 20 maximum and minimum values of the series. Included are the value, count, and first and last occurrences of these values.
 
-  ![Figure 3](Images/Figure3.png)
+  ![Figure 3](./Images/Figure3.png)
 
 * Longest Intervals: provides the maximum 20 time intervals between time series samples. Provided in milliseconds and in human readable format.
 
-  ![Figure 4](Images/Figure4.png)
+  ![Figure 4](./Images/Figure4.png)
 
 * Value Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify the **Min Value**, **Max Value**, and **Interval Count** fields,
   and then press the 'Submit' button.
 
-  ![Figure 5](Images/Figure5.png)
+  ![Figure 5](./Images/Figure5.png)
 
 * Interval Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify the **Min Value**, **Max Value**, and **Interval Count**
   fields, and then press the 'Submit' button.
 
-  ![Figure 6](Images/Figure6.png)
+  ![Figure 6](./Images/Figure6.png)
 
 * Series: provides links to the Metric and Entity labels. Additionally, allows the user to export the series data, navigate to the SQL console, and to view a Chart Lab graph showing the
   distribution of the data.
 
-  ![Figure 7](Images/Figure7.png)
+  ![Figure 7](./Images/Figure7.png)
 
 ### Issue 3784
 
@@ -217,7 +217,7 @@ WHERE tag LIKE 'AB%'
 
 The last condition is typically included to select all remaining rows other than those fetched with previous conditions.
 
-![Figure 8](Images/Figure8.png)
+![Figure 8](./Images/Figure8.png)
 
 ### Issue 2528
 
@@ -230,7 +230,7 @@ column-label-format = value.replace(/^systemproperties./, "")
 
 [ChartLab](https://apps.axibase.com/chartlab/1ee27e2e/4/)
 
-![Figure 10](Images/Figure10.png)
+![Figure 10](./Images/Figure10.png)
 
 ### Issue 1926
 
@@ -238,4 +238,4 @@ Now upon a mouse over for box charts, metric names are displayed at the top of t
 
 [ChartLab](https://apps.axibase.com/chartlab/46e8b4ec)
 
-![Figure 9](Images/Figure9.png)
+![Figure 9](./Images/Figure9.png)

@@ -55,7 +55,7 @@ https://atsd_hostname:8443/
 * Open the **Settings > System Information** page
 * Verify that the Revision Number has changed compared to the pre-installation stage
 
-![](images/revision.png)
+![](./images/revision.png)
 
 ## Restart
 

@@ -2,7 +2,7 @@
 
 Create a `AWS SQS` notification with `Queue Type = FIFO`, for example:
 
-![](images/aws_sqs_web_notification_config_fifo.png)
+![](./images/aws_sqs_web_notification_config_fifo.png)
 
 Create a new rule and open the **Web Notifications** tab.
 
@@ -50,7 +50,7 @@ Customize the alert messages using [placeholders](../placeholders.md) as necessa
        }
 ```
 
-  ![](images/aws_sqs_web_notification_fifo.png)
+  ![](./images/aws_sqs_web_notification_fifo.png)
 
 * Save the rule by clicking on the **Save** button.
 
@@ -62,14 +62,14 @@ It may take a few seconds for the first commands to arrive and to trigger the no
 
 The AWS SQS Queues:
 
-![](images/aws_sqs_queues.png)
+![](./images/aws_sqs_queues.png)
 
 ## Notifications examples
 
 ### Queue
 
-![](images/aws_sqs_web_notification_fifo_test_1.png)
+![](./images/aws_sqs_web_notification_fifo_test_1.png)
 
 ### Messages
 
-![](images/aws_sqs_web_notification_fifo_test_2.png)
+![](./images/aws_sqs_web_notification_fifo_test_2.png)

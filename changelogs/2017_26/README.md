@@ -13,8 +13,8 @@
 
 ### Issue 4331
 
-![](Images/4331.jpg)
+![](./Images/4331.jpg)
 
 ### Issue 4327a
 
-![](Images/4327a.jpg)
+![](./Images/4327a.jpg)

@@ -27,7 +27,7 @@ To complete this exercise, sample data must be available in your ATSD instance.
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
 3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
 
-![](resources/metrics_entry.png)
+![](./resources/metrics_entry.png)
 
 The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](resources/eng_e02.xls).
 
@@ -37,12 +37,12 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 * Select the 'Data' tab in the properties pane on the right.
 
-![](resources/data_pane.png)
+![](./resources/data_pane.png)
 
 * Select 'Add Data Sources' button in the toolbar, click 'JDBC'.
 * Select 'Add a new connection' (green plus icon).
 
-![](resources/new_connection.png)
+![](./resources/new_connection.png)
 
 * Select `General` in the left menu
 * Select `Generic database` as Connection Type
@@ -61,7 +61,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 * Set `User Name` and `Password` fields to your ATSD Username and Password
 * Set `Connection Name` to `ATSD Connection`
 
-![](resources/atsd_connection.png)
+![](./resources/atsd_connection.png)
 
 ## Verify Connection
 
@@ -73,11 +73,11 @@ Example of `SELECT 1` test query:
 * Input query row `SELECT 1` to the 'SQL Query Designer'.
 * Click 'Preview'.
 
-![](resources/select_1.png)
+![](./resources/select_1.png)
 
 Result of `SELECT 1` test query:
 
-![](resources/select_1_preview.png)
+![](./resources/select_1_preview.png)
 
 ## View Schema
 
@@ -95,11 +95,11 @@ Result of `SELECT 1` test query:
 
 ATSD Schema can be viewed in SQL Query Designer tool:
 
-![](resources/query_text.png)
+![](./resources/query_text.png)
 
 `SQL Query Designer` tool interface:
 
-![](resources/sql_query_designer.png)
+![](./resources/sql_query_designer.png)
 
 `SQL Query Designer` is used for visual building of a Query:
 
@@ -117,27 +117,27 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 * Click on 'ATSD Connection'
 * Click on 'Add Query' in the Available Queries list
 
-![](resources/add_query.png)
+![](./resources/add_query.png)
 
 * Enter an SQL query in the Query editor, for example `SELECT datetime, entity, value FROM jvm_memory_used LIMIT 10`
 * Click on the 'Preview' button to review the resultset.
 
-![](resources/preview.png)
+![](./resources/preview.png)
 
 * It is possible to build a Query using the `SQL Query Designer`
 
 * Click 'OK'. The list of queries will be added to the 'Data' pane.
 * Right-click on the query and choose 'Select Query'. The tree view will now display query results and fields.
 
-![](resources/data_pane_updated.png)
+![](./resources/data_pane_updated.png)
 
 * Drag and drop these field into the report canvas.
 * Click the `Preview` button in the top left corner (the eye icon) to view query results.
 
-![](resources/report.png)
+![](./resources/report.png)
 
 Example of report preview:
 
-![](resources/report_preview.png)
+![](./resources/report_preview.png)
 
 [File with example report](resources/report.prpt)

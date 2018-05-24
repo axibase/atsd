@@ -106,7 +106,7 @@ The `<subnet>` parameter is required when launching particular instance types. T
 --ec2-attributes KeyName=ec2-pkey,SubnetId=subnet-6ab5ca46,EmrManagedMasterSecurityGroup=sg-521bcd22,EmrManagedSlaveSecurityGroup=sg-9604d2e6    \
 ```
 
-![](images/aws-cli-export.png "AWS CLI export")
+![](./images/aws-cli-export.png "AWS CLI export")
 
 ### Specify Initial Cluster Size
 
@@ -133,7 +133,7 @@ The checks are enabled by adding the `Consistent` setting to the launch command.
 
 Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is terminated. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`).
 
-![](images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
+![](./images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
 
 ## Launch Cluster
 

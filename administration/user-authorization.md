@@ -35,12 +35,12 @@ entity.
 
 In order to write data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a Write permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
 
-![entity_group_permission](images/entity_group_permission.png)
+![entity_group_permission](./images/entity_group_permission.png)
 
 *In the following diagram, to read data for entity-30, the user must be either added to user-group-C as a member, or
 entity-group-3 must be assigned to user-group-B or user-group-A.*
 
-![atsd_role_hierarchy](images/atsd_role_hierarchy-2.png)
+![atsd_role_hierarchy](./images/atsd_role_hierarchy-2.png)
 
 ### All Entities Permissions
 
@@ -84,11 +84,11 @@ The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/dat
 
 To create a new user of this type, open the **Settings > Users** page and select **Create Webhook User** option from the split button located below the 'Users' table.
 
-![](images/webhook-user.png)
+![](./images/webhook-user.png)
 
 The wizard will automatically create a new user account, user and entity groups and grant necessary permissions.
 
-![](images/webhook-permissions.png)
+![](./images/webhook-permissions.png)
 
 ### Collector User
 
@@ -98,11 +98,11 @@ The instruments inserting data under the **collector** account are typically loc
 
 To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the 'Users' table.
 
-![](images/collector-user-wizard.png)
+![](./images/collector-user-wizard.png)
 
 The wizard will automatically create a new user account and assign it as a member to the 'Data Collectors' user group with all entity `write` permissions.
 
-![](images/collector-user-permissions.png)
+![](./images/collector-user-permissions.png)
 
 ## Implementation Notes
 

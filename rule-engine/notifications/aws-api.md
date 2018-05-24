@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AWS API` [notifications](../web-notifications.md) integrate the ATSD rule engine with [Amazon Web Services](https://aws.amazon.com/) that support HTTP or HTTPs protocol.
+`AWS API` [notifications](../notifications/README.md) integrate the ATSD rule engine with [Amazon Web Services](https://aws.amazon.com/) that support HTTP or HTTPs protocol.
 
 ## Notification Settings
 

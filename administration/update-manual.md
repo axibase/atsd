@@ -74,7 +74,7 @@ https://atsd_hostname:8443/
 * Open the **Settings > System Information** page.
 * Verify that the Revision Number has been updated.
 
-![](images/revision.png)
+![](./images/revision.png)
 
 ## Remove the Archive
 

@@ -45,8 +45,6 @@ String constants without brackets(tokens) will be added.
 INPUT: awgswgvml001.counters.axibase_com.wordpress.http.counts.api_bruteprotect_com.count
 ```
 
-<script src="https://gist.github.com/6f6ac04677b8db5bae20.js"></script><noscript>View the code on <a href="https://gist.github.com/6f6ac04677b8db5bae20">Gist</a>:</noscript>
-
 ```txt
 OUTPUT: e:awgswgvml001 m:wordpress.http.counts.count t:site=axibase_com t:url=api_bruteprotect_com
 ```
@@ -54,8 +52,6 @@ OUTPUT: e:awgswgvml001 m:wordpress.http.counts.count t:site=axibase_com t:url=ap
 ```txt
 INPUT: servers.www-1.workers.busyWorkers
 ```
-
-<script src="https://gist.github.com/aeb33620c669eb864a75.js"></script><noscript>View the code on <a href="https://gist.github.com/aeb33620c669eb864a75">Gist</a>:</noscript>
 
 ```txt
 OUTPUT: e:www-1 m:workers.busyWorkers t:type=servers
@@ -65,8 +61,6 @@ OUTPUT: e:www-1 m:workers.busyWorkers t:type=servers
 INPUT: com.acmeCorp.instance01.jvm.memory.garbageCollections
 ```
 
-<script src="https://gist.github.com/78311b1f8a6455671000.js"></script><noscript>View the code on <a href="https://gist.github.com/78311b1f8a6455671000">Gist</a>:</noscript>
-
 ```txt
 OUTPUT: e:instance01 m:jvm.memory.garbageCollections t:type=com t:dep=acmeCorp
 ```
@@ -74,8 +68,6 @@ OUTPUT: e:instance01 m:jvm.memory.garbageCollections t:type=com t:dep=acmeCorp
 ```txt
 INPUT: collectd.nurdkr002.disk-sda1.disk_time.write
 ```
-
-<script src="https://gist.github.com/eb86b2f33827a530bbb4.js"></script><noscript>View the code on <a href="https://gist.github.com/eb86b2f33827a530bbb4">Gist</a>:</noscript>
 
 ```txt
 OUTPUT: e:nurdkr002 m:collectd.disk_time.write t:id=disk-sda1
@@ -85,8 +77,6 @@ OUTPUT: e:nurdkr002 m:collectd.disk_time.write t:id=disk-sda1
 INPUT: collectd.nurdkr002.interface-vethe538ad3.if_errors.tx
 ```
 
-<script src="https://gist.github.com/0da1dfb35e35ae3918a8.js"></script><noscript>View the code on <a href="https://gist.github.com/0da1dfb35e35ae3918a8">Gist</a>:</noscript>
-
 ```txt
 OUTPUT: e:nurdkr002 m:collectd.if_errors.tx t:id=interface-vethe538ad3
 ```
@@ -95,8 +85,6 @@ OUTPUT: e:nurdkr002 m:collectd.if_errors.tx t:id=interface-vethe538ad3
 INPUT: collectd.nurdkr002.df-run-shm.percent_bytes-used
 ```
 
-<script src="https://gist.github.com/96bfa6f9dee001e66ee1.js"></script><noscript>View the code on <a href="https://gist.github.com/96bfa6f9dee001e66ee1">Gist</a>:</noscript>
-
 ```txt
 OUTPUT: e:nurdkr002 m:collectd.percent_bytes-used t:id=df-run-shm
 ```
@@ -104,8 +92,6 @@ OUTPUT: e:nurdkr002 m:collectd.percent_bytes-used t:id=df-run-shm
 ```txt
 INPUT: collectd.nurswgdkr002.df-run-shm.percent_bytes-used
 ```
-
-<script src="https://gist.github.com/7b4c7e76aa80580446e8.js"></script><noscript>View the code on <a href="https://gist.github.com/7b4c7e76aa80580446e8">Gist</a>:</noscript>
 
 ```txt
 OUTPUT: e:nurdkr002 m:collectd.percent_bytes-used t:id=run-shm
@@ -116,8 +102,6 @@ OUTPUT: e:nurdkr002 m:collectd.percent_bytes-used t:id=run-shm
 ```txt
 INPUT: collectd.nurswgdkr002.df-run-shm.percent_bytes-used
 ```
-
-<script src="https://gist.github.com/1c4e2b650df1e75e49a6.js"></script><noscript>View the code on <a href="https://gist.github.com/1c4e2b650df1e75e49a6">Gist</a>:</noscript>
 
 ```txt
 OUTPUT: e:nurdkr002 m:collectd.df.percent_bytes-used t:id=run-shm

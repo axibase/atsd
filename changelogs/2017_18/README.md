@@ -27,9 +27,9 @@
 
 ### Issue 4153
 
-![](Images/ChangeLogDemo4.png)
+![](./Images/ChangeLogDemo4.png)
 
-[![](Images/button.png)](https://apps.axibase.com/chartlab/27dc8b67)
+[![](./Images/button.png)](https://apps.axibase.com/chartlab/27dc8b67)
 
 Application of the `statistic` command yielded incorrect displays for the `entity = *` fields
 under particular `[series]` clusters which can be viewed in ChartLab.

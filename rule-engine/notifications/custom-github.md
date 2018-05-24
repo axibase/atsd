@@ -76,23 +76,23 @@ If the operation succeeds, an authorization token will be present in the `token`
 
 Go to user settings.
 
-![](images/github_ui_token_1.png)
+![](./images/github_ui_token_1.png)
 
 Open the Developer Settings tab.
 
-![](images/github_ui_token_2.png)
+![](./images/github_ui_token_2.png)
 
 Click **Generate new token** button
 
-![](images/github_ui_token_3.png)
+![](./images/github_ui_token_3.png)
 
 Enter a description, choose the `public_repo` scope and click **Generate token**.
 
-![](images/github_ui_token_4.png)
+![](./images/github_ui_token_4.png)
 
 Your new token will be available on the **Personal access tokens** page. Copy the token value for future reference.
 
-![](images/github_ui_token_5.png)
+![](./images/github_ui_token_5.png)
 
 ### Payload
 
@@ -108,7 +108,7 @@ The `body` text contains placeholders that will be substituted with actual value
 
 The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
-![](images/github_endpoint.png)
+![](./images/github_endpoint.png)
 
 ## Rule
 
@@ -124,7 +124,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/rule_overview.png)
+![](./images/rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -140,7 +140,7 @@ Specify the following settings for **Open** trigger:
 | message | `[${status}] ${rule} for ${entity} ${tags}` |
 | repository_name | `github_repository` |
 
-![](images/github_rule_notification_open.png)
+![](./images/github_rule_notification_open.png)
 
 For **Repeat** and **Cancel** triggers:
 
@@ -150,7 +150,7 @@ For **Repeat** and **Cancel** triggers:
 | message | `[${status}] ${rule} for ${entity} ${tags}`<br>`Duration: ${alert_duration_interval}` |
 | repository_name | `github_repository` |
 
-![](images/github_rule_notification_repeat_close.png)
+![](./images/github_rule_notification_repeat_close.png)
 
 Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
 
@@ -172,13 +172,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/github_alert_open.png)
+![](./images/github_alert_open.png)
 
 Check the issue on Github to make sure the new comment was added.
 
-![](images/github_test.png)
+![](./images/github_test.png)

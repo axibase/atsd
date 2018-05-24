@@ -4,7 +4,7 @@ The Axibase Time Series Database provides ad-hoc visualization of Linux and AIX 
 
 This means that you can upload any nmon file or an archive of nmon files into ATSD and instantly view the data in a pre-configured portal.
 
-![](resources/nmon_adhoc_process.gif)
+![](./resources/nmon_adhoc_process.gif)
 
 ## Execute the Following Steps to Start Visualizing Data from One or Multiple nmon Files
 
@@ -24,7 +24,7 @@ This is a one time task.
 * At the bottom of the page click "Import" and select either the downloaded `nmon\_AIX` or `nmon\_Linux` portal. If you are collecting data from AIX systems, choose `nmon \_AIX`. If you are collecting data from Linux systems, choose `nmon\_Linux`.
 * On the Portals page, keep a note of the unique portal ID that you just imported.
 
-![portals\_import](resources/portals_import.png)
+![portals\_import](./resources/portals_import.png)
 
 ### Upload the nmon File
 
@@ -35,7 +35,7 @@ This is a one time task.
 You can learn more about uploading nmon files into ATSD
 [here](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/file-upload/).
 
-![](resources/nmon_upload1.png "nmon_upload")
+![](./resources/nmon_upload1.png "nmon_upload")
 
 ### View the Data
 
@@ -43,4 +43,4 @@ You can learn more about uploading nmon files into ATSD
 
     `https://atsd_hostname:8443/portal/tabs?entity=hostname&id=portal_id`
 
-![](resources/AIX_nmon_portal1.png "AIX_nmon_portal")
+![](./resources/AIX_nmon_portal1.png "AIX_nmon_portal")

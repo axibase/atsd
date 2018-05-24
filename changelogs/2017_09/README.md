@@ -70,25 +70,25 @@ The new `Command` field allows entering commands returning the Item List element
 The commands from the text area are copied to a file in the `$AXIBASE_COLLECTOR_HOME/conf/scripts` directory and executed as a script.
 You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/conf/server.properties` file in order to enable this feature.
 
-![](Images/Figure4.png)
+![](./Images/Figure4.png)
 
 ### Issue 3932
 
-![](Images/Figure5.png)
+![](./Images/Figure5.png)
 
 ### Issue 3817-a
 
 The new checkbox `Skip Old Data` has been introduced. If the setting is enabled, the last data row from the target dataset is stored by the Collector. When the task is executed next time, only new rows are sent into ATSD as series.
 
-![](Images/Figure6.png)
-![](Images/Figure7.png)
+![](./Images/Figure6.png)
+![](./Images/Figure7.png)
 
 ### Issue 3817-b
 
 The new field `Query Filter` has been introduced to allow applying a filter expression as part of a request.
 
-![](Images/Figure8.png)
-![](Images/Figure9.png)
+![](./Images/Figure8.png)
+![](./Images/Figure9.png)
 
 ## Charts
 
@@ -98,11 +98,11 @@ The new settings introduced in Treemap configurations:
 
 | Setting | Description | Available options |
 |------|-------------|-------------------|
-| mode | Layout mode to control how rectangles are positioned. |– `default` <BR> – `row` (align rectangles as rows) <BR> – `column` (align rectangles as columns) <BR> – `auto` (switch between row and column modes depending on widget size)
+| mode | Layout mode to control how rectangles are positioned. |– `default` <br> – `row` (align rectangles as rows) <br> – `column` (align rectangles as columns) <br> – `auto` (switch between row and column modes depending on widget size)
 
 [ChartLab](https://apps.axibase.com/chartlab/fc68bae4/7/)
 
-![](Images/Figure10.png)
+![](./Images/Figure10.png)
 
 ### Issue 3959
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AZURE SB` [notifications](../web-notifications.md) send messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic upon window status events.
+`AZURE SB` [notifications](../notifications/README.md) send messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic upon window status events.
 
 ## Notification Settings
 

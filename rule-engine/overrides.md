@@ -8,7 +8,7 @@ It allows you to minimize the number of rule variations created due to minor dif
 
 For example, assuming that the default condition is `value > 50`, the below configuration applies a different threshold (`value > 70`) for entities starting with `nurswgvml0`.
 
-![](images/rule-row.png)
+![](./images/rule-row.png)
 
 ## Override Table
 
@@ -22,11 +22,11 @@ In case no matching rules are found for the given window, the default condition,
 
 > Note that the 'Depends On' condition, when enabled on the 'Overview' tab, is checked for both the override rule and the default condition.
 
-![](images/override-columns.png)
+![](./images/override-columns.png)
 
 Rows can be inserted, removed, and copied by right-clicking on the row index column.
 
-![](images/override-row-control.png)
+![](./images/override-row-control.png)
 
 ### Filters
 
@@ -36,13 +36,13 @@ The filter matches the window if it satisfies **all** filter columns including:
 * Entity column
 * Tag columns (optional)
 
-![](images/override-rule-filter.png)
+![](./images/override-rule-filter.png)
 
 > In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the 'disk_prod' group and applies only to windows with  tag `file_system` equal `/tmp`.
 
 The tag columns are present when the rule is grouped by tags on the 'Overview' tab.
 
-![](images/override-tag-columns-group.png)
+![](./images/override-tag-columns-group.png)
 
 Empty columns are ignored. For example, if the entity group is _not_ defined for the current row, the filter checks only the entity and tag columns.
 
@@ -62,7 +62,7 @@ The entity and the tag columns support `*` as the wildcard character.
 
 The threshold condition is a boolean expression built from the numeric function, the comparison operator, and the threshold value.
 
-![](images/override-operators.png)
+![](./images/override-operators.png)
 
 ```javascript
 /*
@@ -79,15 +79,15 @@ An alert is triggered if either the `ERROR` or `WARNING` condition returns `true
 
 When one of the threshold conditions is satisfied, the alert is assigned a severity level based on which threshold was met: `ERROR` or `WARNING`.
 
-![](images/severity-rule.png)
+![](./images/severity-rule.png)
 
 If both `ERROR` and `WARNING` conditions are `true`, the `ERROR` level takes precedence.
 
-![https://apps.axibase.com/chartlab/32fcae1a](images/severity-over.png)
+![https://apps.axibase.com/chartlab/32fcae1a](./images/severity-over.png)
 
 If no override rule matches the window and the alert is then triggered by the default condition, it is assigned the severity specified on the 'Logging' tab.
 
-![](images/logging-severity.png)
+![](./images/logging-severity.png)
 
 ## Override Example
 
@@ -101,7 +101,7 @@ value > 80
 
 Override Table
 
-![](images/override-example.png)
+![](./images/override-example.png)
 
 Rule Processing:
 
@@ -120,4 +120,4 @@ Multiple override tables can be created to trigger different email or web notifi
 
 If a window changes its status based on Override rules, the event can trigger a specific email or web notification identified by name. Otherwise, it triggers all notifications except those classified as `Use in Overrides Only`.
 
-![](images/override-notification.png)
+![](./images/override-notification.png)

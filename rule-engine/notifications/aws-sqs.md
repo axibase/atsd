@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AWS SQS` [notifications](../web-notifications.md) send messages to an [Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
+`AWS SQS` [notifications](../notifications/README.md) send messages to an [Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
 
 ## Notification Settings
 
@@ -42,13 +42,13 @@ The response status code and response content is recorded in `atsd.log` if the `
 * Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
 * Enter the `Queue Path`.
 
-  ![](images/aws_sqs_config.png)
+  ![](./images/aws_sqs_config.png)
 
 * Click **Test**.
 
-   ![](images/aws_sqs_test_request.png)
+   ![](./images/aws_sqs_test_request.png)
 
-   ![](images/aws_sqs_test_response.png)
+   ![](./images/aws_sqs_test_response.png)
 
 * If tests are passing OK, check **Enable**, click **Save**.
 

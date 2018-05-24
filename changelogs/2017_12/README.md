@@ -66,7 +66,7 @@ Response
 
 ### Issue 4029
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
 ### Issue 3882
 
@@ -76,8 +76,8 @@ Response
 
 ### Issue 3682
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)
 
 ### Issue 3996
 
-![](Images/Figure3.png)
+![](./Images/Figure3.png)

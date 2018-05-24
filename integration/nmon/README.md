@@ -30,7 +30,7 @@ In Linux, nmon is [released under GPL license](https://github.com/axibase/nmon).
 
 The nmon file format is supported in Axibase Time Series Database natively. As a result, ATSD can be deployed as a centralized repository of nmon statistics and system commands collected from remote systems while providing access to [Visualization](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization"), [Alerting](../../rule-engine "Rule Engine"), and [Forecasting](https://axibase.com/products/axibase-time-series-database/forecasts/ "Forecasts") features.
 
-[![](resources/widget-bar-2.png "widget bar 2")](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
+[![](./resources/widget-bar-2.png "widget bar 2")](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
 
 ## Installation steps
 
@@ -44,12 +44,12 @@ nmon source code repository:
 
 ## Portals
 
-![](resources/nmon-use-case-ATSD1.jpg "nmon use case ATSD")
+![](./resources/nmon-use-case-ATSD1.jpg "nmon use case ATSD")
 
 [Live AIX nmon Portal](https://axibase.com/chartlab/b69e4fcd/3/)
 
-![](resources/nmon-aix-portal-1500.png "nmon aix portal 1500")
+![](./resources/nmon-aix-portal-1500.png "nmon aix portal 1500")
 
 [Live Linux nmon Portal](https://axibase.com/chartlab/ac003f06)
 
-![](resources/linux_nmon_portal.png "linux_nmon_portal")
+![](./resources/linux_nmon_portal.png "linux_nmon_portal")

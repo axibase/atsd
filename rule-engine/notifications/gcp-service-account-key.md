@@ -14,7 +14,7 @@ Create a service account with 'Pub/Sub Publisher' role as described in this [doc
 
 For example, create a service account with name `publisher`:
 
-![](images/gcp_create_service_account_window.png)
+![](./images/gcp_create_service_account_window.png)
 
 When a service account will be created, the account's private key will be saved on your computer.
 

@@ -71,4 +71,4 @@ WHERE ((datetime >= '2017-07-10 10:06:56.065') AND (datetime <= '2017-07-11 18:4
 
 ### Issue 4382
 
-![](Images/issue4382.png)
+![](./Images/issue4382.png)

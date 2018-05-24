@@ -22,7 +22,7 @@ Versioning is **disabled** by default.
 
 It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to 'Yes' in the multi-record editor, or by enabling **Versioning** on the Metric Editor page:
 
-![](resources/1.png)
+![](./resources/1.png)
 
 In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to initialize the _Version Status_ field with an 'invalid' value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
 
@@ -64,7 +64,7 @@ series e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1 d
 
 Versioned samples can be added by opening **Data > Data Entry > Series** form and specifying versioning tags:
 
-![](resources/8.png)
+![](./resources/8.png)
 
 > Note: _Metric_ field must reference an existing metric with _Versioning = Yes_
 
@@ -77,7 +77,7 @@ $version_status={status}
 $version_source={source}
 ```
 
-![](resources/2.png)
+![](./resources/2.png)
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric will cause a validation error.
@@ -87,7 +87,7 @@ $version_source={source}
 
 To extract versioning fields from CSV content, add the version tags to the **Tag Columns** field and specify mappings between the original column names and version tag names in the **Renamed Columns** field.
 
-![](resources/3.png)
+![](./resources/3.png)
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric will cause a validation error.
@@ -101,7 +101,7 @@ Version history can be retrieved on the [Ad-hoc Export](../reporting/ad-hoc-expo
 
 Open the **Filters** section and enable **Display Versions** setting on export page:
 
-![](resources/4.png)
+![](./resources/4.png)
 
 * Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
 * `NaN` represents deleted values.
@@ -122,7 +122,7 @@ Examples:
     version_source LIKE 'col*'
 ```
 
-    ![](resources/5.png)
+    ![](./resources/5.png)
 
 * Match using date function
 
@@ -130,7 +130,7 @@ Examples:
     version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
 ```
 
-    ![](resources/6.png)
+    ![](./resources/6.png)
 
 * Match using exact value
 
@@ -138,11 +138,11 @@ Examples:
     version_status = 'OK'
 ```
 
-    ![](resources/7.png)
+    ![](./resources/7.png)
 
 * Display only modified values
 
-    ![](resources/17.png)
+    ![](./resources/17.png)
 
 ## Modifying Values
 
@@ -150,13 +150,13 @@ Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-export
 
 Click on timestamp for the selected record to open the **Data Entry** page.
 
-![](resources/9.png)
+![](./resources/9.png)
 
 Change version _Status_ and _Source_, change the `Value` and click **Update**.
 
-![](resources/10.png)
+![](./resources/10.png)
 
-![](resources/11.png)
+![](./resources/11.png)
 
 ## Deleting Values
 
@@ -164,22 +164,22 @@ Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-export
 
 Click the timestamp for the selected record to open the **Data Entry** page.
 
-![](resources/9.png)
+![](./resources/9.png)
 
 Change version _Status_ and _Source_, change the `Value` and click **Delete**.
 
-![](resources/12.png)
+![](./resources/12.png)
 
 Note that the value will not actually be deleted. Rather, the current value for the selected timestamp will be replaced with a `NaN` marker.
 
-![](resources/13.png)
+![](./resources/13.png)
 
 A value can also be deleted using the selection checkbox and **Delete** button on the export page.
 
-![](resources/14.png)
+![](./resources/14.png)
 
 ### Deleting Multiple Series Values
 
 To delete multiple values, set the flags in the checkboxes for all desired rows or select all with the uppermost checkbox. Click **Delete**.
 
-![](resources/15.png)
+![](./resources/15.png)

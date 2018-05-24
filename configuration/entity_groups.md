@@ -4,7 +4,7 @@
 
 Entity Groups provide a way to organize similar entities into cohesive collections that can be re-used when managing user permissions, filtering data, calculating aggregations etc.
 
-![](images/entity-groups.png)
+![](./images/entity-groups.png)
 
 ## Members
 

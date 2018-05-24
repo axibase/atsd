@@ -11,11 +11,11 @@ The purpose of this article is to guide the reader through the first steps of us
 
 Open the **Data Entry** form located under the **Data** tab in the main menu.
 
-![](resources/getting-started_1.png)
+![](./resources/getting-started_1.png)
 
 Select type **Series**
 
-![](resources/getting-started_2.png)
+![](./resources/getting-started_2.png)
 
 Fill out the **Entity**, **Metric**, and **Value** fields, press **Send**:
 
@@ -30,7 +30,7 @@ value = 24
 
 Insert additional observations by modifying **Value** field for example sample.
 
-![](resources/getting-started_3.png)
+![](./resources/getting-started_3.png)
 
 ## Graph Data
 
@@ -40,7 +40,7 @@ In the upper right corner switch to _detail_ data type to view the detailed valu
 
 Click _all_ in the timespan control to view all data instead of the last 24 hours.
 
-![](resources/hello_world_time_chart4.png)
+![](./resources/hello_world_time_chart4.png)
 
 Spend a moment learning the basic [time chart controls](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/).
 

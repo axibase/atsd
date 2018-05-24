@@ -149,17 +149,17 @@ LIMIT 10
 
 ### Issue 3991
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
 ### Issue 4041
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)
 
 ### Issue 4012
 
 | Before | After |
 |--------|-------|
-|![](Images/Figure3.png) | ![](Images/Figure4.png) |
+|![](./Images/Figure3.png) | ![](./Images/Figure4.png) |
 
 ### Issue 3850
 

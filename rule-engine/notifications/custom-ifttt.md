@@ -10,51 +10,51 @@ This type of integration relies on the [IFTTT Webhook](https://ifttt.com/maker_w
 
 Log in to [ifttt.com](https://ifttt.com) and go to **My Applets**.
 
-![](images/ifttt_applet_1.png)
+![](./images/ifttt_applet_1.png)
 
 Click **New Applet**.
 
-![](images/ifttt_applet_2.png)
+![](./images/ifttt_applet_2.png)
 
 Click **(+) this** to create a trigger.
 
-![](images/ifttt_applet_3.png)
+![](./images/ifttt_applet_3.png)
 
 Search for **Webhooks** and select it.
 
-![](images/ifttt_applet_4.png)
+![](./images/ifttt_applet_4.png)
 
 Click **Connect** to set up a webhook trigger.
 
-![](images/ifttt_applet_5.png)
+![](./images/ifttt_applet_5.png)
 
 Choose **Receive a web request**.
 
-![](images/ifttt_applet_6.png)
+![](./images/ifttt_applet_6.png)
 
 Enter an event name such as **atsd_custom_trigger** and click **Create trigger**.
 
-![](images/ifttt_applet_7.png)
+![](./images/ifttt_applet_7.png)
 
 Click **(+) that** to create a event.
 
-![](images/ifttt_applet_8.png)
+![](./images/ifttt_applet_8.png)
 
 Search for **SMS** and select it.
 
-![](images/ifttt_applet_9.png)
+![](./images/ifttt_applet_9.png)
 
 Click **Connect** to setup event.
 
-![](images/ifttt_applet_10.png)
+![](./images/ifttt_applet_10.png)
 
 Enter a phone number to receive messages from ATSD and click **Send PIN**. Check your device and enter the PIN you've received. Click **Connect**.
 
-![](images/ifttt_applet_11.png)
+![](./images/ifttt_applet_11.png)
 
 Choose **Send me an SMS**.
 
-![](images/ifttt_applet_12.png)
+![](./images/ifttt_applet_12.png)
 
 Enter following text into **Message** field and click **Create action**.
 
@@ -62,7 +62,7 @@ Enter following text into **Message** field and click **Create action**.
 [{{Value1}}] {{Value2}} for {{Value3}}
 ```
 
-![](images/ifttt_applet_13.png)
+![](./images/ifttt_applet_13.png)
 
 Review changes and click **Finish**.
 
@@ -89,11 +89,11 @@ The `Endpoint URL` should look like this: `https://maker.ifttt.com/trigger/${web
 
 You can find your IFTTT token in the `Webhooks` examples. Go to [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**.
 
-![](images/ifttt_key_1.png)
+![](./images/ifttt_key_1.png)
 
 Copy the key.
 
-![](images/ifttt_key_2.png)
+![](./images/ifttt_key_2.png)
 
 Keep the `${webhook_name}` placeholder in the URL path so that it can be customized in the rule editor. This will allow you to send SMS messages from different applets using the same web notification.
 
@@ -115,7 +115,7 @@ Only `valueN` naming convention for JSON fields is supported by the IFTTT platfo
 
 The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
-![](images/ifttt_endpoint.png)
+![](./images/ifttt_endpoint.png)
 
 ## Rule
 
@@ -131,7 +131,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/rule_overview.png)
+![](./images/rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -141,7 +141,7 @@ Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval**
 
 Specify the webhook identifier `atsd_custom_webhook` in the `webhook_name` parameter for all triggers.
 
-![](images/ifttt_rule_notification_open.png)
+![](./images/ifttt_rule_notification_open.png)
 
 The `webhook_name` placeholder in the request URL as well as payload placeholders will be automatically resolved when the notification is triggered:
 
@@ -163,11 +163,11 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/ifttt_alert_open.png)
+![](./images/ifttt_alert_open.png)
 
 Check your device to make sure the SMS was received.

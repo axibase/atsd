@@ -88,7 +88,7 @@ Derived commands can be stored each time a command is received or removed from t
 
 The frequency can be lowered by adjusting the repeat interval.
 
-![](images/derived_repeat.png)
+![](./images/derived_repeat.png)
 
 The produced commands are queued in memory and are persisted to the database once per second.
 
@@ -117,7 +117,7 @@ series e:entity1 m:a=10 m:b=20 m:c=30
 
 If creating new data is the rule's only purpose, set the `Condition` field to a static `true` value to minimize the processing overhead.
 
-![](images/derived-condition.png)
+![](./images/derived-condition.png)
 
 ## Examples
 

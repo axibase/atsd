@@ -14,7 +14,7 @@ Logging to files or even remote systems can be enabled for each rule separately 
 
 Loggers can be added and modified by administrators on the **Settings > Configuration Files > logback.xml** page. Once a new logger is created and the `logback.xml` file is re-scanned, the new logger will appear in the `Alert Logger` drop-down.
 
-![](images/logging-loggers.png)
+![](./images/logging-loggers.png)
 
 By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging of `REPEAT` changes, set Repeat Interval from `None` to a valid interval on the 'Alerts' tab in the Rule Editor.
 

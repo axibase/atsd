@@ -163,7 +163,7 @@ We cleaned-up email alert template by removing rows from alert details that are 
 Continuing the extension of the ATSD schema, we added the new fields `minValue` and `maxValue` to the Metric class so that commonly used metadata about metrics can be described with
 fields, as opposed to tags because fields provide validation, dictionaries, and ease-of-use for users when editing metrics.
 
-![Figure 4](Images/Figure4.png)
+![Figure 4](./Images/Figure4.png)
 
 ### Issue 3601
 
@@ -181,7 +181,7 @@ select avg(value) from mpstat.cpu_busy
 
 The Trust SSL Certificate setting, when enabled, allows encrypted connections to LDAP servers with self-signed SSL certificates.
 
-![Figure 1](Images/Figure1.png)
+![Figure 1](./Images/Figure1.png)
 
 ### Issue 3583
 
@@ -190,7 +190,7 @@ authenticate. The new account settings, such as username, email, and first/last 
 
 If the 'Default User Group' is specified, the new self-registered users are automatically added to this group and inherit its permissions.
 
-![Figure 2](Images/Figure2.png)
+![Figure 2](./Images/Figure2.png)
 
 ### Issue 3470
 
@@ -250,7 +250,7 @@ Response:
 
 The Enterprise Edition now supports LDAP authentication to simplify and centralize credentials management in large organizations:
 
-![Figure 5](Images/Figure5.png)
+![Figure 5](./Images/Figure5.png)
 
 ### Issue 3309
 
@@ -261,4 +261,4 @@ The Enterprise Edition now supports LDAP authentication to simplify and centrali
 A new Item List type was implemented to load data from property records in ATSD. This allows automating monitoring and data collection jobs, for example, to TCP-check open ports for a
 list of containers retrieved by the Docker job.
 
-![Figure 3](Images/Figure3.png)
+![Figure 3](./Images/Figure3.png)
