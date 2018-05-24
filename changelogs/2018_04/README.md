@@ -1,6 +1,6 @@
 # Monthly Change Log: April 2018
 
-## ATSD (omitted: 5275, 5265, 5263, )
+## ATSD (omitted: 5275, 5265, 5263, 5235, )
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
@@ -15,4 +15,11 @@
 5250 | rule engine | Bug |
 5249 | rule engine | Bug | AWS [web notification](https://github.com/axibase/atsd/blob/master/rule-engine/web-notifications.md#web-notifications) configuration unable to be cloned.
 5247 | rule engine | Bug | Validation error when trying to rename cloned [web notification](https://github.com/axibase/atsd/blob/master/rule-engine/web-notifications.md#web-notifications) configuration.
-5246 | rule engine | Bug |
+5246 | rule engine | Bug | [Rule Engine](https://github.com/axibase/atsd/tree/master/rule-engine) set to ignore empty arrays and strings when returning JSON lists for [web notifications](https://github.com/axibase/atsd/blob/master/rule-engine/web-notifications.md#web-notifications).
+5240 | rule engine | Bug | [`db_last`](https://github.com/axibase/atsd/blob/master/rule-engine/functions-series.md#db_laststring-m) function returns last value regardless of when it was stored.
+5237 | rule engine | Bug | Multi-line [`queryPost`](https://github.com/axibase/atsd/blob/master/rule-engine/functions-web-query.md#querypost) templates enabled in [Rule Engine](https://github.com/axibase/atsd/tree/master/rule-engine)
+5236 | rule engine | Feature | `[db_last](https://github.com/axibase/atsd/blob/master/rule-engine/functions-series.md#db_laststring-m)` and `[db_statistic](https://github.com/axibase/atsd/blob/master/rule-engine/functions-series.md#db_statistic)` return `Double.NaN` if no matching series are found or if no values were recorded within the selection interval.
+5229 | api-rest | Bug | `GENERAL_ERROR` not displayed in **Settings** > **Diagnostics** > **Security Incidents** for unauthorized [webhook](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/webhook.md#webhook).
+5228 | UI | Feature | `User` and `Method` columns added to [webhook](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/webhook.md#webhook) administration page, **Settings** > **Diagnostics** > **Webhook Requests**.
+5224 | sql | Bug | `NumberFormatException` raised when [`REPLACE`](https://github.com/axibase/atsd/tree/master/sql#string-functions) function inserts `NaN` value.
+5223 | rule engine | Bug | 
