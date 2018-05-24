@@ -437,7 +437,7 @@ Subscribe to build status events from Travis CI.
 
 ### Slack
 
-Receive incoming bot events using Slack Event API. Refer to the Slack webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-slack.md).
+Receive incoming bot events using Slack Event API. Refer to the Slack webhook configuration [instructions](./notifications/outgoing-webhook-slack.md).
 
 ```elm
 /api/v1/messages/webhook/slack?command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
@@ -445,7 +445,7 @@ Receive incoming bot events using Slack Event API. Refer to the Slack webhook co
 
 ### Telegram
 
-Receive incoming bot messages. Refer to the Telegram webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-telegram.md).
+Receive incoming bot messages. Refer to the Telegram webhook configuration [instructions](./notifications/outgoing-webhook-telegram.md).
 
 ```elm
 /api/v1/messages/webhook/telegram?command.message=message.text
