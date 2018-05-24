@@ -309,3 +309,9 @@ module.exports = {
     }
 }
 
+if (!module.exports.ga) {
+    let ga = require('process').env['GA_API_KEY'];
+    if (ga) {
+        module.exports.ga = ga;
+    }
+}
