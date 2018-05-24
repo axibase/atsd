@@ -266,6 +266,7 @@ const administrationMenu = [
     ['metric-persistence-filter.md', 'Metric Persistence Filter'],
     ['compaction.md', 'Compaction'],
     ['compaction-test.md', 'Compaction Test'],
+    ['compaction/', 'Compression Tests'],
     ['monitoring.md', 'Monitoring'],
 ]
 
@@ -281,6 +282,7 @@ module.exports = {
 
         sidebarDepth: 1,
         sidebar: {
+            '/administration/compaction/': [],
             '/administration/': administrationMenu,
             '/api/data/': restApiMenu,
             '/api/meta/': restApiMenu,
@@ -309,9 +311,15 @@ module.exports = {
     }
 }
 
-if (!module.exports.ga) {
-    let ga = require('process').env['GA_API_KEY'];
-    if (ga) {
-        module.exports.ga = ga;
+loadFromEnv("ga", "GA_API_KEY");
+loadFromEnv("sc", "STATCOUNTER_ID");
+loadFromEnv("scSec", "STATCOUNTER_SEC");
+
+function loadFromEnv(setting, varName) {
+    if (!(setting in module.exports)) {
+        let value = require('process').env[varName];
+        if (value) {
+            module.exports[setting] = value;
+        }
     }
 }
