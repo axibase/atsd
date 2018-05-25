@@ -11,19 +11,19 @@ This can be used to search for entities without the specified tag or to check fo
 ### URI
 
 ```elm
-POST https://atsd_hostname:ame:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
 
 ```json
 [
-    {
-        "startDate": "2016-02-22T13:30:00Z",
-        "endDate":   "2016-02-22T13:31:00Z",
-        "entityExpression": "tags.app = ''",
-        "metric": "mpstat.cpu_busy"
-    }
+  {
+    "startDate": "2016-02-22T13:30:00Z",
+    "endDate": "2016-02-22T13:31:00Z",
+    "entityExpression": "tags.app = ''",
+    "metric": "mpstat.cpu_busy"
+  }
 ]
 ```
 
@@ -42,22 +42,10 @@ POST https://atsd_hostname:ame:8443/api/v1/series/query
       "type": "DETAIL"
     },
     "data": [
-      {
-        "d": "2016-02-22T13:30:01.000Z",
-        "v": 1.02
-      },
-      {
-        "d": "2016-02-22T13:30:17.000Z",
-        "v": 1.51
-      },
-      {
-        "d": "2016-02-22T13:30:33.000Z",
-        "v": 2.5
-      },
-      {
-        "d": "2016-02-22T13:30:49.000Z",
-        "v": 4.48
-      }
+      {"d":"2016-02-22T13:30:01.000Z","v":1.02},
+      {"d":"2016-02-22T13:30:17.000Z","v":1.51},
+      {"d":"2016-02-22T13:30:33.000Z","v":2.5},
+      {"d":"2016-02-22T13:30:49.000Z","v":4.48}
     ]
   }
 ]
