@@ -279,6 +279,7 @@ module.exports = {
     ],
     themeConfig: {
         nav: topNavMenu,
+        logo: '/images/axibase_logo_site.png',
 
         sidebarDepth: 1,
         sidebar: {

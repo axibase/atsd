@@ -66,6 +66,12 @@ export default {
 @media (max-width: $MQMobile)
   .navbar
     padding-left 4rem
-    .can-hide
+  .navbar .can-hide
       display none
+@media (max-width: 1200px)
+  .navbar
+    .site-name
+      display none
+    .logo
+      transform translateY(1px)
 </style>
