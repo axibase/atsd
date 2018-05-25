@@ -31,11 +31,11 @@ Returns a normally distributed double number, with a mean value of `0.0` and sta
 randomItem([] c) string
 ```
 
-Returns a random element from collection `c` using the **uniform** distribution.
+Returns a random element from a collection or map using the **uniform** distribution.
 
 The probability of each element to be selected is `1/c.size()`.
 
-The function returns the selected element converted to string format.
+The function returns the selected element converted to string format. In case of map, the returned object is a `key-value` object.
 
 An input collection can contain elements of any type, such as strings or numbers, and can be specified as follows:
 
@@ -84,7 +84,7 @@ Key-value maps are provided by the [`replacementTable`](functions-lookup.md#repl
 
 > Replacement tables are listed on the **Data > Replacement Tables** page.
 
-Assuming the table contains the following records and the second entry is randomly selected:
+Assuming the replacement table contains the following rows and the second entry is randomly selected:
 
 ```elm
 Kent=415.555-0000

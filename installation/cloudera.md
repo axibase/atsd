@@ -19,14 +19,12 @@ sudo su axibase
 ```
 
 ```sh
-jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; echo $jp
+jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
+  sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; \
+  echo $jp
 ```
 
-```sh
-exit
-```
-
-## Verify Zookeeper Connectivity
+## Verify Connectivity
 
 Check connection from the ATSD server to the Zookeeper service.
 
@@ -45,7 +43,7 @@ The Zookeeper client port is specified in:
 * Zookeeper host: `/etc/zookeeper/conf.dist/zoo.cfg` > `clientPort` setting
 * HBase host: `/etc/hbase/conf.dist/hbase-site.xml` > `hbase.zookeeper.property.clientPort` setting
 
-## Download ATSD EE
+## Download ATSD
 
 ### CDH (Cloudera Distribution Hadoop) 5.5.x
 
@@ -53,14 +51,17 @@ The Zookeeper client port is specified in:
 curl -O https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 ```
 
-## Extract Files
+### Extract Files
 
 ```sh
 sudo tar -xzvf atsd_ee_hbase_1.0.3.tar.gz -C /opt
+```
+
+```sh
 sudo chown -R axibase:axibase /opt/atsd
 ```
 
-## Request License Key
+## Request License
 
 To obtain a license key, contact Axibase support with the following information from the machine where ATSD will be installed.
 
@@ -95,9 +96,9 @@ hostname -f
 NURSWGVML007
 ```
 
-Email output of the above commands to Axibase support and copy the provided key to `/opt/atsd/atsd/conf/license/key.properties`.
+Provide output of the above commands to Axibase support and copy the returned license key to `/opt/atsd/atsd/conf/license/key.properties`.
 
-## Configure HBase Connection
+## Setup HBase Connection
 
 Open the `hadoop.properties` file.
 
@@ -311,9 +312,9 @@ default etypes for default_tkt_enctypes: 23 18.
 6247 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Login user from keytab successful
 ```
 
-## Configure HBase Region Servers
+## Configure HBase
 
-### Deploy ATSD Coprocessors
+### Deploy ATSD Coprocessors to HBase Region Servers
 
 Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib` directory on each HBase region server.
 
@@ -341,7 +342,7 @@ sudo netstat -tulpn | grep "8081\|8082\|8084\|8088\|8443"
 
 If some of the above ports are taken, open the `/opt/atsd/atsd/conf/server.properties` file and change ATSD listening ports accordingly.
 
-```txt
+```elm
 http.port = 8088
 input.port = 8081
 udp.input.port = 8082
@@ -349,7 +350,7 @@ pickle.port = 8084
 https.port = 8443
 ```
 
-## Disable HBase Compactions
+## Disable Compactions
 
 By default ATSD triggers major HBase compaction of its key data tables on a daily schedule.
 
@@ -365,9 +366,9 @@ hbase.compaction.list = entity
 hbase.compaction.schedule = 0 0 12 * * SAT
 ```
 
-## Increase Memory
+## Allocate Memory
 
-Configure Java Heap memory to ATSD java process as described [here](../administration/allocating-memory.md).
+Allocate Java Heap memory to ATSD java process as described [here](../administration/allocating-memory.md).
 
 Increase the number of worker threads and maximum queue size the **Settings > Server Properties** page:
 
