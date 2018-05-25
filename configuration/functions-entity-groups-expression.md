@@ -135,7 +135,7 @@ Returns `true`, if collection `c` contains object `v`. The collection `c` can be
 Examples:
 
 ```javascript
-NOT collection_contains(tags['os'], collection('ignore_os'))
+NOT collection_contains(tags, [entity_tags('nurswgvml007')])
 ```
 
 ### `collection_intersects`
@@ -182,10 +182,16 @@ Examples:
 
 ```javascript
 property('docker.container::image') = 'axibase/collector:latest'
+// OR
+property(name, 'docker.container::image') = 'axibase/collector:latest'
 ```
 
 ```javascript
 name = property('nurswgvml007', 'docker.container::image')
+```
+
+```javascript
+property('nurswgvml007','cpu::cpu.idle%') < property('cpu::cpu.idle%')
 ```
 
 ### `properties`
@@ -300,7 +306,7 @@ If the entity is not found, an empty map is returned.
 Examples:
 
 ```javascript
-tags.file_system = entity_tags('nurswgml007').file_system
+entity_tags(name).file_system='ext4'
 ```
 
 ### `contains`
