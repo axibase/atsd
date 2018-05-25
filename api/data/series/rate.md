@@ -58,16 +58,19 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ```json
 [
-        {
-            "startDate": "2015-09-03T12:00:00Z",
-            "endDate": "2015-09-03T12:05:00Z",
-            "timeFormat": "iso",
-            "entity": "e-nano",
-            "metric": "m-nano"
-            ,"rate" : {
-               "period": {"count": 1, "unit": "NANOSECOND"}
-            }
-        }
+  {
+    "startDate": "2015-09-03T12:00:00Z",
+    "endDate": "2015-09-03T12:05:00Z",
+    "timeFormat": "iso",
+    "entity": "e-nano",
+    "metric": "m-nano",
+    "rate": {
+      "period": {
+        "count": 1,
+        "unit": "NANOSECOND"
+      }
+    }
+  }
 ]
 ```
 
@@ -76,34 +79,25 @@ Used to compute rate of change when the underlying metric measures a continuousl
 ```json
 [
   {
-      "entity": "e-nano",
-      "metric": "m-nano",
-      "tags": {},
-      "type": "HISTORY",
-      "aggregate": {
-          "type": "DETAIL"
+    "entity": "e-nano",
+    "metric": "m-nano",
+    "tags": {},
+    "type": "HISTORY",
+    "aggregate": {
+      "type": "DETAIL"
+    },
+    "rate": {
+      "period": {
+        "count": 1,
+        "unit": "NANOSECOND"
       },
-      "rate": {
-          "period": {
-              "count": 1,
-              "unit": "NANOSECOND"
-          },
-          "counter": true
-      },
-      "data": [
-          {
-              "d": "2015-09-03T12:00:00.002Z",
-              "v": 0.7
-          },
-          {
-              "d": "2015-09-03T12:00:00.003Z",
-              "v": 0.1
-          },
-          {
-              "d": "2015-09-03T12:00:00.004Z",
-              "v": 0.4
-          }
-      ]
+      "counter": true
+    },
+    "data": [
+      {"d":"2015-09-03T12:00:00.002Z","v":0.7},
+      {"d":"2015-09-03T12:00:00.003Z","v":0.1},
+      {"d":"2015-09-03T12:00:00.004Z","v":0.4}
+    ]
   }
 ]
 ```
