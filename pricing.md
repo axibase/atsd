@@ -1,5 +1,5 @@
-# Licensing
+# Pricing
 
-* Stand-alone ATSD installation is free.
-* Axibase Collector instances are available at no cost.
-* Licensing fee for distributed edition is based on cluster size.
+* ATSD Standard Edition is **free**.
+* Axibase Collector instances are **free**.
+* Licensing fee for ATSD Enterprise Edition is based on the number of processing nodes in the cluster.
