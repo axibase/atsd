@@ -94,7 +94,7 @@ const restApiMenu = [
             `/api/data/messages/webhook`,
             `/api/data/messages/query`,
             `/api/data/messages/delete`,
-            `/api/data/messages/stats-query`,
+            `/api/data/messages/count`,
         ]
     },
     {
