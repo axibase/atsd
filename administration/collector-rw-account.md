@@ -1,4 +1,6 @@
-# Collector Account with Read/Write Permissions
+# Collector R/W Account
+
+The document describes how to create a [collector](collector-account.md) account with read and write permissions.
 
 ## Create `collectors-rw` User Group
 
