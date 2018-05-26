@@ -9,7 +9,7 @@ Retrieve messages for all types and sources. Same results would be returned with
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/query
+POST /api/v1/messages/query
 ```
 
 ### Payload

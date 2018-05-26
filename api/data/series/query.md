@@ -150,7 +150,7 @@ The response contains an array of series objects, each containing series identif
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 #### Payload

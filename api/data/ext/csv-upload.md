@@ -108,7 +108,7 @@ In case of error, the response object is returned as follows:
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/csv?config=my-parser&default-entity=nurswgvml007
+POST /api/v1/csv?config=my-parser&default-entity=nurswgvml007
 ```
 
 #### Payload

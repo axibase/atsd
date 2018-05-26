@@ -7,7 +7,7 @@ List metrics for entity `nurswgvml007` with not empty tags and description.
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?expression=description%20!%3D%20%27%27%20AND%20!tags.isEmpty()
+GET /api/v1/entities/nurswgvml007/metrics?expression=description%20!%3D%20%27%27%20AND%20!tags.isEmpty()
 ```
 
 ### Expression

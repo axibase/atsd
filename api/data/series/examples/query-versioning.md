@@ -34,7 +34,7 @@ The version object contains value change date, source, and status. For example: 
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

@@ -11,7 +11,7 @@ Each query may return multiple series. The order of series in the response is ar
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

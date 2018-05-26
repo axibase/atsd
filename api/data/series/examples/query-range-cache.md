@@ -15,7 +15,7 @@ Values in Last Insert Cache table maybe delayed up to 1 minute (cache to disk in
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

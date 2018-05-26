@@ -46,7 +46,7 @@ name LIKE 'disk?used*'
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/metrics?expression=name%20LIKE%20%27disk%3Fused*%27
+GET /api/v1/metrics?expression=name%20LIKE%20%27disk%3Fused*%27
 ```
 
 ### Expression

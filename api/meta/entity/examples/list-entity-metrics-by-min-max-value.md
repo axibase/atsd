@@ -7,7 +7,7 @@ List metrics for entity `nurswgvml007` with `minValue > -10` or `maxValue < 80`
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?expression=minValue%20%3E%20-10%20OR%20maxValue%20%3C%2080
+GET /api/v1/entities/nurswgvml007/metrics?expression=minValue%20%3E%20-10%20OR%20maxValue%20%3C%2080
 ```
 
 ### Expression

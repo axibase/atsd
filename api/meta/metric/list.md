@@ -113,7 +113,7 @@ Invalid Action is triggered if the received series value is less than the Minimu
 #### URI
 
 ```elm
-https://atsd_hostname:8443/api/v1/metrics?limit=2
+GET /api/v1/metrics?limit=2
 ```
 
 #### Payload
@@ -174,7 +174,7 @@ name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled 
 #### URI
 
 ```elm
-https://atsd_hostname:8443/api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
+GET /api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
 ```
 
 #### Payload

@@ -99,7 +99,7 @@ Queries would delete the following record:
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/properties/delete
+POST /api/v1/properties/delete
 ```
 
 #### Payload

@@ -11,7 +11,7 @@ Properties can be accessed with the property [functions](../../filter-entity.md#
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

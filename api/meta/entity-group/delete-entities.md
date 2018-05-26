@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/delete
+POST /api/v1/entity-groups/nmon-aix/entities/delete
 ```
 
 #### Payload

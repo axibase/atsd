@@ -7,7 +7,7 @@ List metrics for entity `nurswgvml007` with `lastInsertDate` within the specifie
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?minInsertDate=2012-01-01T00:00:00Z&maxInsertDate=2015-10-30T00:00:00Z
+GET /api/v1/entities/nurswgvml007/metrics?minInsertDate=2012-01-01T00:00:00Z&maxInsertDate=2015-10-30T00:00:00Z
 ```
 
 ## Response

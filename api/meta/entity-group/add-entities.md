@@ -56,7 +56,7 @@ If `createEntities` is `false`, and the request contains a non-existing entity, 
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/add
+POST /api/v1/entity-groups/nmon-aix/entities/add
 ```
 
 #### Payload

@@ -50,7 +50,7 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/metrics/disk_used/series
+GET /api/v1/metrics/disk_used/series
 ```
 
 #### Payload

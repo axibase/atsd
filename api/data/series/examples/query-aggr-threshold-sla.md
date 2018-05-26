@@ -9,7 +9,7 @@ To calculate threshold violation statistics, apply the working hours filter.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

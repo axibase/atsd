@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-PUT https://atsd_hostname:8443/api/v1/entity-groups/nmon-collectors
+PUT /api/v1/entity-groups/nmon-collectors
 ```
 
 #### Payload

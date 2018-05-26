@@ -31,7 +31,7 @@ None.
 #### URI
 
 ```elm
-DELETE https://atsd_hostname:8443/api/v1/entities/nurswgvml001
+DELETE /api/v1/entities/nurswgvml001
 ```
 
 #### Payload

@@ -17,7 +17,7 @@ series d:2017-09-01T09:30:00Z e:entity-nan m:metric-nan=16.3
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

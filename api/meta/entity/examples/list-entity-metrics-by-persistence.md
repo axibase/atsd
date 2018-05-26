@@ -7,7 +7,7 @@ List metrics for entity `nurswgvml007` that are not stored in the database and a
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?expression=persistent%3Dfalse
+GET /api/v1/entities/nurswgvml007/metrics?expression=persistent%3Dfalse
 ```
 
 ### Expression

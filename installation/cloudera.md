@@ -1,6 +1,6 @@
 # Installation: Cloudera / CDH
 
-## Create `axibase` user
+## Create User
 
 Create an `axibase` user on the server where ATSD will be running.
 
@@ -10,7 +10,7 @@ sudo adduser axibase
 
 ## Install Java
 
-[Install Oracle JDK or Open JDK.](../administration/migration/install-java-8.md)
+[Install Oracle JDK or Open JDK](../administration/migration/install-java-8.md).
 
 Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
 

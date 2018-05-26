@@ -25,7 +25,7 @@
 ### Issue 4619
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/metrics?maxInsertDate=1970-01-01T00:00:00Z&limit=3
+GET /api/v1/metrics?maxInsertDate=1970-01-01T00:00:00Z&limit=3
 ```
 
 Refer to [entity](../../api/meta/entity/list.md#additional-examples) examples and [metric](../../api/meta/metric/list.md#additional-examples) examples.

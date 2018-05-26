@@ -15,7 +15,7 @@ Since the ISO parser is currently limited to **4** digits in the year part, the 
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

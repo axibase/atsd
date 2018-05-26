@@ -245,7 +245,7 @@ A sample forecast [JSON query](../api/data/series/examples/query-named-forecast.
 [Insert a forecast](../api/data/series/examples/insert-forecast.md) into ATSD using POST method:
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/insert
+POST /api/v1/series/insert
 ```
 
 Payload:

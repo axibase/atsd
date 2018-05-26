@@ -7,7 +7,7 @@
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/alerts/history/query
+POST /api/v1/alerts/history/query
 ```
 
 ### Payload

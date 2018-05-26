@@ -11,7 +11,7 @@ Query detailed (raw) data for the specified time range, identified with `startDa
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

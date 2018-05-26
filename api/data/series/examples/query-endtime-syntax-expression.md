@@ -11,7 +11,7 @@ The below example selects data between 23:00 of the previous day and now.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

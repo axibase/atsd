@@ -186,10 +186,10 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/s
 | **Method** | **Path** | **Description** |
 |:---|:---|:---|
 | `POST` | [`/messages/insert`](./messages/insert.md) | Insert an array of messages.
-| `POST` | [`/messages/webhook/`](./messages/webhook.md) | Create message from any HTTP request with optional JSON payload and insert it.
+| `POST` | [`/messages/webhook/`](./messages/webhook.md) | Create message from an HTTP request with optional JSON payload and insert it.
 | `POST` | [`/messages/query`](./messages/query.md)  | Retrieve message records for the specified filters. |
 | - | [-](./messages/delete.md) | Execute administrative actions to delete message records. |
-| `POST` | [`/messages/stats/query`](./messages/stats-query.md)  |  Retrieve message counters as series for the specified filters.  |
+| `POST` | [`/messages/stats/query`](./messages/count.md)  |  Calculate the number of messages per period.  |
 
 ### Properties
 

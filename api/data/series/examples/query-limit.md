@@ -15,7 +15,7 @@ Samples for each series are always sorted by time in ascending order.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

@@ -11,7 +11,7 @@ This can be used to search for entities without the specified tag or to check fo
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

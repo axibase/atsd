@@ -60,7 +60,7 @@ Refer to Fields specified in [Metrics List](../metric/list.md#fields) method.
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2
+GET /api/v1/entities/nurswgvml007/metrics?limit=2
 ```
 
 #### Payload
@@ -119,7 +119,7 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityInsertTime=true&tags=*&limit=2
+GET /api/v1/entities/nurswgvml007/metrics?useEntityInsertTime=true&tags=*&limit=2
 ```
 
 #### Payload

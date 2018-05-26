@@ -5,7 +5,7 @@
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&tags=app&expression=name%20LIKE%20%27nur%27%20and%20lower%28tags.app%29%20LIKE%20%27hbase%27
+GET /api/v1/entities?timeFormat=iso&limit=2&tags=app&expression=name%20LIKE%20%27nur%27%20and%20lower%28tags.app%29%20LIKE%20%27hbase%27
 ```
 
 ### Expression

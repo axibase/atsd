@@ -7,7 +7,7 @@ List metrics starting with `nmon` and with tag `table` starting with `CPU` for e
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?tags=table&limit=2&expression=name%20like%20%27nmon*%27%20and%20tags.table%20like%20%27*CPU*%27
+GET /api/v1/entities/nurswgvml007/metrics?tags=table&limit=2&expression=name%20like%20%27nmon*%27%20and%20tags.table%20like%20%27*CPU*%27
 ```
 
 ### Expression
