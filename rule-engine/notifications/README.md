@@ -72,7 +72,7 @@ Fill out the required fields for the given webhook type.
 
 Click 'Test' to verify the delivery.
 
-If the webhookwebhook supports sending charts, select one of the portals from the 'Test Portal' drop-down.
+If the webhook supports sending charts, select one of the portals from the 'Test Portal' drop-down.
 
 The webhook request is successful if the endpoint returns status `200` (OK).
 
