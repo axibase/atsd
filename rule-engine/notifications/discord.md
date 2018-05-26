@@ -59,7 +59,7 @@ On the **Invite** tab you can create an invitation link and distribute it to new
 
 To join a server, click **Create new server**, select **Join** and paste the received invitation link.
 
-## Create Webhook
+## Create Webhook in Discord
 
 * Open the **Webhook** tab, click **Create Webhook**, enter a name and select a channel.
 
@@ -67,7 +67,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 * Copy the Webhook URL for future reference, click **Save**.
 
-## Create Discord Notification in ATSD
+## Create Webhook in ATSD
 
 * Open the **Alerts > Web Notifications** page.
 * Click on an existing `DISCORD` template, or click the **Create** button and select the `DISCORD` type.
@@ -99,7 +99,7 @@ NGINX API Gateway Path for Discord:
   }
 ```
 
-## Notification Parameters
+## Webhook Parameters
 
 |**Parameter**|**Description**|
 |---|---|
@@ -109,7 +109,7 @@ NGINX API Gateway Path for Discord:
 |Bot Username|Overwrite your bot's user name.|
 |Content|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 
-## Testing Notification
+## Testing
 
 ### Create/import rule
 
@@ -138,7 +138,7 @@ NGINX API Gateway Path for Discord:
 
 * The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
-## Example
+## Examples
 
    ![](./images/discord_test_1.png)
 

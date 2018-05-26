@@ -72,7 +72,7 @@ There are two options to obtain chat id:
 
     ![](./images/chat_object.png)
 
-## Configure Web Notification in ATSD
+## Configure Webhook in ATSD
 
 * Open **Alerts > Web Notifications** page.
 * Click on an existing `TELEGRAM` template, or click the **Create** button below and select the `TELEGRAM` type.
@@ -104,7 +104,7 @@ NGINX API Gateway Path for Telegram:
   }
 ```
 
-## Notification Settings
+## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|
@@ -132,7 +132,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
-### Configure notification
+### Configure Webhook
 
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Web Notifications** tab.
@@ -150,7 +150,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 
 * The rule will create new windows based on incoming data.
 
-It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It may take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ### Test
 
@@ -162,7 +162,7 @@ Sample alert table file.
 
 ![](./images/test_2.png)
 
-## Notifications Examples
+## Examples
 
 ![](./images/example1.png)
 

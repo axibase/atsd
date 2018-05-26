@@ -1,22 +1,12 @@
-# Web Notifications
+# Outgoing Webhooks
 
-## Overview
+Webhooks provide a mechanism for sending event notifications to external web services.
 
-Web notifications implement a webhook mechanism for event-driven integration of the database with external HTTP services.
+They can be programmed to send an alert to Slack, update a bug tracker, start a CI build, publish an event to an AWS SNS topic, or even control an IoT device.
 
-They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing an event to an AWS SNS topic, or controlling IoT devices.
+## Messaging Webhooks
 
-Example: [Slack](./slack.md) Alert
-
-![](./images/slack-alert.png)
-
-## Notification Types
-
-The rule engine supports both built-in and custom web notification types.
-
-### Collaboration Services
-
-The built-in notification types for chat and collaboration services deliver alert messages and contextual charts to a channel or group.
+The built-in webhook types for messaging and collaboration services deliver alerts and charts to targeted subscribers.
 
 | Type | Send Message | Send Chart | Integration Model | Hosting Model |
 | --- | --- | --- | --- | --- |
@@ -25,7 +15,11 @@ The built-in notification types for chat and collaboration services deliver aler
 | [DISCORD](./discord.md) | Yes | Yes | [Discord API](https://discordapp.com/developers/docs/intro) | Cloud |
 | [HIPCHAT](./hipchat.md) | Yes | Yes | [HipChat Data Center API](https://www.hipchat.com/docs/apiv2/) | Self-hosted |
 
-### Integration Services
+Example: [Slack](./slack.md) Alert
+
+![](./images/slack-alert.png)
+
+## Integration Webhooks
 
 | Type | Customizable Fields | Description |
 | --- | --- | --- |
@@ -37,78 +31,29 @@ The built-in notification types for chat and collaboration services deliver aler
 | [WEBHOOK](./webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
 | [CUSTOM](./custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [`pagerduty`](./custom-pagerduty.md), [`zendesk`](./custom-zendesk.md), [`github`](./custom-github.md), [`circleci`](./custom-circleci.md), [`jenkins`](./custom-jenkins.md), [`ifttt`](./custom-ifttt.md)|
 
-## Window Status
+## Creating Notifications
 
-Notifications are triggered on window status events.
-
-A [window](../window.md) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
-
-As the new data is received and old data is removed from the window, the rule engine re-evaluates the condition which can cause the status of the current window to change, triggering a notification.
-
-### Initial Status
-
-New windows are created based on incoming data and no historical data is loaded from the database.
-
-The window for the given metric/entity/tags is created only when the first command for this series is received by the rule engine.
-
-The new windows are assigned initial status of `CANCEL` which is then updated based on results of the condition (`true` or `false`).
-
-### Window Life Cycle
-
-All windows for the current rule are deleted from memory if the rule is deleted or modified and saved in the editor.
-
-### Triggers
-
-The web notification can be triggered whenever the window changes its status as well as at scheduled intervals while the status is `REPEAT`.
-
-### Status Events
-
-| Previous Status | New Status | Previous Condition Value | New Condition Value | Trigger Supported |
-| --- | --- | --- | --- | --- |
-| `CANCEL` | `OPEN` | `false` | `true` | Yes |
-| `OPEN`  | `REPEAT` | `true` | `true` | Yes |
-| `REPEAT` | `REPEAT` | `true` | `true` | Yes |
-| `OPEN` | `CANCEL` | `true` | `false` | Yes |
-| `REPEAT` | `CANCEL` | `true` | `false` | Yes |
-| `CANCEL` | `CANCEL` | `false` | `false` | No |
-
-### `OPEN` Status
-
-The `OPEN` status is assigned to the window when the condition changes value from `false` to `true`.
-
-### `REPEAT` State
-
-The `REPEAT` status is assigned to an `OPEN` window when the condition returns `true` based on the second received command.
-
-While the window is in `REPEAT` status, a notification can be sent with the frequency specified in the rule editor.
-
-### `CANCEL` State
-
-`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the condition changes from `true` to `false` or when the window is deleted on rule modification.
-
-Triggering a repeat notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
-
-## Payload
-
-The payload is determined by the notification type. Typically the payload is text content in the form of a JSON document or form fields. Some built-in notification types support sending chart screenshots as image files in addition to text content.
-
-## Creating Notification
+Notifications are triggered on [window status](../window.md#window-status) events.
 
 Open the **Alerts > Web Notifications** page and click 'Create'.
 
-Select the notification type in the drop-down.
+Select the webhook type in the drop-down.
 
 Set the status to 'Enabled'.
 
-Enter a name by which the notification will be listed on the 'Web Notifications' tab in the rule editor.
+Enter a name by which the webhook will be listed on the 'Web Notifications' tab in the rule editor.
 
-> If the notification type supports sending charts as images, configure the web driver as described [here](./web-driver.md).
+### Payload
 
-The same notification can be re-used by multiple rules.
+The payload is determined by the webhook type. Typically the payload is text content in the form of a JSON document or form fields. Some built-in webhook types support sending chart screenshots as image files in addition to text content.
+
+### Web Driver
+
+If the selected webhook type supports sending chart screenshots, configure the [web driver](./web-driver.md).
 
 ### Parameters
 
-Each notification type supports its own set of settings:
+Each webhook type supports its own set of settings:
 
 * Fixed settings that can not be customized in the rule editor.
 * Editable settings which can be changed in the rule editor.
@@ -121,31 +66,31 @@ The administrator can specify which settings are fixed and which can be modified
 
 For example, an API Bot identifier or authentication token is a fixed setting, whereas the channel name and the text message are customizable.
 
-## Testing Notifications
+### Testing Notifications
 
-Fill out the required fields for the given notification type.
+Fill out the required fields for the given webhook type.
 
 Click 'Test' to verify the delivery.
 
-If the notification type supports sending charts, select one of the portals from the 'Test Portal' drop-down.
+If the webhookwebhook supports sending charts, select one of the portals from the 'Test Portal' drop-down.
 
-The notification request is successful if the endpoint returns status `200` (OK).
+The webhook request is successful if the endpoint returns status `200` (OK).
 
 ![](./images/slack-test.png)
 
-## Using Notifications in Rules
+## Enabling Notifications
 
 Open **Alerts > Rules** page.
 
 Select a rule by name, open the 'Web Notifications' tab in the rule editor.
 
-Choose one of the notifications from the 'Endpoint' drop-down.
+Choose one of the webhooks from the 'Endpoint' drop-down.
 
-Configure when the notification are triggered by enabling triggers for different status change events: on `Open`, `Repeat`, and on `Cancel`.
+Configure when to send the notification by enabling triggers for `Open`, `Repeat`, and `Cancel` events.
 
 ![](./images/notify-triggers.png)
 
-Multiple notifications to different endpoints can be enabled for the same rule.
+> The rule can be programmed to send notifications to multiple endpoints for  the same event.
 
 ### Jitter Control
 
@@ -155,13 +100,13 @@ This setting can be used to reduce alert jitter when the window alternates betwe
 
 ### Repeat Alerts
 
-If the window remains in the `REPEAT` status, it can be configured to repetitively trigger the notification with the following frequency:
+If the window remains in the `REPEAT` status, it can be configured to repetitively trigger the webhook with the following frequency:
 
 | Frequency | Description |
 | --- | --- |
-| All | The notification is triggered each time the window is updated and remains in the `REPEAT` status (expression continues to be `true`). |
-| Every *N* events | The notification is triggered every Nth occurrence of the new data being added to the window. |
-| Every *N* minutes | The notification is triggered when the window is updated but no more frequently than the specified interval. |
+| All | The webhook is triggered each time the window is updated and remains in the `REPEAT` status (expression continues to be `true`). |
+| Every *N* events | The webhook is triggered every Nth occurrence of the new data being added to the window. |
+| Every *N* minutes | The webhook is triggered when the window is updated but no more frequently than the specified interval. |
 
 ### Message Text
 
@@ -191,7 +136,7 @@ Utilize [control flow](../control-flow.md) statements for conditional processing
 
 ### Attachments
 
-Attachment options are displayed in the rule editor if supported by the given notification type.
+Attachment options are displayed in the rule editor if supported by the given webhook type.
 
 ![](./images/notify-attach.png)
 
@@ -219,39 +164,41 @@ The `Attach Details` option sends an alert details table as a separate message w
 
 ### Multiple Endpoints
 
-To send requests to multiple endpoints for the same status change event, add multiple notifications in the rule editor.
+To send requests to multiple endpoints for the same status change event, add multiple webhooks in the rule editor.
 
-The order in which notifications are delivered is non-deterministic.
-
-## Stopping Messages
-
-The rule engine ignores alerts initiated for disabled notifications.
-
-To disable sending alerts from any rule through the selected notification, set its status to 'Disabled' on the **Alerts > Web Notifications** page.
+The order in which webhooks are delivered is non-deterministic.
 
 ## Delivery Control
 
-Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
+### Stopping Messages
+
+The rule engine ignores alerts initiated for disabled webhooks.
+
+To disable sending alerts from any rule through the selected webhook, set its status to 'Disabled' on the **Alerts > Web Notifications** page.
+
+### Notification Logs
+
+Notification results are recorded in the database as messages and can be viewed under the `notification` type on the Message Search page.
 
 ```elm
-https://atsd_hostname:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
+/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
 ```
 
 ![](./images/notify-error.png)
 
-## Monitoring
+### Monitoring
 
 The number of notifications sent per minute can be monitored with the [`web_service_notifications_per_minute`](../../administration/monitoring.md#rule-engine) metric collected by the database.
 
 ```elm
-https://atsd_hostname:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
+/portals/series?entity=atsd&metric=web_service_notifications_per_minute
 ```
 
 ![](./images/notifications-monitoring.png)
 
-## Error Handling
+### Error Handling
 
-The notification request is delivered successfully if the endpoint returns `200` (OK) status code.
+The notification request is executed successfully if the endpoint returns `200` (OK) status code.
 
 **No retry** is attempted in case of error. If the notification fails, the rule engine writes an `ERROR` event in the `atsd.log` and stores a corresponding messages with `CRITICAL` severity in the database.
 

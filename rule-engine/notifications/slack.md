@@ -31,9 +31,9 @@ Create a Slack [workspace](https://slack.com/create), if necessary.
 
 If necessary, create new channel as described [here](https://get.slack.help/hc/en-us/articles/201402297-Create-a-channel).
 
-## Create ATSD Slack Bot
+## Create Bot
 
-Slack Bot is a special account created specifically for automation purposes.
+Slack Bot is a special account created for automation purposes.
 
 * Open [Slack Apps](https://api.slack.com/apps/)
 
@@ -97,9 +97,9 @@ Slack Bot is a special account created specifically for automation purposes.
 
 When sending messages to either a public or private channel you can just use the name of the channel instead of its ID, for example `devops` or `general`.
 
-## Configure Web Notification in ATSD
+## Configure Webhook in ATSD
 
-* Open **Alerts > Web Notifications** page.
+* Open **Alerts > Webhooks** page.
 * Click on an existing `SLACK` template, or click the **Create** button below and select the `SLACK` type.
 * Specify the unique `Name` of the notification.
 
@@ -131,7 +131,7 @@ NGINX API Gateway Path for Slack:
   }
 ```
 
-## Notification Settings
+## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|
@@ -148,7 +148,7 @@ The bot account can be used both to deliver notifications to end users, as well 
 
 In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-slack.md). The [webhook](outgoing-webhook-slack.md) integration requires ATSD server to be reachable from Slack API servers.
 
-## Testing Notification Rule
+## Testing Rule
 
 ### Create/import rule
 
@@ -157,7 +157,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
-### Configure notification
+### Configure Webhook
 
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Web Notifications** tab.
@@ -175,9 +175,9 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 
 * The rule will create new windows based on incoming data.
 
-It may take a few seconds for the first commands to arrive and trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It may take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
-## Example
+## Examples
 
 ![](./images/slack_test_1.png)
 

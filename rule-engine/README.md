@@ -95,8 +95,7 @@ Actions are triggered on window status changes, for example upon window `OPEN` s
 Supported response actions:
 
 * [Send email](email.md)
-* [Send chat message](notifications/README.md#collaboration-services)
-* [Trigger webhook](notifications/webhook.md)
+* [Trigger webhook](notifications/README.md)
 * [Execute script](commands.md)
 * [Generate derived metrics](derived.md)
 * [Log alert to file](logging.md)

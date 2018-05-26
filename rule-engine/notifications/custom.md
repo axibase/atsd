@@ -6,16 +6,9 @@
 
 This integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
 
-## Examples
+## Configuration
 
-* Register service incident in [PagerDuty](custom-pagerduty.md)
-* Update [Github issue](custom-github.md)
-* Post comment to [Zendesk ticket](custom-zendesk.md)
-* Send SMS message via [IFTTT](custom-ifttt.md)
-* Trigger [CircleCI project build](custom-circleci.md)
-* Start [Jenkins job](custom-jenkins.md)
-
-## Supported HTTP Methods
+### Supported HTTP Methods
 
 | Method | Payload Allowed |
 |---|---|
@@ -26,14 +19,14 @@ This integration enables sending HTTP requests with customized content to the sp
 | PATCH | Yes |
 | DELETE | No |
 
-## Supported Content Types
+### Supported Content Types
 
 * `application/json`
 * `application/x-www-form-urlencoded`
 
 If the selected HTTP method such as `GET` doesn't support a payload, the request parameters specified in the Parameters section are appended to the Endpoint URL as a query string.
 
-## Supported Authentication Mechanisms
+### Supported Authentication Mechanisms
 
 | Type | Description |
 |---|---|
@@ -75,6 +68,13 @@ Both fixed and editable parameter values can include placeholders.
 
 ![](./images/custom-editable-editor.png)
 
-## Example
+## Examples
+
+* Register service incident in [PagerDuty](custom-pagerduty.md)
+* Update [Github issue](custom-github.md)
+* Post comment to [Zendesk ticket](custom-zendesk.md)
+* Send SMS message via [IFTTT](custom-ifttt.md)
+* Trigger [CircleCI project build](custom-circleci.md)
+* Start [Jenkins job](custom-jenkins.md)
 
 ![](./images/custom-json.png)

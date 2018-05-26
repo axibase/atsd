@@ -80,7 +80,7 @@
 
 In addition to the room ID, you can search by room name, for example `test-axibase`, when sending messages.
 
-## Create HipChat Notification in ATSD
+## Create Webhook in ATSD
 
 * Open the **Alerts > Web Notifications** page.
 * Click on an existing `HIPCHAT` template, or click the **Create** button and select the `HIPCHAT`type.
@@ -105,9 +105,9 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 
 If the HipChat API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
-## Notification Parameters
+## Webhook Settings
 
-|**Parameter**|**Description**|
+|**Name**|**Description**|
 |---|---|
 |`Auth Token`|Authorization Token with 'message' and 'notifications' scopes.|
 |Bot Nickname|Set a name for the bot.|
@@ -117,7 +117,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 |Notify|Notify users when bot sends a message.|
 |Add Links to Portals|Send a follow up message with chart links after each message containing portal screenshots.|
 
-## Testing Notification
+## Testing
 
 ### Create/import Rule
 
@@ -146,7 +146,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
 * The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
-## Example
+## Examples
 
 > Note that the alert color depends on the severity level specified in the **Logging** tab.
 
