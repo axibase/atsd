@@ -2,12 +2,6 @@
 
 Axibase Time Series Database (ATSD) is a non-relational database optimized for collecting, storing, and analyzing temporal data from IT infrastructure, industrial equipment, smart meters, and IoT devices.
 
-## Origins
-
-ATSD is developed by [Axibase Corporation](https://axibase.com/about-us/), established in 2004, based on our decade-long experience with IT infrastructure management systems. We sought to build a specialized database with a focus on data quality where historical data was treated like a first-class citizen. More specifically, ATSD was designed to overcome intrinsic issues with write-heavy warehouse systems backed by relational databases like [Tivoli DW](https://www.ibm.com/support/knowledgecenter/en/SS4EKN_7.2.0/com.ibm.itm.doc_6.3/install/tdw_overview.htm), which suffer from stale/invalid records and slow analytical queries due to a lack of indexes.
-
-A prototype was ready by June 2013 and an MVP was released in October 2013. The first licensed ATSD instance was delivered to a customer in mid-2014.
-
 ## Technology Stack
 
 ```elm
@@ -35,7 +29,7 @@ Single-node ATSD instance can process up to 200,000 metrics per second with mill
 
 Compute scalability increases the system's read and write throughput (number of metrics inserted per second) and is achieved by adding **region servers** to the HBase cluster.
 
-## Storage Footprint
+## Storage Scalability
 
 Storage efficiency determines how many metrics and individual series can be stored in the system.
 
@@ -138,14 +132,3 @@ WHERE metric = 'Temperature'
   AND entity = 'BR1740'
   ORDER BY datetime
 ```
-
-## Licensing
-
-* ATSD provides a choice of licensing options.
-* API clients and drivers are open-sourced under the Apache 2 license.
-
-## Pricing
-
-* Stand-alone ATSD installation is free.
-* Axibase Collector instances are available at no cost.
-* Licensing fee for distributed edition is based on cluster size.
