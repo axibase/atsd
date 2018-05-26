@@ -241,42 +241,65 @@ const sqlMenu = [
 ];
 
 const administrationMenu = [
-    ['mail-client.md', 'Setup Email Client'],
-    ['timezone.md', 'Time Zone'],
-    ['user-authentication.md', 'User Authentication'],
-    ['user-authorization.md', 'User Authorization'],
+    {
+        title: "User Management", children: [
+            ['user-authentication.md', 'User Authentication'],
+            ['user-authorization.md', 'User Authorization'],
+            ['collector-account.md', 'Collector Account'],
+            ['collector-rw-account.md', 'Collector R/W Account'],
+        ]
+    },
     {
         title: "SSL", children: [
-            ['ssl-ca-signed.md', 'CA-signed Cetificate'],
-            ['ssl-self-signed.md', 'Self-signed Cetificate'],
-            ['ssl-lets-encrypt.md', 'Let\'s Encrypt'],
+            ['ssl-ca-signed.md', 'CA-signed Certificate'],
+            ['ssl-lets-encrypt.md', 'Let\'s Encrypt'],            
+            ['ssl-self-signed.md', 'Self-signed Certificate'],
         ]
     },
     ['restarting.md', 'Restarting'],
     ['update.md', 'Updating'],
-    ['uninstalling.md', 'Uninstalling'],
+    ['logging.md', 'Logging'],
     {
         title: "Configuration", children: [
+            ['mail-client.md', 'Mail Client'],
+            ['timezone.md', 'Time Zone'],
             ['networking-settings.md', 'Network Settings'],
-            ['enabling-swap-space.md', 'Enabling Swap Space'],
+            ['enabling-swap-space.md', 'Swap Space'],
             ['replication.md', 'Replication'],
-            ['allocating-memory.md', 'Allocating Memory to components'],
-            ['changing-data-directory.md', 'Changing Data Directory'],
+            ['allocating-memory.md', 'Memory Allocation'],
+            ['changing-data-directory.md', 'Custom Data Directory'],
             ['editing-configuration-files.md', 'Configuration Files'],
         ]
     },
-    ['logging.md', 'Logging'],
-    ['metric-persistence-filter.md', 'Metric Persistence Filter'],
-    ['compaction.md', 'Compaction'],
-    ['compaction-test.md', 'Compaction Test'],
-    ['compaction/', 'Compression Tests'],
-    ['monitoring.md', 'Monitoring'],
+    {
+        title: "Data Management", children: [
+            ['compaction.md', 'Compaction'],
+            ['compaction-test.md', 'Compaction Test'],
+            ['compaction/', 'Compression Tests'],     
+            ['data-retention.md', 'Data Retention'],       
+            ['metric-persistence-filter.md', 'Persistence Filters'],
+        ]
+    },
+    {
+        title: "Monitoring", children: [
+            ['monitoring.md', 'Overview'],
+            ['monitoring-metrics/jmx.md', 'JMX Metrics'],
+            ['monitoring-metrics/json.md', 'JSON Metrics'],
+            ['monitoring-metrics/file.md', 'File Metrics'],
+            ['monitoring-metrics/rule-engine.md', 'Alerting'],
+            ['monitoring-metrics/portals.md', 'Portals'],
+            ['monitoring-metrics/ingestion-statistics.md', 'Ingestion Statistics'],
+            ['monitoring-metrics/database-tables.md', 'Database Tables'],
+            ['monitoring-metrics/io-tests.md', 'I/O Tests'],
+            ['monitoring-metrics/hbase-write-test.md', 'HBase Write Test'],
+        ]
+    }
 ]
 
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
-    description: "User manual and API reference of Axibase® Time Series Database",
+    description: "User manual and API reference for Axibase® Time Series Database",
     head: [
         ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
     ],
