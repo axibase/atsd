@@ -36,7 +36,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 * [**Required**]
 * Refer to [entity filter](../filter-entity.md).
 
-> Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `'*'` matches all tags.
+> Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `*` matches all tags.
 
 ### Tag Filter
 
@@ -185,7 +185,7 @@ POST https://atsd_hostname:8443/api/v1/series/query
 
 ## `curl` Example
 
-```json
+```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
@@ -195,6 +195,10 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
 ## Java Example
 
 * [Series Query](https://github.com/axibase/atsd/tree/master/api/data/series/examples/DataApiSeriesQueryExample.java)
+
+## Python Example
+
+* [Querying Series](https://github.com/axibase/atsd-api-python#querying-series)
 
 ## Additional Examples
 

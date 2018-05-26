@@ -67,8 +67,9 @@ Cross-domain requests are allowed.
 
 ## Troubleshooting
 
-* Review error logs on the **Settings > Diagnostics > Server Logs** page in case the payload is rejected
-* To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to netcat port, and dump the incoming data to file:
+* Review error logs on the **Settings > Diagnostics > Server Logs** page in case the payload is rejected.
+* To eliminate authentication issues, submit the request using the built-in API client on the **Data > API Client** page.
+* To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to `netcat` port, and dump the incoming data to file:
 
 ```bash
 nc -lk localhost 20088 > json-in.log &

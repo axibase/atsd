@@ -138,9 +138,9 @@ Authentication and authorization error codes are listed in the [Administration](
 
 ## Troubleshooting
 
-* Review error logs on the **Settings > Server Logs** page if the payload is rejected.
+* Review error logs on the **Settings > Diagnostics > Server Logs** page if the payload is rejected.
 * To eliminate authentication issues, submit the request using the built-in API client on the **Data > API Client** page.
-* To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to the netcat port, and dump the incoming data to file:
+* To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to the `netcat` port, and dump the incoming data to file:
 
 ```bash
 nc -lk 0.0.0.0 20088 > json-in.log &
@@ -165,49 +165,49 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/s
 
 ### Series
 
-* `POST` [`/series/insert`](insert.md)
+* `POST` [`/series/insert`](./series/insert.md)
 
   Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags.
 
-* `POST` [`/series/insert`](insert.md)
+* `POST` [`/series/insert`](./series/insert.md)
 
   Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags.
 
 | **Method** | **Path** / **Description** |
 |:---|:---|
-| `POST` | [`/series/insert`](insert.md)<br>Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
-| `POST` | [`/series/query`](query.md) <br> Retrieve series with timestamped values for specified filters.|
-| `POST` | [`/series/csv/{entity}`](csv-insert.md) <br> Insert series values for the specified entity and series tags in CSV format.|
-| `GET` | [`/series/{format}/{entity}/{metric}`](url-query.md) <br> Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
-| `POST` | [`/series/delete`](delete.md) <br> Delete series for the specified entity, metric, and optional series tags. |
+| `POST` | [`/series/insert`](./series/insert.md)<br>Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
+| `POST` | [`/series/query`](./series/query.md) <br> Retrieve series with timestamped values for specified filters.|
+| `POST` | [`/series/csv/{entity}`](./series/csv-insert.md) <br> Insert series values for the specified entity and series tags in CSV format.|
+| `GET` | [`/series/{format}/{entity}/{metric}`](./series/url-query.md) <br> Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
+| `POST` | [`/series/delete`](./series/delete.md) <br> Delete series for the specified entity, metric, and optional series tags. |
 
 ### Messages
 
 | **Method** | **Path** | **Description** |
 |:---|:---|:---|
-| `POST` | [`/messages/insert`](insert.md) | Insert an array of messages.
-| `POST` | [`/messages/webhook/`](webhook.md) | Create message from any HTTP request with optional JSON payload and insert it.
-| `POST` | [`/messages/query`](query.md)  | Retrieve message records for the specified filters. |
-| - | [-](delete.md) | Execute administrative actions to delete message records. |
-| `POST` | [`/messages/stats/query`](stats-query.md)  |  Retrieve message counters as series for the specified filters.  |
+| `POST` | [`/messages/insert`](./messages/insert.md) | Insert an array of messages.
+| `POST` | [`/messages/webhook/`](./messages/webhook.md) | Create message from any HTTP request with optional JSON payload and insert it.
+| `POST` | [`/messages/query`](./messages/query.md)  | Retrieve message records for the specified filters. |
+| - | [-](./messages/delete.md) | Execute administrative actions to delete message records. |
+| `POST` | [`/messages/stats/query`](./messages/stats-query.md)  |  Retrieve message counters as series for the specified filters.  |
 
 ### Properties
 
 | **Method** | **Path** | **Description** |
 |:---|:---|:---|
-| `POST` | [`/properties/insert`](insert.md) | Insert an array of properties. |
-| `POST` | [`/properties/query`](query.md) | Retrieve property records matching specified filters. |
-| `GET` | [`/properties/{entity}/types/{type}`](url-query.md) | Retrieve property records for the specified entity and type. |
-| `GET` | [`/properties/{entity}/types`](type-query.md) |  Retrieve an array of property types for the entity.  |
-| `POST` | [`/properties/delete`](delete.md) | Delete property records that match specified filters. |
+| `POST` | [`/properties/insert`](./properties/insert.md) | Insert an array of properties. |
+| `POST` | [`/properties/query`](./properties/query.md) | Retrieve property records matching specified filters. |
+| `GET` | [`/properties/{entity}/types/{type}`](./properties/url-query.md) | Retrieve property records for the specified entity and type. |
+| `GET` | [`/properties/{entity}/types`](./properties/type-query.md) |  Retrieve an array of property types for the entity.  |
+| `POST` | [`/properties/delete`](./properties/delete.md) | Delete property records that match specified filters. |
 
 ### Extended
 
 | **Method** | **Path** | **Description** |
 |:---|:---|:---|
-| `POST` | [`/command`](command.md) | Insert data using commands in Network API via HTTP. |
-| `POST` | [`/csv`](csv-upload.md) | Upload CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser. |
-| `POST` | [`/nmon`](nmon-upload.md) | Upload nmon file for parsing. |
+| `POST` | [`/command`](./ext/command.md) | Insert data using commands in Network API via HTTP. |
+| `POST` | [`/csv`](./ext/csv-upload.md) | Upload CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser. |
+| `POST` | [`/nmon`](./ext/nmon-upload.md) | Upload nmon file for parsing. |
 
 ## Meta API Endpoints
 
