@@ -276,7 +276,7 @@ const administrationMenu = [
             ['compaction.md', 'Compaction'],
             ['compaction-test.md', 'Compaction Test'],
             ['compaction/', 'Compression Tests'],     
-            ['data-retention.md', 'Data Retention'],       
+            ['data_retention.md', 'Data Retention'],       
             ['metric-persistence-filter.md', 'Persistence Filters'],
         ]
     },
