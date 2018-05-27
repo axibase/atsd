@@ -23,7 +23,7 @@
 
 #### Issue 4243
 
-Admin > Diagnostics > Backup, daily .xml backups made for the following object types:
+Settings > Diagnostics > Backup, daily .xml backups made for the following object types:
 
 * Replacement Tables
 * Named Collections

@@ -12,7 +12,7 @@
 | 3852 | sql | Feature | Add support for [column alias](../../sql/examples/alias-column.md) for columns created with [`CASE`](../../sql#case) expression. |
 | 4034 | sql | Bug | Incorrect filtering of rows with multiple [`LIKE` expressions](../../sql#like-expression) combined with OR operator. |
 | 4030 | sql | Bug | Add support for metric [`LIKE` expression](../../sql#like-expression) in `FROM atsd_series` queries. |
-| [4029](#issue-4029) | UI | Feature | Consolidate diagnostic tool links on the **Admin: Diagnostics** page. |
+| [4029](#issue-4029) | UI | Feature | Consolidate diagnostic tool links on the **Settings: Diagnostics** page. |
 | 4027 | sql | Bug | Metric tags and fields are set to `null` in [`JOIN`](../../sql#joins) queries.|
 | 4003 | csv | Bug | Enforce 1GB limit on CSV files uploaded using [csv-upload](../../api/data/ext/csv-upload.md) method.|
 | 4028 | sql | Bug | Fix `ORDER BY tag.name` if some series don't have values for the tag used in sorting. |

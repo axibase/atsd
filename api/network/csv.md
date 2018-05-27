@@ -20,7 +20,7 @@ csv p:${parser} e:${entity} r:${metric_prefix} z:${timezone} t:${timeout}
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| `p`         | yes          | **[Required]** Parser name from `Configuration> Parsers: CSV` page. |
+| `p`         | yes          | **[Required]** Parser name from `Data > CSV Parsers` page. |
 | `e`         | string       | Default entity name. |
 | `ep`        | string       | Entity prefix applied to all entity names in the file. |
 | `et`        | string       | Entity tags.<br>Comma separated list of entity tags added as series, message, or property tags to parsed commands. |

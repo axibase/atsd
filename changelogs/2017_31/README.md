@@ -13,7 +13,7 @@
 | 4421 | sql | Bug | Revert a change which caused empty results to be returned for a non-existing table without raising an error. |
 | [4420](#issue-4420) | sql | Bug | Return data type as `bigint` for columns that previously were classified as `long`. |
 | [4406](#issue-4406) | UI | Feature | Highlight error if tag value is not allowed by a dictionary tag specified in the metric or entity tag template. |
-| 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Configuration > Tag Templates** page. |
+| 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Settings > Tag Templates** page. |
 | [4395](#issue-4395) | jdbc | Feature | Add support for [wildcards](https://github.com/axibase/atsd-jdbc/blob/master/README.md#database-metadata) in `getTables` and `getColumns` methods. |
 | [4389](#issue-4389) | jdbc | Feature | Add support for inserting metric and entity [tags and fields](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#metric-metadata-columns) in `INSERT` statements. |
 | [4388](#issue-4388) | jdbc | Feature | Add support for local [timestamp](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#date) format `yyyy-MM-dd HH:mm:ss[.fffffffff]` in `INSERT` statements. |

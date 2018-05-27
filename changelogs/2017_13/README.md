@@ -16,7 +16,7 @@
 | 3939 | sql | Bug | Fix error with missing result rows in `JOIN USING ENTITY` query after inserting new series. |
 | 3935 | sql | Bug | Improve performance of queries with several [`JOIN USING ENTITY`](../../sql#join-with-using-entity) clauses. |
 | 3856 | sql | Feature | Support implicit conversion to number in the `LAST` and `FIRST` aggregation functions. |
-| [2911](#issue-2911) | UI | Feature | Show user-specified parameters on the `Admin: CSV Tasks` page. |
+| [2911](#issue-2911) | UI | Feature | Show user-specified parameters on the **Data > CSV Tasks** page. |
 
 ## Collector
 

@@ -62,7 +62,7 @@ GROUP BY entity
 
 The TCP handler, running on the default port 8081, was optimized for faster processing of `series` commands streamed by a single TCP client. The new implementation provides a pool of
 threads instead of a single one to offload parsing and processing from the TCP handler. The size of the pool is controlled with the `series.processing.pool.size` parameter on the
-Admin > Server Properties -> Network page. The default value is 2 and is recommended to be set to the number of cores on the server.
+**Settings > Server Properties** page. The default value is 2 and is recommended to be set to the number of cores on the server.
 
 As a result, the TCP processing and parsing throughput (measured in commands per second) has increased by 40% on average.
 

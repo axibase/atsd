@@ -28,7 +28,7 @@ This is a one time task.
 
 ### Upload the nmon File
 
-* Navigate to **Configuration > Parsers: nmon**
+* Navigate to **Data > nmon Parsers**
 * At the bottom of the page, click "Upload" to import your nmon file or archive of nmon files using the "default" nmon parser.
 * Keep a note of the hostname for which you have just uploaded the data.
 

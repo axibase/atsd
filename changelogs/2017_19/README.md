@@ -10,7 +10,7 @@
 | 4172 | rule engine | Bug | Fixed broken rendering of the Alerts History detail page. |
 | [4166](#issue-4166) | UI | Feature | Apply user-defined time format to `datetime` column in the SQL console. |
 | 4165 | UI | Feature | Extend SQL syntax highlighter with extended ATSD keywords. |
-| 4159 | UI | Bug | Removed unused sorting option on the Admin: System Information page. |
+| 4159 | UI | Bug | Removed unused sorting option on the **Settings > System Information** page. |
 | 4156 | sql | Bug | Ensure email delivery in case of file write errors in scheduled SQL queries. |
 | [4146](#issue-4146) | sql | Feature | Modified [`GROUP BY PERIOD`](../../sql#grouping) processing to include all samples within the period. |
 | [4140](#issue-4140) | UI | Feature | Replace named links with drop-down menus in record tables. |

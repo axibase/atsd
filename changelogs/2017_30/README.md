@@ -51,7 +51,7 @@ FROM ( select * from table_size ) TableauSQL
 
 ### Issue 4361
 
-Compression for CSV report files can be selected on the **Configuration > SQL Queries** page.
+Compression for CSV report files can be selected on the **SQL > Scheduled Queries** page.
 
 ![](./Images/4361.png)
 
