@@ -45,7 +45,7 @@ To view the portal, click on **View By Id** or **View By Name**.
 
 ![](./resources/getting-started-2_4.png)
 
-Review the [basic syntax](https://axibase.com/products/axibase-time-series-database/visualization/widgets/selecting-series/) used to select series.
+Review the [basic syntax](../portals/selecting-series.md) used to select series.
 
 Refer to [visualization documentation](https://axibase.com/products/axibase-time-series-database/visualization/) to add more widgets to the portal.
 

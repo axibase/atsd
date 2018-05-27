@@ -38,7 +38,7 @@ const installationMenu = [
 const integrationMenu = [
     {
         title: 'Collectors', children: [
-            ['https://github.com/axibase/axibase-collector', 'Axibase Collector'],
+            ['https://github.com/axibase/axibase-collector/', 'Axibase Collector'],
             'collectd/',
             'graphite/',
             'java-metrics/',
@@ -51,7 +51,6 @@ const integrationMenu = [
 
     {
         title: 'Reporting Tools', children: [
-            'aer/',
             'alteryx/',
             'chartlab/',
             'matlab/',
@@ -61,6 +60,7 @@ const integrationMenu = [
             'spss/statistics/',
             'stata/',
             'tableau/',
+            'aer/',
         ]
     },
 

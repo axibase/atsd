@@ -26,7 +26,7 @@ value = 24
 ```
 
 > By default the Time field is set to the current server time and is displayed in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601).
-> We will ignore series tags to simplify this example. Tags can be used to add [metadata](https://axibase.com/products/axibase-time-series-database/data-model/) about the time series.
+> We will ignore series tags to simplify this example. Tags can be used to add [metadata](../schema.md) about the time series.
 
 Insert additional observations by modifying **Value** field for example sample.
 

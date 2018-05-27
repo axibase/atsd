@@ -1,8 +1,8 @@
 # Tableau
 
 * [Prerequisites](#prerequisites)
-* [Configure Database Connection](#configure-database-connection)
-* [Review Tables in Data Source Pane](#review-tables-in-data-source-pane)
+* [Database Connection](#configure-database-connection)
+* [Review Tables](#review-tables-in-data-source-pane)
 * [Visualization](#visualization)
 * [Examples](#examples)
 
@@ -32,7 +32,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
-## Configure Database Connection
+## Configure Connection
 
 * Launch Tableau
 * Select **Connect > To a Server > Other Databases(ODBC)**
