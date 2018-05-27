@@ -34,7 +34,7 @@ Restart ATSD:
 
 Now you can access ATSD on `service:jmx:rmi:///jndi/rmi://atsd_ip:1099/atsd`, with the username and password established earlier in the guide.
 
-## Connect to JMX Server with `jvisualvm`
+## Connect to JMX Server
 
 Uncomment JMX settings in the `/opt/atsd/atsd/conf/server.properties`
 file:

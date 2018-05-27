@@ -215,7 +215,65 @@ To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and 
 
 ![](./images/retention-delete-tasks-brief.png)
 
-## Deleting Data using API
+## Deleting with UI
+
+### Deleting Entities
+
+To delete a single entity, locate the entity, open the entity editor and click 'Delete'.
+
+This will cause **all** series collected for the entity to be deleted.
+
+![](./images/delete-entity.png)
+
+To delete **multiple** entities, specify the search pattern on the Entities tab.
+
+Select all or multiple matching entities using the checkbox controls, and click 'Delete' in the multi-action button.
+
+![](./images/delete-entity-multiple.png)
+
+Series can be re-inserted for a new entity with the same name without any collisions. The new entity will be assigned a unique identifier.
+
+![](./images/delete-entity-id.png)
+
+### Deleting Metrics
+
+To delete a single metric, locate the metric, open the metric editor and click 'Delete'.
+
+This will cause **all** series collected for the metric to be deleted.
+
+![](./images/delete-metric.png)
+
+To delete **multiple** metrics, specify the search pattern on the Metrics tab.
+
+Select all or multiple matching metrics using the checkbox controls, and click 'Delete' in the multi-action button.
+
+![](./images/delete-metric-multiple.png)
+
+Series can be re-inserted for a new metric with the same name without any collisions. The new metric will be assigned a unique identifier.
+
+### Deleting Series
+
+> Only one series can be deleted at a time.
+
+Locate the series.
+
+![](./images/delete-series-statistics-link.png)
+
+Open the Series Statistics page. Click 'Delete'.
+
+![](./images/delete-series-statistics.png)
+
+Note that series removed with this method is masked with a [Delete](../api/data/series/delete.md#delete-markers) marker which will prevent the data for the **same** series from being visible until the next scheduled HBase compaction.
+
+### Deleting Properties
+
+Not supported in the user interface.
+
+### Deleting Messages
+
+Not supported in the user interface.
+
+## Deleting with API
 
 * Metric [delete](../api/meta/metric/delete.md)
 * Entity [delete](../api/meta/entity/delete.md)
@@ -223,7 +281,9 @@ To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and 
 * Properties [delete](../api/data/properties/delete.md)
 * Message [delete](../api/data/messages/delete.md)
 
-## Deleting Data using API Clients
+Note that series and properties removed with these methods are masked with [Delete](../api/data/series/delete.md#delete-markers) markers which will prevent the data for the **same** series or property from being visible until the next scheduled HBase compaction.
+
+## Deleting with API Clients
 
 * Refer to Python client [examples](https://github.com/axibase/atsd-api-python#record-cleanup)
 

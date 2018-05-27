@@ -40,10 +40,8 @@ SQL statements can be executed interactively via the web-based console, on [sche
 * [Options](#options)
 * [Permissions](permissions.md)
 * [API Endpoint](api.md)
-* [Scheduler](#scheduler)
-  * [Send Reports](scheduled-sql.md)
-  * [Store Results](scheduled-sql-store.md)
-* [Performance](performance.md)
+* [Scheduled Reports](#scheduler)
+* [Query Optimization](performance.md)
 * [SQL Compatibility](#sql-compatibility)
 * [Examples](examples/README.md)
 

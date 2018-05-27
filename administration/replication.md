@@ -189,7 +189,7 @@ Output should contain a list of ATSD tables, all starting with `atsd_`.
 
 ![](./images/atsd_tables.png "atsd_tables")
 
-## Enabling Replication for New Tables
+## Replication for New Tables
 
 If after updating ATSD, or for any other reason, a new table was created
 in HBase with the name containing `atsd_` (for example `atsd_new`),

@@ -1,8 +1,8 @@
 # Allocating Memory to Components
 
-## Change Maximum ATSD Heap Memory
+## ATSD Heap
 
-Open the ATSD environment file and modify the -Xmx parameter.
+To increase maximum ATSD heap memory, open the ATSD environment file and modify the `-Xmx` parameter.
 
 ```sh
 nano /opt/atsd/atsd/conf/atsd-env.sh
@@ -18,7 +18,7 @@ Restart ATSD
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-## Change Maximum HBase Heap Memory
+## HBase Heap
 
 Open the HBase environment file and uncomment the `export HBASE_HEAPSIZE` line.
 Set new maximum memory size in megabytes:
@@ -49,7 +49,7 @@ Restart ATSD and HBase:
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-## Change Maximum HDFS Heap Memory
+## HDFS Heap
 
 Open the HDFS environment file and uncomment the `export HADOOP_HEAPSIZE` line.
 Set new maximum memory size in megabytes:

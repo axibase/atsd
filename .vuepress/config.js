@@ -38,14 +38,14 @@ const installationMenu = [
 const integrationMenu = [
     {
         title: 'Collectors', children: [
-            ['https://github.com/axibase/axibase-collector/', 'Axibase Collector'],
             'collectd/',
+            'scollector/',
+            'tcollector/',
+            'statsd/',
             'graphite/',
             'java-metrics/',
             'nmon/',
-            'scollector/',
-            'statsd/',
-            'tcollector/',
+            ['https://github.com/axibase/axibase-collector/', 'Axibase Collector'],
         ]
     },
 
@@ -64,7 +64,7 @@ const integrationMenu = [
         ]
     },
 
-    ['https://github.com/axibase/atsd-use-cases', 'Examples'],
+    ['https://github.com/axibase/atsd-use-cases#how-to', 'Examples'],
 ];
 
 
@@ -231,10 +231,11 @@ const ruleNotificationsMenu = [
 
 const sqlMenu = [
     '',
-    ['scheduled-sql.md', 'Scheduled Queries'],
-    ['scheduled-sql-store.md', 'Materialized Views'],
+    ['examples/', 'Examples'],
     ['permissions.md', 'Permissions'],
     ['performance.md', 'Query Optimization'],
+    ['scheduled-sql.md', 'Scheduled Queries'],
+    ['scheduled-sql-store.md', 'Materialized Views'],
     ['api.md', 'API Endpoint'],
     ['https://github.com/axibase/atsd-jdbc#jdbc-driver', 'JDBC Driver'],
     ['client/', 'Bash Client'],
