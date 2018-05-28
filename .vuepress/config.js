@@ -304,7 +304,7 @@ module.exports = {
     head: [
         ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
     ],
-    staticFilesExtensionsTest: /\.(?:pdf|xml|txt|csv|str|java|json)$/,
+    staticFilesExtensionsTest: /(?:tcollector|\.(?:pdf|xlsx?|xml|txt|csv|str|java|json|sql|sps|yxmd|htm|prpt|do|tdc|jsonld|ktr|service))$/,
     themeConfig: {
         nav: topNavMenu,
         logo: '/images/axibase_logo_site.png',
