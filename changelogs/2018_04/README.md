@@ -22,4 +22,9 @@
 5229 | api-rest | Bug | `GENERAL_ERROR` not displayed in **Settings** > **Diagnostics** > **Security Incidents** for unauthorized [webhook](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/webhook.md#webhook).
 5228 | UI | Feature | `User` and `Method` columns added to [webhook](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/webhook.md#webhook) administration page, **Settings** > **Diagnostics** > **Webhook Requests**.
 5224 | sql | Bug | `NumberFormatException` raised when [`REPLACE`](https://github.com/axibase/atsd/tree/master/sql#string-functions) function inserts `NaN` value.
-5223 | rule engine | Bug | 
+5223 | rule engine | Bug | Create function [`jsonToMaps`](https://github.com/axibase/atsd/blob/master/rule-engine/functions-table.md#jsontomaps) which converts string lists to a collection of maps containing keys and values.
+5221 | security | Feature | Enable SSL certificate update via `curl` command without server restart.
+5219 | security | Bug | Increase scope of certificate renewal options available through `certbot`.
+5218 | sql | Feature | Support configurable metric limit for [`LIKE`](https://github.com/axibase/atsd/tree/master/sql#like-expression) expressions.
+5217 | rule engine | Bug | Refactor [Slack notifications](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/slack.md#slack-notifications) fields.
+5215 | UI | Bug | FreeMarker error in valid
