@@ -5,7 +5,7 @@
 * [Data](api/data#overview)
   * [Series](api/data/series/README.md): [query](api/data/series/query.md), [insert](api/data/series/insert.md), [csv insert](api/data/series/csv-insert.md), [url query](api/data/series/url-query.md)
   * [Properties](api/data/properties/README.md): [query](api/data/properties/query.md), [insert](api/data/properties/insert.md), [url query](api/data/properties/url-query.md), [type query](api/data/properties/type-query.md), [delete](api/data/properties/delete.md)
-  * [Messages](api/data/messages/README.md): [query](api/data/messages/query.md), [insert](api/data/messages/insert.md), [webhook](api/data/messages/webhook.md), [delete](api/data/messages/delete.md), [statistics](api/data/messages/stats-query.md)
+  * [Messages](api/data/messages/README.md): [query](api/data/messages/query.md), [insert](api/data/messages/insert.md), [webhook](api/data/messages/webhook.md), [delete](api/data/messages/delete.md), [statistics](api/data/messages/count.md)
   * [Alerts](api/data/alerts/README.md): [query](api/data/alerts/query.md), [update](api/data/alerts/update.md), [delete](api/data/alerts/delete.md), [history query](api/data/alerts/history-query.md)
   * [Extended](api/data/ext/README.md): [csv-upload](api/data/ext/csv-upload.md), [nmon-upload](api/data/ext/nmon-upload.md), [command](api/data/ext/command.md)
 * [Meta](api/meta#overview)
@@ -60,7 +60,7 @@
 * [Functions](rule-engine/functions.md)
 * [Placeholders](rule-engine/placeholders.md)
 * [Overrides](rule-engine/overrides.md)
-* [Web Notifications](rule-engine/web-notifications.md)
+* [Webhooks](rule-engine/notifications/README.md)
 * [Email Notifications](rule-engine/email.md)
 * [System Commands](rule-engine/commands.md)
 * [Derived Commands](rule-engine/derived.md)
@@ -69,7 +69,7 @@
 ## Installation
 
 * [Requirements](administration/requirements.md)
-* [Distributions](installation/#installation-guides)
+* [Distributions](installation/README.md)
   * [Ubuntu/Debian (apt)](installation/ubuntu-debian-apt.md)
   * [Ubuntu/Debian  (deb)](installation/ubuntu-debian-deb.md)
   * [RedHat/CentOS (yum)](installation/redhat-centos-yum.md)
@@ -81,7 +81,7 @@
   * [Cloudera Hadoop Distribution (CDH)](installation/cloudera.md)
 * Cloud Services
   * [AWS EMR](installation/aws-emr-s3.md)
-* [Uninstalling](administration/uninstalling.md)
+* [Uninstalling](installation/uninstalling.md)
 * [Updating](administration/update.md)
 
 ## Tutorials
@@ -97,7 +97,7 @@
 
 * [Entity Groups](configuration/entity_groups.md)
 * [Entity Views](configuration/entity_views.md)
-* [Data Retention](configuration/data_retention.md)
+* [Data Retention](administration/data_retention.md)
 
 ## Administration
 
@@ -133,25 +133,8 @@
 
 ## Data Collection Examples
 
-* [ActiveMQ](integration/activemq#monitoring-activemq-with-atsd)
 * [collectd](integration/collectd/README.md)
-* [Derby](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/derby#overview)
 * [Graphite](integration/graphite/README.md)
-* [HP Openview](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/hp-openview#overview)
-* [IBM Tivoli Monitoring](integration/itm#ibm-tivoli-monitoring)
-* [JVM](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/jvm#overview)
-* [Jetty](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/jetty#overview)
-* [Kafka](integration/kafka/README.md)
-* [Microsoft System Center Operations Manager](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/scom#overview)
-* [MySQL Server](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/mysql#overview)
-* [NGINX](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/nginx#overview)
 * [nmon](integration/nmon/README.md)
-* [Oracle Enterprise Manager](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/oracle-enterprise-manager#overview)
-* [PostgreSQL](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/postgres#overview)
 * [scollector](integration/scollector/README.md)
-* [SolarWinds](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/solarwinds#overview)
 * [StatsD](integration/statsd/README.md)
-* [Tomcat Servlet Container](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/tomcat#overview)
-* [tcollector](integration/tcollector/README.md)
-* [VMware](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/vmware#overview)
-* [Zookeeper](integration/zookeeper/README.md)
