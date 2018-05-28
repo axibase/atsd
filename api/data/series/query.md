@@ -194,7 +194,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
 
 ## Java Example
 
-* [Series Query](https://github.com/axibase/atsd/tree/master/api/data/series/examples/DataApiSeriesQueryExample.java)
+* [Series Query](examples/DataApiSeriesQueryExample.java)
 
 ## Python Example
 

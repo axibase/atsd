@@ -172,7 +172,7 @@ curl https://atsd_hostname:8443/api/v1/properties/query \
 
 ## Java Example
 
-* [Properties Query](https://github.com/axibase/atsd/tree/master/api/data/properties/examples/DataApiPropertiesQueryExample.java)
+* [Properties Query](examples/DataApiPropertiesQueryExample.java)
 
 ## Additional Examples
 

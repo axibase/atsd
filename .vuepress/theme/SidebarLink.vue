@@ -93,7 +93,7 @@ a.sidebar-link
     padding-left 2.6rem
   .sidebar-sub-headers &
     padding-top 0.25rem
-    padding-left 2.4rem
+    padding-left 1.4rem
     padding-bottom 0.25rem
     border-left none
     &.active
@@ -101,4 +101,7 @@ a.sidebar-link
     &:before
       content: '-'
       padding: 0 1ex;
+  
+  .sidebar-group .sidebar-sub-headers &
+    padding-left 2.4rem
 </style>

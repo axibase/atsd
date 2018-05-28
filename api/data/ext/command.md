@@ -73,7 +73,7 @@ message e:server001 d:2015-03-04T12:43:20+00:00 t:subject="my subject" m:"Hello,
 
 ## Java Example
 
-* [Command Insert](https://github.com/axibase/atsd/tree/master/api/data/ext/examples/DataApiCommandInsertExample.java)
+* [Command Insert](examples/DataApiCommandInsertExample.java)
 
 ## Additional Examples
 
