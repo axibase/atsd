@@ -8,7 +8,7 @@ This integration relies on the [Zendesk API](https://developer.zendesk.com/rest_
 
 ## Configuration
 
-Create a new `CUSTOM` web notification or import the [template](resources/custom-zendesk-notification.xml) used in this example. To import an XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification or import the [template](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/resources/custom-zendesk-notification.xml) used in this example. To import an XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -55,7 +55,7 @@ Placeholders specified in the payload and the URL are visible as editable parame
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/custom-zendesk-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/resources/custom-zendesk-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 

@@ -75,7 +75,7 @@ Email us at **support-atsd@axibase.com** in case of installation questions.
 
 ## License
 
-By installing Axibase Time Series Database Standard Edition you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
+By installing Axibase Time Series Database Standard Edition you agree to the following **[License](https://github.com/axibase/atsd/blob/master/axibase_tsd_se_license.pdf)** terms.
 
 ## Tutorials
 
