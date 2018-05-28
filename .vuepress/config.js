@@ -16,7 +16,7 @@ const topNavMenu = [
     },
     { text: 'SQL', link: '/sql/' },
     { text: 'Rule Engine', link: '/rule-engine/' },
-    { text: 'Administer', link: '/administration/' },
+    { text: 'Configure', link: '/administration/' },
     { text: 'Integrate', link: '/integration/' }
 ]
 
