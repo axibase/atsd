@@ -99,7 +99,7 @@
 
 ## Security Examples
 
-* [Permissions](permissions.md)
+* [Permissions](../permissions.md)
 
 ## Consolidated Examples
 

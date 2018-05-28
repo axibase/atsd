@@ -5,7 +5,7 @@ const githubSettings = {
 }
 
 const topNavMenu = [
-    { text: 'Installation', link: '/installation/' },
+    { text: 'Install', link: '/installation/', highlighted: true },
     {
         text: 'API',
         items: [
@@ -16,8 +16,8 @@ const topNavMenu = [
     },
     { text: 'SQL', link: '/sql/' },
     { text: 'Rule Engine', link: '/rule-engine/' },
-    { text: 'Administration', link: '/administration/' },
-    { text: 'Integration', link: '/integration/' }
+    { text: 'Configure', link: '/administration/' },
+    { text: 'Integrate', link: '/integration/' }
 ]
 
 const installationMenu = [
@@ -304,6 +304,7 @@ module.exports = {
     head: [
         ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
     ],
+    staticFilesExtensionsTest: /(?:tcollector|\.(?:pdf|xlsx?|xml|txt|csv|str|java|json|sql|sps|yxmd|htm|prpt|do|tdc|jsonld|ktr|service))$/,
     themeConfig: {
         nav: topNavMenu,
         logo: '/images/axibase_logo_site.png',
@@ -315,6 +316,7 @@ module.exports = {
             '/api/data/': restApiMenu,
             '/api/meta/': restApiMenu,
             '/api/network/': networkApiMenu,
+            '/api/': [],
             '/changelogs/': [],
             '/forecasting/': [],
             '/installation/': installationMenu,

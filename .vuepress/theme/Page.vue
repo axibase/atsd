@@ -9,12 +9,12 @@
       <p class="inner">
         <span v-if="prev" class="prev">
           ← <router-link v-if="prev" class="prev" :to="prev.path">
-            {{ prev.title || prev.path }}
+            {{ prev.title.replace(/^[\w\s]+:\s+/, '').replace(/\\:/g, ':') || prev.path }}
           </router-link>
         </span>
         <span v-if="next" class="next">
           <router-link v-if="next" :to="next.path">
-            {{ next.title || next.path }}
+            {{ next.title.replace(/^[\w\s]+:\s+/, '').replace(/\\:/g, ':') || next.path }}
           </router-link> →
         </span>
       </p>
