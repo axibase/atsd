@@ -74,30 +74,30 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/query
+POST /api/v1/messages/query
 ```
 
 #### Payload
 
 ```json
 [
-    {
-        "entity": "nurswgvml007",
-        "type": "logger",
-        "limit": 5,
-        "endDate": "now",
-        "interval": {
-            "count": 30,
-            "unit": "MINUTE"
-        }
+  {
+    "entity": "nurswgvml007",
+    "type": "logger",
+    "limit": 5,
+    "endDate": "now",
+    "interval": {
+      "count": 30,
+      "unit": "MINUTE"
     }
+  }
 ]
 ```
 
 #### curl
 
 ```bash
-curl  https://atsd_hostname:8443/api/v1/messages/query \
+curl https://atsd_hostname:8443/api/v1/messages/query \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data @file.json
@@ -109,40 +109,42 @@ curl  https://atsd_hostname:8443/api/v1/messages/query \
 
 ```json
 [
-   {
-        "entity": "nurswgvml007",
-        "type": "logger",
-        "source": "com.axibase.tsd.service.entity.findentitybyexpressionserviceimpl",
-        "severity": "NORMAL",
-        "tags":
-        {
-            "level": "INFO",
-            "thread": "applicationScheduler-5",
-            "command": "com.axibase.tsd.Server"
-        },
-        "message": "Expression entity group 'scollector-linux' updated",
-        "date": "2016-05-25T17:05:00Z"
+  {
+    "entity": "nurswgvml007",
+    "type": "logger",
+    "source": "com.axibase.tsd.service.entity.findentitybyexpressionserviceimpl",
+    "severity": "NORMAL",
+    "tags": {
+      "level": "INFO",
+      "thread": "applicationScheduler-5",
+      "command": "com.axibase.tsd.Server"
     },
-    {
-        "entity": "nurswgvml007",
-        "type": "logger",
-        "source": "com.axibase.tsd.web.csv.csvcontroller",
-        "severity": "NORMAL",
-        "tags":
-        {
-            "level": "INFO",
-            "thread": "qtp490763067-195",
-            "command": "com.axibase.tsd.Server"
-        },
-        "message": "Start processing csv, config: nginx-status",
-        "date": "2016-05-25T17:04:01Z"
-    }
+    "message": "Expression entity group 'scollector-linux' updated",
+    "date": "2016-05-25T17:05:00Z"
+  },
+  {
+    "entity": "nurswgvml007",
+    "type": "logger",
+    "source": "com.axibase.tsd.web.csv.csvcontroller",
+    "severity": "NORMAL",
+    "tags": {
+      "level": "INFO",
+      "thread": "qtp490763067-195",
+      "command": "com.axibase.tsd.Server"
+    },
+    "message": "Start processing csv, config: nginx-status",
+    "date": "2016-05-25T17:04:01Z"
+  }
 ]
 ```
 
 ## Java Example
 
 * [Messages Query](examples/DataApiMessagesQueryExample.java)
+
+## Python Example
+
+* [Querying Messages](https://github.com/axibase/atsd-api-python#querying-messages)
 
 ## Additional Examples
 

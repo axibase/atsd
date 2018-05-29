@@ -19,7 +19,7 @@ Entity object provides the following parameters that can be referenced in `entit
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

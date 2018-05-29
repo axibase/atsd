@@ -62,7 +62,7 @@ GROUP BY entity
 
 The TCP handler, running on the default port 8081, was optimized for faster processing of `series` commands streamed by a single TCP client. The new implementation provides a pool of
 threads instead of a single one to offload parsing and processing from the TCP handler. The size of the pool is controlled with the `series.processing.pool.size` parameter on the
-Admin > Server Properties -> Network page. The default value is 2 and is recommended to be set to the number of cores on the server.
+**Settings > Server Properties** page. The default value is 2 and is recommended to be set to the number of cores on the server.
 
 As a result, the TCP processing and parsing throughput (measured in commands per second) has increased by 40% on average.
 
@@ -207,7 +207,7 @@ The query optimizer was modified to apply tag filter specified in `JOIN` queries
 [JOINs](../../sql#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
 was applied only to those tables where the filter was set explicitly.
 
-![Figure 2](Images/Figure2.png)
+![Figure 2](./Images/Figure2.png)
 
 ### Issue 3689
 
@@ -221,7 +221,7 @@ SQL Query Plan is used for diagnosing slow query response times. The plan was ex
 1) Display start and end dates for each HBase scan.</br>
 2) Display scans to the atsd_li (last insert) table, which are used to add additional filters and to determine optimal query plan.</br>
 
-![Figure 3](Images/Figure3.png)
+![Figure 3](./Images/Figure3.png)
 
 ### Issue 3555
 

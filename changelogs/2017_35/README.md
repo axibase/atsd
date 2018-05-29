@@ -19,13 +19,13 @@
 
 The "Guest Access" check box controls unauthenticated access to a selected portal.
 
-![](Images/issue-4532.png)
+![](./Images/issue-4532.png)
 
 ### Issue 4525
 
 The Summary Table in **Configuration** > **Database Tables** displays totals for key data tables.
 
-![](Images/issue-4525.png)
+![](./Images/issue-4525.png)
 
 ### Issue 4351
 

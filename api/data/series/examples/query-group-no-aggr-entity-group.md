@@ -43,7 +43,7 @@ This e-3 entity will have no impact on `extend` and `truncate`.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

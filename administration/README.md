@@ -1,6 +1,6 @@
 # Administration
 
-* [Setup Email Client](mail-client.md)
+* [Email Client](mail-client.md)
 * [Time Zone](timezone.md)
 * [User Authentication](user-authentication.md#user-authentication)
   * [Authentication Mechanisms](user-authentication.md#authentication-mechanisms)
@@ -21,9 +21,9 @@
     * [Wildcard Requests](user-authorization.md#wildcard-requests)
   * [Implementation Notes](user-authorization.md#implementation-notes)
 * SSL
+  * [Installing Self-signed SSL Certificate](ssl-self-signed.md)
   * [Installing Lets Encrypt Certificate](ssl-lets-encrypt.md)
   * [Installing CA-signed Certificate](ssl-ca-signed.md)
-  * [Installing Self-signed SSL Certificate](ssl-self-signed.md)
 * [Restarting](restarting.md#restarting)
   * [Script Directory](restarting.md#script-directory)
   * [Docker Container](restarting.md#docker-container)
@@ -33,9 +33,6 @@
   * [Update Command](update.md#update-command)
   * [Validation](update.md#validation)
   * [Restart](update.md#restart)
-* [Uninstalling](uninstalling.md#uninstalling)
-  * [Debian Package](uninstalling.md#debian-package)
-  * [RPM Package](uninstalling.md#rpm-package)
 * [Network Settings](networking-settings.md#network-settings)
   * [Increase the Maximum Receiving Buffer on the Operating System](networking-settings.md#increase-the-maximum-receiving-buffer-on-the-operating-system)
   * [Increase the UDP Buffer in ATSD](networking-settings.md#increase-the-udp-buffer-in-atsd)

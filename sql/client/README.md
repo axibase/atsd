@@ -4,11 +4,11 @@ SQL client provides a convenient way to query the Axibase Time Series Database u
 
 The client is a bash script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
 
-## Security
+## Permissions
 
 Make sure that `sql.sh` has execution permissions.
 
-```sh
+```bash
 chmod +x sql.sh
 ```
 
@@ -20,9 +20,9 @@ The client is stateless with each query triggering a separate http request with 
 
 If the database url specified in the `atsd.config` file is secure, both the query as well as results are encrypted.
 
-## `atsd.config` File
+## Configuration File
 
-```ls
+```elm
 url=https://10.102.0.6:8443/api/sql
 insecure=true
 user=axibase
@@ -42,37 +42,37 @@ password=********
 
 Execute inline query and print results to `stdout`.
 
-```ls
+```bash
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now - 1*minute LIMIT 3"
 ```
 
 Execute inline query and store results in `/tmp/report-2.csv`.
 
-```ls
+```bash
 ./sql.sh --output /tmp/report-2.csv --query "SELECT entity, value FROM \"mpstat.cpu_busy\" WHERE datetime > now - 1*minute LIMIT 3"
 ```
 
 Execute query specified in the `query.sql` file and write CSV results to `/tmp/report-1.csv`.
 
-```ls
+```bash
 ./sql.sh -o /tmp/report-1.csv -i query.sql -f csv
 ```
 
 Execute inline query and redirect output to a file.
 
-```sh
+```bash
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now-1*hour LIMIT 2" > /tmp/test.csv
 ```
 
 Execute inline query with escaped double quotes.
 
-```sh
+```bash
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now-1*hour LIMIT 5"
 ```
 
 Execute a multi-line query.
 
-```sh
+```bash
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE
                datetime > now-1*hour LIMIT 5"
 ```

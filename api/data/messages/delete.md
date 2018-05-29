@@ -8,7 +8,7 @@ The ability to delete specific message records via the Data API is not implement
 
 The messages are deleted from the database by background tasks once their insertion time is older than current time minus the time-to-live (TTL) interval.
 
-The TTL is displayed on the **Settings: Server Properties** page, under the `messages.timeToLive` setting. It's measured in seconds.
+The TTL is displayed on the **Settings > Server Properties** page, under the `messages.timeToLive` setting. It's measured in seconds.
 
 The message expiration time is calculated based on its **insertion** time, and not based on its **record** time.
 

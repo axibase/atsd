@@ -10,8 +10,8 @@ support new metrics that are being written in graphite format.
 The Configuration Files Editor can be found under the **Settings >
 Configuration Files**:
 
-![](images/configuration_files_new.png "configuration_files")
+![](./images/configuration_files_new.png "configuration_files")
 
 Configuration Files Editor:
 
-![](images/configuration_files_editor_new.png "configuration_files_editor")
+![](./images/configuration_files_editor_new.png "configuration_files_editor")

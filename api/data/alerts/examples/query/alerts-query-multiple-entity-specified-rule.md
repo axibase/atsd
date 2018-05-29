@@ -9,7 +9,7 @@ Select alerts for multiple entities and a given rule.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/alerts/query
+POST /api/v1/alerts/query
 ```
 
 ### Payload

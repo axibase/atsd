@@ -37,12 +37,12 @@ count() = 0 AND entity_tag(entity.tags['collector-host'], 'status') = 'running'
 
 ### Issue 4586
 
-![](Images/entity_created_date.png)
+![](./Images/entity_created_date.png)
 
 ### Issue 4581
 
 ```ls
-GET https://atsd_hostname:8443/api/v1/metrics/docker.cpu.sum.usage.total.percent/series?maxInsertDate=2017-09-19T20:51:00Z
+GET /api/v1/metrics/docker.cpu.sum.usage.total.percent/series?maxInsertDate=2017-09-19T20:51:00Z
 ```
 
 The response incorrectly returned entities with `lastInsertDate` greater than `maxInsertDate` parameter while displaying a wrong `lastInsertDate` value in the response.

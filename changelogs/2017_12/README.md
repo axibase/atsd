@@ -12,7 +12,7 @@
 | 3852 | sql | Feature | Add support for [column alias](../../sql/examples/alias-column.md) for columns created with [`CASE`](../../sql#case) expression. |
 | 4034 | sql | Bug | Incorrect filtering of rows with multiple [`LIKE` expressions](../../sql#like-expression) combined with OR operator. |
 | 4030 | sql | Bug | Add support for metric [`LIKE` expression](../../sql#like-expression) in `FROM atsd_series` queries. |
-| [4029](#issue-4029) | UI | Feature | Consolidate diagnostic tool links on the **Admin: Diagnostics** page. |
+| [4029](#issue-4029) | UI | Feature | Consolidate diagnostic tool links on the **Settings: Diagnostics** page. |
 | 4027 | sql | Bug | Metric tags and fields are set to `null` in [`JOIN`](../../sql#joins) queries.|
 | 4003 | csv | Bug | Enforce 1GB limit on CSV files uploaded using [csv-upload](../../api/data/ext/csv-upload.md) method.|
 | 4028 | sql | Bug | Fix `ORDER BY tag.name` if some series don't have values for the tag used in sorting. |
@@ -41,7 +41,7 @@
 URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 Payload
@@ -66,7 +66,7 @@ Response
 
 ### Issue 4029
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
 ### Issue 3882
 
@@ -76,8 +76,8 @@ Response
 
 ### Issue 3682
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)
 
 ### Issue 3996
 
-![](Images/Figure3.png)
+![](./Images/Figure3.png)

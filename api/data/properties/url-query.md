@@ -42,7 +42,7 @@ An array of property objects.
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk
+GET /api/v1/properties/nurswgvml007/types/disk
 ```
 
 #### curl

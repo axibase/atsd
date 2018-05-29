@@ -1,10 +1,8 @@
 # Uninstalling
 
-In order to uninstall ATSD or prepare the current installation for a
-reinstall please use the commands below.
+Execute the commands below to uninstall ATSD or to re-install it.
 
-*These commands will not remove any data stored in ATSD and any log
-files; they will remain in the `/opt/atsd` directory.*
+The commands will **not** remove the data stored in ATSD, it will remain in the `/opt/atsd` directory.
 
 ## Debian Package
 

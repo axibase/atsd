@@ -1,4 +1,4 @@
-# Stats-Query with Milliseconds Time Format
+# Count Query with Milliseconds Time Format
 
 ## Description
 
@@ -7,7 +7,7 @@
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/stats/query
+POST /api/v1/messages/stats/query
 ```
 
 ### Payload

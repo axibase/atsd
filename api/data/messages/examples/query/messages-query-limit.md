@@ -9,7 +9,7 @@ Apply limit to select the last N messages.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/query
+POST /api/v1/messages/query
 ```
 
 ### Payload

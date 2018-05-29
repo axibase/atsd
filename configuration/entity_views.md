@@ -4,11 +4,11 @@
 
 Entity Views provide a way to construct customized tables displaying key attributes for entities belonging to the same entity group. These views are listed under the **Entity Views** tab in the main menu on the left.
 
-![](images/entity_views_5.png)
+![](./images/entity_views_5.png)
 
 An entity view table consists several columns: icons, links, text, series values:
 
-![](images/entity-view-table.png)
+![](./images/entity-view-table.png)
 
 ## Reference
 
@@ -204,35 +204,35 @@ Assuming there are five entities in the selected entity group:
 
 Default entity view configuration:
 
-![](images/entity_views_1.png)
+![](./images/entity_views_1.png)
 
 The entity view without table splitting is displayed as follows, with all entities placed into one table:
 
-![](images/entity-view-split-empty.png)
+![](./images/entity-view-split-empty.png)
 
 To split the table by entity tag _'location'_, specify the tag's name in the **Split Table by Column** field:
 
-![](images/entity_views_2.png)
+![](./images/entity_views_2.png)
 
-![](images/entity-view-split-location.png)
+![](./images/entity-view-split-location.png)
 
 To group entities by column **header**, set the header name in the **Split Table by Column** field:
 
-![](images/entity_views_3.png)
+![](./images/entity_views_3.png)
 
-![](images/entity-view-split-state.png)
+![](./images/entity-view-split-state.png)
 
 If splitting by column **header** is enabled, grouping is performed based on formatted values.
 
-![](images/entity_views_4.png)
+![](./images/entity_views_4.png)
 
-![](images/entity-view-split-start-time.png)
+![](./images/entity-view-split-start-time.png)
 
 ## Portal
 
 If the _Multi-Entity Portal_ is assigned manually or the entity view contains _Series Value_ [columns](#column-types), the statistics for entities can be viewed on a portal accessible with the **View Portal** button.
 
-![](images/entity_views_6.png)
+![](./images/entity_views_6.png)
 
 If no portal is selected, the default portal displays metrics for [columns](#column-types) of type _Series Value_.
 
@@ -273,15 +273,15 @@ The link displays the value of the entity tag of another entity, which name is s
 
 * Configuration
 
-    ![](images/entity-view-column-entity-tag-related.png)
+    ![](./images/entity-view-column-entity-tag-related.png)
 
 * View
 
-    ![](images/entity-view-column-entity-tag-related-view.png)
+    ![](./images/entity-view-column-entity-tag-related-view.png)
 
 * On-click Target
 
-    ![](images/entity-view-column-entity-tag-related-result.png)
+    ![](./images/entity-view-column-entity-tag-related-result.png)
 
 #### Customized Entity Tag
 
@@ -289,11 +289,11 @@ Tag value can be formatted for convenient representation.
 
 * Configuration
 
-    ![](images/entity_views_19.png)
+    ![](./images/entity_views_19.png)
 
 * View
 
-    ![](images/entity_views_20.png)
+    ![](./images/entity_views_20.png)
 
 ### Property Tag Examples
 
@@ -309,15 +309,15 @@ Text displays property tag value with a link to property type.
 
 * Configuration
 
-  ![](images/entity_views_13.png)
+  ![](./images/entity_views_13.png)
 
 * View
 
-  ![](images/entity_views_14.png)
+  ![](./images/entity_views_14.png)
 
 * On-click Target
 
-  ![](images/entity_views_15.png)
+  ![](./images/entity_views_15.png)
 
 #### Custom Icon Link to Message Search Page with Property Tag
 
@@ -333,15 +333,15 @@ The message search link template contains tag value.
 
 * Configuration
 
-  ![](images/entity_views_16.png)
+  ![](./images/entity_views_16.png)
 
 * View
 
-  ![](images/entity_views_17.png)
+  ![](./images/entity_views_17.png)
 
 * On-click Target
 
-  ![](images/entity_views_18.png)
+  ![](./images/entity_views_18.png)
 
 ### Series Value Examples
 
@@ -361,15 +361,15 @@ The link displays the latest inserted value for the specific metric.
 
 * Configuration
 
-    ![](images/entity-view-column-series-chart-value-format.png)
+    ![](./images/entity-view-column-series-chart-value-format.png)
 
 * View
 
-    ![](images/entity-view-column-series-chart-value-view.png)
+    ![](./images/entity-view-column-series-chart-value-view.png)
 
 * On-click Target
 
-    ![](images/entity-view-column-series-chart-value-result.png)
+    ![](./images/entity-view-column-series-chart-value-result.png)
 
 ### Name Column Examples
 
@@ -385,15 +385,15 @@ The displayed entity name can be modified, for example shortened, by specifying 
 
 * Configuration
 
-  ![](images/entity-view-column-name-format.png)
+  ![](./images/entity-view-column-name-format.png)
 
 * View
 
-  ![](images/entity-view-column-name-format-view.png)
+  ![](./images/entity-view-column-name-format-view.png)
 
 * On-click Target
 
-  ![](images/entity-view-column-name-format-result.png)
+  ![](./images/entity-view-column-name-format-result.png)
 
 #### Custom Icon Link to Specific Entity Portal
 
@@ -407,15 +407,15 @@ Use the following configuration to specify the custom icon which opens a link to
 
 * Configuration
 
-  ![](images/entity_views_7.png)
+  ![](./images/entity_views_7.png)
 
 * View
 
-  ![](images/entity_views_8.png)
+  ![](./images/entity_views_8.png)
 
 * On-click Target
 
-  ![](images/entity_views_9.png)
+  ![](./images/entity_views_9.png)
 
 ### Label Column Examples
 
@@ -425,11 +425,11 @@ Entity labels may be defined for entries. Otherwise, entity name will be display
 
 * Configuration
 
-  ![](images/entity-view-column-label.png)
+  ![](./images/entity-view-column-label.png)
 
 * View
 
-  ![](images/entity-view-column-label-view.png)
+  ![](./images/entity-view-column-label-view.png)
 
 #### Text Link to Entity Editor with Entity Label
 
@@ -443,15 +443,15 @@ Specify the following URL in the 'Link Template' setting.
 
 * Configuration
 
-  ![](images/entity-view-column-label-format.png)
+  ![](./images/entity-view-column-label-format.png)
 
 * View
 
-  ![](images/entity-view-column-label-format-view.png)
+  ![](./images/entity-view-column-label-format-view.png)
 
 * On-click Target
 
-  ![](images/entity-view-column-label-format-result.png)
+  ![](./images/entity-view-column-label-format-result.png)
 
 ### Portals Column Examples
 
@@ -461,15 +461,15 @@ The icon opens a link to all template portals assigned to the selected entity. T
 
 * Configuration
 
-  ![](images/entity-view-column-portals.png)
+  ![](./images/entity-view-column-portals.png)
 
 * View
 
-  ![](images/entity-view-column-portals-view.png)
+  ![](./images/entity-view-column-portals-view.png)
 
 * On-click Target
 
-  ![](images/entity-view-column-portals-result.png)
+  ![](./images/entity-view-column-portals-result.png)
 
 #### Icon Link to Specific Entity Portal
 
@@ -477,11 +477,11 @@ To display a particular portal by default, specify the portal's name in the 'Val
 
 * Configuration
 
-  ![](images/entity-view-column-portals-specific.png)
+  ![](./images/entity-view-column-portals-specific.png)
 
 * Example
 
-  ![](images/entity-view-column-portals-specific-result.png)
+  ![](./images/entity-view-column-portals-specific-result.png)
 
 ### Properties Column Examples
 
@@ -489,15 +489,15 @@ To display a particular portal by default, specify the portal's name in the 'Val
 
 * Configuration
 
-  ![](images/entity-view-column-prop.png)
+  ![](./images/entity-view-column-prop.png)
 
 * View
 
-  ![](images/entity-view-column-prop-view.png)
+  ![](./images/entity-view-column-prop-view.png)
 
 * On-click Target
 
-  ![](images/entity-view-column-prop-result.png)
+  ![](./images/entity-view-column-prop-result.png)
 
 #### Icon Link to Specific Entity Property
 
@@ -509,11 +509,11 @@ Specify the default property type in the 'Value' setting.
 
 * Configuration
 
-  ![](images/entity-view-column-prop-specific.png)
+  ![](./images/entity-view-column-prop-specific.png)
 
 * Result
 
-  ![](images/entity-view-column-prop-specific-result.png)
+  ![](./images/entity-view-column-prop-specific-result.png)
 
   The property viewer displays the selected type on initial load:
 
@@ -539,12 +539,12 @@ The text displays difference `now - lastInsertDate`. The entities are  highlight
 
 * Configuration
 
-    ![](images/entity_views_10.png)
+    ![](./images/entity_views_10.png)
 
 * View
 
-    ![](images/entity_views_11.png)
+    ![](./images/entity_views_11.png)
 
 * On-click Target
 
-    ![](images/entity_views_12.png)
+    ![](./images/entity_views_12.png)

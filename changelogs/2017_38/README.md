@@ -57,7 +57,7 @@ WHERE datetime != '2017-01-01T00:00:00.000Z'
 
 Disabled entity groups are not displayed in the end-user web interface and are excluded from scheduled synchronization to reduce the load on the database.
 
-![](Images/issue4499.png)
+![](./Images/issue4499.png)
 
 ### Issue 4437
 
@@ -105,7 +105,7 @@ SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', metric.timeZone) AS 
 
 The new 'Series Retention Days' setting allows deleting series which have not been updated for a long period of time.
 
-![](Images/issue2766.png)
+![](./Images/issue2766.png)
 
 ---
 
@@ -135,4 +135,4 @@ The new 'Series Retention Days' setting allows deleting series which have not be
 
 ### Issue 4563
 
-![](Images/issue4563.png)
+![](./Images/issue4563.png)

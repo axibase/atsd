@@ -11,7 +11,7 @@ Note that DAY, WEEK, MONTH, QUARTER, and YEAR start times are computed according
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

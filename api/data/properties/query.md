@@ -125,7 +125,7 @@ Queries would return the following records:
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/properties/query
+POST /api/v1/properties/query
 ```
 
 #### Payload
@@ -145,7 +145,7 @@ POST https://atsd_hostname:8443/api/v1/properties/query
 #### curl
 
 ```bash
-curl  https://atsd_hostname:8443/api/v1/properties/query \
+curl https://atsd_hostname:8443/api/v1/properties/query \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '[{"type":"disk","entity":"nurswgvml007","key":{"file_system":"/"},"startDate":"2016-05-25T04:00:00Z","endDate":"2016-05-25T05:00:00Z"}]'

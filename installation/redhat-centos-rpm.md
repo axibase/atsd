@@ -1,4 +1,4 @@
-# RedHat/CentOS: rpm Package
+# Installation: `rpm`
 
 ## Supported Versions
 
@@ -26,8 +26,11 @@ dependencies, use the [offline installation option](redhat-centos-offline.md).
 
 Download the rpm package to the target server:
 
-* `curl -O https://www.axibase.com/public/atsd_amd64.rpm`
-* [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm)
+```bash
+curl -O https://www.axibase.com/public/atsd_amd64.rpm
+```
+
+The distribution files are also published on [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm).
 
 ## Installation Steps
 
@@ -39,7 +42,9 @@ sudo yum install -y atsd_amd64.rpm
 
 It may take up to 5 minutes to initialize the database.
 
-## Custom Installation Directory
+### Custom Installation Directory
+
+Follow these steps to install ATSD in a custom directory, other than the default `/opt/atsd`.
 
 Install ATSD dependencies:
 

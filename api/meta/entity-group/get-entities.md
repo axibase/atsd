@@ -39,7 +39,7 @@ Refer to fields specified in [Entity List](../../../api/meta/entity/list.md#fiel
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3
+GET /api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3
 ```
 
 #### Payload

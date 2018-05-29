@@ -4,7 +4,7 @@
 
 Entity Groups provide a way to organize similar entities into cohesive collections that can be re-used when managing user permissions, filtering data, calculating aggregations etc.
 
-![](images/entity-groups.png)
+![](./images/entity-groups.png)
 
 ## Members
 
@@ -32,10 +32,10 @@ Specify a boolean expression to add/remove entities automatically.
 
 The expression can include the following fields and supports wildcards in field values:
 
-    * `name`
-    * `label`
-    * `enabled`
-    * `tags.{name}` or `tags['name']`
+- name
+- label
+- enabled
+- tags.tag-name or tags['tag-name']
 
 The expression may refer to entity properties and [functions](#supported-functions) in order to find matching entities.
 
@@ -43,85 +43,85 @@ The expression may refer to entity properties and [functions](#supported-functio
 
 #### Supported Functions
 
-* Property Functions
-  * [`property`](functions-entity-groups-expression.md#property)
-  * [`properties`](functions-entity-groups-expression.md#properties)
-  * [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects isn't supported
-* Lookup Functions
-  * [`entity_tags`](functions-entity-groups-expression.md#entity_tags)
-* Collection Functions
-  * [`collection`](functions-entity-groups-expression.md#collection)
-  * [`likeAll`](functions-entity-groups-expression.md#likeall)
-  * [`likeAny`](functions-entity-groups-expression.md#likeany)
-  * [`matches`](functions-entity-groups-expression.md#matches)
-  * [`collection_contains`](functions-entity-groups-expression.md#collection_contains)
-  * [`collection_intersects`](functions-entity-groups-expression.md#collection_intersects)
-  * [`contains`](functions-entity-groups-expression.md#contains)
-  * [`size`](functions-entity-groups-expression.md#size)
-  * [`isEmpty`](functions-entity-groups-expression.md#isempty)
-  * [`IN`](functions-entity-groups-expression.md#in)
-* Text Functions
-  * [`upper`](functions-entity-groups-expression.md#upper)
-  * [`lower`](functions-entity-groups-expression.md#lower)
-  * [`list`](functions-entity-groups-expression.md#list)
-  * [`startsWithAny`](functions-entity-groups-expression.md#startswithany)
-* Utility functions
-  * [`hasMetric`](functions-entity-groups-expression.md#hasmetric)
-  * [`memberOf`](functions-entity-groups-expression.md#memberof)
-  * [`memberOfAll`](functions-entity-groups-expression.md#memberofall)
+- Property Functions
+  - [`property`](functions-entity-groups-expression.md#property)
+  - [`properties`](functions-entity-groups-expression.md#properties)
+  - [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects isn't supported
+- Lookup Functions
+  - [`entity_tags`](functions-entity-groups-expression.md#entity_tags)
+- Collection Functions
+  - [`collection`](functions-entity-groups-expression.md#collection)
+  - [`likeAll`](functions-entity-groups-expression.md#likeall)
+  - [`likeAny`](functions-entity-groups-expression.md#likeany)
+  - [`matches`](functions-entity-groups-expression.md#matches)
+  - [`collection_contains`](functions-entity-groups-expression.md#collection_contains)
+  - [`collection_intersects`](functions-entity-groups-expression.md#collection_intersects)
+  - [`contains`](functions-entity-groups-expression.md#contains)
+  - [`size`](functions-entity-groups-expression.md#size)
+  - [`isEmpty`](functions-entity-groups-expression.md#isempty)
+  - [`IN`](functions-entity-groups-expression.md#in)
+- Text Functions
+  - [`upper`](functions-entity-groups-expression.md#upper)
+  - [`lower`](functions-entity-groups-expression.md#lower)
+  - [`list`](functions-entity-groups-expression.md#list)
+  - [`startsWithAny`](functions-entity-groups-expression.md#startswithany)
+- Utility functions
+  - [`hasMetric`](functions-entity-groups-expression.md#hasmetric)
+  - [`memberOf`](functions-entity-groups-expression.md#memberof)
+  - [`memberOfAll`](functions-entity-groups-expression.md#memberofall)
 
 #### Examples
 
-* Entity name contains the specified string
+- Entity name contains the specified string
 
 ```javascript
-    name LIKE 'nur*vml*'
+name LIKE 'nur*vml*'
 ```
 
-* Entity has the specified entity tag
+- Entity has the specified entity tag
 
 ```javascript
-    tags.docker-type != ''
+tags.docker-type != ''
 ```
 
-* Entity has an entity tag equal to the specified value
+- Entity has an entity tag equal to the specified value
 
 ```javascript
-    tags.docker-type = 'container'
+tags.docker-type = 'container'
 ```
 
-* Entity has entity tags equal to the specified values
+- Entity has entity tags equal to the specified values
 
 ```javascript
-    tags.docker-type = 'container' && tags.status != 'deleted'
+tags.docker-type = 'container' && tags.status != 'deleted'
 ```
 
-* Entity collects the specified property type
+- Entity collects the specified property type
 
 ```javascript
-    properties('oem.oracle_database').size() > 0
+properties('oem.oracle_database').size() > 0
 ```
 
-* Entity collects the specified metric
+- Entity collects the specified metric
 
 ```javascript
-    hasMetric('mpstat.cpu_busy')
+hasMetric('mpstat.cpu_busy')
 ```
 
-* Entity collected the specified metric within N hours
+- Entity collected the specified metric within N hours
 
 ```javascript
-    hasMetric('mpstat.cpu_busy', 24*7)
+hasMetric('mpstat.cpu_busy', 24*7)
 ```
 
-* Entity property tag value matches the given expression
+- Entity property tag value matches the given expression
 
 ```javascript
-    properties('cfg').prog != '' && properties('cfg').prog NOT LIKE 'topas*'
+properties('cfg').prog != '' && properties('cfg').prog NOT LIKE 'topas*'
 ```
 
-* Entity is a member of another group
+- Entity is a member of another group
 
 ```javascript
-     memberOf('all-linux-servers') && tags.location = 'SVL'
+memberOf('all-linux-servers') && tags.location = 'SVL'
 ```

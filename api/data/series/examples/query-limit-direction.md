@@ -13,7 +13,7 @@ With `limit` specified, `ASC` returns first N values ordered by time. `DESC` ret
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload
@@ -64,7 +64,7 @@ Note that `DESC` direction is the default direction.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

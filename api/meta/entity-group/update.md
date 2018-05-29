@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-PATCH https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix
+PATCH /api/v1/entity-groups/nmon-aix
 ```
 
 #### Payload

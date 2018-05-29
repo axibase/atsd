@@ -23,7 +23,7 @@
 
 ### Issue 4643
 
-![](Images/email_split.png)
+![](./Images/email_split.png)
 
 ### Issue 4635
 

@@ -1,8 +1,8 @@
-# Messages: Statistics Query
+# Messages: Count Query
 
 ## Description
 
-Retrieve message counters as series for specified filters.
+Calculate the number of messages per period and return the data in the format of [`series`](../series/query.md) query.
 
 If period aggregation is enabled, the series contains the number of messages in each period. Otherwise, the series contains the total number of messages within the specified interval.
 
@@ -70,7 +70,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/stats/query
+POST /api/v1/messages/stats/query
 ```
 
 #### Payload
@@ -96,7 +96,7 @@ POST https://atsd_hostname:8443/api/v1/messages/stats/query
 #### curl
 
 ```bash
-curl  https://atsd_hostname:8443/api/v1/messages/stats/query \
+curl https://atsd_hostname:8443/api/v1/messages/stats/query \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data @file.json

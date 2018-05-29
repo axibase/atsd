@@ -23,7 +23,7 @@ Issue| Category    | Type    | Subject
 4896 | rule engine | Feature | Implement [`getPropertyTypes`](../../rule-engine/functions-property.md#getpropertytypes) function to return a list of property types for the entity.
 4893 | UI | Feature | Statistics page: display tag names based on associated metric and entity tag templates.
 4892 | rule engine | Feature | Extend [`excludeKeys`](../../rule-engine/functions-collection.md#excludekeys) function - add support for patterns.
-4889 | rule engine | Bug | Round numbers in [web notifications](../../rule-engine/web-notifications.md).
+4889 | rule engine | Bug | Round numbers in [web notifications](../../rule-engine/notifications/README.md).
 4888 | rule engine | Bug | Email [subject](../../administration/mail-client.md) should not include inline links.
 4883 | rule engine | Bug | Window remains in [`OPEN`](../../rule-engine/window.md#open-status) status after all commands are removed.
 4879 | rule engine | Feature | Add support for [control flow](../../rule-engine/control-flow.md) in notifications.
@@ -50,7 +50,7 @@ Issue| Category    | Type    | Subject
 4851 | rule engine | Feature | Implement [Freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
 4849 | rule engine | Bug | Error in [time](../../rule-engine/functions-format.md#reference) format functions.
 4848 | UI | Bug | Export page: Freemarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
-4846 | rule engine | Feature | [Web notifications](../../rule-engine/web-notifications.md): add status column.
+4846 | rule engine | Feature | [Web notifications](../../rule-engine/notifications/README.md): add status column.
 4845 | forecast | Bug | Forecast [settings](../../forecasting/README.md): restored disappeared tooltips.
 4833 | rule engine | Feature | Implement Web Notifications for [Microsoft Azure](../../rule-engine/notifications/azure-sb.md).
 4832 | rule engine | Feature | Implement Web Notifications for [Google Cloud Platform](../../rule-engine/notifications/gcp-ps.md).

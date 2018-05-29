@@ -9,7 +9,7 @@ Query detailed data for an array of tag values for a given tag.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

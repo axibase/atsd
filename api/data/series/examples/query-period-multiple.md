@@ -13,7 +13,7 @@ In this example, a 10 minute time range is split into 1, 5, and 10-minute period
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

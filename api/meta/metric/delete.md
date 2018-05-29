@@ -31,7 +31,7 @@ None.
 #### URI
 
 ```elm
-DELETE https://atsd_hostname:8443/api/v1/metrics/my-metric
+DELETE /api/v1/metrics/my-metric
 ```
 
 #### Payload

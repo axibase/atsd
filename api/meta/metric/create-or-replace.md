@@ -43,7 +43,7 @@ None.
 #### URI
 
 ```elm
-PUT https://atsd_hostname:8443/api/v1/metrics/my-metric
+PUT /api/v1/metrics/my-metric
 ```
 
 #### Payload

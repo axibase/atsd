@@ -45,7 +45,7 @@ Function names are **case-sensitive**.
 
 Custom expressions that return a value (number, string, boolean, object) can be declared as a [variable](variables.md) and included in the condition by name.
 
-![](images/condition-variable.png)
+![](./images/condition-variable.png)
 
 ## Examples
 

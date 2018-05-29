@@ -21,7 +21,7 @@ The bot is special user account created for automation and integration purposes.
 * Search for the `BotFather` user in the Telegram client.
 * Start a conversation with the [BotFather](https://telegram.me/botfather) user.
 
-    ![](images/botfather.png)
+    ![](./images/botfather.png)
 
 * Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot's username must end with `_bot` and cannot contain dash `-` symbol.
 
@@ -38,7 +38,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 
 * Open the **Settings > Users > Create Webhook User** wizard in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Telegram.
 
-  ![](images/outgoing_webhook_telegram_user.png)
+  ![](./images/outgoing_webhook_telegram_user.png)
 
 * Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
@@ -124,26 +124,26 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 
 * Save the rule by clicking on the **Save** button.
 
-    ![](images/outgoing_webhook_telegram_1.png)
+    ![](./images/outgoing_webhook_telegram_1.png)
 
 ### Verify Webhook Delivery
 
 * Go to the Telegram and send a direct message to the recently created bot.
 
-    ![](images/outgoing_webhook_telegram_2.png)
+    ![](./images/outgoing_webhook_telegram_2.png)
 
 * Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
 
-    ![](images/outgoing_webhook_slack_18.png)
+    ![](./images/outgoing_webhook_slack_18.png)
 
-    ![](images/outgoing_webhook_slack_19.png)
+    ![](./images/outgoing_webhook_slack_19.png)
 
 * If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which will display an error in case the user credentials are mis-configured.
 
-    ![](images/outgoing_webhook_slack_20.png)
+    ![](./images/outgoing_webhook_slack_20.png)
 
-    ![](images/outgoing_webhook_slack_21.png)
+    ![](./images/outgoing_webhook_slack_21.png)
 
 * It may take a few seconds for the commands to arrive and to trigger the notifications. The rule will create new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
-    ![](images/outgoing_webhook_telegram_3.png)
+    ![](./images/outgoing_webhook_telegram_3.png)

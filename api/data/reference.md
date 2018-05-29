@@ -27,7 +27,7 @@
 | [Insert](messages/insert.md) | POST | `/api/v1/messages/insert` | `application/json` | Insert an array of messages. |
 | [Webhook](messages/webhook.md) | POST | `/api/v1/messages/webhook/*` | `application/json` | Convert the request into a message and store it. |
 | [Query](messages/query.md) | POST | `/api/v1/messages/query` | `application/json` | Retrieve message records for the specified filters. |
-| [Statistics Query](messages/stats-query.md) | POST | `/api/v1/messages/stats/query` | `application/json` |  Retrieve message counters as series for the specified filters.  |
+| [Count](messages/count.md) | POST | `/api/v1/messages/stats/query` | `application/json` |  Calculate the number of messages per period.  |
 
 ## Alerts
 

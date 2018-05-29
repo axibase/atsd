@@ -9,7 +9,7 @@ Query detailed data for the specified time range and return data in UNIX epoch m
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

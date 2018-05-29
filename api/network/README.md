@@ -22,7 +22,7 @@ You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any progr
 ### Control Commands
 
 * [ping](ping.md)
-* [debug](#debugging)
+* [debug](#enable-debug-mode)
 * [time](time.md)
 * [version](version.md)
 * [exit](exit.md)
@@ -42,7 +42,7 @@ By default, the ATSD server listens for incoming commands on the following ports
 
 ## Encryption
 
-To encrypt TCP traffic, setup an [SSH tunnel](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/ssh-tunneling/) or create a VPN connection.
+To encrypt TCP traffic, setup an [SSH tunnel](../../integration/nmon/ssh-tunneling.md) or create a VPN connection.
 
 ## Authentication
 
@@ -372,4 +372,4 @@ Reasons why ATSD server can drop commands:
 
 To review dropped commands, `open command*.log` files in ATSD.
 
-![](dropped-commands-logs.png)
+![](./dropped-commands-logs.png)

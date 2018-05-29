@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/alerts/update
+POST /api/v1/alerts/update
 ```
 
 #### Payload

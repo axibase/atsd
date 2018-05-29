@@ -1,28 +1,20 @@
 # tcollector
 
-## Overview
-
 [tcollector](https://github.com/OpenTSDB/tcollector) is a data collection agent for Linux. tcollector can be configured to send operating system and application metrics into Axibase Time Series Database for long-term retention and analytics.
 
 ## Installation
 
 ### Install Python
 
-tcollector requires Python 2.5 and higher.
+tcollector requires Python `2.5` and higher.
 
-Install Python on Ubuntu 14.04.
+* Ubuntu 14.04/16.04
 
 ```sh
 sudo apt-get install python
 ```
 
-Install Python on Ubuntu 16.04.
-
-```sh
-sudo apt install python
-```
-
-Install Python on CentOS 6.x/7.x and RHEL 6.x/7.x.
+* CentOS 6.x/7.x and RHEL 6.x/7.x
 
 ```sh
 sudo yum install python
@@ -87,7 +79,7 @@ sudo service tcollector start
 
 #### CentOS 6.x and RHEL 6.x
 
-Download [init script](resources/tcollector) and copy it into `/etc/init.d` directory.
+Download [init script](./resources/tcollector) and copy it into `/etc/init.d` directory.
 Set `TCOLLECTOR_HOME` variable to tcollector home directory, for example
 
 ```sh
@@ -114,7 +106,7 @@ sudo service tcollector start
 
 #### Ubuntu 16.04, CentOS 7.x, RHEL 7.x
 
-Download [init script](resources/tcollector) and place it into tcollector **home** directory, name it `tcollector-wrapper`.
+Download [init script](./resources/tcollector) and place it into tcollector **home** directory, name it `tcollector-wrapper`.
 
 Make the script executable.
 
@@ -122,7 +114,7 @@ Make the script executable.
 chmod +x tcollector-wrapper
 ```
 
-Download [service file](resources/tcollector.service) for tcollector and copy it into `/lib/systemd/system` directory.
+Download [service file](./resources/tcollector.service) for tcollector and copy it into `/lib/systemd/system` directory.
 
 Specify path to `tcollector-wrapper` script. Example
 
@@ -177,7 +169,7 @@ Add `User` option to `[Service]` section in `/lib/systemd/system/tcollector.serv
 
 Replace `user_name` with user name.
 
-## Default Entity Group and Portal for tcollector in ATSD
+## Entity Group and Portal
 
 Entities collecting tcollector data are automatically grouped into the `tcollector - linux` entity group.
 
@@ -193,7 +185,7 @@ Launch live tcollector portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/bdad4416/3/)
 
-![](resources/tcollector-portal1.png)
+![](./resources/tcollector-portal1.png)
 
 ## List of tcollector metrics
 

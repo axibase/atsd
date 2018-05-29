@@ -49,7 +49,7 @@ An opposite operation to truncation, extend adds missing values at the beginning
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

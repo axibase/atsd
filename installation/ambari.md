@@ -150,7 +150,7 @@ Open Services tab in Ambari UI, select the target HBase cluster, open `Configs` 
 com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint, com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint, com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
 ```
 
-![](images/ambari-manager-coprocessor-config.png)
+![](./images/ambari-manager-coprocessor-config.png)
 
 ### Restart HBase Region Servers
 

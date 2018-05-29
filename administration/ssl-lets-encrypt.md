@@ -161,7 +161,7 @@ Open the **Settings > Users** page and click **Create**.
 * Do not grant user any group membership.
 * Add `127.0.0.1` to the list of `Allowed IPs`. Add additional IP addresses to the whitelist if the certbot is running on a remote machine.
 
-![certbot upload](images/certbot-user.png)
+![certbot upload](./images/certbot-user.png)
 
 ### Upload Certificate Files into ATSD
 

@@ -1,4 +1,4 @@
-# Installation on Docker
+# Installation: Docker Image
 
 ## Host Requirements
 

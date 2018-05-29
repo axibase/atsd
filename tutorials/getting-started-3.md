@@ -4,11 +4,11 @@
 
 Open the **Data > Export** page.
 
-![](resources/getting-started-3_1.png)
+![](./resources/getting-started-3_1.png)
 
 Complete the form to download data for the `my-entity` and `my-metric` into a CSV file as well as to displayed it as HTML.
 
-![](resources/getting-started-3_5.png)
+![](./resources/getting-started-3_5.png)
 
 ## Execute API Requests
 
@@ -16,11 +16,11 @@ Experiment with [Data API](../api/data/README.md) by executing sample [series qu
 
 Open **Data > API Client** page.
 
-![](resources/getting-started-3_2.png)
+![](./resources/getting-started-3_2.png)
 
 Select _Series > Query Detailed_ template.
 
-![](resources/getting-started-3_3.png)
+![](./resources/getting-started-3_3.png)
 
 Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field values accordingly.
 
@@ -56,6 +56,6 @@ Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field val
 ]
 ```
 
-![](resources/getting-started-3_4.png)
+![](./resources/getting-started-3_4.png)
 
 [Continue to Next Page](getting-started-4.md).

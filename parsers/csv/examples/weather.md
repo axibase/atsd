@@ -64,7 +64,7 @@
 
 ## Parser Configuration Screenshot
 
-![](resources/csv_halifax_config.png)
+![](./resources/csv_halifax_config.png)
 
 ## Parser Configuration Description
 

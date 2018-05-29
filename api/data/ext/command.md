@@ -53,7 +53,7 @@ List of network commands (series, metric, property, etc.), separated by line fee
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/command
+POST /api/v1/command
 ```
 
 #### Payload

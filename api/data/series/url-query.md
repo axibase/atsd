@@ -70,7 +70,7 @@ time,entity,metric,value
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/series/json/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso
+GET /api/v1/series/json/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso
 ```
 
 #### curl

@@ -56,7 +56,7 @@ The service responds with an error message if the metric or entity is not found,
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/delete
+POST /api/v1/series/delete
 ```
 
 ### Payload
@@ -86,7 +86,7 @@ curl https://atsd_hostname:8443/api/v1/series/delete \
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/delete
+POST /api/v1/series/delete
 ```
 
 ### Payload

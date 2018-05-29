@@ -38,7 +38,7 @@ Membership in entity groups with non-empty expression is managed by the server. 
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entity-groups?tags=os_level&limit=2&expression=name%20like%20%27nmon*%27
+GET /api/v1/entity-groups?tags=os_level&limit=2&expression=name%20like%20%27nmon*%27
 ```
 
 #### Payload

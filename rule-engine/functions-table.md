@@ -330,6 +330,8 @@ datetime=value
 2018-01-31T12:00:28.253Z=36
 ```
 
+## `jsonPathFilter`
+
 ```json
   jsonPathFilter(s, jp) [object]
 ```

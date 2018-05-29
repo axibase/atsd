@@ -59,7 +59,7 @@ Sample for series e-2 at 2016-06-25T08:00:59.000Z is discarded because there is 
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

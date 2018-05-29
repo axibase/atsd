@@ -36,7 +36,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 * [**Required**]
 * Refer to [entity filter](../filter-entity.md).
 
-> Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `'*'` matches all tags.
+> Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `*` matches all tags.
 
 ### Tag Filter
 
@@ -46,13 +46,13 @@ Each query contains **filter** fields to find time series in the database, **pro
 | `exactMatch` | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`. Default: **false** (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
 | `tagExpression` | string | An expression to include series with tags that satisfy the specified condition. |
 
-Tag Expression
+#### Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
-* Supported operands: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
-* Supported functions: `LOWER`.
-* Supported wildcards: `?` and `*`.
 * The series record must satisfy both the `tags` object and the `tagExpression` in order to be included in the results.
+* Supported operators: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
+* Supported functions: `LOWER`.
+* Wildcards `?` and `*` are supported by `LIKE` and `NOT LIKE` operators. Symbols `?` and `*` are treated as regular characters when used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
 
 ```javascript
 tags.location LIKE 'nur*'
@@ -150,7 +150,7 @@ The response contains an array of series objects, each containing series identif
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 #### Payload
@@ -185,7 +185,7 @@ POST https://atsd_hostname:8443/api/v1/series/query
 
 ## `curl` Example
 
-```json
+```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
@@ -195,6 +195,10 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
 ## Java Example
 
 * [Series Query](examples/DataApiSeriesQueryExample.java)
+
+## Python Example
+
+* [Querying Series](https://github.com/axibase/atsd-api-python#querying-series)
 
 ## Additional Examples
 

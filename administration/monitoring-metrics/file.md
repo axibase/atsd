@@ -3,7 +3,7 @@
 To view ATSD metrics on the local file system, you can open the `metrics.txt` file which is updated continuously. This file
 can be downloaded from the Server Logs page located under the **Settings** tab on the main menu of ATSD.
 
-![atsd metrics file](images/server_logs_metrics.png "server_logs_metrics")
+![atsd metrics file](./images/server_logs_metrics.png "server_logs_metrics")
 
 Example `metrics.txt` file:
 

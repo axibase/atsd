@@ -6,7 +6,7 @@ This type of account can be used in tools such as data collection agents for ins
 
 The **collector** user inserts data of all types (series, properties, and messages) for many entities, including new entities, and requires both the `API_DATA_WRITE` and `API_META_WRITE` roles and `write` permissions for all entities.
 
-![Collector Account](images/collector-account.png)
+![Collector Account](./images/collector-account.png)
 
 ## Create `collectors` User Group
 
@@ -14,7 +14,7 @@ The **collector** user inserts data of all types (series, properties, and messag
 * Open the **Settings > Users > User Groups > Create** page
 * Create the `collectors` group with **[All Entities] Write** permission
 
-![collectors group](images/all-entities-write.png)
+![collectors group](./images/all-entities-write.png)
 
 ## Create `collector` User
 
@@ -22,7 +22,7 @@ The **collector** user inserts data of all types (series, properties, and messag
 * Create a `collector` user with **API_DATA_WRITE** and **API_META_WRITE** roles
 * Check the `collectors` row in the User Groups table to add the user to the `collectors` group
 
-![collector user](images/collector-user.png)
+![collector user](./images/collector-user.png)
 
 ## Collector User Wizard
 
@@ -32,8 +32,8 @@ The instruments inserting data under the **collector** account are typically loc
 
 To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the 'Users' table.
 
-![](images/collector-user-wizard.png)
+![](./images/collector-user-wizard.png)
 
 The wizard will automatically create a new user account and assign it as a member to the 'Data Collectors' user group with all entity `write` permissions.
 
-![](images/collector-user-permissions.png)
+![](./images/collector-user-permissions.png)

@@ -29,7 +29,7 @@ Refer to Response Fields in [Entities: List](list.md#fields)
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml006
+GET /api/v1/entities/nurswgvml006
 ```
 
 #### Payload

@@ -12,7 +12,7 @@ The list can be filtered by user, source, status, query part, and elapsed time. 
 
 Users with an `ADMIN` role are authorized to view and cancel all queries whereas non-administrative users are restricted to viewing and cancelling only their own queries.
 
-![Query Reporting](images/sql-query-reporting.png)
+![Query Reporting](./images/sql-query-reporting.png)
 
 Query Detail Fields:
 
@@ -38,7 +38,7 @@ Query Detail Fields:
 | `Regions Scanned` | Number of regions scanned. |
 | `Regions Not Serving` | Number of `NotServingRegionException` instances caught. |
 
-![Query Details](images/sql-query-details.png)
+![Query Details](./images/sql-query-details.png)
 
 ## Cancelling Queries
 

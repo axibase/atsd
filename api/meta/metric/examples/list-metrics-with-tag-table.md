@@ -5,7 +5,7 @@
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/metrics?tags=table&expression=tags.table%20!=%20%27%27
+GET /api/v1/metrics?tags=table&expression=tags.table%20!=%20%27%27
 ```
 
 ### Expression

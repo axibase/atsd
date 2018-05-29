@@ -9,7 +9,7 @@ Query with interval specified as fractional number.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/insert
+POST /api/v1/messages/insert
 ```
 
 ### Payload
@@ -34,7 +34,7 @@ POST https://atsd_hostname:8443/api/v1/messages/insert
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/query
+POST /api/v1/messages/query
 ```
 
 ### Payload

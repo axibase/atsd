@@ -7,12 +7,12 @@
 | 4409 | export | Bug | Added `metrics.unit` to the list of fields in the backup xml files. |
 | 4400 | sql | Bug | Fixed illegal syntax error when querying table names containing dots. |
 | [4398](#Issue-4398) | UI | Feature | Refactored the **[Metrics]** tab to improve usability. |
-| 4359 | forecast | Bug |  Fixed a [Forecast](https://axibase.com/products/axibase-time-series-database/forecasts/) calculation error if the settings specify an [calendar](../../shared/calendar.md) keyword in the future.|
+| 4359 | forecast | Bug |  Fixed a [Forecast](../../forecasting/README.md) calculation error if the settings specify an [calendar](../../shared/calendar.md) keyword in the future.|
 | [4286](#Issue-4286) | sql | Feature | Formalize boolean logic in SQL queries. |
 
 ### Issue 4398
 
-![](Images/4398.png)
+![](./Images/4398.png)
 
 **Feature Details**:
 
