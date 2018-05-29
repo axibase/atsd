@@ -51,7 +51,7 @@ Tag Expression
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
 * Supported operators: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
 * Supported functions: `LOWER`.
-* Supported wildcards: `?` and `*`. The wildcards could be used with the `LIKE`, and `NOT LIKE` operators. Symbols `?`, and `* ` are not treated as wildcards if they are used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
+* Supported wildcards: `?` and `*`. The wildcards could be used with the `LIKE`, and `NOT LIKE` operators. Symbols `?`, and `*` are not treated as wildcards if they are used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
 * The series record must satisfy both the `tags` object and the `tagExpression` in order to be included in the results.
 
 ```javascript
