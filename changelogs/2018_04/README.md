@@ -36,14 +36,25 @@
 5193 | forecast | Bug |[Forecast Calendar](../../forecasting/calendar_exceptions_testing.md#calendar) form errors:<br> - Space in Calendar Name now supported;<br> - `Starttime 00:00` supported;<br> - Invalid date conversion disabled;<br> - `Starttime 29-Feb` supported.
 5188 | core | Bug | JsonFactory objects moved to JsonUtil class for performance enhancement.
 5185 | entity | Bug | `NullPointerException` returned for non-existent `entity`.
-5184 | portal | Bug | Add default example [portal](../../portals/) when user creates new portal.
+5184 | portal | Bug | Add default example [portal](../../portals/) when new portal created.
 5183 | forecast | Bug | Server-side error when using [manually-defined algorithm parameters](../../forecasting/#algorithm-parameters) for [Data Forecasting](../../forecasting/).
-5182 | core | Bug | [Persistent metric](../../administration/metric-persistence-filter.md) not stored in `discarded.log` output.
+5182 | core | Bug | Discarded [persistent metric](../../administration/metric-persistence-filter.md) not stored in `discarded.log` output.
 5181 | rule editor | Bug | [Telegram Notification](../../rule-engine/notifications/telegram.md#telegram-notifications) configuration settings simplified.
-5179 | UI | Bug | Improve [User Groups](../../administration/user-authentication.md#user-authentication) members / permissions management.
+5179 | UI | Bug | [User Groups](../../administration/user-authentication.md#user-authentication) members / permissions management improved.
 5177 | search | Bug | Support for default search directory configuration added.
 5175 | api-rest | Bug | Failed [Webhook](../../api/data/messages/webhook.md) authentication events added to [Webhook Requests](../../api/data/messages/webhook.md#diagnostics) page under **Diagnostics** menu.
-5162 | rule editor | Bug | Customization of `On Cancel` parameter for [Web Notifications](../../rule-engine/notifications/#creating-notifications) supported via [Rule Engine](../../rule-engine/README.md) interface.
-5161 | export | Bug | Generalize [portal](../../portals/) information when exported from local [ATSD](../../README.md) for compatibility with other instances.
-5157 | admin | Bug | Carriage return characters present in `server.properties` file ([Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files)) removed due to potential to break startup scripts.
-5156 | installation | Bug | Support whitespace in [Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files).
+5162 | rule editor | Bug | `On Cancel` parameter customization for [Web Notifications](../../rule-engine/notifications/#creating-notifications) supported via [Rule Engine](../../rule-engine/README.md) interface.
+5161 | export | Bug | [Portal](../../portals/) information generalized when exported from local [ATSD](../../README.md) for compatibility with other instances.
+5157 | admin | Bug | Carriage return characters present in `server.properties` file ([Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files)) removed.
+5156 | installation | Bug | Whitespace in [Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files) supported.
+
+## Collector 
+
+**Issue**| **Category**    | **Type**    | **Subject**
+-----|-------------|---------|----------------------
+5248 | `xml` | Feature | [Placeholders](https://axibase.com/docs/atsd/rule-engine/placeholders.html) enabled for `xml` files.
+5232 | data-source | [`mysql`](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/mysql/README.md) driver added to distribution via [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) job.
+5230 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Bug | Configuration not saved while working in `Test` mode.
+5212 | `xml` | Bug | Return warning for malformed `xml` upload.
+5199 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Feature | [Placeholders](https://axibase.com/docs/atsd/rule-engine/placeholders.html) enabled for [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) job.
+5121 | core | Feature | [Log](https://github.com/axibase/axibase-collector/blob/master/logging.md) aggregator sends `java.log_aggregator.environment` command containing environment settings.
