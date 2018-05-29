@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns JSON with access [permissions](https://github.com/axibase/atsd/blob/master/administration/user-authorization.md) for the current user.
+Returns JSON with access [permissions](../../../administration/user-authorization.md) for the current user.
 
 ## Request
 
@@ -23,7 +23,6 @@ Returns JSON with access [permissions](https://github.com/axibase/atsd/blob/mast
 | `all-entities-write`  | boolean | User is authorized to write data for any entity.|
 | `all-portals-permission`  | boolean | User is authorized to view all portals enabled in the system. |
 | `portals`  | array | List of portals the user is authorized to view.|
-
 
 ### Errors
 
