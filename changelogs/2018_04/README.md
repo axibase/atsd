@@ -6,7 +6,7 @@
 -----|-------------|---------|----------------------
 5277 | installation | Bug | Enable rules and other records imported into [ATSD sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#overview) by default.
 5269 | api-rest | Bug | ATSD warning message added for [web queries](../../rule-engine/functions.md#web-query) failing due to `SocketTimeoutException`.
-5267 | rule engine | Bug | Add details for [web notification](../../rule-engine/web-notifications.md) errors in [Rule Engine](../../rule-engine/README.md).
+5267 | rule engine | Bug | Add details for [web notification](../../rule-engine/notifications/#creating-notifications) errors in [Rule Engine](../../rule-engine/README.md).
 5260 | rule engine | Bug | Remove default port from header in outgoing HTTP requests.
 5256 | security | Bug | Security Incidents page not displaying all incoming events.
 5254 | api-rest | Bug | Return [webhook](../../administration/user-authorization.md#webhook-user) errors in JSON format instead of HTML.
