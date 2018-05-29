@@ -1,6 +1,6 @@
 # Monthly Change Log: April 2018
 
-## ATSD 
+## ATSD
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
