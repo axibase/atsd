@@ -17,8 +17,8 @@ Returns JSON with access [permissions](../../../administration/user-authorizatio
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
 | `roles`  | array | List of user roles. |
-| `user-groups` | array | List of groups which user is member of.|
-| `entity-groups` | map | Entity Groups `name=role` pairs which user is authorized to, for example `"aws-ec2": "WRITE"`. |
+| `user-groups` | array | List of groups of which user is a member.|
+| `entity-groups` | map | Entity Groups `name=role` pairs to which user is authorized, for example `"aws-ec2": "WRITE"`. |
 | `all-entities-read` | boolean | User is authorized to read data for any entity.|
 | `all-entities-write`  | boolean | User is authorized to write data for any entity.|
 | `all-portals-permission`  | boolean | User is authorized to view all portals enabled in the system. |
