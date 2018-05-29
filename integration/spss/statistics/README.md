@@ -31,11 +31,11 @@ Analyze | Apply statistical functions to the dataset.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](https://github.com/axibase/atsd/blob/master/integration/spss/statistics/resources/commands.txt) into the form and click Submit/Send.
 
 ![](./resources/metrics_entry.png)
 
-The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available for 2017. The underlying data is available in the following [Excel file](resources/eng_e02.xls).
+The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available for 2017. The underlying data is available in the following [Excel file](https://github.com/axibase/atsd/blob/master/integration/spss/statistics/resources/eng_e02.xls).
 
 To calculate the weighted inflation index we need to multiply the CPI of each category by its weight divided by 1000 and sum the products.
 
@@ -299,7 +299,7 @@ SELECT entity, datetime, value FROM cpi_price
 
 ATSD provides a web-based SQL console to export query results into various data formats including Excel, CSV, and JSON, with optional metadata composed according to the [W3C Model for Tabular Data](../../../sql/api.md#metadata).
 
-> If you don't have an ATSD instance available, [weights.csv](resources/weights.csv) and [prices.csv](resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
+> If you don't have an ATSD instance available, [weights.csv](https://github.com/axibase/atsd/blob/master/integration/spss/statistics/resources/weights.csv) and [prices.csv](https://github.com/axibase/atsd/blob/master/integration/spss/statistics/resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
 
 ### Prices
 

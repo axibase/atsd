@@ -16,7 +16,7 @@ value > 50
 
 ![](./resources/getting-started-4_3.png)
 
-Create the rule manually or import [my-metric-monitor.xml](resources/my-metric-monitor.xml) file by selecting _Import_ on the **Alerts > Rules** page.
+Create the rule manually or import [my-metric-monitor.xml](https://github.com/axibase/atsd/blob/master/tutorials/resources/my-metric-monitor.xml) file by selecting _Import_ on the **Alerts > Rules** page.
 
 ![](./resources/getting-started-4_4.png)
 

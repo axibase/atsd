@@ -8,7 +8,7 @@ The integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-r
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Web Notifications**, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification from scratch or import the following [template](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Web Notifications**, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new notification, open **Alerts > Web Notifications** and click **Create**.
 
@@ -55,7 +55,7 @@ Leave the `Body` field empty for non-parameterized projects.
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
 To create a new rule, open the page **Alerts > Rules** and click **Create**.
 

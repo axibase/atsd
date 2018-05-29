@@ -122,7 +122,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 ### Create/import Rule
 
 * Create a new rule or import an existing rule for a built-in metric as described below.
-* Download the file [rules.xml](resources/rules.xml).
+* Download the file [rules.xml](https://github.com/axibase/atsd/blob/master/rule-engine/notifications/resources/rules.xml).
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
