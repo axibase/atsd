@@ -49,9 +49,9 @@ Each query contains **filter** fields to find time series in the database, **pro
 Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
-* Supported operands: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
+* Supported operators: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
 * Supported functions: `LOWER`.
-* Supported wildcards: `?` and `*`.
+* Supported wildcards: `?` and `*`. The wildcards could be used with the `LIKE`, and `NOT LIKE` operators. Wildcards are not allowed with comparision operators: `=`, `!=`, `>=`, `>`, `<=`, `<`.
 * The series record must satisfy both the `tags` object and the `tagExpression` in order to be included in the results.
 
 ```javascript
