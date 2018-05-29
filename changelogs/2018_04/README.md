@@ -48,7 +48,7 @@
 5157 | admin | Bug | Carriage return characters present in `server.properties` file ([Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files)) removed.
 5156 | installation | Bug | Whitespace in [Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files) supported.
 
-## Collector 
+## Collector
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
