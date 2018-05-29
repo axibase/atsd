@@ -15,7 +15,7 @@
 * [Metrics](meta/metric/README.md): [list](meta/metric/list.md), [get](meta/metric/get.md), [update](meta/metric/update.md), [delete](meta/metric/delete.md), [create/replace](meta/metric/create-or-replace.md), [series](meta/metric/series.md), [series tags](meta/metric/series-tags.md)
 * [Entities](meta/entity/README.md): [list](meta/entity/list.md), [get](meta/entity/get.md), [update](meta/entity/update.md), [delete](meta/entity/delete.md), [create/replace](meta/entity/create-or-replace.md), [metrics](meta/entity/metrics.md), [entity-groups](meta/entity/entity-groups.md), [property-types](meta/entity/property-types.md)
 * [Entity Groups](meta/entity-group/README.md): [list](meta/entity-group/list.md), [get](meta/entity-group/get.md), [update](meta/entity-group/update.md), [delete](meta/entity-group/delete.md), [create/replace](meta/entity-group/create-or-replace.md), [get-entities](meta/entity-group/get-entities.md), [add-entities](meta/entity-group/add-entities.md), [set-entities](meta/entity-group/set-entities.md), [delete-entities](meta/entity-group/delete-entities.md)
-* [Miscellaneous](meta/misc/README.md): [search](meta/misc/search.md), [ping](meta/misc/ping.md), [version](meta/misc/version.md)
+* [Miscellaneous](meta/misc/README.md): [search](meta/misc/search.md), [ping](meta/misc/ping.md), [version](meta/misc/version.md), [permissions](meta/misc/permissions.md)
 
 ## Network API
 

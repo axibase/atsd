@@ -30,7 +30,7 @@ Returns database version including licensing details as well as a `date` object 
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/version
+GET https://atsd_hostname:8443/api/v1/version
 ```
 
 #### Payload
@@ -40,7 +40,7 @@ None.
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/version \
+curl https://atsd_hostname:8443/api/v1/version \
   --insecure --include --user {username}:{password} \
   --request GET
 ```
