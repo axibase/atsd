@@ -80,7 +80,19 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `valueFilter` | string | The field contains a boolean expression applied to detailed samples. Samples that satisfy the condition are included, for example, `value > 100`. Value filter is applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` field in the expression refers to the sample value. <br>Examples:<br> `value > 0` - retrieve samples which are positive numbers; <br> `value > 36.4 && value <= 36.7` - retrieve samples within the specified range; <br> `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported; <br> `Double.isNaN(value)` - only NaN values pass this check.  |
+| `valueFilter` | string | The field contains a boolean expression applied to detailed samples. Samples that satisfy the condition are included, for example, `value > 100`. The `value` field in the expression refers to the sample value. |
+
+Applying rules:
+
+- applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation)
+- applied only to the last value recorded with the given time,and if the last value has passed and `versioned=true`, all versions for that time are displayed.
+
+Examples:
+
+- `value > 0` - retrieve samples which are positive numbers
+- `value > 36.4 && value <= 36.7` - retrieve samples within the specified range
+- `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported
+- `Double.isNaN(value)` - only NaN values pass this check 
 
 ### Transformation Fields
 
