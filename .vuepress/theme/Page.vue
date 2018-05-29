@@ -25,7 +25,7 @@
 
 <script>
 import OutboundLink from "./OutboundLink.vue";
-import { resolvePage, normalize, outboundRE, endingSlashRE } from "./util";
+import { resolvePage, normalize, outboundRE, endingSlashRE, isExternal } from "./util";
 
 export default {
   components: { OutboundLink },
@@ -109,7 +109,12 @@ function find(page, items, offset) {
   for (let i = 0; i < res.length; i++) {
     const cur = res[i];
     if (cur.type === "page" && cur.path === page.path) {
-      return res[i + offset];
+      let item = res[i + offset];
+      if (item && isExternal(item.path)) {
+        return
+      } else {
+        return item;
+      }
     }
   }
 }
