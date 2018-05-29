@@ -2,8 +2,6 @@
 
 ## ATSD 
 
-(omitted: 5275, 5265, 5263, 5235, 5215, )
-
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
 5277 | installation | Bug | Enable rules and other records imported into [ATSD sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#overview) by default.
@@ -39,5 +37,14 @@
 5193 | forecast | Bug |[Forecast Calendar](https://axibase.com/docs/atsd/forecasting/calendar_exceptions_testing.html#calendar) form errors:<br> - Space in Calendar Name now supported;<br> - `Starttime 00:00` supported;<br> - Invalid date conversion disabled;<br> - `Starttime 29-Feb` supported.
 5188 | core | Bug | JsonFactory objects moved to JsonUtil class for performance enhancement.
 5185 | entity | Bug | `NullPointerException` returned for non-existent `entity`.
-5184 | portal | Bug |
-5183 | forecast | Bug | 
+5184 | portal | Bug | Add default example [portal](https://axibase.com/docs/atsd/portals/) when user creates new portal.
+5183 | forecast | Bug | Server-side error when using [manually-defined algorithm parameters](https://axibase.com/docs/atsd/forecasting/#algorithm-parameters) for [Data Forecasting](https://axibase.com/docs/atsd/forecasting/).
+5182 | core | Bug | [Persistent metric](https://axibase.com/docs/atsd/administration/data_retention.html#disable-persistence) not stored in `discarded.log` output.
+5181 | rule editor | Bug | [Telegram Notification](https://axibase.com/docs/atsd/rule-engine/notifications/telegram.html#telegram-notifications) configuration settings simplified.
+5179 | UI | Bug | Improve [User Groups](https://axibase.com/docs/atsd/administration/user-authentication.html#user-authentication) members / permissions management.
+5177 | search | Bug | Support for default search directory configuration added.
+5175 | api-rest | Bug | Failed [Webhook](https://axibase.com/docs/atsd/api/data/messages/webhook.html) authentication events added to [Webhook Requests](https://axibase.com/docs/atsd/api/data/messages/webhook.html#diagnostics) page under **Diagnostics** menu.
+5162 | rule editor | Bug | Customization of `On Cancel` parameter for [Web Notifications](https://axibase.com/docs/atsd/rule-engine/notifications/#creating-notifications) supported via [Rule Engine](https://axibase.com/docs/atsd/rule-engine/) interface.
+5161 | export | Bug | Generalize [portal](https://axibase.com/docs/atsd/portals/) information when exported from local [ATSD](https://axibase.com/docs/atsd/) for compatibility with other instances.
+5157 | admin | Bug | Carriage return characters present in `server.properties` file ([Configuration Files](https://axibase.com/docs/atsd/administration/editing-configuration-files.html#editing-configuration-files)) removed due to potential to break startup scripts.
+5156 | installation | Bug | Support whitespace in [Configuration Files](https://axibase.com/docs/atsd/administration/editing-configuration-files.html#editing-configuration-files).
