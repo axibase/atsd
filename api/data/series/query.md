@@ -84,15 +84,15 @@ tags.location LIKE 'nur*'
 
 Applying rules:
 
-- applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation)
-- applied only to the last value recorded with the given time,and if the last value has passed and `versioned=true`, all versions for that time are displayed.
+* applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation)
+* applied only to the last value recorded with the given time,and if the last value has passed and `versioned=true`, all versions for that time are displayed.
 
 Examples:
 
-- `value > 0` - retrieve samples which are positive numbers
-- `value > 36.4 && value <= 36.7` - retrieve samples within the specified range
-- `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported
-- `Double.isNaN(value)` - only NaN values pass this check 
+* `value > 0` - retrieve samples which are positive numbers
+* `value > 36.4 && value <= 36.7` - retrieve samples within the specified range
+* `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported
+* `Double.isNaN(value)` - only NaN values pass this check
 
 ### Transformation Fields
 
