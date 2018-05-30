@@ -6,7 +6,7 @@
 
 * [Derived Metrics](#derived-metrics)
 
-# Snapshot Example
+## Snapshot Example
 
 Below is a snapshot extract from an nmon file displaying its format and how it records the collected data:
 
