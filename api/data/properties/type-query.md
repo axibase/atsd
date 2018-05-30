@@ -42,8 +42,7 @@ GET /api/v1/properties/nurswgvml007/types
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

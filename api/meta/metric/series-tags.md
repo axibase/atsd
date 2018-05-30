@@ -56,8 +56,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006 \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response
