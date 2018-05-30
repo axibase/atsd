@@ -41,8 +41,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/version \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

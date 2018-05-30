@@ -211,7 +211,7 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/s
 
 ## Meta API Endpoints
 
-The endpoints, except `/ping` are accessed under context path `/api/v1/`, for example `/api/v1/version`.
+The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/version`.
 
 ### Metric
 
@@ -257,5 +257,6 @@ The endpoints, except `/ping` are accessed under context path `/api/v1/`, for ex
 | **Method** | **Path** | **Description** |
 |:---|:---|:---|
 | `GET` | [`/version`](../meta/misc/version.md) | Returns database version including licensing details as well as a date object with local time and offset. |
-| `GET` | [`/ping`](../meta/misc/ping.md) | Returns `200` status code to check connectivity, authentication and to maintain an active session. <br>Accessed without `/api/v1` context path.|
+| `GET` | [`/ping`](../meta/misc/ping.md) | Returns `200` status code to check connectivity and authentication.|
+| `GET` | [`/permissions`](../meta/misc/permissions.md) |  Returns roles and permissions for the current user. |
 | `GET` | [`/search`](../meta/misc/search.md) |  Search series by an expression. |

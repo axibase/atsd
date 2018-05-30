@@ -147,6 +147,7 @@ const restApiMenu = [
             `/api/data/ext/nmon-upload`,
             `/api/meta/misc/search`,
             `/api/meta/misc/ping`,
+            `/api/meta/misc/permissions`,
             `/api/meta/misc/version`,
         ]
     },
