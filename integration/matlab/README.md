@@ -3,7 +3,7 @@
 * [Prerequisites](#prerequisites)
 * [Configure Database Connection](#configure-database-connection)
 * [Verify Connection](#verify-connection)
-* [Review Tables in Database Explorer](#review-tables-in-database-explorer)
+* [Review Tables in the Database Explorer](#review-tables-in-the-database-explorer)
 * [Load Data](#load-data)
 * [Write Data](#write-data)
 * [Calculate Derived Series](#calculate-derived-series)

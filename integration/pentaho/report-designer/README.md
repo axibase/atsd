@@ -2,7 +2,6 @@
 
 * [Prerequisites](#prerequisites)
 * [Configure Database Connection](#configure-database-connection)
-* [Import data from ATSD](#import-data-from-atsd)
 * [Verify Connection](#verify-connection)
 * [View Schema](#view-schema)
 * [Import Data](#import-data)

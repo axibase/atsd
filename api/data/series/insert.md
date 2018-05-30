@@ -9,7 +9,7 @@ Insert a timestamped array of numbers for a given series identified by metric, e
 * The number of series tags cannot exceed 1024.
 * New entities, metrics, and tag names are created automatically.
 * New metrics are initialized with the `float` data type by default.
-* If an insert for a new metric contains `version` in the first [Sample](#sample-object), the metric will be created as versioned.
+* If an insert for a new metric contains `version` in the first [Sample](#value-object), the metric will be created as versioned.
 * To change the data type, create or update the metric using the web interface or [metric update API method](../../../api/meta/metric/update.md).
 
 ## Request

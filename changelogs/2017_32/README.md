@@ -8,7 +8,7 @@
 | 4467 | api-rest | Feature | Allow access to [entity group list](../../api/meta/entity-group/get-entities.md) method if API guest access is enabled. |
 | 4466 | metric | Bug | Add support for `timePrecision`, `persistent`, `retentionIntervalDays` fields in the [metric](../../api/network/metric.md) command. |
 | 4465 | metric | Bug | Add validation for [Invalid Action](../../api/meta/metric/list.md#invalid-actions) field in the [metric](../../api/network/metric.md) command. |
-| [4464](#issue-4464) | api-rest | Feature | Speed up series queries with [tag expressions](../../api/data/series/query.md#tag-expression-filter) such as `tags.mount_point LIKE '/*'`. |
+| [4464](#issue-4464) | api-rest | Feature | Speed up series queries with [tag expressions](../../api/data/series/query.md#tag-filter) such as `tags.mount_point LIKE '/*'`. |
 | 4456 | security | Feature | Update ATSD dependencies (used packages and libraries) to resolve known security issues in `netty`, `Spring`, `httpclient`, `xstream`, `commons-fileupload`. |
 | [4454](#issue-4454) | api-rest | Feature | Standardize period alignment when period is measured in years. |
 | 4453 | security | Bug | User without necessary entity permissions can view series records on the Search tab. |
@@ -35,7 +35,7 @@
 ]
 ```
 
-### Issue 4456
+### Issue 4454
 
 ```json
 [

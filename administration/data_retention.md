@@ -44,7 +44,7 @@ The amount of time series data stored in the database may be controlled using on
 * Disabling metric [persistence](#disable-persistence).
 * Applying [filters](#set-persistence-filter) to discard values for matched series.
 * Deleting [expired data](#delete-expired-data) outside a specified retention period.
-* Deleting [expired series](#deleted-expired-series) if no data has been received for the series within a specified retention period.
+* Deleting [expired series](#delete-expired-series) if no data has been received for the series within a specified retention period.
 
 Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for any new settings to fully materialize as appreciably reduced disk usage.
 

@@ -40,7 +40,7 @@ The `ASC` direction allows retrieving first value for the specified series.
 }]
 ```
 
-Refer to [series query](../../api/data/series/query.md#control-filter-fields) for additional details.
+Refer to [series query](../../api/data/series/query.md#control-fields) for additional details.
 
 ### Issue 4590
 

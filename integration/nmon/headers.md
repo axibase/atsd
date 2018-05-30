@@ -4,7 +4,7 @@
 
 [System Commands Extract](#system-command-extract)
 
-[Configuration Properties](#properties)
+[Configuration Properties](#configuration-properties)
 
 The header of the nmon file contains all the system configuration details and system commands.
 
@@ -70,7 +70,9 @@ BBBC,217,LV NAME LPs PPs DISTRIBUTION MOUNT POINT
 BBBC,218,PDIsapdata5Lv 1999 1999 400..400..399..400..400 /oracle/PDI/sapdata5
 ```
 
-## List of nmon Configuration Properties with Examples
+## Configuration Properties
+
+Below is a list of nmon configuration properties with examples.
 
 ```txt
 "aix": "7.1.3.16",

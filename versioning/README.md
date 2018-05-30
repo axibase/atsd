@@ -11,7 +11,7 @@ Once enabled, the database tracks changes made to stored values with the followi
 | Field Name | Description |
 | --- | --- |
 |  Version Time  |  Timestamp when insert command was received. Set automatically by ATSD server with millisecond precision.  |
-|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#updating-series-value).|
+|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
 |  Version Status  |  User-defined field to classify change events. <br> Set to 'invalid' for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
 > The ability to specify custom fields with server-side business logic such as change locking, is under development.
@@ -70,7 +70,7 @@ Versioned samples can be added by opening **Data > Data Entry > Series** form an
 
 ### CSV Parser using Default Tags
 
-To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** field in the CSV parser or on the [CSV File Upload](../parsers/csv#uploading-csv-files-into-axibase-time-series-database) page:
+To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** field in the CSV parser or on the [CSV File Upload](../parsers/csv/README.md#uploading-csv-files) page:
 
 ```ls
 $version_status={status}

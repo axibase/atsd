@@ -131,8 +131,8 @@ View additional launch examples [here](https://github.com/axibase/atsd-docs/blob
 
 * 8088 – http
 * 8443 – https
-* 8081 – [TCP network commands](../api/network#network-api)
-* 8082 – [UDP network commands](../api/network#udp-datagrams)
+* 8081 – [TCP network commands](../api/network/README.md#network-api)
+* 8082 – [UDP network commands](../api/network/README.md#udp-datagrams)
 
 ## Port Mappings
 

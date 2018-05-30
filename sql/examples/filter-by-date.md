@@ -222,7 +222,7 @@ The `BETWEEN` operator allows specifying a subquery that must return a result se
 * If there are 2 values, the second value must be greater or equal the first value.
 * If there are more than 2 values, then each pair of values is processed as a separate time interval.
 
-> The intervals in the result set can be identified with the [`INTERVAL_NUMBER()`](../README.md#interval-number) function.
+> The intervals in the result set can be identified with the [`INTERVAL_NUMBER()`](../README.md#interval_number) function.
 
 ```ls
 series d:2017-04-03T01:00:00Z e:nurswgvml007 x:maintenance-rfc=RFC12-start

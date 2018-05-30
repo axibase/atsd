@@ -10,12 +10,12 @@
 * [Create Bot](#create-bot)
 * [Add Bot to Group or Channel](#add-bot-to-group-or-channel)
 * [Get Chat Id](#get-chat-id)
-* [Configure Web Notification in ATSD](#configure-web-notification-in-atsd)
+* [Configure Webhook in ATSD](#configure-webhook-in-atsd)
 * [Proxy Settings](#proxy-settings)
-* [Notification Settings](#notification-settings)
+* [Webhook Settings](#webhook-settings)
 * [Reacting to Bot Messages](#reacting-to-bot-messages)
-* [Testing Notification Rule](#testing-notification-rule)
-* [Notifications Examples](#notifications-examples)
+* [Testing Notification Rule](#testing-rule)
+* [Examples](#examples)
 
 ## Prerequisites
 
@@ -61,7 +61,7 @@ The chat id is required for the Telegram notification to function properly.
 
 There are two options to obtain chat id:
 
-* [`getUpdates` API method](#getupdates)
+* [`getUpdates` API method](#view-updates)
 * [Telegram Web](telegram-get-chat-id.md)
 
 ### View Updates
@@ -123,7 +123,7 @@ The bot account can be used both to deliver notifications to end users, as well 
 
 In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes' and **Method** to 'Polling'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
 
-## Testing Notification Rule
+## Testing Rule
 
 ### Create/import rule
 

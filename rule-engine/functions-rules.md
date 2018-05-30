@@ -35,7 +35,7 @@ Returns the first matching window for the specified rule `r`, entity `e` and exp
 
 The function returns `null` if no matching windows are found.
 
-Window [fields](window.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_window('jvm_derived').entity`. In addition, the matched window provides the `lastText` field which contains the last message text received by the window.
+Window [fields](window-fields.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_window('jvm_derived').entity`. In addition, the matched window provides the `lastText` field which contains the last message text received by the window.
 
 > Note:
 > * `entity` and `tags` are the same as in the last window command.
@@ -204,7 +204,7 @@ The following match conditions are applied:
 
 To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
-Window [fields](window.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`. In addition, the matched windows provide the `lastText` field which contains the last message text received by the window.
+Window [fields](window-fields.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`. In addition, the matched windows provide the `lastText` field which contains the last message text received by the window.
 
 > Note:
 > * `tags` are the same as in the last window command;

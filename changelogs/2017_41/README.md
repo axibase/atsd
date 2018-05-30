@@ -41,7 +41,7 @@
 
 ### Issue 4641
 
-The [`LOOKUP`](../../rule-engine/functions.md#collection-functions) function returns a matching value for key from the specified replacement table.
+The [`LOOKUP`](../../rule-engine/functions.md#collection) function returns a matching value for key from the specified replacement table.
 
 ```java
 lookup(S replacementTable, S key)

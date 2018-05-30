@@ -1,4 +1,4 @@
 # Pentaho
 
-* [Data Integration](data-integration#pentaho-data-integration)
-* [Report Designer](report-designer#pentaho-report-designer)
+* [Data Integration](data-integration/README.md#pentaho-data-integration)
+* [Report Designer](report-designer/README.md#pentaho-report-designer)

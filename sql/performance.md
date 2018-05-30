@@ -104,7 +104,7 @@ Consider the following recommendations when developing queries:
 
 ### Optimizing Interval Queries
 
-Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause is not efficient as it causes the database to perform a full scan while comparing literal strings or numbers.
+Using the [`date_format`](README.md#date_format) and [`EXTRACT`](README.md#extract) functions in the `WHERE` condition and the `GROUP BY` clause is not efficient as it causes the database to perform a full scan while comparing literal strings or numbers.
 
 Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 

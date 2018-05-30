@@ -218,7 +218,7 @@ echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:
 ### TCP Client Examples
 
 * [Java: AtsdTcpClient.java](examples/AtsdTcpClient.java)
-* [Java: AtsdSendExample.java](examples/AtsdTcpClient.java)
+* [Java: AtsdSendExample.java](examples/AtsdSendExample.java)
 * [Java: AtsdParseExample.java](examples/AtsdParseExample.java)
 
 ## Syntax

@@ -22,7 +22,7 @@ Time-based windows store samples received within the specified time interval. Th
 
 The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time passes, these windows are sometimes referred to as _sliding_ windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
 
-> The **end** time in time-based windows is not set (in particular, it is not set to current time) and the window will accept commands with future timestamps unless they are to be discarded with the [Time filter](filters.md#time-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
+> The **end** time in time-based windows is not set (in particular, it is not set to current time) and the window will accept commands with future timestamps unless they are to be discarded with the [Time filter](filters.md#date-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
 
 Old commands are automatically removed from the window once their timestamp is earlier than the defined window start time.
 

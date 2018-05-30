@@ -2,7 +2,7 @@
 
 ## Data API
 
-* [Overview](data#overview)
+* [Overview](data/README.md#rest-api)
 * [Series](data/series/README.md): [query](data/series/query.md), [url query](data/series/url-query.md), [insert](data/series/insert.md), [csv insert](data/series/csv-insert.md), [delete](data/series/delete.md)
 * [Properties](data/properties/README.md): [query](data/properties/query.md), [insert](data/properties/insert.md), [url query](data/properties/url-query.md), [type query](data/properties/type-query.md), [delete](data/properties/delete.md)
 * [Messages](data/messages/README.md): [query](data/messages/query.md), [insert](data/messages/insert.md), [webhook](data/messages/webhook.md), [delete](data/messages/delete.md), [count](data/messages/count.md)
@@ -11,7 +11,7 @@
 
 ## Meta API
 
-* [Overview](meta#overview)
+* [Overview](meta/README.md#overview)
 * [Metrics](meta/metric/README.md): [list](meta/metric/list.md), [get](meta/metric/get.md), [update](meta/metric/update.md), [delete](meta/metric/delete.md), [create/replace](meta/metric/create-or-replace.md), [series](meta/metric/series.md), [series tags](meta/metric/series-tags.md)
 * [Entities](meta/entity/README.md): [list](meta/entity/list.md), [get](meta/entity/get.md), [update](meta/entity/update.md), [delete](meta/entity/delete.md), [create/replace](meta/entity/create-or-replace.md), [metrics](meta/entity/metrics.md), [entity-groups](meta/entity/entity-groups.md), [property-types](meta/entity/property-types.md)
 * [Entity Groups](meta/entity-group/README.md): [list](meta/entity-group/list.md), [get](meta/entity-group/get.md), [update](meta/entity-group/update.md), [delete](meta/entity-group/delete.md), [create/replace](meta/entity-group/create-or-replace.md), [get-entities](meta/entity-group/get-entities.md), [add-entities](meta/entity-group/add-entities.md), [set-entities](meta/entity-group/set-entities.md), [delete-entities](meta/entity-group/delete-entities.md)
@@ -19,7 +19,7 @@
 
 ## Network API
 
-* [Overview](network#network-api)
+* [Overview](network/README.md#network-api)
 * [series](network/series.md)
 * [property](network/property.md)
 * [message](network/message.md)
@@ -31,17 +31,17 @@
 
 ## SQL
 
-* [Overview](../sql#overview)
-* [Syntax](../sql#syntax)
-* [Grouping](../sql#grouping)
-* [Partitioning](../sql#partitioning)
-* [Ordering](../sql#ordering)
-* [Limiting](../sql#limiting)
-* [Interpolation](../sql#interpolation)
-* [Regularization](../sql#regularization)
-* [Joins](../sql#joins)
+* [Overview](../sql/README.md#sql)
+* [Syntax](../sql/README.md#syntax)
+* [Grouping](../sql/README.md#grouping)
+* [Partitioning](../sql/README.md#partitioning)
+* [Ordering](../sql/README.md#ordering)
+* [Limiting](../sql/README.md#limiting)
+* [Interpolation](../sql/README.md#interpolation)
+* [Regularization](../sql/README.md#regularization)
+* [Joins](../sql/README.md#joins)
 * [API Endpoint](../sql/api.md#sql-query-api-endpoint)
-* [Examples](../sql#examples)
+* [Examples](../sql/examples/README.md)
 
 ## API Clients
 

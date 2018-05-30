@@ -26,7 +26,7 @@ SQL statements can be executed interactively via the web-based console, on [sche
   * [Match Expressions](#match-expressions)
   * [CASE Expression](#case-expression)
   * [Processing Sequence](#processing-sequence)
-  * [Keywords](#keywords)
+  * [Keywords](#reserved-words)
 * [Processing Sequence](#processing-sequence)
 * [Grouping](#grouping)
 * [Date Aggregation](#date-aggregation)
@@ -601,7 +601,7 @@ Columns referenced in the `SELECT` expression must be included in the `GROUP BY`
 
 ## Identifiers
 
-Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#keywords), a function name, or a special character including whitespace, `.`,`+`,`-`,`*`,`/`,`,`,`"`,`'`.
+Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#reserved-words), a function name, or a special character including whitespace, `.`,`+`,`-`,`*`,`/`,`,`,`"`,`'`.
 
 ```sql
 -- Special character
@@ -1039,7 +1039,7 @@ WHERE time >= 1500300000000
 
 ### Optimizing Interval Queries
 
-Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
+Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
 ```sql
 WHERE date_format(time, 'yyyy') > '2018'   -- Slow: full scan with string comparison.

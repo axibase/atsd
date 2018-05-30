@@ -1,8 +1,9 @@
 # Tableau
 
+* [Dataset](#dataset)
 * [Prerequisites](#prerequisites)
-* [Database Connection](#configure-database-connection)
-* [Review Tables](#review-tables-in-data-source-pane)
+* [Database Connection](#configure-connection)
+* [Review Tables](#review-tables)
 * [Visualization](#visualization)
 * [Examples](#examples)
 

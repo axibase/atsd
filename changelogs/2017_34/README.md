@@ -9,13 +9,13 @@
 | 4459 | UI | Bug | Apply syntax highlighting in the **Data > Replacement Table** editor. |
 | 4451 | UI | Bug | Standardize form button order throughout user interface. |
 | 4444 | sql | Bug | Fix metadata error which caused negative integers to be classified as Double columns. |
-| [4133](#issue-4133) | sql | Feature | Add support for [inline views](../../sql#inline-views). |
+| [4133](#issue-4133) | sql | Feature | Add support for [inline views](../../sql/README.md#inline-views). |
 | 4111 | UI | Bug | Fix error message if unknown tags are displayed on the Export tab. |
 | 3948 | api-rest | Bug | Set correct headers for `OPTIONS` requests. |
 
 ### Issue 4133
 
-* [Inline View](../../sql#inline-views) allows a nested sub-query to be operated on by the containing query.
+* [Inline View](../../sql/README.md#inline-views) allows a nested sub-query to be operated on by the containing query.
 
 * Sub-query values must use reserved column names such as `datetime` and `value`.
 
