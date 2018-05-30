@@ -4,6 +4,14 @@ const githubSettings = {
     editLinkText: 'Help us improve this page!'
 }
 
+const portalsMenu = [
+    ['', 'Overview'],
+    'freemarker.md',
+    'portal-settings.md',
+    'portals-overview.md',
+    'selecting-series.md',
+]
+
 const topNavMenu = [
     { text: 'Install', link: '/installation/', highlighted: true },
     {
@@ -323,7 +331,7 @@ module.exports = {
             '/installation/': installationMenu,
             '/integration/': integrationMenu,
             '/parsers/': [],
-            '/portals/': [],
+            '/portals/': portalsMenu,
             '/rule-engine/notifications/': ruleNotificationsMenu,
             '/rule-engine/': ruleEngineMenu,
             '/search/': [],
