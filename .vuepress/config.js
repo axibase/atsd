@@ -251,6 +251,7 @@ const sqlMenu = [
 ];
 
 const administrationMenu = [
+    ['/portals/', "Portals"],
     {
         title: "User Management", children: [
             ['user-authentication.md', 'User Authentication'],
