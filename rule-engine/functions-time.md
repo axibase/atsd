@@ -80,7 +80,7 @@ The function returns `0` if the date `d` is `null` or empty.
 
 Available time zones and their offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss[.SSS]'Z'` and the default time zone is the server time zone.
+The default pattern is ISO8601 format `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'` and the default time zone is the server time zone.
 
 > The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
 
@@ -147,7 +147,7 @@ The interval in milliseconds can be formatted with [`formatInterval`](functions-
 
 Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss[.SSS]'Z'` and the default time zone is the server time zone.
+The default pattern is ISO8601 format `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'` and the default time zone is the server time zone.
 
 > The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
 
