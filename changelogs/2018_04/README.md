@@ -37,24 +37,24 @@
 5188 | core | Bug | JsonFactory objects moved to JsonUtil class for performance enhancement.
 5185 | entity | Bug | Fix `NullPointerException` raised during entity group synchronization on non-existent `entity`.
 5184 | portal | Bug | Fix error raised when new [portal](../../portals/) is created.
-5183 | forecast | Bug | Server-side error when using [manually-defined algorithm parameters](../../forecasting/#algorithm-parameters) for [Data Forecasting](../../forecasting/).
-5182 | core | Bug | Discarded [persistent metric](../../administration/metric-persistence-filter.md) not stored in `discarded.log` output.
-5181 | rule editor | Bug | [Telegram Notification](../../rule-engine/notifications/telegram.md#telegram-notifications) configuration settings simplified.
-5179 | UI | Bug | [User Groups](../../administration/user-authentication.md#user-authentication) members / permissions management improved.
-5177 | search | Bug | Support for default search directory configuration added.
-5175 | api-rest | Bug | Failed [Webhook](../../api/data/messages/webhook.md) authentication events added to [Webhook Requests](../../api/data/messages/webhook.md#diagnostics) page under **Diagnostics** menu.
-5162 | rule editor | Bug | `On Cancel` parameter customization for [Web Notifications](../../rule-engine/notifications/#creating-notifications) supported via [Rule Engine](../../rule-engine/README.md) interface.
-5161 | export | Bug | [Portal](../../portals/) information generalized when exported from local [ATSD](../../README.md) for compatibility with other instances.
-5157 | admin | Bug | Carriage return characters present in `server.properties` file ([Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files)) removed.
-5156 | installation | Bug | Whitespace in [Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files) supported.
+5183 | forecast | Bug | `Error 500` raised for [manually-defined algorithm parameters](../../forecasting/#algorithm-parameters) in [Data Forecasting](../../forecasting/).
+5182 | core | Bug |  Text file not present for [discarded commands](https://axibase.com/docs/atsd/administration/logging.html#enabling-command-logging).
+5181 | rule editor | Bug | Simplify [Telegram Notification](../../rule-engine/notifications/telegram.md#telegram-notifications) configuration settings.
+5179 | UI | Bug | New [User Groups](../../administration/user-authentication.md#user-authentication) members / permissions management not saved.
+5177 | search | Bug | Enable configuration for `/tmp` directory.
+5175 | api-rest | Bug | Correct [Webhook](../../api/data/messages/webhook.md) processing error.
+5162 | rule editor | Bug | `On Cancel` parameter customization for [Web Notifications](../../rule-engine/notifications/#creating-notifications) enabled.
+5161 | export | Bug | [Portal](../../portals/) name referenced instead of `ID` for [Entity Groups](https://axibase.com/docs/atsd/configuration/entity_groups.html).
+5157 | admin | Bug | Remove Windows/MacOS line breaks when storing [Configuration Files](../../administration/editing-configuration-files.md#editing-configuration-files).
+5156 | installation | Bug | Added whitespace characters handling in start script.
 
 ## Collector
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5248 | `xml` | Feature | [Placeholders](https://axibase.com/docs/atsd/rule-engine/placeholders.html) enabled for `xml` files.
-5232 | data-source | [`mysql`](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/mysql/README.md) driver added to distribution via [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) job.
-5230 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Bug | Configuration not saved while working in `Test` mode.
+5248 | `xml` | Feature | Replace environment variable [placeholders](https://axibase.com/docs/atsd/rule-engine/placeholders.html) during import.
+5232 | data-source | [`mysql`](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/mysql/README.md) driver cleanup.
+5230 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Bug | Unexpected `JDBC` Job performance in `Test` mode.
 5212 | `xml` | Bug | Return warning for malformed `xml` upload.
-5199 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Feature | [Placeholders](https://axibase.com/docs/atsd/rule-engine/placeholders.html) enabled for [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) job.
-5121 | core | Feature | [Log](https://github.com/axibase/axibase-collector/blob/master/logging.md) aggregator sends `java.log_aggregator.environment` command containing environment settings.
+5199 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Feature | Add support for [placeholders](https://axibase.com/docs/atsd/rule-engine/placeholders.html) including `${HOST}`.
+5121 | core | Feature | Send property command with environment settings.
