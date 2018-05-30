@@ -71,8 +71,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response
@@ -129,9 +128,8 @@ None.
 #### curl
 
 ```sh
-curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityInsertTime=true&tags=*&limit=2 \
-  --insecure --user {username}:{password} \
-  --request GET
+curl "https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityInsertTime=true&tags=*&limit=2" \
+  --insecure --user {username}:{password}
 ```
 
 ### Response
