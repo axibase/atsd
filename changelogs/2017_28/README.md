@@ -4,16 +4,16 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4390 | sql | Bug | Fixed [`CAST`](../../sql#keywords) conversion error with the built-in `time` column. |
-| [4375](#Issue-4375) | sql | Feature | Added support for [`CURRENT_TIMESTAMP`](../../sql#current_timestamp) and [`DBTIMEZONE`](../../sql#dbtimezone) functions. |
-| [4360](#Issue-4360) | forecast | Feature | Added support for additional aggregation functions in [forecast](../../forecasting/README.md) settings: `AVG`, `MIN`, `MAX`, `SUM`, `COUNT`.  |
+| 4390 | sql | Bug | Fixed [`CAST`](../../sql/README.md#reserved-words) conversion error with the built-in `time` column. |
+| [4375](#issue-4375) | sql | Feature | Added support for [`CURRENT_TIMESTAMP`](../../sql/README.md#current_timestamp) and [`DBTIMEZONE`](../../sql/README.md#dbtimezone) functions. |
+| [4360](#issue-4360) | forecast | Feature | Added support for additional aggregation functions in [forecast](../../forecasting/README.md) settings: `AVG`, `MIN`, `MAX`, `SUM`, `COUNT`.  |
 
 ### Issue 4375
 
-The `CURRENT_TIMESTAMP` function returns current database date and time in the ISO 8601 format. It is analogous to the [`NOW`](../../sql#keywords)
+The `CURRENT_TIMESTAMP` function returns current database date and time in the ISO 8601 format. It is analogous to the [`NOW`](../../sql/README.md#reserved-words)
 function which returns current database time in Unix milliseconds.
 
-The [`DBTIMEZONE`](../../sql#dbtimezone) function returns the current database time zone name or GMT offset.
+The [`DBTIMEZONE`](../../sql/README.md#dbtimezone) function returns the current database time zone name or GMT offset.
 
 ![](./Images/4375.png)
 

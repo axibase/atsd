@@ -9,15 +9,15 @@
 * [Prerequisites](#prerequisites)
 * [Create Workspace](#create-workspace)
 * [Create Channel](#create-channel)
-* [Create ATSD Slack Bot](#create-atsd-slack-bot)
+* [Create Bot](#create-bot)
 * [Add Bot to Channel](#add-bot-to-channel)
 * [Get Channel Id](#get-channel-id)
-* [Configure Web Notification in ATSD](#configure-web-notification-in-atsd)
+* [Configure Webhook in ATSD](#configure-webhook-in-atsd)
 * [Proxy Settings](#proxy-settings)
-* [Notification Settings](#notification-settings)
+* [Webhook Settings](#webhook-settings)
 * [Reacting to Bot Messages](#reacting-to-bot-messages)
-* [Testing Notification Rule](#testing-notification-rule)
-* [Notifications Examples](#notifications-examples)
+* [Testing  Rule](#testing-rule)
+* [Examples](#examples)
 
 ## Prerequisites
 

@@ -1,10 +1,12 @@
 # Format
 
-* [Snapshot Example](#extract)
+* [Snapshot Example](#snapshot-example)
 
 * [Collected Metrics](#complete-list-of-collected-metrics)
 
 * [Derived Metrics](#derived-metrics)
+
+## Snapshot Example
 
 Below is a snapshot extract from an nmon file displaying its format and how it records the collected data:
 

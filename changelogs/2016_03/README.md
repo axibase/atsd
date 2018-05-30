@@ -88,7 +88,7 @@ WHERE t1.entity = 'mr8w-325u'
 
 ### Issue 3673
 
-We fixed the [PERIOD](../../sql#period) function by adding the `WEEK` interval type.
+We fixed the [PERIOD](../../sql/README.md#period) function by adding the `WEEK` interval type.
 The list of interval types supported by `PERIOD` now includes:
 
 * YEAR

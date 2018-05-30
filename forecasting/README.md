@@ -34,7 +34,7 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 
 |Setting|Description|
 |-|-|
-|Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [`End Time`](#selection-settings), if specified) minus `Retention Interval` are deleted.|
+|Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [`End Time`](#data-selection-settings), if specified) minus `Retention Interval` are deleted.|
 
 ### Data Selection Settings
 
@@ -83,7 +83,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 | Setting | Description |
 | --- | --- |
-|Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br>- [`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>- [`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>- [`forecast-name`](#chart-settings) Chart setting |
+|Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br>- [`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>- [`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>- [`forecast-name`](#charts) Chart setting |
 |Default Forecast |Use these settings instead of default settings when calculating on-demand forecast. On-demand forecast is calculated at request time if a pre-stored forecast is not available.|
 |Forecast Range |Minimum and Maximum constraints applied to the stored forecast values to ensure that such values are within the specified range. Constraints are applied to the winning forecast after scoring stage.|
 |Forecast Interval |The length of time into the future for which forecasts are to be prepared and stored in the database. Can be rounded upwards to the nearest forecast period.|
@@ -130,7 +130,7 @@ Split button on the **Data > Forecasts** page may be used to specify [Exceptions
 
 ### Rule Engine
 
-Pre-computed forecast values may be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](../rule-engine/README.md#functions-forecast.md) such as standard deviation as well as raw value.
+Pre-computed forecast values may be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](../rule-engine/functions.md#statistical) such as standard deviation as well as raw value.
 
 ```javascript
 abs(avg() - forecast()) > 25
@@ -187,54 +187,18 @@ A sample forecast [JSON query](../api/data/series/examples/query-named-forecast.
       "stdDev": 7.224603272075089
     },
     "data": [
-      {
-        "d": "2018-05-15T08:20:00.000Z",
-        "v": 11.604692968987015
-      },
-      {
-        "d": "2018-05-15T08:30:00.000Z",
-        "v": 14.052095586152106
-      },
-      {
-        "d": "2018-05-15T08:40:00.000Z",
-        "v": 15.715682104344845
-      },
-      {
-        "d": "2018-05-15T08:50:00.000Z",
-        "v": 11.604018743609409
-      },
-      {
-        "d": "2018-05-15T09:00:00.000Z",
-        "v": 12.507966355503251
-      },
-      {
-        "d": "2018-05-15T09:10:00.000Z",
-        "v": 12.59619153186056
-      },
-      {
-        "d": "2018-05-15T09:20:00.000Z",
-        "v": 11.092825413101579
-      },
-      {
-        "d": "2018-05-15T09:30:00.000Z",
-        "v": 11.747112803805937
-      },
-      {
-        "d": "2018-05-15T09:40:00.000Z",
-        "v": 11.137962830355074
-      },
-      {
-        "d": "2018-05-15T09:50:00.000Z",
-        "v": 11.40358025413789
-      },
-      {
-        "d": "2018-05-15T10:00:00.000Z",
-        "v": 16.728103701429056
-      },
-      {
-        "d": "2018-05-15T10:10:00.000Z",
-        "v": 12.75646043607565
-      }
+      {"d":"2018-05-15T08:20:00.000Z","v":11.604692968987015},
+      {"d":"2018-05-15T08:30:00.000Z","v":14.052095586152106},
+      {"d":"2018-05-15T08:40:00.000Z","v":15.715682104344845},
+      {"d":"2018-05-15T08:50:00.000Z","v":11.604018743609409},
+      {"d":"2018-05-15T09:00:00.000Z","v":12.507966355503251},
+      {"d":"2018-05-15T09:10:00.000Z","v":12.59619153186056},
+      {"d":"2018-05-15T09:20:00.000Z","v":11.092825413101579},
+      {"d":"2018-05-15T09:30:00.000Z","v":11.747112803805937},
+      {"d":"2018-05-15T09:40:00.000Z","v":11.137962830355074},
+      {"d":"2018-05-15T09:50:00.000Z","v":11.40358025413789},
+      {"d":"2018-05-15T10:00:00.000Z","v":16.728103701429056},
+      {"d":"2018-05-15T10:10:00.000Z","v":12.75646043607565}
     ]
   }
 ]

@@ -4,9 +4,9 @@
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
-| 3925 | api-rest        | Feature     | Added column alias to metadata with [`metadataFormat=COMMENTS`](../../sql/api.md#parameters) and `outputFormat=csv`.                                                       |
-| [3919](#issue-3919) | csv        | Feature | Added an option to ignore top-N header lines in [CSV Parser](../../parsers/csv/README.md).                                                                  |
-| 3898 | rule engine     | Bug     | Fixed incorrect error validation of user-defined `column` aliases.                                                      |
+| 3925 | api-rest        | Feature     | Added column alias to metadata with [`metadataFormat=COMMENTS`](../../sql/api.md#parameters) and `outputFormat=csv`.|
+| [3919](#issue-3919) | csv        | Feature | Added an option to ignore top-N header lines in [CSV Parser](../../parsers/csv/README.md).|
+| 3898 | rule engine     | Bug     | Fixed incorrect error validation of user-defined `column` aliases.|
 | [3889](#issue-3889) | rule engine     | Bug     | Fixed `entity.label` field not accessible in filter [`expressions`](../../rule-engine/filters.md).                                                                 |
 
 ## Collector
@@ -14,17 +14,17 @@
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
 | 3895 | socrata         | Bug     | Added heuristics to automatically classify and ignore fields in Socrata data sources. |
-| 3891 | docker          | Bug     | Fixed missing `entity` command for a new container when 'Life Cycle event monitoring' is disabled.   |
+| 3891 | docker          | Bug     | Fixed missing `entity` command for a new container when 'Life Cycle event monitoring' is disabled.|
 
 ## Charts
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
-| [3921](#issue-3921) | widget-settings | Bug     | Added an `escape()` method to `list` and `var` arrays to escape commas in elements.         |
-| 3917 | widget-settings | Bug     | Added the ability to escape commas and backslashes in settings which contain a list.                 |
-| [3897](#issue-3897) | table      | Feature | Added an `auto-height` setting.                                                                |
-| [3896](#issue-3896) | table      | Feature | Added a setting to hide table headers.                                                   |
-| [3791](#issue-3791) | table      | Bug     | Fixed slider un-focus behavior after data update.                |
+| [3921](#issue-3921) | widget-settings | Bug     | Added an `escape()` method to `list` and `var` arrays to escape commas in elements.|
+| 3917 | widget-settings | Bug     | Added the ability to escape commas and backslashes in settings which contain a list.|
+| [3897](#issue-3897) | table      | Feature | Added an `auto-height` setting.|
+| 3896]| table      | Feature | Added a setting to hide table headers.|
+| 3791| table      | Bug     | Fixed slider un-focus behavior after data update.|
 
 ### Issue 3919
 

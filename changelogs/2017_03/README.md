@@ -5,9 +5,9 @@
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3797](#issue-3797) | sql             | Feature | Implemented support for the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) condition after the `GROUP BY` clause. |
-| [3796](#issue-3696) | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) flag to concatenate text values for the same timestamp. |
-| [3795](#issue-3795) | sql             | Feature     | Implemented support for entity tags in the [`GROUP BY`](../../sql#grouping) clause. |
-| 3786 | statistics      | Bug     | Added the [`LIMIT 100`](../../sql#limiting) clause for pre-defined SQL query on the [series statistics](#issue-3680) page. |
+| [3796](#issue-3796) | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) flag to concatenate text values for the same timestamp. |
+| [3795](#issue-3795) | sql             | Feature     | Implemented support for entity tags in the [`GROUP BY`](../../sql/README.md#grouping) clause. |
+| 3786 | statistics      | Bug     | Added the [`LIMIT 100`](../../sql/README.md#limiting) clause for pre-defined SQL query on the [series statistics](#issue-3680) page. |
 | 3783 | sql             | Bug     | Removed extra comma if all columns contain `null` (empty string). |
 | 3781 | jdbc            | Bug     | Fixed empty row issue for the JDBC Driver. |
 | 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |
@@ -30,7 +30,7 @@
 
 ### Issue 3797
 
-Support was added to the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) function after the [`GROUP BY`](../../sql#grouping) clause for [`SELECT`](../../sql#syntax) statements.
+Support was added to the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) function after the [`GROUP BY`](../../sql/README.md#grouping) clause for [`SELECT`](../../sql/README.md#syntax) statements.
 
 Now you can specify the `ROW_NUMBER` condition in two parts of a `SELECT` statement: before or after the `GROUP BY` clause. Generally, a `SELECT` statement may contain two `ROW_NUMBER`
 conditions. If the `ROW_NUMBER` condition is placed before the `GROUP BY` clause, this condition is applied before grouping. If the `ROW_NUMBER` condition is placed after the `GROUP BY`

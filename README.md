@@ -16,7 +16,7 @@ Axibase Time Series Database (ATSD) is a non-relational database optimized for c
 * Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as the persistence layer for reading and writing key-values in the underlying file system.
 * HBase is supported on local (`ext4`) and distributed file systems such as [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) and [Amazon S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase.html).
 
-ATSD can be installed from `deb` and `rpm` [packages](./installation#packages) or launched as a [container](./installation/docker.md#start-container).
+ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a [container](./installation/docker.md#start-container).
 
 ```bash
 docker run -d -p 8088:8088 -p 8443:8443 -p 8081:8081 \
@@ -33,9 +33,9 @@ Compute scalability increases the system's read and write throughput (number of 
 
 Storage efficiency determines how many metrics and individual series can be stored in the system.
 
-Compared to traditional databases, ATSD requires up to **50 times** less disk space. Refer to [compression tests](./administration/compaction#compression-tests) for more details.
+Compared to traditional databases, ATSD requires up to **50 times** less disk space. Refer to [compression tests](./administration/compaction/README.md) for more details.
 
-Storage capacity can be scaled by adding data nodes to the underlying HDFS cluster. When ATSD is deployed on [AWS EMR](./installation/aws-emr-s3.md#installation-on-aws-hbase-s3), the storage capacity is right-sized automatically and independently of the processing capacity.
+Storage capacity can be scaled by adding data nodes to the underlying HDFS cluster. When ATSD is deployed on [AWS EMR](./installation/aws-emr-s3.md), the storage capacity is right-sized automatically and independently of the processing capacity.
 
 ## Use Cases
 

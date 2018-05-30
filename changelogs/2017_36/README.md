@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| [4545](#issue-4545) | sql | Feature | Custom SQL wildcards '*' and '?' replaced with standard [wildcards](../../sql#match-expressions) '%' and '_'. |
+| [4545](#issue-4545) | sql | Feature | Custom SQL wildcards '*' and '?' replaced with standard [wildcards](../../sql/README.md#match-expressions) '%' and '_'. |
 | 4537 | search | Bug | Fixed an IndexNotFoundException if the series search indexing is not ready immediately after the installation. |
 | [4533](#issue-4533) | UI | Feature | User Group membership form refactored to allow adding/removing multiple members at once. |
 | 4524 | core | Feature | Collect `table_size` metric before and after the compaction. |

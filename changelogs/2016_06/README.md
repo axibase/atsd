@@ -10,7 +10,7 @@
 | 3729 | api-rest    | Bug     | Updated error URL and message text for requests to non-existent URLs. |
 | [3727](#issue-3727) | api-network | Feature | Optimized TCP handler for faster processing of `series` commands streamed by a single TCP client. |
 | [3725](#issue-3725) | sql         | Bug     | Optimized queries with `ORDER BY` and `LIMIT` clauses. |
-| [3719](#issue-3719) | sql         | Feature | Optimized [windowing](../../sql#last_time-syntax) queries by narrowing the requested timespan based on minimum last insert date. |
+| [3719](#issue-3719) | sql         | Feature | Optimized [windowing](../../sql/README.md#last_time-syntax) queries by narrowing the requested timespan based on minimum last insert date. |
 | 3718 | UI          | Bug     | Changed metric form to prevent users from saving metric names without metric name validation. |
 | 3715 | UI          | Feature | Updated styles on the account create page displayed post-installation. |
 | 3714 | UI          | Bug     | Fixed errors with the Decimal Precision input in the SQL console. |
@@ -23,8 +23,8 @@
 | [3689](#issue-3689) | sql         | Feature | Added support for the `SELECT 1` validation query. |
 | 3687 | UI          | Bug     | Corrected User Group link on the Admin menu. |
 | [3672](#issue-3672) | sql         | Feature | Added new details to query plan: start and end dates for each HBase scan and scans to atsd_li table. |
-| [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql#lookup) function to translate the key into a value using the specified replacement table. |
-| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql#case) expression. |
+| [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql/README.md#lookup) function to translate the key into a value using the specified replacement table. |
+| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case) expression. |
 
 ## Collector
 
@@ -87,7 +87,7 @@ LIMIT 10
 
 ### Issue 3719
 
-We added an optimization to narrow the start date in [windowing](../../sql#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
+We added an optimization to narrow the start date in [windowing](../../sql/README.md#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
 Prior to this change, the start date was set to 0 (not applied) if it was not specified explicitly in the query.
 
 ```sql
@@ -135,7 +135,7 @@ OPTION (ROW_MEMORY_THRESHOLD 500000)
 ### Issue 3703
 
 Now aggregate functions such as `MAX`, `MIN`, and `DELTA` can be applied to the `time` column, which returns the sampling time in Unix milliseconds.
-One of the use cases is to display the most recent time in windowing queries where the [last_time](../../sql#last_time-syntax) function can be utilized to select data for a sliding interval, such as the most recent 4 weeks for each series in the example below.
+One of the use cases is to display the most recent time in windowing queries where the [last_time](../../sql/README.md#last_time-syntax) function can be utilized to select data for a sliding interval, such as the most recent 4 weeks for each series in the example below.
 
 ```sql
 SELECT tags.city, tags.state, sum(value), date_format(max(time)) as Last_Date
@@ -157,8 +157,8 @@ ORDER BY max(time)
 
 ### Issue 3697
 
-The sequence of period interpolation and period filtering with the [HAVING](../../sql#having-filter) clause was modified.
-Now, the `HAVING` filter is applied after [PERIOD interpolation](../../sql#interpolation) whereas before it was the opposite.
+The sequence of period interpolation and period filtering with the [HAVING](../../sql/README.md#having-filter) clause was modified.
+Now, the `HAVING` filter is applied after [PERIOD interpolation](../../sql/README.md#interpolation) whereas before it was the opposite.
 
 ```sql
 SELECT date_format(period(1 MONTH)), count(value)
@@ -211,7 +211,7 @@ was applied only to those tables where the filter was set explicitly.
 
 ### Issue 3689
 
-Implemented the special `SELECT 1` query, which is typically used to [test connectivity](../../sql#validation-query) and validate open
+Implemented the special `SELECT 1` query, which is typically used to [test connectivity](../../sql/api.md#connection-query) and validate open
 connections in the shared connection pool in active state.
 
 ### Issue 3672
@@ -225,7 +225,7 @@ SQL Query Plan is used for diagnosing slow query response times. The plan was ex
 
 ### Issue 3555
 
-Implemented the [LOOKUP](../../sql#lookup) function, which translates the key into a value using the specified replacement table.
+Implemented the [LOOKUP](../../sql/README.md#lookup) function, which translates the key into a value using the specified replacement table.
 
 The primary purpose of a replacement table is to act as a dictionary for decoding series tags/values.
 
@@ -247,7 +247,7 @@ LIMIT 10
 
 ### Issue 3421
 
-Implemented the `searched case` variant of the [CASE](../../sql#case) expression.
+Implemented the `searched case` variant of the [CASE](../../sql/README.md#case-expression) expression.
 
 The `CASE` expression evaluates a sequence of boolean expressions and returns a matching result expression.
 

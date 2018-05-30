@@ -20,7 +20,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| [4683](#issue-4683) | external | Feature | Update client adapter for external JavaScript libraries. |
+| 4683| external | Feature | Update client adapter for external JavaScript libraries. |
 
 ---
 
