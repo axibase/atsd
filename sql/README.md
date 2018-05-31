@@ -2,7 +2,7 @@
 
 The Axibase Time Series Database supports SQL (Structured Query Language) for retrieving time series records from the database.
 
-SQL statements can be executed interactively via the web-based console, on [schedule](#scheduler), and using the [JDBC](https://github.com/axibase/atsd-jdbc) driver. For a walkthrough of the SQL Console interface, start [here](getting-started/README.md).
+SQL statements can be executed interactively via the web-based [console](sql-console.md), on [schedule](#scheduler), and using the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
 * [Syntax](#syntax)
   * [SELECT Expression](#select-expression)
