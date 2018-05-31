@@ -16,15 +16,15 @@
 5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration unable to be cloned.
 5247 | rule engine | Bug | Validation error when trying to rename cloned [webhook](../../rule-engine/notifications/README.md) configuration.
 5246 | rule engine | Bug | [`flattenJson`](../../rule-engine/functions-table.md#flattenjson) function must ignore empty arrays.
-5240 | rule engine | Bug | [`db_last`](../../rule-engine/functions-series.md#db-last) function fails to load records older than 1 hour.
+5240 | rule engine | Bug | [`db_last`](../../rule-engine/functions-series.md#db_last) function fails to load records older than 1 hour.
 5237 | rule engine | Feature | Add support for multi-line expressions in the rule editor.
-5236 | rule engine | Bug | Log error when records are not found by [`db_last`](../../rule-engine/functions-series.md#db_laststring-m) and [`db_statistic`](../../rule-engine/functions-series.md#db-statistic) functions.
+5236 | rule engine | Bug | Log error when records are not found by [`db_last`](../../rule-engine/functions-series.md#db_laststring-m) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions.
 5229 | api-rest | Bug | `GENERAL_ERROR` not displayed in **Settings** > **Diagnostics** > **Security Incidents** for unauthorized user.
 5228 | UI | Feature | `User` and `Method` columns added to the incoming webhook page on **Settings** > **Diagnostics** > **Webhook Requests**.
 5224 | sql | Bug | Scheduled SQL query with [store](../../sql/scheduled-sql-store.md) option causes NumberFormatException on `NaN` value.
 5223 | rule engine | Feature | Implement [`jsonToMaps`](../../rule-engine/functions-table.md#jsontomaps) function to converts string lists to a collection of maps.
 5221 | security | Feature | Implement a form to create and install a self-signed certificate.
-5218 | sql | Feature | Support configurable limit for `LIKE` filter in `atsd_series` [queries](../../sql/README.md#atsd-series-table).
+5218 | sql | Feature | Support configurable limit for `LIKE` filter in `atsd_series` [queries](../../sql/README.md#atsd_series-table).
 5217 | rule engine | Feature | Simplify [Slack webhook](../../rule-engine/notifications/slack.md) configuration.
 5214 | UI | Bug | Display warning if user attempts to [create user](../../administration/user-authentication.md#user-authentication) which already exists.
 5213 | rule engine | Feature | Accept collections in [`LIKE`](../../rule-engine/functions-collection.md#like) operator.
@@ -37,13 +37,13 @@
 5188 | core | Bug | JsonFactory objects moved to JsonUtil class for performance enhancement.
 5185 | entity | Bug | Fix `NullPointerException` raised during entity group synchronization on non-existent `entity`.
 5184 | portal | Bug | Fix error raised when new [portal](../../portals/) is created.
-5183 | forecast | Bug | Fix server error when using manually-defined [algorithm parameters](../../forecasting/#algorithm-parameters) in forecasts.
+5183 | forecast | Bug | Fix server error when using manually-defined [algorithm parameters](../../forecasting/README.md#algorithm-parameters) in forecasts.
 5182 | core | Bug | Text value not [logged](../../administration/metric-persistence-filter.md) in `command_discarded.log`.
 5181 | rule editor | Bug | Simplify [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications) webhook configuration.
 5179 | UI | Bug | New [User Group](../../administration/user-authentication.md#user-authentication) members and permissions not saved.
 5177 | search | Feature | Make the location of temporary search index files configurable.
 5175 | api-rest | Bug | Correct incoming [webhook](../../api/data/messages/webhook.md) processing error.
-5162 | rule editor | Bug | `On Cancel` trigger cannot be customized for [webhooks](../../rule-engine/notifications/#creating-notifications).
+5162 | rule editor | Bug | `On Cancel` trigger cannot be customized for [webhooks](../../rule-engine/notifications/README.md#creating-notifications).
 5161 | backup | Bug | Refer to exported [portals](../../portals/) by name instead of `id` in XML files.
 5157 | admin | Bug | Standardize line breaks when storing [configuration files](../../administration/editing-configuration-files.md#editing-configuration-files).
 5156 | installation | Bug | Fix whitespace characters in start script.

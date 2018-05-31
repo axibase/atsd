@@ -24,7 +24,7 @@
 | 3687 | UI          | Bug     | Corrected User Group link on the Admin menu. |
 | [3672](#issue-3672) | sql         | Feature | Added new details to query plan: start and end dates for each HBase scan and scans to atsd_li table. |
 | [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql/README.md#lookup) function to translate the key into a value using the specified replacement table. |
-| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case) expression. |
+| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case-expression) expression. |
 
 ## Collector
 
@@ -204,7 +204,7 @@ ORDER BY 1
 ### Issue 3694
 
 The query optimizer was modified to apply tag filter specified in `JOIN` queries on one of the tables to the remaining tables, since
-[JOINs](../../sql#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
+[JOINs](../../sql/README.md#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
 was applied only to those tables where the filter was set explicitly.
 
 ![Figure 2](./Images/Figure2.png)
