@@ -46,7 +46,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 ## Review Tables
 
-* Enter a keyword and click the **Search** button. For this exercise, we will search for the `bi.ex_net1.m` table:
+* Enter a keyword and click **Search**. For this exercise, we will search for the `bi.ex_net1.m` table:
 
 ![](./images/search.png)
 

@@ -10,7 +10,7 @@ The example invokes the [Amazon SES API](https://docs.aws.amazon.com/ses/latest/
 
 ## Configuration
 
-Create a new `AWS API` web notification or import the [template](resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `AWS API` web notification or import the [template](resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -64,7 +64,7 @@ The `MessageBody` text contains placeholders that will be substituted with actua
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/aws-api-ses-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](resources/aws-api-ses-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 

@@ -26,7 +26,7 @@ Create the rule manually or import [my-metric-monitor.xml](resources/my-metric-m
 
 Return to **Data Entry** page and submit a new value greater than 50.
 
-Click on **Windows** button at the rule editor page to review the recently opened alert.
+Click **Windows** in the rule editor to view the recently opened alerts.
 
 ![](./resources/getting-started-4_6.png)
 

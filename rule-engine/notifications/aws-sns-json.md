@@ -41,7 +41,7 @@ Customize the alert messages using [placeholders](../placeholders.md) as necessa
 
   ![](./images/aws_sns_web_notification_json.png)
 
-* Save the rule by clicking on the **Save** button.
+* Click **Save** to save the rule.
 
 * The rule will create new windows based on incoming data.
 

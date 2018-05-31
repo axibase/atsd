@@ -2,7 +2,7 @@
 
 This document describes how to reconfigure the ODBC data source if the list of tables displayed in a client application needs to be updated.
 
-* Click on **Start** button, type `ODBC` and launch ODBC Data Source Manager under an Administrator account
+* Click **Start**, type `ODBC` and launch ODBC Data Source Manager under an Administrator account
 
 ![](./images/table_config_1.png)
 

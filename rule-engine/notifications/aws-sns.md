@@ -38,7 +38,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 ## Configure AWS SNS Notification
 
 * Open **Alerts > Web Notifications** page.
-* Click the **Create** button and select the `AWS-SNS` type.
+* Click **Create** and select the `AWS-SNS` type.
 * Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
 * Enter the `Topic ARN`. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same web notification.
 

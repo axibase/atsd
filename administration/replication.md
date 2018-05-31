@@ -265,7 +265,7 @@ Open ATSD user interface and navigate to **Alert > Rules** page.
 
 ![](./images/atsd_rules_new.png)
 
-Click the [Create] button to create a new rule. Complete the following
+Click **Create** to create a new rule. Complete the following
 fields as specified below:
 
 `Name` – `testrule`

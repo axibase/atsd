@@ -78,7 +78,7 @@ This allows you build a query by choosing a table or entering query
 text manually.
 
 * Table names visible in the **Tables** tab satisfy the `tables` pattern
-  specified in the DSN URL. Click the **Refresh** button to reload the list, if
+  specified in the DSN URL. Click **Refresh** to reload the list, if
   necessary.
 
   ![](./images/metrics_list.png)
