@@ -5,11 +5,13 @@ node_js:
 install:
   - source .travis-functions.sh
   - install_checkers
+  - npm install --global remark-cli remark-validate-links
 script:
   - print_modified_markdown_files
   - spellcheck
   - if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then linkcheck; fi
   - stylecheck
+  - remark -u validate-links .
 cache:
   directories:
     - $(npm config get prefix)/lib/node_modules
