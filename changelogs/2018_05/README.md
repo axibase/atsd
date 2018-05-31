@@ -5,22 +5,22 @@
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
 5340 | statistics     | Bug     | Server error raised when accessing statistics page for series with [NaN](../../sql/README.md#not-a-number-nan) values.
-5338 | export             | Bug     | Series tags validation error on the export page.
-5337 | client | Feature | Value filter added for [Python Client](../../README.md#axibase-time-series-database-client-for-python).
+5338 | export             | Bug     | Series tags validation error on export page.
+5337 | client | Feature | Value filter added for [Python Client](https://github.com/axibase/atsd-api-python#axibase-time-series-database-client-for-python).
 5334 | api-rest       | Bug     | Properties [delete query](../../administration/data_retention.md#deleting-properties) returns zero counter even after deleting some records.
-5333 | client         | Bug     | [Python Client](../../README.md#axibase-time-series-database-client-for-python) tests are failing due to time precision.
-5327 | UI             | Bug     | Tags are missing on the series list page if entity is specified.
-5325 | api-rest       | Bug     | `LIMIT 1` processing error in the series [query](../../api/data/series/query.md#series-query) method.
-5324 | rule engine    | Bug     | Change [`randomItem`](../../rule-engine/functions-random.md#randomitem) function to return the same object type as the argument.
+5333 | client         | Bug     | [Python Client](https://github.com/axibase/atsd-api-python#axibase-time-series-database-client-for-python) tests failing due to time precision.
+5327 | UI             | Bug     | Tags are missing on series list page if entity is specified.
+5325 | api-rest       | Bug     | `LIMIT 1` processing error in series [query](../../api/data/series/query.md#series-query) method.
+5324 | rule engine    | Bug     | Change [`randomItem`](../../rule-engine/functions-random.md#randomitem) function to return same object type as argument.
 5321 | core           | Feature | Implement **Settings** > **Schema** > **Series Consistency Check** page.
-5319 | rule engine    | Bug     | Fix an infinite loop when monitoring rule errors in rule engine itself.
-5318 | nmon           | Bug     | [`nmon`](../../integration/nmon/README.md#nmon) property record is stale and is not updated.
+5319 | rule engine    | Bug     | Fix infinite loop when monitoring rule errors in rule engine.
+5318 | nmon           | Bug     | [`nmon`](../../integration/nmon/README.md#nmon) property record is stale and not updated.
 5315 | message        | Bug     | Fix incorrect [wildcard](../../search/entity-search.md#wildcards) match on the message search page.
-5313 | client         | Bug     | [Python Client](https://github.com/axibase/atsd-api-python): [Message model](https://github.com/axibase/atsd-api-python#inserting-data) standardized.
-5310 | message        | Feature | Modify filter processing for tag wildcards and empty tag values on the message search page.
-5309 | api-rest       | Bug     | `NullPointerException` raised on [message insert](../../api/network/message.md#message-command) when one of the tags is set to `null`.
-5308 | installation   | Feature | Install [Python 3](https://www.python.org/download/releases/3.0/) on the [ATSD Sandbox](https://github.com/axibase/dockers/blob/atsd-sandbox/README.md#overview) by default.
-5307 | csv            | Bug     | `NullPointerException` raised on the CSV parser form in test mode.
+5313 | client         | Bug     | [Python Client](https://github.com/axibase/atsd-api-python#axibase-time-series-database-client-for-python): [Message model](https://github.com/axibase/atsd-api-python#inserting-data) standardized.
+5310 | message        | Feature | Modify filter processing for tag wildcards and empty tag values on message search page.
+5309 | api-rest       | Bug     | `NullPointerException` raised on [message insert](../../api/data/messages/README.md#data-api-messages-methods) when a tag is set to `null`.
+5308 | installation   | Feature | Install [Python 3](https://www.python.org/download/releases/3.0/) on [ATSD Sandbox](https://github.com/axibase/dockers/blob/atsd-sandbox/README.md#overview) by default.
+5307 | csv            | Bug     | `NullPointerException` raised on CSV parser form in test mode.
 5306 | api-rest       | Feature | Add revision field to [version](../../api/meta/misc/version.md) endpoint output.
 5301 | rule engine    | Feature | Implement [`db_messages`](../../rule-engine/functions-message.md#db_messages) function.
 5286 | rule engine    | Bug     | Custom test message with markdown cannot be sent when testing [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications) webhook.
