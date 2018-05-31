@@ -11,7 +11,7 @@
 | 4081 | api-network | Bug | Fix processing of commands with multiline text containing lines starting with `time` keyword. |
 | 4075 | sql | Bug | Optimize queries with [`metrics()`](../../sql/README.md#metrics) function by pushing down predicates into the subquery. |
 | 4079 | sql | Bug | Metric/entity `timeZone` field should return time zone name instead of toString output. |
-| 4067 | sql | Bug | [`SELECT 1`](../../sql/README.md#validation-query) query fails to return both header row and one data row. |
+| 4067 | sql | Bug | [`SELECT 1`](../../sql/api.md#connection-query) query fails to return both header row and one data row. |
 | 4074 | sql | Bug | Fix NullPointerException when ordering by NULL tag with [`ROW_MEMORY_THRESHOLD 0`](../../sql/README.md#row_memory_threshold-option) option |
 | 4066 | log_aggregator | Bug | Eliminate duplicate log aggregator instances when logback configuration is reloaded.  |
 | 4070 | sql | Bug | Optimize processing of `OR datetime` condition. |

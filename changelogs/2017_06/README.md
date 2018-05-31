@@ -4,7 +4,7 @@
 
 | Issue| Category       | Type    | Subject                                                                              |
 |------|----------------|---------|--------------------------------------------------------------------------------------|
-| 3912 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql/README.md#join) queries without a `WHERE` condition.                                                                                                          |
+| 3912 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql/README.md#joins) queries without a `WHERE` condition.                                                                                                          |
 | 3910 | rule engine    | Bug     | Invalid rules are logged with rule name to simplify troubleshooting.                                    |
 | [3909](#issue-3909) | rule engine    | Feature | Added a `Discard Previous Values` filter option to control processing of commands with a timestamp earlier than the most recent one.                                                                                                               |
 | 3902 | api-network    | Bug     | Fixed deletion of annotations by batched [series](../../api/network/series.md#series-command) commands with the [append](../../api/network/series.md#text-append) flag.                                            |
@@ -15,11 +15,11 @@
 | 3887 | UI             | Bug     | Added HTML-escaping for columns on SQL Queries page.                                  |
 | 3885 | api-network    | Bug     | Fixed annotation append behavior by batched [series](../../api/network/series.md#series-command) commands with the [append](../../api/network/series.md#text-append) flag.                                             |
 | 3883 | rule engine    | Bug     | Variables are now allowed to be referenced by other variables.                            |
-| 3880 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql/README.md#join) queries when aggregating `null` values.   |
+| 3880 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql/README.md#joins) queries when aggregating `null` values.   |
 | [3879](#issue-3879) | rule engine    | Feature | Added time filter to control how historical and future records are discarded.                                                                    |
-| 3872 | sql            | Bug     | Fixed a merge issue with [`JOIN USING entity`](../../sql/README.md#join) clause.              |
+| 3872 | sql            | Bug     | Fixed a merge issue with [`JOIN USING entity`](../../sql/README.md#join-syntax) clause.              |
 | 3860 | api-rest       | Bug     | [series](../../api/network/series.md#series-command) query now returns text values with [cache=true](../../api/data/series/query.md#control-fields) field.                                                             |
-| 3844 | sql            | Bug     | The [`ISNULL`](../../sql/README.md#join) function is now allowed to be a part of expression.               |
+| 3844 | sql            | Bug     | The [`ISNULL`](../../sql/README.md#other-functions) function is now allowed to be a part of expression.               |
 | 3508 | log_aggregator | Feature | Added ability to limit maximum event message size.                                          |
 
 ## Collector
