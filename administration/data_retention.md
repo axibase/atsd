@@ -1,6 +1,6 @@
 # Data Retention
 
-Retention settings provide a way to control database size by automatically removing old data as well as discarding unnecessary data before it is stored on disk.
+Retention settings provide a way to control database size by automatically removing old data as well as discarding unnecessary data before the records are stored on disk.
 
 ## Default Retention Settings
 
@@ -46,7 +46,7 @@ The amount of time series data stored in the database may be controlled using on
 * Deleting [expired data](#delete-expired-data) outside a specified retention period.
 * Deleting [expired series](#delete-expired-series) if no data has been received for the series within a specified retention period.
 
-Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for any new settings to fully materialize as appreciably reduced disk usage.
+Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for new settings to reduce disk usage to the full extent.
 
 ### Disable Metric
 
@@ -68,7 +68,7 @@ Discarded commands for disabled metrics are logged with `DISABLED_METRIC` flag i
 
 ### Disable Persistence
 
-If a metric is **non-persistent**, it is not stored on disk. The metric will still be _processed_ in the rule engine.
+The data for **non-persistent** metrics is not stored on disk. Such metrics are still be _processed_ in the rule engine.
 
 To disable persistence for a metric, open the Metric Editor, expand 'Settings' section, set 'Persistent' switch to 'No', and click **Save**.
 

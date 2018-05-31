@@ -92,7 +92,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 
 Returns label for entity `e`.
 
-If the entity is not found or it doesn't have a label, the input string `e` is returned.
+If the entity is not found or the entity doesn't have a label, the input string `e` is returned.
 
 ## `getEntity`
 
@@ -201,7 +201,7 @@ collection('dc-locations').contains(tags.location)
 
 Returns the value for key `k` from the replacement table `s`.
 
-The function returns an empty string if the table is not found or if it doesn't contain the specified key.
+The function returns an empty string if the table is not found or if the table doesn't contain the specified key.
 
 If the optional boolean `b` parameter is specified and is set to `true`, the function returns the original key `k` in case the table is not found or if the key is not found.
 

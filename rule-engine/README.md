@@ -76,7 +76,7 @@ avg() > 80
 
 ### Window Status
 
-[Windows](window.md) are stateful. When the condition for a given window becomes `true`, it is maintained in memory with the status `OPEN`.
+[Windows](window.md) are stateful. When the condition for a given window becomes `true`, the window is initialized in memory with the status `OPEN`.
 
 On subsequent `true` evaluations, the window status changes to `REPEAT`.
 

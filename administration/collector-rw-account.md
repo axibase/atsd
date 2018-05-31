@@ -1,16 +1,15 @@
 # Collector R/W Account
 
-The document describes how to create a [collector](collector-account.md) account with read and write permissions.
+The document describes how to create a [collector](collector-account.md) account with additional entity `read` permissions.
 
-## Create `collectors-rw` User Group
+## Create User Group
 
-* Login into ATSD as administrator.
 * Open the **Settings > Users > User Groups > Create** page.
 * Create the `collectors-rw` group with **[All Entities] Read** and **[All Entities] Write** permissions.
 
 ![collectors group](./images/collectors-rw-permissions.png)
 
-## Create `collector-rw` User
+## Create User
 
 * Open the **Settings > Users > Create** page.
 * Create a `collector-rw` user with **API_DATA_READ, API_META_READ, API_DATA_WRITE, API_META_WRITE** roles.

@@ -14,7 +14,7 @@ If a metric name matches the regex `pattern`, it will be parsed according to `at
 
 > NOTE: every `\` in `pattern` must be duplicated.
 
-`graphite.conf` is parsed from top to bottom, meaning that metric names are matched to patterns in the same order they are placed in the file. Matching stops as soon as a `pattern` in satisfied. It is worth noting that if a `pattern` is added at the bottom of the file, but the target metric name is matched to a different `pattern` contained higher up in the file, then it will not be used.
+`graphite.conf` is parsed from top to bottom, meaning that metric names are matched to patterns in the same order they are placed in the file. Matching stops as soon as a `pattern` in satisfied.
 
 If a metric name has more tokens than `atsd-pattern`, extra tokens are cropped.
 
