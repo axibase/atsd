@@ -72,9 +72,10 @@ const integrationMenu = [
         ]
     },
 
+    ['/parsers/csv/', 'CSV Parsers'],
+
     ['https://github.com/axibase/atsd-use-cases#how-to', 'Examples'],
 ];
-
 
 const restApiMenu = [
     ['', 'Overview'], // Waiting for New overview page
@@ -313,6 +314,12 @@ const forecastMenu = [
     'calendar_exceptions_testing.md'
 ];
 
+const csvParsers = [
+    ['', 'Overview'],
+    'csv-schema.md',
+    'uploading-csv-files.md',
+]
+
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
@@ -337,6 +344,7 @@ module.exports = {
             '/forecasting/': forecastMenu,
             '/installation/': installationMenu,
             '/integration/': integrationMenu,
+            '/parsers/csv/': csvParsers,
             '/parsers/': [],
             '/portals/': portalsMenu,
             '/rule-engine/notifications/': ruleNotificationsMenu,
