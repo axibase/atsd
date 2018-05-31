@@ -252,6 +252,7 @@ const sqlMenu = [
 
 const administrationMenu = [
     ['/portals/', "Portals"],
+    ['/forecasting/', "Forecasts"],
     {
         title: "User Management", children: [
             ['user-authentication.md', 'User Authentication'],
@@ -307,6 +308,11 @@ const administrationMenu = [
     }
 ]
 
+const forecastMenu = [
+    ['', 'Overview'],
+    'calendar_exceptions_testing.md'
+];
+
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
@@ -328,7 +334,7 @@ module.exports = {
             '/api/network/': networkApiMenu,
             '/api/': [],
             '/changelogs/': [],
-            '/forecasting/': [],
+            '/forecasting/': forecastMenu,
             '/installation/': installationMenu,
             '/integration/': integrationMenu,
             '/parsers/': [],
