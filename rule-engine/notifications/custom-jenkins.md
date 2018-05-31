@@ -34,7 +34,7 @@ If the Jenkins job is not parameterized, use the `https://jenkins.example.org/jo
 
 Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
 
-Keep the `${job_name}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to trigger different jobs using the same web notification.
+Keep the `${job_name}` placeholder in the URL path so that it's customizable in the rule editor. This allows you to trigger different jobs using the same web notification.
 
 Enter the Jenkins user name into the `Username` field and the User API token into the `Password` field.
 

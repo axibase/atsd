@@ -11,12 +11,11 @@ Increase the maximum receiving buffer on the operating system
 sudo sysctl -w net.core.rmem_max=8388608
 ```
 
-This setting would allow the operating system and ATSD to buffer up to 8
+This setting allows the operating system and the database to buffer up to 8
 megabytes of received packets, in the case that the inserting rate is temporarily
 higher than the ATSD throughput rate.
 
-The increased buffer would also reduce or even eliminate the number of
-UDP datagrams dropped due to buffer overflow.
+The increased buffer also reduces the number of UDP datagrams dropped due to buffer overflow.
 
 ## Increase UDP buffer in ATSD
 

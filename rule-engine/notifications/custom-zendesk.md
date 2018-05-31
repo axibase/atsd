@@ -29,7 +29,7 @@ Modify the `Endpoint URL` by replacing the `<COMPANY_NAME>` field with your Zend
 
 The `Endpoint URL` should look as follows: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
 
-Keep the `${request_id}` placeholder in the URL path so that it can be customized in the rule editor. This would allow you to add comments to different requests using the same web notification.
+Keep the `${request_id}` placeholder in the URL path so that it's customizable in the rule editor. This allows you to add comments to different requests using the same web notification.
 
 Enter the Zendesk user name into the `Username` field and the password into the `Password` field.
 

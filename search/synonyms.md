@@ -38,7 +38,7 @@ money => currency
 location => place, site
 ```
 
-Searching for 'money' would match series containing either keyword, 'money' or 'currency'.
+Searching for 'money' keyword matches series containing either the keyword itself or its alias ('money' or 'currency').
 The same results will be displayed if the 'currency' keyword is searched as well.
 
 * The word 'location' has four synonyms.
@@ -47,8 +47,8 @@ The same results will be displayed if the 'currency' keyword is searched as well
 location => place, site, Ort, место
 ```
 
-Searching for `location` would match the below series since it has an entity tag `location`.
-Likewise, searching for `ort` would match the same series since `ort` is a synonym of `location`, which is one of the entity tags.
+Searching for `location` matches the below series since it has an entity tag `location`.
+Likewise, searching for `ort` matches the same series since `ort` is a synonym of `location`, which is one of the entity tags.
 
 ```sql
 student_count         -- metric
@@ -57,7 +57,7 @@ location = NYC        -- entity tag
 school = CAS          -- series tag
 ```
 
-However, `location:NYC` and `place:NYC` searches would produce different results because synonyms are not supported in field names and therefore 'place' as a field name is not enabled as a synonym for the 'location' field name. As a result, `place:NYC` will not match the above series.
+However, `location:NYC` and `place:NYC` searches produce different results because synonyms are not supported in field names and therefore 'place' as a field name is not enabled as a synonym for the 'location' field name. As a result, `place:NYC` will not match the above series.
 
 ## Implementation
 

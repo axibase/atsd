@@ -105,7 +105,7 @@ Expected result:
 * Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;tables=%jvm%` at _JDBC Data Source Configuration_ window
 * Click **New Query**, select _ATSD_ at _Data Source_ drop-down, specify ATSD login and password
 
-The _Database Browser_ would display a set of tables matching the expression:
+The _Database Browser_ displays a set of tables matching the expression:
 
 ![](./resources/database_browser.png)
 

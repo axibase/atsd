@@ -76,10 +76,10 @@ Assuming property records A,B,C, and D exist:
 | D      | type-1 | e-4    |       |       |
 ```
 
-Queries would return the following records:
+The table below illustrates which records will be returned (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
-| exactMatch | key                     | match   |
+| exactMatch | key                     | result  |
 |------------|-------------------------|---------|
 | true       |                         | D       |
 | false      |                         | A;B;C;D |
@@ -106,11 +106,11 @@ Assuming property records A,B,C, and D exist and time represents their update ti
 
 max(time) = 200
 
-Queries would return the following records:
+The table below illustrates which records will be returned (the `result` column) for the `offset` parameter on the left.
 
 ```ls
 
-| offset | match   |
+| offset | result  |
 |     -1 | A;B;C;D | Offset filter is not applied.
 |      0 | B;C     | Only records with update time = max(time) are included.
 |      1 | B;C     |

@@ -30,7 +30,7 @@
 ### Issue 3690
 
 In previous versions of ATSD, the user's role, group membership, and entity permissions were cached while the user's session was active. If the user's authorization was changed by an
-administrator, it would not apply until the user's active sessions would timeout or until the user re-logged into the application. We updated ATSD so that the user's
+administrator, it was not applied until the user's active sessions timed out or until the user re-logged into the application. We updated ATSD so that the user's
 active sessions are invalided instantly if the authorization is changed by an administrator. As a result, the administrator doesn't have to manually request the user to logout in order to
 apply any new settings. In addition, the administrator is now able to view which users are online.
 

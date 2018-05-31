@@ -786,7 +786,7 @@ WHERE datetime >= NOW - 5*MINUTE
 | df.disk_used | nurswgvml007 | 2017-06-19T06:12:26Z | 8715136.0 | /                | /dev/mapper/vg_nurswgvml007-lv_root |
 ```
 
-Changing the case of a tag value condition `tags.file_system = '/DEV/mapper/vg_nurswgvml007-lv_root'` would cause the error **TAG_VALUE not found**.
+Changing the case of a tag value condition `tags.file_system = '/DEV/mapper/vg_nurswgvml007-lv_root'` causes the database to return the **TAG_VALUE not found** error.
 
 ## Arithmetic Operators
 
@@ -1611,7 +1611,7 @@ Partitioning is implemented with the `ROW_NUMBER` function, which returns the se
 
 A partition is a subset of all rows within the result set, grouped by an entity and/or series tags. Each row in the result set may belong to only one partition.
 
-For example, a result set partitioned by entity and ordered by time would have the following row numbers:
+For example, a result set partitioned by entity and ordered by time has the following row numbers:
 
 ```ls
 |--------------|----------------------|-------| ROW_NUMBER
