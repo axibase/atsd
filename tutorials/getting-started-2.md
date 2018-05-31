@@ -35,7 +35,7 @@
 ```
 
 * Enter a portal name.
-* Press **Save**.
+* Click **Save**.
 
     ![](./resources/getting-started-2_3.png)
 

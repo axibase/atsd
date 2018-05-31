@@ -7,8 +7,8 @@
 ## Steps
 
 * Drag-and-drop the table to Canvas area
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the columns field and `Value` onto the rows field
 * `Value` > Right click > `Dimension`
 * Marks Card > Drop-down > Line

@@ -134,7 +134,7 @@ Mq4jQ2F4LvDWxTq14m7hNgJsPaddwg1IzPz6Ltonu-c
 
 Before continuing, verify the record is deployed.
 -------------------------------------------------------------------------------
-Press Enter to Continue
+Click Enter to Continue
 Waiting for verification...
 Cleaning up challenges
 ```

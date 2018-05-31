@@ -38,9 +38,9 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 * Launch Tableau
 * Select **Connect > To a Server > Other Databases(ODBC)**
 * Select the ATSD DSN from the dropdown. This is the DSN you specified during ODBC-JDBC bridge setup
-* Press **Connect** and wait a few seconds
+* Click **Connect** and wait a few seconds
 * Leave the **Server**,**Port**, **Database** and **String Extras** fields empty
-* Press **Sign In**
+* Click **Sign In**
 
 ![](./images/configure_connection.png)
 
@@ -51,14 +51,14 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 ![](./images/search.png)
 
 * Drag-and-drop the table to Canvas area
-* Press **Update Now**.
+* Click **Update Now**.
 
 ![](./images/update_now1.png)
 
 ## Visualization
 
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Set `Datetime` to the columns field
 * Set `Value` to the rows field
 

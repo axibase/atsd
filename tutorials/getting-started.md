@@ -17,7 +17,7 @@ Select type **Series**
 
 ![](./resources/getting-started_2.png)
 
-Fill out the **Entity**, **Metric**, and **Value** fields, press **Send**:
+Fill out the **Entity**, **Metric**, and **Value** fields, click **Send**:
 
 ```elm
 metric = my-metric

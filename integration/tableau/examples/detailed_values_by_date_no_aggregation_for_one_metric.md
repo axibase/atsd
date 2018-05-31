@@ -11,8 +11,8 @@ Display a history of export volume over a period of time.
 ## Steps
 
 * Drag-and-drop the table to Canvas area
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the columns field, change from **YEAR** aggregation to `Exact Date`
 * Drag-and-drop `Value` onto the rows field, change from **SUM** aggregation to `Dimension`
 * Select `Line` in the dropdown at Marks Card

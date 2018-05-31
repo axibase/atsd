@@ -164,12 +164,12 @@ The following characteristics are available.
   ![Figure 4](./Images/Figure4.png)
 
 * Value Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify the **Min Value**, **Max Value**, and **Interval Count** fields,
-  and then press **Submit**.
+  and then click **Submit**.
 
   ![Figure 5](./Images/Figure5.png)
 
 * Interval Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify the **Min Value**, **Max Value**, and **Interval Count**
-  fields, and then press **Submit**.
+  fields, and then click **Submit**.
 
   ![Figure 6](./Images/Figure6.png)
 

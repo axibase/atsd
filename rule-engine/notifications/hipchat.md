@@ -25,7 +25,7 @@
 
     ![](./images/sign_out.png)
 
-* Paste the above link into the browser address bar, press **Enter**.
+* Paste the above link into the browser address bar, click **Enter**.
 * Fill in the fields, click **Sign Up**.
 
     ![](./images/hipchat_atsd_bot.png)
