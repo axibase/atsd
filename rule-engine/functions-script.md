@@ -12,7 +12,7 @@ The function executes the named script with the specified parameters and returns
 
 * Check the TCP availability of the remote host.
 * Check that the remote host can be reached with ICMP ping.
-* Check that an HTTP/s request to a URL returns code `200`.
+* Check that an HTTP/s request to a URL returns HTTP `200 OK` status code.
 * Execute a diagnostics command on the remote host.
 * Retrieve configuration information from the remote device/host.
 

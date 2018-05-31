@@ -2,7 +2,7 @@
 
 ## Description
 
-Create a metric with specified fields and tags or replace the fields and tags of an existing metric.
+Creates a metric with specified fields and tags or replaces the fields and tags of an existing metric.
 
 In case of an existing metric, all the current metric tags will be replaced with metric tags specified in the request.
 

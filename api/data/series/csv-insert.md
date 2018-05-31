@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert series values for the specified entity and series tags in CSV format.
+Inserts series values for the specified entity and series tags in CSV format.
 
 The CSV header should include a leading time column and one or multiple numeric metric columns for the same entity and tag combination.
 

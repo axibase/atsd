@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete property records that match specified filters.
+Deletes property records that match specified filters.
 
 ### Delete Markers
 

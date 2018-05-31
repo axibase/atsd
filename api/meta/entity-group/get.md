@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve information about the specified entity group including its name and user-defined tags.
+Retrieves information about the specified entity group including its name and user-defined tags.
 
 ## Request
 

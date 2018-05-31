@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns access [permissions](../../../administration/user-authorization.md) for the current user.
+Retrieves access [permissions](../../../administration/user-authorization.md) for the current user.
 
 ## Request
 

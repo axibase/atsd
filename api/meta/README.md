@@ -21,22 +21,20 @@ Requested parameter values and parameterized path segments such as [`/api/v1/met
 |`jvm/memory(max)`|`jvm%2Fmemory%28max%29`| `/api/v1/metrics/jvm%2Fmemory%28max%29` |
 |`name LIKE 'cpu*'`|`name%20LIKE%20%27cpu*%27`| `/api/v1/metrics?expression=name%20LIKE%20%27cpu*%27` |
 
-Failure to encode URI components may result in 4xx and 5xx errors:
+Failure to encode URI components may result in HTTP `4xx` and `5xx` status codes:
 
 ```json
 Status Code: 500
 {"error":"...HttpRequestMethodNotSupportedException: Request method 'GET' not supported"}
 ```
 
-## Response Codes
+## HTTP Status Codes
 
-* `200` status code if the request is successful.
-* `401` status code in case of an unknown resource.
-* `403` status code in case of access denied error.
+* `200 OK` status code if the request is successful.
+* `401 Unauthorized` status code in case of an unknown resource.
+* `403 Forbidden` status code in case of an access denied error.
 * `4xx` status code in case of other client errors.
 * `5xx` status code in case of server error.
-
-`4xx` or `5xx` response codes are specific to each API methods.
 
 ## Errors
 

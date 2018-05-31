@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve property records matching specified filters.
+Retrieves property records matching specified filters.
 
 ## Request
 

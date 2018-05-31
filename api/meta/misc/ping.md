@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns `200` status code if the user credentials are valid and the user is allowed to access the database.
+Returns HTTP `200 OK` status code if the user credentials are valid and the user is allowed to access the database.
 
 The endpoint is used to check connectivity, authentication, and to maintain an active session.
 
@@ -16,9 +16,9 @@ The endpoint is used to check connectivity, authentication, and to maintain an a
 
 ### Fields
 
-The response is empty with status code `200` if the request is valid.
+The response is empty with HTTP `200 OK` status code if the request is valid.
 
-Otherwise a `4xx` error is returned with an [error code](../../../administration/user-authentication.md#authentication-and-authorization-errors) in JSON format.
+Otherwise an HTTP `4xx` status code is returned with an [error code](../../../administration/user-authentication.md#authentication-and-authorization-errors) in JSON format.
 
 ```json
 {

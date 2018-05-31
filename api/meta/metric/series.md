@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns a list of **series** for the metric.
+Retrieves a list of **series** for the metric.
 
 Each series is identified by metric name, entity name, and optional series tags.
 

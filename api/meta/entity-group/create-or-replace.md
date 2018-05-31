@@ -2,7 +2,7 @@
 
 ## Description
 
-Create an entity group with specified fields and tags or replace the fields and tags of an existing entity group.
+Creates an entity group with specified fields and tags or replaces the fields and tags of an existing entity group.
 
 The following rules apply if the specified group exists:
 

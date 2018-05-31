@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list property types for the entity.
+Retrieves a list property types for the entity.
 
 ## Request
 

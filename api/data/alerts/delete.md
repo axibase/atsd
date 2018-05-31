@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete specified alerts by id from the memory store.
+Deletes specified alerts by id from the memory store.
 
 ## Request
 

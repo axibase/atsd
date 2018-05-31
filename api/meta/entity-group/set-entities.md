@@ -2,7 +2,7 @@
 
 ## Description
 
-Set members of the entity group from the specified entity list.
+Sets members of the entity group from the specified entity list.
 
 All existing members that are not included in the request will be removed from members.
 

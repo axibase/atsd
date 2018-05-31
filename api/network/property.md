@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert a property record with specified type, keys, and tags for a given entity.
+Inserts a property record with specified type, keys, and tags for a given entity.
 
 Entity, property type, and property keys (`k:` fields) form a composite primary key of the property record in the database, whereas tags (`v:` fields) are stored as additional attributes.
 

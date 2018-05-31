@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete the specified entity group.
+Deletes the specified entity group.
 
 Member entities and their data is not affected by this operation.
 

@@ -74,7 +74,7 @@ Click 'Test' to verify the delivery.
 
 If the webhook supports sending charts, select one of the portals from the 'Test Portal' drop-down.
 
-The webhook request is successful if the endpoint returns status `200` (OK).
+The webhook request is successful if the endpoint returns HTTP `200 OK` status code.
 
 ![](./images/slack-test.png)
 
@@ -198,7 +198,7 @@ The number of notifications sent per minute can be monitored with the [`web_serv
 
 ### Error Handling
 
-The notification request is executed successfully if the endpoint returns `200` (OK) status code.
+The notification request is executed successfully if the endpoint returns HTTP `200 OK` status code.
 
 **No retry** is attempted in case of error. If the notification fails, the rule engine writes an `ERROR` event in the `atsd.log` and stores a corresponding messages with `CRITICAL` severity in the database.
 
