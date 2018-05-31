@@ -4,6 +4,14 @@ const githubSettings = {
     editLinkText: 'Help us improve this page!'
 }
 
+const portalsMenu = [
+    ['', 'Overview'],
+    'freemarker.md',
+    'portal-settings.md',
+    'portals-overview.md',
+    'selecting-series.md',
+]
+
 const topNavMenu = [
     { text: 'Install', link: '/installation/', highlighted: true },
     {
@@ -64,9 +72,10 @@ const integrationMenu = [
         ]
     },
 
+    ['/parsers/csv/', 'CSV Parsers'],
+
     ['https://github.com/axibase/atsd-use-cases#how-to', 'Examples'],
 ];
-
 
 const restApiMenu = [
     ['', 'Overview'], // Waiting for New overview page
@@ -243,6 +252,8 @@ const sqlMenu = [
 ];
 
 const administrationMenu = [
+    ['/portals/', "Portals"],
+    ['/forecasting/', "Forecasts"],
     {
         title: "User Management", children: [
             ['user-authentication.md', 'User Authentication'],
@@ -298,6 +309,17 @@ const administrationMenu = [
     }
 ]
 
+const forecastMenu = [
+    ['', 'Overview'],
+    'calendar_exceptions_testing.md'
+];
+
+const csvParsers = [
+    ['', 'Overview'],
+    'csv-schema.md',
+    'uploading-csv-files.md',
+]
+
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
@@ -319,11 +341,12 @@ module.exports = {
             '/api/network/': networkApiMenu,
             '/api/': [],
             '/changelogs/': [],
-            '/forecasting/': [],
+            '/forecasting/': forecastMenu,
             '/installation/': installationMenu,
             '/integration/': integrationMenu,
+            '/parsers/csv/': csvParsers,
             '/parsers/': [],
-            '/portals/': [],
+            '/portals/': portalsMenu,
             '/rule-engine/notifications/': ruleNotificationsMenu,
             '/rule-engine/': ruleEngineMenu,
             '/search/': [],
