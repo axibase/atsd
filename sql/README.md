@@ -119,6 +119,7 @@ SELECT entity, metric, datetime, value
 WHERE metric = 'mpstat.cpu_busy'
   -- WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user')
   -- WHERE metric LIKE 'mpstat.cpu%'
+  -- WHERE metric IN metrics('nurswgvml007')
   AND entity = 'nurswgvml007'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
