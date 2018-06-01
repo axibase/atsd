@@ -41,7 +41,7 @@ This query can be utilized as a validation query in database connection pool imp
 | `limit` | integer | Maximum number of rows to return. Default: 0 (not applied).<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
 | `discardOutput` | boolean | If set to true, discards the produced content without sending it to the client. |
 | `encodeTags` | boolean | If set to true, the `tags` column is encoded in JSON format for safe deserialization on the client. |
-| `datetimeAsNumber` | boolean | If set to true, the `datetime` column keeps timestamp as number of milliseconds since epoch, similar to `time` column. |
+| `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix milliseconds since `1970-01-01T00:00:00Z`, similar to the `time` column. |
 
 As an alternative, the query can be submitted with Content-Type `text/plain` as text payload with the other parameters included in the query string.
 
