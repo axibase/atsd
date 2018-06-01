@@ -34,7 +34,7 @@ LIMIT 3
 
 Use **Date Format** drop-down list to modify the `datetime` column without the [`date_format`](examples/datetime-format.md) function. Use **Time Zone** drop-down list to select UTC or server local time.
 
-This table displays 16:30 on Tuesday, May 15, 2018, using each of the date formatting commands:
+This table displays 16:30 on Tuesday, May 15, 2018, using each of the date formatting options:
 
 **Date Format** | **UTC** | **Server Local Time**
 ---|---|---
