@@ -269,7 +269,7 @@ Note that series removed with this method is masked with a [Delete](../api/data/
 
 Open the Properties page for the specified entity.
 
-![](./images/properties-delete-entity-page.png)
+![](./images/properties-delete-entity-form.png)
 
 Select the property keys to be deleted and choose `Delete` action.
 
