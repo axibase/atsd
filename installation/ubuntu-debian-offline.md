@@ -30,12 +30,12 @@ sudo apt-get update
 ```
 
 ```sh
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com \
 --recv-keys 26AEE425A57967CFB323846008796A6514F3CB79
 ```
 
 ```sh
-sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./" \
+sudo sh -c 'echo "deb [arch=amd64] https://axibase.com/public/repository/deb/ ./" \
 >> /etc/apt/sources.list.d/axibase.list'
 ```
 
@@ -92,7 +92,7 @@ Copy the `dependencies` directory to the target machine where ATSD will be insta
 Install dependencies.
 
 ```sh
-ls dependencies/* | grep -v "atsd*" | xargs sudo dpkg -i
+ls dependencies/* | grep -v "atsd" | xargs sudo dpkg -i
 ```
 
 Sample output:
