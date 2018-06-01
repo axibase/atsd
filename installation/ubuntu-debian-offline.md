@@ -20,7 +20,8 @@ and copying them to the target machine for offline installation.
 Add `jessie-backports` repository. This command is required only for Debian 8.x (jessie).
 
 ```sh
-sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
+sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main \
+>> /etc/apt/sources.list.d/backports.list'
 ```
 
 Enable the `axibase.com/public/repository/deb/` repository on the machine with Internet access:
