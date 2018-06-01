@@ -51,6 +51,6 @@ The ATSD Client for [Ruby](https://www.ruby-lang.org/) enables Ruby developers t
 
 ## Perl
 
-The API Client for Perl enables developers to send data to ATSD through its Network and Rest API.
+The API Client for Perl provides simple functions to send data into ATSD.
 
 * [GitHub Repository](https://github.com/axibase/atsd-api-perl)
