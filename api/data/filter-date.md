@@ -19,7 +19,7 @@ Date fields define the time range for selecting the data.
 |`startDate` and `endDate`| |
 |`startDate` and `interval`|`endDate` will be set to `startDate` + `interval`|
 |`endDate` and `interval`|`startDate` will be set to `endDate` - `interval`|
-|`interval`|`endDate` will be set to current server time<br>`startDate` will be set to `endDate` - `interval`|
+|`interval`|`endDate` will be set to current server time <br>`startDate` will be set to the latest of two dates: <br>`endDate` - `interval` and `1970-01-01T00:00:00Z`.|
 
 ## ISO Date Formats
 
