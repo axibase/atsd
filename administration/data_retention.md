@@ -1,6 +1,6 @@
 # Data Retention
 
-Retention settings provide a way to control database size by automatically removing old data as well as discarding unnecessary data before it is stored on disk.
+Retention settings provide a way to control database size by automatically removing old data as well as discarding unnecessary data before the records are stored on disk.
 
 ## Default Retention Settings
 
@@ -46,7 +46,7 @@ The amount of time series data stored in the database may be controlled using on
 * Deleting [expired data](#delete-expired-data) outside a specified retention period.
 * Deleting [expired series](#delete-expired-series) if no data has been received for the series within a specified retention period.
 
-Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for any new settings to fully materialize as appreciably reduced disk usage.
+Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for new settings to reduce disk usage to the full extent.
 
 ### Disable Metric
 
@@ -68,7 +68,7 @@ Discarded commands for disabled metrics are logged with `DISABLED_METRIC` flag i
 
 ### Disable Persistence
 
-If a metric is **non-persistent**, it is not stored on disk. The metric will still be _processed_ in the rule engine.
+The data for **non-persistent** metrics is not stored on disk. Such metrics are still be _processed_ in the rule engine.
 
 To disable persistence for a metric, open the Metric Editor, expand 'Settings' section, set 'Persistent' switch to 'No', and click **Save**.
 
@@ -189,7 +189,7 @@ Alternatively, use [group editor](#group-editor) to modify multiple metrics at o
 
 This setting causes all data to be deleted for those series which have not received new values for more than the specified number of days. If the series has recent data, no data for such a series is deleted. This setting cleans the database from old/discontinued series while retaining all data for active series.
 
-If **Series Retention Days** were set to '1 year' in the example below, it would cause 3 highlighted series that have not been updated since 2015/2016 to be deleted. The data for the remaining active series would be left untouched.
+If **Series Retention Days** is set to '1 year' in the example below, the database will delete three highlighted series that have not been updated since 2015/2016. The data for the remaining active series is left untouched.
 
 ![](./images/retention-series-retention.png)
 
@@ -227,7 +227,7 @@ This will cause **all** series collected for the entity to be deleted.
 
 To delete **multiple** entities, specify the search pattern on the Entities tab.
 
-Select all or multiple matching entities using the checkbox controls, and click 'Delete' in the multi-action button.
+Select all or multiple matching entities using the checkbox controls, and click 'Delete' in the split button.
 
 ![](./images/delete-entity-multiple.png)
 
@@ -245,7 +245,7 @@ This will cause **all** series collected for the metric to be deleted.
 
 To delete **multiple** metrics, specify the search pattern on the Metrics tab.
 
-Select all or multiple matching metrics using the checkbox controls, and click 'Delete' in the multi-action button.
+Select all or multiple matching metrics using the checkbox controls, and click 'Delete' in the split button.
 
 ![](./images/delete-metric-multiple.png)
 
@@ -267,7 +267,15 @@ Note that series removed with this method is masked with a [Delete](../api/data/
 
 ### Deleting Properties
 
-Not supported in the user interface.
+Open the Properties page for the specified entity.
+
+![](./images/properties-delete-entity-form.png)
+
+Select the property keys to be deleted and choose `Delete` action from the split button.
+
+![](./images/properties-delete-types-form.png)
+
+Note that properties removed with this method are masked with a [Delete](../api/data/series/delete.md#delete-markers) marker which will prevent the data for the **same** property type and entity from being visible until the next scheduled HBase compaction.
 
 ### Deleting Messages
 

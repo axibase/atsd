@@ -2,7 +2,7 @@
 
 ## Description
 
-Upload a CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser.
+Accepts a CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser.
 
 The file(s) can be uploaded in plain text or compressed with the gzip or zip codecs.
 

@@ -75,7 +75,7 @@ There are two options to obtain chat id:
 ## Configure Webhook in ATSD
 
 * Open **Alerts > Web Notifications** page.
-* Click on an existing `TELEGRAM` template, or click the **Create** button below and select the `TELEGRAM` type.
+* Click on an existing `TELEGRAM` template, or click **Create** and select the `TELEGRAM` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/telegram_2.png)
@@ -144,7 +144,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
   *[${status}]* ${ruleLink} for ${entity} ${tags}
 ```
 
-* Save the rule by clicking on the **Save** button.
+* Click **Save** to save the rule.
 
   ![](./images/telegram_11.png)
 

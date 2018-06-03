@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of entities matching the specified filters.
+Retrieves a list of entities matching the specified filters.
 
 ## Request
 

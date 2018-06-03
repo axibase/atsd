@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of metrics collected by the entity.
+Retrieves a list of metrics collected by the entity.
 
 ## Request
 

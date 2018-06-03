@@ -48,7 +48,7 @@ You should see an `ATSD start completed` message once the database is ready.
 [ATSD] ATSD start completed. Time: 2017-10-03 19-50-16.
 ```
 
-The ATSD user interface is accessible on port 8443/https.
+Web interface is accessible on port `8443` (https).
 
 ## Launch Parameters
 

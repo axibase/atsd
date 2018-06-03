@@ -20,7 +20,8 @@ and copying them to the target machine for offline installation.
 Add `jessie-backports` repository. This command is required only for Debian 8.x (jessie).
 
 ```sh
-sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
+sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main \
+>> /etc/apt/sources.list.d/backports.list'
 ```
 
 Enable the `axibase.com/public/repository/deb/` repository on the machine with Internet access:
@@ -30,12 +31,12 @@ sudo apt-get update
 ```
 
 ```sh
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com \
 --recv-keys 26AEE425A57967CFB323846008796A6514F3CB79
 ```
 
 ```sh
-sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./" \
+sudo sh -c 'echo "deb [arch=amd64] https://axibase.com/public/repository/deb/ ./" \
 >> /etc/apt/sources.list.d/axibase.list'
 ```
 
@@ -92,7 +93,7 @@ Copy the `dependencies` directory to the target machine where ATSD will be insta
 Install dependencies.
 
 ```sh
-ls dependencies/* | grep -v "atsd*" | xargs sudo dpkg -i
+ls dependencies/* | grep -v "atsd" | xargs sudo dpkg -i
 ```
 
 Sample output:
@@ -123,7 +124,7 @@ tail -f /opt/atsd/atsd/logs/start.log
 
 You should see an **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port 8088 (http) and 8443 (https).
+Web interface is accessible on port `8443` (https).
 
 ## Troubleshooting
 

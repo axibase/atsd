@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert an array of properties.
+Inserts an array of properties.
 
 * Entity name, property type, key names, and tag names cannot contain non-printable characters. They are case-insensitive and are converted to lower case when stored.
 * Key values and tag values are **case-sensitive** and are stored as submitted.

@@ -122,7 +122,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
   User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${message}"
 ```
 
-* Save the rule by clicking on the **Save** button.
+* Click **Save** to save the rule.
 
     ![](./images/outgoing_webhook_telegram_1.png)
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert a timestamped text message for a given entity and tags into the database.
+Inserts a timestamped text message for a given entity and tags into the database.
 
 ## Syntax
 

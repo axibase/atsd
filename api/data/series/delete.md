@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete series for the specified metric, entity, and optional series tags.
+Deletes series for the specified metric, entity, and optional series tags.
 
 ### Delete Markers
 

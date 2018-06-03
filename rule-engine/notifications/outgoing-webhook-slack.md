@@ -121,7 +121,7 @@ Slack Bot is a special account created for automation purposes.
   Received `${message}` from <@${tags.event.user}>
 ```
 
-* Save the rule by clicking on the **Save** button.
+* Click **Save** to save the rule.
 
     ![](./images/outgoing_webhook_slack_15.png)
 

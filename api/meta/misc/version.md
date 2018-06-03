@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns database version including licensing details as well as a `date` object with local time and offset.
+Retrieves database version including licensing details as well as a `date` object with local time and offset.
 
 ## Request
 

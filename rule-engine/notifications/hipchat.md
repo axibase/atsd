@@ -25,7 +25,7 @@
 
     ![](./images/sign_out.png)
 
-* Paste the above link into the browser address bar, press **Enter**.
+* Paste the above link into the browser address bar, click **Enter**.
 * Fill in the fields, click **Sign Up**.
 
     ![](./images/hipchat_atsd_bot.png)
@@ -83,7 +83,7 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 ## Create Webhook in ATSD
 
 * Open the **Alerts > Web Notifications** page.
-* Click on an existing `HIPCHAT` template, or click the **Create** button and select the `HIPCHAT`type.
+* Click on an existing `HIPCHAT` template, or click **Create** and select the `HIPCHAT`type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/hipchat_1.png)
@@ -140,7 +140,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
     CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
 ```
 
-* Save the rule by clicking the **Save** button.
+* Click **Save** to save the rule.
 
     ![](./images/hipchat_notification.png)
 

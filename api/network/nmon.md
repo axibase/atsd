@@ -2,7 +2,7 @@
 
 ## Description
 
-Initiate line-by-line streaming of a `nmon` file. The transmission can be resumed without a full header in case of disconnect.
+Accepts line-by-line streaming of an `nmon` file. The transmission can be resumed without a full header in case of disconnect.
 
 ## Syntax
 

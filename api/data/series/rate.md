@@ -38,17 +38,17 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ## Rate Period
 
-* If rate period is not specified, the function computes the difference between values of two subsequent series samples. If samples are `(previousTimestamp, previousValue)` and `(timestamp, value)`, then result would be `(timestamp, value - previousValue)`.
+* If rate period is not specified, the function returns the difference between consecutive values. If samples are `(time0, value0)` and `(time1, value1)` the result is `value1 - value0`.
 
-* If rate period is specified, the function computes rate of change for the specified time period:
+* If rate period is specified, the function calculates the rate of change for each sample:
 
-`(value - previousValue) * ratePeriod / (timestamp - previousTimestamp)`.
+`(value1 - value0) / (time1 - time0) * ratePeriod`.
 
-```java
+```javascript
   ratePeriod = rate.count * rate.unit (in milliseconds)
-  if (value > previousValue) {
-    resultValue = (value - previousValue) / (timestamp - previousTime) * ratePeriod;
-    aggregator.addValue(timestamp, resultValue);
+  if (value1 > value0) {
+    resultValue = (value1 - value0) / (time1 - time0) * ratePeriod;
+    aggregator.addValue(time1, resultValue);
   }
 ```
 

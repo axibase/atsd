@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert a timestamped array of numbers for a given series identified by metric, entity, and series tags.
+Inserts a timestamped array of numbers for a given series identified by metric, entity, and series tags.
 
 * Entity name, metric name, and tag names can contain only printable characters. Names are case-insensitive and are converted to lower case when stored.
 * Tag values are **case-sensitive** and are stored as submitted.

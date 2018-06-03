@@ -118,7 +118,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_22.png)
 
-* Click **Preview** button to check the results
+* Click **Preview** to check the results
 
   ![](./images/modeler_23.png)
 
@@ -141,7 +141,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_26.png)
 
-* Click **Preview** button to check results. You should see the **weighted_price** column.
+* Click **Preview** to check results. You should see the **weighted_price** column.
 
   ![](./images/modeler_27.png)
 
@@ -171,7 +171,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_32.png)
 
-* Click the **Preview** button to check the results
+* Click **Preview** to check the results
 
   ![](./images/modeler_33.png)
 
@@ -194,7 +194,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_36.png)
 
-* Click the **Preview** button to check the results. The**entity** column should have been added.
+* Click **Preview** to check the results. The**entity** column should have been added.
 
   ![](./images/modeler_37.png)
 
@@ -218,7 +218,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_40.png)
 
-* Click the **Advanced...** button
+* Click **Advanced...**
 
   ![](./images/modeler_41.png)
 

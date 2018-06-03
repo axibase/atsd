@@ -15,8 +15,8 @@ Report showing the differences between two metrics on separate graphs.
 
 ![](../images/join_inner.png)
 
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the column field
 * Drag-and-drop both `Value` onto the rows field
 * Select _Bar_ in the dropdown at the _All_ section on Marks Card

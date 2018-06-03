@@ -34,7 +34,7 @@ To increase the number of files stored by a given logger, increase `maxIndex` at
 
 ### File Size
 
-To increase the size of files rolled over by a given logger, increase `maxFileSize` attribute. This will determine the size of the file before it is rolled over and compressed. The size of the compressed file is typically 10-20 smaller than the original file.
+To increase the size of files rolled over by a given logger, increase the `maxFileSize` attribute. This will determine the size of the file before the file is rolled over and compressed. The size of the compressed file is typically 10-20 smaller than the original file.
 
 ```xml
    <maxFileSize>100Mb</maxFileSize>

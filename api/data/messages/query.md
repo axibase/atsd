@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve message records for the specified filters.
+Retrieves message records for the specified filters.
 
 ## Request
 

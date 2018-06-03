@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve property records for the specified entity and type.
+Retrieves property records for the specified entity and type.
 
 ## Request
 

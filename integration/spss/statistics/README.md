@@ -223,7 +223,7 @@ metric m:cpi_price
 
 ![](./images/atsd_export_3.png)
 
-* Click **Type & Label...** button.
+* Click **Type & Label...**.
 
 ![](./images/atsd_export_4.png)
 

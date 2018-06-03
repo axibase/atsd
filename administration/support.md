@@ -1,16 +1,18 @@
 # Support
 
-Provide the following artifacts as part of your support request related to a server-side issue.
+This document will help you submit a well-prepared ticket to our [Support Desk](https://axibase.zendesk.com/home) so we can resolve it faster.
 
-## 1. ATSD Version Information
+Use the below reference to attach relevant artifacts to your ticket. Skip sections `3-6` if they don't apply to your particular situation.
 
-* A. **Settings > System Information** page: Select/copy rows to a text file.
+## 1. Database Information
 
-* B. **Settings > Server Properties** page. Select/copy rows to a text file.
+1. **Settings > System Information** page: Select/copy rows to a text file.
+
+2. **Settings > Server Properties** page: Select/copy rows to a text file.
 
 ## 2. Operating System Information
 
-* A. Output of system commands:
+1. Output of the following system commands:
 
 ```bash
 cat /etc/*-release
@@ -22,25 +24,38 @@ cat /proc/version
 
 ## 3. Log Files
 
-* A. Archive (tar.gz) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.
+> The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **Settings > Diagnostics > Server Logs** page.
 
-* B. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HBase HRegionServers.
+1. Metrics file `/opt/atsd/atsd/logs/metrics.txt`.
 
-* C. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS DataNodes.
+2. Error log `/opt/atsd/atsd/logs/err.log`.
+
+3. Archive (tar.gz) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.
+
+    ```bash
+    tar czfv atsd_support.tar.gz \
+      /opt/atsd/atsd/logs/*.log \
+      /opt/atsd/atsd/logs/*.zip \
+      /opt/atsd/atsd/logs/*.out
+    ```
+
+4. Archive (tar.gz) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
+
+5. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
 
 ## 4. Heap Dump File
 
-* A. Archive (tar.gz) of the most recent `java_pid*.hprof` file in the `/opt/atsd/atsd/logs` directory.
+1. Archive (tar.gz) of the most recent `java_pid*.hprof` file in the `/opt/atsd/atsd/logs` directory, if such file is present.
 
-## 5. Monitoring Statistics
+## 5. Performance Statistics
 
-* A. Screenshot of the **Portals: ATSD** portal for the time period covering the issue.
+1. Screenshot of the **Portals: ATSD** portal for the time period covering the issue.
 
-* B. Screenshot of the **Portals: ATSD Log Viewer** portal for the time period covering the issue.
+2. Screenshot of the **Portals: ATSD Log Viewer** portal for the time period covering the issue.
 
-* C. Screenshots from the **Portals: ATSD Metric Viewer** portal for a subset of relevant metrics.
+3. Screenshot from the **Portals: ATSD Metric Viewer** portal for relevant metrics.
 
-* D. CSV Export of the following query in the SQL console. Modify the `datetime` condition to match the hour when the issue occurred.
+4. CSV Export of the below query generated in the SQL console. Modify the `datetime` condition to match the hour when the issue occurred.
 
 ```sql
 SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr,
@@ -84,7 +99,14 @@ SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr
   JOIN series_queue_size t32
   JOIN series_rejected_count t33
 WHERE t1.entity = 'atsd'
-  AND t1.datetime BETWEEN '2016-10-16T08:00:00Z' AND '2016-10-16T09:00:00Z'
+  AND t1.datetime BETWEEN '2018-05-01T08:00:00Z' AND '2018-05-01T09:00:00Z'
 WITH INTERPOLATE(1 MINUTE)
-
 ```
+
+## 6. Portal Configuration
+
+> Attach this if the issue is related to charts and portals.
+
+1. Screenshot of the affected portal.
+
+2. Portal configuration text.

@@ -49,7 +49,7 @@ Create a `AWS SNS` notification with `Message Format = RAW`, for example:
 
   ![](./images/aws_sns_web_notification_raw.png)
 
-* Save the rule by clicking on the **Save** button.
+* Click **Save** to save the rule.
 
 * The rule will create new windows based on incoming data.
 

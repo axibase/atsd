@@ -59,12 +59,12 @@ these commands on the **Metrics > Data Entry** page.
 
 > Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
 
-* Check (enable) the **Strip Quote** and **Strip Escape** options, press **OK**.
+* Check (enable) the **Strip Quote** and **Strip Escape** options, click **OK**.
 
   ![](./images/odbc_quotes.png)
 
 * Select the name you specified for DSN during bridge configuration from the **Data
-  Source Name** list and press **OK**.
+  Source Name** list and click **OK**.
 
   ![](./images/dsn_list.png)
 
@@ -78,7 +78,7 @@ This allows you build a query by choosing a table or entering query
 text manually.
 
 * Table names visible in the **Tables** tab satisfy the `tables` pattern
-  specified in the DSN URL. Click the **Refresh** button to reload the list, if
+  specified in the DSN URL. Click **Refresh** to reload the list, if
   necessary.
 
   ![](./images/metrics_list.png)
@@ -106,11 +106,11 @@ text manually.
 
   ![](./images/sql_editor.png)
 
-Press **OK** when the query is ready for processing.
+Click **OK** when the query is ready for processing.
 
 ### Check Query Results
 
-Press **Run Workflow**, to see the result of the query.
+Click **Run Workflow**, to see the result of the query.
 
 ![](./images/run_workflow.png)
 
@@ -197,7 +197,7 @@ The workflow consists of the following steps (nodes):
 
 11. **Browse** tool. View the final result.
 
-Press **Run Workflow**.
+Click **Run Workflow**.
 
 The data will be retrieved from the database and processed in Designer by the workflow
 with the new series stored back in the database.

@@ -38,7 +38,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 ## Configure AWS SQS Notification
 
 * Open **Alerts > Web Notifications** page.
-* Click the **Create** button and select the `AWS-SQS` type.
+* Click **Create** and select the `AWS-SQS` type.
 * Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
 * Enter the `Queue Path`.
 

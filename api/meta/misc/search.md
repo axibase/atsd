@@ -2,7 +2,7 @@
 
 ## Description
 
-Full text series search.
+Retrieves series matching the specified search text.
 
 Refer to [expression reference](../../../search/README.md) for syntax, available fields and operators.
 

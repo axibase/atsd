@@ -2,7 +2,7 @@
 
 ## Description
 
-Create an entity with specified fields and tags or replace the fields and tags of an existing entity.
+Creates an entity with specified fields and tags or replaces the fields and tags of an existing entity.
 
 In case of an existing entity, all the current entity tags will be replaced with entity tags specified in the request.
 

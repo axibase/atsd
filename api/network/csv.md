@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert plain text data in CSV/TSV format into the database.
+Inserts plain text data in CSV/TSV format into the database.
 
 Lines are parsed and converted into commands as they're received, without buffering.
 

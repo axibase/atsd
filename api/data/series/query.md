@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve time series objects for the specified metric, entity, tag, and interval filters.
+Retrieves time series objects for the specified metric, entity, tag, and interval filters.
 
 ## Request
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert messages.
+Inserts messages.
 
 * Entity name, source, type, severity, and tag names cannot contain non-printable characters. They are case-insensitive and are converted to lower case when stored.
 * **Message text or at least one tag is required, otherwise the message will be dropped silently.**

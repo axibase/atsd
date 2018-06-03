@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of entities that are members of the specified entity group and are matching the specified filter conditions.
+Retrieves a list of entities that are members of the specified entity group and are matching the specified filter conditions.
 
 ## Request
 

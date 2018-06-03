@@ -2,7 +2,7 @@
 
 ## Description
 
-Remove the specified members from the entity group.
+Removes the specified members from the entity group.
 
 To delete all entities from the group, submit an empty array `[]` with the [set entities](set-entities.md) method.
 

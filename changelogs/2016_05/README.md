@@ -63,7 +63,7 @@ WITH ROW_NUMBER(tags ORDER BY datetime desc) <= 1
   ORDER BY value DESC
 ```
 
-Since the timespan is not defined in the `WHERE` clause, previously we would not apply any date filter to scanned records.
+Since the timespan is not defined in the `WHERE` clause, previously we did not apply any date filter to scanned records.
 To optimize the query we now perform a lookup of the minimum insert time for the specified metric, entity, and series tags.
 Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. A condition like `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
 only need the last value for each combination of tags. We can therefore skip values with a timestamp less than the minimum last insert time.

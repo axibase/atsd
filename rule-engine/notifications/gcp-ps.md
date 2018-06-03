@@ -29,7 +29,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 ## Configure GCP PS Notification
 
 * Open **Alerts > Web Notifications** page.
-* Click the **Create** button and select the `GCP-PS` type.
+* Click **Create** and select the `GCP-PS` type.
 * Fill out the `Name` field.
 * Enter the `Project ID`, `Topic`, `Service Account` and select `Private Key Alias`.
 

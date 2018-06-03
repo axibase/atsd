@@ -134,7 +134,7 @@ Mq4jQ2F4LvDWxTq14m7hNgJsPaddwg1IzPz6Ltonu-c
 
 Before continuing, verify the record is deployed.
 -------------------------------------------------------------------------------
-Press Enter to Continue
+Click Enter to Continue
 Waiting for verification...
 Cleaning up challenges
 ```
@@ -189,7 +189,7 @@ sudo curl -k -u certbot:Dmj_per1S https://10.102.0.6:8443/admin/certificates/imp
 
 ATSD will accept the files, validate the certificates and automatically reload the SSL context without restarting the database itself.
 
-The server will respond with code `200` if the installation was successful.
+The server will respond with an HTTP `200 OK` status code if the installation was successful.
 
 ## Renew Certificate
 

@@ -38,7 +38,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ![](./resources/data_pane.png)
 
-* Select 'Add Data Sources' button in the toolbar, click 'JDBC'.
+* Select 'Add Data Sources' in the toolbar, click 'JDBC'.
 * Select 'Add a new connection' (green plus icon).
 
 ![](./resources/new_connection.png)
@@ -119,19 +119,19 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 ![](./resources/add_query.png)
 
 * Enter an SQL query in the Query editor, for example `SELECT datetime, entity, value FROM jvm_memory_used LIMIT 10`
-* Click on the 'Preview' button to review the resultset.
+* Click **Preview** to review the resultset.
 
 ![](./resources/preview.png)
 
-* It is possible to build a Query using the `SQL Query Designer`
+* Build a Query using the `SQL Query Designer`
 
-* Click 'OK'. The list of queries will be added to the 'Data' pane.
+* Click **OK**. The list of queries will be added to the 'Data' pane.
 * Right-click on the query and choose 'Select Query'. The tree view will now display query results and fields.
 
 ![](./resources/data_pane_updated.png)
 
 * Drag and drop these field into the report canvas.
-* Click the `Preview` button in the top left corner (the eye icon) to view query results.
+* Click **Preview** in the top left corner (the eye icon) to view query results.
 
 ![](./resources/report.png)
 
