@@ -8,7 +8,7 @@ Open the **Alerts > Rules** page and click **Create** to configure an alert rul
 
 ![](./resources/getting-started-4_2.png)
 
-The following [condition](/rule-engine/condition.md) evaluates to `true` and creates an alert if the average value for the last 3 samples exceeds `50`:
+The following [condition](../rule-engine/condition.md) evaluates to `true` and creates an alert if the average value for the last 3 samples exceeds `50`:
 
 ```java
 avg() > 50

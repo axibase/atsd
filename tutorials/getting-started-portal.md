@@ -2,8 +2,7 @@
 
 ## Create Portal
 
-[Portal](../portals/README.md) is a collection of [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) displayed on one page. 
-
+[Portal](../portals/README.md) is a collection of [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) displayed on one page.
 The portal can be `template` whereas it can display data for any entity of the given type (entity is often passed as parameter). The portal can also be `regular`, in which case the entity is defined in the configuration text. In this exercise we will create a **regular** portal for `br-1905` entity.
 
 Click on **Portals** link in the top menu.
