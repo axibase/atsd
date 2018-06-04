@@ -267,7 +267,15 @@ Note that series removed with this method is masked with a [Delete](../api/data/
 
 ### Deleting Properties
 
-Not supported in the user interface.
+Open the Properties page for the specified entity.
+
+![](./images/properties-delete-entity-form.png)
+
+Select the property keys to be deleted and choose `Delete` action from the split button.
+
+![](./images/properties-delete-types-form.png)
+
+Note that properties removed with this method are masked with a [Delete](../api/data/series/delete.md#delete-markers) marker which will prevent the data for the **same** property type and entity from being visible until the next scheduled HBase compaction.
 
 ### Deleting Messages
 
