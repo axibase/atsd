@@ -16,7 +16,7 @@ avg() > 50
 
 ![](./resources/rule-overview.png)
 
-Open **Filter** tab in the rule editor to allow out-of-order values and to disable the time [filter](../rule-engine/filters.md#date-filter) by setting value field to `0`. Otherwise measurements older than `1 minute` will be ignored by the rule engine.
+Open **Filter** tab in the rule editor to allow out-of-order values and to disable the time [filter](../rule-engine/filters.md#date-filter) by setting the grace period to `0`. Otherwise measurements older than `1 minute` will be ignored by the rule engine.
 
 > Pro Tip. You can also import the rule from the XML file [temperature_rule.xml](./resources/temperature_rule.xml).
 
@@ -44,7 +44,7 @@ To receive alert notifications via email, configure the [mail client](../adminis
 
 Open the rule editor and enable [alerts](../rule-engine/email.md) on the **Email Notifications** tab as illustrated below.
 
-> Pro Tip. To send screenshots of portals install and configure the [Web Driver](../rule-engine/notifications/web-driver.md).
+> Pro Tip. To send portal screenshots, configure the [Web Driver](../rule-engine/notifications/web-driver.md).
 
 ![](./resources/alert-email.png)
 
@@ -52,19 +52,19 @@ Save the rule and insert high value samples on the **Data Entry** page again. Yo
 
 ![](./resources/alert-email-msg.png)
 
-## Web Notifications Alerts
+## Slack Alerts
 
-To receive alert notifications in [Slack](../rule-engine/notifications/slack.md) create a [bot](../rule-engine/notifications/slack.md#create-bot) and configure built-in [`SLACK`](../rule-engine/notifications/slack.md#configure-webhook-in-atsd) webhook.
+To receive alerts in [Slack](../rule-engine/notifications/slack.md) create a [bot](../rule-engine/notifications/slack.md#create-bot) user and configure the built-in [`SLACK`](../rule-engine/notifications/slack.md#configure-webhook-in-atsd) webhook.
 
 Open the rule editor and enable alerts on the **Web Notifications** tab as illustrated below.
 
 ![](./resources/alert-slack.png)
 
-Save the rule and insert high value samples on the **Data Entry** page again. You should receive the following message when the threshold is exceeded.
+Save the rule and insert commands on the **Data Entry** page again. You should receive the following message in Slack when the average is greater than `50` for three samples samples.
 
 ![](./resources/alert-slack-msg.png)
 
-Review the [Outgoing Webhooks](../rule-engine/notifications/README.md) document describing built-in ATSD notification integrations.
+Refer to [Outgoing Webhooks](../rule-engine/notifications/README.md) for more details.
 
 ## Summary
 
