@@ -76,6 +76,6 @@ Issue| Category    | Type    | Subject
 
 Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
-4928 | [kafka](https://github.com/axibase/axibase-collector/blob/master/jobs/kafka.md) | Bug | Exception in kafka job with `message format=API` command.
+4928 | [kafka](https://axibase.com/docs/axibase-collector/jobs/kafka.html) | Bug | Exception in kafka job with `message format=API` command.
 4924 | core | Bug | Disk usage is abnormal.
 4895 | core | Bug | Delete temporary files.

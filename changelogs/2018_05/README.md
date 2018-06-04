@@ -41,10 +41,10 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5299|core|Bug| [Job configuration](https://github.com/axibase/axibase-collector/#job-types) cloning fails.
-5289|json|Feature| Add [Minimum Time](https://github.com/axibase/axibase-collector/blob/master/jobs/json.md#time-fields) filter.
+5299|core|Bug| Job configuration cloning fails.
+5289|json|Feature| Add [Minimum Time](https://axibase.com/docs/axibase-collector/jobs/json.html#time-fields) filter.
 5261|http-pool|Bug|Remove default port from Host header in outgoing `http` requests.
 5259|json|Bug|Do not report failure when all responses are not modified.
 5255|core|Feature|Add agent header to outgoing `http` requests.
-5243|collection|Feature|Add import/export options for [Item Lists](https://github.com/axibase/axibase-collector/blob/master/collections.md#item-lists).
-5233|jdbc|Bug| Last entities are cloned when [`JDBC`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) configuration is cloned.
+5243|collection|Feature|Add import/export options for [Item Lists](https://axibase.com/docs/axibase-collector/collections.html#item-lists).
+5233|jdbc|Bug| Last entities are cloned when [`JDBC`](https://axibase.com/docs/axibase-collector/jobs/jdbc.html) configuration is cloned.

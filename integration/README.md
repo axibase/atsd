@@ -9,7 +9,7 @@
 * [graphite](graphite/README.md)
 * [java-metrics](java-metrics/README.md)
 * [nmon](nmon/README.md)
-* [Axibase Collector](https://github.com/axibase/axibase-collector/)
+* [Axibase Collector](https://axibase.com/docs/axibase-collector)
 
 ## Reporting Tools
 

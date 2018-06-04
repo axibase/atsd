@@ -32,7 +32,7 @@ const installationMenu = [
     ['', 'Overview'],
     ['docker.md', 'Docker Image'],
     ['docker-redhat.md', 'RedHat Certified Image'],
-    ['https://github.com/axibase/axibase-collector/blob/master/installation-on-kubernetes.md', 'Kubernetes'],
+    ['https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html', 'Kubernetes'],
     ['aws-emr-s3.md','Amazon EMRFS'],
     ['cloudera.md','Cloudera/CDH'],
     ['ubuntu-debian-apt.md','Ubuntu/Debian\\: apt'],
@@ -53,7 +53,7 @@ const integrationMenu = [
             'graphite/',
             'java-metrics/',
             'nmon/',
-            ['https://github.com/axibase/axibase-collector/', 'Axibase Collector'],
+            ['https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html', 'Axibase Collector'],
         ]
     },
 

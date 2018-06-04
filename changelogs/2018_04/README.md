@@ -53,6 +53,6 @@
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
 5232 | data-source | Feature | Upgrade `JDBC` drivers.
-5230 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Bug | JDBC Job does not work properly in test mode.
+5230 | [`jdbc`](https://axibase.com/docs/axibase-collector/jobs/jdbc.html#jdbc-job) | Bug | JDBC Job does not work properly in test mode.
 5212 | `xml` | Bug | Server error raised when importing job xml file.
-5199 | [`jdbc`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Feature | Add support for `${HOST}` placeholder.
+5199 | [`jdbc`](https://axibase.com/docs/axibase-collector/jobs/jdbc.html#jdbc-job) | Feature | Add support for `${HOST}` placeholder.

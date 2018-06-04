@@ -145,7 +145,7 @@ Docker `inspect` snippet for a Mesos-managed container:
 
 ### Issue 3685
 
-Recently added to the [`docker`](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md#docker-job) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
+Recently added to the [`docker`](https://axibase.com/docs/axibase-collector/jobs/docker.html) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
 
 ![Figure 1](./Figure1.png)
 
