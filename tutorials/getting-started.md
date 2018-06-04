@@ -136,11 +136,15 @@ Set **Label** to `Temperature` and set fields as follows:
 
 ```elm
 units = Celsius
-min_value = -100
+min_value = 0
 max_value = 1000
 ```
 
 Refresh the **Series Statistics** page which now displays relevant metric and entity metadata.
+
+ ```elm
+https://atsd_hostname:8443/series/statistics?entity=br-1905&metric=temperature
+```
 
 ![](./resources/metric-entity-metadata.png)
 

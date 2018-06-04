@@ -2,7 +2,7 @@
 
 ## Create Rule
 
-Open the **Alerts > Rules** page and click on **Create** to configure an alert rule for the `temperature` metric using the built-in [Rule Engine](../rule-engine).
+Open the **Alerts > Rules** page and click **Create** to configure an alert rule for the `temperature` metric using the built-in [Rule Engine](../rule-engine/README.md).
 
 ![](./resources/getting-started-4_1.png)
 
@@ -16,7 +16,7 @@ avg() > 50
 
 ![](./resources/rule-overview.png)
 
-Open **Filter** tab in the rule editor to allow out-of-order values and to disable the time [filter](../rule-engine/filters.md#date-filter). Otherwise measurements older than `1 minute` will be ignored by the rule engine.
+Open **Filter** tab in the rule editor to allow out-of-order values and to disable the time [filter](../rule-engine/filters.md#date-filter) by setting value field to `0`. Otherwise measurements older than `1 minute` will be ignored by the rule engine.
 
 > Pro Tip. You can also import the rule from the XML file [temperature_rule.xml](./resources/temperature_rule.xml).
 
@@ -29,8 +29,6 @@ series e:br-1905 m:temperature=55
 Open **Alerts > Open Alerts** page in the main menu to view currently opened alerts.
 
 ![](./resources/rule-open-alerts.png)
-
-![](./resources/getting-started-4_7.png)
 
 Now insert some commands with low values so that the average of the last three commands is less than `50`.
 
@@ -46,11 +44,27 @@ To receive alert notifications via email, configure the [mail client](../adminis
 
 Open the rule editor and enable [alerts](../rule-engine/email.md) on the **Email Notifications** tab as illustrated below.
 
+> Pro Tip. To send screenshots of portals install and configure the [Web Driver](../rule-engine/notifications/web-driver.md).
+
 ![](./resources/alert-email.png)
 
 Save the rule and insert high value samples on the **Data Entry** page again. You should receive the following message when the threshold is exceeded.
 
 ![](./resources/alert-email-msg.png)
+
+## Web Notifications Alerts
+
+To receive alert notifications in [Slack](../rule-engine/notifications/slack.md) create a [bot](../rule-engine/notifications/slack.md#create-bot) and configure built-in [`SLACK`](../rule-engine/notifications/slack.md#configure-webhook-in-atsd) webhook.
+
+Open the rule editor and enable alerts on the **Web Notifications** tab as illustrated below.
+
+![](./resources/alert-slack.png)
+
+Save the rule and insert high value samples on the **Data Entry** page again. You should receive the following message when the threshold is exceeded.
+
+![](./resources/alert-slack-msg.png)
+
+Review the [Outgoing Webhooks](../rule-engine/notifications/README.md) document describing built-in ATSD notification integrations.
 
 ## Summary
 

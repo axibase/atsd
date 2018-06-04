@@ -46,7 +46,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
   --data '[{"entity": "br-1905", "metric": "temperature", "data": [{ "d": "2018-06-01T14:00:00Z", "v": 17.0 }]}]'
 ```
 
-The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. In this case, you sent just one value with a pre-set datetime, but the array `d` may contain any number of `d:v` objects.
+The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. In this case, you sent just one value with a pre-set datetime, but the array `data` may contain any number of `d:v` objects.
 
 ```json
 [{
@@ -84,11 +84,11 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
   --user <USER>:<PASSWORD> \
   --header "Content-Type: application/json" \
   --data '[{"entity": "br-1905", "metric": "temperature", "data": [{ "d": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'", "v": '"$RANDOM_TEMPERATURE"' }]}]'; \
-sleep 5; \
+sleep 0.5; \
 done
 ```
 
-Refer to [API reference](../api/data/series/insert.md) and [examples](../api/data/series/README.md#additional-examples) for more information.
+Refer to [API reference](../api/data/series/insert.md) and [examples](../api/data/series/insert.md#additional-examples) for more information.
 
 ## CSV File
 
@@ -131,6 +131,6 @@ temperature = 32.5            -> metric (temperature) = 32.5
 
 Refresh the **Series Statistics** page to check that the values from the CSV file are present in the database.
 
-Refer to [CSV Parser](https://axibase.com/docs/atsd/parsers/csv/) documentation for more examples.
+Refer to [CSV Parser](../parsers/csv/README.md) documentation for more examples.
 
 Continue to [Part 3: Portals](getting-started-portal.md).
