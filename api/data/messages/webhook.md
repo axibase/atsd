@@ -188,7 +188,7 @@ These parameters set message fields to literal values.
 | `date` | Message date and time in ISO format. |
 | `message` | Message text. |
 | `severity` | Message severity specified as an integer or as a string constant. |
-| `datetimePattern` | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [date pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
+| `datetimePattern` | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [date pattern](../../../sql/time-pattern.md). |
 
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
 

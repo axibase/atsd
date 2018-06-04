@@ -16,7 +16,8 @@
 | w      | Week of week-based-year       | number             | 27                                             |
 | W      | Week of month                 | number             | 4                                              |
 | E      | Day of week                   | text               | Tue; Tuesday; T                                |
-| e/c    | Localized day of week         | number/text        | 2; 02; Tue; Tuesday; T                         |
+| e      | Localized day of week         | number/text        | 3; 03; Tue; Tuesday; T                         |
+| c      | Day of week                   | number/text        | 2                                              |
 | F      | Week of month                 | number             | 3                                              |
 | a      | AM-PM of day                  | text               | PM                                             |
 | h      | Clock hour of AM-PM (1-12)    | number             | 12                                             |
@@ -32,9 +33,11 @@
 | V      | Time-zone ID                  | zone-id            | America/Los_Angeles; Z; -08:30                 |
 | z      | Time-zone name                | zone-name          | Pacific Standard Time; PST                     |
 | O      | Localized zone-offset         | offset-O           | GMT+8; GMT+08:00; UTC-08:00;                   |
-| X      | Zone-offset 'Z' for zero      | offset-X           | Z; -08; -0830; -08:30; -083015; -08:30:15;     |
-| x      | Zone-offset                   | offset-x           | +0000; -08; -0830; -08:30; -083015; -08:30:15; |
-| Z      | Zone-offset                   | offset-Z           | +0000; -0800; -08:00;                          |
+| X      | Zone-offset 'Z' for zero      | offset-X           | Z; -08; -0830; -08:30; -083015; -08:30:15      |
+| x      | Zone-offset                   | offset-x           | +0000; -08; -0830; -08:30; -083015; -08:30:15  |
+| Z      | Zone-offset in RFC822 format  | offset-Z           | Z; +0100 (same as XX)                          |
+| ZZ     | Zone-offset in ISO8601 format | offset-Z           | Z; +01:00 (same as XXX)                        |
+| ZZZ    | Zone-id                       | text               | Europe/Berlin (same as VV)                     |
 | p      | Pad next                      | pad modifier       | 1                                              |
 | '      | Escape for text               | delimiter          |                                                |
 | ''     | Single quote                  | literal            | '                                              |
@@ -42,8 +45,8 @@
 | ]      | Optional section end          |                    |                                                |
 ```
 
-Note: localized day of week pattern (`e`/`c`) prints day number of week in US locale, i.e. starting with Sunday.
-To print day number of week starting from Monday, use the pattern `ccccc`.
+Note: localized day of week pattern (`e`) prints day number of week in US locale starting from Sunday.
+To print day number of week starting from Monday, use the `c` pattern.
 
 ## Examples
 
@@ -62,8 +65,6 @@ To print day number of week starting from Monday, use the pattern `ccccc`.
 | 'yyyy-MM-dd''T''HH:mm:ss.SSSXXX' | 2001-07-04T12:08:56.235-07:00        |
 | 'YYYY-''W''ww-ccccc'             | 2001-W27-3                           |
 ```
-
- > See Java [documentation](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html) for supported fields (pattern letters).
 
 ## Custom Formatting
 
