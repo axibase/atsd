@@ -15,8 +15,8 @@ Build a report displaying monthly exports and imports.
 
 ![](../images/join_inner.png)
 
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the column field
 * Drag-and-drop both `Value` onto the rows field
 * Optionally rename values: right click on `Value` and choose **Rename**

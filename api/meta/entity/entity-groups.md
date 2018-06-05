@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of entity groups to which the specified entity belongs.
+Retrieves a list of entity groups to which the specified entity belongs.
 
 ## Request
 

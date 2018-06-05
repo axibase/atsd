@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete property records that match specified filters.
+Deletes property records that match specified filters.
 
 ### Delete Markers
 
@@ -77,10 +77,10 @@ Assuming property records A,B,C, and D exist:
 | D      | type-1 | e-4    |       |       |
 ```
 
-Queries would delete the following record:
+The table below illustrates which records will be deleted (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
-| exactMatch | key                     | delete  |
+| exactMatch | key                     | result  |
 |------------|-------------------------|---------|
 | true       |                         | D       |
 | false      |                         | A;B;C;D |

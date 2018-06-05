@@ -229,7 +229,7 @@ Start HBase.
 
 The `/opt/atsd/bin/atsd-all.sh` script relies on the **[jps](https://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)** utility to determine that Java processes are started in the correct order.
 
-The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory in order to store temporary files. If permissions to this directory are missing when it is owned by root, `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
+The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory in order to store temporary files. If permissions to this directory are missing (e.g. it's owned by another user), `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
 
 If `jps` output is incomplete, the `atsd-all.sh` script aborts the startup procedure with the following message:
 

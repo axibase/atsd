@@ -69,7 +69,7 @@ Filter examples:
 * `custom.metric%` for metrics whose name starts with `custom.metric`
 * `%2017` for metrics whose name ends with `2017`
 
-Click on the `Explore` button to view the schema:
+Click **Explore** to view the schema:
 
 ![](./resources/database_explorer.png)
 

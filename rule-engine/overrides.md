@@ -85,7 +85,7 @@ If both `ERROR` and `WARNING` conditions are `true`, the `ERROR` level takes pre
 
 ![https://apps.axibase.com/chartlab/32fcae1a](./images/severity-over.png)
 
-If no override rule matches the window and the alert is then triggered by the default condition, it is assigned the severity specified on the 'Logging' tab.
+If no override rule matches the window and the alert is eventually triggered by the default condition, the alert is assigned the severity level specified on the 'Logging' tab.
 
 ![](./images/logging-severity.png)
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve properties and tags for the specified metric.
+Retrieves properties and tags for the specified metric.
 
 ## Request
 

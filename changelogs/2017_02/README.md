@@ -17,7 +17,7 @@
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|--------------------------------------------------|
-| [3755](#issue-3755) | docker          | Feature | Added [container size metrics](https://github.com/axibase/axibase-collector/blob/master/jobs/docker/volume-size.md#container-size-metrics) for Docker containers. |
+| [3755](#issue-3755) | docker          | Feature | Added [container size metrics](https://axibase.com/docs/axibase-collector/jobs/docker.html) for Docker containers. |
 | 3752 | docker          | Bug     | Fixed issues with mis-matched volume labels by removing old records from the embedded database. |
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly sent into ATSD. |
 | 3733 | docker          | Bug     | Eliminated table locks in the embedded database, which resulted in the collection of all statistics being stopped. |
@@ -126,7 +126,7 @@ Support was added for the text field (named `x`) in Data API methods for series 
 
 ### Issue 3755
 
-The following aggregate [metrics](https://github.com/axibase/axibase-collector/blob/master/jobs/docker/volume-size.md) for Docker container sizes were added:
+The following aggregate [metrics](https://axibase.com/docs/axibase-collector/jobs/docker/volume-size.html) for Docker container sizes were added:
 
 * `docker.fs.total.size.rw`: the total size of all the files for all containers, in bytes.
 * `docker.fs.total.size.rootfs` - the size of the files which have been created or changed for all containers.

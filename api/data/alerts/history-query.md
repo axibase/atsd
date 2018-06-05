@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of **closed** alerts matching specified fields.
+Retrieves a list of **closed** alerts matching specified fields.
 
 ## Request
 

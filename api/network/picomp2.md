@@ -2,7 +2,7 @@
 
 ## Description
 
-Upload archived data retrieved from the `picomp2` table using CSV format with a pre-defined column order.
+Accepts archived data retrieved from the `picomp2` table using CSV format with a pre-defined column order.
 
 The uploaded data is stored as a series. If the PI Point data type is `string`, `digital`, or `timestamp`, their values are stored in the `x:` text field.
 

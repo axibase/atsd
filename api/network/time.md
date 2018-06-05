@@ -2,7 +2,7 @@
 
 ## Description
 
-The server responds with current server time in milliseconds.
+Returns current server time in milliseconds.
 
 ## Syntax
 

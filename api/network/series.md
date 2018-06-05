@@ -2,7 +2,7 @@
 
 ## Description
 
-Use the `series` command to insert a timestamped value (number or text) into a specified time series, uniquely identified by a composite primary key consisting of an entity, metric, and optional `key=value` tag(s).
+Inserts a timestamped value (number or text) into a specified time series, uniquely identified by a composite primary key consisting of an entity, metric, and optional `key=value` tag(s).
 
 ## Syntax
 

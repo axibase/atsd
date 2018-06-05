@@ -27,7 +27,7 @@ Assuming the rule was created for the `pressure` metric, the above condition wil
 // returns true
 ```
 
-If the value of the `pressure` metric were less than `50` the condition would evaluate to `false`.
+If the value of the `pressure` metric is less than `50` the condition evaluates to `false`.
 
 ```ls
 series e:sensor01 m:pressure=3.5 m:temperature=33

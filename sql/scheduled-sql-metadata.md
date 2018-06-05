@@ -26,8 +26,7 @@ In addition, the metadata header contains a list of column names with their resp
 
 ### Metadata in CSV Format
 
-Since results produced by the task must be included in one file, it is not possible to incorporate metadata in JSON format into a CSV file.
-Instead, when enabled, metadata is included in the output file as part of the header with the hash symbol (`#`) used as a comment symbol.
+Metadata can be embedded in CSV files as part of the header using the hash symbol (`#`).
 
 ```txt
 #publisher,Axibase Time Series Database,https://atsd.axibase.com

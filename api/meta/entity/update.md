@@ -2,7 +2,7 @@
 
 ## Description
 
-Update fields and tags of the specified entity.
+Updates fields and tags of the specified entity.
 
 Unlike the [replace method](create-or-replace.md), fields and tags that are **not** specified in the request are left unchanged.
 

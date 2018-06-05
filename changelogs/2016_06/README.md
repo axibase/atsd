@@ -24,7 +24,7 @@
 | 3687 | UI          | Bug     | Corrected User Group link on the Admin menu. |
 | [3672](#issue-3672) | sql         | Feature | Added new details to query plan: start and end dates for each HBase scan and scans to atsd_li table. |
 | [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql/README.md#lookup) function to translate the key into a value using the specified replacement table. |
-| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case) expression. |
+| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case-expression) expression. |
 
 ## Collector
 
@@ -34,7 +34,7 @@
 | 3724 | core        | Feature     | Created a `docker-compose` file to launch `socrata-cdc` and the ATSD/Collector container bundle, used for computing [mortality statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md). |
 | 3723 | data-source | Bug     | Added missing Avatica package dependencies to the ATSD JDBC driver. |
 | 3722 | core        | Feature | Send `property` command with collector details to ATSD after a startup is completed. |
-| 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://github.com/axibase/axibase-collector/blob/master/job-autostart.md). |
+| 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://axibase.com/docs/axibase-collector/job-autostart.html). |
 | 3571 | admin       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
 
 ### Issue 3737
@@ -204,7 +204,7 @@ ORDER BY 1
 ### Issue 3694
 
 The query optimizer was modified to apply tag filter specified in `JOIN` queries on one of the tables to the remaining tables, since
-[JOINs](../../sql#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
+[JOINs](../../sql/README.md#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
 was applied only to those tables where the filter was set explicitly.
 
 ![Figure 2](./Images/Figure2.png)

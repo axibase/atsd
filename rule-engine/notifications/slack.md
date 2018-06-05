@@ -100,7 +100,7 @@ When sending messages to either a public or private channel you can just use the
 ## Configure Webhook in ATSD
 
 * Open **Alerts > Webhooks** page.
-* Click on an existing `SLACK` template, or click the **Create** button below and select the `SLACK` type.
+* Click on an existing `SLACK` template, or click **Create** below and select the `SLACK` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/slack_1.png)
@@ -169,7 +169,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
   [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
 ```
 
-* Save the rule by clicking on the **Save** button.
+* Save the rule by clicking **Save**.
 
   ![](./images/slack_7.png)
 

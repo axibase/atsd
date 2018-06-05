@@ -96,7 +96,7 @@ Review the following guides describing the basic syntax:
 
 The portals are listed on the **Portals** page located at `https://atsd_hostname:8443/portals/list`.
 
-To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
+To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click **Configure**.
 
 ![](./resources/creating-and-assigning-portals_3.png)
 

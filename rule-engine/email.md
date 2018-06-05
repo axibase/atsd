@@ -16,7 +16,7 @@ Open the `Email Notifications` tab in the rule editor.
 
 Set status to `Enabled` and enter one or multiple email addresses, separated by comma, semi-colon or whitespace.
 
-Click 'Enabled' for each trigger (`OPEN`, `REPEAT`, `CANCEL`) that you would like to be subscribed to.
+Click 'Enabled' to subscribe to notifications initiated by `OPEN`, `REPEAT`, and `CANCEL` triggers.
 
 ![](./images/email_config_all.png)
 

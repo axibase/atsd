@@ -38,7 +38,7 @@ HTML format is optimized for compatibility with common desktop and email clients
 * [sql-report.csv](examples/sql-report.csv)
 * [sql-report.json](examples/sql-report.json)
 * [sql-report.xlsx](examples/sql-report.xlsx)
-* [sql-report.html](examples/sql-report.html)
+* [sql-report.html](examples/sql-report.htm)
 
 ## Decimal Precision
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Add entities as members to the specified entity group.
+Adds entities as members to the specified entity group.
 
 > Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
 

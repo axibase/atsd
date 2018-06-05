@@ -2,25 +2,25 @@
 
 ## Description
 
-Submit data commands in Network API syntax over HTTP.
-
-Multiple commands can be submitted as a batch in one request, separated by a line feed character.
-
-Commands are parsed, validated and processed sequentially.
-
-In case of syntax errors or an out-of-range date in one of commands, the invalid command is discarded and processing continues.
-
-> Note that processing behavior is different from the Data Entry page which terminates processing on the first invalid or out-of-range command.
-
-The method returns a JSON object containing the counters of failed, successful, and total commands.
-
-Supported Network API commands:
+Accepts commands in [Network API](../../../api/network/README.md) syntax over HTTP.
 
 * [series](../../../api/network/series.md)
 * [property](../../../api/network/property.md)
 * [message](../../../api/network/message.md)
 * [metric](../../../api/network/metric.md)
 * [entity](../../../api/network/entity.md)
+
+The method returns a JSON object containing the counters of failed, successful, and total commands.
+
+Supported Network API commands:
+
+## Multiple Commands
+
+Multiple commands, separated by a line feed character, can be submitted in one request in which case the commands are parsed, validated and processed sequentially.
+
+In case of syntax errors or an out-of-range date in one of commands, the invalid command is discarded and processing continues.
+
+The processing behavior is different from the **Data Entry** page which terminates processing on the first invalid command.
 
 ## Request
 

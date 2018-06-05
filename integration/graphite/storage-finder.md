@@ -90,7 +90,7 @@ STORAGE_FINDERS = (
 
 ATSD Storage Finder Virtual only has one extra setting: `views`.
 
-Under `views`, use `type` to control which folders and the order you would like for them to appear in the graphite-web interface.
+Under `views`, use `type` to control which folders to display in the `graphite-web` interface.
 
 | Type | Description |
 | --- | --- |
@@ -269,7 +269,7 @@ If we want to make two different types of tokens at the same level, i.e. a leaf 
            {'delta'        : 'Delta'}]}
 ```
 
-Here is a list of aggregators. First we define an ATSD aggregator we want to use, and then can assign any name we would like to it.
+The list of aggregators is provided below. First we create a named ATSD aggregator.
 
 ![](./resources/10.png)
 

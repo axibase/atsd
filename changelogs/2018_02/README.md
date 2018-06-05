@@ -78,13 +78,13 @@ Issue| Category    | Type    | Subject
 
 Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
-5052 | [docker](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md) | Bug | `docker.fs.total.size.rw` sampling frequency irregularity.
+5052 | [docker](https://axibase.com/docs/axibase-collector/jobs/docker.html) | Bug | `docker.fs.total.size.rw` sampling frequency irregularity.
 5043 | core | Bug | Collector CPU is abnormally high.
-5035 | [jmx](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md) | Feature | Add "show password" button in configuration.
-5027 | [jmx](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md) | Feature | Ignore beans based on client-side expression (negation).
-5026 | [jmx](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md) | Feature | Execute the same configuration against multiple remote servers.
-5016 | [jmx](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md) | Feature | Change behavior of Series Tags field.
-4998 | [docker](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md) | Bug | Invalid CPU percentage value.
-4997 | admin | Support | Set `XmX` in [collector containers](https://github.com/axibase/axibase-collector/blob/master/installation-on-docker.md#installation-on-docker) launched with Docker job to 256 megabytes.
-4986 | [kafka](https://github.com/axibase/axibase-collector/blob/master/jobs/kafka.md) | Bug | Kafka consumer: delete not working.
-4978 | [jmx](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md) | Bug | Malformed commands.
+5035 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Feature | Add "show password" button in configuration.
+5027 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Feature | Ignore beans based on client-side expression (negation).
+5026 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Feature | Execute the same configuration against multiple remote servers.
+5016 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Feature | Change behavior of Series Tags field.
+4998 | [docker](https://axibase.com/docs/axibase-collector/jobs/docker.html) | Bug | Invalid CPU percentage value.
+4997 | admin | Support | Set `XmX` in [collector containers](https://axibase.com/docs/axibase-collector/installation-on-docker.html) launched with Docker job to 256 megabytes.
+4986 | [kafka](https://axibase.com/docs/axibase-collector/jobs/kafka.html) | Bug | Kafka consumer: delete not working.
+4978 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Bug | Malformed commands.

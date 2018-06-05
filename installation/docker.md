@@ -30,7 +30,7 @@ docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/ud
 
 The password is subject to the following [requirements](../administration/user-authentication.md#password-requirements). If the password contains special characters `$`, `&`, `#`, or `!`, escape them with backslash `\`.
 
-> For installation on Kubernetes refer to this [guide](https://github.com/axibase/axibase-collector/blob/master/installation-on-kubernetes.md).
+> For installation on Kubernetes refer to this [guide](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html).
 
 ## Check Installation
 
@@ -48,7 +48,7 @@ You should see an `ATSD start completed` message once the database is ready.
 [ATSD] ATSD start completed. Time: 2017-10-03 19-50-16.
 ```
 
-The ATSD user interface is accessible on port 8443/https.
+Web interface is accessible on port `8443` (https).
 
 ## Launch Parameters
 

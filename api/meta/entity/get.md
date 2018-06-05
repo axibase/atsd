@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve information about the specified entity including its tags.
+Retrieves fields and tags describing the specified entity.
 
 ## Request
 

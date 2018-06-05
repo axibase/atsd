@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns unique **series** tags values for the specified metric.
+Retrieves unique **series** tags values for the specified metric.
 
 ## Request
 

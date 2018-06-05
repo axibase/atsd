@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert a timestamped text message for a given entity and tags into the database.
+Inserts a timestamped text message for a given entity and tags into the database.
 
 ## Syntax
 
@@ -137,7 +137,7 @@ s.close();
 * `curl`
 
 ```bash
-curl https://nur.axibase.com:443/api/v1/command \
+curl https://atsd_hostname:8443/api/v1/command \
   --insecure --include --user usr:password \
   --header "Content-Type: text/plain" \
   --data-binary $'message e:server001 t:type=deploy m:"Hello World"'

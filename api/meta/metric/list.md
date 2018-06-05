@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of metrics matching the specified filters.
+Retrieves a list of metrics matching the specified filters.
 
 ## Request
 
