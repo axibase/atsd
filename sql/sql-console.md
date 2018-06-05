@@ -2,33 +2,23 @@
 
 ## Overview
 
-**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. Export results to `CSV`, `JSON`, or `XLSX` files or [reinsert](#store) them as a newly created series. Open **SQL Console** from the **SQL** menu by clicking **Console**.
+**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. Export the results to `CSV`, `JSON`, and Excel files or [reinsert](#store) the results as a newly created series. Open **SQL Console** from the **SQL** menu by clicking **Console**.
 
 ![](images/sql_console.png)
 
 **SQL Console** has three components:
 
-1. **Query Window**
+1. **Query** Window
 2. [Data Controls](#data-controls)
 3. [Action Controls](#action-controls)
 
-Enter queries in the **Query Window**.
+Enter queries in the **Query** window. **SQL Console** returns the results below the controls.
 
-```sql
-SELECT datetime, value
-  FROM "mpstat.cpu_busy"
-WHERE entity = 'nurswghbs001'
-  ORDER BY datetime DESC
-LIMIT 3
-```
-
-| datetime             | value |
-|----------------------|-------|
-| 2018-06-01T07:04:41Z | 0.83  |
-| 2018-06-01T07:04:25Z | 0.50  |
-| 2018-06-01T07:04:09Z | 0.17  |
+![](images/query-result1.png)
 
 ## Data Controls
+
+All Data Controls modify returned data without re-submitting a query. Change date formatting, timezone, decimal precision, theme, or null formatting on the fly for long-running queries without delay.
 
 ### Date Format / Time Zone
 
@@ -48,11 +38,11 @@ This table displays 16:30 on Tuesday, May 15, 2018, using each of the date forma
 `MMM-dd, EEEE` | `May-15, Tuesday` | `May-15, Tuesday`
 `Default` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`
 
-Server local time in this example is Eastern Standard Time (EST) but may be [configured](../administration/timezone.md).
+Server local time in this example is Eastern Standard Time (EST) but may be [configured](../administration/timezone.md) by an `ADMIN` user.
 
 ### Decimal Precision
 
-Modify decimal precision in results, `-1` includes all decimal values for a sample.
+Modify precision in results that consider decimal values, `-1` includes all decimal values for a sample. This feature does not affect data which does not consider decimal precision such as integer values or text columns.
 
 ![](images/decimal-precision.png)
 
@@ -69,7 +59,7 @@ Decimal Precision | `MAX(value)` | `COUNT(value)`
 `1` | 65.2 | 2279
 `2` | 65.20 | 2279
 
-[`MAX`](README.md#aggregation-functions) returns the largest data sample, and [`COUNT`](README.md#aggregation-functions) returns the number of samples for the defined period. Increase decimal precision up to `20` places beyond `0`.
+[`MAX`](README.md#aggregation-functions) function returns the decimal number of the largest data sample and [`COUNT`](README.md#aggregation-functions) function returns the integer number of samples for the defined period, thus the **Decimal Precision** setting does not affect the `COUNT(value)` column here. Increase decimal precision up to `20` places beyond `0`.
 
 ### Theme
 
@@ -99,65 +89,41 @@ SELECT NULL
 LIMIT 1
 ```
 
-#### `null`
+The following table shows each option applied to a null value:
 
-| NULL |
-|------|
-| null |
-
-#### `NULL`
-
-| NULL |
-|------|
-| NULL |
-
-#### `N/A`
-
-| NULL |
-|------|
-| N/A  |
-
-#### `-`
-
-| NULL |
-|------|
-|   -  |
-
-#### Empty space
-
-| NULL |
-|------|
-|      |
+Setting | NULL | null | N/A | Dash | Empty |
+:------:|:----:|:----:|:---:|:----:|:-----:|
+Value   |`NULL`|`null`|`N/A`|  `-` |       |
 
 ## Action Controls
 
 ### Execute
 
-Perform the query in the **Query Window**, the database returns results in a table below controls.
+Perform the query in the **Query** window, the database returns results in a table below the controls.
 
 ### Cancel
 
-Interrupt a long-running query, the database may take several seconds to gracefully stop a query.
+Interrupt a long-running query. The database may take several seconds to gracefully stop a query.
 
 ### Export
 
-Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XLSX` format. Click **Export** to open the **Export Query Results** window. Modify query (for example, by applying an [alias](README.md#aliases)), select download format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
+Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XLSX` format. Click **Export** to open the **Export Query Results** window. Modify the query (for example, apply an [alias](README.md#aliases)), select a download format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
 
 ![](images/export1.png)
 
 ### Store
 
-Reinsert results into the database and store them as new derived series. Execute the query and click **Store** to open the **Store Query Results as Series** window.
+Reinsert and store results in the database as a new derived series. Execute the query and click **Store** to open the **Store Query Results as Series** window.
 
 ![](images/store3.png)
 
-[**Check Last Time**](scheduled-sql-store.md#duplicates) switch verifies that timestamps exceed existing samples as a means of controlling how duplicate results are handled. [**Test**](scheduled-sql-store.md#validation) button validates results before inserting them into the database.
+[**Check Last Time**](scheduled-sql-store.md#duplicates) switch verifies that timestamps exceed existing samples as a means to discard duplicate samples. [**Test**](scheduled-sql-store.md#validation) button validates results before insertion into the database.
 
-Run a query [on a schedule](scheduled-sql.md), click **Schedule** to open a new [**Scheduled Queries**](#scheduled-queries) page for the current query.
+To run the current query [on a schedule](scheduled-sql.md), click **Schedule** to open a new [**Scheduled Queries**](#scheduled-queries) page.
 
 ### Query Plan
 
-Opens the **SQL Query Statistics** page for the current query. **SQL Query Statistics** displays general query information such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as more detailed information like **Results Bytes**, **RPC Calls** (between remote servers), and **Millis Between Next** (time between two samples in milliseconds).
+Opens the **SQL Query Statistics** page for the current query. **SQL Query Statistics** include general query information such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as more detailed information like **Results Bytes**, **RPC Calls** (between remote servers), and **Millis Between Next** (time between two samples in milliseconds).
 
 ![](images/query-plan.png)
 
