@@ -6,7 +6,6 @@
 | Symbol | Date or Time Component        | Presentation       | Examples                                       |
 |--------|-------------------------------|--------------------|------------------------------------------------|
 | G      | Era                           | text               | AD; Anno Domini; A                             |
-| u      | Year                          | year               | 2004; 04                                       |
 | y      | Year of era                   | year               | 2004; 04                                       |
 | D      | Day of year                   | number             | 189                                            |
 | M/L    | Month of year                 | number/text        | 7; 07; Jul; July; J                            |
@@ -16,8 +15,8 @@
 | w      | Week of week-based-year       | number             | 27                                             |
 | W      | Week of month                 | number             | 4                                              |
 | E      | Day of week                   | text               | Tue; Tuesday; T                                |
-| e      | Localized day of week         | number/text        | 3; 03; Tue; Tuesday; T                         |
-| c      | Day of week                   | number/text        | 2                                              |
+| e/c    | Localized day of week         | number/text        | 3; 03; Tue; Tuesday; T                         |
+| u      | Day of week                   | number/text        | 2                                              |
 | F      | Week of month                 | number             | 3                                              |
 | a      | AM-PM of day                  | text               | PM                                             |
 | h      | Clock hour of AM-PM (1-12)    | number             | 12                                             |
@@ -45,8 +44,8 @@
 | ]      | Optional section end          |                    |                                                |
 ```
 
-Note: localized day of week pattern (`e`) prints day number of week in US locale starting from Sunday.
-To print day number of week starting from Monday, use the `c` pattern.
+Note: localized day of week pattern (`e`/`c`) prints day number of week in US locale starting from Sunday.
+To print day number of week starting from Monday, use the `u` pattern.
 
 ## Examples
 
@@ -63,7 +62,7 @@ To print day number of week starting from Monday, use the `c` pattern.
 | 'yyMMddHHmmssZ'                  | 010704120856-0700                    |
 | 'yyyy-MM-dd''T''HH:mm:ss.SSSZ'   | 2001-07-04T12:08:56.235-0700         |
 | 'yyyy-MM-dd''T''HH:mm:ss.SSSXXX' | 2001-07-04T12:08:56.235-07:00        |
-| 'YYYY-''W''ww-c'                 | 2001-W27-3                           |
+| 'YYYY-''W''ww-u'                 | 2001-W27-3                           |
 ```
 
 ## Custom Formatting

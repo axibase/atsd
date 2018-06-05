@@ -118,7 +118,7 @@ Example:
 
 ```javascript
   /* Return formatted time string  "2018-01-09 15:23:40:000 Europe/Berlin" */
-  date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS VV", "Europe/Berlin")
+  date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```
 
 ## `formatInterval`
