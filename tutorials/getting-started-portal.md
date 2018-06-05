@@ -1,11 +1,11 @@
 # Getting Started: Portals
 
-## Create Portal
+## Create a Portal
 
-[Portal](../portals/README.md) is a collection of [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) displayed on one page.
-The portal can be `template` whereas it can display data for any entity of the given type (entity is often passed as parameter). The portal can also be `regular`, in which case the entity is defined in the configuration text. In this exercise we will create a **regular** portal for `br-1905` entity.
+A [portal](../portals/README.md) is a collection of [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) displayed on one page.
+The portal may be `template` whereby the portal displays data for any entity of the given type. The portal can also be `regular`, in which case the entity is defined in the configuration text by the user. This article creates a **regular** portal for `br-1905` entity.
 
-Click on **Portals** link in the top menu.
+Click the **Portals** link in the top menu.
 
 Click **Create**.
 
@@ -71,13 +71,13 @@ Reload the portal to view the new chart.
 
 Start the [bash loop](./getting-started-insert.md#send-values-continuously) and observe how new data points appear in the portal.
 
-Review the [syntax](../portals/selecting-series.md) used to select series and the [chart reference](https://axibase.com/products/axibase-time-series-database/visualization/) for more layout examples.
+Review the [syntax](../portals/selecting-series.md) used to select series and the [Chart Documentation](https://axibase.com/products/axibase-time-series-database/visualization/) for more layout examples.
 
 ## Metadata
 
-The chart syntax provides readily available settings and functions to add metadata to charts to eliminate manual coding.
+Charts syntax are readily available settings and functions to add metadata to charts and eliminate manual coding.
 
-Add the following settings at `[configuration]` section to incorporate metadata into series legend.
+Add the following settings at the `[configuration]` level to incorporate metadata into series legend.
 
 ```ls
   legend-position = top

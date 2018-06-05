@@ -23,7 +23,7 @@ The query returns the five most recent values for the `temperature` series.
 
 ![](./resources/sql-console-1.png)
 
-You can export query results into CSV, Excel, and JSON by clicking **Export**.
+You can export query results into `CSV`, Excel, and `JSON` by clicking **Export**.
 
 Modify the query to include [metadata](../sql/README.md#columns) fields, tags, and to [format](../sql/README.md#date_format) the date:
 

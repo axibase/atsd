@@ -40,7 +40,7 @@ Reload the **Alerts > Open Alerts** page to verify that the alert for `temperatu
 
 ## Email Alerts
 
-To receive alert notifications via email, configure the [mail client](../administration/mail-client.md) on the **Settings > Mail Client** page.
+To receive alert notifications via email, configure the [Mail Client](../administration/mail-client.md) on the **Settings > Mail Client** page.
 
 Open the rule editor and enable [alerts](../rule-engine/email.md) on the **Email Notifications** tab as illustrated below.
 
@@ -48,7 +48,7 @@ Open the rule editor and enable [alerts](../rule-engine/email.md) on the **Email
 
 ![](./resources/alert-email.png)
 
-Save the rule and insert high value samples on the **Data Entry** page again. You should receive the following message when the threshold is exceeded.
+Save the rule and insert high-value samples on the **Data Entry** page again. You should receive the following message when the threshold is exceeded:
 
 ![](./resources/alert-email-msg.png)
 
