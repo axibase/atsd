@@ -72,8 +72,6 @@ ORDER BY datetime DESC
 | BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:00  | 30.0  |
 ```
 
-![](./resources/getting-started-5_3.png)
-
 Review the [SQL syntax](../sql/README.md) and experiment by executing your own queries based on available [examples](../sql/examples/README.md).
 
 Continue to [Part 6: Alerting](getting-started-alert.md).

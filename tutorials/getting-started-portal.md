@@ -2,15 +2,16 @@
 
 ## Create Portal
 
-[Portal](../portals/README.md) is a collection of [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) displayed on one page. 
-
-The portal can be `generic` whereas it can display data for any entity of the given type (entity is often passed as parameter). The portal can also be `regular`, in which case the entity is defined in the configuration text. In this exercise we will create a **regular** portal for `br-1905` entity.
+[Portal](../portals/README.md) is a collection of [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) displayed on one page.
+The portal can be `template` whereas it can display data for any entity of the given type (entity is often passed as parameter). The portal can also be `regular`, in which case the entity is defined in the configuration text. In this exercise we will create a **regular** portal for `br-1905` entity.
 
 Click on **Portals** link in the top menu.
 
 Click **Create**.
 
-![](./resources/getting-started-2_1.png)
+![](./resources/getting-started-portal_1.png)
+
+Specify a portal name.
 
 Set portal to **Regular** in the **Type** drop-down.
 
@@ -40,13 +41,11 @@ Copy the following configuration text into the **Content** area.
       metric = temperature
 ```
 
-Specify a portal name.
+The above portal contains two widgets: a 24-hour linear [time chart](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) and a [gauge](https://axibase.com/products/axibase-time-series-database/visualization/widgets/gauge-chart/) showing the last value.
 
 Click **Save**.
 
 ![](./resources/portal-edit.png)
-
-The above portal contains two widgets: a 24-hour linear time chart and a gauge showing the last value.
 
 To view the portal, click **View By Name**.
 
@@ -78,7 +77,7 @@ Review the [syntax](../portals/selecting-series.md) used to select series and th
 
 The chart syntax provides readily available settings and functions to add metadata to charts to eliminate manual coding.
 
-Add the following settings to incorporate metadata into series legend.
+Add the following settings at `[configuration]` section to incorporate metadata into series legend.
 
 ```ls
   legend-position = top
