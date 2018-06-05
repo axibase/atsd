@@ -60,7 +60,7 @@ Open the rule editor and enable alerts on the **Web Notifications** tab as illus
 
 ![](./resources/alert-slack.png)
 
-Save the rule and insert commands on the **Data Entry** page again. You should receive the following message in Slack when the average is greater than `50` for three samples samples.
+Save the rule and insert commands on the **Data Entry** page again. You should receive the following message in Slack when the average is greater than `50` for the last three samples.
 
 ![](./resources/alert-slack-msg.png)
 
