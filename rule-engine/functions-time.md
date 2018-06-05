@@ -171,12 +171,12 @@ Examples:
 
 ```javascript
     /* Uses the offset specified in the datetime string to construct a DateTime object. */
-    date_parse("31.01.2017 12:36:03:283 -08:00", "dd.MM.yyyy HH:mm:ss:SSS XXX")
+    date_parse("31.01.2017 12:36:03:283 -08:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ")
 ```
 
 ```javascript
     /* Uses the time zone specified in the datetime string to construct a DateTime object. */
-    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS VV")
+    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ")
 ```
 
 ```javascript
@@ -192,11 +192,11 @@ Examples:
 ```javascript
     /* If the time zone (offset) is specified in the datetime string,
     it should be exactly the same as provided by the third argument. */
-    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS VV", "Europe/Berlin")
+    date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```
 
 ```javascript
     /* These expressions lead to exceptions. */
-    date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS XXX", "Europe/Berlin")
-    date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS VV", "Europe/Berlin")
+    date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ", "Europe/Berlin")
+    date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```

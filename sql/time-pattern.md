@@ -55,7 +55,7 @@ To print day number of week starting from Monday, use the `c` pattern.
 |----------------------------------|--------------------------------------|
 | 'yyyy.MM.dd G ''at'' HH:mm:ss z' | 2001.07.04 AD at 12:08:56 PDT        |
 | 'EEE, MMM d, ''''yy'             | Wed, Jul 4, '01                      |
-| 'hh:mm a'                        | 12:08 PM                             |
+| 'h:mm a'                         | 12:08 PM                             |
 | 'hh ''o''''clock'' a, zzzz'      | 12 o'clock PM, Pacific Daylight Time |
 | 'K:mm a, z'                      | 0:08 PM, PDT                         |
 | 'yyyyy.MMMM.dd GGG hh:mm a'      | 02001.July.04 AD 12:08 PM            |
@@ -63,7 +63,7 @@ To print day number of week starting from Monday, use the `c` pattern.
 | 'yyMMddHHmmssZ'                  | 010704120856-0700                    |
 | 'yyyy-MM-dd''T''HH:mm:ss.SSSZ'   | 2001-07-04T12:08:56.235-0700         |
 | 'yyyy-MM-dd''T''HH:mm:ss.SSSXXX' | 2001-07-04T12:08:56.235-07:00        |
-| 'YYYY-''W''ww-ccccc'             | 2001-W27-3                           |
+| 'YYYY-''W''ww-c'                 | 2001-W27-3                           |
 ```
 
 ## Custom Formatting
