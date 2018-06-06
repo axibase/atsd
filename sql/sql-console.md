@@ -9,25 +9,26 @@
 **SQL Console** has three components:
 
 1. **Query** Window
-2. [Data Controls](#data-controls)
+2. [Format Settings](#format-settings)
 3. [Action Controls](#action-controls)
 
-Enter queries in the **Query** window. **SQL Console** returns the results below the controls.
+Enter queries in the **Query** window to view the results under the controls.
 
 ![](images/query-result1.png)
 
-## Data Controls
+## Format Settings
 
-All Data Controls modify returned data without re-submitting a query. Change date formatting, timezone, decimal precision, theme, or null formatting on the fly for long-running queries without delay.
+Format Settings apply custom formatting to the dates, numbers, and `NULL` values. Changes apply instantly to the currently displayed records _without_ re-submitting a query.
 
 ### Date Format / Time Zone
 
-Use **Date Format** drop-down list to modify the `datetime` column without the [`date_format`](examples/datetime-format.md) function. Use **Time Zone** drop-down list to select UTC or server local time.
+Use **Date Format** drop-down list to modify the `datetime` column without including the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression. Use **Time Zone** drop-down list to display dates in the `UTC` or database [time zone](../administration/timezone.md).
 
-This table displays 16:30 on Tuesday, May 15, 2018, using each of the date formatting options:
+The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed with each of the date formatting options when the database is configured in the Eastern Standard Time (EST):
 
-**Date Format** | **UTC** | **Server Local Time**
+**Date Format** | **Timezone: UTC** | **Timezone: Local**
 ---|---|---
+`Default` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`
 `yyyy-MM-ddT HH:mm:ss.SSSZ` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`
 `yyyy-MM-ddT HH:mm:ssZ` | `2018-05-15T16:30:00Z` | `2018-05-15T12:30:00Z`
 `yyyy-MM-ddT HH:mm:ss.SSS` | `2018-05-15 16:30:00.000` | `2018-05-15 12:30:00.000`
@@ -36,34 +37,35 @@ This table displays 16:30 on Tuesday, May 15, 2018, using each of the date forma
 `MMM-dd` | `May-15` | `May-15`
 `MMM-dd, E` | `May-15, Tue` | `May-15, Tue`
 `MMM-dd, EEEE` | `May-15, Tuesday` | `May-15, Tuesday`
-`Default` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`
 
-Server local time in this example is Eastern Standard Time (EST) but may be [configured](../administration/timezone.md) by an `ADMIN` user.
+> The database time zone can be [configured](../administration/timezone.md) by an administrator.
 
 ### Decimal Precision
 
-Modify precision in results that consider decimal values, `-1` includes all decimal values for a sample. This feature does not affect data which does not consider decimal precision such as integer values or text columns.
+This setting rounds numeric values to the specified number of decimal places. It applies to columns of decimal data types: `float`, `double`, and `decimal`. When enabled, the setting is highlighted in light blue.
+
+To disable rounding, revert the setting to `-1`.
 
 ![](images/decimal-precision.png)
 
 ```sql
-SELECT max(value), count(value)
+SELECT MAX(value) AS mx, '123.456' AS num, COUNT(value) AS ct
   FROM mpstat.cpu_busy WHERE datetime > current_day
 LIMIT 1
 ```
 
-Decimal Precision | `MAX(value)` | `COUNT(value)`
----|---|---
-`-1` | 65.2 | 2279
-`0` | 65 | 2279
-`1` | 65.2 | 2279
-`2` | 65.20 | 2279
+Decimal Precision | `mx` | `num` | `ct`
+---:|---:|---:|---:
+`-1` | 65.2 | 123.456 | 2279
+`0` | 65 | 123.456 | 2279
+`1` | 65.2 | 123.456 | 2279
+`2` | 65.20 | 123.456 | 2279
 
-[`MAX`](README.md#aggregation-functions) function returns the decimal number of the largest data sample and [`COUNT`](README.md#aggregation-functions) function returns the integer number of samples for the defined period, thus the **Decimal Precision** setting does not affect the `COUNT(value)` column here. Increase decimal precision up to `20` places beyond `0`.
+In the above example, the rounding applies only to the `mx` column because the `num` column contains string literals, and the `ct` column returns integer values calculated by the [`COUNT`](README.md#aggregation-functions) function.
 
 ### Theme
 
-Select color scheme for query text; [reserved words](README.md#reserved-words), [literals](README.md#literals), and [syntax](README.md#syntax) are affected.
+Select color scheme to apply to [reserved words](README.md#reserved-words) and [literal](README.md#literals) values in the query text.
 
 ![](images/theme.png)
 
@@ -79,9 +81,9 @@ Select color scheme for query text; [reserved words](README.md#reserved-words), 
 
 ![](images/violet.png)
 
-### Null Format
+### NULL Format
 
-Change the way SQL Console displays [null](README.md#null) values.
+Change the way SQL Console displays literal [`NULL`](README.md#null) values.
 
 ```sql
 SELECT NULL
@@ -89,7 +91,7 @@ SELECT NULL
 LIMIT 1
 ```
 
-The following table shows each option applied to a null value:
+The following table shows each option applied to a `NULL` value:
 
 Setting | NULL | null | N/A | Dash | Empty |
 :------:|:----:|:----:|:---:|:----:|:-----:|
@@ -99,11 +101,11 @@ Value   |`NULL`|`null`|`N/A`|  `-` |       |
 
 ### Execute
 
-Perform the query in the **Query** window, the database returns results in a table below the controls.
+Perform the query in the **Query** window to view results in a tabular format below the controls.
 
 ### Cancel
 
-Interrupt a long-running query. The database may take several seconds to gracefully stop a query.
+Interrupt a running query. The database may take several seconds to gracefully stop a query.
 
 ### Export
 
@@ -113,18 +115,20 @@ Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XL
 
 ### Store
 
-Reinsert and store results in the database as a new derived series. Execute the query and click **Store** to open the **Store Query Results as Series** window.
+Store results in the database as a new derived series. Execute the query and click **Store** to open the **Store Query Results as Series** window.
 
 ![](images/store3.png)
 
-[**Check Last Time**](scheduled-sql-store.md#duplicates) switch verifies that timestamps exceed existing samples as a means to discard duplicate samples. [**Test**](scheduled-sql-store.md#validation) button validates results before insertion into the database.
+[**Check Last Time**](scheduled-sql-store.md#duplicates) switch discards samples with timestamps earlier than the last insert date for the given series.
 
-To run the current query [on a schedule](scheduled-sql.md), click **Schedule** to open a new [**Scheduled Queries**](#scheduled-queries) page.
+[**Test**](scheduled-sql-store.md#validation) button validates results before insertion into the database.
+
+To run the current query [on a schedule](scheduled-sql.md), click **Schedule** to create a [**Scheduled Query**](#scheduled-queries).
 
 ### Query Plan
 
-Opens the **SQL Query Statistics** page for the current query. **SQL Query Statistics** include general query information such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as more detailed information like **Results Bytes**, **RPC Calls** (between remote servers), and **Millis Between Next** (time between two samples in milliseconds).
+Opens the **SQL Query Plan** page for the current query.
+
+The plan includes query summary such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as detailed information like the number of bytes transferred and records retrieved from storage.
 
 ![](images/query-plan.png)
-
-The bottom row of buttons may be used to return to the **SQL Console** or navigate to the general **Query Statistics** page.
