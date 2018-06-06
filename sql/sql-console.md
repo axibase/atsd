@@ -2,7 +2,9 @@
 
 ## Overview
 
-**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. Export these results to `CSV`, `JSON`, and Excel files or [reinsert](#store) the results as a newly-created series. Open **SQL Console** from the **SQL** menu by clicking **Console**.
+**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported to `CSV`, `JSON`, and Excel files or [reinserted](#store) as a derived series. 
+
+Open the console by clicking **Console** in the main **SQL** menu.
 
 ![](images/sql_console.png)
 
@@ -12,7 +14,7 @@
 2. [Format Settings](#format-settings)
 3. [Action Controls](#action-controls)
 
-Enter queries in the **Query** window and view the results under the controls.
+Enter queries in the **Query** window and view the results below.
 
 ![](images/query-result1.png)
 
@@ -22,9 +24,9 @@ Format Settings apply custom formatting to dates, numbers, and `NULL` values. Ch
 
 ### Date Format / Time Zone
 
-Use **Date Format** drop-down list to modify the `datetime` column without including the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression. Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
+Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression. Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
 
-The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed with each of the date formatting options when the database is configured to Eastern Standard Time (EST):
+The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed when the database is configured to Eastern Standard Time (EST):
 
 **Date Format** | **Timezone: UTC** | **Timezone: Local**
 ---|---|---
@@ -42,9 +44,11 @@ The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed w
 
 ### Decimal Precision
 
-This setting rounds numeric values to the specified number of decimal places. Decimal precision applies to columns of decimal data types: `float`, `double`, and `decimal`. When enabled, **SQL Console** highlights the setting in light blue.
+This setting rounds numeric values to the specified number of decimal places. Decimal precision applies to columns of decimal data types: `float`, `double`, and `decimal`.
 
-To disable rounding, revert the setting to `-1`.
+To disable rounding, revert the setting to `-1` which is the default value.
+
+When set to a non-defult value, the console highlights the setting in light blue.
 
 ![](images/decimal-precision.png)
 
@@ -115,52 +119,26 @@ Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XL
 
 ### Store
 
-Store results in the database as a new derived series. Execute the query and click **Store** to open the **Store Query Results as Series** window.
+Store results in the database as a new derived series. The query results are eligible for re-insertion if the `SELECT` expression contains the [required columns](scheduled-sql-store.md#required-columns).
+
+Execute the query and click **Store** to open the **Store Query Results as Series** window.
 
 ![](images/query_store.png)
 
-The **Store Query Results as Series** window displays the most recent data samples from the query.
+The dialog window provides several tools to configure insertion:
 
-![](images/store_query.png)
+* [**Check Last Time**](scheduled-sql-store.md#duplicates): if enabled, ignores rows with timestamps earlier than the last insert date for the derived series.
 
-There are several tools to configure insertion:
+* [**Test**](scheduled-sql-store.md#validation): validates the first ten rows returned by the query without storing results and returns an error message if the results cannot be stored.
 
-* [**Check Last Time**](scheduled-sql-store.md#duplicates): discard samples with timestamps earlier than the last insert date for the given series.
+* **Store**: inserts valid commands into the database.
 
-* [**Test**](scheduled-sql-store.md#validation): validate query results. To insert a query into the database, include at least the following parameters in the [`SELECT`](README.md#select-expression) expression:
-
-  * `datetime`
-  * `entity`
-  * `value`
-  * [`FROM`](README.md#syntax) query to define the metric.
-
-  The database creates the following series commands from the above query:
-
-  ```sh
-  series e:nurswghbs001 d:2018-06-06T00:00:13.000Z m:value=9.69
-  series e:nurswghbs001 d:2018-06-06T00:00:29.000Z m:value=8.69
-  series e:nurswghbs001 d:2018-06-06T00:00:45.000Z m:value=11.86
-  series e:nurswghbs001 d:2018-06-06T00:01:01.000Z m:value=13.89
-  series e:nurswghbs001 d:2018-06-06T00:01:17.000Z m:value=12.7
-  series e:nurswghbs001 d:2018-06-06T00:01:33.000Z m:value=11.29
-  series e:nurswghbs001 d:2018-06-06T00:01:49.000Z m:value=0.42
-  series e:nurswghbs001 d:2018-06-06T00:02:05.000Z m:value=1.59
-  series e:nurswghbs001 d:2018-06-06T00:02:21.000Z m:value=1.42
-  series e:nurswghbs001 d:2018-06-06T00:02:37.000Z m:value=8.08
-  ```
-
-  The database tests the first ten results for validity. The presence of invalid data results in a brief explanation of why the data is invalid, as seen below:
-
-  ![](images/entity-missing.png)
-
-* **Store**: insert valid commands into the database. The database warns if there are invalid commands in the results and does not insert the series.
-
-* **Schedule**: run the current query [on a schedule](scheduled-sql.md).
+* **Schedule**: creates a [scheduled query](scheduled-sql.md) with the 'Store' option set to `enabled` based on the current query.
 
 ### Query Plan
 
 Opens the **SQL Query Plan** page for the current query.
 
-The plan includes query summary such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as detailed information like the number of bytes transferred and records retrieved from storage.
+The plan includes query summary such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as detailed information such as the number of bytes transferred and records retrieved from storage.
 
 ![](images/query-plan.png)
