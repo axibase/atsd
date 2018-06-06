@@ -2,7 +2,7 @@
 
 ## Overview
 
-**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. Export the results to `CSV`, `JSON`, and Excel files or [reinsert](#store) the results as a newly created series. Open **SQL Console** from the **SQL** menu by clicking **Console**.
+**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. Export these results to `CSV`, `JSON`, and Excel files or [reinsert](#store) the results as a newly-created series. Open **SQL Console** from the **SQL** menu by clicking **Console**.
 
 ![](images/sql_console.png)
 
@@ -12,19 +12,19 @@
 2. [Format Settings](#format-settings)
 3. [Action Controls](#action-controls)
 
-Enter queries in the **Query** window to view the results under the controls.
+Enter queries in the **Query** window and view the results under the controls.
 
 ![](images/query-result1.png)
 
 ## Format Settings
 
-Format Settings apply custom formatting to the dates, numbers, and `NULL` values. Changes apply instantly to the currently displayed records _without_ re-submitting a query.
+Format Settings apply custom formatting to dates, numbers, and `NULL` values. Changes apply instantly to the currently-displayed records **without** re-submitting a query.
 
 ### Date Format / Time Zone
 
-Use **Date Format** drop-down list to modify the `datetime` column without including the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression. Use **Time Zone** drop-down list to display dates in the `UTC` or database [time zone](../administration/timezone.md).
+Use **Date Format** drop-down list to modify the `datetime` column without including the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression. Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
 
-The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed with each of the date formatting options when the database is configured in the Eastern Standard Time (EST):
+The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed with each of the date formatting options when the database is configured to Eastern Standard Time (EST):
 
 **Date Format** | **Timezone: UTC** | **Timezone: Local**
 ---|---|---
@@ -42,7 +42,7 @@ The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed w
 
 ### Decimal Precision
 
-This setting rounds numeric values to the specified number of decimal places. It applies to columns of decimal data types: `float`, `double`, and `decimal`. When enabled, the setting is highlighted in light blue.
+This setting rounds numeric values to the specified number of decimal places. Decimal precision applies to columns of decimal data types: `float`, `double`, and `decimal`. When enabled, **SQL Console** highlights the setting in light blue.
 
 To disable rounding, revert the setting to `-1`.
 
@@ -61,11 +61,11 @@ Decimal Precision | `mx` | `num` | `ct`
 `1` | 65.2 | 123.456 | 2279
 `2` | 65.20 | 123.456 | 2279
 
-In the above example, the rounding applies only to the `mx` column because the `num` column contains string literals, and the `ct` column returns integer values calculated by the [`COUNT`](README.md#aggregation-functions) function.
+In the above example, rounding applies only to the `mx` column because the `num` column contains string literals, and the `ct` column returns integer values calculated by the [`COUNT`](README.md#aggregation-functions) function.
 
 ### Theme
 
-Select color scheme to apply to [reserved words](README.md#reserved-words) and [literal](README.md#literals) values in the query text.
+Select a color scheme to apply to [reserved words](README.md#reserved-words) and [literal](README.md#literals) values in the query text.
 
 ![](images/theme.png)
 
@@ -83,7 +83,7 @@ Select color scheme to apply to [reserved words](README.md#reserved-words) and [
 
 ### NULL Format
 
-Change the way SQL Console displays literal [`NULL`](README.md#null) values.
+Change the way **SQL Console** displays literal [`NULL`](README.md#null) values.
 
 ```sql
 SELECT NULL
@@ -101,7 +101,7 @@ Value   |`NULL`|`null`|`N/A`|  `-` |       |
 
 ### Execute
 
-Perform the query in the **Query** window to view results in a tabular format below the controls.
+Perform the query in the **Query** window and view results in a tabular format below the controls.
 
 ### Cancel
 
@@ -117,13 +117,45 @@ Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XL
 
 Store results in the database as a new derived series. Execute the query and click **Store** to open the **Store Query Results as Series** window.
 
-![](images/store3.png)
+![](images/query_store.png)
 
-[**Check Last Time**](scheduled-sql-store.md#duplicates) switch discards samples with timestamps earlier than the last insert date for the given series.
+The **Store Query Results as Series** window displays the most recent data samples from the query.
 
-[**Test**](scheduled-sql-store.md#validation) button validates results before insertion into the database.
+![](images/store_query.png)
 
-To run the current query [on a schedule](scheduled-sql.md), click **Schedule** to create a [**Scheduled Query**](#scheduled-queries).
+There are several tools to configure insertion:
+
+* [**Check Last Time**](scheduled-sql-store.md#duplicates): discard samples with timestamps earlier than the last insert date for the given series.
+
+* [**Test**](scheduled-sql-store.md#validation): validate query results. To insert a query into the database, include at least the following parameters in the [`SELECT`](README.md#select-expression) expression:
+
+  * `datetime`
+  * `entity`
+  * `value`
+  * [`FROM`](README.md#syntax) query to define the metric.
+
+  The database creates the following series commands from the above query:
+
+  ```sh
+  series e:nurswghbs001 d:2018-06-06T00:00:13.000Z m:value=9.69
+  series e:nurswghbs001 d:2018-06-06T00:00:29.000Z m:value=8.69
+  series e:nurswghbs001 d:2018-06-06T00:00:45.000Z m:value=11.86
+  series e:nurswghbs001 d:2018-06-06T00:01:01.000Z m:value=13.89
+  series e:nurswghbs001 d:2018-06-06T00:01:17.000Z m:value=12.7
+  series e:nurswghbs001 d:2018-06-06T00:01:33.000Z m:value=11.29
+  series e:nurswghbs001 d:2018-06-06T00:01:49.000Z m:value=0.42
+  series e:nurswghbs001 d:2018-06-06T00:02:05.000Z m:value=1.59
+  series e:nurswghbs001 d:2018-06-06T00:02:21.000Z m:value=1.42
+  series e:nurswghbs001 d:2018-06-06T00:02:37.000Z m:value=8.08
+  ```
+
+  The database tests the first ten results for validity. The presence of invalid data results in a brief explanation of why the data is invalid, as seen below:
+
+  ![](images/entity-missing.png)
+
+* **Store**: insert valid commands into the database. The database warns if there are invalid commands in the results and does not insert the series.
+
+* **Schedule**: run the current query [on a schedule](scheduled-sql.md).
 
 ### Query Plan
 
