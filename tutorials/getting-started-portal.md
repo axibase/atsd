@@ -71,13 +71,13 @@ Reload the portal to view the new chart.
 
 Start the [bash loop](./getting-started-insert.md#send-values-continuously) and observe how new data points appear in the portal.
 
-Review the [syntax](../portals/selecting-series.md) used to select series and the [Chart Documentation](https://axibase.com/products/axibase-time-series-database/visualization/) for more layout examples.
+Review the [Selecting Series Overview](../portals/selecting-series.md) and the [Charts Reference](https://axibase.com/products/axibase-time-series-database/visualization/) for more layout examples.
 
 ## Metadata
 
-Charts syntax are readily available settings and functions to add metadata to charts and eliminate manual coding.
+The Charts library provides settings and functions to [add metadata](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/) to charts in order to eliminate manual tagging and labeling.
 
-Add the following settings at the `[configuration]` level to incorporate metadata into series legend.
+Add the following settings at the `[configuration]` level to automatically embded entity and metric metadata into series legend.
 
 ```ls
   legend-position = top
