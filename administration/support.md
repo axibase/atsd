@@ -6,7 +6,7 @@ Use the below reference to attach relevant artifacts to your ticket. Skip sectio
 
 ## 1. Database and Operating System Information
 
-2. **Settings > Server Properties** page: Click **Export Configuration** and download the `configuration-export.json` file.
+1. **Settings > Server Properties** page: Click **Export Configuration** and download the `configuration-export.json` file.
 
 ## 2. Log Files
 
