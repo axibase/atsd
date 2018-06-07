@@ -2,7 +2,7 @@
 
 ## Overview
 
-**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported to `CSV`, `JSON`, and Excel files or [reinserted](#store) as a derived series.
+**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported to CSV, JSON, and Excel files or [reinserted](#store) as a derived series.
 
 Open the console by clicking **Console** in the main **SQL** menu.
 
@@ -14,21 +14,21 @@ Open the console by clicking **Console** in the main **SQL** menu.
 
 ![](images/sql_console.png)
 
-Enter `SELECT` queries in the **Query** window and view the results below.
+Enter [`SELECT`](README.md#select-expression) queries in the **Query** window and view the results below.
 
 ![](images/query-result1.png)
 
 ## Format Settings
 
-Format Settings apply custom formatting to dates, numbers, and `NULL` values. Changes apply instantly to the currently-displayed records **without** re-submitting a query.
+Format Settings apply custom formatting to dates, numbers, and [`NULL`](README.md#null) values. Changes apply instantly to the currently-displayed records **without** re-submitting a query.
 
 ### Date Format / Time Zone
 
-Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression.
+Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function to the `SELECT` expression.
 
 Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
 
-The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed when the database is configured to Eastern Standard Time (EST):
+The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed by **SQL Console** when the database is configured to Eastern Standard Time (EST):
 
 **Date Format** | **Timezone: UTC** | **Timezone: Local**
 ---|---|---
@@ -65,7 +65,7 @@ Decimal Precision | `mx` | `num` | `ct`
 `1` | 65.2 | 123.456 | 2279
 `2` | 65.20 | 123.456 | 2279
 
-In the above example, rounding applies only to the `mx` column which contains decimal values. The `num` and `ct` columns are not rounded because they contain string literals and integer values calculated by the [`COUNT`](README.md#aggregation-functions) function respectively.
+In the above example, rounding applies only to the `mx` column which contains decimal values. The `num` and `ct` columns are not rounded because they contain string literals and integer values calculated by the [`COUNT`](README.md#aggregation-functions) function, respectively.
 
 ### Theme
 
@@ -105,9 +105,9 @@ Interrupt a running query. The database may take several seconds to gracefully s
 
 ### Export
 
-Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XLSX` format.
+Download the results of a query in CSV, JSON (objects), JSON (row), or XLSX format.
 
-Click **Export** to open the **Export Query Results** dialog. Modify the query (for example, remove `LIMIT`), select a file format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
+Click **Export** to open the **Export Query Results** dialog. Modify the query (for example, remove [`LIMIT`](README.md#limiting)), select a file format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
 
 ![](images/export1.png)
 
@@ -127,9 +127,9 @@ The dialog window provides several tools to configure insertion:
 
 * **Store**: inserts valid commands into the database.
 
-* **Schedule**: creates a [scheduled query](scheduled-sql.md) with the **Store** option set to `enabled` based on the current query.
+* **Schedule**: creates a [scheduled query](scheduled-sql.md) with the **Store** option set to **Enabled** based on the current query.
 
-Refer to [Scheduled Store documentation](scheduled-sql-store.md) for more details.
+> Refer to [Scheduled Store documentation](scheduled-sql-store.md) for more details.
 
 ### Query Plan
 
