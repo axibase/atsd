@@ -2,7 +2,34 @@
 
 ## Description
 
-Retrieves time series objects for the specified metric, entity, tag, and interval filters.
+Retrieves time series objects for the specified metric, entity, tag, and date interval filters.
+
+## Quick Start
+
+Basic query:
+
+```json
+[{
+  "metric":    "mpstat.cpu_busy",
+  "entity":    "nurswgvml007",
+  "startDate": "2018-05-20T00:00:00Z",
+  "endDate":   "2018-05-20T01:00:00Z"
+}]
+```
+
+Query response:
+
+```json
+[{
+  "metric":    "mpstat.cpu_busy",
+  "entity":    "nurswgvml007",
+  "data": [
+    {"d":"2018-05-20T00:01:30Z", "v":24.2},
+    {"d":"2018-05-20T00:03:15Z", "v":39.8},
+    {"d":"2018-05-20T00:05:00Z", "v":39.1}
+  ]
+}]
+```
 
 ## Request
 
@@ -171,8 +198,8 @@ POST /api/v1/series/query
 [{
   "startDate": "2017-09-14T17:00:00Z",
   "endDate":   "2017-09-14T18:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "mpstat.cpu_busy"
+  "entity":    "nurswgvml007",
+  "metric":    "mpstat.cpu_busy"
 }]
 ```
 
@@ -195,7 +222,7 @@ POST /api/v1/series/query
 }]
 ```
 
-## `curl` Example
+### `curl` Example
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
@@ -204,11 +231,11 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
   -d '[{"metric":"mpstat.cpu_busy", "entity":"nurswgvml007", "startDate":"previous_day", "endDate": "now"}]' > response.json
 ```
 
-## Java Example
+### Java Example
 
 * [Series Query](examples/DataApiSeriesQueryExample.java)
 
-## Python Example
+### Python Example
 
 * [Querying Series](https://github.com/axibase/atsd-api-python#querying-series)
 
