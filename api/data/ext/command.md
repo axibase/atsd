@@ -32,7 +32,7 @@ The processing behavior is different from the **Data Entry** page which terminat
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| commit   | boolean   | Store the commands synchronously and return the response after the commands have been committed to the underlying storage. Default: false.|
+| commit   | boolean   | Store the commands synchronously and return the response after the commands have been committed to the underlying storage.<br>Default: `false`.|
 
 ### Payload
 

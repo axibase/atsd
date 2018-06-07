@@ -286,7 +286,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
 |`metric.lastInsertTime`|string | Last time a value was received for this metric by any series. ISO date.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
-|`metric.versioning`|boolean | If set to true, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
+|`metric.versioning`|boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
 |`metric.maxValue`| double | Maximum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
 |`metric.invalidValueAction` | string | [Invalid Action](../api/meta/metric/list.md#invalid-actions) type.|
@@ -829,7 +829,7 @@ WHERE entity IN ('nurswgvml006', 'nurswgvml007', 'nurswgvml008')
 
 ### LIKE Expression
 
-The `LIKE` expression returns true if the value matches the specified string pattern which supports `%` and `_` wildcards.
+The `LIKE` expression returns `true` if the value matches the specified string pattern which supports `%` and `_` wildcards.
 
 * Percent sign `%` matches zero or more characters in the value.
 
@@ -969,7 +969,7 @@ WHERE metric IN ('temperature', 'status')
 
 ### Simple `CASE` Expression
 
-The simple `CASE` expression compares the `input_expression` with `compare_expression`s and returns the `result_expression` when the comparison is true.
+The simple `CASE` expression compares the `input_expression` with `compare_expression`s and returns the `result_expression` when the comparison is `true`.
 
 ```sql
 CASE input_expression

@@ -26,7 +26,7 @@ Each series is identified by metric name, entity name, and optional series tags.
 | `tags.{tag=name}` | string | Filter series that contain the specified series tag values.<br>Example: `?tags.mount_point=/` or `?entity=nurswgvml007&tags.mount_point=/`|
 | `minInsertDate` |string|Filter series with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
 | `maxInsertDate` |string|Filter series with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| `addMeta` | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
+| `addMeta` | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response.<br>Default: `false`.|
 
 ## Response
 

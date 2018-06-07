@@ -86,7 +86,7 @@ ORDER BY Diff DESC
 
 The [`append`](../../api/network/series.md#text-append) flag applies to text values specified with the `x:` field.
 
-If the append flag is set to true, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended at the end using `;\n` (semi-colon followed by line feed) as a separator.
+If the append flag is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended at the end using `;\n` (semi-colon followed by line feed) as a separator.
 
 In order to prevent duplicate values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if it is equal to one of the elements in the array.
 

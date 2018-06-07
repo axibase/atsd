@@ -62,7 +62,7 @@ retentionDays > 0 OR seriesRetentionDays > 0
 |`lastInsertDate`| string | Last time a value was received for this metric by any series in ISO-8601 format.|
 |`retentionDays`| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
 |`seriesRetentionDays`| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
-|`versioned`| boolean | If set to true, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
+|`versioned`| boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`minValue`| double | Minimum value for [Invalid Action](#invalid-actions) trigger.|
 |`maxValue`| double | Maximum value for [Invalid Action](#invalid-actions) trigger.|
 |`invalidAction` | string | [Invalid Action](#invalid-actions) type.|

@@ -39,7 +39,7 @@ Possible variables:
 | --- | --- | --- |
 |  `debug`  |  Enable debug logging : `true` or `false`  |  `false`  |
 |  `keyNameSanitize`  |  Sanitizing metric names (removing forbidden characters): `true` or `false`  |  `true`  |
-|  `flush_counts`  |  Processing flush counts: `true` or `false`  |  true  |
+|  `flush_counts`  |  Processing flush counts: `true` or `false`  |  `true`  |
 |  `atsd`  |  Container for options specific to ATSD back-end  |  –  |
 |  `atsd.host`  |  ATSD hostname  |  –  |
 |  `atsd.port`  |  ATSD port  |  8081  |

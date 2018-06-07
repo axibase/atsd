@@ -97,7 +97,7 @@ Description of `write_atsd` plugin options is provided below
  `Cache`          | no           | Name of read plugins whose metrics will be cached. Cache feature is used to save disk space in the database by not resending the same values.          | `-`
  `Interval`       | no           | Time in seconds during which values within the threshold are not sent.                                                                                 | `-`
  `Threshold`      | no           | Deviation threshold, in %, from the previously sent value. If threshold is exceeded, then the value is sent regardless of the cache interval.          | `-`
- `StoreRates`     | no           | If set to true, convert counter values to rates. If set to false counter values are stored as is, i. e. as an increasing integer number.               | true
+ `StoreRates`     | no           | If set to `true`, convert counter values to rates. If set to `false` counter values are stored as is, i. e. as an increasing integer number.               | `true`
 
 More information about collectd configuration in [collectd.conf.5](https://collectd.org/documentation/manpages/collectd.conf.5.shtml) manual page.
 

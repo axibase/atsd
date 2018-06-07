@@ -42,17 +42,17 @@ Value table:
 
 Input | Type | boolean
 ----|---|---
-yes | string | true
-YES | string | true
-on | string | true
-1 | string | true
-1 | number | true
-no | string | false
-NO | string | false
-hello | string | false
-0 | string | false
-0 | number | false
-3 | number | false
+yes | string | `true`
+YES | string | `true`
+on | string | `true`
+1 | string | `true`
+1 | number | `true`
+no | string | `false`
+NO | string | `false`
+hello | string | `false`
+0 | string | `false`
+0 | number | `false`
+3 | number | `false`
 
 Examples:
 

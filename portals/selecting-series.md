@@ -97,7 +97,7 @@ This enables loading series using only a subset of tags that are still sufficien
 
 The above configuration will match all series with `mount=/` tag, **including** series that may have other tags.
 
-To disable partial tag match, use the `'exact-match = true | false'` setting:
+To disable partial tag match, use the `exact-match = true | false` setting:
 
 ```ls
   # Series with Tags
@@ -129,7 +129,7 @@ The resulting series is merged from 3 underlying different series and provides a
 
 [![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/7)
 
-To control how multiple matched series are processed, use the `'multiple-series = true | false'` setting.
+To control how multiple matched series are processed, use the `multiple-series = true | false` setting.
 
 ```ls
   # Display all series with tag fstype=ext4 without merging

@@ -100,7 +100,7 @@ If the entity is not found or the entity doesn't have a label, the input string 
   getEntity(string e[,boolean l]) object
 ```
 
-Retrieves an entity object by name. If `l` set to `true` entity will be searched by label if it is not found by name. By default `l` is false.
+Retrieves an entity object by name. If `l` set to `true` entity will be searched by label if it is not found by name. By default `l` is `false`.
 
 The object [fields](entity-fields.md) can be accessed using dot notation, for example `getEntity('nurswgvml007').label`.
 

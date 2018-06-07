@@ -191,7 +191,7 @@ The `interpolate-extend` setting adds missing periods at the beginning and the e
 ### Issue 2928
 
 To prevent naming collision, the `interpolate` setting was renamed to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/), which is an interpolation mode applied to computed series in case the values are irregularly spaced.
-If set to true, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the
+If set to `true`, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the
 previous and preceding values.
 
 [ChartLab](https://apps.axibase.com/chartlab/e377b59a/3/)

@@ -97,7 +97,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 | **Name** | **Value** |
 | :-------- | :---- |
 | `job_name`  | atsd-api-test |
-| `run_extra_tests`  | false |
+| `run_extra_tests`  | `false` |
 | `timezone` | Etc/UTC |
 
 ![](./images/jenkins_rule_notification.png)

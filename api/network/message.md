@@ -30,7 +30,7 @@ message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 | e         | string       | **[Required]** Entity name. |
 | t         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../api/data/severity.md). |
 | m         | string       | Message text. |
-| p         | boolean      | Persist message in the database. Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
+| p         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
 | s         | integer      | Time in UNIX seconds. |
 | ms        | integer      | Time in UNIX milliseconds. |
 | d         | string       | Time in ISO format. |

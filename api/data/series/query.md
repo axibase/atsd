@@ -43,7 +43,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 | **Field** | **Type** | **Description** |
 |---|---|---|
 | `tags` | object  | Object with `name:value` fields. <br>Matches series that contain the specified series tags. <br>Tag values support `?` and `*` wildcards. |
-| `exactMatch` | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`. Default: **false** (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
+| `exactMatch` | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`.<br>Default: `false` (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
 | `tagExpression` | string | An expression to include series with tags that satisfy the specified condition. |
 
 #### Tag Expression
@@ -73,7 +73,7 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `versioned` | boolean |Returns version status, source, and change date if the metric is versioned. Default: false. |
+| `versioned` | boolean |Returns version status, source, and change date if the metric is versioned.<br>Default: `false`. |
 | `versionFilter` | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
 
 ### Value Filter

@@ -78,11 +78,11 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 | **Name** | **Example** | **Description** | **ChartLab** |
 | --- | --- | --- | --- |
 |  `title`  |  `title = CPU Busy Portal`  |  Portal name.  |  |
-|  `dialog-maximize`  |  `dialog-maximize = true`  |  If enabled, the dialog window will occupy the entire portal page.<br>Dialog window can be opened by clicking on the widget header.<br>Default value: true.  |  [View](https://apps.axibase.com/chartlab/808e5846/14/)  |
-|  `display-panels`  |  `display-panels = true`  |  Display widget controls.<br>Possible values: true, false, hover.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  |
-|  `expand-panels`  |  `expand-panels = compact`  |  Expand widget controls.<br>Possible values: all, compact, none.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  |
+|  `dialog-maximize`  |  `dialog-maximize = true`  |  If enabled, the dialog window will occupy the entire portal page.<br>Dialog window can be opened by clicking on the widget header.<br>Default: `true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/14/)  |
+|  `display-panels`  |  `display-panels = true`  |  Display widget controls.<br>Possible values: `true`, `false`, `hover`.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  |
+|  `expand-panels`  |  `expand-panels = compact`  |  Expand widget controls.<br>Possible values: `all`, `compact`, `none`.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  |
 |  `periods`  |  `periods = 20 minute, 4 hour`  |  Add custom period(s) to aggregation controls in the top-right corner of the widget.  |  [View](https://apps.axibase.com/chartlab/fedaa42e/45/)  |
-|  `buttons`  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: update, reset.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  |
+|  `buttons`  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: `update`, `reset`.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  |
 
 ### Interval Settings
 
@@ -115,8 +115,8 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 | `method-path` | `method-path = /series/query` | Data API method path. Default value is specific for each data type: `/series/query`, `/properties/query`, `/messages/query`, `/alerts/query`. | |
 | `url-parameters`  |  `url-parameters = db=12&adapter=7`  |  Optional request parameters included in data API requests.<br>Parameter names and values must be URL-encoded if necessary and separated by ampersand. `?` at the start of the query string is optional. |  |
 |  `update-interval`  |  `update-interval = 5 minute`  |  Polling interval at which new incremental data is requested from the server by widgets on the portal.<br>For example `update-interval = 5 minute`.<br>The default value is 1 minute.<br>The setting can be overridden by each widget separately.<br>Chart updates are disabled if the `endtime` parameter for the portal or the widget is set to a fixed date, for example: `endtime = 2016-06-27T00:00:00Z`.  |  [View](https://apps.axibase.com/chartlab/808e5846/3/)  |
-|  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting. Default: false.<br>If enabled, series for which the request has failed will be requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  |
-|  `batch-size`  |  `batch-size = 1`  |  Maximum number of series in one batch request to the server. Default: 8.<br>If 0 is specified, the limit is not set.<br>Applies when `batch-update = true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/5/)  |
+|  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting<br>Default: `false`.<br>If enabled, series for which the request has failed will be requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  |
+|  `batch-size`  |  `batch-size = 1`  |  Maximum number of series in one batch request to the server.<br>Default: `8`.<br>If `0` is specified, the limit is not set.<br>Applies when `batch-update = true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/5/)  |
 
 > The actual URL for data requests is assembled from `{url}{context-path}{method-path}{url-parameters}`. For example, the default URL for loading series data is `https://atsd_hostname:8443/api/v1/series/query`.
 
