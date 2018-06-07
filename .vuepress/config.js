@@ -54,6 +54,7 @@ const integrationMenu = [
             'java-metrics/',
             'nmon/',
             ['https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html', 'Axibase Collector'],
+            'spring-boot/'
         ]
     },
 
