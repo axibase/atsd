@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4311 | sql | Feature | Enable Excel export from SQL console |
+| 4311 | sql | Feature | Enable Excel export in the [SQL Console](../../sql/sql-console.md) |
 | 4291 | jdbc | Feature | Add JDBC driver property to expose user-defined tables in database metadata. |
 | 4284 | core | Feature | Collect aggregate data table size metrics. |
 | 4259 | sql | Bug | Return a meaningful error if the `WHERE` clause doesn't select metrics as expected from the reserved `atsd_series` table. |

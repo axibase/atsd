@@ -2,9 +2,9 @@
 
 ## SQL Console
 
-ATSD supports [SQL](../sql/README.md) syntax for flexible querying and analysis of time series data. One of the options available for executing ad hoc SQL queries is the built-in web console.
+ATSD supports [SQL](../sql/README.md) syntax for flexible querying and analysis of time series data. One of the options available for executing ad hoc SQL queries is the built-in [SQL Console](../sql/sql-console.md).
 
-Open the **SQL Console** tab in the main menu:
+Open the **SQL > SQL Console** tab in the main menu:
 
 ![](./resources/getting-started-5_1.png)
 

@@ -8,7 +8,7 @@
 | 4176 | UI | Bug | Fixed a paging issue on Entities page. |
 | 4174 | csv | Support | Ensure compatibility of schema-based browsers with Java 8. |
 | 4172 | rule engine | Bug | Fixed broken rendering of the Alerts History detail page. |
-| [4166](#issue-4166) | UI | Feature | Apply user-defined time format to `datetime` column in the SQL console. |
+| [4166](#issue-4166) | UI | Feature | Apply user-defined time format to `datetime` column in the [SQL Console](../../sql/sql-console.md). |
 | 4165 | UI | Feature | Extend SQL syntax highlighter with extended ATSD keywords. |
 | 4159 | UI | Bug | Removed unused sorting option on the **Settings > System Information** page. |
 | 4156 | sql | Bug | Ensure email delivery in case of file write errors in scheduled SQL queries. |

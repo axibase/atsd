@@ -11,7 +11,7 @@
 | 4516 | core | Feature | Add validator for ATSD coprocessor jar file at startup. |
 | 4511 | UI | Feature | Implement `formatNumber` and `convert` functions in rule engine and entity views. |
 | 4506 | security | Bug | Deny metadata export for unauthorized users without necessary entity permissions. |
-| 4501 | UI | Bug | UI: Format stack trace in SQL console. |
+| 4501 | UI | Bug | UI: Format stack trace in the [SQL Console](../../sql/sql-console.md). |
 | 4488 | csv | Bug | CSV Parser: fixed length split broken. |
 | 4307 | sql | Bug | Fix row ordering for samples timestamped before January 1, 1970. |
 | [4235](#issue-4235) | api-rest | Feature | `FIRST`, `LAST`, `MIN_VALUE_TIME`, `MAX_VALUE_TIME` aggregators added to series queries with [grouping](../../api/data/series/group.md#grouping-functions). |

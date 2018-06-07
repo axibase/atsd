@@ -173,7 +173,7 @@ The following characteristics are available.
 
   ![Figure 6](./Images/Figure6.png)
 
-* Series: provides links to the Metric and Entity labels. Additionally, allows the user to export the series data, navigate to the SQL console, and to view a Chart Lab graph showing the
+* Series: provides links to the Metric and Entity labels. Additionally, allows the user to export the series data, navigate to the [SQL Console](../../sql/sql-console.md), and to view a Chart Lab graph showing the
   distribution of the data.
 
   ![Figure 7](./Images/Figure7.png)
