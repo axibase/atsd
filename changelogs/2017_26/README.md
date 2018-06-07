@@ -9,7 +9,7 @@
 | 4327 | search | Feature | Implement [Synonym Search](../../search/synonyms.md). |
 | [4327a](#issue-4327a) | search | Feature | Implement [Series Search](../../search/README.md). |
 | 4313 | export | Bug | Modify Excel files produced by ATSD to increase compatibility with analytics tools such as IBM SPSS. |
-| 4312 | sql | Bug | Fix a NullPointerException in SQL console when results contain [`NULL`](../../sql/README.md#null) values. |
+| 4312 | sql | Bug | Fix a NullPointerException in the [SQL Console](../../sql/sql-console.md) when results contain [`NULL`](../../sql/README.md#null) values. |
 
 ### Issue 4331
 

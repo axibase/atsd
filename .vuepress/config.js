@@ -234,7 +234,7 @@ const ruleNotificationsMenu = [
     ['aws-sns.md', 'Amazon SNS'],
     ['aws-sqs.md', 'Amazon SQS'],
     ['azure-sb.md', 'Azure Service Bus'],
-    ['gcp-ps.md', 'Google Cloud Pub/Sub'],
+    ['gcp-ps.md', 'GCP Pub/Sub'],
     ['webhook.md', 'Webhook'],
     'custom.md',
 ];
@@ -244,11 +244,12 @@ const sqlMenu = [
     ['examples/', 'Examples'],
     ['permissions.md', 'Permissions'],
     ['performance.md', 'Query Optimization'],
+    ['sql-console.md', 'Query Console'],
+    ['client/', 'Bash Client'],
     ['scheduled-sql.md', 'Scheduled Queries'],
     ['scheduled-sql-store.md', 'Materialized Views'],
     ['api.md', 'API Endpoint'],
     ['https://github.com/axibase/atsd-jdbc#jdbc-driver', 'JDBC Driver'],
-    ['client/', 'Bash Client'],
 ];
 
 const administrationMenu = [

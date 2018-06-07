@@ -55,7 +55,7 @@ cat /proc/version
 
 3. Screenshot from the **Portals: ATSD Metric Viewer** portal for relevant metrics.
 
-4. CSV Export of the below query generated in the SQL console. Modify the `datetime` condition to match the hour when the issue occurred.
+4. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
 
 ```sql
 SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr,

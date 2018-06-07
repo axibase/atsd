@@ -13,7 +13,7 @@
 | [3719](#issue-3719) | sql         | Feature | Optimized [windowing](../../sql/README.md#last_time-syntax) queries by narrowing the requested timespan based on minimum last insert date. |
 | 3718 | UI          | Bug     | Changed metric form to prevent users from saving metric names without metric name validation. |
 | 3715 | UI          | Feature | Updated styles on the account create page displayed post-installation. |
-| 3714 | UI          | Bug     | Fixed errors with the Decimal Precision input in the SQL console. |
+| 3714 | UI          | Bug     | Fixed errors with the Decimal Precision input in the [SQL Console](../../sql/sql-console.md). |
 | [3713](#issue-3713) | sql         | Bug     | Fixed number format error raised in queries with the `WHERE` clause. |
 | [3703](#issue-3703) | sql         | Feature | Added capability to display first/last sample time in windowing queries. |
 | [3697](#issue-3697) | sql         | Feature | Modified processing sequence so that the `HAVING` filter is applied after period interpolation. |

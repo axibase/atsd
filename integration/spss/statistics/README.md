@@ -41,7 +41,7 @@ To calculate the weighted inflation index we need to multiply the CPI of each ca
 
 ## Import Data into SPSS
 
-You can import ATSD data into SPSS by configuring an ODBC data source on a Windows machine and retrieving the records with an SQL query. Alternatively, you can run the queries in the ATSD web-based SQL console, export query results into CSV files, and manually load them into SPSS from the local file system.
+You can import ATSD data into SPSS by configuring an ODBC data source on a Windows machine and retrieving the records with an SQL query. Alternatively, you can run the queries in the [SQL Console](../../../sql/sql-console.md), export query results into CSV files, and manually load them into SPSS from the local file system.
 
 ### Import Data from Database
 
@@ -295,11 +295,11 @@ SELECT entity, datetime, value FROM cpi_price
 
 ---
 
-## Exporting Data from ATSD into CSV Files
+## Exporting Data into CSV Files
 
-ATSD provides a web-based SQL console to export query results into various data formats including Excel, CSV, and JSON, with optional metadata composed according to the [W3C Model for Tabular Data](../../../sql/api.md#metadata).
+The built-in [SQL Console](../../../sql/sql-console.md) allows exporting query results into various data formats including Excel, CSV, and JSON, with optional metadata composed according to the [W3C Model for Tabular Data](../../../sql/api.md#metadata).
 
-> If you don't have an ATSD instance available, [weights.csv](resources/weights.csv) and [prices.csv](resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
+> If you don't have an ATSD installed, [weights.csv](resources/weights.csv) and [prices.csv](resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
 
 ### Prices
 

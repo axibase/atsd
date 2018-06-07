@@ -140,7 +140,7 @@ If **Check Last Time** is enabled, the `series` command is inserted if its times
 
 ### Validation
 
-To test that a query complies with all [requirements](#column-requirements), execute the query in the SQL console and click **Store**.
+To test that a query complies with all [requirements](#column-requirements), execute the query in the [SQL Console](sql-console.md) and click **Store**.
 
 Click **Test** to review the produced commands and resolve any errors.
 

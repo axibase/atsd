@@ -2,11 +2,9 @@
 
 ## Overview
 
-**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported to `CSV`, `JSON`, and Excel files or [reinserted](#store) as a derived series. 
+**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported to `CSV`, `JSON`, and Excel files or [reinserted](#store) as a derived series.
 
 Open the console by clicking **Console** in the main **SQL** menu.
-
-![](images/sql_console.png)
 
 **SQL Console** has three components:
 
@@ -14,7 +12,9 @@ Open the console by clicking **Console** in the main **SQL** menu.
 2. [Format Settings](#format-settings)
 3. [Action Controls](#action-controls)
 
-Enter queries in the **Query** window and view the results below.
+![](images/sql_console.png)
+
+Enter `SELECT` queries in the **Query** window and view the results below.
 
 ![](images/query-result1.png)
 
@@ -24,7 +24,9 @@ Format Settings apply custom formatting to dates, numbers, and `NULL` values. Ch
 
 ### Date Format / Time Zone
 
-Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression. Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
+Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression.
+
+Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
 
 The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed when the database is configured to Eastern Standard Time (EST):
 
@@ -40,15 +42,13 @@ The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed w
 `MMM-dd, E` | `May-15, Tue` | `May-15, Tue`
 `MMM-dd, EEEE` | `May-15, Tuesday` | `May-15, Tuesday`
 
-> The database time zone can be [configured](../administration/timezone.md) by an administrator.
+> The database time zone can be [modified](../administration/timezone.md) by an administrator.
 
 ### Decimal Precision
 
-This setting rounds numeric values to the specified number of decimal places. Decimal precision applies to columns of decimal data types: `float`, `double`, and `decimal`.
+The **Decimal Precision** setting rounds numeric values to the specified number of decimal places. Decimal precision applies to columns of decimal data types: `float`, `double`, and `decimal`.
 
-To disable rounding, revert the setting to `-1` which is the default value.
-
-When set to a non-defult value, the console highlights the setting in light blue.
+To disable rounding, revert the setting to `-1` which is the default value. When set to a non-default value, the console highlights the setting in light blue.
 
 ![](images/decimal-precision.png)
 
@@ -65,7 +65,7 @@ Decimal Precision | `mx` | `num` | `ct`
 `1` | 65.2 | 123.456 | 2279
 `2` | 65.20 | 123.456 | 2279
 
-In the above example, rounding applies only to the `mx` column because the `num` column contains string literals, and the `ct` column returns integer values calculated by the [`COUNT`](README.md#aggregation-functions) function.
+In the above example, rounding applies only to the `mx` column which contains decimal values. The `num` and `ct` columns are not rounded because they contain string literals and integer values calculated by the [`COUNT`](README.md#aggregation-functions) function respectively.
 
 ### Theme
 
@@ -73,17 +73,9 @@ Select a color scheme to apply to [reserved words](README.md#reserved-words) and
 
 ![](images/theme.png)
 
-#### Default
-
-![](images/default.png)
-
-#### Brick
-
-![](images/brick.png)
-
-#### Violet
-
-![](images/violet.png)
+| Default | Brick | Violet |
+|---|---|---|---|
+| ![](images/default.png)| ![](images/brick.png)| ![](images/violet.png)|
 
 ### NULL Format
 
@@ -105,7 +97,7 @@ Value   |`NULL`|`null`|`N/A`|  `-` |       |
 
 ### Execute
 
-Perform the query in the **Query** window and view results in a tabular format below the controls.
+Perform the query specified in the **Query** window and view results in a tabular format below the controls.
 
 ### Cancel
 
@@ -113,7 +105,9 @@ Interrupt a running query. The database may take several seconds to gracefully s
 
 ### Export
 
-Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XLSX` format. Click **Export** to open the **Export Query Results** window. Modify the query (for example, apply an [alias](README.md#aliases)), select a download format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
+Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XLSX` format.
+
+Click **Export** to open the **Export Query Results** dialog. Modify the query (for example, remove `LIMIT`), select a file format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
 
 ![](images/export1.png)
 
@@ -121,7 +115,7 @@ Download the results of a query in `CSV`, `JSON (objects)`, `JSON (row)`, or `XL
 
 Store results in the database as a new derived series. The query results are eligible for re-insertion if the `SELECT` expression contains the [required columns](scheduled-sql-store.md#required-columns).
 
-Execute the query and click **Store** to open the **Store Query Results as Series** window.
+Execute the query and click **Store** to open the **Store Query Results as Series** dialog.
 
 ![](images/query_store.png)
 
@@ -133,7 +127,9 @@ The dialog window provides several tools to configure insertion:
 
 * **Store**: inserts valid commands into the database.
 
-* **Schedule**: creates a [scheduled query](scheduled-sql.md) with the 'Store' option set to `enabled` based on the current query.
+* **Schedule**: creates a [scheduled query](scheduled-sql.md) with the **Store** option set to `enabled` based on the current query.
+
+Refer to [Scheduled Store documentation](scheduled-sql-store.md) for more details.
 
 ### Query Plan
 

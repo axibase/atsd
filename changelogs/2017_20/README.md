@@ -16,7 +16,7 @@
 | 4178 | export | Bug | Fixed a bug with email notifications when Output Path was not specified. |
 | 4175 | sql | Bug | Incorrect period start calculated for YEAR period and END_TIME alignment.  |
 | 4169 | rule engine | Bug | Fix FileNotFoundException when `/tmp/atsd/alert.log` was removed by the operating system. |
-| 4161 | sql | Bug | Apply syntax highlighting prior to displaying the result set in the SQL console. |
+| 4161 | sql | Bug | Apply syntax highlighting prior to displaying the result set in the [SQL Console](../../sql/sql-console.md). |
 | 4132 | collectd | Feature | Force [`collectd`](https://github.com/axibase/atsd-collectd-plugin) to use a short hostname instead of a Fully Qualified Domain Name when FQDN is `localhost`.  |
 | 4115 | UI | Bug | Fix localization issue with submit buttons without the value attribute. |
 
@@ -37,7 +37,7 @@ Sample curl command:
 
 ### Issue 4179
 
-In SQL Console > Query Statistics
+In **SQL > Query Statistics**:
 
 ![4179](./Images/4179.png)
 
