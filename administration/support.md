@@ -2,35 +2,19 @@
 
 This document will help you submit a well-prepared ticket to our [Support Desk](https://axibase.zendesk.com/home) so we can resolve it faster.
 
-Use the below reference to attach relevant artifacts to your ticket. Skip sections `3-6` if they don't apply to your particular situation.
+Use the below reference to attach relevant artifacts to your ticket. Skip sections `2-5` if they don't apply to your particular situation.
 
-## 1. Database Information
+## 1. Database and Operating System Information
 
-1. **Settings > System Information** page: Select/copy rows to a text file.
+2. **Settings > Server Properties** page: Click **Export Configuration** and download the `configuration-export.json` file.
 
-2. **Settings > Server Properties** page: Select/copy rows to a text file.
-
-## 2. Operating System Information
-
-1. Output of the following system commands:
-
-```bash
-cat /etc/*-release
-```
-
-```bash
-cat /proc/version
-```
-
-## 3. Log Files
+## 2. Log Files
 
 > The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **Settings > Diagnostics > Server Logs** page.
 
-1. Metrics file `/opt/atsd/atsd/logs/metrics.txt`.
+1. Error log `/opt/atsd/atsd/logs/err.log`.
 
-2. Error log `/opt/atsd/atsd/logs/err.log`.
-
-3. Archive (tar.gz) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.
+2. Archive (tar.gz) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.
 
     ```bash
     tar czfv atsd_support.tar.gz \
@@ -39,15 +23,15 @@ cat /proc/version
       /opt/atsd/atsd/logs/*.out
     ```
 
-4. Archive (tar.gz) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
+3. Archive (tar.gz) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
 
-5. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
+4. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
 
-## 4. Heap Dump File
+## 3. Heap Dump File
 
 1. Archive (tar.gz) of the most recent `java_pid*.hprof` file in the `/opt/atsd/atsd/logs` directory, if such file is present.
 
-## 5. Performance Statistics
+## 4. Performance Statistics
 
 1. Screenshot of the **Portals: ATSD** portal for the time period covering the issue.
 
@@ -103,7 +87,7 @@ WHERE t1.entity = 'atsd'
 WITH INTERPOLATE(1 MINUTE)
 ```
 
-## 6. Portal Configuration
+## 5. Portal Configuration
 
 > Attach this if the issue is related to charts and portals.
 
