@@ -4,17 +4,17 @@ This introduction guides the reader through the first steps of using Axibase Tim
 
 ## Preparation
 
-* Log in to ATSD at `https://atsd_hostname:8443/`.
+* Log in to your ATSD instance at `https://atsd_hostname:8443/`.
 
 ## Introduction
 
-As part of this tutorial, the user inserts and analyze temperature measurements collected from a hypothetical bioreactor such as a **Parr Instrument's** [4523 Fixed Head Reactor](https://www.parrinst.com/products/stirred-reactors/series-4520-1-2l-bench-top-reactors/) pictured below.
+As part of this tutorial, insert and analyze temperature measurements collected from a hypothetical bioreactor such as a **Parr** [Fixed Head Reactor](https://www.parrinst.com/products/stirred-reactors/series-4520-1-2l-bench-top-reactors/) pictured below.
 
 ![](./resources/bioreactor.png)
 
-In a real world situation, such measurements are continuously gathered by specialized controllers as part of a factory-wide [SCADA](https://www.parrinst.com/products/controllers/4871-process-controller/) system.
+In a real world situation, such measurements are continuously gathered by specialized [controllers](https://www.parrinst.com/products/controllers/4871-process-controller/) as part of a factory-wide SCADA system.
 
-To differentiate this particular equipment from other factory assets, the article refers to the reactor using its identifier in the asset management system:
+To differentiate this particular equipment from other factory assets, the article refers to the reactor using the identifier in the asset management system:
 
 ```elm
 br-1905
@@ -22,7 +22,7 @@ br-1905
 
 ## Insert Data
 
-The database has various interfaces for writing data, including API clients, `CSV` parsers, `REST` API endpoints etc., however the easiest way to insert data manually is to submit it on the **Data Entry** form located under the **Data** tab in the main menu.
+The database has various interfaces for writing data, including API clients, CSV parsers, REST API endpoints etc., however the easiest way to insert data manually is to submit it on the **Data Entry** form located under the **Data** tab in the main menu.
 
 ![](./resources/getting-started_1.png)
 
@@ -105,9 +105,7 @@ Open **Entities** tab in the main menu and search for `br-1905`. The search box 
 
 Open the entity editor which allows you to describe entities using custom tags that are specific for the given domain (industry).
 
-![](./resources/entity-editor.png)
-
-Set **Label** to `BR-1905`, timezone to `US/Pacific`, and set some custom tags:
+Set **Label** to `BR-1905`, time zone to `US/Pacific` and set some custom tags:
 
 ```elm
 type = bioreactor
@@ -118,7 +116,9 @@ site = SVL
 building = A
 ```
 
-Entity tags are an extensible mechanism to make the universal database specific to the current domain.
+![](./resources/entity-editor.png)
+
+Entity tags provide an extensible mechanism to make a universal database specific to the current domain.
 
 >Pro Tip. Once the tags are defined, click **Create Tag Template** to save the current tags into a template that can be assigned to entities sharing the same tags.
 
@@ -130,8 +130,6 @@ Open **Metrics** tab in the main menu and search for `temperature`. The search b
 
 The metric editor provides more built-in fields compared to entities because the concept of metric is shared by many domains and fields such as units, value range, precision, seasonality, etc. are commonly required.
 
-![](./resources/metric-editor.png)
-
 Set **Label** to `Temperature` and set fields as follows:
 
 ```elm
@@ -140,7 +138,9 @@ min_value = 0
 max_value = 1000
 ```
 
-Refresh the **Series Statistics** page which displays relevant metric and entity metadata.
+![](./resources/metric-editor.png)
+
+Refresh the **Series Statistics** page which now displays relevant metric and entity metadata.
 
  ```elm
 https://atsd_hostname:8443/series/statistics?entity=br-1905&metric=temperature

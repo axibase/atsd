@@ -32,7 +32,7 @@ You can insert and validate commands on the **Data > Data Entry Page** for conve
 
 ## REST API
 
-Unlike network commands, which are used for writing data by user from the command line, the `REST` API has endpoints both to insert data as well as to query data via `JSON`-formatted requests.
+Unlike network commands, the REST API has endpoints both to insert data as well as to query data via JSON requests.
 
 ### Send Value at Specific Time
 
@@ -46,7 +46,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
   --data '[{"entity": "br-1905", "metric": "temperature", "data": [{ "d": "2018-06-01T14:00:00Z", "v": 17.0 }]}]'
 ```
 
-The payload transmitted to the database is a `JSON` document containing the series key and an array of `datetime:value` samples. In this case, you send just one value with a pre-set `datetime`, but the array `data` may contain any number of `d:v` objects.
+The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. The array `data` may contain any number of `d:v` objects..
 
 ```json
 [{
@@ -92,9 +92,9 @@ Refer to [API Documentation](../api/data/series/insert.md) and [examples](../api
 
 ## CSV File
 
-`CSV` is one of the most commonly used tabular formats. Despite its widespread use, the format remains non-standardized. ATSD provides a flexible `CSV` parser converts `CSV` files of any composition into structured database records.
+CSV is one of the most commonly used tabular formats. Despite widespread use, the format remains non-standardized. ATSD provides a flexible **CSV Parser** that converts CSV files of any composition into structured database records.
 
-Create a `CSV` file `temperature.csv`.
+Create a CSV file `temperature.csv`.
 
 ```txt
 date,asset,temperature
@@ -105,7 +105,7 @@ date,asset,temperature
 2018-Jun-01 02:00:00,BR-1905,25.0
 ```
 
-Open **Data > CSV Parsers** page, click **Import** in the split button located at the bottom of the page.
+Open **Data > CSV Parsers** page, select **Import** from the split button located at the bottom of the page.
 
 Attach [temperature_parser.xml](./resources/temperature_parser.xml) and import the parser.
 
@@ -129,7 +129,7 @@ asset = 'BR-1905'             -> entity = 'br-1905'
 temperature = 32.5            -> metric (temperature) = 32.5
 ```
 
-Refresh the **Series Statistics** page to check that the values from the `CSV` file are present in the database.
+Refresh the **Series Statistics** page to check that the values from the CSV file are present in the database.
 
 Refer to [CSV Parser Documentation](../parsers/csv/README.md) for more examples.
 

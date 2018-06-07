@@ -6,12 +6,12 @@ This section will demonstrate how to retrieve data from the database using the i
 
 Open **Data > Export** page.
 
-Enter parameters to download data as a `CSV` file or to display it in `HTML` format.
+Enter parameters to download data as a CSV file or to display it in HTML format.
 
 * Enter `temperature` into the **Metric** field.
 * Click **Name** selector and enter `br-1905` as the entity.
 * Modify the **Date Interval** to `1 Quarter` to select values for a longer timespan.
-* Select `CSV` in the Format section.
+* Select **CSV** in the **Format** section.
 * Click **Submit**.
 
 ![](./resources/data_export.png)
@@ -26,7 +26,7 @@ The results can also be exported [on schedule](../reporting/scheduled-exporting.
 
 ## API Client
 
-The database provides a build-in API Client to test the `REST` API endpoints. This section will show how to export data using the [series query](../api/data/series/query.md) endpoint.
+The database provides a build-in API Client to test the REST API endpoints. This section will show how to export data using the [series query](../api/data/series/query.md) endpoint.
 
 Open **Data > API Client** page.
 
