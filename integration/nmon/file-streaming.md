@@ -12,7 +12,7 @@ Currently, nmon is primarily supported on AIX and Linux systems. It can monitor 
 
 nmon can be run either in interactive or recording modes. ATSD uses the recording mode to stream data as it is written into the nmon file.
 
-All AIX systems have nmon pre-installed.
+AIX systems have nmon installed by default.
 
 ## nmon Resources
 

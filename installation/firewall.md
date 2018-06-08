@@ -21,7 +21,7 @@ Port | Network<br> Protocol | Application/<br>Data Protocol | Service
 ufw disable
 ```
 
-### Centos/RHEL
+### CentOS / RHEL
 
 ```bash
 systemctl disable firewalld
@@ -73,7 +73,7 @@ iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
 ```
 
-### RHEL / CentOS
+### CentOS / RHEL
 
 ```sh
 sed -i "s/IPTABLES_SAVE_ON_STOP=\"no\"/IPTABLES_SAVE_ON_STOP=\"yes\"/g" \
