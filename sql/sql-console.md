@@ -73,9 +73,9 @@ Select a color scheme to apply to [reserved words](README.md#reserved-words) and
 
 ![](./images/theme.png)
 
-| Default | Brick | Violet |
-|---|---|---|---|
-| ![](./images/default.png)| ![](./images/brick.png)| ![](./images/violet.png)|
+ Default | Brick | Violet 
+---|---|---
+ ![](./images/default.png) | ![](./images/brick.png) | ![](./images/violet.png) |
 
 ### NULL Format
 
