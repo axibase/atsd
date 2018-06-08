@@ -366,7 +366,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 | 2016-09-17T08:01:30.000Z |  3.48 | -- Linearly interpolated between 9.00 at 08:01:14 and 2.10 at 08:01:34.
 ```
 
-If raw values had extra samples recorded within values in each period, such values would be ignored.
+If raw values have extra samples recorded within values in each period, such values are ignored.
 
 ```ls
 | time     | value   |
@@ -464,7 +464,7 @@ AND t1.entity = 'nurswgvml006'
 | nurswgvml006 | 2016-09-18T14:00:45.000Z | 68904.0 | 14.8 |
 ```
 
-Without interpolation, a join of Series 1 and Series 2 would have produced an empty result because their row times are different.
+Without interpolation, a join of Series 1 and Series 2 produces an empty result because their row times are different.
 
 ### `value` Filter
 

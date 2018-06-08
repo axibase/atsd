@@ -11,7 +11,7 @@ The response contains data for all members, even member entities without data in
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

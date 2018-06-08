@@ -70,7 +70,7 @@ Under this option, the table is configured to store a fixed set of metrics for t
 
 Example: IBM Tivoli Data Warehouse
 
-![tdw_schema](images/tdw_schema.png)
+![tdw_schema](./images/tdw_schema.png)
 
 ### Universal Table
 
@@ -80,4 +80,4 @@ This option allows adding new metrics without altering the data table itself.
 
 Example: Microsoft System Center Operations Manager Data Warehouse
 
-![scom_schema](images/scom_schema.png)
+![scom_schema](./images/scom_schema.png)

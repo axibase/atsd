@@ -13,32 +13,32 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 * Open the **Settings > Server Properties** page.
 * Add the `table` tag to the `metric.display.tags` property.
 
-![Server Properties](metric-table-tags.png)
+![Server Properties](./metric-table-tags.png)
 
 * Click Apply Changes and open the Metrics tab to verify that the `table` tag is visible in the Metrics list.
 
-![Metrics List: table tag](metrics-table-tag.png)
+![Metrics List: table tag](./metrics-table-tag.png)
 
 ## Apply the `table` Tag to Metrics
 
 * Enter partial metric name in the Name Mask to filter Metric list by name. `*` and `?` wildcards are supported.
 * Set Page Size (Display on Page) to 1000.
 
-![Metric List: filter](metric-list-filter.png)
+![Metric List: filter](./metric-list-filter.png)
 
 * Click checkbox to select filtered metrics.
 * Make sure that grouped metrics have the same tags. For example, group `df.disk_used`, `df.disk_used_percent`, and other `df.*` metrics into one table since their shared tags are `file_system` and `mount_point`.
 * Enter a name that describes this group of selected metrics and click [Apply].
 
-![Metric List: apply tag](metric-table-tag-apply.png)
+![Metric List: apply tag](./metric-table-tag-apply.png)
 
 * Verify that selected metrics have the `table` tag set.
 
-![Metric List: applied tag](metric-table-tag-applied.png)
+![Metric List: applied tag](./metric-table-tag-applied.png)
 
 * Repeat the process to group metrics into tables.
 
-![Metric List: tag all](metric-table-tag-all.png)
+![Metric List: tag all](./metric-table-tag-all.png)
 
 ## Discover Metric Tables in the Axibase Server
 
@@ -58,7 +58,7 @@ Example:
 
 `http://reader:my_password@10.102.0.6:8088`
 
-![](redirect_settings.png)
+![](./redirect_settings.png)
 
 * Save these Settings.
 * Add the `url = /proxy` setting in widget configuration files that need to query ATSD directly:

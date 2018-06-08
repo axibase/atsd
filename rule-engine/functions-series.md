@@ -8,7 +8,7 @@ The `db_last` and `db_statistic` functions retrieve the last stored value or cal
 
 ## Reference
 
-* [`db_last`](#db_laststring-m)
+* [`db_last`](#db_last)
 * [`db_statistic`](#db_statistic)
 
 ## `db_last`

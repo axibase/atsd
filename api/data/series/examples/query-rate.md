@@ -30,7 +30,7 @@ Rate at 14:10:21:
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload
@@ -67,9 +67,9 @@ POST https://atsd_hostname:8443/api/v1/series/query
 
 ## Request - No Period
 
-If the period is not specified, the `rate` function returns delta between consecutive samples.
+If the period is not specified, the `rate` function returns the difference between consecutive samples.
 
-If the interval between samples is equidistant, no period would be equivalent to period == interval, or  `{"count": 15, "unit": "SECOND"}` in the example below.
+If the series is regular (interval between samples is constant), omitting the period in the `rate` object is equivalent to setting the period to the same value as the interval between samples, or  `{"count": 15, "unit": "SECOND"}` in the example below.
 
 ```json
 [

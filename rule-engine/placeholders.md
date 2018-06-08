@@ -4,7 +4,7 @@
 
 Placeholders can be used to include contextual information in email messages, web notifications, system commands, and logging messages.
 
-![](images/placeholders-email.png)
+![](./images/placeholders-email.png)
 
 ## Syntax
 

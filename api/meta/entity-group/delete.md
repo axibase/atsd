@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete the specified entity group.
+Deletes the specified entity group.
 
 Member entities and their data is not affected by this operation.
 
@@ -31,7 +31,7 @@ None.
 #### URI
 
 ```elm
-DELETE https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix
+DELETE /api/v1/entity-groups/nmon-aix
 ```
 
 #### Payload

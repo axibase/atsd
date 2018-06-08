@@ -220,7 +220,7 @@ Same as `diff()`.
   new_maximum() boolean
 ```
 
-Returns true if last value is greater than any previous value.
+Returns `true` if last value is greater than any previous value.
 
 ## `new_minimum`
 
@@ -228,7 +228,7 @@ Returns true if last value is greater than any previous value.
   new_minimum() boolean
 ```
 
-Returns true if last value is smaller than any previous value.
+Returns `true` if last value is smaller than any previous value.
 
 ## `threshold_time`
 

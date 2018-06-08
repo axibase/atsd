@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Webhook** [notifications](../web-notifications.md) send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribed service is responsible for parsing, handling, and reacting to the received event.
+**Webhook** [notifications](../notifications/README.md) send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribed service is responsible for parsing, handling, and reacting to the received event.
 
 ## Method
 
@@ -43,7 +43,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 ## Testing
 
-Click the `Test` button in the web notification form to send a sample request to the specified endpoint.
+Click **Test** in the web notification form to send a sample request to the specified endpoint.
 
 In order to test the actual payload, create a sample rule, and enable notifications on the `Web Notifications` tab.
 

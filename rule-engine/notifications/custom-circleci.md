@@ -8,7 +8,7 @@ The integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-r
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Web Notifications**, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Web Notifications**, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new notification, open **Alerts > Web Notifications** and click **Create**.
 
@@ -51,11 +51,11 @@ Make sure that you enclose fields with double quotes, if necessary.
 
 Leave the `Body` field empty for non-parameterized projects.
 
-![](images/circle_endpoint.png)
+![](./images/circle_endpoint.png)
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new rule, open the page **Alerts > Rules** and click **Create**.
 
@@ -67,7 +67,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/rule_overview.png)
+![](./images/rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -82,10 +82,10 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 | `branch` | master |
 | `parallel` | 4 |
 | `project_name` | atsd-api-java |
-| `run_extra_tests`  | false |
+| `run_extra_tests`  | `false` |
 | `timezone`  | Etc/UTC |
 
-![](images/circle_rule_notification.png)
+![](./images/circle_rule_notification.png)
 
 Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and JSON payload.
 
@@ -113,13 +113,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open the page **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/circle_alert_open.png)
+![](./images/circle_alert_open.png)
 
 Check the CircleCI user interface to make sure the target build was triggered.
 
-![](images/circle_test.png)
+![](./images/circle_test.png)

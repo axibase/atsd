@@ -10,7 +10,7 @@ The example described below invokes the [AWS Batch API](https://docs.aws.amazon.
 
 ## Configuration
 
-Create a new `AWS API` web notification or import the [template](resources/aws-api-batch-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new `AWS API` web notification or import the [template](resources/aws-api-batch-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 
@@ -45,11 +45,11 @@ Modify the `Body` by replacing the `<JSON_CONTENT>` value with actual values, fo
 }
 ```
 
-![](images/aws_api_batch_notification_config.png)
+![](./images/aws_api_batch_notification_config.png)
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/aws-api-batch-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the multi-action button located below the table and follow the prompts.
+Create a new rule or import the [rule template](resources/aws-api-batch-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -61,7 +61,7 @@ Specify the key settings on the **Overview** tab.
 | Metric | test_m |
 | Condition | `value > 1` |
 
-![](images/aws_api_rule_overview.png)
+![](./images/aws_api_rule_overview.png)
 
 Open the **Web Notifications** tab.
 
@@ -69,7 +69,7 @@ Set **Enabled** to **Yes** and choose the previously created web notification fr
 
 Enable **Open** trigger.
 
-![](images/aws_api_batch_rule_notification.png)
+![](./images/aws_api_batch_rule_notification.png)
 
 ## Test
 
@@ -79,13 +79,13 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
   series e:test_e m:test_m=2
 ```
 
-![](images/rule_test_commands.png)
+![](./images/rule_test_commands.png)
 
 The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
-![](images/aws_api_batch_alert_open.png)
+![](./images/aws_api_batch_alert_open.png)
 
 Check the AWS Batch job status:
 
-![](images/aws_api_batch_test.png)
+![](./images/aws_api_batch_test.png)

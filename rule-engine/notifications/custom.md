@@ -2,20 +2,13 @@
 
 ## Overview
 
-`CUSTOM` [notifications](../web-notifications.md) provide a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
+`CUSTOM` [notifications](../notifications/README.md) provide a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
 
 This integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
 
-## Examples
+## Configuration
 
-* Register service incident in [PagerDuty](custom-pagerduty.md)
-* Update [Github issue](custom-github.md)
-* Post comment to [Zendesk ticket](custom-zendesk.md)
-* Send SMS message via [IFTTT](custom-ifttt.md)
-* Trigger [CircleCI project build](custom-circleci.md)
-* Start [Jenkins job](custom-jenkins.md)
-
-## Supported HTTP Methods
+### Supported HTTP Methods
 
 | Method | Payload Allowed |
 |---|---|
@@ -26,14 +19,14 @@ This integration enables sending HTTP requests with customized content to the sp
 | PATCH | Yes |
 | DELETE | No |
 
-## Supported Content Types
+### Supported Content Types
 
 * `application/json`
 * `application/x-www-form-urlencoded`
 
 If the selected HTTP method such as `GET` doesn't support a payload, the request parameters specified in the Parameters section are appended to the Endpoint URL as a query string.
 
-## Supported Authentication Mechanisms
+### Supported Authentication Mechanisms
 
 | Type | Description |
 |---|---|
@@ -49,7 +42,7 @@ Authorization: Token OAUTH-TOKEN
 Authorization: Bearer YOUR_JWT
 ```
 
-![](images/custom-token.png)
+![](./images/custom-token.png)
 
 ## Placeholders
 
@@ -71,10 +64,17 @@ Otherwise, if the checkbox enabled, the parameter will be displayed on the 'Web 
 
 Both fixed and editable parameter values can include placeholders.
 
-![](images/custom_editable.png)
+![](./images/custom_editable.png)
 
-![](images/custom-editable-editor.png)
+![](./images/custom-editable-editor.png)
 
-## Example
+## Examples
 
-![](images/custom-json.png)
+* Register service incident in [PagerDuty](custom-pagerduty.md)
+* Update [Github issue](custom-github.md)
+* Post comment to [Zendesk ticket](custom-zendesk.md)
+* Send SMS message via [IFTTT](custom-ifttt.md)
+* Trigger [CircleCI project build](custom-circleci.md)
+* Start [Jenkins job](custom-jenkins.md)
+
+![](./images/custom-json.png)

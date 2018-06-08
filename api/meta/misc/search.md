@@ -2,7 +2,7 @@
 
 ## Description
 
-Full text series search.
+Retrieves series matching the specified search text.
 
 Refer to [expression reference](../../../search/README.md) for syntax, available fields and operators.
 
@@ -74,8 +74,7 @@ None.
 
 ```bash
 curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,dataType&entityTags=*&entityFields=timeZone' \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

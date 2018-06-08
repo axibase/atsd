@@ -1,18 +1,18 @@
 # nmon File Streaming over Telnet
 
-Execute the steps in this guide in order to start streaming nmon data into the Axibase Time Series Database over Telnet.
+Execute the steps in this guide in order to stream nmon statistics into ATSD using `telnet` protocol.
 
-If you would like to stream nmon data using an SSH Tunnel, use our [nmon File Streaming using an SSH Tunnel guide](ssh-tunneling.md "nmon File Streaming using an SSH Tunnel").
+For sending nmon data through an SSH tunnel, refer to [nmon File Streaming using an SSH Tunnel guide](ssh-tunneling.md "nmon File Streaming using an SSH Tunnel").
 
-If you would like to monitor multiple machines using nmon, use our [Installing nmon on Multiple Machines guide](deploy.md).
+To monitor multiple machines using nmon, refer to [Installing nmon on Multiple Machines guide](deploy.md).
 
-The main purpose of the nmon tool is to monitor performance information for CPU, memory, network, disk, virtual memory, top process, and other parts of the server or virtual machine.
+The main purpose of the nmon tool is to monitor performance information for CPU, memory, network, disk, virtual memory, top processes, and other parts of the server or virtual machine.
 
-This tool provides valuable information with a single binary. Currently, nmon is primarily supported on AIX and Linux systems, with limited support provided for Solaris systems. It can monitor IBM Power systems, x86, and amd64 processors, and even ARM based systems like Raspberry Pi.
+Currently, nmon is primarily supported on AIX and Linux systems. It can monitor IBM Power systems, x86, and amd64 processors, and even ARM based systems.
 
 nmon can be run either in interactive or recording modes. ATSD uses the recording mode to stream data as it is written into the nmon file.
 
-All AIX systems come with nmon pre-installed, but Linux systems need the nmon tool installed.
+AIX systems have nmon installed by default.
 
 ## nmon Resources
 
@@ -165,17 +165,17 @@ Entities collecting nmon data are also automatically assigned predefined nmon po
 
 Predefined AIX and Linux nmon portals cover a variety of key metrics and have been designed to provide useful insight into the performance of the target machine.
 
-Custom portals can be created using [HTML5 Widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization") to visualize any combination of collected [nmon metrics](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/format/ "Format").
+Custom portals can be created using [HTML5 Widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization") to visualize any combination of collected [nmon metrics](./format.md).
 
-[![](resources/widget-bar-2.png "widget bar 2")](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
+[![](./resources/widget-bar-2.png "widget bar 2")](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
 
 #### Predefined nmon AIX Portal
 
-![](resources/portal-4.png "portal 4")
+![](./resources/portal-4.png "portal 4")
 
 ##### Predefined nmon Linux Portal
 
-![](resources/nmon-linux-portal.png "nmon linux portal")
+![](./resources/nmon-linux-portal.png "nmon linux portal")
 
 Once nmon data is streamed into ATSD and predefined portals are working, you can use the [Rule Engine](../../rule-engine "Rule Engine") and
-[Forecasting](https://axibase.com/products/axibase-time-series-database/forecasts/ "Forecasts") tools for analyzing and planning capacity. Custom portals can be created using [HTML5 widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization").
+[Forecasting](../../forecasting/README.md) tools for analyzing and planning capacity. Custom portals can be created using [HTML5 widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization").

@@ -2,7 +2,7 @@
 
 ## Description
 
-Add entities as members to the specified entity group.
+Adds entities as members to the specified entity group.
 
 > Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
 
@@ -22,7 +22,7 @@ Add entities as members to the specified entity group.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist. Default: `true`. |
+| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist.<br>Default: `true`. |
 
 ### Payload
 
@@ -56,7 +56,7 @@ If `createEntities` is `false`, and the request contains a non-existing entity, 
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/add
+POST /api/v1/entity-groups/nmon-aix/entities/add
 ```
 
 #### Payload

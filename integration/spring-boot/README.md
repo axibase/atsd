@@ -1,8 +1,6 @@
 # Spring Boot
 
-Axibase Time Series Database has a storage driver for Spring Boot.
-
-[You can find the ATSD Spring Boot Storage Driver on GitHub.](https://github.com/axibase/spring-boot)
+ATSD [storage driver](https://github.com/axibase/spring-boot) for Spring Boot simplifies the process of instrumenting Spring Boot applications.
 
 ## Settings
 
@@ -25,7 +23,7 @@ Configuration settings are specified in the `application.properties` file.
 ```txt
 metrics.export.username: admin
 metrics.export.password: secret
-metrics.export.url: http://localhost:8088/api/v1/command
+metrics.export.url: http://atsd_hostname:8088/api/v1/command
 metrics.export.bufferSize: 16
 metrics.names.entity: spring-boot-sample
 metrics.names.metricPrefix: spring-boot
@@ -35,7 +33,7 @@ metrics.names.tags.organization: Axibase
 
 ## Metrics
 
-In order for the application to know about `metrics.export.` and `metrics.names.`, these metrics need to be specified in the configuration: [AtsdNamingStrategy and AtsdMetricWriter](https://github.com/axibase/spring-boot/blob/master/spring-boot-samples/spring-boot-sample-metrics-atsd/src/main/java/sample/metrics/atsd/SampleAtsdExportApplication.java).
+Refer to [AtsdNamingStrategy and AtsdMetricWriter](https://github.com/axibase/spring-boot/blob/master/spring-boot-samples/spring-boot-sample-metrics-atsd/src/main/java/sample/metrics/atsd/SampleAtsdExportApplication.java) example.
 
 Enable public metrics export:
 
@@ -63,14 +61,14 @@ Enable public metrics export:
 
 ### Wrapping Methods using Custom Metrics
 
-Wrap all class methods using custom metrics:
+Wrap all class methods.
 
 ```java
 @Measured
 public class JdbcCityRepository implements CityRepository
 ```
 
-Wrap a single methods using custom metrics:
+Wrap a specific method.
 
 ```java
 

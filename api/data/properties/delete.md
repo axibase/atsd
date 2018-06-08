@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete property records that match specified filters.
+Deletes property records that match specified filters.
 
 ### Delete Markers
 
@@ -49,7 +49,7 @@ An array of objects containing fields for filtering records for deletion.
 | `startDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
 | `endDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
 | `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with _exact_ or _partial_ key fields based on the `exactMatch` parameter below.|
-| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `false`, all records with key that **contains** fields in the request `key` (but may also include other fields) are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default value: `true`.|
+| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `false`, all records with key that **contains** fields in the request `key` (but may also include other fields) are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
 
 * Key and tag names are case-insensitive.
 * Key and tag values are case-sensitive.
@@ -77,10 +77,10 @@ Assuming property records A,B,C, and D exist:
 | D      | type-1 | e-4    |       |       |
 ```
 
-Queries would delete the following record:
+The table below illustrates which records will be deleted (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
-| exactMatch | key                     | delete  |
+| exactMatch | key                     | result  |
 |------------|-------------------------|---------|
 | true       |                         | D       |
 | false      |                         | A;B;C;D |
@@ -99,7 +99,7 @@ Queries would delete the following record:
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/properties/delete
+POST /api/v1/properties/delete
 ```
 
 #### Payload

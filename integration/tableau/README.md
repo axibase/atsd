@@ -1,8 +1,9 @@
 # Tableau
 
+* [Dataset](#dataset)
 * [Prerequisites](#prerequisites)
-* [Configure Database Connection](#configure-database-connection)
-* [Review Tables in Data Source Pane](#review-tables-in-data-source-pane)
+* [Database Connection](#configure-connection)
+* [Review Tables](#review-tables)
 * [Visualization](#visualization)
 * [Examples](#examples)
 
@@ -16,7 +17,7 @@ For the purpose of instruction, we will use the following sample [`series` comma
 
 To load the data, log in to ATSD and submit these commands on the **Metrics > Data Entry** page.
 
-![](images/metrics_entry.png)
+![](./images/metrics_entry.png)
 
 ## Prerequisites
 
@@ -32,45 +33,45 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
-## Configure Database Connection
+## Configure Connection
 
 * Launch Tableau
 * Select **Connect > To a Server > Other Databases(ODBC)**
 * Select the ATSD DSN from the dropdown. This is the DSN you specified during ODBC-JDBC bridge setup
-* Press **Connect** and wait a few seconds
+* Click **Connect** and wait a few seconds
 * Leave the **Server**,**Port**, **Database** and **String Extras** fields empty
-* Press **Sign In**
+* Click **Sign In**
 
-![](images/configure_connection.png)
+![](./images/configure_connection.png)
 
 ## Review Tables
 
-* Enter a keyword and click the **Search** button. For this exercise, we will search for the `bi.ex_net1.m` table:
+* Enter a keyword and click **Search**. For this exercise, we will search for the `bi.ex_net1.m` table:
 
-![](images/search.png)
+![](./images/search.png)
 
 * Drag-and-drop the table to Canvas area
-* Press **Update Now**.
+* Click **Update Now**.
 
-![](images/update_now1.png)
+![](./images/update_now1.png)
 
 ## Visualization
 
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Set `Datetime` to the columns field
 * Set `Value` to the rows field
 
 > Since `time` and `datetime` represent the same recorded time as different data types (long and timestamp), select only one of the columns in your queries.
 
-![](images/sum_year.png)
+![](./images/sum_year.png)
 
 Inspect a subset of the visualized data:
 
 * Select some data points in the view
 * Right click and choose **View Data**
 
-![](images/summary1.png)
+![](./images/summary1.png)
 
 ## Examples
 

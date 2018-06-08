@@ -105,7 +105,7 @@ isMetric('metric')
 
 Boolean.
 
-Returns true if a metric exists.
+Returns `true` if a metric exists.
 
 ```freemarker
 <#if isMetric("nmon.processes.blocked") >
@@ -124,7 +124,7 @@ Returns true if a metric exists.
 
 Boolean.
 
-Returns true if there is some data for metric and entity inserted in the last 24 hours.
+Returns `true` if there is some data for metric and entity inserted in the last 24 hours.
 
 ```freemarker
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
@@ -240,7 +240,7 @@ memberOf('entity', 'group1', …, 'groupN')
 
 Boolean.
 
-Returns true if an entity belongs to any of the specified entity groups.
+Returns `true` if an entity belongs to any of the specified entity groups.
 
 ```freemarker
 <#if memberOf("nurswgvml007", "aix-servers") >
@@ -258,7 +258,7 @@ memberOfAll('entity', 'group1', …, 'groupN')
 
 Boolean.
 
-Returns true if an entity belongs to all of the entity groups.
+Returns `true` if an entity belongs to all of the entity groups.
 
 ```freemarker
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
@@ -444,17 +444,17 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `atsd_last('entity', 'metric', 'tag1=v1,tag2=v2')`  |  Double  |  Last value for time series or null.  |
 |  `groupTag('entity', 'tagKey')`  |  string collection  |  Collection of tag values for `tagKey` of all entity groups an entity belongs to.  |
 |  `tag('entity', 'tagKey')`  |  string  |  Entity tag value.  |
-|  `memberOf('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns true if an entity belongs to any of specified entity groups.  |
-|  `memberOfAll('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns true if an entity belongs to all of the entity groups.  |
+|  `memberOf('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns `true` if an entity belongs to any of specified entity groups.  |
+|  `memberOfAll('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns `true` if an entity belongs to all of the entity groups.  |
 |  `list('value' [, delimiter])`  |  string collection  |  Splits a string by a delimiter. Default delimiter is comma.  |
 |  `getTags('metric', 'entity', 'tagKey'[, hours])`  |  string collection  |  Tag values for metric, entity, and `tagKey`.<br>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.<br>Default interval is 24 hours.  |
 |  `getEntitiesForTags(expression)`  |  string collection  |  Finds entities by expression.  |
 |  `getEntitiesForGroup(group)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.  |
 |  `getEntitiesForGroup(groupName, hours)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.<br>The method returns group members that have inserted data over the last N hours.<br>If hours are not specified or non-positive, all group members are returned.  |
 |  `getMetrics('entity')`  |  string collection  |  Retrieve all collected metrics for a particular entity.  |
-|  `isMetric('metric')`  |  boolean  |  Returns true if a metric exists.  |
-|  `isMetricCollected('metric', 'entity')`  |  boolean  |  Returns true if there is some data for metric and entity inserted in last 24 hours.  |
-|  `hasMetric('entity', 'metric' [,hours])`  |  boolean  |  Executes query for Last Insert Cache table. Returns true if the entity collects specified the metric, regardless of tags.<br>If the optional hours argument is specified, only rows inserted for the last N hours are evaluated.  |
+|  `isMetric('metric')`  |  boolean  |  Returns `true` if a metric exists.  |
+|  `isMetricCollected('metric', 'entity')`  |  boolean  |  Returns `true` if there is some data for metric and entity inserted in last 24 hours.  |
+|  `hasMetric('entity', 'metric' [,hours])`  |  boolean  |  Executes query for Last Insert Cache table. Returns `true` if the entity collects specified the metric, regardless of tags.<br>If the optional hours argument is specified, only rows inserted for the last N hours are evaluated.  |
 |  `getTagMaps('metric', 'entity'[, hours])`  |  collection of maps(string, string)  |  Collection of unique tag maps for metric and entity.<br>`[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.<br>The default interval is 24 hours.  |
 |  `getProperty('entity', 'property_type', 'tagKey')`  |  string collection  |  Retrieves a collection of property objects for specified entity, property type, and tag.  |
 |  `getSeriesProperties("{entity}", "{property_type}")`  |  property objects for specified entity and property type  |  Retrieves a collection of property objects for a specified entity and property type.<br>If no entity is specified, then a collection of property objects for all entities with the specified property type is retrieved.  |

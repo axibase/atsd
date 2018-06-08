@@ -9,7 +9,7 @@ List entities with last insert date before 2016-05-19T08:13:40.000Z.
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities?maxInsertDate=2016-05-19T08:13:40.000Z
+GET /api/v1/entities?maxInsertDate=2016-05-19T08:13:40.000Z
 ```
 
 ## Response

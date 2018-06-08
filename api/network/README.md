@@ -1,8 +1,8 @@
 # Network API
 
-Network API provides a set of plain text commands for inserting numeric time series, key=value properties, and tagged messages into the Axibase Time Series Database (ATSD) via **TCP** and **UDP** network protocols.
+Network API provides a set of plain text commands for inserting numeric time series, key=value properties, and tagged messages into the database via **TCP** and **UDP** network protocols.
 
-You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any programming language such as [Java](examples/AtsdTcpClient.java) that lets you connect to the ATSD server via TCP/UDP protocol.
+You can use `netcat`, `telnet`, `bash pseudo-device files`, or a programming language such as [Java](examples/AtsdTcpClient.java) that implements the TCP/UDP stack.
 
 ## Supported Commands
 
@@ -22,7 +22,7 @@ You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any progr
 ### Control Commands
 
 * [ping](ping.md)
-* [debug](#debugging)
+* [debug](#enable-debug-mode)
 * [time](time.md)
 * [version](version.md)
 * [exit](exit.md)
@@ -35,14 +35,14 @@ You can use `netcat`, `telnet`, `Bash tcp/udp pseudo-device files`, or any progr
 
 ## Ports
 
-By default, the ATSD server listens for incoming commands on the following ports:
+By default, the database server listens for incoming commands on the following ports:
 
 * `8081` TCP
 * `8082` UDP
 
 ## Encryption
 
-To encrypt TCP traffic, setup an [SSH tunnel](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/ssh-tunneling/) or create a VPN connection.
+To encrypt TCP traffic, setup an [SSH tunnel](../../integration/nmon/ssh-tunneling.md) or create a VPN connection.
 
 ## Authentication
 
@@ -58,19 +58,19 @@ To send a single command, connect to an ATSD server, send the command in plain t
 
 * netcat: `echo`
 
-```ls
+```bash
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc -w 1 atsd_host 8081
 ```
 
 * netcat: `printf`
 
-```ls
+```bash
 printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_host 8081
 ```
 
 * Bash [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
 
-```ls
+```bash
 echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_host/8081
 ```
 
@@ -78,7 +78,7 @@ echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_
 
 * telnet: one line
 
-```ls
+```bash
 telnet atsd_host 8081 << EOF
 series e:station_4 m:temperature=32.2 m:humidity=81.4
 EOF
@@ -115,7 +115,7 @@ A trailing line feed is not required for the last command in the batch.
 
 Use the `-e` flag in `echo` commands to enable interpretation of backslash escapes.
 
-```ls
+```bash
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_host 8081
 ```
 
@@ -183,17 +183,17 @@ The UDP protocol doesn't guarantee delivery but may have a higher throughput com
 
 In addition, sending commands with UDP datagrams decouples the client application from the server to minimize the risk of blocking I/O time-outs.
 
-```ls
+```bash
 echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" | nc -u -w 1 atsd_host 8082
 ```
 
-```ls
+```bash
 printf 'series e:station_3 m:temperature=32.2 m:humidity=81.4' | nc -u -w 1 atsd_host 8082
 ```
 
 Unlike TCP, the last command in a multi-command UDP datagram must be terminated with the line feed character.
 
-```ls
+```bash
 echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperature=32.1 m:humidity=82.4\n" | nc -u -w 1 atsd_host 8082
 ```
 
@@ -205,20 +205,20 @@ If such commands are submitted at approximately the same time, there is no guara
 
 * Duplicate example: same key, same current time
 
-```ls
+```bash
 echo -e "series e:station_1 m:temperature=32.2\nseries e:station_1 m:temperature=42.1" | nc atsd_host 8081
 ```
 
 * Duplicate example: same key, same time
 
-```ls
+```bash
 echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=42.1  d:2016-05-15T00:10:00Z" | nc atsd_host 8081
 ```
 
 ### TCP Client Examples
 
 * [Java: AtsdTcpClient.java](examples/AtsdTcpClient.java)
-* [Java: AtsdSendExample.java](examples/AtsdTcpClient.java)
+* [Java: AtsdSendExample.java](examples/AtsdSendExample.java)
 * [Java: AtsdParseExample.java](examples/AtsdParseExample.java)
 
 ## Syntax
@@ -372,4 +372,4 @@ Reasons why ATSD server can drop commands:
 
 To review dropped commands, `open command*.log` files in ATSD.
 
-![](dropped-commands-logs.png)
+![](./dropped-commands-logs.png)

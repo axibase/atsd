@@ -11,7 +11,7 @@ The response contains multiple separate series for each entity, including entiti
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

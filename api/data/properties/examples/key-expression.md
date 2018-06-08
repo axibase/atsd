@@ -7,7 +7,7 @@ Key/tag expression: Filter out all disks except those starting with `sd*`. Disks
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/properties/query
+POST /api/v1/properties/query
 ```
 
 ### Payload

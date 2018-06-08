@@ -12,7 +12,7 @@ The list can be filtered by user, source, status, query part, and elapsed time. 
 
 Users with an `ADMIN` role are authorized to view and cancel all queries whereas non-administrative users are restricted to viewing and cancelling only their own queries.
 
-![Query Reporting](images/sql-query-reporting.png)
+![Query Reporting](./images/sql-query-reporting.png)
 
 Query Detail Fields:
 
@@ -38,7 +38,7 @@ Query Detail Fields:
 | `Regions Scanned` | Number of regions scanned. |
 | `Regions Not Serving` | Number of `NotServingRegionException` instances caught. |
 
-![Query Details](images/sql-query-details.png)
+![Query Details](./images/sql-query-details.png)
 
 ## Cancelling Queries
 
@@ -104,7 +104,7 @@ Consider the following recommendations when developing queries:
 
 ### Optimizing Interval Queries
 
-Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause is not efficient as it causes the database to perform a full scan while comparing literal strings or numbers.
+Using the [`date_format`](README.md#date_format) and [`EXTRACT`](README.md#extract) functions in the `WHERE` condition and the `GROUP BY` clause is not efficient as it causes the database to perform a full scan while comparing literal strings or numbers.
 
 Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 

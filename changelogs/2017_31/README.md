@@ -13,7 +13,7 @@
 | 4421 | sql | Bug | Revert a change which caused empty results to be returned for a non-existing table without raising an error. |
 | [4420](#issue-4420) | sql | Bug | Return data type as `bigint` for columns that previously were classified as `long`. |
 | [4406](#issue-4406) | UI | Feature | Highlight error if tag value is not allowed by a dictionary tag specified in the metric or entity tag template. |
-| 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Configuration > Tag Templates** page. |
+| 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Settings > Tag Templates** page. |
 | [4395](#issue-4395) | jdbc | Feature | Add support for [wildcards](https://github.com/axibase/atsd-jdbc/blob/master/README.md#database-metadata) in `getTables` and `getColumns` methods. |
 | [4389](#issue-4389) | jdbc | Feature | Add support for inserting metric and entity [tags and fields](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#metric-metadata-columns) in `INSERT` statements. |
 | [4388](#issue-4388) | jdbc | Feature | Add support for local [timestamp](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#date) format `yyyy-MM-dd HH:mm:ss[.fffffffff]` in `INSERT` statements. |
@@ -28,9 +28,9 @@
 | 4369 | jdbc | Feature | Add support for [`timestamptz`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#time-zone) connection property to control how timestamps are parsed and formatted when inserting data. |
 | 4368 | sql | Bug | Handle placeholders in prepared statements in [SQL Metadata API](../../sql/api-meta.md) method. |
 | 4366 | jdbc | Feature | Refactor [JDBC URL](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-url). |
-| 4365 | sql | Bug | Fixed a bug which caused the server to use an incorrect time zone in `GROUP BY PERIOD` [queries](../../sql#period) if the database is running in a user-defined time zone. |
+| 4365 | sql | Bug | Fixed a bug which caused the server to use an incorrect time zone in `GROUP BY PERIOD` [queries](../../sql/README.md#period) if the database is running in a user-defined time zone. |
 | 4363 | sql | Feature | Implement an `/api/sql/meta` method to obtain [query metadata](../../sql/api-meta.md) without executing the query. |
-| 4345 | forecast | Bug | Add support for tag wildcards in [series queries](../../api/data/series/query.md#entity-filter-fields) for forecast data: `type=FORECAST`. |
+| 4345 | forecast | Bug | Add support for tag wildcards in [series queries](../../api/data/series/query.md) for forecast data: `type=FORECAST`. |
 | [4328](#issue-4328) | sql | Feature | Add support for [`LAG`](../../sql/README.md#lag) function in `JOIN` queries. |
 | [4303](#issue-4303) | jdbc | Feature | Add support for inserting data with JDBC driver using [`INSERT` and `UPDATE`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) queries. |
 | 4278 | core | Bug | Fix a bug causing the data compaction to hang when multiple detailed column families are present. |
@@ -73,7 +73,7 @@ SELECT COUNT(*) FROM test_m
 
 ### Issue 4406
 
-![](Images/4406.png)
+![](./Images/4406.png)
 
 ### Issue 4395
 

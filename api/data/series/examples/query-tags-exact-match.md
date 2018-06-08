@@ -17,10 +17,10 @@ Assuming series A,B,C, and D have the following series tags:
 | D      | m-1    | e-1    |       |       |
 ```
 
-Queries would return the following series:
+The table below illustrates which records will be returned (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
-| exactMatch | requested tags | match   |
+| exactMatch | requested tags | result  |
 |------------|----------------|---------|
 | true       |                | D       | - no tags specified in the request, series with additional tags are ignored because exactMatch=true
 | false      |                | A;B;C;D | - no tags specified in the request, series with additional tags returned because exactMatch=false
@@ -35,7 +35,7 @@ Queries would return the following series:
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

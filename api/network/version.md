@@ -2,7 +2,7 @@
 
 ## Description
 
-The server responds with the Axibase Time Series Database revision number.
+Returns database revision number.
 
 ## Syntax
 
@@ -29,5 +29,5 @@ version
 > Response
 
 ```txt
-13216
+19320
 ```

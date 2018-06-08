@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4603 | admin | Bug | Logging: removed Freemarker Log4j runtime warnings.  |
-| [4576](#issue-4576) | rule_engine | Feature | Implemented [lookup functions](../../rule-engine/functions.md#entity-tag-functions) `entity_tags` and `entity_tag`.  |
+| [4576](#issue-4576) | rule_engine | Feature | Implemented [lookup functions](../../rule-engine/functions.md#lookup) `entity_tags` and `entity_tag`.  |
 | 4593 | security | Feature | Retain session when the built-in administrator account is created. |
 | 4587 | security | Feature | Create built-in user groups to simplify initial configuration. |
 | [4586](#issue-4586) | api | Feature | Store `createDate` for new entities and metrics. |
@@ -37,12 +37,12 @@ count() = 0 AND entity_tag(entity.tags['collector-host'], 'status') = 'running'
 
 ### Issue 4586
 
-![](Images/entity_created_date.png)
+![](./Images/entity_created_date.png)
 
 ### Issue 4581
 
 ```ls
-GET https://atsd_hostname:8443/api/v1/metrics/docker.cpu.sum.usage.total.percent/series?maxInsertDate=2017-09-19T20:51:00Z
+GET /api/v1/metrics/docker.cpu.sum.usage.total.percent/series?maxInsertDate=2017-09-19T20:51:00Z
 ```
 
 The response incorrectly returned entities with `lastInsertDate` greater than `maxInsertDate` parameter while displaying a wrong `lastInsertDate` value in the response.

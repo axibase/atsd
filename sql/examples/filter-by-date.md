@@ -222,7 +222,7 @@ The `BETWEEN` operator allows specifying a subquery that must return a result se
 * If there are 2 values, the second value must be greater or equal the first value.
 * If there are more than 2 values, then each pair of values is processed as a separate time interval.
 
-> The intervals in the result set can be identified with the [`INTERVAL_NUMBER()`](../README.md#interval-number) function.
+> The intervals in the result set can be identified with the [`INTERVAL_NUMBER()`](../README.md#interval_number) function.
 
 ```ls
 series d:2017-04-03T01:00:00Z e:nurswgvml007 x:maintenance-rfc=RFC12-start
@@ -314,7 +314,7 @@ WHERE entity = 'nurswgvml007'
 
 ## Query Multiple Intervals with Date Filter
 
-The date filters splits the selection timespan into multiple separate intervals which contain consecutive samples where the date filters evaluated to true.
+The date filters splits the selection timespan into multiple separate intervals which contain consecutive samples where the date filters evaluated to `true`.
 
 Each interval opens with the first sample for which the date filter returned `true`, includes subsequent samples which also evaluate to `true`, and closes before the first row that returns `false`.
 
@@ -331,10 +331,10 @@ WHERE entity = 'nurswgvml007'
 |----------------------|-------|
 | 2017-04-04T16:00:06Z | 54.6  |
 | 2017-04-04T16:00:22Z | 6.0   |
-... Current interval closes when the first sample outside of the [00:00-00:30] time range returns FALSE.
-... Intermediate samples that evaluate to FALSE are not part of any interval.
-| 2017-04-04T17:00:08Z | 3.0   | <- New interval starts when new sample evaluates to TRUE after previous FALSE rows.
-| 2017-04-04T17:00:24Z | 3.4   | <- Subsequent TRUE rows are part of the interval.
+... Current interval closes when the first sample outside of the [00:00-00:30] time range returns `false`.
+... Intermediate samples that evaluate to `false` are not part of any interval.
+| 2017-04-04T17:00:08Z | 3.0   | <- New interval starts when new sample evaluates to `true` after previous `false` rows.
+| 2017-04-04T17:00:24Z | 3.4   | <- Subsequent `true` rows are part of the interval.
 ```
 
 ## Query to Interpolate Multiple Intervals

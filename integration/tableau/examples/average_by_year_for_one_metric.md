@@ -11,8 +11,8 @@ Let's build a report illustrating average monthly imports each year.
 ## Steps
 
 * Drag-and-drop the table to Canvas area
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the columns field.
 * Drag-and-drop `Value` onto the rows field.
 * Change value aggregation from **SUM** to **AVG**: right click > **Measure** > **Average**

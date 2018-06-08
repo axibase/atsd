@@ -6,14 +6,14 @@ Specify interval without `endDate` to query data for a sliding window ending wit
 
 If an interval is specified and `endDate` is not, `endDate` is set to current server time.
 
-This would be equivalent to setting `endDate` to `now`.
+This is equivalent to setting `endDate` to `now`.
 
 ## Request
 
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

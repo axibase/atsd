@@ -1,4 +1,4 @@
-# Ubuntu/Debian: APT
+# Installation: APT
 
 ## Supported Versions
 
@@ -62,7 +62,7 @@ tail -f /opt/atsd/atsd/logs/start.log
 
 You should see an **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port 8088 (http) and 8443 (https).
+Web interface is accessible on port `8443` (https).
 
 > Add [firewall](firewall.md) rules if the above ports are not reachable.
 

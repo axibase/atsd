@@ -41,7 +41,7 @@
 
 ### Issue 4641
 
-The [`LOOKUP`](../../rule-engine/functions.md#collection-functions) function returns a matching value for key from the specified replacement table.
+The [`LOOKUP`](../../rule-engine/functions.md#collection) function returns a matching value for key from the specified replacement table.
 
 ```java
 lookup(S replacementTable, S key)
@@ -71,9 +71,9 @@ retentionDays > 0 OR seriesRetentionDays > 0
 
 The multi-entity portal in entity views displays key metrics for entities matched with a search keyword.
 
-![](Images/entity_view_search.png)
+![](./Images/entity_view_search.png)
 
-![](Images/entity_view_portal.png)
+![](./Images/entity_view_portal.png)
 
 ### Issue 4605
 
@@ -122,4 +122,4 @@ The values are masked in the following cases:
 * If variable name contains 'password' (case insensitive).
 * If command arguments contain url with credentials.
 
-![](Images/mask_secret.png)
+![](./Images/mask_secret.png)

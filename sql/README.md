@@ -1,8 +1,8 @@
-﻿# Overview
+﻿# SQL
 
 The Axibase Time Series Database supports SQL (Structured Query Language) for retrieving time series records from the database.
 
-SQL statements can be executed interactively via the web-based console, on [schedule](#scheduler), and using the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
+SQL statements can be executed interactively via the web-based [console](sql-console.md), on [schedule](#scheduler), and using the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
 * [Syntax](#syntax)
   * [SELECT Expression](#select-expression)
@@ -26,7 +26,7 @@ SQL statements can be executed interactively via the web-based console, on [sche
   * [Match Expressions](#match-expressions)
   * [CASE Expression](#case-expression)
   * [Processing Sequence](#processing-sequence)
-  * [Keywords](#keywords)
+  * [Keywords](#reserved-words)
 * [Processing Sequence](#processing-sequence)
 * [Grouping](#grouping)
 * [Date Aggregation](#date-aggregation)
@@ -40,10 +40,8 @@ SQL statements can be executed interactively via the web-based console, on [sche
 * [Options](#options)
 * [Permissions](permissions.md)
 * [API Endpoint](api.md)
-* [Scheduler](#scheduler)
-  * [Send Reports](scheduled-sql.md)
-  * [Store Results](scheduled-sql-store.md)
-* [Performance](performance.md)
+* [Scheduled Reports](#scheduler)
+* [Query Optimization](performance.md)
 * [SQL Compatibility](#sql-compatibility)
 * [Examples](examples/README.md)
 
@@ -121,6 +119,7 @@ SELECT entity, metric, datetime, value
 WHERE metric = 'mpstat.cpu_busy'
   -- WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user')
   -- WHERE metric LIKE 'mpstat.cpu%'
+  -- WHERE metric IN metrics('nurswgvml007')
   AND entity = 'nurswgvml007'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
@@ -287,7 +286,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
 |`metric.lastInsertTime`|string | Last time a value was received for this metric by any series. ISO date.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
-|`metric.versioning`|boolean | If set to true, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
+|`metric.versioning`|boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
 |`metric.maxValue`| double | Maximum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
 |`metric.invalidValueAction` | string | [Invalid Action](../api/meta/metric/list.md#invalid-actions) type.|
@@ -603,7 +602,7 @@ Columns referenced in the `SELECT` expression must be included in the `GROUP BY`
 
 ## Identifiers
 
-Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#keywords), a function name, or a special character including whitespace, `.`,`+`,`-`,`*`,`/`,`,`,`"`,`'`.
+Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#reserved-words), a function name, or a special character including whitespace, `.`,`+`,`-`,`*`,`/`,`,`,`"`,`'`.
 
 ```sql
 -- Special character
@@ -787,7 +786,7 @@ WHERE datetime >= NOW - 5*MINUTE
 | df.disk_used | nurswgvml007 | 2017-06-19T06:12:26Z | 8715136.0 | /                | /dev/mapper/vg_nurswgvml007-lv_root |
 ```
 
-Changing the case of a tag value condition `tags.file_system = '/DEV/mapper/vg_nurswgvml007-lv_root'` would cause the error **TAG_VALUE not found**.
+Changing the case of a tag value condition `tags.file_system = '/DEV/mapper/vg_nurswgvml007-lv_root'` causes the database to return the **TAG_VALUE not found** error.
 
 ## Arithmetic Operators
 
@@ -830,7 +829,7 @@ WHERE entity IN ('nurswgvml006', 'nurswgvml007', 'nurswgvml008')
 
 ### LIKE Expression
 
-The `LIKE` expression returns true if the value matches the specified string pattern which supports `%` and `_` wildcards.
+The `LIKE` expression returns `true` if the value matches the specified string pattern which supports `%` and `_` wildcards.
 
 * Percent sign `%` matches zero or more characters in the value.
 
@@ -970,7 +969,7 @@ WHERE metric IN ('temperature', 'status')
 
 ### Simple `CASE` Expression
 
-The simple `CASE` expression compares the `input_expression` with `compare_expression`s and returns the `result_expression` when the comparison is true.
+The simple `CASE` expression compares the `input_expression` with `compare_expression`s and returns the `result_expression` when the comparison is `true`.
 
 ```sql
 CASE input_expression
@@ -1041,7 +1040,7 @@ WHERE time >= 1500300000000
 
 ### Optimizing Interval Queries
 
-Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
+Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
 ```sql
 WHERE date_format(time, 'yyyy') > '2018'   -- Slow: full scan with string comparison.
@@ -1517,9 +1516,9 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, VALUE NAN, START_TIME)
 | `alignment` | Aligns regular timestamps based on calendar or start time. Default: `CALENDAR`. |
 | `timezone` | Time zone applied in `CALENDAR` alignment to periods equal or greater than 1 day. |
 
-[![](images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
+[![](./images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
 
-![INTERPOLATE Parameters](images/regularize_sinusoid.png)
+![INTERPOLATE Parameters](./images/regularize_sinusoid.png)
 
 ### Interpolation Period
 
@@ -1612,7 +1611,7 @@ Partitioning is implemented with the `ROW_NUMBER` function, which returns the se
 
 A partition is a subset of all rows within the result set, grouped by an entity and/or series tags. Each row in the result set may belong to only one partition.
 
-For example, a result set partitioned by entity and ordered by time would have the following row numbers:
+For example, a result set partitioned by entity and ordered by time has the following row numbers:
 
 ```ls
 |--------------|----------------------|-------| ROW_NUMBER
@@ -3073,11 +3072,11 @@ The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executi
 
 **Example**. Temporary Table Grouping and In-Memory Ordering
 
-![Temp Table Grouping and In-Memory Ordering](images/in-memory-ordering.png)
+![Temp Table Grouping and In-Memory Ordering](./images/in-memory-ordering.png)
 
 ## Scheduler
 
-SQL statements can be executed interactively via the SQL console as well as on a [schedule](scheduled-sql.md).
+SQL statements can be executed interactively via the [SQL Console](sql-console.md) as well as on a [schedule](scheduled-sql.md).
 
 Scheduled execution allows for generated report files to be distributed to email subscribers or stored on a local file system.
 

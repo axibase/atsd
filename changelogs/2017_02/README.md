@@ -5,19 +5,19 @@
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence in queries against the [`atsd_series`](../../sql/examples/select-atsd_series.md) table. If the query requests several metrics with different datatypes, no precision loss will occur. |
-| 3770 | api-rest        | Bug     | Removed versioning tags from [`exactMatch`](../../api/data/series/query.md#series-filter-fields) comparison to prevent empty result sets when querying data for versioned metrics. |
-| [3769](#issue-3769) | sql             | Feature     | Extended the [`LOOKUP`](../../sql#lookup) function to accept series, entity, and metric tags as parameters. |
-| [3768](#issue-3768) | sql             | Feature | Extended the [`CONCAT`](../../sql#string-functions) function to accept numeric arguments. |
-| [3767](#issue-3767) | sql             | Feature | Extended the [`CAST`](../../sql#cast) function to convert numbers to strings. |
+| 3770 | api-rest        | Bug     | Removed versioning tags from [`exactMatch`](../../api/data/series/query.md#tag-filter) comparison to prevent empty result sets when querying data for versioned metrics. |
+| [3769](#issue-3769) | sql             | Feature     | Extended the [`LOOKUP`](../../sql/README.md#lookup) function to accept series, entity, and metric tags as parameters. |
+| [3768](#issue-3768) | sql             | Feature | Extended the [`CONCAT`](../../sql/README.md#string-functions) function to accept numeric arguments. |
+| [3767](#issue-3767) | sql             | Feature | Extended the [`CAST`](../../sql/README.md#cast) function to convert numbers to strings. |
 | 3764 | sql             | Bug     | Fixed NullPointerException error when data was requested with the [series query](../../api/data/series/query.md) method for a newly created metric without any data. |
-| [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](../../sql#validation-query) validation query implementation to return exactly one row. |
+| [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](../../sql/api.md#connection-query) validation query implementation to return exactly one row. |
 | [3480](#issue-3480) | api-rest        | Feature | Added support for the [`text`](../../api/data/series/query.md#value-object) field in the [series query](../../api/data/series/query.md) method. The `text` field allows annotating numeric samples with text.|
 
 ## Collector
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|--------------------------------------------------|
-| [3755](#issue-3755) | docker          | Feature | Added [container size metrics](https://github.com/axibase/axibase-collector/blob/master/jobs/docker/volume-size.md#container-size-metrics) for Docker containers. |
+| [3755](#issue-3755) | docker          | Feature | Added [container size metrics](https://axibase.com/docs/axibase-collector/jobs/docker.html) for Docker containers. |
 | 3752 | docker          | Bug     | Fixed issues with mis-matched volume labels by removing old records from the embedded database. |
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly sent into ATSD. |
 | 3733 | docker          | Bug     | Eliminated table locks in the embedded database, which resulted in the collection of all statistics being stopped. |
@@ -32,7 +32,7 @@
 
 ### Issue 3773
 
-If the value column in an `atsd_series` query returns numbers for metrics with different data types, the prevailing data type is determined based on the following [rules](../../sql#numeric-precedence):
+If the value column in an `atsd_series` query returns numbers for metrics with different data types, the prevailing data type is determined based on the following [rules](../../sql/README.md#numeric-precedence):
 
 1. If all data types are integers (short, integer, long), the prevailing integer type is returned.
 2. If all data types are decimals (float, double, decimal), the prevailing decimal type is returned.
@@ -53,7 +53,7 @@ WHERE metric IN ('tst-metric-short',
 
 ### Issue 3769
 
-Extended the [`LOOKUP`](../../sql#lookup) function so that it can accept series, metric, and entity tags as parameters.
+Extended the [`LOOKUP`](../../sql/README.md#lookup) function so that it can accept series, metric, and entity tags as parameters.
 
 ```sql
 SELECT datetime, value, metric, metric.tags.digital_set
@@ -72,7 +72,7 @@ FROM 'ba:active.1'
 
 ### Issue 3768
 
-Extended the [`CONCAT`](../../sql#string-functions) function to accept numeric arguments by implicitly converting them into strings using a `#.##` pattern.  As a result, applying the [`CAST`](../../sql#cast) function to numbers is no longer required.
+Extended the [`CONCAT`](../../sql/README.md#string-functions) function to accept numeric arguments by implicitly converting them into strings using a `#.##` pattern.  As a result, applying the [`CAST`](../../sql/README.md#cast) function to numbers is no longer required.
 
 ```sql
 SELECT datetime, value, metric
@@ -84,7 +84,7 @@ FROM 'ba:active.1'
 
 ### Issue 3767
 
-The [`CAST`](../../sql#cast) function can now convert both a string into a number, as well as a number into a string. Casting numbers (modifying data type) to strings is required to pass it as an argument into a string function. Applying `CAST` to a string returns a string for a numeric value formatted with a `#.##` pattern.
+The [`CAST`](../../sql/README.md#cast) function can now convert both a string into a number, as well as a number into a string. Casting numbers (modifying data type) to strings is required to pass it as an argument into a string function. Applying `CAST` to a string returns a string for a numeric value formatted with a `#.##` pattern.
 
 ```sql
 SELECT datetime, value, metric
@@ -95,7 +95,7 @@ FROM 'ba:active.1'
 
 ### Issue 3763
 
-Previously, the [`SELECT 1`](../../sql#validation-query) validation query didn't return any rows except the header.
+Previously, the [`SELECT 1`](../../sql/api.md#connection-query) validation query didn't return any rows except the header.
 
 ```ls
 | 1 |
@@ -126,7 +126,7 @@ Support was added for the text field (named `x`) in Data API methods for series 
 
 ### Issue 3755
 
-The following aggregate [metrics](https://github.com/axibase/axibase-collector/blob/master/jobs/docker/volume-size.md) for Docker container sizes were added:
+The following aggregate [metrics](https://axibase.com/docs/axibase-collector/jobs/docker/volume-size.html) for Docker container sizes were added:
 
 * `docker.fs.total.size.rw`: the total size of all the files for all containers, in bytes.
 * `docker.fs.total.size.rootfs` - the size of the files which have been created or changed for all containers.
@@ -139,7 +139,7 @@ The following metrics are collected at the docker-host level.
 
 The metrics are collected at 'Container Size Interval' for running containers and at 'Property Refresh Interval' for all containers.
 
-![Figure 1](Images/Figure1.png)
+![Figure 1](./Images/Figure1.png)
 
 ### Issue 3481
 
@@ -191,7 +191,7 @@ The `interpolate-extend` setting adds missing periods at the beginning and the e
 ### Issue 2928
 
 To prevent naming collision, the `interpolate` setting was renamed to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/), which is an interpolation mode applied to computed series in case the values are irregularly spaced.
-If set to true, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the
+If set to `true`, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the
 previous and preceding values.
 
 [ChartLab](https://apps.axibase.com/chartlab/e377b59a/3/)

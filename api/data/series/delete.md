@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete series for the specified metric, entity, and optional series tags.
+Deletes series for the specified metric, entity, and optional series tags.
 
 ### Delete Markers
 
@@ -35,7 +35,7 @@ An array of objects containing fields for filtering records for deletion.
 | `metric` | string | [**Required**] Metric name.|
 | `entity` | string | [**Required**] Entity name.|
 | `tags` | object | Series tags object, where field name represents tag name and field value is tag value,<br> for example `{"tag-1":"val-1","tag-2":"val2"}` |
-| `exactMatch` | boolean | If `exactMatch` is `true`, only one series with exactly the same series tags as in the request is deleted.<br>If `false`, all series which **contain** the series tags in the request (but may also include other series tags) are deleted.<br>If `exactMatch` is `false` and no series tags are specified, all series for the specified metric and entity are deleted.<br>Default value: `true`.|
+| `exactMatch` | boolean | If `exactMatch` is `true`, only one series with exactly the same series tags as in the request is deleted.<br>If `false`, all series which **contain** the series tags in the request (but may also include other series tags) are deleted.<br>If `exactMatch` is `false` and no series tags are specified, all series for the specified metric and entity are deleted.<br>Default: `true`.|
 
 ## Response
 
@@ -56,7 +56,7 @@ The service responds with an error message if the metric or entity is not found,
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/delete
+POST /api/v1/series/delete
 ```
 
 ### Payload
@@ -86,7 +86,7 @@ curl https://atsd_hostname:8443/api/v1/series/delete \
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/delete
+POST /api/v1/series/delete
 ```
 
 ### Payload

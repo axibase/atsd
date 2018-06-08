@@ -6,11 +6,11 @@
 |------|-------------|---------|----------------------|
 | 4419 | sql | Bug | IndexOutOfBoundsException fixed in queries that referred to a non-existent metric. |
 | 4417 | sql | Bug | Fixed a NullPointerException if all columns were selected for a new metric without any samples. |
-| [4416](#Issue-4416) | api-network | Feature | `Invalid Action (a)` string field added to the [`metric`](../../api/network/metric.md#metric-command) command
-| [4403](#Issue-4403) | sql | Bug | Added syntax validation for the [`IN`](../../sql#where-clause) clause to require enclosing brackets. |
-| [4377](#Issue-4377) | sql | Feature | Add support for selecting all columns in [inline views](../../sql#inline-views). |
-| [4361](#Issue-4361) | sql | Feature | Add support for compressed CSV files in scheduled [SQL query export](../../sql/scheduled-sql.md) |
-| [3918](#Issue-3918) | api-rest | Bug | Replace `last=true` with `limit=1` in Series [URL query](../../api/data/series/url-query.md) method. |
+| [4416](#issue-4416) | api-network | Feature | `Invalid Action (a)` string field added to the [`metric`](../../api/network/metric.md#metric-command) command
+| [4403](#issue-4403) | sql | Bug | Added syntax validation for the [`IN`](../../sql/README.md#where-clause) clause to require enclosing brackets. |
+| [4377](#issue-4377) | sql | Feature | Add support for selecting all columns in [inline views](../../sql/README.md#inline-views). |
+| [4361](#issue-4361) | sql | Feature | Add support for compressed CSV files in scheduled [SQL query export](../../sql/scheduled-sql.md) |
+| [3918](#issue-3918) | api-rest | Bug | Replace `last=true` with `limit=1` in Series [URL query](../../api/data/series/url-query.md) method. |
 
 ### Issue 4416
 
@@ -51,9 +51,9 @@ FROM ( select * from table_size ) TableauSQL
 
 ### Issue 4361
 
-Compression for CSV report files can be selected on the **Configuration > SQL Queries** page.
+Compression for CSV report files can be selected on the **SQL > Scheduled Queries** page.
 
-![](Images/4361.png)
+![](./Images/4361.png)
 
 ### Issue 3918
 

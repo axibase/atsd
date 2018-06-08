@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of entity groups to which the specified entity belongs.
+Retrieves a list of entity groups to which the specified entity belongs.
 
 ## Request
 
@@ -34,7 +34,7 @@ An array of objects containing the following fields describing an entity group.
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/groups
+GET /api/v1/entities/nurswgvml007/groups
 ```
 
 #### Payload
@@ -45,8 +45,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/groups \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

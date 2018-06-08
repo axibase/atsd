@@ -2,14 +2,14 @@
 
 ## Description
 
-Retrieve messages for all types and sources. Same results would be returned with type and source set to empty string.
+Retrieve messages for **all** types and sources by omitting these fields in the request or by setting them to an empty string or `null` value.
 
 ## Request
 
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/query
+POST /api/v1/messages/query
 ```
 
 ### Payload

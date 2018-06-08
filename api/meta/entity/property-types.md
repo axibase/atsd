@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list property types for the entity.
+Retrieves a list property types for the entity.
 
 ## Request
 
@@ -41,7 +41,7 @@ An array of strings.
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types
+GET /api/v1/entities/nurswgvml007/property-types
 ```
 
 #### Payload
@@ -52,8 +52,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

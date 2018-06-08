@@ -47,7 +47,7 @@ On the other hand, `SUM` returns 3 (3 + null->0) at 2016-06-25T08:00:05Z because
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

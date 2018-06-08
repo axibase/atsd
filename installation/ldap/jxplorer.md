@@ -14,21 +14,21 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 * Enter https, LDAP server hostname and SSL port in the browser address bar, for example `https://ldap_host:636`
 
-* Press the [Advanced] button and then `Add exception` to retrieve the certificate.
+* Press **Advanced > Add exception** to retrieve the certificate.
 
-![](resources/add_exception.png)
+![](./resources/add_exception.png)
 
 * Confirm the security exception.
 
-![](resources/confirm_exception.png)
+![](./resources/confirm_exception.png)
 
-* Open `Preferences` -> `Advanced` -> `Certificates` -> `View Certificates`
+* Open **Preferences > Advanced > Certificates > View Certificates** page.
 
-![](resources/view_certificates.png)
+![](./resources/view_certificates.png)
 
 * Select the `Servers` tab and click on the required AD server certificate to export it.
 
-![](resources/cert-export.png)
+![](./resources/cert-export.png)
 
 ## Import Server Certificate into ATSD Keystore File
 
@@ -42,10 +42,10 @@ keytool -importcert -keystore /opt/atsd/atsd/conf/server.keystore -storepass ats
 
 * Open `Security` -> `Trusted Servers and CAs`
 
-![](resources/security.png)
+![](./resources/security.png)
 
 * Click `Add Certificate`, select the crt file and add it to the keystore.
 
-![](resources/add_cert.png)
+![](./resources/add_cert.png)
 
 > Note that the `cacerts` keystore file has a default password of `changeit` (see [Jxplorer documentation](http://jxplorer.org/help/Setting_a_Keystore_Password.htm)).

@@ -15,7 +15,7 @@ To evaluate the rule on schedule instead of event, use **timer** metrics which a
 
 By reacting to a `timer` metric, the rule can be evaluated at the desired frequency, for example, every 15 minutes:
 
-![](images/timer.png)
+![](./images/timer.png)
 
 ## Analyzing Data
 
@@ -41,10 +41,10 @@ getEntityCount('jmx.zookeeper.tick', 'now - 1*DAY', 'now - 1*HOUR', '') > 0
 
 To restrict the times of the day when the rule is active, evaluate the `now` field as part of the condition.
 
-The [`now`](window-fields.md#time-fields) field represents current server time as a [`DateTime`](object-datetime.md) object which properties can be accessed with various `get()` methods.
+The [`now`](window-fields.md#date-fields) field represents current server time as a [`DateTime`](object-datetime.md) object which properties can be accessed with various `get()` methods.
 
 ```javascript
 now.getHourOfDay() = 15
 ```
 
-![](images/timer-calendar.png)
+![](./images/timer-calendar.png)

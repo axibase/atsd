@@ -9,7 +9,7 @@ Select data for the last hour, ending with current time using [calendar](../../.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

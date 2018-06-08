@@ -1,6 +1,6 @@
-# Installation on Distributed HBase Cluster using Cloudera Manager
+# Installation: Cloudera / CDH
 
-## Create `axibase` user
+## Create User
 
 Create an `axibase` user on the server where ATSD will be running.
 
@@ -10,7 +10,7 @@ sudo adduser axibase
 
 ## Install Java
 
-[Install Oracle JDK or Open JDK.](../administration/migration/install-java-8.md)
+[Install Oracle JDK or Open JDK](../administration/migration/install-java-8.md).
 
 Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
 
@@ -19,14 +19,12 @@ sudo su axibase
 ```
 
 ```sh
-jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; echo $jp
+jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
+  sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; \
+  echo $jp
 ```
 
-```sh
-exit
-```
-
-## Verify Zookeeper Connectivity
+## Verify Connectivity
 
 Check connection from the ATSD server to the Zookeeper service.
 
@@ -45,7 +43,7 @@ The Zookeeper client port is specified in:
 * Zookeeper host: `/etc/zookeeper/conf.dist/zoo.cfg` > `clientPort` setting
 * HBase host: `/etc/hbase/conf.dist/hbase-site.xml` > `hbase.zookeeper.property.clientPort` setting
 
-## Download ATSD EE
+## Download ATSD
 
 ### CDH (Cloudera Distribution Hadoop) 5.5.x
 
@@ -53,14 +51,17 @@ The Zookeeper client port is specified in:
 curl -O https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 ```
 
-## Extract Files
+### Extract Files
 
 ```sh
 sudo tar -xzvf atsd_ee_hbase_1.0.3.tar.gz -C /opt
+```
+
+```sh
 sudo chown -R axibase:axibase /opt/atsd
 ```
 
-## Request License Key
+## Request License
 
 To obtain a license key, contact Axibase support with the following information from the machine where ATSD will be installed.
 
@@ -95,9 +96,9 @@ hostname -f
 NURSWGVML007
 ```
 
-Email output of the above commands to Axibase support and copy the provided key to `/opt/atsd/atsd/conf/license/key.properties`.
+Provide output of the above commands to Axibase support and copy the returned license key to `/opt/atsd/atsd/conf/license/key.properties`.
 
-## Configure HBase Connection
+## Setup HBase Connection
 
 Open the `hadoop.properties` file.
 
@@ -142,7 +143,7 @@ Copy the `axibase.keytab` file to the `/opt/atsd/atsd/conf` directory on the ATS
 
 Check the HBase Secure Authorization settings in the Cloudera HBase configuration.
 
-![](images/cloudera-manager-authorization.png)
+![](./images/cloudera-manager-authorization.png)
 
 If the HBase Secure Authorization is disabled you can access HBase as is. Proceed to [Kerberos Settings](#kerberos-settings).
 
@@ -152,7 +153,7 @@ Otherwise, you need to allow the newly created `axibase` principal to access HBa
 
 > Don't forget to deploy updated configuration and restart HBase.
 
-![](images/cloudera-manager-superuser.png)
+![](./images/cloudera-manager-superuser.png)
 
 #### Option 2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal
 
@@ -311,9 +312,9 @@ default etypes for default_tkt_enctypes: 23 18.
 6247 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Login user from keytab successful
 ```
 
-## Configure HBase Region Servers
+## Configure HBase
 
-### Deploy ATSD Coprocessors
+### Deploy ATSD Coprocessors to HBase Region Servers
 
 Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib` directory on each HBase region server.
 
@@ -325,11 +326,11 @@ Open Cloudera Manager, select the target HBase cluster/service, open Configurati
 * `com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint`
 * `com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint`
 
-![](images/cloudera-manager-coprocessor-config.png)
+![](./images/cloudera-manager-coprocessor-config.png)
 
 ### Increase Maximum Heap Size on Region Servers
 
-![](images/cdh-region-heap.png)
+![](./images/cdh-region-heap.png)
 
 ### Restart HBase Service
 
@@ -341,7 +342,7 @@ sudo netstat -tulpn | grep "8081\|8082\|8084\|8088\|8443"
 
 If some of the above ports are taken, open the `/opt/atsd/atsd/conf/server.properties` file and change ATSD listening ports accordingly.
 
-```txt
+```elm
 http.port = 8088
 input.port = 8081
 udp.input.port = 8082
@@ -349,13 +350,13 @@ pickle.port = 8084
 https.port = 8443
 ```
 
-## Disable HBase Compactions
+## Disable Compactions
 
 By default ATSD triggers major HBase compaction of its key data tables on a daily schedule.
 
 Since major compactions may overload the cluster, it is recommended to trigger them less frequently or to schedule them externally, for example via Cloudera Manager:
 
-![](images/cm_major_compaction.png)
+![](./images/cm_major_compaction.png)
 
 To disable built-in compaction of data tables, adjust the following settings on the **Settings > Server Properties** page:
 
@@ -365,9 +366,9 @@ hbase.compaction.list = entity
 hbase.compaction.schedule = 0 0 12 * * SAT
 ```
 
-## Increase Memory
+## Allocate Memory
 
-Configure Java Heap memory to ATSD java process as described [here](../administration/allocating-memory.md).
+Allocate Java Heap memory to ATSD java process as described [here](../administration/allocating-memory.md).
 
 Increase the number of worker threads and maximum queue size the **Settings > Server Properties** page:
 
@@ -391,7 +392,7 @@ To enable encryption of RPC traffic between ATSD and HBase, add the following pr
 
 Similarly, enable the `hbase.rpc.protection` property on the HBase cluster:
 
-![](images/rpc-hbase.png)
+![](./images/rpc-hbase.png)
 
 ## Start ATSD
 
@@ -407,7 +408,7 @@ tail -f /opt/atsd/atsd/logs/atsd.log
 
 You should see a **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port 8088 (http) and 8443 (https).
+Web interface is accessible on port `8443` (https).
 
 ## Enable ATSD Auto-Start
 

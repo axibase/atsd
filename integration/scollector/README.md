@@ -4,25 +4,11 @@ scollector is a data collection framework for Linux, Windows, and MacOS operati
 
 scollector can be configured to stream data into the Axibase Time Series Database for storage, analysis, forecasting, and visualization.
 
-[To install and run scollector read the installation and configuration guide here.](scollector-startup.md)
+## Installation
 
-By default, ATSD ignores two series tags collected by scollector: environment and role.
+Review [installation guide](scollector-startup.md).
 
-You can change this setting by editing the `server.properties` file:
-
-```txt
-/opt/atsd/atsd/conf/server.properties
-```
-
-Edit or comment out the following line:
-
-```elm
-scollector.ignore.tags = environment role
-```
-
-Restart ATSD for the changes to take effect.
-
-## Default Entity Groups and Portals for scollector in ATSD
+## Entity Groups and Portals
 
 Entities collecting scollector data are automatically grouped in ATSD:
 
@@ -50,7 +36,7 @@ Launch a live scollector-Linux portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/f595d570)
 
-![](resources/scollector-Linux1.png)
+![](./resources/scollector-Linux1.png)
 
 ### scollector-Windows Portal
 
@@ -58,7 +44,7 @@ Launch live scollector-Windows portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/db099fa9/2/)
 
-![](resources/scollector-Windows1.png)
+![](./resources/scollector-Windows1.png)
 
 ### scollector-MS SQL Portal
 
@@ -66,7 +52,7 @@ Launch live scollector-MS SQL portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/1fc2721b)
 
-![](resources/scollector_mssql_portal1.png)
+![](./resources/scollector_mssql_portal1.png)
 
 ### scollector-.NET Portal
 
@@ -74,11 +60,29 @@ Launch live scollector-.NET portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/1fc2721b/2/)
 
-![](resources/scollector_dotnetl_portal.png)
+![](./resources/scollector_dotnetl_portal.png)
 
 ### scollector-IIS Portal
 
-![](resources/scollector_iis_portal.png)
+![](./resources/scollector_iis_portal.png)
+
+## Discarded Tags
+
+ATSD ignores two metadata tags collected by scollector by default: `environment` and `role`.
+
+You can change this setting by editing the `server.properties` file:
+
+```txt
+/opt/atsd/atsd/conf/server.properties
+```
+
+Edit or comment out the following line:
+
+```elm
+scollector.ignore.tags=environment role
+```
+
+Restart ATSD for the changes to take effect.
 
 ## Collected Metrics
 

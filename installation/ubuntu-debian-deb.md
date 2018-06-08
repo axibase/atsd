@@ -1,4 +1,4 @@
-# Ubuntu/Debian: Debian Package
+# Installation: `deb` package
 
 ## Supported Versions
 
@@ -19,8 +19,11 @@ use the [offline installation option](ubuntu-debian-offline.md).
 
 Download deb package to the target server:
 
-* `wget https://www.axibase.com/public/atsd_amd64.deb`
-* [https://axibase.com/public/atsd_deb_latest.htm](https://axibase.com/public/atsd_deb_latest.htm)
+```bash
+wget https://www.axibase.com/public/atsd_amd64.deb
+```
+
+The distribution files are also published on [https://axibase.com/public/atsd_deb_latest.htm](https://axibase.com/public/atsd_deb_latest.htm).
 
 ## Installation Steps
 
@@ -60,7 +63,7 @@ tail -f /opt/atsd/atsd/logs/start.log
 
 You should see an **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port 8088 (http) and 8443 (https).
+Web interface is accessible on port `8443` (https).
 
 > Add [firewall](firewall.md) rules if the above ports are not reachable.
 

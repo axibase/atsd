@@ -7,7 +7,7 @@ List metrics with `lastInsertDate` within the specified range. To exclude metric
 ### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/metrics?minInsertDate=1970-01-01T00:00:00Z&maxInsertDate=1980-01-01T00:00:00Z&limit=3
+GET /api/v1/metrics?minInsertDate=1970-01-01T00:00:00Z&maxInsertDate=1980-01-01T00:00:00Z&limit=3
 ```
 
 ## Response

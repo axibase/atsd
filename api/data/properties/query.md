@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve property records matching specified filters.
+Retrieves property records matching specified filters.
 
 ## Request
 
@@ -24,7 +24,7 @@ An array of query objects containing the following filtering fields:
 |:---|:---|:---|
 | `type` | string | **[Required]** Property type name. <br>Use `$entity_tags` type to retrieve entity tags. |
 | `key` | object | Object with `name=value` fields, for example `"key": {"file_system": "/"}`<br>Matches records with _exact_ or _partial_ key fields based on the `exactMatch` parameter value.|
-| `exactMatch` | boolean | `key` match operator. _Exact_ match if true, _partial_ match if false. Default: **false**.<br>_Exact_ match selects a record with exactly the same `key` as requested.<br>_Partial_ match selects records with `key` that contains requested fields but may also include other fields.|
+| `exactMatch` | boolean | `key` match operator. _Exact_ match if `true`, _partial_ match if `false`.<br>Default: `false`.<br>_Exact_ match selects a record with exactly the same `key` as requested.<br>_Partial_ match selects records with `key` that contains requested fields but may also include other fields.|
 | `keyTagExpression`| string | Expression for matching properties with specified keys or tags.<br>Example: `keys.file_system LIKE '/u*'` or `tags.fs_type == 'ext4'`.<br>Use `lower()` function to ignore case, for example `lower(keys.file_system) LIKE '/u*'`|
 
 * Key values and tag values are case-sensitive.
@@ -45,9 +45,9 @@ An array of query objects containing the following filtering fields:
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `limit`   | integer | Maximum number of records to be returned. Default: 0.<br>Limit is not applied if the parameter value <= 0. |
-| `last` | boolean | Returns only records with the update time equal to the maximum update time of matched records. Default: false. |
+| `last` | boolean | Returns only records with the update time equal to the maximum update time of matched records.<br>Default: `false`. |
 | `offset` | integer | Exclude records based on difference, in milliseconds, between maximum update time of matched records and update time of the current record. Default: -1 (not applied).<br>If `offset >=0` and the difference exceeds `offset`, the record is excluded from results. <br>`offset=0` is equivalent to `last=true`.|
-| `addMeta` | boolean | Include metric and entity metadata (field, tags) under the `meta` object in response. Default: false.|
+| `addMeta` | boolean | Include metric and entity metadata (field, tags) under the `meta` object in response.<br>Default: `false`.|
 
 ## Response
 
@@ -76,10 +76,10 @@ Assuming property records A,B,C, and D exist:
 | D      | type-1 | e-4    |       |       |
 ```
 
-Queries would return the following records:
+The table below illustrates which records will be returned (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
-| exactMatch | key                     | match   |
+| exactMatch | key                     | result  |
 |------------|-------------------------|---------|
 | true       |                         | D       |
 | false      |                         | A;B;C;D |
@@ -106,11 +106,11 @@ Assuming property records A,B,C, and D exist and time represents their update ti
 
 max(time) = 200
 
-Queries would return the following records:
+The table below illustrates which records will be returned (the `result` column) for the `offset` parameter on the left.
 
 ```ls
 
-| offset | match   |
+| offset | result  |
 |     -1 | A;B;C;D | Offset filter is not applied.
 |      0 | B;C     | Only records with update time = max(time) are included.
 |      1 | B;C     |
@@ -125,7 +125,7 @@ Queries would return the following records:
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/properties/query
+POST /api/v1/properties/query
 ```
 
 #### Payload
@@ -145,7 +145,7 @@ POST https://atsd_hostname:8443/api/v1/properties/query
 #### curl
 
 ```bash
-curl  https://atsd_hostname:8443/api/v1/properties/query \
+curl https://atsd_hostname:8443/api/v1/properties/query \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '[{"type":"disk","entity":"nurswgvml007","key":{"file_system":"/"},"startDate":"2016-05-25T04:00:00Z","endDate":"2016-05-25T05:00:00Z"}]'

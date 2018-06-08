@@ -7,7 +7,7 @@ Fetch first three metrics, ordered by name.
 ### URI
 
 ```elm
-https://atsd_hostname:8443/api/v1/metrics?limit=3
+GET /api/v1/metrics?limit=3
 ```
 
 ## Response

@@ -51,7 +51,7 @@ ORDER BY sum(value) desc
 
 ### Issue 3701
 
-In this issue, we took a look at optimizing [partitioning queries](../../sql#partitioning), leveraging the fact that we can narrow the start and end date for a scan based on the last times in the Last
+In this issue, we took a look at optimizing [partitioning queries](../../sql/README.md#partitioning), leveraging the fact that we can narrow the start and end date for a scan based on the last times in the Last
 Insert Table. Let's take the below query as an example.
 
 ```sql
@@ -63,7 +63,7 @@ WITH ROW_NUMBER(tags ORDER BY datetime desc) <= 1
   ORDER BY value DESC
 ```
 
-Since the timespan is not defined in the `WHERE` clause, previously we would not apply any date filter to scanned records.
+Since the timespan is not defined in the `WHERE` clause, previously we did not apply any date filter to scanned records.
 To optimize the query we now perform a lookup of the minimum insert time for the specified metric, entity, and series tags.
 Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. A condition like `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
 only need the last value for each combination of tags. We can therefore skip values with a timestamp less than the minimum last insert time.
@@ -145,15 +145,15 @@ Docker `inspect` snippet for a Mesos-managed container:
 
 ### Issue 3685
 
-Recently added to the [`docker`](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md#docker-job) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
+Recently added to the [`docker`](https://axibase.com/docs/axibase-collector/jobs/docker.html) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
 
-![Figure 1](Figure1.png)
+![Figure 1](./Figure1.png)
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
 that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status will initially be retained in ATSD for the specified time interval (for
 example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
 
-![Figure 2](Figure2.png)
+![Figure 2](./Figure2.png)
 
 By default such records with the status `deleted` are not actually removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 

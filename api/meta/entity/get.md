@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve information about the specified entity including its tags.
+Retrieves fields and tags describing the specified entity.
 
 ## Request
 
@@ -29,7 +29,7 @@ Refer to Response Fields in [Entities: List](list.md#fields)
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities/nurswgvml006
+GET /api/v1/entities/nurswgvml006
 ```
 
 #### Payload
@@ -40,8 +40,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
- --insecure --include --user {username}:{password} \
- --request GET
+ --insecure --include --user {username}:{password}
 ```
 
 ### Response

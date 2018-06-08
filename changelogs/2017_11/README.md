@@ -4,19 +4,19 @@
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
-| 4021 | sql | Bug | [`CASE`](../../sql#case) expression can be used without specifying the table. |
-| 3981 | sql | Feature | Add support for [`CASE`](../../sql#case) expression in aggregation functions. |
-| 3837 | sql | Feature | Add support for constant strings and numbers in the [`SELECT`](../../sql#select-expression) expression. |
+| 4021 | sql | Bug | [`CASE`](../../sql/README.md#case-expression) expression can be used without specifying the table. |
+| 3981 | sql | Feature | Add support for [`CASE`](../../sql/README.md#case-expression) expression in aggregation functions. |
+| 3837 | sql | Feature | Add support for constant strings and numbers in the [`SELECT`](../../sql/README.md#select-expression) expression. |
 | 4007 | sql | Bug | Fix referencing error if series tag doesn't exist. |
 | [3658](#issue-3658) | sql | Feature | Add support for referencing all metric fields (label, units, etc.) |
-| 4017 | sql | Bug | Fix [`CONCAT`](../../sql#string-functions) function with constant string arguments. |
+| 4017 | sql | Bug | Fix [`CONCAT`](../../sql/README.md#string-functions) function with constant string arguments. |
 | [3907](#issue-3907) | applications | Feature | Implement ATSD query_runner in Redash. |
 | 4010 | core | Bug | Prevent HBase filters from entering an infinite loop if metric id overflows. |
 | 3950 | sql | Bug | `SUM` function fails to accept arguments. |
-| 3913 | sql | Feature | Add support [`CASE`](../../sql#case) expression as part of another expression. |
+| 3913 | sql | Feature | Add support [`CASE`](../../sql/README.md#case-expression) expression as part of another expression. |
 | 3888 | sql | Bug | Add support for entity fields `label`, `timeZone` in the `WHERE` clause. |
 | 3881 | sql | Bug | Fixed NullPointerException in queries with aggregation of metrics with decimal datatype. |
-| 3842 | sql | Feature | Add support for column alias in [`CAST`](../../sql#cast) and [ROW_NUMBER](../../sql#row_number-syntax) functions. |
+| 3842 | sql | Feature | Add support for column alias in [`CAST`](../../sql/README.md#cast) and [ROW_NUMBER](../../sql/README.md#row_number-syntax) functions. |
 | 3838 | sql | Bug | Add support for column alias in `ORDER BY` clause |
 | 3963 | client | Bug | Replace `last` with `cache` parameter in series query method within the Java API client. |
 
@@ -88,7 +88,7 @@ See the [guide](https://redash.io/help/data-sources/axibase_tsd.html) on how to 
 
 Replacement tables are deprecated. Similar functionality is provided by the `LOOKUP` function.
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
 ### Issue 4006
 
@@ -100,6 +100,6 @@ Replacement tables are deprecated. Similar functionality is provided by the `LOO
 
 ### Issue 3997
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)
 
 [ChartLab](https://apps.axibase.com/chartlab/075941a0/2/)

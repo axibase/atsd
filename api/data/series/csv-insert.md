@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert series values for the specified entity and series tags in CSV format.
+Inserts series values for the specified entity and series tags in CSV format.
 
 The CSV header should include a leading time column and one or multiple numeric metric columns for the same entity and tag combination.
 
@@ -27,7 +27,7 @@ The CSV header should include a leading time column and one or multiple numeric 
 * Entity and Metric names containing space characters will be normalized by replacing the space character with an underscore.
 * Time must be specified in Unix milliseconds if the `time` column is used, and in ISO format if the `date` column is used.
 * Separator must be comma.
-* It is recommended that samples are sorted by time in ascending order.
+* If possible, sort submitted samples by time in ascending order.
 
 #### Unix millisecond format
 
@@ -65,7 +65,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007
+POST /api/v1/series/csv/nurswgvml007
 ```
 
 #### Payload

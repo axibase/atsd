@@ -64,13 +64,13 @@
 
 ## Parser Configuration Screenshot
 
-![](resources/csv_halifax_config.png)
+![](./resources/csv_halifax_config.png)
 
 ## Parser Configuration Description
 
 | Field | Setting | Reason |
 | --- | --- | --- |
-|  Enabled  |  Set to true  |  Enable parsing of CSV files using this.<br>Also allows use of this parser configuration in Axibase Collector.  |
+|  Enabled  |  Set to `true`  |  Enable parsing of CSV files using this.<br>Also allows use of this parser configuration in Axibase Collector.  |
 |  Name  |  Unique name – Halifax Weather.  |  Unique name to distinguish this parser from others.<br>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.  |
 |  Put Type  |  Metric  |  The CSV file in question contains time series (metrics) weather data.  |
 |  Delimiter  |  Comma  |  A comma is used to separate columns.  |

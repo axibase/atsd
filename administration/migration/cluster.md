@@ -136,7 +136,7 @@ Run the `TableCloner` task to rename `atsd_d` table as `atsd_d_backup`.
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
 
-If a custom table prefix is specified in the `server.properties` file, for example it is set to 'atsd_custom_', change the `table_name` parameter accordingly:
+If a custom table prefix is specified in the `server.properties` file, for example, if the prefix is set to 'atsd_custom_', change the `table_name` parameter accordingly:
 
 ```sh
 java com.axibase.migration.admin.TableCloner --table_name=atsd_custom_d
@@ -146,7 +146,7 @@ java com.axibase.migration.admin.TableCloner --table_name=atsd_custom_d
 
 Launch the migration job with the `nohup` command.
 
-The job will create a new data table, convert data from the backup table to the new format, and store it in the new table.
+The job will create a new data table, convert data from the backup table to the new format, and store the data in the new table.
 
 The optional `drop-annotations` flag discards duplicate series annotations when copying the data.
 

@@ -26,11 +26,11 @@
 
 ### Issue 3739
 
-![](Images/Figure1.png)
+![](./Images/Figure1.png)
 
 ### Issue 4063
 
-![](Images/Figure2.png)
+![](./Images/Figure2.png)
 
 ### Issue 4043
 

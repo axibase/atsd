@@ -1,11 +1,33 @@
 # Firewall Configuration
 
-## Allow Access
+To allow external clients to connect to ATSD services, grant access to specific ports on which the database is listening or disable the firewall on the database server.
 
-Allow access to particular ports on the target ATSD server.
+## Database Ports
 
-* Login into the ATSD server.
-* Add 'allow' rules for specific ATSD ports.
+Port | Network<br> Protocol | Application/<br>Data Protocol | Service
+---|---|---|---
+1099 | tcp | jmx | JMX server
+8081 | tcp | line | Network command processor
+8082 | udp | line | Network command processor
+8084 | tcp | pickle | Graphite command processor
+8088 | tcp | http | User interface, REST API
+8443 | tcp | https | User interface, REST API
+
+## Disable Firewall
+
+### Ubuntu/Debian
+
+```bash
+ufw disable
+```
+
+### CentOS / RHEL
+
+```bash
+systemctl disable firewalld
+```
+
+## Allow Port Access
 
 ```sh
 iptables -I INPUT -p tcp --dport 8081 -j ACCEPT
@@ -27,13 +49,13 @@ iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
 
 ### Ubuntu/Debian
 
-#### Install the iptables-persistent Package
+Install the iptables-persistent Package
 
 ```sh
 apt-get install iptables-persistent
 ```
 
-During the install process you will be asked to save existing rules.
+During the installation you will be asked to save existing rules.
 
 Rules will be saved to `/etc/iptables/rules.v4` and `/etc/iptables/rules.v6` for IPv4 and IPv6, respectively.
 
@@ -51,14 +73,16 @@ iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
 ```
 
-### RHEL / CentOS
+### CentOS / RHEL
 
 ```sh
-sed -i "s/IPTABLES_SAVE_ON_STOP=\"no\"/IPTABLES_SAVE_ON_STOP=\"yes\"/g" /etc/sysconfig/iptables-config
+sed -i "s/IPTABLES_SAVE_ON_STOP=\"no\"/IPTABLES_SAVE_ON_STOP=\"yes\"/g" \
+/etc/sysconfig/iptables-config
 ```
 
 ```sh
-sed -i "s/IPTABLES_SAVE_ON_RESTART=\"no\"/IPTABLES_SAVE_ON_RESTART=\"yes\"/g" /etc/sysconfig/iptables-config
+sed -i "s/IPTABLES_SAVE_ON_RESTART=\"no\"/IPTABLES_SAVE_ON_RESTART=\"yes\"/g" \
+ /etc/sysconfig/iptables-config
 ```
 
 ```sh
@@ -68,7 +92,8 @@ sed -i "s/IPTABLES_SAVE_ON_RESTART=\"no\"/IPTABLES_SAVE_ON_RESTART=\"yes\"/g" /e
 ### SUSE
 
 ```sh
-echo "FW_SERVICES_EXT_TCP=\"8081 8082 8088 8443\"" >> /etc/sysconfig/SuSEfirewall2
+echo "FW_SERVICES_EXT_TCP=\"8081 8082 8088 8443\"" \
+ >> /etc/sysconfig/SuSEfirewall2
 ```
 
 ```sh

@@ -1,9 +1,9 @@
 # Entity Filter Fields
 
-* One of the below entity fields is **required**.
-* Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence will be applied.
-* `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
-* Entity name pattern supports `?` and `*` wildcards.
+- One of the below entity fields is **required**.
+- Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence will be applied.
+- `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
+- Entity name pattern supports `?` and `*` wildcards.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
@@ -18,47 +18,50 @@
 
 Supported fields:
 
-* id (entity id)
-* name (entity id)
-* label
-* enabled
-* tags.tag-name or tags['tag-name']
+- id
+- name
+- label
+- enabled
+- tags.tag-name or tags['tag-name']
 
 ### Supported Functions
 
-* Property Functions
-  * [`property(string s)`](../../rule-engine/functions-property.md#property)
-  * [`property_values(string s)`](../../rule-engine/functions-property.md#property_values), access to returned objects is not supported
-  * [`properties`](./series/examples/query-entity-expr-entity-properties.md#description)
-* Lookup Functions
-  * [`entity_tags(string e)`](../../rule-engine/functions-lookup.md#entity_tags)
-  * [`collection`](../../rule-engine/functions-lookup.md#collection)
-* Collection Functions
-  * [`collection`](../../rule-engine/functions-collection.md#collection)
-  * [`IN`](../../rule-engine/functions-collection.md#in)
-  * [`likeAny`](../../rule-engine/functions-collection.md#likeany)
-  * [`matches`](../../rule-engine/functions-collection.md#matches)
-  * [`contains`](../../rule-engine/functions-collection.md#contains)
-  * [`size`](../../rule-engine/functions-collection.md#size)
-  * [`isEmpty`](../../rule-engine/functions-collection.md#isempty)
-* Text Functions
-  * [`upper`](../../rule-engine/functions-text.md#upper)
-  * [`lower`](../../rule-engine/functions-text.md#lower)
-  * [`list`](../../rule-engine/functions-text.md#list)
+- Property Functions
+  - [`property`](../../configuration/functions-entity-groups-expression.md#property)
+  - [`property_values`](../../configuration/functions-entity-groups-expression.md#property_values), access to returned objects is not supported
+- Lookup Functions
+  - [`entity_tags`](../../configuration/functions-entity-groups-expression.md#entity_tags)
+- Collection Functions
+  - [`collection`](../../configuration/functions-entity-groups-expression.md#collection)  
+  - [`likeAll`](../../configuration/functions-entity-groups-expression.md#likeall)
+  - [`likeAny`](../../configuration/functions-entity-groups-expression.md#likeany)
+  - [`matches`](../../configuration/functions-entity-groups-expression.md#matches)  
+  - [`collection_contains`](../../configuration/functions-entity-groups-expression.md#collection_contains)
+  - [`contains`](../../configuration/functions-entity-groups-expression.md#contains)
+  - [`size`](../../configuration/functions-entity-groups-expression.md#size)
+  - [`isEmpty`](../../configuration/functions-entity-groups-expression.md#isempty)  
+  - [`IN`](../../configuration/functions-entity-groups-expression.md#in)
+- Text Functions
+  - [`upper`](../../configuration/functions-entity-groups-expression.md#upper)
+  - [`lower`](../../configuration/functions-entity-groups-expression.md#lower)
+  - [`list`](../../configuration/functions-entity-groups-expression.md#list)
+- Utility functions
+  - [`memberOf`](../../configuration/functions-entity-groups-expression.md#memberof)
+  - [`memberOfAll`](../../configuration/functions-entity-groups-expression.md#memberofall)
 
-## Examples
+### Examples
 
-### Entity Name Match
+#### Entity Name Match
 
 ```javascript
   /*
   Match entities with name starting with 'nurswgvml',
   for example 'nurswgvml001', 'nurswgvml772'.
   */
-  id LIKE 'nurswgvml*'
+  name LIKE 'nurswgvml*'
 ```
 
-### Entity Label Match
+#### Entity Label Match
 
 ```javascript
   /*
@@ -67,7 +70,7 @@ Supported fields:
   label NOT LIKE '*nur*'
 ```
 
-### Enabled/Disabled Entity Match
+#### Enabled/Disabled Entity Match
 
 ```javascript
   /* Match enabled entities. */
@@ -75,10 +78,9 @@ Supported fields:
 
   /* Match disabled entities. */
   enabled = false
-
 ```
 
-### Entity Tag Match
+#### Entity Tag Match
 
 ```javascript
   /*
@@ -103,7 +105,7 @@ Supported fields:
   tags.docker-host IN ('dock1', 'dock2')
 ```
 
-### Property Match
+#### Property Match
 
 ```javascript
   /*

@@ -8,7 +8,7 @@ In addition, it allows to [store](scheduled-sql-store.md) query results back in 
 
 ## Sample Configuration
 
-![Scheduler Example](images/sql-scheduled.png)
+![Scheduler Example](./images/sql-scheduled.png)
 
 ## Query
 
@@ -38,7 +38,7 @@ HTML format is optimized for compatibility with common desktop and email clients
 * [sql-report.csv](examples/sql-report.csv)
 * [sql-report.json](examples/sql-report.json)
 * [sql-report.xlsx](examples/sql-report.xlsx)
-* [sql-report.html](examples/sql-report.html)
+* [sql-report.html](examples/sql-report.htm)
 
 ## Decimal Precision
 
@@ -55,7 +55,7 @@ The report file can be written to a file on the local file system, sent to email
 
 To store reports on a disk, enable the **Export** section by clicking on the header and specify an output path.
 
-![File](images/sql-scheduled-file.png)
+![File](./images/sql-scheduled-file.png)
 
 Specify the absolute path including the file name.
 
@@ -74,7 +74,7 @@ To distribute report files via email, enable the **Export** section, specify an 
 
 The `Email Subject` field supports date and form [placeholders](#placeholders), for example `${name} on ${yyyy-MM-dd}`.
 
-![File](images/sql-scheduled-email-send.png)
+![File](./images/sql-scheduled-email-send.png)
 
 `Send Empty Report` and `Send Error Report` settings control whether a report should be emailed in case of an empty result or error.
 
@@ -97,7 +97,7 @@ In the above example, the query relies on the `HAVING` clause to find servers wi
 
 To make a report available for download by end-users, enable the **Publish** section. The report will contain rows that were prepared by the server when the task was last executed.
 
-![File](images/sql-scheduled-publish.png)
+![File](./images/sql-scheduled-publish.png)
 
 To allow users to download the updated results each time they click on the link, enable the `Allow Refresh` option.
 

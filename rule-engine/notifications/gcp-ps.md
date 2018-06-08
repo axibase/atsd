@@ -2,7 +2,7 @@
 
 ## Overview
 
-`GCP PS` [notifications](../web-notifications.md) send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic upon window status events.
+`GCP PS` [notifications](../notifications/README.md) send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic upon window status events.
 
 ## Notification Settings
 
@@ -29,17 +29,17 @@ The response status code and response content is recorded in `atsd.log` if the `
 ## Configure GCP PS Notification
 
 * Open **Alerts > Web Notifications** page.
-* Click the **Create** button and select the `GCP-PS` type.
+* Click **Create** and select the `GCP-PS` type.
 * Fill out the `Name` field.
 * Enter the `Project ID`, `Topic`, `Service Account` and select `Private Key Alias`.
 
-  ![](images/gcp_ps_config.png)
+  ![](./images/gcp_ps_config.png)
 
 * Click **Test**.
 
-   ![](images/gcp_ps_test_request.png)
+   ![](./images/gcp_ps_test_request.png)
 
-   ![](images/gcp_ps_test_response.png)
+   ![](./images/gcp_ps_test_response.png)
 
 * If tests are passing OK, check **Enable**, click **Save**.
 

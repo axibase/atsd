@@ -16,7 +16,7 @@ ATSD has a Storage Finder for Graphite-Web, which means that you can use ATSD as
 
 [Learn more about ATSD Storage Finder here.](storage-finder.md)
 
-![](resources/atsd_protocols_finders3.png)
+![](./resources/atsd_protocols_finders3.png)
 
 ### List of key tools that support Graphite Format
 

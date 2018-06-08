@@ -10,10 +10,10 @@
 | 3729 | api-rest    | Bug     | Updated error URL and message text for requests to non-existent URLs. |
 | [3727](#issue-3727) | api-network | Feature | Optimized TCP handler for faster processing of `series` commands streamed by a single TCP client. |
 | [3725](#issue-3725) | sql         | Bug     | Optimized queries with `ORDER BY` and `LIMIT` clauses. |
-| [3719](#issue-3719) | sql         | Feature | Optimized [windowing](../../sql#last_time-syntax) queries by narrowing the requested timespan based on minimum last insert date. |
+| [3719](#issue-3719) | sql         | Feature | Optimized [windowing](../../sql/README.md#last_time-syntax) queries by narrowing the requested timespan based on minimum last insert date. |
 | 3718 | UI          | Bug     | Changed metric form to prevent users from saving metric names without metric name validation. |
 | 3715 | UI          | Feature | Updated styles on the account create page displayed post-installation. |
-| 3714 | UI          | Bug     | Fixed errors with the Decimal Precision input in the SQL console. |
+| 3714 | UI          | Bug     | Fixed errors with the Decimal Precision input in the [SQL Console](../../sql/sql-console.md). |
 | [3713](#issue-3713) | sql         | Bug     | Fixed number format error raised in queries with the `WHERE` clause. |
 | [3703](#issue-3703) | sql         | Feature | Added capability to display first/last sample time in windowing queries. |
 | [3697](#issue-3697) | sql         | Feature | Modified processing sequence so that the `HAVING` filter is applied after period interpolation. |
@@ -23,8 +23,8 @@
 | [3689](#issue-3689) | sql         | Feature | Added support for the `SELECT 1` validation query. |
 | 3687 | UI          | Bug     | Corrected User Group link on the Admin menu. |
 | [3672](#issue-3672) | sql         | Feature | Added new details to query plan: start and end dates for each HBase scan and scans to atsd_li table. |
-| [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql#lookup) function to translate the key into a value using the specified replacement table. |
-| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql#case) expression. |
+| [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql/README.md#lookup) function to translate the key into a value using the specified replacement table. |
+| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case-expression) expression. |
 
 ## Collector
 
@@ -34,7 +34,7 @@
 | 3724 | core        | Feature     | Created a `docker-compose` file to launch `socrata-cdc` and the ATSD/Collector container bundle, used for computing [mortality statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md). |
 | 3723 | data-source | Bug     | Added missing Avatica package dependencies to the ATSD JDBC driver. |
 | 3722 | core        | Feature | Send `property` command with collector details to ATSD after a startup is completed. |
-| 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://github.com/axibase/axibase-collector/blob/master/job-autostart.md). |
+| 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://axibase.com/docs/axibase-collector/job-autostart.html). |
 | 3571 | admin       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
 
 ### Issue 3737
@@ -62,7 +62,7 @@ GROUP BY entity
 
 The TCP handler, running on the default port 8081, was optimized for faster processing of `series` commands streamed by a single TCP client. The new implementation provides a pool of
 threads instead of a single one to offload parsing and processing from the TCP handler. The size of the pool is controlled with the `series.processing.pool.size` parameter on the
-Admin > Server Properties -> Network page. The default value is 2 and is recommended to be set to the number of cores on the server.
+**Settings > Server Properties** page. The default value is 2 and is recommended to be set to the number of cores on the server.
 
 As a result, the TCP processing and parsing throughput (measured in commands per second) has increased by 40% on average.
 
@@ -87,7 +87,7 @@ LIMIT 10
 
 ### Issue 3719
 
-We added an optimization to narrow the start date in [windowing](../../sql#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
+We added an optimization to narrow the start date in [windowing](../../sql/README.md#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
 Prior to this change, the start date was set to 0 (not applied) if it was not specified explicitly in the query.
 
 ```sql
@@ -135,7 +135,7 @@ OPTION (ROW_MEMORY_THRESHOLD 500000)
 ### Issue 3703
 
 Now aggregate functions such as `MAX`, `MIN`, and `DELTA` can be applied to the `time` column, which returns the sampling time in Unix milliseconds.
-One of the use cases is to display the most recent time in windowing queries where the [last_time](../../sql#last_time-syntax) function can be utilized to select data for a sliding interval, such as the most recent 4 weeks for each series in the example below.
+One of the use cases is to display the most recent time in windowing queries where the [last_time](../../sql/README.md#last_time-syntax) function can be utilized to select data for a sliding interval, such as the most recent 4 weeks for each series in the example below.
 
 ```sql
 SELECT tags.city, tags.state, sum(value), date_format(max(time)) as Last_Date
@@ -157,8 +157,8 @@ ORDER BY max(time)
 
 ### Issue 3697
 
-The sequence of period interpolation and period filtering with the [HAVING](../../sql#having-filter) clause was modified.
-Now, the `HAVING` filter is applied after [PERIOD interpolation](../../sql#interpolation) whereas before it was the opposite.
+The sequence of period interpolation and period filtering with the [HAVING](../../sql/README.md#having-filter) clause was modified.
+Now, the `HAVING` filter is applied after [PERIOD interpolation](../../sql/README.md#interpolation) whereas before it was the opposite.
 
 ```sql
 SELECT date_format(period(1 MONTH)), count(value)
@@ -204,14 +204,14 @@ ORDER BY 1
 ### Issue 3694
 
 The query optimizer was modified to apply tag filter specified in `JOIN` queries on one of the tables to the remaining tables, since
-[JOINs](../../sql#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
+[JOINs](../../sql/README.md#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
 was applied only to those tables where the filter was set explicitly.
 
-![Figure 2](Images/Figure2.png)
+![Figure 2](./Images/Figure2.png)
 
 ### Issue 3689
 
-Implemented the special `SELECT 1` query, which is typically used to [test connectivity](../../sql#validation-query) and validate open
+Implemented the special `SELECT 1` query, which is typically used to [test connectivity](../../sql/api.md#connection-query) and validate open
 connections in the shared connection pool in active state.
 
 ### Issue 3672
@@ -221,11 +221,11 @@ SQL Query Plan is used for diagnosing slow query response times. The plan was ex
 1) Display start and end dates for each HBase scan.</br>
 2) Display scans to the atsd_li (last insert) table, which are used to add additional filters and to determine optimal query plan.</br>
 
-![Figure 3](Images/Figure3.png)
+![Figure 3](./Images/Figure3.png)
 
 ### Issue 3555
 
-Implemented the [LOOKUP](../../sql#lookup) function, which translates the key into a value using the specified replacement table.
+Implemented the [LOOKUP](../../sql/README.md#lookup) function, which translates the key into a value using the specified replacement table.
 
 The primary purpose of a replacement table is to act as a dictionary for decoding series tags/values.
 
@@ -247,7 +247,7 @@ LIMIT 10
 
 ### Issue 3421
 
-Implemented the `searched case` variant of the [CASE](../../sql#case) expression.
+Implemented the `searched case` variant of the [CASE](../../sql/README.md#case-expression) expression.
 
 The `CASE` expression evaluates a sequence of boolean expressions and returns a matching result expression.
 

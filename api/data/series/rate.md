@@ -11,7 +11,7 @@ Used to compute rate of change when the underlying metric measures a continuousl
 | **Name** | **Type**    | **Description**  |
 |:---|:---|:---|
 | `period` | object | Rate period. Supports NANOSECOND time unit. |
-| `counter` | boolean | If true, negative differences between consecutive samples are ignored. Default: true |
+| `counter` | boolean | If `true`, negative differences between consecutive samples are ignored.<br>Default: `true`. |
 | `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
 ## Request
@@ -38,17 +38,17 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ## Rate Period
 
-* If rate period is not specified, the function computes the difference between values of two subsequent series samples. If samples are `(previousTimestamp, previousValue)` and `(timestamp, value)`, then result would be `(timestamp, value - previousValue)`.
+* If rate period is not specified, the function returns the difference between consecutive values. If samples are `(time0, value0)` and `(time1, value1)` the result is `value1 - value0`.
 
-* If rate period is specified, the function computes rate of change for the specified time period:
+* If rate period is specified, the function calculates the rate of change for each sample:
 
-`(value - previousValue) * ratePeriod / (timestamp - previousTimestamp)`.
+`(value1 - value0) / (time1 - time0) * ratePeriod`.
 
-```java
+```javascript
   ratePeriod = rate.count * rate.unit (in milliseconds)
-  if (value > previousValue) {
-    resultValue = (value - previousValue) / (timestamp - previousTime) * ratePeriod;
-    aggregator.addValue(timestamp, resultValue);
+  if (value1 > value0) {
+    resultValue = (value1 - value0) / (time1 - time0) * ratePeriod;
+    aggregator.addValue(time1, resultValue);
   }
 ```
 
@@ -58,16 +58,19 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ```json
 [
-        {
-            "startDate": "2015-09-03T12:00:00Z",
-            "endDate": "2015-09-03T12:05:00Z",
-            "timeFormat": "iso",
-            "entity": "e-nano",
-            "metric": "m-nano"
-            ,"rate" : {
-               "period": {"count": 1, "unit": "NANOSECOND"}
-            }
-        }
+  {
+    "startDate": "2015-09-03T12:00:00Z",
+    "endDate": "2015-09-03T12:05:00Z",
+    "timeFormat": "iso",
+    "entity": "e-nano",
+    "metric": "m-nano",
+    "rate": {
+      "period": {
+        "count": 1,
+        "unit": "NANOSECOND"
+      }
+    }
+  }
 ]
 ```
 
@@ -76,34 +79,25 @@ Used to compute rate of change when the underlying metric measures a continuousl
 ```json
 [
   {
-      "entity": "e-nano",
-      "metric": "m-nano",
-      "tags": {},
-      "type": "HISTORY",
-      "aggregate": {
-          "type": "DETAIL"
+    "entity": "e-nano",
+    "metric": "m-nano",
+    "tags": {},
+    "type": "HISTORY",
+    "aggregate": {
+      "type": "DETAIL"
+    },
+    "rate": {
+      "period": {
+        "count": 1,
+        "unit": "NANOSECOND"
       },
-      "rate": {
-          "period": {
-              "count": 1,
-              "unit": "NANOSECOND"
-          },
-          "counter": true
-      },
-      "data": [
-          {
-              "d": "2015-09-03T12:00:00.002Z",
-              "v": 0.7
-          },
-          {
-              "d": "2015-09-03T12:00:00.003Z",
-              "v": 0.1
-          },
-          {
-              "d": "2015-09-03T12:00:00.004Z",
-              "v": 0.4
-          }
-      ]
+      "counter": true
+    },
+    "data": [
+      {"d":"2015-09-03T12:00:00.002Z","v":0.7},
+      {"d":"2015-09-03T12:00:00.003Z","v":0.1},
+      {"d":"2015-09-03T12:00:00.004Z","v":0.4}
+    ]
   }
 ]
 ```

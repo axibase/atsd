@@ -2,15 +2,15 @@
 
 ## Description
 
-Create an entity group with specified fields and tags or replace the fields and tags of an existing entity group.
+Creates an entity group with specified fields and tags or replaces the fields and tags of an existing entity group.
 
 The following rules apply if the specified group exists:
 
 * The groups current tags will be replaced with tags specified in the request.
 * If the request doesn't contain any tags, the current tags will be deleted.
 * The request does **not** change the list of members.
-* If the `expression` field is set to 'null' in the request, the expression will be deleted.
-* If the `enabled` field is not included, it will be set to `true`
+* If the `expression` field is set to `null` in the request, the expression will be deleted.
+* If the `enabled` field is not included, it will be set to `true`.
 
 ## Request
 
@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-PUT https://atsd_hostname:8443/api/v1/entity-groups/nmon-collectors
+PUT /api/v1/entity-groups/nmon-collectors
 ```
 
 #### Payload

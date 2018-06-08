@@ -11,8 +11,8 @@ Report comparing minimum and maximum exports per year.
 ## Steps
 
 * Drag-and-drop the table to Canvas area
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the columns field
 * Drag-and-drop `Value` onto the rows field, change aggregation from **SUM** to **MIN**: right click > **Measure** > **Minimum**
 * Drag-and-drop `Value` onto the rows field, change aggregation from **SUM** to **MAX**: right click > **Measure** > **Maximum**

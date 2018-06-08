@@ -4,7 +4,7 @@
 
 CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the user interface.
 
-![](resources/csv.gif)
+![](./resources/csv.gif)
 
 To process a CSV file you need to create a CSV parser, which splits the file into lines (rows) consisting of multiple columns and converts the lines into `series`, `property`, and `message` commands.
 
@@ -57,7 +57,7 @@ Columns contained in the CSV file that are not specified in any field in the par
 |  Ignore Line Errors  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
 |  Ignore Header Lines  |  Ignore Top-N lines from the file header  |
 
-![](resources/csv_parser_example.png)
+![](./resources/csv_parser_example.png)
 
 ### Column-based Examples
 

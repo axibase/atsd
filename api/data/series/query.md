@@ -2,7 +2,34 @@
 
 ## Description
 
-Retrieve time series objects for the specified metric, entity, tag, and interval filters.
+Retrieves time series objects for the specified metric, entity, tag, and date interval filters.
+
+## Quick Start
+
+Basic query:
+
+```json
+[{
+  "metric":    "mpstat.cpu_busy",
+  "entity":    "nurswgvml007",
+  "startDate": "2018-05-20T00:00:00Z",
+  "endDate":   "2018-05-20T01:00:00Z"
+}]
+```
+
+Query response:
+
+```json
+[{
+  "metric":    "mpstat.cpu_busy",
+  "entity":    "nurswgvml007",
+  "data": [
+    {"d":"2018-05-20T00:01:30Z", "v":24.2},
+    {"d":"2018-05-20T00:03:15Z", "v":39.8},
+    {"d":"2018-05-20T00:05:00Z", "v":39.1}
+  ]
+}]
+```
 
 ## Request
 
@@ -36,23 +63,23 @@ Each query contains **filter** fields to find time series in the database, **pro
 * [**Required**]
 * Refer to [entity filter](../filter-entity.md).
 
-> Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `'*'` matches all tags.
+> Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `*` matches all tags.
 
 ### Tag Filter
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
 | `tags` | object  | Object with `name:value` fields. <br>Matches series that contain the specified series tags. <br>Tag values support `?` and `*` wildcards. |
-| `exactMatch` | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`. Default: **false** (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
+| `exactMatch` | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`.<br>Default: `false` (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
 | `tagExpression` | string | An expression to include series with tags that satisfy the specified condition. |
 
-Tag Expression
+#### Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
-* Supported operands: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
-* Supported functions: `LOWER`.
-* Supported wildcards: `?` and `*`.
 * The series record must satisfy both the `tags` object and the `tagExpression` in order to be included in the results.
+* Supported operators: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
+* Supported functions: `LOWER`.
+* Wildcards `?` and `*` are supported by `LIKE` and `NOT LIKE` operators. Symbols `?` and `*` are treated as regular characters when used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
 
 ```javascript
 tags.location LIKE 'nur*'
@@ -73,14 +100,26 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `versioned` | boolean |Returns version status, source, and change date if the metric is versioned. Default: false. |
+| `versioned` | boolean |Returns version status, source, and change date if the metric is versioned.<br>Default: `false`. |
 | `versionFilter` | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
 
 ### Value Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `valueFilter` | string | The field contains a boolean expression applied to detailed samples. Samples that satisfy the condition are included, for example, `value > 100`. Value filter is applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` field in the expression refers to the sample value. <br>Examples:<br> `value > 0` - retrieve samples which are positive numbers; <br> `value > 36.4 && value <= 36.7` - retrieve samples within the specified range; <br> `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported; <br> `Double.isNaN(value)` - only NaN values pass this check.  |
+| `valueFilter` | string | Boolean expression applied to detailed samples, for example, `value > 100`. Samples that satisfy the condition are included in the result. The `value` field in the expression refers to the current sample value. |
+
+Processing rules:
+
+* The value filter is applied **before** series transformations (interpolation, aggregation, etc).
+* In case of a versioned metric in `versioned=true` mode, the filter checks only the last value recorded for the given time. If the last value satisfies the filter, all versions for that time are included.
+
+Examples:
+
+* `value > 0` - Retrieve samples which are positive numbers.
+* `value > 2 && value <= 3` - Retrieve samples within the specified range.
+* `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported.
+* `Double.isNaN(value)` - Only `NaN` values and deleted values pass this check.
 
 ### Transformation Fields
 
@@ -150,7 +189,7 @@ The response contains an array of series objects, each containing series identif
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 #### Payload
@@ -159,8 +198,8 @@ POST https://atsd_hostname:8443/api/v1/series/query
 [{
   "startDate": "2017-09-14T17:00:00Z",
   "endDate":   "2017-09-14T18:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "mpstat.cpu_busy"
+  "entity":    "nurswgvml007",
+  "metric":    "mpstat.cpu_busy"
 }]
 ```
 
@@ -183,18 +222,22 @@ POST https://atsd_hostname:8443/api/v1/series/query
 }]
 ```
 
-## `curl` Example
+### `curl` Example
 
-```json
+```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   -d '[{"metric":"mpstat.cpu_busy", "entity":"nurswgvml007", "startDate":"previous_day", "endDate": "now"}]' > response.json
 ```
 
-## Java Example
+### Java Example
 
 * [Series Query](examples/DataApiSeriesQueryExample.java)
+
+### Python Example
+
+* [Querying Series](https://github.com/axibase/atsd-api-python#querying-series)
 
 ## Additional Examples
 

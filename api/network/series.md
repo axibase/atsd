@@ -2,7 +2,7 @@
 
 ## Description
 
-Use the `series` command to insert a timestamped value (number or text) into a specified time series, uniquely identified by a composite primary key consisting of an entity, metric, and optional `key=value` tag(s).
+Inserts a timestamped value (number or text) into a specified time series, uniquely identified by a composite primary key consisting of an entity, metric, and optional `key=value` tag(s).
 
 ## Syntax
 
@@ -211,7 +211,7 @@ Restart
 
 ## Versioning
 
-[Versioning](https://axibase.com/products/axibase-time-series-database/data-model/versioning/) enables tracking of time-series value changes for the purpose of establishing an audit trail and traceable data reconciliation.
+[Versioning](../../versioning/README.md) enables tracking of time-series value changes for the purpose of establishing an audit trail and traceable data reconciliation.
 
 Versioning is disabled by default. It can be enabled for particular metrics by checking the Versioning box on the Metric Editor page.
 

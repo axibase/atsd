@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of entities matching the specified filters.
+Retrieves a list of entities matching the specified filters.
 
 ## Request
 
@@ -72,7 +72,7 @@ The `lastInsertDate` field should be filtered using `minInsertDate` and `maxInse
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expression=name%20like%20%27nurs*%27
+GET /api/v1/entities?timeFormat=iso&limit=2&expression=name%20like%20%27nurs*%27
 ```
 
 #### Payload
@@ -82,9 +82,8 @@ None.
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expression=name%20like%20%27nurs*%27 \
-  --insecure --include --user {username}:{password} \
-  --request GET
+curl "https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expression=name%20like%20%27nurs*%27" \
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response
@@ -118,7 +117,7 @@ name!="" or tags.keyName!="" or label!=null or enabled=true or interpolate="LINE
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entities?expression=label!=%22%22%20and%20enabled=true%20and%20interpolate!=%22%22%20and%20timeZone!=%22%22
+GET /api/v1/entities?expression=label!=%22%22%20and%20enabled=true%20and%20interpolate!=%22%22%20and%20timeZone!=%22%22
 ```
 
 #### Payload
@@ -129,8 +128,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entities?expression=label!=%22%22%20and%20enabled=true%20and%20interpolate!=%22%22%20and%20timeZone!=%22%22 \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

@@ -11,15 +11,15 @@ The bridge intercepts SQL queries from the client applications via the Microsoft
 * Download and install Java Runtime Environment 7 for the Windows Operating System.
 * [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
 * Add Windows Environment variable `Classpath` containing the path to the ATSD JDBC driver 'jar' file.
-  * Open **Environment variables**, click the **New** button under the **System variables** list.
+  * Open **Environment variables**, click **New** under the **System variables** list.
   & Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar' file as **Variable value**.
 
-![](images/system_properties.png)
+![](./images/system_properties.png)
 
 * Register an account with the ODBC-JDBC Bridge [vendor](https://uda.openlinksw.com/) (required for trial activation).
 * Generate license for the bridge program as displayed:
 
-![](images/openlink_license.png)
+![](./images/openlink_license.png)
 
 * Choose the desired OS version
 * You will receive the installation link and license files via email.
@@ -38,15 +38,15 @@ Install and activate the bridge as follows:
 
 Open **Start**, type `ODBC` and launch the ODBC Data Source Manager from an Administrator account.
 
-![](images/ODBC_1.PNG)
+![](./images/ODBC_1.png)
 
 Open **System DSN** tab, click **Add...**
 
-![](images/openlink_ODBC_1.png)
+![](./images/openlink_ODBC_1.png)
 
 Choose the **OpenLink Lite for JDK 1.5 (Unicode)** option, click **Finish**
 
-![](images/openlink_ODBC_2.png)
+![](./images/openlink_ODBC_2.png)
 
 Enter a new connection name into the `Name` field and click **Next**.
 
@@ -61,10 +61,10 @@ Password   :   <atsd password>
 
 Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver)  for additional details about the URL format and the driver properties.
 
-![](images/openlink_ODBC_4.png)
+![](./images/openlink_ODBC_4.png)
 
 Click **Next** until the last page to skip the remaining configuration steps.
 
-Click **Test Data Source** button to verify the connection.
+Click **Test Data Source** to verify the connection.
 
-![](images/openlink_test_connection.png)
+![](./images/openlink_test_connection.png)

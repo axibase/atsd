@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of **closed** alerts matching specified fields.
+Retrieves a list of **closed** alerts matching specified fields.
 
 ## Request
 
@@ -57,7 +57,7 @@ An array of matching alert objects containing the following fields:
 | `ruleFilter` | string | Rule filter. |
 | `severity`  | string | [Severity](../../../api/data/severity.md) code.  |
 | `tags` | string | Concatenated `name=value` pairs, for example `file_system=/dev/sda1;mount_point=/` |
-| `repeatCount` | integer | Number of times when the expression was evaluated to true sequentially.  |
+| `repeatCount` | integer | Number of times when the expression was evaluated to `true` sequentially.  |
 | `alert` | string | Alert message.  |
 | `window` | string | Window length. |
 | `value` | double | Last numeric value received. |
@@ -80,7 +80,7 @@ An array of matching alert objects containing the following fields:
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/alerts/history/query
+POST /api/v1/alerts/history/query
 ```
 
 #### Payload
@@ -97,7 +97,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/history/query
 #### curl
 
 ```bash
-curl  https://atsd_hostname:8443/api/v1/alerts/history \
+curl https://atsd_hostname:8443/api/v1/alerts/history \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data @file.json

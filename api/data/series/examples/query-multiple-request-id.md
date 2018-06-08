@@ -13,7 +13,7 @@ To associate series with queries, specify the `requestId` parameter.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

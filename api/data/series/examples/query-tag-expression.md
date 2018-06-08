@@ -18,7 +18,7 @@ The `tagExpression` provides a more flexible filtering option compared to the `t
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

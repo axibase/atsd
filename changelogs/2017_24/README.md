@@ -10,35 +10,35 @@
 | [4273](#issue-4273) | UI | Bug | User Interface 'More' link drop-down replaced with icons. |
 | 4268 | core | Support | Java 8 startup validation added. |
 | 4262 | UI | Bug | Support for [calendar](../../shared/calendar.md) expressions added to Rule Editor > Test tab. |
-| 4260 | sql | Bug | Corrected [`ROUND`](../../sql#mathematical-functions) function error with [`NaN`](../../sql#not-a-number-nan) values.|
+| 4260 | sql | Bug | Corrected [`ROUND`](../../sql/README.md#mathematical-functions) function error with [`NaN`](../../sql/README.md#not-a-number-nan) values.|
 | 4258 | sql | Bug | Fixed an error that occurred when using non-overlapping interval conditions from different metrics. |
-| [4247](#issue-4247) | sql | Feature | [`NaN`](../../sql#not-a-number-nan) comparison logic changed. `NaN` is compared similar to `NULL`. |
-| 4231 | sql | Bug | Fixed an error that occurred when trying to compare [`date_format`](../../sql#date-formatting-functions) with date string. |
+| [4247](#issue-4247) | sql | Feature | [`NaN`](../../sql/README.md#not-a-number-nan) comparison logic changed. `NaN` is compared similar to `NULL`. |
+| 4231 | sql | Bug | Fixed an error that occurred when trying to compare [`date_format`](../../sql/README.md#date_format) with date string. |
 | 4192 | client | Feature | Enable support for gzip compression in [ATSD Java API](https://github.com/axibase/atsd-api-java) client. |
 | [4187](#issue-4187) | UI | Feature | Add support for SQL syntax themes. |
-| [4166](#issue-4166) | UI | Feature | Apply user-defined 'Time Format' to [`date_format`](../../sql#date-formatting-functions) function results in SQL console. |
-| 4129 | sql | Bug | Disallow non-positive period in [`PERIOD`](../../sql#period) and [`INTERPOLATE`](../../sql#interpolation). |
-| 4121 | sql | Bug | [`ORDER BY`](../../sql#ordering) clause cannot reference non-grouped columns. |
-| 3838 | sql | Feature | Add support for column aliases in [ORDER BY](../../sql#ordering) clause. |
+| [4166](#issue-4166) | UI | Feature | Apply user-defined 'Time Format' to [`date_format`](../../sql/README.md#date_format) function results in the [SQL Console](../../sql/sql-console.md). |
+| 4129 | sql | Bug | Disallow non-positive period in [`PERIOD`](../../sql/README.md#period) and [`INTERPOLATE`](../../sql/README.md#interpolation). |
+| 4121 | sql | Bug | [`ORDER BY`](../../sql/README.md#ordering) clause cannot reference non-grouped columns. |
+| 3838 | sql | Feature | Add support for column aliases in [ORDER BY](../../sql/README.md#ordering) clause. |
 
 ### ATSD
 
 #### Issue 4273
 
-![4273](Images/4273.png)
+![4273](./Images/4273.png)
 
 #### Issue 4247
 
-Compare [`NaN`](../../sql#not-a-number-nan) values similar to [`NULL`](../../sql#null).
+Compare [`NaN`](../../sql/README.md#not-a-number-nan) values similar to [`NULL`](../../sql/README.md#null).
 
-![4247](Images/4247.png)
+![4247](./Images/4247.png)
 
 #### Issue 4187
 
-![4187](Images/4187.png)
+![4187](./Images/4187.png)
 
 #### Issue 4166
 
-Apply user-applied date format on the SQL console.
+Apply user-applied date format on the [SQL Console](../../sql/sql-console.md).
 
-![4166](Images/4166.png)
+![4166](./Images/4166.png)

@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve property records for the specified entity and type.
+Retrieves property records for the specified entity and type.
 
 ## Request
 
@@ -42,15 +42,14 @@ An array of property objects.
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk
+GET /api/v1/properties/nurswgvml007/types/disk
 ```
 
 #### curl
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

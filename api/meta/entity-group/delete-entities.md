@@ -2,7 +2,7 @@
 
 ## Description
 
-Remove the specified members from the entity group.
+Removes the specified members from the entity group.
 
 To delete all entities from the group, submit an empty array `[]` with the [set entities](set-entities.md) method.
 
@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/delete
+POST /api/v1/entity-groups/nmon-aix/entities/delete
 ```
 
 #### Payload

@@ -7,7 +7,7 @@ Insert multiple samples for the given series in ISO format.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/insert
+POST /api/v1/series/insert
 ```
 
 ### Payload

@@ -11,8 +11,8 @@
 
 ![](../images/join_inner.png)
 
-* Press **Sheet 1**
-* Press **OK** to acknowledge the warning about limitations
+* Click **Sheet 1**
+* Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the column field
 * Rename both `Value` to 'Export Value' and 'Import Value': right click on `Value` and choose **Rename**
 * Copy: `SUM([Export Value])-SUM([Import Value])` > double click on the rows field > paste > **Enter**

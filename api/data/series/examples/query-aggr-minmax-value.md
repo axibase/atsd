@@ -9,7 +9,7 @@ The `MAX_VALUE_TIME` function returns the time in Epoch milliseconds when the ma
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

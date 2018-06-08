@@ -20,8 +20,8 @@ This rule will raise an alert if the absolute forecast deviates from the
 
 Email notifications can be setup for alerts to be delivered when the rule is triggered.
 
-![](images/rule_engine_atsd_jmx.png "rule_engine_atsd_jmx")
+![](./images/rule_engine_atsd_jmx.png "rule_engine_atsd_jmx")
 
 Below is an example sent email alert if the rule is triggered.
 
-![](images/alert_message_email.png "alert_message_email")
+![](./images/alert_message_email.png "alert_message_email")

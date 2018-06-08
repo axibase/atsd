@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns unique **series** tags values for the specified metric.
+Retrieves unique **series** tags values for the specified metric.
 
 ## Request
 
@@ -45,7 +45,7 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006
+GET /api/v1/metrics/disk_used/series/tags?entity=nurswgvml006
 ```
 
 #### Payload
@@ -56,8 +56,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006 \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response
@@ -74,7 +73,7 @@ curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurs
 * Include only `mount_point` tag in the response.
 
 ```elm
-https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?file_system=/&tags=mount_point
+GET /api/v1/metrics/disk_used/series/tags?file_system=/&tags=mount_point
 ```
 
 ```json

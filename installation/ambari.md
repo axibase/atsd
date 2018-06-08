@@ -150,7 +150,7 @@ Open Services tab in Ambari UI, select the target HBase cluster, open `Configs` 
 com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint, com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint, com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
 ```
 
-![](images/ambari-manager-coprocessor-config.png)
+![](./images/ambari-manager-coprocessor-config.png)
 
 ### Restart HBase Region Servers
 
@@ -184,7 +184,7 @@ tail -f /opt/atsd/atsd/logs/atsd.log
 
 You should see a **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port 8088 (http) and 8443 (https).
+Web interface is accessible on port `8443` (https).
 
 ## Enable ATSD Auto-Start
 

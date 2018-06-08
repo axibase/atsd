@@ -2,7 +2,7 @@
 
 ## Description
 
-Set members of the entity group from the specified entity list.
+Sets members of the entity group from the specified entity list.
 
 All existing members that are not included in the request will be removed from members.
 
@@ -26,7 +26,7 @@ If the array in the request is empty, all entities are **removed** from the grou
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist. Default: true. |
+| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist.<br>Default: `true`. |
 
 ### Payload
 
@@ -52,7 +52,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/set?createEntities=true
+POST /api/v1/entity-groups/nmon-aix/entities/set?createEntities=true
 ```
 
 #### Payload

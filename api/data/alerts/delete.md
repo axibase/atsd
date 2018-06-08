@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete specified alerts by id from the memory store.
+Deletes specified alerts by id from the memory store.
 
 ## Request
 
@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/alerts/delete
+POST /api/v1/alerts/delete
 ```
 
 #### Payload

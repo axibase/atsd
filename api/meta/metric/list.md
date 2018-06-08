@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve a list of metrics matching the specified filters.
+Retrieves a list of metrics matching the specified filters.
 
 ## Request
 
@@ -22,7 +22,7 @@ Retrieve a list of metrics matching the specified filters.
 
 #### Expression
 
-The expression can include any field listed below, such as `name`, `label`, and `minValue`, except the `lastInsertDate` field which can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+The expression can include any field listed [below](#fields), such as `name`, `label`, and `minValue`, except the `filter` field and `lastInsertDate` which can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
 
 String literals must be enclosed in single or double quotes.
 
@@ -62,7 +62,7 @@ retentionDays > 0 OR seriesRetentionDays > 0
 |`lastInsertDate`| string | Last time a value was received for this metric by any series in ISO-8601 format.|
 |`retentionDays`| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
 |`seriesRetentionDays`| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
-|`versioned`| boolean | If set to true, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
+|`versioned`| boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`minValue`| double | Minimum value for [Invalid Action](#invalid-actions) trigger.|
 |`maxValue`| double | Maximum value for [Invalid Action](#invalid-actions) trigger.|
 |`invalidAction` | string | [Invalid Action](#invalid-actions) type.|
@@ -113,7 +113,7 @@ Invalid Action is triggered if the received series value is less than the Minimu
 #### URI
 
 ```elm
-https://atsd_hostname:8443/api/v1/metrics?limit=2
+GET /api/v1/metrics?limit=2
 ```
 
 #### Payload
@@ -124,8 +124,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response
@@ -174,7 +173,7 @@ name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled 
 #### URI
 
 ```elm
-https://atsd_hostname:8443/api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
+GET /api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
 ```
 
 #### Payload
@@ -184,9 +183,8 @@ None.
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/metrics?expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22 \
-  --insecure --include --user {username}:{password} \
-  --request GET
+curl "https://atsd_hostname:8443/api/v1/metrics?expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22" \
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

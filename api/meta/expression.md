@@ -12,6 +12,7 @@
 * All tags are string variables.
 * Tag names are case-insensitive, for example, `tags.location` and `tags.Location` are equal.
 * If the tag `tag-name` is not defined, the `tags.{tag-name}` variable returns an empty string.
+* String literals must be enclosed in single or double quotes.
 
 ## Operators
 
@@ -64,8 +65,8 @@ Wildcard `?` means any character.
 | **Function**   | **Description**  |
 |:---|:---|
 | `list`       | `list('svl,nyc,sfo')`<br>Returns a collection of strings. <br>Splits a string by delimiter (default is comma).          |
-| `likeAll`    | `likeAll(entity.hostname, collection('hostname_ignore'))`<br>Returns true, if every element in the collection of patterns matches the first string argument.        |
-| `likeAny`    | `likeAny(entity.location, list('svl,nyc,sfo'))`<br>Returns true, if at least one element in the collection of patterns matches the first string argument. |
+| `likeAll`    | `likeAll(entity.hostname, collection('hostname_ignore'))`<br>Returns `true`, if every element in the collection of patterns matches the first string argument.        |
+| `likeAny`    | `likeAny(entity.location, list('svl,nyc,sfo'))`<br>Returns `true`, if at least one element in the collection of patterns matches the first string argument. |
 | `upper`      | `upper('svl')`<br>Converts the argument to upper case.  |
 | `lower`      | `lower('SFO')`<br>Converts the argument to lower case.  |
 | `collection` | `collection('ip_address_ignore')`Returns a pre-defined named collection by name.  |

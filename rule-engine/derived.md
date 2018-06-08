@@ -54,13 +54,13 @@ In order to store derived commands with the current server time, omit the date/t
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
-Alternatively, use the [`now`](window.md#time-fields) placeholder to access the current server time.
+Alternatively, use the [`now`](window-fields.md#date-fields) placeholder to access the current server time.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.getMillis()}
 ```
 
-To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical-functions) function and the seconds field `s:`:
+To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical) function and the seconds field `s:`:
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMillis()/1000)}
@@ -68,7 +68,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMi
 
 #### Received Time
 
-To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window.md#time-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
+To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window-fields.md#date-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
@@ -76,7 +76,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 
 > If the 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` field will return the time of the oldest command, rounded to seconds.
 
-To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical-functions) function:
+To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical) function:
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp/1000)}
@@ -88,7 +88,7 @@ Derived commands can be stored each time a command is received or removed from t
 
 The frequency can be lowered by adjusting the repeat interval.
 
-![](images/derived_repeat.png)
+![](./images/derived_repeat.png)
 
 The produced commands are queued in memory and are persisted to the database once per second.
 
@@ -117,7 +117,7 @@ series e:entity1 m:a=10 m:b=20 m:c=30
 
 If creating new data is the rule's only purpose, set the `Condition` field to a static `true` value to minimize the processing overhead.
 
-![](images/derived-condition.png)
+![](./images/derived-condition.png)
 
 ## Examples
 

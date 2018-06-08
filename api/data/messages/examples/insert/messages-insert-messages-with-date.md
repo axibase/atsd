@@ -2,7 +2,7 @@
 
 ## Description
 
-Supported [ISO date](../../../../../api/data#datetime-formats) formats:
+Supported [ISO date](../../../../data/date-format.md) formats:
 
 * `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`
 * `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh[:]mm`
@@ -14,7 +14,7 @@ Milliseconds are optional.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/messages/insert
+POST /api/v1/messages/insert
 ```
 
 ### Payload

@@ -2,7 +2,7 @@
 
 ## Description
 
-Upload nmon file for parsing.
+Accepts an nmon file for parsing.
 
 ## Request
 

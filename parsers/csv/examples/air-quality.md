@@ -37,13 +37,13 @@
 
 ## Parser Configuration Screenshot
 
-![](resources/air_quality_csv_parser.png)
+![](./resources/air_quality_csv_parser.png)
 
 ## Parser Configuration Description
 
 | Field | Setting | Reason |
 | --- | --- | --- |
-|  Enabled  |  Set to true  |  Enables parsing of CSV files.<br>Use of this parser configuration is allowed in Axibase Collector.  |
+|  Enabled  |  Set to `true`  |  Enables parsing of CSV files.<br>Use of this parser configuration is allowed in Axibase Collector.  |
 |  Name  |  Unique name – `airnow-fresno`  |  Unique name to distinguish a particular parser from others.<br>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.  |
 |  Put Type  |  Metric  |  The CSV file in question contains time series (metrics) environmental data.  |
 |  Delimiter  |  Comma  |  A comma is used to separate columns.  |

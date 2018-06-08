@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format.
+Retrieves series values for the specified entity, metric, and optional series tags in `CSV` or `JSON` format.
 
 ## Request
 
@@ -70,15 +70,14 @@ time,entity,metric,value
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/series/json/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso
+GET /api/v1/series/json/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso
 ```
 
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso \
-  --insecure --include -user {username}:{password} \
-  --request GET
+curl "https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso" \
+  --insecure --include -user {username}:{password}
 ```
 
 ### Response

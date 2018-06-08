@@ -8,15 +8,15 @@
 | 4787 | rule editor | Bug | Set default values for empty fields in [`CUSTOM`](../../rule-engine/notifications/custom.md) notification type. |
 | 4782 | security | Bug | Prevent browser auto-complete to submit user credentials on the web notification forms. |
 | 4779 | api-rest | Bug | Series query: invalid JSON returned if `addMeta` parameter for unknown metric is specified. |
-| [4778](#issue-4778) | rule editor | Feature | Implement placeholders for the [Details Table](../../rule-engine/placeholders.md#alert-table-placeholders). |
-| 4776 | rule engine | Feature | Extract functions from the [`db_last`](../../rule-engine/functions-series.md#db_last-function) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic-function) functions to include in notification charts. |
+| [4778](#issue-4778) | rule editor | Feature | Implement placeholders for the [Details Table](../../rule-engine/details-table.md#details-table). |
+| 4776 | rule engine | Feature | Extract functions from the [`db_last`](../../rule-engine/functions-series.md#db_last) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions to include in notification charts. |
 | 4775 | rule editor | Bug | Raise error on invalid syntax in [database](../../rule-engine/functions-series.md) functions. |
 | 4773 | api-rest | Bug | Series query: fix for empty response when `seriesLimit` is enforced. |
 | [4772](#issue-4772) | rule editor | Feature | Add setting 'Group by All Tags'. |
 | 4767 | rule engine | Bug | Web Notifications: Timeout waiting for connection from pool on CircleCI. |
 | [4765](#issue-4765) | rule engine | Feature | Implement [derived](../../rule-engine/derived.md) commands. |
 | 4757 | rule engine | Bug | Remove excessive rounding in variables. |
-| [4754](#issue-4754) | rule engine | Feature | Add [window](../../rule-engine/window.md) viewer. |
+| 4754 | rule engine | Feature | Add [window](../../rule-engine/window.md) viewer. |
 | 4753 | rule engine | Bug |  Alert does not reopen when 'Message on Cancel' is empty. |
 | 4728 | portal | Bug | Charts and portals - ensure `LTR` layout regardless of the browser setting. |
 | 4717 | api-rest | Bug | Series query: wrong below median `PERCENTILE_*` calculations (equals to `MIN`). |
@@ -53,7 +53,7 @@ ${detailsTable('json')}
 
 The new settings automatically creates as many series as there are incoming series to simplify the initial configuration. For `message` and `property` commands, the setting is set to 'No Tags'.
 
-![](Images/group_all_tags.png)
+![](./Images/group_all_tags.png)
 
 ### Issue 4765
 
@@ -65,7 +65,7 @@ series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 
 The new commands can be executed at the frequency of incoming commands or decreased with a custom repeat interval.
 
-![](Images/derived_repeat.png)
+![](./Images/derived_repeat.png)
 
 ### Issue 4781
 

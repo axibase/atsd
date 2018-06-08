@@ -73,7 +73,7 @@ The grouped SUM series is then aggregated into periods.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

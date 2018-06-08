@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve information about the specified entity group including its name and user-defined tags.
+Retrieves information about the specified entity group including its name and user-defined tags.
 
 ## Request
 
@@ -29,7 +29,7 @@ Refer to Response Fields in [Entity Groups: List](list.md#fields)
 #### URI
 
 ```elm
-GET https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix
+GET /api/v1/entity-groups/nmon-aix
 ```
 
 #### Payload
@@ -40,8 +40,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
-  --insecure --include --user {username}:{password} \
-  --request GET
+  --insecure --include --user {username}:{password}
 ```
 
 ### Response

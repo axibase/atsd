@@ -16,7 +16,7 @@ The process is sometimes called downsampling.
 ### URI
 
 ```elm
-POST https://atsd_hostname:8443/api/v1/series/query
+POST /api/v1/series/query
 ```
 
 ### Payload

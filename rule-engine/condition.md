@@ -33,7 +33,7 @@ Refer to [operators](operators.md).
 
 ## Collections
 
-The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](functions.md#lookup-functions) functions.
+The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](functions.md#lookup) functions.
 
 ## Functions
 
@@ -45,7 +45,7 @@ Function names are **case-sensitive**.
 
 Custom expressions that return a value (number, string, boolean, object) can be declared as a [variable](variables.md) and included in the condition by name.
 
-![](images/condition-variable.png)
+![](./images/condition-variable.png)
 
 ## Examples
 
