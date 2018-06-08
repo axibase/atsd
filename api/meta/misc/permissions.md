@@ -23,7 +23,7 @@ Retrieves access [permissions](../../../administration/user-authorization.md) fo
 | `all-entities-read` | boolean | User is authorized to read data for any entity.|
 | `all-entities-write`  | boolean | User is authorized to write data for any entity.|
 | `all-portals-permission`  | boolean | User is authorized to view all portals enabled in the system. |
-| `ip-filter`| string| String with IP address or CIDR ranges from which the user is allowed to make requests.
+| `ip-filter`| string| String with IP address or CIDR ranges from which the user is allowed to make requests. |
 
 ## Example
 
