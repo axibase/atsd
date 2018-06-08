@@ -75,7 +75,7 @@ Supported date input patterns:
 | Pattern | Example |
 |---|---|
 | `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'` | `2018-05-15T00:00:00.002Z` |
-| `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm` | `2018-05-15T00:00:00-05:00` |
+| `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh[:]mm` | `2018-05-15T00:00:00-05:00`<br>`2018-05-15T00:00:00-0500` |
 
 Refer to [date format examples](date-format.md).
 

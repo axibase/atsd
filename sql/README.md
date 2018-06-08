@@ -1014,11 +1014,11 @@ An interval condition determines the selection interval and is specified in the 
 
 | **Format** | **Time Zone** | **Examples** |
 |---|---|---|
-| `yyyy-MM-dd'T'HH:mm:ss[.NNN](Z\|±hh:mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00` |
+| `yyyy-MM-dd'T'HH:mm:ss[.NNN](Z\|±hh[:]mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00`<br>`2017-12-10T15:30:00-0500` |
 | `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
 | `yyyy[-MM[-dd]]`| Database  | `2017`<br>`2017-12`<br>`2017-12-15` |
 
-The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00`. If the time zone is not specified in the literal value, the database time zone is used to convert strings into date objects.
+The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00` or `+0000`. If the time zone is not specified in the literal value, the database time zone is used to convert strings into date objects.
 
 ```sql
 SELECT datetime, entity, value
@@ -2377,7 +2377,7 @@ GROUP BY tu.entity
 
 #### DATE_FORMAT
 
-The `date_format` function formats Unix millisecond time to a string in user-defined date format and optional time zone. See supported time pattern letters [here](time-pattern.md).
+The `date_format` function formats Unix millisecond time to a string in user-defined date format and optional time zone. See supported time pattern letters [here](../shared/time-pattern.md).
 
 ```java
 date_format(long milliseconds[, string time_format[, string time_zone]])
@@ -2510,7 +2510,7 @@ The `date_parse` function parses the date and time string into Unix milliseconds
 date_parse(string datetime[, string time_format[, string time_zone]])
 ```
 
-* The default `time_format` is ISO 8601: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters [here](time-pattern.md).
+* The default `time_format` is ISO 8601: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters [here](../shared/time-pattern.md).
 * The default `time_zone` is the database time zone.
 
 ```sql

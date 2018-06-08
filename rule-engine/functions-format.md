@@ -108,7 +108,7 @@ Examples:
   date_format(long t, string p, string z) string
 ```
 
-Converts timestamp `t` to a string according to the specified [date pattern](../sql/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`.
+Converts timestamp `t` to a string according to the specified [date pattern](../shared/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`.
 
 The input timestamp is specified as UNIX milliseconds.
 

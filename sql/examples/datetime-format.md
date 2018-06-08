@@ -36,7 +36,7 @@ The `date_format` function can print out the `time` column as well as any numeri
 ```sql
 SELECT time,
   date_format(time),
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z'''),
+  date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z''','UTC'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00'),
