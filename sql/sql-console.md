@@ -12,11 +12,11 @@ Open the console by clicking **Console** in the main **SQL** menu.
 2. [Format Settings](#format-settings)
 3. [Action Controls](#action-controls)
 
-![](images/sql_console.png)
+![](./images/sql_console.png)
 
 Enter [`SELECT`](README.md#select-expression) queries in the **Query** window and view the results below.
 
-![](images/query-result1.png)
+![](./images/query-result1.png)
 
 ## Format Settings
 
@@ -50,7 +50,7 @@ The **Decimal Precision** setting rounds numeric values to the specified number 
 
 To disable rounding, revert the setting to `-1` which is the default value. When set to a non-default value, the console highlights the setting in light blue.
 
-![](images/decimal-precision.png)
+![](./images/decimal-precision.png)
 
 ```sql
 SELECT MAX(value) AS mx, '123.456' AS num, COUNT(value) AS ct
@@ -71,11 +71,11 @@ In the above example, rounding applies only to the `mx` column which contains de
 
 Select a color scheme to apply to [reserved words](README.md#reserved-words) and [literal](README.md#literals) values in the query text.
 
-![](images/theme.png)
+![](./images/theme.png)
 
-| Default | Brick | Violet |
-|---|---|---|---|
-| ![](images/default.png)| ![](images/brick.png)| ![](images/violet.png)|
+ Default | Brick | Violet
+---|---|---
+ ![](./images/default.png) | ![](./images/brick.png) | ![](./images/violet.png) |
 
 ### NULL Format
 
@@ -109,7 +109,7 @@ Download the results of a query in CSV, JSON (objects), JSON (row), or XLSX form
 
 Click **Export** to open the **Export Query Results** dialog. Modify the query (for example, remove [`LIMIT`](README.md#limiting)), select a file format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
 
-![](images/export1.png)
+![](./images/export1.png)
 
 ### Store
 
@@ -117,7 +117,7 @@ Store results in the database as a new derived series. The query results are eli
 
 Execute the query and click **Store** to open the **Store Query Results as Series** dialog.
 
-![](images/query_store.png)
+![](./images/query_store.png)
 
 The dialog window provides several tools to configure insertion:
 
@@ -137,4 +137,4 @@ Opens the **SQL Query Plan** page for the current query.
 
 The plan includes query summary such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as detailed information such as the number of bytes transferred and records retrieved from storage.
 
-![](images/query-plan.png)
+![](./images/query-plan.png)
