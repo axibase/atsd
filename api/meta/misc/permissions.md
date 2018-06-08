@@ -23,6 +23,7 @@ Retrieves access [permissions](../../../administration/user-authorization.md) fo
 | `all-entities-read` | boolean | User is authorized to read data for any entity.|
 | `all-entities-write`  | boolean | User is authorized to write data for any entity.|
 | `all-portals-permission`  | boolean | User is authorized to view all portals enabled in the system. |
+| `ip-filter`| string| String with IP address or CIDR ranges from which the user is allowed to make requests.
 
 ## Example
 
@@ -61,7 +62,8 @@ curl https://atsd_hostname:8443/api/v1/permissions \
   ],
   "all-entities-read": false,
   "all-entities-write": true,
-  "all-portals-permission": false
+  "all-portals-permission": false,
+  "ip-filter": "192.168.1.0/24"
 }
 ```
 
@@ -80,7 +82,8 @@ curl https://atsd_hostname:8443/api/v1/permissions \
   "all-entities-read": false,
   "all-entities-write": true,
   "all-portals-permission": false,
-  "portals": []
+  "portals": [],
+  "ip-filter": "216.3.128.12 216.3.128.13"
 }
 ```
 
@@ -95,5 +98,6 @@ curl https://atsd_hostname:8443/api/v1/permissions \
   "all-entities-write":true,
   "all-portals-permission":true,
   "portals":[]
+  "ip-filter": null
 }
 ```
