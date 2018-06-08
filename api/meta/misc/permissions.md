@@ -97,7 +97,7 @@ curl https://atsd_hostname:8443/api/v1/permissions \
   "all-entities-read":true,
   "all-entities-write":true,
   "all-portals-permission":true,
-  "portals":[]
+  "portals":[],
   "ip-filter": null
 }
 ```
