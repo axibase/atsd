@@ -159,7 +159,7 @@ date:2017-06-*
 
 The search index is continuously refreshed on schedule and as such it may not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
 
-The frequency of incremental refreshes can be controlled with the `search.indexing.incremental.schedule` setting. Each refresh operation takes up to 10 seconds.
+The interval between the incremental refreshes can be controlled with the `search.indexing.incremental.interval` setting. Each refresh operation takes up to 10 seconds.
 
 The frequency of rebuild tasks can be controlled with the `search.indexing.full.schedule` setting. The full rebuild takes up to 10 minutes.
 

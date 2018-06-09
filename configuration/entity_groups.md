@@ -39,7 +39,7 @@ The expression can include the following fields and supports wildcards in field 
 
 The expression may refer to entity properties and [functions](#supported-functions) in order to find matching entities.
 
-> Expression-based groups are continuously updated by the server at a frequency specified with the `entity.group.update.schedule` setting.
+> Expression-based groups are continuously updated by the server within the interval specified with the `entity.group.update.interval` setting.
 
 #### Supported Functions
 
