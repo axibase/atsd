@@ -36,7 +36,7 @@ Use the `@foreach` template to iterate over a collection.
 ```
 
 * `collection` is the name of the collection being iterated.
-* `item` is any name assigned to the current element of the collection. 
+* `item` is any name assigned to the current element of the collection.
 * Refer to items in the collection using `@{}` syntax instead of the regular placeholder `${}` syntax.
 
 ```javascript
