@@ -2541,10 +2541,17 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 
 #### `ENDTIME`
 
-The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords in the user-defined [time zone](../shared/timezone-list.md).
+The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md).
 
 ```sql
 ENDTIME(calendarExpression, string timeZone)
+```
+Supported formats:
+
+```sql
+ENDTIME('yyyy-MM-dd', timeZone)
+ENDTIME('yyyy-MM-dd HH:mm', timeZone)
+ENDTIME('yyyy-MM-dd HH:mm:ss', timeZone)
 ```
 
 The function can be used to perform calendar arithmetic in a time zone different from the database time zone.
