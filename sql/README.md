@@ -2546,6 +2546,7 @@ The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md)
 ```sql
 ENDTIME(calendarExpression, string timeZone)
 ```
+
 Supported formats:
 
 ```sql
