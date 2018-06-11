@@ -4,9 +4,9 @@
 
 Calendar syntax implements convenient [keywords](#keywords) and [arithmetic](#expressions) as an alternative to specifying literal dates in API requests, portal configurations, export settings, etc.
 
-Calendar [keyword](#keywords) are calculated based on the current server time and the server's [time zone](timezone-list.md).
-
 For example, if the current time is `December 15, 2017 15:28:44`, the expression `current_hour - 1 * day` returns `December 14, 2016 15:00:00`.
+
+Calendar [keyword](#keywords) are evaluated based on the current **server** time and the **server** [time zone](timezone-list.md).
 
 Calendar arithmetic such as adding or subtracting an interval is implemented with [expressions](#expressions).
 
@@ -14,15 +14,16 @@ Calendar arithmetic such as adding or subtracting an interval is implemented wit
 
 ### Syntax
 
-```javascript
-{keyword} (+/-) {interval-count} * {interval-unit}
+```markdown
+<keyword>[ +|- <interval-count> * <interval-unit>]
 ```
 
 ### Examples
 
 | **Name** | **Description** |
 |:---|:---|
-| `next_month + 3 * day` | 00:00:00 on the 3rd day of the next month |
+| `next_month` | 00:00:00 on the 1st day of the next month. |
+| `next_month + 3 * day` | 00:00:00 on the 3rd day of the next month. |
 | `today – 1 * month` | 00:00:00 on the same day of the previous month. |
 
 ## Keywords
@@ -32,12 +33,6 @@ Calendar arithmetic such as adding or subtracting an interval is implemented wit
 | **Name** | **Alias** | **Description** |
 |:---|:---|:---|
 | `now` | time | current time |
-
-### Specific Time
-
-| **Name** | **Alias** | **Description** |
-|:---|:---|:---|
-| `date-format` | | Supported formats: <br>`YYYY-MM-DD HH:mm:ss` – Specific date and time <br>`YYYY-MM-DD` – 00:00:00 on specific day <br> `2015-04-22T00:00:00Z` – Date in ISO format <br>Example 1: `2015-04-22 00:00:00` <br>Example 2: `2015-04-22 00:00` <br>Example 3: `2015-04-22` |
 
 ### Future Time
 
@@ -90,6 +85,12 @@ Calendar arithmetic such as adding or subtracting an interval is implemented wit
 | `friday` | `fri` | 00:00:00 on the most recent Friday |
 | `saturday` | `sat` | 00:00:00 on the most recent Saturday |
 | `sunday` | `sun` | 00:00:00 on the most recent Sunday |
+
+### Specific Time
+
+| **Name** | **Alias** | **Description** |
+|:---|:---|:---|
+| `date-format` | | Supported formats: <br>`YYYY-MM-DD HH:mm:ss` – Specific date and time <br>`YYYY-MM-DD` – 00:00:00 on specific day <br> `2015-04-22T00:00:00Z` – Date in ISO format <br>Example 1: `2015-04-22 00:00:00` <br>Example 2: `2015-04-22 00:00` <br>Example 3: `2015-04-22` |
 
 ## Interval Units
 
