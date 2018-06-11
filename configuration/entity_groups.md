@@ -28,7 +28,7 @@ Select current members in the left pane and click 'Remove' to delete members fro
 
 ### Expression
 
-Specify a boolean expression to add/remove entities automatically.
+Specify a boolean expression to add/remove entities automatically. Expression-based groups are updated by the server at a fixed interval specified in the `entity.group.update.interval` setting.
 
 The expression can include the following fields and supports wildcards in field values:
 
@@ -37,9 +37,11 @@ The expression can include the following fields and supports wildcards in field 
 - enabled
 - tags.tag-name or tags['tag-name']
 
-The expression may refer to entity properties and [functions](#supported-functions) in order to find matching entities.
+The expression may refer to entity fields, tags and [functions](#supported-functions) in order to match entities.
 
-> Expression-based groups are continuously updated by the server within the interval specified with the `entity.group.update.interval` setting.
+```javascript
+name LIKE '*vml*' && tags.location = 'NUR'
+```
 
 #### Supported Functions
 
