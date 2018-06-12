@@ -88,11 +88,3 @@ To print day number of week starting from Monday, use the `u` pattern.
 | `yyyy-MM-ddTHH:mm:ss.SSSXXX`   | 2001-07-04T12:08:56.235-07:00        |
 | `YYYY-'W'ww-u'                 | 2001-W27-3                           |
 ```
-
-## Custom Formatting
-
-If the default pattern letters are not sufficient, use String and Math functions to apply custom formatting.
-
-```sql
-CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"
-```

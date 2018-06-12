@@ -39,31 +39,43 @@ SELECT time,
   date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z''','UTC'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST'),
-  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00'),
+  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-07:00'),
+  date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'UTC'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PST'),
-  date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PST')
+  date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'UTC'),
+  date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PST'),
+  date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PDT'),
+  date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'US/Pacific'),
+  date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'UTC'),
+  date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'PST')
 FROM "mpstat.cpu_busy"
-  WHERE datetime > now - 5 * minute
-  LIMIT 1
+  WHERE datetime = '2018-06-12T00:00:07Z'
 ```
 
 ```ls
-| time          | date_format(time)        | date_format(time,'yyyy-MM-dd''T''HH:mm:ss''Z''') | date_format(time,'yyyy-MM-dd HH:mm:ss') | date_format(time,'yyyy-MM-dd HH:mm:ss','PST') | date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00') | date_format(time,'yyyy-MM-dd HH:mm:ss ZZ','PST') | date_format(time,'yyyy-MM-dd HH:mm:ss ZZ','PST') |
-|---------------|--------------------------|--------------------------------------------|-----------------------------------------|-----------------------------------------------|-----------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
-| 1468581897000 | 2016-07-15T11:24:57.000Z | 2016-07-15T11:24:57+0000                   | 2016-07-15 11:24:57                     | 2016-07-15 04:24:57                           | 2016-07-15 03:24:57                                 | 2016-07-15 04:24:57 -07:00                       | 2016-07-15 04:24:57 -07:00                       |
+| time           | date_format(time)         | date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z''', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss')  | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-07:00')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PDT')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'US/Pacific')  | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'PST') |
+|----------------|---------------------------|-----------------------------------------------------------|-------------------------------------------|--------------------------------------------------|--------------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|------------------------------------------------------|------------------------------------------------------|------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------|
+| 1528761607000  | 2018-06-12T00:00:07.000Z  | 2018-06-12T00:00:07+0000                                  | 2018-06-12 00:00:07                       | 2018-06-11 17:00:07                              | 2018-06-11 17:00:07                                    | 2018-06-12 00:00:07 Z                               | 2018-06-11 17:00:07 -07:00                          | 2018-06-12 00:00:07 UTC                              | 2018-06-11 17:00:07 America/Los_Angeles              | 2018-06-11 17:00:07 America/Dawson                   | 2018-06-11 17:00:07 US/Pacific                              | 2018-06-12 00:00:07 UTC                            | 2018-06-11 17:00:07 PDT                           |
 ```
 
 ```ls
-| format                                                         | date_format value          |
-|----------------------------------------------------------------|----------------------------|
-| time                                                           | 1468411675000              |
-| date_format(time)                                              | 2016-07-13T12:07:55.000Z   |
-| date_format(time,'yyyy-MM-dd''T''HH:mm:ss.SSS''Z'','UTC')      | 2016-07-13T12:07:55.000Z   |
-| date_format(time,'yyyy-MM-dd HH:mm:ss')                        | 2016-07-13 12:07:55        |
-| date_format(time,'yyyy-MM-dd HH:mm:ss','PST')                  | 2016-07-13 05:07:55        |
-| date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')            | 2016-07-13 04:07:55        |
-| date_format(time,'yyyy-MM-dd HH:mm:ssZ','PST')                 | 2016-07-13 05:07:55-0700    |
-| date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')                | 2016-07-13 05:07:55-07:00   |
+| format                                                     | date_format value                        |
+|------------------------------------------------------------|------------------------------------------|
+| time                                                       | 1528761607000                            |
+| date_format(time)                                          | 2018-06-12T00:00:07.000Z                 |
+| date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z''', 'UTC')   | 2018-06-12T00:00:07+0000                 |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss')                   | 2018-06-12 00:00:07                      |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST')            | 2018-06-11 17:00:07                      |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-07:00')      | 2018-06-11 17:00:07                      |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'UTC')         | 2018-06-12 00:00:07 Z                    |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PST')         | 2018-06-11 17:00:07 -07:00               |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'UTC')        | 2018-06-12 00:00:07 UTC                  |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PST')        | 2018-06-11 17:00:07 America/Los_Angeles  |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PDT')        | 2018-06-11 17:00:07 America/Dawson       |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'US/Pacific') | 2018-06-11 17:00:07 US/Pacific           |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'UTC')          | 2018-06-12 00:00:07 UTC                  |
+| date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'PST')          | 2018-06-11 17:00:07 PDT                  |
+
 ```
 
 ## `AUTO` Time Zone
