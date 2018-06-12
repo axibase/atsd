@@ -94,8 +94,8 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 |  `timezone`  |  `timezone = UTC`  |  Set the time zone for the data being loaded into the portal. Only the 'UTC' option is supported. <br>If 'UTC' is not set, the portal displays dates in the local time zone. <br>If 'UTC' is set, `start-time` and `end-time` settings specified in local format are evaluated based on the UTC time zone. |  [View](https://apps.axibase.com/chartlab/808e5846/8/)  |
 
 * Supported `datetime` formats:
-  * ISO 8601: `yyyy-MM-dd'T'HH:mm:ss[.NNN]Z`, for example: `2017-07-01T00:00:00Z`
-  * Local: `yyyy-MM-dd[ HH:mm:ss[.NNN]]`, for example: `2017-07-01 00:00:00.015` or `2017-07-01`
+  * ISO 8601 format in UTC time zone: `yyyy-MM-ddTHH:mm:ss[.SSS]Z`, for example: `2017-07-01T00:00:00Z`
+  * Local format: `yyyy-MM-dd[ HH:mm:ss[.SSS]]`, for example: `2017-07-01 00:00:00.015`, `2017-07-01 00:00:00`, and `2017-07-01`
 
 ### Layout Settings
 

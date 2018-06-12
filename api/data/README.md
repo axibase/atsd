@@ -74,14 +74,14 @@ Supported date input patterns:
 
 | Pattern | Example |
 |---|---|
-| `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'` | `2018-05-15T00:00:00.002Z` |
-| `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh[:]mm` | `2018-05-15T00:00:00-05:00`<br>`2018-05-15T00:00:00-0500` |
+| `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'` | `Z` denotes UTC time zone.<br>`2018-05-15T00:00:00Z`<br>`2018-05-15T00:00:00.002Z` |
+| `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh[:]mm` | Offset from UTC time zone in hours and minutes.<br>`2018-05-15T00:00:00-05:00`<br>`2018-05-15T00:00:00-0500` |
 
 Refer to [date format examples](date-format.md).
 
-* The minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
-* The maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
-* The maximum date that can be specified in ISO format when querying data is **9999-12-31T23:59:59.999** UTC.
+* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or 0 milliseconds from Epoch (UNIX) time.
+* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or 4294969199999 milliseconds from Epoch time.
+* The maximum year that can be specified in ISO format when `querying` data is `9999` and the maximum date is `9999-12-31T23:59:59.999` UTC.
 
 ### Numbers
 
