@@ -148,22 +148,25 @@ The following example selects data between 0h:0m:0s of the previous day and 0h:0
 
 ```sql
 SELECT value, datetime,
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'UTC') AS "UTC_datetime",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'US/Pacific') AS "PST_datetime"
-FROM "mpstat.cpu_busy"
+  date_format(time, 'yyyy-MM-dd''T''HH:mm:ss.SSSZZ', 'UTC') AS "iso_z_dt",
+  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'UTC') AS "UTC_1_dt",
+  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZ', 'UTC') AS "UTC_2_dt",
+  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'US/Pacific') AS "PST_dt"
+FROM "cpu_busy"
   WHERE entity = 'nurswgvml007'
 AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific') AND endtime(CURRENT_DAY, 'US/Pacific')
   ORDER BY datetime
+LIMIT 3
 ```
 
 ```ls
-| value | datetime             | UTC_datetime           | PST_datetime           |
-|-------|----------------------|------------------------|------------------------|
-| 6.86  | 2017-06-16T07:00:05Z | 2017-06-16T07:00:05UTC | 2017-06-16T00:00:05PDT |
-| 6.06  | 2017-06-16T07:00:21Z | 2017-06-16T07:00:21UTC | 2017-06-16T00:00:21PDT |
-  ....
-| 3.03  | 2017-06-17T06:59:29Z | 2017-06-17T06:59:29UTC | 2017-06-16T23:59:29PDT |
-| 2.97  | 2017-06-17T06:59:45Z | 2017-06-17T06:59:45UTC | 2017-06-16T23:59:45PDT |
+| value  | datetime                  | iso_z_dt                  | UTC_1_dt                | UTC_2_dt                  | PST_dt                 |
+|--------|---------------------------|---------------------------|-------------------------|---------------------------|------------------------|
+| 10.2   | 2018-06-11T07:00:09.000Z  | 2018-06-11T07:00:09.000Z  | 2018-06-11T07:00:09UTC  | 2018-06-11T07:00:09+0000  | 2018-06-11T00:00:09PDT |
+| 29.17  | 2018-06-11T07:00:25.000Z  | 2018-06-11T07:00:25.000Z  | 2018-06-11T07:00:25UTC  | 2018-06-11T07:00:25+0000  | 2018-06-11T00:00:25PDT |
+...
+| 9      | 2018-06-12T06:59:31.000Z  | 2018-06-12T06:59:31.000Z  | 2018-06-12T06:59:31UTC  | 2018-06-12T06:59:31+0000  | 2018-06-11T23:59:31PDT |
+| 13.4   | 2018-06-12T06:59:47.000Z  | 2018-06-12T06:59:47.000Z  | 2018-06-12T06:59:47UTC  | 2018-06-12T06:59:47+0000  | 2018-06-11T23:59:47PDT |
 ```
 
 ## Query using Local Time
