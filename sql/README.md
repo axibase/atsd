@@ -1009,15 +1009,15 @@ END AS "Tax Day"
 
 An interval condition determines the selection interval and is specified in the `WHERE` clause using the `datetime` or `time` columns.
 
-* The `datetime` column accepts literal dates in one of the following formats:
+The `datetime` column accepts literal dates in one of the following formats:
 
 | **Format** | **Time Zone** | **Examples** |
 |---|---|---|
-| `yyyy-MM-dd'T'HH:mm:ss[.NNN](Z\|±hh:mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00` |
-| `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
+| `yyyy-MM-dd'T'HH:mm:ss[.SSS](Z\|±hh[:]mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00`<br>`2017-12-10T15:30:00-0500` |
+| `yyyy-MM-dd HH:mm:ss[.SSS]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
 | `yyyy[-MM[-dd]]`| Database  | `2017`<br>`2017-12`<br>`2017-12-15` |
 
-The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00`. If the time zone is not specified in the literal value, the database time zone is used to convert strings into date objects.
+The UTC time zone is specified as the `Z` letter or as the zero UTC offset `+00:00` (`+0000`).
 
 ```sql
 SELECT datetime, entity, value
@@ -1027,7 +1027,19 @@ WHERE datetime BETWEEN '2017-12-10T14:00:15Z' AND '2017-12-10T14:30:00.077Z'
 -- WHERE datetime = '2017'
 ```
 
-* The `time` column accepts Unix milliseconds:
+If the time zone is not specified in the literal date, the **database** time zone is used to convert strings into date objects.
+
+```sql
+WHERE datetime BETWEEN '2017-12-10 14:00:15' AND '2017-12-11 14:30:00.077'
+```
+
+Literal date values specified using short formats are expanded to the complete date by setting missing units to the first value in the allowed range.
+
+* `'2017-05-23' == '2017-05-23 00:00:00'`
+* `'2017-05'    == '2017-05-01 00:00:00'`
+* `'2017'       == '2017-01-01 00:00:00'`
+
+The `time` column accepts Unix milliseconds:
 
 ```sql
 SELECT time, entity, value
@@ -1036,7 +1048,7 @@ WHERE time >= 1500300000000
 -- 1500300000000 is equal to 2017-07-17 14:00:00 UTC
 ```
 
-> Note that the `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to `time >= 'a' and time <= 'b'`.
+The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to `time >= 'a' and time <= 'b'`.
 
 ### Optimizing Interval Queries
 
@@ -2376,7 +2388,7 @@ GROUP BY tu.entity
 
 #### DATE_FORMAT
 
-The `date_format` function formats Unix millisecond time to a string in user-defined date format and optional time zone. See supported time pattern letters [here](time-pattern.md).
+The `date_format` function formats Unix millisecond time to a string in user-defined date format and optional time zone. See supported time pattern letters [here](../shared/time-pattern.md).
 
 ```java
 date_format(long milliseconds[, string time_format[, string time_zone]])
@@ -2387,6 +2399,12 @@ If the `time_format` argument is not provided, ISO 8601 format is applied.
 The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
 
 In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database time zone is applied.
+
+If the provided pattern letters are not sufficient, use String and Math functions to apply custom formatting:
+
+```sql
+CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"
+```
 
 Examples:
 
@@ -2509,7 +2527,7 @@ The `date_parse` function parses the date and time string into Unix milliseconds
 date_parse(string datetime[, string time_format[, string time_zone]])
 ```
 
-* The default `time_format` is ISO 8601: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters [here](time-pattern.md).
+* The default `time_format` is ISO 8601: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters [here](../shared/time-pattern.md).
 * The default `time_zone` is the database time zone.
 
 ```sql

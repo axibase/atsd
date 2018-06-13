@@ -5,7 +5,7 @@
 Supported [ISO date](../../../../data/date-format.md) formats:
 
 * `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`
-* `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`
+* `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh[:]mm`
 
 Milliseconds are optional.
 
