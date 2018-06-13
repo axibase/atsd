@@ -11,13 +11,19 @@ function spellcheck {
     if [ "$ENABLE_CHECK" = "true" ]; then
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
             yaspeller --max-requests 10 --dictionary .yaspeller-dictionary.json -e ".md" ./
+            yaspeller_exit_code=$?
             if [ "$1" != "--single" ]; then
                 spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files '**/*.md'
+            else 
+                return $yaspeller_exit_code
             fi
         else
             list_modified_md_files | xargs -d '\n' -n1 yaspeller --dictionary .yaspeller-dictionary.json {}
+            yaspeller_exit_code=$?
             if [ "$1" != "--single" ]; then
                 list_modified_md_files | xargs -d '\n' -n1 spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files {}
+            else 
+                return $yaspeller_exit_code
             fi
         fi
     else
