@@ -162,7 +162,7 @@ Any text between /* and */ is ignored.
 
 #### Placeholders
 
-You can insert placeholders into the configuration text to populate it with values of the request parameters. Placeholders have the `{placeholderName}` format. The value of the placeholder is parsed from the query string from any parameter starting with `p_`, i.e. `p_placeholderName`.
+You can insert placeholders into the configuration text to populate it with values of the request parameters. Placeholders have the `{placeholderName}` format. The value of the placeholder is parsed from the query string from any parameter starting with `p_`, for example `p_placeholderName`.
 
 ```ls
 [series]

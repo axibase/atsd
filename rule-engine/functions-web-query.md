@@ -110,7 +110,7 @@ The request payload can be specified using either `content` text or `params` map
 
 The `params` map is serialized into a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
 
-**JSON content type:**
+**JSON content type**:
 
 ```javascript
   queryPost(_url,
@@ -124,7 +124,7 @@ Payload:
 { "repository": "atsd-site", "channel": "devops" }
 ```
 
-**Form content type:**
+**Form content type**:
 
 ```javascript
   queryPost(_url, [

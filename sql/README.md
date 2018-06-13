@@ -2034,14 +2034,14 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 
 ### JOIN Syntax
 
-The syntax follows the `SQL-92` notation for enumerating the compared columns.
+The syntax follows the SQL-92 notation for enumerating the compared columns.
 
 ```sql
   FROM tbl t1
      JOIN tbl t2
-      ON  t1.time AND t2.time
-      AND t1.entity = t2.entity
-      AND t1.tags = t2.tags
+       ON  t1.time AND t2.time
+       AND t1.entity = t2.entity
+       AND t1.tags = t2.tags
 ```
 
 The `ON` condition can compare only the predefined columns: `entity`, `time`, ``datetime`, and `tags`. Since the virtual tables contain the same predefined columns, the `ON` condition is optional and can be omitted.

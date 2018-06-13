@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves series values for the specified entity, metric, and optional series tags in `CSV` or `JSON` format.
+Retrieves series values for the specified entity, metric, and optional series tags in CSV or JSON format.
 
 ## Request
 

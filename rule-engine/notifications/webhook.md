@@ -10,7 +10,7 @@ The payload is sent using the `POST` method.
 
 ## Content Types
 
-You can choose to send the payload as a `JSON` document or HTML form parameters.
+You can choose to send the payload as a JSON document or HTML form parameters.
 
 * `application/json`
 * `application/x-www-form-urlencoded`

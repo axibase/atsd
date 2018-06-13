@@ -83,7 +83,7 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 ## Create Webhook in ATSD
 
 * Open the **Alerts > Web Notifications** page.
-* Click on an existing `HIPCHAT` template, or click **Create** and select the `HIPCHAT`type.
+* Click on an existing `HIPCHAT` template, or click **Create** and select the `HIPCHAT` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/hipchat_1.png)

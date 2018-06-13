@@ -45,7 +45,7 @@ Now, a [text value](../../api/network/series.md#series-tags-text-value-messages)
 
 The [Test] result now includes a list of columns from the underlying dataset and information on how they're mapped into command fields. The table contains column attributes as well as the following fields:
 
-* Schema Type: classifies how the column is processed in ATSD commands, e.g. metric, series tag, time, property type, etc.
+* Schema Type: classifies how the column is processed in ATSD commands, for example metric, series tag, time, property type, etc.
 * Included: determines if the column is included in ATSD commands or is excluded (ignored).
 
 ```json

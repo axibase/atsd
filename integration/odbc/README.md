@@ -94,7 +94,7 @@ DSN         :   ATSD
 User name   :   <atsd username>
 Password    :   <atsd password>
 Driver class:   com.axibase.tsd.driver.jdbc.AtsdDriver
-Class Path  :   <path to ATSD driver, e.g. C:\drivers\atsd-jdbc-1.3.2-DEPS.jar>
+Class Path  :   <path to ATSD driver, for example C:\drivers\atsd-jdbc-1.3.2-DEPS.jar>
 URL         :   jdbc:atsd://atsd_hostname:8443
 ```
 

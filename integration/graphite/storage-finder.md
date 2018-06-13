@@ -253,7 +253,7 @@ List of aggregation intervals.
             'value': ['Aggregate']}]}
 ```
 
-If we want to make two different types of tokens at the same level, i.e. a leaf and a branch (as shown below), we can make a collection. In this collection, there is a detail aggregator, which is a leaf. We can click on it and see the plot and a constant folder Aggregate, which will lead us further into the tree.
+If we want to make two different types of tokens at the same level, for example a leaf and a branch (as shown below), we can create a collection. In this collection, there is a detail aggregator, which is a leaf. We can click on it and see the plot and a constant folder Aggregate, which will lead us further into the tree.
 
 ![](./resources/09.png)
 
