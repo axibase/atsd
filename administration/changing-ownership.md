@@ -12,7 +12,7 @@ sudo /opt/atsd/bin/atsd-all.sh stop
 
 ## ATSD Directory Ownership
 
-To change the ownership of the executables of ATSD components use the following command: 
+To change ownership of the executable files use the following command: 
 
 ```bash
 sudo chown -R axibase:axibase /opt/atsd
