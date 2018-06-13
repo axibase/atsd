@@ -67,7 +67,7 @@ function print_modified_markdown_files {
 }
 
 function generate_yaspeller_dictionary {
-    cat "$@" | awk '{$1=$1};1' | sort -u | jq -csR 'split("\n")' > .yaspeller-dictionary.json
+    cat "$@" | awk '{$1=$1};1' | sort -u | perl -pe 'chomp if eof' | jq -csR 'split("\n")' > .yaspeller-dictionary.json
 }
 
 function install_checkers {
