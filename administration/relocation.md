@@ -7,7 +7,7 @@ Execute the following steps if you need to move ATSD to a different file system.
 Stop ATSD services
 
 ```sh
-/opt/atsd/atsd/atsd-all.sh stop
+/opt/atsd/bin/atsd-all.sh stop
 ```
 
 Verify that no ATSD services are running
@@ -37,5 +37,5 @@ ln -s /opt/data/atsd /opt/atsd
 Start ATSD services
 
 ```sh
-/opt/atsd/atsd/atsd-all.sh start
+/opt/atsd/bin/atsd-all.sh start
 ```

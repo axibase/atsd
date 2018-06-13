@@ -36,4 +36,4 @@ increase maximum receiving buffer.
 
 ## Relocate ATSD
 
-* [Move ATSD](relocation.md) to a different file system, if the `/opt/atsd` directory doesn't provide sufficient free space.
+* [Move ATSD](../administration/relocation.md) to a different file system, if the `/opt/atsd` directory doesn't provide sufficient free space.
