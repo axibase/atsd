@@ -119,7 +119,7 @@ Open **CSV Tasks** page and check the number of processed rows is six.
 
 For this basic example, the parser maps file columns to series command fields based on column names specified in the header. The parser performs the following specific actions:
 
-* `date` column is mapped to `datetime` field and parsed with `yyyy-MMM-dd HH:mm:ss` pattern in the `UTC` timezone which is set explicitly.
+* `date` column is mapped to `datetime` field and parsed with `yyyy-MMM-dd HH:mm:ss` pattern in the UTC time zone which is set explicitly.
 * `asset` column is mapped to `entity` field.
 * The remaining columns, including `temperature`, are automatically classified as metric columns.
 

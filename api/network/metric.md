@@ -31,7 +31,7 @@ metric m:${metric} b:${enabled} p:${data-type} l:${label} d:${description} i:${i
 | `i`         | string           | Interpolation mode: linear, previous. |
 | `u`         | string           | Units. |
 | `f`         | string           | Filter expression. |
-| `z`         | string           | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in a metric-specific time zone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`.|
+| `z`         | string           | Time Zone ID, for example EST.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in a metric-specific time zone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`.|
 | `v`         | boolean          | Versioning enabled/disabled. |
 | `a`         | string           | Invalid action. |
 | `tp`        | string           | Time precision.  |

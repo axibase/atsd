@@ -8,7 +8,7 @@
 * [Analyze Dataset](#analyze-dataset)
 * [Export Derived Series into ATSD](#export-derived-series-into-atsd)
 * [Verify Insertion](#verify-insertion)
-* [Exporting Data from ATSD into CSV Files](#exporting-data-from-atsd-into-csv-files)
+* [Exporting Data from ATSD into CSV Files](#exporting-data-into-csv-files)
 
 ## Overview
 

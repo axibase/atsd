@@ -136,7 +136,7 @@ curl https://atsd_hostname:8443/api/v1/properties/query \
 01 | General Server Error
 02 | Username Not Found
 03 | Bad Credentials
-04 | Disabled Ldap Service
+04 | Disabled LDAP Service
 05 | Corrupted Configuration
 06 | MS Active Directory
 07 | Account Disabled

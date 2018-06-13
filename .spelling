@@ -30,6 +30,7 @@ axibase
 backend
 backticks
 BigDecimal
+bioreactor
 boolean
 BotFather
 cAdvisor
@@ -107,6 +108,7 @@ durations
 DynamoDB
 EBS
 econometrics
+emoji
 endpoint
 enquote
 Executables
@@ -324,6 +326,7 @@ subqueries
 subquery
 substring
 sudo
+Sunnyvale
 syntaxes
 TableExistsException
 tcollector
@@ -342,6 +345,7 @@ tooltips
 Tooltips
 traceroute
 TradeHistory
+Travis
 treemap
 Ubuntu
 un-acknowledge

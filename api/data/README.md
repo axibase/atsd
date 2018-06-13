@@ -250,7 +250,7 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/v
 | `POST` | [`/entity-groups/{group}/entities/set`](../meta/entity-group/set-entities.md) | Sets members of the entity group from the specified entity list. |
 | `POST` | [`/entity-groups/{group}/entities/delete`](../meta/entity-group/delete-entities.md) | Removes specified entities from members of the specified entity group. |
 
-### Misc
+### Miscellaneous
 
 | **Method** | **Path** | **Description** |
 |:---|:---|:---|

@@ -6,12 +6,12 @@ To allow external clients to connect to ATSD services, grant access to specific 
 
 Port | Network<br> Protocol | Application/<br>Data Protocol | Service
 ---|---|---|---
-1099 | tcp | jmx | JMX server
-8081 | tcp | line | Network command processor
-8082 | udp | line | Network command processor
-8084 | tcp | pickle | Graphite command processor
-8088 | tcp | http | User interface, REST API
-8443 | tcp | https | User interface, REST API
+1099 | TCP | jmx | JMX server
+8081 | TCP | line | Network command processor
+8082 | UDP | line | Network command processor
+8084 | TCP | pickle | Graphite command processor
+8088 | TCP | http | User interface, REST API
+8443 | TCP | https | User interface, REST API
 
 ## Disable Firewall
 

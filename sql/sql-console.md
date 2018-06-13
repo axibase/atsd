@@ -30,7 +30,7 @@ Use **Time Zone** drop-down list to display dates in UTC or database [time zone]
 
 The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed by **SQL Console** when the database is configured to Eastern Standard Time (EST):
 
-**Date Format** | **Timezone: UTC** | **Timezone: Local**
+**Date Format** | **Time zone: UTC** | **Time zone: Local**
 ---|---|---
 `Default` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`
 `yyyy-MM-ddT HH:mm:ss.SSSZ` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`

@@ -53,7 +53,7 @@ retentionDays > 0 OR seriesRetentionDays > 0
 |`dataType`| string | [Data Type](#data-types).|
 |`interpolate`| string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`. |
 |`units`| string | Measurement units. |
-|`timeZone`| string | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in metric-specific time zone.|
+|`timeZone`| string | Time Zone ID, for example EST.<br>Refer to [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in metric-specific time zone.|
 |`timePrecision`| string | Time precision: SECONDS or MILLISECONDS.|
 |`enabled`| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
 |`persistent` | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
