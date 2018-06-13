@@ -52,7 +52,7 @@ Replace `atsd_hostname` with the ATSD hostname or IP address.
 
 #### Ubuntu 14.04
 
-Download [init script](resources/tcollector) and copy it into `/etc/init.d` directory.
+Download [init script](./resources/tcollector) and copy it into `/etc/init.d` directory.
 Set `TCOLLECTOR_HOME` variable to tcollector home directory, for example
 
 ```sh

@@ -31,11 +31,11 @@ Analyze | Apply statistical functions to the dataset.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
 
 ![](./resources/metrics_entry.png)
 
-The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available for 2017. The underlying data is available in the following [Excel file](resources/eng_e02.xls).
+The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
 
 To calculate the weighted inflation index we need to multiply the CPI of each category by its weight divided by 1000 and sum the products.
 
@@ -182,7 +182,7 @@ SPSS provides two alternatives to aggregate data by period.
 
     ![](./images/htm_report_spss.png)
 
-* The report is also available in [HTML format](resources/index_calculation.htm).
+* The report is also available in [HTML format](./resources/index_calculation.htm).
 
     ![](./images/htm_version_output.png)
 
@@ -299,7 +299,7 @@ SELECT entity, datetime, value FROM cpi_price
 
 The built-in [SQL Console](../../../sql/sql-console.md) allows exporting query results into various data formats including Excel, CSV, and JSON, with optional metadata composed according to the [W3C Model for Tabular Data](../../../sql/api.md#metadata).
 
-> If you don't have an ATSD installed, [weights.csv](resources/weights.csv) and [prices.csv](resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
+> If you don't have an ATSD installed, [weights.csv](./resources/weights.csv) and [prices.csv](./resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
 
 ### Prices
 

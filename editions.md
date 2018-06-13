@@ -9,8 +9,8 @@ Axibase Time Series Database (ATSD) is available in two editions: **Standard** a
 | [Compression](./administration/compaction/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Portal Server](./portals/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Charts Library](https://axibase.com/products/axibase-time-series-database/visualization/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| [Rule Engine](./rule-engine/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
-| [Email Alerts](./rule-engine/email.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
+| [Rule Engine](./rule-engine/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Email Alerts](./rule-engine/email.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Slack/TG/HipChat Alerts](./rule-engine/notifications/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
 | [SQL Engine](./sql/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [SQL Web Console](./sql/sql-console.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |

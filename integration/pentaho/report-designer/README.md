@@ -24,11 +24,11 @@ To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [`series` commands](resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
 
 ![](./resources/metrics_entry.png)
 
-The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](resources/eng_e02.xls).
+The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
 
 To calculate a weighted inflation index we need to multiply the CPI of each category by its weight divided by 1000 and sum the products.
 
@@ -139,4 +139,4 @@ Example of report preview:
 
 ![](./resources/report_preview.png)
 
-[File with example report](resources/report.prpt)
+[File with example report](./resources/report.prpt)

@@ -7,7 +7,7 @@ calculating derived time series in the IBM SPSS Modeler interface and storing th
 
 ## Sample Dataset
 
-For the purpose of instruction, we will use the following sample [`series` commands](resources/commands.txt).
+For the purpose of instruction, we will use the following sample [`series` commands](./resources/commands.txt).
 The series contain the Consumer Price Index (CPI) for each category
 of items in a consumer's basket as well as a weight for each category in the CPI
 basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to
@@ -248,4 +248,4 @@ SELECT entity, datetime, value
 
 ## Stream File
 
-Download the [stream file](resources/Stream.str) used for this guide for review in your own IBM SPSS Modeler installation.
+Download the [stream file](./resources/Stream.str) used for this guide for review in your own IBM SPSS Modeler installation.

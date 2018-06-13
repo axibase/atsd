@@ -106,7 +106,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 ### Create/Import Rule
 
 * Create a new rule or import an existing rule as described below.
-* Download the file [rules_outgoing_webhook.xml](resources/rules_outgoing_webhook.xml).
+* Download the file [rules_outgoing_webhook.xml](./resources/rules_outgoing_webhook.xml).
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules_outgoing_webhook.xml` file, click **Import**.
 

@@ -10,7 +10,7 @@ The purpose of exceptions is to exclude specific intervals from the data selecti
 
 For example, a 12-hour 100% cpu_busy interval caused by a broken script. Even after the problem is fixed (script stopped), the abnormal data remains and will cause forecast to be inaccurate. Another example is a data gap, where collection stopped for a while, and this may impact the forecast accuracy. ATSD algorithms cannot automatically identify and discard abnormal records, and Exception is a manual solution for it.
 
-![](resources/calendar_exceptions_testing_1.png)
+![](./resources/calendar_exceptions_testing_1.png)
 
 ### Settings
 
@@ -31,9 +31,9 @@ The reason Exceptions are stored separately from Forecast Settings is to have on
 
 Calendars in comparison with Exceptions allow to exclude data related to Forecast to which them applied in Forecast Settings Editor. In addition, Calendars provide a more flexible date configuration.
 
-![](resources/calendar_exceptions_testing_3.png)
+![](./resources/calendar_exceptions_testing_3.png)
 
-![](resources/calendar_exceptions_testing_2.png)
+![](./resources/calendar_exceptions_testing_2.png)
 
 ### Settings
 
@@ -47,7 +47,7 @@ Calendars in comparison with Exceptions allow to exclude data related to Forecas
 
 Testing allows the calculation of forecasts based on data in a CSV file or the text area. The database is not involved and the forecast is not saved. The first row in the CSV is ignored because it should contains column headers. If column headers are not present, the first row of test data will be ignored.
 
-![](resources/calendar_exceptions_testing_4.png)
+![](./resources/calendar_exceptions_testing_4.png)
 
 ### Settings
 

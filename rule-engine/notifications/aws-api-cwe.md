@@ -10,7 +10,7 @@ The example invokes the [Amazon CloudWatch Events API](https://docs.aws.amazon.c
 
 ## Configuration
 
-Create a new `AWS API` web notification or import the [template](resources/aws-api-cwe-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `AWS API` web notification or import the [template](./resources/aws-api-cwe-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
 

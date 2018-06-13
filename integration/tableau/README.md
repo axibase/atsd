@@ -13,7 +13,7 @@ Tableau Desktop is a visualization software that provides tools to query, analyz
 
 ## Dataset
 
-For the purpose of instruction, we will use the following sample [`series` commands](resources/commands.txt). The series contain the national import and export statistics over a period of 30+ years. The series are seasonally adjusted and are collected on a monthly basis.
+For the purpose of instruction, we will use the following sample [`series` commands](./resources/commands.txt). The series contain the national import and export statistics over a period of 30+ years. The series are seasonally adjusted and are collected on a monthly basis.
 
 To load the data, log in to ATSD and submit these commands on the **Metrics > Data Entry** page.
 
@@ -24,7 +24,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install Tableau
 
 * Install [Tableau Desktop 10.4](https://www.tableau.com/support/releases)
-* Copy [`ATSD.tdc`](resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory
+* Copy [`ATSD.tdc`](./resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory
 
 ### Install ODBC-JDBC Bridge
 

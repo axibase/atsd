@@ -9,7 +9,7 @@ calculating derived time series in Alteryx and storing the results back in ATSD.
 
 ## Sample Dataset
 
-For the purpose of instruction, we will use sample [`series` commands](resources/commands.txt).
+For the purpose of instruction, we will use sample [`series` commands](./resources/commands.txt).
 The series contain the Consumer Price Index (CPI) for each category
 of items in a consumer's basket as well as a weight for each category in the CPI
 basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to
@@ -127,7 +127,7 @@ The resulting workflow will be implemented as follows:
 
 ![](./images/workflow.png)
 
-You can download [this workflow](resources/atsd-workflow.yxmd) for review in your own Alteryx Designer installation.
+You can download [this workflow](./resources/atsd-workflow.yxmd) for review in your own Alteryx Designer installation.
 
 The workflow consists of the following steps (nodes):
 

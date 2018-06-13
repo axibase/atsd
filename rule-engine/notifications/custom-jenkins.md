@@ -11,7 +11,7 @@ The integration relies on the following [Jenkins API](https://wiki.jenkins.io/di
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-jenkins-notification.xml), used in this example.
+Create a new `CUSTOM` web notification from scratch or import the following [template](./resources/custom-jenkins-notification.xml), used in this example.
 
 To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
 
@@ -72,7 +72,7 @@ Leave the `Parameters` table empty for non-parameterized jobs.
 
 ## Rule
 
-Create a new rule or import the [rule template](resources/custom-jenkins-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/custom-jenkins-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
