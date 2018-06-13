@@ -6,35 +6,37 @@ Axibase Time Series Database (ATSD) is available in two editions: **Standard** a
 
 |  | **Standard Edition** | **Enterprise Edition** |
 |---|:---:|:---:|
-| Rule Engine | ![](././images/ok.svg) | ![](./images/ok.svg) |
-| Portal Server | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| Charts Library | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| SQL Engine | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| SQL Web Console | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| SQL Scheduled Reports | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| SQL Store Option | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| Granular Access Control | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| Ad-hoc Export | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| Scheduled Export | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| CSV Processor | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| Forecasts | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| Compression | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| LDAP Authentication |  | ![](./images/ok.svg) |
-| Versioning |  | ![](./images/ok.svg) |
-| Clustering |  | ![](./images/ok.svg) |
+| [Compression](./administration/compaction/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Portal Server](./portals/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Charts Library](https://axibase.com/products/axibase-time-series-database/visualization/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Rule Engine](./rule-engine/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
+| [Email Alerts](./rule-engine/email.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
+| [Slack/TG/HipChat Alerts](./rule-engine/notifications/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
+| [SQL Engine](./sql/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [SQL Web Console](./sql/sql-console.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [SQL Scheduled Reports](./sql/scheduled-sql.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [SQL Store Option](./sql/scheduled-sql-store.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Ad-hoc Export](./reporting/ad-hoc-exporting.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Scheduled Export](./reporting/scheduled-exporting.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [CSV Processor](./parsers/csv/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Granular Access Control](./administration/user-authorization.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [LDAP Authentication](./administration/user-authorization.md) |  | ![](./images/ok.svg) |
+| [Forecasts](./forecasting/README.md) | | ![](./images/ok.svg) |
+| [Versioning](./versioning/README.md) |  | ![](./images/ok.svg) |
+| [Clustering](./installation/cloudera.md) |  | ![](./images/ok.svg) |
+| [AWS EMR](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
 
 ## Tools
 
 |  | **Standard Edition** | **Enterprise Edition** |
 |---|:---:|:---:|
-| Axibase Collector | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| JDBC driver | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| Data Applications |  | ![](./images/ok.svg) |
-| ChartLab |  | ![](./images/ok.svg) |
+| [Axibase Collector](https://axibase.com/docs/axibase-collector/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [JDBC driver](https://github.com/axibase/atsd-jdbc) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Data Applications](https://apps.axibase.com/) |  | ![](./images/ok.svg) |
+| [ChartLab](https://apps.axibase.com/chartlab/) |  | ![](./images/ok.svg) |
 
 ## Support Services
 
 |  | **Standard Edition** | **Enterprise Edition** |
 |---|:---:|:---:|
-| Technical Support | `optional` | ![](./images/ok.svg) |
 | Technical Support | `optional` | ![](./images/ok.svg) |
