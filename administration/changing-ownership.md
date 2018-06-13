@@ -6,13 +6,13 @@ Document describes how to change ownership of all files that ATSD might be using
 
 Stop all ATSD processes.
 
-```
+```bash
 sudo /opt/atsd/bin/atsd-all.sh stop
 ```
 
 ## ATSD Directory Ownership
 
-To change ownership of the executable files use the following command: 
+To change ownership of the executable files use the following command:
 
 ```bash
 sudo chown -R axibase:axibase /opt/atsd
