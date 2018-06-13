@@ -68,8 +68,6 @@ To optimize the query we now perform a lookup of the minimum insert time for the
 Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. A condition like `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
 only need the last value for each combination of tags. We can therefore skip values with a timestamp less than the minimum last insert time.
 
-Check out our article on [SQL queries for U.S. death statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md).
-
 ### Issue 3325
 
 ```sql

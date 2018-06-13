@@ -51,7 +51,7 @@ The `Discard Previous Values` option allows you to discard commands timestamped 
 
 ### Issue 3899
 
-An example for launching a `Socrata` job can be found in [this tutorial](https://github.com/axibase/atsd-use-cases/blob/master/SocrataPython/README.md).
+An example for launching a `Socrata` job can be found in [this tutorial](https://axibase.com/use-cases/integrations/socrata/python/).
 
 ### Issue 3864
 

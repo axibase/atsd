@@ -75,7 +75,7 @@ const integrationMenu = [
 
     ['/parsers/csv/', 'CSV Parsers'],
 
-    ['https://github.com/axibase/atsd-use-cases#how-to', 'Examples'],
+    ['https://axibase.com/use-cases/', 'Examples'],
 ];
 
 const restApiMenu = [

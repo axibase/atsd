@@ -4,7 +4,7 @@
 
 [Let’s Encrypt](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
 
-Background information on **Let’s Encrypt** is available [here](https://github.com/axibase/atsd-use-cases/blob/master/workshop/lets-encrypt.md).
+Background information on **Let’s Encrypt** is available [here](https://axibase.com/use-cases/tuturials/workshop/technical-writing.html).
 
 This instruction describes the process of installing and renewing SSL certificates in ATSD using [EFF Certbot](https://certbot.eff.org) agent.
 
