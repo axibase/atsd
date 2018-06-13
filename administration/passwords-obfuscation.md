@@ -6,7 +6,7 @@ To obfuscate a password, open the **Settings > Diagnostics > Passwords** page.
 
 Enter the plain text password and click `Obfuscate`.
 
-The result will be an obfuscated string with `OBF:` prefix which can be specified in the `server.properties` file.
+The result is an obfuscated string with `OBF:` prefix which can be specified in the `server.properties` file.
 
 ![](./images/password-obfuscation.png)
 

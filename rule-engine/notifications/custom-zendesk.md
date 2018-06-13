@@ -47,7 +47,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `html_body` text contains placeholders that will be substituted with actual values when the notification is triggered.
+The `html_body` text contains placeholders that are substituted with actual values when the notification is triggered.
 
 Placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
@@ -81,7 +81,7 @@ To override the default `message` parameter which is set to  `[${status}] ${rule
 
 ![](./images/zendesk_rule_notification_repeat_close.png)
 
-The request ID placeholder in the request URL as well as payload placeholders will be automatically resolved when the notification is triggered:
+The request ID placeholder in the request URL as well as payload placeholders are automatically resolved when the notification is triggered:
 
 `https://axibase.zendesk.com/api/v2/requests/1.json`
 
@@ -105,7 +105,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/zendesk_alert_open.png)

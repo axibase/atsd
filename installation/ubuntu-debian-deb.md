@@ -12,7 +12,7 @@
 
 ## Check Connection
 
-If the target machine is not connected to public repositories to install dependencies with APT,
+If the target server is not connected to public repositories to install dependencies with APT,
 use the [offline installation option](ubuntu-debian-offline.md).
 
 ## Download

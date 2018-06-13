@@ -115,7 +115,7 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 | `method-path` | `method-path = /series/query` | Data API method path. Default value is specific for each data type: `/series/query`, `/properties/query`, `/messages/query`, `/alerts/query`. | |
 | `url-parameters`  |  `url-parameters = db=12&adapter=7`  |  Optional request parameters included in data API requests.<br>Parameter names and values must be URL-encoded if necessary and separated by ampersand. `?` at the start of the query string is optional. |  |
 |  `update-interval`  |  `update-interval = 5 minute`  |  Polling interval at which new incremental data is requested from the server by widgets on the portal.<br>For example `update-interval = 5 minute`.<br>The default value is 1 minute.<br>The setting can be overridden by each widget separately.<br>Chart updates are disabled if the `endtime` parameter for the portal or the widget is set to a fixed date, for example: `endtime = 2016-06-27T00:00:00Z`.  |  [View](https://apps.axibase.com/chartlab/808e5846/3/)  |
-|  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting<br>Default: `false`.<br>If enabled, series for which the request has failed will be requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  |
+|  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting<br>Default: `false`.<br>If enabled, series for which the request has failed are requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  |
 |  `batch-size`  |  `batch-size = 1`  |  Maximum number of series in one batch request to the server.<br>Default: `8`.<br>If `0` is specified, the limit is not set.<br>Applies when `batch-update = true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/5/)  |
 
 > The actual URL for data requests is assembled from `{url}{context-path}{method-path}{url-parameters}`. For example, the default URL for loading series data is `https://atsd_hostname:8443/api/v1/series/query`.
@@ -131,7 +131,7 @@ A single line comment starts with `#`. Text after the `#` is ignored.
 ```ls
 [widget]
   type = chart
-  # Metric field will be inherited by all series in the widget
+  # Metric field is inherited by all series in the widget
   metric = nmon.cpu_total.busy%
 ```
 
@@ -148,7 +148,7 @@ A hash symbol in the middle of a line (preceded by any character other than tab 
 
 Multi-line comments start with /* and end with */.
 
-Any text between /* and */ will be ignored.
+Any text between /* and */ is ignored.
 
 ```ls
 [widget]

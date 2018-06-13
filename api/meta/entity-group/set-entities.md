@@ -4,7 +4,7 @@
 
 Sets members of the entity group from the specified entity list.
 
-All existing members that are not included in the request will be removed from members.
+All existing members that are not included in the request are removed from members.
 
 If the array in the request is empty, all entities are **removed** from the group and are replaced with an empty list.
 

@@ -13,13 +13,13 @@
 
 ## Configuration
 
-The database will be installed in `/opt/atsd` directory under `axibase` user.
+The database is installed in `/opt/atsd` directory under `axibase` user.
 
 To customize the installation directory, specify `--prefix` option as described below.
 
 ## Connection
 
-If the target machine does not have Internet connection to download
+If the target server does not have Internet connection to download
 dependencies, use the [offline installation option](redhat-centos-offline.md).
 
 ## Download

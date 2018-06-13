@@ -230,7 +230,7 @@ The header argument `h` can be used to customize the header.
 
 If `h` is specified as a collection, its elements replace the default header. The size of the header collection must be the same as the number of cells in each row.
 
-If `h` argument is specified as a boolean value `true`, the first row in the table will be used as a header.
+If `h` argument is specified as a boolean value `true`, the first row in the table is used as a header.
 
 An empty string is returned if the list `c` is empty.
 

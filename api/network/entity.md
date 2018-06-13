@@ -4,7 +4,7 @@
 
 Creates or updates fields and tags of the specified entity.
 
-If the entity doesn't exist, it will be created automatically.
+If the entity doesn't exist, it is created automatically.
 
 ## Syntax
 

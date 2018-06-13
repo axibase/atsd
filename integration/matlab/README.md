@@ -208,7 +208,7 @@ weights_resultset = res.Data;
 % fetch second column from weights resultset (value field)
 % convert column to numeric array
 weights = cell2mat(weights_resultset(:,2));
-% repeat weights column for 2017 values (5,1 means that resulting matrix will increase in height 5 times)
+% repeat weights column for 2017 values (5,1 means that resulting matrix increases in height 5 times)
 weights = repmat(weights, 5, 1);
 ```
 

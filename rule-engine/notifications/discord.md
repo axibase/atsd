@@ -76,7 +76,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
     ![](./images/discord_1.png)
 
 * Copy the `Webhook URL` from the Discord client into the `Webhook URL` field in the configuration form.
-* The `Webhook ID` and `Webhook Token` will be filled automatically when you finish editing the `Webhook URL` field.
+* The `Webhook ID` and `Webhook Token` are filled automatically when you finish editing the `Webhook URL` field.
 * Select **Test Portal** to test the screenshot.
 
     ![](./images/discord_settings.png)
@@ -85,7 +85,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
    ![](./images/discord_2.png)
 
-* If test is passed, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.
+* If test is passed, set the status **Enabled** and click **Save**.
 
 ## Proxy Settings
 
@@ -103,7 +103,7 @@ NGINX API Gateway Path for Discord:
 
 |**Parameter**|**Description**|
 |---|---|
-|Webhook URL|Webhook URL generated on **Webhook** tab in channel settings. Will be cleared on configuration save.|
+|Webhook URL|Webhook URL generated on the **Webhook** tab in channel settings. IT is cleared when configuration is saved.|
 |Webhook ID|The ID of the webhook. Automatically resolved from Webhook URL.|
 |Webhook Token|The secure token of the webhook. Automatically resolved from Webhook URL.|
 |Bot Username|Overwrite your bot's user name.|

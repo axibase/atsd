@@ -2,7 +2,7 @@
 
 ## Description
 
-Both messages will be persisted since the date is different.
+Both messages are persisted since the date is different.
 
 ## Request
 

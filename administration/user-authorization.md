@@ -55,7 +55,7 @@ entities either in the user interface or by inserting data via API. User with a 
 
 ### Wildcard Requests
 
-Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results will be filtered based on the user's effective permissions, therefore different users may see different results for the same API request or SQL query depending on their entity permissions.
+Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results are filtered based on the user's effective permissions, therefore different users may see different results for the same API request or SQL query depending on their entity permissions.
 
 ## Entity View Permissions
 
@@ -86,7 +86,7 @@ To create a new user of this type, open the **Settings > Users** page and select
 
 ![](./images/webhook-user.png)
 
-The wizard will automatically create a new user account, user and entity groups and grant necessary permissions.
+The wizard automatically creates a new user account, user and entity groups and grants necessary permissions.
 
 ![](./images/webhook-permissions.png)
 
@@ -100,7 +100,7 @@ To create a new user of this type, open the **Settings > Users** page and select
 
 ![](./images/collector-user-wizard.png)
 
-The wizard will automatically create a new user account and assign it as a member to the 'Data Collectors' user group with all entity `write` permissions.
+The wizard creates a new user account automatically and makes it a member of the 'Data Collectors' user group with all entity `write` permissions.
 
 ![](./images/collector-user-permissions.png)
 

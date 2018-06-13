@@ -24,14 +24,14 @@ Auto Test Example Results:
 | --- | --- |
 | Entity prefix | Entity name prefix. |
 | Metric prefix | Metric name prefix. |
-| Entities count | Number of entities that will be written. |
-| Metrics count | Number of metrics that will be written. |
-| Tags count | Number of tags that will be assigned to each series. Tag count should represent a realistic number of tags that are normally assigned to your series for the results to be accurate. |
-| Series count | Total number of series that will be stored. |
+| Entities count | Number of unique entities to store. |
+| Metrics count | Number of unique metrics to store. |
+| Series count | Total number of series to store. |
+| Tags count | Number of tags in each series. Set it to an estimated number of tags that are normally present in your series. |
 | Batch size | Size of each test batch. |
 | Thread count | Number of threads used for each test. |
-| Start time | Start timestamp with which the generated series will be written. |
-| Period, minutes | Period will be added to the Start Time timestamp with each iteration. |
+| Start time | Start timestamp for the generated series. |
+| Period, minutes | Period added to the Start Time timestamp with each iteration. |
 | Log interval, seconds | Interval between log outputs. |
 | Auto test delay, seconds | Delay between finishing one test and starting the next test in Auto Test mode. |
 

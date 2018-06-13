@@ -58,7 +58,7 @@ To inspect which parameters are exposed by the project, open the job configurati
 
 ![](./images/jenkins_param_build_2.png)
 
-The parameters will be displayed if `This project is parametrized` checkbox is enabled.
+The parameters are displayed if `This project is parameterized` checkbox is enabled.
 
 ![](./images/jenkins_param_build_3.png)
 
@@ -104,7 +104,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and `Parameters` are marked as editable.
 
-When the notification is executed, all placeholders will be resolved as follows:
+When the notification is executed, all placeholders are resolved as follows:
 
 `https://jenkins.example.org/job/atsd-api-test/buildWithParameters`
 
@@ -113,7 +113,7 @@ timezone=Etc/UTC
 run_extra_tests=false
 ```
 
-If the placeholder is not found, it will be replaced with an empty string.
+If the placeholder is not found, it is replaced with an empty string.
 
 ## Test
 
@@ -125,7 +125,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/jenkins_alert_open.png)

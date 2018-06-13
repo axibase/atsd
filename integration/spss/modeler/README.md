@@ -212,7 +212,7 @@ these commands on the **Metrics > Data Entry** page.
 
 * Right click on the **Database** shape and select **Edit...**
   * Choose **Data source**
-  * Type `inflation.cpi.composite.price` in **Table name**. This will be the name of the new metric inserted into ATSD.
+  * Type `inflation.cpi.composite.price` in **Table name**. This is the name of the new metric inserted into ATSD.
   * Select the **Insert into table** option
   * Set **Quote table and column names** to **Never**
 

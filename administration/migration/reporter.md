@@ -94,7 +94,7 @@ View the log file in order to monitor the job progress.
 tail -F /tmp/reporter/reporter.log
 ```
 
-When the job is completed, the log will display a summary:
+When the job is completed, the log displays a summary:
 
 ```sh
 ...

@@ -9,10 +9,10 @@ In the guide `atsd_master` is the hostname of the master host and
 `atsd_slave` is the hostname of the slave host.
 
 > Note: This guide should be executed only on new ATSD installations.
-Executing this guide on an existing ATSD installation will lead to the
+Executing this guide on an existing ATSD installation leads to the
 loss of all stored data on both the master and slave machines.
-> Note: If master loses connection with slave, it will accumulate all the
-data and events for the duration of the connection loss and will start
+> Note: If master loses connection with slave, it accumulates all the
+data and events for the duration of the connection loss and starts
 transferring the accumulated data once connection with slave is
 re-established. No data should be lost in the process.
 

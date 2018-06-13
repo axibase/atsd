@@ -77,7 +77,7 @@ Description of resultset:
 
 * Follow the path **File > Export > ODBC** data source.
 * Click on the ATSD connection in `ODBC data sources`.
-* Type the table name into `Tables` field. This will be the metric name holding the exported data.
+* Type the table name into `Tables` field. This is the metric name holding the exported data.
 * Choose the variables to export in the `Variables` drop-down list.
 * Type column names from the target metric according to variables selected in the previous step.
 * Choose `Append data into existing table` in `Insertion options`.
@@ -156,7 +156,7 @@ Preview the joined dataset:
 
 ### Merge Weights with Prices
 
-In this step two tables will be appended to perform calculations within one table. This table will have a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
+In this step two tables are appended to perform calculations within one table. This table will have a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
 
 ```txt
 merge 1:1 category datetime using prices

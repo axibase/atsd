@@ -41,7 +41,7 @@ Select the webhook type in the drop-down.
 
 Set the status to 'Enabled'.
 
-Enter a name by which the webhook will be listed on the 'Web Notifications' tab in the rule editor.
+Enter a name by which the webhook is listed on the 'Web Notifications' tab in the rule editor.
 
 ### Payload
 
@@ -144,7 +144,7 @@ Attachment options are displayed in the rule editor if supported by the given we
 
 The `Attach Portals` option sends one or more portals as an image to the target chat channel/group/user.
 
-If the selected portal is a [template](../../portals/portals-overview.md#template-portals) portal, its entity, metric, and series tags will be resolved from the alert details in the current window.
+If the selected portal is a [template](../../portals/portals-overview.md#template-portals) portal, its entity, metric, and series tags are resolved from the alert details in the current window.
 
 ![](./images/notify-attach-4.png)
 

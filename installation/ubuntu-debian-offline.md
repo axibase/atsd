@@ -2,8 +2,8 @@
 
 ## Overview
 
-The installation process involves downloading dependencies (deb packages) to an intermediate machine with Internet access
-and copying them to the target machine for offline installation.
+The installation process involves downloading dependencies (deb packages) to an intermediate server with Internet access
+and copying them to the target server for offline installation.
 
 ## Supported Versions
 
@@ -24,7 +24,7 @@ sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main \
 >> /etc/apt/sources.list.d/backports.list'
 ```
 
-Enable the `axibase.com/public/repository/deb/` repository on the machine with Internet access:
+Enable the `axibase.com/public/repository/deb/` repository on the server with Internet access:
 
 ```sh
 sudo apt-get update
@@ -88,7 +88,7 @@ sysv-rc_2.88dsf-59_all.deb
 zlib1g_1%3a1.2.8.dfsg-2+b1_amd64.deb
 ```
 
-Copy the `dependencies` directory to the target machine where ATSD will be installed.
+Copy the `dependencies` directory to the target server where ATSD will be installed.
 
 Install dependencies.
 

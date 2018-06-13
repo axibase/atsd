@@ -12,7 +12,7 @@ To process a CSV file you need to create a CSV parser, which splits the file int
 
 | Setting | Description |
 | --- | --- |
-|  `Enabled`  |  Parser status. If parser is disabled, uploaded CSV files referencing this parser will be discarded.  |
+|  `Enabled`  |  Parser status. If parser is disabled, uploaded CSV files referencing this parser are discarded.  |
 |  `Name`  |  Unique parser name used as identifier when uploading files.  |
 |  `Command Type`  |  Type of data contained in the file: time series, properties, messages.  |
 |  `Write Property`  |  Enable writing data both as series and as properties.  |
@@ -39,7 +39,7 @@ To process a CSV file you need to create a CSV parser, which splits the file int
 |  `Header`  |  Header to be used if the file contains no header or to replace existing header.  |
 |  `Schema`  |  [Schema](csv-schema.md) defines how to process cells based on their position.  |
 
-Columns contained in the CSV file that are not specified in any field in the parser will be imported as metrics.
+Columns contained in the CSV file that are not specified in any field in the parser are imported as metrics.
 
 ### Parse Settings
 
@@ -53,7 +53,7 @@ Columns contained in the CSV file that are not specified in any field in the par
 |  Decimal Separator  |  Symbol used to mark the border between the integral and the fractional parts of a decimal numeral.<br>Default value: comma.<br>Possible values: period, comma.  |
 |  Grouping Separator  |  Symbol used to group thousands within the number.<br>Default value: none.<br>Possible values: none, period, comma, space.  |
 |  Fields Lengths  |  Width of columns in symbols. Padding symbols added to the end of the field to obey the fields lengths.<br>For files in `.dat` format.  |
-|  Discard NaN  |  NaN (Not a Number) values will be discarded  |
+|  Discard NaN  |  NaN (Not a Number) values are discarded  |
 |  Ignore Line Errors  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
 |  Ignore Header Lines  |  Ignore Top-N lines from the file header  |
 

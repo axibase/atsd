@@ -42,4 +42,4 @@ file:
 * set `jmx.host` to local ip
 * set `jmx.access.file` and `jmx.password.file`
 
-Now you should be able to access ATSD from a remote machine on: `service:jmx:rmi:///jndi/rmi://{ip}:1099/jmxrmi`
+Now you should be able to access ATSD from a remote JMX client on: `service:jmx:rmi:///jndi/rmi://{ip}:1099/jmxrmi`

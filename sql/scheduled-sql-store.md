@@ -58,7 +58,7 @@ Column aliases can be defined to ensure that the query results meet the followin
 |---|---|---|---|
 | `datetime` | string | `0-1` | The date of the record in ISO-8601 format (1).|
 | `time` | long | `0-1` | The date of the record in UNIX milliseconds (1). |
-| `entity` | string | `1` | Name of the entity under which the new series will be stored. |
+| `entity` | string | `1` | Name of the entity under which the new series is stored. |
 | `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
 
 * (1) Only one of the date columns, `datetime` or `time`, must be included in the results.

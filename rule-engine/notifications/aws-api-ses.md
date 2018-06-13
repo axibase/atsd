@@ -58,7 +58,7 @@ Modify the `Message.Body.Text.Data` by replacing the `<MESSAGE_TEXT>` value with
 }
 ```
 
-The `MessageBody` text contains placeholders that will be substituted with actual values when the notification is triggered. The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
+The `MessageBody` text contains placeholders that are substituted with actual values when the notification is triggered. The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
 ![](./images/aws_api_ses_notification_config.png)
 
@@ -98,7 +98,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/aws_api_ses_alert_open.png)

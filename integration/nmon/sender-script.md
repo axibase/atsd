@@ -33,7 +33,7 @@ The first line is a task to start nmon.
 
 The second line is a task to run the script. The `{atsdhostname}` must be replaced with a hostname or IP address where the ATSD is installed (NAT address if you are using port forwarding).
 
-Argument `-p` specifies the port of the machine where the ATSD is installed.
+Argument `-p` specifies the TCP port of the ATSD server.
 
 `-s` , `-c`, and `-m` arguments must have the same values in both lines.
 

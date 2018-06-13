@@ -74,7 +74,7 @@
 |  Name  |  Unique name – Halifax Weather.  |  Unique name to distinguish this parser from others.<br>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.  |
 |  Put Type  |  Metric  |  The CSV file in question contains time series (metrics) weather data.  |
 |  Delimiter  |  Comma  |  A comma is used to separate columns.  |
-|  Default Entity  |  Unique entity name – Halifax  |  All data will be written to this unique entity, making it easy to distinguish from others.  |
+|  Default Entity  |  Unique entity name – Halifax  |  All data is written to this unique entity, making it easy to distinguish from others.  |
 |  Metric Prefix  |  Unique entity prefix- halifax  |  Prefix added at the start of metric name, used to distinguish between metrics with similar or identical names.  |
 |  Timestamp Columns  |  Date  |  The `Date` column contains the timestamp.  |
 |  Timestamp Pattern  |  `yyyy-MM-dd`  |  Timestamp Pattern must correspond to the original timestamp in the CSV file: `2015-01-01`.  |

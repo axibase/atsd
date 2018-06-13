@@ -230,7 +230,7 @@ In this example, the function `db_last('disk_used_percent')` uses the same serie
 
 ### `No Tags : Tags`
 
-In this example, the function `db_last('disk_used_percent')` will search for a series with **any** tags configuration; the metric `cpu_busy` in the current window has no tags. This search will likely match multiple series, the first of which will be used as the returned value. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax.
+In this example, the function `db_last('disk_used_percent')` will search for a series with **any** tags configuration; the metric `cpu_busy` in the current window has no tags. This search will likely match multiple series, the first of which is used as the returned value. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax.
 
 * Current Window
 
@@ -264,7 +264,7 @@ In this example, the function `db_last('disk_used_percent')` will search for a s
 
 ### `Different Tags`
 
-In this example, the function `db_last('io_disk_percent_util')` will search for the first series with **any** tags configuration; the metrics `io_disk_percent_util` and `disk_used` have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used as the returned value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax.
+In this example, the function `db_last('io_disk_percent_util')` will search for the first series with **any** tags configuration; the metrics `io_disk_percent_util` and `disk_used` have different non-intersecting tag sets. This search will likely match multiple series, the first of which is used as the returned value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax.
 
 * Current Window
 

@@ -15,6 +15,6 @@ During the installation of ATSD, a default nmon parser is created for ingesting 
 |  Process UARG  |  Ingest user and arg columns.  |  Yes  |
 |  Enable Properties  |  Store entity properties and configurations in ATSD from the nmon file.  |  Yes  |
 |  Ignore Errors  |  Ignore all errors. Parses only known metrics and properties.  |  No  |
-|  Retention Interval  |  How long the uploaded nmon file will be stored on the ATSD server. 2 days by default.  |  2 days  |
+|  Retention Interval  |  How long the uploaded nmon file is stored on the ATSD server. 2 days by default.  |  2 days  |
 
 ![](./resources/nmon-parser-default.png)

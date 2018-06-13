@@ -14,18 +14,17 @@ Access the ATSD web interface on the secure port (8443 by default):
 https://10.102.0.116:8443
 ```
 
-Open your browser and navigate to port `8443` on the target machine.
+Open your browser and navigate to port `8443` on the target server.
 
 ## Administrator Account
 
-When accessing the ATSD web interface for the first time, you will need to
-setup an administrator account.
+When accessing the ATSD web interface for the first time, you're asked to setup an administrator account.
 
 ## Portals
 
 Click on Portals tab in the ATSD web interface. A pre-defined **ATSD**
 portal displays application, operating system, and usage metrics for the database itself
-and the machine where it's installed.
+and the server where it is running.
 
 ![](./images/atsd_portal.png "ATSD Host")
 

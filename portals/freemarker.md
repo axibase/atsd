@@ -362,7 +362,7 @@ In the first example, we are searching for entities with two tags. The required
 http://atsd.com/portal/1.xhtml?app=> value1&dc=> value2
 ```
 
-All entities, for which the `app` tag is => `value1` and `dc` tag is => `value2`, will be loaded into the portal.
+All entities, for which the `app` tag is => `value1` and `dc` tag is => `value2`, are loaded into the portal.
 
 In the second example, we are searching for entities with a specific application tag. The required value can be specified directly in the browser:
 
@@ -370,11 +370,11 @@ In the second example, we are searching for entities with a specific applicatio
 http://atsd.com/portal/1.xhtml?application=> value
 ```
 
-All entities, for which the application tag is > `value`, will be loaded into the portal.
+All entities, for which the application tag is > `value`, are loaded into the portal.
 
 Freemarker expressions can be used to customize the portal by searching for entity tags rather that specific entities. This gives extensive possibilities to create flexible portals.
 
-The Freemarker search can be for any combination of tags. For example: > `application` > `data center` > `function`. Only entities that have all three specified tags will be loaded into the portal.
+The Freemarker search can be for any combination of tags. For example: > `application` > `data center` > `function`. Only entities that have all three specified tags are loaded into the portal.
 
 In the response, the `freemarker` [series] are substituted with the matching entities, creating [series] for each of them.
 

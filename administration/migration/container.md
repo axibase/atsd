@@ -46,7 +46,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/md2       1008G  262G  736G  27% /
 ```
 
-If the [backup](#backup) will be stored on the same file system, add it to the estimated disk space usage.
+If the [backup](#backup) is stored on the same file system, add it to the estimated disk space usage.
 
 Calculate disk space requirements.
 
@@ -458,7 +458,7 @@ Launch the table backup task and confirm its execution.
 java com.axibase.migration.admin.TableCloner -d
 ```
 
-The task will create backups by appending a `'_backup'` suffix to the following tables:
+The task creates backups by appending a `'_backup'` suffix to the following tables:
 
 * 'atsd_d_backup'
 * 'atsd_li_backup'
@@ -516,7 +516,7 @@ Step 3. Migrate data from the 'atsd_li' table.
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -m 2
 ```
 
-This migration task will write intermediate results into a temporary directory for diagnostics.
+This migration task writes intermediate results into a temporary directory for diagnostics.
 
 ```sh
 INFO mapreduce.LastInsertMigration: Map-reduce job success, files from outputFolder 1609980393918240854 are ready for loading in table atsd_li.
@@ -553,7 +553,7 @@ Step 5. Migrate data to the 'atsd_d' table.
 
 The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
-The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
+The Yarn interface is automatically terminated once the `DataMigrator` is finished.
 
 Step 6. Migration is now complete.
 

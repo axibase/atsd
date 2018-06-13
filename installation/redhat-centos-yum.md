@@ -13,7 +13,7 @@
 
 ## Configuration
 
-The database will be installed in `/opt/atsd` directory under `axibase` user.
+The database is installed in `/opt/atsd` directory under `axibase` user.
 
 To customize the installation directory, use [`rpm`](redhat-centos-rpm.md) option instead.
 

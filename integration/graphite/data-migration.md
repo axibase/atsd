@@ -23,9 +23,9 @@ migrate.py [-h] [--whisper-base BASE] [-R] path atsd_hostname atsd_tcp_port
 | Setting | Required | Description |
 | --- | --- | --- |
 |  `-h` OR `--help`  |  no  |  Show help message and exit.  |
-|  `path`  |  yes  |  Path to folder with `.wsp` files or `.wsp` file that will be exported to ATSD.<br>Path must be specified either:<br>– directly to the `.wsp` file (without `-R` setting)<br>OR<br>– to the folder containing `.wsp` files (with `-R` setting).<br>Note that the `~` symbol cannot be used when specifying path.  |
+|  `path`  |  yes  |  Path to folder with `.wsp` files or `.wsp` file that is exported to ATSD.<br>Path must be specified either:<br>– directly to the `.wsp` file (without `-R` setting)<br>OR<br>– to the folder containing `.wsp` files (with `-R` setting).<br>Note that the `~` symbol cannot be used when specifying path.  |
 |  `-R`  |  no  |  Export recursively all files in the specified folder; searches are sub folders and directories for `.wsp` files.<br>If `-R` is not specified then you must specify the direct `path` to the `.wsp` file.  |
-|  `--whisper-base BASE`  |  no  |  Base path to which all metric names will be resolved.<br>Recommended to set Whisper base directory.<br>Default value: `.` (current directory).  |
+|  `--whisper-base BASE`  |  no  |  Base path to which all metric names are resolved.<br>Recommended to set Whisper base directory.<br>Default value: `.` (current directory).  |
 |  `atsd_hostname`  |  yes  |  ATSD hostname or IP.  |
 |  `atsd_tcp_port`  |  yes  |  ATSD TCP listening port. Default ATSD TCP port is 8081.  |
 
@@ -82,7 +82,7 @@ Substitute `--whisper-base`, the path, `atsd_hostname`, and `atsd_tcp_port` with
 date +%s && ./migrate.py -R --whisper-base=/var/lib/graphite/whisper/ /var/lib/graphite/whisper/ atsd_hostname atsd_tcp_port && date +%s
 ```
 
-The resulting `test.txt` file will contain all metrics migrated by the `migrate.py` script.
+The resulting `test.txt` file contains all metrics migrated by the `migrate.py` script.
 
 ```txt
 9 seconds

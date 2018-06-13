@@ -57,13 +57,13 @@ Refer to [limits](README.md#command-limits).
 
 ## Data Types
 
-New metrics will be initialized with the `float` data type by default.
+New metrics are initialized with the `float` data type by default.
 
 To insert metric samples with another data type, create or update metric properties using [Meta API](../meta/metric/update.md) or the user interface.
 
 ## New Records
 
-If the command references non-existent entities, metrics, or tags, they will be created as new records and registered automatically.
+If the command references non-existent entities, metrics, or tags, they are created and registered automatically.
 
 ## Case Sensitivity
 
@@ -105,7 +105,7 @@ series e:server001 m:cpu_used=72.0 m:memory_used=94.5 ms:1425482080000
 series e:server001 m:cpu_used=72.0 m:memory_used=94.5 d:2015-03-04T15:14:40Z
 ```
 
-* Insert the numeric value '20.5' for the metric 'disk_used_percent' from the entity 'server001' and the two tags 'mount_point' and 'disk_name'. The value will be inserted with the current server time since the date is not specified in the command.
+* Insert the numeric value '20.5' for the metric 'disk_used_percent' from the entity 'server001' and the two tags 'mount_point' and 'disk_name'. The value is inserted with the current server time since the date is not specified in the command.
 
 ```ls
 series e:server001 m:disk_used_percent=20.5 t:mount_point=/ t:disk_name=/sda1
@@ -148,7 +148,7 @@ series d:2016-10-13T08:45:00Z e:sensor-1 m:temperature=NaN
 * The exponent consists of the character 'e' ('\u0065') or 'E' ('\u0045') followed by an optional sign, '+' ('\u002B') or '-' ('\u002D'), followed by one or more decimal digits. The value of the exponent must lie between -2147483647 and 2147483647, and is inclusive.
 * The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction.
 * The number formed by the sign, the integer, and the fraction is referred to as the [**significand**](https://en.wikipedia.org/wiki/Significand).
-* The **significand** value, stripped of trailing zeros, should be within the Long.MAX_VALUE `9223372036854775807` and the Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database will throw an `IllegalArgumentException: BigDecimal significand overflows the long type` for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and will be rounded to `1.121212121212121212` if inserted for a non-decimal metric.
+* The **significand** value, stripped of trailing zeros, should be within the Long.MAX_VALUE `9223372036854775807` and the Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database throws an `IllegalArgumentException: BigDecimal significand overflows the long type` for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and is rounded to `1.121212121212121212` if inserted for a non-decimal metric.
 
 ## Series Tags, Text Value, Messages
 
@@ -202,7 +202,7 @@ series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-543
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Restart" a:true
 ```
 
-The new value will be equal to:
+The new value is equal to:
 
 ```txt
 Shutdown by adm-user, RFC-5434;
@@ -224,4 +224,4 @@ To insert versioning fields, use reserved tags:
 series s:1425482080 e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1
 ```
 
-If the metrics are versioned, the `$version_source` and `$version_status` tags will be converted to the corresponding versioning tags.
+If the metrics are versioned, the `$version_source` and `$version_status` tags are converted to the corresponding versioning tags.

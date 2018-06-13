@@ -79,7 +79,7 @@ Formatting | A [function](#formatting) or an expression to round numbers and con
 Enabled Column | Entity status.
 Entity Tag | Name of the entity tag.
 Property Tag | [Property search expression](../rule-engine/property-search.md) in the format of `type:[{key-name=key-value}]:tag-name`.
-Series Value | Name of the metric for which the last value for this entity will be displayed.<br>If multiple series match the specified metric and entity, the value for the latest series will be displayed.
+Series Value | Name of the metric for which the last value for this entity is displayed.<br>If multiple series match the specified metric and entity, the value for the latest series is displayed.
 Name Column | Entity name with a link to the editor page for the entity.
 Label Column | Entity label with a link to the editor page for the entity.
 Portals Column | Link to the portals page for the entity.
@@ -421,7 +421,7 @@ Use the following configuration to specify the custom icon which opens a link to
 
 #### Text with Entity Label
 
-Entity labels may be defined for entries. Otherwise, entity name will be displayed.
+Entity labels may be defined for entries. Otherwise, entity name is displayed.
 
 * Configuration
 
@@ -473,7 +473,7 @@ The icon opens a link to all template portals assigned to the selected entity. T
 
 #### Icon Link to Specific Entity Portal
 
-To display a particular portal by default, specify the portal's name in the 'Value' setting. Other portals assigned with the entity will be accessible in tabs.
+To display a particular portal by default, specify the portal name in the 'Value' setting. Other portals assigned to the entity are accessible in tabs.
 
 * Configuration
 

@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert text value without numeric value. The numeric value will initialized as `NaN` (not a number).
+Insert text value without numeric value. The numeric value is initialized as `NaN` (not a number).
 
 ## Request
 

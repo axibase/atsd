@@ -39,7 +39,7 @@ location => place, site
 ```
 
 Searching for 'money' keyword matches series containing either the keyword itself or its alias ('money' or 'currency').
-The same results will be displayed if the 'currency' keyword is searched as well.
+The same results are displayed if the 'currency' keyword is searched as well.
 
 * The word 'location' has four synonyms.
 

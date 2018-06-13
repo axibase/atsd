@@ -409,7 +409,7 @@ WITH INTERPOLATE(30 SECOND, LINEAR, OUTER)
 
 The `WITH INTERPOLATE` transformation regularizes all series returned by the query to the same timestamps, so that their values can be joined.
 
-Series **t1**. This metric will be interpolated with the `PREVIOUS` function.
+Series **t1**. This metric is interpolated with the `PREVIOUS` function.
 
 ```sql
 SELECT t1.entity, t1.datetime, t1.value
@@ -427,7 +427,7 @@ WHERE t1.datetime >= '2016-09-18T14:00:00.000Z' AND t1.datetime < '2016-09-18T14
 | nurswgvml006 | 2016-09-18T14:00:51.000Z | 68156.0  |
 ```
 
-Series **t2**. This metric will be interpolated with the `LINEAR` function.
+Series **t2**. This metric is interpolated with the `LINEAR` function.
 
 ```sql
 SELECT t2.entity, t2.datetime, t2.value

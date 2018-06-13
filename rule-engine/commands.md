@@ -33,7 +33,7 @@ Specify optional arguments to be passed to the executable, one argument per line
 
 ![](./images/command-script.png)
 
-Arguments that contains whitespace or quotes will be quoted automatically.
+Arguments that contains whitespace or quotes are quoted automatically.
 
 ### Piping, Redirection, Shell Expansion
 
@@ -51,7 +51,7 @@ The arguments may include window [fields](window.md#window-fields) and [variable
 
 The command can be configured to execute on `OPEN`, `CANCEL` and `REPEAT` status changes. To execute the command, enter a valid executable path for the selected status trigger.
 
-If the executable path is empty, no command will be executed for this status trigger.
+If the executable path is empty, no command is executed for this status trigger.
 
 Only **one** command can be executed for each status change. If you need to execute multiple commands, create a wrapper script with multiple commands or launch a spawned shell process with `bash -c` and chain commands using `&&`.
 
@@ -85,7 +85,7 @@ To complete disable execution of system commands in the rule engine, set `system
 
 ## Logging
 
-When 'Log Output' option is enabled, both `system.out` and `system.err` outputs will be logged to the `atsd.log` file for each command execution.
+When 'Log Output' option is enabled, both `system.out` and `system.err` outputs are logged to the `atsd.log` file for each command execution.
 
 The output is limited to 10240 characters.
 

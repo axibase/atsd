@@ -36,7 +36,7 @@ WHERE datetime >= '2016-06-03T09:25:00.000Z' AND datetime < '2016-06-03T09:40:00
 
 ## Query without `EXTEND`
 
-If the query selects 2-minute periods for the 09:30 - 09:40 interval, the first period will be dated 09:38
+If the query selects 2-minute periods for the 09:30 - 09:40 interval, the first period is dated 09:38
 
 ```sql
 SELECT datetime, count(value)

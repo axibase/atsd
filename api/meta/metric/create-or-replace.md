@@ -4,9 +4,9 @@
 
 Creates a metric with specified fields and tags or replaces the fields and tags of an existing metric.
 
-In case of an existing metric, all the current metric tags will be replaced with metric tags specified in the request.
+In case of an existing metric, all the current metric tags are replaced with metric tags specified in the request.
 
-If the replace request for an existing metric doesn't contain any tags, current metric tags will be deleted.
+If the replace request for an existing metric doesn't contain any tags, current metric tags are deleted.
 
 Fields that are set to `null` are ignored by the server and are set to their default value.
 

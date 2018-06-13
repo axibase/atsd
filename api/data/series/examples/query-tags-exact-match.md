@@ -17,7 +17,7 @@ Assuming series A,B,C, and D have the following series tags:
 | D      | m-1    | e-1    |       |       |
 ```
 
-The table below illustrates which records will be returned (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
+The table below illustrates which records are returned (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
 | exactMatch | requested tags | result  |

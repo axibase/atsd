@@ -2,7 +2,7 @@
 
 ## Description
 
-If the time range between `startDate` and `endDate` cannot be filled with a whole number of periods, some of the periods will contain a subset of data and some of the periods will be excluded from the result set because their start time will be before the `startDate`.
+If the time range between `startDate` and `endDate` cannot be filled with a whole number of periods, some of the periods contain a subset of data and some of the periods are excluded from the result set because their start time is before the `startDate`.
 
 The below query produced no data because:
 

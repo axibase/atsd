@@ -109,7 +109,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that will be substituted with actual values when the notification is triggered.
+The `body` text contains placeholders that are substituted with actual values when the notification is triggered.
 
 Only `valueN` naming convention for JSON fields is supported by the IFTTT platform.
 
@@ -143,7 +143,7 @@ Specify the webhook identifier `atsd_custom_webhook` in the `webhook_name` param
 
 ![](./images/ifttt_rule_notification_open.png)
 
-The `webhook_name` placeholder in the request URL as well as payload placeholders will be automatically resolved when the notification is triggered:
+The `webhook_name` placeholder in the request URL as well as payload placeholders are automatically resolved when the notification is triggered:
 
 `https://maker.ifttt.com/trigger/atsd_custom_trigger/with/key/111111`
 
@@ -165,7 +165,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/ifttt_alert_open.png)

@@ -1,6 +1,6 @@
 # Metric Persistence Filter
 
-The metric persistence filter, configurable in the metric editor, can be used to discard incoming `series` commands according to a filter expression. Commands for which the expression returns `false` will not be stored in the database.
+The metric persistence filter, configurable in the metric editor, can be used to discard incoming `series` commands according to a filter expression. Commands for which the expression returns `false` are not stored in the database.
 
 ## Expression Syntax
 
@@ -285,6 +285,6 @@ Open the metric editor and create a filter expression to ignore matching series.
 
 ![](./images/metric_persistence_filter_4.png "metric_editor")
 
-As a result, the number of stored series will be reduced.
+As a result, the number of stored series is reduced.
 
 ![](./images/screenshot_5_1421925689.png)

@@ -10,7 +10,7 @@ Entity Groups provide a way to organize similar entities into cohesive collectio
 
 An entity group can be composed by manually specifying names of the entities that should be included as members.
 
-It can be also created by specifying a criteria against which all entities that exist in the database will be evaluated. Those entities that match the criteria will be added as members automatically and the group will be continuously updated in the background.
+It can be also created by specifying a criteria against which all entities that exist in the database are evaluated. Those entities that match the criteria are added as members automatically and the group is continuously updated in the background.
 
 The entity group editor provides the following options for managing entities:
 
@@ -18,7 +18,7 @@ The entity group editor provides the following options for managing entities:
 
 Copy a list of entity names, one per line, into the text area. The names are case-insensitive.
 
-If 'Create Entities' option is checked, new entities will be automatically created when the form is saved. Otherwise, names for which there are no existing entities found, will be ignored.
+If 'Create Entities' option is checked, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found, are ignored.
 
 ### Selector
 

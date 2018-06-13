@@ -4,7 +4,7 @@
 
 Creates or updates fields and tags of the specified metric.
 
-If the metric doesn't exist, it will be created automatically.
+If the metric doesn't exist, it is created automatically.
 
 ## Syntax
 

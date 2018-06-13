@@ -4,9 +4,7 @@
 
 Creates an entity with specified fields and tags or replaces the fields and tags of an existing entity.
 
-In case of an existing entity, all the current entity tags will be replaced with entity tags specified in the request.
-
-If the replace request for an existing entity doesn't contain any tags, the current tags will be deleted.
+If the entity exists, its current entity tags are replaced with tags specified in the request. If the request doesn't contain any tags, the current tags are deleted.
 
 Fields that are set to `null` are ignored by the server and are set to their default value.
 

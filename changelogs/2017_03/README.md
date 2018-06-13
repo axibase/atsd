@@ -95,7 +95,7 @@ series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-543
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Restart" a:true
 ```
 
-The new value will be equal to:
+The new value is equal to:
 
 ```ls
 Shutdown by adm-user, RFC-5434;
@@ -202,7 +202,7 @@ tag LIKE 'DA%'
 NOT (tag LIKE 'AB%' OR tag LIKE 'AC%' OR tag LIKE 'DA%')
 ```
 
-This will cause 4 queries to be executed, with first query results being filtered with `tag LIKE 'AB%'` condition:
+This causes 4 queries to be executed, with first query results being filtered with `tag LIKE 'AB%'` condition:
 
 ```sql
 SELECT tag, descriptor, zero, zero + span as maxvalue, engunits,

@@ -2,7 +2,7 @@
 
 ## Description
 
-One of the messages will be discarded since all of the key fields (entity, type, source, time) are equal.
+One of the messages is discarded since all of the key fields (entity, type, source, time) are equal.
 
 ## Request
 

@@ -43,7 +43,7 @@ None.
 
 ### Response
 
-If `createEntities` is `false`, and the request contains a non-existing entity, the following error will be raised:
+If `createEntities` is `false`, and the request contains a non-existing entity, the following error is raised:
 
 ```json
 {"error":"com.axibase.tsd.service.DictionaryNotFoundException: ENTITY not found for name: 'e-111'"}

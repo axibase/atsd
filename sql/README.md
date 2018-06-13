@@ -1433,7 +1433,7 @@ GROUP BY entity, PERIOD(10 MINUTE, START_TIME)
 
 ## Interpolation
 
-By default, if a period specified in the `GROUP BY` clause does not contain any detailed values, it will be excluded from the results.
+By default, if a period specified in the `GROUP BY` clause does not contain any detailed values, it is excluded from the results.
 
 The behavior can be changed by referencing an interpolation function as part of the `PERIOD` function.
 
@@ -3084,7 +3084,7 @@ If `{n}` is zero or negative, the results are processed using the local file sys
 
 This clause overrides the conditional allocation of shared memory established with the **Settings:Server Properties**:`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
 
-The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, it will be processed using the local file system which may result in increased response times during heavy read activity.
+The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, it is processed using the local file system which may result in increased response times during heavy read activity.
 
 > The row count threshold is applied to the number of rows selected from the underlying table, and not the number rows returned to the client.
 

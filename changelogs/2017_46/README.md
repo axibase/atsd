@@ -125,7 +125,7 @@ The `multiple-column` setting is applicable to wildcard configurations in bar wi
 
 If the settings is set to `true`, series with the same entity and tags are added to the same column.
 
-This applies to derived series which will be placed into the same column along with the underlying series.
+This applies to derived series which is placed into the same column along with the underlying series.
 
 ```ls
 [widget]

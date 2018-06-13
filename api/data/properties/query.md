@@ -76,7 +76,7 @@ Assuming property records A,B,C, and D exist:
 | D      | type-1 | e-4    |       |       |
 ```
 
-The table below illustrates which records will be returned (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
+The table below illustrates which records are returned (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
 | exactMatch | key                     | result  |
@@ -106,7 +106,7 @@ Assuming property records A,B,C, and D exist and time represents their update ti
 
 max(time) = 200
 
-The table below illustrates which records will be returned (the `result` column) for the `offset` parameter on the left.
+The table below illustrates which records are returned (the `result` column) for the `offset` parameter on the left.
 
 ```ls
 

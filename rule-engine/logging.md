@@ -24,7 +24,7 @@ The default logger named `atsd.alert.default` is available even if it's not defi
 
 ```xml
 <appender name="defaultAlertAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-   <!-- Name of the log file where alert status changes will be stored.
+   <!-- Name of the log file where alert status changes are stored.
         The path can be absolute or relative to /opt/atsd/atsd directory.
         For example, relative path ../logs/alert.log is resolved to /opt/atsd/atsd/logs/alert.log.  -->
     <file>../logs/alert.log</file>

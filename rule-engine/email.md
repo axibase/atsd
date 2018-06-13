@@ -45,7 +45,7 @@ Both fields may include any text as well as [placeholders](placeholders.md) to c
 Warning! Rule ${rule} for server ${entity} is active.
 ```
 
-The [placeholders](placeholders.md), escaped with `$` and wrapped in curly brackets such as `${expression}`, will be evaluated and replaced with actual values when the notification is sent.
+The [placeholders](placeholders.md), escaped with `$` and wrapped in curly brackets such as `${expression}`, are evaluated and replaced with actual values when the notification is sent.
 
 ```bash
 Warning! Rule JVM Memory Low for server nurswgvml007 is active.
@@ -104,12 +104,12 @@ The 'Text' field supports [control flow](control-flow.md#control-flow) syntax wh
 
 | Setting | Description |
 | --- | --- |
-| Delay on Open | Delay interval for sending notification for `OPEN` status. If the window changes to `CANCEL` status within the specified delay interval, no `OPEN` status email will be sent. Set this interval to prevent emails on short-lived spikes. |
+| Delay on Open | Delay interval for sending notification for `OPEN` status. If the window changes to `CANCEL` status within the specified delay interval, no `OPEN` status email is sent. Set this interval to prevent emails on short-lived spikes. |
 | Repeat Interval | Interval for sending `REPEAT` status notifications. If the Repeat Interval is set in time units, the exact interval may vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications will not be sent if the data stops flowing in. |
 | Subject | Custom subject text, specified for each status separately. The subject can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. Note that the maximum allowed length of the subject is limited to several hundred characters in most email clients.|
 | Text | Custom message text, specified for each status separately. The text can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. |
 | Attach Details | Include a [summary table](window-fields.md#details-tables) with window statistics and action links. |
-| Attach Portals | One or more portal screenshots attached to the message as inline images. If a portal is a template, placeholders such as entity, metric, tags will be resolved from the window fields.<br> *Series Chart* - attach a screenshot containing series monitored by this rule. |
+| Attach Portals | One or more portal screenshots attached to the message as inline images. If a portal is a template, placeholders such as entity, metric, tags are resolved from the window fields.<br> *Series Chart* - attach a screenshot containing series monitored by this rule. |
 
 ## Grouping
 
@@ -240,7 +240,7 @@ To attach additional portals, select them from the `Additional Portal` drop-down
 
 ![](./images/email-screenshot-portals.png)
 
-If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags will be set based on the current window fields.
+If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags are set based on the current window fields.
 
 ## Monitoring
 

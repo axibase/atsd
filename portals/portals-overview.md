@@ -175,7 +175,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 
     ![](./resources/creating-and-assigning-portals_8.png)
 
-* Select entity groups to which the portal will be assigned.
+* Select entity groups to assign the portal.
 
     ![](./resources/creating-and-assigning-portals_9.png)
 
@@ -247,4 +247,4 @@ Such request parameter values can be referenced with `${parameter_name}` placeho
 
 You can install your own themes by modifying the default CSS theme files and uploading them to the `/opt/atsd/conf/portal/themes/` directory.
 
-After you upload your custom theme, it will appear in the list of available themes in the portal editor.
+After you upload your custom theme, it is added to the drop-down list of available themes in the portal editor.

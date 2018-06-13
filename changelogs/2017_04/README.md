@@ -20,9 +20,9 @@
 | 3820 | docker      | Bug     | Fixed missing 'path' entity tag for volumes. |
 | 3819 | docker      | Feature     | Updated to construct volume label from the container label instead of the container name. |
 | [3818](#issue-3818) | socrata     | Feature | In `Test` mode, added a table displaying columns from the metadata section. |
-| 3812 | socrata     | Bug     | Removed `http` pool from the configuration tab. Now, only the dataset path will be displayed. |
+| 3812 | socrata     | Bug     | Removed `http` pool from the configuration tab. Now, only the dataset path is displayed. |
 | 3811 | socrata     | Bug     | Fixed auto-complete defect affecting configuration form fields. |
-| 3810 | socrata     | Bug     | Updated settings so that if a field is specified in 'Custom Tags' and is not specified in 'Included Fields', it will not be sent as a metric.|
+| 3810 | socrata     | Bug     | Updated settings so that if a field is specified in 'Custom Tags' and is not specified in 'Included Fields', it is not sent as a metric.|
 | 3804 | socrata     | Bug     | Excluded `null` values from custom tags or any other fields in commands for both JSON and Socrata jobs. |
 | 3803 | socrata     | Bug     | Fixed issue where time fields were being stored as metrics. |
 | 3802 | socrata     | Bug     | Corrected issues with statistics display showing inaccurate command counters. |
@@ -34,7 +34,7 @@
 
 ### Issue 3742
 
-A `Text Column` button was added to the user interface export form. By enabling this button, a text column will be displayed for data exported in CSV and HTML formats.
+A `Text Column` button was added to the user interface export form. By enabling this button, a text column is displayed for data exported in CSV and HTML formats.
 
 Now, a [text value](../../api/network/series.md#series-tags-text-value-messages) can be used to annotate a numeric observation without changing the series primary key. See
 [Issue 3480](../../changelogs/2017_02/README.md#issue-3480) for more information.

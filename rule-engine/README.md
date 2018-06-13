@@ -197,7 +197,7 @@ abs(forecast_deviation(avg())) > 2
 
 In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-series.md) to identify abnormal behavior in one of the metrics.
 
-The primary metric is expected to be below `50` as long as the second metric remains below `100`. Otherwise, an alert will be raised.
+The primary metric is expected to be below `50` as long as the second metric remains below `100`. Otherwise, an alert is raised.
 
 ```javascript
 avg() > 50 && db_statistic('avg', '1 hour', 'page_views_per_minute') < 100

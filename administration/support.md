@@ -1,6 +1,6 @@
 # Support
 
-This document will help you submit a well-prepared ticket to our [Support Desk](https://axibase.zendesk.com/home) so we can resolve it faster.
+This document helps you submit a well-prepared ticket to our [Support Desk](https://axibase.zendesk.com/home) so we can resolve it faster.
 
 Use the below reference to attach relevant artifacts to your ticket. Skip sections `2-5` if they don't apply to your particular situation.
 

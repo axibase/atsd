@@ -59,7 +59,7 @@ As an alternative, the query can be submitted with Content-Type `text/plain` as 
 ```java
   statement.setMaxRows(5);
   statement.executeQuery("SELECT datetime, value FROM \"mpstat.cpu_busy\" LIMIT 3");
-  //results will be limited to 3 records
+  //results are limited to 3 records
 ```
 
 ### Cancelling the Query

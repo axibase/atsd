@@ -4,7 +4,7 @@
 
 Query last values and value history for versioned metrics.
 
-The `data[]` object in the response will contain multiple samples for the same timestamp if the value has a history of changes.
+The `data[]` object in the response contains multiple samples for the same timestamp if the value has a history of changes.
 
 The samples are sorted by sample time, and value change time in ascending order.
 

@@ -11,8 +11,7 @@
 
 ## Connection
 
-If the target machine does not have Internet connection to download
-dependencies, use the [offline installation option](sles-offline.md).
+If the target server does not have Internet connection to download dependencies, use the [offline installation option](sles-offline.md).
 
 ## Download
 

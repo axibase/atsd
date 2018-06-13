@@ -51,7 +51,7 @@ Modify the `Message` by replacing the `<MESSAGE_TEXT>` value with your text, for
 }
 ```
 
-The `Message` text contains placeholders that will be substituted with actual values when the notification is triggered. The placeholders specified in the message are visible as editable parameters in the rule editor.
+The `Message` text contains placeholders that are substituted with actual values when the notification is triggered. The placeholders specified in the message are visible as editable parameters in the rule editor.
 
 ![](./images/azure_sb_message_notification_config.png)
 
@@ -91,7 +91,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn will trigger the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/azure_sb_message_alert_open.png)

@@ -10,7 +10,7 @@
 | 3679 | email       | Feature     | Cleaned up the email notification template to hide irrelevant statistics if the sample in the window is less than 1. |
 | 3678 | UI          | Bug     | Placed the Name and Label fields on separate lines in the metric and entity forms to account for long names. |
 | [3675](#issue-3675) | sql         | Feature     | Added the capability to replace numeric `NAN` with another integer with the `ISNULL` function.|
-| 3662 | csv         | Support     | Identified an issue with schema-based CSV parsers. A schema-based CSV parser will not work if ATSD is launched under Java 8+.|
+| 3662 | csv         | Support     | Identified an issue with schema-based CSV parsers. A schema-based CSV parser fails if ATSD is launched under Java 8+.|
 | [3650](#issue-3650) | UI          | Feature | Consolidated multiple pages under the Admin menu into one page. |
 | 3646 | UI          | Bug     | Return `4xx` error number instead of `500` on the `/sql/queries/info` page if the query is no longer found by id, which occurs when the server is restarted, or the query plan is evicted from cache. |
 | 3642 | api-rest    | Bug     | Not all entities for the metric are visible on the Entities page. |
@@ -130,7 +130,7 @@ In Collector, the following metrics were added for each active container. These 
 
 ![Figure 6](./Images/Figure6.png)
 
-If the container was running in a prior iteration, and is not running in the next iteration, 0 will be sent for both all and filtered metrics.
+If the container was running in a prior iteration, and is not running in the next iteration, 0 is sent for both all and filtered metrics.
 
 ![Figure 7](./Images/Figure7.png)
 

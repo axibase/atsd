@@ -53,7 +53,7 @@ Take note of the **table prefix** specified in the `/opt/atsd/atsd/conf/server.p
 cat /opt/atsd/atsd/conf/server.properties | grep "hbase.table.prefix" | cut -f 2 -d "="
 ```
 
-This prefix will be required in subsequent steps.
+This prefix is required in subsequent steps.
 
 ## Install Java 8
 
@@ -146,7 +146,7 @@ java com.axibase.migration.admin.TableCloner --table_name=atsd_custom_d
 
 Launch the migration job with the `nohup` command.
 
-The job will create a new data table, convert data from the backup table to the new format, and store the data in the new table.
+The job creates a new data table, convert data from the backup table to the new format, and store the data in the new table.
 
 The optional `drop-annotations` flag discards duplicate series annotations when copying the data.
 
@@ -178,7 +178,7 @@ Monitor the job progress.
 tail -f /tmp/migration/migration.log
 ```
 
-Note that the Yarn interface will be stopped automatically once the job is finished.
+Note that the Yarn interface is stopped automatically once the job is finished.
 
 Once the job is complete, the `migration.log` file should contain the following line:
 

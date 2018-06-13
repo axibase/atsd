@@ -38,7 +38,7 @@ docker exec -it atsd /bin/bash
 
 ## Validation
 
-Once the update is completed, the script will print out the following message:
+Once the update is completed, the script prints out the following message:
 
 ```txt
 Update process finished successfully.

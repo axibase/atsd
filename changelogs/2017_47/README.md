@@ -127,7 +127,7 @@ The inline screenshots are positioned after the message content and before the m
 
 ### Issue 4599
 
-The 'Allowed IPs' field enables specifying a list of addresses or address ranges in CIDR format from which the user will be allowed to access the database.
+The 'Allowed IPs' field enables specifying a list of addresses or address ranges in CIDR format from which the user is allowed to access the database.
 
 The checks are enforced to requests made over the HTTP and HTTPs protocols.
 

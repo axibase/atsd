@@ -20,7 +20,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 * Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
 * Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
-* If the date is outside of the above range, file processing will terminate at the line containing invalid date and a corresponding error will be raised for the client.
+* If the date is outside of the above range, file processing terminates at the line containing invalid date and a corresponding error is raised for the client.
 
 ## Request
 
@@ -48,7 +48,7 @@ Multi-part mode:
 |:---|:---|:---|
 | `config`   | string   | [**Required**] Parser Name as configured on **Data > CSV Parsers** page.|
 | `encoding`      | string   | File encoding. Default: UTF-8.|
-| `filename`      | string   | [**Required** for archived files uploaded in File Data mode] <br>Name of the file or archive being sent, for example text.csv, files.zip, files.tar.gz.<br>The archive may contain multiple files, all of which will be processed.<br>Archive compression is determined based on file extension.<br>Supported archive formats: zip and tar.gz.<br>Supported file extensions for the uploaded archive: .gz, .tar.gz, .zip.  |
+| `filename`      | string   | [**Required** for archived files uploaded in File Data mode] <br>Name of the file or archive being sent, for example text.csv, files.zip, files.tar.gz.<br>The archive may contain multiple files, all of which are processed.<br>Archive compression is determined based on file extension.<br>Supported archive formats: zip and tar.gz.<br>Supported file extensions for the uploaded archive: .gz, .tar.gz, .zip.  |
 | `default-entity`| string | Default entity name applied to commands contained in the file. |
 | `entity-prefix` | string | Prefix added to all entity names extracted from the file. |
 | `entity-tags` | string | Comma-separated list of entity tags added as series, message, or property tags to parsed commands. |
@@ -99,7 +99,7 @@ In case of error, the response object is returned as follows:
 
 ## Processing
 
-* Names (metric name, property type, key names, tag names) containing non-printable characters will be normalized by replacing them with underscore.
+* Names (metric name, property type, key names, tag names) containing non-printable characters are normalized by replacing them with underscore.
 
 ## Example
 

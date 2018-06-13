@@ -33,7 +33,7 @@ To insert versioning fields along with the modified value, use the reserved tags
 * `$version_source`
 * `$version_status`
 
-These tags will be converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger.
+These tags are converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger.
 
 Options to insert versioned series:
 
@@ -51,8 +51,8 @@ To insert versioned samples, use the [series](../api/network/series.md) command 
 ```
 
 > Note:
-> * Request to insert versioned value for a **non-versioned** metric will cause a validation error.
-> * If the command refers to a new metric, it will be automatically created with **Versioning** set to **Yes**.
+> * Request to insert versioned value for a **non-versioned** metric causes a validation error.
+> * If the command refers to a new metric, it is automatically created with **Versioning** set to **Yes**.
 
 Example:
 
@@ -80,8 +80,8 @@ $version_source={source}
 ![](./resources/2.png)
 
 > Note:
-> * Request to insert versioned value for a **non-versioned** metric will cause a validation error.
-> * If the command refers to a new metric, it will be automatically created with **Versioning** set to **Yes**.
+> * Request to insert versioned value for a **non-versioned** metric causes a validation error.
+> * If the command refers to a new metric, it is automatically created with **Versioning** set to **Yes**.
 
 ### CSV Parser using Renamed Columns
 
@@ -90,8 +90,8 @@ To extract versioning fields from CSV content, add the version tags to the **Tag
 ![](./resources/3.png)
 
 > Note:
-> * Request to insert versioned value for a **non-versioned** metric will cause a validation error.
-> * If the command refers to a new metric, it will be automatically created with **Versioning** set to **Yes**.
+> * Request to insert versioned value for a **non-versioned** metric causes a validation error.
+> * If the command refers to a new metric, it is automatically created with **Versioning** set to **Yes**.
 
 ## View Versions
 
@@ -170,7 +170,7 @@ Change version _Status_ and _Source_, change the `Value` and click **Delete**.
 
 ![](./resources/12.png)
 
-Note that the value will not actually be deleted. Rather, the current value for the selected timestamp will be replaced with a `NaN` marker.
+Note that the value will not actually be deleted. Rather, the current value for the selected timestamp is replaced with a `NaN` marker.
 
 ![](./resources/13.png)
 

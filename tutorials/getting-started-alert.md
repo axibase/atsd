@@ -16,7 +16,7 @@ avg() > 50
 
 ![](./resources/rule-overview.png)
 
-Open **Filter** tab in the rule editor to allow out-of-order values and to disable the time [filter](../rule-engine/filters.md#date-filter) by setting the grace period to `0`. Otherwise measurements older than `1 minute` will be ignored by the rule engine.
+Open **Filter** tab in the rule editor to allow out-of-order values and to disable the time [filter](../rule-engine/filters.md#date-filter) by setting the grace period to `0`. Otherwise measurements older than `1 minute` are ignored by the rule engine.
 
 > Pro Tip. You can also import the rule from the XML file [temperature_rule.xml](./resources/temperature_rule.xml).
 

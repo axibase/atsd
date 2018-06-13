@@ -63,7 +63,7 @@ sudo chown -R axibase:axibase /opt/atsd
 
 ## Request License
 
-To obtain a license key, contact Axibase support with the following information from the machine where ATSD will be installed.
+To obtain a license key, contact Axibase support with the following information from the server where ATSD will be installed.
 
 * Output of the `ip addr` command.
 
@@ -126,7 +126,7 @@ ATSD can be enabled for Kerberos authentication with Zookeeper and Hadoop servic
 
 ### Generate `keytab` File for `axibase` Principal
 
-Create an `axibase` principal and generate a corresponding `keytab` on the Cloudera Manager server, or on the machine where KDC service is installed.
+Create an `axibase` principal and generate a corresponding `keytab` on the Cloudera Manager server, or on the server where KDC service is installed.
 
 Replace realm `HADOOP.AXIBASE.COM` with the actual value specified in the `/etc/krb5.conf` file on the Cloudera Manager server.
 
@@ -277,7 +277,7 @@ Kerberos debugging can be enabled in the ATSD environment settings file `/opt/at
 #export outLog="${atsd_home}/logs/out.log"
 ```
 
-Kerberos debug output will be redirected to the `${outLog}` file, which is set to `/opt/atsd/atsd/logs/out.log` by default.
+Kerberos debug output is redirected to the `${outLog}` file, which is set to `/opt/atsd/atsd/logs/out.log` by default.
 
 ```txt
 5921 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Setting up kerberos auth: login:axibase@HADOOP.AXIBASE.COM keytab:/opt/atsd/atsd/conf/axibase.keytab
@@ -361,7 +361,7 @@ Since major compactions may overload the cluster, it is recommended to trigger t
 To disable built-in compaction of data tables, adjust the following settings on the **Settings > Server Properties** page:
 
 ```txt
-# this will compact only 'entity' table once a week on Saturday
+# this compacts only 'entity' table once a week on Saturday
 hbase.compaction.list = entity
 hbase.compaction.schedule = 0 0 12 * * SAT
 ```

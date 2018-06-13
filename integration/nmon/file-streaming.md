@@ -4,9 +4,9 @@ Execute the steps in this guide in order to stream nmon statistics into ATSD usi
 
 For sending nmon data through an SSH tunnel, refer to [nmon File Streaming using an SSH Tunnel guide](ssh-tunneling.md "nmon File Streaming using an SSH Tunnel").
 
-To monitor multiple machines using nmon, refer to [Installing nmon on Multiple Machines guide](deploy.md).
+To monitor multiple servers using nmon, refer to [Installing nmon on Multiple Machines guide](deploy.md).
 
-The main purpose of the nmon tool is to monitor performance information for CPU, memory, network, disk, virtual memory, top processes, and other parts of the server or virtual machine.
+The main purpose of the nmon tool is to monitor performance information for CPU, memory, network, disk, virtual memory, top processes, and other parts of the server or virtual server.
 
 Currently, nmon is primarily supported on AIX and Linux systems. It can monitor IBM Power systems, x86, and amd64 processors, and even ARM based systems.
 
@@ -106,10 +106,6 @@ sudo apt-get install nmon
 wget https://github.com/axibase/nmon/blob/master/nmon_sender_telnet.sh
 ```
 
-#### Test nmon File Streaming
-
-nmon will run and the collected data will be streamed into ATSD. New entity and metrics will be available in the Entities and Metrics tabs. Metrics will have the `nmon.` prefix.
-
 #### Test nmon with Sender Script – Installed from Repositories
 
 ```sh
@@ -163,7 +159,7 @@ Entities collecting nmon data are automatically added to the `nmon-linux` and `n
 
 Entities collecting nmon data are also automatically assigned predefined nmon portals.
 
-Predefined AIX and Linux nmon portals cover a variety of key metrics and have been designed to provide useful insight into the performance of the target machine.
+Predefined AIX and Linux nmon portals cover a variety of key metrics and have been designed to provide useful insight into the performance of the target server.
 
 Custom portals can be created using [HTML5 Widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization") to visualize any combination of collected [nmon metrics](./format.md).
 

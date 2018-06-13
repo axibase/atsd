@@ -11,7 +11,7 @@ message d:${time} e:${entity} t:type=${type} t:source=${source} t:severity=${sev
 ```
 
 * If time fields are omitted, the record is inserted with the current server time.
-* **Message text or at least one tag is required, otherwise the message will be dropped silently.**
+* **Message text or at least one tag is required, otherwise the message is dropped silently.**
 * Entity name, tag names are case-**insensitive** and are converted to lower case when stored.
 * Tag values and message text are case-**sensitive** and are stored as submitted.
 

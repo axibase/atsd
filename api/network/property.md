@@ -18,7 +18,7 @@ property e:${entity} t:${type} k:${key-1}=${value} k:${key-2}=${value} v:${tag-1
 * Key values and tag values are case-**sensitive** and are stored as submitted.
 * Tag names may duplicate key names, i.e. `{tag-1}` maybe equal to `{key-1}`.
 * At least one tag is required, for example, command `property e:e1 t:t1 k:k1=v1` is not valid.
-* Tags with empty values are ignored, i.e. `t2` will be ignored in command `property e:e1 t:t1 v:t1=v1 v:t2=""`.
+* Tags with empty values are ignored, i.e. `t2` is ignored in command `property e:e1 t:t1 v:t1=v1 v:t2=""`.
 
 ```ls
 # input command

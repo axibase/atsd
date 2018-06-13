@@ -48,7 +48,7 @@ The widgets can be configured to load data from the following sources:
 
 * Open [ChartLab](https://apps.axibase.com/chartlab/) on the plain text protocol to avoid security errors.
 
-  > The error will be raised in the browser if the custom ATSD instance is using a self-signed/untrusted SSL certificate.
+  > The error is raised in the browser if the custom ATSD instance is using a self-signed or an un-trusted SSL certificate.
 
 * Change `Source` to ATSD in the ChartLab top menu.
 

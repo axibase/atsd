@@ -44,7 +44,7 @@ The inline links can be also assembled manually using the syntax supported by th
 
 Returns the URL to the entity `e` page on the target ATSD instance. The entity name is URL-encoded if necessary.
 
-If the match entity parameter `m` is set to `true`, the entity will be matched by label if it cannot found by name.
+If the match entity parameter `m` is set to `true`, the entity is matched by label if it cannot found by name.
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
@@ -74,7 +74,7 @@ serverLink + '/entity/' + urlencode(entity)
 
 Returns the URL to the property table for entity `e` and property type `t` on the target database server.
 
-If the match entity parameter `m` is set to `true`, the entity will be matched by label if it cannot be found by name.
+If the match entity parameter `m` is set to `true`, the entity is matched by label if it cannot be found by name.
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 

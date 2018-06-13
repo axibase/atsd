@@ -69,7 +69,7 @@ A license manager window will appear after exiting from the installation wizard.
 
   ![](./images/easysoft_activate_5.png)
 
-* Also a window with the new license will be displayed in the License Manager
+* Also a window with the new license is displayed in the License Manager
 
   ![](./images/easysoft_activate_6.png)
 

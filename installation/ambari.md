@@ -8,7 +8,7 @@ sudo adduser axibase
 
 ## Install Java
 
-Install Oracle JDK or Open JDK on the server where ATSD will be running.
+Install Oracle JDK or Open JDK on the ATSD server.
 
 ### Oracle JDK Installation
 
@@ -101,7 +101,7 @@ hbase.client.scanner.timeout.period = 120000
 
 ## Request License Key
 
-To obtain the license key, contact Axibase support with the following information from the machine where ATSD will be installed.
+To obtain the license key, contact Axibase support with the following information from the server where ATSD will be installed.
 
 * Output of the `ip addr` command.
 

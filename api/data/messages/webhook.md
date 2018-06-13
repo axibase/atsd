@@ -59,7 +59,7 @@ To create a new user with permissions to write data for a specific entity, open 
 
 ![](./images/webhook-user.png)
 
-The wizard will automatically create user and entity groups and grant necessary permissions.
+The wizard automatically creates user and entity groups and grants necessary permissions.
 
 ![](./images/webhook-permissions.png)
 
@@ -116,7 +116,7 @@ Array elements are assigned names based on array name and element index, startin
 
 Since each message must be associated with an entity, the request should instruct the server how to determine the entity name from the request parameters and the payload.
 
-1. By default, the entity will be set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
+1. By default, the entity is set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
     ```elm
       /api/v1/messages/webhook/jenkins?hello=world

@@ -37,8 +37,8 @@ Entities that have no values in the specified interval are ignored and have no i
 
 ## Request
 
-The request for all entities will match entity e-3, which has data but outside of the `[2016-06-25T08:00:01Z-2016-06-25T08:01:00Z)` interval.
-This e-3 entity will have no impact on `extend` and `truncate`.
+The request for all entities matches entity e-3, which has data but outside of the `[2016-06-25T08:00:01Z-2016-06-25T08:01:00Z)` interval.
+This e-3 entity has no impact on `extend` and `truncate`.
 
 ### URI
 
@@ -96,7 +96,7 @@ POST /api/v1/series/query
 
 Entity group e-entities contains e-1, e-2, e-3 entities.
 
-The request for e-entities group will match entity e-3; however it has no value within the `[2016-06-25T08:00:01Z-2016-06-25T08:01:00Z)` interval.
+The request for e-entities group matches entity e-3; however it has no value within the `[2016-06-25T08:00:01Z-2016-06-25T08:01:00Z)` interval.
 
 e-3 entity has no impact on `extend` and `truncate`.
 

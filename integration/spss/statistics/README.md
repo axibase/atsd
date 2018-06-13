@@ -202,7 +202,7 @@ SPSS provides two alternatives to aggregate data by period.
 
 ## Export Derived Series into ATSD
 
-Create a new metric in ATSD that will be used to store new series calculated in SPSS.
+Create a new metric in ATSD to store new series calculated in SPSS.
 
 * Login into ATSD, open **Metrics** > **Data entry** page and send a `metric` command:
 

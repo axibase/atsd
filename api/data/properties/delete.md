@@ -12,7 +12,7 @@ Instead, the records are masked with a so called `DELETE` marker timestamped at 
 
 The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called `major compaction`.
 
-Properties that are re-inserted before the `major compaction` is completed with timestamps earlier than the `DELETE` marker will not be visible.
+Properties that are re-inserted before the `major compaction` is completed with timestamps earlier than the `DELETE` marker is not visible.
 
 To identify pending `DELETE` markers for a given type and entity, run:
 
@@ -77,7 +77,7 @@ Assuming property records A,B,C, and D exist:
 | D      | type-1 | e-4    |       |       |
 ```
 
-The table below illustrates which records will be deleted (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
+The table below illustrates which records are deleted (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
 
 ```ls
 | exactMatch | key                     | result  |

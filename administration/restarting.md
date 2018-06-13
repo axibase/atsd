@@ -67,13 +67,13 @@ Run the `jps` utility to display Java processes running under the current user.
 
 ## Restarting All Services
 
-The script will stop ATSD, HBase, and HDFS.
+The script stops ATSD, HBase, and HDFS.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-The script will start HDFS, HBase, and ATSD.
+The script starts HDFS, HBase, and ATSD.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh start

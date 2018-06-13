@@ -51,7 +51,7 @@ randomItem(['a', 'b', 'c'])
 randomItem([1, 2, 3])
 ```
 
-Note that although the input collection contains numbers, the returned element will be a string which has to be parsed to a number if necessary.
+Note that although the input collection contains numbers, the returned element is a string which has to be parsed to a number if necessary.
 
 ```javascript
 randomItem([1, 2, 3]) = '2'
@@ -127,7 +127,7 @@ The keys in the map can be of any type, whereas the values must be numeric and r
 
 The function returns the randomly selected key converted to string.
 
-The sum of probabilities doesn't have to equal 1.0 as the inputs will be weighted to total 1.0.
+The sum of probabilities doesn't have to equal 1.0 as the inputs are weighted to total 1.0.
 
 An input map can be obtained using the `replacementTable()` lookup function.
 

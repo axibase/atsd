@@ -8,19 +8,19 @@ The guide uses `atsd-tst` as the hostname of the ATSD server.
 
 The guide uses `nurswgvml001` as the hostname of the remote system.
 
-In the guide, `-p` specifies the port of the ATSD machine. Indicate the correct available port. For example: `-p 22`.
+In the guide, `-p` specifies the TCP port of the ATSD server. Indicate the correct available port. For example: `-p 22`.
 
 Copy the `/opt/atsd/id_rsa_atsdreadonly` key generated during ATSD installation (or the one created using our [User Account Setup Guide](ssh-user.md)) to a remote system into the directory `/opt/nmon`.
 
-Add the ATSD host to known hosts on the target machine:
+Add the ATSD host to known hosts on the target server:
 
 ```sh
 ssh-keyscan -H atsd-tst >> ~/.ssh/known_hosts
 ```
 
-On Unix systems, the permissions to the key file must not allow any access to world and group. You can achieve this with the command `chmod 0600`. If the permissions are less strict, the file will be ignored and the SSH tunnel will fail to start.
+On Unix systems, the permissions to the key file must not allow any access to world and group. You can achieve this with the command `chmod 0600`. If the permissions are less strict, the file is ignored and the SSH tunnel will fail to start.
 
-Set the permissions and ownership for the user account that administers nmon on remote machines. It does not have to be a root user.
+Set the permissions and ownership for the user account that administers nmon on remote servers. It does not have to be a root user.
 
 Ensure you have the ownership rights for the ssh key:
 
@@ -90,7 +90,7 @@ kill 31326
 
 ### Copy private key to remote systems
 
-Distribute the generated private key `/opt/atsd/id_rsa_atsdreadonly` to remote systems from which you will be establishing tunnels.
+Distribute the generated private key `/opt/atsd/id_rsa_atsdreadonly` to remote systems collecting `nmon` data.
 
 ### Disable login by ssh
 

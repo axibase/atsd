@@ -82,7 +82,7 @@ The following password rules apply to **Local** accounts:
     * Restart ATSD.
     * Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
 
-* If the account being reset is configured as LDAP type, the type will be changed to Local.
+* If the account being reset is configured as LDAP type, the type is changed to Local.
 
 ## Guest Access to Data API
 

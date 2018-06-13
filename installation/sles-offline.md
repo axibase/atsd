@@ -2,8 +2,8 @@
 
 ## Overview
 
-The installation process involves downloading dependencies to an intermediate machine with Internet access
-and copying them to the target machine with similar characteristics for offline installation.
+The installation process involves downloading dependencies to an intermediate server with Internet access
+and copying them to the target server with similar characteristics for offline installation.
 
 ## Supported Versions
 
@@ -16,13 +16,13 @@ and copying them to the target machine with similar characteristics for offline 
 
 ## Check Dependencies
 
-Check that required dependencies are present on the target machine
+Check that required dependencies are present on the target server.
 
 ```sh
 sudo zypper search -i java-1_8_0-openjdk-devel which net-tools iproute2
 ```
 
-Verify that all of these dependencies were found
+Verify that all of these dependencies were found.
 
 ```txt
 S  | Name                     | Summary                                                     | Type
@@ -37,13 +37,13 @@ Install these dependencies if needed.
 
 ## Install ATSD
 
-Download the [ATSD rpm package for SLES](https://axibase.com/public/atsd_rpm_sles_latest.htm) to the machine with internet access.
+Download the [ATSD rpm package for SLES](https://axibase.com/public/atsd_rpm_sles_latest.htm) to the server with internet access.
 
 ```sh
 curl -O https://axibase.com/public/atsd_amd64_sles.rpm
 ```
 
-Copy the `atsd_amd64_sles.rpm` file to the target machine and install ATSD.
+Copy the `atsd_amd64_sles.rpm` file to the target server and install ATSD.
 
 ```sh
 sudo zypper -n install atsd_amd64_sles.rpm

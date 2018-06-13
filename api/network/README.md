@@ -149,7 +149,7 @@ property e:station_2 t:location v:city=Cupertino v:state=CA v:country=USA
 Connection closed by foreign host.
 ```
 
-Note that the server will **terminate** the connection if it receives an unsupported or malformed command.
+Note that the server **terminates** the connection if it receives an unsupported or malformed command.
 
 ```ls
 $ telnet atsd_host 8081
@@ -160,7 +160,7 @@ unknown_command e:station_1 m:temperature=32.2
 Connection closed by foreign host.
 ```
 
-If the connection is terminated due to client error, all valid commands sent prior to the first invalid command will be stored.
+If the connection is terminated due to client error, all valid commands sent prior to the first invalid command are stored.
 
 Due to the fact that closing the channel due to client error may take some time, the database may also store a few valid commands received after the discarded command.
 
@@ -175,7 +175,7 @@ valid command   - possibly stored if present in buffer
 
 The above behavior can be modified by changing the `input.disconnect.on.error` setting to `No` on the **Settings > Server Properties** page.
 
-This will cause the database to maintain a client connection even if one of the received commands is malformed or unknown.
+This causes the database to maintain a client connection even if one of the received commands is malformed or unknown.
 
 ### UDP Datagrams
 

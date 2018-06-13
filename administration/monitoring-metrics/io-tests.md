@@ -10,10 +10,10 @@ I/O Tests allow you to:
 
 | Field | Description |
 | --- | --- |
-| Thread count | Number of threads that will be tested. |
-| File size, MB | Size of the file that will be written to disk. |
+| Thread count | Number of threads to test. |
+| File size, MB | Size of the file to write to disk. |
 | Buffer Size | Size of the buffer for writing/reading the file. |
-| Directory: absolute path | Absolute path where the test file will be written to or from which the file will be read. |
+| Directory: absolute path | Absolute path to the test file. |
 | Disk force | Force the data to be written to disk. |
 | Read the same file | Use a single prepared file to test all threads. |
 

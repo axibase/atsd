@@ -91,10 +91,10 @@ Description of `write_atsd` plugin options is provided below
  **Setting**      | **Required** | **Description**                                                                                                                                        | **Default Value**
 ------------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------
  `AtsdUrl`        | no           | Protocol to transfer data: `tcp` or `udp`, hostname and port of target ATSD server                                                                     | `tcp://localhost:8081`
- `Entity`         | no           | Default entity under which all metrics will be stored. By default (if setting is left commented out), entity will be set to the machine hostname.      | `hostname`
+ `Entity`         | no           | Default entity under which all metrics are stored. By default (if setting is left commented out), entity is set to the server hostname.      | `hostname`
   `ShortHostname` | no           | Convert entity from fully qualified domain name to short name                                                                                          | `false`
  `Prefix`         | no           | Metric prefix to group `collectd` metrics                                                                                                              | `collectd`
- `Cache`          | no           | Name of read plugins whose metrics will be cached. Cache feature is used to save disk space in the database by not resending the same values.          | `-`
+ `Cache`          | no           | Name of read plugins whose metrics are cached. Cache feature is used to save disk space in the database by not resending the same values.          | `-`
  `Interval`       | no           | Time in seconds during which values within the threshold are not sent.                                                                                 | `-`
  `Threshold`      | no           | Deviation threshold, in %, from the previously sent value. If threshold is exceeded, then the value is sent regardless of the cache interval.          | `-`
  `StoreRates`     | no           | If set to `true`, convert counter values to rates. If set to `false` counter values are stored as is, i. e. as an increasing integer number.               | `true`
