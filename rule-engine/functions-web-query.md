@@ -43,7 +43,7 @@ queryConfig("rc-hook",
 )
 ```
 
-The target URL will receive the following payload sent as `application/x-www-form-urlencoded`:
+The target URL receives the following payload sent as `application/x-www-form-urlencoded`:
 
 ```ls
 channel=devops&repository=atsd-site
@@ -63,7 +63,7 @@ queryConfig("rc-hook",
 )
 ```
 
-The target URL will receive the following JSON payload sent as `application/json`:
+The target URL receives the following JSON payload sent as `application/json`:
 
 ```json
 {
@@ -108,9 +108,9 @@ The configuration map `c` may contain the following fields:
 
 The request payload can be specified using either `content` text or `params` map.
 
-The `params` map is serialized into a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
+The `params` map is serialized into a JSON document if content type is `application/json`. Otherwise the map is converted to URL-encoded form format.
 
-**JSON content type:**
+**JSON content type**:
 
 ```javascript
   queryPost(_url,
@@ -124,7 +124,7 @@ Payload:
 { "repository": "atsd-site", "channel": "devops" }
 ```
 
-**Form content type:**
+**Form content type**:
 
 ```javascript
   queryPost(_url, [

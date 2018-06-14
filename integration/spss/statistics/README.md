@@ -8,7 +8,7 @@
 * [Analyze Dataset](#analyze-dataset)
 * [Export Derived Series into ATSD](#export-derived-series-into-atsd)
 * [Verify Insertion](#verify-insertion)
-* [Exporting Data from ATSD into CSV Files](#exporting-data-into-csv-files)
+* [Exporting Data into CSV Files](#exporting-data-into-csv-files)
 
 ## Overview
 
@@ -107,7 +107,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 ### Import from CSV Files
 
-* Export data from ATSD into CSV files as described in the [Exporting Data from ATSD](#exporting-data-from-atsd-into-csv-files) section at the end of this article.
+* Export data from ATSD into CSV files as described in the [Exporting Data into CSV Files](#exporting-data-into-csv-files) section at the end of this article.
 * Open **File > Import Data > CSV Data...**.
 * Select the desired CSV files and click Open to import the `prices.sav` and `weights.sav` files.
 
@@ -121,7 +121,7 @@ Data from the CSV files are now available as SPSS datasets `prices.sav` and `wei
 
 SPSS merges datasets using equal column names, similar `SELF JOIN` in SQL.
 
-To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS will only contain data for 2017.
+To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS contains data only for 2017.
 
 ![](./images/variable_View.png)
 

@@ -1,12 +1,12 @@
 # Restarting
 
-ATSD provides scripts to control the database and its components.
+ATSD provides scripts to control database services.
 
-Use these scripts to stop, start, and update ATSD.
+Use these scripts to stop, start, and update the database.
 
 ## Permissions
 
-If logged in as root or another user, change user to 'axibase' to ensure that no files are locked.
+If logged in as root or another user, change user to 'axibase' to avoid file permission issues.
 
 ```sh
 su axibase
@@ -229,7 +229,7 @@ Start HBase.
 
 The `/opt/atsd/bin/atsd-all.sh` script relies on the **[jps](https://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)** utility to determine that Java processes are started in the correct order.
 
-The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory in order to store temporary files. If permissions to this directory are missing (e.g. it's owned by another user), `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
+The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory in order to store temporary files. If permissions to this directory are missing (for example the directory is owned by another user), `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
 
 If `jps` output is incomplete, the `atsd-all.sh` script aborts the startup procedure with the following message:
 

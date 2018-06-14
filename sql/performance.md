@@ -90,8 +90,6 @@ Query execution speed can be improved by adopting the following guidelines for t
 
 ## Query Optimization
 
-The amount of data stored in the database is such that it is possible to build a query that may cause performance issues.
-
 Consider the following recommendations when developing queries:
 
 * Pre-test queries on a smaller dataset in an ATSD-development instance.
@@ -99,7 +97,7 @@ Consider the following recommendations when developing queries:
 * Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval](README.md#interval-condition) conditions.
 * Make `WHERE` conditions narrow and specific, for example, specify a small time interval.
 * Avoid the `ORDER BY` clause since it may cause a full scan and a copy of data to a temporary table.
-* Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` will not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
+* Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` does not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
 * Develop a simple query first. Adjust conditions gradually as you inspect the results. Add grouping, partitioning, and ordering to finalize the query.
 
 ### Optimizing Interval Queries

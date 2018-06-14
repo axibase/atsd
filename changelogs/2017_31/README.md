@@ -20,7 +20,7 @@
 | 4385 | jdbc | Feature | Add `missingMetric` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) to control driver behavior in case of unknown table.|
 | 4383 | jdbc | Bug | Include the reserved `atsd_series` if `tables=*` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) selects all tables. |
 | 4379 | jdbc | Bug | Fixed an error with `NULL` values in [`INSERT`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) statements. |
-| 4374 | sql | Feature | [SQL Metadata API](../../sql/api-meta.md) method should return metadata for the pre-defined columns even if the metric doesn't exist.|
+| 4374 | sql | Feature | [SQL Metadata API](../../sql/api-meta.md) method should return metadata for the pre-defined columns even if the metric does not exist.|
 | [4373](#issue-4373) | jdbc | Bug | Raise exception if parameter data type is not valid.  |
 | [4372](#issue-4372) | jdbc | Bug | Add support for [inserting series tags](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#insert-syntax). |
 | 4371 | jdbc | Bug | Fix bug with `INSERT` statements if the table name is quoted. |
@@ -55,7 +55,7 @@ SELECT time FROM jvm_memory_used LIMIT 1
 }
 ```
 
-Now all columns that returned `long` will be returning `bigint`.
+Now all columns that returned `long` are returning `bigint`.
 
 ```sql
 SELECT COUNT(*) FROM test_m

@@ -24,7 +24,7 @@ This integration enables sending HTTP requests with customized content to the sp
 * `application/json`
 * `application/x-www-form-urlencoded`
 
-If the selected HTTP method such as `GET` doesn't support a payload, the request parameters specified in the Parameters section are appended to the Endpoint URL as a query string.
+If the selected HTTP method such as `GET` does not support a payload, the request parameters specified in the Parameters section are appended to the Endpoint URL as a query string.
 
 ### Supported Authentication Mechanisms
 
@@ -50,9 +50,9 @@ Authorization: Bearer YOUR_JWT
 
 The placeholders are substituted with actual field values when the request is initiated.
 
-If the placeholder doesn't exist, it is substituted with an empty string.
+If the placeholder does not exist, the placeholder is substituted with an empty string.
 
-Placeholder values are automatically URL-encoded if they're included in the request URL.
+Placeholder values are automatically URL-encoded if they are included in the request URL.
 
 ## Parameters
 

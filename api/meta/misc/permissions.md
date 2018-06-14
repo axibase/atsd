@@ -18,7 +18,7 @@ Retrieves access [permissions](../../../administration/user-authorization.md) fo
 |:---|:---|:---|
 | `roles`  | array | List of user [roles](../../../administration/user-authorization.md#api-roles). |
 | `user-groups` | array | List of groups to which the user belongs.|
-| `entity-groups` | map | The user's entity groups `READ` and `WRITE` [permissions](../../../administration/user-authorization.md#entity-permissions), for example `"aws-ec2": "WRITE"`. |
+| `entity-groups` | map | The user's entity groups `read` and `write` [permissions](../../../administration/user-authorization.md#entity-permissions), for example `"aws-ec2": "WRITE"`. |
 | `portals`  | array | List of portals the user is authorized to view.|
 | `all-entities-read` | boolean | User is authorized to read data for any entity.|
 | `all-entities-write`  | boolean | User is authorized to write data for any entity.|

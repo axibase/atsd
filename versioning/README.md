@@ -52,7 +52,7 @@ To insert versioned samples, use the [series](../api/network/series.md) command 
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric causes a validation error.
-> * If the command refers to a new metric, it is automatically created with **Versioning** set to **Yes**.
+> * If the command refers to a new metric, such metric automatically created with **Versioning** set to **Yes**.
 
 Example:
 
@@ -81,7 +81,7 @@ $version_source={source}
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric causes a validation error.
-> * If the command refers to a new metric, it is automatically created with **Versioning** set to **Yes**.
+> * If the command refers to a new metric, such metric is automatically created with **Versioning** set to **Yes**.
 
 ### CSV Parser using Renamed Columns
 
@@ -91,7 +91,7 @@ To extract versioning fields from CSV content, add the version tags to the **Tag
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric causes a validation error.
-> * If the command refers to a new metric, it is automatically created with **Versioning** set to **Yes**.
+> * If the command refers to a new metric, such metric is automatically created with **Versioning** set to **Yes**.
 
 ## View Versions
 
@@ -170,7 +170,7 @@ Change version _Status_ and _Source_, change the `Value` and click **Delete**.
 
 ![](./resources/12.png)
 
-Note that the value will not actually be deleted. Rather, the current value for the selected timestamp is replaced with a `NaN` marker.
+Note that the value is not actually deleted. Rather, the current value for the selected timestamp is replaced with a `NaN` marker.
 
 ![](./resources/13.png)
 

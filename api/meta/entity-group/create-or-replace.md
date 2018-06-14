@@ -7,10 +7,10 @@ Creates an entity group with specified fields and tags or replaces the fields an
 The following rules apply if the specified group exists:
 
 * The current tags are replaced with tags specified in the request.
-* If the request doesn't contain any tags, the current tags are deleted.
+* If the request does not contain any tags, the current tags are deleted.
 * The request does **not** change the list of members.
 * If the `expression` field is set to `null` in the request, the expression is deleted.
-* If the `enabled` field is not included, it is set to `true`.
+* If the `enabled` field is not included, the entity status is set to `true`.
 
 ## Request
 

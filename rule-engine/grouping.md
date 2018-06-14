@@ -27,7 +27,7 @@ Entity grouping can be disabled to apply an aggregate function to data coming fr
 
 ## Examples
 
-Assuming that incoming data is represented with the three `series` commands shown here, the examples below will illustrate the effect of group settings on window formations.
+Assuming that incoming data is represented with the three `series` commands shown here, the examples below illustrate the effect of group settings on window formations.
 
 | Data Type | Metric | Entity | Tags |
 |---|---|---|:---|

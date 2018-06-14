@@ -36,7 +36,7 @@ The values can also be seen in atsd.log:
 
 ### Issue 3936
 
-Custom network commands specified in `Raw Commands` textarea can be executed.
+Custom network commands specified in **Raw Commands** textarea can be executed.
 
 ![](./Images/Figure_01.png)
 

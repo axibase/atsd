@@ -16,7 +16,7 @@ If the `WHERE` condition includes multiple selection intervals, the interpolatio
 
 The interpolated values are calculated based on two adjacent values.
 
-If a raw value exists at the regularized timestamp, it is used "as is" irrespective of neighboring values.
+If a raw value exists at the regularized timestamp, such value is used "as is" irrespective of neighboring values.
 
 ### Irregular Series
 
@@ -308,7 +308,7 @@ AND datetime >= '2016-09-17T08:00:10Z' AND datetime < '2016-09-17T08:01:40Z'
 
 The `GROUP BY PERIOD()` clause calculates for all values in each period by applying an aggregation function such as average, maximum, first, last etc.
 
-If the period doesn't have any values, the period is omitted from the results.
+If the period does not have any values, the period is omitted from the results.
 
 An optional `LINEAR` directive for the `GROUP BY PERIOD()` clause changes the default behavior and returns results for missing periods by applying linear interpolation between values of the neighboring periods.
 

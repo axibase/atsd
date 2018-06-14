@@ -182,7 +182,7 @@ fi
 ```
 
 Change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
-Set `SCOLLECTOR_USER` to the user that will run scollector.
+Set `SCOLLECTOR_USER` to the user under which scollector is launched.
 
 #### Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
@@ -227,8 +227,8 @@ scollector-windows-amd64.exe -winsvc=start
 
 If the service exits a few seconds after startup, check the following:
 
-* `scollector.toml` file doesn't exist in the same directory
-* `scollector.toml` file is not valid or is empty
+* `scollector.toml` file does not exist in the same directory.
+* `scollector.toml` file is not valid or is empty.
 * `Host` parameter value is specified without double quotes.
 
 Open Windows event log and review the scollector service startup error.

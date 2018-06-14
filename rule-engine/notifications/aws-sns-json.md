@@ -43,7 +43,7 @@ Customize the alert messages using [placeholders](../placeholders.md) as necessa
 
 * Click **Save** to save the rule.
 
-* The rule will create new windows based on incoming data.
+* The rule creates new windows when new commands are received by the database.
 
 It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 

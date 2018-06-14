@@ -13,7 +13,7 @@
 | 4631 | sql | Bug | Metrics not filtered if specified with `WHERE metric.name = {name}` syntax. |
 | 4629 |UI| Bug | Export page fails to display tag values when aggregator is selected. |
 | 4615 | rule-engine | Feature | Add support for `metric.label` and other `entity.*` and `metric.*` fields in the [rule engine](../../rule-engine/window-fields.md). |
-| 4614 | rule-engine | Bug | `entity_tags` placeholder doesn't work. |
+| 4614 | rule-engine | Bug | `entity_tags` placeholder does not work. |
 | [4590](#issue-4590) | client | Feature | Python API client examples. |
 | 4555 | sql | Bug | Fix SQL `datetime NOT BETWEEN` condition. |
 | [4544](#issue-4544) | sql | Feature | `ESCAPE` keyword to customize `LIKE` escape character. |
@@ -62,7 +62,7 @@ The escape character can be customized by adding an ESCAPE clause after the LIKE
 WHERE tags.file_system LIKE '%a~_b%' ESCAPE '~'
 ```
 
-In the example above, the underscore is evaluated as a regular character (not as a wildcard) because it is preceded by an ~ escape character.
+In the example above, the underscore is evaluated as a regular character (not as a wildcard) because the underscore is preceded by an ~ escape character.
 
 ### Issue 4404
 

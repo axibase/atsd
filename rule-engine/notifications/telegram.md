@@ -108,7 +108,7 @@ NGINX API Gateway Path for Telegram:
 
 |**Setting**|**Description**|
 |---|---|
-|Bot API Token|Unique authentication token given to the bot when it is created.|
+|Bot API Token|Unique authentication token assigned to the bot.|
 |Chat ID|Unique identifier for the target chat or the target channel.|
 |Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 |Notifications|If enabled, delivers the message with an audio notification.|
@@ -148,7 +148,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 
   ![](./images/telegram_11.png)
 
-* The rule will create new windows based on incoming data.
+* The rule creates new windows when new commands are received by the database.
 
 It may take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 

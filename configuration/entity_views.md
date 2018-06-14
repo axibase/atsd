@@ -43,7 +43,7 @@ Multi-Entity Portal | [Portal](#portal) with time series charts for multiple ent
 
 ## Filters
 
-The list of entities displayed in the table(s) is determined as follows:
+The list of entities displayed in the table is determined as follows:
 
 * The list is initially set to the current members of the selected entity group.
 * If an [**Entity Expression**](#settings) is specified, the members are checked against this condition. Entities that fail to satisfy the condition are hidden.

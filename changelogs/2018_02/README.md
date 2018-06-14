@@ -4,9 +4,9 @@
 
 Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
-5047 | rule engine | Bug | [`CANCEL`](../../rule-engine/window.md#cancel-status) window doesn't display user variables.
+5047 | rule engine | Bug | [`CANCEL`](../../rule-engine/window.md#cancel-status) window does not display user variables.
 5044 | security | Feature | User [permissions](../../administration/user-authorization.md#user-authorization) page: add group-level details.
-5041 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) doesn't support `<br>` when parse_mode is `html`.
+5041 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) does not support `<br>` when parse_mode is `html`.
 5040 | rule engine | Bug | [Entity non-grouped](../../rule-engine/grouping.md) rule windows are missing.
 5039 | rule engine | Feature | Modify [convert](../../rule-engine/functions-format.md#convert) function unit processing, implement [`formatBytes`](../../rule-engine/functions-format.md#formatbytes) function.
 5036 | admin | Feature | Restore multiple record types from archived XML backup files.
@@ -65,7 +65,7 @@ Issue| Category    | Type    | Subject
 4878 | rule engine | Feature | Add optional parameters to [`rule_open`](../../rule-engine/functions-rules.md#rule_open) and [`rule_window`](../../rule-engine/functions-rules.md#rule_window) functions for precise matching.
 4862 | admin | Bug | [Logging](../../administration/logging.md#logging): change level from `ERROR` to `WARN` for user-invoked errors.
 4842 | rule editor | Bug | Rule Editor: series Test is not working.
-4837 | rule engine | Bug | Notifications: [Telegram](../../rule-engine/notifications/telegram.md) doesn't resolve local URLs.
+4837 | rule engine | Bug | Notifications: [Telegram](../../rule-engine/notifications/telegram.md) does not resolve local URLs.
 4836 | api-rest | Bug | Data API: multiple [interpolate](../../api/data/series/interpolate.md#interpolation) queries for the same series.
 4835 | api-rest | Bug | Data API: limit on series [interpolate](../../api/data/series/interpolate.md#interpolation) query.
 4828 | rule engine | Feature | [Attach portal](../../rule-engine/notifications/README.md#attachments) to notification.

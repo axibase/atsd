@@ -23,7 +23,7 @@ The S3 bucket must be created prior to installation.  The bucket, named `atsd` i
 aws s3 mb s3://atsd
 ```
 
-The HBase root directory is created if necessary when the cluster is started for the first time. It is not deleted when the cluster is stopped or terminated.
+The HBase root directory is created if necessary when the cluster is started for the first time. The directory is not deleted when the cluster is stopped or terminated.
 
 Check the contents of the bucket prior to launching the cluster.
 
@@ -189,7 +189,7 @@ status
 
 ## Install ATSD
 
-Log in to the server where ATSD will be installed.
+Log in to the server where you plan to install ATSD.
 
 ```bash
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP

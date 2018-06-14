@@ -42,8 +42,8 @@ STORAGE_FINDERS = (
 |  url  |  ATSD hostname or IP  |  localhost:8088  |
 |  username  |  ATSD user username  |  –  |
 |  password  |  ATSD user password  |  –  |
-|  entity_folders  |  List of folders for grouping entities by name.<br>Grouping is done according to the beginning of each entity name.<br>If it is matched to a folder name, then it is visible in that folder.<br>For example if an entity name begins with<br>`com` (like `com_axibase`)<br>then it is placed into the folder called `'com'`.<br>If the entity name does not satisfy any of the listed folder names, then it is placed into the `"_"` folder by default.  |  `'entity_folders' : 'abcdefghijklmnopqrstuvwxyz_'`<br>Will result in folders from a to z (iterates through the string).  |
-|  metric_folders  |  List of folders for grouping metrics by name.<br>Grouping is done according to the beginning of each metric name.<br>If it is matched to a folder name, then it is visible in that folder.<br>For example if a metric name begins with<br>`statsd` (`statsd_cpuload_avg5`)<br>then it is placed into the folder called `'statsd'`.<br>If metric name does not satisfy any of the listed folder names, then it is placed into the `"_"` folder by default.  |  `'metric_folders' : 'abcdefghijklmnopqrstuvwxyz_'`<br>Will result in folders from a to z, iterates through the string.  |
+|  entity_folders  |  List of folders for grouping entities by name.<br>Grouping is done according to the beginning of each entity name.<br>If entity name is matched to a folder name, then the entity name is listed in that folder.<br>For example if an entity name begins with<br>`com` (like `com_axibase`)<br>then the entity is listed in the folder called `'com'`.<br>If the entity name does not satisfy any of the listed folder names, then the entity is listed in the default `_` folder.  |  `'entity_folders' : 'abcdefghijklmnopqrstuvwxyz_'`<br>Generates folders from a to z (iterates through the string).  |
+|  metric_folders  |  List of folders for grouping metrics by name.<br>Grouping is done according to the beginning of each metric name.<br>If the metric name is matched to a folder name, then the metric is listed in that folder.<br>For example if a metric name begins with<br>`statsd` (`statsd_cpuload_avg5`)<br>then the metric is listed in a folder called `'statsd'`.<br>If metric name does not satisfy any of the listed folder names, the metric is placed into the `"_"` folder by default.  |  `'metric_folders' : 'abcdefghijklmnopqrstuvwxyz_'`<br>Generates folders from a to z, iterates through the string.  |
 |  aggregators  |  List of aggregators.  |  `'aggregators' : {<br>                'avg'               : 'Average',<br>                'min'               : 'Minimum',<br>                'max'               : 'Maximum',<br>                'sum'               : 'Sum',<br>                'count'             : 'Count',<br>                'first'             : 'First value',<br>                'last'              : 'Last value',<br>                'percentile_999'    : 'Percentile 99.9%',<br>                'percentile_99'     : 'Percentile 99%',<br>                'percentile_995'    : 'Percentile 99.5%',<br>                'percentile_95'     : 'Percentile 95%',<br>                'percentile_90'     : 'Percentile 90%',<br>                'percentile_75'     : 'Percentile 75%',<br>                'median'            : 'Median',<br>                'standard_deviation': 'Standard deviation',<br>                'delta'             : 'Delta',<br>                'wavg'              : 'Weighted average',<br>                'wtavg'             : 'Weighted time average'<br>}`  |
 
 If you use an underscore at the beginning of a setting value (`entity_folders` or `metric_folders`), then all folders that do not satisfy any other setting are placed there.
@@ -195,7 +195,7 @@ List of entities filtered by the folder they’re in.
              'value': ['distgeomon.connect-dns']}]}
 ```
 
-Values of the tag path. To retrieve tags we need a metric; however, it hasn’t been established yet. We can make a global token inside this one to make the metric become `distgeomon.connect-dns` until stated otherwise.
+Values of the tag path. To retrieve tags we need a metric; however, it has not been established yet. We can make a global token inside this one to make the metric become `distgeomon.connect-dns` until stated otherwise.
 
 ![](./resources/04.png)
 
@@ -253,7 +253,7 @@ List of aggregation intervals.
             'value': ['Aggregate']}]}
 ```
 
-If we want to make two different types of tokens at the same level, i.e. a leaf and a branch (as shown below), we can make a collection. In this collection, there is a detail aggregator, which is a leaf. We can click on it and see the plot and a constant folder Aggregate, which will lead us further into the tree.
+If we want to make two different types of tokens at the same level, for example a leaf and a branch (as shown below), we can create a collection. In this collection, there is a detail aggregator, which is a leaf. Click on it and see the chart and an Aggregate folder, which expands the tree further.
 
 ![](./resources/09.png)
 

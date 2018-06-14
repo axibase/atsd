@@ -24,7 +24,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 
 Refer to Fields specified in the [Entity List](list.md#fields) method.
 
-The `name` field specified in the payload is ignored by the server since it's specified in the path.
+The `name` field contained in the payload is ignored by the server since the entity name is already specified in the path.
 
 ## Response
 

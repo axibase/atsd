@@ -86,4 +86,4 @@ Once the `deploy.properties` file is set up and paths to the required files are 
 ./nmon_deploy.sh
 ```
 
-The script will check each machine for dependencies and show installation progress/results on screen.
+The script checks each machine for dependencies and shows installation progress/results in the console.

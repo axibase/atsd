@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4207 | core | Bug | Add missing `HOST` tags to all internal ATSD metrics.|
-| 4205 | UI | Bug | Refresh replacement table cache when it's modified. The cache is used in SQL queries to replace field values similar to a lookup table or a dictionary.|
+| 4205 | UI | Bug | Refresh replacement table cache after the table is modified. The cache is used in SQL queries to replace field values similar to a lookup table or a dictionary.|
 | 4202 | csv | Bug | Consolidate error log events when parsing CSV files for simplified troubleshooting. |
 | [4196](#issue-4196) | api-network | Feature | Enable support for gzip compression in [/api/v1/command](../../api/data/ext/command.md) method. |
 | 4191 | UI | Bug | Clone button in the scheduled SQL configuration fails to redirect to the new configuration. |
@@ -41,7 +41,7 @@ In **SQL > Query Statistics**:
 
 ![4179](./Images/4179.png)
 
-Using an exclamation point in the Query Text search bar will hide results that include the
+Using an exclamation point in the Query Text search bar hides results that include the
 indicated text, in this case `!SELECT 1` hides results which include `SELECT 1` in the
 query text, as shown below:
 

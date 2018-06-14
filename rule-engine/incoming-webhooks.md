@@ -59,7 +59,7 @@ To create a new user with permissions to write data for a specific entity, open 
 
 ![](./images/webhook-user.png)
 
-The wizard will automatically create user and entity groups and grant necessary permissions.
+The wizard automatically creates user and entity groups and grant necessary permissions.
 
 ![](./images/webhook-permissions.png)
 

@@ -17,8 +17,7 @@
 
 ## Increase Network Buffers
 
-> If you are anticipating insertion rates with bursts of 100K+ packets per second,
-increase maximum receiving buffer.
+If you are anticipating insertion rate with bursts of 100K+ packets per second, increase maximum receiving buffer.
 
 * See [Networking Settings](../administration/networking-settings.md).
 

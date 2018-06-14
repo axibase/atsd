@@ -41,9 +41,9 @@ The response status code and response content are recorded in `atsd.log` if the 
 
 Placeholders are substituted with actual field values when the request is initiated.
 
-If the placeholder doesn't exist, it is substituted with an empty string.
+If the placeholder does not exist, the placeholder substituted with an empty string.
 
-Placeholder values are automatically URL-encoded if they're included in the request URL.
+Placeholder values are automatically URL-encoded if they are included in the request URL.
 
 ## Parameters
 

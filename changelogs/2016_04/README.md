@@ -31,7 +31,7 @@
 
 In previous versions of ATSD, the user's role, group membership, and entity permissions were cached while the user's session was active. If the user's authorization was changed by an
 administrator, it was not applied until the user's active sessions timed out or until the user re-logged into the application. We updated ATSD so that the user's
-active sessions are invalided instantly if the authorization is changed by an administrator. As a result, the administrator doesn't have to manually request the user to logout in order to
+active sessions are invalided instantly if the authorization is changed by an administrator. As a result, the administrator does not have to manually request the user to logout in order to
 apply any new settings. In addition, the administrator is now able to view which users are online.
 
 ![Figure 5](./Images/Figure5.png)
@@ -60,10 +60,10 @@ The administrative interface in ATSD has been simplified by consolidating multip
 
    ![Figure 1](./Images/Figure1.png)
 
-   The section provides information about the installed ATSD version (Revision Number), as well as the HBase compatibility version. The ATSD revision number is an always
-   incrementing counter, meaning it doesn't adhere to semantic versioning. Each change to the ATSD code will increment the revision number. Note that the revision number of the ATSD
+   The section provides information about the installed ATSD version (Revision Number), as well as the HBase compatibility version. The ATSD revision number is an
+   incrementing counter (no semantic versioning). Each change to the ATSD code increments the revision number. Note that the revision number of the ATSD
    HBase jar file deployed on the HBase region server in the `/hbase/lib` directory is incremented separately from the ATSD revision number. When upgrading a distributed version of ATSD,
-   follow [these steps](../../installation/cloudera.md#updating-atsd). If you're installing an ATSD version with a higher revision number and
+   follow [these steps](../../installation/cloudera.md#updating-atsd). If you are installing an ATSD version with a higher revision number and
    if the `atsd-hbase.*.jar` version is the same, skip the region server deployment stage altogether and upgrade just ATSD itself, without restarting your region servers.
 
 2. **JVM System Properties**
@@ -147,7 +147,7 @@ Additionally, some user interface improvements were recently made to the JDBC co
 * Tooltips were added to help describe form fields.
 * The number of iterated rows now does not exceed 1000 in a test run, even if the JDBC driver does not support setting the `maxRows` parameter.
 * Unified number formatting: unnecessary zeroes in the fractional part of floating-point numbers are not shown.
-* Metric names are generated in lower-case, just as they will be saved in ATSD.
+* Metric names are converted to lower-case in line with ATSD schema.
 
 As a result, PI tags can be retrieved using the JDBC job, and a [tutorial](https://axibase.com/docs/axibase-collector/jobs/examples/pi/export-metrics.html) is provided showing you how to configure the task.
 

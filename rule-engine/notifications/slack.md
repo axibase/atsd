@@ -173,7 +173,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
 
   ![](./images/slack_7.png)
 
-* The rule will create new windows based on incoming data.
+* The rule creates new windows when new commands are received by the database.
 
 It may take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
