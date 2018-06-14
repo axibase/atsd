@@ -221,7 +221,7 @@ The above condition is equivalent to:
 The `BETWEEN` operator allows specifying a subquery that must return a result set containing multiple rows with 1 column.
 
 * If the subquery returns no values, the condition evaluates to `FALSE`, and no rows are returned.
-* If the subquery returns only one value, it is considered as the lower boundary of the time interval and the upper boundary is not defined.
+* If the subquery returns only one value, the timestamp of such value determines the lower boundary of the time interval and the upper boundary is not defined.
 * If there are 2 values, the second value must be greater or equal the first value.
 * If there are more than 2 values, then each pair of values is processed as a separate time interval.
 

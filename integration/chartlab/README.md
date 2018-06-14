@@ -10,7 +10,7 @@ ChartLab's primary role is to provide a simple user interface to view and save p
 
 ## Authentication and Authorization
 
-ChartLab is optimized for convenience. The service doesn't require visitors to create an account to view or save configurations.
+ChartLab is optimized for convenience. The service does not require visitors to create an account to view or save configurations.
 
 ## Data Sources
 
@@ -48,7 +48,7 @@ The widgets can be configured to load data from the following sources:
 
 * Open [ChartLab](https://apps.axibase.com/chartlab/) on the plain text protocol to avoid security errors.
 
-  > The error is raised in the browser if the custom ATSD instance is using a self-signed or an un-trusted SSL certificate.
+  > The error is raised in the browser if the custom ATSD instance is using a self-signed or an untrusted SSL certificate.
 
 * Change `Source` to ATSD in the ChartLab top menu.
 

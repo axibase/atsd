@@ -4,7 +4,7 @@
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence in queries against the [`atsd_series`](../../sql/examples/select-atsd_series.md) table. If the query requests several metrics with different datatypes, no precision loss will occur. |
+| [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence in queries against the [`atsd_series`](../../sql/examples/select-atsd_series.md) table. If the query requests several metrics with different datatypes, no precision loss occurs. |
 | 3770 | api-rest        | Bug     | Removed versioning tags from [`exactMatch`](../../api/data/series/query.md#tag-filter) comparison to prevent empty result sets when querying data for versioned metrics. |
 | [3769](#issue-3769) | sql             | Feature     | Extended the [`LOOKUP`](../../sql/README.md#lookup) function to accept series, entity, and metric tags as parameters. |
 | [3768](#issue-3768) | sql             | Feature | Extended the [`CONCAT`](../../sql/README.md#string-functions) function to accept numeric arguments. |
@@ -38,7 +38,7 @@ If the value column in an `atsd_series` query returns numbers for metrics with d
 2. If all data types are decimals (float, double, decimal), the prevailing decimal type is returned.
 3. If the data types contain both integers and decimals, the decimal type is returned.
 
-The following sample `atsd_series` query will return the `value` column set to the **decimal** data type based on rule `#3` above.
+The following sample `atsd_series` query returns the `value` column set to the **decimal** data type based on rule `#3` above.
 
 ```sql
 SELECT datetime, entity, metric, value

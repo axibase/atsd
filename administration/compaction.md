@@ -12,7 +12,7 @@ The space savings in ATSD are achieved by its built-in compression codes as well
 
 ATSD compression codecs are built-in and are applied automatically when the data is copied from the raw column family to the compressed column family in a process called Compaction.
 
-The compaction is executed daily on schedule and its status is available on the **Settings > Diagnostics > Compaction** page.
+The compaction is executed daily on schedule and its status is displayed on the **Settings > Diagnostics > Compaction** page.
 
 ## File System Compression
 
@@ -33,6 +33,6 @@ The following compression codecs are supported.
 Changing the existing codec is supported however the change is applied only to new files and files re-written by HBase during a major compaction.
 A change in codec requires ATSD restart.
 
-It's possible to also enable compression for the raw column family using the `hbase.compression.type.raw` setting.
+The compression can be also enabled for the raw column family using the `hbase.compression.type.raw` setting.
 
 To verify that the codec is set correctly, review the settings on the **Settings > Server Properties** page.

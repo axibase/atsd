@@ -89,7 +89,7 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
 ### Interpolation
 
-By default, if the period doesn't contain any detailed values, it is excluded from the results.
+By default, if the period does not contain any detailed values, such period is excluded from the results.
 
 This behavior can be changed with an interpolation function.
 The interpolation function substitutes the missing period and calculate its value based on previous and next period values.

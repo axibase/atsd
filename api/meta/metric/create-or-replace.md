@@ -6,11 +6,11 @@ Creates a metric with specified fields and tags or replaces the fields and tags 
 
 In case of an existing metric, all the current metric tags are replaced with metric tags specified in the request.
 
-If the replace request for an existing metric doesn't contain any tags, current metric tags are deleted.
+If the replace request for an existing metric does not contain any tags, current metric tags are deleted.
 
 Fields that are set to `null` are ignored by the server and are set to their default value.
 
-The replace request for an existing metric doesn't affect any series data since the internal identifier of the metric remains the same.
+The replace request for an existing metric does not affect any series data since the internal identifier of the metric remains the same.
 
 ## Request
 
@@ -28,7 +28,7 @@ The replace request for an existing metric doesn't affect any series data since 
 
 Refer to Fields specified in the [Metrics List](list.md#fields) method.
 
-The `name` field specified in the payload is ignored by the server since it's specified in path.
+The `name` field specified in the payload is ignored by the server since the metric name is already specified in path.
 
 ## Response
 

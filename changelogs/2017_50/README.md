@@ -14,7 +14,7 @@
 | [4792](#issue-4792) | rule engine | Feature | Implement statistical functions [with conditions](../../rule-engine/functions.md#statistical): `countIf`, `sumIf`, `avgIf`. |
 | [4785](#issue-4785) | rule engine | Feature | Implement [`AWS SQS`](../../rule-engine/notifications/aws-sqs.md) notification. |
 | [4741](#issue-4741) | rule engine | Feature | Implement [`AWS SNS`](../../rule-engine/notifications/aws-sns.md) notification. |
-| 4705 | admin | Bug | ATSD doesn't start after update via `docker exec`. |
+| 4705 | admin | Bug | ATSD does not start after update via `docker exec`. |
 
 ---
 
@@ -30,7 +30,7 @@ value > 1.5 && value('temperature') > 50
 series e:sensor01 m:pressure=3.5 m:temperature=80
 ```
 
-Assuming the rule was created for the pressure metric, the condition will evaluate to `true` for the above `series` command.
+Assuming the rule was created for the pressure metric, the below condition evaluates to `true` for the above `series` command.
 
 ```javascript
 3.5 > 1.5 && 80 > 50

@@ -30,12 +30,12 @@ Date functions perform various operations on dates, timestamps, and intervals.
 Returns the current time as a [`DateTime`](object-datetime.md) object. The object's fields can be accessed with `get` methods.
 
 ```javascript
-  // returns true if it's Thursday
+  // returns true on Thursdays
   now.getDayOfWeek() == 4
 ```
 
 ```javascript
-  // returns true on Thursday at anytime between 15:00 and 16:00 (exclusive)
+  // returns true on Thursdays at anytime between 15:00 and 16:00 (exclusive)
   now.getDayOfWeek() == 4 && now.getHourOfDay() == 15
 ```
 
@@ -82,7 +82,7 @@ Available time zones and their offsets are listed in [time zones](../shared/time
 
 The default pattern is ISO8601 format `yyyy-MM-dd'T'HH:mm:ss[.SSS]Z` and the default time zone is the server time zone.
 
-> The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
+> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
 
 Example:
 
@@ -149,7 +149,7 @@ Parses the input string `d` into a [`DateTime`](object-datetime.md) object accor
 
 The default pattern is ISO8601 format `yyyy-MM-dd'T'HH:mm:ss[.SSS]Z` and the default time zone is the server time zone.
 
-> The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
+> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
 
 The fields of the `DateTime` object can be accessed using the following methods:
 

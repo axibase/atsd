@@ -31,7 +31,7 @@ If the difference between two values is negative, the difference is replaced wit
 SUM (v(i) - v(i-1))
 ```
 
-If the difference between values is always non-negative, the `DELTA` aggregator will produce the same result as the `COUNTER` aggregator.
+If the difference between values is always non-negative, the `DELTA` aggregator produces the same result as the `COUNTER` aggregator.
 
 View [ChartLab](https://apps.axibase.com/chartlab/2f607d1b/17/) examples illustrating the difference between the functions.
 

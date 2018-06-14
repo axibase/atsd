@@ -9,7 +9,7 @@
 |:---|:---|:---|
 | `entity`   | string | Entity name or entity name pattern.<br>Example: `"entity":"nur007"` or `"entity":"svl*"` |
 | `entities` | array | Array of entity names or entity name patterns.<br>Example: `"entities":["nur007", "nur010", "svl*"]`|
-| `entityGroup` | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group doesn't exist or is empty.|
+| `entityGroup` | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group does not exist or is empty.|
 | `entityExpression` | string | Matches entities by name, entity tag, and properties based on the specified [filter expression](#entityexpression-syntax). <br>Example: `"entityExpression":"tags.location = 'SVL'"`  |
 
 ## `entityExpression` Syntax

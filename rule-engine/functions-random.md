@@ -127,7 +127,7 @@ The keys in the map can be of any type, whereas the values must be numeric and r
 
 The function returns the randomly selected key converted to string.
 
-The sum of probabilities doesn't have to equal 1.0 as the inputs are weighted to total 1.0.
+The sum of probabilities does not have to equal 1.0 as the inputs are weighted to total 1.0.
 
 An input map can be obtained using the `replacementTable()` lookup function.
 

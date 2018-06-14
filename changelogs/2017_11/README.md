@@ -7,7 +7,7 @@
 | 4021 | sql | Bug | [`CASE`](../../sql/README.md#case-expression) expression can be used without specifying the table. |
 | 3981 | sql | Feature | Add support for [`CASE`](../../sql/README.md#case-expression) expression in aggregation functions. |
 | 3837 | sql | Feature | Add support for constant strings and numbers in the [`SELECT`](../../sql/README.md#select-expression) expression. |
-| 4007 | sql | Bug | Fix referencing error if series tag doesn't exist. |
+| 4007 | sql | Bug | Fix referencing error if series tag does not exist. |
 | [3658](#issue-3658) | sql | Feature | Add support for referencing all metric fields (label, units, etc.) |
 | 4017 | sql | Bug | Fix [`CONCAT`](../../sql/README.md#string-functions) function with constant string arguments. |
 | [3907](#issue-3907) | applications | Feature | Implement ATSD query_runner in Redash. |

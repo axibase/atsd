@@ -20,7 +20,7 @@ Scheduling frequency is controlled with the `Schedule` field containing a [`cron
 
 ## Authorization
 
-Scheduled queries are executed with **All Entities: Read** permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity read permissions](../administration/user-authorization.md#entity-permissions).
+Scheduled queries are executed with `All Entities: Read` permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity `read` permissions](../administration/user-authorization.md#entity-permissions).
 
 ## Formats
 
@@ -59,7 +59,7 @@ To store reports on a disk, enable the **Export** section by clicking on the hea
 
 Specify the absolute path including the file name.
 
-If the parent directory in the specified path does not exist, it is created automatically.
+If the parent directory in the specified path does not exist, the directory is created automatically.
 The file extension should match the export format, if the format is EXCEL the Output Path should end with ".xlsx".
 
 The **Output Path** field may contain date and form [placeholders](#placeholders) so that files or their parent directories are grouped by day or month.
@@ -95,7 +95,7 @@ In the above example, the query relies on the `HAVING` clause to find servers wi
 
 ### Publishing
 
-To make a report available for download by end-users, enable the **Publish** section. The report will contain rows that were prepared by the server when the task was last executed.
+To make a report available for download by end-users, enable the **Publish** section. The report contains rows that were prepared by the server when the task was last executed.
 
 ![File](./images/sql-scheduled-publish.png)
 

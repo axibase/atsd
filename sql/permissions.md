@@ -2,13 +2,13 @@
 
 ## Overview
 
-The database implements row-level security so that users can view only records that belong to an entity that they're authorized to access based on [entity permissions](../administration/user-authorization.md#entity-permissions).
+The database implements row-level security so that users can view only records that belong to an entity that they are authorized to access based on [entity permissions](../administration/user-authorization.md#entity-permissions).
 
-The row-level security is enforced in all types of queries by filtering rows at the time they're read from the database.
+The row-level security is enforced in all types of queries by filtering rows at the time they are read from the database.
 
 As a result, the same query executed by different users may produce different result sets.
 
-[Scheduled SQL](scheduled-sql.md) queries are executed with [All Entities: Read](../administration/user-authorization.md#all-entities-permissions) permission and are **not filtered**.
+[Scheduled SQL](scheduled-sql.md) queries are executed with [`All Entities: Read`](../administration/user-authorization.md#all-entities-permissions) permission and are **not filtered**.
 
 ## Example
 
@@ -22,7 +22,7 @@ The following example demonstrates how query results for different users are fil
 | `jane.doe` | `users-aws` | `srv-aws` | `nurswg*` (5 entities) |
 | `john.doe` | `users-nur` | `srv-nur` | `awsswg*` (3 entities) |
 
-The `joe.bloggs` user is a member of the user group that has **'Read: All Entities'** permissions.
+The `joe.bloggs` user is a member of the user group that has `All Entities: Read` permissions.
 
 The `jane.doe` user is a member of the `users-nur` user group that is allowed to read data for `srv-nur` entity group.
 

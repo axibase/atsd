@@ -49,7 +49,7 @@ Install and activate the bridge:
 
 ## License Activation
 
-A license manager window will appear after exiting from the installation wizard. If the window fails to appear go to **Start** and search for **License Manager**. Fill out the form fields as entered in the registered account and click **Request License**
+A license manager window appears after exiting from the installation wizard. If the window fails to appear go to **Start** and search for **License Manager**. Fill out the form fields as entered in the registered account and click **Request License**
 
   ![](./images/easysoft_activate_1.png)
 
@@ -65,7 +65,7 @@ A license manager window will appear after exiting from the installation wizard.
 
   ![](./images/easysoft_activate_4.png)
 
-* If the activation succeeds, a pop-up window will appear
+* If the activation succeeds, a pop-up window appears
 
   ![](./images/easysoft_activate_5.png)
 
@@ -94,7 +94,7 @@ DSN         :   ATSD
 User name   :   <atsd username>
 Password    :   <atsd password>
 Driver class:   com.axibase.tsd.driver.jdbc.AtsdDriver
-Class Path  :   <path to ATSD driver, e.g. C:\drivers\atsd-jdbc-1.3.2-DEPS.jar>
+Class Path  :   <path to ATSD driver, for example C:\drivers\atsd-jdbc-1.3.2-DEPS.jar>
 URL         :   jdbc:atsd://atsd_hostname:8443
 ```
 

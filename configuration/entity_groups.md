@@ -48,7 +48,7 @@ name LIKE '*vml*' && tags.location = 'NUR'
 - Property Functions
   - [`property`](functions-entity-groups-expression.md#property)
   - [`properties`](functions-entity-groups-expression.md#properties)
-  - [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects isn't supported
+  - [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects is not supported
 - Lookup Functions
   - [`entity_tags`](functions-entity-groups-expression.md#entity_tags)
 - Collection Functions

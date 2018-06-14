@@ -4,7 +4,7 @@
 
 Accepts a CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser.
 
-The file(s) can be uploaded in plain text or compressed with the gzip or zip codecs.
+The files can be uploaded in plain text or compressed with the gzip or zip codecs.
 
 Multiple files can be archived with zip/tar and uploaded as one zip or tar.gz archive.
 
@@ -57,7 +57,7 @@ Multi-part mode:
 | `metric-tags` | string | Comma-separated list of metric tags added as series, message, or property tags to parsed commands. |
 | `wait` | boolean | Wait until processing of the file into commands is completed by the server.<br>Default: `true`.<br>If wait is disabled, the file is processed by the server asynchronously. |
 | `rules` | boolean | Process commands in the rule engine.<br>Default: `true`. |
-| `time` | string | Date in ISO format or using [calendar](../../../shared/calendar.md) keywords applies to commands if the file doesn't contain a time column. |
+| `time` | string | Date in ISO format or using [calendar](../../../shared/calendar.md) keywords applies to commands if the file does not contain a time column. |
 | `timezone` | string | Time zone applied to timestamps specified in local time. |
 | `test` | boolean | Parse and validate the file without actually processing and storing commands.<br>Default: `false`. |
 | `t:{name}` | string | One or multiple default tags, inserted as series/property/message tags depending on command type, for example: `&t:location=SVL&t:site=QB1`.<br>Tag names should not contain whitespace. |
@@ -81,10 +81,10 @@ The response contains a JSON object containing parsing results.
 |:---|:---|
 | `startTime` | Time when parsing stated. |
 | `endTime` | Time when parsing finished. |
-| `processed` | Number of lines read from file(s). |
+| `processed` | Number of lines read from the file. |
 | `source` | IP address from which the request was received. |
 | `parser` | Parser name. |
-| `errorMessage` | Error message occurred while parsing the file(s). |
+| `errorMessage` | Error message occurred while parsing the file. |
 | `taskStatus` | Parser task status. |
 | `type` | Action type |
 | `fileName` | Temporary file name assigned by the database. |
@@ -146,4 +146,4 @@ curl --insecure -X POST --user admin:pwd \
   -T csv-3120.csv "https://atsd_hostname:8443/api/v1/csv?config=parser-3120&wait=true"
 ```
 
-> Make sure that request parameter values in query string are URL-encoded, e.g. `&time=now%20-%201%20*%20hour`
+> Make sure that request parameter values in query string are URL-encoded, for example `&time=now%20-%201%20*%20hour`

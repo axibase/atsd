@@ -8,7 +8,7 @@ The below query produced no data because:
 
 1. With the default `CALENDAR` alignment, the 1-minute periods overlapping the time range are: `[14:20:00-14:21:00)` and `[14:21:00-14:22:00)`
 2. The `[14:20:00-14:21:00)` period has 4 samples as provided below, but its start time is before the `startDate`.
-3. The `[14:21:00-14:22:00)` period's start time is within the time range (period's start time is before `endDate`); however, the detailed data for this period was limited with an `endDate` of `14:22:01` and therefore period doesn't have any samples.
+3. The `[14:21:00-14:22:00)` period's start time is within the time range (period's start time is before `endDate`); however, the detailed data for this period was limited with an `endDate` of `14:22:01` and therefore the period does not have any samples.
 
 ## Request
 

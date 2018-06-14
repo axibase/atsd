@@ -195,7 +195,7 @@ The server responds with an HTTP `200 OK` status code if the installation is suc
 
 ### Create Deployment Script
 
-Since Let's Encrypt certificates are issued for a short period of time (90 days), it's important to setup a fully automated procedure to replace expiring certificates.
+Since Let's Encrypt certificates are issued for a short period of time (90 days), design a fully automated procedure to replace expiring certificates.
 
 Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. This script is invoked by certbot.
 

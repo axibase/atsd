@@ -83,7 +83,7 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
 
 ## Check Webhook
 
-Make sure that the `getWebhookInfo` method doesn't return any SSL errors:
+Make sure that the `getWebhookInfo` method does not return any SSL errors:
 
 ```sh
 curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
@@ -138,12 +138,12 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 
     ![](./images/outgoing_webhook_slack_19.png)
 
-* If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which will display an error in case the user credentials are mis-configured.
+* If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which displays an error in case the user credentials are mis-configured.
 
     ![](./images/outgoing_webhook_slack_20.png)
 
     ![](./images/outgoing_webhook_slack_21.png)
 
-* It may take a few seconds for the commands to arrive and to trigger the notifications. The rule will create new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+* It may take a few seconds for the commands to arrive and to trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
     ![](./images/outgoing_webhook_telegram_3.png)

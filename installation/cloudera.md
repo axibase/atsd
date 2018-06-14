@@ -2,7 +2,7 @@
 
 ## Create User
 
-Create an `axibase` user on the server where ATSD will be running.
+Create an `axibase` user on the server where you plan to install ATSD.
 
 ```sh
 sudo adduser axibase
@@ -63,7 +63,7 @@ sudo chown -R axibase:axibase /opt/atsd
 
 ## Request License
 
-To obtain a license key, contact Axibase support with the following information from the server where ATSD will be installed.
+To obtain a license key, contact Axibase support with the following information from the server where you plan to install ATSD.
 
 * Output of the `ip addr` command.
 
@@ -352,9 +352,9 @@ https.port = 8443
 
 ## Disable Compactions
 
-By default ATSD triggers major HBase compaction of its key data tables on a daily schedule.
+By default ATSD initiates a major HBase compaction of its key data tables on a daily schedule.
 
-Since major compactions may overload the cluster, it is recommended to trigger them less frequently or to schedule them externally, for example via Cloudera Manager:
+Since major compactions may overload the cluster, increase the default interval or initiate the compactions externally, for example via Cloudera Manager:
 
 ![](./images/cm_major_compaction.png)
 
@@ -484,7 +484,7 @@ Compare atsd-hbase jar revision with the revision installed on HBase region serv
 ls atsd/hbase/lib/atsd-hbase.*.jar
 ```
 
-Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the new file's revision is greater than what's installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
+Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the revision of the new file is greater than what is installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
 
 Start ATSD process.
 

@@ -54,7 +54,7 @@ Testing allows the calculation of forecasts based on data in a CSV file or the t
 | Setting | Description |
 |---|---|
 |Period|Specify seasonality of the underlying series.|
-|Data Selection Interval|Time frame for selecting detailed data that is used as forecast input.<br>End of the Selection Interval it is set to current time.|
+|Data Selection Interval|Time frame for selecting detailed data that is used as forecast input.<br>End of the Selection Interval is set to current time.|
 |Averaging Interval|Period of time over which the detailed samples are aggregated.|
 |Auto Period|Let server automatically identify seasonality of the underlying series that produces the most accurate forecast - forecast with minimum variance from observed historical data.|
 |Auto Parameters|Let server automatically identify algorithm parameters that produce the most accurate forecast - forecast with minimum variance from observed historical data.|

@@ -116,7 +116,7 @@ To access the n-th element in the collection, use square brackets `[index]` or `
 
 Splits string `s` using separator `p` (default is comma ',') into an array of string values. The function discards duplicate items by retaining only the first occurrence of each element.
 
-Unlike the `split()` function, `list()` doesn't support double quotes as escape characters.
+Unlike the `split()` function, `list()` does not support double quotes as escape characters.
 
 Example:
 
@@ -160,13 +160,13 @@ Examples:
 ```
 
 ```javascript
-    // Returns the value of `location` tag if it is a non-empty string, otherwise 'SVL' is returned.
+    // Returns the value of `location` tag if the tag value is not empty, otherwise 'SVL' is returned.
     coalesce([tags.location, 'SVL'])
 ```
 
 ```javascript
     /*
-    Returns the value of the entity label if it is a non-empty string, otherwise the entity name is returned.
+    Returns the value of the entity label if the label is not empty, otherwise the entity name is returned.
     If both fields are empty, an empty string is returned.
     */
     coalesce([entity.label, entity])
@@ -180,7 +180,7 @@ Examples:
 
 Removes part of the string `s` before the first occurrence of the given substring `p`.
 
-If `p` is empty or `null` or if it's not found, the function will return the original string `s` unchanged.
+If `p` is empty or `null` or if `p` is not found, the function returns the original string `s` unchanged.
 
 Example:
 
@@ -197,7 +197,7 @@ Example:
 
 Removes the part of string `s` before the last occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
 
 Example:
 
@@ -214,7 +214,7 @@ Example:
 
 Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
 
 Example:
 
@@ -231,7 +231,7 @@ Example:
 
 Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
 
 Example:
 
@@ -248,7 +248,7 @@ Example:
 
 Replaces all occurrences of the given substring `p` in the original string `s` with a second substring `r`.
 
-If `p` is empty, `null`, or unable to be found, the function will return the original string `s` unchanged.
+If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
 
 Examples:
 

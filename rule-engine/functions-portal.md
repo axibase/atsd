@@ -13,10 +13,10 @@ addPortal(string portal, string entity / List<?> entities, string comment)
 addPortal(string portal, string entity / List<?> entities, string comment, [] additionalParams)
 ```
 
-* [**required**] `portal` - Name of the preconfigured portal. If asterisk `*` is specified, all portals for the given entity are attached to the notification. If the portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, e.g. 'tcollector - Linux' becomes 'tcollectorlinux' and the function returns the first matching portal.
+* [**required**] `portal` - Name of the preconfigured portal. If asterisk `*` is specified, all portals for the given entity are attached to the notification. If the portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, for example 'tcollector - Linux' becomes 'tcollectorlinux' and the function returns the first matching portal.
 * `entity` or `entities` - Entities for which the portal is generated. Required if the portal type is [template](../portals/portals-overview.md#template-portals).
-  * `entity` - Entity name `string` is converted to `entity` url parameter (`&entity=test_e`). If entity is not found by name, it is matched by case-insensitive label.
-  * `entities` - `List<?>` are converted to `entities` url parameter as comma-separated list (`&entities=test_e,test_e1,test_e2`). If the element object type is `Entity`, the list of elements will consist of `entity.name` fields.
+  * `entity` - Entity name `string` is converted to `entity` url parameter (`&entity=test_e`). If entity is not found by name, the entity is matched by case-insensitive label.
+  * `entities` - `List<?>` are converted to `entities` url parameter as comma-separated list (`&entities=test_e,test_e1,test_e2`). If the element object type is `Entity`, the list consists of `entity.name` fields.
 * `comment` - Chart caption. If not specified or empty, a default caption is generated as `${portalName} for ${ifEmpty(entity_label, entity)}` and can be retrieved with special placeholder `$caption`. The default comment contains links to the portal, entity and rule for [Email](email.md), [Slack](notifications/slack.md) and [Discord](notifications/discord.md) notifications.
 * `additionalParams` - Map with request parameters are passed to the template portal.
 
@@ -34,7 +34,7 @@ The function is supported in:
 * [Discord](notifications/discord.md)
 * [HipChat](notifications/hipchat.md)
 
-When used with other configurations, the function will return an empty string.
+When used with other configurations, the function returns an empty string.
 
 ## Examples
 

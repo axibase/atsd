@@ -10,7 +10,7 @@ The `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory 
 
 `atsd-pattern =` is used to convert a graphite metric name into an ATSD metric name, entity, and tags.
 
-If a metric name matches the regex `pattern`, it is parsed according to `atsd-pattern`.
+If a metric name matches the regex `pattern`, the metric is parsed according to `atsd-pattern`.
 
 > NOTE: every `\` in `pattern` must be duplicated.
 
@@ -172,7 +172,7 @@ The entity and metrics collected by Collectl is visible under the Entity and Met
 
 ### Sensu Example
 
-[Sensu](https://sensuapp.org/) is a monitoring tool written in Ruby that uses RabbitMQ as a message broker and Redis for storing data. It is well-suited for monitoring cloud environments.
+[Sensu](https://sensuapp.org/) is a monitoring tool written in Ruby that uses RabbitMQ as a message broker and Redis for storing data. The tool is targeted at monitoring cloud environments.
 
 You can instrument Sensu to send data to ATSD using the Graphite format.
 

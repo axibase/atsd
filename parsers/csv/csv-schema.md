@@ -75,7 +75,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 | Name | Required | Description |
 | --- | --- | --- |
 |  `select(expression)`  |  Yes  |  Selects rows, columns, or cell range to process using RFC 7111 selection syntax.  |
-|  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on `rowText` and `cellText` values, e.g. `rowText.indexOf('test')>=0`.  |
+|  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on `rowText` and `cellText` values, for example `rowText.indexOf('test')>=0`.  |
 
 ### Initialize Command Functions
 
@@ -98,7 +98,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `value(value)`  |  No  |  Unsupported  |  Unsupported  |  Overrides series value (default value is current cell content).  |
 |  `messageText(text)`  |  Unsupported  |  Unsupported  |  No  |  Set message text.  |
 |  `appendText(text, delimiter)`  |  Unsupported  |  Unsupported  |  No  |  Append text to current message text.  |
-|  `forEach(expression)`  |  No  |  No  |  No  |  Accepts RFC 7111 #col= selector, iterates over matched cells in the current row and applies chained-after functions to each cell, e.g. `forEach('#col=5!2').tag(cell(row,col), cell(row,col+1));`  |
+|  `forEach(expression)`  |  No  |  No  |  No  |  Accepts RFC 7111 #col= selector, iterates over matched cells in the current row and applies chained-after functions to each cell, for example `forEach('#col=5!2').tag(cell(row,col), cell(row,col+1));`  |
 
 ### Pre-defined Variables
 

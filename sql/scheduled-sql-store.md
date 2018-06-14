@@ -174,7 +174,7 @@ The derived metrics are then stored under new names. You can adopt a naming conv
 
 ```sql
 SELECT datetime, entity, tags.*,
-  -- specify derived metric names, e.g. {metric}_{function}_{period}
+  -- specify derived metric names, for example {metric}_{function}_{period}
   ROUND(AVG(value), 0) AS "disk_used_avg_1h",
   ROUND(MAX(value), 0) AS "disk_used_max_1h"
   -- specify metric with raw data to summarize

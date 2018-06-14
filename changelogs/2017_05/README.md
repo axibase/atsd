@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
-| 3878 | api-network | Bug     | [series](../../api/network/series.md#series-command) command doesn't support line break in tag value and in x (annotation) field.     |
+| 3878 | api-network | Bug     | [series](../../api/network/series.md#series-command) command does not support line break in tag value and in x (annotation) field.     |
 | 3874 | api-network | Bug     | [series](../../api/network/series.md#series-command) command fails to overwrite value when inserted in batch with append flag.|
 | 3873 | sql         | Bug     | Malformed tag names in a [`JOIN`](../../sql/README.md#joins) query. |
 | 3870 | rule engine | Bug     | Rule expression evaluation error is propagated to inserting clients. |
