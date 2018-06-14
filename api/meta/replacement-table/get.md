@@ -41,7 +41,6 @@ If content type is `text/csv`, the comments from the replacement table are retur
 | `format` |string|Replacement table UI representation.|
 | `keys` |object|Key-value mappings.|
 
-
 ## Example
 
 ### Request
