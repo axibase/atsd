@@ -134,7 +134,7 @@ Jetty_*_secondary____*
 Change ownership for each directory:
 
 ```bash
-sudo chown -R axibase:axibase /tmp/hbase-axibase ... /tmp/Jetty_*_secondary____* 
+sudo chown -R axibase:axibase /tmp/hbase-axibase ... /tmp/Jetty_*_secondary____*
 ```
 
 ### Example
