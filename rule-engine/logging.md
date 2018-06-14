@@ -4,7 +4,7 @@ Alert Logging records [window](window.md) status changes in the ATSD database an
 
 ## Logging to Database
 
-`OPEN` and `CANCEL` status changes are automatically stored in the database and can be retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md). The records are visible on the **Alerts: Alert History** page.
+`OPEN` and `CANCEL` status changes are automatically stored in the database and can be retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md). The records are visible on the **Alerts > Alert History** page.
 
 In addition, the 'Log to ATSD' checkbox can be enabled for each rule separately to generate messages which can be retrieved with [Data API: Message Query](../api/data/messages/query.md) and are visible on the **Messages** tab. The messages are persisted with `alert` type and `rule-engine` source.
 

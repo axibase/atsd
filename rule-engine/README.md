@@ -32,7 +32,7 @@ The rule engine processing pipeline consists of the following stages:
 
 The incoming data samples are processed by a chain of filters prior to the grouping stage. Such filters include:
 
-* **Input Filter**. All samples are discarded if the **Settings:Input Settings > Rule Engine** option is disabled.
+* **Input Filter**. All samples are discarded if the **Settings > Input Settings > Rule Engine** option is disabled.
 
 * **Status Filter**. Samples are discarded for metrics and entities that are disabled.
 
