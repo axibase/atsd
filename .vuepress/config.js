@@ -57,7 +57,6 @@ const integrationMenu = [
             'spring-boot/'
         ]
     },
-
     {
         title: 'Reporting Tools', children: [
             'alteryx/',
@@ -145,6 +144,7 @@ const restApiMenu = [
             `/api/meta/entity-group/update`,
             `/api/meta/entity-group/create-or-replace`,
             `/api/meta/entity-group/delete`,
+            `/api/meta/entity-group/get-entities`,
             `/api/meta/entity-group/add-entities`,
             `/api/meta/entity-group/set-entities`,
             `/api/meta/entity-group/delete-entities`,
