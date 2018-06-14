@@ -172,7 +172,7 @@ The report contains the following summary counters:
 The report includes memory required by the mapper. This maximum is reported for each region in the `atsd_d` table, for example:
 
 * Region hashed name is `427ae8f2fc8926a7fefe3c984f6027cf`.
-* Mapper needs `25` MB of heap memory to store objects while processing data from the region.
+* Mapper needs 25 MB of heap memory to store objects while processing data from the region.
 * The metric identifier is `121`.
 * The metric name is `high-cardinality-for-scan-metric`.
 * The entity identifier is `4`.

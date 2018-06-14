@@ -52,13 +52,13 @@ Calculate disk space requirements.
 
   | **Data** | **Size** |
   |---|---|
-  | Original Data | 24G |
-  | Backup | 24G |
-  | Migrated Data | 7G (30% of 24G) |
-  | Backup + Migrated | 31G |
-  | Available | 736G |
+  | Original Data | 24 GB |
+  | Backup | 24 GB |
+  | Migrated Data | 7 GB (30% of 24 GB) |
+  | Backup + Migrated | 31 GB |
+  | Available | 736 GB |
 
-> In the example above, 736G is sufficient to store 31G of backup and migrated data on the same file system.
+> In the example above, 736 GB is sufficient to store 31 GB of backup and migrated data on the same file system.
 
 Allocate additional disk space, if necessary.
 

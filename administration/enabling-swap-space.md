@@ -27,7 +27,7 @@ Swap:      2064380      31016    2033364
 
 The following instructions describe how to create swap without restarting the server.
 
-Create 1GB swap file (`1024000 * 1024`). Increase `count=` as appropriate.
+Create 1 GB swap file (`1024000 * 1024`). Increase `count=` as appropriate.
 
 ```sh
 sudo dd if=/dev/zero of=/swapfile bs=1024 count=1024000

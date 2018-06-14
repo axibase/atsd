@@ -22,7 +22,7 @@
 |------|-------------|---------|----------------------|
 | 4740 | docker | Bug | Container entity tags are missing if storage driver is not properly configured on collector startup.  |
 | 4703 | docker | Bug | Collector CPU may get abnormally high when multiple Docker jobs are running. |
-| 4695 | docker | Bug | Docker job may hang when multiple Docker jobs are running.. |
+| 4695 | docker | Bug | Docker job may hang when multiple Docker jobs are running. |
 
 ---
 

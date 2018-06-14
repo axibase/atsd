@@ -207,7 +207,7 @@ javac -version
 java version
 ```
 
-Change to a volume with at least 10GB of available disk space.
+Change to a volume with at least 10 GB of available disk space.
 
 ```bash
 df -h
