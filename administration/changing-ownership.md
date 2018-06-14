@@ -1,10 +1,10 @@
 # Changing Ownership
 
-Document describes how to change ownership of all files that ATSD might be using to `axibase` user if ATSD was previously launched under `root`.
+This document describes changing ownership of all files that ATSD may use to `axibase` user, supposing ATSD was previously launched by `root` user.
 
 ## Stop ATSD
 
-Stop all ATSD processes.
+Stop all ATSD processes:
 
 ```bash
 sudo /opt/atsd/bin/atsd-all.sh stop
@@ -12,7 +12,7 @@ sudo /opt/atsd/bin/atsd-all.sh stop
 
 ## ATSD Directory Ownership
 
-To change ownership of the executable files use the following command:
+Change ownership of the executable files with following command:
 
 ```bash
 sudo chown -R axibase:axibase /opt/atsd
@@ -47,7 +47,7 @@ sudo chown -R axibase:axibase path1 path2 ... path8
 
 ## Configuration Files Ownership
 
-By default `logback.xml` which placed at [Configuration Files](editing-configuration-files.md#editing-configuration-files) contains the `<file>` setting for the following log types:
+By default, `logback.xml` [Configuration Files](editing-configuration-files.md#editing-configuration-files) contain the `<file>` setting for the following log types:
 
 <table>
   <thead>
@@ -96,7 +96,7 @@ sudo chown -R axibase:axibase path1 path2 ... path6
 
 ## Start ATSD
 
-Start all ATSD processes as `axibase` user.
+Start all ATSD processes as `axibase` user:
 
 ```bash
 su axibase
