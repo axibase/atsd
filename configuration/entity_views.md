@@ -4,11 +4,11 @@
 
 Entity Views provide a way to construct customized tables displaying key attributes for entities belonging to the same entity group. These views are listed under the **Entity Views** tab in the main menu on the left.
 
-![](./images/entity_views_5.png)
+![](images/entity_views_5.png)
 
 An entity view table consists several columns: icons, links, text, series values:
 
-![](./images/entity-view-table.png)
+![](images/entity-view-table.png)
 
 ## Reference
 
