@@ -1,4 +1,4 @@
-# Metrics: Entity
+# Entity: Metrics
 
 ## Description
 
