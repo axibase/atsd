@@ -21,13 +21,7 @@ In case of an existing replacement table, all the current replacement table reco
 
 ### Fields
 
-|**Name**|**Type**|**Description**|
-|:---|:---|:---|
-| `name` |string|Replacement table name.|
-| `author` |string|Replacement table creator.|
-| `description` |string|Replacement table description.|
-| `format` |string|Replacement table UI representation.|
-| `keys` |object|Key-value mappings.|
+Refer to Response Fields in [Replacement Table: Get](get.md#fields)
 
 ## Response
 
