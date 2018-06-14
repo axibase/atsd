@@ -45,9 +45,19 @@ Change ownership for each directory:
 sudo chown -R axibase:axibase path1 path2 ... path8
 ```
 
+### Example
+
+```bash
+search.index.path = /tmp/search/atsd
+```
+
+```bash
+sudo chown -R axibase:axibase /tmp/search/atsd
+```
+
 ## Configuration Files Ownership
 
-By default, `logback.xml` [Configuration Files](editing-configuration-files.md#editing-configuration-files) contain the `<file>` setting for the following log types:
+By default, `logback.xml` [Configuration Files](editing-configuration-files.md#editing-configuration-files) contain the `<file>` and `<fileNamePattern>` settings for the following log types:
 
 <table>
   <thead>
@@ -92,6 +102,53 @@ Change ownership for each directory:
 
 ```bash
 sudo chown -R axibase:axibase path1 path2 ... path6
+```
+
+### Example
+
+```xml
+<!-- command.log -->
+<file>/var/logs/atsd/command.log</file>
+...
+<fileNamePattern>/var/logs/atsd/compressed/command.%i.log.zip</fileNamePattern>
+```
+
+```bash
+sudo chown -R axibase:axibase /var/logs/atsd
+```
+
+## Additional Directories Ownership
+
+ATSD uses `/tmp` directory to store HDFS and HBase configuration files:
+
+```bash
+hbase-axibase
+hsperfdata_axibase
+Jetty_*_master____*
+Jetty_*_regionserver____*
+Jetty_*_hdfs____*
+Jetty_*_datanode____*
+Jetty_*_secondary____*
+```
+
+Change ownership for each directory:
+
+```bash
+sudo chown -R axibase:axibase /tmp/hbase-axibase ... /tmp/Jetty_*_secondary____* 
+```
+
+### Example
+
+```bash
+hbase-axibase
+hsperfdata_axibase
+Jetty_0_0_0_0_50070_hdfs____w2cu08
+Jetty_0_0_0_0_50075_datanode____hwtdwq
+Jetty_0_0_0_0_50090_secondary____y6aanv
+```
+
+```bash
+sudo chown -R axibase:axibase /tmp/*axibase /tmp/Jetty*
 ```
 
 ## Start ATSD
