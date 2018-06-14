@@ -42,14 +42,22 @@ Enable or disable server properties in the `server.properties` file.
 gedit ~/opt/atsd/atsd/conf/server.properties
 ```
 
-Restart the database to enable the change.
+Alternatively, open the **Settings** menu and select **Configuration Files**.
+
+![](images/configuration-files.png)
+
+Select `server.properties` from the drop-down list.
+
+![](images/server-properties-drop-down.png)
+
+Modify the desired properties in the **Content** window, or text editor if you accessed the file from a shell. Restart the database to enable the change.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 /opt/atsd/bin/atsd-all.sh start
 ```
 
- All modifications performed in the web interface apply instantly after clicking **Save**.
+ Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
 
 To disable a scheduled task, remove the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression from the **Value** field and click **Save**. Alternatively, use the drop-down list to select **Never** for the desired property.
 
