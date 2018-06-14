@@ -76,7 +76,7 @@ GROUP BY date_format(time, 'u-EEE')
 
 ## Example: Diurnal Seasonality
 
-By grouping samples by hour of the day (regardless which day it is) it's possible to create diurnal charts which show changes in activity throughout the day.
+By grouping samples by hour of the day (regardless which day it is) you can create diurnal charts which show changes in activity throughout the day.
 
 ```sql
 SELECT date_format(time, 'HH') AS "hour_in_day",

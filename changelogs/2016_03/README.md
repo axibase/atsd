@@ -214,7 +214,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 ### Issue 3465
 
 The new parameter `addMeta` was added to [series](../../api/data/series/query.md) and property methods
-so that clients can retrieve entity and metric fields and tags in one request, saving an extra round-trip. Another advantage is that the `addMeta` parameter doesn't require the user to
+so that clients can retrieve entity and metric fields and tags in one request, saving an extra round-trip. Another advantage is that the `addMeta` parameter does not require the user to
 have a Meta API READ role.
 
 Request:

@@ -102,7 +102,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 `SQL Query Designer` is used for visual building of a Query:
 
-* Double click on the table that you want to include to Query (it is shown in right pane of `SQL Query Designer`)
+* Double click on the table that you want to include to Query. The table is shown in right pane of `SQL Query Designer`.
 * Select fields inside the table (these fields are included in `SELECT` clause of a Query)
 * Optionally add `WHERE`, `GROUP BY` and `HAVING` or `ORDER BY`
 * Click `OK` so your Query is built and shown in text field
@@ -126,7 +126,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 * Build a Query using the `SQL Query Designer`
 
 * Click **OK**. The list of queries is added to the 'Data' pane.
-* Right-click on the query and choose 'Select Query'. The tree view will now display query results and fields.
+* Right-click on the query and choose 'Select Query'. The tree view displays query results and fields.
 
 ![](./resources/data_pane_updated.png)
 

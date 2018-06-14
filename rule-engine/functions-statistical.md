@@ -313,7 +313,7 @@ Count of elements matching the specified condition `c` within interval `i` or wi
 Examples:
 
 ```javascript
-  /* For values [0, 15, 5, 40] will return 2. */
+  /* For values [0, 15, 5, 40] the function returns 2. */
   countIf('value > 10')
 ```
 
@@ -340,7 +340,7 @@ Sum of elements matching the specified condition `c` within interval `i` or with
 
 ## Interval Selection
 
-By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `c` or interval `i` - in which case the function will calculate the result based on the most recent samples.
+By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `c` or interval `i` - in which case the function calculates the result based on the most recent samples.
 
 ```javascript
 avg([string i | integer c]) double

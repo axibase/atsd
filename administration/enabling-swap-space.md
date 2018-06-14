@@ -2,7 +2,7 @@
 
 ## Overview
 
-Linux divides its physical memory (RAM) into blocks of memory called pages. Swapping is the process when a page of memory is copied to the allocated hard drive space, called swap space, in order to free up RAM. The combined size of physical memory and swap space is the amount of virtual memory available.
+Some amount of swap space may be necessary for the database components to function properly.
 
 ## Swap Size
 

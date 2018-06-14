@@ -276,7 +276,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.description` |string| Metric description.|
 |`metric.timeZone`|string   | Metric time zone.|
 |`metric.interpolate` |string| Metric interpolation setting.|
-|`metric.tags.{name}` |string| Metric tag value. Returns `NULL` if the specified tag doesn't exist for this metric.|
+|`metric.tags.{name}` |string| Metric tag value. Returns `NULL` if the specified tag does not exist for this metric.|
 |`metric.tags`    |string   | All metric tags, concatenated to `name1=value;name2=value` format.|
 |`metric.tags.*`  |string   | Expands to multiple columns, each column containing a separate metric tag.|
 |`metric.dataType`|string   | [Data Type](../api/meta/metric/list.md#data-types).|
@@ -299,7 +299,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`entity.label`   |string   | Entity label.|
 |`entity.timeZone`|string   | Entity time zone.|
 |`entity.interpolate` |string| Entity interpolation setting.|
-|`entity.tags.{name}` |string| Entity tag value. Returns `NULL` if the specified tag doesn't exist for this entity.|
+|`entity.tags.{name}` |string| Entity tag value. Returns `NULL` if the specified tag does not exist for this entity.|
 |`entity.tags`    |string   | All entity tags, concatenated to `name1=value;name2=value` format.|
 |`entity.groups`  |string   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
 |`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
@@ -733,7 +733,7 @@ Assuming tags.status is `NULL`:
 | `false` | `tags.status IS NOT NULL` |
 | `NULL` | `tags.status IS NULL AND tags.status = NULL` |
 
-Since the `WHERE` clause selects only rows that evaluate to `true`, conditions such as `tags.{name} = 'a' OR tags.{name} != 'a'` will not include rows with undefined `{name}` tag because both expressions will evaluate to `NULL` and (`NULL` OR `NULL`) still returns `NULL`.
+Since the `WHERE` clause selects only rows that evaluate to `true`, conditions such as `tags.{name} = 'a' OR tags.{name} != 'a'` ignore rows with undefined `{name}` tag because both expressions evaluate to `NULL` and (`NULL` OR `NULL`) still returns `NULL`.
 
 `NULL` and `NaN` values are ignored by aggregate functions.
 
@@ -749,7 +749,7 @@ The returned values follow [IEEE 754-2008](https://standards.ieee.org/findstds/s
 * `NaN` for illegal values
 * Signed Infinity for `x/0` where x != 0
 
-Since the `long` (`bigint`) data type doesn't allow for a special `Infinity` constant, the returned Double `Infinity` constant, when cast to `long`, is replaced with the `Long.MAX_VALUE` or `Long.MIN_VALUE` value.
+Since the `long` (`bigint`) data type does not allow for a special `Infinity` constant, the returned Double `Infinity` constant, when cast to `long`, is replaced with the `Long.MAX_VALUE` or `Long.MIN_VALUE` value.
 
 ```sql
 SELECT value, SQRT(value-1), value/0, 1/0, -1/0, 1/0-1/0
@@ -858,7 +858,7 @@ The escape character can be customized by adding an `ESCAPE` clause after the `L
 WHERE tags.file_system LIKE '%a~_b%' ESCAPE '~'
 ```
 
-In the example above, the underscore is evaluated as a regular character (not as a wildcard) because it is preceded by an `~` escape character.
+In the example above, the underscore is evaluated as a regular character (not as a wildcard) because the underscore preceded by an `~` escape character.
 
 ### REGEX Expression
 
@@ -913,7 +913,7 @@ Each `search_expression` should evaluate to a boolean (true/false) value.
 
 The `result_expression` can be a number, a string, or an expression. Result expressions may return values of different data types.
 
->If the data types are different (such as a number and a string), the database will classify the column with `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
+>If the data types are different (such as a number and a string), the database classifies the column with `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
 If no `search_expression` is matched and the `ELSE` condition is not specified, the `CASE` expression returns `NULL`.
 
@@ -1433,7 +1433,7 @@ GROUP BY entity, PERIOD(10 MINUTE, START_TIME)
 
 ## Interpolation
 
-By default, if a period specified in the `GROUP BY` clause does not contain any detailed values, it is excluded from the results.
+By default, if a period specified in the `GROUP BY` clause does not contain any detailed values, such period is excluded from the results.
 
 The behavior can be changed by referencing an interpolation function as part of the `PERIOD` function.
 
@@ -1703,7 +1703,7 @@ GROUP BY entity
 | nurswgvml502 | 3.9        |
 ```
 
-The `ROW_NUMBER` function can be included after the `WHERE` clause, as well as after the `GROUP BY` clause, in which case it is applied to grouped rows.
+The `ROW_NUMBER` function can be included after the `WHERE` clause, as well as after the `GROUP BY` clause, in which case the function is applied to grouped rows.
 
 ```sql
 SELECT entity, tags, MAX(value) -  MIN(value) AS "Diff"
@@ -2709,7 +2709,7 @@ YEAR (datetime | time | datetime expression)
 
 #### CURRENT_TIMESTAMP
 
-The `CURRENT_TIMESTAMP` function returns current database time in ISO-8601 format. It is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
+The `CURRENT_TIMESTAMP` function returns current database time in ISO-8601 format. The function is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
 
 ```sql
 SELECT CURRENT_TIMESTAMP
@@ -2793,7 +2793,7 @@ AND LOWER(tags.file_system) LIKE '%root'
 
 #### LAG
 
-The `LAG` function lets you access the previous row of the same result set. If the previous row doesn't exist, the function returns `NULL`.
+The `LAG` function lets you access the previous row of the same result set. If the previous row does not exist, the function returns `NULL`.
 
 ```sql
 LAG(columnName)
@@ -2877,7 +2877,7 @@ WHERE entity = 'nurswgvml007'
 
 #### LEAD
 
-The `LEAD` function lets you access the next row of the same result set. If the next row doesn't exist, the function returns `NULL`.
+The `LEAD` function lets you access the next row of the same result set. If the next row does not exist, the function returns `NULL`.
 
 ```sql
 LEAD(columnName)
@@ -2944,7 +2944,7 @@ WHERE datetime >= NOW - 5*MINUTE
   AND LOOKUP('tcp-status-codes', value) NOT LIKE '%success%'
 ```
 
-If the searched key is a number provided by the `value` column or an arithmetic expression, it is formatted into a string with a `#.##` pattern.
+If the searched key is a number provided by the `value` column or an arithmetic expression, such number is formatted into a string using the `#.##` pattern.
 
 ```ls
 1.0     -> 1
@@ -3013,7 +3013,7 @@ ISNULL(arg1, arg2)
 
 The function accepts arguments with different data types, for example numbers and strings `ISNULL(value, text)`.
 
->If the data types are different, the database will classify the column as `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
+>If the data types are different, the database classifies the column as `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
 #### COALESCE
 
@@ -3027,7 +3027,7 @@ At least two arguments must be specified. If all arguments evaluate to `NULL` or
 
 The function accepts arguments with different data types, for example numbers and strings `COALESCE(value, text, 'Unknown')`.
 
->If the data types are different, the database will classify the column as `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
+>If the data types are different, the database classifies the column as `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
 ### CAST
 
@@ -3084,7 +3084,7 @@ If `{n}` is zero or negative, the results are processed using the local file sys
 
 This clause overrides the conditional allocation of shared memory established with the **Settings > Server Properties**:`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
 
-The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, it is processed using the local file system which may result in increased response times during heavy read activity.
+The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which may increase response time during heavy read activity.
 
 > The row count threshold is applied to the number of rows selected from the underlying table, and not the number rows returned to the client.
 

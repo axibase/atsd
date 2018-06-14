@@ -82,7 +82,7 @@ Default data type for new metrics, when auto-created, is **float**.
 
 ### Invalid Actions
 
-Invalid Action is triggered if the received series value is less than the Minimum value, or if it's greater than the Maximum value.
+Invalid Action is triggered if the received series value is less than the Minimum value, or if the value is greater than the Maximum value.
 
 |**Action**|**Description**|
 |:---|:---|

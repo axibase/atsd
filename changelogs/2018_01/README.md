@@ -8,7 +8,7 @@ Issue| Category    | Type    | Subject
 4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../rule-engine/README.md#rule-engine) XML export.
 4929 | rule engine | Bug | Web notifications: [Telegram](../../rule-engine/notifications/telegram.md) discards long messages.
 4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../sql/README.md#where-clause).
-4923 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) `400` error doesn't contain information about the message.
+4923 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) `400` error does not contain information about the message.
 4921 | security | Bug | [Built-in](../../administration/user-authentication.md#built-in-account) user can't log in to take portal screenshot.
 4920 | security | Bug | Disabled [user](../../administration/user-authentication.md#user-authentication) is able to execute SQL queries.
 4914 | rule engine | Bug | Add details to error messages in [HipChat](../../rule-engine/notifications/hipchat.md).

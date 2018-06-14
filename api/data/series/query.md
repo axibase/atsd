@@ -139,7 +139,7 @@ The default processing sequence is as follows:
 3. [rate](rate.md)
 4. [aggregate](aggregate.md)
 
-The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before it's passed to group/rate/aggregate stages.
+The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before the values are passed to group/rate/aggregate stages.
 
 The default sequence of group/rate/aggregate transformations can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
 

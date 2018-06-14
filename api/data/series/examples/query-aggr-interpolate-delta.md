@@ -7,9 +7,7 @@ When interpolation is specified in the `aggregate` object, the database performs
 1. Calculate period values by applying a given statistical functions to detailed samples recorded within the given period.
 2. Add missing (empty) periods by applying an interpolation function.
 
-As a result, it is not possible to apply aggregation to interpolated values in the `aggregate` object alone.
-
-However, since both `aggregate` and `group` objects support interpolation functions, changing their default order can be used as a technique to calculate DELTA of interpolated period values.
+Since both `aggregate` and `group` objects support interpolation functions, changing their default order can be used as a technique to calculate DELTA of interpolated period values.
 
 ## Data
 

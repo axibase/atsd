@@ -34,7 +34,7 @@ If the Jenkins job is not parameterized, use the `https://jenkins.example.org/jo
 
 Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
 
-Keep the `${job_name}` placeholder in the URL path so that it's customizable in the rule editor. This allows you to trigger different jobs using the same web notification.
+Keep the `${job_name}` placeholder in the URL path so that the job name can be customized in the rule editor. This allows you to trigger different jobs using the same web notification.
 
 Enter the Jenkins user name into the `Username` field and the User API token into the `Password` field.
 
@@ -113,7 +113,7 @@ timezone=Etc/UTC
 run_extra_tests=false
 ```
 
-If the placeholder is not found, it is replaced with an empty string.
+If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ## Test
 
@@ -125,7 +125,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value causes the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn triggers the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/jenkins_alert_open.png)

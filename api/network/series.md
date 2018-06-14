@@ -2,7 +2,7 @@
 
 ## Description
 
-Inserts a timestamped value (number or text) into a specified time series, uniquely identified by a composite primary key consisting of an entity, metric, and optional `key=value` tag(s).
+Inserts a timestamped value (number or text) into a specified time series, uniquely identified by a composite primary key consisting of an entity, metric, and optional `key=value` tags.
 
 ## Syntax
 
@@ -29,8 +29,8 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 | t         | string:string   | Tag name and text value. _Multiple._ |
 | a         | boolean         | Text append flag. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
 
-> At least one numeric metric `m:` or text metric `x:` is required.
-> If the numeric observation was not specified for the text value with the same metric name, it is set to `NaN` (not a number).
+> At least one numeric value `m:` or text value `x:` is required.
+> If the numeric value was not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
 > If the time fields `d, s, and ms` are omitted, the values are inserted with the current server time.
 
 ### ABNF Syntax
@@ -195,7 +195,7 @@ The `append` flag applies to text values specified with the `x:` field.
 
 If the append flag is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended to the end using `;\n` (semi-colon followed by line feed) as a separator.
 
-In order to prevent **duplicate** values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if it is equal to one of the elements in the array.
+In order to prevent **duplicate** values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if such new value is equal to one of the elements in the array.
 
 ```ls
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"

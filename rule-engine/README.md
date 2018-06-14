@@ -40,7 +40,7 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 ## Grouping
 
-Once the sample passes through the filter chain, it is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
+Once the sample passes through the filter chain, the sample is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
 
 The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
 
@@ -66,7 +66,7 @@ The rule engine supports two types of windows:
 [Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
 
-When a window is updated, the rule engine checks the [condition](condition.md) that will trigger response actions.
+When a window is updated, the rule engine checks the [condition](condition.md) and triggers various response actions based on the condition result.
 
 Condition example:
 
@@ -100,7 +100,7 @@ Supported response actions:
 * [Generate derived metrics](derived.md)
 * [Log alert to file](logging.md)
 
-Triggers for all actions may be configured separately. For example, it's possible to configure a rule so that logging events are generated on all repeated occurrences whereas email messages are sent every 6 hours.
+Triggers for all actions may be configured separately. For example, you can configure a rule such that logging events are generated on all occurrences whereas email messages are sent every 6 hours.
 
 ## Correlation
 
@@ -250,7 +250,7 @@ HAVING percentile(90, value) > 1000
 * Set **Send Empty Report** parameter to `No`.
 * Specify triggers such as an email notification or a file export.
 
-As a result, the query will trigger actions only when it returns at least one row.
+As a result, the query triggers actions only when it returns at least one row.
 
 ![](./images/sql-scheduled.png)
 

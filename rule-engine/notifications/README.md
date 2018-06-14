@@ -245,7 +245,7 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
 * **HTTP/HTTPS/SOCKS Proxy**
 
-  A network proxy of this type doesn't explicitly map receive paths and remote URLs.
+  A network proxy of this type does not explicitly map receive paths and remote URLs.
 
   Keep the `Base URL` as originally specified and instead fill out the `Proxy URL` and optional client credentials fields.
 

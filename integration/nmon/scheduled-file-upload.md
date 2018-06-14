@@ -27,7 +27,7 @@ After that, add the following content to the file script `/opt/nmon/nmon_script.
 
 ## Upload Files to ATSD with UNIX Socket
 
-To start uploading files to ATSD every hour with UNIX socket perform the following steps (note that you will require bash):
+To start uploading files to ATSD every hour with UNIX socket perform the following steps (bash is required):
 
 ### Step 1
 

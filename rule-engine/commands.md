@@ -18,7 +18,7 @@ Specify the command name or absolute path to the executable, for example:
 /home/axibase/disk_cleanup.sh
 ```
 
-It is recommended that the full path is specified even for built-in utilities such as `bash` or `find`. To lookup the command's path, execute `which {command}`, for example `which bash`:
+Specify full path to the program even for built-in utilities such as `bash` or `find`. To lookup the program path, execute `which {command}`, for example `which bash`:
 
 ```sh
 $ which bash
@@ -37,13 +37,13 @@ Arguments that contains whitespace or quotes are quoted automatically.
 
 ### Piping, Redirection, Shell Expansion
 
-The command interpreter in ATSD doesn't support piping, I/O redirection or shell expansion. If the command includes these operations, delegate its interpretation and handling to a spawned process using `bash -c` flag.
+The command interpreter in ATSD does not support piping, I/O redirection or shell expansion. If the command includes these operations, delegate its interpretation and handling to a spawned process using `bash -c` flag.
 
 ![](./images/command-bash-c.png)
 
 ### Window Fields
 
-The arguments may include window [fields](window.md#window-fields) and [variables](variables.md) using [placeholder](placeholders.md) syntax, for example `${entity}`. If the placeholder is not found, it is resolved to an empty string.
+The arguments may include window [fields](window.md#window-fields) and [variables](variables.md) using [placeholder](placeholders.md) syntax, for example `${entity}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ![](./images/command-placeholder.png)
 

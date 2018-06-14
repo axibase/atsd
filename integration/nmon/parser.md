@@ -9,8 +9,8 @@ During the installation of ATSD, a default nmon parser is created for ingesting 
 | Setting | Description | Default Parser Settings |
 | --- | --- | --- |
 |  Name  |  Name of the current parser.  |  default  |
-|  Metric Prefix  |  Prefix to be added before each nmon metric in order to distinguish and sort metrics with same or similar names. For example: using the prefix nmon will convert the metric `cpu_total.busy` to `nmon.cpu_total.busy`.  |  nmon  |
-|  Ignored  |  nmon metrics to be ignored. Metrics listed here will not be imported. Acts as a filter.  |  none  |
+|  Metric Prefix  |  Prefix to be added before each nmon metric in order to distinguish and sort metrics with same or similar names. For example: using the prefix nmon converts the metric `cpu_total.busy` to `nmon.cpu_total.busy`.  |  nmon  |
+|  Ignored  |  nmon metrics to be ignored. Metrics listed here are not imported. Acts as a filter.  |  none  |
 |  Process TOP  |  Ingest TOP data.  |  Yes  |
 |  Process UARG  |  Ingest user and arg columns.  |  Yes  |
 |  Enable Properties  |  Store entity properties and configurations in ATSD from the nmon file.  |  Yes  |

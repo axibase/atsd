@@ -14,6 +14,6 @@
 
 ![](./images/run_all.png)
 
-The scripts will connect to ATSD (`CONNECT='DSN=ATSD'`), execute the query specified in the `SQL` variable and display the dataset.
+The script connects to ATSD (`CONNECT='DSN=ATSD'`), executes the query specified in the `SQL` variable and displays the dataset.
 
 ![](./images/script_results.png)

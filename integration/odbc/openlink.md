@@ -22,7 +22,7 @@ The bridge intercepts SQL queries from the client applications via the Microsoft
 ![](./images/openlink_license.png)
 
 * Choose the desired OS version
-* You will receive the installation link and license files via email.
+* Check email for the installation link.
 
 ## Install Bridge
 

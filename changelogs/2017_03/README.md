@@ -88,7 +88,7 @@ The [`append`](../../api/network/series.md#text-append) flag applies to text val
 
 If the append flag is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended at the end using `;\n` (semi-colon followed by line feed) as a separator.
 
-In order to prevent duplicate values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if it is equal to one of the elements in the array.
+In order to prevent duplicate values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if such new value is equal to one of the elements in the array.
 
 ```ls
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
@@ -104,7 +104,7 @@ Restart
 
 ### Issue 3795
 
-Previously, entity tags were not supported in the `GROUP BY` clause. Now it's possible to group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
+Previously, entity tags were not supported in the `GROUP BY` clause. Now you can group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
 
 ```sql
 SELECT entity.tags.app, count(value)

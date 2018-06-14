@@ -26,10 +26,10 @@ GET /api/v1/metrics?limit=3
       "versioned":false
    },
    {
-      "name":"asd",
+      "name":"temperature",
       "enabled":true,
       "dataType":"FLOAT",
-      "description":"it is description",
+      "description":"Celsius",
       "persistent":true,
       "timePrecision":"MILLISECONDS",
       "retentionDays":2,

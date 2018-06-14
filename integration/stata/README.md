@@ -36,7 +36,7 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 
 ![](./resources/metric_list.png)
 
-* Click on a table from the list to view the table's description:
+* Click on a table from the list to view the table description:
 
 ![](./resources/table_description.png)
 
@@ -99,7 +99,7 @@ Syntax:
 * `var1 var2 var3` is a list of variables from the in-memory dataset in Stata.
 * `as("entity datetime value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
 * `dsn("ATSD")` is a name of ODBC connection to ATSD.
-* `table("metric_name")` is a name of the metric which will contain exported dataset.
+* `table("metric_name")` is a name of the metric which contains exported dataset.
 * `block` is a parameter to force using block inserts.
 
 ## Calculating Derived Series
@@ -142,7 +142,7 @@ clear
 odbc load, exec("SELECT tags.category as category, value as weight FROM inflation.cpi.categories.weight ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
 ```
 
-Since the `Weights` are available for only one year, we will assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
+Since the `Weights` are available for only one year, lets assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
 Perform a cross join of weights with `datetimes`:
 
@@ -156,7 +156,7 @@ Preview the joined dataset:
 
 ### Merge Weights with Prices
 
-In this step two tables are appended to perform calculations within one table. This table will have a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
+In this step two tables are appended to perform calculations within one table. This table has a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
 
 ```txt
 merge 1:1 category datetime using prices
@@ -192,7 +192,7 @@ drop if dup>1
 drop dup inflation
 ```
 
-This operation will group records by `datetime` and calculate the sum of the `inflation` values for each group.
+This operation groups records by `datetime` and calculate the sum of the `inflation` values for each group.
 
 Preview the dataset:
 
@@ -206,7 +206,7 @@ The entity column is required to store the calculated variable in ATSD.
 generate entity = "bls.gov"
 ```
 
-This operation will add a new column `entity` with value `bls.gov` in each row.
+This operation adds a new column `entity` with value `bls.gov` in each row.
 
 Preview the dataset:
 

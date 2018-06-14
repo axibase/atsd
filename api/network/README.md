@@ -179,7 +179,7 @@ This causes the database to maintain a client connection even if one of the rece
 
 ### UDP Datagrams
 
-The UDP protocol doesn't guarantee delivery but may have a higher throughput compared to TCP due to lower overhead.
+The UDP protocol does not guarantee delivery but may have a higher throughput compared to TCP due to lower overhead.
 
 In addition, sending commands with UDP datagrams decouples the client application from the server to minimize the risk of blocking I/O time-outs.
 
@@ -201,7 +201,7 @@ echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperatu
 
 Multiple commands with the same timestamp and key fields may override each others value.
 
-If such commands are submitted at approximately the same time, there is no guarantee that they will be processed in the order they were received.
+If such commands are submitted at approximately the same time, there is no guarantee that they are processed in the order received.
 
 * Duplicate example: same key, same current time
 
@@ -321,7 +321,7 @@ Date limits:
 
 ### Enable Debug Mode
 
-By default, ATSD doesn't return acknowledgements to the client after processing data commands.
+By default, ATSD does not return acknowledgements to the client after processing data commands.
 Include the `debug` command at the start of the line to instruct the server to respond with `ok` for each processed command.
 
 * `debug` with valid command
@@ -368,7 +368,7 @@ Reasons why ATSD server can drop commands:
 * Multiple data points for the same entity, metric, and tags have the same timestamp in which case commands are considered duplicates and some of them are dropped. This could occur when commands with the same key are sent without a timestamp.
 * Data is sent using the UDP protocol and the client UDP send buffer or the server UDP receive buffer overflows.
 * Value is below 'Min Value' or above 'Max Value' limit specified for the metric and the 'Invalid Value Action' is set to `DISCARD`.
-* Last command in a multi-line UDP packed doesn't terminate with line feed symbol.
+* Last command in a multi-line UDP packed does not terminate with line feed symbol.
 
 To review dropped commands, `open command*.log` files in ATSD.
 

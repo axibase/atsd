@@ -12,7 +12,7 @@ In addition, the 'Log to ATSD' checkbox can be enabled for each rule separately 
 
 Logging to files or even remote systems can be enabled for each rule separately by selecting one of the pre-configured loggers in the `File Logger` drop-down.
 
-Loggers can be added and modified by administrators on the **Settings > Configuration Files > logback.xml** page. Once a new logger is created and the `logback.xml` file is re-scanned, the new logger will appear in the `Alert Logger` drop-down.
+Loggers can be added and modified by administrators on the **Settings > Configuration Files > logback.xml** page. Once a new logger is created and the `logback.xml` file is re-scanned, the new logger appears in the `Alert Logger` drop-down.
 
 ![](./images/logging-loggers.png)
 
@@ -20,7 +20,7 @@ By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging
 
 ## Default File Logger
 
-The default logger named `atsd.alert.default` is available even if it's not defined in the `logback.xml` file. To modify default logger behavior, copy the following text to logback.xml file and adjust its properties as required.
+The default logger named `atsd.alert.default` is available even if such logger is not defined in the `logback.xml` file. To modify default logger behavior, copy the following text to logback.xml file and adjust its properties as required.
 
 ```xml
 <appender name="defaultAlertAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">

@@ -101,7 +101,7 @@ hbase.client.scanner.timeout.period = 120000
 
 ## Request License Key
 
-To obtain the license key, contact Axibase support with the following information from the server where ATSD will be installed.
+To obtain the license key, contact Axibase support with the following information from the server where you plan to install ATSD.
 
 * Output of the `ip addr` command.
 

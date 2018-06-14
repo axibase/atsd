@@ -40,7 +40,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 
 ![](./resources/prefdir.png)
 
-* Close MatLab if it's running.
+* Close MatLab if the application is running.
 * Navigate to the `prefdir` directory above and create a file named `javaclasspath.txt`.
 * Open the `javaclasspath.txt` file. Add the full path to the ATSD driver JAR file, for example, `/home/user/MATLAB/atsd-jdbc-1.2.22-DEPS.jar`
 * Save and close `javaclasspath.txt`.

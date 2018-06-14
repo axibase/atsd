@@ -50,7 +50,7 @@ Since the data is deleted by staged [background tasks](#scheduled-tasks), it may
 
 ### Disable Metric
 
-If the metric is **disabled**, its data is discarded when received. The data commands for disabled metrics are also _not processed_ in the rule engine.
+If the metric is **disabled**, the data for such metric is discarded when received. The data for disabled metrics is also _ignored_ by the rule engine.
 
 To disable a metric, open the Metric Editor, expand 'Settings' section, set 'Enabled' switch to 'No', and click **Save**.
 
@@ -209,7 +209,7 @@ The sequence of tasks should be as follows:
 4. `data.compaction.schedule`
 5. `hbase.compaction.schedule`
 
-It is recommended that the tasks are executed once a day during off-peak/night-time hours. The `hbase.compaction` task should run once a week on large clusters.
+The tasks should be executed once a day during off-peak/night-time hours. The `hbase.compaction` task should run once a week on large clusters.
 
 To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and execute them manually.
 
