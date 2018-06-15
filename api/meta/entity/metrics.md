@@ -26,6 +26,7 @@ Retrieves a list of metrics collected by the entity.
 | `useEntityInsertTime` | boolean | Controls how `lastInsertDate` field in the response is calculated. If `true`, the field contains the maximum insert time of series collected for the given metric by **the specified entity**.<br>If `false`, the field contains the maximum insert time of series collected for the given metric by **all entities**.<br>Default: `true`. |
 | `limit` | integer | Maximum number of metrics to retrieve, ordered by name. |
 | `tags` | string | Comma-separated list of metric tags to be included in the response.<br>For example, `tags=table,unit`<br>Specify `tags=*` to include all metric tags.|
+| `addInsertTime` | boolean| The parameter controls whether [`lastInsertDate`](../metric/list.md#fields) field should be included in the response.<br>Default value can be defined by the `default.addInsertTime` setting at the **Settings > Server Properties** page.|
 
 #### Expression
 

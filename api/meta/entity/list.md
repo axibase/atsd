@@ -19,6 +19,7 @@ Retrieves a list of entities matching the specified filters.
 | `maxInsertDate` |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
 | `limit` |integer|Maximum number of entities to retrieve, ordered by name.|
 | `tags` |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all entity tags starting with `env.`.|
+| `addInsertTime` | boolean| The parameter controls whether [`lastInsertDate`](#fields) field should be included in the response.<br>Default value can be defined by the `default.addInsertTime` setting at the **Settings > Server Properties** page.|
 
 #### Expression
 
@@ -26,7 +27,7 @@ The expression can include all fields listed below except `lastInsertDate`.
 
 Examples:
 
-```java
+```javascript
 name LIKE 'nur*'
 
 name NOT LIKE 'aws*' AND lower(label) NOT LIKE 'aws*' AND createdDate > '2017-10-01T00:00:00Z'
