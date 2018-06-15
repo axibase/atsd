@@ -16,7 +16,7 @@ Verify that no ATSD services are running:
 jps
 ```
 
-Output should show only the `jps` process:
+Output must contain only the `jps` process itself:
 
 ```ls
 12150 Jps
