@@ -42,10 +42,10 @@ function linkcheck {
 function stylecheck {
     if [ "$ENABLE_CHECK" = "true" ]; then
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
-            markdownlint -r 'docs-util/linting-rules/*' .
+            markdownlint -i docs-util -r 'docs-util/linting-rules/*' .
         else
             if [[ -n "$(list_modified_md_files)" ]]; then
-                list_modified_md_files | xargs -d '\n' -n1 markdownlint -r 'docs-util/linting-rules/*' {}
+                list_modified_md_files | xargs -d '\n' -n1 markdownlint -i docs-util -r 'docs-util/linting-rules/*' {}
             fi;
         fi
     else
