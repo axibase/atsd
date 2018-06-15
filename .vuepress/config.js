@@ -282,7 +282,9 @@ const administrationMenu = [
             ['enabling-swap-space.md', 'Swap Space'],
             ['editing-configuration-files.md', 'Configuration Files'],
             ['networking-settings.md', 'Network Settings'], 
-            ['changing-data-directory.md', 'Custom Data Directory'],
+            ['change-base-directory.md', 'Custom Base Directory'],
+            ['change-data-directory.md', 'Custom Data Directory'],
+            ['change-owner.md', 'Directory Owner'],
             ['replication.md', 'Replication'],          
         ]
     },

@@ -105,7 +105,7 @@
 * [Email Client](administration/mail-client.md)
 * [Time Zone](administration/timezone.md)
 * [Allocating Memory](administration/allocating-memory.md)
-* [Data Directory](administration/changing-data-directory.md)
+* [Data Directory](administration/change-data-directory.md)
 * [Compaction Test](administration/compaction-test.md)
 * [Compaction](administration/compaction.md)
 * [Configuration Files](administration/editing-configuration-files.md)

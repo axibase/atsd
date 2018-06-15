@@ -1,43 +1,45 @@
-# Relocating ATSD Directory
+# Change ATSD Base Directory
 
-By default, ATSD is installed in the directory `/opt/atsd`.
+By default ATSD is installed in the `/opt/atsd` directory.
 
 Execute these steps to move ATSD to a different file system.
 
-Stop ATSD services:
+Stop ATSD services.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-Verify that no ATSD services are running:
+Verify that no ATSD services are running.
 
 ```sh
 jps
 ```
 
-Output must contain only the `jps` process itself:
+`jps` output must contain only the `jps` process itself.
 
 ```ls
 12150 Jps
 ```
 
-> If some processes continue running, follow the [safe ATSD shutdown](restarting.md#stopping-services) procedure.
+If other processes continue running, follow the [safe ATSD shutdown](restarting.md#stopping-services) procedure.
 
-Move ATSD to another directory, such as `/opt/data/`:
-
-```sh
-sudo mv /opt/atsd /opt/data/
-```
-
-Create a symbolic link to the new ATSD directory:
+Move ATSD to another directory, such as `/path/to/new-base-dir`.
 
 ```sh
-ln -s /opt/data/atsd /opt/atsd
+sudo mv /opt/atsd /path/to/new-base-dir
 ```
 
-Restart ATSD services:
+Create a symbolic link to the new ATSD directory.
+
+```sh
+ln -s path/to/new-base-dir /opt/atsd
+```
+
+Start ATSD services.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh start
 ```
+
+Open the **Settings > System Information** page and verify that the new base directory has been applied.
