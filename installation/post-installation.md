@@ -35,4 +35,4 @@ If you are anticipating insertion rate with bursts of 100K+ packets per second, 
 
 ## Relocate ATSD
 
-* [Relocate ATSD](../administration/relocation.md) to a different file system, if the `/opt/atsd` directory does not provide sufficient free space.
+* [Relocate ATSD](../administration/change-base-directory.md) to a different file system, if the `/opt/atsd` directory does not provide sufficient free space.

@@ -4,13 +4,35 @@ This document describes changing ownership of all files that ATSD may use to `ax
 
 ## Stop ATSD
 
+Switch to `axibase` user:
+
+```bash
+su axibase
+```
+
 Stop all ATSD processes:
 
 ```bash
 sudo /opt/atsd/bin/atsd-all.sh stop
 ```
 
-## ATSD Directory Ownership
+Verify that no [ATSD services](restarting.md#processes) are present in `jps` output:
+
+```bash
+jps
+```
+
+Output should show only the `jps` process:
+
+```ls
+8582 Jps
+```
+
+> If some processes continue running, follow the [safe ATSD shutdown](restarting.md#stopping-services) procedure.
+
+## Set Directory Owner
+
+### Base Directory
 
 Change ownership of the executable files with following command:
 
@@ -18,7 +40,7 @@ Change ownership of the executable files with following command:
 sudo chown -R axibase:axibase /opt/atsd
 ```
 
-## Data Directory Ownership
+### Data Directory 
 
 If ATSD data is stored under the [custom](changing-data-directory.md#changing-the-directory-where-data-is-stored) `/data` path use the following command:
 
@@ -26,9 +48,9 @@ If ATSD data is stored under the [custom](changing-data-directory.md#changing-th
 sudo chown -R axibase:axibase /data
 ```
 
-## Server Properties Ownership
+### Server Properties Directories
 
-The following settings contain paths to the directories used by ATSD:
+There are several path settings at the **Settings > Server Properties** page:
 
 * `internal.metrics.dump.path` = `path1`
 * `jmx.access.file` = `path2`
@@ -45,7 +67,7 @@ Change ownership for each directory:
 sudo chown -R axibase:axibase path1 path2 ... path8
 ```
 
-### Example
+#### Example
 
 ```bash
 search.index.path = /tmp/search/atsd
@@ -55,9 +77,11 @@ search.index.path = /tmp/search/atsd
 sudo chown -R axibase:axibase /tmp/search/atsd
 ```
 
-## Configuration Files Ownership
+### Logging Directories
 
-By default, `logback.xml` [Configuration Files](editing-configuration-files.md#editing-configuration-files) contain the `<file>` and `<fileNamePattern>` settings for the following log types:
+This step is necessary if any log files are stored outside of the `/tmp/atsd` and base directory `/opt/atsd`.
+
+Logging directories are listed at **Settings > Configuration Files** page, in the `logback.xml` file. The built-in log types containing the `<file>` and `<fileNamePattern>` settings are listed below:
 
 <table>
   <thead>
@@ -104,7 +128,7 @@ Change ownership for each directory:
 sudo chown -R axibase:axibase path1 path2 ... path6
 ```
 
-### Example
+#### Example
 
 ```xml
 <!-- command.log -->
@@ -117,11 +141,12 @@ sudo chown -R axibase:axibase path1 path2 ... path6
 sudo chown -R axibase:axibase /var/logs/atsd
 ```
 
-## Additional Directories Ownership
+### Temporary Directories
 
 ATSD uses `/tmp` directory to store HDFS and HBase configuration files:
 
 ```bash
+atsd
 hbase-axibase
 hsperfdata_axibase
 Jetty_*_master____*
@@ -134,10 +159,10 @@ Jetty_*_secondary____*
 Change ownership for each directory:
 
 ```bash
-sudo chown -R axibase:axibase /tmp/hbase-axibase ... /tmp/Jetty_*_secondary____*
+sudo chown -R axibase:axibase /tmp/atsd ... /tmp/Jetty_*_secondary____*
 ```
 
-### Example
+#### Example
 
 ```bash
 hbase-axibase
@@ -151,11 +176,30 @@ Jetty_0_0_0_0_50090_secondary____y6aanv
 sudo chown -R axibase:axibase /tmp/*axibase /tmp/Jetty*
 ```
 
+## Check Ownership
+
+For each directory type above check there is no ATSD files under `root`:
+
+```bash
+find <directory> -depth -user root
+```
+
+Repeat the procedure of granting ownership if output contains any ATSD files.
+
+Examples:
+
+```bash
+find /opt/atsd -depth -user root
+```
+
+```bash
+find /tmp -depth -user root
+```
+
 ## Start ATSD
 
 Start all ATSD processes as `axibase` user:
 
 ```bash
-su axibase
 /opt/atsd/bin/atsd-all.sh start
 ```

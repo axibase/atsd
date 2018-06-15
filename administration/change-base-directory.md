@@ -18,9 +18,11 @@ jps
 
 Output should show only the `jps` process:
 
-```txt
+```ls
 12150 Jps
 ```
+
+> If some processes continue running, follow the [safe ATSD shutdown](restarting.md#stopping-services) procedure.
 
 Move ATSD to another directory, such as `/opt/data/`:
 
