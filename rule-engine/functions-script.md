@@ -6,7 +6,7 @@ The `scriptOut` function provides a way to enrich notifications with extended in
 
 The function executes the named script with the specified parameters and returns the script's response (`stdout`/`stderr`). The parameters often include window [placeholders](placeholders.md) such as `entity` or `tags` so that the same rule can enrich alerts for different entities.
 
-To execute a python script, add a shebang line and make the file executable, as done in [daily referrer requests](#daily-referrer-requests) example
+To execute a python script, add a shebang line and make the file executable, as done in [daily referer requests](#daily-referer-requests) example
 
 > Only scripts located in the `./atsd/conf/script/` directory can be executed.
 
@@ -86,7 +86,7 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 * [URL availability](#url-availability)
 * [TCP availability](#tcp-availability)
 * [osquery](#osquery)
-* [Daily Referrer Requests](#daily-referrer-requests)
+* [Daily Referer Requests](#daily-referer-requests)
 
 ### `ping`
 
@@ -491,20 +491,20 @@ ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT process
 
  ![](./images/script-osquery-slack.png)
 
-### Daily Referrer Requests
+### Daily Referer Requests
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referrer-requests) that creates visitors reports using information from messages collected by [nginx_access_log_tail](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referer-requests) that creates visitors reports using information from messages collected by [nginx_access_log_tail](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
 
 #### Function
 
 ```javascript
-${scriptOut('daily_referrer_requests.py', [])}
+${scriptOut('daily_referer_requests.py', [])}
 ```
 
 #### Command
 
 ```sh
-./daily_referrer_requests.py
+./daily_referer_requests.py
 ```
 
 #### Output
@@ -514,7 +514,7 @@ ${scriptOut('daily_referrer_requests.py', [])}
     <tr>
         <th>Date</th>
         <th>URI</th>
-        <th>Referrer</th>
+        <th>Referer</th>
         <th>IP</th>
         <th>Org</th>
     </tr>
