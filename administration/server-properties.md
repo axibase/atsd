@@ -22,7 +22,7 @@ Whenever a value deviates from the default, the database displays the field high
 
 To reset a property to the default value, leave the value black and click **Save**.
 
-## Property Changes
+## Changing Properties
 
 Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
 
@@ -40,15 +40,15 @@ To disable a task in the **Scheduled Tasks** table, enter **No** or use the drop
 
 To disable the `entity.group.update` or the `search.indexing.incremental` task, set the count to zero (`0`).
 
-## Export Properties
+## Exporting Properties
 
 Export the current properties, as well as operating system settings and metrics, in JSON format by clicking **Export Configuration** at the bottom of the page.
 
 ![](./images/export-configuration.png)
 
-## Properties
+## Property Reference
 
-**Bolded** property names may only be modified in the [`server.properties`](#server-properties-requiring-restart) file by a qualified user.
+**Bold** property names may only be modified in the `server.properties` file and require a database restart.
 
 ### HBase
 
