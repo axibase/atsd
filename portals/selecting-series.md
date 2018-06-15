@@ -58,7 +58,7 @@ Alternatively, if the entity is already known, the metrics and series can be exp
 
 ## Selecting Specific Series
 
-To display values for a specific series, the `[series]` section should specify the exact key:
+To display values for a specific series, specify the exact series key in the `[series]` section:
 
 ```ls
   # Series without Tags

@@ -23,7 +23,7 @@ Sample memory configuration for a server with 16 GB of RAM:
 ```xml
     <property>
         <name>mapreduce.map.memory.mb</name>
-        <!-- should not exceed 50% of available physical memory on the server! -->
+        <!-- must not exceed 50% of available physical memory on the server -->
         <value>8000</value>
     </property>
     <property>
@@ -33,7 +33,7 @@ Sample memory configuration for a server with 16 GB of RAM:
     </property>
     <property>
         <name>mapreduce.reduce.memory.mb</name>
-        <!-- should not exceed 50% of available physical memory on the server! -->
+        <!-- must not exceed 50% of available physical memory on the server -->
         <value>8000</value>
     </property>
     <property>

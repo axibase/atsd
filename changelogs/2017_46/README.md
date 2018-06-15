@@ -16,7 +16,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4720 | docker | Bug | Increase Docker API request timeout from 3 to 10 seconds to eliminate errors when the container properties are requested with `size` flag.  |
+| 4720 | docker | Bug | Increase Docker API request timeout from 3 to 10 seconds to eliminate errors when the container properties are requested with `size` option.  |
 | 4696 | core | Bug | Update the built-in ATSD JDBC driver url definition according the [url schema](https://github.com/axibase/atsd-jdbc#jdbc-url).  |
 | 4677 | docker | Bug | Delete stale records for deleted containers from the embedded database. |
 

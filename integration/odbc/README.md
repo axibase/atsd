@@ -110,6 +110,6 @@ Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-con
 
 > In case of 'Unable to create JVM' error, run a Repair task in Windows Program for the bridge program. The error may occur if the bridge was installed prior to Java installation.
 
-* The System DSN tab should now display the new data source.
+* The System DSN tab now displays the new data source.
 
   ![](./images/ODBC_5.png)

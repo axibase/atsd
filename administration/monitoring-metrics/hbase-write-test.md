@@ -4,7 +4,7 @@ The HBase Write Test can be run directly from the ATSD user interface under **Se
 
 HBase Write Test allows you to:
 
-* Analyze the data being ingested, for example the number of unique
+* Analyze the data being loaded, for example the number of unique
     metric/entity/tag combinations, and run a write throughput test.
 * Launch an Auto Test to view a matrix of throughput statistics for
     different batch sizes and thread count combinations.

@@ -21,7 +21,7 @@
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots into Slack.
+Install and configure the [Web Driver](web-driver.md) to send chart screenshots into Slack.
 
 ## Create Workspace
 
@@ -138,7 +138,7 @@ NGINX API Gateway Path for Slack:
 |`Auth Token`|Bot API authentication token (see above).|
 |`Bot Username`|Set your bot user name.|
 |`Channels`|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be a name or an encoded ID.|
-|`Text`|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
+|`Text`|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|
 |`Parse Mode`|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting) for more information.|
 |`Names as Links`|Find and link channel names and usernames.|
 
@@ -146,7 +146,7 @@ NGINX API Gateway Path for Slack:
 
 The bot account can be used both to deliver notifications to end users, as well as to react to messages received by the bot itself.
 
-In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-slack.md). The [webhook](outgoing-webhook-slack.md) integration requires ATSD server to be reachable from Slack API servers.
+To receive incoming messages, configure an [outgoing webhook](outgoing-webhook-slack.md). The [webhook](outgoing-webhook-slack.md) integration requires ATSD server to be reachable from Slack API servers.
 
 ## Testing Rule
 

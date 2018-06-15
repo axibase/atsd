@@ -224,7 +224,7 @@ WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
 
 ### Filtered Query
 
-The query may refer to the `text` column in the `WHERE` clause in order to filter rows by `text` column value.
+The query may refer to the `text` column in the `WHERE` clause to filter rows by `text` column value.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value, t2.value, t3.value, t4.value, t5.value, t5.text, t6.text

@@ -22,7 +22,7 @@ Adds entities as members to the specified entity group.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist.<br>Default: `true`. |
+| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities do not exist.<br>Default: `true`. |
 
 ### Payload
 

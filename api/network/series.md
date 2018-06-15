@@ -27,7 +27,7 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 | ms        | integer         | Time in UNIX milliseconds. |
 | s         | integer         | Time in UNIX seconds. |
 | t         | string:string   | Tag name and text value. _Multiple._ |
-| a         | boolean         | Text append flag. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
+| a         | boolean         | Text append option. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
 
 > At least one numeric value `m:` or text value `x:` is required.
 > If the numeric value was not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
@@ -148,7 +148,7 @@ series d:2016-10-13T08:45:00Z e:sensor-1 m:temperature=NaN
 * The exponent consists of the character 'e' ('\u0065') or 'E' ('\u0045') followed by an optional sign, '+' ('\u002B') or '-' ('\u002D'), followed by one or more decimal digits. The value of the exponent must lie between -2147483647 and 2147483647, and is inclusive.
 * The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction.
 * The number formed by the sign, the integer, and the fraction is referred to as the [**significand**](https://en.wikipedia.org/wiki/Significand).
-* The **significand** value, stripped of trailing zeros, should be within the Long.MAX_VALUE `9223372036854775807` and the Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database throws an `IllegalArgumentException: BigDecimal significand overflows the long type` for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and is rounded to `1.121212121212121212` if inserted for a non-decimal metric.
+* The **significand** value, stripped of trailing zeros, must be within the Long.MAX_VALUE `9223372036854775807` and the Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database throws an `IllegalArgumentException: BigDecimal significand overflows the long type` for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and is rounded to `1.121212121212121212` if inserted for a non-decimal metric.
 
 ## Series Tags, Text Value, Messages
 
@@ -191,11 +191,11 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 
 ## Text Append
 
-The `append` flag applies to text values specified with the `x:` field.
+The `append` option applies to text values specified with the `x:` field.
 
-If the append flag is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended to the end using `;\n` (semi-colon followed by line feed) as a separator.
+If the `append` option is set to `true`, the database checks the previous text value for the same timestamp. If the previous value is found, the new value is appended to the end using `;\n` (semi-colon followed by line feed) as a separator.
 
-In order to prevent **duplicate** values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if such new value is equal to one of the elements in the array.
+To prevent **duplicate** values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if such new value is equal to one of the elements in the array.
 
 ```ls
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"

@@ -4,7 +4,9 @@
 
 Inserts series values for the specified entity and series tags in CSV format.
 
-The CSV header should include a leading time column and one or multiple numeric metric columns for the same entity and tag combination.
+The CSV header must consist of a date or time column followed by at least one numeric metric column.
+
+The records are inserted for the same entity and series tags.
 
 ## Request
 

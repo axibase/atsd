@@ -69,8 +69,7 @@ date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "Europe/Berlin"
 /* Parse date using the UTC offset provided as the third argument. */
 date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "+01:00")
 
-/* If the time zone (offset) is specified in the timestamp string,
-it should be exactly the same as provided by the third argument. */
+/* Time zone (offset) specified in the timestamp must be the same as provided in the third argument. */
 date_parse("31.01.2017 12:36:03.283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss.SSS ZZZ", "Europe/Berlin")
 ```
 

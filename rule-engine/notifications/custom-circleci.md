@@ -27,7 +27,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your GitHub user name.
 
-The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
+The `Endpoint URL` may look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
 
 Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 
@@ -35,7 +35,7 @@ Keep the `${project_name}` and `${branch}` placeholders in the URL path so that 
 
 ### Payload
 
-The web notification can be configured to send a JSON document to the Circle CI endpoint in order to pass extended build parameters and the `Body` field can include the following text:
+The web notification can be configured to send a JSON document to the Circle CI endpoint to pass extended build parameters and the `Body` field can include the following text:
 
 ```json
 {

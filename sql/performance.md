@@ -2,7 +2,7 @@
 
 ## Overview
 
-Monitoring query execution is an important administrative task in order to optimize database performance, to identify and prevent expensive and long-running queries, and to provide feedback to end-users and application developers.
+Monitoring query execution is an important administrative task to optimize database performance, to identify and prevent expensive and long-running queries, and to provide feedback to end-users and application developers.
 
 ## Query Reporting
 

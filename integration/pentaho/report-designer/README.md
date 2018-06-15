@@ -64,7 +64,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ## Verify Connection
 
-ATSD connection can be verified using the SELECT 1 query. The returned data should be 1.
+ATSD connection can be verified using the `SELECT 1` query.
 
 Example of `SELECT 1` test query:
 

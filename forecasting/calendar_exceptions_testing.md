@@ -45,7 +45,7 @@ Calendars in comparison with Exceptions allow to exclude data related to Forecas
 
 ## Testing
 
-Testing allows the calculation of forecasts based on data in a CSV file or the text area. The database is not involved and the forecast is not saved. The first row in the CSV is ignored because it should contains column headers. If column headers are not present, the first row of test data is ignored.
+Testing allows the calculation of forecasts based on data in a CSV file or the text area. The database is not involved and the forecast is not saved. The first row in the CSV is ignored because the server expects it to contain column headers. If column headers are not present, the first row of test data is ignored.
 
 ![](./resources/calendar_exceptions_testing_4.png)
 

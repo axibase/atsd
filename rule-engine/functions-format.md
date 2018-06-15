@@ -78,7 +78,7 @@ Examples:
 
 The function divides the number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit.
 
-The unit prefix is case-insensitive and should be one of the following:
+The unit is case-insensitive and can be one of the following:
 
 * `K`, `Kb` (1000)
 * `Ki`, `KiB` (1024)

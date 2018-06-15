@@ -68,7 +68,7 @@ For the Replacement table, the linked task configurations are shown.
 The old `Command` field containing the path to the executable script has been renamed to `Path to the script`.
 The new `Command` field allows entering commands returning the Item List elements, one Item per line.
 The commands from the text area are copied to a file in the `$AXIBASE_COLLECTOR_HOME/conf/scripts` directory and executed as a script.
-You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/conf/server.properties` file in order to enable this feature.
+You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/conf/server.properties` file to enable this feature.
 
 ![](./Images/Figure4.png)
 

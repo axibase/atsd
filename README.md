@@ -91,7 +91,7 @@ The following protocols are supported for compatibility with external sources:
 
 ## Schema
 
-The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such doesn't require changes when inserting data from objects of different types.
+The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such does not require changes when inserting data from objects of different types.
 
 ### Glossary
 

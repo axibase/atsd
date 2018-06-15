@@ -22,7 +22,7 @@ The widgets can be configured to load data from the following sources:
 
 ## Connecting ChartLab to Custom ATSD
 
-> Note: The custom ATSD instance should be publicly accessible on a DNS/IP address.
+> Note: The custom ATSD instance must be publicly accessible on a DNS/IP address.
 
 * Login into Axibase Time Series Database server via SSH.
 

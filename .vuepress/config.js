@@ -278,12 +278,12 @@ const administrationMenu = [
         title: "Configuration", children: [
             ['mail-client.md', 'Mail Client'],
             ['timezone.md', 'Time Zone'],
-            ['networking-settings.md', 'Network Settings'],
-            ['enabling-swap-space.md', 'Swap Space'],
-            ['replication.md', 'Replication'],
             ['allocating-memory.md', 'Memory Allocation'],
-            ['changing-data-directory.md', 'Custom Data Directory'],
+            ['enabling-swap-space.md', 'Swap Space'],
             ['editing-configuration-files.md', 'Configuration Files'],
+            ['networking-settings.md', 'Network Settings'], 
+            ['changing-data-directory.md', 'Custom Data Directory'],
+            ['replication.md', 'Replication'],          
         ]
     },
     {
@@ -293,6 +293,7 @@ const administrationMenu = [
             ['compaction/', 'Compression Tests'],     
             ['data_retention.md', 'Data Retention'],       
             ['metric-persistence-filter.md', 'Persistence Filters'],
+            ['migration/', 'Migration'],
         ]
     },
     {
@@ -308,7 +309,8 @@ const administrationMenu = [
             ['monitoring-metrics/io-tests.md', 'I/O Tests'],
             ['monitoring-metrics/hbase-write-test.md', 'HBase Write Test'],
         ]
-    }
+    },
+    ['support.md', "Support"],
 ]
 
 const forecastMenu = [

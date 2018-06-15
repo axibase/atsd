@@ -66,11 +66,9 @@ sudo rpm -Uvh --prefix=/mnt/atsd atsd_amd64.rpm
 tail -f /opt/atsd/atsd/logs/start.log
 ```
 
-You should see an **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
-
-> Add [firewall](firewall.md) rules if the above ports are not reachable.
+Web interface is now accessible on port `8443` (https).
 
 ## Troubleshooting
 

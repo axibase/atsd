@@ -13,7 +13,7 @@ For additional patterns, refer to Java [`SimpleDateFormat`](https://docs.oracle.
 
 ## Example: Filter by calendar
 
-In this example we calculate the totals for the month of January over a 7 year period in order to determine a range of pneumonia deaths recorded in East-North-Central US. To retain only samples recorded in January, we use the `date_format(time, 'MMM') = 'Jan'` condition.
+In this example we calculate the totals for the month of January over a 7 year period to determine a range of pneumonia deaths recorded in East-North-Central US. To retain only samples recorded in January, we use the `date_format(time, 'MMM') = 'Jan'` condition.
 
 ```sql
 SELECT date_format(time, 'yyyy MMM') AS "date",
@@ -150,7 +150,7 @@ GROUP BY date_format(time, 'EEEEE HH')
 ## Example: Numeric Comparison
 
 The above example relies on the lexicographical comparison of 2-digit hours strings.
-The following alternative utilizes the `CAST` function to convert the `date_format` output to numbers in order to filter parts of the day.
+The following alternative utilizes the `CAST` function to convert the `date_format` output to numbers to filter parts of the day.
 
 ```sql
 SELECT date_format(time, 'EEE HH') AS "hour_in_day",

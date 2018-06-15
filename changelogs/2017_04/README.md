@@ -141,7 +141,7 @@ The [Test] result now includes a list of columns from the underlying dataset and
 
 ### Issue 3772
 
-In order to simplify processing of JSON documents created with [Open Data](https://project-open-data.cio.gov/v1.1/schema/) schema, we implemented a new [Socrata](https://axibase.com/docs/axibase-collector/jobs/socrata.html) job. Support for Socrata format has been removed from the JSON job as a result.
+To simplify processing of JSON documents created with [Open Data](https://project-open-data.cio.gov/v1.1/schema/) schema, we implemented a new [Socrata](https://axibase.com/docs/axibase-collector/jobs/socrata.html) job. Support for Socrata format has been removed from the JSON job as a result.
 
 The configuration options implemented in the Socrata job provide a way to convert the dataset into series, property, and message fields in ATSD.
 

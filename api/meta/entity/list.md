@@ -34,7 +34,7 @@ name NOT LIKE 'aws*' AND lower(label) NOT LIKE 'aws*' AND createdDate > '2017-10
 name LIKE '*db*' AND lower(tags.function) = 'database'
 ```
 
-The `lastInsertDate` field should be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+The `lastInsertDate` field can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
 
 ## Response
 

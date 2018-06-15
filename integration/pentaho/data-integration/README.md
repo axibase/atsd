@@ -119,7 +119,7 @@ ORDER BY datetime, tags.category
 
 ### Duplicate Weights
 
-Since the `Weights` are available for only one year, let's assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
+Since the `Weights` are available for only one year, assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
 * Open the `Design` pane.
 * Locate `Join Rows (cartesian product)` in `Joins` category.

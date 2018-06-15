@@ -2,7 +2,7 @@
 
 ## Overview
 
-A command action executes system commands on the ATSD server in order to instantly react to incoming data by triggering advanced processing and integration tasks.
+A command action executes system commands on the ATSD server to instantly react to incoming data by triggering advanced processing and integration tasks.
 
 Such tasks may include running bash or Python scripts, or integration with external systems using their native command line tools such as IBM ITM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
 
@@ -37,7 +37,7 @@ Arguments that contains whitespace or quotes are quoted automatically.
 
 ### Piping, Redirection, Shell Expansion
 
-The command interpreter in ATSD does not support piping, I/O redirection or shell expansion. If the command includes these operations, delegate its interpretation and handling to a spawned process using `bash -c` flag.
+The command interpreter in ATSD does not support piping, I/O redirection or shell expansion. If the command includes these operations, delegate its interpretation and handling to a spawned process using `bash -c` option.
 
 ![](./images/command-bash-c.png)
 
@@ -119,7 +119,7 @@ If disk space is low, the command reads user credentials from the `itm.pwd` file
 
 By using the `${upper(entity)}` placeholder, the script executes the disk cleanup procedure on the system where the disc space rule alert was raised, to `OPEN` status.
 
-A follow-up action, at the `REPEAT` status, can be further configured to cleanup other directories, in order to bring disk space usage down.
+A follow-up action, at the `REPEAT` status, can be further configured to cleanup other directories, to bring disk space usage down.
 
 ![](./images/command-tacmd.png)
 

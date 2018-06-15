@@ -36,7 +36,7 @@ Check the contents of the keystore:
 keytool -list -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 
-The output should contain at least 2 entries for `atsd` and `gcp` aliases.
+The output must contain at least two certificate entries for the `atsd` and `gcp` aliases.
 
 ```txt
 Keystore type: JKS

@@ -80,6 +80,6 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Email Subscribers  |  List of email addresses separated by commas, white spaces, or semicolons, to which the exported files are sent as attachments.  |
 |  Email Subject  |  Email subject.<br>Supports placeholders: `${ENTITY}, ${ENTITY.tagName}, ${METRIC}, ${METRIC.tagName}, ${yyyy-MM-dd}`.  |
 
-Clicking **Test** will export the first file, display the file name, and provide a link to download the file.
+Clicking **Test** exports the first file, displays the file name, and provides a link to download the file.
 
 ![](./images/export_job_test_button.png)

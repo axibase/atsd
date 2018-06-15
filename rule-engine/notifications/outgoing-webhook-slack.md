@@ -70,7 +70,7 @@ Slack Bot is a special account created for automation purposes.
 
 * Enter the above URL into the **Request URL** field.
 
-   **Verified** status should be displayed if the request evaluates correctly.
+   **Verified** status is displayed if the request evaluates correctly.
 
    ![](./images/outgoing_webhook_slack_8.png)
 

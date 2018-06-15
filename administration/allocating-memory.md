@@ -23,7 +23,7 @@ Examples:
 * `-Xmx1024M` - 1024 megabytes
 * `-Xmx2G` - 2 gigabytes.
 
-> Note that no whitespace should be present in this setting.
+> Note that no whitespace must be present in this setting.
 
 ```sh
 nano /opt/atsd/atsd/conf/atsd-env.sh

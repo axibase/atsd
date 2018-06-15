@@ -14,7 +14,7 @@ chmod +x sql.sh
 
 Username and password of the user executing the query must be specified in the `atsd.config` file located in the same directory as the `sql.sh` file.
 
-The user should have an `API_DATA_READ` role and necessary entity `read` permissions.
+The user must have an `API_DATA_READ` role and necessary entity `read` permissions.
 
 The client is stateless with each query triggering a separate http request with the `Basic` authentication.
 

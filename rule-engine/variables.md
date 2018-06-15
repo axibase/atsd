@@ -151,7 +151,7 @@ Variables that are dependent on other variables can be included in a condition.
 
 Variables are evaluated for each incoming command regardless of the window status.
 
-If the variable invokes an external function such as [`scriptOut`](functions-script.md) it must execute quickly (less than a few seconds). Long-running functions should not be included in variables.
+If the variable invokes an external function such as [`scriptOut`](functions-script.md) it must execute quickly (less than a few seconds). Avoid invoking long-running functions in variables.
 
 The current value of a variable can be accessed on the window detail page.
 

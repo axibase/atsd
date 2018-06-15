@@ -61,7 +61,7 @@ Verify that the swap is enabled.
 free
 ```
 
-The output should contain a row with Swap total not equal to zero.
+The output contains a row with Swap total not equal to zero.
 
 ```ls
              total       used       free     shared    buffers     cached

@@ -14,7 +14,7 @@ For correct Unicode handling, specify the charset `Content-Type: application/jso
 
 ## URI Encoding
 
-Requested parameter values and parameterized path segments such as [`/api/v1/metrics/{metric}`](metric/get.md#path-parameters) should be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters such as `: / ? # [ ] @` into a percent format that can be transmitted safely as part of the request URI.
+Requested parameter values and parameterized path segments such as [`/api/v1/metrics/{metric}`](metric/get.md#path-parameters) must be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters such as `: / ? # [ ] @` into a percent format that can be transmitted safely as part of the request URI.
 
 | **Input** | **Encoded Value** | **URI** |
 |:---|:---|:---|

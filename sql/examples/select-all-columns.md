@@ -4,7 +4,7 @@
 
 The list of available columns includes `time`, `datetime`, `value`, `text`, `metric`, `entity`, and series `tags`.
 
-> Note that the `SELECT *` expression includes only a subset of all the pre-defined columns. Columns such as `metric.label`, `entity.tags` or `time` should be referenced explicitly.
+> Note that the `SELECT *` expression includes only a subset of pre-defined columns. Additional columns such as `metric.label`, `entity.tags` or `time` can be added to the `SELECT` expression explicitly.
 > Series tags can be included in the SELECT expression separately using `SELECT tags.{name}` syntax.
 
 ## Query Without Series Tags

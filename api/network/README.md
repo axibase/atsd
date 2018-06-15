@@ -113,7 +113,7 @@ Separate commands by a line feed symbol `\n` (LF, `0x0A`) when sending a batch c
 
 A trailing line feed is not required for the last command in the batch.
 
-Use the `-e` flag in `echo` commands to enable interpretation of backslash escapes.
+Use the `-e` option in `echo` commands to enable interpretation of backslash escapes.
 
 ```bash
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_host 8081
@@ -128,7 +128,7 @@ s.close();
 
 ### Persistent Connection
 
-A client application can establish a persistent connection in order to continuously write commands, one command per line, and close the connection.
+A client application can establish a persistent connection to continuously write commands, one command per line, and close the connection.
 
 Trailing line feed is not required for the last command when the connection is closed.
 

@@ -37,7 +37,7 @@ Execute the following query to count rows for one of the key metrics.
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number should match the results after the migration.
+The number must match the results after the migration.
 
 ## Prepare ATSD For Upgrade
 
@@ -148,7 +148,7 @@ Launch the migration job with the `nohup` command.
 
 The job creates a new data table, convert data from the backup table to the new format, and store the data in the new table.
 
-The optional `drop-annotations` flag discards duplicate series annotations when copying the data.
+The optional `drop-annotations` setting discards duplicate series annotations when copying the data.
 
 #### Custom Table Prefix
 
@@ -180,7 +180,7 @@ tail -f /tmp/migration/migration.log
 
 Note that the Yarn interface is stopped automatically once the job is finished.
 
-Once the job is complete, the `migration.log` file should contain the following line:
+Once the job is complete, the `migration.log` file contains the following message:
 
 ```txt
 17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 45 minutes.
@@ -211,13 +211,13 @@ hadoop fs -ls /hbase/lib
     -rw-r--r--   3 hdfs hbase     547320 2017-08-23 13:03 /hbase/lib/atsd-hbase.jar
 ```
 
-Note that this path should match the `coprocessors.jar` setting specified in the `/opt/atsd/atsd/conf/server.properties` file in the ATSD server as outlined below.
+This path must match the `coprocessors.jar` setting specified in the `/opt/atsd/atsd/conf/server.properties` file in the ATSD server as outlined below.
 
 ### Remove Old Coprocessors
 
 ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager.
 
-The old jar files should be removed from the local file system on each HBase Region Server.
+Remove old jar files from the local file system on each HBase Region Server.
 
 #### Remove Coprocessor Settings
 
@@ -303,7 +303,9 @@ Review the start log for any errors:
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
-You should see the **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
+
+Web interface is now accessible on port `8443` (https).
 
 ## Check Migration Results
 
@@ -315,7 +317,7 @@ Execute the following query and compare the row count.
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number of records should match the results prior to migration.
+The number of records must match the results prior to migration.
 
 ## Delete Backup Table
 

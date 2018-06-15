@@ -87,7 +87,7 @@ Invalid Action is triggered if the received series value is less than the Minimu
 |**Action**|**Description**|
 |:---|:---|
 |NONE|Retain value as is.|
-|DISCARD|Don't process the received value, discard it.|
+|DISCARD|Do not process the received value, discard it.|
 |TRANSFORM|Set value to `min_value` or `max_value`, if value is outside of range.|
 |RAISE_ERROR|Log an ERROR event in the database log.|
 |SET_VERION_STATUS|For versioned metrics, set status to 'Invalid'.|

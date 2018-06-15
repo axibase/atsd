@@ -62,7 +62,7 @@ If the tunnel is not established, check if you can ping the ATSD server to see i
 ps -ef | grep ssh
 ```
 
-The output should contain the following line:
+The output contains the following line:
 
 ```sh
 user001 31326 1 0 17:30 ? 00:00:00 ssh -fN -L nurswgvml001:10000:localhost:8081 atsdreadonly@atsd-tst -i /opt/nmon/id_rsa_atsdreadonly

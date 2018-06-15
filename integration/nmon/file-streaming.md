@@ -1,6 +1,6 @@
 # nmon File Streaming over Telnet
 
-Execute the steps in this guide in order to stream nmon statistics into ATSD using `telnet` protocol.
+Execute the steps in this guide to stream nmon statistics into ATSD using `telnet` protocol.
 
 For sending nmon data through an SSH tunnel, refer to [nmon File Streaming using an SSH Tunnel guide](ssh-tunneling.md "nmon File Streaming using an SSH Tunnel").
 

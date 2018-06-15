@@ -71,7 +71,7 @@ Execute the following query to count rows for one of the key metrics in the ATSD
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number of records should match the results after the migration.
+The number of records must match the results after the migration.
 
 ## Install Java 8
 
@@ -241,7 +241,7 @@ Check that HDFS daemons were successfully started.
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
 ```
 
-The command should return information about HDFS usage and available data nodes.
+The command returns information about HDFS usage and available data nodes.
 
 Finalize HDFS upgrade.
 
@@ -249,9 +249,9 @@ Finalize HDFS upgrade.
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
 ```
 
-The command should display the following message `Finalize upgrade successful`.
+The command displays the following message `Finalize upgrade successful`.
 
-The `jps` command output should report `NameNode`, `SecondaryNameNode`, and `DataNode` processes as running.
+Run `jps` command to check that `NameNode`, `SecondaryNameNode`, and `DataNode` processes are running.
 
 ## Upgrade HBase
 
@@ -468,7 +468,7 @@ When running Map/Reduce jobs specified in the next section, the system may encou
 Container [...2] is running beyond virtual memory limits... Killing container.
 ```
 
-In case of this error, adjust Map-Reduce [settings](mr-settings.md) and retry the job by appending the `-r` flag as follows `.DeleteTaskMigration -m 2 -r`.
+In case of this error, adjust Map-Reduce [settings](mr-settings.md) and retry the job by appending the `-r` setting as follows `.DeleteTaskMigration -m 2 -r`.
 
 In case of other errors, review job logs for the application ID displayed above:
 
@@ -597,7 +597,7 @@ Execute the query and compare the row count.
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number of records should match the results prior to migration.
+The number of records must match the results prior to migration.
 
 ## Delete Backups
 

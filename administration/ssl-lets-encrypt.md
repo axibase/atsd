@@ -263,7 +263,7 @@ No hooks were run.
 -------------------------------------------------------------------------------
 ```
 
-The `--force-renewal` flag forces the certbot to request new certificates.
+The `--force-renewal` option forces the certbot to request new certificates.
 
 ```sh
 sudo certbot renew --force-renewal --deploy-hook "/opt/certbot/deploy-atsd.sh"
@@ -299,7 +299,7 @@ To check if the `--deploy-hook` is enabled for the specific DNS name, search the
 sudo grep -nr /etc/letsencrypt -e "renew_hook"
 ```
 
-The `/etc/letsencrypt/renewal/atsd.company.com.conf` file should contain the following file with the correct path.
+The `/etc/letsencrypt/renewal/atsd.company.com.conf` file must contain the following line with the correct path.
 
 ```txt
 /etc/letsencrypt/renewal/atsd.company.com.conf:14:renew_hook = /opt/certbot/deploy-atsd.sh
@@ -327,7 +327,7 @@ renew_hook = /opt/certbot/deploy-atsd.sh
 [[webroot_map]]
 ```
 
-Test the automated renewal configuration using the `--dry-run` flag.
+Test the automated renewal configuration using the `--dry-run` option.
 
 ```sh
 sudo certbot renew --dry-run

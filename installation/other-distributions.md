@@ -35,9 +35,9 @@ It may take up to 5 minutes to initialize the database.
 tail -f /opt/atsd/atsd/logs/start.log
 ```
 
-You should see an `ATSD start completed` message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (https).
 
 ## Troubleshooting
 

@@ -15,7 +15,7 @@
 | [4029](#issue-4029) | UI | Feature | Consolidate diagnostic tool links on the **Settings > Diagnostics** page. |
 | 4027 | sql | Bug | Metric tags and fields are set to `null` in [`JOIN`](../../sql/README.md#joins) queries.|
 | 4003 | csv | Bug | Enforce 1 GB limit on CSV files uploaded using [csv-upload](../../api/data/ext/csv-upload.md) method.|
-| 4028 | sql | Bug | Fix `ORDER BY tag.name` if some series don't have values for the tag used in sorting. |
+| 4028 | sql | Bug | Fix `ORDER BY tag.name` if some series do not have values for the tag used in sorting. |
 | 4002 | sql | Feature | Implement `GROUP BY` for the `text` column |
 | 3945 | sql | Bug | Remove rows with non-existing tags in [`JOIN`](../../sql/README.md#joins) queries. |
 | [3882](#issue-3882) | sql | Feature | Add support for metric fields in SQL queries. |

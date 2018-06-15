@@ -52,7 +52,7 @@ ORDER BY sum(value) desc
 ### Issue 3701
 
 In this issue, we took a look at optimizing [partitioning queries](../../sql/README.md#partitioning), leveraging the fact that we can narrow the start and end date for a scan based on the last times in the Last
-Insert Table. Let's take the below query as an example.
+Insert Table. Consider the below query as an example.
 
 ```sql
 SELECT tags.city, tags.state, value

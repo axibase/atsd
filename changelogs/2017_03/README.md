@@ -5,7 +5,7 @@
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3797](#issue-3797) | sql             | Feature | Implemented support for the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) condition after the `GROUP BY` clause. |
-| [3796](#issue-3796) | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) flag to concatenate text values for the same timestamp. |
+| [3796](#issue-3796) | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) option to concatenate text values for the same timestamp. |
 | [3795](#issue-3795) | sql             | Feature     | Implemented support for entity tags in the [`GROUP BY`](../../sql/README.md#grouping) clause. |
 | 3786 | statistics      | Bug     | Added the [`LIMIT 100`](../../sql/README.md#limiting) clause for pre-defined SQL query on the [series statistics](#issue-3680) page. |
 | 3783 | sql             | Bug     | Removed extra comma if all columns contain `null` (empty string). |
@@ -84,11 +84,11 @@ ORDER BY Diff DESC
 
 ### Issue 3796
 
-The [`append`](../../api/network/series.md#text-append) flag applies to text values specified with the `x:` field.
+The [`append`](../../api/network/series.md#text-append) option applies to text values specified with the `x:` field.
 
-If the append flag is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended at the end using `;\n` (semi-colon followed by line feed) as a separator.
+If the `append` option is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended at the end using `;\n` (semi-colon followed by line feed) as a separator.
 
-In order to prevent duplicate values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if such new value is equal to one of the elements in the array.
+To prevent duplicate values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if such new value is equal to one of the elements in the array.
 
 ```ls
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
@@ -221,7 +221,7 @@ The last condition is typically included to select all remaining rows other than
 
 ### Issue 2528
 
-In order to reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
+To reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
 order to remove a common prefix from a column label, add the following code snippet to your configuration:
 
 ```javascript

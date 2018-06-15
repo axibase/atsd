@@ -34,7 +34,7 @@ The 'Top Inserts' table is accessible on the **Settings > Receive Statistics** p
 
 ![](./images/retention-top-inserts.png)
 
-You can refer to this view in order to identify series with the largest amount of data being inserted.
+You can refer to this view to identify series with the largest amount of data being inserted.
 
 ## Retention Settings
 
@@ -58,7 +58,7 @@ To disable a metric, open the Metric Editor, expand 'Settings' section, set 'Ena
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
-Discarded commands for disabled metrics are logged with `DISABLED_METRIC` flag in the 'commands_discarded.log' listed on the **Settings > Diagnostics > Server Logs** page:
+Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token in the 'commands_discarded.log' listed on the **Settings > Diagnostics > Server Logs** page:
 
 ```ls
 2018-03-29 05:56:21,087;DISABLED_METRIC;series e:nurswgvml502 ms:1522302980000 t:collector=bosun.org/cmd/scollector/collectors.c_ipcount_linux t:os=linux m:scollector.collector.duration=0.003668194
@@ -76,7 +76,7 @@ To disable persistence for a metric, open the Metric Editor, expand 'Settings' s
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
-Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_METRIC` flag in the 'commands_discarded.log':
+Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_METRIC` token in the 'commands_discarded.log':
 
 ```ls
 2018-03-29 05:56:21,518;NON_PERSISTENT_METRIC;series e:nurswgvml010 ms:1522302981000 t:refid=124.216.164.14 t:remote=37.58.57.238 m:ntp.stratum=2
@@ -96,7 +96,7 @@ To set the filter for a metric, open the Metric Editor, expand the 'Settings' se
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
-Discarded commands for metrics with persistence filters are logged with a `FILTERED_METRIC` flag in the 'commands_discarded.log':
+Discarded commands for metrics with persistence filters are logged with a `FILTERED_METRIC` token in the 'commands_discarded.log':
 
 ```ls
 2018-03-29 05:56:28,075;FILTERED_METRIC;series e:nurswgvmw016 ms:1522302699000 t:method=copy t:site=DefaultWebSite m:iis.requests=0
@@ -165,7 +165,7 @@ This causes the expired data, older than current time minus the specified retent
 
 #### Group Editor
 
-In order to apply this setting to multiple metrics at once, open the Metrics tab and enter a pattern for matching multiple metrics by name.
+To apply this setting to multiple metrics at once, open the Metrics tab and enter a pattern for matching multiple metrics by name.
 
 ![](./images/retention-metrics-search.png)
 
@@ -201,7 +201,7 @@ The expired data is deleted from the database on a schedule which is synchronize
 
 ![](./images/retention-scheduled-tasks.png)
 
-The sequence of tasks should be as follows:
+The optimal sequence of tasks is as follows:
 
 1. `delete.schedule`
 2. `expired.series.removal.schedule`
@@ -209,7 +209,7 @@ The sequence of tasks should be as follows:
 4. `data.compaction.schedule`
 5. `hbase.compaction.schedule`
 
-The tasks should be executed once a day during off-peak/night-time hours. The `hbase.compaction` task should run once a week on large clusters.
+Schedule the tasks to rune once a day during off-peak/night-time hours. Change the `hbase.compaction` task to tune once a week on large clusters.
 
 To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and execute them manually.
 
@@ -323,9 +323,9 @@ GROUP BY entity, tags, PERIOD(1 HOUR)
 
 ## Understanding Data Growth
 
-In addition to more data being collected for existing series, data may be appear for new metrics, entities, and series.
+In addition to more data being collected for existing series, data may be inserted for new metrics, entities, and series.
 
-In order to monitor these key parameters, create a new [portal](../portals/portals-overview.md#create-portal) with the following table widget:
+To monitor these parameters, create a new [portal](../portals/portals-overview.md#create-portal) with the following table widget:
 
 ![](./images/retention-record-growth.png)
 

@@ -6,7 +6,7 @@
 |------|-------------|---------|----------------------|
 | [4745](#issue-4745) | rule engine | Feature | Implement `matchList` function to simplify name collection checks. |
 | 4745| rule engine | Bug | Skip variable replacement in logging messages if rule logging is disabled. |
-| [4734](#issue-4734) | rule engine | Bug | The screenshot portal should include functions specified in user variables. |
+| [4734](#issue-4734) | rule engine | Bug | The screenshot portal must include functions specified in user variables. |
 | 4732 | admin | Feature | Compress backup XML files to `gz` format to save local disk space. |
 | [4730](#issue-4730) | rest api | Feature | Add support for `addMeta` parameter in [series](../../api/meta/metric/series.md) method. |
 | [4724](#issue-4724) | rule engine | Feature | Implement functions to access status of another rule for correlation purposes. |

@@ -2,7 +2,7 @@
 
 Column aliases can be unquoted or enclosed in quotes or double-quotes.
 
-An unquoted `alias` should start with a letter `[a-zA-Z]`, followed by a letter, digit, or underscore.
+An unquoted `alias` must start with a letter `[a-zA-Z]`, followed by a letter, digit, or underscore.
 
 ## Query
 

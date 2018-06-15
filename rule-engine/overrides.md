@@ -91,7 +91,7 @@ If no override rule matches the window and the alert is eventually triggered by 
 
 ## Override Example
 
-The metric in this example measures disk space usage and is collected with 'file_system' and 'mount_point' tags. The numeric values range between 0% and 100%. The alert should be raised if disk utilization exceeds **80%** unless a custom threshold is found in the Overrides table.
+The metric in this example measures disk space usage and is collected with 'file_system' and 'mount_point' tags. The numeric values range between 0% and 100%. The alert must be raised if disk utilization exceeds **80%** unless a custom threshold is found in the Overrides table.
 
 Default Condition
 

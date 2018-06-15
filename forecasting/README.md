@@ -34,7 +34,7 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 
 |Setting|Description|
 |-|-|
-|Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [`End Time`](#data-selection-settings), if specified) minus `Retention Interval` are deleted.|
+|Retention Interval|Specifies how long a forecast is stored in the database. Forecasts that are older than `current time` (or [`End Time`](#data-selection-settings), if specified) minus `Retention Interval` are deleted.|
 
 ### Data Selection Settings
 
@@ -63,7 +63,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 |Group By |Grouping key for merging multiple series into one. Detailed data for multiple series sharing the same grouping key are merged into one array prior to computing aggregate statistics.|
 |Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Aggregation Period |Period of time over which the detailed samples are aggregated.|
-|Aggregate Statistic |Aggregation function applied to raw data in order to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.|
+|Aggregate Statistic |Aggregation function applied to raw data to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.|
 
 ### Algorithm Parameters
 

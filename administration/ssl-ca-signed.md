@@ -123,7 +123,7 @@ Check the contents of the keystore.
 keytool -list -v -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 
-The output should contain an entry for `atsd` alias, for example:
+The output must contain an entry for `atsd` alias, for example:
 
 ```txt
 Enter keystore password:

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DataTableReporter is a Map-Reduce job that identifies the largest daily rows in the 'atsd_d' table in order to estimate the RAM required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
+The DataTableReporter is a Map-Reduce job that identifies the largest daily rows in the 'atsd_d' table to estimate the RAM required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
 
 The reporter scans the 'atsd_d' table and estimates the physical memory required to process the data during the migration.
 
@@ -88,7 +88,7 @@ The reporter can take some time to complete. Launch it with the `nohup` command 
 nohup yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
 ```
 
-View the log file in order to monitor the job progress.
+View the log file to monitor the job progress.
 
 ```sh
 tail -F /tmp/reporter/reporter.log

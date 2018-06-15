@@ -86,7 +86,7 @@ Top-10 running containers by CPU:
 ${addTable(executeSqlQuery(query), 'html', true)}
 ```
 
-In addition, the 'Text' field may invoke [attachment](functions-portal.md#portal-functions) functions in order to include portal screenshots as inline images or CSV files as attachments.
+In addition, the 'Text' field may invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
 
 ```bash
 ${addPortal('AWS Route53 Health Check Detail', aws_entity)}
@@ -216,7 +216,7 @@ Decimal numbers are rounded to 5 significant digits for readability.
 
 ### Portals
 
-In order to attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured. To attach default portal for the current metric, entity and tags to the outgoing message, check the `Series Chart` option.
+To attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured. To attach default portal for the current metric, entity and tags to the outgoing message, check the `Series Chart` option.
 
 ![](./images/email-screenshot-enable.png)
 

@@ -10,7 +10,7 @@ The API endpoints implement `GET` and `POST` methods to **read** data from the d
 
 ### API Content Path
 
-The API context path is `/api/v1/` and should include the current API version (`v1`).
+The API context path is `/api/v1/` and must include the current API version (`v1`).
 
 Sample API endpoints:
 
@@ -26,7 +26,7 @@ When submitting a payload in JSON format, add the `Content-Type: application/jso
 
 ### URI Encoding
 
-Request parameters and path segments, such as [`/api/v1/properties/{entity}/types`](../meta/entity/property-types.md), should be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters, such as `: / ? # [ ] @`, into a percent format that can be transmitted safely as part of the request URI.
+Request parameters and path segments, such as [`/api/v1/properties/{entity}/types`](../meta/entity/property-types.md), must be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters, such as `: / ? # [ ] @`, into a percent format that can be transmitted safely as part of the request URI.
 
 | **Input** | **Encoded Value** | **URI** |
 |:---|:---|:---|
