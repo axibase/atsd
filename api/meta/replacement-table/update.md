@@ -8,6 +8,8 @@ Unlike the [replace method](create-or-replace.md), records and metadata that are
 
 Similarly, fields that are set to `null` are ignored and are left unchanged.
 
+If content type is JSON, both metadata (including `name`) and records may be updated. If content type is CSV, only records update is possible.
+
 ## Request
 
 | **Method** | **Path** | **Content-Type Header**|
