@@ -40,7 +40,7 @@ Change ownership of the executable files with following command:
 sudo chown -R axibase:axibase /opt/atsd
 ```
 
-### Data Directory 
+### Data Directory
 
 If ATSD data is stored under the [custom](changing-data-directory.md#changing-the-directory-where-data-is-stored) `/data` path use the following command:
 
