@@ -1,4 +1,4 @@
-# Axibase Time Series Database API
+# Database API
 
 ## Data API
 

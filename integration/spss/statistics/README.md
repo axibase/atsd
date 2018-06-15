@@ -12,7 +12,7 @@
 
 ## Overview
 
-The [IBM Statistical Package for the Social Sciences 24](https://www.ibm.com/analytics/us/en/technology/spss/) (SPSS) is an advanced statistical analysis tool. This guide describes the process of loading data from the Axibase Time Series Database into SPSS and demonstrates how to calculate the value of a derived series using Weighted Consumer Price Indices as an example.
+The [IBM Statistical Package for the Social Sciences 24](https://www.ibm.com/analytics/us/en/technology/spss/) (SPSS) is an advanced statistical analysis tool. This guide describes the process of loading data from ATSD into SPSS and demonstrates how to calculate the value of a derived series using Weighted Consumer Price Indices as an example.
 
 SPSS provides several options for loading datasets from external data sources, such as Excel files or remote databases. To complete this exercise, sample data must be available in your instance of ATSD.
 

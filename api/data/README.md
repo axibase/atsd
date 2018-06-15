@@ -1,16 +1,18 @@
 # REST API
 
-The REST API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database as well as to manipulate metadata about the metrics and entities.
+The REST API allows you to insert and retrieve data from the database using HTTP requests.
 
 ## Requests
 
 ### Request Methods
 
-The API endpoints implement `GET` and `POST` methods to **read** data from the database and `POST`, `PUT`, `PATCH`, and `DELETE` methods to **write** data into the database.
+To **read** data from the database, use `GET` and `POST` methods.
+
+To **write** data into the database, use `POST`, `PUT`, `PATCH`, and `DELETE` methods.
 
 ### API Content Path
 
-The API context path is `/api/v1/` and must include the current API version (`v1`).
+The API context path is `/api/v1/` and must include the current `v1` API version.
 
 Sample API endpoints:
 

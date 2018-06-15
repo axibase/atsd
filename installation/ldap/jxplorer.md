@@ -1,6 +1,6 @@
 # Secure Connection to Active Directory
 
-To setup a secure connection between an Axibase Time Series Database server and an Active Directory (AD) server for the purpose of LDAP user authentication, you need to import an LDAP Server Certificate from the target AD server into ATSD.
+To setup a secure connection between ATSD and an Active Directory (AD) server for the purpose of LDAP user authentication, you need to import an LDAP Server Certificate from the target AD server into ATSD.
 
 ## Obtain SSL Certificate from LDAP Server
 

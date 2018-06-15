@@ -20,7 +20,7 @@ systemctl enable docker.service
 
 ## RedHat Container Catalog
 
-* [Axibase Time Series Database](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd)
+* [Axibase Time Series Database (ATSD)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd)
   * Image name: `registry.connect.redhat.com/axibase/atsd`
   * Base: atsd:latest
   * [Dockerfile](https://github.com/axibase/dockers/blob/atsd-rhel7/Dockerfile)

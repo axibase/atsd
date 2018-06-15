@@ -1,6 +1,6 @@
 # Overview
 
-The Meta API lets you query and update metadata about metrics, entities, and entity groups in the Axibase Time Series Database.
+The Meta API lets you query and update metadata about metrics, entities, and entity groups in the database.
 
 ## Request Methods
 

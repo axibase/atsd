@@ -1,6 +1,6 @@
 ﻿# Overview
 
-SQL client provides a convenient way to query the Axibase Time Series Database using SQL and export results to a file or standard output in a variety of formats.
+SQL client provides a convenient way to query ATSD using SQL and export results to a file or standard output in a variety of formats.
 
 The client is a bash script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
 

@@ -1,6 +1,6 @@
 # ATSD Container Migration
 
-These instructions describe how to migrate an Axibase Time Series Database instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
+These instructions describe how to migrate an ATSD instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
 
 The instructions apply only to ATSD installed in a Docker container. For host-base installations, refer to the following [migration guide](README.md).
 

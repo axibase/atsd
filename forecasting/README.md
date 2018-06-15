@@ -2,7 +2,7 @@
 
 ## Overview
 
-Axibase Time Series Database includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used.
+ATSD includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used.
 
 Supported algorithms for auto-regressive time series extrapolation include **Holt-Winters** and **ARIMA**.
 

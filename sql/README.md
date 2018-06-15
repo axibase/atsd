@@ -1,6 +1,6 @@
 # SQL
 
-The Axibase Time Series Database supports SQL (Structured Query Language) for retrieving time series records from the database.
+ATSD supports SQL for retrieving time series data stored in the database.
 
 SQL statements can be executed interactively via the web-based [console](sql-console.md), on [schedule](#scheduler), and using the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 

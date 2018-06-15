@@ -4,8 +4,7 @@
 
 Alteryx Designer is a graphical design environment to create and edit ETL
 (Extract, Transform, Load) workflows. The following guide includes examples of
-loading time series data from the Axibase Time Series Database (ATSD),
-calculating derived time series in Alteryx and storing the results back in ATSD.
+loading time series data from ATSD, calculating derived time series in Alteryx and storing the results back in ATSD.
 
 ## Sample Dataset
 

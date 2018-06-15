@@ -72,4 +72,4 @@ Refer to [Outgoing Webhooks](../rule-engine/notifications/README.md) for more de
 
 Congratulations!
 
-You have successfully completed the **Getting Started** guide to **Axibase Time Series Database**.
+You have successfully completed the **Getting Started** guide to Axibase Time Series Database (ATSD).

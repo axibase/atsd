@@ -1,6 +1,6 @@
 # User Authorization
 
-Axibase Time Series Database implements Role Based Access Control to restrict user access to protected information.
+ATSD implements Role Based Access Control (RBAC) to restrict user access to protected information.
 
 ## Role Based Access Control
 
@@ -11,19 +11,19 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 
 | Role | Description |
 | --- | --- |
-|API_DATA_READ | Query Data API to read series, properties, messages, and alerts from the database.|
-|API_DATA_WRITE | Submit Data API requests to insert series, properties, and messages into the database.|
-|API_META_READ | Query Meta Data API to read metric, entity, and entity group settings.|
-|API_META_WRITE | Submit Meta Data API requests to change metric and entity settings. <br>Requests to change entity groups or add/remove members require an `ENTITY_GROUP_ADMIN` role.|
+|`API_DATA_READ` | Query Data API to read series, properties, messages, and alerts from the database.|
+|`API_DATA_WRITE` | Submit Data API requests to insert series, properties, and messages into the database.|
+|`API_META_READ` | Query Meta Data API to read metric, entity, and entity group settings.|
+|`API_META_WRITE` | Submit Meta Data API requests to change metric and entity settings. <br>Requests to change entity groups or add/remove members require an `ENTITY_GROUP_ADMIN` role.|
 
 ### User Interface Roles
 
 | Role | Description |
 | --- | --- |
-| USER | View information on all pages except Configuration and Settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
-| EDITOR | View and edit information on all pages except Settings pages. <br>Includes `USER` role. |
-| ENTITY_GROUP_ADMIN | Edit entity groups. <br>Includes `USER` role. |
-| ADMIN | View and edit information on all pages. <br>Includes all roles. |
+| `USER` | View information on all pages except Configuration and Settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
+| `EDITOR` | View and edit information on all pages except Settings pages. <br>Includes `USER` role. |
+| `ENTITY_GROUP_ADMIN` | Edit entity groups. <br>Includes `USER` role. |
+| `ADMIN` | View and edit information on all pages. <br>Includes all roles. |
 
 ## Entity Permissions
 

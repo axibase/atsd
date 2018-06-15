@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following test calculates the amount of disk space required to store 10+ million `time:value` samples in Axibase Time Series Database, version 17380.
+The following test calculates the amount of disk space required to store 10+ million `time:value` samples in Axibase Time Series Database (ATSD), version 17380.
 
 ## Results
 

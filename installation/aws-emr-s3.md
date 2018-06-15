@@ -2,7 +2,7 @@
 
 ## Overview
 
-Axibase Time Series Database can be deployed on HBase using [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
+The document describes how to deploy ATSD on HBase with [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
 
 ## Operational Advantages
 

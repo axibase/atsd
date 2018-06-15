@@ -2,7 +2,7 @@
 
 ## Overview
 
-Pentaho Data Integration at `https://community.hitachivantara.com/community/products-and-solutions/pentaho` (PDI) provides a graphical design environment to create and edit ETL (Extract, Transform, Load) jobs and workflows. The following guide includes examples of loading time series data from the Axibase Time Series Database (ATSD), calculating derived time series in PDI and storing the results in ATSD.
+Pentaho Data Integration at `https://community.hitachivantara.com/community/products-and-solutions/pentaho` (PDI) provides a graphical design environment to create and edit ETL (Extract, Transform, Load) jobs and workflows. The following guide includes examples of loading time series data from ATSD, calculating derived time series in PDI and storing the results in ATSD.
 
 ## Prerequisites
 

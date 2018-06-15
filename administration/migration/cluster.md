@@ -1,6 +1,6 @@
 # ATSD Cluster Migration
 
-These instructions describe how to upgrade an Axibase Time Series Database instance running on the Cloudera CDH cluster.
+These instructions describe how to upgrade an ATSD instance running on the Cloudera CDH cluster.
 
 For non-distributed installations, refer to the following [migration guide](README.md).
 

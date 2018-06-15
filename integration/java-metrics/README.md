@@ -4,9 +4,9 @@ ATSD has a storage driver for Metrics, which captures JVM and application-level
 
 [Learn more about Metrics on GitHub.](https://github.com/dropwizard/metrics)
 
-The `metrics-atsd` module implements `AtsdReporter`, which allows Java applications to stream metrics into the Axibase Time Series Database .
+The `metrics-atsd` module implements `AtsdReporter`, which allows Java applications to stream metrics into ATSD.
 
-[Learn more about ATSD’s Storage Driver for Metrics on GitHub.](https://github.com/axibase/metrics-atsd)
+Learn more about [ATSD Storage Driver for Metrics](https://github.com/axibase/metrics-atsd) on GitHub.
 
 The Metrics library provides 5 types of metrics:
 

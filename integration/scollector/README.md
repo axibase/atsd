@@ -2,7 +2,7 @@
 
 scollector is a data collection framework for Linux, Windows, and MacOS operating systems.
 
-scollector can be configured to stream data into the Axibase Time Series Database for storage, analysis, forecasting, and visualization.
+scollector can be configured to stream data into ATSD for storage, analysis, forecasting, and visualization.
 
 ## Installation
 
