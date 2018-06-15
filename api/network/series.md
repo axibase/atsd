@@ -24,8 +24,8 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 | m         | string:number   | **[Required]** Metric name and numeric value. _Multiple._ |
 | x         | string:string   | **[Required]** Metric name and text value. _Multiple._ |
 | d         | string          | Time in ISO format. |
-| ms        | integer         | Time in UNIX milliseconds. |
-| s         | integer         | Time in UNIX seconds. |
+| ms        | integer         | Time in Unix milliseconds. |
+| s         | integer         | Time in Unix seconds. |
 | t         | string:string   | Tag name and text value. _Multiple._ |
 | a         | boolean         | Text append option. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
 
@@ -79,7 +79,7 @@ series e:nurswg m:temperature=38.5 t:degrees=Celsius
 
 ## Examples
 
-* Insert the numeric value '72' for the metric 'cpu_used' from the entity 'server001' recorded on March 4, 2015 at 15:14:40 GMT (Unix epoch seconds = 1425482080).
+* Insert the numeric value '72' for the metric 'cpu_used' from the entity 'server001' recorded on March 4, 2015 at 15:14:40 GMT (Unix time seconds = 1425482080).
 
 ```ls
 series e:server001 m:cpu_used=72.0 s:1425482080
@@ -93,7 +93,7 @@ series e:server001 m:cpu_used=72.0 s:1425482080
 series e:server001 m:cpu_used=72.0 m:memory_used=94.5 s:1425482080
 ```
 
-* Same as the above, using Unix milliseconds.
+* Same as the above, using milliseconds in Unix time.
 
 ```ls
 series e:server001 m:cpu_used=72.0 m:memory_used=94.5 ms:1425482080000

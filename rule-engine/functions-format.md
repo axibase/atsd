@@ -96,7 +96,7 @@ The unit is case-insensitive and can be one of the following:
 Examples:
 
 ```javascript
-    // returns 20.0
+    // Returns 20.0
     // same as formatNumber(20480/1024, '#.#')
     convert(20480, 'KiB') // 20.0
     convert(1000 * 1000, 'M') // 1.0
@@ -110,7 +110,7 @@ Examples:
 
 Converts timestamp `t` to a string according to the specified [date pattern](../shared/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`.
 
-The input timestamp is specified as UNIX milliseconds.
+The input timestamp is specified as Unix time in milliseconds.
 
 Related date parsing function: [`date_parse`](functions-time.md#date_parse).
 
@@ -127,12 +127,12 @@ Example:
   formatInterval(long interval) string
 ```
 
-Converts interval in UNIX milliseconds to a formatted interval consisting of non-zero years, days, hours, minutes, and seconds.
+Converts interval in Unix time measured in milliseconds to a formatted interval consisting of non-zero years, days, hours, minutes, and seconds.
 
 Examples:
 
 ```javascript
-  /* Return formatted interval: 2y 139d 16h 47m 15s */
+  /* Returns formatted interval: 2y 139d 16h 47m 15s */
   formatInterval(75228435000L)
 ```
 
@@ -146,12 +146,12 @@ Examples:
   formatIntervalShort(long interval) string
 ```
 
-Converts interval in UNIX milliseconds to a formatted interval consisting of up to the two highest subsequent non-zero time units, where the unit comprises years, days, hours, minutes, and seconds.
+Converts interval measured in milliseconds to a formatted interval consisting of up to the two highest subsequent non-zero time units, where the unit comprises years, days, hours, minutes, and seconds.
 
 Examples:
 
 ```javascript
-  /* Return formatted interval: 2y 139d */
+  /* Returns formatted interval: 2y 139d */
   formatIntervalShort(75228435000L)
 ```
 

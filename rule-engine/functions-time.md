@@ -40,7 +40,7 @@ Returns the current time as a [`DateTime`](object-datetime.md) object. The objec
 ```
 
 ```javascript
-  // returns true if difference between current time (long, UNIX millis) and create_ms (long, UNIX millis) exceeds 1 hour
+  // returns true if difference between current time (long, Unix milliseconds) and create_ms (long, Unix milliseconds) exceeds 1 hour
   (now.getMillis() - create_ms) > 60*60000
 ```
 
@@ -66,7 +66,7 @@ Length of the count-based window, as configured.
   windowStartTime() long
 ```
 
-Time when the first command was received by the window, in UNIX milliseconds.
+Time when the first command was received by the window, in Unix milliseconds.
 
 ### `milliseconds`
 
@@ -74,7 +74,7 @@ Time when the first command was received by the window, in UNIX milliseconds.
   milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the date string `d` into UNIX milliseconds according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the date string `d` into Unix milliseconds according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
 The function returns `0` if the date `d` is `null` or empty.
 
@@ -98,7 +98,7 @@ Example:
   seconds(string d [,string p [,string z]]) long
 ```
 
-This function provides the same arguments as the [`milliseconds`](#milliseconds) function except the result is returned in UNIX seconds instead of milliseconds.
+This function provides the same arguments as the [`milliseconds`](#milliseconds) function except the result is returned in Unix seconds instead of milliseconds.
 
 ### `elapsedTime`
 
@@ -110,9 +110,9 @@ This function provides the same arguments as the [`milliseconds`](#milliseconds)
   elapsedTime(string d) long
 ```
 
-Calculates the number of milliseconds between the current time and time `t` which is specified in UNIX milliseconds.
+Calculates the number of milliseconds between the current time and time `t` which is specified in Unix milliseconds.
 
-The function accepts time `t` in UNIX milliseconds or the date `d` in the following format:
+The function accepts time `t` in Unix milliseconds or the date `d` in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]

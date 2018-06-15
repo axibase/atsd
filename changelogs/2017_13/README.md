@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 4052 | sql | Bug | Return human-readable errors for queries with unsupported syntax. |
-| [4050](#issue-4050) | sql | Feature | Add the [`date_parse`](../../sql/README.md#date_parse) function to parse literal timestamp string into Unix milliseconds. |
+| [4050](#issue-4050) | sql | Feature | Add the [`date_parse`](../../sql/README.md#date_parse) function to parse literal timestamp string into milliseconds in Unix time. |
 | 4039 | sql | Bug | Improve performance for queries with no entity specified in the `WHERE` clause. |
 | [4032](#issue-4032) | sql | Feature | Add support for [`LEAD`](../../sql/README.md#lead) and [`LAG`](../../sql/README.md#lag) functions in the `SELECT` expression. |
 | 4031 | UI | Feature | Add syntax highlighting to the `Data Entry` text area. |

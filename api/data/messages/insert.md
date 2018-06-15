@@ -13,8 +13,8 @@ Inserts messages.
 
 Date limits:
 
-* Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
-* Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
+* Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Unix time.
+* Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Unix time.
 * If the `date` field is not specified, the record is inserted with the current server time.
 
 ## Request

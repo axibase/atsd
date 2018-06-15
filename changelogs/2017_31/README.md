@@ -51,7 +51,7 @@ SELECT time FROM jvm_memory_used LIMIT 1
   "datatype": "bigint",
   "table": "jvm_memory_used",
   "propertyUrl": "atsd:time",
-  "dc:description": "Sample time in epoch milliseconds"
+  "dc:description": "Sample time in Unix milliseconds"
 }
 ```
 

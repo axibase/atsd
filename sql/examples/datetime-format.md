@@ -31,7 +31,7 @@ WHERE entity = 'nurswgvml007'
 
 ## `date_format` Function
 
-The `date_format` function can print out the `time` column as well as any numeric column containing Epoch milliseconds, formatted with the user-defined format and time zone.
+The `date_format` function can print out the `time` column as well as any numeric column containing Unix milliseconds, formatted with the user-defined format and time zone.
 
 ```sql
 SELECT time,

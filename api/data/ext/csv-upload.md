@@ -18,8 +18,8 @@ This method supports processing of the uploaded attached file as data as well as
 
 ## Date Limits
 
-* Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
-* Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
+* Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Unix time.
+* Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Unix time.
 * If the date is outside of the above range, file processing terminates at the line containing invalid date and a corresponding error is raised for the client.
 
 ## Request

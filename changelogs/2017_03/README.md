@@ -11,7 +11,7 @@
 | 3783 | sql             | Bug     | Removed extra comma if all columns contain `null` (empty string). |
 | 3781 | jdbc            | Bug     | Fixed empty row issue for the JDBC Driver. |
 | 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |
-| [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to epoch time. |
+| [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to Unix time. |
 | [3680](#issue-3680) | statistics      | Feature | Created a page to show series characteristics, such as value and interval statistics and histograms. |
 
 ## Collector
@@ -124,7 +124,7 @@ GROUP BY entity.tags.app
 
 ### Issue 3691
 
-Implemented [date functions](../../rule-engine/functions-time.md) in the rule engine to convert an ISO8601 date string into a numeric epoch time or into a [`DateTime`](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
+Implemented [date functions](../../rule-engine/functions-time.md) in the rule engine to convert an ISO8601 date string into a numeric Unix time or into a [`DateTime`](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
 
 ```javascript
 /**

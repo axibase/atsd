@@ -60,7 +60,7 @@ Description of resultset:
 
 ![](./resources/describe_example_1.png)
 
-### Convert the UNIX Epoch milliseconds to the Stata milliseconds
+### Convert Unix Time Milliseconds to Stata Milliseconds
 
 ```txt
 generate double datetime = time + tC(01jan1970 00:00:00)
