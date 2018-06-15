@@ -20,6 +20,7 @@ Retrieves a list of entities matching the specified filters.
 | `limit` |integer|Maximum number of entities to retrieve, ordered by name.|
 | `tags` |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all entity tags starting with `env.`.|
 | `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to true by default.|
+
 #### Expression
 
 The expression can include all fields listed below except `lastInsertDate`.
