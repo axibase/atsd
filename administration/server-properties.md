@@ -2,7 +2,7 @@
 
 Modify the configuration of [ATSD](https://axibase.com/docs/atsd/) on the **Server Properties** page. Open the page by expanding the **Settings** menu and selecting **Server Properties**.
 
-![](images/settings-server-properties.png)
+![](./images/settings-server-properties.png)
 
 There are nine tables present on the **Server Properties** page which contain the settings for each part of the database:
 
@@ -22,23 +22,23 @@ Modifications performed on the **Server Properties** page apply instantly after 
 
 Each parameter in every table has a tooltip which describes the specific setting. Tooltips appear upon mouseover.
 
-![](images/tooltip.png)
+![](./images/tooltip.png)
 
 ## Default Values
 
 Each table has a **Default Value** column, which shows the original value of a given property.
 
-![](images/default-value.png)
+![](./images/default-value.png)
 
 Whenever a value deviates from the default, the database displays the field highlighted in blue.
 
-![](images/modified-value.png)
+![](./images/modified-value.png)
 
 ## Server Properties Requiring Restart
 
-Some server properties may only be enabled, disabled, or modified in the `server.properties` file or on the **Configuration Files** page by certain users because a database restart is required. The **Value** field for such properties is grey and uneditable on the **Server Properties** page, unless it deviates from the [default value](#default-values).
+Some server properties may only be enabled, disabled, or modified in the `server.properties` file or on the **Configuration Files** page by certain users because a database restart is required. The **Value** field for such properties is gray and uneditable on the **Server Properties** page, unless it deviates from the [default value](#default-values).
 
-![](images/cannot-modify.png)
+![](./images/cannot-modify.png)
 
 All properties shown here require database restart and therefore may not be modified by a user on the **Server Properties** page.
 
@@ -60,11 +60,11 @@ To modify `server.properties` on the **Configuration Files** page a user must ha
 
 Open the **Settings** menu and select **Configuration Files**.
 
-![](images/configuration-files.png)
+![](./images/configuration-files.png)
 
 Select `server.properties` from the drop-down list.
 
-![](images/server-properties-drop-down.png)
+![](./images/server-properties-drop-down.png)
 
 Modify the desired properties in the **Content** window and [restart](https://axibase.com/docs/atsd/administration/restarting.html) the database to enable the change.
 
@@ -72,13 +72,13 @@ Modify the desired properties in the **Content** window and [restart](https://ax
 
 To disable a scheduled task, remove the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression from the **Value** field and click **Save**. Alternatively, use the drop-down list to select **Never** for the desired task.
 
-![](images/cron-drop-down.png)
+![](./images/cron-drop-down.png)
 
 ## Export Configuration
 
 Export the current database configuration in JSON format by clicking **Export Configuration** at the bottom of the page.
 
-![](images/export-configuration.png)
+![](./images/export-configuration.png)
 
 ## Properties
 
