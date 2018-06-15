@@ -491,7 +491,6 @@ ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT process
 
  ![](./images/script-osquery-slack.png)
 
-
 ### Daily Referrer Requests
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referrer-requests) that creates visitors reports using information from messages collected by [nginx_access_log_tail](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
