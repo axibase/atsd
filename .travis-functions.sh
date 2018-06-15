@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 function list_modified_md_files {
     if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
-        find . -name \*.md -print || true
+        find . -name \*.md -print | grep -v "./docs-util" || true
     else
-        git diff --name-only --diff-filter=d $(git merge-base HEAD master) | grep "\.md$" || true
+        git diff --name-only --diff-filter=d $(git merge-base HEAD master) | grep "\.md$" | grep -v "./docs-util" || true
     fi
 }
 
