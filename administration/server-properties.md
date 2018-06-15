@@ -1,32 +1,18 @@
-# ATSD Server Properties
+# Database Properties
 
-Modify the configuration of [ATSD](https://axibase.com/docs/atsd/) on the **Server Properties** page. Open the page by expanding the **Settings** menu and selecting **Server Properties**.
+Database properties are displayed on the **Settings > Server Properties** page.
 
 ![](./images/settings-server-properties.png)
 
-There are nine tables present on the **Server Properties** page which contain the settings for each part of the database:
+The properties are grouped into multiple tables.
 
-* [HBase](#hbase)
-* [Scheduled Tasks](#scheduled-tasks)
-* [Monitoring](#monitoring)
-* [Network](#network)
-* [SQL](#sql)
-* [Cache](#cache)
-* [User Interface](#user-interface)
-* [Rule Engine](#rule-engine)
-* [Other](#other)
-
-Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
-
-## Tooltips
-
-Each parameter in every table has a tooltip which describes the specific setting. Tooltips appear upon mouseover.
+Each parameter has a tooltip which describes the setting. Tooltips appear on mouseover.
 
 ![](./images/tooltip.png)
 
 ## Default Values
 
-Each table has a **Default Value** column, which shows the original value of a given property.
+The **Default Value** column shows the original value for a given property.
 
 ![](./images/default-value.png)
 
@@ -34,49 +20,29 @@ Whenever a value deviates from the default, the database displays the field high
 
 ![](./images/modified-value.png)
 
-## Server Properties Requiring Restart
+To reset a property to the default value, leave the value black and click **Save**.
 
-Some server properties may only be enabled, disabled, or modified in the `server.properties` file or on the **Configuration Files** page by certain users because a database restart is required. The **Value** field for such properties is gray and uneditable on the **Server Properties** page, unless it deviates from the [default value](#default-values).
+## Property Changes
+
+Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
+
+Properties highlighted in grey can be modified in the `/opt/atsd/atsd/conf/server.properties` file and require a **database restart**.
 
 ![](./images/cannot-modify.png)
 
-All properties shown here require database restart and therefore may not be modified by a user on the **Server Properties** page.
+The non-editable properties can be also be changed on the **Settings > Configuration Files** page however a **database restart** is still required.
 
-### Access via Shell
+## Configuring Scheduled Tasks
 
-To access the `server.properties` file via shell, a user must have access to the server on which ATSD is running, and be logged in as a superuser or as the user who launched ATSD.
-
-Open the `server.properties` file:
-
-```sh
-nano ~/opt/atsd/atsd/conf/server.properties
-```
-
-Perform the desired modifications and [restart](https://axibase.com/docs/atsd/administration/restarting.html) the database to enable the changes.
-
-### Access via **Configuration Files** Page
-
-To modify `server.properties` on the **Configuration Files** page a user must have the [`ADMIN`](https://axibase.com/docs/atsd/administration/user-authorization.html#user-interface-roles) role in the ATSD user interface.
-
-Open the **Settings** menu and select **Configuration Files**.
-
-![](./images/configuration-files.png)
-
-Select `server.properties` from the drop-down list.
-
-![](./images/server-properties-drop-down.png)
-
-Modify the desired properties in the **Content** window and [restart](https://axibase.com/docs/atsd/administration/restarting.html) the database to enable the change.
-
-## Disabling Scheduled Tasks
-
-To disable a scheduled task, remove the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression from the **Value** field and click **Save**. Alternatively, use the drop-down list to select **Never** for the desired task.
+To disable a task in the **Scheduled Tasks** table, enter **No** or use the drop-down list to select **Never** for the desired task.
 
 ![](./images/cron-drop-down.png)
 
-## Export Configuration
+To disable the `entity.group.update` or the `search.indexing.incremental` task, set the count to zero (`0`).
 
-Export the current database configuration in JSON format by clicking **Export Configuration** at the bottom of the page.
+## Export Properties
+
+Export the current properties, as well as operating system settings and metrics, in JSON format by clicking **Export Configuration** at the bottom of the page.
 
 ![](./images/export-configuration.png)
 
