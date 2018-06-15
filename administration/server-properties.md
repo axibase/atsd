@@ -18,10 +18,6 @@ There are nine tables present on the **Server Properties** page which contain th
 
 Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
 
-To disable a scheduled task, remove the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression from the **Value** field and click **Save**. Alternatively, use the drop-down list to select **Never** for the desired task.
-
-![](images/cron-drop-down.png)
-
 ## Tooltips
 
 Each parameter in every table has a tooltip which describes the specific setting. Tooltips appear upon mouseover.
@@ -38,15 +34,17 @@ Whenever a value deviates from the default, the database displays the field high
 
 ![](images/modified-value.png)
 
-## Enabling and Disabling Properties
+## Server Properties Requiring Restart
 
-Some server properties may only be enabled, disabled, or modified in the `server.properties` file or on the **Configuration Files** page. The **Value** field for such properties is grey on the **Server Properties** page, unless it deviates from the [default value](#default-values).
+Some server properties may only be enabled, disabled, or modified in the `server.properties` file or on the **Configuration Files** page by certain users because a database restart is required. The **Value** field for such properties is grey and uneditable on the **Server Properties** page, unless it deviates from the [default value](#default-values).
 
 ![](images/cannot-modify.png)
 
+All properties shown here require database restart and therefore may not be modified by a user on the **Server Properties** page.
+
 ### Access via Shell
 
-To access the `server.properties` file via shell, a user must have access to the server on which ATSD is running, and be logged in as a superuser or user under which ATSD is executed.
+To access the `server.properties` file via shell, a user must have access to the server on which ATSD is running, and be logged in as a superuser or as the user who launched ATSD.
 
 Open the `server.properties` file:
 
@@ -70,15 +68,21 @@ Select `server.properties` from the drop-down list.
 
 Modify the desired properties in the **Content** window and [restart](https://axibase.com/docs/atsd/administration/restarting.html) the database to enable the change.
 
+## Disabling Scheduled Tasks
+
+To disable a scheduled task, remove the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression from the **Value** field and click **Save**. Alternatively, use the drop-down list to select **Never** for the desired task.
+
+![](images/cron-drop-down.png)
+
 ## Export Configuration
 
-Export the current configuration in JSON format by clicking **Export Configuration** at the bottom of the page.
+Export the current database configuration in JSON format by clicking **Export Configuration** at the bottom of the page.
 
 ![](images/export-configuration.png)
 
 ## Properties
 
-**Bolded** property names may only be modified in the [`server.properties`](#enabling-and-disabling-properties) file by a qualified user.
+**Bolded** property names may only be modified in the [`server.properties`](#server-properties-requiring-restart) file by a qualified user.
 
 ### HBase
 
