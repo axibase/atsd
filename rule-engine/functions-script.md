@@ -511,7 +511,7 @@ ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT process
 
 ### Daily Referer Requests
 
-The Python [script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referer-requests.py) generates a daily `http_referer` report in HTML format based on messages collected by the [`nginx_access_log_tail`](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
+The Python [script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referer_requests.py) generates a daily `http_referer` report in HTML format based on messages collected by the [`nginx_access_log_tail`](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
 
 #### Function
 
