@@ -6,7 +6,7 @@ Changes acknowledgement status of the specified open alerts.
 
 This method can be used to acknowledge and un-acknowledge alerts with the `"acknowledged": true|false` property in the request.
 
-If the `acknowledged` property is not specified, the alert will be un-acknowledged.
+If the `acknowledged` property is not specified, the alert is un-acknowledged.
 
 ## Request
 

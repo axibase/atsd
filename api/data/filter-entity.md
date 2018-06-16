@@ -1,7 +1,7 @@
 # Entity Filter Fields
 
 - One of the below entity fields is **required**.
-- Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence will be applied.
+- Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence is applied.
 - `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
 - Entity name pattern supports `?` and `*` wildcards.
 
@@ -9,7 +9,7 @@
 |:---|:---|:---|
 | `entity`   | string | Entity name or entity name pattern.<br>Example: `"entity":"nur007"` or `"entity":"svl*"` |
 | `entities` | array | Array of entity names or entity name patterns.<br>Example: `"entities":["nur007", "nur010", "svl*"]`|
-| `entityGroup` | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group doesn't exist or is empty.|
+| `entityGroup` | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group does not exist or is empty.|
 | `entityExpression` | string | Matches entities by name, entity tag, and properties based on the specified [filter expression](#entityexpression-syntax). <br>Example: `"entityExpression":"tags.location = 'SVL'"`  |
 
 ## `entityExpression` Syntax

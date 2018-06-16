@@ -16,11 +16,11 @@ The scheduler executes a `SELECT` [query](README.md) on schedule.
 
 ## Schedule
 
-Scheduling frequency is controlled with the `Schedule` field containing a [`cron` expression](scheduled-sql-cron.md) that determines when the task should be executed.
+Scheduling frequency is controlled with the `Schedule` field containing a [`cron` expression](scheduled-sql-cron.md) that determines when the task is executed.
 
 ## Authorization
 
-Scheduled queries are executed with **All Entities: Read** permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity read permissions](../administration/user-authorization.md#entity-permissions).
+Scheduled queries are executed with `All Entities: Read` permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity `read` permissions](../administration/user-authorization.md#entity-permissions).
 
 ## Formats
 
@@ -44,8 +44,8 @@ HTML format is optimized for compatibility with common desktop and email clients
 
 To round numeric values, set decimal precision to the desired number of fractional digits.
 
-* `0` means that no fractional digits will be displayed.
-* `-1` means that no rounding will be applied and numbers will be displayed with their original precision.
+* `0` means that no fractional digits are displayed.
+* `-1` means that no rounding is applied and numbers are displayed with their original precision.
 
 ## Export Options
 
@@ -59,8 +59,8 @@ To store reports on a disk, enable the **Export** section by clicking on the hea
 
 Specify the absolute path including the file name.
 
-If the parent directory in the specified path does not exist, it will be created automatically.
-The file extension should match the export format, if the format is EXCEL the Output Path should end with ".xlsx".
+If the parent directory in the specified path does not exist, the directory is created automatically.
+The file extension must match the export format. For example, if the format is `EXCEL` the Output Path must end with `.xlsx`.
 
 The **Output Path** field may contain date and form [placeholders](#placeholders) so that files or their parent directories are grouped by day or month.
 
@@ -76,7 +76,7 @@ The `Email Subject` field supports date and form [placeholders](#placeholders), 
 
 ![File](./images/sql-scheduled-email-send.png)
 
-`Send Empty Report` and `Send Error Report` settings control whether a report should be emailed in case of an empty result or error.
+`Send Empty Report` and `Send Error Report` settings control whether a report is emailed in case of an empty result or error.
 
 `Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the result set is not empty.
 
@@ -89,13 +89,13 @@ GROUP BY entity
   HAVING AVG(value) > 50
 ```
 
-In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with unchecked `Send Empty Report` option will be sent only if at least one server with high CPU usage is found.
+In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with unchecked `Send Empty Report` option is sent only if at least one server with high CPU usage is found.
 
 `Fail on No Data` causes an error if the query finds no matching records in the database which maybe indicative of a breakdown in data collection.
 
 ### Publishing
 
-To make a report available for download by end-users, enable the **Publish** section. The report will contain rows that were prepared by the server when the task was last executed.
+To make a report available for download by end-users, enable the **Publish** section. The report contains rows that were prepared by the server when the task was last executed.
 
 ![File](./images/sql-scheduled-publish.png)
 
@@ -107,7 +107,7 @@ When enabled and if the url contains a `?refresh=true` parameter, the report is 
 https://atsd_hostname:8443.com/sqlr/85/cpu-busy-total-query.csv?refresh=true
 ```
 
-To make links accessible for unauthenticated users, enable the `Guest Access` option. Additional download links for non-authenticated users will be displayed.
+To make links accessible for unauthenticated users, enable the `Guest Access` option. Additional download links for non-authenticated users are displayed.
 
 ### Placeholders
 
@@ -132,7 +132,7 @@ Examples:
 * `${yyyy/MM/dd}`
 * `${yyyy-MM-dd-HH-mm-ss.SSS}`
 
-A date placeholder will be evaluated **after** the query is completed.
+A date placeholder is evaluated **after** the query is completed.
 
 #### Form placeholders
 

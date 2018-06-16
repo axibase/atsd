@@ -4,11 +4,11 @@
 
 [Let’s Encrypt](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
 
-Background information on **Let’s Encrypt** is available [here](https://github.com/axibase/atsd-use-cases/blob/master/workshop/lets-encrypt.md).
+Background information is available in the [Let's Encrypt Guide for Java Developers](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html).
 
 This instruction describes the process of installing and renewing SSL certificates in ATSD using [EFF Certbot](https://certbot.eff.org) agent.
 
-The Certbot maybe located on the same machine where ATSD is running or on a remote machine in a centralized PKI management environment.
+The Certbot maybe located on the same server where ATSD is running or on a remote server in a centralized PKI management environment.
 
 Before you start, determine the DNS name where ATSD is installed. For the purpose of examples below, lets assume the DNS name is `atsd.company.com`.
 
@@ -42,9 +42,9 @@ sudo apt install certbot
 
 ### HTTP-01 Challenge
 
-> The `HTTP-01` challenge verifies your full control of the machine by sending it a request on port 80.
+> The `HTTP-01` challenge verifies your full control of the server by sending it a request on port 80.
 
-Make sure that port `80` is open and not bound to any process on the machine where certbot is running.
+Make sure that port `80` is open and not bound to any process on the server where certbot is running.
 
 ```sh
 sudo netstat -nao | grep ":80\s"
@@ -63,7 +63,7 @@ sudo certbot certonly --standalone --agree-tos --no-eff-email \
   -w /var/www/certbot -d atsd.company.com
 ```
 
-The following message will be displayed if the request was successfully processed.
+The following message is displayed if the request was successfully processed.
 
 ```txt
 - Congratulations! Your certificate and chain have been saved at:
@@ -91,7 +91,7 @@ drwxr-xr-x 2 root root 4096 Mar 17 12:03 atsd.company.com
 
 ### DNS Challenge
 
-> The `DNS` challenge verifies your full control of the machine by reading a `TXT` record from the DNS registrar that you create as part of the challenge.
+> The `DNS` challenge verifies your full control of the server by reading a `TXT` record from the DNS registrar that you create as part of the challenge.
 
 ```sh
 sudo certbot --preferred-challenges dns --manual certonly
@@ -159,7 +159,7 @@ Open the **Settings > Users** page and click **Create**.
 * Specify `certbot` as the username (or a username of your choice).
 * Assign Role `USER` to the user.
 * Do not grant user any group membership.
-* Add `127.0.0.1` to the list of `Allowed IPs`. Add additional IP addresses to the whitelist if the certbot is running on a remote machine.
+* Add `127.0.0.1` to the list of `Allowed IPs`. Add additional IP addresses to the whitelist if the certbot is running on a remote server.
 
 ![certbot upload](./images/certbot-user.png)
 
@@ -187,17 +187,17 @@ sudo curl -k -u certbot:Dmj_per1S https://10.102.0.6:8443/admin/certificates/imp
   -w "\n%{http_code}\n"
 ```
 
-ATSD will accept the files, validate the certificates and automatically reload the SSL context without restarting the database itself.
+ATSD accepts the files, validates the certificates and automatically reloads the SSL context without restarting the database itself.
 
-The server will respond with an HTTP `200 OK` status code if the installation was successful.
+The server responds with an HTTP `200 OK` status code if the installation is successful.
 
 ## Renew Certificate
 
 ### Create Deployment Script
 
-Since Let's Encrypt certificates are issued for a short period of time (90 days), it's important to setup a fully automated procedure to replace expiring certificates.
+Since Let's Encrypt certificates are issued for a short period of time (90 days), design a fully automated procedure to replace expiring certificates.
 
-Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. This script will be invoked by certbot.
+Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. This script is invoked by certbot.
 
 ```sh
 #!/bin/bash
@@ -246,7 +246,7 @@ Update the path to `deploy-atsd.sh` script below.
 sudo certbot renew --deploy-hook "/opt/certbot/deploy-atsd.sh"
 ```
 
-The certbot will skip the renewal if the certificate is valid for more than 30 days.
+The certbot skips the renewal if the certificate is valid for more than 30 days.
 
 ```txt
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
@@ -263,7 +263,7 @@ No hooks were run.
 -------------------------------------------------------------------------------
 ```
 
-The `--force-renewal` flag forces the certbot to request new certificates.
+The `--force-renewal` option forces the certbot to request new certificates.
 
 ```sh
 sudo certbot renew --force-renewal --deploy-hook "/opt/certbot/deploy-atsd.sh"
@@ -299,7 +299,7 @@ To check if the `--deploy-hook` is enabled for the specific DNS name, search the
 sudo grep -nr /etc/letsencrypt -e "renew_hook"
 ```
 
-The `/etc/letsencrypt/renewal/atsd.company.com.conf` file should contain the following file with the correct path.
+The `/etc/letsencrypt/renewal/atsd.company.com.conf` file must contain the following line with the correct path.
 
 ```txt
 /etc/letsencrypt/renewal/atsd.company.com.conf:14:renew_hook = /opt/certbot/deploy-atsd.sh
@@ -327,7 +327,7 @@ renew_hook = /opt/certbot/deploy-atsd.sh
 [[webroot_map]]
 ```
 
-Test the automated renewal configuration using the `--dry-run` flag.
+Test the automated renewal configuration using the `--dry-run` option.
 
 ```sh
 sudo certbot renew --dry-run

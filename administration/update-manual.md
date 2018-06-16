@@ -1,6 +1,6 @@
 # Manual Update
 
-## Login into Axibase Time Series Database Server
+## Login into ATSD Server
 
 ```sh
 su axibase
@@ -11,7 +11,7 @@ cd /opt/atsd
 
 * [HBase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
 
-The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd.17239.tar.gz`.
+The archive contains the latest ATSD release with the revision number included in the file name, for example `atsd.17239.tar.gz`.
 
 Copy the archive to the ATSD server.
 

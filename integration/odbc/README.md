@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes how to install an `ODBC-JDBC` bridge on a Windows machine. The bridge serves as a data link between the Axibase Time Series Database and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
+This document describes how to install an `ODBC-JDBC` bridge on a Windows machine. The bridge serves as a data link between ATSD and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
 
 The bridge intercepts SQL queries from the client applications via the Microsoft [ODBC](https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc) protocol and transmits the queries into ATSD using the [ATSD JDBC driver](https://github.com/axibase/atsd-jdbc).
 
@@ -49,7 +49,7 @@ Install and activate the bridge:
 
 ## License Activation
 
-A license manager window will appear after exiting from the installation wizard. If the window fails to appear go to **Start** and search for **License Manager**. Fill out the form fields as entered in the registered account and click **Request License**
+A license manager window appears after exiting from the installation wizard. If the window fails to appear go to **Start** and search for **License Manager**. Fill out the form fields as entered in the registered account and click **Request License**
 
   ![](./images/easysoft_activate_1.png)
 
@@ -65,11 +65,11 @@ A license manager window will appear after exiting from the installation wizard.
 
   ![](./images/easysoft_activate_4.png)
 
-* If the activation succeeds, a pop-up window will appear
+* If the activation succeeds, a pop-up window appears
 
   ![](./images/easysoft_activate_5.png)
 
-* Also a window with the new license will be displayed in the License Manager
+* Also a window with the new license is displayed in the License Manager
 
   ![](./images/easysoft_activate_6.png)
 
@@ -94,7 +94,7 @@ DSN         :   ATSD
 User name   :   <atsd username>
 Password    :   <atsd password>
 Driver class:   com.axibase.tsd.driver.jdbc.AtsdDriver
-Class Path  :   <path to ATSD driver, e.g. C:\drivers\atsd-jdbc-1.3.2-DEPS.jar>
+Class Path  :   <path to ATSD driver, for example C:\drivers\atsd-jdbc-1.3.2-DEPS.jar>
 URL         :   jdbc:atsd://atsd_hostname:8443
 ```
 
@@ -110,6 +110,6 @@ Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-con
 
 > In case of 'Unable to create JVM' error, run a Repair task in Windows Program for the bridge program. The error may occur if the bridge was installed prior to Java installation.
 
-* The System DSN tab should now display the new data source.
+* The System DSN tab now displays the new data source.
 
   ![](./images/ODBC_5.png)

@@ -16,7 +16,7 @@ If the `WHERE` condition includes multiple selection intervals, the interpolatio
 
 The interpolated values are calculated based on two adjacent values.
 
-If a raw value exists at the regularized timestamp, it is used "as is" irrespective of neighboring values.
+If a raw value exists at the regularized timestamp, such value is used "as is" irrespective of neighboring values.
 
 ### Irregular Series
 
@@ -308,7 +308,7 @@ AND datetime >= '2016-09-17T08:00:10Z' AND datetime < '2016-09-17T08:01:40Z'
 
 The `GROUP BY PERIOD()` clause calculates for all values in each period by applying an aggregation function such as average, maximum, first, last etc.
 
-If the period doesn't have any values, the period is omitted from the results.
+If the period does not have any values, the period is omitted from the results.
 
 An optional `LINEAR` directive for the `GROUP BY PERIOD()` clause changes the default behavior and returns results for missing periods by applying linear interpolation between values of the neighboring periods.
 
@@ -409,7 +409,7 @@ WITH INTERPOLATE(30 SECOND, LINEAR, OUTER)
 
 The `WITH INTERPOLATE` transformation regularizes all series returned by the query to the same timestamps, so that their values can be joined.
 
-Series **t1**. This metric will be interpolated with the `PREVIOUS` function.
+Series **t1**. This metric is interpolated with the `PREVIOUS` function.
 
 ```sql
 SELECT t1.entity, t1.datetime, t1.value
@@ -427,7 +427,7 @@ WHERE t1.datetime >= '2016-09-18T14:00:00.000Z' AND t1.datetime < '2016-09-18T14
 | nurswgvml006 | 2016-09-18T14:00:51.000Z | 68156.0  |
 ```
 
-Series **t2**. This metric will be interpolated with the `LINEAR` function.
+Series **t2**. This metric is interpolated with the `LINEAR` function.
 
 ```sql
 SELECT t2.entity, t2.datetime, t2.value

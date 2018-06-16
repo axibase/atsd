@@ -28,8 +28,8 @@
 
 ### Issue 4663
 
-* If RAM exceeds 4GB, set Java max heap to 1 GB for HDFS, 1 GB for HBase, and 2GB for ATSD.
-* If RAM exceeds 8GB, set Java max heap to 2 GB for HDFS, 4 GB for HBase, and 4GB for ATSD.
+* If RAM exceeds 4 GB, set Java max heap to 1 GB for HDFS, 1 GB for HBase, and 2 GB for ATSD.
+* If RAM exceeds 8 GB, set Java max heap to 2 GB for HDFS, 4 GB for HBase, and 4 GB for ATSD.
 
 ### Issue 4656
 

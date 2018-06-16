@@ -49,15 +49,15 @@ iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
 
 ### Ubuntu/Debian
 
-Install the iptables-persistent Package
+Install the `iptables-persistent` package
 
 ```sh
 apt-get install iptables-persistent
 ```
 
-During the installation you will be asked to save existing rules.
+During the installation you are asked to save existing rules.
 
-Rules will be saved to `/etc/iptables/rules.v4` and `/etc/iptables/rules.v6` for IPv4 and IPv6, respectively.
+Rules are saved to `/etc/iptables/rules.v4` and `/etc/iptables/rules.v6` for IPv4 and IPv6, respectively.
 
 The saved rules can be updated:
 

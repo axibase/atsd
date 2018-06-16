@@ -19,7 +19,7 @@
 | 3949 | json            | Bug     | Fixed incorrect inclusion of the `Entity` field as a metric field.                                             |
 | 3933 | json            | Bug     | Fixed inconsistent specification for the `Custom Tags` field.                                                   |
 | [3932](#issue-3932) | json            | Feature | Allowed for [JSON Path](https://github.com/jayway/JsonPath#operators) expressions in `Custom Tags` field.                          |
-| 3829 | scheduler       | Bug     | Disabled `Run` button if a job if running.                                 |
+| 3829 | scheduler       | Bug     | Disabled **Run** button if a job if running.                                 |
 | [3817-a](#issue-3817-a) | socrata         | Feature | Added an option to skip resending of already processed data.                         |
 | [3817-b](#issue-3817-b) | socrata         | Feature | Added the `Query Filter` field to filter rows in a resultset.                         |
 
@@ -68,7 +68,7 @@ For the Replacement table, the linked task configurations are shown.
 The old `Command` field containing the path to the executable script has been renamed to `Path to the script`.
 The new `Command` field allows entering commands returning the Item List elements, one Item per line.
 The commands from the text area are copied to a file in the `$AXIBASE_COLLECTOR_HOME/conf/scripts` directory and executed as a script.
-You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/conf/server.properties` file in order to enable this feature.
+You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/conf/server.properties` file to enable this feature.
 
 ![](./Images/Figure4.png)
 

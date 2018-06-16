@@ -1,6 +1,6 @@
 # Database Migration
 
-These instructions describe how to migrate an Axibase Time Series Database instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
+These instructions describe how to migrate an ATSD instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
 
 The instructions apply only to single-node ATSD installations running in pseudo-distributed mode.
 
@@ -43,7 +43,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/md2       1008G  262G  736G  27% /
 ```
 
-If the [backup](#backup) will be stored on the same file system, add it to the estimated disk space usage.
+If the [backup](#backup) is stored on the same file system, add it to the estimated disk space usage.
 
 Calculate disk space requirements.
 
@@ -71,7 +71,7 @@ Execute the following query to count rows for one of the key metrics in the ATSD
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number of records should match the results after the migration.
+The number of records must match the results after the migration.
 
 ## Install Java 8
 
@@ -241,7 +241,7 @@ Check that HDFS daemons were successfully started.
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
 ```
 
-The command should return information about HDFS usage and available data nodes.
+The command returns information about HDFS usage and available data nodes.
 
 Finalize HDFS upgrade.
 
@@ -249,9 +249,9 @@ Finalize HDFS upgrade.
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
 ```
 
-The command should display the following message `Finalize upgrade successful`.
+The command displays the following message `Finalize upgrade successful`.
 
-The `jps` command output should report `NameNode`, `SecondaryNameNode`, and `DataNode` processes as running.
+Run `jps` command to check that `NameNode`, `SecondaryNameNode`, and `DataNode` processes are running.
 
 ## Upgrade HBase
 
@@ -441,7 +441,7 @@ Launch the table backup task and confirm its execution.
 java com.axibase.migration.admin.TableCloner -d
 ```
 
-The task will create backups by appending a `'_backup'` suffix to the following tables:
+The task creates backups by appending a `'_backup'` suffix to the following tables:
 
 * 'atsd_d_backup'
 * 'atsd_li_backup'
@@ -468,7 +468,7 @@ When running Map/Reduce jobs specified in the next section, the system may encou
 Container [...2] is running beyond virtual memory limits... Killing container.
 ```
 
-In case of this error, adjust Map-Reduce [settings](mr-settings.md) and retry the job by appending the `-r` flag as follows `.DeleteTaskMigration -m 2 -r`.
+In case of this error, adjust Map-Reduce [settings](mr-settings.md) and retry the job by appending the `-r` setting as follows `.DeleteTaskMigration -m 2 -r`.
 
 In case of other errors, review job logs for the application ID displayed above:
 
@@ -503,7 +503,7 @@ Step 3. Migrate data from the 'atsd_li' table.
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -m 2
 ```
 
-This migration task will write intermediate results into a temporary directory for diagnostics.
+This migration task writes intermediate results into a temporary directory for diagnostics.
 
 ```txt
 ...
@@ -538,7 +538,7 @@ Step 5. Migrate data to the 'atsd_d' table.
 
 The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
-The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
+The Yarn interface is automatically terminated once the `DataMigrator` is finished.
 
 Step 6. Migration is now complete.
 
@@ -597,7 +597,7 @@ Execute the query and compare the row count.
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number of records should match the results prior to migration.
+The number of records must match the results prior to migration.
 
 ## Delete Backups
 

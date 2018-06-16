@@ -1,12 +1,12 @@
 # Restarting
 
-ATSD provides scripts to control the database and its components.
+ATSD provides scripts to control database services.
 
-Use these scripts to stop, start, and update ATSD.
+Use these scripts to stop, start, and update the database.
 
 ## Permissions
 
-If logged in as root or another user, change user to 'axibase' to ensure that no files are locked.
+If logged in as root or another user, change user to 'axibase' to avoid file permission issues.
 
 ```sh
 su axibase
@@ -67,13 +67,13 @@ Run the `jps` utility to display Java processes running under the current user.
 
 ## Restarting All Services
 
-The script will stop ATSD, HBase, and HDFS.
+The script stops ATSD, HBase, and HDFS.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-The script will start HDFS, HBase, and ATSD.
+The script starts HDFS, HBase, and ATSD.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh start
@@ -109,7 +109,7 @@ Verify that the `Server` process is **not** present in `jps` output.
 jps
 ```
 
-If the `Server` process is still running, kill it forcefully with `kill -9 {Server-pid}`.
+If the `Server` process is still running, stop it forcefully with `kill -9 {Server-pid}`.
 
 ### Stop HBase
 
@@ -125,7 +125,7 @@ Verify that the `HMaster`, `HRegionServer`, `HQuorumPeer` processes are **not** 
 jps
 ```
 
-The `jps` output should display only HDFS processes at this time.
+The `jps` output displays only HDFS processes at this stage.
 
 ```txt
 27392 Jps
@@ -142,7 +142,7 @@ Stop remaining HBase processes if any of the them are still running.
 /opt/atsd/hbase/bin/hbase-daemon.sh stop zookeeper
 ```
 
-If the HBase processes fail to stop after executing the above commands, kill HBase processes `HMaster`, `HRegionServer`, and `HQuorumPeer` by PID (no flags).
+If the HBase processes fail to stop after executing the above commands, stop HBase processes `HMaster`, `HRegionServer`, and `HQuorumPeer` by PID.
 
 ```sh
 kill 11345
@@ -229,9 +229,9 @@ Start HBase.
 
 The `/opt/atsd/bin/atsd-all.sh` script relies on the **[jps](https://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)** utility to determine that Java processes are started in the correct order.
 
-The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory in order to store temporary files. If permissions to this directory are missing (e.g. it's owned by another user), `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
+The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory to store temporary files. If permissions to this directory are missing (for example the directory is owned by another user), `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
 
-If `jps` output is incomplete, the `atsd-all.sh` script aborts the startup procedure with the following message:
+If `jps` output is incomplete, the `atsd-all.sh` script stops the startup procedure with the following message:
 
 ```txt
 nurswgvml007 atsdService: * [ATSD] DataNode is not running.

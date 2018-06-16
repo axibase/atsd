@@ -14,7 +14,7 @@ ATSD is listening on the following ports by default:
 * `8088/tcp` - Web Interface/API (http)
 * `8443/tcp` - Web Interface/API (https)
 
-In case you're not able to connect to an ATSD network service, make sure that: a) the service is listening and b) the firewall is configured to allow access to the target port(s).
+In case you are not able to connect to an ATSD network service, make sure that: a) the service is listening, and b) the firewall allows access to the target ports.
 
 * Login into the ATSD server
 * Search netstat output for TCP/UDP sockets that are listening on the target port, for example 8081
@@ -53,6 +53,6 @@ Review the following log files for errors:
 
 ## 32-bit Error
 
-The `Package Not Found` error will be displayed when attempting an installation of ATSD deb package on a 32-bit architecture.
+The `Package Not Found` error is displayed when attempting an installation of ATSD deb package on a 32-bit architecture.
 
 Retry installation on a supported [architecture](../administration/requirements.md).

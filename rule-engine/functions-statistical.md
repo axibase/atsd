@@ -98,7 +98,7 @@ Weighted average. Weight = sample index which starts from 0 for the first sample
 
 Weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
 
-Time measured in epoch seconds.
+Time measured in Unix seconds.
 
 ## `count`
 
@@ -252,7 +252,7 @@ Number of minutes until the sample value reaches the specified threshold `t` bas
   rate_per_second() double
 ```
 
-Difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in epoch seconds.
+Difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in Unix seconds.
 
 ## `rate_per_minute`
 
@@ -313,7 +313,7 @@ Count of elements matching the specified condition `c` within interval `i` or wi
 Examples:
 
 ```javascript
-  /* For values [0, 15, 5, 40] will return 2. */
+  /* For values [0, 15, 5, 40] the function returns 2. */
   countIf('value > 10')
 ```
 
@@ -340,7 +340,7 @@ Sum of elements matching the specified condition `c` within interval `i` or with
 
 ## Interval Selection
 
-By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `c` or interval `i` - in which case the function will calculate the result based on the most recent samples.
+By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `c` or interval `i` - in which case the function calculates the result based on the most recent samples.
 
 ```javascript
 avg([string i | integer c]) double

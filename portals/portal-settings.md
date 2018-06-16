@@ -78,19 +78,19 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 | **Name** | **Example** | **Description** | **ChartLab** |
 | --- | --- | --- | --- |
 |  `title`  |  `title = CPU Busy Portal`  |  Portal name.  |  |
-|  `dialog-maximize`  |  `dialog-maximize = true`  |  If enabled, the dialog window will occupy the entire portal page.<br>Dialog window can be opened by clicking on the widget header.<br>Default: `true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/14/)  |
+|  `dialog-maximize`  |  `dialog-maximize = true`  |  If enabled, the dialog window is expanded to the entire portal page.<br>Dialog window can be opened by clicking on the widget header.<br>Default: `true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/14/)  |
 |  `display-panels`  |  `display-panels = true`  |  Display widget controls.<br>Possible values: `true`, `false`, `hover`.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  |
 |  `expand-panels`  |  `expand-panels = compact`  |  Expand widget controls.<br>Possible values: `all`, `compact`, `none`.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  |
-|  `periods`  |  `periods = 20 minute, 4 hour`  |  Add custom period(s) to aggregation controls in the top-right corner of the widget.  |  [View](https://apps.axibase.com/chartlab/fedaa42e/45/)  |
+|  `periods`  |  `periods = 20 minute, 4 hour`  |  Add custom periods to aggregation controls in the top-right corner of the widget.  |  [View](https://apps.axibase.com/chartlab/fedaa42e/45/)  |
 |  `buttons`  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: `update`, `reset`.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  |
 
 ### Interval Settings
 
 | **Name** | **Example** | **Description** | **ChartLab** |
 | --- | --- | --- | --- |
-|  `timespan`  |  `timespan = 2 hour`  |  Specifies the timespan for which the data should be loaded for all widgets by default.<br>The setting can be overridden by each widget separately.  |  [View](https://apps.axibase.com/chartlab/808e5846/6/)  |
-|  `start-time`  |  `start-time = 2017-04-01T10:15:00Z`  |  Specifies the date and time in local or ISO-8601 format from which the values for the series are loaded.<br>The setting can be overridden by each widget separately.<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` will include data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` will include data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/ca5669c8)  |
-|  `end-time`  |  `end-time = previous_working_day`  |  Specifies the date and time in local or ISO-8601 format until which the values for the series are loaded.<br>The setting can be overridden by each widget separately..<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` will include data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` will include data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/808e5846/7/)  |
+|  `timespan`  |  `timespan = 2 hour`  |  Specifies the timespan for which the data is loaded for all widgets by default.<br>The setting can be overridden by each widget separately.  |  [View](https://apps.axibase.com/chartlab/808e5846/6/)  |
+|  `start-time`  |  `start-time = 2017-04-01T10:15:00Z`  |  Specifies the date and time in local or ISO-8601 format from which the values for the series are loaded.<br>The setting can be overridden by each widget separately.<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` includes data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` includes data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/ca5669c8)  |
+|  `end-time`  |  `end-time = previous_working_day`  |  Specifies the date and time in local or ISO-8601 format until which the values for the series are loaded.<br>The setting can be overridden by each widget separately.<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` includes data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` includes data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/808e5846/7/)  |
 |  `timezone`  |  `timezone = UTC`  |  Set the time zone for the data being loaded into the portal. Only the 'UTC' option is supported. <br>If 'UTC' is not set, the portal displays dates in the local time zone. <br>If 'UTC' is set, `start-time` and `end-time` settings specified in local format are evaluated based on the UTC time zone. |  [View](https://apps.axibase.com/chartlab/808e5846/8/)  |
 
 * Supported `datetime` formats:
@@ -115,7 +115,7 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 | `method-path` | `method-path = /series/query` | Data API method path. Default value is specific for each data type: `/series/query`, `/properties/query`, `/messages/query`, `/alerts/query`. | |
 | `url-parameters`  |  `url-parameters = db=12&adapter=7`  |  Optional request parameters included in data API requests.<br>Parameter names and values must be URL-encoded if necessary and separated by ampersand. `?` at the start of the query string is optional. |  |
 |  `update-interval`  |  `update-interval = 5 minute`  |  Polling interval at which new incremental data is requested from the server by widgets on the portal.<br>For example `update-interval = 5 minute`.<br>The default value is 1 minute.<br>The setting can be overridden by each widget separately.<br>Chart updates are disabled if the `endtime` parameter for the portal or the widget is set to a fixed date, for example: `endtime = 2016-06-27T00:00:00Z`.  |  [View](https://apps.axibase.com/chartlab/808e5846/3/)  |
-|  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting<br>Default: `false`.<br>If enabled, series for which the request has failed will be requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  |
+|  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting<br>Default: `false`.<br>If enabled, series for which the request has failed are requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  |
 |  `batch-size`  |  `batch-size = 1`  |  Maximum number of series in one batch request to the server.<br>Default: `8`.<br>If `0` is specified, the limit is not set.<br>Applies when `batch-update = true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/5/)  |
 
 > The actual URL for data requests is assembled from `{url}{context-path}{method-path}{url-parameters}`. For example, the default URL for loading series data is `https://atsd_hostname:8443/api/v1/series/query`.
@@ -131,7 +131,7 @@ A single line comment starts with `#`. Text after the `#` is ignored.
 ```ls
 [widget]
   type = chart
-  # Metric field will be inherited by all series in the widget
+  # Metric field is inherited by all series in the widget
   metric = nmon.cpu_total.busy%
 ```
 
@@ -148,7 +148,7 @@ A hash symbol in the middle of a line (preceded by any character other than tab 
 
 Multi-line comments start with /* and end with */.
 
-Any text between /* and */ will be ignored.
+Any text between /* and */ is ignored.
 
 ```ls
 [widget]
@@ -162,7 +162,7 @@ Any text between /* and */ will be ignored.
 
 #### Placeholders
 
-You can insert placeholders into the configuration text to populate it with values of the request parameters. Placeholders have the `{placeholderName}` format. The value of the placeholder is parsed from the query string from any parameter starting with `p_`, i.e. `p_placeholderName`.
+You can insert placeholders into the configuration text to populate it with values of the request parameters. Placeholders have the `{placeholderName}` format. The value of the placeholder is parsed from the query string from any parameter starting with `p_`, for example `p_placeholderName`.
 
 ```ls
 [series]

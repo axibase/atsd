@@ -53,7 +53,7 @@ Script terminated on timeout: {current timeout value}
 
 ## Permissions
 
-Only scripts in the  `./atsd/conf/script/` directory can be executed. The scripts should have the permission bit `+x` enabled.
+Only scripts in the  `./atsd/conf/script/` directory can be executed. The scripts must have the permission bit `+x` enabled.
 
 ```sh
 chmod u=rwx,g=rx,o=r ./atsd/conf/script/*

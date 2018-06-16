@@ -4,12 +4,11 @@
 
 Alteryx Designer is a graphical design environment to create and edit ETL
 (Extract, Transform, Load) workflows. The following guide includes examples of
-loading time series data from the Axibase Time Series Database (ATSD),
-calculating derived time series in Alteryx and storing the results back in ATSD.
+loading time series data from ATSD, calculating derived time series in Alteryx and storing the results back in ATSD.
 
 ## Sample Dataset
 
-For the purpose of instruction, we will use sample [`series` commands](./resources/commands.txt).
+For the purpose of instruction, we use sample [`series` commands](./resources/commands.txt).
 The series contain the Consumer Price Index (CPI) for each category
 of items in a consumer's basket as well as a weight for each category in the CPI
 basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to
@@ -70,7 +69,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Building Queries
 
-After creating a connection you will see the **Choose Table or Specify Query** dialog.
+After creating a connection, open the **Choose Table or Specify Query** dialog.
 
 ![](./images/choose_table.png)
 
@@ -123,7 +122,7 @@ data from ATSD to produce new series in Designer and then store these series bac
 To calculate a weighted inflation index, we multiply the CPI of each category by
 its weight divided by 1000 and sum the products.
 
-The resulting workflow will be implemented as follows:
+The resulting workflow is implemented as follows:
 
 ![](./images/workflow.png)
 
@@ -199,7 +198,7 @@ The workflow consists of the following steps (nodes):
 
 Click **Run Workflow**.
 
-The data will be retrieved from the database and processed in Designer by the workflow
+The data is retrieved from the database and processed in Designer by the workflow
 with the new series stored back in the database.
 
 Click on the **Browse** node to view the results.

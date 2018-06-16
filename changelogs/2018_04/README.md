@@ -10,7 +10,7 @@
 5260 | rule engine | Bug | Remove default port from header in outgoing HTTP requests.
 5256 | security | Bug | Security Incidents page not displaying the latest incidents.
 5254 | api-rest | Bug | Return errors in JSON format in [webhook](../../api/data/messages/webhook.md) method.
-5253 | security | Bug | Fix credentials error in newly-created [webhook](../../administration/user-authorization.md#webhook-user).
+5253 | security | Bug | Fix credentials error in newly created [webhook](../../administration/user-authorization.md#webhook-user).
 5252 | security | Feature | `Path` column added to table at **Settings** > **Diagnostics** > **Security Incidents** page.
 5250 | rule engine | Bug | Some errors not displayed in the rule engine.
 5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration unable to be cloned.
@@ -37,7 +37,7 @@
 5188 | core | Bug | JsonFactory objects moved to JsonUtil class for performance enhancement.
 5185 | entity | Bug | Fix `NullPointerException` raised during entity group synchronization on non-existent `entity`.
 5184 | portal | Bug | Fix error raised when new [portal](../../portals/) is created.
-5183 | forecast | Bug | Fix server error when using manually-defined [algorithm parameters](../../forecasting/README.md#algorithm-parameters) in forecasts.
+5183 | forecast | Bug | Fix server error when using manually defined [algorithm parameters](../../forecasting/README.md#algorithm-parameters) in forecasts.
 5182 | core | Bug | Text value not [logged](../../administration/metric-persistence-filter.md) in `command_discarded.log`.
 5181 | rule editor | Bug | Simplify [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications) webhook configuration.
 5179 | UI | Bug | New [User Group](../../administration/user-authentication.md#user-authentication) members and permissions not saved.

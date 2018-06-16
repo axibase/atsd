@@ -41,15 +41,15 @@ The response status code and response content are recorded in `atsd.log` if the 
 
 Placeholders are substituted with actual field values when the request is initiated.
 
-If the placeholder doesn't exist, it is substituted with an empty string.
+If the placeholder does not exist, the placeholder substituted with an empty string.
 
-Placeholder values are automatically URL-encoded if they're included in the request URL.
+Placeholder values are automatically URL-encoded if they are included in the request URL.
 
 ## Parameters
 
 If the checkbox on the left is disabled, the parameter is fixed and cannot be modified in the rule editor.
 
-Otherwise, if the checkbox enabled, the parameter will be displayed on the 'Web Notifications' tab in the rule editor.
+Otherwise, if the checkbox enabled, the parameter is displayed on the 'Web Notifications' tab in the rule editor.
 
 Both fixed and editable parameter values can include placeholders.
 

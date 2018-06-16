@@ -20,7 +20,7 @@ systemctl enable docker.service
 
 ## RedHat Container Catalog
 
-* [Axibase Time Series Database](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd)
+* [Axibase Time Series Database (ATSD)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd)
   * Image name: `registry.connect.redhat.com/axibase/atsd`
   * Base: atsd:latest
   * [Dockerfile](https://github.com/axibase/dockers/blob/atsd-rhel7/Dockerfile)
@@ -85,7 +85,7 @@ It may take up to 5 minutes to initialize the database.
 docker logs -f atsd
 ```
 
-You should see an `ATSD start completed` message at the end of the `start.log` file.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
 ```txt
 ...
@@ -102,7 +102,7 @@ You should see an `ATSD start completed` message at the end of the `start.log` f
  * [ATSD] ATSD start completed.
 ```
 
-The ATSD web interface is accessible on port 8088/http and 8443/https.
+Web interface is now accessible on port `8443` (https).
 
 ## Launch Parameters
 

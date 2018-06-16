@@ -14,7 +14,7 @@ Fields in a `cron` expression have the following order:
 * day-of-week
 * year **(optional)**
 
-For example, `0 0 8 * * ? *` means that the task will be executed at `08:00:00` every day.
+For example, `0 0 8 * * ? *` means that the task is executed at `08:00:00` every day.
 
 ```txt
 seconds minutes hours day-of-month month day-of-week year

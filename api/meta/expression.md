@@ -69,4 +69,4 @@ Wildcard `?` means any character.
 | `likeAny`    | `likeAny(entity.location, list('svl,nyc,sfo'))`<br>Returns `true`, if at least one element in the collection of patterns matches the first string argument. |
 | `upper`      | `upper('svl')`<br>Converts the argument to upper case.  |
 | `lower`      | `lower('SFO')`<br>Converts the argument to lower case.  |
-| `collection` | `collection('ip_address_ignore')`Returns a pre-defined named collection by name.  |
+| `collection` | `collection('ip_address_ignore')`<br>Returns a pre-defined named collection by name.  |

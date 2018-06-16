@@ -16,9 +16,9 @@ property e:${entity} t:${type} k:${key-1}=${value} k:${key-2}=${value} v:${tag-1
 
 * Entity name, property type, key names, and tag names are case-**insensitive** and are converted to lower case when stored.
 * Key values and tag values are case-**sensitive** and are stored as submitted.
-* Tag names may duplicate key names, i.e. `{tag-1}` maybe equal to `{key-1}`.
+* Tag names may duplicate key names, for example `{tag-1}` maybe equal to `{key-1}`.
 * At least one tag is required, for example, command `property e:e1 t:t1 k:k1=v1` is not valid.
-* Tags with empty values are ignored, i.e. `t2` will be ignored in command `property e:e1 t:t1 v:t1=v1 v:t2=""`.
+* Tags with empty values are ignored, for example `t2` is ignored in command `property e:e1 t:t1 v:t1=v1 v:t2=""`.
 
 ```ls
 # input command
@@ -41,8 +41,8 @@ property e:nurswg t:disk-config k:fs_type=NFS v:initiator=Pre-fetch
 | t         | string           | **[Required]** Property type. |
 | k         | string           | Property key name and text value. Multiple. |
 | v         | string           | **[Required]** Property tag name and text value. At least one required. |
-| s         | integer          | Time in UNIX seconds. |
-| ms        | integer          | Time in UNIX milliseconds. |
+| s         | integer          | Time in Unix seconds. |
+| ms        | integer          | Time in Unix milliseconds. |
 | d         | string           | Time in ISO format. |
 
 > If time fields are omitted, the record is inserted with the current server time.

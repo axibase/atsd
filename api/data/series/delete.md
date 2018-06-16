@@ -12,7 +12,7 @@ Instead, the records are masked with a so called `DELETE` marker. The `DELETE` m
 
 The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called `major compaction`.
 
-As a result, series samples that are re-inserted with timestamps earlier than the pending `DELETE` marker will not be visible.
+As a result, series samples that are re-inserted with timestamps earlier than the pending `DELETE` marker is not visible.
 
 To remove the pending `DELETE` markers, initiate an `HBase Compaction` on the **Settings > Storage > Delete Tasks** page. The compaction runs in the background and may take some time to complete.
 

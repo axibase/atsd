@@ -6,7 +6,7 @@ The condition consists of one or multiple boolean checks combined with [boolean 
 
 The expression can include command fields, literal values, window/entity/metric fields, user-defined variables and [functions](functions.md).
 
-When the condition evaluates to `true` for the first time, the [window](window.md) status will change to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of 'On Cancel' triggers.
+When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of 'On Cancel' triggers.
 
 Note that [`Overrides`](overrides.md) take precedence over the condition.
 
@@ -73,7 +73,7 @@ For a count-based window with the length of 5 samples, the condition is `true` w
   avg() > 75
 ```
 
-The number of values in the window is less than `5` from the time the window is started and until it reaches the maximum capacity as new data arrives. For example, the `avg()` function will return the same result as `value` when the first sample arrives.
+The number of values in the window is less than `5` from the time the window is started and until it reaches the maximum capacity as new data arrives. For example, the `avg()` function returns the same result as `value` when the first sample arrives.
 
 ### Latest-N Average
 

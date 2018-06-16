@@ -1,6 +1,6 @@
 # StatsD Backend
 
-ATSD back-end for StatsD enables you to forward metrics collected by StatsD daemon into the Axibase Time Series Database for retention, analytics, visualization, and alerting.
+ATSD back-end for StatsD enables you to forward metrics collected by StatsD daemon into ATSD for retention, analytics, visualization, and alerting.
 
 [Learn more about StatsD](README.md).
 
@@ -62,7 +62,7 @@ StatsD has an [open bug](https://github.com/etsy/statsd/issues/462) regarding th
 
 Patterns enable the conversion of native StatsD metric names into ATSD entity/metric/tags.
 
-If a metric name matches a regexp `pattern`, it will be parsed according to `atsd_pattern`.
+If a metric name matches the regular expression `pattern`, the metric is parsed according to `atsd_pattern`.
 
 > NOTE: every `\` in `pattern` must be duplicated.
 

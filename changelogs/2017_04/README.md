@@ -16,13 +16,13 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3823 | socrata     | Bug     | Added a record to the Statistics Detail page to display tasks with active downloads. |
-| 3821 | socrata     | Bug     | Added 'Add Row Number' field to add an extra metric with the name `{prefix}row_number` added to `series` commands in case the data row doesn't contain any numeric columns. |
+| 3821 | socrata     | Bug     | Added 'Add Row Number' field to add an extra metric with the name `{prefix}row_number` added to `series` commands in case the data row does not contain any numeric columns. |
 | 3820 | docker      | Bug     | Fixed missing 'path' entity tag for volumes. |
 | 3819 | docker      | Feature     | Updated to construct volume label from the container label instead of the container name. |
 | [3818](#issue-3818) | socrata     | Feature | In `Test` mode, added a table displaying columns from the metadata section. |
-| 3812 | socrata     | Bug     | Removed `http` pool from the configuration tab. Now, only the dataset path will be displayed. |
+| 3812 | socrata     | Bug     | Removed `http` pool from the configuration tab. Now, only the dataset path is displayed. |
 | 3811 | socrata     | Bug     | Fixed auto-complete defect affecting configuration form fields. |
-| 3810 | socrata     | Bug     | Updated settings so that if a field is specified in 'Custom Tags' and is not specified in 'Included Fields', it will not be sent as a metric.|
+| 3810 | socrata     | Bug     | Updated settings so that if a field is specified in 'Custom Tags' and is not specified in 'Included Fields', the field is not sent as a metric.|
 | 3804 | socrata     | Bug     | Excluded `null` values from custom tags or any other fields in commands for both JSON and Socrata jobs. |
 | 3803 | socrata     | Bug     | Fixed issue where time fields were being stored as metrics. |
 | 3802 | socrata     | Bug     | Corrected issues with statistics display showing inaccurate command counters. |
@@ -34,7 +34,7 @@
 
 ### Issue 3742
 
-A `Text Column` button was added to the user interface export form. By enabling this button, a text column will be displayed for data exported in CSV and HTML formats.
+A `Text Column` button was added to the user interface export form. By enabling this button, a text column is displayed for data exported in CSV and HTML formats.
 
 Now, a [text value](../../api/network/series.md#series-tags-text-value-messages) can be used to annotate a numeric observation without changing the series primary key. See
 [Issue 3480](../../changelogs/2017_02/README.md#issue-3480) for more information.
@@ -43,9 +43,9 @@ Now, a [text value](../../api/network/series.md#series-tags-text-value-messages)
 
 ### Issue 3818
 
-The [Test] result now includes a list of columns from the underlying dataset and information on how they're mapped into command fields. The table contains column attributes as well as the following fields:
+The [Test] result now includes a list of columns from the underlying dataset and information on how they are mapped into command fields. The table contains column attributes as well as the following fields:
 
-* Schema Type: classifies how the column is processed in ATSD commands, e.g. metric, series tag, time, property type, etc.
+* Schema Type: classifies how the column is processed in ATSD commands, for example metric, series tag, time, property type, etc.
 * Included: determines if the column is included in ATSD commands or is excluded (ignored).
 
 ```json
@@ -141,7 +141,7 @@ The [Test] result now includes a list of columns from the underlying dataset and
 
 ### Issue 3772
 
-In order to simplify processing of JSON documents created with [Open Data](https://project-open-data.cio.gov/v1.1/schema/) schema, we implemented a new [Socrata](https://axibase.com/docs/axibase-collector/jobs/socrata.html) job. Support for Socrata format has been removed from the JSON job as a result.
+To simplify processing of JSON documents created with [Open Data](https://project-open-data.cio.gov/v1.1/schema/) schema, we implemented a new [Socrata](https://axibase.com/docs/axibase-collector/jobs/socrata.html) job. Support for Socrata format has been removed from the JSON job as a result.
 
 The configuration options implemented in the Socrata job provide a way to convert the dataset into series, property, and message fields in ATSD.
 

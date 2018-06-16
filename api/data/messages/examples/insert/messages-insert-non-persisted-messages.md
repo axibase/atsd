@@ -2,7 +2,7 @@
 
 ## Description
 
-Messages with persistence disabled will not be stored in the database; however they will still be processed be the rule engine.
+Messages with persistence disabled are not be stored in the database; however they are still be processed be the rule engine.
 
 ## Request
 

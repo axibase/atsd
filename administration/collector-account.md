@@ -11,7 +11,7 @@ Such accounts must be granted both the `API_DATA_WRITE` and `API_META_WRITE` rol
 ## Create User Group
 
 * Open the **Settings > Users > User Groups > Create** page.
-* Create the `collectors` group with **[All Entities] Write** permission.
+* Create the `collectors` group with `All Entities: Write` permission.
 
 ![collectors group](./images/all-entities-write.png)
 
@@ -33,6 +33,6 @@ Specify an optional IP range to restrict the addresses from which the collector 
 
 ![](./images/collector-user-wizard.png)
 
-The wizard automatically creates a new user account and add it as a member to the 'Data Collectors' user group with permissions to collect data for all entities.
+The wizard creates a new user account automatically and adds the user to the 'Data Collectors' user group with permissions to collect data for all entities.
 
 ![](./images/collector-user-permissions.png)

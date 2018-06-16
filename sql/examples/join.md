@@ -62,7 +62,7 @@ WHERE t1.datetime BETWEEN '2017-04-08T07:01:00Z' AND '2017-04-08T07:02:00Z'
 |--------------|----------------------|----------|--------------|----------------------|----------|
 | nurswgvml006 | 2017-04-08T07:01:11Z | 6.1      | null         | null                 | null     |
 | null         | null                 | null     | nurswgvml006 | 2017-04-08T07:01:12Z | 71276.0  |
-| nurswgvml006 | 2017-04-08T07:01:27Z | 3.0      | nurswgvml006 | 2017-04-08T07:01:27Z | 70820.0  | <-- this row has the same timestamp and will be present in inner JOIN
+| nurswgvml006 | 2017-04-08T07:01:27Z | 3.0      | nurswgvml006 | 2017-04-08T07:01:27Z | 70820.0  | <-- this row has the same timestamp and is present in inner JOIN
 | null         | null                 | null     | nurswgvml006 | 2017-04-08T07:01:42Z | 69944.0  |
 | nurswgvml006 | 2017-04-08T07:01:43Z | 2.0      | null         | null                 | null     |
 | null         | null                 | null     | nurswgvml006 | 2017-04-08T07:01:57Z | 75928.0  |

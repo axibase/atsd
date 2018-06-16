@@ -7,7 +7,7 @@ Interpolation allows filling gaps in irregular/incomplete series.
 ## Data
 
 * Detailed data is missing between 2016-02-19T13:31:31.000 and 2016-02-19T13:59:00.000Z.
-* 10-minute Period `[13:40-13:50)` has no values and will be interpolated
+* 10-minute Period `[13:40-13:50)` has no values and is interpolated.
 
 View in [ChartLab](https://apps.axibase.com/chartlab/d8c03f11/3/)
 

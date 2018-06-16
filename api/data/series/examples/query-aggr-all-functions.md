@@ -2,7 +2,7 @@
 
 ## Description
 
-Aggregation is a process of grouping detailed values into repeating periods and computing aggregation function(s) on all values in each period.
+Aggregation is a process of grouping detailed values into repeating periods and computing aggregation functions on all values in each period.
 
 The query can contain multiple aggregation functions in a `period:types` array.
 

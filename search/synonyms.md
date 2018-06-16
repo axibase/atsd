@@ -14,7 +14,7 @@ The list of synonyms can be specified in the `conf/synonym.conf` file accessible
 
 ## Syntax
 
-The synonyms for a keyword are defined with the assign `=>` operator. The search results will match the same series when searched either by the keyword itself or one of its synonyms.
+The synonyms for a keyword are defined with the assign `=>` operator. Searching by keyword or by one of its synonyms produces the same results.
 
 ```css
 keyword => synonym[, synonym]
@@ -22,7 +22,7 @@ keyword => synonym[, synonym]
 
 Multiple synonyms can be specified on one line, separated by a comma.
 
-Synonyms are disabled when the keyword is specified as field name. The following searches will yield different results:
+Synonyms are disabled when the keyword is specified as field name. The following searches yield different results:
 
 ```css
 keyword:value
@@ -39,7 +39,7 @@ location => place, site
 ```
 
 Searching for 'money' keyword matches series containing either the keyword itself or its alias ('money' or 'currency').
-The same results will be displayed if the 'currency' keyword is searched as well.
+The same results are displayed if the 'currency' keyword is searched as well.
 
 * The word 'location' has four synonyms.
 
@@ -57,7 +57,7 @@ location = NYC        -- entity tag
 school = CAS          -- series tag
 ```
 
-However, `location:NYC` and `place:NYC` searches produce different results because synonyms are not supported in field names and therefore 'place' as a field name is not enabled as a synonym for the 'location' field name. As a result, `place:NYC` will not match the above series.
+However, `location:NYC` and `place:NYC` searches produce different results because synonyms are not supported in field names and therefore 'place' as a field name is not enabled as a synonym for the 'location' field name. As a result, `place:NYC` does not match the above series.
 
 ## Implementation
 

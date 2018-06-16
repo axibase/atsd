@@ -13,7 +13,7 @@
 
 ## Configuration
 
-The database will be installed in `/opt/atsd` directory under `axibase` user.
+The database is installed in `/opt/atsd` directory under `axibase` user.
 
 To customize the installation directory, use [`rpm`](redhat-centos-rpm.md) option instead.
 
@@ -52,11 +52,9 @@ It may take up to 5 minutes to initialize the database.
 tail -f /opt/atsd/atsd/logs/start.log
 ```
 
-You should see an **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
-
-> You may need to add [firewall](firewall.md) rules if the above ports are not reachable.
+Web interface is now accessible on port `8443` (https).
 
 ## Troubleshooting
 

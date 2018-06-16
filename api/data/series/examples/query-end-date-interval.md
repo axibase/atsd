@@ -8,7 +8,7 @@ Query detailed data for the specified `endDate` and `interval`. In this case, `s
 2016-06-26T13:05:00Z - 5 MINUTE = 2016-06-26T13:00:00Z = startDate
 ```
 
-Similarly, the time range can be specified as `startDate` and `interval` in which case `endDate` will be computed as `startDate` plus `interval`.
+Similarly, the time range can be specified as `startDate` and `interval` in which case `endDate` is computed as `startDate` plus `interval`.
 
 ## Request
 

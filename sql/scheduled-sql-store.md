@@ -57,8 +57,8 @@ Column aliases can be defined to ensure that the query results meet the followin
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
 | `datetime` | string | `0-1` | The date of the record in ISO-8601 format (1).|
-| `time` | long | `0-1` | The date of the record in UNIX milliseconds (1). |
-| `entity` | string | `1` | Name of the entity under which the new series will be stored. |
+| `time` | long | `0-1` | The date of the record in Unix milliseconds (1). |
+| `entity` | string | `1` | Name of the entity under which the new series is stored. |
 | `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
 
 * (1) Only one of the date columns, `datetime` or `time`, must be included in the results.
@@ -174,7 +174,7 @@ The derived metrics are then stored under new names. You can adopt a naming conv
 
 ```sql
 SELECT datetime, entity, tags.*,
-  -- specify derived metric names, e.g. {metric}_{function}_{period}
+  -- specify derived metric names, for example {metric}_{function}_{period}
   ROUND(AVG(value), 0) AS "disk_used_avg_1h",
   ROUND(MAX(value), 0) AS "disk_used_max_1h"
   -- specify metric with raw data to summarize

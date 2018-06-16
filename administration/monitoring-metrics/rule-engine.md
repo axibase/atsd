@@ -15,7 +15,7 @@ expression:
 abs(forecast_deviation(wavg())) > 2
 ```
 
-This rule will raise an alert if the absolute forecast deviates from the
+This rule raises an alert if the absolute forecast deviates from the
 15 minute weighted average by more than 2 standard deviations.
 
 Email notifications can be setup for alerts to be delivered when the rule is triggered.

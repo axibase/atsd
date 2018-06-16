@@ -106,7 +106,7 @@ ORDER BY datetime
 
 ## Metric LIKE Condition
 
-The maximum number of metrics matched with the `LIKE` operator is limited to 50. Otherwise, the SQL processor will raise an exception.
+The maximum number of metrics matched with the `LIKE` operator is limited to 50. Otherwise, the SQL processor raises an exception.
 
 ```sql
 SELECT entity, metric, datetime, value, tags

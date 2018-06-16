@@ -28,7 +28,7 @@ The object provides `get()` methods to extract numeric values for the various ca
 * `getEra()`
 * `getMillis()`
 
-The `getMillis()` method returns current time in UNIX milliseconds.
+The `getMillis()` method returns current time in Unix milliseconds.
 
 ## `now` Window Field
 

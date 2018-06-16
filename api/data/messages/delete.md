@@ -8,7 +8,7 @@ The ability to delete specific message records via the Data API is not implement
 
 The messages are deleted from the database by background tasks once their insertion time is older than current time minus the time-to-live (TTL) interval.
 
-The TTL is displayed on the **Settings > Server Properties** page, under the `messages.timeToLive` setting. It's measured in seconds.
+The TTL is displayed on the **Settings > Server Properties** page, under the `messages.timeToLive` setting. The setting is specified in seconds.
 
 The message expiration time is calculated based on its **insertion** time, and not based on its **record** time.
 
@@ -48,7 +48,7 @@ echo "enable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 echo "major_compact 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-The response should look as follows:
+The response for the above commands looks as follows:
 
 ```txt
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
@@ -115,7 +115,7 @@ major_compact 'atsd_message'
 
 ## Deleting All Messages
 
-Truncate the 'atsd_message' table which will cause all records to be removed.
+Truncate the 'atsd_message' table which causes all records to be removed.
 
 ```sh
 echo "truncate 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell

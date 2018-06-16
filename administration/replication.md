@@ -1,6 +1,6 @@
 # Replication
 
-This article describes how to configure replication for the Axibase Time Series Database.
+This article describes how to configure ATSD replication.
 
 The replication process is from master to slave, meaning where all transactions on the master
 cluster are replayed to the slave cluster.
@@ -8,13 +8,13 @@ cluster are replayed to the slave cluster.
 In the guide `atsd_master` is the hostname of the master host and
 `atsd_slave` is the hostname of the slave host.
 
-> Note: This guide should be executed only on new ATSD installations.
-Executing this guide on an existing ATSD installation will lead to the
+> Note: This guide applies only on new ATSD installations.
+Executing this guide on an existing ATSD installation leads to the
 loss of all stored data on both the master and slave machines.
-> Note: If master loses connection with slave, it will accumulate all the
-data and events for the duration of the connection loss and will start
+> Note: If master loses connection with slave, it accumulates all the
+data and events for the duration of the connection loss and starts
 transferring the accumulated data once connection with slave is
-re-established. No data should be lost in the process.
+re-established. No data is lost in the process.
 
 ## Requirements
 
@@ -51,7 +51,7 @@ master_ip    master_hostname
 slave_ip     slave_hostname
 ```
 
-> Note: the following lines should not be contained in the `hosts` file.
+> Note: the following lines must not be contained in the `hosts` file.
 This is the case for both master and slave.
 
 ```elm
@@ -129,7 +129,7 @@ Start HBase shell and list tables:
 echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
-The output should contain a list of ATSD tables, all starting with `atsd_`:
+The output contains a list of ATSD tables, all starting with `atsd_`:
 
 ![](./images/atsd_tables.png "atsd_tables")
 
@@ -185,7 +185,7 @@ Verify that ATSD tables are present: list tables
 echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
-Output should contain a list of ATSD tables, all starting with `atsd_`.
+Output contains a list of ATSD tables, all starting with `atsd_`.
 
 ![](./images/atsd_tables.png "atsd_tables")
 
@@ -244,7 +244,7 @@ Check HBase logs for replication activity:
 tail -n 1000 /opt/atsd/hbase/logs/hbase-axibase-regionserver-atsd_slave.log | grep replicated
 ```
 
-The output should contain replication activity and the of amount tables replicated on the slave machine:
+The output contains replication activity and the of amount tables replicated on the slave machine:
 
 ```txt
  2015-07-17 16:39:22,926 INFO  regionserver.ReplicationSink (ReplicationS
@@ -298,6 +298,6 @@ table:
 echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-The output should contain the same amount of rows as on the master:
+The output contains the same amount of rows as on the master:
 
 ![](./images/atsd_rule_table_scan1.png "atsd_rule_table_scan")

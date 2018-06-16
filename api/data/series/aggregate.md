@@ -26,7 +26,7 @@ The aggregation process is implemented as follows:
 
 ### Period
 
-[Period](period.md) is a repeating time interval used to group detailed values within some timespan in order to apply a statistical function.
+[Period](period.md) is a repeating time interval used to group detailed values within some timespan to apply a statistical function.
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
@@ -89,10 +89,10 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
 ### Interpolation
 
-By default, if the period doesn't contain any detailed values, it will be excluded from the results.
+By default, if the period does not contain any detailed values, such period is excluded from the results.
 
 This behavior can be changed with an interpolation function.
-The interpolation function will substitute the missing period and calculate its value based on previous and next period values.
+The interpolation function substitutes the missing period and calculate its value based on previous and next period values.
 
 > Note that missing period values are interpolated from aggregate values of neighboring periods and not raw values.
 

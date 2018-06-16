@@ -6,7 +6,7 @@ This method accepts `GET` and `POST` requests with optional JSON or form payload
 
 A set of reserved parameter names, specified in the query string, instruct the server how to parse incoming requests. The reserved parameters determine mappings between the request content and message fields as well as define which data is discarded as extraneous.
 
-This method can be used to ingest HTTP notifications from services that support outgoing webhooks such as GitHub, AWS SNS, Jenkins, Docker Hub, Slack/Telegram/Discord Bots etc.
+This method can be used to process HTTP notifications from services that support outgoing webhooks such as GitHub, AWS SNS, Jenkins, Docker Hub, Slack/Telegram/Discord Bots etc.
 
 ## Reference
 
@@ -59,7 +59,7 @@ To create a new user with permissions to write data for a specific entity, open 
 
 ![](./images/webhook-user.png)
 
-The wizard will automatically create user and entity groups and grant necessary permissions.
+The wizard automatically creates user and entity groups and grants necessary permissions.
 
 ![](./images/webhook-permissions.png)
 
@@ -114,9 +114,9 @@ Array elements are assigned names based on array name and element index, startin
 
 ## Entity Mapping
 
-Since each message must be associated with an entity, the request should instruct the server how to determine the entity name from the request parameters and the payload.
+Since stored message are always associated with an entity, the request must include rules for the server to determine the entity name from the request parameters or the payload.
 
-1. By default, the entity will be set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
+1. By default, the entity is set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
     ```elm
       /api/v1/messages/webhook/jenkins?hello=world
@@ -207,7 +207,7 @@ Command parameters set message field values from JSON field values.
 | `command.type` | Message type.  |
 | `command.source` | Message source.  |
 | `command.entity` | Message entity.  |
-| `command.date` | Message time in ISO format, UNIX milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
+| `command.date` | Message time in ISO format, Unix time milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
 | `command.message` | Message text. |
 | `command.severity` | Message severity specified as an integer or as a constant. |
 
@@ -255,7 +255,7 @@ Header parameters set message field values from header values.
 
 ### Filter Parameters
 
-The filter parameters contain patterns that the converted message tags must satisfy in order to be included in the generated `message` command.
+The filter parameters contain patterns that the converted message tags must satisfy to be included in the generated `message` command.
 
 | **Name** | **Description** |
 |---|---|

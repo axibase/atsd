@@ -2,8 +2,8 @@
 
 ## Overview
 
-The installation process involves downloading dependencies (deb packages) to an intermediate machine with Internet access
-and copying them to the target machine for offline installation.
+The installation process involves downloading dependencies (deb packages) to an intermediate server with Internet access
+and copying them to the target server for offline installation.
 
 ## Supported Versions
 
@@ -24,7 +24,7 @@ sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main \
 >> /etc/apt/sources.list.d/backports.list'
 ```
 
-Enable the `axibase.com/public/repository/deb/` repository on the machine with Internet access:
+Enable the `axibase.com/public/repository/deb/` repository on the server with Internet access:
 
 ```sh
 sudo apt-get update
@@ -72,7 +72,7 @@ rm ca-certificates-java*
 apt-get -t jessie-backports download ca-certificates-java
 ```
 
-Make sure that the download directory isn't empty:
+Make sure that the download directory is not empty:
 
 ```txt
 ...
@@ -88,7 +88,7 @@ sysv-rc_2.88dsf-59_all.deb
 zlib1g_1%3a1.2.8.dfsg-2+b1_amd64.deb
 ```
 
-Copy the `dependencies` directory to the target machine where ATSD will be installed.
+Copy the `dependencies` directory to the target server where you plan to install ATSD.
 
 Install dependencies.
 
@@ -122,9 +122,9 @@ It may take up to 5 minutes to initialize the database.
 tail -f /opt/atsd/atsd/logs/start.log
 ```
 
-You should see an **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (https).
 
 ## Troubleshooting
 

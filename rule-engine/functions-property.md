@@ -140,7 +140,7 @@ By the default, the search is performed for the current entity that is initializ
 
 An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must be specified as well.
 
-The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags will be returned.
+The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
 
 Supported syntax options:
 
@@ -180,7 +180,7 @@ By default, the search is performed for the current entity that is initialized i
 
 An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity argument `e` must be specified as well.
 
-The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags will be returned.
+The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
 
 Supported syntax options:
 

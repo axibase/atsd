@@ -10,7 +10,7 @@ The `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory 
 
 `atsd-pattern =` is used to convert a graphite metric name into an ATSD metric name, entity, and tags.
 
-If a metric name matches the regex `pattern`, it will be parsed according to `atsd-pattern`.
+If a metric name matches the regular expression `pattern`, the metric is parsed according to `atsd-pattern`.
 
 > NOTE: every `\` in `pattern` must be duplicated.
 
@@ -18,9 +18,9 @@ If a metric name matches the regex `pattern`, it will be parsed according to `at
 
 If a metric name has more tokens than `atsd-pattern`, extra tokens are cropped.
 
-If a metric name has less tokens than `atsd-pattern`, but still satisfies `pattern`, then the metric will not be parsed.
+If a metric name has less tokens than `atsd-pattern`, but still satisfies `pattern`, then the metric is be parsed.
 
-If there is no `atsd-pattern` for an incoming metric name, then everything before the first period is recorded as the entity and the rest is recorded as the metric. If there are no periods in the metric name, then the default entity will be `graphite`, and the metric name will be recorded as the metric.
+If there is no `atsd-pattern` for an incoming metric name, then everything before the first period is recorded as the entity and the rest is recorded as the metric. If there are no periods in the metric name, then the default entity is set to `graphite`, and the metric name is recorded as the metric.
 
 `metric` – metric token; multiple occurrences are combined.
 
@@ -32,12 +32,12 @@ If there is no `atsd-pattern` for an incoming metric name, then everything befor
 
 String constants:
 
-String constants in brackets(tokens) will be replaced.
+String constants in brackets(tokens) are replaced.
 
-String constants without brackets(tokens) will be added.
+String constants without brackets(tokens) are added.
 
-> NOTE: Empty tokens will be omitted.
-> NOTE: Empty `atsd-pattern` will drop all incoming metrics that satisfy `pattern`.
+> NOTE: Empty tokens are omitted.
+> NOTE: Empty `atsd-pattern` drops all incoming metrics that satisfy `pattern`.
 
 ### Examples
 
@@ -151,7 +151,7 @@ Verify that Collectl is running correctly:
 sudo collectl --export graphite,atsdserver:8081,d=1,s=dn --rawtoo -f /var/log/collectl
 ```
 
-The output will contain a log of data streamed to ATSD:
+The output contains a log of data streamed to ATSD:
 
 ```txt
 nurswgvml031.disktotals.reads 0 1434010410
@@ -168,19 +168,15 @@ nurswgvml031.disktotals.writes 8 1434010411
 nurswgvml031.disktotals.writekbs 36 1434010411
 ```
 
-The entity and metrics collected by Collectl will be visible under the Entity and Metrics tabs in ATSD.
+The entity and metrics collected by Collectl is visible under the Entity and Metrics tabs in ATSD.
 
 ### Sensu Example
 
-[Sensu](https://sensuapp.org/) is a monitoring tool written in Ruby that uses RabbitMQ as a message broker and Redis for storing data. It is well-suited for monitoring cloud environments.
+[Sensu](https://sensuapp.org/) is a monitoring tool written in Ruby that uses RabbitMQ as a message broker and Redis for storing data. The tool is targeted at monitoring cloud environments.
 
 You can instrument Sensu to send data to ATSD using the Graphite format.
 
-Review the complete Sensu documentation.
-
-To set up the server and client on separate machines please refer to the following guide:
-
-[https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04)
+To setup the server and client on separate servers, refer to the [How to Configure Sensu](https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04) guide.
 
 #### Configure Sensu to send data to ATSD
 

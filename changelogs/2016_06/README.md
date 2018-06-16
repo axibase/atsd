@@ -30,8 +30,8 @@
 
 | Issue| Category    | Type    | Subject                                                                                               |
 |------|-------------|---------|-------------------------------------------------------------------------------------------------------|
-| 3732 | core        | Feature | Modified Collector start-up routine to wait until ATSD is ready when running jobs from the [docker-compose](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/resources/docker-compose.yml) file. |
-| 3724 | core        | Feature     | Created a `docker-compose` file to launch `socrata-cdc` and the ATSD/Collector container bundle, used for computing [mortality statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md). |
+| 3732 | core        | Feature | Modified Collector start-up routine to wait until ATSD is ready when running jobs from the `docker-compose` file. |
+| 3724 | core        | Feature     | Created a `docker-compose` file to launch `socrata-cdc` and the ATSD/Collector container bundle, used for computing statistics. |
 | 3723 | data-source | Bug     | Added missing Avatica package dependencies to the ATSD JDBC driver. |
 | 3722 | core        | Feature | Send `property` command with collector details to ATSD after a startup is completed. |
 | 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://axibase.com/docs/axibase-collector/job-autostart.html). |
@@ -69,7 +69,7 @@ As a result, the TCP processing and parsing throughput (measured in commands per
 ### Issue 3725
 
 Previously, execution of queries with the `LIMIT` clause involved copying selected rows into a temporary table, even if only a small subset of the rows, restricted with `LIMIT`, was required.
-Both `ASC` and `DESC` ordered results were optimized by reducing the number of rows copied into a temporary table. The following queries should see a 90% speedup in execution time.
+Both `ASC` and `DESC` ordered results were optimized by reducing the number of rows copied into a temporary table. The following queries experienced a 90% speedup in execution time.
 
 ```sql
 SELECT *
@@ -93,20 +93,20 @@ Prior to this change, the start date was set to 0 (not applied) if it was not sp
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd') as 'date',
   tags.city, tags.state, sum(value)
-FROM dmv.incidents
+FROM "dmv.incidents"
   GROUP BY entity, tags, datetime
 WITH time = last_time
   ORDER BY sum(value) desc
 ```
 
-The above query will now scan data with a start date determined as the earliest of all the matching series.
-For example, if we have 3 series with the following last insert dates:
+The above query scans data with a start date determined as the earliest of all the matching series.
+For example, if you have 3 series with the following last insert dates:
 
 * A - 2016-12-21
 * B - 2016-10-05
 * C - 2016-12-20
 
-The SQL optimizer will add a condition `AND datetime >= '2016-20-05T00:00:00Z'`, even if it is not set in the query.
+The SQL optimizer adds a condition `AND datetime >= '2016-20-05T00:00:00Z'`, even if the interval condition is not included in the query.
 
 ### Issue 3713
 

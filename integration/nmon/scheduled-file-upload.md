@@ -25,9 +25,9 @@ Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the
 
 After that, add the following content to the file script `/opt/nmon/nmon_script.sh` replacing `atsd_user`, `atsd_password`, and `atsd_hostname` with actual credentials.
 
-## Upload Files to ATSD with UNIX Socket
+## Upload Files to ATSD with Unix Socket
 
-To start uploading files to ATSD every hour with UNIX socket perform the following steps (note that you will require bash):
+To start uploading files to ATSD every hour with Unix socket perform the following steps (bash is required):
 
 ### Step 1
 

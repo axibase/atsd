@@ -115,7 +115,7 @@ Two types of portals are supported:
 
 ### Regular Portals
 
-The regular portal doesn't depend on external parameters and can be rendered as is.
+The regular portal does not depend on external parameters and can be rendered as is.
 
 Sample link for a regular portal:
 
@@ -175,7 +175,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 
     ![](./resources/creating-and-assigning-portals_8.png)
 
-* Select entity groups to which the portal will be assigned.
+* Select entity groups to assign the portal.
 
     ![](./resources/creating-and-assigning-portals_9.png)
 
@@ -245,6 +245,6 @@ Such request parameter values can be referenced with `${parameter_name}` placeho
 |---|---|
 | ![](./resources/portal_theme_default.png) | ![](./resources/portal_theme_dark.png) |
 
-You can install your own themes by modifying the default CSS theme files and uploading them to the `/opt/atsd/conf/portal/themes/` directory.
+You can create a new theme by changing the default CSS theme files and copying the modified files to the `/opt/atsd/conf/portal/themes/` directory.
 
-After you upload your custom theme, it will appear in the list of available themes in the portal editor.
+Custom themes are automatically displayed in the **Themes** drop-down list in the portal editor.

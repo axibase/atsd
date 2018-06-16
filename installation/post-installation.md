@@ -11,14 +11,13 @@
 ## Verify System Time
 
 * Open the **Settings > System Information** tab in the ATSD web interface and verify the time and  time zone information.
-* [Synchronize](../administration/timezone.md#changing-the-time-zone) system time or setup NTP in order to keep the server time accurate.
+* [Synchronize](../administration/timezone.md#changing-the-time-zone) system time or setup NTP to keep the server time accurate.
 
 ![Server\_time](./images/server_time.png)
 
 ## Increase Network Buffers
 
-> If you're anticipating insertion rate with bursts of 100K+ packets per second,
-increase maximum receiving buffer.
+If you are anticipating insertion rate with bursts of 100K+ packets per second, increase maximum receiving buffer.
 
 * See [note](../administration/networking-settings.md).
 
@@ -36,4 +35,4 @@ increase maximum receiving buffer.
 
 ## Relocate ATSD
 
-* [Move ATSD](relocation.md) to a different file system, if the `/opt/atsd` directory doesn't provide sufficient free space.
+* [Move ATSD](relocation.md) to a different file system, if the `/opt/atsd` directory does not provide sufficient free space.

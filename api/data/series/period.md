@@ -1,6 +1,6 @@
 # Period
 
-Period is a repeating time interval used to group samples occurred within each interval into buckets in order to apply aggregation functions.
+Period is a repeating time interval used to group samples occurred within each interval into buckets to apply aggregation functions.
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
@@ -62,7 +62,7 @@ The `CALENDAR` alignment calculates the initial period according to the rules be
 | QUARTER | 0h:0m:0s on January 1st in a given year. |
 | YEAR | 0h:0m:0s on January 1st, 1970. |
 
-For example, if period is `2 HOUR`, start date of `2016-06-20 15:08` will be rounded to `2016-06-20 00:00` as the **base** time, and the initial period will start at `2016-06-20 16:00`.
+For example, if period is `2 HOUR`, start date of `2016-06-20 15:08` is rounded to `2016-06-20 00:00` as the **base** time, and the initial period starts at `2016-06-20 16:00`.
 
 Start of the day for `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units is determined according to the server time zone unless the `timezone` field is specified explicitly.
 
@@ -75,7 +75,7 @@ Start of the day for `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units is dete
 * The first period to reach the start of the selection interval is `15:45` or `[2016-06-20 15:45 - 2016-06-20 16:30)`.
 * The next period is incremented by 45 minutes from the start of the previous period to `[2016-06-20 16:30 - 2016-06-20 17:15)`.
 * Subsequent periods are incremented by 45 minutes while their start time is earlier than `endDate`.
-* The last period is `[17:15 - 18:00)` however it will contain partial data bounded by `endDate` of `17:30`: `[17:15 - 17:30)`.
+* The last period is `[17:15 - 18:00)` however it contains partial data bounded by `endDate` of `17:30`: `[17:15 - 17:30)`.
 
 #### Example 2
 
@@ -91,7 +91,7 @@ Start of the day for `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units is dete
 * Since time unit is `DAY`, time is rounded to 1st day of the month containing `startDate`, which is `2014-12-01 00:00`.
 * The first period is `[2014-12-01 00:00 - 2015-12-01 00:00)` and its start time is **outside** of the selection interval.
 * The next period is `[2015-12-01 00:00 - 2016-12-01 00:00)` and its start time is within the selection interval.
-* The 3rd period is `[2016-12-01 00:00 - 2017-12-01 00:00)` and its start time is also within the selection interval, although it will contain data within `[2016-12-01 00:00 - 2016-12-20 00:00)` interval being limited by `endDate`.
+* The 3rd period is `[2016-12-01 00:00 - 2017-12-01 00:00)` and its start time is also within the selection interval, although it contains data within `[2016-12-01 00:00 - 2016-12-20 00:00)` interval limited by `endDate`.
 
 #### Calculation Examples
 

@@ -13,7 +13,7 @@ You can retrieve, test, or view the metrics using the following methods:
 * [JMX](monitoring-metrics/jmx.md)
 * [File](monitoring-metrics/file.md)
 * [Rule Engine](monitoring-metrics/rule-engine.md)
-* [Ingestion Statistics](monitoring-metrics/ingestion-statistics.md)
+* [Incoming Data Statistics](monitoring-metrics/ingestion-statistics.md)
 * [Database Tables](monitoring-metrics/database-tables.md)
 * [I/O Tests](monitoring-metrics/io-tests.md)
 * [HBase Write Test](monitoring-metrics/hbase-write-test.md)
@@ -34,11 +34,11 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 | **Metric** | **Description** |
 |:--- | :--- |
 |`jvm_committed_virtual_memory_size` |Committed virtual memory, in bytes.|
-|`jvm_free_physical_memory_size` |Free physical memory on the machine, in bytes.|
-|`jvm_free_swap_space_size` | Free swap space on the machine, in bytes.|
+|`jvm_free_physical_memory_size` |Free physical memory on the server, in bytes.|
+|`jvm_free_swap_space_size` | Free swap space on the server, in bytes.|
 |`gc_invocations_per_minute` |Number of the Java garbage collection calls.|
 |`gc_time_percent` |The percentage of cpu time used by the Java garbage collector.|
-|`jvm_memory_free` | Free memory available to the java virtual machine, in bytes. |
+|`jvm_memory_free` | Free memory available to the JVM, in bytes. |
 |`jvm_memory_max` | Maximum memory available to the JVM, in bytes. |
 |`jvm_memory_used` | Memory used by the JVM, in bytes. |
 |`jvm_memory_used_percent` | Percentage of memory used by the JVM. |
@@ -82,10 +82,10 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 | **Metric** | **Description** |
 |:--- | :--- |
 |`jvm_process_cpu_load` | CPU used by the JVM process.|
-|`jvm_system_cpu_load` | CPU busy on the machine.|
-|`jvm_system_load_average` | 1-minute system load average on the machine. |
-|`jvm_total_physical_memory_size` | Amount of physical memory on the machine, in bytes. |
-|`jvm_total_swap_space_size` | Amount of swap space on the machine, in bytes.|
+|`jvm_system_cpu_load` | CPU busy on the server.|
+|`jvm_system_load_average` | 1-minute system load average on the server. |
+|`jvm_total_physical_memory_size` | Amount of physical memory on the server, in bytes. |
+|`jvm_total_swap_space_size` | Amount of swap space on the server, in bytes.|
 
 ### Disk & File
 
@@ -134,8 +134,8 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`message_reads_per_second` |Number of messages read.|
 |`message_received_per_second` | Number of messages received. |
 |`message_writes_per_second` | Number of messages written. |
-|`metric_append_concat_per_second` | Number of series samples received with flag `append = true` where annotation was concatenated.|
-|`metric_append_per_second` | Number of series samples received with flag `append = true`.|
+|`metric_append_concat_per_second` | Number of series samples received with option `append = true` where annotation was concatenated.|
+|`metric_append_per_second` | Number of series samples received with option `append = true`.|
 |`metric_reads_per_second` | Number of HBase rows read from the 'd' table. Each row may container multiple samples. |
 |`metric_received_per_second` | Number of series samples received. |
 |`metric_writes_per_second` | Number of series samples written. |

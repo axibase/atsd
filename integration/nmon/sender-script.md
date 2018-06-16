@@ -2,7 +2,7 @@
 
 ## SSH Tunnel
 
-The sender script is used to stream nmon data into ATSD as it is written into the nmon file.
+The sender script is used to stream nmon data into ATSD as soon as the data is written into the nmon file.
 
 The `nmon_sender_ssh.sh` script creates an ssh-tunnel and uses it to send nmon data to ATSD.
 
@@ -33,7 +33,7 @@ The first line is a task to start nmon.
 
 The second line is a task to run the script. The `{atsdhostname}` must be replaced with a hostname or IP address where the ATSD is installed (NAT address if you are using port forwarding).
 
-Argument `-p` specifies the port of the machine where the ATSD is installed.
+Argument `-p` specifies the TCP port of the ATSD server.
 
 `-s` , `-c`, and `-m` arguments must have the same values in both lines.
 

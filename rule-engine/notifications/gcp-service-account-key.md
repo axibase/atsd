@@ -16,7 +16,7 @@ For example, create a service account with name `publisher`:
 
 ![](./images/gcp_create_service_account_window.png)
 
-When a service account will be created, the account's private key will be saved on your computer.
+When a service account is created, the account's private key is saved on your computer.
 
 ## Import Account's Private Key
 
@@ -36,7 +36,7 @@ Check the contents of the keystore:
 keytool -list -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 
-The output should contain at least 2 entries for `atsd` and `gcp` aliases.
+The output must contain at least two certificate entries for the `atsd` and `gcp` aliases.
 
 ```txt
 Keystore type: JKS

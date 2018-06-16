@@ -1,10 +1,10 @@
-# Pickle Protocol
+# Pickle Format
 
-Pickle is a binary protocol for serializing and de-serializing Python objects. > Pickling is the process where a Python object hierarchy is converted into a byte stream. > Unpickling is the process in reverse, where a byte stream is converted back into an object hierarchy.
+Pickle is a binary format for serializing and de-serializing Python objects.
 
-[Learn more about Pickle protocol in Graphite.](https://graphite.readthedocs.io/en/latest/feeding-carbon.html#the-pickle-protocol)
+Learn more about [Pickle format in Graphite](https://graphite.readthedocs.io/en/latest/feeding-carbon.html#the-pickle-protocol).
 
-Axibase Time Series Database supports Pickle protocol when ingesting messages produced by Carbon daemons.
+ATSD provides support for the Pickle format used by when Carbon daemons.
 
 Pickle Format:
 

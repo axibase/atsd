@@ -27,15 +27,15 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your GitHub user name.
 
-The `Endpoint URL` should look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
+The `Endpoint URL` may look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
 
 Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 
-Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they may be customized in the rule editor. This will allow you to trigger builds for different projects using the same web notification.
+Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they may be customized in the rule editor. This allows you to trigger builds for different projects using the same web notification.
 
 ### Payload
 
-The web notification can be configured to send a JSON document to the Circle CI endpoint in order to pass extended build parameters and the `Body` field can include the following text:
+The web notification can be configured to send a JSON document to the Circle CI endpoint to pass extended build parameters and the `Body` field can include the following text:
 
 ```json
 {
@@ -89,7 +89,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and JSON payload.
 
-When the notification is executed, all placeholders in the request URL and the payload will be resolved as follows:
+When the notification is executed, all placeholders in the request URL and the payload is resolved as follows:
 
 `https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master`
 
@@ -103,7 +103,7 @@ When the notification is executed, all placeholders in the request URL and the p
 }
 ```
 
-If the placeholder is not found, it will be replaced with an empty string.
+If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ## Test
 
@@ -115,7 +115,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn triggers the notification.
 To verify that an alert was raised, open the page **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/circle_alert_open.png)

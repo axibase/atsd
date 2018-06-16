@@ -6,11 +6,11 @@ Creates an entity group with specified fields and tags or replaces the fields an
 
 The following rules apply if the specified group exists:
 
-* The groups current tags will be replaced with tags specified in the request.
-* If the request doesn't contain any tags, the current tags will be deleted.
+* The current tags are replaced with tags specified in the request.
+* If the request does not contain any tags, the current tags are deleted.
 * The request does **not** change the list of members.
-* If the `expression` field is set to `null` in the request, the expression will be deleted.
-* If the `enabled` field is not included, it will be set to `true`.
+* If the `expression` field is set to `null` in the request, the expression is deleted.
+* If the `enabled` field is not included, the entity status is set to `true`.
 
 ## Request
 

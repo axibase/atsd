@@ -16,7 +16,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4720 | docker | Bug | Increase Docker API request timeout from 3 to 10 seconds to eliminate errors when the container properties are requested with `size` flag.  |
+| 4720 | docker | Bug | Increase Docker API request timeout from 3 to 10 seconds to eliminate errors when the container properties are requested with `size` option.  |
 | 4696 | core | Bug | Update the built-in ATSD JDBC driver url definition according the [url schema](https://github.com/axibase/atsd-jdbc#jdbc-url).  |
 | 4677 | docker | Bug | Delete stale records for deleted containers from the embedded database. |
 
@@ -125,7 +125,7 @@ The `multiple-column` setting is applicable to wildcard configurations in bar wi
 
 If the settings is set to `true`, series with the same entity and tags are added to the same column.
 
-This applies to derived series which will be placed into the same column along with the underlying series.
+This applies to derived series which is placed into the same column along with the underlying series.
 
 ```ls
 [widget]

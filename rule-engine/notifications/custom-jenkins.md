@@ -34,7 +34,7 @@ If the Jenkins job is not parameterized, use the `https://jenkins.example.org/jo
 
 Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
 
-Keep the `${job_name}` placeholder in the URL path so that it's customizable in the rule editor. This allows you to trigger different jobs using the same web notification.
+Keep the `${job_name}` placeholder in the URL path so that the job name can be customized in the rule editor. This allows you to trigger different jobs using the same web notification.
 
 Enter the Jenkins user name into the `Username` field and the User API token into the `Password` field.
 
@@ -58,13 +58,13 @@ To inspect which parameters are exposed by the project, open the job configurati
 
 ![](./images/jenkins_param_build_2.png)
 
-The parameters will be displayed if `This project is parametrized` checkbox is enabled.
+The parameters are displayed if `This project is parameterized` checkbox is enabled.
 
 ![](./images/jenkins_param_build_3.png)
 
-The web notification can be configured to send a `x-www-form-urlencoded` data to the Jenkins server in order to pass extended parameters.
+The web notification can be configured to send a `x-www-form-urlencoded` data to the Jenkins server to pass extended parameters.
 
-In this case, add parameters names to the `Parameters` and enable their checkboxes in order to customize them in the rule editor.
+In this case, add parameters names to the `Parameters` and enable their checkboxes to customize them in the rule editor.
 
 ![](./images/jenkins_endpoint.png)
 
@@ -104,7 +104,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and `Parameters` are marked as editable.
 
-When the notification is executed, all placeholders will be resolved as follows:
+When the notification is executed, all placeholders are resolved as follows:
 
 `https://jenkins.example.org/job/atsd-api-test/buildWithParameters`
 
@@ -113,7 +113,7 @@ timezone=Etc/UTC
 run_extra_tests=false
 ```
 
-If the placeholder is not found, it will be replaced with an empty string.
+If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ## Test
 
@@ -125,7 +125,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value will cause the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn triggers the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/jenkins_alert_open.png)

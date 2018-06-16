@@ -1,8 +1,8 @@
 # Update
 
-Update Axibase Time Series Database to the latest version by running the `update.sh` script.
-The script automates the process of downloading the latest ATSD artifacts,
-copying files, and gracefully restarting ATSD services.
+Update ATSD to the latest version by running the `update.sh` script.
+The script automates the process of downloading the latest distribution files,
+copying files to target directories, and gracefully restarting ATSD services.
 
 > Access to axibase.com from the target server is required to download installation files. If the server is not connected to the Internet, switch to the [manual update](update-manual.md) option.
 
@@ -38,7 +38,7 @@ docker exec -it atsd /bin/bash
 
 ## Validation
 
-Once the update is completed, the script will print out the following message:
+Once the update is completed, the script prints out the following message:
 
 ```txt
 Update process finished successfully.

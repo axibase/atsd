@@ -8,7 +8,7 @@ To obtain result metadata without executing the query, submit the query to [`/ap
 
 ## Authorization
 
-The rows returned for the SQL query are filtered by the server according to the user's **entity:read** permissions.
+The rows returned for the SQL query are filtered by the server according to the user's entity `read` permissions.
 
 This means that the same query executed by users with different entity permissions may produce different results.
 
@@ -37,7 +37,7 @@ This query can be utilized as a validation query in database connection pool imp
 | `q` | string | [**Required**] Query text. |
 | `outputFormat` | string | Output format: `csv` or `json`. Default: `csv`. <br>A special `null` format can be specified for performance testing. If format is `null`, the query is executed but the response output is not produced by the database.|
 | `metadataFormat` | string | Metadata format for CSV format. Default: `HEADER`. <br>Supported values: `NONE`, `HEADER`, `EMBED`, `COMMENTS`. |
-| `queryId` | string | User-defined handle submitted at the request time in order to identify the query, if it needs to be cancelled. |
+| `queryId` | string | User-defined handle submitted at the request time to identify the query, if it needs to be cancelled. |
 | `limit` | integer | Maximum number of rows to return. Default: 0 (not applied).<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
 | `discardOutput` | boolean | If set to `true`, discards the produced content without sending it to the client. |
 | `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe deserialization on the client. |
@@ -59,7 +59,7 @@ As an alternative, the query can be submitted with Content-Type `text/plain` as 
 ```java
   statement.setMaxRows(5);
   statement.executeQuery("SELECT datetime, value FROM \"mpstat.cpu_busy\" LIMIT 3");
-  //results will be limited to 3 records
+  //results are limited to 3 records
 ```
 
 ### Cancelling the Query

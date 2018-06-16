@@ -7,7 +7,7 @@
 | 3951 | sql         | Feature | Granted permissions to USER role to cancel the user's own query.                             |
 | 3942 | core        | Bug     | Fixed `PermGen` Error by setting `MaxPermGen` in start script.                                   |
 | [3938](#issue-3938) | admin       | Bug     | Added `PermGen` memory usage metrics.                                     |
-| 3934 | admin       | Support | Set `MaxPermGen` to 128mb in start-atsd scripts.                           |
+| 3934 | admin       | Support | Set `MaxPermGen` to 128 MB in start-atsd scripts.                           |
 | 3929 | api-rest    | Bug     | Fixed double/float datatype cast rounding error in `DELTA` and `COUNTER` aggregators. |
 
 ## Collector
@@ -36,7 +36,7 @@ The values can also be seen in atsd.log:
 
 ### Issue 3936
 
-Custom network commands specified in `Raw Commands` textarea can be executed.
+Custom network commands specified in **Raw Commands** textarea can be executed.
 
 ![](./Images/Figure_01.png)
 

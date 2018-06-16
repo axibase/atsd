@@ -19,7 +19,7 @@
 5142 | rule editor | Bug | Check [placeholder](../../rule-engine/placeholders.md#placeholders) syntax for validity on save.
 5139 | sql | Bug | SQL: Column name [sensitivity](../../sql/README.md#case-sensitivity) in subqueries.
 5132 | security | Bug | Disable [collector account](../../administration/collector-account.md#collector-account) creation without admin rights.
-5130 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | Import doesn't display warnings if group is not found.
+5130 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | Import does not display warnings if group is not found.
 5128 | security | Feature | Add page for password [obfuscation](../../administration/passwords-obfuscation.md#password-obfuscation).
 5127 | security | Bug | NPE in [account](../../administration/user-authentication.md#built-in-account) exist checks.
 5125 | UI | Feature | [Webhook Request Page](../../api/data/messages/webhook.md#diagnostics): view payload, parameters and headers.
@@ -33,7 +33,7 @@
 5107 | sql | Feature | Join using subqueries - support for [ON](../../sql/README.md#join-syntax) condition.
 5105 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | Do not display column value if related entity tag value is not set.
 5104 | sql | Feature | [Scheduled](../../sql/scheduled-sql.md#sql-scheduler) report error on missing raw data.
-5103 | monitoring | Bug | Simon console doesn't work.
+5103 | monitoring | Bug | Simon console does not work.
 5098 | sql | Bug | Fix NPE in outer join with extra tag in one of the [subqueries](../../sql/README.md#inline-views).
 5096 | sql | Bug | Fix NPE in outer [join](../../sql/README.md#joins).
 5093 | rule engine | Bug | Resolve generic type parameter of returned collections by [property](../../rule-engine/functions-property.md#property-functions) functions.

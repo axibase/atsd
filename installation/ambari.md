@@ -8,7 +8,7 @@ sudo adduser axibase
 
 ## Install Java
 
-Install Oracle JDK or Open JDK on the server where ATSD will be running.
+Install Oracle JDK or Open JDK on the ATSD server.
 
 ### Oracle JDK Installation
 
@@ -101,7 +101,7 @@ hbase.client.scanner.timeout.period = 120000
 
 ## Request License Key
 
-To obtain the license key, contact Axibase support with the following information from the machine where ATSD will be installed.
+To obtain the license key, contact Axibase support with the following information from the server where you plan to install ATSD.
 
 * Output of the `ip addr` command.
 
@@ -182,9 +182,9 @@ Review the start log for any errors:
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
-You should see a **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (https).
 
 ## Enable ATSD Auto-Start
 

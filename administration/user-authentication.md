@@ -1,6 +1,6 @@
 # User Authentication
 
-Authentication mechanisms implemented in the Axibase Time Series Database specify how users can verify their identity when accessing protected resources such as web pages and API endpoints.
+Authentication mechanisms implemented in ATSD control how users verify their identity when accessing protected resources such as web pages and API endpoints.
 
 ## Authentication Mechanisms
 
@@ -22,7 +22,7 @@ Once the credentials are verified, subsequent API requests within the same sessi
 
 ## User Account Types
 
-Access to protected resources is provided to user accounts stored in the Axibase Time Series Database.
+User accounts are stored in the database.
 
 The user account can be configured to use either **Local** or **LDAP** authentication.
 
@@ -64,7 +64,7 @@ The following password rules apply to **Local** accounts:
 
 ## Built-in Account
 
-* When accessed for the first time after the installation, the database presents a web page for configuring the default administrator account. This account is granted an `ADMIN` role which has `All Entities: Read / Write` permissions.
+* When accessed for the first time after the installation, the database presents a web page for configuring the default administrator account. This account is granted an `ADMIN` role which has `All Entities: Read` and `All Entities: Write` permissions.
 
 ## Changing the Password
 
@@ -82,7 +82,7 @@ The following password rules apply to **Local** accounts:
     * Restart ATSD.
     * Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
 
-* If the account being reset is configured as LDAP type, the type will be changed to Local.
+* If the account being reset is configured as LDAP type, the type is changed to Local.
 
 ## Guest Access to Data API
 

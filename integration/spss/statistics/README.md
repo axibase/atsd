@@ -8,11 +8,11 @@
 * [Analyze Dataset](#analyze-dataset)
 * [Export Derived Series into ATSD](#export-derived-series-into-atsd)
 * [Verify Insertion](#verify-insertion)
-* [Exporting Data from ATSD into CSV Files](#exporting-data-into-csv-files)
+* [Exporting Data into CSV Files](#exporting-data-into-csv-files)
 
 ## Overview
 
-The [IBM Statistical Package for the Social Sciences 24](https://www.ibm.com/analytics/us/en/technology/spss/) (SPSS) is an advanced statistical analysis tool. This guide describes the process of loading data from the Axibase Time Series Database into SPSS and demonstrates how to calculate the value of a derived series using Weighted Consumer Price Indices as an example.
+The [IBM Statistical Package for the Social Sciences 24](https://www.ibm.com/analytics/us/en/technology/spss/) (SPSS) is an advanced statistical analysis tool. This guide describes the process of loading data from ATSD into SPSS and demonstrates how to calculate the value of a derived series using Weighted Consumer Price Indices as an example.
 
 SPSS provides several options for loading datasets from external data sources, such as Excel files or remote databases. To complete this exercise, sample data must be available in your instance of ATSD.
 
@@ -107,7 +107,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 ### Import from CSV Files
 
-* Export data from ATSD into CSV files as described in the [Exporting Data from ATSD](#exporting-data-from-atsd-into-csv-files) section at the end of this article.
+* Export data from ATSD into CSV files as described in the [Exporting Data into CSV Files](#exporting-data-into-csv-files) section at the end of this article.
 * Open **File > Import Data > CSV Data...**.
 * Select the desired CSV files and click Open to import the `prices.sav` and `weights.sav` files.
 
@@ -121,7 +121,7 @@ Data from the CSV files are now available as SPSS datasets `prices.sav` and `wei
 
 SPSS merges datasets using equal column names, similar `SELF JOIN` in SQL.
 
-To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS will only contain data for 2017.
+To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS contains data only for 2017.
 
 ![](./images/variable_View.png)
 
@@ -202,7 +202,7 @@ SPSS provides two alternatives to aggregate data by period.
 
 ## Export Derived Series into ATSD
 
-Create a new metric in ATSD that will be used to store new series calculated in SPSS.
+Create a new metric in ATSD to store new series calculated in SPSS.
 
 * Login into ATSD, open **Metrics** > **Data entry** page and send a `metric` command:
 
@@ -231,7 +231,7 @@ metric m:cpi_price
 
 ![](./images/atsd_export_5.png)
 
-* Click **OK** to apply the changes. Column `entity` should now appear in the dataset.
+* Click **OK** to apply the changes. Column `entity` now appears in the dataset.
 
 ![](./images/atsd_export_6.png)
 
@@ -247,7 +247,7 @@ metric m:cpi_price
 
 ![](./images/atsd_export_9.png)
 
-* Choose `cpi_price` table and click **Next**. The list of tables is based on the `tables=` driver property specified in the JDBC URL. If you don't see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md) and re-open the export wizard.
+* Choose `cpi_price` table and click **Next**. The list of tables is based on the `tables=` driver property specified in the JDBC URL. If you do not see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md) and re-open the export wizard.
 
 ![](./images/atsd_export_10.png)
 
@@ -255,7 +255,7 @@ metric m:cpi_price
 
 ![](./images/atsd_export11.png)
 
-The result should look as follows. Click **Next**
+The result is as follows. Click **Next**
 
 ![](./images/atsd_export12.png)
 
@@ -299,7 +299,7 @@ SELECT entity, datetime, value FROM cpi_price
 
 The built-in [SQL Console](../../../sql/sql-console.md) allows exporting query results into various data formats including Excel, CSV, and JSON, with optional metadata composed according to the [W3C Model for Tabular Data](../../../sql/api.md#metadata).
 
-> If you don't have an ATSD installed, [weights.csv](./resources/weights.csv) and [prices.csv](./resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
+> If you do not have an ATSD installed, [weights.csv](./resources/weights.csv) and [prices.csv](./resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
 
 ### Prices
 

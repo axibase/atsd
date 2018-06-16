@@ -16,7 +16,7 @@ Verify that no ATSD services are running
 jps
 ```
 
-The output should list only the `jps` process itself.
+The output must contain only the `jps` process itself.
 
 ```txt
 12150 Jps

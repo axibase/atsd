@@ -2,7 +2,7 @@
 
 ## Export Form
 
-This section will demonstrate how to retrieve data from the database using the interactive data export form.
+This section demonstrates how to retrieve data from the database using the interactive data export form.
 
 Open **Data > Export** page.
 
@@ -26,7 +26,7 @@ The results can also be exported [on schedule](../reporting/scheduled-exporting.
 
 ## API Client
 
-The database provides a build-in API Client to test the REST API endpoints. This section will show how to export data using the [series query](../api/data/series/query.md) endpoint.
+The database provides a build-in API Client to test the REST API endpoints. This section shows how to export data using the [series query](../api/data/series/query.md) endpoint.
 
 Open **Data > API Client** page.
 

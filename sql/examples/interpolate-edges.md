@@ -79,5 +79,5 @@ GROUP BY entity, PERIOD(5 minute, PREVIOUS)
 ```
 
 * Interpolated values are calculated between neighboring values in the result set.
-* Even though data prior to 09:20:00 and at or after 09:30:00 exists in the database, it is outside of the start and end date specified in the `WHERE` clause.
+* Although data prior to 09:20:00 and at or after 09:30:00 exists in the database, the data is outside of the start and end date specified in the `WHERE` clause.
 * Therefore, data for **leading** periods starting at 09:20:00, 09:21:00, 09:22:00 and for **trailing** period starting at 09:29:00 was not interpolated.

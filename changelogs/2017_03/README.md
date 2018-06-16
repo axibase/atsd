@@ -5,13 +5,13 @@
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3797](#issue-3797) | sql             | Feature | Implemented support for the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) condition after the `GROUP BY` clause. |
-| [3796](#issue-3796) | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) flag to concatenate text values for the same timestamp. |
+| [3796](#issue-3796) | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) option to concatenate text values for the same timestamp. |
 | [3795](#issue-3795) | sql             | Feature     | Implemented support for entity tags in the [`GROUP BY`](../../sql/README.md#grouping) clause. |
 | 3786 | statistics      | Bug     | Added the [`LIMIT 100`](../../sql/README.md#limiting) clause for pre-defined SQL query on the [series statistics](#issue-3680) page. |
 | 3783 | sql             | Bug     | Removed extra comma if all columns contain `null` (empty string). |
 | 3781 | jdbc            | Bug     | Fixed empty row issue for the JDBC Driver. |
 | 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |
-| [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to epoch time. |
+| [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to Unix time. |
 | [3680](#issue-3680) | statistics      | Feature | Created a page to show series characteristics, such as value and interval statistics and histograms. |
 
 ## Collector
@@ -19,7 +19,7 @@
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3784](#issue-3784)| jdbc            | Feature | Added the [`${SPLIT_CONDITION}`](https://axibase.com/docs/axibase-collector/jobs/jdbc.html#job-configuration) placeholder support in the JDBC job to allow fetching large result sets in multiple iterations. |
-| 3656 | socrata         | Bug     | Refactored the Socrata job so that a dataset with more than 100,000 rows or more than 100Mb can be processed without an OutOfMemory error. |
+| 3656 | socrata         | Bug     | Refactored the Socrata job so that a dataset with more than 100,000 rows or more than 100 MB can be processed without an OutOfMemory error. |
 
 ## Charts
 
@@ -84,18 +84,18 @@ ORDER BY Diff DESC
 
 ### Issue 3796
 
-The [`append`](../../api/network/series.md#text-append) flag applies to text values specified with the `x:` field.
+The [`append`](../../api/network/series.md#text-append) option applies to text values specified with the `x:` field.
 
-If the append flag is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended at the end using `;\n` (semi-colon followed by line feed) as a separator.
+If the `append` option is set to `true`, ATSD checks the previous text value for the same timestamp. If the previous value is found, the new value is appended at the end using `;\n` (semi-colon followed by line feed) as a separator.
 
-In order to prevent duplicate values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if it is equal to one of the elements in the array.
+To prevent duplicate values, the database checks the existing value for duplicates by splitting the stored value into a string array and discarding the new value if such new value is equal to one of the elements in the array.
 
 ```ls
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
 series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Restart" a:true
 ```
 
-The new value will be equal to:
+The new value is equal to:
 
 ```ls
 Shutdown by adm-user, RFC-5434;
@@ -104,7 +104,7 @@ Restart
 
 ### Issue 3795
 
-Previously, entity tags were not supported in the `GROUP BY` clause. Now it's possible to group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
+Previously, entity tags were not supported in the `GROUP BY` clause. Now you can group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
 
 ```sql
 SELECT entity.tags.app, count(value)
@@ -124,7 +124,7 @@ GROUP BY entity.tags.app
 
 ### Issue 3691
 
-Implemented [date functions](../../rule-engine/functions-time.md) in the rule engine to convert an ISO8601 date string into a numeric epoch time or into a [`DateTime`](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
+Implemented [date functions](../../rule-engine/functions-time.md) in the rule engine to convert an ISO8601 date string into a numeric Unix time or into a [`DateTime`](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
 
 ```javascript
 /**
@@ -202,7 +202,7 @@ tag LIKE 'DA%'
 NOT (tag LIKE 'AB%' OR tag LIKE 'AC%' OR tag LIKE 'DA%')
 ```
 
-This will cause 4 queries to be executed, with first query results being filtered with `tag LIKE 'AB%'` condition:
+This causes 4 queries to be executed, with first query results being filtered with `tag LIKE 'AB%'` condition:
 
 ```sql
 SELECT tag, descriptor, zero, zero + span as maxvalue, engunits,
@@ -221,7 +221,7 @@ The last condition is typically included to select all remaining rows other than
 
 ### Issue 2528
 
-In order to reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
+To reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
 order to remove a common prefix from a column label, add the following code snippet to your configuration:
 
 ```javascript

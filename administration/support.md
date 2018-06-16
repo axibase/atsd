@@ -1,16 +1,39 @@
 # Support
 
-This document will help you submit a well-prepared ticket to our [Support Desk](https://axibase.zendesk.com/home) so we can resolve it faster.
+This document helps you submit a well-prepared support ticket so we can resolve it faster.
 
-Use the below reference to attach relevant artifacts to your ticket. Skip sections `2-5` if they don't apply to your particular situation.
+**Commercial** Support:
 
-## 1. Database and Operating System Information
+* Open a ticket in our [Support Desk](https://axibase.zendesk.com/home) to expedite processing.
 
-1. **Settings > Server Properties** page: Click **Export Configuration** and download the `configuration-export.json` file.
+**Community** Support:
 
-## 2. Log Files
+* Contact us at `support-atsd@axibase.com`.
 
-> The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **Settings > Diagnostics > Server Logs** page.
+Use the below guidelines to attach relevant details to the ticket. Skip sections `2-6` if not applicable.
+
+## 1. Database Information
+
+Open **Settings > Server Properties** page.
+
+Click **Export Configuration**.
+
+![](./images/export-settings.png)
+
+The `configuration-export.json` file contains key database and operating system information, including:
+
+* Operating system name and version.
+* Database build and version details.
+* JVM parameters.
+* Java environment variables.
+* Current database metrics.
+* Database properties.
+
+Review the sample [configuration file](./resources/configuration-export.json).
+
+## 2. ATSD Log Files
+
+The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **Settings > Diagnostics > Server Logs** page.
 
 1. Error log `/opt/atsd/atsd/logs/err.log`.
 
@@ -23,23 +46,25 @@ Use the below reference to attach relevant artifacts to your ticket. Skip sectio
       /opt/atsd/atsd/logs/*.out
     ```
 
-3. Archive (tar.gz) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
+## 3. Extended Log Files
 
-4. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
+1. Archive (tar.gz) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
 
-## 3. Heap Dump File
+2. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
 
-1. Archive (tar.gz) of the most recent `java_pid*.hprof` file in the `/opt/atsd/atsd/logs` directory, if such file is present.
+3. Archive (tar.gz) of the most recent `java_pid<pid>.hprof` heap dump file in the `/opt/atsd/atsd/logs` directory, if such file is present.
 
 ## 4. Performance Statistics
 
-1. Screenshot of the **Portals: ATSD** portal for the time period covering the issue.
+1. Screenshot of the **Portals > ATSD** portal for the time period covering the issue.
 
-2. Screenshot of the **Portals: ATSD Log Viewer** portal for the time period covering the issue.
+    ![](./images/portal-atsd.png)
 
-3. Screenshot from the **Portals: ATSD Metric Viewer** portal for relevant metrics.
+2. Screenshot of the **Portals > ATSD Log Viewer** portal for the time period covering the issue.
 
-4. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
+    ![](./images/portal-atsd-log-viewer.png)
+
+3. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
 
 ```sql
 SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr,
@@ -89,7 +114,7 @@ WITH INTERPOLATE(1 MINUTE)
 
 ## 5. Portal Configuration
 
-> Attach this if the issue is related to charts and portals.
+Attach this if the problem is related to charts and portals.
 
 1. Screenshot of the affected portal.
 

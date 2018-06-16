@@ -13,13 +13,13 @@
 
 ## Configuration
 
-The database will be installed in `/opt/atsd` directory under `axibase` user.
+The database is installed in `/opt/atsd` directory under `axibase` user.
 
 To customize the installation directory, specify `--prefix` option as described below.
 
 ## Connection
 
-If the target machine does not have Internet connection to download
+If the target server does not have Internet connection to download
 dependencies, use the [offline installation option](redhat-centos-offline.md).
 
 ## Download
@@ -66,11 +66,9 @@ sudo rpm -Uvh --prefix=/mnt/atsd atsd_amd64.rpm
 tail -f /opt/atsd/atsd/logs/start.log
 ```
 
-You should see an **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
-
-> Add [firewall](firewall.md) rules if the above ports are not reachable.
+Web interface is now accessible on port `8443` (https).
 
 ## Troubleshooting
 

@@ -28,13 +28,13 @@ On AIX, nmon is pre-installed on AIX 5.3 and 6.1 and newer versions by default. 
 
 In Linux, nmon is [released under GPL license](https://github.com/axibase/nmon). It can be downloaded as an [executable binary](https://github.com/axibase/nmon/releases) or can be compiled from source. Supported distributions include Ubuntu, Debian, RHEL, CentOS, Fedora, SLES, and OpenSUSE.
 
-The nmon file format is supported in Axibase Time Series Database natively. As a result, ATSD can be deployed as a centralized repository of nmon statistics and system commands collected from remote systems while providing access to [Visualization](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization"), [Alerting](../../rule-engine "Rule Engine"), and [Forecasting](../../forecasting/README.md) features.
+The nmon file format is supported in ATSD natively. As a result, ATSD can be deployed as a centralized repository of nmon statistics and system commands collected from remote systems while providing access to [Visualization](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization"), [Alerting](../../rule-engine "Rule Engine"), and [Forecasting](../../forecasting/README.md) features.
 
 [![](./resources/widget-bar-2.png "widget bar 2")](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
 
 ## Installation steps
 
-ATSD supports two ways of automated data ingestion from servers gathering nmon statistics:
+ATSD provides two ways of loading nmon files:
 
 * [Scheduled upload](https://github.com/axibase/nmon#upload-hourly-files-to-atsd-with-wget) using `wget`, `nc`, or `bash` [`tcp/udp` pseudo-device](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP) files. Latency depends on the collection interval.
 * Streaming transmission of nmon snapshots as they are written into nmon output file using [sender script](sender-script.md). This method results in no latency; however, it requires more effort to implement.

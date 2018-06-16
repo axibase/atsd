@@ -22,7 +22,7 @@ metric m:{metric} b:{enabled} p:{data-type} l:{label} d:{description} i:{interpo
 
 ### Issue 4403
 
-This query will now cause an error:
+This query causes an error:
 
 ```sql
 SELECT * FROM jvm_memory_used

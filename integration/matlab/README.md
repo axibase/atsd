@@ -40,7 +40,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 
 ![](./resources/prefdir.png)
 
-* Close MatLab if it's running.
+* Close MatLab if the application is running.
 * Navigate to the `prefdir` directory above and create a file named `javaclasspath.txt`.
 * Open the `javaclasspath.txt` file. Add the full path to the ATSD driver JAR file, for example, `/home/user/MATLAB/atsd-jdbc-1.2.22-DEPS.jar`
 * Save and close `javaclasspath.txt`.
@@ -86,7 +86,7 @@ conn_atsd = database('', username, password, driver, url);
 
 ## Verify Connection
 
-ATSD connection to Command Window can be verified using the `SELECT 1` query. The returned `data` should be 1.
+ATSD connection to Command Window can be verified using the `SELECT 1` query.
 Assuming `conn_atsd` is defined:
 
 ```matlab
@@ -143,7 +143,7 @@ insert(conn_atsd, 'METRIC_NAME', colnames, data);
 
 `colnames` is a cell array which describes the names and order of columns in the request.
 
-`METRIC_NAME` is the name of a metric under which the rows in `data` should be inserted.
+`METRIC_NAME` is the name of a metric under which the rows in `data` are inserted.
 
 ## Calculate Derived Series
 
@@ -208,7 +208,7 @@ weights_resultset = res.Data;
 % fetch second column from weights resultset (value field)
 % convert column to numeric array
 weights = cell2mat(weights_resultset(:,2));
-% repeat weights column for 2017 values (5,1 means that resulting matrix will increase in height 5 times)
+% repeat weights column for 2017 values (5,1 means that resulting matrix increases in height 5 times)
 weights = repmat(weights, 5, 1);
 ```
 

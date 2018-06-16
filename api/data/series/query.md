@@ -76,7 +76,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 #### Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
-* The series record must satisfy both the `tags` object and the `tagExpression` in order to be included in the results.
+* The series record must satisfy both the `tags` object and the `tagExpression` to be included in the results.
 * Supported operators: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
 * Supported functions: `LOWER`.
 * Wildcards `?` and `*` are supported by `LIKE` and `NOT LIKE` operators. Symbols `?` and `*` are treated as regular characters when used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
@@ -94,7 +94,7 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-|`forecastName`| string | Unique forecast name. Identifies a custom forecast by name. If `forecastName` is not set, then the default forecast computed by the database will be returned. `forecastName` is applicable only when `type` is set to `FORECAST` or `FORECAST_DEVIATION`. |
+|`forecastName`| string | Unique forecast name. Identifies a custom forecast by name. If `forecastName` is not set, then the default forecast computed by the database is returned. `forecastName` is applicable only when `type` is set to `FORECAST` or `FORECAST_DEVIATION`. |
 
 ### Versioning Filter
 
@@ -139,7 +139,7 @@ The default processing sequence is as follows:
 3. [rate](rate.md)
 4. [aggregate](aggregate.md)
 
-The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before it's passed to group/rate/aggregate stages.
+The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before the values are passed to group/rate/aggregate stages.
 
 The default sequence of group/rate/aggregate transformations can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
 
@@ -149,7 +149,7 @@ The default sequence of group/rate/aggregate transformations can be modified by 
 |:---|:---|:---|
 | `limit`   | integer | Maximum number of `time:value` samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
 | `direction`| string | Order for applying the `limit` parameter: `ASC` - ascending, `DESC` - descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
-| `seriesLimit`   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database will raise a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
+| `seriesLimit`   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database raises a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
 | `cache` | boolean | If `true`, execute the query against the Last Insert table, which is the fastest way to retrieve the last value for a query. Default: `false`.<br>Values in the Last Insert table may be delayed up to 15 seconds , controlled with `last.insert.write.period.seconds` setting. Only 1 value is returned for each series.|
 | `requestId` | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |
 | `timeFormat` |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
@@ -172,11 +172,11 @@ The response contains an array of series objects, each containing series identif
 ### Value Object
 
 * The value object contains a sample time and a numeric (`v` field) and/or text (`x` field) value.
-* The sample time can be specified in Epoch milliseconds (`t` field) or ISO format (`d` field).
+* The sample time can be specified in Unix milliseconds (`t` field) or ISO format (`d` field).
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `t` | integer | Sample time in Epoch milliseconds.|
+| `t` | integer | Sample time in Unix milliseconds.|
 | `d` | string | Sample time in ISO format. |
 | `v` | number | Numeric sample value at time `t`/`d`. <br>The field is set to `null` if the value is Not a Number: `{"d":"2017-09-14T17:00:03.000Z","v":null}`|
 | `x` | string | Text sample value at time `t`/`d`. |

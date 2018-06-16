@@ -36,4 +36,4 @@
 
 ## Examples
 
-* [Use Cases](https://github.com/axibase/atsd-use-cases#how-to)
+* [Use Cases](https://axibase.com/use-cases/)

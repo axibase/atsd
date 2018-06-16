@@ -58,7 +58,7 @@ Alternatively, if the entity is already known, the metrics and series can be exp
 
 ## Selecting Specific Series
 
-To display values for a specific series, the `[series]` section should specify the exact key:
+To display values for a specific series, specify the exact series key in the `[series]` section:
 
 ```ls
   # Series without Tags
@@ -83,7 +83,7 @@ To display values for a specific series, the `[series]` section should specify t
 
 ## Selecting Multiple Series with Tags
 
-By default, the database will return all series matching the request, including series with extra tags not enumerated in the request.
+By default, the database returns all series matching the request, including series with extra tags not enumerated in the request.
 
 This enables loading series using only a subset of tags that are still sufficient to uniquely identify the series:
 
@@ -95,7 +95,7 @@ This enables loading series using only a subset of tags that are still sufficien
     mount = /
 ```
 
-The above configuration will match all series with `mount=/` tag, **including** series that may have other tags.
+The above configuration matches all series with `mount=/` tag, **including** series that may have other tags.
 
 To disable partial tag match, use the `exact-match = true | false` setting:
 
@@ -108,7 +108,7 @@ To disable partial tag match, use the `exact-match = true | false` setting:
     mount = /
 ```
 
-When partial match is disabled, the database will return series with exactly the same combination of tags as specified in
+When partial match is disabled, the database returns series with exactly the same combination of tags as specified in
 the request.
 
 The partial match, while making the configuration compact, can produce undetermined results if the partial key matches multiple
@@ -122,7 +122,7 @@ series where only one series is expected:
     fstype = ext4
 ```
 
-In the above example, the response will contain 3 different series with the same file system type ext4 but with different
+In the above example, the response contains three different series with the same file system type ext4 but with different
 mount points: `/`, `/boot/`, `/media/datadrive`.
 
 The resulting series is merged from 3 underlying different series and provides a meaningless result in this case.

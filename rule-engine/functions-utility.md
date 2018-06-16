@@ -169,7 +169,7 @@ Example:
 
 Retrieves the **port** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
-If the URL `u` doesn't contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
+If the URL `u` does not contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
 
 Example:
 

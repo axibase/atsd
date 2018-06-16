@@ -22,7 +22,7 @@ Adds entities as members to the specified entity group.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist.<br>Default: `true`. |
+| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities do not exist.<br>Default: `true`. |
 
 ### Payload
 
@@ -43,7 +43,7 @@ None.
 
 ### Response
 
-If `createEntities` is `false`, and the request contains a non-existing entity, the following error will be raised:
+If `createEntities` is `false`, and the request contains a non-existing entity, the following error is raised:
 
 ```json
 {"error":"com.axibase.tsd.service.DictionaryNotFoundException: ENTITY not found for name: 'e-111'"}

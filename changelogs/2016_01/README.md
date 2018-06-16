@@ -10,7 +10,7 @@
 | 3606      |   api-rest      | Bug      | `entityExpression` not applied in [property query](../../api/data/properties/query.md) method. |
 | 3605      |   UI            | Bug      | Removed header capitalization from the embedded property widget. |
 | 3604      |   test          | Support  | API tests for the `entityExpression` field. |
-| 3603      |   core          | Feature  | Replaced metric/entity/series/last-insert cache implementation to speed up ingestion. |
+| 3603      |   core          | Feature  | Replaced metric/entity/series/last-insert cache implementation to speed up write throughput. |
 | 3602      |   core          | Feature  | Migrated to Spring 4. |
 | 3584      |   security      | Feature  | Implemented encryption for the LDAP bind password stored in the database. |
 | 3557      |   sql           | Bug      | Fixed incorrect empty string handling by the [`ISNULL`](../../sql/README.md#isnull) function. |

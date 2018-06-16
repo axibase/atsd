@@ -2,8 +2,8 @@
 
 * If the `VALUE {n}` interpolation function is specified in the `PERIOD` clause, the `EXTEND` option sets empty leading/trailing period values to equal `{n}`.
 * Without the `VALUE {n}` function, the `EXTEND` option adds missing periods at the beginning and end of the selection interval using the `NEXT` and `PREVIOUS` interpolation functions.
-* If the query doesn't contain a start date condition, `EXTEND` is _not_ applied to leading periods because the start date is not known.
-* If the query doesn't contain an end date condition, `EXTEND` is _not_ applied to trailing periods because the end date is not known.
+* If the query does not contain a start date condition, `EXTEND` is _not_ applied to leading periods because the start date is not known.
+* If the query does not contain an end date condition, `EXTEND` is _not_ applied to trailing periods because the end date is not known.
 
 ## Data
 
@@ -36,7 +36,7 @@ WHERE datetime >= '2016-06-03T09:25:00.000Z' AND datetime < '2016-06-03T09:40:00
 
 ## Query without `EXTEND`
 
-If the query selects 2-minute periods for the 09:30 - 09:40 interval, the first period will be dated 09:38
+If the query selects 2-minute periods for the 09:30 - 09:40 interval, the first period is dated 09:38
 
 ```sql
 SELECT datetime, count(value)

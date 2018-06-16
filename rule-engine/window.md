@@ -22,7 +22,7 @@ Time-based windows store samples received within the specified time interval. Th
 
 The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time passes, these windows are sometimes referred to as _sliding_ windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
 
-> The **end** time in time-based windows is not set (in particular, the end of the interval is not limited by current time) and the window will accept commands with future timestamps unless they are discarded with the [Time filter](filters.md#date-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
+> The **end** time in time-based windows is not set (in particular, the end of the interval is not limited by current time) and the window accepts commands with future timestamps unless they are discarded with the [Time filter](filters.md#date-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
 
 Old commands are automatically removed from the window once their timestamp is earlier than the defined window start time.
 
@@ -69,7 +69,7 @@ When the window is in `REPEAT` status, actions can be executed with the frequenc
 
 ### `CANCEL` Status
 
-`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the condition changes from `true` to `false` or when the window is destroyed on rule modification.
+`CANCEL` is the initial status assigned to new windows. The `CANCEL` status is also assigned to the window when the condition changes from `true` to `false` or when the window is destroyed on rule modification.
 
 Windows in `CANCEL` status do not trigger _repeat_ actions upon subsequent `false` evaluations. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
 

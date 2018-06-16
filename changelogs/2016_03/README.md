@@ -122,7 +122,7 @@ GROUP BY PERIOD(2 WEEK)
 
 > Note that empty periods and periods with a start date outside of the requested timespan are NOT included in the result set.
 
-As an alternative to a `CALENDAR` alignment, specify `START_TIME` as the second argument to the `PERIOD` function in order to align periods to the beginning of the timespan.
+As an alternative to a `CALENDAR` alignment, specify `START_TIME` as the second argument to the `PERIOD` function to align periods to the beginning of the timespan.
 
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd EEEEE') as 'date', sum(value)
@@ -141,7 +141,7 @@ GROUP BY PERIOD(2 WEEK, START_TIME)
 
 ### Issue 3670
 
-The `ROW_MEMORY_THRESHOLD` option allows in-memory processing of result sets. It should not affect the returned records in any way. The issue provided a fix for a query that produced
+The `ROW_MEMORY_THRESHOLD` option allows in-memory processing of result sets. It must not affect the returned records in any way. The issue provided a fix for a query that produced
 different results in two modes: in-memory and temporary table.
 
 ### Issue 3665
@@ -214,7 +214,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 ### Issue 3465
 
 The new parameter `addMeta` was added to [series](../../api/data/series/query.md) and property methods
-so that clients can retrieve entity and metric fields and tags in one request, saving an extra round-trip. Another advantage is that the `addMeta` parameter doesn't require the user to
+so that clients can retrieve entity and metric fields and tags in one request, saving an extra round-trip. Another advantage is that the `addMeta` parameter does not require the user to
 have a Meta API READ role.
 
 Request:

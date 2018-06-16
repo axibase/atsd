@@ -150,7 +150,7 @@ Restart Apache2:
 sudo /etc/init.d/apache2 reload
 ```
 
-Web interface should now be available on local port 80. ATSD metrics should also be visible.
+Web interface is now be available on local port 80. ATSD metrics are also be visible.
 
 Run carbon-cache:
 
@@ -162,4 +162,4 @@ cd /opt/graphite/bin
 sudo python carbon-cache.py start
 ```
 
-Within a few minutes you should see carbon metrics in the web interface.
+Within a few minutes carbon metrics are visible in the web interface.

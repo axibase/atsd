@@ -1,4 +1,4 @@
-# Metrics: Entity
+# Entity: Metrics
 
 ## Description
 
@@ -23,9 +23,10 @@ Retrieves a list of metrics collected by the entity.
 | `expression` | string | Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.|
 | `minInsertDate` | string | Include metrics with last insert date equal or greater than specified time. <br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
 | `maxInsertDate` | string | Include metrics with last insert date less than specified time.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| `useEntityInsertTime` | boolean | If `true`, `lastInsertDate` is calculated for the specified entity and metric.<br>Otherwise, `lastInsertDate` represents the last time for **all** entities.<br>Default: `true`. |
+| `useEntityInsertTime` | boolean | Controls how `lastInsertDate` field in the response is calculated. If `true`, the field contains the maximum insert time of series collected for the given metric by **the specified entity**.<br>If `false`, the field contains the maximum insert time of series collected for the given metric by **all entities**.<br>Default: `true`. |
 | `limit` | integer | Maximum number of metrics to retrieve, ordered by name. |
 | `tags` | string | Comma-separated list of metric tags to be included in the response.<br>For example, `tags=table,unit`<br>Specify `tags=*` to include all metric tags.|
+| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](../metric/list.md#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to true by default.|
 
 #### Expression
 

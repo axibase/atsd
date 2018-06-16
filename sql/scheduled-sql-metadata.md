@@ -21,7 +21,7 @@ In addition, the metadata header contains a list of column names with their resp
 
 ### Metadata Specification
 
-* Axibase Time Series Database [Ontology](atsd.jsonld) in `jsonld` format according to [RFC6350](https://tools.ietf.org/html/rfc6350)
+* ATSD [Ontology](atsd.jsonld) in `jsonld` format according to [RFC6350](https://tools.ietf.org/html/rfc6350)
 * W3C Recommendation [Metadata Vocabulary for Tabular Data](https://www.w3.org/TR/tabular-metadata/)
 
 ### Metadata in CSV Format

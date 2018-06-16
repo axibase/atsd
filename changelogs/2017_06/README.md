@@ -7,13 +7,13 @@
 | 3912 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql/README.md#joins) queries without a `WHERE` condition.                                                                                                          |
 | 3910 | rule engine    | Bug     | Invalid rules are logged with rule name to simplify troubleshooting.                                    |
 | [3909](#issue-3909) | rule engine    | Feature | Added a `Discard Previous Values` filter option to control processing of commands with a timestamp earlier than the most recent one.                                                                                                               |
-| 3902 | api-network    | Bug     | Fixed deletion of annotations by batched [series](../../api/network/series.md#series-command) commands with the [append](../../api/network/series.md#text-append) flag.                                            |
+| 3902 | api-network    | Bug     | Fixed deletion of annotations by batched [series](../../api/network/series.md#series-command) commands with the [append](../../api/network/series.md#text-append) option.                                            |
 | 3894 | rule engine    | Bug     | Fixed validation of user-defined variables. |
 | 3893 | sql            | Bug     | Fixed delta aggregator behavior with filtered dates.                                  |
 | 3892 | sql            | Bug     | Fixed usage of the [CASE](../../sql/README.md#case-expression) statement in `SELECT` clauses with grouping by the `time` column.    |
 | 3890 | sql            | Bug     | Fixed tag encoding error in high-cardinality metrics.                                 |
 | 3887 | UI             | Bug     | Added HTML-escaping for columns on SQL Queries page.                                  |
-| 3885 | api-network    | Bug     | Fixed annotation append behavior by batched [series](../../api/network/series.md#series-command) commands with the [append](../../api/network/series.md#text-append) flag.                                             |
+| 3885 | api-network    | Bug     | Fixed annotation append behavior by batched [series](../../api/network/series.md#series-command) commands with the [append](../../api/network/series.md#text-append) option.                                             |
 | 3883 | rule engine    | Bug     | Variables are now allowed to be referenced by other variables.                            |
 | 3880 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql/README.md#joins) queries when aggregating `null` values.   |
 | [3879](#issue-3879) | rule engine    | Feature | Added time filter to control how historical and future records are discarded.                                                                    |
@@ -51,7 +51,7 @@ The `Discard Previous Values` option allows you to discard commands timestamped 
 
 ### Issue 3899
 
-An example for launching a `Socrata` job can be found in [this tutorial](https://github.com/axibase/atsd-use-cases/blob/master/SocrataPython/README.md).
+An example for launching a `Socrata` job can be found in [this tutorial](https://axibase.com/use-cases/integrations/socrata/python/).
 
 ### Issue 3864
 
