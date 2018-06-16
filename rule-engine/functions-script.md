@@ -2,11 +2,11 @@
 
 ## Overview
 
-The `scriptOut` function provides a way to enrich notifications with extended information about the monitored object retrieved with a bash or Python script.
+The `scriptOut` function executes a bash or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script's `stdout` and `stderr` output.
 
-The function executes the named script with the specified parameters and returns the script's response (`stdout`/`stderr`). The parameters often include window [placeholders](placeholders.md) such as `entity` or `tags` so that the same rule can enrich alerts for different entities.
+The function accepts an array of arguments which may include window [placeholders](placeholders.md) such as `entity` or `tags`.
 
-> Only scripts located in the `./atsd/conf/script/` directory can be executed.
+The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 
 ## Common Use Cases
 
@@ -15,29 +15,30 @@ The function executes the named script with the specified parameters and returns
 * Check that an HTTP/s request to a URL returns HTTP `200 OK` status code.
 * Execute a diagnostics command on the remote host.
 * Retrieve configuration information from the remote device/host.
+* Analyze data using Python and prepare a report in HTML or plain text format.
 
 ## Syntax
 
 ```java
-scriptOut(string scriptFileName, collection arguments)
+scriptOut(string fileName, collection arguments)
 ```
 
-* [**required**] `scriptFileName` - Name of the script file located in the `./atsd/conf/script/` directory.
-* [**required**] `arguments` - Collection of parameters passed to the script.
+* [**required**] `fileName` - Name of the script file located in the `/opt/atsd/atsd/conf/script` directory.
+* [**required**] `arguments` - Collection of arguments passed to the script. Can be an empty list.
 
-The parameters may include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
+The arguments may include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
 
 ```javascript
 scriptOut('disk_size.sh', [entity, tags.file_system])
 ```
 
-Literal string parameters must be enclosed in single quotes.
+Literal string arguments must be enclosed in single quotes.
 
 ```javascript
-scriptOut('ping.sh', ['axibase.com', 3])
+scriptOut('check_site.py', ['axibase.com', 3])
 ```
 
-If no parameters are expected by the script, an empty list `[]` must be passed as the second argument.
+If no arguments are required, invoke the script with an empty list `[]`.
 
 ```javascript
 scriptOut('check_service.sh', [])
@@ -53,13 +54,32 @@ Script terminated on timeout: {current timeout value}
 
 ## Permissions
 
-Only scripts in the  `./atsd/conf/script/` directory can be executed. The scripts must have the permission bit `+x` enabled.
+The script must be located in the  `/opt/atsd/atsd/conf/script` directory and have the permission bit `+x` enabled.
 
 ```sh
-chmod u=rwx,g=rx,o=r ./atsd/conf/script/*
+chmod u=rwx,g=rx,o=r /opt/atsd/atsd/conf/script/*
 ```
 
-These scripts are executed under the `axibase` user context.
+The scripts are executed under the `axibase` user context.
+
+To execute a Python script without the python interpreter, make the script executable and instruct the kernel which interpreter to use by adding a shebang line `#!/usr/bin/env python` at the beginning of the script.
+
+```bash
+$ cat check_site.py
+#!/usr/bin/env python
+
+from atsd_client import connect, connect_url
+from prettytable import PrettyTable
+...
+```
+
+Execute the Python script by passing its name, similar to bash scripts.
+
+```javascript
+scriptOut('check_site.py', ['axibase.com', 3])
+```
+
+Review [Daily Referer Requests](#daily-referer-requests) script as an example.
 
 ## Formatting
 
@@ -84,6 +104,7 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 * [URL availability](#url-availability)
 * [TCP availability](#tcp-availability)
 * [osquery](#osquery)
+* [Daily Referer Requests](#daily-referer-requests)
 
 ### `ping`
 
@@ -353,8 +374,8 @@ ${scriptOut('url_avail.sh', ['https://axibase.com'])}
 #### Command
 
 ```sh
-curl -sS -L --insecure -X GET -m 10 -D ./atsd/conf/script/headers \
-  -w "\nResponse Time: %{time_total}\n" "https://axibase.com" > ./atsd/conf/script/response 2>&1
+curl -sS -L --insecure -X GET -m 10 -D /opt/atsd/atsd/conf/script/headers \
+  -w "\nResponse Time: %{time_total}\n" "https://axibase.com" > /opt/atsd/atsd/conf/script/response 2>&1
 ```
 
 #### Output
@@ -487,3 +508,47 @@ ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT process
  Slack:
 
  ![](./images/script-osquery-slack.png)
+
+### Daily Referer Requests
+
+The Python [script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referer-requests.py) generates a daily `http_referer` report in HTML format based on messages collected by the [`nginx_access_log_tail`](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
+
+#### Function
+
+```javascript
+${scriptOut('daily_referer_requests.py', [])}
+```
+
+#### Command
+
+```sh
+./daily_referer_requests.py
+```
+
+#### Output
+
+```html
+<table>
+    <tr>
+        <th>Date</th>
+        <th>URI</th>
+        <th>Referer</th>
+        <th>IP</th>
+        <th>Org</th>
+    </tr>
+    <tr>
+        <td>2018-06-14 03:58</td>
+        <td>/</td>
+        <td>https://example.com/</td>
+        <td>127.0.0.1</td>
+        <td>Example Org</td>
+    </tr>
+    <tr>
+        <td>2018-06-14 20:43</td>
+        <td>/chartlab/2ef08f32</td>
+        <td>https://example.org/</td>
+        <td>127.0.0.1</td>
+        <td>Example Org</td>
+    </tr>
+</table>
+```
