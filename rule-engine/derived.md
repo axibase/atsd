@@ -48,7 +48,7 @@ series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
 
 #### Current Server Time
 
-In order to store derived commands with the current server time, omit the date/time fields (`ms`, `s`, `d`) from the derived command.
+To store derived commands with the current server time, omit the date/time fields (`ms`, `s`, `d`) from the derived command.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}

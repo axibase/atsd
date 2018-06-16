@@ -86,7 +86,7 @@ conn_atsd = database('', username, password, driver, url);
 
 ## Verify Connection
 
-ATSD connection to Command Window can be verified using the `SELECT 1` query. The returned `data` should be 1.
+ATSD connection to Command Window can be verified using the `SELECT 1` query.
 Assuming `conn_atsd` is defined:
 
 ```matlab
@@ -143,7 +143,7 @@ insert(conn_atsd, 'METRIC_NAME', colnames, data);
 
 `colnames` is a cell array which describes the names and order of columns in the request.
 
-`METRIC_NAME` is the name of a metric under which the rows in `data` should be inserted.
+`METRIC_NAME` is the name of a metric under which the rows in `data` are inserted.
 
 ## Calculate Derived Series
 

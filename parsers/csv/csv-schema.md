@@ -8,7 +8,7 @@ The `select()` function implements [RFC 7111](https://tools.ietf.org/html/rfc711
 
 The cell where the cursor is located is called the active cell. Its value is obtained with the `cell(row, col)` function where `row` and `col` arguments represent indexes of the current row and column. Values of other cells can be obtained using absolute or relative references. For example, `cell(1, col)` refers to the cell located in the 1st row and the same column as the active cell. `cell(row, col-1)` refers to the cell located in the same row to the left of the active cell.
 
-Value retrieved with the `cell(rowIndex, columnIndex)` function can be used to set metric, entity, timestamp, and tag fields in order to assemble `series`, `property`, or `message` commands from the value of the active cell and referenced cells in the header and lead columns. JavaScript expressions are supported for modifying and filtering cell values.
+Value retrieved with the `cell(rowIndex, columnIndex)` function can be used to set metric, entity, timestamp, and tag fields to assemble `series`, `property`, or `message` commands from the value of the active cell and referenced cells in the header and lead columns. JavaScript expressions are supported for modifying and filtering cell values.
 
 Schema Parser example:
 

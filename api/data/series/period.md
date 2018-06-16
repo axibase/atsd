@@ -1,6 +1,6 @@
 # Period
 
-Period is a repeating time interval used to group samples occurred within each interval into buckets in order to apply aggregation functions.
+Period is a repeating time interval used to group samples occurred within each interval into buckets to apply aggregation functions.
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|

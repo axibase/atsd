@@ -69,7 +69,7 @@ As a result, the TCP processing and parsing throughput (measured in commands per
 ### Issue 3725
 
 Previously, execution of queries with the `LIMIT` clause involved copying selected rows into a temporary table, even if only a small subset of the rows, restricted with `LIMIT`, was required.
-Both `ASC` and `DESC` ordered results were optimized by reducing the number of rows copied into a temporary table. The following queries should see a 90% speedup in execution time.
+Both `ASC` and `DESC` ordered results were optimized by reducing the number of rows copied into a temporary table. The following queries experienced a 90% speedup in execution time.
 
 ```sql
 SELECT *

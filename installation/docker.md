@@ -38,7 +38,7 @@ The password is subject to the following [requirements](../administration/user-a
 docker logs -f atsd
 ```
 
-You should see an `ATSD start completed` message once the database is ready.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
 ```txt
 [ATSD] Waiting for ATSD to accept requests on port 8088 ... ( 4 / 60 )
@@ -48,7 +48,7 @@ You should see an `ATSD start completed` message once the database is ready.
 [ATSD] ATSD start completed. Time: 2017-10-03 19-50-16.
 ```
 
-Web interface is accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (https).
 
 ## Launch Parameters
 

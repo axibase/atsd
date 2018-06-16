@@ -104,7 +104,7 @@ Triggers for all actions may be configured separately. For example, you can conf
 
 ## Correlation
 
-Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-series.md), and [rule](functions-rules.md) functions.
+Each rule evaluates data received for only one specified metric. To create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-series.md), and [rule](functions-rules.md) functions.
 
 * Value functions:
 
@@ -128,7 +128,7 @@ percentile(95) > 80 && rule_open('inside_temperature_check')
 
 Rules can be considered software programs in their own right and as such involve initial development, testing, documentation and maintenance efforts.
 
-In order to minimize the number of rules with manual thresholds, the rule engine in ATSD provides the following capabilities:
+To minimize the number of rules with manual thresholds, the rule engine in ATSD provides the following capabilities:
 
 * Condition [overrides](overrides.md).
 * Comparison of windows with different lengths.
@@ -234,7 +234,7 @@ To enable this behavior, set Severity on the 'Logging' tab to `unknown`.
 
 In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../sql/scheduled-sql.md) queries.
 
-In order to trigger a notification by an SQL query:
+To trigger a notification by an SQL query:
 
 * Develop a query such that it returns an empty result if the situation is normal.
 

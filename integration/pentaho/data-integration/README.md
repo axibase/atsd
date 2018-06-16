@@ -2,7 +2,7 @@
 
 ## Overview
 
-Pentaho Data Integration at `https://community.hitachivantara.com/community/products-and-solutions/pentaho` (PDI) provides a graphical design environment to create and edit ETL (Extract, Transform, Load) jobs and workflows. The following guide includes examples of loading time series data from the Axibase Time Series Database (ATSD), calculating derived time series in PDI and storing the results in ATSD.
+Pentaho Data Integration at `https://community.hitachivantara.com/community/products-and-solutions/pentaho` (PDI) provides a graphical design environment to create and edit ETL (Extract, Transform, Load) jobs and workflows. The following guide includes examples of loading time series data from ATSD, calculating derived time series in PDI and storing the results in ATSD.
 
 ## Prerequisites
 
@@ -119,7 +119,7 @@ ORDER BY datetime, tags.category
 
 ### Duplicate Weights
 
-Since the `Weights` are available for only one year, let's assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
+Since the `Weights` are available for only one year, assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
 * Open the `Design` pane.
 * Locate `Join Rows (cartesian product)` in `Joins` category.

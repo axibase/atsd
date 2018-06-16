@@ -1,6 +1,6 @@
 # ATSD Container Migration
 
-These instructions describe how to migrate an Axibase Time Series Database instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
+These instructions describe how to migrate an ATSD instance running on **HBase-0.94** to a version running on the updated **HBase-1.2.5**.
 
 The instructions apply only to ATSD installed in a Docker container. For host-base installations, refer to the following [migration guide](README.md).
 
@@ -52,13 +52,13 @@ Calculate disk space requirements.
 
   | **Data** | **Size** |
   |---|---|
-  | Original Data | 24G |
-  | Backup | 24G |
-  | Migrated Data | 7G (30% of 24G) |
-  | Backup + Migrated | 31G |
-  | Available | 736G |
+  | Original Data | 24 GB |
+  | Backup | 24 GB |
+  | Migrated Data | 7 GB (30% of 24 GB) |
+  | Backup + Migrated | 31 GB |
+  | Available | 736 GB |
 
-> In the example above, 736G is sufficient to store 31G of backup and migrated data on the same file system.
+> In the example above, 736 GB is sufficient to store 31 GB of backup and migrated data on the same file system.
 
 Allocate additional disk space, if necessary.
 
@@ -74,7 +74,7 @@ Execute the following query to count rows for one of the key metrics in the ATSD
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number of records should match the results after the migration.
+The number of records must match the results after the migration.
 
 ## Install Java 8
 
@@ -248,7 +248,7 @@ Check that HDFS daemons were successfully started.
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
 ```
 
-The command should return information about HDFS usage and available data nodes.
+The command returns information about HDFS usage and available data nodes.
 
 Finalize HDFS upgrade.
 
@@ -256,9 +256,9 @@ Finalize HDFS upgrade.
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
 ```
 
-The command should display the following message `Finalize upgrade successful`.
+The command displays the following message `Finalize upgrade successful`.
 
-The `jps` command output should report `NameNode`, `SecondaryNameNode`, and `DataNode` processes as running.
+Run `jps` command to check that `NameNode`, `SecondaryNameNode`, and `DataNode` processes are running.
 
 ## Upgrade HBase
 
@@ -491,7 +491,7 @@ Step 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the
     FILE: Number of bytes read=6
 ```
 
-In case of insufficient virtual memory error, adjust Map-Reduce [settings](mr-settings.md) and retry the command with the `-r` flag.
+In case of insufficient virtual memory error, adjust Map-Reduce [settings](mr-settings.md) and retry the command with the `-r` setting.
 
 ```txt
 17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
@@ -612,7 +612,7 @@ Execute the query and compare the row count.
 SELECT COUNT(*) FROM mymetric
 ```
 
-The number of records should match the results prior to migration.
+The number of records must match the results prior to migration.
 
 ## Delete Backups
 

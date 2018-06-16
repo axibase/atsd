@@ -13,7 +13,7 @@ You can retrieve, test, or view the metrics using the following methods:
 * [JMX](monitoring-metrics/jmx.md)
 * [File](monitoring-metrics/file.md)
 * [Rule Engine](monitoring-metrics/rule-engine.md)
-* [Ingestion Statistics](monitoring-metrics/ingestion-statistics.md)
+* [Incoming Data Statistics](monitoring-metrics/ingestion-statistics.md)
 * [Database Tables](monitoring-metrics/database-tables.md)
 * [I/O Tests](monitoring-metrics/io-tests.md)
 * [HBase Write Test](monitoring-metrics/hbase-write-test.md)
@@ -134,8 +134,8 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`message_reads_per_second` |Number of messages read.|
 |`message_received_per_second` | Number of messages received. |
 |`message_writes_per_second` | Number of messages written. |
-|`metric_append_concat_per_second` | Number of series samples received with flag `append = true` where annotation was concatenated.|
-|`metric_append_per_second` | Number of series samples received with flag `append = true`.|
+|`metric_append_concat_per_second` | Number of series samples received with option `append = true` where annotation was concatenated.|
+|`metric_append_per_second` | Number of series samples received with option `append = true`.|
 |`metric_reads_per_second` | Number of HBase rows read from the 'd' table. Each row may container multiple samples. |
 |`metric_received_per_second` | Number of series samples received. |
 |`metric_writes_per_second` | Number of series samples written. |

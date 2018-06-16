@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes how to install an `ODBC-JDBC` bridge on a Windows machine. The bridge serves as a data link between the Axibase Time Series Database and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
+This document describes how to install an `ODBC-JDBC` bridge on a Windows machine. The bridge serves as a data link between ATSD and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
 
 The bridge intercepts SQL queries from the client applications via the Microsoft [ODBC](https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc) protocol and transmits the queries into ATSD using the [ATSD JDBC driver](https://github.com/axibase/atsd-jdbc).
 
@@ -110,6 +110,6 @@ Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-con
 
 > In case of 'Unable to create JVM' error, run a Repair task in Windows Program for the bridge program. The error may occur if the bridge was installed prior to Java installation.
 
-* The System DSN tab should now display the new data source.
+* The System DSN tab now displays the new data source.
 
   ![](./images/ODBC_5.png)

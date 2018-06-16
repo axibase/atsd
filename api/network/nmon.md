@@ -37,7 +37,7 @@ entity = "e:" entity-name
 entity-name = NAME
   ; alphanumeric and underscore
 parser = "p:" 1*(%x41-5A / %x61-7A / "_")
-  ; file name should start with entity name and end with .nmon
+  ; file name must start with entity name and end with .nmon
 filename = "f:" entity-name [NAME] ".nmon"
 timezone = "z:" TIMEZONE
 timeout = "o:" POSITIVE_INTEGER

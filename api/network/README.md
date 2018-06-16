@@ -113,7 +113,7 @@ Separate commands by a line feed symbol `\n` (LF, `0x0A`) when sending a batch c
 
 A trailing line feed is not required for the last command in the batch.
 
-Use the `-e` flag in `echo` commands to enable interpretation of backslash escapes.
+Use the `-e` option in `echo` commands to enable interpretation of backslash escapes.
 
 ```bash
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_host 8081
@@ -128,7 +128,7 @@ s.close();
 
 ### Persistent Connection
 
-A client application can establish a persistent connection in order to continuously write commands, one command per line, and close the connection.
+A client application can establish a persistent connection to continuously write commands, one command per line, and close the connection.
 
 Trailing line feed is not required for the last command when the connection is closed.
 
@@ -299,14 +299,14 @@ The timestamp field records the time of an observation or an event as determined
 
 |**Field**|**Type**|**Description**|
 |:---|:---|:---|
-|ms|long|UNIX milliseconds since 1970-01-01T00:00:00Z |
-|s|integer|UNIX seconds since 1970-01-01T00:00:00Z|
+|ms|long|Unix milliseconds since 1970-01-01T00:00:00Z |
+|s|integer|Unix seconds since 1970-01-01T00:00:00Z|
 |d|string|[ISO 8601 date format](../../api/data/date-format.md). Supported formats:<br>UTC time zone (Z) = `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`, for example `2016-06-09T16:15:04.005Z`<br>Time zone offset = `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`, for example `2016-06-09T12:15:04.005-04:00`<br>Time zone `+hh:mm` is ahead of UTC and time zone `-hh:mm` is behind UTC.|
 
 Date limits:
 
-* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or `0` milliseconds from Epoch time.
-* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or `4294969199999` milliseconds from Epoch time.
+* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or `0` milliseconds from Unix time.
+* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or `4294969199999` milliseconds from Unix time.
 * If the timestamp field is not specified, time is set to current server time.
 
 ### Number Formatting

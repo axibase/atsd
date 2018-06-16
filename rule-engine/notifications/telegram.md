@@ -19,7 +19,7 @@
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots into Telegram.
+Install and configure the [Web Driver](web-driver.md) to send chart screenshots into Telegram.
 
 ## Create Bot
 
@@ -110,7 +110,7 @@ NGINX API Gateway Path for Telegram:
 |---|---|
 |Bot API Token|Unique authentication token assigned to the bot.|
 |Chat ID|Unique identifier for the target chat or the target channel.|
-|Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
+|Text|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|
 |Notifications|If enabled, delivers the message with an audio notification.|
 |Web Page Preview|If enabled, displays short previews for URLs in the message.|
 |Details Table Format|The default format for the alerts detail table.|
@@ -121,7 +121,7 @@ NGINX API Gateway Path for Telegram:
 
 The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself.
 
-In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes' and **Method** to 'Polling'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
+To receive incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes' and **Method** to 'Polling'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
 
 ## Testing Rule
 

@@ -1,6 +1,6 @@
 # Manual Update
 
-## Login into Axibase Time Series Database Server
+## Login into ATSD Server
 
 ```sh
 su axibase

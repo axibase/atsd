@@ -62,9 +62,9 @@ The parameters are displayed if `This project is parameterized` checkbox is enab
 
 ![](./images/jenkins_param_build_3.png)
 
-The web notification can be configured to send a `x-www-form-urlencoded` data to the Jenkins server in order to pass extended parameters.
+The web notification can be configured to send a `x-www-form-urlencoded` data to the Jenkins server to pass extended parameters.
 
-In this case, add parameters names to the `Parameters` and enable their checkboxes in order to customize them in the rule editor.
+In this case, add parameters names to the `Parameters` and enable their checkboxes to customize them in the rule editor.
 
 ![](./images/jenkins_endpoint.png)
 

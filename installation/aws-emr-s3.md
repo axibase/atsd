@@ -2,7 +2,7 @@
 
 ## Overview
 
-Axibase Time Series Database can be deployed on HBase using [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
+The document describes how to deploy ATSD on HBase with [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
 
 ## Operational Advantages
 
@@ -64,7 +64,7 @@ Total Objects: 1
   Total Size: 555.1 KiB
 ```
 
-The `atsd-hbase.$REVISION.jar` should be stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
+The `atsd-hbase.$REVISION.jar` must be stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
 > When uploading the jar file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the jar file is replaced.
 
@@ -207,7 +207,7 @@ javac -version
 java version
 ```
 
-Change to a volume with at least 10GB of available disk space.
+Change to a volume with at least 10 GB of available disk space.
 
 ```bash
 df -h

@@ -19,6 +19,7 @@ Retrieves a list of metrics matching the specified filters.
 | `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO-8601 date or a [calendar](../../../shared/calendar.md) expression.|
 | `limit` |integer|Maximum number of metrics to retrieve, ordered by name.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
+| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to true by default.|
 
 #### Expression
 
@@ -87,7 +88,7 @@ Invalid Action is triggered if the received series value is less than the Minimu
 |**Action**|**Description**|
 |:---|:---|
 |NONE|Retain value as is.|
-|DISCARD|Don't process the received value, discard it.|
+|DISCARD|Do not process the received value, discard it.|
 |TRANSFORM|Set value to `min_value` or `max_value`, if value is outside of range.|
 |RAISE_ERROR|Log an ERROR event in the database log.|
 |SET_VERION_STATUS|For versioned metrics, set status to 'Invalid'.|

@@ -2,7 +2,7 @@
 
 ## Description
 
-Aggregation is a process of grouping detailed samples into repeating intervals (periods) in order to apply a statistical function to all samples in the group.
+Aggregation is a process of grouping detailed samples into repeating intervals (periods) to apply a statistical function to all samples in the group.
 
 Time between `startDate` and `endDate` can be split into periods of different durations.
 

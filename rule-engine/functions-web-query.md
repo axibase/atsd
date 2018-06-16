@@ -162,7 +162,7 @@ Examples:
 **Field**    | **Type** | **Description**
 -------------|----------|----------------
 `content`      | string   | Response body text.
-`status`       | integer  | HTTP status code, such as `200` or `401`.
+`status`       | integer  | HTTP status code, such as `200 OK` or `401 NOT FOUND`.
 `headers`      | map      | Response headers. Header values with the same name are separated by a comma.
 `duration`     | long     | Time, in milliseconds, between initiating a request and downloading the response.
 `reasonPhrase` | string   | Status line such as `OK`.

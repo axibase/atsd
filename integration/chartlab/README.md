@@ -2,7 +2,7 @@
 
 ## Overview
 
-ChartLab is a publicly hosted Node application that makes it easy to build charts using the visualization library implemented in Axibase Time Series Database.
+ChartLab is a publicly hosted Node application that makes it easy to build charts using the visualization library implemented in ATSD.
 
 The public ChartLab is hosted at the following URL: `https://apps.axibase.com/chartlab`.
 
@@ -22,9 +22,9 @@ The widgets can be configured to load data from the following sources:
 
 ## Connecting ChartLab to Custom ATSD
 
-> Note: The custom ATSD instance should be publicly accessible on a DNS/IP address.
+> Note: The custom ATSD instance must be publicly accessible on a DNS/IP address.
 
-* Login into Axibase Time Series Database server via SSH.
+* Log in to ATSD server via SSH.
 
 * Open the `/opt/atsd/atsd/conf/server.properties` file.
 

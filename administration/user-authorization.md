@@ -1,6 +1,6 @@
 # User Authorization
 
-Axibase Time Series Database implements Role Based Access Control to restrict user access to protected information.
+ATSD implements Role Based Access Control (RBAC) to restrict user access to protected information.
 
 ## Role Based Access Control
 
@@ -11,29 +11,29 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 
 | Role | Description |
 | --- | --- |
-|API_DATA_READ | Query Data API to read series, properties, messages, and alerts from the database.|
-|API_DATA_WRITE | Submit Data API requests to insert series, properties, and messages into the database.|
-|API_META_READ | Query Meta Data API to read metric, entity, and entity group settings.|
-|API_META_WRITE | Submit Meta Data API requests to change metric and entity settings. <br>Requests to change entity groups or add/remove members require an `ENTITY_GROUP_ADMIN` role.|
+|`API_DATA_READ` | Query Data API to read series, properties, messages, and alerts from the database.|
+|`API_DATA_WRITE` | Submit Data API requests to insert series, properties, and messages into the database.|
+|`API_META_READ` | Query Meta Data API to read metric, entity, and entity group settings.|
+|`API_META_WRITE` | Submit Meta Data API requests to change metric and entity settings. <br>Requests to change entity groups or add/remove members require an `ENTITY_GROUP_ADMIN` role.|
 
 ### User Interface Roles
 
 | Role | Description |
 | --- | --- |
-| USER | View information on all pages except Configuration and Settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
-| EDITOR | View and edit information on all pages except Settings pages. <br>Includes `USER` role. |
-| ENTITY_GROUP_ADMIN | Edit entity groups. <br>Includes `USER` role. |
-| ADMIN | View and edit information on all pages. <br>Includes all roles. |
+| `USER` | View information on all pages except Configuration and Settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
+| `EDITOR` | View and edit information on all pages except Settings pages. <br>Includes `USER` role. |
+| `ENTITY_GROUP_ADMIN` | Edit entity groups. <br>Includes `USER` role. |
+| `ADMIN` | View and edit information on all pages. <br>Includes all roles. |
 
 ## Entity Permissions
 
 Permissions to read and write data for entities in a particular Entity Group are granted to the User Group level.
 
-In order to read data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
+To read data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
 Groups must be granted a `read` permission to an Entity Group containing the
 entity.
 
-In order to write data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
+To write data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
 
 ![entity_group_permission](./images/entity_group_permission.png)
 

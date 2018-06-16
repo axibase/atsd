@@ -8,7 +8,7 @@ Entity Groups provide a way to organize similar entities into cohesive collectio
 
 ## Members
 
-An entity group can be composed by manually specifying names of the entities that should be included as members.
+An entity group can be composed by manually specifying names of the entities that are included as members.
 
 It can be also created by specifying a criteria against which all entities that exist in the database are evaluated. Those entities that match the criteria are added as members automatically and the group is continuously updated in the background.
 
@@ -37,7 +37,7 @@ The expression can include the following fields and supports wildcards in field 
 - enabled
 - tags.tag-name or tags['tag-name']
 
-The expression may refer to entity fields, tags and [functions](#supported-functions) in order to match entities.
+The expression may refer to entity fields, tags and [functions](#supported-functions) to match entities.
 
 ```javascript
 name LIKE '*vml*' && tags.location = 'NUR'

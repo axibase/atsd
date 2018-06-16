@@ -1,6 +1,6 @@
 # Deploy nmon
 
-In order to install nmon and the Axibase sender script on multiple Linux machines use the `nmon_deploy.sh` script.
+To install nmon and the Axibase sender script on multiple Linux machines use the `nmon_deploy.sh` script.
 
 The `nmon_deploy.sh` script executes the following steps on each specified target machine:
 
@@ -11,14 +11,14 @@ The `nmon_deploy.sh` script executes the following steps on each specified targ
 
 Download `nmon_deploy.sh` and sender script from the `nmon` repository: [https://github.com/axibase/nmon](https://github.com/axibase/nmon)
 
-`nmon_deploy.sh` accepts the following flags:
+`nmon_deploy.sh` accepts the following arguments:
 
-| Flag | Description |
+| Argument | Description |
 | --- | --- |
 |  -c  |  Set path to the `deploy.properties` file, that contains all the configurations required by the `nmon_deploy.sh` script.  |
 |  -n  |  Does not modify cron. Only updates nmon binary file and ATSD sender script.<br>Useful to update nmon or sender script to a new version.  |
 |  -d  |  Comments out all nmon cron tasks. Stops nmon data collection and delivery to ATSD  |
-|  -i  |  While nmon does not have any dependencies, the ATSD sender script has the following dependencies: crontab, telnet.<br>With -i flag the script only checks and installs dependencies.<br>Requires sudo credentials defined in the `deploy.properties` file.<br>After installing the dependencies, run the script again without the -i flag to install the nmon and sender script.  |
+|  -i  |  While nmon does not have any dependencies, the ATSD sender script has the following dependencies: crontab, telnet.<br>With `-i` argument the script only checks and installs dependencies.<br>Requires sudo credentials defined in the `deploy.properties` file.<br>After installing the dependencies, run the script again without the `-i` argument to install the nmon and sender script.  |
 
 The `deploy.properties` file contains the target machine parameters, user details, and paths to nmon and crontab settings:
 

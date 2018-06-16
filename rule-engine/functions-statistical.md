@@ -98,7 +98,7 @@ Weighted average. Weight = sample index which starts from 0 for the first sample
 
 Weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
 
-Time measured in epoch seconds.
+Time measured in Unix seconds.
 
 ## `count`
 
@@ -252,7 +252,7 @@ Number of minutes until the sample value reaches the specified threshold `t` bas
   rate_per_second() double
 ```
 
-Difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in epoch seconds.
+Difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in Unix seconds.
 
 ## `rate_per_minute`
 

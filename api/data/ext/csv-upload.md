@@ -14,12 +14,12 @@ This method supports processing of the uploaded attached file as data as well as
 
 * Maximum file size is **1 gigabyte**.
 
-> If the input file is larger than 1GB, consider compressing it so that its size is within the threshold or splitting it into multiple smaller files, uploaded separately.
+> If the input file is larger than 1 GB, consider compressing it so that its size is within the threshold or splitting it into multiple smaller files, uploaded separately.
 
 ## Date Limits
 
-* Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
-* Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
+* Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Unix time.
+* Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Unix time.
 * If the date is outside of the above range, file processing terminates at the line containing invalid date and a corresponding error is raised for the client.
 
 ## Request
@@ -30,17 +30,17 @@ This method supports processing of the uploaded attached file as data as well as
 
 ### Headers
 
-File Data mode:
+#### File Data Mode
 
 |**Header**|**Value**|
 |:---|:---|
 | Content-Type | `text/csv` - for plain text CSV file.<br>`application/zip` - for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip` - for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
 
-Multi-part mode:
+#### Multi-part Mode
 
 |**Header**|**Value**|
 |:---|:---|
-| Content-Type | `multipart/*`, for example `multipart/form-data` or  `multipart/mixed`. <br>Content type for the file part itself should be set as described in File Data mode above.|
+| Content-Type | `multipart/*`, for example `multipart/form-data` or  `multipart/mixed`. <br>Content type for the file part itself must be set as described in [File Data Mode](file-data-mode) above.|
 
 ### Query String Parameters
 
@@ -60,12 +60,12 @@ Multi-part mode:
 | `time` | string | Date in ISO format or using [calendar](../../../shared/calendar.md) keywords applies to commands if the file does not contain a time column. |
 | `timezone` | string | Time zone applied to timestamps specified in local time. |
 | `test` | boolean | Parse and validate the file without actually processing and storing commands.<br>Default: `false`. |
-| `t:{name}` | string | One or multiple default tags, inserted as series/property/message tags depending on command type, for example: `&t:location=SVL&t:site=QB1`.<br>Tag names should not contain whitespace. |
+| `t:{name}` | string | One or multiple default tags, inserted as series/property/message tags depending on command type, for example: `&t:location=SVL&t:site=QB1`.<br>Tag names must not contain whitespace. |
 
 ### Payload
 
 * File attached as data; or
-* Multi-part content containing the file. Part name containing the uploaded file should be named `filedata` and include the `filename` parameter:
+* Multi-part content containing the file. Part name containing the uploaded file must be named `filedata` and include the `filename` parameter:
 
 ```txt
 Content-Disposition: form-data; name="filedata"; filename="arch.tar.gz"

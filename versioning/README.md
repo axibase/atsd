@@ -180,6 +180,6 @@ A value can also be deleted using the selection checkbox and **Delete** button o
 
 ### Deleting Multiple Series Values
 
-To delete multiple values, set the flags in the checkboxes for all desired rows or select all with the uppermost checkbox. Click **Delete**.
+To delete multiple values, select specific rows using checkboxes or select all rows using the header checkbox. Click **Delete**.
 
 ![](./resources/15.png)

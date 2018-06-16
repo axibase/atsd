@@ -52,7 +52,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 * If tests are passing OK, check **Enable**, click **Save**.
 
-In order to test the actual payload, create a sample rule, and enable the `AWS-SQS` notification on the `Web Notifications` tab.
+To test the actual payload, create a sample rule, and enable the `AWS-SQS` notification on the `Web Notifications` tab.
 
 ## Examples
 

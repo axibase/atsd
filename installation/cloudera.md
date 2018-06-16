@@ -151,7 +151,7 @@ Otherwise, you need to allow the newly created `axibase` principal to access HBa
 
 #### Option 1. Add the `axibase` principal to the HBase super users via HBase Configuration
 
-> Don't forget to deploy updated configuration and restart HBase.
+> Do not forget to deploy updated configuration and restart HBase.
 
 ![](./images/cloudera-manager-superuser.png)
 
@@ -406,9 +406,9 @@ Review the start log for any errors:
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
-You should see a **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (https).
 
 ## Enable ATSD Auto-Start
 

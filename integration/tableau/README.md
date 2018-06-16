@@ -9,7 +9,7 @@
 
 ## Overview
 
-Tableau Desktop is a visualization software that provides tools to query, analyze, and aggregate data from multiple data sources.  The following guide outlines the initial configuration steps and includes examples of using the Tableau Desktop user interface in order to build charts from historical data stored in the Axibase Time Series Database (ATSD).
+Tableau Desktop is a visualization software that provides tools to query, analyze, and aggregate data from multiple data sources.  The following guide outlines the initial configuration steps and includes examples of using the Tableau Desktop user interface to build charts from historical data stored in ATSD.
 
 ## Dataset
 

@@ -1,6 +1,6 @@
 # User Authentication
 
-Authentication mechanisms implemented in the Axibase Time Series Database specify how users can verify their identity when accessing protected resources such as web pages and API endpoints.
+Authentication mechanisms implemented in ATSD control how users verify their identity when accessing protected resources such as web pages and API endpoints.
 
 ## Authentication Mechanisms
 
@@ -22,7 +22,7 @@ Once the credentials are verified, subsequent API requests within the same sessi
 
 ## User Account Types
 
-Access to protected resources is provided to user accounts stored in the Axibase Time Series Database.
+User accounts are stored in the database.
 
 The user account can be configured to use either **Local** or **LDAP** authentication.
 

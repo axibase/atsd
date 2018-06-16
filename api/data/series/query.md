@@ -76,7 +76,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 #### Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
-* The series record must satisfy both the `tags` object and the `tagExpression` in order to be included in the results.
+* The series record must satisfy both the `tags` object and the `tagExpression` to be included in the results.
 * Supported operators: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
 * Supported functions: `LOWER`.
 * Wildcards `?` and `*` are supported by `LIKE` and `NOT LIKE` operators. Symbols `?` and `*` are treated as regular characters when used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
@@ -172,11 +172,11 @@ The response contains an array of series objects, each containing series identif
 ### Value Object
 
 * The value object contains a sample time and a numeric (`v` field) and/or text (`x` field) value.
-* The sample time can be specified in Epoch milliseconds (`t` field) or ISO format (`d` field).
+* The sample time can be specified in Unix milliseconds (`t` field) or ISO format (`d` field).
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `t` | integer | Sample time in Epoch milliseconds.|
+| `t` | integer | Sample time in Unix milliseconds.|
 | `d` | string | Sample time in ISO format. |
 | `v` | number | Numeric sample value at time `t`/`d`. <br>The field is set to `null` if the value is Not a Number: `{"d":"2017-09-14T17:00:03.000Z","v":null}`|
 | `x` | string | Text sample value at time `t`/`d`. |

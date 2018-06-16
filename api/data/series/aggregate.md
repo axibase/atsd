@@ -26,7 +26,7 @@ The aggregation process is implemented as follows:
 
 ### Period
 
-[Period](period.md) is a repeating time interval used to group detailed values within some timespan in order to apply a statistical function.
+[Period](period.md) is a repeating time interval used to group detailed values within some timespan to apply a statistical function.
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|

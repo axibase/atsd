@@ -1,6 +1,6 @@
 # Data Migration from Graphite to ATSD
 
-Use the `migrate.py` utility to migrate data from the Graphite server, specifically from its built-in Whisper database, to the Axibase Time Series Database.
+Use the `migrate.py` utility to copy data from a Graphite server, specifically from its Whisper database, into ATSD.
 
 The `migrate.py` utility extracts stored historical data from Whisper files and transfers it in Graphite format into ATSD.
 

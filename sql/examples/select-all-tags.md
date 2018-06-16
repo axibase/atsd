@@ -2,7 +2,7 @@
 
 If rows for the retrieved series contain different tags, the `tags.*` expression is expanded to all unique tag names.
 
-If series don't contain the given series tag, the tag's value is set to `null` in the corresponding column.
+If series does not contain the given series tag, the tag value is set to `null` in the corresponding column.
 
 ## Data
 

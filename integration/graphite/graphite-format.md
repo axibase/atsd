@@ -10,7 +10,7 @@ The `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory 
 
 `atsd-pattern =` is used to convert a graphite metric name into an ATSD metric name, entity, and tags.
 
-If a metric name matches the regex `pattern`, the metric is parsed according to `atsd-pattern`.
+If a metric name matches the regular expression `pattern`, the metric is parsed according to `atsd-pattern`.
 
 > NOTE: every `\` in `pattern` must be duplicated.
 
@@ -176,11 +176,7 @@ The entity and metrics collected by Collectl is visible under the Entity and Met
 
 You can instrument Sensu to send data to ATSD using the Graphite format.
 
-Review the complete Sensu documentation.
-
-To set up the server and client on separate servers please refer to the following guide:
-
-[https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04)
+To setup the server and client on separate servers, refer to the [How to Configure Sensu](https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04) guide.
 
 #### Configure Sensu to send data to ATSD
 

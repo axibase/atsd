@@ -60,7 +60,7 @@ Description of resultset:
 
 ![](./resources/describe_example_1.png)
 
-### Convert the UNIX Epoch milliseconds to the Stata milliseconds
+### Convert Unix Time Milliseconds to Stata Milliseconds
 
 ```txt
 generate double datetime = time + tC(01jan1970 00:00:00)
@@ -97,7 +97,7 @@ odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("targe
 Syntax:
 
 * `var1 var2 var3` is a list of variables from the in-memory dataset in Stata.
-* `as("entity datetime value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
+* `as("entity datetime value")` is a list of columns in the ATSD metric. It is sorted according to list of variables.
 * `dsn("ATSD")` is a name of ODBC connection to ATSD.
 * `table("metric_name")` is a name of the metric which contains exported dataset.
 * `block` is a parameter to force using block inserts.
@@ -156,7 +156,7 @@ Preview the joined dataset:
 
 ### Merge Weights with Prices
 
-In this step two tables are appended to perform calculations within one table. This table has a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
+In this step two tables are appended to perform calculations within one table. This table has a unique row identifier (composite key of `datetime + category`) to join rows with the INNER JOIN operation.
 
 ```txt
 merge 1:1 category datetime using prices

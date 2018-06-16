@@ -1,6 +1,6 @@
 # SQL
 
-The Axibase Time Series Database supports SQL (Structured Query Language) for retrieving time series records from the database.
+ATSD supports SQL for retrieving time series data stored in the database.
 
 SQL statements can be executed interactively via the web-based [console](sql-console.md), on [schedule](#scheduler), and using the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
@@ -129,7 +129,7 @@ WHERE metric = 'mpstat.cpu_busy'
 
 ### WHERE Clause
 
-The `WHERE` clause is a condition which must be satisfied by the row in order to be included in results.
+The `WHERE` clause is a condition which must be satisfied by the row to be included in results.
 
 Columns referenced in the `WHERE` clause are replaced by their value for the given row. The condition is then evaluated for each row, and if the result is `TRUE`, the row is included in the result set.
 
@@ -632,7 +632,7 @@ SELECT tags."hello""world"
 
 Table and column aliases can be unquoted or enclosed in double quotation marks.
 
-Unquoted alias should start with letter `[a-zA-Z]`, followed by a letter, digit or underscore.
+Unquoted alias must start with letter `[a-zA-Z]`, followed by a letter, digit or underscore.
 
 The `AS` keyword is optional.
 
@@ -909,7 +909,7 @@ CASE
 END
 ```
 
-Each `search_expression` should evaluate to a boolean (true/false) value.
+Each `search_expression` must return a boolean (`true`/`false`) value.
 
 The `result_expression` can be a number, a string, or an expression. Result expressions may return values of different data types.
 
@@ -1245,7 +1245,7 @@ Date aggregation is a special type of `GROUP BY` operation that involves groupin
 
 ### Period
 
-Period is a repeating time interval used to group values occurred within each interval into sets in order to apply aggregation functions to each set separately.
+Period is a repeating time interval used to group values occurred within each interval into sets to apply aggregation functions to each set separately.
 
 Period syntax:
 
@@ -1559,7 +1559,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 | **Name** | **Description**|
 |:---|:---|
 | `INNER` | [**Default**] Performs calculations based on raw values located within the specified selection interval. |
-| `OUTER` | Retrieves prior and next raw values outside of the selection interval in order to interpolate leading and trailing values. |
+| `OUTER` | Retrieves prior and next raw values outside of the selection interval to interpolate leading and trailing values. |
 
 ### Fill
 
@@ -1811,7 +1811,7 @@ GROUP BY entity
 | nurswgvml102 | 1.2        |
 ```
 
-Column numbers can be used instead of column names. The number should be a positive integer representing the position of the column in the `SELECT` expression.
+Column numbers can be used instead of column names. The number must be a positive integer representing the position of the column in the `SELECT` expression.
 
 ```sql
 SELECT entity, AVG(value) FROM "mpstat.cpu_busy"
@@ -2552,8 +2552,7 @@ date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', 'Europe/Berlin'
 /* Parse date using the UTC offset provided as the third argument. */
 date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', '+01:00')
 
-/* If the time zone (offset) is specified in the timestamp string,
-it should be exactly the same as provided by the third argument. */
+/* Time zone (offset) specified in the timestamp must be the same as provided in the third argument. */
 date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ', 'Europe/Berlin')
 ```
 

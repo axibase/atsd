@@ -2,7 +2,7 @@
 
 ## Overview
 
-Filters determine which commands should be processed by a rule. Commands that satisfy all filters are allocated to the rule [windows](window.md) for further processing such as adding data and evaluating the alert condition.
+Filters determine which commands are processed by the given rule. Commands that satisfy all filters are allocated to the rule [windows](window.md) for further processing such as adding data and evaluating the alert condition.
 
 ## Built-in Filters
 
