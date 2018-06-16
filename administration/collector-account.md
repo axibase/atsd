@@ -33,6 +33,6 @@ Specify an optional IP range to restrict the addresses from which the collector 
 
 ![](./images/collector-user-wizard.png)
 
-The wizard will automatically create a new user account and add it as a member to the 'Data Collectors' user group with permissions to collect data for all entities.
+The wizard automatically creates a new user account and add it as a member to the 'Data Collectors' user group with permissions to collect data for all entities.
 
 ![](./images/collector-user-permissions.png)
