@@ -20,7 +20,7 @@ Scheduling frequency is controlled with the `Schedule` field containing a [`cron
 
 ## Authorization
 
-Scheduled queries are executed with `All Entities: Read` permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity `read` permissions](../administration/user-authorization.md#entity-permissions).
+Scheduled queries are granted the `All Entities: Read` permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity `read` permissions](../administration/user-authorization.md#entity-permissions).
 
 ## Formats
 
@@ -66,7 +66,7 @@ The **Output Path** field may contain date and form [placeholders](#placeholders
 
 Example: `/opt/report/daily/${yyyy-MM-dd}.csv`
 
-An expression like `/opt/report/daily/${yyyy-MM-dd}.csv` creates the following file `/opt/report/daily/2017-06-10.csv` when executed.
+The above expression evaluates to the following path `/opt/report/daily/2017-06-10.csv` when the report is executed.
 
 ### Email Delivery
 

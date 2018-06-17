@@ -170,7 +170,7 @@ Filter expression examples:
 
 ```javascript
 // name column
-name like 'nur*'
+name LIKE 'nur*'
 ```
 
 ```javascript

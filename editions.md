@@ -1,6 +1,8 @@
 # Editions
 
-Axibase Time Series Database (ATSD) is available in two editions: **Standard** and **Enterprise**. The enterprise edition can be installed in a scale-out mode.
+Axibase Time Series Database (ATSD) is available in two editions: **Standard** and **Enterprise**.
+
+Enterprise Edition supports a scale-out deployment model.
 
 ## Modules
 

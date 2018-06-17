@@ -11,7 +11,7 @@ Expression: `name LIKE '*car*'`
 ### URI
 
 ```elm
-/api/v1/entities?limit=10&expression=name%20like%20%27*car*%27
+/api/v1/entities?limit=10&expression=name%20LIKE%20%27*car*%27
 ```
 
 ### Payload

@@ -1,6 +1,6 @@
 # Scheduling
 
-Forecasts, SQL queries, data export jobs, and administrative tasks may be run on schedule according to a `cron` expression.
+Forecasts, SQL queries, data export jobs, and administrative tasks can be run on schedule according to a `cron` expression. The schedules are listed on the **Settings > Server Properties** page.
 
 ## Syntax
 
@@ -12,13 +12,12 @@ Fields in a `cron` expression have the following order:
 * day-of-month
 * month
 * day-of-week
-* year **(optional)**
 
-For example, `0 0 8 * * ? *` means that the task is executed at `08:00:00` every day.
+For example, `0 0 8 * * ?` means that the task is executed at `08:00:00` every day.
 
 ```txt
-seconds minutes hours day-of-month month day-of-week year
-   0       0      8        *         *        ?        *
+seconds minutes hours day-of-month month day-of-week
+   0       0      8        *         *        ?
 ```
 
 Either '0' or '7' can be used for Sunday in the `day-of-week` field.

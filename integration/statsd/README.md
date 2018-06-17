@@ -1,6 +1,6 @@
 # StatsD
 
-[StatsD](https://github.com/etsy/statsd) is a network daemon that runs on the Node.js platform and listens for statistics, like counters and timers, sent over UDP or TCP and sends aggregates to one or more pluggable back-end services.
+[StatsD](https://github.com/etsy/statsd) is a Node.js network daemon that listens for metrics from applications running on the same server, aggregates metrics into statistics and transmits them to one or more pluggable back-end services.
 
 ## Setup Backend
 

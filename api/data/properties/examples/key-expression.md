@@ -17,7 +17,7 @@ POST /api/v1/properties/query
     {
         "type": "disk",
         "entity": "nurswgvml007" ,
-        "keyTagExpression": "id like 'sd*'"
+        "keyTagExpression": "id LIKE 'sd*'"
     }
 ]
 ```

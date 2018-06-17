@@ -142,7 +142,7 @@ SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",
   min(value), max(value), max(value)- min(value) AS "max-min", first(value), last(value), last(value)-first(value) AS "last-first", delta(value)
 FROM "so.tags.count"
 WHERE entity = 'stackoverflow-python'
-  AND datetime >= '2017-01-01T00:00:00Z' and datetime < '2017-02-06T00:00:00.000Z'
+  AND datetime >= '2017-01-01T00:00:00Z' AND datetime < '2017-02-06T00:00:00.000Z'
   AND date_format(time, 'EEEE') = 'Sunday'
 GROUP BY period(1 day)
   --HAVING date_format(time, 'EEEE') = 'Sunday'
@@ -168,7 +168,7 @@ SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",
   min(value), max(value), max(value)- min(value) AS "max-min", first(value), last(value), last(value)-first(value) AS "last-first", delta(value)
 FROM "so.tags.count"
 WHERE entity = 'stackoverflow-python'
-  AND datetime >= '2017-01-01T00:00:00Z' and datetime < '2017-02-06T00:00:00.000Z'
+  AND datetime >= '2017-01-01T00:00:00Z' AND datetime < '2017-02-06T00:00:00.000Z'
   --AND date_format(time, 'EEEE') = 'Sunday'
 GROUP BY period(1 day)
   HAVING date_format(time, 'EEEE') = 'Sunday'

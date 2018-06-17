@@ -170,8 +170,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 ![](./resources/creating-and-assigning-portals_7.png)
 
 * Open the [Portals Page](#portals-page).
-* Locate the template portal that you'd like to assign.
-* Click on the _assign_ icon.
+* Click on the **assign** icon for the desired template portal.
 
     ![](./resources/creating-and-assigning-portals_8.png)
 

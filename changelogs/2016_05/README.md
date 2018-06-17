@@ -43,7 +43,7 @@ GROUP BY tavg.tags.type
 SELECT date_format(time, 'yyyy-MM-dd') as 'date',
   tags.city, tags.state, tags.region, sum(value)
 FROM cdc.all_deaths
-  WHERE entity = 'mr8w-325u' and tags.city IS NOT NULL
+  WHERE entity = 'mr8w-325u' AND tags.city IS NOT NULL
 GROUP BY entity, tags
   WITH time >= last_time - 4*week
 ORDER BY sum(value) desc
@@ -65,7 +65,7 @@ WITH ROW_NUMBER(tags ORDER BY datetime desc) <= 1
 
 Since the timespan is not defined in the `WHERE` clause, previously we did not apply any date filter to scanned records.
 To optimize the query we now perform a lookup of the minimum insert time for the specified metric, entity, and series tags.
-Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. A condition like `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
+Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. For example, a condition `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
 only need the last value for each combination of tags. We can therefore skip values with a timestamp less than the minimum last insert time.
 
 ### Issue 3325
