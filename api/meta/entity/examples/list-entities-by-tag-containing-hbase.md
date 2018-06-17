@@ -22,7 +22,7 @@ name LIKE 'nur*' and lower(tags.app) LIKE '*hbase*'
     "enabled": true,
     "lastInsertDate": "2015-09-04T15:43:36.000Z",
     "tags": {
-        "app": "Hadoop/HBASE"
+        "app": "Hadoop/HBase"
     }
 },
 {

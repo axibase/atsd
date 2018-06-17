@@ -115,7 +115,7 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 * Discard series with tag 'id' starting with `lo`
 
 ```javascript
-  tags.id not like 'lo*'
+  tags.id NOT LIKE 'lo*'
 ```
 
 * Discard series with tag 'disk' equal `/boot` or starting with `/run`

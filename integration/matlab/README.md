@@ -62,7 +62,7 @@ Example:
 * Click **Configure Data Source > Configure JDBC Data Source**
 * Select **Vendor > OTHER**.
 * Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
-* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;expandTags=true` [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
+* Specify a JDBC URL, for example `jdbc:atsd://atsd_hostname:8443;expandTags=true` [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
 * Click **Test**, specify ATSD login and password
 * If connection is successful click **Save** and close _JDBC Data Source Configuration_ window
 
@@ -102,8 +102,8 @@ Expected result:
 
 ## Review Tables in the Database Explorer
 
-* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;tables=%jvm%` at _JDBC Data Source Configuration_ window
-* Click **New Query**, select _ATSD_ at _Data Source_ drop-down, specify ATSD login and password
+* Specify a JDBC URL, for example `jdbc:atsd://atsd_hostname:8443;tables=%jvm%` in the **JDBC Data Source Configuration** window.
+* Click **New Query**, select **ATSD** in the **Data Source** drop-down list, enter ATSD username and password.
 
 The _Database Browser_ displays a set of tables matching the expression:
 

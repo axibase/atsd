@@ -2,13 +2,13 @@
 
 ## Overview
 
-Calendar syntax implements convenient [keywords](#keywords) and [arithmetic](#expressions) as an alternative to specifying literal dates in API requests, portal configurations, export settings, etc.
+Calendar syntax implements convenient [keywords](#keywords) and [date arithmetic](#expressions) in cases where the calculated date depends on the current time. The syntax is supported in API requests, portal configurations, export settings, etc.
 
-For example, if the current time is `December 15, 2017 15:28:44`, the expression `current_hour - 1 * day` returns `December 14, 2016 15:00:00`.
+For example, if the current time is `December 15, 2017 15:28:00`, the keyword `current_day` evaluates to `December 15, 2017 00:00:00` and the expression `current_hour - 1 * day` returns `December 14, 2017 15:00:00`.
 
-Calendar [keyword](#keywords) are evaluated based on the current **server** time and the **server** [time zone](timezone-list.md).
+Calendar [keywords](#keywords) are evaluated based on the current **server** time and the **server** [time zone](timezone-list.md).
 
-Calendar arithmetic such as adding or subtracting an interval is implemented with [expressions](#expressions).
+Date arithmetic such as adding or subtracting an interval is implemented using [expressions](#expressions).
 
 ## Expressions
 

@@ -484,7 +484,7 @@ WHERE datetime >= CURRENT_HOUR
 ```ls
 | entity       | entity.tags.os | entity.tags.app       | AVG(value) |
 |--------------|----------------|-----------------------|------------|
-| nurswgvml006 | Linux          | Hadoop/HBASE          | 29.9       |
+| nurswgvml006 | Linux          | Hadoop/HBase          | 29.9       |
 | nurswgvml007 | Linux          | ATSD                  | 32.4       |
 | nurswgvml009 | null           | Oracle EM             | 35.9       |
 | nurswgvml010 | Linux          | SVN, Jenkins, Redmine | 6.4        |

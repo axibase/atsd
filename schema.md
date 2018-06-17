@@ -12,7 +12,7 @@ The records are always associated with an `entity`, a generic class, which repre
 
 ## Series
 
-Time Series (or just Series) is a time-indexed array of measurements, each described with a timestamp, a numeric value, and a textual annotation.
+Time Series (or just Series) is a time-indexed array of measurements, each described with a timestamp and a numeric value or a text annotation.
 
 ```elm
 date         time       value   annotation

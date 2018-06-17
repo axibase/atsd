@@ -13,7 +13,7 @@ GET /api/v1/metrics?expression=name%20like%20%27*disk*%27
 ### Expression
 
 ```javascript
-expression=name like '*disk*'
+expression=name LIKE '*disk*'
 ```
 
 ## Response

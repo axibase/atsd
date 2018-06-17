@@ -2,14 +2,12 @@
 
 ## Description
 
-The underlying series can be regularized by applying periodic aggregation using the `FIRST` or `LAST` function and enabling interpolation to fill the gaps created by periods without data.
+The underlying series can be regularized by applying periodic aggregation using the `FIRST` or `LAST` function and turning on interpolation to fill the gaps created by periods without data. The technique is called "downsampling" in reference to a fewer number of returned data points.
 
 * `FIRST` returns the first observed value in the given period.
-* `LAST` = returns the last observed value in the given period.
+* `LAST` returns the last observed value in the given period.
 
-Unlike `AVERAGE` and percentile function, `FIRST` and `LAST` do not average out the values of the underlying series.
-
-The process is sometimes called downsampling.
+Both functions return actually recorded values, unlike `AVERAGE` and percentile functions, which calculate smoothed statistics.
 
 ## Request
 
