@@ -1048,7 +1048,7 @@ WHERE time >= 1500300000000
 -- 1500300000000 is equal to 2017-07-17 14:00:00 UTC
 ```
 
-The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to `time >= 'a' and time <= 'b'`.
+The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to `time >= 'a' AND time <= 'b'`.
 
 ### Optimizing Interval Queries
 

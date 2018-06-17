@@ -73,7 +73,7 @@ The `lastInsertDate` field can be filtered using `minInsertDate` and `maxInsertD
 #### URI
 
 ```elm
-GET /api/v1/entities?timeFormat=iso&limit=2&expression=name%20like%20%27nurs*%27
+GET /api/v1/entities?timeFormat=iso&limit=2&expression=name%20LIKE%20%27nurs*%27
 ```
 
 #### Payload
@@ -83,7 +83,7 @@ None.
 #### curl
 
 ```bash
-curl "https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expression=name%20like%20%27nurs*%27" \
+curl "https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expression=name%20LIKE%20%27nurs*%27" \
   --insecure --include --user {username}:{password}
 ```
 

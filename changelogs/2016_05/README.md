@@ -43,7 +43,7 @@ GROUP BY tavg.tags.type
 SELECT date_format(time, 'yyyy-MM-dd') as 'date',
   tags.city, tags.state, tags.region, sum(value)
 FROM cdc.all_deaths
-  WHERE entity = 'mr8w-325u' and tags.city IS NOT NULL
+  WHERE entity = 'mr8w-325u' AND tags.city IS NOT NULL
 GROUP BY entity, tags
   WITH time >= last_time - 4*week
 ORDER BY sum(value) desc

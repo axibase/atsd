@@ -5,7 +5,7 @@
 ### URI
 
 ```elm
-GET /api/v1/entities?tags=*&expression=name%20like%20%27nur*%27
+GET /api/v1/entities?tags=*&expression=name%20LIKE%20%27nur*%27
 ```
 
 ### Expression

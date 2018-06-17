@@ -7,7 +7,7 @@ List all metrics whose name includes 'disk'
 ### URI
 
 ```elm
-GET /api/v1/metrics?expression=name%20like%20%27*disk*%27
+GET /api/v1/metrics?expression=name%20LIKE%20%27*disk*%27
 ```
 
 ### Expression

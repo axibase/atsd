@@ -53,7 +53,7 @@ The `date_format` function can now be used in the `WHERE`, `GROUP BY`, and `HAVI
 ```sql
 SELECT date_format(time, 'MMM'), sum(value)
   FROM cdc.pneumonia_and_influenza_deaths
-WHERE entity = 'mr8w-325u' and tags.city = 'Boston'
+WHERE entity = 'mr8w-325u' AND tags.city = 'Boston'
   GROUP BY tags.region, date_format(time, 'MMM')
 ORDER BY date_format(time, 'MM')
 ```

@@ -11,7 +11,7 @@ GET /api/v1/entities?timeFormat=iso&limit=2&tags=app&expression=name%20LIKE%20%2
 ### Expression
 
 ```javascript
-name LIKE 'nur*' and lower(tags.app) LIKE '*hbase*'
+name LIKE 'nur*' AND lower(tags.app) LIKE '*hbase*'
 ```
 
 ## Response

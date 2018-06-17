@@ -127,7 +127,7 @@ SELECT t1.datetime, t1.tags,
 FROM wind_power_production t1 JOIN "solar_cell_production_(estimated)" t2
 WHERE t1.tags.name LIKE 'DK*st'
   AND t1.datetime >= '2016-06-01T00:00:00.000Z'
-  AND date_format(t1.time, 'HH') between '09' and '17'
+  AND date_format(t1.time, 'HH') between '09' AND '17'
 LIMIT 10
 ```
 
