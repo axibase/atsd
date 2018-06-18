@@ -63,7 +63,7 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 2. Screenshot of the **Portals > ATSD Log Viewer** portal for the time period covering the issue.
 
     ![](./images/portal-atsd-log-viewer.png)
-    
+
 3. Screenshots of the **Settings / Diagnostics / Database Statistics** table.
 
     ![](./images/portal-database-statistics-1.png)
