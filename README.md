@@ -9,14 +9,13 @@ Axibase Time Series Database (ATSD) is a non-relational database optimized for c
    |
   HBase
    |
-  FileSystem: Ext4 / HDFS / Amazon S3
+  FileSystem: Local / HDFS / EMRFS
 ```
 
-* ATSD is written in Java. It is supported on most Linux 64-bit distributions and requires a Java 8 runtime environment.
-* Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as the persistence layer for reading and writing key-values in the underlying file system.
-* HBase is supported on local (`ext4`) and distributed file systems such as [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) and [Amazon S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase.html).
+* ATSD is written in Java. It is supported on Linux distributions in 64-bit mode and requires a Java 8 runtime environment.
+* Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which persists key-values in the underlying file system such as `ext4`, [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), and [Amazon EMRFS](./installation/aws-emr-s3.md).
 
-ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a [container](./installation/docker.md#start-container).
+ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a Docker [container](./installation/docker.md#start-container).
 
 ```bash
 docker run -d -p 8088:8088 -p 8443:8443 -p 8081:8081 \
@@ -25,9 +24,9 @@ docker run -d -p 8088:8088 -p 8443:8443 -p 8081:8081 \
 
 ## Compute Scalability
 
-Single-node ATSD instance can process up to 200,000 metrics per second with millisecond accuracy and without numeric precision loss.
+Single-node ATSD instance can process up to 200,000 metrics per second with millisecond accuracy, support for out-of-order writes, and without numeric precision loss.
 
-Compute scalability increases the system's read and write throughput (number of metrics inserted per second) and is achieved by adding **region servers** to the HBase cluster.
+Number of metrics inserted per second is scaled by adding **region servers** to the underlying HBase cluster.
 
 ## Storage Scalability
 
@@ -35,7 +34,7 @@ Storage efficiency determines how many metrics and individual series can be stor
 
 Compared to traditional databases, ATSD requires up to **50 times** less disk space. Refer to [compression tests](./administration/compaction/README.md) for more details.
 
-Storage capacity can be scaled by adding data nodes to the underlying HDFS cluster. When ATSD is deployed on [AWS EMR](./installation/aws-emr-s3.md), the storage capacity is right-sized automatically and independently of the processing capacity.
+Storage capacity can be scaled by adding data nodes to the underlying HDFS cluster. In ATSD on [AWS EMR](./installation/aws-emr-s3.md), the storage capacity is right-sized automatically and independently of the processing capacity.
 
 ## Use Cases
 
@@ -91,7 +90,7 @@ The following protocols are supported for compatibility with external sources:
 
 ## Schema
 
-The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such doesn't require changes when inserting data from objects of different types.
+The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such does not require changes when inserting data from objects of different types.
 
 ### Glossary
 

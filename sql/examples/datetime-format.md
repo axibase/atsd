@@ -31,7 +31,7 @@ WHERE entity = 'nurswgvml007'
 
 ## `date_format` Function
 
-The `date_format` function can print out the `time` column as well as any numeric column containing Epoch milliseconds, formatted with the user-defined format and time zone.
+The `date_format` function can print out the `time` column as well as any numeric column containing Unix milliseconds, formatted with the user-defined format and time zone.
 
 ```sql
 SELECT time,
@@ -125,7 +125,7 @@ SELECT t1.entity, t1.value AS "busy", t2.value AS "sys", t3.value AS "usr",
   JOIN "mpstat.cpu_system" t2
   JOIN "mpstat.cpu_user" t3
 WHERE t1.entity LIKE 'nurswgvml0%'
-AND t1.datetime >= '2016-10-10T10:00:00.000Z' and t1.datetime < '2016-10-10T10:01:00.000Z'
+AND t1.datetime >= '2016-10-10T10:00:00.000Z' AND t1.datetime < '2016-10-10T10:01:00.000Z'
   WITH INTERPOLATE(60 SECOND, AUTO, OUTER)
   ORDER BY t1.datetime
 ```

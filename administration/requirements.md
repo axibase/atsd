@@ -6,7 +6,7 @@
 | RAM | 4+ GB | 16+ GB |
 | Disk Type | Magnetic | SSD |
 
-> Processor capacity calculated as the number of CPU cores multiplied by clock speed, for example 4 x 2.5GHz = 10 GHz
+> Processor capacity calculated as the number of CPU cores multiplied by clock speed, for example 4 x 2.5 GHz = 10 GHz
 
 ## Disk Space
 

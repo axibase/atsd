@@ -59,7 +59,7 @@ AND REPLACE(entity.tags.environment, 'production', 'prod') = 'prod'
 ```ls
 | entity       | datetime                 | value   | tags.file_system                    | tags.mount_point | appl                       |
 |--------------|--------------------------|---------|-------------------------------------|------------------|----------------------------|
-| nurswgvml006 | 2016-10-03T13:41:26.000Z | 8346084 | /dev/mapper/vg_nurswgvml006-lv_root | /                | Hadoop/HBASE@prod          |
+| nurswgvml006 | 2016-10-03T13:41:26.000Z | 8346084 | /dev/mapper/vg_nurswgvml006-lv_root | /                | Hadoop/HBase@prod          |
 | nurswgvml007 | 2016-10-03T13:41:32.000Z | 8220616 | /dev/mapper/vg_nurswgvml007-lv_root | /                | ATSD@prod                  |
 | nurswgvml010 | 2016-10-03T13:41:32.000Z | 7185520 | /dev/sda1                           | /                | SVN, Jenkins, Redmine@prod |
 ```
@@ -100,7 +100,7 @@ AND REPLACE(entity.tags.environment, 'production', 'prod') = 'prod'
 ```ls
 | entity       | datetime                 | value   | tags.file_system                    | tags.mount_point | appl                       |
 |--------------|--------------------------|---------|-------------------------------------|------------------|----------------------------|
-| nurswgvml006 | 2016-10-03T13:41:26.000Z | 8346084 | /dev/mapper/vg_nurswgvml006-lv_root | /                | Hadoop/HBASE@prod          |
+| nurswgvml006 | 2016-10-03T13:41:26.000Z | 8346084 | /dev/mapper/vg_nurswgvml006-lv_root | /                | Hadoop/HBase@prod          |
 | nurswgvml007 | 2016-10-03T13:41:32.000Z | 8220616 | /dev/mapper/vg_nurswgvml007-lv_root | /                | ATSD@prod                  |
 | nurswgvml010 | 2016-10-03T13:41:32.000Z | 7185520 | /dev/sda1                           | /                | SVN, Jenkins, Redmine@prod |
 ```

@@ -10,7 +10,7 @@
 
 [Graphite](https://graphite.readthedocs.org/en/latest/) is a monitoring tool that stores numeric time-series data and renders graphs of this data on demand.
 
-The Axibase Time Series Database supports the Graphite format and Pickle protocol, so tools that send data to Graphite can also send data to ATSD.
+ATSD supports both the Graphite format as well as the Pickle protocol, therefore tools that send data into Graphite can also send data to ATSD.
 
 ATSD has a Storage Finder for Graphite-Web, which means that you can use ATSD as the back-end for Graphite replacing or augmenting the default Whisper database.
 

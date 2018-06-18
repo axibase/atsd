@@ -33,7 +33,7 @@ The view can be accessed by users with [`read`](../administration/user-authoriza
 Name | **[required]** View name displayed on the entity views page.
 Enabled | Status: enabled or disabled. <br>Disabled views are not visible on the **Entity Views** tab in the main menu.
 Entity Group | **[required]** [Entity group](entity_groups.md) which members are included in the view.
-Entity Expression | Additional condition for group members to satisfy in order to be included in the view. The syntax is the same as in entity group [expressions](entity_groups.md#expression).
+Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in entity group [expressions](entity_groups.md#expression).
 Dynamic Filter | [Filter](#dynamic-filters) applied to displayed entities on initial page load.
 Split Table by Column | Enter column header or column value to group entities into separate tables.
 Display in Main Menu | If enabled, the view is accessible under its own tab in the main menu on the left.
@@ -43,7 +43,7 @@ Multi-Entity Portal | [Portal](#portal) with time series charts for multiple ent
 
 ## Filters
 
-The list of entities displayed in the table(s) is determined as follows:
+The list of entities displayed in the table is determined as follows:
 
 * The list is initially set to the current members of the selected entity group.
 * If an [**Entity Expression**](#settings) is specified, the members are checked against this condition. Entities that fail to satisfy the condition are hidden.
@@ -67,7 +67,7 @@ The table consists of multiple columns, one row per entity. Each cell displays a
 Type | Column type.
 Header | Column name.
 Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
-Link | Specifies if the cell value should also be clickable as a link. See [Links](#links) options.
+Link | Makes the cell value a clickable link. See [Links](#links) options.
 Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
 Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
 Formatting | A [function](#formatting) or an expression to round numbers and convert units.
@@ -170,7 +170,7 @@ Filter expression examples:
 
 ```javascript
 // name column
-name like 'nur*'
+name LIKE 'nur*'
 ```
 
 ```javascript

@@ -43,7 +43,7 @@ queryConfig("rc-hook",
 )
 ```
 
-The target URL will receive the following payload sent as `application/x-www-form-urlencoded`:
+The target URL receives the following payload sent as `application/x-www-form-urlencoded`:
 
 ```ls
 channel=devops&repository=atsd-site
@@ -63,7 +63,7 @@ queryConfig("rc-hook",
 )
 ```
 
-The target URL will receive the following JSON payload sent as `application/json`:
+The target URL receives the following JSON payload sent as `application/json`:
 
 ```json
 {
@@ -108,7 +108,7 @@ The configuration map `c` may contain the following fields:
 
 The request payload can be specified using either `content` text or `params` map.
 
-The `params` map is serialized into a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
+The `params` map is serialized into a JSON document if content type is `application/json`. Otherwise the map is converted to URL-encoded form format.
 
 **JSON content type**:
 
@@ -162,7 +162,7 @@ Examples:
 **Field**    | **Type** | **Description**
 -------------|----------|----------------
 `content`      | string   | Response body text.
-`status`       | integer  | HTTP status code, such as `200` or `401`.
+`status`       | integer  | HTTP status code, such as `200 OK` or `401 NOT FOUND`.
 `headers`      | map      | Response headers. Header values with the same name are separated by a comma.
 `duration`     | long     | Time, in milliseconds, between initiating a request and downloading the response.
 `reasonPhrase` | string   | Status line such as `OK`.

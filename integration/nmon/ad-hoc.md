@@ -1,6 +1,6 @@
 # Visualizing nmon Files in ad-hoc Mode
 
-The Axibase Time Series Database provides ad-hoc visualization of Linux and AIX nmon files.
+ATSD provides ad-hoc visualization of Linux and AIX nmon files.
 
 This means that you can upload any nmon file or an archive of nmon files into ATSD and instantly view the data in a pre-configured portal.
 

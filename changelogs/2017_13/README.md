@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 4052 | sql | Bug | Return human-readable errors for queries with unsupported syntax. |
-| [4050](#issue-4050) | sql | Feature | Add the [`date_parse`](../../sql/README.md#date_parse) function to parse literal timestamp string into Unix milliseconds. |
+| [4050](#issue-4050) | sql | Feature | Add the [`date_parse`](../../sql/README.md#date_parse) function to parse literal timestamp string into milliseconds in Unix time. |
 | 4039 | sql | Bug | Improve performance for queries with no entity specified in the `WHERE` clause. |
 | [4032](#issue-4032) | sql | Feature | Add support for [`LEAD`](../../sql/README.md#lead) and [`LAG`](../../sql/README.md#lag) functions in the `SELECT` expression. |
 | 4031 | UI | Feature | Add syntax highlighting to the `Data Entry` text area. |
@@ -69,8 +69,7 @@ date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "Europe/Berlin"
 /* Parse date using the UTC offset provided as the third argument. */
 date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "+01:00")
 
-/* If the time zone (offset) is specified in the timestamp string,
-it should be exactly the same as provided by the third argument. */
+/* Time zone (offset) specified in the timestamp must be the same as provided in the third argument. */
 date_parse("31.01.2017 12:36:03.283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss.SSS ZZZ", "Europe/Berlin")
 ```
 
@@ -128,7 +127,7 @@ SELECT t1.datetime, t1.tags,
 FROM wind_power_production t1 JOIN "solar_cell_production_(estimated)" t2
 WHERE t1.tags.name LIKE 'DK*st'
   AND t1.datetime >= '2016-06-01T00:00:00.000Z'
-  AND date_format(t1.time, 'HH') between '09' and '17'
+  AND date_format(t1.time, 'HH') between '09' AND '17'
 LIMIT 10
 ```
 

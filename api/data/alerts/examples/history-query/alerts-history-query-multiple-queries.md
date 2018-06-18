@@ -78,7 +78,7 @@ POST /api/v1/alerts/history/query
     "severity": "CRITICAL",
     "rule": "disk_low_alert",
     "ruleExpression": "value > 60",
-    "ruleFilter": "tags.mount_point not like '*u113452*'",
+    "ruleFilter": "tags.mount_point NOT LIKE '*u113452*'",
     "window": "length(1)",
     "repeatCount": 0,
     "alertDuration": 0,

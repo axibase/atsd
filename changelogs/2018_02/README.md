@@ -4,24 +4,24 @@
 
 Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
-5047 | rule engine | Bug | [`CANCEL`](../../rule-engine/window.md#cancel-status) window doesn't display user variables.
+5047 | rule engine | Bug | [`CANCEL`](../../rule-engine/window.md#cancel-status) window does not display user variables.
 5044 | security | Feature | User [permissions](../../administration/user-authorization.md#user-authorization) page: add group-level details.
-5041 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) doesn't support `<br>` when parse_mode is `html`.
+5041 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) does not support `<br>` when parse_mode is `html`.
 5040 | rule engine | Bug | [Entity non-grouped](../../rule-engine/grouping.md) rule windows are missing.
 5039 | rule engine | Feature | Modify [convert](../../rule-engine/functions-format.md#convert) function unit processing, implement [`formatBytes`](../../rule-engine/functions-format.md#formatbytes) function.
 5036 | admin | Feature | Restore multiple record types from archived XML backup files.
 5034 | data-in | Feature | Internal [timer](../../rule-engine/window.md#timers) metrics.
-5033 | rule engine | Bug | [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) function should use adjusted current time during 'Test'.
+5033 | rule engine | Bug | [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) function - use adjusted current time during 'Test'.
 5030 | rule engine | Bug | Fix [Telegram](../../rule-engine/notifications/telegram.md) notification timeouts.
 5028 | rule engine | Bug | Illegal entity name (empty string) registered from [derived](../../rule-engine/derived.md) messages.
 5025 | rule engine | Bug | Modify [`alert_duration`](../../rule-engine/window-fields.md#date-fields) value.
 5024 | rule engine | Feature | Implement wildcards in key section of the [property search](../../rule-engine/property-search.md#property-search-syntax) expression.
 5022 | entity_views | Bug | Export to XML incomplete.
-5021 | sql | Bug | [`LAST(datetime)`](../../sql/README.md#aggregation-functions) displays UNIX time instead of `datetime` format.
+5021 | sql | Bug | [`LAST(datetime)`](../../sql/README.md#aggregation-functions) displays Unix time instead of `datetime` format.
 5017 | rule engine | Bug | Display [window details](../../rule-engine/window.md#window-fields) even if window is in [`CANCEL`](../../rule-engine/window.md#cancel-status) status.
 5015 | rule engine | Bug | Quote escaping with [backslash](../../rule-engine/variables.md#string).
 5014 | rule engine | Bug | [HipChat](../../rule-engine/notifications/hipchat.md) notification: inline links in portal description message.
-5013 | rule engine | Bug | System [command](../../rule-engine/commands.md) execution error should be registered in Rule Errors.
+5013 | rule engine | Bug | System [command](../../rule-engine/commands.md) execution error not registered in Rule Errors.
 5012 | entity_views | Bug | 'Entity Tag' [link](../../configuration/entity_views.md#links) not applied to 'Entity Tag' column.
 5011 | rule editor | Bug | Table cells on Test tab are missing.
 5009 | entity_views | Bug | Allow empty values if default value is blank in dictionary columns.
@@ -65,7 +65,7 @@ Issue| Category    | Type    | Subject
 4878 | rule engine | Feature | Add optional parameters to [`rule_open`](../../rule-engine/functions-rules.md#rule_open) and [`rule_window`](../../rule-engine/functions-rules.md#rule_window) functions for precise matching.
 4862 | admin | Bug | [Logging](../../administration/logging.md#logging): change level from `ERROR` to `WARN` for user-invoked errors.
 4842 | rule editor | Bug | Rule Editor: series Test is not working.
-4837 | rule engine | Bug | Notifications: [Telegram](../../rule-engine/notifications/telegram.md) doesn't resolve local URLs.
+4837 | rule engine | Bug | Notifications: [Telegram](../../rule-engine/notifications/telegram.md) does not resolve local URLs.
 4836 | api-rest | Bug | Data API: multiple [interpolate](../../api/data/series/interpolate.md#interpolation) queries for the same series.
 4835 | api-rest | Bug | Data API: limit on series [interpolate](../../api/data/series/interpolate.md#interpolation) query.
 4828 | rule engine | Feature | [Attach portal](../../rule-engine/notifications/README.md#attachments) to notification.

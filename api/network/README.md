@@ -113,7 +113,7 @@ Separate commands by a line feed symbol `\n` (LF, `0x0A`) when sending a batch c
 
 A trailing line feed is not required for the last command in the batch.
 
-Use the `-e` flag in `echo` commands to enable interpretation of backslash escapes.
+Use the `-e` option in `echo` commands to enable interpretation of backslash escapes.
 
 ```bash
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_host 8081
@@ -128,7 +128,7 @@ s.close();
 
 ### Persistent Connection
 
-A client application can establish a persistent connection in order to continuously write commands, one command per line, and close the connection.
+A client application can establish a persistent connection to continuously write commands, one command per line, and close the connection.
 
 Trailing line feed is not required for the last command when the connection is closed.
 
@@ -179,7 +179,7 @@ This causes the database to maintain a client connection even if one of the rece
 
 ### UDP Datagrams
 
-The UDP protocol doesn't guarantee delivery but may have a higher throughput compared to TCP due to lower overhead.
+The UDP protocol does not guarantee delivery but may have a higher throughput compared to TCP due to lower overhead.
 
 In addition, sending commands with UDP datagrams decouples the client application from the server to minimize the risk of blocking I/O time-outs.
 
@@ -201,7 +201,7 @@ echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperatu
 
 Multiple commands with the same timestamp and key fields may override each others value.
 
-If such commands are submitted at approximately the same time, there is no guarantee that they will be processed in the order they were received.
+If such commands are submitted at approximately the same time, there is no guarantee that they are processed in the order received.
 
 * Duplicate example: same key, same current time
 
@@ -299,14 +299,14 @@ The timestamp field records the time of an observation or an event as determined
 
 |**Field**|**Type**|**Description**|
 |:---|:---|:---|
-|ms|long|UNIX milliseconds since 1970-01-01T00:00:00Z |
-|s|integer|UNIX seconds since 1970-01-01T00:00:00Z|
+|ms|long|Unix milliseconds since 1970-01-01T00:00:00Z |
+|s|integer|Unix seconds since 1970-01-01T00:00:00Z|
 |d|string|[ISO 8601 date format](../../api/data/date-format.md). Supported formats:<br>UTC time zone (Z) = `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`, for example `2016-06-09T16:15:04.005Z`<br>Time zone offset = `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`, for example `2016-06-09T12:15:04.005-04:00`<br>Time zone `+hh:mm` is ahead of UTC and time zone `-hh:mm` is behind UTC.|
 
 Date limits:
 
-* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or `0` milliseconds from Epoch time.
-* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or `4294969199999` milliseconds from Epoch time.
+* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or `0` milliseconds from Unix time.
+* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or `4294969199999` milliseconds from Unix time.
 * If the timestamp field is not specified, time is set to current server time.
 
 ### Number Formatting
@@ -321,7 +321,7 @@ Date limits:
 
 ### Enable Debug Mode
 
-By default, ATSD doesn't return acknowledgements to the client after processing data commands.
+By default, ATSD does not return acknowledgements to the client after processing data commands.
 Include the `debug` command at the start of the line to instruct the server to respond with `ok` for each processed command.
 
 * `debug` with valid command
@@ -368,7 +368,7 @@ Reasons why ATSD server can drop commands:
 * Multiple data points for the same entity, metric, and tags have the same timestamp in which case commands are considered duplicates and some of them are dropped. This could occur when commands with the same key are sent without a timestamp.
 * Data is sent using the UDP protocol and the client UDP send buffer or the server UDP receive buffer overflows.
 * Value is below 'Min Value' or above 'Max Value' limit specified for the metric and the 'Invalid Value Action' is set to `DISCARD`.
-* Last command in a multi-line UDP packed doesn't terminate with line feed symbol.
+* Last command in a multi-line UDP packed does not terminate with line feed symbol.
 
 To review dropped commands, `open command*.log` files in ATSD.
 

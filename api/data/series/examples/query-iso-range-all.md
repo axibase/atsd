@@ -4,7 +4,7 @@
 
 Query all detailed data for the series using the ISO date format.
 
-The database accepts data timestamped at or after Epoch time which is **1970-01-01T00:00:00.000 UTC**.
+The database accepts data timestamped at or after Unix time which is **1970-01-01T00:00:00.000 UTC**.
 
 Maximum timestamp that can be stored by the database is **2106-02-07T07:28:14.999Z**.
 

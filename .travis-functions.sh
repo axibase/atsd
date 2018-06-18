@@ -41,13 +41,19 @@ function linkcheck {
 
 function stylecheck {
     if [ "$ENABLE_CHECK" = "true" ]; then
+        git clone https://github.com/axibase/docs-util --depth=1
+        exit_code=0
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
-            markdownlint .
+            markdownlint -i docs-util -r 'docs-util/linting-rules/*' .
+            exit_code=$?
         else
             if [[ -n "$(list_modified_md_files)" ]]; then
-                list_modified_md_files | xargs -d '\n' -n1 markdownlint
+                list_modified_md_files | xargs -d '\n' -n1 markdownlint -i docs-util -r 'docs-util/linting-rules/*' {}
+                exit_code=$?
             fi;
         fi
+        rm -rf docs-util
+        return $exit_code
     else
         echo "Style checking will be skipped"
     fi
@@ -77,7 +83,7 @@ function generate_yaspeller_dictionary {
 }
 
 function install_checkers {
-    npm install --global --production yaspeller spellchecker-cli markdown-link-check markdownlint-cli remark-cli remark-validate-links
+    npm install --global --production yaspeller spellchecker-cli markdown-link-check remark-cli remark-validate-links git+https://github.com/VeselovAlex/markdownlint-cli.git#custom-rules
     if [ "$TRAVIS_REPO_SLUG" != "axibase/atsd" ]; then
         wget https://raw.githubusercontent.com/axibase/atsd/master/.spelling -O .spelling-atsd
         awk 'FNR==1{print}1' .spelling-atsd .dictionary | sort -u > .spelling

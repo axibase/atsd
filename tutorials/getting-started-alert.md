@@ -48,7 +48,7 @@ Open the rule editor and enable [alerts](../rule-engine/email.md) on the **Email
 
 ![](./resources/alert-email.png)
 
-Save the rule and insert high-value samples on the **Data Entry** page again. You should receive the following message when the threshold is exceeded:
+Save the rule and insert a few samples on the **Data Entry** page again. You'll receive the following message when the threshold is exceeded:
 
 ![](./resources/alert-email-msg.png)
 
@@ -60,7 +60,9 @@ Open the rule editor and enable alerts on the **Web Notifications** tab as illus
 
 ![](./resources/alert-slack.png)
 
-Save the rule and insert commands on the **Data Entry** page again. You should receive the following message in Slack when the average is greater than `50` for the last three samples.
+Save the rule and insert commands on the **Data Entry** page again.
+
+The following message appears in Slack when the average exceeds `50` for the last three samples.
 
 ![](./resources/alert-slack-msg.png)
 
@@ -70,4 +72,4 @@ Refer to [Outgoing Webhooks](../rule-engine/notifications/README.md) for more de
 
 Congratulations!
 
-You have successfully completed the **Getting Started** guide to **Axibase Time Series Database**.
+You have successfully completed the **Getting Started** guide to Axibase Time Series Database (ATSD).

@@ -21,9 +21,9 @@ https.keyManagerPassword=OBF:1s3g1zlo1y0y1rpg1ri31vv11vu91rib1rp61y0s1zlu1s3m
 
 To convert an obfuscated text back to plain text, open the **Settings > Diagnostics > Passwords** page.
 
-The input text should start with `OBF:` prefix.
+The input text must start with `OBF:` prefix.
 
-Enter the text  and click `Deobfuscate` to view the plain text.
+Enter the obfuscated text and click `Deobfuscate` to view the plain text.
 
 ![](./images/password-deobfuscation.png)
 

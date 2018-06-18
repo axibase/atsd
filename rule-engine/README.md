@@ -40,7 +40,7 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 ## Grouping
 
-Once the sample passes through the filter chain, it is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
+Once the sample passes through the filter chain, the sample is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
 
 The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
 
@@ -66,7 +66,7 @@ The rule engine supports two types of windows:
 [Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
 
-When a window is updated, the rule engine checks the [condition](condition.md) that will trigger response actions.
+When a window is updated, the rule engine checks the [condition](condition.md) and triggers various response actions based on the condition result.
 
 Condition example:
 
@@ -100,11 +100,11 @@ Supported response actions:
 * [Generate derived metrics](derived.md)
 * [Log alert to file](logging.md)
 
-Triggers for all actions may be configured separately. For example, it's possible to configure a rule so that logging events are generated on all repeated occurrences whereas email messages are sent every 6 hours.
+Triggers for all actions may be configured separately. For example, you can configure a rule such that logging events are generated on all occurrences whereas email messages are sent every 6 hours.
 
 ## Correlation
 
-Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-series.md), and [rule](functions-rules.md) functions.
+Each rule evaluates data received for only one specified metric. To create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-series.md), and [rule](functions-rules.md) functions.
 
 * Value functions:
 
@@ -128,7 +128,7 @@ percentile(95) > 80 && rule_open('inside_temperature_check')
 
 Rules can be considered software programs in their own right and as such involve initial development, testing, documentation and maintenance efforts.
 
-In order to minimize the number of rules with manual thresholds, the rule engine in ATSD provides the following capabilities:
+To minimize the number of rules with manual thresholds, the rule engine in ATSD provides the following capabilities:
 
 * Condition [overrides](overrides.md).
 * Comparison of windows with different lengths.
@@ -136,21 +136,21 @@ In order to minimize the number of rules with manual thresholds, the rule engine
 
 ### Manual Thresholds
 
-Thresholds can be set manually.
+Thresholds can be set manually which requires some trial and error to determine a level that strikes a balance between `false` positives and missed alerts.
 
 ```javascript
 value > 90
 ```
 
-This method of setting baselines using constant values often requires some trial and error testing to determine a level that strokes a balance between `false` positives and missed alerts. [`Overrides`](#overrides) can be used to handle exceptions to the default baseline.
+Since a single baseline cannot handle all edge cases, the [`Overrides`](#overrides) can be used to enumerate exceptions.
 
-To reduce `false` positives, apply an averaging functions to longer windows.
+To reduce `false` positives, apply an averaging function to longer windows.
 
 ```javascript
 avg() > 90
 ```
 
-To reduce a possible distortion caused by a small number of observations (outliers), use percentiles instead of averages.
+To reduce distortions caused by a small number of outliers, use percentiles instead of averages.
 
 ```javascript
 percetile(75) > 90
@@ -234,7 +234,7 @@ To enable this behavior, set Severity on the 'Logging' tab to `unknown`.
 
 In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../sql/scheduled-sql.md) queries.
 
-In order to trigger a notification by an SQL query:
+To trigger a notification by an SQL query:
 
 * Develop a query such that it returns an empty result if the situation is normal.
 
@@ -250,7 +250,7 @@ HAVING percentile(90, value) > 1000
 * Set **Send Empty Report** parameter to `No`.
 * Specify triggers such as an email notification or a file export.
 
-As a result, the query will trigger actions only when it returns at least one row.
+As a result, the query triggers actions only when it returns at least one row.
 
 ![](./images/sql-scheduled.png)
 

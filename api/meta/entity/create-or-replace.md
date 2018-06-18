@@ -4,11 +4,11 @@
 
 Creates an entity with specified fields and tags or replaces the fields and tags of an existing entity.
 
-If the entity exists, its current entity tags are replaced with tags specified in the request. If the request doesn't contain any tags, the current tags are deleted.
+If the entity exists, its current entity tags are replaced with tags specified in the request. If the request does not contain any tags, the current tags are deleted.
 
 Fields that are set to `null` are ignored by the server and are set to their default value.
 
-The replace request for an existing entity doesn't affect any series, properties, or metrics since the internal identifier of the entity remains the same.
+The replace request for an existing entity does not affect any series, properties, or metrics since the internal identifier of the entity remains the same.
 
 ## Request
 
@@ -26,7 +26,7 @@ The replace request for an existing entity doesn't affect any series, properties
 
 Refer to Fields specified in the [Entity List](list.md#fields) method.
 
-The `name` field specified in the payload is ignored by the server since it's specified in the path.
+The `name` field contained in the payload is ignored by the server since the entity name is already specified in the path.
 
 ## Response
 

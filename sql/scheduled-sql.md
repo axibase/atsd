@@ -16,11 +16,11 @@ The scheduler executes a `SELECT` [query](README.md) on schedule.
 
 ## Schedule
 
-Scheduling frequency is controlled with the `Schedule` field containing a [`cron` expression](scheduled-sql-cron.md) that determines when the task should be executed.
+Scheduling frequency is controlled with the `Schedule` field containing a [`cron` expression](scheduled-sql-cron.md) that determines when the task is executed.
 
 ## Authorization
 
-Scheduled queries are executed with **All Entities: Read** permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity read permissions](../administration/user-authorization.md#entity-permissions).
+Scheduled queries are granted the `All Entities: Read` permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity `read` permissions](../administration/user-authorization.md#entity-permissions).
 
 ## Formats
 
@@ -59,14 +59,14 @@ To store reports on a disk, enable the **Export** section by clicking on the hea
 
 Specify the absolute path including the file name.
 
-If the parent directory in the specified path does not exist, it is created automatically.
-The file extension should match the export format, if the format is EXCEL the Output Path should end with ".xlsx".
+If the parent directory in the specified path does not exist, the directory is created automatically.
+The file extension must match the export format. For example, if the format is `EXCEL` the Output Path must end with `.xlsx`.
 
 The **Output Path** field may contain date and form [placeholders](#placeholders) so that files or their parent directories are grouped by day or month.
 
 Example: `/opt/report/daily/${yyyy-MM-dd}.csv`
 
-An expression like `/opt/report/daily/${yyyy-MM-dd}.csv` creates the following file `/opt/report/daily/2017-06-10.csv` when executed.
+The above expression evaluates to the following path `/opt/report/daily/2017-06-10.csv` when the report is executed.
 
 ### Email Delivery
 
@@ -76,7 +76,7 @@ The `Email Subject` field supports date and form [placeholders](#placeholders), 
 
 ![File](./images/sql-scheduled-email-send.png)
 
-`Send Empty Report` and `Send Error Report` settings control whether a report should be emailed in case of an empty result or error.
+`Send Empty Report` and `Send Error Report` settings control whether a report is emailed in case of an empty result or error.
 
 `Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the result set is not empty.
 
@@ -95,7 +95,7 @@ In the above example, the query relies on the `HAVING` clause to find servers wi
 
 ### Publishing
 
-To make a report available for download by end-users, enable the **Publish** section. The report will contain rows that were prepared by the server when the task was last executed.
+To make a report available for download by end-users, enable the **Publish** section. The report contains rows that were prepared by the server when the task was last executed.
 
 ![File](./images/sql-scheduled-publish.png)
 

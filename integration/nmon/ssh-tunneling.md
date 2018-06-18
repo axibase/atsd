@@ -2,7 +2,7 @@
 
 ## User Guide for Setting up an SSH Tunnel
 
-For this guide you will require an `atsdreadonly` account and an SSH key, which are created automatically during the ATSD installation process. If you have chosen not to setup an `atsdreadonly` account during ATSD installation, while running the `install_sudo.sh` script please start by executing our [User Account Setup Guide](ssh-user.md).
+Start by creating a read-only account on the ATSD server as described in the [User Account Setup Guide](ssh-user.md).
 
 The guide uses `atsd-tst` as the hostname of the ATSD server.
 
@@ -18,9 +18,9 @@ Add the ATSD host to known hosts on the target server:
 ssh-keyscan -H atsd-tst >> ~/.ssh/known_hosts
 ```
 
-On Unix systems, the permissions to the key file must not allow any access to world and group. You can achieve this with the command `chmod 0600`. If the permissions are less strict, the file is ignored and the SSH tunnel will fail to start.
+On Unix systems, the permissions to the key file must not allow any access to world and group. You can achieve this with the command `chmod 0600`. If the permissions are less strict, the file is ignored and the SSH tunnel fails to start.
 
-Set the permissions and ownership for the user account that administers nmon on remote servers. It does not have to be a root user.
+Set the permissions and ownership for the user account on remote servers. Root privileges are not necessary.
 
 Ensure you have the ownership rights for the ssh key:
 
@@ -62,7 +62,7 @@ If the tunnel is not established, check if you can ping the ATSD server to see i
 ps -ef | grep ssh
 ```
 
-The output should contain the following line:
+The output contains the following line:
 
 ```sh
 user001 31326 1 0 17:30 ? 00:00:00 ssh -fN -L nurswgvml001:10000:localhost:8081 atsdreadonly@atsd-tst -i /opt/nmon/id_rsa_atsdreadonly

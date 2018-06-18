@@ -4,7 +4,7 @@
 
 The default certificate installed in ATSD is generated for DNS name (`commonName`) 'atsd'. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name (fully qualified hostname) at which the ATSD server is accessible.
 
-As with all self-signed certificates, the new certificate continues to cause a security exception in user browsers and requires passing `-k/--insecure` parameter when connecting to the database using `curl` and similar tools in order to skip certificate validation.
+As with all self-signed certificates, the new certificate continues to cause a security exception in user browsers and requires passing `-k/--insecure` parameter when connecting to the database using `curl` and similar tools to skip certificate validation.
 
 ## Create and Import Certificate
 
@@ -41,7 +41,7 @@ curl -k -u {USR}:{PWD} https://{atsd_hostname}:8443/admin/certificates/self-sign
   -w "\n%{http_code}\n"
 ```
 
-The response status code should be `2xx` or `3xx`.
+The expected response status code is `2xx` or `3xx`.
 
 You can specify additional fields if necessary. The `countryCode` field must contain two letters if specified.
 
@@ -60,6 +60,6 @@ curl -v -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/self-signed \
 
 Log in to ATSD by entering DNS name in the browser address bar.
 
-Review the new certificate on the **Settings > Certificates** page and check its **Days to Expiration** field, which is set to 364 days from now.
+Review the new certificate on the **Settings > Certificates** page and check the **Days to Expiration** field, which is set to 364 days from now.
 
-The certificate is highlighted in orange which means it's self-signed.
+Untrusted certificates are highlighted in orange.

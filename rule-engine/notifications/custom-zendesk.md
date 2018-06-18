@@ -27,9 +27,9 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<COMPANY_NAME>` field with your Zendesk subdomain.
 
-The `Endpoint URL` should look as follows: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
+The `Endpoint URL` may look as follows: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
 
-Keep the `${request_id}` placeholder in the URL path so that it's customizable in the rule editor. This allows you to add comments to different requests using the same web notification.
+Keep the `${request_id}` placeholder in the URL path so that the request id is customizable in the rule editor. This allows you to add comments to different requests using the same web notification.
 
 Enter the Zendesk user name into the `Username` field and the password into the `Password` field.
 
@@ -105,7 +105,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value causes the condition to evaluate to `true`, which in turn will trigger the notification.
+The value causes the condition to evaluate to `true`, which in turn triggers the notification.
 To verify that an alert was raised, open **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/zendesk_alert_open.png)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Let's build a report illustrating average monthly imports each year.
+Build a report illustrating average monthly imports each year.
 
 ## Data Source
 

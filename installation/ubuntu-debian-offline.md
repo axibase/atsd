@@ -72,7 +72,7 @@ rm ca-certificates-java*
 apt-get -t jessie-backports download ca-certificates-java
 ```
 
-Make sure that the download directory isn't empty:
+Make sure that the download directory is not empty:
 
 ```txt
 ...
@@ -88,7 +88,7 @@ sysv-rc_2.88dsf-59_all.deb
 zlib1g_1%3a1.2.8.dfsg-2+b1_amd64.deb
 ```
 
-Copy the `dependencies` directory to the target server where ATSD will be installed.
+Copy the `dependencies` directory to the target server where you plan to install ATSD.
 
 Install dependencies.
 
@@ -122,9 +122,9 @@ It may take up to 5 minutes to initialize the database.
 tail -f /opt/atsd/atsd/logs/start.log
 ```
 
-You should see an **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (https).
 
 ## Troubleshooting
 

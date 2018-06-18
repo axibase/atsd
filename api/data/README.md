@@ -1,16 +1,18 @@
 # REST API
 
-The REST API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database as well as to manipulate metadata about the metrics and entities.
+The REST API allows you to insert and retrieve data from the database using HTTP requests.
 
 ## Requests
 
 ### Request Methods
 
-The API endpoints implement `GET` and `POST` methods to **read** data from the database and `POST`, `PUT`, `PATCH`, and `DELETE` methods to **write** data into the database.
+To **read** data from the database, use `GET` and `POST` methods.
+
+To **write** data into the database, use `POST`, `PUT`, `PATCH`, and `DELETE` methods.
 
 ### API Content Path
 
-The API context path is `/api/v1/` and should include the current API version (`v1`).
+The API context path is `/api/v1/` and must include the current `v1` API version.
 
 Sample API endpoints:
 
@@ -26,7 +28,7 @@ When submitting a payload in JSON format, add the `Content-Type: application/jso
 
 ### URI Encoding
 
-Request parameters and path segments, such as [`/api/v1/properties/{entity}/types`](../meta/entity/property-types.md), should be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters, such as `: / ? # [ ] @`, into a percent format that can be transmitted safely as part of the request URI.
+Request parameters and path segments, such as [`/api/v1/properties/{entity}/types`](../meta/entity/property-types.md), must be [URL encoded](https://tools.ietf.org/html/rfc3986#section-2.1) to translate special characters, such as `: / ? # [ ] @`, into a percent format that can be transmitted safely as part of the request URI.
 
 | **Input** | **Encoded Value** | **URI** |
 |:---|:---|:---|
@@ -79,8 +81,8 @@ Supported date input patterns:
 
 Refer to [date format examples](date-format.md).
 
-* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or 0 milliseconds from Epoch (UNIX) time.
-* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or 4294969199999 milliseconds from Epoch time.
+* The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or 0 milliseconds from Unix time.
+* The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or 4294969199999 milliseconds from Unix time.
 * The maximum year that can be specified in ISO format when `querying` data is `9999` and the maximum date is `9999-12-31T23:59:59.999` UTC.
 
 ### Numbers

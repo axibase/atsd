@@ -1,8 +1,16 @@
 # Support
 
-This document helps you submit a well-prepared ticket to our [Support Desk](https://axibase.zendesk.com/home) so we can resolve it faster.
+This document helps you submit a well-prepared support ticket so we can resolve it faster.
 
-Use the below reference to attach relevant artifacts to your ticket. Skip sections `2-6` if not applicable.
+**Commercial** Support:
+
+* Open a ticket in our [Support Desk](https://axibase.zendesk.com/home) to expedite processing.
+
+**Community** Support:
+
+* Contact us at `support-atsd@axibase.com`.
+
+Use the below guidelines to attach relevant details to the ticket. Skip sections `2-6` if not applicable.
 
 ## 1. Database Information
 
@@ -50,9 +58,19 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 
 1. Screenshot of the **Portals > ATSD** portal for the time period covering the issue.
 
+    ![](./images/portal-atsd.png)
+
 2. Screenshot of the **Portals > ATSD Log Viewer** portal for the time period covering the issue.
 
-3. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
+    ![](./images/portal-atsd-log-viewer.png)
+
+3. Screenshots of the **Settings > Diagnostics > Database Statistics** table.
+
+    ![](./images/portal-database-statistics-1.png)
+
+    ![](./images/portal-database-statistics-2.png)
+
+4. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
 
 ```sql
 SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr,

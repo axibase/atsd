@@ -20,7 +20,7 @@ Example:
 series e:sensor01 m:pressure=3.5 m:temperature=80
 ```
 
-Assuming the rule was created for the `pressure` metric, the above condition will resolve and evaluate to `true`.
+Assuming the rule is created for the `pressure` metric, the above condition resolves fields and evaluates to `true`.
 
 ```javascript
 3.5 > 1.5 && 80 > 50
@@ -38,4 +38,4 @@ series e:sensor01 m:pressure=3.5 m:temperature=33
 // returns false
 ```
 
-Compared to the [`db_last`](functions-series.md) function, the `value()` function retrieves metric values from the incoming command, even if they're not yet stored in the database.
+Compared to the [`db_last`](functions-series.md) function, the `value()` function retrieves metric values from the incoming command, even if they are not yet stored in the database.

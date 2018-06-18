@@ -40,7 +40,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 
 ![](./resources/prefdir.png)
 
-* Close MatLab if it's running.
+* Close MatLab if the application is running.
 * Navigate to the `prefdir` directory above and create a file named `javaclasspath.txt`.
 * Open the `javaclasspath.txt` file. Add the full path to the ATSD driver JAR file, for example, `/home/user/MATLAB/atsd-jdbc-1.2.22-DEPS.jar`
 * Save and close `javaclasspath.txt`.
@@ -62,7 +62,7 @@ Example:
 * Click **Configure Data Source > Configure JDBC Data Source**
 * Select **Vendor > OTHER**.
 * Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
-* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;expandTags=true` [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
+* Specify a JDBC URL, for example `jdbc:atsd://atsd_hostname:8443;expandTags=true` [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
 * Click **Test**, specify ATSD login and password
 * If connection is successful click **Save** and close _JDBC Data Source Configuration_ window
 
@@ -86,7 +86,7 @@ conn_atsd = database('', username, password, driver, url);
 
 ## Verify Connection
 
-ATSD connection to Command Window can be verified using the `SELECT 1` query. The returned `data` should be 1.
+ATSD connection to Command Window can be verified using the `SELECT 1` query.
 Assuming `conn_atsd` is defined:
 
 ```matlab
@@ -102,8 +102,8 @@ Expected result:
 
 ## Review Tables in the Database Explorer
 
-* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;tables=%jvm%` at _JDBC Data Source Configuration_ window
-* Click **New Query**, select _ATSD_ at _Data Source_ drop-down, specify ATSD login and password
+* Specify a JDBC URL, for example `jdbc:atsd://atsd_hostname:8443;tables=%jvm%` in the **JDBC Data Source Configuration** window.
+* Click **New Query**, select **ATSD** in the **Data Source** drop-down list, enter ATSD username and password.
 
 The _Database Browser_ displays a set of tables matching the expression:
 
@@ -143,7 +143,7 @@ insert(conn_atsd, 'METRIC_NAME', colnames, data);
 
 `colnames` is a cell array which describes the names and order of columns in the request.
 
-`METRIC_NAME` is the name of a metric under which the rows in `data` should be inserted.
+`METRIC_NAME` is the name of a metric under which the rows in `data` are inserted.
 
 ## Calculate Derived Series
 

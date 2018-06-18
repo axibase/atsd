@@ -2,7 +2,7 @@
 
 ## Overview
 
-Axibase Time Series Database can be deployed on HBase using [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
+The document describes how to deploy ATSD on HBase with [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
 
 ## Operational Advantages
 
@@ -23,7 +23,7 @@ The S3 bucket must be created prior to installation.  The bucket, named `atsd` i
 aws s3 mb s3://atsd
 ```
 
-The HBase root directory is created if necessary when the cluster is started for the first time. It is not deleted when the cluster is stopped or terminated.
+The HBase root directory is created if necessary when the cluster is started for the first time. The directory is not deleted when the cluster is stopped or terminated.
 
 Check the contents of the bucket prior to launching the cluster.
 
@@ -64,7 +64,7 @@ Total Objects: 1
   Total Size: 555.1 KiB
 ```
 
-The `atsd-hbase.$REVISION.jar` should be stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
+The `atsd-hbase.$REVISION.jar` must be stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
 > When uploading the jar file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the jar file is replaced.
 
@@ -189,7 +189,7 @@ status
 
 ## Install ATSD
 
-Log in to the server where ATSD will be installed.
+Log in to the server where you plan to install ATSD.
 
 ```bash
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP
@@ -207,7 +207,7 @@ javac -version
 java version
 ```
 
-Change to a volume with at least 10GB of available disk space.
+Change to a volume with at least 10 GB of available disk space.
 
 ```bash
 df -h

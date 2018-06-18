@@ -2,12 +2,12 @@
 
 ## Overview
 
-The IBM SPSS Modeler provides a set of tools to build data transformations and analysis models for users without programming experience. The following guide includes examples of loading time series data from the Axibase Time Series Database (ATSD),
+The IBM SPSS Modeler provides a set of tools to build data transformations and analysis models for users without programming experience. The following guide includes examples of loading time series data from ATSD,
 calculating derived time series in the IBM SPSS Modeler interface and storing the results back in ATSD.
 
 ## Sample Dataset
 
-For the purpose of instruction, we will use the following sample [`series` commands](./resources/commands.txt).
+Download sample [`series` commands](./resources/commands.txt).
 The series contain the Consumer Price Index (CPI) for each category
 of items in a consumer's basket as well as a weight for each category in the CPI
 basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to
@@ -52,7 +52,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_6.png)
 
-* The connection should be visible in the **Connections** table
+* The connection is now visible in the **Connections** table
 
   ![](./images/modeler_7.png)
 
@@ -60,7 +60,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_8.png)
 
-* Click **Select...** to view the list of available ATSD tables. The list of tables is based on the `tables=` property specified in the JDBC URL. If you don't see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md), delete your connection in SPSS Modeler and create it again. Specify `tables=%` to view all tables in ATSD.
+* Click **Select...** to view the list of available ATSD tables. The list of tables is based on the `tables=` property specified in the JDBC URL. If you do not see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md), delete your connection in SPSS Modeler and create it again. Specify `tables=%` to view all tables in ATSD.
 
   ![](./images/modeler_9.png)
 
@@ -98,7 +98,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_17.png)
 
-* Select **Merge** shape. A link should appear between the source and the **Merge** shapes.
+* Select **Merge** shape. A link appears between the source and the **Merge** shapes.
 
   ![](./images/modeler_18.png)
 
@@ -141,7 +141,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_26.png)
 
-* Click **Preview** to check results. You should see the **weighted_price** column.
+* Click **Preview** to check results. The **weighted_price** column is displayed.
 
   ![](./images/modeler_27.png)
 
@@ -194,7 +194,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_36.png)
 
-* Click **Preview** to check the results. The**entity** column should have been added.
+* Click **Preview** to check the results with the **entity** column added.
 
   ![](./images/modeler_37.png)
 

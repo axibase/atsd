@@ -2,7 +2,7 @@
 
 If rows for the retrieved series contain different tags, the `tags.*` expression is expanded to all unique tag names.
 
-If series don't contain the given series tag, the tag's value is set to `null` in the corresponding column.
+If series does not contain the given series tag, the tag value is set to `null` in the corresponding column.
 
 ## Data
 
@@ -18,7 +18,7 @@ series d:2016-06-19T11:00:00.000Z e:e-sql-4 m:m-metric1=4 t:tag4=val4
 ```sql
 SELECT entity, datetime, value, tags.*
   FROM "m-metric1"
-WHERE datetime >= '2016-06-19T11:00:00.000Z' and datetime < '2016-06-19T12:00:00.000Z'
+WHERE datetime >= '2016-06-19T11:00:00.000Z' AND datetime < '2016-06-19T12:00:00.000Z'
 ```
 
 ## Results

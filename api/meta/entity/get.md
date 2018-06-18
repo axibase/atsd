@@ -51,7 +51,7 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
     "enabled": true,
     "lastInsertDate": "2015-09-04T15:39:40.000Z",
     "tags": {
-        "app": "Hadoop/HBASE",
+        "app": "Hadoop/HBase",
         "ip": "10.102.0.5",
         "os": "Linux"
     }

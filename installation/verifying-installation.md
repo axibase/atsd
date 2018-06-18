@@ -18,13 +18,13 @@ Open your browser and navigate to port `8443` on the target server.
 
 ## Administrator Account
 
-When accessing the ATSD web interface for the first time, you're asked to setup an administrator account.
+When accessing the ATSD web interface for the first time, you are asked to setup an administrator account.
 
 ## Portals
 
 Click on Portals tab in the ATSD web interface. A pre-defined **ATSD**
 portal displays application, operating system, and usage metrics for the database itself
-and the server where it is running.
+and the server where the database is running.
 
 ![](./images/atsd_portal.png "ATSD Host")
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Axibase Time Series Database includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used.
+ATSD includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used.
 
 Supported algorithms for auto-regressive time series extrapolation include **Holt-Winters** and **ARIMA**.
 
@@ -34,7 +34,7 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 
 |Setting|Description|
 |-|-|
-|Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [`End Time`](#data-selection-settings), if specified) minus `Retention Interval` are deleted.|
+|Retention Interval|Specifies how long a forecast is stored in the database. Forecasts that are older than `current time` (or [`End Time`](#data-selection-settings), if specified) minus `Retention Interval` are deleted.|
 
 ### Data Selection Settings
 
@@ -46,8 +46,8 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 |Entity  |If selected, forecasts are calculated for the specified entity. Supersedes `Entity Group` selector. If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
 |Entity Group  |If selected, forecasts are calculated for entities contained in the specified entity group.|
 |Tags  |Prepare forecasts only for series containing the specified series tags.|
-|End Time  |End time of the `Data Selection Interval` and `Series Selection Interval`. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If `End Time` is not defined, it is set to the time the job is run.|
-|Data Selection Interval  |Time frame for selecting detailed data that is used as forecast input. The end of the interval can be specified in the `End Time` field, otherwise it is set to current time.|
+|End Time  |End time of the `Data Selection Interval` and `Series Selection Interval`. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If not defined, the field is set to the time the job is run.|
+|Data Selection Interval  |Time frame for selecting detailed data that is used as forecast input. The end of the interval can be specified in the `End Time` field, otherwise the end of the selection interval is set to current time.|
 |Series Selection Interval  |Ignore any series with Last Insert Time before `End Time` by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
 |Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|
@@ -63,7 +63,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 |Group By |Grouping key for merging multiple series into one. Detailed data for multiple series sharing the same grouping key are merged into one array prior to computing aggregate statistics.|
 |Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Aggregation Period |Period of time over which the detailed samples are aggregated.|
-|Aggregate Statistic |Aggregation function applied to raw data in order to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.|
+|Aggregate Statistic |Aggregation function applied to raw data to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.|
 
 ### Algorithm Parameters
 
@@ -252,5 +252,5 @@ Load forecasts data by setting `data-type = forecast` in the `[series]` section.
 |forecast-name|`forecast-name = hw5`|Unique identifier of the forecast.<br>Useful when creating multiple forecasts for the same series.<br>If no forecast name is set, the default forecast is loaded.|[View](https://apps.axibase.com/chartlab/92b7e471/3/)|
 |style|`style = stroke-dasharray: none;`|Remove dashes from forecast line on the chart.|[View](https://apps.axibase.com/chartlab/92b7e471/4/)|
 |value|`value = (1 - forecast('free') / forecast('total')) * 100`|Returns forecast for the underlying series.|[View](https://apps.axibase.com/chartlab/da03b8a5/11/)|
-|load-future-data|`load-future-data = true`|Load future series values.<br>Usually used to view imported forecasts generated with 3rd party tools, like R Language.<br>Possible values: `true`, `false`.|[View](https://apps.axibase.com/chartlab/87c197be)|
+|load-future-data|`load-future-data = true`|Load future series values.<br>Usually used to view imported forecasts generated with 3rd party tools, such as R Language.<br>Possible values: `true`, `false`.|[View](https://apps.axibase.com/chartlab/87c197be)|
 |forecast-style|`forecast-style = stroke: magenta;`|CSS styles applied to forecasts in column and column-stack modes.|[View](https://apps.axibase.com/chartlab/37c39d18/3/)|

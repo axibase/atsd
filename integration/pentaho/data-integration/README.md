@@ -2,7 +2,7 @@
 
 ## Overview
 
-Pentaho Data Integration at `https://community.hitachivantara.com/community/products-and-solutions/pentaho` (PDI) provides a graphical design environment to create and edit ETL (Extract, Transform, Load) jobs and workflows. The following guide includes examples of loading time series data from the Axibase Time Series Database (ATSD), calculating derived time series in PDI and storing the results in ATSD.
+Pentaho Data Integration at `https://community.hitachivantara.com/community/products-and-solutions/pentaho` (PDI) provides a graphical design environment to create and edit ETL (Extract, Transform, Load) jobs and workflows. The following guide includes examples of loading time series data from ATSD, calculating derived time series in PDI and storing the results in ATSD.
 
 ## Prerequisites
 
@@ -119,7 +119,7 @@ ORDER BY datetime, tags.category
 
 ### Duplicate Weights
 
-Since the `Weights` are available for only one year, we will assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
+Since the `Weights` are available for only one year, assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
 * Open the `Design` pane.
 * Locate `Join Rows (cartesian product)` in `Joins` category.
@@ -142,13 +142,13 @@ Diagram example:
 
 ### Merge Tables
 
-In this step we will append two tables to perform calculations inside one table. This table will have a unique row identifier (pair `datetime - tags.category`) so we can join them with the INNER JOIN operation.
+In this step you append two tables to perform calculations on one table. This table has a unique row identifier (pair `datetime - tags.category`) so we can join them with the INNER JOIN operation.
 
 * Open the `Design` pane and find `Merge Join` in the `Joins` category. Drag and drop it to the `Transformation` pane
 * Connect `Merge Join` to `Join Rows (cartesian product)` and choose `Right hand side stream of the join`
 * Connect `Merge Join` to `Prices` and choose `Left hand side stream of the join`
 * Configure `Merge Join` as shown in the screenshot below:
-> That operation will join 2 tables into one table
+> That operation joins two tables into one table.
 
 ![](./resources/merge_join.png)
 
@@ -185,7 +185,7 @@ Multiply two columns element-wise:
 * Connect `Calculator` to `Remove columns`.
 * Configure `Calculator` as shown in the screenshot below:
 
-> This operation will calculate a new field `P*W` (price multiplied by weight)
+> This operation calculates a new field `P*W` (price multiplied by weight)
 
 ![](./resources/calculator_1.png)
 
@@ -202,7 +202,7 @@ Multiply two columns element-wise:
 * Connect `Add constants` to `Price * Weight`.
 * Configure `Add constants` as shown in the screenshot below:
 
-> This operation will add a new column `1000` that has a value of `1000` in each row.
+> This operation adds a new column `1000` that has a value of `1000` in each row.
 
 ![](./resources/constants_1.png)
 
@@ -219,7 +219,7 @@ Add a new column that has `Price * Weight` divided by 1000 due to the fact that 
 * Connect the `Calculator` step to `1000` step.
 * Configure the `Calculator` as shown in the screenshot below:
 
-> This operation will calculate a new field `P*W/1000` as price multiplied by weight and divided by 1000.
+> This operation calculates a new field `P*W/1000` as price multiplied by weight and divided by 1000.
 
 ![](./resources/calculator_2.png)
 
@@ -236,7 +236,7 @@ Group rows by `datetime` and sum weighted price values for each year.
 * Connect `Group by` step to `/1000` step.
 * Configure `Group by` as shown in the screenshot below:
 
-> The operation will group records by `datetime` and calculate the sum of `P*W/1000` values for each group.
+> The operation groups records by `datetime` and calculates the sum of `P*W/1000` values for each group.
 
 ![](./resources/group_by.png)
 
@@ -253,7 +253,7 @@ The entity column is required to store computed metrics back in ATSD.
 * Connect `Add constants` step to `Group by` step.
 * Configure `Add constants` as shown in the screenshot below:
 
-> This operation will add a new column `entity` that has the value `bls.gov` in each row.
+> This operation adds a new column `entity` that has the value `bls.gov` in each row.
 
 ![](./resources/constants_2.png)
 
@@ -268,12 +268,12 @@ The entity column is required to store computed metrics back in ATSD.
 * Connect `Table output` to `Entity`.
 * Configure `Table output` as shown in the screenshot below.
 
-> This operation will insert calculated data into ATSD.
+> This operation inserts calculated data into ATSD.
 
 ![](./resources/insert.png)
 
-* The `Target table` is the name of the metric which will contain the calculated series.
-* The metric doesn't have to be visible in the Schema
+* The `Target table` is the name of the metric which contains the calculated series.
+* The metric does not have to be visible in the Schema.
 
 Complete diagram:
 

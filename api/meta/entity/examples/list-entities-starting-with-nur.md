@@ -5,13 +5,13 @@
 ### URI
 
 ```elm
-GET /api/v1/entities?tags=*&expression=name%20like%20%27nur*%27
+GET /api/v1/entities?tags=*&expression=name%20LIKE%20%27nur*%27
 ```
 
 ### Expression
 
 ```javascript
-name like 'nur*'
+name LIKE 'nur*'
 ```
 
 ## Response
@@ -34,7 +34,7 @@ name like 'nur*'
         "enabled": true,
         "lastInsertTime": 1442331411000,
         "tags": {
-            "app": "Hadoop/HBASE",
+            "app": "Hadoop/HBase",
             "ip": "10.102.0.5",
             "os": "Linux"
         }

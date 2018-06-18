@@ -18,12 +18,12 @@ Edit `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
 
 * Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
 
-Sample memory configuration for a server with 16GB of RAM:
+Sample memory configuration for a server with 16 GB of RAM:
 
 ```xml
     <property>
         <name>mapreduce.map.memory.mb</name>
-        <!-- should not exceed 50% of available physical memory on the server! -->
+        <!-- must not exceed 50% of available physical memory on the server -->
         <value>8000</value>
     </property>
     <property>
@@ -33,7 +33,7 @@ Sample memory configuration for a server with 16GB of RAM:
     </property>
     <property>
         <name>mapreduce.reduce.memory.mb</name>
-        <!-- should not exceed 50% of available physical memory on the server! -->
+        <!-- must not exceed 50% of available physical memory on the server -->
         <value>8000</value>
     </property>
     <property>

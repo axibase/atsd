@@ -2,7 +2,7 @@
 
 ## Create User
 
-Create an `axibase` user on the server where ATSD will be running.
+Create an `axibase` user on the server where you plan to install ATSD.
 
 ```sh
 sudo adduser axibase
@@ -63,7 +63,7 @@ sudo chown -R axibase:axibase /opt/atsd
 
 ## Request License
 
-To obtain a license key, contact Axibase support with the following information from the server where ATSD will be installed.
+To obtain a license key, contact Axibase support with the following information from the server where you plan to install ATSD.
 
 * Output of the `ip addr` command.
 
@@ -151,7 +151,7 @@ Otherwise, you need to allow the newly created `axibase` principal to access HBa
 
 #### Option 1. Add the `axibase` principal to the HBase super users via HBase Configuration
 
-> Don't forget to deploy updated configuration and restart HBase.
+> Do not forget to deploy updated configuration and restart HBase.
 
 ![](./images/cloudera-manager-superuser.png)
 
@@ -352,9 +352,9 @@ https.port = 8443
 
 ## Disable Compactions
 
-By default ATSD triggers major HBase compaction of its key data tables on a daily schedule.
+By default ATSD initiates a major HBase compaction of its key data tables on a daily schedule.
 
-Since major compactions may overload the cluster, it is recommended to trigger them less frequently or to schedule them externally, for example via Cloudera Manager:
+Since major compactions may overload the cluster, increase the default interval or initiate the compactions externally, for example via Cloudera Manager:
 
 ![](./images/cm_major_compaction.png)
 
@@ -368,7 +368,7 @@ hbase.compaction.schedule = 0 0 12 * * SAT
 
 ## Allocate Memory
 
-Allocate Java Heap memory to ATSD java process as described [here](../administration/allocating-memory.md).
+Allocate Java Heap memory to ATSD java process as described [here](../administration/memory-allocation.md).
 
 Increase the number of worker threads and maximum queue size the **Settings > Server Properties** page:
 
@@ -406,9 +406,9 @@ Review the start log for any errors:
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
-You should see a **ATSD start completed** message at the end of the `start.log`.
+Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (https).
 
 ## Enable ATSD Auto-Start
 
@@ -484,7 +484,7 @@ Compare atsd-hbase jar revision with the revision installed on HBase region serv
 ls atsd/hbase/lib/atsd-hbase.*.jar
 ```
 
-Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the new file's revision is greater than what's installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
+Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the revision of the new file is greater than what is installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
 
 Start ATSD process.
 

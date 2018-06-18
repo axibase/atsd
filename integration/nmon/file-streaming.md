@@ -1,6 +1,6 @@
 # nmon File Streaming over Telnet
 
-Execute the steps in this guide in order to stream nmon statistics into ATSD using `telnet` protocol.
+Execute the steps in this guide to stream nmon statistics into ATSD using `telnet` protocol.
 
 For sending nmon data through an SSH tunnel, refer to [nmon File Streaming using an SSH Tunnel guide](ssh-tunneling.md "nmon File Streaming using an SSH Tunnel").
 
@@ -10,7 +10,7 @@ The main purpose of the nmon tool is to monitor performance information for CPU,
 
 Currently, nmon is primarily supported on AIX and Linux systems. It can monitor IBM Power systems, x86, and amd64 processors, and even ARM based systems.
 
-nmon can be run either in interactive or recording modes. ATSD uses the recording mode to stream data as it is written into the nmon file.
+nmon can be run either in interactive or recording modes. The integration uses the recording mode to stream appended data into ATSD.
 
 AIX systems have nmon installed by default.
 
@@ -136,9 +136,7 @@ nmon
 
 #### Setup nmon File Streaming
 
-Setup crontab so that the nmon daemon collects the data continuously.
-
-ATSD will receive the stream of data as it is written into the nmon file.
+Setup crontab so that the nmon daemon collects the data continuously and the appended data is sent into ATSD.
 
 #### Setup nmon File Streaming with Sender Script – Installed from Repositories
 

@@ -20,7 +20,7 @@ Select a series without `tag4` using the `IS NULL` operator:
 ```sql
 SELECT entity, datetime, value, tags.*
   FROM "m-metric1"
-WHERE datetime >= '2016-06-19T11:00:00.000Z' and datetime < '2016-06-19T12:00:00.000Z'
+WHERE datetime >= '2016-06-19T11:00:00.000Z' AND datetime < '2016-06-19T12:00:00.000Z'
   AND tags.tag4 IS NULL
 ```
 
@@ -41,7 +41,7 @@ Select a series with `tag4` using the `IS NOT NULL` operator:
 ```sql
 SELECT entity, datetime, value, tags.*
   FROM "m-metric1"
-WHERE datetime >= '2016-06-19T11:00:00.000Z' and datetime < '2016-06-19T12:00:00.000Z'
+WHERE datetime >= '2016-06-19T11:00:00.000Z' AND datetime < '2016-06-19T12:00:00.000Z'
   AND tags.tag4 IS NOT NULL
 ```
 
@@ -62,7 +62,7 @@ The query returns only two rows, because `(tags.tag1 = 'a' OR tags.tag1 != 'a')`
 ```sql
 SELECT entity, datetime, value, tags.*
   FROM "m-metric1"
-WHERE datetime >= '2016-06-19T11:00:00.000Z' and datetime < '2016-06-19T12:00:00.000Z'
+WHERE datetime >= '2016-06-19T11:00:00.000Z' AND datetime < '2016-06-19T12:00:00.000Z'
   AND (tags.tag1 = 'a' OR tags.tag1 != 'a')
 ```
 

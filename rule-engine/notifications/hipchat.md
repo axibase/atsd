@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-* Install and configure the [Web Driver](web-driver.md) in order to send chart screenshots into HipChat.
+* Install and configure the [Web Driver](web-driver.md) to send chart screenshots into HipChat.
 
 ## Create Bot
 
@@ -37,7 +37,7 @@
     ![](./images/bot_icon.png)
 
 * Click on **Profile**.
-* Open **API tokens**. Make sure you are using API **v2**: otherwise you will receive a warning from the system.
+* Open **API tokens**. Make sure you are using API **v2** to avoid a warning message from the system.
 
 * Choose **Send Message** and the **Send Notification** options from the **Scopes** field.
 * Fill in the **Label** field.
@@ -60,7 +60,7 @@
 
     ![](./images/private_room.png)
 
-* Specify members that will receive notifications from ATSD, including the above bot user, click **Invite people**.
+* Specify members to receive notifications from ATSD, including the above bot user. Click **Invite people**.
 
     ![](./images/invite_bot.png)
 
@@ -112,7 +112,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 |`Auth Token`|Authorization Token with 'message' and 'notifications' scopes.|
 |Bot Nickname|Set a name for the bot.|
 |Room ID|ID or name of the room.|
-|Message|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
+|Message|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|
 |Message Format|Change how messages are formatted. See [message_format](https://www.hipchat.com/docs/apiv2/method/send_room_notification). To ensure that the references returned by the [link placeholders](../links.md#reference) and the [link functions](../functions-link.md#reference) are automatically inlined, specify `html` format.|
 |Notify|Notify users when bot sends a message.|
 |Add Links to Portals|Send a follow up message with chart links after each message containing portal screenshots.|
@@ -144,7 +144,9 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
     ![](./images/hipchat_notification.png)
 
-* The rule will create new windows based on incoming data. It may take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+* The rule creates new windows when new commands are received by the database.
+
+It may take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Examples
 

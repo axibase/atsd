@@ -17,7 +17,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4609 | docker | Feature | Send `entity` command for new objects to ensure they're quickly added to expression-based groups. |
+| 4609 | docker | Feature | Send `entity` command for new objects to ensure they are quickly added to expression-based groups. |
 | 4594 | installation | Support | Speed up collector installation and start-up. |
 | 4065 | installation | Support | Print detailed information during the startup process. |
 ---

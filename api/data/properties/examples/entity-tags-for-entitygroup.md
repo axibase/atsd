@@ -42,7 +42,7 @@ POST /api/v1/properties/query
         "entity": "nurswgvml006",
         "key": {},
         "tags": {
-            "app": "Hadoop/HBASE",
+            "app": "Hadoop/HBase",
             "ip": "10.102.0.5",
             "os": "Linux"
         },

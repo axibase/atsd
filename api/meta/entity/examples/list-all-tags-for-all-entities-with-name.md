@@ -33,7 +33,7 @@ expression=name LIKE 'nurswgvml00*'
         "enabled": true,
         "lastInsertDate": "2015-09-15T14:31:37.000Z",
         "tags": {
-            "app": "Hadoop/HBASE",
+            "app": "Hadoop/HBase",
             "ip": "10.102.0.5",
             "os": "Linux"
         }

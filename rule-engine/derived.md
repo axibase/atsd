@@ -48,7 +48,7 @@ series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
 
 #### Current Server Time
 
-In order to store derived commands with the current server time, omit the date/time fields (`ms`, `s`, `d`) from the derived command.
+To store derived commands with the current server time, omit the date/time fields (`ms`, `s`, `d`) from the derived command.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
@@ -74,7 +74,7 @@ To store derived commands with exactly the same time as the incoming command, se
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
-> If the 'Check On Exit' option is enabled for time-based window, some of the events are caused by exiting commands and the `timestamp` field will return the time of the oldest command, rounded to seconds.
+> If the 'Check On Exit' option is enabled for time-based window, some of the events are caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
 
 To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical) function:
 
@@ -107,7 +107,7 @@ To create multiple metrics within the same command, use the `for` loop to iterat
 series e:${entity} @{s = ""; for (stat : stats) {s = s + " m:" + stat.split(":")[0] + "=" + stat.split(":")[1];} return s;}
 ```
 
-Assuming the `stats` collection is equal `['a:10', 'b:20', 'c:30']`, the produced command will look as follows:
+Assuming the `stats` collection is equal `['a:10', 'b:20', 'c:30']`, the produced command looks as follows:
 
 ```ls
 series e:entity1 m:a=10 m:b=20 m:c=30
@@ -115,7 +115,7 @@ series e:entity1 m:a=10 m:b=20 m:c=30
 
 ## Condition
 
-If creating new data is the rule's only purpose, set the `Condition` field to a static `true` value to minimize the processing overhead.
+If the rule purpose is to only create derived series, without any alerting, set the `Condition` field to a static `true` value to minimize the processing overhead.
 
 ![](./images/derived-condition.png)
 

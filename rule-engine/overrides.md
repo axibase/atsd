@@ -16,7 +16,7 @@ Override tables can be created on the 'Overrides' tab in the rule editor.
 
 The table must have at least one rule where each row represents a single rule consisting of filter and threshold columns.
 
-The rules are processed from **top to bottom**. If the rule's filter matches the given window, the processing stops (subsequent rows are ignored) and the rule's thresholds are checked. An alert is triggered if the threshold condition for either `ERROR` or `WARNING` level is satisfied.
+The rules are processed from **top to bottom**. If the rule filter matches the given window, the processing stops (subsequent rows are ignored) and the rule thresholds are checked. An alert is triggered if the threshold condition for either `ERROR` or `WARNING` level is satisfied.
 
 In case no matching rules are found for the given window, the default condition, as specified on the 'Overview' tab, is evaluated.
 
@@ -52,11 +52,11 @@ The entity and the tag columns support `*` as the wildcard character.
 
 | Entity Group | Entity | Tag1 | Description |
 |---|---|---|---|
-| | `*` | | The rule will match **all** windows.|
-| `prod` | `*` | | The rule will match entities that are members of the `prod` entity group.|
-| `prod` | `nur*`| | The rule will match entities with name starting with `nur` and which are members of the `prod` entity group.|
-|  | `*` | abc | The rule will match windows with `Tag1` equal `abc`.|
-| `prod` | `*` | `*cde*` | The rule will match windows for members of the `prod` entity group **and** with `Tag1` containing `cde`.|
+| | `*` | | The rule matches **all** windows.|
+| `prod` | `*` | | The rule matches entities that are members of the `prod` entity group.|
+| `prod` | `nur*`| | The rule matches entities with name starting with `nur` and which are members of the `prod` entity group.|
+|  | `*` | abc | The rule matches windows with `Tag1` equal `abc`.|
+| `prod` | `*` | `*cde*` | The rule matches windows for members of the `prod` entity group **and** with `Tag1` containing `cde`.|
 
 ### Thresholds
 
@@ -91,7 +91,7 @@ If no override rule matches the window and the alert is eventually triggered by 
 
 ## Override Example
 
-The metric in this example measures disk space usage and is collected with 'file_system' and 'mount_point' tags. The numeric values range between 0% and 100%. The alert should be raised if disk utilization exceeds **80%** unless a custom threshold is found in the Overrides table.
+The metric in this example measures disk space usage and is collected with 'file_system' and 'mount_point' tags. The numeric values range between 0% and 100%. The alert must be raised if disk utilization exceeds **80%** unless a custom threshold is found in the Overrides table.
 
 Default Condition
 
@@ -107,8 +107,8 @@ Rule Processing:
 
 * Rules are processed from top to bottom. There are 4 rules in the table.
 * Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for `tmp` file systems.
-* Row 2. This rule will raise `ERROR` alert if disk usage exceeds **50%** for entity `nurswgvml010`.
-* Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity `nurswgvml007`. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert will not be raised for `/` on `nurswgvml007` with disk usage of **85%**.
+* Row 2. This rule raises `ERROR` alert if disk usage exceeds **50%** for entity `nurswgvml010`.
+* Row 3. This rule raises `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity `nurswgvml007`. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert is be raised for `/` on `nurswgvml007` with disk usage of **85%**.
 * Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the 'disk_prod' group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.
 * If not rule was matched, evaluate the default condition.
 

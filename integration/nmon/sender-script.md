@@ -2,7 +2,7 @@
 
 ## SSH Tunnel
 
-The sender script is used to stream nmon data into ATSD as it is written into the nmon file.
+The sender script is used to stream nmon data into ATSD as soon as the data is written into the nmon file.
 
 The `nmon_sender_ssh.sh` script creates an ssh-tunnel and uses it to send nmon data to ATSD.
 

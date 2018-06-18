@@ -50,7 +50,7 @@ The 'Entity Link' field resolves the tag value to an entity and displays a link 
 
 ### Issue 4684
 
-* The new `Author` field is automatically pre-filled with the name of the current user in order to coordinate group management in large organizations.
+* The new `Author` field is automatically pre-filled with the name of the current user to coordinate group management in large organizations.
 
 * The member type options were renamed with a new status message.
 

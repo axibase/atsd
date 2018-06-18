@@ -76,7 +76,7 @@ WHERE tag = 'sinusoid'
 | float64    | sinusoid | 2016-08-24 17:43:44 | 1      | 0.92  | 0      | Good        | false        | false       | false     | null        |
 ```
 
-* An `_index` column, which represents a sample order for a given timestamp, is ignored if `<= 1`. If `_index` exceeds `1` it is added as series tag.
+* An `_index` column, which represents a sample order for a given timestamp, is ignored if `<= 1`. If `_index` exceeds `1`, the column is added as series tag.
 * `tag`, `value`, and `annotations` column values must be properly escaped if the value contains a comma, double quote, or line break.
 * Numbers must be formatted without the grouping separator using dot as the decimal separator.
 * Empty fields and fields with literal `null` values are ignored.

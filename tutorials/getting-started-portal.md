@@ -75,7 +75,7 @@ Review the [Selecting Series Overview](../portals/selecting-series.md) and the [
 
 ## Metadata
 
-The Charts library provides settings and functions to [add metadata](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/) to charts in order to eliminate manual tagging and labeling.
+The Charts library provides settings and functions to [add metadata](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/) to charts to eliminate manual tagging and labeling.
 
 Add the following settings at the `[configuration]` level to automatically embed entity and metric metadata into series legend.
 

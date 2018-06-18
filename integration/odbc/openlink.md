@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes how to install an ODBC-JDBC bridge on a Windows machine. The purpose of the bridge is to serve as a data link between the Axibase Time Series Database and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
+This document describes how to install an ODBC-JDBC bridge on a Windows machine. The purpose of the bridge is to serve as a data link between ATSD and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
 
 The bridge intercepts SQL queries from the client applications via the Microsoft [ODBC](https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc) protocol and transmits the queries into ATSD using the [ATSD JDBC driver](https://github.com/axibase/atsd-jdbc).
 
@@ -22,7 +22,7 @@ The bridge intercepts SQL queries from the client applications via the Microsoft
 ![](./images/openlink_license.png)
 
 * Choose the desired OS version
-* You will receive the installation link and license files via email.
+* Check email for the installation link.
 
 ## Install Bridge
 

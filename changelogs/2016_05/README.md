@@ -4,7 +4,7 @@
 
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
-| 3710     | install         | Feature         | Added support for an embedded collector account with All Entities: read/write permission.                                      |
+| 3710     | install         | Feature         | Added support for an embedded collector account with `All Entities: Read` and `All Entities: Write` permission.                                      |
 | [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile was specified in denominator.                              |
 | [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.                          |
 | [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
@@ -43,7 +43,7 @@ GROUP BY tavg.tags.type
 SELECT date_format(time, 'yyyy-MM-dd') as 'date',
   tags.city, tags.state, tags.region, sum(value)
 FROM cdc.all_deaths
-  WHERE entity = 'mr8w-325u' and tags.city IS NOT NULL
+  WHERE entity = 'mr8w-325u' AND tags.city IS NOT NULL
 GROUP BY entity, tags
   WITH time >= last_time - 4*week
 ORDER BY sum(value) desc
@@ -52,7 +52,7 @@ ORDER BY sum(value) desc
 ### Issue 3701
 
 In this issue, we took a look at optimizing [partitioning queries](../../sql/README.md#partitioning), leveraging the fact that we can narrow the start and end date for a scan based on the last times in the Last
-Insert Table. Let's take the below query as an example.
+Insert Table. Consider the below query as an example.
 
 ```sql
 SELECT tags.city, tags.state, value
@@ -65,7 +65,7 @@ WITH ROW_NUMBER(tags ORDER BY datetime desc) <= 1
 
 Since the timespan is not defined in the `WHERE` clause, previously we did not apply any date filter to scanned records.
 To optimize the query we now perform a lookup of the minimum insert time for the specified metric, entity, and series tags.
-Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. A condition like `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
+Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. For example, a condition `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
 only need the last value for each combination of tags. We can therefore skip values with a timestamp less than the minimum last insert time.
 
 ### Issue 3325
@@ -94,10 +94,10 @@ instance [Mesos](https://mesos.apache.org/):
 "Name": "/mesos-cd2d0996-558b-4a49-88a0-79c41aeb098a-S2.0a36b7d9-5dfc-4963-b8ac-0e7656103782"
 ```
 
-In this case neither container identifier nor container name are user-friendly or human-readable. To handle these kinds of scenarios, we added a small bit of heuristics to inherit the container
+In this case neither the container id nor the name are user-friendly or human-readable. To handle these kinds of scenarios, we added a small bit of heuristics to inherit the container
 label from the `CONTAINER_NAME` environment variable which is set by Mesos.
 
-As a result, the below container will have a label `ref-api-front` instead of `mesos-cd2d0996-558b-4a49-88a0-79c41aeb098a-S2.0a36b7d9-5dfc-4963-b8ac-0e7656103782`.
+As a result, the below container has a label `ref-api-front` instead of `mesos-cd2d0996-558b-4a49-88a0-79c41aeb098a-S2.0a36b7d9-5dfc-4963-b8ac-0e7656103782`.
 
 Docker `inspect` snippet for a Mesos-managed container:
 
@@ -148,14 +148,14 @@ Recently added to the [`docker`](https://axibase.com/docs/axibase-collector/jobs
 ![Figure 1](./Figure1.png)
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
-that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status will initially be retained in ATSD for the specified time interval (for
+that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status are initially retained in ATSD for the specified time interval (for
 example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
 
 ![Figure 2](./Figure2.png)
 
 By default such records with the status `deleted` are not actually removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 
-* `Retain deleted container records, days` : containers with a `deleted` status will initially be retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
+* `Retain deleted container records, days` : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
 
 To remove deleted image/volume/network records, enable the `Retain deleted image/volume/network records` checkbox.
 

@@ -9,11 +9,11 @@
 
 ## Overview
 
-Tableau Desktop is a visualization software that provides tools to query, analyze, and aggregate data from multiple data sources.  The following guide outlines the initial configuration steps and includes examples of using the Tableau Desktop user interface in order to build charts from historical data stored in the Axibase Time Series Database (ATSD).
+Tableau Desktop is a visualization software that provides tools to query, analyze, and aggregate data from multiple data sources.  The following guide outlines the initial configuration steps and includes examples of using the Tableau Desktop user interface to build charts from historical data stored in ATSD.
 
 ## Dataset
 
-For the purpose of instruction, we will use the following sample [`series` commands](./resources/commands.txt). The series contain the national import and export statistics over a period of 30+ years. The series are seasonally adjusted and are collected on a monthly basis.
+Download sample [`series` commands](./resources/commands.txt). The series contain the national import and export statistics over a period of 30+ years. The series are seasonally adjusted and are collected on a monthly basis.
 
 To load the data, log in to ATSD and submit these commands on the **Metrics > Data Entry** page.
 
@@ -46,7 +46,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 ## Review Tables
 
-* Enter a keyword and click **Search**. For this exercise, we will search for the `bi.ex_net1.m` table:
+* Enter a keyword and click **Search**. For this exercise, search for the `bi.ex_net1.m` table:
 
 ![](./images/search.png)
 

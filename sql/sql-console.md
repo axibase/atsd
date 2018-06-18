@@ -20,7 +20,7 @@ Enter [`SELECT`](README.md#select-expression) queries in the **Query** window an
 
 ## Format Settings
 
-Format Settings apply custom formatting to dates, numbers, and [`NULL`](README.md#null) values. Changes apply instantly to the currently-displayed records **without** re-submitting a query.
+Format Settings apply custom formatting to dates, numbers, and [`NULL`](README.md#null) values. Changes apply instantly to the currently displayed records **without** re-submitting a query.
 
 ### Date Format / Time Zone
 

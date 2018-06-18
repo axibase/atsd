@@ -1,6 +1,6 @@
 # tcollector
 
-[tcollector](https://github.com/OpenTSDB/tcollector) is a data collection agent for Linux. tcollector can be configured to send operating system and application metrics into Axibase Time Series Database for long-term retention and analytics.
+[tcollector](https://github.com/OpenTSDB/tcollector) is a data collection agent for Linux. tcollector can be configured to send operating system and application metrics into ATSD for long-term retention and analytics.
 
 ## Installation
 

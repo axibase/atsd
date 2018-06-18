@@ -462,7 +462,7 @@ The key names are created by concatenating the current field name with field nam
 
 The function attempts to shorten key names by removing a common prefix where appropriate.
 
-The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in iterated object, the list on the given index will contain an empty string.
+The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in the iterated object, the list on the given index contains an empty string.
 
 Examples:
 
@@ -527,7 +527,7 @@ The function converts a string representation of JSON document `j` into a map co
 
 Processing rules:
 
-* String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function will raise an exception.
+* String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function raises an exception.
 * The JSON object is traversed to locate fields with primitive data types: `number`, `string`, and `boolean`.
 * The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
 * If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
