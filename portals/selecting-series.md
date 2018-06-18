@@ -192,16 +192,33 @@ The default value of the `multiple-series` setting is `true` in the following ca
 
 ## Merging Series
 
-Merging multiple series into one series could be a useful feature in situations where the underlying series describe the
-same object despite having different keys. Often, such series are recorded sequentially and therefore do not overlap.
+Joining multiple series with different tags into one series is useful when some of the tags can be ignored.
 
-**Examples**:
+```txt
+               date                 metric          entity                   tags     value
+2018-06-15 00:00:00   df.bytes.percentused    nurswgvml006    mount=/,fstype=ext3      10.2    <- series-1
+2018-06-15 01:00:00   df.bytes.percentused    nurswgvml006    mount=/,fstype=ext3      10.3    <- series-1
+2018-06-15 02:00:00   df.bytes.percentused    nurswgvml006    mount=/,fstype=ext4      10.1    <- series-2
+2018-06-15 03:00:00   df.bytes.percentused    nurswgvml006    mount=/,fstype=ext4      10.2    <- series-2
+```
 
-* `/media/datadrive` file system re-mounted on a larger disk and the mount point remains the same.
+In the previous example, the underlying series do not overlap and can be merged without duplication.
 
-* Containers with different identifiers launched on schedule to perform a daily task.
+```txt
+               date                 metric          entity       tags     value
+2018-06-15 00:00:00   df.bytes.percentused    nurswgvml006    mount=/      10.2    <- series-3
+2018-06-15 01:00:00   df.bytes.percentused    nurswgvml006    mount=/      10.3    <- series-3
+2018-06-15 02:00:00   df.bytes.percentused    nurswgvml006    mount=/      10.1    <- series-3
+2018-06-15 03:00:00   df.bytes.percentused    nurswgvml006    mount=/      10.2    <- series-3
+```
 
-* Measurements recorded during a set of scientific experiments are tagged with an experiment ID and input parameters.
+Examples:
+
+* `/media/datadrive` file system re-mounted on a larger disk but the mount point remains the same.
+
+* Containers with different identifiers launched on schedule to perform a daily task with the same name.
+
+* Measurements recorded for scientific experiments and tags contain experiment ID and input parameters.
 
 ![](./resources/multiple-series-off.png)
 
@@ -234,7 +251,7 @@ The `[widget]` syntax provides a number of options to select series for multiple
   entity-group = nur-collectors
 ```
 
-Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) for additional information about these settings.
+Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) documentation for details on entity filters.
 
 ```ls
   # Retrieve series for entities starting with nurswgvml00
@@ -251,9 +268,9 @@ Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) for a
 
 ## Retrieving Series from the Database
 
-As an alternative to specifying the `[series]` settings manually and using wildcards, the widget syntax provides the `getSeries()` and `getTags()` methods to retrieve the list of existing series from the database.
+As an alternative to enumerating the `[series]` manually or using wildcards, the widget syntax provides the `getSeries()` and `getTags()` functions to retrieve series lists from the metadata endpoints.
 
-`getTags()`:
+`getTags()` function:
 
 ```ls
   var tags = getTags('df.bytes.percentused', 'mount', 'nurswgvml006')
@@ -265,7 +282,7 @@ As an alternative to specifying the `[series]` settings manually and using wildc
   endfor
 ```
 
-`getSeries()`:
+`getSeries()` function:
 
 ```ls
   var seriesList = getSeries('df.bytes.percentused', 'nurswgvml006')

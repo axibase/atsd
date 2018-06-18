@@ -130,6 +130,8 @@ Grafana
 Graphite
 GraphQL
 grep
+gray
+grey
 Griffiths
 gz
 gzip
@@ -195,6 +197,7 @@ Jxplorer
 kafka
 kafka-jmx
 kB
+keepalive
 Kerberos
 keystore
 Kibot
@@ -214,6 +217,7 @@ Mesos
 Microsoft
 millis
 mis-configured
+mouseover
 MySQL
 n-th
 N-th
@@ -398,3 +402,5 @@ Referer
 Referrer
 referer
 referrer
+uneditable
+superuser

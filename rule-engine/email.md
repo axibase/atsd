@@ -57,12 +57,12 @@ The 'Subject' field may include plain text, HTML [entity characters](https://dev
 
 ![](./images/email-subject.png)
 
-Note that the 'Subject' field is recommended to be limited to `78` characters according to [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt), Section `2.1.1` and may be truncated or rejected by mail servers. The actual limit is often higher but is implementation-specific.
+Note that long subjects that exceed the `78` characters according to [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt), Section `2.1.1` may be truncated or rejected by mail servers. The actual limit is typically higher but is implementation-specific.
 
-You can apply [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to ensure that the subject length remains within the limit.
+If placeholders in the subject can potentially evaluate to long strings, apply [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to ensure that the subject length remains within the limit.
 
 ```bash
-${entity} encountered error '${abbreviate(tags.error, 50)}'
+${entity} received message '${abbreviate(tags.notification, 50)}'
 ```
 
 ### Text Field

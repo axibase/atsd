@@ -136,21 +136,21 @@ To minimize the number of rules with manual thresholds, the rule engine in ATSD 
 
 ### Manual Thresholds
 
-Thresholds can be set manually.
+Thresholds can be set manually which requires some trial and error to determine a level that strikes a balance between `false` positives and missed alerts.
 
 ```javascript
 value > 90
 ```
 
-This method of setting baselines using constant values often requires some trial and error testing to determine a level that strokes a balance between `false` positives and missed alerts. [`Overrides`](#overrides) can be used to handle exceptions to the default baseline.
+Since a single baseline cannot handle all edge cases, the [`Overrides`](#overrides) can be used to enumerate exceptions.
 
-To reduce `false` positives, apply an averaging functions to longer windows.
+To reduce `false` positives, apply an averaging function to longer windows.
 
 ```javascript
 avg() > 90
 ```
 
-To reduce a possible distortion caused by a small number of observations (outliers), use percentiles instead of averages.
+To reduce distortions caused by a small number of outliers, use percentiles instead of averages.
 
 ```javascript
 percetile(75) > 90
