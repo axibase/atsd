@@ -64,7 +64,7 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 
     ![](./images/portal-atsd-log-viewer.png)
 
-3. Screenshots of the **Settings / Diagnostics / Database Statistics** table.
+3. Screenshots of the **Settings > Diagnostics > Database Statistics** table.
 
     ![](./images/portal-database-statistics-1.png)
 
