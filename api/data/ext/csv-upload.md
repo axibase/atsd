@@ -40,7 +40,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 |**Header**|**Value**|
 |:---|:---|
-| Content-Type | `multipart/*`, for example `multipart/form-data` or  `multipart/mixed`. <br>Content type for the file part itself must be set as described in [File Data Mode](file-data-mode) above.|
+| Content-Type | `multipart/*`, for example `multipart/form-data` or  `multipart/mixed`. <br>Content type for the file part itself must be set as described in [File Data Mode](#file-data-mode) above.|
 
 ### Query String Parameters
 
