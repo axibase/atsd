@@ -8,20 +8,22 @@ In case of an existing replacement table, all the current replacement table reco
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| **Method** | **Path** |
 |:---|:---|---:|
-| PUT | `/api/v1/replacement-tables/csv/{name}`  | `text/html` |
-| PUT | `/api/v1/replacement-tables/json/{name}` | `application/json` |
+| PUT | `/api/v1/replacement-tables/{format}/{name}`  |
 
 ### Path Parameters
 
-|**Name**|**Type**|**Description**|
-|:---|:---|:---|
-| `name` |string|Replacement table name.|
+| **Name** | **Description** |
+|:---|:---|
+| `format` | **[Required]** Output format: `json` or `csv`. |
+| `name` | **[Required]** Replacement table name. |
 
 ### Fields
 
-Refer to Response Fields in [Replacement Table: Get](get.md#fields)
+If `format` is `json`, refer to Response Fields in [Replacement Table: Get](get.md#fields).
+
+If `format` is `csv`, the request body should contain records in CSV format without header.
 
 ## Response
 
@@ -29,7 +31,45 @@ Refer to Response Fields in [Replacement Table: Get](get.md#fields)
 
 None.
 
-## Example
+## Example with CSV format
+
+### Request
+
+#### URI
+
+```elm
+PUT /api/v1/replacement-tables/csv/pi_pids
+```
+
+#### Payload
+
+```json
+-65536,Inactive
+-65537,Active
+-196608,Manual
+-196609,Auto
+```
+
+#### curl
+
+```bash
+curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/pi_pids \
+  --insecure --include --user {username}:{password} \
+  --request PUT \
+  --header 'Content-Type: text/csv' \
+  --data @- <<'EOF'
+-65536,Inactive
+-65537,Active
+-196608,Manual
+-196609,Auto'
+EOF
+```
+
+### Response
+
+None.
+
+## Example with JSON format
 
 ### Request
 

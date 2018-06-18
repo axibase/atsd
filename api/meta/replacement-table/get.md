@@ -6,13 +6,13 @@ Retrieves records and metadata for the specified replacement table.
 
 If output format is `json`, the response contains a single object with metadata and records.
 
-If output format is `csv`, the response contains records in CSV format, and metadata is encoded in jsonld format in Link header.
+If output format is `csv`, the response contains records in CSV format, and metadata is specified as JSON-LD in Link header.
 
 If output format is `csv`, the comments from the replacement table are returned if `comments=true` query string parameter is provided.
 
 ## Request
 
-| **Method** | **Path** 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/replacement-tables/{format}/{name}` |
 
@@ -43,7 +43,7 @@ If `format` is `json`, a JSON object with the following not empty values is retu
 | `format` |string|Replacement table UI representation.|
 | `keys` |object|Key-value mappings.|
 
-If format is `csv`, the records are returned as CSV table, with header `Key,Value`. The metadata is specified as JSON-LD (JSON linked data) according to the W3C Model for Tabular Data.
+If format is `csv`, the records are returned as CSV table with header `Key,Value`. The metadata is specified as JSON-LD (JSON linked data) according to the W3C Model for Tabular Data.
 
 ## Example with JSON format
 
