@@ -31,7 +31,8 @@ The following compression codecs are supported.
 > The `lzo` codec requires installation of additional packages on the HBase region servers.
 
 Changing the existing codec is supported however the change is applied only to new files and files re-written by HBase during a major compaction.
-A change in codec requires ATSD restart.
+
+A change in codec requires an ATSD restart.
 
 The compression can be also enabled for the raw column family using the `hbase.compression.type.raw` setting.
 
