@@ -1,6 +1,5 @@
-# markdownlint-tests
 
-```
+```bash
 wget
 ```
 
@@ -11,6 +10,7 @@ Wget
 `wget`
 
 # wget
+
 # `wget`
 
 Use `wget` or curl to download ATSD.
