@@ -2,7 +2,7 @@
 
 ## Configure Firewall
 
-* Allow remote access to the ATSD network services by adding [`iptables` rules](firewall.md).
+* Allow remote access to the ATSD network services by adding [`iptables`](firewall.md) rules.
 
 ## Setup Mail Client
 
@@ -17,7 +17,7 @@
 
 ## Increase Network Buffers
 
-If you are anticipating insertion rate with bursts of 100K+ packets per second, increase maximum receiving buffer.
+If you anticipate insertion rates that include bursts of 100K+ packets per second, increase maximum receiving buffer.
 
 * See [Networking Settings](../administration/networking-settings.md).
 

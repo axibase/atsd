@@ -1,10 +1,10 @@
 # Change Owner
 
-ATSD needs to execute under the `axibase` user, not as `root`, for proper functioning.
+For proper functionality, ATSD must execute under the `axibase` user not `root`.
 
 This document describes where to locate all directories used by the database and how to revert file ownership to `axibase` user.
 
-Execute the below steps as `root` or a user with sudo privileges.
+Execute the below steps as `root` or a user with `sudo` privileges.
 
 ## Identify Custom Directories
 
@@ -65,7 +65,7 @@ sudo chown -R axibase:axibase /opt/atsd
 
 ### Data Directory
 
-If ATSD data is stored in a [custom](change-data-directory.md#changing-the-directory-where-data-is-stored) directory, execute the following command:
+If ATSD data is stored in a [custom directory](change-data-directory.md#changing-the-directory-where-data-is-stored), execute the following command:
 
 ```bash
 sudo chown -R axibase:axibase /path/to/data-directory
@@ -109,13 +109,13 @@ sudo chown -R axibase:axibase /tmp/path-to-subdirectory
 
 ## Verify Ownership
 
-For each directory type above verify that there are no files owned by the `root` user.
+For each directory type above verify that there are no files owned by `root` user.
 
 ```bash
 find /path/to/directory -depth -user root
 ```
 
-Rerun the commands above of the output is not empty.
+Rerun the commands above if the output is not empty.
 
 ## Start ATSD
 

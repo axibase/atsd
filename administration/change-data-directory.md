@@ -18,7 +18,7 @@ Stop ATSD.
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-Copy the data to the new target directory.
+Copy data to the new target directory.
 
 ```sh
 cp -a /opt/atsd/hdfs-data/  /path/to/data-dir/
@@ -87,7 +87,7 @@ Start ATSD services.
 /opt/atsd/bin/atsd-all.sh start
 ```
 
-Verify that the old data is available and that the new data is coming in.
+Verify that all old data is available and that any expected new data is incoming.
 
 Delete the old data and configuration files.
 
