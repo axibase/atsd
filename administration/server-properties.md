@@ -4,9 +4,7 @@ Database properties are displayed on the **Settings > Server Properties** page.
 
 ![](./images/settings-server-properties.png)
 
-The properties are grouped into multiple tables.
-
-Each parameter has a tooltip which describes the setting. Tooltips appear on mouseover.
+Properties are grouped into multiple tables. Each parameter has a tooltip which describes the setting. Tooltips appear on mouseover.
 
 ![](./images/tooltip.png)
 
@@ -20,17 +18,17 @@ Whenever a value deviates from the default, the database displays the field high
 
 ![](./images/modified-value.png)
 
-To reset a property to the default value, leave the value black and click **Save**.
+To reset a property to the default value, leave the value blank and click **Save**.
 
 ## Changing Properties
 
 Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
 
-Properties highlighted in grey can be modified in the `/opt/atsd/atsd/conf/server.properties` file and require a **database restart**.
+Modify server properties highlighted in grey in the `/opt/atsd/atsd/conf/server.properties` file. These modifications require a **database restart**.
 
 ![](./images/cannot-modify.png)
 
-The non-editable properties can be also be changed on the **Settings > Configuration Files** page however a **database restart** is still required.
+These properties can be also be changed on the **Settings > Configuration Files** page by Administrator users, however a **database restart** is still required.
 
 ## Configuring Scheduled Tasks
 
@@ -48,13 +46,13 @@ Export the current properties, as well as operating system settings and metrics,
 
 ## Property Reference
 
-**Bold** property names may only be modified in the `server.properties` file and require a database restart.
+**Bold** property names may only be modified in the `server.properties` file by a qualified user and require a database restart.
 
 ### HBase
 
 Property | Default Value | Description
 ---|---|---
-`entity.countToUseFilter` | 2 | Applies to Data API queries with entity [wildcard](https://axibase.com/docs/atsd/api/data/#wildcards) (*). If entity count is greater than `entity.countToUseFilter`, one scan with skips is used. Otherwise a separate scan is executed for each query.
+`entity.countToUseFilter` | 2 | Applies to Data API queries with entity [wildcard](../api/data/README.md#wildcards) (*). If entity count is greater than `entity.countToUseFilter`, one scan with skips is used. Otherwise a separate scan is executed for each query.
 `hbase.compaction.list` | d properties message li tag forecast | List of HBase tables for which the major compaction will be triggered by the task triggered with `hbase.compaction.schedule`. The list of tables contains most ATSD-managed tables containing data.
 **`hbase.compression.type`** | none | HBase-level compression. Supported options: none, `gz`, `lzo`, `snappy`, `lz4`, and `zstd`.
 **`hbase.compression.type.raw`** | none | HBase-level compression applied to raw time series data. Supported options are: none, `gz`, `lzo`, `snappy`, `lz4`, and `zstd`.
@@ -104,28 +102,28 @@ Property | Default Value | Description
 Property | Default Value | Description
 ---|---|---
 **`http.port`** | `8088` | Port for plaintext HTTP protocol.|
-**`https.keyManagerPassword`** | None | [Java SSL Key Manager](https://axibase.com/docs/atsd/administration/ssl-self-signed.html) password.|
-**`https.keyStorePassword`** | None | [Java SSL Key Store](https://axibase.com/docs/atsd/administration/ssl-self-signed.html) password.|
+**`https.keyManagerPassword`** | None | [Java SSL Key Manager](./ssl-self-signed.md) password.|
+**`https.keyStorePassword`** | None | [Java SSL Key Store](./ssl-self-signed.md) password.|
 **`https.port`** | `8443` | Port for secure HTTP protocol.|
-**`https.trustStorePassword`** | None | [Java SSL Trust Store](https://axibase.com/docs/atsd/administration/ssl-self-signed.html) password.|
-`input.disconnect.on.error` | Yes | Terminate the TCP connection if a malformed command is received. Applies to [Network API](https://axibase.com/docs/atsd/api/network/) series, [property](https://axibase.com/docs/atsd/api/network/property.html), and [message](https://axibase.com/docs/atsd/api/network/message.html) commands.|
-**`input.port`** | `8081` | TCP port for sending [Network API](https://axibase.com/docs/atsd/api/network/) commands.|
+**`https.trustStorePassword`** | None | [Java SSL Trust Store](./ssl-self-signed.md) password.|
+`input.disconnect.on.error` | Yes | Terminate the TCP connection if a malformed command is received. Applies to [Network API](../api/network/README.md) series, [property](../api/network/property.md), and [message](../api/network/message.md) commands.|
+**`input.port`** | `8081` | TCP port for sending [Network API](../api/network/README.md) commands.|
 **`input.socket.keep-alive`** | Yes | Enable keepalive for TCP sockets open on `input.port`|
 **`input.socket.receive-buffer-size`** | -1 | Network memory buffer for processing commands received on the `input.port`.|
-**`pickle.port`** | `8084` | TCP for sending commands serialized in [Python pickle format](https://docs.python.org/2/library/pickle.html).|
+**`pickle.port`** | `8084` | TCP for sending commands serialized in [Python pickle format](../integration/graphite/pickle-protocol.md).|
 `series.processing.pool.size`| 2 | Number of thread processing series commands received over TCP.|
-**`udp.input.port`** | `8082` | UDP port for sending [Network API](https://axibase.com/docs/atsd/api/network/) commands. |
+**`udp.input.port`** | `8082` | UDP port for sending [Network API](../api/network/README.md) commands. |
 
 ### SQL
 
 Property | Default Value | Description
 ---|---|---
-`sql.metric.like.limit` | 50 | Maximum number of metrics matched by [`metric LIKE`](https://axibase.com/docs/atsd/sql/examples/select-atsd_series.html#metric-like-condition) expression in [`atsd_series`](https://axibase.com/docs/atsd/sql/examples/select-atsd_series.html#select-from-atsd-series-table) tables. |
-`sql.tmp.storage.max_rows_in_memory` | 51,200 | Maximum number of rows to be processed in memory by [grouping](https://axibase.com/docs/atsd/sql/#grouping) and [ordering](https://axibase.com/docs/atsd/sql/#ordering) queries. The limit is shared by all concurrently executing queries. If a query selects more rows than remain in shared memory, the query is processed by ATSD using a temporary table which may result in increased response times.|
+`sql.metric.like.limit` | 50 | Maximum number of metrics matched by [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd-series-table) tables. |
+`sql.tmp.storage.max_rows_in_memory` | 51,200 | Maximum number of rows to be processed in memory by [grouping](../sql/README.md#grouping) and [ordering](../sql/README.md#ordering) queries. The limit is shared by all concurrently executing queries. If a query selects more rows than remain in shared memory, the query is processed by ATSD using a temporary table which may result in increased response times.|
 
 ### Cache
 
-Cache usage statistics are available as [`cache.size`](https://axibase.com/docs/atsd/administration/monitoring.html#cache) and [`cache.used_percent`](https://axibase.com/docs/atsd/administration/monitoring.html#cache) metrics, and on the **Settings > Cache Management** page.
+Cache usage statistics are available as [`cache.size`](./monitoring.md#cache) and [`cache.used_percent`](./monitoring.md#cache) metrics, and on the **Settings > Cache Management** page.
 
 Property | Default Value | Description
 ---|---|---
@@ -138,31 +136,31 @@ Property | Default Value | Description
 
 Property | Default Value | Description
 ---|---|---
-`entity-group.display.tags` | None | List of [entity group tags](https://axibase.com/docs/atsd/api/data/properties/examples/entity-tags-for-entitygroup.html) displayed on the Entity Group list.|
-`scollector.ignore.tags` | Environment Role | List of tags ignored from series commands received from [scollector](https://axibase.com/docs/atsd/integration/scollector/) agents.|
+`entity-group.display.tags` | None | List of [entity group tags](../api/data/properties/examples/entity-tags-for-entitygroup.md) displayed on the Entity Group list.|
+`scollector.ignore.tags` | Environment Role | List of tags ignored from series commands received from [scollector](../integration/scollector/README.md) agents.|
 
 ### Rule Engine
 
 Property | Default Value | Description
 ---|---|---
 `cancel.on.rule.change` | No | Trigger actions when a rule is saved or deleted.|
-`system.commands.enabled` | Yes | Enable system command execution by [Rule Engine](https://axibase.com/docs/atsd/rule-engine/).|
+`system.commands.enabled` | Yes | Enable system command execution by [Rule Engine](../rule-engine/README.md).|
 `system.commands.timeout.seconds` | 15 | Interval in seconds after which the system command execution terminates.|
 `webdriver.chromebrowser.path` | None | Path to the `google-chrome` binary.|
-`webdriver.chromedriver.path` | None | Path to the [`chromedriver`](https://sites.google.com/a/chromium.org/chromedriver/) binary.|
-`webdriver.phantomjs.path` | None | Path to [`phantomjs`](http://phantomjs.org/) binary.|
-`webdriver.pool.size` | 4 | Number of worker threads taking screenshots using [Web Driver](https://axibase.com/docs/atsd/rule-engine/notifications/web-driver.html).|
-`webdriver.screenshots.enable` | Yes | Enable screenshot features in [Rule Engine](https://axibase.com/docs/atsd/rule-engine/).|
+`webdriver.chromedriver.path` | None | Path to the [`chromedriver`](../rule-engine/notifications/web-driver.md#option-2-chrome-driver) binary.|
+`webdriver.phantomjs.path` | None | Path to [`phantomjs`](../rule-engine/notifications/web-driver.md#option-1-phantomjs) binary.|
+`webdriver.pool.size` | 4 | Number of worker threads taking screenshots using [Web Driver](../rule-engine/notifications/web-driver.md).|
+`webdriver.screenshots.enable` | Yes | Enable screenshot features in [Rule Engine](../rule-engine/README.md).|
 
 ### Other
 
 Property | Default Value | Description
 ---|---|---
-**`api.guest.access.enabled`** | No | Enable anonymous access to [Data API](https://axibase.com/docs/atsd/api/data/#data-api-endpoints) and [Meta API](https://axibase.com/docs/atsd/api/data/#meta-api-endpoints) query methods.|
+**`api.guest.access.enabled`** | No | Enable anonymous access to [Data API](../api/data/README.md#data-api-endpoints) and [Meta API](../api/data/README.md#meta-api-endpoints) query methods.|
 `delete.sleep.interval.ms` | 2,000 | Millisecond interval to wait between 10-second deletion tasks.|
 `delete.total.duration.minutes` | 60 | Maximum amount of time in minutes spent executing pending deletion tasks.|
 `hostname`| `nurswgvml007` | Hostname of the ATSD server determined automatically by executing the `hostname` command.|
-`nmon.data.directory` | `tmp/atsd/nmon` | Absolute path to a directory where [`nmon`](https://axibase.com/docs/atsd/integration/nmon/) agents are stored. |
-`search.index.path` | `tmp/atsd/lucene` | Absolute path to [Lucene](https://lucene.apache.org/core/) index directory.|
+`nmon.data.directory` | `tmp/atsd/nmon` | Absolute path to a directory where [`nmon`](../integration/nmon/README.md) agents are stored. |
+`search.index.path` | `tmp/atsd/lucene` | Absolute path to [Lucene](../rule-engine/property-search.md) index directory.|
 `security.letsencrypt.renew` | No | Enable daily check of [Let's Encrypt certificate](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html) and attempt to renew.
 `server.url` | `https://nurswgvml007:8443` | Server URL specified in email notification links, by default set to `hostname`.|
