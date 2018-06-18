@@ -43,7 +43,7 @@ If `format` is `json`, a JSON object with the following not empty values is retu
 | `format` |string|Replacement table UI representation.|
 | `keys` |object|Key-value mappings.|
 
-If format is `csv`, the records are returned as CSV table with header `Key,Value`. The metadata is specified as JSON-LD (JSON linked data) according to the W3C Model for Tabular Data.
+If format is `csv`, the records are returned as CSV table with header `Key,Value`. The metadata is specified as JSON-LD (JSON linked data) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/).
 
 ## Example with JSON format
 
@@ -108,7 +108,7 @@ curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/pi_pids \
 
 ### Link Header
 
-``csv
+```csv
 <data:application/csvm+json;base64,eyJAY29udGV4dCI6WyJodHRwOi8vd3d3LnczLm9yZy9ucy9jc3Z3Il0sInVybCI6Imh0dHBzOi8v
 YXRzZF9ob3N0Ojg0NDMvYXBpL3YxL3JlcGxhY2VtZW50LXRhYmxlcy9jc3YvcGlfcGlkcyIsIkB0
 eXBlIjoiVGFibGUiLCJkYzp0aXRsZSI6InBpX3BpZHMiLCJkYzpkZXNjcmlwdGlvbiI6IlBJIGRp
@@ -123,7 +123,8 @@ XCIiLCJoZWFkZXJSb3dDb3VudCI6MSwiZW5jb2RpbmciOiJ1dGYtOCIsImhlYWRlciI6dHJ1ZSwi
 bGluZVRlcm1pbmF0b3JzIjpbIlxyXG4iLCJcbiJdLCJza2lwQmxhbmtSb3dzIjpmYWxzZSwic2tp
 cENvbHVtbnMiOjAsInNraXBSb3dzIjowLCJza2lwSW5pdGlhbFNwYWNlIjpmYWxzZSwidHJpbSI6
 ZmFsc2UsIkB0eXBlIjoiRGlhbGVjdCJ9LCJwcmltYXJ5S2V5IjoiS2V5In0=
->; rel="describedBy"; type="application/csvm+json"```
+>; rel="describedBy"; type="application/csvm+json"
+```
 
 Metadata after Base64 decoding:
 
