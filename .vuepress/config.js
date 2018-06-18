@@ -329,6 +329,7 @@ const csvParsers = [
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
+    titleNote: 'ATSD',
     description: "User manual and API reference for Axibase® Time Series Database",
     head: [
         ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
