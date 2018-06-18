@@ -368,7 +368,7 @@ hbase.compaction.schedule = 0 0 12 * * SAT
 
 ## Allocate Memory
 
-Allocate Java Heap memory to ATSD java process as described [here](../administration/allocating-memory.md).
+Allocate Java Heap memory to ATSD java process as described [here](../administration/memory-allocation.md).
 
 Increase the number of worker threads and maximum queue size the **Settings > Server Properties** page:
 

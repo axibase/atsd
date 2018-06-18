@@ -278,8 +278,8 @@ const administrationMenu = [
         title: "Configuration", children: [
             ['mail-client.md', 'Mail Client'],
             ['timezone.md', 'Time Zone'],
-            ['allocating-memory.md', 'Memory Allocation'],
-            ['enabling-swap-space.md', 'Swap Space'],
+            ['memory-allocation.md', 'Memory Allocation'],
+            ['swap-space.md', 'Swap Space'],
             ['editing-configuration-files.md', 'Configuration Files'],
             ['networking-settings.md', 'Network Settings'], 
             ['change-base-directory.md', 'Custom Base Directory'],

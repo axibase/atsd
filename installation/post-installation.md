@@ -23,11 +23,11 @@ If you anticipate insertion rates that include bursts of 100K+ packets per secon
 
 ## Enable Swap Memory
 
-* See [Enabling Swap Space](../administration/enabling-swap-space.md).
+* See [Enabling Swap Space](../administration/swap-space.md).
 
 ## Increase Java Memory Allocations
 
-* See [Allocating Memory](../administration/allocating-memory.md).
+* See [Allocating Memory](../administration/memory-allocation.md).
 
 ## Review Log Files
 
