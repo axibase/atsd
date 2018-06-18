@@ -3,7 +3,7 @@
 wget
 ```
 
-```
+```bash
 Wget
 ```
 
@@ -13,6 +13,6 @@ Wget
 
 # `wget`
 
-Use `wget` or curl to download ATSD.
+Use `wget` or `curl` to download ATSD.
 
-Use `wget` or `Curl` to download ATSD.
+Use `wget` or `curl` to download ATSD.
