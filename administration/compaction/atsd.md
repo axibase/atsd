@@ -16,7 +16,7 @@ The dataset represents 20+ years of historical minute stock trade data available
 
 The minutely trade statistics are available for IBM stock traded on the New York Stock Exchange. The recording starts on February 1st, 1998 and lasts until the last trading day.
 
-The data is provided in the commonly used OHLCV [format](http://www.kibot.com/support.aspx#data_format).
+The data is provided in the commonly used `Open,High,Low,Close,Volume` (OHLCV) [format](http://www.kibot.com/support.aspx#data_format).
 
 ```csv
 Date,Time,Open,High,Low,Close,Volume
