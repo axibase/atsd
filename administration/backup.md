@@ -12,7 +12,7 @@ Create a new backup by clicking **Backup**. New backup files will appear in the 
 
 ![](./images/backed-up-files.png)
 
-Download individual backup files in gzipped XML format by clicking the link in the **Name** column or access the `backup` folder at `/opt/atsd/atsd/backup`.
+Download individual backup files in gzipped XML format by clicking the link in the **Name** column or access the complete `backup` folder at `/opt/atsd/atsd/backup`.
 
 ## Import Backup Files in Web Interface
 
@@ -24,21 +24,20 @@ Add the desired backup files by clicking **Choose Files**. If needed, select mul
 
 ![](./images/import-backup.png)
 
-**Replace Existing** checkbox toggles whether or not ATSD deletes existing data which matches incoming data. If disabled, and matching data exists in the database, ATSD does not import matching incoming data.
+**Backup Import** has two optional settings:
 
-**Auto Enable** setting toggles whether or not uploaded data is [enabled](./data_retention.md#disable-metric) by default.
+* **Replace Existing** setting toggles whether or not ATSD deletes existing data which matches incoming data. If disabled, and matching data exists in the database, ATSD does not import matching incoming data.
+* **Auto Enable** setting toggles whether or not uploaded data is [enabled](./data_retention.md#disable-metric) by default.
 
 ## Configure Automatic Backup Schedule
 
-The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, ATSD creates a backup at `/opt/atsd/atsd/backup` every day at 11:30 PM server local time.
+The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, ATSD creates a backup at `/opt/atsd/atsd/backup` every day at 11:30 PM [server local time](./timezone.md).
 
-Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
-
-New backup files do not replace existing backup files.
+Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule. New backup files do not replace existing backup files.
 
 ## Node Replication
 
-To replicate an ATSD master node to an slave node, follow the instructions in [Replication](./replication.md).
+To replicate an ATSD master node to an ATSD slave node, follow the instructions in [Replication](./replication.md).
 
 ## Manual Copy
 
