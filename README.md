@@ -12,9 +12,8 @@ Axibase Time Series Database (ATSD) is a non-relational database optimized for c
   FileSystem: Local / HDFS / EMRFS
 ```
 
-* ATSD is written in Java. It is supported on Linux 64-bit distributions and requires a Java 8 runtime environment.
-* Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as the persistence layer for reading and writing key-values in the underlying file system.
-* HBase is supported on local, [Hadoop Distributed File System](./installation/cloudera.md)(HDFS), and [Amazon EMRFS](./installation/aws-emr-s3.md).
+* ATSD is written in Java. It is supported on Linux distributions in 64-bit mode and requires a Java 8 runtime environment.
+* Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which persists key-values in the underlying file system such as `ext4`, [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), and [Amazon EMRFS](./installation/aws-emr-s3.md).
 
 ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a Docker [container](./installation/docker.md#start-container).
 
