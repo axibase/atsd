@@ -63,8 +63,14 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 2. Screenshot of the **Portals > ATSD Log Viewer** portal for the time period covering the issue.
 
     ![](./images/portal-atsd-log-viewer.png)
+    
+3. Screenshots of the **Settings / Diagnostics / Database Statistics** table.
 
-3. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
+    ![](./images/portal-database-statistics-1.png)
+
+    ![](./images/portal-database-statistics-2.png)
+
+4. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
 
 ```sql
 SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr,
