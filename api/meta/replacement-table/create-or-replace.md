@@ -23,7 +23,7 @@ If the specified replacement table exists, all current replacement table records
 
 If `format` is `json`, refer to Response Fields in [Replacement Table: Get](get.md#fields).
 
-If `format` is `csv`, the request body should contain records in CSV format without header.
+If `format` is `csv`, the request body must contain records in CSV format without header.
 
 ## Response
 

@@ -27,7 +27,7 @@ If `format` is `csv`, the response includes comments from the replacement table 
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| `comments` | boolean | Should the comments be included into the output? Works with `csv` format only. |
+| `comments` | boolean | Boolean statement which determines whether response includes comments in output. Works with `csv` format only. |
 
 ## Response
 
