@@ -1,6 +1,18 @@
 # Backup and Restore ATSD Data
 
-This article describes how to create a backup of ATSD data and use the backup to restore ATSD.
+This article describes backup records in ATSD. An individual backup includes the following:
+
+* [Entity Groups](../configuration/entity_groups.md)
+* [Entity Views](../configuration/entity_views.md)
+* [Portals](../portals/README.md)
+* Tag Templates
+* [Users](./collector-account.md#create-user)
+* [User Groups](./collector-account.md#create-user-group)
+* [Web Configurations](../rule-engine/notifications/webhook.md)
+
+A backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or metadata messages. Manually export individual metrics by expanding the **Data** menu and selecting **Export**, or [schedule](https://axibase.com/docs/atsd/reporting/scheduled-exporting.html#export-job-logging) a **Data Export Job** by expanding the **Data** menu and selecting **Export Job**.
+
+ATSD performs an [automatic backup](#configure-automatic-backup-schedule) each day at a specified time.
 
 ## Create Backup in Web Interface
 
@@ -8,11 +20,13 @@ Open the **Settings** menu, expand the **Diagnostics** section and select **Back
 
 ![](./images/backup-files.png)
 
-Create a new backup by clicking **Backup**. New backup files will appear in the **Backup Files** table alongside **Last Modified** and **Size, KB** information.
+Manually create a new backup by clicking **Backup**. New backup files will appear in the **Backup Files** table alongside **Last Modified** and **Size, KB** information. These files contain non-default records only.
 
 ![](./images/backed-up-files.png)
 
 Download individual backup files in gzipped XML format by clicking the link in the **Name** column or access the complete `backup` folder at `/opt/atsd/atsd/backup`.
+
+Import backup XML files to any ATSD instance whose records you would like to restore. Use backup files to revert ATSD records to an earlier date, if records was deleted erroneously or contains recent errors. Alternatively, import records to another ATSD instance to replicate a configuration.
 
 ## Import Backup Files in Web Interface
 
@@ -26,14 +40,14 @@ Add the desired backup files by clicking **Choose Files**. If needed, select mul
 
 **Backup Import** has two optional settings:
 
-* **Replace Existing** setting toggles whether or not ATSD deletes existing data which matches incoming data. If disabled, and matching data exists in the database, ATSD does not import matching incoming data.
-* **Auto Enable** setting toggles whether or not uploaded data is [enabled](./data_retention.md#disable-metric) by default.
+* **Replace Existing** setting toggles whether or not ATSD deletes existing records which match those incoming. If disabled, and matching records exist in the database, ATSD does not import matching incoming records.
+* **Auto Enable** setting toggles whether or not uploaded records are [enabled](./data_retention.md#disable-metric) by default.
 
 ## Configure Automatic Backup Schedule
 
-The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, ATSD creates a backup at `/opt/atsd/atsd/backup` every day at 11:30 PM [server local time](./timezone.md).
+The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, ATSD creates a backup at `/opt/atsd/atsd/backup` every day at 23:30 [server local time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
 
-Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule. New backup files do not replace existing backup files.
+New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation. Configure an external `cron` job to prune old backup files.
 
 ## Node Replication
 
@@ -41,25 +55,25 @@ To replicate an ATSD master node to an ATSD slave node, follow the instructions 
 
 ## Manual Copy
 
-To manually copy ATSD files to a new location, follow these steps. Note that this method only applies to [standalone](../installation/README.md#packages) ATSD instances.
+Manual copy method only applies to [standalone](../installation/README.md#packages) ATSD instances.
 
-1. Stop ATSD.
+Stop ATSD.
 
-    ```sh
-    /opt/atsd/bin/atsd-all.sh stop
-    ```
+```sh
+/opt/atsd/bin/atsd-all.sh stop
+```
 
-2. Copy the `/opt/atsd` directory to the desired location.
+Copy the `/opt/atsd` directory to the desired location.
 
-    ```sh
-    cp -a /opt/atsd/  /new/directory/opt/atsd/
-    ```
+```sh
+cp -a /opt/atsd/  /path/to/opt/atsd/
+```
 
-3. Start ATSD from the new directory.
+Start ATSD from the new directory.
 
-    ```sh
-    /new/directory/opt/atsd/bin/atsd-all.sh start
-    ```
+```sh
+/path/to/opt/atsd/bin/atsd-all.sh start
+```
 
 ## HBase Backup
 
@@ -71,7 +85,7 @@ Follow the procedure shown below:
 1. Allow the `hbase` system user in [YARN](https://hbase.apache.org/book.html#br.initial.setup).
 1. Modify the `hbase-site.xml` file to support backup by adding the following properties and restart HBase.
 
-    ```java
+    ```xml
     <property>
       <name>hbase.backup.enable</name>
       <value>true</value>
