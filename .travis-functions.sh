@@ -62,10 +62,10 @@ function stylecheck {
 function validate_anchors() {
     if [ "$ENABLE_CHECK" = "true" ]; then
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
-            remark -u validate-links  .
+            remark -f -u validate-links .
         else
             if [[ -n "$(list_modified_md_files)" ]]; then
-                list_modified_md_files | xargs -d '\n' -n1 remark -u validate-links
+                list_modified_md_files | xargs -d '\n' -n1 remark -f -u validate-links
             fi;
         fi
     else
