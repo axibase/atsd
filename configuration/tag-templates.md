@@ -39,6 +39,6 @@ Tag Template Editor contains the following options for managing Tag Templates:
 ## Toolbar
 
 * **Save**: Store edits in to the database.
-* **Clone**: Create and store a copy of the current Tag Template in the database. Cloned Tag Template will include the `_clone` suffix.
+* **Clone**: Create and store a copy of the current Tag Template in the database. Cloned Tag Template includes `_clone` suffix.
 * **Delete**: Remove the current Tag Template from the database.
 * **Cancel**: Discard changes made to the current Tag Template.
