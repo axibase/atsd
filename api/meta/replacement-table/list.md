@@ -24,9 +24,9 @@ None
 
 ### Fields
 
-If `format` is `json`, a JSON array containing names of existing replacement tables is returned.
+If `format` is `json`, response includes a JSON array containing names of existing replacement tables.
 
-If `format` is `csv`, a list of names is returned as CSV file with header `Name`.
+If `format` is `csv`, response includes a list of names in CSV file with header `Name`.
 
 ## Example with JSON format
 

@@ -4,11 +4,11 @@
 
 Updates records and metadata of the specified replacement table.
 
-Unlike the [replace method](create-or-replace.md), records and metadata that are **not** specified in the request are left unchanged.
+Unlike the [replace method](create-or-replace.md), records and metadata that are **not** specified by the request remain unchanged.
 
-Similarly, fields that are set to `null` are ignored and are left unchanged.
+Similarly, fields set to `null` remain unchanged.
 
-If content type is JSON, both metadata (including `name`) and records may be updated. If content type is CSV, only records update is possible.
+If content type is JSON, request may update both metadata, such as  `name`, and records. If content type is CSV, request updates only records.
 
 ## Request
 
@@ -25,9 +25,9 @@ If content type is JSON, both metadata (including `name`) and records may be upd
 
 ### Fields
 
-Refer to Fields specified in the [Replacement Table Get](get.md#fields) method.
+Refer to Fields specified in the [Replacement Table: Get](get.md#fields) method.
 
-The `name` field specified in the payload must match to the one specified in the path or not be provided.
+The `name` field specified in the payload must match the one specified in the path or not be provided.
 
 ## Response
 

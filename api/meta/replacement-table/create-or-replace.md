@@ -4,7 +4,7 @@
 
 Creates a replacement table with specified name, description, type, author, and records.
 
-In case of an existing replacement table, all the current replacement table records and metadata are replaced with the ones specified in the request.
+If the specified replacement table exists, all current replacement table records and metadata are replaced by those specified in the request.
 
 ## Request
 
