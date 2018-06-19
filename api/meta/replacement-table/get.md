@@ -6,7 +6,7 @@ Retrieves records and metadata for the specified replacement table.
 
 If `format` is `json`, the response contains a single object with metadata and records.
 
-If `format` is `csv`, the response contains records in CSV format, and metadata is specified as JSON Linked Data (JSON-LD) in Link header.
+If `format` is `csv`, the response contains records in CSV format, and metadata is specified as JSON Linked Data (JSON-LD) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/) in `Link` header.
 
 If `format` is `csv`, the response includes comments from the replacement table if `comments=true` query string parameter is provided by user.
 
@@ -27,7 +27,7 @@ If `format` is `csv`, the response includes comments from the replacement table 
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| `comments` | boolean | Boolean statement which determines whether response includes comments in output. Works with `csv` format only. |
+| `comments` | boolean | Boolean parameter which determines whether response includes comments in output. Works with `csv` format only. |
 
 ## Response
 
@@ -40,10 +40,10 @@ If `format` is `json`, the response includes a JSON object which includes the fo
 | `name` |string|Replacement table name.|
 | `author` |string|Replacement table creator.|
 | `description` |string|Replacement table description.|
-| `format` |string|Replacement table UI representation.|
+| `format` |string|Replacement table |
 | `keys` |object|Key-value mappings.|
 
-If format is `csv`, the response returns records as a CSV table with header `Key,Value`. The metadata is specified as JSON-LD according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/).
+If format is `csv`, the response returns records as a CSV table with header `Key,Value`. The metadata is specified as JSON-LD.
 
 ## Example with JSON format
 
