@@ -23,7 +23,7 @@ The database performs a backup for the following configuration types:
 * [User Groups](./collector-account.md#create-user-group)
 * [Web Configurations](../rule-engine/notifications/webhook.md)
 
-A backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or metadata messages. See [Backup Data](#backup-data) for instructions on creating data backup.
+A backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or metadata messages. See [Data](#data) for instructions on creating data backup.
 
 ATSD performs an [automatic backup](#configure-automatic-backup-schedule) each day at a specified time.
 
