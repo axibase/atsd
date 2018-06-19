@@ -15,7 +15,7 @@ Use `@if/@else/@end` syntax for conditional processing.
 @end{}
 ```
 
-The result of applying this template is the original text less any text contained in branches that evaluates to `false`. Response retains non-printable characters such as whitespace, tabs, line breaks within the printed branches as is.
+The result of applying this template is the original text less any text contained in branches that evaluates to `false`. Response retains non-printable characters such as whitespace, tabs, line breaks within the printed branches.
 
 The following example prints the entity tags table in ASCII format for the entity `nurswgvml007`.
 
@@ -45,7 +45,7 @@ Use the `@foreach` template to iterate over a collection.
 @end{}
 ```
 
-The result is the original text plus inserted blocks of text for each item in the collection. Response includes non-printable characters such as whitespace, tabs, line breaks inside the `@foreach` block as is.
+The result is the original text plus inserted blocks of text for each item in the collection. Response includes non-printable characters such as whitespace, tabs, line breaks inside the `@foreach` block.
 
 The following example prints an entity link for each entity in the `servers` collection.
 
