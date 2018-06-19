@@ -1,12 +1,12 @@
 # Control Flow
 
-The following syntax options for conditional processing and iteration are supported in response actions.
+Response actions support the following syntax options for conditional processing and iteration.
 
 ## Conditional Processing
 
 Use `@if/@else/@end` syntax for conditional processing.
 
-The `@if` and `@else` branches accept boolean conditions.
+`@if` and `@else` branches accept boolean conditions.
 
 ```css
 @if{condition_A}
@@ -15,9 +15,9 @@ The `@if` and `@else` branches accept boolean conditions.
 @end{}
 ```
 
-The result of applying this template is the original text less any text contained in branches that evaluated to `false`. Non-printable characters (whitespace, tabs, line breaks) within the printed branches are retained `as is`.
+The result of applying this template is the original text less any text contained in branches that evaluates to `false`. Response retains non-printable characters such as whitespace, tabs, line breaks within the printed branches as is.
 
-The following example prints the entity tags table in `ascii` format if the entity is `nurswgvml007`.
+The following example prints the entity tags table in ASCII format for the entity `nurswgvml007`.
 
 ```javascript
 @if{entity == 'nurswgvml007'}
@@ -35,7 +35,7 @@ Use the `@foreach` template to iterate over a collection.
 @end{}
 ```
 
-* `collection` is the name of the collection being iterated.
+* `collection` is the name of the iterated collection.
 * `item` is any name assigned to the current element of the collection.
 * Refer to items in the collection using `@{}` syntax instead of the regular placeholder `${}` syntax.
 
@@ -45,7 +45,7 @@ Use the `@foreach` template to iterate over a collection.
 @end{}
 ```
 
-The result is the original text plus inserted blocks of text for each item in the collection. Non-printable characters (whitespace, tabs, line breaks) inside the `@foreach` block are printed `as is`.
+The result is the original text plus inserted blocks of text for each item in the collection. Response includes non-printable characters such as whitespace, tabs, line breaks inside the `@foreach` block as is.
 
 The following example prints an entity link for each entity in the `servers` collection.
 
