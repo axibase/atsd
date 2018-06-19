@@ -26,7 +26,7 @@ Manually create a new backup by clicking **Backup**. New backup files appear in 
 
 Download individual backup files in gzipped XML format by clicking the link in the **Name** column or access the complete `backup` folder at `/opt/atsd/atsd/backup`.
 
-Import backup XML files to any ATSD instance whose records you plan to restore. Use backup files to revert ATSD records to an earlier date, if records was deleted erroneously or contains recent errors. Alternatively, import records to another ATSD instance to replicate a configuration.
+Import backup XML files to any ATSD instance whose records you plan to restore. Use backup files to revert ATSD records to an earlier date, if record is deleted erroneously or contains recent errors. Alternatively, import records to another ATSD instance to replicate a configuration.
 
 ## Import Backup Files in Web Interface
 
