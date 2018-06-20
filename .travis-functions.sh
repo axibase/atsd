@@ -83,7 +83,7 @@ function generate_yaspeller_dictionary {
 }
 
 function install_checkers {
-    npm install --global --production yaspeller spellchecker-cli markdown-link-check remark-cli remark-validate-links git+https://github.com/VeselovAlex/markdownlint-cli.git#custom-rules
+    npm install --global --production yaspeller spellchecker-cli markdown-link-check remark-cli git+https://github.com/raipc/remark-validate-links.git git+https://github.com/VeselovAlex/markdownlint-cli.git#custom-rules
     if [ "$TRAVIS_REPO_SLUG" != "axibase/atsd" ]; then
         wget https://raw.githubusercontent.com/axibase/atsd/master/.spelling -O .spelling-atsd
         awk 'FNR==1{print}1' .spelling-atsd .dictionary | sort -u > .spelling
