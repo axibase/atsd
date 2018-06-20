@@ -79,7 +79,7 @@ PUT /api/v1/replacement-tables/json/pi_pids
     "name": "pi_pids",
     "author": "John Doe",
     "description": "PI digital state code to label mapping",
-    "format": "LIST",
+    "valueFormat": "LIST",
     "keys": {
         "0": "Good",
         "-65536": "Inactive",
@@ -97,7 +97,7 @@ curl https://atsd_hostname:8443/api/v1/replacement-tables/json/pi_pids \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \
-  --data '{"author":"John Doe","description":"PI digital state code to label mapping","format":"LIST","keys":{"-65536":"Inactive","-65537":"Active","-196608":"Manual","-196609":"Auto"}}'
+  --data '{"author":"John Doe","description":"PI digital state code to label mapping","valueFormat":"LIST","keys":{"-65536":"Inactive","-65537":"Active","-196608":"Manual","-196609":"Auto"}}'
 ```
 
 ### Response
