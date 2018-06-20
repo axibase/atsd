@@ -27,7 +27,7 @@ If `format` is `csv`, the response includes comments from the replacement table 
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| `comments` | boolean | Boolean parameter which determines whether response includes comments in output. Works with `csv` format only. |
+| `comments` | boolean | Parameter which determines whether response includes comments in output. Applies to `csv` format only. |
 
 ## Response
 
@@ -40,7 +40,7 @@ If `format` is `json`, the response includes a JSON object which includes the fo
 | `name` |string|Replacement table name.|
 | `author` |string|Replacement table creator.|
 | `description` |string|Replacement table description.|
-| `format` |string|Replacement table |
+| `valueFormat` |string|Replacement table format.<br>Supported values: LIST, SQL, JSON, GRAPHQL, TEXT. |
 | `keys` |object|Key-value mappings.|
 
 If format is `csv`, the response returns records as a CSV table with header `Key,Value`. The metadata is specified as JSON-LD.

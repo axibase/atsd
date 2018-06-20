@@ -2,9 +2,7 @@
 
 ## Description
 
-Creates a replacement table with specified name, description, type, author, and records.
-
-If the specified replacement table exists, all current replacement table records and metadata are replaced by those specified in the request.
+Creates a replacement table with specified name, description, type, author, and records or fully rewrites an existing replacement table which is matched by `name` [path parameter](#path-parameters).
 
 ## Request
 
