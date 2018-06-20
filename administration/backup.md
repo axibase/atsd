@@ -25,7 +25,7 @@ The database performs a backup for the following configuration types:
 
 A backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or metadata messages. See [Data](#data) for instructions on creating data backup.
 
-ATSD performs an [automatic backup](#configure-automatic-backup-schedule) each day at a specified time.
+ATSD performs an [automatic backup](#configure-backup-schedule) each day at a specified time.
 
 Whether performed manually or automatically, `metric` and `entity` backups only contain non-default settings such as custom tags, labels, or field values.
 
