@@ -1,6 +1,6 @@
 # Backup and Restore ATSD
 
-This article describes creating backup [configuration records](#configuration-records) and [data](#data) in ATSD.
+This article describes creating a backup of [configuration records](#configuration-records) and [data](#data) in ATSD.
 
 ## Configuration Records
 
@@ -11,14 +11,14 @@ The database performs a backup for the following configuration types:
 * [Entity Groups](../configuration/entity_groups.md)
 * [Entity Views](../configuration/entity_views.md)
 * [Export Jobs](../reporting/scheduled-exporting.md#export-job-logging)
-* Export Queries
+* [Export Queries](../sql/scheduled-sql.md)
 * [Forecast Settings](../forecasting/README.md)
 * [Metrics](../README.md#glossary)
 * [Named Collections](../rule-engine/functions-random.md#named-collection)
 * [Portals](../portals/README.md)
 * [Replacement Tables](../sql/examples/lookup.md#replacement-tables)
 * [Rules](../rule-engine/README.md#developing-rules)
-* Tag Templates
+* [Tag Templates](../configuration/tag-templates.md)
 * [Users](./collector-account.md#create-user)
 * [User Groups](./collector-account.md#create-user-group)
 * [Web Configurations](../rule-engine/notifications/webhook.md)
@@ -29,7 +29,7 @@ ATSD performs an [automatic backup](#configure-automatic-backup-schedule) each d
 
 Whether performed manually or automatically, `metric` and `entity` backups only contain non-default settings such as custom tags, labels, or field values.
 
-### Create Backup in Web Interface
+### Manual Backup
 
 Open the **Settings** menu, expand the **Diagnostics** section and select **Backup Files**.
 
@@ -41,9 +41,9 @@ Manually create a new backup by clicking **Backup**. New backup files appear in 
 
 Download individual backup files in gzipped XML format by clicking the link in the **Name** column or access the complete `backup` folder at `/opt/atsd/atsd/backup`.
 
-Import backup XML files to any ATSD instance whose records you plan to restore. Use backup files to revert ATSD records to an earlier date, if a record is deleted erroneously or contains recent errors for example. Alternatively, import records to another ATSD instance to replicate a configuration.
+Import backup XML files to any ATSD instance whose records you plan to restore. Use backup files to revert ATSD records to an earlier date if a record is deleted erroneously or contains recent errors for example. Alternatively, import records to another ATSD instance to replicate a configuration.
 
-### Import Backup Files in Web Interface
+### Manual Restore
 
 Open the **Settings** menu, expand the **Diagnostics** section and select **Backup Import**.
 
@@ -58,7 +58,7 @@ Add the desired backup files by clicking **Choose Files**. If needed, select mul
 * **Replace Existing** setting toggles whether or not ATSD deletes existing records which match those incoming. If disabled, and matching records exist in the database, ATSD does not import matching incoming records.
 * **Auto Enable** setting toggles whether or not uploaded records are [enabled](./data_retention.md#disable-metric) by default.
 
-### Configure Automatic Backup Schedule
+### Configure Backup Schedule
 
 The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, ATSD creates a backup at `/opt/atsd/atsd/backup` every day at 23:30 [server local time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
 
@@ -66,13 +66,13 @@ New backup files do not replace existing backup files. Each backup is timestampe
 
 ## Data
 
-### Node Replication
+### Replication
 
 To replicate an ATSD master node to an ATSD slave node, follow the instructions in [Replication](./replication.md).
 
-### Manual Copy
+### Base Directory Copy
 
-Manual copy method only applies to [standalone](../installation/README.md#packages) ATSD instances.
+This method only applies to [standalone](../installation/README.md#packages) ATSD instances.
 
 Stop ATSD.
 
@@ -86,12 +86,12 @@ Copy the `/opt/atsd` directory to the desired location.
 cp -a /opt/atsd/  /path/to/opt/atsd/
 ```
 
-Start ATSD from the new directory.
+Start ATSD.
 
 ```sh
-/path/to/opt/atsd/bin/atsd-all.sh start
+/opt/atsd/bin/atsd-all.sh start
 ```
 
 ### HBase Backup
 
-Axibase is built on [Apache HBase](../README.md#technology-stack), which supports [Backup and Restore](https://hbase.apache.org/book.html#backuprestore) functionality.
+Perform a backup to another HDFS cluster using the underlying HBase [Backup and Restore](https://hbase.apache.org/book.html#backuprestore) functionality.
