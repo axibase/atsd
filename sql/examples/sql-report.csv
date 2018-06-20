@@ -1,7 +1,7 @@
 #publisher,Axibase Time Series Database,https://atsd.axibase.com
 #created,2016-06-13T00:10:56.849Z
 #title,SQL Query
-#comment,"SELECT entity, avg(value) AS "Average", median(value), max(value), count(*), 
+#comment,SELECT entity, avg(value) AS "Average", median(value), max(value), count(*), 
 #   percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value)  
 #FROM "mpstat.cpu_busy"
 #  WHERE time BETWEEN previous_day and current_day 
