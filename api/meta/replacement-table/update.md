@@ -8,20 +8,20 @@ Unlike the [replace method](create-or-replace.md), records and metadata that are
 
 Similarly, fields set to `null` remain unchanged.
 
-If content type is `json`, request updates both metadata and records. If content type is `csv`, request updates only records.
+If `format` is `json`, request updates both metadata and records. If `format` is `csv`, request updates only records.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| **Method** | **Path** |
 |:---|:---|---:|
-| PATCH | `/api/v1/replacement-tables/csv/{name}` | `text/csv` |
-| PATCH | `/api/v1/replacement-tables/json/{name}` | `application/json` |
+| PATCH | `/api/v1/replacement-tables/{format}/{name}` |
 
 ### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `name` |string|Replacement table name.|
+| `format` |string| **[Required]** Output format: `json` or `csv`. |
+| `name` |string| **[Required]** Replacement table name. |
 
 ### Fields
 
@@ -35,7 +35,7 @@ The `name` field specified in the payload must match the one specified in the pa
 
 None.
 
-## Example
+## Example with JSON format
 
 ### Request
 

@@ -55,12 +55,7 @@ curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/pi_pids \
   --insecure --include --user {username}:{password} \
   --request PUT \
   --header 'Content-Type: text/csv' \
-  --data @- <<'EOF'
--65536,Inactive
--65537,Active
--196608,Manual
--196609,Auto'
-EOF
+  --data-binary @pids.csv
 ```
 
 ### Response

@@ -40,7 +40,11 @@ If `format` is `json`, the response includes a JSON object which includes the fo
 | `name` |string|Replacement table name.|
 | `author` |string|Replacement table creator.|
 | `description` |string|Replacement table description.|
+<<<<<<< HEAD
 | `valueFormat` |string|Replacement table format.<br>Supported values: LIST, SQL, JSON, GRAPHQL, TEXT. |
+=======
+| `format` |string| Format used for syntax highlighting on **Data > Replacement Tables > {name}** form |
+>>>>>>> c9349af6b7cbc3d6e3f5dbc31ae444e906272ba2
 | `keys` |object|Key-value mappings.|
 
 If format is `csv`, the response returns records as a CSV table with header `Key,Value`. The metadata is specified as JSON-LD.
