@@ -73,7 +73,7 @@ curl https://atsd_hostname:8443/api/v1/replacement-tables/json/pi_pids \
     "name": "pi_pids",
     "author": "John Doe",
     "description": "PI digital state code to label mapping",
-    "format": "LIST",
+    "valueFormat": "LIST",
     "keys": {
         "0": "Good",
         "-65536": "Inactive",
