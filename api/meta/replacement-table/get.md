@@ -8,7 +8,7 @@ If `format` is `json`, the response contains a single object with metadata and r
 
 If `format` is `csv`, the response contains records in CSV format, and metadata is specified as JSON Linked Data (JSON-LD) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/) in `Link` header.
 
-If `format` is `csv`, the response includes comments from the replacement table if `comments=true` query string parameter is provided by user.
+If `format` is `csv`, the response includes comments from the replacement table if `addComments=true` query string parameter is provided by user.
 
 ## Request
 
@@ -27,7 +27,7 @@ If `format` is `csv`, the response includes comments from the replacement table 
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| `comments` | boolean | Parameter which determines whether response includes comments in output. Applies to `csv` format only. |
+| `addComments` | boolean | If `true`, response includes comments in output. Applies to `csv` format only. |
 
 ## Response
 
