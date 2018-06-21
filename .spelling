@@ -406,4 +406,6 @@ referer
 referrer
 uneditable
 superuser
+gzipped
+timestamped
 Lucene
