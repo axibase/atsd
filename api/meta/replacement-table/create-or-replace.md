@@ -2,7 +2,9 @@
 
 ## Description
 
-Creates a replacement table with specified name, description, type, author, and records or fully rewrites an existing replacement table which is matched by `name` [path parameter](#path-parameters).
+Creates a replacement table with specified name, description, format, author, and key-value records or replaces an existing table identified by `name` in the request [path](#path-parameters).
+
+Replacement tables are used for key-value lookups in [SQL queries](../../../sql/README.md#lookup) and [rule engine](../../../rule-engine/functions-lookup.md#lookup).
 
 ## Request
 
@@ -14,12 +16,12 @@ Creates a replacement table with specified name, description, type, author, and 
 
 | **Name** | **Description** |
 |:---|:---|
-| `format` | **[Required]** Output format: `json` or `csv`. |
+| `format` | **[Required]** Payload format: `json` or `csv`. |
 | `name` | **[Required]** Replacement table name. |
 
 ### Fields
 
-If `format` is `json`, refer to Response Fields in [Replacement Table: Get](get.md#fields).
+If `format` is `json`, refer to Response Fields in the [get](get.md#fields) method.
 
 If `format` is `csv`, the request body must contain records in CSV format without header.
 

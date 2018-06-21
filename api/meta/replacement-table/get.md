@@ -2,13 +2,32 @@
 
 ## Description
 
-Retrieves records and metadata for the specified replacement table.
+Retrieves key-value records and metadata for the specified replacement table.
 
-If `format` is `json`, the response contains a single object with metadata and records.
+Replacement tables are used for key-value lookups in [SQL queries](../../../sql/README.md#lookup) and [rule engine](../../../rule-engine/functions-lookup.md#lookup).
 
-If `format` is `csv`, the response contains records in CSV format, and metadata is specified as JSON Linked Data (JSON-LD) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/) in `Link` header.
+* `json` format
 
-If `format` is `csv`, the response includes comments from the replacement table if `addComments=true` query string parameter is provided by user.
+The response in `json` format contains a single JSON object containing both metadata and key-value records.
+
+* `csv` format
+
+The response in `csv` format contains the predefined header `Key,Value` followed by records in CSV format. Metadata is included in the `Link` header as JSON Linked Data (JSON-LD) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/) specification.
+
+```txt
+Key,Value
+key-1,value-1
+key-2,value-2
+```
+
+If the `addComments` request parameter is set to `true`, the response includes any key-values that are preceded by hash symbol.
+
+```txt
+Key,Value
+key-1,value-1
+key-2,value-2
+#key-3,value-3
+```
 
 ## Request
 
@@ -33,17 +52,17 @@ If `format` is `csv`, the response includes comments from the replacement table 
 
 ### Fields
 
-If `format` is `json`, the response includes a JSON object which includes the following values:
+If `format` is `json`, the response includes a JSON object with the following fields:
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `name` |string|Replacement table name.|
 | `author` |string|Replacement table creator.|
 | `description` |string|Replacement table description.|
-| `valueFormat` |string|Replacement table format.<br>Supported values: LIST, SQL, JSON, GRAPHQL, TEXT. |
+| `valueFormat` |string|Replacement table format.<br>Supported values: `LIST`, `SQL`, `JSON`, `GRAPHQL`, `TEXT`. |
 | `keys` |object|Key-value mappings.|
 
-If format is `csv`, the response returns records as a CSV table with header `Key,Value`. The metadata is specified as JSON-LD.
+If format is `csv`, the response returns records as a CSV table with the pre-defined header `Key,Value`. The metadata is included in the `Link` header as Base64-encoded JSON-LD content.
 
 ## Example with JSON format
 

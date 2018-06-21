@@ -4,6 +4,8 @@
 
 Retrieves a list of replacement table names.
 
+Replacement tables are used for key-value lookups in [SQL queries](../../../sql/README.md#lookup) and [rule engine](../../../rule-engine/functions-lookup.md#lookup).
+
 ## Request
 
 | **Method** | **Path** |
@@ -26,7 +28,7 @@ None
 
 If `format` is `json`, response includes a JSON array containing names of existing replacement tables.
 
-If `format` is `csv`, response includes a list of names in CSV file with header `Name`.
+If `format` is `csv`, response includes a list of names in CSV format with the predefined header `Name`.
 
 ## Example with JSON format
 

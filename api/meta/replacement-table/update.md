@@ -4,11 +4,11 @@
 
 Updates records and metadata of the specified replacement table.
 
-Unlike the [replace method](create-or-replace.md), records and metadata that are **not** specified by the request remain unchanged.
+Unlike the [replace](create-or-replace.md) method, records and metadata that are **not** specified in the request remain unchanged.
 
 Similarly, fields set to `null` remain unchanged.
 
-If `format` is `json`, request updates both metadata and records. If `format` is `csv`, request updates only records.
+If `format` is `json`, the request updates both metadata and records. If `format` is `csv`, the request updates only records.
 
 ## Request
 
@@ -20,12 +20,12 @@ If `format` is `json`, request updates both metadata and records. If `format` is
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `format` |string| **[Required]** Output format: `json` or `csv`. |
+| `format` |string| **[Required]** Payload format: `json` or `csv`. |
 | `name` |string| **[Required]** Replacement table name. |
 
 ### Fields
 
-Refer to Fields specified in the [Replacement Table: Get](get.md#fields) method.
+Refer to Fields specified in the [get](get.md#fields) method.
 
 The `name` field specified in the payload must match the one specified in the path or not be provided.
 
@@ -42,20 +42,18 @@ None.
 #### URI
 
 ```elm
-PATCH /api/v1/replacement-tables/json/pi_pids
+PATCH /api/v1/replacement-tables/json/status_codes
 ```
 
 #### Payload
 
 ```json
 {
-  "author": "Eve",
+  "author": "John Doe",
   "keys": {
-      "0": "UNKNOWN",
-       "-65536": "UNKNOWN",
-       "-65537": "UNKNOWN",
-       "-196608": "UNKNOWN",
-       "-196609": "UNKNOWN"
+      "-1": "Error",
+       "0": "Unknown",
+       "1": "Ok"
   }
 }
 ```
@@ -63,11 +61,11 @@ PATCH /api/v1/replacement-tables/json/pi_pids
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/replacement-tables/pi_pids \
+curl https://atsd_hostname:8443/api/v1/replacement-tables/status_codes \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \
-  --data '{"author":"Eve","keys":{"0": "UNKNOWN","-65536":"UNKNOWN","-65537":"UNKNOWN","-196608":"UNKNOWN","-196609":"UNKNOWN"}}'
+  --data '{"author":"John Doe","keys":{"-1": "Error","0":"Unknown","1":"OK"}}'
 ```
 
 ### Response
