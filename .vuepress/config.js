@@ -151,6 +151,15 @@ const restApiMenu = [
         ]
     },
     {
+        title: 'Replacement Table', children: [
+            `/api/meta/replacement-table/get`,
+            `/api/meta/replacement-table/list`,
+            `/api/meta/replacement-table/update`,
+            `/api/meta/replacement-table/create-or-replace`,
+            `/api/meta/replacement-table/delete`,
+        ]
+    },
+    {
         title: 'Extended', children: [
             `/api/data/ext/command`,
             `/api/data/ext/csv-upload`,
