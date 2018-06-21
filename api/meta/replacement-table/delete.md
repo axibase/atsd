@@ -29,7 +29,7 @@ None.
 #### URI
 
 ```elm
-DELETE /api/v1/replacement-tables/lookup-example
+DELETE /api/v1/replacement-tables/status_codes
 ```
 
 #### Payload
@@ -39,7 +39,7 @@ None.
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/replacement-tables/lookup-example \
+curl https://atsd_hostname:8443/api/v1/replacement-tables/status_codes \
   --insecure --include --user {username}:{password} \
   --request DELETE
 ```
