@@ -25,7 +25,7 @@ The database performs a backup for the following configuration types:
 
 > Configuration backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or messages. See [Data](#data) section for instructions on creating data backup.
 
-The database performs a [scheduled backup](#configure-backup-schedule) each day at a specified time.
+The database performs a [scheduled backup](#scheduled-backup) each day at a specified time.
 
 To reduce the amount of used disk space, backups of `metric` and `entity` types only contain records with non-default settings such as custom tags, labels, or field values.
 
@@ -45,7 +45,7 @@ Download individual backup archives by clicking the link in the **Name** column 
 
 The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, the database creates backup files in the `/opt/atsd/atsd/backup` directory every day at 23:30 [local server time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
 
-New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation. 
+New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation.
 
 Configure an external `cron` job to prune old backup files and to move records to a different location.
 
