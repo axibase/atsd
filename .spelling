@@ -207,6 +207,7 @@ Linux
 localhost
 log4j
 logback
+lookups
 lowercased
 lzo
 MacOS

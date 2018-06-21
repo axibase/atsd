@@ -38,26 +38,25 @@ None.
 #### URI
 
 ```elm
-PUT /api/v1/replacement-tables/csv/pi_pids
+PUT /api/v1/replacement-tables/csv/status_codes
 ```
 
 #### Payload
 
 ```csv
--65536,Inactive
--65537,Active
--196608,Manual
--196609,Auto
+-1,Error
+0,Unknown
+1,Ok
 ```
 
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/pi_pids \
+curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/status_codes \
   --insecure --include --user {username}:{password} \
   --request PUT \
   --header 'Content-Type: text/csv' \
-  --data-binary @pids.csv
+  --data-binary @status_codes.csv
 ```
 
 ### Response
@@ -71,35 +70,35 @@ None.
 #### URI
 
 ```elm
-PUT /api/v1/replacement-tables/json/pi_pids
+PUT /api/v1/replacement-tables/json/status_codes
 ```
 
 #### Payload
 
 ```json
 {
-    "name": "pi_pids",
-    "author": "John Doe",
-    "description": "PI digital state code to label mapping",
-    "valueFormat": "LIST",
-    "keys": {
-        "0": "Good",
-        "-65536": "Inactive",
-        "-65537": "Active",
-        "-196608": "Manual",
-        "-196609": "Auto"
-    }
+  "author": "John Doe",
+  "name": "status_codes",
+  "description": "Status codes to text mapping",
+  "valueFormat": "LIST",
+  "keys": {
+      "-1": "Error",
+       "0": "Unknown",
+       "1": "Ok"
+  }
 }
 ```
 
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/replacement-tables/json/pi_pids \
+curl https://atsd_hostname:8443/api/v1/replacement-tables/status_codes \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \
-  --data '{"author":"John Doe","description":"PI digital state code to label mapping","valueFormat":"LIST","keys":{"-65536":"Inactive","-65537":"Active","-196608":"Manual","-196609":"Auto"}}'
+  --data '{"name":"status_codes","author":"John Doe",
+  "description":"Status codes to text mapping","valueFormat":"LIST",
+  "keys":{"-1":"Error","0":"Unknown","1":"Ok"}}'
 ```
 
 ### Response

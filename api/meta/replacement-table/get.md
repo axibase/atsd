@@ -71,7 +71,7 @@ If format is `csv`, the response returns records as a CSV table with the pre-def
 #### URI
 
 ```elm
-GET /api/v1/replacement-tables/json/pi_pids
+GET /api/v1/replacement-tables/json/status_codes
 ```
 
 #### Payload
@@ -81,7 +81,7 @@ None.
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/replacement-tables/json/pi_pids \
+curl https://atsd_hostname:8443/api/v1/replacement-tables/json/status_codes \
   --insecure --include --user {username}:{password}
 ```
 
@@ -89,19 +89,16 @@ curl https://atsd_hostname:8443/api/v1/replacement-tables/json/pi_pids \
 
 ```json
 {
-    "name": "pi_pids",
-    "author": "John Doe",
-    "description": "PI digital state code to label mapping",
-    "valueFormat": "LIST",
-    "keys": {
-        "0": "Good",
-        "-65536": "Inactive",
-        "-65537": "Active",
-        "-196608": "Manual",
-        "-196609": "Auto"
-    }
+  "name": "status_codes",
+  "author": "John Doe",
+  "description": "Status codes to text mapping",
+  "valueFormat": "LIST",
+  "keys": {
+    "0": "Unknown",
+    "1": "Ok",
+    "-1": "Error"
+  }
 }
-
 ```
 
 ## Example with CSV format
@@ -111,7 +108,7 @@ curl https://atsd_hostname:8443/api/v1/replacement-tables/json/pi_pids \
 #### URI
 
 ```elm
-GET /api/v1/replacement-tables/csv/pi_pids
+GET /api/v1/replacement-tables/csv/status_codes
 ```
 
 #### Payload
@@ -121,27 +118,28 @@ None.
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/pi_pids \
+curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/status_codes \
   --insecure --include --user {username}:{password}
 ```
 
 ### Link Header
 
 ```csv
-<data:application/csvm+json;base64,eyJAY29udGV4dCI6WyJodHRwOi8vd3d3LnczLm9yZy9ucy9jc3Z3Il0sInVybCI6Imh0dHBzOi8v
-YXRzZF9ob3N0Ojg0NDMvYXBpL3YxL3JlcGxhY2VtZW50LXRhYmxlcy9jc3YvcGlfcGlkcyIsIkB0
-eXBlIjoiVGFibGUiLCJkYzp0aXRsZSI6InBpX3BpZHMiLCJkYzpkZXNjcmlwdGlvbiI6IlBJIGRp
-Z2l0YWwgc3RhdGUgY29kZSB0byBsYWJlbCBtYXBwaW5nIiwiZGM6cHVibGlzaGVyIjp7InNjaGVt
-YTpuYW1lIjoiQXhpYmFzZSBUaW1lLVNlcmllcyBEYXRhYmFzZSIsInNjaGVtYTp1cmwiOnsiQGlk
-IjoiaHR0cHM6Ly9hdHNkX2hvc3Q6ODQ0MyJ9fSwiZGM6Y3JlYXRvciI6IkpvaG4gRG9lIiwiZGM6
-dHlwZSI6IkxJU1QiLCJ0YWJsZVNjaGVtYSI6eyJjb2x1bW5zIjpbeyJjb2x1bW5JbmRleCI6MCwi
-dGl0bGVzIjoiS2V5IiwiZGF0YXR5cGUiOiJzdHJpbmcifSx7ImNvbHVtbkluZGV4IjoxLCJ0aXRs
-ZXMiOiJWYWx1ZSIsImRhdGF0eXBlIjoic3RyaW5nIn1dfSwiZGlhbGVjdCI6eyJjb21tZW50UHJl
-Zml4IjoiIyIsImRlbGltaXRlciI6IiwiLCJkb3VibGVRdW90ZSI6dHJ1ZSwicXVvdGVDaGFyIjoi
-XCIiLCJoZWFkZXJSb3dDb3VudCI6MSwiZW5jb2RpbmciOiJ1dGYtOCIsImhlYWRlciI6dHJ1ZSwi
-bGluZVRlcm1pbmF0b3JzIjpbIlxyXG4iLCJcbiJdLCJza2lwQmxhbmtSb3dzIjpmYWxzZSwic2tp
-cENvbHVtbnMiOjAsInNraXBSb3dzIjowLCJza2lwSW5pdGlhbFNwYWNlIjpmYWxzZSwidHJpbSI6
-ZmFsc2UsIkB0eXBlIjoiRGlhbGVjdCJ9LCJwcmltYXJ5S2V5IjoiS2V5In0=
+<data:application/csvm+json;base64,
+eyJAY29udGV4dCI6WyJodHRwOi8vd3d3LnczLm9yZy9ucy9jc3Z3Il0sInVybCI6Imh0dHBzOi8v
+ZTI1Y2ZjMjVjOGRiOjg0NDMvYXBpL3YxL3JlcGxhY2VtZW50LXRhYmxlcy9jc3Yvc3RhdHVzX2Nv
+ZGVzIiwiQHR5cGUiOiJUYWJsZSIsImRjOnRpdGxlIjoic3RhdHVzX2NvZGVzIiwiZGM6ZGVzY3Jp
+cHRpb24iOiJTdGF0dXMgY29kZXMgdG8gdGV4dCBtYXBwaW5nIiwiZGM6cHVibGlzaGVyIjp7InNj
+aGVtYTpuYW1lIjoiQXhpYmFzZSBUaW1lLVNlcmllcyBEYXRhYmFzZSIsInNjaGVtYTp1cmwiOnsi
+QGlkIjoiaHR0cHM6Ly9lMjVjZmMyNWM4ZGI6ODQ0MyJ9fSwiZGM6Y3JlYXRvciI6IkpvaG4gRG9l
+IiwiZGM6dHlwZSI6IkxJU1QiLCJ0YWJsZVNjaGVtYSI6eyJjb2x1bW5zIjpbeyJjb2x1bW5JbmRl
+eCI6MCwidGl0bGVzIjoiS2V5IiwiZGF0YXR5cGUiOiJzdHJpbmcifSx7ImNvbHVtbkluZGV4Ijox
+LCJ0aXRsZXMiOiJWYWx1ZSIsImRhdGF0eXBlIjoic3RyaW5nIn1dfSwiZGlhbGVjdCI6eyJjb21t
+ZW50UHJlZml4IjoiIyIsImRlbGltaXRlciI6IiwiLCJkb3VibGVRdW90ZSI6dHJ1ZSwicXVvdGVD
+aGFyIjoiXCIiLCJoZWFkZXJSb3dDb3VudCI6MSwiZW5jb2RpbmciOiJ1dGYtOCIsImhlYWRlciI6
+dHJ1ZSwibGluZVRlcm1pbmF0b3JzIjpbIlxyXG4iLCJcbiJdLCJza2lwQmxhbmtSb3dzIjpmYWxz
+ZSwic2tpcENvbHVtbnMiOjAsInNraXBSb3dzIjowLCJza2lwSW5pdGlhbFNwYWNlIjpmYWxzZSwi
+dHJpbSI6ZmFsc2UsIkB0eXBlIjoiRGlhbGVjdCJ9LCJwcmltYXJ5S2V5IjoiS2V5In0=  
 >; rel="describedBy"; type="application/csvm+json"
 ```
 
@@ -149,55 +147,55 @@ Metadata after Base64 decoding:
 
 ```json
 {
-   "@context":[
-      "http://www.w3.org/ns/csvw"
-   ],
-   "url":"https://atsd_host:8443/api/v1/replacement-tables/csv/pi_pids",
-   "@type":"Table",
-   "dc:title":"pi_pids",
-   "dc:description":"PI digital state code to label mapping",
-   "dc:publisher":{
-      "schema:name":"Axibase Time-Series Database",
-      "schema:url":{
-         "@id":"https://atsd_host:8443"
+  "@context": [
+    "http://www.w3.org/ns/csvw"
+  ],
+  "url": "https://e25cfc25c8db:8443/api/v1/replacement-tables/csv/status_codes",
+  "@type": "Table",
+  "dc:title": "status_codes",
+  "dc:description": "Status codes to text mapping",
+  "dc:publisher": {
+    "schema:name": "Axibase Time-Series Database",
+    "schema:url": {
+      "@id": "https://e25cfc25c8db:8443"
+    }
+  },
+  "dc:creator": "John Doe",
+  "dc:type": "LIST",
+  "tableSchema": {
+    "columns": [
+      {
+        "columnIndex": 0,
+        "titles": "Key",
+        "datatype": "string"
+      },
+      {
+        "columnIndex": 1,
+        "titles": "Value",
+        "datatype": "string"
       }
-   },
-   "dc:creator":"John Doe",
-   "dc:type":"LIST",
-   "tableSchema":{
-      "columns":[
-         {
-            "columnIndex":0,
-            "titles":"Key",
-            "datatype":"string"
-         },
-         {
-            "columnIndex":1,
-            "titles":"Value",
-            "datatype":"string"
-         }
-      ]
-   },
-   "dialect":{
-      "commentPrefix":"#",
-      "delimiter":",",
-      "doubleQuote":true,
-      "quoteChar":"\"",
-      "headerRowCount":1,
-      "encoding":"utf-8",
-      "header":true,
-      "lineTerminators":[
-         "\r\n",
-         "\n"
-      ],
-      "skipBlankRows":false,
-      "skipColumns":0,
-      "skipRows":0,
-      "skipInitialSpace":false,
-      "trim":false,
-      "@type":"Dialect"
-   },
-   "primaryKey":"Key"
+    ]
+  },
+  "dialect": {
+    "commentPrefix": "#",
+    "delimiter": ",",
+    "doubleQuote": true,
+    "quoteChar": "\"",
+    "headerRowCount": 1,
+    "encoding": "utf-8",
+    "header": true,
+    "lineTerminators": [
+      "\r\n",
+      "\n"
+    ],
+    "skipBlankRows": false,
+    "skipColumns": 0,
+    "skipRows": 0,
+    "skipInitialSpace": false,
+    "trim": false,
+    "@type": "Dialect"
+  },
+  "primaryKey": "Key"
 }
 ```
 
@@ -205,10 +203,9 @@ Metadata after Base64 decoding:
 
 ```csv
 Key,Value
-"-65536",Inactive
-"-65537",Active
-"-196608",Manual
-"-196609",Auto
+"-1",Error
+0,Unknown
+1,Ok
 ```
 
 ## Additional Examples

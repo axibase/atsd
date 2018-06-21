@@ -35,6 +35,38 @@ The `name` field specified in the payload must match the one specified in the pa
 
 None.
 
+## Example with CSV format
+
+### Request
+
+#### URI
+
+```elm
+PATCH /api/v1/replacement-tables/csv/status_codes
+```
+
+#### Payload
+
+```csv
+-1,Error
+0,Unknown
+1,Ok
+```
+
+#### curl
+
+```bash
+curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/status_codes \
+  --insecure --include --user {username}:{password} \
+  --request PATCH \
+  --header 'Content-Type: text/csv' \
+  --data-binary @status_codes.csv
+```
+
+### Response
+
+None.
+
 ## Example with JSON format
 
 ### Request
