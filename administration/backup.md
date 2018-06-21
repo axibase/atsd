@@ -27,7 +27,7 @@ The database performs a backup for the following configuration types:
 
 The database performs a [scheduled backup](#configure-backup-schedule) each day at a specified time.
 
-To reduce the amount of disk space used, backups of `metric` and `entity` types only contain records with non-default settings such as custom tags, labels, or field values.
+To reduce the amount of used disk space, backups of `metric` and `entity` types only contain records with non-default settings such as custom tags, labels, or field values.
 
 ### Manual Backup
 
@@ -53,7 +53,7 @@ Configure an external `cron` job to prune old backup files and to move records t
 
 The records in the selected backup archive can be restored in the same ATSD instance or in another ATSD instance.
 
-Choose one or multiple backup file to revert ATSD records to an earlier date if a record is deleted erroneously. Alternatively, import records to another ATSD instance to replicate a configuration.
+Choose one or more backup files to revert ATSD records to an earlier date if a record is deleted erroneously. Alternatively, import records to another ATSD instance to replicate a configuration.
 
 Open the **Settings > Diagnostics > Backup Import** page.
 
