@@ -41,7 +41,7 @@ PUT /api/v1/replacement-tables/csv/pi_pids
 
 #### Payload
 
-```json
+```csv
 -65536,Inactive
 -65537,Active
 -196608,Manual
