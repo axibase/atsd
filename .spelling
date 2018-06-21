@@ -207,6 +207,7 @@ Linux
 localhost
 log4j
 logback
+lookups
 lowercased
 lzo
 MacOS
@@ -398,6 +399,7 @@ Xmx
 Zendesk
 Znode
 Zookeeper
+Base64
 Referer
 Referrer
 referer
