@@ -1,46 +1,56 @@
 # Control Flow
 
-The following syntax options for conditional processing and iteration are supported in response actions.
+Response actions support the following syntax options for conditional processing and iteration.
 
 ## Conditional Processing
 
-The `if/else` syntax below enables condition processing.
+Use `@if/@else/@end` syntax for conditional processing.
 
-The `if` and `else` branches accept boolean conditions.
+`@if` and `@else` branches accept boolean conditions.
 
 ```css
-@if{condition}
-  @else{condition}
-  @else{}
+@if{condition_A}
+@else{condition_B}
+@else{}
 @end{}
 ```
 
-The result of applying this template is the original text less any text contained in branches that evaluated to `false`.
+The result of applying this template is the original text less any text contained in branches that evaluates to `false`. Response retains non-printable characters such as whitespace, tabs, line breaks within the printed branches.
 
-The following example adds the table with entity tags only for `nurswgvml007` entity.
+The following example prints the entity tags table in ASCII format for the entity `nurswgvml007`.
 
 ```javascript
-  @if{entity == 'nurswgvml007'}
-    ${addTable(entity.tags, 'ascii')}
-  @end{}
+@if{entity == 'nurswgvml007'}
+${addTable(entity.tags, 'ascii')}
+@end{}
 ```
 
 ## Iteration
 
-```css
+Use the `@foreach` template to iterate over a collection.
+
+```javascript
 @foreach{item : collection}
-  @{item.field}
+@{item.field}
 @end{}
 ```
 
-The result is the original text plus inserted blocks of text for each item in the collection.
+* `collection` is the name of the iterated collection.
+* `item` is any name assigned to the current element of the collection.
+* Refer to items in the collection using `@{}` syntax instead of the regular placeholder `${}` syntax.
 
-Note that the items in the collection are referenced using `@{}` syntax instead of the default placeholder `${}` syntax.
+```javascript
+@foreach{lnk : exLinks}
+@{lnk}
+@end{}
+```
 
-The following example adds the details table with entity tags only if the tags.status is equal to `start`.
+The result is the original text plus inserted blocks of text for each item in the collection. Response includes non-printable characters such as whitespace, tabs, line breaks inside the `@foreach` block.
+
+The following example prints an entity link for each entity in the `servers` collection.
 
 ```javascript
 @foreach{srv : servers}
-  * ${getEntityLink('@{srv}')}<br>
+* @{getEntityLink(srv)}
 @end{}
 ```
