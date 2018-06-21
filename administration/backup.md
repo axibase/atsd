@@ -39,7 +39,7 @@ Click **Backup** to create a new backup manually. New backup files appear in the
 
 ![](./images/backed-up-files.png)
 
-Download individual backup archives by clicking the link in the **Name** column or copy the files from the `/opt/atsd/atsd/backup` directory. The name of the archive contains the date when the backup was generated.
+Download individual backup archives by clicking the link in the **Name** column or copy the files from the `/opt/atsd/atsd/backup` directory. The name of the archive contains the backup creation date.
 
 ### Scheduled Backup
 
