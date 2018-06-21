@@ -2,53 +2,69 @@
 
 ## Overview
 
-Tag templates provide a way to organize similar tags into groups and apply the template to multiple entities or metrics.
+Tag templates provide a way to organize tags for similar entities or metrics into groups and to apply custom formatting and validation rules to the managed tags.
 
 ![](./images/tag-templates.png)
 
-To access existing tag templates or create a new template, open the **Settings** menu and select **Tag Templates**.
+To view existing templates or create a new template, open the **Settings > Tag Templates** page.
 
 ![](./images/tag-templates-menu.png)
 
-To modify an existing Tag Template click the link in the **Name** column. To create a new Tag Template, expand the split button and select **Create**.
+To modify an existing tag template, click the link in the **Name** column. To create a new tag template, expand the split button and select **Create**.
 
-## Tag Template Editor
+The template can also be created from existing tags by clicking on the **Create Tag Template** link in the editor.
 
-Tag Template Editor contains the following options for managing tag templates:
+![](./images/tag-templates-create.png)
 
-| Property | Description |
---|--
-Type | Define whether the tag template applies to metric or entity [tags](../README.md#glossary).
-Name | User-defined applied to the tag template.
-Enabled | Whether or not the tag template is enabled determines if the template is available for selection on the **Tag Set** drop-down list on the **Entities** page.
- Expression | Invoke tag template using user-defined expression or metrics, entities, or other tag templates.
- Tag Set Name | Filter name for tag template. Select **Tag Set** on the **Entities** page to include specific tags in Entity Table.
- Display Index | Controls the order that **Tag Set** appears in **Tag Set** drop-down list on **Entities** page.
- Parent Template | Import a set of tags for tag templates which are derived from existing templates.
+## Template Editor
+
+The editor contains the following options which are applicable both to entity and metric tag templates.
+
+| Name | Description |
+---|---
+Type | Defines whether the template applies to metrics or entities.
+Name | User-defined template name.
+Enabled | Determines if the tag template is visible in entity editor and displayed in the **Tag Set** drop-down list on the **Entities** page.
+Expression | Boolean check against the entity name and tags. If the expression returns `true`, the tags managed by this template are displayed in the entity editor for the given entity.
+Tag Set Name | Display name for the group of tags managed by this template.
+Display Index | Controls the order in which tag templates are listed on the **Entities** page and in the entity editor.
+Parent Template | Display tags from the parent template when this template is selected in the entity editor.
 
 ## Tags Table
 
+The table consists of the tag names and formatting rules applied to tags managed by this template.
+
 Field | Description
---|--
-Type | Drop-down list contains several options which control a remaining fields for the given tag:<br>`Text`: Define any text value.<br>`Numeric`: Define any integer value.<br>`Boolean`: Selectable values are `yes` and `no`.<br>`Dictionary`: Define tag value based on pre-defined.<br>`Entity Link`: Define tag value as an entity name. Tag value links to the appropriate entity.
+---|---
+Type | Tag value data type: `Text`, `Numeric`, `Boolean`, `Dictionary`, `Entity Link`. <br>The `Dictionary` type contains a fixed list of values allowed for this tag.<br>The `Entity Link` type converts the tag value to entity label and displays it as a link to the entity editor.
 Name | Tag name.
 Default Value | Default value, if applicable.
 Value | Tag values. Not applicable to `Boolean` tag type.
 
 ## Example
 
-The **FRED** template tags table from [Trends](https://axibase.com/use-cases/trends/) is shown below.
+The example template below, named `FRED`, applies to metrics with a non-empty `observation_end` tag as defined in the **Expression**.
 
-![](./images/fred-tags-table.png)
+```javascript
+tags.observation_end != ''
+```
 
-This tag template applies to [Federal Reserve Economic Data](https://fred.stlouisfed.org/) stored in ATSD by including the **Expression** `tags.observation_end =! "`. The expression searches for metrics which include the tag `observation_end` and apples the tag template to those metrics. Metric page for `cpieall` is shown below:
+![](./images/tag-template-editor-options.png)
 
-![](./images/metric-with-template.png)
+The template defined formatting rules for eight tags with different data types.
 
-Use the **Tag Set** drop-down list on the **Metrics** page to select this tag template and search metrics by the desired tag.
+![](./images/tag-template-editor-tags.png)
 
-![](./images/tag-set.png)
+When the user opens an editor for a metric with the `observation_end` tag (any non-empty value satisfied the condition), the expression returns `true` and the editor formats metric tags according to rules specified in the **Tags Table**.
 
-Without the **FRED** tag template, `cpieall` metric only includes manually applied tags.
+The tags managed by the `FRED` template are grouped together under the `FRED Series Tags` defined in the **Tag Set Name** option.
+
+![](./images/tag-template-editor-view.png)
+
+The `FRED` template can be also selected on the **Metrics** page which causes the page to add additional columns for each tag defined in the table.
+
+![](./images/tag-template-editor-metrics.png)
+
+Without the template, no formatting rules are applied to the metric tags in the editor.
 
 ![](./images/without-tag-template.png)
