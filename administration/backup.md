@@ -23,56 +23,60 @@ The database performs a backup for the following configuration types:
 * [User Groups](./collector-account.md#create-user-group)
 * [Web Configurations](../rule-engine/notifications/webhook.md)
 
-A backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or metadata messages. See [Data](#data) for instructions on creating data backup.
+> Configuration backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or messages. See [Data](#data) section for instructions on creating data backup.
 
-ATSD performs an [automatic backup](#configure-backup-schedule) each day at a specified time.
+The database performs a [scheduled backup](#configure-backup-schedule) each day at a specified time.
 
-Whether performed manually or automatically, `metric` and `entity` backups only contain non-default settings such as custom tags, labels, or field values.
+To reduce the amount of disk space used, backups of `metric` and `entity` types only contain records with non-default settings such as custom tags, labels, or field values.
 
 ### Manual Backup
 
-Open the **Settings** menu, expand the **Diagnostics** section and select **Backup Files**.
+Open the **Settings > Diagnostics > Backup Files** page.
 
 ![](./images/backup-files.png)
 
-Manually create a new backup by clicking **Backup**. New backup files appear in the **Backup Files** table alongside **Last Modified** and **Size, KB** information.
+Click **Backup** to create a new backup manually. New backup files appear in the **Backup Files** table alongside **Last Modified** and **Size, KB** information.
 
 ![](./images/backed-up-files.png)
 
-Download individual backup files in gzipped XML format by clicking the link in the **Name** column or access the complete `backup` folder at `/opt/atsd/atsd/backup`.
+Download individual backup archives by clicking the link in the **Name** column or copy the files from the `/opt/atsd/atsd/backup` directory. The name of the archive contains the date when the backup was generated.
 
-Import backup XML files to any ATSD instance whose records you plan to restore. Use backup files to revert ATSD records to an earlier date if a record is deleted erroneously or contains recent errors for example. Alternatively, import records to another ATSD instance to replicate a configuration.
+### Scheduled Backup
 
-### Manual Restore
+The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, the database creates backup files in the `/opt/atsd/atsd/backup` directory every day at 23:30 [local server time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
 
-Open the **Settings** menu, expand the **Diagnostics** section and select **Backup Import**.
+New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation. 
+
+Configure an external `cron` job to prune old backup files and to move records to a different location.
+
+### Restore
+
+The records in the selected backup archive can be restored in the same ATSD instance or in another ATSD instance.
+
+Choose one or multiple backup file to revert ATSD records to an earlier date if a record is deleted erroneously. Alternatively, import records to another ATSD instance to replicate a configuration.
+
+Open the **Settings > Diagnostics > Backup Import** page.
 
 ![](./images/backup-import.png)
 
-Add the desired backup files by clicking **Choose Files**. If needed, select multiple files. Click **Import** to add the selected backup files to ATSD.
+Upload the desired backup files by clicking **Choose Files**. If needed, select multiple files. Click **Import** to restore records from the selected backup files.
 
 ![](./images/import-backup.png)
 
 **Backup Import** has two optional settings:
 
-* **Replace Existing** setting toggles whether or not ATSD deletes existing records which match those incoming. If disabled, and matching records exist in the database, ATSD does not import matching incoming records.
-* **Auto Enable** setting toggles whether or not uploaded records are [enabled](./data_retention.md#disable-metric) by default.
-
-### Configure Backup Schedule
-
-The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, ATSD creates a backup at `/opt/atsd/atsd/backup` every day at 23:30 [server local time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
-
-New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation. Configure an external `cron` job to prune old backup files.
+* **Replace Existing** setting instructs the database to replace existing records with new records in case of match. If disabled, and matching records exist in the database, the database retains existing records unchanged and ignores matching records in the backup file.
+* **Auto Enable** setting controls whether or not uploaded records are [enabled](./data_retention.md#disable-metric) by default.
 
 ## Data
 
 ### Replication
 
-To replicate an ATSD master node to an ATSD slave node, follow the instructions in [Replication](./replication.md).
+To replicate data to another database instance, follow the instructions in the [Replication](./replication.md) guide.
 
 ### Base Directory Copy
 
-This method only applies to [standalone](../installation/README.md#packages) ATSD instances.
+This method involves copying files on the local file system and only applies to [standalone](../installation/README.md#packages) installations.
 
 Stop ATSD.
 
@@ -80,10 +84,10 @@ Stop ATSD.
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-Copy the `/opt/atsd` directory to the desired location.
+Copy the `/opt/atsd` directory to the backup directory.
 
 ```sh
-cp -a /opt/atsd/  /path/to/opt/atsd/
+cp -a /opt/atsd/  /path/to/backup-dir
 ```
 
 Start ATSD.
