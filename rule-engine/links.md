@@ -4,7 +4,7 @@
 
 Link fields contain URLs to ATSD pages based on the current [window](window.md) context and the `server.url` property.
 
-The link fields can be included in email and web notification messages using placeholders:
+The link fields can be included in email and outgoing webhook messages using placeholders:
 
 ```bash
 [${tags.status}] ${entityLink} on Docker host ${getEntityLink(tags.docker-host)}
@@ -12,7 +12,7 @@ The link fields can be included in email and web notification messages using pla
 
 ![](./images/inline-links.png)
 
-The URLs are automatically [inlined](#inline-links) in email notifications and in web notifications that support inline links.
+The URLs are automatically [inlined](#inline-links) in email notifications and in outgoing webhooks that support inline links.
 
 ## Reference
 

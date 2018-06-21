@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to create an [Amazon CloudWatch](https://aws.amazon.com/cloudwatch) event using a [`AWS API`](aws-api.md) web notification.
+The following example demonstrates how to create an [Amazon CloudWatch](https://aws.amazon.com/cloudwatch) event using a [`AWS API`](aws-api.md) webhook.
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
@@ -10,9 +10,9 @@ The example invokes the [Amazon CloudWatch Events API](https://docs.aws.amazon.c
 
 ## Configuration
 
-Create a new `AWS API` web notification or import the [template](./resources/aws-api-cwe-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `AWS API` webhook or import the [template](./resources/aws-api-cwe-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
 
-To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
+To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
 ### Parameters
 

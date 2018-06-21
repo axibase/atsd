@@ -114,10 +114,10 @@ Rule Processing:
 
 ## Multiple Override Tables
 
-Multiple override tables can be created to trigger different email or web notifications.
+Multiple override tables can be created to trigger different email or webhooks.
 
 ## Notifications
 
-If a window changes its status based on Override rules, the event can trigger a specific email or web notification identified by name. Otherwise, it triggers all notifications except those classified as `Use in Overrides Only`.
+If a window changes its status based on Override rules, the event can trigger a specific email or webhook identified by name. Otherwise, it triggers all notifications except those classified as `Use in Overrides Only`.
 
 ![](./images/override-notification.png)

@@ -2,15 +2,15 @@
 
 ## Overview
 
-The following example demonstrates how to register an incident in [PagerDuty](https://www.pagerduty.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to register an incident in [PagerDuty](https://www.pagerduty.com/) using a [`CUSTOM`](custom.md) webhook in the ATSD rule engine.
 
 The integration relies on the [PagerDuty API](https://v2.developer.pagerduty.com/v2/page/api-reference#!/Incidents/post_incidents) `create-an-incident` method.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification or import the [template](./resources/custom-pagerduty-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `CUSTOM` webhook or import the [template](./resources/custom-pagerduty-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
 
-To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
+To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
 ### Parameters
 
@@ -83,9 +83,9 @@ Specify the key settings on the **Overview** tab.
 
 ![](./images/rule_overview.png)
 
-Open the **Web Notifications** tab.
+Open the **Webhooks** tab.
 
-Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
+Set **Enabled** to **Yes** and choose the previously created webhook from the **Endpoint** drop-down.
 
 Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave `detailsTable('ascii')` empty.
 

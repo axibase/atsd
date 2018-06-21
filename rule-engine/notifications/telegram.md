@@ -74,7 +74,7 @@ There are two options to obtain chat id:
 
 ## Configure Webhook in ATSD
 
-* Open **Alerts > Web Notifications** page.
+* Open **Alerts > Outgoing Webhooks** page.
 * Click on an existing `TELEGRAM` template, or click **Create** and select the `TELEGRAM` type.
 * Specify the unique `Name` of the notification.
 
@@ -121,7 +121,7 @@ NGINX API Gateway Path for Telegram:
 
 The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself.
 
-To receive incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes' and **Method** to 'Polling'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
+To process incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes' and **Method** to 'Polling'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
 
 ## Testing Rule
 
@@ -135,7 +135,7 @@ To receive incoming messages, configure an [outgoing webhook](outgoing-webhook-t
 ### Configure Webhook
 
 * Open **Alerts > Rules** page and select a rule.
-* Open the **Web Notifications** tab.
+* Open the **Webhooks** tab.
 * Select Telegram from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:

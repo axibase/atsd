@@ -23,7 +23,7 @@
 5128 | security | Feature | Add page for password [obfuscation](../../administration/passwords-obfuscation.md#password-obfuscation).
 5127 | security | Bug | NPE in [account](../../administration/user-authentication.md#built-in-account) exist checks.
 5125 | UI | Feature | [Webhook Request Page](../../api/data/messages/webhook.md#diagnostics): view payload, parameters and headers.
-5124 | rule editor | Bug | Fix slow rendering if the [rule](../../rule-engine/README.md) has web notifications.
+5124 | rule editor | Bug | Fix slow rendering if the [rule](../../rule-engine/README.md) has outgoing webhooks.
 5122 | security | Feature | Add wizards for creating [collector](../../administration/user-authorization.md#collector-user) and [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) users.
 5120 | api-rest | Feature | [Webhook API](../../api/data/messages/webhook.md#messages-webhook): auto-subscribe to [AWS notifications](../../api/data/messages/webhook.md#amazon-ws).
 5117 | rule engine | Bug | [db_message](../../rule-engine/functions-message.md) functions: do not throw an exception if type or source not found.
@@ -43,13 +43,13 @@
 5070 | sql | Feature | [Inline queries](../../sql/README.md#inline-views): remove `time`/`datetime` column requirement.
 5067 | rule engine | Bug | [`getEntityLink`](../../rule-engine/functions-link.md#getentitylink) function raises NPE on empty entity.
 5066 | rule engine | Bug | [AWS API](../../rule-engine/notifications/README.md#integration-webhooks): Fix test mode for configuration.
-5065 | rule engine | Feature | [Web Notifications](../../rule-engine/notifications/README.md): Add type, toggle fields.
+5065 | rule engine | Feature | [Webhooks](../../rule-engine/notifications/README.md): Add type, toggle fields.
 5063 | export | Bug | [Tag filter](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) with wildcard allows any tag values.
 5055 | csv | Bug | Incorrect version fields are stored from [uploaded](../../parsers/csv/README.md#uploading-csv-files) .csv file.
 5051 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Output Path collision.
 5049 | api-rest | Bug | Data API: slow search by property in [`entityExpression`](../../api/data/filter-entity.md#entity-filter-fields).
 5036 | admin | Feature | Backup multiple record types from zip/tar.gz archive.
-5018 | rule engine | Bug | Web Notifications: raw url presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
+5018 | rule engine | Bug | Webhooks: raw url presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
 5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | 'Entity Tag' link not applied to 'Entity Tag' column.
 5001 | rule engine | Feature | Telegram: [`getUpdates`](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
 4957 | sql | Bug | [Period](../../sql/README.md#period) query now takes long time to execute.

@@ -2,15 +2,15 @@
 
 ## Overview
 
-The following example demonstrates how to add a comment to an existing issue in [GitHub](https://github.com/) using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to add a comment to an existing issue in [GitHub](https://github.com/) using a [`CUSTOM`](custom.md) webhook in the ATSD rule engine.
 
 The integration relies on the [GitHub API](https://developer.github.com/v3/issues/comments/#create-a-comment) `create-a-comment` method.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification or import the [template](./resources/custom-github-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `CUSTOM` webhook or import the [template](./resources/custom-github-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
 
-To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
+To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
 ### Parameters
 
@@ -28,7 +28,7 @@ Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your githu
 
 The `Endpoint URL` may look as follows: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
 
-Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that may be customized in the rule editor. This  allows you to add comments to different issues re-using the same web notification configuration.
+Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that may be customized in the rule editor. This  allows you to add comments to different issues re-using the same webhook configuration.
 
 Enter an existing authorization token in `Authorization` header or create a new one.
 
@@ -126,9 +126,9 @@ Specify the key settings on the **Overview** tab.
 
 ![](./images/rule_overview.png)
 
-Open the **Web Notifications** tab.
+Open the **Webhooks** tab.
 
-Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
+Set **Enabled** to **Yes** and choose the previously created webhook from the **Endpoint** drop-down.
 
 Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave `chartLink` and `markdownDetailsTable` empty.
 

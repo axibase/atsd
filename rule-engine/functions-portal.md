@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `addPortal` function provides a way to attach custom portals to web notifications. For instance, the function can be invoked to attach a portal for an entity other than the entity in the current window.
+The `addPortal` function provides a way to attach custom portals to outgoing webhooks. For instance, the function can be invoked to attach a portal for an entity other than the entity in the current rule window.
 
 ## Syntax
 

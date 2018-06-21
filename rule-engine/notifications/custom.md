@@ -60,7 +60,7 @@ The parameters section is displayed when the content type is set to `application
 
 If the checkbox on the left is disabled, the parameter is fixed and cannot be modified in the rule editor.
 
-Otherwise, if the checkbox enabled, the parameter is displayed on the 'Web Notifications' tab in the rule editor.
+Otherwise, if the checkbox enabled, the parameter is displayed on the **Webhooks** tab in the rule editor.
 
 Both fixed and editable parameter values can include placeholders.
 

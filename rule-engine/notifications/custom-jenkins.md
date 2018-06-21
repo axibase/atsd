@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) job using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to trigger a [Jenkins](https://jenkins.io/) job using a [`CUSTOM`](custom.md) webhook in the ATSD rule engine.
 
 The integration relies on the following [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) methods:
 
@@ -11,11 +11,11 @@ The integration relies on the following [Jenkins API](https://wiki.jenkins.io/di
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the following [template](./resources/custom-jenkins-notification.xml), used in this example.
+Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-jenkins-notification.xml), used in this example.
 
-To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
+To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
 
-To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
+To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
 ### Parameters
 
@@ -34,7 +34,7 @@ If the Jenkins job is not parameterized, use the `https://jenkins.example.org/jo
 
 Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
 
-Keep the `${job_name}` placeholder in the URL path so that the job name can be customized in the rule editor. This allows you to trigger different jobs using the same web notification.
+Keep the `${job_name}` placeholder in the URL path so that the job name can be customized in the rule editor. This allows you to trigger different jobs using the same webhook.
 
 Enter the Jenkins user name into the `Username` field and the User API token into the `Password` field.
 
@@ -62,7 +62,7 @@ The parameters are displayed if `This project is parameterized` checkbox is enab
 
 ![](./images/jenkins_param_build_3.png)
 
-The web notification can be configured to send a `x-www-form-urlencoded` data to the Jenkins server to pass extended parameters.
+The webhook can be configured to send a `x-www-form-urlencoded` data to the Jenkins server to pass extended parameters.
 
 In this case, add parameters names to the `Parameters` and enable their checkboxes to customize them in the rule editor.
 
@@ -86,9 +86,9 @@ Specify the key settings on the **Overview** tab.
 
 ![](./images/rule_overview.png)
 
-Open the **Web Notifications** tab.
+Open the **Webhooks** tab.
 
-Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
+Set **Enabled** to **Yes** and choose the previously created webhook from the **Endpoint** drop-down.
 
 Enable **Open** and **Repeat** triggers. Set the **Repeat Interval** to **All**.
 

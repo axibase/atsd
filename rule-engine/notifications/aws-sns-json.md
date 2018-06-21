@@ -4,7 +4,7 @@ Create a `AWS SNS` notification with `Message Format = SNS JSON`, for example:
 
 ![](./images/aws_sns_web_notification_config_json.png)
 
-Create a new rule and open the **Web Notifications** tab.
+Create a new rule and open the **Webhooks** tab.
 
 Select `[AWS-SNS] test` from the **Endpoint** drop-down.
 

@@ -21,17 +21,17 @@ Web query functions execute an HTTP request to an external web service and retur
   queryConfig(string n, [map p]) response
 ```
 
-This function executes an HTTP request using a predefined [web notification](notifications/README.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
+This function executes an HTTP request using a predefined [outgoing webhook](notifications/README.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
 
-> The web notification `n` must be listed as `enabled` on the **Alerts > Web Notifications** page.
+> The webhook `n` must be listed as `enabled` on the **Alerts > Outgoing Webhooks** page.
 
-Parameters and placeholders defined in the web notification are replaced using the input map `p`.
+Parameters and placeholders defined in the webhook are replaced using the input map `p`.
 
 Available parameters for built-in notification types are enumerated [here](params-map.md).
 
 ### Content Type is Form
 
-The form-based web notification defines parameters that can be modified in the rule editor.
+The form-based webhook defines parameters that can be modified in the rule editor.
 
 The values for such parameters are retrieved from the input map `p`. Unknown parameters in map `p` are ignored.
 
@@ -51,7 +51,7 @@ channel=devops&repository=atsd-site
 
 ### Content Type is JSON
 
-The JSON document defined in the web notification may include placeholders using `${name}` syntax.
+The JSON document defined in the webhook may include placeholders using `${name}` syntax.
 
 Such placeholders are substituted with corresponding parameter values from the input map `p`. Unknown parameters in the map `p` are ignored.
 

@@ -37,10 +37,10 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 ## Configure AWS SNS Notification
 
-* Open **Alerts > Web Notifications** page.
+* Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SNS` type.
 * Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
-* Enter the `Topic ARN`. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same web notification.
+* Enter the `Topic ARN`. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same webhook.
 
   ![](./images/aws_sns_config.png)
 
@@ -52,7 +52,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 * If test is passed, check **Enable**, click **Save**.
 
-To test the actual payload, create a sample rule, and enable the `AWS-SNS` notification on the `Web Notifications` tab.
+To test the actual payload, create a sample rule, and enable the `AWS-SNS` notification on the **Webhooks** tab.
 
 ## Examples
 

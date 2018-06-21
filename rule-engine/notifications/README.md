@@ -35,13 +35,13 @@ Example: [Slack](./slack.md) Alert
 
 Notifications are triggered on [window status](../window.md#window-status) events.
 
-Open the **Alerts > Web Notifications** page and click 'Create'.
+Open the **Alerts > Outgoing Webhooks** page and click 'Create'.
 
 Select the webhook type in the drop-down.
 
 Set the status to 'Enabled'.
 
-Enter a name by which the webhook is listed on the 'Web Notifications' tab in the rule editor.
+Enter a name by which the webhook is listed on the **Webhooks** tab in the rule editor.
 
 ### Payload
 
@@ -82,7 +82,7 @@ The webhook request is successful if the endpoint returns HTTP `200 OK` status c
 
 Open **Alerts > Rules** page.
 
-Select a rule by name, open the 'Web Notifications' tab in the rule editor.
+Select a rule by name, open the **Webhooks** tab in the rule editor.
 
 Choose one of the webhooks from the 'Endpoint' drop-down.
 
@@ -174,7 +174,7 @@ The order in which webhooks are delivered is non-deterministic.
 
 The rule engine ignores alerts initiated for disabled webhooks.
 
-To disable sending alerts from any rule through the selected webhook, set its status to 'Disabled' on the **Alerts > Web Notifications** page.
+To disable sending alerts from any rule through the selected webhook, set its status to 'Disabled' on the **Alerts > Outgoing Webhooks** page.
 
 ### Notification Logs
 

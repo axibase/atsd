@@ -4,7 +4,7 @@ Create a `AWS SNS` notification with `Message Format = RAW`, for example:
 
 ![](./images/aws_sns_web_notification_config_raw.png)
 
-* Create a new rule and open the **Web Notifications** tab.
+* Create a new rule and open the **Webhooks** tab.
 * Select `[AWS-SNS] test` from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
 * Customize the alert messages using [placeholders](../placeholders.md) as necessary, for example:

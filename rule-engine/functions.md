@@ -282,7 +282,7 @@ The rule functions provide a way to check the status of windows created by other
 
 ## Portal
 
-Portal functions allow attaching custom portals to email and web notifications.
+Portal functions allow attaching custom portals to email and outgoing webhooks.
 
 * [`addPortal`](functions-portal.md#portal-functions)
 

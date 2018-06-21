@@ -4,7 +4,7 @@ Create a `AWS SQS` notification with `Queue Type = Standard`, for example:
 
 ![](./images/aws_sqs_web_notification_config_standard.png)
 
-Create a new rule and open the **Web Notifications** tab.
+Create a new rule and open the **Webhooks** tab.
 
 Select `[AWS-SQS] test` from the **Endpoint** drop-down.
 

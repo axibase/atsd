@@ -69,7 +69,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 ## Create Webhook in ATSD
 
-* Open the **Alerts > Web Notifications** page.
+* Open the **Alerts > Outgoing Webhooks** page.
 * Click on an existing `DISCORD` template, or click **Create** and select the `DISCORD` type.
 * Specify the unique `Name` of the notification.
 
@@ -121,7 +121,7 @@ NGINX API Gateway Path for Discord:
 ### Configure notification
 
 * Open **Alerts > Rules** page and select a rule.
-* Open the **Web Notifications** tab.
+* Open the **Webhooks** tab.
 * Select Discord from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:

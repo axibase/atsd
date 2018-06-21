@@ -6,7 +6,7 @@ Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 4940 | rule engine | Feature | Add administrative [setting](../../rule-engine/window.md#cancel-status) to control 'On Cancel' behavior.
 4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../rule-engine/README.md#rule-engine) XML export.
-4929 | rule engine | Bug | Web notifications: [Telegram](../../rule-engine/notifications/telegram.md) discards long messages.
+4929 | rule engine | Bug | Outgoing webhooks: [Telegram](../../rule-engine/notifications/telegram.md) discards long messages.
 4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../sql/README.md#where-clause).
 4923 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) `4xx` error does not contain information about the message.
 4921 | security | Bug | [Built-in](../../administration/user-authentication.md#built-in-account) user cannot log in to take portal screenshot.
@@ -23,7 +23,7 @@ Issue| Category    | Type    | Subject
 4896 | rule engine | Feature | Implement [`getPropertyTypes`](../../rule-engine/functions-property.md#getpropertytypes) function to return a list of property types for the entity.
 4893 | UI | Feature | Statistics page: display tag names based on associated metric and entity tag templates.
 4892 | rule engine | Feature | Extend [`excludeKeys`](../../rule-engine/functions-collection.md#excludekeys) function - add support for patterns.
-4889 | rule engine | Bug | Round numbers in [web notifications](../../rule-engine/notifications/README.md).
+4889 | rule engine | Bug | Round numbers in [outgoing webhooks](../../rule-engine/notifications/README.md).
 4888 | rule engine | Bug | Email [subject](../../administration/mail-client.md) must not include inline links.
 4883 | rule engine | Bug | Window remains in [`OPEN`](../../rule-engine/window.md#open-status) status after all commands are removed.
 4879 | rule engine | Feature | Add support for [control flow](../../rule-engine/control-flow.md) in notifications.
@@ -50,10 +50,10 @@ Issue| Category    | Type    | Subject
 4851 | rule engine | Feature | Implement [Freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
 4849 | rule engine | Bug | Error in [time](../../rule-engine/functions-format.md#reference) format functions.
 4848 | UI | Bug | Export page: Freemarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
-4846 | rule engine | Feature | [Web notifications](../../rule-engine/notifications/README.md): add status column.
+4846 | rule engine | Feature | [Webhooks](../../rule-engine/notifications/README.md): add status column.
 4845 | forecast | Bug | Forecast [settings](../../forecasting/README.md): restored disappeared tooltips.
-4833 | rule engine | Feature | Implement Web Notifications for [Microsoft Azure](../../rule-engine/notifications/azure-sb.md).
-4832 | rule engine | Feature | Implement Web Notifications for [Google Cloud Platform](../../rule-engine/notifications/gcp-ps.md).
+4833 | rule engine | Feature | Implement webhook for [Microsoft Azure](../../rule-engine/notifications/azure-sb.md).
+4832 | rule engine | Feature | Implement webhook for [Google Cloud Platform](../../rule-engine/notifications/gcp-ps.md).
 4826 | rule engine | Bug | API request [hangs](../../rule-engine/variables.md#execution) while rule is being processed.
 4823 | rule editor | Feature | [Rule](../../rule-engine/README.md#rule-engine) Editor refactoring.
 4822 | sql | Bug | Incorrect selection interval inference from [filter conditions](../../sql/README.md#where-clause).

@@ -28,7 +28,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 ## Configure GCP PS Notification
 
-* Open **Alerts > Web Notifications** page.
+* Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `GCP-PS` type.
 * Fill out the `Name` field.
 * Enter the `Project ID`, `Topic`, `Service Account` and select `Private Key Alias`.
@@ -43,7 +43,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 * If tests are passing OK, check **Enable**, click **Save**.
 
-To test the actual payload, create a sample rule, and enable the `GCP-PS` notification on the `Web Notifications` tab.
+To test the actual payload, create a sample rule, and enable the `GCP-PS` notification on the **Webhooks** tab.
 
 ## Examples
 

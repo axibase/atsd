@@ -56,7 +56,7 @@ Save the rule and insert a few samples on the **Data Entry** page again. You'll 
 
 To receive alerts in [Slack](../rule-engine/notifications/slack.md) create a [bot](../rule-engine/notifications/slack.md#create-bot) user and configure the built-in [`SLACK`](../rule-engine/notifications/slack.md#configure-webhook-in-atsd) webhook.
 
-Open the rule editor and enable alerts on the **Web Notifications** tab as illustrated below.
+Open the rule editor and enable alerts on the **Webhooks** tab as illustrated below.
 
 ![](./resources/alert-slack.png)
 

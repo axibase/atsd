@@ -2,15 +2,15 @@
 
 ## Overview
 
-The following example demonstrates how to send a message to an [Azure Service Bus](https://azure.microsoft.com/en-us/services/service-bus) queue using a [`AZURE SB`](azure-sb.md) web notification.
+The following example demonstrates how to send a message to an [Azure Service Bus](https://azure.microsoft.com/en-us/services/service-bus) queue using a [`AZURE SB`](azure-sb.md) webhook.
 
 The example invokes the [Azure Service Bus API](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) `Send Message` action.
 
 ## Configuration
 
-Create a new `AZURE SB` web notification or import the [template](./resources/azure-sb-message-notification.xml) used in this example. To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `AZURE SB` webhook or import the [template](./resources/azure-sb-message-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
 
-To create a new notification, open the **Alerts > Web Notifications** page and click **Create**.
+To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
 ### Parameters
 
@@ -71,9 +71,9 @@ Specify the key settings on the **Overview** tab.
 
 ![](./images/rule_overview.png)
 
-Open the **Web Notifications** tab.
+Open the **Webhooks** tab.
 
-Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
+Set **Enabled** to **Yes** and choose the previously created webhook from the **Endpoint** drop-down.
 
 Enable **Open**, **Repeat** and **Cancel** triggers.
 

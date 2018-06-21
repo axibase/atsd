@@ -37,7 +37,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 ## Configure AWS SQS Notification
 
-* Open **Alerts > Web Notifications** page.
+* Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SQS` type.
 * Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
 * Enter the `Queue Path`.
@@ -52,7 +52,7 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 * If tests are passing OK, check **Enable**, click **Save**.
 
-To test the actual payload, create a sample rule, and enable the `AWS-SQS` notification on the `Web Notifications` tab.
+To test the actual payload, create a sample rule, and enable the `AWS-SQS` notification on the **Webhooks** tab.
 
 ## Examples
 

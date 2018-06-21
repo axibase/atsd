@@ -2,15 +2,15 @@
 
 ## Overview
 
-The following example demonstrates how to trigger a [CircleCI](https://circleci.com) build for a Github project using a [`CUSTOM`](custom.md) web notification in the ATSD rule engine.
+The following example demonstrates how to trigger a [CircleCI](https://circleci.com) build for a Github project using a [`CUSTOM`](custom.md) webhook in the ATSD rule engine.
 
 The integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-reference/#new-build-branch) `new-build-branch` method for triggering a new build of the specified branch.
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the following [template](./resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Web Notifications**, select **Import** in the split button located below the table and follow the prompts.
+Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Outgoing Webhooks**, select **Import** in the split button located below the table and follow the prompts.
 
-To create a new notification, open **Alerts > Web Notifications** and click **Create**.
+To create a new notification, open **Alerts > Outgoing Webhooks** and click **Create**.
 
 ### Parameters
 
@@ -31,11 +31,11 @@ The `Endpoint URL` may look as follows: `https://circleci.com/api/v1.1/project/g
 
 Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 
-Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they may be customized in the rule editor. This allows you to trigger builds for different projects using the same web notification.
+Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they may be customized in the rule editor. This allows you to trigger builds for different projects using the same webhook.
 
 ### Payload
 
-The web notification can be configured to send a JSON document to the Circle CI endpoint to pass extended build parameters and the `Body` field can include the following text:
+The webhook can be configured to send a JSON document to the Circle CI endpoint to pass extended build parameters and the `Body` field can include the following text:
 
 ```json
 {
@@ -69,9 +69,9 @@ Specify the key settings on the **Overview** tab.
 
 ![](./images/rule_overview.png)
 
-Open the **Web Notifications** tab.
+Open the **Webhooks** tab.
 
-Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
+Set **Enabled** to **Yes** and choose the previously created webhook from the **Endpoint** drop-down.
 
 Enable **Open** and **Repeat** triggers. Set the **Repeat Interval** to **All**.
 

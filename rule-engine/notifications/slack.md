@@ -146,7 +146,7 @@ NGINX API Gateway Path for Slack:
 
 The bot account can be used both to deliver notifications to end users, as well as to react to messages received by the bot itself.
 
-To receive incoming messages, configure an [outgoing webhook](outgoing-webhook-slack.md). The [webhook](outgoing-webhook-slack.md) integration requires ATSD server to be reachable from Slack API servers.
+To process incoming messages, configure an [outgoing webhook](outgoing-webhook-slack.md). The [webhook](outgoing-webhook-slack.md) integration requires ATSD server to be reachable from Slack API servers.
 
 ## Testing Rule
 
@@ -160,7 +160,7 @@ To receive incoming messages, configure an [outgoing webhook](outgoing-webhook-s
 ### Configure Webhook
 
 * Open **Alerts > Rules** page and select a rule.
-* Open the **Web Notifications** tab.
+* Open the **Webhooks** tab.
 * Select Slack from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
