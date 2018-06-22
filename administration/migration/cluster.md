@@ -168,7 +168,7 @@ nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced \
 
 #### Monitoring Job Progress
 
-The job may take several hours to complete.
+The job takes several hours to complete.
 
 Open **Clusters > Cluster > YARN > Web UI > ResourceManager Web UI** in Cloudera Manager.
 
@@ -321,7 +321,7 @@ The number of records must match the results prior to migration.
 
 ## Delete Backup Table
 
-Log in to  HBase shell.
+Log in to HBase shell.
 
 Delete `atsd_d_backup` table. Adjust the table name if a custom prefix is specified in the `server.properties` file.
 

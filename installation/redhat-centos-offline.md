@@ -53,7 +53,7 @@ Follow the prompts to install ATSD:
 sudo yum install -y atsd_amd64.rpm
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Custom Installation Directory
 

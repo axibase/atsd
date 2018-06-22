@@ -20,9 +20,9 @@ Click **Enabled** to subscribe to notifications initiated by `OPEN`, `REPEAT`, a
 
 ![](./images/email_config_all.png)
 
-For the `REPEAT` status, adjust the 'Repeat Interval' to the desired notification frequency, for example, every **6 hours** or every **10 events**.
+For the `REPEAT` status, adjust the **Repeat Interval** to the desired notification frequency, for example, every **6 hours** or every **10 events**.
 
-If necessary, uncheck the **Same as 'On Open'** setting to adjust message content based on window status.
+If necessary, uncheck the **Same as On Open** setting to adjust message content based on window status.
 
 ## Settings
 
@@ -57,7 +57,7 @@ The **Subject** field may include plain text, HTML [entity characters](https://d
 
 ![](./images/email-subject.png)
 
-Note that long subjects that exceed the `78` characters according to [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt), Section `2.1.1` may be truncated or rejected by mail servers. The actual limit is typically higher but is implementation-specific.
+Note that long subjects that exceed the `78` character limit according to [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt), Section `2.1.1` can be truncated or rejected by mail servers. The actual limit is typically higher but is implementation-specific.
 
 If placeholders in the subject can potentially evaluate to long strings, apply [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to ensure that the subject length remains within the limit.
 
@@ -155,7 +155,7 @@ Sample subject:
   [${status}] Rule ${rule} for ${entity} ${tags}
 ```
 
-When using placeholders that may be replaced with text of arbitrary length, apply the [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to limit the subject length.
+When using placeholders that can be replaced with text of arbitrary length, apply the [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to limit the subject length.
 
 ```bash
   [${status}] Rule ${rule} for ${entity}: ${truncate(tags.error, 100)}
@@ -228,7 +228,7 @@ The chart may include multiple series depending on statistical functions referen
 
 ![](./images/email-screenshot-series.png)
 
-Similarly, if the rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) such metrics may be included in the screenshot on the right axis.
+Similarly, if the rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) such metrics can be included in the screenshot on the right axis.
 
 ```javascript
   avg() > 10 && db_last('memfree') < 500000

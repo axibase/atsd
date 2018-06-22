@@ -102,13 +102,13 @@ Forecast Settings Editor provides the following tools:
 
 - **Run**
 
-  This option runs the forecast job and may be used for tests:
+  This option runs the forecast job and can be used for tests.
 
   ![](./resources/forecasts_12.png)
 
 - **Export**
 
-  Export forecast data in csv:
+  Export forecast data in csv.
 
   ![](./resources/forecasts_13.png)
 
@@ -116,13 +116,13 @@ Forecast Settings Editor provides the following tools:
 
 - **Show Meta**
 
-   This option displays values of the main settings by which this forecast is calculated:
+   This option displays values of the main settings by which this forecast is calculated.
 
    ![](./resources/forecasts_16.png)
 
    Metadata is stored with the forecast. Collection interval is an interval within the real data were extracted to build the forecast.
 
-Split button on the **Data > Forecasts** page may be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
+Split button on the **Data > Forecasts** page can be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
 ![](./resources/forecasts_10.png)
 
@@ -130,7 +130,7 @@ Split button on the **Data > Forecasts** page may be used to specify [Exceptions
 
 ### Rule Engine
 
-Pre-computed forecast values may be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](../rule-engine/functions.md#statistical) such as standard deviation as well as raw value.
+Pre-computed forecast values can be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values can be compared to actual values using [statistical functions](../rule-engine/functions.md#statistical) such as standard deviation as well as raw value.
 
 ```javascript
 abs(avg() - forecast()) > 25

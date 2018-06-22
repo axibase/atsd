@@ -77,7 +77,7 @@ Status: Downloaded newer image for axibase/atsd:latest
 14d1f27bf0c139027b5f69009c0c5007d35be92d61b16071dc142fbc75acb36a
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

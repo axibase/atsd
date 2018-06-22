@@ -134,7 +134,7 @@ Merge the two datasets by adding the `weight` column from the `weights.sav` data
 * Open **Data > Merge Files... > Add Variables...**
 * Select `weights.sav` dataset.
 * Check 'Match cases on key variables'.
-* Select `time` in the 'New Active Dataset' pane, add to 'Key Variables' Pane.
+* Select `time` in the **New Active Dataset** pane, add to **Key Variables** Pane.
 
   ![](./images/merge_editor.png)
 * Click **OK**.
@@ -172,7 +172,7 @@ SPSS provides two alternatives to aggregate data by period.
 #### Aggregation using the Analyze Menu
 
 * Open **Analyze > Reports > Report Summaries in Columns...**
-* Move the `categ_index` column to the 'Summary Variables' field and select the `SUM` aggregation function.
+* Move the `categ_index` column to the **Summary Variables** field and select the `SUM` aggregation function.
 * Set the `datetime` column as the break variable, which is used to group the resulting data. You can format aggregation columns in the dialog window.
 
 ![](./images/analysis_reports_summary.png)

@@ -27,7 +27,7 @@ sudo /opt/atsd/install_sudo.sh
 sudo /opt/atsd/install_user.sh
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

@@ -46,7 +46,7 @@ hbase classpath | cut -f 1 -d ":"
 /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf
 ```
 
-Copy  the HBase configuration directory and set `HADOOP_CLASSPATH`:
+Copy the HBase configuration directory and set `HADOOP_CLASSPATH`:
 
 ```sh
 export HADOOP_CLASSPATH=/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf:$(hbase mapredcp):/tmp/reporter/reporter.jar

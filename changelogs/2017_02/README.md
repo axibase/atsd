@@ -137,7 +137,7 @@ The following metrics are collected at the docker-host level.
 
 [ChartLab](https://apps.axibase.com/chartlab/81932cd6)
 
-The metrics are collected at 'Container Size Interval' for running containers and at 'Property Refresh Interval' for all containers.
+The metrics are collected at **Container Size Interval** for running containers and at **Property Refresh Interval** for all containers.
 
 ![Figure 1](./Images/Figure1.png)
 

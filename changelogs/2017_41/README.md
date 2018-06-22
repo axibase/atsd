@@ -13,7 +13,7 @@
 | 4617 | storage | Bug | Not all records were deleted for metrics with enabled retention policy. |
 | 4608 | client | Bug | Python client upgrade failure. |
 | [4605](#issue-4605)  | api-rest | Feature | Add support for `SLOPE` and `INTERCEPT` aggregators in series query. |
-| 4598 | security | Feature | Enable auto-login on server restart if 'Remember Me' option is checked on login. |
+| 4598 | security | Feature | Enable auto-login on server restart if **Remember Me** option is checked on login. |
 | 4592 | sql | Bug | Incorrect `datetime OR` complex filter. |
 | 4554 | sql | Bug | Change behavior of `datetime !=` operator. |
 | 4489 | sql | Bug | Incorrect reference to the `value` column in the `WHERE` clause. |
@@ -25,7 +25,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4634 | docker | Bug | Apply limit to `docker.cpu.sum.usage.total.percent` calculation. |
-| 4633 | security | Feature | Enable auto-login on server restart if 'Remember Me' option is checked on login. |
+| 4633 | security | Feature | Enable auto-login on server restart if **Remember Me** option is checked on login. |
 | [4625](#issue-4625) | docker | Feature | Read credentials from environment variables. |
 | [4616](#issue-4616) | docker | Feature | Mask secrets (passwords) in properties and inspect files. |
 | 4582 | docker | Feature | Add shutdown hook in collector to update docker host status on shutdown. |

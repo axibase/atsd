@@ -102,13 +102,13 @@ Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-con
 
  ![](./images/ODBC_conf.png)
 
-* Check (enable) **'Strip Quote'** option to remove the quotes from table and column names.
+* Check (enable) **Strip Quote** option to remove the quotes from table and column names.
 
-* Check (enable) **'Strip Escape'** option to remove [ODBC escape sequences](https://docs.microsoft.com/en-us/sql/odbc/reference/appendixes/odbc-escape-sequences).
+* Check (enable) **Strip Escape** option to remove [ODBC escape sequences](https://docs.microsoft.com/en-us/sql/odbc/reference/appendixes/odbc-escape-sequences).
 
 * Click **Test** to verify the settings. If result is correct, save the settings.
 
-> In case of 'Unable to create JVM' error, run a Repair task in Windows Program for the bridge program. The error may occur if the bridge was installed prior to Java installation.
+> In case of `Unable to create JVM` error, run a Repair task in Windows Program for the bridge program. The error occurs if the bridge was installed prior to Java installation.
 
 * The System DSN tab now displays the new data source.
 

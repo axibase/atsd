@@ -28,7 +28,7 @@ Portals tab, `View` button allows for viewing of the Portal during configuration
 
 ![4163.3](./Images/4163.3.1.png)
 
-'Remember Me' tooltip added:
+**Remember Me** tooltip added:
 
 ![4163.4](./Images/4163.4.png)
 

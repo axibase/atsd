@@ -6,7 +6,7 @@ Scheduled exporting enables exporting of historical data and forecasts to the lo
 
 ### Schedule
 
-Scheduled exporting may be controlled via `cron` expression. See [Scheduling](../shared/scheduling.md) for example and instructions about scheduling export jobs.
+Scheduled exporting can be controlled via `cron` expression. See [Scheduling](../shared/scheduling.md) for example and instructions about scheduling export jobs.
 
 Concurrent execution for the same job is not allowed.
 
@@ -70,7 +70,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Annotation  |  Custom annotation that is added above the exported time series.<br>Can include any text, characters, and numbers.<br>If the field is left empty, no custom annotation is added.<br>To include entity name, entity tags, metric names, or metric tags use the following placeholders as part of the annotation text:<br>`${ENTITY}`<br>`${ENTITY.tag1}`<br>`${METRIC}`<br>`${METRIC.tag2}`  |
 |  Entity Tags  |  List of entity tags included as columns in the exported file.  |
 |  Metric Tags  |  List of metric tags included as columns in the exported file.  |
-|  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed 'as is' without any formatting.  |
+|  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed without any formatting.  |
 |  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
 
 ### Distribution

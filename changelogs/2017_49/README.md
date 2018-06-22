@@ -17,7 +17,7 @@
 | [4765](#issue-4765) | rule engine | Feature | Implement [derived](../../rule-engine/derived.md) commands. |
 | 4757 | rule engine | Bug | Remove excessive rounding in variables. |
 | 4754 | rule engine | Feature | Add [window](../../rule-engine/window.md) viewer. |
-| 4753 | rule engine | Bug |  Alert does not reopen when 'Message on Cancel' is empty. |
+| 4753 | rule engine | Bug |  Alert does not reopen when **Message on Cancel** is empty. |
 | 4728 | portal | Bug | Charts and portals - ensure `LTR` layout regardless of the browser setting. |
 | 4717 | api-rest | Bug | Series query: wrong below median `PERCENTILE_*` calculations (equals to `MIN`). |
 | 4713 | api-rest | Bug | Series query with `FORECAST` type: add support for `addMeta` parameter. |
@@ -51,7 +51,7 @@ ${detailsTable('json')}
 
 ### Issue 4772
 
-The new settings automatically creates as many series as there are incoming series to simplify the initial configuration. For `message` and `property` commands, the setting is set to 'No Tags'.
+The new settings automatically creates as many series as there are incoming series to simplify the initial configuration. For `message` and `property` commands, the setting is set to **No Tags**.
 
 ![](./Images/group_all_tags.png)
 

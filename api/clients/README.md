@@ -44,7 +44,7 @@ ATSD API Client for [Go](https://golang.org/).
 
 ## Ruby
 
-The ATSD Client for [Ruby](https://www.ruby-lang.org/) enables Ruby developers to easily read and write statistics and metadata from  ATSD.
+The ATSD Client for [Ruby](https://www.ruby-lang.org/) enables Ruby developers to easily read and write statistics and metadata from ATSD.
 
 * [GitHub Repository](https://github.com/axibase/atsd-api-ruby)
 * [Ruby `gem`](https://rubygems.org/gems/atsd)

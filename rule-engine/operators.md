@@ -96,7 +96,7 @@ Examples:
 | `=` | Also `==`. Equal. The comparison is case-**insensitive** (`'a' = 'A'` equals `true`).|
 | `!=` | Not equal. The comparison is case-**insensitive** (`'a' != 'A'` equals `false`).|
 | `BETWEEN` | Returns `true` if the left operand string is ordered between lower and upper strings on the right.<br>`a BETWEEN b AND c`.<br>String `a` is ordered between `b` and `c` (inclusive) using lexicographical comparison.<br>The comparison is case-**sensitive**.<br>Example: `timeStr BETWEEN '18:00' AND '18:04'`.|
-| `LIKE` | Returns `true` if the left operand string matches the pattern on the right. The pattern may include regular characters and  wildcards `?` and `*`.<br>The operator also accepts a [collection of patterns](functions-collection.md#like) in round brackets.|
+| `LIKE` | Returns `true` if the left operand string matches the pattern on the right. The pattern may include regular characters and wildcards `?` and `*`.<br>The operator also accepts a [collection of patterns](functions-collection.md#like) in round brackets.|
 | `IN` | Returns `true` if the left operand string is contained in the string [collection](functions-collection.md#in) specified in parenthesis on the right. |
 
 Examples:

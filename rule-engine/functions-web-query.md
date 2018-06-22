@@ -80,7 +80,7 @@ The target URL receives the following JSON payload sent as `application/json`:
 
 Execute a `GET` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
-The configuration map `c` may contain the following fields:
+The configuration map `c` can contain the following fields:
 
 * `headers` - Map of request headers keys and values.
 * `params` - Map of request parameters appended to query string.
@@ -98,7 +98,7 @@ The configuration map `c` may contain the following fields:
 
 Execute a `POST` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
-The configuration map `c` may contain the following fields:
+The configuration map `c` can contain the following fields:
 
 * `contentType` - Content type of the request. Default is `application/json`.
 * `content` - Request body text.

@@ -52,7 +52,7 @@ On Debian 8.x (jessie)
 sudo apt-get update && sudo apt-get -t jessie-backports install atsd
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

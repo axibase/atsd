@@ -162,7 +162,7 @@ Connection closed by foreign host.
 
 If the connection is terminated due to client error, all valid commands sent prior to the first invalid command are stored.
 
-Due to the fact that closing the channel due to client error may take some time, the database may also store a few valid commands received after the discarded command.
+Due to the fact that closing the channel due to client error can take some time, the database may also store a few valid commands received after the discarded command.
 
 ```txt
 valid command   - stored
@@ -359,15 +359,16 @@ cat command-in.log
 
 ### Dropped Commands
 
-Reasons why ATSD server can drop commands:
+Reasons for the ATSD server to drop commands:
 
 * Entity, metric, or tag names are not valid.
 * Timestamp is negative or earlier than `1970-01-01T00:00:00Z`.
-* Timestamp field `s:`/`ms:` is not numeric or if the `d` field is not in ISO format.
-* Metric value could not be parsed as a number using `.` as the decimal separator. Scientific notation is supported.
-* Multiple data points for the same entity, metric, and tags have the same timestamp in which case commands are considered duplicates and some of them are dropped. This could occur when commands with the same key are sent without a timestamp.
-* Data is sent using the UDP protocol and the client UDP send buffer or the server UDP receive buffer overflows.
-* Value is below 'Min Value' or above 'Max Value' limit specified for the metric and the 'Invalid Value Action' is set to `DISCARD`.
+* Timestamp field `s:`/`ms:` is not numeric.
+* Timestamp field `d` field format is not supported.
+* Metric value cannot not be parsed as a number using `.` as the decimal separator. Note that scientific notation is supported.
+* Multiple data points for the same entity, metric, and tags have the same timestamp in which case commands are duplicates and some of them are dropped. This situation can occur if multiple commands for the same series are sent without a timestamp.
+* Data is sent using the UDP protocol and the client UDP buffer or the server UDP buffer overflows.
+* Value is below **Min Value** or above **Max Value** limit specified for the metric and the **Invalid Value Action** is set to `DISCARD`.
 * Last command in a multi-line UDP packed does not terminate with line feed symbol.
 
 To review dropped commands, `open command*.log` files in ATSD.

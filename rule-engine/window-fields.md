@@ -75,7 +75,7 @@ Each window maintains a set of continuously updated fields that can be included 
 
 > Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
 > Fields ending with `_datetime` contain time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.
-> If 'Check On Exit' option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
+> If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
 > The `now` object's fields can be accessed with [`get`](object-datetime.md) methods, for example `now.getDayOfWeek() == 4`.
 
 ## Details Tables

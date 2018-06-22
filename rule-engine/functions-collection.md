@@ -72,7 +72,7 @@ tags.location IN ('NUR', 'SVL')
 string s LIKE (string a[, string b[...]]) boolean
 ```
 
-Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection may contain string literals and variables.
+Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection can contain string literals and variables.
 
 Examples:
 
@@ -232,7 +232,7 @@ excludeKeys([] m, [] c) map
 
 Returns a copy of the input map `m` without the keys specified in collection `c`.
 
-The keys in collection `c` may contain wildcards ? and * to remove multiple matching keys from the map.
+The keys in collection `c` can contain wildcards ? and * to remove multiple matching keys from the map.
 
 Examples:
 

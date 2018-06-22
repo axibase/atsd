@@ -57,7 +57,7 @@ location = NYC        -- entity tag
 school = CAS          -- series tag
 ```
 
-However, `location:NYC` and `place:NYC` searches produce different results because synonyms are not supported in field names and therefore `place` as a field name is not enabled as a synonym for the  field name. As a result, `place:NYC` does not match the above series.
+However, `location:NYC` and `place:NYC` searches produce different results because synonyms are not supported in field names and therefore `place` as a field name is not enabled as a synonym for the `location` field name. As a result, `place:NYC` does not match the above series.
 
 ## Implementation
 

@@ -223,7 +223,7 @@ Next you have to create a check, for example:
 }
 ```
 
-The `debug` handler is included for logging purposes and may be omitted.
+The `debug` handler is included for logging purposes and can be omitted.
 
 At least one element of `subscribers` has to match an element of the `subscriptions` in your client configuration file.
 

@@ -50,7 +50,7 @@
 5049 | api-rest | Bug | Data API: slow search by property in [`entityExpression`](../../api/data/filter-entity.md#entity-filter-fields).
 5036 | admin | Feature | Backup multiple record types from zip/tar.gz archive.
 5018 | rule engine | Bug | Webhooks: raw url presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
-5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | 'Entity Tag' link not applied to 'Entity Tag' column.
+5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | **Entity Tag** link not applied to **Entity Tag** column.
 5001 | rule engine | Feature | Telegram: [`getUpdates`](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
 4957 | sql | Bug | [Period](../../sql/README.md#period) query now takes long time to execute.
 4925 | rule engine | Feature | Rule Engine: [rule_window](../../rule-engine/functions-rules.md#rule_window) function.
@@ -66,7 +66,7 @@
 5140 | UI | Bug | Empty page on opening simon console.
 5114 | core | Bug | Collector CPU is abnormally high.
 5099 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | Entity create error.
-5089 | UI | Bug | Add 'Execution Time' column to job list.
+5089 | UI | Bug | Add **Execution Time** column to job list.
 5084 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | Job without pool is hanging.
 5079 | [json](https://axibase.com/docs/axibase-collector/jobs/json.html) | Bug | Not all commands arrive in ATSD.
 5074 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | Cloud front metrics not collected.

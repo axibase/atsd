@@ -52,7 +52,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 * Set 'Custom Driver Class Name' field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
 * Enter ATSD account credentials in the **User Name** and **Password** fields.
-* Set 'Connection Name' to `ATSD Connection`.
+* Set **Connection Name** to `ATSD Connection`.
 
 ![](./resources/atsd_connection.png)
 

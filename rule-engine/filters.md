@@ -17,7 +17,7 @@ Filters determine which commands are processed by the given rule. Commands that 
 
 | **Name** | **Description** |
 | --- | --- |
-| Expression | Accepts commands for which the filter expression  returns `true`. |
+| Expression | Accepts commands for which the filter expression returns `true`. |
 | Entity | Accepts commands only for entities selected in the rule. |
 | Entity Group | Accepts commands for entities that belong only to one of entity groups selected in the rule. |
 | Time | Accepts commands with a timestamp that deviates by less than the specified interval from the current server time. |

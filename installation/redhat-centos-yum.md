@@ -44,7 +44,7 @@ Follow the prompts to install ATSD:
 sudo yum install -y atsd
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

@@ -20,7 +20,7 @@ The rules are processed from **top to bottom**. If the rule filter matches the g
 
 In case no matching rules are found for the given window, the default condition, as specified on the **Overview** tab, is evaluated.
 
-> Note that the 'Depends On' condition, when enabled on the **Overview** tab, is checked for both the override rule and the default condition.
+> Note that the **Depends On** condition, when enabled on the **Overview** tab, is checked for both the override rule and the default condition.
 
 ![](./images/override-columns.png)
 
@@ -38,7 +38,7 @@ The filter matches the window if it satisfies **all** filter columns including:
 
 ![](./images/override-rule-filter.png)
 
-> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the `disk_prod` group and applies only to windows with  tag `file_system` equal `/tmp`.
+> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the `disk_prod` group and applies only to windows with tag `file_system` equal `/tmp`.
 
 The tag columns are present when the rule is grouped by tags on the **Overview** tab.
 

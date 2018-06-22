@@ -14,7 +14,7 @@ The actual deletion from the disk, which removes both the `DELETE` marker as wel
 
 As a result, series samples that are re-inserted with timestamps earlier than the pending `DELETE` marker is not visible.
 
-To remove the pending `DELETE` markers, initiate an `HBase Compaction` on the **Settings > Storage > Delete Tasks** page. The compaction runs in the background and may take some time to complete.
+To remove the pending `DELETE` markers, initiate an `HBase Compaction` on the **Settings > Storage > Delete Tasks** page. The compaction runs in the background and can take some time to complete.
 
 ## Request
 

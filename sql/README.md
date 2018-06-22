@@ -74,7 +74,7 @@ WHERE datetime >= '2017-06-15T00:00:00Z'    -- WHERE clause
   LIMIT 1                          -- other clauses
 ```
 
-The statement may be terminated with a semicolon character.
+The statement can be terminated with a semicolon character.
 
 ### Processing Sequence
 
@@ -1591,7 +1591,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 ### HAVING filter
 
-The `HAVING` clause filters grouped rows. It eliminates grouped rows that do not match the specified condition which may contain one or multiple aggregation functions.
+The `HAVING` clause filters grouped rows. It eliminates grouped rows that do not match the specified condition which can contain one or multiple aggregation functions.
 
 ```sql
 HAVING aggregation_function operator value
@@ -1721,7 +1721,7 @@ ORDER BY Diff DESC
 If the `GROUP BY` clause contains a `PERIOD` column, the `ROW_NUMBER` function applied to grouped rows can refer to the same period as the grouping clause.
 
 ```sql
-SELECT  entity, tags.*, datetime, avg(value), count(value), first(value), last(value)
+SELECT entity, tags.*, datetime, avg(value), count(value), first(value), last(value)
   FROM "df.disk_used"
 WHERE datetime >= '2017-01-09T00:00:00Z' AND datetime < '2017-01-09T02:00:00Z'
   -- group by series (entity+tags) and 15-minute period
@@ -1951,7 +1951,7 @@ SELECT MAX(value) FROM (
 | 98.8       |
 ```
 
-An inline view may contain subqueries that join multiple tables.
+An inline view can contain subqueries that join multiple tables.
 
 ```sql
 SELECT datetime, MAX(value) AS "5-min Peak" FROM (
@@ -2133,7 +2133,7 @@ datetime d:2017-06-16T13:00:17Z e:nurswgvml006 m:mpstat.cpu_system=1.0 m.mpstat.
 datetime d:2017-06-16T13:00:33Z e:nurswgvml006 m:mpstat.cpu_system=0.0 m.mpstat.cpu_user=1.0 m:mpstat.cpu_iowait=0.0
 ```
 
-However, when merging independent metrics, `JOIN` results may contain only rows with identical times.
+However, when merging independent metrics, `JOIN` results can contain only rows with identical times.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value AS cpu, t2.value AS mem
@@ -2558,7 +2558,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 
 #### `ENDTIME`
 
-The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md), which maybe different from the database time zone.
+The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md), which can be different from the database time zone.
 
 ```sql
 ENDTIME(calendarExpression, string timeZone)
@@ -3054,7 +3054,7 @@ The result of `CAST(inputNumber AS string)` is formatted with the `#.##` pattern
 
 The `OPTION` clause provides hints to the database optimizer on how to execute the given query most efficiently.
 
-The query may contain multiple `OPTION` clauses specified at the end of the statement.
+The query can contain multiple `OPTION` clauses specified at the end of the statement.
 
 ### `ROW_MEMORY_THRESHOLD` Option
 

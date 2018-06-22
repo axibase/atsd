@@ -50,13 +50,13 @@ If the [backup](#backup) is stored on the same file system, add it to the estima
 
 Calculate disk space requirements.
 
-  | **Data** | **Size** |
-  |---|---|
-  | Original Data | 24 GB |
-  | Backup | 24 GB |
-  | Migrated Data | 7 GB (30% of 24 GB) |
-  | Backup + Migrated | 31 GB |
-  | Available | 736 GB |
+| **Data** | **Size** |
+|---|---|
+| Original Data | 24 GB |
+| Backup | 24 GB |
+| Migrated Data | 7 GB (30% of 24 GB) |
+| Backup + Migrated | 31 GB |
+| Available | 736 GB |
 
 > In the example above, 736 GB is sufficient to store 31 GB of backup and migrated data on the same file system.
 
@@ -551,7 +551,7 @@ Step 5. Migrate data to the `atsd_d` table.
 ...
 ```
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
+The `DataMigrator` job takes a long time to complete. Monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
 The Yarn interface is automatically terminated once the `DataMigrator` is finished.
 

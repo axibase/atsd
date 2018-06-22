@@ -48,7 +48,7 @@ The commands can be associated with windows in a 1-to-1 fashion by enumerating a
 
 ![](./images/grouping-series-tags.png)
 
-If the 'Group by Entity' option is unchecked, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
+If the **Group by Entity** option is unchecked, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
 
 ### Window Length
 
@@ -59,7 +59,7 @@ The rule engine supports two types of windows:
 
 **Count-based** windows accumulate up to the specified number of samples. The samples are sorted in order of arrival, with the most recently received sample being placed at the end of the array. When the window becomes full based on user specifications, the first sample (oldest arrival time) is removed from the window to free up space at the end of the array for an incoming sample to be added there.
 
-**Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window does not limit how many samples may be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
+**Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window does not limit how many samples can be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
 
 ## Condition Checking
 
@@ -100,7 +100,7 @@ Supported response actions:
 * [Generate derived metrics](derived.md)
 * [Log alert to file](logging.md)
 
-Triggers for all actions may be configured separately. For example, you can configure a rule such that logging events are generated on all occurrences whereas email messages are sent every 6 hours.
+Triggers for all actions can be configured separately. For example, you can configure a rule such that logging events are generated on all occurrences whereas email messages are sent every 6 hours.
 
 ## Correlation
 
@@ -232,11 +232,9 @@ To enable this behavior, set Severity on the **Logging** tab to `unknown`.
 
 ## Complex Rules
 
-In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../sql/scheduled-sql.md) queries.
+In cases that involve processing of large volumes of historical data, use [Scheduled SQL](../sql/scheduled-sql.md) queries to analyze the data.
 
-To trigger a notification by an SQL query:
-
-* Develop a query such that it returns an empty result if the situation is normal.
+To trigger an email notification from an SQL query, use `WHERE` and `HAVING` filters to develop a query that returns **no rows** if the situation is normal.
 
 ```sql
 SELECT entity, tags, percentile(90, value) FROM page_views
@@ -246,7 +244,6 @@ HAVING percentile(90, value) > 1000
 -- HAVING condition acts as a rule filter
 ```
 
-* Create a scheduled SQL query.
 * Set **Send Empty Report** parameter to `No`.
 * Specify triggers such as an email notification or a file export.
 

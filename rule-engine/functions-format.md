@@ -68,7 +68,7 @@ Examples:
        1855425871872:     1.9 TB    1.7 TiB
 ```
 
-> If the `x` argument is a string or an object that cannot be parsed into a number, its value is returned 'as is'.
+> If the `x` argument is a string or an object that cannot be parsed into a number, the function returns the original value `x`.
 
 ## `convert`
 

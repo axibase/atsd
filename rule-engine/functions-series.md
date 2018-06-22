@@ -4,7 +4,7 @@
 
 The functions provide a way to retrieve series records from the database at any stage of the rule evaluation process.
 
-The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series may be different from the series in the current window.
+The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series can be different from the series in the current window.
 
 ## Reference
 
@@ -66,7 +66,7 @@ Example:
 
 Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`.
 
-Tags argument `t` may be specified as follows:
+Tags argument `t` can be specified as follows:
 
 * Empty string `''` for no series tags.
 * String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
@@ -162,7 +162,7 @@ Both `db_last` and `db_statistic` functions search the database for matching ser
 
 ### `Tags : No Tags`
 
-In the example below, the `db_last()` function ignores the tags `mount_point` and `file_system` because they are not collected by the metric `cpu_busy`.
+In the example below, the `db_last('cpu_busy')` function ignores the tags `mount_point` and `file_system` because they are not collected by the metric `cpu_busy`.
 
 * Current Window
 
@@ -174,8 +174,8 @@ In the example below, the `db_last()` function ignores the tags `mount_point` an
 
 * Expression
 
-```java
-  db_last() > 10
+```javascript
+db_last('cpu_busy') > 10
 ```
 
 * Search Filter
@@ -196,7 +196,7 @@ In the example below, the `db_last()` function ignores the tags `mount_point` an
 
 ### `Same Tags`
 
-In this example, the function `db_last()` uses the same series tags as in the current window because all of these tags are collected by the metric `disk_used_percent`.
+In this example, the function `db_last('disk_used_percent')` uses the same series tags as in the current window because all of these tags are collected by the metric `disk_used_percent`.
 
 * Current Window
 
@@ -208,8 +208,8 @@ In this example, the function `db_last()` uses the same series tags as in the cu
 
 * Expression
 
-```java
-  db_last() > 90
+```javascript
+db_last('disk_used_percent') > 90
 ```
 
 * Search Filter
@@ -230,7 +230,7 @@ In this example, the function `db_last()` uses the same series tags as in the cu
 
 ### `No Tags : Tags`
 
-In this example, the function `db_last()` searches for a series with **any** tags configuration; the metric `cpu_busy` in the current window has no tags. If the search matches multiple series, the first series is returned. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax.
+In this example, the function `db_last('disk_used_percent')` searches for a series with **any** tags configuration; the metric `cpu_busy` in the current window has no tags. If the search matches multiple series, the first series is returned. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax.
 
 * Current Window
 

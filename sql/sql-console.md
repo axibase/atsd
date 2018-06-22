@@ -101,7 +101,7 @@ Perform the query specified in the **Query** window and view results in a tabula
 
 ### Cancel
 
-Interrupt a running query. The database may take several seconds to gracefully stop a query.
+Interrupt a running query. The database can take several seconds to gracefully stop a query.
 
 ### Export
 

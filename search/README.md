@@ -30,7 +30,7 @@ A phrase is a group of words surrounded by double quotes such as `"location nur"
 
 Multiple terms can be combined together using boolean operators to form a more complex query.
 
-A keyword may be prefixed with a field name to narrow the scope of the search to a particular series property, for example `entity:nurswgvml007`.
+A keyword can be prefixed with a field name to narrow the scope of the search to a particular series property, for example `entity:nurswgvml007`.
 
 If the field is not specified, the search is performed for all fields.
 

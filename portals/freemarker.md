@@ -219,7 +219,7 @@ If the series has multiple tags, the last argument must include all tags.
 atsd_last("nurswgvml007", "disk_size", "mount_point=/,file_system=/dev/mapper/vg_nurswgvml007-lv_root")
 ```
 
-If the series has no tags, the last argument may be omitted or set to empty string.
+If the series has no tags, the last argument can be omitted or set to empty string.
 
 ```javascript
 atsd_last("nurswgvml007", "cpu_busy")

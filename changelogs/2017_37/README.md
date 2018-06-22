@@ -7,7 +7,7 @@
 | 4565 | admin | Bug | Remove redundant roles assigned to the built-in administrator account.  |
 | 4562 | meta-api | Bug | Requests to delete malformed entities (containing whitespace) are failing.  |
 | 4561 | meta-api | Bug | Requests to delete a non-existent entity must return 400 status code instead of code 200 (OK).  |
-| 4559 | core | Bug | Table size and region count may be under-reported if metrics are sampled immediately after compaction.  |
+| 4559 | core | Bug | Table size and region count can be under-reported if metrics are sampled immediately after compaction.  |
 | 4546 | security | Bug | User with `USER` role can access unauthorized records via API requests to `/api/v1/metrics` and `/api/v1/metrics` methods. |
 | [4518](#issue-4518) | sql | Bug | Fix invalid expression error for `time`/`datetime` column in inline views. |
 | [4508](#issue-4508) | sql | Feature | Add support for joins in subqueries. |
@@ -70,7 +70,7 @@ WHERE (datetime BETWEEN '2017-01-01T00:00:00.000Z' AND '2017-01-02T00:00:00.000Z
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| [4566](#issue-4566)  | docker | Bug | Add 'Redirects Enabled' setting to HTTP pool to handle authentication errors with `302` status response. |
+| [4566](#issue-4566)  | docker | Bug | Add **Redirects Enabled** setting to HTTP pool to handle authentication errors with `302` status response. |
 | 4513 | docker | Bug | Set correct entity name for the docker host when the `/etc/hosts` files resolves to `localhost`. |
 
 ### Issue 4566

@@ -28,9 +28,9 @@ The user account can be configured to use either **Local** or **LDAP** authentic
 
 ### Local Accounts
 
-In case of Local authentication, ATSD stores the hashcode of the user's password in the underlying HBase database.
+In case of Local authentication, ATSD stores the hashcode of the user password in the underlying HBase database.
 
-The user's identity is verified if the hashcode of the submitted password matches the stored hashcode for the specified username.
+The user identity is verified if the hashcode of the submitted password matches the stored hashcode for the specified username.
 
 The password is subject to the requirements outlined [below](#password-requirements).
 
@@ -90,7 +90,7 @@ To enable anonymous access to Data API query methods, set `api.guest.access.enab
 
 ## Guest Access to Portals
 
-To expose the portal to all visitors, click on the **Portals** tab in the top menu, click **Configure** page, open the portal editor and check the 'Guest Access' field.
+To expose the portal to all visitors, click on the **Portals** tab in the top menu, click **Configure** page, open the portal editor and check the **Guest Access** field.
 
 Since charts displayed in the portals are loaded via Data API, the Guest Access option is available only when Data API is configured for anonymous access.
 
@@ -98,7 +98,7 @@ Since charts displayed in the portals are loaded via Data API, the Guest Access 
 
 ## Guest Access to SQL Reports
 
-SQL query results can be published to all visitors by checking 'Guest Access' field on the SQL configuration page.
+SQL query results can be published to all visitors by checking **Guest Access** field on the SQL configuration page.
 
 ![sql guest](./images/sql-guest-access.png)
 

@@ -6,8 +6,8 @@ The following example demonstrates how to trigger a [Jenkins](https://jenkins.io
 
 The integration relies on the following [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) methods:
 
-* `'Job with parameters'` method.
-* `'Jobs without parameters'` method.
+* `Job with parameters` method.
+* `Jobs without parameters` method.
 
 ## Configuration
 

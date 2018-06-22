@@ -207,8 +207,8 @@ Start a PostgreSQL 9.6 container. Mount `/tmp/test` directory to the container.
 docker run --name postgres \
    -e POSTGRES_USER=axibase \
    -e POSTGRES_PASSWORD=axibase \
-   -v /tmp/test:/data  \
-   -d  postgres:9.6
+   -v /tmp/test:/data \
+   -d postgres:9.6
 ```
 
 ### Execute SQL scripts for the **Trade Table** Schema

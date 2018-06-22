@@ -69,7 +69,7 @@ ATSD connection can be verified using the `SELECT 1` query.
 Example of `SELECT 1` test query:
 
 * Select 'Add a new connection' (green plus icon).
-* Input query row `SELECT 1` to the 'SQL Query Designer'.
+* Input query row `SELECT 1` to the **SQL Query Designer**.
 * Click **Preview**.
 
 ![](./resources/select_1.png)
@@ -126,7 +126,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 * Build a Query using the `SQL Query Designer`
 
 * Click **OK**. The list of queries is added to the **Data** pane.
-* Right-click on the query and choose 'Select Query'. The tree view displays query results and fields.
+* Right-click on the query and choose **Select Query**. The tree view displays query results and fields.
 
 ![](./resources/data_pane_updated.png)
 

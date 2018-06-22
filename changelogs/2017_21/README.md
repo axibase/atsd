@@ -13,7 +13,7 @@
 | 4208 | data-in| Bug | Clear long command buffer if disconnect on error is disabled. |
 | 4195 | sql | Bug | Fix exception when multiple conditions are enclosed in parentheses. |
 | 4181 | sql | Bug | Fixed an interpolation error is start date is '1970-01-01T00:00:00Z'. |
-| 4152 | sql | Bug | Failure to parse complex metric condition in `atsd_series` syntax: `(metric  LIKE 'tv6.pack*' OR metric LIKE 'tv6.ela*')`. |
+| 4152 | sql | Bug | Failure to parse complex metric condition in `atsd_series` syntax: `(metric LIKE 'tv6.pack*' OR metric LIKE 'tv6.ela*')`. |
 | [3834](#issue-3834) |UI | Feature| Client-side formatting on series statistics page. |
 
 ### ATSD

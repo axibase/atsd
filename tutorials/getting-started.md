@@ -36,9 +36,9 @@ Enter a number into the  **Time/Value** field and click **Send**. Do not enter a
 
 ![](./resources/data_entry_series.png)
 
-In a real manufacturing process, the temperature is typically measured both for the equipment itself, as `outer` or `jacket` temperature, as well as for the chemical compound inside the reactor which may be called `product` temperature.
+In a real manufacturing process, the temperature is measured for the equipment itself, as `outer` or `jacket` temperature, and for the compound inside the reactor, for example as a `product` temperature.
 
-A sample product temperature chart may look as follows:
+A sample product temperature chart looks as follows:
 
 ![](./resources/temperature-sample.png)
 

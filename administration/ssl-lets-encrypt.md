@@ -8,7 +8,7 @@ Background information is available in the [Let's Encrypt Guide for Java Develop
 
 This instruction describes the process of installing and renewing SSL certificates in ATSD using [EFF Certbot](https://certbot.eff.org) agent.
 
-The Certbot maybe located on the same server where ATSD is running or on a remote server in a centralized PKI management environment.
+The Certbot can be located on the same server where ATSD is running or on a remote server in a centralized PKI management environment.
 
 Before you start, determine the DNS name where ATSD is installed. For the purpose of examples below, lets assume the DNS name is `atsd.company.com`.
 
@@ -269,7 +269,7 @@ The `--force-renewal` option forces the certbot to request new certificates.
 sudo certbot renew --force-renewal --deploy-hook "/opt/certbot/deploy-atsd.sh"
 ```
 
-Be aware that renewal requests are subject to [rate limits](https://letsencrypt.org/docs/rate-limits/) and too many requests may cause
+Be aware that renewal requests are subject to [rate limits](https://letsencrypt.org/docs/rate-limits/) and too many requests cause
 temporarily rejections.
 
 ### Enable Auto-Renewal

@@ -12,13 +12,13 @@ Retention settings provide a way to control database size by automatically remov
 
 ## Data Tables
 
-Current data table sizes are displayed on the **Settings > Storage > Database Tables** page, in the 'Store File Size' column.
+Current data table sizes are displayed on the **Settings > Storage > Database Tables** page, in the **Store File Size** column.
 
 The table which stores time series data is `atsd_d`.
 
 ![](./images/retention-atsd_d-size.png)
 
-Click on the 'Store File Size' value to view file size growth over time. The size of the `atsd_d` table varies throughout the day as compaction / pruning tasks defragment and delete data in the background.
+Click on the **Store File Size** value to view file size growth over time. The size of the `atsd_d` table varies throughout the day as compaction / pruning tasks defragment and delete data in the background.
 
  ![](./images/retention-atsd_d-chart.png)
 
@@ -30,7 +30,7 @@ To view daily changes in tabular format, open the ATSD portal in the top menu. T
 
 While the breakdown of space usage within the `atsd_d` is not available, the database provides a top-N view consisting of most frequently collected series.
 
-The 'Top Inserts' table is accessible on the **Settings > Receive Statistics** page.
+The **Top Inserts** table is accessible on the **Settings > Receive Statistics** page.
 
 ![](./images/retention-top-inserts.png)
 
@@ -38,7 +38,7 @@ You can refer to this view to identify series with the largest amount of data be
 
 ## Retention Settings
 
-The amount of time series data stored in the database may be controlled using one of the following methods:
+The amount of time series data stored in the database is controlled using one of the following methods:
 
 * [Disabling](#disable-metric) the metric.
 * Disabling metric [persistence](#disable-persistence).
@@ -46,7 +46,7 @@ The amount of time series data stored in the database may be controlled using on
 * Deleting [expired data](#delete-expired-data) outside a specified retention period.
 * Deleting [expired series](#delete-expired-series) if no data has been received for the series within a specified retention period.
 
-Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for new settings to reduce disk usage to the full extent.
+Since the data is deleted by staged [background tasks](#scheduled-tasks), it takes a few days for new settings to reduce disk usage to the full extent.
 
 ### Disable Metric
 
@@ -109,7 +109,7 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 * Discard (do not persist) series with tag `site` equal to `DefaultWebSite`
 
 ```javascript
-  tags.site != **Delete**
+  tags.site != `DefaultWebSite`
 ```
 
 * Discard series with tag `id` starting with `lo`
@@ -142,7 +142,7 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 * Discard series if tag `id` is contained in named collection `filesystem_ignore`.
 
 ```javascript
-  !collection(**Delete**).contains(tags.id)
+  !collection('filesystem_ignore').contains(tags.id)
 ```
 
 ```txt
@@ -173,7 +173,7 @@ Check individual records or select all records by checking the box in the header
 
 ![](./images/retention-metrics-select.png)
 
-Open the group editor and modify the 'Retention Days' setting. To disable deletion, set 'Retention Days' to zero.
+Open the group editor and modify the **Retention Days** setting. To disable deletion, set **Retention Days** to zero.
 
 ![](./images/retention-metrics-group-edit.png)
 
@@ -189,7 +189,7 @@ Alternatively, use [group editor](#group-editor) to modify multiple metrics at o
 
 This setting causes all data to be deleted for those series which have not received new values for more than the specified number of days. If the series has recent data, no data for such a series is deleted. This setting cleans the database from old/discontinued series while retaining all data for active series.
 
-If **Series Retention Days** is set to '1 year' in the example below, the database deletes three highlighted series that have not been updated since 2015/2016. The data for the remaining active series is left untouched.
+If **Series Retention Days** is set to `1 year` in the example below, the database deletes three highlighted series that have not been updated since 2015/2016. The data for the remaining active series is left untouched.
 
 ![](./images/retention-series-retention.png)
 
@@ -323,7 +323,7 @@ GROUP BY entity, tags, PERIOD(1 HOUR)
 
 ## Understanding Data Growth
 
-In addition to more data being collected for existing series, data may be inserted for new metrics, entities, and series.
+In addition to more data being collected for existing series, data is continuously inserted for new metrics, entities, and series.
 
 To monitor these parameters, create a new [portal](../portals/portals-overview.md#create-portal) with the following table widget:
 

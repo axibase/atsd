@@ -46,7 +46,7 @@ Each series is identified by a composite key which consists of a **metric**, **e
 
 * **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point for the `df.bytes.percentused` metric.
 
-An entity may be measured with a variety of metrics, just as the same metric could be collected for multiple entities.
+An entity can be instrumented and measured using a variety of metrics, just as the same metric can be collected for multiple entities.
 
 ## Exploring Series
 

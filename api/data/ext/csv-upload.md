@@ -48,7 +48,7 @@ This method supports processing of the uploaded attached file as data as well as
 |:---|:---|:---|
 | `config`   | string   | [**Required**] Parser Name as configured on **Data > CSV Parsers** page.|
 | `encoding`      | string   | File encoding. Default: UTF-8.|
-| `filename`      | string   | [**Required** for archived files uploaded in File Data mode] <br>Name of the file or archive being sent, for example text.csv, files.zip, files.tar.gz.<br>The archive may contain multiple files, all of which are processed.<br>Archive compression is determined based on file extension.<br>Supported archive formats: zip and tar.gz.<br>Supported file extensions for the uploaded archive: .gz, .tar.gz, .zip.  |
+| `filename`      | string   | [**Required** for archived files uploaded in File Data mode] <br>Name of the file or archive being sent, for example text.csv, files.zip, files.tar.gz.<br>The archive can contain multiple files, all of which are processed.<br>Archive compression is determined based on file extension.<br>Supported archive formats: zip and tar.gz.<br>Supported file extensions for the uploaded archive: .gz, .tar.gz, .zip.  |
 | `default-entity`| string | Default entity name applied to commands contained in the file. |
 | `entity-prefix` | string | Prefix added to all entity names extracted from the file. |
 | `entity-tags` | string | Comma-separated list of entity tags added as series, message, or property tags to parsed commands. |
@@ -88,7 +88,7 @@ The response contains a JSON object containing parsing results.
 | `taskStatus` | Parser task status. |
 | `type` | Action type |
 | `fileName` | Temporary file name assigned by the database. |
-| `fileCount` | File count. The count may be greater than 1 if the uploaded file is an archive. |
+| `fileCount` | File count. The count can be greater than `1` if the uploaded file is an archive. |
 | `fileSize` | Size of the uploaded file, in bytes. |
 
 In case of error, the response object is returned as follows:

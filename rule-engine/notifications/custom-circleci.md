@@ -31,7 +31,7 @@ The `Endpoint URL` may look as follows: `https://circleci.com/api/v1.1/project/g
 
 Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 
-Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they may be customized in the rule editor. This allows you to trigger builds for different projects using the same webhook.
+Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they can be customized in the rule editor. This allows you to trigger builds for different projects using the same webhook.
 
 ### Payload
 

@@ -18,7 +18,7 @@ The entity group editor provides the following options for managing entities:
 
 Copy a list of entity names, one per line, into the text area. The names are case-insensitive.
 
-If 'Create Entities' option is checked, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found, are ignored.
+If **Create Entities** option is checked, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found, are ignored.
 
 ### Selector
 

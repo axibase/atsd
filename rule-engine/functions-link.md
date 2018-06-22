@@ -60,7 +60,7 @@ The returned link includes the path to the entity page on the target database se
 https://atsd_hostname:8443/entities/nurswgvml007
 ```
 
-The above URL could also be assembled manually:
+The above URL can also be assembled manually:
 
 ```javascript
 serverLink + '/entity/' + urlencode(entity)
@@ -114,7 +114,7 @@ Returns the URL to the **CSV** file with historical statistics for the current m
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as 'CSV Export' link in inline mode.
+Displayed as **CSV Export** link in inline mode.
 
 > Available only in rules with `Series` data type.
 
@@ -128,7 +128,7 @@ Returns the URL to the **Data > Export** page for the current metric, entity, an
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as 'HTML Export' link in inline mode.
+Displayed as **HTML Export** link in inline mode.
 
 > Available only in rules with `Series` data type.
 

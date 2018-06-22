@@ -6,7 +6,7 @@ The condition consists of one or multiple boolean checks combined with [boolean 
 
 The expression can include command fields, literal values, window/entity/metric fields, user-defined variables and [functions](functions.md).
 
-When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of 'On Cancel' triggers.
+When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of **On Open** triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of **On Cancel** triggers.
 
 Note that [`Overrides`](overrides.md) take precedence over the condition.
 

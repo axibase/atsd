@@ -29,7 +29,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install ODBC-JDBC Bridge
 
 * Install [ODBC-JDBC gateway](../odbc/README.md)
-* Make sure that the **'Strip Escape'** checkbox is enabled and **'Strip Quote'** is **disabled**
+* Make sure that the **Strip Escape** checkbox is enabled and **Strip Quote** is **disabled**
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 

@@ -47,13 +47,13 @@ If the [backup](#backup) is stored on the same file system, add it to the estima
 
 Calculate disk space requirements.
 
-  | **Data** | **Size** |
-  |---|---|
-  | Original Data | 24G |
-  | Backup | 24G |
-  | Migrated Data | 7G (30% of 24G) |
-  | Backup + Migrated | 31G |
-  | Available | 736G |
+| **Data** | **Size** |
+|---|---|
+| Original Data | 24G |
+| Backup | 24G |
+| Migrated Data | 7G (30% of 24G) |
+| Backup + Migrated | 31G |
+| Available | 736G |
 
 > In the example above, 736G is sufficient to store 31G of backup and migrated data on the same file system.
 
@@ -461,7 +461,7 @@ Table 'atsd_metric' successfully deleted.
 
 ### Map/Reduce Settings
 
-When running Map/Reduce jobs specified in the next section, the system may encounter a virtual memory error.
+When running Map/Reduce jobs specified in the next section, the system can encounter a virtual memory error.
 
 ```txt
 17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
@@ -536,7 +536,7 @@ Step 5. Migrate data to the `atsd_d` table.
 ...
 ```
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
+The `DataMigrator` job takes a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
 The Yarn interface is automatically terminated once the `DataMigrator` is finished.
 

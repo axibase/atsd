@@ -18,7 +18,7 @@ Build a report illustrating the differences between exports and imports each yea
 * Click **Sheet 1**
 * Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the column field
-* Rename both `Value` into 'Export Value' and 'Import Value': right click on `Value` and choose **Rename**
+* Rename both `Value` into **Export Value** and **Import Value**: right click on `Value` and choose **Rename**
 * Copy: `[Export Value]-[Import Value]` > double click on the rows field > paste > **Enter**
 > In case of error remove ']' and select value from tooltip
 * Right click on calculation > **Dimension**

@@ -7,7 +7,7 @@
 | 3831 | api-rest    | Bug     | Fixed metric [`series`](../../api/meta/entity/get.md#entity-get) request processing if series count exceeds 1000. Added a warning message to web UI when the threshold is reached. |
 | 3825 | sql         | Bug     | Removed extra rows from the result set when the [`VALUE {n}`](../../sql/examples/interpolate-extend.md#interpolate-with-extend) interpolation function was specified in a `GROUP BY` period clause. |
 | 3816 | UI          | Bug     | Fixed ordering of timestamps on the Interval tab on the Series Statistics page. Intervals smaller than the median minus standard deviation are now not displayed. |
-| 3813 | UI          | Bug     | Fixed 'series not found' issue when displaying series with multiple tags on the Series Statistics page. |
+| 3813 | UI          | Bug     | Fixed `series not found` issue when displaying series with multiple tags on the Series Statistics page. |
 | 3808 | metric      | Bug     | Corrected a defect where an incorrect `NaN` count was shown on the Series Statistics page. |
 | [3742](#issue-3742) | UI          | Feature | Added a `Text Column` button to the UI Export form. |
 
@@ -16,13 +16,13 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3823 | socrata     | Bug     | Added a record to the Statistics Detail page to display tasks with active downloads. |
-| 3821 | socrata     | Bug     | Added 'Add Row Number' field to add an extra metric with the name `{prefix}row_number` added to `series` commands in case the data row does not contain any numeric columns. |
+| 3821 | socrata     | Bug     | Added **Add Row Number** field to add an extra metric with the name `{prefix}row_number` added to `series` commands in case the data row does not contain any numeric columns. |
 | 3820 | docker      | Bug     | Fixed missing `path` entity tag for volumes. |
 | 3819 | docker      | Feature     | Updated to construct volume label from the container label instead of the container name. |
 | [3818](#issue-3818) | socrata     | Feature | In `Test` mode, added a table displaying columns from the metadata section. |
 | 3812 | socrata     | Bug     | Removed `http` pool from the configuration tab. Now, only the dataset path is displayed. |
 | 3811 | socrata     | Bug     | Fixed auto-complete defect affecting configuration form fields. |
-| 3810 | socrata     | Bug     | Updated settings so that if a field is specified in 'Custom Tags' and is not specified in 'Included Fields', the field is not sent as a metric.|
+| 3810 | socrata     | Bug     | Updated settings so that if a field is specified in **Custom Tags** and is not specified in **Included Fields**, the field is not sent as a metric.|
 | 3804 | socrata     | Bug     | Excluded `null` values from custom tags or any other fields in commands for both JSON and Socrata jobs. |
 | 3803 | socrata     | Bug     | Fixed issue where time fields were being stored as metrics. |
 | 3802 | socrata     | Bug     | Corrected issues with statistics display showing inaccurate command counters. |

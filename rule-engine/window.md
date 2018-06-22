@@ -36,7 +36,7 @@ As new data is received and old data is removed from the window, the rule engine
 
 ### Initial Status
 
-New windows are created based on incoming data, no historical data is loaded from the database unless the 'Load History' setting is turned on.
+New windows are created based on incoming data, no historical data is loaded from the database unless the **Load History** setting is turned on.
 
 The window for the given [grouping](grouping.md) key is created when the first matching command is received by the rule engine.
 
@@ -79,7 +79,7 @@ A window may assume the `CANCEL` status when the condition changes from `true` t
 
 When the rule is deleted or modified with the rule editor, all windows for the given rule are dropped. The windows are re-created when the new matching commands are received by the database.
 
-Newly created windows contain only **new commands**, unless 'Load History' setting is enabled. Such windows load historical values received over the same interval as the window duration, or the same number of commands as the window length.
+Newly created windows contain only **new commands**, unless **Load History** setting is enabled. Such windows load historical values received over the same interval as the window duration, or the same number of commands as the window length.
 
 ![](./images/load-history.png)
 

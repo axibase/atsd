@@ -46,7 +46,7 @@ The following built-in functions can be used in the filter expression:
 * [`isEmpty`](#isempty)
 * [`IN`](#in)
 
-Filter expression may contain [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions:
+Filter expression can also include [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions.
 
 ```javascript
 Math.sin(Math.toRadians(value)) < 0.5
@@ -269,7 +269,7 @@ The _Series_ icon opens a list of unique tags for the selected metric.
 
 ![](./images/metric_persistence_filter_2.png)
 
-If some of the incoming data is of low value it may not be worth storing it.
+If some of the incoming data is of low value it can be ignored when received.
 
 ![](./images/series.png)
 

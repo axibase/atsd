@@ -7,7 +7,7 @@
 | [3677](#issue-3677)      | sql             | Feature      | Added support for `date_format` function in `WHERE`, `GROUP BY` and `ORDER BY` clauses . |
 | [3674](#issue-3674)      | sql             | Bug      | Fixed slow execution time for queries with table aliases. |
 | [3673](#issue-3673)      | sql             | Bug      | Added `WEEK` interval type in the `PERIOD` function. |
-| 3671      | metric          | Bug      | Fixed issues with values being discarded if Min Value and Max Value are specified and Invalid Action set to 'NO ACTION'. |
+| 3671      | metric          | Bug      | Fixed issues with values being discarded if Min Value and Max Value are specified and Invalid Action set to `NO ACTION`. |
 | [3670](#issue-3670)      | sql             | Bug      | Fixed incorrect results with `ROW_MEMORY_THRESHOLD OPTION` compared to temporary table processing. |
 | [3665](#issue-3665)      | sql             | Bug      | Added error message in case of excessive tag combinations fetched by a query. |
 | 3660      | jdbc            | Bug      | Hide unused driver properties in DbVisualizer . |
@@ -20,10 +20,10 @@
 | [3601](#issue-3601)      | sql             | Bug      | Optimized execution time for queries with arithmetic expressions. |
 | 3600      | sql             | Bug      | Fixed different results of aggregation functions with and without the `LIMIT` clause. |
 | [3592](#issue-3592)      | security        | Feature  | Added Trust SSL Certificate field to LDAP configuration form. |
-| [3583](#issue-3583)      | security        | Feature  | Added 'Create Accounts' integration feature to LDAP. |
+| [3583](#issue-3583)      | security        | Feature  | Added **Create Accounts** integration feature to LDAP. |
 | 3582      | security        | Feature  | Enabled copying user account attributes from ATSD into LDAP. |
 | 3570      | api-network     | Bug      | Corrected failure to insert metric command for a re-created metric.   |
-| 3560      | api-network     | Feature  | Added new field **Units** to the **Metric** class. |
+| 3560      | api-network     | Feature  | Added new field `Units` to the **Metric** class. |
 | [3470](#issue-3470)      | sql             | Feature  | Added support for `text` column in the `SELECT` expression and the `WHERE` clause. |
 | [3465](#issue-3465)      | api-rest        | Feature  | Added `addMeta` series and property methods in Data API. |
 | [3438](#issue-3438)      | security        | Feature  | Modified Enterprise Edition to support LDAP authentication. |
@@ -185,10 +185,10 @@ The Trust SSL Certificate setting, when enabled, allows encrypted connections to
 
 ### Issue 3583
 
-The new LDAP integration feature, 'Create Accounts', makes it possible to self-register user accounts in ATSD if the new user account exists in LDAP and the user was able to successfully
+The new LDAP integration feature, **Create Accounts**, makes it possible to self-register user accounts in ATSD if the new user account exists in LDAP and the user was able to successfully
 authenticate. The new account settings, such as username, email, and first/last name, are inherited from LDAP attributes.
 
-If the 'Default User Group' is specified, the new self-registered users are automatically added to this group and inherit its permissions.
+If the **Default User Group** is specified, the new self-registered users are automatically added to this group and inherit its permissions.
 
 ![Figure 2](./Images/Figure2.png)
 

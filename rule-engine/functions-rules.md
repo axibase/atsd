@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `rule` functions provide a way to check windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. These functions may be used for correlation purposes.
+The `rule` functions provide a way to check windows created by other rules. The matching windows can contain data for series that are different from the series in the current window. These functions can be used for correlation purposes.
 
 Windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command.
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression returns `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
@@ -56,7 +56,7 @@ The following match conditions are applied:
     |**Name**|**Description**|
     |---|---|
     |message |The text value, which is equal to `message` field in case of `message` command.|
-    |tags and `tags.{name}/tags['name']`|Command tags.|
+    |tags and `tags.{name}`/`tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
   * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
 
@@ -197,7 +197,7 @@ The following match conditions are applied:
     |**Name**|**Description**|
     |---|---|
     |message |The text value, which is equal to `message` field in case of `message` command.|
-    |tags and `tags.{name}/tags['name']`|Command tags.|
+    |tags and `tags.{name}`/`tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
 
 * The expression `p` can include window [fields](window.md#window-fields) as placeholders.

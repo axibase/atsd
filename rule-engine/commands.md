@@ -85,7 +85,7 @@ To complete disable execution of system commands in the rule engine, set `system
 
 ## Logging
 
-When 'Log Output' option is enabled, both `system.out` and `system.err` outputs are logged to the `atsd.log` file for each command execution.
+When **Log Output** option is enabled, both `system.out` and `system.err` outputs are logged to the `atsd.log` file for each command execution.
 
 The output is limited to 10240 characters.
 

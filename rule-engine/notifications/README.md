@@ -72,7 +72,7 @@ Fill out the required fields for the given webhook type.
 
 Click **Test** to verify the delivery.
 
-If the webhook supports sending charts, select one of the portals from the 'Test Portal' drop-down.
+If the webhook supports sending charts, select one of the portals from the **Test Portal** drop-down.
 
 The webhook request is successful if the endpoint returns HTTP `200 OK` status code.
 
@@ -90,7 +90,7 @@ Configure when to send the notification by enabling triggers for `Open`, `Repeat
 
 ![](./images/notify-triggers.png)
 
-> The rule can be programmed to send notifications to multiple endpoints for  the same event.
+> The rule can be programmed to send notifications to multiple endpoints for the same event.
 
 ### Jitter Control
 

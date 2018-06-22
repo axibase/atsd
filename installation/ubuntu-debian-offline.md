@@ -114,7 +114,7 @@ Install ATSD.
 sudo dpkg -i dependencies/atsd*
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

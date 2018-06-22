@@ -37,7 +37,7 @@ This method can be used to process HTTP notifications from services that support
 | POST | `/api/v1/messages/webhook/*` | `key=value` | `application/x-www-form-urlencoded` |
 | GET | `/api/v1/messages/webhook/*` | None | - |
 
-The URL may point to any path after `/webhook`, for example, `/api/v1/messages/webhook/service-1`.
+The URL can point to any path after `/webhook`, for example, `/api/v1/messages/webhook/service-1`.
 
 ## Authentication
 
@@ -126,7 +126,7 @@ Since stored message are always associated with an entity, the request must incl
       entity = jenkins
     ```
 
-1. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
+1. The entity can be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
     ```elm
       entity = test-1
@@ -169,7 +169,7 @@ Since stored message are always associated with an entity, the request must incl
   source =          for /api/v1/messages/webhook?entity=test
 ```
 
-* Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` **must** be specified as described in the 'Entity Mapping' section above.
+* Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` **must** be specified as described in the **Entity Mapping** section above.
 * Message `severity` is undefined.
 * Message `date` is set to current server time.
 * Message tag `request_ip` is set to the remote IP address of the http client that initiated the request.
@@ -266,13 +266,13 @@ The filter parameters contain patterns that the converted message tags must sati
 
 * The patterns support `*` as a wildcard.
 * Tag name match is case-**IN**sensitive.
-* The parameters may contain multiple patterns separated by semi-colon `;`.
+* The parameters can contain multiple patterns separated by semi-colon `;`.
 
 ```elm
   &exclude=repository.*;sender.location
 ```
 
-* Parameters may be repeated in the query string.
+* Parameters can be repeated in the query string.
 
 ```elm
   &exclude=repository.*&exclude=sender.location

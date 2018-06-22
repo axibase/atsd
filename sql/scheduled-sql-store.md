@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Store** option for scheduled SQL queries may be used to write the results of a query back into the database resembling the materialized view capability in traditional databases.
+The **Store** option for scheduled SQL queries can be used to write the results of a query back into the database resembling the materialized view capability in traditional databases.
 
 ## Use Cases
 

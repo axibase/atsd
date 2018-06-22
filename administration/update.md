@@ -44,7 +44,7 @@ Once the update is completed, the script prints out the following message:
 Update process finished successfully.
 ```
 
-The update process may take a few minutes to complete.
+The update process can take a few minutes to complete.
 
 To verify that ATSD is working correctly, open the ATSD web interface:
 

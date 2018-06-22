@@ -68,7 +68,7 @@ Type | Column type.
 Header | Column name.
 Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Makes the cell value a clickable link. See [Links](#links) options.
-Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
+Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to `Entity Property`, the text is resolved to the property expression value.
 Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
 Formatting | A [function](#formatting) or an expression to round numbers and convert units.
 
@@ -401,9 +401,9 @@ Use the following configuration to specify the custom icon which opens a link to
 
 1. Set **Type** setting to **Name Column**.
 
-2. Set 'Link Label' setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
+2. Set **Link Label** setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
 
-3. Specify a portal link in the 'Link Template' setting, for example `/portal/name/collectd?entity=${entity}`.
+3. Specify a portal link in the **Link Template** setting, for example `/portal/name/collectd?entity=${entity}`.
 
 * Configuration
 
@@ -421,7 +421,7 @@ Use the following configuration to specify the custom icon which opens a link to
 
 #### Text with Entity Label
 
-Entity labels may be defined for entries. Otherwise, entity name is displayed.
+Entity labels can be defined for entities. Otherwise, entity name is displayed.
 
 * Configuration
 
@@ -435,7 +435,7 @@ Entity labels may be defined for entries. Otherwise, entity name is displayed.
 
 The link displays entity label if the label is set. Otherwise, the link displays entity name.
 
-Specify the following URL in the 'Link Template' setting.
+Specify the following URL in the **Link Template** setting.
 
 ```ls
   /entities/${entity}
@@ -525,7 +525,7 @@ Specify the default property type in the **Value** setting.
 
 #### Text Link to Last Insert Page
 
-The text displays difference `now - lastInsertDate`. The entities are  highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
+The text displays difference `now - lastInsertDate`. The entities are highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
 
 1. Set **Type** setting to **Last Insert**.
 

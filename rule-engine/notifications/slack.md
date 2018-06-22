@@ -16,7 +16,7 @@
 * [Proxy Settings](#proxy-settings)
 * [Webhook Settings](#webhook-settings)
 * [Reacting to Bot Messages](#reacting-to-bot-messages)
-* [Testing  Rule](#testing-rule)
+* [Testing Rule](#testing-rule)
 * [Examples](#examples)
 
 ## Prerequisites
@@ -175,7 +175,7 @@ To process incoming messages, configure an [outgoing webhook](outgoing-webhook-s
 
 * The rule creates new windows when new commands are received by the database.
 
-It may take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Examples
 

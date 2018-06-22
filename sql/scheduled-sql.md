@@ -62,7 +62,7 @@ Specify the absolute path including the file name.
 If the parent directory in the specified path does not exist, the directory is created automatically.
 The file extension must match the export format. For example, if the format is `EXCEL` the Output Path must end with `.xlsx`.
 
-The **Output Path** field may contain date and form [placeholders](#placeholders) so that files or their parent directories are grouped by day or month.
+The **Output Path** field can contain date and form [placeholders](#placeholders) so that files or their parent directories are grouped by day or month.
 
 Example: `/opt/report/daily/${yyyy-MM-dd}.csv`
 
@@ -91,7 +91,7 @@ GROUP BY entity
 
 In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with unchecked `Send Empty Report` option is sent only if at least one server with high CPU usage is found.
 
-`Fail on No Data` causes an error if the query finds no matching records in the database which maybe indicative of a breakdown in data collection.
+`Fail on No Data` causes an error if the query finds no matching records in the database which is indicative of a breakdown in data collection.
 
 ### Publishing
 

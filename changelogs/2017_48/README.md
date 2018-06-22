@@ -9,7 +9,7 @@
 | 4767 | rule engine | Bug | [`CUSTOM`](../../rule-engine/notifications/custom.md) webhook: timeout waiting for connection from pool. |
 | 4764 | rule engine | Bug | Do not show entity information in entity non-grouped alert details. |
 | 4762 | rule engine | Feature | Simplify [`DISCORD`](../../rule-engine/notifications/discord.md) webhook configuration. |
-| 4761 | rule editor | Bug | 'Add override' link not creating a row in the [Overrides](../../rule-engine/overrides.md) table. |
+| 4761 | rule editor | Bug | **Add override** link not creating a row in the [Overrides](../../rule-engine/overrides.md) table. |
 | 4760 | api-rest | Bug | [`series query`](../../api/data/series/query.md) method: entity expression error when using `name` field. |
 | 4759 | rule editor | Bug | Buttons disappear when the rule configuration contains errors. |
 | 4758 | rule editor | Bug | Error when saving webhook using http protocol. |

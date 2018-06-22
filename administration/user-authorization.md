@@ -55,7 +55,7 @@ entities either in the user interface or by inserting data via API. User with a 
 
 ### Wildcard Requests
 
-Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results are filtered based on the user's effective permissions, therefore different users may see different results for the same API request or SQL query depending on their entity permissions.
+Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results are filtered based on the user's effective permissions, therefore different users can see different results for the same API request or SQL query depending on their entity permissions.
 
 ## Entity View Permissions
 
@@ -94,13 +94,13 @@ The wizard automatically creates a new user account, user and entity groups and 
 
 The **collector** user inserts data of all types (series, properties, and messages) for many entities, including new entities, and requires both the `API_DATA_WRITE` and `API_META_WRITE` roles and `write` permissions for all entities.
 
-The instruments inserting data under the **collector** account are typically located within a specific network segment and an option to specify the allowed IP range could be used to enhance access security.
+The instruments inserting data under the **collector** account are typically located within a specific network segment and an option to specify the allowed IP range can be used to enhance access security.
 
 To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the **Users** table.
 
 ![](./images/collector-user-wizard.png)
 
-The wizard creates a new user account automatically and makes it a member of the 'Data Collectors' user group with `All Entities: Write` permission.
+The wizard creates a new user account automatically and makes it a member of the `Data Collectors` user group with `All Entities: Write` permission.
 
 ![](./images/collector-user-permissions.png)
 

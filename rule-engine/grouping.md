@@ -11,7 +11,7 @@ Incoming commands are assigned to in-memory [windows](window.md) based on the gr
 
 Commands with equal grouping keys are assigned to the same window.
 
-The `Data Type` and `Metric Name` fields are mandatory parts of the key whereas grouping by entity and tags is optional and may be configured for each rule separately.
+The `Data Type` and `Metric Name` fields are mandatory parts of the key whereas grouping by entity and tags is optional and can be configured for each rule separately.
 
 ## Tag Grouping
 

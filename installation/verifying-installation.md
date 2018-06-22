@@ -28,7 +28,7 @@ and the server where the database is running.
 
 ![](./images/atsd_portal.png "ATSD Host")
 
-> Note *Data Tables* chart  can be empty for a few minutes after start
+> Note *Data Tables* chart can be empty for a few minutes after start
 
 ## Reboot Verification
 

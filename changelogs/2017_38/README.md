@@ -103,7 +103,7 @@ SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', metric.timeZone) AS 
 
 ### Issue 2766
 
-The new 'Series Retention Days' setting allows deleting series which have not been updated for a long period of time.
+The new **Series Retention Days** setting allows deleting series which have not been updated for a long period of time.
 
 ![](./Images/issue2766.png)
 

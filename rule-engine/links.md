@@ -87,7 +87,7 @@ ${csvExportLink}
 
 Link to the **CSV** file with historical statistics for the current metric, entity, and tags.
 
-Displayed as 'CSV Export' link in inline mode.
+Displayed as **CSV Export** link in inline mode.
 
 > Available only in rules with `Series` data type.
 
@@ -105,7 +105,7 @@ ${htmlExportLink}
 
 Link to the **Data > Export** page for the current metric, entity, and tags.
 
-Displayed as an 'HTML Export' link in inline mode.
+Displayed as an **HTML Export** link in inline mode.
 
 > Available only in rules with `Series` data type.
 

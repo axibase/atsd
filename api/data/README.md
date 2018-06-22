@@ -35,7 +35,7 @@ Request parameters and path segments, such as [`/api/v1/properties/{entity}/type
 |`jvm/memory(max)`|`jvm%2Fmemory%28max%29`| `/api/v1/metrics/jvm%2Fmemory%28max%29` |
 |`station/24`|`station%2F24`| `/api/v1/properties/station%2F24/types` |
 
-Failure to encode URI components may result in HTTP `4xx` and `5xx` status code errors:
+Failure to properly encode URI components results in HTTP `4xx` and `5xx` errors.
 
 ```json
 {"error":"...HttpRequestMethodNotSupportedException: Request method 'GET' not supported"}
@@ -43,7 +43,7 @@ Failure to encode URI components may result in HTTP `4xx` and `5xx` status code 
 
 ### Compression
 
-Clients may send compressed payload by adding the **Content-Encoding: gzip** header to the request.
+Clients can send compressed payload by adding the **Content-Encoding: gzip** header to the request.
 
 ## Security
 

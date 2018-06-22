@@ -21,8 +21,8 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4740 | docker | Bug | Container entity tags are missing if storage driver is not properly configured on collector startup.  |
-| 4703 | docker | Bug | Collector CPU may get abnormally high when multiple Docker jobs are running. |
-| 4695 | docker | Bug | Docker job may hang when multiple Docker jobs are running. |
+| 4703 | docker | Bug | Collector CPU gets abnormally high when multiple Docker jobs are running. |
+| 4695 | docker | Bug | Docker job hangs when multiple Docker jobs are running. |
 
 ---
 
@@ -127,7 +127,7 @@ The inline screenshots are positioned after the message content and before the m
 
 ### Issue 4599
 
-The 'Allowed IPs' field enables specifying a list of addresses or address ranges in CIDR format from which the user is allowed to access the database.
+The **Allowed IPs** field enables specifying a list of addresses or address ranges in CIDR format from which the user is allowed to access the database.
 
 The checks are enforced to requests made over the HTTP and HTTPs protocols.
 

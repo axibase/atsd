@@ -36,7 +36,7 @@ Examples:
   toBoolean(object a) boolean
 ```
 
-Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-**IN**sensitive) or if `a` is equal to the number `1`.
+Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string "true", "yes", "on", "1" (case-**IN**sensitive) or if `a` is equal to the number `1`.
 
 Value table:
 

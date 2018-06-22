@@ -4,7 +4,7 @@
 
 Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
-4940 | rule engine | Feature | Add administrative [setting](../../rule-engine/window.md#cancel-status) to control 'On Cancel' behavior.
+4940 | rule engine | Feature | Add administrative [setting](../../rule-engine/window.md#cancel-status) to control **On Cancel** behavior.
 4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../rule-engine/README.md#rule-engine) XML export.
 4929 | rule engine | Bug | Outgoing webhooks: [Telegram](../../rule-engine/notifications/telegram.md) discards long messages.
 4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../sql/README.md#where-clause).
@@ -61,7 +61,7 @@ Issue| Category    | Type    | Subject
 4820 | api-rest | Bug | Series query with grouping - incorrect result of [`min_value_time`](../../api/data/series/group.md#grouping-functions) aggregation.
 4786 | entity | Feature | Tag Template: add a option to auto-generate a template from tags of the given entity.
 4777 | api-rest | Bug | Series query: empty response instead of expected series ([tag filters](../../api/data/series/query.md#tag-filter) error).
-4768 | api-rest | Bug | Series query: If query has series [limit](../../api/data/series/query.md#control-fields) then unwanted empty series could occur in response.
+4768 | api-rest | Bug | Series query: remove empty series from response if [limit](../../api/data/series/query.md#control-fields) is specified.
 4746 | api-rest | Feature | Add [`order`](../../api/data/series/rate.md#parameters) field to "rate" function.
 4729 | api-rest | Bug | Series query: aggregate and group order and period.
 4727 | jdbc | Bug | [JDBC driver](https://github.com/axibase/atsd-jdbc/blob/master/README.md): FileNotFoundException on log4j.

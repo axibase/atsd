@@ -354,7 +354,7 @@ https.port = 8443
 
 By default ATSD initiates a major HBase compaction of its key data tables on a daily schedule.
 
-Since major compactions may overload the cluster, increase the default interval or initiate the compactions externally, for example via Cloudera Manager:
+Since major compactions place a heavy load on the cluster, increase the default interval or initiate the compactions externally, for example via Cloudera Manager:
 
 ![](./images/cm_major_compaction.png)
 
