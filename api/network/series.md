@@ -87,7 +87,7 @@ series e:server001 m:cpu_used=72.0 s:1425482080
 
 * Insert samples for two series:
   * Insert the numeric value `72` for the metric `cpu_used` from the entity `server001` recorded on March 4, 2015 at 15:14:40 GMT
-  * Insert the numeric value '94.5' for the metric `memory_used` and the same entity and time.
+  * Insert the numeric value `94.5` for the metric `memory_used` and the same entity and time.
 
 ```ls
 series e:server001 m:cpu_used=72.0 m:memory_used=94.5 s:1425482080

@@ -57,7 +57,6 @@ None.
 
 * `Empty first row` if no rows are found.
 * `CSV must have at least 2 columns` if header contains less than 2 columns.
-* `First header must be 'time' specified in Unix milliseconds or 'date' (ISO 8601 date)` if the name of the first column in the header is neither `time` nor `date`.
 * `No data` if the number of data rows is 0.
 
 ## Example

@@ -18,7 +18,7 @@ The table which stores time series data is `atsd_d`.
 
 ![](./images/retention-atsd_d-size.png)
 
-Click on the **Store File Size** value to view file size growth over time. The size of the `atsd_d` table varies throughout the day as compaction / pruning tasks defragment and delete data in the background.
+Click **Store File Size** to view file size growth over time. The size of the `atsd_d` table varies throughout the day as compaction / pruning tasks defragment and delete data in the background.
 
  ![](./images/retention-atsd_d-chart.png)
 
@@ -58,7 +58,7 @@ To disable a metric, open the Metric Editor, expand **Settings** section, set **
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
-Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token in the 'commands_discarded.log' listed on the **Settings > Diagnostics > Server Logs** page:
+Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token in the `commands_discarded.log` listed on the **Settings > Diagnostics > Server Logs** page:
 
 ```ls
 2018-03-29 05:56:21,087;DISABLED_METRIC;series e:nurswgvml502 ms:1522302980000 t:collector=bosun.org/cmd/scollector/collectors.c_ipcount_linux t:os=linux m:scollector.collector.duration=0.003668194
@@ -271,7 +271,7 @@ Open the Properties page for the specified entity.
 
 ![](./images/properties-delete-entity-form.png)
 
-Select the property keys to be deleted and choose `Delete` action from the split button.
+Select the property keys to be deleted and choose **Delete** action from the split button.
 
 ![](./images/properties-delete-types-form.png)
 

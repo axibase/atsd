@@ -29,7 +29,7 @@ In addition, the metadata header contains a list of column names with their resp
 Metadata can be embedded in CSV files as part of the header using the hash symbol (`#`).
 
 ```txt
-#publisher,Axibase Time Series Database,https://atsd.axibase.com
+#publisher,Axibase Time Series Database,https://atsd.example.org
 #created,2016-06-12T15:56:39.106Z
 #title,SQL Query
 #comment,"SELECT entity, avg(value) AS "Average", median(value), max(value), count(*)
@@ -74,7 +74,7 @@ Table schema object provides the following information about the columns in the 
     "dc:publisher": {
       "schema:name": "Axibase Time Series Database",
       "schema:url": {
-        "@id": "https://atsd.axibase.com"
+        "@id": "https://atsd.example.org"
       }
     },
     "dc:title": "SQL Query",

@@ -117,7 +117,7 @@ Docker `inspect` snippet for a Mesos-managed container:
            "SPRING_APPLICATION_NAME=ref-api-front",
            "WLS_SUFFIX=_rf",
            "SPRING_CLOUD_CONSUL_CONFIG_PREFIX=config/ref-api",
-           "MARATHON_APP_DOCKER_IMAGE=docker.corp.axibase.com/ref-api-front:2.0.3",
+           "MARATHON_APP_DOCKER_IMAGE=docker.corp.example.org/ref-api-front:2.0.3",
            "WAS_SUFFIX=_rf",
            "SPRING_CLOUD_CONSUL_CONFIG_DEFAULTCONTEXT=commons",
            "MESOS_TASK_ID=ref-api-front.76d43a20-ad8d-13e6-a98e-bb1ee0814583",

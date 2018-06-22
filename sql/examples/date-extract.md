@@ -30,7 +30,7 @@ SELECT EXTRACT(day FROM datetime) AS "day",
   AVG(value)
 FROM "mpstat.cpu_busy"
   WHERE datetime > current_month
-GROUP BY 'day'
+GROUP BY "day"
   ORDER BY AVG(value) DESC
 ```
 

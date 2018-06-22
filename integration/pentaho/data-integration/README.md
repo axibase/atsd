@@ -50,7 +50,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 > `tables` is an optional metric name filter. Review ATSD JDBC [URL parameters](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) for additional details.
 
-* Set 'Custom Driver Class Name' field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
+* Set **Custom Driver Class Name** field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
 * Enter ATSD account credentials in the **User Name** and **Password** fields.
 * Set **Connection Name** to `ATSD Connection`.
 
@@ -78,7 +78,7 @@ Click **Explore** to view the schema:
 * Drag and Drop `ATSD Connection` from the **View** pane in the Database Connections folder.
 * Set `Step name` to a unique name for this transformation.
 * Write an SQL query used as a `Table input` for this transformation.
-* Click `Preview` to verify query results.
+* Click **Preview** to verify query results.
 
 ![](./resources/table_input.png)
 
@@ -145,8 +145,8 @@ Diagram example:
 In this step you append two tables to perform calculations on one table. This table has a unique row identifier (pair `datetime - tags.category`) so we can join them with the INNER JOIN operation.
 
 * Open the `Design` pane and find `Merge Join` in the `Joins` category. Drag and drop it to the `Transformation` pane
-* Connect `Merge Join` to `Join Rows (cartesian product)` and choose `Right hand side stream of the join`
-* Connect `Merge Join` to `Prices` and choose `Left hand side stream of the join`
+* Connect `Merge Join` to `Join Rows (cartesian product)` and choose **Right hand side stream of the join**
+* Connect `Merge Join` to `Prices` and choose **Left hand side stream of the join**
 * Configure `Merge Join` as shown in the screenshot below:
 > That operation joins two tables into one table.
 

@@ -99,7 +99,7 @@ curl "https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expressi
     },
     {
         "name": "nurswgvml001",
-        "label": "NURSWGDKR002.corp.axibase.com",
+        "label": "NURSWGDKR002.corp.example.org",
         "enabled": false
     }
 ]

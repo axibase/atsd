@@ -22,7 +22,7 @@ addPortal(string portal, string entity / List<?> entities, string comment, [] ad
 
 The parameters may include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
 
-If `entity` or `portal` cannot be found, the function sends "Entity '`entity`' not found" or "Portal '`portal`' not found" messages instead.
+If `entity` or `portal` cannot be found, the function sends `Entity {entity} not found` or `Portal {portal} not found` messages instead.
 
 ## Supported Endpoints
 

@@ -66,7 +66,7 @@ The following example creates a grid containing 6 units, with 3 widgets placed i
      [series]
        # series settings
        metric = view_count
-       entity = axibase.com
+       entity = example.org
        [tags]
          page_name = index.htm
   [widget]

@@ -14,4 +14,4 @@ Perform this compaction test to calculate ATSD storage efficiency and estimate d
 * Reload the **Database Tables** page and calculate the difference in the **Store File Size (MB)** value.
 * Multiply the difference by 1048576 and divide it by the total number of samples in the dataset to calculate bytes/sample ratio.
 
-The ratio represents an estimated amount of disk space required to store one 'time:value' sample for the current [file system compression codec](compaction.md#file-system-compression).
+The ratio represents an estimated amount of disk space required to store one `time:value` sample for the current [file system compression codec](compaction.md#file-system-compression).

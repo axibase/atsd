@@ -70,7 +70,7 @@ Issue| Category    | Type    | Subject
 3573 | security | Feature | [SSL](../../administration/ssl-ca-signed.md): upgrade cypher protocols.
 2870 | api-rest | Bug | REST API - authentication [errors](../../api/data/README.md#responses) - check `403` status and json format in responses.
 2709 | rule engine | Feature | Messages: one-click to create rule from message.
-2086 | rule editor | Bug | Rule "Test" not working for messages.
+2086 | rule editor | Bug | Rule **Test** not working for messages.
 
 ## Collector
 

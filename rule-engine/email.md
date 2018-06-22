@@ -12,7 +12,7 @@ Custom Mail Client formatting options such as [header and footer](../administrat
 
 ## Enable Notifications
 
-Open the `Email Notifications` tab in the rule editor.
+Open the **Email Notifications** tab in the rule editor.
 
 Set status to `Enabled` and enter one or multiple email addresses, separated by comma, semi-colon or whitespace.
 
@@ -236,7 +236,7 @@ Similarly, if the rule correlates multiple metrics using [database functions](fu
 
 ![](./images/email-screenshot-correlate.png)
 
-To attach additional portals, select them from the `Additional Portal` drop-down.
+To attach additional portals, select them from the **Additional Portal** drop-down.
 
 ![](./images/email-screenshot-portals.png)
 

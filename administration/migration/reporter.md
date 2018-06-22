@@ -22,7 +22,7 @@ Execute the below steps on the server running YARN Resource Manager on the targe
 
 * Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**.
 
-  * Search for the 'yarn.log-aggregation-enable' property and verify that the property is checked.
+  * Search for the `yarn.log-aggregation-enable` property and verify that the property is checked.
 
 ![](./images/cloudera-log-aggregation-settings.jpeg)
 

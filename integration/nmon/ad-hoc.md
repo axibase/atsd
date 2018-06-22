@@ -10,21 +10,19 @@ This means that you can upload any nmon file or an archive of nmon files into A
 
 ### Download the ad-hoc nmon Portals
 
-nmon Linux:
-[https://axibase.com/public/nmon\_Linux.xml](https://axibase.com/public/nmon_Linux.xml)
+nmon Linux: [nmon_Linux](https://axibase.com/public/nmon_Linux.xml)
 
-nmon AIX:
-[https://axibase.com/public/nmon\_AIX.xml](https://axibase.com/public/nmon_AIX.xml)
+nmon AIX: [nmon_AIX.xml](https://axibase.com/public/nmon_AIX.xml)
 
 #### Import the portal
 
 This is a one time task.
 
 * Navigate to **Portals > Configure** page.
-* At the bottom of the page click "Import" and select either the downloaded `nmon\_AIX` or `nmon\_Linux` portal. If you are collecting data from AIX systems, choose `nmon \_AIX`. If you are collecting data from Linux systems, choose `nmon\_Linux`.
+* At the bottom of the page click "Import" and select either the downloaded `nmon_AIX` or `nmon_Linux` portal. If you are collecting data from AIX systems, choose `nmon_AIX`. If you are collecting data from Linux systems, choose `nmon_Linux`.
 * On the Portals page, keep a note of the unique portal ID that you just imported.
 
-![portals\_import](./resources/portals_import.png)
+![](./resources/portals_import.png)
 
 ### Upload the nmon File
 

@@ -10,7 +10,7 @@ This instruction describes the process of installing and renewing SSL certificat
 
 The Certbot can be located on the same server where ATSD is running or on a remote server in a centralized PKI management environment.
 
-Before you start, determine the DNS name where ATSD is installed. For the purpose of examples below, lets assume the DNS name is `atsd.company.com`.
+Before you start, determine the DNS name where ATSD is installed. For the purpose of examples below, lets assume the DNS name is `atsd.example.org`.
 
 ## Reference
 
@@ -56,20 +56,20 @@ Create a working directory for certbot which is required in standalone mode.
 sudo mkdir -p /var/www/certbot
 ```
 
-Execute the certificate request [command](https://certbot.eff.org/docs/using.html#certbot-command-line-options). Replace `atsd.company.com` with the actual DNS name.
+Execute the certificate request [command](https://certbot.eff.org/docs/using.html#certbot-command-line-options). Replace `atsd.example.org` with the actual DNS name.
 
 ```sh
 sudo certbot certonly --standalone --agree-tos --no-eff-email \
-  -w /var/www/certbot -d atsd.company.com
+  -w /var/www/certbot -d atsd.example.org
 ```
 
 The following message is displayed if the request was successfully processed.
 
 ```txt
 - Congratulations! Your certificate and chain have been saved at:
-   /etc/letsencrypt/live/atsd.company.com/fullchain.pem
+   /etc/letsencrypt/live/atsd.example.org/fullchain.pem
    Your key file has been saved at:
-   /etc/letsencrypt/live/atsd.company.com/privkey.pem
+   /etc/letsencrypt/live/atsd.example.org/privkey.pem
    Your cert will expire on 2018-04-24. To obtain a new or tweaked
    version of this certificate in the future, simply run certbot
    again. To non-interactively renew *all* of your certificates, run
@@ -86,7 +86,7 @@ sudo ls -all /etc/letsencrypt/live/
 total 12
 drwx------ 3 root root 4096 Mar 17 12:03 .
 drwxr-xr-x 9 root root 4096 Apr 18 12:47 ..
-drwxr-xr-x 2 root root 4096 Mar 17 12:03 atsd.company.com
+drwxr-xr-x 2 root root 4096 Mar 17 12:03 atsd.example.org
 ```
 
 ### DNS Challenge
@@ -101,11 +101,11 @@ sudo certbot --preferred-challenges dns --manual certonly
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator manual, Installer None
 Please enter in your domain name(s) (comma and/or space separated)  (Enter 'c'
-to cancel): atsd.company.com
+to cancel): atsd.example.org
 Cert not yet due for renewal
 
 You have an existing certificate that has exactly the same domains or certificate name you requested and isn't close to expiry.
-(ref: /etc/letsencrypt/renewal/atsd.company.com.conf)
+(ref: /etc/letsencrypt/renewal/atsd.example.org.conf)
 
 What would you like to do?
 -------------------------------------------------------------------------------
@@ -115,7 +115,7 @@ What would you like to do?
 Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
 Renewing an existing certificate
 Performing the following challenges:
-dns-01 challenge for atsd.company.com
+dns-01 challenge for atsd.example.org
 
 -------------------------------------------------------------------------------
 NOTE: The IP of this machine will be publicly logged as having requested this
@@ -128,7 +128,7 @@ Are you OK with your IP being logged?
 
 -------------------------------------------------------------------------------
 Please deploy a DNS TXT record under the name
-_acme-challenge.atsd.company.com with the following value:
+_acme-challenge.atsd.example.org with the following value:
 
 Mq4jQ2F4LvDWxTq14m7hNgJsPaddwg1IzPz6Ltonu-c
 
@@ -144,7 +144,7 @@ Cleaning up challenges
 Check that the sub-directory for the requested DNS name contains `privkey.pem` and `fullchain.pem` files.
 
 ```sh
-$ sudo ls /etc/letsencrypt/live/atsd.axibase.com
+$ sudo ls /etc/letsencrypt/live/atsd.example.org
 cert.pem  chain.pem  fullchain.pem  privkey.pem  README
 ```
 
@@ -169,12 +169,12 @@ Upload the certificates files (private key and the certificate chain) into ATSD 
 
 Replace `{USR}` with the username, `{PWD}` with the password and `{HOST}` with the hostname or IP address of the target ATSD server in the command below.
 
-Replace `atsd.company.com` below with the actual DNS name.
+Replace `atsd.example.org` below with the actual DNS name.
 
 ```sh
 sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
-  -F "privkey=@/etc/letsencrypt/live/atsd.company.com/privkey.pem" \
-  -F "fullchain=@/etc/letsencrypt/live/atsd.company.com/fullchain.pem" \
+  -F "privkey=@/etc/letsencrypt/live/atsd.example.org/privkey.pem" \
+  -F "fullchain=@/etc/letsencrypt/live/atsd.example.org/fullchain.pem" \
   -w "\n%{http_code}\n"
 ```
 
@@ -206,7 +206,7 @@ USR=certbot
 PWD=**********
 HOST=127.0.0.1
 PORT=8443
-DNS=atsd.company.com
+DNS=atsd.example.org
 
 echo "Uploading private key and certificate for ${DNS}"
 
@@ -232,7 +232,7 @@ Verify that the script is functional by executing it manually.
 
 ```sh
 $ sudo ./deploy-atsd.sh
-Uploading private key and certificate for atsd.company.com
+Uploading private key and certificate for atsd.example.org
 200
 ```
 
@@ -252,12 +252,12 @@ The certbot skips the renewal if the certificate is valid for more than 30 days.
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
 -------------------------------------------------------------------------------
-Processing /etc/letsencrypt/renewal/atsd.company.com.conf
+Processing /etc/letsencrypt/renewal/atsd.example.org.conf
 -------------------------------------------------------------------------------
 Cert not yet due for renewal
 -------------------------------------------------------------------------------
 The following certs are not due for renewal yet:
-  /etc/letsencrypt/live/atsd.company.com/fullchain.pem expires on 2018-06-15 (skipped)
+  /etc/letsencrypt/live/atsd.example.org/fullchain.pem expires on 2018-06-15 (skipped)
 No renewals were attempted.
 No hooks were run.
 -------------------------------------------------------------------------------
@@ -299,22 +299,22 @@ To check if the `--deploy-hook` is enabled for the specific DNS name, search the
 sudo grep -nr /etc/letsencrypt -e "renew_hook"
 ```
 
-The `/etc/letsencrypt/renewal/atsd.company.com.conf` file must contain the following line with the correct path.
+The `/etc/letsencrypt/renewal/atsd.example.org.conf` file must contain the following line with the correct path.
 
 ```txt
-/etc/letsencrypt/renewal/atsd.company.com.conf:14:renew_hook = /opt/certbot/deploy-atsd.sh
+/etc/letsencrypt/renewal/atsd.example.org.conf:14:renew_hook = /opt/certbot/deploy-atsd.sh
 ```
 
-If the `renew_hook` is missing, open the `/etc/letsencrypt/renewal/atsd.company.com.conf` file and add the line manually.
+If the `renew_hook` is missing, open the `/etc/letsencrypt/renewal/atsd.example.org.conf` file and add the line manually.
 
 ```elm
 # renew_before_expiry = 30 days
 version = 0.22.2
-archive_dir = /etc/letsencrypt/archive/atsd.company.com
-cert = /etc/letsencrypt/live/atsd.company.com/cert.pem
-privkey = /etc/letsencrypt/live/atsd.company.com/privkey.pem
-chain = /etc/letsencrypt/live/atsd.company.com/chain.pem
-fullchain = /etc/letsencrypt/live/atsd.company.com/fullchain.pem
+archive_dir = /etc/letsencrypt/archive/atsd.example.org
+cert = /etc/letsencrypt/live/atsd.example.org/cert.pem
+privkey = /etc/letsencrypt/live/atsd.example.org/privkey.pem
+chain = /etc/letsencrypt/live/atsd.example.org/chain.pem
+fullchain = /etc/letsencrypt/live/atsd.example.org/fullchain.pem
 
 # Options used in the renewal process
 [renewalparams]

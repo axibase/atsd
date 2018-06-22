@@ -71,7 +71,7 @@ An array of matching alert objects containing the following fields:
 
 | Status Code| Message |
 | --- | --- |
-| 404 | Metric '${metric_name}' not found |
+| 404 | Metric `${metric_name}` not found |
 
 ## Example
 

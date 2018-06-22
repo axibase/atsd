@@ -26,7 +26,7 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 ![](./resources/view_certificates.png)
 
-* Select the `Servers` tab and click on the required AD server certificate to export it.
+* Select the **Servers** tab and click on the required AD server certificate to export it.
 
 ![](./resources/cert-export.png)
 
@@ -40,11 +40,11 @@ keytool -importcert -keystore /opt/atsd/atsd/conf/server.keystore -storepass ats
 
 ## Import Server Certificate into Jxplorer Keystore
 
-* Open `Security` -> `Trusted Servers and CAs`
+* Open **Security > Trusted Servers and CAs**
 
 ![](./resources/security.png)
 
-* Click `Add Certificate`, select the crt file and add it to the keystore.
+* Click **Add Certificate**, select the crt file and add it to the keystore.
 
 ![](./resources/add_cert.png)
 

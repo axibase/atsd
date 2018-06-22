@@ -10,9 +10,9 @@ In addition, the **Log to ATSD** checkbox can be enabled for each rule separatel
 
 ## Logging to Files
 
-Logging to files or even remote systems can be enabled for each rule separately by selecting one of the pre-configured loggers in the `File Logger` drop-down.
+Logging to files or even remote systems can be enabled for each rule separately by selecting one of the pre-configured loggers in the **File Logger** drop-down.
 
-Loggers can be added and modified by administrators on the **Settings > Configuration Files > logback.xml** page. Once a new logger is created and the `logback.xml` file is re-scanned, the new logger appears in the `Alert Logger` drop-down.
+Loggers can be added and modified by administrators on the **Settings > Configuration Files > logback.xml** page. Once a new logger is created and the `logback.xml` file is re-scanned, the new logger appears in the **Alert Logger** drop-down.
 
 ![](./images/logging-loggers.png)
 

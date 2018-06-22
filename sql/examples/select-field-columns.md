@@ -26,9 +26,9 @@ FROM atsd_series WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user', 'mpstat.
 ```ls
 | datetime                 | entity       | metric     | value | metric.label | metric.timezone | ISNULL(metric.interpolate,'N/A') | entity.label                  | entity.timezone | ISNULL(entity.interpolate,'N/A') |
 |--------------------------|--------------|------------|-------|--------------|-----------------|----------------------------------|-------------------------------|-----------------|----------------------------------|
-| 2016-10-16T17:10:05.000Z | nurswgvml010 | cpu_busy   | 25.9  | CPU Busy %   | EST             | LINEAR                           | NURSWGVML010.corp.axibase.com | null            | N/A                              |
-| 2016-10-16T17:10:05.000Z | nurswgvml010 | cpu_system | 0.8   | CPU Sys %    | AEST            | LINEAR                           | NURSWGVML010.corp.axibase.com | null            | N/A                              |
-| 2016-10-16T17:10:05.000Z | nurswgvml010 | cpu_user   | 25.1  | CPU User %   | null            | LINEAR                           | NURSWGVML010.corp.axibase.com | null            | N/A                              |
+| 2016-10-16T17:10:05.000Z | nurswgvml010 | cpu_busy   | 25.9  | CPU Busy %   | EST             | LINEAR                           | NURSWGVML010.corp.example.org | null            | N/A                              |
+| 2016-10-16T17:10:05.000Z | nurswgvml010 | cpu_system | 0.8   | CPU Sys %    | AEST            | LINEAR                           | NURSWGVML010.corp.example.org | null            | N/A                              |
+| 2016-10-16T17:10:05.000Z | nurswgvml010 | cpu_user   | 25.1  | CPU User %   | null            | LINEAR                           | NURSWGVML010.corp.example.org | null            | N/A                              |
 | 2016-10-16T17:10:07.000Z | nurswgvml009 | cpu_busy   | 1.0   | CPU Busy %   | EST             | LINEAR                           | null                          | UTC             | N/A                              |
 | 2016-10-16T17:10:07.000Z | nurswgvml009 | cpu_system | 1.0   | CPU Sys %    | AEST            | LINEAR                           | null                          | UTC             | N/A                              |
 | 2016-10-16T17:10:07.000Z | nurswgvml009 | cpu_user   | 0.0   | CPU User %   | null            | LINEAR                           | null                          | UTC             | N/A                              |
