@@ -96,7 +96,7 @@ likeAny(string s, [string] c) boolean
 
 Returns `true` if string `s` matches any element in the string collection `c`.
 
-The collection `c` can be initialized by referencing a named collection by name or it can be specified inline as an array of strings. The collection may include patterns with `?` and `*` wildcards.
+The collection `c` can be loaded from a named collection or initialized from an array of strings. The elements of the collection may include patterns with `?` and `*` wildcards.
 
 Examples:
 

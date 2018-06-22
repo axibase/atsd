@@ -35,7 +35,7 @@ An array of objects containing fields for filtering records for deletion.
 | `metric` | string | [**Required**] Metric name.|
 | `entity` | string | [**Required**] Entity name.|
 | `tags` | object | Series tags object, where field name represents tag name and field value is tag value,<br> for example `{"tag-1":"val-1","tag-2":"val2"}` |
-| `exactMatch` | boolean | If `exactMatch` is `true`, only one series with exactly the same series tags as in the request is deleted.<br>If `false`, all series which **contain** the series tags in the request (but may also include other series tags) are deleted.<br>If `exactMatch` is `false` and no series tags are specified, all series for the specified metric and entity are deleted.<br>Default: `true`.|
+| `exactMatch` | boolean | If `exactMatch` is `true`, only one series with exactly the same series tags as in the request is deleted.<br>If `false`, all series which **contain** the series tags in the request (but can also include other series tags) are deleted.<br>If `exactMatch` is `false` and no series tags are specified, all series for the specified metric and entity are deleted.<br>Default: `true`.|
 
 ## Response
 

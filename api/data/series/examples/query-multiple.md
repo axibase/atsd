@@ -2,9 +2,9 @@
 
 ## Description
 
-Retrieve data for multiple series queries with different metrics, entities, and timespans.
+Retrieve records for multiple series queries with different metrics, entities, and date intervals.
 
-Each query may return multiple series. The order of series in the response is arbitrary.
+Each query can results in multiple series in the response. The order of series in the response is non-deterministic.
 
 ## Request
 

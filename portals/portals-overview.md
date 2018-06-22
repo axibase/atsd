@@ -37,7 +37,7 @@
 
 The portal is configured using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax which is a domain-specific language for assembling visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
 
-* **Section** is enclosed in square brackets, for example, `[widget]`. The section may include the nested sections and settings. The section terminates when another section is specified.
+* **Section** is enclosed in square brackets, for example, `[widget]`. The section includes settings and nested sections. The section terminates when another section is specified.
 * **Setting** includes name and value, separated by equal sign, for example, `timespan = 1 hour`.
 
 ```ls

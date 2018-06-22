@@ -92,7 +92,7 @@ Use the [`odbc insert`](https://www.stata.com/manuals13/dodbc.pdf) command to wr
 odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("target_metric_name") block
 ```
 
-> Make sure the `block` flag is set, otherwise all available records may not be inserted into ATSD.
+Enable the `block` setting to insert all available records.
 
 Syntax:
 

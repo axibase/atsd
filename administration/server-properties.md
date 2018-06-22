@@ -66,7 +66,7 @@ Property | Default Value | Description
 `properties.queue.limit` | 8192 | Maximum number of property records waiting in memory to be inserted into HBase. |
 `properties.queue.pool.size` | 4 | Maximum number of work threads sending property records into HBase. |
 `properties.queue.rejection.policy` | BLOCK | Policy that controls the behavior when the number of property records in memory reaches the `properties.queue.limit`. BLOCK policy slows down clients. DISCARD policy deletes most recent records in case of overflow.
-`scan.caching.size` | 2,048 | Number of rows sent to ATSD HBase in each RPC request. Setting the property to a low value may cause unnecessary round-trips to the region server, while setting it to a large value requires more memory on the client and may cause unnecessary rows to be sent to the client via RPC request. |
+`scan.caching.size` | 2,048 | Number of rows sent to ATSD HBase in each RPC request. Setting the property to a low value causes unnecessary round-trips to the region server, while setting it to a large value requires more memory on the client and causes unnecessary rows to be sent to the client. |
 `series.batch.size` | 1,024 | Number of series samples sent to HBase in each PUT command. |
 `series.queue.limit` | 32,768 | Maximum number of series samples waiting in memory to be inserted into HBase. |
 `series.queue.pool.size` | 4 | Maximum number of worker threads sending series samples into HBase.
@@ -119,7 +119,7 @@ Property | Default Value | Description
 Property | Default Value | Description
 ---|---|---
 `sql.metric.like.limit` | 50 | Maximum number of metrics matched by [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd-series-table) tables. |
-`sql.tmp.storage.max_rows_in_memory` | 51,200 | Maximum number of rows to be processed in memory by [grouping](../sql/README.md#grouping) and [ordering](../sql/README.md#ordering) queries. The limit is shared by all concurrently executing queries. If a query selects more rows than remain in shared memory, the query is processed by ATSD using a temporary table which may result in increased response times.|
+`sql.tmp.storage.max_rows_in_memory` | 51,200 | Maximum number of rows to be processed in memory by [grouping](../sql/README.md#grouping) and [ordering](../sql/README.md#ordering) queries. The limit is shared by all concurrently executing queries. If a query selects more rows than remain in shared memory, the query is processed by ATSD using a temporary table which results in increased response times.|
 
 ### Cache
 

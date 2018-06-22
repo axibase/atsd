@@ -292,7 +292,7 @@ WHERE t1.datetime BETWEEN '2016-10-04T02:01:20Z' AND '2016-10-04T02:03:05Z'
 
 ## Query Multiple Intervals with `OR`
 
-The query may select multiple intervals using the `OR` operator.
+The query can select multiple intervals using the `OR` operator.
 
 ```sql
 SELECT datetime, value

@@ -37,7 +37,7 @@ This method can be used to process HTTP notifications from services that support
 | POST | `/api/v1/messages/webhook/*` | `key=value` | `application/x-www-form-urlencoded` |
 | GET | `/api/v1/messages/webhook/*` | None | - |
 
-The URL may point to any path after `/webhook`, for example, `/api/v1/messages/webhook/service-1`.
+The URL path after the `/webhook` part can be customized, for example `/api/v1/messages/webhook/service-1`.
 
 ## Authentication
 

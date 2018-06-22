@@ -115,7 +115,7 @@ Placeholders can be included in the `Output Path` and `Email Subject` fields.
 
 #### Date placeholder
 
-The date placeholder may include the following calendar units:
+The date placeholder can include the following calendar units:
 
 * `yyyy` - 4-digit year
 * `yy` - 2-digit year

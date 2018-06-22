@@ -49,7 +49,7 @@ An array of objects containing fields for filtering records for deletion.
 | `startDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
 | `endDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
 | `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with _exact_ or _partial_ key fields based on the `exactMatch` parameter below.|
-| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `false`, all records with key that **contains** fields in the request `key` (but may also include other fields) are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
+| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `false`, all records with key that **contains** fields in the request `key` (but can include other fields) are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
 
 * Key and tag names are case-insensitive.
 * Key and tag values are case-sensitive.

@@ -85,7 +85,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<IFTTT_KEY>` field with the IFTTT webhook token.
 
-The `Endpoint URL` may look as follows: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
+Example `Endpoint URL`: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
 
 You can find your IFTTT token in the `Webhooks` examples. Go to [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**.
 

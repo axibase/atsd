@@ -35,7 +35,7 @@ To match the rule, the incoming `series` command must have the same metric name 
 
 The filter matches commands for which the filter expression returns `true`.
 
-The expression may consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
+The expression consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
 
 ```javascript
 entity != 'nurswgvml007'
@@ -45,7 +45,7 @@ entity != 'nurswgvml007'
 entity LIKE 'nurswgvml*' AND entity IN ('nurswgvml007', 'nurswgvml006')
 ```
 
-The expression may include command fields listed below, literal values, and [functions](functions.md) except [statistical functions](functions-statistical.md).
+The expression can include command fields listed below, literal values, and [functions](functions.md) except [statistical functions](functions-statistical.md).
 
 Base command fields:
 
@@ -130,7 +130,7 @@ If set to a positive value, the filter discards commands with a timestamp that d
 
 ## Filter vs Condition
 
-While the same checks can be performed in the filter expression and in the alert condition, performance may increase if checks that refer to command fields are specified in the filter expression whereas checks that require the [window](window.md) object are specified in the alert condition. Discarding unnecessary commands early minimizes the number of windows maintained by the rule engine.
+While the same checks can be performed in the filter expression and in the alert condition, performance increases if checks that refer to command fields are specified in the filter expression whereas checks that require the [window](window.md) object are specified in the alert condition. Discarding unnecessary commands early minimizes the number of windows maintained by the rule engine.
 
 For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (for example `mount_point` = `/dev`) are discarded early in the process without causing extra windows to be created.
 

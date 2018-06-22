@@ -26,7 +26,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name.
 
-The `Endpoint URL` may look as follows: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
+Example `Endpoint URL`: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
 
 Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that can be customized in the rule editor. This allows you to add comments to different issues re-using the same webhook configuration.
 

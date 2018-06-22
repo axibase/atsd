@@ -911,7 +911,7 @@ END
 
 Each `search_expression` must return a boolean (`true`/`false`) value.
 
-The `result_expression` can be a number, a string, or an expression. Result expressions may return values of different data types.
+The `result_expression` can be a number, a string, or an expression. Result expressions return values of different data types.
 
 >If the data types are different (such as a number and a string), the database classifies the column with `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 

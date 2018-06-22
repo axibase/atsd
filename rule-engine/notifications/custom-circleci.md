@@ -27,7 +27,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your GitHub user name.
 
-The `Endpoint URL` may look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
+Example `Endpoint URL`: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
 
 Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 

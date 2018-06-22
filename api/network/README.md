@@ -134,7 +134,7 @@ Trailing line feed is not required for the last command when the connection is c
 
 Commands are processed as they are received by the server, without buffering.
 
-To prevent the connection from timing out the client may send a [`ping`](ping.md) command at a regular interval.
+To prevent the connection from timing out, send a [`ping`](ping.md) command at a regular interval.
 
 Clients can submit different types of commands over the same connection.
 
@@ -162,7 +162,7 @@ Connection closed by foreign host.
 
 If the connection is terminated due to client error, all valid commands sent prior to the first invalid command are stored.
 
-Due to the fact that closing the channel due to client error can take some time, the database may also store a few valid commands received after the discarded command.
+Because of the delay between closing the channel on client error and the connection shutdown, the database can store valid commands present in the network buffer, even if they are received after the discarded command.
 
 ```txt
 valid command   - stored
@@ -179,7 +179,7 @@ This causes the database to maintain a client connection even if one of the rece
 
 ### UDP Datagrams
 
-The UDP protocol does not guarantee delivery but may have a higher throughput compared to TCP due to lower overhead.
+The UDP protocol does not guarantee delivery but has a higher throughput compared to TCP.
 
 In addition, sending commands with UDP datagrams decouples the client application from the server to minimize the risk of blocking I/O time-outs.
 
@@ -199,9 +199,9 @@ echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperatu
 
 ### Duplicate Commands
 
-Multiple commands with the same timestamp and key fields may override each others value.
+Multiple commands with the same timestamp and key fields override each others value.
 
-If such commands are submitted at approximately the same time, there is no guarantee that they are processed in the order received.
+If such commands are submitted at the same time, there is no guarantee that they are processed in the order received.
 
 * Duplicate example: same key, same current time
 

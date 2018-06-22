@@ -18,7 +18,7 @@ When the response action is triggered, the expression between the braces is reso
 
 The replacements in the original input text, such as email subject, are performed _in-place_ where each placeholder is substituted with the value of its expression, converted to a string.
 
-The expression may refer to:
+The expression can refer to:
 
 * [Window](window.md#window-fields) fields
 * [Entity](../api/meta/entity/list.md#fields) fields

@@ -64,9 +64,9 @@ As an alternative, the query can be submitted with Content-Type `text/plain` as 
 
 ### Cancelling the Query
 
-The client may cancel an active query by submitting a request to `/api/sql/cancel?queryId=myid` endpoint.
+The client can cancel an active query by submitting a request to `/api/sql/cancel?queryId={client-query-id}` endpoint.
 
-The `queryId` identifies the query to be cancelled.
+The `client-query-id` parameter identifies the query to be cancelled.
 
 ## Response
 

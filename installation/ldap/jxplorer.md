@@ -40,7 +40,7 @@ keytool -importcert -keystore /opt/atsd/atsd/conf/server.keystore -storepass ats
 
 ## Import Server Certificate into Jxplorer Keystore
 
-* Open **Security > Trusted Servers and CAs**
+* Open **Security > Trusted Servers and Certificate Authorities**
 
 ![](./resources/security.png)
 

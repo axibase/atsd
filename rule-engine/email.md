@@ -39,7 +39,7 @@ If necessary, uncheck the **Same as On Open** setting to adjust message content 
 
 Fill out the message **Subject** and **Text fields**.
 
-Both fields may include any text as well as [placeholders](placeholders.md) to customize outgoing messages based on alert details.
+Both fields can include any text as well as [placeholders](placeholders.md) to customize outgoing messages based on alert details.
 
 ```bash
 Warning! Rule ${rule} for server ${entity} is active.
@@ -147,7 +147,7 @@ The override table below contains rules that always return `false` for the match
 
 ### Subject
 
-The subject may include [placeholders](placeholders.md) with expressions substituted with actual values when the message is sent. If the placeholder is not found, the placeholder is replaced with an empty string.
+The subject can include [placeholders](placeholders.md) with fields and expressions, substituted with actual values when the message is sent. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 Sample subject:
 
@@ -163,7 +163,7 @@ When using placeholders that can be replaced with text of arbitrary length, appl
 
 ### Text
 
-The message text (body) may include [placeholders](placeholders.md) as well.
+The message text (body) can include [placeholders](placeholders.md) as well.
 
 Use the HTML tag `<br>` to split content into multiple lines.
 

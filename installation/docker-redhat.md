@@ -127,20 +127,20 @@ Web interface is now accessible on port `8443` (https).
 
 View additional launch examples [here](https://github.com/axibase/atsd-docs/blob/master/installation/docker.md#option-1-configure-collector-account-automatically).
 
-## Exposed Ports
+## Published Ports
 
 * 8088 – http
 * 8443 – https
 * 8081 – [TCP network commands](../api/network/README.md#network-api)
 * 8082 – [UDP network commands](../api/network/README.md#udp-datagrams)
 
-## Port Mappings
+## Port Allocations
 
-Depending on your Docker host network configuration, you may need to change port mappings in case some of the published ports are already taken.
+Modify the published ports in case of port allocation error.
 
 ```txt
-Cannot start container <container_id>: failed to create endpoint atsd on network bridge:
-Bind for 0.0.0.0:8088 failed: port is already allocated
+Cannot start container atsd: failed to create endpoint atsd on network bridge:
+Bind for 0.0.0.0:8443 failed: port is already allocated
 ```
 
 ```bash
