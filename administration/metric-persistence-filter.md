@@ -100,7 +100,7 @@ Examples:
 
 ```javascript
 
-likeAll(tags.request_ip, ['10.50.*', '10.50.102.?'])
+likeAll(tags.request_ip, ['192.0.*', '192.0.2.?'])
 ```
 
 ### `likeAny`

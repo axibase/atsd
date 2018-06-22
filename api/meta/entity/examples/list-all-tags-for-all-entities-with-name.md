@@ -24,7 +24,7 @@ expression=name LIKE 'nurswgvml00*'
         "lastInsertDate": "2015-09-15T14:31:34.000Z",
         "tags": {
             "app": "Shared NFS/CIFS disk, ntp server",
-            "ip": "10.102.0.2",
+            "ip": "192.0.2.2",
             "os": "Linux"
         }
     },
@@ -34,7 +34,7 @@ expression=name LIKE 'nurswgvml00*'
         "lastInsertDate": "2015-09-15T14:31:37.000Z",
         "tags": {
             "app": "Hadoop/HBase",
-            "ip": "10.102.0.5",
+            "ip": "192.0.2.5",
             "os": "Linux"
         }
     },
@@ -45,7 +45,7 @@ expression=name LIKE 'nurswgvml00*'
         "tags": {
             "alias": "007",
             "app": "ATSD",
-            "ip": "10.102.0.6",
+            "ip": "192.0.2.6",
             "loc_area": "dc2",
             "loc_code": "nur,nur",
             "os": "Linux"

@@ -126,7 +126,7 @@ time,cpu_user,cpu_system,waitio
     "startTime": 1471337579825,
     "endTime": 1471337579826,
     "processed": 3,
-    "source": "10.102.0.7",
+    "source": "192.0.2.7",
     "parser": "my-parser",
     "errorMessage": null,
     "taskStatus": "COMPLETED",

@@ -25,7 +25,7 @@ name LIKE 'nur*'
         "tags": {
             "app": "Shared NFS/CIFS disk, ntp server",
             "app-test": "1",
-            "ip": "10.102.0.2",
+            "ip": "192.0.2.2",
             "os": "Linux"
         }
     },
@@ -35,7 +35,7 @@ name LIKE 'nur*'
         "lastInsertTime": 1442331411000,
         "tags": {
             "app": "Hadoop/HBase",
-            "ip": "10.102.0.5",
+            "ip": "192.0.2.5",
             "os": "Linux"
         }
     },
@@ -46,7 +46,7 @@ name LIKE 'nur*'
         "tags": {
             "alias": "007",
             "app": "ATSD",
-            "ip": "10.102.0.6",
+            "ip": "192.0.2.6",
             "loc_area": "dc2",
             "loc_code": "nur,nur",
             "os": "Linux"

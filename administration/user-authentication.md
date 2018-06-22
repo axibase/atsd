@@ -109,7 +109,7 @@ SQL query results can be published to all visitors by checking **Guest Access** 
 * Java Example:
 
 ```java
-    URL url = new URL("http://10.102.0.6:8088/api/v1/series");
+    URL url = new URL("http://192.0.2.6:8088/api/v1/series");
     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     conn.setDoOutput(true);
     conn.setRequestMethod("POST");

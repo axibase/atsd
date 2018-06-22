@@ -23,7 +23,7 @@ If the database url specified in the `atsd.config` file is secure, both the quer
 ## Configuration File
 
 ```elm
-url=https://10.102.0.6:8443/api/sql
+url=https://192.0.2.6:8443/api/sql
 insecure=true
 user=axibase
 password=********

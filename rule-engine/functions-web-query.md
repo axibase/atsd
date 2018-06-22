@@ -150,7 +150,7 @@ The request URL consists of schema (http/https), optional user credentials, host
 Examples:
 
 ```elm
-  https://cuser:cpass@10.102.0.9:8443/service?load=true
+  https://cuser:cpass@192.0.2.9:8443/service?load=true
 ```
 
 ```elm

@@ -48,7 +48,7 @@ POST /api/v1/series/query
     },
     "meta": {
       "metric": {"name":"cpu_busy","enabled":true,"dataType":"FLOAT","label":"CPU Busy %","persistent":true,"tags":{"source":"iostat","table":"System"},"timePrecision":"MILLISECONDS","retentionDays":0,"minValue":0.0,"maxValue":100.0,"invalidAction":"TRANSFORM","versioned":false,"interpolate":"LINEAR","timeZone":"US/Eastern"},
-      "entity": {"name":"nurswgvml007","enabled":true,"timeZone":"PST","tags":{"alias":"007","app":"ATSD","environment":"prod","ip":"10.102.0.6","loc_area":"dc1","loc_code":"nur,nur","os":"Linux"},"interpolate":"LINEAR","label":"NURswgvml007"}
+      "entity": {"name":"nurswgvml007","enabled":true,"timeZone":"PST","tags":{"alias":"007","app":"ATSD","environment":"prod","ip":"192.0.2.6","loc_area":"dc1","loc_code":"nur,nur","os":"Linux"},"interpolate":"LINEAR","label":"NURswgvml007"}
     },
     "data": [
       {
@@ -71,7 +71,7 @@ POST /api/v1/series/query
     },
     "meta": {
       "metric": {"name":"cpu_busy","enabled":true,"dataType":"FLOAT","label":"CPU Busy %","persistent":true,"tags":{"source":"iostat","table":"System"},"timePrecision":"MILLISECONDS","retentionDays":0,"minValue":0.0,"maxValue":100.0,"invalidAction":"TRANSFORM","versioned":false,"interpolate":"LINEAR","timeZone":"US/Eastern"},
-      "entity": {"name":"nurswgvml006","enabled":true,"timeZone":"America/Bahia_Banderas","tags":{"app":"Hadoop/HBASE","environment":"prod","ip":"10.102.0.5","loc_area":"dc1","os":"Linux"},"label":"NURSWGVML006"}
+      "entity": {"name":"nurswgvml006","enabled":true,"timeZone":"America/Bahia_Banderas","tags":{"app":"Hadoop/HBASE","environment":"prod","ip":"192.0.2.5","loc_area":"dc1","os":"Linux"},"label":"NURSWGVML006"}
     },
     "data": [
       {

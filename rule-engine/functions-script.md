@@ -204,7 +204,7 @@ timeout 3 traceroute example.org
 
 ```txtsh
 traceroute to example.org (192.0.2.1), 30 hops max, 60 byte packets
- 1  NURSWGVML102(10.102.0.1)  0.149 ms  0.059 ms  0.032 ms
+ 1  NURSWGVML102(192.0.2.1)  0.149 ms  0.059 ms  0.032 ms
 ...
  6  example.org (192.0.2.1)  0.348 ms  0.363 ms  0.308 ms
 ```
@@ -537,14 +537,14 @@ ${scriptOut('daily_referer_requests.py', [])}
         <td>2018-06-14 03:58</td>
         <td>/</td>
         <td>https://example.org/</td>
-        <td>127.0.0.1</td>
+        <td>192.0.2.1</td>
         <td>Example Org</td>
     </tr>
     <tr>
         <td>2018-06-14 20:43</td>
         <td>/chartlab/2ef08f32</td>
         <td>https://example.org/</td>
-        <td>127.0.0.1</td>
+        <td>192.0.2.1</td>
         <td>Example Org</td>
     </tr>
 </table>

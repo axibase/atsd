@@ -255,6 +255,6 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   Examples:
 
-  * `http://10.102.0.80/proxy`
-  * `https://10.102.0.80/proxy`
-  * `socks5://10.102.0.54`
+  * `http://192.0.2.80/proxy`
+  * `https://192.0.2.80/proxy`
+  * `socks5://192.0.2.54`

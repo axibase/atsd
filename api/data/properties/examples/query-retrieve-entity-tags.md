@@ -33,7 +33,7 @@ POST /api/v1/properties/query
     {
         "alias": "007",
         "app": "ATSD",
-        "ip": "10.102.0.6",
+        "ip": "192.0.2.6",
         "loc_area": "dc2",
         "loc_code": "nur,nur",
         "os": "Linux"

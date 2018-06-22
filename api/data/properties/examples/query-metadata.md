@@ -41,7 +41,7 @@ POST /api/v1/properties/query
     "type": "disk",
     "entity": "nurswgvml007",
     "meta": {
-      "entity": {"name":"nurswgvml007","enabled":true,"timeZone":"PST","tags":{"alias":"007","app":"ATSD","environment":"prod","ip":"10.102.0.6","loc_area":"dc1","loc_code":"nur,nur","os":"Linux"},"interpolate":"LINEAR","label":"NURswgvml007"}
+      "entity": {"name":"nurswgvml007","enabled":true,"timeZone":"PST","tags":{"alias":"007","app":"ATSD","environment":"prod","ip":"192.0.2.6","loc_area":"dc1","loc_code":"nur,nur","os":"Linux"},"interpolate":"LINEAR","label":"NURswgvml007"}
     },
     "key": {
       "id": "dm-0"

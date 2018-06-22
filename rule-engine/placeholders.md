@@ -39,7 +39,7 @@ ActiveMQ on ${entity} recorded unauthorized connection from ${tags.remoteaddress
 ```
 
 ```txt
-ActiveMQ on nurswgvml007 recorded unauthorized connection from 10.102.0.106.
+ActiveMQ on nurswgvml007 recorded unauthorized connection from 192.0.2.106.
 ```
 
 ---

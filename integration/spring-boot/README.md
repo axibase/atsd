@@ -27,8 +27,8 @@ metrics.export.url: http://atsd_hostname:8088/api/v1/command
 metrics.export.bufferSize: 16
 metrics.names.entity: spring-boot-sample
 metrics.names.metricPrefix: spring-boot
-metrics.names.tags.ip: 127.0.0.1
-metrics.names.tags.organization: Axibase
+metrics.names.tags.ip: 192.0.2.1
+metrics.names.tags.organization: Example
 ```
 
 ## Metrics

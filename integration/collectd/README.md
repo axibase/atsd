@@ -79,7 +79,7 @@ Edit `/ect/collect.conf` by replacing atsd_host with ATSD IP address or host nam
 ...
 <Plugin write_atsd>
      <Node "atsd">
-         AtsdUrl "tcp://10.10.20.1:8081"
+         AtsdUrl "tcp://192.0.2.106:8081"
 ...
      </Node>
 </Plugin>

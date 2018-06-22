@@ -79,7 +79,7 @@ curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
     "metric": "disk_used",
     "entity": "nurswgvml006",
     "tags": {
-        "file_system": "10.102.0.2:/home/store/share",
+        "file_system": "192.0.2.2:/home/store/share",
         "mount_point": "/mnt/share"
     },
     "lastInsertDate": "2015-12-25T14:09:49.000Z"

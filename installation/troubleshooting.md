@@ -32,7 +32,7 @@ tcp        0      0 0.0.0.0:8081            0.0.0.0:*               LISTEN
 
 ```sh
 $ telnet atsd_host 8081
-Trying 10.102.0.1...
+Trying 192.0.2.1...
 Connected to atsd_host.
 Escape character is '^]'.
 ```

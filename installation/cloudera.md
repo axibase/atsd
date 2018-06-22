@@ -33,7 +33,7 @@ telnet zookeeper-host 2181
 ```
 
 ```txt
-Trying 10.102.0.6...
+Trying 192.0.2.6...
 Connected to zookeeper-host.
 Escape character is '^]'.
 ```
@@ -79,7 +79,7 @@ ip addr
        valid_lft forever preferred_lft forever
 2: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
     link/ether 00:50:56:b9:35:31 brd ff:ff:ff:ff:ff:ff
-    inet 10.102.0.6/24 brd 10.102.0.255 scope global eth1
+    inet 192.0.2.6/24 brd 192.0.2.255 scope global eth1
     inet6 2a01:4f8:140:53c6::7/64 scope global
        valid_lft forever preferred_lft forever
     inet6 fe80::250:56ff:feb9:3531/64 scope link

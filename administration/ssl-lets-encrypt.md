@@ -159,7 +159,7 @@ Open the **Settings > Users** page and click **Create**.
 * Specify `certbot` as the username (or a username of your choice).
 * Assign Role `USER` to the user.
 * Do not grant user any group membership.
-* Add `127.0.0.1` to the list of `Allowed IPs`. Add additional IP addresses to the whitelist if the certbot is running on a remote server.
+* Add IP address of the certbot server, for example `192.0.2.1`, to the list of `Allowed IPs`.
 
 ![certbot upload](./images/certbot-user.png)
 
@@ -181,7 +181,7 @@ sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
 Example command:
 
 ```sh
-sudo curl -k -u certbot:Dmj_per1S https://10.102.0.6:8443/admin/certificates/import/atsd \
+sudo curl -k -u certbot:Dmj_per1S https://192.0.2.6:8443/admin/certificates/import/atsd \
   -F "privkey=@/etc/letsencrypt/live/atsd.cert.org/privkey.pem" \
   -F "fullchain=@/etc/letsencrypt/live/atsd.cert.org/fullchain.pem" \
   -w "\n%{http_code}\n"
@@ -204,7 +204,7 @@ Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. T
 
 USR=certbot
 PWD=**********
-HOST=127.0.0.1
+HOST=192.0.2.6
 PORT=8443
 DNS=atsd.example.org
 

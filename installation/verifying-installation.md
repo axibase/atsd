@@ -11,7 +11,7 @@ At the end of the installation process the script displays the ATSD IP address a
 Access the ATSD web interface on the secure port (8443 by default):
 
 ```txt
-https://10.102.0.116:8443
+https://192.0.2.116:8443
 ```
 
 Open your browser and navigate to port `8443` on the target server.

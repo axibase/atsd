@@ -56,7 +56,7 @@ Configure the Axibase Server to serve as an ATSD proxy so that widgets stored in
 
 Example:
 
-`http://reader:my_password@10.102.0.6:8088`
+`http://reader:my_password@192.0.2.6:8088`
 
 ![](./redirect_settings.png)
 
