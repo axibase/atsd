@@ -83,7 +83,7 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
 
 ## Check Webhook
 
-Make sure that the `getWebhookInfo` method does not return any SSL errors:
+Ensure that the `getWebhookInfo` method does not return any SSL errors:
 
 ```sh
 curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"

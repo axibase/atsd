@@ -53,7 +53,7 @@ Export the current properties, as well as operating system settings and metrics,
 Property | Default Value | Description
 ---|---|---
 `entity.countToUseFilter` | 2 | Applies to Data API queries with entity [wildcard](../api/data/README.md#wildcards) (*). If entity count is greater than `entity.countToUseFilter`, one scan with skips is used. Otherwise a separate scan is executed for each query.
-`hbase.compaction.list` | d properties message li tag forecast | List of HBase tables for which the major compaction will be triggered by the task triggered with `hbase.compaction.schedule`. The list of tables contains most ATSD-managed tables containing data.
+`hbase.compaction.list` | d properties message li tag forecast | List of HBase table names for which the major compaction is performed by the task triggered with `hbase.compaction.schedule`. The list contains ATSD data tables.
 **`hbase.compression.type`** | none | HBase-level compression. Supported options: none, `gz`, `lzo`, `snappy`, `lz4`, and `zstd`.
 **`hbase.compression.type.raw`** | none | HBase-level compression applied to raw time series data. Supported options are: none, `gz`, `lzo`, `snappy`, `lz4`, and `zstd`.
 **`hbase.table.prefix`** | `atsd_` | Prefix added to all HBase tables created by ATSD. |
@@ -95,7 +95,7 @@ Property | Default Value | Description
 **`jmx.enabled`** | No | JMX service status. |
 **`jmx.host`** | localhost | Hostname returned by the JMX service for **Data** connections.
 **`jmx.password.file`** | None | Absolute path to JMX password file. |
-**`jmx.port`** | `1099` | Port on which JMX service will be listening. |
+**`jmx.port`** | `1099` | Port on which JMX service is listening. |
 
 ### Network
 
@@ -162,5 +162,5 @@ Property | Default Value | Description
 `hostname`| `nurswgvml007` | Hostname of the ATSD server determined automatically by executing the `hostname` command.|
 `nmon.data.directory` | `tmp/atsd/nmon` | Absolute path to a directory where [`nmon`](../integration/nmon/README.md) agents are stored. |
 `search.index.path` | `tmp/atsd/lucene` | Absolute path to [Lucene](../rule-engine/property-search.md) index directory.|
-`security.letsencrypt.renew` | No | Enable daily check of [Let's Encrypt certificate](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html) and attempt to renew.
+`security.letsencrypt.renew` | No | Enable daily check of [`Let's Encrypt` certificate](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html) and attempt to renew.
 `server.url` | `https://nurswgvml007:8443` | Server URL specified in email notification links, by default set to `hostname`.|

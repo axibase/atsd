@@ -48,7 +48,7 @@ The commands can be associated with windows in a 1-to-1 fashion by enumerating a
 
 ![](./images/grouping-series-tags.png)
 
-If the **Group by Entity** option is unchecked, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
+If the **Group by Entity** option is cleared, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
 
 ### Window Length
 

@@ -62,7 +62,7 @@ Specify the absolute path including the file name.
 If the parent directory in the specified path does not exist, the directory is created automatically.
 The file extension must match the export format. For example, if the format is `EXCEL` the Output Path must end with `.xlsx`.
 
-The **Output Path** field can contain date and form [placeholders](#placeholders) so that files or their parent directories are grouped by day or month.
+The **Output Path** field can contain date and form [placeholders](#placeholders) to organize files or their parent directories by day or month.
 
 Example: `/opt/report/daily/${yyyy-MM-dd}.csv`
 
@@ -89,17 +89,17 @@ GROUP BY entity
   HAVING AVG(value) > 50
 ```
 
-In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with unchecked `Send Empty Report` option is sent only if at least one server with high CPU usage is found.
+In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with cleared `Send Empty Report` option is sent only if at least one server with high CPU usage is found.
 
 `Fail on No Data` causes an error if the query finds no matching records in the database which is indicative of a breakdown in data collection.
 
 ### Publishing
 
-To make a report available for download by end-users, enable the **Publish** section. The report contains rows that were prepared by the server when the task was last executed.
+To make a report available for download by end-users, enable the **Publish** section. The report contains rows prepared by the server when the task was last executed.
 
 ![File](./images/sql-scheduled-publish.png)
 
-To allow users to download the updated results each time they click on the link, enable the `Allow Refresh` option.
+To allow users to download the updated results each time they click the link, enable the `Allow Refresh` option.
 
 When enabled and if the url contains a `?refresh=true` parameter, the report is rebuilt by the database for each download request.
 

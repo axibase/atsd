@@ -21,7 +21,7 @@ The instructions apply only to ATSD installed in a Docker container. For host-ba
 ### Security
 
 * Java 8 installation requires root privileges.
-* Login into the container as root:
+* Log in to the container as root:
 
 ```bash
 docker exec -it -u root atsd bash
@@ -80,7 +80,7 @@ The number of records must match the results after the migration.
 
 [Install Oracle JDK 8](install-java-8.md#oracle-jdk) on the ATSD server as described. You need to be logged in as root to upgrade Java.
 
-Exit from the root session and re-login into the container as the `axibase` user.
+Exit from the root session and log in to the container as the `axibase` user.
 
 ```sh
 exit
@@ -242,7 +242,7 @@ Start HDFS.
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
 
-Check that HDFS daemons were successfully started.
+Check that HDFS daemons are running.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
@@ -553,7 +553,7 @@ Step 5. Migrate data to the `atsd_d` table.
 
 The `DataMigrator` job takes a long time to complete. Monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
-The Yarn interface is automatically terminated once the `DataMigrator` is finished.
+The Yarn interface is automatically stopped once the `DataMigrator` is finished.
 
 Step 6. Migration is now complete.
 

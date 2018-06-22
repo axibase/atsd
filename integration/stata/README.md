@@ -21,7 +21,7 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 
 ### Load Data using Import Wizard
 
-* Click on **File > Import > ODBC data sources**
+* Click **File > Import > ODBC data sources**
 * Select the ATSD connection in **ODBC data sources**
 * Select a table in the **Tables** list
 * Choose one or multiple columns from the `Columns` list
@@ -32,16 +32,16 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 ### Load Data with Stata Console
 
 * Type [`odbc list`](https://stata.com/manuals13/dodbc.pdf) in the Stata Console.
-* Click on the ATSD Data Source Name (DSN) that you have configured in the ODBC-JDBC Bridge
+* Click the ATSD Data Source Name (DSN) that you have configured in the ODBC-JDBC Bridge
 
 ![](./resources/metric_list.png)
 
-* Click on a table from the list to view the table description:
+* Click a table from the list to view the table description:
 
 ![](./resources/table_description.png)
 
-* Click on `load` to load the entire table as a dataset into memory.
-* Click on `query` to re-load the list of tables.
+* Click **load** to load the entire table as a dataset into memory.
+* Click **query** to re-load the list of tables.
 
 ## Load Data with SQL Query
 
@@ -76,7 +76,7 @@ Description of resultset:
 ### Export Data using Export Wizard
 
 * Follow the path **File > Export > ODBC** data source.
-* Click on the ATSD connection in `ODBC data sources`.
+* Click the ATSD connection in **ODBC data sources**.
 * Type the table name into **Tables** field. This is the metric name holding the exported data.
 * Choose the variables to export in the **Variables** drop-down list.
 * Type column names from the target metric according to variables selected in the previous step.

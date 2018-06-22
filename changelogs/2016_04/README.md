@@ -142,9 +142,9 @@ If the container was running in a prior iteration, and is not running in the nex
 
 ![Figure 9](./Images/Figure9.png)
 
-Additionally, some user interface improvements were recently made to the JDBC configuration page:
+Additional user interface improvements on the JDBC configuration page:
 
-* Tooltips were added to help describe form fields.
+* Tooltips added to help describe form fields.
 * The number of iterated rows now does not exceed 1000 in a test run, even if the JDBC driver does not support setting the `maxRows` parameter.
 * Unified number formatting: unnecessary zeroes in the fractional part of floating-point numbers are not shown.
 * Metric names are converted to lower-case in line with ATSD schema.

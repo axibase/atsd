@@ -9,7 +9,7 @@
 | 4130 | sql | Bug | Fixed an error causing the display of duplicate rows when aggregation was performed without grouping.|
 | 4112 | sql | Bug | Fixed [`ISNULL`](../../sql/README.md#isnull) function evaluation that ignored the first condition unless another condition was presented in the `WHERE` clause.|
 | 4105 | sql | Bug | Fixed an error causing missing rows in [sub-queries](../../sql/examples/filter-by-date.md#query-using-between-subquery) containing the `WHERE` condition.|
-| 4097 | UI | Bug | Fixed a concurrency problem causing multiple queries to be terminated with a single cancel request. |
+| 4097 | UI | Bug | Fixed a concurrency problem causing multiple queries to be stopped with a single cancel request. |
 
 ## Collector
 

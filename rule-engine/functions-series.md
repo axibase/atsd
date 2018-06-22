@@ -87,7 +87,7 @@ Argument `s` accepts a [statistical function](../api/data/aggregation.md) name s
 
 Argument `i` is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
 
-The function returns `Double.NaN` if no matching series are found or if no values were recorded within the selection interval.
+The function returns `Double.NaN` if no matching series are found or if no records are present within the selection interval.
 
 ### `db_statistic(string s, string i)`
 

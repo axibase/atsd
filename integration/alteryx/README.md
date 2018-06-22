@@ -15,7 +15,7 @@ basket. The weights are stored as fractions of 1000. The CPI is tracked from 201
 2017 and uses Year 2016 values as the baseline. Weight values are available only for
 year 2017.
 
-To load the data into ATSD, login into the database web interface and submit
+To load the data into ATSD, log in to the database web interface and submit
 these commands on the **Metrics > Data Entry** page.
 
 ![](./images/metrics_entry.png)
@@ -149,7 +149,7 @@ The workflow consists of the following steps (nodes):
 
 4. **Filter** tool. Follow the same procedure as above.
 
-5. **Join** tool. Join prices and weights by `tags.category` field. Deselect
+5. **Join** tool. Join prices and weights by `tags.category` field. Clear
    fields as shown on the image. Rename `value` fields for
    `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` to
    `price` and `weight` respectively, `inflation.cpi.categories.price.datetime` to `datetime` and `inflation.cpi.categories.price.tags.category` to `tags.category`.
@@ -201,6 +201,6 @@ Click **Run Workflow**.
 The data is retrieved from the database and processed in Designer by the workflow
 with the new series stored back in the database.
 
-Click on the **Browse** node to view the results.
+Click **Browse** to view the results.
 
    ![](./images/calc_results.png)

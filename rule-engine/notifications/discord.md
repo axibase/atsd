@@ -21,11 +21,11 @@ Install and configure the [Web Driver](web-driver.md) to send chart screenshots 
 
 Configure a new Discord server, if necessary.
 
-* Click on the plus icon in the left panel.
+* Click the **plus** icon in the left panel.
 
      ![](./images/create_server.png)
 
-* Click on **Create a Server**.
+* Click **Create a Server**.
 
      ![](./images/create_server2.png)
 
@@ -39,7 +39,7 @@ Configure a new Discord server, if necessary.
 
 ## Create Channel
 
-* Click on **Create Channel**.
+* Click **Create Channel**.
 
      ![](./images/create_discord_channel.png)
 
@@ -70,7 +70,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 ## Create Webhook in ATSD
 
 * Open the **Alerts > Outgoing Webhooks** page.
-* Click on an existing `DISCORD` template, or click **Create** and select the `DISCORD` type.
+* Click an existing `DISCORD` template, or click **Create** and select the `DISCORD` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/discord_1.png)

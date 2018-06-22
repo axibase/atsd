@@ -18,8 +18,8 @@ nmon AIX: [nmon_AIX.xml](https://axibase.com/public/nmon_AIX.xml)
 
 This is a one time task.
 
-* Navigate to **Portals > Configure** page.
-* At the bottom of the page click "Import" and select either the downloaded `nmon_AIX` or `nmon_Linux` portal. If you are collecting data from AIX systems, choose `nmon_AIX`. If you are collecting data from Linux systems, choose `nmon_Linux`.
+* Open the **Portals > Configure** page.
+* At the bottom of the page click **Import** and select either the downloaded `nmon_AIX` or `nmon_Linux` portal. If you are collecting data from AIX systems, choose `nmon_AIX`. If you are collecting data from Linux systems, choose `nmon_Linux`.
 * On the Portals page, keep a note of the unique portal ID that you just imported.
 
 ![](./resources/portals_import.png)
@@ -27,7 +27,7 @@ This is a one time task.
 ### Upload the nmon File
 
 * Navigate to **Data > nmon Parsers**
-* At the bottom of the page, click "Upload" to import your nmon file or archive of nmon files using the "default" nmon parser.
+* At the bottom of the page, click **Upload** to import your nmon file or archive of nmon files using the default nmon parser.
 * Keep a note of the hostname for which you have just uploaded the data.
 
 You can learn more about uploading nmon files into ATSD

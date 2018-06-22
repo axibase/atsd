@@ -14,7 +14,7 @@ Execute the below steps on the server running YARN Resource Manager on the targe
 
 ### Check Services
 
-* Login into Cloudera Manager.
+* Log in to Cloudera Manager.
 
 * Open **Hosts > All Hosts**, expand the **Roles**.
 

@@ -4,7 +4,7 @@
 
 [Let’s Encrypt](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
 
-Background information is available in the [Let's Encrypt Guide for Java Developers](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html).
+Background information is available in the [SSL Certificate Guide for Java Developers](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html).
 
 This instruction describes the process of installing and renewing SSL certificates in ATSD using [EFF Certbot](https://certbot.eff.org) agent.
 
@@ -44,7 +44,7 @@ sudo apt install certbot
 
 > The `HTTP-01` challenge verifies your full control of the server by sending it a request on port 80.
 
-Make sure that port `80` is open and not bound to any process on the server where certbot is running.
+Ensure that port `80` is open and not bound to any process on the server where certbot is running.
 
 ```sh
 sudo netstat -nao | grep ":80\s"
@@ -152,7 +152,7 @@ cert.pem  chain.pem  fullchain.pem  privkey.pem  README
 
 The user account is required to upload certificates into ATSD, both during the initial installation and as part of subsequent renewals.
 
-Login into ATSD web interface.
+Log in to ATSD web interface.
 
 Open the **Settings > Users** page and click **Create**.
 
@@ -195,7 +195,7 @@ The server responds with an HTTP `200 OK` status code if the installation is suc
 
 ### Create Deployment Script
 
-Since Let's Encrypt certificates are issued for a short period of time (90 days), design a fully automated procedure to replace expiring certificates.
+Since `Let's Encrypt` certificates are issued for a short period of time (90 days), design a fully automated procedure to replace expiring certificates.
 
 Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. This script is invoked by certbot.
 

@@ -96,6 +96,6 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](./images/azure_sb_event_alert_open.png)
 
-Check the Azure Event Hub to make sure the new messages were received:
+Check the Azure Event Hub to make sure the new messages arrived.
 
 ![](./images/azure_sb_event_test.png)

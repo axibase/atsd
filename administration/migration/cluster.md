@@ -215,7 +215,7 @@ This path must match the `coprocessors.jar` setting specified in the `/opt/atsd/
 
 ### Remove Old Coprocessors
 
-ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager.
+ATSD coprocessors added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager.
 
 Remove old jar files from the local file system on each HBase Region Server.
 

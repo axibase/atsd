@@ -31,7 +31,7 @@ Analyze | Apply statistical functions to the dataset.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the **Commands** tab.
-3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
 
@@ -109,7 +109,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 * Export data from ATSD into CSV files as described in the [Exporting Data into CSV Files](#exporting-data-into-csv-files) section at the end of this article.
 * Open **File > Import Data > CSV Data...**.
-* Select the desired CSV files and click Open to import the `prices.sav` and `weights.sav` files.
+* Select the desired CSV files and click **Open** to import the `prices.sav` and `weights.sav` files.
 
 ![](./images/import_dataset.png)
 
@@ -204,7 +204,7 @@ SPSS provides two alternatives to aggregate data by period.
 
 Create a new metric in ATSD to store new series calculated in SPSS.
 
-* Login into ATSD, open **Metrics** > **Data entry** page and send a `metric` command:
+* Log in to ATSD, open **Metrics** > **Data entry** page and send a `metric` command.
 
 ```ls
 metric m:cpi_price
@@ -277,7 +277,7 @@ SAVE TRANSLATE /TYPE=ODBC
 
 ![](./images/atsd_export_14.png)
 
-* Right click on the script window and select **Run All** to export the data into ATSD.
+* Right-click the script window and select **Run All** to export the data into ATSD.
 
 ![](./images/atsd_export_15.png)
 

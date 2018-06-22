@@ -22,7 +22,7 @@ Click **Enabled** to subscribe to notifications initiated by `OPEN`, `REPEAT`, a
 
 For the `REPEAT` status, adjust the **Repeat Interval** to the desired notification frequency, for example, every **6 hours** or every **10 events**.
 
-If necessary, uncheck the **Same as On Open** setting to adjust message content based on window status.
+If necessary, cleat the **Same as On Open** setting to adjust message content based on window status.
 
 ## Settings
 

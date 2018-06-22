@@ -11,11 +11,11 @@
 
 ## Create Portal
 
-* Click on the **Portals** link in the top menu.
+* Open the **Portals** tab in the top menu.
 
   ![](./resources/creating-and-assigning-portals_1.png)
 
-* Click on **Create**.
+* Click **Create**.
 
   ![](./resources/creating-and-assigning-portals_2.png)
 
@@ -96,7 +96,7 @@ Review the following guides describing the basic syntax:
 
 The portals are listed on the **Portals** page located at `https://atsd_hostname:8443/portals/list`.
 
-To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click **Configure**.
+To access the **Portals** page via ATSD web interface click **Portals** drop-down at the right upper corner and click **Configure**.
 
 ![](./resources/creating-and-assigning-portals_3.png)
 
@@ -170,7 +170,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 ![](./resources/creating-and-assigning-portals_7.png)
 
 * Open the [Portals Page](#portals-page).
-* Click on the **assign** icon for the desired template portal.
+* Click the **assign** icon for the desired template portal.
 
     ![](./resources/creating-and-assigning-portals_8.png)
 
@@ -181,10 +181,10 @@ Alternatively, assign an entity group to the template portal so that the link to
 > Note an entity group can be assigned to the portal from portal editor:
 > ![](./resources/creating-and-assigning-portals_10.png)
 
-* Click on **Save** at the bottom of the page.
+* Click **Save** at the bottom of the page.
 * Open the **Entities** page.
 * Select an entity group in the drop-down filter.
-* Click on the _portals_ icon for an entity and verify that the portal was assigned.
+* Click the **portals** icon for an entity and verify that the portal was assigned.
 
     ![](./resources/creating-and-assigning-portals_11.png)
 

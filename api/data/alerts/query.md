@@ -23,7 +23,7 @@ An array of query objects containing the following fields:
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `rules`       | array | Array of rules which produced the alerts.        |
-| `metrics`     | array | Array of metric names for which the alerts were created. |
+| `metrics`     | array | Array of metric names to filter alerts. |
 | `severities`  | array | Array of [severity names](../../../api/data/severity.md)   |
 | `minSeverity` |  string   | Minimal severity [name](../../../api/data/severity.md) filter.  |
 | `acknowledged` |  boolean   | Acknowledgement status. If set, filters alerts for the specified status. |

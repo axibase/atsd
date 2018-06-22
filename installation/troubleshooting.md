@@ -16,7 +16,7 @@ ATSD is listening on the following ports by default:
 
 In case you are not able to connect to an ATSD network service, make sure that: a) the service is listening, and b) the firewall allows access to the target ports.
 
-* Login into the ATSD server
+* Log in to ATSD server
 * Search netstat output for TCP/UDP sockets that are listening on the target port, for example 8081
 
 ```sh

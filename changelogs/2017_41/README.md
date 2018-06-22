@@ -10,7 +10,7 @@
 | [4627](#issue-4627) | entity_views | Feature | Implement multi-entity portal displayed for entities matched with search. |
 | 4623 | storage | Bug | Fix error when region split is initiated in the UI. |
 | 4622 | client | Bug | Resolve python installation errors due to broken pandas module. |
-| 4617 | storage | Bug | Not all records were deleted for metrics with enabled retention policy. |
+| 4617 | storage | Bug | Not all records deleted for metrics with enabled retention policy. |
 | 4608 | client | Bug | Python client upgrade failure. |
 | [4605](#issue-4605)  | api-rest | Feature | Add support for `SLOPE` and `INTERCEPT` aggregators in series query. |
 | 4598 | security | Feature | Enable auto-login on server restart if **Remember Me** option is checked on login. |

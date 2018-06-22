@@ -9,13 +9,13 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 
 ## Enable the `table` Tag in the Metrics List
 
-* Login into ATSD.
+* Log in to ATSD.
 * Open the **Settings > Server Properties** page.
 * Add the `table` tag to the `metric.display.tags` property.
 
 ![Server Properties](./metric-table-tags.png)
 
-* Click Apply Changes and open the Metrics tab to verify that the `table` tag is visible in the Metrics list.
+* Click **Apply Changes** and open the Metrics tab to verify that the `table` tag is visible in the Metrics list.
 
 ![Metrics List: table tag](./metrics-table-tag.png)
 
@@ -27,7 +27,7 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 ![Metric List: filter](./metric-list-filter.png)
 
 * Click checkbox to select filtered metrics.
-* Make sure that grouped metrics have the same tags. For example, group `df.disk_used`, `df.disk_used_percent`, and other `df.*` metrics into one table since their shared tags are `file_system` and `mount_point`.
+* Ensure that grouped metrics have the same tags. For example, group `df.disk_used`, `df.disk_used_percent`, and other `df.*` metrics into one table since their shared tags are `file_system` and `mount_point`.
 * Enter a name that describes this group of selected metrics and click [Apply].
 
 ![Metric List: apply tag](./metric-table-tag-apply.png)
@@ -42,8 +42,8 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 
 ## Discover Metric Tables in the Axibase Server
 
-* Login into the Axibase Server.
-* Open the Admin:Warehouse Tools page.
+* Log in to the Axibase Server.
+* Open the **Admin > Warehouse Tools** page.
 * Select the **Reload Schema Cache** action.
 * Select **View Schema Cache** to ensure that new metric groups are present as tables in the reloaded schema.
 

@@ -43,7 +43,7 @@ If necessary, follow the prompts to create a new [group](https://telegram.org/fa
 
 ### Add Bot to Group
 
-* Click on **Group Settings > Add Members**.
+* Click **Group Settings > Add Members**.
 
    ![](./images/telegram_3.png)
 
@@ -51,7 +51,7 @@ If necessary, follow the prompts to create a new [group](https://telegram.org/fa
 
    ![](./images/telegram_4.png)
 
-* Click on the bot name and click on **Invite**.
+* Click the bot name and click **Invite**.
 
 To add bot to private/public channel see this [instruction](telegram-add-bot-to-channel.md).
 
@@ -75,7 +75,7 @@ There are two options to obtain chat id:
 ## Configure Webhook in ATSD
 
 * Open **Alerts > Outgoing Webhooks** page.
-* Click on an existing `TELEGRAM` template, or click **Create** and select the `TELEGRAM` type.
+* Click an existing `TELEGRAM` template, or click **Create** and select the `TELEGRAM` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/telegram_2.png)

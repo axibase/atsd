@@ -78,29 +78,29 @@ kill 31326
 
 ## Verify the connectivity from a Windows machine (optional step)
 
-### Load `id_rsa_atsdreadonly` into the `puttygen` program
+Load `id_rsa_atsdreadonly` into the `puttygen` program
 
 ![](./resources/ssh-tunnel-1.png)
 
-### Click on the [Save private key] button and save the file in `*.ppk` format to the local disk
+Click **Save private key** button and save the file in `*.ppk` format to the local disk
 
-### Open the `putty` client and connect it to the ATSD server under atsdreadonly with the `ppk` file
+Open the `putty` client and connect it to the ATSD server under `atsdreadonly` with the `ppk` file
 
 ![](./resources/ssh-tunnel-2.png)
 
-### Copy private key to remote systems
+Copy private key to remote systems
 
 Distribute the generated private key `/opt/atsd/id_rsa_atsdreadonly` to remote systems collecting `nmon` data.
 
-### Disable login by ssh
+Disable login by ssh
 
-This step disables the remote shell for atsdreadonly; however, it retains the tunneling capability.
+This step disables the remote shell for `atsdreadonly`, however, it retains the tunneling capability.
 
 ```sh
 sudo nano /etc/passwd
 ```
 
-### Search for nmonuser entry and replace the shell command as follows
+Search for `nmonuser` entry and replace the shell command as follows
 
 ```sh
 atsdreadonly:x:1004:1004:,,,:/home/atsdreadonly:/bin/bash
@@ -110,10 +110,10 @@ atsdreadonly:x:1004:1004:,,,:/home/atsdreadonly:/bin/bash
 atsdreadonly:x:1004:1004:,,,:/home/atsdreadonly:/bin/false
 ```
 
-### Verify that you are no longer able to login into the ATSD server with nmonuser credentials
+Verify that you are no longer able to log in to ATSD server with `nmonuser` credentials
 
 ```sh
 ssh atsdreadonly@atsd-tst -i /opt/nmon/id_rsa_atsdreadonly -p 22
 ```
 
-### If the atsdreadonly shell environment is not available, then the remote login was successfully disabled
+If the atsdreadonly shell environment is not available, then the remote login was successfully disabled

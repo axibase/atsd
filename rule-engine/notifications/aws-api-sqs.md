@@ -105,6 +105,6 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](./images/aws_api_sqs_alert_open.png)
 
-Check the Amazon SQS queue to make sure the new messages were received:
+Check the Amazon SQS queue to make sure the new messages arrived.
 
 ![](./images/aws_api_sqs_test.png)

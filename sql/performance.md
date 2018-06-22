@@ -44,13 +44,13 @@ Query Detail Fields:
 
 A running query can be cancelled at any time, for example if its is execution time is longer than expected.
 
-When a query is cancelled results are not returned to the client and the query is terminated with an error.
+When a query is cancelled results are not returned to the client and the query is stopped with an error.
 
-A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId=myid` url and referencing the user-defined handle with the `queryId` parameter.
+A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` url and referencing the user-defined handle with the `{query-id}` parameter.
 
 ## Query Logging
 
-Queries executed by the database are recorded in the main application log `atsd.log` at the INFO level.
+Queries executed by the database are recorded in the main application log `atsd.log` at the `INFO` level.
 
 Each query is assigned a unique identifier for correlating starting and closing events.
 

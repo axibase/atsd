@@ -63,7 +63,7 @@ docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/s
 
 The command must complete within the timeout value specified in **Settings > Server Properties > system.commands.timeout.seconds**. The default timeout is 15 seconds.
 
-If the command times out, the script process is terminated with a `SIGTERM` flag and the following text is added to the output:
+If the command times out, the script process is stopped with a `SIGTERM` flag and the following text is added to the output:
 
 ```txt
 Script terminated on timeout: {current timeout value}
@@ -79,7 +79,7 @@ Since the working directory path may change, use the absolute path in command ar
 
 Commands are executed by the `axibase` user.
 
-Make sure that the `axibase` user has permissions to execute the command and that the script has the `+x` execution bit.
+Ensure that the `axibase` user has permissions to execute the command and that the script has the `+x` execution bit.
 
 To complete disable execution of system commands in the rule engine, set `system.commands.enabled` setting to `No` on **Settings > Server Properties** page.
 

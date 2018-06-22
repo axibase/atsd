@@ -1,6 +1,6 @@
 # Manual Update
 
-## Login into ATSD Server
+## Log in to ATSD Server
 
 ```sh
 su axibase
@@ -65,7 +65,7 @@ mv atsd* /opt/atsd/atsd/bin/
 
 It can take up to 5 minutes for the database to initialize.
 
-## Login into ATSD user interface
+## Log in to ATSD web interface
 
 ```sh
 https://atsd_hostname:8443/

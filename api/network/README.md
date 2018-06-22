@@ -160,7 +160,7 @@ unknown_command e:station_1 m:temperature=32.2
 Connection closed by foreign host.
 ```
 
-If the connection is terminated due to client error, all valid commands sent prior to the first invalid command are stored.
+If the connection is closed due to client error, all valid commands sent prior to the first invalid command are stored.
 
 Because of the delay between closing the channel on client error and the connection shutdown, the database can store valid commands present in the network buffer, even if they are received after the discarded command.
 
@@ -191,7 +191,7 @@ echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" | nc -u -w 1 ats
 printf 'series e:station_3 m:temperature=32.2 m:humidity=81.4' | nc -u -w 1 atsd_host 8082
 ```
 
-Unlike TCP, the last command in a multi-command UDP datagram must be terminated with the line feed character.
+Unlike TCP, the last command in a multi-command UDP datagram must end with the line feed character.
 
 ```bash
 echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperature=32.1 m:humidity=82.4\n" | nc -u -w 1 atsd_host 8082

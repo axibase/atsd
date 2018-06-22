@@ -28,7 +28,7 @@ wget https://axibase.com/public/phantomjs-2.1.1-linux-x86_64.tar.gz
 tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
 ```
 
-* Make sure that `axibase` user is allowed to execute the binary
+* Ensure that `axibase` user is allowed to execute the binary
 
 ```sh
 ls -all /home/axibase | grep phantomjs-2.1.1-linux-x86_64

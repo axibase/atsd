@@ -29,7 +29,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install ODBC-JDBC Bridge
 
 * Install [ODBC-JDBC gateway](../odbc/README.md)
-* Make sure that the **Strip Escape** checkbox is enabled and **Strip Quote** is **disabled**
+* Ensure that the **Strip Escape** checkbox is enabled and **Strip Quote** is **disabled**
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
@@ -46,7 +46,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 ## Review Tables
 
-* Enter a keyword and click **Search**. For this exercise, search for the `bi.ex_net1.m` table:
+* Enter a keyword and click **Search**. For this exercise, search for the `bi.ex_net1.m` table.
 
 ![](./images/search.png)
 
@@ -69,7 +69,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 Inspect a subset of the visualized data:
 
 * Select some data points in the view
-* Right click and choose **View Data**
+* Right-click and choose **View Data**
 
 ![](./images/summary1.png)
 

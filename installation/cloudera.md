@@ -157,7 +157,7 @@ Otherwise, you need to allow the newly created `axibase` principal to access HBa
 
 #### Option 2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal
 
-Login into the HMaster server and locate the `hbase.keytab` file.
+Log in to the HMaster server and locate the `hbase.keytab` file.
 
 ```sh
 find / -name "hbase.keytab" | xargs ls -la
@@ -219,7 +219,7 @@ axibase.com  = HADOOP.EXAMPLE.ORG
 apps.example.org = HADOOP.EXAMPLE.ORG
 ```
 
-Make sure that the hostname specified in the `kdc` and `admin_server` properties above is resolvable on the ATSD server. Add it to `/etc/hosts` if necessary.
+Ensure that the hostname specified in the `kdc` and `admin_server` properties above is resolvable on the ATSD server. Add it to `/etc/hosts` if necessary.
 
 ### Kerberos Settings
 

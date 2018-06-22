@@ -46,7 +46,7 @@ scriptOut('check_service.sh', [])
 
 The script must complete within the timeout value specified in **Settings > Server Properties** `system.commands.timeout.seconds`. The default timeout is 15 seconds.
 
-If the script times out, its process is terminated with `SIGTERM` flag and the following text is appended to the output:
+If the script times out, its process is stopped with `SIGTERM` flag and the following text is appended to the output:
 
 ```txt
 Script terminated on timeout: {current timeout value}

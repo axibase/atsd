@@ -66,7 +66,7 @@ series s:${(nowSeconds - i * 600)?c} e:br-1905 m:temperature=${(60 - 2*i)?c}
 
 ## Graph Data
 
-Click on the chart icon to view the default chart for the current `temperature` series.
+Click the chart icon to view the default chart for the current `temperature` series.
 
 ![](./resources/series-inserted-chart.png)
 

@@ -74,7 +74,7 @@ WHERE datetime >= '2017-06-15T00:00:00Z'    -- WHERE clause
   LIMIT 1                          -- other clauses
 ```
 
-The statement can be terminated with a semicolon character.
+The statement can end with a semicolon character.
 
 ### Processing Sequence
 

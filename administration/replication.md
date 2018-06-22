@@ -152,7 +152,7 @@ Execute the `add_peer` command:
 echo "add_peer '1', \"atsd_slave:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-Make sure that the peer has been added:
+Ensure that the peer has been added:
 
 ```sh
 echo "list_peers" | /opt/atsd/hbase/bin/hbase shell
@@ -274,7 +274,7 @@ fields as specified below:
 
 `Expression` – true
 
-Click Save.
+Click **Save**.
 
 ![](./images/rule_editor.png "rule_editor")
 

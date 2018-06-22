@@ -26,7 +26,7 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 ![](./resources/view_certificates.png)
 
-* Select the **Servers** tab and click on the required AD server certificate to export it.
+* Select the **Servers** tab and click the required AD server certificate to export it.
 
 ![](./resources/cert-export.png)
 

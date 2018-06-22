@@ -37,7 +37,7 @@ Issue| Category    | Type    | Subject
 4985 | rule engine | Bug | Variables containing lower-cased [SQL alias](../../sql/README.md#aliases) expressions are filtered out after saving.
 4981 | sql | Feature | Implement `HTML` [format](../../sql/scheduled-sql.md#formats) in scheduled SQL reports.
 4976 | data-in | Support | [tcollector](../../integration/tcollector/README.md#tcollector) installation update.
-4973 | rule editor | Bug | Append `[Disabled]` suffix to [web configuration](../../rule-engine/notifications/README.md) name if it had been disabled.
+4973 | rule editor | Bug | Append `[Disabled]` suffix to [webhook](../../rule-engine/notifications/README.md) name if it is disabled.
 4972 | export | Bug | Export Query: Add support for date placeholders in [`Email Subject`](../../sql/scheduled-sql.md#email-delivery) field.
 4971 | entity_views | Bug | Apply metrics column [formatting](../../configuration/entity_views.md#formatting) if **Last Insert Date** for the specified metric is not available.
 4970 | UI | Bug | [Search](../../search) page expression causes browser to freeze.

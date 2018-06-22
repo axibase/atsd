@@ -24,7 +24,7 @@ To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the **Commands** tab.
-3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
 
@@ -102,7 +102,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 `SQL Query Designer` is used for visual building of a Query:
 
-* Double click on the table that you want to include to Query. The table is shown in right pane of `SQL Query Designer`.
+* Double-click the table that you want to include to Query. The table is shown in right pane of **SQL Query Designer**.
 * Select fields inside the table (these fields are included in `SELECT` clause of a Query)
 * Optionally add `WHERE`, `GROUP BY` and `HAVING` or `ORDER BY`
 * Click **OK** so your Query is built and shown in text field
@@ -113,8 +113,8 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 * Select **Data** tab in the properties pane on the right
 * Select **Add Data Sources** button in the toolbar and choose `JDBC`
-* Click on **ATSD Connection**
-* Click on **Add Query** in the **Available Queries** list
+* Click **ATSD Connection**
+* Click **Add Query** in the **Available Queries** list
 
 ![](./resources/add_query.png)
 
@@ -126,7 +126,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 * Build a Query using the `SQL Query Designer`
 
 * Click **OK**. The list of queries is added to the **Data** pane.
-* Right-click on the query and choose **Select Query**. The tree view displays query results and fields.
+* Right-click the query and choose **Select Query**. The tree view displays query results and fields.
 
 ![](./resources/data_pane_updated.png)
 

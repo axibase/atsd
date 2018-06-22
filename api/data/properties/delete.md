@@ -8,7 +8,7 @@ Deletes property records that match specified filters.
 
 Due to the specifics of the underlying storage technology, the records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a so called `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows that were recorded before the `DELETE` marker.
+Instead, the records are masked with a so called `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows recorded with an earlier timestamp.
 
 The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called `major compaction`.
 

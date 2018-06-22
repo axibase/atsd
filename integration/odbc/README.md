@@ -53,11 +53,11 @@ A license manager window appears after exiting from the installation wizard. If 
 
   ![](./images/easysoft_activate_1.png)
 
-* Choose **Trial**, click Next
+* Choose **Trial**, click **Next**
 
   ![](./images/easysoft_activate_2.png)
 
-* Choose **ODBC JDBC Gateway**, click Next
+* Choose **ODBC JDBC Gateway**, click **Next**
 
   ![](./images/easysoft_activate_3.png)
 

@@ -47,7 +47,7 @@ The webhook can be configured to send a JSON document to the Circle CI endpoint 
 }
 ```
 
-Make sure that you enclose fields with double quotes, if necessary.
+Ensure that you enclose fields with double quotes, if necessary.
 
 Leave the `Body` field empty for non-parameterized projects.
 

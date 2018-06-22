@@ -148,7 +148,7 @@ Examples:
 
 Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with versioning mode enabled.
 
-Click on timestamp for the selected record to open the **Data Entry** page.
+Click timestamp for the selected record to open the **Data Entry** page.
 
 ![](./resources/9.png)
 

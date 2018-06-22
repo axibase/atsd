@@ -6,7 +6,7 @@ The client is a bash script that parses and validates input parameters and execu
 
 ## Permissions
 
-Make sure that `sql.sh` has execution permissions.
+Ensure that `sql.sh` has execution permissions.
 
 ```bash
 chmod +x sql.sh

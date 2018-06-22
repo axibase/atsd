@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4419 | sql | Bug | IndexOutOfBoundsException fixed in queries that referred to a non-existent metric. |
-| 4417 | sql | Bug | Fixed a NullPointerException if all columns were selected for a new metric without any samples. |
+| 4417 | sql | Bug | Fixed a NullPointerException if all columns selected for a new metric without any samples. |
 | [4416](#issue-4416) | api-network | Feature | `Invalid Action (a)` string field added to the [`metric`](../../api/network/metric.md#metric-command) command
 | [4403](#issue-4403) | sql | Bug | Added syntax validation for the [`IN`](../../sql/README.md#where-clause) clause to require enclosing brackets. |
 | [4377](#issue-4377) | sql | Feature | Add support for selecting all columns in [inline views](../../sql/README.md#inline-views). |

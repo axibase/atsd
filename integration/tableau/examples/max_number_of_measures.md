@@ -13,10 +13,10 @@ Build a report showing the number of filings per day of month.
 * Drag-and-drop the table to Canvas area
 * Click **Sheet 1**
 * Click **OK** to acknowledge the warning about limitations
-* Drag-and-drop `Datetime` to the Marks Card, right click on the _Year > Day_, replace _Detail_ with `Color`
-* Drag-and-drop `Datetime` to the Marks Card, right click on the _Year > Day_, replace _Detail_ with _Label_
-* Change _Automatic_ to _Pie_ in drop-down at Marks Card
-* Drag-and-drop `Value` to the Marks Card, change aggregation from **SUM** to **COUNT**, replace _Detail_ with _Angle_
+* Drag-and-drop `Datetime` to the Marks Card, right-click **Year > Day**, replace `Detail` with `Color`
+* Drag-and-drop `Datetime` to the Marks Card, right-click **Year > Day**, replace `Detail` with `Label`
+* Change `Automatic` to `Pie` in drop-down on the Marks Card
+* Drag-and-drop `Value` to the Marks Card, change aggregation from **SUM** to **COUNT**, replace `Detail` with `Angle`
 
 ## Results
 

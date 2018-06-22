@@ -22,7 +22,7 @@ When accessing the ATSD web interface for the first time, you are asked to setup
 
 ## Portals
 
-Click on Portals tab in the ATSD web interface. A pre-defined **ATSD**
+Click **Portals** tab in the ATSD web interface. A pre-defined **ATSD**
 portal displays application, operating system, and usage metrics for the database itself
 and the server where the database is running.
 

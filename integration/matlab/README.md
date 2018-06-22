@@ -20,7 +20,7 @@ To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the **Commands** tab.
-3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
 
@@ -64,7 +64,7 @@ Example:
 * Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
 * Specify a JDBC URL, for example `jdbc:atsd://atsd_hostname:8443;expandTags=true` [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
 * Click **Test**, specify ATSD login and password
-* If connection is successful click **Save** and close _JDBC Data Source Configuration_ window
+* If connection is successful click **Save** and close **JDBC Data Source Configuration** window
 
 Example:
 

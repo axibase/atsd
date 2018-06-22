@@ -105,6 +105,6 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](./images/gcp_ps_message_alert_open.png)
 
-Check the Google Cloud Pub/Sub topic statistics to make sure the new messages were received:
+Check the Google Cloud Pub/Sub topic statistics to make sure the new messages arrived.
 
 ![](./images/gcp_ps_message_test.png)

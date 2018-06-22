@@ -235,7 +235,7 @@ Start HDFS.
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
 
-Check that HDFS daemons were successfully started.
+Check that HDFS daemons are running.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
@@ -538,7 +538,7 @@ Step 5. Migrate data to the `atsd_d` table.
 
 The `DataMigrator` job takes a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
-The Yarn interface is automatically terminated once the `DataMigrator` is finished.
+The Yarn interface is automatically stopped once the `DataMigrator` is finished.
 
 Step 6. Migration is now complete.
 

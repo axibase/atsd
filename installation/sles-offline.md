@@ -22,7 +22,7 @@ Check that required dependencies are present on the target server.
 sudo zypper search -i java-1_8_0-openjdk-devel which net-tools iproute2
 ```
 
-Verify that all of these dependencies were found.
+Verify that the dependencies are present.
 
 ```txt
 S  | Name                     | Summary                                                     | Type

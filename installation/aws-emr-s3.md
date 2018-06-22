@@ -23,7 +23,7 @@ The S3 bucket must be created prior to installation.  The bucket, named `atsd` i
 aws s3 mb s3://atsd
 ```
 
-The HBase root directory is created if necessary when the cluster is started for the first time. The directory is not deleted when the cluster is stopped or terminated.
+The HBase root directory is created if necessary when the cluster is started for the first time. The directory is not deleted when the cluster is stopped.
 
 Check the contents of the bucket prior to launching the cluster.
 
@@ -131,7 +131,7 @@ The checks are enabled by adding the `Consistent` setting to the launch command.
 --emrfs Consistent=true,Args=[fs.s3.consistent.metadata.tableName=EmrFSMetadata]   \
 ```
 
-Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is terminated. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
+Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is stopped. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
 
 ![](./images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
 
@@ -300,7 +300,7 @@ Login to the ATSD web interface on `https://atsd_hostname:8443`. Modify the URL 
 
 ### Port Access
 
-Make sure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports.
+Ensure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports.
 
 If necessary, add security group rules to open inbound access to ports `8081`, `8082/udp`, `8084`, `8088`, `8443` or `9081`, `9082/udp`, `9084`, `9088`, `9443` respectively.
 
