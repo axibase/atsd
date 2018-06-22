@@ -23,11 +23,11 @@
 | [3583](#issue-3583)      | security        | Feature  | Added 'Create Accounts' integration feature to LDAP. |
 | 3582      | security        | Feature  | Enabled copying user account attributes from ATSD into LDAP. |
 | 3570      | api-network     | Bug      | Corrected failure to insert metric command for a re-created metric.   |
-| 3560      | api-network     | Feature  | Added new field 'Units' to the Metric class. |
+| 3560      | api-network     | Feature  | Added new field **Units** to the **Metric** class. |
 | [3470](#issue-3470)      | sql             | Feature  | Added support for `text` column in the `SELECT` expression and the `WHERE` clause. |
 | [3465](#issue-3465)      | api-rest        | Feature  | Added `addMeta` series and property methods in Data API. |
 | [3438](#issue-3438)      | security        | Feature  | Modified Enterprise Edition to support LDAP authentication. |
-| [3309](#issue-3309)      | grafana        | Support  | Implemented ATSD storage driver for Grafana 3.x. |
+| [3309](#issue-3309)      | grafana        | Support  | Implemented ATSD storage driver for Grafana `3.x`. |
 
 ## Collector
 

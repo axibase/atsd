@@ -136,7 +136,7 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`message_writes_per_second` | Number of messages written. |
 |`metric_append_concat_per_second` | Number of series samples received with option `append = true` where annotation was concatenated.|
 |`metric_append_per_second` | Number of series samples received with option `append = true`.|
-|`metric_reads_per_second` | Number of HBase rows read from the 'd' table. Each row may container multiple samples. |
+|`metric_reads_per_second` | Number of HBase rows read from `d` table. Each row may container multiple samples. |
 |`metric_received_per_second` | Number of series samples received. |
 |`metric_writes_per_second` | Number of series samples written. |
 |`network_command_ignored_per_second` | Number ignored commands.|

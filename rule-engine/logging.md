@@ -16,7 +16,7 @@ Loggers can be added and modified by administrators on the **Settings > Configur
 
 ![](./images/logging-loggers.png)
 
-By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging of `REPEAT` changes, set Repeat Interval from `None` to a valid interval on the 'Alerts' tab in the Rule Editor.
+By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging of `REPEAT` changes, set Repeat Interval from `None` to a valid interval on the **Alerts** tab in the Rule Editor.
 
 ## Default File Logger
 

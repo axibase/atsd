@@ -2,7 +2,7 @@
 
 ## Description
 
-If the tag is not available for the given entity, the value is set to empty string ''.
+If the tag is not available for the given entity, the value is set to empty string `''`.
 
 This can be used to search for entities without the specified tag or to check for the presence of the tag.
 

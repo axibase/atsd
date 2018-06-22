@@ -6,7 +6,7 @@ Use these scripts to stop, start, and update the database.
 
 ## Permissions
 
-If logged in as root or another user, change user to 'axibase' to avoid file permission issues.
+If logged in as root or another user, change user to `axibase` to avoid file permission issues.
 
 ```sh
 su axibase
@@ -243,7 +243,7 @@ nurswgvml007 atsdService: * [ATSD] DataNode is not running.
 
 ATSD uses `/tmp/atsd` directory to store temporary files. If this directory is owned by root, ATSD cannot function properly.
 
-* Solution: Stop all ATSD services. Grant ownership to `/tmp/atsd` directory to the 'axibase' user.
+* Solution: Stop all ATSD services. Grant ownership to `/tmp/atsd` directory to the `axibase` user.
 
 ```sh
 chown -R axibase:axibase /tmp/atsd
@@ -253,7 +253,7 @@ chown -R axibase:axibase /tmp/atsd
 
 ATSD uses the `/opt/atsd` directory to store log files, backup files, and other files. If this directory is owned by root, ATSD cannot function properly.
 
-* Solution: Stop all ATSD services. Grant ownership to `/opt/atsd` directory to the 'axibase' user.
+* Solution: Stop all ATSD services. Grant ownership to `/opt/atsd` directory to the `axibase` user.
 
 ```sh
 chown -R axibase:axibase /opt/atsd

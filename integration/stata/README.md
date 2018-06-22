@@ -23,7 +23,7 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 
 * Click on **File > Import > ODBC data sources**
 * Select the ATSD connection in **ODBC data sources**
-* Select a table in the 'Tables' list
+* Select a table in the **Tables** list
 * Choose one or multiple columns from the `Columns` list
 * Click **OK** to import rows containing data in these columns into Stata memory
 

@@ -140,7 +140,7 @@ This setting compares the actual [average value](../rule-engine/functions-statis
 
 ### Ad hoc Export
 
-Set Data Type setting to 'Forecast', optionally specify the forecast name:
+Set **Data Type** setting to **Forecast**, optionally specify the forecast name:
 
 ![](./resources/forecasts_15.png)
 

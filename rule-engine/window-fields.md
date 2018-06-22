@@ -44,7 +44,7 @@ Each window maintains a set of continuously updated fields that can be included 
 | `message` | string | Message text |
 
 > The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
-> Alert `severity` value is inherited from message `severity` when the Logging: Severity is set to 'Undefined'.
+> Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
 
 ## Properties Fields
 
@@ -80,7 +80,7 @@ Each window maintains a set of continuously updated fields that can be included 
 
 ## Details Tables
 
-The built-in 'details' table contains entity name, entity label, entity tags, command tags, and user-defined variables. This data structure can be conveniently accessed to print out full alert information.
+The built-in `details` table contains entity name, entity label, entity tags, command tags, and user-defined variables. This data structure can be conveniently accessed to print out full alert information.
 
 * [`detailsTable('markdown')`](details-table.md#markdown)
 * [`detailsTable('ascii')`](details-table.md#ascii)

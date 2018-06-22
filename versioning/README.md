@@ -12,7 +12,7 @@ Once enabled, the database tracks changes made to stored values with the followi
 | --- | --- |
 |  Version Time  |  Timestamp when insert command was received. Set automatically by ATSD server with millisecond precision.  |
 |  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
-|  Version Status  |  User-defined field to classify change events. <br> Set to 'invalid' for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
+|  Version Status  |  User-defined field to classify change events. <br> Set to `invalid` for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
 > The ability to specify custom fields with server-side business logic such as change locking, is under development.
 
@@ -20,11 +20,11 @@ Once enabled, the database tracks changes made to stored values with the followi
 
 Versioning is **disabled** by default.
 
-It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to 'Yes' in the multi-record editor, or by enabling **Versioning** on the Metric Editor page:
+It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to **Yes** in the multi-record editor, or by enabling **Versioning** on the Metric Editor page:
 
 ![](./resources/1.png)
 
-In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to initialize the _Version Status_ field with an 'invalid' value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
+In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to initialize the **Version Status** field with an `invalid` value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
 
 ## Inserting Version Fields
 
@@ -33,7 +33,7 @@ To insert versioning fields along with the modified value, use the reserved tags
 * `$version_source`
 * `$version_status`
 
-These tags are converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger.
+These tags are converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides `invalid` value set by `SET_VERSION_STATUS` trigger.
 
 Options to insert versioned series:
 

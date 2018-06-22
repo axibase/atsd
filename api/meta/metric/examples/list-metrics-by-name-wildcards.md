@@ -2,14 +2,14 @@
 
 The `expression` parameter supports the following wildcards:
 
-* `*` - matches any characters
-* `?` - matches any one character
+* `*`: matches any characters
+* `?`: matches any one character
 
-The wildcards are evaluated when the operator is 'LIKE'.
+The wildcards are evaluated when the operator is `LIKE`.
 
 ## Expression Examples
 
-* List metrics whose names **start with** the specified text 'disk'
+* List metrics whose names **start with** the specified text `disk`
 
 ```javascript
 name LIKE 'disk*'

@@ -23,7 +23,7 @@
 To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the 'Commands' tab.
+2. Open **Metrics > Data Entry**, select the **Commands** tab.
 3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
 
 ![](./resources/metrics_entry.png)
@@ -34,12 +34,12 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ## Configure Database Connection
 
-* Select the 'Data' tab in the properties pane on the right.
+* Select the **Data** tab in the properties pane on the right.
 
 ![](./resources/data_pane.png)
 
-* Select 'Add Data Sources' in the toolbar, click 'JDBC'.
-* Select 'Add a new connection' (green plus icon).
+* Select **Add Data Sources** in the toolbar, click **JDBC**.
+* Select **Add a new connection** (green plus icon).
 
 ![](./resources/new_connection.png)
 
@@ -70,7 +70,7 @@ Example of `SELECT 1` test query:
 
 * Select 'Add a new connection' (green plus icon).
 * Input query row `SELECT 1` to the 'SQL Query Designer'.
-* Click 'Preview'.
+* Click **Preview**.
 
 ![](./resources/select_1.png)
 
@@ -111,10 +111,10 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 ## Import Data
 
-* Select 'Data' tab in the properties pane on the right
-* Select 'Add Data Sources' button in the toolbar and choose `JDBC`
-* Click on 'ATSD Connection'
-* Click on 'Add Query' in the Available Queries list
+* Select **Data** tab in the properties pane on the right
+* Select **Add Data Sources** button in the toolbar and choose `JDBC`
+* Click on **ATSD Connection**
+* Click on **Add Query** in the **Available Queries** list
 
 ![](./resources/add_query.png)
 
@@ -125,7 +125,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 * Build a Query using the `SQL Query Designer`
 
-* Click **OK**. The list of queries is added to the 'Data' pane.
+* Click **OK**. The list of queries is added to the **Data** pane.
 * Right-click on the query and choose 'Select Query'. The tree view displays query results and fields.
 
 ![](./resources/data_pane_updated.png)

@@ -62,7 +62,7 @@ Column aliases can be defined to ensure that the query results meet the followin
 | `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
 
 * (1) Only one of the date columns, `datetime` or `time`, must be included in the results.
-* (2) The column is classified as a 'metric' if it has a numeric datatype and does not match the rules applicable to other column types.
+* (2) The column is classified as a `metric` if it has a numeric datatype and does not match the rules applicable to other column types.
 
 #### Optional Series Tag Columns
 

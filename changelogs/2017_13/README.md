@@ -88,7 +88,7 @@ GROUP BY entity, tags.etype, period(1 year)
 
 | Date | Current Period | Previous Period | Change | Change, % |
 |------|----------------|-----------------|--------|-----------|
-| 2001 | 654            | null            | null   | null      |
+| 2001 | 654            | `null`            | `null`   | `null`      |
 | 2002 | 650            | 654             | -4     | -0.6      |
 | 2003 | 590            | 650             | -60    | -9.2      |
 

@@ -77,13 +77,13 @@ The number of records must match the results after the migration.
 
 [Install Java 8](install-java-8.md) on the ATSD server as described.
 
-Switch back to the 'axibase' user.
+Switch back to the `axibase` user.
 
 ```sh
 su axibase
 ```
 
-Execute the remaining steps as the 'axibase' user.
+Execute the remaining steps as the `axibase` user.
 
 ## Prepare ATSD For Upgrade
 
@@ -441,13 +441,13 @@ Launch the table backup task and confirm its execution.
 java com.axibase.migration.admin.TableCloner -d
 ```
 
-The task creates backups by appending a `'_backup'` suffix to the following tables:
+The task creates backups by appending a `_backup` suffix to the following tables:
 
-* 'atsd_d_backup'
-* 'atsd_li_backup'
-* 'atsd_metric_backup'
-* 'atsd_forecast_backup'
-* 'atsd_delete_task_backup'
+* `atsd_d_backup`
+* `atsd_li_backup`
+* `atsd_metric_backup`
+* `atsd_forecast_backup`
+* `atsd_delete_task_backup`
 
 ```txt
 ...
@@ -478,7 +478,7 @@ In case of other errors, review job logs for the application ID displayed above:
 
 ### Migrate Records from Backup Tables
 
-Step 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
+Step 1. Migrate data from the `atsd_delete_task_backup` table by launching the task and confirming its execution.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -m 2
@@ -491,13 +491,13 @@ Step 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the
         FILE: Number of bytes read=6
 ```
 
-Step 2. Migrate data from the 'atsd_forecast' table.
+Step 2. Migrate data from the `atsd_forecast` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -m 2
 ```
 
-Step 3. Migrate data from the 'atsd_li' table.
+Step 3. Migrate data from the `atsd_li` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -m 2
@@ -518,13 +518,13 @@ Delete the diagnostics folder manually:
 /opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable
 ```
 
-Step 4. Migrate data to the 'atsd_metric' table.
+Step 4. Migrate data to the `atsd_metric` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -m 2
 ```
 
-Step 5. Migrate data to the 'atsd_d' table.
+Step 5. Migrate data to the `atsd_d` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -m 2

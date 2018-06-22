@@ -30,7 +30,7 @@ Analyze | Apply statistical functions to the dataset.
 ## Load Sample Data into ATSD
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the 'Commands' tab.
+2. Open **Metrics > Data Entry**, select the **Commands** tab.
 3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
 
 ![](./resources/metrics_entry.png)
@@ -53,12 +53,12 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 * Disable UNICODE mode:
 
-  * Launch SPSS Statistics;
-  * Do not open any existing data file;
-  * Select the 'Edit' menu;
-  * Select the 'Options' menu;
-  * Select the 'Language' tab;
-  * In the section labeled 'Character Encoding for Data and Syntax', select 'Locale's writing system'.
+  * Launch SPSS Statistics.
+  * Do not open any existing data file.
+  * Select the **Edit** menu.
+  * Select the **Options** menu.
+  * Select the **Language** tab.
+  * In the section labeled **Character Encoding for Data and Syntax**, select **Locale writing system**
 
 #### Option 1: Load Prices and Weights As Separate Datasets
 
@@ -98,7 +98,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 ![](./images/merged_import/step_3.png)
 
-* Click 'Finish'
+* Click **Finish**.
 * Save the dataset as `prices_merged.sav`.
 
 ![](./images/merged_data1.png)
@@ -137,7 +137,7 @@ Merge the two datasets by adding the `weight` column from the `weights.sav` data
 * Select `time` in the 'New Active Dataset' pane, add to 'Key Variables' Pane.
 
   ![](./images/merge_editor.png)
-* Click 'Ok'.
+* Click **OK**.
 * Remove `time` column using `Variable View`.
 
 ![](./images/time_clear.png)

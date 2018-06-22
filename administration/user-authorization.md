@@ -82,7 +82,7 @@ To simplify the process of creating user account for typical use cases, the data
 
 The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/data/messages/webhook.md) endpoint and requires only the `API_DATA_WRITE` role and `write` permissions for one specific entity.
 
-To create a new user of this type, open the **Settings > Users** page and select **Create Webhook User** option from the split button located below the 'Users' table.
+To create a new user of this type, open the **Settings > Users** page and select **Create Webhook User** option from the split button located below the **Users** table.
 
 ![](./images/webhook-user.png)
 
@@ -96,7 +96,7 @@ The **collector** user inserts data of all types (series, properties, and messag
 
 The instruments inserting data under the **collector** account are typically located within a specific network segment and an option to specify the allowed IP range could be used to enhance access security.
 
-To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the 'Users' table.
+To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the **Users** table.
 
 ![](./images/collector-user-wizard.png)
 

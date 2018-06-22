@@ -20,7 +20,7 @@ None.
 
 ### Fields
 
-An array of objects containing an 'id' field to identify the alert and its new `acknowledge` status.
+An array of objects containing an `id` field to identify the alert and its new `acknowledge` status.
 
 |**Field**|**Type**|**Required**|**Description**|
 |:---|:---|:---|:---|

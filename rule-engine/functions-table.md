@@ -29,11 +29,11 @@ The input map `m` typically refers to map fields such as `tags`, `entity.tags`, 
 
 Supported formats:
 
-* 'markdown'
-* 'ascii'
-* 'property'
-* 'csv'
-* 'html'
+* `markdown`
+* `ascii`
+* `property`
+* `csv`
+* `html`
 
 An empty string is returned if map `m` is `null` or has no records.
 

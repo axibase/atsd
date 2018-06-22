@@ -15,7 +15,7 @@ The `Data Type` and `Metric Name` fields are mandatory parts of the key whereas 
 
 ## Tag Grouping
 
-For `series` commands, default grouping is set by the entity and **all** tags. The list of grouping tags can be adjusted by enumerating them on the 'Overview' tab.
+For `series` commands, default grouping is set by the entity and **all** tags. The list of grouping tags can be adjusted by enumerating them on the **Overview** tab.
 
 ![](./images/group-by-defined-tags.png)
 

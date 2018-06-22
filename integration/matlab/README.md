@@ -19,7 +19,7 @@
 To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the 'Commands' tab.
+2. Open **Metrics > Data Entry**, select the **Commands** tab.
 3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
 
 ![](./resources/metrics_entry.png)
@@ -48,7 +48,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 
 #### Dynamic
 
-* Run the `javaaddpath('dpath')` command in the MatLab Command Window, where `'dpath'` is the full path to the ATSD driver JAR file.
+* Run the `javaaddpath('dpath')` command in the MatLab Command Window, where `dpath` is the full path to the ATSD driver JAR file.
 
 Example:
 

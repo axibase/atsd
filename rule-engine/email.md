@@ -16,7 +16,7 @@ Open the `Email Notifications` tab in the rule editor.
 
 Set status to `Enabled` and enter one or multiple email addresses, separated by comma, semi-colon or whitespace.
 
-Click 'Enabled' to subscribe to notifications initiated by `OPEN`, `REPEAT`, and `CANCEL` triggers.
+Click **Enabled** to subscribe to notifications initiated by `OPEN`, `REPEAT`, and `CANCEL` triggers.
 
 ![](./images/email_config_all.png)
 
@@ -37,7 +37,7 @@ If necessary, uncheck the **Same as 'On Open'** setting to adjust message conten
 
 ## Configure Message Content
 
-Fill out the message 'Subject' and 'Text' fields.
+Fill out the message **Subject** and **Text fields**.
 
 Both fields may include any text as well as [placeholders](placeholders.md) to customize outgoing messages based on alert details.
 
@@ -53,7 +53,7 @@ Warning! Rule JVM Memory Low for server nurswgvml007 is active.
 
 ### Subject Field
 
-The 'Subject' field may include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
+The **Subject** field may include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
 
 ![](./images/email-subject.png)
 
@@ -67,9 +67,9 @@ ${entity} received message '${abbreviate(tags.notification, 50)}'
 
 ### Text Field
 
-The 'Text' field may include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
+The **Text** field may include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
 
-Unlike the 'Subject' field, 'Text' is not constrained by a length limit and supports HTML markup.
+Unlike the **Subject** field, **Text** is not constrained by a length limit and supports HTML markup.
 
 ```bash
 Database Error.
@@ -86,13 +86,13 @@ Top-10 running containers by CPU:
 ${addTable(executeSqlQuery(query), 'html', true)}
 ```
 
-In addition, the 'Text' field may invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
+In addition, the **Text** field may invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
 
 ```bash
 ${addPortal('AWS Route53 Health Check Detail', aws_entity)}
 ```
 
-The 'Text' field supports [control flow](control-flow.md#control-flow) syntax which allows customizing the content based on alert details.
+The **Text** field supports [control flow](control-flow.md#control-flow) syntax which allows customizing the content based on alert details.
 
 ```bash
 @if{tags.payload.type != 'cron'}

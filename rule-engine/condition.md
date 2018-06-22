@@ -15,7 +15,7 @@ Note that [`Overrides`](overrides.md) take precedence over the condition.
 | **Field** | **Description** |
 | :--- | :--- |
 | `value` | Last data sample. |
-| `tags.{tag_name}` | Value of command tag 'tag_name', for example, `tags.file_system`. <br>Also, `tags['tag_name']`.|
+| `tags.{tag_name}` | Value of command tag `tag_name`, for example, `tags.file_system`. <br>Also, `tags['tag_name']`.|
 | `entity` | Entity name. |
 | `entity.label` | Entity label. |
 | `entity.{field_name}` | Entity [field](../api/meta/entity/list.md#fields) with the specified name, for example `entity.timeZone`. |
@@ -111,7 +111,7 @@ The condition is `true` when all values in the window are equal `50`.
 
 ### Multiple metrics
 
-If metrics were submitted with the same 'series' command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
+If metrics were submitted with the same `series` command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
 
 ```javascript
   value > 90 AND value('disk_used') < 1000000000

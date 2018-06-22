@@ -18,7 +18,7 @@
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
-| 4126 | box | Feature | Add 'Last' to the tooltip in box chart |
+| 4126 | box | Feature | Add **Last** to the tooltip in box chart |
 | 4122 | widget-settings | Bug | Remove colon suffix in labels when `add-meta` is used and `legend-last-value = false` |
 
 ### Issue 4085a

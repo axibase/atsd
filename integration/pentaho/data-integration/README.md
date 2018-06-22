@@ -21,7 +21,7 @@ Pentaho Data Integration at `https://community.hitachivantara.com/community/prod
 To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the 'Commands' tab.
+2. Open **Metrics > Data Entry**, select the **Commands** tab.
 3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
 
 ![](./resources/metrics_entry.png)
@@ -38,9 +38,9 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 ![](./resources/view_pane.png)
 
 * Right-click on **Database connections > New**.
-* Select 'General' in the left menu.
-* Select 'Generic database' as Connection Type.
-* Select 'Native (JDBC)' as Access.
+* Select **General** in the left menu.
+* Select **Generic database** as **Connection Type**.
+* Select **Native (JDBC)** as **Access**.
 
 ### Configure Connection Properties
 
@@ -51,12 +51,12 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 > `tables` is an optional metric name filter. Review ATSD JDBC [URL parameters](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) for additional details.
 
 * Set 'Custom Driver Class Name' field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
-* Enter ATSD account credentials in the 'User Name' and 'Password' fields.
+* Enter ATSD account credentials in the **User Name** and **Password** fields.
 * Set 'Connection Name' to `ATSD Connection`.
 
 ![](./resources/atsd_connection.png)
 
-* Click 'Test' to verify connection.
+* Click **Test** to verify connection.
 
 ## View Schema
 
@@ -75,7 +75,7 @@ Click **Explore** to view the schema:
 
 ## Load Data
 
-* Drag and Drop `ATSD Connection` from the 'View' pane in the Database Connections folder.
+* Drag and Drop `ATSD Connection` from the **View** pane in the Database Connections folder.
 * Set `Step name` to a unique name for this transformation.
 * Write an SQL query used as a `Table input` for this transformation.
 * Click `Preview` to verify query results.
@@ -128,7 +128,7 @@ Since the `Weights` are available for only one year, assume that the category we
 
 ![](./resources/connections.png)
 
-* Use 'connect':
+* Use `connect`:
 
 Diagram example:
 
@@ -138,7 +138,7 @@ Diagram example:
 
 ![](./resources/join_preview.png)
 
-> Note to preview data right-click on step icon and select 'Preview' > 'Quick Launch'
+> Note to preview data right-click on step icon and select **Preview > Quick Launch**
 
 ### Merge Tables
 

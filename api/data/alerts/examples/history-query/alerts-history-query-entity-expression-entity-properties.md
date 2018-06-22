@@ -15,7 +15,7 @@ POST /api/v1/alerts/history/query
 ```json
 [
   {
-    "entityExpression": "name LIKE 'nurswgvml00*' && properties('vmware.vm').power_state = 'On'",
+    "entityExpression": "name LIKE 'nurswgvml00*' && properties('vmware.vm').power_state = ",
     "startDate": "2016-06-30T04:00:00Z",
     "endDate": "now",
     "limit": 3

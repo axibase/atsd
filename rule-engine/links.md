@@ -69,7 +69,7 @@ ${chartLink}
 
 Link to the default portal for the current metric, entity, and tags.
 
-Displayed as 'Default' link in inline mode.
+Displayed as **Default** link in inline mode.
 
 > Available only in rules with `Series` data type.
 

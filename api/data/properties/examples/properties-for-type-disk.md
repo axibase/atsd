@@ -1,4 +1,4 @@
-# Properties for Type 'disk'
+# Properties for Type disk
 
 ## Request
 

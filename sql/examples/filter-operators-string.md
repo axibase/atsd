@@ -17,7 +17,7 @@ If one of the compared values is `NULL`, the expression returns `NULL` and such 
 | e-sql-4 | 2016-06-19T11:00:00.000Z | 4.0   | null      | NULL     | NULL      |
 ```
 
-### Query: > 'val2'
+### Query: > val2
 
 ```sql
 SELECT datetime, value, tags.tag2
@@ -34,7 +34,7 @@ WHERE datetime >= '2016-06-19T11:00:00.000Z'
 | 2016-06-19T11:00:00.000Z | 3.0   | val3      |
 ```
 
-### Query:  <= 'val2'
+### Query:  <= val2
 
 Note that a series without a `tag2` series tag, which is the same as a `NULL` value, are not included in either result set.
 

@@ -12,15 +12,15 @@ For example, assuming that the default condition is `value > 50`, the below conf
 
 ## Override Table
 
-Override tables can be created on the 'Overrides' tab in the rule editor.
+Override tables can be created on the **Overrides** tab in the rule editor.
 
 The table must have at least one rule where each row represents a single rule consisting of filter and threshold columns.
 
 The rules are processed from **top to bottom**. If the rule filter matches the given window, the processing stops (subsequent rows are ignored) and the rule thresholds are checked. An alert is triggered if the threshold condition for either `ERROR` or `WARNING` level is satisfied.
 
-In case no matching rules are found for the given window, the default condition, as specified on the 'Overview' tab, is evaluated.
+In case no matching rules are found for the given window, the default condition, as specified on the **Overview** tab, is evaluated.
 
-> Note that the 'Depends On' condition, when enabled on the 'Overview' tab, is checked for both the override rule and the default condition.
+> Note that the 'Depends On' condition, when enabled on the **Overview** tab, is checked for both the override rule and the default condition.
 
 ![](./images/override-columns.png)
 
@@ -38,9 +38,9 @@ The filter matches the window if it satisfies **all** filter columns including:
 
 ![](./images/override-rule-filter.png)
 
-> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the 'disk_prod' group and applies only to windows with  tag `file_system` equal `/tmp`.
+> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the `disk_prod` group and applies only to windows with  tag `file_system` equal `/tmp`.
 
-The tag columns are present when the rule is grouped by tags on the 'Overview' tab.
+The tag columns are present when the rule is grouped by tags on the **Overview** tab.
 
 ![](./images/override-tag-columns-group.png)
 
@@ -85,13 +85,13 @@ If both `ERROR` and `WARNING` conditions are `true`, the `ERROR` level takes pre
 
 ![https://apps.axibase.com/chartlab/32fcae1a](./images/severity-over.png)
 
-If no override rule matches the window and the alert is eventually triggered by the default condition, the alert is assigned the severity level specified on the 'Logging' tab.
+If no override rule matches the window and the alert is eventually triggered by the default condition, the alert is assigned the severity level specified on the **Logging** tab.
 
 ![](./images/logging-severity.png)
 
 ## Override Example
 
-The metric in this example measures disk space usage and is collected with 'file_system' and 'mount_point' tags. The numeric values range between 0% and 100%. The alert must be raised if disk utilization exceeds **80%** unless a custom threshold is found in the Overrides table.
+The metric in this example measures disk space usage and is collected with `file_system` and `mount_point` tags. The numeric values range between 0% and 100%. The alert must be raised if disk utilization exceeds **80%** unless a custom threshold is found in the Overrides table.
 
 Default Condition
 
@@ -109,7 +109,7 @@ Rule Processing:
 * Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for `tmp` file systems.
 * Row 2. This rule raises `ERROR` alert if disk usage exceeds **50%** for entity `nurswgvml010`.
 * Row 3. This rule raises `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity `nurswgvml007`. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert is be raised for `/` on `nurswgvml007` with disk usage of **85%**.
-* Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the 'disk_prod' group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.
+* Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the `disk_prod` group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.
 * If not rule was matched, evaluate the default condition.
 
 ## Multiple Override Tables

@@ -88,7 +88,7 @@ Supported formats:
 
 The first column in the table contains field names, whereas the second column contains corresponding field values.
 
-Object `o` can be an 'Entity' or a 'Window' object which can be retrieved as follows:
+Object `o` can be an `Entity` or a `Window` object which can be retrieved as follows:
 
 * [`getEntity`](functions-lookup.md#getentity)
 * [`rule_window`](functions-rules.md#rule_window)

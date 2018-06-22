@@ -109,7 +109,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
 |**Name**|**Description**|
 |---|---|
-|`Auth Token`|Authorization Token with 'message' and 'notifications' scopes.|
+|`Auth Token`|Authorization Token with `message` and `notifications` scopes.|
 |Bot Nickname|Set a name for the bot.|
 |Room ID|ID or name of the room.|
 |Message|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|

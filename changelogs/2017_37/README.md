@@ -71,7 +71,7 @@ WHERE (datetime BETWEEN '2017-01-01T00:00:00.000Z' AND '2017-01-02T00:00:00.000Z
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | [4566](#issue-4566)  | docker | Bug | Add 'Redirects Enabled' setting to HTTP pool to handle authentication errors with `302` status response. |
-| 4513 | docker | Bug | Set correct entity name for the docker host when the `/etc/hosts` files resolves to 'localhost'. |
+| 4513 | docker | Bug | Set correct entity name for the docker host when the `/etc/hosts` files resolves to `localhost`. |
 
 ### Issue 4566
 

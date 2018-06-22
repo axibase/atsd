@@ -27,7 +27,7 @@ Such accounts must be granted both the `API_DATA_WRITE` and `API_META_WRITE` rol
 
 To simplify user management, the database provides a wizard to create a typical `collector` account.
 
-To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the 'Users' table.
+To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split button located below the **Users** table.
 
 Specify an optional IP range to restrict the addresses from which the collector is allowed to connect to the database.
 

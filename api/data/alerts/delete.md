@@ -16,7 +16,7 @@ None.
 
 ### Fields
 
-An array of objects containing an 'id' field to identify the alerts to be deleted.
+An array of objects containing an `id` field to identify the alerts to be deleted.
 
 |**Field**|**Description**|
 |:---|:---|

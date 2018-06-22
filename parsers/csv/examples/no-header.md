@@ -14,7 +14,7 @@
 
 ## Schema
 
-```javascrit
+```javascript
 var metrics = ['temperature', 'humidity'];
 select("#row=1-*").select("#col=3-4").
 addSeries().

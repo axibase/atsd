@@ -120,7 +120,7 @@ The date placeholder may include the following calendar units:
 * `yyyy` - 4-digit year
 * `yy` - 2-digit year
 * `MM` - 2-digit numeric month
-* `MMM` - 3-letter month, for example 'Jan'
+* `MMM` - 3-letter month, for example `Jan`
 * `dd` - day of month
 * `HH` - hour of the day in 24-hour format
 * `ss` - seconds
@@ -138,9 +138,9 @@ A date placeholder is evaluated **after** the query is completed.
 
 Form placeholders return an empty string if the requested field is not found or contains no text.
 
-* `${name}` - Report name as specified in the 'Name' field.
-* `${author}` - Report author as specified in the 'Author' field.
-* `${description}` - Report description as specified in the 'Description' field.
+* `${name}` - Report name as specified in the `Name` field.
+* `${author}` - Report author as specified in the `Author` field.
+* `${description}` - Report description as specified in the `Description` field.
 * `${id}` - Report numeric identifier.
 * `${link}` - Report URL based on `server.url` setting, for example `https://atsd_hostname:8443/export/queries/query.xhtml?queryId=23`
 

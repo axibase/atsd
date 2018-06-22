@@ -119,7 +119,7 @@ Add support for the following environment variables:
 
 The values are masked in the following cases:
 
-* If variable name contains 'password' (case insensitive).
+* If variable name contains `password` (case insensitive).
 * If command arguments contain url with credentials.
 
 ![](./Images/mask_secret.png)

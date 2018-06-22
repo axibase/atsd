@@ -55,7 +55,7 @@ The user must have `API_DATA_WRITE` role and `write` permissions for the target 
 
 ### Webhook User Wizard
 
-To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split button located below the 'Users' table.
+To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split button located below the **Users** table.
 
 ![](./images/webhook-user.png)
 
@@ -161,7 +161,7 @@ Since stored message are always associated with an entity, the request must incl
 
 ## Default Message Field Values
 
-* Message `type` is 'webhook'.
+* Message `type` is `webhook`.
 * Message `source` is set to the remainder of the URL path after the `/webhook/` part (and before the query string). If the remainder is empty, the `source` is set to empty string.
 
 ```ls

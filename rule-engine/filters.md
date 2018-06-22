@@ -124,7 +124,7 @@ The filter discards commands for entities that do not belong to one of the entit
 
 ## Date Filter
 
-If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified 'grace' interval from the current server time. This filter is typically used to ignore historical data.
+If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter is typically used to ignore historical data.
 
 ![](./images/filter-time.png)
 

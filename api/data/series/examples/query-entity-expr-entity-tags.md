@@ -12,7 +12,7 @@ Entity object provides the following parameters that can be referenced in `entit
 |:---|:---|
 |`name`|Entity id.|
 |`id`|Entity id.|
-|`tags.{name}`|Value of the entity tag `{name}`. If tag is not available for the given entity, the value is set to empty string ''|
+|`tags.{name}`|Value of the entity tag `{name}`. If tag is not available for the given entity, the value is set to empty string `''`|
 
 ## Request
 

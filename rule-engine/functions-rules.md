@@ -21,7 +21,7 @@ The current window is excluded from matching.
   rule_open(string r[, string e[, string p]]) boolean
 ```
 
-Checks if there is at least one window with the 'OPEN' or 'REPEAT' [status](README.md#window-status) for the specified rule `r`, entity `e` and expression `p` to match other windows.
+Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified rule `r`, entity `e` and expression `p` to match other windows.
 
 The function returns `true` if a matching window is found, `false` otherwise.
 
@@ -55,8 +55,8 @@ The following match conditions are applied:
 
     |**Name**|**Description**|
     |---|---|
-    |message |The text value, which is equal to 'message' field in case of `message` command.|
-    |tags and tags.{name}/tags['name']|Command tags.|
+    |message |The text value, which is equal to `message` field in case of `message` command.|
+    |tags and `tags.{name}/tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
   * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
 
@@ -75,7 +75,7 @@ The following match conditions are applied:
   rule_open('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
 
-Assume the following windows have status 'REPEAT' and the function is called from the rule 'test_rule_open':
+Assume the following windows have status `REPEAT` and the function is called from the rule `test_rule_open`:
 
 ```txt
 +----------------+------------------------------+
@@ -196,8 +196,8 @@ The following match conditions are applied:
 
     |**Name**|**Description**|
     |---|---|
-    |message |The text value, which is equal to 'message' field in case of `message` command.|
-    |tags and tags.{name}/tags['name']|Command tags.|
+    |message |The text value, which is equal to `message` field in case of `message` command.|
+    |tags and `tags.{name}/tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
 
 * The expression `p` can include window [fields](window.md#window-fields) as placeholders.

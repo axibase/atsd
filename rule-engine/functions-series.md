@@ -162,7 +162,7 @@ Both `db_last` and `db_statistic` functions search the database for matching ser
 
 ### `Tags : No Tags`
 
-In the example below, the `db_last('cpu_busy')` function ignores the tags `mount_point` and `file_system` because they are not collected by the metric `cpu_busy`.
+In the example below, the `db_last()` function ignores the tags `mount_point` and `file_system` because they are not collected by the metric `cpu_busy`.
 
 * Current Window
 
@@ -175,7 +175,7 @@ In the example below, the `db_last('cpu_busy')` function ignores the tags `mount
 * Expression
 
 ```java
-  db_last('cpu_busy') > 10
+  db_last() > 10
 ```
 
 * Search Filter
@@ -196,7 +196,7 @@ In the example below, the `db_last('cpu_busy')` function ignores the tags `mount
 
 ### `Same Tags`
 
-In this example, the function `db_last('disk_used_percent')` uses the same series tags as in the current window because all of these tags are collected by the metric `disk_used_percent`.
+In this example, the function `db_last()` uses the same series tags as in the current window because all of these tags are collected by the metric `disk_used_percent`.
 
 * Current Window
 
@@ -209,7 +209,7 @@ In this example, the function `db_last('disk_used_percent')` uses the same serie
 * Expression
 
 ```java
-  db_last('disk_used_percent') > 90
+  db_last() > 90
 ```
 
 * Search Filter
@@ -230,7 +230,7 @@ In this example, the function `db_last('disk_used_percent')` uses the same serie
 
 ### `No Tags : Tags`
 
-In this example, the function `db_last('disk_used_percent')` searches for a series with **any** tags configuration; the metric `cpu_busy` in the current window has no tags. If the search matches multiple series, the first series is returned. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax.
+In this example, the function `db_last()` searches for a series with **any** tags configuration; the metric `cpu_busy` in the current window has no tags. If the search matches multiple series, the first series is returned. To better control which series is matched, use `db_last('disk_used_percent', entity, 'mount_point=/')` syntax.
 
 * Current Window
 

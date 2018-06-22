@@ -143,7 +143,7 @@ property('config::deleted')).dayOfWeek().get() < 6
 
 ### Issue 3680
 
-The series list now includes a 'Statistics' link to characterize the selected series.
+The series list now includes a **Statistics** link to characterize the selected series.
 
 The following characteristics are available.
 

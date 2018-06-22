@@ -84,7 +84,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp
 
 ## Frequency
 
-Derived commands can be stored each time a command is received or removed from the window by setting the **Repeat** parameter to 'All'.
+Derived commands can be stored each time a command is received or removed from the window by setting the **Repeat** parameter to **All**.
 
 The frequency can be lowered by adjusting the repeat interval.
 

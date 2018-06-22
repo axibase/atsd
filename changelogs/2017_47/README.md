@@ -87,7 +87,7 @@ Support for `addMeta` parameter added to the [series](../../api/meta/metric/seri
 
 [Rule functions](../../rule-engine/functions-rules.md) provide a way to check the status of windows created by other rules.
 
-The `rule_open` function checks if there is at least one window with the 'OPEN' or 'REPEAT' status for the specified rule.
+The `rule_open` function checks if there is at least one window with the `OPEN` or `REPEAT` status for the specified rule.
 
 ```java
   rule_open(S ruleName)

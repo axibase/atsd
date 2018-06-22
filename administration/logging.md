@@ -51,7 +51,7 @@ To change the name of the current and archived files, change the `file` and `fil
 
 ### Logging Level
 
-To adjust tracing level, add a logging declaration containing the full class name and the level such as 'DEBUG', 'INFO', 'WARN', 'ERROR'.
+To adjust tracing level, add a logging declaration containing the full class name and the level such as `DEBUG`, `INFO`, `WARN`, `ERROR`.
 
 ```xml
   <logger name="com.axibase.tsd.service.MetricServiceImpl" level="DEBUG"/>

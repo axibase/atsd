@@ -46,7 +46,7 @@ Issue| Category    | Type    | Subject
 4857 | rule engine | Bug | Delete [open alerts](../../rule-engine/README.md#window-status) when entity is deleted.
 4856 | rule engine | Bug | Random [function](../../rule-engine/functions-random.md#distribution-functions) values are cached by subsequent invocations.
 4854 | rule engine | Feature | Implement additional [math](../../rule-engine/functions-math.md#reference) functions.
-4852 | rule engine | Bug | Rule window detail page shows incorrect results for windows with 'Property' data type.
+4852 | rule engine | Bug | Rule window detail page shows incorrect results for windows with `Property` data type.
 4851 | rule engine | Feature | Implement [Freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
 4849 | rule engine | Bug | Error in [time](../../rule-engine/functions-format.md#reference) format functions.
 4848 | UI | Bug | Export page: Freemarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
