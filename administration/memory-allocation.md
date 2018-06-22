@@ -125,7 +125,7 @@ View `Xmx` specified in process launch arguments.
 ps aux | grep Xmx
 ```
 
-Open the **ATSD** portal in the top menu and verify allocations on the memory charts.
+Open the **ATSD** portal in the top menu and verify new settings on the memory charts.
 
 ![](./images/portal_jvm_memory.png)
 

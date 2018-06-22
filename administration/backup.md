@@ -47,7 +47,7 @@ The [**Server Properties**](./server-properties.md) page contains the `internal.
 
 New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation.
 
-Configure an external `cron` job to prune old backup files and to move records to a different location.
+Configure an external `cron` job to prune old backup files and to move records to a different directory.
 
 ### Restore
 

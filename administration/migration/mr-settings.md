@@ -10,7 +10,7 @@ cat /proc/meminfo | grep "MemTotal"
 
 If the server has less than 8 gigabytes of available physical memory, leave the default settings in place.
 
-## Increase Resource Allocations
+## Increase Memory Allocations
 
 Edit `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
 

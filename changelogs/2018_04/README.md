@@ -41,7 +41,7 @@
 5182 | core | Bug | Text value not [logged](../../administration/metric-persistence-filter.md) in `command_discarded.log`.
 5181 | rule editor | Bug | Simplify [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications) webhook configuration.
 5179 | UI | Bug | New [User Group](../../administration/user-authentication.md#user-authentication) members and permissions not saved.
-5177 | search | Feature | Make the location of temporary search index files configurable.
+5177 | search | Feature | Make the directory used for temporary search index files configurable.
 5175 | api-rest | Bug | Correct incoming [webhook](../../api/data/messages/webhook.md) processing error.
 5162 | rule editor | Bug | `On Cancel` trigger cannot be customized for [webhooks](../../rule-engine/notifications/README.md#creating-notifications).
 5161 | backup | Bug | Refer to exported [portals](../../portals/) by name instead of `id` in XML files.

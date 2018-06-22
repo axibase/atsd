@@ -8,10 +8,10 @@ The `tagExpression` provides a more flexible filtering option compared to the `t
 
 | **Expression** | **Description** |
 |---|---|
-| `tags.location = 'abc'` | Include series with 'location' tag equal 'abc'. |
-| `tags.location LIKE '*abc'` | Include series with 'location' tag ending with 'abc'. |
-| `tags.location LIKE '*abc' OR tags.mode = 'desktop'` | Include series either with 'location' tag ending with 'abc' or 'mode' tag equal to 'desktop'. |
-| `tags.location LIKE '*abc' AND NOT tags.mode = 'mobile'` | Include series with 'location' tag ending with 'abc' AND 'mode' tag not equal to 'mobile'. |
+| `tags.location = 'abc'` | Include series with `location` tag equal `abc`. |
+| `tags.location LIKE '*abc'` | Include series with `location` tag ending with `abc`. |
+| `tags.location LIKE '*abc' OR tags.mode = 'desktop'` | Include series either with `location` tag ending with `abc` or `mode` tag equal to `desktop`. |
+| `tags.location LIKE '*abc' AND NOT tags.mode = 'mobile'` | Include series with `location` tag ending with `abc` AND `mode` tag not equal to `mobile`. |
 
 ## Request
 

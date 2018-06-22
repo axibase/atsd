@@ -184,7 +184,7 @@ echo "grant 'axibase', 'RWXC'" | hbase shell
 
 ### Configure Kerberos Configuration Information in `krb5.conf` File
 
-Copy the `/etc/krb5.conf` file from an HBase Master server to the ATSD server at the same location: `/etc/krb5.conf`.
+Copy the `/etc/krb5.conf` file from an HBase Master server to the ATSD server at the same path: `/etc/krb5.conf`.
 
 ```ls
 [libdefaults]
