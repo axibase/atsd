@@ -16,7 +16,9 @@ The message expiration time is calculated based on its **insertion** time, and n
 
 Convert the desired TTL to seconds, for example `14 days` is `14 * 24 * 3600 = 1209600`.
 
-Log in to the ATSD server and execute the following administrative commands in HBase shell one by one to modify the TTL attribute.
+Log in to the ATSD server.
+
+Modify the `TTL` attribute of the `atsd_message` table in HBase by executing the below commands.
 
 > The procedure is different in distributed installations.
 

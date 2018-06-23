@@ -83,7 +83,7 @@ curl https://atsd_hostname:8443/api/v1/permissions \
   "all-entities-write": true,
   "all-portals-permission": false,
   "portals": [],
-  "ip-filter": "216.3.128.12 216.3.128.13"
+  "ip-filter": "192.0.2.1 192.0.2.2"
 }
 ```
 

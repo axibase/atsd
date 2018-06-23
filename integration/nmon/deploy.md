@@ -1,8 +1,6 @@
 # Deploy nmon
 
-To install nmon and the Axibase sender script on multiple Linux machines use the `nmon_deploy.sh` script.
-
-The `nmon_deploy.sh` script executes the following steps on each specified target machine:
+To install nmon and the Axibase sender script on multiple Linux machines use the `nmon_deploy.sh` script to automate the below tasks:
 
 * Connect to the remote machine over ssh
 * Copy the nmon binary file

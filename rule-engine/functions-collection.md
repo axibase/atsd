@@ -101,7 +101,7 @@ The collection `c` can be loaded from a named collection or initialized from an 
 Examples:
 
 ```javascript
-likeAny(tags.request_ip, ['10.50.102.1', '10.50.102.2'])
+likeAny(tags.request_ip, ['192.0.2.1', '192.0.2.2'])
 ```
 
 ```javascript

@@ -268,7 +268,7 @@ nano atsd/atsd/conf/hadoop.properties
 
 ```bash
 # localhost if co-installing ATSD on HMaster
-hbase.zookeeper.quorum = 10.50.0.102
+hbase.zookeeper.quorum = 192.0.2.1
 ```
 
 Start ATSD.

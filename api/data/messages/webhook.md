@@ -577,7 +577,7 @@ Command:
         "event": "watch",
         "repository.name": "atsd",
         "repository.full_name": "axibase/atsd",
-        "request_ip": "192.30.253.29",
+        "request_ip": "192.0.2.1",
         "sender.id": "2098022",
         "sender.login": "rodionos",
         "sender.site_admin": "false",

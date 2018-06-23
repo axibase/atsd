@@ -86,7 +86,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 * Select the `datetime` column from both the `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` tables.
   ![](./images/merged_import/step1.png)
 * Skip the next steps until a query editor is displayed.
-* Enter the following query which executes a FULL OUTER JOIN with interpolation for the missing weight records:
+* Enter a `FULL OUTER JOIN` query to fill gaps with interpolated records:
 
 ```sql
 SELECT T0."value" AS price,  T1."datetime" AS datetime, T1."value" AS weight, T1."tags" AS tags
@@ -285,7 +285,7 @@ SAVE TRANSLATE /TYPE=ODBC
 
 To check that data is successfully exported to ATSD, open the ATSD web interface.
 
-* Open the **SQL** tab and execute the following query:
+* Open the **SQL Console** tab and execute a validation query.
 
 ```sql
 SELECT entity, datetime, value FROM cpi_price
@@ -303,7 +303,7 @@ The built-in [SQL Console](../../../sql/sql-console.md) allows exporting query r
 
 ### Prices
 
-Obtain CPI price data by executing the following query:
+Load CPI price data.
 
 ```sql
 SELECT entity, datetime, value, tags.category
@@ -319,7 +319,7 @@ Export query results into `prices.csv`.
 
 ### Weights
 
-Obtain weight data by executing the following query:
+Load weight records.
 
 ```sql
 SELECT entity, datetime, value, tags.category

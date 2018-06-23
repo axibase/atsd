@@ -240,7 +240,7 @@ Examples:
 query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
 ```
 
-`executeSqlQuery(query)` returns following collection:
+`executeSqlQuery(query)` returns a list consisting of the header row followed by data rows.
 
 ```ls
 [[datetime, value], [2018-01-31T12:00:13.242Z, 37], [2018-01-31T12:00:28.253Z, 36]]

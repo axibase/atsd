@@ -8,7 +8,7 @@ Open the **SQL > SQL Console** tab in the main menu:
 
 ![](./resources/getting-started-5_1.png)
 
-Enter the following query:
+Retrieve the five most recent values for the `temperature` series.
 
 ```sql
 SELECT entity, metric, datetime, value
@@ -18,8 +18,6 @@ WHERE entity = 'br-1905'
 ORDER BY datetime DESC
   LIMIT 5
 ```
-
-The query returns the five most recent values for the `temperature` series.
 
 ![](./resources/sql-console-1.png)
 

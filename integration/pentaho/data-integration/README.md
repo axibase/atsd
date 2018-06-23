@@ -281,7 +281,7 @@ Complete diagram:
 
 ### Check Results
 
-Log in to ATSD and execute the following query in the SQL tab to verify the results:
+Log in to ATSD and validate results on **SQL Console**.
 
 ```sql
 SELECT entity, datetime, value FROM inflation.cpi.composite.price

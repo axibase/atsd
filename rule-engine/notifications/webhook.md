@@ -79,7 +79,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
   "entity": "3a9ba2b3ae95531ae819877fa325fa36cedee6271eea0e089c7430f923b24e1a",
   "entity.enabled": true,
   "entity.id": 62494,
-  "entity.label": "db-test-db2-10.5.0.5",
+  "entity.label": "db-test-db2-10.5",
   "entity.name": "3a9ba2b3ae95531ae819877fa325fa36cedee6271eea0e089c7430f923b24e1a",
   "entity.tags": {
     "image-name": "db2express-c",
@@ -89,7 +89,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
     "hostname": "3a9ba2b3ae95",
     "ip-address": "172.17.0.12",
     "docker-type": "container",
-    "name": "db-test-db2-10.5.0.5",
+    "name": "db-test-db2-10.5",
     "env.license": "accept",
     "env.path": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
     "env.notvisible": "\"in users profile\"",
@@ -131,7 +131,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
   "severity": "warning",
   "status": "OPEN",
   "tags": {
-    "container-name": "db-test-db2-10.5.0.5",
+    "container-name": "db-test-db2-10.5",
     "external-port": "48002",
     "host": "172.17.0.12",
     "port": "50000"

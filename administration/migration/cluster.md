@@ -31,7 +31,7 @@ The migration task is implemented as a Map-Reduce job and requires at least 4 GB
 
 Log in to ATSD and open the **SQL** tab.
 
-Execute the following query to count rows for one of the key metrics.
+Count rows for one of the key metrics.
 
 ```sql
 SELECT COUNT(*) FROM mymetric
@@ -311,7 +311,7 @@ Web interface is now accessible on port `8443` (https).
 
 Open the **SQL** tab in ATSD.
 
-Execute the following query and compare the row count.
+Count rows for the previously selected metric and compare the results.
 
 ```sql
 SELECT COUNT(*) FROM mymetric

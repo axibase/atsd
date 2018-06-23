@@ -65,7 +65,7 @@ sudo chown -R axibase:axibase /opt/atsd
 
 ### Data Directory
 
-If ATSD data is stored in a [custom directory](change-data-directory.md#changing-the-directory-where-data-is-stored), execute the following command:
+If ATSD data is stored in a [custom directory](change-data-directory.md#changing-the-directory-where-data-is-stored), change the owner of the custom data directory.
 
 ```bash
 sudo chown -R axibase:axibase /path/to/data-directory

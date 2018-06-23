@@ -191,10 +191,7 @@ Output contains a list of ATSD tables, all starting with `atsd_`.
 
 ## Replication for New Tables
 
-If after updating ATSD, or for any other reason, a new table was created
-in HBase with the name containing `atsd_` (for example `atsd_new`),
-execute the following steps to make sure this table is added to
-replication.
+New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as follows:
 
 > MASTER: the following steps must be executed only on the master machine.
 
@@ -231,9 +228,6 @@ instructions below.
 
 ## Verifying Replication
 
-To verify that replication is working correctly, execute the following
-steps:
-
 ### Option 1
 
 > SLAVE: the following steps must be executed only on the slave machine.
@@ -268,11 +262,9 @@ Open ATSD user interface and navigate to **Alert > Rules** page.
 Click **Create** to create a new rule. Complete the following
 fields as specified below:
 
-`Name` – `testrule`
-
-`Metric` – `testrule`
-
-`Expression` – true
+* `Name`: `testrule`
+* `Metric`: `testrule`
+* `Expression`: `true`
 
 Click **Save**.
 

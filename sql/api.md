@@ -16,7 +16,7 @@ Scheduled queries are executed under full permissions.
 
 ## Connection Query
 
-To test a connection, execute the following query:
+To test a connection, execute a query without table reference.
 
 ```sql
 SELECT 1

@@ -396,7 +396,7 @@ WHERE entity = 'nurswgvml007'
 ## Query by Calendar
 
 Use the `date_format` OR `extract` function to retrieve date parts from date for the purpose of filtering.
-The following query includes only weekdays (Monday till Friday) and daytime hours (from 08:00 till 17:59).
+The below query includes only weekdays (Monday till Friday) and daytime hours (from 08:00 till 17:59).
 
 ```sql
 SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)

@@ -63,9 +63,9 @@ Allocate additional disk space, if necessary.
 
 Log in to the ATSD web interface.
 
-Open the **SQL** tab.
+Open the **SQL > SQL Console**.
 
-Execute the following query to count rows for one of the key metrics in the ATSD server.
+Count rows for the previously selected metric and compare the results.
 
 ```sql
 SELECT COUNT(*) FROM mymetric

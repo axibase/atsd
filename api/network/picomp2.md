@@ -51,7 +51,7 @@ The following data types are supported for the value column.
 
 ### PI Query
 
-The order of [columns](#columns) in the uploaded content corresponds to the result set produced by the following query.
+The order of [columns](#columns) in the uploaded content corresponds to results of the following query.
 
 ```sql
 SELECT TOP 10 TAGTYPE(tag) as pointtypex,

@@ -2497,7 +2497,7 @@ GROUP BY date_format(time, 'EEE')
 Refer to [diurnal](examples/diurnal.md) query examples.
 
 By retrieving date parts from the `time` column, the records can be filtered by calendar.
-The following query includes only daytime hours (from 08:00 till 17:59) during weekdays (Monday till Friday).
+The query below includes only daytime hours (from 08:00 till 17:59) during weekdays (Monday till Friday).
 
 ```sql
 SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)

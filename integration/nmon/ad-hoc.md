@@ -6,9 +6,9 @@ This means that you can upload any nmon file or an archive of nmon files into A
 
 ![](./resources/nmon_adhoc_process.gif)
 
-## Execute the Following Steps to Start Visualizing Data from One or Multiple nmon Files
+## Visualizing Data in nmon Files
 
-### Download the ad-hoc nmon Portals
+### Download nmon Portals
 
 nmon Linux: [nmon_Linux](https://axibase.com/public/nmon_Linux.xml)
 
