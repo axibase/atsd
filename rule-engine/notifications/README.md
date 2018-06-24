@@ -206,7 +206,7 @@ If the error occurs during chart preparation, the rule engine falls back to send
 
 ## Network Settings
 
-If the ATSD server cannot connect to the remote API server directly due to network restrictions, use one of the following configuration options displayed in the **Network Settings** section.
+If the ATSD server cannot connect to the remote API server due to network restrictions, use one of the following configuration options displayed in the **Network Settings** section.
 
 * **API Gateway**
 

@@ -59,7 +59,7 @@ Refer to [limits](README.md#command-limits).
 
 New metrics are initialized with the `float` data type by default.
 
-To insert metric samples with another data type, create or update metric properties using [Meta API](../meta/metric/update.md) or the user interface.
+To insert metric samples with another data type, create or update metric properties using [Meta API](../meta/metric/update.md) or the web interface.
 
 ## New Records
 

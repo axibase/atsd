@@ -261,7 +261,7 @@ tags.location IN ('NUR', 'SVL')
 
 ## Using Persistence Filter
 
-If space utilization needs to be controlled, open the **Settings > Receive Statistics** page to view metrics with the highest number of inserted commands:
+To reduce disk space utilization, open the **Settings > Receive Statistics** page to view metrics with the highest number of inserted commands.
 
 ![](./images/metric_persistence_filter_1.png "top_hourly_metrics")
 

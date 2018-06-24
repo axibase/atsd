@@ -29,7 +29,7 @@ $ which bash
 
 ### Arguments
 
-Specify optional arguments to be passed to the executable, one argument per line.
+Specify optional arguments passed to the executable, one argument per line.
 
 ![](./images/command-script.png)
 

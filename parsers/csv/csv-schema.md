@@ -2,7 +2,7 @@
 
 ## Overview
 
-Schema Parser implements position-aware parsing of CSV files. Once the file is converted into a tabular model, each cell is assigned a unique address and its value can be retrieved using the `cell(rowIndex, columnIndex)` function. The schema parser reads rows and columns from top left to bottom right. The number of rows and columns to be processed is controlled with start/end index and step arguments in `select` functions.
+Schema Parser implements position-aware parsing of CSV files. Once the file is converted into a tabular model, each cell is assigned a unique address and its value can be retrieved using the `cell(rowIndex, columnIndex)` function. The schema parser reads rows and columns from top left to bottom right. The range of rows and columns processed is controlled with index and step arguments passed to the `select` function.
 
 The `select()` function implements [RFC 7111](https://tools.ietf.org/html/rfc7111) selections using URI Fragment Identifiers, including `row#`, `col#`, and `cell#` with a custom extension controlling iteration step. See extended ABNF syntax [here](#rfc-7111-step-extension-syntax).
 

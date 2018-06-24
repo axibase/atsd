@@ -11,14 +11,14 @@
 |Region|The [Amazon SNS Region](https://docs.aws.amazon.com/general/latest/gr/rande.html#sns_region).|
 |Access Key Id|[Access Key Id](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
 |Secret Access Key|[Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
-|Topic ARN|The topic you want to publish messages to.|
-|Subject|The default subject of the message to be sent.|
-|Message Format|The default format of the message to be sent.|
-|Message|The default text of the message to be sent.|
+|Topic ARN|Topic you want to publish messages to.|
+|Subject|Default message subject.|
+|Message Format|Default message format.|
+|Message|Default message text.|
 
 ## Message
 
-Each window status event can produce only one AWS SNS message.
+Each window status event can trigger only one AWS SNS message.
 
 The message is submitted to the specified AWS SNS endpoint using the `POST` method with `application/x-www-form-urlencoded` content type. The request includes additional AWS headers (`Authorization`, `X-Amz-Date`) and is signed with [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 

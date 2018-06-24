@@ -50,7 +50,7 @@ User Groups to which they belong.
 ### Inserting Data for New Entities
 
 Since non-existent entities cannot be assigned to a group, the `All Entities: Write` permission is required to create
-entities either in the user interface or by inserting data via API. User with a `API_DATA_WRITE` role but without the
+entities either in the web interface or by inserting data via API. User with a `API_DATA_WRITE` role but without the
 `All Entities: Write` permission are able to insert data only for existing entities.
 
 ### Wildcard Requests

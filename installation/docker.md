@@ -71,9 +71,9 @@ Web interface is now accessible on port `8443` (https).
 |`COLLECTOR_USER_PASSWORD` | No | [Password](../administration/user-authentication.md#password-requirements) for a data collector account.|
 |`COLLECTOR_USER_TYPE` | No | User group for a data collector account, default value is `writer`.|
 |`DB_TIMEZONE` | No | Database [time zone identifier](../shared/timezone-list.md).|
-|`JAVA_OPTS` | No | Additional arguments to be passed to ATSD JVM process. |
-|`HADOOP_OPTS` | No | Additional arguments to be passed to Hadoop/HDFS JVM processes. |
-|`HBASE_OPTS` | No | Additional arguments to be passed to HBase JVM processes. |
+|`JAVA_OPTS` | No | Additional arguments passed to ATSD JVM process. |
+|`HADOOP_OPTS` | No | Additional arguments passed to Hadoop/HDFS JVM processes. |
+|`HBASE_OPTS` | No | Additional arguments passed to HBase JVM processes. |
 
 View additional launch examples [here](#start-container).
 

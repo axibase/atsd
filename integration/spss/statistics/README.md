@@ -16,7 +16,7 @@ The [IBM Statistical Package for the Social Sciences 24](https://www.ibm.com/ana
 
 SPSS provides several options for loading datasets from external data sources, such as Excel files or remote databases. To complete this exercise, sample data must be available in your instance of ATSD.
 
-## SPSS User Interface
+## SPSS Interface
 
 **Menu Item** | **Description**
 --------- | -----------

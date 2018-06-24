@@ -8,7 +8,7 @@
 | [4714](#issue-4714) | data-api | Bug | Fix error when the [series query](../../api/data/series/query.md) request includes two queries with aggregations using different periods. |
 | 4709 | portal | Support | Upgrade the built-in portals to the latest syntax by removing Freemarker functions where possible. |
 | [4708](#issue-4708) | sql | Bug | `LIMIT` clause not applied correctly with `ORDER BY datetime DESC`. |
-| [4707](#issue-4707) |UI| Feature | Multiple user interface enhancements. |
+| [4707](#issue-4707) |UI| Feature | Multiple web interface enhancements. |
 | [4706](#issue-4706) | install | Feature | Add support for JVM environment variables in the ATSD [Docker image](https://github.com/axibase/dockers#environment-variables). |
 | [4588](#issue-4588) | sql | Feature | Allow referencing the entity column in the `atsd_series` metric filter. |
 

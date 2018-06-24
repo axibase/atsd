@@ -1,6 +1,6 @@
 # File Upload
 
-Uploading `nmon` files can be done using a `wget` command or using the ATSD user interface.
+Uploading `nmon` files can be done using a `wget` command or using the ATSD web interface.
 
 Below are the commands and settings for uploading `nmon` files using a `wget` command.
 
@@ -29,6 +29,6 @@ Multiple `nmon` files can be uploaded simultaneously if archived. The archive ca
 
 > .zip, .tar, .tar.gz, .tar.bz2
 
-## Below is a Screenshot of nmon File User Interface Upload
+## File Web Interface Upload Example
 
 ![](./resources/upload-nmon-file.png "upload nmon file")

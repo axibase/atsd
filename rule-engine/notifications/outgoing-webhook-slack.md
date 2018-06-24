@@ -78,7 +78,7 @@ Slack Bot is a special account created for automation purposes.
 
    ![](./images/outgoing_webhook_slack_9.png)
 
-* Enter `message.im` to limit subscriptions only to messages sent **directly** to bot.
+* Enter `message.im` to limit subscriptions only to messages sent directly to bot.
 
    ![](./images/outgoing_webhook_slack_10.png)
 

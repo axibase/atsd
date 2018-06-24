@@ -15,7 +15,7 @@
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) to send chart screenshots directly into Discord.
+Install and configure the [Web Driver](web-driver.md) to send chart screenshots into Discord.
 
 ## Create Discord Server
 
@@ -89,7 +89,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 ## Proxy Settings
 
-If the Discord API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the Discord API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Discord:
 

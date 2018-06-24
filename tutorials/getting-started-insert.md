@@ -2,7 +2,7 @@
 
 ## Network Commands
 
-In the previous section you inserted data manually, using the built-in user interface forms. Proceed by inserting data in the network command format.
+In the previous section you inserted data manually, using the built-in web interface forms. Proceed by inserting data in the network command format.
 
 [Network commands](../api/network/README.md) provide a compact [syntax](../api/network/README.md#syntax) to insert both time series data as well as metadata.
 

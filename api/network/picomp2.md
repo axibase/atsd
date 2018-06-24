@@ -78,7 +78,7 @@ WHERE tag = 'sinusoid'
 
 * An `_index` column, which represents a sample order for a given timestamp, is ignored if `<= 1`. If `_index` exceeds `1`, the column is added as series tag.
 * `tag`, `value`, and `annotations` column values must be properly escaped if the value contains a comma, double quote, or line break.
-* Numbers must be formatted without the grouping separator using dot as the decimal separator.
+* Numbers must be formatted using dot (`.`) as the decimal separator and without the grouping separator.
 * Empty fields and fields with literal `null` values are ignored.
 
 ## `series` Command Mappings

@@ -159,7 +159,7 @@ The actual configuration displayed replaces the `${entity}` placeholder with the
     entity = nurswgvml013
 ```
 
-To open a template portal directly in the browser address bar, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
+To open a template portal in the browser, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
 
 ```elm
 https://atsd_hostname:8443/portal/{portal_id}.xhtml?entity={entity}

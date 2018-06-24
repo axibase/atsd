@@ -170,7 +170,7 @@ Change version _Status_ and _Source_, change the `Value` and click **Delete**.
 
 ![](./resources/12.png)
 
-Note that the value is not actually deleted. Rather, the current value for the selected timestamp is replaced with a `NaN` marker.
+Note that the current value for the selected timestamp is not actually deleted. Instead, it is replaced with a `NaN` marker.
 
 ![](./resources/13.png)
 

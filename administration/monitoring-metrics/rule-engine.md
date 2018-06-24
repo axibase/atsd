@@ -18,10 +18,10 @@ abs(forecast_deviation(wavg())) > 2
 This rule raises an alert if the absolute forecast deviates from the
 15 minute weighted average by more than 2 standard deviations.
 
-Email notifications can be setup for alerts to be delivered when the rule is triggered.
+Email notifications can be setup for alerts delivered when the rule is triggered.
 
 ![](./images/rule_engine_atsd_jmx.png "rule_engine_atsd_jmx")
 
-Below is an example sent email alert if the rule is triggered.
+Below is an example email alert.
 
 ![](./images/alert_message_email.png "alert_message_email")

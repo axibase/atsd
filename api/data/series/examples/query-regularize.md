@@ -7,7 +7,7 @@ The underlying series can be regularized by applying periodic aggregation using 
 * `FIRST` returns the first observed value in the given period.
 * `LAST` returns the last observed value in the given period.
 
-Both functions return actually recorded values, unlike `AVERAGE` and percentile functions, which calculate smoothed statistics.
+Both functions return raw (detailed) values, unlike `AVERAGE` and percentile functions, which calculate smoothed statistics.
 
 ## Request
 

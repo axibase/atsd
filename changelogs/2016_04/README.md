@@ -142,7 +142,7 @@ If the container was running in a prior iteration, and is not running in the nex
 
 ![Figure 9](./Images/Figure9.png)
 
-Additional user interface improvements on the JDBC configuration page:
+Additional web interface improvements on the JDBC configuration page:
 
 * Tooltips added to help describe form fields.
 * The number of iterated rows now does not exceed 1000 in a test run, even if the JDBC driver does not support setting the `maxRows` parameter.

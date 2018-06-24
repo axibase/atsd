@@ -6,7 +6,7 @@ Authentication mechanisms implemented in ATSD control how users verify their ide
 
 ### Form-based Authentication
 
-When an unauthenticated user requests access to a protected view in the user interface, the server redirects the user to a login page containing user name and password fields.
+When an unauthenticated user requests access to a protected view in the web interface, the server redirects the user to a login page containing user name and password fields.
 
 The user is granted access if the account for the specified username exists and the password is correct.
 

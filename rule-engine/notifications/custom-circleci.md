@@ -120,6 +120,6 @@ To verify that an alert was raised, open the page **Alerts > Open Alerts** and c
 
 ![](./images/circle_alert_open.png)
 
-Check the CircleCI user interface to make sure the target build was triggered.
+Check the CircleCI web interface to make sure the target build was triggered.
 
 ![](./images/circle_test.png)

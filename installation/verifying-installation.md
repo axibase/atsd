@@ -2,13 +2,13 @@
 
 Depending on the available resources, it can take 5-20 minutes for ATSD to initialize.
 
-## User Interface
+## Web Interface
 
 At the end of the installation process the script displays the ATSD IP address and ports.
 
 ![](./images/atsd_install_shell.png )
 
-Access the ATSD web interface on the secure port (8443 by default):
+Access the ATSD web interface on the secure port.
 
 ```txt
 https://192.0.2.116:8443

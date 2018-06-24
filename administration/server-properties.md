@@ -132,7 +132,7 @@ Property | Default Value | Description
 `cache.tagKey.maximum.size` | 50,000 | Maximum number of tag names to keep in server memory cache.|
 `cache.tagValue.maximum.size` | 100,000 | Maximum number of tag values to keep in server memory cache.|
 
-### User Interface
+### Web Interface
 
 Property | Default Value | Description
 ---|---|---

@@ -153,7 +153,7 @@ example 50 days in the above image). The status of these containers is marked as
 
 ![Figure 2](./Figure2.png)
 
-By default such records with the status `deleted` are not actually removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
+By default such records with the status `deleted` are not automatically removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 
 * `Retain deleted container records, days` : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
 

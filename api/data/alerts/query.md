@@ -45,7 +45,7 @@ An array of query objects containing the following fields:
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `limit`   | integer | Maximum number of records to be returned. Default: -1.<br>Limit is not applied if the parameter value <= 0. |
+| `limit`   | integer | Maximum number of records returned. Default: `-1`.<br>Limit is not applied if the parameter value <= `0`. |
 
 ## Response
 

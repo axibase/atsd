@@ -2,7 +2,7 @@
 
 ## Overview
 
-CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the user interface.
+CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the web interface.
 
 ![](./resources/csv.gif)
 

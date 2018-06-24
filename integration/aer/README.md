@@ -61,7 +61,7 @@ Example:
 ![](./redirect_settings.png)
 
 * Save these Settings.
-* Add the `url = /proxy` setting in widget configuration files that need to query ATSD directly:
+* Add the `url = /proxy` setting in widget configuration files to query ATSD directly:
 
 ```ls
 [configuration]

@@ -1,6 +1,6 @@
 # Monitoring Metrics using Database Tables
 
-Database Table statistics can be viewed directly in the ATSD user interface under
+Database Table statistics can be viewed in the ATSD web interface under
 **Settings > Storage > Database Tables**.
 
 Database Tables allow you to:

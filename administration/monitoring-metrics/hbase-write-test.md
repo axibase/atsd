@@ -1,6 +1,6 @@
 # Monitoring Metrics using the HBase Write Test
 
-The HBase Write Test can be run directly from the ATSD user interface under **Settings > Diagnostics > I/O Tests**.
+The HBase Write Test can be launched on the **Settings > Diagnostics > I/O Tests** page.
 
 HBase Write Test allows you to:
 

@@ -26,7 +26,7 @@ To this day, nmon remains the preferred data collection daemon on AIX and is gai
 
 On AIX, nmon is pre-installed on AIX 5.3 and 6.1 and newer versions by default. On older AIX versions 4.1.5, 4.2, 4.3, 5.1, and 5.2, nmon can be installed manually.
 
-In Linux, nmon is [released under GPL license](https://github.com/axibase/nmon). It can be downloaded as an [executable binary](https://github.com/axibase/nmon/releases) or can be compiled from source. Supported distributions include Ubuntu, Debian, RHEL, CentOS, Fedora, SLES, and OpenSUSE.
+In Linux, nmon is [released under GPL license](https://github.com/axibase/nmon). It can be downloaded as an [executable binary](https://github.com/axibase/nmon/releases) or compiled from source. Supported distributions include Ubuntu, Debian, RHEL, CentOS, Fedora, SLES, and OpenSUSE.
 
 The nmon file format is supported in ATSD natively. As a result, ATSD can be deployed as a centralized repository of nmon statistics and system commands collected from remote systems while providing access to [Visualization](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization"), [Alerting](../../rule-engine "Rule Engine"), and [Forecasting](../../forecasting/README.md) features.
 

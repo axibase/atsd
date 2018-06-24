@@ -20,7 +20,7 @@
 
 ### Load Sample Data
 
-To complete this exercise, sample data must be available in your ATSD instance.
+To complete this exercise, load sample data into your ATSD instance.
 
 1. Log into the ATSD web interface
 2. Open **Metrics > Data Entry**, select the **Commands** tab.

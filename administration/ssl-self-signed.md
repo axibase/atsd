@@ -10,14 +10,14 @@ As with all self-signed certificates, the new certificate continues to cause a s
 
 There are two options to create and import self-signed certificates into ATSD:
 
-* [User Interface](#user-interface)
+* [Web Interface](#user-interface)
 * [Endpoint Request](#endpoint-request)
 
 The certificates are installed without an ATSD restart.
 
-### User Interface
+### Web Interface
 
-Login as a user with administrative privileges.
+Log into ATSD as a user with administrative privileges.
 
 Open the **Settings > Certificates** page and click **Self Signed Certificate** in the split button:
 

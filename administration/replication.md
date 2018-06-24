@@ -255,7 +255,7 @@ The output contains replication activity and the of amount tables replicated on 
 
 > MASTER: the following steps must be executed only on the master machine.
 
-Open ATSD user interface and navigate to **Alert > Rules** page.
+Open ATSD web interface and navigate to the **Alert > Rules** page.
 
 ![](./images/atsd_rules_new.png)
 

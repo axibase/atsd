@@ -13,7 +13,7 @@
 5253 | security | Bug | Fix credentials error in newly created [webhook](../../administration/user-authorization.md#webhook-user).
 5252 | security | Feature | `Path` column added to table at **Settings** > **Diagnostics** > **Security Incidents** page.
 5250 | rule engine | Bug | Some errors not displayed in the rule engine.
-5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration unable to be cloned.
+5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration not cloned.
 5247 | rule engine | Bug | Validation error when trying to rename cloned [webhook](../../rule-engine/notifications/README.md) configuration.
 5246 | rule engine | Bug | [`flattenJson`](../../rule-engine/functions-table.md#flattenjson) function must ignore empty arrays.
 5240 | rule engine | Bug | [`db_last`](../../rule-engine/functions-series.md#db_last) function fails to load records older than 1 hour.

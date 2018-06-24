@@ -197,7 +197,7 @@ Example:
 
 Removes the part of string `s` before the last occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
+If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
 
 Example:
 
@@ -214,7 +214,7 @@ Example:
 
 Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
+If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
 
 Example:
 
@@ -231,7 +231,7 @@ Example:
 
 Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
+If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
 
 Example:
 
@@ -248,7 +248,7 @@ Example:
 
 Replaces all occurrences of the given substring `p` in the original string `s` with a second substring `r`.
 
-If `p` is empty, `null`, or unable to be found, the function returns the original string `s` unchanged.
+If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
 
 Examples:
 

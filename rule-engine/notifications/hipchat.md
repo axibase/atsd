@@ -103,7 +103,7 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 
 ## Proxy Settings
 
-If the HipChat API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the HipChat API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 ## Webhook Settings
 

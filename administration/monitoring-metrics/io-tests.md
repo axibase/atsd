@@ -1,6 +1,6 @@
 # Monitoring Metrics using I/O Tests
 
-I/O Tests can be run directly from the ATSD user interface under **Settings > Diagnostics > I/O Tests**.
+I/O Tests can be launched from the ATSD web interface under **Settings > Diagnostics > I/O Tests**.
 
 I/O Tests allow you to:
 

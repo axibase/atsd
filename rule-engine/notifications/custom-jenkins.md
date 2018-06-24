@@ -130,6 +130,6 @@ To verify that an alert was raised, open **Alerts > Open Alerts** page and check
 
 ![](./images/jenkins_alert_open.png)
 
-Check the Jenkins user interface to make sure the target build was triggered.
+Check the Jenkins web interface to make sure the target build was triggered.
 
 ![](./images/jenkins_test.png)
