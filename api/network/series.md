@@ -213,7 +213,7 @@ Restart
 
 [Versioning](../../versioning/README.md) enables tracking of time-series value changes for the purpose of establishing an audit trail and traceable data reconciliation.
 
-Versioning is disabled by default. It can be enabled for particular metrics by checking the Versioning box on the Metric Editor page.
+Versioning is disabled by default. It can be enabled for particular metrics by checking the **Versioning** switch in the **Metric Editor**.
 
 To insert versioning fields, use reserved tags:
 

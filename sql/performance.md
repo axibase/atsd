@@ -8,9 +8,9 @@ Monitoring query execution is an important administrative task to optimize datab
 
 The database keeps track of query executions including detailed statistics in an in-memory structure. The list of running and completed queries is available on the **SQL Query Statistics** page.
 
-The list can be filtered by user, source, status, query part, and elapsed time. Additional information about the query is displayed on the query detail page.
+The list can be filtered by user, source, status, query part, and elapsed time. Additional information about the query is displayed on the **Query Plan** page.
 
-Users with an `ADMIN` role are authorized to view and cancel all queries whereas non-administrative users are restricted to viewing and cancelling only their own queries.
+Users with an `ADMIN` role are authorized to view and cancel all queries whereas non-administrative users are restricted to viewing and cancelling their own queries.
 
 ![Query Reporting](./images/sql-query-reporting.png)
 
@@ -18,8 +18,8 @@ Query Detail Fields:
 
 | **Name** | **Description** |
 |:---|:---|
-| `Status` | New, Running, Completed, Error, Cancelled. |
-| `Source` | api, console, scheduled. |
+| `Status` | `New`, `Running`, `Completed`, `Error`, `Cancelled`. |
+| `Source` | `api`, `console`, `scheduled`. |
 | `User` | Name of the user who initiated the query.<br>For API clients, username specified in login credentials. |
 | `Query Id` | Unique query identifier. |
 | `Query Text` | Query statement text. |
@@ -42,9 +42,9 @@ Query Detail Fields:
 
 ## Cancelling Queries
 
-A running query can be cancelled at any time, for example if its is execution time is longer than expected.
+A running query can be cancelled at any time, for example if its execution time is longer than expected.
 
-When a query is cancelled results are not returned to the client and the query is stopped with an error.
+When a query is cancelled, the results are not returned to the client and the query is stopped with an error.
 
 A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` url and referencing the user-defined handle with the `{query-id}` parameter.
 
@@ -86,7 +86,7 @@ The most efficient query path is **metric+entity+date+tags**.
 Query execution speed can be improved by adopting the following guidelines for the `WHERE` clause:
 
 * Specify start time and end time whenever possible to limit the time range.
-* Specify entity name whenever possible to avoid a scan of all rows in the virtual table.
+* Specify entity name whenever possible to narrow the range of rows scanned.
 
 ## Query Optimization
 

@@ -13,11 +13,11 @@
 | [4454](#issue-4454) | api-rest | Feature | Standardize period alignment when period is measured in years. |
 | 4453 | security | Bug | User without necessary entity permissions can view series records on the Search tab. |
 | 4445 | message | Bug | Fixed a bug which caused [message retention](../../api/data/messages/delete.md#description) to not work. |
-| 4434 | security | Feature | Add option for administrators to impersonate another user account. The **Impersonate** button is available on the user's settings page. |
+| 4434 | security | Feature | Add option for administrators to impersonate another user account. The **Impersonate** button is available on the user settings page. |
 | 4424 | UI | Bug | Fix XML serialization in backup and export XML files if the database is using a file encoding other than UTF-8. |
 | 4407 | search | Bug | Fix a memory leak in HBase region servers during full search indexing. |
 | [4386](#issue-4386) | sql | Feature | Add support for querying `datetime` column using standard Timestamp format `yyyy-MM-dd[ HH:mm:SS]`. |
-| [4382](#issue-4382) | UI | Feature | Unique Values tab added to the Series Statistics page. |
+| [4382](#issue-4382) | UI | Feature | Unique Values tab added to the **Series Statistics** page. |
 
 ### Issue 4464
 

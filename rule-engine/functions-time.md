@@ -27,7 +27,7 @@ Date functions perform various operations on dates, timestamps, and intervals.
   now long
 ```
 
-Returns the current time as a [`DateTime`](object-datetime.md) object. The object's fields can be accessed with `get` methods.
+Returns the current time as a [`DateTime`](object-datetime.md) object. The object fields can be accessed with `get` methods.
 
 ```javascript
   // returns true on Thursdays

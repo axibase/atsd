@@ -36,9 +36,9 @@ Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Je
 
 Keep the `${job_name}` placeholder in the URL path so that the job name can be customized in the rule editor. This allows you to trigger different jobs using the same webhook.
 
-Enter the Jenkins user name into the `Username` field and the User API token into the `Password` field.
+Enter the Jenkins user name into the **Username** field and the User API token into the **Password** field.
 
-The API token can be located on the `User Configuration` page in the Jenkins web interface.
+The API token can be located on the **User Configuration** page in the Jenkins web interface.
 
 ![](./images/jenkins_token_1.png)
 
@@ -46,7 +46,7 @@ Click **Show API Token**.
 
 ![](./images/jenkins_token_2.png)
 
-Your token is displayed in the `API Token` field.
+Your token is displayed in the **API Token** field.
 
 ![](./images/jenkins_token_3.png)
 

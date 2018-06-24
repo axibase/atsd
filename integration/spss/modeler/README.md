@@ -9,7 +9,7 @@ calculating derived time series in the IBM SPSS Modeler interface and storing th
 
 Download sample [`series` commands](./resources/commands.txt).
 The series contain the Consumer Price Index (CPI) for each category
-of items in a consumer's basket as well as a weight for each category in the CPI
+of items in a consumer basket as well as a weight for each category in the CPI
 basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to
 2017 and uses Year 2016 values as the baseline. Weight values are available only for
 year 2017.
@@ -236,8 +236,8 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Verify Insertion
 
-To check that data is successfully exported to ATSD go to the ATSD web interface, click **SQL** and execute the
-following query
+To check that data is successfully exported to ATSD, open the ATSD web interface, open the **SQL > SQL Console** page and execute the
+following query:
 
 ```sql
 SELECT entity, datetime, value

@@ -10,7 +10,7 @@ loading time series data from ATSD, calculating derived time series in Alteryx a
 
 For the purpose of instruction, we use sample [`series` commands](./resources/commands.txt).
 The series contain the Consumer Price Index (CPI) for each category
-of items in a consumer's basket as well as a weight for each category in the CPI
+of items in a consumer basket as well as a weight for each category in the CPI
 basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to
 2017 and uses Year 2016 values as the baseline. Weight values are available only for
 year 2017.

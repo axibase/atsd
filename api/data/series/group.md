@@ -66,8 +66,8 @@ Values added by `extend` setting are determined as follows:
 | **Type** | **Description** |
 |:---|:---|
 | `NONE` | No interpolation. Periods without any raw values are excluded from results. |
-| `PREVIOUS` | Set value for the period based on the previous period's value. |
-| `NEXT` | Set value for the period based on the next period's value. |
+| `PREVIOUS` | Set value for the period based on the previous period value. |
+| `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
 | `VALUE` | Set value for the period to a specific number. |
 

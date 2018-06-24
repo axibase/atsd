@@ -22,7 +22,7 @@ Build a report illustrating the differences between exports and imports each yea
 * Copy `[Export Value]-[Import Value]`, double-click the rows field, paste the text, click **Enter**
 > In case of error remove `]` and select value from tooltip
 * Right-click **calculation > Dimension**
-* Select `Line` in the dropdown at Marks Card
+* Select `Line` in the drop-down list on the Marks Card
 * Optionally add [drop lines](comparison_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results

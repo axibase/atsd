@@ -30,7 +30,7 @@ The view can be accessed by users with [`read`](../administration/user-authoriza
 
 **Name** | **Description**
 ---|---
-Name | **[required]** View name displayed on the entity views page.
+Name | **[required]** View name displayed on the **Entity Views** page.
 Enabled | Status: enabled or disabled. <br>Disabled views are not visible on the **Entity Views** tab in the main menu.
 Entity Group | **[required]** [Entity group](entity_groups.md) which members are included in the view.
 Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in entity group [expressions](entity_groups.md#expression).
@@ -80,10 +80,10 @@ Enabled Column | Entity status.
 Entity Tag | Name of the entity tag.
 Property Tag | [Property search expression](../rule-engine/property-search.md) in the format of `type:[{key-name=key-value}]:tag-name`.
 Series Value | Name of the metric for which the last value for this entity is displayed.<br>If multiple series match the specified metric and entity, the value for the latest series is displayed.
-Name Column | Entity name with a link to the editor page for the entity.
-Label Column | Entity label with a link to the editor page for the entity.
+Name Column | Entity name with a link to the entity editor.
+Label Column | Entity label with a link to the entity editor.
 Portals Column | Link to the portals page for the entity.
-Properties Column | Link to the properties page for the entity.
+Properties Column | Link to the entity properties page.
 Last Insert | Last insert date for all or one metric collected by the entity with a link to the last insert table.<br>If the column value is not specified, the last insert date is calculated for all metrics. The column value accepts settings in the format of `metric:[lag]`, where the optional `lag` parameter denotes the maximum delay in seconds.<br> If the last insert date for the entity is before `now - lag`, the cell is highlighted with orange background. <br> See examples [below](#last-insert).
 
 #### Last Insert
@@ -457,7 +457,7 @@ Specify the following URL in the **Link Template** setting.
 
 #### Icon Link to Entity Portals
 
-The icon opens a link to all template portals assigned to the selected entity. The order of portals is determined based on the portal's display index.
+The icon opens a link to all template portals assigned to the selected entity. The order of portals is determined based on the portal display index.
 
 * Configuration
 

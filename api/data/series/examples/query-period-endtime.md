@@ -8,7 +8,7 @@ For a 1-minute period, each period starts at 0 seconds of each minute. For a 1-h
 
 This is called the `CALENDAR` alignment.
 
-For example, the default alignment can be changed so that the period's start or end time is aligned with boundaries of the requested time range.
+For example, the default alignment can be changed so that the period start or end time is aligned with boundaries of the requested time range.
 
 ## Request
 

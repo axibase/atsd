@@ -28,7 +28,7 @@ The user account can be configured to use either **Local** or **LDAP** authentic
 
 ### Local Accounts
 
-In case of Local authentication, ATSD stores the hashcode of the user password in the underlying HBase database.
+In case of **Local** authentication, ATSD stores the hashcode of the user password in the underlying HBase database.
 
 The user identity is verified if the hashcode of the submitted password matches the stored hashcode for the specified username.
 
@@ -36,7 +36,7 @@ The password is subject to the requirements outlined [below](#password-requireme
 
 ### LDAP Accounts
 
-In case of LDAP authentication, ATSD verifies that the account exists in ATSD and the password is confirmed by submitting an authentication request to the remote LDAP server.
+In case of **LDAP** authentication, ATSD verifies that the account exists in ATSD and the password is confirmed by submitting an authentication request to the remote LDAP server.
 
 If the LDAP server locates the specified account and confirms its password, the user is allowed to access ATSD.
 
@@ -46,7 +46,7 @@ The access is denied if the LDAP server cannot find the account or if the LDAP a
 
 The following password rules apply to **Local** accounts:
 
-* Password must contain at least **six** characters by default.
+* Password must contain at least **six** (`6`) characters by default.
 
 * The default minimum length can be adjusted in the `server.properties` file with the `user.password.min.length` setting.
 
@@ -92,13 +92,13 @@ To enable anonymous access to Data API query methods, set `api.guest.access.enab
 
 To expose the portal to all visitors, open the **Portals** tab in the top menu, click **Configure**, open the portal editor and check the **Guest Access** field.
 
-Since charts displayed in the portals are loaded via Data API, the Guest Access option is available only when Data API is configured for anonymous access.
+Since charts displayed in the portals are loaded via Data API, the **Guest Access** option is available only when Data API is configured for anonymous access.
 
 ![portal guest](./images/portal-guest.png)
 
 ## Guest Access to SQL Reports
 
-SQL query results can be published to all visitors by checking **Guest Access** field on the SQL configuration page.
+SQL query results can be published to all visitors by checking the **Guest Access** field on the query configuration page.
 
 ![sql guest](./images/sql-guest-access.png)
 

@@ -7,7 +7,7 @@
 | 4452 | UI | Bug | Fix response body formatting in the built-in API client. |
 | 4443 | email | Bug | Add support for UTF-8 characters in email subjects. |
 | 4435 | UI | Feature | Display alert message on Users and Entity Group pages if `api.guest.access.enabled` is enabled. |
-| 4433 | UI | Bug | Fix Delete button on the Portal Editor page. |
+| 4433 | UI | Bug | Fix Delete button in the portal editor. |
 | 4432 | installation | Bug | Read hostname from `/proc/sys/kernel/hostname` if the hostname command is not installed on the Linux server. |
 | 4428 | installation | Bug | Set file ownership to `axibase:axibase` instead of `axibase:root` when installing ATSD from deb/rpm package. |
 | 4421 | sql | Bug | Revert a change which caused empty results to be returned for a non-existing table without raising an error. |

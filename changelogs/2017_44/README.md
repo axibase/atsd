@@ -42,7 +42,7 @@ The `tags` parameter in [Entity Group: Get Entities](../../api/meta/entity-group
 
 ### Issue 4686
 
-The **Entity Link** field resolves the tag value to an entity and displays a link to its editor page. The tooltip contains entity label, if available.
+The **Entity Link** field resolves the tag value to an entity and displays a link the entity editor. The tooltip displays the entity label, if available.
 
 ![](./Images/entity-link.png)
 

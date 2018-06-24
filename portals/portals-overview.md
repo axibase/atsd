@@ -49,7 +49,7 @@ The portal is configured using the [Charts](https://github.com/axibase/charts#ax
 
 ### Layout
 
-Widgets are positioned on the portal page using a **grid** layout. The dimensions of the grid are specified under the `[configuration]` tag using the `width-units` and `height-units` settings. Each widgets occupies 1 horizontal and 1 vertical unit by default.
+Widgets are positioned on the portal using a **grid** layout. The dimensions of the grid are specified under the `[configuration]` tag using the `width-units` and `height-units` settings. Each widgets occupies 1 horizontal and 1 vertical unit by default.
 
 The following example creates a grid containing 6 units, with 3 widgets placed in the first row and 2 placed in the second.
 

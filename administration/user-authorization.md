@@ -29,11 +29,11 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 
 Permissions to read and write data for entities in a particular Entity Group are granted to the User Group level.
 
-To read data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
+To _read_ data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
 Groups must be granted a `read` permission to an Entity Group containing the
 entity.
 
-To write data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
+To _write_ data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
 
 ![entity_group_permission](./images/entity_group_permission.png)
 
@@ -44,7 +44,7 @@ entity-group-3 must be assigned to user-group-B or user-group-A.*
 
 ### All Entities Permissions
 
-In addition to specific Entity Group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data to any entity, including entities that do not belong to any Entity Group. Users inherit `All Entities` permissions from the
+In addition to specific Entity Group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data for any entity, including entities that do not belong to any Entity Group. Users inherit `All Entities` permissions from the
 User Groups to which they belong.
 
 ### Inserting Data for New Entities
@@ -106,4 +106,4 @@ The wizard creates a new user account automatically and makes it a member of the
 
 ## Implementation Notes
 
-The User's role, group membership, and entity permissions are cached while the user's session is active. The session is invalidated in case the user's authorization is changed by an administrator, in which case the user has to re-login.
+The User role, group membership, and entity permissions are cached while the user session is active. The session is invalidated in case the user authorization is changed by an administrator, in which case the user has to re-login.

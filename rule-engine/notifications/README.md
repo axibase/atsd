@@ -178,7 +178,7 @@ To disable sending alerts from any rule through the selected webhook, set its st
 
 ### Notification Logs
 
-Notification results are recorded in the database as messages and can be viewed under the `notification` type on the Message Search page.
+Notification results are recorded in the database as messages and can be viewed under the `notification` type on the **Message Search** page.
 
 ```elm
 /messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK

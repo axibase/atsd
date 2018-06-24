@@ -54,7 +54,7 @@ Example:
 getEntityLink('nurswgvml007')
 ```
 
-The returned link includes the path to the entity page on the target database server:
+The function returns URL to the entity editor for the specified entity.
 
 ```elm
 https://atsd_hostname:8443/entities/nurswgvml007

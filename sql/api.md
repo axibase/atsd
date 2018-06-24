@@ -8,7 +8,7 @@ To obtain result metadata without executing the query, submit the query to [`/ap
 
 ## Authorization
 
-The rows returned for the SQL query are filtered by the server according to the user's entity `read` permissions.
+The rows returned for the SQL query are filtered by the server according to the entity `read` permissions granted to the user.
 
 This means that the same query executed by users with different entity permissions may produce different results.
 

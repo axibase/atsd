@@ -128,7 +128,7 @@ Open **Metrics** tab in the main menu and search for `temperature`. The search b
 
 ![](./resources/metric-search.png)
 
-The metric editor provides more built-in fields compared to entities because the concept of metric is shared by many domains and fields such as units, value range, precision, seasonality, etc. are commonly required.
+The **Metric Editor** provides more built-in fields compared to entities because the concept of metric is shared by many domains and fields such as units, value range, precision, seasonality, etc. are commonly required.
 
 Set **Label** to `Temperature` and set fields as follows:
 

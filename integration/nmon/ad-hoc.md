@@ -20,7 +20,7 @@ This is a one time task.
 
 * Open the **Portals > Configure** page.
 * At the bottom of the page click **Import** and select either the downloaded `nmon_AIX` or `nmon_Linux` portal. If you are collecting data from AIX systems, choose `nmon_AIX`. If you are collecting data from Linux systems, choose `nmon_Linux`.
-* On the Portals page, keep a note of the unique portal ID that you just imported.
+* On the **Portals** page, keep a note of the unique portal ID that you just imported.
 
 ![](./resources/portals_import.png)
 

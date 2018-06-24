@@ -196,7 +196,7 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/s
 | **Method** | **Path** | **Description** |
 |:---|:---|:---|
 | `POST` | [`/properties/insert`](./properties/insert.md) | Inserts an array of properties. |
-| `POST` | [`/properties/query`](./properties/query.md) | Retrieves property records matching specified filters. |
+| `POST` | [`/properties/query`](./properties/query.md) | Retrieves property records for specified filters. |
 | `GET` | [`/properties/{entity}/types/{type}`](./properties/url-query.md) | Retrieves property records for the specified entity and type. |
 | `GET` | [`/properties/{entity}/types`](./properties/type-query.md) |  Retrieves an array of property types for the entity.  |
 | `POST` | [`/properties/delete`](./properties/delete.md) | Deletes property records that match specified filters. |

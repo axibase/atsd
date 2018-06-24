@@ -20,7 +20,7 @@ Once enabled, the database tracks changes made to stored values with the followi
 
 Versioning is **disabled** by default.
 
-It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to **Yes** in the multi-record editor, or by enabling **Versioning** on the Metric Editor page:
+It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to **Yes** in the multi-record editor, or by enabling **Versioning** in the **Metric Editor**.
 
 ![](./resources/1.png)
 
@@ -66,11 +66,11 @@ Versioned samples can be added by opening **Data > Data Entry > Series** form an
 
 ![](./resources/8.png)
 
-> Note: _Metric_ field must reference an existing metric with _Versioning = Yes_
+> Note: **Metric** field must reference an existing metric with _Versioning = Yes_
 
 ### CSV Parser using Default Tags
 
-To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** field in the CSV parser or on the [CSV File Upload](../parsers/csv/README.md#uploading-csv-files) page:
+To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** field in the CSV parser or on the [CSV File Upload](../parsers/csv/README.md#uploading-csv-files) page.
 
 ```ls
 $version_status={status}
@@ -99,7 +99,7 @@ Version history can be retrieved on the [Ad-hoc Export](../reporting/ad-hoc-expo
 
 ### Ad-hoc Export page
 
-Open the **Filters** section and enable **Display Versions** setting on export page:
+Open the **Filters** section and enable **Display Versions** setting on export page.
 
 ![](./resources/4.png)
 
@@ -152,7 +152,7 @@ Click timestamp for the selected record to open the **Data Entry** page.
 
 ![](./resources/9.png)
 
-Change version _Status_ and _Source_, change the `Value` and click **Update**.
+Change version **Status**, **Source**, and **Value** fields and click **Update**.
 
 ![](./resources/10.png)
 
@@ -174,7 +174,7 @@ Note that the current value for the selected timestamp is not actually deleted. 
 
 ![](./resources/13.png)
 
-A value can also be deleted using the selection checkbox and **Delete** button on the export page.
+A value can also be deleted using the selection checkbox and **Delete** button on the **Data > Export** page.
 
 ![](./resources/14.png)
 

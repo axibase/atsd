@@ -111,9 +111,9 @@ WHERE entity = 'nurswgvml007'
 
 ## Query with End Time Syntax
 
-[Calendar](../../shared/calendar.md) keywords are calculated based on the current server time and the server's [time zone](../../shared/timezone-list.md).
+[Calendar](../../shared/calendar.md) keywords are calculated based on the current server time and the server [time zone](../../shared/timezone-list.md).
 
-If the server's time zone is `Europe/Berlin`, for example, the `current_day` keyword in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
+If the server time zone is `Europe/Berlin`, for example, the `current_day` keyword in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS local_datetime, value

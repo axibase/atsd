@@ -28,7 +28,7 @@ Install and configure the [Web Driver](web-driver.md) to send chart screenshots 
 
     ![](./images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot's username must end with `_bot` and cannot contain dash `-` symbol.
+* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
 
 ```txt
     Use this token to access the HTTP API:

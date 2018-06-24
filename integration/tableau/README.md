@@ -37,7 +37,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 * Launch Tableau
 * Select **Connect > To a Server > Other Databases(ODBC)**
-* Select the ATSD DSN from the dropdown. This is the DSN you specified during ODBC-JDBC bridge setup
+* Select the ATSD DSN from the drop-down list. This is the DSN you specified during ODBC-JDBC bridge setup
 * Click **Connect** and wait a few seconds
 * Leave the **Server**,**Port**, **Database** and **String Extras** fields empty
 * Click **Sign In**

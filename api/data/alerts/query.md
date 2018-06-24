@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves a list of **open** alerts matching specified filters.
+Retrieves **open** alerts for specified filters.
 
 ## Request
 

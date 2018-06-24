@@ -16,7 +16,7 @@ Display the minimum exports each year.
 * Drag-and-drop `Value` to the Marks Card, right-click **Measure** > **Minimum**, replace `Detail` with `Size`
 * Drag-and-drop `Datetime` to the Marks Card, replace `Detail` with `Color`
 * Drag-and-drop `Datetime` to the Marks Card, right-click the **QUARTER > YEAR**, replace `Detail` with `Label`
-* Change _Automatic_ to _Circle_ in the dropdown at Marks Card
+* Change _Automatic_ to _Circle_ in the drop-down list on the Marks Card
 
 ## Results
 

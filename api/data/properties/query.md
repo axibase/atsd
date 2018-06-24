@@ -2,7 +2,18 @@
 
 ## Description
 
-Retrieves property records matching specified filters.
+Retrieves property records for the specified filters including type, entity, key, and time range.
+
+Basic example:
+
+```json
+[{
+  "type": "disk",
+  "entity": "nurswgvml007",
+  "startDate": "now - 1 * DAY",
+  "endDate": "now",
+}]
+```
 
 ## Request
 
@@ -131,15 +142,13 @@ POST /api/v1/properties/query
 #### Payload
 
 ```json
-[
-    {
-      "type": "disk",
-      "entity": "nurswgvml007",
-      "key": { "file_system": "/" },
-      "startDate": "2016-05-25T04:00:00Z",
-      "endDate":   "2016-05-25T05:00:00Z"
-     }
-]
+[{
+  "type": "disk",
+  "entity": "nurswgvml007",
+  "key": { "file_system": "/" },
+  "startDate": "2016-05-25T04:00:00Z",
+  "endDate":   "2016-05-25T05:00:00Z"
+}]
 ```
 
 #### curl

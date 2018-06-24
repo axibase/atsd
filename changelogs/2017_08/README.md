@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
-| 3951 | sql         | Feature | Granted permissions to USER role to cancel the user's own query.                             |
+| 3951 | sql         | Feature | Granted permissions to users with `USER` role to cancel the own queries.                             |
 | 3942 | core        | Bug     | Fixed `PermGen` Error by setting `MaxPermGen` in start script.                                   |
 | [3938](#issue-3938) | admin       | Bug     | Added `PermGen` memory usage metrics.                                     |
 | 3934 | admin       | Support | Set `MaxPermGen` to 128 MB in start-atsd scripts.                           |
@@ -53,7 +53,7 @@ The following [placeholders](https://axibase.com/docs/axibase-collector/jobs/jso
 
 ### Issue 3926
 
-Fields accessed by the array index have been added to dropdown menu.
+Fields accessed by the array index have been added to drop-down list.
 
 ![](./Images/Figure_04.png)
 ![](./Images/Figure_05.png)

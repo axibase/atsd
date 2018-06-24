@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `scriptOut` function executes a bash or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script's `stdout` and `stderr` output.
+The `scriptOut` function executes a bash or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
 
 The function accepts an array of arguments which may include window [placeholders](placeholders.md) such as `entity` or `tags`.
 

@@ -15,7 +15,7 @@ Issue| Category    | Type    | Subject
 4913 | client | Feature | Upgrade [R client](https://github.com/axibase/atsd-api-r/blob/master/README.md) to remove dependency on user home directory.
 4911 | rule engine | Bug | Pass query into an [SQL client](../..//sql/client/README.md) containing `>` character.
 4910 | rule engine | Bug | Implement [`executeSqlQuery`](../../rule-engine/functions-sql.md#executesqlquery) function to retrieve SQL query results in rule conditions and notifications.
-4908 | rule engine | Feature | Create rule from the message search page.
+4908 | rule engine | Feature | Create rule from the message **Search** page.
 4901 | rule engine | Feature | Implement [utility](../../rule-engine/functions-utility.md#utility-functions)  functions to parse URL fields.
 4900 | rule engine | Feature | Implement [`getEntityName`](../../rule-engine/functions-lookup.md#getentityname) lookup function.
 4899 | rule engine | Feature | Implement [`trim`](../../rule-engine/functions-text.md#trim) text function to remove leading and trailing non-printable characters.

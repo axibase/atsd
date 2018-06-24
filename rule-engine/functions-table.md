@@ -529,7 +529,7 @@ Processing rules:
 
 * String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function raises an exception.
 * The JSON object is traversed to locate fields with primitive data types: `number`, `string`, and `boolean`.
-* The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
+* The field value is added to the map with a key set to its full name, created by appending the field local name to the full name of its parent object using `.` as a separator.
 * If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
 * Fields with `null`, empty string, empty array, and empty object values are ignored.
 

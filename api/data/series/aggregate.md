@@ -32,7 +32,7 @@ The aggregation process is implemented as follows:
 |:---|:---|:---|
 | `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | `count`  | number | Number of time units contained in the period. |
-| `align` | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
+| `align` | string | Alignment of the period start/end time. Default: `CALENDAR`.|
 | `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information** page.|
 
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
@@ -114,8 +114,8 @@ Values added by the `extend` setting are determined as follows:
 | **Type** | **Description** |
 |:---|:---|
 | `NONE` | No interpolation. Periods without any raw values are excluded from results. |
-| `PREVIOUS` | Set value for the period based on the previous period's value. |
-| `NEXT` | Set value for the period based on the next period's value. |
+| `PREVIOUS` | Set value for the period based on the previous period value. |
+| `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
 | `VALUE` | Set value for the period to a specific number. |
 

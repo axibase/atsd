@@ -15,7 +15,7 @@
 | **Name** | **Method** | **Path** | **Content-Type** | **Description** |
 |:---|:---|:---|:---|:---|
 | [Insert](properties/insert.md) | POST | `/api/v1/properties/insert` | `application/json` | Insert an array of properties. |
-| [Query](properties/query.md) | POST | `/api/v1/properties/query` | `application/json` | Retrieve property records matching specified filters. |
+| [Query](properties/query.md) | POST | `/api/v1/properties/query` | `application/json` | Retrieve property records for specified filters. |
 | [URL Query](properties/url-query.md) | GET | `/api/v1/properties/{entity}/types/{type}` |  | Retrieve property records for the specified entity and type. |
 | [Type Query](properties/type-query.md) | GET | `/api/v1/properties/{entity}/types` |  | Retrieve an array of property types for the entity.  |
 | [Delete](properties/delete.md) | POST | `/api/v1/properties/delete` | `application/json` | Delete property records that match specified filters. |
@@ -33,7 +33,7 @@
 
 | **Name** | **Method** | **Path** | **Content-Type** | **Description** |
 |:---|:---|:---|:---|:---|
-| [Query](alerts/query.md) | POST | `/api/v1/alerts/query` | `application/json` | Retrieve a list of open alerts matching specified filters. |
+| [Query](alerts/query.md) | POST | `/api/v1/alerts/query` | `application/json` | Retrieve open alerts for specified filters. |
 | [History Query](alerts/history-query.md) | POST | `/api/v1/alerts/history/query` | `application/json` | Retrieve a list of closed alerts matching specified fields. |
 | [Update](alerts/update.md) | POST | `/api/v1/alerts/update` | `application/json` | Change acknowledgement status of the specified open alerts. |
 | [Delete](alerts/delete.md) | POST | `/api/v1/alerts/delete` | `application/json` | Delete specified alerts by id from the memory store. |

@@ -104,7 +104,7 @@ Returns the square root of `x`.
   exp(double x) double
 ```
 
-Returns `Euler's` constant `e` (2.718281828459045) raised to the power of `x`.
+Returns `Euler` constant `e` (2.718281828459045) raised to the power of `x`.
 
 ## `log`
 

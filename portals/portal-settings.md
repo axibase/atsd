@@ -13,7 +13,7 @@
 
 ## Layout
 
-Widget are positioned on the portal page using a **grid** layout. The dimensions of the grid are specified under the `[configuration]` tag.
+Widgets are positioned on the portal page using a **grid** layout. The dimensions of the grid are specified under the `[configuration]` tag.
 
 ```ls
 [configuration]

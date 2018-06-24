@@ -80,7 +80,7 @@ repeat=1
 
 ## JSON Payload
 
-The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag's name is set from the field's path, which is composed from the parent object's path, followed by dot `.` and the field's own name. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
+The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag name is set from the field path, which is composed from the parent object path, followed by dot `.` and the field's own name. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
 
 Input document:
 
@@ -132,7 +132,7 @@ Since stored message are always associated with an entity, the request must incl
       entity = test-1
     ```
 
-1. The entity can be extracted from a JSON field by referencing the field's full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
+1. The entity can be extracted from a JSON field by referencing the field full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
 
     ```json
       {
