@@ -81,27 +81,27 @@ const restApiMenu = [
     ['', 'Overview'], // Waiting for New overview page
     {
         title: 'Series', children: [
-            `/api/data/series/insert`,
+            `/api/data/series/get`,
             `/api/data/series/query`,
+            `/api/data/series/insert`,
             `/api/data/series/csv-insert`,
-            `/api/data/series/url-query`,
             `/api/data/series/delete`,
         ]
     },
     {
         title: 'Properties', children: [
-            `/api/data/properties/insert`,
+            `/api/data/properties/get`,
             `/api/data/properties/query`,
-            `/api/data/properties/url-query`,
-            `/api/data/properties/type-query`,
+            `/api/data/properties/list-types`,
+            `/api/data/properties/insert`,
             `/api/data/properties/delete`,
         ]
     },
     {
         title: 'Messages', children: [
+            `/api/data/messages/query`,
             `/api/data/messages/insert`,
             `/api/data/messages/webhook`,
-            `/api/data/messages/query`,
             `/api/data/messages/delete`,
             `/api/data/messages/count`,
         ]

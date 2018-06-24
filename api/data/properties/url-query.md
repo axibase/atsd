@@ -1,4 +1,4 @@
-# Properties: URL Query
+# Properties: Get
 
 ## Description
 

@@ -157,57 +157,49 @@ curl http://localhost:20088/api/v1/series/insert \
 cat json-in.log
 ```
 
-Each API method in this guide provides links to examples containing sample request and response objects.
+Each API method below provides examples containing sample request and response objects.
 
 ## Data API Endpoints
 
-The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/series/insert`.
+The endpoints listed below are accessible under the `/api/v1/` context path, for example `/api/v1/series/insert`.
 
 ### Series
 
-* `POST` [`/series/insert`](./series/insert.md)
-
-  Inserts a timestamped array of numbers for a given series identified by metric, entity, and series tags.
-
-* `POST` [`/series/insert`](./series/insert.md)
-
-  Inserts a timestamped array of numbers for a given series identified by metric, entity, and series tags.
-
-| **Method** | **Path** / **Description** |
+| **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
-| `POST` | [`/series/insert`](./series/insert.md)<br>Inserts a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
-| `POST` | [`/series/query`](./series/query.md) <br> Retrieves series with timestamped values for specified filters.|
-| `POST` | [`/series/csv/{entity}`](./series/csv-insert.md) <br> Inserts series values for the specified entity and series tags in CSV format.|
-| `GET` | [`/series/{format}/{entity}/{metric}`](./series/url-query.md) <br> Retrieves series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
-| `POST` | [`/series/delete`](./series/delete.md) <br> Deletes series for the specified entity, metric, and optional series tags. |
+| [Get](./series/get.md) | `GET` `/series/{format}/{entity}/{metric}` <br>  Retrieves series values for the specified entity, metric, and series tags in CSV and JSON format. |
+| [Query](./series/query.md) | `POST` `/series/query` <br> Retrieves series values for the specified filters in JSON format. Supports advanced filtering and transformation options compare to [Get](./series/get.md) method.|
+| [Insert](./series/insert.md) | `POST` `/series/insert`<br> Inserts a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
+| [CSV Insert](./series/csv-insert.md) | `POST` `/series/csv/{entity}` <br> Inserts series values for the specified entity and series tags in CSV format.|
+|[Delete](./series/delete.md) | `POST` `/series/delete` <br> Deletes series for the specified entity, metric, and optional series tags. |
 
 ### Messages
 
-| **Method** | **Path** | **Description** |
-|:---|:---|:---|
-| `POST` | [`/messages/insert`](./messages/insert.md) | Inserts an array of messages.
-| `POST` | [`/messages/webhook/`](./messages/webhook.md) | Creates message from an HTTP request with optional JSON payload and insert it.
-| `POST` | [`/messages/query`](./messages/query.md)  | Retrieves message records for the specified filters. |
-| - | [-](./messages/delete.md) | Executes administrative actions to delete message records. |
-| `POST` | [`/messages/stats/query`](./messages/count.md)  |  Calculates the number of messages per period.  |
+| **Method** | **Path** / **Description** |
+|:---|:---|
+| `POST` | [`/messages/insert`](./messages/insert.md) <br>Inserts an array of messages.
+| `POST` | [`/messages/webhook/`](./messages/webhook.md) <br>Creates message from an HTTP request with optional JSON payload and insert it.
+| `POST` | [`/messages/query`](./messages/query.md)  <br>Retrieves message records for the specified filters. |
+| - | [-](./messages/delete.md) <br>Executes administrative actions to delete message records. |
+| `POST` | [`/messages/stats/query`](./messages/count.md) <br>Calculates the number of messages per period.  |
 
 ### Properties
 
-| **Method** | **Path** | **Description** |
-|:---|:---|:---|
-| `POST` | [`/properties/insert`](./properties/insert.md) | Inserts an array of properties. |
-| `POST` | [`/properties/query`](./properties/query.md) | Retrieves property records matching specified filters. |
-| `GET` | [`/properties/{entity}/types/{type}`](./properties/url-query.md) | Retrieves property records for the specified entity and type. |
-| `GET` | [`/properties/{entity}/types`](./properties/type-query.md) |  Retrieves an array of property types for the entity.  |
-| `POST` | [`/properties/delete`](./properties/delete.md) | Deletes property records that match specified filters. |
+| **Method** | **Path** / **Description** |
+|:---|:---|
+| `GET` | [`/properties/{entity}/types/{type}`](./properties/get.md) <br>Retrieves property records for the specified entity and type. |
+| `POST` | [`/properties/query`](./properties/query.md) <br>Retrieves property records matching specified filters. |
+| `GET` | [`/properties/{entity}/types`](./properties/list-types.md) <br>Retrieves an array of property types for the entity.  |
+| `POST` | [`/properties/insert`](./properties/insert.md) <br>Inserts an array of properties. |
+| `POST` | [`/properties/delete`](./properties/delete.md) <br>Deletes property records that match specified filters. |
 
 ### Extended
 
-| **Method** | **Path** | **Description** |
-|:---|:---|:---|
-| `POST` | [`/command`](./ext/command.md) | Inserts data using commands in Network API via HTTP. |
-| `POST` | [`/csv`](./ext/csv-upload.md) | Accepts CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser. |
-| `POST` | [`/nmon`](./ext/nmon-upload.md) | Accepts nmon file for parsing. |
+| **Method** | **Path** / **Description** |
+|:---|:---|
+| `POST` | [`/command`](./ext/command.md) <br>Inserts data using commands in Network API via HTTP. |
+| `POST` | [`/csv`](./ext/csv-upload.md) <br>Accepts CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser. |
+| `POST` | [`/nmon`](./ext/nmon-upload.md) <br>Accepts nmon file for parsing. |
 
 ## Meta API Endpoints
 
@@ -215,48 +207,48 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/v
 
 ### Metric
 
-| **Method** | **Path** | **Description** |
-|:---|:---|:---|
-| `GET` | [`/metrics/{metric}`](../meta/metric/get.md) |  Retrieves properties and tags for the specified metric. |
-| `GET` | [`/metrics`](../meta/metric/list.md) |  Retrieves a list of metrics matching the specified filter conditions. |
-| `PATCH` | [`/metrics/{metric}`](../meta/metric/update.md) | Updates fields and tags of the specified metric. |
-| `PUT` | [`/metrics/{metric}`](../meta/metric/create-or-replace.md) | Creates a metric with specified fields and tags or replaces the fields and tags of an existing metric. |
-| `DELETE` | [`/metrics/{metric}`](../meta/metric/delete.md) | Deletes the specified metric. |
-| `GET` | [`/metrics/{metric}/series`](../meta/metric/series.md) | Returns a list of series for the metric. |
-| `GET` | [`/metrics/{metric}/series/tags`](../meta/metric/series-tags.md) | Returns a list of unique series tag values for the metric. |
+| **Method** | **Path** / **Description** |
+|:---|:---|
+| `GET` | [`/metrics/{metric}`](../meta/metric/get.md) <br> Retrieves properties and tags for the specified metric. |
+| `GET` | [`/metrics`](../meta/metric/list.md) <br> Retrieves a list of metrics matching the specified filter conditions. |
+| `PATCH` | [`/metrics/{metric}`](../meta/metric/update.md) <br> Updates fields and tags of the specified metric. |
+| `PUT` | [`/metrics/{metric}`](../meta/metric/create-or-replace.md) <br> Creates a metric with specified fields and tags or replaces the fields and tags of an existing metric. |
+| `DELETE` | [`/metrics/{metric}`](../meta/metric/delete.md) <br> Deletes the specified metric. |
+| `GET` | [`/metrics/{metric}/series`](../meta/metric/series.md) <br> Returns a list of series for the metric. |
+| `GET` | [`/metrics/{metric}/series/tags`](../meta/metric/series-tags.md) <br> Returns a list of unique series tag values for the metric. |
 
 ### Entity
 
-| **Method** | **Path** | **Description** |
-|:---|:---|:---|
-| `GET` | [`/entities/{entity}`](../meta/entity/get.md) |  Retrieves information about the specified entity including its tags. |
-| `GET` | [`/entities`](../meta/entity/list.md) |  Retrieves a list of entities matching the specified filter conditions. |
-| `PATCH` | [`/entities/{entity}`](../meta/entity/update.md) | Updates fields and tags of the specified entity.  |
-| `PUT` | [`/entities/{entity}`](../meta/entity/create-or-replace.md) | Creates an entity with specified fields and tags or replaces the fields and tags of an existing entity.  |
-| `DELETE` | [`/entities/{entity}`](../meta/entity/delete.md) | Deletes the specified entity and delete it as member from any entity groups that it belongs to.  |
-| `GET` | [`/entities/{entity}/groups`](../meta/entity/entity-groups.md) | Retrieves a list of entity groups to which the specified entity belongs. |
-| `GET` | [`/entities/{entity}/metrics`](../meta/entity/metrics.md) | Retrieves a list of metrics collected by the entity. |
-| `GET` | [`/entities/{entity}/property-types`](../meta/entity/property-types.md) | Retrieves a list property types for the entity. |
+| **Method** | **Path** / **Description** |
+|:---|:---|
+| `GET` | [`/entities/{entity}`](../meta/entity/get.md) <br> Retrieves information about the specified entity including its tags. |
+| `GET` | [`/entities`](../meta/entity/list.md) <br> Retrieves a list of entities matching the specified filter conditions. |
+| `PATCH` | [`/entities/{entity}`](../meta/entity/update.md) <br> Updates fields and tags of the specified entity.  |
+| `PUT` | [`/entities/{entity}`](../meta/entity/create-or-replace.md) <br> Creates an entity with specified fields and tags or replaces the fields and tags of an existing entity.  |
+| `DELETE` | [`/entities/{entity}`](../meta/entity/delete.md) <br> Deletes the specified entity and delete it as member from any entity groups that it belongs to.  |
+| `GET` | [`/entities/{entity}/groups`](../meta/entity/entity-groups.md) <br> Retrieves a list of entity groups to which the specified entity belongs. |
+| `GET` | [`/entities/{entity}/metrics`](../meta/entity/metrics.md) <br> Retrieves a list of metrics collected by the entity. |
+| `GET` | [`/entities/{entity}/property-types`](../meta/entity/property-types.md) <br> Retrieves a list property types for the entity. |
 
 ### Entity Group
 
-| **Method** | **Path** | **Description** |
-|:---|:---|:---|
-| `GET` | [`/entity-groups/{group}`](../meta/entity-group/get.md) |  Retrieves information about the specified entity group including its tags. |
-| `GET` | [`/entity-groups`](../meta/entity-group/list.md) |  Retrieves a list of entity groups. |
-| `PATCH` | [`/entity-groups/{group}`](../meta/entity-group/update.md) |  Updates fields and tags of the specified entity group.  |
-| `PUT` | [`/entity-groups/{group}`](../meta/entity-group/create-or-replace.md) |  Creates an entity group with specified fields and tags or replaces the fields and tags of an existing entity group.  |
-| `DELETE` | [`/entity-groups/{group}`](../meta/entity-group/delete.md) | Deletes the specified entity group.  |
-| `GET` | [`/entity-groups/{group}/entities`](../meta/entity-group/get-entities.md) | Retrieves a list of entities that are members of the specified entity group and are matching the specified filter conditions.  |
-| `POST` | [`/entity-groups/{group}/entities/add`](../meta/entity-group/add-entities.md) |  Adds entities as members to the specified entity group. |
-| `POST` | [`/entity-groups/{group}/entities/set`](../meta/entity-group/set-entities.md) | Sets members of the entity group from the specified entity list. |
-| `POST` | [`/entity-groups/{group}/entities/delete`](../meta/entity-group/delete-entities.md) | Removes specified entities from members of the specified entity group. |
+| **Method** | **Path** / **Description** |
+|:---|:---|
+| `GET` | [`/entity-groups/{group}`](../meta/entity-group/get.md) <br> Retrieves information about the specified entity group including its tags. |
+| `GET` | [`/entity-groups`](../meta/entity-group/list.md) <br> Retrieves a list of entity groups. |
+| `PATCH` | [`/entity-groups/{group}`](../meta/entity-group/update.md) <br> Updates fields and tags of the specified entity group.  |
+| `PUT` | [`/entity-groups/{group}`](../meta/entity-group/create-or-replace.md) <br> Creates an entity group with specified fields and tags or replaces the fields and tags of an existing entity group.  |
+| `DELETE` | [`/entity-groups/{group}`](../meta/entity-group/delete.md) <br> Deletes the specified entity group.  |
+| `GET` | [`/entity-groups/{group}/entities`](../meta/entity-group/get-entities.md) <br> Retrieves a list of entities that are members of the specified entity group and are matching the specified filter conditions.  |
+| `POST` | [`/entity-groups/{group}/entities/add`](../meta/entity-group/add-entities.md) <br> Adds entities as members to the specified entity group. |
+| `POST` | [`/entity-groups/{group}/entities/set`](../meta/entity-group/set-entities.md) <br> Sets members of the entity group from the specified entity list. |
+| `POST` | [`/entity-groups/{group}/entities/delete`](../meta/entity-group/delete-entities.md) <br> Removes specified entities from members of the specified entity group. |
 
 ### Miscellaneous
 
-| **Method** | **Path** | **Description** |
+| **Method** | **Path** / **Description** |
 |:---|:---|:---|
-| `GET` | [`/version`](../meta/misc/version.md) | Returns database version including licensing details as well as a date object with local time and offset. |
-| `GET` | [`/ping`](../meta/misc/ping.md) | Returns HTTP `200 OK` status code to check connectivity and authentication.|
-| `GET` | [`/permissions`](../meta/misc/permissions.md) |  Returns roles and permissions for the current user. |
-| `GET` | [`/search`](../meta/misc/search.md) |  Search series by an expression. |
+| `GET` | [`/version`](../meta/misc/version.md) <br> Returns database version including licensing details as well as a date object with local time and offset. |
+| `GET` | [`/ping`](../meta/misc/ping.md) <br> Returns HTTP `200 OK` status code to check connectivity and authentication.|
+| `GET` | [`/permissions`](../meta/misc/permissions.md) <br>  Returns roles and permissions for the current user. |
+| `GET` | [`/search`](../meta/misc/search.md) <br> Search series by an expression. |
