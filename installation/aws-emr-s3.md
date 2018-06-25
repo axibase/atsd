@@ -23,7 +23,7 @@ The S3 bucket must be created prior to installation.  The bucket, named `atsd` i
 aws s3 mb s3://atsd
 ```
 
-The HBase root directory is created if necessary when the cluster is started for the first time. The directory is not deleted when the cluster is stopped or terminated.
+The HBase root directory is created if necessary when the cluster is started for the first time. The directory is not deleted when the cluster is stopped.
 
 Check the contents of the bucket prior to launching the cluster.
 
@@ -131,7 +131,7 @@ The checks are enabled by adding the `Consistent` setting to the launch command.
 --emrfs Consistent=true,Args=[fs.s3.consistent.metadata.tableName=EmrFSMetadata]   \
 ```
 
-Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is terminated. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
+Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is stopped. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
 
 ![](./images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
 
@@ -268,7 +268,7 @@ nano atsd/atsd/conf/hadoop.properties
 
 ```bash
 # localhost if co-installing ATSD on HMaster
-hbase.zookeeper.quorum = 10.50.0.102
+hbase.zookeeper.quorum = 192.0.2.1
 ```
 
 Start ATSD.
@@ -283,7 +283,7 @@ Monitor startup progress using the log file.
 tail -f atsd/atsd/logs/atsd.log
 ```
 
-It may take ATSD several minutes to create tables after initializing the system.
+It can take ATSD several minutes to create tables after initializing the system.
 
 ```txt
 ...
@@ -294,13 +294,13 @@ It may take ATSD several minutes to create tables after initializing the system.
 2017-08-31 22:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:9443
 ```
 
-Login to the ATSD web interface on `https://atsd_hostname:8443`. Modify the port to `9443` if port settings were previously replaced.
+Login to the ATSD web interface on `https://atsd_hostname:8443`. Modify the URL if the port has been customized.
 
 ## Troubleshooting
 
 ### Port Access
 
-Make sure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports.
+Ensure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports.
 
 If necessary, add security group rules to open inbound access to ports `8081`, `8082/udp`, `8084`, `8088`, `8443` or `9081`, `9082/udp`, `9084`, `9088`, `9443` respectively.
 

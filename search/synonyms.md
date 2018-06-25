@@ -4,7 +4,7 @@
 
 Synonym search allows finding series with metadata fields containing values with a similar meaning in the original or other languages.
 
-For example, a user searching for series with 'currency' keyword might be interested in locating series with keywords `money`, `cash` as well as `geld` (German) and `dinero` (Spanish).
+For example, a user searching for series with `currency` keyword might be interested in locating series with keywords `money`, `cash` as well as `geld` (German) and `dinero` (Spanish).
 
 The synonyms can be created for all [metadata fields](README.md#overview).
 
@@ -31,17 +31,17 @@ synonym:value
 
 ## Examples
 
-* The word 'money' has one synonym.
+* The word `money` has one synonym.
 
 ```css
 money => currency
 location => place, site
 ```
 
-Searching for 'money' keyword matches series containing either the keyword itself or its alias ('money' or 'currency').
-The same results are displayed if the 'currency' keyword is searched as well.
+Searching for `money` keyword matches series containing either the keyword itself or its alias (`money` or `currency`).
+The same results are displayed if the `currency` keyword is searched as well.
 
-* The word 'location' has four synonyms.
+* The word `location` has four synonyms.
 
 ```css
 location => place, site, Ort, место
@@ -57,7 +57,7 @@ location = NYC        -- entity tag
 school = CAS          -- series tag
 ```
 
-However, `location:NYC` and `place:NYC` searches produce different results because synonyms are not supported in field names and therefore 'place' as a field name is not enabled as a synonym for the 'location' field name. As a result, `place:NYC` does not match the above series.
+However, `location:NYC` and `place:NYC` searches produce different results because synonyms are not supported in field names and therefore `place` as a field name is not enabled as a synonym for the `location` field name. As a result, `place:NYC` does not match the above series.
 
 ## Implementation
 

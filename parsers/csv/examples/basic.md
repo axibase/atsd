@@ -30,8 +30,8 @@ Adhere to the following points to convert the CSV file into a tabular model:
 * For each cell:
   * Set the metric name to the value of the cell located in the first row in the current column: Temperature, Humidity, Pressure;
   * Set the entity name to the value of the cell located in the current row, 2nd column (Sensor Name);
-  * Set the tag 'model' to the value of cell located in the current row, 3rd column (Sensor Model);
-  * Set the timestamp to the value of the cell located in the current row, 1st column (Measurement Time). The text value is parsed using the 'Timestamp Pattern';
+  * Set the tag `model` to the value of cell located in the current row, 3rd column (Sensor Model);
+  * Set the timestamp to the value of the cell located in the current row, 1st column (Measurement Time). The text value is parsed using the **Timestamp Pattern**;
   * Set the series value to the value of the current cell.
 
 ## Commands

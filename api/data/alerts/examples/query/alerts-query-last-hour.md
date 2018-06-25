@@ -2,7 +2,7 @@
 
 ## Description
 
-Select all alerts that were open during the last hour.
+Select all alerts open during the last hour.
 
 ## Request
 

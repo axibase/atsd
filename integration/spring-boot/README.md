@@ -11,7 +11,7 @@ ATSD [storage driver](https://github.com/axibase/spring-boot) for Spring Boot si
 |  `metrics.export.password`  |  Yes  |  –  |  ATSD Password.  |
 |  `metrics.export.bufferSize`  |  No  |  `64`  |  Size of metrics buffer. Metrics writer flushes the buffer if full or by schedule (configured by `spring.metrics.export.*` properties.)  |
 |  `metrics.names.entity`  |  No  |  `atsd-default`  |  Entity name.  |
-|  `metrics.names.metricPrefix`  |  No  |  –  |  A prefix to be added to the original metric name.  |
+|  `metrics.names.metricPrefix`  |  No  |  –  |  Prefix added to the original metric name.  |
 |  `metrics.names.tags.*`  |  No  |  –  |  Optional set of key-value pairs in the ATSD time series identifier.  |
 
 ## Configuration
@@ -27,8 +27,8 @@ metrics.export.url: http://atsd_hostname:8088/api/v1/command
 metrics.export.bufferSize: 16
 metrics.names.entity: spring-boot-sample
 metrics.names.metricPrefix: spring-boot
-metrics.names.tags.ip: 127.0.0.1
-metrics.names.tags.organization: Axibase
+metrics.names.tags.ip: 192.0.2.1
+metrics.names.tags.organization: Example
 ```
 
 ## Metrics

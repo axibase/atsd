@@ -2,7 +2,7 @@
 
 ## Overview
 
-The default certificate installed in ATSD is generated for DNS name (`commonName`) 'atsd'. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name (fully qualified hostname) at which the ATSD server is accessible.
+The default certificate installed in ATSD is generated for DNS name (`commonName`) `atsd`. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name (fully qualified hostname) at which the ATSD server is accessible.
 
 As with all self-signed certificates, the new certificate continues to cause a security exception in user browsers and requires passing `-k/--insecure` parameter when connecting to the database using `curl` and similar tools to skip certificate validation.
 
@@ -10,14 +10,14 @@ As with all self-signed certificates, the new certificate continues to cause a s
 
 There are two options to create and import self-signed certificates into ATSD:
 
-* [User Interface](#user-interface)
+* [Web Interface](#web-interface)
 * [Endpoint Request](#endpoint-request)
 
 The certificates are installed without an ATSD restart.
 
-### User Interface
+### Web Interface
 
-Login as a user with administrative privileges.
+Log into ATSD as a user with administrative privileges.
 
 Open the **Settings > Certificates** page and click **Self Signed Certificate** in the split button:
 
@@ -25,7 +25,7 @@ Open the **Settings > Certificates** page and click **Self Signed Certificate** 
 
 ![](./images/ssl_self_signed_2.png)
 
-Enter the certificate information and click on **Create And Import**. Only the `Domain Name` field is required.
+Enter the certificate information and click **Create And Import**. Only the `Domain Name` field is required.
 
 ![](./images/ssl_self_signed_3.png)
 

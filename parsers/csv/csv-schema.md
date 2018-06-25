@@ -2,7 +2,7 @@
 
 ## Overview
 
-Schema Parser implements position-aware parsing of CSV files. Once the file is converted into a tabular model, each cell is assigned a unique address and its value can be retrieved using the `cell(rowIndex, columnIndex)` function. The schema parser reads rows and columns from top left to bottom right. The number of rows and columns to be processed is controlled with start/end index and step arguments in `select` functions.
+Schema Parser implements position-aware parsing of CSV files. Once the file is converted into a tabular model, each cell is assigned a unique address and its value can be retrieved using the `cell(rowIndex, columnIndex)` function. The schema parser reads rows and columns from top left to bottom right. The range of rows and columns processed is controlled with index and step arguments passed to the `select` function.
 
 The `select()` function implements [RFC 7111](https://tools.ietf.org/html/rfc7111) selections using URI Fragment Identifiers, including `row#`, `col#`, and `cell#` with a custom extension controlling iteration step. See extended ABNF syntax [here](#rfc-7111-step-extension-syntax).
 
@@ -33,12 +33,12 @@ tag('status', cell(row, col+1).toLowerCase());
 
 Explanation:
 
-* `select("#row=2-*")` – RFC7111 selection. Read rows starting with 2nd row with step 1 > `'2015-10-29T00:00:00Z; 19.2; provis; 11.3; ok'`.
-* `select("#col=2-*!2")` – RFC7111 selection. Read columns in the current row starting with 2nd column with step 2: 2,4,6. etc. > `'19.2'`.
-* `timestamp(cell(row, 1))` – Set time to `'2015-10-29T00:00:00Z'` which is the value of the cell located in the current row, 1st column.
-* `entity(cell(1, col))` – Set entity to `'sensor01'` which is value of cell located in the 1st row, current column.
-* `metric('power_kwh')` - Set metric name to a predefined value.
-* `tag('status',cell(row, col+1).toLowerCase())` – Set tag `status` to `'provis'` which is the lowercased value of the cell located in the current row to the right of the current column `(col + 1)`.
+* `select("#row=2-*")`: `RFC7111` selection. Read rows starting with 2nd row with step 1 > `'2015-10-29T00:00:00Z; 19.2; provis; 11.3; ok'`.
+* `select("#col=2-*!2")`: `RFC7111` selection. Read columns in the current row starting with 2nd column with step 2: 2,4,6. etc. > `'19.2'`.
+* `timestamp(cell(row, 1))`: Set time to `'2015-10-29T00:00:00Z'` which is the value of the cell located in the current row, 1st column.
+* `entity(cell(1, col))`: Set entity to `'sensor01'` which is value of cell located in the 1st row, current column.
+* `metric('power_kwh')`: Set metric name to a predefined value.
+* `tag('status',cell(row, col+1).toLowerCase())`: Set tag `status` to `'provis'` which is the lowercase value of the cell located in the current row to the right of the current column `(col + 1)`.
 * Iterate to the next column with step 2, `select("#col=2-*!2")`, to cell `'11.3'`. Repeat chained functions after `addSeries()`.
 
 Commands:

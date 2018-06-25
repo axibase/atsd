@@ -148,6 +148,7 @@ HipChat
 HistoryServer
 HMaster
 hoc
+Holts-Winters
 Horton
 hostname
 HQuorumPeer
@@ -409,3 +410,4 @@ superuser
 gzipped
 timestamped
 Lucene
+wget

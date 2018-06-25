@@ -346,15 +346,15 @@ By default, statistical functions calculate results based on all samples stored 
 avg([string i | integer c]) double
 ```
 
-* `avg(5)` - Average value for the last 5 samples.
-* `avg('1 HOUR')` - Average value for the last 1 hour.
-* `max('2 minute')` - Maximum value for the last 2 minutes.
-* `percentile(95, '1 hour')` - 95% percentile for the last hour.
-* `countIf('value > 5', 10)` - Count of values exceeding 5 within the last 10 samples.
+* `avg(5)`: Average value for the last 5 samples.
+* `avg('1 HOUR')`: Average value for the last 1 hour.
+* `max('2 minute')`: Maximum value for the last 2 minutes.
+* `percentile(95, '1 hour')`: 95% percentile for the last hour.
+* `countIf('value > 5', 10)`: Count of values exceeding 5 within the last 10 samples.
 
 Example:
 
-The condition evaluates to `true` if the 1-minute average is greater than the 1-hour average by more than `20` and a maximum was reached in the last 5 samples.
+The condition evaluates to `true` if the 1-minute average is greater than the 1-hour average by more than `20` and a maximum is reached in the last 5 samples.
 
 ```javascript
   avg('1 minute') - avg() > 20 && max(5) = max()

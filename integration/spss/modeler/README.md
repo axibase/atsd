@@ -9,7 +9,7 @@ calculating derived time series in the IBM SPSS Modeler interface and storing th
 
 Download sample [`series` commands](./resources/commands.txt).
 The series contain the Consumer Price Index (CPI) for each category
-of items in a consumer's basket as well as a weight for each category in the CPI
+of items in a consumer basket as well as a weight for each category in the CPI
 basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to
 2017 and uses Year 2016 values as the baseline. Weight values are available only for
 year 2017.
@@ -36,7 +36,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_2.png)
 
-* Right click on the source and click **Edit...**
+* Right-click the source and click **Edit...**
 
   ![](./images/modeler_3.png)
 
@@ -44,7 +44,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_4.png)
 
-* Choose ATSD ODBC as the data source. If there are no data sources visible - create an ODBC-bridged connection to ATSD as described [here](../../odbc/README.md#configure-odbc-data-source) and click **Refresh**
+* Choose ATSD ODBC as the data source. If there are no data sources visible, create an ODBC-bridged connection to ATSD as described [here](../../odbc/README.md#configure-odbc-data-source) and click **Refresh**
 
   ![](./images/modeler_5.png)
 
@@ -64,7 +64,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_9.png)
 
-* Uncheck the **Show table owner** box shown below, select `inflation.cpi.categories.price` table and click **OK**
+* Clear the **Show table owner** box shown below, select `inflation.cpi.categories.price` table and click **OK**
 
   ![](./images/modeler_10.png)
 
@@ -72,7 +72,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_11.png)
 
-* Go to **Filter** tab and click on the respective arrows in the Filter column to disable the `time`, `text` and `metric` columns.
+* Go to **Filter** tab and click arrows in the Filter column to disable the `time`, `text` and `metric` columns.
 
   ![](./images/modeler_12.png)
 
@@ -94,7 +94,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_16.png)
 
-* Right click on one of the database source shapes and select **Connect...**
+* Right-click one of the database source shapes and select **Connect...**
 
   ![](./images/modeler_17.png)
 
@@ -106,7 +106,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_19.png)
 
-* Right click on the **Merge** shape and select **Edit...**. Set **Merge method** to **Keys** and add the `tags` field to **Keys for merge** field
+* Right-click the **Merge** shape and select **Edit...**. Set **Merge method** to **Keys** and add the `tags` field to **Keys for merge** field
 
   ![](./images/modeler_20.png)
 
@@ -134,7 +134,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_25.png)
 
-* Right click on the **Derive** shape and select **Edit...**
+* Right-click the **Derive** shape and select **Edit...**
   * Set **Derive field** to **weighted_price**
   * Set field type to **Continuous**
   * Add the formula **price * weight / 1000**
@@ -157,9 +157,9 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_29.png)
 
-* Right click on the **Aggregate** shape and select **Edit...**
+* Right-click the **Aggregate** shape and select **Edit...**
   * Add `datetime` in **Key fields**
-  * Uncheck the **Include record count in field** box.
+  * Clear the **Include record count in field** box.
 
   ![](./images/modeler_30.png)
 
@@ -187,7 +187,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_35.png)
 
-* Right click on the **Derive** shape and select **Edit...**
+* Right-click the **Derive** shape and select **Edit...**
   * Set the **Derive field** to **entity**
   * Set field type to **Categorical**
   * Add formula **"bls.gov"**
@@ -210,7 +210,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_39.png)
 
-* Right click on the **Database** shape and select **Edit...**
+* Right-click the **Database** shape and select **Edit...**
   * Choose **Data source**
   * Type `inflation.cpi.composite.price` in **Table name**. This is the name of the new metric inserted into ATSD.
   * Select the **Insert into table** option
@@ -236,8 +236,8 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Verify Insertion
 
-To check that data is successfully exported to ATSD go to the ATSD web interface, click **SQL** and execute the
-following query
+To check that data is successfully exported to ATSD, open the ATSD web interface, open the **SQL > SQL Console** page and execute the
+following query:
 
 ```sql
 SELECT entity, datetime, value

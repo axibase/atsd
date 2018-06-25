@@ -37,7 +37,7 @@ Each series is identified by metric name, entity name, and optional series tags.
 | `metric` | Metric name.  |
 | `entity` | Entity name.  |
 | `tags` | An object containing **series** tag names and values.<br>For example, `"tags": {"file_system": "/dev/sda"}` |
-| `lastInsertDate` |Last time a value was received for this series. ISO date.|
+| `lastInsertDate` |Last time for a received value by this series. ISO date.|
 
 ### Errors
 
@@ -79,7 +79,7 @@ curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
     "metric": "disk_used",
     "entity": "nurswgvml006",
     "tags": {
-        "file_system": "10.102.0.2:/home/store/share",
+        "file_system": "192.0.2.2:/home/store/share",
         "mount_point": "/mnt/share"
     },
     "lastInsertDate": "2015-12-25T14:09:49.000Z"

@@ -29,19 +29,19 @@ The input map `m` typically refers to map fields such as `tags`, `entity.tags`, 
 
 Supported formats:
 
-* 'markdown'
-* 'ascii'
-* 'property'
-* 'csv'
-* 'html'
+* `markdown`
+* `ascii`
+* `property`
+* `csv`
+* `html`
 
 An empty string is returned if map `m` is `null` or has no records.
 
 Map records with empty or `null` values are ignored.
 
-Numeric values are automatically rounded in web and email notifications and are printed `as is` in other cases.
+Numeric values are automatically rounded in web and email notifications and are printed without modifications in other cases.
 
-The default table header is 'Name, Value'.
+The default table headers are `Name` and `Value`.
 
 Examples:
 
@@ -240,7 +240,7 @@ Examples:
 query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
 ```
 
-`executeSqlQuery(query)` returns following collection:
+`executeSqlQuery(query)` returns a list consisting of the header row followed by data rows.
 
 ```ls
 [[datetime, value], [2018-01-31T12:00:13.242Z, 37], [2018-01-31T12:00:28.253Z, 36]]
@@ -529,7 +529,7 @@ Processing rules:
 
 * String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function raises an exception.
 * The JSON object is traversed to locate fields with primitive data types: `number`, `string`, and `boolean`.
-* The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
+* The field value is added to the map with a key set to its full name, created by appending the field local name to the full name of its parent object using `.` as a separator.
 * If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
 * Fields with `null`, empty string, empty array, and empty object values are ignored.
 

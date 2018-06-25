@@ -8,7 +8,7 @@ The integration relies on the [GitHub API](https://developer.github.com/v3/issue
 
 ## Configuration
 
-Create a new `CUSTOM` webhook or import the [template](./resources/custom-github-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `CUSTOM` webhook or import the [template](./resources/custom-github-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -26,13 +26,13 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name.
 
-The `Endpoint URL` may look as follows: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
+Example `Endpoint URL`: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
 
-Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that may be customized in the rule editor. This  allows you to add comments to different issues re-using the same webhook configuration.
+Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that can be customized in the rule editor. This allows you to add comments to different issues re-using the same webhook configuration.
 
 Enter an existing authorization token in `Authorization` header or create a new one.
 
-#### Create Authorization Token with `curl`
+#### Create Authorization Token with curl
 
 Execute the [`Create a new authorization`](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) command. Replace the `<GITHUB_USER>` field with your github user name.
 
@@ -112,7 +112,7 @@ The placeholders specified in the payload and the URL are visible as editable pa
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/custom-github-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/custom-github-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -175,10 +175,10 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/github_alert_open.png)
 
-Check the issue on Github to make sure the new comment was added.
+Check the issue on Github to ensure the new comment is added.
 
 ![](./images/github_test.png)

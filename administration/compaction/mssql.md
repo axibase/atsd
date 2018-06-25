@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following tests calculate the amount of disk space required to store 10+ million `time:value` samples in a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 database.
+The following tests calculate the amount of disk space required to store 10+ million `time:value` samples in a Microsoft SQL Server 2017 (RTM) - `14.0.1000.169` database.
 
 ## Results
 
@@ -28,7 +28,7 @@ Date,Time,Open,High,Low,Close,Volume
 09/08/2017,17:38,142.45,142.45,142.45,142.45,3556
 ```
 
-The records be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
+The records can be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
 
 The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in `US/Eastern` time.
 
@@ -52,7 +52,7 @@ The tests are performed using two schema options:
 * **Trade Table** [schema](mssql-trade-table.sql) uses a named column for each input metric.
 * **Universal Table** [schema](mssql-universal-table.sql) uses a single metric ID column for all input metrics.
 
-The **Trade Table** schema requires less disk space however the underlying table can not be extended to store different sets of columns for different instrument types. As such, multiple tables need to be created to store data for various instrument types.
+The **Trade Table** schema requires less disk space however the underlying table can not be extended to store different sets of columns for different instrument types. As such, multiple tables must be created to store data for various instrument types.
 
 The **Universal Table** schema allows adding new metrics without altering the tables. This can be done by inserting a new record into the `Metrics` table (a dictionary) and using foreign keys when inserting data into the data table.
 
@@ -230,7 +230,7 @@ wc -l IBM_adjusted.txt
 
 ### Launch Microsoft SQL Server Database Container
 
-Start a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 container.
+Start a Microsoft SQL Server 2017 (RTM) - `14.0.1000.169` container.
 
 Start the database container with `/tmp/test` directory.
 

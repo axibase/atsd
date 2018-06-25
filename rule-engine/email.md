@@ -12,17 +12,17 @@ Custom Mail Client formatting options such as [header and footer](../administrat
 
 ## Enable Notifications
 
-Open the `Email Notifications` tab in the rule editor.
+Open the **Email Notifications** tab in the rule editor.
 
 Set status to `Enabled` and enter one or multiple email addresses, separated by comma, semi-colon or whitespace.
 
-Click 'Enabled' to subscribe to notifications initiated by `OPEN`, `REPEAT`, and `CANCEL` triggers.
+Click **Enabled** to subscribe to notifications initiated by `OPEN`, `REPEAT`, and `CANCEL` triggers.
 
 ![](./images/email_config_all.png)
 
-For the `REPEAT` status, adjust the 'Repeat Interval' to the desired notification frequency, for example, every **6 hours** or every **10 events**.
+For the `REPEAT` status, adjust the **Repeat Interval** to the desired notification frequency, for example, every **6 hours** or every **10 events**.
 
-If necessary, uncheck the **Same as 'On Open'** setting to adjust message content based on window status.
+If necessary, cleat the **Same as On Open** setting to adjust message content based on window status.
 
 ## Settings
 
@@ -37,15 +37,15 @@ If necessary, uncheck the **Same as 'On Open'** setting to adjust message conten
 
 ## Configure Message Content
 
-Fill out the message 'Subject' and 'Text' fields.
+Fill out the message **Subject** and **Text fields**.
 
-Both fields may include any text as well as [placeholders](placeholders.md) to customize outgoing messages based on alert details.
+Both fields can include any text as well as [placeholders](placeholders.md) to customize outgoing messages based on alert details.
 
 ```bash
 Warning! Rule ${rule} for server ${entity} is active.
 ```
 
-The [placeholders](placeholders.md), escaped with `$` and wrapped in curly brackets such as `${expression}`, are evaluated and replaced with actual values when the notification is sent.
+[Placeholders](placeholders.md), escaped with `$` and wrapped in curly brackets `${expression}`, are evaluated and replaced with actual values when the notification is sent.
 
 ```bash
 Warning! Rule JVM Memory Low for server nurswgvml007 is active.
@@ -53,11 +53,11 @@ Warning! Rule JVM Memory Low for server nurswgvml007 is active.
 
 ### Subject Field
 
-The 'Subject' field may include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
+The **Subject** field can include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
 
 ![](./images/email-subject.png)
 
-Note that long subjects that exceed the `78` characters according to [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt), Section `2.1.1` may be truncated or rejected by mail servers. The actual limit is typically higher but is implementation-specific.
+Note that long subjects that exceed the `78` character limit according to [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt), Section `2.1.1` can be truncated or rejected by mail servers. The actual limit is typically higher but is implementation-specific.
 
 If placeholders in the subject can potentially evaluate to long strings, apply [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to ensure that the subject length remains within the limit.
 
@@ -67,9 +67,9 @@ ${entity} received message '${abbreviate(tags.notification, 50)}'
 
 ### Text Field
 
-The 'Text' field may include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
+The **Text** field can include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
 
-Unlike the 'Subject' field, 'Text' is not constrained by a length limit and supports HTML markup.
+Unlike the **Subject** field, **Text** is not constrained by a length limit and supports HTML markup.
 
 ```bash
 Database Error.
@@ -86,13 +86,13 @@ Top-10 running containers by CPU:
 ${addTable(executeSqlQuery(query), 'html', true)}
 ```
 
-In addition, the 'Text' field may invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
+In addition, the **Text** field can invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
 
 ```bash
 ${addPortal('AWS Route53 Health Check Detail', aws_entity)}
 ```
 
-The 'Text' field supports [control flow](control-flow.md#control-flow) syntax which allows customizing the content based on alert details.
+The **Text** field supports [control flow](control-flow.md#control-flow) syntax which allows customizing the content based on alert details.
 
 ```bash
 @if{tags.payload.type != 'cron'}
@@ -105,11 +105,11 @@ The 'Text' field supports [control flow](control-flow.md#control-flow) syntax wh
 | Setting | Description |
 | --- | --- |
 | Delay on Open | Delay interval for sending notification for `OPEN` status. If the window changes to `CANCEL` status within the specified delay interval, no `OPEN` status email is sent. Set this interval to prevent emails on short-lived spikes. |
-| Repeat Interval | Interval for sending `REPEAT` status notifications. If the Repeat Interval is set in time units, the exact interval may vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications are not sent if the data stops flowing in. |
+| Repeat Interval | Interval for sending `REPEAT` status notifications. If the Repeat Interval is set in time units, the exact interval can vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications are not sent if the data stops flowing in. |
 | Subject | Custom subject text, specified for each status separately. The subject can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. Note that the maximum allowed length of the subject is limited to several hundred characters in most email clients.|
 | Text | Custom message text, specified for each status separately. The text can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. |
 | Attach Details | Include a [summary table](window-fields.md#details-tables) with window statistics and action links. |
-| Attach Portals | One or more portal screenshots attached to the message as inline images. If a portal is a template, placeholders such as entity, metric, tags are resolved from the window fields.<br> *Series Chart* - attach a screenshot containing series monitored by this rule. |
+| Attach Portals | One or more portal screenshots attached to the message as inline images. If a portal is a template, placeholders such as entity, metric, tags are resolved from the window fields.<br> **Series Chart**: attach a screenshot containing series monitored by this rule. |
 
 ## Grouping
 
@@ -147,7 +147,7 @@ The override table below contains rules that always return `false` for the match
 
 ### Subject
 
-The subject may include [placeholders](placeholders.md) with expressions substituted with actual values when the message is sent. If the placeholder is not found, the placeholder is replaced with an empty string.
+The subject can include [placeholders](placeholders.md) with fields and expressions, substituted with actual values when the message is sent. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 Sample subject:
 
@@ -155,7 +155,7 @@ Sample subject:
   [${status}] Rule ${rule} for ${entity} ${tags}
 ```
 
-When using placeholders that may be replaced with text of arbitrary length, apply the [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to limit the subject length.
+When using placeholders that can be replaced with text of arbitrary length, apply the [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to limit the subject length.
 
 ```bash
   [${status}] Rule ${rule} for ${entity}: ${truncate(tags.error, 100)}
@@ -163,7 +163,7 @@ When using placeholders that may be replaced with text of arbitrary length, appl
 
 ### Text
 
-The message text (body) may include [placeholders](placeholders.md) as well.
+The message text (body) can include [placeholders](placeholders.md) as well.
 
 Use the HTML tag `<br>` to split content into multiple lines.
 
@@ -220,7 +220,7 @@ To attach screenshots, a [web driver](notifications/web-driver.md) must be insta
 
 ![](./images/email-screenshot-enable.png)
 
-The chart may include multiple series depending on statistical functions referenced in the condition.
+The chart can include multiple series depending on statistical functions referenced in the condition.
 
 ```javascript
   abs(forecast_deviation(median())) > 2 && (median() < 200 || median() > 600)
@@ -228,7 +228,7 @@ The chart may include multiple series depending on statistical functions referen
 
 ![](./images/email-screenshot-series.png)
 
-Similarly, if the rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) such metrics may be included in the screenshot on the right axis.
+Similarly, if the rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) such metrics can be included in the screenshot on the right axis.
 
 ```javascript
   avg() > 10 && db_last('memfree') < 500000
@@ -236,7 +236,7 @@ Similarly, if the rule correlates multiple metrics using [database functions](fu
 
 ![](./images/email-screenshot-correlate.png)
 
-To attach additional portals, select them from the `Additional Portal` drop-down.
+To attach additional portals, select them from the **Additional Portal** drop-down.
 
 ![](./images/email-screenshot-portals.png)
 

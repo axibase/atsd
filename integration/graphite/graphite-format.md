@@ -18,7 +18,7 @@ If a metric name matches the regular expression `pattern`, the metric is parsed 
 
 If a metric name has more tokens than `atsd-pattern`, extra tokens are cropped.
 
-If a metric name has less tokens than `atsd-pattern`, but still satisfies `pattern`, then the metric is be parsed.
+If a metric name has less tokens than `atsd-pattern`, but still satisfies `pattern`, then the metric is parsed.
 
 If there is no `atsd-pattern` for an incoming metric name, then everything before the first period is recorded as the entity and the rest is recorded as the metric. If there are no periods in the metric name, then the default entity is set to `graphite`, and the metric name is recorded as the metric.
 
@@ -223,7 +223,7 @@ Next you have to create a check, for example:
 }
 ```
 
-The `debug` handler is included for logging purposes and may be omitted.
+The `debug` handler is included for logging purposes and can be omitted.
 
 At least one element of `subscribers` has to match an element of the `subscriptions` in your client configuration file.
 

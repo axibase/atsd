@@ -5,7 +5,7 @@
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
 | 3710     | install         | Feature         | Added support for an embedded collector account with `All Entities: Read` and `All Entities: Write` permission.                                      |
-| [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile was specified in denominator.                              |
+| [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile is specified in denominator.                              |
 | [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.                          |
 | [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
 | [3325](#issue-3325)     | sql             | Bug             | Allowed for columns other than `value` and `*` in the `COUNT` function.                                  |
@@ -18,7 +18,7 @@
 | 3716     | docker          | Bug             | Fixed malformed label for images without a parent image. |
 | 3700     | docker          | Bug             | Replaced textarea with an Item List containing name expressions of processes to be excluded from the `top` process collection and count. |
 | 3699     | docker          | Bug             | Eliminated duplicate container names when setting volume labels.      |
-| 3692     | UI              | Bug             | Raised an error when the job is executed manually and the storage driver is not 'successful' at that time. |
+| 3692     | UI              | Bug             | Raised an error when the job is executed manually and the storage driver is not `successful` at that time. |
 | [3685](#issue-3685)     | docker          | Feature         | Added a setting to remove deleted records from ATSD after a period of time. Containers can be removed after a certain number of days, images/volumes/networks can removed instantly. |
 | 3684     | UI              | Bug             | Added Enable/Disable/Run buttons on the job list page to change status or run multiple jobs at a time using check boxes.                             |
 
@@ -63,7 +63,7 @@ WITH ROW_NUMBER(tags ORDER BY datetime desc) <= 1
   ORDER BY value DESC
 ```
 
-Since the timespan is not defined in the `WHERE` clause, previously we did not apply any date filter to scanned records.
+Since the timespan is not defined in the `WHERE` clause, no date filter is applied to scanned records.
 To optimize the query we now perform a lookup of the minimum insert time for the specified metric, entity, and series tags.
 Since the minimum insert time in the above example is `1972-05-27T00:00:00Z`, we can now use it to apply time filter within the scan. For example, a condition `ROW_NUMBER(tags ORDER BY datetime desc) <= 1` means we
 only need the last value for each combination of tags. We can therefore skip values with a timestamp less than the minimum last insert time.
@@ -117,7 +117,7 @@ Docker `inspect` snippet for a Mesos-managed container:
            "SPRING_APPLICATION_NAME=ref-api-front",
            "WLS_SUFFIX=_rf",
            "SPRING_CLOUD_CONSUL_CONFIG_PREFIX=config/ref-api",
-           "MARATHON_APP_DOCKER_IMAGE=docker.corp.axibase.com/ref-api-front:2.0.3",
+           "MARATHON_APP_DOCKER_IMAGE=docker.corp.example.org/ref-api-front:2.0.3",
            "WAS_SUFFIX=_rf",
            "SPRING_CLOUD_CONSUL_CONFIG_DEFAULTCONTEXT=commons",
            "MESOS_TASK_ID=ref-api-front.76d43a20-ad8d-13e6-a98e-bb1ee0814583",
@@ -148,12 +148,12 @@ Recently added to the [`docker`](https://axibase.com/docs/axibase-collector/jobs
 ![Figure 1](./Figure1.png)
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
-that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status are initially retained in ATSD for the specified time interval (for
+that executed short-term tasks before being removed with the `docker rm` command. Containers with a `deleted` status are initially retained in ATSD for the specified time interval (for
 example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
 
 ![Figure 2](./Figure2.png)
 
-By default such records with the status `deleted` are not actually removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
+By default such records with the status `deleted` are not automatically removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 
 * `Retain deleted container records, days` : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
 

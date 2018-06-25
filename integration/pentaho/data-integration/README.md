@@ -21,12 +21,12 @@ Pentaho Data Integration at `https://community.hitachivantara.com/community/prod
 To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
+2. Open **Metrics > Data Entry**, select the **Commands** tab.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
 
-The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
+The commands contain the Consumer Price Index (CPI) for each category of items in a consumer basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
 
 To calculate a weighted inflation index we need to multiply the CPI of each category by its weight divided by 1000 and sum the products.
 
@@ -37,10 +37,10 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ![](./resources/view_pane.png)
 
-* Right-click on **Database connections > New**.
-* Select 'General' in the left menu.
-* Select 'Generic database' as Connection Type.
-* Select 'Native (JDBC)' as Access.
+* Right-click **Database connections > New**.
+* Select **General** in the left menu.
+* Select **Generic database** as **Connection Type**.
+* Select **Native (JDBC)** as **Access**.
 
 ### Configure Connection Properties
 
@@ -50,13 +50,13 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 > `tables` is an optional metric name filter. Review ATSD JDBC [URL parameters](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) for additional details.
 
-* Set 'Custom Driver Class Name' field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
-* Enter ATSD account credentials in the 'User Name' and 'Password' fields.
-* Set 'Connection Name' to `ATSD Connection`.
+* Set **Custom Driver Class Name** field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
+* Enter ATSD account credentials in the **User Name** and **Password** fields.
+* Set **Connection Name** to `ATSD Connection`.
 
 ![](./resources/atsd_connection.png)
 
-* Click 'Test' to verify connection.
+* Click **Test** to verify connection.
 
 ## View Schema
 
@@ -75,10 +75,10 @@ Click **Explore** to view the schema:
 
 ## Load Data
 
-* Drag and Drop `ATSD Connection` from the 'View' pane in the Database Connections folder.
+* Drag and Drop `ATSD Connection` from the **View** pane in the Database Connections folder.
 * Set `Step name` to a unique name for this transformation.
 * Write an SQL query used as a `Table input` for this transformation.
-* Click `Preview` to verify query results.
+* Click **Preview** to verify query results.
 
 ![](./resources/table_input.png)
 
@@ -128,7 +128,7 @@ Since the `Weights` are available for only one year, assume that the category we
 
 ![](./resources/connections.png)
 
-* Use 'connect':
+* Use `connect`:
 
 Diagram example:
 
@@ -138,15 +138,15 @@ Diagram example:
 
 ![](./resources/join_preview.png)
 
-> Note to preview data right-click on step icon and select 'Preview' > 'Quick Launch'
+> Note to preview data right-click **step** icon and select **Preview > Quick Launch**
 
 ### Merge Tables
 
 In this step you append two tables to perform calculations on one table. This table has a unique row identifier (pair `datetime - tags.category`) so we can join them with the INNER JOIN operation.
 
 * Open the `Design` pane and find `Merge Join` in the `Joins` category. Drag and drop it to the `Transformation` pane
-* Connect `Merge Join` to `Join Rows (cartesian product)` and choose `Right hand side stream of the join`
-* Connect `Merge Join` to `Prices` and choose `Left hand side stream of the join`
+* Connect `Merge Join` to `Join Rows (cartesian product)` and choose **Right hand side stream of the join**
+* Connect `Merge Join` to `Prices` and choose **Left hand side stream of the join**
 * Configure `Merge Join` as shown in the screenshot below:
 > That operation joins two tables into one table.
 
@@ -281,7 +281,7 @@ Complete diagram:
 
 ### Check Results
 
-Log in to ATSD and execute the following query in the SQL tab to verify the results:
+Log in to ATSD and validate results on **SQL Console**.
 
 ```sql
 SELECT entity, datetime, value FROM inflation.cpi.composite.price

@@ -6,7 +6,7 @@ Log in to [Telegram Web](https://web.telegram.org) and follow the appropriate in
 
 ## For Group
 
-* Click on the group name and check its URL, for example `/#/im?p=g306974066`.
+* Click the group name and check its URL, for example `/#/im?p=g306974066`.
 
      ![](./images/id_group.png)
 
@@ -14,7 +14,7 @@ Log in to [Telegram Web](https://web.telegram.org) and follow the appropriate in
 
 ## For Private Channel
 
-* Click on the channel name and check its URL, for example `/#/im?p=c1354757644_16698643680908793939`
+* Click the channel name and check its URL, for example `/#/im?p=c1354757644_16698643680908793939`
 
      ![](./images/channel_url.png)
 
@@ -22,7 +22,7 @@ Log in to [Telegram Web](https://web.telegram.org) and follow the appropriate in
 
 ## For Public Channel
 
-* Click on the channel name and check its URL, for example `/#/im?p=@atsd_notifications`
+* Click the channel name and check its URL, for example `/#/im?p=@atsd_notifications`
 
      ![](./images/public_channel_url.png)
 

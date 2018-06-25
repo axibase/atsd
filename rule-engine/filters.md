@@ -17,7 +17,7 @@ Filters determine which commands are processed by the given rule. Commands that 
 
 | **Name** | **Description** |
 | --- | --- |
-| Expression | Accepts commands for which the filter expression  returns `true`. |
+| Expression | Accepts commands for which the filter expression returns `true`. |
 | Entity | Accepts commands only for entities selected in the rule. |
 | Entity Group | Accepts commands for entities that belong only to one of entity groups selected in the rule. |
 | Time | Accepts commands with a timestamp that deviates by less than the specified interval from the current server time. |
@@ -35,7 +35,7 @@ To match the rule, the incoming `series` command must have the same metric name 
 
 The filter matches commands for which the filter expression returns `true`.
 
-The expression may consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
+The expression consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
 
 ```javascript
 entity != 'nurswgvml007'
@@ -45,7 +45,7 @@ entity != 'nurswgvml007'
 entity LIKE 'nurswgvml*' AND entity IN ('nurswgvml007', 'nurswgvml006')
 ```
 
-The expression may include command fields listed below, literal values, and [functions](functions.md) except [statistical functions](functions-statistical.md).
+The expression can include command fields listed below, literal values, and [functions](functions.md) except [statistical functions](functions-statistical.md).
 
 Base command fields:
 
@@ -124,13 +124,13 @@ The filter discards commands for entities that do not belong to one of the entit
 
 ## Date Filter
 
-If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified 'grace' interval from the current server time. This filter is typically used to ignore historical data.
+If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter is typically used to ignore historical data.
 
 ![](./images/filter-time.png)
 
 ## Filter vs Condition
 
-While the same checks can be performed in the filter expression and in the alert condition, performance may increase if checks that refer to command fields are specified in the filter expression whereas checks that require the [window](window.md) object are specified in the alert condition. Discarding unnecessary commands early minimizes the number of windows maintained by the rule engine.
+While the same checks can be performed in the filter expression and in the alert condition, performance increases if checks that refer to command fields are specified in the filter expression whereas checks that require the [window](window.md) object are specified in the alert condition. Discarding unnecessary commands early minimizes the number of windows maintained by the rule engine.
 
 For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (for example `mount_point` = `/dev`) are discarded early in the process without causing extra windows to be created.
 

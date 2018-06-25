@@ -47,13 +47,13 @@ If the [backup](#backup) is stored on the same file system, add it to the estima
 
 Calculate disk space requirements.
 
-  | **Data** | **Size** |
-  |---|---|
-  | Original Data | 24G |
-  | Backup | 24G |
-  | Migrated Data | 7G (30% of 24G) |
-  | Backup + Migrated | 31G |
-  | Available | 736G |
+| **Data** | **Size** |
+|---|---|
+| Original Data | 24G |
+| Backup | 24G |
+| Migrated Data | 7G (30% of 24G) |
+| Backup + Migrated | 31G |
+| Available | 736G |
 
 > In the example above, 736G is sufficient to store 31G of backup and migrated data on the same file system.
 
@@ -63,9 +63,9 @@ Allocate additional disk space, if necessary.
 
 Log in to the ATSD web interface.
 
-Open the **SQL** tab.
+Open the **SQL > SQL Console**.
 
-Execute the following query to count rows for one of the key metrics in the ATSD server.
+Count rows for the previously selected metric and compare the results.
 
 ```sql
 SELECT COUNT(*) FROM mymetric
@@ -77,13 +77,13 @@ The number of records must match the results after the migration.
 
 [Install Java 8](install-java-8.md) on the ATSD server as described.
 
-Switch back to the 'axibase' user.
+Switch back to the `axibase` user.
 
 ```sh
 su axibase
 ```
 
-Execute the remaining steps as the 'axibase' user.
+Execute the remaining steps as the `axibase` user.
 
 ## Prepare ATSD For Upgrade
 
@@ -235,7 +235,7 @@ Start HDFS.
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
 
-Check that HDFS daemons were successfully started.
+Check that HDFS daemons are running.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
@@ -441,13 +441,13 @@ Launch the table backup task and confirm its execution.
 java com.axibase.migration.admin.TableCloner -d
 ```
 
-The task creates backups by appending a `'_backup'` suffix to the following tables:
+The task creates backups by appending a `_backup` suffix to the following tables:
 
-* 'atsd_d_backup'
-* 'atsd_li_backup'
-* 'atsd_metric_backup'
-* 'atsd_forecast_backup'
-* 'atsd_delete_task_backup'
+* `atsd_d_backup`
+* `atsd_li_backup`
+* `atsd_metric_backup`
+* `atsd_forecast_backup`
+* `atsd_delete_task_backup`
 
 ```txt
 ...
@@ -461,7 +461,7 @@ Table 'atsd_metric' successfully deleted.
 
 ### Map/Reduce Settings
 
-When running Map/Reduce jobs specified in the next section, the system may encounter a virtual memory error.
+When running Map/Reduce jobs specified in the next section, the system can encounter a virtual memory error.
 
 ```txt
 17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
@@ -478,7 +478,7 @@ In case of other errors, review job logs for the application ID displayed above:
 
 ### Migrate Records from Backup Tables
 
-Step 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
+Step 1. Migrate data from the `atsd_delete_task_backup` table by launching the task and confirming its execution.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -m 2
@@ -491,13 +491,13 @@ Step 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the
         FILE: Number of bytes read=6
 ```
 
-Step 2. Migrate data from the 'atsd_forecast' table.
+Step 2. Migrate data from the `atsd_forecast` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -m 2
 ```
 
-Step 3. Migrate data from the 'atsd_li' table.
+Step 3. Migrate data from the `atsd_li` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -m 2
@@ -518,13 +518,13 @@ Delete the diagnostics folder manually:
 /opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable
 ```
 
-Step 4. Migrate data to the 'atsd_metric' table.
+Step 4. Migrate data to the `atsd_metric` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -m 2
 ```
 
-Step 5. Migrate data to the 'atsd_d' table.
+Step 5. Migrate data to the `atsd_d` table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -m 2
@@ -536,9 +536,9 @@ Step 5. Migrate data to the 'atsd_d' table.
 ...
 ```
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
+The `DataMigrator` job takes a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
-The Yarn interface is automatically terminated once the `DataMigrator` is finished.
+The Yarn interface is automatically stopped once the `DataMigrator` is finished.
 
 Step 6. Migration is now complete.
 

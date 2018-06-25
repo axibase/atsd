@@ -4,7 +4,7 @@
 
 The functions provide a way to retrieve series records from the database at any stage of the rule evaluation process.
 
-The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series may be different from the series in the current window.
+The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series can be different from the series in the current window.
 
 ## Reference
 
@@ -13,7 +13,7 @@ The `db_last` and `db_statistic` functions retrieve the last stored value or cal
 
 ## `db_last`
 
-The `db_last` function retrieves the most recent value stored in the database for the specified series, regardless of when it was stored.
+The `db_last` function retrieves the most recent value stored in the database for the specified series, regardless of the date of storage.
 
 The functions return `Double.NaN` if no matching series is found.
 
@@ -31,7 +31,7 @@ Example:
   value > 60 && db_last('temperature') < 30
 ```
 
-> As an alternative, if the specified metric was received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command without querying the database.
+> As an alternative, if the specified metric is received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command without querying the database.
 
 ### `db_last(string m, string e)`
 
@@ -66,7 +66,7 @@ Example:
 
 Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`.
 
-Tags argument `t` may be specified as follows:
+Tags argument `t` can be specified as follows:
 
 * Empty string `''` for no series tags.
 * String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
@@ -87,7 +87,7 @@ Argument `s` accepts a [statistical function](../api/data/aggregation.md) name s
 
 Argument `i` is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
 
-The function returns `Double.NaN` if no matching series are found or if no values were recorded within the selection interval.
+The function returns `Double.NaN` if no matching series are found or if no records are present within the selection interval.
 
 ### `db_statistic(string s, string i)`
 
@@ -123,7 +123,7 @@ Example:
   db_statistic(string s, string i, string m, string e) number
 ```
 
-Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity may either be specified as a string or as `entity` to invoke current entity in the window.
+Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity can either be specified as a string or as `entity` to invoke current entity in the window.
 
 Example:
 
@@ -174,8 +174,8 @@ In the example below, the `db_last('cpu_busy')` function ignores the tags `mount
 
 * Expression
 
-```java
-  db_last('cpu_busy') > 10
+```javascript
+db_last('cpu_busy') > 10
 ```
 
 * Search Filter
@@ -208,8 +208,8 @@ In this example, the function `db_last('disk_used_percent')` uses the same serie
 
 * Expression
 
-```java
-  db_last('disk_used_percent') > 90
+```javascript
+db_last('disk_used_percent') > 90
 ```
 
 * Search Filter

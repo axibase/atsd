@@ -1,4 +1,4 @@
-# Select FROM `atsd_series` Table
+# Select FROM atsd_series Table
 
 Querying the built-in `atsd_series` table allows specifying metric name in the `WHERE` clause instead of the `FROM` query.
 

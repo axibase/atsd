@@ -4,9 +4,9 @@
 
 The `ROW_NUMBER` function returns the sequential number of a row within a partition of a result set, starting at 1 for the first row in each partition.
 
-Partition is a subset of all rows in the result set grouped by columns specified in the `ROW_NUMBER` function. Each row in the result set may belong to only one partition.
+Partition is a subset of all rows in the result set grouped by columns specified in the `ROW_NUMBER` function. Each row in the result set can belong to only one partition.
 
-Assuming that the below result set was partitioned by entity and then ordered by time within each partition, the row numbers are assigned as follows:
+Assuming that the below result set is partitioned by entity and then ordered by time within each partition, the row numbers are assigned as follows:
 
 ```ls
 |--------------|----------------------|-------| ROW_NUMBER

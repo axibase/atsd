@@ -20,9 +20,9 @@ seconds minutes hours day-of-month month day-of-week
    0       0      8        *         *        ?
 ```
 
-Either '0' or '7' can be used for Sunday in the `day-of-week` field.
+Either `0` or `7` can be used for Sunday in the `day-of-week` field.
 
-![Cron Expressions](https://axibase.com/wp-content/uploads/2016/03/cron_expressions.png)
+![](./images/cron_expressions.png)
 
 ## Time Zone
 

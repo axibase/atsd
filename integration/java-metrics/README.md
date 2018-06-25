@@ -23,13 +23,13 @@ The Metrics library provides 5 types of metrics:
 TCP
 
 ```java
-final AtsdTCPSender sender = new AtsdTCPSender(new InetSocketAddress("atsd.example.com", 8081));
+final AtsdTCPSender sender = new AtsdTCPSender(new InetSocketAddress("atsd_hostname", 8081));
 ```
 
 UDP
 
 ```java
-final AtsdUDPSender sender = new AtsdUDPSender("atsd.example.com", 8082);
+final AtsdUDPSender sender = new AtsdUDPSender("atsd_hostname", 8082);
 ```
 
 ### Configuring the Builder
@@ -75,8 +75,8 @@ public class UserLogin {
 
 ```java
 static void atsdTCPReport() {
-    final AtsdTCPSender sender = new AtsdTCPSender(new InetSocketAddress("atsd.example.com", 8081));
-    //final AtsdUDPSender sender = new AtsdUDPSender("atsd.example.com", 8082);
+    final AtsdTCPSender sender = new AtsdTCPSender(new InetSocketAddress("atsd_hostname", 8081));
+    //final AtsdUDPSender sender = new AtsdUDPSender("atsd_hostname", 8082);
     final AtsdReporter reporter = AtsdReporter.forRegistry(metrics)
             .setEntity("portal-app")
             .prefixedWith("portal")

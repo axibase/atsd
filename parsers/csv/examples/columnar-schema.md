@@ -30,8 +30,8 @@ Adhere to the following points to convert the input file into a tabular model:
 * For each cell in the cell range, starting with the 4th row and until the last row and starting from the 2nd column and until the last column;
 * Set the metric name to value of the cell located in the 3rd row in the current column: Temperature, Humidity, Pressure (repeated);
 * Set the entity name to the value of the cell located in the 2nd row in the current column;
-* Set the tag 'model' to the value of the cell located in 3rd row in the current column;
-* Set the timestamp to the value of the cell located in the 3rd row and 1st column (date part 2015-11-15) concatenated with the value of the cell located in the current row in the 1st column (hour part). The concatenated value is parsed using the 'Timestamp Pattern';
+* Set the tag `model` to the value of the cell located in 3rd row in the current column;
+* Set the timestamp to the value of the cell located in the 3rd row and 1st column (date part 2015-11-15) concatenated with the value of the cell located in the current row in the 1st column (hour part). The concatenated value is parsed using the **Timestamp Pattern**;
 * Set the series value to the value of the current cell.
 
 ## Commands

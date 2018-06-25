@@ -7,11 +7,11 @@
 | [3677](#issue-3677)      | sql             | Feature      | Added support for `date_format` function in `WHERE`, `GROUP BY` and `ORDER BY` clauses . |
 | [3674](#issue-3674)      | sql             | Bug      | Fixed slow execution time for queries with table aliases. |
 | [3673](#issue-3673)      | sql             | Bug      | Added `WEEK` interval type in the `PERIOD` function. |
-| 3671      | metric          | Bug      | Fixed issues with values being discarded if Min Value and Max Value are specified and Invalid Action set to 'NO ACTION'. |
+| 3671      | metric          | Bug      | Fixed issues with values being discarded if Min Value and Max Value are specified and Invalid Action set to `NO ACTION`. |
 | [3670](#issue-3670)      | sql             | Bug      | Fixed incorrect results with `ROW_MEMORY_THRESHOLD OPTION` compared to temporary table processing. |
 | [3665](#issue-3665)      | sql             | Bug      | Added error message in case of excessive tag combinations fetched by a query. |
 | 3660      | jdbc            | Bug      | Hide unused driver properties in DbVisualizer . |
-| 3647      | core            | Bug      | Fixed error log download issue if the file was modified during the download process. |
+| 3647      | core            | Bug      | Fixed error log download issue if the file is modified during the download process. |
 | [3645](#issue-3645)      | rule engine     | Feature  | Exclude unused statistics from the details table in the email notification. |
 | 3640      | api-rest        | Bug      | Fixed NullPointerException in alert-history-entity query. |
 | 3618      | api-rest        | Bug      | Fixed incorrect status code in case an invalid entity expression is submitted. |
@@ -20,14 +20,14 @@
 | [3601](#issue-3601)      | sql             | Bug      | Optimized execution time for queries with arithmetic expressions. |
 | 3600      | sql             | Bug      | Fixed different results of aggregation functions with and without the `LIMIT` clause. |
 | [3592](#issue-3592)      | security        | Feature  | Added Trust SSL Certificate field to LDAP configuration form. |
-| [3583](#issue-3583)      | security        | Feature  | Added 'Create Accounts' integration feature to LDAP. |
+| [3583](#issue-3583)      | security        | Feature  | Added **Create Accounts** integration feature to LDAP. |
 | 3582      | security        | Feature  | Enabled copying user account attributes from ATSD into LDAP. |
 | 3570      | api-network     | Bug      | Corrected failure to insert metric command for a re-created metric.   |
-| 3560      | api-network     | Feature  | Added new field 'Units' to the Metric class. |
+| 3560      | api-network     | Feature  | Added new field `Units` to the **Metric** class. |
 | [3470](#issue-3470)      | sql             | Feature  | Added support for `text` column in the `SELECT` expression and the `WHERE` clause. |
 | [3465](#issue-3465)      | api-rest        | Feature  | Added `addMeta` series and property methods in Data API. |
 | [3438](#issue-3438)      | security        | Feature  | Modified Enterprise Edition to support LDAP authentication. |
-| [3309](#issue-3309)      | grafana        | Support  | Implemented ATSD storage driver for Grafana 3.x. |
+| [3309](#issue-3309)      | grafana        | Support  | Implemented ATSD storage driver for Grafana `3.x`. |
 
 ## Collector
 
@@ -103,7 +103,7 @@ The list of interval types supported by `PERIOD` now includes:
 
 The `WEEK` interval type, along with `DAY`, `MONTH`, `QUARTER`, and `YEAR` are aligned to the server calendar by default.
 In particular, the `WEEK` period, when calendar-aligned, starts on the first Monday in the initial year in the specified timespan, and is incremented forward.
-For example, the first Monday in 2016 was January 4th and the 2-week periods were started on that date.
+For example, the first Monday in 2016 is January 4th and the 2-week periods begins on that date.
 
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd EEEEE') as 'date', sum(value)
@@ -146,9 +146,9 @@ different results in two modes: in-memory and temporary table.
 
 ### Issue 3665
 
-The query executor was changed to raise an error if too many tag combinations are located for one of the metric and entities specified in the query. The limit is 1000. If the limit is
+Changed the query executor to raise an error if too many tag combinations are located for one of the metric and entities specified in the query. The limit is 1,000. If the limit is
 exceeded, the following error message is returned to the client so that the user can refactor the query and add conditions to the `WHERE` clause to reduce the number of series.
-Previously, an error was not raised and the result set was truncated behind the scenes, leading to unexpected results.
+Previously, an error is not raised and the result set is truncated behind the scenes, which can lead to unexpected results.
 
 ```txt
 IllegalStateException: Too many tags combinations for metric 'df.disk_used' and entity 'nurswghbs001'. Limit: 1000.
@@ -185,17 +185,17 @@ The Trust SSL Certificate setting, when enabled, allows encrypted connections to
 
 ### Issue 3583
 
-The new LDAP integration feature, 'Create Accounts', makes it possible to self-register user accounts in ATSD if the new user account exists in LDAP and the user was able to successfully
+The new LDAP integration feature, **Create Accounts**, makes it possible to self-register user accounts in ATSD if the new user account exists in LDAP and the user is able to successfully
 authenticate. The new account settings, such as username, email, and first/last name, are inherited from LDAP attributes.
 
-If the 'Default User Group' is specified, the new self-registered users are automatically added to this group and inherit its permissions.
+If the **Default User Group** is specified, the new self-registered users are automatically added to this group and inherit its permissions.
 
 ![Figure 2](./Images/Figure2.png)
 
 ### Issue 3470
 
-A new [`text` column](../../sql/examples/select-text-value.md) was made available in the `SELECT` expression and the `WHERE` clause, so
-that string annotations can be displayed in the result set along with numeric values. The `text` column can be selected in a simple query or in a `JOIN` query.
+A new [`text` column](../../sql/examples/select-text-value.md) is available in the `SELECT` expression and the `WHERE` clause, so
+that string annotations are displayed in the result set along with numeric values. The `text` column can be selected in a simple query or in a `JOIN` query.
 
 ```sql
 SELECT entity, datetime, value, text
@@ -213,7 +213,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 
 ### Issue 3465
 
-The new parameter `addMeta` was added to [series](../../api/data/series/query.md) and property methods
+Added the new parameter `addMeta` to [series](../../api/data/series/query.md) and property methods
 so that clients can retrieve entity and metric fields and tags in one request, saving an extra round-trip. Another advantage is that the `addMeta` parameter does not require the user to
 have a Meta API READ role.
 
@@ -258,7 +258,7 @@ The Enterprise Edition now supports LDAP authentication to simplify and centrali
 
 ### Issue 3644
 
-A new Item List type was implemented to load data from property records in ATSD. This allows automating monitoring and data collection jobs, for example, to TCP-check open ports for a
+Implemented a new **Item List** type to load data from property records in ATSD. This allows automating monitoring and data collection jobs, for example, to TCP-check open ports for a
 list of containers retrieved by the Docker job.
 
 ![Figure 3](./Images/Figure3.png)

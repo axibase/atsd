@@ -15,17 +15,17 @@
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) to send chart screenshots directly into Discord.
+Install and configure the [Web Driver](web-driver.md) to send chart screenshots into Discord.
 
 ## Create Discord Server
 
 Configure a new Discord server, if necessary.
 
-* Click on the plus icon in the left panel.
+* Click the **plus** icon in the left panel.
 
      ![](./images/create_server.png)
 
-* Click on **Create a Server**.
+* Click **Create a Server**.
 
      ![](./images/create_server2.png)
 
@@ -39,7 +39,7 @@ Configure a new Discord server, if necessary.
 
 ## Create Channel
 
-* Click on **Create Channel**.
+* Click **Create Channel**.
 
      ![](./images/create_discord_channel.png)
 
@@ -70,7 +70,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 ## Create Webhook in ATSD
 
 * Open the **Alerts > Outgoing Webhooks** page.
-* Click on an existing `DISCORD` template, or click **Create** and select the `DISCORD` type.
+* Click an existing `DISCORD` template, or click **Create** and select the `DISCORD` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/discord_1.png)
@@ -89,7 +89,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 ## Proxy Settings
 
-If the Discord API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the Discord API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Discord:
 
@@ -138,7 +138,7 @@ NGINX API Gateway Path for Discord:
 
 * The rule creates new windows when new commands are received by the database.
 
-It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Examples
 

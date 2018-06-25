@@ -2,7 +2,7 @@
 
 ## Description
 
-Select alerts that were generated for `property` commands.
+Select alerts generated for `property` commands.
 
 ## Request
 

@@ -11,11 +11,11 @@
 
 ## Create Portal
 
-* Click on the **Portals** link in the top menu.
+* Open the **Portals** tab in the top menu.
 
   ![](./resources/creating-and-assigning-portals_1.png)
 
-* Click on **Create**.
+* Click **Create**.
 
   ![](./resources/creating-and-assigning-portals_2.png)
 
@@ -37,7 +37,7 @@
 
 The portal is configured using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax which is a domain-specific language for assembling visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
 
-* **Section** is enclosed in square brackets, for example, `[widget]`. The section may include the nested sections and settings. The section terminates when another section is specified.
+* **Section** is enclosed in square brackets, for example, `[widget]`. The section includes settings and nested sections. The section ends when another section is specified.
 * **Setting** includes name and value, separated by equal sign, for example, `timespan = 1 hour`.
 
 ```ls
@@ -49,7 +49,7 @@ The portal is configured using the [Charts](https://github.com/axibase/charts#ax
 
 ### Layout
 
-Widgets are positioned on the portal page using a **grid** layout. The dimensions of the grid are specified under the `[configuration]` tag using the `width-units` and `height-units` settings. Each widgets occupies 1 horizontal and 1 vertical unit by default.
+Widgets are positioned on the portal using a **grid** layout. The dimensions of the grid are specified under the `[configuration]` tag using the `width-units` and `height-units` settings. Each widgets occupies 1 horizontal and 1 vertical unit by default.
 
 The following example creates a grid containing 6 units, with 3 widgets placed in the first row and 2 placed in the second.
 
@@ -66,7 +66,7 @@ The following example creates a grid containing 6 units, with 3 widgets placed i
      [series]
        # series settings
        metric = view_count
-       entity = axibase.com
+       entity = example.org
        [tags]
          page_name = index.htm
   [widget]
@@ -96,7 +96,7 @@ Review the following guides describing the basic syntax:
 
 The portals are listed on the **Portals** page located at `https://atsd_hostname:8443/portals/list`.
 
-To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click **Configure**.
+To access the **Portals** page via ATSD web interface click **Portals** drop-down at the right upper corner and click **Configure**.
 
 ![](./resources/creating-and-assigning-portals_3.png)
 
@@ -115,7 +115,7 @@ Two types of portals are supported:
 
 ### Regular Portals
 
-The regular portal does not depend on external parameters and can be rendered as is.
+The regular portal does not depend on external parameters and can be rendered without modifications.
 
 Sample link for a regular portal:
 
@@ -159,7 +159,7 @@ The actual configuration displayed replaces the `${entity}` placeholder with the
     entity = nurswgvml013
 ```
 
-To open a template portal directly in the browser address bar, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
+To open a template portal in the browser, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
 
 ```elm
 https://atsd_hostname:8443/portal/{portal_id}.xhtml?entity={entity}
@@ -170,7 +170,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 ![](./resources/creating-and-assigning-portals_7.png)
 
 * Open the [Portals Page](#portals-page).
-* Click on the **assign** icon for the desired template portal.
+* Click the **assign** icon for the desired template portal.
 
     ![](./resources/creating-and-assigning-portals_8.png)
 
@@ -181,10 +181,10 @@ Alternatively, assign an entity group to the template portal so that the link to
 > Note an entity group can be assigned to the portal from portal editor:
 > ![](./resources/creating-and-assigning-portals_10.png)
 
-* Click on **Save** at the bottom of the page.
+* Click **Save** at the bottom of the page.
 * Open the **Entities** page.
 * Select an entity group in the drop-down filter.
-* Click on the _portals_ icon for an entity and verify that the portal was assigned.
+* Click the **portals** icon for an entity and verify that the portal is assigned.
 
     ![](./resources/creating-and-assigning-portals_11.png)
 

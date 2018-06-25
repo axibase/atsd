@@ -74,7 +74,7 @@ WHERE datetime >= '2017-06-15T00:00:00Z'    -- WHERE clause
   LIMIT 1                          -- other clauses
 ```
 
-The statement may be terminated with a semicolon character.
+The statement can end with a semicolon character.
 
 ### Processing Sequence
 
@@ -264,8 +264,8 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`tags.{name}`    |string   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
 |`tags`           |string   | All series tags, concatenated to `name1=value;name2=value` format.|
 |`tags.*`         |string   | Expands to multiple columns, each column containing a separate series tag.|
-|`datetime`       |timestamp | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period's **start** time in ISO format, same as `date_format(PERIOD(...))`.|
-|`time`           |long     | Sample time in Unix milliseconds since 1970-01-01T00:00:00Z, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period's **start** time.|
+|`datetime`       |timestamp | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period **start** time in ISO format, same as `date_format(PERIOD(...))`.|
+|`time`           |long     | Sample time in Unix milliseconds since 1970-01-01T00:00:00Z, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
 
 #### Metric Columns
 
@@ -284,7 +284,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
-|`metric.lastInsertTime`|string | Last time a value was received for this metric by any series. ISO date.|
+|`metric.lastInsertTime`|string | Last time a value is received for this metric by any series. ISO date.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
 |`metric.versioning`|boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
@@ -589,7 +589,7 @@ ORDER BY datetime
 
 ### Group By Columns
 
-In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (the period's start time) in ISO format. In this case, `date_format(PERIOD(5 MINUTE))` can be replaced with `datetime` in the `SELECT` expression.
+In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (the period start time) in ISO format. In this case, `date_format(PERIOD(5 MINUTE))` can be replaced with `datetime` in the `SELECT` expression.
 
 ```sql
 SELECT entity, datetime, date_format(PERIOD(5 MINUTE)), AVG(value)
@@ -860,7 +860,7 @@ WHERE tags.file_system LIKE '%a~_b%' ESCAPE '~'
 
 In the example above, the underscore is evaluated as a regular character (not as a wildcard) because the underscore preceded by an `~` escape character.
 
-### REGEX Expression
+### Regular Expressions
 
 The `REGEX` expression matches column value against a [regular expression](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) and returns `true` if the text is matched.
 
@@ -911,7 +911,7 @@ END
 
 Each `search_expression` must return a boolean (`true`/`false`) value.
 
-The `result_expression` can be a number, a string, or an expression. Result expressions may return values of different data types.
+The `result_expression` can be a number, a string, or an expression. Result expressions return values of different data types.
 
 >If the data types are different (such as a number and a string), the database classifies the column with `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
@@ -1052,7 +1052,7 @@ The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to
 
 ### Optimizing Interval Queries
 
-Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
+Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause can be inefficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
 ```sql
 WHERE date_format(time, 'yyyy') > '2018'   -- Slow: full scan with string comparison.
@@ -1277,8 +1277,8 @@ PERIOD(1 DAY, entity.timeZone)
 | `unit` | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
 | `interpolate` | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
 | `extend` | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
-| `align` | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
-| `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database time zone.|
+| `align` | Align the period start and end. Default: `CALENDAR`.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Refer to [period alignment](#period-alignment).|
+| `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
 
 ```sql
 SELECT entity, date_format(PERIOD(5 MINUTE, END_TIME)), AVG(value)
@@ -1439,8 +1439,8 @@ The behavior can be changed by referencing an interpolation function as part of 
 
 | **Name** | **Description** |
 |:---|:---|
-| `PREVIOUS` | Set value for the period based on the previous period's value. |
-| `NEXT` | Set value for the period based on the next period's value. |
+| `PREVIOUS` | Set value for the period based on the previous period value. |
+| `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
 | `VALUE {d}`| Set value for the period to constant number `d`. |
 
@@ -1591,7 +1591,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 ### HAVING filter
 
-The `HAVING` clause filters grouped rows. It eliminates grouped rows that do not match the specified condition which may contain one or multiple aggregation functions.
+The `HAVING` clause filters grouped rows. It eliminates grouped rows that do not match the specified condition which can contain one or multiple aggregation functions.
 
 ```sql
 HAVING aggregation_function operator value
@@ -1621,7 +1621,7 @@ HAVING AVG(value) > 10 OR MAX(value) > 90
 
 Partitioning is implemented with the `ROW_NUMBER` function, which returns the sequential number of a row within a partition, starting with 1 for the first row in each partition.
 
-A partition is a subset of all rows within the result set, grouped by an entity and/or series tags. Each row in the result set may belong to only one partition.
+A partition is a subset of all rows within the result set, grouped by an entity or series tags. Each row in the result set can belong to only one partition.
 
 For example, a result set partitioned by entity and ordered by time has the following row numbers:
 
@@ -1721,7 +1721,7 @@ ORDER BY Diff DESC
 If the `GROUP BY` clause contains a `PERIOD` column, the `ROW_NUMBER` function applied to grouped rows can refer to the same period as the grouping clause.
 
 ```sql
-SELECT  entity, tags.*, datetime, avg(value), count(value), first(value), last(value)
+SELECT entity, tags.*, datetime, avg(value), count(value), first(value), last(value)
   FROM "df.disk_used"
 WHERE datetime >= '2017-01-09T00:00:00Z' AND datetime < '2017-01-09T02:00:00Z'
   -- group by series (entity+tags) and 15-minute period
@@ -1764,7 +1764,7 @@ ORDER BY row_number() DESC
 
 ### LAST_TIME Syntax
 
-The `last_time` function returns the last time, in milliseconds, when data was received for a given series. It enables filtering of records based on the last insertion date for the given series.
+The `last_time` function returns the last time, in milliseconds, when data is received for a given series. It enables filtering of records based on the last insertion date for the given series.
 
 ```sql
 WITH time comparison_operator last_time_expression
@@ -1951,7 +1951,7 @@ SELECT MAX(value) FROM (
 | 98.8       |
 ```
 
-An inline view may contain subqueries that join multiple tables.
+An inline view can contain subqueries that join multiple tables.
 
 ```sql
 SELECT datetime, MAX(value) AS "5-min Peak" FROM (
@@ -2101,7 +2101,7 @@ WHERE datetime BETWEEN '2018-03-09T07:07:00Z' AND '2018-03-09T07:08:00Z'
   AND t1.entity = 'nurswghbs001'
 ```
 
-Note that the `t1.entity` column below contains rows with `null` values even though this column was checked in the `WHERE` condition. In this example, `null` values were created at the `OUTER JOIN` stage.
+Note that the `t1.entity` column below contains rows with `null` values even though this column is checked in the `WHERE` condition. In this example, `null` values are created at the `OUTER JOIN` stage.
 
 ```ls
 | t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                |
@@ -2125,7 +2125,7 @@ If the timestamps for joined metrics are identical, the `JOIN` operation merges 
 | 2017-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
 ```
 
-As in the example above, the `cpu_system`, `cpu_user`, `cpu_iowait` metrics were recorded and inserted with the same time.
+As in the example above, the `cpu_system`, `cpu_user`, `cpu_iowait` metrics are recorded and inserted with the same time.
 
 ```ls
 datetime d:2017-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
@@ -2133,7 +2133,7 @@ datetime d:2017-06-16T13:00:17Z e:nurswgvml006 m:mpstat.cpu_system=1.0 m.mpstat.
 datetime d:2017-06-16T13:00:33Z e:nurswgvml006 m:mpstat.cpu_system=0.0 m.mpstat.cpu_user=1.0 m:mpstat.cpu_iowait=0.0
 ```
 
-However, when merging independent metrics, `JOIN` results may contain only rows with identical times.
+However, when merging independent metrics, `JOIN` results can contain only rows with identical times.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value AS cpu, t2.value AS mem
@@ -2208,7 +2208,7 @@ WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:
   AND t1.entity = 'nurswgvml006'
 ```
 
-`FULL OUTER JOIN` on detailed records, without period aggregation, produces rows with `NULL` columns for series that did not record any value at the specified time.
+`FULL OUTER JOIN` on detailed records, without period aggregation, produces rows with `NULL` columns for series with any recorded value at the specified time.
 
 ```ls
 | t1.datetime          | t1.entity    | cpu  | t2.datetime          | t2.entity    | mem   |
@@ -2331,7 +2331,7 @@ WHERE datetime > current_hour
 
 #### COUNT
 
-The `COUNT(*)` function returns the number of rows in the result set, whereas the `COUNT(expr)` returns the number of rows where the expression `expr` was not `NULL` or `NaN`.
+The `COUNT(*)` function returns the number of rows in the result set, whereas the `COUNT(expr)` returns the number of rows where the expression `expr` is not `NULL` or `NaN`.
 
 #### PERCENTILE
 
@@ -2497,7 +2497,7 @@ GROUP BY date_format(time, 'EEE')
 Refer to [diurnal](examples/diurnal.md) query examples.
 
 By retrieving date parts from the `time` column, the records can be filtered by calendar.
-The following query includes only daytime hours (from 08:00 till 17:59) during weekdays (Monday till Friday).
+The query below includes only daytime hours (from 08:00 till 17:59) during weekdays (Monday till Friday).
 
 ```sql
 SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)
@@ -2558,7 +2558,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 
 #### `ENDTIME`
 
-The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md), which maybe different from the database time zone.
+The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md), which can be different from the database time zone.
 
 ```sql
 ENDTIME(calendarExpression, string timeZone)
@@ -2708,7 +2708,7 @@ YEAR (datetime | time | datetime expression)
 
 #### CURRENT_TIMESTAMP
 
-The `CURRENT_TIMESTAMP` function returns current database time in ISO-8601 format. The function is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
+The `CURRENT_TIMESTAMP` function returns current database time in ISO 8601 format. The function is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
 
 ```sql
 SELECT CURRENT_TIMESTAMP
@@ -2792,7 +2792,7 @@ AND LOWER(tags.file_system) LIKE '%root'
 
 #### LAG
 
-The `LAG` function lets you access the previous row of the same result set. If the previous row does not exist, the function returns `NULL`.
+The `LAG` function allows you access the previous row of the same result set. If the previous row does not exist, the function returns `NULL`.
 
 ```sql
 LAG(columnName)
@@ -2839,7 +2839,7 @@ WHERE entity = 'qz-1211'
 | 2017-10-04T02:12:30Z | Inactive | 900       | -- excluded: text is 'Inactive' and LAG = '900'
 ```
 
-The `LAG` function in the `SELECT` expression is applied to the filtered result set, after some rows have been excluded by the `LAG` function as part of the `WHERE` clause. Therefore, `LAG()` in `SELECT` and `LAG()` in `WHERE` clauses may return different values.
+The `LAG` function in the `SELECT` expression is applied to the filtered result set, after some rows have been excluded by the `LAG` function as part of the `WHERE` clause. Therefore, `LAG()` in `SELECT` and `LAG()` in `WHERE` clauses can return different values.
 
 ```sql
 SELECT datetime, LAG(value), value, LEAD(value)
@@ -2876,7 +2876,7 @@ WHERE entity = 'nurswgvml007'
 
 #### LEAD
 
-The `LEAD` function lets you access the next row of the same result set. If the next row does not exist, the function returns `NULL`.
+The `LEAD` function allows you access the next row of the same result set. If the next row does not exist, the function returns `NULL`.
 
 ```sql
 LEAD(columnName)
@@ -3054,11 +3054,11 @@ The result of `CAST(inputNumber AS string)` is formatted with the `#.##` pattern
 
 The `OPTION` clause provides hints to the database optimizer on how to execute the given query most efficiently.
 
-The query may contain multiple `OPTION` clauses specified at the end of the statement.
+The query can contain multiple `OPTION` clauses specified at the end of the statement.
 
-### `ROW_MEMORY_THRESHOLD` Option
+### ROW_MEMORY_THRESHOLD Option
 
-The database may choose to process rows using the local file system as opposed to memory if the query includes one of the following clauses:
+The database can choose to process rows using the local file system as opposed to memory if the query includes one of the following clauses:
 
 * `JOIN`
 * `ORDER BY`
@@ -3083,7 +3083,7 @@ If `{n}` is zero or negative, the results are processed using the local file sys
 
 This clause overrides the conditional allocation of shared memory established with the **Settings > Server Properties**:`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
 
-The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which may increase response time during heavy read activity.
+The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 
 > The row count threshold is applied to the number of rows selected from the underlying table, and not the number rows returned to the client.
 

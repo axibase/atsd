@@ -1,12 +1,12 @@
 # Last Time
 
-The `last_time` function returns last time in milliseconds when data was received for a given series.
+The `last_time` function returns last time in milliseconds when data is received for a given series.
 
 The database tracks information about last insert times, last values, and insert counters for each series in a dedicated table, separate from the main data table.
 
-Unlike the data table, the last insert table is updated with a delay of 15 seconds to minimize write load on the system by de-duplicating frequent updates that may arrive within the 15-second interval.
+Unlike the data table, the `last insert` table is updated with a delay of 15 seconds to minimize write load by de-duplicating updates that arrive within the delay interval.
 
-As a result, values returned by the `last_time` function may be lagging behind by a few seconds and expressions such as `WITH time > last_time` may actually produce records.
+As a result, values returned by the `last_time` function can be lagging behind by a few seconds.
 
 ## Query
 

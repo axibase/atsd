@@ -31,7 +31,7 @@ The migration task is implemented as a Map-Reduce job and requires at least 4 GB
 
 Log in to ATSD and open the **SQL** tab.
 
-Execute the following query to count rows for one of the key metrics.
+Count rows for one of the key metrics.
 
 ```sql
 SELECT COUNT(*) FROM mymetric
@@ -78,7 +78,7 @@ sudo find / -name "yarn.keytab" | xargs ls -la | tail -n 1
 -rw------- 1 yarn        hadoop        448 Jul 29 16:44 /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab
 ```
 
-Switch to the 'yarn' user.
+Switch to the `yarn` user.
 
 ```sh
 sudo su yarn
@@ -126,7 +126,7 @@ Modify Map-Reduce [settings](mr-settings.md) using parameters recommended by Axi
 
 ## Run Migration Map-Reduce Job
 
-Execute the below steps under the 'yarn' user on the YARN ResourceManager server.
+Execute the below steps under the `yarn` user on the YARN ResourceManager server.
 
 ### Backup `atsd_d` Table
 
@@ -136,7 +136,7 @@ Run the `TableCloner` task to rename `atsd_d` table as `atsd_d_backup`.
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
 
-If a custom table prefix is specified in the `server.properties` file, for example, if the prefix is set to 'atsd_custom_', change the `table_name` parameter accordingly:
+If a custom table prefix is specified in the `server.properties` file, for example, if the prefix is set to `atsd_custom_`, change the `table_name` parameter accordingly:
 
 ```sh
 java com.axibase.migration.admin.TableCloner --table_name=atsd_custom_d
@@ -168,7 +168,7 @@ nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced \
 
 #### Monitoring Job Progress
 
-The job may take several hours to complete.
+The job takes several hours to complete.
 
 Open **Clusters > Cluster > YARN > Web UI > ResourceManager Web UI** in Cloudera Manager.
 
@@ -192,7 +192,7 @@ Once the job is complete, the `migration.log` file contains the following messag
 
 Log in to HDFS NameNode server or another server with the DFS client.
 
-Switch to the 'hdfs' user.
+Switch to the `hdfs` user.
 
 ```sh
 sudo su hdfs
@@ -215,7 +215,7 @@ This path must match the `coprocessors.jar` setting specified in the `/opt/atsd/
 
 ### Remove Old Coprocessors
 
-ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager.
+ATSD coprocessors added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager.
 
 Remove old jar files from the local file system on each HBase Region Server.
 
@@ -247,7 +247,7 @@ Restart HBase.
 
 Log in to the ATSD Server.
 
-Switch to the 'axibase' user.
+Switch to the `axibase` user.
 
 ```sh
 sudo su axibase
@@ -285,7 +285,7 @@ jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -
 
 Edit the `/opt/atsd/atsd/conf/atsd-env.sh` file.
 
-Increase 'Xmx' memory to 50% of available RAM memory on the ATSD server:
+Increase `Xmx` memory to 50% of available RAM memory on the ATSD server:
 
 ```sh
 JAVA_OPTS="-server -Xmx4096M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
@@ -311,7 +311,7 @@ Web interface is now accessible on port `8443` (https).
 
 Open the **SQL** tab in ATSD.
 
-Execute the following query and compare the row count.
+Count rows for the previously selected metric and compare the results.
 
 ```sql
 SELECT COUNT(*) FROM mymetric
@@ -321,7 +321,7 @@ The number of records must match the results prior to migration.
 
 ## Delete Backup Table
 
-Log in to  HBase shell.
+Log in to HBase shell.
 
 Delete `atsd_d_backup` table. Adjust the table name if a custom prefix is specified in the `server.properties` file.
 

@@ -6,7 +6,7 @@
 |------|-------------|---------|-------------------------------------------------------------------------------------------------------|
 | [3737](#issue-3737) | sql         | Bug     | Fixed issue with long scan, followed by a timeout for an entity that does not collect the specified metric. |
 | [3735](#issue-3735) | sql         | Bug     | Math functions do not accept arithmetic expressions in the `WHERE` clause. Updated error message to read `IllegalArgumentException: Aggregate functions are not supported in the WHERE clause`. |
-| 3731 | api-rest    | Bug     | Fixed issue with property queries (`addMeta`:true) not returning metadata if the property type was set to `$entity_tags`. |
+| 3731 | api-rest    | Bug     | Fixed issue with property queries (`addMeta`:true) not returning metadata if the property type is set to `$entity_tags`. |
 | 3729 | api-rest    | Bug     | Updated error URL and message text for requests to non-existent URLs. |
 | [3727](#issue-3727) | api-network | Feature | Optimized TCP handler for faster processing of `series` commands streamed by a single TCP client. |
 | [3725](#issue-3725) | sql         | Bug     | Optimized queries with `ORDER BY` and `LIMIT` clauses. |
@@ -60,7 +60,7 @@ GROUP BY entity
 
 ### Issue 3727
 
-The TCP handler, running on the default port 8081, was optimized for faster processing of `series` commands streamed by a single TCP client. The new implementation provides a pool of
+The TCP handler, running on the default port `8081`, optimized for faster processing of `series` commands streamed by a single TCP client. The new implementation provides a pool of
 threads instead of a single one to offload parsing and processing from the TCP handler. The size of the pool is controlled with the `series.processing.pool.size` parameter on the
 **Settings > Server Properties** page. The default value is 2 and is recommended to be set to the number of cores on the server.
 
@@ -68,8 +68,8 @@ As a result, the TCP processing and parsing throughput (measured in commands per
 
 ### Issue 3725
 
-Previously, execution of queries with the `LIMIT` clause involved copying selected rows into a temporary table, even if only a small subset of the rows, restricted with `LIMIT`, was required.
-Both `ASC` and `DESC` ordered results were optimized by reducing the number of rows copied into a temporary table. The following queries experienced a 90% speedup in execution time.
+Previously, execution of queries with the `LIMIT` clause involved copying selected rows into a temporary table, even if only a small subset of the rows, restricted with `LIMIT`, are required.
+Both `ASC` and `DESC` ordered results are optimized by reducing the number of rows copied into a temporary table. The following queries experienced a 90% speedup in execution time.
 
 ```sql
 SELECT *
@@ -87,8 +87,8 @@ LIMIT 10
 
 ### Issue 3719
 
-We added an optimization to narrow the start date in [windowing](../../sql/README.md#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
-Prior to this change, the start date was set to 0 (not applied) if it was not specified explicitly in the query.
+Added an optimization to narrow the start date in [windowing](../../sql/README.md#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
+Prior to this change, the start date is not applied if it is not specified explicitly in the query.
 
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd') as 'date',
@@ -102,9 +102,9 @@ WITH time = last_time
 The above query scans data with a start date determined as the earliest of all the matching series.
 For example, if you have 3 series with the following last insert dates:
 
-* A - 2016-12-21
-* B - 2016-10-05
-* C - 2016-12-20
+* A: 2016-12-21
+* B: 2016-10-05
+* C: 2016-12-20
 
 The SQL optimizer adds a condition `AND datetime >= '2016-20-05T00:00:00Z'`, even if the interval condition is not included in the query.
 
@@ -157,8 +157,8 @@ ORDER BY max(time)
 
 ### Issue 3697
 
-The sequence of period interpolation and period filtering with the [HAVING](../../sql/README.md#having-filter) clause was modified.
-Now, the `HAVING` filter is applied after [PERIOD interpolation](../../sql/README.md#interpolation) whereas before it was the opposite.
+Modification of the sequence of period interpolation and period filtering with the [`HAVING`](../../sql/README.md#having-filter) clause.
+Now, the `HAVING` filter is applied after [`PERIOD` interpolation](../../sql/README.md#interpolation).
 
 ```sql
 SELECT date_format(period(1 MONTH)), count(value)
@@ -170,7 +170,7 @@ GROUP BY period(1 MONTH, VALUE 0)
 ORDER BY datetime
 ```
 
-Assuming there were no detailed records for this series in October 2016, the current result looks as follows:
+Assuming no detailed records for this series in October 2016, the current result looks as follows:
 
 ```ls
 | date_format(period(1 MONTH)) | sum(value) | count(value) |
@@ -203,9 +203,9 @@ ORDER BY 1
 
 ### Issue 3694
 
-The query optimizer was modified to apply tag filter specified in `JOIN` queries on one of the tables to the remaining tables, since
-[JOINs](../../sql/README.md#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
-was applied only to those tables where the filter was set explicitly.
+Modified the query optimizer to apply tag filter specified in `JOIN` queries on one of the tables to the remaining tables, since
+[joins](../../sql/README.md#joins) in ATSD merge rows on time, entity, and series tags anyway. Prior to this change, the tag filter
+only applied to those tables without explicitly set filter.
 
 ![Figure 2](./Images/Figure2.png)
 
@@ -216,7 +216,7 @@ connections in the shared connection pool in active state.
 
 ### Issue 3672
 
-SQL Query Plan is used for diagnosing slow query response times. The plan was extended to:
+SQL Query Plan is used for diagnosing slow query response times. The plan now includes the following features:
 
 1) Display start and end dates for each HBase scan.</br>
 2) Display scans to the atsd_li (last insert) table, which are used to add additional filters and to determine optimal query plan.</br>

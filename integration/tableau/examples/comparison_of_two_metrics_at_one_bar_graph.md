@@ -19,7 +19,7 @@ Build a report displaying monthly exports and imports.
 * Click **OK** to acknowledge the warning about limitations
 * Drag-and-drop `Datetime` onto the column field
 * Drag-and-drop both `Value` onto the rows field
-* Optionally rename values: right click on `Value` and choose **Rename**
+* Optionally rename values: right-click **Value** and choose **Rename**
 * Show Me Card > _side-by-side bars_
 
 ![](../images/bars.png)
@@ -31,8 +31,8 @@ Enter `Ctrl+W` and swap columns and rows.
 Add **Drop Lines** and **Labels**:
 
 * Select a column
-* Right click and choose **Drop Lines** > **Show Drop Lines**
-* Right click and choose **Drop Lines** > **Edit Drop Lines** > **Labels** > **Automatic**
+* Right-click and choose **Drop Lines > Show Drop Lines**
+* Right-click and choose **Drop Lines > Edit Drop Lines > Labels > Automatic**
 
 ## Results
 

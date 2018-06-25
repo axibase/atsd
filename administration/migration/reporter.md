@@ -2,9 +2,9 @@
 
 ## Overview
 
-The DataTableReporter is a Map-Reduce job that identifies the largest daily rows in the 'atsd_d' table to estimate the RAM required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
+The DataTableReporter is a Map-Reduce job that identifies the largest daily rows in the `atsd_d` table to estimate the RAM required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
 
-The reporter scans the 'atsd_d' table and estimates the physical memory required to process the data during the migration.
+The reporter scans the `atsd_d` table and estimates the physical memory required to process the data during the migration.
 
 The reporter makes no changes to the data.
 
@@ -14,7 +14,7 @@ Execute the below steps on the server running YARN Resource Manager on the targe
 
 ### Check Services
 
-* Login into Cloudera Manager.
+* Log in to Cloudera Manager.
 
 * Open **Hosts > All Hosts**, expand the **Roles**.
 
@@ -22,7 +22,7 @@ Execute the below steps on the server running YARN Resource Manager on the targe
 
 * Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**.
 
-  * Search for the 'yarn.log-aggregation-enable' property and verify that the property is checked.
+  * Search for the `yarn.log-aggregation-enable` property and verify that the property is checked.
 
 ![](./images/cloudera-log-aggregation-settings.jpeg)
 
@@ -46,7 +46,7 @@ hbase classpath | cut -f 1 -d ":"
 /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf
 ```
 
-Copy  the HBase configuration directory and set `HADOOP_CLASSPATH`:
+Copy the HBase configuration directory and set `HADOOP_CLASSPATH`:
 
 ```sh
 export HADOOP_CLASSPATH=/opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf:$(hbase mapredcp):/tmp/reporter/reporter.jar
@@ -162,12 +162,12 @@ Email the `reporter.log`, `summary.log`, and `maximum-per-region.log` files to `
 
 The report contains the following summary counters:
 
-* `ANNOTATIONS_COUNT` - The number of annotations (text columns) stored in the `atsd_d` table.
-* `ROWS_AFTER_MIGRATION` - The estimated number of daily rows in the `atsd_d` table to be created after migration.
-* `ROWS_READ` - The number of hourly rows currently present in the `atsd_d` table. Equal to `Map input records` counter.
-* `SAMPLES_COUNT` - The total number of `timestamp=value` samples for all series in the `atsd_d` table.
-* `VERSIONED_VALUES_COUNT` - The total number of samples which have several versions of values for the same timestamp.
-* `VERSIONS_COUNT` - The total number of all versions for all series samples.
+* `ANNOTATIONS_COUNT`: The number of annotations (text columns) stored in the `atsd_d` table.
+* `ROWS_AFTER_MIGRATION`: The estimated number of daily rows in the `atsd_d` table to be created after migration.
+* `ROWS_READ`: The number of hourly rows currently present in the `atsd_d` table. Equal to `Map input records` counter.
+* `SAMPLES_COUNT`: The total number of `timestamp=value` samples for all series in the `atsd_d` table.
+* `VERSIONED_VALUES_COUNT`: The total number of samples which have several versions of values for the same timestamp.
+* `VERSIONS_COUNT`: The total number of all versions for all series samples.
 
 The report includes memory required by the mapper. This maximum is reported for each region in the `atsd_d` table, for example:
 

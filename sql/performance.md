@@ -8,9 +8,9 @@ Monitoring query execution is an important administrative task to optimize datab
 
 The database keeps track of query executions including detailed statistics in an in-memory structure. The list of running and completed queries is available on the **SQL Query Statistics** page.
 
-The list can be filtered by user, source, status, query part, and elapsed time. Additional information about the query is displayed on the query detail page.
+The list can be filtered by user, source, status, query part, and elapsed time. Additional information about the query is displayed on the **Query Plan** page.
 
-Users with an `ADMIN` role are authorized to view and cancel all queries whereas non-administrative users are restricted to viewing and cancelling only their own queries.
+Users with an `ADMIN` role are authorized to view and cancel all queries whereas non-administrative users are restricted to viewing and cancelling their own queries.
 
 ![Query Reporting](./images/sql-query-reporting.png)
 
@@ -18,8 +18,8 @@ Query Detail Fields:
 
 | **Name** | **Description** |
 |:---|:---|
-| `Status` | New, Running, Completed, Error, Cancelled. |
-| `Source` | api, console, scheduled. |
+| `Status` | `New`, `Running`, `Completed`, `Error`, `Cancelled`. |
+| `Source` | `api`, `console`, `scheduled`. |
 | `User` | Name of the user who initiated the query.<br>For API clients, username specified in login credentials. |
 | `Query Id` | Unique query identifier. |
 | `Query Text` | Query statement text. |
@@ -42,15 +42,15 @@ Query Detail Fields:
 
 ## Cancelling Queries
 
-A running query can be cancelled at any time, for example if its is execution time is longer than expected.
+A running query can be cancelled at any time, for example if its execution time is longer than expected.
 
-When a query is cancelled results are not returned to the client and the query is terminated with an error.
+When a query is cancelled, the results are not returned to the client and the query is stopped with an error.
 
-A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId=myid` url and referencing the user-defined handle with the `queryId` parameter.
+A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` url and referencing the user-defined handle with the `{query-id}` parameter.
 
 ## Query Logging
 
-Queries executed by the database are recorded in the main application log `atsd.log` at the INFO level.
+Queries executed by the database are recorded in the main application log `atsd.log` at the `INFO` level.
 
 Each query is assigned a unique identifier for correlating starting and closing events.
 
@@ -86,7 +86,7 @@ The most efficient query path is **metric+entity+date+tags**.
 Query execution speed can be improved by adopting the following guidelines for the `WHERE` clause:
 
 * Specify start time and end time whenever possible to limit the time range.
-* Specify entity name whenever possible to avoid a scan of all rows in the virtual table.
+* Specify entity name whenever possible to narrow the range of rows scanned.
 
 ## Query Optimization
 
@@ -96,7 +96,7 @@ Consider the following recommendations when developing queries:
 * Avoid queries without any conditions. Apply `LIMIT` to reduce the number of rows returned.
 * Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval](README.md#interval-condition) conditions.
 * Make `WHERE` conditions narrow and specific, for example, specify a small time interval.
-* Avoid the `ORDER BY` clause since it may cause a full scan and a copy of data to a temporary table.
+* Avoid the `ORDER BY` clause since it can cause a full scan and a copy of data to a temporary table.
 * Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` does not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
 * Develop a simple query first. Adjust conditions gradually as you inspect the results. Add grouping, partitioning, and ordering to finalize the query.
 

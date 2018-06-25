@@ -31,7 +31,7 @@
 |------|-------------|---------|----------------------|
 | [4563](#issue-4563)  | docker | Feature | Add entity tags to docker host entities. |
 | 4577 | jdbc | Bug | Execute sql tasks in the same order as they are specified in the job configuration. |
-| 4573 | docker | Bug | Fix entity label collision if container has a label named 'LABEL'. |
+| 4573 | docker | Bug | Fix entity label collision if container has a label named `LABEL`. |
 | 4022 | jdbc | Bug | Perform only one query execution during test. |
 
 ---
@@ -103,7 +103,7 @@ SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', metric.timeZone) AS 
 
 ### Issue 2766
 
-The new 'Series Retention Days' setting allows deleting series which have not been updated for a long period of time.
+The new **Series Retention Days** setting allows deleting series which have not been updated for a long period of time.
 
 ![](./Images/issue2766.png)
 

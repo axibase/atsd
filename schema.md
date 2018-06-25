@@ -58,7 +58,7 @@ date         time       type   source    message
 
 Property is collection of arbitrary key-values describing a given entity, grouped by user-defined `type`. The property record is uniquely identified by type, entity, and optional keys. Unlike Series, the property record stores only the most recent values. The values are stored as text.
 
-For example, `disk_info` type for an entity may store properties such as `disk_type`, `disk_model` etc.  The property schema would be similar to the following relational representation:
+For example, `disk_info` type for an entity can store properties such as `disk_type`, `disk_model` etc.  The property schema is similar to the following relational representation:
 
 ```sql
 CREATE TABLE disk_info (

@@ -10,9 +10,9 @@ Once enabled, the database tracks changes made to stored values with the followi
 
 | Field Name | Description |
 | --- | --- |
-|  Version Time  |  Timestamp when insert command was received. Set automatically by ATSD server with millisecond precision.  |
+|  Version Time  |  Timestamp when insert command is received. Set automatically by ATSD server with millisecond precision.  |
 |  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
-|  Version Status  |  User-defined field to classify change events. <br> Set to 'invalid' for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
+|  Version Status  |  User-defined field to classify change events. <br> Set to `invalid` for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
 > The ability to specify custom fields with server-side business logic such as change locking, is under development.
 
@@ -20,11 +20,11 @@ Once enabled, the database tracks changes made to stored values with the followi
 
 Versioning is **disabled** by default.
 
-It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to 'Yes' in the multi-record editor, or by enabling **Versioning** on the Metric Editor page:
+It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to **Yes** in the multi-record editor, or by enabling **Versioning** in the **Metric Editor**.
 
 ![](./resources/1.png)
 
-In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to initialize the _Version Status_ field with an 'invalid' value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
+In addition, **Invalid Value Action** can be set to `SET_VERSION_STATUS` to initialize the **Version Status** field with an `invalid` value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
 
 ## Inserting Version Fields
 
@@ -33,7 +33,7 @@ To insert versioning fields along with the modified value, use the reserved tags
 * `$version_source`
 * `$version_status`
 
-These tags are converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger.
+These tags are converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides `invalid` value set by `SET_VERSION_STATUS` trigger.
 
 Options to insert versioned series:
 
@@ -66,11 +66,11 @@ Versioned samples can be added by opening **Data > Data Entry > Series** form an
 
 ![](./resources/8.png)
 
-> Note: _Metric_ field must reference an existing metric with _Versioning = Yes_
+> Note: **Metric** field must reference an existing metric with _Versioning = Yes_
 
 ### CSV Parser using Default Tags
 
-To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** field in the CSV parser or on the [CSV File Upload](../parsers/csv/README.md#uploading-csv-files) page:
+To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** field in the CSV parser or on the [CSV File Upload](../parsers/csv/README.md#uploading-csv-files) page.
 
 ```ls
 $version_status={status}
@@ -99,11 +99,11 @@ Version history can be retrieved on the [Ad-hoc Export](../reporting/ad-hoc-expo
 
 ### Ad-hoc Export page
 
-Open the **Filters** section and enable **Display Versions** setting on export page:
+Open the **Filters** section and enable **Display Versions** setting on export page.
 
 ![](./resources/4.png)
 
-* Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
+* Records with version history are highlighted with **blue** and **brown**-colored borders: **blue** border represents the latest value, **brown** border represents a historical, overwritten value.
 * `NaN` represents deleted values.
 * Aggregation functions and other calculations ignore historical and deleted values.
 
@@ -112,7 +112,7 @@ Open the **Filters** section and enable **Display Versions** setting on export p
 |**Name**|**Description**|
 |---|---|
 |**Revisions Only** |Displays only modified values.|
-|**Version Filter**| An expression to filter version history.<br>The expression may contain the `version_source`, `version_status` and `version_time` fields.<br>The `version_time` field supports [calendar](../shared/calendar.md) syntax using the `date()` function.<br> The `version_source` and `version_status` fields support wildcards.<br> To view the deleted values use `Double.isNaN(value)` method in the [Value Filter](../reporting/ad-hoc-exporting.md#ad-hoc-export-settings) field.|
+|**Version Filter**| An expression to filter version history.<br>The expression can contain the `version_source`, `version_status` and `version_time` fields.<br>The `version_time` field supports [calendar](../shared/calendar.md) syntax using the `date()` function.<br> The `version_source` and `version_status` fields support wildcards.<br> To view the deleted values use `Double.isNaN(value)` method in the [Value Filter](../reporting/ad-hoc-exporting.md#ad-hoc-export-settings) field.|
 
 Examples:
 
@@ -148,11 +148,11 @@ Examples:
 
 Create a report in HTML format on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page with versioning mode enabled.
 
-Click on timestamp for the selected record to open the **Data Entry** page.
+Click timestamp for the selected record to open the **Data Entry** page.
 
 ![](./resources/9.png)
 
-Change version _Status_ and _Source_, change the `Value` and click **Update**.
+Change version **Status**, **Source**, and **Value** fields and click **Update**.
 
 ![](./resources/10.png)
 
@@ -166,15 +166,15 @@ Click the timestamp for the selected record to open the **Data Entry** page.
 
 ![](./resources/9.png)
 
-Change version _Status_ and _Source_, change the `Value` and click **Delete**.
+Change version `Status` and `Source`, change the `Value` and click **Delete**.
 
 ![](./resources/12.png)
 
-Note that the value is not actually deleted. Rather, the current value for the selected timestamp is replaced with a `NaN` marker.
+Note that the current value for the selected timestamp is not deleted. Instead, it is replaced with a `NaN` marker.
 
 ![](./resources/13.png)
 
-A value can also be deleted using the selection checkbox and **Delete** button on the export page.
+A value can also be deleted using the selection checkbox and **Delete** button on the **Data > Export** page.
 
 ![](./resources/14.png)
 

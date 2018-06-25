@@ -2,11 +2,11 @@
 
 SQL client provides a convenient way to query ATSD using SQL and export results to a file or standard output in a variety of formats.
 
-The client is a bash script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
+The client is a `bash` script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
 
 ## Permissions
 
-Make sure that `sql.sh` has execution permissions.
+Ensure that `sql.sh` has execution permissions.
 
 ```bash
 chmod +x sql.sh
@@ -23,7 +23,7 @@ If the database url specified in the `atsd.config` file is secure, both the quer
 ## Configuration File
 
 ```elm
-url=https://10.102.0.6:8443/api/sql
+url=https://192.0.2.6:8443/api/sql
 insecure=true
 user=axibase
 password=********

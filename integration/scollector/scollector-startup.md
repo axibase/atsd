@@ -199,7 +199,7 @@ Download scollector Windows [executable](http://bosun.org/scollector/).
 
 Navigate to the directory with the `exe` file and create a `scollector.toml` file in notepad.
 
-> Make sure the name of the file is `scollector.toml` and not `scollector.toml.txt`
+> Ensure the name of the file is `scollector.toml` and not `scollector.toml.txt`
 
 Add `Host` setting to `scollector.toml`:
 

@@ -69,7 +69,7 @@ curl "https://atsd_hostname:8443/api/v1/entity-groups/nur-entities-name/entities
         "lastInsertDate": "2015-09-04T15:43:36.000Z",
         "tags": {
             "app": "Shared NFS/CIFS disk, ntp server",
-            "ip": "10.102.0.2",
+            "ip": "192.0.2.2",
             "os": "Linux"
         }
     },

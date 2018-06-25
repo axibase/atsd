@@ -15,7 +15,7 @@ metric m:${metric} b:${enabled} p:${data-type} l:${label} d:${description} i:${i
 * Metric name and tag names are case-insensitive and are converted to lower case when stored.
 * Label, description, units, filter, and tag values are case-sensitive and are stored as submitted.
 * Other fields are case-insensitive.
-* Tag values cannot be empty.
+* Tag values must not be empty.
 * Metric tags and fields that are not specified are left unchanged.
 * To reset a field to the default value or to delete a tag, use double-quoted empty string, for example `z:""`.
 

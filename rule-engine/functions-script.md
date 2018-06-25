@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `scriptOut` function executes a bash or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script's `stdout` and `stderr` output.
+The `scriptOut` function executes a `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
 
-The function accepts an array of arguments which may include window [placeholders](placeholders.md) such as `entity` or `tags`.
+The function accepts an array of arguments which can include window [placeholders](placeholders.md) such as `entity` or `tags`.
 
 The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 
@@ -23,10 +23,10 @@ The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 scriptOut(string fileName, collection arguments)
 ```
 
-* [**required**] `fileName` - Name of the script file located in the `/opt/atsd/atsd/conf/script` directory.
-* [**required**] `arguments` - Collection of arguments passed to the script. Can be an empty list.
+* [**required**] `fileName`: Name of the script file located in the `/opt/atsd/atsd/conf/script` directory.
+* [**required**] `arguments`: Collection of arguments passed to the script. Can be an empty list.
 
-The arguments may include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
+The arguments can include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
 
 ```javascript
 scriptOut('disk_size.sh', [entity, tags.file_system])
@@ -35,7 +35,7 @@ scriptOut('disk_size.sh', [entity, tags.file_system])
 Literal string arguments must be enclosed in single quotes.
 
 ```javascript
-scriptOut('check_site.py', ['axibase.com', 3])
+scriptOut('check_site.py', ['example.org', 3])
 ```
 
 If no arguments are required, invoke the script with an empty list `[]`.
@@ -46,7 +46,7 @@ scriptOut('check_service.sh', [])
 
 The script must complete within the timeout value specified in **Settings > Server Properties** `system.commands.timeout.seconds`. The default timeout is 15 seconds.
 
-If the script times out, its process is terminated with `SIGTERM` flag and the following text is appended to the output:
+If the script times out, its process is stopped with `SIGTERM` and the following text is appended to the output:
 
 ```txt
 Script terminated on timeout: {current timeout value}
@@ -73,10 +73,10 @@ from prettytable import PrettyTable
 ...
 ```
 
-Execute the Python script by passing its name, similar to bash scripts.
+Execute the Python script by passing its name, similar to `bash` scripts.
 
 ```javascript
-scriptOut('check_site.py', ['axibase.com', 3])
+scriptOut('check_site.py', ['example.org', 3])
 ```
 
 Review [Daily Referer Requests](#daily-referer-requests) script as an example.
@@ -126,24 +126,24 @@ ping -c ${count} ${host}
 ```javascript
 Host ping report:
 
-${scriptOut('ping.sh', ['axibase.com', '3'])}
+${scriptOut('ping.sh', ['example.org', '3'])}
 ```
 
 #### Command
 
 ```sh
-ping -c 3 axibase.com
+ping -c 3 example.org
 ```
 
 #### Output
 
 ```txt
-PING axibase.com (78.47.207.156) 56(84) bytes of data.
-64 bytes from axibase.com (78.47.207.156): icmp_seq=1 ttl=52 time=45.5 ms
-64 bytes from axibase.com (78.47.207.156): icmp_seq=2 ttl=52 time=40.0 ms
-64 bytes from axibase.com (78.47.207.156): icmp_seq=3 ttl=52 time=43.9 ms
+PING example.org (192.0.2.1) 56(84) bytes of data.
+64 bytes from example.org (192.0.2.1): icmp_seq=1 ttl=52 time=45.5 ms
+64 bytes from example.org (192.0.2.1): icmp_seq=2 ttl=52 time=40.0 ms
+64 bytes from example.org (192.0.2.1): icmp_seq=3 ttl=52 time=43.9 ms
 
---- axibase.com ping statistics ---
+--- example.org ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 2002ms
 rtt min/avg/max/mdev = 40.078/43.189/45.588/2.305 ms
 ```
@@ -191,25 +191,22 @@ rm  ${dir}/error
 ```javascript
 Trace report:
 
-${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
+${scriptOut('traceroute.sh', ['3', 'example.org'])}
 ```
 
 #### Command
 
 ```sh
-timeout 3 traceroute axibase.com
+timeout 3 traceroute example.org
 ```
 
 #### Output
 
 ```txtsh
-traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
- 1  NURSWGVML102(10.102.0.1)  0.149 ms  0.059 ms  0.032 ms
- 2  static.129.38.9.5.clients.your-server.de (5.9.38.129)  0.438 ms  0.430 ms  0.481 ms
- 3  core23.fsn1.hetzner.com (213.239.229.233)  0.402 ms core24.fsn1.hetzner.com (213.239.229.237)  0.341 ms core23.fsn1.hetzner.com (213.239.229.233)  0.399 ms
- 4  ex9k2.dc8.fsn1.hetzner.com (213.239.229.18)  0.442 ms  0.438 ms ex9k2.dc8.fsn1.hetzner.com (213.239.229.22)  0.416 ms
- 5  cnode3.6.fsn1.your-cloud.host (136.243.180.196)  0.306 ms  0.297 ms  0.313 ms
- 6  axibase.com (78.47.207.156)  0.348 ms  0.363 ms  0.308 ms
+traceroute to example.org (192.0.2.1), 30 hops max, 60 byte packets
+ 1  NURSWGVML102(192.0.2.1)  0.149 ms  0.059 ms  0.032 ms
+...
+ 6  example.org (192.0.2.1)  0.348 ms  0.363 ms  0.308 ms
 ```
 
 #### Notification
@@ -309,13 +306,13 @@ ssh -i /home/axibase/.ssh/def.key ${host} ps aux | grep ${pattern}
 
 ```javascript
 Output is:
-${scriptOut('ps.sh', ['axibase.com','bash'])}
+${scriptOut('ps.sh', ['example.org','bash'])}
 ```
 
 #### Command
 
 ```sh
-ssh -i /home/axibase/.ssh/def.key axibase.com ps aux | grep bash
+ssh -i /home/axibase/.ssh/def.key example.org ps aux | grep bash
 ```
 
 #### Output
@@ -368,14 +365,14 @@ rm  ${dir}/response  ${dir}/headers
 #### Function
 
 ```javascript
-${scriptOut('url_avail.sh', ['https://axibase.com'])}
+${scriptOut('url_avail.sh', ['https://example.org'])}
 ```
 
 #### Command
 
 ```sh
 curl -sS -L --insecure -X GET -m 10 -D /opt/atsd/atsd/conf/script/headers \
-  -w "\nResponse Time: %{time_total}\n" "https://axibase.com" > /opt/atsd/atsd/conf/script/response 2>&1
+  -w "\nResponse Time: %{time_total}\n" "https://example.org" > /opt/atsd/atsd/conf/script/response 2>&1
 ```
 
 #### Output
@@ -425,13 +422,13 @@ fi
 #### Function
 
 ```javascript
-Output is: ${scriptOut('tcp.sh', ['2','axibase.com', '443'])}
+Output is: ${scriptOut('tcp.sh', ['2','example.org', '443'])}
 ```
 
 #### Command
 
 ```sh
-timeout 2 bash -c "</dev/tcp/axibase.com/443"
+timeout 2 bash -c "</dev/tcp/example.org/443"
 ```
 
 #### Output
@@ -472,13 +469,13 @@ ssh -i /home/axibase/.ssh/def.key ${host} "osqueryi \"${query}\""
 #### Function
 
 ```javascript
-${scriptOut('osquery.sh', ['axibase.com', "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '0.0.0.0';"])}
+${scriptOut('osquery.sh', ['example.org', "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '0.0.0.0';"])}
 ```
 
 #### Command
 
 ```sh
-ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
+ssh -i /home/axibase/.ssh/def.key example.org 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
 
 #### Output
@@ -539,15 +536,15 @@ ${scriptOut('daily_referer_requests.py', [])}
     <tr>
         <td>2018-06-14 03:58</td>
         <td>/</td>
-        <td>https://example.com/</td>
-        <td>127.0.0.1</td>
+        <td>https://example.org/</td>
+        <td>192.0.2.1</td>
         <td>Example Org</td>
     </tr>
     <tr>
         <td>2018-06-14 20:43</td>
         <td>/chartlab/2ef08f32</td>
         <td>https://example.org/</td>
-        <td>127.0.0.1</td>
+        <td>192.0.2.1</td>
         <td>Example Org</td>
     </tr>
 </table>

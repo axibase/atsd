@@ -16,7 +16,7 @@
 * [Proxy Settings](#proxy-settings)
 * [Webhook Settings](#webhook-settings)
 * [Reacting to Bot Messages](#reacting-to-bot-messages)
-* [Testing  Rule](#testing-rule)
+* [Testing Rule](#testing-rule)
 * [Examples](#examples)
 
 ## Prerequisites
@@ -43,27 +43,27 @@ Slack Bot is a special account created for automation purposes.
 
 * Create a bot user.
 
-  * Click on **Bot Users**.
+  * Click **Bot Users**.
 
        ![](./images/outgoing_webhook_slack_2.png)
 
-  * Click on **Add a Bot User**.
+  * Click **Add a Bot User**.
 
        ![](./images/outgoing_webhook_slack_3.png)
 
-  * Review Settings, click on **Add Bot User**.
+  * Review Settings, click **Add Bot User**.
 
        ![](./images/outgoing_webhook_slack_4.png)
 
-  * Click on **Save Changes**.
+  * Click **Save Changes**.
 
 ## Add Bot to Channel
 
-* Click on **Install App**.
+* Click **Install App**.
 
     ![](./images/slack_3.png)
 
-* Click on **Install App to Workspace**.
+* Click **Install App to Workspace**.
 
    ![](./images/outgoing_webhook_slack_12.png)
 
@@ -75,21 +75,21 @@ Slack Bot is a special account created for automation purposes.
 
    ![](./images/slack_4.png)
 
-* Open Slack [workspace](https://my.slack.com/), click on bot name in the **Apps** section.
+* Open Slack [workspace](https://my.slack.com/), click bot name in the **Apps** section.
 
    ![](./images/outgoing_webhook_slack_14.png)
 
-* Click on **Conversation Settings**  and **Add this app to a channel ...**.
+* Click **Conversation Settings**  and **Add this app to a channel ...**.
 
     ![](./images/slack_5.png)
 
-* Select the channel, click on **Add**.
+* Select the channel, click **Add**.
 
     ![](./images/slack_6.png)
 
 ## Get Channel Id
 
-* Click on the target IM/public/private channel to display the channel URL, for example `messages/D822261LK/team/U81D8UY64/`.
+* Click the target IM/public/private channel to display the channel URL, for example `messages/D822261LK/team/U81D8UY64/`.
 
      ![](./images/slack_channel_id.png)
 
@@ -100,7 +100,7 @@ When sending messages to either a public or private channel you can just use the
 ## Configure Webhook in ATSD
 
 * Open **Alerts > Webhooks** page.
-* Click on an existing `SLACK` template, or click **Create** below and select the `SLACK` type.
+* Click an existing `SLACK` template, or click **Create** below and select the `SLACK` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/slack_1.png)
@@ -118,7 +118,7 @@ When sending messages to either a public or private channel you can just use the
 
 ## Proxy Settings
 
-If the Slack API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the Slack API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Slack:
 
@@ -175,7 +175,7 @@ To process incoming messages, configure an [outgoing webhook](outgoing-webhook-s
 
 * The rule creates new windows when new commands are received by the database.
 
-It may take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Examples
 

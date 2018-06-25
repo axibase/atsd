@@ -20,32 +20,32 @@
 
 ### Load Sample Data
 
-To complete this exercise, sample data must be available in your ATSD instance.
+To complete this exercise, load sample data into your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
+2. Open **Metrics > Data Entry**, select the **Commands** tab.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
 
-The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
+The commands contain the Consumer Price Index (CPI) for each category of items in a consumer basket as well as a weight for each category in the CPI basket. The weights are stored as fractions of 1000. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available only for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
 
 To calculate a weighted inflation index we need to multiply the CPI of each category by its weight divided by 1000 and sum the products.
 
 ## Configure Database Connection
 
-* Select the 'Data' tab in the properties pane on the right.
+* Select the **Data** tab in the properties pane on the right.
 
 ![](./resources/data_pane.png)
 
-* Select 'Add Data Sources' in the toolbar, click 'JDBC'.
-* Select 'Add a new connection' (green plus icon).
+* Select **Add Data Sources** in the toolbar, click **JDBC**.
+* Select **Add a new connection** (green plus icon).
 
 ![](./resources/new_connection.png)
 
-* Select `General` in the left menu
-* Select `Generic database` as Connection Type
-* Select `Native (JDBC)` as Access
+* Click **General** in the left menu
+* Select **Generic database** in **Connection Type**
+* Select **Native (JDBC)** in **Access**
 
 ### Configure ATSD connection properties
 
@@ -68,9 +68,9 @@ ATSD connection can be verified using the `SELECT 1` query.
 
 Example of `SELECT 1` test query:
 
-* Select 'Add a new connection' (green plus icon).
-* Input query row `SELECT 1` to the 'SQL Query Designer'.
-* Click 'Preview'.
+* Select **Add a new connection** (green plus icon).
+* Input query row `SELECT 1` to the **SQL Query Designer**.
+* Click **Preview**.
 
 ![](./resources/select_1.png)
 
@@ -102,19 +102,19 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 `SQL Query Designer` is used for visual building of a Query:
 
-* Double click on the table that you want to include to Query. The table is shown in right pane of `SQL Query Designer`.
+* Double-click the table that you want to include to Query. The table is shown in right pane of **SQL Query Designer**.
 * Select fields inside the table (these fields are included in `SELECT` clause of a Query)
 * Optionally add `WHERE`, `GROUP BY` and `HAVING` or `ORDER BY`
-* Click `OK` so your Query is built and shown in text field
+* Click **OK** so your Query is built and shown in text field
 > Remove new line symbol after `SELECT` keyword
 > Remove quotes around column names
 
 ## Import Data
 
-* Select 'Data' tab in the properties pane on the right
-* Select 'Add Data Sources' button in the toolbar and choose `JDBC`
-* Click on 'ATSD Connection'
-* Click on 'Add Query' in the Available Queries list
+* Select **Data** tab in the properties pane on the right
+* Select **Add Data Sources** button in the toolbar and choose `JDBC`
+* Click **ATSD Connection**
+* Click **Add Query** in the **Available Queries** list
 
 ![](./resources/add_query.png)
 
@@ -125,8 +125,8 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 * Build a Query using the `SQL Query Designer`
 
-* Click **OK**. The list of queries is added to the 'Data' pane.
-* Right-click on the query and choose 'Select Query'. The tree view displays query results and fields.
+* Click **OK**. The list of queries is added to the **Data** pane.
+* Right-click the query and choose **Select Query**. The tree view displays query results and fields.
 
 ![](./resources/data_pane_updated.png)
 

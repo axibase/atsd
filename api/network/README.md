@@ -54,7 +54,7 @@ Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text com
 
 ### Single Command
 
-To send a single command, connect to an ATSD server, send the command in plain text, and terminate the connection.
+To send a single command, connect to an ATSD server, send the command in plain text, and stop the connection.
 
 * netcat: `echo`
 
@@ -68,7 +68,7 @@ echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:1
 printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_host 8081
 ```
 
-* Bash [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
+* `bash` [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
 
 ```bash
 echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_host/8081
@@ -134,7 +134,7 @@ Trailing line feed is not required for the last command when the connection is c
 
 Commands are processed as they are received by the server, without buffering.
 
-To prevent the connection from timing out the client may send a [`ping`](ping.md) command at a regular interval.
+To prevent the connection from timing out, send a [`ping`](ping.md) command at a regular interval.
 
 Clients can submit different types of commands over the same connection.
 
@@ -149,7 +149,7 @@ property e:station_2 t:location v:city=Cupertino v:state=CA v:country=USA
 Connection closed by foreign host.
 ```
 
-Note that the server **terminates** the connection if it receives an unsupported or malformed command.
+Note that the server **ceases** the connection if the server receives an unsupported or malformed command.
 
 ```ls
 $ telnet atsd_host 8081
@@ -160,9 +160,9 @@ unknown_command e:station_1 m:temperature=32.2
 Connection closed by foreign host.
 ```
 
-If the connection is terminated due to client error, all valid commands sent prior to the first invalid command are stored.
+If the connection is closed due to client error, all valid commands sent prior to the first invalid command are stored.
 
-Due to the fact that closing the channel due to client error may take some time, the database may also store a few valid commands received after the discarded command.
+Because of the delay between closing the channel on client error and the connection shutdown, the database can store valid commands present in the network buffer, even if they are received after the discarded command.
 
 ```txt
 valid command   - stored
@@ -179,7 +179,7 @@ This causes the database to maintain a client connection even if one of the rece
 
 ### UDP Datagrams
 
-The UDP protocol does not guarantee delivery but may have a higher throughput compared to TCP due to lower overhead.
+The UDP protocol does not guarantee delivery but has a higher throughput compared to TCP.
 
 In addition, sending commands with UDP datagrams decouples the client application from the server to minimize the risk of blocking I/O time-outs.
 
@@ -191,7 +191,7 @@ echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" | nc -u -w 1 ats
 printf 'series e:station_3 m:temperature=32.2 m:humidity=81.4' | nc -u -w 1 atsd_host 8082
 ```
 
-Unlike TCP, the last command in a multi-command UDP datagram must be terminated with the line feed character.
+Unlike TCP, the last command in a multi-command UDP datagram must end with the line feed character.
 
 ```bash
 echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperature=32.1 m:humidity=82.4\n" | nc -u -w 1 atsd_host 8082
@@ -199,9 +199,9 @@ echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperatu
 
 ### Duplicate Commands
 
-Multiple commands with the same timestamp and key fields may override each others value.
+Multiple commands with the same timestamp and key fields override each others value.
 
-If such commands are submitted at approximately the same time, there is no guarantee that they are processed in the order received.
+If such commands are submitted at the same time, there is no guarantee that they are processed in the order received.
 
 * Duplicate example: same key, same current time
 
@@ -359,16 +359,17 @@ cat command-in.log
 
 ### Dropped Commands
 
-Reasons why ATSD server can drop commands:
+Reasons for the ATSD server to drop commands:
 
 * Entity, metric, or tag names are not valid.
 * Timestamp is negative or earlier than `1970-01-01T00:00:00Z`.
-* Timestamp field `s:`/`ms:` is not numeric or if the `d` field is not in ISO format.
-* Metric value could not be parsed as a number using `.` as the decimal separator. Scientific notation is supported.
-* Multiple data points for the same entity, metric, and tags have the same timestamp in which case commands are considered duplicates and some of them are dropped. This could occur when commands with the same key are sent without a timestamp.
-* Data is sent using the UDP protocol and the client UDP send buffer or the server UDP receive buffer overflows.
-* Value is below 'Min Value' or above 'Max Value' limit specified for the metric and the 'Invalid Value Action' is set to `DISCARD`.
-* Last command in a multi-line UDP packed does not terminate with line feed symbol.
+* Timestamp field `s:`/`ms:` is not numeric.
+* Timestamp field `d` field format is not supported.
+* Metric value cannot not be parsed as a number using `.` as the decimal separator. Note that scientific notation is supported.
+* Multiple data points for the same entity, metric, and tags have the same timestamp in which case commands are duplicates and some of them are dropped. This situation can occur if multiple commands for the same series are sent without a timestamp.
+* Data is sent using the UDP protocol and the client UDP buffer or the server UDP buffer overflows.
+* Value is below **Min Value** or above **Max Value** limit specified for the metric and the **Invalid Value Action** is set to `DISCARD`.
+* Last command in a multi-line UDP packed does not end with line feed symbol.
 
 To review dropped commands, `open command*.log` files in ATSD.
 

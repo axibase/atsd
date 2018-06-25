@@ -2,7 +2,7 @@
 
 ## Description
 
-Select alerts that were generated for `message` commands.
+Select alerts generated for `message` commands.
 
 ## Request
 

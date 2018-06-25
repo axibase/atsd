@@ -7,11 +7,11 @@
 | 4452 | UI | Bug | Fix response body formatting in the built-in API client. |
 | 4443 | email | Bug | Add support for UTF-8 characters in email subjects. |
 | 4435 | UI | Feature | Display alert message on Users and Entity Group pages if `api.guest.access.enabled` is enabled. |
-| 4433 | UI | Bug | Fix Delete button on the Portal Editor page. |
+| 4433 | UI | Bug | Fix Delete button in the portal editor. |
 | 4432 | installation | Bug | Read hostname from `/proc/sys/kernel/hostname` if the hostname command is not installed on the Linux server. |
 | 4428 | installation | Bug | Set file ownership to `axibase:axibase` instead of `axibase:root` when installing ATSD from deb/rpm package. |
 | 4421 | sql | Bug | Revert a change which caused empty results to be returned for a non-existing table without raising an error. |
-| [4420](#issue-4420) | sql | Bug | Return data type as `bigint` for columns that previously were classified as `long`. |
+| [4420](#issue-4420) | sql | Bug | Return data type as `bigint` for columns classified as `long`. |
 | [4406](#issue-4406) | UI | Feature | Highlight error if tag value is not allowed by a dictionary tag specified in the metric or entity tag template. |
 | 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Settings > Tag Templates** page. |
 | [4395](#issue-4395) | jdbc | Feature | Add support for [wildcards](https://github.com/axibase/atsd-jdbc/blob/master/README.md#database-metadata) in `getTables` and `getColumns` methods. |

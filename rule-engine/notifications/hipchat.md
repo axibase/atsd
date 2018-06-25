@@ -11,7 +11,7 @@
 ## Create Bot
 
 * Log in to HipChat as an administrator.
-* Click on **System**.
+* Click **System**.
 
     ![](./images/system.png)
 
@@ -32,12 +32,12 @@
 
 ## Generate Tokens
 
-* Click on the bot icon in the upper right corner.
+* Click the bot icon in the upper right corner.
 
     ![](./images/bot_icon.png)
 
-* Click on **Profile**.
-* Open **API tokens**. Make sure you are using API **v2** to avoid a warning message from the system.
+* Click **Profile**.
+* Open **API tokens**. Ensure that you are using API **v2** to avoid a warning message from the system.
 
 * Choose **Send Message** and the **Send Notification** options from the **Scopes** field.
 * Fill in the **Label** field.
@@ -66,11 +66,11 @@
 
 ## Look Up Room ID
 
-* Click on the team name.
+* Click the team name.
 
     ![](./images/team_name.png)
 
-* Click on the newly created room.
+* Click the newly created room.
 
     ![](./images/created_room.png)
 
@@ -83,7 +83,7 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 ## Create Webhook in ATSD
 
 * Open the **Alerts > Outgoing Webhooks** page.
-* Click on an existing `HIPCHAT` template, or click **Create** and select the `HIPCHAT` type.
+* Click an existing `HIPCHAT` template, or click **Create** and select the `HIPCHAT` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/hipchat_1.png)
@@ -103,13 +103,13 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 
 ## Proxy Settings
 
-If the HipChat API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the HipChat API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 ## Webhook Settings
 
 |**Name**|**Description**|
 |---|---|
-|`Auth Token`|Authorization Token with 'message' and 'notifications' scopes.|
+|`Auth Token`|Authorization Token with `message` and `notifications` scopes.|
 |Bot Nickname|Set a name for the bot.|
 |Room ID|ID or name of the room.|
 |Message|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|
@@ -146,7 +146,7 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
 * The rule creates new windows when new commands are received by the database.
 
-It may take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Examples
 

@@ -59,7 +59,7 @@ Query execution time highlighted above.
 
 #### Issue 4317
 
-Files produced by an SQL report can be made available for [downloading](../../sql/scheduled-sql.md) by end-users. The report files contain records that were prepared by the server when the scheduled task was last executed.
+Files produced by an SQL report can be made available for [downloading](../../sql/scheduled-sql.md) by end users. The report files contain records prepared by the server when the scheduled task last executed.
 
 ![](./Images/issue-4317.png)
 

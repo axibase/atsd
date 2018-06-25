@@ -8,9 +8,9 @@ copying files to target directories, and gracefully restarting ATSD services.
 
 ## Migration
 
-ATSD for HBase 1.2.5 was released in August 2017.
+ATSD for HBase 1.2.5, released in August 2017.
 
-If **Settings > System Information** page on your current instance displays HBase version 0.94.x, execute the following steps depending on the installation mode.
+If **Settings > System Information** page on your current instance displays HBase version `0.94.x`, execute the migration procedure depending on the installation mode:
 
 * [Cluster](migration/cluster.md)
 * [Container](migration/container.md)
@@ -44,7 +44,7 @@ Once the update is completed, the script prints out the following message:
 Update process finished successfully.
 ```
 
-The update process may take a few minutes to complete.
+The update process can take a few minutes to complete.
 
 To verify that ATSD is working correctly, open the ATSD web interface:
 

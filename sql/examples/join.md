@@ -17,7 +17,7 @@ JOIN "mpstat.cpu_idle" t2
 ```ls
 | entity       | datetime             | t1.value | t2.value |
 |--------------|----------------------|----------|----------|
-| nurswgvml006 | 2016-06-18T21:49:53Z | 14.1     | 85.9     | <-- both cpu_busy and cpu_idle had samples recorded at 2016-06-18T21:49:53Z
+| nurswgvml006 | 2016-06-18T21:49:53Z | 14.1     | 85.9     | <-- both cpu_busy and cpu_idle have samples recorded at 2016-06-18T21:49:53Z
 | nurswgvml006 | 2016-06-18T21:50:09Z | 88.0     | 12.0     |
 | nurswgvml006 | 2016-06-18T21:50:25Z | 8.0      | 92.0     |
 | nurswgvml006 | 2016-06-18T21:50:41Z | 6.1      | 93.9     |

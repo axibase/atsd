@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Store** option for scheduled SQL queries may be used to write the results of a query back into the database resembling the materialized view capability in traditional databases.
+The **Store** option for scheduled SQL queries can be used to write the results of a query back into the database resembling the materialized view capability in traditional databases.
 
 ## Use Cases
 
@@ -56,13 +56,13 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| `datetime` | string | `0-1` | The date of the record in ISO-8601 format (1).|
+| `datetime` | string | `0-1` | The date of the record in ISO 8601 format (1).|
 | `time` | long | `0-1` | The date of the record in Unix milliseconds (1). |
 | `entity` | string | `1` | Name of the entity under which the new series is stored. |
 | `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
 
 * (1) Only one of the date columns, `datetime` or `time`, must be included in the results.
-* (2) The column is classified as a 'metric' if it has a numeric datatype and does not match the rules applicable to other column types.
+* (2) The column is classified as a `metric` if it has a numeric datatype and does not match the rules applicable to other column types.
 
 #### Optional Series Tag Columns
 
@@ -134,7 +134,7 @@ series e:dc-1 d:2017-08-02T00:00:00Z m:temp_daily_perc_90=28.24
 
 ### Duplicates
 
-Since a query can create `series` commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
+Since a query can create `series` commands for existing dates, the **Check Last Time** option provides a way to control how duplicates are handled.
 
 If **Check Last Time** is enabled, the `series` command is inserted if its timestamp is greater than the timestamp of the previously stored values for the given series key.
 

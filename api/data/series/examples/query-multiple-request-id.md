@@ -4,7 +4,7 @@
 
 Retrieve data for multiple series queries with different metrics, entities, and timespans.
 
-Each query may return multiple series. The order of series in the response is arbitrary.
+Each query can return multiple series. The order of series in the response is arbitrary.
 
 To associate series with queries, specify the `requestId` parameter.
 

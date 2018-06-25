@@ -16,7 +16,7 @@ If the `WHERE` condition includes multiple selection intervals, the interpolatio
 
 The interpolated values are calculated based on two adjacent values.
 
-If a raw value exists at the regularized timestamp, such value is used "as is" irrespective of neighboring values.
+If a raw value exists at the regularized timestamp, such value is used without modifications irrespective of neighboring values.
 
 ### Irregular Series
 
@@ -34,10 +34,10 @@ If a raw value exists at the regularized timestamp, such value is used "as is" i
 ```ls
 | time                 | value |
 |----------------------|-------|
-| 2016-09-17T08:00:00Z | 3.70  | returned "as is" because raw value is available at 08:00:00Z
+| 2016-09-17T08:00:00Z | 3.70  | returned without modifications because raw value is available at 08:00:00Z
 | 2016-09-17T08:00:30Z | 4.78  | = 4.4 + (9.0-4.4) * ((00:30-00:26)/(01:14-00:26)) = 4.4 + 4.6*(4/48)  = 4.783
 | 2016-09-17T08:01:00Z | 7.66  | = 4.4 + (9.0-4.4) * ((01:00-00:26)/(01:14-00:26)) = 4.4 + 4.6*(34/48) = 7.658
-| 2016-09-17T08:01:30Z | 2.30  | returned "as is" because raw value is available at 08:01:30Z
+| 2016-09-17T08:01:30Z | 2.30  | returned without modifications because raw value is available at 08:01:30Z
 ```
 
 ### Regular `30 SECOND` Series Calculated with the `PREVIOUS` Function
@@ -45,10 +45,10 @@ If a raw value exists at the regularized timestamp, such value is used "as is" i
 ```ls
 | time                 | value |
 |----------------------|-------|
-| 2016-09-17T08:00:00Z | 3.70  | returned "as is" because raw value is available at 08:00:00Z
+| 2016-09-17T08:00:00Z | 3.70  | returned without modifications because raw value is available at 08:00:00Z
 | 2016-09-17T08:00:30Z | 4.40  | based on previous value of 4.40 recorded at 08:00:26Z
 | 2016-09-17T08:01:00Z | 4.40  | based on previous value of 4.40 recorded at 08:00:26Z
-| 2016-09-17T08:01:30Z | 2.30  | returned "as is" because raw value is available at 08:01:30Z
+| 2016-09-17T08:01:30Z | 2.30  | returned without modifications because raw value is available at 08:01:30Z
 ```
 
 ## Examples
@@ -206,7 +206,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:01:30Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, FALSE)
 ```
 
-The value at 08:00:00 was excluded because the prior value in the `INNER` mode was not available for linear interpolation.
+The value at 08:00:00 is excluded because the prior value in the `INNER` mode is not available for linear interpolation.
 
 ```ls
 | datetime                 | value  |
@@ -227,7 +227,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:01:30Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, NAN)
 ```
 
-The value at 08:00:00 is `NaN` because the prior value in the `INNER` mode was not available for linear interpolation.
+The value at 08:00:00 is `NaN` because the prior value in the `INNER` mode is not available for linear interpolation.
 
 ```ls
 | datetime                 | value  |
@@ -250,7 +250,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
   WITH INTERPOLATE(30 SECOND, LINEAR, INNER, EXTEND)
 ```
 
-The value at 08:00:00 is set to first raw value at 08:00:18 because the prior value at 02:00:05 was not available in the `INNER` mode.
+The value at 08:00:00 is set to first raw value at 08:00:18 because the prior value at 02:00:05 is not available in the `INNER` mode.
 
 ```ls
 | datetime                 | value  |

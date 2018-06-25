@@ -10,7 +10,7 @@
 
 ![](./images/price.sps.png)
 
-* Right click on the script window and select **Run All** to export the data into ATSD.
+* Right-click the script window and select **Run All** to export the data into ATSD.
 
 ![](./images/run_all.png)
 

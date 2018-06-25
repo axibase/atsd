@@ -26,7 +26,7 @@ Date,Time,Open,High,Low,Close,Volume
 09/08/2017,17:38,142.45,142.45,142.45,142.45,3556
 ```
 
-The records be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
+The records can be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
 
 The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` time zone.
 
@@ -50,7 +50,7 @@ The tests are performed using two schema options:
 * **Trade Table** [schema](postgres-trade-table.sql) uses a named column for each input metric.
 * **Universal Table** [schema](postgres-universal-table.sql) uses a single metric ID column for all input metrics.
 
-The **Trade Table** schema requires less disk space however the underlying table can not be extended to store different sets of columns for different instrument types. As such, multiple tables need to be created to store data for various instrument types.
+The **Trade Table** schema requires less disk space however the underlying table can not be extended to store different sets of columns for different instrument types. As such, multiple tables must be created to store data for various instrument types.
 
 The **Universal Table** schema allows adding new metrics without altering the tables. This can be done by inserting a new record into the `Metrics` table (a dictionary) and using foreign keys when inserting data into the data table.
 
@@ -207,8 +207,8 @@ Start a PostgreSQL 9.6 container. Mount `/tmp/test` directory to the container.
 docker run --name postgres \
    -e POSTGRES_USER=axibase \
    -e POSTGRES_PASSWORD=axibase \
-   -v /tmp/test:/data  \
-   -d  postgres:9.6
+   -v /tmp/test:/data \
+   -d postgres:9.6
 ```
 
 ### Execute SQL scripts for the **Trade Table** Schema

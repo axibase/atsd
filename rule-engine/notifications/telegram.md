@@ -2,7 +2,7 @@
 
 ## Overview
 
-`TELEGRAM` [notifications](../notifications/README.md) provides a built-in capability to send alert messages, alert detail tables, and charts directly to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
+`TELEGRAM` [notifications](../notifications/README.md) provides a built-in capability to send alert messages, alert detail tables, and charts to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Reference
 
@@ -28,7 +28,7 @@ Install and configure the [Web Driver](web-driver.md) to send chart screenshots 
 
     ![](./images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot's username must end with `_bot` and cannot contain dash `-` symbol.
+* Send the `/newbot` command and complete the guided process to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
 
 ```txt
     Use this token to access the HTTP API:
@@ -39,11 +39,11 @@ Install and configure the [Web Driver](web-driver.md) to send chart screenshots 
 
 ## Add Bot to Group or Channel
 
-If necessary, follow the prompts to create a new [group](https://telegram.org/faq#q-how-do-i-create-a-grou) or [channel](https://telegram.org/faq_channels#q-what-39s-a-channel).
+If necessary, create a new [group](https://telegram.org/faq#q-how-do-i-create-a-grou) or [channel](https://telegram.org/faq_channels#q-what-39s-a-channel).
 
 ### Add Bot to Group
 
-* Click on **Group Settings > Add Members**.
+* Click **Group Settings > Add Members**.
 
    ![](./images/telegram_3.png)
 
@@ -51,7 +51,7 @@ If necessary, follow the prompts to create a new [group](https://telegram.org/fa
 
    ![](./images/telegram_4.png)
 
-* Click on the bot name and click on **Invite**.
+* Click the bot name and click **Invite**.
 
 To add bot to private/public channel see this [instruction](telegram-add-bot-to-channel.md).
 
@@ -75,7 +75,7 @@ There are two options to obtain chat id:
 ## Configure Webhook in ATSD
 
 * Open **Alerts > Outgoing Webhooks** page.
-* Click on an existing `TELEGRAM` template, or click **Create** and select the `TELEGRAM` type.
+* Click an existing `TELEGRAM` template, or click **Create** and select the `TELEGRAM` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/telegram_2.png)
@@ -94,7 +94,7 @@ There are two options to obtain chat id:
 
 ## Proxy Settings
 
-If the Telegram API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the Telegram API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Telegram:
 
@@ -121,7 +121,7 @@ NGINX API Gateway Path for Telegram:
 
 The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself.
 
-To process incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes' and **Method** to 'Polling'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
+To process incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to `yes` and **Method** to `Polling`. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
 
 ## Testing Rule
 
@@ -150,7 +150,7 @@ To process incoming messages, configure an [outgoing webhook](outgoing-webhook-t
 
 * The rule creates new windows when new commands are received by the database.
 
-It may take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and to trigger the webhook. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ### Test
 

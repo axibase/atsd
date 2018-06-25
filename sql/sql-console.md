@@ -2,7 +2,7 @@
 
 ## Overview
 
-**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported to CSV, JSON, and Excel files or [reinserted](#store) as a derived series.
+**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported into CSV, JSON, and Excel files or [reinserted](#store)as a derived series in ad-hoc and continuous modes.
 
 Open the console by clicking **Console** in the main **SQL** menu.
 
@@ -24,7 +24,7 @@ Format Settings apply custom formatting to dates, numbers, and [`NULL`](README.m
 
 ### Date Format / Time Zone
 
-Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function to the `SELECT` expression.
+Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression.
 
 Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
 
@@ -101,7 +101,7 @@ Perform the query specified in the **Query** window and view results in a tabula
 
 ### Cancel
 
-Interrupt a running query. The database may take several seconds to gracefully stop a query.
+Interrupt a running query. The database can take several seconds to gracefully stop a query.
 
 ### Export
 

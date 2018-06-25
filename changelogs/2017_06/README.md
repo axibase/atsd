@@ -36,9 +36,9 @@
 
 | Issue| Category       | Type    | Subject                                                                              |
 |------|----------------|---------|--------------------------------------------------------------------------------------|
-| 3908 | table          | Bug     | Fixed row sorting when conditional 'display: none' style is used.                                      |
+| 3908 | table          | Bug     | Fixed row sorting when conditional `display: none` style is used.                                      |
 | [3901](#issue-3901) | portal    | Support | Added ability to hide rows if no alert is raised for all metrics in a row.          |
-| [3792](#issue-3792) | box       | Feature | Implemented class 'Metro'.                                                            |
+| [3792](#issue-3792) | box       | Feature | Implemented class **Metro**.                                                            |
 
 ### Issue 3909
 

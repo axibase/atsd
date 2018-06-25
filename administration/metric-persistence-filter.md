@@ -1,6 +1,6 @@
 # Metric Persistence Filter
 
-The metric persistence filter, configurable in the metric editor, can be used to discard incoming `series` commands according to a filter expression. Commands for which the expression returns `false` are not stored in the database.
+The metric persistence filter, configurable in the **Metric Editor**, can be used to discard incoming `series` commands according to a filter expression. Commands for which the expression returns `false` are not stored in the database.
 
 ## Expression Syntax
 
@@ -46,7 +46,7 @@ The following built-in functions can be used in the filter expression:
 * [`isEmpty`](#isempty)
 * [`IN`](#in)
 
-Filter expression may contain [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions:
+Filter expression can also include [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions.
 
 ```javascript
 Math.sin(Math.toRadians(value)) < 0.5
@@ -100,7 +100,7 @@ Examples:
 
 ```javascript
 
-likeAll(tags.request_ip, ['10.50.*', '10.50.102.?'])
+likeAll(tags.request_ip, ['192.0.*', '192.0.2.?'])
 ```
 
 ### `likeAny`
@@ -261,15 +261,15 @@ tags.location IN ('NUR', 'SVL')
 
 ## Using Persistence Filter
 
-If space utilization needs to be controlled, open the **Settings > Receive Statistics** page to view metrics with the highest number of inserted commands:
+To reduce disk space utilization, open the **Settings > Receive Statistics** page to view metrics with the highest number of inserted commands.
 
 ![](./images/metric_persistence_filter_1.png "top_hourly_metrics")
 
-The _Series_ icon opens a list of unique tags for the selected metric.
+The **Series** icon opens a list of unique tags for the selected metric.
 
 ![](./images/metric_persistence_filter_2.png)
 
-If some of the incoming data is of low value it may not be worth storing it.
+If some of the incoming data is of low value it can be ignored when received.
 
 ![](./images/series.png)
 
@@ -277,7 +277,7 @@ To stop storing such series, create a collection with filter patterns on the **D
 
 ![](./images/metric_persistence_filter_3.png "names_collections")
 
-Open the metric editor and create a filter expression to ignore matching series.
+Open the **Metric Editor** and create a filter expression to ignore matching series.
 
 ```javascript
 !likeAny(tags.command, collection('ignore-collector-process-commands'))

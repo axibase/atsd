@@ -36,9 +36,9 @@ Enter a number into the  **Time/Value** field and click **Send**. Do not enter a
 
 ![](./resources/data_entry_series.png)
 
-In a real manufacturing process, the temperature is typically measured both for the equipment itself, as `outer` or `jacket` temperature, as well as for the chemical compound inside the reactor which may be called `product` temperature.
+In a real manufacturing process, the temperature is measured for the equipment itself, as `outer` or `jacket` temperature, and for the compound inside the reactor, for example as a `product` temperature.
 
-A sample product temperature chart may look as follows:
+A sample product temperature chart looks as follows:
 
 ![](./resources/temperature-sample.png)
 
@@ -54,7 +54,7 @@ Click **Statistics** `∑` icon to view summary information about the series.
 
 ## Insert Initial Data
 
-To populate the database with some initial temperature readings, open the **Commands** tab and submit the following commands created using loops.
+To populate the database with some initial temperature readings, open the **Commands** tab and submit these commands, created using loops.
 
 ```ls
 <#list 1..20 as i>
@@ -66,7 +66,7 @@ series s:${(nowSeconds - i * 600)?c} e:br-1905 m:temperature=${(60 - 2*i)?c}
 
 ## Graph Data
 
-Click on the chart icon to view the default chart for the current `temperature` series.
+Click the chart icon to view the default chart for the current `temperature` series.
 
 ![](./resources/series-inserted-chart.png)
 
@@ -128,7 +128,7 @@ Open **Metrics** tab in the main menu and search for `temperature`. The search b
 
 ![](./resources/metric-search.png)
 
-The metric editor provides more built-in fields compared to entities because the concept of metric is shared by many domains and fields such as units, value range, precision, seasonality, etc. are commonly required.
+The **Metric Editor** provides more built-in fields compared to entities because the concept of metric is shared by many domains and fields such as units, value range, precision, seasonality, etc. are commonly required.
 
 Set **Label** to `Temperature` and set fields as follows:
 

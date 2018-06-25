@@ -30,7 +30,7 @@ A phrase is a group of words surrounded by double quotes such as `"location nur"
 
 Multiple terms can be combined together using boolean operators to form a more complex query.
 
-A keyword may be prefixed with a field name to narrow the scope of the search to a particular series property, for example `entity:nurswgvml007`.
+A keyword can be prefixed with a field name to narrow the scope of the search to a particular series property, for example `entity:nurswgvml007`.
 
 If the field is not specified, the search is performed for all fields.
 
@@ -157,7 +157,7 @@ date:2017-06-*
 
 ### Scheduling
 
-The search index is continuously refreshed on schedule and as such it may not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
+The search index is continuously refreshed on schedule and as such not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
 
 The interval between the incremental refreshes can be controlled with the `search.indexing.incremental.interval` setting. Each refresh operation takes up to 10 seconds.
 

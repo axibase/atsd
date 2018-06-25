@@ -9,7 +9,7 @@
 | 4249 | core | Bug | Prevent deletions of column families on restart, if the column family is not described in new schema. |
 | [4243](#issue-4243) | admin | Feature | Add new object types to backup: Replacement Tables, Named Collections, Users, User Groups, Entities. |
 | 4237 | UI | Bug | Modify standard tooltips to bootstrap tooltips. |
-| 4233 | sql | Bug | [`CONCAT`](../../sql/README.md#string-functions) function fails when one of the arguments is an ISO-8601 date. |
+| 4233 | sql | Bug | [`CONCAT`](../../sql/README.md#string-functions) function fails when one of the arguments is an ISO 8601 date. |
 | 4225 | sql | Feature | Allow [`datetime`](../../sql/README.md#predefined-columns) column without table qualifier in JOIN queries. |
 | 4221 | sql | Bug | `ISNULL(t1.datetime, t2.datetime)` function returns time in milliseconds for string data types. |
 | 4217 | sql | Bug | Incorrect `INNER`-mode interpolation with multiple interval conditions. |

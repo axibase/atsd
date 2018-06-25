@@ -30,7 +30,7 @@ guides.](../installation/README.md "ATSD Install Guides")
 
 ## Installation
 
-**MASTER & SLAVE: the following steps must be executed on both machines
+**MASTER & SLAVE: Complete this process on both machines
 – master and slave.**
 
 Stop ATSD and all components:
@@ -80,7 +80,7 @@ Add the `hbase.replication` property to the `configuration` tag in the
 </property>
 ```
 
-**SLAVE: the following steps must be executed only on the slave
+**SLAVE: Only complete this process on the slave
 machine.**
 
 Edit the `atsd-all.sh` file to disable ATSD startup:
@@ -133,7 +133,7 @@ The output contains a list of ATSD tables, all starting with `atsd_`:
 
 ![](./images/atsd_tables.png "atsd_tables")
 
-**MASTER: the following steps must be executed only on the
+**MASTER: Only complete this process on the
 master machine.**
 
 Start Hadoop and HBase:
@@ -152,7 +152,7 @@ Execute the `add_peer` command:
 echo "add_peer '1', \"atsd_slave:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-Make sure that the peer has been added:
+Ensure that the peer has been added:
 
 ```sh
 echo "list_peers" | /opt/atsd/hbase/bin/hbase shell
@@ -191,12 +191,9 @@ Output contains a list of ATSD tables, all starting with `atsd_`.
 
 ## Replication for New Tables
 
-If after updating ATSD, or for any other reason, a new table was created
-in HBase with the name containing `atsd_` (for example `atsd_new`),
-execute the following steps to make sure this table is added to
-replication.
+New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as follows:
 
-> MASTER: the following steps must be executed only on the master machine.
+> MASTER: Only complete this process on the master machine.
 
 Write the table schema to a file:
 
@@ -210,7 +207,7 @@ Copy table schema file to the slave machine:
 scp atsd_new_schema.txt atsd_slave:/tmp
 ```
 
-> SLAVE: the following steps must be executed only on the slave machine.
+> SLAVE: Only complete this process on the slave machine.
 
 Create the new table in the slave database:
 
@@ -218,7 +215,7 @@ Create the new table in the slave database:
 /opt/atsd/hbase/bin/hbase shell < /tmp/atsd_new_schema.txt
 ```
 
-> MASTER: the following steps must be executed only on the master machine.
+> MASTER: Only complete this process on the master machine.
 
 Enable replication for the new table:
 
@@ -231,12 +228,9 @@ instructions below.
 
 ## Verifying Replication
 
-To verify that replication is working correctly, execute the following
-steps:
-
 ### Option 1
 
-> SLAVE: the following steps must be executed only on the slave machine.
+> SLAVE: Only complete this process on the slave machine.
 
 Check HBase logs for replication activity:
 
@@ -259,22 +253,20 @@ The output contains replication activity and the of amount tables replicated on 
 
 ### Option 2
 
-> MASTER: the following steps must be executed only on the master machine.
+> MASTER: Only complete this process on the master machine.
 
-Open ATSD user interface and navigate to **Alert > Rules** page.
+Open ATSD web interface and navigate to the **Alert > Rules** page.
 
 ![](./images/atsd_rules_new.png)
 
 Click **Create** to create a new rule. Complete the following
 fields as specified below:
 
-`Name` – `testrule`
+* `Name`: `testrule`
+* `Metric`: `testrule`
+* `Expression`: `true`
 
-`Metric` – `testrule`
-
-`Expression` – true
-
-Click Save.
+Click **Save**.
 
 ![](./images/rule_editor.png "rule_editor")
 
@@ -289,7 +281,7 @@ Output:
 
 ![](./images/atsd_rule_table_scan1.png)
 
-> SLAVE: the following steps must be executed only on the slave machine.
+> SLAVE: Only complete this process on the slave machine.
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:

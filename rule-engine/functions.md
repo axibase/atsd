@@ -90,7 +90,7 @@ Forecast functions retrieve forecast values and variance from the database.
 
 ## Database Series
 
-Series functions retrieve series values from the database whereas the series may be different from the series in the current window.
+Series functions retrieve series values from the database whereas the series can be different from the series in the current window.
 
 * [`db_last`](functions-series.md#db_laststring-m)
 * [`db_statistic`](functions-series.md#db_statistic)

@@ -11,7 +11,7 @@ Issue| Category    | Type    | Subject
 5039 | rule engine | Feature | Modify [convert](../../rule-engine/functions-format.md#convert) function unit processing, implement [`formatBytes`](../../rule-engine/functions-format.md#formatbytes) function.
 5036 | admin | Feature | Restore multiple record types from archived XML backup files.
 5034 | data-in | Feature | Internal [timer](../../rule-engine/window.md#timers) metrics.
-5033 | rule engine | Bug | [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) function - use adjusted current time during 'Test'.
+5033 | rule engine | Bug | [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) function: use adjusted current time during `Test`.
 5030 | rule engine | Bug | Fix [Telegram](../../rule-engine/notifications/telegram.md) notification timeouts.
 5028 | rule engine | Bug | Illegal entity name (empty string) registered from [derived](../../rule-engine/derived.md) messages.
 5025 | rule engine | Bug | Modify [`alert_duration`](../../rule-engine/window-fields.md#date-fields) value.
@@ -22,7 +22,7 @@ Issue| Category    | Type    | Subject
 5015 | rule engine | Bug | Quote escaping with [backslash](../../rule-engine/variables.md#string).
 5014 | rule engine | Bug | [HipChat](../../rule-engine/notifications/hipchat.md) notification: inline links in portal description message.
 5013 | rule engine | Bug | System [command](../../rule-engine/commands.md) execution error not registered in Rule Errors.
-5012 | entity_views | Bug | 'Entity Tag' [link](../../configuration/entity_views.md#links) not applied to 'Entity Tag' column.
+5012 | entity_views | Bug | **Entity Tag** [link](../../configuration/entity_views.md#links) not applied to **Entity Tag** column.
 5011 | rule editor | Bug | Table cells on Test tab are missing.
 5009 | entity_views | Bug | Allow empty values if default value is blank in dictionary columns.
 5008 | data-in | Support | [collectd](../../integration/collectd/README.md#collectd): installation and configuration.
@@ -37,9 +37,9 @@ Issue| Category    | Type    | Subject
 4985 | rule engine | Bug | Variables containing lower-cased [SQL alias](../../sql/README.md#aliases) expressions are filtered out after saving.
 4981 | sql | Feature | Implement `HTML` [format](../../sql/scheduled-sql.md#formats) in scheduled SQL reports.
 4976 | data-in | Support | [tcollector](../../integration/tcollector/README.md#tcollector) installation update.
-4973 | rule editor | Bug | Append `[Disabled]` suffix to [web configuration](../../rule-engine/notifications/README.md) name if it had been disabled.
+4973 | rule editor | Bug | Append `[Disabled]` suffix to [webhook](../../rule-engine/notifications/README.md) name if it is disabled.
 4972 | export | Bug | Export Query: Add support for date placeholders in [`Email Subject`](../../sql/scheduled-sql.md#email-delivery) field.
-4971 | entity_views | Bug | Apply metrics column [formatting](../../configuration/entity_views.md#formatting) if 'Last Insert Date' for the specified metric is not available.
+4971 | entity_views | Bug | Apply metrics column [formatting](../../configuration/entity_views.md#formatting) if **Last Insert Date** for the specified metric is not available.
 4970 | UI | Bug | [Search](../../search) page expression causes browser to freeze.
 4969 | entity_views | Bug | Changes cause new [entity views](../../configuration/entity_views.md) to be created on database restart.
 4966 | rule engine | Bug | Make [property search](../../rule-engine/property-search.md#property-search-syntax) case-insensitive.
@@ -55,9 +55,9 @@ Issue| Category    | Type    | Subject
 4941 | entity_views | Feature | Add link to multi-entity [portal](../../configuration/entity_views.md#portal) to sub-groups.
 4936 | rule engine | Bug | Implement [`getEntities`](../../rule-engine/functions-lookup.md#getentities) and [`getEntityCount`](../../rule-engine/functions-lookup.md#getentitycount) functions.
 4930 | documentation | Bug | Window [duration](../../rule-engine/window.md#time-based-windows) definition.
-4907 | statistics | Feature | Create a new rule from the series statistics page.
+4907 | statistics | Feature | Create a new rule from the **Series statistics** page.
 4906 | rule editor | Feature | Move detailed error from title into a dialog.
-4904 | rule editor | Feature | Inherit notification settings from ['On Open'](../../rule-engine/email.md#enable-notifications) trigger.
+4904 | rule editor | Feature | Inherit notification settings from [**On Open**](../../rule-engine/email.md#enable-notifications) trigger.
 4902 | rule engine | Feature | Refactor [text](../../rule-engine/functions.md#text) functions to accept primary input as object instead of string.
 4890 | rule engine | Feature | Implement [security](../../rule-engine/functions-security.md#security-functions) functions.
 4884 | rule engine | Bug | Some [functions](../../rule-engine/functions.md) cannot be used on Overview tab.
@@ -69,7 +69,7 @@ Issue| Category    | Type    | Subject
 4836 | api-rest | Bug | Data API: multiple [interpolate](../../api/data/series/interpolate.md#interpolation) queries for the same series.
 4835 | api-rest | Bug | Data API: limit on series [interpolate](../../api/data/series/interpolate.md#interpolation) query.
 4828 | rule engine | Feature | [Attach portal](../../rule-engine/notifications/README.md#attachments) to notification.
-4818 | rule engine | Feature | Implement [`scriptOut`](../../rule-engine/functions-script.md#script-functions) function to return output of a bash or python script.
+4818 | rule engine | Feature | Implement [`scriptOut`](../../rule-engine/functions-script.md#script-functions) function to return output of a `bash` or python script.
 4800 | rule engine | Feature | Notifications: editable [Details Table](../../rule-engine/notifications/README.md#attachments) format.
 4657 | client | Feature | Refactor Python [examples](https://github.com/axibase/atsd-api-python/tree/master/examples).
 4984 | entity_views | Feature | [Split table by column](../../configuration/entity_views.md#split-table-by-column) values.

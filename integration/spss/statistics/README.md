@@ -16,7 +16,7 @@ The [IBM Statistical Package for the Social Sciences 24](https://www.ibm.com/ana
 
 SPSS provides several options for loading datasets from external data sources, such as Excel files or remote databases. To complete this exercise, sample data must be available in your instance of ATSD.
 
-## SPSS User Interface
+## SPSS Interface
 
 **Menu Item** | **Description**
 --------- | -----------
@@ -30,12 +30,12 @@ Analyze | Apply statistical functions to the dataset.
 ## Load Sample Data into ATSD
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the 'Commands' tab.
-3. Copy the [`series` commands](./resources/commands.txt) into the form and click Submit/Send.
+2. Open **Metrics > Data Entry**, select the **Commands** tab.
+3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
 
-The commands contain the Consumer Price Index (CPI) for each category of items in a consumer's basket as well as a weight for each category in the CPI basket. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
+The commands contain the Consumer Price Index (CPI) for each category of items in a consumer basket as well as a weight for each category in the CPI basket. The CPI is tracked from 2013 to 2017 and uses Year 2016 values as the baseline. Weight values are available for 2017. The underlying data is available in the following [Excel file](./resources/eng_e02.xls).
 
 To calculate the weighted inflation index we need to multiply the CPI of each category by its weight divided by 1000 and sum the products.
 
@@ -53,12 +53,12 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 * Disable UNICODE mode:
 
-  * Launch SPSS Statistics;
-  * Do not open any existing data file;
-  * Select the 'Edit' menu;
-  * Select the 'Options' menu;
-  * Select the 'Language' tab;
-  * In the section labeled 'Character Encoding for Data and Syntax', select 'Locale's writing system'.
+  * Launch SPSS Statistics.
+  * Do not open any existing data file.
+  * Select the **Edit** menu.
+  * Select the **Options** menu.
+  * Select the **Language** tab.
+  * In the section labeled **Character Encoding for Data and Syntax**, select **Locale writing system**
 
 #### Option 1: Load Prices and Weights As Separate Datasets
 
@@ -86,7 +86,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 * Select the `datetime` column from both the `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` tables.
   ![](./images/merged_import/step1.png)
 * Skip the next steps until a query editor is displayed.
-* Enter the following query which executes a FULL OUTER JOIN with interpolation for the missing weight records:
+* Enter a `FULL OUTER JOIN` query to fill gaps with interpolated records:
 
 ```sql
 SELECT T0."value" AS price,  T1."datetime" AS datetime, T1."value" AS weight, T1."tags" AS tags
@@ -98,7 +98,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 ![](./images/merged_import/step_3.png)
 
-* Click 'Finish'
+* Click **Finish**.
 * Save the dataset as `prices_merged.sav`.
 
 ![](./images/merged_data1.png)
@@ -109,7 +109,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 * Export data from ATSD into CSV files as described in the [Exporting Data into CSV Files](#exporting-data-into-csv-files) section at the end of this article.
 * Open **File > Import Data > CSV Data...**.
-* Select the desired CSV files and click Open to import the `prices.sav` and `weights.sav` files.
+* Select the desired CSV files and click **Open** to import the `prices.sav` and `weights.sav` files.
 
 ![](./images/import_dataset.png)
 
@@ -133,11 +133,11 @@ Merge the two datasets by adding the `weight` column from the `weights.sav` data
 
 * Open **Data > Merge Files... > Add Variables...**
 * Select `weights.sav` dataset.
-* Check 'Match cases on key variables'.
-* Select `time` in the 'New Active Dataset' pane, add to 'Key Variables' Pane.
+* Check **Match cases on key variables**.
+* Select `time` in the **New Active Dataset** pane, add to **Key Variables** Pane.
 
   ![](./images/merge_editor.png)
-* Click 'Ok'.
+* Click **OK**.
 * Remove `time` column using `Variable View`.
 
 ![](./images/time_clear.png)
@@ -172,7 +172,7 @@ SPSS provides two alternatives to aggregate data by period.
 #### Aggregation using the Analyze Menu
 
 * Open **Analyze > Reports > Report Summaries in Columns...**
-* Move the `categ_index` column to the 'Summary Variables' field and select the `SUM` aggregation function.
+* Move the `categ_index` column to the **Summary Variables** field and select the `SUM` aggregation function.
 * Set the `datetime` column as the break variable, which is used to group the resulting data. You can format aggregation columns in the dialog window.
 
 ![](./images/analysis_reports_summary.png)
@@ -204,7 +204,7 @@ SPSS provides two alternatives to aggregate data by period.
 
 Create a new metric in ATSD to store new series calculated in SPSS.
 
-* Login into ATSD, open **Metrics** > **Data entry** page and send a `metric` command:
+* Log in to ATSD, open **Metrics** > **Data entry** page and send a `metric` command.
 
 ```ls
 metric m:cpi_price
@@ -259,7 +259,7 @@ The result is as follows. Click **Next**
 
 ![](./images/atsd_export12.png)
 
-* Select **ODBC** - **Row-wise binding**, select **Paste the syntax** and click **Finish**
+* Select **ODBC > Row-wise binding**, select **Paste the syntax** and click **Finish**
 
 ![](./images/atsd_export_13.png)
 
@@ -277,7 +277,7 @@ SAVE TRANSLATE /TYPE=ODBC
 
 ![](./images/atsd_export_14.png)
 
-* Right click on the script window and select **Run All** to export the data into ATSD.
+* Right-click the script window and select **Run All** to export the data into ATSD.
 
 ![](./images/atsd_export_15.png)
 
@@ -285,7 +285,7 @@ SAVE TRANSLATE /TYPE=ODBC
 
 To check that data is successfully exported to ATSD, open the ATSD web interface.
 
-* Open the **SQL** tab and execute the following query:
+* Open the **SQL > SQL Console** page and execute a validation query.
 
 ```sql
 SELECT entity, datetime, value FROM cpi_price
@@ -303,7 +303,7 @@ The built-in [SQL Console](../../../sql/sql-console.md) allows exporting query r
 
 ### Prices
 
-Obtain CPI price data by executing the following query:
+Load CPI price data.
 
 ```sql
 SELECT entity, datetime, value, tags.category
@@ -319,7 +319,7 @@ Export query results into `prices.csv`.
 
 ### Weights
 
-Obtain weight data by executing the following query:
+Load weight records.
 
 ```sql
 SELECT entity, datetime, value, tags.category

@@ -72,7 +72,7 @@ rm ca-certificates-java*
 apt-get -t jessie-backports download ca-certificates-java
 ```
 
-Make sure that the download directory is not empty:
+Ensure that the download directory is not empty:
 
 ```txt
 ...
@@ -114,7 +114,7 @@ Install ATSD.
 sudo dpkg -i dependencies/atsd*
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

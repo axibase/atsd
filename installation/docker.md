@@ -58,7 +58,7 @@ Web interface is now accessible on port `8443` (https).
 |`--hostname` | No | Assign hostname to the container. |
 |`--name` | No | Assign a unique name to the container. |
 |`--restart` | No | Auto-restart policy. _Not supported in all Docker Engine versions._ |
-|`--publish` | No | Publish a container's port to the host. |
+|`--publish` | No | Publish container port to the host. |
 |`--env` | No | Define a new environment variable inside the container in _key=value_ format. |
 
 ## Environment Variables
@@ -71,9 +71,9 @@ Web interface is now accessible on port `8443` (https).
 |`COLLECTOR_USER_PASSWORD` | No | [Password](../administration/user-authentication.md#password-requirements) for a data collector account.|
 |`COLLECTOR_USER_TYPE` | No | User group for a data collector account, default value is `writer`.|
 |`DB_TIMEZONE` | No | Database [time zone identifier](../shared/timezone-list.md).|
-|`JAVA_OPTS` | No | Additional arguments to be passed to ATSD JVM process. |
-|`HADOOP_OPTS` | No | Additional arguments to be passed to Hadoop/HDFS JVM processes. |
-|`HBASE_OPTS` | No | Additional arguments to be passed to HBase JVM processes. |
+|`JAVA_OPTS` | No | Additional arguments passed to ATSD JVM process. |
+|`HADOOP_OPTS` | No | Additional arguments passed to Hadoop/HDFS JVM processes. |
+|`HBASE_OPTS` | No | Additional arguments passed to HBase JVM processes. |
 
 View additional launch examples [here](#start-container).
 

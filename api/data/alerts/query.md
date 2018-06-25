@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves a list of **open** alerts matching specified filters.
+Retrieves **open** alerts for specified filters.
 
 ## Request
 
@@ -23,7 +23,7 @@ An array of query objects containing the following fields:
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `rules`       | array | Array of rules which produced the alerts.        |
-| `metrics`     | array | Array of metric names for which the alerts were created. |
+| `metrics`     | array | Array of metric names to filter alerts. |
 | `severities`  | array | Array of [severity names](../../../api/data/severity.md)   |
 | `minSeverity` |  string   | Minimal severity [name](../../../api/data/severity.md) filter.  |
 | `acknowledged` |  boolean   | Acknowledgement status. If set, filters alerts for the specified status. |
@@ -45,7 +45,7 @@ An array of query objects containing the following fields:
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `limit`   | integer | Maximum number of records to be returned. Default: -1.<br>Limit is not applied if the parameter value <= 0. |
+| `limit`   | integer | Maximum number of records returned. Default: `-1`.<br>Limit is not applied if the parameter value <= `0`. |
 
 ## Response
 
@@ -62,12 +62,12 @@ An array of matching alert objects containing the following fields:
 | `rule` | string | Rule name. |
 | `severity`  | string | [Severity](../../../api/data/severity.md) name.  |
 | `tags` | object | Object containing `name=value` pairs, for example `tags: {"path": "/", "name": "sda"}` |
-| `repeatCount` | integer | Number of times when the expression was evaluated to true sequentially.  |
+| `repeatCount` | integer | Number of times when the expression evaluated to `true` sequentially.  |
 | `textValue` | string | Text value.  |
 | `value` | double | Last numeric value received. |
 | `openValue` | double | First numeric value received.  |
-| `openDate` | string | ISO 8601 date when the alert was open.  |
-| `lastEventDate` | string | ISO 8601 date when the last record was received.  |
+| `openDate` | string | ISO 8601 date for alert open.  |
+| `lastEventDate` | string | ISO 8601 date for the last received record.  |
 
 ### Errors
 

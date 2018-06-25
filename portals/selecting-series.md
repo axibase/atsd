@@ -46,7 +46,7 @@ Each series is identified by a composite key which consists of a **metric**, **e
 
 * **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point for the `df.bytes.percentused` metric.
 
-An entity may be measured with a variety of metrics, just as the same metric could be collected for multiple entities.
+An entity can be instrumented and measured using a variety of metrics, just as the same metric can be collected for multiple entities.
 
 ## Exploring Series
 
@@ -95,7 +95,7 @@ This enables loading series using only a subset of tags that are still sufficien
     mount = /
 ```
 
-The above configuration matches all series with `mount=/` tag, **including** series that may have other tags.
+The above configuration matches all series with `mount=/` tag, **including** series that can have other tags.
 
 To disable partial tag match, use the `exact-match = true | false` setting:
 
@@ -301,7 +301,7 @@ As an alternative to enumerating the `[series]` manually or using wildcards, the
 ## Controlling Displayed Series
 
 The `series-limit = int` setting enables limiting the number of possible series returned by the database for wildcard queries.
-Since the limit is applied to matched series before sorting, the results may vary between requests, which makes the setting
+Since the limit is applied to matched series before sorting, the results can vary between requests, which makes the setting
 useful when exploring the dataset to prevent the widgets from loading too many series into browser memory.
 
 ```ls

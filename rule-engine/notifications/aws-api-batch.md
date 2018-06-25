@@ -10,7 +10,7 @@ The example described below invokes the [AWS Batch API](https://docs.aws.amazon.
 
 ## Configuration
 
-Create a new `AWS API` webhook or import the [template](./resources/aws-api-batch-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `AWS API` webhook or import the [template](./resources/aws-api-batch-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -49,7 +49,7 @@ Modify the `Body` by replacing the `<JSON_CONTENT>` value with actual values, fo
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/aws-api-batch-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/aws-api-batch-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -82,7 +82,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/aws_api_batch_alert_open.png)
 

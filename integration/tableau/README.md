@@ -9,7 +9,7 @@
 
 ## Overview
 
-Tableau Desktop is a visualization software that provides tools to query, analyze, and aggregate data from multiple data sources.  The following guide outlines the initial configuration steps and includes examples of using the Tableau Desktop user interface to build charts from historical data stored in ATSD.
+Tableau Desktop is a visualization software that provides tools to query, analyze, and aggregate data from multiple data sources.  The following guide outlines the initial configuration steps and includes examples of using the Tableau Desktop to build charts from historical data stored in ATSD.
 
 ## Dataset
 
@@ -29,7 +29,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install ODBC-JDBC Bridge
 
 * Install [ODBC-JDBC gateway](../odbc/README.md)
-* Make sure that the **'Strip Escape'** checkbox is enabled and **'Strip Quote'** is **disabled**
+* Ensure that the **Strip Escape** checkbox is enabled and **Strip Quote** is **disabled**
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
@@ -37,7 +37,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 * Launch Tableau
 * Select **Connect > To a Server > Other Databases(ODBC)**
-* Select the ATSD DSN from the dropdown. This is the DSN you specified during ODBC-JDBC bridge setup
+* Select the ATSD DSN from the drop-down list. This is the DSN you specified during ODBC-JDBC bridge setup
 * Click **Connect** and wait a few seconds
 * Leave the **Server**,**Port**, **Database** and **String Extras** fields empty
 * Click **Sign In**
@@ -46,7 +46,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 ## Review Tables
 
-* Enter a keyword and click **Search**. For this exercise, search for the `bi.ex_net1.m` table:
+* Enter a keyword and click **Search**. For this exercise, search for the `bi.ex_net1.m` table.
 
 ![](./images/search.png)
 
@@ -69,7 +69,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 Inspect a subset of the visualized data:
 
 * Select some data points in the view
-* Right click and choose **View Data**
+* Right-click and choose **View Data**
 
 ![](./images/summary1.png)
 

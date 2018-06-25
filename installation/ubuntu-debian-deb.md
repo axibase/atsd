@@ -53,7 +53,7 @@ sudo apt-get update && sudo apt-get -t jessie-backports install -y openjdk-8-jdk
 sudo dpkg -i atsd_amd64.deb
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

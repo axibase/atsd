@@ -1,6 +1,6 @@
 # List Metrics without Last Insert Date
 
-List metrics without `lastInsertDate`. This can occur when the data collected for the metric was subsequently deleted, for example when all entities collecting this metric were deleted, or when old data was pruned according to retention day or series retention day parameters.
+List metrics without `lastInsertDate`. This can occur when the data collected for the metric is subsequently deleted, for example when all entities collecting this metric are deleted, or when old data is pruned according to retention day or series retention day parameters.
 
 To retrieve metrics without `lastInsertDate`, set `maxInsertDate` to `1970-01-01T00:00:00Z` or earlier.
 

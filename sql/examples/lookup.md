@@ -4,7 +4,7 @@ The `LOOKUP` function translates keys into values using the specified replacemen
 
 ## Replacement tables
 
-Replacement tables contain a collection of `key=value` mappings, specified one per line on the `Configuration: Replacement Tables` page.
+Replacement tables contain a collection of `key=value` mappings, specified one per line on the **Settings > Replacement Tables** page.
 
 ![Replacement Table](../images/replacement-table-tcp.png)
 

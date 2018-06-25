@@ -4,7 +4,7 @@
 
 The functions provide a way to retrieve message records from the database at any stage of the rule evaluation process.
 
-The `db_message_count` and `db_message_last` functions may be used to verify the existence of or establish a correlation between time series and messages.
+The `db_message_count` and `db_message_last` functions can be used to verify the existence of or establish a correlation between time series and messages.
 
 ## Reference
 
@@ -28,7 +28,7 @@ Returns the number of message records matching the specified interval `i`, messa
 
 Returns the most recent [message](../api/data/messages/query.md) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See [Matching Rules](#matching-rules).
 
-[Fields](../api/data/messages/query.md#fields-1) of a returned object may be invoked using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
+[Fields](../api/data/messages/query.md#fields-1) of a returned object can be invoked using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
 
 > Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
 
@@ -46,7 +46,7 @@ If no messages are found, an empty `[]` list is returned.
 
 To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method. The first indexed element is `0`.
 
-[Fields](../api/data/messages/query.md#fields-1) of a returned object may be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
+[Fields](../api/data/messages/query.md#fields-1) of a returned object can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
 
 > Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
 
@@ -76,8 +76,8 @@ The following matching rules apply:
 
 * If tags argument `t` is specified as `null` or an empty string `''`, all tags are matched.
 * To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
-* Tags argument `t` matches records that include the specified tags but may also include other tags.
-* Tags argument `t` may be specified as follows:
+* Tags argument `t` matches records that include the specified tags but can also include other tags.
+* Tags argument `t` can be specified as follows:
   * String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
   * Map: `["tag1":"value1", "tag2":"value2"]`
   * The `tags` field representing the grouping tags of the current window.

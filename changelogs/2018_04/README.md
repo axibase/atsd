@@ -13,7 +13,7 @@
 5253 | security | Bug | Fix credentials error in newly created [webhook](../../administration/user-authorization.md#webhook-user).
 5252 | security | Feature | `Path` column added to table at **Settings** > **Diagnostics** > **Security Incidents** page.
 5250 | rule engine | Bug | Some errors not displayed in the rule engine.
-5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration unable to be cloned.
+5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration not cloned.
 5247 | rule engine | Bug | Validation error when trying to rename cloned [webhook](../../rule-engine/notifications/README.md) configuration.
 5246 | rule engine | Bug | [`flattenJson`](../../rule-engine/functions-table.md#flattenjson) function must ignore empty arrays.
 5240 | rule engine | Bug | [`db_last`](../../rule-engine/functions-series.md#db_last) function fails to load records older than 1 hour.
@@ -31,7 +31,7 @@
 5208 | api-rest | Bug | Wildcards in tags ignored in the [metric list](../../api/meta/metric/list.md) method when entity is specified.
 5200 | rule engine | Feature | Implement [Web Query Functions](../../rule-engine/functions-web-query.md) to query external web services.
 5198 | UI | Feature | Automatically generate passwords in [Webhook User](../../api/data/messages/webhook.md#webhook-user-wizard) and [Collector User](../../administration/collector-account.md#use-wizard) wizards.
-5197 | api-rest | Feature | Incoming [webhook](../../api/data/messages/webhook.md) - default parameters simplified.
+5197 | api-rest | Feature | Incoming [webhook](../../api/data/messages/webhook.md): default parameters simplified.
 5195 | security | Bug | Server error raised when uploading [SSL certificate](../../administration/ssl-self-signed.md).
 5193 | forecast | Bug |[Forecast Calendar](../../forecasting/calendar_exceptions_testing.md#calendar) form errors.
 5188 | core | Bug | JsonFactory objects moved to JsonUtil class for performance enhancement.

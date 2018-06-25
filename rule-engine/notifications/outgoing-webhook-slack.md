@@ -26,31 +26,31 @@ Slack Bot is a special account created for automation purposes.
 
 * Create a bot user.
 
-  * Click on **Bot Users**.
+  * Click **Bot Users**.
 
     ![](./images/outgoing_webhook_slack_2.png)
 
-  * Click on **Add a Bot User**.
+  * Click **Add a Bot User**.
 
     ![](./images/outgoing_webhook_slack_3.png)
 
-  * Review Settings, click on **Add Bot User**.
+  * Review Settings, click **Add Bot User**.
 
     ![](./images/outgoing_webhook_slack_4.png)
 
-  * Click on **Save Changes**.
+  * Click **Save Changes**.
 
 ## Subscribe to Bot Messages
 
-* Click on **Basic Information**.
+* Click **Basic Information**.
 
    ![](./images/outgoing_webhook_slack_5.png)
 
-* Click on **Add features and functionality**.
+* Click **Add features and functionality**.
 
    ![](./images/outgoing_webhook_slack_6.png)
 
-* Click on **Event Subscriptions**, check **Enable Events**.
+* Click **Event Subscriptions**, check **Enable Events**.
 
    ![](./images/outgoing_webhook_slack_7.png)
 
@@ -74,21 +74,21 @@ Slack Bot is a special account created for automation purposes.
 
    ![](./images/outgoing_webhook_slack_8.png)
 
-* Click on **Add Bot User Event** at the **Subscribe to Bot Events** section.
+* Click **Add Bot User Event** it the **Subscribe to Bot Events** section.
 
    ![](./images/outgoing_webhook_slack_9.png)
 
-* Enter `message.im` to limit subscriptions only to messages sent **directly** to bot.
+* Enter `message.im` to limit subscriptions only to messages sent directly to bot.
 
    ![](./images/outgoing_webhook_slack_10.png)
 
-* Click on **Save Changes**.
+* Click **Save Changes**.
 
-* Click on **Install App**.
+* Click **Install App**.
 
    ![](./images/outgoing_webhook_slack_11.png)
 
-* Click on **Install App to Workspace**.
+* Click **Install App to Workspace**.
 
    ![](./images/outgoing_webhook_slack_12.png)
 
@@ -96,7 +96,7 @@ Slack Bot is a special account created for automation purposes.
 
    ![](./images/outgoing_webhook_slack_13.png)
 
-* Open Slack [workspace](https://my.slack.com/), make sure the app is visible in the **Apps** section.
+* Open Slack [workspace](https://my.slack.com/), and ensure the app is visible in the **Apps** section.
 
    ![](./images/outgoing_webhook_slack_14.png)
 
@@ -148,6 +148,6 @@ Slack Bot is a special account created for automation purposes.
 
     ![](./images/outgoing_webhook_slack_21.png)
 
-* It may take a few seconds for the commands to arrive and to trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+* It can take a few seconds for the commands to arrive and to trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
     ![](./images/outgoing_webhook_slack_17.png)

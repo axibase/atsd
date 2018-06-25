@@ -99,7 +99,7 @@ If the series is regular (interval between samples is constant), omitting the pe
 
 ## Example - Counter Off
 
-With counter mode OFF, the rate returns delta between consecutive samples regardless if the change was positive or negative.
+With counter mode `OFF`, the rate returns delta between consecutive samples regardless if the change is positive or negative.
 
 ```ls
 | datetime                 | value         |
@@ -149,9 +149,9 @@ With counter mode OFF, the rate returns delta between consecutive samples regard
 
 With counter mode ON, the `rate` function ignores negative changes between consecutive samples.
 
-In the example below, the sample at 2016-02-16T12:35:12.000Z was ignored.
+In the example below, the sample at `2016-02-16T12:35:12.000Z` is ignored.
 
-The default behavior counter is ON.
+The default behavior counter is `ON`.
 
 ### Request
 

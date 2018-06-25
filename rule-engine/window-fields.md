@@ -44,7 +44,7 @@ Each window maintains a set of continuously updated fields that can be included 
 | `message` | string | Message text |
 
 > The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
-> Alert `severity` value is inherited from message `severity` when the Logging: Severity is set to 'Undefined'.
+> Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
 
 ## Properties Fields
 
@@ -62,8 +62,8 @@ Each window maintains a set of continuously updated fields that can be included 
 :---|---|:---
 `alert_open_time` | Server | Time when the window changed status to `OPEN`
 `alert_open_datetime` | UTC | Time when the window changed status to `OPEN`
-`received_time` | Server | Time when the current command was received by the server
-`received_datetime` | UTC | Time when the current command was received by the server
+`received_time` | Server | Time when the current command is received by the server
+`received_datetime` | UTC | Time when the current command is received by the server
 `event_time` | Server | Time of the current command
 `event_datetime` | UTC | Time of the current command
 `window_first_time` | Server | Time of the earliest command in the window
@@ -75,12 +75,12 @@ Each window maintains a set of continuously updated fields that can be included 
 
 > Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
 > Fields ending with `_datetime` contain time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.
-> If 'Check On Exit' option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
-> The `now` object's fields can be accessed with [`get`](object-datetime.md) methods, for example `now.getDayOfWeek() == 4`.
+> If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
+> The `now` object fields can be accessed with [`get`](object-datetime.md) methods, for example `now.getDayOfWeek() == 4`.
 
 ## Details Tables
 
-The built-in 'details' table contains entity name, entity label, entity tags, command tags, and user-defined variables. This data structure can be conveniently accessed to print out full alert information.
+The built-in `details` table contains entity name, entity label, entity tags, command tags, and user-defined variables. This data structure can be conveniently accessed to print out full alert information.
 
 * [`detailsTable('markdown')`](details-table.md#markdown)
 * [`detailsTable('ascii')`](details-table.md#ascii)

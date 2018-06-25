@@ -21,11 +21,11 @@ Stop ATSD.
 Copy data to the new target directory.
 
 ```sh
-cp -a /opt/atsd/hdfs-data/  /path/to/data-dir/
+cp -a /opt/atsd/hdfs-data/ /path/to/data-dir/
 ```
 
 ```sh
-cp -a /opt/atsd/hdfs-data-name/  /path/to/data-dir/
+cp -a /opt/atsd/hdfs-data-name/ /path/to/data-dir/
 ```
 
 ```sh

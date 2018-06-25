@@ -12,17 +12,17 @@ Retention settings provide a way to control database size by automatically remov
 
 ## Data Tables
 
-Current data table sizes are displayed on the **Settings > Storage > Database Tables** page, in the 'Store File Size' column.
+Current data table sizes are displayed on the **Settings > Storage > Database Tables** page, in the **Store File Size** column.
 
 The table which stores time series data is `atsd_d`.
 
 ![](./images/retention-atsd_d-size.png)
 
-Click on the 'Store File Size' value to view file size growth over time. The size of the `atsd_d` table varies throughout the day as compaction / pruning tasks defragment and delete data in the background.
+Click **Store File Size** to view file size growth over time. The size of the `atsd_d` table varies throughout the day as compaction / pruning tasks defragment and delete data in the background.
 
  ![](./images/retention-atsd_d-chart.png)
 
-To view daily changes in tabular format, open the 'ATSD' portal in the top menu. The table widget in the bottom left corner contains both the current table size as well as the daily change.
+To view daily changes in tabular format, open the ATSD portal in the top menu. The table widget in the bottom left corner contains both the current table size as well as the daily change.
 
 ![](./images/retention-atsd-portal.png)
 
@@ -30,7 +30,7 @@ To view daily changes in tabular format, open the 'ATSD' portal in the top menu.
 
 While the breakdown of space usage within the `atsd_d` is not available, the database provides a top-N view consisting of most frequently collected series.
 
-The 'Top Inserts' table is accessible on the **Settings > Receive Statistics** page.
+The **Top Inserts** table is accessible on the **Settings > Receive Statistics** page.
 
 ![](./images/retention-top-inserts.png)
 
@@ -38,7 +38,7 @@ You can refer to this view to identify series with the largest amount of data be
 
 ## Retention Settings
 
-The amount of time series data stored in the database may be controlled using one of the following methods:
+The amount of time series data stored in the database is controlled using one of the following methods:
 
 * [Disabling](#disable-metric) the metric.
 * Disabling metric [persistence](#disable-persistence).
@@ -46,19 +46,19 @@ The amount of time series data stored in the database may be controlled using on
 * Deleting [expired data](#delete-expired-data) outside a specified retention period.
 * Deleting [expired series](#delete-expired-series) if no data has been received for the series within a specified retention period.
 
-Since the data is deleted by staged [background tasks](#scheduled-tasks), it may take a few days for new settings to reduce disk usage to the full extent.
+Since the data is deleted by staged [background tasks](#scheduled-tasks), it takes a few days for new settings to reduce disk usage to the full extent.
 
 ### Disable Metric
 
-If the metric is **disabled**, the data for such metric is discarded when received. The data for disabled metrics is also _ignored_ by the rule engine.
+If the metric is **disabled**, the data for such metric is discarded when received. The data for disabled metrics is also **ignored** by the rule engine.
 
-To disable a metric, open the Metric Editor, expand 'Settings' section, set 'Enabled' switch to 'No', and click **Save**.
+To disable a metric, open the **Metric Editor**, expand **Settings** section, set **Enabled** switch to **No**, and click **Save**.
 
 ![](./images/retention-metrics-disabled.png)
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
-Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token in the 'commands_discarded.log' listed on the **Settings > Diagnostics > Server Logs** page:
+Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token in the `commands_discarded.log` listed on the **Settings > Diagnostics > Server Logs** page:
 
 ```ls
 2018-03-29 05:56:21,087;DISABLED_METRIC;series e:nurswgvml502 ms:1522302980000 t:collector=bosun.org/cmd/scollector/collectors.c_ipcount_linux t:os=linux m:scollector.collector.duration=0.003668194
@@ -68,15 +68,15 @@ Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token 
 
 ### Disable Persistence
 
-The data for **non-persistent** metrics is not stored on disk. Such metrics are still be _processed_ in the rule engine.
+The data for **non-persistent** metrics is not stored on disk. Such metrics are still processed in the rule engine.
 
-To disable persistence for a metric, open the Metric Editor, expand 'Settings' section, set 'Persistent' switch to 'No', and click **Save**.
+To disable persistence for a metric, open the **Metric Editor**, expand **Settings** section, set **Persistent** switch to **No**, and click **Save**.
 
 ![](./images/retention-metrics-non-persistent.png)
 
 Alternatively, use [group editor](#group-editor) to modify multiple metrics at once.
 
-Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_METRIC` token in the 'commands_discarded.log':
+Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_METRIC` token in the `commands_discarded.log`:
 
 ```ls
 2018-03-29 05:56:21,518;NON_PERSISTENT_METRIC;series e:nurswgvml010 ms:1522302981000 t:refid=124.216.164.14 t:remote=37.58.57.238 m:ntp.stratum=2
@@ -88,9 +88,9 @@ Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_
 
 To selectively discard some series generated by the metric, define a **persistence filter** [expression](../administration/metric-persistence-filter.md).
 
-Only series that satisfy the condition are stored on disk. All series for this metric continue to be _processed_ in the rule engine.
+Only series that satisfy the condition are stored on disk. All series for this metric continue to be processed in the rule engine.
 
-To set the filter for a metric, open the Metric Editor, expand the 'Settings' section, enter an expression into the 'Persistence Filter' field, and click Save.
+To set the filter for a metric, open the **Metric Editor**, expand the **Settings** section, enter an expression into the **Persistence Filter** field, and click **Save**.
 
 ![](./images/retention-metrics-persistence-filter.png)
 
@@ -106,19 +106,19 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 
 #### Filter Examples
 
-* Discard (do not persist) series with tag 'site' equal to `DefaultWebSite`
+* Discard (do not persist) series with tag `site` equal to `DefaultWebSite`
 
 ```javascript
-  tags.site != 'DefaultWebSite'
+  tags.site != `DefaultWebSite`
 ```
 
-* Discard series with tag 'id' starting with `lo`
+* Discard series with tag `id` starting with `lo`
 
 ```javascript
   tags.id NOT LIKE 'lo*'
 ```
 
-* Discard series with tag 'disk' equal `/boot` or starting with `/run`
+* Discard series with tag `disk` equal `/boot` or starting with `/run`
 
 ```javascript
   tags.disk != '/boot' && tags.disk NOT LIKE '/run*'
@@ -155,7 +155,7 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 
 ### Delete Expired Data
 
-To delete **old data** beyond the retention period for the selected metric, open the Metric Editor, expand the 'Settings' section, and set the **Retention Days** field to a positive integer, click Save.
+To delete **old data** beyond the retention period for the selected metric, open the **Metric Editor**, expand the **Settings** section, and set the **Retention Days** field to a positive integer, click **Save**.
 
 To disable deletion, set the **Retention Days** field back to zero.
 
@@ -173,13 +173,13 @@ Check individual records or select all records by checking the box in the header
 
 ![](./images/retention-metrics-select.png)
 
-Open the group editor and modify the 'Retention Days' setting. To disable deletion, set 'Retention Days' to zero.
+Open the group editor and modify the **Retention Days** setting. To disable deletion, set **Retention Days** to zero.
 
 ![](./images/retention-metrics-group-edit.png)
 
 ### Delete Expired Series
 
-To delete **all data** for an old series, open the Metric Editor, expand the 'Settings' section, and set the **Series Retention Days** field to a positive integer, click **Save**.
+To delete **all data** for an old series, open the **Metric Editor**, expand the **Settings** section, and set the **Series Retention Days** field to a positive integer, click **Save**.
 
 To disable deletion, set the **Series Retention Days** field back to zero.
 
@@ -189,7 +189,7 @@ Alternatively, use [group editor](#group-editor) to modify multiple metrics at o
 
 This setting causes all data to be deleted for those series which have not received new values for more than the specified number of days. If the series has recent data, no data for such a series is deleted. This setting cleans the database from old/discontinued series while retaining all data for active series.
 
-If **Series Retention Days** is set to '1 year' in the example below, the database deletes three highlighted series that have not been updated since 2015/2016. The data for the remaining active series is left untouched.
+If **Series Retention Days** is set to `1 year` in the example below, the database deletes three highlighted series that have not been updated since 2015/2016. The data for the remaining active series is left untouched.
 
 ![](./images/retention-series-retention.png)
 
@@ -219,7 +219,7 @@ To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and 
 
 ### Deleting Entities
 
-To delete a single entity, locate the entity, open the entity editor and click 'Delete'.
+To delete a single entity, locate the entity, open the entity editor and click **Delete**.
 
 This causes **all** series collected for the entity to be deleted.
 
@@ -227,7 +227,7 @@ This causes **all** series collected for the entity to be deleted.
 
 To delete **multiple** entities, specify the search pattern on the Entities tab.
 
-Select all or multiple matching entities using the checkbox controls, and click 'Delete' in the split button.
+Select all or multiple matching entities using the checkbox controls, and click **Delete** in the split button.
 
 ![](./images/delete-entity-multiple.png)
 
@@ -237,7 +237,7 @@ Series can be re-inserted for a new entity with the same name without any collis
 
 ### Deleting Metrics
 
-To delete a single metric, locate the metric, open the metric editor and click 'Delete'.
+To delete a single metric, locate the metric, open the **Metric Editor** and click **Delete**.
 
 This causes **all** series collected for the metric to be deleted.
 
@@ -245,7 +245,7 @@ This causes **all** series collected for the metric to be deleted.
 
 To delete **multiple** metrics, specify the search pattern on the Metrics tab.
 
-Select all or multiple matching metrics using the checkbox controls, and click 'Delete' in the split button.
+Select all or multiple matching metrics using the checkbox controls, and click **Delete** in the split button.
 
 ![](./images/delete-metric-multiple.png)
 
@@ -259,7 +259,7 @@ Locate the series.
 
 ![](./images/delete-series-statistics-link.png)
 
-Open the Series Statistics page. Click 'Delete'.
+Open the **Series Statistics** page. Click **Delete**.
 
 ![](./images/delete-series-statistics.png)
 
@@ -267,11 +267,11 @@ Note that series removed with this method is masked with a [Delete](../api/data/
 
 ### Deleting Properties
 
-Open the Properties page for the specified entity.
+Open the **Properties** page for the specified entity.
 
 ![](./images/properties-delete-entity-form.png)
 
-Select the property keys to be deleted and choose `Delete` action from the split button.
+Select the property keys to be deleted and choose **Delete** action from the split button.
 
 ![](./images/properties-delete-types-form.png)
 
@@ -279,7 +279,7 @@ Note that properties removed with this method are masked with a [Delete](../api/
 
 ### Deleting Messages
 
-Not supported in the user interface.
+Not supported in the web interface.
 
 ## Deleting with API
 
@@ -323,7 +323,7 @@ GROUP BY entity, tags, PERIOD(1 HOUR)
 
 ## Understanding Data Growth
 
-In addition to more data being collected for existing series, data may be inserted for new metrics, entities, and series.
+In addition to more data being collected for existing series, data is continuously inserted for new metrics, entities, and series.
 
 To monitor these parameters, create a new [portal](../portals/portals-overview.md#create-portal) with the following table widget:
 
@@ -331,7 +331,7 @@ To monitor these parameters, create a new [portal](../portals/portals-overview.m
 
 The widget displays the current number of records as well as weekly change.
 
-`last.series.count.{period}` metrics display how many series were updated recently, within the specified period.
+`last.series.count.{period}` metrics display the number of updated series within the specified period.
 
 ```ls
 [widget]

@@ -18,7 +18,7 @@ GROUP BY t1.entity, t2.tags, t1.period(15 minute)
 
 No records.
 
-The query produced no records because no series among the joined had the same tags.
+The query produced no records because no series among the joined series has the same tags.
 
 ## Join with `USING ENTITY`
 

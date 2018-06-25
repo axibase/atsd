@@ -1,6 +1,6 @@
 # Filter by Date
 
-## Query with ISO-8601 format
+## Query with ISO 8601 format
 
 ```sql
 SELECT datetime, value
@@ -111,9 +111,9 @@ WHERE entity = 'nurswgvml007'
 
 ## Query with End Time Syntax
 
-[Calendar](../../shared/calendar.md) keywords are calculated based on the current server time and the server's [time zone](../../shared/timezone-list.md).
+[Calendar](../../shared/calendar.md) keywords are calculated based on the current server time and the server [time zone](../../shared/timezone-list.md).
 
-If the server's time zone is `Europe/Berlin`, for example, the `current_day` keyword in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
+If the server time zone is `Europe/Berlin`, for example, the `current_day` keyword in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS local_datetime, value
@@ -292,7 +292,7 @@ WHERE t1.datetime BETWEEN '2016-10-04T02:01:20Z' AND '2016-10-04T02:03:05Z'
 
 ## Query Multiple Intervals with `OR`
 
-The query may select multiple intervals using the `OR` operator.
+The query can select multiple intervals using the `OR` operator.
 
 ```sql
 SELECT datetime, value
@@ -396,7 +396,7 @@ WHERE entity = 'nurswgvml007'
 ## Query by Calendar
 
 Use the `date_format` OR `extract` function to retrieve date parts from date for the purpose of filtering.
-The following query includes only weekdays (Monday till Friday) and daytime hours (from 08:00 till 17:59).
+The below query includes only weekdays (Monday till Friday) and daytime hours (from 08:00 till 17:59).
 
 ```sql
 SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)

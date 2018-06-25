@@ -52,10 +52,10 @@ Successful user authentication requests are stored in the database and can be re
 * Add form validations.
 * Highlight important settings.
 * Add an option to clone user accounts.
-* Add toggle between tag labels and names in the entity and metric editors.
+* Add toggle between tag labels and names in the **Entity Editor** and **Metric Editor**.
 * Replace fonts.
 * Standardize spacing between buttons.
-* Adjust layout on the user's authorization page.
+* Adjust layout on the user authorization page.
 
 ### Issue 3269
 

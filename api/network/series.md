@@ -10,7 +10,7 @@ Inserts a timestamped value (number or text) into a specified time series, uniqu
 series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number}
 ```
 
-The command may include multiple values for different metrics, which inherit the same entity, time, and tags.
+The command can include multiple values for different metrics, which inherit the same entity, time, and tags.
 
 ```bash
 series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:${metric-2}=${number} x:${metric-3}=${text}
@@ -30,8 +30,8 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 | a         | boolean         | Text append option. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
 
 > At least one numeric value `m:` or text value `x:` is required.
-> If the numeric value was not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
-> If the time fields `d, s, and ms` are omitted, the values are inserted with the current server time.
+> If the numeric value is not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
+> If the time fields `d`, `s`, and `ms` are omitted, the values are inserted with the current server time.
 
 ### ABNF Syntax
 
@@ -59,7 +59,7 @@ Refer to [limits](README.md#command-limits).
 
 New metrics are initialized with the `float` data type by default.
 
-To insert metric samples with another data type, create or update metric properties using [Meta API](../meta/metric/update.md) or the user interface.
+To insert metric samples with another data type, create or update metric properties using [Meta API](../meta/metric/update.md) or the web interface.
 
 ## New Records
 
@@ -79,15 +79,15 @@ series e:nurswg m:temperature=38.5 t:degrees=Celsius
 
 ## Examples
 
-* Insert the numeric value '72' for the metric 'cpu_used' from the entity 'server001' recorded on March 4, 2015 at 15:14:40 GMT (Unix time seconds = 1425482080).
+* Insert the numeric value `72` for the metric `cpu_used` from the entity `server001` recorded on March 4, 2015 at 15:14:40 GMT (Unix time seconds = `1425482080`).
 
 ```ls
 series e:server001 m:cpu_used=72.0 s:1425482080
 ```
 
 * Insert samples for two series:
-  * Insert the numeric value '72' for the metric 'cpu_used' from the entity 'server001' recorded on March 4, 2015 at 15:14:40 GMT
-  * Insert the numeric value '94.5' for the metric 'memory_used' and the same entity and time.
+  * Insert the numeric value `72` for the metric `cpu_used` from the entity `server001` recorded on March 4, 2015 at 15:14:40 GMT
+  * Insert the numeric value `94.5` for the metric `memory_used` and the same entity and time.
 
 ```ls
 series e:server001 m:cpu_used=72.0 m:memory_used=94.5 s:1425482080
@@ -105,7 +105,7 @@ series e:server001 m:cpu_used=72.0 m:memory_used=94.5 ms:1425482080000
 series e:server001 m:cpu_used=72.0 m:memory_used=94.5 d:2015-03-04T15:14:40Z
 ```
 
-* Insert the numeric value '20.5' for the metric 'disk_used_percent' from the entity 'server001' and the two tags 'mount_point' and 'disk_name'. The value is inserted with the current server time since the date is not specified in the command.
+* Insert the numeric value `20.5` for the metric `disk_used_percent` from the entity `server001` and the two tags `mount_point` and `disk_name`. The value is inserted with the current server time since the date is not specified in the command.
 
 ```ls
 series e:server001 m:disk_used_percent=20.5 t:mount_point=/ t:disk_name=/sda1
@@ -117,13 +117,13 @@ series e:server001 m:disk_used_percent=20.5 t:mount_point=/ t:disk_name=/sda1
 series e:server001 m:disk_used_percent=20.5 m:disk_size_mb=10240 t:mount_point=/ t:disk_name=/sda1
 ```
 
-* Insert the numeric value '24.4' and the text value 'Provisional' (annotation) for the metric 'temperature' from the entity 'sensor-1'.
+* Insert the numeric value `24.4` and the text value `Provisional` (annotation) for the metric `temperature` from the entity `sensor-1`.
 
 ```ls
 series d:2016-10-13T08:15:00Z e:sensor-1 m:temperature=24.4 x:temperature="Provisional"
 ```
 
-* Insert the text value `Shutdown by adm-user, RFC-5434` for the metric 'status', from the entity 'sensor-1'.
+* Insert the text value `Shutdown by adm-user, RFC-5434` for the metric `status`, from the entity `sensor-1`.
 
 ```ls
 series d:2016-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
@@ -135,7 +135,7 @@ series d:2016-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-543
 series d:2016-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434" a:true
 ```
 
-* Insert 'NaN' (Not-a-Number) for the metric 'temperature' from the entity 'sensor-1'
+* Insert `NaN` (Not-a-Number) for the metric `temperature` from the entity 'sensor-1'
 
 ```ls
 series d:2016-10-13T08:45:00Z e:sensor-1 m:temperature=NaN
@@ -144,8 +144,8 @@ series d:2016-10-13T08:45:00Z e:sensor-1 m:temperature=NaN
 ## Number Representation
 
 * A numeric value can be a real number or `NaN` (Not a Number).
-* The string representation of a real number can consist of optional signs, '+' ('\u002B') or '-' ('\u002D'), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent.
-* The exponent consists of the character 'e' ('\u0065') or 'E' ('\u0045') followed by an optional sign, '+' ('\u002B') or '-' ('\u002D'), followed by one or more decimal digits. The value of the exponent must lie between -2147483647 and 2147483647, and is inclusive.
+* The string representation of a real number can consist of optional signs, `+` (`\u002B`) or `-` (`\u002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent.
+* The exponent consists of the character `e` (`\u0065`) or `E` (`\u0045`) followed by an optional sign, `+` (`\u002B`) or `-` (`\u002D`), followed by one or more decimal digits. The value of the exponent must lie between -2147483647 and 2147483647, and is inclusive.
 * The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction.
 * The number formed by the sign, the integer, and the fraction is referred to as the [**significand**](https://en.wikipedia.org/wiki/Significand).
 * The **significand** value, stripped of trailing zeros, must be within the Long.MAX_VALUE `9223372036854775807` and the Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database throws an `IllegalArgumentException: BigDecimal significand overflows the long type` for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and is rounded to `1.121212121212121212` if inserted for a non-decimal metric.
@@ -154,7 +154,7 @@ series d:2016-10-13T08:45:00Z e:sensor-1 m:temperature=NaN
 
 Text inserted with the `x:` field annotates the accompanying numeric value and is not part of the series composite key.
 
-Series tags, on the other hand, are part of each series' composite primary key.
+Series tags, on the other hand, are part of each series composite primary key.
 
 Since the total number of unique tag value identifiers is [limited](README.md#schema) to `16,777,215`, series tags are not recommended for high cardinality fields such as random values or continuously incrementing values (time, counters).
 
@@ -213,7 +213,7 @@ Restart
 
 [Versioning](../../versioning/README.md) enables tracking of time-series value changes for the purpose of establishing an audit trail and traceable data reconciliation.
 
-Versioning is disabled by default. It can be enabled for particular metrics by checking the Versioning box on the Metric Editor page.
+Versioning is disabled by default. It can be enabled for particular metrics by checking the **Versioning** switch in the **Metric Editor**.
 
 To insert versioning fields, use reserved tags:
 

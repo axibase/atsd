@@ -15,7 +15,7 @@ entity e:${entity} b:${enabled} l:${label} i:${interpolate} z:${timezone} t:${ta
 * Entity name and tag names are case-insensitive and are converted to lower case when stored.
 * Label and tag values are case-sensitive and are stored as submitted.
 * Other fields are case-insensitive.
-* Tag values cannot be empty.
+* Tag values must not be empty.
 * Existing entity tags and fields that are not specified in the command are left unchanged.
 * To remove the label or an entity tag or to reset the Time Zone ID or Interpolate fields, set the value to a double-quoted empty string.
 

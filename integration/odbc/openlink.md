@@ -10,9 +10,9 @@ The bridge intercepts SQL queries from the client applications via the Microsoft
 
 * Download and install Java Runtime Environment 7 for the Windows Operating System.
 * [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
-* Add Windows Environment variable `Classpath` containing the path to the ATSD JDBC driver 'jar' file.
+* Add Windows Environment variable `Classpath` containing the path to the ATSD JDBC driver `.jar` file.
   * Open **Environment variables**, click **New** under the **System variables** list.
-  & Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar' file as **Variable value**.
+  & Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver `.jar` file as **Variable value**.
 
 ![](./images/system_properties.png)
 

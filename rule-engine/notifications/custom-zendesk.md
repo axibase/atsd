@@ -8,7 +8,7 @@ This integration relies on the [Zendesk API](https://developer.zendesk.com/rest_
 
 ## Configuration
 
-Create a new `CUSTOM` webhook or import the [template](./resources/custom-zendesk-notification.xml) used in this example. To import an XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `CUSTOM` webhook or import the [template](./resources/custom-zendesk-notification.xml) used in this example. To import an XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -27,7 +27,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<COMPANY_NAME>` field with your Zendesk subdomain.
 
-The `Endpoint URL` may look as follows: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
+Example `Endpoint URL`: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
 
 Keep the `${request_id}` placeholder in the URL path so that the request id is customizable in the rule editor. This allows you to add comments to different requests using the same webhook.
 
@@ -55,7 +55,7 @@ Placeholders specified in the payload and the URL are visible as editable parame
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/custom-zendesk-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/custom-zendesk-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -106,10 +106,10 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/zendesk_alert_open.png)
 
-Check the Zendesk request to make sure the new comment was added.
+Check the Zendesk request to ensure the new comment is added.
 
 ![](./images/zendesk_test.png)

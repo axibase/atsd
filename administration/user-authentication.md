@@ -6,7 +6,7 @@ Authentication mechanisms implemented in ATSD control how users verify their ide
 
 ### Form-based Authentication
 
-When an unauthenticated user requests access to a protected view in the user interface, the server redirects the user to a login page containing user name and password fields.
+When an unauthenticated user requests access to a protected view in the web interface, the server redirects the user to a login page containing user name and password fields.
 
 The user is granted access if the account for the specified username exists and the password is correct.
 
@@ -28,15 +28,15 @@ The user account can be configured to use either **Local** or **LDAP** authentic
 
 ### Local Accounts
 
-In case of Local authentication, ATSD stores the hashcode of the user's password in the underlying HBase database.
+In case of **Local** authentication, ATSD stores the hashcode of the user password in the underlying HBase database.
 
-The user's identity is verified if the hashcode of the submitted password matches the stored hashcode for the specified username.
+The user identity is verified if the hashcode of the submitted password matches the stored hashcode for the specified username.
 
 The password is subject to the requirements outlined [below](#password-requirements).
 
 ### LDAP Accounts
 
-In case of LDAP authentication, ATSD verifies that the account exists in ATSD and the password is confirmed by submitting an authentication request to the remote LDAP server.
+In case of **LDAP** authentication, ATSD verifies that the account exists in ATSD and the password is confirmed by submitting an authentication request to the remote LDAP server.
 
 If the LDAP server locates the specified account and confirms its password, the user is allowed to access ATSD.
 
@@ -46,7 +46,7 @@ The access is denied if the LDAP server cannot find the account or if the LDAP a
 
 The following password rules apply to **Local** accounts:
 
-* Password must contain at least **six** characters by default.
+* Password must contain at least **six** (`6`) characters by default.
 
 * The default minimum length can be adjusted in the `server.properties` file with the `user.password.min.length` setting.
 
@@ -90,15 +90,15 @@ To enable anonymous access to Data API query methods, set `api.guest.access.enab
 
 ## Guest Access to Portals
 
-To expose the portal to all visitors, click on the **Portals** tab in the top menu, click **Configure** page, open the portal editor and check the 'Guest Access' field.
+To expose the portal to all visitors, open the **Portals** tab in the top menu, click **Configure**, open the portal editor and check the **Guest Access** field.
 
-Since charts displayed in the portals are loaded via Data API, the Guest Access option is available only when Data API is configured for anonymous access.
+Since charts displayed in the portals are loaded via Data API, the **Guest Access** option is available only when Data API is configured for anonymous access.
 
 ![portal guest](./images/portal-guest.png)
 
 ## Guest Access to SQL Reports
 
-SQL query results can be published to all visitors by checking 'Guest Access' field on the SQL configuration page.
+SQL query results can be published to all visitors by checking the **Guest Access** field on the query configuration page.
 
 ![sql guest](./images/sql-guest-access.png)
 
@@ -109,7 +109,7 @@ SQL query results can be published to all visitors by checking 'Guest Access' fi
 * Java Example:
 
 ```java
-    URL url = new URL("http://10.102.0.6:8088/api/v1/series");
+    URL url = new URL("http://192.0.2.6:8088/api/v1/series");
     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
     conn.setDoOutput(true);
     conn.setRequestMethod("POST");

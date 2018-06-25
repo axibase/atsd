@@ -2,7 +2,7 @@
 
 ## Overview
 
-CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the user interface.
+CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the web interface.
 
 ![](./resources/csv.gif)
 
@@ -25,13 +25,13 @@ To process a CSV file you need to create a CSV parser, which splits the file int
 |  `Metric Name Column`  |  Column containing metric names.  |
 |  `Metric Value Column`  |  Column containing metric values.  |
 |  `Message Column`  |  Column containing message text.  |
-|  `Timestamp Columns`  |  Columns containing the Timestamp for each data sample. In some cases, depending on the CSV file, the Timestamp may be split into multiple columns. For example: Date, Time.<br>If there are two columns containing the Timestamp, then they are concatenated with a dash symbol (-) in the Timestamp Pattern field.<br>For example:<br>Source CSV File:<br>`Date,Time,Sensor,Power`<br>`2015.05.15,09:15:00,sensor01,15`<br>Timestamp Columns:<br>`Date,Time`<br>Result:<br>`Date-Time`<br>`2015.05.15-09:15:00`<br>Timestamp Pattern Setting:<br>`yyyy.MM.dd-HH:mm:ss`  |
+|  `Timestamp Columns`  |  Columns containing the Timestamp for each data sample. In some cases, depending on the CSV file, the Timestamp can be split into multiple columns. For example: Date, Time.<br>If there are two columns containing the Timestamp, then they are concatenated with a dash symbol (-) in the Timestamp Pattern field.<br>For example:<br>Source CSV File:<br>`Date,Time,Sensor,Power`<br>`2015.05.15,09:15:00,sensor01,15`<br>Timestamp Columns:<br>`Date,Time`<br>Result:<br>`Date-Time`<br>`2015.05.15-09:15:00`<br>Timestamp Pattern Setting:<br>`yyyy.MM.dd-HH:mm:ss`  |
 |  `Timestamp Type`  |  Pattern, Seconds (Unix Seconds), Milliseconds (Unix Milliseconds).  |
 |  `Predefined Pattern`  |  Predefined Timestamp formats.  |
 |  `Timestamp Pattern`  |  Custom timestamp format, specified manually. For example: `dd-MMM-yy HH:mm:ss`<br>If there are two columns containing the Timestamp, then in they are divided with a dash (-) in the pattern.  |
 |  `Timezone Diff Column`  |  Column containing the time difference calculated from UTC.  |
 |  `Time Zone`  |  Time zone for interpreting Timestamps.  |
-|  `Filter`  |  Expression applied to row. If expression returns false, the row is discarded.<br>Filter syntax:<br>Fields:<br>timestamp – timestamp in milliseconds. Computed by parsing date from Time Column with specified Time Format and converted into milliseconds.<br>row[`columnName`] – text value of cell in the specific column.<br>Functions:<br>number(`columnName`) – returns numeric value of cell, or NaN (Not a Number) if the cell contains text which is not numeric.<br>`isNumber('columnName')` – returns `true` if cell is a valid number.<br>`isBlank('columnName')` – returns `true` is cell is empty string.<br>upper(`columnName`) – converts cell text to uppercase.<br>lower(`columnName`) – converts cell text to lowercase.<br>date(`endtime expression`) – returns time in milliseconds.<br>Filter examples:<br>number(`columnName`) > 0<br>`isNumber('columnName')`<br>row[`columnName`] LIKE 'abc*'<br>upper(`columnName`) != 'INVALID'<br>timestamp > date(`current_day`)<br>timestamp > date(`2015-08-15T00:00:00Z`)<br>timestamp > date(`now – 2 * year`)  |
+|  `Filter`  |  Expression applied to row. If expression returns false, the row is discarded.<br>Filter syntax:<br>Fields:<br>timestamp – timestamp in milliseconds. Computed by parsing date from Time Column with specified Time Format and converted into milliseconds.<br>row[`columnName`] – text value of cell in the specific column.<br>Functions:<br>number(`columnName`) – returns numeric value of cell, or NaN (Not a Number) if the cell contains text which is not numeric.<br>`isNumber('columnName')` – returns `true` if cell is a valid number.<br>`isBlank('columnName')` – returns `true` is cell is empty string.<br>upper(`columnName`) – converts cell text to uppercase.<br>lower(`columnName`) – converts cell text to lowercase.<br>date(`endtime expression`) – returns time in milliseconds.<br>Filter examples:<br>number(`columnName`) > 0<br>`isNumber('columnName')`<br>row[`columnName`] LIKE 'abc*'<br>upper(`columnName`) `!= 'INVALID'`<br>timestamp > date(`current_day`)<br>timestamp > date(`2015-08-15T00:00:00Z`)<br>timestamp > date(`now – 2 * year`)  |
 |  `Tag Columns`  |  Columns converted to series tags.  |
 |  `Default Tags`  |  Predefined series tags, specified as name=value on multiple lines.  |
 |  `Ignored Columns`  |  List of columns ignored in `METRIC` and `MESSAGE` commands.<br>These columns are retained in `PROPERTY` commands.  |
@@ -50,8 +50,8 @@ Columns contained in the CSV file that are not specified in any field in the par
 |  Text Qualifier  |  Escape character to differentiate separator as literal value.  |
 |  Comment Symbol  |  Lines starting with comment symbol such as hash `#` are ignored.  |
 |  Padding Symbol  |  Symbol appended to text values until all cells in the given column have the same width.<br>Applies to fixed-length formats such as `.dat` format.  |
-|  Decimal Separator  |  Symbol used to mark the border between the integral and the fractional parts of a decimal numeral.<br>Default value: comma.<br>Possible values: period, comma.  |
-|  Grouping Separator  |  Symbol used to group thousands within the number.<br>Default value: none.<br>Possible values: none, period, comma, space.  |
+|  Decimal Separator  |  Symbol used to mark the border between the integral and the fractional parts of a decimal numeral.<br>Default: `comma`.<br>Allowed values: `period`, `comma`.  |
+|  Grouping Separator  |  Symbol used to group thousands within the number.<br>Default: `none`.<br>Allowed values: `none`, `period`, `comma`, `space`.  |
 |  Fields Lengths  |  Width of columns in symbols. Padding symbols added to the end of the field to obey the fields lengths.<br>For files in `.dat` format.  |
 |  Discard NaN  |  NaN (Not a Number) values are discarded  |
 |  Ignore Line Errors  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |

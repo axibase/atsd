@@ -23,7 +23,7 @@ The bot is special user account created for automation and integration purposes.
 
     ![](./images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot's username must end with `_bot` and cannot contain dash `-` symbol.
+* Send the `/newbot` command and complete the guided process to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
 
 ```txt
     Use this token to access the HTTP API:
@@ -83,7 +83,7 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
 
 ## Check Webhook
 
-Make sure that the `getWebhookInfo` method does not return any SSL errors:
+Ensure that the `getWebhookInfo` method does not return any SSL errors:
 
 ```sh
 curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
@@ -144,6 +144,6 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 
     ![](./images/outgoing_webhook_slack_21.png)
 
-* It may take a few seconds for the commands to arrive and to trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+* It can take a few seconds for the commands to arrive and to trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
     ![](./images/outgoing_webhook_telegram_3.png)

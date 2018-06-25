@@ -29,7 +29,7 @@ Install ATSD with dependencies.
 sudo zypper -n install atsd_amd64_sles.rpm
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

@@ -61,11 +61,11 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |:--- | :--- |
 |`cache.size` | Number of records kept in cache. Displayed on **Settings>Cache Management** page.|
 |`cache.used_percent` | Cache used percentage. Displayed on **Settings>Cache Management** page.|
-|`last.series.cache.count` | Number of records in the 'last insert' cache. |
-|`last.series.cache.write-count` | Number of writes to the 'last insert' table made during the period. |
-|`last.series.cache.write-keys` | Number of series keys written to the 'last insert' table during the period.|
-|`last.series.cache.write-new-keys` | Number of new series keys written to the 'last insert' table during the period.|
-|`last.series.cache.write-time` | Time spent writing to the 'last insert' table during the period, in milliseconds.|
+|`last.series.cache.count` | Number of records in the `last insert` cache. |
+|`last.series.cache.write-count` | Number of writes to the `last insert` table made during the period. |
+|`last.series.cache.write-keys` | Number of series keys written to the `last insert` table during the period.|
+|`last.series.cache.write-new-keys` | Number of new series keys written to the `last insert` table during the period.|
+|`last.series.cache.write-time` | Time spent writing to the `last insert` table during the period, in milliseconds.|
 
 ### HTTP Server
 
@@ -126,7 +126,7 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`api_command_malformed_per_second` | Number of malformed (invalid) API commands discarded.|
 |`disabled_entity_received_per_second` |Number of series samples for disabled entity received.|
 |`disabled_metric_received_per_second` |Number of series samples for disabled metric received.|
-|`disabled_properties_received_per_second` |Number of `property` commands received when `Property Enabled` was checked on **Settings>Input Settings** page.|
+|`disabled_properties_received_per_second` |Number of `property` commands received when `Property Enabled` is checked on **Settings > Input Settings** page.|
 |`filtered_metric_received_per_second` |Number of series samples discarded due to `Invalid Value Action`.|
 |`invalid_message_received_per_second` | Number of invalid `message` commands received. |
 |`invalid_property_received_per_second` | Number of invalid `property` commands received.|
@@ -134,9 +134,9 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`message_reads_per_second` |Number of messages read.|
 |`message_received_per_second` | Number of messages received. |
 |`message_writes_per_second` | Number of messages written. |
-|`metric_append_concat_per_second` | Number of series samples received with option `append = true` where annotation was concatenated.|
+|`metric_append_concat_per_second` | Number of series samples received with option `append = true` where annotation is concatenated.|
 |`metric_append_per_second` | Number of series samples received with option `append = true`.|
-|`metric_reads_per_second` | Number of HBase rows read from the 'd' table. Each row may container multiple samples. |
+|`metric_reads_per_second` | Number of HBase rows read from `d` table. |
 |`metric_received_per_second` | Number of series samples received. |
 |`metric_writes_per_second` | Number of series samples written. |
 |`network_command_ignored_per_second` | Number ignored commands.|

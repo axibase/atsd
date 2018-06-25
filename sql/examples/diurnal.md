@@ -2,12 +2,12 @@
 
 The date_format function can be used in the `WHERE`, `GROUP BY`, and `HAVING` clauses to filter and group dates by month name, day name, or hour number.
 
-* `MMM` - short, 3-letter, month name, for example, Jan
-* `MMMMM` - full month name, for example January
-* `EEE` - short, 3-letter, weekday name, for example Sat
-* `EEEEE` - full weekday name, for example Saturday
-* `u` - weekday number, starting with 1 for Monday
-* `HH` - hour of the day, 2 digit, 00 to 23.
+* `MMM`: short, 3-letter, month name, for example, Jan
+* `MMMMM`: full month name, for example January
+* `EEE`: short, 3-letter, weekday name, for example Sat
+* `EEEEE`: full weekday name, for example Saturday
+* `u`: weekday number, starting with 1 for Monday
+* `HH`: hour of the day, 2 digit, 00 to 23.
 
 For additional patterns, refer to Java [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
 

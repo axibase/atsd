@@ -33,7 +33,7 @@ telnet zookeeper-host 2181
 ```
 
 ```txt
-Trying 10.102.0.6...
+Trying 192.0.2.6...
 Connected to zookeeper-host.
 Escape character is '^]'.
 ```
@@ -48,7 +48,7 @@ The Zookeeper client port is specified in:
 ### CDH (Cloudera Distribution Hadoop) 5.5.x
 
 ```sh
-curl -O https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
+curl -O https://axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 ```
 
 ### Extract Files
@@ -79,7 +79,7 @@ ip addr
        valid_lft forever preferred_lft forever
 2: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
     link/ether 00:50:56:b9:35:31 brd ff:ff:ff:ff:ff:ff
-    inet 10.102.0.6/24 brd 10.102.0.255 scope global eth1
+    inet 192.0.2.6/24 brd 192.0.2.255 scope global eth1
     inet6 2a01:4f8:140:53c6::7/64 scope global
        valid_lft forever preferred_lft forever
     inet6 fe80::250:56ff:feb9:3531/64 scope link
@@ -128,12 +128,12 @@ ATSD can be enabled for Kerberos authentication with Zookeeper and Hadoop servic
 
 Create an `axibase` principal and generate a corresponding `keytab` on the Cloudera Manager server, or on the server where KDC service is installed.
 
-Replace realm `HADOOP.AXIBASE.COM` with the actual value specified in the `/etc/krb5.conf` file on the Cloudera Manager server.
+Replace realm `HADOOP.EXAMPLE.ORG` with the actual value specified in the `/etc/krb5.conf` file on the Cloudera Manager server.
 
 ```ls
 kadmin.local <<eoj
-addprinc -pw PASSWORD axibase@HADOOP.AXIBASE.COM
-ktadd -k axibase.keytab axibase@HADOOP.AXIBASE.COM
+addprinc -pw PASSWORD axibase@HADOOP.EXAMPLE.ORG
+ktadd -k axibase.keytab axibase@HADOOP.EXAMPLE.ORG
 eoj
 ```
 
@@ -145,7 +145,7 @@ Check the HBase Secure Authorization settings in the Cloudera HBase configuratio
 
 ![](./images/cloudera-manager-authorization.png)
 
-If the HBase Secure Authorization is disabled you can access HBase as is. Proceed to [Kerberos Settings](#kerberos-settings).
+If the HBase Secure Authorization is disabled you can access HBase with no modifications. Proceed to [Kerberos Settings](#kerberos-settings).
 
 Otherwise, you need to allow the newly created `axibase` principal to access HBase using one of the following options:
 
@@ -157,7 +157,7 @@ Otherwise, you need to allow the newly created `axibase` principal to access HBa
 
 #### Option 2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal
 
-Login into the HMaster server and locate the `hbase.keytab` file.
+Log in to the HMaster server and locate the `hbase.keytab` file.
 
 ```sh
 find / -name "hbase.keytab" | xargs ls -la
@@ -188,7 +188,7 @@ Copy the `/etc/krb5.conf` file from an HBase Master server to the ATSD server at
 
 ```ls
 [libdefaults]
-default_realm = HADOOP.AXIBASE.COM
+default_realm = HADOOP.EXAMPLE.ORG
 dns_lookup_kdc = true
 dns_lookup_realm = false
 ticket_lifetime = 86400
@@ -206,20 +206,20 @@ verify_ap_req_nofail = false
  admin_server = FILE:/var/log/kadmind.log
 
 [realms]
-HADOOP.AXIBASE.COM = {
-kdc = nurswgkrb01.axibase.com
-admin_server = nurswgkrb01.axibase.com
-kdc = nurswgkrb02.axibase.com
+HADOOP.EXAMPLE.ORG = {
+kdc = nurswgkrb01.example.org
+admin_server = nurswgkrb01.example.org
+kdc = nurswgkrb02.example.org
 }
 
 [domain_realm]
-.axibase.com = HADOOP.AXIBASE.COM
-axibase.com  = HADOOP.AXIBASE.COM
-.apps.axibase.com = HADOOP.AXIBASE.COM
-apps.axibase.com = HADOOP.AXIBASE.COM
+.example.org = HADOOP.EXAMPLE.ORG
+axibase.com  = HADOOP.EXAMPLE.ORG
+.apps.example.org = HADOOP.EXAMPLE.ORG
+apps.example.org = HADOOP.EXAMPLE.ORG
 ```
 
-Make sure that the hostname specified in the `kdc` and `admin_server` properties above is resolvable on the ATSD server. Add it to `/etc/hosts` if necessary.
+Ensure that the hostname specified in the `kdc` and `admin_server` properties above is resolvable on the ATSD server. Add it to `/etc/hosts` if necessary.
 
 ### Kerberos Settings
 
@@ -227,7 +227,7 @@ Specify the `axibase` principal and `keytab` path settings in the `/opt/atsd/ats
 
 ```ls
 # Kerberos principal, identified with username and realm.
-kerberos.login=axibase@HADOOP.AXIBASE.COM
+kerberos.login=axibase@HADOOP.EXAMPLE.ORG
 # Absolute path to Kerberos keytab file, containing encrypted key for the above principal.
 kerberos.keytab.path=/opt/atsd/atsd/conf/axibase.keytab
 ```
@@ -237,7 +237,7 @@ kerberos.keytab.path=/opt/atsd/atsd/conf/axibase.keytab
 
 ### `hbase-site.xml` File
 
-Remove comments in the `/opt/atsd/atsd/conf/hbase-site.xml` file and replace the `HADOOP.AXIBASE.COM` realm with the actual value from the `krb5.conf` file.
+Remove comments in the `/opt/atsd/atsd/conf/hbase-site.xml` file and replace the `HADOOP.EXAMPLE.ORG` realm with the actual value from the `krb5.conf` file.
 
 ```xml
 <?xml version="1.0"?>
@@ -245,11 +245,11 @@ Remove comments in the `/opt/atsd/atsd/conf/hbase-site.xml` file and replace the
 <configuration>
   <property>
     <name>hbase.master.kerberos.principal</name>
-    <value>hbase/_HOST@HADOOP.AXIBASE.COM</value>
+    <value>hbase/_HOST@HADOOP.EXAMPLE.ORG</value>
   </property>
   <property>
     <name>hbase.regionserver.kerberos.principal</name>
-    <value>hbase/_HOST@HADOOP.AXIBASE.COM</value>
+    <value>hbase/_HOST@HADOOP.EXAMPLE.ORG</value>
   </property>
 </configuration>
 ```
@@ -257,12 +257,12 @@ Remove comments in the `/opt/atsd/atsd/conf/hbase-site.xml` file and replace the
 ### Authentication Log Messages
 
 ```txt
-2016-07-24 13:28:41,468;INFO;main;com.axibase.tsd.hbase.KerberosBean;Setting up kerberos auth: login:axibase@HADOOP.AXIBASE.COM keytab:/opt/atsd/atsd/conf/axibase.keytab
+2016-07-24 13:28:41,468;INFO;main;com.axibase.tsd.hbase.KerberosBean;Setting up kerberos auth: login:axibase@HADOOP.EXAMPLE.ORG keytab:/opt/atsd/atsd/conf/axibase.keytab
 2016-07-24 13:28:41,723;INFO;main;com.axibase.tsd.hbase.KerberosBean;Login user from keytab starting...
-2016-07-24 13:28:41,811;INFO;main;org.apache.hadoop.security.UserGroupInformation;Login successful for user axibase@HADOOP.AXIBASE.COM using keytab file /opt/atsd/atsd/conf/axibase.keytab
+2016-07-24 13:28:41,811;INFO;main;org.apache.hadoop.security.UserGroupInformation;Login successful for user axibase@HADOOP.EXAMPLE.ORG using keytab file /opt/atsd/atsd/conf/axibase.keytab
 2016-07-24 13:28:41,811;INFO;main;com.axibase.tsd.hbase.KerberosBean;Login user from keytab successful
 2016-07-24 13:28:42,879;INFO;main;com.axibase.tsd.hbase.SchemaBean;Checking ATSD schema
-2016-07-24 13:28:42,973;INFO;main;org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper;Process identifier=hconnection-0x14aa12c3 connecting to ZooKeeper ensemble=nurswgvml303.axibase.com:2181
+2016-07-24 13:28:42,973;INFO;main;org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper;Process identifier=hconnection-0x14aa12c3 connecting to ZooKeeper ensemble=nurswgvml303.example.org:2181
 ```
 
 ### Debugging Kerberos
@@ -280,7 +280,7 @@ Kerberos debugging can be enabled in the ATSD environment settings file `/opt/at
 Kerberos debug output is redirected to the `${outLog}` file, which is set to `/opt/atsd/atsd/logs/out.log` by default.
 
 ```txt
-5921 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Setting up kerberos auth: login:axibase@HADOOP.AXIBASE.COM keytab:/opt/atsd/atsd/conf/axibase.keytab
+5921 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Setting up kerberos auth: login:axibase@HADOOP.EXAMPLE.ORG keytab:/opt/atsd/atsd/conf/axibase.keytab
 Java config name: null
 Native config name: /etc/krb5.conf
 Loaded from native config
@@ -291,15 +291,15 @@ Native config name: /etc/krb5.conf
 Loaded from native config
 >>> KdcAccessibility: reset
 >>> KdcAccessibility: reset
->>> KeyTabInputStream, readName(): HADOOP.AXIBASE.COM
+>>> KeyTabInputStream, readName(): HADOOP.EXAMPLE.ORG
 >>> KeyTabInputStream, readName(): axibase
 ...
 >>> KrbAsReq creating message
->>> KrbKdcReq send: kdc=nurswgkrb01.axibase.com TCP:88, timeout=3000, number of retries =3, #bytes=137
->>> KDCCommunication: kdc=nurswgkrb01.axibase.com TCP:88, timeout=3000,Attempt =1, #bytes=137
+>>> KrbKdcReq send: kdc=nurswgkrb01.example.org TCP:88, timeout=3000, number of retries =3, #bytes=137
+>>> KDCCommunication: kdc=nurswgkrb01.example.org TCP:88, timeout=3000,Attempt =1, #bytes=137
 >>>DEBUG: TCPClient reading 620 bytes
 >>> KrbKdcReq send: #bytes read=620
->>> KdcAccessibility: remove nurswgkrb01.axibase.com
+>>> KdcAccessibility: remove nurswgkrb01.example.org
 Added key: 1version: 2
 Added key: 16version: 2
 Added key: 23version: 2
@@ -308,7 +308,7 @@ Ordering keys wrt default_tkt_enctypes list
 default etypes for default_tkt_enctypes: 23 18.
 >>> EType: sun.security.krb5.internal.crypto.ArcFourHmacEType
 >>> KrbAsRep cons in KrbAsReq.getReply axibase
-6246 [main] INFO  o.a.h.security.UserGroupInformation - Login successful for user axibase@HADOOP.AXIBASE.COM using keytab file /opt/atsd/atsd/conf/axibase.keytab
+6246 [main] INFO  o.a.h.security.UserGroupInformation - Login successful for user axibase@HADOOP.EXAMPLE.ORG using keytab file /opt/atsd/atsd/conf/axibase.keytab
 6247 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Login user from keytab successful
 ```
 
@@ -354,7 +354,7 @@ https.port = 8443
 
 By default ATSD initiates a major HBase compaction of its key data tables on a daily schedule.
 
-Since major compactions may overload the cluster, increase the default interval or initiate the compactions externally, for example via Cloudera Manager:
+Since major compactions place a heavy load on the cluster, increase the default interval or initiate the compactions externally, for example via Cloudera Manager:
 
 ![](./images/cm_major_compaction.png)
 

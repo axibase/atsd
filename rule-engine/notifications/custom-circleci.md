@@ -8,7 +8,7 @@ The integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-r
 
 ## Configuration
 
-Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Outgoing Webhooks**, select **Import** in the split button located below the table and follow the prompts.
+Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Outgoing Webhooks**, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open **Alerts > Outgoing Webhooks** and click **Create**.
 
@@ -27,11 +27,11 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your GitHub user name.
 
-The `Endpoint URL` may look as follows: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
+Example `Endpoint URL`: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
 
 Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 
-Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they may be customized in the rule editor. This allows you to trigger builds for different projects using the same webhook.
+Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they can be customized in the rule editor. This allows you to trigger builds for different projects using the same webhook.
 
 ### Payload
 
@@ -47,7 +47,7 @@ The webhook can be configured to send a JSON document to the Circle CI endpoint 
 }
 ```
 
-Make sure that you enclose fields with double quotes, if necessary.
+Ensure that you enclose fields with double quotes, if necessary.
 
 Leave the `Body` field empty for non-parameterized projects.
 
@@ -55,7 +55,7 @@ Leave the `Body` field empty for non-parameterized projects.
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the page **Alerts > Rules** and click **Create**.
 
@@ -116,10 +116,10 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open the page **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open the page **Alerts > Open Alerts** and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/circle_alert_open.png)
 
-Check the CircleCI user interface to make sure the target build was triggered.
+Check the **CircleCI** web interface to ensure the target build is triggered.
 
 ![](./images/circle_test.png)

@@ -7,7 +7,7 @@ Splits the interval into periods and calculates statistics for each period.
 The aggregation process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` into each series separately. <br>`startDate` is inclusive and `endDate` is exclusive.
-2. Split each series' `time:value` array into periods based on an [alignment](period.md#alignment) parameter.
+2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter.
 3. Discard periods whose start time is earlier than `startDate`.
 4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified `time:value` array for each series where `time` is the period start time and `value` is the result of the statistical function.
 
@@ -22,7 +22,7 @@ The aggregation process is implemented as follows:
 | `threshold`    | object  | Object containing the minimum / maximum range for a `THRESHOLD_*` aggregator.  |
 | `calendar`     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
 | `workingMinutes` | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`.<br>Default: `0`. |
 
 ### Period
 
@@ -32,7 +32,7 @@ The aggregation process is implemented as follows:
 |:---|:---|:---|
 | `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | `count`  | number | Number of time units contained in the period. |
-| `align` | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
+| `align` | string | Alignment of the period start/end time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`.|
 | `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information** page.|
 
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
@@ -114,8 +114,8 @@ Values added by the `extend` setting are determined as follows:
 | **Type** | **Description** |
 |:---|:---|
 | `NONE` | No interpolation. Periods without any raw values are excluded from results. |
-| `PREVIOUS` | Set value for the period based on the previous period's value. |
-| `NEXT` | Set value for the period based on the next period's value. |
+| `PREVIOUS` | Set value for the period based on the previous period value. |
+| `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
 | `VALUE` | Set value for the period to a specific number. |
 

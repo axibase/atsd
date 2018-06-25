@@ -8,7 +8,7 @@ The example invokes the [Azure Event Hub API](https://docs.microsoft.com/en-us/r
 
 ## Configuration
 
-Create a new `AZURE SB` webhook or import the [template](./resources/azure-sb-event-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `AZURE SB` webhook or import the [template](./resources/azure-sb-event-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -57,7 +57,7 @@ The `Message` text contains placeholders that are substituted with actual values
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/azure-sb-event-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/azure-sb-event-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -92,10 +92,10 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/azure_sb_event_alert_open.png)
 
-Check the Azure Event Hub to make sure the new messages were received:
+Check the Azure Event Hub to ensure the new messages arrived.
 
 ![](./images/azure_sb_event_test.png)

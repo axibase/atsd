@@ -5,7 +5,7 @@ Groups multiple input series into one series and applies a statistical function 
 The group process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
-1. a. Group multiple series if `period` is specified in the query.<br>Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
+1. a. Group multiple series if `period` is specified in the query.<br>Split each series `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
 1. b. Group multiple series if `period` is not specified.<br> Multiple series samples are grouped at all unique timestamps in the input series. Each group has an ordered list of pairs: `[timestamp | samples of several series with given timestamp]`.
 1. Interpolate grouped series according to the `interpolate` field.
 1. Truncate grouped series if `truncate` field is `true`.
@@ -17,7 +17,7 @@ The group process is implemented as follows:
 | `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
 | `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
 | `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established.<br>Default: `false`.  |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default: `0`.  |
 
 ## Grouping Functions
 
@@ -66,8 +66,8 @@ Values added by `extend` setting are determined as follows:
 | **Type** | **Description** |
 |:---|:---|
 | `NONE` | No interpolation. Periods without any raw values are excluded from results. |
-| `PREVIOUS` | Set value for the period based on the previous period's value. |
-| `NEXT` | Set value for the period based on the next period's value. |
+| `PREVIOUS` | Set value for the period based on the previous period value. |
+| `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
 | `VALUE` | Set value for the period to a specific number. |
 
@@ -321,7 +321,7 @@ Response:
 ]}]
 ```
 
-Two interpolated values were added to the second series:
+Two interpolated values are added to the second series:
 
 ```ls
 | datetime             | e1.value | e2.value | SUM |
@@ -337,7 +337,7 @@ Two interpolated values were added to the second series:
 
 #### `period` parameter is specified
 
-Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and lets assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period is calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
+Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period is calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
 
 Query:
 
@@ -371,7 +371,7 @@ Response
 }]
 ```
 
-Interpolated values were added to each of the grouped series:
+Interpolated values added to each of the grouped series:
 
 ```ls
 |                      |          |          | group                | e1 grouped   | e2 grouped   |     |

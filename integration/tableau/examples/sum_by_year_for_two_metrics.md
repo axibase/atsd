@@ -6,21 +6,21 @@ Report showing the differences between two metrics on separate graphs.
 
 ## Data Source
 
-* Tables: `bi.im_net1.m` and `bi.ex_net1.m`
+* Tables: `bi.im_net1.m` and `bi.ex_net1.m`.
 
 ## Steps
 
-* Drag-and-drop both tables to Canvas area
+* Drag-and-drop both tables to Canvas area.
 * Select `Inner Join`, specify `Time` and `Entity` as equal fields:
 
 ![](../images/join_inner.png)
 
 * Click **Sheet 1**
-* Click **OK** to acknowledge the warning about limitations
-* Drag-and-drop `Datetime` onto the column field
-* Drag-and-drop both `Value` onto the rows field
-* Select _Bar_ in the dropdown at the _All_ section on Marks Card
-* Optionally add [drop lines](comparison_of_two_metrics_at_one_bar_graph.md#drop-lines)
+* Click **OK** to acknowledge the warning about limitations.
+* Drag-and-drop `Datetime` onto the column field.
+* Drag-and-drop both `Value` onto the rows field.
+* Select **Bar** in the drop-down list in the **All** section on the **Marks Card**.
+* Optionally add [drop lines](comparison_of_two_metrics_at_one_bar_graph.md#drop-lines).
 
 ## Results
 

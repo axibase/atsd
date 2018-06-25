@@ -53,5 +53,5 @@
 |  Timestamp Column  |  Time  |  Time column contains the timestamp, which is used to import the time series.  |
 |  Timestamp Pattern  |  `yyyy-MM-dd'T'HH:mm`  |  Pattern matching the one contained in the original CSV file: `2015-07-09T00:00`.  |
 |  Filter  |  `number('Concentration') >= 0`  |  Used to import data points that contain actual values that are greater than 0 (not empty).  |
-|  Ignored Columns  |  `Latitude`<br>`Longitude`<br>`Unit`  |  Columns that are skipped.<br>For example: Latitude, Longitude, and Unit do not add any value to the time series.<br>Can be added as metric tags using the API or user interface.  |
+|  Ignored Columns  |  `Latitude`<br>`Longitude`<br>`Unit`  |  Columns that are skipped.<br>For example: Latitude, Longitude, and Unit do not add any value to the time series.<br>Can be added as metric tags using the API or web interface.  |
 |  Header  |  `"Latitude"`<br>`"Longitude"`<br>`"Time"`<br>`"Parameter"`<br>`"Concentration"`<br>`"Unit"`  |  Since the source CSV file does not have column headers, they are assigned and then referenced in the configuration.  |

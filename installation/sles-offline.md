@@ -22,7 +22,7 @@ Check that required dependencies are present on the target server.
 sudo zypper search -i java-1_8_0-openjdk-devel which net-tools iproute2
 ```
 
-Verify that all of these dependencies were found.
+Verify that the dependencies are present.
 
 ```txt
 S  | Name                     | Summary                                                     | Type
@@ -49,7 +49,7 @@ Copy the `atsd_amd64_sles.rpm` file to the target server and install ATSD.
 sudo zypper -n install atsd_amd64_sles.rpm
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

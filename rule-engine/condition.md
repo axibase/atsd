@@ -6,7 +6,7 @@ The condition consists of one or multiple boolean checks combined with [boolean 
 
 The expression can include command fields, literal values, window/entity/metric fields, user-defined variables and [functions](functions.md).
 
-When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of 'On Cancel' triggers.
+When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of **On Open** triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of **On Cancel** triggers.
 
 Note that [`Overrides`](overrides.md) take precedence over the condition.
 
@@ -15,7 +15,7 @@ Note that [`Overrides`](overrides.md) take precedence over the condition.
 | **Field** | **Description** |
 | :--- | :--- |
 | `value` | Last data sample. |
-| `tags.{tag_name}` | Value of command tag 'tag_name', for example, `tags.file_system`. <br>Also, `tags['tag_name']`.|
+| `tags.{tag_name}` | Value of command tag `tag_name`, for example, `tags.file_system`. <br>Also, `tags['tag_name']`.|
 | `entity` | Entity name. |
 | `entity.label` | Entity label. |
 | `entity.{field_name}` | Entity [field](../api/meta/entity/list.md#fields) with the specified name, for example `entity.timeZone`. |
@@ -87,7 +87,7 @@ The number of samples in the window can range from 0 (when the oldest value exit
 
 ### All Values Are Above Threshold
 
-The condition is `true` when the all values in the window, both count- and time-based, exceed `50`.
+The condition is `true` when the all values in the window, both count and time-based, exceed `50`.
 
 ```javascript
   min() > 50
@@ -111,7 +111,7 @@ The condition is `true` when all values in the window are equal `50`.
 
 ### Multiple metrics
 
-If metrics were submitted with the same 'series' command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
+If metrics are submitted with the same `series` command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
 
 ```javascript
   value > 90 AND value('disk_used') < 1000000000

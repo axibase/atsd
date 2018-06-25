@@ -2,7 +2,7 @@
 
 ## Network Commands
 
-In the previous section you inserted data manually, using the built-in user interface forms. Proceed by inserting data in the network command format.
+In the previous section you inserted data manually, using the built-in web interface forms. Proceed by inserting data in the network command format.
 
 [Network commands](../api/network/README.md) provide a compact [syntax](../api/network/README.md#syntax) to insert both time series data as well as metadata.
 
@@ -10,7 +10,7 @@ In the previous section you inserted data manually, using the built-in user inte
 command_name field_prefix:[field_name=]field_value
 ```
 
-Open command prompt and send the following commands into the database.
+Open command prompt and send these commands into the database.
 
 ```bash
 echo -e "series e:br-1905 m:temperature=25" \
@@ -22,7 +22,7 @@ echo -e "entity e:br-1905 t:serial_number=N12002" \
   > /dev/tcp/atsd_hostname/8081
 ```
 
-Reload  the **Series Statistics** page and the entity editor to verify that the temperature sample is received and the entity tag `series_number` is set by the database.
+Reload the **Series Statistics** page and the entity editor to verify that the temperature sample is received and the entity tag `series_number` is set by the database.
 
 ![](./resources/network-entity-command.png)
 
@@ -46,7 +46,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
   --data '[{"entity": "br-1905", "metric": "temperature", "data": [{ "d": "2018-06-01T14:00:00Z", "v": 17.0 }]}]'
 ```
 
-The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. The array `data` may contain any number of `d:v` objects.
+The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. The array `data` can contain any number of `d:v` objects.
 
 ```json
 [{

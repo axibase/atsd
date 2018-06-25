@@ -8,16 +8,16 @@ Verify that the target server meets hardware and OS [requirements](../administra
 
 ATSD is listening on the following ports by default:
 
-* `1099/tcp` - JMX
-* `8081/tcp` - Network API (TCP)
-* `8082/udp` - Network API (UDP)
-* `8088/tcp` - Web Interface/API (http)
-* `8443/tcp` - Web Interface/API (https)
+* `1099/tcp`: JMX
+* `8081/tcp`: Network API (TCP)
+* `8082/udp`: Network API (UDP)
+* `8088/tcp`: Web Interface/API (http)
+* `8443/tcp`: Web Interface/API (https)
 
-In case you are not able to connect to an ATSD network service, make sure that: a) the service is listening, and b) the firewall allows access to the target ports.
+In case you are not able to connect to an ATSD network service, ensure that: a) the service is listening, and b) the firewall allows access to the target ports.
 
-* Login into the ATSD server
-* Search netstat output for TCP/UDP sockets that are listening on the target port, for example 8081
+* Log in to ATSD server
+* Search `netstat` output for TCP/UDP sockets that are listening on the target port, for example `8081`.
 
 ```sh
 netstat -tulnp | grep 8081
@@ -32,7 +32,7 @@ tcp        0      0 0.0.0.0:8081            0.0.0.0:*               LISTEN
 
 ```sh
 $ telnet atsd_host 8081
-Trying 10.102.0.1...
+Trying 192.0.2.1...
 Connected to atsd_host.
 Escape character is '^]'.
 ```

@@ -11,7 +11,7 @@
 |Project ID|The ID of the project.|
 |Topic|The name of the receiving topic.|
 |Service Account|The account that belongs to the application instead of to an individual end user. Create account as described [here](gcp-service-account-key.md#create-service-account)|
-|Private Key Alias|The alias of the account's private key which was imported as described [here](gcp-service-account-key.md#import-accounts-private-key)|
+|Private Key Alias|The alias of the imported account private key as described by [GCP Service Account Key Documentation](./gcp-service-account-key.md#import-private-key)|
 |Message|Default message text.|
 
 ## Message
@@ -24,14 +24,14 @@ The default message includes all fields, including entity and metric metadata.
 
 ## Response
 
-The response status code and response content is recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
 ## Configure GCP PS Notification
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `GCP-PS` type.
-* Fill out the `Name` field.
-* Enter the `Project ID`, `Topic`, `Service Account` and select `Private Key Alias`.
+* Fill out the **Name** field.
+* Enter the **Project ID**, **Topic**, **Service Account** and select **Private Key Alias**.
 
   ![](./images/gcp_ps_config.png)
 

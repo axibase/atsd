@@ -72,7 +72,7 @@ tags.location IN ('NUR', 'SVL')
 string s LIKE (string a[, string b[...]]) boolean
 ```
 
-Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection may contain string literals and variables.
+Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection can contain string literals and variables.
 
 Examples:
 
@@ -96,12 +96,12 @@ likeAny(string s, [string] c) boolean
 
 Returns `true` if string `s` matches any element in the string collection `c`.
 
-The collection `c` can be initialized by referencing a named collection by name or it can be specified inline as an array of strings. The collection may include patterns with `?` and `*` wildcards.
+The collection `c` can be loaded from a named collection or initialized from an array of strings. The elements of the collection can include patterns with `?` and `*` wildcards.
 
 Examples:
 
 ```javascript
-likeAny(tags.request_ip, ['10.50.102.1', '10.50.102.2'])
+likeAny(tags.request_ip, ['192.0.2.1', '192.0.2.2'])
 ```
 
 ```javascript
@@ -120,7 +120,7 @@ matchList(string s, string c) boolean
 
 Returns `true` if `s` is contained in the collection named `c`.
 
-The collection `c` may include patterns with `?` and `*` wildcards.
+The collection `c` can include patterns with `?` and `*` wildcards.
 
 Example:
 
@@ -232,7 +232,7 @@ excludeKeys([] m, [] c) map
 
 Returns a copy of the input map `m` without the keys specified in collection `c`.
 
-The keys in collection `c` may contain wildcards ? and * to remove multiple matching keys from the map.
+The keys in collection `c` can contain wildcards ? and * to remove multiple matching keys from the map.
 
 Examples:
 

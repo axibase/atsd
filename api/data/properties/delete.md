@@ -8,7 +8,7 @@ Deletes property records that match specified filters.
 
 Due to the specifics of the underlying storage technology, the records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a so called `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows that were recorded before the `DELETE` marker.
+Instead, the records are masked with a so called `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows recorded with an earlier timestamp.
 
 The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called `major compaction`.
 
@@ -48,8 +48,8 @@ An array of objects containing fields for filtering records for deletion.
 | `entity` | string | [**Required**] Entity name. <br>Set entity to wildcard `*` to delete records for all entities.|
 | `startDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
 | `endDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
-| `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with _exact_ or _partial_ key fields based on the `exactMatch` parameter below.|
-| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `false`, all records with key that **contains** fields in the request `key` (but may also include other fields) are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
+| `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with **exact** or **partial** key fields based on the `exactMatch` parameter below.|
+| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `false`, all records with key that **contains** fields in the request `key` (but can include other fields) are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
 
 * Key and tag names are case-insensitive.
 * Key and tag values are case-sensitive.

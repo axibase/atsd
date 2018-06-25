@@ -53,6 +53,6 @@ The period starting at '2017-05-01T00:00:00Z' is now included even though it sta
 
 ![4140](./Images/4140.1.png)
 
-These links have been compressed to a dropdown menu, as shown below:
+These links have been compressed to a drop-down list, as shown below:
 
 ![4104](./Images/4104.2.png)

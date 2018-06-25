@@ -6,7 +6,7 @@ ChartLab is a publicly hosted Node application that makes it easy to build chart
 
 The public ChartLab is hosted at the following URL: `https://apps.axibase.com/chartlab`.
 
-ChartLab's primary role is to provide a simple user interface to view and save portal and widget examples. Each example consists of one or multiple widgets built with the ATSD charts library. The widgets act as API clients and load series, properties and messages from ATSD Data API endpoints.
+ChartLab provides a simple web interface to view and save portal and widget examples. Each example consists of one or multiple widgets built with the ATSD charts library. The widgets act as API clients and load series, properties and messages from ATSD Data API endpoints.
 
 ## Authentication and Authorization
 
@@ -57,7 +57,7 @@ The widgets can be configured to load data from the following sources:
   Specify DNS name or IP address of the target ATSD instance.
 
 ```elm
-  url = https://144.132.12.4:8443/
+  url = https://atsd.example.org:8443/
 ```
 
   User credentials are not required since ATSD is now configured for anonymous read-only access via Data and Meta API methods.
@@ -69,7 +69,7 @@ The widgets can be configured to load data from the following sources:
     offset-right = 50
     height-units = 2
     width-units = 1
-    url = https://144.132.12.4:8443/
+    url = https://atsd.example.org:8443/
 
   [group]
 

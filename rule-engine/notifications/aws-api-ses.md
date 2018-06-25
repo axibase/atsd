@@ -10,7 +10,7 @@ The example invokes the [Amazon SES API](https://docs.aws.amazon.com/ses/latest/
 
 ## Configuration
 
-Create a new `AWS API` webhook or import the [template](./resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `AWS API` webhook or import the [template](./resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -64,7 +64,7 @@ The `MessageBody` text contains placeholders that are substituted with actual va
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/aws-api-ses-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/aws-api-ses-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -99,11 +99,11 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/aws_api_ses_alert_open.png)
 
-Check the Amazon SES statistics to make sure the new messages were sent:
+Check the Amazon SES statistics to confirm the delivery of new messages:
 
 ![](./images/aws_api_ses_test.png)
 

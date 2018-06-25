@@ -6,7 +6,7 @@ Use these scripts to stop, start, and update the database.
 
 ## Permissions
 
-If logged in as root or another user, change user to 'axibase' to avoid file permission issues.
+If logged in as root or another user, change user to `axibase` to avoid file permission issues.
 
 ```sh
 su axibase
@@ -22,7 +22,7 @@ The scripts are located in the `/opt/atsd/bin` directory.
 | `/opt/atsd/bin/atsd-tsd.sh` | Start, stop, and get status of ATSD. | start, stop, status |
 | `/opt/atsd/bin/atsd-hbase.sh` | Start, stop, and get status of HBase. | start, stop, status  |
 | `/opt/atsd/bin/atsd-dfs.sh` | Start, stop, and get status of HDFS. | start, stop, status  |
-| `/opt/atsd/bin/update.sh` | [Update ATSD](update.md) in interactive mode.<br>`-t` - Upgrade and restart ATSD.<br>`-a` - Upgrade and restart ATSD, HBase, and HDFS.| -a, -t  |
+| `/opt/atsd/bin/update.sh` | [Update ATSD](update.md) in interactive mode.<br>`-t` Upgrade and restart ATSD.<br>`-a` Upgrade and restart ATSD, HBase, and HDFS.| -a, -t  |
 
 Examples
 
@@ -200,7 +200,7 @@ echo "rmr /hbase" | /opt/atsd/hbase/bin/hbase zkcli
 
 ### Zookeeper Inconsistency
 
-If HBase fails to start, check if the HBase master log contains the __Master not active__ error:
+If HBase fails to start, check if the HBase master log contains the **Master not active** error:
 
 ```sh
 cat /opt/atsd/hbase/logs/hbase-*-master-*.log | grep -C 5 "Master not active"
@@ -243,7 +243,7 @@ nurswgvml007 atsdService: * [ATSD] DataNode is not running.
 
 ATSD uses `/tmp/atsd` directory to store temporary files. If this directory is owned by root, ATSD cannot function properly.
 
-* Solution: Stop all ATSD services. Grant ownership to `/tmp/atsd` directory to the 'axibase' user.
+* Solution: Stop all ATSD services. Grant ownership to `/tmp/atsd` directory to the `axibase` user.
 
 ```sh
 chown -R axibase:axibase /tmp/atsd
@@ -253,7 +253,7 @@ chown -R axibase:axibase /tmp/atsd
 
 ATSD uses the `/opt/atsd` directory to store log files, backup files, and other files. If this directory is owned by root, ATSD cannot function properly.
 
-* Solution: Stop all ATSD services. Grant ownership to `/opt/atsd` directory to the 'axibase' user.
+* Solution: Stop all ATSD services. Grant ownership to `/opt/atsd` directory to the `axibase` user.
 
 ```sh
 chown -R axibase:axibase /opt/atsd

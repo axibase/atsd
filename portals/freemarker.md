@@ -219,7 +219,7 @@ If the series has multiple tags, the last argument must include all tags.
 atsd_last("nurswgvml007", "disk_size", "mount_point=/,file_system=/dev/mapper/vg_nurswgvml007-lv_root")
 ```
 
-If the series has no tags, the last argument may be omitted or set to empty string.
+If the series has no tags, the last argument can be omitted or set to empty string.
 
 ```javascript
 atsd_last("nurswgvml007", "cpu_busy")
@@ -356,7 +356,7 @@ Finds entities by expression, based on tags.
 </#list>
 ```
 
-In the first example, we are searching for entities with two tags. The required value can be specified directly in the browser:
+In the first example, we are searching for entities with two tags. The required value can be specified in the browser:
 
 ```elm
 http://atsd.com/portal/1.xhtml?app=> value1&dc=> value2
@@ -364,7 +364,7 @@ http://atsd.com/portal/1.xhtml?app=> value1&dc=> value2
 
 All entities, for which the `app` tag is => `value1` and `dc` tag is => `value2`, are loaded into the portal.
 
-In the second example, we are searching for entities with a specific application tag. The required value can be specified directly in the browser:
+In the second example, we are searching for entities with a specific application tag. The required value can be specified in the browser:
 
 ```elm
 http://atsd.com/portal/1.xhtml?application=> value
@@ -441,13 +441,13 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 
 | Name | Returns | Description |
 | --- | --- | --- |
-|  `atsd_last('entity', 'metric', 'tag1=v1,tag2=v2')`  |  Double  |  Last value for time series or null.  |
-|  `groupTag('entity', 'tagKey')`  |  string collection  |  Collection of tag values for `tagKey` of all entity groups an entity belongs to.  |
-|  `tag('entity', 'tagKey')`  |  string  |  Entity tag value.  |
-|  `memberOf('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns `true` if an entity belongs to any of specified entity groups.  |
-|  `memberOfAll('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns `true` if an entity belongs to all of the entity groups.  |
-|  `list('value' [, delimiter])`  |  string collection  |  Splits a string by a delimiter. Default delimiter is comma.  |
-|  `getTags('metric', 'entity', 'tagKey'[, hours])`  |  string collection  |  Tag values for metric, entity, and `tagKey`.<br>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.<br>Default interval is 24 hours.  |
+| `atsd_last('entity', 'metric', 'tag1=v1,tag2=v2')` | Double | Last value for time series or null. |
+| `groupTag('entity', 'tagKey')` | string collection | Collection of tag values for `tagKey` of all entity groups an entity belongs to.  |
+| `tag('entity', 'tagKey')` | string | Entity tag value. |
+| `memberOf('entity', 'group1', ..., 'groupN')` | boolean  |  Returns `true` if an entity belongs to any of specified entity groups.  |
+| `memberOfAll('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns `true` if an entity belongs to all of the entity groups.  |
+| `list('value' [, delimiter])`  |  string collection  |  Splits a string by a delimiter. Default delimiter is comma.  |
+| `getTags('metric', 'entity', 'tagKey'[, hours])`  |  string collection  |  Tag values for metric, entity, and `tagKey`.<br>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.<br>Default interval is 24 hours.  |
 |  `getEntitiesForTags(expression)`  |  string collection  |  Finds entities by expression.  |
 |  `getEntitiesForGroup(group)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.  |
 |  `getEntitiesForGroup(groupName, hours)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.<br>The method returns group members that have inserted data over the last N hours.<br>If hours are not specified or non-positive, all group members are returned.  |

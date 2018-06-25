@@ -26,7 +26,7 @@ The incoming data is consumed by the rule engine independently of the persistenc
 
 The data is maintained in [windows](window.md) which are `in-memory` structures initialized for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
 
-The rule engine processing pipeline consists of the following stages:
+The processing pipeline consists of the following stages:
 
 ## Filtering
 
@@ -42,13 +42,13 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 Once the sample passes through the filter chain, the sample is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
 
-The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
+The commands can be associated with windows in a 1-to-1 fashion by enabling the `All Tags` setting or by enumerating all tags as the [grouping](grouping.md) tags.
 
 ![](./images/grouping-tags.png)
 
 ![](./images/grouping-series-tags.png)
 
-If the 'Group by Entity' option is unchecked, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
+If the **Group by Entity** option is cleared, the `entity` field is ignored for grouping purposes and the window is grouped only by metric and tags.
 
 ### Window Length
 
@@ -57,14 +57,14 @@ The rule engine supports two types of windows:
 * Count-based
 * Time-based
 
-**Count-based** windows accumulate up to the specified number of samples. The samples are sorted in order of arrival, with the most recently received sample being placed at the end of the array. When the window becomes full based on user specifications, the first sample (oldest arrival time) is removed from the window to free up space at the end of the array for an incoming sample to be added there.
+**Count-based** windows accumulate up to the specified number of samples. The samples are sorted in the order received, with the most recently received sample being placed at the end of the array. When the window reaches the limit, the first sample (oldest by arrival time) is removed from the window to free up space at the end of the array for an incoming sample.
 
-**Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window does not limit how many samples may be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
+**Time-based** windows store samples that are timestamped within the specified interval of time, ending with the current time. The time-based window does not limit how many samples can be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
 
 ## Condition Checking
 
 [Windows](window.md) are continuously updated as new samples are added and old samples are
-removed to maintain the size of the given window at a constant interval length or sample count.
+removed.
 
 When a window is updated, the rule engine checks the [condition](condition.md) and triggers various response actions based on the condition result.
 
@@ -76,17 +76,17 @@ avg() > 80
 
 ### Window Status
 
-[Windows](window.md) are stateful. When the condition for a given window becomes `true`, the window is initialized in memory with the status `OPEN`.
+[Windows](window.md) are stateful. When the condition for a given window changes to `true`, the window is initialized in memory with the status `OPEN`.
 
-On subsequent `true` evaluations, the window status changes to `REPEAT`.
+On subsequent `true` evaluations, the status transitions to `REPEAT`.
 
 When the condition becomes `false`, the window status is reverted to `CANCEL`.
 
-Window status can be accessed on the **Alerts > Rule Windows** page.
+The current window status is displayed on the **Alerts > Rule Windows** page.
 
 ![](./images/rule-windows.png)
 
-Windows are updated when the command enters or exits the window. Scheduled rules can be emulated using the built-in [`timer`](scheduled-rules.md) metrics.
+Windows are updated when the commands `enter` or `exit` the windows. Scheduled rules that are checked at a regular interval, regardless of incoming data, can be constructed using the built-in [`timer`](scheduled-rules.md) metrics.
 
 ## Actions
 
@@ -100,7 +100,7 @@ Supported response actions:
 * [Generate derived metrics](derived.md)
 * [Log alert to file](logging.md)
 
-Triggers for all actions may be configured separately. For example, you can configure a rule such that logging events are generated on all occurrences whereas email messages are sent every 6 hours.
+Triggers for the above actions can be configured independently, for example to send email every 6 hours yet to log events for all repeat occurrences.
 
 ## Correlation
 
@@ -136,7 +136,7 @@ To minimize the number of rules with manual thresholds, the rule engine in ATSD 
 
 ### Manual Thresholds
 
-Thresholds can be set manually which requires some trial and error to determine a level that strikes a balance between `false` positives and missed alerts.
+Thresholds can be set manually which requires some trial and error to determine a level that strikes a balance between false positives and missed alerts.
 
 ```javascript
 value > 90
@@ -144,7 +144,7 @@ value > 90
 
 Since a single baseline cannot handle all edge cases, the [`Overrides`](#overrides) can be used to enumerate exceptions.
 
-To reduce `false` positives, apply an averaging function to longer windows.
+To reduce false positives, apply an averaging function to longer windows.
 
 ```javascript
 avg() > 90
@@ -156,7 +156,7 @@ To reduce distortions caused by a small number of outliers, use percentiles inst
 percetile(75) > 90
 ```
 
-Alternatively, use the `minimum` or a below-median percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that the last `N` consecutive samples are above the threshold.
+Alternatively, use the `minimum` or a low percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that the last-N consecutive samples are above the threshold.
 
 ```javascript
 // all samples are above 90
@@ -195,7 +195,7 @@ abs(forecast_deviation(avg())) > 2
 
 ### Correlation Thresholds
 
-In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-series.md) to identify abnormal behavior in one of the metrics.
+In cases where the analyzed metric is related to another metric, use the [database functions](functions-series.md) to identify abnormal behavior in both metrics.
 
 The primary metric is expected to be below `50` as long as the second metric remains below `100`. Otherwise, an alert is raised.
 
@@ -223,20 +223,18 @@ The default baseline can be adjusted for particular series using the [Overrides]
 
 ## Alert Severity
 
-Severity is a measure of criticality assigned to alerts generated by the rule. The severity level ranges between `NORMAL` and `FATAL` and is specified on the 'Logging' tab in the rule editor.
+Severity is a measure of criticality assigned to alerts generated by the rule. The severity level ranges between `NORMAL` and `FATAL` and is specified on the **Logging** tab in the rule editor.
 
 If an alert is raised by a condition defined in the `Overrides` table, its severity supersedes the default severity.
 
-In rules operating on `message` commands, the alert severity can be inherited from the 'severity' field of the underlying message.
-To enable this behavior, set Severity on the 'Logging' tab to `unknown`.
+In rules operating on `message` commands, the alert severity can be inherited from the `severity` field of the underlying message.
+To enable this behavior, set Severity on the **Logging** tab to `unknown`.
 
 ## Complex Rules
 
-In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../sql/scheduled-sql.md) queries.
+In cases that involve processing of large volumes of historical data, use [Scheduled SQL](../sql/scheduled-sql.md) queries to analyze the data.
 
-To trigger a notification by an SQL query:
-
-* Develop a query such that it returns an empty result if the situation is normal.
+To trigger an email notification from an SQL query, use `WHERE` and `HAVING` filters to develop a query that returns **no rows** if the situation is normal.
 
 ```sql
 SELECT entity, tags, percentile(90, value) FROM page_views
@@ -246,7 +244,6 @@ HAVING percentile(90, value) > 1000
 -- HAVING condition acts as a rule filter
 ```
 
-* Create a scheduled SQL query.
 * Set **Send Empty Report** parameter to `No`.
 * Specify triggers such as an email notification or a file export.
 

@@ -100,8 +100,8 @@ Examples:
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
 ```
 
-  The map includes tags that are not present in new property tags and tags that were deleted.
-  If the difference map is empty, this means that no changes were identified.
+  The map includes tags that are not present in new property tags and deleted tags.
+  If the difference map is empty, this means that no identified changes are present.
   This comparison is case-insensitive.
 
 ```java

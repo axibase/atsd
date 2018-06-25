@@ -30,7 +30,7 @@ The view can be accessed by users with [`read`](../administration/user-authoriza
 
 **Name** | **Description**
 ---|---
-Name | **[required]** View name displayed on the entity views page.
+Name | **[required]** View name displayed on the **Entity Views** page.
 Enabled | Status: enabled or disabled. <br>Disabled views are not visible on the **Entity Views** tab in the main menu.
 Entity Group | **[required]** [Entity group](entity_groups.md) which members are included in the view.
 Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in entity group [expressions](entity_groups.md#expression).
@@ -68,8 +68,8 @@ Type | Column type.
 Header | Column name.
 Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Makes the cell value a clickable link. See [Links](#links) options.
-Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
-Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
+Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to `Entity Property`, the text is resolved to the property expression value.
+Link Template | Path to a page in the web interface with support for placeholders: `${entity}` and `${value}` (current cell value).
 Formatting | A [function](#formatting) or an expression to round numbers and convert units.
 
 ### Column Types
@@ -80,10 +80,10 @@ Enabled Column | Entity status.
 Entity Tag | Name of the entity tag.
 Property Tag | [Property search expression](../rule-engine/property-search.md) in the format of `type:[{key-name=key-value}]:tag-name`.
 Series Value | Name of the metric for which the last value for this entity is displayed.<br>If multiple series match the specified metric and entity, the value for the latest series is displayed.
-Name Column | Entity name with a link to the editor page for the entity.
-Label Column | Entity label with a link to the editor page for the entity.
+Name Column | Entity name with a link to the entity editor.
+Label Column | Entity label with a link to the entity editor.
 Portals Column | Link to the portals page for the entity.
-Properties Column | Link to the properties page for the entity.
+Properties Column | Link to the entity properties page.
 Last Insert | Last insert date for all or one metric collected by the entity with a link to the last insert table.<br>If the column value is not specified, the last insert date is calculated for all metrics. The column value accepts settings in the format of `metric:[lag]`, where the optional `lag` parameter denotes the maximum delay in seconds.<br> If the last insert date for the entity is before `now - lag`, the cell is highlighted with orange background. <br> See examples [below](#last-insert).
 
 #### Last Insert
@@ -118,7 +118,7 @@ Entity Tag | Displays the value of the specified entity tag for another entity, 
 
 ### Formatting
 
-The following functions are available in the 'Formatting' section:
+The following functions are available in the **Formatting** section:
 
 #### Text Functions
 
@@ -164,7 +164,7 @@ The following functions are available in the 'Formatting' section:
 **Name** | **Description**
 ---|---
 Name | Filter name displayed in the drop-down menu.
-Expression | A condition that entities must satisfy when the filter is selected in the drop-down menu. The expression may refer to `name` and `tags.{name}` columns defined in the entity view.
+Expression | A condition that entities must satisfy when the filter is selected in the drop-down menu. The expression can refer to `name` and `tags.{name}` columns defined in the entity view.
 
 Filter expression examples:
 
@@ -210,7 +210,7 @@ The entity view without table splitting is displayed as follows, with all entiti
 
 ![](./images/entity-view-split-empty.png)
 
-To split the table by entity tag _'location'_, specify the tag's name in the **Split Table by Column** field:
+To split the table by entity tag `location`, specify the tag name in the **Split Table by Column** field:
 
 ![](./images/entity_views_2.png)
 
@@ -230,11 +230,11 @@ If splitting by column **header** is enabled, grouping is performed based on for
 
 ## Portal
 
-If the _Multi-Entity Portal_ is assigned manually or the entity view contains _Series Value_ [columns](#column-types), the statistics for entities can be viewed on a portal accessible with the **View Portal** button.
+If the **Multi-Entity Portal** is assigned manually or the entity view contains **Series Value** [columns](#column-types), the statistics for entities can be viewed on a portal accessible with the **View Portal** button.
 
 ![](./images/entity_views_6.png)
 
-If no portal is selected, the default portal displays metrics for [columns](#column-types) of type _Series Value_.
+If no portal is selected, the default portal displays metrics for [columns](#column-types) of type **Series Value**.
 
 The multi-entity portal is any portal that displays a metric for [multiple entities](../portals/portals-overview.md#template-portals) using the `${entities}` placeholder.
 
@@ -265,11 +265,11 @@ Examples by Column Types:
 
 The link displays the value of the entity tag of another entity, which name is set in the entity tag of the current entity.
 
-1. Specify the entity tag which contains the name of related entity in the 'Value' setting.
+1. Specify the entity tag which contains the name of related entity in the **Value** setting.
 
-2. Set 'Link' setting to Entity Tag.
+2. Set **Link** setting to **Entity Tag**.
 
-3. Specify the entity tag of related entity in the 'Link Label' setting.
+3. Specify the entity tag of related entity in the **Link Label** setting.
 
 * Configuration
 
@@ -301,11 +301,11 @@ Tag value can be formatted for convenient representation.
 
 Text displays property tag value with a link to property type.
 
-1. Set 'Type' setting to Property Tag.
+1. Set **Type** setting to **Property Tag**.
 
-2. Specify [property search expression](../rule-engine/property-search.md) in the 'Value' setting, for example `docker.version::version`.
+2. Specify [property search expression](../rule-engine/property-search.md) in the **Value** setting, for example `docker.version::version`.
 
-3. Set 'Link' setting to Property.
+3. Set **Link** setting to **Property**.
 
 * Configuration
 
@@ -323,13 +323,13 @@ Text displays property tag value with a link to property type.
 
 The message search link template contains tag value.
 
-1. Set 'Type' setting to Property Tag.
+1. Set **Type** setting to **Property** Tag.
 
-2. Specify [property search expression](../rule-engine/property-search.md) in the 'Value' setting, for example `docker.container.config::hostname`.
+2. Specify [property search expression](../rule-engine/property-search.md) in the **Value** setting, for example `docker.container.config::hostname`.
 
-3. Set 'Link Label' setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
+3. Set **Link Label** setting to [`icon`](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
 
-4. Specify a portal link in the 'Link Template' setting, for example `/messages?search&entity=${value}`.
+4. Specify a portal link in the **Link Template** setting, for example `/messages?search&entity=${value}`.
 
 * Configuration
 
@@ -349,11 +349,11 @@ The message search link template contains tag value.
 
 The link displays the latest inserted value for the specific metric.
 
-1. Specify the metric name in the 'Value' setting.
+1. Specify the metric name in the **Value** setting.
 
-2. Apply the 'Link' setting to Chart.
+2. Apply the **Link** setting to Chart.
 
-3. Specify an expression in the 'Formatting' setting to display one digit after dot:
+3. Specify an expression in the **Formatting** setting to display one digit after dot:
 
 ```ls
     formatNumber(value, '0.0')
@@ -377,7 +377,7 @@ The link displays the latest inserted value for the specific metric.
 
 The text displays entity name with a link to the entity editor.
 
-The displayed entity name can be modified, for example shortened, by specifying an expression in the 'Formatting' setting:
+The displayed entity name can be modified, for example shortened, by specifying an expression in the **Formatting** setting:
 
 ```javascript
   length(value)<16 ? value : truncate(value,12)
@@ -399,11 +399,11 @@ The displayed entity name can be modified, for example shortened, by specifying 
 
 Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity.
 
-1. Set 'Type' setting to Name Column.
+1. Set **Type** setting to **Name Column**.
 
-2. Set 'Link Label' setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
+2. Set **Link Label** setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
 
-3. Specify a portal link in the 'Link Template' setting, for example `/portal/name/collectd?entity=${entity}`.
+3. Specify a portal link in the **Link Template** setting, for example `/portal/name/collectd?entity=${entity}`.
 
 * Configuration
 
@@ -421,7 +421,7 @@ Use the following configuration to specify the custom icon which opens a link to
 
 #### Text with Entity Label
 
-Entity labels may be defined for entries. Otherwise, entity name is displayed.
+Entity labels can be defined for entities. Otherwise, entity name is displayed.
 
 * Configuration
 
@@ -435,7 +435,7 @@ Entity labels may be defined for entries. Otherwise, entity name is displayed.
 
 The link displays entity label if the label is set. Otherwise, the link displays entity name.
 
-Specify the following URL in the 'Link Template' setting.
+Specify the following URL in the **Link Template** setting.
 
 ```ls
   /entities/${entity}
@@ -457,7 +457,7 @@ Specify the following URL in the 'Link Template' setting.
 
 #### Icon Link to Entity Portals
 
-The icon opens a link to all template portals assigned to the selected entity. The order of portals is determined based on the portal's display index.
+The icon opens a link to all template portals assigned to the selected entity. The order of portals is determined based on the portal display index.
 
 * Configuration
 
@@ -473,7 +473,7 @@ The icon opens a link to all template portals assigned to the selected entity. T
 
 #### Icon Link to Specific Entity Portal
 
-To display a particular portal by default, specify the portal name in the 'Value' setting. Other portals assigned to the entity are accessible in tabs.
+To display a particular portal by default, specify the portal name in the **Value** setting. Other portals assigned to the entity are accessible in tabs.
 
 * Configuration
 
@@ -501,7 +501,7 @@ To display a particular portal by default, specify the portal name in the 'Value
 
 #### Icon Link to Specific Entity Property
 
-Specify the default property type in the 'Value' setting.
+Specify the default property type in the **Value** setting.
 
 ```ls
   docker.info
@@ -525,13 +525,13 @@ Specify the default property type in the 'Value' setting.
 
 #### Text Link to Last Insert Page
 
-The text displays difference `now - lastInsertDate`. The entities are  highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
+The text displays difference `now - lastInsertDate`. The entities are highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
 
-1. Set 'Type' setting to Last Insert.
+1. Set **Type** setting to **Last Insert**.
 
-2. Specify the metric name and the lag in the 'Value' setting, for example `docker.activecontainers:20`.
+2. Specify the metric name and the lag in the **Value** setting, for example `docker.activecontainers:20`.
 
-3. Specify an expression in the 'Formatting' setting to display difference `now - lastInsertDate`:
+3. Specify an expression in the **Formatting** setting to display difference `now - lastInsertDate`:
 
 ```ls
     formatIntervalShort(elapsedTime(value))

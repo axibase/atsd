@@ -1,14 +1,14 @@
 # Forecast Tools
 
-- [Exceptions](#exceptions)
-- [Calendar](#calendar)
-- [Testing](#testing)
+* [Exceptions](#exceptions)
+* [Calendar](#calendar)
+* [Testing](#testing)
 
 ## Exceptions
 
 The purpose of exceptions is to exclude specific intervals from the data selection interval. This is necessary when unusual data is recorded for the time series and this unusual data distorts the forecast.
 
-For example, a 12-hour 100% cpu_busy interval caused by a broken script. Even after the problem is fixed (script stopped), the abnormal data remains and causes the forecast to be inaccurate. Another example is a data gap, where collection stopped for a while, and this may impact the forecast accuracy. ATSD algorithms cannot automatically identify and discard abnormal records, and Exception is a manual solution for it.
+For example, a 12-hour 100% cpu_busy interval caused by a broken script. Even after the problem is fixed (script stopped), the abnormal data remains and causes the forecast to be inaccurate. Another example is a data gap, where collection stopped for a while, and this can impact the forecast accuracy. ATSD algorithms cannot automatically identify and discard abnormal records, and Exception is a manual solution for it.
 
 ![](./resources/calendar_exceptions_testing_1.png)
 
@@ -56,8 +56,8 @@ Testing allows the calculation of forecasts based on data in a CSV file or the t
 |Period|Specify seasonality of the underlying series.|
 |Data Selection Interval|Time frame for selecting detailed data that is used as forecast input.<br>End of the Selection Interval is set to current time.|
 |Averaging Interval|Period of time over which the detailed samples are aggregated.|
-|Auto Period|Let server automatically identify seasonality of the underlying series that produces the most accurate forecast - forecast with minimum variance from observed historical data.|
-|Auto Parameters|Let server automatically identify algorithm parameters that produce the most accurate forecast - forecast with minimum variance from observed historical data.|
-|Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast - forecast with minimal variance from observed historical data.|
+|Auto Period|Let server automatically identify seasonality of the underlying series that produces the most accurate forecast with minimum variance from observed historical data.|
+|Auto Parameters|Let server automatically identify algorithm parameters that produce the most accurate forecast with minimum variance from observed historical data.|
+|Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast with minimal variance from observed historical data.|
 |Algorithm|Select Holt-Winters or ARIMA forecasting algorithms.|
-|Score Interval|Part of Selection Interval that is used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the Score Interval - the more weight is assigned to the recently observed values.|
+|Score Interval|Part of Selection Interval that is used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the **Score Interval**: the more weight is assigned to the recently observed values.|

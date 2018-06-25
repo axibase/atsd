@@ -10,15 +10,15 @@ Create a service account with 'Pub/Sub Publisher' role as described in this [doc
 
 1. Open the [Service accounts page](https://console.developers.google.com/projectselector/iam-admin/serviceaccounts). If prompted, select a project.
 2. Click **Create service account**.
-3. In the **Create service account** window, enter a name for the service account, select a `Pub/Sub Publisher` role and select `Furnish a new private key` with `P12` key type. Then click **Create**.
+3. In the **Create service account** window, enter a name for the service account, select a **Pub/Sub Publisher** role and select **Furnish a new private key** with `P12` key type. Then click **Create**.
 
 For example, create a service account with name `publisher`:
 
 ![](./images/gcp_create_service_account_window.png)
 
-When a service account is created, the account's private key is saved on your computer.
+When a service account is created, the account private key is saved on your computer.
 
-## Import Account's Private Key
+## Import Private Key
 
 Import the saved private key into the ATSD keystore.
 

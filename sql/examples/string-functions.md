@@ -30,7 +30,7 @@ WHERE datetime > current_minute
 SELECT datetime, entity, concat('nfs:', tags.file_system, '/') AS drive, value/POWER(2, 20) as used_gb
   FROM "df.disk_used"
 WHERE datetime > current_hour
-  AND LOCATE('.com', tags.file_system) > 0 AND LOCATE('.com', tags.file_system) < LOCATE('/', tags.file_system, 3)
+  AND LOCATE('.com', tags.file_system) > 0 AND LOCATE('.org', tags.file_system) < LOCATE('/', tags.file_system, 3)
   ORDER BY datetime
 ```
 
@@ -39,9 +39,9 @@ WHERE datetime > current_hour
 ```ls
 | datetime                 | entity       | drive                              | used_gb |
 |--------------------------|--------------|------------------------------------|---------|
-| 2016-10-03T11:44:01.000Z | nurswgvml502 | nfs://nurstr01.axibase.com/backup/ | 1650.8  |
-| 2016-10-03T11:44:03.000Z | nurswgvml006 | nfs://nurstr01.axibase.com/backup/ | 1650.8  |
-| 2016-10-03T11:44:11.000Z | nurswgvml007 | nfs://nurstr01.axibase.com/backup/ | 1650.8  |
+| 2016-10-03T11:44:01.000Z | nurswgvml502 | nfs://nurstr01.example.org/backup/ | 1650.8  |
+| 2016-10-03T11:44:03.000Z | nurswgvml006 | nfs://nurstr01.example.org/backup/ | 1650.8  |
+| 2016-10-03T11:44:11.000Z | nurswgvml007 | nfs://nurstr01.example.org/backup/ | 1650.8  |
 ```
 
 ## Filter By Modified Entity Tags

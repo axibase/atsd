@@ -87,7 +87,7 @@ Stop ATSD.
 Copy the `/opt/atsd` directory to the backup directory.
 
 ```sh
-cp -a /opt/atsd/  /path/to/backup-dir
+cp -a /opt/atsd/ /path/to/backup-dir
 ```
 
 Start ATSD.

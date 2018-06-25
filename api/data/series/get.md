@@ -71,7 +71,7 @@ The returned JSON document contains the same fields as in the [Series: Query](qu
 /api/v1/series/json/nurswgvml006/df_used?startDate=current_hour&endDate=now&limit=2
 ```
 
-Note that the `tags` object in the JSON response contains _all_ tags in the series key irrespective of which tags were specified in the request.
+Note that the `tags` object in the JSON response contains **all** tags in the series key irrespective of which tags are specified in the request.
 
 ```json
 [

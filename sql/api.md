@@ -8,15 +8,15 @@ To obtain result metadata without executing the query, submit the query to [`/ap
 
 ## Authorization
 
-The rows returned for the SQL query are filtered by the server according to the user's entity `read` permissions.
+The rows returned for the SQL query are filtered by the server according to the entity `read` permissions granted to the user.
 
-This means that the same query executed by users with different entity permissions may produce different results.
+This means that the same query executed by users with different entity permissions can produce different results.
 
 Scheduled queries are executed under full permissions.
 
 ## Connection Query
 
-To test a connection, execute the following query:
+To test a connection, execute a query without table reference.
 
 ```sql
 SELECT 1
@@ -36,16 +36,16 @@ This query can be utilized as a validation query in database connection pool imp
 |:---|:---|:---|
 | `q` | string | [**Required**] Query text. |
 | `outputFormat` | string | Output format: `csv` or `json`. Default: `csv`. <br>A special `null` format can be specified for performance testing. If format is `null`, the query is executed but the response output is not produced by the database.|
-| `metadataFormat` | string | Metadata format for CSV format. Default: `HEADER`. <br>Supported values: `NONE`, `HEADER`, `EMBED`, `COMMENTS`. |
+| `metadataFormat` | string | Metadata format for CSV format. Default: `HEADER`. <br>Allowed values: `NONE`, `HEADER`, `EMBED`, `COMMENTS`. |
 | `queryId` | string | User-defined handle submitted at the request time to identify the query, if it needs to be cancelled. |
 | `limit` | integer | Maximum number of rows to return. Default: 0 (not applied).<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
 | `discardOutput` | boolean | If set to `true`, discards the produced content without sending it to the client. |
-| `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe deserialization on the client. |
+| `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe parsing on the client. |
 | `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix milliseconds since `1970-01-01T00:00:00Z`, similar to the `time` column. |
 
-As an alternative, the query can be submitted with Content-Type `text/plain` as text payload with the other parameters included in the query string.
+As an alternative, the query can be submitted as text payload with `Content-Type` header set to `text/plain` and other parameters included in the query string.
 
-#### `limit` parameter vs `LIMIT` clause
+#### limit parameter versus LIMIT clause
 
 | `limit` | `LIMIT` | **Result** |
 |:---|:---|:---|
@@ -64,9 +64,9 @@ As an alternative, the query can be submitted with Content-Type `text/plain` as 
 
 ### Cancelling the Query
 
-The client may cancel an active query by submitting a request to `/api/sql/cancel?queryId=myid` endpoint.
+The client can cancel an active query by submitting a request to `/api/sql/cancel?queryId={client-query-id}` endpoint.
 
-The `queryId` identifies the query to be cancelled.
+The `client-query-id` parameter identifies the query to be cancelled.
 
 ## Response
 
@@ -164,7 +164,7 @@ The `metadataFormat` parameter specifies how metadata is incorporated into the C
 
 ## Examples
 
-### `curl` Query Example
+### curl Query Example
 
 ```bash
 curl https://atsd_hostname:8443/api/sql  \
@@ -182,7 +182,7 @@ curl https://atsd_hostname:8443/api/sql  \
   --data 'q=SELECT * FROM "mpstat.cpu_busy" WHERE entity =  '\''nurswghbs001'\'' AND datetime between '\''2018-03-01T17:00:00Z'\'' AND '\''2018-03-02T17:00:00Z'\'''
 ```
 
-### Bash Client Example
+### bash Client Example
 
 Execute query specified in a `query.sql` file and write CSV results to `/tmp/report-1.csv`.
 

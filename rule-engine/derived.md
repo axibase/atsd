@@ -32,13 +32,13 @@ series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_b
 
 ### Tags
 
-A special placeholder `${commandTags}` is provided to print out all window tags in the [Network API](../api/network/series.md#syntax) syntax. It allows appending all tags to the command without knowing the tag names in advance.
+A special placeholder `${commandTags}` is provided to print out all window tags in the [Network API](../api/network/series.md#syntax) syntax. The placeholder appends all tags to the command without knowing the tag names in advance.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
-Assuming the incoming command was `series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda`:
+Assume the incoming command is `series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda`:
 
 ```ls
 series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
@@ -74,7 +74,7 @@ To store derived commands with exactly the same time as the incoming command, se
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
-> If the 'Check On Exit' option is enabled for time-based window, some of the events are caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
+> If the **Check On Exit** option is enabled for time-based window, some of the events are caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
 
 To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical) function:
 
@@ -84,7 +84,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp
 
 ## Frequency
 
-Derived commands can be stored each time a command is received or removed from the window by setting the **Repeat** parameter to 'All'.
+Derived commands can be stored each time a command is received or removed from the window by setting the **Repeat** parameter to **All**.
 
 The frequency can be lowered by adjusting the repeat interval.
 

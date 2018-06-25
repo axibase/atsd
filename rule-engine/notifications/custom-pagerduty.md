@@ -8,7 +8,7 @@ The integration relies on the [PagerDuty API](https://v2.developer.pagerduty.com
 
 ## Configuration
 
-Create a new `CUSTOM` webhook or import the [template](./resources/custom-pagerduty-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `CUSTOM` webhook or import the [template](./resources/custom-pagerduty-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -69,7 +69,7 @@ The placeholders specified in the payload are visible as editable parameters in 
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/custom-pagerduty-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/custom-pagerduty-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -143,10 +143,10 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
 
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/pagerduty_alert_open.png)
 
-Check PagerDuty [incidents](https://axibase.pagerduty.com/incidents) page to make sure the incident was triggered.
+Check PagerDuty [incidents](https://axibase.pagerduty.com/incidents) page to ensure the incident is triggered.
 
 ![](./images/pagerduty_test.png)

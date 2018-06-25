@@ -94,17 +94,17 @@ The table schema in ATSD, displayed on the **Settings > Storage > Database Table
 
 ### Glossary
 
-* `Entity` - Name of the object being monitored.
-* `Metric` - Name of the numeric attribute describing the object.
-* `Sample` - Timestamped metric value, `time:number`.
-* `Series` - Sequence of Samples.
-* `Tag` - Custom attribute describing the `Entity`, `Metric`, or `Series`, consists of a name and a value, `name:value`.
+* `Entity`: Name of the object being monitored.
+* `Metric`: Name of the numeric attribute describing the object.
+* `Sample`: Timestamped metric value, `time:number`.
+* `Series`: Sequence of Samples.
+* `Tag`: Custom attribute describing the `Entity`, `Metric`, or `Series`, consists of a name and a value, `name:value`.
 
 ### Example
 
-To store some temperature observations for bioreactor `BR1740` enclosure located at site `SVL2` in Sunnyvale, as well as room temperature at the same site, we might send the following commands into ATSD.
+To store some temperature observations for bioreactor `BR1740` enclosure located at site `SVL2` in Sunnyvale, as well as room temperature at the same site, send these commands into ATSD.
 
-Metadata commands contain descriptive attributes and can be sent only once (or whenever these attributes change).
+Metadata commands contain descriptive attributes and can be sent only once, or whenever these attributes change.
 
 ```elm
 entity e:BR1740 t:type=Bioreactor t:city=Sunnyvale t:site=SVL2

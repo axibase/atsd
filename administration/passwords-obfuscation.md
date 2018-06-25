@@ -4,7 +4,7 @@
 
 To obfuscate a password, open the **Settings > Diagnostics > Passwords** page.
 
-Enter the plain text password and click `Obfuscate`.
+Enter the plain text password and click **Obfuscate**.
 
 The result is an obfuscated string with `OBF:` prefix which can be specified in the `server.properties` file.
 
@@ -23,7 +23,7 @@ To convert an obfuscated text back to plain text, open the **Settings > Diagnost
 
 The input text must start with `OBF:` prefix.
 
-Enter the obfuscated text and click `Deobfuscate` to view the plain text.
+Enter the obfuscated text and click **Deobfuscate** to view the plain text.
 
 ![](./images/password-deobfuscation.png)
 

@@ -23,9 +23,9 @@ migrate.py [-h] [--whisper-base BASE] [-R] path atsd_hostname atsd_tcp_port
 | Setting | Required | Description |
 | --- | --- | --- |
 |  `-h` OR `--help`  |  no  |  Show help message and exit.  |
-|  `path`  |  yes  |  Path to folder with `.wsp` files or `.wsp` file that is exported to ATSD.<br>Path must be specified either:<br>– directly to the `.wsp` file (without `-R` setting)<br>OR<br>– to the folder containing `.wsp` files (with `-R` setting).<br>Note that the `~` symbol cannot be used when specifying path.  |
+|  `path`  |  yes  |  Path to folder with `.wsp` files or `.wsp` file that is exported to ATSD.<br>Path must be specified either:<br>– to the `.wsp` file (without `-R` setting)<br>OR<br>– to the folder containing `.wsp` files (with `-R` setting).<br>Note that the `~` symbol cannot be used when specifying path.  |
 |  `-R`  |  no  |  Export recursively all files in the specified folder; searches are sub folders and directories for `.wsp` files.<br>If `-R` is not specified then you must specify the direct `path` to the `.wsp` file.  |
-|  `--whisper-base BASE`  |  no  |  Base path to which all metric names are resolved.<br>Recommended to set Whisper base directory.<br>Default value: `.` (current directory).  |
+|  `--whisper-base BASE`  |  no  |  Base path to which all metric names are resolved.<br>Recommended to set Whisper base directory.<br>Default: `.` (current directory).  |
 |  `atsd_hostname`  |  yes  |  ATSD hostname or IP.  |
 |  `atsd_tcp_port`  |  yes  |  ATSD TCP listening port. Default ATSD TCP port is 8081.  |
 

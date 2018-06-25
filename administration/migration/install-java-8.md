@@ -10,7 +10,7 @@ Switch to root or execute the below steps under a user with sudo privileges.
 apt-get install openjdk-8-jdk
 ```
 
-In case of 'Unable to locate package' error, install Oracle JDK.
+In case of `Unable to locate package` error, install Oracle JDK.
 
 * Red Hat Enterprise Linux, SLES, CentOS, Oracle Linux
 
@@ -18,7 +18,7 @@ In case of 'Unable to locate package' error, install Oracle JDK.
 yum install java-1.8.0-openjdk-devel
 ```
 
-In case of 'No package available' error, install Oracle JDK.
+In case of `No package available` error, install Oracle JDK.
 
 ## Oracle JDK
 
@@ -26,7 +26,7 @@ Open the Oracle [Java 8 JDK](https://www.oracle.com/technetwork/java/javase/down
 
 Accept the license.
 
-Copy the 'Linux 64: *tar.gz' download link for 'Java SE Development Kit 8u152' into the `curl` command below.
+Copy the `Linux 64: *tar.gz` download link for Java SE Development Kit 8u152 into the `curl` command below.
 
 ```sh
 curl -k -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" \

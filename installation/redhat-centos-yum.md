@@ -38,13 +38,13 @@ Update repositories:
 sudo yum clean expire-cache
 ```
 
-Follow the prompts to install ATSD:
+Install ATSD:
 
 ```sh
 sudo yum install -y atsd
 ```
 
-It may take up to 5 minutes to initialize the database.
+It can take up to 5 minutes to initialize the database.
 
 ## Check Installation
 

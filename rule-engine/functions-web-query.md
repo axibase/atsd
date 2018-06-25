@@ -51,7 +51,7 @@ channel=devops&repository=atsd-site
 
 ### Content Type is JSON
 
-The JSON document defined in the webhook may include placeholders using `${name}` syntax.
+The JSON document defined in the webhook can include placeholders using `${name}` syntax.
 
 Such placeholders are substituted with corresponding parameter values from the input map `p`. Unknown parameters in the map `p` are ignored.
 
@@ -80,11 +80,11 @@ The target URL receives the following JSON payload sent as `application/json`:
 
 Execute a `GET` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
-The configuration map `c` may contain the following fields:
+The configuration map `c` can contain the following fields:
 
-* `headers` - Map of request headers keys and values.
-* `params` - Map of request parameters appended to query string.
-* `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
+* `headers`: Map of request headers keys and values.
+* `params`: Map of request parameters appended to query string.
+* `ignoreSsl`: Boolean field that controls SSL certificate validation. Default is `true`.
 
 ```javascript
   queryGet("https://ipinfo.io/1.1.1.1/json").content
@@ -98,13 +98,13 @@ The configuration map `c` may contain the following fields:
 
 Execute a `POST` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
-The configuration map `c` may contain the following fields:
+The configuration map `c` can contain the following fields:
 
-* `contentType` - Content type of the request. Default is `application/json`.
-* `content` - Request body text.
-* `headers` - Map of request headers keys and values.
-* `params` - Map of request parameters.
-* `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
+* `contentType`: Content type of the request. Default is `application/json`.
+* `content`: Request body text.
+* `headers`: Map of request headers keys and values.
+* `params`: Map of request parameters.
+* `ignoreSsl`: Boolean field that controls SSL certificate validation. Default is `true`.
 
 The request payload can be specified using either `content` text or `params` map.
 
@@ -150,7 +150,7 @@ The request URL consists of schema (http/https), optional user credentials, host
 Examples:
 
 ```elm
-  https://cuser:cpass@10.102.0.9:8443/service?load=true
+  https://cuser:cpass@192.0.2.9:8443/service?load=true
 ```
 
 ```elm

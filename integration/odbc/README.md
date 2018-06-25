@@ -53,11 +53,11 @@ A license manager window appears after exiting from the installation wizard. If 
 
   ![](./images/easysoft_activate_1.png)
 
-* Choose **Trial**, click Next
+* Choose **Trial**, click **Next**
 
   ![](./images/easysoft_activate_2.png)
 
-* Choose **ODBC JDBC Gateway**, click Next
+* Choose **ODBC JDBC Gateway**, click **Next**
 
   ![](./images/easysoft_activate_3.png)
 
@@ -102,14 +102,14 @@ Refer to ATSD JDBC [documentation](https://github.com/axibase/atsd-jdbc#jdbc-con
 
  ![](./images/ODBC_conf.png)
 
-* Check (enable) **'Strip Quote'** option to remove the quotes from table and column names.
+* Check (enable) **Strip Quote** option to remove the quotes from table and column names.
 
-* Check (enable) **'Strip Escape'** option to remove [ODBC escape sequences](https://docs.microsoft.com/en-us/sql/odbc/reference/appendixes/odbc-escape-sequences).
+* Check (enable) **Strip Escape** option to remove [ODBC escape sequences](https://docs.microsoft.com/en-us/sql/odbc/reference/appendixes/odbc-escape-sequences).
 
 * Click **Test** to verify the settings. If result is correct, save the settings.
 
-> In case of 'Unable to create JVM' error, run a Repair task in Windows Program for the bridge program. The error may occur if the bridge was installed prior to Java installation.
+> In case of `Unable to create JVM` error, run a **Repair** task in **Windows Program** for the bridge program. The error occurs if the bridge is installed prior to Java installation.
 
-* The System DSN tab now displays the new data source.
+* The **System DSN** tab now displays the new data source.
 
   ![](./images/ODBC_5.png)

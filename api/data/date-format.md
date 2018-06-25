@@ -7,13 +7,13 @@
 |`yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`|`Z` denotes UTC time zone. |
 |`yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh[:]mm`|Time zone offset.|
 
-* `yyyy` - four digit year
-* `mm` - two digit month starting with `01` for January (01-12).
-* `dd` - two digit day of month starting with `01` (01-31).
-* `HH` - two digit hour in day (00-23).
-* `mm` - two digit minute in hour (00-59).
-* `ss` - two digit second in minute (00-59).
-* `S` - fractional second.
+* `yyyy`: four digit year
+* `mm`: two digit month starting with `01` for January (01-12).
+* `dd`: two digit day of month starting with `01` (01-31).
+* `HH`: two digit hour in day (00-23).
+* `mm`: two digit minute in hour (00-59).
+* `ss`: two digit second in minute (00-59).
+* `S`: fractional second.
 
 ## Notes
 

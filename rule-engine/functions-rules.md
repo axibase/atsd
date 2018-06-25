@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `rule` functions provide a way to check windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. These functions may be used for correlation purposes.
+The `rule` functions provide a way to check windows created by other rules. The matching windows can contain data for series that are different from the series in the current window. These functions can be used for correlation purposes.
 
 Windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command.
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression returns `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
@@ -21,7 +21,7 @@ The current window is excluded from matching.
   rule_open(string r[, string e[, string p]]) boolean
 ```
 
-Checks if there is at least one window with the 'OPEN' or 'REPEAT' [status](README.md#window-status) for the specified rule `r`, entity `e` and expression `p` to match other windows.
+Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified rule `r`, entity `e` and expression `p` to match other windows.
 
 The function returns `true` if a matching window is found, `false` otherwise.
 
@@ -40,7 +40,7 @@ Window [fields](window-fields.md#base-fields) except `repeat_interval` can be ac
 > Note:
 > * `entity` and `tags` are the same as in the last window command.
 > * If minimum interval is not set then `min_interval_expired = true`.
-> * `threshold` - the threshold value matched by the last command.
+> * `threshold`: the threshold value matched by the last command.
 
 ---
 
@@ -55,8 +55,8 @@ The following match conditions are applied:
 
     |**Name**|**Description**|
     |---|---|
-    |message |The text value, which is equal to 'message' field in case of `message` command.|
-    |tags and tags.{name}/tags['name']|Command tags.|
+    |message |The text value, which is equal to `message` field in case of `message` command.|
+    |tags and `tags.{name}`/`tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
   * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
 
@@ -75,7 +75,7 @@ The following match conditions are applied:
   rule_open('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
 
-Assume the following windows have status 'REPEAT' and the function is called from the rule 'test_rule_open':
+Assume the following windows have status `REPEAT` and the function is called from the rule `test_rule_open`:
 
 ```txt
 +----------------+------------------------------+
@@ -196,8 +196,8 @@ The following match conditions are applied:
 
     |**Name**|**Description**|
     |---|---|
-    |message |The text value, which is equal to 'message' field in case of `message` command.|
-    |tags and tags.{name}/tags['name']|Command tags.|
+    |message |The text value, which is equal to `message` field in case of `message` command.|
+    |tags and `tags.{name}`/`tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
 
 * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
@@ -209,7 +209,7 @@ Window [fields](window-fields.md#base-fields) except `repeat_interval` can be ac
 > Note:
 > * `tags` are the same as in the last window command;
 > * if minimum interval is not set then `min_interval_expired = true`;
-> * `threshold` - the threshold matched by the last command.
+> * `threshold`: the threshold matched by the last command.
 
 Examples:
 

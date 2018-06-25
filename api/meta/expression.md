@@ -48,7 +48,7 @@ Wildcard `?` means any character.
   tags.location != ''
 ```
 
-* Returns records with name that starts with `nur` and with the tag `os` equal to 'Linux'
+* Returns records with name that starts with `nur` and with the tag `os` equal to `Linux`
 
 ```sql
   name LIKE 'nur*' AND tags.os = 'Linux'

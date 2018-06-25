@@ -37,7 +37,7 @@ This method can be used to process HTTP notifications from services that support
 | POST | `/api/v1/messages/webhook/*` | `key=value` | `application/x-www-form-urlencoded` |
 | GET | `/api/v1/messages/webhook/*` | None | - |
 
-The URL may point to any path after `/webhook`, for example, `/api/v1/messages/webhook/service-1`.
+The URL path after the `/webhook` part can be customized, for example `/api/v1/messages/webhook/service-1`.
 
 ## Authentication
 
@@ -55,7 +55,7 @@ The user must have `API_DATA_WRITE` role and `write` permissions for the target 
 
 ### Webhook User Wizard
 
-To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split button located below the 'Users' table.
+To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split button located below the **Users** table.
 
 ![](./images/webhook-user.png)
 
@@ -80,7 +80,7 @@ repeat=1
 
 ## JSON Payload
 
-The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag's name is set from the field's path, which is composed from the parent object's path, followed by dot `.` and the field's own name. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
+The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag name is set from the field path, which is composed from the parent object path, followed by dot `.` and the field's own name. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
 
 Input document:
 
@@ -126,13 +126,13 @@ Since stored message are always associated with an entity, the request must incl
       entity = jenkins
     ```
 
-1. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
+1. The entity can be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
     ```elm
       entity = test-1
     ```
 
-1. The entity can be extracted from a JSON field by referencing the field's full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
+1. The entity can be extracted from a JSON field by referencing the field full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
 
     ```json
       {
@@ -161,7 +161,7 @@ Since stored message are always associated with an entity, the request must incl
 
 ## Default Message Field Values
 
-* Message `type` is 'webhook'.
+* Message `type` is `webhook`.
 * Message `source` is set to the remainder of the URL path after the `/webhook/` part (and before the query string). If the remainder is empty, the `source` is set to empty string.
 
 ```ls
@@ -169,7 +169,7 @@ Since stored message are always associated with an entity, the request must incl
   source =          for /api/v1/messages/webhook?entity=test
 ```
 
-* Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` **must** be specified as described in the 'Entity Mapping' section above.
+* Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` **must** be specified as described in the **Entity Mapping** section above.
 * Message `severity` is undefined.
 * Message `date` is set to current server time.
 * Message tag `request_ip` is set to the remote IP address of the http client that initiated the request.
@@ -266,13 +266,13 @@ The filter parameters contain patterns that the converted message tags must sati
 
 * The patterns support `*` as a wildcard.
 * Tag name match is case-**IN**sensitive.
-* The parameters may contain multiple patterns separated by semi-colon `;`.
+* The parameters can contain multiple patterns separated by semi-colon `;`.
 
 ```elm
   &exclude=repository.*;sender.location
 ```
 
-* Parameters may be repeated in the query string.
+* Parameters can be repeated in the query string.
 
 ```elm
   &exclude=repository.*&exclude=sender.location
@@ -577,7 +577,7 @@ Command:
         "event": "watch",
         "repository.name": "atsd",
         "repository.full_name": "axibase/atsd",
-        "request_ip": "192.30.253.29",
+        "request_ip": "192.0.2.1",
         "sender.id": "2098022",
         "sender.login": "rodionos",
         "sender.site_admin": "false",

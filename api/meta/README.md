@@ -1,6 +1,6 @@
 # Overview
 
-The Meta API lets you query and update metadata about metrics, entities, and entity groups in the database.
+The Meta API allows you query and update metadata about metrics, entities, and entity groups in the database.
 
 ## Request Methods
 
@@ -21,7 +21,7 @@ Requested parameter values and parameterized path segments such as [`/api/v1/met
 |`jvm/memory(max)`|`jvm%2Fmemory%28max%29`| `/api/v1/metrics/jvm%2Fmemory%28max%29` |
 |`name LIKE 'cpu*'`|`name%20LIKE%20%27cpu*%27`| `/api/v1/metrics?expression=name%20LIKE%20%27cpu*%27` |
 
-Failure to encode URI components may result in HTTP `4xx` and `5xx` status codes:
+Failure to encode URI components results in HTTP `4xx` and `5xx` errors.
 
 ```json
 Status Code: 500
@@ -49,7 +49,7 @@ Processing errors are returned in JSON format:
 * User [authentication](../../administration/user-authentication.md) is required.
 * All requests must be authenticated using BASIC AUTHENTICATION.
 * The authentication method is **HTTP BASIC**.
-* The client may enable session cookies to execute multiple requests without re-sending BASIC authentication header.
+* The client can enable session cookies to execute multiple requests without re-sending BASIC authentication header.
 
 ## Authorization
 
@@ -61,7 +61,7 @@ Cross-domain requests are allowed.
 
 ## Compression
 
-* Clients may send compressed data by adding the HTTP header **Content-Encoding: gzip** to the request.
+* Clients can send compressed data by adding the HTTP header **Content-Encoding: gzip** to the request.
 
 ## Troubleshooting
 

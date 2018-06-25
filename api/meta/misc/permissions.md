@@ -18,7 +18,7 @@ Retrieves access [permissions](../../../administration/user-authorization.md) fo
 |:---|:---|:---|
 | `roles`  | array | List of user [roles](../../../administration/user-authorization.md#api-roles). |
 | `user-groups` | array | List of groups to which the user belongs.|
-| `entity-groups` | map | The user's entity groups `read` and `write` [permissions](../../../administration/user-authorization.md#entity-permissions), for example `"aws-ec2": "WRITE"`. |
+| `entity-groups` | map | `read` and `write` entity group  [permissions](../../../administration/user-authorization.md#entity-permissions) granted to the user, for example `"aws-ec2": "WRITE"`. |
 | `portals`  | array | List of portals the user is authorized to view.|
 | `all-entities-read` | boolean | User is authorized to read data for any entity.|
 | `all-entities-write`  | boolean | User is authorized to write data for any entity.|
@@ -83,11 +83,11 @@ curl https://atsd_hostname:8443/api/v1/permissions \
   "all-entities-write": true,
   "all-portals-permission": false,
   "portals": [],
-  "ip-filter": "216.3.128.12 216.3.128.13"
+  "ip-filter": "192.0.2.1 192.0.2.2"
 }
 ```
 
-* Admin user:
+* Administrator user:
 
 ```json
 {

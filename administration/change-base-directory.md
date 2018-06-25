@@ -2,7 +2,7 @@
 
 By default ATSD is installed in the `/opt/atsd` directory.
 
-Execute these steps to move ATSD to a different file system.
+Complete this process to move ATSD to a different file system.
 
 Stop ATSD services.
 

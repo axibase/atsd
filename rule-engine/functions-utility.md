@@ -36,7 +36,7 @@ Examples:
   toBoolean(object a) boolean
 ```
 
-Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-**IN**sensitive) or if `a` is equal to the number `1`.
+Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string "true", "yes", "on", "1" (case-**IN**sensitive) or if `a` is equal to the number `1`.
 
 Value table:
 
@@ -88,7 +88,7 @@ Supported formats:
 
 The first column in the table contains field names, whereas the second column contains corresponding field values.
 
-Object `o` can be an 'Entity' or a 'Window' object which can be retrieved as follows:
+Object `o` can be an `Entity` or a `Window` object which can be retrieved as follows:
 
 * [`getEntity`](functions-lookup.md#getentity)
 * [`rule_window`](functions-rules.md#rule_window)
@@ -157,8 +157,8 @@ Retrieves the **host** from URL string `u`. If the URL `u` is null, empty or inv
 Example:
 
 ```javascript
-    /* Returns "axibase.com" */
-    getURLHost('https://axibase.com/en/products?type=database&status=1')
+    /* Returns "example.org" */
+    getURLHost('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLPort`
@@ -175,7 +175,7 @@ Example:
 
 ```javascript
     /* Returns 443 */
-    getURLPort('https://axibase.com/en/products?type=database&status=1')
+    getURLPort('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLProtocol`
@@ -190,7 +190,7 @@ Example:
 
 ```javascript
     /* Returns "https" */
-    getURLProtocol('https://axibase.com/en/products?type=database&status=1')
+    getURLProtocol('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLPath`
@@ -205,7 +205,7 @@ Example:
 
 ```javascript
     /* Returns "/en/products" */
-    getURLPath('https://axibase.com/en/products?type=database&status=1')
+    getURLPath('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLQuery`
@@ -220,7 +220,7 @@ Example:
 
 ```javascript
     /* Returns "type=database&status=1" */
-    getURLQuery('https://axibase.com/en/products?type=database&status=1')
+    getURLQuery('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLUserInfo`
@@ -235,8 +235,8 @@ Example:
 
 ```javascript
     /* Returns null */
-    getURLUserInfo('https://axibase.com/en/products?type=database&status=1')
+    getURLUserInfo('https://example.org/en/products?type=database&status=1')
 
     /* Returns "atsd_user:atsd_password" */
-    getURLUserInfo('https://atsd_user:atsd_password@axibase.com/en/products?type=database&status=1')
+    getURLUserInfo('https://atsd_user:atsd_password@example.org/en/products?type=database&status=1')
 ```
