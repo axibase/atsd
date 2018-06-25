@@ -248,9 +248,9 @@ Load forecasts data by setting `data-type = forecast` in the `[series]` section.
 
 |Name|Example|Description|Example|
 |---|---|---|---|
-|data-type|`data-type = forecast`|Data type for the current series.<br>Possible values: historical, forecast, forecast_deviation, lower_confidence, upper_confidence.|[View](https://apps.axibase.com/chartlab/f80b8e53)|
+|data-type|`data-type = forecast`|Data type for the current series.<br>Allowed values: `history`, `forecast`, `forecast_deviation`, `lower_confidence`, `upper_confidence`.|[View](https://apps.axibase.com/chartlab/f80b8e53)|
 |forecast-name|`forecast-name = hw5`|Unique identifier of the forecast.<br>Useful when creating multiple forecasts for the same series.<br>If no forecast name is set, the default forecast is loaded.|[View](https://apps.axibase.com/chartlab/92b7e471/3/)|
 |style|`style = stroke-dasharray: none;`|Remove dashes from forecast line on the chart.|[View](https://apps.axibase.com/chartlab/92b7e471/4/)|
 |value|`value = (1 - forecast('free') / forecast('total')) * 100`|Returns forecast for the underlying series.|[View](https://apps.axibase.com/chartlab/da03b8a5/11/)|
-|load-future-data|`load-future-data = true`|Load future series values.<br>Usually used to view imported forecasts generated with 3rd party tools, such as R Language.<br>Possible values: `true`, `false`.|[View](https://apps.axibase.com/chartlab/87c197be)|
+|load-future-data|`load-future-data = true`|Load future series values.<br>Usually used to view imported forecasts generated with 3rd party tools, such as R Language.<br>Allowed values: `true`, `false`.|[View](https://apps.axibase.com/chartlab/87c197be)|
 |forecast-style|`forecast-style = stroke: magenta;`|CSS styles applied to forecasts in column and column-stack modes.|[View](https://apps.axibase.com/chartlab/37c39d18/3/)|
