@@ -203,3 +203,56 @@ The rule is configured to calculate a derived metric for the same entity. The de
 ```
 
 ![](./images/system-command-derived.png)
+
+### Environment Variables
+
+#### Description
+
+Example of access to rule window through environment variables.
+
+#### Bash Script
+
+```sh
+#!/usr/bin/env bash
+loc=$(awk 'BEGIN {print ENVIRON["tags.location"]}')
+dc=$(awk 'BEGIN {print ENVIRON["tags.data-center"]}')
+echo "${rule} alert for ${entity} in ${dc}, ${loc}"
+echo "Series tags:"
+printenv | grep "^tags\."
+```
+
+#### Path
+
+```sh
+    /home/axibase/print_alert.sh
+```
+
+#### Python Script
+
+```python
+#!/usr/bin/env python
+import os
+from collections import OrderedDict
+
+rule, entity, dc, location = [os.getenv(key) for key in ("rule", "entity", "tags.data-center", "tags.location")]
+print("{} alert for {} in {}, {}".format(rule, entity, dc, location))
+tags = OrderedDict((k, v) for k, v in os.environ.items() if k.startswith("tags."))
+print("Series tags:\n" + "\n".join("{}={}".format(k, v) for k, v in tags.items()))
+```
+
+#### Path
+
+```sh
+    /home/axibase/print_alert.py
+```
+
+#### Output Log
+
+```txt
+High Temperature alert for nurswg001 in DC12, SVG
+Series tags:
+tags.data-center=DC12
+tags.location=SVG
+```
+
+![](./images/system-command-env-vars.png)
