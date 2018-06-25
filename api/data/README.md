@@ -258,14 +258,14 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/v
 | **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
 | [Get](../meta/replacement-table/get.md) | `GET` `/replacement-tables/csv/{name}` <br>Retrieves replacement table keys and values in CSV format and metadata in `Link` header. |
-| [Get](../meta/replacement-tableget.md) | `GET` `/replacement-tables/json/{name}`<br>Retrieves replacement table keys, values, and metadata in JSON format. |
-| [List](../meta/replacement-tablelist.md) | `GET` `/replacement-tables/csv` <br>Retrieves list of replacement table names in CSV format. |
-| [List](../meta/replacement-tablelist.md) | `GET` `/replacement-tables/json` <br> Retrieves list of replacement table names in JSON format. |
-| [Update](../meta/replacement-tableupdate.md) | `PATCH` `/replacement-tables/csv/{name}`<br>Updates values for existing keys or create new records from CSV file. |
-| [Update](../meta/replacement-tableupdate.md) | `PATCH` `/replacement-tables/json/{name}` <br>Updates replacement table and metadata from JSON document. |
-| [Create or Replace](../meta/replacement-tablecreate-or-replace.md) | `PUT` `/replacement-tables/csv/{name}` <br>Creates a replacement table with specified records or replace if exists. |
-| [Create or Replace](../meta/replacement-tablecreate-or-replace.md) | `PUT` `/replacement-tables/json/{name}` <br>Creates a replacement table with specified records and metadata, or replace if table already exists. |
-| [Delete](../meta/replacement-tabledelete.md) | `DELETE` `/replacement-tables/{name}` <br>Deletes specified replacement table. |
+| [Get](../meta/replacement-table/get.md) | `GET` `/replacement-tables/json/{name}`<br>Retrieves replacement table keys, values, and metadata in JSON format. |
+| [List](../meta/replacement-table/list.md) | `GET` `/replacement-tables/csv` <br>Retrieves list of replacement table names in CSV format. |
+| [List](../meta/replacement-table/list.md) | `GET` `/replacement-tables/json` <br> Retrieves list of replacement table names in JSON format. |
+| [Update](../meta/replacement-table/update.md) | `PATCH` `/replacement-tables/csv/{name}`<br>Updates values for existing keys or create new records from CSV file. |
+| [Update](../meta/replacement-table/update.md) | `PATCH` `/replacement-tables/json/{name}` <br>Updates replacement table and metadata from JSON document. |
+| [Create or Replace](../meta/replacement-table/create-or-replace.md) | `PUT` `/replacement-tables/csv/{name}` <br>Creates a replacement table with specified records or replace if exists. |
+| [Create or Replace](../meta/replacement-table/create-or-replace.md) | `PUT` `/replacement-tables/json/{name}` <br>Creates a replacement table with specified records and metadata, or replace if table already exists. |
+| [Delete](../meta/replacement-table/delete.md) | `DELETE` `/replacement-tables/{name}` <br>Deletes specified replacement table. |
 
 ### Miscellaneous
 

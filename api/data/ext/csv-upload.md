@@ -14,7 +14,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 * Maximum file size is **1 gigabyte**.
 
-> If the input file is larger than 1 GB, consider compressing it so that its size is within the threshold or splitting it into multiple smaller files, uploaded separately.
+> If the input file is larger than 1 GB, consider to compress it to reduce size to the threshold or splitting it into multiple smaller files, uploaded separately.
 
 ## Date Limits
 

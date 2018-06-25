@@ -6,7 +6,7 @@ Deletes the specified replacement table.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `DELETE` | `/api/v1/replacement-tables/{name}` | `application/json` |
 
