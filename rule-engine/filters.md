@@ -98,7 +98,7 @@ entity.tags.environment != 'test' && message NOT IN collection('linux-ignore-com
 
 ## Entity Filter
 
-The filter discards commands for an entity not equal to one of entities specified in the rule. The filter is applied only if the list of selected entities is not empty.
+To restrict the rule to specific entities, enter an entity name or a name pattern containing wildcards. Multiple entity names or patterns can be enumerated using whitespace as a separator. The filter is applied only if any entity or entity pattern is specified.
 
 ![](./images/filter-entity.png)
 
