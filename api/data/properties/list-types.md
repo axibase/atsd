@@ -1,4 +1,4 @@
-# Properties: Type Query
+# Properties: List Types
 
 ## Description
 
