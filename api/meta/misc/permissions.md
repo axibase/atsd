@@ -8,7 +8,7 @@ Retrieves access [permissions](../../../administration/user-authorization.md) fo
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/permissions` |
+| `GET` | `/api/v1/permissions` |
 
 ## Response
 

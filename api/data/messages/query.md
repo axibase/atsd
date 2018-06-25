@@ -6,9 +6,9 @@ Retrieves message records for the specified filters.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/messages/query` | `application/json` |
+| `POST` | `/api/v1/messages/query` | `application/json` |
 
 ### Parameters
 

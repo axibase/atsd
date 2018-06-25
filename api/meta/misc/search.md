@@ -10,7 +10,7 @@ Refer to [expression reference](../../../search/README.md) for syntax, available
 
 | **Method** | **Path**         |
 | :--------- | :--------------- |
-| GET        | `/api/v1/search` |
+| `GET`        | `/api/v1/search` |
 
 ### Query Parameters
 
