@@ -103,7 +103,7 @@ Open **Entities** tab in the main menu and search for `br-1905`. The search box 
 
 ![](./resources/entity-search.png)
 
-Open the entity editor which allows you to describe entities using custom tags that are specific for the given domain (industry).
+Open the **Entity Editor** which allows you to describe entities using custom tags that are specific for the given domain (industry).
 
 Set **Label** to `BR-1905`, time zone to `US/Pacific` and set some custom tags:
 

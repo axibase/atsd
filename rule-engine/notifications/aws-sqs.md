@@ -33,14 +33,14 @@ The default message template uses the JSON format and includes all fields, inclu
 
 ## Response
 
-The response status code and response content is recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
 ## Configure AWS SQS Notification
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SQS` type.
-* Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
-* Enter the `Queue Path`.
+* Fill out the **Name**, **Region**, **Access Key Id**, and **Secret Access Key** fields.
+* Enter the **Queue Path**.
 
   ![](./images/aws_sqs_config.png)
 

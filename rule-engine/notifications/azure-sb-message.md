@@ -25,21 +25,21 @@ Enter a name and specify the following parameters:
 | Path Parameters | `timeout=60` |
 | Message | `<MESSAGE_TEXT>`|
 
-Enter the Azure key name into the `Key Name` field and the primary key into the `Primary Key` field.
+Enter the Azure key name into the **Key Name** field and the primary key into the **Primary Key** field.
 
-Modify the `Service Bus Namespace` by replacing the `<SERVICE_BUS_NAMESPACE>` value with your namespace, for example:
+Modify the **Service Bus Namespace** by replacing the `<SERVICE_BUS_NAMESPACE>` value with your namespace, for example:
 
 ```txt
 atsd-test
 ```
 
-Modify the `Queue/Topic` by replacing the `<QUEUE>` value with your queue name, for example:
+Modify the **Queue/Topic** by replacing the `<QUEUE>` value with your queue name, for example:
 
 ```txt
 alert-queue
 ```
 
-Modify the `Message` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
+Modify the **Message** by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 
 ```json
 {

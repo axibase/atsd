@@ -27,13 +27,13 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Action | `SendMessage`|
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SQS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region), for example:
+Modify the **Endpoint URL** by replacing the `<AWS_REGION>` value with your [Amazon SQS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region), for example:
 
 ```elm
 https://sqs.us-east-1.amazonaws.com
 ```
 
-Enter the AWS key id into the `Access Key Id` field and the secret key into the `Secret Access Key` field.
+Enter the AWS key id into the **Access Key Id** field and the secret key into the **Secret Access Key** field.
 
 Add required parameters for `SendMessage` action:
 
@@ -42,7 +42,7 @@ Add required parameters for `SendMessage` action:
 | `MessageBody` | `<MESSAGE_TEXT>` |
 | `QueueUrl` | `<AWS_SQS_QUEUE_URL>` |
 
-Modify the `MessageBody` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
+Modify **MessageBody** by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 
 ```json
 {

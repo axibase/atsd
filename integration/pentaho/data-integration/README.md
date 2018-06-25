@@ -33,7 +33,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 ## Configure Database Connection
 
 * Create new **Transformation** by selecting **File > New > Transformation**
-* Open `View` pane:
+* Open **View** pane:
 
 ![](./resources/view_pane.png)
 
@@ -121,10 +121,10 @@ ORDER BY datetime, tags.category
 
 Since the `Weights` are available for only one year, assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
-* Open the `Design` pane.
-* Locate `Join Rows (cartesian product)` in `Joins` category.
-* Drag and drop it to the `Transformation` pane.
-* Connect your `Join Rows (cartesian product)` with `Datetimes` and `Weights` using `Input Connection` button. That button is displayed when the mouse hovers over `Join Rows` or any item inside the `Transformation` pane.
+* Open the **Design** pane.
+* Locate **Join Rows (cartesian product)** in **Joins** category.
+* Drag and drop it to the **Transformation** pane.
+* Connect your **Join Rows (cartesian product)** with **Datetimes** and **Weights** using **Input Connection** button. That button is displayed when the mouse hovers over **Join Rows** or any item inside the **Transformation** pane.
 
 ![](./resources/connections.png)
 
@@ -144,7 +144,7 @@ Diagram example:
 
 In this step you append two tables to perform calculations on one table. This table has a unique row identifier (pair `datetime - tags.category`) so we can join them with the INNER JOIN operation.
 
-* Open the `Design` pane and find `Merge Join` in the `Joins` category. Drag and drop it to the `Transformation` pane
+* Open the **Design** pane and find `Merge Join` in the `Joins` category. Drag and drop it to the **Transformation** pane
 * Connect `Merge Join` to `Join Rows (cartesian product)` and choose **Right hand side stream of the join**
 * Connect `Merge Join` to `Prices` and choose **Left hand side stream of the join**
 * Configure `Merge Join` as shown in the screenshot below:
@@ -162,9 +162,9 @@ Diagram example:
 
 ### Remove Redundant Columns
 
-* Open the `Design` pane.
+* Open the **Design** pane.
 * Locate the `Select values` option in the `Transform` category.
-* Drag and drop it to `Transformation` pane.
+* Drag and drop it to **Transformation** pane.
 * Connect `Select values` to `Merge Join`.
 * Configure `Select values` as shown in the screenshot below:
 
@@ -180,8 +180,8 @@ Preview of `Remove columns`:
 
 Multiply two columns element-wise:
 
-* Open the `Design` pane.
-* Find `Calculator` in `Transform` category. Drag and drop it to the `Transformation` pane.
+* Open the **Design** pane.
+* Find `Calculator` in `Transform` category. Drag and drop it to the **Transformation** pane.
 * Connect `Calculator` to `Remove columns`.
 * Configure `Calculator` as shown in the screenshot below:
 
@@ -197,8 +197,8 @@ Multiply two columns element-wise:
 
 > This column is required for element-by-element division.
 
-* Open the `Design` pane.
-* Locate `Add constants` in `Transform` category. Drag and drop it to the `Transformation` pane.
+* Open the **Design** pane.
+* Locate `Add constants` in `Transform` category. Drag and drop it to the **Transformation** pane.
 * Connect `Add constants` to `Price * Weight`.
 * Configure `Add constants` as shown in the screenshot below:
 
@@ -214,8 +214,8 @@ Constant Column Preview:
 
 Add a new column that has `Price * Weight` divided by 1000 due to the fact that weights are stored proportional to 1000.
 
-* Open the `Design` pane.
-* Find `Calculator` in the `Transform` category. Drag and drop it to the `Transformation` pane.
+* Open the **Design** pane.
+* Find `Calculator` in the `Transform` category. Drag and drop it to the **Transformation** pane.
 * Connect the `Calculator` step to `1000` step.
 * Configure the `Calculator` as shown in the screenshot below:
 
@@ -231,8 +231,8 @@ Division preview:
 
 Group rows by `datetime` and sum weighted price values for each year.
 
-* Open the `Design` pane.
-* Locate `Group by` in the`Statistics` category. Drag and drop it to `Transformation` pane.
+* Open the **Design** pane.
+* Locate `Group by` in the`Statistics` category. Drag and drop it to **Transformation** pane.
 * Connect `Group by` step to `/1000` step.
 * Configure `Group by` as shown in the screenshot below:
 
@@ -248,8 +248,8 @@ Group rows by `datetime` and sum weighted price values for each year.
 
 The entity column is required to store computed metrics back in ATSD.
 
-* Open the `Design` pane.
-* Locate `Add constants` in the `Transform` category. Drag and drop it to the `Transformation` pane.
+* Open the **Design** pane.
+* Locate `Add constants` in the `Transform` category. Drag and drop it to the **Transformation** pane.
 * Connect `Add constants` step to `Group by` step.
 * Configure `Add constants` as shown in the screenshot below:
 
@@ -263,8 +263,8 @@ The entity column is required to store computed metrics back in ATSD.
 
 ### Store Derived Series in ATSD
 
-* Open the `Design` pane.
-* Locate `Table output` in the `Output` category. Drag and drop it to `Transformation` pane.
+* Open the **Design** pane.
+* Locate `Table output` in the `Output` category. Drag and drop it to **Transformation** pane.
 * Connect `Table output` to `Entity`.
 * Configure `Table output` as shown in the screenshot below.
 

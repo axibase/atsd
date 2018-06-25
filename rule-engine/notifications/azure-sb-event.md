@@ -25,21 +25,21 @@ Enter a name and specify the following parameters:
 | Path Parameters | `timeout=60&api-version=2014-01` |
 | Message | `<MESSAGE_TEXT>`|
 
-Enter the Azure key name into the `Key Name` field and the primary key into the `Primary Key` field.
+Enter the Azure key name into the **Key Name** field and the primary key into the **Primary Key** field.
 
-Modify the `Service Bus Namespace` by replacing the `<EVENT_HUB_NAMESPACE>` value with your namespace, for example:
+Modify the **Service Bus Namespace** by replacing the `<EVENT_HUB_NAMESPACE>` value with your namespace, for example:
 
 ```txt
 atsd-events
 ```
 
-Modify the `Queue/Topic` by replacing the `<EVENT_HUB>` value with your hub name, for example:
+Modify the **Queue/Topic** by replacing the `<EVENT_HUB>` value with your hub name, for example:
 
 ```txt
 alert-hub
 ```
 
-Modify the `Message` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
+Modify the **Message** by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 
 ```json
 {

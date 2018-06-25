@@ -22,7 +22,7 @@ echo -e "entity e:br-1905 t:serial_number=N12002" \
   > /dev/tcp/atsd_hostname/8081
 ```
 
-Reload the **Series Statistics** page and the entity editor to verify that the temperature sample is received and the entity tag `series_number` is set by the database.
+Reload the **Series Statistics** page and the **Entity Editor** to verify that the temperature sample is received and the entity tag `series_number` is set by the database.
 
 ![](./resources/network-entity-command.png)
 

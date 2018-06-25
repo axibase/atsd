@@ -9,7 +9,7 @@
 | 3816 | UI          | Bug     | Fixed ordering of timestamps on the Interval tab on the **Series Statistics** page. Intervals smaller than the median minus standard deviation are now not displayed. |
 | 3813 | UI          | Bug     | Fixed `series not found` issue when displaying series with multiple tags on the **Series Statistics** page. |
 | 3808 | metric      | Bug     | Corrected a defect where an incorrect `NaN` count is shown on the **Series Statistics** page. |
-| [3742](#issue-3742) | UI          | Feature | Added a `Text Column` button to the UI Export form. |
+| [3742](#issue-3742) | UI          | Feature | Added a **Text Column** button to the UI Export form. |
 
 ## Collector
 
