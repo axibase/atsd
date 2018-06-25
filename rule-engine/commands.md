@@ -214,11 +214,15 @@ Example of access to rule window through environment variables.
 
 ```sh
 #!/usr/bin/env bash
+echo "entity=${entity}"
+# to access environment variables that can contain special characters, use following syntax:
 loc=$(awk 'BEGIN {print ENVIRON["tags.location"]}')
 dc=$(awk 'BEGIN {print ENVIRON["tags.data-center"]}')
-echo "${rule} alert for ${entity} in ${dc}, ${loc}"
-echo "Series tags:"
-printenv | grep "^tags\."
+echo "location=${loc}"
+echo "data center=${dc}"
+echo
+echo "Environment:"
+printenv | sort
 ```
 
 #### Path
@@ -232,12 +236,15 @@ printenv | grep "^tags\."
 ```python
 #!/usr/bin/env python
 import os
-from collections import OrderedDict
 
-rule, entity, dc, location = [os.getenv(key) for key in ("rule", "entity", "tags.data-center", "tags.location")]
-print("{} alert for {} in {}, {}".format(rule, entity, dc, location))
-tags = OrderedDict((k, v) for k, v in os.environ.items() if k.startswith("tags."))
-print("Series tags:\n" + "\n".join("{}={}".format(k, v) for k, v in tags.items()))
+print("entity={}".format(os.getenv("entity")))
+print("location={}".format(os.getenv("tags.location")))
+print("data center={}".format(os.getenv("tags.data-center")))
+
+print("\nEnvironment:")
+for key, value in sorted(os.environ.items()):
+    print("{}={}".format(key, value))
+
 ```
 
 #### Path
@@ -249,10 +256,57 @@ print("Series tags:\n" + "\n".join("{}={}".format(k, v) for k, v in tags.items()
 #### Output Log
 
 ```txt
-High Temperature alert for nurswg001 in DC12, SVG
-Series tags:
+entity=nursvg001
+location=SVG
+data center=DC12
+Environment:
+HOME=/home/axibase
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+JAVA_MAIN_CLASS_12094=com.axibase.tsd.Server
+LC_CTYPE=en_US.UTF-8
+LOGNAME=axibase
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+PWD=/opt/atsd/atsd/conf/script
+SHELL=/bin/bash
+SHLVL=1
+TMPDIR=/tmp
+USER=axibase
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+_=/usr/bin/printenv
+alert_duration=00:00:10:49
+alert_duration_interval=10m:49s
+alert_message=${scriptOut('./print_alert.sh', [])}
+alert_open_datetime=2018-06-25T17:16:40Z
+alert_open_time=2018-06-25 17:16:40
+alert_type=REPEAT
+entity=test
+event_datetime=2018-06-25T17:27:29Z
+event_time=2018-06-25 17:27:29
+expression=true
+message=
+metric=test_vars
+min_interval_expired=
+open_value=10
+properties=
+received_datetime=2018-06-25T17:27:29Z
+received_time=2018-06-25 17:27:29
+repeat_count=1
+repeat_interval=649
+rule=test
+rule_expression=true
+rule_filter=
+rule_name=test
+rvm_loaded_flag=1
+schedule=
+severity=warning
+status=REPEAT
 tags.data-center=DC12
 tags.location=SVG
+value=10.0
+window=length(1)
+window_first_datetime=2018-06-25T17:27:29Z
+window_first_time=2018-06-25 17:27:29
 ```
 
 ![](./images/system-command-env-vars.png)
