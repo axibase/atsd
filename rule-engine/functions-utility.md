@@ -93,12 +93,12 @@ null | 0
 [] | NaN
 0 | 0
 1 | 1
-'0' | 0
-'1' | 1
-'1L' | 1 (Long)
-'1.0' | 1.0 (Float)
-'1.0f' | 1.0 (Float)
-'1.0d' | 1.0 (Double)
+"0" | 0
+"1" | 1
+"1L" | 1 (Long)
+"1.0" | 1.0 (Float)
+"1.0f" | 1.0 (Float)
+"1.0d" | 1.0 (Double)
 
 ## `printObject`
 
