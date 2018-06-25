@@ -95,7 +95,7 @@ FROM 'ba:active.1'
 
 ### Issue 3763
 
-Previously, the [`SELECT 1`](../../sql/api.md#connection-query) validation query did not return any rows except the header.
+Previously, the [`SELECT 1`](../../sql/api.md#connection-query) validation query returned no rows except header.
 
 ```ls
 | 1 |

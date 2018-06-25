@@ -171,7 +171,7 @@ The response contains an array of series objects, each containing series identif
 
 ### Value Object
 
-* The value object contains a sample time and a numeric (`v` field) and/or text (`x` field) value.
+* The value object contains a sample time and a numeric (`v` field) or text (`x` field) value.
 * The sample time can be specified in Unix milliseconds (`t` field) or ISO format (`d` field).
 
 |**Name**|**Type**|**Description**|
@@ -222,7 +222,7 @@ POST /api/v1/series/query
 }]
 ```
 
-### `curl` Example
+### curl Example
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \

@@ -32,7 +32,7 @@ Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that 
 
 Enter an existing authorization token in `Authorization` header or create a new one.
 
-#### Create Authorization Token with `curl`
+#### Create Authorization Token with curl
 
 Execute the [`Create a new authorization`](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) command. Replace the `<GITHUB_USER>` field with your github user name.
 

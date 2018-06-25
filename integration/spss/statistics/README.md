@@ -133,7 +133,7 @@ Merge the two datasets by adding the `weight` column from the `weights.sav` data
 
 * Open **Data > Merge Files... > Add Variables...**
 * Select `weights.sav` dataset.
-* Check 'Match cases on key variables'.
+* Check **Match cases on key variables**.
 * Select `time` in the **New Active Dataset** pane, add to **Key Variables** Pane.
 
   ![](./images/merge_editor.png)

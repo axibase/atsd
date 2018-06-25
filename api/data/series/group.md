@@ -5,7 +5,7 @@ Groups multiple input series into one series and applies a statistical function 
 The group process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
-1. a. Group multiple series if `period` is specified in the query.<br>Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
+1. a. Group multiple series if `period` is specified in the query.<br>Split each series `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
 1. b. Group multiple series if `period` is not specified.<br> Multiple series samples are grouped at all unique timestamps in the input series. Each group has an ordered list of pairs: `[timestamp | samples of several series with given timestamp]`.
 1. Interpolate grouped series according to the `interpolate` field.
 1. Truncate grouped series if `truncate` field is `true`.

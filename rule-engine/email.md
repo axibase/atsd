@@ -45,7 +45,7 @@ Both fields can include any text as well as [placeholders](placeholders.md) to c
 Warning! Rule ${rule} for server ${entity} is active.
 ```
 
-The [placeholders](placeholders.md), escaped with `$` and wrapped in curly brackets such as `${expression}`, are evaluated and replaced with actual values when the notification is sent.
+[Placeholders](placeholders.md), escaped with `$` and wrapped in curly brackets `${expression}`, are evaluated and replaced with actual values when the notification is sent.
 
 ```bash
 Warning! Rule JVM Memory Low for server nurswgvml007 is active.

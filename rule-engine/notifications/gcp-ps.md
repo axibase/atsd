@@ -11,7 +11,7 @@
 |Project ID|The ID of the project.|
 |Topic|The name of the receiving topic.|
 |Service Account|The account that belongs to the application instead of to an individual end user. Create account as described [here](gcp-service-account-key.md#create-service-account)|
-|Private Key Alias|The alias of the imported account private key as described by [GCP Service Account Key Documentation](./gcp-service-account-key.md#import-accounts-private-key)|
+|Private Key Alias|The alias of the imported account private key as described by [GCP Service Account Key Documentation](./gcp-service-account-key.md#import-private-key)|
 |Message|Default message text.|
 
 ## Message

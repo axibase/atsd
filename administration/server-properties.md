@@ -78,7 +78,7 @@ Property | Default Value | Description
 ---|---|---
 `data.compaction.schedule` | `0 0 22 * * *` | Schedule for launching a data compaction task. The task compresses raw values into a smaller number of daily rows. |
 `delete.schedule` | `0 0 21 * * *` | Schedule for running a task to remove deleted entities, metrics, and properties. The task masks deleted data by placing **Delete** markers that hide the data from reading scans. |
-`entity.group.update.interval` | 1 minute | Interval at which entity groups with expression-based memberships are re-evaluated in order to add new entities and remove non-matching members from the group. Specify the interval in seconds, minutes, or hours.|
+`entity.group.update.interval` | 1 minute | Interval at which entity groups with expression-based memberships are re-evaluated to add new entities and remove non-matching members from the group. Specify the interval in seconds, minutes, or hours.|
 `expired.data.removal.schedule` | `0 0 1 * * *` | Schedule for running a task to automatically delete series samples for metrics with a configured retention interval. This task masks deleted data by placing **Delete** markers that hide the data from reading scans.|
 `expired.series.removal.schedule` | `0 0 2 * * *` | Schedule for running a task to automatically delete expired time series for metrics with a configured series retention interval. This task masks deleted data by placing **Delete** markers that hide the data from reading scans. |
 `hbase.compaction.schedule` | `0 0 1 * * *` | Schedule for triggering a major compaction in HBase. A major compactions removes **Delete** markers and that data is hidden. The compaction also re-writes storage files for optimal storage.|
@@ -118,7 +118,7 @@ Property | Default Value | Description
 
 Property | Default Value | Description
 ---|---|---
-`sql.metric.like.limit` | 50 | Maximum number of metrics matched by  [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd-series-table) tables. |
+`sql.metric.like.limit` | 50 | Maximum number of metrics matched by  [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd_series-table) tables. |
 `sql.tmp.storage.max_rows_in_memory` | 51,200 | Maximum number of rows to be processed in memory by [grouping](../sql/README.md#grouping) and [ordering](../sql/README.md#ordering) queries. The limit is shared by all concurrently executing queries. If a query selects more rows than remain in shared memory, the query is processed by ATSD using a temporary table which results in increased response times.|
 
 ### Cache

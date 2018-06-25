@@ -154,7 +154,7 @@ series d:2016-10-13T08:45:00Z e:sensor-1 m:temperature=NaN
 
 Text inserted with the `x:` field annotates the accompanying numeric value and is not part of the series composite key.
 
-Series tags, on the other hand, are part of each series' composite primary key.
+Series tags, on the other hand, are part of each series composite primary key.
 
 Since the total number of unique tag value identifiers is [limited](README.md#schema) to `16,777,215`, series tags are not recommended for high cardinality fields such as random values or continuously incrementing values (time, counters).
 

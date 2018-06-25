@@ -42,7 +42,7 @@ Modify the `Service Account` by replacing the `<SERVICE_ACCOUNT>` value with you
 publisher
 ```
 
-Modify the `Private Key Alias` by selecting the alias for [imported account private key](gcp-service-account-key.md#import-accounts-private-key), for example:
+Modify the `Private Key Alias` by selecting the alias for [imported account private key](gcp-service-account-key.md#import-private-key), for example:
 
 ```txt
 gcp_publisher

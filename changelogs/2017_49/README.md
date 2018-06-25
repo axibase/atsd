@@ -12,7 +12,7 @@
 | 4776 | rule engine | Feature | Extract functions from the [`db_last`](../../rule-engine/functions-series.md#db_last) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions to include in notification charts. |
 | 4775 | rule editor | Bug | Raise error on invalid syntax in [database](../../rule-engine/functions-series.md) functions. |
 | 4773 | api-rest | Bug | Series query: fix for empty response when `seriesLimit` is enforced. |
-| [4772](#issue-4772) | rule editor | Feature | Add setting 'Group by All Tags'. |
+| [4772](#issue-4772) | rule editor | Feature | Add setting **Group by All Tags**. |
 | 4767 | rule engine | Bug | Webhooks: Timeout waiting for connection from pool on CircleCI. |
 | [4765](#issue-4765) | rule engine | Feature | Implement [derived](../../rule-engine/derived.md) commands. |
 | 4757 | rule engine | Bug | Remove excessive rounding in variables. |

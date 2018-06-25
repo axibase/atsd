@@ -30,7 +30,7 @@ guides.](../installation/README.md "ATSD Install Guides")
 
 ## Installation
 
-**MASTER & SLAVE: execute these steps on both machines
+**MASTER & SLAVE: Complete this process on both machines
 – master and slave.**
 
 Stop ATSD and all components:
@@ -80,7 +80,7 @@ Add the `hbase.replication` property to the `configuration` tag in the
 </property>
 ```
 
-**SLAVE: Only execute these steps on the slave
+**SLAVE: Only complete this process on the slave
 machine.**
 
 Edit the `atsd-all.sh` file to disable ATSD startup:
@@ -133,7 +133,7 @@ The output contains a list of ATSD tables, all starting with `atsd_`:
 
 ![](./images/atsd_tables.png "atsd_tables")
 
-**MASTER: Only execute these steps on the
+**MASTER: Only complete this process on the
 master machine.**
 
 Start Hadoop and HBase:
@@ -193,7 +193,7 @@ Output contains a list of ATSD tables, all starting with `atsd_`.
 
 New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as follows:
 
-> MASTER: Only execute these steps on the master machine.
+> MASTER: Only complete this process on the master machine.
 
 Write the table schema to a file:
 
@@ -207,7 +207,7 @@ Copy table schema file to the slave machine:
 scp atsd_new_schema.txt atsd_slave:/tmp
 ```
 
-> SLAVE: Only execute these steps on the slave machine.
+> SLAVE: Only complete this process on the slave machine.
 
 Create the new table in the slave database:
 
@@ -215,7 +215,7 @@ Create the new table in the slave database:
 /opt/atsd/hbase/bin/hbase shell < /tmp/atsd_new_schema.txt
 ```
 
-> MASTER: Only execute these steps on the master machine.
+> MASTER: Only complete this process on the master machine.
 
 Enable replication for the new table:
 
@@ -230,7 +230,7 @@ instructions below.
 
 ### Option 1
 
-> SLAVE: Only execute these steps on the slave machine.
+> SLAVE: Only complete this process on the slave machine.
 
 Check HBase logs for replication activity:
 
@@ -253,7 +253,7 @@ The output contains replication activity and the of amount tables replicated on 
 
 ### Option 2
 
-> MASTER: Only execute these steps on the master machine.
+> MASTER: Only complete this process on the master machine.
 
 Open ATSD web interface and navigate to the **Alert > Rules** page.
 
@@ -281,7 +281,7 @@ Output:
 
 ![](./images/atsd_rule_table_scan1.png)
 
-> SLAVE: Only execute these steps on the slave machine.
+> SLAVE: Only complete this process on the slave machine.
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:

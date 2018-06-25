@@ -1621,7 +1621,7 @@ HAVING AVG(value) > 10 OR MAX(value) > 90
 
 Partitioning is implemented with the `ROW_NUMBER` function, which returns the sequential number of a row within a partition, starting with 1 for the first row in each partition.
 
-A partition is a subset of all rows within the result set, grouped by an entity and/or series tags. Each row in the result set can belong to only one partition.
+A partition is a subset of all rows within the result set, grouped by an entity or series tags. Each row in the result set can belong to only one partition.
 
 For example, a result set partitioned by entity and ordered by time has the following row numbers:
 
@@ -2208,7 +2208,7 @@ WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:
   AND t1.entity = 'nurswgvml006'
 ```
 
-`FULL OUTER JOIN` on detailed records, without period aggregation, produces rows with `NULL` columns for series that did not record any value at the specified time.
+`FULL OUTER JOIN` on detailed records, without period aggregation, produces rows with `NULL` columns for series with any recorded value at the specified time.
 
 ```ls
 | t1.datetime          | t1.entity    | cpu  | t2.datetime          | t2.entity    | mem   |

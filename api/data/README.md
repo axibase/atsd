@@ -58,7 +58,7 @@ Clients can send compressed payload by adding the **Content-Encoding: gzip** hea
 #### Data API Authorization
 
 * The user must have the [**API_DATA_READ**/**API_DATA_WRITE**](../../administration/user-authorization.md#api-roles) role when making requests to `Data API` endpoints.
-* The user must have read/write [**entity permission**](../../administration/user-authorization.md#entity-permissions) for the entities specified in the request and/or returned in the results.
+* The user must have read/write [**entity permission**](../../administration/user-authorization.md#entity-permissions) for the entities specified in the request and returned in the results.
 
 #### Meta API Authorization
 

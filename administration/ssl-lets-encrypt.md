@@ -100,7 +100,7 @@ sudo certbot --preferred-challenges dns --manual certonly
 ```txt
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator manual, Installer None
-Please enter in your domain name(s) (comma and/or space separated)  (Enter 'c'
+Please enter in your domain name(s) (comma or space separated)  (Enter 'c'
 to cancel): atsd.example.org
 Cert not yet due for renewal
 

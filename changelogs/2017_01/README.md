@@ -102,7 +102,7 @@ GROUP BY date_format(time, 'u')
 
 ### Issue 3741
 
-[`JOIN USING ENTITY`](../../sql/README.md#join-syntax) did not merge rows as expected for tag names with the same names but different values. For example, the same tag `tag1` with different values `a` and `b`.
+Rows not merged as expected for tag names with the same names but different values by [`JOIN USING ENTITY`](../../sql/README.md#join-syntax). For example, the same tag `tag1` with different values `a` and `b`.
 
 ```ls
 series d:2016-12-23T00:00:00.000Z e:e1 m:m3=1 t:tag1=a
@@ -238,7 +238,7 @@ FROM pipoint..pipoint2
 
 ### Issue 3754
 
-Fixed an issue which did not create columns for series with a statistic and wildcard match: [ChartLab](https://apps.axibase.com/chartlab/506da7c3)
+Columns not created for series with a statistic and wildcard match: [ChartLab](https://apps.axibase.com/chartlab/506da7c3)
 
 ### Issue 3654
 

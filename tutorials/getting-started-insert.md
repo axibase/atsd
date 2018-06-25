@@ -10,7 +10,7 @@ In the previous section you inserted data manually, using the built-in web inter
 command_name field_prefix:[field_name=]field_value
 ```
 
-Open command prompt and send the following commands into the database.
+Open command prompt and send these commands into the database.
 
 ```bash
 echo -e "series e:br-1905 m:temperature=25" \

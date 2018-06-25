@@ -16,7 +16,7 @@ AIX systems have `nmon` installed by default.
 
 ## nmon Resources
 
-* [IBM](https://www.ibm.com/developerworks/aix/library/au-analyze_aix/)
+* [IBM](https://www.ibm.com/developerworks/aix/library/au-nmon_analyser/index.html)
 * [`nmon` SourceForge](http://nmon.sourceforge.net/pmwiki.php?n=Main.HomePage)
 
 ### Install nmon

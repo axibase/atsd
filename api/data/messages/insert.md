@@ -80,7 +80,7 @@ POST /api/v1/messages/insert
 ]
 ```
 
-#### `curl`
+#### curl
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/messages/insert \

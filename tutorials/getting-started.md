@@ -54,7 +54,7 @@ Click **Statistics** `∑` icon to view summary information about the series.
 
 ## Insert Initial Data
 
-To populate the database with some initial temperature readings, open the **Commands** tab and submit the following commands created using loops.
+To populate the database with some initial temperature readings, open the **Commands** tab and submit these commands, created using loops.
 
 ```ls
 <#list 1..20 as i>
