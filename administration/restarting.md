@@ -22,7 +22,7 @@ The scripts are located in the `/opt/atsd/bin` directory.
 | `/opt/atsd/bin/atsd-tsd.sh` | Start, stop, and get status of ATSD. | start, stop, status |
 | `/opt/atsd/bin/atsd-hbase.sh` | Start, stop, and get status of HBase. | start, stop, status  |
 | `/opt/atsd/bin/atsd-dfs.sh` | Start, stop, and get status of HDFS. | start, stop, status  |
-| `/opt/atsd/bin/update.sh` | [Update ATSD](update.md) in interactive mode.<br>`-t` - Upgrade and restart ATSD.<br>`-a` - Upgrade and restart ATSD, HBase, and HDFS.| -a, -t  |
+| `/opt/atsd/bin/update.sh` | [Update ATSD](update.md) in interactive mode.<br>`-t` Upgrade and restart ATSD.<br>`-a` Upgrade and restart ATSD, HBase, and HDFS.| -a, -t  |
 
 Examples
 
@@ -200,7 +200,7 @@ echo "rmr /hbase" | /opt/atsd/hbase/bin/hbase zkcli
 
 ### Zookeeper Inconsistency
 
-If HBase fails to start, check if the HBase master log contains the __Master not active__ error:
+If HBase fails to start, check if the HBase master log contains the **Master not active** error:
 
 ```sh
 cat /opt/atsd/hbase/logs/hbase-*-master-*.log | grep -C 5 "Master not active"

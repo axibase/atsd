@@ -5,7 +5,7 @@
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
 | 3710     | install         | Feature         | Added support for an embedded collector account with `All Entities: Read` and `All Entities: Write` permission.                                      |
-| [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile was specified in denominator.                              |
+| [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile is specified in denominator.                              |
 | [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.                          |
 | [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
 | [3325](#issue-3325)     | sql             | Bug             | Allowed for columns other than `value` and `*` in the `COUNT` function.                                  |
@@ -148,7 +148,7 @@ Recently added to the [`docker`](https://axibase.com/docs/axibase-collector/jobs
 ![Figure 1](./Figure1.png)
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
-that executed short-term tasks and were removed with the `docker rm` command. Containers with a `deleted` status are initially retained in ATSD for the specified time interval (for
+that executed short-term tasks before being removed with the `docker rm` command. Containers with a `deleted` status are initially retained in ATSD for the specified time interval (for
 example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
 
 ![Figure 2](./Figure2.png)

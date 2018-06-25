@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following tests calculate the amount of disk space required to store 10+ million `time:value` samples in a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 database.
+The following tests calculate the amount of disk space required to store 10+ million `time:value` samples in a Microsoft SQL Server 2017 (RTM) - `14.0.1000.169` database.
 
 ## Results
 
@@ -230,7 +230,7 @@ wc -l IBM_adjusted.txt
 
 ### Launch Microsoft SQL Server Database Container
 
-Start a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 container.
+Start a Microsoft SQL Server 2017 (RTM) - `14.0.1000.169` container.
 
 Start the database container with `/tmp/test` directory.
 

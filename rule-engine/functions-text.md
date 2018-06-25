@@ -4,7 +4,7 @@
 
 Text functions compare and transform strings.
 
-The functions are `null`-safe - they return `null` or `false` if one of the inputs is `null`.
+The functions are `null`-safe: they return `null` or `false` if one of the inputs is `null`.
 
 ## Reference
 

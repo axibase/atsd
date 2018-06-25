@@ -96,7 +96,7 @@ Consider the following recommendations when developing queries:
 * Avoid queries without any conditions. Apply `LIMIT` to reduce the number of rows returned.
 * Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval](README.md#interval-condition) conditions.
 * Make `WHERE` conditions narrow and specific, for example, specify a small time interval.
-* Avoid the `ORDER BY` clause since it may cause a full scan and a copy of data to a temporary table.
+* Avoid the `ORDER BY` clause since it can cause a full scan and a copy of data to a temporary table.
 * Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` does not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
 * Develop a simple query first. Adjust conditions gradually as you inspect the results. Add grouping, partitioning, and ordering to finalize the query.
 

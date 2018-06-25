@@ -9,7 +9,7 @@
 | 4644 | api-rest | Bug | Unicode patterns are not escaped in entity expressions. |
 | [4643](#issue-4643) | email | Feature | Split email notification message into multiple tables. |
 | [4635](#issue-4635) | api-rest | Feature | Add support for limits in series query with ascending order. |
-| 4632 |UI| Bug | Export page - aggregate function drop down broken. |
+| 4632 |UI| Bug | Export page: aggregate function drop down broken. |
 | 4631 | sql | Bug | Metrics not filtered if specified with `WHERE metric.name = {name}` syntax. |
 | 4629 |UI| Bug | Export page fails to display tag values when aggregator is selected. |
 | 4615 | rule-engine | Feature | Add support for `metric.label` and other `entity.*` and `metric.*` fields in the [rule engine](../../rule-engine/window-fields.md). |

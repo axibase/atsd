@@ -10,7 +10,7 @@ As with all self-signed certificates, the new certificate continues to cause a s
 
 There are two options to create and import self-signed certificates into ATSD:
 
-* [Web Interface](#user-interface)
+* [Web Interface](#web-interface)
 * [Endpoint Request](#endpoint-request)
 
 The certificates are installed without an ATSD restart.

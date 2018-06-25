@@ -31,7 +31,7 @@
 5208 | api-rest | Bug | Wildcards in tags ignored in the [metric list](../../api/meta/metric/list.md) method when entity is specified.
 5200 | rule engine | Feature | Implement [Web Query Functions](../../rule-engine/functions-web-query.md) to query external web services.
 5198 | UI | Feature | Automatically generate passwords in [Webhook User](../../api/data/messages/webhook.md#webhook-user-wizard) and [Collector User](../../administration/collector-account.md#use-wizard) wizards.
-5197 | api-rest | Feature | Incoming [webhook](../../api/data/messages/webhook.md) - default parameters simplified.
+5197 | api-rest | Feature | Incoming [webhook](../../api/data/messages/webhook.md): default parameters simplified.
 5195 | security | Bug | Server error raised when uploading [SSL certificate](../../administration/ssl-self-signed.md).
 5193 | forecast | Bug |[Forecast Calendar](../../forecasting/calendar_exceptions_testing.md#calendar) form errors.
 5188 | core | Bug | JsonFactory objects moved to JsonUtil class for performance enhancement.

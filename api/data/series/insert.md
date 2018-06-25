@@ -37,7 +37,7 @@ The request contains an array of series objects, each containing an array of tim
 
 #### Value Object
 
-* The value object contains a numeric and/or text value and the time when it was observed.
+* The value object contains a numeric or text value and the observed time.
 * The object can contain sample time in Unix milliseconds (`t` field) or ISO format (`d` field).
 * Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 millisecond from Unix time.
 * Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Unix time.

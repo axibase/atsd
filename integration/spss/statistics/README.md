@@ -259,7 +259,7 @@ The result is as follows. Click **Next**
 
 ![](./images/atsd_export12.png)
 
-* Select **ODBC** - **Row-wise binding**, select **Paste the syntax** and click **Finish**
+* Select **ODBC > Row-wise binding**, select **Paste the syntax** and click **Finish**
 
 ![](./images/atsd_export_13.png)
 

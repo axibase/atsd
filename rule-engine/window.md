@@ -20,7 +20,7 @@ Count-based windows accumulate up to the specified number of samples. Samples ar
 
 Time-based windows store samples received within the specified time interval. The number of samples in such windows is not limited.
 
-The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time passes, these windows are sometimes referred to as _sliding_ windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
+The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time passes, these windows are sometimes referred to as **sliding** windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
 
 > The **end** time in time-based windows is not set (in particular, the end of the interval is not limited by current time) and the window accepts commands with future timestamps unless they are discarded with the [Time filter](filters.md#date-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
 
@@ -71,9 +71,9 @@ When the window is in `REPEAT` status, actions can be executed with the frequenc
 
 `CANCEL` is the initial status assigned to new windows. The `CANCEL` status is also assigned to the window when the condition changes from `true` to `false` or when the window is destroyed on rule modification.
 
-Windows in `CANCEL` status do not trigger _repeat_ actions upon subsequent `false` evaluations. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
+Windows in `CANCEL` status do not trigger `repeat` actions upon subsequent `false` evaluations. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
 
-A window may assume the `CANCEL` status when the condition changes from `true` to `false` as well as when the rule is modified, deleted, or the database is orderly shutdown. `On Cancel` triggers are not invoked, even if enabled, when the rule is modified/deleted or in case of shutdown.  This behavior is controlled with `cancel.on.rule.change` server property.
+A window assumes the `CANCEL` status when the condition changes from `true` to `false` as well as when the rule is modified, deleted, or the database is orderly shutdown. `On Cancel` triggers are not invoked, even if enabled, when the rule is modified/deleted or in case of shutdown.  This behavior is controlled with `cancel.on.rule.change` server property.
 
 ## Life Cycle
 
@@ -89,10 +89,10 @@ The condition is re-evaluated each time a new matching command is added to the w
 
 To evaluate the rule on schedule, regardless of external commands, create rules based on `timer` metrics:
 
-* `timer_15s` - Command is received every 15 seconds.
-* `timer_1m` - Command is received every 1 minute.
-* `timer_15m` - Command is received every 15 minutes.
-* `timer_1h` - Command is received every 1 hour.
+* `timer_15s`: Command is received every 15 seconds.
+* `timer_1m`: Command is received every 1 minute.
+* `timer_15m`: Command is received every 15 minutes.
+* `timer_1h`: Command is received every 1 hour.
 
 The [`timer`](scheduled-rules.md) metrics are produced by the built-in database scheduler and are always available.
 

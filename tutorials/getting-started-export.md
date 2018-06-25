@@ -36,7 +36,7 @@ Select **Series > Query Detailed** template.
 
 ![](./resources/getting-started-3_3.png)
 
-Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field values accordingly. The date fields support both `ISO-8601` dates as well as [calendar](../shared/calendar.md) keywords such as `now`.
+Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field values accordingly. The date fields support both `ISO 8601` dates as well as [calendar](../shared/calendar.md) keywords such as `now`.
 
 ```json
 [{

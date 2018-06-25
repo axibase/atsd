@@ -22,7 +22,7 @@ seconds minutes hours day-of-month month day-of-week
 
 Either `0` or `7` can be used for Sunday in the `day-of-week` field.
 
-![Cron Expressions](./images/cron_expressions.png)
+![](./images/cron_expressions.png)
 
 ## Time Zone
 

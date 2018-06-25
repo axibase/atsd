@@ -66,7 +66,7 @@ Length of the count-based window, as configured.
   windowStartTime() long
 ```
 
-Time when the first command was received by the window, in Unix milliseconds.
+Time when the first command is received by the window, in Unix milliseconds.
 
 ### `milliseconds`
 

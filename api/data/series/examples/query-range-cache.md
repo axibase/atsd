@@ -4,7 +4,7 @@
 
 Retrieves last value for each series from the Last Insert Cache table.
 
-If the last value was received outside of the specified time range, no data is returned.
+If the last value is received outside of the specified time range, no data is returned.
 
 Queries for Last Insert Cache are efficient since the table contains only the last value and has fewer rows to scan.
 

@@ -1,6 +1,6 @@
 # Filter by Date
 
-## Query with ISO-8601 format
+## Query with ISO 8601 format
 
 ```sql
 SELECT datetime, value

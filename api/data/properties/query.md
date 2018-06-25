@@ -34,8 +34,8 @@ An array of query objects containing the following filtering fields:
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `type` | string | **[Required]** Property type name. <br>Use `$entity_tags` type to retrieve entity tags. |
-| `key` | object | Object with `name=value` fields, for example `"key": {"file_system": "/"}`<br>Matches records with _exact_ or _partial_ key fields based on the `exactMatch` parameter value.|
-| `exactMatch` | boolean | `key` match operator. _Exact_ match if `true`, _partial_ match if `false`.<br>Default: `false`.<br>_Exact_ match selects a record with exactly the same `key` as requested.<br>_Partial_ match selects records with `key` that contains requested fields but can also include other fields.|
+| `key` | object | Object with `name=value` fields, for example `"key": {"file_system": "/"}`<br>Matches records with **exact** or **partial** key fields based on the `exactMatch` parameter value.|
+| `exactMatch` | boolean | `key` match operator. **Exact** match if `true`, **partial** match if `false`.<br>Default: `false`.<br>**Exact** match selects a record with exactly the same `key` as requested.<br>**Partial** match selects records with `key` that contains requested fields but can also include other fields.|
 | `keyTagExpression`| string | Expression for matching properties with specified keys or tags.<br>Example: `keys.file_system LIKE '/u*'` or `tags.fs_type == 'ext4'`.<br>Use `lower()` function to ignore case, for example `lower(keys.file_system) LIKE '/u*'`|
 
 * Key values and tag values are case-sensitive.
@@ -72,7 +72,7 @@ An array of matching property objects containing the following fields:
 | `entity` |string |  Entity name. |
 | `key` | object | Object containing `name=value` fields that uniquely identify the property record. <br>Example: `{"file_system": "/","mount_point":"sda1"}`|
 | `tags` | object | Object containing `name=value` fields that are not part of the key and contain descriptive information about the property record. <br>Example: `{"fs_type": "ext4"}`. |
-| `date` | string | ISO 8601 date when the property record was last modified. |
+| `date` | string | ISO 8601 date of last modified property record. |
 
 ## Key Match Example
 

@@ -207,7 +207,7 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/s
 |:---|:---|:---|
 | `POST` | [`/command`](./ext/command.md) | Inserts data using commands in Network API via HTTP. |
 | `POST` | [`/csv`](./ext/csv-upload.md) | Accepts CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser. |
-| `POST` | [`/nmon`](./ext/nmon-upload.md) | Accepts nmon file for parsing. |
+| `POST` | [`/nmon`](./ext/nmon-upload.md) | Accepts `nmon` file for parsing. |
 
 ## Meta API Endpoints
 

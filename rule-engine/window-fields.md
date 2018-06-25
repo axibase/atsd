@@ -62,8 +62,8 @@ Each window maintains a set of continuously updated fields that can be included 
 :---|---|:---
 `alert_open_time` | Server | Time when the window changed status to `OPEN`
 `alert_open_datetime` | UTC | Time when the window changed status to `OPEN`
-`received_time` | Server | Time when the current command was received by the server
-`received_datetime` | UTC | Time when the current command was received by the server
+`received_time` | Server | Time when the current command is received by the server
+`received_datetime` | UTC | Time when the current command is received by the server
 `event_time` | Server | Time of the current command
 `event_datetime` | UTC | Time of the current command
 `window_first_time` | Server | Time of the earliest command in the window

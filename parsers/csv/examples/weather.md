@@ -75,7 +75,7 @@
 |  Put Type  |  Metric  |  The CSV file in question contains time series (metrics) weather data.  |
 |  Delimiter  |  Comma  |  A comma is used to separate columns.  |
 |  Default Entity  |  Unique entity name – Halifax  |  All data is written to this unique entity, making it easy to distinguish from others.  |
-|  Metric Prefix  |  Unique entity prefix- halifax  |  Prefix added at the start of metric name, used to distinguish between metrics with similar or identical names.  |
+|  Metric Prefix  |  Unique entity prefix `halifax`  |  Prefix added at the start of metric name, used to distinguish between metrics with similar or identical names.  |
 |  Timestamp Columns  |  Date  |  The `Date` column contains the timestamp.  |
 |  Timestamp Pattern  |  `yyyy-MM-dd`  |  Timestamp Pattern must correspond to the original timestamp in the CSV file: `2015-01-01`.  |
 |  Filter  |  `timestamp > 0`  |  Only import data that has a timestamp greater than 0 in Unix milliseconds.<br>Timestamps earlier than `1970-01-01T00:00:00Z` are not allowed.  |

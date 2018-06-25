@@ -15,8 +15,8 @@ Retrieves a list of metrics matching the specified filters.
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `expression` |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.|
-| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO-8601 date or a [calendar](../../../shared/calendar.md) expression.|
-| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO-8601 date or a [calendar](../../../shared/calendar.md) expression.|
+| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) expression.|
+| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) expression.|
 | `limit` |integer|Maximum number of metrics to retrieve, ordered by name.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
 | `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to true by default.|
@@ -55,12 +55,12 @@ retentionDays > 0 OR seriesRetentionDays > 0
 |`interpolate`| string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`. |
 |`units`| string | Measurement units. |
 |`timeZone`| string | Time Zone ID, for example EST.<br>Refer to [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in metric-specific time zone.|
-|`timePrecision`| string | Time precision: SECONDS or MILLISECONDS.|
+|`timePrecision`| string | Time precision: `SECONDS` or `MILLISECONDS`.|
 |`enabled`| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
 |`persistent` | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`filter` | string | Persistence filter [expression](../../../api/meta/expression.md). Discards series that do not match this filter.|
-|`createdDate`| string | Date when this metric was created in ISO-8601 format.|
-|`lastInsertDate`| string | Last time a value was received for this metric by any series in ISO-8601 format.|
+|`createdDate`| string | Date of metric creation in ISO 8601 format.|
+|`lastInsertDate`| string | Last time of a received value for this metric by any series in ISO 8601 format.|
 |`retentionDays`| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
 |`seriesRetentionDays`| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
 |`versioned`| boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
@@ -87,11 +87,11 @@ Invalid Action is triggered if the received series value is less than the Minimu
 
 |**Action**|**Description**|
 |:---|:---|
-|NONE|Retain value as is.|
-|DISCARD|Do not process the received value, discard it.|
-|TRANSFORM|Set value to `min_value` or `max_value`, if value is outside of range.|
-|RAISE_ERROR|Log an ERROR event in the database log.|
-|SET_VERION_STATUS|For versioned metrics, set status to `Invalid`.|
+|`NONE`|Retain value.|
+|`DISCARD`|Do not process the received value, discard it.|
+|`TRANSFORM`|Set value to `min_value` or `max_value`, if value is outside of range.|
+|`RAISE_ERROR`|Log an `ERROR` event in the database log.|
+|`SET_VERION_STATUS`|For versioned metrics, set status to `Invalid`.|
 
 ### Interpolate
 

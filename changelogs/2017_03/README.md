@@ -30,13 +30,13 @@
 
 ### Issue 3797
 
-Support was added to the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) function after the [`GROUP BY`](../../sql/README.md#grouping) clause for [`SELECT`](../../sql/README.md#syntax) statements.
+Support added to the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) function after the [`GROUP BY`](../../sql/README.md#grouping) clause for [`SELECT`](../../sql/README.md#syntax) statements.
 
 Now you can specify the `ROW_NUMBER` condition in two parts of a `SELECT` statement: before or after the `GROUP BY` clause. Generally, a `SELECT` statement can contain two `ROW_NUMBER`
 conditions. If the `ROW_NUMBER` condition is placed before the `GROUP BY` clause, this condition is applied before grouping. If the `ROW_NUMBER` condition is placed after the `GROUP BY`
 clause, this condition is applied after grouping.
 
-Additionally, this new support allows for syntax such as `ROW_NUMBER(entity, tags ORDER BY period(15 minute))`. Previously, `order by period` was not supported in the `ROW_NUMBER` function. Ordering by period can only be used after the `GROUP BY` clause and the period must be the same as specified in the `GROUP BY` clause.
+Additionally, this new support allows for syntax such as `ROW_NUMBER(entity, tags ORDER BY period(15 minute))`. Previously, no support existed for `order by period` in the `ROW_NUMBER` function. Ordering by period can only be used after the `GROUP BY` clause and the period must be the same as specified in the `GROUP BY` clause.
 
 ```sql
 SELECT entity, tags.*, datetime, avg(value), count(value), first(value), last(value)
@@ -103,7 +103,7 @@ Restart
 
 ### Issue 3795
 
-Previously, entity tags were not supported in the `GROUP BY` clause. Now you can group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
+Previously, no support for entity tags in the `GROUP BY` clause. Now you can group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
 
 ```sql
 SELECT entity.tags.app, count(value)
@@ -220,7 +220,7 @@ The last condition is typically included to select all remaining rows other than
 
 ### Issue 2528
 
-To reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
+To reduce rename or transform multiple similar column headers with one setting, support added to the `column-label-format` setting for property and table widgets. For example, in
 order to remove a common prefix from a column label, add the following code snippet to your configuration:
 
 ```javascript

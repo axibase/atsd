@@ -57,15 +57,15 @@ An array of matching alert objects containing the following fields:
 | `ruleFilter` | string | Rule filter. |
 | `severity`  | string | [Severity](../../../api/data/severity.md) code.  |
 | `tags` | string | Concatenated `name=value` pairs, for example `file_system=/dev/sda1;mount_point=/` |
-| `repeatCount` | integer | Number of times when the expression was evaluated to `true` sequentially.  |
+| `repeatCount` | integer | Number of times when the expression evaluated to `true` sequentially.  |
 | `alert` | string | Alert message.  |
 | `window` | string | Window length. |
 | `value` | double | Last numeric value received. |
 | `type` | string | Alert state when closed: `OPEN`, `CANCEL`, `REPEAT`  |
 | `date` | string | ISO 8601 date.  |
-| `alertOpenDate` | string | ISO 8601 date when the alert was open.  |
-| `alertDuration` | number | Time in milliseconds when alert was in `OPEN` or `REPEAT` state.  |
-| `receivedDate` | string | ISO 8601 date when the last value was received.  |
+| `alertOpenDate` | string | ISO 8601 date of alert open.  |
+| `alertDuration` | number | Time in milliseconds for alert in `OPEN` or `REPEAT` state.  |
+| `receivedDate` | string | ISO 8601 date for the last received value.  |
 
 ### Errors
 

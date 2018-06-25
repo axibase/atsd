@@ -9,7 +9,7 @@
 | [3769](#issue-3769) | sql             | Feature     | Extended the [`LOOKUP`](../../sql/README.md#lookup) function to accept series, entity, and metric tags as parameters. |
 | [3768](#issue-3768) | sql             | Feature | Extended the [`CONCAT`](../../sql/README.md#string-functions) function to accept numeric arguments. |
 | [3767](#issue-3767) | sql             | Feature | Extended the [`CAST`](../../sql/README.md#cast) function to convert numbers to strings. |
-| 3764 | sql             | Bug     | Fixed NullPointerException error when data was requested with the [series query](../../api/data/series/query.md) method for a newly created metric without any data. |
+| 3764 | sql             | Bug     | Fixed `NullPointerException` error for data requested with the [series query](../../api/data/series/query.md) method for a newly created metric without any data. |
 | [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](../../sql/api.md#connection-query) validation query implementation to return exactly one row. |
 | [3480](#issue-3480) | api-rest        | Feature | Added support for the [`text`](../../api/data/series/query.md#value-object) field in the [series query](../../api/data/series/query.md) method. The `text` field allows annotating numeric samples with text.|
 
@@ -112,7 +112,7 @@ The `SELECT 1` query has been updated to return both the header as well as one r
 
 ### Issue 3480
 
-Support was added for the text field (named `x`) in Data API methods for series [query](../../api/data/series/query.md#value-object) and [insert](../../api/data/series/insert.md#value-object) methods. The text field can be used to store an annotation along the numeric sample, as well as annotation without the numeric value itself.
+Support added for the text field (named `x`) in **Data API** methods for series [query](../../api/data/series/query.md#value-object) and [insert](../../api/data/series/insert.md#value-object) methods. The text field can be used to store an annotation along the numeric sample, as well as annotation without the numeric value itself.
 
 ```json
 [{
@@ -126,12 +126,12 @@ Support was added for the text field (named `x`) in Data API methods for series 
 
 ### Issue 3755
 
-The following aggregate [metrics](https://axibase.com/docs/axibase-collector/jobs/docker/volume-size.html) for Docker container sizes were added:
+The following aggregate [metrics](https://axibase.com/docs/axibase-collector/jobs/docker/volume-size.html) for Docker container sizes added:
 
 * `docker.fs.total.size.rw`: the total size of all the files for all containers, in bytes.
-* `docker.fs.total.size.rootfs` - the size of the files which have been created or changed for all containers.
-* `docker.fs.running.size.rw` - the total size of all the files for all running containers, in bytes.
-* `docker.fs.running.size.rootfs` - the size of the files which have been created or changed for running containers.
+* `docker.fs.total.size.rootfs`: the size of the files which have been created or changed for all containers.
+* `docker.fs.running.size.rw`: the total size of all the files for all running containers, in bytes.
+* `docker.fs.running.size.rootfs`: the size of the files which have been created or changed for running containers.
 
 The following metrics are collected at the docker-host level.
 
@@ -190,7 +190,7 @@ The `interpolate-extend` setting adds missing periods at the beginning and the e
 
 ### Issue 2928
 
-To prevent naming collision, the `interpolate` setting was renamed to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/), which is an interpolation mode applied to computed series in case the values are irregularly spaced.
+To prevent naming collision, the `interpolate` setting renamed to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/), which is an interpolation mode applied to computed series in case the values are irregularly spaced.
 If set to `true`, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the
 previous and preceding values.
 

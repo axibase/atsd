@@ -86,7 +86,7 @@ The current window status is displayed on the **Alerts > Rule Windows** page.
 
 ![](./images/rule-windows.png)
 
-Windows are updated when the commands _enter_ or _exit_ the windows. Scheduled rules that are checked at a regular interval, regardless of incoming data, can be constructed using the built-in [`timer`](scheduled-rules.md) metrics.
+Windows are updated when the commands `enter` or `exit` the windows. Scheduled rules that are checked at a regular interval, regardless of incoming data, can be constructed using the built-in [`timer`](scheduled-rules.md) metrics.
 
 ## Actions
 

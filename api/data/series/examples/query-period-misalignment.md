@@ -4,11 +4,11 @@
 
 If the time range between `startDate` and `endDate` cannot be filled with a whole number of periods, some of the periods contain a subset of data and some of the periods are excluded from the result set because their start time is before the `startDate`.
 
-The below query produced no data because:
+The below query produces no data because:
 
 1. With the default `CALENDAR` alignment, the 1-minute periods overlapping the time range are: `[14:20:00-14:21:00)` and `[14:21:00-14:22:00)`
-2. The `[14:20:00-14:21:00)` period has 4 samples as provided below, but its start time is before the `startDate`.
-3. The `[14:21:00-14:22:00)` period start time is within the time range (period start time is before `endDate`); however, the detailed data for this period was limited with an `endDate` of `14:22:01` and therefore the period does not have any samples.
+2. The `[14:20:00-14:21:00)` period has four samples as provided below, but the start time is before the `startDate`.
+3. The `[14:21:00-14:22:00)` period start time is within the time range (period start time is before `endDate`); however, the detailed data for this period is limited with an `endDate` of `14:22:01` and therefore the period does not have any samples.
 
 ## Request
 

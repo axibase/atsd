@@ -68,7 +68,7 @@ The Zookeeper client port is specified in:
 curl -O https://www.axibase.com/public/atsd_ee_hbase_1.2.2.tar.gz
 ```
 
-> The above version has been tested on Stack Version - HDP (Horton Data Platform) 2.3.x.
+> The above version has been tested on Stack Version - HDP (Horton Data Platform) `2.3.x`.
 
 ## Extract Files
 

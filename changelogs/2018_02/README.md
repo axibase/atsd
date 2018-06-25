@@ -11,7 +11,7 @@ Issue| Category    | Type    | Subject
 5039 | rule engine | Feature | Modify [convert](../../rule-engine/functions-format.md#convert) function unit processing, implement [`formatBytes`](../../rule-engine/functions-format.md#formatbytes) function.
 5036 | admin | Feature | Restore multiple record types from archived XML backup files.
 5034 | data-in | Feature | Internal [timer](../../rule-engine/window.md#timers) metrics.
-5033 | rule engine | Bug | [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) function - use adjusted current time during `Test`.
+5033 | rule engine | Bug | [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) function: use adjusted current time during `Test`.
 5030 | rule engine | Bug | Fix [Telegram](../../rule-engine/notifications/telegram.md) notification timeouts.
 5028 | rule engine | Bug | Illegal entity name (empty string) registered from [derived](../../rule-engine/derived.md) messages.
 5025 | rule engine | Bug | Modify [`alert_duration`](../../rule-engine/window-fields.md#date-fields) value.
@@ -69,7 +69,7 @@ Issue| Category    | Type    | Subject
 4836 | api-rest | Bug | Data API: multiple [interpolate](../../api/data/series/interpolate.md#interpolation) queries for the same series.
 4835 | api-rest | Bug | Data API: limit on series [interpolate](../../api/data/series/interpolate.md#interpolation) query.
 4828 | rule engine | Feature | [Attach portal](../../rule-engine/notifications/README.md#attachments) to notification.
-4818 | rule engine | Feature | Implement [`scriptOut`](../../rule-engine/functions-script.md#script-functions) function to return output of a bash or python script.
+4818 | rule engine | Feature | Implement [`scriptOut`](../../rule-engine/functions-script.md#script-functions) function to return output of a `bash` or python script.
 4800 | rule engine | Feature | Notifications: editable [Details Table](../../rule-engine/notifications/README.md#attachments) format.
 4657 | client | Feature | Refactor Python [examples](https://github.com/axibase/atsd-api-python/tree/master/examples).
 4984 | entity_views | Feature | [Split table by column](../../configuration/entity_views.md#split-table-by-column) values.

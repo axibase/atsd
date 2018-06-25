@@ -20,6 +20,6 @@ Build a report showing the number of filings per day of month.
 
 ## Results
 
-Most records were reported on the 31st day of month:
+Most records reported on the 31st day of month:
 
 ![](../images/pie.png)

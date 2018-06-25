@@ -87,7 +87,7 @@ The number of samples in the window can range from 0 (when the oldest value exit
 
 ### All Values Are Above Threshold
 
-The condition is `true` when the all values in the window, both count- and time-based, exceed `50`.
+The condition is `true` when the all values in the window, both count and time-based, exceed `50`.
 
 ```javascript
   min() > 50

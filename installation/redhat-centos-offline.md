@@ -47,7 +47,7 @@ Copy the downloaded *.rpm packages to the target server and install them as foll
 sudo yum install -y ./folder_with_dependencies/*
 ```
 
-Follow the prompts to install ATSD:
+Install ATSD:
 
 ```sh
 sudo yum install -y atsd_amd64.rpm

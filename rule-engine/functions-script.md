@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `scriptOut` function executes a bash or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
+The `scriptOut` function executes a `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
 
-The function accepts an array of arguments which may include window [placeholders](placeholders.md) such as `entity` or `tags`.
+The function accepts an array of arguments which can include window [placeholders](placeholders.md) such as `entity` or `tags`.
 
 The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 
@@ -23,10 +23,10 @@ The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 scriptOut(string fileName, collection arguments)
 ```
 
-* [**required**] `fileName` - Name of the script file located in the `/opt/atsd/atsd/conf/script` directory.
-* [**required**] `arguments` - Collection of arguments passed to the script. Can be an empty list.
+* [**required**] `fileName`: Name of the script file located in the `/opt/atsd/atsd/conf/script` directory.
+* [**required**] `arguments`: Collection of arguments passed to the script. Can be an empty list.
 
-The arguments may include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
+The arguments can include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
 
 ```javascript
 scriptOut('disk_size.sh', [entity, tags.file_system])
@@ -46,7 +46,7 @@ scriptOut('check_service.sh', [])
 
 The script must complete within the timeout value specified in **Settings > Server Properties** `system.commands.timeout.seconds`. The default timeout is 15 seconds.
 
-If the script times out, its process is stopped with `SIGTERM` flag and the following text is appended to the output:
+If the script times out, its process is stopped with `SIGTERM` and the following text is appended to the output:
 
 ```txt
 Script terminated on timeout: {current timeout value}
@@ -73,7 +73,7 @@ from prettytable import PrettyTable
 ...
 ```
 
-Execute the Python script by passing its name, similar to bash scripts.
+Execute the Python script by passing its name, similar to `bash` scripts.
 
 ```javascript
 scriptOut('check_site.py', ['example.org', 3])

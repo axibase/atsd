@@ -8,7 +8,7 @@
 
 ## Snapshot Example
 
-Below is a snapshot extract from an nmon file displaying its format and how it records the collected data:
+Below is a snapshot extract from an `nmon` file displaying its format and how it records the collected data:
 
 ```elm
 ZZZZ,T0009,23:02:43,14-OCT-2014

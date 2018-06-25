@@ -1,6 +1,6 @@
 # Last Time
 
-The `last_time` function returns last time in milliseconds when data was received for a given series.
+The `last_time` function returns last time in milliseconds when data is received for a given series.
 
 The database tracks information about last insert times, last values, and insert counters for each series in a dedicated table, separate from the main data table.
 

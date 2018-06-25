@@ -6,8 +6,8 @@
 |------|-------------|---------|----------------------
 | 4149 | sql | Bug | Fixed a self-join exception that occurred when using the [`metrics()`](../../sql/README.md#metrics) function |
 | 4131 | Test | Bug | Fixed an error caused by ignoring Daylight Savings Time when using a [`GROUP BY PERIOD`](../../sql/README.md#period) clause with a user-defined time zone.|
-| 4130 | sql | Bug | Fixed an error causing the display of duplicate rows when aggregation was performed without grouping.|
-| 4112 | sql | Bug | Fixed [`ISNULL`](../../sql/README.md#isnull) function evaluation that ignored the first condition unless another condition was presented in the `WHERE` clause.|
+| 4130 | sql | Bug | Fixed an error causing the display of duplicate rows when performing aggregation without grouping.|
+| 4112 | sql | Bug | Fixed [`ISNULL`](../../sql/README.md#isnull) function evaluation that ignored the first condition unless another condition is present in the `WHERE` clause.|
 | 4105 | sql | Bug | Fixed an error causing missing rows in [sub-queries](../../sql/examples/filter-by-date.md#query-using-between-subquery) containing the `WHERE` condition.|
 | 4097 | UI | Bug | Fixed a concurrency problem causing multiple queries to be stopped with a single cancel request. |
 

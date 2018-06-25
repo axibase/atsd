@@ -164,7 +164,7 @@ The following functions are available in the **Formatting** section:
 **Name** | **Description**
 ---|---
 Name | Filter name displayed in the drop-down menu.
-Expression | A condition that entities must satisfy when the filter is selected in the drop-down menu. The expression may refer to `name` and `tags.{name}` columns defined in the entity view.
+Expression | A condition that entities must satisfy when the filter is selected in the drop-down menu. The expression can refer to `name` and `tags.{name}` columns defined in the entity view.
 
 Filter expression examples:
 

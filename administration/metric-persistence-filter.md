@@ -265,7 +265,7 @@ To reduce disk space utilization, open the **Settings > Receive Statistics** pag
 
 ![](./images/metric_persistence_filter_1.png "top_hourly_metrics")
 
-The _Series_ icon opens a list of unique tags for the selected metric.
+The **Series** icon opens a list of unique tags for the selected metric.
 
 ![](./images/metric_persistence_filter_2.png)
 

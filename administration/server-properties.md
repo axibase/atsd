@@ -106,7 +106,7 @@ Property | Default Value | Description
 **`https.keyStorePassword`** | None | [Java SSL Key Store](./ssl-self-signed.md) password.|
 **`https.port`** | `8443` | Port for secure HTTP protocol.|
 **`https.trustStorePassword`** | None | [Java SSL Trust Store](./ssl-self-signed.md) password.|
-`input.disconnect.on.error` | Yes | Terminate the TCP connection if a malformed command is received. Applies to [Network API](../api/network/README.md) series, [property](../api/network/property.md), and [message](../api/network/message.md) commands.|
+`input.disconnect.on.error` | Yes | Stop the TCP connection if a malformed command is received. Applies to [Network API](../api/network/README.md) series, [property](../api/network/property.md), and [message](../api/network/message.md) commands.|
 **`input.port`** | `8081` | TCP port for sending [Network API](../api/network/README.md) commands.|
 **`input.socket.keep-alive`** | Yes | Enable keepalive for TCP sockets open on `input.port`|
 **`input.socket.receive-buffer-size`** | -1 | Network memory buffer for processing commands received on the `input.port`.|
@@ -118,7 +118,7 @@ Property | Default Value | Description
 
 Property | Default Value | Description
 ---|---|---
-`sql.metric.like.limit` | 50 | Maximum number of metrics matched by [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd-series-table) tables. |
+`sql.metric.like.limit` | 50 | Maximum number of metrics matched by  [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd-series-table) tables. |
 `sql.tmp.storage.max_rows_in_memory` | 51,200 | Maximum number of rows to be processed in memory by [grouping](../sql/README.md#grouping) and [ordering](../sql/README.md#ordering) queries. The limit is shared by all concurrently executing queries. If a query selects more rows than remain in shared memory, the query is processed by ATSD using a temporary table which results in increased response times.|
 
 ### Cache
@@ -145,7 +145,7 @@ Property | Default Value | Description
 ---|---|---
 `cancel.on.rule.change` | No | Trigger actions when a rule is saved or deleted.|
 `system.commands.enabled` | Yes | Enable system command execution by [Rule Engine](../rule-engine/README.md).|
-`system.commands.timeout.seconds` | 15 | Interval in seconds after which the system command execution terminates.|
+`system.commands.timeout.seconds` | 15 | Interval in seconds after which the system command execution ceases.|
 `webdriver.chromebrowser.path` | None | Path to the `google-chrome` binary.|
 `webdriver.chromedriver.path` | None | Path to the [`chromedriver`](../rule-engine/notifications/web-driver.md#option-2-chrome-driver) binary.|
 `webdriver.phantomjs.path` | None | Path to [`phantomjs`](../rule-engine/notifications/web-driver.md#option-1-phantomjs) binary.|

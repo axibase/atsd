@@ -162,12 +162,12 @@ Email the `reporter.log`, `summary.log`, and `maximum-per-region.log` files to `
 
 The report contains the following summary counters:
 
-* `ANNOTATIONS_COUNT` - The number of annotations (text columns) stored in the `atsd_d` table.
-* `ROWS_AFTER_MIGRATION` - The estimated number of daily rows in the `atsd_d` table to be created after migration.
-* `ROWS_READ` - The number of hourly rows currently present in the `atsd_d` table. Equal to `Map input records` counter.
-* `SAMPLES_COUNT` - The total number of `timestamp=value` samples for all series in the `atsd_d` table.
-* `VERSIONED_VALUES_COUNT` - The total number of samples which have several versions of values for the same timestamp.
-* `VERSIONS_COUNT` - The total number of all versions for all series samples.
+* `ANNOTATIONS_COUNT`: The number of annotations (text columns) stored in the `atsd_d` table.
+* `ROWS_AFTER_MIGRATION`: The estimated number of daily rows in the `atsd_d` table to be created after migration.
+* `ROWS_READ`: The number of hourly rows currently present in the `atsd_d` table. Equal to `Map input records` counter.
+* `SAMPLES_COUNT`: The total number of `timestamp=value` samples for all series in the `atsd_d` table.
+* `VERSIONED_VALUES_COUNT`: The total number of samples which have several versions of values for the same timestamp.
+* `VERSIONS_COUNT`: The total number of all versions for all series samples.
 
 The report includes memory required by the mapper. This maximum is reported for each region in the `atsd_d` table, for example:
 

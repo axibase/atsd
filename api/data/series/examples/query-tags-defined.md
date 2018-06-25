@@ -4,7 +4,7 @@
 
 Query detailed data for defined tags.
 
-The query may return multiple series, including series with additional series tags, that contain the specified tag.
+The query can return multiple series, including series with additional series tags, that contain the specified tag.
 
 ## Request
 

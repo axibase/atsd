@@ -30,7 +30,7 @@
 
 ### Issue 4755
 
-The `db_message_count` and `db_message_last` functions allow one to correlate different types of data - time series and messages.
+The `db_message_count` and `db_message_last` functions allow one to correlate different types of data, time series and messages.
 
 #### [`db_message_count`](../../rule-engine/functions-message.md#db_message_count) Function
 

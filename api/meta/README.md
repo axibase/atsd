@@ -1,6 +1,6 @@
 # Overview
 
-The Meta API lets you query and update metadata about metrics, entities, and entity groups in the database.
+The Meta API allows you query and update metadata about metrics, entities, and entity groups in the database.
 
 ## Request Methods
 

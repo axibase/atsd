@@ -4,9 +4,9 @@
 
 The following instructions assume that you have obtained certificate files in `PEM` format from a certificate authority.
 
-* `atsd.company.com.crt` - SSL certificate for the DNS name
-* `atsd.company.com.ca-bundle` - Intermediate and Root CA SSL certificates
-* `atsd.company.com.key` - Private key file
+* `atsd.company.com.crt`: SSL certificate for the DNS name
+* `atsd.company.com.ca-bundle`: Intermediate and Root CA SSL certificates
+* `atsd.company.com.key`: Private key file
 
 ## Combine Chained Certificates
 

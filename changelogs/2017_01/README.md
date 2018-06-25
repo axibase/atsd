@@ -36,7 +36,7 @@
 
 ### Issue 3756
 
-The SQL executor was fixed to return correct results for a query containing a tag filter on a joined table (`t64o.tags.city = 'New York'`).
+Fixed the SQL executor to return correct results for a query containing a tag filter on a joined table (`t64o.tags.city = 'New York'`).
 
 ```sql
 SELECT t1.datetime, count(t1.value), count(t2.value)
@@ -50,7 +50,7 @@ GROUP BY t1.tags, t1.period(1 year)
 
 ### Issue 3751
 
-An error for `entityExpression` was addressed in [series](../../api/data/series/query.md) query method when `isEmpty()` was specified with brackets.
+Addressed an error for `entityExpression` in [series](../../api/data/series/query.md) query method when `isEmpty()` is specified with brackets.
 
 ```json
 [{
@@ -64,7 +64,7 @@ An error for `entityExpression` was addressed in [series](../../api/data/series/
 
 ### Issue 3749
 
-The SQL parser was fixed to allow for the [`LOCATE`](../../sql/README.md#string-functions) function to be used in the `WHERE` clause.
+Fixed the SQL parser to allow [`LOCATE`](../../sql/README.md#string-functions) function to be used in the `WHERE` clause.
 
 ```sql
 SELECT sum(value)
@@ -89,7 +89,7 @@ GROUP BY date_format(time, 'EEE HH')
 
 ### Issue 3746
 
-The `u` pattern was updated to return a numeric value representing the [day number](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) within a week (1 = Monday, ..., 7 = Sunday).
+Updated the `u` pattern to return a numeric value representing the [day number](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) within a week (1 = Monday, ..., 7 = Sunday).
 
 ```sql
 SELECT date_format(time, 'E'),
@@ -117,7 +117,7 @@ SELECT *
 
 ### Issue 3740
 
-The API processor was fixed to return the history of the `text` field for versioned metrics.
+Fixed API processor to return the history of the `text` field for versioned metrics.
 
 ```ls
 series e:e-vers-text d:2016-12-22T00:00:00Z x:vers-text-m=hello1
@@ -164,7 +164,7 @@ series e:e-vers-text d:2016-12-22T00:00:00Z x:vers-text-m=hello2
 
 ### Issue 3738
 
-The `ABS()` function produced an error when an expression was submitted:
+The `ABS()` function produces an error when an expression is submitted:
 
 ```sql
 SELECT ABS(max(value)*avg(value))
@@ -185,7 +185,7 @@ WHERE entity = 'mr8w-325u'
 
 ### Issue 3711
 
-The lexer was upgraded to resolve slow parsing of queries such as shown below:
+Upgraded lexer to resolve slow parsing of queries such as shown below:
 
 ```sql
 SELECT value+value+value+value
@@ -200,7 +200,7 @@ FROM 'testmetric'
 
 ### Issue 3695
 
-A defect with the `GROUP BY` and `JOIN` clauses was fixed to return results for the following queries:
+Fixed a defect with the `GROUP BY` and `JOIN` clauses to return results for the following queries:
 
 ```sql
 SELECT sum(t1.value), sum(tot.value)
@@ -238,7 +238,7 @@ FROM pipoint..pipoint2
 
 ### Issue 3754
 
-Fixed an issue were columns were not being created for series with a statistic and wildcard match: [ChartLab](https://apps.axibase.com/chartlab/506da7c3)
+Fixed an issue which did not create columns for series with a statistic and wildcard match: [ChartLab](https://apps.axibase.com/chartlab/506da7c3)
 
 ### Issue 3654
 
@@ -254,4 +254,4 @@ Updated charts to display series if requested for an entity group or with an ent
 
 ### Issue 3143
 
-Fixed an issue where the value and time columns of series with shorter period were not being displayed: [ChartLab](https://apps.axibase.com/chartlab/adce7a9c)
+Fixed an issue which caused the value and time columns of series with shorter period to not be displayed: [ChartLab](https://apps.axibase.com/chartlab/adce7a9c)

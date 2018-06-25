@@ -48,4 +48,4 @@ The built-in portals can be customized by changing their configuration text and 
 | SCOM SQL Server ![](./resources/scom_sql_server_portal-705x451.png) | ATSD Host ![](./resources/fresh_atsd_portal21-705x435.png) | SolarWinds Base ![](./resources/solarwinds_base_portal_31-705x487.png) |
 | tcollector ![](./resources/tcollector-portal1-705x472.png) | VMware Host ![](./resources/vmware_host_portal-705x473.png) | VMware Host VM Breakdown ![](./resources/vmware_hostvm_breakdown_portal-705x473.png) |
 | VMware Cluster ![](./resources/vmware_cluster_portal-705x475.png) | Vmware VM ![](./resources/vmware_vm_portal-705x476.png) | SCOM Server ![](./resources/scom_server_portal-705x452.png)
-| nmon AIX ![](./resources/nmon-aix-portal-1000-705x360.png) |
+| `nmon` AIX ![](./resources/nmon-aix-portal-1000-705x360.png) |

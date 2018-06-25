@@ -145,7 +145,7 @@ Check the HBase Secure Authorization settings in the Cloudera HBase configuratio
 
 ![](./images/cloudera-manager-authorization.png)
 
-If the HBase Secure Authorization is disabled you can access HBase as is. Proceed to [Kerberos Settings](#kerberos-settings).
+If the HBase Secure Authorization is disabled you can access HBase with no modifications. Proceed to [Kerberos Settings](#kerberos-settings).
 
 Otherwise, you need to allow the newly created `axibase` principal to access HBase using one of the following options:
 

@@ -44,7 +44,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_4.png)
 
-* Choose ATSD ODBC as the data source. If there are no data sources visible - create an ODBC-bridged connection to ATSD as described [here](../../odbc/README.md#configure-odbc-data-source) and click **Refresh**
+* Choose ATSD ODBC as the data source. If there are no data sources visible, create an ODBC-bridged connection to ATSD as described [here](../../odbc/README.md#configure-odbc-data-source) and click **Refresh**
 
   ![](./images/modeler_5.png)
 

@@ -44,7 +44,7 @@ The tag columns are present when the rule is grouped by tags on the **Overview**
 
 ![](./images/override-tag-columns-group.png)
 
-Empty columns are ignored. For example, if the entity group is _not_ defined for the current row, the filter checks only the entity and tag columns.
+Empty columns are ignored. For example, if the entity group is **not** defined for the current row, the filter checks only the entity and tag columns.
 
 The entity and the tag columns support `*` as the wildcard character.
 
@@ -77,7 +77,7 @@ An alert is triggered if either the `ERROR` or `WARNING` condition returns `true
 
 ### Alert Severity
 
-When one of the threshold conditions is satisfied, the alert is assigned a severity level based on which threshold was met: `ERROR` or `WARNING`.
+When one of the threshold conditions is satisfied, the alert is assigned a severity level based on which threshold s met: `ERROR` or `WARNING`.
 
 ![](./images/severity-rule.png)
 
@@ -110,7 +110,7 @@ Rule Processing:
 * Row 2. This rule raises `ERROR` alert if disk usage exceeds **50%** for entity `nurswgvml010`.
 * Row 3. This rule raises `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity `nurswgvml007`. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert is be raised for `/` on `nurswgvml007` with disk usage of **85%**.
 * Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the `disk_prod` group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.
-* If not rule was matched, evaluate the default condition.
+* If no rule is matched, evaluate the default condition.
 
 ## Multiple Override Tables
 

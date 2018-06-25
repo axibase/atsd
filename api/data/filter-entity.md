@@ -1,9 +1,9 @@
 # Entity Filter Fields
 
-- One of the below entity fields is **required**.
-- Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence is applied.
-- `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
-- Entity name pattern supports `?` and `*` wildcards.
+* One of the below entity fields is **required**.
+* Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence is applied.
+* `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
+* Entity name pattern supports `?` and `*` wildcards.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
@@ -18,36 +18,36 @@
 
 Supported fields:
 
-- id
-- name
-- label
-- enabled
-- tags.tag-name or tags['tag-name']
+* id
+* name
+* label
+* enabled
+* tags.tag-name or tags['tag-name']
 
 ### Supported Functions
 
-- Property Functions
-  - [`property`](../../configuration/functions-entity-groups-expression.md#property)
-  - [`property_values`](../../configuration/functions-entity-groups-expression.md#property_values), access to returned objects is not supported
-- Lookup Functions
-  - [`entity_tags`](../../configuration/functions-entity-groups-expression.md#entity_tags)
-- Collection Functions
-  - [`collection`](../../configuration/functions-entity-groups-expression.md#collection)  
-  - [`likeAll`](../../configuration/functions-entity-groups-expression.md#likeall)
-  - [`likeAny`](../../configuration/functions-entity-groups-expression.md#likeany)
-  - [`matches`](../../configuration/functions-entity-groups-expression.md#matches)  
-  - [`collection_contains`](../../configuration/functions-entity-groups-expression.md#collection_contains)
-  - [`contains`](../../configuration/functions-entity-groups-expression.md#contains)
-  - [`size`](../../configuration/functions-entity-groups-expression.md#size)
-  - [`isEmpty`](../../configuration/functions-entity-groups-expression.md#isempty)  
-  - [`IN`](../../configuration/functions-entity-groups-expression.md#in)
-- Text Functions
-  - [`upper`](../../configuration/functions-entity-groups-expression.md#upper)
-  - [`lower`](../../configuration/functions-entity-groups-expression.md#lower)
-  - [`list`](../../configuration/functions-entity-groups-expression.md#list)
-- Utility functions
-  - [`memberOf`](../../configuration/functions-entity-groups-expression.md#memberof)
-  - [`memberOfAll`](../../configuration/functions-entity-groups-expression.md#memberofall)
+* Property Functions
+  * [`property`](../../configuration/functions-entity-groups-expression.md#property)
+  * [`property_values`](../../configuration/functions-entity-groups-expression.md#property_values), access to returned objects is not supported
+* Lookup Functions
+  * [`entity_tags`](../../configuration/functions-entity-groups-expression.md#entity_tags)
+* Collection Functions
+  * [`collection`](../../configuration/functions-entity-groups-expression.md#collection)  
+  * [`likeAll`](../../configuration/functions-entity-groups-expression.md#likeall)
+  * [`likeAny`](../../configuration/functions-entity-groups-expression.md#likeany)
+  * [`matches`](../../configuration/functions-entity-groups-expression.md#matches)  
+  * [`collection_contains`](../../configuration/functions-entity-groups-expression.md#collection_contains)
+  * [`contains`](../../configuration/functions-entity-groups-expression.md#contains)
+  * [`size`](../../configuration/functions-entity-groups-expression.md#size)
+  * [`isEmpty`](../../configuration/functions-entity-groups-expression.md#isempty)  
+  * [`IN`](../../configuration/functions-entity-groups-expression.md#in)
+* Text Functions
+  * [`upper`](../../configuration/functions-entity-groups-expression.md#upper)
+  * [`lower`](../../configuration/functions-entity-groups-expression.md#lower)
+  * [`list`](../../configuration/functions-entity-groups-expression.md#list)
+* Utility functions
+  * [`memberOf`](../../configuration/functions-entity-groups-expression.md#memberof)
+  * [`memberOfAll`](../../configuration/functions-entity-groups-expression.md#memberofall)
 
 ### Examples
 

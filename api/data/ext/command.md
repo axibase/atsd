@@ -20,7 +20,7 @@ Multiple commands, separated by a line feed character, can be submitted in one r
 
 In case of syntax errors or an out-of-range date in one of commands, the invalid command is discarded and processing continues.
 
-The processing behavior is different from the **Data Entry** page which terminates processing on the first invalid command.
+The processing behavior is different from the **Data Entry** page, which stops processing on the first invalid command.
 
 ## Request
 

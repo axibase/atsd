@@ -37,7 +37,7 @@ Each series is identified by metric name, entity name, and optional series tags.
 | `metric` | Metric name.  |
 | `entity` | Entity name.  |
 | `tags` | An object containing **series** tag names and values.<br>For example, `"tags": {"file_system": "/dev/sda"}` |
-| `lastInsertDate` |Last time a value was received for this series. ISO date.|
+| `lastInsertDate` |Last time for a received value by this series. ISO date.|
 
 ### Errors
 

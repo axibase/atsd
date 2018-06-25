@@ -53,7 +53,7 @@ Warning! Rule JVM Memory Low for server nurswgvml007 is active.
 
 ### Subject Field
 
-The **Subject** field may include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
+The **Subject** field can include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
 
 ![](./images/email-subject.png)
 
@@ -67,7 +67,7 @@ ${entity} received message '${abbreviate(tags.notification, 50)}'
 
 ### Text Field
 
-The **Text** field may include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
+The **Text** field can include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
 
 Unlike the **Subject** field, **Text** is not constrained by a length limit and supports HTML markup.
 
@@ -86,7 +86,7 @@ Top-10 running containers by CPU:
 ${addTable(executeSqlQuery(query), 'html', true)}
 ```
 
-In addition, the **Text** field may invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
+In addition, the **Text** field can invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
 
 ```bash
 ${addPortal('AWS Route53 Health Check Detail', aws_entity)}
@@ -105,11 +105,11 @@ The **Text** field supports [control flow](control-flow.md#control-flow) syntax 
 | Setting | Description |
 | --- | --- |
 | Delay on Open | Delay interval for sending notification for `OPEN` status. If the window changes to `CANCEL` status within the specified delay interval, no `OPEN` status email is sent. Set this interval to prevent emails on short-lived spikes. |
-| Repeat Interval | Interval for sending `REPEAT` status notifications. If the Repeat Interval is set in time units, the exact interval may vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications are not sent if the data stops flowing in. |
+| Repeat Interval | Interval for sending `REPEAT` status notifications. If the Repeat Interval is set in time units, the exact interval can vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications are not sent if the data stops flowing in. |
 | Subject | Custom subject text, specified for each status separately. The subject can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. Note that the maximum allowed length of the subject is limited to several hundred characters in most email clients.|
 | Text | Custom message text, specified for each status separately. The text can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. |
 | Attach Details | Include a [summary table](window-fields.md#details-tables) with window statistics and action links. |
-| Attach Portals | One or more portal screenshots attached to the message as inline images. If a portal is a template, placeholders such as entity, metric, tags are resolved from the window fields.<br> *Series Chart* - attach a screenshot containing series monitored by this rule. |
+| Attach Portals | One or more portal screenshots attached to the message as inline images. If a portal is a template, placeholders such as entity, metric, tags are resolved from the window fields.<br> **Series Chart**: attach a screenshot containing series monitored by this rule. |
 
 ## Grouping
 
@@ -220,7 +220,7 @@ To attach screenshots, a [web driver](notifications/web-driver.md) must be insta
 
 ![](./images/email-screenshot-enable.png)
 
-The chart may include multiple series depending on statistical functions referenced in the condition.
+The chart can include multiple series depending on statistical functions referenced in the condition.
 
 ```javascript
   abs(forecast_deviation(median())) > 2 && (median() < 200 || median() > 600)

@@ -10,7 +10,7 @@ Inserts a timestamped value (number or text) into a specified time series, uniqu
 series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number}
 ```
 
-The command may include multiple values for different metrics, which inherit the same entity, time, and tags.
+The command can include multiple values for different metrics, which inherit the same entity, time, and tags.
 
 ```bash
 series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:${metric-2}=${number} x:${metric-3}=${text}
@@ -30,8 +30,8 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 | a         | boolean         | Text append option. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
 
 > At least one numeric value `m:` or text value `x:` is required.
-> If the numeric value was not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
-> If the time fields `d, s, and ms` are omitted, the values are inserted with the current server time.
+> If the numeric value is not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
+> If the time fields `d`, `s`, and `ms` are omitted, the values are inserted with the current server time.
 
 ### ABNF Syntax
 

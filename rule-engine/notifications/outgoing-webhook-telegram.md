@@ -23,7 +23,7 @@ The bot is special user account created for automation and integration purposes.
 
     ![](./images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
+* Send the `/newbot` command and complete the guided process to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
 
 ```txt
     Use this token to access the HTTP API:

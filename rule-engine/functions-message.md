@@ -76,7 +76,7 @@ The following matching rules apply:
 
 * If tags argument `t` is specified as `null` or an empty string `''`, all tags are matched.
 * To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
-* Tags argument `t` matches records that include the specified tags but may also include other tags.
+* Tags argument `t` matches records that include the specified tags but can also include other tags.
 * Tags argument `t` can be specified as follows:
   * String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
   * Map: `["tag1":"value1", "tag2":"value2"]`

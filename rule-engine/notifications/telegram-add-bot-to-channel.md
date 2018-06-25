@@ -20,6 +20,6 @@
 
    ![](./images/telegram_9.png)
 
-* Review the settings, make sure _Post messages_ is enabled and click **Save > Close > Cancel**.
+* Review the settings, ensure **Post messages** is enabled and click **Save > Close > Cancel**.
 
    ![](./images/telegram_10.png)

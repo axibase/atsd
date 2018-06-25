@@ -50,7 +50,7 @@ Since the data is deleted by staged [background tasks](#scheduled-tasks), it tak
 
 ### Disable Metric
 
-If the metric is **disabled**, the data for such metric is discarded when received. The data for disabled metrics is also _ignored_ by the rule engine.
+If the metric is **disabled**, the data for such metric is discarded when received. The data for disabled metrics is also **ignored** by the rule engine.
 
 To disable a metric, open the **Metric Editor**, expand **Settings** section, set **Enabled** switch to **No**, and click **Save**.
 
@@ -331,7 +331,7 @@ To monitor these parameters, create a new [portal](../portals/portals-overview.m
 
 The widget displays the current number of records as well as weekly change.
 
-`last.series.count.{period}` metrics display how many series were updated recently, within the specified period.
+`last.series.count.{period}` metrics display the number of updated series within the specified period.
 
 ```ls
 [widget]

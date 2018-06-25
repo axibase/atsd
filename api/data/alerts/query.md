@@ -62,12 +62,12 @@ An array of matching alert objects containing the following fields:
 | `rule` | string | Rule name. |
 | `severity`  | string | [Severity](../../../api/data/severity.md) name.  |
 | `tags` | object | Object containing `name=value` pairs, for example `tags: {"path": "/", "name": "sda"}` |
-| `repeatCount` | integer | Number of times when the expression was evaluated to true sequentially.  |
+| `repeatCount` | integer | Number of times when the expression evaluated to `true` sequentially.  |
 | `textValue` | string | Text value.  |
 | `value` | double | Last numeric value received. |
 | `openValue` | double | First numeric value received.  |
-| `openDate` | string | ISO 8601 date when the alert was open.  |
-| `lastEventDate` | string | ISO 8601 date when the last record was received.  |
+| `openDate` | string | ISO 8601 date for alert open.  |
+| `lastEventDate` | string | ISO 8601 date for the last received record.  |
 
 ### Errors
 

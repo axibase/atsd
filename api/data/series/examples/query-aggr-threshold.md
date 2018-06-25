@@ -4,9 +4,9 @@
 
 Threshold aggregation functions compute threshold violation statistics for each period based on the specified min/max threshold range.
 
-* `THRESHOLD_COUNT` - Number of consecutive samples where the value was above the specified `max` threshold or below the specified `min` threshold.
-* `THRESHOLD_DURATION` - Number of milliseconds in all intervals where the value was above the specified `max` threshold or below the specified `min` threshold.
-* `THRESHOLD_PERCENT` - 100 * (1-THRESHOLD_DURATION/Period Length). Measures the % of time when the value was within the thresholds: below `max` and above `min`.
+* `THRESHOLD_COUNT`: Number of consecutive samples with a value above the specified `max` threshold or below the specified `min` threshold.
+* `THRESHOLD_DURATION`: Number of milliseconds in all intervals with a value above the specified `max` threshold or below the specified `min` threshold.
+* `THRESHOLD_PERCENT`: 100 * (1-THRESHOLD_DURATION/Period Length). Measures the percent of time with a value within the thresholds: below `max` and above `min`.
 
 ## Request
 

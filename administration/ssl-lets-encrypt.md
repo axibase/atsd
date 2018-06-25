@@ -10,7 +10,7 @@ This instruction describes the process of installing and renewing SSL certificat
 
 The Certbot can be located on the same server where ATSD is running or on a remote server in a centralized PKI management environment.
 
-Before you start, determine the DNS name where ATSD is installed. For the purpose of examples below, lets assume the DNS name is `atsd.example.org`.
+Before you start, determine the DNS name where ATSD is installed. For the purpose of examples below, assume the DNS name is `atsd.example.org`.
 
 ## Reference
 
@@ -63,7 +63,7 @@ sudo certbot certonly --standalone --agree-tos --no-eff-email \
   -w /var/www/certbot -d atsd.example.org
 ```
 
-The following message is displayed if the request was successfully processed.
+The following message is displayed if the request is successfully processed.
 
 ```txt
 - Congratulations! Your certificate and chain have been saved at:
@@ -289,7 +289,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 */12 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(3600))' && certbot -q renew
 ```
 
-Note that the cron entry does not contain any references to `--deploy-hook` because the hooks are specific to each DNS name.
+Note that the `cron` entry does not contain any references to `--deploy-hook` because the hooks are specific to each DNS name.
 
 To check if the `--deploy-hook` is enabled for the specific DNS name, search the `/etc/letsencrypt` directory for `renew_hook` setting.
 

@@ -37,7 +37,7 @@
 
 The portal is configured using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax which is a domain-specific language for assembling visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
 
-* **Section** is enclosed in square brackets, for example, `[widget]`. The section includes settings and nested sections. The section terminates when another section is specified.
+* **Section** is enclosed in square brackets, for example, `[widget]`. The section includes settings and nested sections. The section ends when another section is specified.
 * **Setting** includes name and value, separated by equal sign, for example, `timespan = 1 hour`.
 
 ```ls
@@ -115,7 +115,7 @@ Two types of portals are supported:
 
 ### Regular Portals
 
-The regular portal does not depend on external parameters and can be rendered as is.
+The regular portal does not depend on external parameters and can be rendered without modifications.
 
 Sample link for a regular portal:
 
@@ -184,7 +184,7 @@ Alternatively, assign an entity group to the template portal so that the link to
 * Click **Save** at the bottom of the page.
 * Open the **Entities** page.
 * Select an entity group in the drop-down filter.
-* Click the **portals** icon for an entity and verify that the portal was assigned.
+* Click the **portals** icon for an entity and verify that the portal is assigned.
 
     ![](./resources/creating-and-assigning-portals_11.png)
 

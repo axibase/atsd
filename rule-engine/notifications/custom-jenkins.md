@@ -13,7 +13,7 @@ The integration relies on the following [Jenkins API](https://wiki.jenkins.io/di
 
 Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-jenkins-notification.xml), used in this example.
 
-To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -72,7 +72,7 @@ Leave the `Parameters` table empty for non-parameterized jobs.
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/custom-jenkins-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/custom-jenkins-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -126,10 +126,10 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/jenkins_alert_open.png)
 
-Check the Jenkins web interface to make sure the target build was triggered.
+Check the **Jenkins** web interface to ensure the target build is triggered.
 
 ![](./images/jenkins_test.png)

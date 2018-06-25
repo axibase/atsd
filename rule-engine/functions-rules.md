@@ -40,7 +40,7 @@ Window [fields](window-fields.md#base-fields) except `repeat_interval` can be ac
 > Note:
 > * `entity` and `tags` are the same as in the last window command.
 > * If minimum interval is not set then `min_interval_expired = true`.
-> * `threshold` - the threshold value matched by the last command.
+> * `threshold`: the threshold value matched by the last command.
 
 ---
 
@@ -209,7 +209,7 @@ Window [fields](window-fields.md#base-fields) except `repeat_interval` can be ac
 > Note:
 > * `tags` are the same as in the last window command;
 > * if minimum interval is not set then `min_interval_expired = true`;
-> * `threshold` - the threshold matched by the last command.
+> * `threshold`: the threshold matched by the last command.
 
 Examples:
 

@@ -13,7 +13,7 @@ The `db_last` and `db_statistic` functions retrieve the last stored value or cal
 
 ## `db_last`
 
-The `db_last` function retrieves the most recent value stored in the database for the specified series, regardless of when it was stored.
+The `db_last` function retrieves the most recent value stored in the database for the specified series, regardless of the date of storage.
 
 The functions return `Double.NaN` if no matching series is found.
 
@@ -31,7 +31,7 @@ Example:
   value > 60 && db_last('temperature') < 30
 ```
 
-> As an alternative, if the specified metric was received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command without querying the database.
+> As an alternative, if the specified metric is received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command without querying the database.
 
 ### `db_last(string m, string e)`
 
@@ -123,7 +123,7 @@ Example:
   db_statistic(string s, string i, string m, string e) number
 ```
 
-Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity may either be specified as a string or as `entity` to invoke current entity in the window.
+Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity can either be specified as a string or as `entity` to invoke current entity in the window.
 
 Example:
 

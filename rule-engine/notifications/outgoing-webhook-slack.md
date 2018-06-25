@@ -96,7 +96,7 @@ Slack Bot is a special account created for automation purposes.
 
    ![](./images/outgoing_webhook_slack_13.png)
 
-* Open Slack [workspace](https://my.slack.com/), make sure the app is visible in the **Apps** section.
+* Open Slack [workspace](https://my.slack.com/), and ensure the app is visible in the **Apps** section.
 
    ![](./images/outgoing_webhook_slack_14.png)
 

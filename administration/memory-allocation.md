@@ -38,8 +38,8 @@ The format is `-Xmx<size>{G|M}`.
 
 Examples:
 
-* `-Xmx1024M` - 1024 megabytes
-* `-Xmx2G` - 2 gigabytes.
+* `-Xmx1024M`: 1024 megabytes
+* `-Xmx2G`: 2 gigabytes.
 
 > Note that no whitespace must be present between the number and the unit.
 

@@ -68,7 +68,7 @@ The output contains the following line:
 user001 31326 1 0 17:30 ? 00:00:00 ssh -fN -L nurswgvml001:10000:localhost:8081 atsdreadonly@atsd-tst -i /opt/nmon/id_rsa_atsdreadonly
 ```
 
-This output means that the SSH tunnel was successfully established.
+This output means that the SSH tunnel is successfully established.
 
 ### Stop the SSH tunnel (using the pid from the output above)
 
@@ -116,4 +116,4 @@ Verify that you are no longer able to log in to ATSD server with `nmonuser` cred
 ssh atsdreadonly@atsd-tst -i /opt/nmon/id_rsa_atsdreadonly -p 22
 ```
 
-If the atsdreadonly shell environment is not available, then the remote login was successfully disabled
+If the `atsdreadonly` shell environment is not available, then the remote login is successfully disabled

@@ -10,7 +10,7 @@ To obtain result metadata without executing the query, submit the query to [`/ap
 
 The rows returned for the SQL query are filtered by the server according to the entity `read` permissions granted to the user.
 
-This means that the same query executed by users with different entity permissions may produce different results.
+This means that the same query executed by users with different entity permissions can produce different results.
 
 Scheduled queries are executed under full permissions.
 
@@ -45,7 +45,7 @@ This query can be utilized as a validation query in database connection pool imp
 
 As an alternative, the query can be submitted with Content-Type `text/plain` as text payload with the other parameters included in the query string.
 
-#### `limit` parameter vs `LIMIT` clause
+#### limit parameter versus LIMIT clause
 
 | `limit` | `LIMIT` | **Result** |
 |:---|:---|:---|
@@ -164,7 +164,7 @@ The `metadataFormat` parameter specifies how metadata is incorporated into the C
 
 ## Examples
 
-### `curl` Query Example
+### curl Query Example
 
 ```bash
 curl https://atsd_hostname:8443/api/sql  \
@@ -182,7 +182,7 @@ curl https://atsd_hostname:8443/api/sql  \
   --data 'q=SELECT * FROM "mpstat.cpu_busy" WHERE entity =  '\''nurswghbs001'\'' AND datetime between '\''2018-03-01T17:00:00Z'\'' AND '\''2018-03-02T17:00:00Z'\'''
 ```
 
-### Bash Client Example
+### bash Client Example
 
 Execute query specified in a `query.sql` file and write CSV results to `/tmp/report-1.csv`.
 

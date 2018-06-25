@@ -163,8 +163,8 @@ curl "https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityI
 
 ## Additional examples
 
-- [List Entity Metrics by Name and Tag](examples/list-entity-metrics-by-name-and-tag.md)
-- [List Entity Metrics by Persistence Status](examples/list-entity-metrics-by-persistence.md)
-- [List Entity Metrics by Tags and Description](examples/list-entity-metrics-by-tags-and-description.md)
-- [List Entity Metrics by Min and Max Value](examples/list-entity-metrics-by-min-max-value.md)
-- [List Entity Metrics for Last Insert Date Range](examples/list-entity-metrics-for-last-insert-range.md)
+* [List Entity Metrics by Name and Tag](examples/list-entity-metrics-by-name-and-tag.md)
+* [List Entity Metrics by Persistence Status](examples/list-entity-metrics-by-persistence.md)
+* [List Entity Metrics by Tags and Description](examples/list-entity-metrics-by-tags-and-description.md)
+* [List Entity Metrics by Min and Max Value](examples/list-entity-metrics-by-min-max-value.md)
+* [List Entity Metrics for Last Insert Date Range](examples/list-entity-metrics-for-last-insert-range.md)

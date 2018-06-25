@@ -56,7 +56,7 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| `datetime` | string | `0-1` | The date of the record in ISO-8601 format (1).|
+| `datetime` | string | `0-1` | The date of the record in ISO 8601 format (1).|
 | `time` | long | `0-1` | The date of the record in Unix milliseconds (1). |
 | `entity` | string | `1` | Name of the entity under which the new series is stored. |
 | `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
@@ -134,7 +134,7 @@ series e:dc-1 d:2017-08-02T00:00:00Z m:temp_daily_perc_90=28.24
 
 ### Duplicates
 
-Since a query can create `series` commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
+Since a query can create `series` commands for existing dates, the **Check Last Time** option provides a way to control how duplicates are handled.
 
 If **Check Last Time** is enabled, the `series` command is inserted if its timestamp is greater than the timestamp of the previously stored values for the given series key.
 

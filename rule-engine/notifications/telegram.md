@@ -28,7 +28,7 @@ Install and configure the [Web Driver](web-driver.md) to send chart screenshots 
 
     ![](./images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
+* Send the `/newbot` command and complete the guided process to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
 
 ```txt
     Use this token to access the HTTP API:
@@ -39,7 +39,7 @@ Install and configure the [Web Driver](web-driver.md) to send chart screenshots 
 
 ## Add Bot to Group or Channel
 
-If necessary, follow the prompts to create a new [group](https://telegram.org/faq#q-how-do-i-create-a-grou) or [channel](https://telegram.org/faq_channels#q-what-39s-a-channel).
+If necessary, create a new [group](https://telegram.org/faq#q-how-do-i-create-a-grou) or [channel](https://telegram.org/faq_channels#q-what-39s-a-channel).
 
 ### Add Bot to Group
 

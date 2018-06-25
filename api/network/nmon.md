@@ -16,14 +16,14 @@ nmon p:${parser} e:${entity} f:${file_name} z:${timezone} t:${timeout}
 
 | **Field** | **Type** | **Description**                            |
 |:---|:---|:---|
-| p         | string          | **[Required]**  nmon parser name from **Data > nmon Parsers** page. <br>Specify `p:default` to use the default parser. |
+| p         | string          | **[Required]**  `nmon` parser name from **Data > `nmon` Parsers** page. <br>Specify `p:default` to use the default parser. |
 | e         | string          | **[Required]**  Entity name.                                     |
-| f         | string          | **[Required]**  Name of the nmon file.                      |
+| f         | string          | **[Required]**  Name of the `nmon` file.                      |
 | z         | string          | Time zone ID applied to dates specified in snapshot samples, for example EST.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.|
-| v         | string          | nmon script version for debugging purposes. |
+| v         | string          | `nmon` script version for debugging purposes. |
 | o         | integer         | Read timeout in seconds. <br>Set to 2x snapshot interval to prevent the server from terminating an idle connection.|
 
-The `f` nmon file name is used to re-read the file header from its copy on the server in case of disconnect.
+The `f` `nmon` file name is used to re-read the file header from its copy on the server in case of disconnect.
 
 ## ABNF Syntax
 

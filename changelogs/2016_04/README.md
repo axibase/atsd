@@ -29,8 +29,8 @@
 
 ### Issue 3690
 
-In previous versions of ATSD, the user role, group membership, and entity permissions were cached while the user session was active. If the user authorization was changed by an
-administrator, it was not applied until the active sessions timed out or until the user re-logged into the application. We updated ATSD so that the
+In previous versions of ATSD, the user role, group membership, and entity permissions are cached while the user session is active. If the user authorization is changed by an
+administrator, the setting is not applied until the active sessions timed out or until the user re-logged into the application. ATSD updated so that the
 active sessions are invalided instantly if the authorization is changed by an administrator. As a result, the administrator does not have to manually request the user to logout in order to
 apply any new settings. In addition, the administrator is now able to view which users are online.
 
@@ -126,11 +126,11 @@ WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
 
 ### Issue 3664
 
-In Collector, the following metrics were added for each active container. These metrics are collected only when the Docker command `TOP` is enabled.
+In Collector, added the following metrics for each active container. These metrics are collected only when the Docker command `TOP` is enabled.
 
 ![Figure 6](./Images/Figure6.png)
 
-If the container was running in a prior iteration, and is not running in the next iteration, 0 is sent for both all and filtered metrics.
+If the container is running in a prior iteration, and is not running in the next iteration, `0` is sent for both all and filtered metrics.
 
 ![Figure 7](./Images/Figure7.png)
 

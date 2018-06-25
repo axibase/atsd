@@ -128,7 +128,7 @@ The resulting workflow is implemented as follows:
 
 You can download [this workflow](./resources/atsd-workflow.yxmd) for review in your own Alteryx Designer installation.
 
-The workflow consists of the following steps (nodes):
+The workflow consists of these steps (nodes):
 
 1. **Input Data** tool.
    Repeat the steps in the [Create Database Connection](#create-database-connection) section for this tool, choose

@@ -29,11 +29,11 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 
 Permissions to read and write data for entities in a particular Entity Group are granted to the User Group level.
 
-To _read_ data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
+To read data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
 Groups must be granted a `read` permission to an Entity Group containing the
 entity.
 
-To _write_ data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
+To write data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
 
 ![entity_group_permission](./images/entity_group_permission.png)
 

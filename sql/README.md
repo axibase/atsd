@@ -284,7 +284,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
-|`metric.lastInsertTime`|string | Last time a value was received for this metric by any series. ISO date.|
+|`metric.lastInsertTime`|string | Last time a value is received for this metric by any series. ISO date.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
 |`metric.versioning`|boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
@@ -860,7 +860,7 @@ WHERE tags.file_system LIKE '%a~_b%' ESCAPE '~'
 
 In the example above, the underscore is evaluated as a regular character (not as a wildcard) because the underscore preceded by an `~` escape character.
 
-### REGEX Expression
+### Regular Expressions
 
 The `REGEX` expression matches column value against a [regular expression](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) and returns `true` if the text is matched.
 
@@ -1052,7 +1052,7 @@ The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to
 
 ### Optimizing Interval Queries
 
-Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
+Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause can be inefficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
 ```sql
 WHERE date_format(time, 'yyyy') > '2018'   -- Slow: full scan with string comparison.
@@ -1621,7 +1621,7 @@ HAVING AVG(value) > 10 OR MAX(value) > 90
 
 Partitioning is implemented with the `ROW_NUMBER` function, which returns the sequential number of a row within a partition, starting with 1 for the first row in each partition.
 
-A partition is a subset of all rows within the result set, grouped by an entity and/or series tags. Each row in the result set may belong to only one partition.
+A partition is a subset of all rows within the result set, grouped by an entity and/or series tags. Each row in the result set can belong to only one partition.
 
 For example, a result set partitioned by entity and ordered by time has the following row numbers:
 
@@ -1764,7 +1764,7 @@ ORDER BY row_number() DESC
 
 ### LAST_TIME Syntax
 
-The `last_time` function returns the last time, in milliseconds, when data was received for a given series. It enables filtering of records based on the last insertion date for the given series.
+The `last_time` function returns the last time, in milliseconds, when data is received for a given series. It enables filtering of records based on the last insertion date for the given series.
 
 ```sql
 WITH time comparison_operator last_time_expression
@@ -2101,7 +2101,7 @@ WHERE datetime BETWEEN '2018-03-09T07:07:00Z' AND '2018-03-09T07:08:00Z'
   AND t1.entity = 'nurswghbs001'
 ```
 
-Note that the `t1.entity` column below contains rows with `null` values even though this column was checked in the `WHERE` condition. In this example, `null` values were created at the `OUTER JOIN` stage.
+Note that the `t1.entity` column below contains rows with `null` values even though this column is checked in the `WHERE` condition. In this example, `null` values are created at the `OUTER JOIN` stage.
 
 ```ls
 | t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                |
@@ -2125,7 +2125,7 @@ If the timestamps for joined metrics are identical, the `JOIN` operation merges 
 | 2017-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
 ```
 
-As in the example above, the `cpu_system`, `cpu_user`, `cpu_iowait` metrics were recorded and inserted with the same time.
+As in the example above, the `cpu_system`, `cpu_user`, `cpu_iowait` metrics are recorded and inserted with the same time.
 
 ```ls
 datetime d:2017-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
@@ -2331,7 +2331,7 @@ WHERE datetime > current_hour
 
 #### COUNT
 
-The `COUNT(*)` function returns the number of rows in the result set, whereas the `COUNT(expr)` returns the number of rows where the expression `expr` was not `NULL` or `NaN`.
+The `COUNT(*)` function returns the number of rows in the result set, whereas the `COUNT(expr)` returns the number of rows where the expression `expr` is not `NULL` or `NaN`.
 
 #### PERCENTILE
 
@@ -2708,7 +2708,7 @@ YEAR (datetime | time | datetime expression)
 
 #### CURRENT_TIMESTAMP
 
-The `CURRENT_TIMESTAMP` function returns current database time in ISO-8601 format. The function is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
+The `CURRENT_TIMESTAMP` function returns current database time in ISO 8601 format. The function is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
 
 ```sql
 SELECT CURRENT_TIMESTAMP
@@ -2792,7 +2792,7 @@ AND LOWER(tags.file_system) LIKE '%root'
 
 #### LAG
 
-The `LAG` function lets you access the previous row of the same result set. If the previous row does not exist, the function returns `NULL`.
+The `LAG` function allows you access the previous row of the same result set. If the previous row does not exist, the function returns `NULL`.
 
 ```sql
 LAG(columnName)
@@ -2839,7 +2839,7 @@ WHERE entity = 'qz-1211'
 | 2017-10-04T02:12:30Z | Inactive | 900       | -- excluded: text is 'Inactive' and LAG = '900'
 ```
 
-The `LAG` function in the `SELECT` expression is applied to the filtered result set, after some rows have been excluded by the `LAG` function as part of the `WHERE` clause. Therefore, `LAG()` in `SELECT` and `LAG()` in `WHERE` clauses may return different values.
+The `LAG` function in the `SELECT` expression is applied to the filtered result set, after some rows have been excluded by the `LAG` function as part of the `WHERE` clause. Therefore, `LAG()` in `SELECT` and `LAG()` in `WHERE` clauses can return different values.
 
 ```sql
 SELECT datetime, LAG(value), value, LEAD(value)
@@ -2876,7 +2876,7 @@ WHERE entity = 'nurswgvml007'
 
 #### LEAD
 
-The `LEAD` function lets you access the next row of the same result set. If the next row does not exist, the function returns `NULL`.
+The `LEAD` function allows you access the next row of the same result set. If the next row does not exist, the function returns `NULL`.
 
 ```sql
 LEAD(columnName)
@@ -3056,9 +3056,9 @@ The `OPTION` clause provides hints to the database optimizer on how to execute t
 
 The query can contain multiple `OPTION` clauses specified at the end of the statement.
 
-### `ROW_MEMORY_THRESHOLD` Option
+### ROW_MEMORY_THRESHOLD Option
 
-The database may choose to process rows using the local file system as opposed to memory if the query includes one of the following clauses:
+The database can choose to process rows using the local file system as opposed to memory if the query includes one of the following clauses:
 
 * `JOIN`
 * `ORDER BY`
@@ -3083,7 +3083,7 @@ If `{n}` is zero or negative, the results are processed using the local file sys
 
 This clause overrides the conditional allocation of shared memory established with the **Settings > Server Properties**:`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
 
-The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which may increase response time during heavy read activity.
+The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 
 > The row count threshold is applied to the number of rows selected from the underlying table, and not the number rows returned to the client.
 

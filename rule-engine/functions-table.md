@@ -39,9 +39,9 @@ An empty string is returned if map `m` is `null` or has no records.
 
 Map records with empty or `null` values are ignored.
 
-Numeric values are automatically rounded in web and email notifications and are printed `as is` in other cases.
+Numeric values are automatically rounded in web and email notifications and are printed without modifications in other cases.
 
-The default table header is 'Name, Value'.
+The default table headers are `Name` and `Value`.
 
 Examples:
 

@@ -19,11 +19,11 @@ wget --header="Content-type: text/csv" --header="Content-Encoding: gzip" \
 
 ## Special Parameters
 
-* `config` (required) – name of nmon parser configuration in ATSD.
-* `entity` (optional) – name of entity. If left blank, the parser uses the host record from the [nmon header](headers.md "Headers") as the entity name.
-* `timeZone` (optional) – time zone where the data was recorded.
+* `config` (**required**): name of `nmon` parser configuration in ATSD.
+* `entity` (optional): name of entity. If left blank, the parser uses the host record from the [`nmon` header](./headers.md "Headers") as the entity name.
+* `timeZone` (optional): time zone where the data is recorded.
 
-Multiple `nmon` files can be uploaded simultaneously if archived. The archive can contain multiple `nmon` files from different hosts. In this case, leave the entity field blank in which case the parser defaults to the host record from the [nmon header](headers.md "Headers") as the entity name.
+Multiple `nmon` files can be uploaded simultaneously if archived. The archive can contain multiple `nmon` files from different hosts. In this case, leave the entity field blank in which case the parser defaults to the host record from the [`nmon` header](headers.md "Headers") as the entity name.
 
 ## Supported Compression Formats
 

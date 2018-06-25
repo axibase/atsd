@@ -97,27 +97,27 @@ Description of `write_atsd` plugin options is provided below
  `Cache`          | no           | Name of read plugins whose metrics are cached. Cache feature is used to save disk space in the database by not resending the same values.          | `-`
  `Interval`       | no           | Time in seconds during which values within the threshold are not sent.                                                                                 | `-`
  `Threshold`      | no           | Deviation threshold, in %, from the previously sent value. If threshold is exceeded, then the value is sent regardless of the cache interval.          | `-`
- `StoreRates`     | no           | If set to `true`, convert counter values to rates. If set to `false` counter values are stored as is, i. e. as an increasing integer number.               | `true`
+ `StoreRates`     | no           | If set to `true`, convert counter values to rates. If set to `false` counter values are stored without changes, for example, as an increasing integer number.               | `true`
 
 More information about collectd configuration in [collectd.conf.5](https://collectd.org/documentation/manpages/collectd.conf.5.shtml) manual page.
 
 ## Auto-Start
 
-Enable auto-start for collectd.
+Enable auto-start for `collectd`.
 
-On Ubuntu 14.04
+On Ubuntu `14.04`:
 
 ```sh
 sudo update-rc.d collectd-axibase defaults 90 10
 ```
 
-On CentOS 6.x and RHEL 6.x
+On CentOS `6.x` and RHEL `6.x`:
 
 ```sh
 sudo chkconfig --add collectd-axibase
 ```
 
-On Ubuntu 16.04, CentOS 7.x and RHEL 7.x
+On Ubuntu `16.04`, CentOS `7.x` and RHEL `7.x`
 
 ```sh
 sudo systemctl enable collectd-axibase
@@ -125,7 +125,7 @@ sudo systemctl enable collectd-axibase
 
 ## collectd Portal
 
-Launch live collectd Portal in Axibase Chart Lab.
+Launch live `collectd` Portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/ff756c10)
 

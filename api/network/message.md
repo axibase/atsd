@@ -147,7 +147,7 @@ curl https://atsd_hostname:8443/api/v1/command \
 
 ### Activate Debug Mode
 
-Append `debug` in front of the command to check server reply. If the command was accepted, the server replies with `ok`
+Append `debug` in front of the command to check server reply. If the command is accepted, the server replies with `ok`
 
 ```bash
 echo -e "debug message e:server001 t:type=deploy m:\"branch: master\"" \

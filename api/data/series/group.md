@@ -321,7 +321,7 @@ Response:
 ]}]
 ```
 
-Two interpolated values were added to the second series:
+Two interpolated values are added to the second series:
 
 ```ls
 | datetime             | e1.value | e2.value | SUM |
@@ -337,7 +337,7 @@ Two interpolated values were added to the second series:
 
 #### `period` parameter is specified
 
-Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and lets assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period is calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
+Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period is calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
 
 Query:
 
@@ -371,7 +371,7 @@ Response
 }]
 ```
 
-Interpolated values were added to each of the grouped series:
+Interpolated values added to each of the grouped series:
 
 ```ls
 |                      |          |          | group                | e1 grouped   | e2 grouped   |     |

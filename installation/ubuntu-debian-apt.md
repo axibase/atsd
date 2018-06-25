@@ -40,7 +40,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./"
 
 ### Update Repositories and Install ATSD
 
-Follow the prompts to install ATSD:
+Install ATSD:
 
 ```sh
 sudo apt-get update && sudo apt-get install atsd

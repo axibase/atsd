@@ -14,9 +14,9 @@ Supported algorithms for auto-regressive time series extrapolation include **Hol
 
 ## Reference
 
-- [Editor Settings](#editor-settings)
-- [Editor Tools](#editor-tools)
-- [Using Forecasts](#using-forecasts)
+* [Editor Settings](#editor-settings)
+* [Editor Tools](#editor-tools)
+* [Using Forecasts](#using-forecasts)
 
 ## Editor Settings
 
@@ -83,7 +83,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 | Setting | Description |
 | --- | --- |
-|Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br>- [`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>- [`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>- [`forecast-name`](#charts) Chart setting |
+|Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br>[`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>[`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>[`forecast-name`](#charts) Chart setting |
 |Default Forecast |Use these settings instead of default settings when calculating on-demand forecast. On-demand forecast is calculated at request time if a pre-stored forecast is not available.|
 |Forecast Range |Minimum and Maximum constraints applied to the stored forecast values to ensure that such values are within the specified range. Constraints are applied to the winning forecast after scoring stage.|
 |Forecast Interval |The length of time into the future for which forecasts are to be prepared and stored in the database. Can be rounded upwards to the nearest forecast period.|
@@ -94,19 +94,19 @@ Forecast Settings Editor provides the following tools:
 
 ![](./resources/forecasts_9.png)
 
-- **Calculate Parameters**
+* **Calculate Parameters**
 
   This option calculates algorithm parameters:
 
   ![](./resources/forecasts_11.png)
 
-- **Run**
+* **Run**
 
   This option runs the forecast job and can be used for tests.
 
   ![](./resources/forecasts_12.png)
 
-- **Export**
+* **Export**
 
   Export forecast data in csv.
 
@@ -114,13 +114,13 @@ Forecast Settings Editor provides the following tools:
 
   ![](./resources/forecasts_14.png)
 
-- **Show Meta**
+* **Show Meta**
 
    This option displays values of the main settings by which this forecast is calculated.
 
    ![](./resources/forecasts_16.png)
 
-   Metadata is stored with the forecast. Collection interval is an interval within the real data were extracted to build the forecast.
+   Metadata is stored with the forecast. Collection interval is an interval within the real data extracted to build the forecast.
 
 Split button on the **Data > Forecasts** page can be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
@@ -232,8 +232,8 @@ Payload:
 
 Additional examples:
 
-- [Insert Named Forecast](../api/data/series/examples/insert-named-forecast.md)
-- [Insert Forecast Deviation](../api/data/series/examples/insert-forecast-deviation.md)
+* [Insert Named Forecast](../api/data/series/examples/insert-named-forecast.md)
+* [Insert Forecast Deviation](../api/data/series/examples/insert-forecast-deviation.md)
 
 ### Charts
 

@@ -54,7 +54,7 @@ Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text com
 
 ### Single Command
 
-To send a single command, connect to an ATSD server, send the command in plain text, and terminate the connection.
+To send a single command, connect to an ATSD server, send the command in plain text, and stop the connection.
 
 * netcat: `echo`
 
@@ -68,7 +68,7 @@ echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:1
 printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_host 8081
 ```
 
-* Bash [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
+* `bash` [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
 
 ```bash
 echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_host/8081
@@ -149,7 +149,7 @@ property e:station_2 t:location v:city=Cupertino v:state=CA v:country=USA
 Connection closed by foreign host.
 ```
 
-Note that the server **terminates** the connection if it receives an unsupported or malformed command.
+Note that the server **ceases** the connection if the server receives an unsupported or malformed command.
 
 ```ls
 $ telnet atsd_host 8081
@@ -369,7 +369,7 @@ Reasons for the ATSD server to drop commands:
 * Multiple data points for the same entity, metric, and tags have the same timestamp in which case commands are duplicates and some of them are dropped. This situation can occur if multiple commands for the same series are sent without a timestamp.
 * Data is sent using the UDP protocol and the client UDP buffer or the server UDP buffer overflows.
 * Value is below **Min Value** or above **Max Value** limit specified for the metric and the **Invalid Value Action** is set to `DISCARD`.
-* Last command in a multi-line UDP packed does not terminate with line feed symbol.
+* Last command in a multi-line UDP packed does not end with line feed symbol.
 
 To review dropped commands, `open command*.log` files in ATSD.
 

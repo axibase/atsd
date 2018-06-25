@@ -2,7 +2,7 @@
 
 ## Description
 
-Accepts an nmon file for parsing.
+Accepts an `nmon` file for parsing.
 
 ## Request
 
@@ -22,13 +22,13 @@ Accepts an nmon file for parsing.
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
 | p   | string   | [**Required**] Parser Name as configured on **Configuration:Parsers nmon** page, or set to `default`.|
-| e      | string   | Entity name, typically name of the server where nmon file was generated.|
-| f| string | nmon file name. File name can be optionally specified in the `Content-Disposition` header. |
+| e      | string   | Entity name, typically name of the server where `nmon` file is generated.|
+| f| string | `nmon` file name. File name can be optionally specified in the `Content-Disposition` header. |
 | z | string | Time zone applied to timestamps specified in local time. |
 
 ### Payload
 
-* Payload is nmon file attached as plain text.
+* Payload is `nmon` file attached as plain text.
 
 ## Response
 

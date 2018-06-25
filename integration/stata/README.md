@@ -142,7 +142,7 @@ clear
 odbc load, exec("SELECT tags.category as category, value as weight FROM inflation.cpi.categories.weight ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
 ```
 
-Since the `Weights` are available for only one year, lets assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
+Since the `Weights` are available for only one year, assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
 Perform a cross join of weights with `datetimes`:
 

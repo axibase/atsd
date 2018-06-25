@@ -4,7 +4,7 @@
 
 A command action executes system commands on the ATSD server to instantly react to incoming data by triggering advanced processing and integration tasks.
 
-Such tasks include running bash or Python scripts, or integrating with external systems using their built-in command line tools such as IBM ITM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
+Such tasks include running `bash` or Python scripts, or integrating with external systems using their built-in command line tools such as IBM ITM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
 
 ## Command Interpreter
 
@@ -43,7 +43,7 @@ The command interpreter in ATSD does not support piping, I/O redirection or shel
 
 ### Window Fields
 
-The arguments may include window [fields](window.md#window-fields) and [variables](variables.md) using [placeholder](placeholders.md) syntax, for example `${entity}`. If the placeholder is not found, the placeholder is replaced with an empty string.
+The arguments can include window [fields](window.md#window-fields) and [variables](variables.md) using [placeholder](placeholders.md) syntax, for example `${entity}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ![](./images/command-placeholder.png)
 
@@ -63,7 +63,7 @@ docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/s
 
 The command must complete within the timeout value specified in **Settings > Server Properties > system.commands.timeout.seconds**. The default timeout is 15 seconds.
 
-If the command times out, the script process is stopped with a `SIGTERM` flag and the following text is added to the output:
+If the command times out, the script process is stopped with `SIGTERM` and the following text is added to the output:
 
 ```txt
 Script terminated on timeout: {current timeout value}
@@ -73,7 +73,7 @@ Script terminated on timeout: {current timeout value}
 
 The working directory is set in the `user.dir` setting on the **Settings > System Information** page.
 
-Since the working directory path may change, use the absolute path in command arguments where appropriate.
+Since the working directory path can change, use the absolute path in command arguments where appropriate.
 
 ## Security
 
@@ -117,7 +117,7 @@ KUIEXC000I: Executecommand request was performed successfully. The return value 
 
 If disk space is low, the command reads user credentials from the `itm.pwd` file located in the `axibase` user home directory. After a successful login to the ITM hub server, [`tacmd executecommand`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm)) is launched on the remote server `${upper(entity)}:LZ` where it finds old files in `/tmp` directory (older than 15 days) and deletes them with logging. Finally, the process logs out from the ITM hub server.
 
-By using the `${upper(entity)}` placeholder, the script executes the disk cleanup procedure on the system where the disc space rule alert was raised, to `OPEN` status.
+By using the `${upper(entity)}` placeholder, the script executes the disk cleanup procedure on the system where the disc space rule alert is raised, to `OPEN` status.
 
 A follow-up action, at the `REPEAT` status, can be further configured to cleanup other directories, to bring disk space usage down.
 
@@ -178,7 +178,7 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
 
 #### Description
 
-The rule is configured to calculate a derived metric for the same entity. The derived value is calculated by subtracting the average of values in the window from 100. The new command is inserted back into ATSD under the metric name `derived_cpu_busy` using Unix bash pseudo-file `/dev/tcp/localhost/8081` connected to the ATSD TCP port. The rule is configured to execute the command upon `OPEN` and `REPEAT` statuses with a `15 minute` frequency.
+The rule is configured to calculate a derived metric for the same entity. The derived value is calculated by subtracting the average of values in the window from 100. The new command is inserted back into ATSD under the metric name `derived_cpu_busy` using Unix `bash` pseudo-file `/dev/tcp/localhost/8081` connected to the ATSD TCP port. The rule is configured to execute the command upon `OPEN` and `REPEAT` statuses with a `15 minute` frequency.
 
 #### Path
 

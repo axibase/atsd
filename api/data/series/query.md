@@ -70,7 +70,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 | **Field** | **Type** | **Description** |
 |---|---|---|
 | `tags` | object  | Object with `name:value` fields. <br>Matches series that contain the specified series tags. <br>Tag values support `?` and `*` wildcards. |
-| `exactMatch` | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`.<br>Default: `false` (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but can also include additional tags.|
+| `exactMatch` | boolean | `tags` match operator. **Exact** match if `true`, **partial** match if `false`.<br>Default: `false` (**partial** match).<br>**Exact** match selects series with exactly the same `tags` as requested.<br>**Partial** match selects series with tags that contain requested tags but can also include additional tags.|
 | `tagExpression` | string | An expression to include series with tags that satisfy the specified condition. |
 
 #### Tag Expression
@@ -116,10 +116,10 @@ Processing rules:
 
 Examples:
 
-* `value > 0` - Retrieve samples which are positive numbers.
-* `value > 2 && value <= 3` - Retrieve samples within the specified range.
-* `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported.
-* `Double.isNaN(value)` - Only `NaN` values and deleted values pass this check.
+* `value > 0`: Retrieve samples which are positive numbers.
+* `value > 2 && value <= 3`: Retrieve samples within the specified range.
+* `Math.sin(value) < 0.5`: [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported.
+* `Double.isNaN(value)`: Only `NaN` values and deleted values pass this check.
 
 ### Transformation Fields
 
@@ -148,7 +148,7 @@ The default sequence of group/rate/aggregate transformations can be modified by 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `limit`   | integer | Maximum number of `time:value` samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
-| `direction`| string | Order for applying the `limit` parameter: `ASC` - ascending, `DESC` - descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
+| `direction`| string | Order for applying the `limit` parameter: `ASC`: ascending, `DESC`: descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
 | `seriesLimit`   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database raises a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
 | `cache` | boolean | If `true`, execute the query against the Last Insert table, which is the fastest way to retrieve the last value for a query. Default: `false`.<br>Values in the Last Insert table can be delayed up to 15 seconds , controlled with `last.insert.write.period.seconds` setting. Only 1 value is returned for each series.|
 | `requestId` | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |

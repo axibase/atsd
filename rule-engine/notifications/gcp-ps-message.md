@@ -8,7 +8,7 @@ The example invokes the [Google Cloud Pub/Sub API](https://cloud.google.com/pubs
 
 ## Configuration
 
-Create a new `GCP PS` webhook or import the [template](./resources/gcp-ps-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new `GCP PS` webhook or import the [template](./resources/gcp-ps-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -66,7 +66,7 @@ The `Message` text contains placeholders that are substituted with actual values
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/azure-sb-message-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and follow the prompts.
+Create a new rule or import the [rule template](./resources/azure-sb-message-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
@@ -101,10 +101,10 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 ![](./images/rule_test_commands.png)
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
-To verify that an alert was raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/gcp_ps_message_alert_open.png)
 
-Check the Google Cloud Pub/Sub topic statistics to make sure the new messages arrived.
+Check the Google Cloud Pub/Sub topic statistics to ensure the new messages arrive.
 
 ![](./images/gcp_ps_message_test.png)

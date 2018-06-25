@@ -10,7 +10,7 @@ Once enabled, the database tracks changes made to stored values with the followi
 
 | Field Name | Description |
 | --- | --- |
-|  Version Time  |  Timestamp when insert command was received. Set automatically by ATSD server with millisecond precision.  |
+|  Version Time  |  Timestamp when insert command is received. Set automatically by ATSD server with millisecond precision.  |
 |  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
 |  Version Status  |  User-defined field to classify change events. <br> Set to `invalid` for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
@@ -103,7 +103,7 @@ Open the **Filters** section and enable **Display Versions** setting on export p
 
 ![](./resources/4.png)
 
-* Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
+* Records with version history are highlighted with **blue** and **brown**-colored borders: **blue** border represents the latest value, **brown** border represents a historical, overwritten value.
 * `NaN` represents deleted values.
 * Aggregation functions and other calculations ignore historical and deleted values.
 
@@ -166,11 +166,11 @@ Click the timestamp for the selected record to open the **Data Entry** page.
 
 ![](./resources/9.png)
 
-Change version _Status_ and _Source_, change the `Value` and click **Delete**.
+Change version `Status` and `Source`, change the `Value` and click **Delete**.
 
 ![](./resources/12.png)
 
-Note that the current value for the selected timestamp is not actually deleted. Instead, it is replaced with a `NaN` marker.
+Note that the current value for the selected timestamp is not deleted. Instead, it is replaced with a `NaN` marker.
 
 ![](./resources/13.png)
 

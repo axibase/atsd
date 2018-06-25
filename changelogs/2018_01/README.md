@@ -22,7 +22,7 @@ Issue| Category    | Type    | Subject
 4897 | rule engine | Feature | Implement [`getPropertyLink`](../../rule-engine/functions-link.md#getpropertylink) function for entity.
 4896 | rule engine | Feature | Implement [`getPropertyTypes`](../../rule-engine/functions-property.md#getpropertytypes) function to return a list of property types for the entity.
 4893 | UI | Feature | Statistics page: display tag names based on associated metric and entity tag templates.
-4892 | rule engine | Feature | Extend [`excludeKeys`](../../rule-engine/functions-collection.md#excludekeys) function - add support for patterns.
+4892 | rule engine | Feature | Extend [`excludeKeys`](../../rule-engine/functions-collection.md#excludekeys) function: add support for patterns.
 4889 | rule engine | Bug | Round numbers in [outgoing webhooks](../../rule-engine/notifications/README.md).
 4888 | rule engine | Bug | Email [subject](../../administration/mail-client.md) must not include inline links.
 4883 | rule engine | Bug | Window remains in [`OPEN`](../../rule-engine/window.md#open-status) status after all commands are removed.
@@ -58,7 +58,7 @@ Issue| Category    | Type    | Subject
 4823 | rule editor | Feature | [Rule](../../rule-engine/README.md#rule-engine) Editor refactoring.
 4822 | sql | Bug | Incorrect selection interval inference from [filter conditions](../../sql/README.md#where-clause).
 4821 | sql | Feature | Overlapping error for non-overlapping [intervals](../../sql/README.md#interval-condition).
-4820 | api-rest | Bug | Series query with grouping - incorrect result of [`min_value_time`](../../api/data/series/group.md#grouping-functions) aggregation.
+4820 | api-rest | Bug | Series query with grouping: incorrect result of [`min_value_time`](../../api/data/series/group.md#grouping-functions) aggregation.
 4786 | entity | Feature | Tag Template: add a option to auto-generate a template from tags of the given entity.
 4777 | api-rest | Bug | Series query: empty response instead of expected series ([tag filters](../../api/data/series/query.md#tag-filter) error).
 4768 | api-rest | Bug | Series query: remove empty series from response if [limit](../../api/data/series/query.md#control-fields) is specified.
@@ -68,7 +68,7 @@ Issue| Category    | Type    | Subject
 4700 | sql | Bug | Incorrect `GROUP BY PERIOD` with `END_TIME` and `DST` change inside [period](../../sql/README.md#period).
 4660 | statistics | Feature | DAO: calculate only requested statistics.
 3573 | security | Feature | [SSL](../../administration/ssl-ca-signed.md): upgrade cypher protocols.
-2870 | api-rest | Bug | REST API - authentication [errors](../../api/data/README.md#responses) - check `403` status and json format in responses.
+2870 | api-rest | Bug | REST API: authentication [errors](../../api/data/README.md#responses): check `403` status and json format in responses.
 2709 | rule engine | Feature | Messages: one-click to create rule from message.
 2086 | rule editor | Bug | Rule **Test** not working for messages.
 

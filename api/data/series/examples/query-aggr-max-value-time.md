@@ -121,5 +121,5 @@ Returns minimum and maximum values, as well as timestamps, when these values occ
 ]
 ```
 
-* MAX of 12657536 was reached at MAX_VALUE_TIME 1463961600000 = 2016-05-23T00:00:00.000Z
-* MIN of 8530739 was reached at MIN_VALUE_TIME 1457740800000 = 2016-03-12T00:00:00.000Z
+* `MAX` of `12657536` reached at `MAX_VALUE_TIME 1463961600000 = 2016-05-23T00:00:00.000Z`.
+* `MIN` of `8530739` reached at `MIN_VALUE_TIME 1457740800000 = 2016-03-12T00:00:00.000Z`.

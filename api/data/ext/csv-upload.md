@@ -20,7 +20,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 * Minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Unix time.
 * Maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Unix time.
-* If the date is outside of the above range, file processing terminates at the line containing invalid date and a corresponding error is raised for the client.
+* If the date is outside of the above range, file processing stops at the line containing invalid date and a corresponding error is raised for the client.
 
 ## Request
 
@@ -34,7 +34,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 |**Header**|**Value**|
 |:---|:---|
-| Content-Type | `text/csv` - for plain text CSV file.<br>`application/zip` - for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip` - for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
+| Content-Type | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip`:w for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
 
 #### Multi-part Mode
 
@@ -82,7 +82,7 @@ The response contains a JSON object containing parsing results.
 | `startTime` | Time when parsing stated. |
 | `endTime` | Time when parsing finished. |
 | `processed` | Number of lines read from the file. |
-| `source` | IP address from which the request was received. |
+| `source` | IP address from which the request is received. |
 | `parser` | Parser name. |
 | `errorMessage` | Error message occurred while parsing the file. |
 | `taskStatus` | Parser task status. |

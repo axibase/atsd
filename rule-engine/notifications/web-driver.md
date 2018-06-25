@@ -42,7 +42,7 @@ drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
 
     ![](./images/webdriver.phantomjs.path.png)
 
-* Open the **Alerts > Outgoing Webhooks** page. Create and test a webhook such as [Telegram](telegram.md) or [Slack](slack.md). Verify that screenshot was successfully received in the chat client.
+* Open the **Alerts > Outgoing Webhooks** page. Create and test a webhook such as [Telegram](telegram.md) or [Slack](slack.md). Verify that screenshot is successfully sent to the chat client by the database.
 
 * Review Web Driver settings on **Settings > System Information** page. Verify that no error is displayed.
 
@@ -122,7 +122,7 @@ sudo mv chromedriver /usr/bin/chromedriver
 
     ![](./images/webdriver-google.png)
 
-* Open the **Alerts > Outgoing Webhooks** page. Create and test a webhook such as Telegram or Slack. Verify that screenshot was successfully received in the chat client.
+* Open the **Alerts > Outgoing Webhooks** page. Create and test a webhook such as Telegram or Slack. Verify that screenshot is successfully sent to the chat client.
 
 * Review Web Driver settings on **Settings > System Information** page. Verify that no error is displayed.
 

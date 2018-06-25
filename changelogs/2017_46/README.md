@@ -75,7 +75,7 @@
 
 ### Issue 4708
 
-The query with `ORDER BY datetime DESC LIMIT n` was returning only 1 record instead of `n`.
+The query with `ORDER BY datetime DESC LIMIT n` only returns `1` record instead of `n`.
 
 ```sql
 SELECT datetime, value, tags.city, tags.state,

@@ -6,7 +6,7 @@ Series tags are part of each series composite primary key, whereas the text valu
 
 Since the total number of unique tag value identifiers is [limited](../../api/network/README.md#schema) to `16,777,215`, series tag values are not well suited for values with high cardinality such as random values or continuously incrementing values (time, counters).
 
-The text value, on the other hand, is stored `as is`, without converting it to an identifier. It can be used as an annotation, or order to describe a numeric observation without changing its primary key.
+The text value, on the other hand, is stored without modifications, without converting it to an identifier. It can be used as an annotation, or order to describe a numeric observation without changing its primary key.
 
 ```ls
 series d:2016-10-13T08:00:00Z e:sensor-1 m:temperature=20.3

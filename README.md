@@ -94,11 +94,11 @@ The table schema in ATSD, displayed on the **Settings > Storage > Database Table
 
 ### Glossary
 
-* `Entity` - Name of the object being monitored.
-* `Metric` - Name of the numeric attribute describing the object.
-* `Sample` - Timestamped metric value, `time:number`.
-* `Series` - Sequence of Samples.
-* `Tag` - Custom attribute describing the `Entity`, `Metric`, or `Series`, consists of a name and a value, `name:value`.
+* `Entity`: Name of the object being monitored.
+* `Metric`: Name of the numeric attribute describing the object.
+* `Sample`: Timestamped metric value, `time:number`.
+* `Series`: Sequence of Samples.
+* `Tag`: Custom attribute describing the `Entity`, `Metric`, or `Series`, consists of a name and a value, `name:value`.
 
 ### Example
 

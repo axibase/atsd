@@ -38,7 +38,7 @@ Update repositories:
 sudo yum clean expire-cache
 ```
 
-Follow the prompts to install ATSD:
+Install ATSD:
 
 ```sh
 sudo yum install -y atsd

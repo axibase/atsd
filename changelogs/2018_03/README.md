@@ -30,7 +30,7 @@
 5116 | rule engine | Bug |[`db_message_count`](../../rule-engine/functions-message.md#db_message_count) function returns different results.
 5115 | rule engine | Feature | [`rule_window`](../../rule-engine/functions-rules.md#rule_window) fields.
 5113 | security | Bug | New [user group](../../administration/user-authorization.md#portal-permissions) is allowed to view all portals by default.
-5107 | sql | Feature | Join using subqueries - support for [ON](../../sql/README.md#join-syntax) condition.
+5107 | sql | Feature | Join using subqueries: support for [ON](../../sql/README.md#join-syntax) condition.
 5105 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | Do not display column value if related entity tag value is not set.
 5104 | sql | Feature | [Scheduled](../../sql/scheduled-sql.md#sql-scheduler) report error on missing raw data.
 5103 | monitoring | Bug | Simon console does not work.

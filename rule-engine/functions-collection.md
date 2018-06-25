@@ -96,7 +96,7 @@ likeAny(string s, [string] c) boolean
 
 Returns `true` if string `s` matches any element in the string collection `c`.
 
-The collection `c` can be loaded from a named collection or initialized from an array of strings. The elements of the collection may include patterns with `?` and `*` wildcards.
+The collection `c` can be loaded from a named collection or initialized from an array of strings. The elements of the collection can include patterns with `?` and `*` wildcards.
 
 Examples:
 
@@ -120,7 +120,7 @@ matchList(string s, string c) boolean
 
 Returns `true` if `s` is contained in the collection named `c`.
 
-The collection `c` may include patterns with `?` and `*` wildcards.
+The collection `c` can include patterns with `?` and `*` wildcards.
 
 Example:
 
