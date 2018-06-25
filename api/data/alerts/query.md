@@ -6,9 +6,9 @@ Retrieves **open** alerts for specified filters.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/alerts/query` | `application/json` |
+| `POST` | `/api/v1/alerts/query` | `application/json` |
 
 ### Parameters
 

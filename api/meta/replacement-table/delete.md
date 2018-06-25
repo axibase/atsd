@@ -8,7 +8,7 @@ Deletes the specified replacement table.
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| DELETE | `/api/v1/replacement-tables/{name}` | `application/json` |
+| `DELETE` | `/api/v1/replacement-tables/{name}` | `application/json` |
 
 ### Path Parameters
 

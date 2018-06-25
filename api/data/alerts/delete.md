@@ -6,9 +6,9 @@ Deletes specified alerts by id from the memory store.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/alerts/delete` | `application/json` |
+| `POST` | `/api/v1/alerts/delete` | `application/json` |
 
 ### Parameters
 
@@ -20,7 +20,7 @@ An array of objects containing an `id` field to identify the deleted alerts.
 
 |**Field**|**Description**|
 |:---|:---|
-|id|Alert id|
+|`id`|Alert id|
 
 ## Response
 

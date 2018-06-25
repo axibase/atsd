@@ -8,7 +8,7 @@ Retrieves database version including licensing details as well as a `date` objec
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/version` |
+| `GET` | `/api/v1/version` |
 
 ## Response
 

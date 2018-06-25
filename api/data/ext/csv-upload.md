@@ -26,7 +26,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 | **Method** | **Path** |
 |:---|:---|
-| POST | `/api/v1/csv` |
+| `POST` | `/api/v1/csv` |
 
 ### Headers
 
@@ -34,13 +34,13 @@ This method supports processing of the uploaded attached file as data as well as
 
 |**Header**|**Value**|
 |:---|:---|
-| Content-Type | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip`:w for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
+| `Content-Type` | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip`:w for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
 
 #### Multi-part Mode
 
 |**Header**|**Value**|
 |:---|:---|
-| Content-Type | `multipart/*`, for example `multipart/form-data` or  `multipart/mixed`. <br>Content type for the file part itself must be set as described in [File Data Mode](#file-data-mode) above.|
+| `Content-Type` | `multipart/*`, for example `multipart/form-data` or  `multipart/mixed`. <br>Content type for the file part itself must be set as described in [File Data Mode](#file-data-mode) above.|
 
 ### Query String Parameters
 

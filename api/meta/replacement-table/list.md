@@ -10,7 +10,7 @@ Replacement tables are used for key-value lookups in [SQL queries](../../../sql/
 
 | **Method** | **Path** |
 |:---|:---|:---|
-| GET | `/api/v1/replacement-tables/{format}` |
+| `GET` | `/api/v1/replacement-tables/{format}` |
 
 ### Path Parameters
 

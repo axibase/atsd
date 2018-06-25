@@ -24,9 +24,9 @@ The processing behavior is different from the **Data Entry** page, which stops p
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method| Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/command` | `text/plain` |
+| `POST` | `/api/v1/command` | `text/plain` |
 
 ### Query String Parameters
 

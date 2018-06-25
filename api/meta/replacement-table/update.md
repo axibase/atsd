@@ -14,7 +14,7 @@ If `format` is `json`, the request updates both metadata and records. If `format
 
 | **Method** | **Path** |
 |:---|:---|---:|
-| PATCH | `/api/v1/replacement-tables/{format}/{name}` |
+| `PATCH` | `/api/v1/replacement-tables/{format}/{name}` |
 
 ### Path Parameters
 

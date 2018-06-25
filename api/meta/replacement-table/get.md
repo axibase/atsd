@@ -33,7 +33,7 @@ key-2,value-2
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/replacement-tables/{format}/{name}` |
+| `GET` | `/api/v1/replacement-tables/{format}/{name}` |
 
 ### Path Parameters
 

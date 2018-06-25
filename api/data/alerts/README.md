@@ -1,8 +1,8 @@
 # Data API: Alerts Methods
 
-| **Name** | **Method** | **Path** | **Content-Type** | **Description** |
-|:---|:---|:---|:---|:---|
-| [Query](query.md) | POST | `/api/v1/alerts/query` | `application/json` | Retrieve open alerts for specified filters. |
-| [History Query](history-query.md) | POST | `/api/v1/alerts/history/query` | `application/json` | Retrieve closed alerts for specified filters. |
-| [Update](update.md) | POST | `/api/v1/alerts/update` | `application/json` | Change acknowledgement status of the specified open alerts. |
-| [Delete](delete.md) | POST | `/api/v1/alerts/delete` | `application/json` | Delete specified alerts by id from the memory store. |
+| **Name** | **Method** / **Path** / **Description** |
+|:---|:---|
+| [Query](./alerts/query.md) | `POST` `/alerts/query` <br>Retrieves open alerts for specified filters. |
+| [History Query](./alerts/history-query.md) | `POST` `/alerts/history/query` <br>Retrieve closed alerts for specified filters. |
+| [Update](./alerts/update.md) | `POST` `/alerts/update` <br>Change acknowledgement status of the specified open alerts. |
+| [Delete](./alerts/delete.md) | `POST` `/alerts/delete` <br>Delete specified alerts by id from the memory store. |

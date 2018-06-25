@@ -6,9 +6,9 @@ Retrieves a list of **closed** alerts matching specified fields.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/alerts/history/query` | `application/json` |
+| `POST` | `/api/v1/alerts/history/query` | `application/json` |
 
 ### Parameters
 

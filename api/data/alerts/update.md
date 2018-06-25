@@ -10,9 +10,9 @@ If the `acknowledged` property is not specified, the alert is un-acknowledged.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/alerts/update` | `application/json` |
+| `POST` | `/api/v1/alerts/update` | `application/json` |
 
 ### Parameters
 
@@ -24,8 +24,8 @@ An array of objects containing an `id` field to identify the alert and its new `
 
 |**Field**|**Type**|**Required**|**Description**|
 |:---|:---|:---|:---|
-|id|number|yes|Alert id.|
-|acknowledged|boolean|no|Acknowledgement status. Default `false`.|
+|`id`|number|yes|Alert id.|
+|`acknowledged`|boolean|no|Acknowledgement status. Default `false`.|
 
 ## Response
 

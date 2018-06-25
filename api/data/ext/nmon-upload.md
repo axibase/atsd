@@ -8,14 +8,14 @@ Accepts an `nmon` file for parsing.
 
 | **Method** | **Path** |
 |:---|:---|
-| POST | `/api/v1/nmon` |
+| `POST` | `/api/v1/nmon` |
 
 ### Headers
 
 |**Header**|**Value**|
 |:---|:---|
-| Content-Type | `text/csv` or `text/plain` |
-| Content-Disposition | `form-data; filename=fname`, for example <br>`Content-Disposition: form-data; filename=NURSWGVML070_160318_1012.nmon` |
+| `Content-Type` | `text/csv` or `text/plain` |
+| `Content-Disposition` | `form-data; filename=fname`, for example <br>`Content-Disposition: form-data; filename=NURSWGVML070_160318_1012.nmon` |
 
 ### Query String Parameters
 
