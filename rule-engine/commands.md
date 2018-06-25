@@ -43,7 +43,9 @@ The command interpreter in ATSD does not support piping, I/O redirection or shel
 
 ### Window Fields
 
-The arguments can include window [fields](window.md#window-fields) and [variables](variables.md) using [placeholder](placeholders.md) syntax, for example `${entity}`. If the placeholder is not found, the placeholder is replaced with an empty string.
+Rule engine exposes window [fields](window.md#window-fields) and [variables](variables.md) as environment variables to derived process.
+
+The arguments can include calculated values using [placeholder](placeholders.md) syntax, for example `${upper(entity)}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ![](./images/command-placeholder.png)
 
