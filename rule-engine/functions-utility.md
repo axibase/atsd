@@ -77,28 +77,24 @@ Examples:
   toNumber(object a) number
 ```
 
-Converts input object to number. If `a` is null or blank string, function returns `0`.
-If `a` is number, function returns `a` without modification.
+Converts input object to floating-point number. If `a` is null or blank string, function returns `0.0`.
 If `a` is not a string or cannot be parsed as number, function returns `Double.NaN`.
-Otherwise, function returns the most appropriate numeric type for `a`.
+Otherwise, function returns `a` converted to floating-point number.
 
 Value table:
 
 Input | Result
 ----|---
-null | 0
-"" | 0
-" " | 0
+null | 0.0
+"" | 0.0
+" " | 0.0
 "not a number" | NaN
 [] | NaN
-0 | 0
-1 | 1
-"0" | 0
-"1" | 1
-"1L" | 1 (Long)
+0 | 0.0
+1 | 1.0
+"0" | 0.0
+"1" | 1.0
 "1.0" | 1.0 (Float)
-"1.0f" | 1.0 (Float)
-"1.0d" | 1.0 (Double)
 
 ## `printObject`
 
