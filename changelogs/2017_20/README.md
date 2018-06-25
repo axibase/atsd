@@ -22,7 +22,7 @@
 
 ### Issue 4196
 
-Sample curl command:
+Sample `curl` command:
 
 ```bash
  curl -k -X POST --data-binary @command.txt.gz \
