@@ -41,19 +41,19 @@ Converts the input string or number `a` to a boolean value. `true` is returned b
 
 Value table:
 
-Input | Type | boolean
+Input | Type | Result
 ----|---|---
-yes | string | `true`
-YES | string | `true`
-on | string | `true`
-1 | string | `true`
-1 | number | `true`
-no | string | `false`
-NO | string | `false`
-hello | string | `false`
-0 | string | `false`
-0 | number | `false`
-3 | number | `false`
+`yes` | string | `true`
+`YES` | string | `true`
+`on` | string | `true`
+`1` | string | `true`
+`1` | number | `true`
+`no` | string | `false`
+`NO` | string | `false`
+`hello` | string | `false`
+`0` | string | `false`
+`0` | number | `false`
+`3` | number | `false`
 
 Examples:
 
@@ -77,24 +77,24 @@ Examples:
   toNumber(object a) number
 ```
 
-Converts input object to floating-point number. If `a` is null or blank string, function returns `0.0`.
-If `a` is not a string or cannot be parsed as number, function returns `Double.NaN`.
-Otherwise, function returns `a` converted to floating-point number.
+Converts the input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
+If `a` cannot be parsed as a number, the function returns `Double.NaN`.
 
 Value table:
 
 Input | Result
 ----|---
-null | 0.0
-"" | 0.0
-" " | 0.0
-"not a number" | NaN
-[] | NaN
-0 | 0.0
-1 | 1.0
-"0" | 0.0
-"1" | 1.0
-"1.0" | 1.0 (Float)
+`null` | `0.0`
+`""` | `0.0`
+`" "` | `0.0`
+`"hello"` | `NaN`
+`"null"` | `NaN`
+`[]` | `NaN`
+`0` | `0.0`
+`1` | `1.0`
+`"0"` | `0.0`
+`"1"` | `1.0`
+`"1.0"` | `1.0`
 
 ## `printObject`
 
