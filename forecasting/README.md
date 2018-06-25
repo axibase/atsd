@@ -44,13 +44,13 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 | --- | --- |
 |Metric |Metric name for which forecasts are calculated.|
 |Entity  |If selected, forecasts are calculated for the specified entity. Supersedes `Entity Group` selector. If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
-|Entity Group  |If selected, forecasts are calculated for entities contained in the specified entity group.|
-|Tags  |Prepare forecasts only for series containing the specified series tags.|
-|End Time  |End time of the `Data Selection Interval` and `Series Selection Interval`. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If not defined, the field is set to the time the job is run.|
-|Data Selection Interval  |Time frame for selecting detailed data that is used as forecast input. The end of the interval can be specified in the `End Time` field, otherwise the end of the selection interval is set to current time.|
-|Series Selection Interval  |Ignore any series with Last Insert Time before `End Time` by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
-|Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
-|Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|
+|Entity Group |If selected, forecasts are calculated for entities contained in the specified entity group.|
+|Tags |Prepare forecasts only for series containing the specified series tags.|
+|End Time |End time of the `Data Selection Interval` and `Series Selection Interval`. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If not defined, the field is set to the time the job is run.|
+|Data Selection Interval |Time frame for selecting detailed data that is used as forecast input. The end of the interval can be specified in the `End Time` field, otherwise the end of the selection interval is set to current time.|
+|Series Selection Interval |Ignore any series with Last Insert Time before `End Time` by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
+|Calendar |Ignore detailed values within the time intervals listed in the calendar.|
+|Empty Period Threshold |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|
 
 For data exclusion options, see [Calendar Exception Settings](calendar_exceptions_testing.md).
 

@@ -118,7 +118,7 @@ Property | Default Value | Description
 
 Property | Default Value | Description
 ---|---|---
-`sql.metric.like.limit` | 50 | Maximum number of metrics matched by  [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd_series-table) tables. |
+`sql.metric.like.limit` | 50 | Maximum number of metrics matched by [`metric LIKE`](../sql/examples/select-atsd_series.md#metric-like-condition) expression in [`atsd_series`](../sql/examples/select-atsd_series.md#select-from-atsd_series-table) tables. |
 `sql.tmp.storage.max_rows_in_memory` | 51,200 | Maximum number of rows to be processed in memory by [grouping](../sql/README.md#grouping) and [ordering](../sql/README.md#ordering) queries. The limit is shared by all concurrently executing queries. If a query selects more rows than remain in shared memory, the query is processed by ATSD using a temporary table which results in increased response times.|
 
 ### Cache

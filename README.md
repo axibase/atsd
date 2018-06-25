@@ -102,9 +102,9 @@ The table schema in ATSD, displayed on the **Settings > Storage > Database Table
 
 ### Example
 
-To store some temperature observations for bioreactor `BR1740` enclosure located at site `SVL2` in Sunnyvale, as well as room temperature at the same site, send the below into ATSD.
+To store some temperature observations for bioreactor `BR1740` enclosure located at site `SVL2` in Sunnyvale, as well as room temperature at the same site, send these commands into ATSD.
 
-Metadata commands contain descriptive attributes and can be sent only once (or whenever these attributes change).
+Metadata commands contain descriptive attributes and can be sent only once, or whenever these attributes change.
 
 ```elm
 entity e:BR1740 t:type=Bioreactor t:city=Sunnyvale t:site=SVL2
