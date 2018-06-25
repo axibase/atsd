@@ -36,14 +36,14 @@ This query can be utilized as a validation query in database connection pool imp
 |:---|:---|:---|
 | `q` | string | [**Required**] Query text. |
 | `outputFormat` | string | Output format: `csv` or `json`. Default: `csv`. <br>A special `null` format can be specified for performance testing. If format is `null`, the query is executed but the response output is not produced by the database.|
-| `metadataFormat` | string | Metadata format for CSV format. Default: `HEADER`. <br>Supported values: `NONE`, `HEADER`, `EMBED`, `COMMENTS`. |
+| `metadataFormat` | string | Metadata format for CSV format. Default: `HEADER`. <br>Allowed values: `NONE`, `HEADER`, `EMBED`, `COMMENTS`. |
 | `queryId` | string | User-defined handle submitted at the request time to identify the query, if it needs to be cancelled. |
 | `limit` | integer | Maximum number of rows to return. Default: 0 (not applied).<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
 | `discardOutput` | boolean | If set to `true`, discards the produced content without sending it to the client. |
-| `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe deserialization on the client. |
+| `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe parsing on the client. |
 | `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix milliseconds since `1970-01-01T00:00:00Z`, similar to the `time` column. |
 
-As an alternative, the query can be submitted with Content-Type `text/plain` as text payload with the other parameters included in the query string.
+As an alternative, the query can be submitted as text payload with `Content-Type` header set to `text/plain` and other parameters included in the query string.
 
 #### `limit` parameter vs `LIMIT` clause
 

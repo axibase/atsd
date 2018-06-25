@@ -79,10 +79,10 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 | --- | --- | --- | --- |
 |  `title`  |  `title = CPU Busy Portal`  |  Portal name.  |  |
 |  `dialog-maximize`  |  `dialog-maximize = true`  |  If enabled, the dialog window is expanded to the entire portal page.<br>Dialog window can be opened by clicking on the widget header.<br>Default: `true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/14/)  |
-|  `display-panels`  |  `display-panels = true`  |  Display widget controls.<br>Possible values: `true`, `false`, `hover`.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  |
-|  `expand-panels`  |  `expand-panels = compact`  |  Expand widget controls.<br>Possible values: `all`, `compact`, `none`.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  |
+|  `display-panels`  |  `display-panels = true`  |  Display widget controls.<br>Allowed values: `true`, `false`, `hover`.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  |
+|  `expand-panels`  |  `expand-panels = compact`  |  Expand widget controls.<br>Allowed values: `all`, `compact`, `none`.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  |
 |  `periods`  |  `periods = 20 minute, 4 hour`  |  Add custom periods to aggregation controls in the top-right corner of the widget.  |  [View](https://apps.axibase.com/chartlab/fedaa42e/45/)  |
-|  `buttons`  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: `update`, `reset`.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  |
+|  `buttons`  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Allowed values: `update`, `reset`.<br>`update` stops/resumes the loading of new data into the widget.<br>`reset` is supported only in the table widget. The parameter resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  |
 
 ### Interval Settings
 

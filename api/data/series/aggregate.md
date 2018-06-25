@@ -22,7 +22,7 @@ The aggregation process is implemented as follows:
 | `threshold`    | object  | Object containing the minimum / maximum range for a `THRESHOLD_*` aggregator.  |
 | `calendar`     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
 | `workingMinutes` | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`.<br>Default: `0`. |
 
 ### Period
 
@@ -32,7 +32,7 @@ The aggregation process is implemented as follows:
 |:---|:---|:---|
 | `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | `count`  | number | Number of time units contained in the period. |
-| `align` | string | Alignment of the period start/end time. Default: `CALENDAR`.|
+| `align` | string | Alignment of the period start/end time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`.|
 | `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information** page.|
 
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.

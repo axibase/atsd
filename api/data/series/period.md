@@ -5,8 +5,8 @@ Period is a repeating time interval used to group samples occurred within each i
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
 | `count`  | number | Number of time units contained in the period. |
-| `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
-| `align` | string | Alignment of the period start time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
+| `unit`  | string | [Time unit](time-unit.md), for example `MINUTE`, `HOUR`, `DAY`. |
+| `align` | string | Alignment of the period start time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`. |
 | `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone.|
 
 ## Examples
@@ -37,7 +37,7 @@ For example, `1 HOUR` initializes 1-hour long periods starting at `0` minutes of
 |:---|:---|
 | `CALENDAR` | Period start is rounded down to the nearest time unit. |
 | `START_TIME` | First period begins at start time specified in the query. |
-| `FIRST_VALUE_TIM`E` | First period begins at the time of first retrieved value. |
+| `FIRST_VALUE_TIME` | First period begins at the time of first retrieved value. |
 | `END_TIME` | Last period ends on end time specified in the query. |
 
 ### `CALENDAR` Alignment
@@ -52,15 +52,15 @@ The `CALENDAR` alignment calculates the initial period according to the rules be
 
 | **Time Unit**   | **Base Time (Rounded)** |
 |-------------|-----------|
-| MILLISECOND | 0m:0s in a given hour. |
-| SECOND | 0m:0s in a given hour. |
-| MINUTE | 0m:0s in a given hour. |
-| HOUR | 0h:0m:0s on a given day. |
-| DAY | 0h:0m:0s on the 1st day in a given month. |
-| WEEK | 0h:0m:0s on the 1st Monday in a given month. |
-| MONTH | 0h:0m:0s on January 1st in a given year. |
-| QUARTER | 0h:0m:0s on January 1st in a given year. |
-| YEAR | 0h:0m:0s on January 1st, 1970. |
+| `MILLISECOND` | 0m:0s in a given hour. |
+| `SECOND` | 0m:0s in a given hour. |
+| `MINUTE` | 0m:0s in a given hour. |
+| `HOUR` | 0h:0m:0s on a given day. |
+| `DAY` | 0h:0m:0s on the 1st day in a given month. |
+| `WEEK` | 0h:0m:0s on the 1st Monday in a given month. |
+| `MONTH` | 0h:0m:0s on January 1st in a given year. |
+| `QUARTER` | 0h:0m:0s on January 1st in a given year. |
+| `YEAR` | 0h:0m:0s on January 1st, 1970. |
 
 For example, if period is `2 HOUR`, start date of `2016-06-20 15:08` is rounded to `2016-06-20 00:00` as the **base** time, and the initial period starts at `2016-06-20 16:00`.
 

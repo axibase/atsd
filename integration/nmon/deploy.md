@@ -35,7 +35,7 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 |  nmon.c  |  nmon snapshot count.  |
 |  nmon.cron.hour  |  cron task start hour.  |
 |  nmon.cron.minute  |  cron task start minute.  |
-|  atsd.protocol  |  Data transfer protocol.<br>Possible values: telnet, ssh.  |
+|  atsd.protocol  |  Data transfer protocol.<br>Allowed values: `telnet`, `ssh`.  |
 |  atsd.port  |  ATSD TCP port.  |
 |  atsd.key  |  Path to ssh key for readonly account.<br>`id_rsa_atsdreadonly` by default.<br>Optional parameter.  |
 |  atsd.user  |  Readonly user account.<br>`atsdreadonly` by default.<br>Optional parameter.  |

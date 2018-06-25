@@ -42,7 +42,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 | Field | Description |
 | --- | --- |
 |  Name  |  Export job name.  |
-|  Data Type  |  Type of data exported.<br>Possible values: history, forecast.  |
+|  Data Type  |  Type of data exported.<br>Allowed values: `History`, `Forecast`.  |
 |  Metric  |  Metric name for which data is exported. Data can be exported for one metric at a time.  |
 |  Entity  |  If selected, exported data is limited to the specified entity. Supersedes the Entity Group selector.  |
 |  Entity Group  |  If selected, exported data is limited to entities contained in the specified entity group. Supersedes Entity Expression field.  |
@@ -63,8 +63,8 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 
 | Field | Description |
 | --- | --- |
-|  Format  |  Export file format.<br>Possible values: CSV, XLSX.  |
-|  Compression  |  Compression of exported files.<br>Possible values: none, gzip, zip.  |
+|  Format  |  Export file format.<br>Allowed values: `CSV`, `XLSX`.  |
+|  Compression  |  Compression of exported files.<br>Allowed values: `none`, `gzip`, `zip`.  |
 |  Output Path  |  Absolute path for exported files.<br>Expressions can be used to create timestamped files.<br>For example: `/tmp/daily/${yyyy-MM-dd}.csv` which creates the following file `/tmp/daily/2015/08/02.csv`.<br>This means that exported files are grouped by month and year, each in their relevant directory.<br>Supported placeholders: `${ENTITY}, ${ENTITY.tagName}, ${METRIC}, ${METRIC.tagName}, ${yyyy-MM-dd}, ${yyyy/MM/dd}`.  |
 |  Split by Entity  |  Creates a new file for each exported entity, which is useful when exporting data for multiple entities.<br>If Output Path contains `${ENTITY}`, then for each entity the name is substituted.<br>If Output Path does not contain `${ENTITY}`, then the entity name is added to the end of the file name.<br>For example: `daily2015-07-31-nurswgsvl007.csv`.  |
 |  Annotation  |  Custom annotation that is added above the exported time series.<br>Can include any text, characters, and numbers.<br>If the field is left empty, no custom annotation is added.<br>To include entity name, entity tags, metric names, or metric tags use the following placeholders as part of the annotation text:<br>`${ENTITY}`<br>`${ENTITY.tag1}`<br>`${METRIC}`<br>`${METRIC.tag2}`  |
