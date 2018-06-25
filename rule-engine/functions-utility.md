@@ -4,6 +4,7 @@
 
 * [`ifEmpty`](#ifempty)
 * [`toBoolean`](#toboolean)
+* [`toNumber`](#tonumber)
 * [`getURLHost`](#geturlhost)
 * [`getURLPort`](#geturlport)
 * [`getURLProtocol`](#geturlprotocol)
@@ -36,23 +37,23 @@ Examples:
   toBoolean(object a) boolean
 ```
 
-Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string "true", "yes", "on", "1" (case-**IN**sensitive) or if `a` is equal to the number `1`.
+Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string `true`, `yes`, `on`, `1` (case-**IN**sensitive) or if `a` is equal to the number `1`.
 
 Value table:
 
-Input | Type | boolean
+Input | Type | Result
 ----|---|---
-yes | string | `true`
-YES | string | `true`
-on | string | `true`
-1 | string | `true`
-1 | number | `true`
-no | string | `false`
-NO | string | `false`
-hello | string | `false`
-0 | string | `false`
-0 | number | `false`
-3 | number | `false`
+`yes` | string | `true`
+`YES` | string | `true`
+`on` | string | `true`
+`1` | string | `true`
+`1` | number | `true`
+`no` | string | `false`
+`NO` | string | `false`
+`hello` | string | `false`
+`0` | string | `false`
+`0` | number | `false`
+`3` | number | `false`
 
 Examples:
 
@@ -69,6 +70,31 @@ Examples:
   toBoolean(1)
   toBoolean('On')
 ```
+
+## `toNumber`
+
+```javascript
+  toNumber(object a) number
+```
+
+Converts the input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
+If `a` cannot be parsed as a number, the function returns `Double.NaN`.
+
+Value table:
+
+Input | Type | Result
+----|---|---
+`null` | - | `0.0`
+`""` | string | `0.0`
+`" "` | string | `0.0`
+`"hello"` | string | `NaN`
+`"null"` | string | `NaN`
+`"0"` | string | `0.0`
+`"1"` | string | `1.0`
+`"1.0"` | string | `1.0`
+`[]` | array | `NaN`
+`0` | number | `0.0`
+`1` | number | `1.0`
 
 ## `printObject`
 
@@ -152,7 +178,7 @@ windowStatus,OPEN
   getURLHost(string u) string
 ```
 
-Retrieves the **host** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
+Retrieves the **host** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -184,7 +210,7 @@ Example:
   getURLProtocol(string u) string
 ```
 
-Retrieves the **protocol** from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
+Retrieves the **protocol** from URL string `u`. If the URL `u` is `null`, empty or invalid, exception is thrown.
 
 Example:
 
@@ -199,7 +225,7 @@ Example:
   getURLPath(string u) string
 ```
 
-Retrieves the **path** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
+Retrieves the **path** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -214,7 +240,7 @@ Example:
   getURLQuery(string u) string
 ```
 
-Retrieves the **query string** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
+Retrieves the **query string** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -229,7 +255,7 @@ Example:
   getURLUserInfo(string u) string
 ```
 
-Retrieves the `user:password` from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
+Retrieves the `user:password` from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
