@@ -102,7 +102,7 @@ To restrict the rule to specific entities, enter an entity name or a name patter
 
 ![](./images/filter-entity.png)
 
-As a more flexible alternative, the entity condition can be encoded in the filter expression:
+For more flexible filtering, such as using negation or entity tag comparison, use the main [filter expression](#filter-expression) instead:
 
 ```javascript
 entity != 'nurswgvml007'
@@ -118,9 +118,9 @@ The filter discards commands for entities that do not belong to one of the entit
 
 ![](./images/filter-entity-group.png)
 
-## Date Filter
+## Time Filter
 
-If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter is typically used to ignore historical data.
+If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter can be used to ignore delayed and out-of-order data.
 
 ![](./images/filter-time.png)
 
