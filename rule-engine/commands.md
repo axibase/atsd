@@ -2,56 +2,101 @@
 
 ## Overview
 
-A command action executes system commands on the ATSD server to instantly react to incoming data by triggering advanced processing and integration tasks.
+A command action executes system commands on the ATSD server to trigger advanced processing and integration tasks based on analysis of incoming data.
 
 Such tasks include running `bash` or Python scripts, or integrating with external systems using their built-in command line tools such as IBM ITM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
 
 ## Command Interpreter
 
-When configuring a command action, you need to provide the executable path or system command name and optional command arguments.
+To execute a command, specify a path to the executable and optional arguments.
 
-### Path
+### Program Path
 
-Specify the command name or absolute path to the executable, for example:
+Specify the command name or absolute path to the executable, for example `/home/axibase/disk_cleanup.sh`.
 
-```sh
-/home/axibase/disk_cleanup.sh
-```
-
-Specify full path to the program even for built-in utilities such as `bash` or `find`. To lookup the program path, execute `which {command}`, for example `which bash`:
+Specify full path to the program. To lookup the path for a built-in command, execute `which {command}`.
 
 ```sh
-$ which bash
-/bin/bash
+$ which find
+/usr/bin/find
 ```
 
-**Do not specify program arguments in the path field.**
+> Do **not** include arguments in the **Executable Path** field.
 
-### Arguments
+### Program Arguments
 
-Specify optional arguments passed to the executable, one argument per line.
+Specify optional arguments passed to the executable, one argument per line. Arguments with whitespace or quote characters are automatically quoted.
 
 ![](./images/command-script.png)
 
-Arguments that contains whitespace or quotes are quoted automatically.
-
-### Piping, Redirection, Shell Expansion
-
-The command interpreter in ATSD does not support piping, I/O redirection or shell expansion. If the command includes these operations, delegate its interpretation and handling to a spawned process using `bash -c` option.
-
-![](./images/command-bash-c.png)
-
-### Window Fields
-
-Rule engine exposes window [fields](window.md#window-fields) and [variables](variables.md) as environment variables to derived process.
-
-The arguments can include calculated values using [placeholder](placeholders.md) syntax, for example `${upper(entity)}`. If the placeholder is not found, the placeholder is replaced with an empty string.
+The arguments can include [window fields](window.md#window-fields) and calculated values using [placeholder](placeholders.md) syntax, for example `${tags.location}` or `${upper(entity)}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ![](./images/command-placeholder.png)
 
+### Environment Variables
+
+As an alternative to passing arguments, you can access [window fields](window.md#window-fields) and user-defined rule [variables](variables.md) as environment variables.
+
+* `bash` script
+
+```bash
+#!/usr/bin/env bash
+
+# access window fieds by name
+ent=${entity}
+
+# use awk to access variables that contain special characters
+dsk=$(awk 'BEGIN {print ENVIRON["tags.disk"]}')
+
+echo "entity = ${ent}"
+echo "disk   = ${dsk}"
+echo "-------------"
+printenv | sort
+```
+
+```txt
+entity = nursvgvml007
+disk   = sda1
+-------------
+HOME=/home/axibase
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+...
+alert_duration=00:00:10:49
+alert_duration_interval=10m:49s
+...
+tags.disk=sda1
+value=10.0
+...
+```
+
+* Python script
+
+```python
+#!/usr/bin/env python
+import os
+
+# use os.getenv to access environment variables
+ent=os.getenv("entity")
+dsk=os.getenv("tags.disk")
+
+print("entity={}".format(ent))
+print("disk={}".format(dsk))
+
+print("\n-------------")
+for key, value in sorted(os.environ.items()):
+    print("{}={}".format(key, value))
+
+```
+
+### Piping, Redirection, Shell Expansion
+
+The command interpreter in ATSD does not support piping, I/O redirection or shell expansion. If the command needs to perform these operations, delegate these tasks to a spawned process using `bash -c` option.
+
+![](./images/command-bash-c.png)
+
 ## Command Execution
 
-The command can be configured to execute on `OPEN`, `CANCEL` and `REPEAT` status changes. To execute the command, enter a valid executable path for the selected status trigger.
+The command can be configured to execute on `OPEN`, `CANCEL` and `REPEAT` status changes. To execute the command, enter a valid executable path for the selected status trigger or click **Same as 'On Open'** to re-use the configuration.
 
 If the executable path is empty, no command is executed for this status trigger.
 
@@ -73,7 +118,7 @@ Script terminated on timeout: {current timeout value}
 
 ## Working Directory
 
-The working directory is set in the `user.dir` setting on the **Settings > System Information** page.
+The working directory is displayed in the `user.dir` setting on the **Settings > System Information** page.
 
 Since the working directory path can change, use the absolute path in command arguments where appropriate.
 
@@ -83,7 +128,7 @@ Commands are executed by the `axibase` user.
 
 Ensure that the `axibase` user has permissions to execute the command and that the script has the `+x` execution bit.
 
-To complete disable execution of system commands in the rule engine, set `system.commands.enabled` setting to `No` on **Settings > Server Properties** page.
+To complete disable execution of system commands in the rule engine, set `system.commands.enabled` setting to `No` on the **Settings > Server Properties** page.
 
 ## Logging
 
@@ -203,110 +248,3 @@ The rule is configured to calculate a derived metric for the same entity. The de
 ```
 
 ![](./images/system-command-derived.png)
-
-### Environment Variables
-
-#### Description
-
-Example of access to rule window through environment variables.
-
-#### Bash Script
-
-```sh
-#!/usr/bin/env bash
-echo "entity=${entity}"
-# to access environment variables that can contain special characters, use following syntax:
-loc=$(awk 'BEGIN {print ENVIRON["tags.location"]}')
-dc=$(awk 'BEGIN {print ENVIRON["tags.data-center"]}')
-echo "location=${loc}"
-echo "data center=${dc}"
-echo
-echo "Environment:"
-printenv | sort
-```
-
-#### Path
-
-```sh
-    /home/axibase/print_alert.sh
-```
-
-#### Python Script
-
-```python
-#!/usr/bin/env python
-import os
-
-print("entity={}".format(os.getenv("entity")))
-print("location={}".format(os.getenv("tags.location")))
-print("data center={}".format(os.getenv("tags.data-center")))
-
-print("\nEnvironment:")
-for key, value in sorted(os.environ.items()):
-    print("{}={}".format(key, value))
-
-```
-
-#### Path
-
-```sh
-    /home/axibase/print_alert.py
-```
-
-#### Output Log
-
-```txt
-entity=nursvg001
-location=SVG
-data center=DC12
-Environment:
-HOME=/home/axibase
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-JAVA_MAIN_CLASS_12094=com.axibase.tsd.Server
-LC_CTYPE=en_US.UTF-8
-LOGNAME=axibase
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-PWD=/opt/atsd/atsd/conf/script
-SHELL=/bin/bash
-SHLVL=1
-TMPDIR=/tmp
-USER=axibase
-XPC_FLAGS=0x0
-XPC_SERVICE_NAME=0
-_=/usr/bin/printenv
-alert_duration=00:00:10:49
-alert_duration_interval=10m:49s
-alert_message=${scriptOut('./print_alert.sh', [])}
-alert_open_datetime=2018-06-25T17:16:40Z
-alert_open_time=2018-06-25 17:16:40
-alert_type=REPEAT
-entity=test
-event_datetime=2018-06-25T17:27:29Z
-event_time=2018-06-25 17:27:29
-expression=true
-message=
-metric=test_vars
-min_interval_expired=
-open_value=10
-properties=
-received_datetime=2018-06-25T17:27:29Z
-received_time=2018-06-25 17:27:29
-repeat_count=1
-repeat_interval=649
-rule=test
-rule_expression=true
-rule_filter=
-rule_name=test
-rvm_loaded_flag=1
-schedule=
-severity=warning
-status=REPEAT
-tags.data-center=DC12
-tags.location=SVG
-value=10.0
-window=length(1)
-window_first_datetime=2018-06-25T17:27:29Z
-window_first_time=2018-06-25 17:27:29
-```
-
-![](./images/system-command-env-vars.png)
