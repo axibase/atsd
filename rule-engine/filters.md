@@ -96,20 +96,16 @@ type == 'activemq_service' AND keys.service == 'health'
 entity.tags.environment != 'test' && message NOT IN collection('linux-ignore-commands')
 ```
 
-## Entity Filter
+## Entity Name Filter
 
-The filter discards commands for an entity not equal to one of entities specified in the rule. The filter is applied only if the list of selected entities is not empty.
+To restrict the rule to specific entities, enter an entity name or a name pattern containing wildcards. Multiple entity names or patterns can be enumerated using whitespace as a separator. The filter is applied only if at least one entity or entity pattern is specified.
 
 ![](./images/filter-entity.png)
 
-As a more flexible alternative, the entity condition can be encoded in the filter expression:
+For more flexible filtering, such as using negation or entity tag comparison, use the main [filter expression](#filter-expression) instead:
 
 ```javascript
 entity != 'nurswgvml007'
-```
-
-```javascript
-entity LIKE 'mib*'
 ```
 
 ```javascript
@@ -122,9 +118,9 @@ The filter discards commands for entities that do not belong to one of the entit
 
 ![](./images/filter-entity-group.png)
 
-## Date Filter
+## Time Filter
 
-If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter is typically used to ignore historical data.
+If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter can be used to ignore delayed and out-of-order data.
 
 ![](./images/filter-time.png)
 

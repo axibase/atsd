@@ -219,7 +219,7 @@ To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and 
 
 ### Deleting Entities
 
-To delete a single entity, locate the entity, open the entity editor and click **Delete**.
+To delete a single entity, locate the entity, open the **Entity Editor** and click **Delete**.
 
 This causes **all** series collected for the entity to be deleted.
 

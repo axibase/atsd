@@ -42,7 +42,7 @@ The inline links can be also assembled manually using the syntax supported by th
   getEntityLink(string e [, boolean m [, string f]]) string
 ```
 
-Returns the URL to the entity `e` page on the target ATSD instance. The entity name is URL-encoded if necessary.
+Returns the URL to the **Entity Editor** page for entity `e` on the target ATSD instance. The entity name is URL-encoded if necessary.
 
 If the match entity parameter `m` is set to `true`, the entity is matched by label if it cannot found by name.
 
@@ -54,7 +54,7 @@ Example:
 getEntityLink('nurswgvml007')
 ```
 
-The function returns URL to the entity editor for the specified entity.
+The function returns URL to the **Entity Editor** for the specified entity.
 
 ```elm
 https://atsd_hostname:8443/entities/nurswgvml007

@@ -33,7 +33,7 @@ The request is submitted to the specified AWS endpoint using the selected method
 
 ## Response
 
-The response status code and response content are recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content are recorded in `atsd.log` if the **Log Response** setting is enabled.
 
 ## Placeholders
 

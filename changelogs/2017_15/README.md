@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
-| 4096 | UI | Bug | Fix HTML escaping on the `CSV Parsers` page. |
+| 4096 | UI | Bug | Fix HTML escaping on the **CSV Parsers** page. |
 | 4064 | core | Support | Deprecate the `logging.properties` configuration file. |
 | [3739](#issue-3739) | sql | Feature | Add options for sending empty or failed results for scheduled SQL reports. |
 | 2880 | UI | Bug | Add HTML-escaping for all forms in the web interface. |

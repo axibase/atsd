@@ -16,7 +16,7 @@
 
 #### Issue 4163
 
-Settings > Server Properties, modified to display differences between actual and default property values:
+**Settings > Server Properties** page. Modified to display differences between actual and default property values:
 
 ![4163](./Images/4163.1.png)
 
@@ -24,7 +24,7 @@ Settings > System Information, table headers added to web interface:
 
 ![4163.2](./Images/4163.2.png)
 
-Portals tab, **View** button allows for viewing of the Portal during configuration:
+Portals tab, **View** button allows viewing of the Portal during configuration.
 
 ![4163.3](./Images/4163.3.1.png)
 

@@ -99,7 +99,7 @@ Version history can be retrieved on the [Ad-hoc Export](../reporting/ad-hoc-expo
 
 ### Ad-hoc Export page
 
-Open the **Filters** section and enable **Display Versions** setting on export page.
+Open the **Filters** section and enable **Display Versions** setting on the **Data > Export** page.
 
 ![](./resources/4.png)
 

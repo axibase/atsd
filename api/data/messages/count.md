@@ -8,9 +8,9 @@ If period aggregation is enabled, the series contains the number of messages in 
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/messages/stats/query` | `application/json` |
+| `POST` | `/api/v1/messages/stats/query` | `application/json` |
 
 ### Parameters
 

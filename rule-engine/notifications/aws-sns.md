@@ -33,14 +33,14 @@ The default message uses the JSON format and includes all fields, including enti
 
 ## Response
 
-The response status code and response content is recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
 ## Configure AWS SNS Notification
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SNS` type.
-* Fill out the `Name`, `Region`, `Access Key Id`, and `Secret Access Key` fields.
-* Enter the `Topic ARN`. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same webhook.
+* Fill out the **Name**, **Region**, **Access Key Id**, and **Secret Access Key** fields.
+* Enter the **Topic ARN**. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same webhook.
 
   ![](./images/aws_sns_config.png)
 

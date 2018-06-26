@@ -1,6 +1,6 @@
 # Examples
 
-## Selecting Examples
+## Selecting Records
 
 * [All Columns](select-all-columns.md)
 * [Defined Columns](select-pre-defined-columns.md)
@@ -26,7 +26,7 @@
 * [Limit Row Count](limit.md)
 * [Limit by Partition](limit-partition.md)
 
-## Filtering Examples
+## Filtering Records
 
 * [Filter by Date](filter-by-date.md)
 * [Filter by Series Tag](filter-by-series-tag.md)
@@ -37,7 +37,7 @@
 * [Filter by Entity Group](filter-by-entity-group.md)
 * [Filter Not-a-Number](filter-not-a-number.md)
 
-## Ordering Examples
+## Ordering Records
 
 * [Order By Time](order-by-time.md)
 * [Order By Value](order-by-value.md)
@@ -54,7 +54,7 @@
 * [Period Aggregation](aggregate-period.md)
 * [Sliding Window Statistics](aggregate-sliding-window.md)
 
-## Grouping Examples
+## Grouping
 
 * [Group by Query with Order By](group-by-query-with-order-by.md)
 * [Grouped Average](grouped-average.md)
@@ -62,13 +62,13 @@
 * [Group with Having](group-having.md)
 * [Grouped and Having](grouped-having.md)
 
-## Interpolation Examples
+## Interpolation
 
 * [Interpolate](interpolate.md)
 * [Interpolate with Extend](interpolate-extend.md)
 * [Interpolate Edges](interpolate-edges.md)
 
-## Regularization Examples
+## Regularization
 
 * [Linear Function](regularize.md#interpolation-function-linear)
 * [Previous (Step) Function](regularize.md#interpolation-function-previous)
@@ -79,17 +79,17 @@
 * [Join regularized series](regularize.md#join-example)
 * [Interpolated Value Filter](regularize.md#value-filter)
 
-## Partitioning Examples
+## Partitioning
 
 * [Partitioning using Row Number Function](partition-row-number.md)
 * [Top-N Query using Row Number Function](partition-row-number-top-N-tags.md)
 * [Last Time](last-time.md)
 
-## Subquery Examples
+## Subquery
 
 * [Inline Views](inline-view.md)
 
-## Join Examples
+## Joins
 
 * [Join](join.md)
 * [Join Using Entity](join-using-entity.md)
@@ -97,10 +97,10 @@
 * [Outer Join With Aggregation](outer-join-with-aggregation.md)
 * [Outer Join](outer-join.md)
 
-## Security Examples
+## Security
 
 * [Permissions](../permissions.md)
 
-## Consolidated Examples
+## Combined Examples
 
 * [PI Compatibility](pi.md)
