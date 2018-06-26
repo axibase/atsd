@@ -144,7 +144,7 @@ Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/hdp/{hdp_version}/hbase/lib/` d
 
 ### Enable ATSD Coprocessors
 
-Open Services tab in Ambari UI, select the target HBase cluster, open `Configs` tab, search for the setting `hbase.coprocessor.region.classes`, and enter the following names separated by comma.
+Open Services tab in Ambari UI, select the target HBase cluster, open **Configs** tab, search for the setting `hbase.coprocessor.region.classes`, and enter the following names separated by comma.
 
 ```txt
 com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint, com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint, com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint

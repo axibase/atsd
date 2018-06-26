@@ -72,7 +72,7 @@ rm ca-certificates-java*
 apt-get -t jessie-backports download ca-certificates-java
 ```
 
-Ensure that the download directory is not empty:
+Verify that the download directory is not empty.
 
 ```txt
 ...

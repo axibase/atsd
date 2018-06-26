@@ -121,7 +121,7 @@ Data from the CSV files are now available as SPSS datasets `prices.sav` and `wei
 
 SPSS merges datasets using equal column names, similar `SELF JOIN` in SQL.
 
-To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS contains data only for 2017.
+To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using **Variable View** tab, otherwise the merged dataset produced by SPSS contains data only for 2017.
 
 ![](./images/variable_View.png)
 

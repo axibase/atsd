@@ -146,4 +146,4 @@ curl --insecure -X POST --user admin:pwd \
   -T csv-3120.csv "https://atsd_hostname:8443/api/v1/csv?config=parser-3120&wait=true"
 ```
 
-> Ensure that request parameter values in query string are URL-encoded, for example `&time=now%20-%201%20*%20hour`
+Ensure that query string parameters are URL-encoded, for example `&time=now%20-%201%20*%20hour`.

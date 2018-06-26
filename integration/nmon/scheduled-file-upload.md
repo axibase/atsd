@@ -3,7 +3,7 @@
 ## Before You Begin
 
 1. Ensure that the `/opt/nmon/nmon` binary exists and is executable.
-2. Launch the `nmon` console to ensure `nmon` works correctly:
+2. Launch the `nmon` console to ensure `nmon` executable can be started.
 
 ```sh
 /opt/nmon/nmon
