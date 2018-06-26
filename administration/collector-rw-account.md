@@ -12,7 +12,7 @@ The document describes how to create a [collector](collector-account.md) account
 ## Create User
 
 * Open the **Settings > Users > Create** page.
-* Create a `collector-rw` user with **API_DATA_READ, API_META_READ, API_DATA_WRITE, API_META_WRITE** roles.
+* Create a `collector-rw` user with `API_DATA_READ`, `API_META_READ`, `API_DATA_WRITE`, `API_META_WRITE` roles.
 * Check the `collectors-rw` row in the User Groups table to add the user to the `collectors-rw` group.
 
 ![collector user](./images/collector-rw-roles.png)

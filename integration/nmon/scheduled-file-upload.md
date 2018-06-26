@@ -41,9 +41,9 @@ Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the
 
 Add the following contents to script `/opt/nmon/nmon_script.sh` replacing `atsd_hostname` with the ATSD hostname or IP address.
 
-## Upload Files to ATSD with Netcat
+## Upload Files into ATSD
 
-To start uploading files to ATSD every hour with Netcat, perform these steps:
+To start uploading files to ATSD every hour with `netcat`, perform these steps:
 
 ### Step 1
 

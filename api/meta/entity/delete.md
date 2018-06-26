@@ -10,7 +10,7 @@ Data collected by the entity is removed asynchronously in the background.
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| DELETE | `/api/v1/entities/{entity}` | `application/json` |
+| `DELETE` | `/api/v1/entities/{entity}` | `application/json` |
 
 ### Path Parameters
 

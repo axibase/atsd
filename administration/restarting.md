@@ -6,7 +6,7 @@ Use these scripts to stop, start, and update the database.
 
 ## Permissions
 
-If logged in as root or another user, change user to `axibase` to avoid file permission issues.
+If logged in as `root` or another user, change user to `axibase` to avoid file permission issues.
 
 ```sh
 su axibase
@@ -180,7 +180,7 @@ Run `jps` to check which processes are running.
 
 ### Invalid Zookeeper Cache
 
-If ATSD fails to start, check if the `/opt/atsd/atsd/logs/atsd.log` file contains the `TableExistsException` error for any table, clean the Zookeeper cache.
+If ATSD fails to start, check if the `atsd.log` file contains the `TableExistsException` error for any table, clean the Zookeeper cache.
 
 ```sh
 cat /opt/atsd/atsd/logs/atsd.log | grep -C 5 "TableExistsException"

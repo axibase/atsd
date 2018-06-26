@@ -19,7 +19,7 @@ Basic example:
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/v1/properties/query` | `application/json` |
+| `POST` | `/api/v1/properties/query` | `application/json` |
 
 ### Parameters
 
@@ -120,7 +120,6 @@ max(time) = 200
 The table below illustrates which records are returned (the `result` column) for the `offset` parameter on the left.
 
 ```ls
-
 | offset | result  |
 |     -1 | A;B;C;D | Offset filter is not applied.
 |      0 | B;C     | Only records with update time = max(time) are included.

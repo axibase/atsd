@@ -20,8 +20,8 @@ The instructions apply only to ATSD installed in a Docker container. For host-ba
 
 ### Security
 
-* Java 8 installation requires root privileges.
-* Log in to the container as root:
+* Java 8 installation requires `root` privileges.
+* Log in to the container as `root`.
 
 ```bash
 docker exec -it -u root atsd bash

@@ -146,7 +146,7 @@ The series list now includes a **Statistics** link to characterize the selected 
 
 The following characteristics are available.
 
-* Value Statistics: provides summary statistics for values of the time series for the specified time interval. There are three tables included within this tab: **Timespan**, **Value Statistics**, and **Value Percentiles**. **Timespan** provides the dates for the first and last value of the time series and their respective values. **Value Statistics** provides the Count (total number of samples), NaN count (number of Not-a-Number samples), as well as the Average, Standard Deviation, and Sum of all values. **Value Percentiles** provides a list of the maximum and minimum values of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 75% of all values in this series fall below 7.1).
+* Value Statistics: provides summary statistics for values of the time series for the specified time interval. There are three tables included within this tab: **Timespan**, **Value Statistics**, and **Value Percentiles**. **Timespan** provides the dates for the first and last value of the time series and their respective values. **Value Statistics** provides the Count (total number of samples), `NaN` count (number of Not-a-Number samples), as well as the Average, Standard Deviation, and Sum of all values. **Value Percentiles** provides a list of the maximum and minimum values of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 75% of all values in this series fall below 7.1).
 
   ![Figure 1](./Images/Figure1.png)
 

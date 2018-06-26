@@ -739,7 +739,7 @@ Since the `WHERE` clause selects only rows that evaluate to `true`, conditions s
 
 Logical expressions treat `NaN` as `NULL`. Refer to the truth tables above for more details on how `NULL` is evaluated by logical operators.
 
-### Not a Number (NaN)
+### Not a Number (`NaN`)
 
 The database returns special values if the computation result cannot be represented with a real number, for example in case of division by zero or square root of a negative number.
 
@@ -1661,7 +1661,7 @@ The `ROW_NUMBER(entity, tags ...)` grouping effectively creates a partition for 
 
 The assigned row numbers can be used to filter rows within each partition for the following use cases:
 
-* Return Top (`ORDER BY value DESC`) or Most Recent (`ORDER BY time DESC`) records from each partition:
+* Return maximum (`ORDER BY value DESC`) or most recent (`ORDER BY time DESC`) records from each partition.
 
 ```sql
 SELECT entity, datetime, value
@@ -1682,7 +1682,7 @@ ORDER BY entity, datetime
 | nurswgvml502 | 2017-06-18T12:00:01Z | 13.7  |
 ```
 
-* Apply an aggregate function to Last-N records:
+* Apply an aggregate function to last-N records.
 
 ```sql
 SELECT entity,
@@ -1820,7 +1820,7 @@ GROUP BY entity
   ORDER BY 2 DESC, 1
 ```
 
-In combination with `LIMIT`, ordering can be used to execute the **Top-N** queries.
+In combination with `LIMIT`, ordering can be used to execute the **top-N** queries.
 
 ```sql
 SELECT entity, AVG(value) FROM "mpstat.cpu_busy"

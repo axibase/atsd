@@ -218,7 +218,7 @@ curl -k -u $USR:$PWD https://$HOST:$PORT/admin/certificates/import/atsd \
 
 Replace the parameters `USR`,`PWD`, `HOST`, `PORT`, and `DNS` with the actual settings.
 
-Protect the file so that root privileges are required for reading and executing the file.
+Protect the file so that `root` privileges are required for reading and executing the file.
 
 ```sh
 sudo chown root:root deploy-atsd.sh

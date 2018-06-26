@@ -108,7 +108,7 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 
 ### `ping`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ping.sh) to ping host `n` times.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ping.sh) to `ping` a host `n` times.
 
 #### Script
 

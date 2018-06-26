@@ -195,7 +195,7 @@ WITH INTERPOLATE(30 SECOND, AUTO, OUTER)
 | metric2 | 2016-09-17T08:01:00.000Z | 4.400   | - interpolated with PREVIOUS
 ```
 
-### Fill: `FALSE`
+### Fill `false`
 
 Missing periods that cannot be interpolated are ignored and not included in the result set.
 

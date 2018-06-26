@@ -8,7 +8,7 @@ Retrieves fields and tags describing the specified entity.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/entities/{entity}` |
+| `GET` | `/api/v1/entities/{entity}` |
 
 ### Path Parameters
 

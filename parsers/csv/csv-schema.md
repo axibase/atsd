@@ -63,7 +63,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 * Date fields: Time Pattern, Offset, Time Zone
 * Replace Entities
 * Process Events
-* Discard NaN
+* Discard `NaN`
 * Ignore Line Errors
 * Renamed Columns
 * Filter

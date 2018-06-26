@@ -35,7 +35,7 @@ Query response:
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/v1/series/query` | `application/json` |
+| `POST` | `/api/v1/series/query` | `application/json` |
 
 The request payload is a JSON document containing an array of query objects.
 
@@ -269,7 +269,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
 
 ### Special Values
 
-* [Not-a-Number (NaN)](examples/query-nan.md)
+* [Not-a-Number (`NaN`)](examples/query-nan.md)
 
 ### Entity Filter
 

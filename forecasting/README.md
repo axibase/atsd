@@ -61,7 +61,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 | Setting | Description |
 | --- | --- |
 |Group By |Grouping key for merging multiple series into one. Detailed data for multiple series sharing the same grouping key are merged into one array prior to computing aggregate statistics.|
-|Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
+|Auto Aggregate|The server automatically calculates an aggregation period that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Aggregation Period |Period of time over which the detailed samples are aggregated.|
 |Aggregate Statistic |Aggregation function applied to raw data to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.|
 
@@ -73,9 +73,9 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 | --- | --- |
 |Algorithm |Holt-Winters or ARIMA forecasting algorithms.|
 |Score Interval |Part of `Data Selection Interval` that is used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the `Score Interval`, the more weight is assigned to recently observed values.|
-|Auto Period |Let server automatically identify seasonality of the underlying series that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
+|Auto Period |The server automatically calculates seasonality of the underlying series that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Period |Specify seasonality of the underlying series.|
-|Auto Parameters |Let server automatically identify algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|
+|Auto Parameters |The server automatically calculates algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|
 
 ### Persistence Settings
 
@@ -206,7 +206,7 @@ A sample forecast [JSON query](../api/data/series/examples/query-named-forecast.
 
 </details>
 
-[Insert a forecast](../api/data/series/examples/insert-forecast.md) into ATSD using POST method:
+[Insert a forecast](../api/data/series/examples/insert-forecast.md) into ATSD using `POST` method:
 
 ```elm
 POST /api/v1/series/insert

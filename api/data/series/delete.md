@@ -8,7 +8,7 @@ Deletes series for the specified metric, entity, and optional series tags.
 
 Due to the specifics of the underlying storage technology, the records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a so called `DELETE` marker. The `DELETE` marker hides all data rows recorded **before** the `DELETE` marker.
+Instead, the records are masked with a `DELETE` marker. The `DELETE` marker hides all data rows recorded **before** the `DELETE` marker.
 
 The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called `major compaction`.
 
@@ -20,7 +20,7 @@ To remove the pending `DELETE` markers, initiate an `HBase Compaction` on the **
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/v1/series/delete` | `application/json` |
+| `POST` | `/api/v1/series/delete` | `application/json` |
 
 ### Parameters
 

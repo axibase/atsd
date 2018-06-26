@@ -28,7 +28,8 @@
 ### Issue 3938
 
 The new metrics `jvm_permgen_max`, `jvm_permgen_used`, `jvm_permgen_used_percent` have been introduced to collect `PermGen` memory usage statistics.
-The values can also be seen in atsd.log:
+
+The values can also be seen in `atsd.log`
 
 ```txt
 2017-02-27 10:32:10,327;INFO;reaperScheduler-1;c.a.t.s.m.GarbageCollectionPoller;Memory Pool="Code Cache" type="Non-heap memory": 9 mb, Memory Pool="PS Eden Space" type="Heap memory": 484 mb, Memory Pool="PS Survivor Space" type="Heap memory": 9 mb, Memory Pool="PS Old Gen" type="Heap memory": 103 mb, Memory Pool="PS Perm Gen" type="Non-heap memory": 63 mb

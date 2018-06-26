@@ -31,7 +31,7 @@ e-1,2016-07-15T15:40:40.000Z,NaN
 e-1,2016-07-15T15:40:50.000Z,24.5
 ```
 
-## Exclude NaN
+## Exclude `NaN`
 
 ```sql
 SELECT avg(value), min(value), count(value)

@@ -77,7 +77,7 @@ Select a color scheme to apply to [reserved words](README.md#reserved-words) and
 ---|---|---
  ![](./images/default.png) | ![](./images/brick.png) | ![](./images/violet.png) |
 
-### NULL Format
+### `NULL` Format
 
 Change the way **SQL Console** displays literal [`NULL`](README.md#null) values.
 

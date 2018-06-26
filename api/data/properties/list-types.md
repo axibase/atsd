@@ -8,7 +8,7 @@ Returns an array of property types for the entity.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/properties/{entity}/types` |
+| `GET` | `/api/v1/properties/{entity}/types` |
 
 ### Parameters
 

@@ -20,7 +20,7 @@ ssh-keyscan -H atsd-tst >> ~/.ssh/known_hosts
 
 On Unix systems, the permissions to the key file must not allow any access to world and group. You can achieve this with the command `chmod 0600`. If the permissions are less strict, the file is ignored and the SSH tunnel fails to start.
 
-Set the permissions and ownership for the user account on remote servers. Root privileges are not necessary.
+Set the permissions and ownership for the user account on remote servers. `root` privileges are not necessary.
 
 Ensure you have the ownership rights for the ssh key:
 
@@ -54,7 +54,7 @@ ssh -fN -L `hostname`:10000:localhost:8081 atsdreadonly@atsd-tst -i /opt/nmon/id
 
 In the above example, the tunnel is established between local port 10000 on the remote system and local port 8081 on the ATSD server.
 
-If the tunnel is not established, check if you can ping the ATSD server to see if the port is available and if the username and ssh key are set correctly.
+If the tunnel is not established, check if you can `ping` the ATSD server to see if the port is available and if the username and ssh key are set correctly.
 
 ### Verify that the SSH tunnel is active
 

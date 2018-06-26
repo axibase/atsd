@@ -111,9 +111,9 @@ Values added by `extend` setting are determined as follows:
 
 When aggregation is disabled, the `group` function is applied to values for all unique timestamps in the merged series.
 
-In the example below, the `SUM` function returns 12 (1+11) at `2016-06-25T08:00:00Z` as a total of e-1 and e-2 series values, both of which have samples this timestamp.
+In the example below, the `SUM` function returns `12 = (1+11)` at `2016-06-25T08:00:00Z` as a total of `e-1` and `e-2` series values, both of which have samples this timestamp.
 
-On the other hand, the `SUM` returns 3 (3 + null->0) at `2016-06-25T08:00:05Z` because only e-1 series has a value at that timestamp.
+On the other hand, the `SUM` returns `3 = (3 + null->0)` at `2016-06-25T08:00:05Z` because only `e-1` series has a value at that timestamp.
 
 ```json
 [
@@ -337,7 +337,7 @@ Two interpolated values are added to the second series:
 
 #### `period` parameter is specified
 
-Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period is calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
+Assume that `t1`, `t2`, `t3` are timestamps of consecutive periods, and the series has no samples in the `t2` period. Then interpolated value of the `t2` period is calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
 
 Query:
 

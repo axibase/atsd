@@ -8,7 +8,7 @@ Retrieves properties and tags for the specified metric.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/metrics/{metric}` |
+| `GET` | `/api/v1/metrics/{metric}` |
 
 ### Path Parameters
 

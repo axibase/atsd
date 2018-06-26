@@ -17,13 +17,13 @@ The minimum cluster size supported by this installation option is **two** EC2 in
 
 ## Create S3 Bucket
 
-The S3 bucket must be created prior to installation.  The bucket, named `atsd` in the example below, stores the HBase root directory containing both metadata and HFiles.
+The S3 bucket must be created prior to installation.  The bucket, named `atsd` in the example below, stores the `hbase-root` directory containing both metadata and HFiles.
 
 ```bash
 aws s3 mb s3://atsd
 ```
 
-The HBase root directory is created if necessary when the cluster is started for the first time. The directory is not deleted when the cluster is stopped.
+The `hbase-root` directory is created if necessary when the cluster is started for the first time. The directory is _not deleted_ when the cluster is stopped.
 
 Check the contents of the bucket prior to launching the cluster.
 

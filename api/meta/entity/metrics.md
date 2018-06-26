@@ -8,7 +8,7 @@ Retrieves a list of metrics collected by the entity.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/entities/{entity}/metrics` |
+| `GET` | `/api/v1/entities/{entity}/metrics` |
 
 ### Path Parameters
 

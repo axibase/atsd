@@ -1,6 +1,6 @@
 # CASE Expression
 
-## Searched CASE Syntax
+## Searched `CASE` Syntax
 
 ### Categorize Series By Value Range
 
@@ -94,7 +94,7 @@ WHERE datetime > current_hour
 | nurswgvml502 | /dev/sda1                           | /                       | 31847924.0   | 0.0     |
 ```
 
-### Handle NaN and NULL Values
+### Handle `NaN` and `NULL` Values
 
 ```sql
 SELECT entity, datetime, value, text, ISNULL(text, 'IN: text is null'), ISNULL(value, 'IN: value is null'),
@@ -117,7 +117,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 | sensor-1 | 2016-10-13T08:15:00.000Z | 24.4  | Provisional                    | Provisional                     | 24.4                              | ok                |
 ```
 
-### ISNULL Alternative
+### `ISNULL` Alternative
 
 ```sql
 SELECT entity, datetime, value, text,
@@ -143,7 +143,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 | sensor-1 | 2016-10-13T08:15:00.000Z | 24.4  | Provisional                    | 24.4         | Provisional                    |
 ```
 
-## Simple CASE Syntax
+## Simple `CASE` Syntax
 
 ### Move condition to the input expression
 

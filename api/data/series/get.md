@@ -10,7 +10,7 @@ The method implements a subset of features of the [Series: Query](query.md) meth
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/series/{format}/{entity}/{metric}` |
+| `GET` | `/api/v1/series/{format}/{entity}/{metric}` |
 
 ### Path Parameters
 

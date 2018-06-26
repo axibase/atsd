@@ -4,7 +4,7 @@ The string comparison operators `<, >, <=, >=` provide a way to filter tag value
 
 If one of the compared values is `NULL`, the expression returns `NULL` and such rows are excluded by the `WHERE` clause.
 
-## NULL filter
+## `NULL` filter
 
 ### Data
 
@@ -149,7 +149,7 @@ ORDER BY tags.'tag-1' ASC
 
 ### Query: Numbers by Numeric Value if Both Values are Numeric
 
-If all series tag values are guaranteed to be numeric or null, the values can be compared as numbers, however ordering of such columns is still based on an Unicode value (string collation).
+If all series tag values are guaranteed to be numeric or `null`, the values can be compared as numbers, however ordering of such columns is still based on an Unicode value (string collation).
 
 #### Data
 

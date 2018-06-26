@@ -56,8 +56,8 @@ Testing allows the calculation of forecasts based on data in a CSV file or the t
 |Period|Specify seasonality of the underlying series.|
 |Data Selection Interval|Time frame for selecting detailed data that is used as forecast input.<br>End of the Selection Interval is set to current time.|
 |Averaging Interval|Period of time over which the detailed samples are aggregated.|
-|Auto Period|Let server automatically identify seasonality of the underlying series that produces the most accurate forecast with minimum variance from observed historical data.|
-|Auto Parameters|Let server automatically identify algorithm parameters that produce the most accurate forecast with minimum variance from observed historical data.|
-|Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast with minimal variance from observed historical data.|
+|Auto Period|The server automatically calculates seasonality of the underlying series that produces the most accurate forecast with minimum variance from observed historical data.|
+|Auto Parameters|The server automatically calculates algorithm parameters that produce the most accurate forecast with minimum variance from observed historical data.|
+|Auto Aggregate|The server automatically calculates an aggregation period that produces the most accurate forecast with minimal variance from observed historical data.|
 |Algorithm|Select Holt-Winters or ARIMA forecasting algorithms.|
 |Score Interval|Part of Selection Interval that is used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the **Score Interval**: the more weight is assigned to the recently observed values.|

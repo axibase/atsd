@@ -267,7 +267,7 @@ Response:
 | 2017-01-01 04:00 | 3.0   |
 ```
 
-### LINEAR Interpolation, Leading/Trailing Values Filled with NaN
+### LINEAR Interpolation, Leading/Trailing Values Filled with `NaN`
 
 ```json
 [{

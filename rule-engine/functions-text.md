@@ -150,7 +150,7 @@ Examples:
 
 Returns first non-empty string from the collection or array of strings `c`.
 
-The function returns an empty string if all elements of `c` are null or empty.
+The function returns an empty string if all elements of `c` are `null` or empty.
 
 Examples:
 

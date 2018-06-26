@@ -8,7 +8,7 @@ Deletes property records that match specified filters.
 
 Due to the specifics of the underlying storage technology, the records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a so called `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows recorded with an earlier timestamp.
+Instead, the records are masked with a `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows recorded with an earlier timestamp.
 
 The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called `major compaction`.
 
@@ -32,7 +32,7 @@ echo "major_compact 'atsd_properties'" | /opt/atsd/hbase/bin/hbase shell
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/v1/properties/delete` | `application/json` |
+| `POST` | `/api/v1/properties/delete` | `application/json` |
 
 ### Parameters
 

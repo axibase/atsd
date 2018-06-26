@@ -8,7 +8,7 @@ Retrieves a list of metrics matching the specified filters.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/metrics` |
+| `GET` | `/api/v1/metrics` |
 
 ### Query Parameters
 

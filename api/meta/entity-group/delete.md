@@ -10,7 +10,7 @@ Member entities and their data is not affected by this operation.
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| DELETE | `/api/v1/entity-groups/{group}` | `application/json` |
+| `DELETE` | `/api/v1/entity-groups/{group}` | `application/json` |
 
 ### Path Parameters
 

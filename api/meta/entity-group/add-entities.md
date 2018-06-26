@@ -10,7 +10,7 @@ Adds entities as members to the specified entity group.
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/v1/entity-groups/{group}/entities/add` | `application/json` |
+| `POST` | `/api/v1/entity-groups/{group}/entities/add` | `application/json` |
 
 ### Path Parameters
 

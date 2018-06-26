@@ -12,7 +12,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| PATCH | `/api/v1/metrics/{metric}` | `application/json` |
+| `PATCH` | `/api/v1/metrics/{metric}` | `application/json` |
 
 ### Path Parameters
 

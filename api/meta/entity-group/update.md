@@ -12,7 +12,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| PATCH | `/api/v1/entity-groups/{group}` | `application/json` |
+| `PATCH` | `/api/v1/entity-groups/{group}` | `application/json` |
 
 ### Path Parameters
 

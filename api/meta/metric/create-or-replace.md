@@ -16,7 +16,7 @@ The replace request for an existing metric does not affect any series data since
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| PUT | `/api/v1/metrics/{metric}` | `application/json` |
+| `PUT` | `/api/v1/metrics/{metric}` | `application/json` |
 
 ### Path Parameters
 

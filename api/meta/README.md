@@ -53,7 +53,7 @@ Processing errors are returned in JSON format:
 
 ## Authorization
 
-* User must have [**API_META_READ**/**API_META_WRITE**](../../administration/user-authorization.md#api-roles) role.
+* User must have [`API_META_READ`/`API_META_WRITE`](../../administration/user-authorization.md#api-roles) role.
 
 ## Cross-domain Requests
 

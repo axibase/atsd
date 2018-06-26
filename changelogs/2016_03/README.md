@@ -44,7 +44,7 @@
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
-| 3523      | property        | Bug      | Set format-number to `false` by default to let users enable it explicitly at the widget or column level. |
+| 3523      | property        | Bug      | Set format-number to `false` by default to allow users enable it explicitly at the widget or column level. |
 
 ### Issue 3677
 

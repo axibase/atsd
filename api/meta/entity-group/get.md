@@ -8,7 +8,7 @@ Retrieves information about the specified entity group including its name and us
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/entity-groups/{group}` |
+| `GET` | `/api/v1/entity-groups/{group}` |
 
 ### Path Parameters
 

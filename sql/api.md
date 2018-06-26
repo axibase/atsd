@@ -28,7 +28,7 @@ This query can be utilized as a validation query in database connection pool imp
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/sql` | `application/x-www-form-urlencoded` |
+| `POST` | `/api/sql` | `application/x-www-form-urlencoded` |
 
 ### Parameters
 

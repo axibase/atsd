@@ -12,12 +12,12 @@ This integration enables sending HTTP requests with customized content to the sp
 
 | Method | Payload Allowed |
 |---|---|
-| GET | No |
-| HEAD | No |
-| POST | Yes |
-| PUT | Yes |
-| PATCH | Yes |
-| DELETE | No |
+| `GET` | No |
+| `HEAD` | No |
+| `POST` | Yes |
+| `PUT` | Yes |
+| `PATCH` | Yes |
+| `DELETE` | No |
 
 ### Supported Content Types
 

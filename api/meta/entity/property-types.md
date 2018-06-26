@@ -10,7 +10,7 @@ Retrieves a list property types for the entity.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/entities/{entity}/property-types` |
+| `GET` | `/api/v1/entities/{entity}/property-types` |
 
 ### Path Parameters
 

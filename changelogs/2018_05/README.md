@@ -4,7 +4,7 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5340 | statistics     | Bug     | Server error raised when accessing statistics page for series with [NaN](../../sql/README.md#not-a-number-nan) values.
+5340 | statistics     | Bug     | Server error raised when accessing statistics page for series with [`NaN`](../../sql/README.md#not-a-number-nan) values.
 5338 | export             | Bug     | Series tags validation error on export page.
 5337 | client | Feature | Value filter added for [Python Client](https://github.com/axibase/atsd-api-python#axibase-time-series-database-client-for-python).
 5334 | api-rest       | Bug     | Properties [delete query](../../administration/data_retention.md#deleting-properties) returns zero counter even after deleting some records.

@@ -30,7 +30,7 @@
 
 * [Filter by Date](filter-by-date.md)
 * [Filter by Series Tag](filter-by-series-tag.md)
-* [Filter by NULL Series Tag](filter-null-tag.md)
+* [Filter by `NULL` Series Tag](filter-null-tag.md)
 * [Filter by Series Tag with Comparison Operators](filter-operators-string.md)
 * [Filter by Entity](filter-by-entity.md)
 * [Filter by Entity Tag](filter-by-entity-tag.md)
@@ -82,7 +82,7 @@
 ## Partitioning
 
 * [Partitioning using Row Number Function](partition-row-number.md)
-* [Top-N Query using Row Number Function](partition-row-number-top-N-tags.md)
+* [`Top-N` Query using Row Number Function](partition-row-number-top-N-tags.md)
 * [Last Time](last-time.md)
 
 ## Subquery

@@ -56,13 +56,13 @@ Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text com
 
 To send a single command, connect to an ATSD server, send the command in plain text, and stop the connection.
 
-* netcat: `echo`
+* `netcat`: `echo`
 
 ```bash
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc -w 1 atsd_host 8081
 ```
 
-* netcat: `printf`
+* `netcat`: `printf`
 
 ```bash
 printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_host 8081
@@ -342,7 +342,7 @@ $ echo -e "debug my_command e:station_1 m:temperature=32.2" \
 
 ### Review Client Commands
 
-To review a sequence of commands sent by the client, launch the `netcat` utility in server mode, reconfigure the client to send data to the netcat port.
+To review a sequence of commands sent by the client, launch the `netcat` utility in server mode, reconfigure the client to send data to the `netcat` port.
 
 ```bash
 nc -lk 0.0.0.0 2081 > command-in.log &

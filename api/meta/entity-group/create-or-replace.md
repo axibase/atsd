@@ -16,7 +16,7 @@ The following rules apply if the specified group exists:
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| PUT | `/api/v1/entity-groups/{group}` | `application/json` |
+| `PUT` | `/api/v1/entity-groups/{group}` | `application/json` |
 
 ### Path Parameters
 

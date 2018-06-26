@@ -1,6 +1,6 @@
 # Install Java 8
 
-Switch to root or execute the below steps under a user with sudo privileges.
+Switch to `root` or execute the below steps under a user with sudo privileges.
 
 ## OpenJDK
 

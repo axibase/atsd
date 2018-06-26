@@ -8,7 +8,7 @@ Retrieves property records for the specified entity and type.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/properties/{entity}/types/{type}` |
+| `GET` | `/api/v1/properties/{entity}/types/{type}` |
 
 ### Parameters
 

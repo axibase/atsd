@@ -22,7 +22,7 @@ ATSD upgrades on [Docker containers](container.md) and [Hadoop clusters](cluster
 
 ### Security
 
-* Java 8 installation requires root privileges.
+* Java 8 installation requires `root` privileges.
 
 ### Disk Space
 

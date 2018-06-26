@@ -14,7 +14,7 @@ No entity permissions are required.
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/sql/meta` | `application/x-www-form-urlencoded` |
+| `POST` | `/api/sql/meta` | `application/x-www-form-urlencoded` |
 
 ### Parameters
 
@@ -22,7 +22,7 @@ No entity permissions are required.
 |:---|:---|:---|
 | q | string | [**Required**] Query text. |
 
-As an alternative, the query can be submitted with Content-Type `text/plain` as text payload with the other parameters included in the query string.
+As an alternative, the query can be submitted as text payload with `Content-Type` set to `text/plain` and with the other parameters included in the query string.
 
 ## Response
 

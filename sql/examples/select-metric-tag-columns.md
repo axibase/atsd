@@ -2,7 +2,7 @@
 
 Similar to series tags, metric tags can be selected with:
 
-* `metric.tags`: serialized to name=value;name=value
+* `metric.tags`: serialized to`name=value;name=value`
 * `metric.tags.*`: expand to multiple columns
 * `metric.tags.{name}`: include column with a specific metric tag
 

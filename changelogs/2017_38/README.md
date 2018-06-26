@@ -15,7 +15,7 @@
 | 4475 |UI| Bug | Display warnings if the entity record is missing in the last insert table. |
 | [4437](#issue-4437) | sql | Bug | Date literal must not be implicitly converted to time data type. |
 | [4295](#issue-4295) | sql | Bug | `DETAIL` interpolation with `OUTER` range fails to calculate values. |
-| [4281](#issue-4281) | sql | Bug | Incorrect `ISNULL` result with null tags field. |
+| [4281](#issue-4281) | sql | Bug | Incorrect `ISNULL` result with `null` tags field. |
 | [4147](#issue-4147) | sql | Feature | Support for `entity.timeZone` and `metric.timeZone` in PERIOD and `WITH INTERPOLATE` functions. |
 | [2766](#issue-2766) | core | Feature | Series Retention Days setting to delete expired series. |
 

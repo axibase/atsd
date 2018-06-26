@@ -8,7 +8,7 @@ Retrieves a list of entities matching the specified filters.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/entities` |
+| `GET` | `/api/v1/entities` |
 
 ### Query Parameters
 

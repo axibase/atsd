@@ -8,7 +8,7 @@ Retrieves a list of entity groups to which the specified entity belongs.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/entities/{entity}/groups` |
+| `GET` | `/api/v1/entities/{entity}/groups` |
 
 ### Path Parameters
 

@@ -14,7 +14,7 @@ If the array in the request is empty, all entities are **removed** from the grou
 
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
-| POST | `/api/v1/entity-groups/{group}/entities/set` | `application/json` |
+| `POST` | `/api/v1/entity-groups/{group}/entities/set` | `application/json` |
 
 ### Path Parameters
 

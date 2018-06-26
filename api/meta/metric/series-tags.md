@@ -8,7 +8,7 @@ Retrieves unique **series** tags values for the specified metric.
 
 | **Method** | **Path** |
 |:---|:---|
-| GET | `/api/v1/metrics/{metric}/series/tags` |
+| `GET` | `/api/v1/metrics/{metric}/series/tags` |
 
 ### Path Parameters
 

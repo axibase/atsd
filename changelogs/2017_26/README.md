@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4335 | sql | Feature | Optimize metadata queries with a `FALSE` condition, for example `WHERE 1=0`. The queries are used by some BI tools (Tableau) to retrieve column information. |
+| 4335 | sql | Feature | Optimize metadata queries with a `false` condition, for example `WHERE 1=0`. The queries are used by some BI tools (Tableau) to retrieve column information. |
 | [4331](#issue-4331) | UI | Feature | Implement right-to-left Text Direction layout for Arabic and Hebrew languages. |
 | 4327 | search | Feature | Implement [Synonym Search](../../search/synonyms.md). |
 | [4327a](#issue-4327a) | search | Feature | Implement [Series Search](../../search/README.md). |
