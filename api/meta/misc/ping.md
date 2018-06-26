@@ -9,7 +9,7 @@ The endpoint is used to check connectivity, authentication, and to maintain an a
 ## Request
 
 | **Method** | **Path** |
-|:---|:---|---:|
+|:---|:---|
 | `GET` | `/api/v1/ping` |
 
 ## Response
