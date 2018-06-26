@@ -46,13 +46,13 @@ To restrict results to series with specific tags, specify one or multiple tag na
 |:---|:---|:---|
 |`t:{name}`|string|Series tag name and value.<br>Prefix the tag name by `t:` to differentiate it from other parameters.<br>Example: `t:disk=sda1`.<br>Example: `t:disk=sda1&t:fstype=ext4`.<br>Multiple values for the same tag can be requested by repeating the parameter.<br>Example: `t:disk=sda1&t:disk=sdb1`.<br>Tag value supports wildcards, for example `t:disk=*`.|
 
-#### Extended Parameters
+#### Aggregation Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 |`aggregate`|string|[Statistical function](../aggregation.md#statistical-functions) applied to detailed values in each period.<br>Example: `aggregate=avg`.|
 |`period`|string|Duration of the aggregation period specified as `count`-`time_unit`.<br>Example: `period=1-HOUR`.<br>Refer to the list of supported [time units](time-unit.md).|
-| `align` | string | Alignment of the period start/end time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`.<br>Example: `align=START_TIME`. Refer to the [alignment](./period.md#alignment) for more details.|
+| `align` | string | Alignment of the period start or end time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`.<br>Example: `align=START_TIME`. Refer to the [alignment](./period.md#alignment) for more details.|
 
 #### Format Parameters
 
