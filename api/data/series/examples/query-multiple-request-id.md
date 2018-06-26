@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve data for multiple series queries with different metrics, entities, and timespans.
+Retrieves data for multiple series queries with different metrics, entities, and timespans.
 
 Each query can return multiple series. The order of series in the response is arbitrary.
 

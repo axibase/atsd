@@ -78,7 +78,7 @@ The target URL receives the following JSON payload sent as `application/json`:
   queryGet(string u, [map c]) response
 ```
 
-Execute a `GET` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
+Executes a `GET` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
 The configuration map `c` can contain the following fields:
 
@@ -96,7 +96,7 @@ The configuration map `c` can contain the following fields:
   queryPost(string u, [map c]) response
 ```
 
-Execute a `POST` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
+Executes a `POST` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
 
 The configuration map `c` can contain the following fields:
 
@@ -217,7 +217,7 @@ printObject(queryPost({}))
 
 #### Send Request to a Webhook
 
-Post message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
+Posts message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
 
 ```javascript
   queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", [
@@ -233,7 +233,7 @@ Request payload:
 
 #### Post Message using REST API
 
-Post message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs/developer-guides/rest-api/chat/sendmessage/) REST API method.
+Posts message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs/developer-guides/rest-api/chat/sendmessage/) REST API method.
 
 ```javascript
   queryPost("https://chat_server:3000/api/v1/chat.sendMessage", [
@@ -273,7 +273,7 @@ Response `content`:
 
 #### Execute a GraphQL Query
 
-Retrieve results of a [GitHub GraphQL](https://developer.github.com/v4/query/) query.
+Retrieves results of a [GitHub GraphQL](https://developer.github.com/v4/query/) query.
 
 ```javascript
   queryPost("https://api.github.com/graphql", [

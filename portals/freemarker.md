@@ -143,7 +143,7 @@ getProperty('entity', 'property_type', 'tagKey')
 
 Returns a string collection.
 
-Retrieve a collection of property objects for a specified entity, property type, and tag.
+Retrieves a collection of property objects for a specified entity, property type, and tag.
 
 ```freemarker
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
@@ -162,7 +162,7 @@ getSeriesProperties("{entity}", "{property_type}")
 
 Returns property objects for a specified entity and property type.
 
-Retrieve a collection of property objects for a specified entity and property type.
+Retrieves a collection of property objects for a specified entity and property type.
 If no entity is specified, then the schema retrieves a collection of property objects for all entities with the specified property type.
 
 ```freemarker
@@ -186,7 +186,7 @@ getTagMaps('metric', 'entity'[, hours])
 
 Returns collection of maps(string, string).
 
-Retrieve a collection of unique tag maps for metric and entity.
+Retrieves a collection of unique tag maps for metric and entity.
 `[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values. The default interval is 24 hours.
 
 ```freemarker
@@ -451,7 +451,7 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `getEntitiesForTags(expression)`  |  string collection  |  Finds entities by expression.  |
 |  `getEntitiesForGroup(group)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.  |
 |  `getEntitiesForGroup(groupName, hours)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.<br>The method returns group members that have inserted data over the last N hours.<br>If hours are not specified or non-positive, all group members are returned.  |
-|  `getMetrics('entity')`  |  string collection  |  Retrieve all collected metrics for a particular entity.  |
+|  `getMetrics('entity')`  |  string collection  |  Retrieves all collected metrics for a particular entity.  |
 |  `isMetric('metric')`  |  boolean  |  Returns `true` if a metric exists.  |
 |  `isMetricCollected('metric', 'entity')`  |  boolean  |  Returns `true` if there is some data for metric and entity inserted in last 24 hours.  |
 |  `hasMetric('entity', 'metric' [,hours])`  |  boolean  |  Executes query for Last Insert Cache table. Returns `true` if the entity collects specified the metric, regardless of tags.<br>If the optional hours argument is specified, only rows inserted for the last N hours are evaluated.  |

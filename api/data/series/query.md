@@ -33,9 +33,9 @@ Query response:
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| **Method** | **Path** | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/v1/series/query` | `application/json` |
+| `POST` | `/api/v1/series/query` | `application/json` |
 
 The request payload is a JSON document containing an array of query objects.
 
@@ -116,8 +116,8 @@ Processing rules:
 
 Examples:
 
-* `value > 0`: Retrieve samples which are positive numbers.
-* `value > 2 && value <= 3`: Retrieve samples within the specified range.
+* `value > 0`: Retrieves samples which are positive numbers.
+* `value > 2 && value <= 3`: Retrieves samples within the specified range.
 * `Math.sin(value) < 0.5`: [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported.
 * `Double.isNaN(value)`: Only `NaN` values and deleted values pass this check.
 

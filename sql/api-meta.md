@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve SQL query result metadata in JSON format without executing the query.
+Retrieves SQL query result metadata in JSON format without executing the query.
 
 > The metadata is provided even if one of the metrics referenced in the query does not exist in the database. In this case, the metric value column is of the default `float` datatype.
 
@@ -12,15 +12,15 @@ No entity permissions are required.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
-| POST | `/api/sql/meta` | `application/x-www-form-urlencoded` |
+| `POST` | `/api/sql/meta` | `application/x-www-form-urlencoded` |
 
 ### Parameters
 
 | **Name**| **Type** | **Description** |
 |:---|:---|:---|
-| q | string | [**Required**] Query text. |
+| `q` | string | [**Required**] Query text. |
 
 As an alternative, the query can be submitted with Content-Type `text/plain` as text payload with the other parameters included in the query string.
 
@@ -90,7 +90,7 @@ ATSD JSON-LD schema is published [here](https://www.axibase.com/schemas/2017/07/
 
 ## Example
 
-### `curl` Query Example
+### curl Query Example
 
 ```bash
 curl https://atsd_hostname:8443/api/sql/meta  \

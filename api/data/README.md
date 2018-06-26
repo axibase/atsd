@@ -198,9 +198,15 @@ The endpoints listed below are accessible under the `/api/v1/` context path, for
 | **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
 | [Query](./alerts/query.md) | `POST` `/alerts/query` <br>Retrieves open alerts for specified filters. |
-| [History Query](./alerts/history-query.md) | `POST` `/alerts/history/query` <br>Retrieve closed alerts for specified filters. |
-| [Update](./alerts/update.md) | `POST` `/alerts/update` <br>Change acknowledgement status of the specified open alerts. |
-| [Delete](./alerts/delete.md) | `POST` `/alerts/delete` <br>Delete specified alerts by id from the memory store. |
+| [History Query](./alerts/history-query.md) | `POST` `/alerts/history/query` <br>Retrieves closed alerts for specified filters. |
+| [Update](./alerts/update.md) | `POST` `/alerts/update` <br>Changes acknowledgement status of the specified open alerts. |
+| [Delete](./alerts/delete.md) | `POST` `/alerts/delete` <br>Deletes specified alerts by id from the memory store. |
+
+### SQL
+
+| **Name** | **Method** / **Path** / **Description** |
+|:---|:---|
+| [SQL Query](../../sql/api.md) | `POST` `/api/sql` <br>Executes an SQL query and retrieves results in CSV or JSON format. |
 
 ### Extended
 
