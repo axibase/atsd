@@ -52,6 +52,7 @@ To restrict results to series with specific tags, specify one or multiple tag na
 |:---|:---|:---|
 |`aggregate`|string|[Statistical function](../aggregation.md#statistical-functions) applied to detailed values in each period.<br>Example: `aggregate=avg`.|
 |`period`|string|Duration of the aggregation period specified as `count`-`time_unit`.<br>Example: `period=1-HOUR`.<br>Refer to the list of supported [time units](time-unit.md).|
+| `align` | string | Alignment of the period start/end time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`.<br>Example: `align=START_TIME`. Refer to the [alignment](./period.md#alignment) for more details.|
 
 #### Format Parameters
 
