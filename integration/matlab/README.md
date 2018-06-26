@@ -115,7 +115,7 @@ An example with the `datetime`, `value`, and `text` fields selected:
 
 ![](./resources/prewiew_data.png)
 
-The complete resultset can be imported with the Import button, highlighted with a green arrow.
+The complete resultset can be imported with the **Import** button, highlighted with a green arrow.
 
 ## Load Data
 

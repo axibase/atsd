@@ -14,7 +14,7 @@
 
 ### Add `backports` repository
 
-This step is required only for Debian 8.x (jessie)
+**Required only for Debian 8.x (jessie).**
 
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
@@ -26,7 +26,9 @@ sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/
 sudo apt-get update
 ```
 
-### Add `axibase.com/public/repository/deb/` Repository
+### Add ATSD Repository
+
+Add `axibase.com/public/repository/deb/` repository
 
 ```sh
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
@@ -40,7 +42,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./"
 
 ### Update Repositories and Install ATSD
 
-Install ATSD:
+Install ATSD.
 
 ```sh
 sudo apt-get update && sudo apt-get install atsd

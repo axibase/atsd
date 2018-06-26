@@ -25,7 +25,7 @@ Open the **Settings > Certificates** page and click **Self Signed Certificate** 
 
 ![](./images/ssl_self_signed_2.png)
 
-Enter the certificate information and click **Create And Import**. Only the `Domain Name` field is required.
+Enter the certificate information and click **Create And Import**. Only the **Domain Name** field is required.
 
 ![](./images/ssl_self_signed_3.png)
 
