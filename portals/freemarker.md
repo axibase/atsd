@@ -441,7 +441,7 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 
 | Name | Returns | Description |
 | --- | --- | --- |
-| `atsd_last('entity', 'metric', 'tag1=v1,tag2=v2')` | Double | Last value for time series or null. |
+| `atsd_last('entity', 'metric', 'tag1=v1,tag2=v2')` | Double | Last value for time series or `null`. |
 | `groupTag('entity', 'tagKey')` | string collection | Collection of tag values for `tagKey` of all entity groups an entity belongs to.  |
 | `tag('entity', 'tagKey')` | string | Entity tag value. |
 | `memberOf('entity', 'group1', ..., 'groupN')` | boolean  |  Returns `true` if an entity belongs to any of specified entity groups.  |
