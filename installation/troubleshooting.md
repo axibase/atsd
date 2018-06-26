@@ -14,7 +14,7 @@ ATSD is listening on the following ports by default:
 * `8088/tcp`: Web Interface/API (http)
 * `8443/tcp`: Web Interface/API (https)
 
-In case you are not able to connect to an ATSD network service, ensure that: a) the service is listening, and b) the firewall allows access to the target ports.
+In case you are not able to connect to an ATSD network service, check that the service is listening and the firewall allows access to the target port.
 
 * Log in to ATSD server
 * Search `netstat` output for TCP/UDP sockets that are listening on the target port, for example `8081`.

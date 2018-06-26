@@ -33,7 +33,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 ## Configure Database Connection
 
 * Create new **Transformation** by selecting **File > New > Transformation**
-* Open **View** pane:
+* Open **View** pane.
 
 ![](./resources/view_pane.png)
 

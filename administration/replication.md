@@ -146,13 +146,13 @@ Start Hadoop and HBase:
 /opt/atsd/bin/atsd-hbase.sh start
 ```
 
-Execute the `add_peer` command:
+Add replication peer.
 
 ```sh
 echo "add_peer '1', \"atsd_slave:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-Ensure that the peer has been added:
+Ensure that the peer is set.
 
 ```sh
 echo "list_peers" | /opt/atsd/hbase/bin/hbase shell

@@ -82,7 +82,7 @@ Load `id_rsa_atsdreadonly` into the `puttygen` program
 
 ![](./resources/ssh-tunnel-1.png)
 
-Click **Save private key** button and save the file in `*.ppk` format to the local disk
+Click **Save private key** and save the file in `*.ppk` format to the local disk
 
 Open the `putty` client and connect it to the ATSD server under `atsdreadonly` with the `ppk` file
 

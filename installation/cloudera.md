@@ -219,7 +219,7 @@ axibase.com  = HADOOP.EXAMPLE.ORG
 apps.example.org = HADOOP.EXAMPLE.ORG
 ```
 
-Ensure that the hostname specified in the `kdc` and `admin_server` properties above is resolvable on the ATSD server. Add it to `/etc/hosts` if necessary.
+Verify that the hostname specified in the `kdc` and `admin_server` properties above is resolvable on the ATSD server. Add it to `/etc/hosts` if necessary.
 
 ### Kerberos Settings
 

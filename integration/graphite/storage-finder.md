@@ -52,7 +52,9 @@ For example:
 
 `'_other'`
 
-## ATSD Storage Finder `local_settings.py` example
+## Storage Finder Example
+
+`local_settings.py` example.
 
 ```python
 ATSD_CONF = {

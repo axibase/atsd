@@ -115,7 +115,7 @@ An example with the `datetime`, `value`, and `text` fields selected:
 
 ![](./resources/prewiew_data.png)
 
-The complete resultset can be imported with the Import button, highlighted with a green arrow.
+The complete resultset can be imported with the **Import** button, highlighted with a green arrow.
 
 ## Load Data
 
@@ -147,7 +147,7 @@ insert(conn_atsd, 'METRIC_NAME', colnames, data);
 
 ## Calculate Derived Series
 
-### Establish a connection to ATSD
+### Connect to ATSD
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
@@ -157,7 +157,9 @@ password = 'PASSWORD';
 conn_atsd = database('', username, password, driver, url);
 ```
 
-### Load pricing data into the variable `prices`
+### Load pricing data
+
+Load pricing data into the variable `prices`
 
 ```matlab
 % SQL query to get prices for a date range
@@ -194,7 +196,9 @@ prices = cell2mat(prices_resultset(:,3));
 
 ![](./resources/prices.png)
 
-### Load weights data into the variable `weights`
+### Load weights data
+
+Load weights data into the variable `weights`
 
 ```matlab
 % SQL query to get weights
