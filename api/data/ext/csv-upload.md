@@ -14,7 +14,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 * Maximum file size is **1 gigabyte**.
 
-> If the uploaded file is larger than 1 GB, compress it or split it into multiple smaller files, uploaded separately.
+> If the input file is larger than 1 GB, consider to compress it to reduce size to the threshold or splitting it into multiple smaller files, uploaded separately.
 
 ## Date Limits
 
@@ -34,13 +34,13 @@ This method supports processing of the uploaded attached file as data as well as
 
 |**Header**|**Value**|
 |:---|:---|
-| `Content-Type` | `text/csv` for plain text CSV file.<br>`application/zip` for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip` for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
+| `Content-Type` | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip`:w for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
 
 #### Multi-part Mode
 
 |**Header**|**Value**|
 |:---|:---|
-| `Content-Type` | `multipart/form-data` or  `multipart/mixed`.<br>Content type for the file part must be set as described in [File Data Mode](#file-data-mode) above.|
+| `Content-Type` | `multipart/*`, for example `multipart/form-data` or  `multipart/mixed`. <br>Content type for the file part itself must be set as described in [File Data Mode](#file-data-mode) above.|
 
 ### Query String Parameters
 
@@ -146,4 +146,4 @@ curl --insecure -X POST --user admin:pwd \
   -T csv-3120.csv "https://atsd_hostname:8443/api/v1/csv?config=parser-3120&wait=true"
 ```
 
-Ensure that query string parameters are URL-encoded, for example `&time=now%20-%201%20*%20hour`.
+> Ensure that request parameter values in query string are URL-encoded, for example `&time=now%20-%201%20*%20hour`

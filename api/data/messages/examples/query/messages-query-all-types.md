@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieve messages for **all** types and sources by omitting these fields in the request or by setting them to an empty string or `null` value.
+Retrieves messages for **all** types and sources by omitting these fields in the request or by setting them to an empty string or `null` value.
 
 ## Request
 

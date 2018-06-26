@@ -26,7 +26,7 @@ This query can be utilized as a validation query in database connection pool imp
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/sql` | `application/x-www-form-urlencoded` |
 

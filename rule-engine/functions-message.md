@@ -98,25 +98,25 @@ The following matching rules apply:
 
 ```javascript
   /*
-  Check if the average exceeds 20 and the 'compaction' message was not received
+  Checks if the average exceeds 20 and the 'compaction' message was not received
   within the last hour for the current entity.
   */
   avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
 
   /*
-  Check if the average exceeds 80 and there is an event with 'type=backup-error'
+  Checks if the average exceeds 80 and there is an event with 'type=backup-error'
   received within the last 15 minutes for entity 'nurswgvml006'.
   */
   avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
 
   /*
-  Count messages within the previous 60 minutes
+  Counts messages within the previous 60 minutes
   for 'type=compaction', any source, any tags and all entities.
   */
   db_message_count('1 hour', 'compaction', '',  '', '*')
 
   /*
-  Count messages with the same text as in the last command, but from different users.
+  Counts messages with the same text as in the last command, but from different users.
   */
   db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
 ```
@@ -134,7 +134,7 @@ The following matching rules apply:
 
 ```javascript
   /*
-  Retrieve the last message with text beginning 'docker start sftp*'.
+  Retrieves the last message with text beginning 'docker start sftp*'.
   */
   db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
 
@@ -154,14 +154,14 @@ The following matching rules apply:
 
 ```javascript
   /*
-  Retrieve messages with the text ending '*Selected' and any tags.
+  Retrieves messages with the text ending '*Selected' and any tags.
   */
   db_messages('30 second', 'webhook', 'axibase-bot', '', 'slack', 'message LIKE "*Selected"')
 ```
 
 ```javascript
   /*
-  Retrieve messages with severety 'Warning' within 15 second and send values of 'command' tag in notification.
+  Retrieves messages with severety 'Warning' within 15 second and send values of 'command' tag in notification.
   */
   msgs = db_messages('15 second', 'logger', '', '', '', 'severity="warning"')
 
