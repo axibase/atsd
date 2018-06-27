@@ -57,9 +57,9 @@ Web interface is now accessible on port `8443` (https).
 |`--detach` | Yes | Run container in background and print container id. |
 |`--hostname` | No | Assign hostname to the container. |
 |`--name` | No | Assign a unique name to the container. |
-|`--restart` | No | Auto-restart policy. _Not supported in all Docker Engine versions._ |
+|`--restart` | No | Auto-restart policy.|
 |`--publish` | No | Publish container port to the host. |
-|`--env` | No | Define a new environment variable inside the container in _key=value_ format. |
+|`--env` | No | Define a new environment variable inside the container in `key=value` format. |
 
 ## Environment Variables
 

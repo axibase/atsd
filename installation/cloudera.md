@@ -141,11 +141,11 @@ Copy the `axibase.keytab` file to the `/opt/atsd/atsd/conf` directory on the ATS
 
 ### Authorize `axibase` Principal
 
-Check the HBase Secure Authorization settings in the Cloudera HBase configuration.
+Check the **HBase Secure Authorization** setting in the Cloudera HBase configuration.
 
 ![](./images/cloudera-manager-authorization.png)
 
-If the HBase Secure Authorization is disabled you can access HBase with no modifications. Proceed to [Kerberos Settings](#kerberos-settings).
+If the **HBase Secure Authorization** is disabled you can access HBase with no modifications. Proceed to [Kerberos Settings](#kerberos-settings).
 
 Otherwise, you need to allow the newly created `axibase` principal to access HBase using one of the following options:
 

@@ -1,6 +1,6 @@
 # Network API
 
-Network API provides a set of plain text commands for inserting numeric time series, key=value properties, and tagged messages into the database via **TCP** and **UDP** network protocols.
+Network API provides a set of plain text commands for inserting numeric time series, `key=value` properties, and tagged messages into the database via **TCP** and **UDP** network protocols.
 
 You can use `netcat`, `telnet`, `bash pseudo-device files`, or a programming language such as [Java](examples/AtsdTcpClient.java) that implements the TCP/UDP stack.
 

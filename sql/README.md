@@ -131,7 +131,7 @@ WHERE metric = 'mpstat.cpu_busy'
 
 The `WHERE` clause is a condition which must be satisfied by the row to be included in results.
 
-Columns referenced in the `WHERE` clause are replaced by their value for the given row. The condition is then evaluated for each row, and if the result is `TRUE`, the row is included in the result set.
+Columns referenced in the `WHERE` clause are replaced by their value for the given row. The condition is then evaluated for each row, and if the result is `true`, the row is included in the result set.
 
 Typically, the `WHERE` clause includes an [interval condition](#interval-condition) to retrieve data for the specified time range.
 
@@ -712,7 +712,7 @@ SELECT date_format(time, 'yyyy-mm-dd''T''HH:mm:ss''Z''')
 
 ### NULL
 
-The `NULL` literal represents `null` value for any data type. Scalar expressions with arithmetic operators such as `number + NULL` produce `NULL` if any operand is `NULL`.
+The `NULL` literal represents `null`, or unknown value. Scalar expressions with arithmetic operators such as `number + NULL` produce `NULL` if any operand is `NULL`.
 
 Likewise, numeric and string operators, except `IS NULL` and `IS NOT NULL`, return `NULL` if any operand is `NULL`.
 
@@ -741,7 +741,7 @@ Logical expressions treat `NaN` as `NULL`. Refer to the truth tables above for m
 
 ### Not a Number (`NaN`)
 
-The database returns special values if the computation result cannot be represented with a real number, for example in case of division by zero or square root of a negative number.
+The database returns special values if the computation result cannot be represented with a real number, for example in case of division by zero or √ of a negative number.
 
 The returned values follow [IEEE 754-2008](https://standards.ieee.org/findstds/standard/754-2008.html) standard.
 
@@ -1524,7 +1524,7 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, VALUE NAN, START_TIME)
 | `period` | Regular interval for aligning interpolated values. |
 | `inter_func` | Interpolation function to calculate values at regular timestamps based on adjacent values. Default: `LINEAR`.|
 | `boundary` | Retrieval of raw values outside of the selection interval to interpolate leading and trailing values. Default: `INNER`. |
-| `fill` | Method for filling missing values at the beginning and the end of the selection interval. Default: `FALSE`. |
+| `fill` | Method for filling missing values at the beginning and the end of the selection interval. Default: `false`. |
 | `alignment` | Aligns regular timestamps based on calendar or start time. Default: `CALENDAR`. |
 | `timezone` | Time zone applied in `CALENDAR` alignment to periods equal or greater than 1 day. |
 
@@ -1565,8 +1565,8 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 | **Name** | **Description**|
 |:---|:---|
-| `FALSE` | [**Default**] No missing values are filled. The rows for periods without interpolated values are not included in the result. |
-| `TRUE` | Missing values at the beginning of the interval are set to first raw value within the interval.<br>Missing values at the end of the interval are set to last raw value within the interval.<br>This option requires that both start and end time are specified in the query. |
+| `false` | [**Default**] No missing values are filled. The rows for periods without interpolated values are not included in the result. |
+| `true` | Missing values at the beginning of the interval are set to first raw value within the interval.<br>Missing values at the end of the interval are set to last raw value within the interval.<br>This option requires that both start and end time are specified in the query. |
 | `VALUE {n}` | Sets missing values to `{n}` which can be a decimal number or a `NAN` (Not a Number)<br>For example: `VALUE 0` or `VALUE NAN`. |
 
 ### Alignment
@@ -2743,7 +2743,7 @@ SELECT DBTIMEZONE
 | `EXP(num)` | `e` (2.71828183) raised to the power of the specified number. |
 | `LN(num)` | Natural logarithm of the specified number. |
 | `LOG(num, m)`  | Base-`num` logarithm of the numerical argument `m`. |
-| `SQRT(num)` | Square root of the specified number. |
+| `SQRT(num)` | √ of the specified number. |
 
 ```sql
 SELECT value, ABS(value), CEIL(value), FLOOR(value), ROUND(value), MOD(value, 3),
