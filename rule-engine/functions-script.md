@@ -148,7 +148,7 @@ PING example.org (192.0.2.1) 56(84) bytes of data.
 rtt min/avg/max/mdev = 40.078/43.189/45.588/2.305 ms
 ```
 
-#### Notification
+#### Outgoing Webhooks
 
 Telegram:
 
@@ -209,7 +209,7 @@ traceroute to example.org (192.0.2.1), 30 hops max, 60 byte packets
  6  example.org (192.0.2.1)  0.348 ms  0.363 ms  0.308 ms
 ```
 
-#### Notification
+#### Outgoing Webhooks
 
  Telegram:
 
@@ -273,7 +273,7 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 28047 www-data  20   0  339860  57372  44236 S   0.0  2.8   0:02.34 php5-fpm
 ```
 
-#### Notification
+#### Outgoing Webhooks
 
  Telegram:
 
@@ -322,7 +322,7 @@ axibase      1  0.0  0.0  19712  3304 ?        Ss   11:07   0:00 /bin/bash /entr
 axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/hbase/bin/hbase-daemon.sh --config /opt/atsd/hbase/bin/../conf foreground_start master
 ```
 
-#### Notification
+#### Outgoing Webhooks
 
  Telegram:
 
@@ -383,7 +383,7 @@ Response Time: 0.618
 Content Length: 35214 bytes
 ```
 
-#### Notification
+#### Outgoing Webhooks
 
  Telegram:
 
@@ -437,7 +437,7 @@ timeout 2 bash -c "</dev/tcp/example.org/443"
 TCP port 443 is available
 ```
 
-#### Notification
+#### Outgoing Webhooks
 
  Telegram:
 
@@ -492,7 +492,7 @@ ssh -i /home/axibase/.ssh/def.key example.org 'osqueryi "SELECT DISTINCT process
 +------+-------+------+
 ```
 
-#### Notification
+#### Outgoing Webhooks
 
  Telegram:
 

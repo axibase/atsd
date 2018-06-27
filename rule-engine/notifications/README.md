@@ -86,7 +86,7 @@ Select a rule by name, open the **Webhooks** tab in the rule editor.
 
 Choose one of the webhooks from the **Endpoint** drop-down list.
 
-Configure when to send the notification by enabling triggers for `Open`, `Repeat`, and `Cancel` events.
+Configure when to execute the webhook by enabling triggers for `Open`, `Repeat`, and `Cancel` events.
 
 ![](./images/notify-triggers.png)
 
@@ -176,9 +176,9 @@ The rule engine ignores alerts initiated for disabled webhooks.
 
 To disable sending alerts from any rule through the selected webhook, set its status to **Disabled** on the **Alerts > Outgoing Webhooks** page.
 
-### Notification Logs
+### Webhook Logs
 
-Notification results are recorded in the database as messages and can be viewed under the `notification` type on the **Message Search** page.
+Webhook request results are recorded in the database as messages and can be viewed under the `notification` type on the **Message Search** page.
 
 ```elm
 /messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
@@ -198,9 +198,9 @@ The number of notifications sent per minute can be monitored with the [`web_serv
 
 ### Error Handling
 
-The notification request is executed successfully if the endpoint returns HTTP `200 OK` status code.
+The webhook request executes successfully if the endpoint returns HTTP `200 OK` status code.
 
-**No retry** is attempted in case of error. If the notification fails, the rule engine writes an `ERROR` event in the `atsd.log` and stores a corresponding messages with `CRITICAL` severity in the database.
+**No retry** is attempted in case of error. If the webhook request fails, the rule engine writes an `ERROR` event in the `atsd.log` and stores a corresponding messages with `CRITICAL` severity in the database.
 
 If the error occurs during chart preparation, the rule engine falls back to sending a text message containing the chart link and the error details, if available.
 

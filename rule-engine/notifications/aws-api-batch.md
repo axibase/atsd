@@ -4,7 +4,7 @@
 
 The following example demonstrates how to start an [AWS Batch](https://aws.amazon.com/batch) job using a [`AWS API`](aws-api.md) outgoing webhook.
 
-The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
+The request is automatically signed with **AWS Signature, v4**, implemented by this webhook, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
 The example described below invokes the [AWS Batch API](https://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitJob.html) `SubmitJob` action.
 
@@ -12,7 +12,7 @@ The example described below invokes the [AWS Batch API](https://docs.aws.amazon.
 
 Create a new `AWS API` webhook or import the [template](./resources/aws-api-batch-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
-To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
+To create a new webhook, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
 ### Parameters
 
@@ -81,7 +81,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value causes the condition to evaluate to `true`, which in turn triggers the notification.
+The value causes the condition to evaluate to `true`, which in turn triggers the webhook.
 To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/aws_api_batch_alert_open.png)

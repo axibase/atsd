@@ -104,7 +104,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that are substituted with actual values when the notification is triggered.
+The `body` text contains placeholders that are substituted with actual values when the webhook is triggered.
 
 The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
@@ -154,7 +154,7 @@ For **Repeat** and **Cancel** triggers:
 
 Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
 
-When the notification is executed, all placeholders in the request URL are resolved as follows:
+When the webhook is executed, all placeholders in the request URL are resolved as follows:
 
 `https://api.github.com/repos/username/github_repository/issues/1/comments`
 

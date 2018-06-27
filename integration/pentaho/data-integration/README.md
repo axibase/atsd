@@ -124,7 +124,7 @@ Since the `Weights` are available for only one year, assume that the category we
 * Open the **Design** pane.
 * Locate **Join Rows (cartesian product)** in **Joins** category.
 * Drag and drop it to the **Transformation** pane.
-* Connect your **Join Rows (cartesian product)** with **Datetimes** and **Weights** using **Input Connection** button. That button is displayed when the mouse hovers over **Join Rows** or any item inside the **Transformation** pane.
+* Connect your **Join Rows (cartesian product)** with `Datetime` and `Weights` using **Input Connection** button. That button is displayed when the mouse hovers over **Join Rows** or any item inside the **Transformation** pane.
 
 ![](./resources/connections.png)
 

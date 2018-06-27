@@ -6,7 +6,7 @@ These functions return URLs to ATSD pages based on the database URL (set the `se
 
 The URLs are automatically [inlined](links.md#inline-links) in email notifications and webhooks that support inline links.
 
-The inline links can be also assembled manually using the syntax supported by the notification channel:
+The inline links can be also assembled manually using the syntax supported by the webhook target.
 
 * `markdown`
 

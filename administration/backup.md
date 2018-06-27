@@ -43,7 +43,7 @@ Download individual backup archives by clicking the link in the **Name** column 
 
 ### Scheduled Backup
 
-The database creates daily backup files in the [backup directory](#backup-directory) at `23:30` [local server time](./timezone.md). 
+The database creates daily backup files in the [backup directory](#backup-directory) at `23:30` [local server time](./timezone.md).
 
 The schedule is controlled with the `internal.backup.schedule` property which can be modified on the [**Server Properties**](./server-properties.md) page.
 

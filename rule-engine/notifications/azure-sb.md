@@ -1,10 +1,10 @@
-# Azure Service Bus Notification
+# Azure Service Bus Webhook
 
 ## Overview
 
-`AZURE SB` [notifications](../notifications/README.md) send messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic upon window status events.
+`AZURE SB` [webhook](../notifications/README.md) sends messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic on window status events.
 
-## Notification Settings
+## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|

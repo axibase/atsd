@@ -14,7 +14,7 @@
 * [Proxy Settings](#proxy-settings)
 * [Webhook Settings](#webhook-settings)
 * [Reacting to Bot Messages](#reacting-to-bot-messages)
-* [Testing Notification Rule](#testing-rule)
+* [Testing Rule](#testing-rule)
 * [Examples](#examples)
 
 ## Prerequisites
@@ -57,7 +57,7 @@ To add bot to private/public channel see this [instruction](telegram-add-bot-to-
 
 ## Get Chat Id
 
-The chat id is required for the Telegram notification to function properly.
+The chat id is required for the outgoing Telegram webhook to function properly.
 
 There are two options to obtain chat id:
 

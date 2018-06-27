@@ -115,7 +115,7 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 | **Metric** | **Description** |
 |:--- | :--- |
 |`email_notifications_per_minute` |Number of email notifications sent. |
-|`web_service_notifications_per_minute` | Number of web service notifications sent.|
+|`web_service_notifications_per_minute` | Number of webhooks sent.|
 |`expired_metric_received_per_second` |Number of `series` commands with timestamp earlier than specified by Time Filter ignored by the rule engine. |
 |`forward_metric_received_per_second` |Number of `series` commands with timestamp greater than specified by Time Filter ignored by the rule engine. |
 

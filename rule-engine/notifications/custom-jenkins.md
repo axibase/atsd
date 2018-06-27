@@ -104,7 +104,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and `Parameters` are marked as editable.
 
-When the notification is executed, all placeholders are resolved as follows:
+When the webhook is executed, all placeholders are resolved as follows:
 
 `https://jenkins.example.org/job/atsd-api-test/buildWithParameters`
 

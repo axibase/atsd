@@ -47,7 +47,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `html_body` text contains placeholders that are substituted with actual values when the notification is triggered.
+The `html_body` text contains placeholders that are substituted with actual values when the webhook is triggered.
 
 Placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
@@ -81,7 +81,7 @@ To override the default `message` parameter which is set to  `[${status}] ${rule
 
 ![](./images/zendesk_rule_notification_repeat_close.png)
 
-The request ID placeholder in the request URL as well as payload placeholders are automatically resolved when the notification is triggered:
+The request ID placeholder in the request URL as well as payload placeholders are automatically resolved when the webhook is triggered.
 
 `https://axibase.zendesk.com/api/v2/requests/1.json`
 

@@ -27,7 +27,7 @@ This function executes an HTTP request using a predefined [outgoing webhook](not
 
 Parameters and placeholders defined in the webhook are replaced using the input map `p`.
 
-Available parameters for built-in notification types are enumerated [here](params-map.md).
+Available parameters for built-in webhook types are enumerated [here](params-map.md).
 
 ### Content Type is Form
 

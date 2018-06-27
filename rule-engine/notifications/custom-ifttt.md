@@ -109,7 +109,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that are substituted with actual values when the notification is triggered.
+The `body` text contains placeholders that are substituted with actual values when the webhook is triggered.
 
 Only `valueN` naming convention for JSON fields is supported by the IFTTT platform.
 
@@ -143,7 +143,7 @@ Specify the webhook identifier `atsd_custom_webhook` in the `webhook_name` param
 
 ![](./images/ifttt_rule_notification_open.png)
 
-The `webhook_name` placeholder in the request URL as well as payload placeholders are automatically resolved when the notification is triggered:
+The `webhook_name` placeholder in the request URL as well as payload placeholders are automatically resolved when the webhook is triggered.
 
 `https://maker.ifttt.com/trigger/atsd_custom_trigger/with/key/111111`
 

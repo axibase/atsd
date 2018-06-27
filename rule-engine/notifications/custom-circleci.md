@@ -89,7 +89,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and JSON payload.
 
-When the notification is executed, all placeholders in the request URL and the payload is resolved as follows:
+When the webhook is executed, all placeholders in the request URL and the payload is resolved as follows:
 
 `https://circleci.com/api/v1.1/project/github/axibase/atsd-api-java/tree/master`
 

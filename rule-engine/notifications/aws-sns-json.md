@@ -1,6 +1,6 @@
 # SNS JSON Message Format Example
 
-Create a `AWS SNS` notification with `Message Format = SNS JSON`, for example:
+Create a `AWS SNS` webhook with `Message Format = SNS JSON`, for example:
 
 ![](./images/aws_sns_web_notification_config_json.png)
 
@@ -45,7 +45,7 @@ Customize the alert messages using [placeholders](../placeholders.md) as necessa
 
 * The rule creates new windows when new commands are received by the database.
 
-It can take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and to trigger the webhooks. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Test
 

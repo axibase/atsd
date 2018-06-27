@@ -1514,7 +1514,7 @@ If the `WHERE` condition includes multiple date ranges, the interpolation is per
 **Example**:
 
 ```sql
-WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, VALUE NAN, START_TIME)
+WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, VALUE NaN, START_TIME)
 ```
 
 **Parameters**:
@@ -1567,7 +1567,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 |:---|:---|
 | `false` | [**Default**] No missing values are filled. The rows for periods without interpolated values are not included in the result. |
 | `true` | Missing values at the beginning of the interval are set to first raw value within the interval.<br>Missing values at the end of the interval are set to last raw value within the interval.<br>This option requires that both start and end time are specified in the query. |
-| `VALUE {n}` | Sets missing values to `{n}` which can be a decimal number or a `NAN` (Not a Number)<br>For example: `VALUE 0` or `VALUE NAN`. |
+| `VALUE {n}` | Sets missing values to `{n}` which can be a decimal number or a `NaN` (Not a Number)<br>For example: `VALUE 0` or `VALUE NaN`. |
 
 ### Alignment
 
