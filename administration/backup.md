@@ -43,23 +43,25 @@ Download individual backup archives by clicking the link in the **Name** column 
 
 ### Scheduled Backup
 
-The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, the database creates backup files in the [backup directory](#changing-backup-directory) every day at 23:30 [local server time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
+The database creates daily backup files in the [backup directory](#changing-backup-directory) at `23:30` [local server time](./timezone.md). 
+
+The schedule is controlled with the `internal.backup.schedule` property which can be modified on the [**Server Properties**](./server-properties.md) page.
 
 New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation.
 
 Configure an external `cron` job to prune old backup files and to move records to a different directory.
 
-### Changing Backup Directory
+### Backup Directory
 
-By default, ATSD stores backup data in `/opt/atsd/atsd/backup` directory.
+By default, ATSD stores backup data in the `/opt/atsd/atsd/backup` directory.
 
-To change backup directory, modify `backup.data.directory` property on the [**Server Properties**](./server-properties.md) page.
+To change the directory, for example to store files on a network-mounted file system, modify the `backup.data.directory` property on the [**Server Properties**](./server-properties.md) page.
 
 ### Restore
 
-The records in the selected backup archive can be restored in the same ATSD instance or in another ATSD instance.
+The records from the selected backup archive can be restored on the same ATSD instance or on another ATSD instance.
 
-Choose one or more backup files to revert ATSD records to an earlier date if a record is deleted erroneously. Alternatively, import records to another ATSD instance to replicate a configuration.
+Choose one or more backup files to revert ATSD configuration to an earlier date. Alternatively, import records in another ATSD instance to replicate a configuration.
 
 Open the **Settings > Diagnostics > Backup Import** page.
 
