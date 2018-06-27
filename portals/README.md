@@ -2,7 +2,7 @@
 
 Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created using the [Axibase Charts](https://github.com/axibase/charts#axibase-charts) and presented in a [grid](portal-settings.md#layout) layout.
 
-The Axibase Charts library provides a simple and powerful syntax, closely integrated with the ATSD [data model](../schema.md), so that even a user with no programming experience can build and deploy real-time dashboards with minimal effort.
+The Charts library implements a simple yet powerful syntax, closely integrated with the ATSD [schema](../schema.md) for building real-time dashboards in a declarative way.
 
 Syntax Examples:
 

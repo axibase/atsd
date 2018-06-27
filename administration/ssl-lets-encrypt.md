@@ -1,4 +1,4 @@
-# Installing Let's Encrypt Certificate
+# Installing `Let's Encrypt` Certificate
 
 ## Overview
 
@@ -218,7 +218,7 @@ curl -k -u $USR:$PWD https://$HOST:$PORT/admin/certificates/import/atsd \
 
 Replace the parameters `USR`,`PWD`, `HOST`, `PORT`, and `DNS` with the actual settings.
 
-Protect the file so that `root` privileges are required for reading and executing the file.
+Protect the file by changing the owner to `root` and revoking read permissions from other users.
 
 ```sh
 sudo chown root:root deploy-atsd.sh
@@ -280,7 +280,7 @@ The certbot automatically enables certificate renewal which is performed twice a
 cat /etc/cron.d/certbot
 ```
 
-The `certbot -q renew` command is executed as root.
+The `certbot -q renew` command is executed as `root`.
 
 ```txt
 SHELL=/bin/sh

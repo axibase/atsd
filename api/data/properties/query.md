@@ -17,7 +17,7 @@ Basic example:
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/properties/query` | `application/json` |
 

@@ -45,17 +45,17 @@ Columns contained in the CSV file that are not specified in any field in the par
 
 | Setting | Description |
 | --- | --- |
-|  Delimiter  |  Separator dividing values: comma, semicolon, or tab.  |
-|  Line Delimiter  |  End-of-line symbol: EOL `(\n, \r\n)` or semicolon `;`  |
-|  Text Qualifier  |  Escape character to differentiate separator as literal value.  |
-|  Comment Symbol  |  Lines starting with comment symbol such as hash `#` are ignored.  |
-|  Padding Symbol  |  Symbol appended to text values until all cells in the given column have the same width.<br>Applies to fixed-length formats such as `.dat` format.  |
-|  Decimal Separator  |  Symbol used to mark the border between the integral and the fractional parts of a decimal numeral.<br>Default: `comma`.<br>Allowed values: `period`, `comma`.  |
-|  Grouping Separator  |  Symbol used to group thousands within the number.<br>Default: `none`.<br>Allowed values: `none`, `period`, `comma`, `space`.  |
-|  Fields Lengths  |  Width of columns in symbols. Padding symbols added to the end of the field to obey the fields lengths.<br>For files in `.dat` format.  |
-|  Discard `NaN`  |  `NaN` (Not a Number) values are discarded  |
-|  Ignore Line Errors  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
-|  Ignore Header Lines  |  Ignore top-N lines from the file header  |
+|  `Delimiter`  |  Separator dividing values: comma, semicolon, or tab.  |
+|  `Line Delimiter`  |  End-of-line symbol: EOL `(\n, \r\n)` or semicolon `;`  |
+|  `Text Qualifier`  |  Escape character to differentiate separator as literal value.  |
+|  `Comment Symbol`  |  Lines starting with comment symbol such as hash `#` are ignored.  |
+|  `Padding Symbol`  |  Symbol appended to text values until all cells in the given column have the same width.<br>Applies to fixed-length formats such as `.dat` format.  |
+|  `Decimal Separator`  |  Symbol used to mark the border between the integral and the fractional parts of a decimal numeral.<br>Default: `comma`.<br>Allowed values: `period`, `comma`.  |
+|  `Grouping Separator`  |  Symbol used to group thousands within the number.<br>Default: `none`.<br>Allowed values: `none`, `period`, `comma`, `space`.  |
+|  `Fields Lengths`  |  Width of columns in symbols. Padding symbols added to the end of the field to obey the fields lengths.<br>For files in `.dat` format.  |
+|  `Discard NaN`  |  `NaN` (Not a Number) values are discarded  |
+|  `Ignore Line Errors`  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
+|  `Ignore Header Lines`  |  Ignore top-N lines from the file header  |
 
 ![](./resources/csv_parser_example.png)
 

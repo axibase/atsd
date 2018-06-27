@@ -141,7 +141,7 @@ The workflow consists of these steps (nodes):
    `inflation.cpi.categories.weight` table.
 
 3. **Filter** tool. Specify the condition `>= January 1st, 2010`
-   and use the **T** (_true_) node output to retrieve the series created after 2009 only.
+   and use the **T** (`true`) node output to retrieve the series created after 2009 only.
 
    ![](./images/filter_date.png)
 

@@ -6,7 +6,7 @@
 |------|-------------|---------|-------------------------------------------------------------------------------------------------------|
 | [3737](#issue-3737) | sql         | Bug     | Fixed issue with long scan, followed by a timeout for an entity that does not collect the specified metric. |
 | [3735](#issue-3735) | sql         | Bug     | Math functions do not accept arithmetic expressions in the `WHERE` clause. Updated error message to read `IllegalArgumentException: Aggregate functions are not supported in the WHERE clause`. |
-| 3731 | api-rest    | Bug     | Fixed issue with property queries (`addMeta`:true) not returning metadata if the property type is set to `$entity_tags`. |
+| 3731 | api-rest    | Bug     | Fixed issue with property queries (`addMeta`:`true`) not returning metadata if the property type is set to `$entity_tags`. |
 | 3729 | api-rest    | Bug     | Updated error URL and message text for requests to non-existent URLs. |
 | [3727](#issue-3727) | api-network | Feature | Optimized TCP handler for faster processing of `series` commands streamed by a single TCP client. |
 | [3725](#issue-3725) | sql         | Bug     | Optimized queries with `ORDER BY` and `LIMIT` clauses. |
@@ -35,7 +35,7 @@
 | 3723 | data-source | Bug     | Added missing Avatica package dependencies to the ATSD JDBC driver. |
 | 3722 | core        | Feature | Send `property` command with collector details to ATSD after a startup is completed. |
 | 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://axibase.com/docs/axibase-collector/job-autostart.html). |
-| 3571 | admin       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
+| 3571 | administrator       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
 
 ### Issue 3737
 

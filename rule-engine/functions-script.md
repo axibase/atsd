@@ -11,7 +11,7 @@ The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 ## Common Use Cases
 
 * Check the TCP availability of the remote host.
-* Check that the remote host can be reached with ICMP ping.
+* Check that the remote host can be reached with ICMP `ping`.
 * Check that an HTTP/s request to a URL returns HTTP `200 OK` status code.
 * Execute a diagnostics command on the remote host.
 * Retrieve configuration information from the remote device/host.

@@ -6,7 +6,7 @@
 |------|-------------|---------|----------------------|
 | [4619](#issue-4619) | api | Feature | Modify how `maxInsertDate` parameter is processed to search for metrics and entities without last insert date.   |
 | 4618 | sql | Bug | Fix empty file name '.xlsx' for scheduled SQL reports in Excel format. |
-| 4613 | admin | Bug | Default alert logger is deleted when logback configuration is reloaded. |
+| 4613 | administrator | Bug | Default alert logger is deleted when logback configuration is reloaded. |
 | 4607 | entity | Feature | Speed up adding new entities to expression-based groups. |
 | 4606 | jdbc | Bug | Remove 'commons-lang3' dependency conflict. |
 | 4606 | installation | Feature | Include default entity tag templates for 'docker*' entities in the distribution. |

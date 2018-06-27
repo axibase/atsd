@@ -19,7 +19,7 @@ Retrieves a list of entities matching the specified filters.
 | `maxInsertDate` |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
 | `limit` |integer|Maximum number of entities to retrieve, ordered by name.|
 | `tags` |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all entity tags starting with `env.`.|
-| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to true by default.|
+| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
 
 #### Expression
 

@@ -12,7 +12,7 @@ The replace request for an existing entity does not affect any series, propertie
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `PUT` | `/api/v1/entities/{entity}` | `application/json` |
 
