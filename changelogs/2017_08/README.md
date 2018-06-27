@@ -6,8 +6,8 @@
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3951 | sql         | Feature | Granted permissions to users with `USER` role to cancel the own queries.                             |
 | 3942 | core        | Bug     | Fixed `PermGen` Error by setting `MaxPermGen` in start script.                                   |
-| [3938](#issue-3938) | admin       | Bug     | Added `PermGen` memory usage metrics.                                     |
-| 3934 | admin       | Support | Set `MaxPermGen` to 128 MB in start-atsd scripts.                           |
+| [3938](#issue-3938) | administrator       | Bug     | Added `PermGen` memory usage metrics.                                     |
+| 3934 | administrator       | Support | Set `MaxPermGen` to 128 MB in start-atsd scripts.                           |
 | 3929 | api-rest    | Bug     | Fixed double/float datatype cast rounding error in `DELTA` and `COUNTER` aggregators. |
 
 ## Collector

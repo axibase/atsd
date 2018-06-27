@@ -10,7 +10,7 @@ To delete all entities from the group, submit an empty array `[]` with the [set 
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/entity-groups/{group}/entities/delete` | `application/json` |
 

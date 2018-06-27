@@ -6,7 +6,7 @@
 |------|-------------|---------|----------------------|
 | 4578 | rule engine | Bug | Custom alias not resolved in Alter Message text.  |
 | 4576 | core | Bug | Duplicate samples stored after data compaction.  |
-| 4574 | admin | Bug | Reduce excessive ATSD at startup. |
+| 4574 | administrator | Bug | Reduce excessive ATSD at startup. |
 | 4571 |UI| Bug | Fix missing suggestions in auto-complete if entries contain non-ASCII characters. |
 | 4569 |UI| Feature | Standardize available fields for filtering in the API and UI. |
 | [4555](#issue-4555) | sql | Bug | `time`/`datetime` `NOT BETWEEN` filter error. |

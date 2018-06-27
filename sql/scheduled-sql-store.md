@@ -69,7 +69,7 @@ Column aliases can be defined to ensure that the query results meet the followin
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
 | `tags.{name}` | string | `0-*` | Series tag for the stored series.<br>Tag name set by discarding `tags.` prefix.<br>Cell value contains tag value.|
-| `tags` | string | `0-*` | Series tags for the stored series, encoded as key=value separated by semi-colon.<br>Cell value contains tag names and values.|
+| `tags` | string | `0-*` | Series tags for the stored series, encoded as `key=value` separated by semi-colon.<br>Cell value contains tag names and values.|
 
 #### Optional Metadata Tag Columns
 

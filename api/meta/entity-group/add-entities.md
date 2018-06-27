@@ -8,7 +8,7 @@ Adds entities as members to the specified entity group.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/entity-groups/{group}/entities/add` | `application/json` |
 

@@ -8,7 +8,7 @@ Data collected by the entity is removed asynchronously in the background.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `DELETE` | `/api/v1/entities/{entity}` | `application/json` |
 

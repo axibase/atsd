@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject                         |
 |------|-------------|---------|---------------------------------|
-| 3698 | admin       | Support     | Increased the default maximum Java heap value from 512 MB to 1 GB. This change is required to accommodate increased requirements for in-memory processing by the SQL engine. |
+| 3698 | administrator       | Support     | Increased the default maximum Java heap value from 512 MB to 1 GB. This change is required to accommodate increased requirements for in-memory processing by the SQL engine. |
 | [3690](#issue-3690) | security    | Feature | Modified how role/membership/permission changes are applied. When changes are made to a user account, current active sessions are now automatically invalidated. The user cannot continue using sessions with previously cached `ACLs`. |
 | [3688](#issue-3688) | sql         | Feature     | Added support for `GROUP BY value` to calculate unique occurrences of the `value` over the specified timespan. This is useful for metrics that measure discrete characteristics, such as status codes, error codes, digital states etc. |
 | 3679 | email       | Feature     | Cleaned up the email notification template to hide irrelevant statistics if the sample in the window is less than 1. |

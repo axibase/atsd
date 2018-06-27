@@ -35,7 +35,7 @@
 | 3723 | data-source | Bug     | Added missing Avatica package dependencies to the ATSD JDBC driver. |
 | 3722 | core        | Feature | Send `property` command with collector details to ATSD after a startup is completed. |
 | 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://axibase.com/docs/axibase-collector/job-autostart.html). |
-| 3571 | admin       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
+| 3571 | administrator       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
 
 ### Issue 3737
 

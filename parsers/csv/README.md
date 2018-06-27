@@ -31,7 +31,7 @@ To process a CSV file you need to create a CSV parser, which splits the file int
 |  `Timestamp Pattern`  |  Custom timestamp format, specified manually. For example: `dd-MMM-yy HH:mm:ss`<br>If there are two columns containing the Timestamp, then in they are divided with a dash (-) in the pattern.  |
 |  `Timezone Diff Column`  |  Column containing the time difference calculated from UTC.  |
 |  `Time Zone`  |  Time zone for interpreting Timestamps.  |
-|  `Filter`  |  Expression applied to row. If expression returns false, the row is discarded.<br>Filter syntax:<br>Fields:<br>timestamp – timestamp in milliseconds. Computed by parsing date from Time Column with specified Time Format and converted into milliseconds.<br>row[`columnName`] – text value of cell in the specific column.<br>Functions:<br>number(`columnName`) – returns numeric value of cell, or `NaN` (Not a Number) if the cell contains text which is not numeric.<br>`isNumber('columnName')` – returns `true` if cell is a valid number.<br>`isBlank('columnName')` – returns `true` is cell is empty string.<br>upper(`columnName`) – converts cell text to uppercase.<br>lower(`columnName`) – converts cell text to lowercase.<br>date(`endtime expression`) – returns time in milliseconds.<br>Filter examples:<br>number(`columnName`) > 0<br>`isNumber('columnName')`<br>row[`columnName`] LIKE 'abc*'<br>upper(`columnName`) `!= 'INVALID'`<br>timestamp > date(`current_day`)<br>timestamp > date(`2015-08-15T00:00:00Z`)<br>timestamp > date(`now – 2 * year`)  |
+|  `Filter`  |  Expression applied to row. If expression returns `false`, the row is discarded.<br>Filter syntax:<br>Fields:<br>timestamp – timestamp in milliseconds. Computed by parsing date from Time Column with specified Time Format and converted into milliseconds.<br>row[`columnName`] – text value of cell in the specific column.<br>Functions:<br>number(`columnName`) – returns numeric value of cell, or `NaN` (Not a Number) if the cell contains text which is not numeric.<br>`isNumber('columnName')` – returns `true` if cell is a valid number.<br>`isBlank('columnName')` – returns `true` is cell is empty string.<br>upper(`columnName`) – converts cell text to uppercase.<br>lower(`columnName`) – converts cell text to lowercase.<br>date(`endtime expression`) – returns time in milliseconds.<br>Filter examples:<br>number(`columnName`) > 0<br>`isNumber('columnName')`<br>row[`columnName`] LIKE 'abc*'<br>upper(`columnName`) `!= 'INVALID'`<br>timestamp > date(`current_day`)<br>timestamp > date(`2015-08-15T00:00:00Z`)<br>timestamp > date(`now – 2 * year`)  |
 |  `Tag Columns`  |  Columns converted to series tags.  |
 |  `Default Tags`  |  Predefined series tags, specified as `name=value` on multiple lines.  |
 |  `Ignored Columns`  |  List of columns ignored in `METRIC` and `MESSAGE` commands.<br>These columns are retained in `PROPERTY` commands.  |
@@ -45,17 +45,17 @@ Columns contained in the CSV file that are not specified in any field in the par
 
 | Setting | Description |
 | --- | --- |
-|  Delimiter  |  Separator dividing values: comma, semicolon, or tab.  |
-|  Line Delimiter  |  End-of-line symbol: EOL `(\n, \r\n)` or semicolon `;`  |
-|  Text Qualifier  |  Escape character to differentiate separator as literal value.  |
-|  Comment Symbol  |  Lines starting with comment symbol such as hash `#` are ignored.  |
-|  Padding Symbol  |  Symbol appended to text values until all cells in the given column have the same width.<br>Applies to fixed-length formats such as `.dat` format.  |
-|  Decimal Separator  |  Symbol used to mark the border between the integral and the fractional parts of a decimal numeral.<br>Default: `comma`.<br>Allowed values: `period`, `comma`.  |
-|  Grouping Separator  |  Symbol used to group thousands within the number.<br>Default: `none`.<br>Allowed values: `none`, `period`, `comma`, `space`.  |
-|  Fields Lengths  |  Width of columns in symbols. Padding symbols added to the end of the field to obey the fields lengths.<br>For files in `.dat` format.  |
-|  Discard NaN  |  NaN (Not a Number) values are discarded  |
-|  Ignore Line Errors  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
-|  Ignore Header Lines  |  Ignore top-N lines from the file header  |
+|  `Delimiter`  |  Separator dividing values: comma, semicolon, or tab.  |
+|  `Line Delimiter`  |  End-of-line symbol: EOL `(\n, \r\n)` or semicolon `;`  |
+|  `Text Qualifier`  |  Escape character to differentiate separator as literal value.  |
+|  `Comment Symbol`  |  Lines starting with comment symbol such as hash `#` are ignored.  |
+|  `Padding Symbol`  |  Symbol appended to text values until all cells in the given column have the same width.<br>Applies to fixed-length formats such as `.dat` format.  |
+|  `Decimal Separator`  |  Symbol used to mark the border between the integral and the fractional parts of a decimal numeral.<br>Default: `comma`.<br>Allowed values: `period`, `comma`.  |
+|  `Grouping Separator`  |  Symbol used to group thousands within the number.<br>Default: `none`.<br>Allowed values: `none`, `period`, `comma`, `space`.  |
+|  `Fields Lengths`  |  Width of columns in symbols. Padding symbols added to the end of the field to obey the fields lengths.<br>For files in `.dat` format.  |
+|  `Discard NaN`  |  `NaN` (Not a Number) values are discarded  |
+|  `Ignore Line Errors`  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
+|  `Ignore Header Lines`  |  Ignore top-N lines from the file header  |
 
 ![](./resources/csv_parser_example.png)
 

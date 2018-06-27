@@ -20,7 +20,7 @@ picomp2 z:${timezone} e:${entity} i:${ignore-defaults} t:${tag-name}=${tag-value
 | `e`         | string       | [**Required**] Default entity name. |
 | `i`         | boolean      | Ignore default values: `status` = `0`, `status_test` = `GOOD`, `flags` = `false`, `annotations` = `null` or empty. <br>Default: `true` (ignore defaults).|
 | `z`         | string       | [Time Zone](../../shared/timezone-abnf.md) applied when parsing dates, for example EST.<br>Default time zone: UTC.<br>Default date format:  `yyyy-MM-dd HH:mm:ss`.|
-| `t`         | string       | One or multiple series or message tag key=value pairs, for example: `t:location=SVL`. |
+| `t`         | string       | One or multiple series or message tag `key=value` pairs, for example: `t:location=SVL`. |
 
 ### Columns
 

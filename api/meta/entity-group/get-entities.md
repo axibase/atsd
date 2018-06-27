@@ -25,7 +25,7 @@ Retrieves a list of entities that are members of the specified entity group and 
 | `maxInsertDate` |string|Include entities with last insert date less than specified time.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
 | `limit` |integer|Maximum number of entities to retrieve, ordered by name.|
 | `tags` |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
-| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](../entity/list.md#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to true by default.|
+| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](../entity/list.md#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
 
 ## Response
 

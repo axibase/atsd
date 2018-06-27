@@ -61,7 +61,7 @@ Cross-domain requests are allowed.
 
 ## Compression
 
-* Clients can send compressed data by adding the HTTP header **Content-Encoding: gzip** to the request.
+* Clients can send compressed data by adding the HTTP header `Content-Encoding: gzip` to the request.
 
 ## Troubleshooting
 

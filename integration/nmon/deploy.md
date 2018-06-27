@@ -16,7 +16,7 @@ Download `nmon_deploy.sh` and sender script from the `nmon` repository: [https:
 |  `-c`  |  Set path to the `deploy.properties` file, that contains all the configurations required by the `nmon_deploy.sh` script.  |
 |  `-n`  |  Does not modify `cron`. Only updates `nmon` binary file and ATSD sender script.<br>Useful to update `nmon` or sender script to a new version.  |
 |  `-d`  |  Comments out all `nmon` `cron` tasks. Stops `nmon` data collection and delivery to ATSD  |
-|  `-i`  |  While `nmon` does not have any dependencies, the ATSD sender script has the following dependencies: `crontab`, telnet.<br>With `-i` argument the script only checks and installs dependencies.<br>Requires sudo credentials defined in the `deploy.properties` file.<br>After installing the dependencies, run the script again without the `-i` argument to install the `nmon` and sender script.  |
+|  `-i`  |  While `nmon` does not have any dependencies, the ATSD sender script has the following dependencies: `crontab`, `telnet`.<br>With `-i` argument the script only checks and installs dependencies.<br>Requires `sudo` credentials defined in the `deploy.properties` file.<br>After installing the dependencies, run the script again without the `-i` argument to install the `nmon` and sender script.  |
 
 The `deploy.properties` file contains the target machine parameters, user details, and paths to `nmon` and `crontab` settings:
 
@@ -43,9 +43,9 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 |  `deploy.user`  |  User of target machines.  |
 |  `deploy.key`  |  Path to the ssh key to access target machines by the user set in `deploy.user`.  |
 |  `deploy.password`  |  Password of target machine user set in the `deploy.user` setting.<br>Password takes priority over ssh key.  |
-|  `deploy.sudo.user`  |  Sudo user of target machines.<br>Optional parameter.  |
-|  `deploy.sudo.key`  |  Path to sudo users ssh key to access target machines.<br>Optional parameter.  |
-|  `deploy.sudo.password`  |  Password of target machine sudo user set in the `deploy.sudo.user` setting.<br>Password takes priority over ssh key.<br>Optional Parameter.  |
+|  `deploy.sudo.user`  |  `sudo` user of target machines.<br>Optional parameter.  |
+|  `deploy.sudo.key`  |  Path to `sudo` users ssh key to access target machines.<br>Optional parameter.  |
+|  `deploy.sudo.password`  |  Password of target machine `sudo` user set in the `deploy.sudo.user` setting.<br>Password takes priority over ssh key.<br>Optional Parameter.  |
 |  `deploy.nmon-binary`  |  Path to `nmon` binary file to be installed on target machines.  |
 |  `deploy.directory`  |  Directory used on target machines to install `nmon` and the sender script.<br>The user must have write access to this directory.  |
 |  `deploy.target`  |  Target server hostname or ip address and ssh connection port separated by `:`<br>Can be set to multiple servers, one server per line.  |

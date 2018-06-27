@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4809 | admin | Bug | Enforce `UTF-8` file encoding in ATSD start scripts. |
+| 4809 | administrator | Bug | Enforce `UTF-8` file encoding in ATSD start scripts. |
 | [4808](#issue-4808) | rule engine | Feature | Implement [`value('metricName')`](../../rule-engine/functions-value.md) function to access other metrics in the same `series` command by name. |
 | 4798 | rule engine | Feature | Outgoing webhooks: add support for [proxy and reverse-proxy](../../rule-engine/notifications/README.md#network-settings) network connections to external cloud services. |
 | [4796](#issue-4796) | rule engine | Feature | Portal: add Freemarker functions to check user role and group membership. |
@@ -14,7 +14,7 @@
 | [4792](#issue-4792) | rule engine | Feature | Implement statistical functions [with conditions](../../rule-engine/functions.md#statistical): `countIf`, `sumIf`, `avgIf`. |
 | [4785](#issue-4785) | rule engine | Feature | Implement [`AWS SQS`](../../rule-engine/notifications/aws-sqs.md) notification. |
 | [4741](#issue-4741) | rule engine | Feature | Implement [`AWS SNS`](../../rule-engine/notifications/aws-sns.md) notification. |
-| 4705 | admin | Bug | ATSD does not start after update via `docker exec`. |
+| 4705 | administrator | Bug | ATSD does not start after update via `docker exec`. |
 
 ---
 

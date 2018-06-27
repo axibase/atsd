@@ -30,7 +30,7 @@ echo "major_compact 'atsd_properties'" | /opt/atsd/hbase/bin/hbase shell
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/properties/delete` | `application/json` |
 

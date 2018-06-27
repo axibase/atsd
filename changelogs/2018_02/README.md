@@ -9,7 +9,7 @@ Issue| Category    | Type    | Subject
 5041 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) does not support `<br>` when parse_mode is `html`.
 5040 | rule engine | Bug | [Entity non-grouped](../../rule-engine/grouping.md) rule windows are missing.
 5039 | rule engine | Feature | Modify [convert](../../rule-engine/functions-format.md#convert) function unit processing, implement [`formatBytes`](../../rule-engine/functions-format.md#formatbytes) function.
-5036 | admin | Feature | Restore multiple record types from archived XML backup files.
+5036 | administrator | Feature | Restore multiple record types from archived XML backup files.
 5034 | data-in | Feature | Internal [timer](../../rule-engine/window.md#timers) metrics.
 5033 | rule engine | Bug | [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) function: use adjusted current time during `Test`.
 5030 | rule engine | Bug | Fix [Telegram](../../rule-engine/notifications/telegram.md) notification timeouts.
@@ -63,7 +63,7 @@ Issue| Category    | Type    | Subject
 4884 | rule engine | Bug | Some [functions](../../rule-engine/functions.md) cannot be used on Overview tab.
 4882 | rule engine | Feature | Referencing [dependent variables](../../rule-engine/variables.md#references) in condition.
 4878 | rule engine | Feature | Add optional parameters to [`rule_open`](../../rule-engine/functions-rules.md#rule_open) and [`rule_window`](../../rule-engine/functions-rules.md#rule_window) functions for precise matching.
-4862 | admin | Bug | [Logging](../../administration/logging.md#logging): change level from `ERROR` to `WARN` for user-invoked errors.
+4862 | administrator | Bug | [Logging](../../administration/logging.md#logging): change level from `ERROR` to `WARN` for user-invoked errors.
 4842 | rule editor | Bug | Rule Editor: series Test is not working.
 4837 | rule engine | Bug | Notifications: [Telegram](../../rule-engine/notifications/telegram.md) does not resolve local URLs.
 4836 | api-rest | Bug | Data API: multiple [interpolate](../../api/data/series/interpolate.md#interpolation) queries for the same series.
@@ -85,6 +85,6 @@ Issue| Category    | Type    | Subject
 5026 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Feature | Execute the same configuration against multiple remote servers.
 5016 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Feature | Change behavior of Series Tags field.
 4998 | [docker](https://axibase.com/docs/axibase-collector/jobs/docker.html) | Bug | Invalid CPU percentage value.
-4997 | admin | Support | Set `XmX` in [collector containers](https://axibase.com/docs/axibase-collector/installation-on-docker.html) launched with Docker job to 256 megabytes.
+4997 | administrator | Support | Set `XmX` in [collector containers](https://axibase.com/docs/axibase-collector/installation-on-docker.html) launched with Docker job to 256 megabytes.
 4986 | [kafka](https://axibase.com/docs/axibase-collector/jobs/kafka.html) | Bug | Kafka consumer: delete not working.
 4978 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Bug | Malformed commands.
