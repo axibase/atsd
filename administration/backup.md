@@ -51,7 +51,7 @@ Configure an external `cron` job to prune old backup files and to move records t
 
 ### Changing Backup Directory
 
-By default, ATSD stores backup data in `/opt/atsd/atsd/backup` directory. 
+By default, ATSD stores backup data in `/opt/atsd/atsd/backup` directory.
 
 To change backup directory, modify `backup.data.directory` property on the [**Server Properties**](./server-properties.md) page.
 
