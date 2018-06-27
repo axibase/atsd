@@ -162,29 +162,29 @@ The default value of the `multiple-series` setting is `true` in the following ca
 ![](./resources/multiple-series-1.png)
 
 ```ls
-# Select series using tag value wildcards. multiple-series is TRUE
+# Select series using tag value wildcards: 'multiple-series' set to true (enabled)
   [tags]
     fstype = ext4
     mount = *media*
 
-# Select series with any value for the specified tag. multiple-series is TRUE
+# Select series with any value for the specified tag: 'multiple-series' set to true (enabled)
   [tags]
     fstype = ext4
     mount = *
 
-# Select series with any value for the specified tag. multiple-series is FALSE
+# Select series with any value for the specified tag: 'multiple-series' set to false (disabled)
   [tags]
     fstype = ext4
 
-# Select series with tag values from the specified list. multiple-series is TRUE
+# Select series with tag values from the specified list: 'multiple-series' set to true (enabled)
   [tags]
     fstype = cifs, autofs
 
-# Select series with tag values matching specified wildcard patterns: multiple-series is TRUE
+# Select series with tag values matching specified wildcard patterns: 'multiple-series' set to true (enabled)
   [tags]
     fstype = cifs, auto*
 
-# Select series with tags matching an expression: multiple-series is TRUE
+# Select series with tags matching an expression: multiple-series set to true (enabled)
   tag-expression = tags.mount NOT LIKE '/m*'
 ```
 

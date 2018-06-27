@@ -42,7 +42,9 @@ Start scollector.
 nohup ./scollector-linux-amd64 &
 ```
 
-### Auto-start under sudo user
+### Auto-start in Privileged Mode
+
+This section describes how to configure scollector start under a `sudo` user.
 
 > Note that `init` scripts for systems without `systemd` do not support daemon stopping and do not check if service is already running.
 

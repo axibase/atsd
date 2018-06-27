@@ -62,7 +62,7 @@ The purpose of the `fill` parameter is to eliminate gaps at the beginning and th
 |:---|:---|
 | `false`  | [**Default**] Do not add missing values. |
 | `true`  | Add missing leading values by setting them to the first available detailed value.<br>Add missing trailing values by setting them to the last available detailed value.|
-| `{n}`  | Add missing leading and trailing values by setting them to the specified number `{n}`.<br>The number `{n}` can be any decimal number as well as "NaN" string (Not a Number). |
+| `{n}`  | Add missing leading and trailing values by setting them to the specified number `{n}`.<br>The number `{n}` can be any decimal number as well as `NaN` string (Not a Number). |
 
 Examples:
 
