@@ -43,7 +43,7 @@ Download individual backup archives by clicking the link in the **Name** column 
 
 ### Scheduled Backup
 
-The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, the database creates backup files in the [backup directory](#changing-backup-directory) directory every day at 23:30 [local server time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
+The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, the database creates backup files in the [backup directory](#changing-backup-directory) every day at 23:30 [local server time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
 
 New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation.
 
