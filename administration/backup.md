@@ -39,11 +39,11 @@ Click **Backup** to create a new backup manually. New backup files appear in the
 
 ![](./images/backed-up-files.png)
 
-Download individual backup archives by clicking the link in the **Name** column or copy the files from the [backup directory](#changing-backup-directory). The name of the archive contains the backup creation date.
+Download individual backup archives by clicking the link in the **Name** column or copy the files from the [backup directory](#backup-directory). The name of the archive contains the backup creation date.
 
 ### Scheduled Backup
 
-The database creates daily backup files in the [backup directory](#changing-backup-directory) at `23:30` [local server time](./timezone.md). 
+The database creates daily backup files in the [backup directory](#backup-directory) at `23:30` [local server time](./timezone.md). 
 
 The schedule is controlled with the `internal.backup.schedule` property which can be modified on the [**Server Properties**](./server-properties.md) page.
 
