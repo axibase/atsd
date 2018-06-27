@@ -157,9 +157,12 @@ Property | Default Value | Description
 Property | Default Value | Description
 ---|---|---
 **`api.guest.access.enabled`** | `No` | Enable anonymous access to [Data API](../api/data/README.md#data-api-endpoints) and [Meta API](../api/data/README.md#meta-api-endpoints) query methods.|
+`backup.data.directory` | `../backup` | Path to a directory where ATSD stores backup files.|
+`default.addInsertTime` | `Yes` | Include entity/metric last insert time in the response by default.|
 `delete.sleep.interval.ms` | `2000` | Millisecond interval to wait between 10-second deletion tasks.|
 `delete.total.duration.minutes` | `60` | Maximum amount of time in minutes spent executing pending deletion tasks.|
 `hostname`| `nurswgvml007` | Hostname of the ATSD server determined automatically by executing the `hostname` command.|
 `nmon.data.directory` | `/tmp/atsd/nmon` | Absolute path to a directory where [`nmon`](../integration/nmon/README.md) agents are stored. |
 `search.index.path` | `/tmp/atsd/lucene` | Absolute path to [Lucene](../rule-engine/property-search.md) index directory.|
+`security.letsencrypt.renew` | `No` | Enable to check `Let's Encrypt` certificate once a day and attempt to renew it.|
 `server.url` | `https://{hostname}:8443` | Server URL specified in email notification links, by default set to `hostname`.|

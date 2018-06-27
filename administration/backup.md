@@ -21,7 +21,7 @@ The database performs a backup for the following configuration types:
 * [Tag Templates](../configuration/tag-templates.md)
 * [Users](./collector-account.md#create-user)
 * [User Groups](./collector-account.md#create-user-group)
-* [Web Configurations](../rule-engine/notifications/webhook.md)
+* [Outgoing Webhooks](../rule-engine/notifications/webhook.md)
 
 > Configuration backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or messages. See [Data](#data) section for instructions on creating data backup.
 
@@ -39,15 +39,21 @@ Click **Backup** to create a new backup manually. New backup files appear in the
 
 ![](./images/backed-up-files.png)
 
-Download individual backup archives by clicking the link in the **Name** column or copy the files from the `/opt/atsd/atsd/backup` directory. The name of the archive contains the backup creation date.
+Download individual backup archives by clicking the link in the **Name** column or copy the files from the [backup directory](#changing-backup-directory). The name of the archive contains the backup creation date.
 
 ### Scheduled Backup
 
-The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, the database creates backup files in the `/opt/atsd/atsd/backup` directory every day at 23:30 [local server time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
+The [**Server Properties**](./server-properties.md) page contains the `internal.backup.schedule` property. By default, the database creates backup files in the [backup directory](#changing-backup-directory) directory every day at 23:30 [local server time](./timezone.md). Configure the [`cron`](https://axibase.com/docs/axibase-collector/scheduling.html#cron-expressions) expression as needed to modify this schedule.
 
 New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation.
 
 Configure an external `cron` job to prune old backup files and to move records to a different directory.
+
+### Changing Backup Directory
+
+By default, ATSD stores backup data in `/opt/atsd/atsd/backup` directory. 
+
+To change backup directory, modify `backup.data.directory` property on the [**Server Properties**](./server-properties.md) page.
 
 ### Restore
 
