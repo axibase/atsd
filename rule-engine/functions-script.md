@@ -97,13 +97,13 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 
 ## Examples
 
-* [ping](#ping)
-* [traceroute](#traceroute)
-* [top](#top)
-* [ps](#ps)
+* [`ping`](#ping)
+* [`traceroute`](#traceroute)
+* [`top`](#top)
+* [`ps`](#ps)
 * [URL availability](#url-availability)
 * [TCP availability](#tcp-availability)
-* [osquery](#osquery)
+* [`osquery`](#osquery)
 * [Daily Referer Requests](#daily-referer-requests)
 
 ### `ping`
@@ -164,7 +164,7 @@ Slack:
 
 ### `traceroute`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/traceroute.sh) to return traceroute to host.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/traceroute.sh) to return `traceroute` output to host.
 
 #### Script
 

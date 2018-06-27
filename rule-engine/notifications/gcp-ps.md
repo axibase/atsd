@@ -26,7 +26,7 @@ The default message includes all fields, including entity and metric metadata.
 
 The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
-## Configure GCP PS Notification
+## Configure GCP Pub/Sub Notification
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `GCP-PS` type.
