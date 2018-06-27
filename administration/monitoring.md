@@ -59,8 +59,8 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 
 | **Metric** | **Description** |
 |:--- | :--- |
-|`cache.size` | Number of records kept in cache. Displayed on **Settings>Cache Management** page.|
-|`cache.used_percent` | Cache used percentage. Displayed on **Settings>Cache Management** page.|
+|`cache.size` | Number of records kept in cache. Displayed on the **Settings>Cache Management** page.|
+|`cache.used_percent` | Cache used percentage. Displayed on the **Settings>Cache Management** page.|
 |`last.series.cache.count` | Number of records in the `last insert` cache. |
 |`last.series.cache.write-count` | Number of writes to the `last insert` table made during the period. |
 |`last.series.cache.write-keys` | Number of series keys written to the `last insert` table during the period.|
@@ -126,7 +126,7 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`api_command_malformed_per_second` | Number of malformed (invalid) API commands discarded.|
 |`disabled_entity_received_per_second` |Number of series samples for disabled entity received.|
 |`disabled_metric_received_per_second` |Number of series samples for disabled metric received.|
-|`disabled_properties_received_per_second` |Number of `property` commands received when `Property Enabled` is checked on **Settings > Input Settings** page.|
+|`disabled_properties_received_per_second` |Number of `property` commands received when `Property Enabled` is checked on the **Settings > Input Settings** page.|
 |`filtered_metric_received_per_second` |Number of series samples discarded due to `Invalid Value Action`.|
 |`invalid_message_received_per_second` | Number of invalid `message` commands received. |
 |`invalid_property_received_per_second` | Number of invalid `property` commands received.|

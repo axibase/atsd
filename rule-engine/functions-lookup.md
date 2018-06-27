@@ -42,7 +42,7 @@ Returns entity tags for entity `e` as a map.
 
 If the entity is not found, an empty map is returned.
 
-If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using the applicable entity tag templates which are listed on **Settings > Tag Templates** page.
+If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using the applicable entity tag templates which are listed on the **Settings > Tag Templates** page.
 
 To exclude specific tags from the results, use the `excludeKeys()` function:
 

@@ -65,6 +65,6 @@ Database restart is **not** required, the changes are automatically refreshed an
 
 ## Enabling Command Logging
 
-For performance purposes, logging to `command*.log` files is controlled both by loggers configured in the `logback.xml` file as well as with controls on **Settings > Input Settings** page.
+For performance purposes, logging of incoming commands to `command*.log` files is enabled both in the `logback.xml` file as well as with the **Command Log Enabled** setting on the **Settings > Input Settings** page.
 
 ![Input Settings](./images/logging_input.png)

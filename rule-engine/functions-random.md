@@ -63,7 +63,7 @@ Double.parseDouble(randomItem([1, 2, 3])) >= 2
 
 ### Named Collection
 
-Named collections are listed on **Data > Named Collections** page.
+Named collections are listed on the **Data > Named Collections** page.
 
 Assuming the collection contains the following records and the 2nd entry is randomly selected:
 
@@ -135,7 +135,7 @@ An input map can be obtained using the `replacementTable()` lookup function.
 randomKey(replacementTable('oncall-person'))
 ```
 
-> Replacement tables are listed on **Data > Replacement Tables** page.
+> Replacement tables are listed on the **Data > Replacement Tables** page.
 
 Assuming the table contains the following records, the second element has a 20% chance of being selected:
 
