@@ -1,4 +1,4 @@
-# Installing Let's Encrypt Certificate
+# Installing `Let's Encrypt` Certificate
 
 ## Overview
 
