@@ -29,7 +29,7 @@ Enter the certificate information and click **Create And Import**. Only the **Do
 
 ![](./images/ssl_self_signed_3.png)
 
-> `Country Code` must contain two letters if specified.
+> **Country Code** must contain two letters if specified.
 
 ### Endpoint Request
 

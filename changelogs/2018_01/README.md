@@ -4,7 +4,7 @@
 
 Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
-4940 | rule engine | Feature | Add administrative [setting](../../rule-engine/window.md#cancel-status) to control **On Cancel** behavior.
+4940 | rule engine | Feature | Add administrative [setting](../../rule-engine/window.md#cancel-status) to control `On Cancel` behavior.
 4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../rule-engine/README.md#rule-engine) XML export.
 4929 | rule engine | Bug | Outgoing webhooks: [Telegram](../../rule-engine/notifications/telegram.md) discards long messages.
 4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../sql/README.md#where-clause).

@@ -256,7 +256,7 @@ Finalize HDFS upgrade.
 /opt/atsd/hadoop/bin/hdfs dfsadmin -finalizeUpgrade
 ```
 
-The command displays the following message `Finalize upgrade successful`.
+The command displays `Finalize upgrade successful`.
 
 Run `jps` command to check that `NameNode`, `SecondaryNameNode`, and `DataNode` processes are running.
 

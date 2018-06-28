@@ -27,22 +27,22 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Action | `SendEmail` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SES region](https://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region), for example:
+Modify the **Endpoint URL** by replacing the `<AWS_REGION>` value with your [Amazon SES region](https://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region), for example:
 
 ```elm
 https://email.us-east-1.amazonaws.com
 ```
 
-Enter the AWS key id into the `Access Key Id` field and the secret key into the `Secret Access Key` field.
+Enter the AWS key id into the **Access Key Id** field and the secret key into the **Secret Access Key** field.
 
 Add required parameters for `SendMessage` action:
 
 | **Name** | **Value** |
 | :--- | :--- |
-| Destination.ToAddresses.member.1 | `<DESTINATION_EMAIL>` |
-| Source | `<SOURCE_EMAIL>` |
-| Message.Body.Text.Data | `<MESSAGE_TEXT>` |
-| Message.Subject.Data | `ATSD Alert` |
+| `Destination.ToAddresses.member.1` | `<DESTINATION_EMAIL>` |
+| `Source` | `<SOURCE_EMAIL>` |
+| `Message.Body.Text.Data` | `<MESSAGE_TEXT>` |
+| `Message.Subject.Data` | `ATSD Alert` |
 
 Modify the `Destination.ToAddresses.member.1` and `Source` by replacing the `<DESTINATION_EMAIL>` and `<SOURCE_EMAIL>` values with your text.
 

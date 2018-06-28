@@ -159,7 +159,7 @@ Open the **Settings > Users** page and click **Create**.
 * Specify `certbot` as the username (or a username of your choice).
 * Assign Role `USER` to the user.
 * Do not grant user any group membership.
-* Add IP address of the certbot server, for example `192.0.2.1`, to the list of `Allowed IPs`.
+* Add IP address of the certbot server, for example `192.0.2.1`, to the list **Allowed IPs**.
 
 ![certbot upload](./images/certbot-user.png)
 
@@ -218,7 +218,7 @@ curl -k -u $USR:$PWD https://$HOST:$PORT/admin/certificates/import/atsd \
 
 Replace the parameters `USR`,`PWD`, `HOST`, `PORT`, and `DNS` with the actual settings.
 
-Protect the file by changing the owner to `root` and revoking read permissions from other users.
+Protect the file by ensuring that `root` privileges are required for reading and executing the file.
 
 ```sh
 sudo chown root:root deploy-atsd.sh

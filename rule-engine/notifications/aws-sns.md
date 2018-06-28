@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AWS SNS` [webhook](../notifications/README.md) publishes signed messages to an [Amazon SNS](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic on window status events.
+`AWS SNS` [webhook](../notifications/README.md) publishes signed messages to an [Amazon SNS](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic upon window status events.
 
 ## Webhook Settings
 
@@ -35,12 +35,12 @@ The default message uses the JSON format and includes all fields, including enti
 
 The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
-## Configure AWS SNS Notification
+## Configure AWS SNS Webhook
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SNS` type.
 * Fill out the **Name**, **Region**, **Access Key Id**, and **Secret Access Key** fields.
-* Enter the **Topic ARN**. The topic address is marked as an editable field so it can be later customized in the rule editor. This configuration allows publishing messages to different topics using the same webhook.
+* Enter the **Topic ARN**. The topic address is marked as an editable field which can be customized later in the rule editor. This configuration allows publishing messages to different topics using the same webhook.
 
   ![](./images/aws_sns_config.png)
 

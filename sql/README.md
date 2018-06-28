@@ -1126,7 +1126,7 @@ Converting a date to milliseconds and comparing it to the time column is more ef
 
 ### Entity Time Zone
 
-To select rows for a date range based on each entity's local time zone, supply `entity.timeZone` column as an argument to the [`ENDTIME`](#endtime) function.
+To select rows for a date range based on the local time zone of each entity, supply `entity.timeZone` column as an argument to the [`ENDTIME`](#endtime) function.
 
 ```sql
 SELECT entity, entity.timeZone,

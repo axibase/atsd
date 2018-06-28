@@ -189,7 +189,7 @@ Alternatively, use [group editor](#group-editor) to modify multiple metrics at o
 
 This setting causes all data to be deleted for those series which have not received new values for more than the specified number of days. If the series has recent data, no data for such a series is deleted. This setting cleans the database from old/discontinued series while retaining all data for active series.
 
-If **Series Retention Days** is set to `1 year` in the example below, the database deletes three highlighted series that have not been updated since 2015/2016. The data for the remaining active series is left untouched.
+If **Series Retention Days** is set to **1 year** in the example below, the database deletes three highlighted series that have not been updated since 2015/2016. The data for the remaining active series is left untouched.
 
 ![](./images/retention-series-retention.png)
 

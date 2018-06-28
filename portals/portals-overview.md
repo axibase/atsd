@@ -165,7 +165,7 @@ To open a template portal in the browser, substitute the `{portal_id}` below wit
 https://atsd_hostname:8443/portal/{portal_id}.xhtml?entity={entity}
 ```
 
-Alternatively, assign an entity group to the template portal so that the link to this portal is available on the **Entities** page for all entities that are members of the entity group:
+Alternatively, assign an entity group to the template portal to ensure that a link to this portal is available on the **Entities** page for all entities that are members of the entity group:
 
 ![](./resources/creating-and-assigning-portals_7.png)
 

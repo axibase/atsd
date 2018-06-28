@@ -142,7 +142,7 @@ Attachment options are displayed in the rule editor if supported by the given we
 
 #### Attach Portals
 
-The `Attach Portals` option sends one or more portals as an image to the target chat channel/group/user.
+The **Attach Portals** option sends one or more portals as an image to the target chat channel/group/user.
 
 If the selected portal is a [template](../../portals/portals-overview.md#template-portals) portal, its entity, metric, and series tags are resolved from the alert details in the current window.
 
@@ -150,13 +150,13 @@ If the selected portal is a [template](../../portals/portals-overview.md#templat
 
 #### Attach Chart
 
-The `Series Chart` option sends the default portal for the metric, entity and series tags in the current window.
+The **Series Chart** option sends the default portal for the metric, entity and series tags in the current window.
 
 ![](./images/notify-attach-1.png)
 
 #### Attach Details
 
-The `Attach Details` option sends an alert details table as a separate message with a choice of [formats](../details-table.md#formats).
+The **Attach Details** option sends an alert details table as a separate message with a choice of [formats](../details-table.md#formats).
 
 ![](./images/notify-attach-2.png)
 
@@ -239,7 +239,7 @@ If the ATSD server cannot connect to the remote API server due to network restri
     }
 ```
 
-  Modify the `Base URL` by replacing it with the corresponding API gateway URL.
+  Modify the **Base URL** by replacing it with the corresponding API gateway URL.
 
   ![](./images/notify-network-base.png)
 
@@ -247,7 +247,7 @@ If the ATSD server cannot connect to the remote API server due to network restri
 
   A network proxy of this type does not explicitly map receive paths and remote URLs.
 
-  Keep the `Base URL` as originally specified and instead fill out the `Proxy URL` and optional client credentials fields.
+  Keep the **Base URL**` as originally specified and instead fill out the **Proxy URL** and optional client credentials fields.
 
   ![](./images/notify-proxy.png)
 

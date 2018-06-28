@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AZURE SB` [webhook](../notifications/README.md) sends messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic on window status events.
+`AZURE SB` [webhook](../notifications/README.md) sends messages to an [Azure Service Bus](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) queue or topic upon window status events.
 
 ## Webhook Settings
 
@@ -26,7 +26,7 @@ The default message includes all fields, including entity and metric metadata.
 
 ## Response
 
-The response status code and response content is recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
 ## Placeholders
 

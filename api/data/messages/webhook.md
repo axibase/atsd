@@ -80,7 +80,7 @@ repeat=1
 
 ## JSON Payload
 
-The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag name is set from the field path, which is composed from the parent object path, followed by dot `.` and the field's own name. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
+The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag name is set from the field path, which is composed from the parent object path, followed by dot `.` and the name of the field. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
 
 Input document:
 

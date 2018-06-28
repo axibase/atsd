@@ -44,7 +44,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ### Configure Connection Properties
 
-* Enter JDBC URL into the `Custom Connection URL` field where `atsd_hostname` is the hostname of the ATSD database instance:
+* Enter JDBC URL into the **Custom Connection URL** field where `atsd_hostname` is the hostname of the ATSD database instance:
 
   `jdbc:atsd://atsd_hostname:8443;tables=inflation%`
 
@@ -60,8 +60,8 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ## View Schema
 
-* Edit `Custom Connection URL` field in ATSD Connection properties.
-* Modify the `tables` parameter in the `Custom Connection URL` field. The parameter is a list of comma-separated metrics or metric expressions to be displayed as tables in the Database Browser.
+* Edit **Custom Connection URL** field in ATSD Connection properties.
+* Modify the `tables` parameter in the **Custom Connection URL** field. The parameter is a list of comma-separated metrics or metric expressions to be displayed as tables in the Database Browser.
 
 Filter examples:
 
@@ -75,9 +75,9 @@ Click **Explore** to view the schema:
 
 ## Load Data
 
-* Drag and Drop `ATSD Connection` from the **View** pane in the Database Connections folder.
-* Set `Step name` to a unique name for this transformation.
-* Write an SQL query used as a `Table input` for this transformation.
+* Drag and drop `ATSD Connection` from the **View** pane in the **Database Connections** folder.
+* Set **Step name** to a unique name for this transformation.
+* Write an SQL query used as a **Table input** for this transformation.
 * Click **Preview** to verify query results.
 
 ![](./resources/table_input.png)
@@ -88,7 +88,7 @@ To calculate the category-weighted consumer price index (CPI) for each year, the
 
 ### Load Data from ATSD
 
-* Create three `Table input` steps from ATSD: `Prices`, `Datetimes` and `Weights`.
+* Create three **Table input** steps from ATSD: `Prices`, `Datetimes` and `Weights`.
 
 * `Prices` are weighted prices for categories from 2013-2017 for 10 categories
 
@@ -124,7 +124,7 @@ Since the `Weights` are available for only one year, assume that the category we
 * Open the **Design** pane.
 * Locate **Join Rows (cartesian product)** in **Joins** category.
 * Drag and drop it to the **Transformation** pane.
-* Connect your **Join Rows (cartesian product)** with `Datetime` and `Weights` using **Input Connection** button. That button is displayed when the mouse hovers over **Join Rows** or any item inside the **Transformation** pane.
+* Connect your **Join Rows (cartesian product)** with **`Datetimes`** and **Weights** using **Input Connection** button. That button is displayed upon mouseover of **Join Rows** or any item inside the **Transformation** pane.
 
 ![](./resources/connections.png)
 
@@ -142,17 +142,17 @@ Diagram example:
 
 ### Merge Tables
 
-In this step you append two tables to perform calculations on one table. This table has a unique row identifier (pair `datetime - tags.category`) so we can join them with the INNER JOIN operation.
+In this step you append two tables to perform calculations on one table. This table has a unique row identifier (pair `datetime - tags.category`) join them with the `INNER JOIN` operation.
 
-* Open the **Design** pane and find `Merge Join` in the `Joins` category. Drag and drop it to the **Transformation** pane
-* Connect `Merge Join` to `Join Rows (cartesian product)` and choose **Right hand side stream of the join**
-* Connect `Merge Join` to `Prices` and choose **Left hand side stream of the join**
-* Configure `Merge Join` as shown in the screenshot below:
-> That operation joins two tables into one table.
+* Open the **Design** pane and find **Merge Join** in the `Joins` category. Drag and drop it to the **Transformation** pane.
+* Connect **Merge Join** to **Join Rows (cartesian product)** and choose **Right hand side stream of the join**.
+* Connect **Merge Join** to **Prices** and choose **Left hand side stream of the join**.
+* Configure **Merge Join** as shown in the screenshot below:
+> Operation joins two tables into one table.
 
 ![](./resources/merge_join.png)
 
-Preview of `Merge Join`:
+Preview of **Merge Join**:
 
 ![](./resources/merge_preview.png)
 
@@ -163,27 +163,27 @@ Diagram example:
 ### Remove Redundant Columns
 
 * Open the **Design** pane.
-* Locate the `Select values` option in the `Transform` category.
+* Locate the **Select values** option in the `Transform` category.
 * Drag and drop it to **Transformation** pane.
-* Connect `Select values` to `Merge Join`.
-* Configure `Select values` as shown in the screenshot below:
+* Connect **Select values** to **Merge Join**.
+* Configure **Select values** as shown in the screenshot below:
 
 ![](./resources/remove.png)
 
-Preview of `Remove columns`:
+Preview of **Remove columns**:
 
 ![](./resources/remove_preview.png)
 
 ### Calculations
 
-#### Price * Weight
+#### `Price * Weight`
 
 Multiply two columns element-wise:
 
 * Open the **Design** pane.
-* Find `Calculator` in `Transform` category. Drag and drop it to the **Transformation** pane.
-* Connect `Calculator` to `Remove columns`.
-* Configure `Calculator` as shown in the screenshot below:
+* Find **Calculator** in **Transform** category. Drag and drop it to the **Transformation** pane.
+* Connect **Calculator** to **Remove columns**.
+* Configure **Calculator** as shown in the screenshot below:
 
 > This operation calculates a new field `P*W` (price multiplied by weight)
 
@@ -198,9 +198,9 @@ Multiply two columns element-wise:
 > This column is required for element-by-element division.
 
 * Open the **Design** pane.
-* Locate `Add constants` in `Transform` category. Drag and drop it to the **Transformation** pane.
-* Connect `Add constants` to `Price * Weight`.
-* Configure `Add constants` as shown in the screenshot below:
+* Locate **Add constants** in **Transform** category. Drag and drop it to the **Transformation** pane.
+* Connect **Add constants** to `Price * Weight`.
+* Configure **Add constants** as shown in the screenshot below:
 
 > This operation adds a new column `1000` that has a value of `1000` in each row.
 
@@ -232,15 +232,15 @@ Division preview:
 Group rows by `datetime` and sum weighted price values for each year.
 
 * Open the **Design** pane.
-* Locate `Group by` in the`Statistics` category. Drag and drop it to **Transformation** pane.
-* Connect `Group by` step to `/1000` step.
-* Configure `Group by` as shown in the screenshot below:
+* Locate **Group by** in the **Statistics** category. Drag and drop it to **Transformation** pane.
+* Connect **Group by** step to `/1000` step.
+* Configure **Group by** as shown in the screenshot below:
 
 > The operation groups records by `datetime` and calculates the sum of `P*W/1000` values for each group.
 
 ![](./resources/group_by.png)
 
-`Group By` preview:
+**Group By** preview:
 
 ![](./resources/group_by_preview.png)
 
@@ -249,9 +249,9 @@ Group rows by `datetime` and sum weighted price values for each year.
 The entity column is required to store computed metrics back in ATSD.
 
 * Open the **Design** pane.
-* Locate `Add constants` in the `Transform` category. Drag and drop it to the **Transformation** pane.
-* Connect `Add constants` step to `Group by` step.
-* Configure `Add constants` as shown in the screenshot below:
+* Locate **Add constants** in the **Transform** category. Drag and drop it to the **Transformation** pane.
+* Connect **Add constants** step to **Group by** step.
+* Configure **Add constants** as shown in the screenshot below:
 
 > This operation adds a new column `entity` that has the value `bls.gov` in each row.
 
@@ -264,15 +264,15 @@ The entity column is required to store computed metrics back in ATSD.
 ### Store Derived Series in ATSD
 
 * Open the **Design** pane.
-* Locate `Table output` in the `Output` category. Drag and drop it to **Transformation** pane.
-* Connect `Table output` to `Entity`.
-* Configure `Table output` as shown in the screenshot below.
+* Locate **Table output** in the **Output** category. Drag and drop it to **Transformation** pane.
+* Connect **Table output** to **Entity**.
+* Configure **Table output** as shown in the screenshot below.
 
 > This operation inserts calculated data into ATSD.
 
 ![](./resources/insert.png)
 
-* The `Target table` is the name of the metric which contains the calculated series.
+* `Target table` is the name of the metric which contains the calculated series.
 * The metric does not have to be visible in the Schema.
 
 Complete diagram:

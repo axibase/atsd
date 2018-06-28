@@ -109,7 +109,7 @@ Slack Bot is a special account created for automation purposes.
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules_outgoing_webhook.xml` file, click **Import**.
 
-### Configure Notification
+### Configure Webhook
 
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Webhooks** tab.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to create an [Amazon CloudWatch](https://aws.amazon.com/cloudwatch) event using a [`AWS API`](aws-api.md) webhook.
+The following example demonstrates how to create an [Amazon CloudWatch](https://aws.amazon.com/cloudwatch) event using an [`AWS API`](aws-api.md) webhook.
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this webhook type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
@@ -27,13 +27,13 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Body | `<MESSAGE_TEXT>` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon CloudWatch Events region](https://docs.aws.amazon.com/general/latest/gr/rande.html#cwe_region), for example:
+Modify the **Endpoint URL** by replacing the `<AWS_REGION>` value with your [Amazon CloudWatch Events region](https://docs.aws.amazon.com/general/latest/gr/rande.html#cwe_region), for example:
 
 ```elm
 https://events.us-east-1.amazonaws.com
 ```
 
-Enter the AWS key id into the `Access Key Id` field and the secret key into the `Secret Access Key` field.
+Enter the AWS key id into the **Access Key Id** field and the secret key into the **Secret Access Key** field.
 
 Add required headers for `PutEvents` action:
 

@@ -1,6 +1,6 @@
 # Support
 
-This document helps you submit a well-prepared support ticket so we can resolve it faster.
+This document helps you submit a well-prepared support ticket to ensure Axibase staff can resolve it faster.
 
 **Commercial** Support:
 

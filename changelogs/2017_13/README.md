@@ -26,7 +26,7 @@
 | 4046 | jdbc | Bug | Consolidate `series` commands with the same time and different metrics into one command. |
 | 4045 | file | Bug | Fix NullPointerException in case of FTP connection timeout. |
 | [4041](#issue-4041) | data-source | Feature | Add the `PI OLEDB Enterprise` data source. |
-| [4012](#issue-4012) | json | Feature | Add syntax highlighting to the `Custom Commands` text area and improve the ATSD network commands highlighting. |
+| [4012](#issue-4012) | json | Feature | Add syntax highlighting to the **Custom Commands** text area and improve the ATSD network commands highlighting. |
 | 3987 | socrata | Bug | Add heuristics to automatically classify and ignore fields in Socrata data sources. |
 | 3973 | collection | Feature | Add the `URL` Item List type. |
 

@@ -1,8 +1,8 @@
-# Custom Notification
+# Custom Webhook
 
 ## Overview
 
-`CUSTOM` [notifications](../notifications/README.md) provide a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
+`CUSTOM` [webhook](../notifications/README.md) provides a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
 
 This integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
 

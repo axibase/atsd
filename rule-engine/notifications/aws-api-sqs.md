@@ -42,7 +42,7 @@ Add required parameters for `SendMessage` action:
 | `MessageBody` | `<MESSAGE_TEXT>` |
 | `QueueUrl` | `<AWS_SQS_QUEUE_URL>` |
 
-Modify `MessageBody` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
+Modify **`MessageBody`** by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 
 ```json
 {

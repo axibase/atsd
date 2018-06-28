@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Webhook** [notifications](../notifications/README.md) send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribed service is responsible for parsing, handling, and reacting to the received event.
+**Webhook** [webhook](../notifications/README.md) send a pre-defined payload containing all alert window fields to an external HTTP service. The subscribed service is responsible for parsing, handling, and reacting to the received event.
 
 ## Method
 
@@ -39,7 +39,7 @@ The JSON payload includes all available alert fields as well as entity and metri
 
 ## Response
 
-The response status code and response content is recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
 ## Testing
 

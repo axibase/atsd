@@ -83,9 +83,9 @@ Enter a name and specify the following parameters:
 | Authentication | `None` |
 | Endpoint URL | `https://maker.ifttt.com/trigger/${webhook_name}/with/key/<IFTTT_KEY>` |
 
-Modify the `Endpoint URL` by replacing the `<IFTTT_KEY>` field with the IFTTT webhook token.
+Modify the **Endpoint URL** by replacing the `<IFTTT_KEY>` field with the IFTTT webhook token.
 
-Example `Endpoint URL`: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
+Example Endpoint URL: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
 
 You can find your IFTTT token in the `Webhooks` examples. Go to [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**.
 
@@ -95,7 +95,7 @@ Copy the key.
 
 ![](./images/ifttt_key_2.png)
 
-Keep the `${webhook_name}` placeholder in the URL path so that it can be customized in the rule editor. This allows you to send SMS messages from different applets using the same webhook.
+Keep the `${webhook_name}` placeholder in the URL path to ensure that it can be customized in the rule editor. This allows you to send SMS messages from different applets using the same webhook.
 
 ### Payload
 

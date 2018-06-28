@@ -2,9 +2,9 @@
 
 ## Overview
 
-The following example demonstrates how to send a new event to a [Azure Event Hub](https://azure.microsoft.com/en-us/services/event-hubs/) using a [`AZURE SB`](azure-sb.md) webhook.
+The following example demonstrates how to send a new event to a [Azure Event Hub](https://azure.microsoft.com/en-us/services/event-hubs/) using an [`AZURE SB`](azure-sb.md) webhook.
 
-The example invokes the [Azure Event Hub API](https://docs.microsoft.com/en-us/rest/api/eventhub/send-event) `Send Event` action.
+The example invokes the [Azure Event Hub API](https://docs.microsoft.com/en-us/rest/api/eventhub/send-event) **Send Event** action.
 
 ## Configuration
 

@@ -155,10 +155,10 @@ example 50 days in the above image). The status of these containers is marked as
 
 By default such records with the status `deleted` are not automatically removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 
-* `Retain deleted container records, days` : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
+* **Retain deleted container records, days** : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
 
-To remove deleted image/volume/network records, enable the `Retain deleted image/volume/network records` checkbox.
+To remove deleted image/volume/network records, enable the **Retain deleted image/volume/network records** checkbox.
 
-* `Remove deleted image/volume/network records` : removes images/volumes/networks with a `deleted` status from ATSD.
+* **Remove deleted image/volume/network records** : removes images/volumes/networks with a `deleted` status from ATSD.
 
 The deletion occurs at the same time as the property check interval. All deletions are logged to collector file.

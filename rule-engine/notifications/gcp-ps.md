@@ -2,7 +2,7 @@
 
 ## Overview
 
-`GCP Pub/Sub` [webhook](../notifications/README.md) sends messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic on window status events.
+`GCP Pub/Sub` [webhook](../notifications/README.md) send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic upon window status events.
 
 ## Webhook Settings
 
@@ -26,7 +26,7 @@ The default message includes all fields, including entity and metric metadata.
 
 The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
-## Configure GCP Pub/Sub Notification
+## Configure GCP Pub/Sub Webhook
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `GCP-PS` type.

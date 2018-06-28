@@ -71,8 +71,8 @@ The permissions are enforced both for template and regular portals.
 
 ### All Portals Permission
 
-A user group can be granted an `All Portal` permission whereby its members are authorized to view all portals enabled in the system.
-The permission to view all portals is automatically granted to users with an `ADMIN` role.
+A user group can be granted `All Portal` permission whereby its members are authorized to view all portals enabled in the system.
+The permission to view all portals is automatically granted to users with `ADMIN` role.
 
 ## User Wizards
 

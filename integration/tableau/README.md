@@ -24,7 +24,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install Tableau
 
 * Install [Tableau Desktop 10.4](https://www.tableau.com/support/releases)
-* Copy [`ATSD.tdc`](./resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory
+* Copy [`ATSD.tdc`](./resources/ATSD.tdc) to the **Tableau Repository**. On Windows the repository is located in the `C:\Users\{username}\Documents\My Tableau Repository\Datasources` directory
 
 ### Install ODBC-JDBC Bridge
 

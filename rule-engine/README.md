@@ -42,7 +42,7 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 Once the sample passes through the filter chain, the sample is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
 
-The commands can be associated with windows in a 1-to-1 fashion by enabling the `All Tags` setting or by enumerating all tags as the [grouping](grouping.md) tags.
+The commands can be associated with windows in a 1-to-1 fashion by enabling the **All Tags** setting or by enumerating all tags as the [grouping](grouping.md) tags.
 
 ![](./images/grouping-tags.png)
 
