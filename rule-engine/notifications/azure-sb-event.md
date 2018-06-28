@@ -2,13 +2,13 @@
 
 ## Overview
 
-The following example demonstrates how to send a new event to a [Azure Event Hub](https://azure.microsoft.com/en-us/services/event-hubs/) using an [**AZURE SB**](azure-sb.md) webhook.
+The following example demonstrates how to send a new event to a [Azure Event Hub](https://azure.microsoft.com/en-us/services/event-hubs/) using an [`AZURE SB`](azure-sb.md) webhook.
 
 The example invokes the [Azure Event Hub API](https://docs.microsoft.com/en-us/rest/api/eventhub/send-event) **Send Event** action.
 
 ## Configuration
 
-Create a new **AZURE SB** webhook or import the [template](./resources/azure-sb-event-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new `AZURE SB` webhook or import the [template](./resources/azure-sb-event-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 

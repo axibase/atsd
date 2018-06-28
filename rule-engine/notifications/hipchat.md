@@ -2,7 +2,7 @@
 
 ## Overview
 
-`HIPCHAT` [notifications](../notifications/README.md) send alert messages, alert detail tables, and charts into [HipChat Data Center](https://www.atlassian.com/software/hipchat/enterprise/data-center) channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
+`HIPCHAT` [webhook](../notifications/README.md) sends alert messages, alert detail tables, and charts into [HipChat Data Center](https://www.atlassian.com/software/hipchat/enterprise/data-center) channels. The integration is based on the [HipChat API v2](https://www.hipchat.com/docs/apiv2).
 
 ## Prerequisites
 
@@ -126,7 +126,7 @@ If the HipChat API server is not accessible from the ATSD server, open the **Net
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
-### Configure Notification
+### Configure Webhook
 
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Webhooks** tab.

@@ -57,7 +57,7 @@ The template defines formatting rules for eight tags with different data types.
 
 When the user opens an editor for a metric with a non-empty `observation_end` tag, the expression returns `true` and the editor formats metric tags according to the rules specified in the **Tags Table**.
 
-The tags organized by the `FRED` template are grouped together as **FRED Series Tags** defined in the **Tag Set Name** option.
+The tags organized by the `FRED` template are grouped together as `FRED Series Tags` defined in the **Tag Set Name** option.
 
 ![](./images/tag-template-editor-view.png)
 

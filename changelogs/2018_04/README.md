@@ -43,7 +43,7 @@
 5179 | UI | Bug | New [User Group](../../administration/user-authentication.md#user-authentication) members and permissions not saved.
 5177 | search | Feature | Make the directory used for temporary search index files configurable.
 5175 | api-rest | Bug | Correct incoming [webhook](../../api/data/messages/webhook.md) processing error.
-5162 | rule editor | Bug | Unable to customize **On Cancel** trigger for [webhooks](../../rule-engine/notifications/README.md#creating-notifications).
+5162 | rule editor | Bug | Unable to customize `On Cancel` trigger for [webhooks](../../rule-engine/notifications/README.md#creating-notifications).
 5161 | backup | Bug | Refer to exported [portals](../../portals/) by name instead of `id` in XML files.
 5157 | administrator | Bug | Standardize line breaks when storing [configuration files](../../administration/editing-configuration-files.md#editing-configuration-files).
 5156 | installation | Bug | Fix whitespace characters in start script.

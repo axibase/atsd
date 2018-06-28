@@ -2,7 +2,7 @@
 
 ## Overview
 
-`SLACK` [notifications](../notifications/README.md) provide a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
+`SLACK` [webhook](../notifications/README.md) provides a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
 
 ## Reference
 

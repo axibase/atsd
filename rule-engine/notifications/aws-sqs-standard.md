@@ -1,6 +1,6 @@
 # Standard Queue Type Example
 
-Create an **AWS SQS** notification with `Queue Type = Standard`, for example:
+Create an `AWS SQS` webhook with `Queue Type = Standard`, for example:
 
 ![](./images/aws_sqs_web_notification_config_standard.png)
 

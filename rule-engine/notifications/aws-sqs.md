@@ -1,8 +1,8 @@
-# Amazon SQS Webhook
+# Amazon SQS Notifications
 
 ## Overview
 
-**AWS SQS** [notifications](../notifications/README.md) send messages to an [Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
+`AWS SQS` [webhook](../notifications/README.md) sends messages to an [Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
 
 ## Webhook Settings
 
@@ -35,7 +35,7 @@ The default message template uses the JSON format and includes all fields, inclu
 
 The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
-## Configure AWS SQS Notification
+## Configure AWS SQS Webhook
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SQS` type.

@@ -44,7 +44,7 @@ entity-group-3 must be assigned to user-group-B or user-group-A.*
 
 ### All Entities Permissions
 
-In addition to specific Entity Group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data for any entity, including entities that do not belong to any Entity Group. Users inherit **All Entities** permissions from the
+In addition to specific Entity Group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data for any entity, including entities that do not belong to any Entity Group. Users inherit `All Entities` permissions from the
 User Groups to which they belong.
 
 ### Inserting Data for New Entities
@@ -71,7 +71,7 @@ The permissions are enforced both for template and regular portals.
 
 ### All Portals Permission
 
-A user group can be granted **All Portal** permission whereby its members are authorized to view all portals enabled in the system.
+A user group can be granted `All Portal` permission whereby its members are authorized to view all portals enabled in the system.
 The permission to view all portals is automatically granted to users with `ADMIN` role.
 
 ## User Wizards
@@ -100,7 +100,7 @@ To create a new user of this type, open the **Settings > Users** page and select
 
 ![](./images/collector-user-wizard.png)
 
-The wizard creates a new user account automatically and makes it a member of the **Data Collectors** user group with `All Entities: Write` permission.
+The wizard creates a new user account automatically and makes it a member of the `Data Collectors` user group with `All Entities: Write` permission.
 
 ![](./images/collector-user-permissions.png)
 

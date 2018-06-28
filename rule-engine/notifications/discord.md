@@ -2,7 +2,7 @@
 
 ## Overview
 
-`DISCORD` [notifications](../notifications/README.md) send alert messages, alert detail tables, and charts into Discord channels. This integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
+`DISCORD` [webhook](../notifications/README.md) sends alert messages, alert detail tables, and charts into Discord channels. This integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
 
 ![](./images/discord.png)
 
@@ -118,7 +118,7 @@ NGINX API Gateway Path for Discord:
 * Open the **Alerts > Rules > Import** page.
 * Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
-### Configure notification
+### Configure Webhook
 
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Webhooks** tab.

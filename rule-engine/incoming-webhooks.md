@@ -6,7 +6,7 @@ This method accepts `GET` and `POST` requests with optional JSON or form payload
 
 A set of reserved parameter names, specified in the query string, instruct the server how to parse incoming requests. The reserved parameters determine mappings between the request content and message fields as well as define which data is discarded as extraneous.
 
-This method can be used to process HTTP notifications from services that support webhooks such as GitHub, AWS SNS, Jenkins, Docker Hub, Slack/Telegram/Discord Bots etc.
+This method can be used to process HTTP notifications from services that support webhooks such as GitHub, AWS API, Jenkins, Docker Hub, Slack/Telegram/Discord Bots etc.
 
 ## Reference
 
@@ -413,7 +413,7 @@ Subscribe to GitHub repository events.
 
 ### Amazon WS
 
-Receive AWS SNS subscription notifications.
+Receive AWS API subscription notifications.
 
 ```elm
 /api/v1/messages/webhook/aws-cw?command.date=Timestamp&json.parse=Message&exclude=Signature;SignatureVersion;SigningCertURL;SignatureVersion;UnsubscribeURL;MessageId;Message.detail.instance-id;Message.time;Message.id;Message.version

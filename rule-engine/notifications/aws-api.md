@@ -1,8 +1,8 @@
-# AWS API Webhook
+# AWS API Notifications
 
 ## Overview
 
-`AWS SNS` [notifications](../notifications/README.md) integrate the ATSD rule engine with [Amazon Web Services](https://aws.amazon.com/) that support HTTP or HTTPs protocol.
+`AWS API` [webhook](../notifications/README.md) integrates the ATSD rule engine with [Amazon Web Services](https://aws.amazon.com/) that support HTTP or HTTPs protocol.
 
 ## Webhook Settings
 

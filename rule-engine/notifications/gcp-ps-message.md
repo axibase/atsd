@@ -2,13 +2,13 @@
 
 ## Overview
 
-The following example demonstrates how to send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic using a [**GCP PS**](gcp-ps.md) webhook.
+The following example demonstrates how to send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic using a [`GCP Pub/Sub`](gcp-ps.md) webhook.
 
 The example invokes the [Google Cloud Pub/Sub API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) `projects.topics.publish` method.
 
 ## Configuration
 
-Create a new **GCP PS** webhook or import the [template](./resources/gcp-ps-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new `GCP Pub/Sub` webhook or import the [template](./resources/gcp-ps-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 

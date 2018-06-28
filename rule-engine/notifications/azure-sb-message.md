@@ -8,7 +8,7 @@ The example invokes the [Azure Service Bus API](https://docs.microsoft.com/en-us
 
 ## Configuration
 
-Create a new **AZURE SB** webhook or import the [template](./resources/azure-sb-message-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new `AZURE SB` webhook or import the [template](./resources/azure-sb-message-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
