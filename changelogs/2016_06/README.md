@@ -16,7 +16,7 @@
 | 3714 | UI          | Bug     | Fixed errors with the Decimal Precision input in the [SQL Console](../../sql/sql-console.md). |
 | [3713](#issue-3713) | sql         | Bug     | Fixed number format error raised in queries with the `WHERE` clause. |
 | [3703](#issue-3703) | sql         | Feature | Added capability to display first/last sample time in windowing queries. |
-| [3697](#issue-3697) | sql         | Feature | Modified processing sequence so that the `HAVING` filter is applied after period interpolation. |
+| [3697](#issue-3697) | sql         | Feature | Modified processing sequence to ensure that the `HAVING` filter is applied after period interpolation. |
 | [3696](#issue-3696) | sql         | Bug     | Fixed issue with `ORDER BY [column-index]`. |
 | [3694](#issue-3694) | sql         | Bug     | Optimized execution of `JOIN` queries by applying tag filters to all tables. |
 | 3693 | UI          | Bug     | Fixed navigation issue between Query console and Query Plan. |

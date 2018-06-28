@@ -14,14 +14,14 @@
 | [3977](#issue-3977) | UI              | Feature | Display linked job configurations for HTTP Pools, [Database Configurations](https://axibase.com/docs/axibase-collector/jobs/jdbc-data-source.html), and [Replacement Tables](https://axibase.com/docs/axibase-collector/collections.html). |
 | [3976](#issue-3976) | collection      | Feature | Added an option to specify executable script text on the Item List configuration page.                        |
 | 3974 | http-pool       | Bug     | Fixed an error when deleting an HTTP Pool.                                 |
-| 3969 | json            | Bug     | Fixed a conflict between `Included Fields` and `Metric Name & Value` fields.     |
+| 3969 | json            | Bug     | Fixed a conflict between **Included Fields** and **Metric Name & Value** fields.     |
 | 3967 | collection      | Bug     | Speed up Item List (type `SCRIPT`) retrieval times by checking script presence and caching items.           |
 | 3949 | json            | Bug     | Fixed incorrect inclusion of the `Entity` field as a metric field.                                             |
-| 3933 | json            | Bug     | Fixed inconsistent specification for the `Custom Tags` field.                                                   |
-| [3932](#issue-3932) | json            | Feature | Allowed for [JSON Path](https://github.com/jayway/JsonPath#operators) expressions in `Custom Tags` field.                          |
+| 3933 | json            | Bug     | Fixed inconsistent specification for the **Custom Tags** field.                                                   |
+| [3932](#issue-3932) | json            | Feature | Allowed for [JSON Path](https://github.com/jayway/JsonPath#operators) expressions in **Custom Tags** field.                          |
 | 3829 | scheduler       | Bug     | Disabled **Run** button if a job if running.                                 |
 | [3817-a](#issue-3817-a) | socrata         | Feature | Added an option to skip resending of already processed data.                         |
-| [3817-b](#issue-3817-b) | socrata         | Feature | Added the `Query Filter` field to filter rows in a resultset.                         |
+| [3817-b](#issue-3817-b) | socrata         | Feature | Added the **Query Filter** field to filter rows in a resultset.                         |
 
 ## Charts
 
@@ -65,8 +65,8 @@ For the Replacement table, the linked task configurations are shown.
 
 ### Issue 3976
 
-The old `Command` field containing the path to the executable script has been renamed to `Path to the script`.
-The new `Command` field allows entering commands returning the Item List elements, one Item per line.
+**Command** field containing the path to the executable script renamed **Path to the script**.
+New field allows entering commands returning **Item List** elements, one per line.
 The commands from the text area are copied to a file in the `$AXIBASE_COLLECTOR_HOME/conf/scripts` directory and executed as a script.
 You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/conf/server.properties` file to enable this feature.
 
@@ -78,14 +78,14 @@ You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/co
 
 ### Issue 3817-a
 
-The new checkbox `Skip Old Data` has been introduced. If the setting is enabled, the last data row from the target dataset is stored by the Collector. When the task is executed next time, only new rows are sent into ATSD as series.
+New checkbox **Skip Old Data** introduced. If enabled, the last data row from the target dataset is stored by Collector. When the task is executed next time, only new rows are sent into ATSD as series.
 
 ![](./Images/Figure6.png)
 ![](./Images/Figure7.png)
 
 ### Issue 3817-b
 
-The new field `Query Filter` has been introduced to allow applying a filter expression as part of a request.
+The new field **Query Filter** has been introduced to allow applying a filter expression as part of a request.
 
 ![](./Images/Figure8.png)
 ![](./Images/Figure9.png)

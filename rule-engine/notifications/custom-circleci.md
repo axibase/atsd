@@ -25,13 +25,13 @@ Enter a name and specify the following parameters:
 | Endpoint URL | `https://circleci.com/api/v1.1/project/github/<GITHUB_USER>/${project_name}/tree/${branch}` |
 | Headers | `Accept: application/json` |
 
-Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your GitHub user name.
+Modify the **Endpoint URL** by replacing the `<GITHUB_USER>` field with your GitHub user name.
 
-Example `Endpoint URL`: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
+Example Endpoint URL: `https://circleci.com/api/v1.1/project/github/axibase/${project_name}/tree/${branch}`
 
 Enter the Circle CI user token into the `Username` field but leave the `Password` field empty.
 
-Keep the `${project_name}` and `${branch}` placeholders in the URL path so that they can be customized in the rule editor. This allows you to trigger builds for different projects using the same webhook.
+Keep the `${project_name}` and `${branch}` placeholders in the URL path to ensure that they can be customized later in the rule editor. This allows you to trigger builds for different projects using the same webhook.
 
 ### Payload
 
@@ -87,7 +87,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 ![](./images/circle_rule_notification.png)
 
-Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and JSON payload.
+Note that these parameters are visible in the rule editor because their placeholders are present in the **Endpoint URL** and JSON payload.
 
 When the webhook is executed, all placeholders in the request URL and the payload is resolved as follows:
 

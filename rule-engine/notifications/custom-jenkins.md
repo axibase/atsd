@@ -6,8 +6,8 @@ The following example demonstrates how to trigger a [Jenkins](https://jenkins.io
 
 The integration relies on the following [Jenkins API](https://wiki.jenkins.io/display/JENKINS/Remote+access+API) methods:
 
-* `Job with parameters` method.
-* `Jobs without parameters` method.
+* **Job with parameters** method.
+* **Jobs without parameters** method.
 
 ## Configuration
 
@@ -32,9 +32,9 @@ Enter a name and specify the following parameters:
 
 If the Jenkins job is not parameterized, use the `https://jenkins.example.org/job/${job_name}/build` url.
 
-Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
+Replace `jenkins.example.org` in the **Endpoint URL** parameter with the actual Jenkins address.
 
-Keep the `${job_name}` placeholder in the URL path so that the job name can be customized in the rule editor. This allows you to trigger different jobs using the same webhook.
+Keep the `${job_name}` placeholder in the URL path to ensure that the job name can be customized in the rule editor. This allows you to trigger different jobs using the same webhook.
 
 Enter the Jenkins user name into the **Username** field and the User API token into the **Password** field.
 
@@ -58,7 +58,7 @@ To inspect which parameters are exposed by the project, open the job configurati
 
 ![](./images/jenkins_param_build_2.png)
 
-The parameters are displayed if `This project is parameterized` checkbox is enabled.
+The parameters are displayed if **This project is parameterized** checkbox is enabled.
 
 ![](./images/jenkins_param_build_3.png)
 
@@ -102,7 +102,7 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 ![](./images/jenkins_rule_notification.png)
 
-Note that these three parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and `Parameters` are marked as editable.
+Note that these three parameters are visible in the rule editor because their placeholders are present in the **Endpoint URL** and **Parameters** are marked as editable.
 
 When the webhook is executed, all placeholders are resolved as follows:
 

@@ -24,7 +24,7 @@ Enter a name and specify the following parameters:
 | Private Key Alias | `<PRIVATE_KEY_ALIAS>` |
 | Message | `<MESSAGE_TEXT>`|
 
-Modify the `Project ID` by replacing the `<PROJECT_ID>` value with your project ID, for example:
+Modify the **Project ID** by replacing the `<PROJECT_ID>` value with your project ID, for example:
 
 ```txt
 charged-thought-189815
@@ -36,19 +36,19 @@ Modify the `Topic` by replacing the `<TOPIC>` value with your topic name, for ex
 my-topic
 ```
 
-Modify the `Service Account` by replacing the `<SERVICE_ACCOUNT>` value with your [service account](gcp-service-account-key.md#create-service-account), for example:
+Modify the **Service Account** by replacing the `<SERVICE_ACCOUNT>` value with your [service account](gcp-service-account-key.md#create-service-account), for example:
 
 ```txt
 publisher
 ```
 
-Modify the `Private Key Alias` by selecting the alias for [imported account private key](gcp-service-account-key.md#import-private-key), for example:
+Modify the **Private Key Alias** by selecting the alias for [imported account private key](gcp-service-account-key.md#import-private-key), for example:
 
 ```txt
 gcp_publisher
 ```
 
-Modify the `Message` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
+Modify the Message** by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 
 ```json
 {

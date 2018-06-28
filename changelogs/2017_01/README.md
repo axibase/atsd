@@ -242,7 +242,7 @@ Columns not created for series with a statistic and wildcard match: [ChartLab](h
 
 ### Issue 3654
 
-Added support for meta fields in label-format (and series tooltips) so that `meta.metric.tag` and `meta.entity.tag` can be replaced with metadata values, loaded from the server.
+Added support for meta fields in label-format (and series tooltips) to ensure that that `meta.metric.tag` and `meta.entity.tag` can be replaced with metadata values, loaded from the server.
 
 Meta-data examples are documented [here](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/).
 

@@ -24,17 +24,17 @@ Enter a name and specify the following parameters:
 | Endpoint URL | `https://api.github.com/repos/<GITHUB_USER>/${repository_name}/issues/${issue_id}/comments` |
 | Headers | `Accept: application/vnd.github.v3+json`<br>`Authorization: token 11111111` |
 
-Modify the `Endpoint URL` by replacing the `<GITHUB_USER>` field with your github user name.
+Modify the **Endpoint URL** by replacing the `<GITHUB_USER>` field with your github user name.
 
-Example `Endpoint URL`: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
+Example Endpoint URL: `https://api.github.com/repos/axibase/${repository_name}/issues/${issue_id}/comments`
 
-Keep the `${repository_name}` and `${issue_id}` placeholders in the URL so that can be customized in the rule editor. This allows you to add comments to different issues re-using the same webhook configuration.
+Keep the `${repository_name}` and `${issue_id}` placeholders in the URL to ensure that they can be customized in the rule editor. This allows you to add comments to different issues re-using the same webhook configuration.
 
 Enter an existing authorization token in `Authorization` header or create a new one.
 
 #### Create Authorization Token with curl
 
-Execute the [`Create a new authorization`](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) command. Replace the `<GITHUB_USER>` field with your github user name.
+Execute [**Create a new authorization**](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) command. Replace the `<GITHUB_USER>` field with your github user name.
 
 ```bash
 curl \
@@ -152,7 +152,7 @@ For **Repeat** and **Cancel** triggers:
 
 ![](./images/github_rule_notification_repeat_close.png)
 
-Note that these parameters are visible in the rule editor because their placeholders are present in the `Endpoint URL` and the JSON payload.
+Note that these parameters are visible in the rule editor because their placeholders are present in the **Endpoint URL** and the JSON payload.
 
 When the webhook is executed, all placeholders in the request URL are resolved as follows:
 

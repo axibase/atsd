@@ -22,7 +22,7 @@
 | [3818](#issue-3818) | socrata     | Feature | In `Test` mode, added a table displaying columns from the metadata section. |
 | 3812 | socrata     | Bug     | Removed `http` pool from the configuration tab. Now, only the dataset path is displayed. |
 | 3811 | socrata     | Bug     | Fixed auto-complete defect affecting configuration form fields. |
-| 3810 | socrata     | Bug     | Updated settings so that if a field is specified in **Custom Tags** and is not specified in **Included Fields**, the field is not sent as a metric.|
+| 3810 | socrata     | Bug     | Updated settings to support a field specified in **Custom Tags** and not specified in **Included Fields** is not sent as a metric.|
 | 3804 | socrata     | Bug     | Excluded `null` values from custom tags or any other fields in commands for both JSON and Socrata jobs. |
 | 3803 | socrata     | Bug     | Fixed issue where time fields stored as metrics. |
 | 3802 | socrata     | Bug     | Corrected issues with statistics display showing inaccurate command counters. |

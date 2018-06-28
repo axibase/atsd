@@ -59,8 +59,8 @@ Property | Default Value | Description
 **`hbase.table.prefix`** | `atsd_` | Prefix added to all HBase tables created by ATSD. |
 `htable.executor.corePoolSize` | `16` | Minimum number of worker threads performing HBase queries such as scans. This pool does not include series and properties write threads. |
 `htable.executor.maxPoolSize` | `32` | Maximum number of worker threads performing HBase queries such as scans. This pool does not include series and properties write threads.
-`last.insert.cache.max.size` | `100000` | Maximum number of series records kept in the **Last Insert** cache. If the limit is reached by the cache, records older than ten minutes, based on received time, are removed. If the cache remains more than 75% full, messages older than one minute are removed.|
-`last.insert.write.period.seconds` | `15` | Interval at which updated series from the **Last Insert** cache are persisted to the database.
+`last.insert.cache.max.size` | `100000` | Maximum number of series records kept in the `Last Insert` cache. If the limit is reached by the cache, records older than ten minutes, based on received time, are removed. If the cache remains more than 75% full, messages older than one minute are removed.|
+`last.insert.write.period.seconds` | `15` | Interval at which updated series from the `Last Insert` cache are persisted to the database.
 **`messages.timeToLive`** | `31536000` | Number of seconds after which records are deleted from the `atsd_message` table. This TTL is based on the insertion time, not the record timestamp. The default is 365 days.|
 `properties.batch.size` | `512` | Number of property records sent to HBase in each `PUT` command. |
 `properties.queue.limit` | `8192` | Maximum number of property records waiting in memory to be inserted into HBase. |

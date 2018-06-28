@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to start an [AWS Batch](https://aws.amazon.com/batch) job using a [`AWS API`](aws-api.md) outgoing webhook.
+The following example demonstrates how to start an [AWS Batch](https://aws.amazon.com/batch) job using an [`AWS API`](aws-api.md) outgoing webhook.
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this webhook, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
@@ -27,13 +27,13 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Body | `<JSON_CONTENT>` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with the target [region](https://docs.aws.amazon.com/general/latest/gr/rande.html#batch_region), for example:
+Modify the **Endpoint URL** by replacing the `<AWS_REGION>` value with the target [region](https://docs.aws.amazon.com/general/latest/gr/rande.html#batch_region), for example:
 
 ```elm
 https://batch.us-east-1.amazonaws.com/v1/submitjob
 ```
 
-Enter the AWS key id into the `Access Key Id` field and the secret key into the `Secret Access Key` field.
+Enter the AWS key id into the **Access Key Id** field and the secret key into the **Secret Access Key** field.
 
 Modify the `Body` by replacing the `<JSON_CONTENT>` value with actual values, for example:
 

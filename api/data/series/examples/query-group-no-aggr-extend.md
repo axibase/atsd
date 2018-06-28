@@ -2,7 +2,7 @@
 
 ## Description
 
-An opposite operation to truncation, extend adds missing values at the beginning and end of the interval so that all merged series have values when the grouping function is applied.
+An opposite operation to truncation, extend adds missing values at the beginning and end of the interval to ensure that that all merged series have values when the grouping function is applied.
 
 ```ls
 | datetime                 | e1.value | e2.value | SUM |

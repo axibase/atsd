@@ -25,13 +25,12 @@
 | Issue| Category    | Type    | Subject                         |
 |------|-------------|---------|---------------------------------|
 | [3664](#issue-3664) | docker      | Feature | Added new Docker container metrics for process count monitoring: `docker.process.all` and `docker.process.filtered`. |
-| [3559](#issue-3559) | jdbc        | Feature | Extended JDBC job so that PI server `PIPoint` metadata can be offloaded into ATSD. |
+| [3559](#issue-3559) | jdbc        | Feature | Extended JDBC job to ensure that PI server `PIPoint` metadata can be offloaded into ATSD. |
 
 ### Issue 3690
 
 In previous versions of ATSD, the user role, group membership, and entity permissions are cached while the user session is active. If the user authorization is changed by an
-administrator, the setting is not applied until the active sessions timed out or until the user re-logged into the application. ATSD updated so that the
-active sessions are invalided instantly if the authorization is changed by an administrator. As a result, the administrator does not have to manually request the user to logout to apply any new settings. In addition, the administrator is now able to view which users are online.
+administrator, the setting is not applied until the active sessions timed out or until the user re-logged into the application. ATSD updated to invalidate active sessions instantly if the authorization is changed by an administrator. As a result, the administrator does not have to manually request the user to logout to apply any new settings. In addition, the administrator is now able to view which users are online.
 
 ![Figure 5](./Images/Figure5.png)
 

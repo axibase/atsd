@@ -67,7 +67,7 @@ The `entity.label` parameter is now supported in the rule filter.
 
 ### Issue 3921
 
-Added an `escape()` method to `list` and `var` arrays, so that this collections can now be serialized as follows  `@{arrayName.escape()}`. The `escape()` method escapes commas and backslashes in each element in an array.
+Added an `escape()` method to `list` and `var` arrays, to ensure that these collections are serialized as follows  `@{arrayName.escape()}`. The `escape()` method escapes commas and backslashes in each element in an array.
 
 ```ls
   [dropdown]

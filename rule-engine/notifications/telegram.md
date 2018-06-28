@@ -2,7 +2,7 @@
 
 ## Overview
 
-`TELEGRAM` [notifications](../notifications/README.md) provides a built-in capability to send alert messages, alert detail tables, and charts to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
+`TELEGRAM` [webhook](../notifications/README.md) provides a built-in capability to send alert messages, alert detail tables, and charts to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Reference
 
@@ -68,7 +68,7 @@ There are two options to obtain chat id:
 
 * Send any message to the channel (for private/public channel) or start conversation with the bot (for direct message chat). No action is required for the group.
 * Open `https://api.telegram.org/botBOT_TOKEN/getUpdates` link (replace BOT_TOKEN with the actual value).
-* Review the `Chat Object` and copy `id` value.
+* Review the **Chat Object** and copy `id` value.
 
     ![](./images/chat_object.png)
 
@@ -80,8 +80,8 @@ There are two options to obtain chat id:
 
     ![](./images/telegram_2.png)
 
-* Enter the `BOT_TOKEN` value into the `Bot API Token` field.
-* Enter the chat id into the `Chat ID` field.
+* Enter the `BOT_TOKEN` value into the **Bot API Token** field.
+* Enter the chat id into the **Chat ID** field.
 * Select **Test Portal** to verify screenshot delivery.
 
   ![](./images/telegram_12.png)

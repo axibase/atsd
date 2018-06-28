@@ -2,7 +2,7 @@
 
 ## Overview
 
-`SLACK` [notifications](../notifications/README.md) provide a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
+`SLACK` [webhook](../notifications/README.md) provides a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
 
 ## Reference
 
@@ -101,11 +101,11 @@ When sending messages to either a public or private channel you can just use the
 
 * Open **Alerts > Webhooks** page.
 * Click an existing `SLACK` template, or click **Create** below and select the `SLACK` type.
-* Specify the unique `Name` of the notification.
+* Specify the unique **Name** of the notification.
 
     ![](./images/slack_1.png)
 
-* Specify the `Auth Token` and `Channels` parameters. See parameter descriptions below.
+* Specify the **Auth Token** and **Channels** parameters. See parameter descriptions below.
 * Select **Test Portal** to verify screenshot delivery.
 
     ![](./images/slack-settings.png)

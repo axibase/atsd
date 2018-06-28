@@ -53,7 +53,7 @@ WHERE metric IN ('tst-metric-short',
 
 ### Issue 3769
 
-Extended the [`LOOKUP`](../../sql/README.md#lookup) function so that it can accept series, metric, and entity tags as parameters.
+Extended the [`LOOKUP`](../../sql/README.md#lookup) function to accept `series`, `metric`, and `entity tags` as parameters.
 
 ```sql
 SELECT datetime, value, metric, metric.tags.digital_set

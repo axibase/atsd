@@ -30,7 +30,7 @@ Open **Alerts > Open Alerts** page in the main menu to view currently opened ale
 
 ![](./resources/rule-open-alerts.png)
 
-Now insert some commands with low values so that the average of the last three commands is less than `50`.
+Now insert some commands with low values to ensure that the average of the last three commands is less than `50`.
 
 ```ls
 series e:br-1905 m:temperature=20

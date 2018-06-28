@@ -219,7 +219,7 @@ Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is 
 
 ### Extend
 
-An opposite operation to truncation, extend adds missing values at the beginning and end of the interval so that all merged series have values when the `group` function is applied.
+An opposite operation to truncation, extend adds missing values at the beginning and end of the interval to ensure that all merged series have values when the `group` function is applied.
 
 ```ls
 | datetime             | e1.value | e2.value | SUM |

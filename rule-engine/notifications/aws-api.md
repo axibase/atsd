@@ -9,7 +9,7 @@
 |**Setting**|**Description**|
 |---|---|
 |Endpoint URL|AWS url|
-|Method|The HTTP method|
+|Method|HTTP method|
 |Access Key Id|[Access Key Id](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
 |Secret Access Key|[Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
 |Action|The service action|
