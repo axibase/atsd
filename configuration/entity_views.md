@@ -527,7 +527,7 @@ Specify the default property type in the **Value** setting.
 
 The text displays difference `now - lastInsertDate`. The entities are highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
 
-1. Set **Type** setting to **Last Insert**.
+1. Set **Type** setting to `Last Insert`.
 
 2. Specify the metric name and the lag in the **Value** setting, for example `docker.activecontainers:20`.
 

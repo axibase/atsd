@@ -4,7 +4,7 @@
 
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
-| 3710     | install         | Feature         | Added support for an embedded collector account with **All Entities: Read** and **All Entities: Write** permission.                                      |
+| 3710     | install         | Feature         | Added support for an embedded collector account with `All Entities: Read` and `All Entities: Write` permission.                                      |
 | [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile is specified in denominator.                              |
 | [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.                          |
 | [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |

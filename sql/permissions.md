@@ -8,7 +8,7 @@ The row-level security is enforced in all types of queries by filtering rows at 
 
 As a result, the same query executed by different users can produce different result sets.
 
-[Scheduled SQL](scheduled-sql.md) queries are executed with [**All Entities: Read**](../administration/user-authorization.md#all-entities-permissions) permission and are **not filtered**.
+[Scheduled SQL](scheduled-sql.md) queries are executed with [`All Entities: Read`](../administration/user-authorization.md#all-entities-permissions) permission and are **not filtered**.
 
 ## Example
 
@@ -22,7 +22,7 @@ The following example demonstrates how query results for different users are fil
 | `jane.doe` | `users-aws` | `srv-aws` | `nurswg*` (5 entities) |
 | `john.doe` | `users-nur` | `srv-nur` | `awsswg*` (3 entities) |
 
-The `joe.bloggs` user is a member of the user group that has **All Entities: Read** permissions.
+The `joe.bloggs` user is a member of the user group that has `All Entities: Read` permissions.
 
 The `jane.doe` user is a member of the `users-nur` user group that is allowed to read data for `srv-nur` entity group.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to send an email via [Amazon SES](https://aws.amazon.com/ses) using a [**AWS API**](aws-api.md) webhook.
+The following example demonstrates how to send an email via [Amazon SES](https://aws.amazon.com/ses) using a [`AWS SNS`](aws-api.md) webhook.
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this webhook type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
@@ -10,7 +10,7 @@ The example invokes the [Amazon SES API](https://docs.aws.amazon.com/ses/latest/
 
 ## Configuration
 
-Create a new **AWS API** webhook or import the [template](./resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new `AWS SNS` webhook or import the [template](./resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new webhook, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 

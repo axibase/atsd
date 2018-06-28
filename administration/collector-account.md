@@ -11,7 +11,7 @@ Such accounts must be granted both the `API_DATA_WRITE` and `API_META_WRITE` rol
 ## Create User Group
 
 * Open the **Settings > Users > User Groups > Create** page.
-* Create the `collectors` group with **All Entities: Write** permission.
+* Create the `collectors` group with `All Entities: Write` permission.
 
 ![collectors group](./images/all-entities-write.png)
 
