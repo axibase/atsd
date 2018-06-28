@@ -20,7 +20,7 @@
 
 Each window status event can trigger only one AWS SNS message.
 
-The message is submitted to the specified AWS API endpoint using the `POST` method with `application/x-www-form-urlencoded` content type. The request includes additional AWS headers (`Authorization`, `X-Amz-Date`) and is signed with [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+The message is submitted to the specified AWS SNS endpoint using the `POST` method with `application/x-www-form-urlencoded` content type. The request includes additional AWS headers (`Authorization`, `X-Amz-Date`) and is signed with [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 The default message uses the JSON format and includes all fields, including entity and metric metadata.
 
@@ -35,7 +35,7 @@ The default message uses the JSON format and includes all fields, including enti
 
 The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
-## Configure AWS API Webhook
+## Configure AWS SNS Webhook
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SNS` type.
