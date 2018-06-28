@@ -136,7 +136,7 @@ To minimize the number of rules with manual thresholds, the rule engine in ATSD 
 
 ### Manual Thresholds
 
-Thresholds can be set manually which requires some trial and error to determine a level that strikes a balance between false positives and missed alerts.
+Thresholds can be set manually which requires some trial and error to determine a level that strikes a balance between `false positives` and missed alerts.
 
 ```javascript
 value > 90
