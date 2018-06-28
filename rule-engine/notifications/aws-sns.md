@@ -1,4 +1,4 @@
-# Amazon SNS Notifications
+# Amazon SNS Webhook
 
 ## Overview
 
