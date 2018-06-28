@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to send a message to an [Azure Service Bus](https://azure.microsoft.com/en-us/services/service-bus) queue using a [**AZURE SB**](azure-sb.md) webhook.
+The following example demonstrates how to send a message to an [Azure Service Bus](https://azure.microsoft.com/en-us/services/service-bus) queue using a [`AZURE SB`](azure-sb.md) webhook.
 
 The example invokes the [Azure Service Bus API](https://docs.microsoft.com/en-us/rest/api/servicebus/send-message-to-queue) **Send Message** action.
 
