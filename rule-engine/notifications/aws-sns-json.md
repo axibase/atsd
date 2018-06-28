@@ -1,6 +1,6 @@
 # SNS JSON Message Format Example
 
-Create a `AWS API` notification with `Message Format = SNS JSON`, for example:
+Create a `AWS API` webhook with `Message Format = SNS JSON`, for example:
 
 ![](./images/aws_sns_web_notification_config_json.png)
 
