@@ -1,4 +1,4 @@
-# Google Cloud Pub/Sub Notifications
+# Google Cloud Pub/Sub Webhook
 
 ## Overview
 
