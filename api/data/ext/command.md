@@ -4,6 +4,8 @@
 
 Accepts commands in [Network API](../../../api/network/README.md) syntax over HTTP.
 
+Supported Network API commands:
+
 * [series](../../../api/network/series.md)
 * [property](../../../api/network/property.md)
 * [message](../../../api/network/message.md)
@@ -11,8 +13,6 @@ Accepts commands in [Network API](../../../api/network/README.md) syntax over HT
 * [entity](../../../api/network/entity.md)
 
 The method returns a JSON object containing the counters of failed, successful, and total commands.
-
-Supported Network API commands:
 
 ## Multiple Commands
 

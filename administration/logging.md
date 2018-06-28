@@ -2,7 +2,7 @@
 
 The database logs are located in the `/opt/atsd/atsd/logs` directory.
 
-The compressed log files can be also downloaded from the **Settings > Server Logs** page.
+The log files can be also downloaded from the **Settings > Server Logs** page.
 
 Logs are rolled over and archived according to the retention settings in the `/opt/atsd/atsd/conf/logback.xml` file.
 
@@ -26,7 +26,7 @@ Logs are rolled over and archived according to the retention settings in the `/o
 
 ### File Count
 
-To increase the number of files stored by a given logger, increase `maxIndex` attribute.
+To increase the number of files stored by a given logger, increase the value in the `maxIndex` tag.
 
 ```xml
    <maxIndex>20</maxIndex>
@@ -34,7 +34,7 @@ To increase the number of files stored by a given logger, increase `maxIndex` at
 
 ### File Size
 
-To increase the size of files rolled over by a given logger, increase the `maxFileSize` attribute. This setting determines the size of the file before the file is rolled over and compressed. The size of the compressed file is typically 10-20 smaller than the original file.
+To increase the size of files rolled over by a given logger, increase the `maxFileSize` tag value. This setting determines the size of the file before the file is rolled over and compressed. The compressed file is typically 10-20 smaller than the original file.
 
 ```xml
    <maxFileSize>100Mb</maxFileSize>
@@ -42,7 +42,7 @@ To increase the size of files rolled over by a given logger, increase the `maxFi
 
 ### File Name
 
-To change the name of the current and archived files, change the `file` and `fileNamePattern` attributes.
+To change the name of the current and archived files, change the `file` and `fileNamePattern` tags.
 
 ```xml
   <file>../logs/command.log</file>
@@ -59,12 +59,65 @@ To adjust tracing level, add a logging declaration containing the full class nam
 
 ## Applying Changes
 
-Changes in logging properties can be made by modifying the `logback.xml` file on the file system or using the **Settings > Configuration Files** editor.
+Logging properties can be modified in the `logback.xml` file located in the `/opt/atsd/atsd/conf` directory or using the **Settings > Configuration Files** editor.
 
-Database restart is **not** required, the changes are automatically refreshed and applied every 60 seconds.
+Database restart is **not** required. The changes are scanned and automatically applied every 60 seconds, as specified in the `scanPeriod` tag.
 
-## Enabling Command Logging
+## Command Logging
 
-For performance purposes, logging of incoming commands to `command*.log` files is enabled both in the `logback.xml` file as well as with the **Command Log Enabled** setting on the **Settings > Input Settings** page.
+For performance purposes, logging of incoming commands to `command*.log` files must be enabled both in the `logback.xml` file as well as with the **Command Log Enabled** setting on the **Settings > Input Settings** page.
 
 ![Input Settings](./images/logging_input.png)
+
+The `command.log` file contains received `series`, `property`, and `message` data commands and is continuously appended with incoming commands.
+
+```txt
+2018-06-28 14:11:55,841;atsd.incoming.api.command.raw;series e:nurswgvml007 m:os.disk.fs.percent_used=45.62672958755293  t:disk=/
+2018-06-28 14:11:55,849;atsd.incoming.api.command.raw;message e:nurswgvml008 ms:1530195115844 t:job_type="DOCKER" t:job_name="docker-hbs-to-nur" t:source="docker-hbs-to-nur" t:type="collector-job" t:status="COMPLETED"
+2018-06-28 14:13:19,841;atsd.internal.command;property t:java_method e:atsd ms:1530195199841 k:host=NURSWGVML007 v:java_method_invoke_last=5
+```
+
+`command.log` file format:
+
+```ls
+date_received_iso;channel_type;command
+```
+
+Each message in the file contains the received date and the channel type, for example:
+
+* `incoming.tcp.raw`
+* `atsd.incoming.api.command.raw`
+* `atsd.internal.command`.
+
+The data command is printed out in the [Network API](../api/network/README.md) syntax and can be replayed on any ATSD instance by uploading the commands via TCP/UDP protocol, [`/api/v1/command`](../api/data/ext/command.md) endpoint, or on the **Data > Data Entry** page.
+
+The retention settings for received commands can be modified by increasing the `maxIndex` or `maxFileSize` tags in the `logback.xml` file.
+
+```xml
+<!-- command.log -->
+<appender name="commandsLogRoller" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>../logs/command.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+        <fileNamePattern>../logs/command.%i.log.zip</fileNamePattern>
+        <minIndex>1</minIndex>
+        <maxIndex>20</maxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        <maxFileSize>25Mb</maxFileSize>
+    </triggeringPolicy>
+
+    <encoder>
+        <pattern>%date{ISO8601};%logger;%message%n</pattern>
+    </encoder>
+</appender>
+```
+
+To log the data commands without the received date and channel, remove the corresponding fields from the `pattern` tag.
+
+```xml
+    <encoder>
+        <pattern>%message%n</pattern>
+    </encoder>
+```
