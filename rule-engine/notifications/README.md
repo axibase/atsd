@@ -24,7 +24,7 @@ Example: [Slack](./slack.md) Alert
 | Type | Customizable Fields | Description |
 | --- | --- | --- |
 | [AWS-API](./aws-api.md) | All | Integrate with [AWS](https://aws.amazon.com). |
-| [AWS-SNS](./aws-sns.md) | Topic, Message and Subject | Publish a message to an [AWS API](https://aws.amazon.com/sns/?p=tile) topic. |
+| [AWS-SNS](./aws-sns.md) | Topic, Message and Subject | Publish a message to an [AWS SNS](https://aws.amazon.com/sns/?p=tile) topic. |
 | [AWS-SQS](./aws-sqs.md) | Queue and Message| Send a message to an [AWS SQS](https://aws.amazon.com/sqs/?p=tile) queue. |
 | [AZURE-SB](./azure-sb.md) | Queue/Topic and Message | Send a message to an [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging) |
 | [GCP-PS](./gcp-ps.md) | Topic and Message | Send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) topic. |

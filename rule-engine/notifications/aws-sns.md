@@ -2,7 +2,7 @@
 
 ## Overview
 
-`AWS API` [webhook](../notifications/README.md) publishes signed messages to an [Amazon SNS](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic upon window status events.
+`AWS SNS` [webhook](../notifications/README.md) publishes signed messages to an [Amazon SNS](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic upon window status events.
 
 ## Webhook Settings
 
@@ -18,7 +18,7 @@
 
 ## Message
 
-Each window status event can trigger only one AWS API message.
+Each window status event can trigger only one AWS SNS message.
 
 The message is submitted to the specified AWS API endpoint using the `POST` method with `application/x-www-form-urlencoded` content type. The request includes additional AWS headers (`Authorization`, `X-Amz-Date`) and is signed with [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 

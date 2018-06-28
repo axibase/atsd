@@ -49,7 +49,7 @@ It can take a few seconds for the first commands to arrive and to trigger the we
 
 ## Test
 
-AWS API Subscriptions:
+AWS SNS Subscriptions:
 
 ![](./images/aws_sns_subscriptions.png)
 

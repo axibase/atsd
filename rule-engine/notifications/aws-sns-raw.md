@@ -1,6 +1,6 @@
 # RAW Message Format Example
 
-Create an `AWS API` webhook with `Message Format = RAW`, for example:
+Create an `AWS SNS` webhook with `Message Format = RAW`, for example:
 
 ![](./images/aws_sns_web_notification_config_raw.png)
 
@@ -57,7 +57,7 @@ It can take a few seconds for the first commands to arrive and to trigger the no
 
 ## Test
 
-AWS API Subscriptions:
+AWS SNS Subscriptions:
 
 ![](./images/aws_sns_subscriptions.png)
 
