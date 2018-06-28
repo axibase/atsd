@@ -88,9 +88,9 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 
     ![](./images/hipchat_1.png)
 
-* Specify the `Endpoint URL`.
-* Copy the `Token` from the HipChat Data Center client into the `Auth Token` field of the configuration form.
-* Copy the room ID or room name from the HipChat Data Center client into the `Room ID` field in the configuration form.
+* Specify the **Endpoint URL**.
+* Copy the **Token** from the HipChat Data Center client into the **Auth Token** field of the configuration form.
+* Copy the room ID or room name from the HipChat Data Center client into the **Room ID** field in the configuration form.
 * Select **Test Portal** to test the screenshot.
 
     ![](./images/hipchat_settings.png)
@@ -109,7 +109,7 @@ If the HipChat API server is not accessible from the ATSD server, open the **Net
 
 |**Name**|**Description**|
 |---|---|
-|`Auth Token`|Authorization Token with `message` and `notifications` scopes.|
+|Auth Token|Authorization Token with `message` and `notifications` scopes.|
 |Bot Nickname|Set a name for the bot.|
 |Room ID|ID or name of the room.|
 |Message|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|

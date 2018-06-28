@@ -5,7 +5,7 @@ The document describes how to create a [collector](collector-account.md) account
 ## Create User Group
 
 * Open the **Settings > Users > User Groups > Create** page.
-* Create the `collectors-rw` group with `All Entities: Read` and `All Entities: Write` permissions.
+* Create the `collectors-rw` group with **All Entities: Read** and **All Entities: Write** permissions.
 
 ![collectors group](./images/collectors-rw-permissions.png)
 

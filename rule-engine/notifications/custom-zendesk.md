@@ -25,11 +25,11 @@ Enter a name and specify the following parameters:
 | Password | `<ZENDESK_PASSWORD>` |
 | Endpoint URL | `https://<COMPANY_NAME>.zendesk.com/api/v2/requests/${request_id}.json` |
 
-Modify the `Endpoint URL` by replacing the `<COMPANY_NAME>` field with your Zendesk subdomain.
+Modify the **Endpoint URL** by replacing the `<COMPANY_NAME>` field with your Zendesk subdomain.
 
-Example `Endpoint URL`: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
+Example Endpoint URL: `https://axibase.zendesk.com/api/v2/requests/${request_id}.json`
 
-Keep the `${request_id}` placeholder in the URL path so that the request id is customizable in the rule editor. This allows you to add comments to different requests using the same webhook.
+the `${request_id}` placeholder in the URL path to ensure that the request id is customizable in the rule editor. This allows you to add comments to different requests using the same webhook.
 
 Enter the Zendesk user name into the `Username` field and the password into the `Password` field.
 

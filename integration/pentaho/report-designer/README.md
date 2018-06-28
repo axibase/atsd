@@ -49,7 +49,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ### Configure ATSD connection properties
 
-* Enter JDBC URL into the `Custom Connection URL` field, for example:
+* Enter JDBC URL into the **Custom Connection URL** field, for example:
 
   `jdbc:atsd://atsd_hostname:8443;tables=inflation%;expandTags=true`
 
@@ -57,8 +57,8 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 > Review ATSD JDBC [URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md) for additional details.
 
 * Set Custom Driver Class Name field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
-* Set `User Name` and `Password` fields to your ATSD Username and Password
-* Set `Connection Name` to `ATSD Connection`
+* Set **User Name** and **Password** fields to your ATSD Username and Password
+* Set **Connection Name** to **ATSD Connection**
 
 ![](./resources/atsd_connection.png)
 
@@ -80,8 +80,8 @@ Result of `SELECT 1` test query:
 
 ## View Schema
 
-* Edit `Custom Connection URL` field in ATSD Connection properties
-* Edit `tables=TABLE_NAME_FILTER` in `Custom Connection URL` field
+* Edit **Custom Connection URL** field in ATSD Connection properties
+* Edit `tables=TABLE_NAME_FILTER` in **Custom Connection URL** field
 * SET `TABLE_NAME_FILTER` to your table name filter
 
 `TABLE_NAME_FILTER` is a list of comma-separated metrics or metric expressions to be displayed as tables in the Pentaho Report Designer.
@@ -96,16 +96,16 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 ![](./resources/query_text.png)
 
-`SQL Query Designer` tool interface:
+**SQL Query Designer** tool interface:
 
 ![](./resources/sql_query_designer.png)
 
-`SQL Query Designer` is used for visual building of a Query:
+Design a query visually with **SQL Query Designer**:
 
 * Double-click the table that you want to include to Query. The table is shown in right pane of **SQL Query Designer**.
 * Select fields inside the table (these fields are included in `SELECT` clause of a Query)
 * Optionally add `WHERE`, `GROUP BY` and `HAVING` or `ORDER BY`
-* Click **OK** so your Query is built and shown in text field
+* Click **OK** to build the query and display the query in the text field
 > Remove new line symbol after `SELECT` keyword
 > Remove quotes around column names
 
@@ -123,7 +123,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 
 ![](./resources/preview.png)
 
-* Build a Query using the `SQL Query Designer`
+* Build a query using the **SQL Query Designer**
 
 * Click **OK**. The list of queries is added to the **Data** pane.
 * Right-click the query and choose **Select Query**. The tree view displays query results and fields.

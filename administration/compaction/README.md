@@ -74,7 +74,7 @@ Example: IBM Tivoli Data Warehouse
 
 ### Universal Table
 
-The **Universal Table** schema uses a `Metric Id` column to reference the metric defined in a separate dictionary (lookup) table.
+The **Universal Table** schema uses a **Metric Id** column to reference the metric defined in a separate dictionary (lookup) table.
 
 This option allows adding new metrics without altering the data table itself.
 

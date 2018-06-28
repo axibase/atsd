@@ -20,7 +20,7 @@
 |----------|-----------------|---------- |----------------------------------------------------------------------------|
 |  3443    | property        |   Bug     | Fixed an issue with time column formatting when time zone is set to UTC. |
 |  2454    | property        |   Feature | Implemented `format-numbers` and `format-headers` settings.|
-|  2335    | property        |   Bug     | Refactored configuration so that the `entity` setting can be specified in json and simplified no-json syntax. |
+|  2335    | property        |   Bug     | Refactored `entity` setting to be specified in JSON and simplified no-JSON syntax. |
 
 ## Collector
 

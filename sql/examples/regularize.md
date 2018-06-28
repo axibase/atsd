@@ -407,7 +407,7 @@ WITH INTERPOLATE(30 SECOND, LINEAR, OUTER)
 
 #### `JOIN` Example
 
-The `WITH INTERPOLATE` transformation regularizes all series returned by the query to the same timestamps, so that their values can be joined.
+The `WITH INTERPOLATE` transformation regularizes all series returned by the query to the same timestamps, to enable joining the values.
 
 Series **t1**. This metric is interpolated with the `PREVIOUS` function.
 

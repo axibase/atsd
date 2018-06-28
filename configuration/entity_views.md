@@ -68,7 +68,7 @@ Type | Column type.
 Header | Column name.
 Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Makes the cell value a clickable link. See [Links](#links) options.
-Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to `Entity Property`, the text is resolved to the property expression value.
+Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If link is set to **Entity Property**, the text is resolved to the property expression value.
 Link Template | Path to a page in the web interface with support for placeholders: `${entity}` and `${value}` (current cell value).
 Formatting | A [function](#formatting) or an expression to round numbers and convert units.
 

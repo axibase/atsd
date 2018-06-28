@@ -42,7 +42,7 @@
 
 ### Issue 3909
 
-The `Discard Previous Values` option allows you to discard commands timestamped earlier than the time of the most recent event in the given window.
+The **Discard Previous Values** option allows you to discard commands timestamped earlier than the time of the most recent event in the given window.
 ![](./Images/Figure_01.png)
 
 ### Issue 3879

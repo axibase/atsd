@@ -2,7 +2,7 @@
 
 ## Overview
 
-`GCP PS` [notifications](../notifications/README.md) send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic upon window status events.
+**GCP PS** [notifications](../notifications/README.md) send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic upon window status events.
 
 ## Notification Settings
 

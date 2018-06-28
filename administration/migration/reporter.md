@@ -181,7 +181,7 @@ The report includes memory required by the mapper. This maximum is reported for 
 * The day is `2016-11-18`.
 * Number of rows in current `atsd_d` table with given combination of the metric, entity, and date equals to `5784`.
 * Maximum estimated size of a row among these 5784 rows is `84` KB.
-* There are `5761` different series for the given combination of metric, entity, and day. These series differ by tags, so there are `5761` different combinations of tags.
+* There are `5761` different series for the given combination of metric, entity, and day. These series differ by tags, there are `5761` different combinations of tags.
 * Total number of time series samples for the given metric, entity , and day are `11520`.
 * There are no annotations and non-versioned samples.
 * The `atsd_d` table stores data for the displayed metric, the entity, and the day in rows from the specified `start key` (inclusive) to `stop key` (exclusive).

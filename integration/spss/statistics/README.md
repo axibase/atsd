@@ -138,7 +138,7 @@ Merge the two datasets by adding the `weight` column from the `weights.sav` data
 
   ![](./images/merge_editor.png)
 * Click **OK**.
-* Remove `time` column using `Variable View`.
+* Remove `time` column using **Variable View**.
 
 ![](./images/time_clear.png)
 

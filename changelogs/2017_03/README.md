@@ -19,7 +19,8 @@
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3784](#issue-3784)| jdbc            | Feature | Added the [`${SPLIT_CONDITION}`](https://axibase.com/docs/axibase-collector/jobs/jdbc.html#job-configuration) placeholder support in the JDBC job to allow fetching large result sets in multiple iterations. |
-| 3656 | socrata         | Bug     | Refactored the Socrata job so that a dataset with more than 100,000 rows or more than 100 MB can be processed without an OutOfMemory error. |
+| 3656 | socrata         | Bug     | Refactored the Socrata job to support a dataset with more than 100,000 rows or more than 100 MB
+without an `OutOfMemory` error. |
 
 ## Charts
 

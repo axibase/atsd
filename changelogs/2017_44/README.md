@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4694 | sql | Bug | Storing results into new series fails for new metric/entity if `Check Last Time` is enabled. |
+| 4694 | sql | Bug | Storing results into new series fails for new metric/entity if **Check Last Time** is enabled. |
 | 4693 | installation | Bug | Fix failing HBase shell tests by increasing a timeout for the last test. |
 | 4692 | rule-engine| Bug | Import of an existing rule with the notification breaks the current rule with the same name. |
 | [4687](#issue-4687) | api-rest | Feature | Added support for wildcards when requesting metric/entity tags. |

@@ -21,7 +21,7 @@
 | 4728 | portal | Bug | Charts and portals: ensure `LTR` layout regardless of the browser setting. |
 | 4717 | api-rest | Bug | Series query: wrong below median `PERCENTILE_*` calculations (equals to `MIN`). |
 | 4713 | api-rest | Bug | Series query with `FORECAST` type: add support for `addMeta` parameter. |
-| [4781](#issue-4781) | rule engine | Feature | Implement [`HipChat Data Center`](../../rule-engine/notifications/hipchat.md) notifications. |
+| [4781](#issue-4781) | rule engine | Feature | Implement [HipChat Data Center](../../rule-engine/notifications/hipchat.md) notifications. |
 | 4738 | rule engine | Feature | Implement [`WEBHOOK`](../../rule-engine/notifications/webhook.md) notifications. |
 | 4579a | rule engine | Feature | Implement [`CUSTOM`](../../rule-engine/notifications/custom.md) notifications. |
 | [4579b](#issue-4579b) | rule engine | Feature | Implement [`SLACK`](../../rule-engine/notifications/slack.md) notifications. |

@@ -44,18 +44,18 @@ entity-group-3 must be assigned to user-group-B or user-group-A.*
 
 ### All Entities Permissions
 
-In addition to specific Entity Group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data for any entity, including entities that do not belong to any Entity Group. Users inherit `All Entities` permissions from the
+In addition to specific Entity Group permissions, user groups can be granted a special **All Entities: Read** or **All Entities: Write** permission which allows reading or writing data for any entity, including entities that do not belong to any Entity Group. Users inherit **All Entities** permissions from the
 User Groups to which they belong.
 
 ### Inserting Data for New Entities
 
-Since non-existent entities cannot be assigned to a group, the `All Entities: Write` permission is required to create
+Since non-existent entities cannot be assigned to a group, the **All Entities: Write** permission is required to create
 entities either in the web interface or by inserting data via API. User with a `API_DATA_WRITE` role but without the
-`All Entities: Write` permission are able to insert data only for existing entities.
+**All Entities: Write** permission are able to insert data only for existing entities.
 
 ### Wildcard Requests
 
-Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results are filtered based on the user's effective permissions, therefore different users can see different results for the same API request or SQL query depending on their entity permissions.
+Users without **All Entities: Read** permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results are filtered based on the user's effective permissions, therefore different users can see different results for the same API request or SQL query depending on their entity permissions.
 
 ## Entity View Permissions
 
@@ -71,8 +71,8 @@ The permissions are enforced both for template and regular portals.
 
 ### All Portals Permission
 
-A user group can be granted an `All Portal` permission whereby its members are authorized to view all portals enabled in the system.
-The permission to view all portals is automatically granted to users with an `ADMIN` role.
+A user group can be granted **All Portal** permission whereby its members are authorized to view all portals enabled in the system.
+The permission to view all portals is automatically granted to users with `ADMIN` role.
 
 ## User Wizards
 
@@ -100,7 +100,7 @@ To create a new user of this type, open the **Settings > Users** page and select
 
 ![](./images/collector-user-wizard.png)
 
-The wizard creates a new user account automatically and makes it a member of the `Data Collectors` user group with `All Entities: Write` permission.
+The wizard creates a new user account automatically and makes it a member of the **Data Collectors** user group with **All Entities: Write** permission.
 
 ![](./images/collector-user-permissions.png)
 

@@ -34,7 +34,7 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 
 |Setting|Description|
 |-|-|
-|Retention Interval|Specifies how long a forecast is stored in the database. Forecasts that are older than `current time` (or [`End Time`](#data-selection-settings), if specified) minus `Retention Interval` are deleted.|
+|Retention Interval|Specifies how long a forecast is stored in the database. Forecasts that are older than `current time` (or [**End Time**](#data-selection-settings), if specified) minus **Retention Interval** are deleted.|
 
 ### Data Selection Settings
 
@@ -43,12 +43,12 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 | Setting | Description |
 | --- | --- |
 |Metric |Metric name for which forecasts are calculated.|
-|Entity  |If selected, forecasts are calculated for the specified entity. Supersedes `Entity Group` selector. If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
+|Entity  |If selected, forecasts are calculated for the specified entity. Supersedes **Entity Group** selector. If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
 |Entity Group |If selected, forecasts are calculated for entities contained in the specified entity group.|
 |Tags |Prepare forecasts only for series containing the specified series tags.|
-|End Time |End time of the `Data Selection Interval` and `Series Selection Interval`. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If not defined, the field is set to the time the job is run.|
-|Data Selection Interval |Time frame for selecting detailed data that is used as forecast input. The end of the interval can be specified in the `End Time` field, otherwise the end of the selection interval is set to current time.|
-|Series Selection Interval |Ignore any series with Last Insert Time before `End Time` by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
+|End Time |End time of the **Data Selection Interval** and **Series Selection Interval**. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If not defined, the field is set to the time the job is run.|
+|Data Selection Interval |Time frame for selecting detailed data that is used as forecast input. The end of the interval can be specified in the **End Time** field, otherwise the end of the selection interval is set to current time.|
+|Series Selection Interval |Ignore any series with Last Insert Time before **End Time** by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
 |Calendar |Ignore detailed values within the time intervals listed in the calendar.|
 |Empty Period Threshold |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|
 
@@ -72,7 +72,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 | Setting | Description |
 | --- | --- |
 |Algorithm |Holt-Winters or ARIMA forecasting algorithms.|
-|Score Interval |Part of `Data Selection Interval` that is used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the `Score Interval`, the more weight is assigned to recently observed values.|
+|Score Interval |Part of **Data Selection Interval** that is used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the **Score Interval**, the more weight is assigned to recently observed values.|
 |Auto Period |The server automatically calculates seasonality of the underlying series that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Period |Specify seasonality of the underlying series.|
 |Auto Parameters |The server automatically calculates algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|

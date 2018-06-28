@@ -39,7 +39,7 @@ The JSON payload includes all available alert fields as well as entity and metri
 
 ## Response
 
-The response status code and response content is recorded in `atsd.log` if the `Log Response` setting is enabled.
+The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
 ## Testing
 

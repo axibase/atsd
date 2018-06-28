@@ -101,11 +101,11 @@ When sending messages to either a public or private channel you can just use the
 
 * Open **Alerts > Webhooks** page.
 * Click an existing `SLACK` template, or click **Create** below and select the `SLACK` type.
-* Specify the unique `Name` of the notification.
+* Specify the unique **Name** of the notification.
 
     ![](./images/slack_1.png)
 
-* Specify the `Auth Token` and `Channels` parameters. See parameter descriptions below.
+* Specify the **Auth Token** and **Channels** parameters. See parameter descriptions below.
 * Select **Test Portal** to verify screenshot delivery.
 
     ![](./images/slack-settings.png)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to create an [Amazon CloudWatch](https://aws.amazon.com/cloudwatch) event using a [`AWS API`](aws-api.md) webhook.
+The following example demonstrates how to create an [Amazon CloudWatch](https://aws.amazon.com/cloudwatch) event using an [**AWS API**](aws-api.md) webhook.
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
@@ -10,7 +10,7 @@ The example invokes the [Amazon CloudWatch Events API](https://docs.aws.amazon.c
 
 ## Configuration
 
-Create a new `AWS API` webhook or import the [template](./resources/aws-api-cwe-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new **AWS API** webhook or import the [template](./resources/aws-api-cwe-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -27,13 +27,13 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Body | `<MESSAGE_TEXT>` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon CloudWatch Events region](https://docs.aws.amazon.com/general/latest/gr/rande.html#cwe_region), for example:
+Modify the **Endpoint URL** by replacing the `<AWS_REGION>` value with your [Amazon CloudWatch Events region](https://docs.aws.amazon.com/general/latest/gr/rande.html#cwe_region), for example:
 
 ```elm
 https://events.us-east-1.amazonaws.com
 ```
 
-Enter the AWS key id into the `Access Key Id` field and the secret key into the `Secret Access Key` field.
+Enter the AWS key id into the **Access Key Id** field and the secret key into the **Secret Access Key** field.
 
 Add required headers for `PutEvents` action:
 

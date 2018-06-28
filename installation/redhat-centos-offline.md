@@ -23,7 +23,7 @@ To customize the installation directory, specify `--prefix` option as described 
 
 ## Installation Steps
 
-Download the ATSD rpm package to an intermediate server with Internet access:
+Download ATSD rpm package to an intermediate server with Internet access:
 
 * `curl -O https://www.axibase.com/public/atsd_amd64.rpm`
 * [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm)

@@ -217,7 +217,7 @@ printObject(queryPost({}))
 
 #### Send Request to a Webhook
 
-Posts message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
+Posts message to an **Incoming Webhook** in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
 
 ```javascript
   queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", [

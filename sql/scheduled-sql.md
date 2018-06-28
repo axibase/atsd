@@ -20,7 +20,7 @@ Scheduling frequency is controlled with the `Schedule` field containing a [`cron
 
 ## Authorization
 
-Scheduled queries are granted the `All Entities: Read` permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity `read` permissions](../administration/user-authorization.md#entity-permissions).
+Scheduled queries are granted the **All Entities: Read** permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the [entity `read` permissions](../administration/user-authorization.md#entity-permissions) of the user.
 
 ## Formats
 
@@ -72,13 +72,13 @@ The above expression evaluates to the following path `/opt/report/daily/2017-06-
 
 To distribute report files via email, enable the **Export** section, specify an email subject and one or multiple email addresses, separated by comma or space.
 
-The `Email Subject` field supports date and form [placeholders](#placeholders), for example `${name} on ${yyyy-MM-dd}`.
+The **Email Subject** field supports date and form [placeholders](#placeholders), for example `${name} on ${yyyy-MM-dd}`.
 
 ![File](./images/sql-scheduled-email-send.png)
 
-`Send Empty Report` and `Send Error Report` settings control whether a report is emailed in case of an empty result or error.
+**Send Empty Report** and **Send Error Report** settings control whether a report is emailed in case of an empty result or error.
 
-`Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the result set is not empty.
+**Send Empty Report** option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the result set is not empty.
 
 ```sql
 SELECT entity AS "Server", entity.tags.app AS "Application",
@@ -89,9 +89,9 @@ GROUP BY entity
   HAVING AVG(value) > 50
 ```
 
-In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with cleared `Send Empty Report` option is sent only if at least one server with high CPU usage is found.
+In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with cleared **Send Empty Report** option is sent only if at least one server with high CPU usage is found.
 
-`Fail on No Data` causes an error if the query finds no matching records in the database which is indicative of a breakdown in data collection.
+**Fail on No Data** causes an error if the query finds no matching records in the database which is indicative of a breakdown in data collection.
 
 ### Publishing
 
@@ -99,7 +99,7 @@ To make a report available for download by end-users, enable the **Publish** sec
 
 ![File](./images/sql-scheduled-publish.png)
 
-To allow users to download the updated results each time they click the link, enable the `Allow Refresh` option.
+To allow users to download the updated results each time they click the link, enable the **Allow Refresh** option.
 
 When enabled and if the url contains a `?refresh=true` parameter, the report is rebuilt by the database for each download request.
 
@@ -107,11 +107,11 @@ When enabled and if the url contains a `?refresh=true` parameter, the report is 
 https://atsd_hostname:8443.com/sqlr/85/cpu-busy-total-query.csv?refresh=true
 ```
 
-To make links accessible for unauthenticated users, enable the `Guest Access` option. Additional download links for non-authenticated users are displayed.
+To make links accessible for unauthenticated users, enable the **Guest Access** option. Additional download links for non-authenticated users are displayed.
 
 ### Placeholders
 
-Placeholders can be included in the `Output Path` and `Email Subject` fields.
+Placeholders can be included in the **Output Path** and **Email Subject** fields.
 
 #### Date placeholder
 

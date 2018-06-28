@@ -4,7 +4,7 @@
 
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
-| 3710     | install         | Feature         | Added support for an embedded collector account with `All Entities: Read` and `All Entities: Write` permission.                                      |
+| 3710     | install         | Feature         | Added support for an embedded collector account with **All Entities: Read** and **All Entities: Write** permission.                                      |
 | [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile is specified in denominator.                              |
 | [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.                          |
 | [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
@@ -155,10 +155,10 @@ example 50 days in the above image). The status of these containers is marked as
 
 By default such records with the status `deleted` are not automatically removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 
-* `Retain deleted container records, days` : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
+* **Retain deleted container records, days** : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
 
-To remove deleted image/volume/network records, enable the `Retain deleted image/volume/network records` checkbox.
+To remove deleted image/volume/network records, enable the **Retain deleted image/volume/network records** checkbox.
 
-* `Remove deleted image/volume/network records` : removes images/volumes/networks with a `deleted` status from ATSD.
+* **Remove deleted image/volume/network records** : removes images/volumes/networks with a `deleted` status from ATSD.
 
 The deletion occurs at the same time as the property check interval. All deletions are logged to collector file.

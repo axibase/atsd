@@ -55,9 +55,9 @@ None.
 
 ### Errors
 
-* `Empty first row` if no rows are found.
-* `CSV must have at least 2 columns` if header contains less than 2 columns.
-* `No data` if the number of data rows is 0.
+* **Empty first row** if no rows are found.
+* **CSV must have at least 2 columns** if header contains less than 2 columns.
+* **No data** if the number of data rows is 0.
 
 ## Example
 

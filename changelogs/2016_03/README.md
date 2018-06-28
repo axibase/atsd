@@ -147,7 +147,7 @@ different results in two modes: in-memory and temporary table.
 ### Issue 3665
 
 Changed the query executor to raise an error if too many tag combinations are located for one of the metric and entities specified in the query. The limit is 1,000. If the limit is
-exceeded, the following error message is returned to the client so that the user can refactor the query and add conditions to the `WHERE` clause to reduce the number of series.
+exceeded, the following error message is returned to the client to ensure that the user can refactor the query and add conditions to the `WHERE` clause to reduce the number of series.
 Previously, an error is not raised and the result set is truncated behind the scenes, which can lead to unexpected results.
 
 ```txt
@@ -160,14 +160,14 @@ We cleaned-up email alert template by removing rows from alert details that are 
 
 ### Issue 3615
 
-Continuing the extension of the ATSD schema, we added the new fields `minValue` and `maxValue` to the Metric class so that commonly used metadata about metrics can be described with
+Continuing the extension of the ATSD schema, new fields `minValue` and `maxValue` added to the **Metric** class to support commonly used metadata about metrics being described with
 fields, as opposed to tags because fields provide validation, dictionaries, and ease-of-use for users when editing metrics.
 
 ![Figure 4](./Images/Figure4.png)
 
 ### Issue 3601
 
-We added a fix so that queries with arithmetic expressions execute nearly as fast as queries without expressions:
+Fix added to support the execution of queries with arithmetic expressions nearly as fast as queries without such expressions:
 
 ```sql
 select avg(value+0) from mpstat.cpu_busy
