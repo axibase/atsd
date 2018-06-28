@@ -2,7 +2,7 @@
 
 Webhooks provide a mechanism for sending event notifications to external web services.
 
-They can be programmed to send an alert to Slack, update a bug tracker, start a CI build, publish an event to an AWS API topic, or even control an IoT device.
+They can be programmed to send an alert to Slack, update a bug tracker, start a CI build, publish an event to an AWS SNS topic, or even control an IoT device.
 
 ## Messaging Webhooks
 
