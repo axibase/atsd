@@ -8,7 +8,7 @@ Member entities and their data is not affected by this operation.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `DELETE` | `/api/v1/entity-groups/{group}` | `application/json` |
 

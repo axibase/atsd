@@ -17,7 +17,7 @@ You can choose to send the payload as a JSON document or HTML form parameters.
 
 ## Headers
 
-The request includes standard HTTP headers: Content-Length, Content-Type, User-Agent, Host, Connection, Accept-Encoding.
+The request includes standard HTTP headers: `Content-Length`, `Content-Type`, `User-Agent`, `Host`, `Connection`, `Accept-Encoding`.
 
 ## Message Signature
 

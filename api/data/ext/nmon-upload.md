@@ -21,7 +21,7 @@ Accepts an `nmon` file for parsing.
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-| p   | string   | [**Required**] Parser Name as configured on **Configuration:Parsers nmon** page, or set to `default`.|
+| p   | string   | [**Required**] Parser Name as configured on the **Configuration:Parsers nmon** page, or set to `default`.|
 | e      | string   | Entity name, typically name of the server where `nmon` file is generated.|
 | f| string | `nmon` file name. File name can be optionally specified in the `Content-Disposition` header. |
 | z | string | Time zone applied to timestamps specified in local time. |

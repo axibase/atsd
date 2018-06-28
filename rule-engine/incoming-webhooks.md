@@ -31,7 +31,7 @@ This method can be used to process HTTP notifications from services that support
 
 ## Request
 
-| **Method** | **Path** | **Payload** | **Content-Type Header** |
+| Method | Path | Payload | `Content-Type` Header |
 |:---|:---|---|---:|
 | `POST` | `/api/v1/messages/webhook/*` | JSON | `application/json` |
 | `POST` | `/api/v1/messages/webhook/*` | `key=value` | `application/x-www-form-urlencoded` |

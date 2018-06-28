@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4809 | admin | Bug | Enforce `UTF-8` file encoding in ATSD start scripts. |
+| 4809 | administrator | Bug | Enforce `UTF-8` file encoding in ATSD start scripts. |
 | [4808](#issue-4808) | rule engine | Feature | Implement [`value('metricName')`](../../rule-engine/functions-value.md) function to access other metrics in the same `series` command by name. |
 | 4798 | rule engine | Feature | Outgoing webhooks: add support for [proxy and reverse-proxy](../../rule-engine/notifications/README.md#network-settings) network connections to external cloud services. |
 | [4796](#issue-4796) | rule engine | Feature | Portal: add Freemarker functions to check user role and group membership. |

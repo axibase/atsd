@@ -22,7 +22,7 @@
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
 | 3589      | collectd        | Feature  | `Exec` plugin for [collectd](https://github.com/axibase/atsd-collectd-plugin) to capture `lvs` command output.|
 | 3599      | docker          | Feature  | Store container `ENV` parameters into a dedicated property type. |
-| 3597      | admin           | Feature  | Added an Admin page to view and drop command `resender` cache. |
+| 3597      | administrator           | Feature  | Added an Admin page to view and drop command `resender` cache. |
 | 3595      | json            | Bug      | Added heuristics to handle Socrata dataset fields. |
 | 3593      | json            | Feature  | Extend JSON to be able to parse the [BLS](https://www.bls.gov/developers/api_signature_v2.htm) json format. |
 | 3569      | json            | Feature  | Fixed error when parsing dates in `Socrata` configurations. |

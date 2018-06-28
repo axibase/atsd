@@ -12,13 +12,13 @@
 5159 | sql | Feature | Add name, author and description placeholders in [scheduled SQL](../../sql/scheduled-sql.md#sql-scheduler) queries.
 5155 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): NPE on commands store.
 5153 | rule engine | Bug | [Rule Engine](../../rule-engine): Generic type is not resolved for `TagsMap`.
-5151 | core | Feature | Add User-Agent header in [outgoing](../../rule-engine/notifications/README.md#outgoing-webhooks) http requests.
+5151 | core | Feature | Add `User-Agent` header in [outgoing](../../rule-engine/notifications/README.md#outgoing-webhooks) HTTP requests.
 5150 | sql | Feature | Implement short ISO formats for [`datetime`](../../sql/README.md#interval-condition) literal.
 5146 | security | Bug | Rename built-in collector [groups](../../administration/user-authorization.md#collector-user).
 5144 | rule engine | Bug | [`entity_label`](../../rule-engine/functions-lookup.md#entity_label) function.
 5142 | rule editor | Bug | Check [placeholder](../../rule-engine/placeholders.md#placeholders) syntax for validity on save.
 5139 | sql | Bug | SQL: Column name [sensitivity](../../sql/README.md#case-sensitivity) in subqueries.
-5132 | security | Bug | Disable [collector account](../../administration/collector-account.md#collector-account) creation without admin rights.
+5132 | security | Bug | Disable [collector account](../../administration/collector-account.md#collector-account) creation without administrator rights.
 5130 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | Import does not display warnings if group is not found.
 5128 | security | Feature | Add page for password [obfuscation](../../administration/passwords-obfuscation.md#password-obfuscation).
 5127 | security | Bug | NPE in [account](../../administration/user-authentication.md#built-in-account) exist checks.
@@ -48,13 +48,13 @@
 5055 | csv | Bug | Incorrect version fields are stored from [uploaded](../../parsers/csv/README.md#uploading-csv-files) .csv file.
 5051 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Output Path collision.
 5049 | api-rest | Bug | Data API: slow search by property in [`entityExpression`](../../api/data/filter-entity.md#entity-filter-fields).
-5036 | admin | Feature | Backup multiple record types from zip/tar.gz archive.
+5036 | administrator | Feature | Backup multiple record types from zip/tar.gz archive.
 5018 | rule engine | Bug | Webhooks: raw url presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
 5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | **Entity Tag** link not applied to **Entity Tag** column.
 5001 | rule engine | Feature | Telegram: [`getUpdates`](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
 4957 | sql | Bug | [Period](../../sql/README.md#period) query now takes long time to execute.
 4925 | rule engine | Feature | Rule Engine: [rule_window](../../rule-engine/functions-rules.md#rule_window) function.
-4909 | security | Support | Install DV SSL certificate from Let's Encrypt CA.
+4909 | security | Support | Install DV SSL certificate from `Lets' Encrypt` CA.
 4667 | export | Bug | Incorrect [export](../../reporting/ad-hoc-exporting.md) of versioned values.
 2158 | rule engine | Feature | [Load historical](../../rule-engine/window.md#initial-status) data on window start.
 

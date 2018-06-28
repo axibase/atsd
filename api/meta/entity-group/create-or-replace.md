@@ -14,7 +14,7 @@ The following rules apply if the specified group exists:
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `PUT` | `/api/v1/entity-groups/{group}` | `application/json` |
 

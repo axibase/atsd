@@ -14,7 +14,7 @@ Inserts a timestamped array of numbers for a given series identified by metric, 
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/series/insert` | `application/json` |
 

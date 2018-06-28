@@ -17,7 +17,7 @@ addPortal(string portal, string entity / List<?> entities, string comment, [] ad
 * `entity` or `entities`: Entities for which the portal is generated. Required if the portal type is [template](../portals/portals-overview.md#template-portals).
   * `entity`: Entity name `string` is converted to `entity` url parameter (`&entity=test_e`). If entity is not found by name, the entity is matched by case-insensitive label.
   * `entities`: `List<?>` are converted to `entities` url parameter as comma-separated list (`&entities=test_e,test_e1,test_e2`). If the element object type is `Entity`, the list consists of `entity.name` fields.
-* `comment`: Chart caption. If not specified or empty, a default caption is generated as `${portalName} for ${ifEmpty(entity_label, entity)}` and can be retrieved with special placeholder `$caption`. The default comment contains links to the portal, entity and rule for [Email](email.md), [Slack](notifications/slack.md) and [Discord](notifications/discord.md) notifications.
+* `comment`: Chart caption. If not specified or empty, a default caption is generated as `${portalName} for ${ifEmpty(entity_label, entity)}` and can be retrieved with special placeholder `$caption`. The default comment contains links to the portal, entity and rule for [Email](email.md) notifications, [Slack](notifications/slack.md) and [Discord](notifications/discord.md) webhooks.
 * `additionalParams`: Map with request parameters are passed to the template portal.
 
 The parameters can include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.

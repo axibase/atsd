@@ -2,9 +2,9 @@
 
 The database logs are located in the `/opt/atsd/atsd/logs` directory.
 
-The logs can be also downloaded from the **Settings > Server Logs** page.
+The compressed log files can be also downloaded from the **Settings > Server Logs** page.
 
-Logs are rolled over and archived according to the `/opt/atsd/atsd/conf/logback.xml` settings.
+Logs are rolled over and archived according to the retention settings in the `/opt/atsd/atsd/conf/logback.xml` file.
 
 ## Log Files
 
@@ -65,6 +65,6 @@ Database restart is **not** required, the changes are automatically refreshed an
 
 ## Enabling Command Logging
 
-For performance purposes, logging to `command*.log` files is controlled both by loggers configured in the `logback.xml` file as well as with controls on **Settings > Input Settings** page.
+For performance purposes, logging of incoming commands to `command*.log` files is enabled both in the `logback.xml` file as well as with the **Command Log Enabled** setting on the **Settings > Input Settings** page.
 
 ![Input Settings](./images/logging_input.png)

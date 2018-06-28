@@ -4,7 +4,7 @@
 
 The following example demonstrates how to send an email via [Amazon SES](https://aws.amazon.com/ses) using a [**AWS API**](aws-api.md) webhook.
 
-The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
+The request is automatically signed with **AWS Signature, v4**, implemented by this webhook type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
 The example invokes the [Amazon SES API](https://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html) `SendEmail` action.
 
@@ -12,7 +12,7 @@ The example invokes the [Amazon SES API](https://docs.aws.amazon.com/ses/latest/
 
 Create a new **AWS API** webhook or import the [template](./resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
 
-To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
+To create a new webhook, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
 ### Parameters
 
@@ -58,7 +58,7 @@ Modify the `Message.Body.Text.Data` by replacing the `<MESSAGE_TEXT>` value with
 }
 ```
 
-The `MessageBody` text contains placeholders that are substituted with actual values when the notification is triggered. The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
+The `MessageBody` text contains placeholders that are substituted with actual values when the webhook is triggered. The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
 ![](./images/aws_api_ses_notification_config.png)
 
@@ -98,7 +98,7 @@ Test the integration by submitting a sample `series` command on the **Data > Dat
 
 ![](./images/rule_test_commands.png)
 
-The value causes the condition to evaluate to `true`, which in turn triggers the notification.
+The value causes the condition to evaluate to `true`, which in turn triggers the webhook.
 To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/aws_api_ses_alert_open.png)

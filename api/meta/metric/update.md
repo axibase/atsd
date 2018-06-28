@@ -10,7 +10,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `PATCH` | `/api/v1/metrics/{metric}` | `application/json` |
 

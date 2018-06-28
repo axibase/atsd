@@ -1,10 +1,10 @@
-# AWS API Notification
+# AWS API Webhook
 
 ## Overview
 
 **AWS API** [notifications](../notifications/README.md) integrate the ATSD rule engine with [Amazon Web Services](https://aws.amazon.com/) that support HTTP or HTTPs protocol.
 
-## Notification Settings
+## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|

@@ -1,10 +1,10 @@
-# Amazon SQS Notification
+# Amazon SQS Webhook
 
 ## Overview
 
 **AWS SQS** [notifications](../notifications/README.md) send messages to an [Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) queue upon window status events.
 
-## Notification Settings
+## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|
@@ -52,7 +52,7 @@ The response status code and response content is recorded in `atsd.log` if the *
 
 * If tests are passing OK, check **Enable**, click **Save**.
 
-To test the actual payload, create a sample rule, and enable the `AWS-SQS` notification on the **Webhooks** tab.
+To test the actual payload, create a sample rule, and enable the `AWS-SQS` webhook on the **Webhooks** tab.
 
 ## Examples
 

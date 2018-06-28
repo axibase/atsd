@@ -225,9 +225,9 @@ Start HBase.
 
 ### File Permissions
 
-#### JPS
+#### Java Process Status Files
 
-The `/opt/atsd/bin/atsd-all.sh` script relies on the **[jps](https://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)** utility to determine that Java processes are started in the correct order.
+The `/opt/atsd/bin/atsd-all.sh` script relies on the **[`jps`](https://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)** utility to determine that Java processes are started in the correct order.
 
 The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory to store temporary files. If permissions to this directory are missing (for example the directory is owned by another user), `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
 
@@ -241,7 +241,7 @@ nurswgvml007 atsdService: * [ATSD] DataNode is not running.
 
 #### Temporary Files
 
-ATSD uses `/tmp/atsd` directory to store temporary files. If this directory is owned by root, ATSD cannot function properly.
+ATSD uses `/tmp/atsd` directory to store temporary files. If this directory is owned by `root`, ATSD cannot function properly.
 
 * Solution: Stop all ATSD services. Grant ownership to `/tmp/atsd` directory to the `axibase` user.
 
@@ -251,7 +251,7 @@ chown -R axibase:axibase /tmp/atsd
 
 #### `/opt/atsd` directory
 
-ATSD uses the `/opt/atsd` directory to store log files, backup files, and other files. If this directory is owned by root, ATSD cannot function properly.
+ATSD uses the `/opt/atsd` directory to store log files, backup files, and other files. If this directory is owned by `root`, ATSD cannot function properly.
 
 * Solution: Stop all ATSD services. Grant ownership to `/opt/atsd` directory to the `axibase` user.
 

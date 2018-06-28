@@ -60,7 +60,7 @@ Modify the Message** by replacing the `<MESSAGE_TEXT>` value with your text, for
 }
 ```
 
-The `Message` text contains placeholders that are substituted with actual values when the notification is triggered. The placeholders specified in the message are visible as editable parameters in the rule editor.
+The `Message` text contains placeholders that are substituted with actual values when the webhook is triggered. The placeholders specified in the message are visible as editable parameters in the rule editor.
 
 ![](./images/gcp_ps_message_notification_config.png)
 

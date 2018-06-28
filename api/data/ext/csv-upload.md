@@ -46,7 +46,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| `config`   | string   | [**Required**] Parser Name as configured on **Data > CSV Parsers** page.|
+| `config`   | string   | [**Required**] Parser Name as configured on the **Data > CSV Parsers** page.|
 | `encoding`      | string   | File encoding. Default: UTF-8.|
 | `filename`      | string   | [**Required** for archived files uploaded in File Data mode] <br>Name of the file or archive being sent, for example text.csv, files.zip, files.tar.gz.<br>The archive can contain multiple files, all of which are processed.<br>Archive compression is determined based on file extension.<br>Supported archive formats: zip and tar.gz.<br>Supported file extensions for the uploaded archive: .gz, .tar.gz, .zip.  |
 | `default-entity`| string | Default entity name applied to commands contained in the file. |

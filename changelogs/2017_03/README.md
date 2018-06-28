@@ -234,7 +234,7 @@ column-label-format = value.replace(/^systemproperties./, "")
 
 ### Issue 1926
 
-Now upon a mouse over for box charts, metric names are displayed at the top of the box and the distribution of the series (minimum, maximum, count, and value percentiles) is displayed next to its respective series.
+On mouse over for box charts, metric names are displayed at the top of the box and the distribution of the series (minimum, maximum, count, and value percentiles) is displayed next to its respective series.
 
 [ChartLab](https://apps.axibase.com/chartlab/46e8b4ec)
 

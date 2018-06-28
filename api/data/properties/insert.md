@@ -16,7 +16,7 @@ Date limits:
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/properties/insert` | `application/json` |
 

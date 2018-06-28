@@ -8,7 +8,7 @@ Data collected for the metric is removed asynchronously in the background.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `DELETE` | `/api/v1/metrics/{metric}` | `application/json` |
 

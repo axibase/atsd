@@ -1,10 +1,10 @@
-# Google Cloud Pub/Sub Notification
+# Google Cloud Pub/Sub Webhook
 
 ## Overview
 
 **GCP PS** [notifications](../notifications/README.md) send messages to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic upon window status events.
 
-## Notification Settings
+## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|
@@ -26,7 +26,7 @@ The default message includes all fields, including entity and metric metadata.
 
 The response status code and response content is recorded in `atsd.log` if the **Log Response** setting is enabled.
 
-## Configure GCP PS Notification
+## Configure GCP Pub/Sub Notification
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `GCP-PS` type.
@@ -43,7 +43,7 @@ The response status code and response content is recorded in `atsd.log` if the *
 
 * If tests are passing OK, check **Enable**, click **Save**.
 
-To test the actual payload, create a sample rule, and enable the `GCP-PS` notification on the **Webhooks** tab.
+To test the actual payload, create a sample rule, and enable the `GCP Pub/Sub` webhook on the **Webhooks** tab.
 
 ## Examples
 

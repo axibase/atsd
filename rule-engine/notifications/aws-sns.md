@@ -1,10 +1,10 @@
-# Amazon SNS Notification
+# Amazon SNS Webhook
 
 ## Overview
 
 **AWS SNS** [notifications](../notifications/README.md) publish signed messages to an [Amazon SNS](https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic upon window status events.
 
-## Notification Settings
+## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|
@@ -52,7 +52,7 @@ The response status code and response content is recorded in `atsd.log` if the *
 
 * If test is passed, check **Enable**, click **Save**.
 
-To test the actual payload, create a sample rule, and enable the `AWS-SNS` notification on the **Webhooks** tab.
+To test the actual payload, create a sample rule, and enable the `AWS-SNS` webhook on the **Webhooks** tab.
 
 ## Examples
 

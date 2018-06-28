@@ -161,16 +161,16 @@ Each API method below provides examples containing sample request and response o
 
 ## Data API Endpoints
 
-The endpoints listed below are accessible under the `/api/v1/` context path, for example `/api/v1/series/insert`.
+The endpoints listed below are accessible under the `/api/v1/` context path, for example `/api/v1/series/insert`, except [SQL](#sql).
 
 ### Series
 
 | **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
 | [get](./series/get.md) | `GET` `/series/{format}/{entity}/{metric}` <br>  Retrieves series values for the specified entity, metric, and series tags in CSV and JSON format. |
-| [query](./series/query.md) | `POST` `/series/query` <br> Retrieves series values for the specified filters in JSON format. Supports advanced filtering and transformation options compare to [Get](./series/get.md) method.|
+| [query](./series/query.md) | `POST` `/series/query` <br> Retrieves series values for the specified filters in JSON format. Supports advanced filtering and transformation options compare to [get](./series/get.md) method.|
 | [insert](./series/insert.md) | `POST` `/series/insert`<br> Inserts a timestamped array of numbers for a given series identified by metric, entity, and series tags. |
-| [insert CSV]](./series/csv-insert.md) | `POST` `/series/csv/{entity}` <br> Inserts series values for the specified entity and series tags in CSV format.|
+| [insert CSV](./series/csv-insert.md) | `POST` `/series/csv/{entity}` <br> Inserts series values for the specified entity and series tags in CSV format.|
 | [delete](./series/delete.md) | `POST` `/series/delete` <br> Deletes series for the specified entity, metric, and optional series tags. |
 
 ### Messages
@@ -198,7 +198,7 @@ The endpoints listed below are accessible under the `/api/v1/` context path, for
 | **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
 | [query](./alerts/query.md) | `POST` `/alerts/query` <br>Retrieves open alerts for specified filters. |
-| [history Query](./alerts/history-query.md) | `POST` `/alerts/history/query` <br>Retrieves closed alerts for specified filters. |
+| [history query](./alerts/history-query.md) | `POST` `/alerts/history/query` <br>Retrieves closed alerts for specified filters. |
 | [update](./alerts/update.md) | `POST` `/alerts/update` <br>Changes acknowledgement status of the specified open alerts. |
 | [delete](./alerts/delete.md) | `POST` `/alerts/delete` <br>Deletes specified alerts by id from the memory store. |
 
@@ -207,6 +207,7 @@ The endpoints listed below are accessible under the `/api/v1/` context path, for
 | **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
 | [SQL query](../../sql/api.md) | `POST` `/api/sql` <br>Executes an SQL query and retrieves results in CSV or JSON format. |
+| [SQL meta query](../../sql/api-meta.md)| `POST` `/api/sql/meta` <br>Retrieves SQL query result metadata in JSON format without executing the query. |
 
 ### Extended
 
@@ -278,6 +279,6 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/v
 | **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
 | [version](../meta/misc/version.md) | `GET` `/version`<br> Returns database version including licensing details as well as a date object with local time and offset. |
-| [`ping`](../meta/misc/ping.md) | `GET` `/ping` <br> Returns HTTP `200 OK` status code to check connectivity and authentication.|
+| [ping](../meta/misc/ping.md) | `GET` `/ping` <br> Returns HTTP `200 OK` status code to check connectivity and authentication.|
 | [permissions](../meta/misc/permissions.md)| `GET` `/permissions` <br>  Returns roles and permissions for the current user.|
-| [search](../meta/misc/search.md) | `GET` `/search` <br> Search series by an expression.|
+| [series search](../meta/misc/search.md) | `GET` `/search` <br> Search series by an expression.|

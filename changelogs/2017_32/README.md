@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4470 | admin | Feature | Collect disk usage [metrics](../../administration/monitoring.md#collected-metrics) from the server where ATSD is installed. |
+| 4470 | administrator | Feature | Collect disk usage [metrics](../../administration/monitoring.md#collected-metrics) from the server where ATSD is installed. |
 | 4467 | api-rest | Feature | Allow access to [entity group list](../../api/meta/entity-group/get-entities.md) method if API guest access is enabled. |
 | 4466 | metric | Bug | Add support for `timePrecision`, `persistent`, `retentionIntervalDays` fields in the [metric](../../api/network/metric.md) command. |
 | 4465 | metric | Bug | Add validation for [Invalid Action](../../api/meta/metric/list.md#invalid-actions) field in the [metric](../../api/network/metric.md) command. |

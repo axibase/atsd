@@ -1,8 +1,8 @@
-# Installing Let's Encrypt Certificate
+# Installing `Let's Encrypt` Certificate
 
 ## Overview
 
-[Let’s Encrypt](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
+[`Let’s Encrypt`](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
 
 Background information is available in the [SSL Certificate Guide for Java Developers](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html).
 
@@ -280,7 +280,7 @@ The certbot automatically enables certificate renewal which is performed twice a
 cat /etc/cron.d/certbot
 ```
 
-The `certbot -q renew` command is executed as root.
+The `certbot -q renew` command is executed as `root`.
 
 ```txt
 SHELL=/bin/sh

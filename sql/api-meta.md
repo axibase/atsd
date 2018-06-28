@@ -90,7 +90,7 @@ ATSD JSON-LD schema is published [here](https://www.axibase.com/schemas/2017/07/
 
 ## Example
 
-### curl Query Example
+### curl
 
 ```bash
 curl https://atsd_hostname:8443/api/sql/meta  \

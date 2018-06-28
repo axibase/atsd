@@ -10,7 +10,7 @@ The records are inserted for the same entity and series tags.
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/series/csv/{entity}?[&{tag-name}={tag-value}]` | `text/csv` |
 

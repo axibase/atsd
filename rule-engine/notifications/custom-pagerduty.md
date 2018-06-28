@@ -61,7 +61,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that are substituted with actual values when the notification is triggered.
+The `body` text contains placeholders that are substituted with actual values when the webhook is triggered.
 
 The placeholders specified in the payload are visible as editable parameters in the rule editor.
 
@@ -112,7 +112,7 @@ Get an ID from url.
 
 ![](./images/pagerduty_service_id_3.png)
 
-Payload placeholders are resolved when the notification is triggered:
+Payload placeholders are resolved when the webhook is triggered.
 
 ```json
 {

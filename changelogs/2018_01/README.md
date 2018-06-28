@@ -14,7 +14,7 @@ Issue| Category    | Type    | Subject
 4914 | rule engine | Bug | Add details to error messages in [HipChat](../../rule-engine/notifications/hipchat.md).
 4913 | client | Feature | Upgrade [R client](https://github.com/axibase/atsd-api-r/blob/master/README.md) to remove dependency on user home directory.
 4911 | rule engine | Bug | Pass query into an [SQL client](../..//sql/client/README.md) containing `>` character.
-4910 | rule engine | Bug | Implement [`executeSqlQuery`](../../rule-engine/functions-sql.md#executesqlquery) function to retrieve SQL query results in rule conditions and notifications.
+4910 | rule engine | Bug | Implement [`executeSqlQuery`](../../rule-engine/functions-sql.md#executesqlquery) function to retrieve SQL query results in rule conditions and webhooks.
 4908 | rule engine | Feature | Create rule from the message **Search** page.
 4901 | rule engine | Feature | Implement [utility](../../rule-engine/functions-utility.md#utility-functions)  functions to parse URL fields.
 4900 | rule engine | Feature | Implement [`getEntityName`](../../rule-engine/functions-lookup.md#getentityname) lookup function.
@@ -26,7 +26,7 @@ Issue| Category    | Type    | Subject
 4889 | rule engine | Bug | Round numbers in [outgoing webhooks](../../rule-engine/notifications/README.md).
 4888 | rule engine | Bug | Email [subject](../../administration/mail-client.md) must not include inline links.
 4883 | rule engine | Bug | Window remains in [`OPEN`](../../rule-engine/window.md#open-status) status after all commands are removed.
-4879 | rule engine | Feature | Add support for [control flow](../../rule-engine/control-flow.md) in notifications.
+4879 | rule engine | Feature | Add support for [control flow](../../rule-engine/control-flow.md) in webhooks.
 4877 | rule engine | Bug | [`entity_tags`](../../rule-engine/window-fields.md#base-fields) expression fails if used without key.
 4875 | rule engine | Feature | Add date filter to [rule list](../../rule-engine/README.md).
 4874 | rule engine | Feature | Add variables table to [email](../../rule-engine/email.md) notification.

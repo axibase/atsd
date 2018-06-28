@@ -18,7 +18,7 @@ To remove the pending `DELETE` markers, initiate an **HBase Compaction** on the 
 
 ## Request
 
-| **Method** | **Path** | **Content-Type Header**|
+| Method | Path | `Content-Type` Header|
 |:---|:---|---:|
 | `POST` | `/api/v1/series/delete` | `application/json` |
 

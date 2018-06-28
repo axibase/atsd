@@ -7,7 +7,7 @@
 | 4264 |rule editor | Bug | Unable to set schedule in the Rule Editor. |
 | 4256 | statistics | Bug | Invalid interval gap displayed on series statistics page. |
 | 4249 | core | Bug | Prevent deletions of column families on restart, if the column family is not described in new schema. |
-| [4243](#issue-4243) | admin | Feature | Add new object types to backup: Replacement Tables, Named Collections, Users, User Groups, Entities. |
+| [4243](#issue-4243) | administrator | Feature | Add new object types to backup: Replacement Tables, Named Collections, Users, User Groups, Entities. |
 | 4237 | UI | Bug | Modify standard tooltips to bootstrap tooltips. |
 | 4233 | sql | Bug | [`CONCAT`](../../sql/README.md#string-functions) function fails when one of the arguments is an ISO 8601 date. |
 | 4225 | sql | Feature | Allow [`datetime`](../../sql/README.md#predefined-columns) column without table qualifier in JOIN queries. |

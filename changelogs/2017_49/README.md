@@ -5,11 +5,11 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4788 | rule editor | Feature | Add endpoint links in the webhook drop-down. |
-| 4787 | rule editor | Bug | Set default values for empty fields in [`CUSTOM`](../../rule-engine/notifications/custom.md) notification type. |
+| 4787 | rule editor | Bug | Set default values for empty fields in [`CUSTOM`](../../rule-engine/notifications/custom.md) webhook type. |
 | 4782 | security | Bug | Prevent browser auto-complete to submit user credentials on the outgoing webhook form. |
 | 4779 | api-rest | Bug | Series query: invalid JSON returned if `addMeta` parameter for unknown metric is specified. |
 | [4778](#issue-4778) | rule editor | Feature | Implement placeholders for the [Details Table](../../rule-engine/details-table.md#details-table). |
-| 4776 | rule engine | Feature | Extract functions from the [`db_last`](../../rule-engine/functions-series.md#db_last) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions to include in notification charts. |
+| 4776 | rule engine | Feature | Extract functions from the [`db_last`](../../rule-engine/functions-series.md#db_last) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions to include in webhook charts. |
 | 4775 | rule editor | Bug | Raise error on invalid syntax in [database](../../rule-engine/functions-series.md) functions. |
 | 4773 | api-rest | Bug | Series query: fix for empty response when `seriesLimit` is enforced. |
 | [4772](#issue-4772) | rule editor | Feature | Add setting **Group by All Tags**. |
