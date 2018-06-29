@@ -144,13 +144,13 @@ repository=atsd-site&channel=devops
 The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
 
 ```ls
-  scheme:[//[user:password@]host[:port]][/path][?query]
+  scheme:[//[username:password@]host[:port]][/path][?query]
 ```
 
 Examples:
 
 ```elm
-  https://cuser:cpass@192.0.2.9:8443/service?load=true
+  https://john.doe:secret@192.0.2.9:8443/service?load=true
 ```
 
 ```elm

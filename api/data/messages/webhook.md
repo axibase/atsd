@@ -46,7 +46,7 @@ Requests must be authenticated.
 When initiating a request with an http client, user credentials are included in the request URL as follows:
 
 ```elm
-https://user:password@atsd_hostname:8443/api/v1/messages/webhook/jenkins?entity=jen01
+https://username:password@atsd_hostname:8443/api/v1/messages/webhook/jenkins?entity=jen01
 ```
 
 ## Authorization
@@ -456,7 +456,7 @@ Receive incoming bot messages. Refer to the Telegram webhook configuration [inst
 Request:
 
 ```elm
-POST https://usr:pwd@atsd_hostname:8443/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
+POST https://username:password@atsd_hostname:8443/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
 Notes:

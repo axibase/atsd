@@ -43,7 +43,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 * Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
 ```elm
-   https://telegram:12345678@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text
+   https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text
 ```
 
   The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443).
@@ -57,7 +57,7 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
   Set webhook by specifying the webhook URL
 
 ```bash
-    curl -F "url=https://telegram:12345678@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
+    curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
 
@@ -76,7 +76,7 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
     Set webhook by specifying the webhook URL and attaching the `server.keystore.pem` file.
 
 ```sh
-    curl -F "url=https://telegram:12345678@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
+    curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
@@ -93,7 +93,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 {
   "ok": true,
   "result": {
-    "url": "https://telegram:12345678@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text",
+    "url": "https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text",
     "has_custom_certificate": true,
     "pending_update_count": 0,
     "max_connections": 40

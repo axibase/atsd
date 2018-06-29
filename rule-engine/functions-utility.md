@@ -255,7 +255,7 @@ Example:
   getURLUserInfo(string u) string
 ```
 
-Retrieves the `user:password` from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
+Retrieves the user credential part `username:password` from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -263,6 +263,6 @@ Example:
     /* Returns null */
     getURLUserInfo('https://example.org/en/products?type=database&status=1')
 
-    /* Returns "atsd_user:atsd_password" */
-    getURLUserInfo('https://atsd_user:atsd_password@example.org/en/products?type=database&status=1')
+    /* Returns "john.doe:secret" */
+    getURLUserInfo('https://john.doe:secret@example.org/en/products?type=database&status=1')
 ```
