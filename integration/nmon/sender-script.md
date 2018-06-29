@@ -26,12 +26,12 @@ Example `crontab` setup:
 
 ```txt
 0 0 * * * /opt/nmon/nmon -f -s 60 -c 1440 -T -m /opt/nmon/nmon_logs/
-0 0 * * * /opt/nmon/nmon_sender_ssh.sh {atsdhostname} -p 22 -s 60 -c 1440 -m /opt/nmon/nmon_logs/ -i /opt/nmon/id_rsa_atsdreadonly >>/opt/nmon/full.log 2>&1
+0 0 * * * /opt/nmon/nmon_sender_ssh.sh {atsd_hostname} -p 22 -s 60 -c 1440 -m /opt/nmon/nmon_logs/ -i /opt/nmon/id_rsa_atsdreadonly >>/opt/nmon/full.log 2>&1
 ```
 
 The first line is a task to start nmon.
 
-The second line is a task to run the script. The `{atsdhostname}` must be replaced with a hostname or IP address where the ATSD is installed (NAT address if you are using port forwarding).
+The second line is a task to run the script. The `{atsd_hostname}` must be replaced with a hostname or IP address where the ATSD is installed (NAT address if you are using port forwarding).
 
 Argument `-p` specifies the TCP port of the ATSD server.
 

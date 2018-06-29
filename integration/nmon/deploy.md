@@ -38,7 +38,7 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 |  `atsd.protocol`  |  Data transfer protocol.<br>Possible values: telnet, ssh.  |
 |  `atsd.port`  |  ATSD TCP port.  |
 |  `atsd.key`  |  Path to ssh key for readonly account.<br>`id_rsa_atsdreadonly` by default.<br>Optional parameter.  |
-|  `atsd.user`  |  Readonly user account.<br>`atsdreadonly` by default.<br>Optional parameter.  |
+|  `atsd.user`  |  Read-only user account.<br>`atsdreadonly` by default.<br>Optional parameter.  |
 |  `atsd.hostname`  |  ATSD server.  |
 |  `deploy.user`  |  User of target machines.  |
 |  `deploy.key`  |  Path to the ssh key to access target machines by the user set in `deploy.user`.  |
@@ -62,14 +62,14 @@ atsd.protocol = telnet
 atsd.port = 8081
 #atsd.key=./id_rsa_atsdreadonly
 #atsd.user=atsdreadonly
-atsd.hostname = atsdserver.com
+atsd.hostname = atsd_hostname
 
 deploy.user = nmonuser
 deploy.key = ./id_dsa_nmonuser
-deploy.password=secret-pwd
+deploy.password=secret
 #deploy.sudo.user = root
 #deploy.sudo.key = ./id_dsa_root
-#deploy.sudo.password=secret-root-pwd
+#deploy.sudo.password=secret
 deploy.nmon-binary = nmon_x86_64_sles11
 deploy.directory = /home/nmonuser/nmon
 deploy.target = nurswgvml006:22
