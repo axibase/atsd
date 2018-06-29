@@ -121,3 +121,15 @@ To log the data commands without the received date and channel, remove the corre
         <pattern>%message%n</pattern>
     </encoder>
 ```
+
+The `%date{ISO8601}` token formats the date in ISO8601 format in local time zone.
+
+```txt
+2018-06-28 14:11:55,841
+```
+
+To customize the pattern and the timezone, us the following pattern instead `%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX",UTC}`.
+
+```txt
+2018-06-28T17:20:00.000Z
+```
