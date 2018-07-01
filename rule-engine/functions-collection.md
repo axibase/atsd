@@ -7,7 +7,7 @@ The collection functions return information about the collection or check it for
 A collection can be created by declaring its elements inline, enclosed in square brackets:
 
 ```javascript
-['a@example.org', 'b@example.org']
+['jack.smith@example.org', 'mary.jones@example.org']
 ```
 
 Alternatively, it can be loaded using the `collection()` or another [lookup](functions-lookup.md) function.
@@ -237,7 +237,7 @@ The keys in collection `c` can contain wildcards ? and * to remove multiple matc
 Examples:
 
 ```javascript
-excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
+excludeKeys(replacementTable('oncall-emails'),['jack.smith@example.org', 'mary.jones@example.org'])
 ```
 
 ```javascript
