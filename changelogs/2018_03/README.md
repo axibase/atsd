@@ -34,7 +34,7 @@
 5105 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | Do not display column value if related entity tag value is not set.
 5104 | sql | Feature | [Scheduled](../../sql/scheduled-sql.md#sql-scheduler) report error on missing raw data.
 5103 | monitoring | Bug | Simon console does not work.
-5098 | sql | Bug | Fix NPE in outer join with extra tag in one of the [subqueries](../../sql/README.md#inline-views).
+5098 | sql | Bug | Fix NPE in outer join with additional tag in one of the [subqueries](../../sql/README.md#inline-views).
 5096 | sql | Bug | Fix NPE in outer [join](../../sql/README.md#joins).
 5093 | rule engine | Bug | Resolve generic type parameter of returned collections by [property](../../rule-engine/functions-property.md#property-functions) functions.
 5090 | rule engine | Bug | Access to [collection](../../rule-engine/functions-collection.md#collection-functions) objects.

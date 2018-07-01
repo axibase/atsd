@@ -128,6 +128,6 @@ If set to a positive value, the filter discards commands with a timestamp that d
 
 While the same checks can be performed in the filter expression and in the alert condition, performance increases if checks that refer to command fields are specified in the filter expression whereas checks that require the [window](window.md) object are specified in the alert condition. Discarding unnecessary commands early minimizes the number of windows maintained by the rule engine.
 
-For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (for example `mount_point` = `/dev`) are discarded early in the process without causing extra windows to be created.
+For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (for example `mount_point` = `/dev`) are discarded early in the process without causing additional windows to be created.
 
 [Statistical functions](functions-statistical.md), on the other hand, operate on values stored in the window and therefore cannot be used during the filtering stage. Since the window is not available at the filtering stage, the statistical functions shall return `zero` if included in a filter expression.

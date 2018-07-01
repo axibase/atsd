@@ -16,7 +16,7 @@ If a metric name matches the regular expression `pattern`, the metric is parsed 
 
 `graphite.conf` is parsed from top to bottom, meaning that metric names are matched to patterns in the same order they are placed in the file. Matching stops as soon as a `pattern` in satisfied.
 
-If a metric name has more tokens than `atsd-pattern`, extra tokens are cropped.
+If a metric name has more tokens than `atsd-pattern`, additional tokens are ignored.
 
 If a metric name has less tokens than `atsd-pattern`, but still satisfies `pattern`, then the metric is parsed.
 

@@ -9,7 +9,7 @@ The document describes how to deploy ATSD on HBase with [AWS S3](https://docs.aw
 * Storage and compute layers can be scaled independently to address a variety of use cases, including **small cluster/large dataset** scenario.
 * The number of region servers can be dynamically adjusted based on auto-scaling rules.
 * Simplified backup and recovery.
-* Reduced storage footprint (no need for 3-x data replication and extra disk space required for HFile compactions).
+* Reduced storage footprint (no need for 3-x data replication and additional disk space required for HFile compactions).
 * Increased resilience based on AWS S3 reliability and durability.
 * Read-only cluster replicas.
 

@@ -366,7 +366,7 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 | 2016-09-17T08:01:30.000Z |  3.48 | -- Linearly interpolated between 9.00 at 08:01:14 and 2.10 at 08:01:34.
 ```
 
-If raw values have extra samples recorded within values in each period, such values are ignored.
+If raw values have additional samples recorded within values in each period, such values are ignored.
 
 ```ls
 | time     | value   |

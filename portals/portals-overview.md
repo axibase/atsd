@@ -94,15 +94,13 @@ Review the following guides describing the basic syntax:
 
 ## Portals Page
 
-The portals are listed on the **Portals** page located at `https://atsd_hostname:8443/portals/list`.
-
-To access the **Portals** page via ATSD web interface click **Portals** drop-down at the right upper corner and click **Configure**.
+The portals are listed on the **Portals** page. Click **Portals** in the top menu and click **Configure**.
 
 ![](./resources/creating-and-assigning-portals_3.png)
 
 ![](./resources/creating-and-assigning-portals_4.png)
 
-Use drop-down at the bottom of the page to manage portals:
+Use the split button at the bottom of the page to manage portals.
 
 ![](./resources/creating-and-assigning-portals_5.png)
 
@@ -133,19 +131,26 @@ The template portal requires an entity name to be passed as a request parameter.
 
 Additional parameters can be passed in the query string to customize the portal as described [below](#request-parameters).
 
-Sample link to a template portal:
+Sample link to a template portal using portal identifier:
 
 ```elm
-https://atsd_hostname:8443/portal/111.xhtml?entity=nurswgvml013
+https://atsd_hostname:8443/portal/{portal-id}.xhtml?entity={entity}
 ```
 
-The above link passes the `entity` parameter to a template portal which substitutes all `${entity}` placeholders in the Configure Portal text.
+Sample link to a template portal using portal name:
+
+```elm
+https:///atsd_hostname:8443/portal/name/{portal-name}?entity={entity}
+```
+
+The above links contain the `entity` parameter which substitutes all `${entity}` placeholders in the portal configuration text when rendered.
 
 ```bash
 [widget]
   type = chart
   [series]
     metric = jmx.derby.hitcount
+    # replaced with request parameter
     entity = ${entity}
 ```
 
@@ -159,10 +164,10 @@ The actual configuration displayed replaces the `${entity}` placeholder with the
     entity = nurswgvml013
 ```
 
-To open a template portal in the browser, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
+To open a template portal in the browser, substitute the `{portal-id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
 
 ```elm
-https://atsd_hostname:8443/portal/{portal_id}.xhtml?entity={entity}
+https://atsd_hostname:8443/portal/{portal-id}.xhtml?entity={entity}
 ```
 
 Alternatively, assign an entity group to the template portal to ensure that a link to this portal is available on the **Entities** page for all entities that are members of the entity group:
@@ -197,7 +202,7 @@ The portals are available at the following URLs:
 * Using portal id displayed at the [Portals Page](#portals-page):
 
 ```elm
-https://atsd_hostname:8443/portal/{portal_id}.xhtml
+https://atsd_hostname:8443/portal/{portal-id}.xhtml
 ```
 
 ![](./resources/creating-and-assigning-portals_13.png)
@@ -223,7 +228,7 @@ https://atsd_hostname:8443/portal/name/linux-os?entity=nurswgvml008
 Additional parameters can be passed in the query string to customize the portal.
 
 ```elm
-# add extra dtype parameter
+# additional parameter: dtype
 https://atsd_hostname:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 ```
 

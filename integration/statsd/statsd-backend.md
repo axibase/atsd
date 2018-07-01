@@ -66,7 +66,7 @@ If a metric name matches the regular expression `pattern`, the metric is parsed 
 
 > NOTE: every `\` in `pattern` must be duplicated.
 
-If a metric name has more tokens than `atsd_pattern`, extra tokens are cropped.
+If a metric name has more tokens than `atsd_pattern`, additional tokens are ignored.
 
 `alfa.bravo.charlie.delta` is used as an example metric and the default example entity is `zulu`.
 
