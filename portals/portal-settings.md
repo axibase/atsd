@@ -104,7 +104,7 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 |  `width-units`   |  `width-units = 2`  |  Number of columns in the portal. Default: 6. |  [View](https://apps.axibase.com/chartlab/808e5846)  |
 |  `height-units`  |  `height-units = 2`  |      Number of rows in the portal. Default: 4.  |  [View](https://apps.axibase.com/chartlab/808e5846/2/)  |
 |  `offset-right`  |  `offset-right = 50`  |  Offset from the right border, in pixels.<br>`offset-` can be used with: top, right, bottom, left.  |  [View](https://apps.axibase.com/chartlab/808e5846/10/)  |
-| `widgets-per-row`  |  `widgets-per-row = 3`  | Maximum number of widgets in the [group] section. If the value is exceeded, extra widgets are automatically placed into a new row.  |  [View](https://apps.axibase.com/chartlab/a4b4182b) |
+| `widgets-per-row`  |  `widgets-per-row = 3`  | Maximum number of widgets in the [group] section. If the value is exceeded, additional widgets are automatically placed into a new row.  |  [View](https://apps.axibase.com/chartlab/a4b4182b) |
 
 ### Connection Settings
 

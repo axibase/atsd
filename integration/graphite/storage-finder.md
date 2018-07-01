@@ -90,7 +90,7 @@ STORAGE_FINDERS = (
 )
 ```
 
-ATSD Storage Finder Virtual only has one extra setting: `views`.
+ATSD Storage Finder Virtual has an additional setting: `views`.
 
 Under `views`, use `type` to control which folders to display in the `graphite-web` interface.
 
