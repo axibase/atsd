@@ -4,22 +4,15 @@
 
 A command action executes system commands on the ATSD server to trigger advanced processing and integration tasks based on analysis of incoming data.
 
-Such tasks include running `bash` or Python scripts, or integrating with external systems using their built-in command line tools such as IBM ITM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
+Such tasks include running Shell or Python scripts, or integrating with external systems using their built-in command line tools such as IBM ITM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
 
 ## Command Interpreter
 
-To execute a command, specify a path to the executable and optional arguments.
+To execute a command, specify a name of the executable and optional arguments.
 
 ### Program Path
 
-Specify the command name or absolute path to the executable, for example `/home/axibase/disk_cleanup.sh`.
-
-Specify full path to the program. To lookup the path for a built-in command, execute `which {command}`.
-
-```sh
-$ which find
-/usr/bin/find
-```
+Select the name of the executable, for example `disk_cleanup.sh`. The executable must be located in the `/opt/atsd/atsd/conf/script` directory. `axibase` user must have `execute` permissions granted for this file.
 
 > Do **not** include arguments in the **Executable Path** field.
 
@@ -27,11 +20,9 @@ $ which find
 
 Specify optional arguments passed to the executable, one argument per line. Arguments with whitespace or quote characters are automatically quoted.
 
-![](./images/command-script.png)
-
 The arguments can include [window fields](window.md#window-fields) and calculated values using [placeholder](placeholders.md) syntax, for example `${tags.location}` or `${upper(entity)}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
-![](./images/command-placeholder.png)
+![](./images/command-script.png)
 
 ### Environment Variables
 
@@ -42,7 +33,7 @@ As an alternative to passing arguments, you can access [window fields](window.md
 ```bash
 #!/usr/bin/env bash
 
-# access window fieds by name
+# access window fields by name
 ent=${entity}
 
 # use awk to access variables that contain special characters
@@ -90,9 +81,7 @@ for key, value in sorted(os.environ.items()):
 
 ### Piping, Redirection, Shell Expansion
 
-The command interpreter in ATSD does not support piping, I/O redirection or shell expansion. If the command needs to perform these operations, delegate these tasks to a spawned process using `bash -c` option.
-
-![](./images/command-bash-c.png)
+The command interpreter in ATSD does not support piping, I/O redirection or shell expansion. If the command needs to perform these operations, specify these operations in the script file.
 
 ## Command Execution
 
@@ -100,11 +89,11 @@ The command can be configured to execute on `OPEN`, `CANCEL` and `REPEAT` status
 
 If the executable path is empty, no command is executed for this status trigger.
 
-Only **one** command can be executed for each status change. If you need to execute multiple commands, create a wrapper script with multiple commands or launch a spawned shell process with `bash -c` and chain commands using `&&`.
+Only **one** command can be executed for each status change. If you need to execute multiple commands, create a wrapper script with multiple commands.
 
-```elm
-/bin/bash
--c
+* Wrapper script `docker_restart_prd_aer.sh`
+
+```sh
 docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/start.sh
 ```
 
@@ -118,7 +107,7 @@ Script terminated on timeout: {current timeout value}
 
 ## Working Directory
 
-The working directory is displayed in the `user.dir` setting on the **Settings > System Information** page.
+The working directory is `/opt/atsd/atsd/conf/script`.
 
 Since the working directory path can change, use the absolute path in command arguments where appropriate.
 
@@ -128,7 +117,7 @@ Commands are executed by the `axibase` user.
 
 Ensure that the `axibase` user has permissions to execute the command and that the script has the `+x` execution bit.
 
-To complete disable execution of system commands in the rule engine, set `system.commands.enabled` setting to `No` on the **Settings > Server Properties** page.
+To disable execution of system commands in the rule engine, set `system.commands.enabled` setting to `No` on the **Settings > Server Properties** page.
 
 ## Logging
 
@@ -153,7 +142,7 @@ find /opt/atsd/atsd/backup/* -mtime +15 -type f
 
 KUIEXC000I: Executecommand request was performed successfully. The return value of the command run on the remote systems is 0
 
-2017-11-30 13:32:26,597;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m NURSWGVML007:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /opt/atsd/atsd/backup/* -mtime +15 -type f" && /opt/IBM/ITM/bin/tacmd logout > /dev/null]'
+2017-11-30 13:32:26,597;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/opt/atsd/atsd/conf/script/disk_cleanup.sh, NURSWGVML007, /tmp, 15d]'
 ```
 
 ## Examples
@@ -167,8 +156,6 @@ If disk space is low, the command reads user credentials from the `itm.pwd` file
 By using the `${upper(entity)}` placeholder, the script executes the disk cleanup procedure on the system where the disc space rule alert is raised, to `OPEN` status.
 
 A follow-up action, at the `REPEAT` status, can be further configured to cleanup other directories, to bring disk space usage down.
-
-![](./images/command-tacmd.png)
 
 #### Prerequisites
 
@@ -187,19 +174,38 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
   KT1_TEMS_SECURE='YES'
 ```
 
-  > Note that TEMS restart is required to activate this setting.
+> Note that TEMS restart is required to activate this setting.
+  
+* Create the `disk_cleanup.sh` file in `/opt/atsd/atsd/conf/script` directory.
 
-#### Path
+```txt
+cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m $1:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find $2 -mtime +$3 -type f -delete -print" && /opt/IBM/ITM/bin/tacmd logout > /dev/null
+```
+
+* Make the script executable.
 
 ```sh
-  /bin/bash
+sudo chmod +x /opt/atsd/atsd/conf/script/disk_cleanup.sh
+```
+
+* The script must be available in `Script File` drop-down list, and the content must be visible in `Show Script` form.
+
+![](./images/command-tacmd.png)
+
+![](./images/command-tacmd-script.png)
+
+#### Script File
+
+```sh
+  disk_cleanup.sh
 ```
 
 #### Arguments
 
 ```bash
-  -c
-  cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m ${upper(entity)}:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /tmp -mtime +15 -type f -delete -print" && /opt/IBM/ITM/bin/tacmd logout > /dev/null
+${upper(entity)}
+/tmp
+15d
 ```
 
 #### Output Log
@@ -220,31 +226,3 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
 
   2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m NURSWGVML007:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /tmp -mtime +15 -type f -delete -print" && /opt/IBM/ITM/bin/tacmd logout > /dev/null]'
 ```
-
-### Store Derived Metrics
-
-#### Description
-
-The rule is configured to calculate a derived metric for the same entity. The derived value is calculated by subtracting the average of values in the window from 100. The new command is inserted back into ATSD under the metric name `derived_cpu_busy` using Unix `bash` pseudo-file `/dev/tcp/localhost/8081` connected to the ATSD TCP port. The rule is configured to execute the command upon `OPEN` and `REPEAT` statuses with a `15 minute` frequency.
-
-#### Path
-
-```sh
-    /bin/bash
-```
-
-#### Arguments
-
-```bash
-  -c
-  echo $0 > /dev/tcp/localhost/8081
-  series e:${entity} m:derived_cpu_busy=${100-avg()}
-```
-
-#### Output Log
-
-```txt
-  2017-11-30 14:46:50,424;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, echo $0 > /dev/tcp/localhost/8081, series e:nurswgvml212 m:derived_cpu_busy=0.5433333317438761]'
-```
-
-![](./images/system-command-derived.png)
