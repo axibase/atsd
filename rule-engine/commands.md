@@ -2,15 +2,15 @@
 
 ## Overview
 
-The Command action executes pre-defined scripts on the ATSD server to complete advanced processing and integration tasks.
+Command actions execute pre-defined scripts on the ATSD server to complete advanced processing and integration tasks.
 
-Such tasks include running `bash` or Python scripts, or integrating with external systems using tools such as IBM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
+These tasks include running `bash` or Python scripts and integrating with external systems using tools such as IBM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
 
 ## Configuration
 
 ### Script File
 
-To configure a command action, create a script file in the `/opt/atsd/atsd/conf/script` directory with the `execute` permission granted to the `axibase` user.
+To configure a command action, create a script file in the `/opt/atsd/atsd/conf/script` directory. The `axibase` user has `execute` permission for this directory.
 
 The list of files is displayed in the **Script File** drop-down list on the **System Commands** tab.
 
@@ -22,15 +22,15 @@ Select the script file to execute, for example `disk_cleanup.sh`, from the **Sys
 
 ### Script Arguments
 
-Specify optional arguments passed to the script, _one argument per line_. Arguments with whitespace or quote characters are automatically quoted.
+Specify optional arguments passed to the script, **one argument per line**. Arguments with whitespace or quote characters are automatically quoted.
 
-The arguments can include [window fields](window.md#window-fields) and calculated values using [placeholder](placeholders.md) syntax, for example `${tags.location}`, `${upper(entity)}`, or `${avg()/100}`. If the placeholder is not found, the placeholder is replaced with an empty string.
+Arguments can include [window fields](window.md#window-fields) and calculated values using [placeholder](placeholders.md) syntax, for example `${tags.location}`, `${upper(entity)}`, or `${avg()/100}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ![](./images/command-arguments.png)
 
 ### Environment Variables
 
-As an alternative to passing arguments, you can access [window fields](window.md#window-fields) and user-defined [variables](variables.md) as environment variables.
+As an alternative to passing arguments, access [window fields](window.md#window-fields) and user-defined [variables](variables.md) as environment variables.
 
 * `bash` script
 
@@ -89,7 +89,7 @@ The working directory is `/opt/atsd/atsd/conf/script`.
 
 Since the working directory path can change, use the absolute path in script arguments where appropriate.
 
-### Creating Test Script
+### Creating a Test Script
 
 ```bash
 nano /opt/atsd/atsd/conf/script/test.sh
@@ -108,13 +108,13 @@ printenv | sort >> /tmp/atsd/test.out
 chmod +x /opt/atsd/atsd/conf/script/test.sh
 ```
 
-The script is now displayed on the **System Commands** tab.
+The script is selectable on the **System Commands** tab.
 
 ![](./images/command-test-script.png)
 
 ## Execution
 
-The script can run on `OPEN`, `CANCEL` and `REPEAT` status changes. To execute the script, enable the trigger and select the script file from the drop-down list or click **Same as 'On Open'** to re-use the configuration.
+A script can run on `OPEN`, `CANCEL` and `REPEAT` status changes. To execute the script, enable the trigger and select the script file from the drop-down list or click **Same as 'On Open'** to re-use the configuration.
 
 Only **one** script can be executed for each trigger. If you need to execute multiple scripts, create a wrapper script.
 
@@ -130,7 +130,7 @@ Script terminated on timeout: {current timeout value}
 
 ### Security
 
-Only scripts in the `/opt/atsd/atsd/conf/script` can be executed. Script text can be modified by editing the file on the file system. Changing the script within the ATSD web interface is not supported.
+Only scripts in the `/opt/atsd/atsd/conf/script` can be executed. Script text can be modified by editing the file on the file system. Modifying scripts from within the ATSD web interface is not supported.
 
 Scripts are executed under the `axibase` user context.
 
@@ -142,7 +142,7 @@ To disable script execution in the rule engine, set `system.commands.enabled` pr
 
 If **Log Output** option is enabled, both `system.out` and `system.err` outputs are logged to the `atsd.log` file for each script execution.
 
-The output is limited to 10240 characters.
+The output is limited to 10,240 characters.
 
 ```txt
 2017-11-30 13:32:26,597;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;
@@ -173,11 +173,11 @@ If disk space is low, the command reads user credentials from the `itm.pwd` file
 
 On `OPEN` status, the script executes the disk cleanup procedure on the system where the disk space rule alert is raised, identified with `${upper(entity)}:LZ` placeholder.
 
-A follow-up action, at the `REPEAT` status, can be configured to cleanup other directories, to bring disk space usage further down.
+A follow-up action on `REPEAT` status, can be configured to cleanup other directories, to further reduce disk space usage.
 
 #### Prerequisites
 
-Tivoli Enterprise Services User Interface Extensions installed on the ATSD server. To install the component, launch the `install.sh` script and select the `KUE` module from the list.
+Tivoli Enterprise Services User Interface Extensions must be installed on the ATSD server. To install this component, launch the `install.sh` script and select the `KUE` module from the list.
 
 ```txt
   ... installing "Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit)"; please wait.
