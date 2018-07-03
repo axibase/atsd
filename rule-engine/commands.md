@@ -108,7 +108,7 @@ printenv | sort >> /tmp/atsd/test.out
 chmod +x /opt/atsd/atsd/conf/script/test.sh
 ```
 
-The script is now displayed on the the **System Commands** tab.
+The script is now displayed on the **System Commands** tab.
 
 ![](./images/command-test-script.png)
 
