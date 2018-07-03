@@ -13,7 +13,7 @@ Enterprise Edition supports a scale-out deployment model.
 | [Charts Library](https://axibase.com/products/axibase-time-series-database/visualization/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Rule Engine](./rule-engine/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Email Alerts](./rule-engine/email.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| [Slack/TG/HipChat Alerts](./rule-engine/notifications/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
+| [Slack/TG/HipChat Webhooks](./rule-engine/notifications/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
 | [SQL Engine](./sql/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [SQL Web Console](./sql/sql-console.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [SQL Scheduled Reports](./sql/scheduled-sql.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
@@ -41,4 +41,4 @@ Enterprise Edition supports a scale-out deployment model.
 
 |  | **Standard Edition** | **Enterprise Edition** |
 |---|:---:|:---:|
-| Technical Support | `optional` | ![](./images/ok.svg) |
+| [Technical Support](./administration/support.md) | `optional` | ![](./images/ok.svg) |
