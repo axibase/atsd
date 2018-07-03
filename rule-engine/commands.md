@@ -4,29 +4,35 @@
 
 Command actions execute pre-defined scripts on the ATSD server to complete advanced processing and integration tasks.
 
-These tasks include running `bash` or Python scripts and integrating with external systems using tools such as IBM [`itmcmd`](https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.2.1/com.ibm.itm.doc_6.2.1/itm_cmdref113.htm)/[`tacmd`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) or [AWS CLI](https://aws.amazon.com/cli/).
-
 ## Configuration
 
 ### Script File
 
-To configure a command action, create a script file in the `/opt/atsd/atsd/conf/script` directory. The `axibase` user has `execute` permission for this directory.
+To configure a command action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant the script `execute` permission (`u+x`) to the `axibase` user.
 
-The list of files is displayed in the **Script File** drop-down list on the **System Commands** tab.
+The list of executable files is displayed in the **Script File** drop-down list on the **System Commands** tab.
 
 ![](./images/command-drop-down.png)
 
-To view the script, click **Show script** icon.
+To view the script text, click **Show script** icon.
 
 Select the script file to execute, for example `disk_cleanup.sh`, from the **System Commands** tab.
 
+### Working Directory
+
+The working directory is `/opt/atsd/atsd/conf/script`.
+
 ### Script Arguments
 
-Specify optional arguments passed to the script, **one argument per line**. Arguments with whitespace or quote characters are automatically quoted.
+Specify optional arguments passed to the script, **one argument per line**.
 
 Arguments can include [window fields](window.md#window-fields) and calculated values using [placeholder](placeholders.md) syntax, for example `${tags.location}`, `${upper(entity)}`, or `${avg()/100}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ![](./images/command-arguments.png)
+
+Arguments containing whitespace or quote characters are automatically quoted. The below example with two arguments one of which contains space characters is equivalent to executing `./test.sh john.doe "hello world"`.
+
+![](./images/command-script-quote.png)
 
 ### Environment Variables
 
@@ -80,14 +86,45 @@ print("disk={}".format(dsk))
 print("\n-------------")
 for key, value in sorted(os.environ.items()):
     print("{}={}".format(key, value))
-
 ```
 
-### Working Directory
+* Sample environment variables
 
-The working directory is `/opt/atsd/atsd/conf/script`.
-
-Since the working directory path can change, use the absolute path in script arguments where appropriate.
+```elm
+alert_duration=00:00:00:29
+alert_duration_interval=29s
+alert_message=
+alert_open_datetime=2018-07-03T09:38:00Z
+alert_open_time=2018-07-03 09:38:00
+alert_type=REPEAT
+entity=atsd
+event_datetime=2018-07-03T09:38:30Z
+event_time=2018-07-03 09:38:30
+expression=value >= 0
+message=
+metric=timer_15s
+min_interval_expired=
+# user-defined variable
+mx=0.42857142857142855
+open_value=0
+properties=
+received_datetime=2018-07-03T09:38:30Z
+received_time=2018-07-03 09:38:30
+repeat_count=2
+repeat_interval=14
+rule_expression=value >= 0
+rule_filter=
+rule_name=script-check
+rule=script-check
+schedule=
+severity=warning
+status=REPEAT
+tags.host=NURSWGVML007
+value=0
+window_first_datetime=2018-07-03T09:38:00Z
+window_first_time=2018-07-03 09:38:00
+window=length(5)
+```
 
 ### Creating a Test Script
 
@@ -98,17 +135,20 @@ nano /opt/atsd/atsd/conf/script/test.sh
 ```bash
 #!/usr/bin/env bash
 
-# print all arguments to temporary file
-echo "Test: $@" > /tmp/atsd/test.out
-echo "========" >> /tmp/atsd/test.out
-printenv | sort >> /tmp/atsd/test.out
+out=/tmp/atsd/test.out
+
+# print all arguments to temporary file /tmp/atsd/test.out
+echo "All arguments: $@" > $out
+echo "1st argument: $1" >> $out
+echo "----------------" >> $out
+printenv | sort >> $out
 ```
 
 ```bash
-chmod +x /opt/atsd/atsd/conf/script/test.sh
+chmod u+x /opt/atsd/atsd/conf/script/test.sh
 ```
 
-The script is selectable on the **System Commands** tab.
+The script is now displayed on the **System Commands** tab.
 
 ![](./images/command-test-script.png)
 
@@ -192,7 +232,7 @@ Modify the Hub TEMS configuration file `/opt/IBM/ITM/config/ms.config` and set t
   KT1_TEMS_SECURE='YES'
 ```
 
-TEMS restart is required to activate this setting.
+`TEMS` restart is required to activate this setting.
 
 #### Configuration
   
