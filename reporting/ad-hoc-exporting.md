@@ -22,11 +22,11 @@ Ad hoc exporting provides an interactive interface for exporting historical data
 |  Aggregate Statistics  |  One or multiple aggregation functions: average, minimum, maximum, sum, count, standard deviation, weighted average, weighted time average, median (percentile 50), first, last, percentile 50/75/90/95/99/99.5/99.9, `MinValueTime`, `MaxValueTime`.  |
 |  Versioning  |  Display value history for metric that is enabled for Versioning. Versioning is displayed only for detailed, non-aggregated samples.  |
 |  Revisions Only  |  Filters displayed versions only for samples with values changes. Excludes samples without versions.  |
-|  Version Filter  |  Expression to filter value history (versions) by version status, source, or time. For example: `version_status = 'Deleted' OR version_source LIKE '*user*'`. To filter by version time, use the `date()` function. For example, `version_time > date('2015-08-11T16:00:00Z') OR version_time > date('current_day')`. The `date()` function accepts [calendar](../shared/calendar.md) keywords.  |
+|  Version Filter  |  Expression to filter value history (versions) by version value, status, source, or time. For example: `(version_status = 'Deleted' OR version_source LIKE '*user*') AND NOT Double.isNaN(value)`. To filter by version time, use the `date()` function. For example, `version_time > date('2015-08-11T16:00:00Z') OR version_time > date('current_day')`. The `date()` function accepts [calendar](../shared/calendar.md) keywords.  |
 |  Export Format  |  Export format – CSV or HTML. If HTML is selected, number of rows can be limited with Row Limit.  |
 |  Row Limit  |  Maximum Number of Rows displayed in HTML format. Tables with greater than 10000 rows are not recommended for viewing in HTML format.  |
 |  Entity Tags  |  List of entity tags included as columns in the exported file/table.  |
 |  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed without any formatting.  |
 |  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
 
-![](./images/export_job_test_button.png)
+![](./images/export_page.png)
