@@ -6,6 +6,7 @@ Filter versions with the `version_source` field.
 
 Supported parameters:
 
+* `value`
 * `version_status`
 * `version_source`
 * `version_time`
