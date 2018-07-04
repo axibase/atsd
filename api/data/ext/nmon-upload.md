@@ -66,7 +66,7 @@ AAA,build,AIX
 AAA,disks_per_line,150
 AAA,host,nurswgvml0023
 AAA,user,root
-AAA,AIX,6.1.8.1
+AAA,AIX,6.1.8
 AAA,TL,08
 AAA,runname,nurswgvml0023
 ...

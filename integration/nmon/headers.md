@@ -20,7 +20,7 @@ AAA,build,AIX
 AAA,disks_per_line,150
 AAA,host,itm-aix
 AAA,user,root
-AAA,AIX,6.1.7.16
+AAA,AIX,6.1.7
 AAA,TL,07
 AAA,runname,
 AAA,time,20:00:02
@@ -75,7 +75,7 @@ BBBC,218,PDIsapdata5Lv 1999 1999 400..400..399..400..400 /oracle/PDI/sapdata5
 Below is a list of `nmon` configuration properties with examples.
 
 ```txt
-"aix": "7.1.3.16",
+"aix": "7.1.3",
 "build": "AIX",
 "capped": "0",
 "command": "/usr/bin...,Nov11,2014 ",
