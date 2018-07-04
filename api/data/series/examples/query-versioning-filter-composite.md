@@ -6,6 +6,7 @@ Filter versions with a composite filter expression.
 
 Supported parameters:
 
+* `value`
 * `version_status`
 * `version_source`
 * `version_time`
@@ -51,7 +52,7 @@ POST /api/v1/series/query
     "entity": "e-vers",
     "metric": "m-vers",
     "versioned": true,
-    "versionFilter": "version_source LIKE 'api*' && version_status= 'Invalid'"
+    "versionFilter": "version_source LIKE 'api*' && version_status= 'Invalid' && NOT Double.isNaN(value) && value >= 0"
   }
 ]
 ```
@@ -64,7 +65,6 @@ POST /api/v1/series/query
 [{"entity":"e-vers","metric":"m-vers","tags":{},"type":"HISTORY",
 "aggregate":{"type":"DETAIL"},
 "data":[
-    {"d":"2015-08-13T09:50:00.000Z","v":-999.0,"version":{"d":"2015-08-13T13:42:36.597Z","source":"api:192.0.2.14","status":"Invalid"}},
     {"d":"2015-08-13T10:00:00.000Z","v":0.0,"version":{"d":"2015-08-13T13:40:57.578Z","source":"api:192.0.2.14","status":"Invalid"}}
 ]}]
 ```

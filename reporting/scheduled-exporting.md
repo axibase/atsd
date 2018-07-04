@@ -53,7 +53,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  End Time  |  End time of the selection interval. This field supports [calendar](../shared/calendar.md) keywords, for example `next_day`. If not defined, End Time is calculated as Start Time plus Selection Interval. If Start Time is not defined, End Time is set to current time.  |
 |  Versioning  |  Display value history for metric that is enabled for Versioning. Versioning is displayed only for detailed, non-aggregated, samples.  |
 |  Revisions Only  |  Filters displayed versions only for samples with values changes. Excludes samples without versions.  |
-|  Version Filter  |  Expression to filter value history (versions) by version status, source, or time. For example: `version_status = 'Deleted' or version_source LIKE '*user*'`. To filter by version time, use the `date()` function. For example, `version_time > date('2015-08-11T16:00:00Z') or version_time > date('current_day')`. The `date()` function accepts [calendar](../shared/calendar.md) keywords.  |
+|  Version Filter  |  Expression to filter value history (versions) by version value, status, source, or time. For example: `(version_status = 'Deleted' or version_source LIKE '*user*') AND value > 0`. To filter by version time, use the `date()` function. For example, `version_time > date('2015-08-11T16:00:00Z') or version_time > date('current_day')`. The `date()` function accepts [calendar](../shared/calendar.md) keywords.  |
 |  Aggregate  |  Enable period aggregations based on selected detailed samples, after the optional Value Filter is applied.  |
 |  Aggregation Period  |  Period of time over which detailed samples are aggregated.  |
 |  Interpolation  |  Insert missing periods in aggregated results. The period is considered missing if it contains no detailed samples. Supported options: `STEP` – value of missing period equals value of the previous period; `LINEAR` – value is linearly interpolated between previous and next available value; `NONE` – missing periods are not inserted.  |
@@ -82,4 +82,4 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 
 Clicking **Test** exports the first file, displays the file name, and provides a link to download the file.
 
-![](./images/export_job_test_button.png)
+![](./images/export_job_page.png)

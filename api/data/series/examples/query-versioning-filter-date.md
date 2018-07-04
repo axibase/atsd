@@ -6,6 +6,7 @@ Filter versions with the `version_time` field which returns value change time in
 
 Supported parameters:
 
+* `value`
 * `version_status`
 * `version_source`
 * `version_time`
