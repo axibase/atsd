@@ -79,7 +79,7 @@ Alternatively, use [group editor](#group-editor) to modify multiple metrics at o
 Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_METRIC` token in the `commands_discarded.log`:
 
 ```ls
-2018-03-29 05:56:21,518;NON_PERSISTENT_METRIC;series e:nurswgvml010 ms:1522302981000 t:refid=124.216.164.14 t:remote=37.58.57.238 m:ntp.stratum=2
+2018-03-29 05:56:21,518;NON_PERSISTENT_METRIC;series e:nurswgvml010 ms:1522302981000 t:remote=192.0.2.1 m:ntp.stratum=2
 ```
 
 > Note that existing data already stored in the database for a non-persistent metric is not removed from disk automatically.
