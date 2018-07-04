@@ -40,7 +40,7 @@ Series values change over time and their history can be analyzed with SQL and vi
 
 [![](./images/button.png)](https://apps.axibase.com/chartlab/075941a0/2/)
 
-Review the following [overview](./portals/selecting-series.md) on how to retrieve Series from the database for visualization purposes.
+The [Selecting Series Overview](./portals/selecting-series.md) contains additional examples on how to retrieve Series from the database for visualization purposes.
 
 ## Messages
 
@@ -74,3 +74,7 @@ CREATE TABLE disk_info (
 ```
 
 [![](./images/button.png)](https://apps.axibase.com/chartlab/6d918310/2)
+
+## Resources
+
+* [Getting Started](./tutorials/getting-started.md) tutorial
