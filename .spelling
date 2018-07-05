@@ -25,6 +25,7 @@ AtsdNamingStrategy
 atsdreadonly
 atsd_li
 a union
+autocomplete
 Avatica
 axibase
 backend
@@ -122,6 +123,7 @@ Float64
 forecasted
 format
 Freemarker
+freemarker
 GHz
 GitHub
 github
@@ -288,6 +290,7 @@ Redis
 refactor
 regex
 Regularization
+reindex
 ResourceManager
 ResultSet
 resultset
