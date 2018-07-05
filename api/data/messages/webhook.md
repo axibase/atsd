@@ -264,7 +264,7 @@ The filter parameters contain patterns that the converted message tags must sati
 | `include` | Override `exclude` rules by including tags with **names** that match the specified pattern. |
 | `includeValues` | Override `excludeValues` rules by including tags with **values** that match the specified pattern. |
 
-* The patterns support `*` as a wildcard.
+* The patterns support asterisk (`*`) and question mark (`?`) as wildcard characters.
 * Tag name match is case-**IN**sensitive.
 * The parameters can contain multiple patterns separated by semi-colon `;`.
 

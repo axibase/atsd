@@ -127,7 +127,7 @@ likeAny(tags.request_ip, collection('ip_white_list'))
 
 Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.  The collection `c` can be specified inline as an array of strings or reference a named collection.
 
-The pattern supports `?` and `*` wildcards.
+The pattern supports wildcard characters asterisk (`*`) and question mark (`?`).
 
 Example:
 

@@ -102,9 +102,9 @@ Refer to [date format examples](date-format.md).
 
 ### Wildcards
 
-When querying, wildcards `*` and `?` are supported in entity names and tag values.
+Wildcard characters asterisk (`*`) and question mark (`?`) are supported in entity name and tag value filters.
 
-The literal symbols `?` and `*` can be escaped with a single backslash.
+The literal symbols `*` and `?` can be escaped with a single backslash.
 
 ### Limits
 

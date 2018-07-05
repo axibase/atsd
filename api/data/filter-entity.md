@@ -3,7 +3,7 @@
 * One of the below entity fields is **required**.
 * Field precedence, from highest to lowest: `entity`, `entities`, `entityGroup`. Although multiple fields are allowed in the query object, only the field with higher precedence is applied.
 * `entityExpression` is applied as an additional filter to the `entity`, `entities`, and `entityGroup` fields. For example, if both the `entityGroup` and `entityExpression` fields are specified, `entityExpression` is applied to members of the specified entity group.
-* Entity name pattern supports `?` and `*` wildcards.
+* Entity name pattern supports asterisk (`*`) and question mark (`?`) as wildcard characters.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
