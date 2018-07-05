@@ -1,10 +1,10 @@
 # Query Statistics
 
-The **Query Statisitcs** page is located at **SQL > Query Statistics**.
+The **Query Statistics** page is located at **SQL > Query Statistics**.
 
 ![](./images/query-statistics-page.png)
 
-This page tracks the most recent 1,000 queries submitted to the database. The list of queries is reset and refresehed each time the database stops.
+This page tracks the most recent 1,000 queries submitted to the database. The list of queries is reset and refreshed each time the database stops.
 
 ![](./images/query-statistics.png)
 
@@ -28,7 +28,7 @@ The **Query Statistics** page contains several drop-down lists to filter query s
   * `<=` : Less than or equal to.
   * `sec`: Comparison time in seconds.
 
-* **Query**: Filter queries based on their contents. **Query** fields accepts single or multiline queries.
+* **Query**: Filter queries based on their contents. **Query** fields accepts single or multi-line queries.
 
 * **Source Details**: `scheduled` and `rule-engine` queries are assigned source details, such as the rule with which the query is associated.
 
