@@ -138,7 +138,7 @@ s.close();
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/command \
-  --insecure --include --user usr:password \
+  --insecure --include --user username:password \
   --header "Content-Type: text/plain" \
   --data-binary $'message e:server001 t:type=deploy m:"Hello World"'
 ```

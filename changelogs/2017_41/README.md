@@ -110,8 +110,8 @@ SELECT "export_test"."datetime" AS "datetime",
 Add support for the following environment variables:
 
 ```ls
-  --env COLLECTOR_USER_NAME=cuser
-  --env COLLECTOR_USER_PASSWORD=cpassword
+  --env COLLECTOR_USER_NAME=username
+  --env COLLECTOR_USER_PASSWORD=password
   --env ATSD_URL=https://atsd_hostname:8443
 ```
 

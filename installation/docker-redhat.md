@@ -37,12 +37,12 @@ docker run -d  --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/u
   registry.connect.redhat.com/axibase/atsd:latest
 ```
 
-To automatically create an [account](../administration/collector-account.md) for data collection agents and storage drivers, replace `cuser` and `cpassword` credential variables in the command below.
+To automatically create an [account](../administration/collector-account.md) for data collection agents and storage drivers, replace `username` and `password` credential variables in the command below.
 
 ```bash
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
-  --env COLLECTOR_USER_NAME=cuser \
-  --env COLLECTOR_USER_PASSWORD=cpassword \
+  --env COLLECTOR_USER_NAME=username \
+  --env COLLECTOR_USER_PASSWORD=password \
   --env COLLECTOR_USER_TYPE=api-rw \
   registry.connect.redhat.com/axibase/atsd:latest
 ```

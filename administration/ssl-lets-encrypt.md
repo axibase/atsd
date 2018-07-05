@@ -1,8 +1,8 @@
-# Installing `Let's Encrypt` Certificate
+# Installing Let's Encrypt Certificate
 
 ## Overview
 
-[`Let’s Encrypt`](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
+[Let's Encrypt](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
 
 Background information is available in the [SSL Certificate Guide for Java Developers](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html).
 
@@ -167,12 +167,12 @@ Open the **Settings > Users** page and click **Create**.
 
 Upload the certificates files (private key and the certificate chain) into ATSD using `curl`.
 
-Replace `{USR}` with the username, `{PWD}` with the password and `{HOST}` with the hostname or IP address of the target ATSD server in the command below.
+Replace `{username}` with the username, `{password}` with the password and `{atsd_hostname}` with the hostname or IP address of the target ATSD server in the command below.
 
 Replace `atsd.example.org` below with the actual DNS name.
 
 ```sh
-sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
+sudo curl -k -u {username}:{password} https://{atsd_hostname}:8443/admin/certificates/import/atsd \
   -F "privkey=@/etc/letsencrypt/live/atsd.example.org/privkey.pem" \
   -F "fullchain=@/etc/letsencrypt/live/atsd.example.org/fullchain.pem" \
   -w "\n%{http_code}\n"
@@ -181,7 +181,7 @@ sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
 Example command:
 
 ```sh
-sudo curl -k -u certbot:Dmj_per1S https://192.0.2.6:8443/admin/certificates/import/atsd \
+sudo curl -k -u username:password https://192.0.2.6:8443/admin/certificates/import/atsd \
   -F "privkey=@/etc/letsencrypt/live/atsd.cert.org/privkey.pem" \
   -F "fullchain=@/etc/letsencrypt/live/atsd.cert.org/fullchain.pem" \
   -w "\n%{http_code}\n"
@@ -195,7 +195,7 @@ The server responds with an HTTP `200 OK` status code if the installation is suc
 
 ### Create Deployment Script
 
-Since `Let's Encrypt` certificates are issued for a short period of time (90 days), design a fully automated procedure to replace expiring certificates.
+Since Let's Encrypt certificates are issued for a short period of time (90 days), design a fully automated procedure to replace expiring certificates.
 
 Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. This script is invoked by certbot.
 
