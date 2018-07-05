@@ -31,15 +31,15 @@ tcp        0      0 0.0.0.0:8081            0.0.0.0:*               LISTEN
 * Check connectivity with `telnet` or `netcat` from a remote client to the ATSD server
 
 ```sh
-$ telnet atsd_host 8081
+$ telnet atsd_hostname 8081
 Trying 192.0.2.1...
-Connected to atsd_host.
+Connected to atsd_hostname.
 Escape character is '^]'.
 ```
 
 ```txt
-$ netcat -z -v atsd_host 8081
-Connection to atsd_host 8081 port [tcp/tproxy] succeeded!
+$ netcat -z -v atsd_hostname 8081
+Connection to atsd_hostname 8081 port [tcp/tproxy] succeeded!
 ```
 
 * If the connection cannot be established, check that the `iptables` firewall on the ATSD server is [configured to allow](firewall.md) incoming TCP/UDP traffic to the target ports.

@@ -59,19 +59,19 @@ To send a single command, connect to an ATSD server, send the command in plain t
 * `netcat`: `echo`
 
 ```bash
-echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc -w 1 atsd_host 8081
+echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc -w 1 atsd_hostname 8081
 ```
 
 * `netcat`: `printf`
 
 ```bash
-printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_host 8081
+printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_hostname 8081
 ```
 
 * `bash` [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
 
 ```bash
-echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_host/8081
+echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_hostname/8081
 ```
 
 > `/dev/tcp/host/port` and `/dev/udp/host/port` are `bash` pseudo-device files which can be used in redirection.
@@ -79,7 +79,7 @@ echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_
 * telnet: one line
 
 ```bash
-telnet atsd_host 8081 << EOF
+telnet atsd_hostname 8081 << EOF
 series e:station_4 m:temperature=32.2 m:humidity=81.4
 EOF
 ```
@@ -87,9 +87,9 @@ EOF
 * telnet: session
 
 ```ls
-$ telnet atsd_host 8081
-Trying atsd_host...
-Connected to atsd_host.
+$ telnet atsd_hostname 8081
+Trying atsd_hostname...
+Connected to atsd_hostname.
 Escape character is '^]'.
 series e:station_5 m:temperature=32.2 m:humidity=81.4
 ^C
@@ -99,7 +99,7 @@ Connection closed by foreign host.
 * java: socket
 
 ```java
-Socket s = new Socket("atsd_host", 8081);
+Socket s = new Socket("atsd_hostname", 8081);
 PrintWriter writer = new PrintWriter(s.getOutputStream(), true);
 writer.println("series e:station_6 m:temperature=32.2");
 s.close();
@@ -116,11 +116,11 @@ A trailing line feed is not required for the last command in the batch.
 Use the `-e` option in `echo` commands to enable interpretation of backslash escapes.
 
 ```bash
-echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_host 8081
+echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_hostname 8081
 ```
 
 ```java
-Socket s = new Socket("atsd_host", 8081);
+Socket s = new Socket("atsd_hostname", 8081);
 PrintWriter writer = new PrintWriter(s.getOutputStream(), true);
 writer.println("series e:station_6 m:temperature=30.1\nseries e:station_7 m:temperature=28.7");
 s.close();
@@ -139,9 +139,9 @@ To prevent the connection from timing out, send a [`ping`](ping.md) command at a
 Clients can submit different types of commands over the same connection.
 
 ```ls
-$ telnet atsd_host 8081
-Trying atsd_host...
-Connected to atsd_host.
+$ telnet atsd_hostname 8081
+Trying atsd_hostname...
+Connected to atsd_hostname.
 Escape character is '^]'.
 series e:station_1 m:temperature=32.2
 property e:station_2 t:location v:city=Cupertino v:state=CA v:country=USA
@@ -152,9 +152,9 @@ Connection closed by foreign host.
 Note that the server **ceases** the connection if the server receives an unsupported or malformed command.
 
 ```ls
-$ telnet atsd_host 8081
-Trying atsd_host...
-Connected to atsd_host.
+$ telnet atsd_hostname 8081
+Trying atsd_hostname...
+Connected to atsd_hostname.
 Escape character is '^]'.
 unknown_command e:station_1 m:temperature=32.2
 Connection closed by foreign host.
@@ -184,17 +184,17 @@ The UDP protocol does not guarantee delivery but has a higher throughput compare
 In addition, sending commands with UDP datagrams decouples the client application from the server to minimize the risk of blocking I/O time-outs.
 
 ```bash
-echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" | nc -u -w 1 atsd_host 8082
+echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" | nc -u -w 1 atsd_hostname 8082
 ```
 
 ```bash
-printf 'series e:station_3 m:temperature=32.2 m:humidity=81.4' | nc -u -w 1 atsd_host 8082
+printf 'series e:station_3 m:temperature=32.2 m:humidity=81.4' | nc -u -w 1 atsd_hostname 8082
 ```
 
 Unlike TCP, the last command in a multi-command UDP datagram must end with the line feed character.
 
 ```bash
-echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperature=32.1 m:humidity=82.4\n" | nc -u -w 1 atsd_host 8082
+echo -e "series e:station_33 m:temperature=32.2\nseries e:station_34 m:temperature=32.1 m:humidity=82.4\n" | nc -u -w 1 atsd_hostname 8082
 ```
 
 ### Duplicate Commands
@@ -206,13 +206,13 @@ If such commands are submitted at the same time, there is no guarantee that they
 * Duplicate example: same key, same current time
 
 ```bash
-echo -e "series e:station_1 m:temperature=32.2\nseries e:station_1 m:temperature=42.1" | nc atsd_host 8081
+echo -e "series e:station_1 m:temperature=32.2\nseries e:station_1 m:temperature=42.1" | nc atsd_hostname 8081
 ```
 
 * Duplicate example: same key, same time
 
 ```bash
-echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=42.1  d:2016-05-15T00:10:00Z" | nc atsd_host 8081
+echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=42.1  d:2016-05-15T00:10:00Z" | nc atsd_hostname 8081
 ```
 
 ### TCP Client Examples
@@ -328,7 +328,7 @@ Include the `debug` command at the start of the line to instruct the server to r
 
 ```ls
 $ echo -e "debug series e:station_1 m:temperature=32.2" \
-  | nc -w 1 atsd_host 8081
+  | nc -w 1 atsd_hostname 8081
 ok
 ```
 
@@ -336,7 +336,7 @@ ok
 
 ```ls
 $ echo -e "debug my_command e:station_1 m:temperature=32.2" \
-  | nc -w 1 atsd_host 8081
+  | nc -w 1 atsd_hostname 8081
 >no response, connection closed
 ```
 

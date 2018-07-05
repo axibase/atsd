@@ -73,7 +73,7 @@ setsebool -P collectd_tcp_network_connect on
 
 ## Configuration
 
-Edit `/ect/collect.conf` by replacing atsd_host with ATSD IP address or host name, specify protocol and port. Example
+Edit `/ect/collect.conf` by replacing `atsd_hostname` with ATSD IP address or host name, specify protocol and port. Example
 
 ```xml
 ...

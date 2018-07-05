@@ -187,12 +187,12 @@ detailsTable('html')
 ```
 
 ```html
-<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse;"><tbody><tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">name</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;"><a href="https://atsd_host/entities/atsd">atsd</a></td></tr>
+<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse;"><tbody><tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">name</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;"><a href="https://atsd_hostname:8443/entities/atsd">atsd</a></td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">label</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Axibase Time Series Database</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">app</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">ATSD</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">url</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">https://atsd_host</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">url</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">https://atsd_hostname:8443</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">host</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">NURSWGVML007</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">metric</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;"><a href="https://atsd_host/metrics/metric.xhtml?metricName=jvm_memory_used_percent">jvm_memory_used_percent</a></td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">metric</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;"><a href="https://atsd_hostname:8443/metrics/metric.xhtml?metricName=jvm_memory_used_percent">jvm_memory_used_percent</a></td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">metric_label</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">JVM Memory Used, %</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">expression</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">avg() > 0</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">window</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">time(1 minute)</td></tr>
