@@ -24,7 +24,7 @@
 5387 | search | Bug | [Search](../../api/meta/misc/search.md): Full re-index fails on disk space shortage.
 5384 | administrator | Feature | Monitoring: Add **Database Statistics** page to show last values of internal metrics.
 5381 | log_aggregator | Bug | Aggregation Log Filter: Support multiple collectors.
-5380 | sql | Bug | SQL: [`date_format`](../../sql/examples/datetime-format.md#date-format-function) function returns incorrect time zone format.
+5380 | sql | Bug | SQL: [`date_format`](../../sql/examples/datetime-format.md#date_format-function) function returns incorrect time zone format.
 5379 | search | Bug | Search: Shutdown during full search index rebuild.
 5370 | UI | Feature | UI: Add links to **Metric Settings** page.
 5366 | administration | Feature | Scheduler: Modify frequent tasks to sleep a fixed interval between iterations.
@@ -40,7 +40,7 @@
 5348 | sql | Bug | SQL: Pre-process entity check in [`atsd_series`](../../sql/examples/select-atsd_series.md) query to work around metric limit.
 5346 | UI | Feature | Property: Add [**Properties**](../../administration/data_retention.md#deleting-properties) page to view or delete properties for a given entity.
 5331 | jdbc | Bug | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Provide `User-Agent` header to ascertain whether JDBC driver or HTTP client used `/api/sql` endpoint.
-5322 | sql | Bug | SQL: Cannot provide two consecutive single quotes to [`date_format`](../../sql/examples/datetime-format.md#date-format-function) function in pattern parameter.
+5322 | sql | Bug | SQL: Cannot provide two consecutive single quotes to [`date_format`](../../sql/examples/datetime-format.md#date_format-function) function in pattern parameter.
 5303 | security | Bug | Redirect from HTTP to HTTPS.
 5295 | portal | Bug | [Portal Editor](../../portals/README.md): commented freemarker strings are not ignored.
 5292 | core | Bug | [Metrics for Entity](../../api/data/alerts/examples/query/alerts-query-multiple-metrics-specified-entity.md): slow response for large number of metrics.
@@ -49,7 +49,7 @@
 5196 | api-rest | Feature |Meta API: [Replacement Table](../../api/meta/replacement-table/README.md) methods.
 5152 | rule editor | Bug | Rule Editor: Labels for [Webhook](../../rule-engine/notifications/README.md) parameters are not set if validation error occurs.
 5094 | entity_views | Bug | [Entity Views](../../configuration/entity_views.md): Unknown format function causes `400` error.
-5085 | sql | Feature | SQL: [`endtime` function](../../sql/#endtime) - add support for literal dates.
+5085 | sql | Feature | SQL: [`endtime` function](../../sql/README.md#endtime) - add support for literal dates.
 5058 | rule engine | Feature | [Rule Engine](../../rule-engine/README.md): Log security function results as ATSD message.
 3666 | UI | Bug | UI: Unable to search multiline queries in on **Query Statistics** page.
 3546 | api-rest | Feature | [Meta API](../../api/meta/README.md): Method to retrieve user roles and groups.
