@@ -22,7 +22,7 @@
   * [Implementation Notes](./user-authorization.md#implementation-notes)
 * SSL
   * [Installing Self-signed SSL Certificate](./ssl-self-signed.md)
-  * [Installing `Let's Encrypt` Certificate](./ssl-lets-encrypt.md)
+  * [Installing Let's Encrypt Certificate](./ssl-lets-encrypt.md)
   * [Installing CA-signed Certificate](./ssl-ca-signed.md)
 * [Restarting](./restarting.md#restarting)
 * [Updating](./update.md#update)

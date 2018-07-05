@@ -59,8 +59,8 @@ For example:
 ```python
 ATSD_CONF = {
     'url': 'http://atsd_hostname:8088',
-    'username': 'atsd_user',
-    'password': 'secrect_pwd',
+    'username': 'username',
+    'password': 'password',
     'entity_folders': ['_other',
                        'com_',
                        'nur',

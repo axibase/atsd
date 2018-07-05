@@ -142,7 +142,7 @@ time,cpu_user,cpu_system,waitio
 ### curl upload
 
 ```sh
-curl --insecure -X POST --user admin:pwd \
+curl --insecure -X POST --user username:password \
   -T csv-3120.csv "https://atsd_hostname:8443/api/v1/csv?config=parser-3120&wait=true"
 ```
 

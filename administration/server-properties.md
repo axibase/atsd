@@ -164,5 +164,5 @@ Property | Default Value | Description
 `hostname`| `nurswgvml007` | Hostname of the ATSD server determined automatically by executing the `hostname` command.|
 `nmon.data.directory` | `/tmp/atsd/nmon` | Absolute path to a directory where [`nmon`](../integration/nmon/README.md) agents are stored. |
 `search.index.path` | `/tmp/atsd/lucene` | Absolute path to [Lucene](../rule-engine/property-search.md) index directory.|
-`security.letsencrypt.renew` | `No` | Enable to check `Let's Encrypt` certificate once a day and attempt to renew it.|
-`server.url` | `https://{hostname}:8443` | Server URL specified in email notification links, by default set to `hostname`.|
+`security.letsencrypt.renew` | `No` | Enable to check [Let's Encrypt](../administration/ssl-lets-encrypt.md) certificate once a day and attempt to renew it.|
+`server.url` | `https://{atsd_hostname}:8443` | Server URL specified in email notification links, by default set to `hostname`.|

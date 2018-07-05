@@ -194,8 +194,7 @@ If the **Default User Group** is specified, the new self-registered users are au
 
 ### Issue 3470
 
-A new [`text` column](../../sql/examples/select-text-value.md) is available in the `SELECT` expression and the `WHERE` clause, so
-that string annotations are displayed in the result set along with numeric values. The `text` column can be selected in a simple query or in a `JOIN` query.
+A new [`text` column](../../sql/examples/select-text-value.md) is available in the `SELECT` expression and the `WHERE` clause to display string annotations in the result set along with numeric values. Select the `text` column in a simple or `JOIN` query.
 
 ```sql
 SELECT entity, datetime, value, text
