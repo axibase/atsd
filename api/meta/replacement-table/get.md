@@ -1,4 +1,4 @@
-# Replacement Table: Get
+# Replacement Table: get
 
 ## Description
 

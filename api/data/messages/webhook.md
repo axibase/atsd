@@ -1,4 +1,4 @@
-# Messages: Webhook
+# Messages: webhook
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Entity Group: Update
+# Entity Group: update
 
 ## Description
 

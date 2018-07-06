@@ -1,4 +1,4 @@
-# Properties: Delete
+# Properties: delete
 
 ## Description
 

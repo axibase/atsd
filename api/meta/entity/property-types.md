@@ -1,4 +1,4 @@
-# Entity: Property Types
+# Entity: property types
 
 ## Description
 

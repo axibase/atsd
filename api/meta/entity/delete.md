@@ -1,4 +1,4 @@
-# Entity: Delete
+# Entity: delete
 
 ## Description
 

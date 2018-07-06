@@ -1,4 +1,4 @@
-# Alerts: Query
+# Alerts: query
 
 ## Description
 

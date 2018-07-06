@@ -1,4 +1,4 @@
-# Entity: Update
+# Entity: update
 
 ## Description
 

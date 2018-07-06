@@ -1,4 +1,4 @@
-# Metric: Update
+# Metric: update
 
 ## Description
 

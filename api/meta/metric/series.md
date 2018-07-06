@@ -1,4 +1,4 @@
-# Metric: Series
+# Metric: series
 
 ## Description
 

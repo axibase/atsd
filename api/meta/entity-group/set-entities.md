@@ -1,4 +1,4 @@
-# Entity Group: Set Entities
+# Entity Group: set entities
 
 ## Description
 

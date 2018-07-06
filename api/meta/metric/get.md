@@ -1,4 +1,4 @@
-# Metric: Get
+# Metric: get
 
 ## Description
 

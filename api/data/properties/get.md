@@ -1,4 +1,4 @@
-# Properties: Get
+# Properties: get
 
 ## Description
 

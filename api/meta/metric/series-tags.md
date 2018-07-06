@@ -1,4 +1,4 @@
-# Metric: Series Tags
+# Metric: series tags
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Replacement Table: Create or Replace
+# Replacement Table: create or replace
 
 ## Description
 

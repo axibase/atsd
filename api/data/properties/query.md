@@ -1,4 +1,4 @@
-# Properties: Query
+# Properties: query
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Series: Delete
+# Series: delete
 
 ## Description
 

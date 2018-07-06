@@ -1,4 +1,4 @@
-# Replacement Table: Delete
+# Replacement Table: delete
 
 ## Description
 
