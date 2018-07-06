@@ -1,4 +1,4 @@
-# Alerts: Delete
+# Alerts: delete
 
 ## Description
 

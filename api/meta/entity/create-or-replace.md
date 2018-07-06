@@ -1,4 +1,4 @@
-# Entity: Create or Replace
+# Entity: create or replace
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Series: Query
+# Series: query
 
 ## Description
 

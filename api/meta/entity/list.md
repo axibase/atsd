@@ -1,4 +1,4 @@
-# Entities: List
+# Entities: list
 
 ## Description
 

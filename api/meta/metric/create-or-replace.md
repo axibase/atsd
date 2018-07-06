@@ -1,4 +1,4 @@
-# Metric: Create or Replace
+# Metric: create or replace
 
 ## Description
 

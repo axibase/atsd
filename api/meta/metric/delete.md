@@ -1,4 +1,4 @@
-# Metric: Delete
+# Metric: delete
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Entity Group: Get
+# Entity Group: get
 
 ## Description
 

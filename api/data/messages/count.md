@@ -1,4 +1,4 @@
-# Messages: Count Query
+# Messages: count
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Alerts: History Query
+# Alerts: history query
 
 ## Description
 

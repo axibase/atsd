@@ -1,4 +1,4 @@
-# Replacement Table: List
+# Replacement Table: list
 
 ## Description
 

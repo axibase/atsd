@@ -1,4 +1,4 @@
-# Messages: Query
+# Messages: query
 
 ## Description
 

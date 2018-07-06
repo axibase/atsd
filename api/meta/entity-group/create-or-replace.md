@@ -1,4 +1,4 @@
-# Entity Group: Create or Replace
+# Entity Group: create or replace
 
 ## Description
 

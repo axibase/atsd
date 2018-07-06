@@ -1,4 +1,4 @@
-# Entity: Get
+# Entity: get
 
 ## Description
 

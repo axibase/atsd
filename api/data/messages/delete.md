@@ -1,4 +1,4 @@
-# Messages: Delete
+# Messages: delete
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Properties: List Types
+# Properties: get types
 
 ## Description
 

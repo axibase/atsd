@@ -1,4 +1,4 @@
-# Entity Groups: List
+# Entity Groups: list
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Entity Group: Delete
+# Entity Group: delete
 
 ## Description
 

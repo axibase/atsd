@@ -1,4 +1,4 @@
-# Alerts: Update
+# Alerts: update
 
 ## Description
 

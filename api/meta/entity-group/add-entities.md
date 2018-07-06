@@ -1,4 +1,4 @@
-# Entity Group: Add Entities
+# Entity Group: add entities
 
 ## Description
 

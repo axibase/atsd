@@ -1,4 +1,4 @@
-# Series: Get
+# Series: get
 
 ## Description
 

@@ -1,4 +1,4 @@
-# Properties: Insert
+# Properties: insert
 
 ## Description
 
