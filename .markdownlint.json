@@ -6,5 +6,5 @@
   "MD033": false,
   "MD040": true,
   "MD045": false,
-  "MD105": false // blacklisted-words-for-use-cases.js
+  "MD105": false
 }
