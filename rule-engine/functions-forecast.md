@@ -53,11 +53,11 @@ The formula is:
   thresholdTime(number min, number max, string i) long
 ```
 
-Returns time in Unix milliseconds when the [forecast value](../../forecasting/README.md) is outside of the threshold range for the first time during time interval `i`. The forecast exceeds the threshold when the value is below `min` or the value is above `max`. Thresholds `min` and `max` must be set to `null` if inactive.
+Returns time in Unix milliseconds when the [forecast value](../forecasting/README.md) is outside of the threshold range for the first time during time interval `i`. The forecast exceeds the threshold when the value is below `min` or the value is above `max`. Thresholds `min` and `max` must be set to `null` if inactive.
 
 The function returns `null` if forecast values are within the specified threshold boundaries during time interval `i` or if no forecast is found in the database.
 
-The interval `i` is specified as count and [unit](../../api/data/series/time-unit.md), for example `1 WEEK`.
+The interval `i` is specified as count and [unit](../api/data/series/time-unit.md), for example `1 WEEK`.
 
 ### Examples
 
