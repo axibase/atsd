@@ -83,6 +83,7 @@ Forecast functions retrieve forecast values and variance from the database.
 * [`forecast`](functions-forecast.md#forecast)
 * [`forecast_stdev`](functions-forecast.md#forecast_stdev)
 * [`forecast_deviation`](functions-forecast.md#forecast_deviation)
+* [`thresholdTime`](functions-forecast.md#thresholdtime)
 
 ## Value
 

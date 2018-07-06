@@ -7,6 +7,7 @@
 * [`forecast`](#forecast)
 * [`forecast_stdev`](#forecast_stdev)
 * [`forecast_deviation`](#forecast_deviation)
+* [`thresholdTime`](#thresholdtime)
 
 ## `forecast()`
 
@@ -45,3 +46,13 @@ The formula is:
 ```javascript
   (n - forecast())/forecast_stdev()
 ```
+
+## `thresholdTime`
+
+```javascript
+  thresholdTime(number minThreshold, number maxThreshold, string interval) long
+```
+
+Time when the forecast value exceeds either minimum or maximum threshold for a given time interval, or `null` if all available forecast values are inside threshold boundaries.
+`minThreshold` and `maxThreshold` must be set to `null` if not used.
+`interval` must contain interval count and unit, for example `1 WEEK`.
