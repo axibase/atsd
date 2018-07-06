@@ -4,15 +4,15 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5423 | rule engine | Bug | [Rule Engine](../../rule-engine/README.md): Deserialization errors for rule xml backup files with type and source filters.
+5423 | rule engine | Bug | [Rule Engine](../../rule-engine/README.md): Deserialization errors for rule XML backup files with type and source filters.
 5421 | administration | Feature | Backup: Implement customizable [backup directory](../../administration/backup.md#backup-directory).
 5420 | rule engine | Feature | [Rule Engine](../../rule-engine/README.md): Increase throughput with multiple rules enabled.
 5419 | UI | Feature | UI: Apply DST offset to **Time Zone** drop-down lists.
 5413 | rule engine | Feature | Rule Engine: Implement [`toNumber`](../../rule-engine/functions-utility.md#tonumber) function for `null`-safe number parsing.
-5412 | api-rest | Feature | [Series Get](../../api/data/series/get.md) method: implement period alignment parameter.
+5412 | api-rest | Feature | [Series Get](../../api/data/series/get.md) method: Implement period alignment parameter.
 5411 | message | Bug | [Message Table TTL](../../api/data/messages/delete.md#ttl) specified in `server.properties` is ignored.
 5407 | UI | Bug | UI: Type field auto-complete is broken on **Data Entry** page.
-5405 | rule engine | Feature | [System Commands](../../rule-engine/commands.md): pass window fields into scripts as named variables.
+5405 | rule engine | Feature | [System Commands](../../rule-engine/commands.md): Pass window fields into scripts as named variables.
 5403 | rule editor | Bug | [Rule Engine](../../rule-engine/commands.md): Entity Filter selector replaced with auto-complete text input field.
 5402 | UI | Feature | UI: Rename **Web Notifications** as [**Outgoing Webhooks**](../../rule-engine/notifications/README.md).
 5401 | UI | Feature | UI: Move **Webhook Requests** to **Alerts** menu.
@@ -31,15 +31,15 @@
 5365 | administration | Feature | UI: Implement [Export Configuration](../../administration/support.md) option to export server settings, properties, and metrics to JSON file.
 5364 | administration | Feature | [Logging](../../administration/logging.md): Increase log detail for full search re-index and group update tasks.
 5363 | log_aggregator | Bug | Aggregation Logger: `ConcurrentModificationException` raised by shutdown hook.
-5362 | csv | Bug | [CSV Parsers](../../parsers/csv/README.md): messages for broken files are not user-friendly.
+5362 | csv | Bug | [CSV Parsers](../../parsers/csv/README.md): Messages for broken files are not user-friendly.
 5359 | statistics | Bug | Series Statistics: **Entity** label not shown.
 5357 | api-rest | Bug | [Logger](../../administration/logging.md) generates excessive `Invalid Command` warnings without explanation.
 5353 | client | Support | [Python API Client](https://github.com/axibase/atsd-api-python): Add script example with delete series parameters.
 5350 | installation | Bug | [Installation](../../installation/README.md): Installation process fails to install Debian 9 on an offline system.
-5349 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc): speed up `datetime` column parsing.
+5349 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Speed up `datetime` column parsing.
 5348 | sql | Feature | SQL: Pre-process entity check in [`atsd_series`](../../sql/examples/select-atsd_series.md) query to work around metric limit.
 5346 | UI | Feature | Property: Add [**Properties**](../../administration/data_retention.md#deleting-properties) page to view or delete properties for a given entity.
-5331 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc): set correct `User-Agent` header to determine whether JDBC driver or HTTP client used `/api/sql` endpoint.
+5331 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Set correct `User-Agent` header to determine whether JDBC driver or HTTP client used `/api/sql` endpoint.
 5322 | sql | Bug | SQL: Extra quotes to [`date_format`](../../sql/examples/datetime-format.md#date_format-function) function generate error.
 5295 | portal | Bug | [Portal Editor](../../portals/README.md): Freemarker comments are not ignored.
 5292 | core | Bug | [Metrics for Entity](../../api/data/alerts/examples/query/alerts-query-multiple-metrics-specified-entity.md): Slow response for large number of entities.
