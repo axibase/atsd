@@ -56,3 +56,23 @@ The formula is:
 Returns time in Unix milliseconds when the forecast value for the entity, metric, and tags in the current window exceeds either minimum threshold `min` or maximum threshold `max` during the time interval `i`, or `null` if all available forecast values are inside threshold boundaries.
 `min` and `max` must be set to `null` if not used.
 `i` must contain interval count and unit, for example `1 WEEK`.
+
+### Examples
+
+| **Forecast Time** | **Forecast Time in Unix Milliseconds**  | **Forecast Value** |
+|---|---|---|
+| `now + 1 * day` | `1530975600000` | `81` |
+| `now + 3 * day` | `1531148400000` | `79` |
+| `now + 5 * day` | `1531321200000` | `90` |
+| `now + 7 * day` | `1531494000000` | `91` |
+| `now + 9 * day` | `1531666800000` | `95` |
+
+```javascript
+  thresholdTime(null, null, '7 DAY') // returns null
+  thresholdTime(null, 90, '7 DAY') // returns 1531494000000
+  thresholdTime(null, 93, '7 DAY') // returns null
+  thresholdTime(70, null, '7 DAY') // returns null
+  thresholdTime(80, null, '7 DAY') // returns 1530975600000
+  thresholdTime(80, 80, '7 DAY') // returns 1530975600000
+  thresholdTime(70, 90, '7 DAY') // returns 1531494000000
+```
