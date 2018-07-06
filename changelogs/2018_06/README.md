@@ -20,7 +20,7 @@
 5397 | administration | Bug | `IllegalArgumentException` for [Backup upload](../../administration/backup.md).
 5396 | security | Bug | [Security](../../administration/user-authentication.md): JSON response duplicated in case of authentication failure.
 5394 | client | Bug | ATSD [API Java](https://github.com/axibase/atsd-api-java): Handling for `Throwable` errors.
-5393 | api-rest | Feature | API: Add `addInsertTime` parameter for [Metrics](https://hbs.axibase.com:9443/metrics?query=ca.*&page=1&size=20) and [Entity](https://axibase.com/docs/atsd/api/meta/entity/get.html) API requests.
+5393 | api-rest | Feature | API: Add `addInsertTime` parameter for [Metrics](../../api/meta/entity/metrics.md) and [Entity](../../api/meta/entity-group/get-entities.md) API requests.
 5387 | search | Bug | [Search](../../api/meta/misc/search.md): Full re-index fails on disk space shortage.
 5384 | administrator | Feature | Monitoring: Add **Database Statistics** page to enumerate the most recent values of internal metrics.
 5381 | log_aggregator | Feature | Aggregation Log Filter: Add support for multiple collectors.
