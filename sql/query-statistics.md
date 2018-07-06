@@ -28,7 +28,7 @@ The **Query Statistics** page contains several drop-down lists to filter query s
   * `<=` : Less than or equal to.
   * `sec`: Comparison time in seconds.
 
-> The following fields support `!` negation syntax to exclude unwanted data. See [Examples](#examples).
+> The following fields support `!` negation syntax to exclude unwanted data. See [Exclusion Examples](#exclusion-examples).
 
 * **Query**: Filter queries based on their contents. **Query** fields accepts single or multi-line queries.
 
@@ -42,7 +42,7 @@ The **Query Statistics** page contains several drop-down lists to filter query s
 
 ![](./images/example-query.png)
 
-The above set of queries are all `scheduled` with status `Completed`. Each of the queries contains information in the `Source Details` column about the rule which triggered the query. Unwanted rules may be excluded using `!` negation syntax.
+The above set of queries are all `scheduled` with status `Completed`. Each of the queries contains information in the `Source Details` column about the rule which triggered the query. Unwanted rules can be excluded using `!` negation syntax.
 
 ![](./images/exclude-alert.png)
 
@@ -66,7 +66,7 @@ Exclude user `sergei.rodionov` from search results.
 
 ![](./images/all-examples.png)
 
-This set of queries contains all those with `Completed` status, regardless of **Source**. Exclude those queries which contain certain [syntax](./README#syntax) with `!` negation.
+This set of queries contains all those with `Completed` status, regardless of **Source**. Exclude those queries which contain certain [syntax](./README.md#syntax) with `!` negation.
 
 ![](./images/exclude-metric.png)
 
