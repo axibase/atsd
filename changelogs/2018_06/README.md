@@ -5,8 +5,8 @@
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
 5423 | rule engine | Bug | [Rule Engine](../../rule-engine/README.md): Deserialization errors for rules with type and source filters.
-5421 | administration | Bug | Backup: Customizable [directory](../../administration/backup.md#backup-directory).
-5420 | rule engine | Bug | [Rule Engine](../../rule-engine/README.md): Optimize cases with multiple rules enabled.
+5421 | administration | Feature | Backup: Customizable [directory](../../administration/backup.md#backup-directory).
+5420 | rule engine | Feature | [Rule Engine](../../rule-engine/README.md): Optimize cases with multiple rules enabled.
 5419 | UI | Bug | UI: Apply DST offset to Time Zone drop-down lists.
 5413 | rule engine | Feature | Rule Engine: Implement [`toNumber`](../../rule-engine/functions-utility.md#tonumber) function for `null`-safe number parsing.
 5412 | api-rest | Feature | [Series Get](../../api/data/series/get.md) method: Add support for period alignment.
@@ -20,28 +20,27 @@
 5397 | administration | Bug | `IllegalArgumentException` for [Backup upload](../../administration/backup.md).
 5396 | security | Bug | [Security](../../administration/user-authentication.md): Duplicate JSON response in case of authentication failure.
 5394 | client | Bug | ATSD [API Java](https://github.com/axibase/atsd-api-java): Handling for `Throwable` errors.
-5393 | api-rest | Feature | API: Add `InsertTime`.
+5393 | api-rest | Feature | API: Add `addInsertTime` parameter for [Metrics](https://hbs.axibase.com:9443/metrics?query=ca.*&page=1&size=20) and [Entity](https://axibase.com/docs/atsd/api/meta/entity/get.html) API requests.
 5387 | search | Bug | [Search](../../api/meta/misc/search.md): Full re-index fails on disk space shortage.
 5384 | administrator | Feature | Monitoring: Add **Database Statistics** page to show last values of internal metrics.
-5381 | log_aggregator | Bug | Aggregation Log Filter: Support multiple collectors.
+5381 | log_aggregator | Feature | Aggregation Log Filter: Support multiple collectors.
 5380 | sql | Bug | SQL: [`date_format`](../../sql/examples/datetime-format.md#date_format-function) function returns incorrect time zone format.
 5379 | search | Bug | Search: Shutdown during full search index rebuild.
 5370 | UI | Feature | UI: Add links to **Metric Settings** page.
 5366 | administration | Feature | Scheduler: Modify frequent tasks to sleep a fixed interval between iterations.
-5365 | administration | Feature | UI: Implement [Backup](../../administration/backup.md) to export server settings, properties, and metrics to file.
-5364 | administration | Feature | [Logging](../../administration/logging.md): Increase log detail for full search reindex and group update tasks.
+5365 | administration | Feature | UI: Implement [Export Configuration](../../administration/backup.md) option to export server settings, properties, and metrics to JSON file.
+5364 | administration | Feature | [Logging](../../administration/logging.md): Increase log detail for full search re-index and group update tasks.
 5363 | log_aggregator | Bug | Aggregation Logger: `ConcurrentModificationException` related to Shutdown Hook.
 5362 | csv | Bug | [CSV Parsers](../../parsers/csv/README.md): Show user-friendly message for broken files.
 5359 | statistics | Bug | Series Statistics: **Entity** label not shown.
 5357 | api-rest | Bug | [Logger](../../administration/logging.md) generates excessive `Invalid Command` warnings without explanation.
-5353 | client | Support | [Python API Client](https://github.com/axibase/atsd-api-python): Add example of script with parameters to delete series.
-5350 | installation | Bug | [Installation](../../installation/README.md): Debian 9 offline fails to install dependencies.
+5353 | client | Support | [Python API Client](https://github.com/axibase/atsd-api-python): Add script example with delete series parameters.
+5350 | installation | Bug | [Installation](../../installation/README.md): Installation process fails to install Debian 9 offline dependencies.
 5349 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Optimize datetime parsing.
-5348 | sql | Bug | SQL: Pre-process entity check in [`atsd_series`](../../sql/examples/select-atsd_series.md) query to work around metric limit.
+5348 | sql | Feature | SQL: Pre-process entity check in [`atsd_series`](../../sql/examples/select-atsd_series.md) query to work around metric limit.
 5346 | UI | Feature | Property: Add [**Properties**](../../administration/data_retention.md#deleting-properties) page to view or delete properties for a given entity.
 5331 | jdbc | Bug | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Provide `User-Agent` header to ascertain whether JDBC driver or HTTP client used `/api/sql` endpoint.
 5322 | sql | Bug | SQL: Cannot provide two consecutive single quotes to [`date_format`](../../sql/examples/datetime-format.md#date_format-function) function in pattern parameter.
-5303 | security | Bug | Redirect from HTTP to HTTPS.
 5295 | portal | Bug | [Portal Editor](../../portals/README.md): commented freemarker strings are not ignored.
 5292 | core | Bug | [Metrics for Entity](../../api/data/alerts/examples/query/alerts-query-multiple-metrics-specified-entity.md): slow response for large number of metrics.
 5272 | core | Feature | Core: Migrate date formatters and parsers from `joda.time` to `java.time`.
@@ -52,4 +51,3 @@
 5085 | sql | Feature | SQL: [`endtime` function](../../sql/README.md#endtime) - add support for literal dates.
 5058 | rule engine | Feature | [Rule Engine](../../rule-engine/README.md): Log security function results as ATSD message.
 3666 | UI | Bug | UI: Unable to search multiline queries in on **Query Statistics** page.
-3546 | api-rest | Feature | [Meta API](../../api/meta/README.md): Method to retrieve user roles and groups.

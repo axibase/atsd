@@ -18,7 +18,6 @@ const topNavMenu = [
         text: 'API',
         items: [
             { text: "Rest API", link: '/api/data/' },
-            { text: "Meta API", link: '/api/meta/' },
             { text: "Network API", link: '/api/network/' },
             { text: "API Clients", link: '/api/clients/' },
         ]
