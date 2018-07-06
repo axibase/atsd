@@ -12,7 +12,7 @@
 ## `forecast()`
 
 ```javascript
-  forecast() number
+  forecast() double
 ```
 
 Returns forecast value for the entity, metric, and tags in the current window.
@@ -20,7 +20,7 @@ Returns forecast value for the entity, metric, and tags in the current window.
 ## `forecast(string n)`
 
 ```javascript
-  forecast(string n) number
+  forecast(string n) double
 ```
 
 Returns named forecast value for the entity, metric, and tags in the current window, for example `forecast('ltm')` .
@@ -28,7 +28,7 @@ Returns named forecast value for the entity, metric, and tags in the current win
 ## `forecast_stdev`
 
 ```javascript
-  forecast_stdev() number
+  forecast_stdev() double
 ```
 
 Returns forecast standard deviation.
@@ -36,7 +36,7 @@ Returns forecast standard deviation.
 ## `forecast_deviation`
 
 ```javascript
-  forecast_deviation(double n) number
+  forecast_deviation(double n) double
 ```
 
 Returns difference between a number `n` (such as the last value) and the forecast value (returned by `forecast()` function), divided by the forecast standard deviation.
