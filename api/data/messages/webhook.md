@@ -92,7 +92,7 @@ Input document:
     "public": true,
     "Full Name": "Axibase TSD",
     "references": [],
-    "authors": ["john", "sam"]
+    "authors": ["john.doe", "mary.jones"]
   }
 }
 ```
@@ -104,8 +104,8 @@ event = commit
 repository.name = atsd
 repository.public = true
 repository.full_name = Axibase TSD
-repository.authors[0] = john
-repository.authors[1] = sam
+repository.authors[0] = john.doe
+repository.authors[1] = mary.jones
 ```
 
 String fields are unquoted by removing leading and trailing single or double quotes, if present.
@@ -543,21 +543,21 @@ Payload:
     "description": "Public Axibase repositories on GitHub"
   },
   "sender": {
-    "login": "rodionos",
+    "login": "john_doe",
     "id": 2098022,
     "avatar_url": "https://avatars3.githubusercontent.com/u/2098022?v=4",
     "gravatar_id": "",
-    "url": "https://api.github.com/users/rodionos",
-    "html_url": "https://github.com/rodionos",
-    "followers_url": "https://api.github.com/users/rodionos/followers",
-    "following_url": "https://api.github.com/users/rodionos/following{/other_user}",
-    "gists_url": "https://api.github.com/users/rodionos/gists{/gist_id}",
-    "starred_url": "https://api.github.com/users/rodionos/starred{/owner}{/repo}",
-    "subscriptions_url": "https://api.github.com/users/rodionos/subscriptions",
-    "organizations_url": "https://api.github.com/users/rodionos/orgs",
-    "repos_url": "https://api.github.com/users/rodionos/repos",
-    "events_url": "https://api.github.com/users/rodionos/events{/privacy}",
-    "received_events_url": "https://api.github.com/users/rodionos/received_events",
+    "url": "https://api.github.com/users/john_doe",
+    "html_url": "https://github.com/john_doe",
+    "followers_url": "https://api.github.com/users/john_doe/followers",
+    "following_url": "https://api.github.com/users/john_doe/following{/other_user}",
+    "gists_url": "https://api.github.com/users/john_doe/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/john_doe/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/john_doe/subscriptions",
+    "organizations_url": "https://api.github.com/users/john_doe/orgs",
+    "repos_url": "https://api.github.com/users/john_doe/repos",
+    "events_url": "https://api.github.com/users/john_doe/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/john_doe/received_events",
     "type": "User",
     "site_admin": false
   }
@@ -579,7 +579,7 @@ Command:
         "repository.full_name": "axibase/atsd",
         "request_ip": "192.0.2.1",
         "sender.id": "2098022",
-        "sender.login": "rodionos",
+        "sender.login": "john_doe",
         "sender.site_admin": "false",
         "sender.type": "User"
     },

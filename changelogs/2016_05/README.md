@@ -31,7 +31,7 @@ SELECT tavg.tags.type,
     last(tmed.value)/median(tmed.value)
 FROM "jmeter.ok.avg" tavg
     JOIN "jmeter.ok.pct50" tmed
-WHERE tavg.entity = "hbs.axibase.com"
+WHERE tavg.entity = "test.example.org"
     AND tavg.datetime >= current_day - 10*day
 GROUP BY tavg.tags.type
   ORDER BY last(tmed.value) DESC

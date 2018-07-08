@@ -544,8 +544,8 @@ Input JSON document:
     "name": "atsd",
     "Full Name": "Axibase TSD",
     "authors": [
-      "john",
-      "sam",
+      "john.doe",
+      "mary.jones",
       ""
     ]
   }
@@ -560,8 +560,8 @@ Output map:
   "merged": true,
   "repo.name": "atsd",
   "repo.Full Name": "Axibase TSD",
-  "repo.authors[0]": "john",
-  "repo.authors[1]": "sam"
+  "repo.authors[0]": "john.doe",
+  "repo.authors[1]": "mary.jones"
 }
 ```
 
@@ -578,7 +578,7 @@ The examples below are based on the following JSON document which represents out
           {
             "url": "https://github.com/axibase/atsd-api-test/pull/487",
             "author": {
-              "login": "unrealwork"
+              "login": "may_jones"
             },
             "mergeable": "MERGEABLE",
             "baseRefName": "master",
@@ -588,11 +588,11 @@ The examples below are based on the following JSON document which represents out
           {
             "url": "https://github.com/axibase/atsd-api-test/pull/406",
             "author": {
-              "login": "vtols"
+              "login": "john_doe"
             },
             "mergeable": "MERGEABLE",
             "baseRefName": "master",
-            "headRefName": "vtols-4397",
+            "headRefName": "john_doe-4397",
             "title": "Test #4397"
           }
         ]
@@ -609,17 +609,17 @@ The examples below are based on the following JSON document which represents out
 ```json
 [ {
   "url" : "https://github.com/axibase/atsd-api-test/pull/487",
-  "author.login" : "unrealwork",
+  "author.login" : "may_jones",
   "mergeable" : "MERGEABLE",
   "baseRefName" : "master",
   "headRefName" : "5208-series-tag-query-with-wildcard-without-entity",
   "title" : "5208: Series tags query with wildcard without entity"
 }, {
   "url" : "https://github.com/axibase/atsd-api-test/pull/406",
-  "author.login" : "vtols",
+  "author.login" : "john_doe",
   "mergeable" : "MERGEABLE",
   "baseRefName" : "master",
-  "headRefName" : "vtols-4397",
+  "headRefName" : "john_doe-4397",
   "title" : "Test #4397"
 } ]
 ```
@@ -631,8 +631,8 @@ The examples below are based on the following JSON document which represents out
 ```json
 [
   [ "url", "author.login", "mergeable", "baseRefName", "headRefName", "title" ],
-  [ "https://github.com/axibase/atsd-api-test/pull/487", "unrealwork", "MERGEABLE", "master", "5208-series-tag-query-with-wildcard-without-entity", "5208: Series tags query with wildcard without entity" ],
-  [ "https://github.com/axibase/atsd-api-test/pull/406", "vtols", "MERGEABLE", "master", "vtols-4397", "Test #4397" ]
+  [ "https://github.com/axibase/atsd-api-test/pull/487", "may_jones", "MERGEABLE", "master", "5208-series-tag-query-with-wildcard-without-entity", "5208: Series tags query with wildcard without entity" ],
+  [ "https://github.com/axibase/atsd-api-test/pull/406", "john_doe", "MERGEABLE", "master", "john_doe-4397", "Test #4397" ]
 ]
 ```
 
@@ -644,8 +644,8 @@ The examples below are based on the following JSON document which represents out
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
 | url                                               | author.login    | mergeable | baseRefName | headRefName                                        | title                                                        |
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
-| https://github.com/axibase/atsd-api-test/pull/487 | unrealwork      | MERGEABLE | master      | 5208-series-tag-query-with-wildcard-without-entity | 5208: Series tags query with wildcard without entity         |
-| https://github.com/axibase/atsd-api-test/pull/406 | vtols           | MERGEABLE | master      | vtols-4397                                         | Test #4397                                                   |
+| https://github.com/axibase/atsd-api-test/pull/487 | may_jones      | MERGEABLE | master      | 5208-series-tag-query-with-wildcard-without-entity | 5208: Series tags query with wildcard without entity         |
+| https://github.com/axibase/atsd-api-test/pull/406 | john_doe           | MERGEABLE | master      | john_doe-4397                                         | Test #4397                                                   |
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
 ```
 
@@ -656,16 +656,16 @@ The examples below are based on the following JSON document which represents out
 ```json
 {
   "data.repository.pullRequests.nodes[0].url" : "https://github.com/axibase/atsd-api-test/pull/487",
-  "data.repository.pullRequests.nodes[0].author.login" : "unrealwork",
+  "data.repository.pullRequests.nodes[0].author.login" : "may_jones",
   "data.repository.pullRequests.nodes[0].mergeable" : "MERGEABLE",
   "data.repository.pullRequests.nodes[0].baseRefName" : "master",
   "data.repository.pullRequests.nodes[0].headRefName" : "5208-series-tag-query-with-wildcard-without-entity",
   "data.repository.pullRequests.nodes[0].title" : "5208: Series tags query with wildcard without entity",
   "data.repository.pullRequests.nodes[1].url" : "https://github.com/axibase/atsd-api-test/pull/406",
-  "data.repository.pullRequests.nodes[1].author.login" : "vtols",
+  "data.repository.pullRequests.nodes[1].author.login" : "john_doe",
   "data.repository.pullRequests.nodes[1].mergeable" : "MERGEABLE",
   "data.repository.pullRequests.nodes[1].baseRefName" : "master",
-  "data.repository.pullRequests.nodes[1].headRefName" : "vtols-4397",
+  "data.repository.pullRequests.nodes[1].headRefName" : "john_doe-4397",
   "data.repository.pullRequests.nodes[1].title" : "Test #4397"
 }
 ```
@@ -677,11 +677,11 @@ The examples below are based on the following JSON document which represents out
 ```json
 [{
   "url" : "https://github.com/axibase/atsd-api-test/pull/487",
-  "author":{"login":"unrealwork"},
+  "author":{"login":"may_jones"},
   "title":"5208: Series tags query with wildcard without entity"
 }, {
   "url":"https://github.com/axibase/atsd-api-test/pull/406",
-  "author":{"login":"vtols"},
+  "author":{"login":"john_doe"},
   "title":"Test #4397"
 }]
 ```

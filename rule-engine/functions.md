@@ -37,7 +37,7 @@ Functions can accept arguments and return values in one of the following data ty
 | `string` | string | `startsWith(entity, 'NUR')` |
 | `[]` | collection | `randomItem([1, 2, 3])` |
 | `[string]` | collection of strings | `coalesce([tags.location, 'SVL'])` |
-| `[k: v]` | key-value map | `randomKey(['john': 0.8, 'sam': 0.2])` |
+| `[k: v]` | key-value map | `randomKey(['john.doe': 0.8, 'mary.jones': 0.2])` |
 | `object` | object | `rule_window('disk_check').status` |
 
 ## Statistical

@@ -68,13 +68,13 @@ Named collections are listed on the **Data > Named Collections** page.
 Assuming the collection contains the following records and the 2nd entry is randomly selected:
 
 ```elm
-Kent
-Thomas
-Stacy
+John Doe
+Mary Jones
+Jack Smith
 ```
 
 ```javascript
-  // returns Thomas
+  // returns Mary Jones
 randomItem(collection('oncall-person'))
 ```
 
@@ -87,18 +87,18 @@ Key-value maps are provided by the [`replacementTable`](functions-lookup.md#repl
 Assuming the replacement table contains the following rows and the second entry is randomly selected:
 
 ```elm
-Kent=415.555-0000
-Thomas=415.555-0001
-Stacy=415.555-0002
+John Doe=(800) 555-0100
+Mary Jones=(800) 555-0200
+Jack Smith=(800) 555-0300
 ```
 
 ```javascript
-// returns Thomas
+// returns Mary Jones
 randomItem(replacementTable('oncall-person').keySet())
 ```
 
 ```javascript
-// returns 415.555-0001
+// returns (800) 555-0200
 randomItem(replacementTable('oncall-person').values())
 ```
 
@@ -140,13 +140,13 @@ randomKey(replacementTable('oncall-person'))
 Assuming the table contains the following records, the second element has a 20% chance of being selected:
 
 ```elm
-Kent=0.5
-Thomas=0.2
-Stacy=0.3
+John Doe=0.5
+Mary Jones=0.2
+Jack Smith=0.3
 ```
 
 The `excludeKeys` function can be used to remove some elements from the input map prior to invoking the `randomKey` function.
 
 ```javascript
-randomKey(excludeKeys(replacementTable('oncall-person'),['Stacy']))
+randomKey(excludeKeys(replacementTable('oncall-person'),['Jack Smith']))
 ```

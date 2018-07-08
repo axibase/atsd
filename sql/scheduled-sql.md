@@ -64,9 +64,9 @@ The file extension must match the export format. For example, if the format is `
 
 The **Output Path** field can contain date and form [placeholders](#placeholders) to organize files or their parent directories by day or month.
 
-Example: `/opt/report/daily/${yyyy-MM-dd}.csv`
+Example: `/path/to/report-dir/daily/${yyyy-MM-dd}.csv`
 
-The above expression evaluates to the following path `/opt/report/daily/2017-06-10.csv` when the report is executed.
+The above expression evaluates to the following path `/path/to/report-dir/daily/2017-06-10.csv` when the report is executed.
 
 ### Email Delivery
 

@@ -71,7 +71,7 @@ randomKey(replacementTable('oncall-person'))
 ```
 
 ```javascript
-randomKey(excludeKeys(replacementTable('oncall-person'),['John']))
+randomKey(excludeKeys(replacementTable('oncall-person'),['John Doe']))
 ```
 
 ```javascript

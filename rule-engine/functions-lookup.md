@@ -208,8 +208,8 @@ If the optional boolean `b` parameter is specified and is set to `true`, the fun
 Example:
 
 ```javascript
-  /* Returns 'john' if the 'on-call' table does not contain an entry for 'john' */
-  lookup('on-call', 'john', true)
+  /* Returns 'john.doe' if the 'on-call' table does not contain an entry for 'john.doe' */
+  lookup('on-call', 'john.doe', true)
 ```
 
 ## `replacementTable`
