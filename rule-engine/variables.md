@@ -131,19 +131,11 @@ To access the n-th element in the collection, use square brackets `[index]` or t
 
 ## Cross-Reference
 
-These variables can refer to other variables declared in the same rule.
+The variables can refer to other variables declared in the same rule.
 
 ![](./images/variables-reference.png)
 
-### Order
-
-Variables are evaluated in the order defined on the **Overview** tab.
-
-A dependent variable must be declared **after** the variable that it refers to.
-
-### References
-
-Variables that are dependent on other variables can be included in a condition.
+Variables can be included in a condition.
 
 ![](./images/variables-refer-indirect.png)
 

@@ -1,13 +1,12 @@
 # Monitoring
 
-ATSD performance metrics can be retrieved via JMX, file, or a http/JSON
-request.
+ATSD performance metrics can be retrieved via JMX, read from a plain text file, or retrieved from an HTTP endpoint in JSON format.
 
-These metrics are updated every 15 to 60 seconds and can be used to monitor
+The metrics are updated at a regular interval and can be used to monitor
 the database state and the status of its individual components, such as the
-amount of data received, memory usage, and read/write activity.
+amount of data received, memory usage, and read/write throughput.
 
-You can retrieve, test, or view the metrics using the following methods:
+You can access the metrics using the following methods:
 
 * [JMX in JSON format](monitoring-metrics/json.md)
 * [JMX](monitoring-metrics/jmx.md)
