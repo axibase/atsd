@@ -55,7 +55,7 @@ The user must have `API_DATA_WRITE` role and `write` permissions for the target 
 
 ### Webhook User Wizard
 
-To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split button located below the **Users** table.
+To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split-button located below the **Users** table.
 
 ![](./images/webhook-user.png)
 

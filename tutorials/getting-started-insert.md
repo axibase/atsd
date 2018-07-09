@@ -105,7 +105,7 @@ date,asset,temperature
 2018-Jun-01 02:00:00,BR-1905,25.0
 ```
 
-Open **Data > CSV Parsers** page, select **Import** from the split button located at the bottom of the page.
+Open **Data > CSV Parsers** page, select **Import** from the split-button located at the bottom of the page.
 
 Attach [temperature_parser.xml](./resources/temperature_parser.xml) and import the parser.
 

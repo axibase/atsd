@@ -10,7 +10,7 @@ To view existing templates or create a new template, open the **Settings > Tag T
 
 ![](./images/tag-templates-menu.png)
 
-To modify an existing tag template, click the link in the **Name** column. To create a new tag template, expand the split button and select **Create**.
+To modify an existing tag template, click the link in the **Name** column. To create a new tag template, expand the split-button and select **Create**.
 
 A template can also be created from existing tags by clicking the **Create Tag Template** link on a metric or **Entity Editor** page.
 

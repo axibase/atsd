@@ -100,7 +100,7 @@ The portals are listed on the **Portals** page. Click **Portals** in the top men
 
 ![](./resources/creating-and-assigning-portals_4.png)
 
-Use the split button at the bottom of the page to manage portals.
+Use the split-button at the bottom of the page to manage portals.
 
 ![](./resources/creating-and-assigning-portals_5.png)
 
