@@ -17,10 +17,10 @@ The following tests estimate the amount of disk space required to store the same
 | MySQL      | 5.7   | Specific   | No  | 15.6 | [view](mysql.md) |
 | MySQL      | 5.7   | Universal  | Yes | 34.5 | [view](mysql.md) |
 | MySQL      | 5.7   | Universal  | No  | 70.7 | [view](mysql.md) |
-| Oracle      | 12.2.0.1   | Specific   | Yes | 9.4  | [view](oracle.md) |
-| Oracle      | 12.2.0.1   | Specific   | No  | 13.4 | [view](oracle.md) |
-| Oracle      | 12.2.0.1   | Universal  | Yes | 39.3 | [view](oracle.md) |
-| Oracle      | 12.2.0.1   | Universal  | No  | 52.5 | [view](oracle.md) |
+| Oracle      | v12.2.0.1   | Specific   | Yes | 9.4  | [view](oracle.md) |
+| Oracle      | v12.2.0.1   | Specific   | No  | 13.4 | [view](oracle.md) |
+| Oracle      | v12.2.0.1   | Universal  | Yes | 39.3 | [view](oracle.md) |
+| Oracle      | v12.2.0.1   | Universal  | No  | 52.5 | [view](oracle.md) |
 | PostgreSQL | 9.6   | Specific   | No  | 21.6 | [view](postgres.md) |
 | PostgreSQL | 9.6   | Universal  | No  | 83.7 | [view](postgres.md) |
 | Vertica | 7.1.1-0   | Specific   | Yes | 2.4 | [view](vertica.md) |
