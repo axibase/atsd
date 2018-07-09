@@ -98,9 +98,10 @@ alert_open_datetime=2018-07-03T09:38:00Z
 alert_open_time=2018-07-03 09:38:00
 alert_type=REPEAT
 entity=atsd
+entity_tags=app=ATSD;environment=dev;loc_area=NUR
 event_datetime=2018-07-03T09:38:30Z
 event_time=2018-07-03 09:38:30
-expression=value >= 0
+condition=value >= 0
 message=
 metric=timer_15s
 min_interval_expired=
@@ -119,6 +120,7 @@ rule=script-check
 schedule=
 severity=warning
 status=REPEAT
+tags=host=NURSWGVML007;disk=/
 tags.host=NURSWGVML007
 value=0
 window_first_datetime=2018-07-03T09:38:00Z

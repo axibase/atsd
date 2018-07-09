@@ -65,7 +65,7 @@ File System '/opt/apps' is low on disk space: 95.567 (used)
 ---
 
 ```bash
-Server ${entity.label}/${entity} located at site ${lower(entity.tags.location)} is shutting down.
+Server ${entity.label}/${entity} located at site ${upper(entity.tags.location)} is shutting down.
 ```
 
 ```txt
