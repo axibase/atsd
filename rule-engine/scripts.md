@@ -10,13 +10,13 @@ Command actions execute pre-defined scripts on the ATSD server to complete advan
 
 To configure a command action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant the script `execute` permission (`u+x`) to the `axibase` user.
 
-The list of executable files is displayed in the **Script File** drop-down list on the **System Commands** tab.
+The list of executable files is displayed in the **Script File** drop-down list on the **Scripts** tab.
 
 ![](./images/command-drop-down.png)
 
 To view the script text, click **Show script** icon.
 
-Select the script file to execute, for example `disk_cleanup.sh`, from the **System Commands** tab.
+Select the script file to execute, for example `disk_cleanup.sh`, from the **Scripts** tab.
 
 ### Working Directory
 
@@ -148,7 +148,7 @@ printenv | sort >> $out
 chmod u+x /opt/atsd/atsd/conf/script/test.sh
 ```
 
-The script is now displayed on the **System Commands** tab.
+The script is now displayed on the **Scripts** tab.
 
 ![](./images/command-test-script.png)
 

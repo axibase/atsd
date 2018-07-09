@@ -144,8 +144,8 @@ Property | Default Value | Description
 Property | Default Value | Description
 ---|---|---
 `cancel.on.rule.change` | `No` | Trigger actions when a rule is saved or deleted.|
-`system.commands.enabled` | `Yes` | Enable system command execution by [Rule Engine](../rule-engine/README.md).|
-`system.commands.timeout.seconds` | `15` | Interval in seconds after which the system command execution ceases.|
+`system.commands.enabled` | `Yes` | Enable script execution by [Rule Engine](../rule-engine/README.md).|
+`system.commands.timeout.seconds` | `15` | Interval in seconds after which the script execution ceases.|
 `webdriver.chromebrowser.path` | `None` | Path to the `google-chrome` binary.|
 `webdriver.chromedriver.path` | `None` | Path to the [`chromedriver`](../rule-engine/notifications/web-driver.md#option-2-chrome-driver) binary.|
 `webdriver.phantomjs.path` | `None` | Path to [`phantomjs`](../rule-engine/notifications/web-driver.md#option-1-phantomjs) binary.|

@@ -229,7 +229,7 @@ const ruleEngineMenu = [
     ['email.md', 'Email'],
     ['incoming-webhooks.md', 'Incoming Webhooks'],
     ['notifications/', 'Outgoing Webhooks'],
-    ['commands.md', 'System Commands'],
+    ['scripts.md', 'Scripts'],
     ['derived.md', 'Derived Commands'],
     ['logging.md', 'Logging'],
 ];

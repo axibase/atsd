@@ -16,7 +16,7 @@ The user-defined variables can be referenced in the rule [condition](condition.m
 
 ### Response Actions
 
-Similar to the built-in window [fields](window.md#window-fields), variables can be included by name in the notifications messages, system commands, and logging messages using [placeholders](placeholders.md):
+Similar to the built-in window [fields](window.md#window-fields), variables can be included by name in the notifications messages, scripts, and logging messages using [placeholders](placeholders.md):
 
 ```bash
 ${busy}

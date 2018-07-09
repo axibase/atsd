@@ -21,7 +21,7 @@ Issue| Category    | Type    | Subject
 5017 | rule engine | Bug | Display [window details](../../rule-engine/window.md#window-fields) even if window is in [`CANCEL`](../../rule-engine/window.md#cancel-status) status.
 5015 | rule engine | Bug | Quote escaping with [backslash](../../rule-engine/variables.md#string).
 5014 | rule engine | Bug | [HipChat](../../rule-engine/notifications/hipchat.md) webhook: inline links in portal description message.
-5013 | rule engine | Bug | System [command](../../rule-engine/commands.md) execution error not registered in Rule Errors.
+5013 | rule engine | Bug | System [command](../../rule-engine/scripts.md) execution error not registered in Rule Errors.
 5012 | entity_views | Bug | **Entity Tag** [link](../../configuration/entity_views.md#links) not applied to **Entity Tag** column.
 5011 | rule editor | Bug | Table cells on Test tab are missing.
 5009 | entity_views | Bug | Allow empty values if default value is blank in dictionary columns.

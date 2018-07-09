@@ -64,7 +64,7 @@
 * [Overrides](rule-engine/overrides.md)
 * [Webhooks](rule-engine/notifications/README.md)
 * [Email Notifications](rule-engine/email.md)
-* [System Commands](rule-engine/commands.md)
+* [Scripts](rule-engine/scripts.md)
 * [Derived Commands](rule-engine/derived.md)
 * [Logging](rule-engine/logging.md)
 
