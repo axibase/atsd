@@ -1,22 +1,22 @@
-# Commands
+# Script
 
 ## Overview
 
-Command actions execute pre-defined scripts on the ATSD server to complete advanced processing and integration tasks.
+Script actions execute pre-defined scripts on the ATSD server to complete advanced processing and integration tasks.
 
 ## Configuration
 
 ### Script File
 
-To configure a command action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant the script `execute` permission (`u+x`) to the `axibase` user.
+To configure a script action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant the script `execute` permission (`u+x`) to the `axibase` user.
 
-The list of executable files is displayed in the **Script File** drop-down list on the **System Commands** tab.
+The list of executable files is displayed in the **Script File** drop-down list on the **Scripts** tab.
 
 ![](./images/command-drop-down.png)
 
 To view the script text, click **Show script** icon.
 
-Select the script file to execute, for example `disk_cleanup.sh`, from the **System Commands** tab.
+Select the script file to execute, for example `disk_cleanup.sh`, from the **Scripts** tab.
 
 ### Working Directory
 
@@ -148,7 +148,7 @@ printenv | sort >> $out
 chmod u+x /opt/atsd/atsd/conf/script/test.sh
 ```
 
-The script is now displayed on the **System Commands** tab.
+The script is now displayed on the **Scripts** tab.
 
 ![](./images/command-test-script.png)
 
@@ -205,11 +205,11 @@ KUIEXC000I: Executecommand request was performed successfully. The return value 
 
 ## Examples
 
-### Clean up disk on a remote system using `tacmd` command
+### Clean up disk on a remote system using `tacmd`
 
 #### Description
 
-If disk space is low, the command reads user credentials from the `itm.pwd` file located in the `axibase` user home directory. After a successful login to the ITM hub server, [`tacmd executecommand`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) is launched on the remote server where old files in `/tmp` directory (older than 15 days) are deleted with logging. Finally, the process logs out from the ITM hub server.
+If disk space is low, the script reads user credentials from the `itm.pwd` file located in the `axibase` user home directory. After a successful login to the ITM hub server, [`tacmd executecommand`](https://www.ibm.com/support/knowledgecenter/en/SS3JRN_7.2.0/com.ibm.itm.doc_6.2.2fp2/tacmd.htm) is launched on the remote server where old files in `/tmp` directory (older than 15 days) are deleted with logging. Finally, the process logs out from the ITM hub server.
 
 On `OPEN` status, the script executes the disk cleanup procedure on the system where the disk space rule alert is raised, identified with `${upper(entity)}:LZ` placeholder.
 

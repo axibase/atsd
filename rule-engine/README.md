@@ -96,7 +96,7 @@ Supported response actions:
 
 * [Send email](email.md)
 * [Trigger webhook](notifications/README.md)
-* [Execute script](commands.md)
+* [Execute script](scripts.md)
 * [Generate derived metrics](derived.md)
 * [Log alert to file](logging.md)
 

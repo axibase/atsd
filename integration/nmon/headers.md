@@ -1,16 +1,14 @@
 # Headers
 
-[Header Extract](#header-extract)
+* [Header](#header)
+* [Process List](#process-list)
+* [Configuration Properties](#configuration-properties)
 
-[System Commands Extract](#system-command-extract)
+The header of the `nmon` file contains system configuration details as well as a subset of running processes.
 
-[Configuration Properties](#configuration-properties)
+Below are the header and process list examples.
 
-The header of the `nmon` file contains all the system configuration details and system commands.
-
-Below are the header and system commands extracts from an `nmon` file.
-
-## Header Extract
+## Header
 
 ```txt
 AAA,progname,topas_nmon
@@ -37,7 +35,7 @@ AAA,NodeName,itm-aix
 AAA,timestampsize,0
 ```
 
-## System Command Extract
+## Process List
 
 ```txt
 BBBB,0000,name,size(GB),disc attach type
@@ -56,7 +54,7 @@ BBBC,010,PDIusrsaptransL 80 80 00..80..00..00..00 /usr/sap/trans/PDI
 BBBC,011,PDIoracleLv 112 112 00..56..00..00..56 /oracle/PDI
 BBBC,012,PDIorabinLv 64 64 00..64..00..00..00 /oracle/PDI/102_64
 BBBC,013,PDIoraarchLv 1982 1982 537..89..536..536..284 /oracle/PDI/oraarch
-…..
+...
 BBBC,210,LV NAME LPs PPs DISTRIBUTION MOUNT POINT
 BBBC,211,PDIsapdata5Lv 670 670 256..95..210..00..109 /oracle/PDI/sapdata5
 BBBC,212,PDIsapdata3Lv 1329 1329 144..305..189..400..291 /oracle/PDI/sapdata3
