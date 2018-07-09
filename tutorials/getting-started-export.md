@@ -9,7 +9,7 @@ Open **Data > Export** page.
 Enter parameters to download data as a CSV file or to display it in HTML format.
 
 * Enter `temperature` into the **Metric** field.
-* Click **Name** field and enter `br-1905` as the entity.
+* Click **Name** and enter `br-1905` as the entity.
 * Modify the **Date Interval** to `1 Quarter` to select values for a longer timespan.
 * Select **CSV** in the **Format** section.
 * Click **Submit**.
