@@ -8,7 +8,7 @@ The **Query Statistics** page displays the most recent **1,000** queries in memo
 
 ## Statistics
 
-The list of displayed queries contains links to detailed execution plans and is reset each time the database is **restarted**. 
+The list of displayed queries contains links to detailed execution plans and is reset each time the database is **restarted**.
 
 Summary information on executed queries is also persisted in the database and is accessible on the **SQL > Query Log** page.
 
