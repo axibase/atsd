@@ -43,7 +43,7 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 | Setting | Description |
 | --- | --- |
 |Metric |Metric name for which forecasts are calculated.|
-|Entity  |If selected, forecasts are calculated for the specified entity. Supersedes **Entity Group** selector. If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
+|Entity  |If selected, forecasts are calculated for the specified entity. Supersedes **Entity Group** drop-down list. If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
 |Entity Group |If selected, forecasts are calculated for entities contained in the specified entity group.|
 |Tags |Prepare forecasts only for series containing the specified series tags.|
 |End Time |End time of the **Data Selection Interval** and **Series Selection Interval**. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If not defined, the field is set to the time the job is run.|

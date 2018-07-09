@@ -12,8 +12,8 @@
 5412 | api-rest | Feature | [Series Get](../../api/data/series/get.md) method: Implement period alignment parameter.
 5411 | message | Bug | [Message Table TTL](../../api/data/messages/delete.md#ttl) specified in `server.properties` is ignored.
 5407 | UI | Bug | UI: Type field auto-complete is broken on **Data Entry** page.
-5405 | rule engine | Feature | [Scripts](../../rule-engine/scripts.md): Pass window fields into scripts as named variables.
-5403 | rule editor | Bug | [Rule Engine](../../rule-engine/scripts.md): Entity Filter selector replaced with auto-complete text input field.
+5405 | rule engine | Feature | [Script](../../rule-engine/scripts.md): Pass window fields into scripts as named variables.
+5403 | rule editor | Bug | Rule Engine: [Entity Filter](../../rule-engine/filters.md#entity-name-filter) dual list replaced with auto-complete text input field.
 5402 | UI | Feature | UI: Rename **Web Notifications** as [**Outgoing Webhooks**](../../rule-engine/notifications/README.md).
 5401 | UI | Feature | UI: Move **Webhook Requests** to **Alerts** menu.
 5399 | test | Bug | API Tests: Message tests fail if [`messages.timeToLive`](../../api/data/messages/delete.md#ttl) is too low.

@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | [4675](#issue-4675) | rule-engine | Feature | Attach charts to email notifications. |
-| [4658](#issue-4658) |UI| Feature | Redesign icon selector in the entity view editor. |
+| [4658](#issue-4658) |UI| Feature | Redesign icon drop-down list in the entity view editor. |
 | [4600](#issue-4600) | security | Feature | Stored login history. |
 | [4585](#issue-4585) |UI| Feature | Multiple layout enhancements. |
 | [3269](#issue-3269) | sql | Feature | `LIMIT n` optimization for descending date queries. |
