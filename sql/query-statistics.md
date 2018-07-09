@@ -4,17 +4,13 @@ The **Query Statistics** page displays the most recent **1,000** queries in memo
 
 ![](./images/query-statistics-page.png)
 
-The queries shown on the **Query Statistics** page are reset each time the database is restarted.
-
 ![](./images/query-statistics.png)
 
-Query statistics are persisted by the database across restarts and accessible on the **Messages** pages.
+## Statistics
 
-![](./images/messages.png)
+The list of displayed queries contains links to detailed execution plans and is reset each time the database is **restarted**. 
 
-Use the filtering fields to display `sql` type messages. Optionally define other query features.
-
-![](./images/messages-page.png)
+Summary information on executed queries is also persisted in the database and is accessible on the **SQL > Query Log** page.
 
 ## Filters
 
