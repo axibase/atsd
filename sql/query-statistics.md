@@ -28,7 +28,7 @@ Filter queries for the execution status:
 * `Running`: The query is executing.
 * `Completed`: The query is finished.
 * `Error`: The query is unable to complete because of a problem.
-* `Cancelled`: The query was stopped by the client.
+* `Cancelled`: The query is stopped by the client.
 
 ### Source
 
