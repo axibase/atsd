@@ -62,8 +62,6 @@ Thresholds `min` and `max` are ignored if set to `null`. If both `min` and `max`
 * If threshold `max` exceeds `min`, the function returns time when the forecast value is **outside** of the specified range.
 * If threshold `min` exceeds `max`, the function returns time when the forecast value is **within** the specified range.
 
-
-
 The function returns `null` if no stored forecast is found in the database.
 
 ### Example
