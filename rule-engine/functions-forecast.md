@@ -50,33 +50,98 @@ The formula is:
 ## `thresholdTime`
 
 ```javascript
-  thresholdTime(number min, number max, string i) long
+thresholdTime(number min, number max [, string i]) long
 ```
 
-Returns time in Unix milliseconds when the [forecast value](../forecasting/README.md) is outside of the threshold range for the first time during time interval `i`. The forecast exceeds the threshold when the value is below `min` or the value is above `max`. Thresholds `min` and `max` must be set to `null` if inactive.
+Returns time in Unix milliseconds when the [stored forecast value](../forecasting/README.md) is outside of the `(min, max)` range for the first time during time interval `i`.
 
-The function returns `null` if forecast values are within the specified threshold boundaries during time interval `i` or if no forecast is found in the database.
+The interval `i` is specified as count and [unit](../api/data/series/time-unit.md), for example `1 WEEK`. If the time interval `i` is not specified, the function checks all available forecast values in the future.
 
-The interval `i` is specified as count and [unit](../api/data/series/time-unit.md), for example `1 WEEK`.
+Thresholds `min` and `max` are ignored if set to `null`. If both `min` and `max` are specified, the following rules apply:
 
-### Examples
+* If threshold `max` exceeds `min`, the function returns time when the forecast value is **outside** of the specified range.
+* If threshold `min` exceeds `max`, the function returns time when the forecast value is **within** the specified range.
 
-Current Time: `2018-07-07 15:00:00` (`1530975600000`)
 
-| **Date** | **Time**  | **Value** |
-|---|---|---|
-| `2018-07-08 15:00:00` | `1530975600000` | `81` |
-| `2018-07-10 15:00:00` | `1531148400000` | `79` |
-| `2018-07-12 15:00:00` | `1531321200000` | `90` |
-| `2018-07-14 15:00:00` | `1531494000000` | `91` |
-| `2018-07-16 15:00:00` | `1531666800000` | `95` |
+
+The function returns `null` if no stored forecast is found in the database.
+
+### Example
 
 ```javascript
-  thresholdTime(null, null, '7 DAY') // returns null: both boundaries are not set
-  thresholdTime(null, 90, '7 DAY') // returns 1531494000000: strict inequality relation is used, value > 90
-  thresholdTime(null, 93, '7 DAY') // returns null: no value greater than 93 found inside 7 day interval
-  thresholdTime(70, null, '7 DAY') // returns null: no value less than 70 found
-  thresholdTime(80, null, '7 DAY') // returns 1531148400000: value(79) < 80 on 2018-07-10 15:00:00
-  thresholdTime(80, 80, '7 DAY') // returns 1530975600000: value(81) is not equal to 80
-  thresholdTime(70, 90, '7 DAY') // returns 1531494000000: value(91) is greater than 90 (upper bound)
+/*
+  Returns time, within the next 6 hours, when the forecast exceeds 90.
+  Returns `null`, if all forecast values are below 90 or the violation occurs after the `6 HOUR` window.
+*/
+thresholdTime(null, 90, '6 HOUR')
+```
+
+### Example Table
+
+Current time is `2018-Jul-07 15:00`, or `1530975600000` in Unix milliseconds.
+
+Forecast Values:
+
+| **Value** | **Date** | **Time**  | **Note** |
+|---:|---|---|---|
+| `70` | `2018-Jul-08 15:00` | `1530975600000` | 1 day from `now` |
+| `80` | `2018-Jul-09 15:00` | `1531148400000` | 2 days from `now` |
+| `90` | `2018-Jul-10 15:00` | `1531234800000` | 3 days from `now` |
+| `100` | `2018-Jul-16 15:00` | `1531753200000` | 9 days from `now` |
+
+```javascript
+/*
+  Returns 1531753200000 (2018-Jul-16 15:00)
+  First time when the forecast 100 exceeds 'max' threshold 95
+*/
+thresholdTime(null, 95)
+```
+
+```javascript
+/*
+  Returns null. No forecast value exceeds 120.
+*/
+thresholdTime(null, 120)
+```
+
+```javascript
+/*
+  Returns null. No forecast value exceeds 95 within the next 7 days, by 2018-Jul-14 15:00.
+*/
+thresholdTime(null, 95, '7 DAY')
+```
+
+```javascript
+/*
+  Returns 1531234800000 (2018-Jul-10 15:00).
+  First time when the forecast 90 exceeds 'max' threshold 80.
+  Forecast 80 on 2018-Jul-09 15:00 was ignored as not exceeding the threshold.
+*/
+thresholdTime(null, 80, '7 DAY')
+```
+
+```javascript
+/*
+  Returns 1530975600000 (2018-Jul-08 15:00).
+  First time when the forecast 70 is below 'min' threshold 80.
+*/
+thresholdTime(80, null, '7 DAY')
+```
+
+```javascript
+/*
+  Returns 1531753200000 (2018-Jul-16 15:00)
+  Outside range check: case when 'max' threshold is greater than 'min' threshold.
+  First time when the forecast 100 is either below 70 OR above 90.
+*/
+thresholdTime(70, 90)
+```
+
+```javascript
+/*
+  Returns 1531148400000 (2018-Jul-09 15:00)
+  Within range check: case when 'min' threshold is greater than 'max' threshold.
+  First time when the forecast 80 is BOTH above 'max' threshold 70 AND below 'min' threshold 90.
+*/
+thresholdTime(90, 70)
 ```
