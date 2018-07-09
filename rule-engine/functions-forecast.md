@@ -59,7 +59,7 @@ The interval `i` is specified as count and [unit](../api/data/series/time-unit.m
 
 Thresholds `min` and `max` are ignored if set to `null`. If both `min` and `max` are specified, the following rules apply:
 
-* If threshold `max` exceeds `min`, the function returns time when the forecast value is **outside** of the specified range.
+* If threshold `max` is equal or greater than `min`, the function returns time when the forecast value is **outside** of the specified range.
 * If threshold `min` exceeds `max`, the function returns time when the forecast value is **within** the specified range.
 
 The function returns `null` if no stored forecast is found in the database.
@@ -142,4 +142,13 @@ thresholdTime(70, 90)
   First time when the forecast 80 is BOTH above 'max' threshold 70 AND below 'min' threshold 90.
 */
 thresholdTime(90, 70)
+```
+
+```javascript
+/*
+  Returns 1531148400000 (2018-Jul-09 15:00)
+  Case when 'min' threshold equals 'max' threshold.
+  First time when the forecast 80 is either below 70 (false) OR above 70 (true).
+*/
+thresholdTime(70, 70)
 ```
