@@ -17,7 +17,7 @@
 
 ### Issue 4532
 
-The "Guest Access" check box controls unauthenticated access to a selected portal.
+The "Guest Access" checkbox controls unauthenticated access to a selected portal.
 
 ![](./Images/issue-4532.png)
 
