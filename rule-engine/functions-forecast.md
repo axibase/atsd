@@ -61,20 +61,22 @@ The interval `i` is specified as count and [unit](../api/data/series/time-unit.m
 
 ### Examples
 
-| **Forecast Time** | **Forecast Time in Unix Milliseconds**  | **Forecast Value** |
+Current Time: `2018-07-07 15:00:00` (`1530975600000`)
+
+| **Date** | **Time**  | **Value** |
 |---|---|---|
-| `now + 1 * day` | `1530975600000` | `81` |
-| `now + 3 * day` | `1531148400000` | `79` |
-| `now + 5 * day` | `1531321200000` | `90` |
-| `now + 7 * day` | `1531494000000` | `91` |
-| `now + 9 * day` | `1531666800000` | `95` |
+| `2018-07-08 15:00:00` | `1530975600000` | `81` |
+| `2018-07-10 15:00:00` | `1531148400000` | `79` |
+| `2018-07-12 15:00:00` | `1531321200000` | `90` |
+| `2018-07-14 15:00:00` | `1531494000000` | `91` |
+| `2018-07-16 15:00:00` | `1531666800000` | `95` |
 
 ```javascript
-  thresholdTime(null, null, '7 DAY') // returns null
-  thresholdTime(null, 90, '7 DAY') // returns 1531494000000
-  thresholdTime(null, 93, '7 DAY') // returns null
-  thresholdTime(70, null, '7 DAY') // returns null
-  thresholdTime(80, null, '7 DAY') // returns 1530975600000
-  thresholdTime(80, 80, '7 DAY') // returns 1530975600000
-  thresholdTime(70, 90, '7 DAY') // returns 1531494000000
+  thresholdTime(null, null, '7 DAY') // returns null: both boundaries are not set
+  thresholdTime(null, 90, '7 DAY') // returns 1531494000000: strict inequality relation is used, value > 90
+  thresholdTime(null, 93, '7 DAY') // returns null: no value greater than 93 found inside 7 day interval
+  thresholdTime(70, null, '7 DAY') // returns null: no value less than 70 found
+  thresholdTime(80, null, '7 DAY') // returns 1531148400000: value(79) < 80 on 2018-07-10 15:00:00
+  thresholdTime(80, 80, '7 DAY') // returns 1530975600000: value(81) is not equal to 80
+  thresholdTime(70, 90, '7 DAY') // returns 1531494000000: value(91) is greater than 90 (upper bound)
 ```
