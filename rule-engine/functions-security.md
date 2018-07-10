@@ -2,7 +2,7 @@
 
 ## Overview
 
-Security functions check user permissions as part of the rule notification logic. These functions can be used to allow or deny response actions such as sending portals or invoking scripts.
+Checks user permissions as part of the rule notification logic and allow or deny response actions such as sending portals or invoking scripts.
 
 ## Reference
 
@@ -14,7 +14,7 @@ Security functions check user permissions as part of the rule notification logic
 
 ## Processing
 
-The boolean functions below return `true` if the user is valid and is allowed to execute the given action. Otherwise, the function returns `false`.
+The boolean functions below return `true` if the user is valid and allowed to execute the given action. Otherwise, the function returns `false`.
 
 As an alternative to `if/else` syntax, set the optional `err` parameter to `true`, which causes the function to stop processing altogether in case of insufficient permissions.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-These functions format numbers, dates, collections, and maps to strings according to the specified format.
+Formats numbers, dates, collections, and maps to strings according to the specified format.
 
 ## Reference
 
@@ -39,7 +39,7 @@ Example:
   formatBytes(number x, boolean si) string
 ```
 
-The function returns the total number of bytes `x` in a human-readable format. The function identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal to or exceeds 1 such unit. Units are decimal-based (1000) if the `si` parameter is set to `true`, and binary (1024) otherwise.
+Returns the total number of bytes `x` in human-readable format. Identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal to or exceeds `1` such unit. Units are decimal-based (`1000`) if the `si` parameter is set to `true`, and binary (`1024`) otherwise.
 
 For example, if the unit is `1000` (`si` set to `true`):
 
@@ -48,7 +48,7 @@ For example, if the unit is `1000` (`si` set to `true`):
 1000 ->   1.0 kB (unit is kilobyte)
 ```
 
-The formatted number always contains one fractional digit.
+Formatted number always contains one fractional digit.
 
 Examples:
 
@@ -76,7 +76,7 @@ Examples:
   convert(number x, string s) string
 ```
 
-The function divides the number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit.
+Divides the number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit.
 
 The unit is case-insensitive and can be one of the following:
 

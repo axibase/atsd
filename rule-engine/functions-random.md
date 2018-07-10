@@ -35,9 +35,9 @@ Returns a random element from a collection or map using the **uniform** distribu
 
 The probability of each element to be selected is `1/c.size()`.
 
-The function returns the selected element converted to string format. In case of map, the returned object is a `key-value` object.
+Returns the selected element converted to string format. For maps, the returned object is a `key-value` object.
 
-An input collection can contain elements of any type, such as strings or numbers, and can be specified as follows:
+Input collection can contain elements of any type, such as strings or numbers, and can be specified as follows:
 
 ### String Collection
 
@@ -80,7 +80,7 @@ randomItem(collection('oncall-person'))
 
 ### Key-Value Map
 
-Key-value maps are provided by the [`replacementTable`](functions-lookup.md#replacementtable) function.
+`Key-value` maps are provided by the [`replacementTable`](functions-lookup.md#replacementtable) function.
 
 > Replacement tables are listed on the **Data > Replacement Tables** page.
 
@@ -121,13 +121,13 @@ selKey = selItem.key
 randomKey([] m) string
 ```
 
-Returns a random element from the specified map `m` of objects using the **uniform** distribution.
+Returns a random element from the specified map `m` of objects using **uniform** distribution.
 
 The keys in the map can be of any type, whereas the values must be numeric and represent probabilities of the given key to be selected.
 
 The function returns the randomly selected key converted to string.
 
-The sum of probabilities does not have to equal 1.0 as the inputs are weighted to total 1.0.
+The sum of probabilities does not have to equal `1.0` as the inputs are weighted to total `1.0`.
 
 An input map can be obtained using the `replacementTable()` lookup function.
 

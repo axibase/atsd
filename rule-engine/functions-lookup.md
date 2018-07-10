@@ -2,11 +2,11 @@
 
 ## Overview
 
-These functions retrieve collections and maps of strings from replacement tables, collections, and other entities.
+Retrieves collections and maps of strings from replacement tables, collections, and other entities.
 
-The replacement tables are listed on the **Data > Replacement Tables** page.
+Replacement tables are listed on the **Data > Replacement Tables** page.
 
-The named collections are listed on the **Data > Named Collections** page.
+Named collections are listed on the **Data > Named Collections** page.
 
 ## Reference
 
@@ -40,7 +40,7 @@ If the tag or the entity is not found, an empty string is returned.
 
 Returns entity tags for entity `e` as a map.
 
-If the entity is not found, an empty map is returned.
+If the entity is not found, the function returns an empty map.
 
 If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using the applicable entity tag templates which are listed on the **Settings > Tag Templates** page.
 
@@ -102,7 +102,7 @@ If the entity is not found or the entity does not have a label, the input string
 
 Retrieves an entity object by name. If `l` set to `true` entity is searched by label if `e` is not found by name. By default `l` is `false`.
 
-The object [fields](entity-fields.md) can be accessed using dot notation, for example `getEntity('nurswgvml007').label`.
+Access object [fields](entity-fields.md) using dot notation, for example `getEntity('nurswgvml007').label`.
 
 The function returns `null` if the entity `e` is not found.
 
@@ -121,11 +121,11 @@ Example:
 
 Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`.
 
-Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be referred to using the dot notation.
+Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). Refer to entity [fields](entity-fields.md) using dot notation.
 
-Start date `s` and end date `e` is an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
+Start date `s` and end date `e` are `iso` dates or a [calendar keyword](../shared/calendar.md#keywords).
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
 Examples:
 
@@ -156,10 +156,10 @@ Examples:
 ## `getEntityCount`
 
 ```javascript
-  getEntitiyCount(string m, string s, string e, object p) integer
+  getEntityCount(string m, string s, string e, object p) integer
 ```
 
-Same as `getEntities(string m, string s, string e, object p).size()`.
+Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`, for `integer` length. Identical to `getEntity(m,s,e,p).size()`.
 
 ## `getEntityName`
 
@@ -169,7 +169,7 @@ Same as `getEntities(string m, string s, string e, object p).size()`.
 
 Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner.
 
-If the entity cannot be found, the original input string `e` is returned.
+If the entity cannot be found, the function returns the original input string `e`.
 
 ## `collection`
 
@@ -179,9 +179,9 @@ If the entity cannot be found, the original input string `e` is returned.
 
 Retrieves a list of strings for the specified named collection `s`. Named collections are defined on the **Data > Named Collections** page.
 
-If no collection is found, an empty list is returned.
+If no collection is found, the function returns an empty list.
 
-To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with 0 for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with `0` for the first element).
 
 Examples:
 
@@ -220,7 +220,7 @@ Example:
 
 Retrieves the replacement table identified by name `s` as a key-value map.
 
-If the table is not found, an empty map is returned.
+If the table is not found, the function returns an empty map.
 
 ## `property`
 

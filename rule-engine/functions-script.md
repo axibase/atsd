@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `scriptOut` function executes a `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
+Executes a `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
 
-The function accepts an array of arguments which can include window [placeholders](placeholders.md) such as `entity` or `tags`.
+Accepts an array of arguments which can include window [placeholders](placeholders.md) such as `entity` or `tags`.
 
 The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 
@@ -54,13 +54,13 @@ Script terminated on timeout: {current timeout value}
 
 ## Permissions
 
-The script must be located in the  `/opt/atsd/atsd/conf/script` directory and have the permission bit `+x` enabled.
+Scripts must be located in the  `/opt/atsd/atsd/conf/script` directory and have the permission bit `+x` enabled.
 
 ```sh
 chmod u=rwx,g=rx,o=r /opt/atsd/atsd/conf/script/*
 ```
 
-The scripts are executed under the `axibase` user context.
+Scripts are executed under the `axibase` user context.
 
 To execute a Python script without the python interpreter, make the script executable and instruct the kernel which interpreter to use by adding a shebang line `#!/usr/bin/env python` at the beginning of the script.
 
@@ -83,7 +83,7 @@ Review [Daily Referer Requests](#daily-referer-requests) script as an example.
 
 ## Formatting
 
-The output of the `scriptOut` function can be formatted with backticks when using markdown (chat messages) or with `<pre>` tag when using HTML (email).
+Format the output of the `scriptOut` function when using markdown (chat messages) or with `<pre>` tag when using HTML (email).
 
 ### Markdown Format
 
@@ -164,7 +164,7 @@ Slack:
 
 ### `traceroute`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/traceroute.sh) to return `traceroute` output to host.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/traceroute.sh) returns `traceroute` output to host.
 
 #### Script
 
@@ -225,7 +225,7 @@ traceroute to example.org (192.0.2.1), 30 hops max, 60 byte packets
 
 ### `top`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of `top` in batch mode from a remote server (using ssh with key authentication, key stored in a pre-defined location).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) returns output of `top` in batch mode from a remote server (using ssh with key authentication, key stored in a pre-defined location).
 
 #### Script
 
@@ -289,7 +289,7 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 
 ### `ps`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) that returns `ps` output for the specified grep pattern from a remote server.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) returns `ps` output for the specified grep pattern from a remote server.
 
 #### Script
 
@@ -338,7 +338,7 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 
 ### URL availability
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/url_avail.sh) that tests URL availability.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/url_avail.sh) tests URL availability.
 
 #### Script
 
@@ -399,7 +399,7 @@ Content Length: 35214 bytes
 
 ### TCP availability
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/tcp.sh) that tests TCP availability.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/tcp.sh) tests TCP availability.
 
 #### Script
 
@@ -453,7 +453,7 @@ TCP port 443 is available
 
 ### `osquery`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/osquery.sh) that executes an [osquery](https://osquery.io/) request against a remote server.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/osquery.sh) executes an [osquery](https://osquery.io/) request against a remote server.
 
 #### Script
 
@@ -508,7 +508,7 @@ ssh -i /home/axibase/.ssh/def.key example.org 'osqueryi "SELECT DISTINCT process
 
 ### Daily Referer Requests
 
-The Python [script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referer_requests.py) generates a daily `http_referer` report in HTML format based on messages collected by the [`nginx_access_log_tail`](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
+Python [script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/daily_referer_requests.py) generates a daily `http_referer` report in HTML format based on messages collected by the [`nginx_access_log_tail`](https://raw.githubusercontent.com/axibase/atsd-api-python/master/examples/nginx_access_log_tail.py) script.
 
 #### Function
 

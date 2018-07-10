@@ -60,11 +60,11 @@ Return `x` raised to the power of `y`.
 
 Returns `x` rounded to `y` decimal places (precision).
 
-The precision is 0 if omitted.
+The precision is `0` if omitted.
 
 `round(x, 0)` rounds the number to the nearest integer.
 
-If `y` is less than 0, the number is rounded to the left of the decimal point by the indicated number of places.
+If `y` is less than `0`, the number is rounded to the left of the decimal point by the indicated number of places.
 
 ## `max`
 
@@ -88,7 +88,7 @@ Returns the smallest of two numbers: `x` and `y`.
   cbrt(double x) double
 ```
 
-Returns ∛ of `x`.
+Returns `∛` of `x`.
 
 ## `sqrt`
 
@@ -96,7 +96,7 @@ Returns ∛ of `x`.
   sqrt(double x) double
 ```
 
-Returns √ of `x`.
+Returns `√` of `x`.
 
 ## `exp`
 
@@ -104,7 +104,7 @@ Returns √ of `x`.
   exp(double x) double
 ```
 
-Returns `Euler` constant `e` (2.718281828459045) raised to the power of `x`.
+Returns Euler constant `e` (2.718281828459045) raised to the power of `x`.
 
 ## `log`
 
@@ -112,7 +112,7 @@ Returns `Euler` constant `e` (2.718281828459045) raised to the power of `x`.
   log(double x) double
 ```
 
-Returns the natural logarithm (base `e` = 2.718281828459045) of `x`.
+Returns the natural logarithm (base `e = 2.718281828459045`) of `x`.
 
 ## `log10`
 

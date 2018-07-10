@@ -2,7 +2,7 @@
 
 ## Overview
 
-Property functions provide a set of convenience methods to retrieve and compare property keys and tags using [property search](property-search.md) syntax.
+A set of convenience methods to retrieve and compare property keys and tags using [property search](property-search.md) syntax.
 
 ## Reference
 
@@ -21,11 +21,11 @@ Property functions provide a set of convenience methods to retrieve and compare 
 
 Returns the first value in the list of strings returned by the `property_values(string s)` function.
 
-By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
 An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
-The function returns an empty string if no matching property records are found.
+Returns an empty string if no matching property records are found.
 
 Examples:
 
@@ -46,13 +46,13 @@ Examples:
 
 Returns a list of property tag values for the given entity for the specified [property search](property-search.md) expression `s`.
 
-By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+Optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
 The function returns an empty list if the entity, property or tag is not found.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with `0` for the first element).
 
 Examples:
 
@@ -101,7 +101,7 @@ Examples:
 ```
 
   The map includes tags that are not present in new property tags and deleted tags.
-  If the difference map is empty, this means that no identified changes are present.
+  If the difference map is empty, no identified changes are present.
   This comparison is case-insensitive.
 
 ```java
@@ -136,11 +136,11 @@ Returns `true` if property tags have changed, except for the `name` tag, any tag
 
 Returns a map containing keys and tags for the specified [property search](property-search.md) expression `s`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
-By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must be specified as well.
+Optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must be specified as well.
 
-The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
+Search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
 
 Supported syntax options:
 
@@ -149,7 +149,7 @@ Supported syntax options:
 * `<property_type>:[<key>=<value>[,<key>=<value>]]:*`
 * `<property_type>:[<key>=<value>[,<key>=<value>]]:*abc*`
 
-The function returns an empty map if the entity, property or tag is not found.
+Returns an empty map if the entity, property or tag is not found.
 
 Examples:
 
@@ -178,9 +178,9 @@ Returns a list of maps, each map containing keys and tags for the specified [pro
 
 By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity argument `e` must be specified as well.
+Optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity argument `e` must be specified as well.
 
-The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
+Search expression `s` can include only the property type without key-value pairs. Omit `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case the function returns all keys and tags.
 
 Supported syntax options:
 
@@ -189,9 +189,9 @@ Supported syntax options:
 * `<property_type>:[<key>=<value>[,<key>=<value>]]:*`
 * `<property_type>:[<key>=<value>[,<key>=<value>]]:*abc*`
 
-The function returns an empty list if the entity, property or tag is not found.
+Returns an empty list if the entity, property or tag is not found.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
 Examples:
 
@@ -226,7 +226,7 @@ Returns a sorted set of property types for the specified entity `e`.
 
 Optional start date `s` and end date `d` arguments control the time range for selecting property records. The dates `s` and `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
 Examples:
 

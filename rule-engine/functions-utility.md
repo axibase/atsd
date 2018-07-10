@@ -19,7 +19,7 @@
   ifEmpty(object a, object b) object
 ```
 
-The function returns `b` if `a` is either `null` or an empty string.
+Returns `b` if `a` is either `null` or an empty string.
 
 Examples:
 
@@ -102,7 +102,7 @@ Input | Type | Result
   printObject(object o, string f) string
 ```
 
-The function prints the input object `o` as a two-column table in the specified format `f`.
+Prints the input object `o` as a two-column table in the specified format `f`.
 
 Supported formats:
 
@@ -120,7 +120,7 @@ Object `o` can be an `Entity` or a `Window` object which can be retrieved as fol
 * [`rule_window`](functions-rules.md#rule_window)
 * [`rule_windows`](functions-rules.md#rule_windows)
 
-An empty string is returned if the object `o` is `null`.
+Returns an empty string if the object `o` is `null`.
 
 Examples:
 

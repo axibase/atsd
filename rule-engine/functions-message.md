@@ -2,7 +2,7 @@
 
 ## Overview
 
-The functions provide a way to retrieve message records from the database at any stage of the rule evaluation process.
+Retrieves message records from the database at any stage of the rule evaluation process.
 
 The `db_message_count` and `db_message_last` functions can be used to verify the existence of or establish a correlation between time series and messages.
 
@@ -30,7 +30,7 @@ Returns the most recent [message](../api/data/messages/query.md) record matching
 
 [Fields](../api/data/messages/query.md#fields-1) of a returned object can be invoked using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
 
-> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
+> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead in Unix milliseconds.
 
 ## `db_messages`
 
@@ -40,7 +40,7 @@ Returns the most recent [message](../api/data/messages/query.md) record matching
 
 Returns a list of [message](../api/data/messages/query.md) records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-The messages are ordered by time (similar to the **Message Search** page). See [Matching Rules](#matching-rules).
+The messages are ordered by time similar to the **Message Search** page. See [Matching Rules](#matching-rules).
 
 If no messages are found, an empty `[]` list is returned.
 
@@ -52,12 +52,10 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 
 ## Matching Rules
 
-The following matching rules apply:
-
 ### Interval
 
-* The selection interval `i` is specified in `count [units](../shared/calendar.md#interval-units)`, for example, `1 hour`.
-* The end of the selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
+* Selection interval `i` is specified in `count [units](../shared/calendar.md#interval-units)`, for example, `1 hour`.
+* End of selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
 
 ### Type
 

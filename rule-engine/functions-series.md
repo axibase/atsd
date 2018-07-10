@@ -2,7 +2,7 @@
 
 ## Overview
 
-The functions provide a way to retrieve series records from the database at any stage of the rule evaluation process.
+Retrieves series records from the database at any stage of the rule evaluation process.
 
 The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series can be different from the series in the current window.
 
@@ -13,9 +13,9 @@ The `db_last` and `db_statistic` functions retrieve the last stored value or cal
 
 ## `db_last`
 
-The `db_last` function retrieves the most recent value stored in the database for the specified series, regardless of the date of storage.
+Retrieves the most recent value stored in the database for the specified series, regardless of the date of storage.
 
-The functions return `Double.NaN` if no matching series is found.
+Returns `Double.NaN` if no matching series is found.
 
 ### `db_last(string m)`
 
@@ -41,7 +41,7 @@ db_last(string m, string e) number
 
 Retrieves the last value for the specified metric `m` and entity `e`.
 
-The entity `e` can be specified as a string literal value or with an `entity` field in which case it represents the name of the entity in the current window.
+Specify entity `e` as a string literal value or with an `entity` field, in which case it represents the name of the entity in the current window.
 
 Example:
 
@@ -81,13 +81,13 @@ Example:
 
 ## `db_statistic`
 
-This function has two required arguments: `s` and `i`.
+Requires two arguments: `s` and `i`.
 
 Argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to all values within the selection interval.
 
 Argument `i` is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
 
-The function returns `Double.NaN` if no matching series are found or if no records are present within the selection interval.
+Returns `Double.NaN` if no matching series are found or if no records are present within the selection interval.
 
 ### `db_statistic(string s, string i)`
 
@@ -158,11 +158,11 @@ Example:
 
 ## Series Match Examples
 
-Both `db_last` and `db_statistic` functions search the database for matching series based on the specified metric/entity/tags filter and return a numeric value for the first matched series. If the series in the current window has tags which are not collected by the specified metric and entity, those tags are excluded from the filter.
+Both `db_last` and `db_statistic` functions search the database for matching series based on the specified `metric`/`entity`/`tags` filter and return a numeric value for the first matched series. If the series in the current window has tags which are not collected by the specified metric and entity, those tags are excluded from the filter.
 
 ### `Tags : No Tags`
 
-In the example below, the `db_last('cpu_busy')` function ignores the tags `mount_point` and `file_system` because they are not collected by the metric `cpu_busy`.
+In the example below, the `db_last('cpu_busy')` function ignores the tags `mount_point` and `file_system` because the tags are not collected by the metric `cpu_busy`.
 
 * Current Window
 
