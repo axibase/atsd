@@ -8,6 +8,6 @@
 ## Enterprise Edition
 
 * Licensing fee is based on the number of processing nodes in the cluster.
-* Flexible options such as up `5-10` node bundles and unlimited nodes are available.
+* Flexible options: `5-10` node bundles or unlimited node choices.
 * [Axibase Collector](https://github.com/axibase/axibase-collector) licenses are **free**.
 * Contact our [sales](https://axibase.com/feedback/) for a custom quote.

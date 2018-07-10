@@ -6,13 +6,13 @@ The table schema supports the following record types:
 * Messages
 * Properties
 
-The records are always associated with an `entity`, a generic class, which represents a physical or logical object being monitored such as `Br1740` (a bioreactor), or `eia.gov` (an institution).
+Records are always associated with an `entity`: a generic class, which represents a physical or logical object being monitored such as `Br1740` (a bioreactor), or `eia.gov` (an institution).
 
 ![](./images/atsd_schema.png)
 
 ## Series
 
-Time Series (or just Series) is a time-indexed array of measurements, each described with a timestamp and a numeric value or a text annotation.
+Time Series is a time-indexed array of measurements, each described by a timestamp and numeric value or text annotation.
 
 ```elm
 date         time       value   annotation
@@ -24,9 +24,9 @@ date         time       value   annotation
 
 Each series is uniquely identified by a composite key consisting of `metric`, `entity`, and optional key-value pairs called `tags`.
 
-* Metric represents the name of a measurable numeric attribute such as `temperature`.
-* Entity is the name of a physical or logical object being monitored such as `Br1740`(a bioreactor).
-* Tags are metadata and provide an additional level of detail about the observation, for example `part = Enclosure`.
+* `Metric` represents the name of a measurable numeric attribute such as `temperature`.
+* `Entity` is the name of a physical or logical object being monitored.
+* `Tags` are metadata and provide an additional level of detail about the observation, for example `part = Enclosure`.
 
 The above sample series can be identified as follows:
 
@@ -40,11 +40,11 @@ Series values change over time and their history can be analyzed with SQL and vi
 
 [![](./images/button.png)](https://apps.axibase.com/chartlab/075941a0/2/)
 
-The [Selecting Series Overview](./portals/selecting-series.md) contains additional examples on how to retrieve Series from the database for visualization purposes.
+The [Selecting Series Overview](./portals/selecting-series.md) contains additional examples on how to retrieve series from the database for visualization purposes.
 
 ## Messages
 
-Messages are timestamped text events (logs).
+Messages are timestamped text events also referred to as logs.
 
 ```elm
 date         time       type   source    message
@@ -56,7 +56,7 @@ date         time       type   source    message
 
 ## Properties
 
-Property is collection of arbitrary key-values describing a given entity, grouped by user-defined `type`. The property record is uniquely identified by type, entity, and optional keys. Unlike Series, the property record stores only the most recent values. The values are stored as text.
+`Property` is collection of arbitrary key-value pairs describing a given entity, grouped by user-defined `type`. The property record is uniquely identified by type, entity, and optional keys. Unlike series, the property record stores only the most recent values. The values are stored as text.
 
 For example, `disk_info` type for an entity can store properties such as `disk_type`, `disk_model` etc.  The property schema is similar to the following relational representation:
 
