@@ -13,7 +13,7 @@ The integration relies on the following [Jenkins API](https://wiki.jenkins.io/di
 
 Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-jenkins-notification.xml), used in this example.
 
-To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -72,7 +72,7 @@ Leave the `Parameters` table empty for non-parameterized jobs.
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/custom-jenkins-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new rule or import the [rule template](./resources/custom-jenkins-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 

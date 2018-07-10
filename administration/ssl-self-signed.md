@@ -19,7 +19,7 @@ The certificates are installed without an ATSD restart.
 
 Log into ATSD as a user with administrative privileges.
 
-Open the **Settings > Certificates** page and click **Self Signed Certificate** in the split button:
+Open the **Settings > Certificates** page and click **Self Signed Certificate** in the split-button:
 
 ![](./images/ssl_self_signed_1.png)
 

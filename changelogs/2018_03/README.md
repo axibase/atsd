@@ -54,7 +54,7 @@
 5001 | rule engine | Feature | Telegram: [`getUpdates`](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
 4957 | sql | Bug | [Period](../../sql/README.md#period) query now takes long time to execute.
 4925 | rule engine | Feature | Rule Engine: [rule_window](../../rule-engine/functions-rules.md#rule_window) function.
-4909 | security | Support | Install DV SSL certificate from `Lets' Encrypt` CA.
+4909 | security | Support | Install DV SSL certificate from Let's Encrypt CA.
 4667 | export | Bug | Incorrect [export](../../reporting/ad-hoc-exporting.md) of versioned values.
 2158 | rule engine | Feature | [Load historical](../../rule-engine/window.md#initial-status) data on window start.
 

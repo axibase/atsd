@@ -10,7 +10,7 @@ The example described below invokes the [AWS Batch API](https://docs.aws.amazon.
 
 ## Configuration
 
-Create a new `AWS API` webhook or import the [template](./resources/aws-api-batch-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new `AWS API` webhook or import the [template](./resources/aws-api-batch-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new webhook, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -49,7 +49,7 @@ Modify the `Body` by replacing the `<JSON_CONTENT>` value with actual values, fo
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/aws-api-batch-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new rule or import the [rule template](./resources/aws-api-batch-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 

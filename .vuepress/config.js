@@ -14,14 +14,8 @@ const portalsMenu = [
 
 const topNavMenu = [
     { text: 'Install', link: '/installation/', highlighted: true },
-    {
-        text: 'API',
-        items: [
-            { text: "Rest API", link: '/api/data/' },
-            { text: "Network API", link: '/api/network/' },
-            { text: "API Clients", link: '/api/clients/' },
-        ]
-    },
+    { text: "REST API", link: '/api/data/' },
+    { text: "Network API", link: '/api/network/' },
     { text: 'SQL', link: '/sql/' },
     { text: 'Rule Engine', link: '/rule-engine/' },
     { text: 'Configure', link: '/administration/' },
@@ -170,6 +164,7 @@ const restApiMenu = [
             `/api/meta/misc/version`,
         ]
     },
+    ['/api/clients/', "API Clients"],
 ];
 
 const landingPageMenu = [
