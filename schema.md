@@ -56,7 +56,7 @@ date         time       type   source    message
 
 ## Properties
 
-`Property` is collection of arbitrary key-value pairs describing a given entity, grouped by user-defined `type`. The property record is uniquely identified by type, entity, and optional keys. Unlike series, the property record stores only the most recent values. The values are stored as text.
+`Property` is a collection of arbitrary key-value pairs describing a given entity, grouped by user-defined `type`. The property record is uniquely identified by type, entity, and optional keys. Unlike series, the property record stores only the most recent values. The values are stored as text.
 
 For example, `disk_info` type for an entity can store properties such as `disk_type`, `disk_model` etc.  The property schema is similar to the following relational representation:
 
