@@ -28,7 +28,6 @@ name LIKE 'nmon*' AND tags.table LIKE '*CPU*'
     "tags": {
       "table": "CPU Detail"
     },
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",
@@ -44,7 +43,6 @@ name LIKE 'nmon*' AND tags.table LIKE '*CPU*'
     "tags": {
       "table": "CPU Detail"
     },
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",

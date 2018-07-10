@@ -55,7 +55,6 @@ retentionDays > 0 OR seriesRetentionDays > 0
 |`interpolate`| string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`. |
 |`units`| string | Measurement units. |
 |`timeZone`| string | Time Zone ID, for example EST.<br>Refer to [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in metric-specific time zone.|
-|`timePrecision`| string | Time precision: `SECONDS` or `MILLISECONDS`.|
 |`enabled`| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
 |`persistent` | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`filter` | string | Persistence filter [expression](../../../api/meta/expression.md). Discards series that do not match this filter.|
@@ -100,13 +99,6 @@ Invalid Action is triggered if the received series value is less than the Minimu
 |LINEAR|
 |PREVIOUS|
 
-### Time Precision
-
-|**Precision**|
-|:---|
-|MILLISECONDS|
-|SECONDS|
-
 ## Example 1
 
 ### Request
@@ -137,7 +129,6 @@ curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
     "enabled": true,
     "dataType": "FLOAT",
     "persistent": true,
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "invalidAction": "NONE",
     "lastInsertDate": "2016-05-19T00:15:02.000Z",
@@ -150,7 +141,6 @@ curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
     "enabled": true,
     "dataType": "FLOAT",
     "persistent": true,
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "invalidAction": "NONE",
     "lastInsertDate": "2016-05-18T00:35:12.000Z",
@@ -166,7 +156,7 @@ curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
 Expression text:
 
 ```javascript
-name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled = true OR persistent=true OR persistenceFilter != "" OR retentionDays=0 OR dataType="FLOAT" OR timePrecision="MILLISECONDS" OR versioning=false AND invalidAction="NONE" OR timeZone="" OR interpolate="LINEAR"
+name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled = true OR persistent=true OR persistenceFilter != "" OR retentionDays=0 OR dataType="FLOAT" OR versioning=false AND invalidAction="NONE" OR timeZone="" OR interpolate="LINEAR"
 ```
 
 ### Request
@@ -197,7 +187,6 @@ curl "https://atsd_hostname:8443/api/v1/metrics?expression=versioning=true%20and
     "enabled": true,
     "dataType": "FLOAT",
     "persistent": true,
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 3,
     "invalidAction": "NONE",
     "lastInsertDate": "2016-10-28T08:18:17.218Z",

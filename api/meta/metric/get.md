@@ -54,7 +54,6 @@ curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy \
   "timeZone":"America/New_York",
   "persistent": true,
   "tags": {},
-  "timePrecision": "MILLISECONDS",
   "retentionDays": 0,
   "invalidAction": "NONE",
   "lastInsertDate": "2016-10-05T12:10:26.000Z",

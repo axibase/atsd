@@ -54,7 +54,6 @@ PUT /api/v1/metrics/my-metric
   "persistent": true,
   "dataType": "DOUBLE",
   "interpolate": "PREVIOUS",
-  "timePrecision": "MILLISECONDS",
   "retentionDays": 0
 }
 ```
@@ -66,7 +65,7 @@ curl https://atsd_hostname:8443/api/v1/metrics/my-metric \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \
-  --data '{"enabled":true,"persistent":true,"dataType":"DOUBLE","interpolate": "PREVIOUS","timePrecision":"MILLISECONDS","retentionDays":0}'
+  --data '{"enabled":true,"persistent":true,"dataType":"DOUBLE","interpolate": "PREVIOUS","retentionDays":0}'
 ```
 
 ### Response

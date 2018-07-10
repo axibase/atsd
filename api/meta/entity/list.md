@@ -59,13 +59,6 @@ The `lastInsertDate` field can be filtered using `minInsertDate` and `maxInsertD
 |`LINEAR`|
 |`PREVIOUS`|
 
-### Time Precision
-
-|**Precision**|
-|:---|
-|`MILLISECONDS`|
-|`SECONDS`|
-
 ## Example 1
 
 ### Request

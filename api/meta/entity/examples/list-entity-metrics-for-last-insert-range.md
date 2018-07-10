@@ -19,7 +19,6 @@ GET /api/v1/entities/nurswgvml007/metrics?minInsertDate=2012-01-01T00:00:00Z&max
     "enabled": true,
     "dataType": "FLOAT",
     "persistent": false,
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",

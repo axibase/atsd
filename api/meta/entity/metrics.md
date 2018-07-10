@@ -85,7 +85,6 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
     "dataType": "FLOAT",
     "label": "CPU Busy %",
     "persistent": true,
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "minValue": 0,
@@ -101,7 +100,6 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
     "enabled": true,
     "dataType": "FLOAT",
     "persistent": true,
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",
@@ -147,7 +145,6 @@ curl "https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?useEntityI
       "table": "Disk (script)",
       "unit": "Percent (%)"
     },
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 60,
     "minValue": 0,

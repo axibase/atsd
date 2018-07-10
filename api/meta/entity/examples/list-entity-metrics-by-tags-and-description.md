@@ -29,7 +29,6 @@ description != '' AND !tags.isEmpty()
     "tags": {
       "unit": "bytes"
     },
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",

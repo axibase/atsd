@@ -34,7 +34,6 @@ metric m:${metric} b:${enabled} p:${data-type} l:${label} d:${description} i:${i
 | `z`         | string           | Time Zone ID, for example EST.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in a metric-specific time zone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`.|
 | `v`         | boolean          | Versioning enabled/disabled. |
 | `a`         | string           | Invalid action. |
-| `tp`        | string           | Time precision.  |
 | `pe`        | boolean          | Persistent. |
 | `rd`        | number           | Retention Interval Days. |
 | `min`       | number           | Minimum value. |
@@ -48,7 +47,7 @@ Refer to [Metric API](../meta/metric/list.md#fields) for field descriptions.
 Rules inherited from [Base ABNF](base-abnf.md).
 
 ```elm
-command = "metric" MSP metric [MSP enabled] [MSP label] [MSP units] [MSP description] [MSP data-type] [MSP interpolate] [MSP filter] [MSP timezone] [MSP versioning] [MSP invalidAction] [MSP timePrecision] [MSP persistent] [MSP retentionIntervalDays] [MSP minValue] [MSP maxValue] *(MSP tag)
+command = "metric" MSP metric [MSP enabled] [MSP label] [MSP units] [MSP description] [MSP data-type] [MSP interpolate] [MSP filter] [MSP timezone] [MSP versioning] [MSP invalidAction] [MSP persistent] [MSP retentionIntervalDays] [MSP minValue] [MSP maxValue] *(MSP tag)
 metric = "m:" NAME
 enabled = "b:" BOOLEAN
 data-type = "p:" ("short" / "integer" / "long" / "float" / "double" / "decimal")
@@ -60,7 +59,6 @@ filter = "f:" VALUE
 timezone = "z:" (TIMEZONE / DQUOTE DQUOTE)
 versioning = "v:" BOOLEAN
 invalidAction = "a:" ("none" / "transform" / "discard" / "raise_error", "set_version_status")
-timePrecision = "tp:" ("seconds" / "milliseconds")
 persistent = "pe:" BOOLEAN
 retentionIntervalDays = "rd:" (POSITIVE_INTEGER / DQUOTE DQUOTE)
 minValue = "min:" (FRACTIONAL_NUMBER / REAL_NUMBER / DQUOTE DQUOTE)
