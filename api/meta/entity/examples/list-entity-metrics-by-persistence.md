@@ -26,7 +26,6 @@ persistent=false
     "dataType": "FLOAT",
     "persistent": false,
     "tags": {},
-    "timePrecision": "MILLISECONDS",
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",

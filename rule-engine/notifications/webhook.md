@@ -114,7 +114,6 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
   "metric.tags": {
     "category": "network"
   },
-  "metric.timePrecision": "MILLISECONDS",
   "metric.versioning": false,
   "min_interval_expired": "",
   "open_value": 1,

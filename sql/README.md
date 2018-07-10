@@ -280,7 +280,6 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.tags`    |string   | All metric tags, concatenated to `name1=value;name2=value` format.|
 |`metric.tags.*`  |string   | Expands to multiple columns, each column containing a separate metric tag.|
 |`metric.dataType`|string   | [Data Type](../api/meta/metric/list.md#data-types).|
-|`metric.timePrecision`|string| Time precision: SECONDS or MILLISECONDS.|
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
