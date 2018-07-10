@@ -12,4 +12,4 @@ We have over a decade of experience in infrastructure management systems, big da
 
 ## Progress and Road Map
 
-Our progress to date is published in publicly available [change logs](./changelogs/README.md#change-logs). Please contact us if you are interested to learn more about the ATSD road map.
+Our progress to date is published in publicly available [change logs](./changelogs/README.md#change-logs). Contact us if you are interested in learning more about the ATSD road map.
