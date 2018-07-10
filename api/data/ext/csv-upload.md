@@ -6,7 +6,7 @@ Accepts a CSV file or multiple CSV files for parsing into series, properties, or
 
 The files can be uploaded in plain text or compressed with the GZIP or ZIP codecs.
 
-Multiple files can be archived with ZIP/TAR and uploaded as one `.zip` or `.tar.gz` archive.
+Multiple files can be archived with `zip`/`tar` and uploaded as one `.zip` or `.tar.gz` archive.
 
 This method supports processing of the uploaded attached file as data as well as a part in a multi-part payload.
 
