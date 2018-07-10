@@ -129,7 +129,7 @@ The inline screenshots are positioned after the message content and before the m
 
 The **Allowed IPs** field enables specifying a list of addresses or address ranges in CIDR format from which the user is allowed to access the database.
 
-The checks are enforced to requests made over the HTTP and HTTPs protocols.
+The checks are enforced to requests made over the HTTP and HTTPS protocols.
 
 Both IPv4 and IPv6 protocols are supported.
 

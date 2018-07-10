@@ -30,7 +30,7 @@ Enter a name and specify the following parameters:
 | Password | `<JENKINS_USER_TOKEN>` |
 | Endpoint URL | `https://jenkins.example.org/job/${job_name}/buildWithParameters` |
 
-If the Jenkins job is not parameterized, use the `https://jenkins.example.org/job/${job_name}/build` url.
+If the Jenkins job is not parameterized, use the `https://jenkins.example.org/job/${job_name}/build` URL.
 
 Replace `jenkins.example.org` in the **Endpoint URL** parameter with the actual Jenkins address.
 

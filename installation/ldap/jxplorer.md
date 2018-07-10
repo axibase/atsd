@@ -12,7 +12,7 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 ### Export Certificate using a Web Browser such as Mozilla Firefox
 
-* Enter https, LDAP server hostname and SSL port in the browser address bar, for example `https://ldap_host:636`
+* Enter HTTPS, LDAP server hostname and SSL port in the browser address bar, for example `https://ldap_host:636`
 
 * Press **Advanced > Add exception** to retrieve the certificate.
 

@@ -43,7 +43,7 @@ The URL can point to any path after `/webhook`, for example, `/api/v1/messages/w
 
 Requests must be authenticated.
 
-When initiating a request with an http client, user credentials are included in the request URL as follows:
+When initiating a request with an HTTP client, user credentials are included in the request URL as follows:
 
 ```elm
 https://username:password@atsd_hostname:8443/api/v1/messages/webhook/jenkins?entity=jen01
@@ -172,7 +172,7 @@ Since stored message are always associated with an entity, the request must incl
 * Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` must be specified as described in the **Entity Mapping** section above.
 * Message `severity` is undefined.
 * Message `date` is set to current server time.
-* Message tag `request_ip` is set to the remote IP address of the http client that initiated the request.
+* Message tag `request_ip` is set to the remote IP address of the HTTP client that initiated the request.
 
 ## Reserved Request Parameters
 

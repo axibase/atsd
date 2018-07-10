@@ -56,7 +56,7 @@ Modify **`MessageBody`** by replacing the `<MESSAGE_TEXT>` value with your text,
 
 The `MessageBody` text contains placeholders that are substituted with actual values when the webhook is triggered. The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
-Modify the `QueueUrl` by replacing the `<AWS_SQS_QUEUE_URL>` value with your url, for example:
+Modify the `QueueUrl` by replacing the `<AWS_SQS_QUEUE_URL>` value with your URL, for example:
 
 ```elm
 https://sqs.us-east-1.amazonaws.com/568708720055/test

@@ -2,7 +2,7 @@
 
 ## Description
 
-Number of samples (time:value) returned for each series can be limited with the `limit` parameter.
+Number of `time:value` samples returned for each series can be limited with the `limit` parameter.
 
 The limit applies to each series separately.
 

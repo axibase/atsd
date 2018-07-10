@@ -12,7 +12,7 @@
 | 4761 | rule editor | Bug | **Add override** link not creating a row in the [Overrides](../../rule-engine/overrides.md) table. |
 | 4760 | api-rest | Bug | [`series query`](../../api/data/series/query.md) method: entity expression error when using `name` field. |
 | 4759 | rule editor | Bug | Buttons disappear when the rule configuration contains errors. |
-| 4758 | rule editor | Bug | Error when saving webhook using http protocol. |
+| 4758 | rule editor | Bug | Error when saving webhook using HTTP protocol. |
 | 4756 | api-rest | Bug | Data API: Minimum date for [`series query`](../../api/data/series/query.md) with `FORECAST` type. |
 | [4755](#issue-4755) | rule engine | Feature | Implement `db_message` functions for correlation. |
 | 4744 | rule engine | Bug | Add chart link to webhook message if chart error is raised. |

@@ -131,7 +131,7 @@ Slack Bot is a special account created for automation purposes.
 
     ![](./images/outgoing_webhook_slack_16.png)
 
-> Note that message fields in json payload sent by Slack servers contain HTML entities for [3 characters](https://api.slack.com/docs/message-formatting#how_to_escape_characters):
+> Note that message fields in JSON payload sent by Slack servers contain HTML entities for [3 characters](https://api.slack.com/docs/message-formatting#how_to_escape_characters):
 > * ampersand `&` replaced with `&amp;`
 > * less-than sign, `<` replaced with `&lt;`
 > * greater-than sign, `>` replaced with `&gt;`

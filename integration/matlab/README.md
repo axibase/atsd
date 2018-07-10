@@ -74,7 +74,7 @@ Example:
 
 ### Connect to the MatLab Command Window
 
-Example of https connection to ATSD:
+Example of HTTPS connection to ATSD:
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';

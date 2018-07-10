@@ -156,7 +156,7 @@ export MASTER_IP=$(aws emr describe-cluster --cluster-id $CLUSTER_ID | grep Mast
 && echo $MASTER_IP
 ```
 
-Specify path to private ssh key and log in to the node.
+Specify path to private SSH key and log in to the node.
 
 ```bash
 ssh -i /path/to/<key-name>.pem -o StrictHostKeyChecking=no hadoop@$MASTER_IP
