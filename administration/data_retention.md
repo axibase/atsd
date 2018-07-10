@@ -227,7 +227,7 @@ This causes **all** series collected for the entity to be deleted.
 
 To delete **multiple** entities, specify the search pattern on the Entities tab.
 
-Select all or multiple matching entities using the checkbox controls, and click **Delete** in the split button.
+Select all or multiple matching entities using the checkbox controls, and click **Delete** in the split-button.
 
 ![](./images/delete-entity-multiple.png)
 
@@ -245,7 +245,7 @@ This causes **all** series collected for the metric to be deleted.
 
 To delete **multiple** metrics, specify the search pattern on the Metrics tab.
 
-Select all or multiple matching metrics using the checkbox controls, and click **Delete** in the split button.
+Select all or multiple matching metrics using the checkbox controls, and click **Delete** in the split-button.
 
 ![](./images/delete-metric-multiple.png)
 
@@ -271,7 +271,7 @@ Open the **Properties** page for the specified entity.
 
 ![](./images/properties-delete-entity-form.png)
 
-Select the property keys to be deleted and choose **Delete** action from the split button.
+Select the property keys to be deleted and choose **Delete** action from the split-button.
 
 ![](./images/properties-delete-types-form.png)
 
