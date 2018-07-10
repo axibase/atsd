@@ -10,7 +10,7 @@ The example invokes the [Amazon SES API](https://docs.aws.amazon.com/ses/latest/
 
 ## Configuration
 
-Create a new `AWS API` webhook or import the [template](./resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new `AWS API` webhook or import the [template](./resources/aws-api-ses-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new webhook, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -64,7 +64,7 @@ The `MessageBody` text contains placeholders that are substituted with actual va
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/aws-api-ses-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new rule or import the [rule template](./resources/aws-api-ses-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 

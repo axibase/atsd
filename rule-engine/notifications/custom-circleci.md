@@ -8,7 +8,7 @@ The integration relies on the [Circle CI API](https://circleci.com/docs/api/v1-r
 
 ## Configuration
 
-Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Outgoing Webhooks**, select **Import** in the split button located below the table and complete the upload form.
+Create a new `CUSTOM` webhook from scratch or import the following [template](./resources/custom-circleci-notification.xml), used in this example. To import an XML template file, open **Alerts > Outgoing Webhooks**, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new notification, open **Alerts > Outgoing Webhooks** and click **Create**.
 
@@ -55,7 +55,7 @@ Leave the `Body` field empty for non-parameterized projects.
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new rule or import the [rule template](./resources/custom-circleci-rule.xml) used in this example. To import an XML template file, open the **Alerts > Rules** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 

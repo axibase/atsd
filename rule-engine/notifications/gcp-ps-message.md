@@ -8,7 +8,7 @@ The example invokes the [Google Cloud Pub/Sub API](https://cloud.google.com/pubs
 
 ## Configuration
 
-Create a new `GCP Pub/Sub` webhook or import the [template](./resources/gcp-ps-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new `GCP Pub/Sub` webhook or import the [template](./resources/gcp-ps-notification.xml) used in this example. To import the XML template file, open the **Alerts > Outgoing Webhooks** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new notification, open the **Alerts > Outgoing Webhooks** page and click **Create**.
 
@@ -66,7 +66,7 @@ The `Message` text contains placeholders that are substituted with actual values
 
 ## Rule
 
-Create a new rule or import the [rule template](./resources/azure-sb-message-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split button located below the table and complete the upload form.
+Create a new rule or import the [rule template](./resources/azure-sb-message-rule.xml) used in this example. To import the XML template file, open the **Alerts > Rules** page, select **Import** in the split-button located below the table and complete the upload form.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
