@@ -25,11 +25,11 @@ Scheduled queries are granted the `All Entities: Read` permission. No records ar
 ## Formats
 
 * CSV
-* Excel (xlsx)
+* Excel (XLSX)
 * HTML
 * JSON
 
-CSV files can be optionally archived with zip or gzip compression.
+CSV files can be optionally archived with ZIP or GZIP compression.
 
 HTML format is optimized for compatibility with common desktop and email clients.
 
@@ -101,7 +101,7 @@ To make a report available for download by end-users, enable the **Publish** sec
 
 To allow users to download the updated results each time they click the link, enable the **Allow Refresh** option.
 
-When enabled and if the url contains a `?refresh=true` parameter, the report is rebuilt by the database for each download request.
+When enabled and if the URL contains a `?refresh=true` parameter, the report is rebuilt by the database for each download request.
 
 ```elm
 https://atsd_hostname:8443.com/sqlr/85/cpu-busy-total-query.csv?refresh=true

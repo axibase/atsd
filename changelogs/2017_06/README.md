@@ -27,7 +27,7 @@
 | Issue| Category       | Type    | Subject                                                                              |
 |------|----------------|---------|--------------------------------------------------------------------------------------|
 | 3903 | socrata        | Bug     | Implemented filtering and trimming of tag values before saving.                                      |
-| [3899](#issue-3899) | socrata        | Feature | Added capability to launch an automated job from dataset url.                                                |
+| [3899](#issue-3899) | socrata        | Feature | Added capability to launch an automated job from dataset URL.                                                |
 | 3877 | socrata        | Bug     | Annotations are added under numeric metric names.                                         |
 | [3864](#issue-3864) | socrata        | Feature | Added a summary table displayed in `Test` mode.                                            |
 | [3859](#issue-3859) | socrata        | Feature | Added a URL wizard.                                                                   |

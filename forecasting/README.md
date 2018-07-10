@@ -108,7 +108,7 @@ Forecast Settings Editor provides the following tools:
 
 * **Export**
 
-  Export forecast data in csv.
+  Export forecast data in CSV.
 
   ![](./resources/forecasts_13.png)
 

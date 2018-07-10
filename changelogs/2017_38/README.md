@@ -30,7 +30,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | [4563](#issue-4563)  | docker | Feature | Add entity tags to docker host entities. |
-| 4577 | jdbc | Bug | Execute sql tasks in the same order as they are specified in the job configuration. |
+| 4577 | jdbc | Bug | Execute SQL tasks in the same order as they are specified in the job configuration. |
 | 4573 | docker | Bug | Fix entity label collision if container has a label named `LABEL`. |
 | 4022 | jdbc | Bug | Perform only one query execution during test. |
 

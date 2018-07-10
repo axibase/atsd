@@ -2,7 +2,7 @@
 
 To install `nmon` and the Axibase sender script on multiple Linux machines use the `nmon_deploy.sh` script to automate the below tasks:
 
-* Connect to the remote machine over ssh
+* Connect to the remote machine over SSH
 * Copy the `nmon` binary file
 * Copy the ATSD sender script
 * Add a `cron` task to restart the `nmon` data collection on a schedule
@@ -26,8 +26,8 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 
 * `nmon` binary file
 * Sender script
-* Target machine user ssh key
-* `atsdreadonly` ssh key
+* Target machine user SSH key
+* `atsdreadonly` SSH key
 
 | Setting | Description |
 | --- | --- |
@@ -35,20 +35,20 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 |  `nmon.c`  |  `nmon` snapshot count.  |
 |  `nmon.cron.hour`  |  `cron` task start hour.  |
 |  `nmon.cron.minute`  |  `cron` task start minute.  |
-|  `atsd.protocol`  |  Data transfer protocol.<br>Possible values: telnet, ssh.  |
+|  `atsd.protocol`  |  Data transfer protocol.<br>Possible values: telnet, SSH.  |
 |  `atsd.port`  |  ATSD TCP port.  |
-|  `atsd.key`  |  Path to ssh key for readonly account.<br>`id_rsa_atsdreadonly` by default.<br>Optional parameter.  |
+|  `atsd.key`  |  Path to SSH key for readonly account.<br>`id_rsa_atsdreadonly` by default.<br>Optional parameter.  |
 |  `atsd.user`  |  Read-only user account.<br>`atsdreadonly` by default.<br>Optional parameter.  |
 |  `atsd.hostname`  |  ATSD server.  |
 |  `deploy.user`  |  User of target machines.  |
-|  `deploy.key`  |  Path to the ssh key to access target machines by the user set in `deploy.user`.  |
-|  `deploy.password`  |  Password of target machine user set in the `deploy.user` setting.<br>Password takes priority over ssh key.  |
+|  `deploy.key`  |  Path to the SSH key to access target machines by the user set in `deploy.user`.  |
+|  `deploy.password`  |  Password of target machine user set in the `deploy.user` setting.<br>Password takes priority over SSH key.  |
 |  `deploy.sudo.user`  |  `sudo` user of target machines.<br>Optional parameter.  |
-|  `deploy.sudo.key`  |  Path to `sudo` users ssh key to access target machines.<br>Optional parameter.  |
-|  `deploy.sudo.password`  |  Password of target machine `sudo` user set in the `deploy.sudo.user` setting.<br>Password takes priority over ssh key.<br>Optional Parameter.  |
+|  `deploy.sudo.key`  |  Path to `sudo` users SSH key to access target machines.<br>Optional parameter.  |
+|  `deploy.sudo.password`  |  Password of target machine `sudo` user set in the `deploy.sudo.user` setting.<br>Password takes priority over SSH key.<br>Optional Parameter.  |
 |  `deploy.nmon-binary`  |  Path to `nmon` binary file to be installed on target machines.  |
 |  `deploy.directory`  |  Directory used on target machines to install `nmon` and the sender script.<br>The user must have write access to this directory.  |
-|  `deploy.target`  |  Target server hostname or ip address and ssh connection port separated by `:`<br>Can be set to multiple servers, one server per line.  |
+|  `deploy.target`  |  Target server hostname or ip address and SSH connection port separated by `:`<br>Can be set to multiple servers, one server per line.  |
 
 Example `deploy.properties` file:
 

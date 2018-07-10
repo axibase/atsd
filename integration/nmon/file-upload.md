@@ -27,7 +27,7 @@ Multiple `nmon` files can be uploaded simultaneously if archived. The archive ca
 
 ## Supported Compression Formats
 
-> .zip, .tar, .tar.gz, .tar.bz2
+> `.zip`, `.tar`, `.tar.gz`, `.tar.bz2`
 
 ## File Web Interface Upload Example
 

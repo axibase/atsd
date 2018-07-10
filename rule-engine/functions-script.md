@@ -225,7 +225,7 @@ traceroute to example.org (192.0.2.1), 30 hops max, 60 byte packets
 
 ### `top`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of `top` in batch mode from a remote server (using ssh with key authentication, key stored in a pre-defined location).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of `top` in batch mode from a remote server (using SSH with key authentication, key stored in a pre-defined location).
 
 #### Script
 
