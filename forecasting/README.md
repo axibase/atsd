@@ -122,7 +122,7 @@ Forecast Settings Editor provides the following tools:
 
    Metadata is stored with the forecast. Collection interval is an interval within the real data extracted to build the forecast.
 
-split-button on the **Data > Forecasts** page can be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
+Split-button on the **Data > Forecasts** page can be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
 ![](./resources/forecasts_10.png)
 
