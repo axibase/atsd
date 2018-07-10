@@ -4,7 +4,7 @@
 
 Functions are predefined procedures that perform a task or calculate a value.
 
-Includ functions by name in the `condition` and `filter` expressions as well as in placeholders.
+Include functions by name in the `condition` and `filter` expressions as well as in placeholders.
 
 ```javascript
   avg() > 80

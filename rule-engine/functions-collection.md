@@ -7,7 +7,7 @@ Returns information about the collection or checks for the presence of a specifi
 Create a collection by declaring the elements inline, enclosed in square brackets:
 
 ```javascript
-['john.doe@example.org', 'jane.doe@example.org']
+['john.doe@example.org', 'mary.jones@example.org']
 ```
 
 Alternatively, load a collection using the `collection()` function or another [lookup](functions-lookup.md) function.
