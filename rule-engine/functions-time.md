@@ -27,12 +27,23 @@ Date functions perform various operations on dates, timestamps, and intervals.
   now long
 ```
 
-Returns the current time as a [`DateTime`](object-datetime.md) object. The object fields can be accessed with `get` methods.
+Returns the current time as a [`DateTime`](object-datetime.md) object. 
+
+The `DateTime` object fields can be accessed with `get` methods.
 
 ```javascript
   // returns true on Thursdays
   now.getDayOfWeek() == 4
 ```
+
+The fields can be also accessed using the dot notation.
+
+```javascript
+  // returns true on Thursdays
+  now.dayOfWeek == 4  
+```
+
+Examples:
 
 ```javascript
   // returns true on Thursdays at anytime between 15:00 and 16:00 (exclusive)
@@ -42,6 +53,9 @@ Returns the current time as a [`DateTime`](object-datetime.md) object. The objec
 ```javascript
   // returns true if difference between current time (long, Unix milliseconds) and create_ms (long, Unix milliseconds) exceeds 1 hour
   (now.getMillis() - create_ms) > 60*60000
+
+  // the same condition as above implemented using the elapsedTime function
+  elapsedTime(create_ms) > 60*60000
 ```
 
 ### `window_length_time`
