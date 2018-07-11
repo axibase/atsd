@@ -52,7 +52,7 @@ property e:nurswg t:disk-config k:fs_type=NFS v:initiator=Pre-fetch
 Rules inherited from [Base ABNF](base-abnf.md).
 
 ```elm
-  ; entity, type and at least one tag is required
+; entity, type and at least one tag is required
 command = "property" MSP entity type *(MSP key) 1*(MSP tag) [MSP time]
 entity = "e:" NAME
 type = "t:" NAME

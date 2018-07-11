@@ -33,19 +33,19 @@ Variables **cannot** be included in a [filter](filters.md) expression because fi
 ### double
 
 ```javascript
-  pival = 3.14
+pival = 3.14
 ```
 
 ### integer
 
 ```javascript
-  kb = 1024
+kb = 1024
 ```
 
 ### long
 
 ```javascript
-  curtime = 1515758392702
+curtime = 1515758392702
 ```
 
 > Classify large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
@@ -57,23 +57,23 @@ Variables **cannot** be included in a [filter](filters.md) expression because fi
 Use single or double **quotes** when declaring a string variable.
 
 ```javascript
-  state = 'CA'
+state = 'CA'
 ```
 
 Inner quotes can be escaped with backslash.
 
 ```javascript
-  sqlQuery = 'SELECT value AS used_mb FROM "fs.rw" WHERE entity = \'' + entity + '\''
+sqlQuery = 'SELECT value AS used_mb FROM "fs.rw" WHERE entity = \'' + entity + '\''
 ```
 
 ```javascript
-  sqlQuery = "SELECT value AS used_mb FROM \"fs.rw\" WHERE entity = '" + entity + "'"
+sqlQuery = "SELECT value AS used_mb FROM \"fs.rw\" WHERE entity = '" + entity + "'"
 ```
 
 ### collection
 
 ```javascript
-  errorCodes = [401, 403, 404]
+errorCodes = [401, 403, 404]
 ```
 
 A collection can include elements of different types.
@@ -81,11 +81,11 @@ A collection can include elements of different types.
 Both single and double quotes can be used to specify elements of string type.
 
 ```javascript
-  stateList = ['CA', 'WA']
+stateList = ['CA', 'WA']
 ```
 
 ```javascript
-  stateList = ["CA", "WA"]
+stateList = ["CA", "WA"]
 ```
 
 To check the size of the collection, use the `.size()` method.
@@ -93,40 +93,40 @@ To check the size of the collection, use the `.size()` method.
 To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with 0 for the first element).
 
 ```javascript
-  authors = split(tags.authors, ',')
+authors = split(tags.authors, ',')
   authors.size() == 0 ? 'n/a' : authors[0]
 ```
 
 ### map
 
 ```javascript
-  stateMap = ['CA': 0.8, 'WA': 0.2]
+stateMap = ['CA': 0.8, 'WA': 0.2]
 ```
 
 ```javascript
-  stateMap = ["CA": 0.8, "WA": 0.2]
+stateMap = ["CA": 0.8, "WA": 0.2]
 ```
 
-  > Both single and double quotes can be used to specify map keys and values.
+> Both single and double quotes can be used to specify map keys and values.
 
 ### function
 
 ```javascript
-  last_msg = db_message_last('1 week', 'alert', 'rule-engine')
+last_msg = db_message_last('1 week', 'alert', 'rule-engine')
 ```
 
 ```javascript
-  since_start = formatIntervalShort(elapsedTime(property('dkr.state::started')))
+since_start = formatIntervalShort(elapsedTime(property('dkr.state::started')))
 ```
 
 ```javascript
-  server = upper(keepBefore(entity, ':'))
+server = upper(keepBefore(entity, ':'))
 ```
 
 ### expression
 
 ```javascript
-  annotation = tags.note == null ? 'N/A' : tags.note
+annotation = tags.note == null ? 'N/A' : tags.note
 ```
 
 ## Cross-Reference

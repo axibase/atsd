@@ -215,28 +215,28 @@ If the ATSD server cannot connect to the remote API server due to network restri
   NGINX configuration for Slack:
 
 ```txt
-    location /api/chat.postMessage {
-        proxy_pass https://slack.com/api/chat.postMessage;
-    }
-    location /api/files.upload {
-        proxy_pass https://slack.com/api/files.upload;
-    }
+location /api/chat.postMessage {
+     proxy_pass https://slack.com/api/chat.postMessage;
+}
+location /api/files.upload {
+     proxy_pass https://slack.com/api/files.upload;
+}
 ```
 
   NGINX configuration for Telegram:
 
 ```txt
-    location /bot {
-        proxy_pass https://api.telegram.org/bot;
-    }
+location /bot {
+    proxy_pass https://api.telegram.org/bot;
+}
 ```
 
   NGINX configuration for Discord:
 
 ```txt
-    location /api/webhooks {
-        proxy_pass https://discordapp.com/api/webhooks;
-    }
+location /api/webhooks {
+    proxy_pass https://discordapp.com/api/webhooks;
+}
 ```
 
   Modify the **Base URL** by replacing it with the corresponding API gateway URL.

@@ -162,9 +162,9 @@ Replace `user_name` with user name.
 Add `User` option to `[Service]` section in `/lib/systemd/system/tcollector.service` file.
 
 ```ini
- [Service]
- User=user_name
- ...
+[Service]
+User=user_name
+...
 ```
 
 Replace `user_name` with user name.

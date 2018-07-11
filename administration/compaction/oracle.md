@@ -65,15 +65,15 @@ DESCRIBE TradeHistory;
 ```
 
 ```txt
- Name                     Null?    Type
- ----------------------------------- -------- ------------------------
- INSTRUMENT                 NOT NULL NUMBER(7)
- OPEN                          NUMBER(7,4)
- HIGH                          NUMBER(7,4)
- LOW                          NUMBER(7,4)
- CLOSE                          NUMBER(7,4)
- VOLUME                       NUMBER(8)
- TIME                     NOT NULL TIMESTAMP(0)
+Name                     Null?    Type
+----------------------------------- -------- ------------------------
+INSTRUMENT                 NOT NULL NUMBER(7)
+OPEN                          NUMBER(7,4)
+HIGH                          NUMBER(7,4)
+LOW                          NUMBER(7,4)
+CLOSE                          NUMBER(7,4)
+VOLUME                       NUMBER(8)
+TIME                     NOT NULL TIMESTAMP(0)
 
 SELECT * FROM TradeHistory FETCH FIRST 5 ROWS ONLY;
 

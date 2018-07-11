@@ -29,15 +29,15 @@ change over time and their history is visualized with different types of graphs.
 Each series is identified by a composite key which consists of a **metric**, **entity**, and optional name/value pairs called **series tags**, or simply **tags**.
 
 ```ls
-  [series]
-    metric = cpu_busy
-    entity = nurswgvml007
-  [series]
-    metric = df.bytes.percentused
-    entity = nurswgvml006
-    [tags]
-      mount = /
-      fstype = ext4
+[series]
+  metric = cpu_busy
+  entity = nurswgvml007
+[series]
+  metric = df.bytes.percentused
+  entity = nurswgvml006
+  [tags]
+    mount = /
+    fstype = ext4
 ```
 
 * An **entity** is a physical or logical object being monitored such as `nurswgvml007` (computer name).
@@ -61,20 +61,20 @@ Alternatively, if the entity is already known, the metrics and series can be exp
 To display values for a specific series, specify the exact series key in the `[series]` section:
 
 ```ls
-  # Series without Tags
-  metric = cpu_busy
-  entity = nurswgvml007
+# Series without Tags
+metric = cpu_busy
+entity = nurswgvml007
 ```
 
 ![](./resources/selecting-series_1.png)
 
 ```ls
-  # Series with Tags
-  metric = df.bytes.percentused
-  entity = nurswgvml006
-  [tags]
-    mount = /
-    fstype = ext4
+# Series with Tags
+metric = df.bytes.percentused
+entity = nurswgvml006
+[tags]
+  mount = /
+  fstype = ext4
 ```
 
 ![](./resources/selecting-series_2.png)
@@ -88,11 +88,11 @@ By default, the database returns all series matching the request, including seri
 This enables loading series using only a subset of tags that are still sufficient to uniquely identify the series:
 
 ```ls
-  # Series with Tags
-  metric = df.bytes.percentused
-  entity = nurswgvml006
-  [tags]
-    mount = /
+# Series with Tags
+metric = df.bytes.percentused
+entity = nurswgvml006
+[tags]
+  mount = /
 ```
 
 The above configuration matches all series with `mount=/` tag, **including** series that can have other tags.
@@ -100,12 +100,12 @@ The above configuration matches all series with `mount=/` tag, **including** ser
 To disable partial tag match, use the `exact-match = true | false` setting:
 
 ```ls
-  # Series with Tags
-  metric = df.bytes.percentused
-  entity = nurswgvml006
-  exact-match = true
-  [tags]
-    mount = /
+# Series with Tags
+metric = df.bytes.percentused
+entity = nurswgvml006
+exact-match = true
+[tags]
+  mount = /
 ```
 
 When partial match is disabled, the database returns series with exactly the same combination of tags as specified in
@@ -115,11 +115,11 @@ The partial match, while making the configuration compact, can produce undetermi
 series where only one series is expected:
 
 ```ls
-  # Series with Tags
-  metric = df.bytes.percentused
-  entity = nurswgvml006
-  [tags]
-    fstype = ext4
+# Series with Tags
+metric = df.bytes.percentused
+entity = nurswgvml006
+[tags]
+  fstype = ext4
 ```
 
 In the above example, the response contains three different series with the same file system type ext4 but with different
@@ -132,19 +132,19 @@ The resulting series is merged from 3 underlying different series and provides a
 To control how multiple matched series are processed, use the `multiple-series = true | false` setting.
 
 ```ls
-  # Display all series with tag fstype=ext4 without merging
-  multiple-series = true
-  [series]
-    [tags]
-      fstype = ext4
+# Display all series with tag fstype=ext4 without merging
+multiple-series = true
+[series]
+  [tags]
+    fstype = ext4
 ```
 
 The `multiple-series` setting can be used to display all series without specifying any tags in widget configuration at all:
 
 ```ls
-   # Display all series without merging
-     multiple-series = true
-     [series]
+# Display all series without merging
+multiple-series = true
+[series]
 ```
 
 The default value of the `multiple-series` setting is `true` in the following cases:
@@ -163,29 +163,29 @@ The default value of the `multiple-series` setting is `true` in the following ca
 
 ```ls
 # Select series using tag value wildcards: 'multiple-series' set to true (enabled)
-  [tags]
-    fstype = ext4
-    mount = *media*
+[tags]
+  fstype = ext4
+  mount = *media*
 
 # Select series with any value for the specified tag: 'multiple-series' set to true (enabled)
-  [tags]
-    fstype = ext4
-    mount = *
+[tags]
+  fstype = ext4
+  mount = *
 
 # Select series with any value for the specified tag: 'multiple-series' set to false (disabled)
-  [tags]
-    fstype = ext4
+[tags]
+  fstype = ext4
 
 # Select series with tag values from the specified list: 'multiple-series' set to true (enabled)
-  [tags]
-    fstype = cifs, autofs
+[tags]
+  fstype = cifs, autofs
 
 # Select series with tag values matching specified wildcard patterns: 'multiple-series' set to true (enabled)
-  [tags]
-    fstype = cifs, auto*
+[tags]
+  fstype = cifs, auto*
 
 # Select series with tags matching an expression: multiple-series set to true (enabled)
-  tag-expression = tags.mount NOT LIKE '/m*'
+tag-expression = tags.mount NOT LIKE '/m*'
 ```
 
 ![](./resources/select-tags.png)
@@ -193,6 +193,7 @@ The default value of the `multiple-series` setting is `true` in the following ca
 ## Merging Series
 
 Joining multiple series with different tags into one series is useful when some of the tags can be ignored.
+<!-- markdownlint-disable MD107 -->
 
 ```txt
                date                 metric          entity                   tags     value
@@ -202,7 +203,9 @@ Joining multiple series with different tags into one series is useful when some 
 2018-06-15 03:00:00   df.bytes.percentused    nurswgvml006    mount=/,fstype=ext4      10.2    <- series-2
 ```
 
+<!-- markdownlint-enable MD107 -->
 In the previous example, the underlying series do not overlap and can be merged without duplication.
+<!-- markdownlint-disable MD107 -->
 
 ```txt
                date                 metric          entity       tags     value
@@ -212,6 +215,7 @@ In the previous example, the underlying series do not overlap and can be merged 
 2018-06-15 03:00:00   df.bytes.percentused    nurswgvml006    mount=/      10.2    <- series-3
 ```
 
+<!-- markdownlint-enable MD107 -->
 Examples:
 
 * `/media/datadrive` file system re-mounted on a larger disk but the mount point remains the same.
@@ -229,37 +233,37 @@ Examples:
 The `[widget]` syntax provides a number of options to select series for multiple entities and the same metric:
 
 ```ls
-  # Select specific entity by name
-  entity = nurswgvml006
+# Select specific entity by name
+entity = nurswgvml006
 
-  # Select multiple entities by name using ? and * wildcards
-  entity = nurswgvml*
+# Select multiple entities by name using ? and * wildcards
+entity = nurswgvml*
 
-  # Select all entities
-  entity = *
+# Select all entities
+entity = *
 
-  # Select an array of entities by name
-  entities = nurswgvml006, nurswgvml007
+# Select an array of entities by name
+entities = nurswgvml006, nurswgvml007
 
-  # Select an array of entities by name or pattern
-  entities = nurswgvml111, nurswgvml00*
+# Select an array of entities by name or pattern
+entities = nurswgvml111, nurswgvml00*
 
-  # Select entities matching an expression referencing name, label, entity tags, properties
-  entity-expression = tags.app = 'ATSD'
+# Select entities matching an expression referencing name, label, entity tags, properties
+entity-expression = tags.app = 'ATSD'
 
-  # Select entities belonging to the specified entity group
-  entity-group = nur-collectors
+# Select entities belonging to the specified entity group
+entity-group = nur-collectors
 ```
 
 Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) documentation for details on entity filters.
 
 ```ls
-  # Retrieve series for entities starting with nurswgvml00
-  [series]
-   entity = nurswgvml00*
-    [tags]
-      mount = /
-      fstype = ext4
+# Retrieve series for entities starting with nurswgvml00
+[series]
+  entity = nurswgvml00*
+  [tags]
+    mount = /
+    fstype = ext4
 ```
 
 ![](./resources/select-entity.png)
@@ -273,27 +277,27 @@ As an alternative to enumerating the `[series]` manually or using wildcards, the
 `getTags()` function:
 
 ```ls
-  var tags = getTags('df.bytes.percentused', 'mount', 'nurswgvml006')
+var tags = getTags('df.bytes.percentused', 'mount', 'nurswgvml006')
 
-  for tagValue in tags
-    [series]
-      [tags]
-        mount = @{tagValue}
-  endfor
+for tagValue in tags
+  [series]
+    [tags]
+      mount = @{tagValue}
+endfor
 ```
 
 `getSeries()` function:
 
 ```ls
-  var seriesList = getSeries('df.bytes.percentused', 'nurswgvml006')
+var seriesList = getSeries('df.bytes.percentused', 'nurswgvml006')
 
-  for sobj in seriesList
-    [series]
-      [tags]
-      for tagName in Object.keys(sobj.tags)
-        "@{tagName}" = @{sobj.tags[tagName]}
-      endfor
-  endfor
+for sobj in seriesList
+  [series]
+    [tags]
+    for tagName in Object.keys(sobj.tags)
+      "@{tagName}" = @{sobj.tags[tagName]}
+    endfor
+endfor
 ```
 
 [![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/14/)
@@ -305,21 +309,21 @@ Since the limit is applied to matched series before sorting, the results can var
 useful when exploring the dataset to prevent the widgets from loading too many series into browser memory.
 
 ```ls
-  entity = *
-  series-limit = 10
-  [series]
-    [tags]
-      fstype = ext4
+entity = *
+series-limit = 10
+[series]
+  [tags]
+    fstype = ext4
 ```
 
 For a more flexible visibility control on the client, use the display and enabled settings.
 
 ```ls
-  entity = *
-  display = value == top(1) || value == bottom(1)
-  [series]
-    [tags]
-      fstype = ext4
+entity = *
+display = value == top(1) || value == bottom(1)
+[series]
+  [tags]
+    fstype = ext4
 ```
 
 ![](./resources/series-display-1.png)

@@ -2,6 +2,8 @@
 
 ## Input File
 
+<!-- markdownlint-disable MD107 -->
+
 ```txt
           , Sensor-0001, Sensor-0001, Sensor-0001, Sensor-0020, Sensor-0020, Sensor-0020
           ,PV120000-XG1,PV120000-XG1,PV120000-XG1,PV120000-XG1,PV120000-XG1,PV120000-XG1
@@ -9,6 +11,8 @@
      00:00,        35.5,        40.0,         760,        20.4,        60.8,         745
      00:10,        35.6,        40.8,         750,        20.5,        60.5,         745
 ```
+
+<!-- markdownlint-enable MD107 -->
 
 ## Parser Settings
 

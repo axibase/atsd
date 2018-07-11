@@ -14,12 +14,16 @@ Check available memory:
 free
 ```
 
+<!-- markdownlint-disable MD107 -->
+
 ```ls
              total       used       free     shared    buffers     cached
 Mem:       1922136    1274196     647940         32      92508     315664
 -/+ buffers/cache:     866024    1056112
 Swap:      2064380      31016    2033364
 ```
+
+<!-- markdownlint-enable MD107 -->
 
 ## Enabling Swap
 
@@ -60,6 +64,7 @@ free
 ```
 
 The output must contain a row with Swap total not equal to zero.
+<!-- markdownlint-disable MD107 -->
 
 ```ls
              total       used       free     shared    buffers     cached

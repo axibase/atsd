@@ -54,84 +54,84 @@ Supported fields:
 #### Entity Name Match
 
 ```javascript
-  /*
-  Match entities with name starting with 'nurswgvml',
-  for example 'nurswgvml001', 'nurswgvml772'.
-  */
-  name LIKE 'nurswgvml*'
+/*
+Match entities with name starting with 'nurswgvml',
+for example 'nurswgvml001', 'nurswgvml772'.
+*/
+name LIKE 'nurswgvml*'
 ```
 
 #### Entity Label Match
 
 ```javascript
-  /*
-  Match entities whose label does not contain the 'nur' substring.
-  */
-  label NOT LIKE '*nur*'
+/*
+Match entities whose label does not contain the 'nur' substring.
+*/
+label NOT LIKE '*nur*'
 ```
 
 #### Enabled/Disabled Entity Match
 
 ```javascript
-  /* Match enabled entities. */
-  enabled = true
+/* Match enabled entities. */
+enabled = true
 
-  /* Match disabled entities. */
-  enabled = false
+/* Match disabled entities. */
+enabled = false
 ```
 
 #### Entity Tag Match
 
 ```javascript
-  /*
-  Match entities with entity tag 'environment' equal to 'production'.
-  */
-  tags.environment = 'production'
+/*
+Match entities with entity tag 'environment' equal to 'production'.
+*/
+tags.environment = 'production'
 
-  /*
-  Match entities with entity tag 'location' starting with 'SVL',
-  for example 'SVL', 'SVL02'.
-  */
-  tags.location LIKE 'SVL*'
+/*
+Match entities with entity tag 'location' starting with 'SVL',
+for example 'SVL', 'SVL02'.
+*/
+tags.location LIKE 'SVL*'
 
-  /*
-  Match entities with entity tag 'container_label.com.axibase.code' equal to 'collector'.
-  */
-  tags.container_label.com.axibase.code = 'collector'
+/*
+Match entities with entity tag 'container_label.com.axibase.code' equal to 'collector'.
+*/
+tags.container_label.com.axibase.code = 'collector'
 
-  /*
-  Match entities with entity tag 'docker-host' contained in the collection.
-  */
-  tags.docker-host IN ('dock1', 'dock2')
+/*
+Match entities with entity tag 'docker-host' contained in the collection.
+*/
+tags.docker-host IN ('dock1', 'dock2')
 ```
 
 #### Property Match
 
 ```javascript
-  /*
-  Match entities with a 'java_home' stored in 'docker.container.config.env'
-  equal to '/usr/lib/jvm/java-8-openjdk-amd64/jre'.
-  */
-  property('docker.container.config.env::java_home') = '/usr/lib/jvm/java-8-openjdk-amd64/jre'
+/*
+Match entities with a 'java_home' stored in 'docker.container.config.env'
+equal to '/usr/lib/jvm/java-8-openjdk-amd64/jre'.
+*/
+property('docker.container.config.env::java_home') = '/usr/lib/jvm/java-8-openjdk-amd64/jre'
 
-  /*
-  Match entities which have a '/opt' file_system stored in 'nmon.jfs' property type.
-  */
-  property_values('nmon.jfs::file_system').contains('/opt')
+/*
+Match entities which have a '/opt' file_system stored in 'nmon.jfs' property type.
+*/
+property_values('nmon.jfs::file_system').contains('/opt')
 
-  /*
-  Match entities with a 'file_system' which name includes 'ora',
-  stored in 'nmon.jfs' property type.
-  */
-  matches('*ora*', property_values('nmon.jfs::file_system'))
+/*
+Match entities with a 'file_system' which name includes 'ora',
+stored in 'nmon.jfs' property type.
+*/
+matches('*ora*', property_values('nmon.jfs::file_system'))
 
-  /*
-  Match entities with non-empty 'java_home' in 'docker.container.config.env' property type.
-  */
-  !property_values('docker.container.config.env::java_home').isEmpty()
+/*
+Match entities with non-empty 'java_home' in 'docker.container.config.env' property type.
+*/
+!property_values('docker.container.config.env::java_home').isEmpty()
 
-  /*
-  Match entities without 'java_home' in 'docker.container.config.env' property type.
-  */
-  property_values('docker.container.config.env::java_home').size() == 0
+/*
+Match entities without 'java_home' in 'docker.container.config.env' property type.
+*/
+property_values('docker.container.config.env::java_home').size() == 0
 ```

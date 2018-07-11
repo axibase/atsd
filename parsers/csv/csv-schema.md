@@ -14,11 +14,15 @@ Schema Parser example:
 
 Input File:
 
+<!-- markdownlint-disable MD107 -->
+
 ```ls
             DateTime; sensor01;  Status; sensor02;  Status
 2015-10-29T00:00:00Z;     19.2;  Provis;     11.3;      ok
 2015-10-29T00:05:00Z;     19.8;      ok;     12.9;      ok
 ```
+
+<!-- markdownlint-enable MD107 -->
 
 Schema:
 
@@ -133,11 +137,11 @@ If Schema parsing is enabled, only the following fields from the parser configu
 ABNF Extension Syntax:
 
 ```txt
-   singlespec  =  position [ "-" position  [ "!" step]]
-   cellspec    =  cellrow "," cellcol [ "-" cellrow "," cellcol [ "!" steprow "," stepcol ] ]
-   steprow    =  step
-   stepcol    =  step
-   step        =  number
+singlespec  =  position [ "-" position  [ "!" step]]
+cellspec    =  cellrow "," cellcol [ "-" cellrow "," cellcol [ "!" steprow "," stepcol ] ]
+steprow    =  step
+stepcol    =  step
+step        =  number
 ```
 
 RFC 7111 base syntax: [https://tools.ietf.org/html/rfc7111#section-3](https://tools.ietf.org/html/rfc7111#section-3)

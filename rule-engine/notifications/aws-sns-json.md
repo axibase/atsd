@@ -15,28 +15,28 @@ Customize the alert messages using [placeholders](../placeholders.md) as necessa
 * `OPEN`
 
 ```json
-     {
-        "default": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"message\": \"The rule is open (default)\"\n}",
-        "http": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"message\": \"The rule is open (http)\"\n}"
-     }
+{
+  "default": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"message\": \"The rule is open (default)\"\n}",
+  "http": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"message\": \"The rule is open (http)\"\n}"
+}
 ```
 
 * `REPEAT`
 
 ```json
-     {
-        "default": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is still open (default)\"\n}",
-        "http": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is still open (http)\"\n}"
-     }
+{
+  "default": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is still open (default)\"\n}",
+  "http": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is still open (http)\"\n}"
+}
 ```
 
 * `CANCEL`
 
 ```json
-     {
-        "default": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is cancel (default)\"\n}",
-        "http": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is cancel (http)\"\n}"
-     }
+{
+  "default": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is cancel (default)\"\n}",
+  "http": "{\n  \"status\": \"${status}\",\n  \"entity\": \"${entity}\",\n  \"rule\": \"${rule}\",\n  \"tags\": \"${tags}\",\n  \"repeatCount\": \"${repeat_count}\",\n  \"message\": \"The rule is cancel (http)\"\n}"
+}
 ```
 
   ![](./images/aws_sns_web_notification_json.png)
