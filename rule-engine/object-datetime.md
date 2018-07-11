@@ -27,6 +27,8 @@ The object provides `get()` methods to extract numeric values for the various ca
 * `getCenturyOfEra()`
 * `getEra()`
 * `getMillis()`
+* `is_weekday()`
+* `is_weekend()`
 
 The `getMillis()` method returns current time in Unix milliseconds.
 
@@ -59,3 +61,5 @@ The following values are returned by the `DateTime` object on `2018-01-13T16:45:
 |`getCenturyOfEra()`|20|
 |`getEra()`|1|
 |`getMillis()`|1515861922303|
+|`is_weekday()`|`false`|
+|`is_weekend()`|`true`|
