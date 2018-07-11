@@ -2,7 +2,7 @@
 
 ## Overview
 
-Retrieves message records from the database at any stage of the rule evaluation process.
+These functions retrieve message records from the database at any stage of the rule evaluation process.
 
 The `db_message_count` and `db_message_last` functions can be used to verify the existence of or establish a correlation between time series and messages.
 

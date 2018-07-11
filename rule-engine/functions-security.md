@@ -2,7 +2,7 @@
 
 ## Overview
 
-Checks user permissions as part of the rule notification logic and allow or deny response actions such as sending portals or invoking scripts.
+These functions check user permissions as part of the rule notification logic and allow or deny response actions such as sending portals or invoking scripts.
 
 ## Reference
 

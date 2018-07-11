@@ -2,7 +2,7 @@
 
 ## Overview
 
-Formats numbers, dates, collections, and maps to strings according to the specified format.
+These functions format numbers, dates, collections, and maps to strings according to the specified format.
 
 ## Reference
 

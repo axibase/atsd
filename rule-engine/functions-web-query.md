@@ -2,7 +2,7 @@
 
 ## Overview
 
-Executes an HTTP request to an external web service and return a [`WebRequestResult`](#response-object) response object for further processing.
+These functions execute an HTTP request to an external web service and return a [`WebRequestResult`](#response-object) response object for further processing.
 
 ## Reference
 

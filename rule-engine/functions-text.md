@@ -2,7 +2,7 @@
 
 ## Overview
 
-Compares and transforms strings, `null`-safe: returns `null` or `false` if one of the inputs is `null`.
+These functions compare and transform strings, `null`-safe: returns `null` or `false` if one of the inputs is `null`.
 
 ## Reference
 

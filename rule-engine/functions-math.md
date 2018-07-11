@@ -2,7 +2,7 @@
 
 ## Overview
 
-Math functions perform basic numeric operations on the input number and return a number as the result.
+These functions perform basic numeric operations on the input number and return a number as the result.
 
 ## Reference
 

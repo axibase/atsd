@@ -2,7 +2,7 @@
 
 ## Overview
 
-Executes a `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
+These functions execute a `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
 
 Accepts an array of arguments which can include window [placeholders](placeholders.md) such as `entity` or `tags`.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Retrieves collections and maps of strings from replacement tables, collections, and other entities.
+These functions retrieve collections and maps of strings from replacement tables, collections, and other entities.
 
 Replacement tables are listed on the **Data > Replacement Tables** page.
 

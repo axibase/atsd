@@ -2,7 +2,7 @@
 
 ## Overview
 
-Retrieves series records from the database at any stage of the rule evaluation process.
+These functions retrieve series records from the database at any stage of the rule evaluation process.
 
 The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series can be different from the series in the current window.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Checks windows created by other rules. Matching windows can contain data for series that differ from the series in the current window. Use these functions for correlation purposes.
+These functions check windows created by other rules. Matching windows can contain data for series that differ from the series in the current window. Use these functions for correlation purposes.
 
 Windows are matched using [grouping](grouping.md) tags, irrespective of tags present in the last command.
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression returns `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Returns information about the collection or checks for the presence of a specified element.
+These functions return information about the collection or checks for the presence of a specified element.
 
 Create a collection by declaring the elements inline, enclosed in square brackets:
 

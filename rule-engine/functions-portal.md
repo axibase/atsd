@@ -2,7 +2,7 @@
 
 ## Overview
 
-Attaches custom portals to outgoing webhooks. For instance, invoke the function to attach a portal for an entity other than the entity in the current rule window.
+These functions attach custom portals to outgoing webhooks. For instance, invoke the function to attach a portal for an entity other than the entity in the current rule window.
 
 ## Syntax
 

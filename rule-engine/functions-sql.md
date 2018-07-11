@@ -2,7 +2,7 @@
 
 ## Overview
 
-Returns the results of a user-defined SQL query.
+These functions return the results of a user-defined SQL query.
 
 ## Reference
 
