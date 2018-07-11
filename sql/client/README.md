@@ -2,7 +2,7 @@
 
 SQL client provides a convenient way to query ATSD using SQL and export results to a file or standard output in a variety of formats.
 
-The client is a `bash` script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
+The client is a `bash` script that parses and validates input parameters and executes an HTTP/HTTPS request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
 
 ## Permissions
 
@@ -16,9 +16,9 @@ Username and password of the user executing the query must be specified in the `
 
 The user must have an `API_DATA_READ` role and necessary entity `read` permissions.
 
-The client is stateless with each query triggering a separate http request with the `Basic` authentication.
+The client is stateless with each query triggering a separate HTTP request with the `Basic` authentication.
 
-If the database url specified in the `atsd.config` file is secure, both the query as well as results are encrypted.
+If the database URL specified in the `atsd.config` file is secure, both the query as well as results are encrypted.
 
 ## Configuration File
 

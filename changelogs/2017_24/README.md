@@ -14,7 +14,7 @@
 | 4258 | sql | Bug | Fixed an error that occurred when using non-overlapping interval conditions from different metrics. |
 | [4247](#issue-4247) | sql | Feature | [`NaN`](../../sql/README.md#not-a-number-nan) comparison logic changed. `NaN` is compared similar to `NULL`. |
 | 4231 | sql | Bug | Fixed an error that occurred when trying to compare [`date_format`](../../sql/README.md#date_format) with date string. |
-| 4192 | client | Feature | Enable support for gzip compression in [ATSD Java API](https://github.com/axibase/atsd-api-java) client. |
+| 4192 | client | Feature | Enable support for GZIP compression in [ATSD Java API](https://github.com/axibase/atsd-api-java) client. |
 | [4187](#issue-4187) | UI | Feature | Add support for SQL syntax themes. |
 | [4166](#issue-4166) | UI | Feature | Apply user-defined **Time Format** to [`date_format`](../../sql/README.md#date_format) function results in the [SQL Console](../../sql/sql-console.md). |
 | 4129 | sql | Bug | Disallow non-positive period in [`PERIOD`](../../sql/README.md#period) and [`INTERPOLATE`](../../sql/README.md#interpolation). |

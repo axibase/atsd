@@ -4,7 +4,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4409 | export | Bug | Added `metrics.unit` to the list of fields in the backup xml files. |
+| 4409 | export | Bug | Added `metrics.unit` to the list of fields in the backup XML files. |
 | 4400 | sql | Bug | Fixed illegal syntax error when querying table names containing dots. |
 | [4398](#issue-4398) | UI | Feature | Refactored the **[Metrics]** tab to improve usability. |
 | 4359 | forecast | Bug |  Fixed a [Forecast](../../forecasting/README.md) calculation error if the settings specify an [calendar](../../shared/calendar.md) keyword in the future.|

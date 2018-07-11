@@ -45,11 +45,11 @@
 5066 | rule engine | Bug | [AWS API](../../rule-engine/notifications/README.md#integration-webhooks): Fix test mode for configuration.
 5065 | rule engine | Feature | [Webhooks](../../rule-engine/notifications/README.md): Add type, toggle fields.
 5063 | export | Bug | [Tag filter](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) with wildcard allows any tag values.
-5055 | csv | Bug | Incorrect version fields are stored from [uploaded](../../parsers/csv/README.md#uploading-csv-files) .csv file.
+5055 | csv | Bug | Incorrect version fields are stored from [uploaded](../../parsers/csv/README.md#uploading-csv-files) `.csv` file.
 5051 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Output Path collision.
 5049 | api-rest | Bug | Data API: slow search by property in [`entityExpression`](../../api/data/filter-entity.md#entity-filter-fields).
-5036 | administrator | Feature | Backup multiple record types from zip/tar.gz archive.
-5018 | rule engine | Bug | Webhooks: raw url presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
+5036 | administrator | Feature | Backup multiple record types from `.zip`/`.tar.gz` archive.
+5018 | rule engine | Bug | Webhooks: raw URL presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
 5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | **Entity Tag** link not applied to **Entity Tag** column.
 5001 | rule engine | Feature | Telegram: [`getUpdates`](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
 4957 | sql | Bug | [Period](../../sql/README.md#period) query now takes long time to execute.

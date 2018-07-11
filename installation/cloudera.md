@@ -408,7 +408,7 @@ tail -f /opt/atsd/atsd/logs/atsd.log
 
 Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is now accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (HTTPS).
 
 ## Enable ATSD Auto-Start
 
@@ -478,13 +478,13 @@ Copy new ATSD jar files on the ATSD server.
 cp atsd/atsd/bin/atsd*.jar /opt/atsd/atsd/bin/
 ```
 
-Compare atsd-hbase jar revision with the revision installed on HBase region servers
+Compare `atsd-hbase` jar revision with the revision installed on HBase region servers
 
 ```sh
 ls atsd/hbase/lib/atsd-hbase.*.jar
 ```
 
-Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the revision of the new file is greater than what is installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
+Compare the displayed revision with `atsd-hbase` file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the revision of the new file is greater than what is installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
 
 Start ATSD process.
 

@@ -4,9 +4,9 @@
 
 Accepts a CSV file or multiple CSV files for parsing into series, properties, or messages with the specified CSV parser.
 
-The files can be uploaded in plain text or compressed with the gzip or zip codecs.
+The files can be uploaded in plain text or compressed with the GZIP or ZIP codecs.
 
-Multiple files can be archived with zip/tar and uploaded as one zip or tar.gz archive.
+Multiple files can be archived with `zip`/`tar` and uploaded as one `.zip` or `.tar.gz` archive.
 
 This method supports processing of the uploaded attached file as data as well as a part in a multi-part payload.
 
@@ -34,7 +34,7 @@ This method supports processing of the uploaded attached file as data as well as
 
 |**Header**|**Value**|
 |:---|:---|
-| `Content-Type` | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed zip file and archive (**.zip**)<br>`application/gzip` or `application/x-gzip`:w for compressed gzip file (**.gz**) or archive (**.tar.gz**).|
+| `Content-Type` | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed ZIP file and archive (`.zip`)<br>`application/gzip` or `application/x-gzip`:w for compressed GZIP file (`.gz`) or archive (`.tar.gz`).|
 
 #### Multi-part Mode
 
@@ -48,7 +48,7 @@ This method supports processing of the uploaded attached file as data as well as
 |:---|:---|:---|
 | `config`   | string   | [**Required**] Parser Name as configured on the **Data > CSV Parsers** page.|
 | `encoding`      | string   | File encoding. Default: UTF-8.|
-| `filename`      | string   | [**Required** for archived files uploaded in File Data mode] <br>Name of the file or archive being sent, for example text.csv, files.zip, files.tar.gz.<br>The archive can contain multiple files, all of which are processed.<br>Archive compression is determined based on file extension.<br>Supported archive formats: zip and tar.gz.<br>Supported file extensions for the uploaded archive: .gz, .tar.gz, .zip.  |
+| `filename`      | string   | [**Required** for archived files uploaded in File Data mode] <br>Name of the file or archive being sent, for example `text.csv`, `files.zip`, `files.tar.gz`.<br>The archive can contain multiple files, all of which are processed.<br>Archive compression is determined based on file extension.<br>Supported archive formats: `zip` and `tar.gz`.<br>Supported file extensions for the uploaded archive: `.gz`, `.tar.gz`, `.zip`.  |
 | `default-entity`| string | Default entity name applied to commands contained in the file. |
 | `entity-prefix` | string | Prefix added to all entity names extracted from the file. |
 | `entity-tags` | string | Comma-separated list of entity tags added as series, message, or property tags to parsed commands. |

@@ -4,7 +4,7 @@
 
 The sender script is used to stream `nmon` data into ATSD as soon as the data is written into the `nmon` file.
 
-The `nmon_sender_ssh.sh` script creates an ssh-tunnel and uses it to send `nmon` data to ATSD.
+The `nmon_sender_ssh.sh` script creates an SSH tunnel and uses it to send `nmon` data to ATSD.
 
 [resources/nmon_sender_ssh.sh](https://github.com/axibase/nmon/blob/master/nmon_sender_ssh.sh)
 
@@ -57,7 +57,7 @@ ps -ef | grep nmon_sender_ssh.sh
 |  `-s [second]`  |  Set period of making snapshot of `nmon` (60 by default).  |
 |  `-c [count]`  |  Set count of snapshot (1440 by default).  |
 |  `-m [dir]`  |  Set `nmon` output directory or filename (`./` by default).  |
-|  `-u [user]`  |  Set user for ssh-connect (`atsdreadonly` by default).  |
+|  `-u [user]`  |  Set user for  SSH connect (`atsdreadonly` by default).  |
 |  `-i [keypath]`  |  Set path to private key (`~/.ssh/id_rsa_atsdreadonly` by default).  |
-|  `-p [port]`  |  Set port to connect by ssh (22 by default).  |
+|  `-p [port]`  |  Set port to connect by SSH (22 by default).  |
 |  `-r [parser_id]`  |  Set parser id (`default` by default).  |

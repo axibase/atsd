@@ -2,13 +2,13 @@
 
 ## Overview
 
-`AWS API` [webhook](../notifications/README.md) integrates the ATSD rule engine with [Amazon Web Services](https://aws.amazon.com/) that support HTTP or HTTPs protocol.
+`AWS API` [webhook](../notifications/README.md) integrates the ATSD rule engine with [Amazon Web Services](https://aws.amazon.com/) that support HTTP or HTTPS protocol.
 
 ## Webhook Settings
 
 |**Setting**|**Description**|
 |---|---|
-|Endpoint URL|AWS url|
+|Endpoint URL|AWS URL|
 |Method|HTTP method|
 |Access Key Id|[Access Key Id](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|
 |Secret Access Key|[Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys)|

@@ -141,7 +141,7 @@ repository=atsd-site&channel=devops
 
 ### Request URL
 
-The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
+The request URL consists of scheme (HTTP/HTTPS), optional user credentials, hostname, port, and path with query string.
 
 ```ls
   scheme:[//[username:password@]host[:port]][/path][?query]

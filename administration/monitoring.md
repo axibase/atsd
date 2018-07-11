@@ -70,11 +70,11 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 
 | **Metric** | **Description** |
 |:--- | :--- |
-|`http.sessions` |Number of http sessions.|
-|`http.thread_pool_idle` |Number of http server threads in waiting state. |
-|`http.thread_pool_max` |The maximum number of http server threads.|
-|`http.thread_pool_used` |Number of http server threads that are in use.|
-|`http.thread_pool_used_percent` |Percentage of used http server threads.|
+|`http.sessions` |Number of HTTP sessions.|
+|`http.thread_pool_idle` |Number of HTTP server threads in waiting state. |
+|`http.thread_pool_max` |The maximum number of HTTP server threads.|
+|`http.thread_pool_used` |Number of HTTP server threads that are in use.|
+|`http.thread_pool_used_percent` |Percentage of used HTTP server threads.|
 
 ### Load
 

@@ -108,7 +108,7 @@ Choose your service.
 
 ![](./images/pagerduty_service_id_2.png)
 
-Get an ID from url.
+Get an ID from URL.
 
 ![](./images/pagerduty_service_id_3.png)
 

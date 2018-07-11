@@ -71,7 +71,7 @@ AWS SNS Subscriptions:
 
 ![](./images/aws_sns_web_notification_raw_test_3.png)
 
-### Http protocol
+### HTTP protocol
 
 The `HTTP` subscription with parameter `raw message delivery = false`:
 
@@ -81,7 +81,7 @@ The `HTTP` subscription with parameter `raw message delivery = false`:
 
 ![](./images/aws_sns_web_notification_raw_test_6.png)
 
-### Http protocol
+### HTTP protocol
 
 The `HTTP` subscription with parameter `raw message delivery = true`:
 

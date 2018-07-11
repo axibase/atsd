@@ -8,7 +8,7 @@ JMX tools can be used to fetch ATSD metrics, for example:
 In `/etc/hosts` change `127.0.1.1 atsd_hostname` to `atsd_ip atsd_hostname`
 where `atsd_ip` is the ip v4 address of the ATSD host.
 
-Configure the jmx username and password in two separate files located in
+Configure the JMX username and password in two separate files located in
 the `/opt/atsd/atsd/conf/` directory: `jmx.access` and `jmx.password`
 
 Add the following lines to the `/opt/atsd/atsd/conf/server.properties`

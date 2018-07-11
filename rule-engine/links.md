@@ -156,7 +156,7 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 ```
 
 * Link Label: `nmon_cpu`
-* Enabled in Email message text, HipChat with **Message Format** be set to *html*.
+* Enabled in Email message text, HipChat with **Message Format** be set to `html`.
 
 ### `markdown`
 

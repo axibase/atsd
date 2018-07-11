@@ -102,7 +102,7 @@ Watch for **ATSD start completed** message at the end of the `start.log`.
  * [ATSD] ATSD start completed.
 ```
 
-Web interface is now accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (HTTPS).
 
 ## Launch Parameters
 
@@ -129,8 +129,8 @@ View additional launch examples [here](https://github.com/axibase/atsd-docs/blob
 
 ## Published Ports
 
-* 8088 – http
-* 8443 – https
+* 8088 – HTTP
+* 8443 – HTTPS
 * 8081 – [TCP network commands](../api/network/README.md#network-api)
 * 8082 – [UDP network commands](../api/network/README.md#udp-datagrams)
 
