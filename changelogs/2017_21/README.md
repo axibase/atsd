@@ -7,7 +7,7 @@
 | 4222 | export | Bug | Optimize export scan by adding entity to the scan filter. |
 | 4219 | UI | Bug | Add series tags to SQL queries generated on the **Series Statistics** page. |
 | 4216 | api-rest | Bug | Fix `OutOfMemory` error by applying limit on the server for [`/api/v1/messages/query`](../../api/data/messages/query.md#result-filter-fields) method. |
-| 4214 | api-rest | Feature | Enable support for gzip compression of the payload in [`/api/v1/command`](../../api/data/ext/command.md) method. |
+| 4214 | api-rest | Feature | Enable support for GZIP compression of the payload in [`/api/v1/command`](../../api/data/ext/command.md) method. |
 | 4212 | data-in| Bug| Fix Number Format Exception in `ChannelHandler`. |
 | 4211 | sql | Bug | Error when evaluating interval condition if end date is earlier than '1970-01-01T00:00:00Z'. |
 | 4208 | data-in| Bug | Clear long command buffer if disconnect on error is disabled. |

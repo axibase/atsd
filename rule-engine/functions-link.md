@@ -164,9 +164,9 @@ The following inline link is returned:
   addLink(string l, string u) string
 ```
 
-Returns the url `u` with a short name `l` based on the current endpoint settings.
+Returns the URL `u` with a short name `l` based on the current endpoint settings.
 
-If no settings are available, the function returns the original url `u`.
+If no settings are available, the function returns the original URL `u`.
 
 Examples:
 

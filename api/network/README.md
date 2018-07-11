@@ -48,7 +48,7 @@ To encrypt TCP traffic, setup an [SSH tunnel](../../integration/nmon/ssh-tunneli
 
 Authentication and authorization are not supported for plain text commands received over TCP and UDP protocols.
 
-Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text commands over http/https protocols with authentication and authorization enabled.
+Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text commands over HTTP/HTTPS protocols with authentication and authorization enabled.
 
 ## Connection
 

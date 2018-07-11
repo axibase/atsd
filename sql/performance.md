@@ -26,7 +26,7 @@ Query Detail Fields:
 | `Start Time` | Query start time. |
 | `Elapsed Time` | Time elapsed between start time and completion (or current) time. |
 | `Returned Records` | Number of rows returned to the client. |
-| `Records Fetched` | Number of time:value pairs. |
+| `Records Fetched` | Number of `time:value` pairs. |
 | `Rows Fetched` | Number of HBase rows. |
 | `Result Bytes` | Number of bytes in Result objects from HBase region servers. |
 | `Remote Result Bytes` | Number of bytes in Result objects from remote region servers. |
@@ -46,7 +46,7 @@ A running query can be cancelled at any time, for example if its execution time 
 
 When a query is cancelled, the results are not returned to the client and the query is stopped with an error.
 
-A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` url and referencing the user-defined handle with the `{query-id}` parameter.
+A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` URL and referencing the user-defined handle with the `{query-id}` parameter.
 
 ## Query Logging
 
@@ -73,7 +73,7 @@ The following message tags are available for filtering and grouping:
 | **Name** | **Description** |
 |:---|:---|
 | `uid`    | Unique query id which is reset on application restart. |
-| `format` | Result set format: csv, json, html. |
+| `format` | Result set format: CSV, JSON, HTML. |
 | `user`   | User initiating the query. |
 | `query`  | Query text. |
 

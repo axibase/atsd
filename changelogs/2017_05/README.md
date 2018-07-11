@@ -9,7 +9,7 @@
 | 3873 | sql         | Bug     | Malformed tag names in a [`JOIN`](../../sql/README.md#joins) query. |
 | 3870 | rule engine | Bug     | Rule expression evaluation error is propagated to inserting clients. |
 | 3869 | sql         | Bug     | Tag value encoding overflow for metrics with greater than 1K series. |
-| 3862 | rule engine | Bug     | Add html escape for variable (alias) expressions. |
+| 3862 | rule engine | Bug     | Add HTML escape for variable (alias) expressions. |
 | 3861 | client      | Feature | [ATSD Python client](https://github.com/axibase/atsd-api-python#sql-queries). Add support for SQL to `dataframe` retrieval.|
 | 3858 | sql         | Bug     | Decimal precision sometimes ignored in scheduled [SQL reports](../../sql/scheduled-sql.md).|
 | 3854 | rule engine | Feature | Extend [date](../../rule-engine/functions-time.md) functions to allow custom time format.|

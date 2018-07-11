@@ -28,7 +28,7 @@ Replace username, password, hostname and port number with actual connection para
 echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
 ```
 
-The default ATSD http port is `8088`, https port is `8443`.
+The default ATSD HTTP port is `8088`, HTTPS port is `8443`.
 
 scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
 
@@ -209,7 +209,7 @@ Add `Host` setting to `scollector.toml`:
 Host = "http://username:password@atsd_hostname:8088/"
 ```
 
-scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure https endpoint.
+scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure HTTPS endpoint.
 
 ```toml
 Host = "https://username:password@atsd_hostname:8443/"
@@ -235,4 +235,4 @@ If the service exits a few seconds after startup, check the following:
 
 Open Windows event log and review the scollector service startup error.
 
-If the service is running but there are no `scollector` metrics in ATSD, verify the protocol, url, and user credentials specified in the `scollector.toml` file.
+If the service is running but there are no `scollector` metrics in ATSD, verify the protocol, URL, and user credentials specified in the `scollector.toml` file.

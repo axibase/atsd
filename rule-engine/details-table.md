@@ -25,17 +25,17 @@ detailsTable(string format)
 
 ## Formats
 
-* markdown
-* ascii
-* html
-* property
-* csv
+* `markdown`
+* `ascii`
+* `html`
+* `property`
+* `csv`
 
 ## Examples
 
 The examples below are written to a log file via the **Logging** tab and maintain the original numeric precision.
 
-### ascii
+### `ascii`
 
 ```java
 detailsTable('ascii')
@@ -85,7 +85,7 @@ detailsTable('ascii')
 +-------------------+------------------------------+
 ```
 
-### markdown
+### `markdown`
 
 ```java
 detailsTable('markdown')
@@ -133,7 +133,7 @@ detailsTable('markdown')
 | intercept | -1.8922e8 |
 ```
 
-### csv
+### `csv`
 
 ```java
 detailsTable('csv')
@@ -180,7 +180,7 @@ slope,1.2502e-4
 intercept,-1.8922e8
 ```
 
-### html
+### `html`
 
 ```java
 detailsTable('html')
@@ -228,7 +228,7 @@ detailsTable('html')
 </tbody></table>
 ```
 
-### property
+### `property`
 
 ```java
 detailsTable('property')

@@ -103,7 +103,7 @@ NGINX API Gateway Path for Discord:
 
 |**Parameter**|**Description**|
 |---|---|
-|Webhook URL|Webhook URL generated on the **Webhook** tab in channel settings. The url is cleared when configuration is saved.|
+|Webhook URL|Webhook URL generated on the **Webhook** tab in channel settings. The URL is cleared when configuration is saved.|
 |Webhook ID|The ID of the webhook. Automatically resolved from Webhook URL.|
 |Webhook Token|The secure token of the webhook. Automatically resolved from Webhook URL.|
 |Bot Username|Overwrite your bot user name.|

@@ -73,7 +73,7 @@ tail -f /opt/atsd/atsd/logs/start.log
 
 Watch for **ATSD start completed** message at the end of the `start.log`.
 
-Web interface is now accessible on port `8443` (https).
+Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 

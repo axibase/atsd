@@ -37,7 +37,7 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 
 1. Error log `/opt/atsd/atsd/logs/err.log`.
 
-2. Archive (tar.gz) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.
+2. Archive (`.tar.gz`) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.
 
     ```bash
     tar czfv atsd_support.tar.gz \
@@ -48,11 +48,11 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 
 ## 3. Extended Log Files
 
-1. Archive (tar.gz) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
+1. Archive (`.tar.gz`) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
 
-2. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
+2. Archive (`.tar.gz`) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
 
-3. Archive (tar.gz) of the most recent `java_pid<pid>.hprof` heap dump file in the `/opt/atsd/atsd/logs` directory, if such file is present.
+3. Archive (`.tar.gz`) of the most recent `java_pid<pid>.hprof` heap dump file in the `/opt/atsd/atsd/logs` directory, if such file is present.
 
 ## 4. Performance Statistics
 
