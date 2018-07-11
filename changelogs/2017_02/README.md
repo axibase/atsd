@@ -143,7 +143,7 @@ The metrics are collected at **Container Size Interval** for running containers 
 
 ### Issue 3481
 
-New chart functions `getTags()` and `getSeries()` provide a way to load series tags from the server as an alternative to using Freemarker functions and to specifying tag names in the configuration manually.
+New chart functions `getTags()` and `getSeries()` enable loading series tags from the server as an alternative to using Freemarker functions and to specifying tag names in the configuration manually.
 
 ```javascript
 # Option 1: Specify tags manually

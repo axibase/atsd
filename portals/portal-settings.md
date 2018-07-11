@@ -122,7 +122,7 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 
 ## Comments
 
-Comments provide a way to annotate and describe the settings. Comment text is ignored when the configuration is parsed and evaluated.
+Comments allow you annotate and describe the settings. Comment text is ignored when the configuration is parsed and evaluated.
 
 ### Single-line Comments
 

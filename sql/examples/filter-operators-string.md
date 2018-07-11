@@ -1,6 +1,6 @@
 ﻿# Filter Series with String Operators
 
-The string comparison operators `<, >, <=, >=` provide a way to filter tag values lexicographically.
+The string comparison operators `<, >, <=, >=` allow you to filter tag values lexicographically.
 
 If one of the compared values is `NULL`, the expression returns `NULL` and such rows are excluded by the `WHERE` clause.
 

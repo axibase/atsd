@@ -112,7 +112,7 @@ Converts timestamp `t` to a string according to the specified [date pattern](../
 
 The input timestamp is specified as Unix time in milliseconds.
 
-Related date parsing function: [`date_parse`](functions-time.md#date_parse).
+Related date parsing function: [`date_parse`](functions-date.md#date_parse).
 
 Example:
 

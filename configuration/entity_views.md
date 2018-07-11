@@ -2,7 +2,7 @@
 
 ## Overview
 
-Entity Views provide a way to construct customized tables displaying key attributes for entities belonging to the same entity group. These views are listed under the **Entity Views** tab in the main menu on the left.
+Entity View is a customized table displaying key attributes for entities belonging to the same entity group. The views are listed under the **Entity Views** tab in the main menu.
 
 ![](./images/entity_views_5.png)
 
@@ -157,7 +157,7 @@ The following functions are available in the **Formatting** section:
 
 #### Date Functions
 
-* [`elapsedTime`](../rule-engine/functions-time.md#elapsedtime)
+* [`elapsedTime`](../rule-engine/functions-date.md#elapsedtime)
 
 ## Dynamic Filters
 

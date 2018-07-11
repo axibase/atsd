@@ -1,6 +1,6 @@
 # Data Retention
 
-Retention settings provide a way to control database size by automatically removing old data as well as discarding unnecessary data before the records are stored on disk.
+Retention settings control database size by automatically removing old data as well as discarding unnecessary data before the records are stored on disk.
 
 ## Default Retention Settings
 

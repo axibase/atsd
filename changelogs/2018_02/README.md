@@ -61,7 +61,7 @@ Issue| Category    | Type    | Subject
 4902 | rule engine | Feature | Refactor [text](../../rule-engine/functions.md#text) functions to accept primary input as object instead of string.
 4890 | rule engine | Feature | Implement [security](../../rule-engine/functions-security.md#security-functions) functions.
 4884 | rule engine | Bug | Some [functions](../../rule-engine/functions.md) cannot be used on Overview tab.
-4882 | rule engine | Feature | Referencing [dependent variables](../../rule-engine/variables.md#references) in condition.
+4882 | rule engine | Feature | Referencing [dependent variables](../../rule-engine/variables.md) in condition.
 4878 | rule engine | Feature | Add optional parameters to [`rule_open`](../../rule-engine/functions-rules.md#rule_open) and [`rule_window`](../../rule-engine/functions-rules.md#rule_window) functions for precise matching.
 4862 | administrator | Bug | [Logging](../../administration/logging.md#logging): change level from `ERROR` to `WARN` for user-invoked errors.
 4842 | rule editor | Bug | Rule Editor: series Test is not working.

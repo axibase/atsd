@@ -14,7 +14,7 @@
 | 3602      |   core          | Feature  | Migrated to Spring 4. |
 | 3584      |   security      | Feature  | Implemented encryption for the LDAP bind password stored in the database. |
 | 3557      |   sql           | Bug      | Fixed incorrect empty string handling by the [`ISNULL`](../../sql/README.md#isnull) function. |
-| 3502      |   sql           | Bug      | Replaced CSV generator to speed up response generation for SQL queries executed via an [../sql`](../../sql/api.md) endpoint. |
+| 3502      |   sql           | Bug      | Replaced CSV generator to speed up response generation for SQL queries executed via an [`/api/sql`](../../sql/api.md) endpoint. |
 
 ## Collector
 

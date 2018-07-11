@@ -38,7 +38,7 @@ Issue| Category    | Type    | Subject
 4868 | message | Bug | Webhook: change parameter and field [precedence](../../api/data/messages/webhook.md#parameter-precedence).
 4867 | api-rest | Bug | Data API: First period is out of selection interval with [`END_TIME`](../../api/data/series/aggregate.md#period) aggregation.
 4866 | sql | Bug | Incorrect `GROUP BY MONTH` with non-CALENDAR [alignment](../../sql/README.md#period-alignment).
-4865 | rule engine | Bug | The [`milliseconds`](../../rule-engine/functions-time.md#milliseconds) function fails if input is `null`.
+4865 | rule engine | Bug | The [`milliseconds`](../../rule-engine/functions-date.md#milliseconds) function fails if input is `null`.
 4864 | rule engine | Bug | Change behavior of [text](../../rule-engine/functions-text.md#keepafter) functions.
 4863 | rule engine | Feature | Default value argument for [`lookup`](../../rule-engine/functions-lookup.md#lookup) function.
 4861 | api-rest | Feature | Webhook: set [command time](../../api/data/messages/webhook.md#command-parameters) from milliseconds and seconds.

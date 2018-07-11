@@ -2,7 +2,7 @@
 
 ## Overview
 
-Tag templates provide a way to organize tags for similar entities or metrics into groups and apply custom formatting and validation rules to the grouped tags.
+Tag templates organize tags for similar entities or metrics into groups and apply custom formatting and validation rules to the grouped tags.
 
 ![](./images/tag-templates.png)
 

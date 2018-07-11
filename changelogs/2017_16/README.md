@@ -7,7 +7,7 @@
 | 4102 | jdbc | Feature | Add support for BOOLEAN data type in ATSD JDBC driver. |
 | 4101 | sql | Bug | Enforce 1970-01-01 UTC as the minimal interval start for [PERIOD](../../sql/README.md#period) function. |
 | [4100](#issue-4100) | sql | Feature | Add support for custom time zones in [PERIOD](../../sql/README.md#period) aggregation.  |
-| 4051 | rule engine | Feature | Rename `date` function to [date_parse](../../rule-engine/functions-time.md#date_parse). |
+| 4051 | rule engine | Feature | Rename `date` function to [date_parse](../../rule-engine/functions-date.md#date_parse). |
 
 ## Collector
 

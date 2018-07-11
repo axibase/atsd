@@ -7,7 +7,7 @@
 | 4498 | core | Bug | Added warning if Zookeeper returns TableExistsException which requires clearing [Zookeeper cache](../../administration/restarting.md#invalid-zookeeper-cache). |
 | 4496 | entity_views | Bug | Fixed an error which created duplicate entity views on each database start. |
 | 4481 | core | Bug | Fixed an error caused by a parent tag template referencing a child tag template in a loop. |
-| [4480](#issue-4480) | entity_views | Feature | Implement `formatInterval` and `formatIntervalShort` [functions](../../rule-engine/functions-time.md) in Entity Views. |
+| [4480](#issue-4480) | entity_views | Feature | Implement `formatInterval` and `formatIntervalShort` [functions](../../rule-engine/functions-date.md) in Entity Views. |
 | 4479 | UI | Bug | Fix multiple UI issues with tag templates. |
 | 4478 | entity | Bug | Add support for entity names containing commas in **Entity Group** editor. |
 | [4476](#issue-4476) | api-rest | Feature | Apply [`limit`](../../sql/README.md#limiting) parameter when querying [forecast](../../api/data/series/examples/query-named-forecast.md) data.

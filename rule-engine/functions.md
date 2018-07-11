@@ -87,7 +87,7 @@ Forecast functions retrieve forecast values and variance from the database.
 
 ## Value
 
-[Value`](functions-value.md) functions provide a way to retrieve values for other metrics contained in the same command.
+[Value](functions-value.md) functions retrieve values for other metrics contained in the same command.
 
 ## Database Series
 
@@ -106,7 +106,7 @@ Message functions retrieve message counts or specific messages from the database
 
 ## Database SQL
 
-The functions return the results of user-defined SQL queries.
+SQL functions return the results of user-defined SQL queries.
 
 * [`executeSqlQuery`](functions-sql.md#executesqlquery)
 
@@ -225,14 +225,14 @@ Lookup functions retrieve records from replacement tables, collections, and othe
 
 Date functions perform various operations on dates, timestamps and intervals.
 
-* [`now`](functions-time.md#now)
-* [`window_length_time`](functions-time.md#window_length_time)
-* [`window_length_count`](functions-time.md#window_length_count)
-* [`windowStartTime`](functions-time.md#windowstarttime)
-* [`elapsedTime`](functions-time.md#elapsedtime)
-* [`milliseconds`](functions-time.md#milliseconds)
-* [`seconds`](functions-time.md#seconds)
-* [`date_parse`](functions-time.md#date_parse)
+* [`now`](functions-date.md#now)
+* [`window_length_time`](functions-date.md#window_length_time)
+* [`window_length_count`](functions-date.md#window_length_count)
+* [`windowStartTime`](functions-date.md#windowstarttime)
+* [`elapsedTime`](functions-date.md#elapsedtime)
+* [`milliseconds`](functions-date.md#milliseconds)
+* [`seconds`](functions-date.md#seconds)
+* [`date_parse`](functions-date.md#date_parse)
 
 ## Property
 
@@ -253,7 +253,7 @@ Execute the predefined script and return its output.
 
 ## Rule
 
-The rule functions provide a way to check the status of windows created by other rules.
+The rule functions check the status of windows created by other rules.
 
 * [`rule_open`](functions-rules.md#rule_open)
 * [`rule_window`](functions-rules.md#rule_window)
