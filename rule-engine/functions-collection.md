@@ -241,6 +241,6 @@ excludeKeys(replacementTable('oncall-emails'),['jack.smith@example.org', 'mary.j
 ```
 
 ```javascript
-    /* Returns ["b1": "w1", "b2": "w2"] */
+/* Returns ["b1": "w1", "b2": "w2"] */
 excludeKeys(["a1": "v1", "a2": "v2", "b1": "w1", "b2": "w2", "c1": "z1"], ['a*', 'c1'])
 ```

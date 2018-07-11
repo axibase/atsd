@@ -45,7 +45,7 @@ Functions such as [`countIf`](#countif), [`avgIf`](#avgif), and [`sumIf`](#sumif
 ## `avg`
 
 ```javascript
-  avg() double
+avg() double
 ```
 
 Calculates average value. For example, `avg()` for a `5-minute` time-based window returns the average value for all samples received within this period of time.
@@ -53,7 +53,7 @@ Calculates average value. For example, `avg()` for a `5-minute` time-based windo
 ## `mean`
 
 ```javascript
-  mean() double
+mean() double
 ```
 
 Calculates average value. Same as `avg()`.
@@ -61,7 +61,7 @@ Calculates average value. Same as `avg()`.
 ## `sum`
 
 ```javascript
-  sum() double
+sum() double
 ```
 
 Sums all included values.
@@ -69,7 +69,7 @@ Sums all included values.
 ## `min`
 
 ```javascript
-  min() double
+min() double
 ```
 
 Returns minimum value.
@@ -77,7 +77,7 @@ Returns minimum value.
 ## `max`
 
 ```javascript
-  max() double
+max() double
 ```
 
 Returns maximum value.
@@ -85,7 +85,7 @@ Returns maximum value.
 ## `wavg`
 
 ```javascript
-  wavg() double
+wavg() double
 ```
 
 Calculates weighted average. Weight is the sample index which starts from `0` for the first sample.
@@ -93,7 +93,7 @@ Calculates weighted average. Weight is the sample index which starts from `0` fo
 ## `wtavg`
 
 ```javascript
-  wtavg() double
+wtavg() double
 ```
 
 Calculates weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
@@ -103,7 +103,7 @@ Time measured in Unix seconds.
 ## `count`
 
 ```javascript
-  count() long
+count() long
 ```
 
 Value count.
@@ -111,7 +111,7 @@ Value count.
 ## `percentile`
 
 ```javascript
-  percentile(double n) double
+percentile(double n) double
 ```
 
 Calculates `n`-th percentile. `n` multiplied by the number of values is the index for the function. `n` can be a fractional number.
@@ -119,7 +119,7 @@ Calculates `n`-th percentile. `n` multiplied by the number of values is the inde
 ## `median`
 
 ```javascript
-  median() double
+median() double
 ```
 
 Returns 50% percentile (median). Same as `percentile(50)`.
@@ -127,7 +127,7 @@ Returns 50% percentile (median). Same as `percentile(50)`.
 ## `variance`
 
 ```javascript
-  variance() double
+variance() double
 ```
 
 Calculates variance.
@@ -135,7 +135,7 @@ Calculates variance.
 ### `stdev`
 
 ```javascript
-  stdev() double
+stdev() double
 ```
 
 Returns standard deviation. Aliases: `stdev`, `std_dev`.
@@ -143,7 +143,7 @@ Returns standard deviation. Aliases: `stdev`, `std_dev`.
 ## `intercept`
 
 ```javascript
-  intercept() double
+intercept() double
 ```
 
 Calculates linear regression intercept.
@@ -151,7 +151,7 @@ Calculates linear regression intercept.
 ## `first`
 
 ```javascript
-  first() double
+first() double
 ```
 
 Returns first series value. Same as `first(0)`.
@@ -159,7 +159,7 @@ Returns first series value. Same as `first(0)`.
 ## `first(integer i)`
 
 ```javascript
-  first(integer i) double
+first(integer i) double
 ```
 
 Returns `i`-th value from start. First value has index of `0`.
@@ -167,7 +167,7 @@ Returns `i`-th value from start. First value has index of `0`.
 ## `last`
 
 ```javascript
-  last() double
+last() double
 ```
 
 Returns last value. Same as `last(0)`.
@@ -175,7 +175,7 @@ Returns last value. Same as `last(0)`.
 ## `last(integer i)`
 
 ```javascript
-  last(integer i) double
+last(integer i) double
 ```
 
 Returns `i`-th value from final value. Last value has index of `0`.
@@ -183,7 +183,7 @@ Returns `i`-th value from final value. Last value has index of `0`.
 ## `diff`
 
 ```javascript
-  diff() double
+diff() double
 ```
 
 Calculates difference between `last` and `first` values. Same as `last() - first()`.
@@ -191,7 +191,7 @@ Calculates difference between `last` and `first` values. Same as `last() - first
 ## `diff(integer i)`
 
 ```javascript
-  diff(integer i) double
+diff(integer i) double
 ```
 
 Calculates difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
@@ -199,7 +199,7 @@ Calculates difference between `last(integer i)` and `first(integer i)` values. S
 ## `diff(string i)`
 
 ```javascript
-  diff(string i) double
+diff(string i) double
 ```
 
 Calculates difference between the last value and value at `currentTime - interval`.
@@ -209,7 +209,7 @@ Interval `i` specified as `count unit`, for example `5 minute`.
 ## `delta`
 
 ```javascript
-  delta() double
+delta() double
 ```
 
 Calculates difference between `last` and `first` values. Same as `diff()`.
@@ -217,7 +217,7 @@ Calculates difference between `last` and `first` values. Same as `diff()`.
 ## `new_maximum`
 
 ```javascript
-  new_maximum() boolean
+new_maximum() boolean
 ```
 
 Returns `true` if last value is greater than any previous value.
@@ -225,7 +225,7 @@ Returns `true` if last value is greater than any previous value.
 ## `new_minimum`
 
 ```javascript
-  new_minimum() boolean
+new_minimum() boolean
 ```
 
 Returns `true` if last value is smaller than any previous value.
@@ -233,7 +233,7 @@ Returns `true` if last value is smaller than any previous value.
 ## `threshold_time`
 
 ```javascript
-  threshold_time(double t) double
+threshold_time(double t) double
 ```
 
 Forecasts the number of minutes until the sample value reaches the specified threshold `t` based on extrapolation of the difference between the last and first value.
@@ -241,7 +241,7 @@ Forecasts the number of minutes until the sample value reaches the specified thr
 ## `threshold_linear_time`
 
 ```javascript
-  threshold_linear_time(double t) double
+threshold_linear_time(double t) double
 ```
 
 Forecasts the number of minutes until the sample value reaches the specified threshold `t` based on linear extrapolation.
@@ -249,7 +249,7 @@ Forecasts the number of minutes until the sample value reaches the specified thr
 ## `rate_per_second`
 
 ```javascript
-  rate_per_second() double
+rate_per_second() double
 ```
 
 Calculates the difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in Unix seconds.
@@ -257,7 +257,7 @@ Calculates the difference between last and first value per second. Same as `diff
 ## `rate_per_minute`
 
 ```javascript
-  rate_per_minute() double
+rate_per_minute() double
 ```
 
 Calculates the difference between last and first value per minute. Same as `rate_per_second()/60`.
@@ -265,7 +265,7 @@ Calculates the difference between last and first value per minute. Same as `rate
 ## `rate_per_hour`
 
 ```javascript
-  rate_per_hour() double
+rate_per_hour() double
 ```
 
 Calculates the hourly difference between last and first value input. Same as `rate_per_second()/3600`.
@@ -273,7 +273,7 @@ Calculates the hourly difference between last and first value input. Same as `ra
 ## `slope`
 
 ```javascript
-  slope() double
+slope() double
 ```
 
 Calculates linear regression slope.
@@ -281,7 +281,7 @@ Calculates linear regression slope.
 ## `slope_per_second`
 
 ```javascript
-  slope_per_second() double
+slope_per_second() double
 ```
 
 Calculates linear regression slope.
@@ -289,7 +289,7 @@ Calculates linear regression slope.
 ## `slope_per_minute`
 
 ```javascript
-  slope_per_minute() double
+slope_per_minute() double
 ```
 
 Calculates `slope_per_second()/60`.
@@ -297,7 +297,7 @@ Calculates `slope_per_second()/60`.
 ## `slope_per_hour`
 
 ```javascript
-  slope_per_hour() double
+slope_per_hour() double
 ```
 
 Calculates `slope_per_second()/3600`.
@@ -305,7 +305,7 @@ Calculates `slope_per_second()/3600`.
 ## `countIf`
 
 ```javascript
-  countIf(string c [, string i | integer n]) long
+countIf(string c [, string i | integer n]) long
 ```
 
 Counts elements matching the specified condition `c` within interval `i` or within the last `n` samples.
@@ -313,19 +313,19 @@ Counts elements matching the specified condition `c` within interval `i` or with
 Examples:
 
 ```javascript
-  /* For values [0, 15, 5, 40] the function returns 2. */
-  countIf('value > 10')
+/* For values [0, 15, 5, 40] the function returns 2. */
+countIf('value > 10')
 ```
 
 ```javascript
-  /* Count of values exceeding 5 within the last 10 samples. */
-  countIf('value > 5', 10)
+/* Count of values exceeding 5 within the last 10 samples. */
+countIf('value > 5', 10)
 ```
 
 ## `avgIf`
 
 ```javascript
-  avgIf(string c [, string i | integer n]) double
+avgIf(string c [, string i | integer n]) double
 ```
 
 Calculates average of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
@@ -333,7 +333,7 @@ Calculates average of elements matching the specified condition `c` within inter
 ## `sumIf`
 
 ```javascript
-  sumIf(string c [, string i | integer n]) double
+sumIf(string c [, string i | integer n]) double
 ```
 
 Sums elements matching the specified condition `c` within interval `i` or within the last `n` samples.
@@ -357,5 +357,5 @@ Example:
 The condition evaluates to `true` if the 1-minute average is greater than the 1-hour average by more than `20` and a maximum is reached in the last 5 samples.
 
 ```javascript
-  avg('1 minute') - avg() > 20 && max(5) = max()
+avg('1 minute') - avg() > 20 && max(5) = max()
 ```

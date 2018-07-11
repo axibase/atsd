@@ -27,7 +27,7 @@
 ### `collection`
 
 ```javascript
-  collection(string s) [string]
+collection(string s) [string]
 ```
 
 Returns an array of strings which have been loaded with the specified string `s`.
@@ -49,7 +49,7 @@ tags.request_ip = collection('ip_white_list').get(1)
 ### `list`
 
 ```javascript
-  list(string s[, string p]) [string]
+list(string s[, string p]) [string]
 ```
 
 Splits string `s` using separator `p` (default is comma ',') into a collection of string values. The function discards duplicate items by preserving only the first occurrence of each element.
@@ -65,7 +65,7 @@ name = list('atsd,nurswgvml007').get(0)
 ### `likeAll`
 
 ```javascript
-  likeAll(object s, [string] c) boolean
+likeAll(object s, [string] c) boolean
 ```
 
 Returns `true`, if the first argument `s` matches **every** element in the collection of patterns `c`. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -79,7 +79,7 @@ likeAll(tags.request_ip, ['192.0.*', '192.0.2.?'])
 ### `likeAny`
 
 ```javascript
-  likeAny(object s, [string] c) boolean
+likeAny(object s, [string] c) boolean
 ```
 
 Returns `true`, if the first argument `s` matches **at least one** element in the collection of patterns `c`. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -97,7 +97,7 @@ likeAny(tags.request_ip, collection('ip_white_list'))
 ### `matches`
 
 ```javascript
-  matches(string p, [string] c) boolean
+matches(string p, [string] c) boolean
 ```
 
 Returns `true` if one of the collection `c` elements matches (satisfies) the specified pattern `p`.
@@ -113,7 +113,7 @@ matches('*atsd*', property_values('docker.container::image'))
 ### `startsWithAny`
 
 ```javascript
-  startsWithAny(object s, [string] c) boolean
+startsWithAny(object s, [string] c) boolean
 ```
 
 Returns `true`, if the first argument `s` starts with any of strings from collection `c`. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -127,7 +127,7 @@ startsWithAny(name, ['a', 'nur'])
 ### `collection_contains`
 
 ```javascript
-  collection_contains(object v, [] c) boolean
+collection_contains(object v, [] c) boolean
 ```
 
 Returns `true`, if collection `c` contains object `v`. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -141,7 +141,7 @@ NOT collection_contains(tags, [entity_tags('nurswgvml007')])
 ### `collection_intersects`
 
 ```javascript
-  collection_intersects([] f, [] s) boolean
+collection_intersects([] f, [] s) boolean
 ```
 
 Returns `true`, if collection `f` has elements in common with collection `s`. The collections can be specified inline as an arrays of strings or reference a named collections.
@@ -155,7 +155,7 @@ collection_intersects(tags.values(), collection('ip_white_list'))
 ### `upper`
 
 ```javascript
-  upper(string s) string
+upper(string s) string
 ```
 
 Converts `s` to uppercase letters.
@@ -163,7 +163,7 @@ Converts `s` to uppercase letters.
 ### `lower`
 
 ```javascript
-  lower(string s) string
+lower(string s) string
 ```
 
 Converts `s` to lowercase letters.
@@ -171,7 +171,7 @@ Converts `s` to lowercase letters.
 ### `property`
 
 ```javascript
-  property([string e, ]string s) string
+property([string e, ]string s) string
 ```
 
 Returns the first value in the list of strings returned by the `property_values(string s)` function for the specified [property search](../rule-engine/property-search.md) expression `s` and entity `e`.
@@ -197,7 +197,7 @@ property('nurswgvml007','cpu::cpu.idle%') < property('cpu::cpu.idle%')
 ### `properties`
 
 ```javascript
-  properties(string t) map
+properties(string t) map
 ```
 
 Returns the most resent `tag=value` map for property type `t`. Tag value can be accessed via the dot notation.
@@ -205,7 +205,6 @@ Returns the most resent `tag=value` map for property type `t`. Tag value can be 
 Examples:
 
 ```javascript
-
 properties('docker.container').image LIKE 'axibase/*'
 ```
 
@@ -216,7 +215,7 @@ NOT properties('docker.container').isEmpty()
 ### `property_values`
 
 ```javascript
-  property_values([string e, ]string s) [string]
+property_values([string e, ]string s) [string]
 ```
 
 Returns a list of property tag values for the given entity for the specified [property search](../rule-engine/property-search.md) expression `s`.
@@ -236,7 +235,7 @@ property_values('linux.disk:fstype=ext4:mount_point').contains('/')
 ### `hasMetric`
 
 ```javascript
-  hasMetric(string m[, integer n]) boolean
+hasMetric(string m[, integer n]) boolean
 ```
 
 Returns `true` if the entity collects the specified metric `m`, regardless of tags.
@@ -256,7 +255,7 @@ hasMetric('mpstat.cpu_busy', 24*7)
 ### `memberOf`
 
 ```javascript
-  memberOf(string|[string] g) boolean
+memberOf(string|[string] g) boolean
 ```
 
 Returns `true` if an entity belongs to **at least one** of the specified entity groups.
@@ -278,7 +277,7 @@ memberOf(collection('groups'))
 ### `memberOfAll`
 
 ```javascript
-  memberOfAll([string] g) boolean
+memberOfAll([string] g) boolean
 ```
 
 Returns `true` if an entity belongs to **every** of the specified entity groups.
@@ -296,7 +295,7 @@ memberOfAll(collection('groups'))
 ### `entity_tags`
 
 ```javascript
-  entity_tags(string e) map
+entity_tags(string e) map
 ```
 
 Returns entity tags for entity `e` as a map.
@@ -312,7 +311,7 @@ entity_tags(name).file_system='ext4'
 ### `contains`
 
 ```javascript
-  [string].contains(string s) boolean
+[string].contains(string s) boolean
 ```
 
 Returns `true` if `s` is contained in the collection.
@@ -326,7 +325,7 @@ collection('ip_white_list').contains(tags.request_ip)
 ### `size`
 
 ```javascript
-  [].size() integer
+[].size() integer
 ```
 
 Returns the number of elements in the collection.
@@ -342,7 +341,7 @@ collection('ip_white_list').size()
 ### `isEmpty`
 
 ```javascript
-  [].isEmpty() boolean
+[].isEmpty() boolean
 ```
 
 Returns `true` if the number of elements in the collection is zero.
@@ -358,7 +357,7 @@ collection('ip_white_list').isEmpty()
 ### `IN`
 
 ```javascript
-  string s IN (string a[, string b[...]]) boolean
+string s IN (string a[, string b[...]]) boolean
 ```
 
 Returns `true` if `s` is contained in the collection of strings enclosed in round brackets.
