@@ -28,8 +28,29 @@ An array of query objects containing the following filtering fields:
 |`severity`     |  string   | Severity [name](../../../api/data/severity.md).  <br>Matches records with the specified severity.|
 |`severities`   |  array   | An array of severity [codes or names](../../../api/data/severity.md).  <br>Matches records with one of the specified severities.<br>Array elements can be specified as a string or as a number.|
 |`minSeverity`  |  string   | Minimum [code or name](../../../api/data/severity.md) severity filter. <br>Can be specified as a string or as a number. |
+|`expression` | string | Include messages that match a filter [expression](../../../api/meta/expression.md) consisting of `tags`, `message` and `severity` fields and operators. Example: `message LIKE 'Starting*'`.<br>Supported wildcards: `*` and `?`.|
 
-* `severity`, `minSeverity`, and `severities` values are case-insensitive.
+* `severity`, `minSeverity`, and `severities` values are case-**insensitive**.
+
+#### Expression
+
+The expression can include `tags`, `message` and `severity` fields.
+
+String literals must be enclosed in single or double quotes.
+
+Examples:
+
+```javascript
+message IN ('Completed job', 'Starting job')
+```
+
+```javascript
+severity != 'FATAL'
+```
+
+```javascript
+message NOT LIKE 'Access*' && tags.ip = '192.0.2.1'
+```
 
 #### Entity Filter Fields
 
