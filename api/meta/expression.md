@@ -34,31 +34,31 @@ Wildcard `?` means any character.
 
 * Returns record with name equal to `nurswgvml003`
 
-```sql
+```javascript
 name = 'nurswgvml003'
 ```
 
 * Returns records with name starting with `nur`
 
-```sql
+```javascript
 name LIKE 'nur*'
 ```
 
 * Returns records that have the `location` tag defined
 
-```sql
+```javascript
 tags.location != ''
 ```
 
 * Returns records with name that starts with `nur` and with the tag `os` equal to `Linux`
 
-```sql
+```javascript
 name LIKE 'nur*' AND tags.os = 'Linux'
 ```
 
 * Returns records with the tag `ip` starting with `192.` and ending with `1`
 
-```sql
+```javascript
 tags.ip LIKE '192.*1'
 ```
 
