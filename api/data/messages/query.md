@@ -49,7 +49,7 @@ severity != 'FATAL'
 ```
 
 ```javascript
-message LIKE '' && tags.ip = '192.0.2.1'
+message NOT LIKE 'Access*' && tags.ip = '192.0.2.1'
 ```
 
 #### Entity Filter Fields
