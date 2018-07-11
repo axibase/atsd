@@ -57,7 +57,7 @@ Returns time in Unix milliseconds when the [stored forecast value](../forecastin
 
 The interval `i` is specified as count and [unit](../api/data/series/time-unit.md), for example `1 WEEK`. If the time interval `i` is not specified, the function checks all available forecast values in the future.
 
-Thresholds `min` and `max` are ignored if set to `null`. If both `min` and `max` are specified, the following rules apply:
+Thresholds `min` and `max` are ignored by the function if either is set to `null`. If both `min` and `max` are specified, the following rules apply:
 
 * If threshold `max` is equal or greater than `min`, the function returns time when the forecast value is **outside** of the specified range.
 * If threshold `min` exceeds `max`, the function returns time when the forecast value is **within** the specified range.

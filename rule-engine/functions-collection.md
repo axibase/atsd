@@ -2,15 +2,15 @@
 
 ## Overview
 
-The collection functions return information about the collection or check it for the presence of a specified element.
+These functions return information about the collection or checks for the presence of a specified element.
 
-A collection can be created by declaring its elements inline, enclosed in square brackets:
+Create a collection by declaring the elements inline, enclosed in square brackets:
 
 ```javascript
-['jack.smith@example.org', 'mary.jones@example.org']
+['john.doe@example.org', 'mary.jones@example.org']
 ```
 
-Alternatively, it can be loaded using the `collection()` or another [lookup](functions-lookup.md) function.
+Alternatively, load a collection using the `collection()` function or another [lookup](functions-lookup.md) function.
 
 ```javascript
 collection('oncall-emails')
@@ -36,13 +36,13 @@ collection('oncall-emails')
 collection(string s) [string]
 ```
 
-Returns an array of strings contained in the named collection `s`.
+Returns an array of strings contained in collection `s`.
 
-The named collections are listed on the **Data > Named Collections** page.
+Named collections are listed on the **Data > Named Collections** page.
 
 To access the size of the array, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method. The index starts with `0` for the first element.
+To access the `n`-th element in a collection, use square brackets like with the `[index]` or `get(index)` method. Index begins with `0` on the first element.
 
 ```javascript
 author = (authors.size() == 0) ? 'n/a' : authors[0]
@@ -96,7 +96,7 @@ likeAny(string s, [string] c) boolean
 
 Returns `true` if string `s` matches any element in the string collection `c`.
 
-The collection `c` can be loaded from a named collection or initialized from an array of strings. The elements of the collection can include patterns with `?` and `*` wildcards.
+Load collection `c` from a named collection or initialize collection `c` from an array of strings. The elements of the collection can include patterns with `?` and `*` wildcards.
 
 Examples:
 
@@ -118,9 +118,9 @@ likeAny(tags.request_ip, collection('ip_white_list'))
 matchList(string s, string c) boolean
 ```
 
-Returns `true` if `s` is contained in the collection named `c`.
+Returns `true` if `s` is contained in collection `c`.
 
-The collection `c` can include patterns with `?` and `*` wildcards.
+Collection `c` can include patterns with `?` and `*` wildcards.
 
 Example:
 
@@ -134,7 +134,7 @@ matchList(tags.request_ip, 'ip_white_list')
 matches(string p, [string] c) boolean
 ```
 
-Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.
+Returns `true` if one of the elements in collection `c` matches the specified pattern `p`.
 
 The pattern supports `?` and `*` wildcards.
 
@@ -150,7 +150,7 @@ matches('*atsd*', property_values('docker.container::image'))
 [string].contains(string s) boolean
 ```
 
-Returns `true` if `s` is contained in the collection.
+Returns `true` if `s` is contained in the specified collection.
 
 Example:
 
@@ -166,7 +166,7 @@ collection('ip_white_list').contains(tags.request_ip)
 
 Returns the number of elements in the collection.
 
-> This function can be applied to collections of any type (string, number) as well as to maps such as `entity.tags`.
+> Apply this function to any type of collection (string, number) as well as maps such as `entity.tags`.
 
 Examples:
 
@@ -186,7 +186,7 @@ entity.tags.size()
 
 Returns `true` if the number of elements in the collection is zero.
 
-> This function can be applied to collections of any type (string, number) as well as to maps such as `entity.tags`.
+> Apply this function to any type of collection (string, number) as well as maps such as `entity.tags`.
 
 Example:
 
@@ -202,7 +202,7 @@ replacementTable(string s) map
 
 Retrieves the replacement table identified by name `s` as a key-value map.
 
-If the table is not found, an empty map is returned.
+If the table is not found, the function returns an empty map.
 
 ```javascript
 // .keySet() returns a collection of keys in the replacement table

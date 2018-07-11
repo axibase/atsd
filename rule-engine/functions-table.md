@@ -21,7 +21,7 @@ Table functions perform various operations on strings, lists, and maps to create
    addTable([] m, string f) string
 ```
 
-This function prints the input map `m` as a two-column table in the specified format `f`.
+Prints the input map `m` as a two-column table in the specified format `f`.
 
 The first column in the table contains map keys, whereas the second column contains their corresponding map values.
 
@@ -35,11 +35,11 @@ Supported formats:
 * `csv`
 * `html`
 
-An empty string is returned if map `m` is `null` or has no records.
+Returns an empty string if map `m` is `null` or has no records.
 
-Map records with empty or `null` values are ignored.
+Ignores map records with empty or `null` values.
 
-Numeric values are automatically rounded in web and email notifications and are printed without modifications in other cases.
+Automatically rounds numeric values in web and email notifications or prints without modifications in other cases.
 
 The default table headers are `Name` and `Value`.
 
@@ -128,7 +128,7 @@ os=Linux
   addTable([[] m], string f[, [string h]]) string
 ```
 
-The function prints a collection of maps `m` as a multi-column table in the specified format `f`, with optional header `h`.
+Prints a collection of maps `m` as a multi-column table in the specified format `f`, with optional header `h`.
 
 The first column in the table contains unique keys from all maps in the collection, whereas the second and subsequent columns contain map values for the corresponding key in the first column.
 
@@ -220,19 +220,19 @@ jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
   addTable([[string]] c, string f[, [string] | boolean h]) string
 ```
 
-This function prints `c` (list of lists) as a multi-column table in the specified format `f`. Each nested list in the parent list `c` is serialized into its own row in the table.
+Prints `c` (list of lists) as a multi-column table in the specified format `f`. Each nested list in the parent list `c` is serialized into its own row in the table.
 
 The number of elements in each collection must be the same.
 
 The default table header is `Value-1, ..., Value-N`.
 
-The header argument `h` can be used to customize the header.
+ Use header argument `h` to customize the header.
 
 If `h` is specified as a collection, its elements replace the default header. The size of the header collection must be the same as the number of cells in each row.
 
 If `h` argument is specified as a boolean value `true`, the first row in the table is used as a header.
 
-An empty string is returned if the list `c` is empty.
+Returns an empty string if the list `c` is empty.
 
 Examples:
 
@@ -336,7 +336,7 @@ datetime=value
   jsonPathFilter(s, jp) [object]
 ```
 
-This function parses the input string `s` into a JSON document and returns a list of objects matching the [JSONPath expression](https://github.com/json-path/JsonPath).
+Parses input string `s` into a JSON document and returns a list of objects matching the [`JSONPath` expression](https://github.com/json-path/JsonPath).
 
 Examples:
 
@@ -378,7 +378,7 @@ Output:
 }]
 ```
 
-See additional examples [below](#examples).
+See additional [examples](#examples).
 
 ## `jsonToMaps`
 
@@ -386,13 +386,13 @@ See additional examples [below](#examples).
   jsonToMaps(string s) [map]
 ```
 
-This function parses the input string `s` into a JSON document and returns a collection of maps containing keys and values from the JSON document.
+Parses input string `s` into a JSON document and returns a collection of maps containing keys and values from the JSON document.
 
 The collection contains as many maps as there are leaf objects in the JSON document. Each map contains keys and values of the leaf object itself as well as keys and values from the parent objects.
 
-The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
+Key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The function attempts to shorten key names by removing a common prefix where appropriate.
+Attempts to shorten key names by removing any common prefix.
 
 Examples:
 
@@ -454,13 +454,13 @@ See additional examples [below](#examples).
   jsonToLists(string s) [[string]]
 ```
 
-The function parses the input string `s` into a JSON document and returns a collection of string lists of the same size containing field values from this JSON document.
+Parses input string `s` into a JSON document and returns a collection of string lists of the same size containing field values from this JSON document.
 
 The first list in the collection contains all possible key names in the leaf objects and their parents.
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-The function attempts to shorten key names by removing a common prefix where appropriate.
+Attempts to shorten key names by removing any common prefix.
 
 The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in the iterated object, the list on the given index contains an empty string.
 
@@ -523,7 +523,7 @@ See additional examples [below](#examples).
   flattenJson(string j) map
 ```
 
-The function converts a string representation of JSON document `j` into a map consisting of keys and values.
+Converts the string representation of JSON document `j` into a map consisting of keys and values.
 
 Processing rules:
 

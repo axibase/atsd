@@ -2,9 +2,7 @@
 
 ## Overview
 
-Text functions compare and transform strings.
-
-The functions are `null`-safe: they return `null` or `false` if one of the inputs is `null`.
+These functions compare and transform strings, `null`-safe: returns `null` or `false` if one of the inputs is `null`.
 
 ## Reference
 
@@ -61,7 +59,7 @@ Converts string `s` to lowercase letters.
   truncate(string s, integer i) string
 ```
 
-If string `s` length exceeds `i` characters, this function truncates `s` to the specified number of characters and returns it as the result.
+Truncates `s` to the specified number of characters and returns the string as the result if string `s` length exceeds `i` characters.
 
 ## `startsWith`
 
@@ -101,7 +99,7 @@ Use double quotes (`"escaped_text"`) as escape characters.
 
 To check the size of the returned collection, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with `0` for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
 ```javascript
     authors = split(tags.authors, ',')
@@ -114,7 +112,7 @@ To access the n-th element in the collection, use square brackets `[index]` or `
   list(string s[, string p]) [string]
 ```
 
-Splits string `s` using separator `p` (default is comma ',') into an array of string values. The function discards duplicate items by retaining only the first occurrence of each element.
+Splits string `s` using separator `p` (default is comma ',') into an array of string values, discards duplicate items by retaining only the first occurrence of each element.
 
 Unlike the `split()` function, `list()` does not support double quotes as escape characters.
 
@@ -133,7 +131,7 @@ Example:
 
 Returns `b` if `a` is either `null` or an empty string.
 
-> Note: this function also accepts arguments of other data types, such as objects and numbers.
+> Note: Accepts arguments of other data types, such as objects and numbers.
 
 Examples:
 
@@ -150,7 +148,7 @@ Examples:
 
 Returns first non-empty string from the collection or array of strings `c`.
 
-The function returns an empty string if all elements of `c` are `null` or empty.
+Returns an empty string if all elements of `c` are `null` or empty.
 
 Examples:
 
@@ -180,7 +178,7 @@ Examples:
 
 Removes part of the string `s` before the first occurrence of the given substring `p`.
 
-If `p` is empty or `null` or if `p` is not found, the function returns the original string `s` unchanged.
+Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
 
 Example:
 
@@ -197,7 +195,7 @@ Example:
 
 Removes the part of string `s` before the last occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
+Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
 
 Example:
 
@@ -214,7 +212,7 @@ Example:
 
 Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
+Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
 
 Example:
 
@@ -231,7 +229,7 @@ Example:
 
 Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
 
-If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
+Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
 
 Example:
 
@@ -248,7 +246,7 @@ Example:
 
 Replaces all occurrences of the given substring `p` in the original string `s` with a second substring `r`.
 
-If `p` is empty, `null`, or not found, the function returns the original string `s` unchanged.
+Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
 
 Examples:
 
@@ -352,7 +350,7 @@ Escapes special JSON characters in string `s` such as double quotes with a backs
   htmlDecode(string s) string
 ```
 
-Replace HTML entities in string `s` with their corresponding characters.
+Replaces HTML entities in string `s` with their corresponding characters.
 
 Example:
 
@@ -429,7 +427,7 @@ Integer `n` must be set greater than 3 otherwise an exception is raised.
 
 Returns the integer index starting with `0` of the first occurrence of substring `p` contained in string `s` starting with index `i`.
 
-If the substring `p` is not found, `-1` is returned.
+Returns `-1` if the substring `p` is not found.
 
 Examples:
 
@@ -459,7 +457,9 @@ Examples:
   locate(string s, string p[, int i]) integer
 ```
 
-Same as `indexOf()`.
+Returns the integer index starting with `0` of the first occurrence of substring `p` contained in string `s` starting with index `i`.
+
+Returns `-1` if the substring `p` is not found.
 
 ## `trim`
 

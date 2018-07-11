@@ -27,7 +27,7 @@ Date functions perform various operations on dates, timestamps, and intervals.
   now long
 ```
 
-Returns the current time as a [`DateTime`](object-datetime.md) object. 
+Returns the current time as a [`DateTime`](object-datetime.md) object.
 
 The `DateTime` object fields can be accessed with `get` methods.
 
@@ -64,7 +64,7 @@ Examples:
   window_length_time() long
 ```
 
-Length of the time-based window in seconds, as configured.
+Returns length of a time-based window in seconds, as configured.
 
 ### `window_length_count`
 
@@ -72,7 +72,7 @@ Length of the time-based window in seconds, as configured.
   window_length_count() long
 ```
 
-Length of the count-based window, as configured.
+Returns length of a count-based window, as configured.
 
 ### `windowStartTime`
 
@@ -80,7 +80,7 @@ Length of the count-based window, as configured.
   windowStartTime() long
 ```
 
-Time when the first command is received by the window, in Unix milliseconds.
+Returns time when the first command is received by the window, in Unix milliseconds.
 
 ### `milliseconds`
 
@@ -90,9 +90,9 @@ Time when the first command is received by the window, in Unix milliseconds.
 
 Parses the date string `d` into Unix milliseconds according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
-The function returns `0` if the date `d` is `null` or empty.
+Returns `0` if the date `d` is `null` or empty.
 
-Available time zones and their offsets are listed in [time zones](../shared/timezone-list.md).
+Available time zones and offsets are listed in [time zones](../shared/timezone-list.md).
 
 The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
@@ -112,7 +112,7 @@ Example:
   seconds(string d [,string p [,string z]]) long
 ```
 
-This function provides the same arguments as the [`milliseconds`](#milliseconds) function except the result is returned in Unix seconds instead of milliseconds.
+Provides the same arguments as the [`milliseconds`](#milliseconds) function except the result is returned in Unix seconds instead of milliseconds.
 
 ### `elapsedTime`
 
@@ -126,7 +126,7 @@ This function provides the same arguments as the [`milliseconds`](#milliseconds)
 
 Calculates the number of milliseconds between the current time and time `t` which is specified in Unix milliseconds.
 
-The function accepts time `t` in Unix milliseconds or the date `d` in the following format:
+Accepts time `t` in Unix milliseconds or the date `d` in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]

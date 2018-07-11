@@ -48,7 +48,7 @@ Functions such as [`countIf`](#countif), [`avgIf`](#avgif), and [`sumIf`](#sumif
   avg() double
 ```
 
-Average value function. For example, `avg()` for a `5-minute` time-based window returns the average value for all samples received within this period of time.
+Calculates average value. For example, `avg()` for a `5-minute` time-based window returns the average value for all samples received within this period of time.
 
 ## `mean`
 
@@ -56,7 +56,7 @@ Average value function. For example, `avg()` for a `5-minute` time-based window 
   mean() double
 ```
 
-Average value function. Same as `avg()`.
+Calculates average value. Same as `avg()`.
 
 ## `sum`
 
@@ -64,7 +64,7 @@ Average value function. Same as `avg()`.
   sum() double
 ```
 
-Sum of all included values.
+Sums all included values.
 
 ## `min`
 
@@ -72,7 +72,7 @@ Sum of all included values.
   min() double
 ```
 
-Minimum value.
+Returns minimum value.
 
 ## `max`
 
@@ -80,7 +80,7 @@ Minimum value.
   max() double
 ```
 
-Maximum value.
+Returns maximum value.
 
 ## `wavg`
 
@@ -88,7 +88,7 @@ Maximum value.
   wavg() double
 ```
 
-Weighted average. Weight = sample index which starts from 0 for the first sample.
+Calculates weighted average. Weight is the sample index which starts from `0` for the first sample.
 
 ## `wtavg`
 
@@ -96,7 +96,7 @@ Weighted average. Weight = sample index which starts from 0 for the first sample
   wtavg() double
 ```
 
-Weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
+Calculates weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
 
 Time measured in Unix seconds.
 
@@ -114,7 +114,7 @@ Value count.
   percentile(double n) double
 ```
 
-`n`-th percentile function. `n` multiplied by the number of values is the index for the function. `n` can be a fractional number.
+Calculates `n`-th percentile. `n` multiplied by the number of values is the index for the function. `n` can be a fractional number.
 
 ## `median`
 
@@ -122,7 +122,7 @@ Value count.
   median() double
 ```
 
-50% percentile (median) function. Same as `percentile(50)`.
+Returns 50% percentile (median). Same as `percentile(50)`.
 
 ## `variance`
 
@@ -130,7 +130,7 @@ Value count.
   variance() double
 ```
 
-Variance.
+Calculates variance.
 
 ### `stdev`
 
@@ -138,7 +138,7 @@ Variance.
   stdev() double
 ```
 
-Standard deviation. Aliases: `stdev`, `std_dev`.
+Returns standard deviation. Aliases: `stdev`, `std_dev`.
 
 ## `intercept`
 
@@ -146,7 +146,7 @@ Standard deviation. Aliases: `stdev`, `std_dev`.
   intercept() double
 ```
 
-Linear regression intercept.
+Calculates linear regression intercept.
 
 ## `first`
 
@@ -154,7 +154,7 @@ Linear regression intercept.
   first() double
 ```
 
-First value. Same as `first(0)`.
+Returns first series value. Same as `first(0)`.
 
 ## `first(integer i)`
 
@@ -162,7 +162,7 @@ First value. Same as `first(0)`.
   first(integer i) double
 ```
 
-`i`-th value from start. First value has index of 0.
+Returns `i`-th value from start. First value has index of `0`.
 
 ## `last`
 
@@ -170,7 +170,7 @@ First value. Same as `first(0)`.
   last() double
 ```
 
-Last value. Same as `last(0)`.
+Returns last value. Same as `last(0)`.
 
 ## `last(integer i)`
 
@@ -178,7 +178,7 @@ Last value. Same as `last(0)`.
   last(integer i) double
 ```
 
-`i`-th value from end. Last value has index of 0.
+Returns `i`-th value from final value. Last value has index of `0`.
 
 ## `diff`
 
@@ -186,7 +186,7 @@ Last value. Same as `last(0)`.
   diff() double
 ```
 
-Difference between `last` and `first` values. Same as `last() - first()`.
+Calculates difference between `last` and `first` values. Same as `last() - first()`.
 
 ## `diff(integer i)`
 
@@ -194,7 +194,7 @@ Difference between `last` and `first` values. Same as `last() - first()`.
   diff(integer i) double
 ```
 
-Difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
+Calculates difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
 
 ## `diff(string i)`
 
@@ -202,9 +202,9 @@ Difference between `last(integer i)` and `first(integer i)` values. Same as `las
   diff(string i) double
 ```
 
-Difference between the last value and value at `currentTime - interval`.
+Calculates difference between the last value and value at `currentTime - interval`.
 
-Interval `i` specified as 'count unit', for example '5 minute'.
+Interval `i` specified as `count unit`, for example `5 minute`.
 
 ## `delta`
 
@@ -212,7 +212,7 @@ Interval `i` specified as 'count unit', for example '5 minute'.
   delta() double
 ```
 
-Same as `diff()`.
+Calculates difference between `last` and `first` values. Same as `diff()`.
 
 ## `new_maximum`
 
@@ -236,7 +236,7 @@ Returns `true` if last value is smaller than any previous value.
   threshold_time(double t) double
 ```
 
-Number of minutes until the sample value reaches the specified threshold `t` based on extrapolation of the difference between the last and first value.
+Forecasts the number of minutes until the sample value reaches the specified threshold `t` based on extrapolation of the difference between the last and first value.
 
 ## `threshold_linear_time`
 
@@ -244,7 +244,7 @@ Number of minutes until the sample value reaches the specified threshold `t` bas
   threshold_linear_time(double t) double
 ```
 
-Number of minutes until the sample value reaches the specified threshold `t` based on linear extrapolation.
+Forecasts the number of minutes until the sample value reaches the specified threshold `t` based on linear extrapolation.
 
 ## `rate_per_second`
 
@@ -252,7 +252,7 @@ Number of minutes until the sample value reaches the specified threshold `t` bas
   rate_per_second() double
 ```
 
-Difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in Unix seconds.
+Calculates the difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in Unix seconds.
 
 ## `rate_per_minute`
 
@@ -260,7 +260,7 @@ Difference between last and first value per second. Same as `diff()/(last.time-f
   rate_per_minute() double
 ```
 
-Difference between last and first value per minute. Same as `rate_per_second()/60`.
+Calculates the difference between last and first value per minute. Same as `rate_per_second()/60`.
 
 ## `rate_per_hour`
 
@@ -268,7 +268,7 @@ Difference between last and first value per minute. Same as `rate_per_second()/6
   rate_per_hour() double
 ```
 
-Hourly difference between last and first value input. Same as `rate_per_second()/3600`.
+Calculates the hourly difference between last and first value input. Same as `rate_per_second()/3600`.
 
 ## `slope`
 
@@ -276,7 +276,7 @@ Hourly difference between last and first value input. Same as `rate_per_second()
   slope() double
 ```
 
-Linear regression slope.
+Calculates linear regression slope.
 
 ## `slope_per_second`
 
@@ -284,7 +284,7 @@ Linear regression slope.
   slope_per_second() double
 ```
 
-Same as `slope()`.
+Calculates linear regression slope.
 
 ## `slope_per_minute`
 
@@ -292,7 +292,7 @@ Same as `slope()`.
   slope_per_minute() double
 ```
 
-Same as `slope_per_second()/60`.
+Calculates `slope_per_second()/60`.
 
 ## `slope_per_hour`
 
@@ -300,7 +300,7 @@ Same as `slope_per_second()/60`.
   slope_per_hour() double
 ```
 
-Same as `slope_per_second()/3600`.
+Calculates `slope_per_second()/3600`.
 
 ## `countIf`
 
@@ -308,7 +308,7 @@ Same as `slope_per_second()/3600`.
   countIf(string c [, string i | integer n]) long
 ```
 
-Count of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
+Counts elements matching the specified condition `c` within interval `i` or within the last `n` samples.
 
 Examples:
 
@@ -328,7 +328,7 @@ Examples:
   avgIf(string c [, string i | integer n]) double
 ```
 
-Average of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
+Calculates average of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
 
 ## `sumIf`
 
@@ -336,7 +336,7 @@ Average of elements matching the specified condition `c` within interval `i` or 
   sumIf(string c [, string i | integer n]) double
 ```
 
-Sum of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
+Sums elements matching the specified condition `c` within interval `i` or within the last `n` samples.
 
 ## Interval Selection
 

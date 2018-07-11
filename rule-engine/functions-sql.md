@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `executeSqlQuery` function returns the results of a user-defined SQL query.
+These functions return the results of a user-defined SQL query.
 
 ## Reference
 
@@ -16,7 +16,7 @@ The `executeSqlQuery` function returns the results of a user-defined SQL query.
 
 Returns the result of SQL query `q`. The first row contains headers consisting of column labels.
 
-The response is limited to 1000 rows.
+The response is limited to 1,000 rows.
 
 If query `q` is empty or not valid, an error is thrown.
 

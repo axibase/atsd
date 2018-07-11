@@ -2,7 +2,7 @@
 
 ## Overview
 
-Web query functions execute an HTTP request to an external web service and return a [`WebRequestResult`](#response-object) response object for further processing.
+These functions execute an HTTP request to an external web service and return a [`WebRequestResult`](#response-object) response object for further processing.
 
 ## Reference
 
@@ -21,7 +21,7 @@ Web query functions execute an HTTP request to an external web service and retur
   queryConfig(string n, [map p]) response
 ```
 
-This function executes an HTTP request using a predefined [outgoing webhook](notifications/README.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
+Executes an HTTP request using a predefined [outgoing webhook](notifications/README.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
 
 > The webhook `n` must be listed as `enabled` on the **Alerts > Outgoing Webhooks** page.
 

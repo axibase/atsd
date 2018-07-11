@@ -2,11 +2,11 @@
 
 ## Overview
 
-These functions return URLs to ATSD pages based on the database URL (set the `server.url` property) and the current [window](window.md) context.
+These functions return URLs to ATSD pages based on database URL, set the `server.url` property, and the current [window](window.md) context.
 
-The URLs are automatically [inlined](links.md#inline-links) in email notifications and webhooks that support inline links.
+URLs are automatically [inlined](links.md#inline-links) in email notifications and webhooks that support inline links.
 
-The inline links can be also assembled manually using the syntax supported by the webhook target.
+Alternatively, manually assemble inline links using syntax supported by the webhook target.
 
 * `markdown`
 
@@ -42,7 +42,7 @@ The inline links can be also assembled manually using the syntax supported by th
   getEntityLink(string e [, boolean m [, string f]]) string
 ```
 
-Returns the URL to the **Entity Editor** page for entity `e` on the target ATSD instance. The entity name is URL-encoded if necessary.
+Returns the URL to the **Entity Editor** page for entity `e` on the target ATSD instance. The function URL encoded the entity name if necessary.
 
 If the match entity parameter `m` is set to `true`, the entity is matched by label if it cannot found by name.
 
@@ -54,13 +54,13 @@ Example:
 getEntityLink('nurswgvml007')
 ```
 
-The function returns URL to the **Entity Editor** for the specified entity.
+Returns URL to the **Entity Editor** for the specified entity.
 
 ```elm
 https://atsd_hostname:8443/entities/nurswgvml007
 ```
 
-The above URL can also be assembled manually:
+Alternatively assemble the above URL manually:
 
 ```javascript
 serverLink + '/entity/' + urlencode(entity)

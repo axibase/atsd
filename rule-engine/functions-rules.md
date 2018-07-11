@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `rule` functions provide a way to check windows created by other rules. The matching windows can contain data for series that are different from the series in the current window. These functions can be used for correlation purposes.
+These functions check windows created by other rules. Matching windows can contain data for series that differ from the series in the current window. Use these functions for correlation purposes.
 
-Windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command.
+Windows are matched using [grouping](grouping.md) tags, irrespective of tags present in the last command.
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression returns `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
 
 The current window is excluded from matching.
@@ -23,7 +23,7 @@ The current window is excluded from matching.
 
 Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified rule `r`, entity `e` and expression `p` to match other windows.
 
-The function returns `true` if a matching window is found, `false` otherwise.
+Returns `true` if a matching window is found, `false` otherwise.
 
 ## `rule_window`
 
@@ -33,7 +33,7 @@ The function returns `true` if a matching window is found, `false` otherwise.
 
 Returns the first matching window for the specified rule `r`, entity `e` and expression `p` to match other windows.
 
-The function returns `null` if no matching windows are found.
+Returns `null` if no matching windows are found.
 
 Window [fields](window-fields.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_window('jvm_derived').entity`. In addition, the matched window provides the `lastText` field which contains the last message text received by the window.
 
@@ -44,7 +44,7 @@ Window [fields](window-fields.md#base-fields) except `repeat_interval` can be ac
 
 ---
 
-The following match conditions are applied:
+Applies the following match conditions
 
 * Entity:
   * If the entity argument `e` is not specified, the **current** entity in the window is used for matching.
@@ -190,7 +190,7 @@ Assume the following windows have status `REPEAT` and the function is called fro
 
 Returns the collection of windows for the specified rule `r`, expression `p` and the same entity as in the current window.
 
-The following match conditions are applied:
+The following match conditions apply:
 
 * The expression `p` can include the following fields and supports wildcards in field values:
 
@@ -202,9 +202,9 @@ The following match conditions are applied:
 
 * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
 
-To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
+To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element).
 
-Window [fields](window-fields.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`. In addition, the matched windows provide the `lastText` field which contains the last message text received by the window.
+Access window [fields](window-fields.md#base-fields) except `repeat_interval` via dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`. In addition, the matched windows provide the `lastText` field which contains the last message text received by the window.
 
 > Note:
 > * `tags` are the same as in the last window command;
