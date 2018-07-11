@@ -8,9 +8,11 @@
 | `label` | Entity or metric label. |
 | `{field-name}` | Entity or metric field by name, such as `createdDate` or `retentionDays`. |
 | `tags.{tag-name}` | Value of tag with name `tag-name`, for example, `tags.location` or `tags.table`. |
+| `message`| Message text in [messages methods](../../data/messages/README.md).|
+| `severity`|Message severity [name](../../../api/data/severity.md) in [messages methods](../../data/messages/README.md).|
 
 * All tags are string variables.
-* Tag names are case-insensitive, for example, `tags.location` and `tags.Location` are equal.
+* Tag names are case-**insensitive**, for example, `tags.location` and `tags.Location` are equal.
 * If the tag `tag-name` is not defined, the `tags.{tag-name}` variable returns an empty string.
 * String literals must be enclosed in single or double quotes.
 
@@ -33,31 +35,31 @@ Wildcard `?` means any character.
 * Returns record with name equal to `nurswgvml003`
 
 ```sql
-  name = 'nurswgvml003'
+name = 'nurswgvml003'
 ```
 
 * Returns records with name starting with `nur`
 
 ```sql
-  name LIKE 'nur*'
+name LIKE 'nur*'
 ```
 
 * Returns records that have the `location` tag defined
 
 ```sql
-  tags.location != ''
+tags.location != ''
 ```
 
 * Returns records with name that starts with `nur` and with the tag `os` equal to `Linux`
 
 ```sql
-  name LIKE 'nur*' AND tags.os = 'Linux'
+name LIKE 'nur*' AND tags.os = 'Linux'
 ```
 
-* Returns records with the tag `ip` starting with `10.` and ending with `22`
+* Returns records with the tag `ip` starting with `192.` and ending with `1`
 
 ```sql
-  tags.ip LIKE '10.*22'
+tags.ip LIKE '192.*1'
 ```
 
 ## Utility Functions
