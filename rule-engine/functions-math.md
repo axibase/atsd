@@ -23,7 +23,7 @@ These functions perform basic numeric operations on the input number and return 
 ## `abs`
 
 ```javascript
-  abs(double x) double
+abs(double x) double
 ```
 
 Returns the absolute value of `x`.
@@ -31,7 +31,7 @@ Returns the absolute value of `x`.
 ## `ceil`
 
 ```javascript
-  ceil(double x) long
+ceil(double x) long
 ```
 
 Returns the smallest integer that is greater than or equal to `x`.
@@ -39,7 +39,7 @@ Returns the smallest integer that is greater than or equal to `x`.
 ## `floor`
 
 ```javascript
-  floor(double x) long
+floor(double x) long
 ```
 
 Returns the largest integer that is less than or equal to `x`.
@@ -47,7 +47,7 @@ Returns the largest integer that is less than or equal to `x`.
 ## `pow`
 
 ```javascript
-  pow(double x, double y) double
+pow(double x, double y) double
 ```
 
 Return `x` raised to the power of `y`.
@@ -55,7 +55,7 @@ Return `x` raised to the power of `y`.
 ## `round`
 
 ```javascript
-  round(double x[, int y]) long
+round(double x[, int y]) long
 ```
 
 Returns `x` rounded to `y` decimal places (precision).
@@ -69,7 +69,7 @@ If `y` is less than `0`, the number is rounded to the left of the decimal point 
 ## `max`
 
 ```javascript
-  max(double x, double y) double
+max(double x, double y) double
 ```
 
 Returns the greater of two numbers: `x` and `y`.
@@ -77,7 +77,7 @@ Returns the greater of two numbers: `x` and `y`.
 ## `min`
 
 ```javascript
-  min(double x, double y) double
+min(double x, double y) double
 ```
 
 Returns the smallest of two numbers: `x` and `y`.
@@ -85,7 +85,7 @@ Returns the smallest of two numbers: `x` and `y`.
 ## `cbrt`
 
 ```javascript
-  cbrt(double x) double
+cbrt(double x) double
 ```
 
 Returns `∛` of `x`.
@@ -93,7 +93,7 @@ Returns `∛` of `x`.
 ## `sqrt`
 
 ```javascript
-  sqrt(double x) double
+sqrt(double x) double
 ```
 
 Returns `√` of `x`.
@@ -101,7 +101,7 @@ Returns `√` of `x`.
 ## `exp`
 
 ```javascript
-  exp(double x) double
+exp(double x) double
 ```
 
 Returns Euler constant `e` (2.718281828459045) raised to the power of `x`.
@@ -109,7 +109,7 @@ Returns Euler constant `e` (2.718281828459045) raised to the power of `x`.
 ## `log`
 
 ```javascript
-  log(double x) double
+log(double x) double
 ```
 
 Returns the natural logarithm (base `e = 2.718281828459045`) of `x`.
@@ -117,7 +117,7 @@ Returns the natural logarithm (base `e = 2.718281828459045`) of `x`.
 ## `log10`
 
 ```javascript
-  log10(double x) double
+log10(double x) double
 ```
 
 Returns the base 10 logarithm of `x`.
@@ -125,7 +125,7 @@ Returns the base 10 logarithm of `x`.
 ## `signum`
 
 ```javascript
-  signum(double x) integer
+signum(double x) integer
 ```
 
 Returns the `signum` function of the argument: `0` if the argument is `0`, `1` if the argument is greater than `1`, `-1` if the argument is less than `0`.

@@ -232,7 +232,7 @@ excludeKeys([] m, [] c) map
 
 Returns a copy of the input map `m` without the keys specified in collection `c`.
 
-The keys in collection `c` can contain wildcards ? and * to remove multiple matching keys from the map.
+The keys in collection `c` can contain wildcards `?` and `*` to remove multiple matching keys from the map.
 
 Examples:
 

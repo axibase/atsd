@@ -15,7 +15,7 @@ The `db_message_count` and `db_message_last` functions can be used to verify the
 ## `db_message_count`
 
 ```javascript
-  db_message_count(string i, string g, string s[, string t | [] t[, string e[, string p]]]) long
+db_message_count(string i, string g, string s[, string t | [] t[, string e[, string p]]]) long
 ```
 
 Returns the number of message records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See matching rules [below](#matching-rules).
@@ -23,7 +23,7 @@ Returns the number of message records matching the specified interval `i`, messa
 ## `db_message_last`
 
 ```javascript
-  db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
+db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
 ```
 
 Returns the most recent [message](../api/data/messages/query.md) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See [Matching Rules](#matching-rules).
@@ -35,7 +35,7 @@ Returns the most recent [message](../api/data/messages/query.md) record matching
 ## `db_messages`
 
 ```javascript
-  db_messages(string i, string g, string s[, string t | [] t[, string e[, string p]]]) [object]
+db_messages(string i, string g, string s[, string t | [] t[, string e[, string p]]]) [object]
 ```
 
 Returns a list of [message](../api/data/messages/query.md) records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
@@ -95,75 +95,75 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 ### `db_message_count` Examples
 
 ```javascript
-  /*
-  Checks if the average exceeds 20 and the 'compaction' message was not received
-  within the last hour for the current entity.
-  */
-  avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
+/*
+Checks if the average exceeds 20 and the 'compaction' message was not received
+within the last hour for the current entity.
+*/
+avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
 
-  /*
-  Checks if the average exceeds 80 and there is an event with 'type=backup-error'
-  received within the last 15 minutes for entity 'nurswgvml006'.
-  */
-  avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
+/*
+Checks if the average exceeds 80 and there is an event with 'type=backup-error'
+received within the last 15 minutes for entity 'nurswgvml006'.
+*/
+avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
 
-  /*
-  Counts messages within the previous 60 minutes
-  for 'type=compaction', any source, any tags and all entities.
-  */
-  db_message_count('1 hour', 'compaction', '',  '', '*')
+/*
+Counts messages within the previous 60 minutes
+for 'type=compaction', any source, any tags and all entities.
+*/
+db_message_count('1 hour', 'compaction', '',  '', '*')
 
-  /*
-  Counts messages with the same text as in the last command, but from different users.
-  */
-  db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
+/*
+Counts messages with the same text as in the last command, but from different users.
+*/
+db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
 ```
 
 ### `db_message_last` Examples
 
 ```javascript
-  last_msg = db_message_last('60 minute', 'logger', '')
-  /*
-  Check that the average exceeds 50 and the severity of the last message with type 'logger'
-  for the current entity is greater than or equal to 'ERROR'.
-  */
-  avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
+last_msg = db_message_last('60 minute', 'logger', '')
+/*
+Check that the average exceeds 50 and the severity of the last message with type 'logger'
+for the current entity is greater than or equal to 'ERROR'.
+*/
+avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 ```
 
 ```javascript
-  /*
-  Retrieves the last message with text beginning 'docker start sftp*'.
-  */
-  db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
+/*
+Retrieves the last message with text beginning 'docker start sftp*'.
+*/
+db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
 
-  /*
-  Returns the most recent message within 1 day for the current entity,
-  containing tag 'api_app_id=583' and regardless of type or source.
-  */
-  db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
+/*
+Returns the most recent message within 1 day for the current entity,
+containing tag 'api_app_id=583' and regardless of type or source.
+*/
+db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
 
-  /*
-  Returns message with type 'webhook' and empty tags.
-  */
-  db_message_last('15 second', 'webhook', '',  '', '', "tags.isEmpty()=true")
+/*
+Returns message with type 'webhook' and empty tags.
+*/
+db_message_last('15 second', 'webhook', '',  '', '', "tags.isEmpty()=true")
 ```
 
 ### `db_messages` Examples
 
 ```javascript
-  /*
-  Retrieves messages with the text ending '*Selected' and any tags.
-  */
-  db_messages('30 second', 'webhook', 'axibase-bot', '', 'slack', 'message LIKE "*Selected"')
+/*
+Retrieves messages with the text ending '*Selected' and any tags.
+*/
+db_messages('30 second', 'webhook', 'axibase-bot', '', 'slack', 'message LIKE "*Selected"')
 ```
 
 ```javascript
-  /*
-  Retrieves messages with severety 'Warning' within 15 second and send values of 'command' tag in notification.
-  */
-  msgs = db_messages('15 second', 'logger', '', '', '', 'severity="warning"')
+/*
+Retrieves messages with severety 'Warning' within 15 second and send values of 'command' tag in notification.
+*/
+msgs = db_messages('15 second', 'logger', '', '', '', 'severity="warning"')
 
-  @foreach{m : msgs}
-  @{m.tags.get('command')}
-  @end{}
+@foreach{m : msgs}
+@{m.tags.get('command')}
+@end{}
 ```
