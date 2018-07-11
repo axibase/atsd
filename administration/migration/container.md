@@ -127,8 +127,8 @@ Check HBase for consistency.
 The expected message is:
 
 ```txt
-  0 inconsistencies detected.
-  Status: OK
+0 inconsistencies detected.
+Status: OK
 ```
 
 > Follow recovery procedures if inconsistencies are reported.
@@ -136,7 +136,7 @@ The expected message is:
 Stop HBase.
 
 ```sh
-  /opt/atsd/bin/atsd-hbase.sh stop
+/opt/atsd/bin/atsd-hbase.sh stop
 ```
 
 Execute the `jps` command and verify that the `HMaster` process is **not present** in the output.
@@ -156,13 +156,13 @@ jps
 Check HDFS for consistency.
 
 ```sh
-  /opt/atsd/hadoop/bin/hadoop fsck /hbase/
+/opt/atsd/hadoop/bin/hadoop fsck /hbase/
 ```
 
 The expected message is:
 
 ```txt
-  The filesystem under path '/hbase/' is HEALTHY.
+The filesystem under path '/hbase/' is HEALTHY.
 ```
 
 > If corrupted files are reported, follow the recovery procedure.
@@ -170,7 +170,7 @@ The expected message is:
 Stop HDFS.
 
 ```sh
-  /opt/atsd/bin/atsd-dfs.sh stop
+/opt/atsd/bin/atsd-dfs.sh stop
 ```
 
 Execute the `jps` command and verify that the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not  present** in the `jps` command output.
@@ -366,11 +366,11 @@ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 
 ```txt
 ...
-  TABLE
-  atsd_calendar
-  atsd_collection
-  atsd_config
-  ...
+TABLE
+atsd_calendar
+atsd_collection
+atsd_config
+...
 ```
 
 Execute a sample scan in HBase.
@@ -381,9 +381,9 @@ echo "scan 'atsd_d', LIMIT => 1" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null
 
 ```txt
 ...
-  ROW                  COLUMN+CELL
-  ...
-  1 row(s) in 0.0560 seconds
+ROW                  COLUMN+CELL
+...
+1 row(s) in 0.0560 seconds
 ```
 
 ## Customize Map-Reduce Settings

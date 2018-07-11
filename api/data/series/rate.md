@@ -45,11 +45,11 @@ Used to compute rate of change when the underlying metric measures a continuousl
 `(value1 - value0) / (time1 - time0) * ratePeriod`.
 
 ```javascript
-  ratePeriod = rate.count * rate.unit (in milliseconds)
-  if (value1 > value0) {
-    resultValue = (value1 - value0) / (time1 - time0) * ratePeriod;
-    aggregator.addValue(time1, resultValue);
-  }
+ratePeriod = rate.count * rate.unit (in milliseconds)
+if (value1 > value0) {
+  resultValue = (value1 - value0) / (time1 - time0) * ratePeriod;
+  aggregator.addValue(time1, resultValue);
+}
 ```
 
 ## NANOSECOND Period Example

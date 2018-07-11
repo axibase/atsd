@@ -54,7 +54,7 @@ Custom expressions that return a value (number, string, boolean, object) can be 
 The condition is `true` when the last value is greater than `75`.
 
 ```javascript
-  value > 75
+value > 75
 ```
 
 ### Threshold Range
@@ -62,7 +62,7 @@ The condition is `true` when the last value is greater than `75`.
 The condition is `true` when the last value is greater than `75` and smaller than `90`.
 
 ```javascript
-  value > 75 && value < 90
+value > 75 && value < 90
 ```
 
 ### Last-N Average
@@ -70,7 +70,7 @@ The condition is `true` when the last value is greater than `75` and smaller tha
 For a count-based window with the length of 5 samples, the condition is `true` when average of values in the window is greater than `75`.
 
 ```javascript
-  avg() > 75
+avg() > 75
 ```
 
 The number of values in the window is less than `5` from the time the window is started and until it reaches the maximum capacity as new data arrives. For example, the `avg()` function returns the same result as `value` when the first sample arrives.
@@ -80,7 +80,7 @@ The number of values in the window is less than `5` from the time the window is 
 For a time-based window with a duration of 5 minutes, the condition is `true` when the average of values with timestamps greater than the current time minus window duration exceeds `75`.
 
 ```javascript
-  avg() > 75
+avg() > 75
 ```
 
 The number of samples in the window can range from 0 (when the oldest value exits the window) to infinity.
@@ -90,7 +90,7 @@ The number of samples in the window can range from 0 (when the oldest value exit
 The condition is `true` when the all values in the window, both count and time-based, exceed `50`.
 
 ```javascript
-  min() > 50
+min() > 50
 ```
 
 ### Equal Values
@@ -98,7 +98,7 @@ The condition is `true` when the all values in the window, both count and time-b
 The condition is `true` when all values in the window are equal.
 
 ```javascript
-  max() - min() = 0
+max() - min() = 0
 ```
 
 ### Equal Number
@@ -106,7 +106,7 @@ The condition is `true` when all values in the window are equal.
 The condition is `true` when all values in the window are equal `50`.
 
 ```javascript
-  max() - min() = 0 && avg() = 50
+max() - min() = 0 && avg() = 50
 ```
 
 ### Multiple metrics
@@ -114,13 +114,13 @@ The condition is `true` when all values in the window are equal `50`.
 If metrics are submitted with the same `series` command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
 
 ```javascript
-  value > 90 AND value('disk_used') < 1000000000
+value > 90 AND value('disk_used') < 1000000000
 ```
 
 Alternatively, the metric last value can be retrieved with the [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
 
 ```javascript
-  value > 90 AND db_last('io_nodes_used_precent') < 80
+value > 90 AND db_last('io_nodes_used_precent') < 80
 ```
 
 ### Schedule-based (Time condition)
@@ -128,5 +128,5 @@ Alternatively, the metric last value can be retrieved with the [`db_last`](funct
 The condition is `true` if the average exceeds `90` at any time or if the average exceeds `50` during the working hours (between `08:00:00` and `17:59:59`).
 
 ```javascript
-  avg() > 90 || avg() > 50 && now.getHourOfDay() BETWEEN 8 AND 17
+avg() > 90 || avg() > 50 && now.getHourOfDay() BETWEEN 8 AND 17
 ```

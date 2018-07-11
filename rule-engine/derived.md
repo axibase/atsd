@@ -130,7 +130,7 @@ If the rule purpose is to only create derived series, without any alerting, set 
 * Command Template:
 
 ```bash
-  series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
 ### Moving Average (Last *N* Time)
@@ -142,7 +142,7 @@ If the rule purpose is to only create derived series, without any alerting, set 
 * Command Template:
 
 ```bash
-  series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
 ### Roll-up (all matching entities)
@@ -155,7 +155,7 @@ If the rule purpose is to only create derived series, without any alerting, set 
 * Command Template:
 
 ```bash
-  series e:total m:${metric}_sum=${sum()}
+series e:total m:${metric}_sum=${sum()}
 ```
 
 ### Reverse/Inverse Metric
@@ -167,11 +167,11 @@ If the rule purpose is to only create derived series, without any alerting, set 
 * Command Template:
 
 ```bash
-  series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
+series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
 ```
 
 ```bash
-  series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} ${commandTags}
+series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} ${commandTags}
 ```
 
 ### Ratio / Percentage
@@ -183,7 +183,7 @@ If the rule purpose is to only create derived series, without any alerting, set 
 * Command Template:
 
 ```bash
-  series e:${entity} m:${metric}_percent=${100 * value/value('total')} ${commandTags}
+series e:${entity} m:${metric}_percent=${100 * value/value('total')} ${commandTags}
 ```
 
 ### Message to Series
@@ -195,5 +195,5 @@ If the rule purpose is to only create derived series, without any alerting, set 
 * Command Template:
 
 ```bash
-  series e:${entity} m:job_execution_time=${tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
+series e:${entity} m:job_execution_time=${tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
 ```

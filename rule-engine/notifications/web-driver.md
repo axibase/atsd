@@ -7,9 +7,9 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 > If you are installing the Web Driver in a Docker container, log in as `root` and install `wget` prior to switching to the `axibase` user
 >
 > ```elm
->   docker exec -it -u root atsd bash
->   apt-get update && apt-get install wget
->   su axibase
+> docker exec -it -u root atsd bash
+> apt-get update && apt-get install wget
+> su axibase
 > ```
 
 ## Option 1: PhantomJS

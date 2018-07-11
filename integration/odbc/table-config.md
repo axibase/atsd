@@ -15,9 +15,9 @@ This document describes how to reconfigure the ODBC data source if the list of t
   shows only metrics that start with the characters `infla`.
 
 ```txt
-    jdbc:atsd://atsd_hostname:8443;tables=%
-    jdbc:atsd://atsd_hostname:8443;tables=infla%
-    jdbc:atsd://atsd_hostname:8443;tables=infla%,%finance%
+jdbc:atsd://atsd_hostname:8443;tables=%
+jdbc:atsd://atsd_hostname:8443;tables=infla%
+jdbc:atsd://atsd_hostname:8443;tables=infla%,%finance%
 ```
 
 ![](./images/table_config.png)

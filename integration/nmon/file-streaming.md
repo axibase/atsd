@@ -46,31 +46,30 @@ sudo apt-get install nmon
 * Download `nmon` from Axibase repository on GitHub. See releases and branches available for download: [https://github.com/axibase/nmon/releases](https://github.com/axibase/nmon/releases "Available `nmon` releases") and [https://github.com/axibase/nmon/branches](https://github.com/axibase/nmon/branches "Available `nmon` branches").
 
 ```sh
-    git clone git://github.com/axibase/nmon.git -b 15e
+git clone git://github.com/axibase/nmon.git -b 15e
 ```
 
 * Move the downloaded `nmon` files to the `/opt/nmon` directory:
 
 ```sh
-    mv nmon/* /opt/nmon
-    rm -r nmon
+mv nmon/* /opt/nmon
+rm -r nmon
 ```
 
 ```sh
-    wget -O nmon https://github.com/axibase/nmon/releases/download/15e/nmon_
-    x86_ubuntu134
+wget -O nmon https://github.com/axibase/nmon/releases/download/15e/nmon_x86_ubuntu134
 ```
 
 * Set permissions for nmon:
 
 ```sh
-    sudo chmod 774 nmon
+sudo chmod 774 nmon
 ```
 
 * Make `nmon` executable:
 
 ```sh
-    chmod +x nmon
+chmod +x nmon
 ```
 
 #### Option 3: install nmon from binaries
@@ -78,26 +77,26 @@ sudo apt-get install nmon
 * Download the appropriate `nmon` binary: [http://nmon.sourceforge.net/pmwiki.php?n=Site.Download](http://nmon.sourceforge.net/pmwiki.php?n=Site.Download "nmon Binaries")
 
 ```sh
-    wget http://sourceforge.net/projects/nmon/files/nmon15d_power.tar.gz
+wget http://sourceforge.net/projects/nmon/files/nmon15d_power.tar.gz
 ```
 
 * Extract nmon
 
 ```sh
-    tar xzf nmon15d_power.tar.gz
+tar xzf nmon15d_power.tar.gz
 ```
 
 * After extracting the downloaded `nmon` archive, choose the appropriate binary file for your system. For example: `nmon\_linux\_x86\_64`
 * Change the name of the correct binary to nmon
 
 ```sh
-    mv nmon_linux_x86_64 nmon
+mv nmon_linux_x86_64 nmon
 ```
 
 * Set permissions for nmon
 
 ```sh
-    sudo chmod 774 nmon
+sudo chmod 774 nmon
 ```
 
 #### Download Sender Script from Axibase GitHub

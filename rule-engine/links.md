@@ -146,13 +146,13 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 * Base URL
 
 ```elm
-  https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
+https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
 ```
 
 * Inline Link
 
 ```elm
-  <a href="https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu">nmon_cpu</a>
+<a href="https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu">nmon_cpu</a>
 ```
 
 * Link Label: `nmon_cpu`
@@ -163,13 +163,13 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 * Base URL
 
 ```elm
-  https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
+https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
 ```
 
 * Inline Link
 
 ```elm
-  [nmon_cpu](https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu)
+[nmon_cpu](https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu)
 ```
 
 * Link Label: `nmon_cpu`
@@ -180,13 +180,13 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 * Base URL
 
 ```elm
-  https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
+https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
 ```
 
 * Inline Link
 
 ```elm
-  <https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu|nmon_cpu>
+<https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu|nmon_cpu>
 ```
 
 * Link Label: `nmon_cpu`

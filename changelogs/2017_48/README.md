@@ -37,7 +37,7 @@ The `db_message_count` and `db_message_last` functions allow one to correlate di
 * Calculate the number of messages matching the specified parameters.
 
 ```java
-  db_message_count(S interval, S type, S source [, S tags, [S entity]])
+db_message_count(S interval, S type, S source [, S tags, [S entity]])
 ```
 
 > `tags` and `entity` arguments are optional.
@@ -47,13 +47,13 @@ The `db_message_count` and `db_message_last` functions allow one to correlate di
   Example:
 
 ```java
-  // Check if the average exceeds 20 and the 'compaction' message was not received within the last hour for the current entity.
-  avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
+// Check if the average exceeds 20 and the 'compaction' message was not received within the last hour for the current entity.
+avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
 ```
 
 ```java
-  // Check if the average exceeds 80 and there is an event with type=backup-error received within the last 15 minutes for entity 'nurswgvml006'.
-  avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
+// Check if the average exceeds 80 and there is an event with type=backup-error received within the last 15 minutes for entity 'nurswgvml006'.
+avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
 ```
 
 #### [`db_message_last`](../../rule-engine/functions-message.md#db_message_last) Function
@@ -73,7 +73,7 @@ The returned object contains `type`, `source`, and `tags.{name}` fields of strin
   Example:
 
 ```java
-  last_msg = db_message_last('60 minute', 'logger', '')
-  // Check that the average exceeds 50 and the severity of the last message with type 'logger' for the current entity is greater or equal `ERROR`.
-  value > 50 && last_msg != null && last_msg.severity.toString() >= "6"
+last_msg = db_message_last('60 minute', 'logger', '')
+// Check that the average exceeds 50 and the severity of the last message with type 'logger' for the current entity is greater or equal `ERROR`.
+value > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 ```

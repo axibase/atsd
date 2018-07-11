@@ -81,9 +81,9 @@ The Charts library provides settings and functions to [add metadata](https://axi
 Add the following settings at the `[configuration]` level to automatically embed entity and metric metadata into series legend.
 
 ```ls
-  legend-position = top
-  add-meta = true
-  label-format = meta.entity.label: meta.metric.label (meta.metric.units)
+legend-position = top
+add-meta = true
+label-format = meta.entity.label: meta.metric.label (meta.metric.units)
 ```
 
 ![](./resources/portal-meta-edit.png)

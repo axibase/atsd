@@ -143,48 +143,48 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
 * Series object description:
 
 ```js
-    [
-      // metric name
-      "inflation.cpi.categories.price",
+[
+  // metric name
+  "inflation.cpi.categories.price",
 
-      // metric label
-      "CPI - Non-negotiable",
+  // metric label
+  "CPI - Non-negotiable",
 
-      // metric fields
-      {
-        "units": "million",
-        "dataType": "LONG"
-      },
+  // metric fields
+  {
+    "units": "million",
+    "dataType": "LONG"
+  },
 
-      // metric tags
-      {
-        "pricebase": "Current prices",
-        "seasonaladjustment": "Seasonally Adjusted",
-        "source": "CBS"
-      },
+  // metric tags
+  {
+    "pricebase": "Current prices",
+    "seasonaladjustment": "Seasonally Adjusted",
+    "source": "CBS"
+  },
 
-      // entity name
-      "fed",
+  // entity name
+  "fed",
 
-      // entity label
-      "U.S. FED",
+  // entity label
+  "U.S. FED",
 
-      // entity fields
-      {
-        "timeZone": "US/Eastern"
-      },
+  // entity fields
+  {
+    "timeZone": "US/Eastern"
+  },
 
-      // entity tags
-      {
-        "source": "FRED"
-      },
+  // entity tags
+  {
+    "source": "FRED"
+  },
 
-      // series tags
-      {
-        "category": "Health"
-      },
+  // series tags
+  {
+    "category": "Health"
+  },
 
-      // relevance score
-      1.5
-    ]
+  // relevance score
+  1.5
+]
 ```

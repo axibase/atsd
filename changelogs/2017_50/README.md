@@ -57,11 +57,11 @@ userAllowEntityGroup(String entityGroupName)
 ### Issue 4795
 
 ```javascript
-  value BETWEEN 75 AND 90
+value BETWEEN 75 AND 90
 ```
 
 ```javascript
-  dateStr BETWEEN '18:30:00' AND '18:34:59'
+dateStr BETWEEN '18:30:00' AND '18:34:59'
 ```
 
 ### Issue 4794
@@ -81,17 +81,17 @@ randomItem(collection('ip_white_list'))
 ### Issue 4793
 
 ```javascript
-  avg('1 minute') / avg() > 2
+avg('1 minute') / avg() > 2
 ```
 
 ```javascript
-  max(5) == max()
+max(5) == max()
 ```
 
 ### Issue 4792
 
 ```javascript
-  countIf('value > 10') < 5
+countIf('value > 10') < 5
 ```
 
 ### Issue 4785

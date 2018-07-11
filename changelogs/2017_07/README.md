@@ -70,9 +70,9 @@ The `entity.label` parameter is now supported in the rule filter.
 Added an `escape()` method to `list` and `var` arrays, to ensure that these collections are serialized as follows  `@{arrayName.escape()}`. The `escape()` method escapes commas and backslashes in each element in an array.
 
 ```ls
-  [dropdown]
-    options = @{countries.escape()}
-    change-field = series.tags.ctyname
+[dropdown]
+  options = @{countries.escape()}
+  change-field = series.tags.ctyname
 ```
 
 [ChartLab](https://apps.axibase.com/chartlab/ff94d98d/2/)

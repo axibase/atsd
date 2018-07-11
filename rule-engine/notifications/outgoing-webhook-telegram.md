@@ -26,8 +26,8 @@ The bot is special user account created for automation and integration purposes.
 * Send the `/newbot` command and complete the guided process to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
 
 ```txt
-    Use this token to access the HTTP API:
-    5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
+Use this token to access the HTTP API:
+5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
 ```
 
 * Copy the API token for future reference.
@@ -43,7 +43,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 * Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
 ```elm
-   https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text
+https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text
 ```
 
   The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443).
@@ -57,8 +57,8 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
   Set webhook by specifying the webhook URL
 
 ```bash
-    curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
-      https://api.telegram.org/botBOT_TOKEN/setWebhook
+curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
+    https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
 
 * If ATSD runs on a self-signed SSL certificate
@@ -66,19 +66,19 @@ Setup a webhook depending on the SSL certificate installed in ATSD.
   Export the [self-signed](../../administration/ssl-self-signed.md) SSL certificate in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate):
 
 ```sh
-  keytool -importkeystore -srckeystore /opt/atsd/atsd/conf/server.keystore -destkeystore /opt/atsd/atsd/conf/server.keystore.p12 -srcstoretype jks -deststoretype pkcs12
+keytool -importkeystore -srckeystore /opt/atsd/atsd/conf/server.keystore -destkeystore /opt/atsd/atsd/conf/server.keystore.p12 -srcstoretype jks -deststoretype pkcs12
 ```
 
 ```sh
-  openssl pkcs12 -in /opt/atsd/atsd/conf/server.keystore.p12 -out /opt/atsd/atsd/conf/server.keystore.pem -nokeys
+openssl pkcs12 -in /opt/atsd/atsd/conf/server.keystore.p12 -out /opt/atsd/atsd/conf/server.keystore.pem -nokeys
 ```
 
     Set webhook by specifying the webhook URL and attaching the `server.keystore.pem` file.
 
 ```sh
-    curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
-      -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
-      https://api.telegram.org/botBOT_TOKEN/setWebhook
+curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
+    -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
+    https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
 
 ## Check Webhook
@@ -119,7 +119,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```bash
-  User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${message}"
+User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${message}"
 ```
 
 * Click **Save** to save the rule.

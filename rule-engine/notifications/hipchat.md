@@ -135,9 +135,9 @@ If the HipChat API server is not accessible from the ATSD server, open the **Net
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```bash
-      OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
-    REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
-    CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
+REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
 ```
 
 * Click **Save** to save the rule.

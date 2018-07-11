@@ -46,17 +46,17 @@ Modify the `Body` by replacing the `<MESSAGE_TEXT>` value with your text, for ex
 
 ```json
 {
-   "Entries":[
-      {
-         "Source":"com.mycompany.myapp",
-         "Detail":"{ \"key1\": \"value1\", \"key2\": \"value2\" }",
-         "Resources":[
-            "resource1",
-            "resource2"
-         ],
-         "DetailType":"myDetailType"
-      }
-   ]
+  "Entries": [
+    {
+      "Source": "com.mycompany.myapp",
+      "Detail": "{ \"key1\": \"value1\", \"key2\": \"value2\" }",
+      "Resources": [
+        "resource1",
+        "resource2"
+      ],
+      "DetailType": "myDetailType"
+    }
+  ]
 }
 ```
 

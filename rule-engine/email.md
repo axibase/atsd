@@ -152,13 +152,13 @@ The subject can include [placeholders](placeholders.md) with fields and expressi
 Sample subject:
 
 ```bash
-  [${status}] Rule ${rule} for ${entity} ${tags}
+[${status}] Rule ${rule} for ${entity} ${tags}
 ```
 
 When using placeholders that can be replaced with text of arbitrary length, apply the [`truncate`](functions-text.md#truncate) or [`abbreviate`](functions-text.md#abbreviate) functions to limit the subject length.
 
 ```bash
-  [${status}] Rule ${rule} for ${entity}: ${truncate(tags.error, 100)}
+[${status}] Rule ${rule} for ${entity}: ${truncate(tags.error, 100)}
 ```
 
 ### Text
@@ -168,8 +168,8 @@ The message text (body) can include [placeholders](placeholders.md) as well.
 Use the HTML tag `<br>` to split content into multiple lines.
 
 ```bash
-  Start Time: ${windowStartTime}<br>
-  Duration: ${(timestamp / 1000 - windowStartTime) * 1000} ms
+Start Time: ${windowStartTime}<br>
+Duration: ${(timestamp / 1000 - windowStartTime) * 1000} ms
 ```
 
 Placeholders with [link](links.md) fields are automatically inlined.
@@ -223,7 +223,7 @@ To attach screenshots, a [web driver](notifications/web-driver.md) must be insta
 The chart can include multiple series depending on statistical functions referenced in the condition.
 
 ```javascript
-  abs(forecast_deviation(median())) > 2 && (median() < 200 || median() > 600)
+abs(forecast_deviation(median())) > 2 && (median() < 200 || median() > 600)
 ```
 
 ![](./images/email-screenshot-series.png)
@@ -231,7 +231,7 @@ The chart can include multiple series depending on statistical functions referen
 Similarly, if the rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) such metrics can be included in the screenshot on the right axis.
 
 ```javascript
-  avg() > 10 && db_last('memfree') < 500000
+avg() > 10 && db_last('memfree') < 500000
 ```
 
 ![](./images/email-screenshot-correlate.png)

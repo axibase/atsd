@@ -59,14 +59,14 @@ Set `dfs.name.dir` property to `/path/to/data-dir/hdfs-data-name`.
 Set `dfs.data.dir` to `/path/to/data-dir/hdfs-data`.
 
 ```xml
- <property>
-     <name>dfs.name.dir</name>
-     <value>/path/to/data-dir/hdfs-data-name</value>
- </property>
- <property>
-     <name>dfs.data.dir</name>
-     <value>/path/to/data-dir/hdfs-data</value>
- </property>
+<property>
+    <name>dfs.name.dir</name>
+    <value>/path/to/data-dir/hdfs-data-name</value>
+</property>
+<property>
+    <name>dfs.data.dir</name>
+    <value>/path/to/data-dir/hdfs-data</value>
+</property>
 ```
 
 Open the `/opt/atsd/hadoop/conf/core-site.xml` file.
@@ -74,11 +74,11 @@ Open the `/opt/atsd/hadoop/conf/core-site.xml` file.
 Set the `hadoop.tmp.dir` property to `/path/to/data-dir/hdfs-cache`.
 
 ```xml
- <property>
-     <name>hadoop.tmp.dir</name>
-     <value>/path/to/data-dir/hdfs-cache</value>
-     <description>A base for other temporary directories.</description>
- </property>
+<property>
+    <name>hadoop.tmp.dir</name>
+    <value>/path/to/data-dir/hdfs-cache</value>
+    <description>A base for other temporary directories.</description>
+</property>
 ```
 
 Start ATSD services.

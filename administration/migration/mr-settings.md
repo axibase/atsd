@@ -21,24 +21,24 @@ Edit `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
 Sample memory configuration for a server with 16 GB of RAM:
 
 ```xml
-    <property>
-        <name>mapreduce.map.memory.mb</name>
-        <!-- must not exceed 50% of available physical memory on the server -->
-        <value>8000</value>
-    </property>
-    <property>
-        <name>mapreduce.map.java.opts</name>
-        <!-- set to 80% of mapreduce.map.memory.mb -->
-        <value>-Xmx5600m</value>
-    </property>
-    <property>
-        <name>mapreduce.reduce.memory.mb</name>
-        <!-- must not exceed 50% of available physical memory on the server -->
-        <value>8000</value>
-    </property>
-    <property>
-        <!-- set to 80% of mapreduce.reduce.memory.mb -->
-        <name>mapreduce.reduce.java.opts</name>
-        <value>-Xmx5600m</value>
-    </property>
+<property>
+    <name>mapreduce.map.memory.mb</name>
+    <!-- must not exceed 50% of available physical memory on the server -->
+    <value>8000</value>
+</property>
+<property>
+    <name>mapreduce.map.java.opts</name>
+    <!-- set to 80% of mapreduce.map.memory.mb -->
+    <value>-Xmx5600m</value>
+</property>
+<property>
+    <name>mapreduce.reduce.memory.mb</name>
+    <!-- must not exceed 50% of available physical memory on the server -->
+    <value>8000</value>
+</property>
+<property>
+    <!-- set to 80% of mapreduce.reduce.memory.mb -->
+    <name>mapreduce.reduce.java.opts</name>
+    <value>-Xmx5600m</value>
+</property>
 ```

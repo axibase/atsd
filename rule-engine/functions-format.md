@@ -44,7 +44,7 @@ Returns the total number of bytes `x` in human-readable format. Identifies the l
 For example, if the unit is `1000` (`si` set to `true`):
 
 ```txt
- 999 -> 999.0 B  (unit is byte)
+999 -> 999.0 B  (unit is byte)
 1000 ->   1.0 kB (unit is kilobyte)
 ```
 
@@ -52,21 +52,25 @@ Formatted number always contains one fractional digit.
 
 Examples:
 
+<!-- markdownlint-disable MD107 -->
+
 ```txt
-                        si=false    si=true
-                   0:        0 B        0 B
-                  27:       27 B       27 B
-                 999:      999 B      999 B
-                1000:     1.0 kB     1000 B
-                1023:     1.0 kB     1023 B
-                1024:     1.0 kB    1.0 KiB
-                1728:     1.7 kB    1.7 KiB
-              110592:   110.6 kB  108.0 KiB
-             7077888:     7.1 MB    6.8 MiB
-           452984832:   453.0 MB  432.0 MiB
-         28991029248:    29.0 GB   27.0 GiB
-       1855425871872:     1.9 TB    1.7 TiB
+                 si=false    si=true
+            0:        0 B        0 B
+           27:       27 B       27 B
+          999:      999 B      999 B
+         1000:     1.0 kB     1000 B
+         1023:     1.0 kB     1023 B
+         1024:     1.0 kB    1.0 KiB
+         1728:     1.7 kB    1.7 KiB
+       110592:   110.6 kB  108.0 KiB
+      7077888:     7.1 MB    6.8 MiB
+    452984832:   453.0 MB  432.0 MiB
+  28991029248:    29.0 GB   27.0 GiB
+1855425871872:     1.9 TB    1.7 TiB
 ```
+
+<!-- markdownlint-enable MD107 -->
 
 > If the `x` argument is a string or an object that cannot be parsed into a number, the function returns the original value `x`.
 

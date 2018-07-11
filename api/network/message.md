@@ -60,7 +60,7 @@ Refer to [limits](README.md#command-limits).
 > Parent rules inherited from [Base ABNF](base-abnf.md).
 
 ```elm
-  ; message or at least one tag is required
+; message or at least one tag is required
 command = "message" MSP entity [MSP tag-type] [MSP tag-source] [MSP tag-severity] *(MSP tag) [MSP time] [MSP persist] [MSP message]
 entity = "e:" NAME
 tag-type = "t:type=" VALUE

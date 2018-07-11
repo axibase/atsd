@@ -50,7 +50,7 @@ Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field val
 The response document contains the series key and the array of `time:value` samples.
 
 ```json
- [
+[
   {
     "entity": "br-1905",
     "metric": "temperature",

@@ -117,8 +117,8 @@ The cluster size can be adjusted at runtime.
 The minimum number of nodes in each instance group is 1, therefore the smallest cluster can have two EC2 instances:
 
 ```bash
-  Name=Master,InstanceCount=1,InstanceGroupType=MASTER,InstanceType=m4.large        \
-  Name=Region,InstanceCount=1,InstanceGroupType=CORE,InstanceType=m4.large          \
+Name=Master,InstanceCount=1,InstanceGroupType=MASTER,InstanceType=m4.large        \
+Name=Region,InstanceCount=1,InstanceGroupType=CORE,InstanceType=m4.large          \
 ```
 
 ### Enable Consistent S3 View

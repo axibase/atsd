@@ -97,10 +97,10 @@ mpstat.cpu_user   = undefined
 Entities:
 
 ```ls
-     nurswgvml006 = CDT
-     nurswgvml007 = PDT
-     nurswgvml009 = UT
-     nurswgvml010 = undefined
+nurswgvml006 = CDT
+nurswgvml007 = PDT
+nurswgvml009 = UT
+nurswgvml010 = undefined
 ```
 
 Server Time:

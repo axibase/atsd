@@ -11,7 +11,7 @@ Placeholders can be used to include contextual information in email messages, we
 The placeholder is declared with the dollar sign `$` and curly braces `{}`.
 
 ```bash
-  ${expression}
+${expression}
 ```
 
 When the response action is triggered, the expression between the braces is resolved to a concrete value based on the window context.
