@@ -18,7 +18,7 @@ These functions execute an HTTP request to an external web service and return a 
 ## `queryConfig`
 
 ```javascript
-  queryConfig(string n, [map p]) response
+queryConfig(string n, [map p]) response
 ```
 
 Executes an HTTP request using a predefined [outgoing webhook](notifications/README.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
@@ -75,7 +75,7 @@ The target URL receives the following JSON payload sent as `application/json`:
 ## `queryGet`
 
 ```javascript
-  queryGet(string u, [map c]) response
+queryGet(string u, [map c]) response
 ```
 
 Executes a `GET` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
@@ -87,13 +87,13 @@ The configuration map `c` can contain the following fields:
 * `ignoreSsl`: Boolean field that controls SSL certificate validation. Default is `true`.
 
 ```javascript
-  queryGet("https://ipinfo.io/1.1.1.1/json").content
+queryGet("https://ipinfo.io/1.1.1.1/json").content
 ```
 
 ## `queryPost`
 
 ```javascript
-  queryPost(string u, [map c]) response
+queryPost(string u, [map c]) response
 ```
 
 Executes a `POST` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
@@ -113,9 +113,9 @@ The `params` map is serialized into a JSON document if content type is `applicat
 **JSON content type**:
 
 ```javascript
-  queryPost(_url,
-    ["params": ["repository": "atsd-site", "channel": "devops"]]
-  )
+queryPost(_url,
+  ["params": ["repository": "atsd-site", "channel": "devops"]]
+)
 ```
 
 Payload:
@@ -127,10 +127,10 @@ Payload:
 **Form content type**:
 
 ```javascript
-  queryPost(_url, [
-     "contentType": "application/x-www-form-urlencoded",
-     "params": ["repository": "atsd-site", "channel": "devops"]
-  ])
+queryPost(_url, [
+    "contentType": "application/x-www-form-urlencoded",
+    "params": ["repository": "atsd-site", "channel": "devops"]
+])
 ```
 
 Payload:
@@ -144,17 +144,17 @@ repository=atsd-site&channel=devops
 The request URL consists of scheme (HTTP/HTTPS), optional user credentials, hostname, port, and path with query string.
 
 ```ls
-  scheme:[//[username:password@]host[:port]][/path][?query]
+scheme:[//[username:password@]host[:port]][/path][?query]
 ```
 
 Examples:
 
 ```elm
-  https://john.doe:secret@192.0.2.9:8443/service?load=true
+https://john.doe:secret@192.0.2.9:8443/service?load=true
 ```
 
 ```elm
-  https://api.slack.com/sendMessage
+https://api.slack.com/sendMessage
 ```
 
 ### Response Object
@@ -220,15 +220,15 @@ printObject(queryPost({}))
 Posts message to an **Incoming Webhook** in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
 
 ```javascript
-  queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", [
-      "params": ["channel": "#devops", "text": "Hello from ATSD!"]
-  ])
+queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", [
+    "params": ["channel": "#devops", "text": "Hello from ATSD!"]
+])
 ```
 
 Request payload:
 
 ```json
-  {"channel":"#devops","text":"hello world"}
+{"channel":"#devops","text":"hello world"}
 ```
 
 #### Post Message using REST API
@@ -236,15 +236,15 @@ Request payload:
 Posts message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs/developer-guides/rest-api/chat/sendmessage/) REST API method.
 
 ```javascript
-  queryPost("https://chat_server:3000/api/v1/chat.sendMessage", [
-     "headers":[
-        "X-Auth-Token": "botUserToken",
-        "X-User-Id": "botUserId"
-     ],
-     "params": [
-        "message": [ "rid": "GENERAL", "msg": "Hello, Rocket.Chat"]
-     ]
-  ])
+queryPost("https://chat_server:3000/api/v1/chat.sendMessage", [
+   "headers":[
+      "X-Auth-Token": "botUserToken",
+      "X-User-Id": "botUserId"
+   ],
+   "params": [
+      "message": [ "rid": "GENERAL", "msg": "Hello, Rocket.Chat"]
+   ]
+])
 ```
 
 Response `content`:
@@ -276,12 +276,12 @@ Response `content`:
 Retrieves results of a [GitHub GraphQL](https://developer.github.com/v4/query/) query.
 
 ```javascript
-  queryPost("https://api.github.com/graphql", [
-    "headers": ["Authorization" : "bearer TOKEN"],
-    "params": [
-      "query": "{ user(login:\"octocat\") { name login websiteUrl bio company createdAt location organizations(first: 1) {nodes { name login location description websiteUrl url }}}}"
-    ]
-  ])
+queryPost("https://api.github.com/graphql", [
+  "headers": ["Authorization" : "bearer TOKEN"],
+  "params": [
+    "query": "{ user(login:\"octocat\") { name login websiteUrl bio company createdAt location organizations(first: 1) {nodes { name loginlocation description websiteUrl url }}}}"
+  ]
+])
 ```
 
 Response `content`:
@@ -308,46 +308,46 @@ Response `content`:
 #### Display Text Content
 
 ```javascript
-  queryGet("https://ipinfo.io/1.1.1.1/json").content
+queryGet("https://ipinfo.io/1.1.1.1/json").content
 ```
 
 Response `content`:
 
 ```json
-  {
-      "city": "Melbourne",
-      "location": {
-          "latitude": -37.7,
-          "longitude": 145.1833
-      },
-      "ip": "1.1.1.1"
-  }
+{
+    "city": "Melbourne",
+    "location": {
+        "latitude": -37.7,
+        "longitude": 145.1833
+    },
+    "ip": "1.1.1.1"
+}
 ```
 
 #### Convert JSON response to a flat structure
 
 ```javascript
-  flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content)
+flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content)
 ```
 
 ```elm
-  [
-    "city" : "Melbourne",
-    "location.latitude" : -37.7,
-    "location.longitude" : 145.1833,
-    "ip" : "1.1.1.1"
-  ]
+[
+  "city" : "Melbourne",
+  "location.latitude" : -37.7,
+  "location.longitude" : 145.1833,
+  "ip" : "1.1.1.1"
+]
 ```
 
 #### Display field values in the JSON response in a compact format
 
 ```javascript
-  concatLines(flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content).values())
+concatLines(flattenJson(queryGet("https://ipinfo.io/1.1.1.1/json").content).values())
 ```
 
 ```ls
-  Melbourne
-  -37.7
-  145.1833
-  1.1.1.1
+Melbourne
+-37.7
+145.1833
+1.1.1.1
 ```

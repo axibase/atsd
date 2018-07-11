@@ -16,7 +16,7 @@ A set of convenience methods to retrieve and compare property keys and tags usin
 ## `property`
 
 ```javascript
-  property([string e, ]string s[, string d]) string
+property([string e, ]string s[, string d]) string
 ```
 
 Returns the first value in the list of strings returned by the `property_values(string s)` function.
@@ -30,18 +30,18 @@ Returns an empty string if no matching property records are found.
 Examples:
 
 ```javascript
-  property('docker.container::image')
+property('docker.container::image')
 ```
 
 ```javascript
-  /* Returns the most recent value if it received later than 2018-01-16T15:38:04.000Z, otherwise returns an empty string */
-  property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
+/* Returns the most recent value if it received later than 2018-01-16T15:38:04.000Z, otherwise returns an empty string */
+property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
 
 ## `property_values`
 
 ```javascript
-  property_values([string e, ]string s[, string d]) [string]
+property_values([string e, ]string s[, string d]) [string]
 ```
 
 Returns a list of property tag values for the given entity for the specified [property search](property-search.md) expression `s`.
@@ -57,31 +57,31 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 Examples:
 
 ```javascript
-  property_values('docker.container::image')
+property_values('docker.container::image')
 ```
 
 ```javascript
-  /* Returns the second value of the list */
-  property_values('docker.container::image')[1]
-  property_values('docker.container::image').get(1)
+/* Returns the second value of the list */
+property_values('docker.container::image')[1]
+property_values('docker.container::image').get(1)
 ```
 
 ```javascript
-  property_values('linux.disk:fstype=ext4:mount_point').contains('/')
+property_values('linux.disk:fstype=ext4:mount_point').contains('/')
 ```
 
 ```javascript
-  property_values('nurswgvml007', 'docker.container::image')
+property_values('nurswgvml007', 'docker.container::image')
 ```
 
 ```javascript
-  /* Returns property tag values received later than 2018-01-16T15:38:04.000Z */
-  property_values('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
+/* Returns property tag values received later than 2018-01-16T15:38:04.000Z */
+property_values('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
 
 ```javascript
-  /* Returns property tag values received later than 00:00:00 of the current day */
-  property_values('nurswgvml007', 'docker.container::image', 'today')
+/* Returns property tag values received later than 00:00:00 of the current day */
+property_values('nurswgvml007', 'docker.container::image', 'today')
 ```
 
 ## `property_compare_except`
@@ -89,7 +89,7 @@ Examples:
 * `property_compare_except([string k])`
 
 ```javascript
-    property_compare_except([string k]) map
+property_compare_except([string k]) map
 ```
 
   Compares previous and current property tags and returns a difference map containing a list of changed tag values.
@@ -97,7 +97,7 @@ Examples:
   Sample difference map:
 
 ```txt
-    {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
+{inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
 ```
 
   The map includes tags that are not present in new property tags and deleted tags.
@@ -105,7 +105,7 @@ Examples:
   This comparison is case-insensitive.
 
 ```java
-    NOT property_compare_except (['name', '*time']).isEmpty()
+NOT property_compare_except (['name', '*time']).isEmpty()
 ```
 
   Returns `true` if property tags have changed except for the `name` tag and any tags that end with `time`.
@@ -113,25 +113,25 @@ Examples:
 * `property_compare_except([string c], [string e])`
 
 ```javascript
-    property_compare_except([string c], [string e]) map
+property_compare_except([string c], [string e]) map
 ```
 
   Same as `property_compare_except(keys)` with a list `e` of previous values that are excluded from the difference map.
 
 ```java
-    NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
+NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
 ```
 
 Returns `true` if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` ignores changes such as:
 
 ```txt
-    {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
+{inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
 ```
 
 ## `property_map`
 
 ```javascript
-  property_map([string e,] string s[, string d]) map
+property_map([string e,] string s[, string d]) map
 ```
 
 Returns a map containing keys and tags for the specified [property search](property-search.md) expression `s`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
@@ -154,24 +154,24 @@ Returns an empty map if the entity, property or tag is not found.
 Examples:
 
 ```javascript
-  /* Returns map with tags starting with 'cpu' in the 'configuration' type */
-  property_map('configuration::cpu*')
+/* Returns map with tags starting with 'cpu' in the 'configuration' type */
+property_map('configuration::cpu*')
 ```
 
 ```javascript
-  /* Returns map of the 'configuration' type for the entity 'nurswgvml007' */
-  property_map('nurswgvml007','configuration::')
+/* Returns map of the 'configuration' type for the entity 'nurswgvml007' */
+property_map('nurswgvml007','configuration::')
 ```
 
 ```javascript
-  /* Returns map if the most recent property record received later than 00:00:00 of the current day, otherwise returns an empty map */
-  property_map('nurswgvml007','configuration::', 'today')
+/* Returns map if the most recent property record received later than 00:00:00 of the current day, otherwise returns an empty map */
+property_map('nurswgvml007','configuration::', 'today')
 ```
 
 ## `property_maps`
 
 ```javascript
-  property_maps([string e,] string s[, string d]) [map]
+property_maps([string e,] string s[, string d]) [map]
 ```
 
 Returns a list of maps, each map containing keys and tags for the specified [property search](property-search.md) expression `s`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
@@ -196,30 +196,30 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 Examples:
 
 ```javascript
-  /* Returns list of maps with tags starting with 'cpu' in the 'configuration' type */
-  property_maps('configuration::cpu*')
+/* Returns list of maps with tags starting with 'cpu' in the 'configuration' type */
+property_maps('configuration::cpu*')
 ```
 
 ```javascript
-  /* Returns value of the 'host' key for the first map in the collection */
-  property_maps('configuration::cpu*')[0].get('host')
-  property_maps('configuration::cpu*').get(0).get('host')
+/* Returns value of the 'host' key for the first map in the collection */
+property_maps('configuration::cpu*')[0].get('host')
+property_maps('configuration::cpu*').get(0).get('host')
 ```
 
 ```javascript
-  /* Returns list of maps of the 'configuration' type for the entity 'nurswgvml007' */
-  property_maps('nurswgvml007','configuration::')
+/* Returns list of maps of the 'configuration' type for the entity 'nurswgvml007' */
+property_maps('nurswgvml007','configuration::')
 ```
 
 ```javascript
-  /* Returns list of maps of property records received later than 00:00:00 of the previous day */
-  property_maps('nurswgvml007','configuration::', 'yesterday')
+/* Returns list of maps of property records received later than 00:00:00 of the previous day */
+property_maps('nurswgvml007','configuration::', 'yesterday')
 ```
 
 ## `getPropertyTypes`
 
 ```javascript
-  getPropertyTypes(string e[, string s[, string d]]) [string]
+getPropertyTypes(string e[, string s[, string d]]) [string]
 ```
 
 Returns a sorted set of property types for the specified entity `e`.
@@ -231,22 +231,22 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 Examples:
 
 ```javascript
-  /* Returns property types for entity nurswgvml007*/
-  getPropertyTypes('nurswgvml007')
+/* Returns property types for entity nurswgvml007*/
+getPropertyTypes('nurswgvml007')
 ```
 
 ```javascript
-  /* Returns the first property type for entity nurswgvml007*/
-  getPropertyTypes('nurswgvml007')[0]
-  getPropertyTypes('nurswgvml007').get(0)
+/* Returns the first property type for entity nurswgvml007*/
+getPropertyTypes('nurswgvml007')[0]
+getPropertyTypes('nurswgvml007').get(0)
 ```
 
 ```javascript
-  /* Returns property types received after 2018-01-23T13:30:04.000Z */
-  getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
+/* Returns property types received after 2018-01-23T13:30:04.000Z */
+getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
 ```
 
 ```javascript
-  /* Returns property types received after 00:00:00 of the previous day and before 00:00:00 of the current day*/
-  getPropertyTypes('nurswgvml007','yesterday', 'today')
+/* Returns property types received after 00:00:00 of the previous day and before 00:00:00 of the current day*/
+getPropertyTypes('nurswgvml007','yesterday', 'today')
 ```

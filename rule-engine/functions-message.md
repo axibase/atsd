@@ -95,27 +95,19 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 ### `db_message_count` Examples
 
 ```javascript
-/*
-Checks if the average exceeds 20 and the 'compaction' message was not received
-within the last hour for the current entity.
-*/
+/* Checks if the average exceeds 20 and the 'compaction' message was not received
+within the last hour for the current entity. */
 avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
 
-/*
-Checks if the average exceeds 80 and there is an event with 'type=backup-error'
-received within the last 15 minutes for entity 'nurswgvml006'.
-*/
+/* Checks if the average exceeds 80 and there is an event with 'type=backup-error'
+received within the last 15 minutes for entity 'nurswgvml006'. */
 avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
 
-/*
-Counts messages within the previous 60 minutes
-for 'type=compaction', any source, any tags and all entities.
-*/
+/* Counts messages within the previous 60 minutes
+for 'type=compaction', any source, any tags and all entities. */
 db_message_count('1 hour', 'compaction', '',  '', '*')
 
-/*
-Counts messages with the same text as in the last command, but from different users.
-*/
+/* Counts messages with the same text as in the last command, but from different users. */
 db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
 ```
 
@@ -123,44 +115,32 @@ db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type
 
 ```javascript
 last_msg = db_message_last('60 minute', 'logger', '')
-/*
-Check that the average exceeds 50 and the severity of the last message with type 'logger'
-for the current entity is greater than or equal to 'ERROR'.
-*/
+/* Check that the average exceeds 50 and the severity of the last message with type 'logger'
+for the current entity is greater than or equal to 'ERROR'. */
 avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 ```
 
 ```javascript
-/*
-Retrieves the last message with text beginning 'docker start sftp*'.
-*/
+/* Retrieves the last message with text beginning 'docker start sftp*'. */
 db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
 
-/*
-Returns the most recent message within 1 day for the current entity,
-containing tag 'api_app_id=583' and regardless of type or source.
-*/
+/* Returns the most recent message within 1 day for the current entity,
+containing tag 'api_app_id=583' and regardless of type or source. */
 db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
 
-/*
-Returns message with type 'webhook' and empty tags.
-*/
+/* Returns message with type 'webhook' and empty tags. */
 db_message_last('15 second', 'webhook', '',  '', '', "tags.isEmpty()=true")
 ```
 
 ### `db_messages` Examples
 
 ```javascript
-/*
-Retrieves messages with the text ending '*Selected' and any tags.
-*/
+/* Retrieves messages with the text ending '*Selected' and any tags. */
 db_messages('30 second', 'webhook', 'axibase-bot', '', 'slack', 'message LIKE "*Selected"')
 ```
 
 ```javascript
-/*
-Retrieves messages with severety 'Warning' within 15 second and send values of 'command' tag in notification.
-*/
+/* Retrieves messages with severety 'Warning' within 15 second and send values of 'command' tag in notification. */
 msgs = db_messages('15 second', 'logger', '', '', '', 'severity="warning"')
 
 @foreach{m : msgs}

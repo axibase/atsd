@@ -25,7 +25,7 @@ Named collections are listed on the **Data > Named Collections** page.
 ## `entity_tag`
 
 ```javascript
-  entity_tag(string e, string t) string
+entity_tag(string e, string t) string
 ```
 
 Returns value of tag `t` for entity `e`.
@@ -35,7 +35,7 @@ If the tag or the entity is not found, an empty string is returned.
 ## `entity_tags`
 
 ```javascript
-  entity_tags(string e [, boolean f]) map
+entity_tags(string e [, boolean f]) map
 ```
 
 Returns entity tags for entity `e` as a map.
@@ -87,7 +87,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 ## `entity_label`
 
 ```javascript
-  entity_label(string e) string
+entity_label(string e) string
 ```
 
 Returns label for entity `e`.
@@ -97,7 +97,7 @@ If the entity is not found or the entity does not have a label, the input string
 ## `getEntity`
 
 ```javascript
-  getEntity(string e[,boolean l]) object
+getEntity(string e[,boolean l]) object
 ```
 
 Retrieves an entity object by name. If `l` set to `true` entity is searched by label if `e` is not found by name. By default `l` is `false`.
@@ -109,14 +109,14 @@ The function returns `null` if the entity `e` is not found.
 Example:
 
 ```javascript
-  /* Returns an interpolation mode of 'nurswgvml007' entity object */
-  getEntity('nurswgvml007').interpolate
+/* Returns an interpolation mode of 'nurswgvml007' entity object */
+getEntity('nurswgvml007').interpolate
 ```
 
 ## `getEntities`
 
 ```javascript
-  getEntities(string m, string s, string e, string p) [object]
+getEntities(string m, string s, string e, string p) [object]
 ```
 
 Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`.
@@ -130,33 +130,33 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 Examples:
 
 ```javascript
-  entities = getEntities('docker.activecontainers', 'now - 1 * HOUR', 'now', "tags.status != 'deleted'")
-  // entities[0].name
-  // date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss", "UTC")
+entities = getEntities('docker.activecontainers', 'now - 1 * HOUR', 'now', "tags.status != 'deleted'")
+// entities[0].name
+// date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss", "UTC")
 ```
 
 * Match using entity object field
 
 ```javascript
-  getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")
+getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")
 ```
 
 * Match using wildcard
 
 ```javascript
-  getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
+getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
 ```
 
 * Match using window field
 
 ```javascript
-  getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
+getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
 ```
 
 ## `getEntityCount`
 
 ```javascript
-  getEntityCount(string m, string s, string e, object p) integer
+getEntityCount(string m, string s, string e, object p) integer
 ```
 
 Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`, for `integer` length. Identical to `getEntity(m,s,e,p).size()`.
@@ -164,7 +164,7 @@ Returns a list of entity **objects** with last insert date for metric `m` betwee
 ## `getEntityName`
 
 ```javascript
-  getEntityName(string e) string
+getEntityName(string e) string
 ```
 
 Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner.
@@ -174,7 +174,7 @@ If the entity cannot be found, the function returns the original input string `e
 ## `collection`
 
 ```javascript
-  collection(string s) [string]
+collection(string s) [string]
 ```
 
 Retrieves a list of strings for the specified named collection `s`. Named collections are defined on the **Data > Named Collections** page.
@@ -196,7 +196,7 @@ collection('dc-locations').contains(tags.location)
 ## `lookup`
 
 ```javascript
-  lookup(string s, string k[, boolean b]) string
+lookup(string s, string k[, boolean b]) string
 ```
 
 Returns the value for key `k` from the replacement table `s`.
@@ -208,14 +208,14 @@ If the optional boolean `b` parameter is specified and is set to `true`, the fun
 Example:
 
 ```javascript
-  /* Returns 'john.doe' if the 'on-call' table does not contain an entry for 'john.doe' */
-  lookup('on-call', 'john.doe', true)
+/* Returns 'john.doe' if the 'on-call' table does not contain an entry for 'john.doe' */
+lookup('on-call', 'john.doe', true)
 ```
 
 ## `replacementTable`
 
 ```javascript
-  replacementTable(string s) map
+replacementTable(string s) map
 ```
 
 Retrieves the replacement table identified by name `s` as a key-value map.
@@ -225,7 +225,7 @@ If the table is not found, the function returns an empty map.
 ## `property`
 
 ```javascript
-  property(string s) string
+property(string s) string
 ```
 
 Retrieves tag value for the entity in the current window given the [property search](property-search.md) expression `s`.
@@ -235,7 +235,7 @@ The function returns an empty string if the expression matches no properties.
 Example:
 
 ```javascript
-  property('docker.container::image')
+property('docker.container::image')
 ```
 
 Refer to [property functions](functions-property.md#property) for additional syntax options.
