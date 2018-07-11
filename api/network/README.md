@@ -299,9 +299,21 @@ The timestamp field records the time of an observation or an event as determined
 
 |**Field**|**Type**|**Description**|
 |:---|:---|:---|
-|ms|long|Unix milliseconds since 1970-01-01T00:00:00Z |
-|s|integer|Unix seconds since 1970-01-01T00:00:00Z|
-|d|string|[ISO 8601 date format](../../api/data/date-format.md). Supported formats:<br>UTC time zone (Z) = `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`, for example `2016-06-09T16:15:04.005Z`<br>Time zone offset = `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`, for example `2016-06-09T12:15:04.005-04:00`<br>Time zone `+hh:mm` is ahead of UTC and time zone `-hh:mm` is behind UTC.|
+|ms|long|Unix milliseconds since `1970-01-01T00:00:00Z` |
+|s|integer|Unix seconds since `1970-01-01T00:00:00Z`|
+|d|string|[ISO 8601 date format](../../api/data/date-format.md).|
+
+Supported `d` field formats:
+
+|**Format**|**Description**|
+|:---|:---|
+|`yyyy-MM-dd'T'HH:mm:ss[.S]'Z'`|`Z` denotes UTC time zone. |
+|`yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm`|Time zone offset.|
+
+`d` field examples:
+
+* `2016-06-09T16:15:04.005Z`
+* `2016-06-09T12:15:04-04:00`
 
 Date limits:
 
