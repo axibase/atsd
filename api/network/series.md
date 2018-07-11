@@ -29,9 +29,16 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 | t         | string:string   | Tag name and text value. _Multiple._ |
 | a         | boolean         | Text append option. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
 
-> At least one numeric value `m:` or text value `x:` is required.
-> If the numeric value is not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
-> If the time fields `d`, `s`, and `ms` are omitted, the values are inserted with the current server time.
+* At least one value field, `m:` or `x:`, is required.
+* If the numeric value is not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
+* If the time fields `d`, `s`, and `ms` are omitted, the values are inserted with the current server time.
+
+The `d` datetime field can be specified in [ISO 8601 format](../../api/data/date-format.md).
+
+|**Format**|**Description**|
+|:---|:---|
+|`yyyy-MM-dd'T'HH:mm:ss[.S]'Z'`|`Z` denotes UTC time zone.<br>`2016-06-09T16:15:04.005Z`|
+|`yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm`|Time zone offset.<br>`2016-06-09T12:15:04-04:00`|
 
 ### ABNF Syntax
 

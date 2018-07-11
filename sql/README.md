@@ -1012,8 +1012,8 @@ The `datetime` column accepts literal dates in one of the following formats:
 
 | **Format** | **Time Zone** | **Examples** |
 |---|---|---|
-| `yyyy-MM-dd'T'HH:mm:ss[.SSS](Z\|±hh[:]mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00`<br>`2017-12-10T15:30:00-0500` |
-| `yyyy-MM-dd HH:mm:ss[.SSS]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
+| `yyyy-MM-dd'T'HH:mm:ss[.S](Z\|±hh[:]mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00`<br>`2017-12-10T15:30:00-0500` |
+| `yyyy-MM-dd HH:mm:ss[.S]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
 | `yyyy[-MM[-dd]]`| Database  | `2017`<br>`2017-12`<br>`2017-12-15` |
 
 The UTC time zone is specified as the `Z` letter or as the zero UTC offset `+00:00` (`+0000`).
