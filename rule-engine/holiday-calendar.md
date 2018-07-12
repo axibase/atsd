@@ -2,9 +2,9 @@
 
 ## Overview
 
-Holiday Calendar is a data structure that contains information about national holidays and additional working days. 
-It is used by [is_weekday](object-datetime.md#is_weekday()) and [is_weekend](object-datetime.md#is_weekend()) to 
-accurately determine working days in a given country.
+Holiday Calendar is a data structure that contains information about national holidays and additional working days.
+It is used by [is_weekday](object-datetime.md#is_weekday()) and [is_weekend](object-datetime.md#is_weekend()) to
+ accurately determine working days in a given country.
 
 ## Default calendars
 
@@ -15,19 +15,19 @@ List of default holiday calendars:
 
  **Country** | **Calendar Code** | **Download**
 ----|----|----
-Australia | aus | [Download](./resources/calendars/aus)
-Austria| aut | [Download](./resources/calendars/aut) 
-Brazil | bra | [Download](./resources/calendars/bra)
-Canada | can | [Download](./resources/calendars/can)
-China | chn | [Download](./resources/calendars/chn)
-Germany | deu | [Download](./resources/calendars/deu)
-France | fra | [Download](./resources/calendars/fra)
-Great Britain | gbr | [Download](./resources/calendars/gbr)
-Japan | jpn | [Download](./resources/calendars/jpn)
-Korea | kor | [Download](./resources/calendars/kor)
-Russia | rus | [Download](./resources/calendars/rus)
-Singapore | sgp | [Download](./resources/calendars/sgp)
-USA | usa | [Download](./resources/calendars/usa)
+Australia | `aus` | [Download](./resources/calendars/aus_2018.json)
+Austria| `aut` | [Download](./resources/calendars/aut_2018.json)
+Brazil | `bra` | [Download](./resources/calendars/bra_2018.json)
+Canada | `can` | [Download](./resources/calendars/can_2018.json)
+China | `chn` | [Download](./resources/calendars/chn_2018.json)
+Germany | `deu` | [Download](./resources/calendars/deu_2018.json)
+France | `fra` | [Download](./resources/calendars/fra_2018.json)
+Great Britain | `gbr` | [Download](./resources/calendars/gbr_2018.json)
+Japan | `jpn` | [Download](./resources/calendars/jpn_2018.json)
+Korea | `kor` | [Download](./resources/calendars/kor_2018.json)
+Russia | `rus` | [Download](./resources/calendars/rus_2018.json)
+Singapore | `sgp` | [Download](./resources/calendars/sgp_2018.json)
+USA | `usa` | [Download](./resources/calendars/usa_2018.json)
 
 ## Creating New Calendars
 
@@ -35,6 +35,7 @@ USA | usa | [Download](./resources/calendars/usa)
 
 Calendars are represented as JSON documents located in `/opt/atsd/atsd/conf/calendars` directory.
 The file with calendar data structure can be named as follows:
+
 * `{calendar_key}.json`
 * `{calendar_key}_{yyyy}.json`
 
@@ -235,5 +236,5 @@ The file with calendar data structure can be named as follows:
 
 ### `is_weekday` Function Throws Exception After ATSD Upgrade
 
-Holiday calendars are included into new ATSD installations. 
+Holiday calendars are included into new ATSD installations.
 You need to download the required [calendars](#default-calendars) and put them into the `/opt/atsd/atsd/conf/calendars` directory.
