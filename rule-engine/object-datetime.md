@@ -34,7 +34,7 @@ The object provides `get()` methods to extract numeric values for the various ca
 
 The `getMillis()` method returns current time in Unix milliseconds.
 
-`is_weekday` and `is_weekend` functions accept optional calendar key parameter. Refer to [Holiday Calendar](holiday_calendar.md) description for details.
+`is_weekday` and `is_weekend` functions accept optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) description for details.
 ATSD uses the `default.holiday.calendar` server property if calendar key is not specified.
 
 ## `now` Window Field
