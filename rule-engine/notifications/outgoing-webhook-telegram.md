@@ -132,11 +132,9 @@ User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.messa
 
     ![](./images/outgoing_webhook_telegram_2.png)
 
-* Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
+* Open **Alerts > Incoming Webhooks** page and check that a request from Telegram servers has been received.
 
-    ![](./images/outgoing_webhook_slack_18.png)
-
-    ![](./images/outgoing_webhook_slack_19.png)
+    ![](./images/outgoing_webhook_telegram_4.png)
 
 * If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which displays an error in case the user credentials are mis-configured.
 
