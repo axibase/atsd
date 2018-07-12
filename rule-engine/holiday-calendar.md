@@ -2,7 +2,7 @@
 
 ## Overview
 
-Holiday Calendar is a data structure containing national holiday and work day information. [DateTime object](object-datetime.md) methods `is_weekday` and `is_weekend` use Holiday Calendar to
+Holiday Calendar is a data structure containing national holiday and work day information. [`DateTime` object](object-datetime.md) methods `is_weekday` and `is_weekend` use Holiday Calendar to
  accurately determine the working days of a given country.
 
 ## Default calendars
