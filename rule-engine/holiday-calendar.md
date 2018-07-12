@@ -2,32 +2,31 @@
 
 ## Overview
 
-Holiday Calendar is a data structure that contains information about national holidays and additional working days.
-It is used by `is_weekday` and `is_weekend` [DateTime object](object-datetime.md) methods to
- accurately determine working days in a given country.
+Holiday Calendar is a data structure containing national holiday and work day information. [DateTime object](object-datetime.md) methods `is_weekday` and `is_weekend` use Holiday Calendar to
+ accurately determine the working days of a given country.
 
 ## Default calendars
 
-ATSD contains several predefined holiday calendars for different countries for year 2018.
-The calendars include national holidays and additional working days.
+ATSD contains pre-defined holiday calendars for several countries in calendar year 2018.
+These calendars include national holidays and additional non-working days.
 
 List of default holiday calendars:
 
  **Country** | **Calendar Code** | **Download**
 ----|----|----
-Australia | `aus` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aus_2018.json)
-Austria| `aut` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aut_2018.json)
-Brazil | `bra` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/bra_2018.json)
-Canada | `can` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/can_2018.json)
-China | `chn` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/chn_2018.json)
-Germany | `deu` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/deu_2018.json)
-France | `fra` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/fra_2018.json)
-Great Britain | `gbr` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/gbr_2018.json)
-Japan | `jpn` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/jpn_2018.json)
-Korea | `kor` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/kor_2018.json)
-Russia | `rus` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/rus_2018.json)
-Singapore | `sgp` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/sgp_2018.json)
-USA | `usa` | [Download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/usa_2018.json)
+Australia | `aus` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aus_2018.json)
+Austria| `aut` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aut_2018.json)
+Brazil | `bra` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/bra_2018.json)
+Canada | `can` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/can_2018.json)
+China | `chn` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/chn_2018.json)
+Germany | `deu` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/deu_2018.json)
+France | `fra` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/fra_2018.json)
+Great Britain | `gbr` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/gbr_2018.json)
+Japan | `jpn` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/jpn_2018.json)
+Korea | `kor` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/kor_2018.json)
+Russia | `rus` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/rus_2018.json)
+Singapore | `sgp` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/sgp_2018.json)
+USA | `usa` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/usa_2018.json)
 
 ## Creating New Calendars
 
@@ -236,5 +235,5 @@ The file with calendar data structure can be named as follows:
 
 ### `is_weekday` Function Throws Exception After ATSD Upgrade
 
-Holiday calendars are included into new ATSD installations.
-You need to download the required [calendars](#default-calendars) and put them into the `/opt/atsd/atsd/conf/calendars` directory.
+Holiday calendars are included with new ATSD installations.
+Download the required [calendars](#default-calendars) and store them in the `/opt/atsd/atsd/conf/calendars` directory.
