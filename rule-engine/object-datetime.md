@@ -28,9 +28,14 @@ The object provides `get()` methods to extract numeric values for the various ca
 * `getEra()`
 * `getMillis()`
 * `is_weekday()`
+* `is_weekday(cal)`
 * `is_weekend()`
+* `is_weekend(cal)`
 
 The `getMillis()` method returns current time in Unix milliseconds.
+
+`is_weekday` and `is_weekend` functions accept optional calendar key parameter. Refer to [Holiday Calendar](holiday_calendar.md) description for details.
+ATSD uses the `default.holiday.calendar` server property if calendar key is not specified.
 
 ## `now` Window Field
 
@@ -62,4 +67,6 @@ The following values are returned by the `DateTime` object on `2018-01-13T16:45:
 |`getEra()`|1|
 |`getMillis()`|1515861922303|
 |`is_weekday()`|`false`|
+|`is_weekday('usa')`|`false`|
 |`is_weekend()`|`true`|
+|`is_weekend('usa')`|`true`|
