@@ -38,7 +38,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 
 * Open the **Settings > Users > Create Webhook User** wizard in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Telegram.
 
-  ![](./images/outgoing_webhook_telegram_user.png)
+  ![](../../administration/images/webhook-user.png)
 
 * Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
