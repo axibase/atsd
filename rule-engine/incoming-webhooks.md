@@ -589,8 +589,8 @@ Command:
 
 ## Diagnostics
 
-The last 100 recently received webhooks are listed on the **Settings > Diagnostics > Webhook Requests** page.
+The last 100 recently received webhooks are listed on the **Alerts > Incoming Webhooks** page.
 
-![](./images/webhooks.png)
+![](../api/data/messages/images/webhooks.png)
 
-![](./images/webhook-detail.png)
+![](../api/data/messages/images/webhook-detail.png)
