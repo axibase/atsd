@@ -2,7 +2,7 @@
 
 ## Overview
 
-Holiday Calendar is a data structure containing national holiday and work day information. [`DateTime` object](object-datetime.md) methods `is_weekday` and `is_weekend` use Holiday Calendar to
+Holiday Calendar is a data structure containing national holiday and work day information. [`DateTime` object](object-datetime.md) method `is_workday` uses Holiday Calendar to
  accurately determine the working days of a given country.
 
 ## Default calendars
@@ -60,7 +60,7 @@ The file with calendar data structure can be named as follows:
             "title": "The Day Schema ",
             "default": 0,
             "examples": [
-              1
+              11
             ]
           },
           "month": {
@@ -69,7 +69,7 @@ The file with calendar data structure can be named as follows:
             "title": "The Month Schema ",
             "default": 0,
             "examples": [
-              1
+              11
             ]
           },
           "year": {
@@ -87,19 +87,53 @@ The file with calendar data structure can be named as follows:
             "title": "The Dayofweek Schema ",
             "default": 0,
             "examples": [
-              1
+              7
             ]
           }
         }
       },
-      "holidayType": {
-        "$id": "https://example.com/usa_2018.json/items/properties/holidayType",
-        "type": "string",
-        "title": "The Holidaytype Schema ",
-        "default": "",
-        "examples": [
-          "public_holiday"
-        ]
+      "observedOn": {
+        "$id": "https://example.com/usa_2018.json/items/properties/observedOn",
+        "type": "object",
+        "required": false,
+        "properties": {
+          "day": {
+            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/day",
+            "type": "integer",
+            "title": "The Day Schema ",
+            "default": 0,
+            "examples": [
+              12
+            ]
+          },
+          "month": {
+            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/month",
+            "type": "integer",
+            "title": "The Month Schema ",
+            "default": 0,
+            "examples": [
+              11
+            ]
+          },
+          "year": {
+            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/year",
+            "type": "integer",
+            "title": "The Year Schema ",
+            "default": 0,
+            "examples": [
+              2018
+            ]
+          },
+          "dayOfWeek": {
+            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/dayOfWeek",
+            "type": "integer",
+            "title": "The Dayofweek Schema ",
+            "default": 0,
+            "examples": [
+              1
+            ]
+          }
+        }
       },
       "name": {
         "$id": "https://example.com/usa_2018.json/items/properties/name",
@@ -123,11 +157,20 @@ The file with calendar data structure can be named as follows:
               "title": "The Text Schema ",
               "default": "",
               "examples": [
-                "New Year's Day"
+                "Veterans Day"
               ]
             }
           }
         }
+      },
+      "holidayType": {
+        "$id": "https://example.com/usa_2018.json/items/properties/holidayType",
+        "type": "string",
+        "title": "The Holidaytype Schema ",
+        "default": "",
+        "examples": [
+          "public_holiday"
+        ]
       }
     }
   }
@@ -152,6 +195,21 @@ The file with calendar data structure can be named as follows:
         "text": "New Year's Day"
       }
     ]
+  },
+  {
+    "date": {
+      "day": 15,
+      "month": 1,
+      "year": 2018,
+      "dayOfWeek": 1
+    },
+    "name": [
+      {
+        "lang": "en",
+        "text": "Dr. Martin Luther King, Jr. Day"
+      }
+    ],
+    "holidayType": "public_holiday"
   },
   {
     "date": {
@@ -200,6 +258,27 @@ The file with calendar data structure can be named as follows:
   },
   {
     "date": {
+      "day": 11,
+      "month": 11,
+      "year": 2018,
+      "dayOfWeek": 7
+    },
+    "observedOn": {
+      "day": 12,
+      "month": 11,
+      "year": 2018,
+      "dayOfWeek": 1
+    },
+    "name": [
+      {
+        "lang": "en",
+        "text": "Veterans Day"
+      }
+    ],
+    "holidayType": "public_holiday"
+  },
+  {
+    "date": {
       "day": 22,
       "month": 11,
       "year": 2018,
@@ -233,7 +312,7 @@ The file with calendar data structure can be named as follows:
 
 ## Troubleshooting
 
-### `is_weekday` Function Throws Exception After ATSD Upgrade
+### `is_workday` Function Throws Exception After ATSD Upgrade
 
 Holiday calendars are included with new ATSD installations.
 Download the required [calendars](#default-calendars) and store them in the `/opt/atsd/atsd/conf/calendars` directory.
