@@ -35,7 +35,7 @@ Downsampling is regulated by following optional parameters.
 
 > `difference` and `factor` parameters cannot be used simultaneously.
 
-If neither `gap`, `difference`, nor `factor` parameter is provided, downsampling performs series de-duplication, removing a series sample if `previous` and `next` samples contain the same value.
+If neither `gap`, `difference`, nor `factor` parameter is provided, downsampling performs series deduplication, removing a series sample if `previous` and `next` samples contain the same value.
 
 ## Gap
 
@@ -106,9 +106,9 @@ If the `value` differs either from the `last_value`, or from the `next_value`, t
 
 ## Downsampling Examples
 
-## Series De-duplication
+## Series Deduplication
 
-Perform series de-duplication use `downsample` without additional parameters.
+Perform series deduplication use `downsample` without additional parameters.
 
 ```json
 "downsample": {}
@@ -136,7 +136,7 @@ Perform series de-duplication use `downsample` without additional parameters.
 | 20:00 |   3    |      3      | last sample                  |
 ```
 
-## De-duplication with `gap`
+## Deduplication with `gap`
 
 ```json
 "downsample": {"gap": {"count": 2, "unit": "HOUR"}}
