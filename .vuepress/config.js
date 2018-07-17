@@ -114,6 +114,7 @@ const restApiMenu = [
             `/api/meta/metric/list`,
             `/api/meta/metric/update`,
             `/api/meta/metric/create-or-replace`,
+            `/api/meta/metric/rename`,
             `/api/meta/metric/delete`,
             `/api/meta/metric/series`,
             `/api/meta/metric/series-tags`,
