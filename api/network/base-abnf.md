@@ -25,8 +25,8 @@ VALUE_QUOTED = DQUOTE 1*(CHAR_SAFE / EQUAL / DQUOTE DQUOTE / SPACE / CR / LF / T
 
 BOOLEAN = "true" / "false" / DQUOTE ("true" / "false") DQUOTE
 
-MSP = 1*SP    ; multiple spaces
 SPACE = %x20  ; space
+MSP = 1*SPACE ; multiple spaces
 DQUOTE = %x22 ; double-quote
 EQUAL = %x3D  ; equal sign
 CR = %x0D     ; carriage return
