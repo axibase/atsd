@@ -100,7 +100,7 @@ If the `value` differs either from the `last_value`, or from the `next_value`, t
 <!-- markdownlint-disable MD028 -->
 > If series [versions](./versions.md) are queried, then algorithm is applied to the latest versions. If the latest version passes the downsampling filter then all versions with the same timestamp are included in resulting series.<br>
 
- > Sometimes samples are processed in decreasing order of the timestamps. That happens if limited number of latest series samples is queried, so the [limit](./query.md#transformation-fields) is specified in the query.
+ > Sometimes samples are processed in decreasing order of the timestamps. That happens if limited number of latest series samples is queried.
 <!-- markdownlint-enable MD028 -->
 
 ## Downsampling Examples
