@@ -24,6 +24,10 @@ The `DateTime` object represents a specific date and time in the **server** time
 * `yearOfEra`
 * `centuryOfEra`
 * `millis`
+* `next_workday`
+* `previous_workday`
+* `next_non_working_day`
+* `previous_non_working_day`
 
 The `millis` property returns current time in Unix milliseconds.
 
@@ -38,9 +42,14 @@ The `millis` property returns current time in Unix milliseconds.
 `is_workday()` function accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) description for details.
 If calendar key is not specified, ATSD uses the `default.holiday.calendar` server property.
 
-## `now` Window Field
+## Window Fields
 
-The `now` field returns the `DateTime` object that contains **current** server time.
+|**Field**| **Description** |
+|:---|---:|
+| `now` | `DateTime` object that contains **current** server time. |
+| `today` | `DateTime` object that contains **midnight** of the **current day** in server time zone. |
+| `yesterday` | `DateTime` object that contains **midnight** of the **previous day** in server time zone. |
+| `tomorrow` | `DateTime` object that contains **midnight** of the **next day** in server time zone. |
 
 ## Sample Values
 
@@ -66,6 +75,10 @@ The following values are returned by the `DateTime` object on `2018-01-13T16:45:
 |`yearOfEra`|2018|
 |`centuryOfEra`|20|
 |`millis`|1515861922303|
+|`next_workday`|`DateTime('2018-01-16T00:00Z[UTC]')`|
+|`previous_workday`|`DateTime('2018-01-12T00:00Z[UTC]')`|
+|`next_non_working_day`|`DateTime('2018-01-14T00:00Z[UTC]')`|
+|`previous_non_working_day`|`DateTime('2018-01-07T00:00Z[UTC]')`|
 |`is_weekday()`|`false`|
 |`is_weekday('usa')`|`false`|
 |`is_weekend()`|`true`|
