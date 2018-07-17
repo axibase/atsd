@@ -26,7 +26,7 @@ The downsampling strategy is regulated by several parameters.
 
 ## Parameters
 
-All parameters are optional. 
+All parameters are optional.
 
 > Parameters `difference` and `factor` can not be set simultaneously.
 
