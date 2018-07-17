@@ -101,7 +101,7 @@ To perform series deduplication use the `downsample` without parameters.
 "downsample": {}
 ```
 
-The downsampling resilt:
+The downsampling result:
 
 ```ls
 |       | initial| downsampled |                              |
@@ -128,10 +128,10 @@ The downsampling resilt:
 The `downsample` settings:
 
 ```json
-"downsample": {"gap": {"count": 2, "unit": HOUR}}
+"downsample": {"gap": {"count": 2, "unit": "HOUR"}}
 ```
 
-The downsampling resilt:
+The downsampling result:
 
 ```ls
 |       | initial| downsampled |                                                  |
@@ -164,7 +164,7 @@ The `downsample` settings:
 }
 ```
 
-The downsampling resilt:
+The downsampling result:
 
 ```ls
 |       | initial| downsampled |                                                  |
@@ -175,7 +175,7 @@ The downsampling resilt:
 | 09:00 |   1    |      -      |                                                  |
 | 10:00 |   1    |      -      |                                                  |
 | 11:00 |   1    |      -      |                                                  |
-| 12:00 |   1    |      1      | time gap with previous accepted sample > 2 hours |
+| 12:00 |   1    |      1      | time gap with previous accepted sample > 4 hours |
 | 13:00 |   2    |      -      |                                                  |
 | 14:00 |   2    |      -      |                                                  |
 | 15:00 |   2    |      -      |                                                  |
