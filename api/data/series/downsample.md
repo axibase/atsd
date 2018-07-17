@@ -22,19 +22,19 @@ Example of the `downsample` setting.
 }
 ```
 
-The downsampling strategy is regulated by several parameters.
+The downsampling strategy is regulated by following parameters.
 
 ## Parameters
 
 All parameters are optional.
 
-> Parameters `difference` and `factor` can not be set simultaneously.
+> Parameters `difference` and `factor` can not be used simultaneously.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `gap` | object | Time interval specified in terms of time unit and count. If this parameter is specified then the time gap between subsequent samples of resulting series is not much more than value of this parameter. For example, if `gap` is zero then no samples are filtered out, and resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. <br> View the [gap](#gap) section for description of the `gap` syntax. |
-| `difference` | number | Not negative number, used as threshold for difference between values of two series samples. If the difference is not exceeds this threshold then one of samples could be filtered out. <br>Only one of the `difference` and the `factor` settings may be specified. |
-| `factor` | number | Not negative number. If ratio of two series samples is less than `factor` then one of samples could be filtered out. <br> Could be used if the `difference` parameter is not set. |
+| `difference` | number | Not negative number, used as threshold for difference between values of two series samples. If the difference exceeds this threshold then samples are included in resulting series. <br>It is not allowed to use both the `difference` and the `factor` parameters at the same time. |
+| `factor` | number | Not negative number. If ratio of two series samples exceeds the `factor` then samples are included in resulting series. |
 | `order` | integer | This field determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is 0.|
 
 If no one of the `gap`, `diffrence`, and `factor` parameters is provided then the downsampling performs series deduplication, removing series sample if previous and next samples have the same value.
@@ -57,9 +57,9 @@ Example.
 ## Downsampling Algorithm
 
 The algorithm processes samples in increasing order of timestamps.
-Each sample could be accepted or rejected by the algorithm.
+Each sample is accepted or rejected by the algorithm.
 Accepted samples constitute the resulting series.
-To decide if a sample should be accepted or rejected the following conditions are checked sequentially.
+To accept or reject a sample the following conditions are checked sequentially.
 
 **1.**
 The following samples are accepted:
@@ -75,20 +75,32 @@ If the sample does not fall into one of these categories, go to the next step.
 Calculate the difference between the sample timestamp and the timestamp of the latest accepted sample. If the difference exceeds the `gap` then accept the sample. Otherwise go to the next step.
 
 **3. If the `difference` parameter is provided.**
-Let `diff1` is difference between the sample value and the value of the latest accepted sample. Let `diff2` is difference between the sample value and the value of the nearest subsequent sample. If the absolute value of `diff1` or `diff2` exceeds the value of the `difference` parameter then accept the sample. Otherwise go to the next step.
+Introduce the following notations:
+
+* `last_value` - the value of the last accepted sample.
+* `value` - the value of the sample under consideration.
+* `next_value` - the value of the nearest subsequent sample.
+
+If
+
+```java
+|value - last_value| > difference || |next_value - value| > difference
+```
+
+then accept the sample. Otherwise go to the next step.
 
 **4. If the `factor` parameter is provided.**
-Let `last_value` is the value of the last accepted sample, `value` is the value of the sample under consideration, and `next_value` is the value of the subsequent sample. If any of ratios `last_value/value`, `value/last_value`, `next_value/value`, and `value/next_value` exceeds the `factor` then accept the sample. Otherwise go to the next step.
+If any of ratios `last_value/value`, `value/last_value`, `next_value/value`, and `value/next_value` exceeds the `factor` then accept the sample. Otherwise go to the next step.
 
 **5. If no one of the `difference` and `factor` parameters is provided.**
-If the sample value differs either from the value of the last accepted sample, or from the value of the next sample, then accept the sample. Otherwise go to the next step.
+If the `value` differs either from the `last_value`, or from the `next_value`, then accept the sample. Otherwise go to the next step.
 
 **6.** Reject the sample.
 
 <!-- markdownlint-disable MD028 -->
 > If series [versions](./versions.md) are queried, then algorithm is applied to the latest versions. If the latest version passes the downsampling filter then all versions with the same timestamp are included in resulting series.<br>
 
- > Sometimes samples are processed in decreasing order of the timestamps. That could happens if limited number of latest series samples is queried, so the [limit](./query.md#transformation-fields) is specified in the query.
+ > Sometimes samples are processed in decreasing order of the timestamps. That happens if limited number of latest series samples is queried, so the [limit](./query.md#transformation-fields) is specified in the query.
 <!-- markdownlint-enable MD028 -->
 
 ## Downsampling Examples
