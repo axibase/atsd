@@ -45,7 +45,7 @@ The `d` datetime field can be specified in [ISO 8601 format](../../api/data/date
 Rules are inherited from [Base ABNF](base-abnf.md).
 
 ```elm
-  ; entity and at least one metric is required
+; entity and at least one metric is required
 command = "series" MSP entity 1*(MSP [metric-numeric / metric-text]) *(MSP tag) [MSP append] [MSP time]
 entity = "e:" NAME
 metric-numeric = "m:" NAME "=" NUMBER

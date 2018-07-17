@@ -18,7 +18,7 @@ Table functions perform various operations on strings, lists, and maps to create
 ## `addTable` for map
 
 ```javascript
-   addTable([] m, string f) string
+addTable([] m, string f) string
 ```
 
 Prints the input map `m` as a two-column table in the specified format `f`.
@@ -48,7 +48,7 @@ Examples:
 * `markdown` format
 
 ```javascript
-  addTable(property_map('nurswgvml007','disk::', 'today'), 'markdown')
+addTable(property_map('nurswgvml007','disk::', 'today'), 'markdown')
 ```
 
 ```ls
@@ -65,7 +65,7 @@ Examples:
 * `csv` format
 
 ```javascript
-  addTable(entity.tags, 'csv')
+addTable(entity.tags, 'csv')
 ```
 
 ```ls
@@ -79,7 +79,7 @@ os,Linux
 * `ascii` format
 
 ```javascript
-  addTable(entity_tags(tags.host, true, true), 'ascii')
+addTable(entity_tags(tags.host, true, true), 'ascii')
 ```
 
 ```ls
@@ -98,7 +98,7 @@ os,Linux
 The HTML format includes the response rendered as a `<table>` node with inline CSS styles for better compatibility with legacy email clients such as Microsoft Outlook.
 
 ```javascript
-  addTable(property_map('nurswgvml007', 'cpu::*'), 'html')
+addTable(property_map('nurswgvml007', 'cpu::*'), 'html')
 ```
 
 ```html
@@ -112,7 +112,7 @@ The HTML format includes the response rendered as a `<table>` node with inline C
 * `property` format
 
 ```javascript
-  addTable(excludeKeys(entity.tags, ['ip', 'loc_code', 'loc_area']), 'property')
+addTable(excludeKeys(entity.tags, ['ip', 'loc_code', 'loc_area']), 'property')
 ```
 
 ```ls
@@ -125,7 +125,7 @@ os=Linux
 ## `addTable` for maps
 
 ```javascript
-  addTable([[] m], string f[, [string h]]) string
+addTable([[] m], string f[, [string h]]) string
 ```
 
 Prints a collection of maps `m` as a multi-column table in the specified format `f`, with optional header `h`.
@@ -153,7 +153,7 @@ Examples:
 * `markdown` format
 
 ```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
+addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
 ```
 
 ```markdown
@@ -166,7 +166,7 @@ Examples:
 * `csv` format
 
 ```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'csv')
+addTable(property_maps('nurswgvml007','jfs::', 'today'), 'csv')
 ```
 
 ```ls
@@ -178,7 +178,7 @@ jfs_filespace_%used,12.7,0.0,34.9,7.5,0.0
 * `ascii` format
 
 ```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'ascii', ['property', 'root', 'dev', 'mount', 'run', 'var'])
+addTable(property_maps('nurswgvml007','jfs::', 'today'), 'ascii', ['property', 'root', 'dev', 'mount', 'run', 'var'])
 ```
 
 ```ls
@@ -193,7 +193,7 @@ jfs_filespace_%used,12.7,0.0,34.9,7.5,0.0
 * `html` format
 
 ```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'html')
+addTable(property_maps('nurswgvml007','jfs::', 'today'), 'html')
 ```
 
 ```html
@@ -206,7 +206,7 @@ jfs_filespace_%used,12.7,0.0,34.9,7.5,0.0
 * `property` format
 
 ```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'property')
+addTable(property_maps('nurswgvml007','jfs::', 'today'), 'property')
 ```
 
 ```ls
@@ -217,7 +217,7 @@ jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
 ## `addTable` for list
 
 ```javascript
-  addTable([[string]] c, string f[, [string] | boolean h]) string
+addTable([[string]] c, string f[, [string] | boolean h]) string
 ```
 
 Prints `c` (list of lists) as a multi-column table in the specified format `f`. Each nested list in the parent list `c` is serialized into its own row in the table.
@@ -249,7 +249,7 @@ query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour
 * `markdown` format
 
 ```javascript
-  addTable(executeSqlQuery(query), 'markdown', true)
+addTable(executeSqlQuery(query), 'markdown', true)
 ```
 
 ```ls
@@ -262,7 +262,7 @@ query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour
 * `csv` format
 
 ```javascript
-  addTable([['2018-01-31T12:00:13.242Z', '37'], ['2018-01-31T12:00:28.253Z', '36']], 'csv', ['date', 'count'])
+addTable([['2018-01-31T12:00:13.242Z', '37'], ['2018-01-31T12:00:28.253Z', '36']], 'csv', ['date', 'count'])
 ```
 
 ```csv
@@ -274,7 +274,7 @@ date,count
 * `ascii` format
 
 ```javascript
-  addTable(executeSqlQuery(query), 'ascii', true)
+addTable(executeSqlQuery(query), 'ascii', true)
 ```
 
 ```ls
@@ -289,7 +289,7 @@ date,count
 * `html` format
 
 ```javascript
-  addTable(executeSqlQuery(query), 'html', true)
+addTable(executeSqlQuery(query), 'html', true)
 ```
 
 ```html
@@ -302,7 +302,7 @@ date,count
 * `property` format
 
 ```javascript
-  addTable(executeSqlQuery(query), 'property')
+addTable(executeSqlQuery(query), 'property')
 ```
 
 ```ls
@@ -312,7 +312,7 @@ datetime=value
 ```
 
 ```javascript
-  addTable(executeSqlQuery(query), 'property', true)
+addTable(executeSqlQuery(query), 'property', true)
 ```
 
 ```ls
@@ -321,7 +321,7 @@ datetime=value
 ```
 
 ```javascript
-  addTable(executeSqlQuery(query), 'property', false)
+addTable(executeSqlQuery(query), 'property', false)
 ```
 
 ```ls
@@ -333,7 +333,7 @@ datetime=value
 ## `jsonPathFilter`
 
 ```json
-  jsonPathFilter(s, jp) [object]
+jsonPathFilter(s, jp) [object]
 ```
 
 Parses input string `s` into a JSON document and returns a list of objects matching the [`JSONPath` expression](https://github.com/json-path/JsonPath).
@@ -356,7 +356,7 @@ Examples:
 ```
 
 ```javascript
-  jsonPathFilter(s, "$.data[*].v")
+jsonPathFilter(s, "$.data[*].v")
 ```
 
 Output:
@@ -366,7 +366,7 @@ Output:
 ```
 
 ```javascript
-  jsonPathFilter(s, "$.data[?(@.d > '2018-04-24')]")
+jsonPathFilter(s, "$.data[?(@.d > '2018-04-24')]")
 ```
 
 Output:
@@ -383,7 +383,7 @@ See additional [examples](#examples).
 ## `jsonToMaps`
 
 ```javascript
-  jsonToMaps(string s) [map]
+jsonToMaps(string s) [map]
 ```
 
 Parses input string `s` into a JSON document and returns a collection of maps containing keys and values from the JSON document.
@@ -451,7 +451,7 @@ See additional examples [below](#examples).
 ## `jsonToLists`
 
 ```javascript
-  jsonToLists(string s) [[string]]
+jsonToLists(string s) [[string]]
 ```
 
 Parses input string `s` into a JSON document and returns a collection of string lists of the same size containing field values from this JSON document.
@@ -520,7 +520,7 @@ See additional examples [below](#examples).
 ## `flattenJson`
 
 ```javascript
-  flattenJson(string j) map
+flattenJson(string j) map
 ```
 
 Converts the string representation of JSON document `j` into a map consisting of keys and values.
@@ -603,7 +603,7 @@ The examples below are based on the following JSON document which represents out
 ```
 
 ```javascript
-  jsonToMaps(json)
+jsonToMaps(json)
 ```
 
 ```json
@@ -625,7 +625,7 @@ The examples below are based on the following JSON document which represents out
 ```
 
 ```javascript
-  jsonToLists(json)
+jsonToLists(json)
 ```
 
 ```json
@@ -637,7 +637,7 @@ The examples below are based on the following JSON document which represents out
 ```
 
 ```javascript
-  addTable(jsonToLists(json), 'ascii', true)
+addTable(jsonToLists(json), 'ascii', true)
 ```
 
 ```txt
@@ -650,7 +650,7 @@ The examples below are based on the following JSON document which represents out
 ```
 
 ```javascript
-  flattenJson(json)
+flattenJson(json)
 ```
 
 ```json
@@ -671,7 +671,7 @@ The examples below are based on the following JSON document which represents out
 ```
 
 ```javascript
-  jsonPathFilter(json, "$..pullRequests.nodes[*][?(@.mergeable == 'MERGEABLE')]['url','author','title']")
+jsonPathFilter(json, "$..pullRequests.nodes[*][?(@.mergeable == 'MERGEABLE')]['url','author','title']")
 ```
 
 ```json

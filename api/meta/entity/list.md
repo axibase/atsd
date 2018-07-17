@@ -83,18 +83,18 @@ curl "https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expressi
 ### Response
 
 ```json
- [
-    {
-        "name": "nurswgdkr002",
-        "enabled": true,
-        "lastInsertDate": "2015-09-04T15:43:36.000Z",
-        "createdDate": "2014-10-03T07:09:54.551Z"
-    },
-    {
-        "name": "nurswgvml001",
-        "label": "NURSWGDKR002.corp.example.org",
-        "enabled": false
-    }
+[
+  {
+    "name": "nurswgdkr002",
+    "enabled": true,
+    "lastInsertDate": "2015-09-04T15:43:36.000Z",
+    "createdDate": "2014-10-03T07:09:54.551Z"
+  },
+  {
+    "name": "nurswgvml001",
+    "label": "NURSWGDKR002.corp.example.org",
+    "enabled": false
+  }
 ]
 ```
 

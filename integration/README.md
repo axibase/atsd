@@ -25,15 +25,11 @@
 * [Tableau](tableau/README.md)
 * [Axibase ER](aer/README.md)
 
+## System Integration
+
+* [Examples](https://axibase.com/use-cases/integrations/)
+
 ## Drivers
 
 * [JDBC](https://github.com/axibase/atsd-jdbc)
 * [ODBC](odbc/README.md)
-
-## CSV Parsers
-
-* [CSV Parsers](../parsers/csv/README.md)
-
-## Examples
-
-* [Use Cases](https://axibase.com/use-cases/)

@@ -31,8 +31,8 @@ Install and configure the [Web Driver](web-driver.md) to send chart screenshots 
 * Send the `/newbot` command and complete the guided process to create a bot user and obtain its token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
 
 ```txt
-    Use this token to access the HTTP API:
-    5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
+Use this token to access the HTTP API:
+5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
 ```
 
 * Copy the API token for future reference.
@@ -99,9 +99,9 @@ If the Telegram API server is not accessible from the ATSD server, open the **Ne
 NGINX API Gateway Path for Telegram:
 
 ```ls
-  location /bot {
-      proxy_pass https://api.telegram.org/bot;
-  }
+location /bot {
+    proxy_pass https://api.telegram.org/bot;
+}
 ```
 
 ## Webhook Settings
@@ -141,7 +141,7 @@ To process incoming messages, configure an [outgoing webhook](outgoing-webhook-t
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```bash
-  *[${status}]* ${ruleLink} for ${entity} ${tags}
+*[${status}]* ${ruleLink} for ${entity} ${tags}
 ```
 
 * Click **Save** to save the rule.

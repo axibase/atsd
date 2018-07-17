@@ -160,7 +160,7 @@ The `webhook_name` placeholder in the request URL as well as payload placeholder
 Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
 ```ls
-  series e:test_e m:test_m=2
+series e:test_e m:test_m=2
 ```
 
 ![](./images/rule_test_commands.png)

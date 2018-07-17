@@ -235,12 +235,12 @@ https://atsd_hostname:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 Such request parameter values can be referenced with `${parameter_name}` placeholders in the Configure Portal text.
 
 ```bash
-  [series]
-    metric = disk_io_writes
-    entity = ${entity}
-    [tags]
-      disk_type = ${dtype}
-      disk_name = *
+[series]
+  metric = disk_io_writes
+  entity = ${entity}
+  [tags]
+    disk_type = ${dtype}
+    disk_name = *
 ```
 
 ## Portal Themes

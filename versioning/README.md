@@ -47,7 +47,7 @@ Options to insert versioned series:
 To insert versioned samples, use the [series](../api/network/series.md) command with the version tags:
 
 ```ls
-  series e:{entity} m:{metric}={number} t:$version_status={status} t:$version_source={source} d:{iso-date}
+series e:{entity} m:{metric}={number} t:$version_status={status} t:$version_source={source} d:{iso-date}
 ```
 
 > Note:
@@ -119,7 +119,7 @@ Examples:
 * Match using wildcards
 
 ```ls
-    version_source LIKE 'col*'
+version_source LIKE 'col*'
 ```
 
     ![](./resources/5.png)
@@ -127,7 +127,7 @@ Examples:
 * Match using date function
 
 ```ls
-    version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
+version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
 ```
 
     ![](./resources/6.png)
@@ -135,7 +135,7 @@ Examples:
 * Match using exact value
 
 ```ls
-    version_status = 'OK'
+version_status = 'OK'
 ```
 
     ![](./resources/7.png)

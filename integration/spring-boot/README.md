@@ -39,24 +39,24 @@ Enable public metrics export:
 
 ```java
 @Bean
-    public MetricsEndpointMetricReader metricsEndpointMetricReader(MetricsEndpoint metricsEndpoint) {
-        return new MetricsEndpointMetricReader(metricsEndpoint);
-    }
+public MetricsEndpointMetricReader metricsEndpointMetricReader(MetricsEndpoint metricsEndpoint) {
+    return new MetricsEndpointMetricReader(metricsEndpoint);
+}
 
-        @Bean
-    @ExportMetricWriter
-    @ConfigurationProperties("metrics.export")
-    public MetricWriter atsdMetricWriter() {
-        AtsdMetricWriter writer = new AtsdMetricWriter();
-        writer.setNamingStrategy(namingStrategy());
-        return writer;
-    }
+@Bean
+@ExportMetricWriter
+@ConfigurationProperties("metrics.export")
+public MetricWriter atsdMetricWriter() {
+    AtsdMetricWriter writer = new AtsdMetricWriter();
+    writer.setNamingStrategy(namingStrategy());
+    return writer;
+}
 
-    @Bean
-    @ConfigurationProperties("metrics.names")
-    public AtsdNamingStrategy namingStrategy() {
-        return new DefaultAtsdNamingStrategy();
-    }
+@Bean
+@ConfigurationProperties("metrics.names")
+public AtsdNamingStrategy namingStrategy() {
+    return new DefaultAtsdNamingStrategy();
+}
 ```
 
 ### Wrapping Methods using Custom Metrics
@@ -71,7 +71,6 @@ public class JdbcCityRepository implements CityRepository
 Wrap a specific method.
 
 ```java
-
 @Measured
- public List<City> findCities()
+public List<City> findCities()
 ```

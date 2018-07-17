@@ -5,7 +5,7 @@
 ## `value`
 
 ```java
-  value(string m) number
+value(string m) number
 ```
 
 Retrieves the value for the specified metric `m` received in the same `series` command or parsed from the same row in the CSV file.
@@ -13,7 +13,7 @@ Retrieves the value for the specified metric `m` received in the same `series` c
 Example:
 
 ```javascript
-  value > 1.5 && value('temperature') > 50
+value > 1.5 && value('temperature') > 50
 ```
 
 ```ls

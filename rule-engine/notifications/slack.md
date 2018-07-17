@@ -123,12 +123,12 @@ If the Slack API server is not accessible from the ATSD server, open the **Netwo
 NGINX API Gateway Path for Slack:
 
 ```ls
-  location /api/chat.postMessage {
-      proxy_pass https://slack.com/api/chat.postMessage;
-  }
-  location /api/files.upload {
-      proxy_pass https://slack.com/api/files.upload;
-  }
+location /api/chat.postMessage {
+    proxy_pass https://slack.com/api/chat.postMessage;
+}
+location /api/files.upload {
+    proxy_pass https://slack.com/api/files.upload;
+}
 ```
 
 ## Webhook Settings
@@ -166,7 +166,7 @@ To process incoming messages, configure an [outgoing webhook](outgoing-webhook-s
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```bash
-  [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
+[${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
 ```
 
 * Save the rule by clicking **Save**.

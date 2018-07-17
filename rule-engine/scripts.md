@@ -222,16 +222,16 @@ A follow-up action on `REPEAT` status, can be configured to cleanup other direct
 Tivoli Enterprise Services User Interface Extensions must be installed on the ATSD server. To install this component, launch the `install.sh` script and select the `KUE` module from the list.
 
 ```txt
-  ... installing "Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit)"; please wait.
-  => installed "Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit)".
-  ... Initializing component Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit).
-  ... Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit) initialized.
+... installing "Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit)"; please wait.
+=> installed "Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit)".
+... Initializing component Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit).
+... Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit) initialized.
 ```
 
 Modify the Hub TEMS configuration file `/opt/IBM/ITM/config/ms.config` and set the following parameter.
 
 ```elm
-  KT1_TEMS_SECURE='YES'
+KT1_TEMS_SECURE='YES'
 ```
 
 `TEMS` restart is required to activate this setting.
@@ -269,18 +269,18 @@ ${upper(entity)}
 #### Output Log
 
 ```txt
-  2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;
+2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;
 
-  KUIEXC001I: Content of the response file /tmp/itmcmd-atsd.log is:
-  ------Command-------
-  find /tmp -mtime +15 -type f -delete -print
-  ------Command Result-------
-  0
-  ------Standard Error-------
-  ------Standard Output-------
-  /tmp/hsperfdata_root/7640
+KUIEXC001I: Content of the response file /tmp/itmcmd-atsd.log is:
+------Command-------
+find /tmp -mtime +15 -type f -delete -print
+------Command Result-------
+0
+------Standard Error-------
+------Standard Output-------
+/tmp/hsperfdata_root/7640
 
-  KUIEXC000I: Executecommand request was performed successfully. The return value of the command run on the remote systems is 0
+KUIEXC000I: Executecommand request was performed successfully. The return value of the command run on the remote systems is 0
 
-  2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/opt/atsd/atsd/conf/script/disk_cleanup.sh, NURSWGVML007, /tmp, 15d]'
+2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/opt/atsd/atsd/conf/script/disk_cleanup.sh, NURSWGVML007, /tmp, 15d]'
 ```

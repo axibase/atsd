@@ -20,7 +20,7 @@ Returns `Double.NaN` if no matching series is found.
 ### `db_last(string m)`
 
 ```javascript
-  db_last(string m) number
+db_last(string m) number
 ```
 
 Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window.
@@ -28,7 +28,7 @@ Retrieves the last value for the specified metric `m` and the same entity and ta
 Example:
 
 ```javascript
-  value > 60 && db_last('temperature') < 30
+value > 60 && db_last('temperature') < 30
 ```
 
 > As an alternative, if the specified metric is received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command without querying the database.
@@ -46,22 +46,22 @@ Specify entity `e` as a string literal value or with an `entity` field, in which
 Example:
 
 ```javascript
-  value > 60 && db_last('temperature', 'sensor-01') < 30
+value > 60 && db_last('temperature', 'sensor-01') < 30
 ```
 
 ```javascript
-  // same as db_last('temperature')
-  value > 60 && db_last('temperature', entity) < 30
+// same as db_last('temperature')
+value > 60 && db_last('temperature', entity) < 30
 ```
 
 ### `db_last(string m, string e, string t | [] t)`
 
 ```javascript
-  db_last(string m, string e, string t) number
+db_last(string m, string e, string t) number
 ```
 
 ```javascript
-  db_last(string m, string e, [] t) number
+db_last(string m, string e, [] t) number
 ```
 
 Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`.
@@ -76,7 +76,7 @@ Tags argument `t` can be specified as follows:
 Example:
 
 ```javascript
-  value > 60 && db_last('temperature', 'sensor-01', 'stage=heating') < 30
+value > 60 && db_last('temperature', 'sensor-01', 'stage=heating') < 30
 ```
 
 ## `db_statistic`
@@ -92,7 +92,7 @@ Returns `Double.NaN` if no matching series are found or if no records are presen
 ### `db_statistic(string s, string i)`
 
 ```javascript
-  db_statistic(string s, string i) number
+db_statistic(string s, string i) number
 ```
 
 Retrieves an aggregated value from the database for the same metric, entity and tags as defined in the current window.
@@ -100,13 +100,13 @@ Retrieves an aggregated value from the database for the same metric, entity and 
 Example:
 
 ```javascript
-  value > 60 && db_statistic('avg', '3 hour') > 30
+value > 60 && db_statistic('avg', '3 hour') > 30
 ```
 
 ### `db_statistic(string s, string i, string m)`
 
 ```javascript
-  db_statistic(string s, string i, string m) number
+db_statistic(string s, string i, string m) number
 ```
 
 Retrieves an aggregated value from the database for the specified metric `m` and the same entity and series tags as defined in the current window.
@@ -114,13 +114,13 @@ Retrieves an aggregated value from the database for the specified metric `m` and
 Example:
 
 ```javascript
-  value > 60 && db_statistic('avg', '3 hour', 'temperature') < 50
+value > 60 && db_statistic('avg', '3 hour', 'temperature') < 50
 ```
 
 ### `db_statistic(string s, string i, string m, string e)`
 
 ```javascript
-  db_statistic(string s, string i, string m, string e) number
+db_statistic(string s, string i, string m, string e) number
 ```
 
 Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity can either be specified as a string or as `entity` to invoke current entity in the window.
@@ -128,17 +128,17 @@ Retrieves an aggregated value from the database for the specified metric `m` and
 Example:
 
 ```javascript
-  value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01') < 50
+value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01') < 50
 ```
 
 ### `db_statistic(string s, string i, string m, string e, string t | [] t)`
 
 ```javascript
-  db_statistic(string s, string i, string m, string e, string t) number
+db_statistic(string s, string i, string m, string e, string t) number
 ```
 
 ```javascript
-  db_statistic(string s, string i, string m, string e, [] t) number
+db_statistic(string s, string i, string m, string e, [] t) number
 ```
 
 Retrieves an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`.
@@ -153,7 +153,7 @@ The tags argument `t` can be specified as follows:
 Example:
 
 ```javascript
-  value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', '') < 50
+value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', '') < 50
 ```
 
 ## Series Match Examples
@@ -167,9 +167,9 @@ In the example below, the `db_last('cpu_busy')` function ignores the tags `mount
 * Current Window
 
 ```elm
-  metric = disk_used
-  entity = nurswgvml007
-  tags   = mount_point=/,file_system=/sda
+metric = disk_used
+entity = nurswgvml007
+tags   = mount_point=/,file_system=/sda
 ```
 
 * Expression
@@ -181,17 +181,17 @@ db_last('cpu_busy') > 10
 * Search Filter
 
 ```elm
-  metric = cpu_busy
-  entity = nurswgvml007
-  tags   = [empty - no tags]
+metric = cpu_busy
+entity = nurswgvml007
+tags   = [empty - no tags]
 ```
 
 * Matched Series
 
 ```elm
-  metric = cpu_busy
-  entity = nurswgvml007
-  tags   = no tags
+metric = cpu_busy
+entity = nurswgvml007
+tags   = no tags
 ```
 
 ### `Same Tags`
@@ -201,9 +201,9 @@ In this example, the function `db_last('disk_used_percent')` uses the same serie
 * Current Window
 
 ```elm
-  metric = disk_used
-  entity = nurswgvml007
-  tags   = mount_point=/,file_system=/sda
+metric = disk_used
+entity = nurswgvml007
+tags   = mount_point=/,file_system=/sda
 ```
 
 * Expression
@@ -215,17 +215,17 @@ db_last('disk_used_percent') > 90
 * Search Filter
 
 ```elm
-  metric = disk_used_percent
-  entity = nurswgvml007
-  tags   = mount_point=/,file_system=/sda
+metric = disk_used_percent
+entity = nurswgvml007
+tags   = mount_point=/,file_system=/sda
 ```
 
 * Matched Series
 
 ```elm
-  metric = cpu_busy
-  entity = nurswgvml007
-  tags   = mount_point=/,file_system=/sda
+metric = cpu_busy
+entity = nurswgvml007
+tags   = mount_point=/,file_system=/sda
 ```
 
 ### `No Tags : Tags`
@@ -235,31 +235,31 @@ In this example, the function `db_last('disk_used_percent')` searches for a seri
 * Current Window
 
 ```elm
-  metric = cpu_busy
-  entity = nurswgvml007
-  tags   = [empty - no tags]
+metric = cpu_busy
+entity = nurswgvml007
+tags   = [empty - no tags]
 ```
 
 * Expression
 
 ```java
-  db_last('disk_used_percent') > 90
+db_last('disk_used_percent') > 90
 ```
 
 * Search Filter
 
 ```elm
-  metric = disk_used_percent
-  entity = nurswgvml007
-  tags   = [empty - no tags]
+metric = disk_used_percent
+entity = nurswgvml007
+tags   = [empty - no tags]
 ```
 
 * Matched Series
 
 ```elm
-  metric = disk_used_percent
-  entity = nurswgvml007
-  tags   = mount_point=/,file_system=/sda
+metric = disk_used_percent
+entity = nurswgvml007
+tags   = mount_point=/,file_system=/sda
 ```
 
 ### `Different Tags`
@@ -269,29 +269,29 @@ In this example, the function `db_last('io_disk_percent_util')` searches for the
 * Current Window
 
 ```elm
-  metric = disk_used_percent
-  entity = nurswgvml007
-  tags   = mount_point=/,file_system=/sda
+metric = disk_used_percent
+entity = nurswgvml007
+tags   = mount_point=/,file_system=/sda
 ```
 
 * Expression
 
 ```java
-  db_last('io_disk_percent_util') > 90
+db_last('io_disk_percent_util') > 90
 ```
 
 * Search Filter
 
 ```elm
-  metric = io_disk_percent_util
-  entity = nurswgvml007
-  tags   = [empty - no tags - because there are no intersecting tag names]
+metric = io_disk_percent_util
+entity = nurswgvml007
+tags   = [empty - no tags - because there are no intersecting tag names]
 ```
 
 * Matched Series
 
 ```elm
-  metric = io_disk_percent_util
-  entity = nurswgvml007
-  tags   = device=sda
+metric = io_disk_percent_util
+entity = nurswgvml007
+tags   = device=sda
 ```

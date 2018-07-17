@@ -31,20 +31,17 @@ The widgets can be configured to load data from the following sources:
   Add the following setting:
 
 ```elm
-  api.guest.access.enabled = true
+api.guest.access.enabled = true
 ```
 
-  Save the file.
+Save the file.
 
 * Restart the Database
 
-```sh
+  ```sh
   /opt/atsd/bin/atsd-tsd.sh stop
-```
-
-```sh
   /opt/atsd/bin/atsd-tsd.sh start
-```
+  ```
 
 * Open [ChartLab](https://apps.axibase.com/chartlab/) on the plain text protocol to avoid security errors.
 
@@ -56,29 +53,29 @@ The widgets can be configured to load data from the following sources:
 
   Specify DNS name or IP address of the target ATSD instance.
 
-```elm
+  ```elm
   url = https://atsd.example.org:8443/
-```
+  ```
 
   User credentials are not required since ATSD is now configured for anonymous read-only access via Data and Meta API methods.
 
 * Verify that the data is displayed for the following example for a built-in entity/metric:
 
 ```ls
-  [configuration]
-    offset-right = 50
-    height-units = 2
-    width-units = 1
-    url = https://atsd.example.org:8443/
+[configuration]
+  offset-right = 50
+  height-units = 2
+  width-units = 1
+  url = https://atsd.example.org:8443/
 
-  [group]
+[group]
 
-  [widget]
-    type = chart
-    timespan = 15 minute
-    format = bytes
+[widget]
+  type = chart
+  timespan = 15 minute
+  format = bytes
 
-    [series]
-      entity = atsd
-      metric = jvm_memory_used
+  [series]
+    entity = atsd
+    metric = jvm_memory_used
 ```

@@ -29,7 +29,7 @@ Logs are rolled over and archived according to the retention settings in the `/o
 To increase the number of files stored by a given logger, increase the value in the `maxIndex` tag.
 
 ```xml
-   <maxIndex>20</maxIndex>
+<maxIndex>20</maxIndex>
 ```
 
 ### File Size
@@ -37,7 +37,7 @@ To increase the number of files stored by a given logger, increase the value in 
 To increase the size of files rolled over by a given logger, increase the `maxFileSize` tag value. This setting determines the size of the file before the file is rolled over and compressed. The compressed file is typically 10-20 smaller than the original file.
 
 ```xml
-   <maxFileSize>100Mb</maxFileSize>
+<maxFileSize>100Mb</maxFileSize>
 ```
 
 ### File Name
@@ -45,8 +45,8 @@ To increase the size of files rolled over by a given logger, increase the `maxFi
 To change the name of the current and archived files, change the `file` and `fileNamePattern` tags.
 
 ```xml
-  <file>../logs/command.log</file>
-  <fileNamePattern>../logs/command.%i.log.zip</fileNamePattern>
+<file>../logs/command.log</file>
+<fileNamePattern>../logs/command.%i.log.zip</fileNamePattern>
 ```
 
 ### Logging Level
@@ -54,7 +54,7 @@ To change the name of the current and archived files, change the `file` and `fil
 To adjust tracing level, add a logging declaration containing the full class name and the level such as `DEBUG`, `INFO`, `WARN`, `ERROR`.
 
 ```xml
-  <logger name="com.axibase.tsd.service.MetricServiceImpl" level="DEBUG"/>
+<logger name="com.axibase.tsd.service.MetricServiceImpl" level="DEBUG"/>
 ```
 
 ## Applying Changes
@@ -117,9 +117,9 @@ The retention settings for received commands can be modified by increasing the `
 To log the data commands without the received date and channel, remove the corresponding fields from the `pattern` tag.
 
 ```xml
-    <encoder>
-        <pattern>%message%n</pattern>
-    </encoder>
+<encoder>
+    <pattern>%message%n</pattern>
+</encoder>
 ```
 
 The `%date{ISO8601}` token formats the date in ISO8601 format in local time zone.

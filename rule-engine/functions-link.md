@@ -39,7 +39,7 @@ Alternatively, manually assemble inline links using syntax supported by the webh
 ## `getEntityLink`
 
 ```javascript
-  getEntityLink(string e [, boolean m [, string f]]) string
+getEntityLink(string e [, boolean m [, string f]]) string
 ```
 
 Returns the URL to the **Entity Editor** page for entity `e` on the target ATSD instance. The function URL encoded the entity name if necessary.
@@ -69,7 +69,7 @@ serverLink + '/entity/' + urlencode(entity)
 ## `getPropertyLink`
 
 ```javascript
-  getPropertyLink(string e, string t [, boolean m [, string f]])) string
+getPropertyLink(string e, string t [, boolean m [, string f]])) string
 ```
 
 Returns the URL to the property table for entity `e` and property type `t` on the target database server.
@@ -95,7 +95,7 @@ Returned inline link:
 ## `getRuleLink`
 
 ```javascript
-  getRuleLink([string f]) string
+getRuleLink([string f]) string
 ```
 
 Returns the URL to the current rule.
@@ -107,7 +107,7 @@ Displayed as rule name in inline mode.
 ## `getCsvExportLink`
 
 ```javascript
-  getCsvExportLink([string f]) string
+getCsvExportLink([string f]) string
 ```
 
 Returns the URL to the **CSV** file with historical statistics for the current metric, entity, and tags.
@@ -121,7 +121,7 @@ Displayed as **CSV Export** link in inline mode.
 ## `getHtmlExportLink`
 
 ```javascript
-  getHtmlExportLink([string f]) string
+getHtmlExportLink([string f]) string
 ```
 
 Returns the URL to the **Data > Export** page for the current metric, entity, and tags.
@@ -135,7 +135,7 @@ Displayed as **HTML Export** link in inline mode.
 ## `getChartLink`
 
 ```javascript
-  getChartLink([string f]) string
+getChartLink([string f]) string
 ```
 
 Returns the URL to the default portal for the current metric, entity, and tags.
@@ -161,7 +161,7 @@ The following inline link is returned:
 ## `addLink`
 
 ```javascript
-  addLink(string l, string u) string
+addLink(string l, string u) string
 ```
 
 Returns the URL `u` with a short name `l` based on the current endpoint settings.

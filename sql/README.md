@@ -886,10 +886,10 @@ WHERE entity = 'nurswgvml007'
    AND tags.file_system REGEX '.*map.*|.*mnt.*|.*dev.*'
 ```
 
-Special constructs such as `(?i)` can be applied to enable a [case-insensitive match](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) as an example.
+Special constructs such as `(?i)` can be applied to enable a [case-**insensitive** match](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) as an example.
 
 ```sql
-  WHERE entity REGEX '(?i)Nurswgvml00.*'
+WHERE entity REGEX '(?i)Nurswgvml00.*'
 ```
 
 ## CASE Expression
@@ -1120,7 +1120,7 @@ SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vi
 Converting a date to milliseconds and comparing it to the time column is more efficient than comparing formatted strings:
 
 ```sql
-  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') >= '2017-05-01 12:00:00'
+date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') >= '2017-05-01 12:00:00'
 ```
 
 ### Entity Time Zone
@@ -2036,11 +2036,11 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 The syntax follows the SQL-92 notation for enumerating the compared columns.
 
 ```sql
-  FROM tbl t1
-     JOIN tbl t2
-       ON  t1.time AND t2.time
-       AND t1.entity = t2.entity
-       AND t1.tags = t2.tags
+FROM tbl t1
+   JOIN tbl t2
+     ON  t1.time AND t2.time
+     AND t1.entity = t2.entity
+     AND t1.tags = t2.tags
 ```
 
 The `ON` condition can compare only the predefined columns: `entity`, `time`, ``datetime`, and `tags`. Since the virtual tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
@@ -2064,8 +2064,8 @@ The `ON` condition can be modified with the `USING entity` instruction in which 
 To disambiguate column references in the join query, use qualified column names.
 
 ```sql
-  SELECT table_1.entity ... FROM table_1 t1
-  SELECT      t1.entity ... FROM table_1 t1
+SELECT table_1.entity ... FROM table_1 t1
+SELECT      t1.entity ... FROM table_1 t1
 ```
 
 The `SELECT *` and `SELECT {table_name}.*` expressions in join queries include qualified column names such as `t1.datetime`.

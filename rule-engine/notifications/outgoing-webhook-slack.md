@@ -63,7 +63,7 @@ Slack Bot is a special account created for automation purposes.
   Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
 ```elm
-   https://username:password@atsd_hostname:8443/api/v1/messages/webhook/slack?command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
+https://username:password@atsd_hostname:8443/api/v1/messages/webhook/slack?command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
 ```
 
   > The receiving ATSD server (or the intermediate reverse proxy) must be externally accessible on the DNS name and have a valid CA-signed [SSL certificate](../../administration/ssl-ca-signed.md) installed. Self-signed certificates are **not supported** by Slack at this time.
@@ -118,7 +118,7 @@ Slack Bot is a special account created for automation purposes.
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```bash
-  Received `${message}` from <@${tags.event.user}>
+Received `${message}` from <@${tags.event.user}>
 ```
 
 * Click **Save** to save the rule.
@@ -136,9 +136,7 @@ Slack Bot is a special account created for automation purposes.
 > * less-than sign, `<` replaced with `&lt;`
 > * greater-than sign, `>` replaced with `&gt;`
 
-* Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
-
-    ![](./images/outgoing_webhook_slack_18.png)
+* Open **Alerts > Incoming Webhooks** page and check that a request from Slack servers has been received.
 
     ![](./images/outgoing_webhook_slack_19.png)
 

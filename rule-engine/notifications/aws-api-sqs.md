@@ -47,10 +47,10 @@ Modify **`MessageBody`** by replacing the `<MESSAGE_TEXT>` value with your text,
 ```json
 {
   "status": "${status}",
-   "entity": "${entity}",
-   "rule": "${rule}",
-   "tags": "${tags}",
-   "message": ""
+  "entity": "${entity}",
+  "rule": "${rule}",
+  "tags": "${tags}",
+  "message": ""
 }
 ```
 
@@ -95,7 +95,7 @@ Specify the message text into the `MessageBody` parameter for all triggers.
 Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
 ```ls
-  series e:test_e m:test_m=2
+series e:test_e m:test_m=2
 ```
 
 ![](./images/rule_test_commands.png)

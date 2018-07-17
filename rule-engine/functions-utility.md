@@ -16,7 +16,7 @@
 ## `ifEmpty`
 
 ```javascript
-  ifEmpty(object a, object b) object
+ifEmpty(object a, object b) object
 ```
 
 Returns `b` if `a` is either `null` or an empty string.
@@ -24,17 +24,17 @@ Returns `b` if `a` is either `null` or an empty string.
 Examples:
 
 ```javascript
-    /* Returns 2 */
-    ifEmpty(null, 2)
+/* Returns 2 */
+ifEmpty(null, 2)
 
-    /* Returns hello */
-    ifEmpty('hello', 'world')
+/* Returns hello */
+ifEmpty('hello', 'world')
 ```
 
 ## `toBoolean`
 
 ```javascript
-  toBoolean(object a) boolean
+toBoolean(object a) boolean
 ```
 
 Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string `true`, `yes`, `on`, `1` (case-**IN**sensitive) or if `a` is equal to the number `1`.
@@ -58,23 +58,23 @@ Input | Type | Result
 Examples:
 
 ```javascript
-  // Returns false
-  toBoolean('hello')
-  toBoolean(0)
-  toBoolean('off')
+// Returns false
+toBoolean('hello')
+toBoolean(0)
+toBoolean('off')
 ```
 
 ```javascript
-  // Returns true
-  toBoolean('YES')
-  toBoolean(1)
-  toBoolean('On')
+// Returns true
+toBoolean('YES')
+toBoolean(1)
+toBoolean('On')
 ```
 
 ## `toNumber`
 
 ```javascript
-  toNumber(object a) number
+toNumber(object a) number
 ```
 
 Converts the input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
@@ -99,7 +99,7 @@ Input | Type | Result
 ## `printObject`
 
 ```javascript
-  printObject(object o, string f) string
+printObject(object o, string f) string
 ```
 
 Prints the input object `o` as a two-column table in the specified format `f`.
@@ -125,7 +125,7 @@ Returns an empty string if the object `o` is `null`.
 Examples:
 
 ```javascript
-  printObject(getEntity('atsd'), 'ascii')
+printObject(getEntity('atsd'), 'ascii')
 ```
 
 ```ls
@@ -146,7 +146,7 @@ Examples:
 ```
 
 ```javascript
-  printObject(rule_window('jvm_derived'), 'csv')
+printObject(rule_window('jvm_derived'), 'csv')
 ```
 
 ```ls
@@ -159,7 +159,7 @@ windowStatus,OPEN
 ```
 
 ```javascript
-  printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
+printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 ```
 
 ```ls
@@ -175,7 +175,7 @@ windowStatus,OPEN
 ## `getURLHost`
 
 ```javascript
-  getURLHost(string u) string
+getURLHost(string u) string
 ```
 
 Retrieves the **host** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
@@ -183,14 +183,14 @@ Retrieves the **host** from URL string `u`. If the URL `u` is `null`, empty or i
 Example:
 
 ```javascript
-    /* Returns "example.org" */
-    getURLHost('https://example.org/en/products?type=database&status=1')
+/* Returns "example.org" */
+getURLHost('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLPort`
 
 ```javascript
-  getURLPort(string u) integer
+getURLPort(string u) integer
 ```
 
 Retrieves the **port** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
@@ -200,14 +200,14 @@ If the URL `u` does not contain a port, the function returns the default value f
 Example:
 
 ```javascript
-    /* Returns 443 */
-    getURLPort('https://example.org/en/products?type=database&status=1')
+/* Returns 443 */
+getURLPort('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLProtocol`
 
 ```javascript
-  getURLProtocol(string u) string
+getURLProtocol(string u) string
 ```
 
 Retrieves the **protocol** from URL string `u`. If the URL `u` is `null`, empty or invalid, exception is thrown.
@@ -215,14 +215,14 @@ Retrieves the **protocol** from URL string `u`. If the URL `u` is `null`, empty 
 Example:
 
 ```javascript
-    /* Returns "https" */
-    getURLProtocol('https://example.org/en/products?type=database&status=1')
+/* Returns "https" */
+getURLProtocol('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLPath`
 
 ```javascript
-  getURLPath(string u) string
+getURLPath(string u) string
 ```
 
 Retrieves the **path** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
@@ -230,14 +230,14 @@ Retrieves the **path** from URL string `u`. If the URL `u` is `null`, empty or i
 Example:
 
 ```javascript
-    /* Returns "/en/products" */
-    getURLPath('https://example.org/en/products?type=database&status=1')
+/* Returns "/en/products" */
+getURLPath('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLQuery`
 
 ```javascript
-  getURLQuery(string u) string
+getURLQuery(string u) string
 ```
 
 Retrieves the **query string** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
@@ -245,14 +245,14 @@ Retrieves the **query string** from URL string `u`. If the URL `u` is `null`, em
 Example:
 
 ```javascript
-    /* Returns "type=database&status=1" */
-    getURLQuery('https://example.org/en/products?type=database&status=1')
+/* Returns "type=database&status=1" */
+getURLQuery('https://example.org/en/products?type=database&status=1')
 ```
 
 ## `getURLUserInfo`
 
 ```javascript
-  getURLUserInfo(string u) string
+getURLUserInfo(string u) string
 ```
 
 Retrieves the user credential part `username:password` from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
@@ -260,9 +260,9 @@ Retrieves the user credential part `username:password` from URL string `u`. If t
 Example:
 
 ```javascript
-    /* Returns null */
-    getURLUserInfo('https://example.org/en/products?type=database&status=1')
+/* Returns null */
+getURLUserInfo('https://example.org/en/products?type=database&status=1')
 
-    /* Returns "john.doe:secret" */
-    getURLUserInfo('https://john.doe:secret@example.org/en/products?type=database&status=1')
+/* Returns "john.doe:secret" */
+getURLUserInfo('https://john.doe:secret@example.org/en/products?type=database&status=1')
 ```

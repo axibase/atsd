@@ -155,7 +155,7 @@ Check HDFS for consistency.
 The expected message is:
 
 ```txt
-  The filesystem under path '/hbase/' is HEALTHY.
+The filesystem under path '/hbase/' is HEALTHY.
 ```
 
 > If corrupted files are reported, follow the recovery procedure.
@@ -352,12 +352,12 @@ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
 ```sh
-  ...
-  TABLE
-  atsd_calendar
-  atsd_collection
-  atsd_config
-  ...
+...
+TABLE
+atsd_calendar
+atsd_collection
+atsd_config
+...
 ```
 
 Execute a sample scan in HBase.
@@ -367,10 +367,10 @@ echo "scan 'atsd_d', LIMIT => 1" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null
 ```
 
 ```sh
-  ...
-  ROW                  COLUMN+CELL
-  ...
-  1 row(s) in 0.0560 seconds
+...
+ROW                  COLUMN+CELL
+...
+1 row(s) in 0.0560 seconds
 ```
 
 ## Customize Map-Reduce Settings

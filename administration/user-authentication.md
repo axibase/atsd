@@ -59,7 +59,7 @@ The following password rules apply to **Local** accounts:
   * Special characters:
 
 ```txt
-      ~!@#$%^&*_-+=`|\(){}[]:;”‘<>,.?/"'
+~!@#$%^&*_-+=`|\(){}[]:;”‘<>,.?/"'
 ```
 
 ## Built-in Account
@@ -109,15 +109,15 @@ SQL query results can be published to all visitors by checking the **Guest Acces
 * Java Example:
 
 ```java
-    URL url = new URL("http://192.0.2.6:8088/api/v1/series");
-    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    conn.setDoOutput(true);
-    conn.setRequestMethod("POST");
-    conn.setRequestProperty("charset", "utf-8");
+URL url = new URL("http://192.0.2.6:8088/api/v1/series");
+HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+conn.setDoOutput(true);
+conn.setRequestMethod("POST");
+conn.setRequestProperty("charset", "utf-8");
 
-    String authString = userName + ":" + password;
-    String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
-    conn.setRequestProperty("Authorization", "Basic " + authEncoded);
+String authString = userName + ":" + password;
+String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
+conn.setRequestProperty("Authorization", "Basic " + authEncoded);
 ```
 
 * `curl` Example:

@@ -205,7 +205,7 @@ WHERE entity = 'nurswgvml007'
 The above condition is equivalent to:
 
 ```sql
-  datetime >= '2016-06-18T20:00:00.000Z' AND datetime < '2016-06-18T21:00:00.000Z'
+datetime >= '2016-06-18T20:00:00.000Z' AND datetime < '2016-06-18T21:00:00.000Z'
 ```
 
 ```ls

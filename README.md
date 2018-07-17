@@ -5,11 +5,11 @@ Axibase Time Series Database (ATSD) is a non-relational database optimized for c
 ## Technology Stack
 
 ```elm
-  ATSD
-   |
-  HBase
-   |
-  FileSystem: Local / HDFS / EMRFS
+ATSD
+ |
+HBase
+ |
+FileSystem: Local / HDFS / EMRFS
 ```
 
 * ATSD is written in Java. It is supported on Linux distributions in 64-bit mode and requires a Java 8 runtime environment.

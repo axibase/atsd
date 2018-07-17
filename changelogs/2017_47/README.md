@@ -31,9 +31,9 @@
 The `matchList` functions is a less verbose alternative to `likeAny` function.
 
 ```java
-  matchList(tags.request_ip, 'ip_white_list')
+matchList(tags.request_ip, 'ip_white_list')
 
-  likeAny(tags.request_ip, collection('ip_white_list'))
+likeAny(tags.request_ip, collection('ip_white_list'))
 ```
 
 ### Issue 4734
@@ -90,18 +90,18 @@ Support for `addMeta` parameter added to the [series](../../api/meta/metric/seri
 The `rule_open` function checks if there is at least one window with the `OPEN` or `REPEAT` status for the specified rule.
 
 ```java
-  rule_open(S ruleName)
+rule_open(S ruleName)
 
-  // example
-  avg() > 10 && rule_open('disk_used_check')
+// example
+avg() > 10 && rule_open('disk_used_check')
 ```
 
 The `rule_window` function returns the first matching window for the specified rule.
 
 ```java
-  rule_window(S ruleName)
-  // example
-  avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'CANCEL'
+rule_window(S ruleName)
+// example
+avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'CANCEL'
 ```
 
 ### Issue 4715

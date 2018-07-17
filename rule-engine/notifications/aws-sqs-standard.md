@@ -15,39 +15,39 @@ Customize the alert messages using [placeholders](../placeholders.md) as necessa
 * `OPEN`
 
 ```json
-       {
-          "status": "${status}",
-           "entity": "${entity}",
-           "rule": "${rule}",
-           "tags": "${tags}",
-           "message": "The rule is open"
-       }
+{
+  "status": "${status}",
+  "entity": "${entity}",
+  "rule": "${rule}",
+  "tags": "${tags}",
+  "message": "The rule is open"
+}
 ```
 
 * `REPEAT`
 
 ```json
-       {
-           "status": "${status}",
-           "entity": "${entity}",
-           "rule": "${rule}",
-           "tags": "${tags}",
-           "repeatCount": "${repeat_count}",
-           "message": "The rule is still open"
-       }
+{
+  "status": "${status}",
+  "entity": "${entity}",
+  "rule": "${rule}",
+  "tags": "${tags}",
+  "repeatCount": "${repeat_count}",
+  "message": "The rule is still open"
+}
 ```
 
 * `CANCEL`
 
 ```json
-       {
-           "status": "${status}",
-           "entity": "${entity}",
-           "rule": "${rule}",
-           "tags": "${tags}",
-           "repeatCount": "${repeat_count}",
-           "message": "The rule is cancel"
-       }
+{
+  "status": "${status}",
+  "entity": "${entity}",
+  "rule": "${rule}",
+  "tags": "${tags}",
+  "repeatCount": "${repeat_count}",
+  "message": "The rule is cancel"
+}
 ```
 
   ![](./images/aws_sqs_web_notification_standard.png)

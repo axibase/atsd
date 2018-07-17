@@ -80,8 +80,8 @@ SELECT COUNT(*) FROM test_m
  The expression uses `%` and `_` wildcards to match tables and columns by name.
 
 ```java
- // Match tables disk_used, disk_used_percent
- ResultSet rs = dmd.getTables(null, null, "_isk_%", null);
+// Match tables disk_used, disk_used_percent
+ResultSet rs = dmd.getTables(null, null, "_isk_%", null);
 ```
 
 ### Issue 4389
@@ -120,12 +120,12 @@ tag1=abc;tag2=cde
 ```
 
 ```java
-  String query = "INSERT INTO minsert1 (datetime, entity, value, tags) VALUES (?, ?, ?, ?)";
-  PreparedStatement st = conn.prepareStatement(query);
-  st.setTimestamp(1, new Timestamp(time));
-  st.setString(2, entityName);
-  st.setDouble(3, val);
-  st.setString(4, "tag1=abc;tag2=cde");
+String query = "INSERT INTO minsert1 (datetime, entity, value, tags) VALUES (?, ?, ?, ?)";
+PreparedStatement st = conn.prepareStatement(query);
+st.setTimestamp(1, new Timestamp(time));
+st.setString(2, entityName);
+st.setDouble(3, val);
+st.setString(4, "tag1=abc;tag2=cde");
 ```
 
 ### Issue 4365

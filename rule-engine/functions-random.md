@@ -74,7 +74,7 @@ Jack Smith
 ```
 
 ```javascript
-  // returns Mary Jones
+// returns Mary Jones
 randomItem(collection('oncall-person'))
 ```
 
@@ -103,10 +103,8 @@ randomItem(replacementTable('oncall-person').values())
 ```
 
 ```javascript
-/*
-  Returns a key-value object consisting of string key and string value
-  The object fields can be accessed with .key and .value methods.
-*/
+/* Returns a key-value object consisting of string key and string value
+The object fields can be accessed with .key and .value methods. */
 randomItem(replacementTable('oncall-person'))
 ```
 

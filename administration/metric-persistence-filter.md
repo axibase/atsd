@@ -55,7 +55,7 @@ Math.sin(Math.toRadians(value)) < 0.5
 ### `collection`
 
 ```javascript
-  collection(string s) [string]
+collection(string s) [string]
 ```
 
 Returns an array of strings which have been loaded with the specified string `s`.
@@ -75,7 +75,7 @@ tags.request_ip = collection('ip_white_list').get(1)
 ### `list`
 
 ```javascript
-  list(string s[, string p]) [string]
+list(string s[, string p]) [string]
 ```
 
 Splits string `s` using separator `p` (default is comma ',') into a collection of string values. The function discards duplicate items by preserving only the first occurrence of each element.
@@ -91,7 +91,7 @@ entity = list('atsd,nurswgvml007').get(0)
 ### `likeAll`
 
 ```javascript
-  likeAll(object s, [string] c) boolean
+likeAll(object s, [string] c) boolean
 ```
 
 Returns `true`, if the first argument `s` matches **every** element in the collection of patterns `c`. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -99,14 +99,13 @@ Returns `true`, if the first argument `s` matches **every** element in the colle
 Examples:
 
 ```javascript
-
 likeAll(tags.request_ip, ['192.0.*', '192.0.2.?'])
 ```
 
 ### `likeAny`
 
 ```javascript
-  likeAny(object s, [string] c) boolean
+likeAny(object s, [string] c) boolean
 ```
 
 Returns `true`, if the first argument `s` matches **at least one** element in the collection of patterns `c`. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -122,7 +121,7 @@ likeAny(tags.request_ip, collection('ip_white_list'))
 ### `matches`
 
 ```javascript
-  matches(string p, [string] c) boolean
+matches(string p, [string] c) boolean
 ```
 
 Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.  The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -140,7 +139,7 @@ matches(message, ['OK', 'stable'])
 ### `startsWithAny`
 
 ```javascript
-  startsWithAny(object s, [string] c) boolean
+startsWithAny(object s, [string] c) boolean
 ```
 
 Returns `true`, if the first argument `s` starts with any of strings from collection `c`. Collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -154,7 +153,7 @@ startsWithAny(entity, ['a', 'nur'])
 ### `contains`
 
 ```javascript
-  [string].contains(string s) boolean
+[string].contains(string s) boolean
 ```
 
 Returns `true` if `s` is contained in the collection. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -168,7 +167,7 @@ collection('ip_white_list').contains(tags.request_ip)
 ### `collection_contains`
 
 ```javascript
-  collection_contains(object v, [] c) boolean
+collection_contains(object v, [] c) boolean
 ```
 
 Returns `true`, if collection `c` contains object `v`. The collection `c` can be specified inline as an array of strings or reference a named collection.
@@ -182,7 +181,7 @@ NOT collection_contains(tags['os'], collection('ignore_os'))
 ### `collection_intersects`
 
 ```javascript
-  collection_intersects([] f, [] s) boolean
+collection_intersects([] f, [] s) boolean
 ```
 
 Returns `true`, if collection `f` has elements in common with collection `s`. The collections can be specified inline as an arrays of strings or reference a named collections.
@@ -196,7 +195,7 @@ collection_intersects(tags.values(), collection('ip_white_list'))
 ### `upper`
 
 ```javascript
-  upper(string s) string
+upper(string s) string
 ```
 
 Converts `s` to uppercase letters.
@@ -204,7 +203,7 @@ Converts `s` to uppercase letters.
 ### `lower`
 
 ```javascript
-  lower(string s) string
+lower(string s) string
 ```
 
 Converts `s` to lowercase letters.
@@ -212,7 +211,7 @@ Converts `s` to lowercase letters.
 ### `size`
 
 ```javascript
-  [].size() integer
+[].size() integer
 ```
 
 Returns the number of elements in the collection.
@@ -228,7 +227,7 @@ tags.size() > 1
 ### `isEmpty`
 
 ```javascript
-  [].isEmpty() boolean
+[].isEmpty() boolean
 ```
 
 Returns `true` if the number of elements in the collection is zero.
@@ -244,7 +243,7 @@ NOT tags.isEmpty()
 ### `IN`
 
 ```javascript
-  string s IN (string a[, string b[...]]) boolean
+string s IN (string a[, string b[...]]) boolean
 ```
 
 Returns `true` if `s` is contained in the collection of strings enclosed in round brackets.

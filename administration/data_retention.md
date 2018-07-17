@@ -109,48 +109,48 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 * Discard (do not persist) series with tag `site` equal to `DefaultWebSite`
 
 ```javascript
-  tags.site != `DefaultWebSite`
+tags.site != `DefaultWebSite`
 ```
 
 * Discard series with tag `id` starting with `lo`
 
 ```javascript
-  tags.id NOT LIKE 'lo*'
+tags.id NOT LIKE 'lo*'
 ```
 
 * Discard series with tag `disk` equal `/boot` or starting with `/run`
 
 ```javascript
-  tags.disk != '/boot' && tags.disk NOT LIKE '/run*'
+tags.disk != '/boot' && tags.disk NOT LIKE '/run*'
 ```
 
 * Discard series if tag `mount_point` matches any element in named collection `ignore-collector-mount-points`.
 
 ```javascript
-  !likeAny(tags.mount_point, collection('ignore-collector-mount-points'))
+!likeAny(tags.mount_point, collection('ignore-collector-mount-points'))
 ```
 
 ```txt
-  /boot
-  /dev*
-  /proc*
-  /run*
-  /var*
-  /sys/fs/cgroup
+/boot
+/dev*
+/proc*
+/run*
+/var*
+/sys/fs/cgroup
 ```
 
 * Discard series if tag `id` is contained in named collection `filesystem_ignore`.
 
 ```javascript
-  !collection('filesystem_ignore').contains(tags.id)
+!collection('filesystem_ignore').contains(tags.id)
 ```
 
 ```txt
-  /run
-  /run/shm
-  /dev
-  /run/lock
-  /boot
+/run
+/run/shm
+/dev
+/run/lock
+/boot
 ```
 
 ### Delete Expired Data

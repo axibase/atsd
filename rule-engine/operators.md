@@ -11,19 +11,19 @@
 Examples:
 
 ```javascript
-  value > 90 && avg() > 50
+value > 90 && avg() > 50
 ```
 
 ```javascript
-  tags.file_system LIKE '/opt/*' OR tags.file_system LIKE '/mnt/*'
+tags.file_system LIKE '/opt/*' OR tags.file_system LIKE '/mnt/*'
 ```
 
 ```javascript
-  tags.file_system NOT LIKE '/dev/*'
+tags.file_system NOT LIKE '/dev/*'
 ```
 
 ```javascript
-  NOT tags.isEmpty()
+NOT tags.isEmpty()
 ```
 
 ## Ternary Operator
@@ -37,24 +37,24 @@ The ternary `?` operator simplifies `if/else` syntax. The operator chooses one o
 If the expression `expr` evaluates to `true`, the operator selects `value1` option. Otherwise, `value2` is chosen.
 
 ```javascript
-   boolean expr ? value1 : value2
+boolean expr ? value1 : value2
 ```
 
 Examples:
 
 ```javascript
-   tags.mount_point == '/' ? 90.0 : 75.0
+tags.mount_point == '/' ? 90.0 : 75.0
 
-  // The above example is equivalent to:
-  if (tags.mount_point == '/') {
-     return 90.0;
-  } else {
-     return 75.0;
-  }
+// The above example is equivalent to:
+if (tags.mount_point == '/') {
+   return 90.0;
+} else {
+   return 75.0;
+}
 ```
 
 ```javascript
-   status >= 500 ? 'Server Error' : ((status >= 400) ? 'Client Error' : ((status >= 300) ? 'Redirect' : 'OK')))
+status >= 500 ? 'Server Error' : ((status >= 400) ? 'Client Error' : ((status >= 300) ? 'Redirect' : 'OK')))
 ```
 
 ## Numeric Operators
@@ -78,15 +78,15 @@ Examples:
 Examples:
 
 ```javascript
-  value*100 > 90
+value*100 > 90
 ```
 
 ```javascript
-  max() BETWEEN 80 and 100
+max() BETWEEN 80 and 100
 ```
 
 ```javascript
-  value IN (0, 1, 12)
+value IN (0, 1, 12)
 ```
 
 ## Text Operators
@@ -102,17 +102,17 @@ Examples:
 Examples:
 
 ```javascript
-  entity = 'nurswgvml007'
+entity = 'nurswgvml007'
 ```
 
 ```javascript
-  entity IN ('nurswgvml007', 'nurswgvml010')
+entity IN ('nurswgvml007', 'nurswgvml010')
 ```
 
 ```javascript
-  entity LIKE '*007'
+entity LIKE '*007'
 ```
 
 ```javascript
-  tags.location LIKE ('NUR*', entity.tags.location)
+tags.location LIKE ('NUR*', entity.tags.location)
 ```

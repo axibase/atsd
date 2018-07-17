@@ -57,11 +57,11 @@ The user must have `API_DATA_WRITE` role and `write` permissions for the target 
 
 To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split-button located below the **Users** table.
 
-![](./images/webhook-user.png)
+![](../administration/images/webhook-user.png)
 
 The wizard automatically creates user and entity groups and grant necessary permissions.
 
-![](./images/webhook-permissions.png)
+![](../administration/images/webhook-permissions.png)
 
 ## Request Parameters
 
@@ -119,32 +119,32 @@ Since stored message are always associated with an entity, the request must incl
 1. By default, the entity is set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
     ```elm
-      /api/v1/messages/webhook/jenkins?hello=world
+    /api/v1/messages/webhook/jenkins?hello=world
     ```
 
     ```elm
-      entity = jenkins
+    entity = jenkins
     ```
 
 1. The entity can be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
     ```elm
-      entity = test-1
+    entity = test-1
     ```
 
 1. The entity can be extracted from a JSON field by referencing the field full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
 
     ```json
-      {
-        "server": {
-          "name": "test-2",
-          "site": "NUR"
-        }
+    {
+      "server": {
+        "name": "test-2",
+        "site": "NUR"
       }
+    }
     ```
 
     ```elm
-      entity = test-2
+    entity = test-2
     ```
 
 1. The entity can be extracted from request headers by specifying the header name, for example `/api/v1/messages/webhook/jenkins?header.entity=X-AXI-Region`
@@ -152,11 +152,11 @@ Since stored message are always associated with an entity, the request must incl
     HTTP request headers:
 
     ```txt
-      X-AXI-Region: us-east-01
+    X-AXI-Region: us-east-01
     ```
 
     ```elm
-      entity = us-east-01
+    entity = us-east-01
     ```
 
 ## Default Message Field Values
@@ -165,8 +165,8 @@ Since stored message are always associated with an entity, the request must incl
 * Message `source` is set to the remainder of the URL path after the `/webhook/` part (and before the query string). If the remainder is empty, the `source` is set to empty string.
 
 ```ls
-  source = incoming for /api/v1/messages/webhook/incoming?entity=test
-  source =          for /api/v1/messages/webhook?entity=test
+source = incoming for /api/v1/messages/webhook/incoming?entity=test
+source =          for /api/v1/messages/webhook?entity=test
 ```
 
 * Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` **must** be specified as described in the **Entity Mapping** section above.
@@ -193,9 +193,9 @@ These parameters set message fields to literal values.
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
 
 ```elm
-  entity = test-1
-  type = ci
-  severity = WARNING
+entity = test-1
+type = ci
+severity = WARNING
 ```
 
 ### Command Parameters
@@ -214,15 +214,15 @@ Command parameters set message field values from JSON field values.
 `/api/v1/messages/webhook/jenkins?command.entity=server&command.type=event`
 
 ```json
-  {
-    "server": "test-2",
-    "event": "deploy"
-  }
+{
+  "server": "test-2",
+  "event": "deploy"
+}
 ```
 
 ```elm
-  entity = test-2
-  type = deploy
+entity = test-2
+type = deploy
 ```
 
 ### Header Parameters
@@ -242,15 +242,15 @@ Header parameters set message field values from header values.
 `/api/v1/messages/webhook/github?header.tag.event=X-GitHub-Event`
 
 ```json
-  User-Agent: GitHub-Hookshot/5ee1da1
-  X-GitHub-Delivery: 955bf180-e573-11e7-9438-56fe67d6b38d
-  X-GitHub-Event: watch
-  X-Hub-Signature: sha1=b0d4aa86d17c6b77e5b35e7482769955ad9aca4d
+User-Agent: GitHub-Hookshot/5ee1da1
+X-GitHub-Delivery: 955bf180-e573-11e7-9438-56fe67d6b38d
+X-GitHub-Event: watch
+X-Hub-Signature: sha1=b0d4aa86d17c6b77e5b35e7482769955ad9aca4d
 ```
 
 ```elm
-  entity = github
-  tags.event = watch
+entity = github
+tags.event = watch
 ```
 
 ### Filter Parameters
@@ -269,19 +269,19 @@ The filter parameters contain patterns that the converted message tags must sati
 * The parameters can contain multiple patterns separated by semi-colon `;`.
 
 ```elm
-  &exclude=repository.*;sender.location
+&exclude=repository.*;sender.location
 ```
 
 * Parameters can be repeated in the query string.
 
 ```elm
-  &exclude=repository.*&exclude=sender.location
+&exclude=repository.*&exclude=sender.location
 ```
 
 Example:
 
 ```elm
-  &exclude=repository.*&include=repository.name
+&exclude=repository.*&include=repository.name
 ```
 
 ```json
@@ -297,12 +297,12 @@ Example:
 }
 ```
 
-  Message fields:
+Message fields:
 
 ```elm
-    tag.event = commit
-    tag.result = ok
-    tag.repository.name = atsd
+tag.event = commit
+tag.result = ok
+tag.repository.name = atsd
 ```
 
 ### Parse Parameters
@@ -320,16 +320,16 @@ Examples:
 In this example the `payload` parameter contains a JSON string which is parsed into message tags using the `json.parse=payload` instruction.
 
 ```txt
-  event=build&payload={"id":371662529,"number":"217","config":{"os":"linux"}}
+event=build&payload={"id":371662529,"number":"217","config":{"os":"linux"}}
 ```
 
 Message tags:
 
 ```elm
-  event=build
-  payload.id=371662529
-  payload.number=217
-  payload.config.os=linux
+event=build
+payload.id=371662529
+payload.number=217
+payload.config.os=linux
 ```
 
 * **JSON content type**
@@ -348,10 +348,10 @@ The `Message` field in the JSON payload contains a string which is a JSON docume
 Message tags:
 
 ```elm
-  type=Notification
-  message.version=0
-  message.source=aws.ec2
-  message.region=us-east-1
+type=Notification
+message.version=0
+message.source=aws.ec2
+message.region=us-east-1
 ```
 
 ### Control Parameters
@@ -373,32 +373,32 @@ Example:
 * Request URL:
 
 ```elm
-    /api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
+/api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
 ```
 
 * Request Headers:
 
 ```txt
-    User-Agent: GitHub-Hookshot/5ee1da1
+User-Agent: GitHub-Hookshot/5ee1da1
 ```
 
 * Request Payload:
 
 ```json
-    {
-      "server": "test-2"
-    }
+{
+  "server": "test-2"
+}
 ```
 
 * Message Command:
 
 ```elm
-    type=github
-    source=webhook
-    entity=test-1
-    tags:
-        server=test-2
-        request_ip=...
+type=github
+source=webhook
+entity=test-1
+tags:
+    server=test-2
+    equest_ip=...
 ```
 
 ## Sample URLs
@@ -568,29 +568,29 @@ Command:
 
 ```json
 {
-    "entity": "github",
-    "type": "webhook",
-    "source": "github",
-    "severity": null,
-    "tags": {
-        "action": "started",
-        "event": "watch",
-        "repository.name": "atsd",
-        "repository.full_name": "axibase/atsd",
-        "request_ip": "192.0.2.1",
-        "sender.id": "2098022",
-        "sender.login": "john_doe",
-        "sender.site_admin": "false",
-        "sender.type": "User"
-    },
-    "date": "2017-12-22T13:32:50.901Z"
+  "entity": "github",
+  "type": "webhook",
+  "source": "github",
+  "severity": null,
+  "tags": {
+    "action": "started",
+    "event": "watch",
+    "repository.name": "atsd",
+    "repository.full_name": "axibase/atsd",
+    "request_ip": "192.0.2.1",
+    "sender.id": "2098022",
+    "sender.login": "john_doe",
+    "sender.site_admin": "false",
+    "sender.type": "User"
+  },
+  "date": "2017-12-22T13:32:50.901Z"
 }
 ```
 
 ## Diagnostics
 
-The last 100 recently received webhooks are listed on the **Settings > Diagnostics > Webhook Requests** page.
+The last 100 recently received webhooks are listed on the **Alerts > Incoming Webhooks** page.
 
-![](./images/webhooks.png)
+![](../api/data/messages/images/webhooks.png)
 
-![](./images/webhook-detail.png)
+![](../api/data/messages/images/webhook-detail.png)
