@@ -10,9 +10,9 @@
 
 ## Overview
 
-The downsampling is a reduction of time series cardinality by filtering out some samples. If the [series query](./query.md) has the `downsample` field, then downsampling is performed in specified order among other series [transformations](./query.md#transformation-fields).
+Downsampling is a reduction of time series cardinality achieved by filtering out certain samples. If a [series query](./query.md) contains the `downsample` field, downsampling is performed in a specified order among other series [transformations](./query.md#transformation-fields).
 
-Example of the `downsample` setting.
+### Syntax Example
 
 ```json
 "downsample": {
@@ -22,22 +22,20 @@ Example of the `downsample` setting.
 }
 ```
 
-The downsampling strategy is regulated by following parameters.
-
 ## Parameters
 
-All parameters are optional.
-
-> Parameters `difference` and `factor` can not be used simultaneously.
+Downsampling is regulated by following optional parameters.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `gap` | object | Time interval specified in terms of time unit and count. If this parameter is specified then the time gap between subsequent samples of resulting series is not much more than value of this parameter. For example, if `gap` is zero then no samples are filtered out, and resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. <br> View the [gap](#gap) section for description of the `gap` syntax. |
-| `difference` | number | Not negative number, used as threshold for difference between values of two series samples. If the difference exceeds this threshold then samples are included in resulting series. <br>It is not allowed to use both the `difference` and the `factor` parameters at the same time. |
-| `factor` | number | Not negative number. If ratio of two series samples exceeds the `factor` then samples are included in resulting series. |
-| `order` | integer | This field determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is 0.|
+| `gap` | object | Time interval specified in terms of time unit and count. If this parameter is specified the time gap between subsequent samples of the resulting series is close to equivalent to the value of this parameter. For example, if `gap` is `0` then no samples are filtered and resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. <br> View the [gap](#gap) section for description of the `gap` syntax. |
+| `difference` | number | Non-negative number, used as threshold for difference between values of two series samples. If the difference exceeds this threshold then samples are included in resulting series. |
+| `factor` | number | Non-negative number. If the ratio of two series samples exceeds `factor` then samples are included in resulting series. |
+| `order` | integer | This field determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is `0`.|
 
-If no one of the `gap`, `diffrence`, and `factor` parameters is provided then the downsampling performs series deduplication, removing series sample if previous and next samples have the same value.
+> `difference` and `factor` parameters cannot be used simultaneously.
+
+If neither `gap`, `difference`, nor `factor` parameter is provided, downsampling performs series de-duplication, removing a series sample if `previous` and `next` samples contain the same value.
 
 ## Gap
 
@@ -56,44 +54,47 @@ Example.
 
 ## Downsampling Algorithm
 
-The algorithm processes samples in increasing order of timestamps.
+The algorithm processes samples in timestamp increasing order.
 Each sample is accepted or rejected by the algorithm.
 Accepted samples constitute the resulting series.
 To accept or reject a sample the following conditions are checked sequentially.
 
-**1.**
-The following samples are accepted:
+**1.** The following samples are accepted:
 
 * The first series sample, and the last series sample.
-* Annotated sample - the sample with not empty [text field](./query.md#value-object).
-* Sample whose value is `NaN` (not a number).
-* Sample whose previous or subsequent sample has the `NaN` value.
+* Annotated sample: Sample with a non-empty [text field](./query.md#value-object).
+* Sample with `NaN` value.
+* Sample whose previous or subsequent sample value is `NaN`.
 
-If the sample does not fall into one of these categories, go to the next step.
+If the sample does not fall into one of these categories, the algorithm proceeds to the next step.
 
-**2. If the `gap` parameter is specified.**
-Calculate the difference between the sample timestamp and the timestamp of the latest accepted sample. If the difference exceeds the `gap` then accept the sample. Otherwise go to the next step.
+**2.** If the `gap` parameter is specified.
 
-**3. If the `difference` parameter is provided.**
-Introduce the following notations:
+Calculate the difference between the sample timestamp and the timestamp of the latest accepted sample. If the difference exceeds the `gap` then the sample is accepted. Otherwise the algorithm proceeds to the next step.
 
-* `last_value` - the value of the last accepted sample.
-* `value` - the value of the sample under consideration.
-* `next_value` - the value of the nearest subsequent sample.
+**3.** If the `difference` parameter is provided.
 
-If
+Introduce the following notation:
+
+* `last_value`: Value of the last accepted sample.
+* `value`: Value of the sample under consideration.
+* `next_value`: Value of the nearest subsequent sample.
+
+The algorithm calculates:
 
 ```java
 |value - last_value| > difference || |next_value - value| > difference
 ```
 
-then accept the sample. Otherwise go to the next step.
+If the statement is `true`, the algorithm accepts the sample. Otherwise the algorithm proceeds to the next step.
 
-**4. If the `factor` parameter is provided.**
-If any of ratios `last_value/value`, `value/last_value`, `next_value/value`, and `value/next_value` exceeds the `factor` then accept the sample. Otherwise go to the next step.
+**4.** If the `factor` parameter is provided.
 
-**5. If no one of the `difference` and `factor` parameters is provided.**
-If the `value` differs either from the `last_value`, or from the `next_value`, then accept the sample. Otherwise go to the next step.
+If any of ratios `last_value/value`, `value/last_value`, `next_value/value`, and `value/next_value` exceed the `factor` the algorithm accepts the sample. Otherwise the algorithm proceeds to the next step.
+
+**5.** If neither the `difference` nor `factor` parameter is provided.
+
+If the `value` differs either from the `last_value`, or from the `next_value`, the algorithm accepts the sample. Otherwise the algorithm proceeds to the next step.
 
 **6.** Reject the sample.
 
@@ -105,15 +106,15 @@ If the `value` differs either from the `last_value`, or from the `next_value`, t
 
 ## Downsampling Examples
 
-## Series Deduplication
+## Series De-duplication
 
-To perform series deduplication use the `downsample` without parameters.
+Perform series de-duplication use `downsample` without additional parameters.
 
 ```json
 "downsample": {}
 ```
 
-The downsampling result:
+**Result**:
 
 ```ls
 |       | initial| downsampled |                              |
@@ -135,15 +136,13 @@ The downsampling result:
 | 20:00 |   3    |      3      | last sample                  |
 ```
 
-## Deduplication with `gap`
-
-The `downsample` settings:
+## De-duplication with `gap`
 
 ```json
 "downsample": {"gap": {"count": 2, "unit": "HOUR"}}
 ```
 
-The downsampling result:
+**Result**:
 
 ```ls
 |       | initial| downsampled |                                                  |
@@ -167,8 +166,6 @@ The downsampling result:
 
 ## Downsampling with `difference` and `gap`
 
-The `downsample` settings:
-
 ```json
 "downsample": {
     "difference": 2,
@@ -176,7 +173,7 @@ The `downsample` settings:
 }
 ```
 
-The downsampling result:
+**Result**:
 
 ```ls
 |       | initial| downsampled |                                                  |

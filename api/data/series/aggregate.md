@@ -22,7 +22,7 @@ The aggregation process is implemented as follows:
 | `threshold`    | object  | Object containing the minimum / maximum range for a `THRESHOLD_*` aggregator.  |
 | `calendar`     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
 | `workingMinutes` | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate`, `aggregate`, and `downsample` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`, `downsample`.<br>Default: `0`. |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate`, `aggregate`, and `downsample` stages. The stage with the smallest order is executed first. If stages have the same order, the default order is: `group`, `rate`, `aggregate`, `downsample`.<br>Default: `0`. |
 
 ### Period
 
