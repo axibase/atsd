@@ -129,7 +129,7 @@ Examples:
 | [group](group.md) | object | Merge multiple series into one series. |
 | [rate](rate.md) | object | Compute difference between consecutive samples per unit of time (rate period). |
 | [aggregate](aggregate.md) | object | Group detailed values into periods and calculate statistics for each period. |
-| [downsample](downsample.md) | object | Filter out each series sample which value is nearly the same as value of the previous sample or value of the next sample. |
+| [downsample](downsample.md) | object | Reduce time series cardinality by filtering out some samples. |
 
 Transformation Sequence
 
