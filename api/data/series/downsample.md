@@ -10,12 +10,12 @@
 
 ## Overview
 
-The downsampling is a reduction of time series cardinality by filtering out some samples. If the [series query](./query.md) has the `downsample` field, then donsampling is performed in specified order among other series [transformations](./query.md#transformation-fields).
+The downsampling is a reduction of time series cardinality by filtering out some samples. If the [series query](./query.md) has the `downsample` field, then downsampling is performed in specified order among other series [transformations](./query.md#transformation-fields).
 
 Example of the `downsample` setting.
 
 ```json
-"donsample": {
+"downsample": {
     "gap": {"count": 1, "unit": "HOUR"},
     "difference": 10,
     "order": 2
@@ -32,7 +32,7 @@ All parameters are optional.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `gap` | object | Time interval specified in terms of time unit and count. If this parameter is specified then the time gap between subsequent samples of resulting series is not much more than value of this parameter. For example, if `gap` is zero then no samples are filtered out, and resulting series is the same as initial series. <br>View the [algorithm](downsampling-algorithm) section for detailed description how this parameter works. <br> View the [gap](gap) section for description of the `gap` syntax. |
+| `gap` | object | Time interval specified in terms of time unit and count. If this parameter is specified then the time gap between subsequent samples of resulting series is not much more than value of this parameter. For example, if `gap` is zero then no samples are filtered out, and resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. <br> View the [gap](#gap) section for description of the `gap` syntax. |
 | `difference` | number | Not negative number, used as threshold for difference between values of two series samples. If the difference is not exceeds this threshold then one of samples could be filtered out. <br>Only one of the `difference` and the `factor` settings may be specified. |
 | `factor` | number | Not negative number. If ratio of two series samples is less than `factor` then one of samples could be filtered out. <br> Could be used if the `difference` parameter is not set. |
 | `order` | integer | This field determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is 0.|
