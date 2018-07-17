@@ -6,7 +6,7 @@
 * [Parameters](#parameters)
 * [Gap Syntax](#gap)
 * [Downsampling Algorithm](#downsampling-algorithm)
-* [Examples](#donsampling-examples)
+* [Examples](#downsampling-examples)
 
 ## Overview
 
@@ -28,7 +28,7 @@ The downsampling strategy is regulated by several parameters.
 
 All parameters are optional. 
 
-> Parameters `difference` and `factor` can not be set simultaniously.
+> Parameters `difference` and `factor` can not be set simultaneously.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
@@ -37,7 +37,7 @@ All parameters are optional.
 | `factor` | number | Not negative number. If ratio of two series samples is less than `factor` then one of samples could be filtered out. <br> Could be used if the `difference` parameter is not set. |
 | `order` | integer | This field determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is 0.|
 
-If no one of the `gap`, `diffrence`, and `factor` parameters is provided then the downsampling performs series deduplication, removing series sample if previous and next samples have the the same value.
+If no one of the `gap`, `diffrence`, and `factor` parameters is provided then the downsampling performs series deduplication, removing series sample if previous and next samples have the same value.
 
 ## Gap
 
@@ -86,12 +86,12 @@ If the sample value differs either from the value of the last accepted sample, o
 **6.** Reject the sample.
 
 <!-- markdownlint-disable MD028 -->
-> If series [versions](./versions.md) are queried, then algorithm is applied to the lateset versions. If the latest version passes the downsampling filter then all versions with the same timestamp are included in resulting series.<br>
+> If series [versions](./versions.md) are queried, then algorithm is applied to the latest versions. If the latest version passes the downsampling filter then all versions with the same timestamp are included in resulting series.<br>
 
  > Sometimes samples are processed in decreasing order of the timestamps. That could happens if limited number of latest series samples is queried, so the [limit](./query.md#transformation-fields) is specified in the query.
 <!-- markdownlint-enable MD028 -->
 
-## Donsampling Examples
+## Downsampling Examples
 
 ## Series Deduplication
 
