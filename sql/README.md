@@ -2732,7 +2732,7 @@ SELECT DBTIMEZONE
 #### IS_WORKDAY
 
 The `IS_WORKDAY` function returns `boolean` value (`true` if the date is a workday, `false` otherwise) for the provided country.
-First argument is the datetime, second is string containing the country name.
+First argument is the `datetime`, second is `string` containing the country name.
 
 Note: the function requires a holiday calendar for the year and the country.
 
@@ -2745,7 +2745,7 @@ WHERE IS_WORKDAY(datetime, 'USA') = true
 #### IS_WEEKDAY
 
 The `IS_WEEKDAY` function returns `boolean` value (`true` if the date is a weekday, `false` otherwise) for the provided country.
-First argument is datetime, second is country name in [ISO 3166 alpha-3 format](http://kirste.userpage.fu-berlin.de/diverse/doc/ISO_3166.html).
+First argument is `datetime`, second is `string` containing the country name.
 
 ```sql
 SELECT date_format(datetime, 'yyyy-MM-dd') as "date",
