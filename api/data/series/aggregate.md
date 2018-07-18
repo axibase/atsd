@@ -7,7 +7,7 @@ Splits the interval into periods and calculates statistics for each period. If p
 The aggregation process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` into each series separately. <br>`startDate` is inclusive and `endDate` is exclusive.
-2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter. If the `period` parameter is not provided then all data fall into the single period.
+2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter. If the `period` parameter is not provided, then all series data falls into the single period from `startDate` till `endDate`.
 3. Discard periods whose start time is earlier than `startDate`.
 4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified `time:value` array for each series where `time` is the period start time and `value` is the result of the statistical function.
 
