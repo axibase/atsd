@@ -2737,17 +2737,6 @@ First argument is the `datetime`, second is `string` containing the country name
 Note: the function requires a holiday calendar for the year and the country.
 
 ```sql
-SELECT entity, datetime, value
-  FROM cpu_busy
-WHERE IS_WORKDAY(datetime, 'USA') = true
-```
-
-#### IS_WEEKDAY
-
-The `IS_WEEKDAY` function returns `boolean` value (`true` if the date is a weekday, `false` otherwise) for the provided country.
-First argument is `datetime`, second is `string` containing the country name.
-
-```sql
 SELECT date_format(datetime, 'yyyy-MM-dd') as "date",
        is_workday(datetime, 'RUS') as "RUS", is_workday(datetime, 'ISR') as "ISR"
   FROM cpu_busy
@@ -2764,6 +2753,17 @@ ORDER BY "date"
 | 2018-01-08 | false | true  |
 | 2018-01-09 | true  | true  |
 | 2018-01-10 | true  | true  |
+```
+
+#### IS_WEEKDAY
+
+The `IS_WEEKDAY` function returns `boolean` value (`true` if the date is a weekday, `false` otherwise) for the provided country.
+First argument is `datetime`, second is `string` containing the country name.
+
+```sql
+SELECT entity, datetime, value
+  FROM cpu_busy
+WHERE IS_WORKDAY(datetime, 'USA') = true
 ```
 
 ### Mathematical Functions
