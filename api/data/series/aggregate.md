@@ -2,12 +2,12 @@
 
 ## Overview
 
-Splits the interval into periods and calculates statistics for each period.
+Splits the interval into periods and calculates statistics for each period. If period is not specified then the interval is considered as the only period, and statistics are computed for the whole interval.
 
 The aggregation process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` into each series separately. <br>`startDate` is inclusive and `endDate` is exclusive.
-2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter.
+2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter. If the `period` parameter is not provided then all data fall into the single period.
 3. Discard periods whose start time is earlier than `startDate`.
 4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified `time:value` array for each series where `time` is the period start time and `value` is the result of the statistical function.
 
@@ -17,7 +17,7 @@ The aggregation process is implemented as follows:
 |:---|:---|:---|
 | `type`  | string        | [**Required**] [Statistical function](../../../api/data/aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
 | `types` | array          | Array of [statistical functions](../../../api/data/aggregation.md). Either `type` or `types` field are required in each query. |
-| `period`  | object     | [**Required**] [Period](#period). |
+| `period`  | object     | [Period](#period). |
 | `interpolate`  | object  | Generates aggregation periods in case of missing samples using an [interpolation function](#interpolation), for example, `PREVIOUS` or `LINEAR`   |
 | `threshold`    | object  | Object containing the minimum / maximum range for a `THRESHOLD_*` aggregator.  |
 | `calendar`     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
@@ -83,6 +83,16 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
     "aggregate": {
         "types": [ "AVG", "MAX" ],
         "period": { "count": 15, "unit": "MINUTE" }
+    }
+}
+```
+
+* Average and Count for the Entire Interval
+
+```json
+{
+    "aggregate": {
+        "types": [ "AVG", "COUNT" ]
     }
 }
 ```
