@@ -462,3 +462,23 @@ GROUP BY PERIOD(1 hour)
 | 2018-03-16 16:00:00  | Fri          | 11.423      | 225          |
 | 2018-03-16 17:00:00  | Fri          | 52.672      | 224          |
 ```
+
+## Query by Workday or Weekday
+
+Filter days-off, weekdays or workdays using `IS_WORKDAY` or `IS_WEEKDAY`.
+
+```sql
+SELECT entity, datetime, value
+  FROM "mpstat.cpu_busy"
+WHERE NOT IS_WORKDAY(datetime, 'USA')
+  AND IS_WORKDAY(datetime, 'ISR')
+ORDER BY datetime
+```
+
+```sql
+SELECT entity, datetime, value
+  FROM "mpstat.cpu_busy"
+WHERE IS_WEEKDAY(datetime, 'USA')
+  AND NOT IS_WEEKDAY(datetime, 'ISR')
+ORDER BY datetime
+```

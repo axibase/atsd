@@ -2729,6 +2729,30 @@ SELECT DBTIMEZONE
 -- returns GMT0
 ```
 
+#### IS_WORKDAY
+
+The `IS_WORKDAY` function returns `boolean` value (`true` if the date is a workday, `false` otherwise) for the provided country.
+First argument is the datetime, second is the country name in [ISO 3166 alpha-3 format](http://kirste.userpage.fu-berlin.de/diverse/doc/ISO_3166.html).
+
+Note: the function requires a holiday calendar for the year and the country.
+
+```sql
+SELECT entity, datetime, value
+  FROM "mpstat.cpu_busy"
+WHERE IS_WORKDAY(datetime, 'USA')
+```
+
+#### IS_WEEKDAY
+
+The `IS_WEEKDAY` function returns `boolean` value (`true` if the date is a weekday, `false` otherwise) for the provided country.
+First argument is datetime, second is country name in [ISO 3166 alpha-3 format](http://kirste.userpage.fu-berlin.de/diverse/doc/ISO_3166.html).
+
+```sql
+SELECT entity, datetime, value
+  FROM "mpstat.cpu_busy"
+WHERE IS_WEEKDAY(datetime, 'USA')
+```
+
 ### Mathematical Functions
 
 | **Function** | **Description** |
