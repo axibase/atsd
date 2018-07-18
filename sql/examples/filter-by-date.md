@@ -465,20 +465,25 @@ GROUP BY PERIOD(1 hour)
 
 ## Query by Workday or Weekday
 
-Filter days-off, weekdays or workdays using `IS_WORKDAY` or `IS_WEEKDAY`.
+Use `is_workday` or `is_weekday` to filter days-off, holidays, weekdays, workdays.
+The query below shows average load of CPU during weekdays, which are holidays.
 
 ```sql
-SELECT entity, datetime, value
-  FROM "mpstat.cpu_busy"
-WHERE NOT IS_WORKDAY(datetime, 'USA')
-  AND IS_WORKDAY(datetime, 'ISR')
-ORDER BY datetime
+SELECT date_format(datetime, 'yyyy-MM-dd') as "date", avg(value)
+  FROM cpu_busy
+WHERE IS_WEEKDAY(datetime, 'USA') = true
+  AND IS_WORKDAY(datetime, 'USA') = false
+GROUP BY "date"
+ORDER BY "date"
 ```
 
-```sql
-SELECT entity, datetime, value
-  FROM "mpstat.cpu_busy"
-WHERE IS_WEEKDAY(datetime, 'USA')
-  AND NOT IS_WEEKDAY(datetime, 'ISR')
-ORDER BY datetime
+```ls
+|    date    | value |
+|------------|-------|
+| 2018-01-01 |   15  |
+| 2018-05-28 |   15  |
+| 2018-07-04 |   15  |
+| 2018-09-03 |   15  |
+| 2018-11-22 |   15  |
+| 2018-12-25 |   15  |
 ```
