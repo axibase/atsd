@@ -35,23 +35,23 @@ The `millis` property returns current time in Unix milliseconds.
 
 * `is_weekday([c])` boolean
 
-Returns true if the DateTime object represents date on weekday.
+Returns `true` if the `DateTime` object represents date on weekday.
 Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
-If country can't be resolved by country code, returns true if day of week is not Saturday or Sunday.
+If country cannot be resolved by country code, returns `true` if day of week is not Saturday or Sunday.
 If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from `user.country` system property.
 
 * `is_weekend([c])` boolean
 
-Returns true if the DateTime object represents date on weekday. 
+Returns `true` if the `DateTime` object represents date on weekend.
 Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
-If country can't be resolved by country code, returns true if day of week is Saturday or Sunday.
+If country cannot be resolved by country code, returns `true` if day of week is Saturday or Sunday.
 If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from `user.country` system property.
 
 * `is_workday([cal])` boolean
 
-Returns true if the DateTime object represents date on weekday. 
+Returns `true` if the `DateTime` object represents date on weekday.
 Accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) description for details.
 If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from `user.country` system property.

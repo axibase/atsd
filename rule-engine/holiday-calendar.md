@@ -50,9 +50,9 @@ USA | `usa` | [![](./images/button-download.png)](https://raw.githubusercontent.
 
 ## Calendars Modification
 
-### Schema 
+### Schema
 
-Calendars are stored as JSON documents with a strict [schema](holiday-calendar-schema.md). Calendar key is the file name prefix. 
+Calendars are stored as JSON documents with a strict [schema](holiday-calendar-schema.md). Calendar key is the file name prefix.
 The file with calendar data structure can be named as follows:
 
 * `{calendar_key}.json`
@@ -62,7 +62,7 @@ The file with calendar data structure can be named as follows:
 
 Go to **Settings > Workday Calendars**. Click **Choose Files** button and select one or more prepared calendars, click **Import**.
 
-![](images/holiday-calendars.png)
+![](./images/holiday-calendars.png)
 
 The selected files are copied to the `/opt/atsd/atsd/conf/calendars` directory. The workday calendar cache is refreshed, and the updates are loaded.
 

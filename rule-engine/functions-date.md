@@ -55,7 +55,6 @@ now.dayOfWeek == 'Thursday' && now.hourOfDay == 15
 elapsedTime(create_ms) > 60*60000
 ```
 
-
 ### `today`
 
 ```javascript
@@ -71,7 +70,6 @@ tomorrow DateTime
 ```
 
 Returns the next day at midnight as a [`DateTime`](object-datetime.md) object.
-
 
 ### `yesterday`
 
