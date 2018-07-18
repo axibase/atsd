@@ -2738,8 +2738,8 @@ Note: the function requires a holiday calendar for the year and the country.
 
 ```sql
 SELECT entity, datetime, value
-  FROM "mpstat.cpu_busy"
-WHERE IS_WORKDAY(datetime, 'USA')
+  FROM cpu_busy
+WHERE IS_WORKDAY(datetime, 'USA') = true
 ```
 
 #### IS_WEEKDAY
