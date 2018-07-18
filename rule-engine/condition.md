@@ -128,5 +128,5 @@ value > 90 AND db_last('io_nodes_used_precent') < 80
 The condition is `true` if the average exceeds `90` at any time or if the average exceeds `50` during the working hours (between `08:00:00` and `17:59:59`).
 
 ```javascript
-avg() > 90 || avg() > 50 && now.getHourOfDay() BETWEEN 8 AND 17
+avg() > 90 || avg() > 50 && now.hourOfDay BETWEEN 8 AND 17
 ```

@@ -31,16 +31,31 @@ The `DateTime` object represents a specific date and time in the **server** time
 
 The `millis` property returns current time in Unix milliseconds.
 
-## Methods
+## Functions
 
-* `is_weekday([c])`
-* `is_weekend([c])`
-* `is_workday([cal])`
+* `is_weekday([c])` boolean
 
-`is_weekday` and `is_weekend` functions accept optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
+Returns true if the DateTime object represents date on weekday.
+Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
+If country can't be resolved by country code, returns true if day of week is not Saturday or Sunday.
+If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
+By default `default.holiday.calendar` resolves country code from `user.country` system property.
 
-`is_workday()` function accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) description for details.
-If calendar key is not specified, ATSD uses the `default.holiday.calendar` server property.
+* `is_weekend([c])` boolean
+
+Returns true if the DateTime object represents date on weekday. 
+Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
+If country can't be resolved by country code, returns true if day of week is Saturday or Sunday.
+If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
+By default `default.holiday.calendar` resolves country code from `user.country` system property.
+
+* `is_workday([cal])` boolean
+
+Returns true if the DateTime object represents date on weekday. 
+Accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) description for details.
+If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
+By default `default.holiday.calendar` resolves country code from `user.country` system property.
+If no holiday calendar for the expected year is found by key, the exception is thrown.
 
 ## Window Fields
 

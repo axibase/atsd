@@ -57,13 +57,13 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags}
 Alternatively, use the [`now`](window-fields.md#date-fields) placeholder to access the current server time.
 
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.getMillis()}
+series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.millis}
 ```
 
 To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical) function and the seconds field `s:`:
 
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMillis()/1000)}
+series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.millis/1000)}
 ```
 
 #### Received Time

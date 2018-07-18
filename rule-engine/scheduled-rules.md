@@ -41,10 +41,10 @@ getEntityCount('jmx.zookeeper.tick', 'now - 1*DAY', 'now - 1*HOUR', '') > 0
 
 To restrict the times of the day when the rule is active, evaluate the `now` field as part of the condition.
 
-The [`now`](window-fields.md#date-fields) field represents current server time as a [`DateTime`](object-datetime.md) object which properties can be accessed with various `get()` methods.
+The [`now`](window-fields.md#date-fields) field represents current server time as a [`DateTime`](object-datetime.md) object which properties can be accessed with dot notation syntax.
 
 ```javascript
-now.getHourOfDay() = 15
+now.hourOfDay = 15
 ```
 
 ![](./images/timer-calendar.png)

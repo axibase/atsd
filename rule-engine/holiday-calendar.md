@@ -2,8 +2,27 @@
 
 ## Overview
 
-Holiday Calendar is a data structure containing national holiday and work day information. [`DateTime` object](object-datetime.md) method `is_workday` uses Holiday Calendar to
+Holiday Calendar is a data structure containing national holiday and work day information. [`DateTime` objects](object-datetime.md) method `is_workday` use Holiday Calendar to
  accurately determine the working days of a given country.
+
+## Usage
+
+Holiday calendars can be used in:
+
+* [`IS_WORKDAY`](../sql/README.md#is_workday) SQL function
+* `is_workday([c])` [DateTime](object-datetime.md) function
+* `next_workday` and `previous_workday` [DateTime](object-datetime.md) properties
+* `next_non_working_day` and `previous_non_working_day` [DateTime](object-datetime.md) properties
+
+### Example
+
+```sql
+SELECT datetime, value, IS_WORKDAY(time) AS "workday" FROM metric
+```
+
+```javascript
+now.is_workday()
+```
 
 ## Default calendars
 
@@ -22,290 +41,84 @@ China | `chn` | [![](./images/button-download.png)](https://raw.githubuserconten
 Germany | `deu` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/deu_2018.json)
 France | `fra` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/fra_2018.json)
 Great Britain | `gbr` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/gbr_2018.json)
+Israel | `isr` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/isr_2018.json)
 Japan | `jpn` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/jpn_2018.json)
 Korea | `kor` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/kor_2018.json)
 Russia | `rus` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/rus_2018.json)
 Singapore | `sgp` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/sgp_2018.json)
 USA | `usa` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/usa_2018.json)
 
-## Creating New Calendars
+## Calendars Modification
 
-### Location
+### Schema 
 
-Calendars are represented as JSON documents located in `/opt/atsd/atsd/conf/calendars` directory.
+Calendars are stored as JSON documents with a strict [schema](holiday-calendar-schema.md). Calendar key is the file name prefix. 
 The file with calendar data structure can be named as follows:
 
 * `{calendar_key}.json`
 * `{calendar_key}_{yyyy}.json`
 
-### JSON Schema
+### Import to ATSD
 
-```json
-{
-  "$id": "https://example.com/usa_2018.json",
-  "type": "array",
-  "definitions": {},
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "items": {
-    "$id": "https://example.com/usa_2018.json/items",
-    "type": "object",
-    "properties": {
-      "date": {
-        "$id": "https://example.com/usa_2018.json/items/properties/date",
-        "type": "object",
-        "properties": {
-          "day": {
-            "$id": "https://example.com/usa_2018.json/items/properties/date/properties/day",
-            "type": "integer",
-            "title": "The Day Schema ",
-            "default": 0,
-            "examples": [
-              11
-            ]
-          },
-          "month": {
-            "$id": "https://example.com/usa_2018.json/items/properties/date/properties/month",
-            "type": "integer",
-            "title": "The Month Schema ",
-            "default": 0,
-            "examples": [
-              11
-            ]
-          },
-          "year": {
-            "$id": "https://example.com/usa_2018.json/items/properties/date/properties/year",
-            "type": "integer",
-            "title": "The Year Schema ",
-            "default": 0,
-            "examples": [
-              2018
-            ]
-          },
-          "dayOfWeek": {
-            "$id": "https://example.com/usa_2018.json/items/properties/date/properties/dayOfWeek",
-            "type": "integer",
-            "title": "The Dayofweek Schema ",
-            "default": 0,
-            "examples": [
-              7
-            ]
-          }
-        }
-      },
-      "observedOn": {
-        "$id": "https://example.com/usa_2018.json/items/properties/observedOn",
-        "type": "object",
-        "required": false,
-        "properties": {
-          "day": {
-            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/day",
-            "type": "integer",
-            "title": "The Day Schema ",
-            "default": 0,
-            "examples": [
-              12
-            ]
-          },
-          "month": {
-            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/month",
-            "type": "integer",
-            "title": "The Month Schema ",
-            "default": 0,
-            "examples": [
-              11
-            ]
-          },
-          "year": {
-            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/year",
-            "type": "integer",
-            "title": "The Year Schema ",
-            "default": 0,
-            "examples": [
-              2018
-            ]
-          },
-          "dayOfWeek": {
-            "$id": "https://example.com/usa_2018.json/items/properties/observedOn/properties/dayOfWeek",
-            "type": "integer",
-            "title": "The Dayofweek Schema ",
-            "default": 0,
-            "examples": [
-              1
-            ]
-          }
-        }
-      },
-      "name": {
-        "$id": "https://example.com/usa_2018.json/items/properties/name",
-        "type": "array",
-        "items": {
-          "$id": "https://example.com/usa_2018.json/items/properties/name/items",
-          "type": "object",
-          "properties": {
-            "lang": {
-              "$id": "https://example.com/usa_2018.json/items/properties/name/items/properties/lang",
-              "type": "string",
-              "title": "The Lang Schema ",
-              "default": "",
-              "examples": [
-                "en"
-              ]
-            },
-            "text": {
-              "$id": "https://example.com/usa_2018.json/items/properties/name/items/properties/text",
-              "type": "string",
-              "title": "The Text Schema ",
-              "default": "",
-              "examples": [
-                "Veterans Day"
-              ]
-            }
-          }
-        }
-      },
-      "holidayType": {
-        "$id": "https://example.com/usa_2018.json/items/properties/holidayType",
-        "type": "string",
-        "title": "The Holidaytype Schema ",
-        "default": "",
-        "examples": [
-          "public_holiday"
-        ]
-      }
-    }
-  }
-}
-```
+Go to **Settings > Workday Calendars**. Click **Choose Files** button and select one or more prepared calendars, click **Import**.
+
+![](images/holiday-calendars.png)
+
+The selected files are copied to the `/opt/atsd/atsd/conf/calendars` directory. The workday calendar cache is refreshed, and the updates are loaded.
+
+The other option is to put the calendar files into the `/opt/atsd/atsd/conf/calendars` directory manually.
 
 ### Example
+
+The example below illustrates a custom holiday calendar for New York Stock Exchange.
+Create a file `nyse_2018.json`.
 
 ```json
 [
   {
-    "date": {
-      "day": 1,
-      "month": 1,
-      "year": 2018,
-      "dayOfWeek": 1
-    },
-    "holidayType": "public_holiday",
-    "name": [
-      {
-        "lang": "en",
-        "text": "New Year's Day"
-      }
-    ]
+    "date": "2018-01-01",
+    "description": "New Years Day",
+    "type": "Holiday"
   },
   {
-    "date": {
-      "day": 15,
-      "month": 1,
-      "year": 2018,
-      "dayOfWeek": 1
-    },
-    "name": [
-      {
-        "lang": "en",
-        "text": "Dr. Martin Luther King, Jr. Day"
-      }
-    ],
-    "holidayType": "public_holiday"
+    "date": "2018-01-15",
+    "description": "Martin Luther King, Jr. Day",
+    "type": "Holiday"
   },
   {
-    "date": {
-      "day": 28,
-      "month": 5,
-      "year": 2018,
-      "dayOfWeek": 1
-    },
-    "holidayType": "public_holiday",
-    "name": [
-      {
-        "lang": "en",
-        "text": "Memorial Day"
-      }
-    ]
+    "date": "2018-02-19",
+    "description": "Washington's Birthday",
+    "type": "Holiday"
   },
   {
-    "date": {
-      "day": 4,
-      "month": 7,
-      "year": 2018,
-      "dayOfWeek": 3
-    },
-    "holidayType": "public_holiday",
-    "name": [
-      {
-        "lang": "en",
-        "text": "Independence Day"
-      }
-    ]
+    "date": "2018-03-30",
+    "description": "Good Friday",
+    "type": "Holiday"
   },
   {
-    "date": {
-      "day": 3,
-      "month": 9,
-      "year": 2018,
-      "dayOfWeek": 1
-    },
-    "holidayType": "public_holiday",
-    "name": [
-      {
-        "lang": "en",
-        "text": "Labor Day"
-      }
-    ]
+    "date": "2018-05-28",
+    "description": "Memorial Day",
+    "type": "Holiday"
   },
   {
-    "date": {
-      "day": 11,
-      "month": 11,
-      "year": 2018,
-      "dayOfWeek": 7
-    },
-    "observedOn": {
-      "day": 12,
-      "month": 11,
-      "year": 2018,
-      "dayOfWeek": 1
-    },
-    "name": [
-      {
-        "lang": "en",
-        "text": "Veterans Day"
-      }
-    ],
-    "holidayType": "public_holiday"
+    "date": "2018-07-04",
+    "description": "Independence Day",
+    "type": "Holiday"
   },
   {
-    "date": {
-      "day": 22,
-      "month": 11,
-      "year": 2018,
-      "dayOfWeek": 4
-    },
-    "holidayType": "public_holiday",
-    "name": [
-      {
-        "lang": "en",
-        "text": "Thanksgiving Day"
-      }
-    ]
+    "date": "2018-09-03",
+    "description": "Labor Day",
+    "type": "Holiday"
   },
   {
-    "date": {
-      "day": 25,
-      "month": 12,
-      "year": 2018,
-      "dayOfWeek": 2
-    },
-    "holidayType": "public_holiday",
-    "name": [
-      {
-        "lang": "en",
-        "text": "Christmas Day"
-      }
-    ]
+    "date": "2018-11-22",
+    "description": "Thanksgiving Day",
+    "type": "Holiday"
+  },
+  {
+    "date": "2018-12-25",
+    "description": "Christmas",
+    "type": "Holiday"
   }
 ]
 ```
@@ -315,4 +128,4 @@ The file with calendar data structure can be named as follows:
 ### `is_workday` Function Throws Exception After ATSD Upgrade
 
 Holiday calendars are included with new ATSD installations.
-Download the required [calendars](#default-calendars) and store them in the `/opt/atsd/atsd/conf/calendars` directory.
+Download the required [calendars](#default-calendars) and [import](#import-to-atsd) them to ATSD.

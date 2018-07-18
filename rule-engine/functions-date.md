@@ -7,6 +7,9 @@ Date functions perform various operations on dates, timestamps, and intervals.
 ## Reference
 
 * [`now`](#now)
+* [`today`](#today)
+* [`tomorrow`](#tomorrow)
+* [`yesterday`](#yesterday)
 * [`window_length_time`](#window_length_time)
 * [`window_length_count`](#window_length_count)
 * [`windowStartTime`](#windowstarttime)
@@ -14,6 +17,7 @@ Date functions perform various operations on dates, timestamps, and intervals.
 * [`seconds`](#seconds)
 * [`elapsedTime`](#elapsedtime)
 * [`date_parse`](#date_parse)
+* [`to_datetime`](#to_datetime)
 
 ## Related Formatting Functions
 
@@ -24,19 +28,12 @@ Date functions perform various operations on dates, timestamps, and intervals.
 ### `now`
 
 ```javascript
-now long
+now DateTime
 ```
 
 Returns the current time as a [`DateTime`](object-datetime.md) object.
 
-The `DateTime` object fields can be accessed with `get` methods.
-
-```javascript
-// returns true on Thursdays
-now.getDayOfWeek() == 4
-```
-
-The fields can be also accessed using the dot notation.
+The `DateTime` object fields can be accessed using the dot notation.
 
 ```javascript
 // returns true on Thursdays
@@ -47,16 +44,42 @@ Examples:
 
 ```javascript
 // returns true on Thursdays at anytime between 15:00 and 16:00 (exclusive)
-now.getDayOfWeek() == 4 && now.getHourOfDay() == 15
+now.dayOfWeek == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
 // returns true if difference between current time (long, Unix milliseconds) and create_ms (long, Unix milliseconds) exceeds 1 hour
-(now.getMillis() - create_ms) > 60*60000
+(now.millis - create_ms) > 60*60000
 
 // the same condition as above implemented using the elapsedTime function
 elapsedTime(create_ms) > 60*60000
 ```
+
+
+### `today`
+
+```javascript
+today DateTime
+```
+
+Returns the current day at midnight as a [`DateTime`](object-datetime.md) object.
+
+### `tomorrow`
+
+```javascript
+tomorrow DateTime
+```
+
+Returns the next day at midnight as a [`DateTime`](object-datetime.md) object.
+
+
+### `yesterday`
+
+```javascript
+yesterday DateTime
+```
+
+Returns the previous day at midnight as a [`DateTime`](object-datetime.md) object.
 
 ### `window_length_time`
 
@@ -153,6 +176,14 @@ The interval in milliseconds can be formatted with [`formatInterval`](functions-
 formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 ```
 
+### `elapsed_minutes`
+
+```javascript
+elapsed_minutes(long t) long
+```
+
+Calculates the number of minutes since `t` to current time.
+
 ### `date_parse`
 
 ```javascript
@@ -165,17 +196,17 @@ The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the defa
 
 > The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
 
-The fields of the `DateTime` object can be accessed using the following methods:
+The fields of the `DateTime` object can be accessed using the following functions:
 
 ```javascript
-date_parse("2018-01-13T16:45:22.303Z").getDayOfWeek()
+date_parse("2018-01-13T16:45:22.303Z").day_of_week
 ```
 
 Examples:
 
 ```javascript
 /* Returns true if the specified date is a working day. */
-date_parse(property('config::deleted')).getDayOfWeek() < 6
+date_parse(property('config::deleted')).is_workday()
 ```
 
 ```javascript
@@ -212,4 +243,19 @@ date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ
 /* These expressions lead to exceptions. */
 date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ", "Europe/Berlin")
 date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+```
+
+### `to_datetime`
+
+```javascript
+to_datetime(long m) DateTime
+```
+
+Returns DateTime object constructed from Unix milliseconds `m`.
+
+Example:
+
+```javascript
+/* Returns true if the specified date is a working day. */
+to_datetime(timestamp).is_workday()
 ```
