@@ -2748,9 +2748,22 @@ The `IS_WEEKDAY` function returns `boolean` value (`true` if the date is a weekd
 First argument is datetime, second is country name in [ISO 3166 alpha-3 format](http://kirste.userpage.fu-berlin.de/diverse/doc/ISO_3166.html).
 
 ```sql
-SELECT entity, datetime, value
-  FROM "mpstat.cpu_busy"
-WHERE IS_WEEKDAY(datetime, 'USA')
+SELECT date_format(datetime, 'yyyy-MM-dd') as "date",
+       is_workday(datetime, 'RUS') as "RUS", is_workday(datetime, 'ISR') as "ISR"
+  FROM cpu_busy
+WHERE "date" between '2018-01-06' and '2018-01-10'
+GROUP BY "date", "RUS", "ISR"
+ORDER BY "date"
+```
+
+```ls
+|    date    |  RUS  |  ISR  |
+|------------|-------|-------|
+| 2018-01-06 | false | false |
+| 2018-01-07 | false | true  |
+| 2018-01-08 | false | true  |
+| 2018-01-09 | true  | true  |
+| 2018-01-10 | true  | true  |
 ```
 
 ### Mathematical Functions
