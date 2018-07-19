@@ -2,12 +2,12 @@
 
 ## Overview
 
-Splits the interval into periods and calculates statistics for each period.
+Aggregate Processor splits an interval into periods and calculates statistics for each period. If no period is specified in the request, statistics are computed for the entire interval.
 
 The aggregation process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` into each series separately. <br>`startDate` is inclusive and `endDate` is exclusive.
-2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter.
+2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter.<br>If `period` parameter is not specified, all series data belongs to a single period from `startDate` till `endDate`.
 3. Discard periods whose start time is earlier than `startDate`.
 4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified `time:value` array for each series where `time` is the period start time and `value` is the result of the statistical function.
 
@@ -15,13 +15,13 @@ The aggregation process is implemented as follows:
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `type`  | string        | [**Required**] [Statistical function](../../../api/data/aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
+| `type`  | string        | **[Required]** [Statistical function](../../../api/data/aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
 | `types` | array          | Array of [statistical functions](../../../api/data/aggregation.md). Either `type` or `types` field are required in each query. |
-| `period`  | object     | [**Required**] [Period](#period). |
-| `interpolate`  | object  | Generates aggregation periods in case of missing samples using an [interpolation function](#interpolation), for example, `PREVIOUS` or `LINEAR`   |
-| `threshold`    | object  | Object containing the minimum / maximum range for a `THRESHOLD_*` aggregator.  |
-| `calendar`     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
-| `workingMinutes` | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
+| `period`  | object     | Regular [period](#period) specified with count and time unit, for example `{ "count": 1, "unit": "HOUR" }`. |
+| `interpolate`  | object  | Fill values in empty periods using an [interpolation function](#interpolation), for example, `PREVIOUS` or `LINEAR`.   |
+| `threshold`    | object  | Object containing the minimum and maximum range for `THRESHOLD_*` functions.  |
+| `calendar`     | object  | Calendar settings for `THRESHOLD_*` functions. |
+| `workingMinutes` | object | Working minutes settings for `THRESHOLD_*` functions.  |
 | `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`.<br>Default: `0`. |
 
 ### Period
@@ -60,8 +60,8 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
-| `start` | number | [**Required**] Working date start time, in minutes. If working day starts at 9:30 then `start` can be specified as `570` (9 * 60 + 30). |
-| `end`   | number | [**Required**] Working date end time, in minutes.  |
+| `start` | number | **[Required]** Working date start time, in minutes. If working day starts at 9:30 then `start` can be specified as `570` (9 * 60 + 30). |
+| `end`   | number | **[Required]** Working date end time, in minutes.  |
 
 ## Examples
 
@@ -87,12 +87,22 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 }
 ```
 
+* Average and Count for the Entire Interval
+
+```json
+{
+    "aggregate": {
+        "types": [ "AVG", "COUNT" ]
+    }
+}
+```
+
 ### Interpolation
 
-By default, if the period does not contain any detailed values, such period is excluded from the results.
+By default, if the period does not contain any detailed values, the period is excluded from results.
 
-This behavior can be changed with an interpolation function.
-The interpolation function substitutes the missing period and calculate its value based on previous and next period values.
+Change this behavior with an interpolation function.
+The interpolation function substitutes the missing period and calculates its value based on previous and next period values.
 
 > Note that missing period values are interpolated from aggregate values of neighboring periods and not raw values.
 
@@ -100,8 +110,8 @@ The interpolation function substitutes the missing period and calculate its valu
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `type`  | string | [**Required**] Interpolation [function](#interpolation-functions). |
-| `value` | number | [**Required by `VALUE` function**] Constant number used to set value for the missing periods. |
+| `type`  | string | **[Required]** Interpolation [function](#interpolation-functions). |
+| `value` | number | **[Required by `value` function]** Constant number used to set value for empty periods. |
 | `extend`  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
 
 Values added by the `extend` setting are determined as follows:
