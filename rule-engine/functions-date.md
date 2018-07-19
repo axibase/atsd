@@ -249,7 +249,7 @@ date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS Z
 to_datetime(long m) DateTime
 ```
 
-Returns DateTime object constructed from Unix milliseconds `m`.
+Returns `DateTime` object constructed from Unix milliseconds `m`.
 
 Example:
 

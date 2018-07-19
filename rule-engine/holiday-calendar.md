@@ -10,9 +10,9 @@ Holiday Calendar is a data structure containing national holiday and work day in
 Holiday calendars can be used in:
 
 * [`IS_WORKDAY`](../sql/README.md#is_workday) SQL function
-* `is_workday([c])` [DateTime](object-datetime.md) function
-* `next_workday` and `previous_workday` [DateTime](object-datetime.md) properties
-* `next_non_working_day` and `previous_non_working_day` [DateTime](object-datetime.md) properties
+* `is_workday([c])` [`DateTime`](object-datetime.md) function
+* `next_workday` and `previous_workday` [`DateTime`](object-datetime.md) properties
+* `next_non_working_day` and `previous_non_working_day` [`DateTime`](object-datetime.md) properties
 
 ### Example
 

@@ -31,6 +31,9 @@ The `DateTime` object represents a specific date and time in the **server** time
 
 The `millis` property returns current time in Unix milliseconds.
 
+`next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` properties calculate
+working days using default workday calendar specified in `default.holiday.calendar` server property.
+
 ## Functions
 
 * `is_weekday([c])` boolean
@@ -52,7 +55,7 @@ By default `default.holiday.calendar` resolves country code from `user.country` 
 * `is_workday([cal])` boolean
 
 Returns `true` if the `DateTime` object represents date on weekday.
-Accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) description for details.
+Accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) for details.
 If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from `user.country` system property.
 If no holiday calendar for the expected year is found by key, the exception is thrown.
