@@ -2,15 +2,15 @@
 
 ## Description
 
-Renames metric: modifies the name, whereas the identifier and the data are retained.
+Renames metric: modifies the name, whereas the identifier, the series data (datetime, value), the metric metadata (tags, fields) are retained.
 
-New operations with the old metric name are stored under a new metric with the old name and a new identifier.
+New commands with the old metric name are stored under a new metric with the old name and a new identifier.
 
 Rules applied to the metric name:
 
-* Whitespaces are forbidden
-* Special characters (such as `: / ? # [ ] @`) are allowed, but must be [encoded](https://axibase.com/docs/atsd/api/data/#uri-encoding) in the URL.
-* The new name of the metric must be unique.
+* Characters with ASCII codes from 0x0 to 0x20 are forbidden.
+* Upper-case letters are treated as lower-case.
+* The new name of metric must not match any other present metric name.
 
 ## Request
 
@@ -68,3 +68,9 @@ curl https://atsd_hostname:8443/api/v1/metrics/old_name/rename \
 None.
 
 ## Additional Examples
+
+### Screenshots
+
+Metric editor page before and after the renaming operation:
+
+![Name is test-metric, ID is 178](./images/metric_rename_old_name.png) ![Name is test-renamed, ID is 178](./images/metric_rename_name_name.png)
