@@ -73,4 +73,5 @@ None.
 
 Metric editor page before and after the renaming operation:
 
-![Name is test-metric, ID is 178](../../../images/metric_rename_old_name.png) ![Name is test-renamed, ID is 178](../../../images/metric_rename_new_name.png)
+<img src="../../../images/metric_rename_old_name.png" alt="Metric name is test-metric, ID is 178" height="640" width="480"/>
+<img src="../../../images/metric_rename_new_name.png" alt="Metric name is test-renamed, ID is 178" height="640" width="480"/>
