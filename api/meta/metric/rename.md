@@ -8,7 +8,7 @@ New commands with the old metric name are stored under a new metric with the old
 
 Rules applied to the metric name:
 
-* Characters with ASCII codes from 0x0 to 0x20 are forbidden.
+* Characters with ASCII codes from %x00 to %x20 and %x7F (non-printable characters) are forbidden.
 * Upper-case letters are treated as lower-case.
 * The new name of metric must not match any other present metric name.
 
@@ -71,7 +71,7 @@ None.
 
 Metric editor page before and after the renaming operation:
 
-<img src="../../../images/metric_rename_old_name.png" alt="Metric name is test-metric, ID is 178" height="550" width="400"/>
-<img src="../../../images/metric_rename_new_name.png" alt="Metric name is test-renamed, ID is 178" height="550" width="400"/>
+![Metric name is old_name](../../../images/metric_rename_old_name.png)
+![Metric name is new_name](../../../images/metric_rename_new_name.png)
 
 ## Additional Examples
