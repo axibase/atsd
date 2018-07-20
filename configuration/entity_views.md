@@ -238,7 +238,7 @@ If no portal is selected, the default portal displays metrics for [columns](#col
 
 The multi-entity portal is any portal that displays a metric for [multiple entities](../portals/portals-overview.md#template-portals) using the `${entities}` placeholder.
 
-```bash
+```ls
 [widget]
   type = chart
   [series]

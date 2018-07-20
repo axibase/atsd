@@ -145,7 +145,7 @@ https:///atsd_hostname:8443/portal/name/{portal-name}?entity={entity}
 
 The above links contain the `entity` parameter which substitutes all `${entity}` placeholders in the portal configuration text when rendered.
 
-```bash
+```ls
 [widget]
   type = chart
   [series]
@@ -234,7 +234,7 @@ https://atsd_hostname:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 
 Such request parameter values can be referenced with `${parameter_name}` placeholders in the Configure Portal text.
 
-```bash
+```ls
 [series]
   metric = disk_io_writes
   entity = ${entity}

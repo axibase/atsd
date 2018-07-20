@@ -15,7 +15,7 @@ Returns a string collection.
 Tag values for metric, entity, and `tagKey`.
 `[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values. The default interval is 24 hours.
 
-```freemarker
+```ls
 <#assign cpus = getTags("nmon.cpu.idle%", "${entity}", "id") >
 <#list cpus as id>
     [series]
@@ -68,7 +68,7 @@ String collection.
 
 Returns collected metrics for a particular entity.
 
-```freemarker
+```ls
 <#assign metrics = getMetrics("${entity}") >
 <#list metrics as metric>
     [series]
@@ -80,7 +80,7 @@ Returns collected metrics for a particular entity.
 </#list
 ```
 
-```freemarker
+```ls
 <#assign metrics = getMetrics("${entity}") >
 <#list metrics as metric>
 <#if metric?index_of("cpu") gte 0>
@@ -107,7 +107,7 @@ Boolean.
 
 Returns `true` if a metric exists.
 
-```freemarker
+```ls
 <#if isMetric("nmon.processes.blocked") >
     [series]
         label = blocked
@@ -126,7 +126,7 @@ Boolean.
 
 Returns `true` if there is some data for metric and entity inserted in the last 24 hours.
 
-```freemarker
+```ls
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
     [series]
         label = blocked
@@ -145,7 +145,7 @@ Returns a string collection.
 
 Retrieves a collection of property objects for a specified entity, property type, and tag.
 
-```freemarker
+```ls
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
     [series]
         label = blocked
@@ -165,7 +165,7 @@ Returns property objects for a specified entity and property type.
 Retrieves a collection of property objects for a specified entity and property type.
 If no entity is specified, then the schema retrieves a collection of property objects for all entities with the specified property type.
 
-```freemarker
+```ls
 <#assign ebs_volume_tags = getSeriesProperties(volume, "aws_ec2.attachmentset") >
 <#list ebs_volume_tags as volume_tags>
   <#if volume_tags.entity == volume>
@@ -189,7 +189,7 @@ Returns collection of maps(string, string).
 Retrieves a collection of unique tag maps for metric and entity.
 `[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values. The default interval is 24 hours.
 
-```freemarker
+```ls
 <#assign procMaps = getTagMaps("nmon.process.%cpu", "${entity}") >
 <#list procMaps as procMap>
     [series]
@@ -242,7 +242,7 @@ Boolean.
 
 Returns `true` if an entity belongs to any of the specified entity groups.
 
-```freemarker
+```ls
 <#if memberOf("nurswgvml007", "aix-servers") >
     [series]
         entity = ${entity}
@@ -260,7 +260,7 @@ Boolean.
 
 Returns `true` if an entity belongs to all of the entity groups.
 
-```freemarker
+```ls
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
     [series]
         label = blocked
@@ -283,7 +283,7 @@ Double.
 
 Returns the last insert time for the entity or entity/metric combination in milliseconds (Time) or ISO format (Date). Metric is an optional parameter.
 
-```freemarker
+```ls
 <#assign ebs_volume_tags = getSeriesProperties(volume, "aws_ec2.attachmentset") >
    <#list ebs_volume_tags as volume_tags>
       <#if volume_tags.entity == volume>
@@ -315,7 +315,7 @@ Returns a string collection.
 Finds all entities in a particular entity group. This can be useful when building portals that compare entities from the same entity group. The method returns group member that have inserted data over the last N hours.
 If hours are not specified or are non-positive, all group members are returned.
 
-```freemarker
+```ls
 <#assign servers = getEntitiesForGroup("VMware Hosts") >
 <#list servers as server>
     [series]
@@ -339,7 +339,7 @@ Returns a string collection.
 
 Finds entities by expression, based on tags.
 
-```freemarker
+```ls
 <#assign servers = getEntitiesForTags("", "(app == '${app}' OR '${app}' == '' AND app != '') AND
                                             (dc == '${dc}' OR '${dc}' == '' AND dc != '')") >
 <#list servers as server>
@@ -419,7 +419,7 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 
 ### The `freemarker` [series] is given an alias, that can then be used to sum the loaded data
 
-```freemarker
+```ls
 <#assign servers = getEntitiesForGroup("Linux") >
  <#list servers as server>
     [series]
