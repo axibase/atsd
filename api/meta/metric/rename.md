@@ -2,33 +2,33 @@
 
 ## Description
 
-Renames metric: modifies the name, whereas the identifier, the series data (datetime, value), the metric metadata (tags, fields) are retained.
+Renames the specified metric while retaining its identifier, fields, tags, and the underlying time series data.
 
-New commands with the old metric name are stored under a new metric with the old name and a new identifier.
+The following naming rules apply to the new metric name:
 
-Rules applied to the metric name:
+* Non-printable characters with ASCII codes `%x00-%x20` and `%x7F`, such as whitespace or tab, are [not allowed](../../network/metric.md#abnf-syntax).
+* The new metric name must not match an existing metric name.
+* The new metric name is converted to lower case when stored.
 
-* Characters with ASCII codes from %x00 to %x20 and %x7F (non-printable characters) are forbidden.
-* Upper-case letters are treated as lower-case.
-* The new name of metric must not match any other present metric name.
+Series commands with the old metric name, received after the renaming is completed, are stored under the old metric name with a new identifier.
 
 ## Request
 
 | **Method** | **Path** | **`Content-Type` Header** |
 |:---|:---|---:|
-| `POST` | `/api/v1/metrics/{old_name}/rename` | `application/json` |
+| `POST` | `/api/v1/metrics/{name}/rename` | `application/json` |
 
 ### Path Parameters
 
 | **Name** | **Description** |
 |:---|:---|
-| `old_name` | **[Required]** Old metric name. |
+| `name` | **[Required]** Current metric name. |
 
 ### Fields
 
 | **Name** | **Type** | **Description** |
 |:---|:---|---:|
-| `name` | string | **[Required]** New metric name. Must be unique. |
+| `name` | string | **[Required]** New metric name. Must **not** exist in the database. |
 
 ## Response
 
@@ -43,24 +43,24 @@ None.
 #### URI
 
 ```elm
-POST /api/v1/metrics/old_name/rename
+POST /api/v1/metrics/cpu_busy/rename
 ```
 
 #### Payload
 
 ```json
 {
-  "name": "new_name"
+  "name": "cpu_total_busy"
 }
 ```
 
 #### curl
 
 ```bash
-curl https://atsd_hostname:8443/api/v1/metrics/old_name/rename \
+curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy/rename \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
-  --data '{"name":"new_name"}'
+  --data '{"name":"cpu_total_busy"}'
 ```
 
 ### Response
@@ -71,7 +71,6 @@ None.
 
 Metric editor page before and after the renaming operation:
 
-![Metric name is old_name](../../../images/metric_rename_old_name.png)
-![Metric name is new_name](../../../images/metric_rename_new_name.png)
+![Metric name is `old_name`](../../../images/metric_rename_old_name.png)
 
-## Additional Examples
+![Metric name is `new_name`](../../../images/metric_rename_new_name.png)
