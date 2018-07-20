@@ -12,14 +12,21 @@ Retrieves a list of entities matching the specified filters.
 
 ### Query Parameters
 
+#### Filter Parameters
+
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `expression` |string|Include entities that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Supported wildcards: `*` and `?`.|
-| `minInsertDate` |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>The parameter can be specified in ISO 8601 format or using [calendar](../../../shared/calendar.md) keywords.|
-| `maxInsertDate` |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| `limit` |integer|Maximum number of entities to retrieve, ordered by name.|
-| `tags` |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all entity tags starting with `env.`.|
-| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
+| `expression` |string|Include entities that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators.<br>Supported wildcards: `*` and `?`.<br>Example: `name LIKE 'nur*' or tags.app = 'db'`|
+| `minInsertDate` |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO 8601 date or [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `current_day`.|
+| `maxInsertDate` |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including entities without `lastInsertDate`.<br>ISO 8601 date or [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
+
+#### Control Parameters
+
+|**Name**|**Type**|**Description**|
+|:---|:---|:---|
+| `tags` |string|Comma-separated list of entity tag names to include in the response, for example: `app,OS,location`.<br>Specify `*` wildcard to include all entity tags.<br>Use wildcard as part of name pattern, for example `loc*`, to include matching entity tags.<br>Default: no tags are included.|
+| `addInsertTime` | boolean| Include calculated field [`lastInsertDate`](#fields), which requires additional processing, in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
+| `limit` |integer|Maximum number of entities to retrieve, ordered by name. Default: `0` (unlimited).|
 
 #### Expression
 
@@ -29,13 +36,17 @@ Examples:
 
 ```javascript
 name LIKE 'nur*'
+```
 
+```javascript
 name NOT LIKE 'aws*' AND lower(label) NOT LIKE 'aws*' AND createdDate > '2017-10-01T00:00:00Z'
+```
 
+```javascript
 name LIKE '*db*' AND lower(tags.function) = 'database'
 ```
 
-The `lastInsertDate` field can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+The `lastInsertDate` is a calculated field and can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
 
 ## Response
 
@@ -142,10 +153,10 @@ curl https://atsd_hostname:8443/api/v1/entities?expression=label!=%22%22%20and%2
 
 ## Additional examples
 
-* [List entities by name](./examples/list-entities-by-name.md)
-* [List entities by Max Insert Date](./examples/list-entities-by-maxinsertdate.md)
-* [List entities by Min Insert Date](./examples/list-entities-by-mininsertdate.md)
-* [List all tags for all entities starting with name](examples/list-all-tags-for-all-entities-with-name.md)
-* [List entities by name and tag](examples/list-entities-by-tag-containing-hbase.md)
-* [List entities for last insert range](examples/list-entities-for-last-insert-range.md)
-* [List entities without last insert date](examples/list-entities-without-last-insert-date.md)
+* [Filter entities by name](./examples/list-entities-by-name.md)
+* [Retrieve entities with all tags filtered by entity name](examples/list-all-tags-for-all-entities-with-name.md)
+* [Filter entities by name and tag value](examples/list-entities-by-tag-containing-hbase.md)
+* [Filter entities by maximum insert date](./examples/list-entities-by-maxinsertdate.md)
+* [Filter entities by minimum insert date](./examples/list-entities-by-mininsertdate.md)
+* [Filter entities for last insert date range](examples/list-entities-for-last-insert-range.md)
+* [Retrieve entities without last insert date](examples/list-entities-without-last-insert-date.md)
