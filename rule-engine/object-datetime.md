@@ -36,7 +36,15 @@ working days using default workday calendar specified in `default.holiday.calend
 
 ## Functions
 
-* `is_weekday([c])` boolean
+* [`is_weekday`](#is_weekday)
+* [`is_weekend`](#is_end)
+* [`is_workday`](#is_workday)
+
+### `is_weekday`
+
+```javascript
+is_weekday([c]) boolean
+```
 
 Returns `true` if the `DateTime` object represents date on weekday.
 Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
@@ -44,7 +52,11 @@ If country cannot be resolved by country code, returns `true` if day of week is 
 If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from `user.country` system property.
 
-* `is_weekend([c])` boolean
+### `is_weekend`
+
+```javascript
+is_weekend([c]) boolean
+```
 
 Returns `true` if the `DateTime` object represents date on weekend.
 Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
@@ -52,7 +64,11 @@ If country cannot be resolved by country code, returns `true` if day of week is 
 If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from `user.country` system property.
 
-* `is_workday([cal])` boolean
+### `is_workday`
+
+```javascript
+is_workday([c]) boolean
+```
 
 Returns `true` if the `DateTime` object represents date on weekday.
 Accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) for details.
