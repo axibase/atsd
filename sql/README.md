@@ -2732,33 +2732,42 @@ SELECT DBTIMEZONE
 #### IS_WORKDAY
 
 The `IS_WORKDAY` function returns `boolean` value (`true` if the date is a workday, `false` otherwise) for the provided country.
-First argument is the `datetime`, second is `string` containing the country name.
+First argument is the `datetime`, second is `string` containing the calendar name.
 
-Note: the function requires a holiday calendar for the year and the country.
+Notes:
+
+* Workday is a day on which work is performed as distinguished from a day off or a holiday.
+* To determine if the day is working or holiday the function checks a calendar file for the specified key and the year of the datetime argument. For example, if the datetime is `'2018-07-03T00:00:00Z'` and calendar key is `'USA'` the function checks the file `/opt/atsd/atsd/conf/calendars/usa_2018.json`. If the file is not found, the function raises an error.
 
 ```sql
 SELECT date_format(datetime, 'yyyy-MM-dd') as "date",
-       is_workday(datetime, 'RUS') as "RUS", is_workday(datetime, 'ISR') as "ISR"
-  FROM cpu_busy
-WHERE "date" between '2018-01-06' and '2018-01-10'
-GROUP BY "date", "RUS", "ISR"
+       is_workday(datetime, 'USA') as "USA",
+       is_workday(datetime, 'ISR') as "ISR"
+FROM cpu_busy
+WHERE "date" between '2018-07-03' and '2018-07-08'
+GROUP BY PERIOD(1 day)
 ORDER BY "date"
 ```
 
 ```ls
-|    date    |  RUS  |  ISR  |
+|    date    |  USA  |  ISR  |
 |------------|-------|-------|
-| 2018-01-06 | false | false |
-| 2018-01-07 | false | true  |
-| 2018-01-08 | false | true  |
-| 2018-01-09 | true  | true  |
-| 2018-01-10 | true  | true  |
+| 2018-07-03 |  true |  true |
+| 2018-07-04 | false |  true |
+| 2018-07-05 |  true |  true |
+| 2018-07-06 |  true | false |
+| 2018-07-07 | false | false |
+| 2018-07-08 | false |  true |
 ```
 
 #### IS_WEEKDAY
 
-The `IS_WEEKDAY` function returns `boolean` value (`true` if the date is a weekday, `false` otherwise) for the provided country.
-First argument is `datetime`, second is `string` containing the country name.
+The `IS_WEEKDAY` function returns `boolean` value (`true` if the date is a weekday, `false` otherwise) for the provided calendar.
+First argument is `datetime`, second is `string` containing the calendar name.
+
+Note:
+
+* Weekday is a day of the week except days off (such as Saturday and Sunday in the US or Friday and Saturday in Israel).
 
 ```sql
 SELECT entity, datetime, value
