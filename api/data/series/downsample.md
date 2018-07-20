@@ -4,19 +4,20 @@
 
 * [Overview](#overview)
 * [Parameters](#parameters)
-* [Gap Syntax](#gap)
+* [Gap](#gap)
 * [Downsampling Algorithm](#downsampling-algorithm)
 * [Examples](#downsampling-examples)
 
 ## Overview
 
-Downsampling is a reduction of time series cardinality achieved by filtering out certain samples. If a [series query](./query.md) contains the `downsample` field, downsampling is performed in a specified order among other series [transformations](./query.md#transformation-fields).
+Downsampling is a reduction of time series cardinality achieved by filtering out certain samples. Downsampling is performed in a specified order among other required series [transformations](./query.md#transformation-fields).
 
 ### Syntax Example
 
 ```json
 "downsample": {
     "gap": {"count": 1, "unit": "HOUR"},
+    "algorithm": "INTERPOLATE",
     "difference": 10,
     "order": 2
 }
@@ -24,18 +25,19 @@ Downsampling is a reduction of time series cardinality achieved by filtering out
 
 ## Parameters
 
-Downsampling is regulated by following optional parameters.
+Downsampling is regulated by following **optional** parameters.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `gap` | object | Time interval specified in terms of time unit and count. If this parameter is specified the time gap between subsequent samples of the resulting series is close to equivalent to the value of this parameter. For example, if `gap` is `0` then no samples are filtered and resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. <br> View the [gap](#gap) section for description of the `gap` syntax. |
-| `difference` | number | Non-negative number, used as threshold for difference between values of two series samples. If the difference exceeds this threshold then samples are included in resulting series. |
-| `factor` | number | Non-negative number. If the ratio of two series samples exceeds `factor` then samples are included in resulting series. |
+| [gap](#gap) | object | Time interval specified in terms of time unit and count. This parameter sets desired maximal gap between subsequent samples of the resulting series. For example, if `gap` is `0` then resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. |
+| `algorithm` | string | Selector of downsampling algorithm. Either "DETAIL", or "INTERPOLATE". <br>Default value is "DETAIL". |
+| `difference` | number | Non-negative number, used as a threshold. If difference between sample value and value produced by downsampling algorithm exceeds this threshold then sample is included in resulting series. |
+| `ratio` | number | Threshold, &ge; 1. The downsampling algorishm generates numeric value for each series sample. If the ratio of sample value to generated value exceeds the`ratio` threshold then  sample is included in resulting series. |
 | `order` | integer | This field determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is `0`.|
 
 > `difference` and `factor` parameters cannot be used simultaneously.
 
-If neither `gap`, `difference`, nor `factor` parameter is provided, downsampling performs series deduplication, removing a series sample if `previous` and `next` samples contain the same value.
+If neither of parameters is provided, downsampling performs series deduplication, removing a series sample if `previous` and `next` samples contain the same value.
 
 ## Gap
 
@@ -54,7 +56,8 @@ Example.
 
 ## Downsampling Algorithm
 
-The algorithm processes samples in timestamp increasing order.
+`DETAIL` and `INTERPOLATE` algorithms differs only by criteria used to filter series sample.
+Each algorithm processes samples in timestamp increasing order.
 Each sample is accepted or rejected by the algorithm.
 Accepted samples constitute the resulting series.
 To accept or reject a sample the following conditions are checked sequentially.
@@ -68,40 +71,54 @@ To accept or reject a sample the following conditions are checked sequentially.
 
 If the sample does not fall into one of these categories, the algorithm proceeds to the next step.
 
-**2.** If the `gap` parameter is specified.
+**2.** If the `gap` parameter is specified. Calculate the difference between the sample timestamp and the timestamp of the latest accepted sample. If the difference exceeds the `gap` then the sample is accepted. Otherwise the algorithm proceeds to the next step.
 
-Calculate the difference between the sample timestamp and the timestamp of the latest accepted sample. If the difference exceeds the `gap` then the sample is accepted. Otherwise the algorithm proceeds to the next step.
+**3.** Introduce the following notation:
 
-**3.** If the `difference` parameter is provided.
+* `last_sample`: The last accepted series sample.
+* `sample`: Sample under consideration.
+* `next_sample`: The sample immediately following the `sample`.
 
-Introduce the following notation:
+The timestamps of these samples are `last_time`, `time`, `next_time`, and their values are `last_value`, `value`, `next_value`.
 
-* `last_value`: Value of the last accepted sample.
-* `value`: Value of the sample under consideration.
-* `next_value`: Value of the nearest subsequent sample.
+The "INTERPOLATE" algorithm do the linear interpolation between the `last_sample` and the `next_sample`, and calculates interpolated value `interpolated_value` with timestamp equal to `time`.
 
-The algorithm calculates:
+**4.** If the `difference` parameter is provided. The algorithm accepts the sample if an expression evaluates to `true`.
+
+* The `DETAIL` algorithm evaluates
 
 ```java
 |value - last_value| > difference || |next_value - value| > difference
 ```
 
-If the statement is `true`, the algorithm accepts the sample. Otherwise the algorithm proceeds to the next step.
+* The `INTERPOLATE` algorithm evaluates `|value - interpolated_value| > difference`.
 
-**4.** If the `factor` parameter is provided.
+If the sample is not accepted the algorithm proceeds to the next step.
 
-If any of ratios `last_value/value`, `value/last_value`, `next_value/value`, and `value/next_value` exceed the `factor` the algorithm accepts the sample. Otherwise the algorithm proceeds to the next step.
+**5.** If the `ratio` parameter is provided. The algorithm calculates several ratios, and accepts the sample, if any of them exceed the `ratio`.
 
-**5.** If neither the `difference` nor `factor` parameter is provided.
+* The `DETAIL` algorithm calculates `value/last_value`, `last_value/value`, `value/next_value`, and`next_value/value`.
 
-If the `value` differs either from the `last_value`, or from the `next_value`, the algorithm accepts the sample. Otherwise the algorithm proceeds to the next step.
+* The `INTERPOLATE` algorithm calculates `value/interpolated_value`, and `interpolated_value/value`.
 
-**6.** Reject the sample.
+If sample is not accepted the algorithm proceeds to the next step.
+
+**6.** If neither the `difference` nor `ratio` parameter is provided.
+
+* The `DETAIL` algorithm accepts the sample if the `value` differs either from the `last_value`, or from the `next_value`.
+
+* The `INTERPOLATE` algorithm accepts the sample if the `value` differs from the `interpolated_value`.
+
+If sample is not accepted, then algorithm rejects it.
+
+### Remarks
 
 <!-- markdownlint-disable MD028 -->
+> To prevent devision by zero issue, algorithm checks inequality `x/ratio > y` instead of `x/y > ratio` in step 5.
+
 > If series [versions](./versions.md) are queried, then algorithm is applied to the latest versions. If the latest version passes the downsampling filter then all versions with the same timestamp are included in resulting series.<br>
 
- > Sometimes samples are processed in decreasing order of the timestamps. That happens if limited number of latest series samples is queried.
+ > If limited number of latest series samples is queried, then samples are processed in decreasing order of the timestamps. Downsampling result depends on the processing order.
 <!-- markdownlint-enable MD028 -->
 
 ## Downsampling Examples
@@ -164,7 +181,7 @@ Perform series deduplication use `downsample` without additional parameters.
 | 20:00 |   3    |      3      | last sample                                      |
 ```
 
-## Downsampling with `difference` and `gap`
+## `DETAIL` downsampling with `difference` and `gap`
 
 ```json
 "downsample": {
@@ -193,4 +210,25 @@ Perform series deduplication use `downsample` without additional parameters.
 | 18:00 |   3    |      -      |                                                  |
 | 19:00 |   3    |      -      |                                                  |
 | 20:00 |   3    |      3      | last sample                                      |
+```
+
+## `INTERPOLATE` downsampling
+
+```json
+"downsample": {
+    "algorithm": "INTERPOLATE"
+}
+```
+
+**Result**:
+
+```ls
+|       | initial| downsampled |                                                  |
+| time  | series |   series    |                     comment                      |
+|-------|--------|-------------|--------------------------------------------------|
+| 07:00 |   1    |      1      | first sample                                     |
+| 08:00 |   3    |      -      |                                                  |
+| 09:00 |   5    |      -      |                                                  |
+| 10:00 |   7    |      -      |                                                  |
+| 11:00 |   9    |      9      | last sample                                                 |
 ```
