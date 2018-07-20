@@ -58,7 +58,9 @@ An array of objects containing fields for filtering records for deletion.
 
 ### Fields
 
-None.
+| **Name**  | **Type** | **Description**  |
+|:---|:---|:---|
+| `deleted` | number | Number of deleted properties. |
 
 ### Errors
 
