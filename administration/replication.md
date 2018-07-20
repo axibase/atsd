@@ -257,18 +257,19 @@ ink.java:replicateEntries(158)) - Total replicated: 1
 
 Open ATSD web interface and navigate to the **Alert > Rules** page.
 
-![](./images/atsd_rules_new.png)
+![](./images/replication_1.png)
 
-Click **Create** to create a new rule. Complete the following
-fields as specified below:
+Click **Create** and complete the following fields as specified below:
 
 * `Name`: `testrule`
 * `Metric`: `testrule`
-* `Expression`: `true`
+* `Condition`: `true`
 
 Click **Save**.
 
-![](./images/rule_editor.png "rule_editor")
+![](./images/replication_2.png)
+![](./images/replication_3.png)
+![](./images/replication_4.png)
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:
