@@ -30,23 +30,33 @@ Retrieves a list of entities matching the specified filters.
 
 #### Expression
 
-The expression can include all fields listed below except `lastInsertDate`.
+The [expression](../../../api/meta/expression.md) can include all [fields](#fields) listed below except the calculated `lastInsertDate` field that can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
 
 Examples:
+
+* Retrieve entities with name starting with `nur`.
 
 ```javascript
 name LIKE 'nur*'
 ```
 
-```javascript
-name NOT LIKE 'aws*' AND lower(label) NOT LIKE 'aws*' AND createdDate > '2017-10-01T00:00:00Z'
-```
+* Retrieve entities with label not starting with `aws` and created after '2017-10-01'.
 
 ```javascript
-name LIKE '*db*' AND lower(tags.function) = 'database'
+lower(label) NOT LIKE 'aws*' AND createdDate > '2017-10-01T00:00:00Z'
 ```
 
-The `lastInsertDate` is a calculated field and can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+* Retrieve entities with tag `function` equal to `database` (case insensitive comparison).
+
+```javascript
+lower(tags.function) = 'database'
+```
+
+* Retrieve entities with non-empty `function` tag.
+
+```javascript
+tags.function != ''
+```
 
 ## Response
 
