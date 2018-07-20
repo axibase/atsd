@@ -30,14 +30,14 @@ Downsampling is regulated by following **optional** parameters.
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | [gap](#gap) | object | Time interval specified in terms of time unit and count. This parameter sets desired maximal gap between subsequent samples of the resulting series. For example, if `gap` is `0` then resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. |
-| `algorithm` | string | Selector of downsampling algorithm. Either "DETAIL", or "INTERPOLATE". <br>Default value is "DETAIL". |
+| `algorithm` | string | Downsampling algorithm. Either "DETAIL", or "INTERPOLATE". <br>Default value is "DETAIL". |
 | `difference` | number | Non-negative number, used as a threshold. If difference between sample value and value produced by downsampling algorithm exceeds this threshold then sample is included in resulting series. |
-| `ratio` | number | Threshold, &ge; 1. The downsampling algorishm generates numeric value for each series sample. If the ratio of sample value to generated value exceeds the`ratio` threshold then  sample is included in resulting series. |
+| `ratio` | number | Threshold, &ge; 1. The downsampling algorithm generates numeric value for each series sample. If the ratio of sample value to generated value exceeds the`ratio` threshold then  sample is included in resulting series. |
 | `order` | integer | This field determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is `0`.|
 
 > `difference` and `factor` parameters cannot be used simultaneously.
 
-If neither of parameters is provided, downsampling performs series deduplication, removing a series sample if `previous` and `next` samples contain the same value.
+If neither of parameters is provided, downsampling performs series deduplication, removing a series sample if previous and next samples contain the same value.
 
 ## Gap
 
@@ -114,11 +114,11 @@ If sample is not accepted, then algorithm rejects it.
 ### Remarks
 
 <!-- markdownlint-disable MD028 -->
-> To prevent devision by zero issue, algorithm checks inequality `x/ratio > y` instead of `x/y > ratio` in step 5.
+> To prevent division by zero issue, algorithm checks inequality `x/ratio > y` instead of `x/y > ratio` in step 5.
 
 > If series [versions](./versions.md) are queried, then algorithm is applied to the latest versions. If the latest version passes the downsampling filter then all versions with the same timestamp are included in resulting series.<br>
 
- > If limited number of latest series samples is queried, then samples are processed in decreasing order of the timestamps. Downsampling result depends on the processing order.
+ > If limited number of latest series samples is queried, then samples are processed in decreasing order of the timestamps. Downsampling result depends on the samples ordering.
 <!-- markdownlint-enable MD028 -->
 
 ## Downsampling Examples
