@@ -37,7 +37,7 @@ working days using default workday calendar specified in `default.holiday.calend
 ## Functions
 
 * [`is_weekday`](#is_weekday)
-* [`is_weekend`](#is_end)
+* [`is_weekend`](#is_weekend)
 * [`is_workday`](#is_workday)
 
 ### `is_weekday`
