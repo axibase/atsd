@@ -1,218 +1,188 @@
 # Downsampling
 
-## Content
-
-* [Overview](#overview)
-* [Parameters](#parameters)
-* [Gap](#gap)
-* [Downsampling Algorithm](#downsampling-algorithm)
-* [Examples](#downsampling-examples)
-
 ## Overview
 
-Downsampling is a reduction of time series cardinality achieved by filtering out certain samples. Downsampling is performed in a specified order among other required series [transformations](./query.md#transformation-fields).
+The Downsampling transformation reduces time series density by filtering out sequentially duplicate samples from the response.
 
-### Syntax Example
+### Basic Example
 
 ```json
 "downsample": {
-    "gap": {"count": 1, "unit": "HOUR"},
-    "algorithm": "INTERPOLATE",
-    "difference": 10,
-    "order": 2
+  "difference": 0
 }
 ```
 
-## Parameters
+The configuration excludes samples that are equal to the previous value and to the next value.
 
-Downsampling is regulated by following **optional** parameters.
+### Advanced Example
+
+```json
+"downsample": {
+  "algorithm": "INTERPOLATE",
+  "difference": 10
+}
+```
+
+The configuration excludes samples that are within `±10` of the interpolated value.
+
+## Parameters
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| [gap](#gap) | object | Time interval specified in terms of time unit and count. This parameter sets desired maximal gap between subsequent samples of the resulting series. For example, if `gap` is `0` then resulting series is the same as initial series. <br>View the [algorithm](#downsampling-algorithm) section for detailed description how this parameter works. |
-| `algorithm` | string | Downsampling algorithm. Possible Values: `DETAIL` or `INTERPOLATE`. <br>Default value is `DETAIL`. |
-| `difference` | number | Non-negative number used as threshold. If difference between sample value and value produced by downsampling algorithm exceeds threshold, sample is included in resulting series. |
-| `ratio` | number | Threshold &ge; `1`. Downsampling algorithm generates numeric value for each series sample. If the ratio of sample value to generated value exceeds the `ratio` threshold then  sample is included in resulting series. |
-| `order` | integer | Determines the order of downsampling in the sequence of series [transformations](./query.md#transformation-fields). <br> Default value is `0`.|
+| [`algorithm`](#algorithm) | string | Downsampling algorithm determines which values to discard as duplicate.<br>Possible values: `DETAIL` or `INTERPOLATE`.<br>Default: `DETAIL`. |
+| `difference` | number | The sample is classified as duplicate if the current value deviates by more than the specified difference, in absolute terms, from the estimated value produced by downsampling algorithm.<br>Minimum value: `0`.<br>Default: `0`. |
+| `ratio` | number | The sample is classified as duplicate if the ratio of the current value and the value produced by downsampling algorithm (or the inverse) exceeds the specified ratio.<br>Minimum value: `1`. <br>Default: `none`. |
+| [`gap`](#gap) | object | Maximum distance between subsequent samples in the transformed series. Specified as count and [time unit](time-unit.md).<br>Default: `none`.|
+| `order` | integer | Controls the order of downsampling in the sequence of other [transformations](./query.md#transformation-fields).<br>Default: `0`.|
 
-> `difference` and `factor` parameters cannot be used simultaneously.
-
-If neither parameter is provided, downsampling performs series deduplication, removing series samples when `previous` and `next` samples contain the same value.
+> The `difference` and `ratio` parameters **cannot** be specified simultaneously.
 
 ## Gap
 
-Time interval specified in terms of time unit and count.
+If the `gap` parameter is specified, and the time distance between the current sample and the last returned sample exceeds the gap, the current sample is always included in the result.
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
-| `count`  | number | Number of time units contained in the period. |
-| `unit`  | string | Time unit. One of `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`. |
-
-Example.
+| `count`  | number | Number of time units. |
+| `unit`  | string | [Time unit](time-unit.md), for example `MINUTE`. |
 
 ```json
 "gap": {"count": 2, "unit": "MINUTE"}
 ```
 
-## Downsampling Algorithm
+The `gap` parameter prevents a time series from becoming too sparse.
 
-`DETAIL` and `INTERPOLATE` algorithms differ only by criteria used to filter series sample.
-Each algorithm processes samples in timestamp increasing order.
-Each sample is accepted or rejected by the algorithm.
-Accepted samples constitute the resulting series.
-To accept or reject a sample the following conditions are checked sequentially.
+## Processing
 
-**1.** The following samples are accepted:
+The samples in the input series are evaluated sequentially in the ascending time order.
 
-* The first series sample, and the last series sample.
-* Annotated sample: Sample with a non-empty [text field](./query.md#value-object).
+The following samples are _always included_ in the result, even if classified as duplicate by the downsampling algorithm.
+
+* The first and the last samples.
+* Annotated samples: sample with a non-empty [text field](./query.md#value-object).
 * Samples with `NaN` value.
-* Samples whose previous or subsequent sample value is `NaN`.
+* Samples whose previous or next sample value is `NaN`.
 
-If the sample does not fall into one of these categories, the algorithm proceeds to the next step.
+The remaining series are checked by the algorithm and are excluded from the results if classified as duplicates and provided the `gap` condition is satisfied.
 
-**2.** If the `gap` parameter is specified. Calculate the difference between the sample timestamp and the timestamp of the latest accepted sample. If the difference exceeds the `gap` then the sample is accepted. Otherwise the algorithm proceeds to the next step.
+> If the query retrieves [versioned](./versions.md) series, the algorithm evaluates the latest version. If the latest version is classified as a duplicate, then all versions with the same timestamp are classified as such.
 
-**3.** Introduce the following notation:
+## Algorithm
 
-* `last_sample`: The last accepted series sample.
-* `sample`: Sample under consideration.
-* `next_sample`: The sample immediately following the `sample`.
+The `DETAIL` and `INTERPOLATE` algorithms use differ formulas to classify samples as duplicates.
 
-The timestamps of these samples are `last_time`, `time`, `next_time`, and their values are `last_value`, `value`, `next_value`.
+The following definitions are used in this section:
 
-The `INTERPOLATE` algorithm performs linear interpolation between the `last_sample` and the `next_sample` then calculates interpolated value `interpolated_value` with a timestamp equal to `time`.
+* `sample`: The current sample being evaluated.
+* `last_sample`: The last returned (included in the result) series sample.
+* `next_sample`: The sample following the current `sample`.
 
-**4.** If the `difference` parameter is provided. The algorithm accepts the sample if an expression evaluates to `true`.
+The timestamps of these samples are `time`, `last_time`, `next_time`, and their values are `value`, `last_value`, `next_value`.
 
-* The `DETAIL` algorithm evaluates
+In addition, the `INTERPOLATE` algorithm performs linear interpolation between the `last_sample` and the `next_sample` to calculate `interpolated_value` with a timestamp equal to `time`.
 
-```java
-|value - last_value| > difference || |next_value - value| > difference
+### Ratio Check
+
+If the `ratio` parameter is set, the algorithms calculate several multiples.
+
+* `DETAIL` algorithm:
+  * `value/last_value`
+  * `last_value/value`
+  * `value/next_value`
+  * `next_value/value`
+
+* `INTERPOLATE` algorithm:
+  * `value/interpolated_value`
+  * `interpolated_value/value`
+
+The sample is classified as a duplicate if all multiples do not exceed the specified `ratio`.
+
+> To avoid division by zero, the algorithm compares `x/ratio > y` instead of `x/y > ratio`.
+
+### Difference Check
+
+If the `ratio` parameter is not set, the algorithm uses absolute difference to classify the sample. If the difference `parameter` is not set, it defaults to `0`. The algorithm classifies the sample as duplicate if the following expressions return `true`.
+
+* `DETAIL` algorithm:
+
+```javascript
+abs(value - last_value) <= difference AND abs(value - next_value) <= difference
 ```
 
-* The `INTERPOLATE` algorithm evaluates `|value - interpolated_value| > difference`.
+If the difference is `0`, the sample is a duplicate if it is equal both to the last and the next value:
 
-If the sample is not accepted the algorithm proceeds to the next step.
+```javascript
+value == last_value AND value == next_value
+```
 
-**5.** If the `ratio` parameter is provided. The algorithm calculates several ratios, and accepts the sample, if any of them exceed the `ratio`.
+* `INTERPOLATE` algorithm:
 
-* The `DETAIL` algorithm calculates `value/last_value`, `last_value/value`, `value/next_value`, and`next_value/value`.
+```javascript
+abs(value - interpolated_value) <= difference
+```
 
-* The `INTERPOLATE` algorithm calculates `value/interpolated_value`, and `interpolated_value/value`.
+## Examples
 
-If sample is not accepted the algorithm proceeds to the next step.
-
-**6.** If neither the `difference` nor `ratio` parameter is provided.
-
-* The `DETAIL` algorithm accepts the sample if the `value` differs either from the `last_value`, or from the `next_value`.
-
-* The `INTERPOLATE` algorithm accepts the sample if the `value` differs from the `interpolated_value`.
-
-If sample is not accepted, then the algorithm rejects the it.
-
-### Remarks
-
-<!-- markdownlint-disable MD028 -->
-
-* To prevent division by zero issue, algorithm checks inequality `x/ratio > y` instead of `x/y > ratio` in step five.
-* If series [versions](./versions.md) are queried, then algorithm is applied to the latest versions. If the latest version passes the downsampling filter then all versions with the same timestamp are included in resulting series.<br>
-* If limited number of latest series samples is queried, then samples are processed in decreasing order of the timestamps. Downsampling result depends on the samples ordering.
-
-<!-- markdownlint-enable MD028 -->
-
-## Downsampling Examples
-
-## Series Deduplication
-
-Perform series deduplication use `downsample` without additional parameters.
+### Default Downsampling
 
 ```json
 "downsample": {}
 ```
 
-**Result**:
+Result:
 
-```ls
-|       | initial| downsampled |                              |
-| time  | series |   series    |           comment            |
-|-------|--------|-------------|------------------------------|
-| 07:00 |   1    |      1      | first sample                 |
-| 08:00 |   1    |      -      |                              |
-| 09:00 |   1    |      -      |                              |
-| 10:00 |   1    |      -      |                              |
-| 11:00 |   1    |      -      |                              |
-| 12:00 |   1    |      1      | differs from next sample     |
-| 13:00 |   2    |      2      | differs from previous sample |
-| 14:00 |   2    |      -      |                              |
-| 15:00 |   2    |      2      | differs from next sample     |
-| 16:00 |   3    |      3      | differs from previous sample |
-| 17:00 |   3    |      -      |                              |
-| 18:00 |   3    |      -      |                              |
-| 19:00 |   3    |      -      |                              |
-| 20:00 |   3    |      3      | last sample                  |
+```txt
+|       | input  | downsampled |
+| time  | series |   series    |
+|-------|--------|-------------|
+| 07:00 |   1    |      1      | first sample
+| 08:00 |   1    |      -      |
+| 09:00 |   1    |      -      |
+| 10:00 |   1    |      -      |
+| 11:00 |   1    |      -      |
+| 12:00 |   1    |      1      | differs from next sample
+| 13:00 |   2    |      2      | differs from last returned sample
+| 14:00 |   2    |      -      |
+| 15:00 |   2    |      2      | differs from next sample
+| 16:00 |   3    |      3      | differs from last returned sample
+| 17:00 |   3    |      -      |
+| 18:00 |   3    |      -      |
+| 19:00 |   3    |      -      |
+| 20:00 |   3    |      3      | last sample
 ```
 
-## Deduplication with `gap`
-
-```json
-"downsample": {"gap": {"count": 2, "unit": "HOUR"}}
-```
-
-**Result**:
-
-```ls
-|       | initial| downsampled |                                                  |
-| time  | series |   series    |                     comment                      |
-|-------|--------|-------------|--------------------------------------------------|
-| 07:00 |   1    |      1      | first sample                                     |
-| 08:00 |   1    |      -      |                                                  |
-| 09:00 |   1    |      -      |                                                  |
-| 10:00 |   1    |      1      | time gap with previous accepted sample > 2 hours |
-| 11:00 |   1    |      -      |                                                  |
-| 12:00 |   1    |      1      | differs from next sample                         |
-| 13:00 |   2    |      2      | differs from previous sample                     |
-| 14:00 |   2    |      -      |                                                  |
-| 15:00 |   2    |      2      | differs from next sample                         |
-| 16:00 |   3    |      3      | differs from previous sample                     |
-| 17:00 |   3    |      -      |                                                  |
-| 18:00 |   3    |      -      |                                                  |
-| 19:00 |   3    |      3      | time gap with previous accepted sample > 2 hours |
-| 20:00 |   3    |      3      | last sample                                      |
-```
-
-## `DETAIL` downsampling with `difference` and `gap`
+### `DETAIL` downsampling with `difference` and `gap`
 
 ```json
 "downsample": {
-    "difference": 2,
+    "difference": 1.5,
     "gap": {"count": 4, "unit": "HOUR"}
 }
 ```
 
-**Result**:
+Result:
 
-```ls
-|       | initial| downsampled |                                                  |
-| time  | series |   series    |                     comment                      |
-|-------|--------|-------------|--------------------------------------------------|
-| 07:00 |   1    |      1      | first sample                                     |
-| 08:00 |   1    |      -      |                                                  |
-| 09:00 |   1    |      -      |                                                  |
-| 10:00 |   1    |      -      |                                                  |
-| 11:00 |   1    |      -      |                                                  |
-| 12:00 |   1    |      1      | time gap with previous accepted sample > 4 hours |
-| 13:00 |   2    |      -      |                                                  |
-| 14:00 |   2    |      -      |                                                  |
-| 15:00 |   2    |      -      |                                                  |
-| 16:00 |   3    |      3      | difference with previous accepted sample > 2     |
-| 17:00 |   3    |      -      |                                                  |
-| 18:00 |   3    |      -      |                                                  |
-| 19:00 |   3    |      -      |                                                  |
-| 20:00 |   3    |      3      | last sample                                      |
+```txt
+|       | input  | downsampled |
+| time  | series |   series    |
+|-------|--------|-------------|
+| 07:00 |   1    |      1      | first sample
+| 08:00 |   1    |      -      |
+| 09:00 |   1    |      -      |
+| 10:00 |   1    |      -      |
+| 11:00 |   1    |      -      |
+| 12:00 |   1    |      1      | time gap with last returned sample exceeds 4 hours
+| 13:00 |   2    |      -      |
+| 14:00 |   2    |      -      |
+| 15:00 |   2    |      -      |
+| 16:00 |   3    |      3      | differs from last returned sample (1.0 at 12:00) by 2.0
+| 17:00 |   3    |      -      |
+| 18:00 |   3    |      -      |
+| 19:00 |   3    |      -      |
+| 20:00 |   3    |      3      | last sample
 ```
 
-## `INTERPOLATE` downsampling
+### `INTERPOLATE` downsampling
 
 ```json
 "downsample": {
@@ -220,15 +190,15 @@ Perform series deduplication use `downsample` without additional parameters.
 }
 ```
 
-**Result**:
+Result:
 
-```ls
-|       | initial| downsampled |                                                  |
-| time  | series |   series    |                     comment                      |
-|-------|--------|-------------|--------------------------------------------------|
-| 07:00 |   1    |      1      | first sample                                     |
-| 08:00 |   3    |      -      |                                                  |
-| 09:00 |   5    |      -      |                                                  |
-| 10:00 |   7    |      -      |                                                  |
-| 11:00 |   9    |      9      | last sample                                                 |
+```txt
+|       | input  | downsampled |
+| time  | series |   series    |
+|-------|--------|-------------|
+| 07:00 |   1    |      1      | first sample
+| 08:00 |   3    |      -      |
+| 09:00 |   5    |      -      |
+| 10:00 |   7    |      -      |
+| 11:00 |   9    |      9      | last sample
 ```
