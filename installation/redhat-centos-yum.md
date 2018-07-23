@@ -1,4 +1,4 @@
-# Installation: `yum`
+# Installation: YUM
 
 ## Supported Versions
 

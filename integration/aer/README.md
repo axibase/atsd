@@ -7,7 +7,7 @@ collected in ATSD and makes them available for querying in reports.
 
 In order for the Axibase Server to group ATSD metrics into virtual tables, metrics need to be tagged with the `table` tag.
 
-## Enable the `table` Tag in the Metrics List
+## Enable the "table" Tag in the Metrics List
 
 * Log in to ATSD.
 * Open the **Settings > Server Properties** page.
@@ -19,7 +19,7 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 
 ![Metrics List: table tag](./metrics-table-tag.png)
 
-## Apply the `table` Tag to Metrics
+## Apply the "table" Tag to Metrics
 
 * Enter partial metric name in the Name Mask to filter Metric list by name. `*` and `?` wildcards are supported.
 * Set Page Size (Display on Page) to 1000.
