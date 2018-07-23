@@ -8,12 +8,12 @@
 last_open() RuleAlert
 ```
 
-Retrieves window from Alert History for the **last** alert with `OPEN` or `REPEAT` status for current rule and current 
+Retrieves window from Alert History for the **last** alert with `OPEN` or `REPEAT` status for current rule and current
 window key based on metric, entity, grouping tags.
 
 If the record is not found, the function returns an empty `RuleAlert` object with `timestamp` set to 0,
  `value` and `open_value` set to `NaN`, and other fields set to empty strings.
- 
+
 The function needs [Alert History logging](logging.md#logging-to-database) to be enabled.
 
 ### Fields Supported by `RuleAlert`
