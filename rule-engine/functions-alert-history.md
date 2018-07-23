@@ -5,12 +5,18 @@
 ## `last_open`
 
 ```java
-last_open() RuleAlertWrapper
+last_open() RuleAlert
 ```
 
-Retrieves window from Alert History for the last alert with `OPEN` or `REPEAT` status for current rule and current time series key.
+Retrieves window from Alert History for the **last** alert with `OPEN` or `REPEAT` status for current rule and current 
+window key based on metric, entity, grouping tags.
 
-### Fields Supported by `RuleAlertWrapper`
+If the record is not found, the function returns an empty `RuleAlert` object with `timestamp` set to 0,
+ `value` and `open_value` set to `NaN`, and other fields set to empty strings.
+ 
+The function needs [Alert History logging](logging.md#logging-to-database) to be enabled.
+
+### Fields Supported by `RuleAlert`
 
 **Field** | **Type**
 ----|-----
@@ -43,5 +49,5 @@ elapsed_minutes(last_open().timestamp) > 60
 ```
 
 ```javascript
-randomKey(excludeKeys(replacementTable('lunch-places'), [last_open().lunch_place]))
+(value - last_open().value) / last_open().value > 0.1
 ```
