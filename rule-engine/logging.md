@@ -4,9 +4,10 @@ Alert Logging records [window](window.md) status changes in the ATSD database an
 
 ## Logging to Database
 
-`OPEN` and `CANCEL` status changes are automatically stored in the database and can be retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md). The records are visible on the **Alerts > Alert History** page.
+`OPEN`, `REPEAT` and `CANCEL` status changes can be stored in the database and retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md). The records are visible on the **Alerts > Alert History** page.
 
-In addition, the **Log to ATSD** checkbox can be enabled for each rule separately to generate messages which can be retrieved with [Data API: Message Query](../api/data/messages/query.md) and are visible on the **Messages** tab. The messages are persisted with `alert` type and `rule-engine` source.
+To record alert history, enable the **Log to Alert History** checkbox in Rule Editor and 
+enable required `On Open`, `On Repeat`, `On Cancel` message templates.
 
 ## Logging to Files
 
@@ -18,7 +19,8 @@ Open the `logback.xml` for editing, create a new logger and save changes. Once t
 
 ![](./images/logging-loggers.png)
 
-By default, loggers record `OPEN` and `CANCEL` status changes. To enable logging of `REPEAT` changes, set Repeat Interval from `None` to a valid interval on the **Alerts** tab in the Rule Editor.
+File loggers are disabled by default. To start writing alert information to files, select the logger from `Log to File` drop-down list and
+enable required `On Open`, `On Repeat`, `On Cancel` message templates.
 
 ## Default File Logger
 
