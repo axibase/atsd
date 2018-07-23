@@ -1,8 +1,8 @@
-# Holiday Calendar
+# Workday Calendar
 
 ## Overview
 
-Holiday Calendar is a data structure that contains a list of exceptions to the regular workday calendar such as observed holidays and weekend working days.
+Workday Calendar is a data structure that contains a list of exceptions to the regular workday calendar such as observed holidays and weekend working days.
 
 The list can be associated with a country, a region, an industry, or a specific organization, such as a stock exchange, a religious institution, or a school district.
 
@@ -40,7 +40,7 @@ WHERE time >= current_year
 
 ## Built-in Calendars
 
-By default, the database contains pre-defined 2018 holiday calendars for several countries.
+By default, the database contains pre-defined 2018 workday calendars for several countries.
 
 The calendars can be modified and maintained by appending dates for prior and future years without restarting the database.
 
@@ -100,7 +100,7 @@ The uploaded files are copied to the `/opt/atsd/atsd/conf/calendars` directory a
 
 ### Example
 
-The example below illustrates a custom holiday calendar for the [New York Stock Exchange](https://www.nyse.com/markets/hours-calendars).
+The example below illustrates a custom workday calendar for the [New York Stock Exchange](https://www.nyse.com/markets/hours-calendars).
 
 The calendar is named `nyse.json` and can be accessed under the `nyse` key, for example `now.is_workday('nyse')`.
 

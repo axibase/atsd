@@ -78,9 +78,9 @@ By default `default.holiday.calendar` resolves country code from the `user.count
 is_workday( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object is a working day based on the observed [holiday calendar](holiday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
+Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](workday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
 
-The function throws an exception if no holiday calendar is found, or if the holiday calendar contains no date for the given year.
+The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.
 
 ## Sample Values
 

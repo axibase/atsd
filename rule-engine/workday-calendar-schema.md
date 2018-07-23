@@ -1,4 +1,4 @@
-# Holiday Calendar Schema
+# Workday Calendar Schema
 
 ```json
 {
@@ -11,7 +11,6 @@
       "$id": "/properties/country",
       "type": "string",
       "title": "ISO 3166-1 Alpha-3 Country Code",
-      "default": "",
       "examples": [
         "USA"
       ]
@@ -27,7 +26,6 @@
             "$id": "/properties/data/items/properties/date",
             "type": "string",
             "title": "ISO 8601 Date Representation: yyyy-MM-dd",
-            "default": "",
             "examples": [
               "2018-01-01"
             ]
@@ -44,15 +42,26 @@
           "type": {
             "$id": "/properties/data/items/properties/type",
             "type": "string",
+            "enum": [
+               "Holiday",
+               "Workday"
+            ],
             "title": "Exceptional Date Type: Holiday or Workday",
-            "default": "",
             "examples": [
               "Holiday"
             ]
           }
-        }
+        },
+        "required": [
+          "date",
+          "type"
+        ]
       }
     }
-  }
+  },
+  "required": [
+    "country",
+    "data"
+  ]
 }
 ```
