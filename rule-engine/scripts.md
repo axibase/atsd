@@ -166,7 +166,7 @@ The script must complete within the specified timeout. The default timeout is se
 
 To customize the timeout for scripts invoked by this rule, adjust the **Timeout, seconds** drop-down list on the **Scripts** tab. The limit applies both to named scripts as well as to scripts launched with the [`scriptOut`](functions-script.md) function.
 
-![](images/script-timeout.png)
+![](./images/script-timeout.png)
 
 If the script fails to exit within the specified limit, the script process is stopped with `SIGTERM` signal, the process returns code `143` and the following text is appended to the output:
 
