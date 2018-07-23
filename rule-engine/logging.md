@@ -6,7 +6,7 @@ Alert Logging records [window](window.md) status changes in the ATSD database an
 
 `OPEN`, `REPEAT` and `CANCEL` status changes can be stored in the database and retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md). The records are visible on the **Alerts > Alert History** page.
 
-To record alert history, enable the **Log to Alert History** checkbox in Rule Editor and 
+To record alert history, enable the **Log to Alert History** checkbox in Rule Editor and
 enable required `On Open`, `On Repeat`, `On Cancel` message templates.
 
 ## Logging to Files
