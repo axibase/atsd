@@ -1,4 +1,4 @@
-# Installation: `rpm`
+# Installation: RPM
 
 ## Supported Versions
 

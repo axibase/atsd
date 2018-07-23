@@ -1,4 +1,4 @@
-# Properties: `delete`
+# Properties: delete
 
 ## Description
 
@@ -61,8 +61,8 @@ An array of objects containing fields for filtering records for deletion.
 | `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with **exact** or **partial** key fields based on the `exactMatch` parameter.|
 | `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `exactMatch` is `false`, all records which **contain** fields in the request `key` are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
 
-* Key and tag names are **case-insensitive**.
-* Key and tag values are **case-sensitive**.
+* Key and tag names are case-**insensitive**.
+* Key and tag values are case-**sensitive**.
 
 ## Response
 
