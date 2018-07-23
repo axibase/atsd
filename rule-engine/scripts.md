@@ -30,7 +30,7 @@ Arguments can include [window fields](window.md#window-fields) and calculated va
 
 ![](./images/command-arguments.png)
 
-Arguments containing whitespace or quote characters are automatically quoted. The below example with two arguments one of which contains space characters is equivalent to executing `./test.sh john.doe "hello world"`.
+Arguments containing space or quote characters are automatically quoted. The below example with two arguments one of which contains space characters is equivalent to executing `./test.sh john.doe "hello world"`.
 
 ![](./images/command-script-quote.png)
 

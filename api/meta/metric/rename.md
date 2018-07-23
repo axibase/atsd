@@ -6,7 +6,7 @@ Renames the specified metric while retaining its identifier, fields, tags, and t
 
 The following naming rules apply to the new metric name:
 
-* Non-printable characters with ASCII codes `%x00-%x20` and `%x7F`, such as whitespace or tab, are [not allowed](../../network/metric.md#abnf-syntax).
+* Non-printable characters with ASCII hexadecimal codes `%x00-%x20` and `%x7F`, such as space and tab, are [not allowed](../../network/metric.md#abnf-syntax).
 * The new metric name must not match an existing metric name.
 * The new metric name is converted to lower case when stored.
 

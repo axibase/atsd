@@ -41,7 +41,7 @@ Examples:
 * `-Xmx1024M`: 1024 megabytes
 * `-Xmx2G`: 2 gigabytes.
 
-> Note that no whitespace must be present between the number and the unit.
+> Note that no space character must be present between the number and the unit.
 
 ```txt
 export JAVA_OPTS="-server -Xmx2048M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"

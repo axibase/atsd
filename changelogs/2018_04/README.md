@@ -46,7 +46,7 @@
 5162 | rule editor | Bug | Unable to customize `On Cancel` trigger for [webhooks](../../rule-engine/notifications/README.md#creating-notifications).
 5161 | backup | Bug | Refer to exported [portals](../../portals/) by name instead of `id` in XML files.
 5157 | administrator | Bug | Standardize line breaks when storing [configuration files](../../administration/editing-configuration-files.md#editing-configuration-files).
-5156 | installation | Bug | Fix whitespace characters in start script.
+5156 | installation | Bug | Fix non-printable characters in start script.
 
 ## Collector
 

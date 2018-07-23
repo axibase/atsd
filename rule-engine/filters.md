@@ -98,7 +98,7 @@ entity.tags.environment != 'test' && message NOT IN collection('linux-ignore-com
 
 ## Entity Name Filter
 
-To restrict the rule to specific entities, enter an entity name or a name pattern containing wildcards. Multiple entity names or patterns can be enumerated using whitespace as a separator. The filter is applied only if at least one entity or entity pattern is specified.
+To restrict the rule to specific entities, enter an entity name or a name pattern containing wildcards. Multiple entity names or patterns can be enumerated using space character as a separator. The filter is applied only if at least one entity or entity pattern is specified.
 
 ![](./images/filter-entity.png)
 
