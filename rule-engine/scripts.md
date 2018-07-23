@@ -162,9 +162,11 @@ Only **one** script can be executed for each trigger. If you need to execute mul
 
 ### Timeout
 
-The script must complete within the timeout defined in the `system.commands.timeout.seconds` property on the **Settings > Server Properties** page. The default timeout is **15 seconds**.
+The script must complete within the defined timeout. Default timeout is defined in the `system.commands.timeout.seconds` property on the **Settings > Server Properties** page, the default value is **15 seconds**.
 
-If the script fails to exit within the timeout limit, the script process is stopped with `SIGTERM` and the following text is added to the output:
+Change **Timeout, seconds** value to overwrite default timeout per rule. **Timeout, seconds** setting impacts scripts defined on **Scripts** tab and executed by `scriptOut` function.
+
+If the script fails to exit within the timeout limit, the script process is stopped with `SIGTERM`, process returns code `143` and the following text is added to the output:
 
 ```txt
 Script terminated on timeout: {current timeout value}

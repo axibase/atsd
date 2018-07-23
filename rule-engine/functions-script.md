@@ -44,7 +44,7 @@ If no arguments are required, invoke the script with an empty list `[]`.
 scriptOut('check_service.sh', [])
 ```
 
-The script must complete within the timeout value specified in **Settings > Server Properties** `system.commands.timeout.seconds`. The default timeout is 15 seconds.
+The script timeout is inherited from **[Scripts](scripts.md#timeout)** tab.
 
 If the script times out, its process is stopped with `SIGTERM` and the following text is appended to the output:
 
