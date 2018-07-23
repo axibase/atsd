@@ -12,7 +12,7 @@ Instead, the records are masked with a `DELETE` marker timestamped when the dele
 
 When an entire entity is deleted, the `DELETE` marker hides all properties for the given entity regardless of timestamp.
 
-As a result, while the `DELETE` marker is present, re-inserting property records for a deleted type with an earlier timestamp or for a deleted entity will fail because new records are not visible.
+As a result, while the `DELETE` marker is present, re-inserting property records for a deleted type with an earlier timestamp or for a deleted entity fails because new records are not visible.
 
 The actual deletion from the disk, which removes both the `DELETE` markers as well as the masked records, occurs in the background as part of a scheduled HBase procedure called [`major compaction`](../../../administration/compaction.md).
 
