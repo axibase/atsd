@@ -8,19 +8,19 @@ Deletes property records that match specified filters.
 
 Property records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker masks all properties recorded with an earlier timestamp so that the records are not visible to reading applications.
+Instead, records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker masks all properties recorded with an earlier timestamp and thus are not visible to reading applications.
 
 As a result, re-inserting property records with a timestamp earlier than the `DELETE` marker is not possible until the marker is removed.
 
-In the example below, the records were deleted at time `t=100`. The `DELETE` marker hides all records with time earlier than `100`. When new records are inserted with timestamps `t=80` and `t=150`, only the second record is visible to clients.
+In the example below, the records are deleted at time `t=100`. The `DELETE` marker hides all records with time earlier than `100`. When new records are inserted with timestamps `t=80` and `t=150`, only the second record is visible to clients.
 
-![](images/delete-marker-type.png)
+![](./images/delete-marker-type.png)
 
 When an entire entity is deleted, the `DELETE` marker has a `Long.MAX_VALUE` time and hides all properties for the given entity regardless of timestamp.
 
 In the example below, the `DELETE` marker hides all records, including new records with timestamps `t=80` and `t=150`.
 
-![](images/delete-marker-entity.png)
+![](./images/delete-marker-entity.png)
 
 The actual deletion from the disk, which removes both the `DELETE` markers as well as the masked records, occurs in the background as part of a scheduled HBase procedure called [`major compaction`](../../../administration/compaction.md).
 
