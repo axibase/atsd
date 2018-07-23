@@ -25,7 +25,7 @@ now.is_workday()
 !tomorrow.is_workday('kor')
 ```
 
-> The functions will raise an error of no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve the problem.
+> The function raises an error if no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve the problem.
 
 ### SQL Queries
 
@@ -40,7 +40,7 @@ WHERE time >= current_year
 
 ## Built-in Calendars
 
-The database is installed with pre-defined 2018 holiday calendars for several countries.
+By default, the database contains pre-defined 2018 holiday calendars for several countries.
 
 The calendars can be modified and maintained by appending dates for prior and future years without restarting the database.
 
@@ -65,7 +65,7 @@ USA | `usa` | [download](https://raw.githubusercontent.com/axibase/atsd/master/r
 
 ### Schema
 
-New calendar can be defined in JSON format according to the following [schema](holiday-calendar-schema.md).
+Define new calendars in JSON format according to the following [schema](holiday-calendar-schema.md).
 
 ```json
 {
@@ -96,7 +96,7 @@ Open **Data Entry > Workday Calendars** page. Attach a JSON file and click **Imp
 
 ![](./images/holiday-calendars.png)
 
-The uploaded files are copied to the `/opt/atsd/atsd/conf/calendars` directory and the changes are applied instantly. The database restart is not required.
+The uploaded files are copied to the `/opt/atsd/atsd/conf/calendars` directory and the changes are applied instantly. Database restart is not required.
 
 ### Example
 
