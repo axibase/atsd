@@ -10,7 +10,7 @@ last_open() RuleAlertWrapper
 
 Retrieves window from Alert History for the last alert with `OPEN` or `REPEAT` status for current rule and current time series key.
 
-### Fields Supported by `RuleAlertWrapper`.
+### Fields Supported by `RuleAlertWrapper`
 
 **Field** | **Type**
 ----|-----
