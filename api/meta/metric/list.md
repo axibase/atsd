@@ -14,11 +14,12 @@ Retrieves a list of metrics matching the specified filters.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `expression` |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.|
-| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) expression.|
-| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) expression.|
-| `limit` |integer|Maximum number of metrics to retrieve, ordered by name.|
+| `expression` |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.<br>Example: `name LIKE 'cpu_busy'` or `or tags.source = 'iostat'`.|
+| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `current_day`.|
+| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) expression for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
+| `limit` |integer|Maximum number of metrics to retrieve, ordered by name.<br>Default: `0`, unlimited.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
+| `tags` |string|Comma-separated list of metric tag names to include in the response.<br>Use wildcard as part of name pattern, for example `cpu_*`, to include matching entity tags.<br>Default: no tags are included.|
 | `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
 
 #### Expression
@@ -198,11 +199,11 @@ curl "https://atsd_hostname:8443/api/v1/metrics?expression=versioning=true%20and
 
 ## Additional Examples
 
-* [List metrics by name](examples/list-metrics-by-name.md)
+* [Filter metrics by name](examples/list-metrics-by-name.md)
 * [List metrics by name using wildcards](examples/list-metrics-by-name-wildcards.md)
-* [List metrics by name and tag](examples/list-metrics-by-name-and-tag.md)
+* [List metrics by name and tag value](examples/list-metrics-by-name-and-tag.md)
 * [List metrics with tag `table`](examples/list-metrics-with-tag-table.md)
-* [List metrics by Max Insert Date](examples/list-metrics-by-maxinsertdate.md)
-* [List metrics by Min Insert Date](examples/list-metrics-by-mininsertdate.md)
-* [List metrics for last insert range](examples/list-metrics-for-last-insert-range.md)
-* [List metrics without last insert date](examples/list-metrics-without-last-insert-date.md)
+* [Filter metrics by maximum insert date](examples/list-metrics-by-maxinsertdate.md)
+* [Filter metrics by minimum insert date](examples/list-metrics-by-mininsertdate.md)
+* [Filter metrics for last insert date range](examples/list-metrics-for-last-insert-range.md)
+* [Retrieve metrics without last insert date](examples/list-metrics-without-last-insert-date.md)
