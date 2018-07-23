@@ -8,11 +8,11 @@ Deletes property records that match specified filters.
 
 Due to the specifics of the underlying storage technology, property records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a `DELETE` marker timestamped at the time the delete operation is initiated. The `DELETE` marker hides all properties recorded with an earlier timestamp.
+Instead, the records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker hides all properties recorded with an earlier timestamp.
 
-When an entire entity is deleted, the `DELETE` marker hides all properties for the given entity regardless of the timestamp.
+When an entire entity is deleted, the `DELETE` marker hides all properties for the given entity regardless of timestamp.
 
-As a result, while the `DELETE` marker is present, re-inserting property records for a deleted type with an earlier timestamp or for a deleted entity will fail because new records will not be visible.
+As a result, while the `DELETE` marker is present, re-inserting property records for a deleted type with an earlier timestamp or for a deleted entity will fail because new records are not visible.
 
 The actual deletion from the disk, which removes both the `DELETE` markers as well as the masked records, occurs in the background as part of a scheduled HBase procedure called [`major compaction`](../../../administration/compaction.md).
 
