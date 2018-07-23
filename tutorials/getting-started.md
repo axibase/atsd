@@ -1,6 +1,6 @@
-# Getting Started: Introduction
+# Getting Started
 
-This introduction guides the reader through the first steps of using Axibase Time Series Database (ATSD).
+This introduction outlines the first steps when using Axibase Time Series Database (ATSD).
 
 ## Preparation
 
