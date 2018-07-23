@@ -1,9 +1,22 @@
 # Installation
 
-## Requirements
+## Hardware and Operating System Requirements
 
-* Linux 64-bit: Ubuntu 16.04, Debian 8.x/9.x, RHEL/CentOS 7.x, SLES 12.x.
-* Operating system and hardware [requirements](../administration/requirements.md)
+Review [requirements](../administration/requirements.md).
+
+## Supported Distributions
+
+Distribution | Version | ATSD
+--|--|--
+Ubuntu | `16.04` | ![](../images/ok.svg)
+Debian | `8.x` | ![](../images/ok.svg)
+Debian | `9.x` | ![](../images/ok.svg)
+RHEL/CentOS | `7.x` | ![](../images/ok.svg)
+SLES | `12.x` | ![](../images/ok.svg)
+
+## Hardware and Operating System Requirements
+
+Review [requirements](../administration/requirements.md).
 
 ## Installation Guides
 
@@ -79,7 +92,7 @@ By installing Axibase Time Series Database (ATSD) Standard Edition you agree to 
 
 ## Tutorials
 
-* [Getting Started Guide](../tutorials/getting-started.md)
+[Getting Started Guide](../tutorials/getting-started.md)
 
 ## Documentation
 
