@@ -2,11 +2,7 @@
 
 ## Overview
 
-These functions execute a `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and returns the script `stdout` and `stderr` output.
-
-Accepts an array of arguments which can include window [placeholders](placeholders.md) such as `entity` or `tags`.
-
-The script must be located in the `/opt/atsd/atsd/conf/script` directory.
+The script functions execute a named `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and return the script `stdout` and `stderr` output.
 
 ## Common Use Cases
 
@@ -20,13 +16,15 @@ The script must be located in the `/opt/atsd/atsd/conf/script` directory.
 ## Syntax
 
 ```java
-scriptOut(string fileName, collection arguments)
+scriptOut(string file [, array arguments])
 ```
 
-* [**required**] `fileName`: Name of the script file located in the `/opt/atsd/atsd/conf/script` directory.
-* [**required**] `arguments`: Collection of arguments passed to the script. Can be an empty list.
+* [**required**] `file`: Name of the executable script file located in the `/opt/atsd/atsd/conf/script` directory.
+* [optional] `arguments`: Array of arguments passed to the script. Can be an empty list.
 
-The arguments can include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
+## Arguments
+
+The arguments can include literal values or window [placeholders](placeholders.md).
 
 ```javascript
 scriptOut('disk_size.sh', [entity, tags.file_system])
@@ -38,13 +36,27 @@ Literal string arguments must be enclosed in single quotes.
 scriptOut('check_site.py', ['example.org', 3])
 ```
 
-If no arguments are required, invoke the script with an empty list `[]`.
+If no arguments are required, invoke the script without arguments or by passing an empty array `[]`.
 
 ```javascript
-scriptOut('check_service.sh', [])
+scriptOut('check_service.sh')
 ```
 
-The script timeout is inherited from **[Scripts](scripts.md#timeout)** tab.
+## Variables
+
+As an alternative to passing arguments, the script can access window fields and user-defined variables as [environment variables](scripts.md#environment-variables).
+
+```bash
+#!/usr/bin/env bash
+
+# access window fields by name
+ent=${entity}
+...
+```
+
+## Timeout
+
+The script must execute within the timeout specified on the **[Scripts](scripts.md#timeout)** tab. If this timeout is set to `Default`, the timeout value is inherited from the `system.commands.timeout.seconds` server property. The default timeout is 15 seconds.
 
 If the script times out, its process is stopped with `SIGTERM` and the following text is appended to the output:
 
@@ -73,7 +85,7 @@ from prettytable import PrettyTable
 ...
 ```
 
-Execute the Python script by passing its name, similar to `bash` scripts.
+Execute the Python script by specifying its file name, similar to `bash` scripts.
 
 ```javascript
 scriptOut('check_site.py', ['example.org', 3])
@@ -225,7 +237,7 @@ traceroute to example.org (192.0.2.1), 30 hops max, 60 byte packets
 
 ### `top`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) returns output of `top` in batch mode from a remote server (using SSH with key authentication, key stored in a pre-defined location).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) returns output of `top` in batch mode from a remote server. SSH key is stored in a pre-defined location.
 
 #### Script
 
