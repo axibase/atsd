@@ -8,7 +8,7 @@ Deletes property records that match specified filters.
 
 Property records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker masks all properties recorded with an earlier timestamp so that the records are not visible to reading applications.
+Instead, records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker masks all properties recorded with an earlier timestamp and thus are not visible to reading applications.
 
 As a result, re-inserting property records with a timestamp earlier than the `DELETE` marker is not possible until the marker is removed.
 
