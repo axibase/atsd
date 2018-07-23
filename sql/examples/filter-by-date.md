@@ -494,26 +494,28 @@ ORDER BY "date"
 Use `date_parse(date_format())` call in the cases where a particular timezone is required.
 
 ```sql
-SELECT date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul') AS "local date", count(value)
+SELECT date_format(time, 'yyyy-MM-dd', 'Asia/Seoul') AS "local date", count(value)
 FROM "cpu_busy"
-WHERE date_format(time, 'yyyy', 'Asia/Seoul') >= '2018' AND date_format(time, 'yyyy', 'Asia/Seoul') < '2019'
+-- Asia/Seoul is GMT+09:00
+WHERE datetime BETWEEN '2018-01-01T00:00:00+0900' AND '2018-12-31T23:59:59+0900'
 AND is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor') = true
-AND time + 86400000 < date_parse('2019-01-01 00:00:00', 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul')
-AND is_workday(time + 86400000, 'kor') = false
-AND is_weekday(time + 86400000, 'kor') = true
+-- time + 1000 milliseconds * 60 seconds * 60 minutes * 24 hours = next day
+AND time + 1000*60*60*24 < date_parse('2019-01-01 00:00:00', 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul')
+AND is_workday(date_parse(date_format(time + 1000*60*60*24, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor') = false
+AND is_weekday(date_parse(date_format(time + 1000*60*60*24, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor') = true
 GROUP BY period(1 DAY, 'Asia/Seoul'), entity
 ```
 
 ```ls
-|      local date     | count(value) |
-|---------------------|--------------|
-| 2018-02-14 00:00:00 |       30     |
-| 2018-02-28 00:00:00 |       30     |
-| 2018-05-21 00:00:00 |       30     |
-| 2018-06-05 00:00:00 |       30     |
-| 2018-06-12 00:00:00 |       30     |
-| 2018-08-14 00:00:00 |       30     |
-| 2018-10-02 00:00:00 |       30     |
-| 2018-10-08 00:00:00 |       30     |
-| 2018-12-24 00:00:00 |       30     |
+| local date | count(value) |
+|------------|--------------|
+| 2018-02-14 |      48      |
+| 2018-02-28 |      48      |
+| 2018-05-21 |      48      |
+| 2018-06-05 |      48      |
+| 2018-06-12 |      48      |
+| 2018-08-14 |      48      |
+| 2018-10-02 |      48      |
+| 2018-10-08 |      48      |
+| 2018-12-24 |      48      |
 ```
