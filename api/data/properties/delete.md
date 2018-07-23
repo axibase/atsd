@@ -4,15 +4,23 @@
 
 Deletes property records that match specified filters.
 
-### Delete Markers
+## Deletion Process
 
-Due to the specifics of the underlying storage technology, property records deleted with this method are not instantly removed from the disk.
+Property records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker hides all properties recorded with an earlier timestamp.
+Instead, the records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker masks all properties recorded with an earlier timestamp so that the records are not visible to reading applications.
 
-When an entire entity is deleted, the `DELETE` marker hides all properties for the given entity regardless of timestamp.
+As a result, re-inserting property records with a timestamp earlier than the `DELETE` marker is not possible until the marker is removed.
 
-As a result, while the `DELETE` marker is present, re-inserting property records for a deleted type with an earlier timestamp or for a deleted entity fails because new records are not visible.
+In the example below, the records were deleted at time `t=100`. The `DELETE` marker hides all records with time earlier than `100`. When new records are inserted with timestamps `t=80` and `t=150`, only the second record is visible to clients.
+
+![](images/delete-marker-type.png)
+
+When an entire entity is deleted, the `DELETE` marker has a `Long.MAX_VALUE` time and hides all properties for the given entity regardless of timestamp.
+
+In the example below, the `DELETE` marker hides all records, including new records with timestamps `t=80` and `t=150`.
+
+![](images/delete-marker-entity.png)
 
 The actual deletion from the disk, which removes both the `DELETE` markers as well as the masked records, occurs in the background as part of a scheduled HBase procedure called [`major compaction`](../../../administration/compaction.md).
 
@@ -27,6 +35,8 @@ To remove all `DELETE` markers ahead of schedule, trigger a `major compaction` t
 ```sh
 echo "major_compact 'atsd_properties'" | /opt/atsd/hbase/bin/hbase shell
 ```
+
+Once the `DELETE` markers are deleted, new records can be created with any timestamps.
 
 ## Request
 
