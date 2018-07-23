@@ -203,6 +203,6 @@ Result:
 | 11:00 |   9    |      9      | last sample
 ```
 
-### Chartlab example of both algorithms
+### ChartLab example of both algorithms
 
 ![Downsampling charts](./images/downsampling_charts.png)
