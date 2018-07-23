@@ -6,7 +6,7 @@ Axibase Time Series Database (ATSD) is a non-relational database optimized for c
 
 ## Download Options
 
-Deploy ATSD as part of an already established workflow using flexible installation options: [Software](./packages.md) for various package managers, [Images](./images.md) for Docker and Kubernates, on HBase with [AWS S3](./aws-emr-s3.md), or on a [Cloudera Distribution Hadoop ](./cloudera.md) cluster.
+Deploy ATSD as part of an already established workflow using flexible installation options: [Software](./packages.md) for various package managers, [Images](./images.md) for Docker and Kuberne tes, on HBase with [AWS S3](./aws-emr-s3.md), or on a [Cloudera Distribution Hadoop](./cloudera.md) cluster.
 
 ### Hardware Requirements
 
