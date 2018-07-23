@@ -490,3 +490,30 @@ ORDER BY "date"
 | 2018-11-22 |     15     |       Thu       |
 | 2018-12-25 |     15     |       Tue       |
 ```
+
+Use `date_parse(date_format())` call in the cases where a particular timezone is required.
+
+```sql
+SELECT date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul') AS "local date", count(value)
+FROM "cpu_busy"
+WHERE date_format(time, 'yyyy', 'Asia/Seoul') >= '2018' AND date_format(time, 'yyyy', 'Asia/Seoul') < '2019'
+AND is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor') = true
+AND time + 86400000 < date_parse('2019-01-01 00:00:00', 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul')
+AND is_workday(time + 86400000, 'kor') = false
+AND is_weekday(time + 86400000, 'kor') = true
+GROUP BY period(1 DAY, 'Asia/Seoul'), entity
+```
+
+```ls
+|      local date     | count(value) |
+|---------------------|--------------|
+| 2018-02-14 00:00:00 |       30     |
+| 2018-02-28 00:00:00 |       30     |
+| 2018-05-21 00:00:00 |       30     |
+| 2018-06-05 00:00:00 |       30     |
+| 2018-06-12 00:00:00 |       30     |
+| 2018-08-14 00:00:00 |       30     |
+| 2018-10-02 00:00:00 |       30     |
+| 2018-10-08 00:00:00 |       30     |
+| 2018-12-24 00:00:00 |       30     |
+```
