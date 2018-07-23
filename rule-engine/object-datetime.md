@@ -4,8 +4,9 @@
 
 The `DateTime` object represents a specific date and time in the **server** time zone.
 
-## Properties
+## Fields
 
+* `millis`
 * `day_of_week`
 * `dayOfMonth`
 * `dayOfYear`
@@ -23,16 +24,23 @@ The `DateTime` object represents a specific date and time in the **server** time
 * `yearOfCentury`
 * `yearOfEra`
 * `centuryOfEra`
-* `millis`
 * `next_workday`
 * `previous_workday`
 * `next_non_working_day`
 * `previous_non_working_day`
 
-The `millis` property returns current time in Unix milliseconds.
+The `millis` field returns time in Unix milliseconds.
 
-`next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` properties calculate
-working days using default workday calendar specified in `default.holiday.calendar` server property.
+`next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` fields are based on the calendar specified in `default.holiday.calendar` server property.
+
+## Window Fields
+
+|**Field**| **Description** |
+|:---|---:|
+| `now` | `DateTime` object that contains **current** server time. |
+| `today` | `DateTime` object that contains **midnight** of the **current day** in server time zone. |
+| `yesterday` | `DateTime` object that contains **midnight** of the **previous day** in server time zone. |
+| `tomorrow` | `DateTime` object that contains **midnight** of the **next day** in server time zone. |
 
 ## Functions
 
@@ -43,47 +51,36 @@ working days using default workday calendar specified in `default.holiday.calend
 ### `is_weekday`
 
 ```javascript
-is_weekday([c]) boolean
+is_weekday( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object represents date on weekday.
-Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
+Returns `true` if the `DateTime` object is a weekday.
+Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
 If country cannot be resolved by country code, returns `true` if day of week is not Saturday or Sunday.
-If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
-By default `default.holiday.calendar` resolves country code from `user.country` system property.
+If country code is not specified, the database uses the `default.holiday.calendar` server property.
+By default `default.holiday.calendar` resolves country code from the `user.country` system property.
 
 ### `is_weekend`
 
 ```javascript
-is_weekend([c]) boolean
+is_weekend( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object represents date on weekend.
-Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
+Returns `true` if the `DateTime` object is a weekend day.
+Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
 If country cannot be resolved by country code, returns `true` if day of week is Saturday or Sunday.
-If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
-By default `default.holiday.calendar` resolves country code from `user.country` system property.
+If country code is not specified, the database uses the `default.holiday.calendar` server property.
+By default `default.holiday.calendar` resolves country code from the `user.country` system property.
 
 ### `is_workday`
 
 ```javascript
-is_workday([c]) boolean
+is_workday( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object represents date on weekday.
-Accepts optional calendar key parameter. Refer to [Holiday Calendar](holiday-calendar.md) for details.
-If country code is not specified, ATSD uses the `default.holiday.calendar` server property.
-By default `default.holiday.calendar` resolves country code from `user.country` system property.
-If no holiday calendar for the expected year is found by key, the exception is thrown.
+Returns `true` if the `DateTime` object is a working day based on the observed [holiday calendar](holiday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
 
-## Window Fields
-
-|**Field**| **Description** |
-|:---|---:|
-| `now` | `DateTime` object that contains **current** server time. |
-| `today` | `DateTime` object that contains **midnight** of the **current day** in server time zone. |
-| `yesterday` | `DateTime` object that contains **midnight** of the **previous day** in server time zone. |
-| `tomorrow` | `DateTime` object that contains **midnight** of the **next day** in server time zone. |
+The function throws an exception if no holiday calendar is found, or if the holiday calendar contains no date for the given year.
 
 ## Sample Values
 

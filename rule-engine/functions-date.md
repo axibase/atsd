@@ -16,6 +16,7 @@ Date functions perform various operations on dates, timestamps, and intervals.
 * [`milliseconds`](#milliseconds)
 * [`seconds`](#seconds)
 * [`elapsedTime`](#elapsedtime)
+* [`elapsed_minutes`](#elapsed_minutes)
 * [`date_parse`](#date_parse)
 * [`to_datetime`](#to_datetime)
 
@@ -48,11 +49,14 @@ now.dayOfWeek == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
-// returns true if difference between current time (long, Unix milliseconds) and create_ms (long, Unix milliseconds) exceeds 1 hour
-(now.millis - create_ms) > 60*60000
+// returns true if difference between current time (long, Unix milliseconds) and create_ms (long, Unix milliseconds) exceeds 15 minutes
+(now.millis - create_ms) > 15*60000
 
-// the same condition as above implemented using the elapsedTime function
-elapsedTime(create_ms) > 60*60000
+// returns the same result as above using the elapsedTime function
+elapsedTime(create_ms) > 15*60000
+
+// returns the same result as above using the elapsed_minutes function
+elapsed_minutes(create_ms) > 15
 ```
 
 ### `today`
@@ -61,7 +65,7 @@ elapsedTime(create_ms) > 60*60000
 today DateTime
 ```
 
-Returns the current day at midnight as a [`DateTime`](object-datetime.md) object.
+Returns the current day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
 
 ### `tomorrow`
 
@@ -69,7 +73,7 @@ Returns the current day at midnight as a [`DateTime`](object-datetime.md) object
 tomorrow DateTime
 ```
 
-Returns the next day at midnight as a [`DateTime`](object-datetime.md) object.
+Returns the next day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
 
 ### `yesterday`
 
@@ -77,7 +81,7 @@ Returns the next day at midnight as a [`DateTime`](object-datetime.md) object.
 yesterday DateTime
 ```
 
-Returns the previous day at midnight as a [`DateTime`](object-datetime.md) object.
+Returns the previous day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
 
 ### `window_length_time`
 
@@ -145,9 +149,7 @@ elapsedTime(long t) long
 elapsedTime(string d) long
 ```
 
-Calculates the number of milliseconds between the current time and time `t` which is specified in Unix milliseconds.
-
-Accepts time `t` in Unix milliseconds or the date `d` in the following format:
+Calculates the number of **milliseconds** between the current time and time `t` specified in Unix milliseconds or date `d` specified in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
@@ -180,7 +182,13 @@ formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 elapsed_minutes(long t) long
 ```
 
-Calculates the number of minutes since `t` to current time.
+```javascript
+elapsed_minutes(string d) long
+```
+
+Calculates the number of **minutes** between the current time and time `t` or date `d`.
+
+Returns the same result as the `elapsedTime` function divided by `60000`.
 
 ### `date_parse`
 
@@ -246,14 +254,14 @@ date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS Z
 ### `to_datetime`
 
 ```javascript
-to_datetime(long m) DateTime
+to_datetime(long t) DateTime
 ```
 
-Returns `DateTime` object constructed from Unix milliseconds `m`.
+Returns [`DateTime`](object-datetime.md) object constructed from Unix milliseconds `t`.
 
 Example:
 
 ```javascript
-/* Returns true if the specified date is a working day. */
-to_datetime(timestamp).is_workday()
+/* Returns true if the specified create_ms date is a working day. */
+to_datetime(create_ms).is_workday()
 ```

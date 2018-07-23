@@ -2,128 +2,121 @@
 
 ## Overview
 
-Holiday Calendar is a data structure containing national holiday and work day information.
+Holiday Calendar is a data structure that contains a list of exceptions to the regular workday calendar such as observed holidays and weekend working days.
+
+The list can be associated with a country, a region, an industry, or a specific organization, such as a stock exchange, a religious institution, or a school district.
+
+Each calendar is assigned a unique key and can be accessed in rules and SQL queries by key to check if the given day is a working day based on the actual observed calendar.
 
 ## Usage
 
-Holiday calendars can be used in:
+### Rule Engine
 
-* [`IS_WORKDAY`](../sql/README.md#is_workday) SQL function
-* [`is_workday`](object-datetime.md#is_workday) `DateTime` function
-* `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` [`DateTime`](object-datetime.md#properties) properties
-
-### Example
-
-```sql
-SELECT datetime, value, IS_WORKDAY(time) AS "workday" FROM metric
-```
+* [`is_workday`](object-datetime.md#is_workday) function
+* [`is_weekday`](object-datetime.md#is_weekday) function
+* [`is_weekend`](object-datetime.md#is_weekend) function
+* [`DateTime`](object-datetime.md#fields) fields: `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day`.
 
 ```javascript
 now.is_workday()
 ```
 
-## Default calendars
+```javascript
+!tomorrow.is_workday('kor')
+```
 
-ATSD contains pre-defined holiday calendars for several countries in calendar year 2018.
-These calendars include national holidays and additional non-working days.
+> The functions will raise an error of no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve the problem.
 
-List of default holiday calendars:
+### SQL Queries
 
- **Country** | **Calendar Code** | **Download**
+* [`IS_WORKDAY`](../sql/README.md#is_workday) SQL function
+
+```sql
+SELECT date_format(time, 'yyyy-MM-dd'), SUM(value)
+  FROM visitor_count
+WHERE time >= current_year
+  AND date_format(time, 'u') < 6 AND NOT IS_WORKDAY(time)
+```
+
+## Built-in Calendars
+
+The database is installed with pre-defined 2018 holiday calendars for several countries.
+
+The calendars can be modified and maintained by appending dates for prior and future years without restarting the database.
+
+ **Country** | **Calendar Key** | **Download**
 ----|----|----
-Australia | `aus` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aus.json)
-Austria| `aut` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aut.json)
-Brazil | `bra` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/bra.json)
-Canada | `can` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/can.json)
-China | `chn` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/chn.json)
-Germany | `deu` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/deu.json)
-France | `fra` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/fra.json)
-Great Britain | `gbr` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/gbr.json)
-Israel | `isr` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/isr.json)
-Japan | `jpn` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/jpn.json)
-Korea | `kor` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/kor.json)
-Russia | `rus` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/rus.json)
-Singapore | `sgp` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/sgp.json)
-USA | `usa` | [![](./images/button-download.png)](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/usa.json)
+Australia | `aus` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aus.json)
+Austria| `aut` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aut.json)
+Brazil | `bra` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/bra.json)
+Canada | `can` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/can.json)
+China | `chn` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/chn.json)
+Germany | `deu` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/deu.json)
+France | `fra` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/fra.json)
+Great Britain | `gbr` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/gbr.json)
+Israel | `isr` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/isr.json)
+Japan | `jpn` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/jpn.json)
+Korea | `kor` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/kor.json)
+Russia | `rus` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/rus.json)
+Singapore | `sgp` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/sgp.json)
+USA | `usa` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/usa.json)
 
-## Calendars Modification
+## Custom Calendars
 
 ### Schema
 
-Calendars are stored as JSON documents with a strict [schema](holiday-calendar-schema.md). Calendar key is the file name excluding the `.json` extension.
-The file with calendar data structure can be named as follows: `{calendar_key}.json`
-
-### Import to ATSD
-
-Go to **Settings > Workday Calendars**. Click **Choose Files** button and select one or more prepared calendars, click **Import**.
-
-![](./images/holiday-calendars.png)
-
-The selected files are copied to the `/opt/atsd/atsd/conf/calendars` directory. The workday calendar cache is refreshed, and the updates are loaded.
-
-The other option is to put the calendar files into the `/opt/atsd/atsd/conf/calendars` directory manually.
-
-### Example
-
-The example below illustrates a custom holiday calendar for New York Stock Exchange.
-Create a file `nyse.json`.
+New calendar can be defined in JSON format according to the following [schema](holiday-calendar-schema.md).
 
 ```json
 {
   "country": "USA",
   "data": [
-    {
-      "date": "2018-01-01",
-      "description": "New Years Day",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-01-15",
-      "description": "Martin Luther King, Jr. Day",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-02-19",
-      "description": "Washington's Birthday",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-03-30",
-      "description": "Good Friday",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-05-28",
-      "description": "Memorial Day",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-07-04",
-      "description": "Independence Day",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-09-03",
-      "description": "Labor Day",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-11-22",
-      "description": "Thanksgiving Day",
-      "type": "Holiday"
-    },
-    {
-      "date": "2018-12-25",
-      "description": "Christmas",
-      "type": "Holiday"
-    }
+    { "date": "2019-01-01", "type": "Holiday" },
+    { "date": "2019-01-05", "type": "Workday" },
+    ...
   ]
 }
 ```
 
-## Troubleshooting
+The country name is specified as the [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
 
-### `is_workday` Function Throws Exception After ATSD Upgrade
+Each exception day in the calendar is classified with the `Holiday` or `Workday` type.
 
-Holiday calendars are included with new ATSD installations.
-Download the required [calendars](#default-calendars) and [import](#import-to-atsd) them to ATSD.
+The `Holiday` type is assigned when the regular working day becomes a non-working day based on observance. Conversely, a regular weekend day which is changed to a working day due to calendar optimizations is classified as a `Workday`.
+
+The `Description` field is optional.
+
+When loaded into the database from a JSON file, the calendar becomes accessible under the calendar key which is based on the file name excluding the `.json` extension.
+
+The calendar file can include days for any number of years.
+
+### Importing Calendar
+
+Open **Data Entry > Workday Calendars** page. Attach a JSON file and click **Import**.
+
+![](./images/holiday-calendars.png)
+
+The uploaded files are copied to the `/opt/atsd/atsd/conf/calendars` directory and the changes are applied instantly. The database restart is not required.
+
+### Example
+
+The example below illustrates a custom holiday calendar for the [New York Stock Exchange](https://www.nyse.com/markets/hours-calendars).
+
+The calendar is named `nyse.json` and can be accessed under the `nyse` key, for example `now.is_workday('nyse')`.
+
+```json
+{
+  "country": "USA",
+  "data": [
+    { "date": "2018-01-01", "type": "Holiday", "description": "New Years Day" },
+    { "date": "2018-01-15", "type": "Holiday", "description": "Martin Luther King, Jr. Day" },
+    { "date": "2018-02-19", "type": "Holiday", "description": "Washington's Birthday" },
+    { "date": "2018-03-30", "type": "Holiday", "description": "Good Friday" },
+    { "date": "2018-05-28", "type": "Holiday", "description": "Memorial Day" },
+    { "date": "2018-07-04", "type": "Holiday", "description": "Independence Day" },
+    { "date": "2018-09-03", "type": "Holiday", "description": "Labor Day" },
+    { "date": "2018-11-22", "type": "Holiday", "description": "Thanksgiving Day" },
+    { "date": "2018-12-25", "type": "Holiday", "description": "Christmas" }
+  ]
+}
+```

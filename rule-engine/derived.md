@@ -2,11 +2,11 @@
 
 ## Overview
 
-Derived command actions store new calculated metrics in the database by creating and processing custom commands defined using the [Network API](../api/network/README.md#network-api) syntax.
+The Derived command action stores new calculated metrics in the database by processing custom commands defined using the [Network API](../api/network/README.md#network-api) syntax.
 
 ## Command Template
 
-When configuring a command action, you need to specify a template consisting of command name, command fields and command values.
+To configure a command action, specify a command template consisting of command name, command fields and command values.
 
 ### Supported commands
 
@@ -18,30 +18,38 @@ When configuring a command action, you need to specify a template consisting of 
 
 ### Fields
 
-The template can include plain text and [placeholders](placeholders.md).
+The template can include plain text and [placeholders](placeholders.md) containing window fields and expressions.
 
 ```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-The calculated metrics can reference other metrics using [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
+The calculated metrics can reference other metrics using [`db_last`](functions-series.md#db_laststring-m), [`db_statistic`](functions-series.md#db_statistic), and [`value`](functions-value.md#value) functions.
 
 ```bash
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}
 ```
 
-### Tags
-
-A special placeholder `${commandTags}` is provided to print out all window tags in the [Network API](../api/network/series.md#syntax) syntax. The placeholder appends all tags to the command without knowing the tag names in advance.
-
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags}
+series e:${entity} m:${metric}_percent=${value / value('total') * 100.0} ms:${timestamp}
 ```
 
-Assume the incoming command is `series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda`:
+### Tags
+
+A special placeholder `${commandTags}` is provided to print out all command tags in the [Network API](../api/network/series.md#syntax) syntax. Use it to append all tags to the command without knowing the tag names in advance.
+
+```bash
+series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
+```
+
+The above expression transforms the input command into a derived command as follows:
 
 ```ls
-series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
+series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda ms:1532320900000
+```
+
+```ls
+series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda ms:1532320900000
 ```
 
 ### Time
@@ -54,13 +62,13 @@ To store derived commands with the current server time, omit the date/time field
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
-Alternatively, use the [`now`](window-fields.md#date-fields) placeholder to access the current server time.
+Alternatively, use the [`now`](window-fields.md#date-fields) field to insert commands with the current server time.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.millis}
 ```
 
-To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical) function and the seconds field `s:`:
+To round the command time to seconds, apply the [`floor`](functions.md#mathematical) function and include the result in the `seconds` field.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.millis/1000)}
@@ -68,7 +76,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.milli
 
 #### Received Time
 
-To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window-fields.md#date-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
+To store derived commands with the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window-fields.md#date-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
@@ -76,7 +84,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 
 > If the **Check On Exit** option is enabled for time-based window, some of the events are caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
 
-To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical) function:
+To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical) function.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp/1000)}

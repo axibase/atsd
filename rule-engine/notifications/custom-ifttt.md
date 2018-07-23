@@ -8,7 +8,7 @@ This type of integration relies on the [IFTTT Webhook](https://ifttt.com/maker_w
 
 ## Create IFTTT Applet
 
-Log in to [ifttt.com](https://ifttt.com) and go to **My Applets**.
+Log in to [ifttt.com](https://ifttt.com) and open **My Applets**.
 
 ![](./images/ifttt_applet_1.png)
 
