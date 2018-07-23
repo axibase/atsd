@@ -230,12 +230,13 @@ Result:
 |   18  |   2    |      2      |      -       |   -   | last sample
 ```
 
-Charts of the original and downsampled series. Accepted series samples are green, rejected samples are red.
-![Charts of original and downsampled series.](./images/original_and_downsampled.png)
+Charts of the input and downsampled series are provided below. The input series is colored red, the downsampled series is colored green.
 
-This graph illustrates how the algorithm calculates interpolated values. Interpolated values colored blue.
-![Interpolation.](./images/downsampling_interpolation.png)
+![](./images/original_and_downsampled.png)
 
-### ChartLab example of both algorithms
+The chart illustrates how the `INTERPOLATE` algorithm calculates interpolated values. Interpolated values are colored blue.
+![](./images/downsampling_interpolation.png)
 
-![Downsampling charts](./images/downsampling_charts.png)
+[ChartLab Examples](https://apps.axibase.com/chartlab/0a5044f0/7/)
+
+![](./images/downsampling_charts.png)
