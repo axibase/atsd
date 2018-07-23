@@ -213,7 +213,7 @@ https://atsd_hostname:8443/portal/{portal-id}.xhtml
 https://atsd_hostname:8443/portal/name/{name}
 ```
 
-> Names containing whitespace and other special properties must be URL-encoded.
+> Names containing space, tab and special characters must be URL-encoded.
 
 ![](./resources/creating-and-assigning-portals_14.png)
 

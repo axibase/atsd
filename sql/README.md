@@ -601,7 +601,7 @@ Columns referenced in the `SELECT` expression must be included in the `GROUP BY`
 
 ## Identifiers
 
-Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#reserved-words), a function name, or a special character including whitespace, `.`,`+`,`-`,`*`,`/`,`,`,`"`,`'`.
+Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#reserved-words), a function name, or a special character including space, `.`, `+`, `-`, `*`, `/`, `,`, `"`, `'`.
 
 ```sql
 -- Special character
