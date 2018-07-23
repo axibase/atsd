@@ -1,17 +1,22 @@
 # Alert Logging
 
-Alert Logging records [window](window.md) status changes in the ATSD database and in log files located on the local file system for testing, integration and audit trailing.
+Alert Logging action records [window](window.md) status changes in the database or in log files located on the local file system for integration, testing, and audit trailing.
 
 ## Logging to Database
 
-`OPEN`, `REPEAT` and `CANCEL` status changes can be stored in the database and retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md). The records are visible on the **Alerts > Alert History** page.
+To record alert history, check **Log to Alert History** on the **Logging** tab, customize the message text, and enable `On Open`, `On Repeat`, `On Cancel` triggers. The **Message** text is optional.
 
-To record alert history, enable the **Log to Alert History** checkbox in Rule Editor and
-enable required `On Open`, `On Repeat`, `On Cancel` message templates.
+![](./images/logging-triggers.png)
+
+The status changes are stored in the database and can be inspected on the **Alerts > Alert History** page, retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md), and checked with the [`last_open`](functions-alert-history.md) function.
+
+```javascript
+elapsed_minutes(last_open().timestamp) > 60
+```
 
 ## Logging to Files
 
-Logging to files or even remote systems can be enabled for each rule separately by selecting one of the pre-configured loggers in the **File Logger** drop-down.
+Logging to files or remote systems (via TCP loggers) can be enabled for each rule separately by selecting one of the pre-configured loggers in the **File Logger** drop-down.
 
 Loggers can be added and modified by administrators on the **Settings > Configuration Files** page.
 
@@ -19,8 +24,7 @@ Open the `logback.xml` for editing, create a new logger and save changes. Once t
 
 ![](./images/logging-loggers.png)
 
-File loggers are disabled by default. To start writing alert information to files, select the logger from `Log to File` drop-down list and
-enable required `On Open`, `On Repeat`, `On Cancel` message templates.
+File logging is disabled by default. To enable file logging, select one of the loggers in the **Log to File** drop-down list, customize the message text, and enable `On Open`, `On Repeat`, `On Cancel` triggers.
 
 ## Default File Logger
 
