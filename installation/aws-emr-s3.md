@@ -23,7 +23,7 @@ Create the S3 bucket prior to installation.  The bucket, named `atsd` in the exa
 aws s3 mb s3://atsd
 ```
 
-If necessary, the `hbase-root` directory is created by hbase when the cluster is started for the first time. The directory is **not deleted** when the cluster is stopped.
+If necessary, the `hbase-root` directory is created by HBase when the cluster is started for the first time. The directory is **not deleted** when the cluster is stopped.
 
 Check the contents of the bucket prior to launching the cluster.
 
