@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Downsampling transformation reduces time series density by filtering out sequentially duplicate samples from the response.
+Downsampling transformation reduces time series density by filtering out sequentially duplicate samples from a response.
 
 ### Basic Example
 
@@ -12,7 +12,7 @@ The Downsampling transformation reduces time series density by filtering out seq
 }
 ```
 
-The configuration excludes samples that are equal to the previous value and to the next value.
+The configuration excludes samples that are equal to the previous and next values.
 
 ### Advanced Example
 
@@ -23,7 +23,7 @@ The configuration excludes samples that are equal to the previous value and to t
 }
 ```
 
-The configuration excludes samples that are within `±10` of the interpolated value.
+The configuration excludes samples that are within `±10` of an interpolated value.
 
 ## Parameters
 
@@ -31,7 +31,7 @@ The configuration excludes samples that are within `±10` of the interpolated va
 |:---|:---|:---|
 | [`algorithm`](#algorithm) | string | Downsampling algorithm determines which values to discard as duplicate.<br>Possible values: `DETAIL` or `INTERPOLATE`.<br>Default: `DETAIL`. |
 | `difference` | number | The sample is classified as duplicate if the current value deviates by more than the specified difference, in absolute terms, from the estimated value produced by downsampling algorithm.<br>Minimum value: `0`.<br>Default: `0`. |
-| `ratio` | number | The sample is classified as duplicate if the ratio of the current value and the value produced by downsampling algorithm (or the inverse) exceeds the specified ratio.<br>Minimum value: `1`. <br>Default: `none`. |
+| `ratio` | number | The sample is classified as duplicate if the ratio of the current value and the value produced by downsampling algorithm or the inverse exceed the specified ratio.<br>Minimum value: `1`. <br>Default: `none`. |
 | [`gap`](#gap) | object | Maximum distance between subsequent samples in the transformed series. Specified as count and [time unit](time-unit.md).<br>Default: `none`.|
 | `order` | integer | Controls the order of downsampling in the sequence of other [transformations](./query.md#transformation-fields).<br>Default: `0`.|
 
@@ -39,7 +39,7 @@ The configuration excludes samples that are within `±10` of the interpolated va
 
 ## Gap
 
-If the `gap` parameter is specified, and the time distance between the current sample and the last returned sample exceeds the gap, the current sample is always included in the result.
+If the `gap` parameter is specified, and the time distance between the current and last returned sample exceeds the gap, the current sample is always included in the result.
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
@@ -50,32 +50,32 @@ If the `gap` parameter is specified, and the time distance between the current s
 "gap": {"count": 2, "unit": "MINUTE"}
 ```
 
-The `gap` parameter prevents a time series from becoming too sparse.
+The `gap` parameter prevents a time series from becoming too sparse as a result of downsampling.
 
 ## Processing
 
-The samples in the input series are evaluated sequentially in the ascending time order.
+The samples in the input series are evaluated sequentially in ascending time order.
 
-The following samples are _always included_ in the result, even if classified as duplicate by the downsampling algorithm.
+The following samples are **always included** in the result, even if classified as duplicate by the downsampling algorithm.
 
 * The first and the last samples.
-* Annotated samples: sample with a non-empty [text field](./query.md#value-object).
+* Annotated samples: Sample with a non-empty [text field](./query.md#value-object).
 * Samples with `NaN` value.
 * Samples whose previous or next sample value is `NaN`.
 
-The remaining series are checked by the algorithm and are excluded from the results if classified as duplicates and provided the `gap` condition is satisfied.
+The remaining samples are checked by the algorithm which excludes them from the results if classified as duplicates and the provided `gap` condition is satisfied.
 
 > If the query retrieves [versioned](./versions.md) series, the algorithm evaluates the latest version. If the latest version is classified as a duplicate, then all versions with the same timestamp are classified as such.
 
 ## Algorithm
 
-The `DETAIL` and `INTERPOLATE` algorithms use differ formulas to classify samples as duplicates.
+The `DETAIL` and `INTERPOLATE` algorithms use different formulas to classify samples as duplicates.
 
-The following definitions are used in this section:
+This documentation references the following keywords and definitions:
 
-* `sample`: The current sample being evaluated.
-* `last_sample`: The last returned (included in the result) series sample.
-* `next_sample`: The sample following the current `sample`.
+* `sample`: Current evaluated sample.
+* `last_sample`: Last returned series sample included in the result.
+* `next_sample`: Sample following current `sample`.
 
 The timestamps of these samples are `time`, `last_time`, `next_time`, and their values are `value`, `last_value`, `next_value`.
 
@@ -83,7 +83,7 @@ In addition, the `INTERPOLATE` algorithm performs linear interpolation between t
 
 ### Ratio Check
 
-If the `ratio` parameter is set, the algorithms calculate several multiples.
+When the `ratio` parameter is set, the algorithms calculate several multiples.
 
 * `DETAIL` algorithm:
   * `value/last_value`
