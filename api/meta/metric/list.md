@@ -24,7 +24,7 @@ Retrieves a list of metrics matching the specified filters.
 
 #### Expression
 
-The expression can include any field listed [below](#fields), such as `name`, `label`, and `minValue`, except the `filter` field and `lastInsertDate` which can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+The expression can include any field listed [below](#fields), such as `name`, `label`, and `minValue`, except the `filter` field and the `lastInsertDate` field which can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
 
 String literals must be enclosed in single or double quotes.
 
@@ -40,6 +40,14 @@ name NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
 
 ```javascript
 retentionDays > 0 OR seriesRetentionDays > 0
+```
+
+```javascript
+tags.table = 'iostat'
+```
+
+```javascript
+tags.table != ''
 ```
 
 ## Response
