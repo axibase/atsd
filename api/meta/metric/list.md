@@ -30,21 +30,31 @@ String literals must be enclosed in single or double quotes.
 
 Examples:
 
+* Retrieve metrics with name starting with `meminfo.`.
+
 ```javascript
 name LIKE 'meminfo.*'
 ```
 
+* Retrieve metrics with name starting with `cpu` and created after '2017-Oct-01'.
+
 ```javascript
-name NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
+lower(name) NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
 ```
+
+* Retrieve metrics with automated data pruning.
 
 ```javascript
 retentionDays > 0 OR seriesRetentionDays > 0
 ```
 
+* Retrieve entities with tag `table` equal to `iostat` (case insensitive comparison).
+
 ```javascript
-tags.table = 'iostat'
+lower(tags.table) = 'iostat'
 ```
+
+* Retrieve entities with non-empty `table` tag.
 
 ```javascript
 tags.table != ''
@@ -99,7 +109,7 @@ Invalid Action is triggered if the received series value is less than the Minimu
 |`DISCARD`|Do not process the received value, discard it.|
 |`TRANSFORM`|Set value to `min_value` or `max_value`, if value is outside of range.|
 |`RAISE_ERROR`|Log an `ERROR` event in the database log.|
-|`SET_VERION_STATUS`|For versioned metrics, set status to `Invalid`.|
+|`SET_VERSION_STATUS`|For versioned metrics, set status to `Invalid`.|
 
 ### Interpolate
 

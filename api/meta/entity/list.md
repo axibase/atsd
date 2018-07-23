@@ -40,7 +40,7 @@ Examples:
 name LIKE 'nur*'
 ```
 
-* Retrieve entities with label not starting with `aws` and created after '2017-10-01'.
+* Retrieve entities with label not starting with `aws` and created after '2017-Oct-01'.
 
 ```javascript
 lower(label) NOT LIKE 'aws*' AND createdDate > '2017-10-01T00:00:00Z'
