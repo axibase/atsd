@@ -24,7 +24,7 @@ SLES | `12.x` | ![](../images/ok.svg)
 
 > By installing ATSD you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
 
-#### Technical Support
+### Technical Support
 
 Email us at **support-atsd@axibase.com** with any installation questions.
 
