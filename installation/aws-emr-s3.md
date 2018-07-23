@@ -6,24 +6,24 @@ The document describes how to deploy ATSD on HBase with [AWS S3](https://docs.aw
 
 ## Operational Advantages
 
-* Storage and compute layers can be scaled independently to address a variety of use cases, including **small cluster/large dataset** scenario.
-* The number of region servers can be dynamically adjusted based on auto-scaling rules.
+* Scale storage and compute layers independently to handle a variety of use cases, including the **small cluster/large dataset** scenario.
+* Dynamically adjust the number of region servers based on auto-scaling rules.
 * Simplified backup and recovery.
-* Reduced storage footprint (no need for 3-x data replication and additional disk space required for HFile compactions).
+* Reduced storage footprint. No need for `3-x` data replication and additional disk space required for HFile compactions.
 * Increased resilience based on AWS S3 reliability and durability.
 * Read-only cluster replicas.
 
-The minimum cluster size supported by this installation option is **two** EC2 instances one of which is shared by the HBase Master and ATSD.
+The minimum cluster size supported by this installation option is **two** EC2 instances, one of which is shared by the HBase Master and ATSD.
 
 ## Create S3 Bucket
 
-The S3 bucket must be created prior to installation.  The bucket, named `atsd` in the example below, stores the `hbase-root` directory containing both metadata and HFiles.
+Create the S3 bucket prior to installation.  The bucket, named `atsd` in the example below, stores the `hbase-root` directory and contains both metadata and HFiles.
 
 ```bash
 aws s3 mb s3://atsd
 ```
 
-The `hbase-root` directory is created if necessary when the cluster is started for the first time. The directory is _not deleted_ when the cluster is stopped.
+If necessary, the `hbase-root` directory is created by HBase when the cluster is started for the first time. The directory is **not deleted** when the cluster is stopped.
 
 Check the contents of the bucket prior to launching the cluster.
 
@@ -45,13 +45,13 @@ tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 
 The `atsd-hbase.$REVISION.jar` file contains ATSD co-processors and filters.
 
-By uploading the jar file to S3, Java classes in this file are automatically available to all region servers when they are started.
+By uploading the `.jar` file to S3, Java classes in this file are automatically available to all region servers when they are started.
 
 ```bash
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
 ```
 
-Verify that the jar file is stored in S3:
+Verify that the `.jar` file is stored in S3:
 
 ```bash
 aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
@@ -64,9 +64,9 @@ Total Objects: 1
   Total Size: 555.1 KiB
 ```
 
-The `atsd-hbase.$REVISION.jar` must be stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
+Store the `atsd-hbase.$REVISION.jar` in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
-> When uploading the jar file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the jar file is replaced.
+> When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
 
 ## Launch Cluster
 
@@ -100,7 +100,7 @@ Replace `<key-name>` and `<subnet>` parameters.
 
 The `<key-name>` parameter corresponds to the name of the private key used to log in to cluster nodes.
 
-The `<subnet>` parameter is required when launching particular instance types. To find out the correct subnet for your account, launch a sample cluster manually in the AWS EMR console and review the settings using AWS CLI export.
+The `<subnet>` parameter is required when launching particular instance types. To discover the correct subnet for your account, launch a sample cluster manually in the AWS EMR Console and review the settings using AWS CLI export.
 
 ```bash
 --ec2-attributes KeyName=ec2-pkey,SubnetId=subnet-6ab5ca46,EmrManagedMasterSecurityGroup=sg-521bcd22,EmrManagedSlaveSecurityGroup=sg-9604d2e6    \
@@ -110,11 +110,11 @@ The `<subnet>` parameter is required when launching particular instance types. T
 
 ### Specify Initial Cluster Size
 
-Adjust EC2 instance types and total instance count for the `RegionServers` group as appropriate. Review [AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
+Adjust EC2 instance types and total instance count for the `RegionServers` group as needed. Review [AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
 
-The cluster size can be adjusted at runtime.
+If needed, adjust the cluster size at runtime.
 
-The minimum number of nodes in each instance group is 1, therefore the smallest cluster can have two EC2 instances:
+The minimum number of nodes in each instance group is `1`, therefore the smallest cluster can have two EC2 instances:
 
 ```bash
 Name=Master,InstanceCount=1,InstanceGroupType=MASTER,InstanceType=m4.large        \
@@ -123,15 +123,15 @@ Name=Region,InstanceCount=1,InstanceGroupType=CORE,InstanceType=m4.large        
 
 ### Enable Consistent S3 View
 
-For long-running production clusters, enable [EMR Consistent View](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) which identifies inconsistencies in S3 object listings and resolves them using retries with exponential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
+For long-running production clusters, enable [EMR Consistent View](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html), which identifies inconsistencies in S3 object listings and resolves them using retries with exponential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
 
-The checks are enabled by adding the `Consistent` setting to the launch command.
+Checks are enabled by adding the `Consistent` setting to the launch command.
 
 ```bash
 --emrfs Consistent=true,Args=[fs.s3.consistent.metadata.tableName=EmrFSMetadata]   \
 ```
 
-Note that the EMR service does not automatically remove the specified DynamoDB table when the cluster is stopped. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
+Note that the EMR service does not automatically remove the specified DynamoDB table when a cluster is stopped. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
 
 ![](./images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
 
@@ -149,7 +149,7 @@ Monitor cluster status until the bootstrapping process is complete.
 watch 'aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | cut -d "\"" -f 4'
 ```
 
-Determine public IP address of the HBase Master node.
+Determine the public IP address of the HBase Master node.
 
 ```bash
 export MASTER_IP=$(aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | cut -d "\"" -f 4) \
@@ -174,13 +174,13 @@ hbase-rest start/running, process 7842
 hbase-master start/running, process 7987
 ```
 
-Verify HBase version (1.2.3+) and rerun the status command until the cluster becomes operational.
+Verify HBase version (1.2.3+) and re-run the status command until the cluster becomes operational.
 
 ```bash
 echo "status" | hbase shell
 ```
 
-Wait until the cluster is initialized and the "Master is initializing" error is no longer displayed.
+Wait until the cluster initializes and the `Master is initializing` error is no longer visible.
 
 ```txt
 status
@@ -195,7 +195,7 @@ Log in to the server where you plan to install ATSD.
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP
 ```
 
-> For testing and development, you can install ATSD on the HMaster node.
+> For testing and development, install ATSD on the HMaster node.
 
 Verify that [JDK 8](../administration/migration/install-java-8.md) is installed on the server.
 
@@ -242,7 +242,7 @@ echo "coprocessors.jar=s3://atsd/hbase-root/lib/atsd-hbase.jar" >> atsd/atsd/con
   && grep atsd/atsd/conf/server.properties -e "coprocessors.jar"
 ```
 
-If installing ATSD on HMaster node where ports might be taken, replace the default ATSD port numbers to 9081, 9082, 9084, 9088, 9443, respectively.
+If installing ATSD on an HMaster node where ports are potentially already in use, redefine default ATSD port numbers to `9081`, `9082`, `9084`, `9088`, and `9443`, respectively.
 
 ```bash
 sed -i 's/=.*80/=90/g; s/=.*8443/=9443/g' atsd/atsd/conf/server.properties \
@@ -294,13 +294,13 @@ It can take ATSD several minutes to create tables after initializing the system.
 2017-08-31 22:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:9443
 ```
 
-Login to the ATSD web interface on `https://atsd_hostname:8443`. Modify the URL if the port has been customized.
+Log in to the ATSD web interface on `https://atsd_hostname:8443`. Modify the URL if the port is customized.
 
 ## Troubleshooting
 
 ### Port Access
 
-Ensure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports.
+Ensure that the Security Group associated with the EC2 instance where ATSD is running allows access to listening ports of ATSD.
 
 If necessary, add security group rules to open inbound access to ports `8081`, `8082/udp`, `8084`, `8088`, `8443` or `9081`, `9082/udp`, `9084`, `9088`, `9443` respectively.
 
