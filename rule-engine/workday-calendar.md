@@ -65,7 +65,7 @@ USA | `usa` | [download](https://raw.githubusercontent.com/axibase/atsd/master/r
 
 ### Schema
 
-Define new calendars in JSON format according to the following [schema](holiday-calendar-schema.md).
+Define new calendars in JSON format according to the following [schema](workday-calendar-schema.md).
 
 ```json
 {
