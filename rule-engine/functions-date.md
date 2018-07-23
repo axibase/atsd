@@ -34,7 +34,7 @@ now DateTime
 
 Returns the current time as a [`DateTime`](object-datetime.md) object.
 
-Access `DateTime` object fields using the dot notation.
+The `DateTime` object fields can be accessed using the dot notation.
 
 ```javascript
 // returns true on Thursdays
@@ -121,7 +121,7 @@ Available time zones and offsets are listed in [time zones](../shared/timezone-l
 
 The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> The function raises an error if the time zone or offset from UTC is specified in the date string `d` and it differs from the time zone or offset `z`.
+> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
 
 Example:
 
@@ -200,7 +200,7 @@ Parses the input string `d` into a [`DateTime`](object-datetime.md) object accor
 
 The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> The function raises an error if the time zone or offset from UTC is specified in the date string `d` differs from the time zone offset `z`. See Examples below.
+> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
 
 The fields of the `DateTime` object can be accessed using the following functions:
 

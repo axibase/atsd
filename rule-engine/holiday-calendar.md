@@ -4,9 +4,9 @@
 
 Holiday Calendar is a data structure that contains a list of exceptions to the regular workday calendar such as observed holidays and weekend working days.
 
-Lists of holidays are available for countries, regions, industries, and specific organizations, such as a stock exchange, religious institutions, and school districts.
+The list can be associated with a country, a region, an industry, or a specific organization, such as a stock exchange, a religious institution, or a school district.
 
-Assign one or more calendars with a unique key and access the information for rules and SQL queries to check if the given day is a working day based on the defined calendar.
+Each calendar is assigned a unique key and can be accessed in rules and SQL queries by key to check if the given day is a working day based on the actual observed calendar.
 
 ## Usage
 
@@ -25,7 +25,7 @@ now.is_workday()
 !tomorrow.is_workday('kor')
 ```
 
-> Functions raise an error if it finds no dates in the specified calendar for the given year. Update the calendar by adding dates to resolve the problem.
+> The functions will raise an error of no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve the problem.
 
 ### SQL Queries
 
@@ -40,7 +40,7 @@ WHERE time >= current_year
 
 ## Built-in Calendars
 
-By default, the database contains pre-defined 2018 holiday calendars for several countries.
+The database is installed with pre-defined 2018 holiday calendars for several countries.
 
 The calendars can be modified and maintained by appending dates for prior and future years without restarting the database.
 
@@ -65,7 +65,7 @@ USA | `usa` | [download](https://raw.githubusercontent.com/axibase/atsd/master/r
 
 ### Schema
 
-Define new calendars in JSON format according to the following [schema](holiday-calendar-schema.md).
+New calendar can be defined in JSON format according to the following [schema](holiday-calendar-schema.md).
 
 ```json
 {
@@ -96,13 +96,13 @@ Open **Data Entry > Workday Calendars** page. Attach a JSON file and click **Imp
 
 ![](./images/holiday-calendars.png)
 
-The uploaded files are copied to the `/opt/atsd/atsd/conf/calendars` directory and the changes are applied instantly. Database restart is not required.
+The uploaded files are copied to the `/opt/atsd/atsd/conf/calendars` directory and the changes are applied instantly. The database restart is not required.
 
 ### Example
 
 The example below illustrates a custom holiday calendar for the [New York Stock Exchange](https://www.nyse.com/markets/hours-calendars).
 
-The calendar is named `nyse.json` and is accessible under the `nyse` key, for example `now.is_workday('nyse')`.
+The calendar is named `nyse.json` and can be accessed under the `nyse` key, for example `now.is_workday('nyse')`.
 
 ```json
 {
