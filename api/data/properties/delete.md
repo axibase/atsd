@@ -6,13 +6,15 @@ Deletes property records that match specified filters.
 
 ### Delete Markers
 
-Due to the specifics of the underlying storage technology, records deleted with this method are not instantly removed from the disk.
+Due to the specifics of the underlying storage technology, property records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows recorded with an earlier timestamp.
+Instead, the records are masked with a `DELETE` marker timestamped at the time the delete operation is initiated. The `DELETE` marker hides all properties recorded with an earlier timestamp.
 
-The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called [`major compaction`](../../../administration/compaction.md).
+When an entire entity is deleted, the `DELETE` marker hides all properties for the given entity regardless of the timestamp.
 
-Properties re-inserted before a `major compaction` occurs do not contain the `DELETE` marker.
+As a result, while the `DELETE` marker is present, re-inserting property records for a deleted type with an earlier timestamp or for a deleted entity will fail because new records will not be visible.
+
+The actual deletion from the disk, which removes both the `DELETE` markers as well as the masked records, occurs in the background as part of a scheduled HBase procedure called [`major compaction`](../../../administration/compaction.md).
 
 To identify pending `DELETE` markers for a given type and entity, run:
 
@@ -20,9 +22,7 @@ To identify pending `DELETE` markers for a given type and entity, run:
 echo "scan 'atsd_properties', {'LIMIT' => 3, RAW => true, FILTER => \"PrefixFilter('\\"prop_type\\":\\"entity_name\\"')\"}" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-When an entire entity is removed along with its properties the `DELETE` marker is timestamped with the `Long.MAX_VALUE-1` time of `9223372036854775806`.
-
-To remove these markers, run `major compaction` on the `atsd_properties` table ahead of schedule.
+To remove all `DELETE` markers ahead of schedule, trigger a `major compaction` task on the `atsd_properties` table manually.
 
 ```sh
 echo "major_compact 'atsd_properties'" | /opt/atsd/hbase/bin/hbase shell
@@ -68,7 +68,7 @@ None.
 
 ## Key Match Example
 
-Property records `A`,`B`,`C`, and `D` exist:
+The following property records `A`,`B`,`C`, and `D` are present in the database.
 
 ```ls
 | record | type   | entity | key-1 | key-2 |
