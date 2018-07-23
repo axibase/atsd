@@ -203,6 +203,39 @@ Result:
 | 11:00 |   9    |      9      | last sample
 ```
 
+### `INTERPOLATE` downsampling with `ratio`
+
+```json
+"downsample": {
+    "algorithm": "INTERPOLATE",
+    "ratio": 1.25
+}
+```
+
+Result:
+
+```txt
+|       | input  | downsampled | interpolated |       |
+| time  | series |   series    |   value      | ratio |
+|-------|--------|-------------|----------------------|
+|   00  |   2    |      2      |      -       |   -   | first sample
+|   02  |   2    |      2      |      3       | 1.50  | ratio exceeds threshold
+|   04  |   4    |      4      |      3       | 1.30  | ratio exceeds threshold
+|   06  |   4    |      -      |      5       | 1.25  |
+|   08  |   6    |      -      |     5.3      | 1.13  |
+|   10  |   6    |      6      |      4       | 1.50  | ratio exceeds threshold
+|   12  |   4    |      -      |      5       | 1.25  |
+|   14  |   4    |      -      |     3.3      | 1.21  |
+|   16  |   2    |      2      |      3       | 1.50  | ratio exceeds threshold
+|   18  |   2    |      2      |      -       |   -   | last sample
+```
+
+Charts of the original and downsampled series. Accepted series samples are green, rejected samples are red.
+![Charts of original and downsampled series.](./images/original_and_downsampled.png)
+
+This graph illustraties how the algorithm calculates interpolated values. Interpolated values colored blue.
+![Interpolation.](./images/downsampling_interpolation.png)
+
 ### ChartLab example of both algorithms
 
 ![Downsampling charts](./images/downsampling_charts.png)
