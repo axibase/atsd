@@ -391,7 +391,7 @@ countMatches("hello world", "o")
 abbreviate(string s, integer n) string
 ```
 
-Truncates string `s` using ellipses to hide extraneous text. `n` is the desired length of the output string.
+Truncates string `s` using ellipses to hide extraneous text. `n` is the maximum length of the output string.
 
 The minimum length of the output string is `4` characters: `1` character is string `s` plus `3` characters used for ellipses (`...`).
 

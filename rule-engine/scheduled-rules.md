@@ -13,7 +13,7 @@ To evaluate the rule on schedule instead of event, use **timer** metrics which a
 `timer_15m` | 15 minutes.
 `timer_1h` | 1 hour.
 
-By reacting to a `timer` metric, the rule can be evaluated at the desired frequency, for example, every 15 minutes:
+By reacting to a `timer` metric, the rule can be evaluated at the specified frequency, for example, every 15 minutes:
 
 ![](./images/timer.png)
 

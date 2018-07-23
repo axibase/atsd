@@ -14,7 +14,7 @@ The message expiration time is calculated based on its **insertion** time, and n
 
 ## Modifying the Default TTL
 
-Convert the desired TTL to seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
+Convert the TTL to seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
 
 Log in to the ATSD server.
 

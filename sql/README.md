@@ -1546,8 +1546,8 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 | **Name** | **Description**|
 |:---|:---|
-| `LINEAR` | Calculates the value at the desired timestamp by linearly interpolating prior and next values.|
-| `PREVIOUS` | Sets the value at the desired timestamp based on the previously recorded raw value.<br>This step-like function is appropriate for metrics with discrete values (digital signals).|
+| `LINEAR` | Calculates the value at the given timestamp by linearly interpolating prior and next values.|
+| `PREVIOUS` | Sets the value at the given timestamp based on the previously recorded raw value.<br>This step-like function is appropriate for metrics with discrete values (digital signals).|
 | `AUTO` | [**Default**] Applies an interpolation function (`LINEAR` or `PREVIOUS`) based on the metric Interpolation setting.<br>If multiple metrics are specified in the query, `AUTO` applies its own interpolation mode for each metric.  |
 
 * `NaN` (Not-A-Number) values are ignored from interpolation.

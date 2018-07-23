@@ -67,7 +67,7 @@ Open the **Settings > Diagnostics > Backup Import** page.
 
 ![](./images/backup-import.png)
 
-Upload the desired backup files by clicking **Choose Files**. If needed, select multiple files. Click **Import** to restore records from the selected backup files.
+Upload the selected backup files by clicking **Choose Files**. If needed, select multiple files. Click **Import** to restore records from the selected backup files.
 
 ![](./images/import-backup.png)
 

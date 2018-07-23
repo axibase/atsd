@@ -32,7 +32,7 @@ These properties can be also be changed on the **Settings > Configuration Files*
 
 ## Configuring Scheduled Tasks
 
-To disable a task in the **Scheduled Tasks** table, enter **No** or use the drop-down list to select **Never** for the desired task.
+To disable a task in the **Scheduled Tasks** table, enter **No** or use the drop-down list to select **Never** for the selected task.
 
 ![](./images/cron-drop-down.png)
 

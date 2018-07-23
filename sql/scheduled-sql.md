@@ -42,7 +42,7 @@ HTML format is optimized for compatibility with common desktop and email clients
 
 ## Decimal Precision
 
-To round numeric values, set decimal precision to the desired number of fractional digits.
+To round numeric values, set decimal precision to the specified number of fractional digits.
 
 * `0` means that no fractional digits are displayed.
 * `-1` means that no rounding is applied and numbers are displayed with their original precision.

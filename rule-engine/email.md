@@ -20,9 +20,9 @@ Click **Enabled** to subscribe to notifications initiated by `OPEN`, `REPEAT`, a
 
 ![](./images/email_config_all.png)
 
-For the `REPEAT` status, adjust the **Repeat Interval** to the desired notification frequency, for example, every **6 hours** or every **10 events**.
+For repeat notifications, adjust the notification frequency using the **Repeat Interval**, for example, every **6 hours** or every **10 events**.
 
-If necessary, cleat the **Same as On Open** setting to adjust message content based on window status.
+If necessary, clear the **Same as On Open** setting to adjust message content based on window status.
 
 ## Settings
 

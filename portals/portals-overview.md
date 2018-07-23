@@ -175,7 +175,7 @@ Alternatively, assign an entity group to the template portal to ensure that a li
 ![](./resources/creating-and-assigning-portals_7.png)
 
 * Open the [Portals Page](#portals-page).
-* Click the **assign** icon for the desired template portal.
+* Click the **assign** icon for the selected template portal.
 
     ![](./resources/creating-and-assigning-portals_8.png)
 
