@@ -1,14 +1,14 @@
 # Alert Logging
 
-Alert Logging action records [window](window.md) status changes in the database or in log files located on the local file system for integration, testing, and audit trailing.
+Alert Logging actions record [window](window.md) status changes in the database or log files located on the local file system for integration, testing, and audit trailing.
 
 ## Logging to Database
 
-To record alert history, check **Log to Alert History** on the **Logging** tab, customize the message text, and enable `On Open`, `On Repeat`, `On Cancel` triggers. The **Message** text is optional.
+To record alert history, check **Log to Alert History** on the **Logging** tab, customize the message text, and enable `On Open`, `On Repeat`, and `On Cancel` triggers. **Message** text is optional.
 
 ![](./images/logging-triggers.png)
 
-The status changes are stored in the database and can be inspected on the **Alerts > Alert History** page, retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md), and checked with the [`last_open`](functions-alert-history.md) function.
+Status changes are stored in the database and can be inspected on the **Alerts > Alert History** page, retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md), and checked with the [`last_open`](functions-alert-history.md) function.
 
 ```javascript
 elapsed_minutes(last_open().timestamp) > 60
@@ -16,19 +16,19 @@ elapsed_minutes(last_open().timestamp) > 60
 
 ## Logging to Files
 
-Logging to files or remote systems (via TCP loggers) can be enabled for each rule separately by selecting one of the pre-configured loggers in the **File Logger** drop-down.
+Logging to files or remote systems via TCP loggers can be enabled for each rule separately by selecting one of the pre-configured loggers in the **File Logger** drop-down list.
 
 Loggers can be added and modified by administrators on the **Settings > Configuration Files** page.
 
-Open the `logback.xml` for editing, create a new logger and save changes. Once the `logback.xml` file is re-scanned, the new logger is displayed in the **Alert Logger** drop-down.
+Open the `logback.xml` for editing, create a new logger and save changes. Once the `logback.xml` file is re-scanned, the new logger is displayed in the **Alert Logger** drop-down list.
 
 ![](./images/logging-loggers.png)
 
-File logging is disabled by default. To enable file logging, select one of the loggers in the **Log to File** drop-down list, customize the message text, and enable `On Open`, `On Repeat`, `On Cancel` triggers.
+File logging is disabled by default. To enable file logging, select one of the loggers in the **Log to File** drop-down list, customize the message text, and enable the`On Open`, `On Repeat`, and `On Cancel` triggers.
 
 ## Default File Logger
 
-The default logger named `atsd.alert.default` is available even if such logger is not defined in the `logback.xml` file. To modify the default logger, copy the following text to `logback.xml` file and modify its properties as required.
+The default logger named `atsd.alert.default` is available even if undefined in the `logback.xml` file. To modify the default logger, copy the following text to `logback.xml` file and modify its properties as needed.
 
 ```xml
 <appender name="defaultAlertAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -64,9 +64,9 @@ The default logger named `atsd.alert.default` is available even if such logger i
 
 ## Custom File Logger
 
-Custom logger names must start with `atsd.alert.` and must specify a unique file name (including roll-over pattern) that is different from file names used by other loggers. Similarly, custom loggers must specify unique appender names.
+Custom logger names must start with `atsd.alert.` and specify a unique file name, including roll-over pattern, that is different from file names used by other loggers. Similarly, custom loggers must specify unique appender names.
 
-Multiple custom loggers can be created to customize alert logging for various rules.
+Create multiple custom loggers to customize alert logging for various rules.
 
 ```xml
 <appender name="customAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -92,41 +92,41 @@ Multiple custom loggers can be created to customize alert logging for various ru
 
 ## File Placeholders
 
-Placeholders can be incorporated in the `encoder:pattern` tag using the `%X{field-name}` syntax, for example `%X{entity}` or `%X{alert_open_datetime}`.
+Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syntax, for example `%X{entity}` or `%X{alert_open_datetime}`.
 
 ### Base Fields
 
 **Name**|**Example**
 :---|:---
-alert_duration | `00:00:05:12`
-alert_duration_interval |
-alert_message | `Alert open.`
-alert_type | `OPEN`
-columns | `{memkb = round(value/1024)}` - variables
-entity | `atsd`
-entity_label | `Axibase TSD`
-entity_tags | `{version=community}`
-entity_tags.tag_name | `community`
-event_tags | `{location=dc-5}`
-expression | `value < 512 * 1024 * 1024`
-metric | `jvm_memory_free`
-open_value | `3103100000`
-properties |
-repeat_count | `0`
-repeat_interval | `1 MINUTE`
-rule | `memory_low`
-rule_expression | `value < 512 * 1024 * 1024`
-rule_filter | `entity != 'nurswghbs001'`
-rule_name | `memory_low`
-schedule | `* * * * MON-FRI`
-severity | `warning`
-status | `OPEN`
-tags.tag_name | `nurswgvml003`
-tags | `host=nurswgvml003`
-timestamp | `145678784500` (Unix milliseconds)
-value | `3103100000`
-window | `length(1)`
-threshold | `max() > 20`
+`alert_duration` | `00:00:05:12`
+`alert_duration_interval` |
+`alert_message` | `Alert open.`
+`alert_type` | `OPEN`
+`columns` | `{memkb = round(value/1024)}` - variables
+`entity` | `atsd`
+`entity_label` | `Axibase TSD`
+`entity_tags` | `{version=community}`
+`entity_tags.tag_name` | `community`
+`event_tags` | `{location=dc-5}`
+`expression` | `value < 512 * 1024 * 1024`
+`metric` | `jvm_memory_free`
+`open_value` | `3103100000`
+`properties` |
+`repeat_count` | `0`
+`repeat_interval` | `1 MINUTE`
+`rule` | `memory_low`
+`rule_expression` | `value < 512 * 1024 * 1024`
+`rule_filter` | `entity != 'nurswghbs001'`
+`rule_name` | `memory_low`
+`schedule` | `* * * * MON-FRI`
+`severity` | `warning`
+`status` | `OPEN`
+`tags.tag_name` | `nurswgvml003`
+`tags` | `host=nurswgvml003`
+`timestamp` | `145678784500` (Unix milliseconds)
+`value` | `3103100000`
+`window` | `length(1)`
+`threshold` | `max() > 20`
 
 ### Date Fields
 
