@@ -2,8 +2,8 @@
 
 ## `last_open`
 
-```java
-last_open() RuleAlert
+```javascript
+last_open() object
 ```
 
 Retrieves the most recent `RuleAlert` object with `OPEN` or `REPEAT` status from the [Alert History](logging.md#logging-to-database) for the current window key consisting of rule name, metric (type/source), entity, and grouping tags.
@@ -11,7 +11,7 @@ Retrieves the most recent `RuleAlert` object with `OPEN` or `REPEAT` status from
 If no records are matched, the function returns an empty `RuleAlert` object with `timestamp` set to `0`,
  `value`, `open_value` set to `NaN`, and the remaining fields set to empty strings.
 
-The function requires enabled Alert History [database logging](logging.md#logging-to-database).
+The function requires configured Alert History [database logging](logging.md#logging-to-database) with at least one of `On Open`, `On Repeat` triggers enabled.
 
 ### `RuleAlert` Object
 
