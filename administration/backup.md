@@ -1,6 +1,6 @@
 # Backup and Restore ATSD
 
-This article describes creating a backup of [configuration records](#configuration-records) and [data](#data) in ATSD.
+This document describes creating a backup of [configuration records](#configuration-records) and [data](#data) in ATSD.
 
 ## Configuration Records
 
