@@ -59,38 +59,39 @@ ATSD is a modular systems which includes the following components in addition to
 
 ## Inserting Data
 
-* Upload CSV
-* Stream CSV
-* Stream network commands via TCP/UDP
-* Stream network commands with Kafka
-* Insert data using REST API
-* Use API clients or storage drivers
-* Install pre-integrated collectors/agents
-* Deploy Axibase Collector instance
+* Upload CSV.
+* Stream CSV.
+* Stream network commands via TCP/UDP.
+* Stream network commands with Kafka.
+* Insert data using REST API.
+* Insert rows using [JDBC driver](https://github.com/axibase/atsd-jdbc/blob/master/insert.md).
+* Use API clients or storage drivers.
+* Install pre-integrated collectors/agents.
+* Deploy [Axibase Collectors](https://axibase.com/docs/axibase-collector/).
 
 ## Line Protocols
 
-The database provides its own compact line protocol for inserting high volumes of metrics with arbitrary dimensions which we call [network commands](api/network/README.md).
+The database provides an optimized line protocol for inserting high volumes of metrics with user-defined dimensions called [network commands](api/network/README.md).
 
 ```bash
 echo "series e:sns-001 m:temperature=15.4 m:rpm=302 t:panel=front" \
   > /dev/tcp/atsd_hostname/8081
 ```
 
-The commands can be streamed into ATSD on ports `8081/tcp` and port `8082/udp`. Alternatively, the commands can be uploaded by posting them to the `/api/v1/command` REST API endpoint.
+The commands can be streamed into ATSD on ports `8081/tcp`, port `8082/udp` or uploaded to the [`/api/v1/command`](api/data/ext/command.md) REST API endpoint.
 
-New objects and attributes are registered automatically and allow collecting data from different domain models in a single extensible schema.
+The following protocols are supported for extended compatibility:
 
-The following protocols are supported for compatibility with external sources:
-
-* `tcollector`
-* `graphite`
-* `statsd`
-* `osisoft pi`
+* [`tcollector`](api/network/tcollector.md)
+* [`graphite`](api/network/graphite.md)
+* [`statsd`](api/network/statsd.md)
+* [`osisoft pi`](api/network/picomp2.md)
 
 ## Schema
 
-The table schema in ATSD, displayed on the **Settings > Storage > Database Tables** page, is self-managed by the database and as such does not require changes when inserting data from objects of different types.
+New entities and metrics are registered automatically and allow collecting data from different domain models in a single extensible schema.
+
+The list of underlying tables is displayed on the **Settings > Storage > Database Tables** page. The table schemas are self-managed by the database.
 
 ### Glossary
 
