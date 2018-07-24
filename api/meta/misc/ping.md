@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns HTTP `200 OK` status code if the user credentials are valid and the user is allowed to access the database.
+Returns HTTP `20O OK` status code if the user credentials are valid and the user is allowed to access the database.
 
 The endpoint is used to check connectivity, authentication, and to maintain an active session.
 

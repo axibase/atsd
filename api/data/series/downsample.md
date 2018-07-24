@@ -12,7 +12,9 @@ Downsampling transformation reduces time series density by filtering out sequent
 }
 ```
 
-The configuration excludes samples that are equal to the previous and next values.
+The configuration [example](https://apps.axibase.com/chartlab/af356224/2/) excludes samples that are equal to the previous and next values.
+
+![](./images/downsample-basic.png)
 
 ### Advanced Example
 
