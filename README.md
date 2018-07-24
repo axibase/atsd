@@ -17,11 +17,6 @@ FileSystem: Local / HDFS / EMRFS
 
 ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a Docker [container](./installation/docker.md#start-container).
 
-```bash
-docker run -d -p 8088:8088 -p 8443:8443 -p 8081:8081 \
-  axibase/atsd:latest
-```
-
 ## Compute Scalability
 
 Single-node ATSD instance can process up to 200,000 metrics per second with millisecond accuracy, support for out-of-order writes, and without numeric precision loss.
