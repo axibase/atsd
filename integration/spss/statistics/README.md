@@ -107,7 +107,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 ### Import from CSV Files
 
-* Export data from ATSD into CSV files as described in the [Exporting Data into CSV Files](#exporting-data-into-csv-files) section at the end of this article.
+* Export data from ATSD into CSV files as described in [Exporting Data into CSV Files](#exporting-data-into-csv-files).
 * Open **File > Import Data > CSV Data...**.
 * Select CSV files and click **Open** to import the `prices.sav` and `weights.sav` files.
 

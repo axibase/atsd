@@ -1,6 +1,6 @@
 # Replication
 
-This article describes how to configure ATSD replication.
+This document describes how to configure ATSD replication.
 
 The replication process is from master to slave, meaning where all transactions on the master
 cluster are replayed to the slave cluster.
