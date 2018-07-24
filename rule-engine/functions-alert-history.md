@@ -6,12 +6,12 @@
 last_open() RuleAlert
 ```
 
-Retrieves the most recent `RuleAlert` object with `OPEN` or `REPEAT` status from [Alert History](logging.md#logging-to-database) for the current window key consisting of rule name, metric (type/source), entity, and the grouping tags.
+Retrieves the most recent `RuleAlert` object with `OPEN` or `REPEAT` status from the [Alert History](logging.md#logging-to-database) for the current window key consisting of rule name, metric (type/source), entity, and grouping tags.
 
 If no records are matched, the function returns an empty `RuleAlert` object with `timestamp` set to `0`,
- `value` and `open_value` set to `NaN`, and the remaining fields set to empty strings.
+ `value`, `open_value` set to `NaN`, and the remaining fields set to empty strings.
 
-The function requires Alert History [database logging](logging.md#logging-to-database) to be enabled.
+The function requires enabled Alert History [database logging](logging.md#logging-to-database).
 
 ### `RuleAlert` Object
 
@@ -41,13 +41,13 @@ The function requires Alert History [database logging](logging.md#logging-to-dat
 
 ## Examples
 
-* Check if the more than sixty minutes passed since the last `OPEN`/`REPEAT` status (or if no previous record is found).
+* Check whether more than sixty minutes passed since the last `OPEN`/`REPEAT` status, or if no previous record is found.
 
 ```javascript
 elapsed_minutes(last_open().timestamp) > 60
 ```
 
-* Check that the received command value has increased compared to the previous `OPEN`/`REPEAT` record.
+* Check that the received command value increased compared to the previous `OPEN`/`REPEAT` record.
 
 ```javascript
 last_open().timestamp > 0 && value > last_open().value
