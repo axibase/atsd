@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete the specified entity and remove the entity from any entity groups it belongs to.
+Deletes the specified entity and removes the entity from any entity groups it belongs to.
 
 ## Data Removal
 
