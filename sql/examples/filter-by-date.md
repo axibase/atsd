@@ -498,11 +498,10 @@ SELECT date_format(time, 'yyyy-MM-dd', 'Asia/Seoul') AS "local date", count(valu
 FROM "cpu_busy"
 -- Asia/Seoul is GMT+09:00
 WHERE datetime BETWEEN '2018-01-01T00:00:00+0900' AND '2018-12-31T23:59:59+0900'
-AND is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor') = true
--- time + 1000 milliseconds * 60 seconds * 60 minutes * 24 hours = next day
-AND time + 1000*60*60*24 < date_parse('2019-01-01 00:00:00', 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul')
-AND is_workday(date_parse(date_format(time + 1000*60*60*24, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor') = false
-AND is_weekday(date_parse(date_format(time + 1000*60*60*24, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor') = true
+AND is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor')
+AND DATEADD(DAY, 1, time, 'Asia/Seoul') < date_parse('2019-01-01 00:00:00', 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul')
+AND NOT is_workday(date_parse(date_format(DATEADD(DAY, 1, time, 'Asia/Seoul'), 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor')
+AND is_weekday(date_parse(date_format(DATEADD(DAY, 1, time, 'Asia/Seoul'), 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor')
 GROUP BY period(1 DAY, 'Asia/Seoul'), entity
 ```
 
