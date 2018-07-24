@@ -16,7 +16,7 @@ Pending tasks are displayed on the **Settings > Storage > Delete Tasks** page.
 
 When the entity is deleted, the database creates one `MESSAGE` task, one `PROPERTY` task and multiple `TIMESERIES` tasks for each metric collected by the entity.
 
-Due to the mechanics of the underlying storage, the `PROPERTY` task does not instantly remove property records from the disk. Instead, the task inserts a `DELETE` marker with `Long.MAX_VALUE` time which hides all property records for the given entity name regardless of timestamp. As a result, re-inserting property records for a new entity with the same name is not possible until the marker is removed.
+Due to the storage schema, the `PROPERTY` task does not instantly remove property records from the disk. Instead, the task inserts a `DELETE` marker with `Long.MAX_VALUE` time which hides all property records for the given entity name regardless of timestamp. As a result, re-inserting property records for a new entity with the same name is not possible until the marker is removed.
 
 In the example below, the `DELETE` marker hides all records, including records with timestamps `t=80` and `t=150` for a new entity with the same name.
 
