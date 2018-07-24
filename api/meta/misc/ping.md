@@ -16,7 +16,7 @@ The endpoint is used to check connectivity, authentication, and to maintain an a
 
 ### Fields
 
-The response is `{"message": "ok"}` with HTTP `200 OK` status code if the request is valid.
+The response is empty with HTTP `200 OK` status code if the request is valid.
 
 Otherwise an HTTP `4xx` status code is returned with an [error code](../../../administration/user-authentication.md#authentication-and-authorization-errors) in JSON format.
 
