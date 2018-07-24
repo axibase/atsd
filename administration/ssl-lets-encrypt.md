@@ -189,7 +189,7 @@ sudo curl -k -u username:password https://192.0.2.6:8443/admin/certificates/impo
 
 ATSD accepts the files, validates the certificates and automatically reloads the SSL context without restarting the database itself.
 
-The server responds with an HTTP `200 OK` status code if the installation is successful.
+The server responds with an HTTP `2xx` status code if the installation is successful.
 
 ## Renew Certificate
 
