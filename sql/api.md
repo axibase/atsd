@@ -2,17 +2,17 @@
 
 ## Description
 
-Execute an SQL query and retrieve query results in CSV or JSON format, including optional result metadata.
+The endpoint executes the SQL query and returns query results in CSV or JSON format, including optional result metadata.
 
-To obtain result metadata without executing the query, submit the query to [`/api/sql/meta`](api-meta.md) endpoint.
+To retrieve result set metadata without executing the query, submit the query to [`/api/sql/meta`](api-meta.md) endpoint.
 
 ## Authorization
 
-The rows returned for the SQL query are filtered by the server according to the entity `read` permissions granted to the user.
+The result set is filtered by the database based on the entity `read` [permissions](../administration/user-authorization.md#entity-permissions) granted to the user.
 
 This means that the same query executed by users with different entity permissions can produce different results.
 
-Scheduled queries are executed under full permissions.
+Scheduled queries are executed with full `All Entities: Read` permissions.
 
 ## Connection Query
 
@@ -22,7 +22,7 @@ To test a connection, execute a query without table reference.
 SELECT 1
 ```
 
-This query can be utilized as a validation query in database connection pool implementations such as [Apache Commons DBCP](https://commons.apache.org/proper/commons-dbcp/configuration.html).
+This query can be utilized as a validation query in connection pool implementations such as [Apache Commons DBCP](https://commons.apache.org/proper/commons-dbcp/configuration.html).
 
 ## Request
 

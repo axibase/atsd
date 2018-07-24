@@ -4,10 +4,12 @@ The rule engine enables automation of repetitive tasks based on real-time statis
 
 Such tasks include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](notifications/README.md) alert, or generating derived statistics.
 
+![](./images/rule_actions_list.png)
+
 The engine evaluates incoming `series`, `message`, and `property` commands and executes response actions when appropriate:
 
 ```javascript
-IF condition = true THEN action-1, ... action-N
+IF condition THEN action-1 ... action-N
 ```
 
 Example
@@ -16,7 +18,11 @@ Example
 IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
-A rule [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value`](functions-value.md), [`database`](functions-series.md), and [`rule`](functions-rules.md) functions.
+A rule [condition](condition.md) can operate on a single metric or correlate multiple metrics using [`value`](functions-value.md), [`database`](functions-series.md), and [`rule`](functions-rules.md) functions.
+
+```javascript
+max() > 1.5 && value('temperature') > 50
+```
 
 ## Processing Pipeline
 
