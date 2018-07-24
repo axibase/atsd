@@ -8,7 +8,7 @@ This type of integration relies on the [IFTTT Webhook](https://ifttt.com/maker_w
 
 ## Create IFTTT Applet
 
-Log in to [ifttt.com](https://ifttt.com) and go to **My Applets**.
+Log in to [ifttt.com](https://ifttt.com) and open **My Applets**.
 
 ![](./images/ifttt_applet_1.png)
 
@@ -87,7 +87,7 @@ Modify the **Endpoint URL** by replacing the `<IFTTT_KEY>` field with the IFTTT 
 
 Example Endpoint URL: `https://maker.ifttt.com/trigger/${webhook_name}/with/key/111111`
 
-You can find your IFTTT token in the `Webhooks` examples. Go to [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**.
+You can find your IFTTT token in the `Webhooks` examples. Open [Webhooks](https://ifttt.com/maker_webhooks) and select **Documentation**.
 
 ![](./images/ifttt_key_1.png)
 

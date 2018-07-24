@@ -128,7 +128,7 @@ User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.messa
 
 ### Verify Webhook Delivery
 
-* Go to the Telegram and send a direct message to the recently created bot.
+* Open the Telegram client and send a direct message to the recently created bot.
 
     ![](./images/outgoing_webhook_telegram_2.png)
 

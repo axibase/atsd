@@ -46,6 +46,6 @@ ORDER BY datetime
 ```ls
 | time           | datetime                  | value     | text  | metric     | entity        | tags                                                | entity.tags.app  | entity.tags                             | entity.groups              | metric.tags          | metric.units |
 |----------------|---------------------------|-----------|-------|------------|---------------|-----------------------------------------------------|------------------|-----------------------------------------|----------------------------|----------------------|--------------|
-| 1532408808000  | 2018-07-24T05:06:48.000Z  | 4796380   |       | disk_used  | nurswgvml006  | file_system=/dev/mapper/vg-lv_root;mount_point=/    | Hadoop/HBASE     | app=Hadoop/HBASE;ip=192.0.2.5;os=Linux  | nmon-linux;nur-collectors  | table=Disk (script)  | bytes        | 
+| 1532408808000  | 2018-07-24T05:06:48.000Z  | 4796380   |       | disk_used  | nurswgvml006  | file_system=/dev/mapper/vg-lv_root;mount_point=/    | Hadoop/HBASE     | app=Hadoop/HBASE;ip=192.0.2.5;os=Linux  | nmon-linux;nur-collectors  | table=Disk (script)  | bytes        |
 | 1532408808000  | 2018-07-24T05:06:48.000Z  | 61406796  |       | disk_used  | nurswgvml006  | file_system=/dev/sdb1;mount_point=/media/datadrive  | Hadoop/HBASE     | app=Hadoop/HBASE;ip=192.0.2.5;os=Linux  | nmon-linux;nur-collectors  | table=Disk (script)  | bytes        |
 ```

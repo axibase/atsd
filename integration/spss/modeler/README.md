@@ -72,7 +72,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_11.png)
 
-* Go to **Filter** tab and click arrows in the Filter column to disable the `time`, `text` and `metric` columns.
+* Click **Filter** tab and click arrows in the Filter column to disable the `time`, `text` and `metric` columns.
 
   ![](./images/modeler_12.png)
 
