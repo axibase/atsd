@@ -11,7 +11,7 @@ Retrieves the most recent `RuleAlert` object with `OPEN` or `REPEAT` status from
 If no records are matched, the function returns an empty `RuleAlert` object with `timestamp` set to `0`,
  `value`, `open_value` set to `NaN`, and the remaining fields set to empty strings.
 
-The function requires configured Alert History [database logging](logging.md#logging-to-database) with at least one of `On Open`, `On Repeat` triggers enabled.
+The function depends on the [Alert History](logging.md#logging-to-database) logging. To store status changes in the database, check the **Log to Alert History** option on the **Logging** tab and enable `On Open` or `On Repeat` trigger.
 
 ### `RuleAlert` Object
 
