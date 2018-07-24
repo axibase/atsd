@@ -8,13 +8,13 @@ Script actions execute pre-defined scripts on the ATSD server to complete advanc
 
 ### Script File
 
-To configure a script action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant the script `execute` permission (`u+x`) to the `axibase` user.
+To configure a script action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant script `execute` permission (`u+x`) to the `axibase` user.
 
 The list of executable files is displayed in the **Script File** drop-down list on the **Scripts** tab.
 
 ![](./images/command-drop-down.png)
 
-To view the script text, click **Show script** icon.
+To view the script text, click the **Show script** icon.
 
 Select the script file to execute, for example `disk_cleanup.sh`, from the **Scripts** tab.
 
@@ -30,7 +30,7 @@ Arguments can include [window fields](window.md#window-fields) and calculated va
 
 ![](./images/command-arguments.png)
 
-Arguments containing space or quote characters are automatically quoted. The below example with two arguments one of which contains space characters is equivalent to executing `./test.sh john.doe "hello world"`.
+Arguments containing space or quote characters are automatically quoted. The below example contains two arguments, one of which contains space characters, and is equivalent to executing `./test.sh john.doe "hello world"`.
 
 ![](./images/command-script-quote.png)
 
@@ -176,7 +176,7 @@ Script terminated on timeout: {current timeout value}
 
 ### Security
 
-Only scripts in the `/opt/atsd/atsd/conf/script` can be executed. Script text can be modified by editing the file on the file system. Modifying scripts from within the ATSD web interface is not supported.
+Only scripts in the `/opt/atsd/atsd/conf/script` are executable. Script text can be modified by editing the file on the file system. Modifying scripts from within the ATSD web interface is not supported.
 
 Scripts are executed under the `axibase` user context.
 

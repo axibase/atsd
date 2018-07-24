@@ -2,15 +2,15 @@
 
 ## Overview
 
-The script functions execute a named `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and return the script `stdout` and `stderr` output.
+Script functions execute a named `bash` or Python script located in the `/opt/atsd/atsd/conf/script` directory and return the script `stdout` and `stderr` output.
 
 ## Common Use Cases
 
-* Check the TCP availability of the remote host.
-* Check that the remote host can be reached with ICMP `ping`.
-* Check that an HTTP/s request to a URL returns HTTP `200 OK` status code.
-* Execute a diagnostics command on the remote host.
-* Retrieve configuration information from the remote device/host.
+* Check the TCP availability of a remote host.
+* Check that the remote host is reachable via ICMP `ping`.
+* Check that an HTTP/S request to a URL returns HTTP `200 OK` status code.
+* Execute a diagnostics command on a remote host.
+* Retrieve configuration information from the remote device or host.
 * Analyze data using Python and prepare a report in HTML or plain text format.
 
 ## Syntax
@@ -19,7 +19,7 @@ The script functions execute a named `bash` or Python script located in the `/op
 scriptOut(string file [, array arguments])
 ```
 
-* [**required**] `file`: Name of the executable script file located in the `/opt/atsd/atsd/conf/script` directory.
+* **[Required]** `file`: Name of the executable script file located in the `/opt/atsd/atsd/conf/script` directory.
 * [optional] `arguments`: Array of arguments passed to the script. Can be an empty list.
 
 ## Arguments
@@ -56,7 +56,7 @@ ent=${entity}
 
 ## Timeout
 
-The script must execute within the timeout specified on the **[Scripts](scripts.md#timeout)** tab. If this timeout is set to `Default`, the timeout value is inherited from the `system.commands.timeout.seconds` server property. The default timeout is 15 seconds.
+A script must execute within the timeout specified on the **[Scripts](scripts.md#timeout)** tab. If this timeout is set to `Default`, the timeout value is inherited from the `system.commands.timeout.seconds` server property. The default timeout is 15 seconds.
 
 If the script times out, its process is stopped with `SIGTERM` and the following text is appended to the output:
 
@@ -301,7 +301,7 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 
 ### `ps`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) returns `ps` output for the specified grep pattern from a remote server.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) returns `ps` output for the specified `grep` pattern from a remote server.
 
 #### Script
 
