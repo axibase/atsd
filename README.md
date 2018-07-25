@@ -1,6 +1,6 @@
 # Introduction
 
-![](./images/atsd.png)
+![](./images/atsd-title.png)
 
 **Axibase Time Series Database** is a non-relational database optimized for collecting, storing, and analyzing temporal data from IT infrastructure, industrial equipment, smart meters, and IoT devices.
 
