@@ -2,11 +2,11 @@
 
 ## Overview
 
-CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the web interface.
+[Upload CSV files](uploading-csv-files.md) via HTTP API or manually through the web interface.
 
 ![](./resources/csv.gif)
 
-To process a CSV file you need to create a CSV parser, which splits the file into lines (rows) consisting of multiple columns and converts the lines into `series`, `property`, and `message` commands.
+To process a CSV file, create a CSV parser. A parser splits the file into lines to create rows and then into tokens to create columns. Finally, the parser converts the newly created array of cells into `series`, `property`, and `message` commands.
 
 ### Configuration Settings
 

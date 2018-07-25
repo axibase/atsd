@@ -6,7 +6,7 @@
 
 ## Technology Stack
 
-![](./images/tech-stack-image.png)
+![](./images/technology-stack-image.png)
 
 ATSD is written in Java, supported on Linux distributions in 64-bit mode, and requires a Java 8 runtime environment.
 
