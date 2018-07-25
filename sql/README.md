@@ -2772,7 +2772,7 @@ Note:
 ```sql
 SELECT entity, datetime, value
   FROM cpu_busy
-WHERE IS_WORKDAY(datetime, 'USA') = true
+WHERE IS_WORKDAY(datetime, 'USA')
 ```
 
 ### Mathematical Functions

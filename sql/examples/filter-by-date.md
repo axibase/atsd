@@ -472,10 +472,10 @@ The query below shows average load of CPU during weekdays, which are holidays.
 SELECT date_format(datetime, 'yyyy-MM-dd') as "date", avg(value),
        date_format(datetime, 'EEE') as "day of the week"
 FROM cpu_busy
-WHERE IS_WEEKDAY(datetime, 'USA') = true
-  AND IS_WORKDAY(datetime, 'USA') = false
+WHERE datetime BETWEEN '2018' and '2019'
+  AND IS_WEEKDAY(datetime, 'USA')
+  AND NOT IS_WORKDAY(datetime, 'USA')
 GROUP BY PERIOD(1 day)
-ORDER BY "date"
 ```
 
 ```ls
@@ -496,13 +496,38 @@ Use `date_parse(date_format())` call in the cases where a particular timezone is
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd', 'Asia/Seoul') AS "local date", count(value)
 FROM "cpu_busy"
--- Asia/Seoul is GMT+09:00
-WHERE datetime BETWEEN '2018-01-01T00:00:00+0900' AND '2018-12-31T23:59:59+0900'
+WHERE time >= date_parse('2018', 'yyyy', 'Asia/Seoul')
+AND DATEADD(DAY, 1, time, 'Asia/Seoul') < date_parse('2019', 'yyyy', 'Asia/Seoul')
 AND is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor')
-AND DATEADD(DAY, 1, time, 'Asia/Seoul') < date_parse('2019-01-01 00:00:00', 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul')
 AND NOT is_workday(date_parse(date_format(DATEADD(DAY, 1, time, 'Asia/Seoul'), 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor')
 AND is_weekday(date_parse(date_format(DATEADD(DAY, 1, time, 'Asia/Seoul'), 'yyyy-MM-dd', 'Asia/Seoul'), 'yyyy-MM-dd'), 'kor')
 GROUP BY period(1 DAY, 'Asia/Seoul'), entity
+```
+
+```ls
+| local date | count(value) |
+|------------|--------------|
+| 2018-02-14 |      48      |
+| 2018-02-28 |      48      |
+| 2018-05-21 |      48      |
+| 2018-06-05 |      48      |
+| 2018-06-12 |      48      |
+| 2018-08-14 |      48      |
+| 2018-10-02 |      48      |
+| 2018-10-08 |      48      |
+| 2018-12-24 |      48      |
+```
+
+Same query in the case where the server timezone is required.
+
+```sql
+SELECT date_format(time, 'yyyy-MM-dd') AS "date", count(value)
+FROM "cpu_busy"
+WHERE time >= date_parse('2018', 'yyyy')
+AND DATEADD(DAY, 1, time) < date_parse('2019', 'yyyy')
+AND is_workday(time, 'kor') AND NOT is_workday(DATEADD(DAY, 1, time), 'kor')
+AND is_weekday(DATEADD(DAY, 1, time), 'kor')
+GROUP BY period(1 DAY)
 ```
 
 ```ls
