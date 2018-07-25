@@ -2,11 +2,11 @@
 
 ## Overview
 
-**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported into CSV, JSON, and Excel files or [reinserted](#store)as a derived series in ad-hoc and continuous modes.
+**SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported into CSV, JSON, and Excel files or [reinserted](#store) as a derived series in ad-hoc and continuous modes.
 
-Open the console by clicking **Console** in the main **SQL** menu.
+**SQL Console** is located at **SQL > Console**.
 
-**SQL Console** has three components:
+The page has three components:
 
 1. **Query** Window
 2. [Format Settings](#format-settings)
@@ -24,9 +24,9 @@ Format Settings apply custom formatting to dates, numbers, and [`NULL`](README.m
 
 ### Date Format / Time Zone
 
-Use **Date Format** setting to modify the `datetime` column without applying the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression.
+Use the **Date Format** setting to modify the `datetime` column without the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression.
 
-Use **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
+Use the **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
 
 The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed by **SQL Console** when the database is configured to Eastern Standard Time (EST):
 
@@ -65,7 +65,7 @@ Decimal Precision | `mx` | `num` | `ct`
 `1` | 65.2 | 123.456 | 2279
 `2` | 65.20 | 123.456 | 2279
 
-In the above example, rounding applies only to the `mx` column which contains decimal values. The `num` and `ct` columns are not rounded because they contain string literals and integer values calculated by the [`COUNT`](README.md#aggregation-functions) function, respectively.
+Seen in the example above, rounding applies only to the `mx` column which contains decimal values. The `num` and `ct` columns are not rounded because they contain string literals and integer values calculated by the [`COUNT`](README.md#aggregation-functions) function, respectively.
 
 ### Theme
 
@@ -87,7 +87,7 @@ SELECT NULL
 LIMIT 1
 ```
 
-The following table shows each option applied to a `NULL` value:
+This table shows each option applied to a `NULL` value:
 
 Setting | NULL | null | N/A | Dash | Empty |
 :------:|:----:|:----:|:---:|:----:|:-----:|
@@ -97,7 +97,7 @@ Value   |`NULL`|`null`|`N/A`|  `-` |       |
 
 ### Execute
 
-Perform the query specified in the **Query** window and view results in a tabular format below the controls.
+Perform the query specified in the **Query** window and view the results in tabular format below the controls.
 
 ### Cancel
 
@@ -107,13 +107,13 @@ Interrupt a running query. The database can take several seconds to gracefully s
 
 Download the results of a query in CSV, JSON (objects), JSON (row), or XLSX format.
 
-Click **Export** to open the **Export Query Results** dialog. Modify the query (for example, remove [`LIMIT`](README.md#limiting)), select a file format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
+Click **Export** to open the **Export Query Results** dialog. Modify the query if needed. For example, remove a [`LIMIT`](README.md#limiting), select a file format, and optionally include [metadata](scheduled-sql-metadata.md#sql-report-metadata).
 
 ![](./images/export1.png)
 
 ### Store
 
-Store results in the database as a new derived series. The query results are eligible for re-insertion if the `SELECT` expression contains the [required columns](scheduled-sql-store.md#required-columns).
+Store results in the database as a new derived series. Query results are eligible for re-insertion if the `SELECT` expression contains the [required columns](scheduled-sql-store.md#required-columns).
 
 Execute the query and click **Store** to open the **Store Query Results as Series** dialog.
 
@@ -121,20 +121,20 @@ Execute the query and click **Store** to open the **Store Query Results as Serie
 
 The dialog window provides several tools to configure insertion:
 
-* [**Check Last Time**](scheduled-sql-store.md#duplicates): if enabled, ignores rows with timestamps earlier than the last insert date for the derived series.
+* [**Check Last Time**](scheduled-sql-store.md#duplicates): If enabled, the database ignores rows with timestamps earlier than the last insert date for the derived series.
 
-* [**Test**](scheduled-sql-store.md#validation): validates the first ten rows returned by the query without storing results and returns an error message if the results cannot be stored.
+* [**Test**](scheduled-sql-store.md#validation): Validates the first ten rows returned by the query without storing results and returns an error message if the results cannot be stored.
 
-* **Store**: inserts valid commands into the database.
+* **Store**: Inserts valid commands into the database.
 
-* **Schedule**: creates a [scheduled query](scheduled-sql.md) with the **Store** option set to **Enabled** based on the current query.
+* **Schedule**: Creates a [scheduled query](scheduled-sql.md) with the **Store** option set to **Enabled** based on the current query.
 
-> Refer to [Scheduled Store documentation](scheduled-sql-store.md) for more details.
+> Refer to [Scheduled Store Documentation](scheduled-sql-store.md) for more details.
 
 ### Query Plan
 
-Opens the **SQL Query Plan** page for the current query.
+Open the **SQL Query Plan** page for the current query.
 
-The plan includes query summary such as **Elapsed Time** (to perform query), **Returned Records**, and the **User** who performed the query, as well as detailed information such as the number of bytes transferred and records retrieved from storage.
+The plan includes query summary, such as **Elapsed Time** to perform the query, **Returned Records**, and the **User** who performed the query, as well as detailed information such as the number of bytes transferred and records retrieved from storage.
 
 ![](./images/query-plan.png)
