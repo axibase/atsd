@@ -126,9 +126,10 @@ Examples:
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | [interpolate](interpolate.md) | object | Fill missing values in the detailed data using a linear or step-like interpolation functions. |
-| [aggregate](aggregate.md) | object | Group detailed values into periods and calculate statistics for each period. |
 | [group](group.md) | object | Merge multiple series into one series. |
 | [rate](rate.md) | object | Compute difference between consecutive samples per unit of time (rate period). |
+| [aggregate](aggregate.md) | object | Group detailed values into periods and calculate statistics for each period. |
+| [downsample](downsample.md) | object | Reduce time series cardinality by filtering out some samples. |
 
 Transformation Sequence
 
@@ -138,10 +139,11 @@ The default processing sequence is as follows:
 2. [group](group.md)
 3. [rate](rate.md)
 4. [aggregate](aggregate.md)
+5. [downsample](downsample.md)
 
 The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before the values are passed to group/rate/aggregate stages.
 
-The default sequence of group/rate/aggregate transformations can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
+The default sequence of group/rate/aggregate/downsample transformations can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
 
 ### Control Fields
 

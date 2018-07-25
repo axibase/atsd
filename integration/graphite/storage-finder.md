@@ -1,10 +1,8 @@
 # Storage Finder
 
-ATSD Storage Finder is an alternative to the default Graphite storage finder.
+ATSD Storage Finder is an alternative to the default Graphite [storage finder](https://graphite.readthedocs.org/en/latest/storage-backends.html).
 
-[More information about Graphite storage finders can be found here.](https://graphite.readthedocs.org/en/latest/storage-backends.html)
-
-[Graphite and ATSD Storage Finder installation instructions can be found here.](installation.md)
+Refer to Graphite and ATSD Storage Finder [installation instructions](installation.md).
 
 ATSD Storage Finder configuration parameters are set in the `local_settings.py` file.
 
@@ -44,7 +42,7 @@ STORAGE_FINDERS = (
 |  password  |  ATSD user password  |  –  |
 |  entity_folders  |  List of folders for grouping entities by name.<br>Grouping is done according to the beginning of each entity name.<br>If entity name is matched to a folder name, then the entity name is listed in that folder.<br>For example if an entity name begins with<br>`com` (like `com_axibase`)<br>then the entity is listed in the folder called `'com'`.<br>If the entity name does not satisfy any of the listed folder names, then the entity is listed in the default `_` folder.  |  `'entity_folders' : 'abcdefghijklmnopqrstuvwxyz_'`<br>Generates folders from a to z (iterates through the string).  |
 |  metric_folders  |  List of folders for grouping metrics by name.<br>Grouping is done according to the beginning of each metric name.<br>If the metric name is matched to a folder name, then the metric is listed in that folder.<br>For example if a metric name begins with<br>`statsd` (`statsd_cpuload_avg5`)<br>then the metric is listed in a folder called `'statsd'`.<br>If metric name does not satisfy any of the listed folder names, the metric is placed into the `"_"` folder by default.  |  `'metric_folders' : 'abcdefghijklmnopqrstuvwxyz_'`<br>Generates folders from a to z, iterates through the string.  |
-|  aggregators  |  List of aggregators.  |  `'aggregators' : {<br>                'avg'               : 'Average',<br>                'min'               : 'Minimum',<br>                'max'               : 'Maximum',<br>                'sum'               : 'Sum',<br>                'count'             : 'Count',<br>                'first'             : 'First value',<br>                'last'              : 'Last value',<br>                'percentile_999'    : 'Percentile 99.9%',<br>                'percentile_99'     : 'Percentile 99%',<br>                'percentile_995'    : 'Percentile 99.5%',<br>                'percentile_95'     : 'Percentile 95%',<br>                'percentile_90'     : 'Percentile 90%',<br>                'percentile_75'     : 'Percentile 75%',<br>                'median'            : 'Median',<br>                'standard_deviation': 'Standard deviation',<br>                'delta'             : 'Delta',<br>                'wavg'              : 'Weighted average',<br>                'wtavg'             : 'Weighted time average'<br>}`  |
+|  aggregators  |  List of aggregators.  |  `'aggregators' : {'avg': 'Average','min': 'Minimum','max': 'Maximum','sum': 'Sum','count': 'Count','first': 'First value','last' : 'Last value','percentile_999': 'Percentile 99.9%','percentile_99': 'Percentile 99%','percentile_995': 'Percentile 99.5%','percentile_95': 'Percentile 95%','percentile_90': 'Percentile 90%','percentile_75': 'Percentile 75%','median': 'Median','standard_deviation': 'Standard deviation','delta': 'Delta','wavg' : 'Weighted average','wtavg': 'Weighted time average'}`  |
 
 If you use an underscore at the beginning of a setting value (`entity_folders` or `metric_folders`), then all folders that do not satisfy any other setting are placed there.
 
@@ -110,59 +108,63 @@ Under `views`, use `type` to control which folders to display in the `graphite-
 
 ```python
 ATSD_CONF = {
-
-    'views': {'DistributedGeoMon': [{'type': 'entity folder',
-                                     'value': [{'com.axibase'  : 'com.axibase'},
-                                               {'com.axibase.*': 'com.axibase.*'}]},
-                                    {'type': 'entity',
-                                     'value': ['*']},
-                                    {'type': 'tag',
-                                     'value': ['path'],
-                                     'global': [{'type': 'metric',
-                                                 'value': ['distgeomon.connect-dns']}]},
-                                    {'type': 'tag',
-                                     'value': ['geo-target', 'geo-source']},
-                                    {'type': 'metric folder',
-                                     'value': [{'distgeomon.response*': 'response'},
-                                               {'distgeomon.connect*' : 'connect'}]},
-                                    {'type': 'metric',
-                                     'value': ['*']},
-                                    {'type': 'interval',
-                                     'value': [{'count': '30',
-                                                'unit': 'minute',
-                                                'label': '30 minutes'},
-                                               {'count': '2',
-                                                'unit': 'hour',
-                                                'label': '2 hours'},
-                                               {'count': '1',
-                                                'unit': 'day',
-                                                'label': '1 day'}]},
-                                    {'type': 'collection',
-                                     'value': [{'type': 'aggregator',
-                                                'value': [{'detail': 'Detail'}],
-                                                'is leaf': True},
-                                               {'type': 'const',
-                                                'value': ['Aggregate']}]},
-                                    {'type': 'aggregator',
-                                     'value': [{'count'        : 'Count'},
-                                               {'min'          : 'Minimum'},
-                                               {'max'          : 'Maximum'},
-                                               {'avg'          : 'Average'},
-                                               {'median'       : 'Median'},
-                                               {'sum'          : 'Sum'},
-                                               {'percentile_75': 'Percentile 75%'},
-                                               {'delta'        : 'Delta'}]},
-                                    {'type': 'period',
-                                     'value': [{'count': '30',
-                                                'unit': 'second',
-                                                'label': '30 seconds'},
-                                               {'count': '10',
-                                                'unit': 'minute',
-                                                'label': '10 minutes'},
-                                               {'count': '1',
-                                                'unit': 'hour',
-                                                'label': '1 hour'}],
-                                     'is leaf': True}]}
+    'views': {'DistributedGeoMon':
+    [
+        {'type': 'entity folder',
+            'value': [{'com.axibase'  : 'com.axibase'},
+                    {'com.axibase.*': 'com.axibase.*'}]},
+        {'type': 'entity',
+            'value': ['*']},
+        {'type': 'tag',
+            'value': ['path'],
+            'global': [{'type': 'metric',
+                        'value': ['distgeomon.connect-dns']}]},
+        {'type': 'tag',
+            'value': ['geo-target', 'geo-source']},
+        {'type': 'metric folder',
+            'value': [{'distgeomon.response*': 'response'},
+                    {'distgeomon.connect*' : 'connect'}]},
+        {'type': 'metric',
+            'value': ['*']},
+        {'type': 'interval',
+            'value': [{'count': '30',
+                    'unit': 'minute',
+                    'label': '30 minutes'},
+                    {'count': '2',
+                    'unit': 'hour',
+                    'label': '2 hours'},
+                    {'count': '1',
+                    'unit': 'day',
+                    'label': '1 day'}]},
+        {'type': 'collection',
+            'value': [{'type': 'aggregator',
+                    'value': [{'detail': 'Detail'}],
+                    'is leaf': True},
+                    {'type': 'const',
+                    'value': ['Aggregate']}]},
+        {'type': 'aggregator',
+            'value': [{'count'        : 'Count'},
+                    {'min'          : 'Minimum'},
+                    {'max'          : 'Maximum'},
+                    {'avg'          : 'Average'},
+                    {'median'       : 'Median'},
+                    {'sum'          : 'Sum'},
+                    {'percentile_75': 'Percentile 75%'},
+                    {'delta'        : 'Delta'}]},
+        {'type': 'period',
+            'value': [{'count': '30',
+                    'unit': 'second',
+                    'label': '30 seconds'},
+                    {'count': '10',
+                    'unit': 'minute',
+                    'label': '10 minutes'},
+                    {'count': '1',
+                    'unit': 'hour',
+                    'label': '1 hour'}],
+            'is leaf': True}
+        ]
+    }
+}
 ```
 
 ![](./resources/00.png)
@@ -293,6 +295,6 @@ Final leaf representing possible aggregation periods.
 
 When the storage finder is enabled, metrics from ATSD become available for visualization in the Graphite-web application.
 
-ATSD metrics visualization in Graphite-web application:
+ATSD metrics displayed in Graphite-web application:
 
 ![](./resources/graphite.png)

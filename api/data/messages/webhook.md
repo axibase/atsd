@@ -57,15 +57,15 @@ The user must have `API_DATA_WRITE` role and `write` permissions for the target 
 
 To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split-button located below the **Users** table.
 
-![](./images/webhook-user.png)
+![](../../../administration/images/webhook-user.png)
 
 The wizard automatically creates user and entity groups and grants necessary permissions.
 
-![](./images/webhook-permissions.png)
+![](../../../administration/images/webhook-permissions.png)
 
 ## Request Parameters
 
-Request parameters, except for reserved parameters, are converted into message **tags** where tag names equal parameter names and tag values equal parameter values. Tag names are converted to lower case. Non-printable characters such as whitespace in tag names are replaced with an underscore.
+Request parameters, except for reserved parameters, are converted into message **tags** where tag names equal parameter names and tag values equal parameter values. Tag names are converted to lower case. Non-printable characters such as space or tab in tag names are replaced with an underscore.
 
 Request URL:
 
@@ -80,7 +80,7 @@ repeat=1
 
 ## JSON Payload
 
-The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag name is set from the field path, which is composed from the parent object path, followed by dot `.` and the name of the field. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
+The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag name is set from the field path, which is composed from the parent object path, followed by dot `.` and the name of the field. Tag names are converted to lower case with non-printable characters such as space replaced with an underscore.
 
 Input document:
 
@@ -589,7 +589,7 @@ Command:
 
 ## Diagnostics
 
-The last 100 recently received webhooks are listed on the **Settings > Diagnostics > Webhook Requests** page.
+The last 100 recently received webhooks are listed on the **Alerts > Incoming Webhooks** page.
 
 ![](./images/webhooks.png)
 

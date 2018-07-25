@@ -30,11 +30,11 @@ Status Code: 500
 
 ## HTTP Status Codes
 
-* `200 OK` status code if the request is successful.
-* `401 Unauthorized` status code in case of an unknown resource.
-* `403 Forbidden` status code in case of an access denied error.
-* `4xx` status code in case of other client errors.
-* `5xx` status code in case of server error.
+* `200 OK` or `204 No Content` status code if the request is successful.
+* `401 Unauthorized` status code on unknown resource.
+* `403 Forbidden` status code on access denied error.
+* `4xx` status code on other client errors.
+* `5xx` status code on server error.
 
 ## Errors
 

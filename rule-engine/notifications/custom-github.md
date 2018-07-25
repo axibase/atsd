@@ -74,7 +74,7 @@ If the request succeeds, an authorization token is present in the `token` field 
 
 #### Generate Authorization Token using UI
 
-Go to user settings.
+Open user settings.
 
 ![](./images/github_ui_token_1.png)
 

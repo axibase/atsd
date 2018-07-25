@@ -60,7 +60,7 @@ This method supports processing of the uploaded attached file as data as well as
 | `time` | string | Date in ISO format or using [calendar](../../../shared/calendar.md) keywords applies to commands if the file does not contain a time column. |
 | `timezone` | string | Time zone applied to timestamps specified in local time. |
 | `test` | boolean | Parse and validate the file without processing and storing commands.<br>Default: `false`. |
-| `t:{name}` | string | One or multiple default tags, inserted as series/property/message tags depending on command type, for example: `&t:location=SVL&t:site=QB1`.<br>Tag names must not contain whitespace. |
+| `t:{name}` | string | One or multiple default tags, inserted as series/property/message tags depending on command type, for example: `&t:location=SVL&t:site=QB1`.<br>Tag names must not contain non-printable characters such as space or tab. |
 
 ### Payload
 

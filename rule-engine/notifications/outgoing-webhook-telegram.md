@@ -38,7 +38,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 
 * Open the **Settings > Users > Create Webhook User** wizard in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Telegram.
 
-  ![](./images/outgoing_webhook_telegram_user.png)
+  ![](../../administration/images/webhook-user.png)
 
 * Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
@@ -128,15 +128,13 @@ User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.messa
 
 ### Verify Webhook Delivery
 
-* Go to the Telegram and send a direct message to the recently created bot.
+* Open the Telegram client and send a direct message to the recently created bot.
 
     ![](./images/outgoing_webhook_telegram_2.png)
 
-* Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
+* Open **Alerts > Incoming Webhooks** page and check that a request from Telegram servers has been received.
 
-    ![](./images/outgoing_webhook_slack_18.png)
-
-    ![](./images/outgoing_webhook_slack_19.png)
+    ![](./images/outgoing_webhook_telegram_4.png)
 
 * If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which displays an error in case the user credentials are mis-configured.
 

@@ -17,7 +17,7 @@ The group process is implemented as follows:
 | `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
 | `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
 | `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established.<br>Default: `false`.  |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default: `0`.  |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate`, `aggregate`, and `downsample` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`, `downsample`. Default: `0`.  |
 
 ## Grouping Functions
 

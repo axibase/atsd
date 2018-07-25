@@ -135,12 +135,12 @@ A single line comment starts with `#`. Text after the `#` is ignored.
   metric = nmon.cpu_total.busy%
 ```
 
-A hash symbol in the middle of a line (preceded by any character other than tab or whitespace) is escaped and treated as regular text.
+A hash symbol in the middle of a line (preceded by any character other than tab or space) is escaped and treated as regular text.
 
 ```ls
 [widget]
   type = chart
-  # Next line does not contain any comments because hash is preceded by characters other than tab or whitespace.
+  # Next line does not contain any comments because hash is preceded by characters other than tab or space.
   title = Hello # World
 ```
 

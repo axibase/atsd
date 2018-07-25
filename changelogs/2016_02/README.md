@@ -8,7 +8,7 @@
 |  3619     | UI              |  Bug     | Fixed **Set Persistence** button in the **Metric Editor**.  |
 |  3616     | api-rest        |  Bug     | Corrected 500 error code returned for pre-flight cross-domain `OPTION` requests. |
 |  3613     | portal          |  Bug     | Portal not assigned to entity group when imported from an XML file. |
-|  3553     | rule engine     |  Feature | Refactored Actions tab in the Rule Editor to correctly handle whitespace in script arguments. |
+|  3553     | rule engine     |  Feature | Refactored Actions tab in the Rule Editor to correctly handle non-printable characters in script arguments. |
 |  3526     | core            |  Bug     | Addressed an issue with `Append` operations introduced with series counters. Removed the feature due to unstable HBase `Append` performance under heavy load. |
 |  3319     | api-rest        |  Support | Added tests for [NodeJS API client](https://github.com/axibase/atsd-api-nodejs). |
 |  2369     | portal          |  Support | Implemented Docker container portals: docker host overview, docker host counter breakdown, and docker container detail. |

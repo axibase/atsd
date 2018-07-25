@@ -127,7 +127,7 @@ Received `${message}` from <@${tags.event.user}>
 
 ### Verify Webhook Delivery
 
-* Go to the Slack workspace and send direct message to recently created bot.
+* Open the Slack workspace and send direct message to recently created bot.
 
     ![](./images/outgoing_webhook_slack_16.png)
 
@@ -136,9 +136,7 @@ Received `${message}` from <@${tags.event.user}>
 > * less-than sign, `<` replaced with `&lt;`
 > * greater-than sign, `>` replaced with `&gt;`
 
-* Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
-
-    ![](./images/outgoing_webhook_slack_18.png)
+* Open **Alerts > Incoming Webhooks** page and check that a request from Slack servers has been received.
 
     ![](./images/outgoing_webhook_slack_19.png)
 

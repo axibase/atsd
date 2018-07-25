@@ -48,24 +48,24 @@ Response actions can be triggered whenever the window changes its status as well
 
 ### Status Events
 
-| Previous State | New Status | Previous Condition Value | New Condition Value | Trigger Supported |
+| Previous State | New Status | Previous Condition Value | New Condition Value | Trigger Name |
 | --- | --- | --- | --- | --- |
-| `CANCEL` | `OPEN` | `false` | `true` | Yes |
-| `OPEN`  | `REPEAT` | `true` | `true` | Yes |
-| `REPEAT` | `REPEAT` | `true` | `true` | Yes |
-| `OPEN` | `CANCEL` | `true` | `false` | Yes |
-| `REPEAT` | `CANCEL` | `true` | `false` | Yes |
-| `CANCEL` | `CANCEL` | `false` | `false` | No |
+| `CANCEL` | `OPEN` | `false` | `true` | `On Open` |
+| `OPEN`  | `REPEAT` | `true` | `true` | `On Repeat` |
+| `REPEAT` | `REPEAT` | `true` | `true` | `On Repeat` |
+| `OPEN` | `CANCEL` | `true` | `false` | `On Cancel` |
+| `REPEAT` | `CANCEL` | `true` | `false` | `On Cancel` |
+| `CANCEL` | `CANCEL` | `false` | `false` | Not available |
 
 ### `OPEN` Status
 
-`OPEN` status is assigned to the window when the condition changes value from `false` to `true`.
+The window is assigned `OPEN` status when the condition value changes from `false` to `true`.
 
 ### `REPEAT` Status
 
-`REPEAT` status is assigned to an `OPEN` window when the following sequential condition is evaluated as `true` and retains this status for all subsequent `true` evaluations. The minimum number of evaluations that must have been performed on any window for it to have the `REPEAT` status is two consecutive `true` evaluations.
+The window is assigned `REPEAT` status when the condition value remains `true` during subsequent evaluations. `REPEAT` status requires at least two `true` consecutive evaluations.
 
-When the window is in `REPEAT` status, actions can be executed with the frequency specified in the rule editor based on a certain number of evaluations, for example.
+When the window is in `REPEAT` status, response actions can be executed with the frequency specified in the rule editor, for example, every 10-th occurrence or every 5 minutes.
 
 ### `CANCEL` Status
 

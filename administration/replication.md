@@ -1,6 +1,6 @@
 # Replication
 
-This article describes how to configure ATSD replication.
+This document describes how to configure ATSD replication.
 
 The replication process is from master to slave, meaning where all transactions on the master
 cluster are replayed to the slave cluster.
@@ -257,18 +257,19 @@ ink.java:replicateEntries(158)) - Total replicated: 1
 
 Open ATSD web interface and navigate to the **Alert > Rules** page.
 
-![](./images/atsd_rules_new.png)
+![](./images/replication_1.png)
 
-Click **Create** to create a new rule. Complete the following
-fields as specified below:
+Click **Create** and complete the following fields as specified below:
 
 * `Name`: `testrule`
 * `Metric`: `testrule`
-* `Expression`: `true`
+* `Condition`: `true`
 
 Click **Save**.
 
-![](./images/rule_editor.png "rule_editor")
+![](./images/replication_2.png)
+![](./images/replication_3.png)
+![](./images/replication_4.png)
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:

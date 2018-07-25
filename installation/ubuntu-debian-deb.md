@@ -1,4 +1,4 @@
-# Installation: `deb` package
+# Installation: DEB
 
 ## Supported Versions
 

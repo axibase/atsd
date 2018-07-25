@@ -145,7 +145,7 @@ https:///atsd_hostname:8443/portal/name/{portal-name}?entity={entity}
 
 The above links contain the `entity` parameter which substitutes all `${entity}` placeholders in the portal configuration text when rendered.
 
-```bash
+```ls
 [widget]
   type = chart
   [series]
@@ -175,7 +175,7 @@ Alternatively, assign an entity group to the template portal to ensure that a li
 ![](./resources/creating-and-assigning-portals_7.png)
 
 * Open the [Portals Page](#portals-page).
-* Click the **assign** icon for the desired template portal.
+* Click the **assign** icon for the selected template portal.
 
     ![](./resources/creating-and-assigning-portals_8.png)
 
@@ -213,7 +213,7 @@ https://atsd_hostname:8443/portal/{portal-id}.xhtml
 https://atsd_hostname:8443/portal/name/{name}
 ```
 
-> Names containing whitespace and other special properties must be URL-encoded.
+> Names containing space, tab and special characters must be URL-encoded.
 
 ![](./resources/creating-and-assigning-portals_14.png)
 
@@ -234,7 +234,7 @@ https://atsd_hostname:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 
 Such request parameter values can be referenced with `${parameter_name}` placeholders in the Configure Portal text.
 
-```bash
+```ls
 [series]
   metric = disk_io_writes
   entity = ${entity}

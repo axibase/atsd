@@ -70,6 +70,10 @@ Series functions retrieve series values from the database whereas the series can
 * [`db_last`](functions-series.md#db_laststring-m)
 * [`db_statistic`](functions-series.md#db_statistic)
 
+## Alert History
+
+* [`last_open`](functions-alert-history.md#last_open)
+
 ## Database SQL
 
 SQL functions return the results of user-defined SQL queries.

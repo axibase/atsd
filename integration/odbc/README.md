@@ -75,7 +75,7 @@ A license manager window appears after exiting from the installation wizard. If 
 
 ## Configure ODBC Data Source
 
-* Go to **Start**, type `ODBC` and launch ODBC Data Source Manager under an Administrator account.
+* Open **Start**, type `ODBC` and launch ODBC Data Source Manager under an Administrator account.
 
   ![](./images/ODBC_1.png)
 

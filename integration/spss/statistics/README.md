@@ -107,9 +107,9 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 
 ### Import from CSV Files
 
-* Export data from ATSD into CSV files as described in the [Exporting Data into CSV Files](#exporting-data-into-csv-files) section at the end of this article.
+* Export data from ATSD into CSV files as described in [Exporting Data into CSV Files](#exporting-data-into-csv-files).
 * Open **File > Import Data > CSV Data...**.
-* Select the desired CSV files and click **Open** to import the `prices.sav` and `weights.sav` files.
+* Select CSV files and click **Open** to import the `prices.sav` and `weights.sav` files.
 
 ![](./images/import_dataset.png)
 
@@ -247,7 +247,7 @@ metric m:cpi_price
 
 ![](./images/atsd_export_9.png)
 
-* Choose `cpi_price` table and click **Next**. The list of tables is based on the `tables=` driver property specified in the JDBC URL. If you do not see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md) and re-open the export wizard.
+* Choose `cpi_price` table and click **Next**. The list of tables is based on the `tables=` driver property specified in the JDBC URL. If you do not see the table in the list, update ODBC data source as described [here](../../odbc/table-config.md) and re-open the export wizard.
 
 ![](./images/atsd_export_10.png)
 
