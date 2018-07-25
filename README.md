@@ -8,7 +8,7 @@
 
 ATSD requires a Java 8 runtime environment and is supported on major Linux distributions in 64-bit mode.
 
-Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as a distributed key-value store and can be deployed on top of file systems such [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and `ext4`(local).
+Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as a distributed key-value store and can be deployed on top of file systems such as [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and `ext4`(local).
 
 ![](./images/technology-stack-image.png)
 
