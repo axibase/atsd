@@ -1,18 +1,18 @@
 # Introduction
 
-![](./images/atsd-title.png)
-
 **Axibase Time Series Database** is a non-relational database optimized for collecting, storing, and analyzing temporal data from IT infrastructure, industrial equipment, smart meters, and IoT devices.
+
+![](./images/atsd-title.png)
 
 ## Technology Stack
 
+ATSD requires a Java 8 runtime environment and is supported on major Linux distributions in 64-bit mode.
+
+Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as a distributed key-value store and can be deployed on top of file systems such [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and `ext4`(local).
+
 ![](./images/technology-stack-image.png)
 
-ATSD is written in Java, supported on Linux distributions in 64-bit mode, and requires a Java 8 runtime environment.
-
-Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which persists key-value pairs in the underlying file system such as `ext4`, [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), and [Amazon EMRFS](./installation/aws-emr-s3.md).
-
-Install ATSD via `deb` and `rpm` [packages](./installation/README.md#packages) or launch ATSD as a Docker [container](./installation/docker.md#start-container).
+ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a Docker [container](./installation/docker.md#start-container).
 
 ## Compute Scalability
 
@@ -41,13 +41,14 @@ Scale storage capacity by adding data nodes to the underlying HDFS cluster. With
 
 ATSD is a modular systems which includes the following components in addition to the core storage engine:
 
+* [Rule Engine](./rule-engine/README.md)
+* [SQL Engine](./sql/README.md)
+* [Portal Server](./portals/README.md)
+* [Charts Library](https://github.com/axibase/charts)
+* [Search Service](./search/README.md)
 * [REST API](./api/data/README.md) Server
 * [Network API](./api/network/README.md) Server
 * [CSV Processor](./parsers/csv/README.md)
-* [Rule Engine](./rule-engine/README.md)
-* [SQL Engine](./sql/README.md)
-* [Search Engine](./search/README.md)
-* [Portal Server](./portals/README.md)
 
 ## Inserting Data
 
