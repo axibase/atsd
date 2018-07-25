@@ -1,6 +1,6 @@
-# Basic Schema Field Example
+# Basic Schema Field
 
-## Input File
+## Example File
 
 ```csv
 Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
@@ -10,31 +10,48 @@ Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 
 ## Parser Settings
 
-`Timestamp Pattern: yyyy-MM-dd HH:mm`          # Used to parse Measurement Time column values
+### Timestamp Pattern
 
-## Schema
+Define the pattern with which to read `Measurement Time` column values.
+
+`Timestamp Pattern: yyyy-MM-dd HH:mm`
+
+### Schema
 
 ```java
+# select parameters
 select("#row=2-*").select("#col=4-*").
 addSeries().
+
+# series parameters
 metric(cell(1, col)).
 entity(cell(row, 2)).
 tag('model',cell(row, 3)).
 timestamp(cell(row, 1));
 ```
 
-Adhere to the following points to convert the CSV file into a tabular model:
+The above schema converts the CSV file into a tabular model. A row-by-row explanation of the schema is provided below:
 
-* For each row starting with the 2nd row until the last row;
-* For each column in the current row starting with the 4th column (Temperature) until the last column (Pressure);
-* For each cell:
-  * Set the metric name to the value of the cell located in the first row in the current column: Temperature, Humidity, Pressure;
-  * Set the entity name to the value of the cell located in the current row, 2nd column (Sensor Name);
-  * Set the tag `model` to the value of cell located in the current row, 3rd column (Sensor Model);
-  * Set the timestamp to the value of the cell located in the current row, 1st column (Measurement Time). The text value is parsed using the **Timestamp Pattern**;
-  * Set the series value to the value of the current cell.
+**`select` Parameters**:
+
+* `select` each row starting with the second row until the last row `"#row=2-*"`.
+* `select` each column in the second row starting with the forth column until the last column `"#col=4-*"`.
+
+**`series` Parameters**
+
+> `cell` selection is defined by the pattern `(row,col)`
+
+* `metric` name is located in each selected column of the first row: `Temperature`, `Humidity`, `Pressure`.
+  * `(1,col)`
+* `entity` name is located in each selected row of the second column: `Sensor-0001`, `Sensor-0020`.
+  * `(row,2)`
+* `tag` value is located in each selected row of the third column: `PV120000-XG1`. `tag` name is defined by the first argument: `model`
+  * `(row, 3)`
+* Timestamp is located in each selected row of the first column: `Measurement Time`. The text value is parsed using the [**Timestamp Pattern**](#timestamp-pattern).
 
 ## Commands
+
+The series commands produced by the above schema and inserted in the database are shown below.
 
 ```ls
 series e:sensor-0001 d:2015-11-15T00:00:00Z m:temperature=35.5 m:humidity=40.0 m:pressure=760 t:model=PV120000-XG1
