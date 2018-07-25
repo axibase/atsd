@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves time series objects for the specified metric, entity, tag, and date interval filters.
+Retrieves time series objects for the specified metric, entity, tags, and date range.
 
 ## Quick Start
 
@@ -41,31 +41,29 @@ The request payload is a JSON document containing an array of query objects.
 
 ```sh
 [{
-  /* query 1: filter, process, control */
+  /* query 1: filter, transform, control */
 },{
-  /* query 2: filter, process, control */
+  /* query 2: filter, transform, control */
 }]
 ```
 
 Each query contains **filter** fields to find time series in the database, **processing** fields to transform the matched series, and **control** fields to order and format the results.
 
-## Query Fields
-
-### Base Filter
+## Base Filter
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
 | `metric` | string | [**Required**] Metric name. |
 | `type` | string | Data type: `HISTORY`, `FORECAST`, `FORECAST_DEVIATION`. <br>Default: `HISTORY` |
 
-### Entity Filter
+## Entity Filter
 
 * [**Required**]
 * Refer to [entity filter](../filter-entity.md).
 
 > Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `*` matches all tags.
 
-### Tag Filter
+## Tag Filter
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
@@ -73,7 +71,7 @@ Each query contains **filter** fields to find time series in the database, **pro
 | `exactMatch` | boolean | `tags` match operator. **Exact** match if `true`, **partial** match if `false`.<br>Default: `false` (**partial** match).<br>**Exact** match selects series with exactly the same `tags` as requested.<br>**Partial** match selects series with tags that contain requested tags but can also include additional tags.|
 | `tagExpression` | string | An expression to include series with tags that satisfy the specified condition. |
 
-#### Tag Expression
+### Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
 * The series record must satisfy both the `tags` object and the `tagExpression` to be included in the results.
@@ -85,25 +83,25 @@ Each query contains **filter** fields to find time series in the database, **pro
 tags.location LIKE 'nur*'
 ```
 
-### Date Filter
+## Date Filter
 
 * [**Required**]
 * Refer to [date filter](../filter-date.md).
 
-### Forecast Filter
+## Forecast Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 |`forecastName`| string | Unique forecast name. Identifies a custom forecast by name. If `forecastName` is not set, then the default forecast computed by the database is returned. `forecastName` is applicable only when `type` is set to `FORECAST` or `FORECAST_DEVIATION`. |
 
-### Versioning Filter
+## Versioning Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `versioned` | boolean |Returns version status, source, and change date if the metric is versioned.<br>Default: `false`. |
 | `versionFilter` | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
 
-### Value Filter
+## Value Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
@@ -121,17 +119,15 @@ Examples:
 * `Math.sin(value) < 0.5`: [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported.
 * `Double.isNaN(value)`: Only `NaN` values and deleted values pass this check.
 
-### Transformation Fields
+## Transformations
 
-| **Name**  | **Type** | **Description**  |
-|:---|:---|:---|
-| [interpolate](interpolate.md) | object | Fill missing values in the detailed data using a linear or step-like interpolation functions. |
-| [group](group.md) | object | Merge multiple series into one series. |
-| [rate](rate.md) | object | Compute difference between consecutive samples per unit of time (rate period). |
-| [aggregate](aggregate.md) | object | Group detailed values into periods and calculate statistics for each period. |
-| [downsample](downsample.md) | object | Reduce time series cardinality by filtering out some samples. |
-
-Transformation Sequence
+| **Name**  | **Description**  |
+|:---|:---|
+| [interpolate](interpolate.md) | Fill missing values in the detailed data using a linear or step-like interpolation functions. |
+| [group](group.md) | Merge multiple series into one series. |
+| [rate](rate.md) | Compute difference between consecutive samples per unit of time (rate period). |
+| [aggregate](aggregate.md) | Group detailed values into periods and calculate statistics for each period. |
+| [downsample](downsample.md) | Reduce time series cardinality by filtering out some samples. |
 
 The default processing sequence is as follows:
 
@@ -141,11 +137,11 @@ The default processing sequence is as follows:
 4. [aggregate](aggregate.md)
 5. [downsample](downsample.md)
 
-The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before the values are passed to group/rate/aggregate stages.
+The [interpolate](interpolate.md) transformation, if requested, is applied to detailed data before the values are passed to subsequent stages.
 
-The default sequence of group/rate/aggregate/downsample transformations can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
+The default transformation sequence can be modified by adding an `order` field in each transformation object, in which case the stages are executed in ascending order based on the `order` field.
 
-### Control Fields
+## Control Fields
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
