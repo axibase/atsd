@@ -109,14 +109,22 @@ Show Meta| Display parameters used to calculate the forecast.<br>Metadata is sto
 
 ### Rule Engine
 
-* Use pre-computed forecast values as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount.
-* Compare forecast values to actual values using [statistical functions](../rule-engine/functions.md#statistical) such as standard deviation as well as raw values.
+* Access pre-computed forecasts using [forecast](../rule-engine/functions-forecast.md) functions.
+* Use forecast values as [thresholds](../rule-engine/README.md#forecast-thresholds) to trigger response actions if observed values deviate from forecast values by some amount.
+* Compare forecast values to [statistical function](../rule-engine/functions.md#statistical) values such as moving averages or weighted averages.
 
 ```javascript
 abs(avg() - forecast()) > 25
 ```
 
 This expression compares the actual [average value](../rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](../rule-engine/functions-math.md#abs) of the difference exceeds 25.
+
+```javascript
+thresholdTime(null, 90, '1 DAY') != null
+```
+
+* `thresholdTime` function returns time in Unix milliseconds when the forecast is expected to exceed `90` for the first time.
+* The condition becomes `true` if the expected violation is to occur in less than 1 day.
 
 ### Ad hoc Export
 
@@ -217,7 +225,7 @@ Additional examples:
 
 ### Charts
 
-Load forecasts data by setting `data-type = forecast` in the `[series]` section.
+Load forecasts into charts by setting `data-type = forecast` in the `[series]` section.
 
 ```ls
 [series]
@@ -226,11 +234,11 @@ Load forecasts data by setting `data-type = forecast` in the `[series]` section.
     data-type = forecast
 ```
 
-|Name|Example|Description|Example|
+List of widget and series settings applicable to forecast data:
+
+|Name|Description|Example|
 |---|---|---|---|
-|Data Type|`data-type = forecast`|Data type for the current series.<br>Possible values: `history`, `forecast`, `forecast_deviation`, `lower_confidence`, `upper_confidence`.|[![](../images/button.png)](https://apps.axibase.com/chartlab/f80b8e53)|
-|Forecast Name|`forecast-name = hw5`|Unique forecast identifier.<br>Useful when creating multiple forecasts for the same series.<br>If no forecast name is set, the default forecast is loaded.|[![](../images/button.png)](https://apps.axibase.com/chartlab/92b7e471/3/)|
-|style|`style = stroke-dasharray: none;`|Render forecast as a solid line instead of dashed line.|[![](../images/button.png)](https://apps.axibase.com/chartlab/92b7e471/4/)|
-|value|`value = (1 - forecast('free') / forecast('total')) * 100`|Returns forecast for the underlying series.|[![](../images/button.png)](https://apps.axibase.com/chartlab/da03b8a5/11/)|
-|load-future-data|`load-future-data = true`|Load future series values.<br>Usually used to view imported forecasts generated with 3rd party tools, such as R Language.<br>Allowed values: `true`, `false`.|[![](../images/button.png)](https://apps.axibase.com/chartlab/87c197be)|
-|forecast-style|`forecast-style = stroke: magenta;`|CSS styles applied to forecasts in `column` and `column-stack` modes.|[![](../images/button.png)](https://apps.axibase.com/chartlab/37c39d18/3/)|
+|`data-type`|Data type for the current series.<br>Possible values: `history`, `forecast`, `forecast_deviation`, `lower_confidence`, `upper_confidence`.<br><br>Example: `data-type = forecast`|[![](../images/button.png)](https://apps.axibase.com/chartlab/f80b8e53)|
+|`forecast-name`|Unique forecast identifier.<br>Useful when creating multiple forecasts for the same series.<br>Usually used to view imported forecasts generated with external tools.<br>If no forecast name is set, the default forecast is loaded.<br><br>Example: `forecast-name = hw5`|[![](../images/button.png)](https://apps.axibase.com/chartlab/92b7e471/3/)|
+|`forecast-style`|CSS styles applied to forecasts in `column` and `column-stack` modes.<br><br>Example: `forecast-style = stroke: magenta;`|[![](../images/button.png)](https://apps.axibase.com/chartlab/37c39d18/3/)|
+|`style`|Render forecast as a solid line instead of dashed line.<br><br>Example: `style = stroke-dasharray: none;`|[![](../images/button.png)](https://apps.axibase.com/chartlab/92b7e471/4/)|

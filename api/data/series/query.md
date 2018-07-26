@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves time series objects for the specified metric, entity, tags, and date range.
+Retrieves time series objects for the specified metric, entity, tags, and date range. Applies common time series transformations including aggregation, interpolation, downsampling etc.
 
 ## Quick Start
 
@@ -47,23 +47,37 @@ The request payload is a JSON document containing an array of query objects.
 }]
 ```
 
-Each query contains **filter** fields to find time series in the database, **processing** fields to transform the matched series, and **control** fields to order and format the results.
+The query contains **filter** fields to find time series in the database, **transform** fields to modify the matched series, and **control** fields to order and format the results.
 
-## Base Filter
+## Filters
+
+### Base Filter
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
 | `metric` | string | [**Required**] Metric name. |
 | `type` | string | Data type: `HISTORY`, `FORECAST`, `FORECAST_DEVIATION`. <br>Default: `HISTORY` |
 
-## Entity Filter
+### Entity Filter
 
 * [**Required**]
 * Refer to [entity filter](../filter-entity.md).
 
+```json
+"entity": "nurswgvml007"
+```
+
+```json
+"entityGroup": "nur-prod-servers"
+```
+
+```json
+"entityExpression": "tags.location LIKE 'SVL*'"
+```
+
 > Queries of `FORECAST` and `FORECAST_DEVIATION` type do **not** support wildcards in the entity name and tag values. Tag value `*` matches all tags.
 
-## Tag Filter
+### Tag Filter
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
@@ -71,7 +85,11 @@ Each query contains **filter** fields to find time series in the database, **pro
 | `exactMatch` | boolean | `tags` match operator. **Exact** match if `true`, **partial** match if `false`.<br>Default: `false` (**partial** match).<br>**Exact** match selects series with exactly the same `tags` as requested.<br>**Partial** match selects series with tags that contain requested tags but can also include additional tags.|
 | `tagExpression` | string | An expression to include series with tags that satisfy the specified condition. |
 
-### Tag Expression
+```json
+"tags": { "mount_point": "/", "file_system": "/dev/sda1" }
+```
+
+#### Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
 * The series record must satisfy both the `tags` object and the `tagExpression` to be included in the results.
@@ -79,35 +97,40 @@ Each query contains **filter** fields to find time series in the database, **pro
 * Supported functions: `LOWER`.
 * Wildcards `?` and `*` are supported by `LIKE` and `NOT LIKE` operators. Symbols `?` and `*` are treated as regular characters when used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
 
-```javascript
-tags.location LIKE 'nur*'
+```json
+"tagExpression": "tags.file_system LIKE '/dev/sda*'"
 ```
 
-## Date Filter
+### Date Filter
 
 * [**Required**]
 * Refer to [date filter](../filter-date.md).
 
-## Forecast Filter
+```json
+"startDate": "2018-05-30T14:00:00Z",
+"endDate":   "2018-05-30T15:00:00Z"
+```
+
+### Forecast Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 |`forecastName`| string | Unique forecast name. Identifies a custom forecast by name. If `forecastName` is not set, then the default forecast computed by the database is returned. `forecastName` is applicable only when `type` is set to `FORECAST` or `FORECAST_DEVIATION`. |
 
-## Versioning Filter
+### Versioning Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `versioned` | boolean |Returns version status, source, and change date if the metric is versioned.<br>Default: `false`. |
 | `versionFilter` | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
 
-## Value Filter
+### Value Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
 | `valueFilter` | string | Boolean expression applied to detailed samples, for example, `value > 100`. Samples that satisfy the condition are included in the result. The `value` field in the expression refers to the current sample value. |
 
-Processing rules:
+Value Filter Processing Rules:
 
 * The value filter is applied **before** series transformations (interpolation, aggregation, etc).
 * In case of a versioned metric in `versioned=true` mode, the filter checks only the last value recorded for the given time. If the last value satisfies the filter, all versions for that time are included.
