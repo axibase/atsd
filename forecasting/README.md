@@ -101,7 +101,7 @@ Run | Execute the forecast job.<br>Use this tool to test a forecast.<br>ATSD ret
 Export | Export forecast data in CSV format.| ![](./resources/forecasts_14.png)
 Show Meta| Display parameters used to calculate the forecast.<br>Metadata is stored with the forecast.<br>Collection interval is an interval within the real data extracted to build the forecast. | ![](./images/show-meta.png)
 
-> Use the split button on the **Data > Forecasts** page to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
+> Use the split-button on the **Data > Forecasts** page to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
 ![](./resources/forecasts_10.png)
 
