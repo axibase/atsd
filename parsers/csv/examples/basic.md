@@ -52,7 +52,7 @@ Define value cells of the CSV file.
 * `select("#row=2-*")`: Select each row starting with the second row until the last row.
 * `select("#col=4-*")`: Select each column in the second row starting with the forth column until the last column.
 
-![](../../images/table-select.png)
+![](../../images/table-select-3.png)
 
 **`series` Parameters**
 
@@ -63,7 +63,7 @@ Define the meaning of the rows and columns in the body of the CSV file.
 * `tag('model',cell(row, 3))`: Tag value is located in each selected row of the third column: `PV120000-XG1`. `tag` name is defined by the first argument: `model`
 * `metric(cell(1, col))`: Metric name is located in each selected column of the first row: `Temperature`, `Humidity`, `Pressure`.
 
-![](../../images/table-series-2.png)
+![](../../images/table-series-4.png)
 
 ## Commands
 
