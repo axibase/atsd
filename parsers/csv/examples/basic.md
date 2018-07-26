@@ -8,66 +8,71 @@ Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 2015-10-15 00:00,Sensor-0020,PV120000-XG1,       20.4,    60.8,     745
 ```
 
+![](./images/excel-basic.png)
+
 ## Parser Configuration
 
 ### Overview
 
-* With schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** fields are mandatory.
-* The parser converts cells into [series commands](https://axibase.com/docs/atsd/api/network/series.html) and inserts the commands into the database.
+Schema-based parsers are JavaScript programs that traverse the underlying CSV file in left-right, top-down direction and convert cells into [series](https://axibase.com/docs/atsd/api/network/series.html), property, or message commands. The programs can use built-in [functions](../csv-schema.md#schema-functions) to lookup cells by row and column index, to validate their contents and to modify their value as they assemble the commands.
+
+With schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** fields are mandatory. The **Schema** field contains the JavaScript program code implementing the parsing logic.
 
 ### Syntax
 
-* Schema lines end with a `.` period.
-* Schema configurations end with a `;` semicolon.
-* Include comments using the `/*` open and `*/` close characters.
-* Wildcard `*` characters indicate all rows or columns are read by the parser.
-* Hardcode metric, entity, or tag names with `metric('my_metric')` syntax.
+* Schema is a JavaScript program that consists of one or multiple statements.
+* Each statement must end with a semicolon (`;`).
+* A statement can consist of multiple function invocations, chained with a period (`.`).
+* Regular JavaScript comment characters are supported.
+* String literals such as constant metric or entity names must be enclosed in single or double quotes.
 
 ### Timestamp Pattern
 
-* Define timestamp pattern with Java [`SimpleDateFormat` pattern](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
-* The pattern to read `Measurement Time` column values is `yyyy-MM-dd HH:mm`.
+* To parse the dates in the CSV file, specify the timestamp column pattern using [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
+* In the example above, the pattern to read `Measurement Time` column values is `yyyy-MM-dd HH:mm`.
 * Enter this pattern in the **Timestamp Format** field
 
-### Schema
+### Schema Program
 
 ```java
-/* select parameters */
-select("#row=2-*").select("#col=4-*").
-addSeries().
-
-/* series parameters */
-metric(cell(1, col)).
+select("#row=2-*").         // Select which rows to process
+select("#col=4-*").         // Select which columns to process in each row
+addSeries().                // Specify which command to build
+metric(cell(1, col)).       // Set command fields from cell values
 entity(cell(row, 2)).
 tag('model',cell(row, 3)).
 timestamp(cell(row, 1));
 ```
 
-The schema converts the CSV file into a tabular model. A row-by-row explanation of the schema is provided below:
+A step-by-step explanation of the schema program is provided below:
 
-**`select` Parameters**:
+**`select` Functions**:
 
-Define value cells of the CSV file.
+Select which parts of the file to iterate over.
 
 * `select("#row=2-*")`: Select each row starting with the second row until the last row.
-* `select("#col=4-*")`: Select each column in the second row starting with the forth column until the last column.
+* `select("#col=4-*")`: Select each column in each row starting with the forth column until the last column.
+
+The result of the previous two functions is a collection of cells that will be processed sequentially. The `addSeries` function is invoked for each cell in the collection: cell `(2, 4)`, cell `(2, 5)`, etc.
+
+The collection must contain numeric values for which series commands will be created, which is why the very first row containing the header is not included in the row selector. The row selector starts with the second row.
 
 ![](../../images/table-select-3.png)
 
-**`series` Parameters**
+**`addSeries` Functions**
 
-Define the meaning of the rows and columns in the body of the CSV file.
+The `addSeries` function returns a series object with setter functions to populate various command fields from cell values. The `row` and `col` fields are set to the row and column index of the current (active) cell.
 
-* `timestamp(cell(row, 1))`: Timestamp is located in each selected row of the first column: `Measurement Time`. The text value is parsed using the [**Timestamp Pattern**](#timestamp-pattern).
-* `entity(cell(row, 2))`: Entity name is located in each selected row of the second column: `Sensor-0001`, `Sensor-0020`.
-* `tag('model',cell(row, 3))`: Tag value is located in each selected row of the third column: `PV120000-XG1`. `tag` name is defined by the first argument: `model`
-* `metric(cell(1, col))`: Metric name is located in each selected column of the first row: `Temperature`, `Humidity`, `Pressure`.
+* `timestamp(cell(row, 1))`: Timestamp is located in the first column of the current row: `2015-10-15 00:00`. The text value is parsed using the [**Timestamp Pattern**](#timestamp-pattern).
+* `entity(cell(row, 2))`: Entity name is located in the second column of the current row: `Sensor-0001`.
+* `tag('model',cell(row, 3))`: The value of tag with constant name `model` is located in the third column of the current row: `PV120000-XG1`.
+* `metric(cell(1, col))`: Metric name is located in the current column in the first row: `Temperature`, `Humidity`, `Pressure`.
 
 ![](../../images/table-series-4.png)
 
 ## Commands
 
-The series commands produced by the above schema and inserted in the database are shown below.
+The series commands produced by the above schema program are shown below.
 
 ```ls
 series e:sensor-0001 d:2015-11-15T00:00:00Z m:temperature=35.5 m:humidity=40.0 m:pressure=760 t:model=PV120000-XG1
