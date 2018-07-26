@@ -1,7 +1,5 @@
 # Basic Schema Parser
 
-![](../../images/schema-parser.png)
-
 ## Example CSV File
 
 ```csv
@@ -19,8 +17,8 @@ Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 
 ### Syntax
 
-* Schema lines terminate with a `.` period.
-* Schema configurations terminate with a `;` semicolon.
+* Schema lines end with a `.` period.
+* Schema configurations end with a `;` semicolon.
 * Include comments using the `/*` open and `*/` close characters.
 * Wildcard `*` characters indicate all rows or columns are read by the parser.
 * Hardcode metric, entity, or tag names with `metric('my_metric')` syntax.
