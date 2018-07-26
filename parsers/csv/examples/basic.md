@@ -55,7 +55,7 @@ Select which parts of the file to iterate over.
 
 The result of the previous two functions is a collection of cells that are processed sequentially. The `addSeries` function is invoked for each cell in the collection: cell `(2, 4)`, cell `(2, 5)`, etc.
 
-The collection must contain numeric values for which series commands are created, which is why the first row containing the header is not included in the row selector. The row selector starts with the second row.
+The collection must contain numeric values for which series commands are created, which is why the first row containing the header is not included by row selection. The row selection begins with the second row.
 
 ![](../../images/example-csv-2.png)
 
