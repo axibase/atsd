@@ -6,25 +6,32 @@ The following tests estimate the amount of disk space required to store the same
 
 ## Results
 
-| **Database** | **Version** | **Schema** | **Compressed** | **Bytes per Sample** | **Test Link** |
-|:---|:---|:---|:---|---:|---|
-| **ATSD**       | **17340** | **Universal**  | **Yes** | **1.9**  | [view](atsd.md)  |
-| Microsoft SQL Server | 14.0.1000.169   | Specific   | Yes | 9.4  | [view](mssql.md) |
-| Microsoft SQL Server | 14.0.1000.169   | Specific   | No  | 19.3 | [view](mssql.md) |
-| Microsoft SQL Server | 14.0.1000.169   | Universal  | Yes | 42.9 | [view](mssql.md) |
-| Microsoft SQL Server | 14.0.1000.169   | Universal  | No  | 89.5 | [view](mssql.md) |
-| MySQL      | 5.7   | Specific   | Yes | 8.2  | [view](mysql.md) |
-| MySQL      | 5.7   | Specific   | No  | 15.6 | [view](mysql.md) |
-| MySQL      | 5.7   | Universal  | Yes | 34.5 | [view](mysql.md) |
-| MySQL      | 5.7   | Universal  | No  | 70.7 | [view](mysql.md) |
-| Oracle      | v12.2.0.1   | Specific   | Yes | 9.4  | [view](oracle.md) |
-| Oracle      | v12.2.0.1   | Specific   | No  | 13.4 | [view](oracle.md) |
-| Oracle      | v12.2.0.1   | Universal  | Yes | 39.3 | [view](oracle.md) |
-| Oracle      | v12.2.0.1   | Universal  | No  | 52.5 | [view](oracle.md) |
-| PostgreSQL | 9.6   | Specific   | No  | 21.6 | [view](postgres.md) |
-| PostgreSQL | 9.6   | Universal  | No  | 83.7 | [view](postgres.md) |
-| Vertica | 7.1.1-0   | Specific   | Yes | 2.4 | [view](vertica.md) |
-| Vertica | 7.1.1-0   | Universal  | Yes | 5.6 | [view](vertica.md) |
+### Universal Schema
+
+| **Database** | **Version** | **Compressed** | **Bytes per Sample** | **Test Link** |
+|:---|:---|:---|---:|---|
+| **ATSD**       | **17340** | ![](../../images/ok.svg) | **1.9**  | [view](atsd.md)  |
+| Microsoft SQL Server | 14.0.1000.169   | ![](../../images/ok.svg) | 42.9 | [view](mssql.md) |
+| Microsoft SQL Server | 14.0.1000.169   | :x:  | 89.5 | [view](mssql.md) |
+| MySQL      | 5.7   | ![](../../images/ok.svg) | 34.5 | [view](mysql.md) |
+| MySQL      | 5.7   | :x:  | 70.7 | [view](mysql.md) |
+| Oracle      | v12.2.0.1   | ![](../../images/ok.svg) | 39.3 | [view](oracle.md) |
+| Oracle      | v12.2.0.1   | :x:  | 52.5 | [view](oracle.md) |
+| PostgreSQL | 9.6  | :x:  | 83.7 | [view](postgres.md) |
+| Vertica | 7.1.1-0   | ![](../../images/ok.svg) | 5.6 | [view](vertica.md) |
+
+### Specific Schema
+
+| **Database** | **Version** | **Compressed** | **Bytes per Sample** | **Test Link** |
+|:---|:---|:---|---:|---|
+| Microsoft SQL Server | 14.0.1000.169   | ![](../../images/ok.svg) | 9.4  | [view](mssql.md) |
+| Microsoft SQL Server | 14.0.1000.169   | :x:  | 19.3 | [view](mssql.md) |
+| MySQL      | 5.7   |  ![](../../images/ok.svg) | 8.2  | [view](mysql.md) |
+| MySQL      | 5.7   |  :x:  | 15.6 | [view](mysql.md) |
+| Oracle      | v12.2.0.1      | ![](../../images/ok.svg) | 9.4  | [view](oracle.md) |
+| Oracle      | v12.2.0.1      | :x:  | 13.4 | [view](oracle.md) |
+| PostgreSQL | 9.6   | :x:  | 21.6 | [view](postgres.md) |
+| Vertica | 7.1.1-0   | ![](../../images/ok.svg) | 2.4 | [view](vertica.md) |
 
 ## Dataset
 
