@@ -9,7 +9,7 @@ The following tests estimate the amount of disk space required to store the same
 ### Universal Schema
 
 | **Database** | **Version** | **Compressed** | **Bytes per Sample** | **Test Link** |
-|:---|:---|:---|---:|---|
+|:---|:---|:---:|---:|---|
 | **ATSD**       | **`17340`** | ![](../../images/ok.svg) | **1.9**  | [view](atsd.md)  |
 | Microsoft SQL Server | `14.0.1000.169`   | ![](../../images/ok.svg) | 42.9 | [view](mssql.md) |
 | Microsoft SQL Server | `14.0.1000.169`   |   | 89.5 | [view](mssql.md) |
