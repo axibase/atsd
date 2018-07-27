@@ -43,11 +43,11 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 | Setting | Description |
 | --- | --- |
 |Metric |Metric name for which forecasts are calculated.|
-|Entity  |If selected, forecasts are calculated for the specified entity.<br>Supersedes **Entity Group** drop-down list.<br>If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
+|Entity  |If selected, forecasts are calculated for the specified entity.<br>Supersedes **Entity Group**.<br>If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
 |Entity Group |If selected, forecasts are calculated for entities contained in the specified entity group.|
 |Tags |Prepare forecasts only for series containing the specified series tags.|
 |End Time |End time of the **Data Selection Interval** and **Series Selection Interval**.<br>This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`.<br>If not defined, the field is set to the time the job is run.|
-|Data Selection Interval |Time frame for selecting detailed data used as forecast input.<br>Specify the end of the interval in the **End Time** field, otherwise the end of the selection interval is set to current time.|
+|Data Selection Interval |Time frame for selecting detailed data used as forecast input.<br>Specify the end of the interval in **End Time**, otherwise the end of the selection interval is set to current time.|
 |Series Selection Interval |Ignore any series with `Last Insert Time` before **End Time** by more than the specified interval.<br>Use this option to ignore series which have not been updated for a long time.|
 |Calendar |Ignore detailed values within the time intervals listed in the calendar.|
 |Empty Period Threshold |Ignore a series with a percentage of empty periods greater than the specified threshold.<br>Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|

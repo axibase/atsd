@@ -154,7 +154,7 @@ To calculate the weighted CPI for each year, the CPI value for a given category 
 
 Open the `prices_merged.sav` dataset and create the new column `categ_index`.
 
-* Open **Transform > Compute Variable...**
+* Open **Transform > Compute Variable...**.
 * Place the columns from the left into the expression editor and specify a formula.
 * Select the `price` and `weight` columns, divide `weight` by 1000 and multiply `price` by the adjusted `weight`.
 * Assign a name to the new column.
@@ -171,8 +171,8 @@ SPSS provides two alternatives to aggregate data by period.
 
 #### Aggregation using the Analyze Menu
 
-* Open **Analyze > Reports > Report Summaries in Columns...**
-* Move the `categ_index` column to the **Summary Variables** field and select the `SUM` aggregation function.
+* Open **Analyze > Reports > Report Summaries in Columns...**.
+* Move the `categ_index` column to **Summary Variables** and select the `SUM` aggregation function.
 * Set the `datetime` column as the break variable, which is used to group the resulting data. You can format aggregation columns in the dialog window.
 
 ![](./images/analysis_reports_summary.png)
@@ -218,8 +218,8 @@ metric m:cpi_price
 
   ![](./images/atsd_export_2.png)
 
-  * Enter `entity` in the **Target Variable** field.
-  * Enter `"bls.gov"` in the **Numeric Expression** field.
+  * Enter `entity` in **Target Variable**.
+  * Enter `"bls.gov"` in **Numeric Expression**.
 
 ![](./images/atsd_export_3.png)
 

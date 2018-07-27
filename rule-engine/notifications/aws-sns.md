@@ -39,7 +39,7 @@ The response status code and response content is recorded in `atsd.log` if the *
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SNS` type.
-* Fill out the **Name**, **Region**, **Access Key Id**, and **Secret Access Key** fields.
+* Fill out **Name**, **Region**, **Access Key Id**, and **Secret Access Key**.
 * Enter the **Topic ARN**. The topic address is marked as an editable field which can be customized later in the rule editor. This configuration allows publishing messages to different topics using the same webhook.
 
   ![](./images/aws_sns_config.png)

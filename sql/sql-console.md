@@ -26,7 +26,7 @@ Format Settings apply custom formatting to dates, numbers, and [`NULL`](README.m
 
 Use the **Date Format** setting to modify the `datetime` column without the [`date_format`](examples/datetime-format.md) function in the `SELECT` expression.
 
-Use the **Time Zone** drop-down list to display dates in UTC or database [time zone](../administration/timezone.md).
+Use **Time Zone** to display dates in UTC or database [time zone](../administration/timezone.md).
 
 The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed by **SQL Console** when the database is configured to Eastern Standard Time (EST):
 

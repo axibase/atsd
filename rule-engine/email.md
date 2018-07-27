@@ -53,7 +53,7 @@ Warning! Rule JVM Memory Low for server nurswgvml007 is active.
 
 ### Subject Field
 
-The **Subject** field can include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
+**Subject** can include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
 
 ![](./images/email-subject.png)
 
@@ -67,9 +67,9 @@ ${entity} received message '${abbreviate(tags.notification, 50)}'
 
 ### Text Field
 
-The **Text** field can include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
+**Text** can include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
 
-Unlike the **Subject** field, **Text** is not constrained by a length limit and supports HTML markup.
+Unlike **Subject**, **Text** is not constrained by a length limit and supports HTML markup.
 
 ```bash
 Database Error.
@@ -86,13 +86,13 @@ Top-10 running containers by CPU:
 ${addTable(executeSqlQuery(query), 'html', true)}
 ```
 
-In addition, the **Text** field can invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
+In addition, **Text** can invoke [attachment](functions-portal.md#portal-functions) functions to include portal screenshots as inline images or CSV files as attachments.
 
 ```bash
 ${addPortal('AWS Route53 Health Check Detail', aws_entity)}
 ```
 
-The **Text** field supports [control flow](control-flow.md#control-flow) syntax which allows customizing the content based on alert details.
+**Text** supports [control flow](control-flow.md#control-flow) syntax which allows customizing the content based on alert details.
 
 ```bash
 @if{tags.payload.type != 'cron'}

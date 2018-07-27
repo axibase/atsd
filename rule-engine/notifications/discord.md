@@ -75,8 +75,8 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
     ![](./images/discord_1.png)
 
-* Copy the **Webhook URL** from the Discord client into the **Webhook URL** field in the configuration form.
-* The **Webhook ID** and **Webhook Token** are filled automatically when you finish editing the **Webhook URL** field.
+* Copy the **Webhook URL** from the Discord client into **Webhook URL** in the configuration form.
+* The **Webhook ID** and **Webhook Token** are filled automatically when you finish editing **Webhook URL**.
 * Select **Test Portal** to test the screenshot.
 
     ![](./images/discord_settings.png)

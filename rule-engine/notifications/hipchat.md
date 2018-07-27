@@ -39,8 +39,8 @@
 * Click **Profile**.
 * Open **API tokens**. Ensure that you are using API **v2** to avoid a warning message from the system.
 
-* Choose **Send Message** and the **Send Notification** options from the **Scopes** field.
-* Fill in the **Label** field.
+* Choose **Send Message** and the **Send Notification** options from **Scopes**.
+* Fill in **Label**.
 * Click **Create**.
 
     ![](./images/hipchat_token.png)
@@ -89,8 +89,8 @@ In addition to the room ID, you can search by room name, for example `test-axiba
     ![](./images/hipchat_1.png)
 
 * Specify the **Endpoint URL**.
-* Copy the **Token** from the HipChat Data Center client into the **Auth Token** field of the configuration form.
-* Copy the room ID or room name from the HipChat Data Center client into the **Room ID** field in the configuration form.
+* Copy the **Token** from the HipChat Data Center client into **Auth Token** of the configuration form.
+* Copy the room ID or room name from the HipChat Data Center client into **Room ID** in the configuration form.
 * Select **Test Portal** to test the screenshot.
 
     ![](./images/hipchat_settings.png)

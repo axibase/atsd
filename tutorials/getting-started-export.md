@@ -8,7 +8,7 @@ Open **Data > Export** page.
 
 Enter parameters to download data as a CSV file or to display it in HTML format.
 
-* Enter `temperature` into the **Metric** field.
+* Enter `temperature` into the **Metric**.
 * Click **Name** and enter `br-1905` as the entity.
 * Modify the **Date Interval** to `1 Quarter` to select values for a longer timespan.
 * Select **CSV** in the **Format** section.
@@ -16,7 +16,7 @@ Enter parameters to download data as a CSV file or to display it in HTML format.
 
 ![](./resources/data_export.png)
 
-To export statistics instead of raw values, expand the **Aggregate** section and select one or multiple statistical functions from the **Statistics** drop-down list. Set the aggregation period to `1 Day`.
+To export statistics instead of raw values, expand the **Aggregate** section and select one or multiple statistical functions from **Statistics**. Set the aggregation period to `1 Day`.
 
 ![](./resources/data-export-aggregate.png)
 

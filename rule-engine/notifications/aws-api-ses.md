@@ -33,7 +33,7 @@ Modify the **Endpoint URL** by replacing the `<AWS_REGION>` value with your [Ama
 https://email.us-east-1.amazonaws.com
 ```
 
-Enter the AWS key id into the **Access Key Id** field and the secret key into the **Secret Access Key** field.
+Enter the AWS key id into **Access Key Id** and the secret key into **Secret Access Key**.
 
 Add required parameters for `SendMessage` action:
 

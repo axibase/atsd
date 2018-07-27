@@ -20,7 +20,7 @@
 | 3699     | docker          | Bug             | Eliminated duplicate container names when setting volume labels.      |
 | 3692     | UI              | Bug             | Raised an error when the job is executed manually and the storage driver is not `successful` at that time. |
 | [3685](#issue-3685)     | docker          | Feature         | Added a setting to remove deleted records from ATSD after a period of time. Containers can be removed after a certain number of days, images/volumes/networks can removed instantly. |
-| 3684     | UI              | Bug             | Added **Enable/Disable/Run** buttons on the job list page to change status or run multiple jobs at a time using check boxes.                             |
+| 3684     | UI              | Bug             | Added **Enable/Disable/Run** on the job list page to change status or run multiple jobs at a time using check boxes.                             |
 
 ### Issue 3704
 
@@ -157,7 +157,7 @@ By default such records with the status `deleted` are not automatically removed 
 
 * **Retain deleted container records, days** : containers with a `deleted` status are initially retained in ATSD for the specified time interval. The status of these containers is marked as `deleted`. After the interval has passed, the containers are permanently removed from ATSD.
 
-To remove deleted image/volume/network records, enable the **Retain deleted image/volume/network records** checkbox.
+To remove deleted image/volume/network records, enable **Retain deleted image/volume/network records**.
 
 * **Remove deleted image/volume/network records** : removes images/volumes/networks with a `deleted` status from ATSD.
 

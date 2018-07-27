@@ -16,7 +16,7 @@ Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 
 Schema-based parsers are JavaScript programs that traverse an underlying CSV file in left-right, top-down directions and convert cells into [series](https://axibase.com/docs/atsd/api/network/series.html), property, or message commands. These programs support built-in [functions](../csv-schema.md#schema-functions) which look up cells by row and column index, to validate their contents and modify their values as they assemble commands.
 
-For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** fields are mandatory. The **Schema** field contains the JavaScript program code implementing parsing logic.
+For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** are mandatory. **Schema** contains the JavaScript program code implementing parsing logic.
 
 ### Syntax
 
@@ -30,7 +30,7 @@ For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** f
 
 * To parse the dates in the CSV file, specify the timestamp column pattern using [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
 * In the example above, the pattern to read `Measurement Time` column values is `yyyy-MM-dd HH:mm`.
-* Enter timestamp pattern in the **Timestamp Format** field
+* Enter timestamp pattern in **Timestamp Format**.
 
 ### Schema Program
 

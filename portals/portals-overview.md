@@ -121,7 +121,7 @@ Sample link for a regular portal:
 https://atsd_hostname:8443/portal/4.xhtml
 ```
 
-Enabled regular portals are listed under the **Portals** link in the top menu.
+Enabled regular portals are listed under **Portals** in the top menu.
 
 ![](./resources/creating-and-assigning-portals_6.png)
 
@@ -251,4 +251,4 @@ Such request parameter values can be referenced with `${parameter_name}` placeho
 
 You can create a new theme by changing the default CSS theme files and copying the modified files to the `/opt/atsd/conf/portal/themes/` directory.
 
-Custom themes are automatically displayed in the **Themes** drop-down list in the portal editor.
+Custom themes are automatically displayed in **Themes** in the portal editor.

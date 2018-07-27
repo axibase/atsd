@@ -7,7 +7,7 @@
 5423 | rule engine | Bug | [Rule Engine](../../rule-engine/README.md): Deserialization errors for rule XML backup files with type and source filters.
 5421 | administration | Feature | Backup: Implement customizable [backup directory](../../administration/backup.md#backup-directory).
 5420 | rule engine | Feature | [Rule Engine](../../rule-engine/README.md): Increase throughput with multiple rules enabled.
-5419 | UI | Feature | UI: Apply DST offset to **Time Zone** drop-down lists.
+5419 | UI | Feature | UI: Apply DST offset to **Time Zone**.
 5413 | rule engine | Feature | Rule Engine: Implement [`toNumber`](../../rule-engine/functions-utility.md#tonumber) function for `null`-safe number parsing.
 5412 | api-rest | Feature | [Series Get](../../api/data/series/get.md) method: Implement period alignment parameter.
 5411 | message | Bug | [Message Table TTL](../../api/data/messages/delete.md#ttl) specified in `server.properties` is ignored.

@@ -10,7 +10,7 @@ Script actions execute pre-defined scripts on the ATSD server to complete advanc
 
 To configure a script action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant script `execute` permission (`u+x`) to the `axibase` user.
 
-The list of executable files is displayed in the **Script File** drop-down list on the **Scripts** tab.
+The list of executable files is displayed in **Script File** on the **Scripts** tab.
 
 ![](./images/command-drop-down.png)
 
@@ -164,7 +164,7 @@ Only **one** script can be executed for each trigger. If you need to execute mul
 
 The script must complete within the specified timeout. The default timeout is set with the `system.commands.timeout.seconds` property on the **Settings > Server Properties** page. The limit is **15 seconds** by default.
 
-To customize the timeout for scripts invoked by this rule, adjust the **Timeout, seconds** drop-down list on the **Scripts** tab. The limit applies both to named scripts as well as to scripts launched with the [`scriptOut`](functions-script.md) function.
+To customize the timeout for scripts invoked by this rule, adjust **Timeout, seconds** on the **Scripts** tab. The limit applies both to named scripts as well as to scripts launched with the [`scriptOut`](functions-script.md) function.
 
 ![](./images/script-timeout.png)
 
@@ -256,7 +256,7 @@ cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && \
 sudo chmod +x /opt/atsd/atsd/conf/script/disk_cleanup.sh
 ```
 
-* The script is now displayed in the **Script File** drop-down list, and the content is visible on the **Show Script** page.
+* The script is now displayed in **Script File**, and the content is visible on the **Show Script** page.
 
 ![](./images/command-tacmd.png)
 

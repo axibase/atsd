@@ -56,7 +56,7 @@ Choose **Send me an SMS**.
 
 ![](./images/ifttt_applet_12.png)
 
-Enter following text into **Message** field and click **Create action**.
+Enter the following text into **Message** and click **Create action**.
 
 ```ls
 [{{Value1}}] {{Value2}} for {{Value3}}

@@ -14,7 +14,7 @@ Click **Create**.
 
 Specify a portal name.
 
-Set portal to **Regular** in the **Type** drop-down.
+Select **Regular** in the portal **Type**.
 
 Copy the following configuration text into the **Content** area.
 

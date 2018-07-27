@@ -12,7 +12,7 @@ To view existing templates or create a new template, open the **Settings > Tag T
 
 To modify an existing tag template, click the link in the **Name** column. To create a new tag template, expand the split-button and select **Create**.
 
-A template can also be created from existing tags by clicking the **Create Tag Template** link on a metric or **Entity Editor** page.
+A template can also be created from existing tags by clicking **Create Tag Template** on a metric or **Entity Editor** page.
 
 ![](./images/tag-templates-create.png)
 
@@ -24,7 +24,7 @@ The editor contains the following options which are applicable both to entity an
 ---|---
 Type | Defines whether the template applies to metrics or entities.
 Name | User-defined template name.
-Enabled | Determines if the tag template is visible in **Entity Editor** and displayed in the **Tag Set** drop-down list on the **Entities** page.
+Enabled | Determines if the tag template is visible in **Entity Editor** and displayed in **Tag Set** on the **Entities** page.
 Expression | Boolean check against the entity name and tags. If the expression returns `true`, the tags managed by this template are displayed in the **Entity Editor** for the given entity.
 Tag Set Name | Display name for the group of tags managed by this template.
 Display Index | Controls the order in which tag templates are listed on the **Entities** page and in the entity editor.

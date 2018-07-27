@@ -77,8 +77,8 @@ Description of resultset:
 
 * Follow the path **File > Export > ODBC** data source.
 * Click the ATSD connection in **ODBC data sources**.
-* Type the table name into **Tables** field. This is the metric name holding the exported data.
-* Choose the variables to export in the **Variables** drop-down list.
+* Type the table name into **Tables**. This is the metric name holding the exported data.
+* Choose the variables to export in **Variables**.
 * Type column names from the target metric according to variables selected in the previous step.
 * Choose **Append data into existing table** in **Insertion options**.
 * Check **Use block inserts** option.

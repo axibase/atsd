@@ -28,11 +28,11 @@ The database has various interfaces for writing data, including API clients, CSV
 
 Open the **Series** tab.
 
-Enter `br-1905` into the **Entity** field. As a universal database, ATSD uses `entity` as a generic term to refer to the monitored object. In this particular case, `entity` means `Device`.
+Enter `br-1905` into **Entity**. As a universal database, ATSD uses `entity` as a generic term to refer to the monitored object. In this particular case, `entity` means `Device`.
 
 Enter `temperature` as the metric name.
 
-Enter a number into the  **Time/Value** field and click **Send**. Do not enter a value for time, the database sets the value as the current time when **Time** field is left blank.
+Enter a number into **Time/Value** and click **Send**. Do not enter a value for time, the database sets the value as the current time when **Time** is left blank.
 
 ![](./resources/data_entry_series.png)
 
@@ -42,7 +42,7 @@ A sample product temperature chart looks as follows:
 
 ![](./resources/temperature-sample.png)
 
-Continue entering numbers into the **Value** field and clicking **Send**, for example `20`, `22`, `30`, `22`. These records are now stored in the database as a series containing multiple `time:value` observations.
+Continue entering numbers into the **Value** and clicking **Send**, for example `20`, `22`, `30`, `22`. These records are now stored in the database as a series containing multiple `time:value` observations.
 
 ## View Statistics
 

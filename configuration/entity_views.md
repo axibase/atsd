@@ -192,7 +192,7 @@ tags['configuration::codename'] = 'Santiago'
 
 If **Split Table by Column** is specified, the entities are grouped into multiple tables.
 
-The **Split Table by Column** field accepts an existing column header or its value.
+**Split Table by Column** accepts an existing column header or its value.
 
 ### Split Examples
 
@@ -210,13 +210,13 @@ The entity view without table splitting is displayed as follows, with all entiti
 
 ![](./images/entity-view-split-empty.png)
 
-To split the table by entity tag `location`, specify the tag name in the **Split Table by Column** field:
+To split the table by entity tag `location`, specify the tag name in **Split Table by Column**:
 
 ![](./images/entity_views_2.png)
 
 ![](./images/entity-view-split-location.png)
 
-To group entities by column **header**, set the header name in the **Split Table by Column** field:
+To group entities by column **header**, set the header name in **Split Table by Column**:
 
 ![](./images/entity_views_3.png)
 
@@ -230,7 +230,7 @@ If splitting by column **header** is enabled, grouping is performed based on for
 
 ## Portal
 
-If the **Multi-Entity Portal** is assigned manually or the entity view contains **Series Value** [columns](#column-types), the statistics for entities can be viewed on a portal accessible with the **View Portal** button.
+If the **Multi-Entity Portal** is assigned manually or the entity view contains **Series Value** [columns](#column-types), the statistics for entities can be viewed on a portal accessible with **View Portal**.
 
 ![](./images/entity_views_6.png)
 

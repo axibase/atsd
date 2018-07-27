@@ -16,15 +16,15 @@ elapsed_minutes(last_open().timestamp) > 60
 
 ## Logging to Files
 
-Logging to files or remote systems via TCP loggers can be enabled for each rule separately by selecting one of the pre-configured loggers in the **File Logger** drop-down list.
+Logging to files or remote systems via TCP loggers can be enabled for each rule separately by selecting one of the pre-configured loggers in **File Logger**.
 
 Loggers can be added and modified by administrators on the **Settings > Configuration Files** page.
 
-Open the `logback.xml` for editing, create a new logger and save changes. Once the `logback.xml` file is re-scanned, the new logger is displayed in the **Alert Logger** drop-down list.
+Open the `logback.xml` for editing, create a new logger and save changes. Once the `logback.xml` file is re-scanned, the new logger is displayed in **Alert Logger**.
 
 ![](./images/logging-loggers.png)
 
-File logging is disabled by default. To enable file logging, select one of the loggers in the **Log to File** drop-down list, customize the message text, and enable the`On Open`, `On Repeat`, and `On Cancel` triggers.
+File logging is disabled by default. To enable file logging, select one of the loggers in **Log to File**, customize the message text, and enable the`On Open`, `On Repeat`, and `On Cancel` triggers.
 
 ## Default File Logger
 
