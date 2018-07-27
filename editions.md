@@ -10,7 +10,7 @@ Enterprise Edition supports a scale-out deployment model.
 |---|:---:|:---:|
 | [Compression](./administration/compaction/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Portal Server](./portals/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| [Charts Library](https://axibase.com/products/axibase-time-series-database/visualization/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Charts Library](https://github.com/axibase/charts/blob/master/README.md#axibase-charts) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Rule Engine](./rule-engine/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Email Alerts](./rule-engine/email.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Slack/TG/HipChat Webhooks](./rule-engine/notifications/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |

@@ -261,7 +261,7 @@ As a result, the query triggers actions only when it returns at least one row.
 
 ### Open Alerts
 
-Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrieved with [`/alert/query`](../api/data/alerts/README.md) Data API query and incorporated into portals using the [console](https://axibase.com/products/axibase-time-series-database/visualization/widgets/alert-console-widget/) widget.
+Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrieved with [`/alert/query`](../api/data/alerts/README.md) Data API query and incorporated into portals using the [console](https://github.com/axibase/charts/blob/master/widgets/alert-console/README.md) widget.
 
 ![](./images/open-alerts.png)
 

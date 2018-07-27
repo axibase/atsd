@@ -2,7 +2,7 @@
 
 ## Create a Portal
 
-A [portal](../portals/README.md) is a collection of [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) displayed on one page.
+A [portal](../portals/README.md) is a collection of [widgets](https://github.com/axibase/charts/blob/master/widgets/README.md) displayed on one page.
 
 The portal can be defined as a `template` portal to display data for a specific entity, passed as a parameter. The portal can also be `regular`, in which case the entity is defined in the configuration text by the user. This article creates a **regular** portal for `br-1905` entity.
 
@@ -42,7 +42,7 @@ Copy the following configuration text into the **Content** area.
       metric = temperature
 ```
 
-The above portal contains two widgets: a 24-hour linear [time chart](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) and a [gauge](https://axibase.com/products/axibase-time-series-database/visualization/widgets/gauge-chart/) showing the last value.
+The above portal contains two widgets: a 24-hour linear [time chart](https://github.com/axibase/charts/blob/master/widgets/time-chart/README.md) and a [gauge](https://github.com/axibase/charts/blob/master/widgets/gauge-chart/README.md) showing the last value.
 
 Click **Save**.
 
@@ -72,11 +72,11 @@ Reload the portal to view the new chart.
 
 Start the [bash loop](./getting-started-insert.md#send-values-continuously) and observe how new data points appear in the portal.
 
-Review the [Selecting Series Overview](../portals/selecting-series.md) and the [Charts Reference](https://axibase.com/products/axibase-time-series-database/visualization/) for more layout examples.
+Review the [Selecting Series Overview](../portals/selecting-series.md) and the [Charts Reference](https://github.com/axibase/charts/blob/master/README.md) for more layout examples.
 
 ## Metadata
 
-The Charts library provides settings and functions to [add metadata](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/) to charts to eliminate manual tagging and labeling.
+The Charts library provides settings and functions to [add metadata](https://github.com/axibase/charts/blob/master/configuration/meta-data.md) to charts to eliminate manual tagging and labeling.
 
 Add the following settings at the `[configuration]` level to automatically embed entity and metric metadata into series legend.
 

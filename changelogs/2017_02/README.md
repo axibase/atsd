@@ -27,8 +27,8 @@
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3481](#issue-3481) | widget-settings | Feature | Implemented a JavaScript replacement for the Freemarker `getSeries` method. |
-| [3078](#issue-3078) | widget-settings | Feature | Added support for new series settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/). |
-| [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) to prevent collision.|
+| [3078](#issue-3078) | widget-settings | Feature | Added support for new series settings [`exact-match`](https://github.com/axibase/charts/blob/master/widgets/shared/README.md) and [`interpolate-extend`](https://github.com/axibase/charts/blob/master/widgets/shared/README.md). |
+| [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://github.com/axibase/charts/blob/master/widgets/shared/README.md) to prevent collision.|
 
 ### Issue 3773
 
@@ -180,7 +180,7 @@ getSeries( metric, [, entity, [ , minInsertDate [ , maxInsertDate [ , url ] ] ] 
 
 ### Issue 3078
 
-Added new series query settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/).
+Added new series query settings [`exact-match`](https://github.com/axibase/charts/blob/master/widgets/shared/README.md) and [`interpolate-extend`](https://github.com/axibase/charts/blob/master/widgets/shared/README.md).
 
 The `exact-match` setting selects series with exactly the same `tags` as requested, with the default set to `false`.
 
@@ -190,7 +190,7 @@ The `interpolate-extend` setting adds missing periods at the beginning and the e
 
 ### Issue 2928
 
-To prevent naming collision, the `interpolate` setting renamed to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/), which is an interpolation mode applied to computed series in case the values are irregularly spaced.
+To prevent naming collision, the `interpolate` setting renamed to [`fill-value`](https://github.com/axibase/charts/blob/master/widgets/time-chart/README.md), which is an interpolation mode applied to computed series in case the values are irregularly spaced.
 If set to `true`, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the
 previous and preceding values.
 

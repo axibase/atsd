@@ -88,9 +88,9 @@ Review the following guides describing the basic syntax:
 
 * [Portal Settings](portal-settings.md)
 
-* [Generic Widget Settings](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/)
+* [Shared Widget Syntax](https://github.com/axibase/charts/blob/master/widgets/shared/README.md)
 
-* [Widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
+* [Widgets](https://github.com/axibase/charts/blob/master/widgets/README.md#widgets)
 
 ## Portals Page
 
