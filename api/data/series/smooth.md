@@ -2,7 +2,7 @@
 
 ## Overview
 
-Smoothing leaves out noise from original time series. This transformation averages values of the  input series grouped into window sliding along series.
+Smoothing leaves out noise from time series. This transformation averages values of the series grouped into a rolling window.
 
 ### Basic Example
 
@@ -13,14 +13,14 @@ Smoothing leaves out noise from original time series. This transformation averag
 }
 ```
 
-In this example the moving average smoothing of the original series is performed over 1-hour sliding window.
+This example performs moving average smoothing with 1-hour sliding window.
 
 ## Parameters
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `type` | string | [**Required**] Smoothing function. Available functions: `AVG`. |
-| `count` | number | [**Required if the `interval` is not specified**] Sliding window size measured as number of series samples within the window. |
+| `count` | number | [**Required if the `interval` is not specified**] Number of series samples within regular window. |
 | `interval` | object | [**Required if the `count` is not specified**] Sliding window duration specified as count and time unit. |
 | `minimalCount` | number | Threshold which triggers calculation of the smoothing function for a window. View the [processing](#processing) section for details. <br> Default: `0` if the `interval` parameter is specified, and equals to value of the `count` otherwise. |
 | `order` | integer | Controls the order of smoothing in the sequence of other series [transformations](./query.md#transformations).<br>Default: `0`.|
@@ -30,30 +30,30 @@ In this example the moving average smoothing of the original series is performed
 ## Processing
 
 The samples in the input series are processed sequentially in ascending time order.
-A set of consecutive series samples is maintained during processing. This set is called **sliding window** or **window** for short. Initially the window is empty. For each series sample the following steps are executed in order:
+A set of consecutive samples is maintained during processing. This set is called **sliding window** or **window** for short. Initially the window is empty. For each series sample the following steps are executed in order:
 
-* Decide if the window has enough samples to calculate smoothing function. [Time based](#time-based-window) and [count based](#count-based-window) windows make their decisions differently.
+* Decide if the window has enough samples to calculate smoothing function. [Time based](#time-based-window) and [count based](#count-based-window) windows make this decision differently.
 * Set `v` equal either to the value of smoothing function over the window, or to the `NaN` (not a number) depends on decision made on previous step.
 * Write out the sample `(t, v)` to the output series, where `t` is timestamp of the latest sample in the window.
 * Add the current sample to the window.
 * If window is overflown, then remove necessary number of oldest samples from the window. Again [time based](#time-based-window) and [count based](#count-based-window) windows have their own sense of overflow.
 
-When series ends one more sample is written to the resulting series. Timestamp of this sample is the last timestamp of the last window. If number of samples in the last window exceeds the `minimalCount` threshold, then sample's value is the value of the smoothing function over the window. Othrevise sample's value is `NaN`.
+After all series samples are processed write one more sample into resulting series. The sample timestamp is the last timestamp of the last window. If number of samples in the window exceeds `minimalCount`, then value is average over the window. Othrevise value is `NaN`.
 
 ## Time based window
 
-Time based window is specified by the `interval` setting.
+The `interval` setting specifies time based window.
 Denote:
 
-* `u` - the first sample in the window.
-* `v` - the last sample in the window.
-* `w` - the first sample after the window.
+* `u` - first sample in the window.
+* `v` - last sample in the window.
+* `w` - first sample after the window.
 * `n` - number of samples in the window.
 
-The smoothing function is calculated for the window if `w - u > interval && n > minimalCount`.
+Smoothing function is calculated for the window if `w - u > interval && n > minimalCount`.
 The window is overflown if `v - u > interval`.
 
 ## Count based window
 
-This type of window is used if the `count` parameter is provided.
-If number of samples in the window exceeds `minimalCount` then smoothing function is calculated for the window. If the number of samples is more than `count` then the window is overflown.
+The `count` parameter determines this type of window.
+If number of samples in the window exceeds `minimalCount` then smoothing function is calculated for the window. If the number of samples is more than `count` then the window considered as overflown.
