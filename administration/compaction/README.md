@@ -23,7 +23,7 @@ The following tests estimate the amount of disk space required to store the same
 ### Specific Schema
 
 | **Database** | **Version** | **Compressed** | **Bytes per Sample** | **Test Link** |
-|:---|:---|:---|---:|---|
+|:---|:---|:---:|---:|---|
 | Microsoft SQL Server | `14.0.1000.169`   | ![](../../images/ok.svg) | 9.4  | [view](mssql.md) |
 | Microsoft SQL Server | `14.0.1000.169`   |   | 19.3 | [view](mssql.md) |
 | MySQL      | `5.7`   |  ![](../../images/ok.svg) | 8.2  | [view](mysql.md) |
