@@ -6,7 +6,7 @@ The following tests estimate the amount of disk space required to store the same
 
 ## Results
 
-### Universal Schema
+### Universal Table Schema
 
 | **Database** | **Version** | **Compressed** | **Bytes per Sample** | **Test Link** |
 |:---|:---|:---:|---:|---|
@@ -20,7 +20,7 @@ The following tests estimate the amount of disk space required to store the same
 | PostgreSQL | `9.6`  |   | 83.7 | [view](postgres.md) |
 | Vertica | `7.1.1-0`   | ![](../../images/ok.svg) | 5.6 | [view](vertica.md) |
 
-### Specific Schema
+### Specific Table Schema
 
 | **Database** | **Version** | **Compressed** | **Bytes per Sample** | **Test Link** |
 |:---|:---|:---:|---:|---|
@@ -35,7 +35,7 @@ The following tests estimate the amount of disk space required to store the same
 
 ## Dataset
 
-The dataset represents 20+ years of historical stock trade data with minute- granularity available from the [Kibot](http://www.kibot.com/buy.aspx) company.
+The dataset represents 20+ years of historical stock trade data with 1-minute OHLC (open-high-low-close) bars available from the [Kibot](http://www.kibot.com/buy.aspx) company.
 
 Minutely trade statistics are available for IBM stock traded on the New York Stock Exchange. Recording begins on February 1st, 1998 and continues until the most recent trading day.
 
@@ -67,13 +67,13 @@ volume = 10031
 
 ## Schema Alternatives
 
-The tests are performed using two schema options:
+The disk space usage tests are performed using two schema options:
 
 ### Specific Table
 
-The **Specific Table** schema uses a named column for each metric.
+The **Specific Table** schema creates a **named** column for each metric.
 
-With this option, the table is configured to store a fixed set of metrics for the given entity type. A separate table is required for each type of entity.
+With this option, the table is designed to store a fixed set of columns (metrics) for the given entity type. A separate table is required for each type of entity.
 
 **Example**: IBM Tivoli Data Warehouse
 
@@ -81,9 +81,9 @@ With this option, the table is configured to store a fixed set of metrics for th
 
 ### Universal Table
 
-The **Universal Table** schema uses a **Metric ID** column to reference the metric defined in a separate dictionary or lookup table.
+The **Universal Table** schema uses a **Metric ID** column to reference the metric defined in a separate lookup table.
 
-This option supports the addition of new metrics without alteration of the data table itself.
+This option supports the addition of new metrics without altering the data table itself.
 
 **Example**: Microsoft System Center Operations Manager Data Warehouse
 
