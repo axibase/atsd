@@ -68,7 +68,7 @@ https://username:password@atsd_hostname:8443/api/v1/messages/webhook/slack?comma
 
   > The receiving ATSD server (or the intermediate reverse proxy) must be externally accessible on the DNS name and have a valid CA-signed [SSL certificate](../../administration/ssl-ca-signed.md) installed. Self-signed certificates are **not supported** by Slack at this time.
 
-* Enter the above URL into the **Request URL** field.
+* Enter the above URL into **Request URL**.
 
    **Verified** status is displayed if the request evaluates correctly.
 

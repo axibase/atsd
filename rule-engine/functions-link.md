@@ -114,7 +114,7 @@ Returns the URL to the **CSV** file with historical statistics for the current m
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as **CSV Export** link in inline mode.
+Displayed as **CSV Export** in inline mode.
 
 > Available only in rules with `Series` data type.
 
@@ -128,7 +128,7 @@ Returns the URL to the **Data > Export** page for the current metric, entity, an
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as **HTML Export** link in inline mode.
+Displayed as **HTML Export** in inline mode.
 
 > Available only in rules with `Series` data type.
 
@@ -142,7 +142,7 @@ Returns the URL to the default portal for the current metric, entity, and tags.
 
 Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as **Default** link in inline mode.
+Displayed as **Default** in inline mode.
 
 > Available only for rules with `Series` data type.
 

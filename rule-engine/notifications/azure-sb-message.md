@@ -25,7 +25,7 @@ Enter a name and specify the following parameters:
 | Path Parameters | `timeout=60` |
 | Message | `<MESSAGE_TEXT>`|
 
-Enter the Azure key name into the **Key Name** field and the primary key into the **Primary Key** field.
+Enter the Azure key name into **Key Name** and the primary key into **Primary Key**.
 
 Modify the **Service Bus Namespace** by replacing the `<SERVICE_BUS_NAMESPACE>` value with your namespace, for example:
 

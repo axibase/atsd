@@ -7,7 +7,7 @@
 | 4287 | UI | Bug | Enable syntax highlighting for extended SQL keywords. |
 | 4282 | UI | Bug | Statistics page link does not generate a valid SQL query for metrics with tags. |
 | 4275 | security | Bug | Enforce logout for the deleted user .|
-| [4273](#issue-4273) | UI | Bug | User Interface **More** link drop-down replaced with icons. |
+| [4273](#issue-4273) | UI | Bug | User Interface **More** replaced with icons. |
 | 4268 | core | Support | Java 8 startup validation added. |
 | 4262 | UI | Bug | Support for [calendar](../../shared/calendar.md) expressions added to Rule Editor > Test tab. |
 | 4260 | sql | Bug | Corrected [`ROUND`](../../sql/README.md#mathematical-functions) function error with [`NaN`](../../sql/README.md#not-a-number-nan) values.|

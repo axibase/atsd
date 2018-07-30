@@ -143,7 +143,7 @@ property('config::deleted')).dayOfWeek().get() < 6
 
 ### Issue 3680
 
-The series list now includes a **Statistics** link to characterize the selected series.
+The series list now includes **Statistics** to characterize the selected series.
 
 The following characteristics are available.
 
@@ -163,13 +163,12 @@ The following characteristics are available.
 
   ![Figure 4](./Images/Figure4.png)
 
-* Value Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify the **Min Value**, **Max Value**, and **Interval Count** fields,
+* Value Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify **Min Value**, **Max Value**, and **Interval Count**,
   and then click **Submit**.
 
   ![Figure 5](./Images/Figure5.png)
 
-* Interval Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify the **Min Value**, **Max Value**, and **Interval Count**
-  fields, and then click **Submit**.
+* Interval Histogram: provides a breakdown of the distribution of the values within the specified series. You need to specify **Min Value**, **Max Value**, and **Interval Count**, and then click **Submit**.
 
   ![Figure 6](./Images/Figure6.png)
 

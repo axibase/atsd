@@ -9,14 +9,14 @@
 | 3816 | UI          | Bug     | Fixed ordering of timestamps on the Interval tab on the **Series Statistics** page. Intervals smaller than the median minus standard deviation are now not displayed. |
 | 3813 | UI          | Bug     | Fixed `series not found` issue when displaying series with multiple tags on the **Series Statistics** page. |
 | 3808 | metric      | Bug     | Corrected a defect where an incorrect `NaN` count is shown on the **Series Statistics** page. |
-| [3742](#issue-3742) | UI          | Feature | Added a **Text Column** button to the UI Export form. |
+| [3742](#issue-3742) | UI          | Feature | Added **Text Column** to the UI Export form. |
 
 ## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3823 | socrata     | Bug     | Added a record to the **Statistics Detail** page to display tasks with active downloads. |
-| 3821 | socrata     | Bug     | Added **Add Row Number** field to add an additional metric with the name `{prefix}row_number` added to `series` commands in case the data row does not contain any numeric columns. |
+| 3821 | socrata     | Bug     | Added **Add Row Number** to add an additional metric with the name `{prefix}row_number` added to `series` commands in case the data row does not contain any numeric columns. |
 | 3820 | docker      | Bug     | Fixed missing `path` entity tag for volumes. |
 | 3819 | docker      | Feature     | Updated to construct volume label from the container label instead of the container name. |
 | [3818](#issue-3818) | socrata     | Feature | In `Test` mode, added a table displaying columns from the metadata section. |
@@ -34,7 +34,7 @@
 
 ### Issue 3742
 
-Added **Text Column** button to the export form. By enabling this button, a text column is displayed for data exported in CSV and HTML formats.
+Added **Text Column** to the export form. By enabling this button, a text column is displayed for data exported in CSV and HTML formats.
 
 Now, a [text value](../../api/network/series.md#series-tags-text-value-messages) can be used to annotate a numeric observation without changing the series primary key. See
 [Issue 3480](../../changelogs/2017_02/README.md#issue-3480) for more information.

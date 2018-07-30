@@ -44,14 +44,14 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ### Configure Connection Properties
 
-* Enter JDBC URL into the **Custom Connection URL** field where `atsd_hostname` is the hostname of the ATSD database instance:
+* Enter JDBC URL into **Custom Connection URL** where `atsd_hostname` is the hostname of the ATSD database instance:
 
   `jdbc:atsd://atsd_hostname:8443;tables=inflation%`
 
 > `tables` is an optional metric name filter. Review ATSD JDBC [URL parameters](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) for additional details.
 
-* Set **Custom Driver Class Name** field to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
-* Enter ATSD account credentials in the **User Name** and **Password** fields.
+* Set **Custom Driver Class Name** to `com.axibase.tsd.driver.jdbc.AtsdDriver`.
+* Enter ATSD account credentials in **User Name** and **Password**.
 * Set **Connection Name** to `ATSD Connection`.
 
 ![](./resources/atsd_connection.png)
@@ -60,8 +60,8 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ## View Schema
 
-* Edit **Custom Connection URL** field in ATSD Connection properties.
-* Modify the `tables` parameter in the **Custom Connection URL** field. The parameter is a list of comma-separated metrics or metric expressions to be displayed as tables in the Database Browser.
+* Edit **Custom Connection URL** in ATSD Connection properties.
+* Modify the `tables` parameter in **Custom Connection URL**. The parameter is a list of comma-separated metrics or metric expressions to be displayed as tables in the Database Browser.
 
 Filter examples:
 
@@ -124,7 +124,7 @@ Since the `Weights` are available for only one year, assume that the category we
 * Open the **Design** pane.
 * Locate **Join Rows (cartesian product)** in **Joins** category.
 * Drag and drop it to the **Transformation** pane.
-* Connect your **Join Rows (cartesian product)** with **`Datetimes`** and **Weights** using **Input Connection** button. That button is displayed upon mouseover of **Join Rows** or any item inside the **Transformation** pane.
+* Connect your **Join Rows (cartesian product)** with **`Datetimes`** and **Weights** using **Input Connection**. That button is displayed upon mouseover of **Join Rows** or any item inside the **Transformation** pane.
 
 ![](./resources/connections.png)
 

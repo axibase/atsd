@@ -8,7 +8,7 @@
 | 4693 | installation | Bug | Fix failing HBase shell tests by increasing a timeout for the last test. |
 | 4692 | rule-engine| Bug | Import of an existing rule with a webhook breaks the current rule with the same name. |
 | [4687](#issue-4687) | api-rest | Feature | Added support for wildcards when requesting metric/entity tags. |
-| [4686](#issue-4686) |UI| Feature | Tag templates: added support for **Entity Link** field type. |
+| [4686](#issue-4686) |UI| Feature | Tag templates: added support for **Entity Link** type. |
 | 4685 | core | Bug | Entity group built with the `hasMetric(name, hours)` function is empty after the scheduled update. |
 | [4684](#issue-4684) |UI| Feature | Entity group editor refactored. |
 | 4665 | client | Feature | [Python API client](https://github.com/axibase/atsd-api-python) models and utility classes refactored. |
@@ -42,7 +42,7 @@ The `tags` parameter in [Entity Group: Get Entities](../../api/meta/entity-group
 
 ### Issue 4686
 
-The **Entity Link** field resolves the tag value to an entity and displays a link the entity editor. The tooltip displays the entity label, if available.
+**Entity Link** resolves the tag value to an entity and displays a link the entity editor. The tooltip displays the entity label, if available.
 
 ![](./Images/entity-link.png)
 

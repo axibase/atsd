@@ -33,7 +33,7 @@ Modify the **Endpoint URL** by replacing the `<AWS_REGION>` value with the targe
 https://batch.us-east-1.amazonaws.com/v1/submitjob
 ```
 
-Enter the AWS key id into the **Access Key Id** field and the secret key into the **Secret Access Key** field.
+Enter the AWS key id into **Access Key Id** and the secret key into **Secret Access Key**.
 
 Modify the `Body` by replacing the `<JSON_CONTENT>` value with actual values, for example:
 

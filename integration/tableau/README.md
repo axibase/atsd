@@ -23,24 +23,24 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 
 ### Install Tableau
 
-* Install [Tableau Desktop 10.4](https://www.tableau.com/support/releases)
-* Copy [`ATSD.tdc`](./resources/ATSD.tdc) to the **Tableau Repository**. On Windows the repository is located in the `C:\Users\{username}\Documents\My Tableau Repository\Datasources` directory
+* Install [Tableau Desktop 10.4](https://www.tableau.com/support/releases).
+* Copy [`ATSD.tdc`](./resources/ATSD.tdc) to the **Tableau Repository**. On Windows the repository is located in the `C:\Users\{username}\Documents\My Tableau Repository\Datasources` directory.
 
 ### Install ODBC-JDBC Bridge
 
-* Install [ODBC-JDBC gateway](../odbc/README.md)
-* Ensure that the **Strip Escape** checkbox is enabled and **Strip Quote** is **disabled**
+* Install [ODBC-JDBC gateway](../odbc/README.md).
+* Ensure that **Strip Escape** is enabled and **Strip Quote** is **disabled**.
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
 
 ## Configure Connection
 
-* Launch Tableau
-* Select **Connect > To a Server > Other Databases(ODBC)**
-* Select the ATSD DSN from the drop-down list. This is the DSN you specified during ODBC-JDBC bridge setup
-* Click **Connect** and wait a few seconds
-* Leave the **Server**,**Port**, **Database** and **String Extras** fields empty
-* Click **Sign In**
+* Launch Tableau.
+* Select **Connect > To a Server > Other Databases(ODBC)**.
+* Select the ATSD DSN from the drop-down list. This is the DSN you specified during ODBC-JDBC bridge setup.
+* Click **Connect** and wait a few seconds.
+* Leave **Server**,**Port**, **Database** and **String Extras** empty.
+* Click **Sign In**.
 
 ![](./images/configure_connection.png)
 
@@ -50,17 +50,17 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 ![](./images/search.png)
 
-* Drag-and-drop the table to Canvas area
+* Drag-and-drop the table to Canvas area.
 * Click **Update Now**.
 
 ![](./images/update_now1.png)
 
 ## Visualization
 
-* Click **Sheet 1**
-* Click **OK** to acknowledge the warning about limitations
-* Set `Datetime` to the columns field
-* Set `Value` to the rows field
+* Click **Sheet 1**.
+* Click **OK** to acknowledge the warning about limitations.
+* Set `Datetime` to the columns field.
+* Set `Value` to the rows field.
 
 > Since `time` and `datetime` represent the same recorded time as different data types (long and timestamp), select only one of the columns in your queries.
 
@@ -68,8 +68,8 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 Inspect a subset of the visualized data:
 
-* Select some data points in the view
-* Right-click and choose **View Data**
+* Select some data points in the view.
+* Right-click and choose **View Data**.
 
 ![](./images/summary1.png)
 

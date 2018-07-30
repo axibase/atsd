@@ -24,7 +24,7 @@ Settings > System Information, table headers added to web interface:
 
 ![4163.2](./Images/4163.2.png)
 
-Portals tab, **View** button allows viewing of the Portal during configuration.
+Portals tab, **View** allows viewing of the Portal during configuration.
 
 ![4163.3](./Images/4163.3.1.png)
 

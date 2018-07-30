@@ -44,8 +44,8 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Name  |  Export job name.  |
 |  Data Type  |  Type of data exported.<br>Allowed values: `History`, `Forecast`.  |
 |  Metric  |  Metric name for which data is exported. Data can be exported for one metric at a time.  |
-|  Entity  |  If selected, exported data is limited to the specified entity. Supersedes the **Entity Group** field.  |
-|  Entity Group  |  If selected, exported data is limited to entities contained in the specified entity group. Supersedes **Entity Expression** field.  |
+|  Entity  |  If selected, exported data is limited to the specified entity. Supersedes **Entity Group**.  |
+|  Entity Group  |  If selected, exported data is limited to entities contained in the specified entity group. Supersedes **Entity Expression**.  |
 |  Entity Expression  |  An expression to filter selected data by entity name and entity tags. For example: `name LIKE 'nur*' AND tags.environment = 'prod'`  |
 |  Value Filter  |  Expression to fetch only detailed samples that satisfy a condition. For example, `value != 0`. Value Filter is applied before aggregation and therefore impacts aggregated statistics values. To filter deleted values, use the `Double.isNaN(value)` syntax.  |
 |  Selection Interval  |  Time frame of exported data. End of the Selection Interval can be optionally specified in End Time field. By default End Time is set to current time. Selection Interval setting is ignored if both Start Time and End Time fields are set.  |

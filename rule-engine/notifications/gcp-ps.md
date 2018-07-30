@@ -30,8 +30,8 @@ The response status code and response content is recorded in `atsd.log` if the *
 
 * Open **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `GCP-PS` type.
-* Fill out the **Name** field.
-* Enter the **Project ID**, **Topic**, **Service Account** and select **Private Key Alias**.
+* Fill out **Name**.
+* Enter **Project ID**, **Topic**, **Service Account** and select **Private Key Alias**.
 
   ![](./images/gcp_ps_config.png)
 

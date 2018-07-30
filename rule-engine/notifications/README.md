@@ -84,7 +84,7 @@ Open **Alerts > Rules** page.
 
 Select a rule by name, open the **Webhooks** tab in the rule editor.
 
-Choose one of the webhooks from the **Endpoint** drop-down list.
+Choose one of the webhooks from **Endpoint**.
 
 Configure when to execute the webhook by enabling triggers for `Open`, `Repeat`, and `Cancel` events.
 

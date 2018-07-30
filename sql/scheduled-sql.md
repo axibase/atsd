@@ -62,7 +62,7 @@ Specify the absolute path including the file name.
 If the parent directory in the specified path does not exist, the directory is created automatically.
 The file extension must match the export format. For example, if the format is `EXCEL` the Output Path must end with `.xlsx`.
 
-The **Output Path** field can contain date and form [placeholders](#placeholders) to organize files or their parent directories by day or month.
+**Output Path** can contain date and form [placeholders](#placeholders) to organize files or their parent directories by day or month.
 
 Example: `/path/to/report-dir/daily/${yyyy-MM-dd}.csv`
 
@@ -72,7 +72,7 @@ The above expression evaluates to the following path `/path/to/report-dir/daily/
 
 To distribute report files via email, enable the **Export** section, specify an email subject and one or multiple email addresses, separated by comma or space.
 
-The **Email Subject** field supports date and form [placeholders](#placeholders), for example `${name} on ${yyyy-MM-dd}`.
+**Email Subject** supports date and form [placeholders](#placeholders), for example `${name} on ${yyyy-MM-dd}`.
 
 ![File](./images/sql-scheduled-email-send.png)
 
@@ -111,7 +111,7 @@ To make links accessible for unauthenticated users, enable the **Guest Access** 
 
 ### Placeholders
 
-Placeholders can be included in the **Output Path** and **Email Subject** fields.
+Placeholders can be included in **Output Path** and **Email Subject**.
 
 #### Date placeholder
 

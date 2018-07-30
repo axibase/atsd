@@ -80,8 +80,8 @@ There are two options to obtain chat id:
 
     ![](./images/telegram_2.png)
 
-* Enter the `BOT_TOKEN` value into the **Bot API Token** field.
-* Enter the chat id into the **Chat ID** field.
+* Enter the `BOT_TOKEN` value into **Bot API Token**.
+* Enter the chat id into **Chat ID**.
 * Select **Test Portal** to verify screenshot delivery.
 
   ![](./images/telegram_12.png)

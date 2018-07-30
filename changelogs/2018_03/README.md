@@ -50,7 +50,7 @@
 5049 | api-rest | Bug | Data API: slow search by property in [`entityExpression`](../../api/data/filter-entity.md#entity-filter-fields).
 5036 | administrator | Feature | Backup multiple record types from `.zip`/`.tar.gz` archive.
 5018 | rule engine | Bug | Webhooks: raw URL presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
-5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | **Entity Tag** link not applied to **Entity Tag** column.
+5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | `Entity Tag` link not applied to `Entity Tag` column.
 5001 | rule engine | Feature | Telegram: [`getUpdates`](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
 4957 | sql | Bug | [Period](../../sql/README.md#period) query now takes long time to execute.
 4925 | rule engine | Feature | Rule Engine: [rule_window](../../rule-engine/functions-rules.md#rule_window) function.

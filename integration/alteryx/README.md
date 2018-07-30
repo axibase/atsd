@@ -40,7 +40,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/no_dsn.png)
 
-* Open the **ODBC Data Source Administrator** window by pressing the **ODBC Admin** button in the **ODBC Connection** dialog.
+* Open the **ODBC Data Source Administrator** window by pressing **ODBC Admin** in the **ODBC Connection** dialog.
 
 * Configure the [data source](../odbc/README.md#configure-odbc-data-source).
 
@@ -97,10 +97,10 @@ ORDER BY datetime
 
   ![](./images/visual_builder.png)
 
-* The **SQL Editor** allows you to review and modify pre-built queries or write
+* **SQL Editor** allows you to review and modify pre-built queries or write
   your own.
 
-* The **Test Query** button truncates the query after the `FROM` clause and sends only the remaining
+* **Test Query** truncates the query after the `FROM` clause and sends only the remaining
   `SELECT ... FROM ...` expression to the database for validation.
 
   ![](./images/sql_editor.png)

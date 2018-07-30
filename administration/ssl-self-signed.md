@@ -25,7 +25,7 @@ Open the **Settings > Certificates** page and click **Self Signed Certificate** 
 
 ![](./images/ssl_self_signed_2.png)
 
-Enter the certificate information and click **Create And Import**. Only the **Domain Name** field is required.
+Enter the certificate information and click **Create And Import**. Only **Domain Name** is required.
 
 ![](./images/ssl_self_signed_3.png)
 
@@ -60,6 +60,6 @@ curl -v -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/self-signed \
 
 Log in to ATSD by entering DNS name in the browser address bar.
 
-Review the new certificate on the **Settings > Certificates** page and check the **Days to Expiration** field, which is set to 364 days from now.
+Review the new certificate on the **Settings > Certificates** page and check **Days to Expiration**, which is set to 364 days from now.
 
 Untrusted certificates are highlighted in orange.

@@ -20,11 +20,11 @@ Once enabled, the database tracks changes made to stored values with the followi
 
 Versioning is **disabled** by default.
 
-It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to **Yes** in the multi-record editor, or by enabling **Versioning** in the **Metric Editor**.
+It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** to **Yes** in the multi-record editor, or by enabling **Versioning** in the **Metric Editor**.
 
 ![](./resources/1.png)
 
-In addition, **Invalid Value Action** can be set to `SET_VERSION_STATUS` to initialize the **Version Status** field with an `invalid` value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
+In addition, **Invalid Value Action** can be set to `SET_VERSION_STATUS` to initialize the **Version Status** with an `invalid` value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
 
 ## Inserting Version Fields
 
@@ -66,11 +66,11 @@ Versioned samples can be added by opening **Data > Data Entry > Series** form an
 
 ![](./resources/8.png)
 
-> Note: **Metric** field must reference an existing metric with _Versioning = Yes_
+> Note: **Metric** must reference an existing metric with _Versioning = Yes_
 
 ### CSV Parser using Default Tags
 
-To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** field in the CSV parser or on the [CSV File Upload](../parsers/csv/README.md#uploading-csv-files) page.
+To apply the same versioning fields to all records in a CSV file, specify them in the **Default Tags** in the CSV parser or on the [CSV File Upload](../parsers/csv/README.md#uploading-csv-files) page.
 
 ```ls
 $version_status={status}
@@ -85,7 +85,7 @@ $version_source={source}
 
 ### CSV Parser using Renamed Columns
 
-To extract versioning fields from CSV content, add the version tags to the **Tag Columns** field and specify mappings between the original column names and version tag names in the **Renamed Columns** field.
+To extract versioning fields from CSV content, add the version tags to the **Tag Columns** and specify mappings between the original column names and version tag names in the **Renamed Columns**.
 
 ![](./resources/3.png)
 
@@ -152,7 +152,7 @@ Click timestamp for the selected record to open the **Data Entry** page.
 
 ![](./resources/9.png)
 
-Change version **Status**, **Source**, and **Value** fields and click **Update**.
+Change version **Status**, **Source**, and **Value** and click **Update**.
 
 ![](./resources/10.png)
 
@@ -174,7 +174,7 @@ Note that the current value for the selected timestamp is not deleted. Instead, 
 
 ![](./resources/13.png)
 
-A value can also be deleted using the selection checkbox and **Delete** button on the **Data > Export** page.
+A value can also be deleted using the selection checkbox and **Delete** on the **Data > Export** page.
 
 ![](./resources/14.png)
 

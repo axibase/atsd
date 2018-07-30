@@ -103,7 +103,7 @@ Expected result:
 ## Review Tables in the Database Explorer
 
 * Specify a JDBC URL, for example `jdbc:atsd://atsd_hostname:8443;tables=%jvm%` in the **JDBC Data Source Configuration** window.
-* Click **New Query**, select **ATSD** in the **Data Source** drop-down list, enter ATSD username and password.
+* Click **New Query**, select **ATSD** in **Data Source**, enter ATSD username and password.
 
 The _Database Browser_ displays a set of tables matching the expression:
 
@@ -115,7 +115,7 @@ An example with the `datetime`, `value`, and `text` fields selected:
 
 ![](./resources/prewiew_data.png)
 
-The complete resultset can be imported with the **Import** button, highlighted with a green arrow.
+The complete resultset can be imported with **Import**, highlighted with a green arrow.
 
 ## Load Data
 
