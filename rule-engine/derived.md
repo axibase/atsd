@@ -18,13 +18,13 @@ To configure a command action, specify a template which contains a command name,
 
 ### Fields
 
-Templates can include plaintext and [placeholders](placeholders.md).
+Command templates can include plaintext and [placeholders](placeholders.md).
 
 ```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-Reference other metrics with calculated metrics via the [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
+Other metrics can be referenced with the [`value('name')`](functions-value.md#value), [`db_last`](functions-series.md#db_laststring-m), and [`db_statistic`](functions-series.md#db_statistic) functions.
 
 ```bash
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}
@@ -32,31 +32,19 @@ series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_b
 
 ### Tags
 
-Use the special placeholder `${commandTags}` to print all window tags supported by [Network API](../api/network/series.md#syntax) syntax. The placeholder appends tags to the command without knowledge of the tag names in advance.
+In addition to including specific command tags by name, use the  `${commandTags}` placeholder to copy all tags in the received command.
 
-Using the command below:
-
-```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags}
-```
-
-Upon the following incoming command:
-
-```ls
-series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda
-```
-
-Produces the derived command:
-
-```ls
-series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
-```
+| Command | Example |
+|---|---|
+| Input | `series e:server-01 m:du=25 t:mp=/ t:file_system=sda` |
+| Template | `series e:${entity} m:df=${100 - value} ${commandTags}` |
+| Derived | `series e:server-01 m:df=75 t:mp=/ t:file_system=sda` |
 
 ### Time
 
 #### Current Server Time
 
-To store derived commands with the current server time, omit `datetime` fields (`ms`, `s`, `d`) from the derived command.
+To store derived commands with the current server time, omit date fields (`ms`, `s`, `d`) from the derived command.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
@@ -131,8 +119,7 @@ If the purpose of a rule is to create derived series, without alerting, set the 
 
 ### Moving Average, Last `n` Count
 
-* **Window Size**: `count`
-* Window Length: `10`
+* **Window Size**: `count = 10`
 * **Condition**: `true`
 * **Derived Command**:
 
@@ -142,8 +129,7 @@ If the purpose of a rule is to create derived series, without alerting, set the 
 
 ### Moving Average, Last `n` Time
 
-* **Window Size**: `time`
-* Window Length: `10 Minute`
+* **Window Size**: `time = 10 minute`
 * **Condition**: `true`
 * **Derived Command**:
 
@@ -153,8 +139,7 @@ If the purpose of a rule is to create derived series, without alerting, set the 
 
 ### Roll Up (All Matching Entities)
 
-* **Window Type**: `time`
-* Window Length: `1 Minute`
+* **Window Type**: `time:  1 minute`
 * **Group by Entity**: Not Enabled
 * **Condition**: `true`
 * **Derived Command**:
@@ -165,8 +150,7 @@ If the purpose of a rule is to create derived series, without alerting, set the 
 
 ### Reverse / Inverse Metric
 
-* **Window Type**: `count`
-* Window Length: `1`
+* **Window Type**: `count = 1`
 * **Condition**: `true`
 * **Derived Command**:
 
@@ -180,8 +164,7 @@ If the purpose of a rule is to create derived series, without alerting, set the 
 
 ### Ratio / Percentage
 
-* **Window Type**: `count`
-* Window Length: `1`
+* **Window Type**: `count =  1`
 * **Condition**: `true`
 * **Derived Command**:
 
@@ -191,9 +174,8 @@ If the purpose of a rule is to create derived series, without alerting, set the 
 
 ### Message to Series
 
-* **Window Type**: `count`
-* Window Length: `1`
-* Condition: `true`
+* **Window Type**: `count = 1`
+* **Condition**: `true`
 * **Derived Command**:
 
   ```bash
