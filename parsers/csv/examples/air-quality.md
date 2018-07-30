@@ -45,8 +45,8 @@ This document describes the configuration of a CSV Parser to read the CSV file a
 
 ### Syntax
 
-* Define columns in the **Header** field because the underlying document lacks a header row.
-* Specify entity in the **Default Entity** field because there is no entity column.
+* Define columns with **Header** because the underlying document lacks a header row.
+* Specify entity with **Default Entity** because there is no entity column.
 * Exclude unneeded data, `Longitude` and `Latitude` positions are constant and unneeded.
 * Parses multiple metrics from one row, `Parameter` column contains the names of several metrics which represent the concentration of various particles.
 
