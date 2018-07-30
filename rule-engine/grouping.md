@@ -11,7 +11,7 @@ Incoming commands are assigned to in-memory [windows](window.md) based on a grou
 
 The database assigns commands with equal grouping keys to the same window.
 
-**Data Type** and **Metric Name** fields are mandatory parts of the key whereas **Entity Name** and **Command Tags**  are optional and can be configured for each rule separately.
+**Data Type** and **Metric Name** are mandatory parts of the key whereas **Entity Name** and **Command Tags**  are optional and can be configured for each rule separately.
 
 ## Tag Grouping
 
