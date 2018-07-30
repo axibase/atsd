@@ -2,29 +2,29 @@
 
 ## Overview
 
-Derived command actions store new calculated metrics in the database by creating and processing custom commands defined using the [Network API](../api/network/README.md#network-api) syntax.
+Derived command actions store new calculated metrics in the database by creating and processing custom commands defined with [Network API](../api/network/README.md#network-api) syntax.
 
 ## Command Template
 
-When configuring a command action, you need to specify a template consisting of command name, command fields and command values.
+To configure a command action, specify a template which contains a command name, command fields and command values.
 
-### Supported commands
+### Supported Commands
 
-* [series](../api/network/series.md)
-* [property](../api/network/property.md)
-* [message](../api/network/message.md)
-* [entity](../api/network/entity.md)
-* [metric](../api/network/metric.md)
+* [`series`](../api/network/series.md)
+* [`property`](../api/network/property.md)
+* [`message`](../api/network/message.md)
+* [`entity`](../api/network/entity.md)
+* [`metric`](../api/network/metric.md)
 
 ### Fields
 
-The template can include plain text and [placeholders](placeholders.md).
+Templates can include plaintext and [placeholders](placeholders.md).
 
 ```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-The calculated metrics can reference other metrics using [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
+Reference other metrics with calculated metrics via the [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
 
 ```bash
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}
@@ -32,13 +32,21 @@ series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_b
 
 ### Tags
 
-A special placeholder `${commandTags}` is provided to print out all window tags in the [Network API](../api/network/series.md#syntax) syntax. The placeholder appends all tags to the command without knowing the tag names in advance.
+Use the special placeholder `${commandTags}` to print all window tags supported by [Network API](../api/network/series.md#syntax) syntax. The placeholder appends tags to the command without knowledge of the tag names in advance.
+
+Using the command below:
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
-Assume the incoming command is `series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda`:
+Upon the following incoming command:
+
+```ls
+series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda
+```
+
+Produces the derived command:
 
 ```ls
 series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
@@ -48,19 +56,19 @@ series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda
 
 #### Current Server Time
 
-To store derived commands with the current server time, omit the date/time fields (`ms`, `s`, `d`) from the derived command.
+To store derived commands with the current server time, omit `datetime` fields (`ms`, `s`, `d`) from the derived command.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
-Alternatively, use the [`now`](window-fields.md#date-fields) placeholder to access the current server time.
+Alternatively, use the [`now`](window-fields.md#date-fields) placeholder to access current server time.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.getMillis()}
 ```
 
-To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical) function and the seconds field `s:`:
+To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical) function and the `s:` seconds parameter:
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMillis()/1000)}
@@ -68,15 +76,15 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMi
 
 #### Received Time
 
-To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window-fields.md#date-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
+To store a derived command with the same time as an incoming command, set the `ms:` millisecond parameter to [`${timestamp}`](window-fields.md#date-fields). This placeholder represents the timestamp of the command that caused the window status event.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
-> If the **Check On Exit** option is enabled for time-based window, some of the events are caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
+> If the **Check on Exit** option is enabled for time-based window, some events are caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
 
-To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical) function:
+To round the input time to seconds, use the  `s:` seconds parameter and [`floor`](functions.md#mathematical) function:
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp/1000)}
@@ -84,30 +92,30 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp
 
 ## Frequency
 
-Derived commands can be stored each time a command is received or removed from the window by setting the **Repeat** parameter to **All**.
+Store derived commands each time a command is received or removed from the window by setting the **Repeat** parameter to **All**.
 
 The frequency can be lowered by adjusting the repeat interval.
 
 ![](./images/derived_repeat.png)
 
-The produced commands are queued in memory and are persisted to the database once per second.
+Produced commands are queued in memory and persisted to the database once per second.
 
 ## Multiple Commands
 
-Multiple commands, including commands of different type, can be specified at the same time. Each command must be specified on a separate line.
+Multiple commands, including commands of different types, can be specified at the same time. Each command must be specified on a separate line.
 
 ```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 series e:${entity} m:jvm_memory_free_min_percent=${round(100 - max(), 3)}
 ```
 
-To create multiple metrics within the same command, use the `for` loop to iterate over a collection or an array.
+To create multiple metrics within the same command, use a `for` loop to iterate over a collection or array.
 
 ```bash
 series e:${entity} @{s = ""; for (stat : stats) {s = s + " m:" + stat.split(":")[0] + "=" + stat.split(":")[1];} return s;}
 ```
 
-Assuming the `stats` collection is equal `['a:10', 'b:20', 'c:30']`, the produced command looks as follows:
+If the `stats` collection is `['a:10', 'b:20', 'c:30']`, the produced command is inserted as shown below:
 
 ```ls
 series e:entity1 m:a=10 m:b=20 m:c=30
@@ -115,85 +123,79 @@ series e:entity1 m:a=10 m:b=20 m:c=30
 
 ## Condition
 
-If the rule purpose is to only create derived series, without any alerting, set the `Condition` field to a static `true` value to minimize the processing overhead.
+If the purpose of a rule is to create derived series, without alerting, set the `Condition` field to a static `true` value to minimize processing overhead.
 
 ![](./images/derived-condition.png)
 
 ## Examples
 
-### Moving Average (Last *N* Count)
+### Moving Average, Last `n` Count
 
-* Window type: count-based
-* Window length: 10
-* Condition: `true`
-* Frequency: All
-* Command Template:
+* **Window Size**: `count`
+* Window Length: `10`
+* **Condition**: `true`
+* **Derived Command**:
 
-```bash
-series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
-```
+  ```bash
+  series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+  ```
 
-### Moving Average (Last *N* Time)
+### Moving Average, Last `n` Time
 
-* Window type: time-based
-* Window length: 10 minute
-* Condition: `true`
-* Frequency: All or Every *N* Minutes = 1 minute
-* Command Template:
+* **Window Size**: `time`
+* Window Length: `10 Minute`
+* **Condition**: `true`
+* **Derived Command**:
 
-```bash
-series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
-```
+  ```bash
+  series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+  ```
 
-### Roll-up (all matching entities)
+### Roll Up (All Matching Entities)
 
-* Window type: time-based
-* Window length: 1 minute
-* Group by entity: `NO`
-* Condition: `true`
-* Frequency: Every N Minutes = 1 minute
-* Command Template:
+* **Window Type**: `time`
+* Window Length: `1 Minute`
+* **Group by Entity**: Not Enabled
+* **Condition**: `true`
+* **Derived Command**:
 
-```bash
-series e:total m:${metric}_sum=${sum()}
-```
+  ```bash
+  series e:total m:${metric}_sum=${sum()}
+  ```
 
-### Reverse/Inverse Metric
+### Reverse / Inverse Metric
 
-* Window type: count-based
-* Window length: 1
-* Condition: `true`
-* Frequency: All
-* Command Template:
+* **Window Type**: `count`
+* Window Length: `1`
+* **Condition**: `true`
+* **Derived Command**:
 
-```bash
-series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
-```
+  ```bash
+  series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
+  ```
 
-```bash
-series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} ${commandTags}
-```
+  ```bash
+  series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} $  {commandTags}
+  ```
 
 ### Ratio / Percentage
 
-* Window type: count-based
-* Window length: 1
-* Condition: `true`
-* Frequency: All
-* Command Template:
+* **Window Type**: `count`
+* Window Length: `1`
+* **Condition**: `true`
+* **Derived Command**:
 
-```bash
-series e:${entity} m:${metric}_percent=${100 * value/value('total')} ${commandTags}
-```
+  ```bash
+  series e:${entity} m:${metric}_percent=${100 * value/value('total')} $  {commandTags}
+  ```
 
 ### Message to Series
 
-* Window type: count-based
-* Window length: 1
+* **Window Type**: `count`
+* Window Length: `1`
 * Condition: `true`
-* Frequency: All
-* Command Template:
+* **Derived Command**:
 
-```bash
-series e:${entity} m:job_execution_time=${tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
-```
+  ```bash
+  series e:${entity} m:job_execution_time=$  {tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
+  ```
