@@ -2,9 +2,9 @@
 
 ## Overview
 
-The rule engine implemented in ATSD is **event driven**: the condition specified in the rule is evaluated when a new command is added or an old command is removed from the window.
+ATSD Rule Engine is **event driven** thus, a condition specified by a rule is evaluated when a new command is added or an old command is removed from the window.
 
-To evaluate the rule on schedule instead of event, use **timer** metrics which are produced regularly by the database itself:
+To evaluate the rule on a schedule instead of based on an event use **timer** metrics, which cause the rule to be triggered regularly by the database itself.
 
 **Metric Name** | **Frequency**
 ---|:---
@@ -13,15 +13,15 @@ To evaluate the rule on schedule instead of event, use **timer** metrics which a
 `timer_15m` | 15 minutes.
 `timer_1h` | 1 hour.
 
-By reacting to a `timer` metric, the rule can be evaluated at the specified frequency, for example, every 15 minutes:
+By reacting to a `timer` metric, a rule is evaluated at the specified frequency, for example, every 15 minutes:
 
-![](./images/timer.png)
+![](./images/new-metric.png)
 
 ## Analyzing Data
 
-To analyze data for the metric of interest (not the `timer` metric itself), use [database](functions-series.md) and [lookup](functions-lookup.md) functions.
+To analyze data for a specific metric and not the `timer` metric itself, use [database](functions-series.md) and [lookup](functions-lookup.md) functions.
 
-* Example:
+**Example**:
 
 The condition is `true` if the average value for the given series exceeds the threshold.
 
@@ -29,9 +29,9 @@ The condition is `true` if the average value for the given series exceeds the th
 db_statistic('avg', '3 hour', 'temperature', 'sensor-01') > 50
 ```
 
-* Example:
+**Example**:
 
-The condition is `true` if one of the entities collecting `jmx.zookeeper.tick` metric has stopped inserting data.
+The condition is `true` if one of the entities collecting `jmx.zookeeper.tick` metric no longer inserts data.
 
 ```javascript
 getEntityCount('jmx.zookeeper.tick', 'now - 1*DAY', 'now - 1*HOUR', '') > 0
@@ -41,10 +41,10 @@ getEntityCount('jmx.zookeeper.tick', 'now - 1*DAY', 'now - 1*HOUR', '') > 0
 
 To restrict the times of the day when the rule is active, evaluate the `now` field as part of the condition.
 
-The [`now`](window-fields.md#date-fields) field represents current server time as a [`DateTime`](object-datetime.md) object which properties can be accessed with various `get()` methods.
+[`now`](window-fields.md#date-fields) represents current server time as a [`DateTime`](object-datetime.md) object. Access the properties of this object with `get()` methods.
 
 ```javascript
-now.getHourOfDay() = 15
+now.getHourOfDay() = 15 AND now.getDayOfWeek() = 4
 ```
 
-![](./images/timer-calendar.png)
+![](./images/new-condition.png)
