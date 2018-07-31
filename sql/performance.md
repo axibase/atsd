@@ -46,7 +46,7 @@ A running query can be cancelled at any time, for example if its execution time 
 
 When a query is cancelled, the results are not returned to the client and the query is stopped with an error.
 
-A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` URL and referencing the user-defined handle with the `{query-id}` parameter.
+A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-a-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` URL and referencing the user-defined handle with the `{query-id}` parameter.
 
 ## Query Logging
 

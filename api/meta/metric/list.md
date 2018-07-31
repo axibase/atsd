@@ -19,7 +19,7 @@ Retrieves a list of metrics matching the specified filters.
 | `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) expression for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
 | `limit` |integer|Maximum number of metrics to retrieve, ordered by name.<br>Default: `0`, unlimited.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
-| `tags` |string|Comma-separated list of metric tag names to include in the response.<br>Use wildcard as part of name pattern, for example `cpu_*`, to include matching entity tags.<br>Default: no tags are included.|
+| `tags` |string|Comma-separated list of metric tag names to include in the response.<br>Use wildcard as part of name pattern, for example `cpu_*`, to include matching metric tags.<br>Default: no tags are included.|
 | `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
 
 #### Expression
@@ -48,16 +48,22 @@ lower(name) NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
 retentionDays > 0 OR seriesRetentionDays > 0
 ```
 
-* Retrieve entities with tag `table` equal to `iostat` (case insensitive comparison).
+* Retrieve metrics with tag `table` equal to `iostat` (case insensitive comparison).
 
 ```javascript
 lower(tags.table) = 'iostat'
 ```
 
-* Retrieve entities with non-empty `table` tag.
+* Retrieve metrics with non-empty `table` tag.
 
 ```javascript
 tags.table != ''
+```
+
+* Retrieve metrics without any tags and name consisting of 64 characters.
+
+```javascript
+tags.size() == 0 && name.length() == 64
 ```
 
 ## Response

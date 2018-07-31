@@ -35,7 +35,7 @@ The configuration excludes samples that are within `±10` of an interpolated val
 | `difference` | number | The sample is classified as duplicate if the current value deviates by more than the specified difference, in absolute terms, from the estimated value produced by downsampling algorithm.<br>Minimum value: `0`.<br>Default: `0`. |
 | `ratio` | number | The sample is classified as duplicate if the ratio of the current value and the value produced by downsampling algorithm or the inverse exceed the specified ratio.<br>Minimum value: `1`. <br>Default: `none`. |
 | [`gap`](#gap) | object | Maximum distance between subsequent samples in the transformed series. Specified as count and [time unit](time-unit.md).<br>Default: `none`.|
-| `order` | integer | Controls the order of downsampling in the sequence of other [transformations](./query.md#transformation-fields).<br>Default: `0`.|
+| `order` | integer | Controls the order of downsampling in the sequence of other [transformations](./query.md#transformations).<br>Default: `0`.|
 
 > The `difference` and `ratio` parameters **cannot** be specified simultaneously.
 

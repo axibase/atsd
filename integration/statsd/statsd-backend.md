@@ -1,10 +1,8 @@
 # StatsD Backend
 
-ATSD back-end for StatsD enables you to forward metrics collected by StatsD daemon into ATSD for retention, analytics, visualization, and alerting.
+ATSD backend for [StatsD](README.md) enables you to forward metrics collected by StatsD daemon into ATSD for retention, analytics, visualization, and alerting.
 
-[Learn more about StatsD](README.md).
-
-[Download the ATSD StatsD back-end](https://github.com/axibase/atsd-statsd-backend).
+[ATSD StatsD backend on github](https://github.com/axibase/atsd-statsd-backend).
 
 ## Configuration
 
@@ -33,7 +31,7 @@ Configuration file example:
 }
 ```
 
-Possible variables:
+### Supported variables
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
@@ -54,9 +52,7 @@ Possible variables:
 |  `atsd.prefixSet`  |  Prefix for set metrics  |  `sets`  |
 |  `atsd.patterns`  |  Patterns to parse statsd metric names  |  –  |
 
-[Other variables used by StatsD can be specified.](https://github.com/etsy/statsd/blob/master/exampleConfig.js)
-
-StatsD has an [open bug](https://github.com/etsy/statsd/issues/462) regarding the inability of the configuration to sometimes reload during operation. Changing the configuration file while StatsD is running can result in StatsD crashing. Until the bug is fixed, add `automaticConfigReload: false` to your configuration and restart StatsD for the changed configuration to take effect.
+Other [variables](https://github.com/etsy/statsd/blob/master/exampleConfig.js) used by StatsD can be specified.
 
 ## Patterns
 

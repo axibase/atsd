@@ -68,7 +68,7 @@ Edit the following fields: `graphitePort` is the ATSD port for network commands 
 ```json
 {
   graphitePort: 8081
-, graphiteHost: "atsdserver"
+, graphiteHost: "atsd_hostname"
 , port: 8125
 , graphite: {
     legacyNamespace: false

@@ -58,6 +58,12 @@ lower(tags.function) = 'database'
 tags.function != ''
 ```
 
+* Retrieve entities without any tags and name consisting of 64 characters.
+
+```javascript
+tags.size() == 0 && name.length() == 64
+```
+
 ## Response
 
 ### Fields

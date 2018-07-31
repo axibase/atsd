@@ -4,9 +4,9 @@
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `OR` | Boolean OR, also `\|\|`. |
-| `AND` | Boolean AND, also `&&`. |
-| `NOT` | Boolean NOT, also `!`. |
+| `OR` | Boolean `OR`, also `\|\|`. |
+| `AND` | Boolean `AND`, also `&&`. |
+| `NOT` | Boolean `NOT`, also `!`. |
 
 Examples:
 
@@ -61,18 +61,18 @@ status >= 500 ? 'Server Error' : ((status >= 400) ? 'Client Error' : ((status >=
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `+` | Plus. |
-| `-` | Minus. |
-| `*` | Multiply. |
-| `/` | Divide. |
-| `%` | Remainder. |
-| `=` | Equal. Also `==`. |
-| `!=` | Not equal. |
-| `>` | Greater than. |
-| `>=` | Greater than or equal. |
-| `<` | Less than. |
-| `<=` | Less than or equal. |
-| `BETWEEN` | `n BETWEEN m AND p`.<br>The number `n` is between `m` and `p` (inclusive).<br>`m <= n <= p`.<br>Example: `avg() BETWEEN 10 and 20`. |
+| `+` | Addition |
+| `-` | Subtraction |
+| `*` | Multiplication |
+| `/` | Division |
+| `%` | Modulus |
+| `=`<br>`==` | Equality |
+| `!=` | Inequality |
+| `>` | Greater than |
+| `>=` | Greater than or equal to |
+| `<` | Less than |
+| `<=` | Less than or equal to |
+| `BETWEEN` | `n BETWEEN m AND p`<br>The number `n` is between `m` and `p` (inclusive).<br>`m <= n <= p`.<br>Example: `avg() BETWEEN 10 and 20`. |
 | `IN` | Returns `true` if the number is contained in the numeric [collection](functions-collection.md#in). |
 
 Examples:
@@ -93,9 +93,9 @@ value IN (0, 1, 12)
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `=` | Also `==`. Equal. The comparison is case-**insensitive** (`'a' = 'A'` equals `true`).|
-| `!=` | Not equal. The comparison is case-**insensitive** (`'a' != 'A'` equals `false`).|
-| `BETWEEN` | Returns `true` if the left operand string is ordered between lower and upper strings on the right.<br>`a BETWEEN b AND c`.<br>String `a` is ordered between `b` and `c` (inclusive) using lexicographical comparison.<br>The comparison is case-**sensitive**.<br>Example: `timeStr BETWEEN '18:00' AND '18:04'`.|
+| `=`<br>`==` | Equality. The comparison is case-**insensitive** (`'a' = 'A'` returns `true`).|
+| `!=` | Not equal. The comparison is case-**insensitive** (`'a' != 'A'` returns `false`).|
+| `BETWEEN` | Returns `true` if the left operand string is ordered between lower and upper strings on the right.<br>`a BETWEEN b AND c`.<br>String `a` is ordered between `b` and `c` (inclusive) using lexicographical comparison.<br>The comparison is case-**sensitive**.<br>**Example**: `timeStr BETWEEN '18:00' AND '18:04'`.|
 | `LIKE` | Returns `true` if the left operand string matches the pattern on the right. The pattern can include regular characters and wildcards `?` and `*`.<br>The operator also accepts a [collection of patterns](functions-collection.md#like) in round brackets.|
 | `IN` | Returns `true` if the left operand string is contained in the string [collection](functions-collection.md#in) specified in parenthesis on the right. |
 

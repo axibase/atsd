@@ -1,6 +1,6 @@
 ﻿# Overview
 
-SQL client is a `bash` script that provides a convenient way to export SQL query results to a file or standard output in CSV or JSON format.
+**SQL Client** is a `bash` script that provides a convenient way to export SQL query results to a file or standard output in CSV or JSON format.
 
 The client validates input parameters and executes a request to [`/api/sql`](../api.md) API endpoint using credentials stored in the `atsd.config` file.
 
@@ -20,9 +20,9 @@ chmod +x sql.sh
 
 ## Configuration
 
-Create `atsd.config` file located in the same directory as the `sql.sh` file.
+Create an `atsd.config` file located in the same directory as the `sql.sh` file.
 
-Specify the URL to the database and user credentials. If the URL protocol is HTTPS, the query and the results are encrypted.
+Specify the database URL and user credentials. If the URL protocol is HTTPS, the query and the results are encrypted.
 
 ```elm
 url=https://192.0.2.6:8443/api/sql
@@ -31,7 +31,7 @@ user=username
 password=password
 ```
 
-The user must have an `API_DATA_READ` [role](../../administration/user-authorization.md) and necessary entity `read` permissions.
+The user must have the `API_DATA_READ` [role](../../administration/user-authorization.md) and necessary entity `read` permissions.
 
 The client is stateless with each query triggering a separate HTTP request with the `Basic` authentication.
 
@@ -39,10 +39,10 @@ The client is stateless with each query triggering a separate HTTP request with 
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| -o, --output | string | Output file to store the result set. If not specified, results are printed to `stdout`. |
-| -i, --input | string | Input file containing SQL query to execute. |
-| -q, --query | string | SQL query text enclosed in double quotes. Ignored if query is read from input file. <br>Escape double quotes contained in query text with a backslash.|
-| -f, --format | string | Output format. Default: `csv`. Supported options: `csv`, `json`. |
+| `-o`, `--output` | string | Output file where results are stored. If not specified, results are printed to `stdout`. |
+| `-i`, `--input` | string | Input file containing SQL query to execute. |
+| `-q`, `--query` | string | SQL query text enclosed in double quotes. Ignored if query is read from input file. <br>Escape double quotes contained in query text with a backslash.|
+| `-f`, `--format` | string | Output format. Default: `csv`. Supported options: `csv`, `json`. |
 
 ## Examples
 
