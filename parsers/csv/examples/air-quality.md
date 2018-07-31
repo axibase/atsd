@@ -1,6 +1,6 @@
 # Air Quality CSV Example
 
-## Original CSV File
+## Example CSV File
 
 ```txt
 "36.785378","-119.773206","2015-07-09T00:00","CO","0.12","PPM"
@@ -35,23 +35,111 @@
 "36.785378","-119.773206","2015-07-09T04:00","SO2","0.0","PPB"
 ```
 
-## Parser Configuration Screenshot
+## Parser Configuration
 
-![](./resources/air_quality_csv_parser.png)
+### Overview
 
-## Parser Configuration Description
+This document describes the configuration of a CSV Parser to read the CSV file above and insert the data into ATSD. To create a new CSV parser, navigate to the **Data > CSV Parsers** page.
 
-| Field | Setting | Reason |
+![](./images/parsers-page.png)
+
+### Syntax
+
+* Define columns with **Header** because the underlying file lacks a header row.
+* Specify entity with **Default Entity** because there is no entity column.
+* Exclude unneeded data, `Longitude` and `Latitude` positions are constant and unneeded.
+* Extract multiple metrics from one row, `Parameter` column contains the names of several metrics which represent the concentration of various particles.
+
+### Configuration
+
+For information on all settings on the **CSV Parser Editor** page, including those not used in this tutorial, refer to the [Uploading CSV Files](../README.md) tutorial.
+
+Enable the parser, define a unique identifier, specify the command type, and indicate the delimiter symbol.
+
+![](./images/1.png)
+
+| Field | Setting | Explanation |
 | --- | --- | --- |
-|  Enabled  |  Set to `true`  |  Enables parsing of CSV files.<br>Use of this parser configuration is allowed in Axibase Collector.  |
-|  Name  |  Unique name – `airnow-fresno`  |  Unique name to distinguish a particular parser from others.<br>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.  |
-|  Put Type  |  Metric  |  The CSV file in question contains time series (metrics) environmental data.  |
-|  Delimiter  |  Comma  |  A comma is used to separate columns.  |
-|  Default Entity  |  Unique entity name – `060190011`  |  No entity name is present in the CSV file. Instead entity name is set manually to the ID of the monitoring station.  |
-|  Metric Name Column  |  Parameter  |  Parameter column contains all metric names: CO, NO2, OZONE, PM10, PM2.5, SO2.  |
-|  Metric Value Column  |  Concentration  |  Concentration column contains the values for the above metrics.<br>Note that values for all metrics are contained in a single column.  |
-|  Timestamp Column  |  Time  |  Time column contains the timestamp, which is used to import the time series.  |
-|  Timestamp Pattern  |  `yyyy-MM-dd'T'HH:mm`  |  Pattern matching the one contained in the original CSV file: `2015-07-09T00:00`.  |
-|  Filter  |  `number('Concentration') >= 0`  |  Used to import data points that contain actual values that are greater than 0 (not empty).  |
-|  Ignored Columns  |  `Latitude`<br>`Longitude`<br>`Unit`  |  Columns that are skipped.<br>For example: Latitude, Longitude, and Unit do not add any value to the time series.<br>Can be added as metric tags using the API or web interface.  |
-|  Header  |  `"Latitude"`<br>`"Longitude"`<br>`"Time"`<br>`"Parameter"`<br>`"Concentration"`<br>`"Unit"`  |  Since the source CSV file does not have column headers, they are assigned and then referenced in the configuration.  |
+|  Enabled  |  Checked  |  Enables CSV parser.<br>Enabled parsers are active and able to be used by Collector  |
+|  Name  | `airnow`  |  Name field identifies a specific parser.<br>This is the name which is referenced by Collector to assign parser tasks.  |
+|  Command Type  | `series`  |  Parsed cells are written in the database as [series commands](https://axibase.com/docs/atsd/api/network/series.html).  |
+|  Delimiter  |  Comma  |  File columns are separated by commas.  |
+
+![](./images/2.png)
+
+| Field | Setting | Explanation |
+| --- | --- | --- |
+|  Default Entity  |  `airnow`  |  No entity name is present in the CSV file. Instead entity name is set manually to the ID of the monitoring station.  |
+
+![](./images/3.png)
+
+| Field | Setting | Explanation |
+| --- | --- | --- |
+| Header | See above screenshot. | Define header row in the order which titles are assigned.
+
+![](./images/6.png)
+
+| Field | Setting | Explanation |
+| --- | --- | --- |
+Metric Name Column | `Parameter` | Define the column which contains metric names.
+Metric Value Column | `Concentration` | Define the column which contains metric values.
+Timestamp Columns | `Time` | Define the timestamp column
+Timestamp Time | `Pattern` | Specify how the timestamp is read by the parser.
+Timestamp Pattern | `yyyy-MM-dd'T'HH:mm` | [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) pattern of the timestamp used when `Pattern` option is selected.
+
+![](./images/5.png)
+
+| Field | Setting | Explanation |
+| --- | --- | --- |
+Filter | `number('Concentration') > 0` | Samples which have a value less than or equal to `0` are discarded.<br>For more information about `Filter` expressions, refer to [Rule Engine Documentation](https://axibase.com/docs/atsd/rule-engine/filters.html#filter-expression).
+Ignored Columns | See above screenshot. | Define columns which are not included in resultant series commands.
+
+## Commands
+
+Raw data row:
+
+```txt
+"36.785378","-119.773206","2015-07-09T00:00","CO","0.12","PPM"
+```
+
+Resulting series command:
+
+```ls
+series e:airnow d:2015-07-09T00:00:00Z m:co=0.12
+```
+
+Series commands produced by the above parser configuration based on the [example CSV](#example-csv-file) are shown below.
+
+```ls
+series e:airnow d:2015-07-09T00:00:00Z m:co=0.12
+series e:airnow d:2015-07-09T00:00:00Z m:no2=2.0
+series e:airnow d:2015-07-09T00:00:00Z m:ozone=48.0
+series e:airnow d:2015-07-09T00:00:00Z m:pm10=37.0
+series e:airnow d:2015-07-09T00:00:00Z m:pm2.5=7.5
+series e:airnow d:2015-07-09T00:00:00Z m:so2=1.0
+series e:airnow d:2015-07-09T01:00:00Z m:co=0.12
+series e:airnow d:2015-07-09T01:00:00Z m:no2=2.0
+series e:airnow d:2015-07-09T01:00:00Z m:ozone=46.0
+series e:airnow d:2015-07-09T01:00:00Z m:pm10=37.0
+series e:airnow d:2015-07-09T01:00:00Z m:pm2.5=7.4
+series e:airnow d:2015-07-09T01:00:00Z m:so2=1.0
+series e:airnow d:2015-07-09T02:00:00Z m:co=0.12
+series e:airnow d:2015-07-09T02:00:00Z m:no2=3.0
+series e:airnow d:2015-07-09T02:00:00Z m:ozone=44.0
+series e:airnow d:2015-07-09T02:00:00Z m:pm10=37.0
+series e:airnow d:2015-07-09T02:00:00Z m:pm2.5=7.3
+series e:airnow d:2015-07-09T02:00:00Z m:so2=1.0
+series e:airnow d:2015-07-09T03:00:00Z m:co=0.14
+series e:airnow d:2015-07-09T03:00:00Z m:no2=4.0
+series e:airnow d:2015-07-09T03:00:00Z m:ozone=41.0
+series e:airnow d:2015-07-09T03:00:00Z m:pm10=37.0
+series e:airnow d:2015-07-09T03:00:00Z m:pm2.5=7.1
+series e:airnow d:2015-07-09T03:00:00Z m:so2=1.0
+series e:airnow d:2015-07-09T04:00:00Z m:co=0.13
+series e:airnow d:2015-07-09T04:00:00Z m:no2=3.0
+series e:airnow d:2015-07-09T04:00:00Z m:ozone=37.0
+series e:airnow d:2015-07-09T04:00:00Z m:pm10=36.0
+series e:airnow d:2015-07-09T04:00:00Z m:pm2.5=7.0
+```
+
+> The final line for the [example CSV](#example-csv-file) is excluded based on the `Filter` expression.
