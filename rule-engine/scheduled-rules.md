@@ -49,7 +49,7 @@ now.hourOfDay() = 15 AND now.dayOfWeek() = 4
 
 ![](./images/now-condition-new.png)
 
-To restrict the frequency of rule alerts, use the [`last_open`](./functions-alert-history.md#last-open) function to examine the most recent `true` evaluation and control alert behavior on subsequent `true` evaluations.
+To restrict the frequency of rule alerts, use the [`last_open`](./functions-alert-history.md#last_open) function to examine the most recent `true` evaluation and control alert behavior on subsequent `true` evaluations.
 
 Use this function to prevent message flooding for frequently evaluated rules.
 
@@ -98,7 +98,7 @@ Use the `timer_1h` metric under **Filters**
 
 ![](./images/timer-metric-example.png)
 
-By default the database contains predefined 2018 workday calendars for [several countries](../workday-calendar.md#built-in-calendars) but also supports the addition of [custom calendars](./workday-calendar.md#custom-calendars).
+By default the database contains predefined 2018 workday calendars for [several countries](./workday-calendar.md#built-in-calendars) but also supports the addition of [custom calendars](./workday-calendar.md#custom-calendars).
 
 **Example**:
 
