@@ -96,7 +96,7 @@ Ignored Columns | See above screenshot. | Define columns which are not included 
 
 ## Commands
 
-Series commands produced by the above parser configuration based on the [example CSV](#example-csv) are shown below.
+Series commands produced by the above parser configuration based on the [example CSV](#example-csv-file) are shown below.
 
 ```ls
 series e:airnow d:2015-07-09T00:00:00Z m:co=0.12
