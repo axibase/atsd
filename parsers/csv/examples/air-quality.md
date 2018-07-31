@@ -45,16 +45,16 @@ This document describes the configuration of a CSV Parser to read the CSV file a
 
 ### Syntax
 
-* Define columns with **Header** because the underlying document lacks a header row.
+* Define columns with **Header** because the underlying file lacks a header row.
 * Specify entity with **Default Entity** because there is no entity column.
 * Exclude unneeded data, `Longitude` and `Latitude` positions are constant and unneeded.
-* Parses multiple metrics from one row, `Parameter` column contains the names of several metrics which represent the concentration of various particles.
+* Extract multiple metrics from one row, `Parameter` column contains the names of several metrics which represent the concentration of various particles.
 
 ### Configuration
 
-For information on all settings on the **CSV Parser Editor** page, including those not used in this tutorial, refer to the [**Uploading CSV Files**](../README.md) tutorial.
+For information on all settings on the **CSV Parser Editor** page, including those not used in this tutorial, refer to the [Uploading CSV Files](../README.md) tutorial.
 
-Enable the parser, define a unique identifier, specify the output of the parser, and indicate the delimiter symbol.
+Enable the parser, define a unique identifier, specify the command type, and indicate the delimiter symbol.
 
 ![](./images/1.png)
 
@@ -63,7 +63,7 @@ Enable the parser, define a unique identifier, specify the output of the parser,
 |  Enabled  |  Checked  |  Enables CSV parser.<br>Enabled parsers are active and able to be used by Collector  |
 |  Name  | `airnow`  |  Name field identifies a specific parser.<br>This is the name which is referenced by Collector to assign parser tasks.  |
 |  Command Type  | `series`  |  Parsed cells are written in the database as [series commands](https://axibase.com/docs/atsd/api/network/series.html).  |
-|  Delimiter  |  Comma  |  Document columns are separated by commas.  |
+|  Delimiter  |  Comma  |  File columns are separated by commas.  |
 
 ![](./images/2.png)
 
@@ -96,7 +96,7 @@ Ignored Columns | See above screenshot. | Define columns which are not included 
 
 ## Commands
 
-Series commands produced by the above parser configuration are shown below.
+Series commands produced by the above parser configuration based on the [example CSV](#example-csv) are shown below.
 
 ```ls
 series e:airnow d:2015-07-09T00:00:00Z m:co=0.12
