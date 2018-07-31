@@ -124,6 +124,7 @@ Hadoop
 hardcode
 hashcode[s]?
 HBase
+HBase-2
 hdfs
 HFile
 HFiles
@@ -331,7 +332,7 @@ unauthenticated
 uncheck
 [Uu]ncomment
 unescape
-univariate
+[Uu]nivariate
 UniversalHistory
 Unpickling
 untrusted

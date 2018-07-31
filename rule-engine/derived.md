@@ -51,7 +51,7 @@ series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda ms:1532320900000
 ```ls
 series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda ms:1532320900000
 ```
-=======
+
 In addition to including specific command tags by name, use the  `${commandTags}` placeholder to copy all tags in the received command.
 
 | Command | Example |
