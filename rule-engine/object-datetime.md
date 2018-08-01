@@ -12,6 +12,7 @@ The object provides `get()` methods to extract numeric values for the various ca
 * `getDayOfWeek()`
 * `getDayOfYear()`
 * `getHourOfDay()`
+* `getMillis()`
 * `getMillisOfDay()`
 * `getMillisOfSecond()`
 * `getMinuteOfDay()`
@@ -26,12 +27,14 @@ The object provides `get()` methods to extract numeric values for the various ca
 * `getYearOfEra()`
 * `getCenturyOfEra()`
 * `getEra()`
-* `getMillis()`
+
+> The `getMillis()` method returns current time in Unix milliseconds.
+
+## Extended Methods
+
 * `is_weekday()`
 * `is_weekend()`
 * [`add(a, u)`](#add-function)
-
-The `getMillis()` method returns current time in Unix milliseconds.
 
 ## `now` Window Field
 
@@ -40,15 +43,20 @@ The `now` field returns the `DateTime` object that contains **current** server t
 ## `add` function
 
 ```javascript
-add(number a, string u) DateTime
+add(number c, string u) DateTime
 ```
 
-Returns a new [`DateTime`](object-datetime.md) object with added amount `a` of units `u`.
-If `a` is negative, `abs(a)` of units `u` are subtracted from target [`DateTime`](object-datetime.md) object.
+Returns a [`DateTime`](object-datetime.md) object created by adding an interval to the current `DateTime` object. The interval is specified as count `c` of [time units](../api/data/series/time-unit.md) `u`. 
 
-If `a` is a floating-point number, its fractional part are cut off.
+```javascript
+now.add(1, 'hour')
+```
 
-`u` is a case-insensitive [time unit](../api/data/series/time-unit.md) string, both singular and plural forms are supported.
+If count `c` is negative, the interval is subtracted from the current `DateTime` object.
+
+Fractional count `c` is rounded down to the nearest integer.
+
+The [time unit](../api/data/series/time-unit.md) `u` is case-insensitive [time unit](../api/data/series/time-unit.md) and allows both singular and plural forms.
 
 Examples:
 
