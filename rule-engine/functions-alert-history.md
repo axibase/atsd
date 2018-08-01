@@ -14,32 +14,32 @@ The function depends on the [Alert History](logging.md#logging-to-database) logg
 
 ### `RuleAlert` Object
 
-**Field** | **Type** | **Default Value**
-----|-----|-----
-`rule` | string | current rule
-`metric` | string | current metric
-`entity` | string | current entity
-`tags` | map | current tags
-`tags.{tag-name}` | string | current value of `{tag-name}` tag
-`type` | string | current value of `type` tag
-`source` | string | current value of `source` tag
-`keys` | string | current tags
-`timestamp` | long | `0`
-`message` | string | empty string
-`value` | double | `NaN`
-`open_value` | double | `NaN`
-`status` | string | empty string
-`condition` | string | empty string
-`alert_message` | string | empty string
-`alert_duration` | string | empty string
-`alert_duration_interval` | string | empty string
-`alert_open_time` | string | `1970-01-01 00:00:00`
-`alert_open_datetime` | string | `1970-01-01T00:00:00Z`
-`rule_filter` | string | empty string
-`severity` | string | `UNDEFINED`
-`window` | string | empty string
-`repeat_count` | integer | `0`
-`{user-variable-name}` | string | empty string
+**Field** | **Type** | **Default Value** | **Example**
+----|-----|-----|------
+`rule` | string | Rule name | `Active containers by docker host`
+`metric` | string | Metric of command caused the alert | `docker.cpu.avg.usage.total.percent`
+`entity` | string | Entity of command caused the alert | `86465ffe9b7f6fc4dd5108f82404e3c6983f4f4d7709657c5fc3e0e4be674ca2`
+`tags` | map | Tags of command caused the alert | `{"docker-host":"nurswghbs001"}`
+`tags.{tag-name}` | string | `{tag-name}` tag value | `last_open().tags.docker-host`: `nurswghbs001`
+`type` | string | Value of `type` tag | empty string
+`source` | string | Value of `source` tag | empty string
+`keys` | string | Tags of command that caused the alert | `{"docker-host":"nurswghbs001"}`
+`timestamp` | long | `0` | `1533109937000`
+`message` | string | empty string | empty string
+`value` | double | `NaN` | `85.2`
+`open_value` | double | `NaN` | `82.7`
+`status` | string | empty string | `REPEAT`
+`condition` | string | Rule condition | `value > 75`
+`alert_message` | string | empty string | `Container with high cpu usage (85.2): wordpress-load-test`
+`alert_duration` | string | empty string | `00:00:01:00`
+`alert_duration_interval` | string | empty string | `1m:0s`
+`alert_open_time` | string | `1970-01-01 00:00:00` | `2018-08-01 07:51:17`
+`alert_open_datetime` | string | `1970-01-01T00:00:00Z` | `2018-08-01T07:51:17Z`
+`rule_filter` | string | Rule filter | `entity.tags.profile = 'production'`
+`severity` | string | `UNDEFINED` | `WARNING`
+`window` | string | Window expression of the rule | `time (5 minute)`
+`repeat_count` | integer | `0` | `1`
+`{user-variable-name}` | string | empty string | `last_open().cnt`: `2`
 
 ## Examples
 
