@@ -29,12 +29,57 @@ The object provides `get()` methods to extract numeric values for the various ca
 * `getMillis()`
 * `is_weekday()`
 * `is_weekend()`
+* [`add(a, u)`](#add-function)
 
 The `getMillis()` method returns current time in Unix milliseconds.
 
 ## `now` Window Field
 
 The `now` field returns the `DateTime` object that contains **current** server time.
+
+## `add` function
+
+```javascript
+add(number a, string u) DateTime
+```
+
+Returns a new `DateTime` object with added amount `a` of units `u`.
+If `a` is negative, `abs(a)` of units `u` will be subtracted from target `DateTime` object.
+
+If `a` is a floating-point number, its fractional part will be cut off.
+Units `u` are case-insensitive. 
+
+The following units are supported:
+
+**Unit** | **Alias**
+---------|----------
+`NANOS`     | `NANO`, `NANOSECOND`, `NANOSECONDS`
+`MICROS`    | `MICRO`, `MICROSECOND`, `MICROSECONDS`
+`MILLIS`    | `MILLI`, `MILLISECOND`, `MILLISECONDS`
+`SECONDS`   | `SECOND`
+`MINUTES`   | `MINUTE`
+`HOURS`     | `HOUR`
+`HALF_DAYS` | `HALF_DAY`
+`DAYS`      | `DAY`
+`WEEKS`     | `WEEK`
+`MONTHS`    | `MONTH`
+`QUARTERS`  | `QUARTER`
+`YEARS`     | `YEAR`
+`DECADES`   | `DECADE`
+`CENTURIES` | `CENTURY`
+`MILLENIA`  | `MILLENNIUM`
+`ERAS`      | `ERA`
+`FOREVER`   |
+
+Examples:
+
+```javascript
+/* Returns true if tomorrow is a working day. */
+now.add(1, 'day').is_workday()
+
+/* Returns day of week 10 year ago. */
+now.add(-10, 'years').day_of_week
+```
 
 ## Sample Values
 
