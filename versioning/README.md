@@ -103,7 +103,7 @@ Open the **Filters** section and enable **Display Versions** on the **Data > Exp
 
 ![](./resources/4.png)
 
-* Records with version history are highlighted with **blue** and **brown** borders: **blue** border represents the latest value, **brown** border represents a historical, overwritten value.
+* Records with version history are highlighted with **blue** borders. **Blue** border represents the latest value, transparent border represents a historical, overwritten value.
 * `NaN` represents deleted values.
 * Aggregation functions and other calculations ignore historical and deleted values.
 
