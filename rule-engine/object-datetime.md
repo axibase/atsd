@@ -44,10 +44,10 @@ add(number a, string u) DateTime
 ```
 
 Returns a new `DateTime` object with added amount `a` of units `u`.
-If `a` is negative, `abs(a)` of units `u` will be subtracted from target `DateTime` object.
+If `a` is negative, `abs(a)` of units `u` are subtracted from target `DateTime` object.
 
-If `a` is a floating-point number, its fractional part will be cut off.
-Units `u` are case-insensitive. 
+If `a` is a floating-point number, its fractional part are cut off.
+Units `u` are case-insensitive.
 
 The following units are supported:
 
