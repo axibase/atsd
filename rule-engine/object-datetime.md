@@ -44,32 +44,11 @@ add(number a, string u) DateTime
 ```
 
 Returns a new `DateTime` object with added amount `a` of units `u`.
-If `a` is negative, `abs(a)` of units `u` are subtracted from target `DateTime` object.
+If `a` is negative, `abs(a)` of units `u` are subtracted from target [`DateTime`](object-datetime.md) object.
 
 If `a` is a floating-point number, its fractional part are cut off.
-Units `u` are case-insensitive.
 
-The following units are supported:
-
-**Unit** | **Alias**
----------|----------
-`NANOS`     | `NANO`, `NANOSECOND`, `NANOSECONDS`
-`MICROS`    | `MICRO`, `MICROSECOND`, `MICROSECONDS`
-`MILLIS`    | `MILLI`, `MILLISECOND`, `MILLISECONDS`
-`SECONDS`   | `SECOND`
-`MINUTES`   | `MINUTE`
-`HOURS`     | `HOUR`
-`HALF_DAYS` | `HALF_DAY`
-`DAYS`      | `DAY`
-`WEEKS`     | `WEEK`
-`MONTHS`    | `MONTH`
-`QUARTERS`  | `QUARTER`
-`YEARS`     | `YEAR`
-`DECADES`   | `DECADE`
-`CENTURIES` | `CENTURY`
-`MILLENIA`  | `MILLENNIUM`
-`ERAS`      | `ERA`
-`FOREVER`   |
+`u` is a case-insensitive [time unit](../api/data/series/time-unit.md) string, both singular and plural forms are supported.
 
 Examples:
 
