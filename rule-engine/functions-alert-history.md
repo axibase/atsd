@@ -37,7 +37,7 @@ The function depends on the [Alert History](logging.md#logging-to-database) logg
 `alert_open_datetime` | string | `1970-01-01T00:00:00Z` | `2018-08-01T07:51:17Z`
 `rule_filter` | string | Rule filter | `entity.tags.profile = 'production'`
 `severity` | string | `UNDEFINED` | `WARNING`
-`window` | string | Window expression of the rule | `time (5 minute)`
+`window` | string | Window expression of the rule | `time(5 minute)`
 `repeat_count` | integer | `0` | `1`
 `{user-variable-name}` | string | empty string | `last_open().cnt`: `2`
 
