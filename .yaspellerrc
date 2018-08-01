@@ -5,6 +5,7 @@
   "ignoreDigits": true,
   "ignoreUppercase": true,
   "ignoreUrls": true,
+  "ignoreText": "```sql[^`]*?```",
   "format": "markdown",
   "fileExtensions": [
     ".md"

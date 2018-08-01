@@ -78,17 +78,21 @@ function print_modified_markdown_files {
     list_modified_md_files
 }
 
+# deprecated. use docs-util/python-scripts/dictionaries_generator.py instead
 function generate_yaspeller_dictionary {
     cat "$@" | awk '{$1=$1};1' | sort -u | perl -pe 'chomp if eof' | jq -csR 'split("\n")' > .yaspeller-dictionary.json
 }
 
 function install_checkers {
     npm install --global --production yaspeller spellchecker-cli@4.0.0 markdown-link-check remark-cli markdownlint-cli@0.12.0 git+https://github.com/raipc/remark-validate-links.git
-    if [ "$TRAVIS_REPO_SLUG" != "axibase/atsd" ]; then
-        wget https://raw.githubusercontent.com/axibase/atsd/master/.spelling -O .spelling-atsd
-        awk 'FNR==1{print}1' .spelling-atsd .dictionary | sort -u > .spelling
-        if [ ! -f .dictionary ]; then
-            touch .dictionary
+    wget https://raw.githubusercontent.com/axibase/docs-util/master/python-scripts/dictionaries_generator.py -O dictionaries_generator.py
+    if [ "$TRAVIS_REPO_SLUG" == "axibase/atsd" ]; then
+        python3 dictionaries_generator.py --mode=atsd
+    else
+        if [ -f .dictionary ]; then
+            python3 dictionaries_generator.py --mode=legacy
+        else
+            python3 dictionaries_generator.py --mode=default
         fi
         if [ ! -f .markdownlint.json ]; then
             wget https://raw.githubusercontent.com/axibase/atsd/master/.markdownlint.json
@@ -97,7 +101,6 @@ function install_checkers {
             wget https://raw.githubusercontent.com/axibase/atsd/master/.yaspellerrc
         fi
     fi
-    generate_yaspeller_dictionary .spelling
 }
 
 function install_checkers_in_non_doc_project {

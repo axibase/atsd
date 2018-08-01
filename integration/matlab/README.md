@@ -12,7 +12,7 @@
 
 ### Install MatLab
 
-* Install [MatLab](https://www.mathworks.com/products/matlab.html) R2017b with Database Toolbox
+* Install [MatLab](https://www.mathworks.com/products/matlab.html) `R2017b` with Database Toolbox
 
 ### Load Sample Data
 
@@ -109,17 +109,17 @@ The _Database Browser_ displays a set of tables matching the expression:
 
 ![](./resources/database_browser.png)
 
-Select one or more columns to open the Data Preview window displaying the first N rows of the resultset (10 by default).
+Select one or more columns to open the Data Preview window displaying the first N rows of the result set (10 by default).
 
 An example with the `datetime`, `value`, and `text` fields selected:
 
 ![](./resources/prewiew_data.png)
 
-The complete resultset can be imported with the **Import** button, highlighted with a green arrow.
+The complete result set can be imported with the **Import** button, highlighted with a green arrow.
 
 ## Load Data
 
-Execute the SQL query to import the resultset into a MatLab variable:
+Execute the SQL query to import the result set into a MatLab variable:
 
 ```matlab
 sqlquery = "SELECT * FROM gc_time_percent LIMIT 50";
@@ -168,7 +168,7 @@ sqlquery = "SELECT datetime, tags.category, value FROM inflation.cpi.categories.
 curs = exec(conn_atsd, sqlquery);
 % fetch data from cursor
 res = fetch(curs);
-% initialize resultset from data as cell array
+% initialize result set from data as cell array
 prices_resultset = res.Data;
 ```
 
@@ -189,7 +189,7 @@ datetimes = datetimes(1:10:length(datetimes));
 ![](./resources/datetimes_2.png)
 
 ```matlab
-% fetch third column from prices resultset (value field)
+% fetch third column from prices result set (value field)
 % convert column to numeric array
 prices = cell2mat(prices_resultset(:,3));
 ```
@@ -207,9 +207,9 @@ sqlquery = "SELECT tags.category, value FROM inflation.cpi.categories.weight WHE
 curs = exec(conn_atsd, sqlquery);
 % fetch data from cursor
 res = fetch(curs);
-% initialize weights resultset from data as cell array
+% initialize weights result set from data as cell array
 weights_resultset = res.Data;
-% fetch second column from weights resultset (value field)
+% fetch second column from weights result set (value field)
 % convert column to numeric array
 weights = cell2mat(weights_resultset(:,2));
 % repeat weights column for 2017 values (5,1 means that resulting matrix increases in height 5 times)

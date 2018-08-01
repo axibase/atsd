@@ -57,7 +57,7 @@ WHERE datetime >= '2016-06-19T11:00:00.000Z' AND datetime < '2016-06-19T12:00:00
 
 Operators, except `IS NULL` and `IS NOT NULL`, return `NULL` if any operand is `NULL`.
 
-The query returns only two rows, because `(tags.tag1 = 'a' OR tags.tag1 != 'a')` returns `NULL` for entities e-sql-3 and e-sql-4.
+The query returns only two rows, because `(tags.tag1 = 'a' OR tags.tag1 != 'a')` returns `NULL` for entities `e-sql-3` and `e-sql-4`.
 
 ```sql
 SELECT entity, datetime, value, tags.*

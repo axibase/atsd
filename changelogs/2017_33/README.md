@@ -45,7 +45,7 @@ formatInterval(elapsedTime(value)) + " ago"
 ]
 ```
 
-The Limit setting controls the number of samples contained in the resultset.
+The Limit setting controls the number of samples contained in the result set.
 
 #### Issue 4460
 
