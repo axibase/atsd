@@ -52,7 +52,7 @@ now.hourOfDay = 15 &&
 db_statistic('avg', '1 hour', 'temperature', 'sensor-01') > 50
 ```
 
-The above condition is checked once a day, at `15:00`, if the metric is set to `timer_1h`. 
+The above condition is checked once a day, at `15:00`, if the metric is set to `timer_1h`.
 
 If the metric is `timer_15m`, the condition is checked four times a day, at `15:00`, `15:15`, `15:30`, and `15:40`.
 
