@@ -83,7 +83,7 @@ By installing Axibase Time Series Database (ATSD) Standard Edition you agree to 
 
 ## Documentation
 
-* [Documentation](https://axibase.com/docs/atsd)
+* [Documentation](../README.md)
 
 ## Uninstalling ATSD
 
