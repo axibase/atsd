@@ -29,18 +29,18 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 
 Permissions to read and write data for entities in a particular Entity Group are granted to the User Group level.
 
-To read data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
-Groups must be granted a `read` permission to an Entity Group containing the
+To read data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the User
+Groups for the target user must be granted `read` permission to an Entity Group containing the
 entity.
 
 To write data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
 
-![entity group permission](./images/entity_group_permission.png)
+![entity_group_permission](./images/entity_group_permission.png)
 
 *In the following diagram, to read data for entity-30, the user must be either added to user-group-C as a member, or
 entity-group-3 must be assigned to user-group-B or user-group-A.*
 
-![ATSD role hierarchy](./images/atsd_role_hierarchy-2.png)
+![atsd_role_hierarchy](./images/atsd_role_hierarchy-2.png)
 
 ### All Entities Permissions
 
