@@ -43,7 +43,7 @@ The `now` field returns the `DateTime` object that contains **current** server t
 add(number a, string u) DateTime
 ```
 
-Returns a new `DateTime` object with added amount `a` of units `u`.
+Returns a new [`DateTime`](object-datetime.md) object with added amount `a` of units `u`.
 If `a` is negative, `abs(a)` of units `u` are subtracted from target [`DateTime`](object-datetime.md) object.
 
 If `a` is a floating-point number, its fractional part are cut off.
