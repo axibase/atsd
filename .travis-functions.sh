@@ -87,12 +87,12 @@ function install_checkers {
     npm install --global --production yaspeller spellchecker-cli@4.0.0 markdown-link-check remark-cli markdownlint-cli@0.12.0 git+https://github.com/raipc/remark-validate-links.git
     wget https://raw.githubusercontent.com/axibase/docs-util/master/python-scripts/dictionaries_generator.py -O dictionaries_generator.py
     if [ "$TRAVIS_REPO_SLUG" == "axibase/atsd" ]; then
-        python3 dictionaries_generator.py --mode=atsd
+        python dictionaries_generator.py --mode=atsd
     else
         if [ -f .dictionary ]; then
-            python3 dictionaries_generator.py --mode=legacy
+            python dictionaries_generator.py --mode=legacy
         else
-            python3 dictionaries_generator.py --mode=default
+            python dictionaries_generator.py --mode=default
         fi
         if [ ! -f .markdownlint.json ]; then
             wget https://raw.githubusercontent.com/axibase/atsd/master/.markdownlint.json
