@@ -61,3 +61,43 @@ If number of samples in the window exceeds `minimalCount` then smoothing functio
 
 ## Smoothing functions
 
+### AVG: Average
+
+Mean of values within window: sum of values divided by number of values.
+
+### WAVG: Weighted Average
+
+Weighted average of values within window. Weight of the i-th value is proportional to `i`, and sum of weights equals to 1.
+
+```js
+(1 * v1 + 2 * v2 + ... + n * vn) / (1 + 2 + ... + n)
+```
+
+### WTAVG: Weighted Time Average
+
+Let window contains samples `(t1, v1), (t2, v2), ..., (tn, vn)`,
+where `ti` is timestamp of i-th sample measured in milliseconds,
+and `vi` is the sample's value.
+Define `wi = ti - t1 + 1000`.
+We add the puzzling `1000` summand only to make `w1` not zero.
+The smoothing function value for this window equals to
+
+```js
+(w1 * v1 + w2 * v2 + ... + wn * vn) / (w1 + w2 + ... + wn)
+```
+
+> Time Weighted Average (TWA) sounds better.
+
+### EMA: Exponential Moving Average
+
+Let `(t1, v1), (t2, v2), ..., (tn, vn)` are all series samples whose timestamps don't
+exceed `tn`.
+Rolling window is not used for this type of smoothing.
+The smoothed value at time 'tn' is weighted average `w1 * v1 + w2 * v2 + ... + wn * vn`, where weights are positive and sum up to 1.
+The biggest weight is the last one:
+
+<code>
+wn = 1 - exp<sup>-(t<sub>n</sub> - t<sub>n-1</sub>)/r</sup>
+</code>,
+where `r` is value specified in the `range` parameter.
+So the less `range` the more weight `wn` of the latest series value.
