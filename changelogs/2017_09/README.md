@@ -21,7 +21,7 @@
 | [3932](#issue-3932) | json            | Feature | Allowed for [JSON Path](https://github.com/jayway/JsonPath#operators) expressions in **Custom Tags** field.                          |
 | 3829 | scheduler       | Bug     | Disabled **Run** button if a job if running.                                 |
 | [3817-a](#issue-3817-a) | socrata         | Feature | Added an option to skip resending of already processed data.                         |
-| [3817-b](#issue-3817-b) | socrata         | Feature | Added the **Query Filter** field to filter rows in a resultset.                         |
+| [3817-b](#issue-3817-b) | socrata         | Feature | Added the **Query Filter** field to filter rows in a result set.                         |
 
 ## Charts
 

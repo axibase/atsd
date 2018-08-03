@@ -26,7 +26,7 @@ As an alternative, the query can be submitted as text payload with `Content-Type
 
 ## Response
 
-The response contains resultset metadata in JSON format to assist JDBC drivers and API clients in processing query results.
+The response contains result set metadata in JSON format to assist JDBC drivers and API clients in processing query results.
 
 The metadata is specified as JSON-LD (JSON linked data) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/).
 

@@ -71,7 +71,7 @@ Both fixed and editable parameter values can include placeholders.
 ## Examples
 
 * Register service incident in [PagerDuty](custom-pagerduty.md)
-* Update [Github issue](custom-github.md)
+* Update [GitHub issue](custom-github.md)
 * Post comment to [Zendesk ticket](custom-zendesk.md)
 * Send SMS message via [IFTTT](custom-ifttt.md)
 * Trigger [CircleCI project build](custom-circleci.md)

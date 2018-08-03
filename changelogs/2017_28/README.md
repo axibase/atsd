@@ -19,7 +19,7 @@ The [`DBTIMEZONE`](../../sql/README.md#dbtimezone) function returns the current 
 
 ### Issue 4360
 
-A custom aggregation function such as `MAX` can now be selected in **Forecast** settings. Previously only supported `AVG` function. Aggregation functions are applied to regularize the underlying time series prior to applying Holts-Winters or ARIMA algorithms.
+A custom aggregation function such as `MAX` can now be selected in **Forecast** settings. Previously only supported `AVG` function. Aggregation functions are applied to regularize the underlying time series prior to applying Holt-Winters or ARIMA algorithms.
 
 #### AVG
 

@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
 | [4085a](#issue-4085a) | UI | Feature | Add date formatting options in the [SQL Console](../../sql/sql-console.md). |
-| 4085b | UI | Feature | Implement client-side number and date formatting in the [SQL Console](../../sql/sql-console.md) to avoid reloading the resultset. |
+| 4085b | UI | Feature | Implement client-side number and date formatting in the [SQL Console](../../sql/sql-console.md) to avoid reloading the result set. |
 | 4148 | UI | Bug | Fix formatting errors in the [SQL Console](../../sql/sql-console.md) related to `datetime` columns incorrectly qualified as numeric. |
 | 4137 | UI | Bug | Fix parsing of non-numeric values in the [SQL Console](../../sql/sql-console.md). |
 | 4114 | UI | Bug | Add a prefix to custom query names stored in local storage by the **Data > API Client**.  |
