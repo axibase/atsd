@@ -183,7 +183,7 @@ Note that the Yarn interface is stopped automatically once the job is finished.
 Once the job is complete, the `migration.log` file contains the following message:
 
 ```txt
-17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 45 minutes.
+17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsed time: 45 minutes.
 ```
 
 ## Deploy ATSD Coprocessors

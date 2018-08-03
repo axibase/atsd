@@ -24,13 +24,33 @@ Command templates can include plaintext and [placeholders](placeholders.md).
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-Other metrics can be referenced with the [`value('name')`](functions-value.md#value), [`db_last`](functions-series.md#db_laststring-m), and [`db_statistic`](functions-series.md#db_statistic) functions.
+Calculated metrics can reference other metrics using [`db_last`](functions-series.md#db_laststring-m), [`db_statistic`](functions-series.md#db_statistic), and [`value`](functions-value.md#value) functions.
 
 ```bash
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}
 ```
 
+```bash
+series e:${entity} m:${metric}_percent=${value / value('total') * 100.0} ms:${timestamp}
+```
+
 ### Tags
+
+A special placeholder `${commandTags}` is provided to print out all command tags in the [Network API](../api/network/series.md#syntax) syntax. Use it to append all tags to the command without knowing the tag names in advance.
+
+```bash
+series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
+```
+
+The above expression transforms the input command into a derived command as follows:
+
+```ls
+series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda ms:1532320900000
+```
+
+```ls
+series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda ms:1532320900000
+```
 
 In addition to including specific command tags by name, use the  `${commandTags}` placeholder to copy all tags in the received command.
 
@@ -53,13 +73,13 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags}
 Alternatively, use the [`now`](window-fields.md#date-fields) placeholder to access current server time.
 
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.getMillis()}
+series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.millis}
 ```
 
 To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical) function and the `s:` seconds parameter:
 
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMillis()/1000)}
+series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.millis/1000)}
 ```
 
 #### Received Time
