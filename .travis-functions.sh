@@ -13,7 +13,7 @@ function spellcheck {
             yaspeller --max-requests 10 --dictionary .yaspeller-dictionary.json -e ".md" ./
             yaspeller_exit_code=$?
             if [ "$1" != "--single" ]; then
-                spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files '**/*.md'
+                spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionaries .spelling --files '**/*.md'
             else 
                 return $yaspeller_exit_code
             fi
@@ -21,7 +21,7 @@ function spellcheck {
             list_modified_md_files | xargs -d '\n' -n1 yaspeller --dictionary .yaspeller-dictionary.json {}
             yaspeller_exit_code=$?
             if [ "$1" != "--single" ]; then
-                list_modified_md_files | xargs -d '\n' -n1 spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionary=.spelling --files {}
+                list_modified_md_files | xargs -d '\n' -n1 spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionaries .spelling --files {}
             else 
                 return $yaspeller_exit_code
             fi
@@ -78,17 +78,21 @@ function print_modified_markdown_files {
     list_modified_md_files
 }
 
+# deprecated. use docs-util/python-scripts/dictionaries_generator.py instead
 function generate_yaspeller_dictionary {
     cat "$@" | awk '{$1=$1};1' | sort -u | perl -pe 'chomp if eof' | jq -csR 'split("\n")' > .yaspeller-dictionary.json
 }
 
 function install_checkers {
-    npm install --global --production yaspeller spellchecker-cli markdown-link-check remark-cli git+https://github.com/raipc/remark-validate-links.git git+https://github.com/VeselovAlex/markdownlint-cli.git#custom-rules
-    if [ "$TRAVIS_REPO_SLUG" != "axibase/atsd" ]; then
-        wget https://raw.githubusercontent.com/axibase/atsd/master/.spelling -O .spelling-atsd
-        awk 'FNR==1{print}1' .spelling-atsd .dictionary | sort -u > .spelling
-        if [ ! -f .dictionary ]; then
-            touch .dictionary
+    npm install --global --production yaspeller spellchecker-cli@4.0.0 markdown-link-check remark-cli markdownlint-cli@0.12.0 git+https://github.com/raipc/remark-validate-links.git
+    wget https://raw.githubusercontent.com/axibase/docs-util/master/python-scripts/dictionaries_generator.py -O dictionaries_generator.py
+    if [ "$TRAVIS_REPO_SLUG" == "axibase/atsd" ]; then
+        python dictionaries_generator.py --mode=atsd
+    else
+        if [ -f .dictionary ]; then
+            python dictionaries_generator.py --mode=legacy
+        else
+            python dictionaries_generator.py --mode=default
         fi
         if [ ! -f .markdownlint.json ]; then
             wget https://raw.githubusercontent.com/axibase/atsd/master/.markdownlint.json
@@ -97,7 +101,6 @@ function install_checkers {
             wget https://raw.githubusercontent.com/axibase/atsd/master/.yaspellerrc
         fi
     fi
-    generate_yaspeller_dictionary .spelling
 }
 
 function install_checkers_in_non_doc_project {

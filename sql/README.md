@@ -3113,7 +3113,7 @@ While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabil
 * Self-joins are not supported.
 * `LEFT OUTER JOIN` and `RIGHT OUTER JOIN` queries are not supported.
 * Subqueries are supported only by the `BETWEEN` operator applied to the `time` and `datetime` columns.
-* `UNION`, `EXCEPT` and `INTERSECT` operators are not supported. Query [atsd_series](examples/select-atsd_series.md) table as a `UNION ALL` alternative.
+* `UNION`, `EXCEPT` and `INTERSECT` operators are not supported. Query [`atsd_series`](examples/select-atsd_series.md) table as a `UNION ALL` alternative.
 * In case of division by zero, the database returns `NaN` according to the IEEE 754-2008 standard instead of terminating processing with a computational error.
 * The `WITH` operator is supported only in the following clauses: `WITH ROW_NUMBER`, `WITH INTERPOLATE`.
 * The `DISTINCT` operator is not supported and can be emulated with the `GROUP BY` clause in specific cases.

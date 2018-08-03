@@ -56,7 +56,7 @@ Syntax:
 * `exec("SqlStmt")` allows to issue an SQL SELECT statement to generate a table to be read into Stata.
 * `bigintasdouble` specifies that data stored in 64-bit integer (BIGINT) database columns be converted to Stata doubles.
 
-Description of resultset:
+Description of result set:
 
 ![](./resources/describe_example_1.png)
 
@@ -67,7 +67,7 @@ generate double datetime = time + tC(01jan1970 00:00:00)
 format %tcCCYY-NN-DD!THH:MM:SS.sss!Z datetime
 ```
 
-Description of resultset:
+Description of result set:
 
 ![](./resources/describe_example_2.png)
 
@@ -214,7 +214,7 @@ Preview the dataset:
 
 ### Insert Data into ATSD
 
-Resultset description:
+Result set description:
 
 ![](./resources/resultset_desc.png)
 

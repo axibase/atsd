@@ -1,6 +1,6 @@
 # Versioning
 
-Versioning enables tracking of time-series value changes for the purpose of audit trail and data reconciliation.
+Versioning tracks time series value changes for the purpose of audit trail and data reconciliation.
 
 The capability is required for vertical applications such as Energy Data Management.
 
@@ -11,7 +11,7 @@ Once enabled, the database tracks changes made to stored values with the followi
 | Field Name | Description |
 | --- | --- |
 |  Version Time  |  Timestamp when insert command is received. Set automatically by ATSD server with millisecond precision.  |
-|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
+|  Version Source  |  User-defined field to track the source of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
 |  Version Status  |  User-defined field to classify change events. <br> Set to `invalid` for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
 > The ability to specify custom fields with server-side business logic such as change locking, is under development.
@@ -20,11 +20,11 @@ Once enabled, the database tracks changes made to stored values with the followi
 
 Versioning is **disabled** by default.
 
-It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to **Yes** in the multi-record editor, or by enabling **Versioning** in the **Metric Editor**.
+Enable versioning for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to **Yes** in the multi-record editor or enabling **Versioning** in the **Metric Editor**.
 
 ![](./resources/1.png)
 
-In addition, **Invalid Value Action** can be set to `SET_VERSION_STATUS` to initialize the **Version Status** field with an `invalid` value if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
+Additionally, set **Invalid Value Action** to `SET_VERSION_STATUS` to initialize **Version Status** as `invalid` if the inserted sample is not a valid number or is outside of the specified minimum and maximum bounds.
 
 ## Inserting Version Fields
 
@@ -44,7 +44,7 @@ Options to insert versioned series:
 
 ### Network Commands
 
-To insert versioned samples, use the [series](../api/network/series.md) command with the version tags:
+To insert versioned samples, use a [series](../api/network/series.md) command with the version tags:
 
 ```ls
 series e:{entity} m:{metric}={number} t:$version_status={status} t:$version_source={source} d:{iso-date}
@@ -52,7 +52,7 @@ series e:{entity} m:{metric}={number} t:$version_status={status} t:$version_sour
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric causes a validation error.
-> * If the command refers to a new metric, such metric automatically created with **Versioning** set to **Yes**.
+> * If the command refers to a new metric, the metric is created automatically with **Versioning** and set to **Yes**.
 
 Example:
 
@@ -62,11 +62,11 @@ series e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1 d
 
 ### Data Entry Form
 
-Versioned samples can be added by opening **Data > Data Entry > Series** form and specifying versioning tags:
+Add versioned samples by opening the form at **Data > Data Entry > Series** and specifying versioning tags:
 
 ![](./resources/8.png)
 
-> Note: **Metric** field must reference an existing metric with _Versioning = Yes_
+> Note: **Metric** field must reference an existing metric with **Versioning = Yes**
 
 ### CSV Parser using Default Tags
 
@@ -81,7 +81,7 @@ $version_source={source}
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric causes a validation error.
-> * If the command refers to a new metric, such metric is automatically created with **Versioning** set to **Yes**.
+> * If the command refers to a new metric, such metric is automatically created with **Versioning = Yes**.
 
 ### CSV Parser using Renamed Columns
 
@@ -95,15 +95,15 @@ To extract versioning fields from CSV content, add the version tags to the **Tag
 
 ## View Versions
 
-Version history can be retrieved on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page or via a scheduled [Export Job](../reporting/scheduled-exporting.md).
+Retrieve version history on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page or via scheduled [Export Job](../reporting/scheduled-exporting.md).
 
 ### Ad-hoc Export page
 
-Open the **Filters** section and enable **Display Versions** setting on the **Data > Export** page.
+Open the **Filters** section and enable **Display Versions** on the **Data > Export** page.
 
 ![](./resources/4.png)
 
-* Records with version history are highlighted with **blue** and **brown**-colored borders: **blue** border represents the latest value, **brown** border represents a historical, overwritten value.
+* Records with version history are highlighted with **blue** borders. **Blue** border represents the latest value, transparent border represents a historical, overwritten value.
 * `NaN` represents deleted values.
 * Aggregation functions and other calculations ignore historical and deleted values.
 
@@ -114,9 +114,9 @@ Open the **Filters** section and enable **Display Versions** setting on the **Da
 |**Revisions Only** |Displays only modified values.|
 |**Version Filter**| An expression to filter version history.<br>The expression can contain the `version_source`, `version_status` and `version_time` fields.<br>The `version_time` field supports [calendar](../shared/calendar.md) syntax using the `date()` function.<br> The `version_source` and `version_status` fields support wildcards.<br> To view the deleted values use `Double.isNaN(value)` method in the [Value Filter](../reporting/ad-hoc-exporting.md#ad-hoc-export-settings) field.|
 
-Examples:
+**Examples**:
 
-* Match using wildcards
+* Match using wildcards.
 
 ```ls
 version_source LIKE 'col*'
@@ -124,7 +124,7 @@ version_source LIKE 'col*'
 
     ![](./resources/5.png)
 
-* Match using date function
+* Match using date function.
 
 ```ls
 version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
@@ -132,7 +132,7 @@ version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
 
     ![](./resources/6.png)
 
-* Match using exact value
+* Match using exact value.
 
 ```ls
 version_status = 'OK'
@@ -140,7 +140,7 @@ version_status = 'OK'
 
     ![](./resources/7.png)
 
-* Display only modified values
+* Display only modified values.
 
     ![](./resources/17.png)
 
@@ -174,7 +174,7 @@ Note that the current value for the selected timestamp is not deleted. Instead, 
 
 ![](./resources/13.png)
 
-A value can also be deleted using the selection checkbox and **Delete** button on the **Data > Export** page.
+A value can also be deleted by selecting the value checkbox clicking **Delete** on the **Data > Export** page.
 
 ![](./resources/14.png)
 
