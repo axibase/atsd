@@ -12,9 +12,9 @@ Each calendar is assigned a unique key and can be accessed in rules and SQL quer
 
 ### Rule Engine
 
-* [`is_workday`](object-datetime.md#is_workday) function
-* [`is_weekday`](object-datetime.md#is_weekday) function
-* [`is_weekend`](object-datetime.md#is_weekend) function
+* [`is_workday`](object-datetime.md#is_workday-function) function
+* [`is_weekday`](object-datetime.md#is_weekday-function) function
+* [`is_weekend`](object-datetime.md#is_weekend-function) function
 * [`DateTime`](object-datetime.md#fields) fields: `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day`.
 
 ```javascript
