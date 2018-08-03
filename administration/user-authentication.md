@@ -1,24 +1,24 @@
 # User Authentication
 
-Authentication mechanisms implemented in ATSD control how users verify their identity when accessing protected resources such as web pages and API endpoints.
+Authentication mechanisms implemented in ATSD control how users verify their identity when accessing protected resources such as web pages or API endpoints.
 
 ## Authentication Mechanisms
 
 ### Form-based Authentication
 
-When an unauthenticated user requests access to a protected view in the web interface, the server redirects the user to a login page containing user name and password fields.
+When an unauthenticated user attempts to access a protected view in the web interface, the server redirects the user to a login page containing username and password fields.
 
 The user is granted access if the account for the specified username exists and the password is correct.
 
-The **[Remember Me]** option on the login form, when activated, stores the submitted username in local browser cache for convenience.
+When activated, the **Remember Me** option on the login form stores the submitted username in local browser cache.
 
 ### HTTP Basic Authentication
 
 A HTTP request to an API URL `/api/*` is required to include an `Authorization` header with type `Basic`. See [examples](#http-basic-authorization-examples) below.
 
-If the `Authorization` header is missing, the client is prompted to provide user name and password.
+If the `Authorization` header is missing, the client is prompted to provide username and password.
 
-Once the credentials are verified, subsequent API requests within the same session can be executed without repetitive authentication.
+Once credentials are verified, subsequent API requests within the same session are executed without repetitive authentication.
 
 ## User Account Types
 
@@ -28,7 +28,7 @@ The user account can be configured to use either **Local** or **LDAP** authentic
 
 ### Local Accounts
 
-In case of **Local** authentication, ATSD stores the hashcode of the user password in the underlying HBase database.
+When using **Local** authentication, ATSD stores the hashcode of the user password in the underlying HBase database.
 
 The user identity is verified if the hashcode of the submitted password matches the stored hashcode for the specified username.
 
@@ -36,11 +36,11 @@ The password is subject to the requirements outlined [below](#password-requireme
 
 ### LDAP Accounts
 
-In case of **LDAP** authentication, ATSD verifies that the account exists in ATSD and the password is confirmed by submitting an authentication request to the remote LDAP server.
+When using **LDAP** authentication, ATSD verifies that the account exists in ATSD and the password is confirmed by submitting an authentication request to the remote LDAP server.
 
-If the LDAP server locates the specified account and confirms its password, the user is allowed to access ATSD.
+If the LDAP server locates the specified account and confirms its password, the user is allowed access to ATSD.
 
-The access is denied if the LDAP server cannot find the account or if the LDAP account is locked, disabled, or password change is required.
+The access is denied if the LDAP server cannot find the account or if the LDAP account is locked, disabled, or requires password change.
 
 ## Password Requirements
 
@@ -48,25 +48,25 @@ The following password rules apply to **Local** accounts:
 
 * Password must contain at least **six** (`6`) characters by default.
 
-* The default minimum length can be adjusted in the `server.properties` file with the `user.password.min.length` setting.
+* Adjust the default minimum length in the `server.properties` file with the `user.password.min.length` setting.
 
-* Passwords are case-sensitive.
+* Passwords are **case-sensitive**.
 
 * Password can contain the following characters:
 
-  * Unicode character categorized as an alphanumeric character.
+  * Any unicode character categorized as an alphanumeric character.
 
   * Special characters:
 
 ```txt
-~!@#$%^&*_-+=`|\(){}[]:;”‘<>,.?/"'
+~ ! @ # $ % ^ & * _ - + = ` | \ ( ) { } [ ] : ; ” ‘ < > , . ? / " '
 ```
 
 ## Built-in Account
 
-* When accessed for the first time after the installation, the database presents a web page for configuring the default administrator account. This account is granted an `ADMIN` role which has `All Entities: Read` and `All Entities: Write` permissions.
+* When accessed for the first time after installation, the database presents a configuration web page for the default administrator account. This account is granted an `ADMIN` role with `All Entities: Read` and `All Entities: Write` permissions.
 
-## Changing the Password
+## Changing a Password
 
 * Users with Local accounts can modify their password by clicking on the user icon in the top menu.
 
@@ -86,11 +86,11 @@ The following password rules apply to **Local** accounts:
 
 ## Guest Access to Data API
 
-To enable anonymous access to Data API query methods, set `api.guest.access.enabled=true` in the `server.properties` file and restart the ATSD process.
+To enable anonymous access to Data API query methods, set `api.guest.access.enabled=true` in the `server.properties` file and restart ATSD.
 
 ## Guest Access to Portals
 
-To expose the portal to all visitors, open the **Portals** tab in the top menu, click **Configure**, open the portal editor and check the **Guest Access** field.
+To expose the portal to visitors, open the **Portals** tab in the top menu, click **Configure**, open the portal editor and check **Guest Access**.
 
 Since charts displayed in the portals are loaded via Data API, the **Guest Access** option is available only when Data API is configured for anonymous access.
 
@@ -98,7 +98,7 @@ Since charts displayed in the portals are loaded via Data API, the **Guest Acces
 
 ## Guest Access to SQL Reports
 
-SQL query results can be published to all visitors by checking the **Guest Access** field on the query configuration page.
+Make SQL query results visible to visitors by checking the **Guest Access** field on the query configuration page.
 
 ![SQL guest](./images/sql-guest-access.png)
 
@@ -133,18 +133,18 @@ curl https://atsd_hostname:8443/api/v1/properties/query \
 
 **Code** | **Description**
 ---|---
-01 | General Server Error
-02 | Username Not Found
-03 | Bad Credentials
-04 | Disabled LDAP Service
-05 | Corrupted Configuration
-06 | MS Active Directory
-07 | Account Disabled
-08 | Account Expired
-09 | Account Locked
-10 | Logon Not Permitted At Time
-11 | Logon Not Permitted At Workstation
-12 | Password Expired
-13 | Password Reset Required
-14 | Wrong IP Address
-15 | Access Denied
+`01` | General Server Error
+`02` | Username Not Found
+`03` | Bad Credentials
+`04` | Disabled LDAP Service
+`05` | Corrupted Configuration
+`06` | MS Active Directory
+`07` | Account Disabled
+`08` | Account Expired
+`09` | Account Locked
+`10` | Logon Not Permitted At Time
+`11` | Logon Not Permitted At Workstation
+`12` | Password Expired
+`13` | Password Reset Required
+`14` | Wrong IP Address
+`15` | Access Denied
