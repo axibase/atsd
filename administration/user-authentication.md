@@ -54,7 +54,7 @@ The following password rules apply to **Local** accounts:
 
 * Password can contain the following characters:
 
-  * Any unicode character categorized as an alphanumeric character.
+  * Any Unicode character categorized as an alphanumeric character.
 
   * Special characters:
 
