@@ -54,7 +54,7 @@ Issue| Category    | Type    | Subject
 4942 | rule engine | Bug | Fix markdown escaping in [Telegram](../../rule-engine/notifications/telegram.md).
 4941 | entity_views | Feature | Add link to multi-entity [portal](../../configuration/entity_views.md#portal) to sub-groups.
 4936 | rule engine | Bug | Implement [`getEntities`](../../rule-engine/functions-lookup.md#getentities) and [`getEntityCount`](../../rule-engine/functions-lookup.md#getentitycount) functions.
-4930 | documentation | Bug | Window [duration](../../rule-engine/window.md#time-based-windows) definition.
+4930 | documentation | Bug | Window [duration](../../rule-engine/window.md#time-windows) definition.
 4907 | statistics | Feature | Create a new rule from the **Series statistics** page.
 4906 | rule editor | Feature | Move detailed error from title into a dialog.
 4904 | rule editor | Feature | Inherit webhook settings from [**On Open**](../../rule-engine/email.md#enable-notifications) trigger.
