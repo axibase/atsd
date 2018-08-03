@@ -32,7 +32,7 @@ Choose **Receive a web request**.
 
 ![](./images/ifttt_applet_6.png)
 
-Enter an event name such as **atsd_custom_trigger** and click **Create trigger**.
+Enter an event name such as **`atsd_custom_trigger`** and click **Create trigger**.
 
 ![](./images/ifttt_applet_7.png)
 

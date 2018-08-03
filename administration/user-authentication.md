@@ -100,7 +100,7 @@ Since charts displayed in the portals are loaded via Data API, the **Guest Acces
 
 SQL query results can be published to all visitors by checking the **Guest Access** field on the query configuration page.
 
-![sql guest](./images/sql-guest-access.png)
+![SQL guest](./images/sql-guest-access.png)
 
 > Note that guest access to Data API is not required in this case.
 
