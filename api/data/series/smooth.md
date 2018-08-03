@@ -19,10 +19,11 @@ This example performs moving average smoothing with 1-hour sliding window.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `type` | string | [**Required**] Smoothing function. Available functions: `AVG`. |
+| `type` | string | [**Required**] [Smoothing function.](#smoothing-functions) Available functions: `AVG`, `WAVG`, `WTAVG`, `EMA`. |
 | `count` | number | [**Required if the `interval` is not specified**] Number of series samples within regular window. |
 | `interval` | object | [**Required if the `count` is not specified**] Sliding window duration specified as count and time unit. |
 | `minimalCount` | number | Threshold which triggers calculation of the smoothing function for a window. View the [processing](#processing) section for details. <br> Default: `0` if the `interval` parameter is specified, and equals to value of the `count` otherwise. |
+| `range` | double | [Required for the `EMA`] Regulates the smoothing function flatness. |
 | `order` | integer | Controls the order of smoothing in the sequence of other series [transformations](./query.md#transformations).<br>Default: `0`.|
 
 > Specify exactly one of the `count` and `interval` parameters.
@@ -57,3 +58,6 @@ The window is overflown if `v - u > interval`.
 
 The `count` parameter determines this type of window.
 If number of samples in the window exceeds `minimalCount` then smoothing function is calculated for the window. If the number of samples is more than `count` then the window considered as overflown.
+
+## Smoothing functions
+
