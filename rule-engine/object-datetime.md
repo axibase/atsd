@@ -2,15 +2,16 @@
 
 ## Overview
 
-The `DateTime` object represents a specific date and time in the **server** time zone.
+`DateTime` object represents a specific date and time in the **server** time zone and provides fields and functions to extract various calendar units.
 
 ## Fields
 
-* `millis`
 * `day_of_week`
+* `dayOfWeek`
 * `dayOfMonth`
 * `dayOfYear`
 * `hourOfDay`
+* `millis`
 * `millisOfDay`
 * `millisOfSecond`
 * `minuteOfDay`
@@ -29,7 +30,7 @@ The `DateTime` object represents a specific date and time in the **server** time
 * `next_non_working_day`
 * `previous_non_working_day`
 
-The `millis` field returns time in Unix milliseconds.
+The `millis` field returns Unix time in milliseconds.
 
 `next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` fields are based on the calendar specified in `default.holiday.calendar` server property.
 
@@ -44,11 +45,40 @@ The `millis` field returns time in Unix milliseconds.
 
 ## Functions
 
-* [`is_weekday`](#is_weekday)
-* [`is_weekend`](#is_weekend)
-* [`is_workday`](#is_workday)
+* [`add`](#add-function)
+* [`is_weekday`](#is_weekday-function)
+* [`is_weekend`](#is_weekend-function)
+* [`is_workday`](#is_workday-function)
 
-### `is_weekday`
+### `add` Function
+
+```javascript
+add(number c, string u) DateTime
+```
+
+Returns a [`DateTime`](object-datetime.md) object created by adding an interval to the current `DateTime` object. The interval is specified as count `c` of [time units](../api/data/series/time-unit.md) `u`.
+
+```javascript
+now.add(1, 'hour')
+```
+
+If count argument `c` is negative, the interval is subtracted from the current `DateTime` object.
+
+Fractional count argument `c` is rounded down to the nearest integer.
+
+The [time unit](../api/data/series/time-unit.md) `u` is case-insensitive [time unit](../api/data/series/time-unit.md) and allows both singular and plural forms.
+
+**Examples**:
+
+```javascript
+/* Returns true if tomorrow is a working day. */
+now.add(1, 'day').is_workday()
+
+/* Returns day of week 10 year ago. */
+now.add(-10, 'years').day_of_week
+```
+
+### `is_weekday` Function
 
 ```javascript
 is_weekday( [string c] ) boolean
@@ -60,7 +90,7 @@ If country cannot be resolved by country code, returns `true` if day of week is 
 If country code is not specified, the database uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from the `user.country` system property.
 
-### `is_weekend`
+### `is_weekend` Function
 
 ```javascript
 is_weekend( [string c] ) boolean
@@ -72,7 +102,7 @@ If country cannot be resolved by country code, returns `true` if day of week is 
 If country code is not specified, the database uses the `default.holiday.calendar` server property.
 By default `default.holiday.calendar` resolves country code from the `user.country` system property.
 
-### `is_workday`
+### `is_workday` Function
 
 ```javascript
 is_workday( [string c] ) boolean
