@@ -2,11 +2,11 @@
 
 ## Overview
 
-Workday Calendar is a data structure that contains a list of exceptions to the regular workday calendar such as observed holidays and weekend working days.
+Workday Calendar contains a list of dates that represent exceptions to the regular workday calendar such as observed holidays and weekend working days.
 
-The list can be associated with a country, a region, an industry, or a specific organization, such as a stock exchange, a religious institution, or a school district.
+The list can be associated with a country, a region, a specific organization, such as a stock exchange or a school district.
 
-Each calendar is assigned a unique key and can be accessed in rules and SQL queries by key to check if the given day is a working day based on the actual observed calendar.
+Each calendar is assigned a unique key and can be accessed by key in the rule engine and SQL queries to check if the given day is a working day based on the actual observed calendar.
 
 ## Usage
 
@@ -80,13 +80,12 @@ Define new calendars in JSON format according to the following [schema](workday-
 
 The country name is specified as the [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
 
-Each exception day in the calendar is classified with the `Holiday` or `Workday` type.
+Each exception in the list is classified as `Holiday` or `Workday`:
 
-The `Holiday` type is assigned when the regular working day becomes a non-working day based on observance. Conversely, a regular weekend day which is changed to a working day due to calendar optimizations is classified as a `Workday`.
+* The `Holiday` type is assigned when the regular working day becomes a non-working day based on observance.
+* A regular weekend day which is changed to a working day due to calendar optimizations is classified as a `Workday`.
 
-The `Description` field is optional.
-
-When loaded into the database from a JSON file, the calendar becomes accessible under the calendar key which is based on the file name excluding the `.json` extension.
+When loaded into the database, the calendar is accessible under the calendar key which is based on the file name excluding the `.json` extension.
 
 The calendar file can include days for any number of years.
 

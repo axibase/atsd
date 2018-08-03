@@ -45,7 +45,7 @@ Examples:
 
 ```javascript
 // returns true on Thursdays at anytime between 15:00 and 16:00 (exclusive)
-now.dayOfWeek == 'Thursday' && now.hourOfDay == 15
+now.day_of_week == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
@@ -257,7 +257,7 @@ date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS Z
 to_datetime(long t) DateTime
 ```
 
-Returns [`DateTime`](object-datetime.md) object constructed from Unix milliseconds `t`.
+Returns [`DateTime`](object-datetime.md) object constructed from Unix time in milliseconds `t`.
 
 Example:
 
