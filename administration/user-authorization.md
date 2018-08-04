@@ -76,15 +76,15 @@ The permission to view all portals is automatically granted to users with `ADMIN
 
 ## User Wizards
 
-To simplify the process of creating user account for typical use cases, the database provides wizards to create a **webhook** user and a **collector** user.
+To simplify the process of creating user account for typical use cases, the database provides wizards to create a **webhook** user, a **collector** user, and a **resource viewer** user.
+
+To create a new user with a wizard, open the **Settings > Users** page and select one of **Create User** options from the split-button located below the **Users** table.
 
 ### Webhook User
 
-The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/data/messages/webhook.md) endpoint and requires only the `API_DATA_WRITE` role and `write` permissions for one specific entity.
+The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/data/messages/webhook.md) endpoint and is granted the `API_DATA_WRITE` role and `write` permissions for **one** specific entity.
 
-To create a new user of this type, open the **Settings > Users** page and select **Create Webhook User** option from the split-button located below the **Users** table.
-
-![](./images/webhook-user.png)
+![](./images/wizard-webhook.png)
 
 The wizard automatically creates a new user account, user and entity groups and grants necessary permissions.
 
@@ -92,17 +92,23 @@ The wizard automatically creates a new user account, user and entity groups and 
 
 ### Collector User
 
-The **collector** user inserts data of all types (series, properties, and messages) for many entities, including new entities, and requires both the `API_DATA_WRITE` and `API_META_WRITE` roles and `write` permissions for all entities.
+The **collector** user inserts data of all types (series, properties, and messages) for many entities, including new entities, and is granted the `API_DATA_WRITE` and `API_META_WRITE` roles and `write` permissions for **all** entities.
 
 The instruments inserting data under the **collector** account are typically located within a specific network segment and an option to specify the allowed IP range can be used to enhance access security.
 
-To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split-button located below the **Users** table.
-
-![](./images/collector-user-wizard.png)
+![](./images/wizard-data-user.png)
 
 The wizard creates a new user account automatically and makes it a member of the `Data Collectors` user group with `All Entities: Write` permission.
 
 ![](./images/collector-user-permissions.png)
+
+### Resource Viewer User
+
+This user is created with the `USER` role and random-generated password. A corresponding user group with `read` permissions to entity groups selected on the wizard form is created automatically.
+
+![](./images/wizard-resource-viewer.png)
+
+![](./images/wizard-resource-viewer-result.png)
 
 ## Implementation Notes
 
