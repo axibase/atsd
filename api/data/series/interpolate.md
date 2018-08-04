@@ -4,13 +4,13 @@
 
 Interpolation transforms an input time series to a regularized series by calculating values at evenly spaced intervals using a linear or step function.
 
-This process is outlined below:
+The interpolation process performed by the database is outlined below:
 
-1. Database loads samples for the selection interval specified with `startDate` and `endDate` parameters.
+1. Load samples for the selection interval specified with `startDate` and `endDate` parameters.
 2. If `OUTER` boundary mode is enabled, load one value before and one value after the selection interval to interpolate leading and trailing values.
 3. Create evenly spaced timestamps within the selection interval. The timestamps can be aligned to a calendar or start/end time of the selection interval.
-4. For each timestamp, ATSD calculates the value from the two nearest neighbor samples using `linear` or `step` interpolation function.
-5. If `fill` parameter is enabled, missing leading and trailing values are added by the database.
+4. For each timestamp, calculate the value from the two nearest neighbor samples using `linear` or `step` interpolation function.
+5. If `fill` parameter is enabled, add missing leading and trailing values.
 
 ## Fields
 
@@ -39,16 +39,16 @@ This process is outlined below:
 | `PREVIOUS`  | Sets a value equal to the previous value. |
 | `AUTO`  | Applies the interpolation function specified in the metric [interpolate](../../meta/metric/list.md#fields) field. Default: `LINEAR`.  |
 
-> Detailed values with timestamps that are equal to interpolated timestamps are returned without changes.
-> The `LINEAR` function returns an interpolated value only if preceding and following values are present.
-> The `PREVIOUS` function requires a preceding value to be present. The last detailed value is used to calculate a final interpolated value.
+> Detailed values with timestamps that are equal to interpolated timestamps are included in the response without changes.
+> The `LINEAR` function returns an interpolated value only if both the preceding and the following value is present.
+> The `PREVIOUS` function requires a preceding value to be present. The last detailed value is used to calculate a final interpolated value in the response.
 
 ### `boundary`
 
 | **Name** | **Description**   |
 |:---|:---|
 | `INNER`  | **[Default]** Data outside of the selection interval is not loaded by the database. |
-| `OUTER`  | One value before and one value after the selection interval is loaded by ATSD to interpolate leading and trailing values. |
+| `OUTER`  | One value before and one value after the selection interval is loaded by the database to interpolate leading and trailing values. |
 
 Examples:
 
