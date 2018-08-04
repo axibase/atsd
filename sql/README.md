@@ -995,7 +995,7 @@ The `CASE` expressions can be nested by using `CASE` within the `result_expressi
 CASE date_format(time, 'yyyy')
     WHEN '2016' THEN
       CASE
-        WHEN CAST(date_format(time, 'D') AS NUMBER) > 5 THEN '17'
+        WHEN CAST(date_format(time, 'u') AS NUMBER) > 5 THEN '17'
         ELSE '16'
       END
     WHEN '2017' THEN '18'
@@ -1053,15 +1053,22 @@ The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to
 
 Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause can be inefficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
+* `WHERE` Clause
+
 ```sql
 WHERE date_format(time, 'yyyy') > '2018'   -- Slow: full scan with string comparison.
 WHERE YEAR(time) > 2018                    -- Slow: full scan with number comparison.
 WHERE datetime >= '2018'                   -- Fast: date range scan using an indexed column.
+WHERE datetime BETWEEN '2018' AND '2019'   -- Fast: date range scan using an indexed column.
 WHERE datetime >= '2018-01-01T00:00:00Z'   -- Fast: date range scan using an indexed column.
+```
 
+* `GROUP BY` Clause
+
+```sql
 GROUP BY date_format(time, 'yyyy')         -- Slow.
 GROUP BY YEAR(time)                        -- Slow.
-GROUP BY PERIOD(1 YEAR)                    -- Fast.
+GROUP BY PERIOD(1 YEAR)                    -- Fast: built-in date aggregation
 ```
 
 ### Calendar Expressions
@@ -2399,12 +2406,6 @@ The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [
 
 In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database time zone is applied.
 
-If the provided pattern letters are not sufficient, use String and Math functions to apply custom formatting:
-
-```sql
-CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"
-```
-
 Examples:
 
 * `date_format(time)`
@@ -2415,7 +2416,6 @@ Examples:
 * `date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PDT')`
 * `date_format(time, 'yyyy-MM-dd HH:mm:ss', entity.timeZone)`
 * `date_format(time, 'yyyy-MM-dd HH:mm:ss', AUTO)`
-* `CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"`
 
 ```sql
 SELECT entity, datetime, metric.timeZone AS "Metric TZ", entity.timeZone AS "Entity TZ",
@@ -2425,8 +2425,7 @@ SELECT entity, datetime, metric.timeZone AS "Metric TZ", entity.timeZone AS "Ent
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PDT') AS "PDT",
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', 'PDT') AS " PDT t/z",
-  date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', AUTO) AS "AUTO: CST", -- nurswgvml006 is in CST
-  CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"
+  date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', AUTO) AS "AUTO: CST" -- nurswgvml006 is in CST
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 5*MINUTE
   AND entity = 'nurswgvml006'
@@ -2434,9 +2433,9 @@ FROM "mpstat.cpu_busy"
 ```
 
 ```ls
-| entity       | datetime                 | Metric TZ  | Entity TZ   | default                  | ISO 8601             | Local Database        | GMT Offset          | PDT                 | PDT t/z                   | AUTO: CST                 | Quarter |
-|--------------|--------------------------|------------|-------------|--------------------------|----------------------|-----------------------|---------------------|---------------------|---------------------------|---------------------------|---------|
-| nurswgvml006 | 2017-04-06T11:03:19.000Z | US/Eastern | US/Mountain | 2017-04-06T11:03:19.000Z | 2017-04-06T11:03:19Z | 2017-04-06 11:03:19   | 2017-04-06 03:03:19 | 2017-04-06 04:03:19 | 2017-04-06 04:03:19-07:00 | 2017-04-06 05:03:19-06:00 | 2       |
+| entity       | datetime                 | Metric TZ  | Entity TZ   | default                  | ISO 8601             | Local Database        | GMT Offset          | PDT                 | PDT t/z                   | AUTO: CST                 |
+|--------------|--------------------------|------------|-------------|--------------------------|----------------------|-----------------------|---------------------|---------------------|---------------------------|---------------------------|
+| nurswgvml006 | 2017-04-06T11:03:19.000Z | US/Eastern | US/Mountain | 2017-04-06T11:03:19.000Z | 2017-04-06T11:03:19Z | 2017-04-06 11:03:19   | 2017-04-06 03:03:19 | 2017-04-06 04:03:19 | 2017-04-06 04:03:19-07:00 | 2017-04-06 05:03:19-06:00 |
 ```
 
 ```ls
@@ -2453,7 +2452,7 @@ FROM "mpstat.cpu_busy"
 | date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')           | 2017-07-13 05:07:55-07:00  |
 ```
 
-The `date_format` function can also be used to print period start and end times:
+The `date_format` function can be used to print period start and end times.
 
 ```sql
 SELECT datetime AS period_start, date_format(time+60*60000) AS period_end, AVG(value)
@@ -2464,11 +2463,11 @@ GROUP BY PERIOD(1 HOUR)
 ```
 
 ```ls
-| period_start             | period_end               | AVG(value) |
-|--------------------------|--------------------------|------------|
-| 2017-08-25T00:00:00.000Z | 2017-08-25T01:00:00.000Z | 7.7        |
-| 2017-08-25T01:00:00.000Z | 2017-08-25T02:00:00.000Z | 8.2        |
-| 2017-08-25T02:00:00.000Z | 2017-08-25T03:00:00.000Z | 6.7        |
+| period_start         | period_end           | AVG(value) |
+|----------------------|----------------------|------------|
+| 2017-08-25T00:00:00Z | 2017-08-25T01:00:00Z | 7.7        |
+| 2017-08-25T01:00:00Z | 2017-08-25T02:00:00Z | 8.2        |
+| 2017-08-25T02:00:00Z | 2017-08-25T03:00:00Z | 6.7        |
 ```
 
 In addition to formatting, the `date_format` function can be used in the `WHERE`, `GROUP BY`, and `HAVING` clauses to filter and group dates by month, day, or hour.
@@ -2496,7 +2495,7 @@ GROUP BY date_format(time, 'EEE')
 Refer to [diurnal](examples/diurnal.md) query examples.
 
 By retrieving date parts from the `time` column, the records can be filtered by calendar.
-The query below includes only daytime hours (from 08:00 till 17:59) during weekdays (Monday till Friday).
+The query below includes samples recorded only during daytime hours (from 08:00 till 17:59) on weekdays (Monday till Friday).
 
 ```sql
 SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)
@@ -2727,6 +2726,86 @@ The `DBTIMEZONE` function returns the current database time zone name or offset.
 ```sql
 SELECT DBTIMEZONE
 -- returns GMT0
+```
+
+#### IS_WORKDAY
+
+The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../rule-engine/workday-calendar.md), which is typically a 3-letter country code such as `USA`.
+
+```sql
+IS_WORKDAY(datetime | time | datetime expression, calendar_key)
+```
+
+Notes:
+
+* To determine if the date is a working day, the function converts the date/time argument to `yyyy-MM-dd` format in **server** timezone and checks if the date is present in the specified [Workday Calendar](../rule-engine/workday-calendar.md) exception list. For example, if the datetime argument is `2018-07-04T00:00:00Z` and calendar key is `USA` the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for a list of observed holidays. The date matches 4th of July holiday observed on Wednesday in the this particular example.
+* The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
+
+```sql
+SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date", date_format(datetime, 'eee') AS "Day of Week", date_format(datetime, 'u') AS "DoW Number",
+  is_workday(datetime, 'USA') AS "USA Work Day",
+  is_workday(datetime, 'ISR') AS "Israel Work Day"
+FROM "mpstat.cpu_busy"
+  WHERE datetime BETWEEN '2018-07-02' AND '2018-07-09'
+GROUP BY PERIOD(1 day)
+  ORDER BY datetime
+```
+
+```ls
+| Date       | Day of Week | DoW Number | USA Work Day | Israel Work Day |
+|------------|-------------|------------|--------------|-----------------|
+| 2018-07-02 | Mon         | 1          | true         | true            |
+| 2018-07-03 | Tue         | 2          | true         | true            |
+| 2018-07-04 | Wed         | 3          | false (!)    | true            | <-- 4th of July holiday observed in the USA
+| 2018-07-05 | Thu         | 4          | true         | true            |
+| 2018-07-06 | Fri         | 5          | true         | false           |
+| 2018-07-07 | Sat         | 6          | false        | false           |
+| 2018-07-08 | Sun         | 7          | false        | true            |
+```
+
+To check if the date argument is a working day in **local** timezone, format the date with `yyyy-MM-dd` pattern in local time zone and parse into a date in **server** timezone.
+
+```sql
+is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'US/Pacific'), 'yyyy-MM-dd'), 'USA')
+```
+
+#### IS_WEEKDAY
+
+The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../rule-engine/workday-calendar.md), which is typically a 3-letter country code such as `USA`. For example, week day is Monday to Friday in the USA or Sunday to Thursday in Israel.
+
+Unlike the `IS_WORKDAY`, the `IS_WEEKDAY` function **ignores** observed holidays.
+
+```sql
+IS_WEEKDAY(datetime | time | datetime expression, calendar_key)
+```
+
+```sql
+SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date", date_format(datetime, 'eee') AS "Day of Week", date_format(datetime, 'u') AS "DoW Number",
+  is_workday(datetime, 'USA') AS "USA Work Day",
+  is_weekday(datetime, 'USA') AS "USA Week Day",
+  is_workday(datetime, 'ISR') AS "Israel Work Day",
+  is_weekday(datetime, 'ISR') AS "Israel Week Day"  
+FROM "mpstat.cpu_busy"
+  WHERE datetime BETWEEN '2018-05-18' AND '2018-05-30'
+GROUP BY PERIOD(1 day)
+  ORDER BY datetime
+```
+
+```ls
+| Date        | Day of Week  | DoW Number  | USA Work Day  | USA Week Day  | Israel Work Day  | Israel Week Day |
+|-------------|--------------|-------------|---------------|---------------|------------------|-----------------|
+| 2018-05-18  | Fri          | 5           | true          | true          | false            | false           |
+| 2018-05-19  | Sat          | 6           | false         | false         | false            | false           |
+| 2018-05-20  | Sun          | 7           | false         | false         | false (!)        | true            | <-- Pentecost
+| 2018-05-21  | Mon          | 1           | true          | true          | true             | true            |
+| 2018-05-22  | Tue          | 2           | true          | true          | true             | true            |
+| 2018-05-23  | Wed          | 3           | true          | true          | true             | true            |
+| 2018-05-24  | Thu          | 4           | true          | true          | true             | true            |
+| 2018-05-25  | Fri          | 5           | true          | true          | false            | false           |
+| 2018-05-26  | Sat          | 6           | false         | false         | false            | false           |
+| 2018-05-27  | Sun          | 7           | false         | false         | true             | true            |
+| 2018-05-28  | Mon          | 1           | false (!)     | true          | true             | true            | <-- Memorial Day
+| 2018-05-29  | Tue          | 2           | true          | true          | true             | true            |
 ```
 
 ### Mathematical Functions

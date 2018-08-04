@@ -462,3 +462,135 @@ GROUP BY PERIOD(1 hour)
 | 2018-03-16 16:00:00  | Fri          | 11.423      | 225          |
 | 2018-03-16 17:00:00  | Fri          | 52.672      | 224          |
 ```
+
+## Query by Workday or Weekday
+
+Use `IS_WORKDAY` or `IS_WEEKDAY` function to filter holidays, weekdays, and workdays for a specific calendar.
+
+The query below shows averages during observed holidays (non-working weekdays) in the USA.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MMM-dd') AS "date",
+  date_format(datetime, 'EEE') AS "Day of Week",
+  AVG(value) AS "Average"
+FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2018' AND '2019'
+  AND IS_WEEKDAY(datetime, 'USA')
+  AND NOT IS_WORKDAY(datetime, 'USA')
+GROUP BY PERIOD(1 day)
+```
+
+```ls
+| date         | Day of Week  | Average |
+|--------------|--------------|---------|
+| 2018-Jan-01  | Mon          | 12.0    |
+| 2018-Jan-15  | Mon          | 13.2    |
+| 2018-May-28  | Mon          | 14.0    |
+| 2018-Jul-04  | Wed          |  9.7    |
+| 2018-Sep-03  | Mon          | 20.3    |
+| 2018-Nov-12  | Mon          | 11.0    |
+| 2018-Nov-22  | Thu          | 11.4    |
+| 2018-Dec-25  | Tue          | 14.3    |
+```
+
+The same query for Canada returns fewer observed holidays.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MMM-dd') AS "date",
+  date_format(datetime, 'EEE') AS "Day of Week",
+  AVG(value) AS "Average"
+FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2018' AND '2019'
+  AND IS_WEEKDAY(datetime, 'CAN')
+  AND NOT IS_WORKDAY(datetime, 'CAN')
+GROUP BY PERIOD(1 day)
+```
+
+```ls
+| date         | Day of Week  | Average |
+|--------------|--------------|---------|
+| 2018-Jan-01  | Mon          | 11.2    |
+| 2018-Mar-30  | Fri          | 12.0    |
+| 2018-Sep-03  | Mon          | 10.4    |
+| 2018-Dec-25  | Tue          |  8.1    |
+```
+
+## Query by Workday or Weekday in Local Timezone
+
+If the database timezone is different from the target calendar timezone, use `date_parse(date_format())` function chain to convert datetime column values to the target time zone.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MMM-dd HH:mm:ss', 'UTC') AS "date_utc",
+  date_format(datetime, 'yyyy-MMM-dd HH:mm:ss', 'Asia/Seoul') AS "date_local",
+  date_format(datetime, 'eee', 'Asia/Seoul') AS "day_of_week_local",
+  IS_WEEKDAY(date_parse(date_format(time, 'yyyy-MMM-dd', 'Asia/Seoul'), 'yyyy-MMM-dd'), 'kor') AS "weekday",
+  IS_WORKDAY(date_parse(date_format(time, 'yyyy-MMM-dd', 'Asia/Seoul'), 'yyyy-MMM-dd'), 'kor') AS "workday",
+  COUNT(value) AS "Count"
+FROM "mpstat.cpu_busy"
+WHERE datetime >= date_parse('2018', 'yyyy', 'Asia/Seoul')
+  AND datetime  < date_parse('2019', 'yyyy', 'Asia/Seoul')
+  AND IS_WEEKDAY(date_parse(date_format(time, 'yyyy-MMM-dd', 'Asia/Seoul'), 'yyyy-MMM-dd'), 'kor')
+  AND NOT IS_WORKDAY(date_parse(date_format(time, 'yyyy-MMM-dd', 'Asia/Seoul'), 'yyyy-MMM-dd'), 'kor')
+GROUP BY PERIOD(1 day, 'Asia/Seoul')
+```
+
+The example above converts `2017-Dec-31 15:00` in server timezone (UTC) to `2018-Jan-01 00:00` in local time zone before checking if `2018-Jan-01` is a working day in `kor` (South Korea) calendar.
+
+```sql
+IS_WORKDAY(date_parse(date_format(time, 'yyyy-MMM-dd', 'Asia/Seoul'), 'yyyy-MMM-dd'), 'kor')
+```
+
+```ls
+| date_utc              | date_local            | day_of_week_local  | weekday  | workday  | Count |
+|-----------------------|-----------------------|--------------------|----------|----------|-------|
+| 2017-Dec-31 15:00:00  | 2018-Jan-01 00:00:00  | Mon                | true     | false    | 48    |
+| 2018-Feb-14 15:00:00  | 2018-Feb-15 00:00:00  | Thu                | true     | false    | 48    |
+| 2018-Feb-15 15:00:00  | 2018-Feb-16 00:00:00  | Fri                | true     | false    | 48    |
+| 2018-Feb-28 15:00:00  | 2018-Mar-01 00:00:00  | Thu                | true     | false    | 48    |
+| 2018-May-06 15:00:00  | 2018-May-07 00:00:00  | Mon                | true     | false    | 48    |
+| 2018-May-21 15:00:00  | 2018-May-22 00:00:00  | Tue                | true     | false    | 48    |
+| 2018-Jun-05 15:00:00  | 2018-Jun-06 00:00:00  | Wed                | true     | false    | 48    |
+| 2018-Jun-12 15:00:00  | 2018-Jun-13 00:00:00  | Wed                | true     | false    | 48    |
+| 2018-Aug-14 15:00:00  | 2018-Aug-15 00:00:00  | Wed                | true     | false    | 48    |
+| 2018-Sep-23 15:00:00  | 2018-Sep-24 00:00:00  | Mon                | true     | false    | 48    |
+| 2018-Sep-24 15:00:00  | 2018-Sep-25 00:00:00  | Tue                | true     | false    | 48    |
+| 2018-Sep-25 15:00:00  | 2018-Sep-26 00:00:00  | Wed                | true     | false    | 48    |
+| 2018-Oct-02 15:00:00  | 2018-Oct-03 00:00:00  | Wed                | true     | false    | 48    |
+| 2018-Oct-08 15:00:00  | 2018-Oct-09 00:00:00  | Tue                | true     | false    | 48    |
+| 2018-Dec-24 15:00:00  | 2018-Dec-25 00:00:00  | Tue                | true     | false    | 48    |
+```
+
+Without the `date_parse(date_format())` function chaining, the `IS_WORKDAY` checks the date in **server** timezone.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MM-dd HH:mm') AS "date_utc",
+  date_format(datetime, 'yyyy-MM-dd HH:mm', 'US/Pacific') AS "date_local",
+  date_format(datetime, 'eee') AS "day_of_week",
+  date_format(datetime, 'eee', 'US/Pacific') AS "day_of_week_local",
+  is_workday(datetime, 'USA') AS "workday_utc",
+  is_workday(date_parse(date_format(time, 'yyyy-MMM-dd', 'US/Pacific'), 'yyyy-MMM-dd'), 'USA') AS "workday_local"
+FROM "mpstat.cpu_busy"
+WHERE datetime >= date_parse('2018-07-03 14:00', 'yyyy-MM-dd HH:mm', 'US/Pacific')
+  AND datetime  < date_parse('2018-07-04 04:00', 'yyyy-MM-dd HH:mm', 'US/Pacific')
+GROUP BY PERIOD(1 hour)
+  ORDER BY datetime
+```
+
+```ls
+| date_utc          | date_local        | day_of_week  | day_of_week_local  | workday_utc  | workday_local |
+|-------------------|-------------------|--------------|--------------------|--------------|---------------|
+| 2018-07-03 21:00  | 2018-07-03 14:00  | Tue          | Tue                | true         | true          |
+| 2018-07-03 22:00  | 2018-07-03 15:00  | Tue          | Tue                | true         | true          |
+| 2018-07-03 23:00  | 2018-07-03 16:00  | Tue          | Tue                | true         | true          |
+| 2018-07-04 00:00  | 2018-07-03 17:00  | Wed          | Tue                | false        | true          |
+| 2018-07-04 01:00  | 2018-07-03 18:00  | Wed          | Tue                | false        | true          |
+| 2018-07-04 02:00  | 2018-07-03 19:00  | Wed          | Tue                | false        | true          |
+| 2018-07-04 03:00  | 2018-07-03 20:00  | Wed          | Tue                | false        | true          |
+| 2018-07-04 04:00  | 2018-07-03 21:00  | Wed          | Tue                | false        | true          |
+| 2018-07-04 05:00  | 2018-07-03 22:00  | Wed          | Tue                | false        | true          |
+| 2018-07-04 06:00  | 2018-07-03 23:00  | Wed          | Tue                | false        | true          |
+| 2018-07-04 07:00  | 2018-07-04 00:00  | Wed          | Wed                | false        | false         |
+| 2018-07-04 08:00  | 2018-07-04 01:00  | Wed          | Wed                | false        | false         |
+| 2018-07-04 09:00  | 2018-07-04 02:00  | Wed          | Wed                | false        | false         |
+| 2018-07-04 10:00  | 2018-07-04 03:00  | Wed          | Wed                | false        | false         |
+```
