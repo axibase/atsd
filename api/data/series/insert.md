@@ -6,11 +6,9 @@ Inserts a timestamped array of numbers for a given series identified by metric, 
 
 * Entity name, metric name, and tag names can contain only printable characters. Names are **case-insensitive** and converted to lower case when stored.
 * Tag values are **case-sensitive** and are stored as submitted.
-* The number of series tags cannot exceed 1,024.
-* New entities, metrics, and tag names are created automatically by the database.
-* By default, new metrics are initialized with the `float` data type.
-* A metric is [versioned](../../../versioning/README.md) if it contains [`version`](./versions.md) object in the first [sample](#value-object).
-* To change the data type, create or update the metric using the web interface or [metric `update` API method](../../../api/meta/metric/update.md).
+* The number of series tags cannot exceed **1,024**.
+* New entities and metrics are created and registered automatically by the database.
+* A new metric is registered as [versioned](../../../versioning/README.md) if the first [sample](#value-object) contains [`versions`](./versions.md).
 
 ## Request
 
@@ -24,7 +22,7 @@ None.
 
 ### Fields
 
-The request contains an array of series objects, each containing an array of timestamped value objects.
+The request contains an array of series objects, each consisting of an array of timestamped value objects.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -37,10 +35,10 @@ The request contains an array of series objects, each containing an array of tim
 
 #### Value Object
 
-* The value object contains a numeric or text value and the observed time.
-* The object can contain sample time in Unix milliseconds (`t` field) or ISO format (`d` field).
-* Minimum time able to be stored in the database is **1970-01-01T00:00:00.000Z**, or `0` milliseconds from Unix time.
-* Maximum date able to be stored by the database is **2106-02-07T06:59:59.999Z**, or `4294969199999` milliseconds from Unix time.
+* The value object must contain the sample time and a numeric or text value.
+* The sample time can be specified in Unix time (`t` field, milliseconds) or ISO format (`d` field, text).
+* Minimum sample time supported by the database is **1970-01-01T00:00:00.000Z**, or `0` milliseconds in Unix time.
+* Maximum sample date supported by the database is **2106-02-07T06:59:59.999Z**, or `4294969199999` milliseconds in Unix time.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -62,7 +60,7 @@ The request contains an array of series objects, each containing an array of tim
 
 #### Number Representation
 
-* The string representation of an inserted number contains the optional sign, `+` (`\u002B`) or `-` (`\u002D`), followed by a sequence of zeros or decimal digits, optionally followed by a fraction, optionally followed by an exponent.
+* The string representation of an inserted number contains the optional sign, `+` (`\u002B`) or `-` (`\u002D`), followed by a sequence of zeros or decimal digits (integer part), optionally followed by a fraction, optionally followed by an exponent.
 * The exponent consists of the character `e` (`\u0065`) or `E` (`\u0045`) followed by an optional sign, `+` (`\u002B`) or `-` (`\u002D`), followed by one or more decimal digits.
 * The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction.
 * The number formed by the sign, the integer, and the fraction is referred to as the [**significand**](https://en.wikipedia.org/wiki/Significand).
