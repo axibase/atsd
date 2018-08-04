@@ -95,7 +95,7 @@ name LIKE '*vml*' && tags.location = 'NUR'
 * Entity has entity tags equal to the specified values
 
   ```javascript
-  tags.docker-type = 'container' 
+  tags.docker-type = 'container'
     && tags.status != 'deleted'
   ```
 
@@ -120,13 +120,13 @@ name LIKE '*vml*' && tags.location = 'NUR'
 * Entity property tag value matches the given expression
 
   ```javascript
-  properties('cfg').prog != '' 
+  properties('cfg').prog != ''
     && properties('cfg').prog NOT LIKE 'topas*'
   ```
 
 * Entity is a member of another group
 
   ```javascript
-  memberOf('all-linux-servers') 
+  memberOf('all-linux-servers')
     && tags.location = 'SVL'
   ```
