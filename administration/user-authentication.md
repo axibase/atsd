@@ -90,7 +90,7 @@ To enable anonymous access to Data API query methods, set `api.guest.access.enab
 
 ## Guest Access to Portals
 
-To expose the portal to visitors, open the **Portals** tab in the top menu, click **Configure**, open the portal editor and check **Guest Access**.
+To expose the portal to non-authenticated visitors, open the **Portals** tab in the top menu, click **Configure**, open the portal editor and check **Guest Access**.
 
 Since charts displayed in the portals are loaded via Data API, the **Guest Access** option is available only when Data API is configured for anonymous access.
 
@@ -98,7 +98,7 @@ Since charts displayed in the portals are loaded via Data API, the **Guest Acces
 
 ## Guest Access to SQL Reports
 
-Make SQL query results visible to visitors by checking the **Guest Access** field on the query configuration page.
+To make SQL query results visible to non-authenticated visitors, check **Guest Access** on the query configuration page.
 
 ![SQL guest](./images/sql-guest-access.png)
 
