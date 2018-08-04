@@ -1,6 +1,6 @@
 # User Authentication
 
-Authentication mechanisms implemented in ATSD control how users verify their identity when accessing protected resources such as web pages or API endpoints.
+Authentication mechanisms implemented in ATSD control how users present and verify their identity when accessing protected resources such as web pages or API endpoints.
 
 ## Authentication Mechanisms
 
@@ -18,7 +18,7 @@ A HTTP request to an API URL `/api/*` is required to include an `Authorization` 
 
 If the `Authorization` header is missing, the client is prompted to provide username and password.
 
-Once credentials are verified, subsequent API requests within the same session are executed without repetitive authentication.
+Once credentials are verified, subsequent API requests within the same session can be executed without the `Authorization` header.
 
 ## User Account Types
 
@@ -28,7 +28,7 @@ The user account can be configured to use either **Local** or **LDAP** authentic
 
 ### Local Accounts
 
-When using **Local** authentication, ATSD stores the hashcode of the user password in the underlying HBase database.
+When using **Local** authentication, the database stores the hashcode of the user password in the underlying HBase database.
 
 The user identity is verified if the hashcode of the submitted password matches the stored hashcode for the specified username.
 
@@ -36,9 +36,9 @@ The password is subject to the requirements outlined [below](#password-requireme
 
 ### LDAP Accounts
 
-When using **LDAP** authentication, ATSD verifies that the account exists in ATSD and the password is confirmed by submitting an authentication request to the remote LDAP server.
+When using **LDAP** authentication, the database verifies that the account exists in the database and the password is confirmed by submitting an authentication request to the remote LDAP server.
 
-If the LDAP server locates the specified account and confirms its password, the user is allowed access to ATSD.
+If the LDAP server locates the specified account and confirms its password, the user is allowed to access the database.
 
 The access is denied if the LDAP server cannot find the account or if the LDAP account is locked, disabled, or requires password change.
 
@@ -79,14 +79,14 @@ The following password rules apply to **Local** accounts:
 * To reset the password for a user account:
   * Open the `server.properties` file.
   * Add `user.password.reset.username={username}` and `user.password.reset.password={new-password}` settings and save the file.
-    * Restart ATSD.
+    * Restart the database.
     * Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
 
 * If the account being reset is configured as LDAP type, the type is changed to Local.
 
 ## Guest Access to Data API
 
-To enable anonymous access to Data API query methods, set `api.guest.access.enabled=true` in the `server.properties` file and restart ATSD.
+To enable anonymous access to Data API query methods, set `api.guest.access.enabled=true` in the `server.properties` file and restart the database.
 
 ## Guest Access to Portals
 
