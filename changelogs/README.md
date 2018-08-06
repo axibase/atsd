@@ -4,6 +4,7 @@
 
 | **Month** | **Change Log** |
 |---|---|
+|2018-Jul | [07](2018_07/README.md) |
 |2018-Jun | [06](2018_06/README.md) |
 |2018-May | [05](2018_05/README.md) |
 |2018-Apr | [04](2018_04/README.md) |
