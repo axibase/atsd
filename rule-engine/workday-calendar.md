@@ -38,6 +38,8 @@ WHERE time >= current_year
   AND date_format(time, 'u') < 6 AND NOT IS_WORKDAY(time)
 ```
 
+* [`IS_WEEKDAY`](../sql/README.md#is_weekday) SQL function
+
 ## Built-in Calendars
 
 By default, the database contains pre-defined 2018 workday calendars for several countries.

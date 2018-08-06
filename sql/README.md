@@ -2733,12 +2733,12 @@ SELECT DBTIMEZONE
 The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../rule-engine/workday-calendar.md), which is typically a 3-letter country code such as `USA`.
 
 ```sql
-IS_WORKDAY(datetime | time | datetime expression, calendar_key)
+IS_WORKDAY(datetime | time | datetime expression, calendar_key [, timezone])
 ```
 
 Notes:
 
-* To determine if the date is a working day, the function converts the date/time argument to `yyyy-MM-dd` format in **server** timezone and checks if the date is present in the specified [Workday Calendar](../rule-engine/workday-calendar.md) exception list. For example, if the datetime argument is `2018-07-04T00:00:00Z` and calendar key is `USA` the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for a list of observed holidays. The date matches 4th of July holiday observed on Wednesday in the this particular example.
+* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in **server** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../rule-engine/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and calendar key is `USA` the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for a list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday, and the function returns `false` even though the date is a Wednesday.
 * The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
 
 ```sql
@@ -2763,7 +2763,7 @@ GROUP BY PERIOD(1 day)
 | 2018-07-08 | Sun         | 7          | false        | true            |
 ```
 
-To check if the date argument is a working day in **local** timezone, format the date with `yyyy-MM-dd` pattern in local time zone and parse into a date in **server** timezone.
+To check if the date argument is a working day in **local** time zone, format the date with `yyyy-MM-dd` pattern in local time zone and parse into a date in **server** time zone.
 
 ```sql
 is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'US/Pacific'), 'yyyy-MM-dd'), 'USA')
@@ -2776,7 +2776,7 @@ The `IS_WEEKDAY` function returns `true` if the given date is a regular work day
 Unlike the `IS_WORKDAY`, the `IS_WEEKDAY` function **ignores** observed holidays.
 
 ```sql
-IS_WEEKDAY(datetime | time | datetime expression, calendar_key)
+IS_WEEKDAY(datetime | time | datetime expression, calendar_key [, timezone])
 ```
 
 ```sql
@@ -2784,7 +2784,7 @@ SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date", date_format(datetime, 'eee
   is_workday(datetime, 'USA') AS "USA Work Day",
   is_weekday(datetime, 'USA') AS "USA Week Day",
   is_workday(datetime, 'ISR') AS "Israel Work Day",
-  is_weekday(datetime, 'ISR') AS "Israel Week Day"  
+  is_weekday(datetime, 'ISR') AS "Israel Week Day"
 FROM "mpstat.cpu_busy"
   WHERE datetime BETWEEN '2018-05-18' AND '2018-05-30'
 GROUP BY PERIOD(1 day)
