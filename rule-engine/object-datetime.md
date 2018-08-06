@@ -6,12 +6,11 @@
 
 ## Time Zone
 
-`DateTime` object performs operations in the **server** time zone by default.
+By default, the `DateTime` object is initialized in the **server** time zone.
 
-A `DateTime` object with alternate time zone can be created by the following ways:
+To change the time zone of an existing `DateTime` object, invoke the [`to_timezone(tz)`](#to_timezone-function) function which returns a modified `DateTime` object in the custom [time zone](../shared/timezone-list.md).
 
-* From Unix milliseconds using [`to_datetime(ms, tz)`](functions-date.md#to_datetime) with provided time zone argument.
-* From existing `DateTime` object by calling [`to_timezone(tz)`](#to_timezone-function) function.
+To create a new `DateTime` object from Unix time in milliseconds in the custom time zone, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
 
 ## Fields
 
@@ -76,7 +75,9 @@ If count argument `c` is negative, the interval is subtracted from the current `
 
 Fractional count argument `c` is rounded down to the nearest integer.
 
-The [time unit](../api/data/series/time-unit.md) `u` is case-insensitive [time unit](../api/data/series/time-unit.md) and allows both singular and plural forms.
+The [time unit](../api/data/series/time-unit.md) `u` is case-insensitive  and allows both singular and plural forms.
+
+The new `DateTime` object inherits the time zone of the original object.
 
 **Examples**:
 
@@ -141,7 +142,7 @@ AND NOT now.add(2, 'day').is_workday()
 to_timezone(string tz) DateTime
 ```
 
-Returns a new `DateTime` object in specified time zone `tz` with same Unix timestamp. This time zone is preserved after applying [`add`](#add-function) function.
+Returns a new `DateTime` object  with the same time but in the specified [time zone](../shared/timezone-list.md) `tz`.
 
 ```javascript
 now.to_timezone('Europe/Berlin').next_workday
