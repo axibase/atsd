@@ -27,9 +27,9 @@ Membership in entity groups with non-empty expression is managed by the server. 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
 | `name` | string| Entity group name. |
+| `enabled` | boolean | Group status. If disabled, the group is not visible to users. Disabled expression-based groups are empty and are not updated on schedule. |
 | `expression` | string | Group membership expression. The expression is applied to entities to automatically add/remove members of this group.|
 | `tags` | object | Entity group tags, as requested with the `tags` parameter. |
-| enabled | boolean | Disabled groups are not visible to users. Disabled expression-based groups are empty and are not updated on schedule. |
 
 ## Example
 
@@ -67,5 +67,3 @@ curl "https://atsd_hostname:8443/api/v1/entity-groups?tags=os_level&limit=2&expr
     "enabled": true
 }]
 ```
-
-## Additional examples

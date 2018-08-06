@@ -59,7 +59,7 @@ curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \
-  --data '{"tags": {"os_type": "AIX"}}
+  --data '{"tags": {"os_type": "AIX"}}'
 ```
 
 ### Response
