@@ -2,7 +2,16 @@
 
 ## Overview
 
-`DateTime` object represents a specific date and time in the **server** time zone and provides fields and functions to extract various calendar units.
+`DateTime` object represents a specific date and time and provides fields and functions to extract various calendar units.
+
+## Time Zone
+
+`DateTime` object performs operations in the **server** time zone by default.
+
+A `DateTime` object with alternate time zone can be created by the following ways:
+
+* From Unix milliseconds using [`to_datetime(ms, tz)`](functions-date.md#to_datetime) with provided time zone argument.
+* From existing `DateTime` object by calling [`to_timezone(tz)`](#to_timezone-function) function.
 
 ## Fields
 
@@ -49,6 +58,7 @@ The `millis` field returns Unix time in milliseconds.
 * [`is_weekday`](#is_weekday-function)
 * [`is_weekend`](#is_weekend-function)
 * [`is_workday`](#is_workday-function)
+* [`to_timezone`](#to_timezone-function)
 
 ### `add` Function
 
@@ -123,6 +133,18 @@ now.hourOfDay = 12 AND
 now.is_workday()
 AND now.add(1, 'day').is_workday()
 AND NOT now.add(2, 'day').is_workday()
+```
+
+### `to_timezone` Function
+
+```javascript
+to_timezone(string tz) DateTime
+```
+
+Returns a new `DateTime` object in specified time zone `tz` with same Unix timestamp. This time zone is preserved after applying [`add`](#add-function) function.
+
+```javascript
+now.to_timezone('Europe/Berlin').next_workday
 ```
 
 ## Sample Values
