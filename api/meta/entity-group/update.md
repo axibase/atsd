@@ -6,7 +6,9 @@ Updates fields and tags of the specified entity group.
 
 Unlike the [replace method](create-or-replace.md), fields and tags that are **not** specified in the request are left unchanged.
 
-Similarly, fields that are set to `null` are ignored and are left unchanged.
+Fields that are set to `null` are ignored and are left unchanged.
+
+Tags with values set to `null` or empty string, are deleted.
 
 ## Request
 

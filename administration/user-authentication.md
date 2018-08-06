@@ -66,7 +66,7 @@ The following password rules apply to **Local** accounts:
 
 * When accessed for the first time after installation, the database presents a configuration web page for the default administrator account. This account is granted an `ADMIN` role with `All Entities: Read` and `All Entities: Write` permissions.
 
-## Changing a Password
+## Changing Password
 
 * Users with Local accounts can modify their password by clicking on the user icon in the top menu.
 
