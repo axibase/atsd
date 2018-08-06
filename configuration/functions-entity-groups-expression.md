@@ -238,7 +238,7 @@ property_values('linux.disk:fstype=ext4:mount_point').contains('/')
 hasProperty(string t) boolean
 ```
 
-Returns `true` if there exists any property with type `t` for the tested entity.
+Returns `true` if the checked entity has property type `t`. Returns the same result as `properties(t).size() > 0`.
 
 Examples:
 
