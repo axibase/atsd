@@ -78,21 +78,21 @@ WHERE datetime > now - 1 * minute
 The [`CAST`](../../sql/README.md#cast) function now accepts output of the [`date_format`](../../sql/README.md#date_format) function as the argument, for example:
 
 ```sql
-SELECT date_format(time, 'EEE HH') AS 'hour_in_day',
+SELECT date_format(time, 'eee HH') AS 'hour_in_day',
   avg(value)
 FROM mpstat.cpu_busy
   WHERE datetime >= current_week
   AND CAST(date_format(time, 'H') AS number) >= 9 AND CAST(date_format(time, 'H') AS number) < 18
-GROUP BY date_format(time, 'EEE HH')
+GROUP BY date_format(time, 'eee HH')
   ORDER BY 2 DESC
 ```
 
 ### Issue 3746
 
-Updated the `u` pattern to return a numeric value representing the [day number](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) within a week (1 = Monday, ..., 7 = Sunday).
+Updated the `u` pattern to return a numeric value representing the [day number](../../shared/time-pattern.md) within a week (1 = Monday, ..., 7 = Sunday).
 
 ```sql
-SELECT date_format(time, 'E'),
+SELECT date_format(time, 'e'),
   avg(value)
 FROM mpstat.cpu_busy
   WHERE datetime >= previous_week

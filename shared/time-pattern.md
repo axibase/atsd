@@ -21,15 +21,12 @@
 | Y      | Week-based year               | year               | 1996; 96                                       |
 | w      | Week of week-based-year       | number             | 27                                             |
 | W      | Week of month                 | number             | 4                                              |
-| E      | Day of week                   | text               | Tue                                            |
-| EE     | Day of week                   | text               | Tuesday                                        |
-| EEE    | Day of week                   | text               | T                                              |
-| e/c    | Localized day of week         | number             | 3                                              |
-| ee/cc  | Localized day of week         | number             | 03                                             |
+| u      | Day of week                   | number             | 2                                              |
+| e      | Localized day of week         | number             | 3                                              |
+| ee     | Localized day of week         | number             | 03                                             |
 | eee    | Localized day of week         | text               | Tue                                            |
 | eeee   | Localized day of week         | text               | Tuesday                                        |
 | eeeee  | Localized day of week         | text               | T                                              |
-| u      | Day of week                   | number             | 2                                              |
 | F      | Week of month                 | number             | 3                                              |
 | a      | AM-PM of day                  | text               | PM                                             |
 | h      | Clock hour of AM-PM (1-12)    | number             | 12                                             |
@@ -68,7 +65,7 @@
 | ]      | Optional section end          |                    |                                                |
 ```
 
-Note: localized day of week pattern (`e`/`c`) prints day number of week in US locale starting from Sunday.
+Note: localized day of week pattern (`e`) prints day number of week in US locale starting from Sunday.
 To print day number of week starting from Monday, use the `u` pattern.
 
 ## Examples
@@ -77,12 +74,12 @@ To print day number of week starting from Monday, use the `u` pattern.
 | Date and Time Pattern          | Result                               |
 |--------------------------------|--------------------------------------|
 | `yyyy.MM.dd G 'at' HH:mm:ss z` | 2001.07.04 AD at 12:08:56 PDT        |
-| `EEE, MMM d, ''yy`             | Wed, Jul 4, '01                      |
+| `eee, MMM d, ''yy`             | Wed, Jul 4, '01                      |
 | `h:mm a'                       | 12:08 PM                             |
 | `hh 'o''clock' a, zzzz`        | 12 o'clock PM, Pacific Daylight Time |
 | `K:mm a, z`                    | 0:08 PM, PDT                         |
 | `yyyyy.MMMM.dd GGG hh:mm a`    | 02001.July.04 AD 12:08 PM            |
-| `EEE, d MMM yyyy HH:mm:ss Z`   | Wed, 4 Jul 2001 12:08:56 -0700       |
+| `eee, d MMM yyyy HH:mm:ss Z`   | Wed, 4 Jul 2001 12:08:56 -0700       |
 | `yyMMddHHmmssZ`                | 010704120856-0700                    |
 | `yyyy-MM-ddTHH:mm:ss.SSSZ`     | 2001-07-04T12:08:56.235-0700         |
 | `yyyy-MM-ddTHH:mm:ss.SSSXXX`   | 2001-07-04T12:08:56.235-07:00        |

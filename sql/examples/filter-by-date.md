@@ -399,12 +399,12 @@ Use the `date_format` OR `extract` function to retrieve date parts from date for
 The below query includes only weekdays (Monday till Friday) and daytime hours (from 08:00 till 17:59).
 
 ```sql
-SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)
+SELECT datetime, date_format(time, 'eee') AS "day of week", avg(value), count(value)
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime >= previous_week AND datetime < current_week
   AND CAST(date_format(time, 'H') AS number) BETWEEN 8 AND 17
-  AND date_format(time, 'u') < 6
+  AND is_weekday(time, 'USA')
 GROUP BY PERIOD(1 hour)
 ```
 
@@ -471,7 +471,7 @@ The query below shows averages during observed holidays (non-working weekdays) i
 
 ```sql
 SELECT date_format(datetime, 'yyyy-MMM-dd') AS "date",
-  date_format(datetime, 'EEE') AS "Day of Week",
+  date_format(datetime, 'eee') AS "Day of Week",
   AVG(value) AS "Average"
 FROM "mpstat.cpu_busy"
 WHERE datetime BETWEEN '2018' AND '2019'
@@ -497,7 +497,7 @@ The same query for Canada returns fewer observed holidays.
 
 ```sql
 SELECT date_format(datetime, 'yyyy-MMM-dd') AS "date",
-  date_format(datetime, 'EEE') AS "Day of Week",
+  date_format(datetime, 'eee') AS "Day of Week",
   AVG(value) AS "Average"
 FROM "mpstat.cpu_busy"
 WHERE datetime BETWEEN '2018' AND '2019'

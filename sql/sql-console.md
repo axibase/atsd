@@ -39,8 +39,8 @@ The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed b
 `yyyy-MM-ddT HH:mm:ss` | `2018-05-15 16:30:00` | `2018-05-15 12:30:00`
 `yyyy-MM-dd` | `2018-05-15` | `2018-05-15`
 `MMM-dd` | `May-15` | `May-15`
-`MMM-dd, E` | `May-15, Tue` | `May-15, Tue`
-`MMM-dd, EEEE` | `May-15, Tuesday` | `May-15, Tuesday`
+`MMM-dd, eee` | `May-15, Tue` | `May-15, Tue`
+`MMM-dd, eeee` | `May-15, Tuesday` | `May-15, Tuesday`
 
 > The database time zone can be [modified](../administration/timezone.md) by an administrator.
 
