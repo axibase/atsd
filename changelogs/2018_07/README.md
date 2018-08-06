@@ -4,7 +4,7 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5528 | admin | Bug | [Entity Groups](../../configuration/entity_groups.md): Unable to delete existing groups.|
+5528 | administration | Bug | [Entity Groups](../../configuration/entity_groups.md): Unable to delete existing groups.|
 5520 | test | Feature | [ATSD Java API](https://github.com/axibase/atsd-api-java): Log ATSD version to `VersionTest` method.|
 5518 | freemarker | Bug | [Logging](../../administration/logging.md): Freemarker warning on ATSD start.|
 5516 | api-rest | Bug | [REST API](../../api/data/README.md): CSV upload raises `500` error.|
@@ -16,21 +16,21 @@
 5505 | UI | Bug | [SQL Console](../../sql/sql-console.md) generates incorrect output format.|
 5504 | api-rest | Bug | [Data API](../../api/data/README.md): Aggregate crashes with `NullPointerException`.|
 5501 | rule editor | Bug | Rule Editor: Controls disappear when creating multiple [webhooks](../../rule-engine/notifications/README.md).|
-5500 | rule editor | Bug | Rule Editor: [Filter](../../rule-engine/#filtering) interval cannot be modified.|
+5500 | rule editor | Bug | Rule Editor: [Filter](../../rule-engine/README.md#filtering) interval cannot be modified.|
 5498 | client | Bug | [Python Client](https://github.com/axibase/atsd-api-python/blob/master/README.md): `200` to `204` migration.|
-5489 | rule engine | Feature | Rule Engine: [`elapsed_minutes`](../../rule-engine/functions-date.md#elapsed-minutes) for ISO datetime literal.|
+5489 | rule engine | Feature | Rule Engine: [`elapsed_minutes`](../../rule-engine/functions-date.md#elapsed_minutes) for ISO datetime literal.|
 5487 | rule engine | Bug | [Alert History](../../rule-engine/logging.md#logging-to-database) must include grouping tags to avoid collisions.|
 5485 | api-rest | Bug | Identify non-compliant [REST API](../../api/data/README.md) endpoint.|
 5481 | export | Bug | Export: [Versioned](../../versioning/README.md) data is not displayed.|
 5479 | rule editor | Feature | Rule Engine: [Custom script timeout](../../rule-engine/scripts.md#timeout).|
-5477 | admin | Bug | [Docker Image](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image) installation has forbidden operations.|
+5477 | administration | Bug | [Docker Image](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image) installation has forbidden operations.|
 5475 | security | Bug | `NullPointerException` raised on [password change](../../administration/user-authentication.md#password-requirements).|
 5473 | api-rest | Bug | [Messages: `query`](../../api/data/messages/query.md): Lagging wildcard evaluation.|
 5471 | api-rest | Feature | Data API: [Series: `query`](../../api/data/series/query.md) - Implement aggregation without period.|
-5470 | core | Feature | Admin: Add [**Workday Calendar Import**](../../rule-engine/workday-calendar.md) page|
+5470 | core | Feature | Administration: Add [**Workday Calendar Import**](../../rule-engine/workday-calendar.md) page|
 5469 | rule editor | Feature | UI: Show [logging status](../../administration/logging.md) on **Rule** page|
 5468 | core | Bug | Use [strict mode](https://docs.oracle.com/javase/8/docs/api/java/time/format/ResolverStyle.md) when parsing date.|
-5467 | admin | Feature | HBase/HDFS [Log File Download](../../administration/logging.md).|
+5467 | administration | Feature | HBase/HDFS [Log File Download](../../administration/logging.md).|
 5465 | client | Feature | [Python Client](https://github.com/axibase/atsd-api-python): Change `Message` model to simplify conversion to `DataFrame`|
 5464 | jdbc | Bug | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Remove `metric.timePrecision` field from default columns.|
 5462 | UI | Bug | Rule Editor: Tooltips need not be shown for [`CUSTOM` webhook](../../rule-engine/notifications/custom.md) parameters|
@@ -52,11 +52,11 @@
 5438 | core | Feature | Delete **Time Precision** from Metric form.|
 5436 | core | Bug | Delete task lags when [deleting Properties](../../administration/data_retention.md#deleting-properties).|
 5434 | rule engine | Bug | [Rule Engine](../../rule-engine/README.md): `type` and `source` filters remain upon `message/property` rule type conversion to `metric`.|
-5433 | api-rest | Bug | Rest API: [`command` method](../../api/data/ext/command.md) raises `ConcurrentModificationException` upon `saveEntity`.|
+5433 | api-rest | Bug | REST API: [`command` method](../../api/data/ext/command.md) raises `ConcurrentModificationException` upon `saveEntity`.|
 5431 | security | Bug | ATSD `Let's Encrypt` Certificate not updated for [ATSD Trends](https://github.com/axibase/charts/blob/master/README.md).|
 5427 | core | Bug | Relocate ATSD [temporary directories](../../administration/change-owner.md#temporary-directories).|
 5425 | client | Bug | [Python API Client](https://github.com/axibase/atsd-api-python): `tzlocal` fails to import via offline installation.|
-5424 | rule engine | Feature | Rule Engine: Show [Response Actions](../../rule-engine/#actions) on **Rule** page.|
+5424 | rule engine | Feature | Rule Engine: Show [Response Actions](../../rule-engine/README.md#actions) on **Rule** page.|
 5417 | rule engine | Feature | Rule Engine: Restrict [commands](../../rule-engine/scripts.md) to `/script` directory.|
 5406 | rule editor | Bug | Rule Engine: Refactor [filter](../../rule-engine/filters.md) fields.|
 5405 | rule engine | Feature | Rule Engine: [System Command](../../rule-engine/scripts.md) - Pass window fields into `bash` script as named variables.|
@@ -79,7 +79,7 @@
 5172 | api-rest | Bug | [Data API](../../api/data/README.md): `delta` and `counter` aggregation functions return inconsistent results for most recent period.|
 5145 | export | Bug | Export: Incorrect filter for [versioned](../../versioning/README.md) metrics.|
 5088 | api-rest | Bug | Data API: [Series: `query`](../../api/data/series/query.md) - Incorrect limit applied for versioned query with `version` filter.|
-5085 | sql | Feature | SQL: [`ENDTIME` function](../../sql/#endtime) - Add support for literal dates.|
+5085 | sql | Feature | SQL: [`ENDTIME` function](../../sql/README.md#endtime) - Add support for literal dates.|
 4661 | statistics | Feature | [Aggregation functions](../../api/data/aggregation.md) support `BigDecimal` numbers.|
 4397 | sql | Feature | [SQL](../../sql/README.md): Allow `JOIN ON` if condition and implicit condition are identical.|
 3666 | UI | Bug | UI: Unable to search multiline queries on [**Query Statistics**](../../sql/query-statistics.md) page.|
