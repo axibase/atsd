@@ -60,6 +60,7 @@ SELECT { * | { expr [ .* | [ AS ] alias ] } }
   [ WITH ROW_NUMBER expr ]
 [ WITH LAST_TIME expr ]
 [ WITH INTERPOLATE expr ]
+[ WITH TIMEZONE expr ]
 [ ORDER BY expr [{ ASC | DESC }] [, ...] ]
 [ LIMIT count [ OFFSET skip ]]
   [ OPTION(expr) [...]]
@@ -2806,6 +2807,66 @@ GROUP BY PERIOD(1 day)
 | 2018-05-27  | Sun          | 7           | false         | false         | true             | true            |
 | 2018-05-28  | Mon          | 1           | false (!)     | true          | true             | true            | <-- Memorial Day
 | 2018-05-29  | Tue          | 2           | true          | true          | true             | true            |
+```
+
+#### `WITH TIMEZONE`
+
+The `WITH TIMEZONE` clause overrides the default **server** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
+
+```sql
+WITH TIMEZONE = timezone
+```
+
+```sql
+SELECT DBTIMEZONE,
+  date_format(time, 'yyyy-MM-dd HH:mm z') AS "period_start_default",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "period_start_utc",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "period_start_local",
+  AVG(value), COUNT(value)
+FROM "mpstat.cpu_busy"
+  WHERE datetime >= '2018-08-01' AND datetime < '2018-08-03'
+  -- override the default server timezone from UTC to US/Pacific
+  WITH TIMEZONE = 'US/Pacific'
+GROUP BY PERIOD(1 DAY)
+```
+
+```ls
+| DBTIMEZONE  | period_start_default  | period_start_utc      | period_start_local    | avg(value)  | count(value) |
+|-------------|-----------------------|-----------------------|-----------------------|-------------|--------------|
+| Etc/UTC     | 2018-08-01 00:00 PDT  | 2018-08-01 07:00 UTC  | 2018-08-01 00:00 PDT  | 2821.5      | 48           |
+| Etc/UTC     | 2018-08-02 00:00 PDT  | 2018-08-02 07:00 UTC  | 2018-08-02 00:00 PDT  | 2862.5      | 48           |
+```
+
+The same query in the default **server** time zone (UTC) produces the following results:
+
+```ls
+| DBTIMEZONE  | period_start_default  | period_start_utc      | period_start_local    | avg(value)  | count(value) |
+|-------------|-----------------------|-----------------------|-----------------------|-------------|--------------|
+| Etc/UTC     | 2018-08-01 00:00 UTC  | 2018-08-01 00:00 UTC  | 2018-07-31 17:00 PDT  | 2807.5      | 48           |
+| Etc/UTC     | 2018-08-02 00:00 UTC  | 2018-08-02 00:00 UTC  | 2018-08-01 17:00 PDT  | 2855.5      | 48           |
+```
+
+Absent the `WITH TIMEZONE` clause, each function must be individually programmed to account for the custom time zone. In the below example, the time zone adjustments are necessary in the `date_format` function, the `GROUP BY PERIOD` clause, and the selection interval.
+
+```sql
+SELECT DBTIMEZONE,
+  -- the default format must use to US/Pacific time zone, otherwise it displays UTC
+  date_format(time, 'yyyy-MM-dd HH:mm z') AS "period_start_default",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "period_start_utc",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "period_start_local",
+  AVG(value), COUNT(value)
+FROM "mpstat.cpu_busy"
+  -- shift the start and end date to US/Pacific time zone
+  WHERE datetime >= '2018-08-01T00:00:00-07:00' AND datetime < '2018-08-03T00:00:00-07:00'
+  -- align to day start in US/Pacific time zone
+GROUP BY PERIOD(1 DAY, 'US/Pacific')
+```
+
+```ls
+| DBTIMEZONE  | period_start_default  | period_start_utc      | period_start_local    | avg(value)  | count(value) |
+|-------------|-----------------------|-----------------------|-----------------------|-------------|--------------|
+| Etc/UTC     | 2018-08-01 07:00 UTC  | 2018-08-01 07:00 UTC  | 2018-08-01 00:00 PDT  | 2821.5      | 48           |
+| Etc/UTC     | 2018-08-01 07:00 UTC  | 2018-08-02 07:00 UTC  | 2018-08-02 00:00 PDT  | 2862.5      | 48           |
 ```
 
 ### Mathematical Functions
