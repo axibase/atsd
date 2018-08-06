@@ -85,7 +85,7 @@ Metric Name Column | `Parameter` | Define the column which contains metric names
 Metric Value Column | `Concentration` | Define the column which contains metric values.
 Timestamp Columns | `Time` | Define the timestamp column
 Timestamp Time | `Pattern` | Specify how the timestamp is read by the parser.
-Timestamp Pattern | `yyyy-MM-dd'T'HH:mm` | [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) pattern of the timestamp used when `Pattern` option is selected.
+Timestamp Pattern | `yyyy-MM-dd'T'HH:mm` | [Time Pattern](../../../shared/time-pattern.md) used when `Pattern` option is selected.
 
 ![](./images/5.png)
 

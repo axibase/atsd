@@ -106,7 +106,7 @@ In particular, the `WEEK` period, when calendar-aligned, starts on the first Mon
 For example, the first Monday in 2016 is January 4th and the 2-week periods begins on that date.
 
 ```sql
-SELECT date_format(time, 'yyyy-MM-dd EEEEE') as 'date', sum(value)
+SELECT date_format(time, 'yyyy-MM-dd eeee') as 'date', sum(value)
   FROM dmv.instances
 WHERE tags.city = 'New York'
   AND datetime >= '2016-09-01T00:00:00Z'
@@ -125,7 +125,7 @@ GROUP BY PERIOD(2 WEEK)
 As an alternative to a `CALENDAR` alignment, specify `START_TIME` as the second argument to the `PERIOD` function to align periods to the beginning of the timespan.
 
 ```sql
-SELECT date_format(time, 'yyyy-MM-dd EEEEE') as 'date', sum(value)
+SELECT date_format(time, 'yyyy-MM-dd eeee') as 'date', sum(value)
   FROM dmv.instances
 WHERE tags.city = 'New York'
   AND datetime >= '2016-09-01T00:00:00Z'
