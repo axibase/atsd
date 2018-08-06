@@ -4,8 +4,8 @@
 
 Inserts a timestamped array of numbers for a given series identified by metric, entity, and series tags.
 
-* Entity name, metric name, and tag names can contain only printable characters. Names are **case-insensitive** and converted to lower case when stored.
-* Tag values are **case-sensitive** and are stored as submitted.
+* Entity name, metric name, and tag names can contain only printable characters. Names are **case-insensitive** and converted to lowercase when stored.
+* Tag values are **case-sensitive** and stored as submitted.
 * The number of series tags cannot exceed **1,024**.
 * New entities and metrics are created and registered automatically by the database.
 * A new metric is registered as [versioned](../../../versioning/README.md) if the first [sample](#value-object) contains [`versions`](./versions.md).
@@ -26,11 +26,11 @@ The request contains an array of series objects, each consisting of an array of 
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `entity` | string | **[Required]** Entity name |
-| `metric` | string | **[Required]** Metric name |
-| `tags` | object | Series tags object, where field name represents tag name and field value is tag value,<br> for example `{"tag-1":"val-1","tag-2":"val2"}` |
-| `type` | string | Type of inserted data: `HISTORY`, `FORECAST`. Default: `HISTORY` |
-| `forecastName` | string | Forecast name. <br>Applicable if `type` is `FORECAST`.<br>`forecastName` can be used to store a custom forecast identified by name. <br>If `forecastName` is omitted, the values overwrite the default forecast.  |
+| `entity` | string | **[Required]** Entity name. |
+| `metric` | string | **[Required]** Metric name. |
+| `tags` | object | Series tags object, where field name represents tag name and field value is tag value<br> For example: `{"tag-1":"val-1","tag-2":"val2"}` |
+| `type` | string | Inserted data type: `HISTORY`, `FORECAST`.<br>Default: `HISTORY` |
+| `forecastName` | string | Forecast name. <br>Applicable when `type` is `FORECAST`.<br>`forecastName` can be used to store a custom forecast identified by name. <br>If `forecastName` is omitted, values overwrite the default forecast.  |
 | `data` | array | **[Required]** Array of [value](#value-object) objects.<br>Example `[{"d":"2016-06-01T12:08:42.518Z", "v":50.8}]`.|
 
 #### Value Object
@@ -42,12 +42,12 @@ The request contains an array of series objects, each consisting of an array of 
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `t` | integer | **[Required]** Sample time in Unix milliseconds.<br>Example `{"t":1464782922000, "v":50.8}`.|
-| `d` | string | **[Required]** Sample time in ISO format.<br>Example `{"d":"2016-06-01T12:08:42Z", "v":50.8}`. |
+| `t` | integer | **[Required]** Sample time in Unix milliseconds.<br>Example: `{"t":1464782922000, "v":50.8}`.|
+| `d` | string | **[Required]** Sample time in ISO format.<br>Example: `{"d":"2016-06-01T12:08:42Z", "v":50.8}`. |
 | `v` | number | **[Required]** Numeric sample value at time `t`/`d`. <br>`null` is supported and is stored as `NaN` (Not a Number).<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null}` |
-| `s` | number | Standard deviation of the forecast value `v`.<br>Example  `{"d":"2016-06-01T12:08:42Z", "v":50.8, "s":12.340}`.<br>Applicable if `type` is `FORECAST`.|
+| `s` | number | Standard deviation of the forecast value `v`.<br>Example: `{"d":"2016-06-01T12:08:42Z", "v":50.8, "s":12.340}`.<br>Applicable when `type` is `FORECAST`.|
 | `x` | string | Optional text sample value at time `t`/`d`. <br>Empty string `""` is supported and is stored as `""`.<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null, "x": "Shutdown"}` |
-| `version` | object | Object containing version source and status fields for versioned metrics.<br>`{"source":string, "status":string}`.<br>Applicable if the metric is versioned. |
+| `version` | object | Object containing version source and status fields for versioned metrics.<br>`{"source":string, "status":string}`.<br>Applicable when metric is versioned. |
 
 `data` example:
 
@@ -76,12 +76,12 @@ None.
 
 |  **Status Code**  | **Description** |
 |:---|:---|
-| 400 | `IllegalArgumentException: Empty entity.`|
-| 400 | `IllegalArgumentException: Negative timestamp.`|
-| 400 | `IllegalArgumentException: No data.` |
-| 400 | `IllegalArgumentException: BigDecimal significand overflows the long type.` |
-| 500 | `JsonParseException: Unexpected character "}"` |
-| 500 | `JsonMappingException: No enum constant in field type.`|
+| `400` | `IllegalArgumentException: Empty entity.`|
+| `400` | `IllegalArgumentException: Negative timestamp.`|
+| `400` | `IllegalArgumentException: No data.` |
+| `400` | `IllegalArgumentException: BigDecimal significand overflows the long type.` |
+| `500` | `JsonParseException: Unexpected character "}"` |
+| `500` | `JsonMappingException: No enum constant in field type.`|
 
 ## Example
 
