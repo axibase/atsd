@@ -8,7 +8,7 @@ The interpolation process performed by the database is outlined below:
 
 1. Load samples for the selection interval specified with `startDate` and `endDate` parameters.
 2. If `OUTER` boundary mode is enabled, load one value before and one value after the selection interval to interpolate leading and trailing values.
-3. Create evenly spaced timestamps within the selection interval. The timestamps can be aligned to a calendar or start/end time of the selection interval.
+3. Create evenly spaced timestamps within the selection interval. Timestamps can be aligned to a calendar or start/end time of the selection interval.
 4. For each timestamp, calculate the value from the two nearest neighbor samples using `linear` or `step` interpolation function.
 5. If `fill` parameter is enabled, add missing leading and trailing values.
 
@@ -18,7 +18,7 @@ The interpolation process performed by the database is outlined below:
 |:---|:---|:---|
 | [`period`](#period) | object | **[Required]** Repeated time interval. |
 | [`function`](#function) | string | **[Required]** `PREVIOUS`, `LINEAR`, or `AUTO`. |
-| [`boundary`](#boundary) | string | Enables values outside of the selection interval. |
+| [`extend`](#extend) | string | Enables values outside of the selection interval. |
 | [`fill`](#fill) | string | Creates missing leading and trailing values. |
 
 ### `period`
@@ -35,28 +35,28 @@ The interpolation process performed by the database is outlined below:
 
 | **Name** | **Description**   |
 |:---|:---|
-| `LINEAR`  | Calculates the value by adding the difference between neighboring detailed values proportional to their time difference. |
-| `PREVIOUS`  | Sets a value equal to the previous value. |
-| `AUTO`  | Applies the interpolation function specified in the metric [interpolate](../../meta/metric/list.md#fields) field. Default: `LINEAR`.  |
+| `LINEAR`  | Calculates value by adding the difference between neighboring detailed values proportional to their time difference. |
+| `PREVIOUS`  | Sets value equal to previous value. |
+| `AUTO`  | Applies the interpolation function specified in the metric [interpolate](../../meta/metric/list.md#fields) field.<br>Default: `LINEAR`.  |
 
-> Detailed values with timestamps that are equal to interpolated timestamps are included in the response without changes.
-> The `LINEAR` function returns an interpolated value only if both the preceding and the following value is present.
-> The `PREVIOUS` function requires a preceding value to be present. The last detailed value is used to calculate a final interpolated value in the response.
+> Detailed values with timestamps that are equal to interpolated timestamps are included in the response unmodified.
+> `LINEAR` function returns an interpolated value only if both a preceding and following value are present.
+> `PREVIOUS` function requires the presence of a preceding value. The last detailed value is used to calculate a final interpolated value in the response.
 
-### `boundary`
+### `extend`
 
 | **Name** | **Description**   |
 |:---|:---|
-| `INNER`  | **[Default]** Data outside of the selection interval is not loaded by the database. |
-| `OUTER`  | One value before and one value after the selection interval is loaded by the database to interpolate leading and trailing values. |
+| `false`  | **[Default]** Data outside of the selection interval is not loaded by the database. |
+| `true`  | One value before and one value after the selection interval is loaded by the database to interpolate leading and trailing values. |
 
 Examples:
 
-* `{ "boundary": "OUTER" }`
+* `{ "extend": true }`
 
 ### `fill`
 
-The purpose of the `fill` parameter is to eliminate gaps at the beginning and the end of the selection interval. If the `boundary` is `OUTER` and there are values on both sides of the selection interval, the `fill` parameter is not applied.
+The purpose of the `fill` parameter is to eliminate gaps at the beginning and the end of the selection interval. If `boundary` is `OUTER` and there are values on both sides of the selection interval, `fill` parameter is not applied.
 
 | **Name** | **Description**   |
 |:---|:---|
@@ -73,224 +73,249 @@ Examples:
 
 ## Examples
 
-Dataset:
+**Dataset**:
 
 ```ls
-series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
-series e:nurswgvml007 m:cpu_busy=0  d:2017-01-01T00:30:00Z
-series e:nurswgvml007 m:cpu_busy=2  d:2017-01-01T02:30:00Z
-series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
+series e:nurswgvml007 m:cpu_busy=5.8 d:2016-02-19T13:00:00Z
+series e:nurswgvml007 m:cpu_busy=4.6  d:2016-02-19T13:10:00Z
+series e:nurswgvml007 m:cpu_busy=7.9  d:2016-02-19T13:20:00Z
+series e:nurswgvml007 m:cpu_busy=4.9  d:2016-02-19T13:30:00Z
+series e:nurswgvml007 m:cpu_busy=100.00  d:2016-02-19T13:50:00Z
+series e:nurswgvml007 m:cpu_busy=21.0  d:2016-02-19T14:00:00Z
 ```
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2016-12-31 23:30 | -1    |
-| 2017-01-01 00:30 | 0     |
-| 2017-01-01 01:30 | ...   | -- Sample at 01:30 is missing.
-| 2017-01-01 02:30 | 2     |
-| 2017-01-01 03:30 | 3     |
+| 2016-02-19 13:20 | 7.9   |
+| 2016-02-19 13:30 | 4.9   |
+| 2016-02-19 13:40 | ...   | -- Sample at 13:40 is missing.
+| 2016-02-19 13:50 | 100.0 |
+| 2016-02-19 14:00 | 21.0  |
 ```
 
-### Fill Gaps with `LINEAR` Function
+### Fill Gap with `LINEAR` Function
 
 ```json
 [{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-    "function": "LINEAR",
-    "period": {"count": 1, "unit": "HOUR"}
-  }
+"entity": "nurswgvml007",
+"metric": "cpu_busy",
+"aggregate": {
+  "types": ["AVG"],
+  "interpolate": {"type": "LINEAR"},
+  "period": {"count": 10, "unit": "MINUTE"}
+},
+"startDate": "2016-02-19T13:00:00.000Z",
+"endDate": "2016-02-19T14:20:00.000Z",
+"timeFormat": "iso"
 }]
 ```
 
-Response:
+**Response**:
 
 With default `INNER` mode, values outside of the selection interval are ignored.
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2017-01-01 01:00 | 0.5   |
-| 2017-01-01 02:00 | 1.5   |
-| 2017-01-01 03:00 | 2.5   |
+| 2016-02-19 13:30 | 4.9   |
+| 2016-02-19 13:40 | 52.0  |
+| 2016-02-19 13:50 | 100.0 |
+| 2016-02-19 14:00 | 21.0  |
 ```
 
-```json
-[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
-"data":[
-    {"d":"2017-01-01T01:00:00Z","v":0.5},
-    {"d":"2017-01-01T02:00:00Z","v":1.5},
-    {"d":"2017-01-01T03:00:00Z","v":2.5}
-]}]
-```
+![](./images/linear-interpolation-example.png)
 
-### `LINEAR` Function: 30 Minute Period
+[![](./images/button.png)](https://apps.axibase.com/chartlab/7cb52024)
+
+### `LINEAR` Function: `5 Minute` Period
 
 ```json
 [{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 30, "unit": "MINUTE"}
-    }
+"entity": "nurswgvml007",
+"metric": "cpu_busy",
+"aggregate": {
+  "types": ["AVG"],
+  "interpolate": {"type": "LINEAR"},
+  "period": {"count": 5, "unit": "MINUTE"}
+},
+"startDate": "2016-02-19T13:00:00.000Z",
+"endDate": "2016-02-19T14:20:00.000Z",
+"timeFormat": "iso"
 }]
 ```
 
-Response:
+**Response**:
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2017-01-01 00:30 | 0.0   |
-| 2017-01-01 01:00 | 0.5   |
-| 2017-01-01 01:30 | 1.0   |
-| 2017-01-01 02:00 | 1.5   |
-| 2017-01-01 02:30 | 2.0   |
-| 2017-01-01 03:00 | 2.5   |
-| 2017-01-01 03:30 | 3.0   |
+| 2016-02-19 13:30 | 4.9   |
+| 2016-02-19 13:35 | 23.9  |
+| 2016-02-19 13:40 | 43.0  |
+| 2016-02-19 13:45 | 62.0  |
+| 2016-02-19 13:50 | 81.0  |
+| 2016-02-19 13:55 | 100.0 |
+| 2016-02-19 14:00 | 35.0  |
 ```
+
+![](./images/linear-interpolation-example3.png)
+
+[![](./images/button.png)](https://apps.axibase.com/chartlab/22b6439b)
 
 ### Fill Gaps with `PREVIOUS` Function
 
 ```json
 [{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-    "interpolate" : {
-        "function": "PREVIOUS",
-        "period": {"count": 1, "unit": "HOUR"}
-    }
+"entity": "nurswgvml007",
+"metric": "cpu_busy",
+"aggregate": {
+  "types": ["AVG"],
+  "interpolate": {"type": "PREVIOUS"},
+  "period": {"count": 10, "unit": "MINUTE"}
+},
+"startDate": "2016-02-19T13:00:00.000Z",
+"endDate": "2016-02-19T14:20:00.000Z",
+"timeFormat": "iso"
 }]
 ```
 
-Response:
+**Response**:
 
 With default `INNER` mode, values outside of the selection interval are ignored.
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2017-01-01 01:00 | 0.0   |
-| 2017-01-01 02:00 | 0.0   |
-| 2017-01-01 03:00 | 2.0   |
-| 2017-01-01 04:00 | 3.0   |
+| 2016-02-19 13:30 | 4.9   |
+| 2016-02-19 13:40 | 4.9   |
+| 2016-02-19 13:50 | 100.0 |
+| 2016-02-19 14:00 | 21.0  |
 ```
+
+![](./images/previous-interpolation-example.png)
+
+[![](./images/button.png)](https://apps.axibase.com/chartlab/199a8278)
 
 ### `LINEAR` Interpolation with `OUTER` Boundary
 
 ```json
 [{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 1, "unit": "HOUR"},
-        "boundary": "OUTER"
-    }
+"entity": "nurswgvml007",
+"metric": "cpu_busy",
+"aggregate": {
+  "types": ["AVG"],
+  "interpolate": {"type": "LINEAR", "extend": true},
+  "period": {"count": 10, "unit": "MINUTE"}
+},
+"startDate": "2016-02-19T13:00:00.000Z",
+"endDate": "2016-02-19T14:20:00.000Z",
+"timeFormat": "iso"
 }]
 ```
 
-Response:
+**Response**:
 
 With `OUTER` mode, values outside of the selection interval are used to interpolate leading and trailing values.
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2017-01-01 00:00 | -0.5  |
-| 2017-01-01 01:00 | 0.5   |
-| 2017-01-01 02:00 | 1.5   |
-| 2017-01-01 03:00 | 2.5   |
+| 2016-02-19 13:30 | 4.9   |
+| 2016-02-19 13:40 | 52.0  |
+| 2016-02-19 13:50 | 100.0 |
+| 2016-02-19 14:00 | 21.0  |
 ```
 
 ### `LINEAR` Interpolation with `START_TIME` Alignment
 
 ```json
 [{
-  "startDate": "2017-01-01T00:15:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 1, "unit": "HOUR", "align": "START_TIME"}
-    }
+"entity": "nurswgvml007",
+"metric": "cpu_busy",
+"aggregate": {
+  "types": ["AVG"],
+  "interpolate": {"type": "LINEAR", "extend": true},
+  "period": {"count": 10, "unit": "MINUTE", "align": "START_TIME"}
+},
+"startDate": "2016-02-19T13:00:00.000Z",
+"endDate": "2016-02-19T14:20:00.000Z",
+"timeFormat": "iso"
 }]
 ```
 
-Response:
+**Response**:
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2017-01-01 01:15 | 0.75  |
-| 2017-01-01 02:15 | 1.75  |
-| 2017-01-01 03:15 | 2.75  |
+| 2016-02-19 13:30 | 4.9   |
+| 2016-02-19 13:40 | 53.0  |
+| 2016-02-19 13:50 | 100.0 |
+| 2016-02-19 14:00 | 22.0  |
 ```
 
 ### `LINEAR` Interpolation, Leading/Trailing Values Filled
 
 ```json
 [{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 1, "unit": "HOUR"},
-        "fill": true
-    }
+"entity": "nurswgvml007",
+"metric": "cpu_busy",
+"aggregate": {
+  "types": ["AVG"],
+  "period": {"count": 10, "unit": "MINUTE"}
+},
+"interpolate": {"function": "LINEAR", "fill": true, "period": {"count": 10, "unit": "MINUTE"}},
+"startDate": "2016-02-19T13:00:00.000Z",
+"endDate": "2016-02-19T14:20:00.000Z",
+"timeFormat": "iso"
 }]
 ```
 
-Response:
+**Response**:
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2017-01-01 00:00 | 0.0   |
-| 2017-01-01 01:00 | 0.5   |
-| 2017-01-01 02:00 | 1.5   |
-| 2017-01-01 03:00 | 2.5   |
-| 2017-01-01 04:00 | 3.0   |
+| 2016-02-19 13:30 | 3.3   |
+| 2016-02-19 13:40 | 35.0  |
+| 2016-02-19 13:50 | 69.2  |
+| 2016-02-19 14:00 | 100.0 |
 ```
 
 ### `LINEAR` Interpolation, Leading/Trailing Values Filled with `NaN`
 
 ```json
 [{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 1, "unit": "HOUR"},
-        "fill": "NaN"
-    }
+"entity": "nurswgvml007",
+"metric": "cpu_busy",
+"aggregate": {
+  "types": ["AVG"],
+  "period": {"count": 10, "unit": "MINUTE"}
+},
+"interpolate": {"function": "LINEAR", "fill": "NaN", "period": {"count": 10, "unit": "MINUTE"}},
+"startDate": "2016-02-19T13:00:00.000Z",
+"endDate": "2016-02-19T14:20:00.000Z",
+"timeFormat": "iso"
 }]
 ```
 
-Response:
+**Response**:
 
 ```ls
 | datetime         | value |
 |------------------|-------|
-| 2017-01-01 00:00 | null  |
-| 2017-01-01 01:00 | 0.5   |
-| 2017-01-01 02:00 | 1.5   |
-| 2017-01-01 03:00 | 2.5   |
-| 2017-01-01 04:00 | null  |
+| 2016-02-19 13:00 | nul   |
+| 2016-02-19 13:10 | 5.5   |
+| 2016-02-19 13:20 | 4.3   |
+| 2016-02-19 13:30 | 3.3   |
+| 2016-02-19 13:40 | 35.0  |
+| 2016-02-19 13:50 | 69.2  |
+| 2016-02-19 14:00 | 100.0 |
 ```
+
+### Interpolation Portal
+
+![](./images/interpolation-portal.png)
+
+[![](./images/button.png)](https://apps.axibase.com/chartlab/d8c03f11/3/#)
