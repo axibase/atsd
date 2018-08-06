@@ -49,6 +49,7 @@ name LIKE '*vml*' && tags.location = 'NUR'
   * [`property`](functions-entity-groups-expression.md#property)
   * [`properties`](functions-entity-groups-expression.md#properties)
   * [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects is not supported
+  * [`hasProperty`](functions-entity-groups-expression.md#hasproperty)
 * Lookup Functions
   * [`entity_tags`](functions-entity-groups-expression.md#entity_tags)
 * Collection Functions
@@ -102,7 +103,7 @@ name LIKE '*vml*' && tags.location = 'NUR'
 * Entity collects the specified property type
 
   ```javascript
-  properties('oem.oracle_database').size() > 0
+  hasProperty('oem.oracle_database')
   ```
 
 * Entity collects the specified metric

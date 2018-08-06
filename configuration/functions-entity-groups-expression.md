@@ -232,6 +232,20 @@ name IN property_values('nurswgvml007', 'docker.container::image')
 property_values('linux.disk:fstype=ext4:mount_point').contains('/')
 ```
 
+### `hasProperty`
+
+```javascript
+hasProperty(string t) boolean
+```
+
+Returns true if there exists any property with type `t` for the tested entity.
+
+Examples:
+
+```javascript
+hasProperty('docker.container')
+```
+
 ### `hasMetric`
 
 ```javascript
