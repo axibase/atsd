@@ -16,7 +16,7 @@
 
 | **Week Ending** | **Change Log** |
 |---|---|
-|2017-Dec-24 | [50](2017_51/README.md) |
+|2017-Dec-24 | [51](2017_51/README.md) |
 |2017-Dec-17 | [50](2017_50/README.md) |
 |2017-Dec-10 | [49](2017_49/README.md) |
 |2017-Dec-03 | [48](2017_48/README.md) |
