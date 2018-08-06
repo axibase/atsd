@@ -995,8 +995,8 @@ The `CASE` expressions can be nested by using `CASE` within the `result_expressi
 CASE date_format(time, 'yyyy')
     WHEN '2016' THEN
       CASE
-        WHEN CAST(date_format(time, 'u') AS NUMBER) > 5 THEN '17'
-        ELSE '16'
+        WHEN IS_WEEKDAY(time, 'USA') THEN '16'
+        ELSE '17'
       END
     WHEN '2017' THEN '18'
     WHEN '2018' THEN '17'
@@ -2473,15 +2473,15 @@ GROUP BY PERIOD(1 HOUR)
 In addition to formatting, the `date_format` function can be used in the `WHERE`, `GROUP BY`, and `HAVING` clauses to filter and group dates by month, day, or hour.
 
 ```sql
-SELECT date_format(time, 'EEE'), AVG(value)
+SELECT date_format(time, 'eee'), AVG(value)
 FROM "mpstat.cpu_busy"
   WHERE datetime >= CURRENT_MONTH
-GROUP BY date_format(time, 'EEE')
+GROUP BY date_format(time, 'eee')
   ORDER BY 2 DESC
 ```
 
 ```ls
-| date_format(time,'EEE') | AVG(value) |
+| date_format(time,'eee') | AVG(value) |
 |-------------------------|------------|
 | Mon                     | 31.9       |
 | Wed                     | 31.8       |
@@ -2498,12 +2498,12 @@ By retrieving date parts from the `time` column, the records can be filtered by 
 The query below includes samples recorded only during daytime hours (from 08:00 till 17:59) on weekdays (Monday till Friday).
 
 ```sql
-SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)
+SELECT datetime, date_format(time, 'eee') AS "day of week", avg(value), count(value)
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime >= previous_week AND datetime < current_week
   AND CAST(date_format(time, 'H') AS number) BETWEEN 8 AND 17
-  AND date_format(time, 'u') < 6
+  AND is_weekday(time, 'USA')
 GROUP BY PERIOD(1 hour)
 ```
 

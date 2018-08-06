@@ -55,7 +55,7 @@ SELECT datetime,
   HOUR(datetime) AS "hour",
   MINUTE(datetime) AS "minute",
   SECOND(datetime) AS "second",
-  date_format(time, 'yyyy-MMM-dd, EEE') AS "date",
+  date_format(time, 'yyyy-MMM-dd, eee') AS "date",
   DAYOFWEEK(datetime) AS "dow"
 FROM "mpstat.cpu_busy"
   WHERE datetime > current_hour

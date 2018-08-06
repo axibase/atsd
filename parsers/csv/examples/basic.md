@@ -28,7 +28,7 @@ For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** f
 
 ### Timestamp Pattern
 
-* To parse the dates in the CSV file, specify the timestamp column pattern using [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
+* To parse the dates in the CSV file, specify the timestamp column pattern using [Time Format](../../../shared/time-pattern.md).
 * In the example above, the pattern to read `Measurement Time` column values is `yyyy-MM-dd HH:mm`.
 * Enter timestamp pattern in the **Timestamp Format** field
 
