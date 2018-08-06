@@ -112,6 +112,19 @@ Returns `true` if the `DateTime` object is a working day based on the observed [
 
 The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.
 
+```javascript
+// returns true if average exceeds 10 on a working day, taking observed holidays into account
+avg() > 10 && is_workday('usa')
+```
+
+```javascript
+// returns true 2 days before the first non-working day, typically on Thursdays
+now.hourOfDay = 12 AND
+now.is_workday()
+AND now.add(1, 'day').is_workday() 
+AND NOT now.add(2, 'day').is_workday()
+```
+
 ## Sample Values
 
 The following values are returned by the `DateTime` object on `2018-01-13T16:45:22.303Z` (Saturday).
