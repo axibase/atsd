@@ -121,7 +121,7 @@ avg() > 10 && is_workday('usa')
 // returns true 2 days before the first non-working day, typically on Thursdays
 now.hourOfDay = 12 AND
 now.is_workday()
-AND now.add(1, 'day').is_workday() 
+AND now.add(1, 'day').is_workday()
 AND NOT now.add(2, 'day').is_workday()
 ```
 
