@@ -44,14 +44,14 @@ The `date_parse` function parses the literal timestamp string into Unix millisec
 date_parse(string datetime[, string time_format[, string time_zone]])
 ```
 
-* The default time_format is ISO 8601: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`.
-* The default time_zone is the server time zone.
+* The default `time_format` is ISO format: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`.
+* The default `time_zone` is the server time zone.
 
 ```java
-/* Parse date using the default ISO 8601 format.*/
+/* Parse date using the default ISO format.*/
 date_parse("2017-03-31T12:36:03.283Z")
 
-/* Parse date using the ISO 8601 format, without milliseconds */
+/* Parse date using the ISO format, without milliseconds */
 date_parse("2017-03-31T12:36:03Z", "yyyy-MM-dd'T'HH:mm:ssZZ")
 
 /* Parse date using the server time zone. */

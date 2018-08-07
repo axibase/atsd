@@ -2,13 +2,13 @@
 
 ## Description
 
-Query all detailed data for the series using the ISO date format.
+Query all detailed data for the series using ISO format.
 
 The database accepts data timestamped at or after Unix time which is **1970-01-01T00:00:00.000 UTC**.
 
 Maximum timestamp that can be stored by the database is **2106-02-07T07:28:14.999Z**.
 
-Since the ISO parser is currently limited to **4** digits in the year part, the maximum allowable year specified in ISO format is **9999**.
+Since the ISO parser is limited to **4** digits in the year segment, the maximum allowable year specified in ISO format is **9999**.
 
 ## Request
 

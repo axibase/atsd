@@ -83,8 +83,8 @@ tags.size() == 0 && name.length() == 64
 |`enabled`| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
 |`persistent` | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`filter` | string | Persistence filter [expression](../../../api/meta/expression.md). Discards series that do not match this filter.|
-|`createdDate`| string | Date of metric creation in ISO 8601 format.|
-|`lastInsertDate`| string | Last time of a received value for this metric by any series in ISO 8601 format.|
+|`createdDate`| string | Date of metric creation in ISO format.|
+|`lastInsertDate`| string | Last time of a received value for this metric by any series in ISO format.|
 |`retentionDays`| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
 |`seriesRetentionDays`| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
 |`versioned`| boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|

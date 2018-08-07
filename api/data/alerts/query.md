@@ -66,8 +66,8 @@ An array of matching alert objects containing the following fields:
 | `textValue` | string | Text value.  |
 | `value` | double | Last numeric value received. |
 | `openValue` | double | First numeric value received.  |
-| `openDate` | string | ISO 8601 date for alert open.  |
-| `lastEventDate` | string | ISO 8601 date for the last received record.  |
+| `openDate` | string | ISO format date for alert open.  |
+| `lastEventDate` | string | ISO format date for the last received record.  |
 
 ### Errors
 

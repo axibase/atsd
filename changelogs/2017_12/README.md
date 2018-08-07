@@ -30,7 +30,7 @@
 | 3989 | json | Bug | Unescape HTML-escaped values in textarea with syntax highlight. |
 | [3682](#issue-3682) | pi | Feature | Implement the PI job to copy incremental PI tag values using the JDBC driver. |
 | [3996](#issue-3996) | socrata | Feature | Display top-10 rows in tabular format in Test mode. |
-| 4026 | core | Bug | Add support for specific dates in ISO 8601 format in [calendar](../../shared/calendar.md#specific-time) expressions. |
+| 4026 | core | Bug | Add support for specific dates in ISO format in [calendar](../../shared/calendar.md#specific-time) expressions. |
 | 4019 | docker | Bug | Do not interrupt the job if there are no free ATSD connections in pool. |
 | 4025 | core | Bug | Remove `m:{name}=NaN` field in `series` command if text value is specified. |
 

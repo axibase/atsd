@@ -36,7 +36,7 @@ An array of message objects.
 | `type` | string | Message type. |
 | `source` | string | Message source. |
 | `entity` | string | **[Required]** Entity name. |
-| `date` | string | ISO 8601 date, for example `2016-05-25T00:15:00Z`.<br>Set to current server time if omitted. |
+| `date` | string | ISO format date, for example `2016-05-25T00:15:00Z`.<br>Set to current server time if omitted. |
 | `severity` | string | [Severity](../severity.md) name. |
 | `tags` | object | An object containing `name=value` pairs, for example tags: `{"path": "/", "name": "sda"}`. |
 | `message` | string | Message text. |

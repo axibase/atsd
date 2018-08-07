@@ -72,7 +72,7 @@ An array of matching property objects containing the following fields:
 | `entity` |string |  Entity name. |
 | `key` | object | Object containing `name=value` fields that uniquely identify the property record. <br>Example: `{"file_system": "/","mount_point":"sda1"}`|
 | `tags` | object | Object containing `name=value` fields that are not part of the key and contain descriptive information about the property record. <br>Example: `{"fs_type": "ext4"}`. |
-| `date` | string | ISO 8601 date of last modified property record. |
+| `date` | string | ISO format date of last modified property record. |
 
 ## Key Match Example
 

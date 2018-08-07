@@ -81,7 +81,7 @@ time-iso = "d:" ISO_DATE
 
 ### Command Examples
 
-* ISO date
+* ISO format date
 
 ```ls
 message d:2016-03-04T12:43:20Z e:server001 t:type=application t:source=cron t:job=backup m:"Task completed"

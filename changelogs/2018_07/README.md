@@ -16,7 +16,7 @@
 5501 | rule editor | Bug | Rule Editor: Controls disappear when creating multiple [webhooks](../../rule-engine/notifications/README.md).|
 5500 | rule editor | Bug | Rule Editor: **Change Date** [filter](../../rule-engine/README.md#filtering) is remembered and cannot be modified.|
 5498 | client | Bug | [Python Client](https://github.com/axibase/atsd-api-python/blob/master/README.md): fix client due to `200 OK` to `204 No Response` status code changes in the Data API.|
-5489 | rule engine | Feature | Rule Engine: Implement [`elapsed_minutes`](../../rule-engine/functions-date.md#elapsed_minutes) function for ISO datetime literal.|
+5489 | rule engine | Feature | Rule Engine: Implement [`elapsed_minutes`](../../rule-engine/functions-date.md#elapsed_minutes) function for ISO format datetime literal.|
 5487 | rule engine | Bug | [Alert History](../../rule-engine/logging.md#logging-to-database) must include grouping tags to avoid collisions.|
 5485 | api-rest | Bug | Return `204 No Response` instead of `200 OK` in [REST API](../../api/data/README.md) endpoints if `POST` response contains empty payload.|
 5481 | export | Bug | Export: [Versioned](../../versioning/README.md) values are not displayed.|

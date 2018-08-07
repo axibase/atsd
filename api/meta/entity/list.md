@@ -75,7 +75,7 @@ tags.size() == 0 && name.length() == 64
 | `enabled` | boolean | Enabled status. Incoming data is discarded for disabled entities. |
 | `interpolate` | string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`.|
 | `timeZone` | string | Time Zone ID, for example EST.<br>Refer to the [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in entity-specific time zone.|
-| `createdDate` | string | Date of entity creation in ISO 8601 format.|
+| `createdDate` | string | Date of entity creation in ISO format.|
 | `lastInsertDate` | string |Last time a value is received by the database for this entity in ISO format. |
 | `tags` | object | Entity tags, as requested with the `tags` parameter. |
 

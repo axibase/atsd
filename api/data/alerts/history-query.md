@@ -62,10 +62,10 @@ An array of matching alert objects containing the following fields:
 | `window` | string | Window length. |
 | `value` | double | Last numeric value received. |
 | `type` | string | Alert state when closed: `OPEN`, `CANCEL`, `REPEAT`  |
-| `date` | string | ISO 8601 date.  |
-| `alertOpenDate` | string | ISO 8601 date of alert open.  |
+| `date` | string | ISO format.  |
+| `alertOpenDate` | string | ISO format date of alert open.  |
 | `alertDuration` | number | Time in milliseconds for alert in `OPEN` or `REPEAT` state.  |
-| `receivedDate` | string | ISO 8601 date for the last received value.  |
+| `receivedDate` | string | ISO format date for the last received value.  |
 
 ### Errors
 
