@@ -59,7 +59,7 @@
       "@id": "atsd:time",
       "@type": "xsd:long",
       "subClassOf": "owl:DatatypeProperty",
-      "comment": "Unix milliseconds",
+      "comment": "Unix time in milliseconds",
       "label": "Time"
     },
     {
@@ -84,7 +84,7 @@
       "@id": "atsd:versionTime",
       "@type": "xsd:long",
       "subClassOf": "atsd:time",
-      "comment": "Unix milliseconds",
+      "comment": "Unix time in milliseconds",
       "label": "Version Time"
     },
     {

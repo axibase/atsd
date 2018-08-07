@@ -2,7 +2,7 @@
 
 ## Description
 
-The `MAX_VALUE_TIME` function returns the time in Unix milliseconds of maximum value for the first time in each period.
+The `MAX_VALUE_TIME` function returns the time in Unix time with millisecond granularity of maximum value for the first time in each period.
 
 ## Request
 

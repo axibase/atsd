@@ -38,7 +38,7 @@
 
 ### Issue 4050
 
-The `date_parse` function parses the literal timestamp string into Unix milliseconds.
+The `date_parse` function parses the literal timestamp string into Unix time with millisecond granularity.
 
 ```javascript
 date_parse(string datetime[, string time_format[, string time_zone]])

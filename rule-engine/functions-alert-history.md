@@ -24,7 +24,7 @@ To use the function, enable [Alert History](logging.md#logging-to-database) logg
 `type` | string | Message type | `web`
 `source` | string | Message source | `access.log`
 `keys` | string | Command tags or property keys | `{"docker-host":"nurswghbs001"}`
-`timestamp` | long | Command time in Unix milliseconds.<br>Default: `0` | `1533109937000`
+`timestamp` | long | Command time in Unix time with milliseconds granularity.<br>Default: `0` | `1533109937000`
 `message` | string | Message text | `Application restarted`
 `value` | double | Command value.<br>Default: `NaN`. | `85.2`
 `open_value` | double | Open value.<br>Default: `NaN`. | `82.7`
@@ -33,7 +33,7 @@ To use the function, enable [Alert History](logging.md#logging-to-database) logg
 `alert_message` | string | Alert message. | `High cpu usage (85.2)`
 `alert_duration` | string | Alert duration in `dd:hh:mm:ss` format. | `00:00:01:00`
 `alert_duration_interval` | string | Alert duration in short format. | `1m:0s`
-`alert_open_time` | number | Alert open time in Unix milliseconds.<br>Default: `0` | `2018-08-01 07:51:17`
+`alert_open_time` | number | Alert open in Unix time with millisecond granularity.<br>Default: `0` | `2018-08-01 07:51:17`
 `alert_open_datetime` | string | Alert open time in ISO format.<br>Default: `1970-01-01T00:00:00Z` | `2018-08-01T07:51:17Z`
 `rule_filter` | string | Filter expression | `entity.tags.profile = 'production'`
 `severity` | string | Alert severity.<br>Default: `UNDEFINED` | `WARNING`

@@ -27,13 +27,13 @@ message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-| e         | string       | **[Required]** Entity name. |
-| t         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../api/data/severity.md). |
-| m         | string       | Message text. |
-| p         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
-| s         | integer      | Time in Unix seconds. |
-| ms        | integer      | Time in Unix milliseconds. |
-| d         | string       | Time in ISO format. |
+| `e`         | string       | **[Required]** Entity name. |
+| `t`         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../api/data/severity.md). |
+| `m`         | string       | Message text. |
+| `p`         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
+| `s`         | integer      | Unix time in seconds. |
+| `ms`        | integer      | Unix time in milliseconds. |
+| `d`         | string       | Time in ISO format. |
 
 * Messages with timestamps that are more than 1 minute behind or ahead of the current server time are ignored by the rule engine.
 

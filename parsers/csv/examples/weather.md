@@ -78,5 +78,5 @@
 |  Metric Prefix  |  Unique entity prefix `halifax`  |  Prefix added at the start of metric name, used to distinguish between metrics with similar or identical names.  |
 |  Timestamp Columns  |  Date  |  The `Date` column contains the timestamp.  |
 |  Timestamp Pattern  |  `yyyy-MM-dd`  |  Timestamp Pattern must correspond to the original timestamp in the CSV file: `2015-01-01`.  |
-|  Filter  |  `timestamp > 0`  |  Only import data that has a timestamp greater than 0 in Unix milliseconds.<br>Timestamps earlier than `1970-01-01T00:00:00Z` are not allowed.  |
+|  Filter  |  `timestamp > 0`  |  Only import data that has a timestamp greater than `0` in Unix time.<br>Timestamps earlier than `1970-01-01T00:00:00Z` are not allowed.  |
 |  Ignored Columns  |  `Year`<br>`Month`<br>`Day`<br>`Data Quality`<br>`Max Temp Flag`<br>`Min Temp Flag`<br>`Mean Temp Flag`<br>`Heat Deg Days Flag`<br>`Cool Deg Days Flag`<br>`Total Rain Flag`<br>`Total Snow Flag`<br>`Total Precip Flag`<br>`Snow on Grnd Flag`<br>`Dir of Max Gust (10s deg)`<br>`Dir of Max Gust Flag`<br>`Spd of Max Gust (kmh)`<br>`Spd of Max Gust Flag`  |  Columns to be skipped.<br>Year, Month, Day are ignored because Date column is imported as the timestamp.<br>Other listed columns do not contain valuable data or contain empty values, therefore such columns are ignored.  |

@@ -42,7 +42,7 @@ The request contains an array of series objects, each consisting of an array of 
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `t` | integer | **[Required]** Sample time in Unix milliseconds.<br>Example: `{"t":1464782922000, "v":50.8}`.|
+| `t` | integer | **[Required]** Sample Unix time in milliseconds.<br>Example: `{"t":1464782922000, "v":50.8}`.|
 | `d` | string | **[Required]** Sample time in ISO format.<br>Example: `{"d":"2016-06-01T12:08:42Z", "v":50.8}`. |
 | `v` | number | **[Required]** Numeric sample value at time `t`/`d`. <br>`null` is supported and is stored as `NaN` (Not a Number).<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null}` |
 | `s` | number | Standard deviation of the forecast value `v`.<br>Example: `{"d":"2016-06-01T12:08:42Z", "v":50.8, "s":12.340}`.<br>Applicable when `type` is `FORECAST`.|

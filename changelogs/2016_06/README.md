@@ -134,7 +134,7 @@ OPTION (ROW_MEMORY_THRESHOLD 500000)
 
 ### Issue 3703
 
-Now aggregate functions such as `MAX`, `MIN`, and `DELTA` can be applied to the `time` column, which returns the sampling time in Unix milliseconds.
+Now aggregate functions such as `MAX`, `MIN`, and `DELTA` can be applied to the `time` column, which returns the Unix time in  milliseconds.
 One of the use cases is to display the most recent time in windowing queries where the [last_time](../../sql/README.md#last_time-syntax) function can be utilized to select data for a sliding interval, such as the most recent 4 weeks for each series in the example below.
 
 ```sql

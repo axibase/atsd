@@ -299,9 +299,9 @@ The timestamp field records the time of an observation or an event as determined
 
 |**Field**|**Type**|**Description**|
 |:---|:---|:---|
-|ms|long|Unix milliseconds since `1970-01-01T00:00:00Z` |
-|s|integer|Unix seconds since `1970-01-01T00:00:00Z`|
-|d|string|[ISO 8601 date format](../../api/data/date-format.md).|
+|`ms`|long|Unix time in milliseconds |
+|`s`|integer|Unix time in seconds|
+|`d`|string|[ISO format date](../../api/data/date-format.md).|
 
 Supported `d` field formats:
 

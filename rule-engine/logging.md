@@ -123,7 +123,7 @@ Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syn
 `status` | `OPEN`
 `tags.tag_name` | `nurswgvml003`
 `tags` | `host=nurswgvml003`
-`timestamp` | `145678784500` (Unix milliseconds)
+`timestamp` | `145678784500` (Unix time in milliseconds)
 `value` | `3103100000`
 `window` | `length(1)`
 `threshold` | `max() > 20`

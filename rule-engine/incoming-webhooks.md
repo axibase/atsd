@@ -207,7 +207,7 @@ Command parameters set message field values from JSON field values.
 | `command.type` | Message type.  |
 | `command.source` | Message source.  |
 | `command.entity` | Message entity.  |
-| `command.date` | Message time in ISO format, Unix milliseconds or seconds, or user-defined format specified with `datetimePattern` parameter. |
+| `command.date` | Message time in ISO format, Unix time in milliseconds or seconds, or user-defined format specified with `datetimePattern` parameter. |
 | `command.message` | Message text. |
 | `command.severity` | Message severity specified as an integer or as a constant. |
 

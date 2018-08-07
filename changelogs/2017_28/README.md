@@ -11,7 +11,7 @@
 ### Issue 4375
 
 The `CURRENT_TIMESTAMP` function returns current database date and time in the ISO format similar to the [`NOW`](../../sql/README.md#reserved-words)
-function which returns current database time in Unix milliseconds.
+function which returns current database time in Unix time format with millisecond granularity.
 
 The [`DBTIMEZONE`](../../sql/README.md#dbtimezone) function returns the current database time zone name or GMT offset.
 
