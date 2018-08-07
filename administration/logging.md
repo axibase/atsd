@@ -28,10 +28,10 @@ Logs are rolled over and archived according to the retention settings in the `/o
 
 |**Log Name**|**Description**|
 |---|:---|
-|`hbase-<user>-master-<hostname>.log`| HMaster log.|
-|`hbase-<user>-regionserver-<hostname>.log`| RegionServer log.|
-|`hbase-<user>-zookeeper-<hostname>.log`| Zookeeper log.|
-|`hbase.log`| HBase root log.|
+|`hbase-<user>-master-<hostname>.log`| `HMaster` log.|
+|`hbase-<user>-regionserver-<hostname>.log`| `RegionServer` log.|
+|`hbase-<user>-zookeeper-<hostname>.log`| `Zookeeper` log.|
+|`hbase.log`| `HBase` default log.|
 |`SecurityAuth.audit`| Security log.|
 
 ## HDFS Log Files
@@ -40,9 +40,9 @@ Logs are rolled over and archived according to the retention settings in the `/o
 
 |**Log Name**|**Description**|
 |---|:---|
-|`hadoop-<user>-namenode-<hostname>.log`| NameNode log.|
-|`hadoop-<user>-secondarynamenode-<hostname>.log`| SecondaryNameNode log.|
-|`hadoop-<user>-datanode-<hostname>.log`| DataNode log.|
+|`hadoop-<user>-namenode-<hostname>.log`| `NameNode` log.|
+|`hadoop-<user>-secondarynamenode-<hostname>.log`| `SecondaryNameNode` log.|
+|`hadoop-<user>-datanode-<hostname>.log`| `DataNode` log.|
 |`SecurityAuth.audit`| Security log.|
 
 ![](./images/server-logs-atsd.png)
