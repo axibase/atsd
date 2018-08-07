@@ -6,7 +6,7 @@ The log files can be also downloaded from the **Settings > Server Logs** page.
 
 Logs are rolled over and archived according to the retention settings in the `/opt/atsd/atsd/conf/logback.xml` file.
 
-## Log Files
+## ATSD Log Files
 
 |**Log Name**|**Description**|
 |---|:---|
@@ -21,6 +21,31 @@ Logs are rolled over and archived according to the retention settings in the `/o
 |`stop.log`| Stop log.|
 |`err.log`| Standard error. |
 |`alert.log`| Alert log. |
+
+## HBase Log Files
+
+> HBase Log Files section is visible in single-node ATSD installations.
+
+|**Log Name**|**Description**|
+|---|:---|
+|`hbase-<user>-master-<hostname>.log`| HMaster log.|
+|`hbase-<user>-regionserver-<hostname>.log`| RegionServer log.|
+|`hbase-<user>-zookeeper-<hostname>.log`| Zookeeper log.|
+|`hbase.log`| HBase root log.|
+|`SecurityAuth.audit`| Security log.|
+
+## HDFS Log Files
+
+> HDFS Log Files section is visible in single-node ATSD installations running in pseudo-distributed mode.
+
+|**Log Name**|**Description**|
+|---|:---|
+|`hadoop-<user>-namenode-<hostname>.log`| NameNode log.|
+|`hadoop-<user>-secondarynamenode-<hostname>.log`| SecondaryNameNode log.|
+|`hadoop-<user>-datanode-<hostname>.log`| DataNode log.|
+|`SecurityAuth.audit`| Security log.|
+
+![](./images/server-logs-atsd.png)
 
 ## Logging Properties
 
