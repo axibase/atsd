@@ -48,6 +48,8 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 
 ## 3. Extended Log Files
 
+HBase and HDFS log files are accessible from the **Settings > Diagnostics > Server Logs** page if ATSD is running in [standalone](../installation/README.md#packages) mode.
+
 1. Archive (`.tar.gz`) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
 
 2. Archive (`.tar.gz`) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
