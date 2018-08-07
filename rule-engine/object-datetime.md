@@ -2,15 +2,15 @@
 
 ## Overview
 
-`DateTime` object represents a specific date and time and provides fields and functions to extract various calendar units.
+`DateTime` object represents a specific date and time. The object also provides fields and functions to extract various calendar units.
 
 ## Time Zone
 
-By default, the `DateTime` object is initialized in the **server** time zone.
+By default, the `DateTime` object is initialized in **server** time zone.
 
-To change the time zone of an existing `DateTime` object, invoke the [`to_timezone(tz)`](#to_timezone-function) function which returns a modified `DateTime` object in the custom [time zone](../shared/timezone-list.md).
+To change the time zone of an existing `DateTime` object, invoke the [`to_timezone(tz)`](#to_timezone-function) function which returns a modified `DateTime` object in a custom [time zone](../shared/timezone-list.md).
 
-To create a new `DateTime` object from Unix time in milliseconds in the custom time zone, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
+To create a new `DateTime` object in Unix milliseconds which adheres to the custom time zone, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
 
 ## Fields
 
@@ -38,7 +38,7 @@ To create a new `DateTime` object from Unix time in milliseconds in the custom t
 * `next_non_working_day`
 * `previous_non_working_day`
 
-The `millis` field returns Unix time in milliseconds.
+The `millis` field returns time in Unix milliseconds.
 
 `next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` fields are based on the calendar specified in `default.holiday.calendar` server property.
 
@@ -75,7 +75,7 @@ If count argument `c` is negative, the interval is subtracted from the current `
 
 Fractional count argument `c` is rounded down to the nearest integer.
 
-The [time unit](../api/data/series/time-unit.md) `u` is case-insensitive  and allows both singular and plural forms.
+The [time unit](../api/data/series/time-unit.md) `u` is **case-insensitive** and supports both singular and plural forms of  units.
 
 The new `DateTime` object inherits the time zone of the original object.
 
@@ -119,7 +119,7 @@ By default `default.holiday.calendar` resolves country code from the `user.count
 is_workday( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](workday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
+Returns `true` if the `DateTime` object is a working day based on the active [workday calendar](workday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
 
 The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.
 
@@ -142,7 +142,7 @@ AND NOT now.add(2, 'day').is_workday()
 to_timezone(string tz) DateTime
 ```
 
-Returns a new `DateTime` object  with the same time but in the specified [time zone](../shared/timezone-list.md) `tz`.
+Returns a new `DateTime` object  with the same time in the specified [time zone](../shared/timezone-list.md) `tz`.
 
 ```javascript
 now.to_timezone('Europe/Berlin').next_workday
