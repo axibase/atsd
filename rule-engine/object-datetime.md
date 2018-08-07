@@ -10,7 +10,7 @@ By default, the `DateTime` object is initialized in **server** time zone.
 
 To change the time zone of an existing `DateTime` object, invoke the [`to_timezone(tz)`](#to_timezone-function) function which returns a modified `DateTime` object in a custom [time zone](../shared/timezone-list.md).
 
-To create a new `DateTime` object expressed as Unix time in milliseconds which adheres to the custom time zone, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
+To create a new `DateTime` object from Unix time in milliseconds, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
 
 ## Fields
 
