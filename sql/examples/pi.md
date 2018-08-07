@@ -237,13 +237,13 @@ WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, EXTEND, START_TIME)
 * The PERIOD aggregation supports user-defined time zones.
 
 ```sql
-SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', "US/Eastern") AS "Local Date",
+SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'US/Eastern') AS "Local Date",
   max(value), min(value)
   FROM atsd_series
 WHERE metric LIKE 'tv6.p%'
   AND datetime BETWEEN '2016-10-03T00:00:00Z' AND '2016-10-05T00:00:00Z'
   AND entity = 'br-1211'
-  GROUP BY PERIOD(1 DAY, "US/Eastern")
+  GROUP BY PERIOD(1 DAY, 'US/Eastern')
 ```
 
 ```ls

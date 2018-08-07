@@ -1267,14 +1267,14 @@ GROUP BY PERIOD({count} {unit} [, option])
 * `align` = START_TIME, END_TIME, FIRST_VALUE_TIME, CALENDAR
 * `timezone` = [Time Zone ID](../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
 
-The options are separated by a comma and can be specified in any order.
+The `PERIOD` options can be specified in any order and are separated by a comma.
 
 ```sql
 PERIOD(5 MINUTE)
 PERIOD(5 MINUTE, END_TIME)
 PERIOD(5 MINUTE, CALENDAR, VALUE 0)
 PERIOD(1 HOUR, LINEAR, EXTEND)
-PERIOD(1 DAY, "US/Eastern")
+PERIOD(1 DAY, 'US/Eastern')
 PERIOD(1 DAY, entity.timeZone)
 ```
 
@@ -2356,11 +2356,11 @@ The `LAST` function returns the value of the last sample (or the value of expres
 
 #### MIN_VALUE_TIME
 
-The `MIN_VALUE_TIME` function returns the Unix time in milliseconds (LONG datatype) of the first occurrence of the **minimum** value.
+The `MIN_VALUE_TIME` function returns the Unix milliseconds (LONG datatype) of the first occurrence of the **minimum** value.
 
 #### MAX_VALUE_TIME
 
-The `MAX_VALUE_TIME` function returns the Unix time in milliseconds (LONG datatype) of the first occurrence of the **maximum** value.
+The `MAX_VALUE_TIME` function returns the Unix milliseconds (LONG datatype) of the first occurrence of the **maximum** value.
 
 #### CORREL
 
@@ -2610,15 +2610,15 @@ GROUP BY PERIOD(1 DAY)
 
 #### EXTRACT
 
-The `extract` function returns an integer value corresponding to the specified part (component) of the provided date.
+The function returns an integer value corresponding to the specified calendar part (component) of the provided date.
 
 ```sql
-EXTRACT(datepart FROM datetime | time | datetime expression)
+EXTRACT(datepart FROM datetime | time | datetime expression [, timezone])
 ```
 
 The `datepart` argument can be `YEAR`, `QUARTER`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, or `SECOND`.
 
-The evaluation is based on the database time zone. The date argument can refer to the `time` or `datetime` columns including support for calendar expressions.
+The evaluation is based on the **database** time zone unless a custom [time zone](../shared/timezone-list.md) is specified. The date argument can refer to the `time` or `datetime` columns and [calendar](../shared/calendar.md) keywords and expressions..
 
 ```sql
 SELECT datetime,
@@ -2630,15 +2630,18 @@ SELECT datetime,
   EXTRACT(minute FROM datetime) AS "minute",
   EXTRACT(second FROM datetime) AS "second",
   EXTRACT(day FROM now - 1*DAY) AS "prev_day",
-  EXTRACT(month FROM now + 1*MONTH) AS "next_month"
-FROM "mpstat.cpu_busy"
-  WHERE datetime > current_hour
+  EXTRACT(month FROM now + 1*MONTH) AS "next_month",
+  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul') AS "date_local",
+  EXTRACT(day FROM datetime, 'Asia/Seoul') AS "day_local"
+FROM "cpu_busy"
+  WHERE datetime >= '2018-08-05T21:00:00Z'
+  LIMIT 1
 ```
 
 ```ls
-| datetime             | year | quarter | month | day | hour | minute | second | prev_day | next_month |
-|----------------------|------|---------|-------|-----|------|--------|--------|----------|------------|
-| 2017-07-29T21:00:12Z | 2017 | 3       | 7     | 29  | 21   | 0      | 12     | 28       | 8          |
+| datetime             | year | quarter | month | day | hour | minute | second | prev_day | next_month | date_local          | day_local |
+|----------------------|------|---------|-------|-----|------|--------|--------|----------|------------|---------------------|-----------|
+| 2018-08-05T21:00:04Z | 2018 | 3       | 8     | 5   | 21   | 0      | 4      | 6        | 9          | 2018-08-06 06:00:04 | 6         |
 ```
 
 #### SECOND
@@ -2662,7 +2665,7 @@ MINUTE (datetime | time | datetime expression)
 The `hour` function returns the current hour of the day (0 - 23) in the provided date.
 
 ```sql
-HOUR (datetime | time | datetime expression)
+HOUR (datetime | time | datetime expression [, timezone])
 ```
 
 #### DAY
@@ -2670,7 +2673,7 @@ HOUR (datetime | time | datetime expression)
 The `day` function returns the current day of month in the provided date.
 
 ```sql
-DAY (datetime | time | datetime expression)
+DAY (datetime | time | datetime expression [, timezone])
 ```
 
 #### DAYOFWEEK
@@ -2678,7 +2681,7 @@ DAY (datetime | time | datetime expression)
 The `dayofweek` function returns the current day of week (1-7, starting with Monday) in the provided date.
 
 ```sql
-DAYOFWEEK (datetime | time | datetime expression)
+DAYOFWEEK (datetime | time | datetime expression [, timezone])
 ```
 
 #### MONTH
@@ -2686,7 +2689,7 @@ DAYOFWEEK (datetime | time | datetime expression)
 The `month` function returns the current month (1-12) in the provided date.
 
 ```sql
-MONTH (datetime | time | datetime expression)
+MONTH (datetime | time | datetime expression [, timezone])
 ```
 
 #### QUARTER
@@ -2694,7 +2697,7 @@ MONTH (datetime | time | datetime expression)
 The `quarter` function returns the current quarter of the year in the provided date.
 
 ```sql
-QUARTER (datetime | time | datetime expression)
+QUARTER (datetime | time | datetime expression [, timezone])
 ```
 
 #### YEAR
@@ -2702,7 +2705,7 @@ QUARTER (datetime | time | datetime expression)
 The `year` function returns the current year in the provided date.
 
 ```sql
-YEAR (datetime | time | datetime expression)
+YEAR (datetime | time | datetime expression [, timezone])
 ```
 
 #### CURRENT_TIMESTAMP
@@ -2739,7 +2742,7 @@ IS_WORKDAY(datetime | time | datetime expression, calendar_key [, timezone])
 
 Notes:
 
-* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in **server** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../rule-engine/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and calendar key is `USA` the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for a list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday, and the function returns `false` even though the date is a Wednesday.
+* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../rule-engine/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and calendar key is `USA` the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for a list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday, and the function returns `false` even though the date is a Wednesday.
 * The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
 
 ```sql
@@ -2764,7 +2767,7 @@ GROUP BY PERIOD(1 day)
 | 2018-07-08 | Sun         | 7          | false        | true            |
 ```
 
-To check if the date argument is a working day in **local** time zone, format the date with `yyyy-MM-dd` pattern in local time zone and parse into a date in **server** time zone.
+To check if the date argument is a working day in **local** time zone, format the date with `yyyy-MM-dd` pattern in local time zone and parse into a date in the **database** time zone.
 
 ```sql
 is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'US/Pacific'), 'yyyy-MM-dd'), 'USA')
@@ -2811,7 +2814,7 @@ GROUP BY PERIOD(1 day)
 
 #### `WITH TIMEZONE`
 
-The `WITH TIMEZONE` clause overrides the default **server** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
+The `WITH TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
 
 ```sql
 WITH TIMEZONE = timezone
@@ -2837,7 +2840,7 @@ GROUP BY PERIOD(1 DAY)
 | Etc/UTC     | 2018-08-02 00:00 PDT  | 2018-08-02 07:00 UTC  | 2018-08-02 00:00 PDT  | 2862.5      | 48           |
 ```
 
-The same query in the default **server** time zone (UTC) produces the following results:
+The same query in the default **database** time zone (UTC) produces the following results:
 
 ```ls
 | DBTIMEZONE  | period_start_default  | period_start_utc      | period_start_local    | avg(value)  | count(value) |
@@ -3191,7 +3194,7 @@ The result of `CAST(inputNumber AS string)` is formatted with the `#.##` pattern
 
 ## Options
 
-The `OPTION` clause provides hints to the database optimizer on how to execute the given query most efficiently.
+The `OPTION` clause provides hints to the database optimizer on how to execute the given query most efficiently. Unlike the `WITH` clause, the option does not change the results of the query.
 
 The query can contain multiple `OPTION` clauses specified at the end of the statement.
 
