@@ -99,14 +99,14 @@ If s<sub>n-1</sub> is EMA value for timestamp t<sub>n-1</sub>,
 and (t<sub>n</sub>, v<sub>n</sub>) is next series sample,
 then EMA value s<sub>n</sub> is calculated as follow:
 
-(1) s<sub>n</sub> = w * s<sub>n-1</sub> + (1 - w) * v<sub>n</sub>,
+(1) w = exp<sup>-(t<sub>n</sub> - t<sub>n-1</sub>)/r</sup>,
 
-(2) w = exp<sup>-(t<sub>n</sub> - t<sub>n-1</sub>)/r</sup>,
+(2) s<sub>n</sub> = w * s<sub>n-1</sub> + (1 - w) * v<sub>n</sub>,
 
 where r is the value of the "range" smoothing parameter,
 and timestamps are measured in milliseconds.
 
-These formulas imply that s<sub>n</sub> depends on all series samples before t<sub>n</sub>, and that contribution of a sample to EMA value decreases exponentially as sample's timestamp goes to the past.
+These formulas imply that s<sub>n</sub> depends on all series samples before and at time t<sub>n</sub>, and that contribution of a sample to EMA value decreases exponentially as sample's timestamp goes to the past.
 A smaller value of the range parameter lead to faster attenuation.
 
 If time difference t<sub>n</sub> - t<sub>n-1</sub> is known, then range could be chosen to get desired weight of the latest value v<sub>n</sub> in formula (1).
@@ -116,10 +116,10 @@ For that express rate in terms of desired weight w from equation (2):
 
 where ln stands for the natural logarithm.
 
-#### Example.
+#### Example
 
 Let t<sub>n</sub> - t<sub>n-1</sub> = 1000 mulliseconds, and we want the latest value v<sub>n</sub> contributes 50% to EMA value s<sub>n</sub>, so w = 0.5.
-Subste these values into formula (3), and get r = 1443.
+Substite these numbers into formula (3), and get r = 1443.
 
 #### Example
 
@@ -145,5 +145,4 @@ the contribution of the latest sample into EMA value is calculated for several r
 | 8000 | 12% |
 | 10000 | 10% |
 | 12000 | 8% |
-| 15000 | 6% |
 | 20000 | 5% |
