@@ -10,7 +10,7 @@ By default, the `DateTime` object is initialized in **server** time zone.
 
 To change the time zone of an existing `DateTime` object, invoke the [`to_timezone(tz)`](#to_timezone-function) function which returns a modified `DateTime` object in a custom [time zone](../shared/timezone-list.md).
 
-To create a new `DateTime` object in Unix milliseconds which adheres to the custom time zone, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
+To create a new `DateTime` object expressed as Unix time in milliseconds which adheres to the custom time zone, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
 
 ## Fields
 
@@ -119,7 +119,7 @@ By default `default.holiday.calendar` resolves country code from the `user.count
 is_workday( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object is a working day based on the active [workday calendar](workday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
+Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](workday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
 
 The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.
 
@@ -142,7 +142,7 @@ AND NOT now.add(2, 'day').is_workday()
 to_timezone(string tz) DateTime
 ```
 
-Returns a new `DateTime` object  with the same time in the specified [time zone](../shared/timezone-list.md) `tz`.
+Returns a new `DateTime` object based on server time but modified to the specified [time zone](../shared/timezone-list.md) `tz`.
 
 ```javascript
 now.to_timezone('Europe/Berlin').next_workday
