@@ -90,14 +90,60 @@ The smoothing function value for this window equals to
 
 ### EMA: Exponential Moving Average
 
-Let `(t1, v1), (t2, v2), ..., (tn, vn)` are all series samples whose timestamps don't
-exceed `tn`.
-Rolling window is not used for this type of smoothing.
-The smoothed value at time 'tn' is weighted average `w1 * v1 + w2 * v2 + ... + wn * vn`, where weights are positive and sum up to 1.
-The biggest weight is the last one:
+Implementation of the EMA smoothing bases on articles:
 
-<code>
-wn = 1 - exp<sup>-(t<sub>n</sub> - t<sub>n-1</sub>)/r</sup>
-</code>,
-where `r` is value specified in the `range` parameter.
-So the less `range` the more weight `wn` of the latest series value.
+* A. Eckner, Algorithms for Unevenly Spaced Time Series: Moving Averages and Other Rolling Operators, section 4.1, EMA_next.
+* U. Muller, Specially Weighted Moving Averages with Repeated Application of the EMA Operator, formulas 2.7-2.14.
+
+If s<sub>n-1</sub> is EMA value for timestamp t<sub>n-1</sub>,
+and (t<sub>n</sub>, v<sub>n</sub>) is next series sample,
+then EMA value s<sub>n</sub> is calculated as follow:
+
+(1) s<sub>n</sub> = w * s<sub>n-1</sub> + (1 - w) * v<sub>n</sub>,
+
+(2) w = exp<sup>-(t<sub>n</sub> - t<sub>n-1</sub>)/r</sup>,
+
+where r is the value of the "range" smoothing parameter,
+and timestamps are measured in milliseconds.
+
+These formulas imply that s<sub>n</sub> depends on all series samples before t<sub>n</sub>, and that contribution of a sample to EMA value decreases exponentially as sample's timestamp goes to the past.
+A smaller value of the range parameter lead to faster attenuation.
+
+If time difference t<sub>n</sub> - t<sub>n-1</sub> is known, then range could be chosen to get desired weight of the latest value v<sub>n</sub> in formula (1).
+For that express rate in terms of desired weight w from equation (2):
+
+(3) r = - (t<sub>n</sub> - t<sub>n-1</sub>) / ln(w),
+
+where ln stands for the natural logarithm.
+
+#### Example.
+
+Let t<sub>n</sub> - t<sub>n-1</sub> = 1000 mulliseconds, and we want the latest value v<sub>n</sub> contributes 50% to EMA value s<sub>n</sub>, so w = 0.5.
+Subste these values into formula (3), and get r = 1443.
+
+#### Example
+
+Given t<sub>n</sub> - t<sub>n-1</sub> = 1000 mulliseconds,
+the contribution of the latest sample into EMA value is calculated for several ranges:
+
+| **range `r`** | **percentage of the last value <br/> in EMA value** |
+|:---:|:---:|
+| < 100 | 100% |
+| 250 | 98% |
+| 500 | 86% |
+| 750 | 74% |
+| 1000 | 63% |
+| 1250 | 55% |
+| 1500 | 48% |
+| 1750 | 44% |
+| 2000 | 39% |
+| 2500 | 33% |
+| 3000 | 28% |
+| 4000 | 22% |
+| 5000 | 18% |
+| 6000 | 15% |
+| 8000 | 12% |
+| 10000 | 10% |
+| 12000 | 8% |
+| 15000 | 6% |
+| 20000 | 5% |
