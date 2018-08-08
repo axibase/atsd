@@ -2,7 +2,7 @@
 
 ## Overview
 
-Filters determine which commands are processed by the given rule. 
+Filters determine which commands are processed by the given rule.
 
 Commands that satisfy all filters are added to the rule [windows](window.md) for further processing such as updating statistics and evaluating the alert [condition](condition.md).
 
@@ -79,7 +79,7 @@ type = 'activemq_service' AND keys.service = 'health'
 ```
 
 ```javascript
-entity.tags.environment != 'test' 
+entity.tags.environment != 'test'
   && message NOT IN collection('linux-ignore-commands')
 ```
 
