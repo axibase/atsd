@@ -1,89 +1,47 @@
 # Change Logs
 
-Follow Features and Bugs in the **Change Tracker Portal** and review details in the **Change Logs** below.
+Follow development in the **Change Tracker Portal** and review details in the **Change Logs** below.
 
-![](./images/change-log-visualization1.png)
+![](./images/change-tracker-portal.png)
 
-[![](./images/button.png)](https://apps.axibase.com/chartlab/17cdd8f1#fullscreen)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/b10a40f5#fullscreen)
 
 ## Year 2018
 
 | **Month** | **Change Log** | **Features** | **Bugs**
 |---|---|---|---|
-|2018-Jul | [07](2018_07/README.md) | 30 | 57 |
-|2018-Jun | [06](2018_06/README.md) | 23 | 23 |
-|2018-May | [05](2018_05/README.md) | 15 | 24 |
-|2018-Apr | [04](2018_04/README.md) | 14 | 33 |
-|2018-Mar | [03](2018_03/README.md) | 17 | 46 |
-|2018-Feb | [02](2018_02/README.md) | 28 | 47 |
-|2018-Jan | [01](2018_01/README.md) | 32 | 38 |
+| Jul | [07](2018_jul/README.md) | `30` | `57` |
+| Jun | [06](2018_jun/README.md) | `23` | `23` |
+| May | [05](2018_may/README.md) | `15` | `24` |
+| Apr | [04](2018_apr/README.md) | `14` | `33` |
+| Mar | [03](2018_mar/README.md) | `17` | `46` |
+| Feb | [02](2018_feb/README.md) | `28` | `47` |
+| Jan | [01](2018_jan/README.md) | `32` | `38` |
 
 ---
 
 ## Year 2017
 
-| **Week Ending** | **Change Log** | **Features** | **Bugs**
+| **Month** | **Change Log** | **Features** | **Bugs**
 |---|---|---|---|
-|2017-Dec-24 | [51](2017_51/README.md) | 11 | 8 |
-|2017-Dec-17 | [50](2017_50/README.md) | 9 | 2 |
-|2017-Dec-10 | [49](2017_49/README.md) | 12 | 12 |
-|2017-Dec-03 | [48](2017_48/README.md) | 3 | 13 |
-|2017-Nov-26 | [47](2017_47/README.md) | 8 | 6 |
-|2017-Nov-19 | [46](2017_46/README.md) | 5 | 6 |
-|2017-Nov-12 | [45](2017_45/README.md) | 6 | 1 |
-|2017-Nov-05 | [44](2017_44/README.md) | 8 | 5 |
-|2017-Oct-29 | [43](2017_43/README.md) | 2 | 12 |
-|2017-Oct-22 | [42](2017_42/README.md) | 6 | 8 |
-|2017-Oct-15 | [41](2017_41/README.md) | 11 | 11 |
-|2017-Oct-08 | [40](2017_40/README.md) | 6 | 3 |
-|2017-Oct-01 | [39](2017_39/README.md) | 5 | 5 |
-|2017-Sep-24 | [38](2017_38/README.md) | 7 | 12 |
-|2017-Sep-17 | [37](2017_37/README.md) | 2 | 9 |
-|2017-Sep-10 | [36](2017_36/README.md) | 6 | 6 |
-|2017-Sep-03 | [35](2017_35/README.md) | 5 | 6 |
-|2017-Aug-27 | [34](2017_34/README.md) | 1 | 7 |
-|2017-Aug-20 | [33](2017_33/README.md) | 7 | 6 |
-|2017-Aug-13 | [32](2017_32/README.md) | 8 | 7 |
-|2017-Aug-06 | [31](2017_31/README.md) | 13 | 22 |
-|2017-Jul-30 | [30](2017_30/README.md) | 3 | 4 |
-|2017-Jul-23 | [29](2017_29/README.md) | 2 | 3 |
-|2017-Jul-16 | [28](2017_28/README.md) | 2 | 1 |
-|2017-Jul-09 | [27](2017_27/README.md) | 6 | 4 |
-|2017-Jul-02 | [26](2017_26/README.md) | 4 | 2 |
-|2017-Jun-25 | [25](2017_25/README.md) | 4 | 2 |
-|2017-Jun-18 | [24](2017_24/README.md) | 5 | 10 |
-|2017-Jun-11 | [23](2017_23/README.md) | 5 | 9 |
-|2017-Jun-04 | [22](2017_22/README.md) | 2 | 7 |
-|2017-May-28 | [21](2017_21/README.md) | 2 | 9 |
-|2017-May-21 | [20](2017_20/README.md) | 4 | 12 |
-|2017-May-14 | [19](2017_19/README.md) | 5 | 5 |
-|2017-May-07 | [18](2017_18/README.md) | 0 | 10 |
-|2017-Apr-30 | [17](2017_17/README.md) | 4 | 7 |
-|2017-Apr-23 | [16](2017_16/README.md) | 4 | 2 |
-|2017-Apr-16 | [15](2017_15/README.md) | 2 | 6 |
-|2017-Apr-09 | [14](2017_14/README.md) | 3 | 14 |
-|2017-Apr-02 | [13](2017_13/README.md) | 11 | 10 |
-|2017-Mar-26 | [12](2017_12/README.md) | 9 | 15 |
-|2017-Mar-19 | [11](2017_11/README.md) | 8 | 12 |
-|2017-Mar-12 | [10](2017_10/README.md) | 2 | 6 |
-|2017-Mar-05 | [09](2017_09/README.md) | 10 | 11 |
-|2017-Feb-26 | [08](2017_08/README.md) | 4 | 5 |
-|2017-Feb-19 | [07](2017_07/README.md) | 4 | 7 |
-|2017-Feb-12 | [06](2017_06/README.md) | 7 | 17 |
-|2017-Feb-05 | [05](2017_05/README.md) | 3 | 20 |
-|2017-Jan-29 | [04](2017_04/README.md) | 4 | 18 |
-|2017-Jan-22 | [03](2017_03/README.md) | 8 | 5 |
-|2017-Jan-15 | [02](2017_02/README.md) | 8 | 7 |
-|2017-Jan-08 | [01](2017_01/README.md) | 6 | 12 |
+| Dec | [12](2017_dec/README.md) | `35` | `35` |
+| Nov | [11](2017_nov/README.md) | `27` | `18` |
+| Oct | [10](2017_oct/README.md) | `31` | `38` |
+| Sep | [09](2017_sep/README.md) | `20` | `33` |
+| Aug | [08](2017_aug/README.md) | `29` | `42` |
+| Jul | [07](2017_jul/README.md) | `17` | `14` |
+| Jun | [06](2017_jun/README.md) | `16` | `28` |
+| May | [05](2017_may/README.md) | `11` | `36` |
+| Apr | [04](2017_apr/README.md) | `24` | `39` |
+| Mar | [03](2017_mar/README.md) | `29` | `44` |
+| Feb | [02](2017_feb/README.md) | `18` | `49` |
+| Jan | [01](2017_jan/README.md) | `26` | `42` |
+
 ---
 
 ## Year 2016
 
-| **Week Ending** | **Change Log** | **Features** | **Bugs**
+| **Month** | **Change Log** | **Features** | **Bugs**
 |---|---|---|---|
-|2016-Dec-25 | [06](2016_06/README.md) | 13 | 14 |
-|2016-Dec-18 | [05](2016_05/README.md) | 4 | 8 |
-|2016-Dec-11 | [04](2016_04/README.md) | 10 | 5 |
-|2016-Dec-04 | [03](2016_03/README.md) | 14 | 18 |
-|2016-Nov-27 | [02](2016_02/README.md) | 10 | 8 |
-|2016-Nov-20 | [01](2016_01/README.md) | 10 | 7 |
+| Dec | [02](2016_dec/README.md) | `41` | `45` |
+| Nov | [01](2016_nov/README.md) | `20` | `15` |
