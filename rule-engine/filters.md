@@ -36,7 +36,7 @@ The filter is specific to each data type and accepts commands that match values 
 
 ## Entity Names Filter
 
-Specify one or more entity names or patters to restrict a rule to specific entities. Separate multiple names or patterns with whitespace. Patterns support `*` wildcard characters.
+Specify one or more entity names or patterns to restrict a rule to specific entities. Separate multiple names or patterns with whitespace. Patterns support `*` wildcard characters.
 
 ![](./images/filter-entity.png)
 
