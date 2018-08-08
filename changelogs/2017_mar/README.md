@@ -242,15 +242,15 @@ commandsService.send_commands(commands_to_send)
 
 The configuration pages for Databases, HTTP Pools, and Replacement Tables now display linked jobs.
 
-![](./images/Figure8.png)
+![](./Images/Figure8.png)
 
 For the HTTP pool, the linked task configurations, item lists, and ATSD configurations are now shown.
 
-![](./images/Figure9.png)
+![](./Images/Figure9.png)
 
 For the Replacement table, the linked task configurations are shown.
 
-![](./images/Figure10.png)
+![](./Images/Figure10.png)
 
 ### Issue 3976
 
@@ -259,7 +259,7 @@ New field allows entering commands returning **Item List** elements, one per lin
 The commands from the text area are copied to a file in the `$AXIBASE_COLLECTOR_HOME/conf/scripts` directory and executed as a script.
 You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/conf/server.properties` file to enable this feature.
 
-![](./images/Figure11.png)
+![](./Images/Figure11.png)
 
 ### Issue 3932
 
@@ -293,7 +293,7 @@ The new settings introduced in Treemap configurations:
 
 [ChartLab](https://apps.axibase.com/chartlab/fc68bae4/7/)
 
-![](./Images/Figure117.png)
+![](./Images/Figure17.png)
 
 ### Issue 3959
 

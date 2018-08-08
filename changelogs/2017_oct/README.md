@@ -46,12 +46,12 @@
 | [4635](#issue-4635) | api-rest | Feature | Add support for limits in series query with ascending order. |
 | 4632 |UI| Bug | Export page: aggregate function drop down broken. |
 | 4603 | administrator | Bug | Logging: removed Freemarker Log4j runtime warnings.  |
-| [4576](#issue-4576) | rule_engine | Feature | Implemented [lookup functions](../../rule-engine/functions.md#lookup) `entity_tags` and `entity_tag`.  |
+| 4576 | rule_engine | Feature | Implemented [lookup functions](../../rule-engine/functions.md#lookup) `entity_tags` and `entity_tag`.  |
 | 4593 | security | Feature | Retain session when the built-in administrator account is created. |
 | 4587 | security | Feature | Create built-in user groups to simplify initial configuration. |
-| [4586](#issue-4586) | api | Feature | Store `createDate` for new entities and metrics. |
+| 4586 | api | Feature | Store `createDate` for new entities and metrics. |
 | 4584 | api | Bug | Fix concurrency error when deleting a large set of entities using Meta API. |
-| [4581](#issue-4581) | api | Bug | Incorrect last insert date in the response object if last insert date filter is specified in the request. |
+| 4581 | api | Bug | Incorrect last insert date in the response object if last insert date filter is specified in the request. |
 | 4631 | sql | Bug | Metrics not filtered if specified with `WHERE metric.name = {name}` syntax. |
 | 4629 |UI| Bug | Export page fails to display tag values when aggregator is selected. |
 | 4615 | rule-engine | Feature | Add support for `metric.label` and other `entity.*` and `metric.*` fields in the [rule engine](../../rule-engine/window-fields.md). |

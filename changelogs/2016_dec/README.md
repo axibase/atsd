@@ -408,13 +408,13 @@ SELECT count(*), count(value), count(entity) FROM cpu_busy WHERE datetime > prev
 
 Recently added to the [`docker`](https://axibase.com/docs/axibase-collector/jobs/docker.html) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
 
-![Figure 1](./Figure16.png)
+![Figure 1](./Images/Figure16.png)
 
 This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
 that executed short-term tasks before being removed with the `docker rm` command. Containers with a `deleted` status are initially retained in ATSD for the specified time interval (for
 example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
 
-![Figure 2](./Figure17.png)
+![Figure 2](./Images/Figure17.png)
 
 By default such records with the status `deleted` are not automatically removed from ATSD, potentially leaving unnecessary records in ATSD. To delete containers after a certain number of days, enter in a positive integer.
 

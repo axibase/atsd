@@ -10,14 +10,14 @@
 | 3813 | UI          | Bug     | Fixed `series not found` issue when displaying series with multiple tags on the **Series Statistics** page. |
 | 3808 | metric      | Bug     | Corrected a defect where an incorrect `NaN` count is shown on the **Series Statistics** page. |
 | [3742](#issue-3742) | UI          | Feature | Added a **Text Column** button to the UI Export form. |
-| [3797](#issue-3797) | sql             | Feature | Implemented support for the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) condition after the `GROUP BY` clause. |
-| [3796](#issue-3796) | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) option to concatenate text values for the same timestamp. |
-| [3795](#issue-3795) | sql             | Feature     | Implemented support for entity tags in the [`GROUP BY`](../../sql/README.md#grouping) clause. |
+| 3797 | sql             | Feature | Implemented support for the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) condition after the `GROUP BY` clause. |
+| 3796 | api-network     | Feature | Added support for the [`append`](../../api/network/series.md#text-append) option to concatenate text values for the same timestamp. |
+| 3795 | sql             | Feature     | Implemented support for entity tags in the [`GROUP BY`](../../sql/README.md#grouping) clause. |
 | 3786 | statistics      | Bug     | Added the [`LIMIT 100`](../../sql/README.md#limiting) clause for pre-defined SQL query on the [series statistics](#issue-3680) page. |
 | 3783 | sql             | Bug     | Removed additional comma if all columns contain `null` (empty string). |
 | 3781 | jdbc            | Bug     | Fixed empty row issue for the JDBC Driver. |
 | 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |
-| [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to Unix time. |
+| 3691 | rule engine     | Feature | Added functions to convert string date to a date object or to Unix time. |
 | [3680](#issue-3680) | statistics      | Feature | Created a page to show series characteristics, such as value and interval statistics and histograms. |
 | [3756](#issue-3756)          | sql             | Bug     | Tag filter for the 2nd table removes all rows in `JOIN` queries.                          |
 | [3751](#issue-3751)          | api-rest        | Bug     | `isEmpty()` function causes parse error in the series [query](../../api/data/series/query.md) method.                                               |
@@ -40,13 +40,13 @@
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3481](#issue-3481) | widget-settings | Feature | Implemented a JavaScript replacement for the Freemarker `getSeries` method. |
-| [3078](#issue-3078) | widget-settings | Feature | Added support for new series settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/). |
+| 3481| widget-settings | Feature | Implemented a JavaScript replacement for the Freemarker `getSeries` method. |
+| 3078 | widget-settings | Feature | Added support for new series settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/). |
 | [3754](#issue-3754)          | bar             | Bug     | Columns not created for series with statistic and wildcard matches.                          |
 | [3654](#issue-3654)          | widget-settings | Feature | Support for meta fields in label-format.                                           |
 | [3636](#issue-3636)          | data-loading    | Bug     | Series not displayed if requested for the entity group or with the entity expression.                                         |
 | [3143](#issue-3143)          | table           | Bug     | Value and time columns of series with shorter periods are not displayed.         |
-| [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) to prevent collision.|
+| 2928 | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) to prevent collision.|
 | [2528](#issue-2528) | property        | Feature | Implemented support for the `column-label-format` setting to transform column headers. |
 | [1926](#issue-1926) | box             | Feature | Added mouse-over tooltips for box charts. |
 
@@ -72,18 +72,18 @@
 | 3798 | socrata     | Bug     | Updated time parser for JSON and Socrata jobs to accept the `yyyyw` time format. |
 | 3793 | socrata     | Bug     | Added heuristics to the Socrata job. |
 | [3743](#issue-3743)          | pi              | Feature | Developed PI Server emulator for `picomp2` and `pipoint2` tables.                   |
-| [3773](#issue-3773) | sql             | Bug     | Implemented rules for numeric precedence in queries against the [`atsd_series`](../../sql/examples/select-atsd_series.md) table. If the query requests several metrics with different datatypes, no precision loss occurs. |
+| 3773 | sql             | Bug     | Implemented rules for numeric precedence in queries against the [`atsd_series`](../../sql/examples/select-atsd_series.md) table. If the query requests several metrics with different datatypes, no precision loss occurs. |
 | 3770 | api-rest        | Bug     | Removed versioning tags from [`exactMatch`](../../api/data/series/query.md#tag-filter) comparison to prevent empty result sets when querying data for versioned metrics. |
-| [3769](#issue-3769) | sql             | Feature     | Extended the [`LOOKUP`](../../sql/README.md#lookup) function to accept series, entity, and metric tags as parameters. |
-| [3768](#issue-3768) | sql             | Feature | Extended the [`CONCAT`](../../sql/README.md#string-functions) function to accept numeric arguments. |
-| [3767](#issue-3767) | sql             | Feature | Extended the [`CAST`](../../sql/README.md#cast) function to convert numbers to strings. |
+| 3769 | sql             | Feature     | Extended the [`LOOKUP`](../../sql/README.md#lookup) function to accept series, entity, and metric tags as parameters. |
+| 3768 | sql             | Feature | Extended the [`CONCAT`](../../sql/README.md#string-functions) function to accept numeric arguments. |
+| 3767 | sql             | Feature | Extended the [`CAST`](../../sql/README.md#cast) function to convert numbers to strings. |
 | 3764 | sql             | Bug     | Fixed `NullPointerException` error for data requested with the [series query](../../api/data/series/query.md) method for a newly created metric without any data. |
-| [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](../../sql/api.md#connection-query) validation query implementation to return exactly one row. |
-| [3480](#issue-3480) | api-rest        | Feature | Added support for the [`text`](../../api/data/series/query.md#value-object) field in the [series query](../../api/data/series/query.md) method. The `text` field allows annotating numeric samples with text.|
+| 3763 | sql             | Bug     | Updated the [`SELECT 1`](../../sql/api.md#connection-query) validation query implementation to return exactly one row. |
+| 3480 | api-rest        | Feature | Added support for the [`text`](../../api/data/series/query.md#value-object) field in the [series query](../../api/data/series/query.md) method. The `text` field allows annotating numeric samples with text.|
 | [3772](#issue-3772) | Socrata     | Feature | Created new Socrata job to query [Socrata](https://socrata.com/) data. |
 | [3784](#issue-3784)| jdbc            | Feature | Added the [`${SPLIT_CONDITION}`](https://axibase.com/docs/axibase-collector/jobs/jdbc.html#job-configuration) placeholder support in the JDBC job to allow fetching large result sets in multiple iterations. |
 | 3656 | socrata         | Bug     | Refactored the Socrata job to support a dataset with more than 100,000 rows or more than 100 MB without an `OutOfMemory` error. |
-| [3755](#issue-3755) | docker          | Feature | Added [container size metrics](https://axibase.com/docs/axibase-collector/jobs/docker.html) for Docker containers. |
+| 3755 | docker          | Feature | Added [container size metrics](https://axibase.com/docs/axibase-collector/jobs/docker.html) for Docker containers. |
 | 3752 | docker          | Bug     | Fixed issues with mis-matched volume labels by removing old records from the embedded database. |
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly sent into ATSD. |
 | 3733 | docker          | Bug     | Eliminated table locks in the embedded database, which resulted in the collection of all statistics being stopped. |
@@ -94,8 +94,7 @@
 
 Added **Text Column** button to the export form. By enabling this button, a text column is displayed for data exported in CSV and HTML formats.
 
-Now, a [text value](../../api/network/series.md#series-tags-text-value-messages) can be used to annotate a numeric observation without changing the series primary key. See
-[Issue 3480](../../changelogs/2017_02/README.md#issue-3480) for more information.
+Now, a [text value](../../api/network/series.md#series-tags-text-value-messages) can be used to annotate a numeric observation without changing the series primary key. See Issue 3480 above for more information.
 
 ![Figure 1](./Images/Figure1.png)
 

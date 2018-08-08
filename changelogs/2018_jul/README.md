@@ -27,7 +27,7 @@
 5471 | api-rest | Feature | Data API: [Series: `query`](../../api/data/series/aggregate.md) - Implement aggregation without period.|
 5470 | core | Feature | Rule Engine: implement [**Workday Calendars**](../../rule-engine/workday-calendar.md).|
 5469 | rule editor | Feature | UI: Show logging action status on **Rules** page|
-5468 | core | Bug | Switch to [strict mode](https://docs.oracle.com/javase/8/docs/api/java/time/format/ResolverStyle.md) when parsing dates.|
+5468 | core | Bug | Switch to [strict mode](https://docs.oracle.com/javase/8/docs/api/java/time/format/ResolverStyle.html) when parsing dates.|
 5467 | administration | Feature | Implement the ability to download HBase/HDFS [Log Files](../../administration/logging.md) on single-node installations.|
 5465 | client | Feature | [Python Client](https://github.com/axibase/atsd-api-python): Change `Message` model to simplify conversion to `DataFrame`|
 5464 | jdbc | Bug | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Remove `metric.timePrecision` field from default columns.|
@@ -83,16 +83,16 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5513 | snmp | Bug | [SNMP](https://axibase.com/docs/axibase-collector/jobs/snmp.md): **MIB** page is not available for custom port.|
-5512 | UI | Feature | [SNMP](https://axibase.com/docs/axibase-collector/jobs/snmp.md): Increase readability of **SNMP Query Statistics** page.|
-5507 | jmx | Bug | [JMX](https://axibase.com/docs/axibase-collector/jobs/jmx.md): Viewer mode displays split HTML code instead of actual response.|
+5513 | snmp | Bug | [SNMP](https://axibase.com/docs/axibase-collector/jobs/snmp.html): **MIB** page is not available for custom port.|
+5512 | UI | Feature | [SNMP](https://axibase.com/docs/axibase-collector/jobs/snmp.html): Increase readability of **SNMP Query Statistics** page.|
+5507 | jmx | Bug | [JMX](https://axibase.com/docs/axibase-collector/jobs/jmx.html): Viewer mode displays split HTML code instead of actual response.|
 5506 | core | Bug | Core : Update [Java Client](https://github.com/axibase/atsd-api-java) to latest release.|
-5455 | http | Feature | [HTTP Job](https://axibase.com/docs/axibase-collector/jobs/http.md): Add additional columns to the configuration list.|
-5432 | http | Bug | UI: Missing message style for [HTTP Job](https://axibase.com/docs/axibase-collector/jobs/http.md).|
-5430 | http | Bug | New [HTTP Pool](https://axibase.com/docs/axibase-collector/jobs/http-pool.md) breaks **Job** page drop-down list.|
-5429 | UI | Bug | [Storage Driver](https://axibase.com/docs/axibase-collector/atsd-server-connection.md): Hide internal properties from UI.|
-5428 | core | Bug | [HTTP Pool](https://axibase.com/docs/axibase-collector/jobs/http-pool.md) and [Storage Driver](https://axibase.com/docs/axibase-collector/atsd-server-connection.md) tests break a working connection.|
+5455 | http | Feature | [HTTP Job](https://axibase.com/docs/axibase-collector/jobs/http.hmtl): Add additional columns to the configuration list.|
+5432 | http | Bug | UI: Missing message style for [HTTP Job](https://axibase.com/docs/axibase-collector/jobs/http.html).|
+5430 | http | Bug | New [HTTP Pool](https://axibase.com/docs/axibase-collector/jobs/http-pool.html) breaks **Job** page drop-down list.|
+5429 | UI | Bug | [Storage Driver](https://axibase.com/docs/axibase-collector/atsd-server-connection.html): Hide internal properties from UI.|
+5428 | core | Bug | [HTTP Pool](https://axibase.com/docs/axibase-collector/jobs/http-pool.html) and [Storage Driver](https://axibase.com/docs/axibase-collector/atsd-server-connection.md) tests break a working connection.|
 5422 | snmp | Bug | Clone [SNMP Job](https://axibase.com/docs/axibase-collector/jobs/snmp.md) causes `NullPointerException`.|
-5414 | http | Bug | Handling for [Job](https://axibase.com/docs/axibase-collector/jobs/README.md) with empty configuration.|
+5414 | http | Bug | Handling for [Job](https://axibase.com/docs/axibase-collector/jobs/) with empty configuration.|
 5355 | core | Feature | Initial **Configuration** Page.|
 5134 | UI | Bug | Collector: Auto-login upon [account creation](../../administration/collector-account.md#create-user).|
