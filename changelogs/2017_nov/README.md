@@ -288,7 +288,6 @@ The **Entity Link** field resolves the tag value to an entity and displays a lin
 
  ![](./Images/top-menu-portal.png)
 
-
 ### Issue 4675
 
 Email notifications can include screenshots of the underlying metric captured using the built-in portal.
