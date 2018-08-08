@@ -20,13 +20,12 @@ Each window maintains a set of continuously updated fields which can be used in 
 `entity.label` | string | Entity field by name. | `NURswgvml007`
 `metric.label` | string | Metric field by name. | `Memory Free, Bytes`
 `condition` | string | Rule condition | `value < 75`
-`min_interval_expired` | boolean | Window delay status. | `true`
-`repeat_count` | integer | `REPEAT` status count. | `0`
-`repeat_interval` | string | Interval of repetition. | `1 MINUTE`
-`rule_filter` | string | Rule filter. | `entity != 'nurswghbs001'`
+`delay_expired` | boolean | Delay interval status.<br>Set to `true` if **On Open** notification executed after being deferred.| `true`
+`repeat_count` | integer | Number of consecutive `true` results. | `0`
+`rule_filter` | string | Filter expression. | `entity != 'nurswghbs001'`
 `severity` | string | Alert severity. | `WARNING`
 `window` | string | Window type and duration. | `length(1)`
-`threshold` | string | Override rule. | `max() > 20`
+`threshold` | string | Override condition. | `max() > 20`
 
 ## Series Fields
 
@@ -43,8 +42,10 @@ Each window maintains a set of continuously updated fields which can be used in 
 | `source` | string | Message type (also `tags.source`). |
 | `message` | string | Message text. |
 
-> The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
-> Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
+Notes:
+
+* The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
+* Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
 
 ## Properties Fields
 
@@ -54,7 +55,9 @@ Each window maintains a set of continuously updated fields which can be used in 
 | `keys` | map | Property keys. To retrieve key value, use `keys.{name}`. |
 | `properties` | map | Property tags. To retrieve tag value, use `properties.{name}`. |
 
-> The `tags` field for the `property` command contains the `keys` map and the `type` field.
+Notes:
+
+* The `tags` field for the `property` command contains the `keys` map and the `type` field.
 
 ## Date Fields
 
@@ -69,14 +72,15 @@ Each window maintains a set of continuously updated fields which can be used in 
 `window_first_time` | Server | Time of the earliest command in the window.
 `window_first_datetime` | UTC | Time of the earliest command in the window.
 `timestamp` | n/a | Time of the command that caused the window status event, in Unix milliseconds..
-`now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.
-`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Field evaluates as an empty string **On Open** when `alert_duration = 00:00:00:00`.
-`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`. Field evaluates as an empty string **On Open** when `alert_duration = 00:00:00:00`.
+`now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.<br>[`now`](object-datetime.md) properties can be accessed with dot notation syntax, for example `now.day_of_week = 'Thursday'`.
+`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
+`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
 
-> Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
-> Fields ending with `_datetime` contain time in ISO format in UTC time zone, for example `2017-05-30T06:05:39Z`.
-> If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
-> Access `now` object fields with dot notation syntax, for example `now.day_of_week == 'Thursday'`.
+Notes:
+
+* Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
+* Fields ending with `_datetime` contain time in ISO format in UTC time zone, for example `2017-05-30T06:05:39Z`.
+* If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
 
 ## Details Tables
 
