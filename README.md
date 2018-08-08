@@ -8,17 +8,15 @@
 
 ATSD requires a Java 8 runtime environment and is supported on major Linux distributions in 64-bit mode.
 
-Underneath ATSD is [Apache HBase](https://hbase.apache.org/) which serves as a distributed key-value store and can be deployed on top of file systems such as [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and `ext4`(local).
+ATSD relies on [Apache HBase](https://hbase.apache.org/) as a distributed key-value store and can be deployed on top of file systems such as [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and `ext4`(local).
 
 ![](./images/technology-stack-image.png)
-
-ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a Docker [container](./installation/docker.md#start-container).
 
 ## Compute Scalability
 
 A single-node ATSD instance can process up to 200,000 metrics per second with millisecond accuracy and handle out-of-order sample writes without any loss of numeric precision.
 
-Scale the number of metrics inserted per second by adding **region servers** to the underlying HBase cluster.
+The number of metrics inserted per second can be increased by adding region servers to the underlying HBase cluster.
 
 ## Storage Scalability
 
@@ -26,7 +24,7 @@ Storage efficiency ultimately determines how many metrics and individual series 
 
 Compared to traditional databases, ATSD requires up to **50 times** less disk space. Refer to [compression tests](./administration/compaction/README.md) for more details.
 
-Scale storage capacity by adding data nodes to the underlying HDFS cluster. With ATSD and [AWS EMR](./installation/aws-emr-s3.md), storage capacity is right-sized automatically, completely independent of  processing capacity.
+The storage capacity can be scaled by adding data nodes to the underlying HDFS cluster. With ATSD on [AWS EMR](./installation/aws-emr-s3.md), storage capacity is right-sized automatically, independent of  processing capacity.
 
 ## Use Cases
 
@@ -71,7 +69,7 @@ echo "series e:sns-001 m:temperature=15.4 m:rpm=302 t:panel=front" \
   > /dev/tcp/atsd_hostname/8081
 ```
 
-Stream commands into ATSD on ports `8081/tcp`, `8082/udp` or upload commands directly to the [`/api/v1/command`](api/data/ext/command.md) REST API endpoint.
+The commands can be streamed into ATSD on ports `8081/tcp`, `8082/udp` or uploaded to the [`/api/v1/command`](api/data/ext/command.md) REST API endpoint.
 
 The following protocols are supported for extended compatibility:
 
@@ -84,21 +82,23 @@ The following protocols are supported for extended compatibility:
 
 New entities and metrics are registered by the database automatically and support the collection of data from numerous different domain models in a single extensible schema.
 
-View the list of underlying tables on the **Settings > Storage > Database Tables** page. Table schemas are self-managed by the database.
+The underlying tables are listed on the **Settings > Storage > Database Tables** page. Table schemas are **self-managed** by the database.
 
 ### Glossary
 
-* `Entity`: Name of the object being monitored.
-* `Metric`: Name of the numeric attribute describing the object.
-* `Sample`: Timestamped metric value, `time:number`.
-* `Series`: Sequence of Samples.
-* `Tag`: Custom attribute describing the `Entity`, `Metric`, or `Series`, consists of a name and a value, `name:value`.
+| Name | Description |
+|---|---|
+| `Entity` | Name of the object being monitored. |
+| `Metric` | Name of the numeric attribute describing the object. |
+| `Sample` | Timestamped numeric metric value, `time:value`. |
+| `Series` | Sequence of `Samples`, identified by a composite key consisting of `Metric`, `Entity`, and optional `Tags`. |
+| `Tag` | Custom attribute describing the `Metric`, `Entity`, or `Series`, and consisting of a name and a value, `name:value`. |
 
 ### Example
 
-Store temperature observations for the bioreactor enclosure `BR1740` located at site `SVL2` in Sunnyvale, California, as well as room temperature at the same site then send these commands into ATSD.
+The commands listed below store temperature observations for the bioreactor enclosure `BR1740` located at site `SVL2` in Sunnyvale, as well as room temperature at the same site.
 
-Metadata commands contain descriptive attributes sent once initially and subsequently whenever the attribute changes.
+Metadata commands contain descriptive attributes sent initially and on change.
 
 ```elm
 entity e:BR1740 t:type=Bioreactor t:city=Sunnyvale t:site=SVL2
@@ -106,7 +106,7 @@ entity e:SVL2   t:type=site       t:city=Sunnyvale
 metric m:Temperature t:units=Celsius
 ```
 
-Series commands carry the actual measurements and contain only those attributes needed to identify the series.
+Series commands carry the actual measurements and contain only the series key.
 
 ```elm
 series d:2018-05-20T00:15:00Z e:BR1740 m:Temperature=70.5 t:part=enclosure
@@ -116,12 +116,16 @@ series d:2018-05-20T00:16:00Z e:SVL2   m:Temperature=25.1
 ...
 ```
 
-By separating inserted data into metadata and time series data, each type of information is stored and processed separately and thus, more efficiently. Further, both types of data are readily available and seamlessly joined upon database query.
+By separating inserted data into **metadata** and **time series** data, each type of information is stored and processed separately and thus, more efficiently. Both types of data are readily available and can be accessed in SQL queries and REST API requests.
 
 ```sql
-SELECT datetime, value, entity, entity.tags.type
+SELECT datetime, value, entity
   FROM atsd_series
 WHERE metric = 'Temperature'
-  AND entity = 'BR1740'
+  AND entity.tags.type = 'Bioreactor'
   ORDER BY datetime
 ```
+
+## Installation
+
+ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a Docker [container](./installation/docker.md#start-container).
