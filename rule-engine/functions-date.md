@@ -254,14 +254,15 @@ date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS Z
 ### `to_datetime`
 
 ```javascript
-to_datetime(long t) DateTime
+to_datetime(long t [, string tz]) DateTime
 ```
 
-Returns [`DateTime`](object-datetime.md) object constructed from Unix time in milliseconds `t`.
+Returns [`DateTime`](object-datetime.md) object initialized from Unix time in milliseconds `t` in the  **server** time zone.
+If the optional [time zone](../shared/timezone-list.md) argument `tz` is specified, the `DateTime` is initialized in the user-defined time zone.
 
 Example:
 
 ```javascript
-/* Returns true if the specified create_ms date is a working day. */
-to_datetime(create_ms).is_workday()
+/* Returns true if the create_ms date is a working day. */
+to_datetime(create_ms, 'America/Chicago').is_workday()
 ```

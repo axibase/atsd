@@ -2,7 +2,15 @@
 
 ## Overview
 
-`DateTime` object represents a specific date and time in the **server** time zone and provides fields and functions to extract various calendar units.
+`DateTime` object represents a specific date and time. The object also provides fields and functions to extract various calendar units.
+
+## Time Zone
+
+By default, the `DateTime` object is initialized in **server** time zone.
+
+To change the time zone of an existing `DateTime` object, invoke the [`to_timezone(tz)`](#to_timezone-function) function which returns a modified `DateTime` object in a custom [time zone](../shared/timezone-list.md).
+
+To create a new `DateTime` object from Unix time in milliseconds, use the [`to_datetime(ms, tz)`](functions-date.md#to_datetime) function.
 
 ## Fields
 
@@ -30,7 +38,7 @@
 * `next_non_working_day`
 * `previous_non_working_day`
 
-The `millis` field returns Unix time in milliseconds.
+The `millis` field returns time in Unix milliseconds.
 
 `next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` fields are based on the calendar specified in `default.holiday.calendar` server property.
 
@@ -49,6 +57,7 @@ The `millis` field returns Unix time in milliseconds.
 * [`is_weekday`](#is_weekday-function)
 * [`is_weekend`](#is_weekend-function)
 * [`is_workday`](#is_workday-function)
+* [`to_timezone`](#to_timezone-function)
 
 ### `add` Function
 
@@ -66,7 +75,9 @@ If count argument `c` is negative, the interval is subtracted from the current `
 
 Fractional count argument `c` is rounded down to the nearest integer.
 
-The [time unit](../api/data/series/time-unit.md) `u` is case-insensitive [time unit](../api/data/series/time-unit.md) and allows both singular and plural forms.
+The [time unit](../api/data/series/time-unit.md) `u` is **case-insensitive** and supports both singular and plural forms of  units.
+
+The new `DateTime` object inherits the time zone of the original object.
 
 **Examples**:
 
@@ -123,6 +134,18 @@ now.hourOfDay = 12 AND
 now.is_workday()
 AND now.add(1, 'day').is_workday()
 AND NOT now.add(2, 'day').is_workday()
+```
+
+### `to_timezone` Function
+
+```javascript
+to_timezone(string tz) DateTime
+```
+
+Returns a new `DateTime` object based on server time but modified to the specified [time zone](../shared/timezone-list.md) `tz`.
+
+```javascript
+now.to_timezone('Europe/Berlin').next_workday
 ```
 
 ## Sample Values

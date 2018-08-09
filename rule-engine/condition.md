@@ -109,7 +109,7 @@ The condition is `true` when all values in the window are equal `50`.
 max() - min() = 0 && avg() = 50
 ```
 
-### Multiple metrics
+### Multiple Metrics
 
 If metrics are submitted with the same `series` command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
 
