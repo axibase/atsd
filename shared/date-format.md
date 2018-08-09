@@ -2,6 +2,8 @@
 
 ## Supported Formats
 
+ATSD supports [ISO 8601 date and time format](https://www.iso.org/iso-8601-date-and-time-format.html) to express date and time in a universally recognized and utilized format.
+
 |**Format**|**Description**|
 |:---|:---|
 |`yyyy-MM-dd'T'HH:mm:ss[.S]'Z'`|`Z` denotes UTC time zone. |

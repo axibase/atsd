@@ -17,8 +17,8 @@ Retrieves a list of entities matching the specified filters.
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `expression` |string|Include entities that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators.<br>Supported wildcards: `*` and `?`.<br>Example: `name LIKE 'nur*' or tags.app = 'db'`|
-| `minInsertDate` |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO 8601 date or [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `current_day`.|
-| `maxInsertDate` |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including entities without `lastInsertDate`.<br>ISO 8601 date or [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
+| `minInsertDate` |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>[ISO format](../../../shared/date-format.md) date or [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `current_day`.|
+| `maxInsertDate` |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including entities without `lastInsertDate`.<br>[ISO format](../../../shared/date-format.md) date or [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
 
 #### Control Parameters
 
@@ -75,8 +75,8 @@ tags.size() == 0 && name.length() == 64
 | `enabled` | boolean | Enabled status. Incoming data is discarded for disabled entities. |
 | `interpolate` | string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`.|
 | `timeZone` | string | Time Zone ID, for example EST.<br>Refer to the [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in entity-specific time zone.|
-| `createdDate` | string | Date of entity creation in ISO format.|
-| `lastInsertDate` | string |Last time a value is received by the database for this entity in ISO format. |
+| `createdDate` | string | Date of entity creation in [ISO format](../../../shared/date-format.md).|
+| `lastInsertDate` | string |Last time a value is received by the database for this entity in [ISO format](../../../shared/date-format.md). |
 | `tags` | object | Entity tags, as requested with the `tags` parameter. |
 
 ### Interpolate

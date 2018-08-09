@@ -57,7 +57,7 @@ This method supports processing of the uploaded attached file as data as well as
 | `metric-tags` | string | Comma-separated list of metric tags added as series, message, or property tags to parsed commands. |
 | `wait` | boolean | Wait until processing of the file into commands is completed by the server.<br>Default: `true`.<br>If wait is disabled, the file is processed by the server asynchronously. |
 | `rules` | boolean | Process commands in the rule engine.<br>Default: `true`. |
-| `time` | string | Date in ISO format or using [calendar](../../../shared/calendar.md) keywords applies to commands if the file does not contain a time column. |
+| `time` | string | Date in [ISO format](../../../shared/date-format.md) or using [calendar](../../../shared/calendar.md) keywords applies to commands if the file does not contain a time column. |
 | `timezone` | string | Time zone applied to timestamps specified in local time. |
 | `test` | boolean | Parse and validate the file without processing and storing commands.<br>Default: `false`. |
 | `t:{name}` | string | One or multiple default tags, inserted as series/property/message tags depending on command type, for example: `&t:location=SVL&t:site=QB1`.<br>Tag names must not contain non-printable characters such as space or tab. |

@@ -1,6 +1,6 @@
 # Insert Multiple Samples
 
-Insert multiple samples for the given series in ISO format.
+Insert multiple samples for the given series in [ISO format](../../../../shared/date-format.md).
 
 ## Request
 

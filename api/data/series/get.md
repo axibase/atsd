@@ -28,8 +28,8 @@ The date interval for loading the time series is **required** and must be define
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `startDate` | string | Start date in ISO format or [calendar](../../../shared/calendar.md) expression. |
-| `endDate` | string | End date in ISO format or [calendar](../../../shared/calendar.md) expression. |
+| `startDate` | string | Start date in [ISO format](../../../shared/date-format.md) or [calendar](../../../shared/calendar.md) expression. |
+| `endDate` | string | End date in [ISO format](../../../shared/date-format.md) or [calendar](../../../shared/calendar.md) expression. |
 | `interval` | string | Interval specified as  `count`-`time_unit`.<br>Example: `interval=1-DAY`.<br>Refer to the list of supported [time units](time-unit.md). |
 
 Examples:
@@ -117,12 +117,12 @@ The response in CSV format contains the header row followed by data rows.
 
 The default header is `time,entity,metric,requested tags,value` and contains the following columns.
 
-* `time`: Unix time in milliseconds
-* `date`: value time in ISO format
-* `entity`: entity name
-* `metric`: metric name
-* `tag` columns (if requested)
-* `value`: numeric value
+* `time`: Unix time in milliseconds.
+* `date`: value time in [ISO format](../../../shared/date-format.md).
+* `entity`: entity name.
+* `metric`: metric name.
+* `tag` columns (if requested).
+* `value`: numeric value.
 
 Example for `columns=date,t:disk,value`.
 

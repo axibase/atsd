@@ -33,7 +33,7 @@ message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 | `p`         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
 | `s`         | integer      | Unix time in seconds. |
 | `ms`        | integer      | Unix time in milliseconds. |
-| `d`         | string       | Time in ISO format. |
+| `d`         | string       | Time in [ISO format](../../shared/date-format.md). |
 
 * Messages with timestamps that are more than 1 minute behind or ahead of the current server time are ignored by the rule engine.
 

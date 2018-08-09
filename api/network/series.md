@@ -23,7 +23,7 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 | `e`         | string          | **[Required]** Entity name. |
 | `m`         | string:number   | **[Required]** Metric name and numeric value. _Multiple._ |
 | `x`         | string:string   | **[Required]** Metric name and text value. _Multiple._ |
-| `d`         | string          | Time in ISO format. |
+| `d`         | string          | Time in [ISO format](../../shared/date-format.md). |
 | `ms`        | integer         | Unix time in milliseconds. |
 | `s`         | integer         | Unix time in seconds. |
 | `t`         | string:string   | Tag name and text value. _Multiple._ |
@@ -33,7 +33,7 @@ series d:${iso-date} e:${entity} t:${tag-1}=${val-1} m:${metric-1}=${number} m:$
 * If the numeric value is not specified along with the text value with the same metric name, the numeric value is set to `NaN` (not a number).
 * If the time fields `d`, `s`, and `ms` are omitted, the values are inserted with the current server time.
 
-The `d` datetime field can be specified in [ISO 8601 format](../../api/data/date-format.md).
+The `d` datetime field can be specified in [ISO 8601 format](../../shared/date-format.md).
 
 |**Format**|**Description**|
 |:---|:---|

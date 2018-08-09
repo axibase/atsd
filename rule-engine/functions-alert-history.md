@@ -34,7 +34,7 @@ To use the function, enable [Alert History](logging.md#logging-to-database) logg
 `alert_duration` | string | Alert duration in `dd:hh:mm:ss` format. | `00:00:01:00`
 `alert_duration_interval` | string | Alert duration in short format. | `1m:0s`
 `alert_open_time` | number | Alert open in Unix time with millisecond granularity.<br>Default: `0` | `2018-08-01 07:51:17`
-`alert_open_datetime` | string | Alert open time in ISO format.<br>Default: `1970-01-01T00:00:00Z` | `2018-08-01T07:51:17Z`
+`alert_open_datetime` | string | Alert open time in [ISO format](../shared/date-format.md).<br>Default: `1970-01-01T00:00:00Z` | `2018-08-01T07:51:17Z`
 `rule_filter` | string | Filter expression | `entity.tags.profile = 'production'`
 `severity` | string | Alert severity.<br>Default: `UNDEFINED` | `WARNING`
 `window` | string | Window duration. | `time(5 minute)`

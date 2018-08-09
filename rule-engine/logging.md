@@ -132,7 +132,7 @@ Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syn
 
 Date fields ending with `_time` contain time in the local server time zone, for example `2017-05-30 14:05:39 PST`.
 
-Date fields ending with `_datetime` contain time in ISO format in UTC time zone, for example `2017-05-30T06:05:39Z`.
+Date fields ending with `_datetime` contain time in [ISO format](../shared/date-format.md) in UTC time zone, for example `2017-05-30T06:05:39Z`.
 
 * `alert_open_time`
 * `alert_open_datetime`

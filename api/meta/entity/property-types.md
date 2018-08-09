@@ -22,7 +22,7 @@ Retrieves a list property types for the entity.
 
 | **Parameter** | **Type** | **Description** |
 |:---|:---|:---|
-| `minInsertDate` | string | Include property types with last collection date at or after the specified date. <br>`minInsertDate` can be specified in ISO format or using the [calendar](../../../shared/calendar.md) keywords. |
+| `minInsertDate` | string | Include property types with last collection date at or after the specified date. <br>Specify `minInsertDate` in [ISO format](../../../shared/date-format.md) or using the [calendar](../../../shared/calendar.md) keywords. |
 
 ## Response
 

@@ -33,7 +33,7 @@ An array of property objects.
 | `entity` |string | Entity name. |
 | `key` | object | Object containing `name=value` fields that uniquely identify the property record. <br>Example: `{"file_system": "/","mount_point":"sda1"}`|
 | `tags` | object | Object containing `name=value` fields that are not part of the key and contain descriptive information about the property record. <br>Example: `{"fs_type": "ext4"}`. |
-| `date` | string | ISO format date of last modified property record. |
+| `date` | string | [ISO format date](../../../shared/date-format.md) of last modified property record. |
 
 ## Example
 

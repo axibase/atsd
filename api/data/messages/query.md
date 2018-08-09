@@ -82,7 +82,7 @@ An array of matching message objects containing the following fields:
 |`severity` | string | Message [severity](../../../api/data/severity.md) name. |
 |`tags` | object |  Object containing `name=value` fields, for example `tags: {"path": "/", "name": "sda"}`. |
 |`message` | string | Message text. |
-|`date` | string | ISO format date of message record creation. |
+|`date` | string | [ISO format date](../../../shared/date-format.md) of message record creation. |
 
 ### Errors
 

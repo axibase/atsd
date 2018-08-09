@@ -2,7 +2,7 @@
 
 ## `CURRENT_TIMESTAMP`
 
-The function returns current database date and time in ISO format with millisecond precision.
+The function returns current database date and time in [ISO format](../../shared/date-format.md) with millisecond precision.
 
 ### Query
 

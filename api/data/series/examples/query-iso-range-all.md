@@ -2,7 +2,7 @@
 
 ## Description
 
-Query all detailed data for the series using ISO format.
+Query all detailed data for the series using [ISO format](../../../../shared/date-format.md).
 
 The database accepts data timestamped at or after Unix time which is **1970-01-01T00:00:00.000 UTC**.
 

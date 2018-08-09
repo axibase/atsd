@@ -31,7 +31,7 @@
 5467 | administration | Feature | Implement the ability to download HBase/HDFS [Log Files](../../administration/logging.md) on single-node installations.|
 5465 | client | Feature | [Python Client](https://github.com/axibase/atsd-api-python): Change `Message` model to simplify conversion to `DataFrame`|
 5464 | jdbc | Bug | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Remove `metric.timePrecision` field from default columns.|
-5460 | UI | Bug | UI: Client-side [datetime formatting](../../api/data/date-format.md) fails when data are loaded with **Default** pattern.|
+5460 | UI | Bug | UI: Client-side [datetime formatting](../../shared/date-format.md) fails when data are loaded with **Default** pattern.|
 5459 | api-rest | Feature | Meta API: Implement metric [`rename`](../../api/meta/metric/rename.md) endpoint.|
 5458 | api-rest | Bug | Data API: [Series: `query`](../../api/data/series/query.md) error when requesting a small date interval close to current time.|
 5457 | sql | Bug | [SQL](../../sql/README.md): `datetime` column returns milliseconds (long) in `CASE` expression.|

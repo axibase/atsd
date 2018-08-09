@@ -83,7 +83,7 @@ Refer to [date format](date-format.md) rules and examples.
 
 * The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or `0` milliseconds from Unix time.
 * The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or `4294969199999` milliseconds from Unix time.
-* The maximum year that can be specified in ISO format when `querying` data is `9999` and the maximum date is `9999-12-31T23:59:59.999` UTC.
+* The maximum year that can be specified in [ISO format](../../shared/date-format.md)) when `querying` data is `9999` and the maximum date is `9999-12-31T23:59:59.999` UTC.
 
 ### Numbers
 

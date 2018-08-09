@@ -1,6 +1,6 @@
 # Date Format
 
-A `datetime` column returns date and time in ISO format.
+A `datetime` column returns date and time in [ISO format](../../shared/date-format.md).
 
 ## Query
 
