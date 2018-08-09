@@ -2746,7 +2746,9 @@ Notes:
 * The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
 
 ```sql
-SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date", date_format(datetime, 'eee') AS "Day of Week", date_format(datetime, 'u') AS "DoW Number",
+SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date",
+  date_format(datetime, 'eee') AS "Day of Week",
+  date_format(datetime, 'u') AS "DoW Number",
   is_workday(datetime, 'USA') AS "USA Work Day",
   is_workday(datetime, 'ISR') AS "Israel Work Day"
 FROM "mpstat.cpu_busy"
@@ -2767,10 +2769,10 @@ GROUP BY PERIOD(1 day)
 | 2018-07-08 | Sun         | 7          | false        | true            |
 ```
 
-To check if the date argument is a working day in the **local** time zone, format the date using the `yyyy-MM-dd` pattern in the local time zone and parse the result into a date in the **database** time zone.
+To check if the date argument is a working day in the **local** time zone, call the function with the custom time zone.
 
 ```sql
-is_workday(date_parse(date_format(time, 'yyyy-MM-dd', 'US/Pacific'), 'yyyy-MM-dd'), 'USA')
+is_workday(time, 'USA', 'US/Pacific')
 ```
 
 #### IS_WEEKDAY
@@ -2784,7 +2786,9 @@ IS_WEEKDAY(datetime | time | datetime expression, calendar_key [, timezone])
 ```
 
 ```sql
-SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date", date_format(datetime, 'eee') AS "Day of Week", date_format(datetime, 'u') AS "DoW Number",
+SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date",
+  date_format(datetime, 'eee') AS "Day of Week",
+  date_format(datetime, 'u') AS "DoW Number",
   is_workday(datetime, 'USA') AS "USA Work Day",
   is_weekday(datetime, 'USA') AS "USA Week Day",
   is_workday(datetime, 'ISR') AS "Israel Work Day",
