@@ -94,7 +94,7 @@ To store a derived command with the same time as an incoming command, set `ms:` 
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
-> If **Check on Exit** is enabled for a time-based window, events can be caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
+> If **Check on Exit** is turned on, some status change events are caused by oldest commands being removed from the window. In such cases the `timestamp` field contains the time of the existing command, rounded to seconds.
 
 To round the input time to seconds, use `s:` seconds parameter and [`floor`](functions.md#mathematical) function:
 
