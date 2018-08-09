@@ -130,7 +130,7 @@ curl "https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expressi
 Expression value:
 
 ```txt
-name!="" or tags.keyName!="" or label!=null or enabled=true or interpolate="LINEAR" or timeZone!=""
+name != '' or tags.keyName != '' or label != null or enabled = true or interpolate = 'LINEAR' or timeZone != ''
 ```
 
 ### Request

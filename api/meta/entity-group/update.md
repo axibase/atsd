@@ -6,7 +6,9 @@ Updates fields and tags of the specified entity group.
 
 Unlike the [replace method](create-or-replace.md), fields and tags that are **not** specified in the request are left unchanged.
 
-Similarly, fields that are set to `null` are ignored and are left unchanged.
+Fields that are set to `null` are ignored and are left unchanged.
+
+Tags with values set to `null` or empty string, are deleted.
 
 ## Request
 
@@ -59,7 +61,7 @@ curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
   --insecure --include --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \
-  --data '{"tags": {"os_type": "AIX"}}
+  --data '{"tags": {"os_type": "AIX"}}'
 ```
 
 ### Response

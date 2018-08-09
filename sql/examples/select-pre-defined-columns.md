@@ -1,4 +1,4 @@
-# Select Pre-Defined Columns
+# Select Predefined Columns
 
 ## Query
 

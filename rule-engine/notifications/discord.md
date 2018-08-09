@@ -43,7 +43,7 @@ Configure a new Discord server, if necessary.
 
      ![](./images/create_discord_channel.png)
 
-* Specify **Channel name**, check (enable) **Text Channel**, click **Create Channel**.
+* Specify **Channel name**, select **Text Channel**, and click **Create Channel**.
 
      ![](./images/create_discord_channel2.png)
 
@@ -55,7 +55,7 @@ Configure a new Discord server, if necessary.
 
      ![](./images/create_discord_channel4.png)
 
-On the **Invite** tab you can create an invitation link and distribute it to new users.
+On the **Invite** tab, create an invitation link and distribute it to new users.
 
 To join a server, click **Create new server**, select **Join** and paste the received invitation link.
 
@@ -63,20 +63,20 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 * Open the **Webhook** tab, click **Create Webhook**, enter a name and select a channel.
 
-      ![](./images/create_webhook.png)
+    ![](./images/create_webhook.png)
 
-* Copy the Webhook URL for future reference, click **Save**.
+* Copy the Webhook URL for future reference and click **Save**.
 
 ## Create Webhook in ATSD
 
-* Open the **Alerts > Outgoing Webhooks** page.
+* Navigate to **Alerts > Outgoing Webhooks**.
 * Click an existing `DISCORD` template, or click **Create** and select the `DISCORD` type.
 * Specify the unique `Name` of the notification.
 
     ![](./images/discord_1.png)
 
-* Copy the **Webhook URL** from the Discord client into the **Webhook URL** field in the configuration form.
-* The **Webhook ID** and **Webhook Token** are filled automatically when you finish editing the **Webhook URL** field.
+* Copy the **Webhook URL** from the Discord client to the **Webhook URL** field in the configuration form.
+* **Webhook ID** and **Webhook Token** are filled automatically when you finish editing the **Webhook URL** field.
 * Select **Test Portal** to test the screenshot.
 
     ![](./images/discord_settings.png)
@@ -103,24 +103,24 @@ location /api/webhooks {
 
 |**Parameter**|**Description**|
 |---|---|
-|Webhook URL|Webhook URL generated on the **Webhook** tab in channel settings. The URL is cleared when configuration is saved.|
-|Webhook ID|The ID of the webhook. Automatically resolved from Webhook URL.|
-|Webhook Token|The secure token of the webhook. Automatically resolved from Webhook URL.|
+|Webhook URL|Webhook URL generated on the **Webhook** tab in channel settings.<br>The URL is cleared when the configuration is saved.|
+|Webhook ID|The ID of the webhook.<br>Automatically resolved from Webhook URL.|
+|Webhook Token|The secure token of the webhook.<br>Automatically resolved from Webhook URL.|
 |Bot Username|Overwrite your bot user name.|
-|Content|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|
+|Content|Message text to be sent.<br>Leave this field blank to make the field editable in the rule editor.|
 
 ## Testing
 
-### Create/import rule
+### Create or Import a Rule
 
 * Create a new rule or import an existing rule for a built-in metric as described below.
 * Download the file [rules.xml](./resources/rules.xml).
-* Open the **Alerts > Rules > Import** page.
-* Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
+* Navigate to **Alerts > Rules > Import**.
+* Check **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
 ### Configure Webhook
 
-* Open **Alerts > Rules** page and select a rule.
+* Navigate to **Alerts > Rules** and select the imported rule.
 * Open the **Webhooks** tab.
 * Select Discord from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
@@ -132,13 +132,13 @@ REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_i
 CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
 ```
 
-* Click **Save** to save the rule.
+* Click **Save**.
 
     ![](./images/discord_notification.png)
 
 * The rule creates new windows when new commands are received by the database.
 
-It can take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and trigger notifications. Open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Examples
 

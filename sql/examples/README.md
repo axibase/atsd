@@ -19,7 +19,7 @@
 * [Column Alias](alias-column.md)
 * [Table Alias](alias-table.md)
 * [Escape Quotes](select-escape-quote.md)
-* [atsd_series Table](select-atsd_series.md)
+* [`atsd_series` Table](select-atsd_series.md)
 * [Date Format](datetime-format.md)
 * [Date Extract Functions](date-extract.md)
 * [Date Utility Functions](date-functions.md)

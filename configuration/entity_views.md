@@ -2,11 +2,13 @@
 
 ## Overview
 
-Entity View is a customized table displaying key attributes for entities belonging to the same entity group. The views are listed under the **Entity Views** tab in the main menu.
+Entity View is a customized tabular format for displaying key attributes for entities of the same type, typically belonging to the same entity group.
+
+The enabled views are listed under the **Entity Views** tab in the main menu.
 
 ![](./images/entity_views_5.png)
 
-An entity view table consists several columns: icons, links, text, series values:
+An entity view table contains several types of columns: icons, links, text, series values, etc.
 
 ![](./images/entity-view-table.png)
 
@@ -24,7 +26,9 @@ An entity view table consists several columns: icons, links, text, series values
 
 ## Authorization
 
-The view can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
+The view can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for one of the [entity groups](entity_groups.md#members) to which the view is linked.
+
+If not filtered by entity group, the view displays entities that belong to **all** linked entity groups that the user is authorized to access.
 
 ## Settings
 
@@ -32,7 +36,7 @@ The view can be accessed by users with [`read`](../administration/user-authoriza
 ---|---
 Name | **[required]** View name displayed on the **Entity Views** page.
 Enabled | Status: enabled or disabled. <br>Disabled views are not visible on the **Entity Views** tab in the main menu.
-Entity Group | **[required]** [Entity group](entity_groups.md) which members are included in the view.
+Entity Groups | **[required]** One or multiple [entity groups](entity_groups.md) which members are included in the view.
 Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in entity group [expressions](entity_groups.md#expression).
 Dynamic Filter | [Filter](#dynamic-filters) applied to displayed entities on initial page load.
 Split Table by Column | Enter column header or column value to group entities into separate tables.
@@ -45,12 +49,13 @@ Multi-Entity Portal | [Portal](#portal) with time series charts for multiple ent
 
 The list of entities displayed in the table is determined as follows:
 
-* The list is initially set to the current members of the selected entity group.
-* If an [**Entity Expression**](#settings) is specified, the members are checked against this condition. Entities that fail to satisfy the condition are hidden.
-* If a [**Dynamic Filter**](#dynamic-filters) is set by the user, the entities are additionally checked against this filter. Entities that fail to satisfy the filter condition are hidden.
+* The list is initially set member of **all** linked entity groups that the user is authorized to access.
+* If an entity group is specified, the members of other groups are excluded.
+* If an [**Entity Expression**](#settings) is specified, the remaining members are checked against this condition. Entities that fail to satisfy the condition are excluded.
+* If a [**Dynamic Filter**](#dynamic-filters) is entered by the user, the entities are additionally checked against this filter. Entities that fail to satisfy the filter condition are excluded.
 * If a [**Search**](#search) text is specified, only entities with a column value containing the search keyword are displayed.
 
-> While the Dynamic Filter can be toggled by the user, the Entity Group and Entity Expression (if specified) are applied at all times.
+> While the Entity Group Filter and Dynamic Filter can be toggled by the user, the Entity Expression (if specified) are applied at all times.
 
 ## Search
 
@@ -90,21 +95,21 @@ Last Insert | Last insert date for all or one metric collected by the entity wit
 
 * Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
 
-```javascript
-:900
-```
+  ```javascript
+  :900
+  ```
 
 * Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
 
-```javascript
-cpu_busy:900
-```
+  ```javascript
+  cpu_busy:900
+  ```
 
 * Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
 
-```javascript
-cpu_busy:
-```
+  ```javascript
+  cpu_busy:
+  ```
 
 ### Links
 
@@ -166,7 +171,7 @@ The following functions are available in the **Formatting** section:
 Name | Filter name displayed in the drop-down list.
 Expression | A condition that entities must satisfy when the filter is selected in the drop-down list. The expression can refer to `name` and `tags.{name}` columns defined in the entity view.
 
-Filter expression examples:
+Examples:
 
 ```javascript
 // name column
@@ -190,9 +195,9 @@ tags['configuration::codename'] = 'Santiago'
 
 ## Split Table by Column
 
-If **Split Table by Column** is specified, the entities are grouped into multiple tables.
+If **Split Table by Column** is specified, the list of entities is grouped into multiple tables.
 
-The **Split Table by Column** field accepts an existing column header or its value.
+The **Split Table by Column** field accepts a column header or column value.
 
 ### Split Examples
 

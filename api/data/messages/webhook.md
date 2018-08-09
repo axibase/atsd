@@ -1,10 +1,10 @@
-# Messages: `webhook`
+# Messages: webhook
 
 ## Description
 
 This method accepts `GET` and `POST` requests, with an optional JSON or `form` payload, and converts the request into message fields. The resultant message is stored in the database and processed by the rule engine.
 
-A set of reserved parameter names, specified in the query string, instruct the server how to parse incoming requests. The reserved parameters determine mapping between the request content and message fields and define which data is discarded by the database as extraneous.
+A set of reserved parameter names, specified in the query string, instruct the server how to parse the incoming request. The reserved parameters determine mapping between the request content and message fields and define which data is discarded by the database as extraneous.
 
 Use this method to process HTTP notifications from services that support webhooks such as GitHub, AWS SNS, Jenkins, Docker Hub, Slack/Telegram/Discord Bots etc.
 
@@ -37,13 +37,13 @@ Use this method to process HTTP notifications from services that support webhook
 | `POST` | `/api/v1/messages/webhook/*` | `key=value` | `application/x-www-form-urlencoded` |
 | `GET` | `/api/v1/messages/webhook/*` | None | - |
 
-The URL can point to any path after `/webhook`, for example, `/api/v1/messages/webhook/service-1`.
+The request URL can point to any path after `/webhook`, for example, `/api/v1/messages/webhook/service-1`.
 
 ## Authentication
 
 Requests must be authenticated.
 
-When initiating a request with an HTTP client, user credentials are included in the request URL as shown below:
+When initiating a request, include user in the request URL as shown below:
 
 ```elm
 https://username:password@atsd_hostname:8443/api/v1/messages/webhook/jenkins?entity=jen01

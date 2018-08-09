@@ -89,6 +89,7 @@ Date functions perform various operations on dates, timestamps and intervals.
 * [`window_length_count`](functions-date.md#window_length_count)
 * [`windowStartTime`](functions-date.md#windowstarttime)
 * [`elapsedTime`](functions-date.md#elapsedtime)
+* [`elapsed_minutes`](functions-date.md#elapsed_minutes)
 * [`milliseconds`](functions-date.md#milliseconds)
 * [`seconds`](functions-date.md#seconds)
 * [`date_parse`](functions-date.md#date_parse)

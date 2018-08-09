@@ -12,7 +12,7 @@ message d:${time} e:${entity} t:type=${type} t:source=${source} t:severity=${sev
 
 * If time fields are omitted, the record is inserted with the current server time.
 * **Message text or at least one tag is required, otherwise the message is dropped silently.**
-* Entity name, tag names are case-**insensitive** and are converted to lower case when stored.
+* Entity name and tag names are case-**insensitive** and are converted to lower case when stored.
 * Tag values and message text are case-**sensitive** and are stored as submitted.
 
 ```ls
@@ -34,8 +34,6 @@ message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 | s         | integer      | Time in Unix seconds. |
 | ms        | integer      | Time in Unix milliseconds. |
 | d         | string       | Time in ISO format. |
-
-* Messages with timestamps that are more than 1 minute behind or ahead of the current server time are ignored by the rule engine.
 
 ### Special Tags
 

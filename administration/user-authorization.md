@@ -1,11 +1,10 @@
 # User Authorization
 
-ATSD implements Role Based Access Control (RBAC) to restrict user access to protected information.
+ATSD implements roles and permissions to authorize access to protected information.
 
 ## Role Based Access Control
 
-Authenticated users are allowed to access protected resources based on
-their role. The role specifies which URLs and HTTP methods the user can access. Each user can be assigned multiple roles.
+Authenticated users are allowed to access protected resources based on their role. The role determines which URLs the user can request. Each user can be granted multiple roles.
 
 ### API Roles
 
@@ -27,25 +26,28 @@ their role. The role specifies which URLs and HTTP methods the user can access. 
 
 ## Entity Permissions
 
-Permissions to read and write data for entities in a particular Entity Group are granted to the User Group level.
+Permissions to read and write data for entities in a particular entity group are granted at the **user group level**.
 
-To read data for an entity, the user must have an `API_DATA_READ` role. In addition, one of the user’s User
-Groups must be granted a `read` permission to an Entity Group containing the
-entity.
+> Granting permissions to a particular entity is **not supported**. To facilitate access controls, the entity must be added to an entity group.
 
-To write data for an entity the user must have an `API_DATA_WRITE` role. In addition, one of the user’s User Groups must be granted a `write` permission to an Entity Group containing the entity. Effective user permissions are calculated as a union of all User Groups permissions to which the user belongs.
+Effective permissions are calculated as a union of all user groups permissions to which the user belongs.
 
-![entity_group_permission](./images/entity_group_permission.png)
+To read data for an entity, the user must have the `API_DATA_READ` role and be a member of a user group with `read` permission to an entity group containing the entity.
 
-*In the following diagram, to read data for entity-30, the user must be either added to user-group-C as a member, or
-entity-group-3 must be assigned to user-group-B or user-group-A.*
+To insert or modify data for an entity, the user must have the `API_DATA_WRITE` role and be a member of a user group with `write` permission to an entity group containing the entity.
 
-![atsd_role_hierarchy](./images/atsd_role_hierarchy-2.png)
+![](./images/entity_group_permission.png)
+
+In the below diagram, to read data for `entity-30`, the user must be a member of `user-group-C`, or reading `entity-group-3` must be allowed for `user-group-B` or `user-group-A`.
+
+![](./images/atsd_role_hierarchy-2.png)
 
 ### All Entities Permissions
 
-In addition to specific Entity Group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data for any entity, including entities that do not belong to any Entity Group. Users inherit `All Entities` permissions from the
-User Groups to which they belong.
+As an alternative to specific entity group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data for any entity, including entities that do not belong to any entity group. Users inherit `All Entities` permissions from the
+user groups to which they belong.
+
+The permissions to read and write data for all entities is automatically granted to users with `ADMIN` role.
 
 ### Inserting Data for New Entities
 
@@ -59,32 +61,35 @@ Users without `All Entities: Read` permission are allowed to query Data API usin
 
 ## Entity View Permissions
 
-The user is implicitly authorized to access an Entity View if it has `read` permissions to the Entity Group specified in the Entity View configuration.
+The user is authorized to access an [Entity View](../configuration/entity_views.md) if the user has `read` permissions to one of the entity group to which the view is linked.
+
+The permissions to access all entity views is automatically granted to users with `ADMIN` role.
 
 ## Portal Permissions
 
 The portal permissions define which portals the user is authorized to view.
 
-Permissions to view the portal are granted to User Groups.
+Permissions to view the portal are granted to at the user group level.
 
 The permissions are enforced both for template and regular portals.
 
 ### All Portals Permission
 
-A user group can be granted `All Portal` permission whereby its members are authorized to view all portals enabled in the system.
+A user group can be granted `All Portal` permission whereby its members are authorized to view all portals.
+
 The permission to view all portals is automatically granted to users with `ADMIN` role.
 
 ## User Wizards
 
-To simplify the process of creating user account for typical use cases, the database provides wizards to create a **webhook** user and a **collector** user.
+To simplify the process of creating user account for typical use cases, the database provides wizards to create a **webhook** user, a **collector** user, and a **resource viewer** user.
+
+To create a new user with a wizard, open the **Settings > Users** page and select one of **Create User** options from the split-button located below the **Users** table.
 
 ### Webhook User
 
-The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/data/messages/webhook.md) endpoint and requires only the `API_DATA_WRITE` role and `write` permissions for one specific entity.
+The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/data/messages/webhook.md) endpoint and is granted the `API_DATA_WRITE` role and `write` permissions for **one** specific entity.
 
-To create a new user of this type, open the **Settings > Users** page and select **Create Webhook User** option from the split-button located below the **Users** table.
-
-![](./images/webhook-user.png)
+![](./images/wizard-webhook.png)
 
 The wizard automatically creates a new user account, user and entity groups and grants necessary permissions.
 
@@ -92,17 +97,23 @@ The wizard automatically creates a new user account, user and entity groups and 
 
 ### Collector User
 
-The **collector** user inserts data of all types (series, properties, and messages) for many entities, including new entities, and requires both the `API_DATA_WRITE` and `API_META_WRITE` roles and `write` permissions for all entities.
+The **collector** user inserts data of all types (series, properties, and messages) for many entities, including new entities, and is granted the `API_DATA_WRITE` and `API_META_WRITE` roles and `write` permissions for **all** entities.
 
 The instruments inserting data under the **collector** account are typically located within a specific network segment and an option to specify the allowed IP range can be used to enhance access security.
 
-To create a new user of this type, open the **Settings > Users** page and select **Create Collector User** option from the split-button located below the **Users** table.
-
-![](./images/collector-user-wizard.png)
+![](./images/wizard-data-user.png)
 
 The wizard creates a new user account automatically and makes it a member of the `Data Collectors` user group with `All Entities: Write` permission.
 
 ![](./images/collector-user-permissions.png)
+
+### Resource Viewer User
+
+This user is created with the `USER` role and random-generated password. A corresponding user group with `read` permissions to entity groups selected on the wizard form is created automatically.
+
+![](./images/wizard-resource-viewer.png)
+
+![](./images/wizard-resource-viewer-result.png)
 
 ## Implementation Notes
 
