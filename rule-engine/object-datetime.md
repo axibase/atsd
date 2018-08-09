@@ -2,7 +2,7 @@
 
 ## Overview
 
-`DateTime` object represents a specific date and time. The object also provides fields and functions to extract various calendar units.
+`DateTime` object represents a specific date and time. The object provides fields and functions to extract various calendar units. Access `DateTime` objects using [Window Field](#window-fields) syntax or via [`to_datetime`](./functions-date.md#to_datetime) function.
 
 ## Time Zone
 
@@ -14,29 +14,38 @@ To create a new `DateTime` object from Unix time in milliseconds, use the [`to_d
 
 ## Fields
 
-* `day_of_week`
-* `dayOfWeek`
-* `dayOfMonth`
-* `dayOfYear`
-* `hourOfDay`
-* `millis`
-* `millisOfDay`
-* `millisOfSecond`
-* `minuteOfDay`
-* `minuteOfHour`
-* `monthOfYear`
-* `secondOfDay`
-* `secondOfMinute`
-* `weekOfWeekyear`
-* `weekyear`
-* `year`
-* `yearOfCentury`
-* `yearOfEra`
-* `centuryOfEra`
-* `next_workday`
-* `previous_workday`
-* `next_non_working_day`
-* `previous_non_working_day`
+The table below enumerates available `DateTime` object fields and demonstrates the returned values for `2018-01-13T16:45:22.303Z` (Saturday).
+
+|**Method**| **Value** |
+|:---|---:|
+|`day_of_week`|`Saturday`|
+|`year`|`2018`|
+|`monthOfYear`|`1`|
+|`dayOfMonth`|`13`|
+|`hourOfDay`|`16`|
+|`minuteOfHour`|`45`|
+|`secondOfMinute`|`22`|
+|`millisOfSecond`|`303`|
+|`dayOfYear`|`13`|
+|`weekOfWeekyear`|`2`|
+|`millisOfDay`|`60322303`|
+|`minuteOfDay`|`1005`|
+|`secondOfDay`|`60322`|
+|`weekyear`|`2018`|
+|`yearOfCentury`|`18`|
+|`yearOfEra`|`2018`|
+|`centuryOfEra`|`20`|
+|`millis`|`1515861922303`|
+|`next_workday`|`DateTime('2018-01-16T00:00Z[UTC]')`|
+|`previous_workday`|`DateTime('2018-01-12T00:00Z[UTC]')`|
+|`next_non_working_day`|`DateTime('2018-01-14T00:00Z[UTC]')`|
+|`previous_non_working_day`|`DateTime('2018-01-07T00:00Z[UTC]')`|
+|`is_weekday()`|`false`|
+|`is_weekday('usa')`|`false`|
+|`is_weekend()`|`true`|
+|`is_weekend('usa')`|`true`|
+|`is_workday()`|`false`|
+|`is_workday('usa')`|`false`|
 
 The `millis` field returns time in Unix milliseconds.
 
@@ -147,38 +156,3 @@ Returns a new `DateTime` object based on server time but modified to the specifi
 ```javascript
 now.to_timezone('Europe/Berlin').next_workday
 ```
-
-## Sample Values
-
-The following values are returned by the `DateTime` object on `2018-01-13T16:45:22.303Z` (Saturday).
-
-|**Method**| **Value** |
-|:---|---:|
-|`day_of_week`|Saturday|
-|`year`|2018|
-|`monthOfYear`|1|
-|`dayOfMonth`|13|
-|`hourOfDay`|16|
-|`minuteOfHour`|45|
-|`secondOfMinute`|22|
-|`millisOfSecond`|303|
-|`dayOfYear`|13|
-|`weekOfWeekyear`|2|
-|`millisOfDay`|60322303|
-|`minuteOfDay`|1005|
-|`secondOfDay`|60322|
-|`weekyear`|2018|
-|`yearOfCentury`|18|
-|`yearOfEra`|2018|
-|`centuryOfEra`|20|
-|`millis`|1515861922303|
-|`next_workday`|`DateTime('2018-01-16T00:00Z[UTC]')`|
-|`previous_workday`|`DateTime('2018-01-12T00:00Z[UTC]')`|
-|`next_non_working_day`|`DateTime('2018-01-14T00:00Z[UTC]')`|
-|`previous_non_working_day`|`DateTime('2018-01-07T00:00Z[UTC]')`|
-|`is_weekday()`|`false`|
-|`is_weekday('usa')`|`false`|
-|`is_weekend()`|`true`|
-|`is_weekend('usa')`|`true`|
-|`is_workday()`|`false`|
-|`is_workday('usa')`|`false`|
