@@ -19,22 +19,22 @@ Authenticated users are allowed to access protected resources based on their rol
 
 | Role | Description |
 | --- | --- |
-| `USER` | View information on all pages except Configuration and Settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
-| `EDITOR` | View and edit information on all pages except Settings pages. <br>Includes `USER` role. |
-| `ENTITY_GROUP_ADMIN` | Edit entity groups. <br>Includes `USER` role. |
+| `USER` | View information on all pages except configuration and settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
+| `EDITOR` | View and edit information on all pages except settings pages. <br>Includes `USER` role. |
+| `ENTITY_GROUP_ADMIN` | Edit [Entity Groups](../configuration/entity_groups.md). <br>Includes `USER` role. |
 | `ADMIN` | View and edit information on all pages. <br>Includes all roles. |
 
 ## Entity Permissions
 
-Permissions to read and write data for entities in a particular entity group are granted at the **user group level**.
+Permissions to read and write data for entities in a particular Entity Group are granted at the **User Group level**.
 
-> Granting permissions to a particular entity is **not supported**. To facilitate access controls, the entity must be added to an entity group.
+> Granting permissions to a particular entity is **not supported**. To facilitate access controls, an entity must be added to an Entity Group.
 
-Effective permissions are calculated as a union of all user groups permissions to which the user belongs.
+Effective permissions are calculated as the union of all user groups permissions given to groups to which the user belongs.
 
-To read data for an entity, the user must have the `API_DATA_READ` role and be a member of a user group with `read` permission to an entity group containing the entity.
+To read data for an entity, the user must have the `API_DATA_READ` role and be a member of the user group with `read` permission to the Entity Group containing the target entity.
 
-To insert or modify data for an entity, the user must have the `API_DATA_WRITE` role and be a member of a user group with `write` permission to an entity group containing the entity.
+To insert or modify data for an entity, the user must have the `API_DATA_WRITE` role and be a member of the User Group with `write` permission to the Entity Group containing the target entity.
 
 ![](./images/entity_group_permission.png)
 
@@ -44,24 +44,23 @@ In the below diagram, to read data for `entity-30`, the user must be a member of
 
 ### All Entities Permissions
 
-As an alternative to specific entity group permissions, user groups can be granted a special `All Entities: Read` or `All Entities: Write` permission which allows reading or writing data for any entity, including entities that do not belong to any entity group. Users inherit `All Entities` permissions from the
-user groups to which they belong.
+As an alternative to specific entity group permissions, user groups can be granted the `All Entities: Read` or `All Entities: Write` permission, which allows reading or writing data for any entity, including entities that do not belong to any entity group. Users inherit `All Entities` permissions from the User Groups to which they belong.
 
 The permissions to read and write data for all entities is automatically granted to users with `ADMIN` role.
 
 ### Inserting Data for New Entities
 
 Since non-existent entities cannot be assigned to a group, the `All Entities: Write` permission is required to create
-entities either in the web interface or by inserting data via API. User with a `API_DATA_WRITE` role but without the
+entities either in the web interface or by inserting data via API. Users with the `API_DATA_WRITE` role but without the
 `All Entities: Write` permission are able to insert data only for existing entities.
 
 ### Wildcard Requests
 
-Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results are filtered based on the user's effective permissions, therefore different users can see different results for the same API request or SQL query depending on their entity permissions.
+Users without `All Entities: Read` permission are allowed to query Data API using wildcards as part of entity name as well as execute SQL queries without entity name conditions. However in both cases, the results are filtered based on the effective permissions of that particular user, therefore different users can see different results for the same API request or SQL query depending on their entity permissions.
 
 ## Entity View Permissions
 
-The user is authorized to access an [Entity View](../configuration/entity_views.md) if the user has `read` permissions to one of the entity group to which the view is linked.
+The user is authorized to access an [Entity View](../configuration/entity_views.md) if the user has `read` permissions to one of the Entity Groups to which the view is linked.
 
 The permissions to access all entity views is automatically granted to users with `ADMIN` role.
 
@@ -69,9 +68,9 @@ The permissions to access all entity views is automatically granted to users wit
 
 The portal permissions define which portals the user is authorized to view.
 
-Permissions to view the portal are granted to at the user group level.
+Permissions to view a portal are granted at the User Group level.
 
-The permissions are enforced both for template and regular portals.
+Permissions are enforced for both templates and regular portals.
 
 ### All Portals Permission
 
@@ -83,13 +82,13 @@ The permission to view all portals is automatically granted to users with `ADMIN
 
 To simplify the process of creating user account for typical use cases, the database provides wizards to create a **webhook** user, a **collector** user, and a **resource viewer** user.
 
-To create a new user with a wizard, open the **Settings > Users** page and select one of **Create User** options from the split-button located below the **Users** table.
+To create a new user with a wizard, navigate to **Settings > Users** and select one of the **Create User** options from the split-button located below the **Users** table.
 
 ### Webhook User
 
 The **webhook** user inserts messages through the [`/api/v1/webhook`](../api/data/messages/webhook.md) endpoint and is granted the `API_DATA_WRITE` role and `write` permissions for **one** specific entity.
 
-![](./images/wizard-webhook.png)
+![](./images/wizard-example.png)
 
 The wizard automatically creates a new user account, user and entity groups and grants necessary permissions.
 
@@ -101,7 +100,7 @@ The **collector** user inserts data of all types (series, properties, and messag
 
 The instruments inserting data under the **collector** account are typically located within a specific network segment and an option to specify the allowed IP range can be used to enhance access security.
 
-![](./images/wizard-data-user.png)
+![](./images/collector-wizard-example.png)
 
 The wizard creates a new user account automatically and makes it a member of the `Data Collectors` user group with `All Entities: Write` permission.
 
@@ -111,10 +110,10 @@ The wizard creates a new user account automatically and makes it a member of the
 
 This user is created with the `USER` role and random-generated password. A corresponding user group with `read` permissions to entity groups selected on the wizard form is created automatically.
 
-![](./images/wizard-resource-viewer.png)
+![](./images/resource-viewer-wizard.png)
 
 ![](./images/wizard-resource-viewer-result.png)
 
 ## Implementation Notes
 
-The User role, group membership, and entity permissions are cached while the user session is active. The session is invalidated in case the user authorization is changed by an administrator, in which case the user has to re-login.
+User role, group membership, and entity permissions are cached while the user session is active. The session is invalidated in case the user authorization is changed by an administrator, in which case the user has to re-login.
