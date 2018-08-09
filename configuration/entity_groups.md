@@ -2,25 +2,25 @@
 
 ## Overview
 
-Entity Groups organize similar entities into logical collections that can be re-used when managing user permissions, filtering data, or calculating aggregations.
+Entity Groups organize similar entities into logical collections that can be used when managing user permissions, filtering data, or calculating aggregations.
 
 ![](./images/entity-groups.png)
 
 ## Members
 
-An entity group can be composed **manually** by enumerating names of the entities that are included as members.
+An entity group can be compiled **manually** by enumerating the names of each entity to be included.
 
-It can be also created by specifying a boolean criteria against which all entities that exist in the database, or parent group entities, are evaluated. Those entities that match the criteria are added as members **automatically**. Such groups are continuously updated in the background.
+It can be also created **programmatically** by specifying a boolean criteria against which all entities that exist in the database, or parent group entities, are evaluated. Those entities that match the criteria are added as members **automatically**. Such groups are continuously updated in the background.
 
 The parent group, if specified, restricts possible members to members of the parent group.
 
-The entity group editor provides the following options for adding or removing members:
+The Entity Group Editor provides the following options for adding or removing members:
 
 ### Text List
 
-Copy a list of entity names, one per line, into the text area. The names are case-insensitive.
+Copy a list of entity names, one per line, into the text area. Names are **case-insensitive**.
 
-If **Create Entities** option is checked, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found, are ignored.
+If **Create Entities** is selected, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found are ignored.
 
 ### Dual list
 
@@ -30,7 +30,7 @@ Select current members in the left pane and click **Remove** to delete members f
 
 ### Expression
 
-Specify a boolean expression to add and remove entities automatically. Expression-based groups are updated by the server at a fixed interval specified in the `entity.group.update.interval` setting.
+Specify a boolean expression to add and remove entities automatically. Expression-based groups are updated by the server at a fixed interval specified by the `entity.group.update.interval` setting.
 
 The expression can include the following entity fields and supports wildcards in field values:
 
@@ -75,57 +75,57 @@ name LIKE '*vml*' && tags.location = 'NUR'
 
 #### Examples
 
-* Entity name contains the specified string
+* Entity name contains the specified string:
 
   ```javascript
   name LIKE 'nur*vml*'
   ```
 
-* Entity has the specified entity tag
+* Entity has the specified entity tag:
 
   ```javascript
   tags.docker-type != ''
   ```
 
-* Entity has an entity tag equal to the specified value
+* Entity has an entity tag equal to the specified value:
 
   ```javascript
   tags.docker-type = 'container'
   ```
 
-* Entity has entity tags equal to the specified values
+* Entity has entity tags equal to the specified values:
 
   ```javascript
   tags.docker-type = 'container'
     && tags.status != 'deleted'
   ```
 
-* Entity collects the specified property type
+* Entity collects the specified property type:
 
   ```javascript
   hasProperty('oem.oracle_database')
   ```
 
-* Entity collects the specified metric
+* Entity collects the specified metric:
 
   ```javascript
   hasMetric('mpstat.cpu_busy')
   ```
 
-* Entity collected the specified metric within N hours
+* Entity collected the specified metric within `n` hours:
 
   ```javascript
   hasMetric('mpstat.cpu_busy', 24*7)
   ```
 
-* Entity property tag value matches the given expression
+* Entity property tag value matches the given expression:
 
   ```javascript
   properties('cfg').prog != ''
     && properties('cfg').prog NOT LIKE 'topas*'
   ```
 
-* Entity is a member of another group
+* Entity is a member of another group:
 
   ```javascript
   memberOf('all-linux-servers')
