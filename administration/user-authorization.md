@@ -70,7 +70,7 @@ The portal permissions define which portals the user is authorized to view.
 
 Permissions to view a portal are granted at the User Group level.
 
-Permissions are enforced for both templates and regular portals.
+Permissions are enforced for both template portals and regular portals.
 
 ### All Portals Permission
 
