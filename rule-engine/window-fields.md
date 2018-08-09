@@ -2,31 +2,30 @@
 
 ## Overview
 
-Each window maintains a set of continuously updated fields that can be included in the [condition](condition.md) expression, the [filter](filters.md) expression and the user-defined [variables](variables.md).
+Each window maintains a set of continuously updated fields which can be used in the [condition](condition.md) and [filter](filters.md) expressions, or as user-defined [variables](variables.md).
 
 ## Base Fields
 
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
-`status` | string | Window status | `OPEN`
-`rule` | string | Rule name | `memory_low`
-`metric` | string | Metric name | `memory_free`
-`entity` | string | Entity name | `nurswgvml007`
-`tags` | map | Command tags | `memtype=buffered`
-`tags.memtype` | string | Command tag by name | `buffered`
-`entity.displayName` | string | Label, if not empty. Name otherwise | `NURswgvml007`
-`entity.tags` | map | Entity tags | `{version=community}`
-`entity.tags.version` | string | Entity tag by name | `community`
-`entity.label` | string | Entity field by name | `NURswgvml007`
-`metric.label` | string | Metric field by name | `Memory Free, Bytes`
+`status` | string | Window status. | `OPEN`
+`rule` | string | Rule name. | `memory_low`
+`metric` | string | Metric name. | `memory_free`
+`entity` | string | Entity name. | `nurswgvml007`
+`tags` | map | Command tags. | `memtype=buffered`
+`tags.memtype` | string | Command tag by name. | `buffered`
+`entity.displayName` | string | Label, if not empty. Otherwise, name. | `NURswgvml007`
+`entity.tags` | map | Entity tags. | `{version=community}`
+`entity.tags.version` | string | Entity tag by name. | `community`
+`entity.label` | string | Entity field by name. | `NURswgvml007`
+`metric.label` | string | Metric field by name. | `Memory Free, Bytes`
 `condition` | string | Rule condition | `value < 75`
-`min_interval_expired` | boolean | Window delay status | `true`
-`repeat_count` | integer | `REPEAT` status count | `0`
-`repeat_interval` | string | Interval for repeats | `1 MINUTE`
-`rule_filter` | string | Rule filter | `entity != 'nurswghbs001'`
-`severity` | string | Alert severity | `WARNING`
-`window` | string | Window type and duration | `length(1)`
-`threshold` | string | Override rule | `max() > 20`
+`delay_expired` | boolean | Delay interval status.<br>Set to `true` if **On Open** notification executed after being deferred.| `true`
+`repeat_count` | integer | Number of consecutive `true` results. | `0`
+`rule_filter` | string | Filter expression. | `entity != 'nurswghbs001'`
+`severity` | string | Alert severity. | `WARNING`
+`window` | string | Window type and duration. | `length(1)`
+`threshold` | string | Override condition. | `max() > 20`
 
 ## Series Fields
 
@@ -39,22 +38,26 @@ Each window maintains a set of continuously updated fields that can be included 
 
 |**Name**|**Type**|**Description**|
 |---|---|---|
-| `type` | string | Message type (also `tags.type`) |
-| `source` | string | Message type (also `tags.source`) |
-| `message` | string | Message text |
+| `type` | string | Message type (also `tags.type`). |
+| `source` | string | Message type (also `tags.source`). |
+| `message` | string | Message text. |
 
-> The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
-> Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
+Notes:
+
+* The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
+* Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
 
 ## Properties Fields
 
 |**Name**|**Type**|**Description**|
 |---|---|---|
-| `type` | string | Property type (same as `tags.type`) |
-| `keys` | map | Property keys. To retrieve key value, use `keys.{name}` |
-| `properties` | map | Property tags. To retrieve tag value, use `properties.{name}` |
+| `type` | string | Property type (same as `tags.type`). |
+| `keys` | map | Property keys. To retrieve key value, use `keys.{name}`. |
+| `properties` | map | Property tags. To retrieve tag value, use `properties.{name}`. |
 
-> The `tags` field for the `property` command contains the `keys` map and the `type` field.
+Notes:
+
+* The `tags` field for the `property` command contains the `keys` map and the `type` field.
 
 ## Date Fields
 
@@ -80,7 +83,7 @@ Each window maintains a set of continuously updated fields that can be included 
 
 ## Details Tables
 
-The built-in `details` table contains entity name, entity label, entity tags, command tags, and user-defined variables. This data structure can be conveniently accessed to print out full alert information.
+The built-in `details` table contains entity name, entity label, entity tags, command tags, and user-defined variables. Use this data structure to print out full alert information.
 
 * [`detailsTable('markdown')`](details-table.md#markdown)
 * [`detailsTable('ascii')`](details-table.md#ascii)

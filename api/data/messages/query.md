@@ -101,18 +101,16 @@ POST /api/v1/messages/query
 #### Payload
 
 ```json
-[
-  {
-    "entity": "nurswgvml007",
-    "type": "logger",
-    "limit": 5,
-    "endDate": "now",
-    "interval": {
-      "count": 30,
-      "unit": "MINUTE"
-    }
+[{
+  "entity": "nurswgvml007",
+  "type": "logger",
+  "limit": 5,
+  "endDate": "now",
+  "interval": {
+    "count": 30,
+    "unit": "MINUTE"
   }
-]
+}]
 ```
 
 #### curl
