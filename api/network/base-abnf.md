@@ -48,7 +48,7 @@ UNICODE = %x80-FF / ; Latin-1 Supplement
 ## Date Rules
 
 ```elm
-; ISO format date defined in RFC-3339 Appendix-A.
+; ISO date defined in RFC-3339 Appendix-A.
 ; Format yyyy-MM-dd'T'HH:mm:ss.SSSXX
 ; https://tools.ietf.org/html/rfc3339#appendix-A
 ; UTC time zone (Z) = 2016-06-01T16:00:15.142Z

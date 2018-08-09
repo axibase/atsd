@@ -165,7 +165,7 @@ elapsedTime("2017-08-15T00:00:00Z")
 ```
 
 ```javascript
-/* Returns elapsed time in milliseconds since ISO format date in tags.last_updated */
+/* Returns elapsed time in milliseconds since ISO date in tags.last_updated */
 elapsedTime(milliseconds(tags.last_updated))
 ```
 

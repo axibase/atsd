@@ -193,12 +193,12 @@ The response contains an array of series objects, each containing series identif
 ### Value Object
 
 * The value object contains a sample time and a numeric (`v` field) or text (`x` field) value.
-* Sample time can be specified as Unix time with millisecond granularity (`t` field) or [ISO format](../../../shared/date-format.md) (`d` field).
+* Sample time can be specified as Unix time with millisecond granularity (`t` field) or [ISO format](../../../shared/date-format.md#supported-formats) (`d` field).
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `t` | integer | Unix time in milliseconds.|
-| `d` | string | Sample time in [ISO format](../../../shared/date-format.md). |
+| `d` | string | Sample time in [ISO format](../../../shared/date-format.md#supported-formats). |
 | `v` | number | Numeric sample value at time `t`/`d`. <br>The field is set to `null` if the value is Not a Number: `{"d":"2017-09-14T17:00:03.000Z","v":null}`|
 | `x` | string | Text sample value at time `t`/`d`. |
 | `version` | object | Object containing version source and status fields for versioned metrics. |

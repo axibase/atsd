@@ -21,8 +21,8 @@ Retrieves a list of metrics collected by the entity.
 |**Name**|**Type**|**Description**|
 |:--|:--|:--|
 | `expression` | string | Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.|
-| `minInsertDate` | string | Include metrics with last insert date equal or greater than specified time. <br>`minInsertDate` can be specified in [ISO format](../../../shared/date-format.md) or using [calendar](../../../shared/calendar.md) keywords.|
-| `maxInsertDate` | string | Include metrics with last insert date less than specified time.<br>`maxInsertDate` can be specified in [ISO format](../../../shared/date-format.md) or using [calendar](../../../shared/calendar.md) keywords.|
+| `minInsertDate` | string | Include metrics with last insert date equal or greater than specified time. <br>`minInsertDate` can be specified in [ISO format](../../../shared/date-format.md#supported-formats) or using [calendar](../../../shared/calendar.md) keywords.|
+| `maxInsertDate` | string | Include metrics with last insert date less than specified time.<br>`maxInsertDate` can be specified in [ISO format](../../../shared/date-format.md#supported-formats) or using [calendar](../../../shared/calendar.md) keywords.|
 | `useEntityInsertTime` | boolean | Controls how `lastInsertDate` field in the response is calculated. If `true`, the field contains the maximum insert time of series collected for the given metric by **the specified entity**.<br>If `false`, the field contains the maximum insert time of series collected for the given metric by **all entities**.<br>Default: `true`. |
 | `limit` | integer | Maximum number of metrics to retrieve, ordered by name. |
 | `tags` | string | Comma-separated list of metric tags to be included in the response.<br>For example, `tags=table,unit`<br>Specify `tags=*` to include all metric tags.|

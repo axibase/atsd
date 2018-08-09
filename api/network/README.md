@@ -301,7 +301,7 @@ The timestamp field records the time of an observation or an event as determined
 |:---|:---|:---|
 |`ms`|long|Unix time in milliseconds |
 |`s`|integer|Unix time in seconds|
-|`d`|string|[ISO format date](../../shared/date-format.md).|
+|`d`|string|[ISO date](../../shared/date-format.md).|
 
 Supported `d` field formats:
 

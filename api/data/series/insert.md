@@ -36,14 +36,14 @@ The request contains an array of series objects, each consisting of an array of 
 #### Value Object
 
 * The value object must contain the sample time and a numeric or text value.
-* The sample time can be specified in Unix time (`t` field, milliseconds) or [ISO format](../../../shared/date-format.md) (`d` field, text).
+* The sample time can be specified in Unix time (`t` field, milliseconds) or [ISO format](../../../shared/date-format.md#supported-formats) (`d` field, text).
 * Minimum sample time supported by the database is **1970-01-01T00:00:00.000Z**, or `0` milliseconds in Unix time.
 * Maximum sample date supported by the database is **2106-02-07T06:59:59.999Z**, or `4294969199999` milliseconds in Unix time.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `t` | integer | **[Required]** Sample Unix time in milliseconds.<br>Example: `{"t":1464782922000, "v":50.8}`.|
-| `d` | string | **[Required]** Sample time in [ISO format](../../../shared/date-format.md).<br>Example: `{"d":"2016-06-01T12:08:42Z", "v":50.8}`. |
+| `d` | string | **[Required]** Sample time in [ISO format](../../../shared/date-format.md#supported-formats).<br>Example: `{"d":"2016-06-01T12:08:42Z", "v":50.8}`. |
 | `v` | number | **[Required]** Numeric sample value at time `t`/`d`. <br>`null` is supported and is stored as `NaN` (Not a Number).<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null}` |
 | `s` | number | Standard deviation of the forecast value `v`.<br>Example: `{"d":"2016-06-01T12:08:42Z", "v":50.8, "s":12.340}`.<br>Applicable when `type` is `FORECAST`.|
 | `x` | string | Optional text sample value at time `t`/`d`. <br>Empty string `""` is supported and is stored as `""`.<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null, "x": "Shutdown"}` |

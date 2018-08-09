@@ -4,8 +4,8 @@ Date fields define the time range for selecting the data.
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-|`startDate`|    string | Start of the selection interval. <br>[ISO format date](../../shared/date-format.md) or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped at or after `startDate`.<br>Examples: `2016-05-25T00:15:00.194Z`, `current_hour` |
-| `endDate` |    string | End of the selection interval. <br>[ISO format date](../../shared/date-format.md) or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped before `endDate`.<br>Examples: `2016-05-25T00:15:00Z`, `previous_day - 1 * HOUR`|
+|`startDate`|    string | Start of the selection interval. <br>[ISO date](../../shared/date-format.md) or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped at or after `startDate`.<br>Examples: `2016-05-25T00:15:00.194Z`, `current_hour` |
+| `endDate` |    string | End of the selection interval. <br>[ISO date](../../shared/date-format.md) or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped before `endDate`.<br>Examples: `2016-05-25T00:15:00Z`, `previous_day - 1 * HOUR`|
 | `interval` |    object | Duration of the selection interval, specified as `count` and `unit`. <br>Example: `{"count": 5, "unit": "MINUTE"}`|
 
 * `startDate` is inclusive and `endDate` is exclusive.

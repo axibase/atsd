@@ -185,7 +185,7 @@ Use these parameters to set message fields to literal values.
 | `type` | Message type.|
 | `source` | Message source. |
 | `entity` | Message entity. |
-| `date` | Message date and time in [ISO format](../../../shared/date-format.md). |
+| `date` | Message date and time in [ISO format](../../../shared/date-format.md#supported-formats). |
 | `message` | Message text. |
 | `severity` | Message severity specified as an [integer](../severity.md) or as a string constant. |
 | `datetimePattern` | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [date pattern](../../../shared/time-pattern.md). |
@@ -207,7 +207,7 @@ Command parameters set message field values from JSON field values.
 | `command.type` | Message type.  |
 | `command.source` | Message source.  |
 | `command.entity` | Message entity.  |
-| `command.date` | Message time in [ISO format](../../../shared/date-format.md), Unix time milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
+| `command.date` | Message time in [ISO format](../../../shared/date-format.md#supported-formats), Unix time milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
 | `command.message` | Message text. |
 | `command.severity` | Message severity specified as an [integer](../severity.md) or as a constant. |
 
@@ -234,7 +234,7 @@ Header parameters set message field values from header values.
 | `header.type` | Message type.  |
 | `header.source` | Message source.  |
 | `header.entity` | Message entity.  |
-| `header.date` | Message date and time in [ISO format](../../../shared/date-format.md). |
+| `header.date` | Message date and time in [ISO format](../../../shared/date-format.md#supported-formats). |
 | `header.message` | Message text. |
 | `header.tag.{name}` | Message tag. |
 | `header.severity` | Message severity specified as an [integer](../severity.md) or as a constant. |

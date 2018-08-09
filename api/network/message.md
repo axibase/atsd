@@ -79,13 +79,13 @@ time-iso = "d:" ISO_DATE
 
 ### Command Examples
 
-* ISO format date
+* ISO date
 
 ```ls
 message d:2016-03-04T12:43:20Z e:server001 t:type=application t:source=cron t:job=backup m:"Task completed"
 ```
 
-* Unix seconds
+* Unix time in seconds
 
 ```ls
 message s:1464076784 e:server001 t:type=logger t:source=Ruby.main

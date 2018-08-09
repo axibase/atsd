@@ -62,10 +62,10 @@ An array of matching alert objects containing the following fields:
 | `window` | string | Window length. |
 | `value` | double | Last numeric value received. |
 | `type` | string | Alert state when closed: `OPEN`, `CANCEL`, `REPEAT`  |
-| `date` | string | [ISO format date](../../../shared/date-format.md).  |
-| `alertOpenDate` | string | [ISO format date](../../../shared/date-format.md) date of alert open.  |
+| `date` | string | [ISO date](../../../shared/date-format.md#supported-formats).  |
+| `alertOpenDate` | string | [ISO date](../../../shared/date-format.md#supported-formats) date of alert open.  |
 | `alertDuration` | number | Time in milliseconds for alert in `OPEN` or `REPEAT` state.  |
-| `receivedDate` | string | [ISO format date](../../../shared/date-format.md) for the last received value.  |
+| `receivedDate` | string | [ISO date](../../../shared/date-format.md#supported-formats) for the last received value.  |
 
 ### Errors
 
