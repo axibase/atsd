@@ -2,11 +2,11 @@
 
 ## Overview
 
-Workday Calendar contains a list of dates that represent exceptions to the regular workday calendar such as observed holidays and weekend working days.
+Workday Calendar contains a list of dates which are exceptions to the regular workday calendar such as observed holidays and weekend working days.
 
 The list can be associated with a country, a region, a specific organization, such as a stock exchange or a school district.
 
-Each calendar is assigned a unique key and can be accessed by key in the rule engine and SQL queries to check if the given day is a working day based on the actual observed calendar.
+Each calendar is assigned a unique key which can be accessed in the rule engine or via SQL queries to check if the given day is a working day based on the actual observed calendar.
 
 ## Usage
 
@@ -25,7 +25,7 @@ now.is_workday()
 !tomorrow.is_workday('kor')
 ```
 
-> The function raises an error if no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve the problem.
+> The function raises an error if no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve this problem.
 
 ### SQL Queries
 
@@ -44,7 +44,7 @@ WHERE time >= current_year
 
 By default, the database contains pre-defined 2018 workday calendars for several countries.
 
-The calendars can be modified and maintained by appending dates for prior and future years without restarting the database.
+Calendars can be modified and maintained by appending dates for prior and future years without database restart.
 
  **Country** | **Calendar Key** | **Download**
 ----|----|----
@@ -67,7 +67,7 @@ USA | `usa` | [download](https://raw.githubusercontent.com/axibase/atsd/master/r
 
 ### Schema
 
-Define new calendars in JSON format according to the following [schema](workday-calendar-schema.md).
+Define new calendars in JSON format according to [Workday Calendar Schema](workday-calendar-schema.md).
 
 ```json
 {
@@ -80,24 +80,24 @@ Define new calendars in JSON format according to the following [schema](workday-
 }
 ```
 
-The country name is specified as the [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
+Country name is specified as the [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code.
 
-Each exception in the list is classified as `Holiday` or `Workday`:
+Each exception in the list is classified as either a `Holiday` or `Workday`:
 
-* The `Holiday` type is assigned when the regular working day becomes a non-working day based on observance.
+* A `Holiday` is assigned when the regular working day becomes a non-working day based on observance.
 * A regular weekend day which is changed to a working day due to calendar optimizations is classified as a `Workday`.
 
-When loaded into the database, the calendar is accessible under the calendar key which is based on the file name excluding the `.json` extension.
+Once loaded into the database, a calendar is accessible via the calendar key which is based on the file name excluding `.json` extension.
 
 The calendar file can include days for any number of years.
 
 ### Importing Calendar
 
-Open **Data Entry > Workday Calendars** page. Attach a JSON file and click **Import**.
+Navigate to **Data Entry > Workday Calendars**. Attach a JSON file and click **Import**.
 
 ![](./images/holiday-calendars.png)
 
-The uploaded files are copied to the `/opt/atsd/atsd/conf/calendars` directory and the changes are applied instantly. Database restart is not required.
+Uploaded files are copied to `/opt/atsd/atsd/conf/calendars` and changes apply instantly. Database restart is not required.
 
 ### Example
 
