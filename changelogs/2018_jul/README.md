@@ -56,7 +56,7 @@
 5406 | rule editor | Feature | Rule Engine: Refactor [filter](../../rule-engine/filters.md) fields.|
 5405 | rule engine | Feature | Rule Engine: [System Command](../../rule-engine/scripts.md) - Pass window fields into `bash` script as named variables.|
 5404 | rule editor | Feature | Rule Editor: Display helper pane with [placeholders](../../rule-engine/placeholders.md).|
-5403 | rule editor | Bug | Rule Engine: Replace **Entity Filter** widget with autocomplete-capable [input field](../../rule-engine/filters.md#entity-name-filter).|
+5403 | rule editor | Bug | Rule Engine: Replace **Entity Filter** widget with autocomplete-capable [input field](../../rule-engine/filters.md#entity-names-filter).|
 5401 | UI | Feature | UI: Rename **Webhook Requests** to [**Incoming Webhooks**](../../rule-engine/incoming-webhooks.md) and move page to **Alerts** menu.|
 5375 | log_aggregator | Bug | [Aggregation Logger](../../administration/logging.md): Incorrect timeout handling.|
 5368 | log_aggregator | Bug | [Aggregation Logger](https://github.com/axibase/aggregation-log-filter): Security issues with HTTPS.|

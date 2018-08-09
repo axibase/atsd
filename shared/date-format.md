@@ -48,4 +48,4 @@ Invalid timestamps that cause a parsing error:
 * `2016-06-09T16:15Z` - Seconds are missing.
 * `2016-06-09 16:15:04Z` - `T` separator is missing.
 * `2016-06-09 16:15:04` - Time zone and `T` separator are missing.
-* `2016-06-09T16:15:04PST` - Time zone [names and identifiers](../../shared/timezone-list.md) are not supported.
+* `2016-06-09T16:15:04PST` - Time zone [names and identifiers](./timezone-list.md) are not supported.
