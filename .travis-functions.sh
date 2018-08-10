@@ -8,7 +8,7 @@ function list_modified_md_files {
 }
 
 function spellcheck {
-    if [ "$ENABLE_CHECK" = "true" ]; then
+    if [[ "$ENABLE_CHECK" = "true" && -n "$(list_modified_md_files)" ]]; then
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
             yaspeller --max-requests 10 --dictionary .yaspeller-dictionary.json -e ".md" ./
             yaspeller_exit_code=$?
