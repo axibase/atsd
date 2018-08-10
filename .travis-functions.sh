@@ -8,7 +8,7 @@ function list_modified_md_files {
 }
 
 function spellcheck {
-    if [ "$ENABLE_CHECK" = "true" ]; then
+    if [[ "$ENABLE_CHECK" = "true" && -n "$(list_modified_md_files)" ]]; then
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
             yaspeller --max-requests 10 --dictionary .yaspeller-dictionary.json -e ".md" ./
             yaspeller_exit_code=$?
@@ -32,15 +32,19 @@ function spellcheck {
 }
 
 function linkcheck {
-    if [ "$ENABLE_CHECK" = "true" ]; then
-        list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
+    if [[ "$ENABLE_CHECK" = "true" && -n "$(list_modified_md_files)" ]]; then
+        if [ -f ".linkcheck-config.json" ]; then
+            list_modified_md_files | xargs -d '\n' -n1 markdown-link-check -c .linkcheck-config.json
+        else
+            list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
+        fi
     else
         echo "Link checking will be skipped"
     fi
 }
 
 function stylecheck {
-    if [ "$ENABLE_CHECK" = "true" ]; then
+    if [[ "$ENABLE_CHECK" = "true" && -n "$(list_modified_md_files)" ]]; then
         git clone https://github.com/axibase/docs-util --depth=1
         exit_code=0
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then

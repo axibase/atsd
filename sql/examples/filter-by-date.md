@@ -17,7 +17,7 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:43.000Z | 6.1   |
 ```
 
-## Query with Local format
+## Query with Local Format
 
 ```sql
 SELECT datetime, value
@@ -34,7 +34,7 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:43.000Z | 6.1   |
 ```
 
-## Query with Short Local format
+## Query with Short Local Format
 
 ```sql
 SELECT datetime, count(value)
@@ -111,9 +111,9 @@ WHERE entity = 'nurswgvml007'
 
 ## Query with End Time Syntax
 
-[Calendar](../../shared/calendar.md) keywords are calculated based on the current server time and the server [time zone](../../shared/timezone-list.md).
+[Calendar](../../shared/calendar.md) keywords are calculated based on current server time and [time zone](../../shared/timezone-list.md).
 
-If the server time zone is `Europe/Berlin`, for example, the `current_day` keyword in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
+If the server time zone is `Europe/Berlin`, for example, `current_day` in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS local_datetime, value
@@ -142,9 +142,9 @@ series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 
 ## Query with End Time Syntax in Custom Time Zone
 
-The `endtime()` function enables specifying a user-defined [time zone](../../shared/timezone-list.md) when evaluating [calendar](../../shared/calendar.md) keywords and expressions.
+With the `endtime()` function, specify a user-defined [time zone](../../shared/timezone-list.md) to evaluate [calendar](../../shared/calendar.md) keywords and expressions.
 
-The following example selects data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST time zone, even though the server itself runs in UTC time zone.
+The following example selects data between `0h:0m:0s` of the previous day and `0h:0m:0s` of the current day in PST time zone, even though the server runs in UTC time zone.
 
 ```sql
 SELECT value, datetime,
@@ -169,7 +169,7 @@ LIMIT 3
 | 13.4   | 2018-06-12T06:59:47.000Z  | 2018-06-12T06:59:47.000Z  | 2018-06-12T06:59:47UTC  | 2018-06-12T06:59:47+0000  | 2018-06-11T23:59:47PDT |
 ```
 
-## Query using Local Time
+## Query Using Local Time
 
 ```sql
 SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') AS local_datetime, value
@@ -187,13 +187,13 @@ SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vi
 | 2017-05-01 10:00:47 | 2017-05-01 12:00:47 | 3.0900 |
 ```
 
-## Query using `BETWEEN`
+## Query Using `BETWEEN`
 
-The `BETWEEN` operator is inclusive and includes samples recorded at both the start and the end of the interval.
+The `BETWEEN` operator selects samples recorded between the start and end of the defined interval. `BETWEEN` is an inclusive operator, thus the interval start and end dates are included in the result.
 
 The expression `datetime BETWEEN t1 and t2` is equivalent to `datetime >= t1 and datetime <= t2`.
 
-To emulate a half-open `[)` interval subtract 1 millisecond from an `AND` value.
+To emulate a half-open `[)` interval subtract `1` millisecond from the `AND` value.
 
 ```sql
 SELECT datetime, value
@@ -218,12 +218,12 @@ datetime >= '2016-06-18T20:00:00.000Z' AND datetime < '2016-06-18T21:00:00.000Z'
 
 ## Query using `BETWEEN` Subquery
 
-The `BETWEEN` operator allows specifying a subquery that must return a result set containing multiple rows with 1 column.
+The `BETWEEN` operator can include a subquery that returns a result set containing multiple rows with one column.
 
 * If the subquery returns no values, the condition evaluates to `false`, and no rows are returned.
-* If the subquery returns only one value, the timestamp of such value determines the lower boundary of the time interval and the upper boundary is not defined.
-* If there are 2 values, the second value must be greater or equal the first value.
-* If there are more than 2 values, then each pair of values is processed as a separate time interval.
+* If the subquery returns only one value, the timestamp of this value determines the lower boundary of the time interval and the upper boundary is not defined.
+* If there are two values, the second value must be greater than or equal to the first value.
+* If there are more than two values, each pair of values is processed as a separate time interval.
 
 > The intervals in the result set can be identified with the [`INTERVAL_NUMBER()`](../README.md#interval_number) function.
 
@@ -343,7 +343,7 @@ WHERE entity = 'nurswgvml007'
 ## Query to Interpolate Multiple Intervals
 
 Multiple intervals are treated separately for the purpose of interpolating and regularizing values.
-In particular, the values between such intervals are not interpolated and not regularized.
+The values between intervals are neither interpolated nor regularized.
 
 ```sql
 SELECT datetime, value
@@ -395,8 +395,8 @@ WHERE entity = 'nurswgvml007'
 
 ## Query by Calendar
 
-Use the `date_format` OR `extract` function to retrieve date parts from date for the purpose of filtering.
-The below query includes only weekdays (Monday till Friday) and daytime hours (from 08:00 till 17:59).
+Use the `date_format` **or** `extract` function to retrieve parts from a date for the purpose of filtering.
+The below query includes only weekdays (Monday through Friday) and daytime hours (08:00 to 17:59).
 
 ```sql
 SELECT datetime, date_format(time, 'eee') AS "day of week", avg(value), count(value)
@@ -465,7 +465,7 @@ GROUP BY PERIOD(1 hour)
 
 ## Query by Workday or Weekday
 
-Use `IS_WORKDAY` or `IS_WEEKDAY` function to filter holidays, weekdays, and workdays for a specific calendar.
+Use `IS_WORKDAY` **or** `IS_WEEKDAY` function to filter holidays, weekdays, and workdays for a specific calendar.
 
 The query below shows averages during observed holidays (non-working weekdays) in the USA.
 
