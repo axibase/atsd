@@ -216,8 +216,7 @@ Decimal numbers are rounded to five significant digits for readability.
 
 ### Portals
 
-To attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured. To attach default portal for the 
-metric, entity and tags to the outgoing message, enable **Series Chart**.
+To attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured. To attach default portal for the metric, entity and tags to the outgoing message, enable **Series Chart**.
 
 ![](./images/email-screenshot-enable.png)
 
