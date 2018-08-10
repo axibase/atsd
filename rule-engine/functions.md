@@ -2,25 +2,31 @@
 
 ## Overview
 
-Functions are predefined procedures that perform a task or calculate a value.
+Functions are predefined procedures that perform a task or calculate a value. Functions are called (invoked) by name with optional arguments passed in brackets and separated by comma. Function names are case-**sensitive**.
 
-Include functions by name in the `condition` and `filter` expressions as well as in placeholders.
+Functions definitions are replaced with the value returned by the function. For this reason, the function always returns a value.
+
+Functions can be referenced in the [filter expression](filters.md#filter-expression), user-defined [variables](variables.md), [condition](condition.md) statement and in placeholders.
+
+* Filter:
+
+```javascript
+lower(tags.location) = 'nur'
+```
+
+> Note that the [filter expression](filters.md#filter-expression) cannot include statistical functions and other functions that require access to the window object.
+
+* Condition:
 
 ```javascript
 avg() > 80
 ```
 
-```javascript
-lower(tags.location) == 'nur'
-```
+* Placeholders:
 
 ```bash
 ${lower(tags.location)}
 ```
-
-Function names are case-**sensitive**.
-
-Functions are invoked when the expression is evaluated and replaced with the value returned by the function.
 
 ## Arguments
 
