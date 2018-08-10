@@ -33,7 +33,7 @@ function spellcheck {
 
 function linkcheck {
     if [ "$ENABLE_CHECK" = "true" ]; then
-        if [ -f .linkcheck-config.json ]; then
+        if [ -f ".linkcheck-config.json" ]; then
             list_modified_md_files | xargs -d '\n' -n1 markdown-link-check -c .linkcheck-config.json
         else
             list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
