@@ -33,7 +33,7 @@ function spellcheck {
 
 function linkcheck {
     if [ "$ENABLE_CHECK" = "true" ]; then
-        list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
+        list_modified_md_files | xargs -d '\n' -n1 markdown-link-check -c .linkcheck-config.json
     else
         echo "Link checking will be skipped"
     fi

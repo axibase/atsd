@@ -1,0 +1,6 @@
+{
+    "ignorePatterns": [
+        {
+            "pattern": "https://kafka.apache.org/"
+        }
+    ]}
