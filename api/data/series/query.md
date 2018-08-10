@@ -193,7 +193,7 @@ The response contains an array of series objects, each containing series identif
 ### Value Object
 
 * The value object contains a sample time and a numeric (`v` field) or text (`x` field) value.
-* Sample time can be specified as Unix time with millisecond granularity (`t` field) or [ISO format](../../../shared/date-format.md#supported-formats) (`d` field).
+* Specify sample time in Unix time with millisecond granularity (`t` field) or [ISO format](../../../shared/date-format.md#supported-formats) (`d` field).
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|

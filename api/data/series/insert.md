@@ -36,7 +36,7 @@ The request contains an array of series objects, each consisting of an array of 
 #### Value Object
 
 * The value object must contain the sample time and a numeric or text value.
-* The sample time can be specified in Unix time (`t` field, milliseconds) or [ISO format](../../../shared/date-format.md#supported-formats) (`d` field, text).
+* Specify sample time in Unix time (`t` field, milliseconds) or [ISO format](../../../shared/date-format.md#supported-formats) (`d` field, text).
 * Minimum sample time supported by the database is **1970-01-01T00:00:00.000Z**, or `0` milliseconds in Unix time.
 * Maximum sample date supported by the database is **2106-02-07T06:59:59.999Z**, or `4294969199999` milliseconds in Unix time.
 

@@ -24,7 +24,7 @@ To use the function, enable [Alert History](logging.md#logging-to-database) logg
 `type` | string | Message type | `web`
 `source` | string | Message source | `access.log`
 `keys` | string | Command tags or property keys | `{"docker-host":"nurswghbs001"}`
-`timestamp` | long | Command time in Unix time with milliseconds granularity.<br>Default: `0` | `1533109937000`
+`timestamp` | long | Command time in Unix time with millisecond granularity.<br>Default: `0` | `1533109937000`
 `message` | string | Message text | `Application restarted`
 `value` | double | Command value.<br>Default: `NaN`. | `85.2`
 `open_value` | double | Open value.<br>Default: `NaN`. | `82.7`
