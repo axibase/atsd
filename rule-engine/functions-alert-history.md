@@ -8,9 +8,9 @@ last_open() object
 
 Retrieves the most recent [`AlertHistory`](logging.md#logging-to-database) record with `OPEN` or `REPEAT` status for the current window.
 
-If no records are matched, the function returns an `AlertHistory` object with default values such as `0` timestamp, `NaN` value, etc.
+If no records match, the function returns an `AlertHistory` object with default values such as `0` timestamp, `NaN` value, etc.
 
-To use the function, enable [Alert History](logging.md#logging-to-database) logging on the **Logging** tab. Check the **Log to Alert History** option and enable either `On Open` / `On Repeat` triggers.
+To use this function, enable [Alert History](logging.md#logging-to-database) logging on the **Logging** tab. Check the **Log to Alert History** option and enable either `On Open` / `On Repeat` triggers.
 
 ### `AlertHistory` Object
 
@@ -19,7 +19,7 @@ To use the function, enable [Alert History](logging.md#logging-to-database) logg
 `rule` | string | Rule name. | `CPU high alert`
 `metric` | string | Metric name. | `cpu.used.percent`
 `entity` | string | Entity name. | `nginx-proxy`
-`tags` | map | Command tags (command that caused the alert). | `{"docker-host":"nurswghbs001"}`
+`tags` | map | Command tags of the command that caused the alert. | `{"docker-host":"nurswghbs001"}`
 `tags.{tag-name}` | string | `{tag-name}` command tag value. | `last_open().tags.docker-host`: `nurswghbs001`
 `type` | string | Message type | `web`
 `source` | string | Message source | `access.log`
