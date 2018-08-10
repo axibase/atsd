@@ -51,7 +51,7 @@ A step-by-step explanation of the schema program is provided below:
 Select which parts of the file to iterate over.
 
 * `select("#row=2-*")`: Select each row starting with the second row until the last row.
-* `select("#col=4-*")`: Select each column in each row starting with the forth column until the last column.
+* `select("#col=4-*")`: Select each column in each row starting with the fourth column until the last column.
 
 The result of the previous two functions is a collection of cells that are processed sequentially. The `addSeries` function is invoked for each cell in the collection: cell `(2, 4)`, cell `(2, 5)`, etc.
 

@@ -4,31 +4,41 @@
 
 Entity Groups organize similar entities into logical collections that can be used when managing user permissions, filtering data, or calculating aggregations.
 
-![](./images/entity-groups.png)
+![](./images/entity-groups-title.png)
 
 ## Members
 
 An entity group can be compiled **manually** by enumerating the names of each entity to be included.
 
-It can be also created **programmatically** by specifying a boolean criteria against which all entities that exist in the database, or parent group entities, are evaluated. Those entities that match the criteria are added as members **automatically**. Such groups are continuously updated in the background.
+It can be also created **programmatically** by specifying a boolean criteria against which all entities that exist in the database, or parent group entities, are evaluated. Those entities which match the criteria are added as members. Such groups are continuously updated in the background.
 
 The parent group, if specified, restricts possible members to members of the parent group.
+
+Navigate to **Settings > Entity Groups** to configure a new or existing Entity Group.
+
+![](./images/settings-entity-groups.png)
 
 The Entity Group Editor provides the following options for adding or removing members:
 
 ### Text List
 
+![](./images/text-list.png)
+
 Copy a list of entity names, one per line, into the text area. Names are **case-insensitive**.
 
-If **Create Entities** is selected, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found are ignored.
+If **Create Entities** is enabled, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found are ignored.
 
 ### Dual list
+
+![](./images/dual-list.png)
 
 Select one or multiple existing entities in the right pane and click **Add** to add members.
 
 Select current members in the left pane and click **Remove** to delete members from the group.
 
 ### Expression
+
+![](./images/expression.png)
 
 Specify a boolean expression to add and remove entities automatically. Expression-based groups are updated by the server at a fixed interval specified by the `entity.group.update.interval` setting.
 
@@ -131,3 +141,15 @@ name LIKE '*vml*' && tags.location = 'NUR'
   memberOf('all-linux-servers')
     && tags.location = 'SVL'
   ```
+
+### Entity Views
+
+[Entity Views](./entity_views.md) are customized tabular formats for displaying key attributes for entities of the same type. Entity Views are inherited from the parent Entity Group if one is defined. Assign a new Entity View to the current Entity Group using the dual list under the **Entity Views** pane.
+
+![](./images/entity-view-add.png)
+
+Once an Entity Group belongs to an Entity View, it is available directly from the main menu under the **Entity Views** tab.
+
+![](./images/entity-views-menu.png)
+
+> For more information about configuring Entity Views, see [Entity View Documentation](./entity_views.md#settings)
