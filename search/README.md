@@ -2,37 +2,23 @@
 
 ## Overview
 
-![](./images/search.png)
+The search interface finds series by matching keywords against series fields.
 
-The search interface finds series by matching search keywords against series fields.
-
-## Available Series Fields
-
-* Entity name
-* Entity label
-* Metric name
-* Metric label
-* Series tag names
-* Series tag values
-* Entity tag names
-* Entity tag values
-* Metric tag names
-* Metric tag values
-* Last Insert Date
+![](./images/series-search1.png)
 
 ## Syntax
 
-A search query consists of terms and boolean operators. There are two types of terms: keywords and phrases.
+Queries consists of search terms and boolean operators. There are two types of search terms: keywords and phrases.
 
-A keyword term is a single word such as `location` or `nur`.
+A **keyword** term is a single word such as `location` or `nur`.
 
-A phrase is a group of words surrounded by double quotes such as `"location nur"`.
+A **phrase** is a group of words surrounded by double quotes such as `"location nur"`.
 
 Multiple terms can be combined together using boolean operators to form a more complex query.
 
 A keyword can be prefixed with a field name to narrow the scope of the search to a particular series property, for example `entity:nurswgvml007`.
 
-If the field is not specified, the search is performed for all fields.
+If no field is specified, the search queries all fields.
 
 ### Fields
 
@@ -48,7 +34,7 @@ If the field is not specified, the search is performed for all fields.
 
 ### Operators
 
-To combine multiple terms, use boolean operators `AND`, `OR`, and `NOT`. Operators must be specified with upper case letters.
+To combine multiple terms, use boolean operators `AND`, `OR`, and `NOT`. Operators must be specified with uppercase letters.
 
 ```ls
 entity:nurswgvml007* AND mount_point:\/opt
@@ -91,7 +77,7 @@ h?llo
 
 The following characters are reserved: `+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`.
 
-To escape the reserved characters use double-quotes or a backslash:
+To escape reserved characters use double quotes or a backslash:
 
 ```ls
 mount_point:"/opt"
@@ -103,7 +89,7 @@ mount_point:\/opt
 
 ### Case Sensitivity
 
-Search is case-insensitive.
+Search is **case-insensitive**.
 
 ## Synonyms
 
@@ -157,11 +143,11 @@ date:2017-06-*
 
 ### Scheduling
 
-The search index is continuously refreshed on schedule and as such not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
+The search index is continuously refreshed on schedule and as such does not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
 
-The interval between the incremental refreshes can be controlled with the `search.indexing.incremental.interval` setting. Each refresh operation takes up to 10 seconds.
+The interval between the incremental refreshes can be controlled with the `search.indexing.incremental.interval` setting. Each refresh operation takes up to ten seconds.
 
-The frequency of rebuild tasks can be controlled with the `search.indexing.full.schedule` setting. The full rebuild takes up to 10 minutes.
+The frequency of rebuild tasks can be controlled with the `search.indexing.full.schedule` setting. The full rebuild takes up to ten minutes.
 
 Administrators can refresh the index manually on the **Settings > Diagnostics > Search Index** page.
 
