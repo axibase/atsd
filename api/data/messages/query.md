@@ -28,13 +28,13 @@ An array of query objects containing the following filtering fields:
 |`severity`     |  string   | Severity [name](../../../api/data/severity.md).  <br>Matches records with the specified severity.|
 |`severities`   |  array   | An array of severity [codes or names](../../../api/data/severity.md).  <br>Matches records with one of the specified severities.<br>Array elements can be specified as a string or as a number.|
 |`minSeverity`  |  string   | Minimum [code or name](../../../api/data/severity.md) severity filter. <br>Can be specified as a string or as a number. |
-|`expression` | string | Include messages that match a filter [expression](../../../api/meta/expression.md) consisting of `tags`, `message` and `severity` fields and operators. Example: `message LIKE 'Starting*'`.<br>Supported wildcards: `*` and `?`.|
+|`expression` | string | Include messages that match a filter [expression](../../../api/meta/expression.md).<br>The expression can include fields: `type`, `source`, `tags`, `tags.{name}`, `message`,`severity`.<br>Example: `message LIKE 'Starting*'`.<br>Supported wildcards: `*` and `?`.|
 
-* `severity`, `minSeverity`, and `severities` values are case-**insensitive**.
+* `severity`, `minSeverity`, and `severities` fields are case-**insensitive**.
 
 #### Expression
 
-The expression can include `tags`, `message` and `severity` fields.
+The expression can include `type`, `source`, `tags`, `tags.{name}`, `message`, and `severity` fields.
 
 String literals must be enclosed in single or double quotes.
 
@@ -76,9 +76,9 @@ An array of matching message objects containing the following fields:
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-|`entity` | string | Entity name. |
 |`type` | string | Message type. |
 |`source` | string | Message source. |
+|`entity` | string | Entity name. |
 |`severity` | string | Message [severity](../../../api/data/severity.md) name. |
 |`tags` | object |  Object containing `name=value` fields, for example `tags: {"path": "/", "name": "sda"}`. |
 |`message` | string | Message text. |
