@@ -83,7 +83,7 @@ entity != 'nurswgvml007'
 ```
 
 ```javascript
-entity.displayName NOT LIKE '*test*' 
+entity.displayName NOT LIKE '*test*'
   && entity.tags.location = 'SVL'
 ```
 
