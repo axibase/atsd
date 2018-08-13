@@ -13,7 +13,7 @@
 ## Disk Space
 
 * Application files: `5` GB.
-* Data Files: `10` GB **minimum**. This total depends on the amount of collected data, [compression](compaction/README.md), [retention](data_retention.md), and replication settings.
+* Data Files: `10` GB **minimum**. This total depends on the amount of collected data, [compression](../administration/compaction/README.md), [retention](../administration/data_retention.md), and replication settings.
 
 ## Processor Architecture
 
