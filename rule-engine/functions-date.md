@@ -49,7 +49,7 @@ now.day_of_week == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
-// returns true if difference between current time (long, Unix milliseconds) and create_ms (long, Unix milliseconds) exceeds 15 minutes
+// returns true if difference between current Unix time (long, milliseconds) and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
 (now.millis - create_ms) > 15*60000
 
 // returns the same result as above using the elapsedTime function
@@ -105,7 +105,7 @@ Returns the length of a count-based window.
 windowStartTime() long
 ```
 
-Returns time when the first command is received by the window, in Unix milliseconds.
+Returns time when the first command is received by the window, in Unix time with millisecond granularity.
 
 ### `milliseconds`
 
@@ -113,13 +113,13 @@ Returns time when the first command is received by the window, in Unix milliseco
 milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the date string `d` into Unix milliseconds according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the date string `d` into Unix time with millisecond granularity according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
 Returns `0` if date `d` is `null` or empty.
 
 Available time zones and offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
+The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
 > Function raises an error if the time zone or offset from UTC is specified in the date string `d` and differs from the time zone or offset `z`.
 
@@ -149,7 +149,7 @@ elapsedTime(long t) long
 elapsedTime(string d) long
 ```
 
-Calculates the number of **milliseconds** between the current time and time `t` specified in Unix milliseconds or date `d` specified in the following format:
+Calculates the number of **milliseconds** between the current time and time `t` specified in milliseconds (Unix time) or date `d` specified in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
@@ -198,7 +198,7 @@ date_parse(string d [,string p [,string z]]) DateTime
 
 Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` or offset from UTC.
 
-The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
+The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
 > The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`.
 

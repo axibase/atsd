@@ -16,7 +16,7 @@
 5501 | rule editor | Bug | Rule Editor: Controls disappear when creating multiple [webhooks](../../rule-engine/notifications/README.md).|
 5500 | rule editor | Bug | Rule Editor: **Change Date** [filter](../../rule-engine/README.md#filtering) is remembered and cannot be modified.|
 5498 | client | Bug | [Python Client](https://github.com/axibase/atsd-api-python/blob/master/README.md): fix client due to `200 OK` to `204 No Response` status code changes in the Data API.|
-5489 | rule engine | Feature | Rule Engine: Implement [`elapsed_minutes`](../../rule-engine/functions-date.md#elapsed_minutes) function for ISO datetime literal.|
+5489 | rule engine | Feature | Rule Engine: Implement [`elapsed_minutes`](../../rule-engine/functions-date.md#elapsed_minutes) function for [ISO format](../../shared/date-format.md) datetime literal.|
 5487 | rule engine | Bug | [Alert History](../../rule-engine/logging.md#logging-to-database) must include grouping tags to avoid collisions.|
 5485 | api-rest | Bug | Return `204 No Response` instead of `200 OK` in [REST API](../../api/data/README.md) endpoints if `POST` response contains empty payload.|
 5481 | export | Bug | Export: [Versioned](../../versioning/README.md) values are not displayed.|
@@ -31,7 +31,7 @@
 5467 | administration | Feature | Implement the ability to download HBase/HDFS [Log Files](../../administration/logging.md) on single-node installations.|
 5465 | client | Feature | [Python Client](https://github.com/axibase/atsd-api-python): Change `Message` model to simplify conversion to `DataFrame`|
 5464 | jdbc | Bug | [JDBC Driver](https://github.com/axibase/atsd-jdbc): Remove `metric.timePrecision` field from default columns.|
-5460 | UI | Bug | UI: Client-side [datetime formatting](../../api/data/date-format.md) fails when data are loaded with **Default** pattern.|
+5460 | UI | Bug | UI: Client-side [datetime formatting](../../shared/date-format.md) fails when data are loaded with **Default** pattern.|
 5459 | api-rest | Feature | Meta API: Implement metric [`rename`](../../api/meta/metric/rename.md) endpoint.|
 5458 | api-rest | Bug | Data API: [Series: `query`](../../api/data/series/query.md) error when requesting a small date interval close to current time.|
 5457 | sql | Bug | [SQL](../../sql/README.md): `datetime` column returns milliseconds (long) in `CASE` expression.|

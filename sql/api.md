@@ -41,7 +41,7 @@ Use this query for validation in connection pool implementations such as [Apache
 | `limit` | integer | Maximum number of rows to return.<br>Default: `0`.<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
 | `discardOutput` | boolean | If set to `true`, discards the produced content without sending it to the client. |
 | `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe parsing on the client. |
-| `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix milliseconds since `1970-01-01T00:00:00Z`, similar to the `time` column. |
+| `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix time in milliseconds, similar to the `time` column. |
 
 > As an alternative, submit the query as a text payload with the `Content-Type` header set to `text/plain` and other parameters included in the query string.
 

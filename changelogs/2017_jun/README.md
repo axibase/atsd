@@ -27,7 +27,7 @@
 | [4144](#issue-4144) | rule engine | Feature | Add a page displaying all active email subscribers in the Rule Engine.|
 | 4107 | UI | Bug | Layout of several forms refactored to adhere to the latest guidelines. |
 | 3900 | UI | Bug | Fixed an issue with message counter chart failing to render on timespan change. |
-| 4233 | sql | Bug | [`CONCAT`](../../sql/README.md#string-functions) function fails when one of the arguments is an ISO 8601 date. |
+| 4233 | sql | Bug | [`CONCAT`](../../sql/README.md#string-functions) function fails when one of the arguments is an [ISO format](../../shared/date-format.md) date. |
 | 4225 | sql | Feature | Allow [`datetime`](../../sql/README.md#predefined-columns) column without table qualifier in JOIN queries. |
 | 4221 | sql | Bug | `ISNULL(t1.datetime, t2.datetime)` function returns time in milliseconds for string data types. |
 | 4217 | sql | Bug | Incorrect `INNER`-mode interpolation with multiple interval conditions. |

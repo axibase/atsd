@@ -63,24 +63,23 @@ Notes:
 
 **Name**|**Time Zone**|**Description**
 :---|---|:---
-`alert_open_time` | Server | Time when the window changed status to `OPEN`.
-`alert_open_datetime` | UTC | Time when the window changed status to `OPEN`.
-`received_time` | Server | Time when the current command is received by the server.
-`received_datetime` | UTC | Time when the current command is received by the server.
-`event_time` | Server | Time of the current command.
-`event_datetime` | UTC | Time of the current command.
-`window_first_time` | Server | Time of the earliest command in the window.
-`window_first_datetime` | UTC | Time of the earliest command in the window.
-`timestamp` | n/a | Time of the command that caused the window status event, in Unix milliseconds..
-`now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.<br>[`now`](object-datetime.md) properties can be accessed with dot notation syntax, for example `now.day_of_week = 'Thursday'`.
-`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
-`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
+`alert_open_time` | Server | Time when the window changed status to `OPEN`
+`alert_open_datetime` | UTC | Time when the window changed status to `OPEN`
+`received_time` | Server | Time when the current command is received by the server
+`received_datetime` | UTC | Time when the current command is received by the server
+`event_time` | Server | Time of the current command
+`event_datetime` | UTC | Time of the current command
+`window_first_time` | Server | Time of the earliest command in the window
+`window_first_datetime` | UTC | Time of the earliest command in the window
+`timestamp` | n/a | Time of the command that caused the window status event, in Unix time (milliseconds).
+`now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.
+`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.
+`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`.
 
-Notes:
-
-* Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
-* Fields ending with `_datetime` contain time in ISO format in UTC time zone, for example `2017-05-30T06:05:39Z`.
-* If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
+> Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
+> Fields ending with `_datetime` contain time in [ISO format](../shared/date-format.md) UTC time zone, for example `2017-05-30T06:05:39Z`.
+> If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
+> The `now` object fields can be accessed with dot notation syntax, for example `now.day_of_week == 'Thursday'`.
 
 ## Details Tables
 

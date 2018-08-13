@@ -56,8 +56,8 @@ An array of objects containing fields for filtering records for deletion.
 |:---|:---|:---|
 | `type` | string | **[Required]** Property type name. <br>This method does not support the removal of reserved `$entity_tags`.|
 | `entity` | string | **[Required]** Entity name. <br>Set entity to wildcard `*` to delete records for all entities.|
-| `startDate` | string | **[Required]** ISO 8601 date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
-| `endDate` | string | **[Required]** ISO 8601 date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
+| `startDate` | string | **[Required]** [ISO formatted](../../../shared/date-format.md#supported-formats) date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
+| `endDate` | string | **[Required]** [ISO formatted](../../../shared/date-format.md#supported-formats) date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
 | `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with **exact** or **partial** key fields based on the `exactMatch` parameter.|
 | `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `exactMatch` is `false`, all records which **contain** fields in the request `key` are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
 

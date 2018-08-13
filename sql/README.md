@@ -265,8 +265,8 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`tags.{name}`    |string   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
 |`tags`           |string   | All series tags, concatenated to `name1=value;name2=value` format.|
 |`tags.*`         |string   | Expands to multiple columns, each column containing a separate series tag.|
-|`datetime`       |timestamp | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period **start** time in ISO format, same as `date_format(PERIOD(...))`.|
-|`time`           |long     | Sample time in Unix milliseconds since 1970-01-01T00:00:00Z, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
+|`datetime`       |timestamp | Sample time in [ISO format](../shared/date-format.md), for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period **start** time in [ISO format](../shared/date-format.md), same as `date_format(PERIOD(...))`.|
+|`time`           |long     | Sample Unix time in milliseconds, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
 
 #### Metric Columns
 
@@ -284,7 +284,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
-|`metric.lastInsertTime`|string | Last time a value is received for this metric by any series. ISO date.|
+|`metric.lastInsertTime`|string | Last time a value is received for this metric by any series. [ISO format](../shared/date-format.md) date.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
 |`metric.versioning`|boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
@@ -589,7 +589,7 @@ ORDER BY datetime
 
 ### Group By Columns
 
-In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (the period start time) in ISO format. In this case, `date_format(PERIOD(5 MINUTE))` can be replaced with `datetime` in the `SELECT` expression.
+In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (the period start time) in [ISO format](../shared/date-format.md). In this case, `date_format(PERIOD(5 MINUTE))` can be replaced with `datetime` in the `SELECT` expression.
 
 ```sql
 SELECT entity, datetime, date_format(PERIOD(5 MINUTE)), AVG(value)
@@ -1039,7 +1039,7 @@ Literal date values specified using short formats are expanded to the complete d
 * `'2017-05'    == '2017-05-01 00:00:00'`
 * `'2017'       == '2017-01-01 00:00:00'`
 
-The `time` column accepts Unix milliseconds:
+The `time` column accepts Unix time in milliseconds:
 
 ```sql
 SELECT time, entity, value
@@ -1107,7 +1107,7 @@ AND datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY, '
 
 ### Local Time Boundaries
 
-To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix milliseconds.
+To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix time with millisecond granularity.
 
 ```sql
 SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') AS local_datetime, value
@@ -2356,11 +2356,11 @@ The `LAST` function returns the value of the last sample (or the value of expres
 
 #### MIN_VALUE_TIME
 
-The `MIN_VALUE_TIME` function returns the Unix milliseconds (LONG datatype) of the first occurrence of the **minimum** value.
+The `MIN_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **minimum** value.
 
 #### MAX_VALUE_TIME
 
-The `MAX_VALUE_TIME` function returns the Unix milliseconds (LONG datatype) of the first occurrence of the **maximum** value.
+The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **maximum** value.
 
 #### CORREL
 
@@ -2401,7 +2401,7 @@ The `date_format` function formats Unix millisecond time to a string in user-def
 date_format(long milliseconds[, string time_format[, string time_zone]])
 ```
 
-If the `time_format` argument is not provided, ISO 8601 format is applied.
+If the `time_format` argument is not provided, [ISO format](../shared/date-format.md) is applied.
 
 The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
 
@@ -2421,7 +2421,7 @@ Examples:
 ```sql
 SELECT entity, datetime, metric.timeZone AS "Metric TZ", entity.timeZone AS "Entity TZ",
   date_format(time) AS "default",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS "ISO 8601",
+  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS "ISO Format",
   date_format(time, 'yyyy-MM-dd HH:mm:ss') AS "Local Database",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PDT') AS "PDT",
@@ -2434,7 +2434,7 @@ FROM "mpstat.cpu_busy"
 ```
 
 ```ls
-| entity       | datetime                 | Metric TZ  | Entity TZ   | default                  | ISO 8601             | Local Database        | GMT Offset          | PDT                 | PDT t/z                   | AUTO: CST                 |
+| entity       | datetime                 | Metric TZ  | Entity TZ   | default                  | ISO Format             | Local Database        | GMT Offset          | PDT                 | PDT t/z                   | AUTO: CST                 |
 |--------------|--------------------------|------------|-------------|--------------------------|----------------------|-----------------------|---------------------|---------------------|---------------------------|---------------------------|
 | nurswgvml006 | 2017-04-06T11:03:19.000Z | US/Eastern | US/Mountain | 2017-04-06T11:03:19.000Z | 2017-04-06T11:03:19Z | 2017-04-06 11:03:19   | 2017-04-06 03:03:19 | 2017-04-06 04:03:19 | 2017-04-06 04:03:19-07:00 | 2017-04-06 05:03:19-06:00 |
 ```
@@ -2520,20 +2520,20 @@ GROUP BY PERIOD(1 hour)
 
 #### DATE_PARSE
 
-The `date_parse` function parses the date and time string into Unix milliseconds.
+The `date_parse` function parses the date and time string into Unix time with millisecond granularity.
 
 ```java
 date_parse(string datetime[, string time_format[, string time_zone]])
 ```
 
-* The default `time_format` is ISO 8601: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters [here](../shared/time-pattern.md).
+* The default `time_format` is [ISO format](../shared/date-format.md): `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../shared/time-pattern.md).
 * The default `time_zone` is the database time zone.
 
 ```sql
-/* Parse date using the default ISO 8601 format.*/
+/* Parse date using the default ISO format.*/
 date_parse('2017-03-31T12:36:03.283Z')
 
-/* Parse date using the ISO 8601 format, without milliseconds */
+/* Parse date using the ISO format, without milliseconds */
 date_parse('2017-03-31T12:36:03Z', 'yyyy-MM-dd''T''HH:mm:ssZZ')
 
 /* Parse date using the database time zone. */
@@ -2710,7 +2710,7 @@ YEAR (datetime | time | datetime expression [, timezone])
 
 #### CURRENT_TIMESTAMP
 
-The `CURRENT_TIMESTAMP` function returns current database time in ISO 8601 format. The function is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
+The `CURRENT_TIMESTAMP` function returns current database time in [ISO format](../shared/date-format.md). The function is analogous to the `NOW` functions which returns current database time (Unix time, millisecond granularity).
 
 ```sql
 SELECT CURRENT_TIMESTAMP

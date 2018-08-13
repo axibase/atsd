@@ -33,7 +33,7 @@
 5220 | security       | Feature     | Enforce [SSL certificate](../../administration/ssl-ca-signed.md#installing-ca-signed-certificate) upload restrictions.
 5194 | forecast       | Bug     | Fix issues with [forecast](../../forecasting/README.md#data-forecasting) settings form.
 5189 | log_aggregator | Bug     | Discard duplicate fields in [Log Aggregator](../../administration/logging.md#logging).
-5150 | sql            | Feature | Implement short ISO formats for `datetime` [literal](../../sql/README.md#interval-condition).
+5150 | sql            | Feature | Implement short [ISO format](../../shared/date-format.md) for `datetime` [literal](../../sql/README.md#interval-condition).
 4150 | api-rest       | Feature | Implement series [delete](../../api/data/series/delete.md#series-delete) endpoint.
 4668 | collectd       | Feature | Refactor [collectd](../../integration/collectd/README.md#collectd) plugin.
 
