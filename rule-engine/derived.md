@@ -2,7 +2,7 @@
 
 ## Overview
 
-Derived command actions store new calculated metrics in the database by creating and processing custom commands defined with [Network API](../api/network/README.md#network-api) syntax.
+Derived command actions store new calculated metrics in the database by creating and processing custom commands defined by [Network API](../api/network/README.md#network-api) syntax.
 
 ## Command Template
 
@@ -36,7 +36,7 @@ series e:${entity} m:${metric}_percent=${value / value('total') * 100.0} ms:${ti
 
 ### Tags
 
-A special placeholder `${commandTags}` is provided to print out all command tags in the [Network API](../api/network/series.md#syntax) syntax. Use it to append all tags to the command without knowing the tag names in advance.
+A special placeholder `${commandTags}` is provided to print out all command tags in the [Network API](../api/network/series.md#syntax) syntax. Use it to append all tags to the command without knowing tag names in advance.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
@@ -44,9 +44,13 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 
 The above expression transforms the input command into a derived command as follows:
 
+**Input**:
+
 ```ls
 series e:test m:disk_used=25 t:mount_point=/ t:file_system=sda ms:1532320900000
 ```
+
+**Derived**:
 
 ```ls
 series e:test m:disk_free=75 t:mount_point=/ t:file_system=sda ms:1532320900000
@@ -64,7 +68,7 @@ In addition to including specific command tags by name, use the  `${commandTags}
 
 #### Current Server Time
 
-To store derived commands with the current server time, omit date fields (`ms`, `s`, `d`) from the derived command.
+To store derived commands with current server time, omit date fields (`ms`, `s`, `d`) from the derived command.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
@@ -76,7 +80,7 @@ Alternatively, use the [`now`](window-fields.md#date-fields) placeholder to acce
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.millis}
 ```
 
-To store commands with seconds precision, round the current time using the [`floor`](functions.md#mathematical) function and the `s:` seconds parameter:
+To store commands with second precision, round the current time using [`floor`](functions.md#mathematical) function and `s:` seconds parameter:
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.millis/1000)}
@@ -84,15 +88,15 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.milli
 
 #### Received Time
 
-To store a derived command with the same time as an incoming command, set the `ms:` millisecond parameter to [`${timestamp}`](window-fields.md#date-fields). This placeholder represents the timestamp of the command that caused the window status event.
+To store a derived command with the same time as an incoming command, set `ms:` millisecond parameter to [`${timestamp}`](window-fields.md#date-fields). This placeholder represents the timestamp of the command that triggered the window status event.
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
-> If the **Check on Exit** option is enabled for time-based window, some events are caused by exiting commands and the `timestamp` field returns the time of the oldest command, rounded to seconds.
+> If **Check on Exit** is turned on, some status change events are caused by oldest commands being removed from the window. In such cases the `timestamp` field contains the time of the existing command, rounded to seconds.
 
-To round the input time to seconds, use the  `s:` seconds parameter and [`floor`](functions.md#mathematical) function:
+To round the input time to seconds, use `s:` seconds parameter and [`floor`](functions.md#mathematical) function:
 
 ```bash
 series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp/1000)}
@@ -102,7 +106,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(timestamp
 
 Store derived commands each time a command is received or removed from the window by setting the **Repeat** parameter to **All**.
 
-The frequency can be lowered by adjusting the repeat interval.
+Decrease frequency by adjusting the repeat interval.
 
 ![](./images/derived_repeat.png)
 
@@ -110,7 +114,7 @@ Produced commands are queued in memory and persisted to the database once per se
 
 ## Multiple Commands
 
-Multiple commands, including commands of different types, can be specified at the same time. Each command must be specified on a separate line.
+Specify multiple commands, including those of different types, at the same time. Each command must be specified on a separate line.
 
 ```bash
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
@@ -131,7 +135,7 @@ series e:entity1 m:a=10 m:b=20 m:c=30
 
 ## Condition
 
-If the purpose of a rule is to create derived series, without alerting, set the `Condition` field to a static `true` value to minimize processing overhead.
+If the purpose of a rule is to create derived series, without any alerting, set the `Condition` field to a static `true` value to minimize processing overhead.
 
 ![](./images/derived-condition.png)
 

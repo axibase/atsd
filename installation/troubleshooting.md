@@ -2,11 +2,11 @@
 
 ## Requirements
 
-Verify that the target server meets hardware and OS [requirements](../administration/requirements.md).
+Verify that the target server meets hardware and OS [requirements](./requirements.md).
 
 ## Connection
 
-ATSD is listening on the following ports by default:
+ATSD listens on the following ports by default:
 
 * `1099/tcp`: JMX
 * `8081/tcp`: Network API (TCP)
@@ -53,6 +53,6 @@ Review the following log files for errors:
 
 ## 32-bit Error
 
-`Package Not Found` error is displayed when attempting an installation of ATSD deb package on a 32-bit architecture.
+`Package Not Found` error is displayed when attempting an installation of ATSD deb package on 32-bit architecture.
 
-Retry installation on a supported [architecture](../administration/requirements.md).
+Retry installation on a supported [architecture](./requirements.md).

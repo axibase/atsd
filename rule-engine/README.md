@@ -267,10 +267,10 @@ Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrie
 
 ### Rule Windows
 
- Rule windows are initialized in memory and are displayed on the **Alerts > Rule Errors** page. If no windows are present for the given rule, check that the rule is enabled and that data is not discarded by one of the [filters](filters.md).
+ Rule windows are initialized in memory and are displayed on the **Alerts > Rule Windows** page. If no windows are present for the given rule, check that the rule is enabled and that data is not discarded by one of the [filters](filters.md).
 
 ![](./images/alert-rule-windows.png)
 
 ### Rule Errors
 
-Rule Errors can occur in case of invalid or malformed expressions. The **Alerts > Rule Errors** page contains the list of most recent errors as well as the relevant context and the command details.
+Rule Errors can occur in case of invalid or malformed expressions. The **Alerts > Rule Errors** page contains the list of most recent errors as well as the relevant context and the command details. The errors are also logged as messages by entity `atsd` with type `rule-error` and source `rule-engine`.

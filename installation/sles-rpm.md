@@ -2,12 +2,12 @@
 
 ## Supported Versions
 
-* SUSE Linux Enterprise Server 12.x
+* SUSE Linux Enterprise Server `12.x`
 
 ## Requirements
 
-* Minimum RAM: 4 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `4` GB
+* See [Requirements](./requirements.md) for additional information.
 
 ## Connection
 

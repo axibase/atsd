@@ -40,7 +40,25 @@ Specify one or more entity names or patterns to restrict a rule to specific enti
 
 ![](./images/filter-entity.png)
 
-For more flexible entity filtering, such as using negation or entity tag comparison, use the main [Expression](#filter-expression) filter.
+For more flexible filtering, use the main [Expression](#filter-expression) filter described below, for example:
+
+* Exclude entities using negation:
+
+  ```javascript
+  entity != 'abc'
+  ```
+
+* Include entities based on entity label:
+
+  ```javascript
+  entity.displayName NOT LIKE '*test*'
+  ```
+
+* Include entities based on entity tags:
+
+  ```javascript
+  entity.tags.location IN ('SVL', 'NUR')
+  ```
 
 ## Entity Group Filter
 
@@ -65,7 +83,8 @@ entity != 'nurswgvml007'
 ```
 
 ```javascript
-entity LIKE 'nurswgvml*' and entity.tags.location = 'SVL'
+entity.displayName NOT LIKE '*test*'
+  && entity.tags.location = 'SVL'
 ```
 
 Tag values can be accessed using dot notation `tags.{tag-name}` or square brackets `tags['tag-name']`.

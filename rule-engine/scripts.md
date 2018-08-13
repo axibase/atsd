@@ -10,7 +10,7 @@ Script actions execute pre-defined scripts on the ATSD server to complete advanc
 
 To configure a script action, create a script file in the `/opt/atsd/atsd/conf/script` directory. Grant script `execute` permission (`u+x`) to the `axibase` user.
 
-The list of executable files is displayed in the **Script File** drop-down list on the **Scripts** tab.
+The list of files in the `./conf/script` directory is displayed in the **Script File** drop-down list on the **Scripts** tab.
 
 ![](./images/command-drop-down.png)
 
@@ -26,11 +26,13 @@ The working directory is `/opt/atsd/atsd/conf/script`.
 
 Specify optional arguments passed to the script, **one argument per line**.
 
-Arguments can include [window fields](window.md#window-fields) and calculated values using [placeholder](placeholders.md) syntax, for example `${tags.location}`, `${upper(entity)}`, or `${avg()/100}`. If the placeholder is not found, the placeholder is replaced with an empty string.
+Arguments can include [placeholders](placeholders.md) containing [window fields](window.md#window-fields) and calculated values, for example `${tags.location}`, `${upper(entity)}`, or `${avg()/100}`. If the placeholder is not found, the placeholder is replaced with an empty string.
 
 ![](./images/command-arguments.png)
 
-Arguments containing space or quote characters are automatically quoted. The below example contains two arguments, one of which contains space characters, and is equivalent to executing `./test.sh john.doe "hello world"`.
+Arguments containing space or quote characters are automatically quoted.
+
+The below example displays two arguments, one of which contains space characters. The configuration is executed as `./test.sh john.doe "hello world"`.
 
 ![](./images/command-script-quote.png)
 
@@ -164,7 +166,7 @@ Only **one** script can be executed for each trigger. If you need to execute mul
 
 The script must complete within the specified timeout. The default timeout is set with the `system.commands.timeout.seconds` property on the **Settings > Server Properties** page. The limit is **15 seconds** by default.
 
-To customize the timeout for scripts invoked by this rule, adjust the **Timeout, seconds** drop-down list on the **Scripts** tab. The limit applies both to named scripts as well as to scripts launched with the [`scriptOut`](functions-script.md) function.
+To customize the timeout for scripts invoked by this rule, adjust the **Timeout, seconds** drop-down list on the **Scripts** tab. The limit applies to all scripts launched by the rule: the named scripts and scripts executed with the [`scriptOut`](functions-script.md) function.
 
 ![](./images/script-timeout.png)
 
@@ -176,7 +178,7 @@ Script terminated on timeout: {current timeout value}
 
 ### Security
 
-Only scripts in the `/opt/atsd/atsd/conf/script` are executable. Script text can be modified by editing the file on the file system. Modifying scripts from within the ATSD web interface is not supported.
+Only scripts in the `/opt/atsd/atsd/conf/script` are executable. Script text can be modified **only by editing the file on the file system**. Modifying scripts from within the database web interface is not supported.
 
 Scripts are executed under the `axibase` user context.
 
