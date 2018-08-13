@@ -1,0 +1,24 @@
+{
+    "ignorePatterns": [
+        {
+            "pattern": "https://kafka.apache.org/"
+        },
+        {
+            "pattern": "https://himawari8.nict.go.jp/"
+        },
+        {
+            "pattern": "https://catalog.data.gov/dataset/employment-figures-f55ae"
+        },
+        {
+            "pattern": "https://catalog.data.gov/dataset/per-capita-electricity-consumption-7b888"
+        },
+        {
+            "pattern": "https://catalog.data.gov/dataset/mva-vehicle-sales-counts-by-month-for-cy-2002-2015"
+        },
+        {
+            "pattern": "https://www.maersk.com/en/hardware/triple-e"
+        },
+        {
+            "pattern": "https://aqicn.org/map/china/"
+        }
+    ]}

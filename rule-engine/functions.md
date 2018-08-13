@@ -2,25 +2,36 @@
 
 ## Overview
 
-Functions are predefined procedures that perform a task or calculate a value.
-
-Include functions by name in the `condition` and `filter` expressions as well as in placeholders.
+Functions are predefined procedures that calculate a value or perform a task. Functions are called by name with arguments passed in brackets and separated by comma. Function names are case-**sensitive**.
 
 ```javascript
-avg() > 80
+/* Returns true if the create_ms date is a working day. */
+to_datetime(create_ms, 'US/Pacific').is_workday()
 ```
 
-```javascript
-lower(tags.location) == 'nur'
-```
+When invoked in expressions and placeholders, function definitions are replaced with the value returned by the function.
 
-```bash
-${lower(tags.location)}
-```
+Functions can be referenced in the [filter expression](filters.md#filter-expression), user-defined [variables](variables.md), [condition](condition.md) statement and in placeholders.
 
-Function names are case-**sensitive**.
+* Filter Expression:
 
-Functions are invoked when the expression is evaluated and replaced with the value returned by the function.
+    ```javascript
+    lower(tags.location) = 'nur'
+    ```
+
+    > [Filter expression](filters.md#filter-expression) cannot include [statistical functions](functions-statistical.md) which require access to the window object.
+
+* Condition:
+
+    ```javascript
+    avg() > 80
+    ```
+
+* Placeholder:
+
+    ```bash
+    ${lookup('assets', entity)}
+    ```
 
 ## Arguments
 

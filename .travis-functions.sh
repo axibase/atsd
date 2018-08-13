@@ -8,7 +8,7 @@ function list_modified_md_files {
 }
 
 function spellcheck {
-    if [ "$ENABLE_CHECK" = "true" ]; then
+    if [[ "$ENABLE_CHECK" = "true" && -n "$(list_modified_md_files)" ]]; then
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
             yaspeller --max-requests 10 --dictionary .yaspeller-dictionary.json -e ".md" ./
             yaspeller_exit_code=$?
@@ -32,15 +32,19 @@ function spellcheck {
 }
 
 function linkcheck {
-    if [ "$ENABLE_CHECK" = "true" ]; then
-        list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
+    if [[ "$ENABLE_CHECK" = "true" && -n "$(list_modified_md_files)" ]]; then
+        if [ -f ".linkcheck-config.json" ]; then
+            list_modified_md_files | xargs -d '\n' -n1 markdown-link-check -c .linkcheck-config.json
+        else
+            list_modified_md_files | xargs -d '\n' -n1 markdown-link-check
+        fi
     else
         echo "Link checking will be skipped"
     fi
 }
 
 function stylecheck {
-    if [ "$ENABLE_CHECK" = "true" ]; then
+    if [[ "$ENABLE_CHECK" = "true" && -n "$(list_modified_md_files)" ]]; then
         git clone https://github.com/axibase/docs-util --depth=1
         exit_code=0
         if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
@@ -61,15 +65,9 @@ function stylecheck {
 
 function validate_anchors() {
     if [ "$ENABLE_CHECK" = "true" ]; then
-        if [ -z $TRAVIS_PULL_REQUEST_BRANCH ]; then
-            remark -f -q --no-stdout -u validate-links .
-        else
-            if [[ -n "$(list_modified_md_files)" ]]; then
-                list_modified_md_files | xargs -d '\n' -n1 remark -f -q --no-stdout -u validate-links
-            fi;
-        fi
+        remark -f -q --no-stdout -u validate-links .
     else
-        echo "Style checking will be skipped"
+        echo "Anchors validation will be skipped"
     fi
 }
 
@@ -84,7 +82,7 @@ function generate_yaspeller_dictionary {
 }
 
 function install_checkers {
-    npm install --global --production yaspeller spellchecker-cli@4.0.0 markdown-link-check remark-cli markdownlint-cli@0.12.0 git+https://github.com/raipc/remark-validate-links.git
+    npm install --global --production yaspeller@4.2.1 spellchecker-cli@4.0.0 markdown-link-check remark-cli markdownlint-cli@0.12.0 remark-validate-links
     wget https://raw.githubusercontent.com/axibase/docs-util/master/python-scripts/dictionaries_generator.py -O dictionaries_generator.py
     if [ "$TRAVIS_REPO_SLUG" == "axibase/atsd" ]; then
         python dictionaries_generator.py --mode=atsd
