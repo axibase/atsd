@@ -2,7 +2,7 @@
 
 ## Overview
 
-Entity Groups organize similar entities into logical collections that can be used when managing user permissions, filtering data, or calculating aggregations.
+Entity groups organize similar entities into logical collections that can be used when managing user permissions, filtering data, or calculating aggregations.
 
 ![](./images/entity-groups-title.png)
 
@@ -14,7 +14,7 @@ It can be also created **programmatically** by specifying a boolean criteria aga
 
 The parent group, if specified, restricts possible members to members of the parent group.
 
-Navigate to **Settings > Entity Groups** to configure a new or existing Entity Group.
+Navigate to **Settings > Entity Groups** to configure a new or existing entity group.
 
 ![](./images/settings-entity-groups.png)
 
@@ -144,12 +144,12 @@ name LIKE '*vml*' && tags.location = 'NUR'
 
 ### Entity Views
 
-[Entity Views](./entity_views.md) are customized tabular formats for displaying key attributes for entities of the same type. Entity Views are inherited from the parent Entity Group if one is defined. Assign a new Entity View to the current Entity Group using the dual list under the **Entity Views** pane.
+[Entity views](./entity_views.md) are customized tabular formats for displaying key attributes for entities of the same type. Entity views are inherited from the parent Entity Group if one is defined. Assign a new entity view to the current entity group using the dual list under the **Entity Views** pane.
 
 ![](./images/entity-view-add.png)
 
-Once an Entity Group belongs to an Entity View, it is available directly from the main menu under the **Entity Views** tab.
+Once an entity group belongs to an entity view, it is available directly from the main menu under the **Entity Views** tab.
 
 ![](./images/entity-views-menu.png)
 
-> For more information about configuring Entity Views, see [Entity View Documentation](./entity_views.md#settings)
+> For more information about configuring entity views, see [Entity View Documentation](./entity_views.md#settings)

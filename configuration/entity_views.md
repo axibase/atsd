@@ -2,13 +2,13 @@
 
 ## Overview
 
-Entity Views are customized tabular formats for displaying key attributes for entities of the same type, typically belonging to the same Entity Group.
+Entity views are customized tabular formats for displaying key attributes for entities of the same type, typically belonging to the same entity group.
 
-Enabled Views are listed under the **Entity Views** tab in the main menu.
+Enabled views are listed under the **Entity Views** tab in the main menu.
 
 ![](./images/entity_views_5.png)
 
-An Entity View table contains several types of columns: icons, links, text, series values, etc.
+An Entity View Table contains several types of columns: icons, links, text, series values, etc.
 
 ![](./images/entity-view-table.png)
 
@@ -26,9 +26,9 @@ An Entity View table contains several types of columns: icons, links, text, seri
 
 ## Authorization
 
-A View can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for one of the [Entity Groups](entity_groups.md#members) to which the View is linked.
+A view can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for one of the [entity groups](entity_groups.md#members) to which the view is linked.
 
-If not filtered by Entity Group, the View displays entities that belong to **all** linked Entity Groups that the user is authorized to access.
+If not filtered by entity group, the view displays entities that belong to **all** linked entity groups that the user is authorized to access.
 
 ## Settings
 
@@ -36,26 +36,26 @@ If not filtered by Entity Group, the View displays entities that belong to **all
 ---|---
 Name | **[Required]** View name displayed on the **Entity Views** page.
 Enabled | Status: enabled or disabled. <br>Disabled views are not visible on the **Entity Views** tab in the main menu.
-Entity Groups | **[Required]** One or multiple [Entity Groups](entity_groups.md) whose members are included in the view.
-Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in Entity Group [expressions](entity_groups.md#expression).
+Entity Groups | **[Required]** One or multiple [entity groups](entity_groups.md) whose members are included in the view.
+Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in Entity Group [Expressions](entity_groups.md#expression).
 Dynamic Filter | [Filter](#dynamic-filters) applied to displayed entities on initial page load.
 Split Table by Column | Enter column header or column value to group entities into separate tables.
-Display in Main Menu | If enabled, View is accessible from the main menu on the left.
-Display Index | Applies if Entity View is displayed in the main menu. Specifies relative position of the tab. The tabs are sorted by index in ascending order.
-Menu Icon | Icon assigned to the View in the main menu.
-Multi-Entity Portal | [Portal](#portal) with time series charts for multiple entities displayed in the View. If no multi-entity portal is assigned, the default portal containing metrics in **Series Value** [columns](#column-types) is displayed.
+Display in Main Menu | If enabled, view is accessible from the main menu on the left.
+Display Index | Applies if entity view is displayed in the main menu. Specifies relative position of the tab. The tabs are sorted by index in ascending order.
+Menu Icon | Icon assigned to the view in the main menu.
+Multi-Entity Portal | [Portal](#portal) with time series charts for multiple entities displayed in the view. If no multi-entity portal is assigned, the default portal containing metrics in **Series Value** [columns](#column-types) is displayed.
 
 ## Filters
 
 The list of entities displayed in the table is determined as follows:
 
-* The list is initially set member of **all** linked Entity Groups that the user is authorized to access.
-* If an Entity Group is specified, the members of other groups are excluded.
+* The list is initially set member of **all** linked entity groups that the user is authorized to access.
+* If an entity group is specified, the members of other groups are excluded.
 * If an [**Entity Expression**](#settings) is specified, the remaining members are checked against this condition. Entities that fail to satisfy the condition are excluded.
 * If a [**Dynamic Filter**](#dynamic-filters) is entered by the user, the entities are additionally checked against this filter. Entities that fail to satisfy the filter condition are excluded.
 * If [**Search**](#search) text is specified, only entities with a column value containing the search keyword are displayed.
 
-> While the Entity Group Filter and Dynamic Filter can be toggled by the user, the Entity Expression, if specified, is applied at all times.
+> While the entity group Filter and Dynamic Filter can be toggled by the user, the Entity Expression, if specified, is applied at all times.
 
 ## Search
 
@@ -169,7 +169,7 @@ The following functions are available in the **Formatting** section:
 **Name** | **Description**
 ---|---
 Name | Filter name displayed in the drop-down list.
-Expression | A condition which entities must satisfy when selected in the drop-down list.<br>The expression can refer to `name` and `tags.{name}` columns defined in the Entity View.
+Expression | A condition which entities must satisfy when selected in the drop-down list.<br>The expression can refer to `name` and `tags.{name}` columns defined in the entity view.
 
 Examples:
 
@@ -207,11 +207,11 @@ Assuming there are five entities in the selected entity group:
 * Each entity has entity tag `location`
 * Each entity has properties `start_time` and `status` of type `runtime_info`.
 
-Default Entity View configuration:
+Default entity view configuration:
 
 ![](./images/entity_views_1.png)
 
-An Entity View without table splitting is displayed as follows, with all entities placed into one table:
+An entity view without table splitting is displayed as follows, with all entities placed into one table:
 
 ![](./images/entity-view-split-empty.png)
 
@@ -235,7 +235,7 @@ If splitting by column **header** is enabled, grouping is performed based on for
 
 ## Portal
 
-If the **Multi-Entity Portal** is assigned manually or the Entity View contains **Series Value** [columns](#column-types), the statistics for entities can be viewed by clicking **View Portal**.
+If the **Multi-Entity Portal** is assigned manually or the entity view contains **Series Value** [columns](#column-types), the statistics for entities can be viewed by clicking **View Portal**.
 
 ![](./images/entity_views_6.png)
 
