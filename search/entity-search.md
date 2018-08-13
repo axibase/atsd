@@ -2,69 +2,87 @@
 
 ## Overview
 
-The entity search interface can find entities by name or entity tag values.
+The entity search interface can find entities by name, entity tag, and last insert date.
 
 ## Syntax
 
-A keyword without a colon is considered an entity name filter, a keyword containing a colon is treated as a tag name.
+The search text can consist of multiple keywords.
 
-```ls
-name-filter [tag-name-1:tag-value-2] [tag-name-2:tag-value-2]
-```
+* Keywords containing a colon are treated as **tag** filters, for example `tag1:val1` finds entities with tag `tag1` set to `val1`.
+* Reserved keywords `min-date` and `max-date` filter entities by **last insert date**.
+* The remaining keywords match **entity names**.
 
-The `*` wildcard is automatically appended to the `name-filter`, thereby including entities with a name **starting** with the specified text.
-
-If the search expression contains a tag name, such tags are displayed in the results table.
-
-## Wildcards
+The following wildcards are supported in name patterns:
 
 * `*` matches any number of characters.
 * `?` matches any one character.
 
-## Match
+The `*` wildcard is automatically appended to name patterns, thereby matching entities with a name **starting** with the specified text.
 
-Entity names, tag names and tag values are matched in case-insensitive manner.
+Multiple keywords are evaluated as boolean `AND` conditions.
+
+Entity names, tag names and tag values are matched in case-**insensitive** manner.
 
 ## Examples
 
-* Find entities starting with `nur`
+* Find entities starting with `nur`.
 
-```ls
-nur
-```
+    ```ls
+    nur
+    ```
 
-* Find entities starting with `nur`
+    > Same results as `nur*`
 
-```ls
-nur*
-```
+* Find entities starting with `nur`.
 
-* Find entities containing `nur`
+    ```ls
+    nur*
+    ```
 
-```ls
-*nur*
-```
+* Find entities containing `nur`.
 
-* Find entities with tag `location` set to `SVL`
+    ```ls
+    *nur*
+    ```
 
-```ls
-location:SVL
-```
+* Find entities with tag `location` set to `SVL`.
 
-* Find entities with any value for tag `location` (display `location` column).
+    ```ls
+    location:SVL
+    ```
 
-```ls
-location:*
-```
+* Find entities with **any** value for tag `location` and display `location` column.
 
-* Find entities with non-empty value for tag `location`.
+    ```ls
+    location:*
+    ```
 
-```ls
-location:*
-```
+* Find entities with **non-empty** value for tag `location` and display `location` column.
 
-* Find entities starting with `nur` **and** tag `location` set to `SVL`
+    ```ls
+    location:
+    ```
 
-```ls
-nur location:SVL
-```
+* Find entities starting with `nur` **and** tag `location` set to `SVL`.
+
+    ```ls
+    nur location:SVL
+    ```
+
+* Find entities with last insert date on the specified date or later.
+
+    ```ls
+    min-date:2018-08-21
+    ```
+
+* Find entities **without** last insert date.
+
+    ```ls
+    max-date:1970-01-01T00:00:00Z
+    ```
+
+* Find entities with last insert date in the specified **range**.
+
+    ```ls
+    min-date:2018-08-01 max-date:2018-08-10
+    ```
