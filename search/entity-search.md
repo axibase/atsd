@@ -30,7 +30,7 @@ Entity names, tag names and tag values are matched in case-**insensitive** manne
     ```ls
     nur
     ```
-    
+
     same as
 
     ```ls
@@ -48,7 +48,7 @@ Entity names, tag names and tag values are matched in case-**insensitive** manne
     ```ls
     location:SVL
     ```
-    
+
 * Find entities with tag `location` starting with `ASIA`.
 
     ```ls
@@ -90,17 +90,23 @@ Entity names, tag names and tag values are matched in case-**insensitive** manne
     ```ls
     min-date:2018-08-01 max-date:2018-08-10
     ```
-    
+
 * Find entities containing `cpu` **or** `memory`
     ```ls
     *cpu* *memory*
     ```
-    
+
 * Find all entities matching `server-?` which have any data for last 5 minutes, and display some tags
-    ```
+    ```ls
     server-? min-date:"now - 5 * minute" num_cpus: mem_size: disk_size:
     ```
-* Find entities with tag value containing whitespace or `:`
+
+* Find entities with tag value containing whitespace
     ```ls
-    server_group:"Email servers" hash:"md5:123afw"
+    server_group:"Email servers"
+    ```
+
+* Find entities with name containing `:`, like `sha256:123`
+    ```ls
+    sha256\:*
     ```
