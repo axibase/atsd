@@ -128,9 +128,9 @@ With default `INNER` mode, values outside of the selection interval are ignored.
 ]}]
 ```
 
-![](./images/interpolate-linear-1.png)
+![](./images/linear1.png)
 
-[![](./images/button.png)](https://apps.axibase.com/chartlab/5c67db15)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/cebdf97a)
 
 ### `LINEAR` Function: 30 Minute Period
 
@@ -161,10 +161,6 @@ With default `INNER` mode, values outside of the selection interval are ignored.
 | 2017-01-01 03:30 | 3.0   |
 ```
 
-![](./images/interpolate-linear-2.png)
-
-[![](./images/button.png)](https://apps.axibase.com/chartlab/a8621f21)
-
 ### Fill Gaps with `PREVIOUS` Function
 
 ```json
@@ -193,9 +189,9 @@ With default `INNER` mode, values outside of the selection interval are ignored.
 | 2017-01-01 04:00 | 3.0   |
 ```
 
-![](./images/interpolate-previous.png)
+![](./images/previous1.png)
 
-[![](./images/button.png)](https://apps.axibase.com/chartlab/1a49003e)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/127d547c)
 
 ### `LINEAR` Interpolation with `OUTER` Boundary
 
@@ -241,7 +237,7 @@ With `OUTER` mode, values outside of the selection interval are used to interpol
 }]
 ```
 
-Response:
+**Response**:
 
 ```ls
 | datetime         | value |
