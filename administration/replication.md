@@ -21,8 +21,8 @@ re-established. No data is lost in the process.
 Both the master and slave machines must have static a IP addresses in the
 local network.
 
-Both machines must have identical hardware configurations. [See ATSD
-requirements.](requirements.md)
+Both machines must have identical hardware configurations. Review [ATSD
+Requirements](../installation/requirements.md).
 
 The same versions of ATSD must be installed on both machines. [See ATSD
 installation

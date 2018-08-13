@@ -7,12 +7,12 @@ and copying them to the target server with similar characteristics for offline i
 
 ## Supported Versions
 
-* SUSE Linux Enterprise Server 12.x
+* SUSE Linux Enterprise Server `12.x`
 
 ## Requirements
 
-* Minimum RAM: 2 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `2` GB
+* See [Requirements](./requirements.md) for additional information.
 
 ## Check Dependencies
 
