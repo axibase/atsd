@@ -79,7 +79,7 @@ Supported date input patterns:
 | `yyyy-MM-dd'T'HH:mm:ss[.S]'Z'` | `Z` denotes UTC time zone.<br>`2018-05-15T00:00:00Z`<br>`2018-05-15T00:00:00.002Z` |
 | `yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm` | Offset from UTC time zone in hours and minutes.<br>`2018-05-15T00:00:00-05:00`<br>`2018-05-15T00:00:00-0500` |
 
-Refer to [Date Format Documentation](../../shared/date-format.md) rules and examples.
+Refer to [Date Format Specifications](../../shared/date-format.md) rules and examples.
 
 * The minimum time that can be stored in the database is `1970-01-01T00:00:00.000Z`, or `0` milliseconds from Unix time.
 * The maximum date that can be stored by the database is `2106-02-07T06:59:59.999Z`, or `4294969199999` milliseconds from Unix time.

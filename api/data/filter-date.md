@@ -23,7 +23,7 @@ Date fields define the time range for selecting the data.
 
 ## ISO Date Formats
 
-See [Date Format Documentation](../../shared/date-format.md) for supported ISO formats.
+See [Date Format Specifications](../../shared/date-format.md) for supported ISO formats.
 
 ## Examples
 
