@@ -2,14 +2,14 @@
 
 ## Supported Versions
 
-* RedHat Enterprise Linux 7.x
-* CentOS 7.x
-* Amazon Linux 2014.09.x+
+* RedHat Enterprise Linux `7.x`
+* CentOS `7.x`
+* Amazon Linux `2014.09.x+`
 
 ## Requirements
 
-* Minimum RAM: 2 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `2` GB
+* See [Requirements](./requirements.md) for additional information.
 
 ## Configuration
 

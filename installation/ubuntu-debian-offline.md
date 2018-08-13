@@ -2,18 +2,18 @@
 
 ## Overview
 
-The installation process involves downloading dependencies (deb packages) to an intermediate server with Internet access
+The installation process involves downloading dependencies (`deb` packages) to an intermediate server with Internet access
 and copying them to the target server for offline installation.
 
 ## Supported Versions
 
-* Ubuntu 16.04
-* Debian 8.x/9.x
+* Ubuntu `16.04`
+* Debian `8.x`/`9.x`
 
 ## Requirements
 
-* Minimum RAM: 2 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `2` GB
+* See [Requirements](./requirements.md) for additional information.
 
 ## Installation Steps
 
