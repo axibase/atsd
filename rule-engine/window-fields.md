@@ -77,7 +77,7 @@ Notes:
 `alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`.
 
 > Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
-> Fields ending with `_datetime` contain time in [ISO format](../shared/date-format.md) in UTC time zone, for example `2017-05-30T06:05:39Z`.
+> Fields ending with `_datetime` contain time in [ISO format](../shared/date-format.md) UTC time zone, for example `2017-05-30T06:05:39Z`.
 > If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
 > The `now` object fields can be accessed with dot notation syntax, for example `now.day_of_week == 'Thursday'`.
 
