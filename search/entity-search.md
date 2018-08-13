@@ -30,10 +30,8 @@ Entity names, tag names and tag values are matched in case-**insensitive** manne
     ```ls
     nur
     ```
-
-    > Same results as `nur*`
-
-* Find entities starting with `nur`.
+    
+    same as
 
     ```ls
     nur*
@@ -49,6 +47,12 @@ Entity names, tag names and tag values are matched in case-**insensitive** manne
 
     ```ls
     location:SVL
+    ```
+    
+* Find entities with tag `location` starting with `ASIA`.
+
+    ```ls
+    location:ASIA*
     ```
 
 * Find entities with **any** value for tag `location` and display `location` column.
@@ -85,4 +89,18 @@ Entity names, tag names and tag values are matched in case-**insensitive** manne
 
     ```ls
     min-date:2018-08-01 max-date:2018-08-10
+    ```
+    
+* Find entities containing `cpu` **or** `memory`
+    ```ls
+    *cpu* *memory*
+    ```
+    
+* Find all entities matching `server-?` which have any data for last 5 minutes, and display some tags
+    ```
+    server-? min-date:"now - 5 * minute" num_cpus: mem_size: disk_size:
+    ```
+* Find entities with tag value containing whitespace or `:`
+    ```ls
+    server_group:"Email servers" hash:"md5:123afw"
     ```
