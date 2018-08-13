@@ -22,6 +22,42 @@
             "pattern": "https://aqicn.org/map/china/"
         },
         {
+            "pattern": "https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"
+        },
+        {
+            "pattern": "http://activemq.apache.org"
+        },
+        {
+            "pattern": "http://activemq.apache.org/jmx.html"
+        },
+        {
+            "pattern": "https://db.apache.org/derby/"
+        },
+        {
+            "pattern": "http://www.bom.gov.au:80/fwo/IDV60801/IDV60801.94693.json"
+        },
+        {
+            "pattern": "http://www.bom.gov.au"
+        },
+        {
+            "pattern": "https://www.oracle.com/us/products/enterprise-manager/index.html"
+        },
+        {
+            "pattern": "https://catalog.data.gov/dataset/mva-vehicle-sales-counts-by-month-for-cy-2002-2015"
+        },
+        {
+            "pattern": "https://tomcat.apache.org/"
+        },
+        {
+            "pattern": "http://activemq.apache.org/jmx.html"
+        },
+        {
+            "pattern": "https://java.sun.com/products/JavaManagement/download.html"
+        },
+        {
+            "pattern": "https://freemarker.apache.org/docs/ref_builtins_string.html#ref_builtin_split"
+        },
+        {
             "pattern": "http://commons.apache.org/proper/commons-math/javadocs/api-3.3/org/apache/commons/math3/stat/correlation/PearsonsCorrelation.html"
         },
         {
