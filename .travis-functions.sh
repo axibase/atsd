@@ -82,7 +82,7 @@ function generate_yaspeller_dictionary {
 }
 
 function install_checkers {
-    npm install --global --production yaspeller spellchecker-cli@4.0.0 markdown-link-check remark-cli markdownlint-cli@0.12.0 remark-validate-links
+    npm install --global --production yaspeller@4.2.1 spellchecker-cli@4.0.0 markdown-link-check remark-cli markdownlint-cli@0.12.0 remark-validate-links
     wget https://raw.githubusercontent.com/axibase/docs-util/master/python-scripts/dictionaries_generator.py -O dictionaries_generator.py
     if [ "$TRAVIS_REPO_SLUG" == "axibase/atsd" ]; then
         python dictionaries_generator.py --mode=atsd
