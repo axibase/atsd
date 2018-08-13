@@ -2657,7 +2657,7 @@ SECOND (datetime | time | datetime expression)
 The `minute` function returns the current minutes in the provided date.
 
 ```sql
-MINUTE (datetime | time | datetime expression)
+MINUTE (datetime | time | datetime expression [, timezone])
 ```
 
 #### HOUR
