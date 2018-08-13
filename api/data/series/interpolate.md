@@ -35,7 +35,7 @@ The interpolation process performed by the database is outlined below:
 
 | **Name** | **Description**   |
 |:---|:---|
-| `LINEAR`  | Calculate interpolated value by adding the difference between neighboring detailed values proportional to their time difference. |
+| `LINEAR`  | Calculate interpolated value by adding the difference between consecutive values proportional to their time difference. |
 | `PREVIOUS`  | Set interpolated value equal to the previous value. |
 | `AUTO`  | Apply the interpolation function specified by the metric [`interpolate`](../../meta/metric/list.md#fields) setting. Default: `LINEAR`.  |
 
