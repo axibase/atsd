@@ -13,7 +13,7 @@
 5155 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): NPE on commands store.
 5153 | rule engine | Bug | [Rule Engine](../../rule-engine): Generic type is not resolved for `TagsMap`.
 5151 | core | Feature | Add `User-Agent` header in [outgoing](../../rule-engine/notifications/README.md#outgoing-webhooks) HTTP requests.
-5150 | sql | Feature | Implement short ISO formats for [`datetime`](../../sql/README.md#interval-condition) literal.
+5150 | sql | Feature | Implement short [ISO format](../../shared/date-format.md) for [`datetime`](../../sql/README.md#interval-condition) literal.
 5146 | security | Bug | Rename built-in collector [groups](../../administration/user-authorization.md#collector-user).
 5144 | rule engine | Bug | [`entity_label`](../../rule-engine/functions-lookup.md#entity_label) function.
 5142 | rule editor | Bug | Check [placeholder](../../rule-engine/placeholders.md#placeholders) syntax for validity on save.

@@ -123,7 +123,7 @@ Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syn
 `status` | `OPEN`
 `tags.tag_name` | `nurswgvml003`
 `tags` | `host=nurswgvml003`
-`timestamp` | `145678784500` (Unix milliseconds)
+`timestamp` | `145678784500` (Unix time in milliseconds)
 `value` | `3103100000`
 `window` | `length(1)`
 `threshold` | `max() > 20`
@@ -132,7 +132,7 @@ Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syn
 
 Date fields ending with `_time` contain time in the local server time zone, for example `2017-05-30 14:05:39 PST`.
 
-Date fields ending with `_datetime` contain time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.
+Date fields ending with `_datetime` contain time in [ISO format](../shared/date-format.md) in UTC time zone, for example `2017-05-30T06:05:39Z`.
 
 * `alert_open_time`
 * `alert_open_datetime`

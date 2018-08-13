@@ -8,7 +8,7 @@ It includes the following fields in the "name,value" format:
 |**Name**|**Description**|
 |:---|:---|
 |publisher| Name of the reporting product (ATSD) and the URL of the ATSD server.|
-|created| Date when the report is produced in ISO 8601 format.|
+|created| Date when the report is produced in [ISO format](../shared/date-format.md).|
 |title | Report name, such as "CPU Busy Daily Report". |
 |command | Query statement on one or multiple lines. |
 

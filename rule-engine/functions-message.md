@@ -30,7 +30,7 @@ Returns the most recent [message](../api/data/messages/query.md) record matching
 
 [Fields](../api/data/messages/query.md#fields-1) of a returned object can be invoked using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
 
-> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead in Unix milliseconds.
+> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead in Unix time with millisecond granularity.
 
 ## `db_messages`
 
@@ -48,7 +48,7 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 
 [Fields](../api/data/messages/query.md#fields-1) of a returned object can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
 
-> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
+> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead as Unix time in milliseconds.
 
 ## Matching Rules
 

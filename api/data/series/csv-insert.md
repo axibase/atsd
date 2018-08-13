@@ -27,7 +27,7 @@ The records are inserted for the same entity and series tags.
 * The last line in the file must end with a line feed.
 * The header must begin with a `time` or `date` column, followed by at least one metric column containing numeric values.
 * Entity and Metric names containing space characters are normalized by replacing the space character with an underscore.
-* Time must be specified in Unix milliseconds if the `time` column is used, and in ISO format if the `date` column is used.
+* Time must be specified using Unix time in milliseconds if the `time` column is used or [ISO format](../../../shared/date-format.md#supported-formats) if the `date` column is used.
 * Separator must be comma.
 * If possible, sort submitted samples by time in ascending order.
 

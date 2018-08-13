@@ -56,5 +56,14 @@
         },
         {
             "pattern": "https://freemarker.apache.org/docs/ref_builtins_string.html#ref_builtin_split"
+        },
+        {
+            "pattern": "http://commons.apache.org/proper/commons-math/javadocs/api-3.3/org/apache/commons/math3/stat/correlation/PearsonsCorrelation.html"
+        },
+        {
+            "pattern": "https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeCsv%28java.io.Writer,%20java.lang.String%29"
+        },
+        {
+            "pattern": "https://commons.apache.org/proper/commons-dbcp/configuration.html"
         }
     ]}

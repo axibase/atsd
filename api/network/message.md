@@ -27,13 +27,13 @@ message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-| e         | string       | **[Required]** Entity name. |
-| t         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../api/data/severity.md). |
-| m         | string       | Message text. |
-| p         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
-| s         | integer      | Time in Unix seconds. |
-| ms        | integer      | Time in Unix milliseconds. |
-| d         | string       | Time in ISO format. |
+| `e`         | string       | **[Required]** Entity name. |
+| `t`         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../api/data/severity.md). |
+| `m`         | string       | Message text. |
+| `p`         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
+| `s`         | integer      | Unix time in seconds. |
+| `ms`        | integer      | Unix time in milliseconds. |
+| `d`         | string       | Time in [ISO format](../../shared/date-format.md). |
 
 ### Special Tags
 
@@ -85,7 +85,7 @@ time-iso = "d:" ISO_DATE
 message d:2016-03-04T12:43:20Z e:server001 t:type=application t:source=cron t:job=backup m:"Task completed"
 ```
 
-* Unix seconds
+* Unix time in seconds
 
 ```ls
 message s:1464076784 e:server001 t:type=logger t:source=Ruby.main
