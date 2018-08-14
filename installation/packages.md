@@ -6,13 +6,13 @@
 
  Version | `apt` | `deb` | Installation Guide
 |--|--|--|--|--|--|--|
-| `16.04` | ![](../images/ok.svg) | [![](../images/ok.svg)]((https://axibase.com/public/atsd_deb_latest.htm)) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
+| `16.04` | ![](../images/ok.svg) | [![](../images/ok.svg)](https://axibase.com/public/atsd_deb_latest.htm) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
 
 ### **Debian**
 
  Version | `apt` | `deb` | Installation Guide
 |--|--|--|--|--|--|--|
-`8.x` / `9.x` | ![](../images/ok.svg) | [![](../images/ok.svg)]((https://axibase.com/public/atsd_deb_latest.htm)) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
+`8.x` / `9.x` | ![](../images/ok.svg) | [![](../images/ok.svg)](https://axibase.com/public/atsd_deb_latest.htm) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
 
 ### **RHEL** / **CentOS**
 
