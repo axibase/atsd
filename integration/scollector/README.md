@@ -30,39 +30,39 @@ Portals:
 * `scollector-.NET`
 * `scollector-MS SQL`
 
-### scollector-Linux Portal
+### scollector Linux Portal
 
-Launch a live scollector-Linux portal in Axibase Chart Lab.
+Launch a live scollector Linux portal in Axibase ChartLab.
 
 [Launch](https://apps.axibase.com/chartlab/f595d570)
 
 ![](./resources/scollector-Linux1.png)
 
-### scollector-Windows Portal
+### scollector Windows Portal
 
-Launch live scollector-Windows portal in Axibase Chart Lab.
+Launch live scollector Windows portal in Axibase ChartLab.
 
 [Launch](https://apps.axibase.com/chartlab/db099fa9/2/)
 
 ![](./resources/scollector-Windows1.png)
 
-### scollector-MS SQL Portal
+### scollector MS SQL Portal
 
-Launch live scollector-MS SQL portal in Axibase Chart Lab.
+Launch live scollector MS SQL portal in Axibase ChartLab.
 
 [Launch](https://apps.axibase.com/chartlab/1fc2721b)
 
 ![](./resources/scollector_mssql_portal1.png)
 
-### scollector-.NET Portal
+### scollector .NET Portal
 
-Launch live scollector-.NET portal in Axibase Chart Lab.
+Launch live scollector .NET portal in Axibase ChartLab.
 
 [Launch](https://apps.axibase.com/chartlab/1fc2721b/2/)
 
 ![](./resources/scollector_dotnetl_portal.png)
 
-### scollector-IIS Portal
+### scollector IIS Portal
 
 ![](./resources/scollector_iis_portal.png)
 
@@ -70,7 +70,7 @@ Launch live scollector-.NET portal in Axibase Chart Lab.
 
 ATSD ignores two metadata tags collected by scollector by default: `environment` and `role`.
 
-You can change this setting by editing the `server.properties` file:
+Change this setting by editing the `server.properties` file:
 
 ```txt
 /opt/atsd/atsd/conf/server.properties

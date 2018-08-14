@@ -38,13 +38,13 @@ Configuration file example:
 |  `debug`  |  Enable debug logging : `true` or `false`  |  `false`  |
 |  `keyNameSanitize`  |  Sanitizing metric names (removing forbidden characters): `true` or `false`  |  `true`  |
 |  `flush_counts`  |  Processing flush counts: `true` or `false`  |  `true`  |
-|  `atsd`  |  Container for options specific to ATSD back-end  |  –  |
+|  `atsd`  |  Container for options specific to ATSD back-end  |  `–`  |
 |  `atsd.host`  |  ATSD hostname  |  –  |
-|  `atsd.port`  |  ATSD port  |  8081  |
+|  `atsd.port`  |  ATSD port  |  `8081`  |
 |  `atsd.user`  |  Username  |    |
-|  `atsd.password`  |  Password to log into ATSD  |    |
+|  `atsd.password`  |  ATSD Login Password |    |
 |  `atsd.protocol`  |  Protocol: `tcp` or `udp`  |  `tcp`  |
-|  `atsd.entity`  |  Default entity  |  local hostname  |
+|  `atsd.entity`  |  Default entity  |  `local hostname`  |
 |  `atsd.prefix`  |  Global prefix for each metric  |    |
 |  `atsd.prefixCounter`  |  Prefix for counter metrics  |  `counters`  |
 |  `atsd.prefixTimer`  |  Prefix for timer metrics  |  `timers`  |

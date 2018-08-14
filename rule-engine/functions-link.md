@@ -4,7 +4,7 @@
 
 These functions return URLs to ATSD pages based on database URL, set the `server.url` property, and the current [window](window.md) context.
 
-URLs are automatically [inlined](links.md#inline-links) in email notifications and webhooks that support inline links.
+URLs are automatically [inlined](links.md#inline-links) for email notifications and webhooks that support inline links.
 
 Alternatively, manually assemble inline links using syntax supported by the webhook target.
 
