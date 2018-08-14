@@ -8,12 +8,12 @@
 ## Requirements
 
 * Minimum RAM: `2` GB
-* See [Requirements](./requirements.md) for additional information.
+* See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Check Connection
 
 If the target server is not connected to public repositories to install dependencies with APT,
-use the [offline installation option](ubuntu-debian-offline.md).
+use the [Offline Installation Guide](ubuntu-debian-offline.md) to complete installation.
 
 ## Download
 
@@ -23,11 +23,11 @@ Download `deb` package to the target server:
 wget https://www.axibase.com/public/atsd_amd64.deb
 ```
 
-Distribution files are also published on [https://axibase.com/public/atsd_deb_latest.htm](https://axibase.com/public/atsd_deb_latest.htm).
+> Alternatively, distribution files are published on [`https://axibase.com/public/atsd_deb_latest.htm`](https://axibase.com/public/atsd_deb_latest.htm).
 
 ## Installation Steps
 
-### Add `backports` repository
+### Add `backports` Repository
 
 This step is required only for Debian `8.x` (jessie)
 
@@ -67,7 +67,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 

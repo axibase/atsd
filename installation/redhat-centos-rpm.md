@@ -9,28 +9,28 @@
 ## Requirements
 
 * Minimum RAM: `2` GB
-* See [Requirements](./requirements.md) for additional information.
+* See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Configuration
 
 The database is installed in `/opt/atsd` directory under `axibase` user.
 
-To customize the installation directory, specify `--prefix` option as described below.
+To customize the installation directory, specify `--prefix` as [described below](#custom-installation-directory).
 
 ## Connection
 
 If the target server does not have Internet connection to download
-dependencies, use the [offline installation option](redhat-centos-offline.md).
+dependencies, follow the [Offline Installation Guide](redhat-centos-offline.md).
 
 ## Download
 
-Download the rpm package to the target server:
+Download the `rpm` package to the target server:
 
 ```bash
 curl -O https://www.axibase.com/public/atsd_amd64.rpm
 ```
 
-The distribution files are also published on [https://axibase.com/public/atsd_rpm_latest.htm](https://axibase.com/public/atsd_rpm_latest.htm).
+Alternatively, distribution files are published at [`https://axibase.com/public/atsd_rpm_latest.htm`](https://axibase.com/public/atsd_rpm_latest.htm).
 
 ## Installation Steps
 
@@ -40,7 +40,7 @@ Install ATSD with dependencies:
 sudo yum install -y atsd_amd64.rpm
 ```
 
-It can take up to 5 minutes to initialize the database.
+It can take up to five minutes to initialize the database.
 
 ### Custom Installation Directory
 
@@ -72,7 +72,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 

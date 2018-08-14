@@ -22,9 +22,9 @@ Version | `rpm` | `yum` | Installation Guide
 
 ### **SLES**
 
-Version | `rpm` | `yum` | Installation Guide
+Version | `rpm` | Installation Guide
 --|--|--|--|--|--|
-`12.x` | [![](../images/ok.svg)](https://axibase.com/public/atsd_rpm_sles_latest.htm) | | [`rpm`](./sles-rpm.md)
+`12.x` | [![](../images/ok.svg)](https://axibase.com/public/atsd_rpm_sles_latest.htm) |  [`rpm`](./sles-rpm.md)
 
 ### Other Distributions
 

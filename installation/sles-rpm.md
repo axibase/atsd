@@ -7,15 +7,15 @@
 ## Requirements
 
 * Minimum RAM: `4` GB
-* See [Requirements](./requirements.md) for additional information.
+* See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Connection
 
-If the target server does not have Internet connection to download dependencies, use the [offline installation option](sles-offline.md).
+If the target server does not have Internet connection to download dependencies, follow the [Offline Installation Guide](sles-offline.md).
 
 ## Download
 
-Download the [`atsd_amd64_sles.rpm`](https://axibase.com/public/atsd_rpm_sles_latest.htm) package to the target server:
+Download [`atsd_amd64_sles.rpm`](https://axibase.com/public/atsd_rpm_sles_latest.htm) package to the target server:
 
 ```sh
 curl -O https://www.axibase.com/public/atsd_amd64_sles.rpm
@@ -23,13 +23,13 @@ curl -O https://www.axibase.com/public/atsd_amd64_sles.rpm
 
 ## Installation Steps
 
-Install ATSD with dependencies.
+Install ATSD with dependencies:
 
 ```sh
 sudo zypper -n install atsd_amd64_sles.rpm
 ```
 
-It can take up to 5 minutes to initialize the database.
+It can take up to five minutes to initialize the database.
 
 ## Check Installation
 
@@ -43,7 +43,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 
