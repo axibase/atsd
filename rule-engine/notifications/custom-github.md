@@ -74,7 +74,7 @@ If the request succeeds, an authorization token is present in the `token` field 
 
 #### Generate Authorization Token using UI
 
-Go to user settings.
+Open user settings.
 
 ![](./images/github_ui_token_1.png)
 
@@ -160,7 +160,7 @@ When the webhook is executed, all placeholders in the request URL are resolved a
 
 ```json
 {
-  "body": "[OPEN] Github for test_e {}\n\n[Chart](chart link)\n\n| **Name** | **Value**|..."
+  "body": "[OPEN] GitHub for test_e {}\n\n[Chart](chart link)\n\n| **Name** | **Value**|..."
 }
 ```
 
@@ -179,6 +179,6 @@ To verify that an alert is raised, open **Alerts > Open Alerts** page and check 
 
 ![](./images/github_alert_open.png)
 
-Check the issue on Github to ensure the new comment is added.
+Check the issue on GitHub to ensure the new comment is added.
 
 ![](./images/github_test.png)

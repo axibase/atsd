@@ -68,7 +68,7 @@ Edit the following fields: `graphitePort` is the ATSD port for network commands 
 ```json
 {
   graphitePort: 8081
-, graphiteHost: "atsdserver"
+, graphiteHost: "atsd_hostname"
 , port: 8125
 , graphite: {
     legacyNamespace: false
@@ -88,11 +88,11 @@ sudo service statsd start
 
 ### WordPress Monitoring Example
 
-Go to the Plugins menu on your WordPress administration page:
+Open the **Plugins** menu on the WordPress administration page.
 
 ![](./resources/plugins_menu.png)
 
-Click [Add New]. Find and install the [StatsD WordPress Client](https://wordpress.org/plugins/statsd/) plugin:
+Click **Add New**. Find and install the [StatsD WordPress Client](https://wordpress.org/plugins/statsd/) plugin:
 
 ![](./resources/statsd_plugin1.png)
 

@@ -53,7 +53,7 @@ The formula is:
 thresholdTime(number min, number max [, string i]) long
 ```
 
-Returns time in Unix milliseconds when the [stored forecast value](../forecasting/README.md) is outside of the `(min, max)` range for the first time during time interval `i`.
+Returns Unix time in milliseconds when the [stored forecast value](../forecasting/README.md) is outside of the `(min, max)` range for the first time during time interval `i`.
 
 The interval `i` is specified as count and [unit](../api/data/series/time-unit.md), for example `1 WEEK`. If the time interval `i` is not specified, the function checks all available forecast values in the future.
 
@@ -74,7 +74,7 @@ thresholdTime(null, 90, '6 HOUR')
 
 ### Example Table
 
-Current time is `2018-Jul-07 15:00`, or `1530975600000` in Unix milliseconds.
+Current time is `2018-Jul-07 15:00`, or `1530975600000` in Unix time (milliseconds).
 
 Forecast Values:
 

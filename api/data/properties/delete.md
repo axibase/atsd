@@ -4,15 +4,25 @@
 
 Deletes property records that match specified filters.
 
-### Delete Markers
+## Deletion Process
 
-Due to the specifics of the underlying storage technology, the records deleted with this method are not instantly removed from the disk.
+Property records deleted with this method are not instantly removed from the disk.
 
-Instead, the records are masked with a `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows recorded with an earlier timestamp.
+Instead, records are masked with a `DELETE` marker timestamped when the delete operation is initiated. The `DELETE` marker masks all properties recorded with an earlier timestamp and thus are not visible to reading applications.
 
-The actual deletion from the disk, which removes both the `DELETE` marker as well as earlier records, occurs in the background as part of a scheduled procedure called `major compaction`.
+As a result, re-inserting property records with a timestamp earlier than the `DELETE` marker is not possible until the marker is removed.
 
-Properties that are re-inserted before the `major compaction` is completed with timestamps earlier than the `DELETE` marker is not visible.
+In the example below, the records are deleted at time `t=100`. The `DELETE` marker hides all records with time earlier than `100`. When new records are inserted with timestamps `t=80` and `t=150`, only the second record is visible to clients.
+
+![](./images/delete-marker-type.png)
+
+When an entire entity is deleted, the `DELETE` marker has a `Long.MAX_VALUE` time and hides all properties for the given entity regardless of timestamp.
+
+In the example below, the `DELETE` marker hides all records, including new records with timestamps `t=80` and `t=150`.
+
+![](./images/delete-marker-entity.png)
+
+The actual deletion from the disk, which removes both the `DELETE` markers as well as the masked records, occurs in the background as part of a scheduled HBase procedure called [`major compaction`](../../../administration/compaction.md).
 
 To identify pending `DELETE` markers for a given type and entity, run:
 
@@ -20,13 +30,13 @@ To identify pending `DELETE` markers for a given type and entity, run:
 echo "scan 'atsd_properties', {'LIMIT' => 3, RAW => true, FILTER => \"PrefixFilter('\\"prop_type\\":\\"entity_name\\"')\"}" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-The same behavior applies to properties deleted when the entire entity is removed, except in this case the `DELETE` marker is timestamped with the `Long.MAX_VALUE-1` time of `9223372036854775806`.
-
-To remove these markers, run `major compaction` on the `atsd_properties` table ahead of schedule.
+To remove all `DELETE` markers ahead of schedule, trigger a `major compaction` task on the `atsd_properties` table manually.
 
 ```sh
 echo "major_compact 'atsd_properties'" | /opt/atsd/hbase/bin/hbase shell
 ```
+
+Once the `DELETE` markers are deleted, new records can be created with any timestamps.
 
 ## Request
 
@@ -44,15 +54,15 @@ An array of objects containing fields for filtering records for deletion.
 
 | **Field**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `type` | string | [**Required**] Property type name. <br>This method does not allow removal of the reserved `$entity_tags` type.|
-| `entity` | string | [**Required**] Entity name. <br>Set entity to wildcard `*` to delete records for all entities.|
-| `startDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
-| `endDate` | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
-| `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with **exact** or **partial** key fields based on the `exactMatch` parameter below.|
-| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `false`, all records with key that **contains** fields in the request `key` (but can include other fields) are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
+| `type` | string | **[Required]** Property type name. <br>This method does not support the removal of reserved `$entity_tags`.|
+| `entity` | string | **[Required]** Entity name. <br>Set entity to wildcard `*` to delete records for all entities.|
+| `startDate` | string | **[Required]** [ISO formatted](../../../shared/date-format.md#supported-formats) date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
+| `endDate` | string | **[Required]** [ISO formatted](../../../shared/date-format.md#supported-formats) date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
+| `key` | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with **exact** or **partial** key fields based on the `exactMatch` parameter.|
+| `exactMatch` | boolean | If `exactMatch` is `true`, only one record with exactly the same `key` as in the request is deleted.<br>If `exactMatch` is `false`, all records which **contain** fields in the request `key` are deleted.<br>If `exactMatch` is `false` and no `key` is specified, all records for the specified type and entity are deleted.<br>Default: `true`.|
 
-* Key and tag names are case-insensitive.
-* Key and tag values are case-sensitive.
+* Key and tag names are case-**insensitive**.
+* Key and tag values are case-**sensitive**.
 
 ## Response
 
@@ -68,7 +78,7 @@ None.
 
 ## Key Match Example
 
-Assuming property records A,B,C, and D exist:
+The following property records `A`,`B`,`C`, and `D` are present in the database.
 
 ```ls
 | record | type   | entity | key-1 | key-2 |
@@ -79,7 +89,7 @@ Assuming property records A,B,C, and D exist:
 | D      | type-1 | e-4    |       |       |
 ```
 
-The table below illustrates which records are deleted (the `result` column) for the corresponding `exactMatch` and `key` parameters on the left.
+The table illustrates which records are deleted for the corresponding `exactMatch` and `key` parameters in the `result` column.
 
 ```ls
 | exactMatch | key                     | result  |

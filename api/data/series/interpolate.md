@@ -2,67 +2,67 @@
 
 ## Overview
 
-The interpolation process transforms an input time series to a regularized series by calculating values at evenly spaced intervals using a linear or step function.
+Interpolation transforms an input time series to a regularized series by calculating values at evenly spaced intervals using a linear or step function.
 
-The process consists of these steps:
+The interpolation process performed by the database is outlined below:
 
-1. Load detailed data for the selection interval specified with `startDate` and `endDate` parameters.
+1. Load samples for the selection interval specified with `startDate` and `endDate` parameters.
 2. If `OUTER` boundary mode is enabled, load one value before and one value after the selection interval to interpolate leading and trailing values.
-3. Create evenly spaced timestamps within the selection interval. The timestamps can be aligned to the calendar or start/end time of the selection interval.
-4. For each timestamp, calculate the value from the two neighboring samples using a linear or step interpolation function.
+3. Create evenly spaced timestamps within the selection interval. Timestamps can be aligned to a calendar or start/end time of the selection interval.
+4. For each timestamp, calculate the value from the two nearest neighbor samples using `linear` or `step` interpolation function.
 5. If `fill` parameter is enabled, add missing leading and trailing values.
 
 ## Fields
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| [period](#period) | object | [**Required**] Repeating time interval. |
-| [function](#function) | string | [**Required**] `PREVIOUS`, `LINEAR`, or `AUTO`. |
-| [boundary](#boundary) | string | Enables loading of values outside of the selection interval. |
-| [fill](#fill) | string | Creates missing leading and trailing values. |
+| [`period`](#period) | object | **[Required]** Time interval used for interpolation. |
+| [`function`](#function) | string | **[Required]** `PREVIOUS`, `LINEAR`, or `AUTO`. |
+| [`boundary`](#boundary) | string | Enable values outside of the selection interval. |
+| [`fill`](#fill) | string | Creates missing leading and trailing values. |
 
-### period
+### `period`
 
 [Period](period.md) is a repeating time interval used to create evenly spaced timestamps.
 
-Examples:
+**Examples**:
 
 * `{ "count": 1, "unit": "HOUR" }`
 * `{ "count": 15, "unit": "MINUTE", "align": "START_TIME" }`
 * `{ "count": 1, "unit": "DAY", "align": "CALENDAR", "timezone": "US/Pacific" }`
 
-### function
+### `function`
 
 | **Name** | **Description**   |
 |:---|:---|
-| `LINEAR`  | Calculates the value by adding a difference between neighboring detailed values proportional to their time difference. |
-| `PREVIOUS`  | Sets the value equal to the previous value. |
-| `AUTO`  | Applies the interpolation function specified in the metric [interpolate](../../meta/metric/list.md#fields) field. Default: `LINEAR`.  |
+| `LINEAR`  | Calculate interpolated value by adding the difference between consecutive values proportional to their time difference. |
+| `PREVIOUS`  | Set interpolated value equal to the previous value. |
+| `AUTO`  | Apply the interpolation function specified by the metric [`interpolate`](../../meta/metric/list.md#fields) setting. Default: `LINEAR`.  |
 
-> Detailed values with timestamps that are equal interpolated timestamps are returned without changes.
-> The `LINEAR` function returns an interpolated value only if the preceding and the next value is present.
-> The `PREVIOUS` function requires a preceding value to be present. The last detailed value is used to calculate one last interpolated value.
+> Detailed values with timestamps equal to interpolated timestamps are included in the response unchanged.
+> The `LINEAR` function returns an interpolated value only if both the preceding and the following value is present.
+> The `PREVIOUS` function requires a preceding value. The last detailed value is used to calculate a final interpolated value in the response.
 
-### boundary
+### `boundary`
 
 | **Name** | **Description**   |
 |:---|:---|
-| `INNER`  | [**Default**] Do not load data outside of the selection interval. |
-| `OUTER`  | Load one value before and one value after the selection interval to interpolate leading and trailing values. |
+| `INNER`  | **[Default]** Data outside of the selection interval is not loaded by the database. |
+| `OUTER`  | One value before and one value after the selection interval is loaded by the database to interpolate leading and trailing values. |
 
-Examples:
+**Examples**:
 
 * `{ "boundary": "OUTER" }`
 
-### fill
+### `fill`
 
-The purpose of the `fill` parameter is to eliminate gaps at the beginning and the end of the selection interval. If the `boundary` is `OUTER` and there are values on both sides of the selection interval, the `fill` parameter is not applied.
+The `fill` parameter eliminates gaps at the beginning and end of a selection interval. If `boundary` is `OUTER` and there are values on both sides of the selection interval, the `fill` parameter is not applied.
 
 | **Name** | **Description**   |
 |:---|:---|
-| `false`  | [**Default**] Do not add missing values. |
-| `true`  | Add missing leading values by setting them to the first available detailed value.<br>Add missing trailing values by setting them to the last available detailed value.|
-| `{n}`  | Add missing leading and trailing values by setting them to the specified number `{n}`.<br>The number `{n}` can be any decimal number as well as `NaN` string (Not a Number). |
+| `false`  | **[Default]** Do not add missing values. |
+| `true`  | Add missing leading values by setting the values equal to the first available detailed value.<br>Add missing trailing values by setting the values equal to the last available detailed value.|
+| `{n}`  | Add missing leading and trailing values by setting the values equal to the specified number `{n}`.<br>The number `{n}` can be any decimal number as well as `NaN` string (Not a Number). |
 
 Examples:
 
@@ -73,7 +73,7 @@ Examples:
 
 ## Examples
 
-Dataset:
+**Dataset**:
 
 ```ls
 series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
@@ -92,7 +92,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 | 2017-01-01 03:30 | 3     |
 ```
 
-### Fill Gaps with LINEAR Function
+### Fill Gaps with `LINEAR` Function
 
 ```json
 [{
@@ -107,9 +107,9 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-Response:
+**Response**:
 
-In the default `INNER` mode the values outside of the selection interval are ignored.
+With default `INNER` mode, values outside of the selection interval are ignored.
 
 ```ls
 | datetime         | value |
@@ -128,7 +128,11 @@ In the default `INNER` mode the values outside of the selection interval are ign
 ]}]
 ```
 
-### LINEAR Function: 30 Minute Period
+![](./images/linear1.png)
+
+[![](./images/button.png)](https://apps.axibase.com/chartlab/cebdf97a)
+
+### `LINEAR` Function: 30 Minute Period
 
 ```json
 [{
@@ -143,7 +147,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-Response:
+**Response**:
 
 ```ls
 | datetime         | value |
@@ -157,7 +161,7 @@ Response:
 | 2017-01-01 03:30 | 3.0   |
 ```
 
-### Fill Gaps with PREVIOUS Function
+### Fill Gaps with `PREVIOUS` Function
 
 ```json
 [{
@@ -172,9 +176,9 @@ Response:
 }]
 ```
 
-Response:
+**Response**:
 
-In the default `INNER` mode the values outside of the selection interval are ignored.
+With default `INNER` mode, values outside of the selection interval are ignored.
 
 ```ls
 | datetime         | value |
@@ -185,7 +189,11 @@ In the default `INNER` mode the values outside of the selection interval are ign
 | 2017-01-01 04:00 | 3.0   |
 ```
 
-### LINEAR Interpolation with OUTER Boundary
+![](./images/previous1.png)
+
+[![](./images/button.png)](https://apps.axibase.com/chartlab/127d547c)
+
+### `LINEAR` Interpolation with `OUTER` Boundary
 
 ```json
 [{
@@ -201,9 +209,9 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-Response:
+**Response**:
 
-In the `OUTER` mode the values outside of the selection interval are used to interpolate leading and trailing values.
+With `OUTER` mode, values outside of the selection interval are used to interpolate leading and trailing values.
 
 ```ls
 | datetime         | value |
@@ -214,7 +222,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 03:00 | 2.5   |
 ```
 
-### LINEAR Interpolation with START_TIME Alignment
+### `LINEAR` Interpolation with `START_TIME` Alignment
 
 ```json
 [{
@@ -229,7 +237,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 }]
 ```
 
-Response:
+**Response**:
 
 ```ls
 | datetime         | value |
@@ -239,7 +247,7 @@ Response:
 | 2017-01-01 03:15 | 2.75  |
 ```
 
-### LINEAR Interpolation, Leading/Trailing Values Filled
+### `LINEAR` Interpolation, Leading/Trailing Values Filled
 
 ```json
 [{
@@ -267,7 +275,7 @@ Response:
 | 2017-01-01 04:00 | 3.0   |
 ```
 
-### LINEAR Interpolation, Leading/Trailing Values Filled with `NaN`
+### `LINEAR` Interpolation, Leading/Trailing Values Filled with `NaN`
 
 ```json
 [{

@@ -7,7 +7,7 @@
 | `name` | Entity or metric name. |
 | `label` | Entity or metric label. |
 | `{field-name}` | Entity or metric field by name, such as `createdDate` or `retentionDays`. |
-| `tags.{tag-name}` | Value of tag with name `tag-name`, for example, `tags.location` or `tags.table`. |
+| `tags.{name}` | Value of tag with name `name`, for example, `tags.location` or `tags.table`. |
 | `message`| Message text in [messages methods](../../api/data/messages/README.md).|
 | `severity`|Message severity [name](../../api/data/severity.md) in [messages methods](../../api/data/messages/README.md).|
 
@@ -32,7 +32,7 @@ Wildcard `?` means any character.
 
 ## Examples
 
-* Returns record with name equal to `nurswgvml003`
+* Returns records with name equal to `nurswgvml003`
 
 ```javascript
 name = 'nurswgvml003'

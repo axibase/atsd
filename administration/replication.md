@@ -1,6 +1,6 @@
 # Replication
 
-This article describes how to configure ATSD replication.
+This document describes how to configure ATSD replication.
 
 The replication process is from master to slave, meaning where all transactions on the master
 cluster are replayed to the slave cluster.
@@ -21,8 +21,8 @@ re-established. No data is lost in the process.
 Both the master and slave machines must have static a IP addresses in the
 local network.
 
-Both machines must have identical hardware configurations. [See ATSD
-requirements.](requirements.md)
+Both machines must have identical hardware configurations. Review [ATSD
+Requirements](../installation/requirements.md).
 
 The same versions of ATSD must be installed on both machines. [See ATSD
 installation

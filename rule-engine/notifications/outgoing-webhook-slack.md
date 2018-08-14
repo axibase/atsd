@@ -127,7 +127,7 @@ Received `${message}` from <@${tags.event.user}>
 
 ### Verify Webhook Delivery
 
-* Go to the Slack workspace and send direct message to recently created bot.
+* Open the Slack workspace and send direct message to recently created bot.
 
     ![](./images/outgoing_webhook_slack_16.png)
 

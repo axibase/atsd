@@ -46,7 +46,7 @@ A running query can be cancelled at any time, for example if its execution time 
 
 When a query is cancelled, the results are not returned to the client and the query is stopped with an error.
 
-A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-the-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` URL and referencing the user-defined handle with the `{query-id}` parameter.
+A query submitted via the `/api/sql` endpoint can be [cancelled](api.md#cancelling-a-query) by submitting a request to `/api/sql/cancel?queryId={query-id}` URL and referencing the user-defined handle with the `{query-id}` parameter.
 
 ## Query Logging
 
@@ -92,7 +92,7 @@ Query execution speed can be improved by adopting the following guidelines for t
 
 Consider the following recommendations when developing queries:
 
-* Pre-test queries on a smaller dataset in an ATSD-development instance.
+* Pre-test queries on a smaller dataset in an ATSD development instance.
 * Avoid queries without any conditions. Apply `LIMIT` to reduce the number of rows returned.
 * Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval](README.md#interval-condition) conditions.
 * Make `WHERE` conditions narrow and specific, for example, specify a small time interval.

@@ -2,25 +2,35 @@
 
 ## Overview
 
-Entity Groups organize similar entities into logical collections that can be re-used when managing user permissions, filtering data, calculating aggregations etc.
+Entity groups organize similar entities into logical collections that can be used when managing user permissions, filtering data, or calculating aggregations.
 
-![](./images/entity-groups.png)
+![](./images/entity-groups-title.png)
 
 ## Members
 
-An entity group can be composed by manually specifying names of the entities that are included as members.
+An entity group can be compiled **manually** by enumerating the names of each entity to be included.
 
-It can be also created by specifying a criteria against which all entities that exist in the database are evaluated. Those entities that match the criteria are added as members automatically and the group is continuously updated in the background.
+It can be also created **programmatically** by specifying a boolean criteria against which all entities that exist in the database, or parent group entities, are evaluated. Those entities which match the criteria are added as members. Such groups are continuously updated in the background.
 
-The entity group editor provides the following options for managing entities:
+The parent group, if specified, restricts possible members to members of the parent group.
+
+Navigate to **Settings > Entity Groups** to configure a new or existing entity group.
+
+![](./images/settings-entity-groups.png)
+
+The Entity Group Editor provides the following options for adding or removing members:
 
 ### Text List
 
-Copy a list of entity names, one per line, into the text area. The names are case-insensitive.
+![](./images/text-list.png)
 
-If **Create Entities** option is checked, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found, are ignored.
+Copy a list of entity names, one per line, into the text area. Names are **case-insensitive**.
+
+If **Create Entities** is enabled, new entities are automatically created when the form is saved. Otherwise, names for which there are no existing entities found are ignored.
 
 ### Dual list
+
+![](./images/dual-list.png)
 
 Select one or multiple existing entities in the right pane and click **Add** to add members.
 
@@ -28,7 +38,9 @@ Select current members in the left pane and click **Remove** to delete members f
 
 ### Expression
 
-Specify a boolean expression to add/remove entities automatically. Expression-based groups are updated by the server at a fixed interval specified in the `entity.group.update.interval` setting.
+![](./images/expression.png)
+
+Specify a boolean expression to add and remove entities automatically. Expression-based groups are updated by the server at a fixed interval specified by the `entity.group.update.interval` setting.
 
 The expression can include the following entity fields and supports wildcards in field values:
 
@@ -47,6 +59,7 @@ name LIKE '*vml*' && tags.location = 'NUR'
   * [`property`](functions-entity-groups-expression.md#property)
   * [`properties`](functions-entity-groups-expression.md#properties)
   * [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects is not supported
+  * [`hasProperty`](functions-entity-groups-expression.md#hasproperty)
 * Lookup Functions
   * [`entity_tags`](functions-entity-groups-expression.md#entity_tags)
 * Collection Functions
@@ -72,56 +85,71 @@ name LIKE '*vml*' && tags.location = 'NUR'
 
 #### Examples
 
-* Entity name contains the specified string
+* Entity name contains the specified string:
 
-```javascript
-name LIKE 'nur*vml*'
-```
+  ```javascript
+  name LIKE 'nur*vml*'
+  ```
 
-* Entity has the specified entity tag
+* Entity has the specified entity tag:
 
-```javascript
-tags.docker-type != ''
-```
+  ```javascript
+  tags.docker-type != ''
+  ```
 
-* Entity has an entity tag equal to the specified value
+* Entity has an entity tag equal to the specified value:
 
-```javascript
-tags.docker-type = 'container'
-```
+  ```javascript
+  tags.docker-type = 'container'
+  ```
 
-* Entity has entity tags equal to the specified values
+* Entity has entity tags equal to the specified values:
 
-```javascript
-tags.docker-type = 'container' && tags.status != 'deleted'
-```
+  ```javascript
+  tags.docker-type = 'container'
+    && tags.status != 'deleted'
+  ```
 
-* Entity collects the specified property type
+* Entity collects the specified property type:
 
-```javascript
-properties('oem.oracle_database').size() > 0
-```
+  ```javascript
+  hasProperty('oem.oracle_database')
+  ```
 
-* Entity collects the specified metric
+* Entity collects the specified metric:
 
-```javascript
-hasMetric('mpstat.cpu_busy')
-```
+  ```javascript
+  hasMetric('mpstat.cpu_busy')
+  ```
 
-* Entity collected the specified metric within N hours
+* Entity collected the specified metric within `n` hours:
 
-```javascript
-hasMetric('mpstat.cpu_busy', 24*7)
-```
+  ```javascript
+  hasMetric('mpstat.cpu_busy', 24*7)
+  ```
 
-* Entity property tag value matches the given expression
+* Entity property tag value matches the given expression:
 
-```javascript
-properties('cfg').prog != '' && properties('cfg').prog NOT LIKE 'topas*'
-```
+  ```javascript
+  properties('cfg').prog != ''
+    && properties('cfg').prog NOT LIKE 'topas*'
+  ```
 
-* Entity is a member of another group
+* Entity is a member of another group:
 
-```javascript
-memberOf('all-linux-servers') && tags.location = 'SVL'
-```
+  ```javascript
+  memberOf('all-linux-servers')
+    && tags.location = 'SVL'
+  ```
+
+### Entity Views
+
+[Entity views](./entity_views.md) are customized tabular formats for displaying key attributes for entities of the same type. Entity views are inherited from the parent Entity Group if one is defined. Assign a new entity view to the current entity group using the dual list under the **Entity Views** pane.
+
+![](./images/entity-view-add.png)
+
+Once an entity group belongs to an entity view, it is available directly from the main menu under the **Entity Views** tab.
+
+![](./images/entity-views-menu.png)
+
+> For more information about configuring entity views, see [Entity View Documentation](./entity_views.md#settings)

@@ -4,10 +4,12 @@ The rule engine enables automation of repetitive tasks based on real-time statis
 
 Such tasks include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](notifications/README.md) alert, or generating derived statistics.
 
+![](./images/rule_actions_list.png)
+
 The engine evaluates incoming `series`, `message`, and `property` commands and executes response actions when appropriate:
 
 ```javascript
-IF condition = true THEN action-1, ... action-N
+IF condition THEN action-1 ... action-N
 ```
 
 Example
@@ -16,7 +18,11 @@ Example
 IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
-A rule [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value`](functions-value.md), [`database`](functions-series.md), and [`rule`](functions-rules.md) functions.
+A rule [condition](condition.md) can operate on a single metric or correlate multiple metrics using [`value`](functions-value.md), [`database`](functions-series.md), and [`rule`](functions-rules.md) functions.
+
+```javascript
+max() > 1.5 && value('temperature') > 50
+```
 
 ## Processing Pipeline
 
@@ -261,10 +267,10 @@ Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrie
 
 ### Rule Windows
 
- Rule windows are initialized in memory and are displayed on the **Alerts > Rule Errors** page. If no windows are present for the given rule, check that the rule is enabled and that data is not discarded by one of the [filters](filters.md).
+ Rule windows are initialized in memory and are displayed on the **Alerts > Rule Windows** page. If no windows are present for the given rule, check that the rule is enabled and that data is not discarded by one of the [filters](filters.md).
 
 ![](./images/alert-rule-windows.png)
 
 ### Rule Errors
 
-Rule Errors can occur in case of invalid or malformed expressions. The **Alerts > Rule Errors** page contains the list of most recent errors as well as the relevant context and the command details.
+Rule Errors can occur in case of invalid or malformed expressions. The **Alerts > Rule Errors** page contains the list of most recent errors as well as the relevant context and the command details. The errors are also logged as messages by entity `atsd` with type `rule-error` and source `rule-engine`.

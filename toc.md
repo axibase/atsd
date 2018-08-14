@@ -70,7 +70,7 @@
 
 ## Installation
 
-* [Requirements](administration/requirements.md)
+* [Requirements](installation/requirements.md)
 * [Distributions](installation/README.md)
   * [Ubuntu/Debian (apt)](installation/ubuntu-debian-apt.md)
   * [Ubuntu/Debian  (deb)](installation/ubuntu-debian-deb.md)

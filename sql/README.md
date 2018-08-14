@@ -60,6 +60,7 @@ SELECT { * | { expr [ .* | [ AS ] alias ] } }
   [ WITH ROW_NUMBER expr ]
 [ WITH LAST_TIME expr ]
 [ WITH INTERPOLATE expr ]
+[ WITH TIMEZONE expr ]
 [ ORDER BY expr [{ ASC | DESC }] [, ...] ]
 [ LIMIT count [ OFFSET skip ]]
   [ OPTION(expr) [...]]
@@ -264,8 +265,8 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`tags.{name}`    |string   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
 |`tags`           |string   | All series tags, concatenated to `name1=value;name2=value` format.|
 |`tags.*`         |string   | Expands to multiple columns, each column containing a separate series tag.|
-|`datetime`       |timestamp | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period **start** time in ISO format, same as `date_format(PERIOD(...))`.|
-|`time`           |long     | Sample time in Unix milliseconds since 1970-01-01T00:00:00Z, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
+|`datetime`       |timestamp | Sample time in [ISO format](../shared/date-format.md), for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period **start** time in [ISO format](../shared/date-format.md), same as `date_format(PERIOD(...))`.|
+|`time`           |long     | Sample Unix time in milliseconds, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
 
 #### Metric Columns
 
@@ -283,7 +284,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
-|`metric.lastInsertTime`|string | Last time a value is received for this metric by any series. ISO date.|
+|`metric.lastInsertTime`|string | Last time a value is received for this metric by any series. [ISO format](../shared/date-format.md) date.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
 |`metric.versioning`|boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
@@ -588,7 +589,7 @@ ORDER BY datetime
 
 ### Group By Columns
 
-In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (the period start time) in ISO format. In this case, `date_format(PERIOD(5 MINUTE))` can be replaced with `datetime` in the `SELECT` expression.
+In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (the period start time) in [ISO format](../shared/date-format.md). In this case, `date_format(PERIOD(5 MINUTE))` can be replaced with `datetime` in the `SELECT` expression.
 
 ```sql
 SELECT entity, datetime, date_format(PERIOD(5 MINUTE)), AVG(value)
@@ -995,8 +996,8 @@ The `CASE` expressions can be nested by using `CASE` within the `result_expressi
 CASE date_format(time, 'yyyy')
     WHEN '2016' THEN
       CASE
-        WHEN CAST(date_format(time, 'D') AS NUMBER) > 5 THEN '17'
-        ELSE '16'
+        WHEN IS_WEEKDAY(time, 'USA') THEN '16'
+        ELSE '17'
       END
     WHEN '2017' THEN '18'
     WHEN '2018' THEN '17'
@@ -1038,7 +1039,7 @@ Literal date values specified using short formats are expanded to the complete d
 * `'2017-05'    == '2017-05-01 00:00:00'`
 * `'2017'       == '2017-01-01 00:00:00'`
 
-The `time` column accepts Unix milliseconds:
+The `time` column accepts Unix time in milliseconds:
 
 ```sql
 SELECT time, entity, value
@@ -1053,15 +1054,22 @@ The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to
 
 Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause can be inefficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
+* `WHERE` Clause
+
 ```sql
 WHERE date_format(time, 'yyyy') > '2018'   -- Slow: full scan with string comparison.
 WHERE YEAR(time) > 2018                    -- Slow: full scan with number comparison.
 WHERE datetime >= '2018'                   -- Fast: date range scan using an indexed column.
+WHERE datetime BETWEEN '2018' AND '2019'   -- Fast: date range scan using an indexed column.
 WHERE datetime >= '2018-01-01T00:00:00Z'   -- Fast: date range scan using an indexed column.
+```
 
+* `GROUP BY` Clause
+
+```sql
 GROUP BY date_format(time, 'yyyy')         -- Slow.
 GROUP BY YEAR(time)                        -- Slow.
-GROUP BY PERIOD(1 YEAR)                    -- Fast.
+GROUP BY PERIOD(1 YEAR)                    -- Fast: built-in date aggregation
 ```
 
 ### Calendar Expressions
@@ -1099,7 +1107,7 @@ AND datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY, '
 
 ### Local Time Boundaries
 
-To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix milliseconds.
+To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix time with millisecond granularity.
 
 ```sql
 SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') AS local_datetime, value
@@ -1259,14 +1267,14 @@ GROUP BY PERIOD({count} {unit} [, option])
 * `align` = START_TIME, END_TIME, FIRST_VALUE_TIME, CALENDAR
 * `timezone` = [Time Zone ID](../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
 
-The options are separated by a comma and can be specified in any order.
+The `PERIOD` options can be specified in any order and are separated by a comma.
 
 ```sql
 PERIOD(5 MINUTE)
 PERIOD(5 MINUTE, END_TIME)
 PERIOD(5 MINUTE, CALENDAR, VALUE 0)
 PERIOD(1 HOUR, LINEAR, EXTEND)
-PERIOD(1 DAY, "US/Eastern")
+PERIOD(1 DAY, 'US/Eastern')
 PERIOD(1 DAY, entity.timeZone)
 ```
 
@@ -2348,11 +2356,11 @@ The `LAST` function returns the value of the last sample (or the value of expres
 
 #### MIN_VALUE_TIME
 
-The `MIN_VALUE_TIME` function returns the Unix time in milliseconds (LONG datatype) of the first occurrence of the **minimum** value.
+The `MIN_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **minimum** value.
 
 #### MAX_VALUE_TIME
 
-The `MAX_VALUE_TIME` function returns the Unix time in milliseconds (LONG datatype) of the first occurrence of the **maximum** value.
+The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **maximum** value.
 
 #### CORREL
 
@@ -2393,17 +2401,11 @@ The `date_format` function formats Unix millisecond time to a string in user-def
 date_format(long milliseconds[, string time_format[, string time_zone]])
 ```
 
-If the `time_format` argument is not provided, ISO 8601 format is applied.
+If the `time_format` argument is not provided, [ISO format](../shared/date-format.md) is applied.
 
 The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
 
 In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database time zone is applied.
-
-If the provided pattern letters are not sufficient, use String and Math functions to apply custom formatting:
-
-```sql
-CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"
-```
 
 Examples:
 
@@ -2415,18 +2417,16 @@ Examples:
 * `date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PDT')`
 * `date_format(time, 'yyyy-MM-dd HH:mm:ss', entity.timeZone)`
 * `date_format(time, 'yyyy-MM-dd HH:mm:ss', AUTO)`
-* `CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"`
 
 ```sql
 SELECT entity, datetime, metric.timeZone AS "Metric TZ", entity.timeZone AS "Entity TZ",
   date_format(time) AS "default",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS "ISO 8601",
+  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS "ISO Format",
   date_format(time, 'yyyy-MM-dd HH:mm:ss') AS "Local Database",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PDT') AS "PDT",
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', 'PDT') AS " PDT t/z",
-  date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', AUTO) AS "AUTO: CST", -- nurswgvml006 is in CST
-  CEIL(CAST(date_format(time, 'M') AS NUMBER)/3) AS "Quarter"
+  date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', AUTO) AS "AUTO: CST" -- nurswgvml006 is in CST
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 5*MINUTE
   AND entity = 'nurswgvml006'
@@ -2434,9 +2434,9 @@ FROM "mpstat.cpu_busy"
 ```
 
 ```ls
-| entity       | datetime                 | Metric TZ  | Entity TZ   | default                  | ISO 8601             | Local Database        | GMT Offset          | PDT                 | PDT t/z                   | AUTO: CST                 | Quarter |
-|--------------|--------------------------|------------|-------------|--------------------------|----------------------|-----------------------|---------------------|---------------------|---------------------------|---------------------------|---------|
-| nurswgvml006 | 2017-04-06T11:03:19.000Z | US/Eastern | US/Mountain | 2017-04-06T11:03:19.000Z | 2017-04-06T11:03:19Z | 2017-04-06 11:03:19   | 2017-04-06 03:03:19 | 2017-04-06 04:03:19 | 2017-04-06 04:03:19-07:00 | 2017-04-06 05:03:19-06:00 | 2       |
+| entity       | datetime                 | Metric TZ  | Entity TZ   | default                  | ISO Format             | Local Database        | GMT Offset          | PDT                 | PDT t/z                   | AUTO: CST                 |
+|--------------|--------------------------|------------|-------------|--------------------------|----------------------|-----------------------|---------------------|---------------------|---------------------------|---------------------------|
+| nurswgvml006 | 2017-04-06T11:03:19.000Z | US/Eastern | US/Mountain | 2017-04-06T11:03:19.000Z | 2017-04-06T11:03:19Z | 2017-04-06 11:03:19   | 2017-04-06 03:03:19 | 2017-04-06 04:03:19 | 2017-04-06 04:03:19-07:00 | 2017-04-06 05:03:19-06:00 |
 ```
 
 ```ls
@@ -2453,7 +2453,7 @@ FROM "mpstat.cpu_busy"
 | date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')           | 2017-07-13 05:07:55-07:00  |
 ```
 
-The `date_format` function can also be used to print period start and end times:
+The `date_format` function can be used to print period start and end times.
 
 ```sql
 SELECT datetime AS period_start, date_format(time+60*60000) AS period_end, AVG(value)
@@ -2464,25 +2464,25 @@ GROUP BY PERIOD(1 HOUR)
 ```
 
 ```ls
-| period_start             | period_end               | AVG(value) |
-|--------------------------|--------------------------|------------|
-| 2017-08-25T00:00:00.000Z | 2017-08-25T01:00:00.000Z | 7.7        |
-| 2017-08-25T01:00:00.000Z | 2017-08-25T02:00:00.000Z | 8.2        |
-| 2017-08-25T02:00:00.000Z | 2017-08-25T03:00:00.000Z | 6.7        |
+| period_start         | period_end           | AVG(value) |
+|----------------------|----------------------|------------|
+| 2017-08-25T00:00:00Z | 2017-08-25T01:00:00Z | 7.7        |
+| 2017-08-25T01:00:00Z | 2017-08-25T02:00:00Z | 8.2        |
+| 2017-08-25T02:00:00Z | 2017-08-25T03:00:00Z | 6.7        |
 ```
 
 In addition to formatting, the `date_format` function can be used in the `WHERE`, `GROUP BY`, and `HAVING` clauses to filter and group dates by month, day, or hour.
 
 ```sql
-SELECT date_format(time, 'EEE'), AVG(value)
+SELECT date_format(time, 'eee'), AVG(value)
 FROM "mpstat.cpu_busy"
   WHERE datetime >= CURRENT_MONTH
-GROUP BY date_format(time, 'EEE')
+GROUP BY date_format(time, 'eee')
   ORDER BY 2 DESC
 ```
 
 ```ls
-| date_format(time,'EEE') | AVG(value) |
+| date_format(time,'eee') | AVG(value) |
 |-------------------------|------------|
 | Mon                     | 31.9       |
 | Wed                     | 31.8       |
@@ -2496,15 +2496,15 @@ GROUP BY date_format(time, 'EEE')
 Refer to [diurnal](examples/diurnal.md) query examples.
 
 By retrieving date parts from the `time` column, the records can be filtered by calendar.
-The query below includes only daytime hours (from 08:00 till 17:59) during weekdays (Monday till Friday).
+The query below includes samples recorded only during daytime hours (from 08:00 till 17:59) on weekdays (Monday till Friday).
 
 ```sql
-SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)
+SELECT datetime, date_format(time, 'eee') AS "day of week", avg(value), count(value)
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime >= previous_week AND datetime < current_week
   AND CAST(date_format(time, 'H') AS number) BETWEEN 8 AND 17
-  AND date_format(time, 'u') < 6
+  AND is_weekday(time, 'USA')
 GROUP BY PERIOD(1 hour)
 ```
 
@@ -2520,20 +2520,20 @@ GROUP BY PERIOD(1 hour)
 
 #### DATE_PARSE
 
-The `date_parse` function parses the date and time string into Unix milliseconds.
+The `date_parse` function parses the date and time string into Unix time with millisecond granularity.
 
 ```java
 date_parse(string datetime[, string time_format[, string time_zone]])
 ```
 
-* The default `time_format` is ISO 8601: `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters [here](../shared/time-pattern.md).
+* The default `time_format` is [ISO format](../shared/date-format.md): `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../shared/time-pattern.md).
 * The default `time_zone` is the database time zone.
 
 ```sql
-/* Parse date using the default ISO 8601 format.*/
+/* Parse date using the default ISO format.*/
 date_parse('2017-03-31T12:36:03.283Z')
 
-/* Parse date using the ISO 8601 format, without milliseconds */
+/* Parse date using the ISO format, without milliseconds */
 date_parse('2017-03-31T12:36:03Z', 'yyyy-MM-dd''T''HH:mm:ssZZ')
 
 /* Parse date using the database time zone. */
@@ -2610,15 +2610,15 @@ GROUP BY PERIOD(1 DAY)
 
 #### EXTRACT
 
-The `extract` function returns an integer value corresponding to the specified part (component) of the provided date.
+The function returns an integer value corresponding to the specified calendar part (component) of the provided date.
 
 ```sql
-EXTRACT(datepart FROM datetime | time | datetime expression)
+EXTRACT(datepart FROM datetime | time | datetime expression [, timezone])
 ```
 
 The `datepart` argument can be `YEAR`, `QUARTER`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, or `SECOND`.
 
-The evaluation is based on the database time zone. The date argument can refer to the `time` or `datetime` columns including support for calendar expressions.
+The evaluation is based on the **database** time zone unless a custom [time zone](../shared/timezone-list.md) is specified. The date argument can refer to the `time` or `datetime` columns and [calendar](../shared/calendar.md) keywords and expressions..
 
 ```sql
 SELECT datetime,
@@ -2630,15 +2630,18 @@ SELECT datetime,
   EXTRACT(minute FROM datetime) AS "minute",
   EXTRACT(second FROM datetime) AS "second",
   EXTRACT(day FROM now - 1*DAY) AS "prev_day",
-  EXTRACT(month FROM now + 1*MONTH) AS "next_month"
-FROM "mpstat.cpu_busy"
-  WHERE datetime > current_hour
+  EXTRACT(month FROM now + 1*MONTH) AS "next_month",
+  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul') AS "date_local",
+  EXTRACT(day FROM datetime, 'Asia/Seoul') AS "day_local"
+FROM "cpu_busy"
+  WHERE datetime >= '2018-08-05T21:00:00Z'
+  LIMIT 1
 ```
 
 ```ls
-| datetime             | year | quarter | month | day | hour | minute | second | prev_day | next_month |
-|----------------------|------|---------|-------|-----|------|--------|--------|----------|------------|
-| 2017-07-29T21:00:12Z | 2017 | 3       | 7     | 29  | 21   | 0      | 12     | 28       | 8          |
+| datetime             | year | quarter | month | day | hour | minute | second | prev_day | next_month | date_local          | day_local |
+|----------------------|------|---------|-------|-----|------|--------|--------|----------|------------|---------------------|-----------|
+| 2018-08-05T21:00:04Z | 2018 | 3       | 8     | 5   | 21   | 0      | 4      | 6        | 9          | 2018-08-06 06:00:04 | 6         |
 ```
 
 #### SECOND
@@ -2654,7 +2657,7 @@ SECOND (datetime | time | datetime expression)
 The `minute` function returns the current minutes in the provided date.
 
 ```sql
-MINUTE (datetime | time | datetime expression)
+MINUTE (datetime | time | datetime expression [, timezone])
 ```
 
 #### HOUR
@@ -2662,7 +2665,7 @@ MINUTE (datetime | time | datetime expression)
 The `hour` function returns the current hour of the day (0 - 23) in the provided date.
 
 ```sql
-HOUR (datetime | time | datetime expression)
+HOUR (datetime | time | datetime expression [, timezone])
 ```
 
 #### DAY
@@ -2670,7 +2673,7 @@ HOUR (datetime | time | datetime expression)
 The `day` function returns the current day of month in the provided date.
 
 ```sql
-DAY (datetime | time | datetime expression)
+DAY (datetime | time | datetime expression [, timezone])
 ```
 
 #### DAYOFWEEK
@@ -2678,7 +2681,7 @@ DAY (datetime | time | datetime expression)
 The `dayofweek` function returns the current day of week (1-7, starting with Monday) in the provided date.
 
 ```sql
-DAYOFWEEK (datetime | time | datetime expression)
+DAYOFWEEK (datetime | time | datetime expression [, timezone])
 ```
 
 #### MONTH
@@ -2686,7 +2689,7 @@ DAYOFWEEK (datetime | time | datetime expression)
 The `month` function returns the current month (1-12) in the provided date.
 
 ```sql
-MONTH (datetime | time | datetime expression)
+MONTH (datetime | time | datetime expression [, timezone])
 ```
 
 #### QUARTER
@@ -2694,7 +2697,7 @@ MONTH (datetime | time | datetime expression)
 The `quarter` function returns the current quarter of the year in the provided date.
 
 ```sql
-QUARTER (datetime | time | datetime expression)
+QUARTER (datetime | time | datetime expression [, timezone])
 ```
 
 #### YEAR
@@ -2702,12 +2705,12 @@ QUARTER (datetime | time | datetime expression)
 The `year` function returns the current year in the provided date.
 
 ```sql
-YEAR (datetime | time | datetime expression)
+YEAR (datetime | time | datetime expression [, timezone])
 ```
 
 #### CURRENT_TIMESTAMP
 
-The `CURRENT_TIMESTAMP` function returns current database time in ISO 8601 format. The function is analogous to the `NOW` functions which returns current database time in Unix milliseconds.
+The `CURRENT_TIMESTAMP` function returns current database time in [ISO format](../shared/date-format.md). The function is analogous to the `NOW` functions which returns current database time (Unix time, millisecond granularity).
 
 ```sql
 SELECT CURRENT_TIMESTAMP
@@ -2727,6 +2730,150 @@ The `DBTIMEZONE` function returns the current database time zone name or offset.
 ```sql
 SELECT DBTIMEZONE
 -- returns GMT0
+```
+
+#### IS_WORKDAY
+
+The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../rule-engine/workday-calendar.md), which is typically the three-letter country code such as `USA`.
+
+```sql
+IS_WORKDAY(datetime | time | datetime expression, calendar_key [, timezone])
+```
+
+Notes:
+
+* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in the **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../rule-engine/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and the calendar key is `USA`, the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for the list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday. Thus, the function returns `false`, though the date is a Wednesday.
+* The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
+
+```sql
+SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date",
+  date_format(datetime, 'eee') AS "Day of Week",
+  date_format(datetime, 'u') AS "DoW Number",
+  is_workday(datetime, 'USA') AS "USA Work Day",
+  is_workday(datetime, 'ISR') AS "Israel Work Day"
+FROM "mpstat.cpu_busy"
+  WHERE datetime BETWEEN '2018-07-02' AND '2018-07-09'
+GROUP BY PERIOD(1 day)
+  ORDER BY datetime
+```
+
+```ls
+| Date       | Day of Week | DoW Number | USA Work Day | Israel Work Day |
+|------------|-------------|------------|--------------|-----------------|
+| 2018-07-02 | Mon         | 1          | true         | true            |
+| 2018-07-03 | Tue         | 2          | true         | true            |
+| 2018-07-04 | Wed         | 3          | false (!)    | true            | <-- 4th of July holiday observed in the USA
+| 2018-07-05 | Thu         | 4          | true         | true            |
+| 2018-07-06 | Fri         | 5          | true         | false           |
+| 2018-07-07 | Sat         | 6          | false        | false           |
+| 2018-07-08 | Sun         | 7          | false        | true            |
+```
+
+To check if the date argument is a working day in the **local** time zone, call the function with the custom time zone.
+
+```sql
+is_workday(time, 'USA', 'US/Pacific')
+```
+
+#### IS_WEEKDAY
+
+The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../rule-engine/workday-calendar.md), which is typically the three-letter country code such as `USA`. Weekdays are Monday to Friday in the USA and Sunday to Thursday in Israel, for example.
+
+Unlike the `IS_WORKDAY`, the `IS_WEEKDAY` function **ignores** observed holidays.
+
+```sql
+IS_WEEKDAY(datetime | time | datetime expression, calendar_key [, timezone])
+```
+
+```sql
+SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date",
+  date_format(datetime, 'eee') AS "Day of Week",
+  date_format(datetime, 'u') AS "DoW Number",
+  is_workday(datetime, 'USA') AS "USA Work Day",
+  is_weekday(datetime, 'USA') AS "USA Week Day",
+  is_workday(datetime, 'ISR') AS "Israel Work Day",
+  is_weekday(datetime, 'ISR') AS "Israel Week Day"
+FROM "mpstat.cpu_busy"
+  WHERE datetime BETWEEN '2018-05-18' AND '2018-05-30'
+GROUP BY PERIOD(1 day)
+  ORDER BY datetime
+```
+
+```ls
+| Date        | Day of Week  | DoW Number  | USA Work Day  | USA Week Day  | Israel Work Day  | Israel Week Day |
+|-------------|--------------|-------------|---------------|---------------|------------------|-----------------|
+| 2018-05-18  | Fri          | 5           | true          | true          | false            | false           |
+| 2018-05-19  | Sat          | 6           | false         | false         | false            | false           |
+| 2018-05-20  | Sun          | 7           | false         | false         | false (!)        | true            | <-- Pentecost
+| 2018-05-21  | Mon          | 1           | true          | true          | true             | true            |
+| 2018-05-22  | Tue          | 2           | true          | true          | true             | true            |
+| 2018-05-23  | Wed          | 3           | true          | true          | true             | true            |
+| 2018-05-24  | Thu          | 4           | true          | true          | true             | true            |
+| 2018-05-25  | Fri          | 5           | true          | true          | false            | false           |
+| 2018-05-26  | Sat          | 6           | false         | false         | false            | false           |
+| 2018-05-27  | Sun          | 7           | false         | false         | true             | true            |
+| 2018-05-28  | Mon          | 1           | false (!)     | true          | true             | true            | <-- Memorial Day
+| 2018-05-29  | Tue          | 2           | true          | true          | true             | true            |
+```
+
+#### `WITH TIMEZONE`
+
+The `WITH TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
+
+```sql
+WITH TIMEZONE = timezone
+```
+
+```sql
+SELECT DBTIMEZONE,
+  date_format(time, 'yyyy-MM-dd HH:mm z') AS "period_start_default",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "period_start_utc",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "period_start_local",
+  AVG(value), COUNT(value)
+FROM "mpstat.cpu_busy"
+  WHERE datetime >= '2018-08-01' AND datetime < '2018-08-03'
+  -- override the default server timezone from UTC to US/Pacific
+  WITH TIMEZONE = 'US/Pacific'
+GROUP BY PERIOD(1 DAY)
+```
+
+```ls
+| DBTIMEZONE  | period_start_default  | period_start_utc      | period_start_local    | avg(value)  | count(value) |
+|-------------|-----------------------|-----------------------|-----------------------|-------------|--------------|
+| Etc/UTC     | 2018-08-01 00:00 PDT  | 2018-08-01 07:00 UTC  | 2018-08-01 00:00 PDT  | 2821.5      | 48           |
+| Etc/UTC     | 2018-08-02 00:00 PDT  | 2018-08-02 07:00 UTC  | 2018-08-02 00:00 PDT  | 2862.5      | 48           |
+```
+
+The same query in the default **database** time zone (UTC) produces the following results:
+
+```ls
+| DBTIMEZONE  | period_start_default  | period_start_utc      | period_start_local    | avg(value)  | count(value) |
+|-------------|-----------------------|-----------------------|-----------------------|-------------|--------------|
+| Etc/UTC     | 2018-08-01 00:00 UTC  | 2018-08-01 00:00 UTC  | 2018-07-31 17:00 PDT  | 2807.5      | 48           |
+| Etc/UTC     | 2018-08-02 00:00 UTC  | 2018-08-02 00:00 UTC  | 2018-08-01 17:00 PDT  | 2855.5      | 48           |
+```
+
+Absent the `WITH TIMEZONE` clause, each function must be individually programmed to account for the custom time zone. In the below example, the time zone adjustments are necessary in the `date_format` function, the `GROUP BY PERIOD` clause, and the selection interval.
+
+```sql
+SELECT DBTIMEZONE,
+  -- the default format must use to US/Pacific time zone, otherwise it displays UTC
+  date_format(time, 'yyyy-MM-dd HH:mm z') AS "period_start_default",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "period_start_utc",
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "period_start_local",
+  AVG(value), COUNT(value)
+FROM "mpstat.cpu_busy"
+  -- shift the start and end date to US/Pacific time zone
+  WHERE datetime >= '2018-08-01T00:00:00-07:00' AND datetime < '2018-08-03T00:00:00-07:00'
+  -- align to day start in US/Pacific time zone
+GROUP BY PERIOD(1 DAY, 'US/Pacific')
+```
+
+```ls
+| DBTIMEZONE  | period_start_default  | period_start_utc      | period_start_local    | avg(value)  | count(value) |
+|-------------|-----------------------|-----------------------|-----------------------|-------------|--------------|
+| Etc/UTC     | 2018-08-01 07:00 UTC  | 2018-08-01 07:00 UTC  | 2018-08-01 00:00 PDT  | 2821.5      | 48           |
+| Etc/UTC     | 2018-08-01 07:00 UTC  | 2018-08-02 07:00 UTC  | 2018-08-02 00:00 PDT  | 2862.5      | 48           |
 ```
 
 ### Mathematical Functions
@@ -3051,7 +3198,7 @@ The result of `CAST(inputNumber AS string)` is formatted with the `#.##` pattern
 
 ## Options
 
-The `OPTION` clause provides hints to the database optimizer on how to execute the given query most efficiently.
+The `OPTION` clause provides hints to the database optimizer on how to execute the given query most efficiently. Unlike the `WITH` clause, the option does not change the results of the query.
 
 The query can contain multiple `OPTION` clauses specified at the end of the statement.
 
@@ -3113,7 +3260,7 @@ While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabil
 * Self-joins are not supported.
 * `LEFT OUTER JOIN` and `RIGHT OUTER JOIN` queries are not supported.
 * Subqueries are supported only by the `BETWEEN` operator applied to the `time` and `datetime` columns.
-* `UNION`, `EXCEPT` and `INTERSECT` operators are not supported. Query [atsd_series](examples/select-atsd_series.md) table as a `UNION ALL` alternative.
+* `UNION`, `EXCEPT` and `INTERSECT` operators are not supported. Query [`atsd_series`](examples/select-atsd_series.md) table as a `UNION ALL` alternative.
 * In case of division by zero, the database returns `NaN` according to the IEEE 754-2008 standard instead of terminating processing with a computational error.
 * The `WITH` operator is supported only in the following clauses: `WITH ROW_NUMBER`, `WITH INTERPOLATE`.
 * The `DISTINCT` operator is not supported and can be emulated with the `GROUP BY` clause in specific cases.

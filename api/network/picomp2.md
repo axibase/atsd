@@ -81,7 +81,7 @@ WHERE tag = 'sinusoid'
 * Numbers must be formatted using dot (`.`) as the decimal separator and without the grouping separator.
 * Empty fields and fields with literal `null` values are ignored.
 
-## `series` Command Mappings
+## series Command Mappings
 
 | **Command Field** | **Input Field** |
 |:---|:---|

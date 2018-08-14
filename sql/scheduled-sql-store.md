@@ -56,8 +56,8 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| `datetime` | string | `0-1` | The date of the record in ISO 8601 format (1).|
-| `time` | long | `0-1` | The date of the record in Unix milliseconds (1). |
+| `datetime` | string | `0-1` | The date of the record in [ISO format](../shared/date-format.md) (1).|
+| `time` | long | `0-1` | The date of the record in Unix time with millisecond granularity (1). |
 | `entity` | string | `1` | Name of the entity under which the new series is stored. |
 | `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
 

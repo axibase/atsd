@@ -119,7 +119,7 @@ Design a query visually with **SQL Query Designer**:
 ![](./resources/add_query.png)
 
 * Enter an SQL query in the Query editor, for example `SELECT datetime, entity, value FROM jvm_memory_used LIMIT 10`
-* Click **Preview** to review the resultset.
+* Click **Preview** to review the result set.
 
 ![](./resources/preview.png)
 

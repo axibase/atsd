@@ -1,6 +1,6 @@
 # Filter by Date
 
-## Query with ISO 8601 format
+## Query with ISO format
 
 ```sql
 SELECT datetime, value
@@ -17,7 +17,7 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:43.000Z | 6.1   |
 ```
 
-## Query with Local format
+## Query with Local Format
 
 ```sql
 SELECT datetime, value
@@ -34,7 +34,7 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:43.000Z | 6.1   |
 ```
 
-## Query with Short Local format
+## Query with Short Local Format
 
 ```sql
 SELECT datetime, count(value)
@@ -111,9 +111,9 @@ WHERE entity = 'nurswgvml007'
 
 ## Query with End Time Syntax
 
-[Calendar](../../shared/calendar.md) keywords are calculated based on the current server time and the server [time zone](../../shared/timezone-list.md).
+[Calendar](../../shared/calendar.md) keywords are calculated based on current server time and [time zone](../../shared/timezone-list.md).
 
-If the server time zone is `Europe/Berlin`, for example, the `current_day` keyword in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
+If the server time zone is `Europe/Berlin`, for example, `current_day` in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS local_datetime, value
@@ -142,9 +142,9 @@ series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 
 ## Query with End Time Syntax in Custom Time Zone
 
-The `endtime()` function enables specifying a user-defined [time zone](../../shared/timezone-list.md) when evaluating [calendar](../../shared/calendar.md) keywords and expressions.
+With the `endtime()` function, specify a user-defined [time zone](../../shared/timezone-list.md) to evaluate [calendar](../../shared/calendar.md) keywords and expressions.
 
-The following example selects data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST time zone, even though the server itself runs in UTC time zone.
+The following example selects data between `0h:0m:0s` of the previous day and `0h:0m:0s` of the current day in PST time zone, even though the server runs in UTC time zone.
 
 ```sql
 SELECT value, datetime,
@@ -169,7 +169,7 @@ LIMIT 3
 | 13.4   | 2018-06-12T06:59:47.000Z  | 2018-06-12T06:59:47.000Z  | 2018-06-12T06:59:47UTC  | 2018-06-12T06:59:47+0000  | 2018-06-11T23:59:47PDT |
 ```
 
-## Query using Local Time
+## Query Using Local Time
 
 ```sql
 SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') AS local_datetime, value
@@ -187,13 +187,13 @@ SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vi
 | 2017-05-01 10:00:47 | 2017-05-01 12:00:47 | 3.0900 |
 ```
 
-## Query using `BETWEEN`
+## Query Using `BETWEEN`
 
-The `BETWEEN` operator is inclusive and includes samples recorded at both the start and the end of the interval.
+The `BETWEEN` operator selects samples recorded between the start and end of the defined interval. `BETWEEN` is an inclusive operator, thus the interval start and end dates are included in the result.
 
 The expression `datetime BETWEEN t1 and t2` is equivalent to `datetime >= t1 and datetime <= t2`.
 
-To emulate a half-open `[)` interval subtract 1 millisecond from an `AND` value.
+To emulate a half-open `[)` interval subtract `1` millisecond from the `AND` value.
 
 ```sql
 SELECT datetime, value
@@ -218,12 +218,12 @@ datetime >= '2016-06-18T20:00:00.000Z' AND datetime < '2016-06-18T21:00:00.000Z'
 
 ## Query using `BETWEEN` Subquery
 
-The `BETWEEN` operator allows specifying a subquery that must return a result set containing multiple rows with 1 column.
+The `BETWEEN` operator can include a subquery that returns a result set containing multiple rows with one column.
 
 * If the subquery returns no values, the condition evaluates to `false`, and no rows are returned.
-* If the subquery returns only one value, the timestamp of such value determines the lower boundary of the time interval and the upper boundary is not defined.
-* If there are 2 values, the second value must be greater or equal the first value.
-* If there are more than 2 values, then each pair of values is processed as a separate time interval.
+* If the subquery returns only one value, the timestamp of this value determines the lower boundary of the time interval and the upper boundary is not defined.
+* If there are two values, the second value must be greater than or equal to the first value.
+* If there are more than two values, each pair of values is processed as a separate time interval.
 
 > The intervals in the result set can be identified with the [`INTERVAL_NUMBER()`](../README.md#interval_number) function.
 
@@ -343,7 +343,7 @@ WHERE entity = 'nurswgvml007'
 ## Query to Interpolate Multiple Intervals
 
 Multiple intervals are treated separately for the purpose of interpolating and regularizing values.
-In particular, the values between such intervals are not interpolated and not regularized.
+The values between intervals are neither interpolated nor regularized.
 
 ```sql
 SELECT datetime, value
@@ -395,16 +395,16 @@ WHERE entity = 'nurswgvml007'
 
 ## Query by Calendar
 
-Use the `date_format` OR `extract` function to retrieve date parts from date for the purpose of filtering.
-The below query includes only weekdays (Monday till Friday) and daytime hours (from 08:00 till 17:59).
+Use the `date_format` **or** `extract` function to retrieve parts from a date for the purpose of filtering.
+The below query includes only weekdays (Monday through Friday) and daytime hours (08:00 to 17:59).
 
 ```sql
-SELECT datetime, date_format(time, 'EEE') AS "day of week", avg(value), count(value)
+SELECT datetime, date_format(time, 'eee') AS "day of week", avg(value), count(value)
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime >= previous_week AND datetime < current_week
   AND CAST(date_format(time, 'H') AS number) BETWEEN 8 AND 17
-  AND date_format(time, 'u') < 6
+  AND is_weekday(time, 'USA')
 GROUP BY PERIOD(1 hour)
 ```
 
@@ -461,4 +461,130 @@ GROUP BY PERIOD(1 hour)
 | 2018-03-16 15:00:00  | Fri          | 15.914      | 223          |
 | 2018-03-16 16:00:00  | Fri          | 11.423      | 225          |
 | 2018-03-16 17:00:00  | Fri          | 52.672      | 224          |
+```
+
+## Query by Workday or Weekday
+
+Use `IS_WORKDAY` **or** `IS_WEEKDAY` function to filter holidays, weekdays, and workdays for a specific calendar.
+
+The query below shows averages during observed holidays (non-working weekdays) in the USA.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MMM-dd') AS "date",
+  date_format(datetime, 'eee') AS "Day of Week",
+  AVG(value) AS "Average"
+FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2018' AND '2019'
+  AND IS_WEEKDAY(datetime, 'USA')
+  AND NOT IS_WORKDAY(datetime, 'USA')
+GROUP BY PERIOD(1 day)
+```
+
+```ls
+| date         | Day of Week  | Average |
+|--------------|--------------|---------|
+| 2018-Jan-01  | Mon          | 12.0    |
+| 2018-Jan-15  | Mon          | 13.2    |
+| 2018-May-28  | Mon          | 14.0    |
+| 2018-Jul-04  | Wed          |  9.7    |
+| 2018-Sep-03  | Mon          | 20.3    |
+| 2018-Nov-12  | Mon          | 11.0    |
+| 2018-Nov-22  | Thu          | 11.4    |
+| 2018-Dec-25  | Tue          | 14.3    |
+```
+
+The same query for Canada returns fewer observed holidays.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MMM-dd') AS "date",
+  date_format(datetime, 'eee') AS "Day of Week",
+  AVG(value) AS "Average"
+FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2018' AND '2019'
+  AND IS_WEEKDAY(datetime, 'CAN')
+  AND NOT IS_WORKDAY(datetime, 'CAN')
+GROUP BY PERIOD(1 day)
+```
+
+```ls
+| date         | Day of Week  | Average |
+|--------------|--------------|---------|
+| 2018-Jan-01  | Mon          | 11.2    |
+| 2018-Mar-30  | Fri          | 12.0    |
+| 2018-Sep-03  | Mon          | 10.4    |
+| 2018-Dec-25  | Tue          |  8.1    |
+```
+
+## Query by Workday or Weekday in Local Time Zone
+
+If the target calendar time zone differs from the database time zone, specify the time zone explicitly to check exceptions in local time zone.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MMM-dd HH:mm', 'UTC') AS "date_utc",
+  date_format(datetime, 'yyyy-MMM-dd HH:mm', 'Asia/Seoul') AS "date_local",
+  date_format(datetime, 'eee', 'Asia/Seoul') AS "day_of_week_local",
+  IS_WEEKDAY(datetime, 'kor', 'Asia/Seoul') AS "weekday",
+  IS_WORKDAY(datetime, 'kor', 'Asia/Seoul') AS "workday",
+  COUNT(value) AS "Count"
+FROM "mpstat.cpu_busy"
+WHERE datetime >= date_parse('2018', 'yyyy', 'Asia/Seoul')
+  AND datetime  < date_parse('2019', 'yyyy', 'Asia/Seoul')
+  AND IS_WEEKDAY(datetime, 'kor', 'Asia/Seoul')
+  AND NOT IS_WORKDAY(datetime, 'kor', 'Asia/Seoul')
+GROUP BY PERIOD(1 day, 'Asia/Seoul')
+```
+
+```ls
+| date_utc           | date_local         | day_of_week_local  | weekday  | workday  | Count |
+|--------------------|--------------------|--------------------|----------|----------|-------|
+| 2017-Dec-31 15:00  | 2018-Jan-01 00:00  | Mon                | true     | false    | 48    |
+| 2018-Feb-14 15:00  | 2018-Feb-15 00:00  | Thu                | true     | false    | 48    |
+| 2018-Feb-15 15:00  | 2018-Feb-16 00:00  | Fri                | true     | false    | 48    |
+| 2018-Feb-28 15:00  | 2018-Mar-01 00:00  | Thu                | true     | false    | 48    |
+| 2018-May-06 15:00  | 2018-May-07 00:00  | Mon                | true     | false    | 48    |
+| 2018-May-21 15:00  | 2018-May-22 00:00  | Tue                | true     | false    | 48    |
+| 2018-Jun-05 15:00  | 2018-Jun-06 00:00  | Wed                | true     | false    | 48    |
+| 2018-Jun-12 15:00  | 2018-Jun-13 00:00  | Wed                | true     | false    | 48    |
+| 2018-Aug-14 15:00  | 2018-Aug-15 00:00  | Wed                | true     | false    | 48    |
+| 2018-Sep-23 15:00  | 2018-Sep-24 00:00  | Mon                | true     | false    | 48    |
+| 2018-Sep-24 15:00  | 2018-Sep-25 00:00  | Tue                | true     | false    | 48    |
+| 2018-Sep-25 15:00  | 2018-Sep-26 00:00  | Wed                | true     | false    | 48    |
+| 2018-Oct-02 15:00  | 2018-Oct-03 00:00  | Wed                | true     | false    | 48    |
+| 2018-Oct-08 15:00  | 2018-Oct-09 00:00  | Tue                | true     | false    | 48    |
+| 2018-Dec-24 15:00  | 2018-Dec-25 00:00  | Tue                | true     | false    | 48    |
+```
+
+If time zone is not specified, the `IS_WORKDAY` checks the date in **server** time zone.
+
+```sql
+SELECT date_format(datetime, 'yyyy-MM-dd HH:mm') AS "date_utc",
+  date_format(datetime, 'yyyy-MM-dd HH:mm', 'US/Pacific') AS "date_local",
+  date_format(datetime, 'eee') AS "day_of_week",
+  date_format(datetime, 'eee', 'US/Pacific') AS "day_of_week_local",
+  is_workday(datetime, 'USA') AS "workday_utc",
+  is_workday(datetime, 'USA', 'US/Pacific') AS "workday_local"
+FROM "mpstat.cpu_busy"
+WHERE datetime >= date_parse('2018-07-03 14:00', 'yyyy-MM-dd HH:mm', 'US/Pacific')
+  AND datetime  < date_parse('2018-07-04 04:00', 'yyyy-MM-dd HH:mm', 'US/Pacific')
+GROUP BY PERIOD(1 hour)
+  ORDER BY datetime
+```
+
+```ls
+| date_utc          | date_local        | day_of_week  | day_of_week_local  | workday_utc  | workday_local |
+|-------------------|-------------------|--------------|--------------------|--------------|---------------|
+| 2018-07-03 21:00  | 2018-07-03 14:00  | Tue          | Tue                | true         | true          |
+| 2018-07-03 22:00  | 2018-07-03 15:00  | Tue          | Tue                | true         | true          |
+| 2018-07-03 23:00  | 2018-07-03 16:00  | Tue          | Tue                | true         | true          |
+| 2018-07-04 00:00  | 2018-07-03 17:00  | Wed          | Tue                | false (!)    | true          |
+| 2018-07-04 01:00  | 2018-07-03 18:00  | Wed          | Tue                | false (!)    | true          |
+| 2018-07-04 02:00  | 2018-07-03 19:00  | Wed          | Tue                | false (!)    | true          |
+| 2018-07-04 03:00  | 2018-07-03 20:00  | Wed          | Tue                | false (!)    | true          |
+| 2018-07-04 04:00  | 2018-07-03 21:00  | Wed          | Tue                | false (!)    | true          |
+| 2018-07-04 05:00  | 2018-07-03 22:00  | Wed          | Tue                | false (!)    | true          |
+| 2018-07-04 06:00  | 2018-07-03 23:00  | Wed          | Tue                | false (!)    | true          |
+| 2018-07-04 07:00  | 2018-07-04 00:00  | Wed          | Wed                | false        | false         |
+| 2018-07-04 08:00  | 2018-07-04 01:00  | Wed          | Wed                | false        | false         |
+| 2018-07-04 09:00  | 2018-07-04 02:00  | Wed          | Wed                | false        | false         |
+| 2018-07-04 10:00  | 2018-07-04 03:00  | Wed          | Wed                | false        | false         |
 ```

@@ -6,7 +6,7 @@ The log files can be also downloaded from the **Settings > Server Logs** page.
 
 Logs are rolled over and archived according to the retention settings in the `/opt/atsd/atsd/conf/logback.xml` file.
 
-## Log Files
+## ATSD Log Files
 
 |**Log Name**|**Description**|
 |---|:---|
@@ -21,6 +21,31 @@ Logs are rolled over and archived according to the retention settings in the `/o
 |`stop.log`| Stop log.|
 |`err.log`| Standard error. |
 |`alert.log`| Alert log. |
+
+## HBase Log Files
+
+> HBase Log Files section is visible in single-node ATSD installations.
+
+|**Log Name**|**Description**|
+|---|:---|
+|`hbase-<user>-master-<hostname>.log`| `HMaster` log.|
+|`hbase-<user>-regionserver-<hostname>.log`| `RegionServer` log.|
+|`hbase-<user>-zookeeper-<hostname>.log`| `Zookeeper` log.|
+|`hbase.log`| `HBase` default log.|
+|`SecurityAuth.audit`| Security log.|
+
+## HDFS Log Files
+
+> HDFS Log Files section is visible in single-node ATSD installations running in pseudo-distributed mode.
+
+|**Log Name**|**Description**|
+|---|:---|
+|`hadoop-<user>-namenode-<hostname>.log`| `NameNode` log.|
+|`hadoop-<user>-secondarynamenode-<hostname>.log`| `SecondaryNameNode` log.|
+|`hadoop-<user>-datanode-<hostname>.log`| `DataNode` log.|
+|`SecurityAuth.audit`| Security log.|
+
+![](./images/server-logs-atsd.png)
 
 ## Logging Properties
 
@@ -128,7 +153,7 @@ The `%date{ISO8601}` token formats the date in ISO8601 format in local time zone
 2018-06-28 14:11:55,841
 ```
 
-To customize the pattern and the timezone, us the following pattern instead `%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX",UTC}`.
+To customize the date pattern or the time zone, use the following pattern `%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX",UTC}`.
 
 ```txt
 2018-06-28T17:20:00.000Z

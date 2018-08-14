@@ -2,17 +2,17 @@
 
 ## Description
 
-Execute an SQL query and retrieve query results in CSV or JSON format, including optional result metadata.
+This endpoint executes an SQL query and returns the results in CSV or JSON format, with the optional inclusion of result metadata.
 
-To obtain result metadata without executing the query, submit the query to [`/api/sql/meta`](api-meta.md) endpoint.
+To retrieve result set metadata without query execution, submit the query to the [`/api/sql/meta`](api-meta.md) endpoint.
 
 ## Authorization
 
-The rows returned for the SQL query are filtered by the server according to the entity `read` permissions granted to the user.
+The result set is filtered by the database based on the entity `read` [permissions](../administration/user-authorization.md#entity-permissions) granted to the user.
 
-This means that the same query executed by users with different entity permissions can produce different results.
+Thus, the same query executed by users with different entity permissions produces different results.
 
-Scheduled queries are executed under full permissions.
+Scheduled queries are executed with full `All Entities: Read` permissions.
 
 ## Connection Query
 
@@ -22,7 +22,7 @@ To test a connection, execute a query without table reference.
 SELECT 1
 ```
 
-This query can be utilized as a validation query in database connection pool implementations such as [Apache Commons DBCP](https://commons.apache.org/proper/commons-dbcp/configuration.html).
+Use this query for validation in connection pool implementations such as [Apache Commons DBCP](https://commons.apache.org/proper/commons-dbcp/configuration.html).
 
 ## Request
 
@@ -34,27 +34,27 @@ This query can be utilized as a validation query in database connection pool imp
 
 | **Name**| **Type** | **Description** |
 |:---|:---|:---|
-| `q` | string | [**Required**] Query text. |
-| `outputFormat` | string | Output format: `csv` or `json`. Default: `csv`. <br>A special `null` format can be specified for performance testing. If format is `null`, the query is executed but the response output is not produced by the database.|
+| `q` | string | **[Required]** Query text. |
+| `outputFormat` | string | Output format: `csv` or `json`. Default: `csv`. <br>Specify `null` format for performance testing.<br>If format is `null`, the query is executed but the response output is not produced by the database.|
 | `metadataFormat` | string | Metadata format for CSV format. Default: `HEADER`. <br>Allowed values: `NONE`, `HEADER`, `EMBED`, `COMMENTS`. |
-| `queryId` | string | User-defined handle submitted at the request time to identify the query, if it needs to be cancelled. |
-| `limit` | integer | Maximum number of rows to return. Default: 0 (not applied).<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
+| `queryId` | string | User-defined identification submitted at request time to identify the query. Cancel a long-running query with its `queryId`. |
+| `limit` | integer | Maximum number of rows to return.<br>Default: `0`.<br>The number of returned rows is equal to the `limit` parameter or the `LIMIT` clause, whichever is lower.  |
 | `discardOutput` | boolean | If set to `true`, discards the produced content without sending it to the client. |
 | `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe parsing on the client. |
-| `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix milliseconds since `1970-01-01T00:00:00Z`, similar to the `time` column. |
+| `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix time in milliseconds, similar to the `time` column. |
 
-As an alternative, the query can be submitted as text payload with `Content-Type` header set to `text/plain` and other parameters included in the query string.
+> As an alternative, submit the query as a text payload with the `Content-Type` header set to `text/plain` and other parameters included in the query string.
 
 #### limit parameter versus LIMIT clause
 
 | `limit` | `LIMIT` | **Result** |
 |:---|:---|:---|
-| 5 | 3 | 3 |
-| 5 | 10 | 5 |
-| 5 | - | 5 |
-| 0 | 3 | 3 |
-| - | 3 | 3 |
-| - | - | - |
+| `5` | `3` | `3` |
+| `5` | `10` | `5` |
+| `5` | `-` | `5` |
+| `0` | `3` | `3` |
+| `-` | `3` | `3` |
+| `-` | `-` | `-` |
 
 ```java
 statement.setMaxRows(5);
@@ -62,19 +62,19 @@ statement.executeQuery("SELECT datetime, value FROM \"mpstat.cpu_busy\" LIMIT 3"
 //results are limited to 3 records
 ```
 
-### Cancelling the Query
+### Cancelling a Query
 
-The client can cancel an active query by submitting a request to `/api/sql/cancel?queryId={client-query-id}` endpoint.
+Cancel an active query by submitting a request to `/api/sql/cancel?queryId={client-query-id}` endpoint from the client.
 
 The `client-query-id` parameter identifies the query to be cancelled.
 
 ## Response
 
-The response in CSV format is subject to the following formatting rules:
+The CSV formatted response is subject to the following rules:
 
-* String values are enclosed in double-quotes, even if special characters are not present.
+* String values are enclosed in double quotes `"`, even if special characters are not present.
 * `NULL` is printed as an empty string.
-* Numeric values, including `NaN` (Not a Number), are not enclosed in quotes.
+* Numeric values, including `NaN`, are not enclosed in quotes.
 
 ```ls
 string,empty_string,null,number,number(NaN)
@@ -87,7 +87,9 @@ The response can include optional metadata to assist API clients in processing r
 
 The metadata is specified as JSON-LD (JSON linked data) according to the [W3C Model for Tabular Data](https://www.w3.org/TR/tabular-data-model/).
 
-ATSD JSON-LD schema is published [here](https://www.axibase.com/schemas/2017/07/atsd.jsonld).
+Download ATSD JSON-LD schema:
+
+[![](./images/button-download.png)](https://www.axibase.com/schemas/2017/07/atsd.jsonld)
 
 Sample metadata:
 
@@ -149,16 +151,16 @@ Sample metadata:
 
 ### Metadata in JSON Output Format
 
-Results in the JSON output format incorporates metadata by default, including table and column schema.
+By default, results in JSON output format incorporate metadata. This includes table and column schema.
 
 ### Metadata in CSV Output Format
 
-The `metadataFormat` parameter specifies how metadata is incorporated into the CSV response.
+The `metadataFormat` parameter specifies how metadata is incorporated into a CSV response.
 
 | **Value**| **Description** |
 |:---|:---|
 | `NONE` | Do not include metadata in the response. |
-| `HEADER` | [**Default**] Add JSON-LD metadata into Base64-encoded `Link` header according to [W3C Model for Tabular Data](http://w3c.github.io/csvw/syntax/#link-header).<br>`<data:application/csvm+json;base64,eyJAY29...ifX0=>; rel="describedBy"; type="application/csvm+json"`<br>Be aware that maximum response header size is 12 kilobytes and avoid Link header option if the response contains many columns or columns with long names.|
+| `HEADER` | **[Default]** Add JSON-LD metadata to the Base64 encoded `Link` header according to [W3C Model for Tabular Data](http://w3c.github.io/csvw/syntax/#link-header).<br>`<data:application/csvm+json;base64,eyJAY29...ifX0=>; rel="describedBy"; type="application/csvm+json"`<br>Maximum response header size is 12 KB. Do not use `Link` header option if the response contains many columns or columns with long names.|
 | `EMBED` | Append JSON-LD metadata to CSV header as comments prefixed by hash symbol. |
 | `COMMENTS` | Append CSV metadata to CSV header as comments prefixed by hash symbol. |
 
@@ -173,7 +175,7 @@ curl https://atsd_hostname:8443/api/sql  \
   --data 'q=SELECT entity, value FROM "mpstat.cpu_busy" WHERE datetime > now - 1*MINUTE'
 ```
 
-Use `'\'` to escape single quotes inside the query payload.
+Use backslash `'\'` to escape single quotes inside the query payload.
 
 ```bash
 curl https://atsd_hostname:8443/api/sql  \
@@ -196,7 +198,7 @@ Execute query specified inline and store results in `/tmp/report-2.csv`.
 ./sql.sh --output /tmp/report-2.csv --query "SELECT entity, value FROM \"mpstat.cpu_busy\" WHERE datetime > now - 1*minute LIMIT 3"
 ```
 
-Bash client [parameters](client/README.md).
+Review `bash` client [parameters](client/README.md).
 
 ### Java Client Example
 

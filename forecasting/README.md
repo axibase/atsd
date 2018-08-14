@@ -2,9 +2,9 @@
 
 ## Overview
 
-ATSD includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used.
+ATSD includes built-in forecasting algorithms that predict future series values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithm used.
 
-Supported algorithms for auto-regressive time series extrapolation include **Holt-Winters** and **ARIMA**.
+Supported algorithms for auto-regressive time series extrapolation are **Holt-Winters** and **ARIMA**.
 
 **Forecasting Example with Abnormal Deviation**:
 
@@ -20,7 +20,7 @@ Supported algorithms for auto-regressive time series extrapolation include **Hol
 
 ## Editor Settings
 
-Forecasting can be enabled on the **Data > Forecasts** page.
+Enable data forecasting on the **Data > Forecasts** page.
 
 ![](./resources/forecasts_3.png)
 
@@ -34,7 +34,7 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 
 |Setting|Description|
 |-|-|
-|Retention Interval|Specifies how long a forecast is stored in the database. Forecasts that are older than `current time` (or [**End Time**](#data-selection-settings), if specified) minus **Retention Interval** are deleted.|
+|Retention Interval|Specifies how long a forecast is stored in the database. Forecasts that are older than `current time`, or [**End Time**](#data-selection-settings), if specified, minus **Retention Interval** are deleted.|
 
 ### Data Selection Settings
 
@@ -43,14 +43,14 @@ Enabled forecasts are prepared by background jobs on schedule according to `cron
 | Setting | Description |
 | --- | --- |
 |Metric |Metric name for which forecasts are calculated.|
-|Entity  |If selected, forecasts are calculated for the specified entity. Supersedes **Entity Group** drop-down list. If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
+|Entity  |If selected, forecasts are calculated for the specified entity.<br>Supersedes **Entity Group** drop-down list.<br>If neither entity nor entity group is specified, forecasts are prepared for **all** entities.|
 |Entity Group |If selected, forecasts are calculated for entities contained in the specified entity group.|
 |Tags |Prepare forecasts only for series containing the specified series tags.|
-|End Time |End time of the **Data Selection Interval** and **Series Selection Interval**. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If not defined, the field is set to the time the job is run.|
-|Data Selection Interval |Time frame for selecting detailed data that is used as forecast input. The end of the interval can be specified in the **End Time** field, otherwise the end of the selection interval is set to current time.|
-|Series Selection Interval |Ignore any series with Last Insert Time before **End Time** by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
+|End Time |End time of the **Data Selection Interval** and **Series Selection Interval**.<br>This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`.<br>If not defined, the field is set to the time the job is run.|
+|Data Selection Interval |Time frame for selecting detailed data used as forecast input.<br>Specify the end of the interval in the **End Time** field, otherwise the end of the selection interval is set to current time.|
+|Series Selection Interval |Ignore any series with `Last Insert Time` before **End Time** by more than the specified interval.<br>Use this option to ignore series which have not been updated for a long time.|
 |Calendar |Ignore detailed values within the time intervals listed in the calendar.|
-|Empty Period Threshold |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|
+|Empty Period Threshold |Ignore a series with a percentage of empty periods greater than the specified threshold.<br>Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|
 
 For data exclusion options, see [Calendar Exception Settings](calendar_exceptions_testing.md).
 
@@ -72,7 +72,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 | Setting | Description |
 | --- | --- |
 |Algorithm |Holt-Winters or ARIMA forecasting algorithms.|
-|Score Interval |Part of **Data Selection Interval** that is used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the **Score Interval**, the more weight is assigned to recently observed values.|
+|Score Interval |Part of **Data Selection Interval** that is used to compute variance between observed values and forecast to rank forecasts by variance.<br>The shorter the **Score Interval**, the more weight is assigned to recently observed values.|
 |Auto Period |The server automatically calculates seasonality of the underlying series that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Period |Specify seasonality of the underlying series.|
 |Auto Parameters |The server automatically calculates algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|
@@ -83,46 +83,25 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 | Setting | Description |
 | --- | --- |
-|Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br>[`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>[`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>[`forecast-name`](#charts) Chart setting |
-|Default Forecast |Use these settings instead of default settings when calculating on-demand forecast. On-demand forecast is calculated at request time if a pre-stored forecast is not available.|
-|Forecast Range |Minimum and Maximum constraints applied to the stored forecast values to ensure that such values are within the specified range. Constraints are applied to the winning forecast after scoring stage.|
-|Forecast Interval |The length of time into the future for which forecasts are to be prepared and stored in the database. Can be rounded upwards to the nearest forecast period.|
+|Forecast Name |Optional name used to differentiate between several forecasts for one underlying series.<br>Use cases:<br>[`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>[`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>[`forecast-name`](#charts) Chart setting |
+|Default Forecast |Enable these settings instead of default settings when calculating on-demand forecast.<br>On-demand forecast is calculated at request time if a pre-stored forecast is not available.|
+|Forecast Range |Minimum and Maximum constraints applied to the stored forecast values to ensure that such values are within the specified range.<br>Constraints are applied to the winning forecast after scoring stage.|
+|Forecast Interval |The length of time into the future for which forecasts are prepared and stored in the database.<br>Can be rounded upwards to the nearest forecast period.|
 
 ## Editor Tools
 
-Forecast Settings Editor provides the following tools:
+**Editor Tools** are located at the bottom of the Forecast Configuration page.
 
-![](./resources/forecasts_9.png)
+![](./images/forecast-tools.png)
 
-* **Calculate Parameters**
+Tool | Description | Example
+--|--|--
+Calculate Parameters | Click **Calculate Parameters** to calculate algorithm constants. | ![](./images/calculate-parameters.png)
+Run | Execute the forecast job.<br>Use this tool to test a forecast.<br>ATSD returns the number of calculated forecasts. | ![](./images/forecast-run.png)
+Export | Export forecast data in CSV format.| ![](./resources/forecasts_14.png)
+Show Meta| Display parameters used to calculate the forecast.<br>Metadata is stored with the forecast.<br>Collection interval is an interval within the real data extracted to build the forecast. | ![](./images/show-meta.png)
 
-  This option calculates algorithm parameters:
-
-  ![](./resources/forecasts_11.png)
-
-* **Run**
-
-  This option runs the forecast job and can be used for tests.
-
-  ![](./resources/forecasts_12.png)
-
-* **Export**
-
-  Export forecast data in CSV format.
-
-  ![](./resources/forecasts_13.png)
-
-  ![](./resources/forecasts_14.png)
-
-* **Show Meta**
-
-   This option displays values of the main settings by which this forecast is calculated.
-
-   ![](./resources/forecasts_16.png)
-
-   Metadata is stored with the forecast. Collection interval is an interval within the real data extracted to build the forecast.
-
-Split-button on the **Data > Forecasts** page can be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
+> Use the split-button on the **Data > Forecasts** page to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
 ![](./resources/forecasts_10.png)
 
@@ -130,23 +109,32 @@ Split-button on the **Data > Forecasts** page can be used to specify [Exceptions
 
 ### Rule Engine
 
-Pre-computed forecast values can be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values can be compared to actual values using [statistical functions](../rule-engine/functions.md#statistical) such as standard deviation as well as raw value.
+* Access pre-computed forecasts using [forecast](../rule-engine/functions-forecast.md) functions.
+* Use forecast values as [thresholds](../rule-engine/README.md#forecast-thresholds) to trigger response actions if observed values deviate from forecast values by some amount.
+* Compare forecast values to [statistical function](../rule-engine/functions.md#statistical) values such as moving averages or weighted averages.
 
 ```javascript
 abs(avg() - forecast()) > 25
 ```
 
-This setting compares the actual [average value](../rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](../rule-engine/functions-math.md#abs) of the difference exceeds 25.
+This expression compares the actual [average value](../rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](../rule-engine/functions-math.md#abs) of the difference exceeds 25.
+
+```javascript
+thresholdTime(null, 90, '1 DAY') != null
+```
+
+* `thresholdTime` function returns Unix time in milliseconds when the forecast is expected to exceed `90` for the first time.
+* The condition becomes `true` if the expected violation is to occur in less than 1 day.
 
 ### Ad hoc Export
 
-Set **Data Type** setting to **Forecast**, optionally specify the forecast name:
+Set **Data Type** setting to **Forecast**, optionally specify a forecast name:
 
 ![](./resources/forecasts_15.png)
 
 ### Data API
 
-Data API provides a way to [query](../api/data/series/query.md#forecast-filter) and [insert](../api/data/series/insert.md#fields) forecast values. The `insert` capability can be used to populate the database with custom forecast values calculated externally.
+[Query](../api/data/series/query.md#forecast-filter) and [insert](../api/data/series/insert.md#fields) forecast values with Data API. The `insert` capability can be used to populate the database with custom forecast values calculated externally.
 
 A sample forecast [JSON query](../api/data/series/examples/query-named-forecast.md):
 
@@ -237,7 +225,7 @@ Additional examples:
 
 ### Charts
 
-Load forecasts data by setting `data-type = forecast` in the `[series]` section.
+Load forecasts into charts by setting `data-type = forecast` in the `[series]` section.
 
 ```ls
 [series]
@@ -246,11 +234,11 @@ Load forecasts data by setting `data-type = forecast` in the `[series]` section.
     data-type = forecast
 ```
 
-|Name|Example|Description|Example|
+List of widget and series settings applicable to forecast data:
+
+|Name|Description|Example|
 |---|---|---|---|
-|data-type|`data-type = forecast`|Data type for the current series.<br>Allowed values: `history`, `forecast`, `forecast_deviation`, `lower_confidence`, `upper_confidence`.|[View](https://apps.axibase.com/chartlab/f80b8e53)|
-|forecast-name|`forecast-name = hw5`|Unique identifier of the forecast.<br>Useful when creating multiple forecasts for the same series.<br>If no forecast name is set, the default forecast is loaded.|[View](https://apps.axibase.com/chartlab/92b7e471/3/)|
-|style|`style = stroke-dasharray: none;`|Remove dashes from forecast line on the chart.|[View](https://apps.axibase.com/chartlab/92b7e471/4/)|
-|value|`value = (1 - forecast('free') / forecast('total')) * 100`|Returns forecast for the underlying series.|[View](https://apps.axibase.com/chartlab/da03b8a5/11/)|
-|load-future-data|`load-future-data = true`|Load future series values.<br>Usually used to view imported forecasts generated with 3rd party tools, such as R Language.<br>Allowed values: `true`, `false`.|[View](https://apps.axibase.com/chartlab/87c197be)|
-|forecast-style|`forecast-style = stroke: magenta;`|CSS styles applied to forecasts in column and column-stack modes.|[View](https://apps.axibase.com/chartlab/37c39d18/3/)|
+|`data-type`|Data type for the current series.<br>Possible values: `history`, `forecast`, `forecast_deviation`, `lower_confidence`, `upper_confidence`.<br><br>Example: `data-type = forecast`|[![](../images/button.png)](https://apps.axibase.com/chartlab/f80b8e53)|
+|`forecast-name`|Unique forecast identifier.<br>Useful when creating multiple forecasts for the same series.<br>Usually used to view imported forecasts generated with external tools.<br>If no forecast name is set, the default forecast is loaded.<br><br>Example: `forecast-name = hw5`|[![](../images/button.png)](https://apps.axibase.com/chartlab/92b7e471/3/)|
+|`forecast-style`|CSS styles applied to forecasts in `column` and `column-stack` modes.<br><br>Example: `forecast-style = stroke: magenta;`|[![](../images/button.png)](https://apps.axibase.com/chartlab/37c39d18/3/)|
+|`style`|Render forecast as a solid line instead of dashed line.<br><br>Example: `style = stroke-dasharray: none;`|[![](../images/button.png)](https://apps.axibase.com/chartlab/92b7e471/4/)|

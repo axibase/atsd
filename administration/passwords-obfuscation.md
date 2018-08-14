@@ -29,4 +29,4 @@ Enter the obfuscated text and click **Deobfuscate** to view the plain text.
 
 ## Security
 
-Obfuscation is not based on encryption and cannot be considered a secure way to store passwords. The above procedures can be performed on any ATSD instance or using a Jetty server as described in this [article](https://docs.oracle.com/cd/E35822_01/server.740/es_admin/src/tadm_ssl_jetty_passwords.html).
+Obfuscation is not based on encryption and cannot be considered a secure way to store passwords. The above procedures can be performed on any ATSD instance or using a Jetty server as described by the [Oracle Documentation](https://docs.oracle.com/cd/E35822_01/server.740/es_admin/src/tadm_ssl_jetty_passwords.html).

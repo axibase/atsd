@@ -7,7 +7,7 @@ Aggregate Processor splits an interval into periods and calculates statistics fo
 The aggregation process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` into each series separately. <br>`startDate` is inclusive and `endDate` is exclusive.
-2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter.<br>If `period` parameter is not specified, all series data belongs to a single period from `startDate` till `endDate`.
+2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter.<br>If `period` parameter is not specified, all series data belongs to a single period from `startDate` until `endDate`.
 3. Discard periods whose start time is earlier than `startDate`.
 4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified `time:value` array for each series where `time` is the period start time and `value` is the result of the statistical function.
 
@@ -15,10 +15,10 @@ The aggregation process is implemented as follows:
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `type`  | string        | **[Required]** [Statistical function](../../../api/data/aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
-| `types` | array          | Array of [statistical functions](../../../api/data/aggregation.md). Either `type` or `types` field are required in each query. |
+| `type`  | string        | **[Required]** [Statistical function](../aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
+| `types` | array          | Array of [statistical functions](../aggregation.md).<br>Either `type` or `types` field are required in each query. |
 | `period`  | object     | Regular [period](#period) specified with count and time unit, for example `{ "count": 1, "unit": "HOUR" }`. |
-| `interpolate`  | object  | Fill values in empty periods using an [interpolation function](#interpolation), for example, `PREVIOUS` or `LINEAR`.   |
+| `interpolate`  | object  | Fill values in empty periods using an [interpolation function](#interpolation) such as `PREVIOUS` or `LINEAR`.   |
 | `threshold`    | object  | Object containing the minimum and maximum range for `THRESHOLD_*` functions.  |
 | `calendar`     | object  | Calendar settings for `THRESHOLD_*` functions. |
 | `workingMinutes` | object | Working minutes settings for `THRESHOLD_*` functions.  |
@@ -33,7 +33,7 @@ The aggregation process is implemented as follows:
 | `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | `count`  | number | Number of time units contained in the period. |
 | `align` | string | Alignment of the period start/end time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`.|
-| `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information** page.|
+| `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed at **Settings > System Information**.|
 
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
@@ -60,7 +60,7 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
-| `start` | number | **[Required]** Working date start time, in minutes. If working day starts at 9:30 then `start` can be specified as `570` (9 * 60 + 30). |
+| `start` | number | **[Required]** Working date start time, in minutes. If working day starts at 9:30 then `start` can be specified as `570` (`9 * 60 + 30`). |
 | `end`   | number | **[Required]** Working date end time, in minutes.  |
 
 ## Examples
@@ -101,29 +101,28 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
 By default, if the period does not contain any detailed values, the period is excluded from results.
 
-Change this behavior with an interpolation function.
-The interpolation function substitutes the missing period and calculates its value based on previous and next period values.
+Configure this behavior with an interpolation function which fills a missing period with data calculated based on previous and next period aggregate values.
 
-> Note that missing period values are interpolated from aggregate values of neighboring periods and not raw values.
+> Note that missing period values are interpolated from aggregate values of neighboring periods and not from raw values.
 
 #### Interpolation Fields
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `type`  | string | **[Required]** Interpolation [function](#interpolation-functions). |
-| `value` | number | **[Required by `value` function]** Constant number used to set value for empty periods. |
-| `extend`  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
+| `value` | number | **[Required by `value` function]** Constant number used to set as the value for empty periods. |
+| `extend`  | boolean | Add missing periods at the beginning and end of the selection interval.<br>Default: `false`. |
 
 Values added by the `extend` setting are determined as follows:
 
-* If the `VALUE {n}` interpolation function is specified, the `extend` option sets empty leading/trailing period values to equal `{n}`.
+* If the `VALUE {n}` interpolation function is specified, the `extend` option sets empty leading and trailing period values equal to `{n}`.
 * Without the `VALUE {n}` function, the `extend` option adds missing periods at the beginning and end of the selection interval using `NEXT` and `PREVIOUS` interpolation functions.
 
 #### Interpolation Functions
 
 | **Type** | **Description** |
 |:---|:---|
-| `NONE` | No interpolation. Periods without any raw values are excluded from results. |
+| `NONE` | No interpolation. Periods without raw values are excluded from results. |
 | `PREVIOUS` | Set value for the period based on the previous period value. |
 | `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
@@ -173,4 +172,4 @@ Values added by the `extend` setting are determined as follows:
 
 [ChartLab Examples](https://apps.axibase.com/chartlab/d8c03f11/3/)
 
-![Interpolation Example](./aggregate_interpolate.png)
+![Interpolation Example](./images/aggregate_interpolate.png)

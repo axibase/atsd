@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><rules>
 <rule>
-<name>Github</name>
+<name>GitHub</name>
 <metric>test_m</metric>
 <tagsGroupingStrategy>ALL_TAGS</tagsGroupingStrategy>
 <expression><![CDATA[value > 1]]></expression>
@@ -32,7 +32,7 @@
 <discardPreviousValues>true</discardPreviousValues>
 <webNotification>
 <disabled>false</disabled>
-<rule-name>Github</rule-name>
+<rule-name>GitHub</rule-name>
 <repeat-interval>
 <type>ALL</type>
 <intervalCount>6</intervalCount>

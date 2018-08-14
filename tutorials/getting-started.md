@@ -14,7 +14,7 @@ As part of this tutorial, insert and analyze temperature measurements collected 
 
 In a real world situation, such measurements are continuously gathered by specialized [controllers](https://www.parrinst.com/products/controllers/4871-process-controller/) as part of a factory-wide SCADA system.
 
-To differentiate this particular equipment from other factory assets, the article refers to the reactor using the identifier in the asset management system:
+To differentiate this particular equipment from other factory assets, this tutorial refers to the reactor using the identifier in the asset management system:
 
 ```elm
 br-1905

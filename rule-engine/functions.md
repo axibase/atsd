@@ -2,25 +2,36 @@
 
 ## Overview
 
-Functions are predefined procedures that perform a task or calculate a value.
-
-Include functions by name in the `condition` and `filter` expressions as well as in placeholders.
+Functions are predefined procedures that calculate a value or perform a task. Functions are called by name with arguments passed in brackets and separated by comma. Function names are **case-sensitive**.
 
 ```javascript
-avg() > 80
+/* Returns true if the create_ms date is a working day. */
+to_datetime(create_ms, 'US/Pacific').is_workday()
 ```
 
-```javascript
-lower(tags.location) == 'nur'
-```
+When invoked in expressions and placeholders, function definitions are replaced with the value returned by the function.
 
-```bash
-${lower(tags.location)}
-```
+Functions can be referenced in a [filter expression](filters.md#filter-expression), user-defined [variables](variables.md), [condition](condition.md) statements and placeholders.
 
-Function names are case-**sensitive**.
+* **Filter Expression**:
 
-Functions are invoked when the expression is evaluated and replaced with the value returned by the function.
+    ```javascript
+    lower(tags.location) = 'nur'
+    ```
+
+    > [Filter expression](filters.md#filter-expression) cannot include [statistical functions](functions-statistical.md) which require access to the window object.
+
+* **Condition**:
+
+    ```javascript
+    avg() > 80
+    ```
+
+* **Placeholder**:
+
+    ```bash
+    ${lookup('assets', entity)}
+    ```
 
 ## Arguments
 
@@ -70,6 +81,10 @@ Series functions retrieve series values from the database whereas the series can
 * [`db_last`](functions-series.md#db_laststring-m)
 * [`db_statistic`](functions-series.md#db_statistic)
 
+## Alert History
+
+* [`last_open`](functions-alert-history.md#last_open)
+
 ## Database SQL
 
 SQL functions return the results of user-defined SQL queries.
@@ -85,6 +100,7 @@ Date functions perform various operations on dates, timestamps and intervals.
 * [`window_length_count`](functions-date.md#window_length_count)
 * [`windowStartTime`](functions-date.md#windowstarttime)
 * [`elapsedTime`](functions-date.md#elapsedtime)
+* [`elapsed_minutes`](functions-date.md#elapsed_minutes)
 * [`milliseconds`](functions-date.md#milliseconds)
 * [`seconds`](functions-date.md#seconds)
 * [`date_parse`](functions-date.md#date_parse)

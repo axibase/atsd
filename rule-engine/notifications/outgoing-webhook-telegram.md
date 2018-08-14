@@ -4,7 +4,7 @@
 
 The document describes how to relay messages addressed to a Telegram Bot into ATSD for subsequent processing. Typical use cases include replying to information requests and executing predefined actions.
 
-The integration relies on the Telegram Bot API [setWebhook](https://core.telegram.org/bots/api#setwebhook) method to send messages and on the ATSD [webhook](../../api/data/messages/webhook.md) endpoint to receive HTTP requests from Telegram servers and to convert them into `message` commands that can be stored and processed by the rule engine.
+The integration relies on the Telegram Bot API [`setWebhook`](https://core.telegram.org/bots/api#setwebhook) method to send messages and the ATSD [webhook](../../api/data/messages/webhook.md) endpoint to receive HTTP requests from Telegram servers and to convert them into `message` commands that are stored and processed by the rule engine.
 
 ## Reference
 
@@ -16,9 +16,9 @@ The integration relies on the Telegram Bot API [setWebhook](https://core.telegra
 
 ## Create Telegram Bot
 
-The bot is special user account created for automation and integration purposes. You can use an existing bot or create a new one.
+A bot is a special user account created for automation and integration purposes.
 
-* Search for the `BotFather` user in the Telegram client.
+* Search for the `BotFather` user in Telegram client.
 * Start a conversation with the [BotFather](https://telegram.me/botfather) user.
 
     ![](./images/botfather.png)
@@ -36,7 +36,7 @@ Use this token to access the HTTP API:
 
 Prepare a request URL for accepting notifications from Telegram servers.
 
-* Open the **Settings > Users > Create Webhook User** wizard in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Telegram.
+* Follow the path **Settings > Users > Create Webhook User** in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Telegram.
 
   ![](../../administration/images/webhook-user.png)
 
@@ -46,11 +46,11 @@ Prepare a request URL for accepting notifications from Telegram servers.
 https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text
 ```
 
-  The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443).
+  The target ATSD server must be accessible on one of the supported ports: `80`, `88`, `443`, `8443`.
 
 ## Set Webhook
 
-Setup a webhook depending on the SSL certificate installed in ATSD.
+Set up a webhook based on the SSL certificate installed in ATSD.
 
 * If ATSD has a CA-signed SSL certificate
 
@@ -73,7 +73,7 @@ keytool -importkeystore -srckeystore /opt/atsd/atsd/conf/server.keystore -destke
 openssl pkcs12 -in /opt/atsd/atsd/conf/server.keystore.p12 -out /opt/atsd/atsd/conf/server.keystore.pem -nokeys
 ```
 
-    Set webhook by specifying the webhook URL and attaching the `server.keystore.pem` file.
+Set webhook by specifying the webhook URL and attaching the`server.keystore.pem` file.
 
 ```sh
 curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
@@ -103,32 +103,32 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 
 ## Test Integration
 
-### Create/Import Rule
+### Create or Import Rule
 
-* Create a new rule or import an existing rule as described below.
-* Download the file [rules_outgoing_webhook.xml](./resources/rules_outgoing_webhook.xml).
+* Create a new rule as described below or [import an existing rule](https://axibase.com/use-cases/tutorials/shared/import-rule.html).
+* Download the file [`rules_outgoing_webhook.xml`](./resources/rules_outgoing_webhook.xml).
 * Open the **Alerts > Rules > Import** page.
-* Check (enable) **Auto-enable New Rules**, attach the `rules_outgoing_webhook.xml` file, click **Import**.
+* Check **Auto-enable New Rules**, attach the `rules_outgoing_webhook.xml` file, click **Import**.
 
 ### Configure Webhook
 
-* Open **Alerts > Rules** page and select a rule.
-* Open the **Webhooks** tab.
-* Select the webhook from the **Endpoint** drop-down.
+* Navigate to **Alerts > Rules** and select the new or imported rule.
+* Open **Webhooks** tab.
+* Select the webhook from the **Endpoint** drop-down list.
 * Enable the `OPEN`, `REPEAT` triggers.
-* Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
+* Customize the alert message using [placeholders](../placeholders.md) if needed, for example:
 
 ```bash
 User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.message.from.username} said "${message}"
 ```
 
-* Click **Save** to save the rule.
+* Click **Save**.
 
     ![](./images/outgoing_webhook_telegram_1.png)
 
 ### Verify Webhook Delivery
 
-* Go to the Telegram and send a direct message to the recently created bot.
+* Open the Telegram client and send a direct message to the newly created bot.
 
     ![](./images/outgoing_webhook_telegram_2.png)
 
@@ -142,6 +142,6 @@ User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.messa
 
     ![](./images/outgoing_webhook_slack_21.png)
 
-* It can take a few seconds for the commands to arrive and to trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+* It can take a few seconds for the commands to arrive and trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
     ![](./images/outgoing_webhook_telegram_3.png)

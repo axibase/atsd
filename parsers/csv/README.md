@@ -2,11 +2,11 @@
 
 ## Overview
 
-CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the web interface.
+[Upload CSV files](uploading-csv-files.md) via HTTP API or manually through the web interface.
 
 ![](./resources/csv.gif)
 
-To process a CSV file you need to create a CSV parser, which splits the file into lines (rows) consisting of multiple columns and converts the lines into `series`, `property`, and `message` commands.
+To process a CSV file, create a CSV parser. A parser splits the file into lines to create rows and then into tokens to create columns. Finally, the parser converts the newly created array of cells into `series`, `property`, and `message` commands.
 
 ### Configuration Settings
 
@@ -26,7 +26,7 @@ To process a CSV file you need to create a CSV parser, which splits the file int
 |  `Metric Value Column`  |  Column containing metric values.  |
 |  `Message Column`  |  Column containing message text.  |
 |  `Timestamp Columns`  |  Columns containing the Timestamp for each data sample. In some cases, depending on the CSV file, the Timestamp can be split into multiple columns. For example: Date, Time.<br>If there are two columns containing the Timestamp, then they are concatenated with a dash symbol (-) in the Timestamp Pattern field.<br>For example:<br>Source CSV File:<br>`Date,Time,Sensor,Power`<br>`2015.05.15,09:15:00,sensor01,15`<br>Timestamp Columns:<br>`Date,Time`<br>Result:<br>`Date-Time`<br>`2015.05.15-09:15:00`<br>Timestamp Pattern Setting:<br>`yyyy.MM.dd-HH:mm:ss`  |
-|  `Timestamp Type`  |  Pattern, Seconds (Unix Seconds), Milliseconds (Unix Milliseconds).  |
+|  `Timestamp Type`  |  Pattern, Seconds (Unix time), Milliseconds (Unix time).  |
 |  `Predefined Pattern`  |  Predefined Timestamp formats.  |
 |  `Timestamp Pattern`  |  Custom timestamp format, specified manually. For example: `dd-MMM-yy HH:mm:ss`<br>If there are two columns containing the Timestamp, then in they are divided with a dash (-) in the pattern.  |
 |  `Timezone Diff Column`  |  Column containing the time difference calculated from UTC.  |

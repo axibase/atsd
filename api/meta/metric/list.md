@@ -15,11 +15,11 @@ Retrieves a list of metrics matching the specified filters.
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `expression` |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.<br>Example: `name LIKE 'cpu_busy'` or `or tags.source = 'iostat'`.|
-| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `current_day`.|
-| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO 8601 date or a [calendar](../../../shared/calendar.md) expression for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
+| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>[ISO format](../../../shared/date-format.md#supported-formats) date or a [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `current_day`.|
+| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>[ISO format](../../../shared/date-format.md#supported-formats) date or a [calendar](../../../shared/calendar.md) expression for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
 | `limit` |integer|Maximum number of metrics to retrieve, ordered by name.<br>Default: `0`, unlimited.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
-| `tags` |string|Comma-separated list of metric tag names to include in the response.<br>Use wildcard as part of name pattern, for example `cpu_*`, to include matching entity tags.<br>Default: no tags are included.|
+| `tags` |string|Comma-separated list of metric tag names to include in the response.<br>Use wildcard as part of name pattern, for example `cpu_*`, to include matching metric tags.<br>Default: no tags are included.|
 | `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
 
 #### Expression
@@ -48,16 +48,22 @@ lower(name) NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
 retentionDays > 0 OR seriesRetentionDays > 0
 ```
 
-* Retrieve entities with tag `table` equal to `iostat` (case insensitive comparison).
+* Retrieve metrics with tag `table` equal to `iostat` (case insensitive comparison).
 
 ```javascript
 lower(tags.table) = 'iostat'
 ```
 
-* Retrieve entities with non-empty `table` tag.
+* Retrieve metrics with non-empty `table` tag.
 
 ```javascript
 tags.table != ''
+```
+
+* Retrieve metrics without any tags and name consisting of 64 characters.
+
+```javascript
+tags.size() == 0 && name.length() == 64
 ```
 
 ## Response
@@ -77,8 +83,8 @@ tags.table != ''
 |`enabled`| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
 |`persistent` | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
 |`filter` | string | Persistence filter [expression](../../../api/meta/expression.md). Discards series that do not match this filter.|
-|`createdDate`| string | Date of metric creation in ISO 8601 format.|
-|`lastInsertDate`| string | Last time of a received value for this metric by any series in ISO 8601 format.|
+|`createdDate`| string | Date of metric creation in [ISO format](../../../shared/date-format.md#supported-formats).|
+|`lastInsertDate`| string | Last time of a received value for this metric by any series in [ISO format](../../../shared/date-format.md#supported-formats).|
 |`retentionDays`| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
 |`seriesRetentionDays`| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
 |`versioned`| boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
