@@ -1,6 +1,36 @@
 # Packages
 
-## Quick Start
+## Supported Linux Distributions
+
+### **Ubuntu**
+
+ Version | `apt` | `deb` | Installation Guide
+|--|--|--|--|--|--|--|
+| `16.04` | ![](../images/ok.svg) | [![](../images/ok.svg)]((https://axibase.com/public/atsd_deb_latest.htm)) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
+
+### **Debian**
+
+ Version | `apt` | `deb` | Installation Guide
+|--|--|--|--|--|--|--|
+`8.x` / `9.x` | ![](../images/ok.svg) | [![](../images/ok.svg)]((https://axibase.com/public/atsd_deb_latest.htm)) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
+
+### **RHEL** / **CentOS**
+
+Version | `rpm` | `yum` | Installation Guide
+--|--|--|--|--|--|
+ `7.x`| ![](../images/ok.svg) | [![](../images/ok.svg)](https://axibase.com/public/atsd_rpm_sles_latest.htm) | [`yum`](./redhat-centos-yum.md) / [`rpm`](./redhat-centos-rpm.md)
+
+### **SLES**
+
+Version | `rpm` | `yum` | Installation Guide
+--|--|--|--|--|--|
+`12.x` | [![](../images/ok.svg)](https://axibase.com/public/atsd_rpm_sles_latest.htm) | | [`rpm`](./sles-rpm.md)
+
+### Other Distributions
+
+For other Linux distributions, follow the [Installation Guide](./other-distributions.md).
+
+### Quick Start
 
 ```bash
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
@@ -15,14 +45,3 @@ sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./"
 ```bash
 sudo apt-get update && sudo apt-get install atsd
 ```
-
-## Available Packages
-
-| **Distribution** | **Format** | **Installation Guide** |
-| :--- | --- | :---: |
-| Ubuntu/Debian | apt | [View](./ubuntu-debian-apt.md)|
-| Ubuntu/Debian | [deb](https://axibase.com/public/atsd_deb_latest.htm) | [View](./ubuntu-debian-deb.md) |
-| RedHat/CentOS| yum | [View](./redhat-centos-yum.md)|
-| RedHat/CentOS| [rpm](https://axibase.com/public/atsd_rpm_latest.htm) | [View](./redhat-centos-rpm.md)|
-| SLES| [rpm](https://axibase.com/public/atsd_rpm_sles_latest.htm)   | [View](./sles-rpm.md)|
-| Other | [tar.gz](https://axibase.com/public/atsd_distrib_latest.htm) | [View](./other-distributions.md)|

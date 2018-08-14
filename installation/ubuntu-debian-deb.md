@@ -23,7 +23,7 @@ Download `deb` package to the target server:
 wget https://www.axibase.com/public/atsd_amd64.deb
 ```
 
-The distribution files are also published on [https://axibase.com/public/atsd_deb_latest.htm](https://axibase.com/public/atsd_deb_latest.htm).
+Distribution files are also published on [https://axibase.com/public/atsd_deb_latest.htm](https://axibase.com/public/atsd_deb_latest.htm).
 
 ## Installation Steps
 

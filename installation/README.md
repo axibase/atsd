@@ -8,16 +8,6 @@ Deploy ATSD as part of an already established workflow using flexible installati
 
 Review [Requirements Specifications](./requirements.md) to ensure optimal functionality.
 
-### Supported Linux Distributions
-
-Distribution | Version | Support |
---|--|--
-Ubuntu | `16.04` | ![](../images/ok.svg)
-Debian | `8.x` | ![](../images/ok.svg)
-Debian | `9.x` | ![](../images/ok.svg)
-RHEL/CentOS | `7.x`| ![](../images/ok.svg)
-SLES | `12.x` | ![](../images/ok.svg)
-
 > By installing ATSD you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
 
 After installation, review the [Getting Started Guide](../tutorials/getting-started.md) to begin exploring with ATSD.
