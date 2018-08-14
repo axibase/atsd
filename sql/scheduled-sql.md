@@ -107,7 +107,7 @@ When enabled and if the URL contains a `?refresh=true` parameter, the report is 
 https://atsd_hostname:8443.com/sqlr/85/cpu-busy-total-query.csv?refresh=true
 ```
 
-To make links accessible for unauthenticated users, enable the **Guest Access** option. Additional download links for non-authenticated users are displayed.
+To make links accessible to non-authenticated users, enable **Guest Access**. Additional download links for non-authenticated users are displayed.
 
 ### Placeholders
 

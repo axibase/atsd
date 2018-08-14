@@ -4,7 +4,7 @@
 
 ### Manual Installation
 
-Download scollector binary for Linux.
+Download `scollector binary` for Linux.
 
 ```sh
 mkdir scollector
@@ -75,7 +75,7 @@ SCOLLECTOR_CONF=$(pwd)/scollector.toml
 EOF
 ```
 
-Make the `/etc/init.d/scollector` file executable.
+Make `/etc/init.d/scollector` file executable.
 
 ```sh
 chmod a+x /etc/init.d/scollector
@@ -197,7 +197,7 @@ sudo systemctl daemon-reload
 
 ## Windows
 
-Download scollector Windows [executable](http://bosun.org/scollector/).
+Download [`scollector executable`](http://bosun.org/scollector/) for Windows.
 
 Navigate to the directory with the `exe` file and create a `scollector.toml` file in notepad.
 
