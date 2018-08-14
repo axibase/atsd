@@ -2,9 +2,9 @@
 
 Follow development in the **Change Tracker Portal** and review details in the **Change Logs** below.
 
-![](./images/change-tracker-portal.png)
+![](./images/change-tracker-portal1.png)
 
-[![](./images/button.png)](https://apps.axibase.com/chartlab/b10a40f5#fullscreen)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/fc42f948)
 
 ## Year 2018
 
