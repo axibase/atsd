@@ -15,7 +15,7 @@
 5321 | core           | Feature | Implement **Settings** > **Schema** > **Series Consistency Check** page.
 5319 | rule engine    | Bug     | Fix infinite loop when monitoring rule errors in rule engine.
 5318 | nmon           | Bug     | [`nmon`](../../integration/nmon/README.md#nmon) property record is stale and not updated.
-5315 | message        | Bug     | Fix incorrect [wildcard](../../search/entity-search.md) match on the message search page.
+5315 | message        | Bug     | Fix incorrect [wildcard](../../search/entity-search.md#syntax) match on the message search page.
 5313 | client         | Bug     | [Python Client](https://github.com/axibase/atsd-api-python#axibase-time-series-database-client-for-python): [Message model](https://github.com/axibase/atsd-api-python#inserting-data) standardized.
 5310 | message        | Feature | Modify filter processing for tag wildcards and empty tag values on message search page.
 5309 | api-rest       | Bug     | `NullPointerException` raised on [message insert](../../api/data/messages/README.md#data-api-messages-methods) when a tag is set to `null`.
