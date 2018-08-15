@@ -74,5 +74,8 @@
         },
         {
             "pattern": "https://www.apache.org/licenses/LICENSE-2.0"
+        },
+        {
+            "pattern": "https://apps.axibase.com/meters/"
         }
     ]}
