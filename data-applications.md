@@ -21,7 +21,7 @@ Password: `demo`
 
 Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](https://github.com/axibase/atsd-api-go). Cross Filter displays performance statistics for a set of entities selected based on [entity groups](./configuration/entity_groups.md), metrics, and tags.
 
-> Learn more about [Cross Filter](/products/axibase-time-series-database/data-applications/cross-filter/).
+> Learn more about [Cross Filter](https://axibase.com/products/axibase-time-series-database/data-applications/cross-filter/).
 
 ## Data Slider
 
@@ -29,7 +29,7 @@ Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](
 
 Data Slider is built with [`node.js`](https://nodejs.org/en/) using the [ATSD `node.js` API Client](https://github.com/axibase/atsd-api-nodejs/blob/master/README.md). The application is used to interactively display data similar to a PowerPoint presentation.
 
-> Learn more about [Data Slider](/products/axibase-time-series-database/data-applications/data-slider/).
+> Learn more about [Data Slider](https://axibase.com/products/axibase-time-series-database/data-applications/data-slider/).
 
 ## Performance Viewer
 
@@ -37,7 +37,7 @@ Data Slider is built with [`node.js`](https://nodejs.org/en/) using the [ATSD `
 
 Performance Viewer is built with [PHP](http://php.net/) using the [ATSD PHP Client](https://github.com/axibase/atsd-api-php/blob/master/README.md). Performance Viewer displays performance statistics alongside host machine and VM properties and configurations.
 
-> Learn more about [Performance Viewer](/products/axibase-time-series-database/data-applications/performance-viewer/).
+> Learn more about [Performance Viewer](https://axibase.com/products/axibase-time-series-database/data-applications/performance-viewer/).
 
 **Application Credentials**:
 
@@ -50,7 +50,7 @@ Password: `demo`
 
 Data Monitor is built with [PHP](http://php.net/) using the [ATSD PHP Client](https://github.com/axibase/atsd-api-php/blob/master/README.md). The application delivers data reliability reporting for entities and [entity groups](./configuration/entity_groups.md).
 
-> Learn more about [Data Monitor](/products/axibase-time-series-database/data-applications/data-monitor/)
+> Learn more about [Data Monitor](https://axibase.com/products/axibase-time-series-database/data-applications/data-monitor/)
 .
 
 **Application Credentials**:
