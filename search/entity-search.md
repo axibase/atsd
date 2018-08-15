@@ -12,6 +12,8 @@ Search text can consist of multiple keywords.
 * Reserved keywords `min-date` and `max-date` filter entities by **last insert date**.
 * The remaining keywords match **entity names**.
 
+## Wildcards
+
 Name patterns support the following wildcard symbols:
 
 * `*` Matches any number of characters.
