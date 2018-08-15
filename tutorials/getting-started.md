@@ -42,7 +42,7 @@ This introduction guides you through the first steps of using Axibase Time Serie
 
 1. [SQL Console](./getting-started-sql.md#sql-console)
 
-### [Alerting](./getting-started-alerting.md)
+### [Alerting](./getting-started-alert.md)
 
 1. [Creating Rules](./getting-started-alert.md#creating-rules)
 1. [Email Alerts](./getting-started-alert.md#email-alerts)

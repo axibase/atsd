@@ -70,7 +70,7 @@ Add a third time chart which contains a calculated series by appending the follo
 
 Reload the portal to view the new chart.
 
-Start a [`bash` loop](./getting-started-insert.md#send-values-continuously) to observe new data points as they appear in the portal.
+Start a [`bash` loop](./getting-started-insert.md#sending-values-continuously) to observe new data points as they appear in the portal.
 
 Review the [Selecting Series Overview](../portals/selecting-series.md) and the [Charts Reference](https://axibase.com/products/axibase-time-series-database/visualization/) for more layout examples.
 
