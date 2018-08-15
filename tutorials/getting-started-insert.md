@@ -2,7 +2,7 @@
 
 ## Network Commands
 
-In the previous section you inserted data manually using the built-in web interface forms. Proceed by inserting data via network command format.
+In the previous section you inserted data manually using the built-in web interface forms. Proceed by inserting data in network command format.
 
 [Network commands](../api/network/README.md) provide a compact [syntax](../api/network/README.md#syntax) to insert both time series data as well as metadata.
 
@@ -26,7 +26,7 @@ Refresh the **Series Statistics** page and **Entity Editor** to verify that the 
 
 ![](./resources/network-entity-command.png)
 
-Insert and validate commands at **Data > Data Entry** for convenience.
+Insert and validate commands on **Data > Data Entry** for convenience.
 
 ![](./resources/network-commands-data.png)
 

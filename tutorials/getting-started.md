@@ -71,7 +71,7 @@ br-1905
 
 ## Writing Data
 
-ATSD has numerous interfaces for data writing: API clients, CSV parsers, and REST API endpoints, but the simplest way to manually insert data is to submit samples via series command at **Data > Data Entry**.
+ATSD has numerous interfaces for data writing: API clients, CSV parsers, and REST API endpoints, but the simplest way to manually insert data is to submit samples as series command on **Data > Data Entry**.
 
 ![](./resources/getting-started_1.png)
 

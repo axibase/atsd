@@ -40,7 +40,7 @@ Refresh the **Open Alerts** page to verify that the alert for `temperature-too-h
 
 ## Email Alerts
 
-To receive alert notifications via email, configure the [Mail Client](../administration/mail-client.md) at **Settings > Mail Client**.
+To receive alert notifications via email, configure the [Mail Client](../administration/mail-client.md) on **Settings > Mail Client**.
 
 Open the rule editor and enable [alerts](../rule-engine/email.md) on the **Email Notifications** tab as illustrated below.
 
