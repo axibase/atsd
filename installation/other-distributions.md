@@ -3,17 +3,17 @@
 ## Requirements
 
 * Minimum RAM: `4` GB
-* See [Requirements](./requirements.md) for additional information.
+* See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Download
 
-Download [`atsd-distrib.tar.gz`](https://axibase.com/public/atsd_distrib_latest.htm) archive to the target server.
+Download [`atsd-distrib.tar.gz`](https://axibase.com/public/atsd_distrib_latest.htm) tarball archive to the target server.
 
 ```bash
 curl -O https://www.axibase.com/public/atsd-distrib.tar.gz
 ```
 
-## Installation
+## Installation Commands
 
 ```sh
 sudo tar -xzvf atsd-distrib.tar.gz -C /opt/
@@ -27,7 +27,7 @@ sudo /opt/atsd/install_sudo.sh
 sudo /opt/atsd/install_user.sh
 ```
 
-It can take up to 5 minutes to initialize the database.
+It can take up to five minutes to initialize the database.
 
 ## Check Installation
 
@@ -41,7 +41,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 

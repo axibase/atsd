@@ -125,7 +125,3 @@ WHERE metric = 'Temperature'
   AND entity.tags.type = 'Bioreactor'
   ORDER BY datetime
 ```
-
-## Installation
-
-ATSD can be installed from `deb` and `rpm` [packages](./installation/README.md#packages) or launched as a Docker [container](./installation/docker.md#start-container).

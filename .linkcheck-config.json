@@ -65,5 +65,11 @@
         },
         {
             "pattern": "https://commons.apache.org/proper/commons-dbcp/configuration.html"
+        },
+        {
+            "pattern": "https://hbase.apache.org/book.html#backuprestore"
+        },
+        {
+            "pattern": "https://hbase.apache.org/"
         }
     ]}

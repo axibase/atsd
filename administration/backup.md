@@ -86,7 +86,7 @@ To replicate data to another database instance, follow the instructions in the [
 
 ### Base Directory Copy
 
-This method involves copying files on the local file system and only applies to [standalone](../installation/README.md#packages) installations.
+This method involves copying files on the local file system and only applies to [standalone](../installation/packages.md) installations.
 
 Stop ATSD.
 

@@ -19,7 +19,7 @@ Password: `demo`
 
 ![](./images/cross-filter.png)
 
-Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](https://github.com/axibase/atsd-api-go). Cross Filter displays performance statistics for a set of entities selected based on [entity groups](./configuration/entity_groups.md), metrics, and tags.
+Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](https://github.com/axibase/atsd-api-go). Cross Filter displays performance statistics for a set of entities selected based on [entity groups](../../configuration/entity_groups.md), metrics, and tags.
 
 > Learn more about [Cross Filter](https://axibase.com/products/axibase-time-series-database/data-applications/cross-filter/).
 
@@ -48,7 +48,7 @@ Password: `demo`
 
 ![](./images/data-monitor.png)
 
-Data Monitor is built with [PHP](http://php.net/) using the [ATSD PHP Client](https://github.com/axibase/atsd-api-php/blob/master/README.md). The application delivers data reliability reporting for entities and [entity groups](./configuration/entity_groups.md).
+Data Monitor is built with [PHP](http://php.net/) using the [ATSD PHP Client](https://github.com/axibase/atsd-api-php/blob/master/README.md). The application delivers data reliability reporting for entities and [entity groups](../../configuration/entity_groups.md).
 
 > Learn more about [Data Monitor](https://axibase.com/products/axibase-time-series-database/data-applications/data-monitor/)
 .

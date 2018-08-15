@@ -1,4 +1,4 @@
-# Getting Started: Introduction
+# Getting Started
 
 This introduction guides you through the first steps of using Axibase Time Series Database (ATSD).
 
@@ -6,7 +6,7 @@ This introduction guides you through the first steps of using Axibase Time Serie
 
 <!-- markdownlint-disable MD032 -->
 
-### [Introduction](#getting-started-introduction)
+### [Introduction](#getting-started)
 
 1. [Preparation](#preparation)
 1. [Introduction](#introduction)
