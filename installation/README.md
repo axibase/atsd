@@ -1,10 +1,10 @@
-# ATSD Installation
+# Axibase Time Series Database Installation
 
 ## Docker Images
 
 [![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
 
-* Docker Hub, RedHat Container Catalog, Kubernetes
+* Image Registry: Docker Hub, RedHat Container Catalog, Kubernetes
 * **Mode**: Non-Distributed
 * **Edition**: Standard
 
@@ -16,9 +16,9 @@
 
 ![](../images/redhat1.png) ![](../images/centos.png) ![](../images/ubuntu2.png) ![](../images/debian1.png) ![](../images/sles.png)
 
-* RPM/DEB Packages
 * Supported Distributions: RedHat, CentOS, Ubuntu, Debian, SLES
-* `apt` / `yum` Repository Option
+* RPM/DEB Packages
+* `apt` / `yum` Repositories
 * **Mode**: Non-Distributed
 * **File System**: `ext4` (Local)
 * **Edition**: Standard
@@ -53,7 +53,7 @@
 
 ## License
 
-By installing ATSD you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
+By installing Axibase Time Series Database you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
 
 ## Hardware Requirements
 
