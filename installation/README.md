@@ -2,12 +2,11 @@
 
 ## Docker Images
 
-![](../images/docker2.png) ![](../images/redhat1.png) ![](../images/kub.png)
+[![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
 
-* [Docker Hub](https://hub.docker.com/r/axibase/atsd/), [RedHat Container Catalog](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd), [Kubernetes](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
+* Docker Hub, RedHat Container Catalog, Kubernetes
 * **Mode**: Non-Distributed
 * **Edition**: Standard
-* Separate [Images](https://github.com/axibase/dockers/blob/master/README.md#axibase-time-series-database) and [Sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image)
 
 [![](../images/install.png)](./images.md)
 

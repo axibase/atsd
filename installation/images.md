@@ -15,3 +15,4 @@ docker run -d --name=atsd \
 | Docker | Official Image | [View](docker.md)|
 | RedHat Docker | Certified Image | [View](docker-redhat.md)|
 | Kubernetes | Official Image | [View](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)|
+| ATSD Sandbox | Official Image | [View](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image)
