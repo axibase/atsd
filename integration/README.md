@@ -37,7 +37,7 @@
 ## Data Applications
 
 * Power Meter Reporter
-* Cross Filter
+* [Cross Filter](./data-applications/cross-filter.md)
 * Data Slider
 * Performance Viewer
 * Data Monitor
