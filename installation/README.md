@@ -2,65 +2,43 @@
 
 ## Download Options
 
-Deploy ATSD as part of an already established workflow using flexible installation options: [Software](./packages.md) for various package managers, [Images](./images.md) for Docker and Kubernetes, via [AWS S3](./aws-emr-s3.md), or on a [Cloudera Distribution Hadoop](./cloudera.md) cluster.
+### [Docker Images](./images.md)
 
-<style>
-.image-gallery {
-    width:90%;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-}
-.image-gallery tr,
-.image-gallery td {
-    border: none;
-}
-.image-gallery ul {
-    list-style: none;
-}
-</style>
+![](../images/docker1.png)
 
-<table class="image-gallery">
-  <tr>
-    <td>
-    <h3>Linux Software</h3>
-    <img src="../images/tux4.png"><br>
-      <ul>
-        <li>Support for multiple distributions.
-        <li>Flexible installation options.
-        <li>More text here.
-      </ul>
-    </td>
-    <td><h3>Docker Image</h3>
-    <img src="../images/docker1.png">
-          <ul>
-        <li>Support for multiple distributions.
-        <li>Flexible installation options.
-        <li>More text here.
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td><h3>Amazon EMRFS</h3>
-    <img src="../images/aws3.png">
-      <ul>
-        <li>Support for multiple distributions.
-        <li>Flexible installation options.
-        <li>More text here.
-      </ul>
-    </td>
-    <td><h3>Cloudera Hadoop</h3>
-    <img src="../images/hadoop.png">
-      <ul>
-        <li>Support for multiple distributions.
-        <li>Flexible installation options.
-        <li>More text here.
-      </ul>
-    </td>
-  </tr>
-</table>
+* [Docker Hub](https://hub.docker.com/r/axibase/atsd/), [RedHat Container Catalog](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd), [Kubernetes](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
+* Mode: Non-Distributed
+* Edition: Standard
+* Separate [images](https://github.com/axibase/dockers/blob/master/README.md#axibase-time-series-database) and [sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image).
 
-### Hardware Requirements
+### [Linux Packages](./packages.md)
+
+![](../images/redhat.png) ![](../images/centos.png) ![](../images/ubuntu1.png) ![](../images/debian1.png) ![](../images/sles.png)
+
+* RPM/DEB Packages
+* Supported Distributions: RedHat, CentOS, Ubuntu, Debian, SLES
+* `apt` / `yum` Repository option
+* Mode: Non-distributed
+* File System: `ext4` (local)
+* Edition: Standard
+
+### [AWS EMRFS](./aws-emr-s3.md)
+
+![](../images/aws3.png)
+
+* Mode: Distributed
+* File System: AWS S3
+* Edition: Enterprise
+
+### [Cloudera Distribution Hadoop](./cloudera.md) (CDH)
+
+![](../images/hadoop.png)
+
+* Mode: Distributed
+* File System: HDFS
+* Edition: Enterprise
+
+## Hardware Requirements
 
 Review [Requirements Specifications](./requirements.md) to ensure optimal functionality.
 
@@ -68,6 +46,6 @@ Review [Requirements Specifications](./requirements.md) to ensure optimal functi
 
 After installation, review the [Getting Started Guide](../tutorials/getting-started.md) to begin exploring with ATSD.
 
-### Technical Support
+## Technical Support
 
 Email Axibase at **support-atsd@axibase.com** with any installation questions.

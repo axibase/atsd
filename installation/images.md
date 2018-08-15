@@ -12,6 +12,6 @@ docker run -d --name=atsd \
 
 | **Distribution** | **Format** | **Installation Guide** |
 | :--- | --- | :---: |
-| Docker | official image | [View](docker.md)|
-| RedHat Docker | certified image | [View](docker-redhat.md)|
-| Kubernetes | official image | [View](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)|
+| Docker | Official Image | [View](docker.md)|
+| RedHat Docker | Certified Image | [View](docker-redhat.md)|
+| Kubernetes | Official Image | [View](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)|
