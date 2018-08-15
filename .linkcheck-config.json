@@ -68,5 +68,8 @@
         },
         {
             "pattern": "https://hbase.apache.org/book.html#backuprestore"
+        },
+        {
+            "pattern": "https://hbase.apache.org/"
         }
     ]}
