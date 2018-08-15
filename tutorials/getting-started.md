@@ -6,7 +6,7 @@ This introduction guides you through the first steps of using Axibase Time Serie
 
 <!-- markdownlint-disable MD032 -->
 
-### [Introduction](#getting-started-introductions)
+### [Introduction](#getting-started-introduction)
 
 1. [Preparation](#preparation)
 1. [Introduction](#introduction)
@@ -44,10 +44,10 @@ This introduction guides you through the first steps of using Axibase Time Serie
 
 ### [Alerting](./getting-started-alerting.md)
 
-1. [Creating Rules](./getting-started-alerting.md#creating-rules)
-1. [Email Alerts](./getting-started-alerting.md#email-alerts)
-1. [Slack Alerts](./getting-started-alerting.md#slack-alerts)
-1. [Summary](./getting-started-alerting.md#summary)
+1. [Creating Rules](./getting-started-alert.md#creating-rules)
+1. [Email Alerts](./getting-started-alert.md#email-alerts)
+1. [Slack Alerts](./getting-started-alert.md#slack-alerts)
+1. [Summary](./getting-started-alert.md#summary)
 
 <!-- markdownlint-enable MD032 -->
 

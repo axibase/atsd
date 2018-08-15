@@ -10,7 +10,7 @@ In the previous section you inserted data manually using the built-in web interf
 command_name field_prefix:[field_name=]field_value
 ```
 
-Open a terminal and send these commands into ATSD.
+Open command prompt and send these commands into ATSD.
 
 ```bash
 echo -e "series e:br-1905 m:temperature=25" \
@@ -36,7 +36,7 @@ Unlike network commands, the REST API has endpoints to both insert data as well 
 
 ### Sending Values at a Specific Time
 
-Open a terminal and send a single value with a specific `datetime` into the [Series: Insert](../api/data/series/insert.md) endpoint. Replace `<username>` with your username.
+Open command prompt and send a single value with a specific `datetime` into the [Series: Insert](../api/data/series/insert.md) endpoint. Replace `<username>` with your username.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
