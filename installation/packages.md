@@ -5,25 +5,25 @@
 ### **Ubuntu**
 
  Version | `apt` | `deb` | Installation Guide
-|--|--|--|--|--|--|--|
+|--|--|--|--|--|
 | `16.04` | ![](../images/ok.svg) | [![](../images/ok.svg)](https://axibase.com/public/atsd_deb_latest.htm) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
 
 ### **Debian**
 
  Version | `apt` | `deb` | Installation Guide
-|--|--|--|--|--|--|--|
+|--|--|--|--|--|
 `8.x` / `9.x` | ![](../images/ok.svg) | [![](../images/ok.svg)](https://axibase.com/public/atsd_deb_latest.htm) |  [`apt`](./ubuntu-debian-apt.md) / [`deb`](./ubuntu-debian-deb.md)
 
 ### **RHEL** / **CentOS**
 
 Version | `rpm` | `yum` | Installation Guide
---|--|--|--|--|--|
+--|--|--|--|
  `7.x`| ![](../images/ok.svg) | [![](../images/ok.svg)](https://axibase.com/public/atsd_rpm_sles_latest.htm) | [`yum`](./redhat-centos-yum.md) / [`rpm`](./redhat-centos-rpm.md)
 
 ### **SLES**
 
 Version | `rpm` | Installation Guide
---|--|--|--|--|--|
+--|--|--|
 `12.x` | [![](../images/ok.svg)](https://axibase.com/public/atsd_rpm_sles_latest.htm) |  [`rpm`](./sles-rpm.md)
 
 ### Other Distributions
