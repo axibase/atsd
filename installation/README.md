@@ -40,14 +40,14 @@
 
 > By installing ATSD you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
 
-## Hardware Requirements
+### Hardware Requirements
 
 Review [Requirements Specifications](./requirements.md) to ensure optimal functionality.
 
-## Getting Started
+### Getting Started
 
-After installation, review the [Getting Started Guide](../tutorials/getting-started.md) to begin exploring with ATSD.
+After installation, review the [Getting Started Guide](../tutorials/getting-started.md) to begin exploring ATSD.
 
-## Technical Support
+### Technical Support
 
-Email Axibase at **support-atsd@axibase.com** with any installation questions.
+Email Axibase at **support-atsd@axibase.com** with installation questions.
