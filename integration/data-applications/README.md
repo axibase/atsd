@@ -4,7 +4,7 @@ Axibase developed a set of data applications to demonstrate binding ATSD with [p
 
 ## Power Meter Reporter
 
-![](./images/power-meter-application.png)
+![](../../images/power-meter-application.png)
 
 Power Meter is built with [PHP](http://php.net/) using the [ATSD PHP Client](https://github.com/axibase/atsd-api-php/blob/master/README.md). Power Meter Reporter displays power usage statistics collected with smart meters and provides customized CSV reports.
 
@@ -17,7 +17,7 @@ Password: `demo`
 
 ## Cross Filter
 
-![](./images/cross-filter.png)
+![](../../images/cross-filter.png)
 
 Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](https://github.com/axibase/atsd-api-go). Cross Filter displays performance statistics for a set of entities selected based on [entity groups](../../configuration/entity_groups.md), metrics, and tags.
 
@@ -25,7 +25,7 @@ Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](
 
 ## Data Slider
 
-![](./images/data-slider.png)
+![](../../images/data-slider.png)
 
 Data Slider is built with [`node.js`](https://nodejs.org/en/) using the [ATSD `node.js` API Client](https://github.com/axibase/atsd-api-nodejs/blob/master/README.md). The application is used to interactively display data similar to a PowerPoint presentation.
 
@@ -33,7 +33,7 @@ Data Slider is built with [`node.js`](https://nodejs.org/en/) using the [ATSD `
 
 ## Performance Viewer
 
-![](./images/performance-viewer1.png)
+![](../../images/performance-viewer1.png)
 
 Performance Viewer is built with [PHP](http://php.net/) using the [ATSD PHP Client](https://github.com/axibase/atsd-api-php/blob/master/README.md). Performance Viewer displays performance statistics alongside host machine and VM properties and configurations.
 
@@ -46,7 +46,7 @@ Password: `demo`
 
 ## Data Monitor
 
-![](./images/data-monitor.png)
+![](../../images/data-monitor.png)
 
 Data Monitor is built with [PHP](http://php.net/) using the [ATSD PHP Client](https://github.com/axibase/atsd-api-php/blob/master/README.md). The application delivers data reliability reporting for entities and [entity groups](../../configuration/entity_groups.md).
 
