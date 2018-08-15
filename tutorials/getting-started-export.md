@@ -1,12 +1,14 @@
-# Getting Started: Export Data
+# Getting Started: Exporting Data
 
 ## Export Form
 
 This section demonstrates how to retrieve data from the database using the interactive data export form.
 
-Open **Data > Export** page.
+Navigate to **Data > Export**.
 
-Enter parameters to download data as a CSV file or to display it in HTML format.
+![](./resources/data-export.png)
+
+Define parameters of the series from which to download data as a CSV file or display in HTML format.
 
 * Enter `temperature` into the **Metric** field.
 * Click **Name** and enter `br-1905` as the entity.
@@ -26,7 +28,7 @@ The results can also be exported [on schedule](../reporting/scheduled-exporting.
 
 ## API Client
 
-The database provides a build-in API Client to test the REST API endpoints. This section shows how to export data using the [series query](../api/data/series/query.md) endpoint.
+The database provides a build-in API Client to test REST API endpoints. This section shows how to export data using the [series query](../api/data/series/query.md) endpoint.
 
 Open **Data > API Client** page.
 
