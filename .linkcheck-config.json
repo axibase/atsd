@@ -71,5 +71,8 @@
         },
         {
             "pattern": "https://hbase.apache.org/"
+        },
+        {
+            "pattern": "https://www.apache.org/licenses/LICENSE-2.0"
         }
     ]}
