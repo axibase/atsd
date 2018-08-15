@@ -9,7 +9,7 @@
 * [Docker Hub](https://hub.docker.com/r/axibase/atsd/), [RedHat Container Catalog](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd), [Kubernetes](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
 * Mode: Non-Distributed
 * Edition: Standard
-* Separate [images](https://github.com/axibase/dockers/blob/master/README.md#axibase-time-series-database) and [sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image).
+* Separate [images](https://github.com/axibase/dockers/blob/master/README.md#axibase-time-series-database) and [sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image)
 
 ### [Linux Packages](./packages.md)
 
