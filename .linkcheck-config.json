@@ -86,5 +86,11 @@
         },
         {
             "pattern": "https://catalog.data.gov/dataset/american-fitness-index-ranking-2010-present"
+        },
+        {
+            "pattern": "https://ec.europa.eu/"
+        },
+        {
+            "pattern": "https://crt.sh"
         }
     ]}
