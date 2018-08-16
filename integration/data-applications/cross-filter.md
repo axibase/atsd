@@ -6,12 +6,15 @@
 
 ## Overview
 
+Cross Filter is open source. Access the code on [GitHub](https://github.com/axibase/go-cross-filter).
+
 Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](https://github.com/axibase/atsd-api-go). Cross Filter displays performance statistics for a set of entities selected based on [entity groups](../../configuration/entity_groups.md), metrics, and tags.
 
 ## Details
 
 * Cross Filter charts support interactive filtering for displayed series.
-* The dataset (table) is selected and loaded into the client in CSV format, a user can filter particular subsets; for example, clicking a tag filters the charts to display only entities which contain the selected tag.
+* The dataset (table) is selected and loaded into the client in CSV format
+* Filter a particular subset by clicking a tag which displays only entities which contain the selected tag.
 * The application consists of two parts: **Charts** and **Tables**.
   * **Charts** display the distribution of last values.
   * **Tables** display the last value for a pre-defined interval.
