@@ -17,7 +17,7 @@ Then calculate value of smoothing function for selected series samples.
 }
 ```
 
-This example performs moving average smoothing with 1-hour sliding window. View more [examples](#examples).
+This example performs moving average smoothing with 1-hour sliding window.
 
 ## Parameters
 
@@ -40,7 +40,7 @@ Each smoothing except for the `EMA` uses either [count based](#count-based-windo
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `count` | number | Specifies number of series samples in [count based window](#count-based-window). |
-| `interval` | object | Specifies [time based window](#time-based-window) duration in terms of `count` and time `unit`. For example: `"interval": {"count": 1, "unit": "HOUR"}`. Supported time units: `SECOND`, `MINUTE`, `HOUR`.|
+| `interval` | object | Specifies [time based window](#time-based-window) duration in terms of `count` and time `unit`. For example: `"interval": {"count": 1, "unit": "HOUR"}`. Supported time units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
 | `minimumCount` | number | Threshold which triggers calculation of the smoothing function for a window. View the [smoothing process](#smoothing-process) section for details. <br> Default value is `0` for time based window, and `count` for count based window. |
 | `generateNaNs` | boolean | Regulates `NaN` value generation for window which has not enough samples to calculate smoothing function. If `generateNaNs = true` then smoothed series has value `NaN` for the window, otherwise smoothed series has no value for the window. In the latter case smoothed value is not calculated for some timestamps of original series. <br>Default value: `false`.|
 
@@ -120,6 +120,7 @@ and timestamp are measured in milliseconds.
 This function has type `EMA`, and also known under the name [exponential smoothing](https://en.wikipedia.org/wiki/Exponential_smoothing).
 Exponential smoothing uses window which consists of all series observations up to current timestamp, therefore it does not need window settings.
 To calculate `EMA` specify one of following parameters.
+
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `factor` | number | Smoothing factor - number in interval (0 , 1). Use this parameter to smooth evenly spaced time series. When smoothing factor tends to 1 the smooting series tends to original series. The smaller factor gives more smoothing. |
