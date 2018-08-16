@@ -40,7 +40,7 @@ Each smoothing except for the `EMA` uses either [count based](#count-based-windo
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `count` | number | Specifies number of series samples in [count based window](#count-based-window). |
-| `interval` | object | Specifies [time based window](#time-based-window) duration in terms of `count` and time `unit`. For example: `"interval": {"count": 1, "unit": "HOUR"}`. Supported time units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
+| `interval` | object | Specifies [time based window](#time-based-window) duration `count` and time `unit`. For example: `"interval": {"count": 1, "unit": "HOUR"}`. Supported time units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
 | `minimumCount` | number | Threshold which triggers calculation of the smoothing function for a window. View the [smoothing process](#smoothing-process) section for details. <br> Default value is `0` for time based window, and `count` for count based window. |
 | `generateNaNs` | boolean | Regulates `NaN` value generation for window which has not enough samples to calculate smoothing function. If `generateNaNs = true` then smoothed series has value `NaN` for the window, otherwise smoothed series has no value for the window. In the latter case smoothed value is not calculated for some timestamps of original series. <br>Default value: `false`.|
 
@@ -56,7 +56,7 @@ For each series sample the following steps are executed in order:
 
 * Decide if the window has enough samples to calculate smoothing function. [Time based](#time-based-window) and [count based](#count-based-window) windows make the decision differently.
 * Set `v` equal either to the value of smoothing function over the window, or to the `NaN` (not a number) depends on decision made on previous step.
-* If value `v` is not `NaN` or `generateNaNs` flag is `true`, then write out the sample `(t, v)` to the output series, where `t` is timestamp of the latest sample in the window.
+* If value `v` is not `NaN` or `generateNaNs` is `true`, then write out the sample `(t, v)` to the output series, where `t` is timestamp of the latest sample in the window.
 * Add the current sample to the window.
 * While window is overflown, remove oldest sample from the window. Again [time based](#time-based-window) and [count based](#count-based-window) windows have their own sense of overflow.
 
@@ -88,7 +88,7 @@ This function has type `AVG`. It calculates mean of values within rolling window
 ### Weighted Average
 
 This function has type `WAVG`.
-It uses count or time based rolling window, so one of `count` or `interval` parameter is required.
+It uses count or time based rolling window, one of `count` or `interval` parameter is required.
 Weighted average for window which contains series values
 
 ![window values](./images/n-values.png)
@@ -100,7 +100,7 @@ is calculated by the formula
 ### Weighted Time Average
 
 This function has type `WTAVG`.
-It uses count or time based rolling window, so one of `count` or `interval` parameter is required.
+It uses count or time based rolling window, one of `count` or `interval` parameter is required.
 If window contains series samples
 
 ![window samples](./images/n-samples.png)
@@ -128,7 +128,7 @@ To calculate `EMA` specify one of following parameters.
 
 #### Smoothing algorithm
 
-Let original series consists of samples
+Original series consists of samples
 
 ![series samples](./images/n-samples.png)
 
@@ -154,7 +154,7 @@ where ![range](./images/tau.png) is value of the `range` parameter, and timestam
 These formulas imply that contribution of a sample to smoothed value decreases exponentially as sample's timestamp goes to the past.
 A smaller value of the range parameter lead to faster attenuation.
 
-For regular time series with time interval ![delta](./images/Delta.png) between consecutive observations the `range` parameter is expressed in terms of smoothing `factor` by the formula:
+For regular time series with time interval ![delta](./images/Delta.png) between consecutive observations the `range` parameter is expressed via smoothing `factor` by the formula:
 
 ![range through factor](./images/rangeViaFactor.png)
 
