@@ -123,7 +123,7 @@ To calculate `EMA` specify one of following parameters.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `factor` | number | Smoothing factor - number in interval (0 , 1). Use this parameter to smooth evenly spaced time series. When smoothing factor tends to 1 the smooting series tends to original series. The smaller factor gives more smoothing. |
+| `factor` | number | Smoothing factor - number in interval (0 , 1). Use this parameter to smooth evenly spaced time series. When smoothing factor tends to 1 the smoothed series tends to original series. The smaller factor gives more smoothing. |
 | `range` | number | Regulates the smoothing function steepnes. Use this parameter for smoothing irregular series.|
 
 #### Smoothing algorithm
