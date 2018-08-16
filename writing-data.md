@@ -2,15 +2,19 @@
 
 ## Extensive API
 
+![](./images/extensive-api.png)
+
 ATSD server provides [REST API](./api/data/README.md) and [Network API](./api/network/README.md) to insert time series, properties, and messages, as well as to collect and manage metadata for target systems, devices, and sensors.
 
 ## CSV and `nmon` Parsers
 
+![](./images/nmon-parser.png)
+
 Upload [CSV](https://axibase.com/docs/atsd/parsers/csv/) and [`nmon`](https://axibase.com/docs/atsd/integration/nmon/parser.html) files including `.zip` and `tar.gz` archives directly into the database for bulk import. Stream data into ATSD in CSV format with [Network API](./api/network/README.md).
 
-[](/docs/axibase-collector/)
-
 ## Axibase Collector
+
+![](./images/axibase-collector.png)
 
 [Axibase Collector](https://axibase.com/docs/axibase-collector/) is an ETL solution for scheduled data collection from external sources with an emphasis on automation.
 
