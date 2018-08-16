@@ -39,7 +39,7 @@
 
 ---
 
-## Cloudera Distribution Hadoop (CDH)
+## Cloudera Distribution Hadoop
 
 ![](../images/cloudera2.png) ![](../images/hadoop2.png)
 

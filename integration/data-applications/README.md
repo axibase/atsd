@@ -10,10 +10,10 @@ Power Meter is built with [PHP](http://php.net/) using the [ATSD PHP Client](htt
 
 **Application Credentials**:
 
-Username: `user1`, `user2`, `admin`<br>
+Username: `user1`, `user2`, `admin`, `guest`<br>
 Password: `demo`
 
-> Learn more about [Power Meter Reporter](https://axibase.com/products/axibase-time-series-database/data-applications/external-application/).
+> Learn more about [Power Meter Reporter](./power-meter-reporter.md).
 
 ## Cross Filter
 
