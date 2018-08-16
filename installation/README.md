@@ -17,8 +17,8 @@
 ![](../images/redhat1.png) ![](../images/centos.png) ![](../images/ubuntu2.png) ![](../images/debian1.png) ![](../images/sles.png)
 
 * **Supported Distributions**: RedHat, CentOS, Ubuntu, Debian, SLES
-    * RPM/DEB Packages
-    * `apt` / `yum` Repositories
+  * RPM/DEB Packages
+  * `apt` / `yum` Repositories
 * **Mode**: Non-Distributed
 * **File System**: `ext4` (Local)
 * **Edition**: Standard
