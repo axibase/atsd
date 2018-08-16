@@ -92,5 +92,11 @@
         },
         {
             "pattern": "https://crt.sh"
+        },
+        {
+            "pattern": "https://apps.axibase.com/data-monitor/"
+        },
+        {
+            "pattern": "https://apps.axibase.com/performance/"
         }
     ]}
