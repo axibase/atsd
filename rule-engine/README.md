@@ -274,3 +274,21 @@ Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrie
 ### Rule Errors
 
 Rule Errors can occur in case of invalid or malformed expressions. The **Alerts > Rule Errors** page contains the list of most recent errors as well as the relevant context and the command details. The errors are also logged as messages by entity `atsd` with type `rule-error` and source `rule-engine`.
+
+### Action Logging
+
+Webhook, Email and Script actions log their status as ATSD messages. To view action logs, select the option in the split-button.
+
+![](./images/action-log-split-button.png)
+
+* Email Notification Log
+
+![](./images/email-log.png)
+
+* Webhook Notification Log
+
+![](./images/webhook-log.png)
+
+* Script Action Log
+
+![](./images/script-log.png)
