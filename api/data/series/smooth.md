@@ -2,9 +2,13 @@
 
 ## Overview
 
-Smoothing leaves out noise from time series. This transformation averages values of the series grouped into a rolling window.
+Smoothing leaves out noise from time series.
+For each timestamp of the original series the smoothed value is calculated in two steps.
+First select group of consecutive observations of the original series.
+This group depends on timestamp and is commonly called a rolling window.
+Then calculate value of smoothing function for selected series samples.
 
-### Basic Example
+### Example
 
 ```json
 "smooth": {
@@ -13,113 +17,153 @@ Smoothing leaves out noise from time series. This transformation averages values
 }
 ```
 
-This example performs moving average smoothing with 1-hour sliding window.
+This example performs moving average smoothing with 1-hour sliding window. View more [examples](#examples).
 
 ## Parameters
 
+There are three group of parameters - parameters common for all smoothing types,
+parameters used to set up rolling window,
+and parameters specific for given type of smoothing function.
+Consult section devoted to specific smoothing function for the list of available settings.
+
+### Common Parameters
+
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `type` | string | [**Required**] [Smoothing function.](#smoothing-functions) Available functions: `AVG`, `WAVG`, `WTAVG`, `EMA`. |
-| `count` | number | [**Required if the `interval` is not specified**] Number of series samples within regular window. |
-| `interval` | object | [**Required if the `count` is not specified**] Sliding window duration specified as count and time unit. |
-| `minimalCount` | number | Threshold which triggers calculation of the smoothing function for a window. View the [processing](#processing) section for details. <br> Default: `0` if the `interval` parameter is specified, and equals to value of the `count` otherwise. |
-| `range` | double | [Required for the `EMA`] Regulates the smoothing function flatness. |
+| `type` | string | [**Required**] Type of smoothing function. Available functions: [`AVG`](#average), [`WAVG`](#weighted-average), [`WTAVG`](#weighted-time-average), [`EMA`](#exponential-moving-average). |
 | `order` | integer | Controls the order of smoothing in the sequence of other series [transformations](./query.md#transformations).<br>Default: `0`.|
 
-> Specify exactly one of the `count` and `interval` parameters.
+### Rolling Window Settings
 
-## Processing
+Each smoothing except for the `EMA` uses either [count based](#count-based-window) or [time based](#time-based-window) window. The [smoothing process](#smoothing-process) section describes how series samples are grouped into window.
 
-The samples in the input series are processed sequentially in ascending time order.
-A set of consecutive samples is maintained during processing. This set is called **sliding window** or **window** for short. Initially the window is empty. For each series sample the following steps are executed in order:
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
+| `count` | number | Specifies number of series samples in [count based window](#count-based-window). |
+| `interval` | object | Specifies [time based window](#time-based-window) duration in terms of `count` and time `unit`. For example: `"interval": {"count": 1, "unit": "HOUR"}`. Supported time units: `SECOND`, `MINUTE`, `HOUR`.|
+| `minimumCount` | number | Threshold which triggers calculation of the smoothing function for a window. View the [smoothing process](#smoothing-process) section for details. <br> Default value is `0` for time based window, and `count` for count based window. |
+| `generateNaNs` | boolean | Regulates `NaN` value generation for window which has not enough samples to calculate smoothing function. If `generateNaNs = true` then smoothed series has value `NaN` for the window, otherwise smoothed series has no value for the window. In the latter case smoothed value is not calculated for some timestamps of original series. <br>Default value: `false`.|
 
-* Decide if the window has enough samples to calculate smoothing function. [Time based](#time-based-window) and [count based](#count-based-window) windows make this decision differently.
+## Smoothing Process
+
+All smothing types except for the [`EMA`](#exponential-moving-average) follow the same processing schema described here.
+
+The samples of input series are processed sequentially in ascending time order.
+A set of consecutive samples is maintained during processing.
+This set is called **rolling window** or **window** for short.
+Initially the window is empty.
+For each series sample the following steps are executed in order:
+
+* Decide if the window has enough samples to calculate smoothing function. [Time based](#time-based-window) and [count based](#count-based-window) windows make the decision differently.
 * Set `v` equal either to the value of smoothing function over the window, or to the `NaN` (not a number) depends on decision made on previous step.
-* Write out the sample `(t, v)` to the output series, where `t` is timestamp of the latest sample in the window.
+* If value `v` is not `NaN` or `generateNaNs` flag is `true`, then write out the sample `(t, v)` to the output series, where `t` is timestamp of the latest sample in the window.
 * Add the current sample to the window.
-* If window is overflown, then remove necessary number of oldest samples from the window. Again [time based](#time-based-window) and [count based](#count-based-window) windows have their own sense of overflow.
+* While window is overflown, remove oldest sample from the window. Again [time based](#time-based-window) and [count based](#count-based-window) windows have their own sense of overflow.
 
-After all series samples are processed write one more sample into resulting series. The sample timestamp is the last timestamp of the last window. If number of samples in the window exceeds `minimalCount`, then value is average over the window. Othrevise value is `NaN`.
+After all series samples are processed write smoothed value for the last window.
 
-## Time based window
+## Time Based Window
 
-The `interval` setting specifies time based window.
 Denote:
 
-* `u` - first sample in the window.
-* `v` - last sample in the window.
-* `w` - first sample after the window.
+* `u` - first timestamp in the window.
+* `v` - last timestamp in the window.
+* `w` - first timestamp after the window.
 * `n` - number of samples in the window.
 
 Smoothing function is calculated for the window if `w - u > interval && n > minimalCount`.
 The window is overflown if `v - u > interval`.
 
-## Count based window
+## Count Based Window
 
-The `count` parameter determines this type of window.
-If number of samples in the window exceeds `minimalCount` then smoothing function is calculated for the window. If the number of samples is more than `count` then the window considered as overflown.
+If number of samples in the window exceeds `minimalCount` then smoothing function is calculated for the window.
+If the number of samples is more than `count` then the window considered as overflown.
 
-## Smoothing functions
+## Smoothing Functions
 
-### AVG: Average
+### Average
 
-Mean of values within window: sum of values divided by number of values.
+This function has type `AVG`. It calculates mean of values within rolling window, that is sum of values divided by number of values.
 
-### WAVG: Weighted Average
+### Weighted Average
 
-Weighted average of values within window. Weight of the i-th value is proportional to `i`, and sum of weights equals to 1.
+This function has type `WAVG`.
+It uses count or time based rolling window, so one of `count` or `interval` parameter is required.
+Weighted average for window which contains series values
 
-```js
-(1 * v1 + 2 * v2 + ... + n * vn) / (1 + 2 + ... + n)
-```
+![window values](./images/n-values.png)
 
-### WTAVG: Weighted Time Average
+is calculated by the formula
 
-Let window contains samples `(t1, v1), (t2, v2), ..., (tn, vn)`,
-where `ti` is timestamp of i-th sample measured in milliseconds,
-and `vi` is the sample's value.
-Define `wi = ti - t1 + 1000`.
-We add the puzzling `1000` summand only to make `w1` not zero.
-The smoothing function value for this window equals to
+![WAVG formula](./images/wavg.png)
 
-```js
-(w1 * v1 + w2 * v2 + ... + wn * vn) / (w1 + w2 + ... + wn)
-```
+### Weighted Time Average
 
-> Time Weighted Average (TWA) sounds better.
+This function has type `WTAVG`.
+It uses count or time based rolling window, so one of `count` or `interval` parameter is required.
+If window contains series samples
 
-### EMA: Exponential Moving Average
+![window samples](./images/n-samples.png)
 
-Implementation of the EMA smoothing bases on articles:
+then weighted time average is
 
-* A. Eckner, Algorithms for Unevenly Spaced Time Series: Moving Averages and Other Rolling Operators, section 4.1, EMA_next.
-* U. Muller, Specially Weighted Moving Averages with Repeated Application of the EMA Operator, formulas 2.7-2.14.
+![WTAVG formula](./images/wtavg.png)
 
-If s<sub>n-1</sub> is EMA value for timestamp t<sub>n-1</sub>,
-and (t<sub>n</sub>, v<sub>n</sub>) is next series sample,
-then EMA value s<sub>n</sub> is calculated as follow:
+where
 
-(1) w = exp<sup>-(t<sub>n</sub> - t<sub>n-1</sub>)/r</sup>,
+![WTAVG weight](./images/wtavg-weight.png)
 
-(2) s<sub>n</sub> = w * s<sub>n-1</sub> + (1 - w) * v<sub>n</sub>,
+and timestamp are measured in milliseconds.
 
-where r is the value of the "range" smoothing parameter,
-and timestamps are measured in milliseconds.
+### Exponential Moving Average
 
-These formulas imply that s<sub>n</sub> depends on all series samples before and at time t<sub>n</sub>, and that contribution of a sample to EMA value decreases exponentially as sample's timestamp goes to the past.
+This function has type `EMA`, and also known under the name [exponential smoothing](https://en.wikipedia.org/wiki/Exponential_smoothing).
+Exponential smoothing uses window which consists of all series observations up to current timestamp, therefore it does not need window settings.
+To calculate `EMA` specify one of following parameters.
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
+| `factor` | number | Smoothing factor - number in interval (0 , 1). Use this parameter to smooth evenly spaced time series. When smoothing factor tends to 1 the smooting series tends to original series. The smaller factor gives more smoothing. |
+| `range` | number | Regulates the smoothing function steepnes. Use this parameter for smoothing irregular series.|
+
+#### Smoothing algorithm
+
+Let original series consists of samples
+
+![series samples](./images/n-samples.png)
+
+Smoothed series has the same timestamps:
+
+![smoothed series](./images/smoothed.png)
+
+For evenly spaced series smoothed values are calculated by the formulas:
+
+![EMA first value](./images/ema1.png)
+
+![EMA reccurent formula](./images/ema-evenly.png)
+
+where ![alpha](./images/alpha.png) is value of the smoothing `factor`.
+
+For irregular series the calculations are the same,
+but smoothing factor is calculated based on series timestamps:
+
+![EMA smoothing factor](./images/smoothingFactor.png)
+
+where ![range](./images/tau.png) is value of the `range` parameter, and timestamps are measured in milliseconds.
+
+These formulas imply that contribution of a sample to smoothed value decreases exponentially as sample's timestamp goes to the past.
 A smaller value of the range parameter lead to faster attenuation.
 
-If time difference t<sub>n</sub> - t<sub>n-1</sub> is known, then range could be chosen to get desired weight of the latest value v<sub>n</sub> in formula (1).
-For that express rate in terms of desired weight w from equation (2):
+For regular time series with time interval ![delta](./images/Delta.png) between consecutive observations the `range` parameter is expressed in terms of smoothing `factor` by the formula:
 
-(3) r = - (t<sub>n</sub> - t<sub>n-1</sub>) / ln(w),
-
-where ln stands for the natural logarithm.
+![range through factor](./images/rangeViaFactor.png)
 
 #### Example
 
-Let t<sub>n</sub> - t<sub>n-1</sub> = 1000 mulliseconds, and we want the latest value v<sub>n</sub> contributes 50% to EMA value s<sub>n</sub>, so w = 0.5.
-Substite these numbers into formula (3), and get r = 1443.
+If interval between samples is 1000 mulliseconds, and smoothing factor 0.5, then this formula give `range` value 1443.
+
+#### References:
+* A. Eckner, Algorithms for Unevenly Spaced Time Series: Moving Averages and Other Rolling Operators, section 4.1, EMA_next.
+* U. Muller, Specially Weighted Moving Averages with Repeated Application of the EMA Operator, formulas 2.7-2.14.
 
 #### Example
 
@@ -146,3 +190,20 @@ the contribution of the latest sample into EMA value is calculated for several r
 | 10000 | 10% |
 | 12000 | 8% |
 | 20000 | 5% |
+
+> Note that LOWESS smoothing needs at least 3 parameters `bandwidth`, `robustness`, `accuracy` which regulates.
+View [implementation](https://commons.apache.org/proper/commons-math/javadocs/api-3.3/org/apache/commons/math3/analysis/interpolation/LoessInterpolator.html), and all of them have default values.
+
+## Examples
+
+
+
+
+
+
+
+Each type of smoothing uses its own settings of rolling window and smoothing function.
+Consult section devoted to specific smoothing function for the complete list.
+
+
+The `EMA` calculation for evenly spaced time series is simplier then for irregular series.
