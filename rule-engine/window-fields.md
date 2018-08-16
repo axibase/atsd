@@ -73,8 +73,8 @@ Notes:
 `window_first_datetime` | UTC | Time of the earliest command in the window
 `timestamp` | n/a | Time of the command that caused the window status event, in Unix time (milliseconds).
 `now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.
-`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.
-`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`.
+`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
+`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
 
 > Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
 > Fields ending with `_datetime` contain time in [ISO format](../shared/date-format.md) UTC time zone, for example `2017-05-30T06:05:39Z`.
