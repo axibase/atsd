@@ -4,7 +4,7 @@
 
 [![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
 
-* Image Registry: Docker Hub, RedHat Container Catalog, Kubernetes
+* **Image Registry**: Docker Hub, RedHat Container Catalog, Kubernetes
 * **Mode**: Non-Distributed
 * **Edition**: Standard
 
@@ -16,9 +16,9 @@
 
 ![](../images/redhat1.png) ![](../images/centos.png) ![](../images/ubuntu2.png) ![](../images/debian1.png) ![](../images/sles.png)
 
-* Supported Distributions: RedHat, CentOS, Ubuntu, Debian, SLES
-* RPM/DEB Packages
-* `apt` / `yum` Repositories
+* **Supported Distributions**: RedHat, CentOS, Ubuntu, Debian, SLES
+    * RPM/DEB Packages
+    * `apt` / `yum` Repositories
 * **Mode**: Non-Distributed
 * **File System**: `ext4` (Local)
 * **Edition**: Standard
