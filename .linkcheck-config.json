@@ -77,5 +77,20 @@
         },
         {
             "pattern": "https://apps.axibase.com/meters/"
+        },
+        {
+            "pattern": "https://catalog.data.gov/dataset/food-insecurity-rates-2009-present"
+        },
+        {
+            "pattern": "https://catalog.data.gov/dataset/solar-photovoltaic-pv-incentive-program-completed-projects-by-city-and-contractor-beginnin"
+        },
+        {
+            "pattern": "https://catalog.data.gov/dataset/american-fitness-index-ranking-2010-present"
+        },
+        {
+            "pattern": "https://ec.europa.eu/"
+        },
+        {
+            "pattern": "https://crt.sh"
         }
     ]}
