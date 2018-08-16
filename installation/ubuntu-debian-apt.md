@@ -2,19 +2,19 @@
 
 ## Supported Versions
 
-* Ubuntu 16.04
-* Debian 8.x/9.x
+* Ubuntu `16.04`
+* Debian `8.x`/`9.x`
 
 ## Requirements
 
-* Minimum RAM: 2 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `2` GB
+* See [Requirement Specifications](./requirements.md) for additional information.
 
-## Installation Steps
+## Installation Process
 
-### Add `backports` repository
+### Add `backports` Repository
 
-**Required only for Debian 8.x (jessie).**
+**Required only for Debian `8.x` (jessie).**
 
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
@@ -48,13 +48,13 @@ Install ATSD.
 sudo apt-get update && sudo apt-get install atsd
 ```
 
-On Debian 8.x (jessie)
+On Debian `8.x` (jessie)
 
 ```sh
 sudo apt-get update && sudo apt-get -t jessie-backports install atsd
 ```
 
-It can take up to 5 minutes to initialize the database.
+It can take up to five minutes to initialize the database.
 
 ## Check Installation
 
@@ -68,7 +68,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 

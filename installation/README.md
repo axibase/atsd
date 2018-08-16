@@ -1,90 +1,68 @@
-# Installation
+# Axibase Time Series Database Installation
 
-## Requirements
+## Docker Images
 
-* Linux 64-bit: Ubuntu 16.04, Debian 8.x/9.x, RHEL/CentOS 7.x, SLES 12.x.
-* Operating system and hardware [requirements](../administration/requirements.md)
+[![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
 
-## Installation Guides
+* **Image Registry**: Docker Hub, RedHat Container Catalog, Kubernetes
+* **Mode**: Non-Distributed
+* **Edition**: Standard
 
-### Container Images
+[![](../images/install.png)](./images.md)
 
-Quick start:
+---
 
-```bash
-docker run -d --name=atsd \
-  -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
-  axibase/atsd:latest
-```
+## Linux Packages
 
-| **Distribution** | **Format** | **Installation Guide** |
-| :--- | --- | :---: |
-| Docker | official image | [View](docker.md)|
-| RedHat Docker | certified image | [View](docker-redhat.md)|
-| Kubernetes | official image | [View](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)|
+![](../images/redhat1.png) ![](../images/centos.png) ![](../images/ubuntu2.png) ![](../images/debian1.png) ![](../images/sles.png)
 
-### Packages
+* **Supported Distributions**: RedHat, CentOS, Ubuntu, Debian, SLES
+  * RPM/DEB Packages
+  * `apt` / `yum` Repositories
+* **Mode**: Non-Distributed
+* **File System**: `ext4` (Local)
+* **Edition**: Standard
 
-Quick start:
+[![](../images/install.png)](./packages.md)
 
-```bash
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
---recv-keys 26AEE425A57967CFB323846008796A6514F3CB79
-```
+---
 
-```bash
-sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./" \
-  >> /etc/apt/sources.list.d/axibase.list'
-```
+## AWS EMRFS
 
-```bash
-sudo apt-get update && sudo apt-get install atsd
-```
+![](../images/aws3.png) ![](../images/emrfs.png)
 
-Available packages:
+* **Mode**: Distributed
+* **File System**: AWS S3
+* **Edition**: Enterprise
 
-| **Distribution** | **Format** | **Installation Guide** |
-| :--- | --- | :---: |
-| Ubuntu/Debian | apt | [View](ubuntu-debian-apt.md)|
-| Ubuntu/Debian | [deb](https://axibase.com/public/atsd_deb_latest.htm) | [View](ubuntu-debian-deb.md) |
-| RedHat/CentOS| yum | [View](redhat-centos-yum.md)|
-| RedHat/CentOS| [rpm](https://axibase.com/public/atsd_rpm_latest.htm) | [View](redhat-centos-rpm.md)|
-| SLES| [rpm](https://axibase.com/public/atsd_rpm_sles_latest.htm)   | [View](sles-rpm.md)|
-| Other | [tar.gz](https://axibase.com/public/atsd_distrib_latest.htm) | [View](other-distributions.md)|
+[![](../images/install.png)](./aws-emr-s3.md)
 
-### Cloud
+---
 
-| **Hadoop Distribution** | **Installation Guide** |
-| :--- | :--- |
-| HBase on AWS S3  | [View](aws-emr-s3.md)|
+## Cloudera Distribution Hadoop
 
-### Hadoop Cluster
+![](../images/cloudera2.png) ![](../images/hadoop2.png)
 
-| **Hadoop Distribution** | **Installation Guide** |
-| :--- | :--- |
-| Cloudera Distribution Hadoop (CDH)  | [View](cloudera.md) |
+* **Mode**: Distributed
+* **File System**: HDFS
+* **Edition**: Enterprise
 
-## Installing Updates
+[![](../images/install.png)](./cloudera.md)
 
-* Review [Change Log](../changelogs/README.md)
-* Refer to [Update Guide](../administration/update.md)
-
-## Technical Support
-
-Email us at **support-atsd@axibase.com** in case of installation questions.
+---
 
 ## License
 
-By installing Axibase Time Series Database (ATSD) Standard Edition you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
+By installing Axibase Time Series Database you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
 
-## Tutorials
+## Hardware Requirements
 
-* [Getting Started Guide](../tutorials/getting-started.md)
+Review [Requirements Specifications](./requirements.md) to ensure optimal functionality.
 
-## Documentation
+## Getting Started
 
-* [Documentation](https://axibase.com/docs/atsd)
+After installation, review the [Getting Started Guide](../tutorials/getting-started.md) to begin exploring ATSD.
 
-## Uninstalling ATSD
+## Technical Support
 
-* Refer to [Documentation](uninstalling.md)
+Email Axibase at **support-atsd@axibase.com** with installation questions.

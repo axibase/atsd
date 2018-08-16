@@ -14,7 +14,7 @@ Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 
 ### Overview
 
-Schema-based parsers are JavaScript programs that traverse an underlying CSV file in left-right, top-down directions and convert cells into [series](https://axibase.com/docs/atsd/api/network/series.html), property, or message commands. These programs support built-in [functions](../csv-schema.md#schema-functions) which look up cells by row and column index, to validate their contents and modify their values as they assemble commands.
+Schema-based parsers are JavaScript programs that traverse an underlying CSV file in left-right, top-down directions and convert cells into [series](../../../api/network/series.md), property, or message commands. These programs support built-in [functions](../csv-schema.md#schema-functions) which look up cells by row and column index, to validate their contents and modify their values as they assemble commands.
 
 For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** fields are mandatory. The **Schema** field contains the JavaScript program code implementing parsing logic.
 
@@ -28,7 +28,7 @@ For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** f
 
 ### Timestamp Pattern
 
-* To parse the dates in the CSV file, specify the timestamp column pattern using [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
+* To parse the dates in the CSV file, specify the timestamp column pattern using [Time Format](../../../shared/time-pattern.md).
 * In the example above, the pattern to read `Measurement Time` column values is `yyyy-MM-dd HH:mm`.
 * Enter timestamp pattern in the **Timestamp Format** field
 
@@ -51,7 +51,7 @@ A step-by-step explanation of the schema program is provided below:
 Select which parts of the file to iterate over.
 
 * `select("#row=2-*")`: Select each row starting with the second row until the last row.
-* `select("#col=4-*")`: Select each column in each row starting with the forth column until the last column.
+* `select("#col=4-*")`: Select each column in each row starting with the fourth column until the last column.
 
 The result of the previous two functions is a collection of cells that are processed sequentially. The `addSeries` function is invoked for each cell in the collection: cell `(2, 4)`, cell `(2, 5)`, etc.
 

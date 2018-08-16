@@ -2,115 +2,63 @@
 
 ## Overview
 
-Filters determine which commands are processed by the given rule. Commands that satisfy all filters are allocated to the rule [windows](window.md) for further processing such as adding data and evaluating the alert condition.
+Filters determine which commands are processed by the given rule.
 
-## Built-in Filters
+Commands that satisfy all filters are added to the rule [windows](window.md) for further processing such as updating statistics and evaluating the alert [condition](condition.md).
 
-| **Name** | **Description** |
-| --- | --- |
-| Data Type | Checks that the command is of the specified type: `series`, `property`, `message`. |
-| Metric | Checks that a metric is equal to the metric name specified in the rule. |
-
-![](./images/filter-dt-metric.png)
-
-## User-Defined Filters
-
-| **Name** | **Description** |
-| --- | --- |
+| **Filter** | **Description** |
+|---|---|
+| Data Type | Accepts commands of the specified type: `series`, `property`, or `message`. |
+| Metric Name | Accepts `series` commands with the specified metric name. |
+| Type/Source | Accepts `message` commands with the specified type and source tags. |
+| Type | Accepts `property` commands with the specified property type. |
+| Entity Names | Accepts commands for the specified list of entity names or name patterns. |
+| Entity Group | Accepts commands for entities that belong to one of selected groups. |
 | Expression | Accepts commands for which the filter expression returns `true`. |
-| Entity | Accepts commands only for entities selected in the rule. |
-| Entity Group | Accepts commands for entities that belong only to one of entity groups selected in the rule. |
-| Time | Accepts commands with a timestamp that deviates by less than the specified interval from the current server time. |
+| Time Offset | Accepts commands with a timestamp that deviates by **less** than the specified interval from the current server time. |
+| Out-of-order | Accepts commands with a timestamp that is equal or greater than the timestamp of the previous command. |
 
 ## Data Type Filter
 
-The filter ignores commands if their data type is different from what is specified in the rule.
-For example, a `series` rule ignores `message` and `property` commands.
+The filter checks that the command is of the specified data type: `series`, `property`, or `message` and ignores commands if their type is different from what is specified in the filter. For example, a `series` filter ignores `message` and `property` commands.
 
-## Metric Filter
+![](./images/filter-dt-metric.png)
 
-To match the rule, the incoming `series` command must have the same metric name as the one specified in the Rule Editor. This filter applies to `series` commands.
+## Metric, Type, Source Filter
 
-## Filter Expression
+The filter is specific to each data type and accepts commands that match values in the respective fields.
 
-The filter matches commands for which the filter expression returns `true`.
+* The **Metric** filter applies to `series` commands.
+* The **Type** filter applies to `property` commands.
+* The **Type** and **Source** filter applies to `message` commands.
 
-The expression consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
+![](./images/filter-type-source.png)
 
-```javascript
-entity != 'nurswgvml007'
-```
+## Entity Names Filter
 
-```javascript
-entity LIKE 'nurswgvml*' AND entity IN ('nurswgvml007', 'nurswgvml006')
-```
-
-The expression can include command fields listed below, literal values, and [functions](functions.md) except [statistical functions](functions-statistical.md).
-
-Base command fields:
-
-* entity
-* tags.{tag-name}
-* entity.tags.{tag-name}
-* entity.field
-* metric.tags.{tag-name}
-* metric.field
-
-`series` command fields:
-
-* metric
-* value
-
-`message` command fields:
-
-* type
-* source
-* severity
-* message
-
-`property` command fields:
-
-* type
-* keys
-* properties
-
-![](./images/filter-expression.png)
-
-```javascript
-tags.method == 'get' AND tags.site == 'OperationsManager2007WebConsole'
-```
-
-Tag values can be accessed using dot notation `tags.{tag-name}` or square brackets `tags['tag-name']`.
-
-> Square brackets are required if the tag name contains special characters `(-,+,=, etc)`.
-
-```javascript
-tags['mount-point'] NOT LIKE '*u113452*'
-```
-
-```javascript
-type == 'activemq_service' AND keys.service == 'health'
-```
-
-```javascript
-entity.tags.environment != 'test' && message NOT IN collection('linux-ignore-commands')
-```
-
-## Entity Name Filter
-
-To restrict the rule to specific entities, enter an entity name or a name pattern containing wildcards. Multiple entity names or patterns can be enumerated using space character as a separator. The filter is applied only if at least one entity or entity pattern is specified.
+Specify one or more entity names or patterns to restrict a rule to specific entities. Separate multiple names or patterns with whitespace. Patterns support `*` wildcard characters.
 
 ![](./images/filter-entity.png)
 
-For more flexible filtering, such as using negation or entity tag comparison, use the main [filter expression](#filter-expression) instead:
+For more flexible filtering, use the main [Expression](#filter-expression) filter described below, for example:
 
-```javascript
-entity != 'nurswgvml007'
-```
+* Exclude entities using negation:
 
-```javascript
-entity.tags.location = 'SVL'
-```
+  ```javascript
+  entity != 'abc'
+  ```
+
+* Include entities based on entity label:
+
+  ```javascript
+  entity.displayName NOT LIKE '*test*'
+  ```
+
+* Include entities based on entity tags:
+
+  ```javascript
+  entity.tags.location IN ('SVL', 'NUR')
+  ```
 
 ## Entity Group Filter
 
@@ -118,11 +66,73 @@ The filter discards commands for entities that do not belong to one of the entit
 
 ![](./images/filter-entity-group.png)
 
-## Time Filter
+## Filter Expression
+
+The filter matches commands for which the expression returns `true`.
+
+The expression consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
+
+The expression can include command fields listed below, literal values, and [functions](functions.md) except [statistical functions](functions-statistical.md).
+
+| Base | Series | Message | Property |
+|---|---|---|---|
+| <ul><li>`entity`</li><li>`tags.{name}`</li><li>`entity.tags.{name}`</li><li>`entity.field`</li><li>`metric.tags.{name}`</li><li>`metric.field`</li></ul>| <ul><li>`metric`</li><li>`value`</li></ul>|<ul><li>`type`</li><li>`source`</li><li>`severity`</li><li>`message`</li></ul> | <ul><li>`type`</li><li>`keys`</li><li>`keys.{name}`</li><li>`properties`</li><li>`properties.{name}`</li></ul>|
+
+```javascript
+entity != 'nurswgvml007'
+```
+
+```javascript
+entity.displayName NOT LIKE '*test*'
+  && entity.tags.location = 'SVL'
+```
+
+Tag values can be accessed using dot notation `tags.{tag-name}` or square brackets `tags['tag-name']`.
+
+```javascript
+tags.location LIKE 'nur*' && tags.state = 'CA'
+```
+
+```javascript
+type = 'activemq_service' AND keys.service = 'health'
+```
+
+```javascript
+entity.tags.environment != 'test'
+  && message NOT IN collection('linux-ignore-commands')
+```
+
+![](./images/filter-expression.png)
+
+```javascript
+tags.method = 'get' AND tags.site = 'OperationsManager2007WebConsole'
+```
+
+Use square brackets if the tag name contains special characters such as `-,+,=`.
+
+```javascript
+tags['mount-point'] NOT LIKE '*u113452*'
+```
+
+## Time Offset Filter
 
 If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter can be used to ignore delayed and out-of-order data.
 
 ![](./images/filter-time.png)
+
+Set count to `0` to disable the filter.
+
+## Out-of-Order Filter
+
+The filter discards commands timestamped earlier than the time of the previous command in the given window.
+
+![](./images/filter-out-of-order.png)
+
+## Filter Log
+
+To view the list of commands that matched the **Data Type** and **Metric/Type/Source** filters and the results of their evaluation by other filters, click **View Filter Log** located on the **Filters** tab.
+
+![](./images/filter-log.png)
 
 ## Filter vs Condition
 

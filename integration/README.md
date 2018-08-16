@@ -33,3 +33,11 @@
 
 * [JDBC](https://github.com/axibase/atsd-jdbc)
 * [ODBC](odbc/README.md)
+
+## Data Applications
+
+* [Cross Filter](./data-applications/cross-filter.md)
+* [Power Meter Reporter](./data-applications/power-meter-reporter.md)
+* [Data Slider](./data-applications/data-slider.md)
+* [Performance Viewer](./data-applications/performance-viewer.md)
+* [Data Monitor](./data-applications/data-monitor.md)

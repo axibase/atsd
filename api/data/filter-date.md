@@ -4,8 +4,8 @@ Date fields define the time range for selecting the data.
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-|`startDate`|    string | Start of the selection interval. <br>ISO 8601 date or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped at or after `startDate`.<br>Examples: `2016-05-25T00:15:00.194Z`, `current_hour` |
-| `endDate` |    string | End of the selection interval. <br>ISO 8601 date or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped before `endDate`.<br>Examples: `2016-05-25T00:15:00Z`, `previous_day - 1 * HOUR`|
+|`startDate`|    string | Start of the selection interval. <br>[ISO format](../../shared/date-format.md) date or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped at or after `startDate`.<br>Examples: `2016-05-25T00:15:00.194Z`, `current_hour` |
+| `endDate` |    string | End of the selection interval. <br>[ISO format](../../shared/date-format.md) date or [calendar](../../shared/calendar.md) keyword.<br>Matches records timestamped before `endDate`.<br>Examples: `2016-05-25T00:15:00Z`, `previous_day - 1 * HOUR`|
 | `interval` |    object | Duration of the selection interval, specified as `count` and `unit`. <br>Example: `{"count": 5, "unit": "MINUTE"}`|
 
 * `startDate` is inclusive and `endDate` is exclusive.
@@ -23,7 +23,7 @@ Date fields define the time range for selecting the data.
 
 ## ISO Date Formats
 
-See [date format](date-format.md) for supported ISO formats.
+See [Date Format Specifications](../../shared/date-format.md) for supported ISO formats.
 
 ## Examples
 

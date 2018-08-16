@@ -4,7 +4,7 @@
 
 ATSD supports [SQL](../sql/README.md) syntax for flexible querying and analysis of time series data. One of the options available for executing ad hoc SQL queries is the built-in [SQL Console](../sql/sql-console.md).
 
-Open the **SQL > SQL Console** tab in the main menu:
+Open **SQL > SQL Console** from the main menu:
 
 ![](./resources/getting-started-5_1.png)
 
@@ -21,7 +21,7 @@ ORDER BY datetime DESC
 
 ![](./resources/sql-console-1.png)
 
-You can export query results into CSV, Excel, and JSON by clicking **Export**.
+Export query results into CSV, Excel, and JSON by clicking **Export**.
 
 Modify the query to include [metadata](../sql/README.md#columns) fields, tags, and to [format](../sql/README.md#date_format) the date:
 
@@ -46,7 +46,7 @@ ORDER BY datetime DESC
 | BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:02  | 31.0  |
 ```
 
-[Regularize](../sql/README.md#regularization) the series using a step-like interpolation function:
+[Regularize](../sql/README.md#regularization) a series with a step-like interpolation function:
 
 ```sql
 SELECT entity.label AS "asset", entity.tags.model AS "model",
@@ -70,6 +70,6 @@ ORDER BY datetime DESC
 | BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:00  | 30.0  |
 ```
 
-Review the [SQL syntax](../sql/README.md) and experiment by executing your own queries based on available [examples](../sql/examples/README.md).
+Review the [SQL syntax](../sql/README.md) and experiment by executing custom queries based on the provided [examples](../sql/examples/README.md).
 
 Continue to [Part 6: Alerting](getting-started-alert.md).

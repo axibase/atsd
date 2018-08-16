@@ -7,7 +7,7 @@
   * [User Account Types](./user-authentication.md#user-account-types)
   * [Password Requirements](./user-authentication.md#password-requirements)
   * [Built-In Account](./user-authentication.md#built-in-account)
-  * [Changing the Password](./user-authentication.md#changing-the-password)
+  * [Changing Password](./user-authentication.md#changing-password)
   * [Resetting Password](./user-authentication.md#resetting-password)
   * [Guest API Access](./user-authentication.md#guest-access-to-data-api)
   * [HTTP Basic Authorization Examples](./user-authentication.md#http-basic-authorization-examples)

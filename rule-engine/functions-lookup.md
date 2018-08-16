@@ -123,7 +123,7 @@ Returns a list of entity **objects** with last insert date for metric `m` betwee
 
 Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). Refer to entity [fields](entity-fields.md) using dot notation.
 
-Start date `s` and end date `e` are `iso` dates or a [calendar keyword](../shared/calendar.md#keywords).
+Start date `s` and end date `e` are [ISO format](../shared/date-format.md) dates or a [calendar keyword](../shared/calendar.md#keywords).
 
 To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 

@@ -2,34 +2,34 @@
 
 ## Supported Versions
 
-* Ubuntu 16.04
-* Debian 8.x/9.x
+* Ubuntu `16.04`
+* Debian `8.x`/`9.x`
 
 ## Requirements
 
-* Minimum RAM: 2 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `2` GB
+* See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Check Connection
 
 If the target server is not connected to public repositories to install dependencies with APT,
-use the [offline installation option](ubuntu-debian-offline.md).
+use the [Offline Installation Guide](ubuntu-debian-offline.md) to complete installation.
 
 ## Download
 
-Download deb package to the target server:
+Download `deb` package to the target server:
 
 ```bash
 wget https://www.axibase.com/public/atsd_amd64.deb
 ```
 
-The distribution files are also published on [https://axibase.com/public/atsd_deb_latest.htm](https://axibase.com/public/atsd_deb_latest.htm).
+> Alternatively, distribution files are published on [`https://axibase.com/public/atsd_deb_latest.htm`](https://axibase.com/public/atsd_deb_latest.htm).
 
 ## Installation Steps
 
-### Add `backports` repository
+### Add `backports` Repository
 
-This step is required only for Debian 8.x (jessie)
+This step is required only for Debian `8.x` (jessie)
 
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
@@ -41,7 +41,7 @@ sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/
 sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
 ```
 
-On Debian 8.x (jessie)
+On Debian `8.x` (jessie)
 
 ```sh
 sudo apt-get update && sudo apt-get -t jessie-backports install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
@@ -53,7 +53,7 @@ sudo apt-get update && sudo apt-get -t jessie-backports install -y openjdk-8-jdk
 sudo dpkg -i atsd_amd64.deb
 ```
 
-It can take up to 5 minutes to initialize the database.
+It can take up to five minutes to initialize the database.
 
 ## Check Installation
 
@@ -67,7 +67,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 

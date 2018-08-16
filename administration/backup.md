@@ -1,10 +1,10 @@
-# Backup and Restore ATSD
+# Backup and Restore
 
-This document describes how to create a backup of [configuration records](#configuration-records) and [data](#data) in ATSD.
+This document describes how to backup [configuration records](#configuration-records) and [data](#data) in ATSD.
 
 ## Configuration Records
 
-The database performs a backup for the following configuration types:
+The database performs a regular backup of the `/opt/atsd/atsd/conf` directory and the following configuration types:
 
 * [CSV Parsers](../parsers/csv/README.md)
 * [Entities](../README.md#glossary)
@@ -23,7 +23,7 @@ The database performs a backup for the following configuration types:
 * [User Groups](./collector-account.md#create-user-group)
 * [Outgoing Webhooks](../rule-engine/notifications/webhook.md)
 
-> Configuration backup does not include [data tables](./data_retention.md#data-tables) containing series, properties, or messages. See [Data](#data) section for instructions on creating data backup.
+Configuration backup **does not** include [data tables](./data_retention.md#data-tables) containing series, property, or message records. Refer to [Data](#data) section for data backup options.
 
 The database performs a [scheduled backup](#scheduled-backup) each day at a specified time.
 
@@ -45,9 +45,11 @@ Download individual backup archives by clicking the link in the **Name** column 
 
 The database creates daily backup files in the [backup directory](#backup-directory) at `23:30` [local server time](./timezone.md).
 
-The schedule is controlled with the `internal.backup.schedule` property which can be modified on the [**Server Properties**](./server-properties.md) page.
+The schedule is controlled with the `internal.backup.schedule` property which can be modified on the [**Settings > Server Properties**](./server-properties.md) page.
 
 New backup files do not replace existing backup files. Each backup is timestamped with the date and time of creation.
+
+Backup of the `/opt/atsd/atsd/conf` directory includes nested directories and is stored in `conf_{timestamp}.tar.gz` archive.
 
 Configure an external `cron` job to prune old backup files and to move records to a different directory.
 
@@ -55,7 +57,7 @@ Configure an external `cron` job to prune old backup files and to move records t
 
 By default, ATSD stores backup data in the `/opt/atsd/atsd/backup` directory.
 
-To change the directory, for example to store files on a network-mounted file system, modify the `backup.data.directory` property on the [**Server Properties**](./server-properties.md) page.
+To change the directory, for example to store files on a network-mounted file system, modify the `backup.data.directory` property on the [**Settings > Server Properties**](./server-properties.md) page.
 
 ### Restore
 
@@ -84,7 +86,7 @@ To replicate data to another database instance, follow the instructions in the [
 
 ### Base Directory Copy
 
-This method involves copying files on the local file system and only applies to [standalone](../installation/README.md#packages) installations.
+This method involves copying files on the local file system and only applies to [standalone](../installation/packages.md) installations.
 
 Stop ATSD.
 

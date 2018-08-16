@@ -138,14 +138,14 @@ If the rows are filtered in the `WHERE` condition such that intermediate periods
 In the example below, the first value is the last value of the previous Sunday.
 
 ```sql
-SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",
+SELECT datetime, date_format(time, 'eeee') AS "day-of-week",
   min(value), max(value), max(value)- min(value) AS "max-min", first(value), last(value), last(value)-first(value) AS "last-first", delta(value)
 FROM "so.tags.count"
 WHERE entity = 'stackoverflow-python'
   AND datetime >= '2017-01-01T00:00:00Z' AND datetime < '2017-02-06T00:00:00.000Z'
-  AND date_format(time, 'EEEE') = 'Sunday'
+  AND date_format(time, 'eeee') = 'Sunday'
 GROUP BY period(1 day)
-  --HAVING date_format(time, 'EEEE') = 'Sunday'
+  --HAVING date_format(time, 'eeee') = 'Sunday'
 ```
 
 ## Results
@@ -164,14 +164,14 @@ GROUP BY period(1 day)
 The same query where filtering is applied to grouped rows (by period) produces daily differences since the first value used by the `DELTA` function is the last value of the previous day.
 
 ```sql
-SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",
+SELECT datetime, date_format(time, 'eeee') AS "day-of-week",
   min(value), max(value), max(value)- min(value) AS "max-min", first(value), last(value), last(value)-first(value) AS "last-first", delta(value)
 FROM "so.tags.count"
 WHERE entity = 'stackoverflow-python'
   AND datetime >= '2017-01-01T00:00:00Z' AND datetime < '2017-02-06T00:00:00.000Z'
-  --AND date_format(time, 'EEEE') = 'Sunday'
+  --AND date_format(time, 'eeee') = 'Sunday'
 GROUP BY period(1 day)
-  HAVING date_format(time, 'EEEE') = 'Sunday'
+  HAVING date_format(time, 'eeee') = 'Sunday'
 ```
 
 ## Results

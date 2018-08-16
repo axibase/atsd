@@ -7,16 +7,16 @@ and copying them to the target server with similar characteristics for offline i
 
 ## Supported Versions
 
-* SUSE Linux Enterprise Server 12.x
+* SUSE Linux Enterprise Server `12.x`
 
 ## Requirements
 
-* Minimum RAM: 2 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `2` GB
+* See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Check Dependencies
 
-Check that required dependencies are present on the target server.
+Check that required dependencies are present on the target server:
 
 ```sh
 sudo zypper search -i java-1_8_0-openjdk-devel which net-tools iproute2
@@ -33,23 +33,23 @@ i  | net-tools                | Important Programs for Networking               
 i  | which                    | Displays where a particular program in your path is located | package
 ```
 
-Install these dependencies if needed.
+Install any missing dependencies.
 
 ## Install ATSD
 
-Download the [ATSD rpm package for SLES](https://axibase.com/public/atsd_rpm_sles_latest.htm) to the server with internet access.
+Download the [ATSD `rpm` package for SLES](https://axibase.com/public/atsd_rpm_sles_latest.htm) to the server with internet access.
 
 ```sh
 curl -O https://axibase.com/public/atsd_amd64_sles.rpm
 ```
 
-Copy the `atsd_amd64_sles.rpm` file to the target server and install ATSD.
+Copy `atsd_amd64_sles.rpm` to the target server and install ATSD.
 
 ```sh
 sudo zypper -n install atsd_amd64_sles.rpm
 ```
 
-It can take up to 5 minutes to initialize the database.
+It can take up to five minutes to initialize the database.
 
 ## Check Installation
 
@@ -63,7 +63,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 

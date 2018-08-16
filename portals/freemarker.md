@@ -205,7 +205,7 @@ Retrieves a collection of unique tag maps for metric and entity.
 </#list>
 ```
 
-### atsd_last
+### `atsd_last`
 
 ```javascript
 atsd_last("entity", "metric", "tag1=v1,tag2=v2")
@@ -281,7 +281,7 @@ lastInsertDate('entity'[, ‘metric’])
 
 Double.
 
-Returns the last insert time for the entity or entity/metric combination in milliseconds (Time) or ISO format (Date). Metric is an optional parameter.
+Returns the last insert time for the entity or entity/metric combination in milliseconds (Time) or [ISO format](../shared/date-format.md) (Date). Metric is an optional parameter.
 
 ```ls
 <#assign ebs_volume_tags = getSeriesProperties(volume, "aws_ec2.attachmentset") >
@@ -460,9 +460,9 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `getSeriesProperties("{entity}", "{property_type}")`  |  property objects for specified entity and property type  |  Retrieves a collection of property objects for a specified entity and property type.<br>If no entity is specified, then a collection of property objects for all entities with the specified property type is retrieved.  |
 |  `atsd_values(entity, metric, tags, type, interval, shift, duration)`  |  Aggregator object  |  See tables below.  |
 |  `lastInsertTime('entity'[, 'metric'])`  |  Double  |  Returns last insert time for the entity or entity/metric combination in milliseconds. Metric is an optional parameter.  |
-|  `lastInsertDate('entity'[, 'metric'])`  |  Double  |  Returns last insert date for the entity or entity/metric combination in ISO format. Metric is an optional parameter.  |
+|  `lastInsertDate('entity'[, 'metric'])`  |  Double  |  Returns last insert date for the entity or entity/metric combination in [ISO format](../shared/date-format.md). Metric is an optional parameter.  |
 
-#### atsd_values parameters
+#### `atsd_values` parameters
 
 | Name | Description |
 | --- | --- |
@@ -474,7 +474,7 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `shift`  |  Interval: `endTime = now – shift`  |
 |  `duration`  |  Selection interval: `startTime = endTime – duration`  |
 
-#### atsd_values parameters
+#### `atsd_values` parameters
 
 | Name | Returns |
 | --- | --- |

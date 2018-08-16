@@ -2,24 +2,24 @@
 
 ## Supported Versions
 
-* RedHat Enterprise Linux 7.x
-* CentOS 7.x
-* Amazon Linux 2014.09.x+
+* RedHat Enterprise Linux `7.x`
+* CentOS `7.x`
+* Amazon Linux `2014.09.x+`
 
 ## Requirements
 
-* Minimum RAM: 2 GB
-* See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: `2` GB
+* See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Configuration
 
 The database is installed in `/opt/atsd` directory under `axibase` user.
 
-To customize the installation directory, use [`rpm`](redhat-centos-rpm.md) option instead.
+To customize the installation directory, use [`rpm`](redhat-centos-rpm.md) option.
 
 ## Installation Steps
 
-Add **axibase.com/public/repository/rpm/** repository:
+Add **`axibase.com/public/repository/rpm/`** repository:
 
 ```sh
 sudo sh -c "cat << EOF > /etc/yum.repos.d/axibase.repo
@@ -44,7 +44,7 @@ Install ATSD:
 sudo yum install -y atsd
 ```
 
-It can take up to 5 minutes to initialize the database.
+It can take up to five minutes to initialize the database.
 
 ## Check Installation
 
@@ -58,7 +58,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 ## Troubleshooting
 
-* Review [troubleshooting guide](troubleshooting.md).
+* Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
 

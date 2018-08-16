@@ -37,13 +37,13 @@ property e:nurswg t:disk-config k:fs_type=NFS v:initiator=Pre-fetch
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-| e         | string           | **[Required]** Entity name. |
-| t         | string           | **[Required]** Property type. |
-| k         | string           | Property key name and text value. Multiple. |
-| v         | string           | **[Required]** Property tag name and text value. At least one required. |
-| s         | integer          | Time in Unix seconds. |
-| ms        | integer          | Time in Unix milliseconds. |
-| d         | string           | Time in ISO format. |
+| `e`         | string           | **[Required]** Entity name. |
+| `t`         | string           | **[Required]** Property type. |
+| `k`         | string           | Property key name and text value. Multiple. |
+| `v`         | string           | **[Required]** Property tag name and text value. At least one required. |
+| `s`         | integer          | Unix time in seconds. |
+| `ms`        | integer          | Unix time in milliseconds. |
+| `d`         | string           | Time in [ISO format](../../shared/date-format.md). |
 
 > If time fields are omitted, the record is inserted with the current server time.
 

@@ -532,7 +532,7 @@ Step 5. Migrate data to the `atsd_d` table.
 
 ```txt
 ...
-17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 15 minutes.
+17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsed time: 15 minutes.
 ...
 ```
 

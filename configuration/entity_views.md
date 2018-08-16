@@ -2,11 +2,13 @@
 
 ## Overview
 
-Entity View is a customized table displaying key attributes for entities belonging to the same entity group. The views are listed under the **Entity Views** tab in the main menu.
+Entity views are customized tabular formats for displaying key attributes for entities of the same type, typically belonging to the same entity group.
+
+Enabled views are listed under the **Entity Views** tab in the main menu.
 
 ![](./images/entity_views_5.png)
 
-An entity view table consists several columns: icons, links, text, series values:
+An Entity View Table contains several types of columns: icons, links, text, series values, etc.
 
 ![](./images/entity-view-table.png)
 
@@ -24,37 +26,40 @@ An entity view table consists several columns: icons, links, text, series values
 
 ## Authorization
 
-The view can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
+A view can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for one of the [entity groups](entity_groups.md#members) to which the view is linked.
+
+If not filtered by entity group, the view displays entities that belong to **all** linked entity groups that the user is authorized to access.
 
 ## Settings
 
 **Name** | **Description**
 ---|---
-Name | **[required]** View name displayed on the **Entity Views** page.
+Name | **[Required]** View name displayed on the **Entity Views** page.
 Enabled | Status: enabled or disabled. <br>Disabled views are not visible on the **Entity Views** tab in the main menu.
-Entity Group | **[required]** [Entity group](entity_groups.md) which members are included in the view.
-Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in entity group [expressions](entity_groups.md#expression).
+Entity Groups | **[Required]** One or multiple [entity groups](entity_groups.md) whose members are included in the view.
+Entity Expression | Additional condition for group members to satisfy to be included in the view. The syntax is the same as in Entity Group [Expressions](entity_groups.md#expression).
 Dynamic Filter | [Filter](#dynamic-filters) applied to displayed entities on initial page load.
 Split Table by Column | Enter column header or column value to group entities into separate tables.
-Display in Main Menu | If enabled, the view is accessible under its own tab in the main menu on the left.
+Display in Main Menu | If enabled, view is accessible from the main menu on the left.
 Display Index | Applies if entity view is displayed in the main menu. Specifies relative position of the tab. The tabs are sorted by index in ascending order.
 Menu Icon | Icon assigned to the view in the main menu.
-Multi-Entity Portal | [Portal](#portal) with time series charts for multiple entities displayed in the view. If no multi-entity portal is assigned, the default portal containing metrics in _Series Value_ [columns](#column-types) is displayed.
+Multi-Entity Portal | [Portal](#portal) with time series charts for multiple entities displayed in the view. If no multi-entity portal is assigned, the default portal containing metrics in **Series Value** [columns](#column-types) is displayed.
 
 ## Filters
 
 The list of entities displayed in the table is determined as follows:
 
-* The list is initially set to the current members of the selected entity group.
-* If an [**Entity Expression**](#settings) is specified, the members are checked against this condition. Entities that fail to satisfy the condition are hidden.
-* If a [**Dynamic Filter**](#dynamic-filters) is set by the user, the entities are additionally checked against this filter. Entities that fail to satisfy the filter condition are hidden.
-* If a [**Search**](#search) text is specified, only entities with a column value containing the search keyword are displayed.
+* The list is initially set member of **all** linked entity groups that the user is authorized to access.
+* If an entity group is specified, the members of other groups are excluded.
+* If an [**Entity Expression**](#settings) is specified, the remaining members are checked against this condition. Entities that fail to satisfy the condition are excluded.
+* If a [**Dynamic Filter**](#dynamic-filters) is entered by the user, the entities are additionally checked against this filter. Entities that fail to satisfy the filter condition are excluded.
+* If [**Search**](#search) text is specified, only entities with a column value containing the search keyword are displayed.
 
-> While the Dynamic Filter can be toggled by the user, the Entity Group and Entity Expression (if specified) are applied at all times.
+> While the entity group Filter and Dynamic Filter can be toggled by the user, the Entity Expression, if specified, is applied at all times.
 
 ## Search
 
-The search is performed based on column values displayed in the table. An entity satisfies the search condition if one of the column values for the entity row contains the specified search keyword.
+Search is performed based on column values displayed in the table. An entity satisfies the search condition if one of the column values for the entity row contains the specified search keyword.
 
 ## Table
 
@@ -66,7 +71,7 @@ The table consists of multiple columns, one row per entity. Each cell displays a
 ---|---
 Type | Column type.
 Header | Column name.
-Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
+Value | Applicable to **Entity Tag**, **Property Tag**, **Series Value** and **Last Insert** [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Makes the cell value a clickable link. See [Links](#links) options.
 Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If link is set to `Entity Property`, the text is resolved to the property expression value.
 Link Template | Path to a page in the web interface with support for placeholders: `${entity}` and `${value}` (current cell value).
@@ -90,27 +95,27 @@ Last Insert | Last insert date for all or one metric collected by the entity wit
 
 * Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
 
-```javascript
-:900
-```
+  ```javascript
+  :900
+  ```
 
 * Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
 
-```javascript
-cpu_busy:900
-```
+  ```javascript
+  cpu_busy:900
+  ```
 
 * Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
 
-```javascript
-cpu_busy:
-```
+  ```javascript
+  cpu_busy:
+  ```
 
 ### Links
 
 **Name** | **Description**
 ---|---
-Entity | Entity editor page.
+Entity | Entity Editor page.
 Property | Portal with a property widget for the given entity and property type.
 Chart | Portal with a time chart displaying the data for the specified metric and entity.
 Entity Property | Portal with a property widget for another entity retrieved with the property expression.
@@ -164,9 +169,9 @@ The following functions are available in the **Formatting** section:
 **Name** | **Description**
 ---|---
 Name | Filter name displayed in the drop-down list.
-Expression | A condition that entities must satisfy when the filter is selected in the drop-down list. The expression can refer to `name` and `tags.{name}` columns defined in the entity view.
+Expression | A condition which entities must satisfy when selected in the drop-down list.<br>The expression can refer to `name` and `tags.{name}` columns defined in the entity view.
 
-Filter expression examples:
+Examples:
 
 ```javascript
 // name column
@@ -190,9 +195,9 @@ tags['configuration::codename'] = 'Santiago'
 
 ## Split Table by Column
 
-If **Split Table by Column** is specified, the entities are grouped into multiple tables.
+If **Split Table by Column** is specified, the list of entities is grouped into multiple tables.
 
-The **Split Table by Column** field accepts an existing column header or its value.
+The **Split Table by Column** field accepts a column header or column value.
 
 ### Split Examples
 
@@ -206,7 +211,7 @@ Default entity view configuration:
 
 ![](./images/entity_views_1.png)
 
-The entity view without table splitting is displayed as follows, with all entities placed into one table:
+An entity view without table splitting is displayed as follows, with all entities placed into one table:
 
 ![](./images/entity-view-split-empty.png)
 
@@ -230,7 +235,7 @@ If splitting by column **header** is enabled, grouping is performed based on for
 
 ## Portal
 
-If the **Multi-Entity Portal** is assigned manually or the entity view contains **Series Value** [columns](#column-types), the statistics for entities can be viewed on a portal accessible with the **View Portal** button.
+If the **Multi-Entity Portal** is assigned manually or the entity view contains **Series Value** [columns](#column-types), the statistics for entities can be viewed by clicking **View Portal**.
 
 ![](./images/entity_views_6.png)
 
@@ -261,7 +266,7 @@ Examples by Column Types:
 
 ### Entity Tag Examples
 
-#### Text Link to Entity Tag for a related Entity
+#### Text Link to Entity Tag for a Related Entity
 
 The link displays the value of the entity tag of another entity, which name is set in the entity tag of the current entity.
 
@@ -301,11 +306,11 @@ Tag value can be formatted for convenient representation.
 
 Text displays property tag value with a link to property type.
 
-1. Set **Type** setting to **Property Tag**.
+1. Set **Type** to **Property Tag**.
 
 2. Specify [property search expression](../rule-engine/property-search.md) in the **Value** setting, for example `docker.version::version`.
 
-3. Set **Link** setting to **Property**.
+3. Set **Link** to **Property**.
 
 * Configuration
 
@@ -323,11 +328,11 @@ Text displays property tag value with a link to property type.
 
 The message search link template contains tag value.
 
-1. Set **Type** setting to **Property** Tag.
+1. Set **Type** to **Property** Tag.
 
 2. Specify [property search expression](../rule-engine/property-search.md) in the **Value** setting, for example `docker.container.config::hostname`.
 
-3. Set **Link Label** setting to [`icon`](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
+3. Set **Link Label** to [`icon`](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
 
 4. Specify a portal link in the **Link Template** setting, for example `/messages?search&entity=${value}`.
 
@@ -397,13 +402,13 @@ length(value)<16 ? value : truncate(value,12)
 
 #### Custom Icon Link to Specific Entity Portal
 
-Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity.
+Use the following configuration to specify a custom icon which opens a link to template portal assigned to the selected entity.
 
-1. Set **Type** setting to **Name Column**.
+1. Set **Type** to **Name Column**.
 
-2. Set **Link Label** setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
+2. Set **Link Label** to [`icon`](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
 
-3. Specify a portal link in the **Link Template** setting, for example `/portal/name/collectd?entity=${entity}`.
+3. Specify a portal link in **Link Template**, for example `/portal/name/collectd?entity=${entity}`.
 
 * Configuration
 
@@ -421,7 +426,7 @@ Use the following configuration to specify the custom icon which opens a link to
 
 #### Text with Entity Label
 
-Entity labels can be defined for entities. Otherwise, entity name is displayed.
+Optionally define labels for entities. Otherwise, entity name is displayed.
 
 * Configuration
 
@@ -433,9 +438,9 @@ Entity labels can be defined for entities. Otherwise, entity name is displayed.
 
 #### Text Link to Entity Editor with Entity Label
 
-The link displays entity label if the label is set. Otherwise, the link displays entity name.
+Link displays entity label if a label is set. Otherwise, the link displays entity name.
 
-Specify the following URL in the **Link Template** setting.
+Specify the following URL in the **Link Template**.
 
 ```ls
 /entities/${entity}
@@ -473,7 +478,7 @@ The icon opens a link to all template portals assigned to the selected entity. T
 
 #### Icon Link to Specific Entity Portal
 
-To display a particular portal by default, specify the portal name in the **Value** setting. Other portals assigned to the entity are accessible in tabs.
+To display a particular portal by default, specify the portal name in the **Value** setting. Other portals assigned to the entity are accessible via tabs.
 
 * Configuration
 
@@ -525,13 +530,13 @@ docker.info
 
 #### Text Link to Last Insert Page
 
-The text displays difference `now - lastInsertDate`. The entities are highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
+The text displays difference `now - lastInsertDate`. Entities are highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
 
-1. Set **Type** setting to `Last Insert`.
+1. Set **Type** to `Last Insert`.
 
-2. Specify the metric name and the lag in the **Value** setting, for example `docker.activecontainers:20`.
+2. Specify the metric name and the lag with **Value**, for example `docker.activecontainers:20`.
 
-3. Specify an expression in the **Formatting** setting to display difference `now - lastInsertDate`:
+3. Specify an expression with **Formatting** to display difference `now - lastInsertDate`:
 
 ```ls
 formatIntervalShort(elapsedTime(value))

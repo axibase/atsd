@@ -2,18 +2,23 @@
 
 ## Overview
 
-Date functions perform various operations on dates, timestamps, and intervals.
+Date functions operate on dates, timestamps, and intervals.
 
 ## Reference
 
 * [`now`](#now)
+* [`today`](#today)
+* [`tomorrow`](#tomorrow)
+* [`yesterday`](#yesterday)
 * [`window_length_time`](#window_length_time)
 * [`window_length_count`](#window_length_count)
 * [`windowStartTime`](#windowstarttime)
 * [`milliseconds`](#milliseconds)
 * [`seconds`](#seconds)
 * [`elapsedTime`](#elapsedtime)
+* [`elapsed_minutes`](#elapsed_minutes)
 * [`date_parse`](#date_parse)
+* [`to_datetime`](#to_datetime)
 
 ## Related Formatting Functions
 
@@ -24,39 +29,59 @@ Date functions perform various operations on dates, timestamps, and intervals.
 ### `now`
 
 ```javascript
-now long
+now DateTime
 ```
 
 Returns the current time as a [`DateTime`](object-datetime.md) object.
 
-The `DateTime` object fields can be accessed with `get` methods.
-
-```javascript
-// returns true on Thursdays
-now.getDayOfWeek() == 4
-```
-
-The fields can be also accessed using the dot notation.
+Access `DateTime` object fields using dot notation.
 
 ```javascript
 // returns true on Thursdays
 now.dayOfWeek == 4  
 ```
 
-Examples:
+**Examples**:
 
 ```javascript
 // returns true on Thursdays at anytime between 15:00 and 16:00 (exclusive)
-now.getDayOfWeek() == 4 && now.getHourOfDay() == 15
+now.day_of_week == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
-// returns true if difference between current time (long, Unix milliseconds) and create_ms (long, Unix milliseconds) exceeds 1 hour
-(now.getMillis() - create_ms) > 60*60000
+// returns true if difference between current Unix time (long, milliseconds) and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
+(now.millis - create_ms) > 15*60000
 
-// the same condition as above implemented using the elapsedTime function
-elapsedTime(create_ms) > 60*60000
+// returns the same result as above using the elapsedTime function
+elapsedTime(create_ms) > 15*60000
+
+// returns the same result as above using the elapsed_minutes function
+elapsed_minutes(create_ms) > 15
 ```
+
+### `today`
+
+```javascript
+today DateTime
+```
+
+Returns the current day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
+
+### `tomorrow`
+
+```javascript
+tomorrow DateTime
+```
+
+Returns the following day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
+
+### `yesterday`
+
+```javascript
+yesterday DateTime
+```
+
+Returns the previous day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
 
 ### `window_length_time`
 
@@ -64,7 +89,7 @@ elapsedTime(create_ms) > 60*60000
 window_length_time() long
 ```
 
-Returns length of a time-based window in seconds, as configured.
+Returns the length of a time-based window in seconds.
 
 ### `window_length_count`
 
@@ -72,7 +97,7 @@ Returns length of a time-based window in seconds, as configured.
 window_length_count() long
 ```
 
-Returns length of a count-based window, as configured.
+Returns the length of a count-based window.
 
 ### `windowStartTime`
 
@@ -80,7 +105,7 @@ Returns length of a count-based window, as configured.
 windowStartTime() long
 ```
 
-Returns time when the first command is received by the window, in Unix milliseconds.
+Returns time when the first command is received by the window, in Unix time with millisecond granularity.
 
 ### `milliseconds`
 
@@ -88,17 +113,17 @@ Returns time when the first command is received by the window, in Unix milliseco
 milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the date string `d` into Unix milliseconds according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the date string `d` into Unix time with millisecond granularity according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
-Returns `0` if the date `d` is `null` or empty.
+Returns `0` if date `d` is `null` or empty.
 
 Available time zones and offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
+The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
+> Function raises an error if the time zone or offset from UTC is specified in the date string `d` and differs from the time zone or offset `z`.
 
-Example:
+**Example**:
 
 ```javascript
 /* Returns true if the difference between the event time and start
@@ -112,7 +137,7 @@ timestamp - milliseconds(property('docker.container::startedAt')) >  5*60000
 seconds(string d [,string p [,string z]]) long
 ```
 
-Provides the same arguments as the [`milliseconds`](#milliseconds) function except the result is returned in Unix seconds instead of milliseconds.
+Provides the same arguments as the [`milliseconds`](#milliseconds) function with the result in Unix seconds instead of milliseconds.
 
 ### `elapsedTime`
 
@@ -124,17 +149,15 @@ elapsedTime(long t) long
 elapsedTime(string d) long
 ```
 
-Calculates the number of milliseconds between the current time and time `t` which is specified in Unix milliseconds.
-
-Accepts time `t` in Unix milliseconds or the date `d` in the following format:
+Calculates the number of **milliseconds** between the current time and time `t` specified in milliseconds (Unix time) or date `d` specified in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
 ```
 
-The function returns `0` if the date `d` is `null` or empty.
+Function returns `0` if the date `d` is `null` or empty.
 
-Example:
+**Example**:
 
 ```javascript
 /* Assuming current time of 2017-08-15T00:01:30Z, returned elapsed time is 90000 */
@@ -146,12 +169,26 @@ elapsedTime("2017-08-15T00:00:00Z")
 elapsedTime(milliseconds(tags.last_updated))
 ```
 
-The interval in milliseconds can be formatted with [`formatInterval`](functions-format.md#formatinterval) or [`formatintervalshort`](functions-format.md#formatintervalshort).
+Format the interval in milliseconds with [`formatInterval`](functions-format.md#formatinterval) or [`formatintervalshort`](functions-format.md#formatintervalshort).
 
 ```javascript
 /* Returns interval in short notation, for example 2y 201d */
 formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 ```
+
+### `elapsed_minutes`
+
+```javascript
+elapsed_minutes(long t) long
+```
+
+```javascript
+elapsed_minutes(string d) long
+```
+
+Calculates the number of **minutes** between the current time and time `t` or date `d`.
+
+Returns the same result as the `elapsedTime` function divided by `60000`.
 
 ### `date_parse`
 
@@ -159,23 +196,23 @@ formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 date_parse(string d [,string p [,string z]]) DateTime
 ```
 
-Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` or offset from UTC.
 
-The default pattern is ISO 8601 format `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
+The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
+> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`.
 
-The fields of the `DateTime` object can be accessed using the following methods:
+Access fields of the `DateTime` object using the following functions:
 
 ```javascript
-date_parse("2018-01-13T16:45:22.303Z").getDayOfWeek()
+date_parse("2018-01-13T16:45:22.303Z").day_of_week
 ```
 
-Examples:
+**Examples**:
 
 ```javascript
 /* Returns true if the specified date is a working day. */
-date_parse(property('config::deleted')).getDayOfWeek() < 6
+date_parse(property('config::deleted')).is_workday()
 ```
 
 ```javascript
@@ -212,4 +249,20 @@ date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ
 /* These expressions lead to exceptions. */
 date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ", "Europe/Berlin")
 date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+```
+
+### `to_datetime`
+
+```javascript
+to_datetime(long t [, string tz]) DateTime
+```
+
+Returns [`DateTime`](object-datetime.md) object initialized from Unix time in milliseconds `t` in the  **server** time zone.
+If the optional [time zone](../shared/timezone-list.md) argument `tz` is specified, the `DateTime` is initialized in the user-defined time zone.
+
+**Example**:
+
+```javascript
+/* Returns true if the create_ms date is a working day. */
+to_datetime(create_ms, 'America/Chicago').is_workday()
 ```

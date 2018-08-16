@@ -4,31 +4,39 @@
 
 ```sh
 su axibase
+```
+
+```sh
 cd /opt/atsd
 ```
 
 ## Download the Latest ATSD Distribution Files
 
-* [HBase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
+Open [ATSD Download Page](https://www.axibase.com/public/atsd_update_latest.htm).
 
-The archive contains the latest ATSD release with the revision number included in the file name, for example `atsd.17239.tar.gz`.
+The archive contains the latest ATSD release with the revision number included in the file name, for example `atsd.19925.tar.gz`.
+
+Alternatively, download the archive using `curl`.
+
+```sh
+curl -O https://axibase.com/public/atsd.tar.gz
+```
 
 Copy the archive to the ATSD server.
 
 ## Unpack the Archive
 
 ```sh
-tar xzf atsd.tar.gz
+tar xzf atsd.{revision}.tar.gz
 ```
 
-## View Files in the Archive
+View Files in the Archive
 
 ```sh
-cd target
+ll target
 ```
 
 ```sh
-ls
 atsd.<revision number>.jar
 atsd-hbase.<revision number>.jar
 ```

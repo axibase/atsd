@@ -123,7 +123,7 @@ This expression compares the actual [average value](../rule-engine/functions-sta
 thresholdTime(null, 90, '1 DAY') != null
 ```
 
-* `thresholdTime` function returns time in Unix milliseconds when the forecast is expected to exceed `90` for the first time.
+* `thresholdTime` function returns Unix time in milliseconds when the forecast is expected to exceed `90` for the first time.
 * The condition becomes `true` if the expected violation is to occur in less than 1 day.
 
 ### Ad hoc Export

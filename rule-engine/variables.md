@@ -2,7 +2,7 @@
 
 ## Overview
 
-Variables are custom fields defined by the rule author on the **Overview** tab. Each variable consists of a unique name and an expression.
+Variables are custom fields defined by the rule author on the **Condition** tab. Each variable consists of a unique name and an expression.
 
 ![](./images/variables.png)
 
