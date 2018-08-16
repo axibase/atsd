@@ -41,7 +41,7 @@ Performance Viewer is built with [PHP](http://php.net/) using the [ATSD PHP Clie
 
 * Users are assigned access to entity groups in [`user-group.ini`](https://github.com/axibase/atsd-api-php/blob/master/performance/users-group.ini).
 * Each user is limited to viewing only the entities in their assigned entity group.
-* Entities available to each user are displayed on the left sidebar menu.
+* Entities available to each user are displayed on the left menu.
 * Requests for other entities are blocked.
 
 ### Security
