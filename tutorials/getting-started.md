@@ -4,8 +4,6 @@ This introduction guides you through the first steps of using Axibase Time Serie
 
 ## Contents
 
-<!-- markdownlint-disable MD032 -->
-
 ### Introduction
 
 1. [Preparation](#preparation)
@@ -15,16 +13,11 @@ This introduction guides you through the first steps of using Axibase Time Serie
 1. [Inserting Initial Data](#inserting-initial-data)
 1. [Visualizing Data](#visualizing-data)
 1. [Adding Metadata](#adding-metadata)
-    * [Describing Equipment](#describing-equipment)
-    * [Describing Metrics](#describing-metrics)
 
 ### Inserting Data
 
 1. [Network Commands](./getting-started-insert.md#network-commands)
 1. [REST API](./getting-started-insert.md#rest-api)
-    * [Sending Values at a Specific Time](./getting-started-insert.md#sending-values-at-a-specific-time)
-    * [Sending Values at the Current Time](./getting-started-insert.md#sending-values-at-the-current-time)
-    * [Sending Values Continuously](./getting-started-insert.md#sending-values-continuously)
 1. [CSV Files](./getting-started-insert.md#csv-files)
 
 ### Portals
@@ -48,8 +41,6 @@ This introduction guides you through the first steps of using Axibase Time Serie
 1. [Email Alerts](./getting-started-alert.md#email-alerts)
 1. [Slack Alerts](./getting-started-alert.md#slack-alerts)
 1. [Summary](./getting-started-alert.md#summary)
-
-<!-- markdownlint-enable MD032 -->
 
 ## Preparation
 
