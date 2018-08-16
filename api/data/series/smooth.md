@@ -157,53 +157,11 @@ For regular time series with time interval ![delta](./images/Delta.png) between 
 
 ![range through factor](./images/rangeViaFactor.png)
 
-#### Example
+#### Example of Calculation
 
 If interval between samples is 1000 mulliseconds, and smoothing factor 0.5, then this formula give `range` value 1443.
 
-#### References:
+#### References
+
 * A. Eckner, Algorithms for Unevenly Spaced Time Series: Moving Averages and Other Rolling Operators, section 4.1, EMA_next.
 * U. Muller, Specially Weighted Moving Averages with Repeated Application of the EMA Operator, formulas 2.7-2.14.
-
-#### Example
-
-Given t<sub>n</sub> - t<sub>n-1</sub> = 1000 mulliseconds,
-the contribution of the latest sample into EMA value is calculated for several ranges:
-
-| **range `r`** | **percentage of the last value <br/> in EMA value** |
-|:---:|:---:|
-| < 100 | 100% |
-| 250 | 98% |
-| 500 | 86% |
-| 750 | 74% |
-| 1000 | 63% |
-| 1250 | 55% |
-| 1500 | 48% |
-| 1750 | 44% |
-| 2000 | 39% |
-| 2500 | 33% |
-| 3000 | 28% |
-| 4000 | 22% |
-| 5000 | 18% |
-| 6000 | 15% |
-| 8000 | 12% |
-| 10000 | 10% |
-| 12000 | 8% |
-| 20000 | 5% |
-
-> Note that LOWESS smoothing needs at least 3 parameters `bandwidth`, `robustness`, `accuracy` which regulates.
-View [implementation](https://commons.apache.org/proper/commons-math/javadocs/api-3.3/org/apache/commons/math3/analysis/interpolation/LoessInterpolator.html), and all of them have default values.
-
-## Examples
-
-
-
-
-
-
-
-Each type of smoothing uses its own settings of rolling window and smoothing function.
-Consult section devoted to specific smoothing function for the complete list.
-
-
-The `EMA` calculation for evenly spaced time series is simplier then for irregular series.
