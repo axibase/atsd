@@ -46,7 +46,7 @@ Each smoothing except for the `EMA` uses either [count based](#count-based-windo
 
 ## Smoothing Process
 
-All smothing types except for the [`EMA`](#exponential-moving-average) follow the same processing schema described here.
+All smoothing types except for the [`EMA`](#exponential-moving-average) follow the same processing schema described here.
 
 The samples of input series are processed sequentially in ascending time order.
 A set of consecutive samples is maintained during processing.
@@ -124,7 +124,7 @@ To calculate `EMA` specify one of following parameters.
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `factor` | number | Smoothing factor - number in interval (0 , 1). Use this parameter to smooth evenly spaced time series. When smoothing factor tends to 1 the smoothed series tends to original series. The smaller factor gives more smoothing. |
-| `range` | number | Regulates the smoothing function steepnes. Use this parameter for smoothing irregular series.|
+| `range` | number | Regulates the smoothing function steepness. Use this parameter for smoothing irregular series.|
 
 #### Smoothing algorithm
 
@@ -140,7 +140,7 @@ For evenly spaced series smoothed values are calculated by the formulas:
 
 ![EMA first value](./images/ema1.png)
 
-![EMA reccurent formula](./images/ema-evenly.png)
+![EMA recurrent formula](./images/ema-evenly.png)
 
 where ![alpha](./images/alpha.png) is value of the smoothing `factor`.
 
@@ -160,7 +160,7 @@ For regular time series with time interval ![delta](./images/Delta.png) between 
 
 #### Example of Calculation
 
-If interval between samples is 1000 mulliseconds, and smoothing factor 0.5, then this formula give `range` value 1443.
+If interval between samples is 1000 milliseconds, and smoothing factor 0.5, then this formula give `range` value 1443.
 
 #### References
 
