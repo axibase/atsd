@@ -33,7 +33,7 @@
 | 4105 | sql | Bug | Fixed an error causing missing rows in [sub-queries](../../sql/examples/filter-by-date.md#query-using-between-subquery) containing the `WHERE` condition.|
 | 4097 | UI | Bug | Fixed a concurrency problem causing multiple queries to be stopped with a single cancel request. |
 | [4146](#issue-4146) | sql | Feature | Modified [`GROUP BY PERIOD`](../../sql/README.md#grouping) processing to include all samples within the period. |
-| [4140](#issue-4140) | UI | Feature | Replace named links with drop-down menus in record tables. |
+| [4140](#issue-4140) | UI | Feature | Replace named links with drop-down lists in record tables. |
 | 3838| sql | Feature | Add support for column aliases in the `ORDER BY` clause. |
 | 4182 | sql | Bug |Fix parsing error when [`CAST`](../../sql/README.md#cast) function is used within [`ISNULL`](../../sql/README.md#isnull) function with a string argument: `CAST(ISNULL(LOOKUP('tab-1', entity), '0') AS NUMBER)`.|
 | [4179](#issue-4179) | sql | Feature | Add an option to exclude queries from the SQL query statistics page using `!` as the negation symbol. |
