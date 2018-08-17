@@ -1,5 +1,14 @@
 # Getting Started: Alerting
 
+## Contents
+
+1. [Introduction](./getting-started.md)
+1. [Inserting Data](./getting-started-insert.md)
+1. [Portals](./getting-started-portal.md)
+1. [Exporting Data](./getting-started-export.md)
+1. [SQL](./getting-started-sql.md)
+1. Alerting
+
 ## Creating Rules
 
 Open the **Alerts > Rules** page and click **Create** to configure an alert rule for the `temperature` metric using the built-in [Rule Engine](../rule-engine/README.md).
