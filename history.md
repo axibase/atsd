@@ -42,7 +42,7 @@ We have over a decade of experience in infrastructure management systems, big da
 
 ### 2018
 
-*  **Q1**: [ATSD Sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image).
+* **Q1**: [ATSD Sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image).
 
 ## Change Log
 
