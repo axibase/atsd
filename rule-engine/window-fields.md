@@ -8,24 +8,24 @@ Each window maintains a set of continuously updated fields which can be used in 
 
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
-`status` | string | Window status. | `OPEN`
+`status` | string | Window status. | `OPEN`, `REPEAT`, or `CANCEL`
 `rule` | string | Rule name. | `memory_low`
 `metric` | string | Metric name. | `memory_free`
 `entity` | string | Entity name. | `nurswgvml007`
-`tags` | map | Command tags. | `memtype=buffered`
+`tags` | map | Command tags, serialized as `{key1=val1;key2=val2}`. | `{memtype=buffered}`
 `tags.memtype` | string | Command tag by name. | `buffered`
-`entity.displayName` | string | Label, if not empty. Otherwise, name. | `NURswgvml007`
-`entity.tags` | map | Entity tags. | `{version=community}`
+`entity.displayName` | string | Entity label, if not empty. Otherwise, entity name. | `NURswgvml007`
+`entity.tags` | map | Entity tags, serialized as `{key1=val1;key2=val2}`. | `{version=community}`
 `entity.tags.version` | string | Entity tag by name. | `community`
 `entity.label` | string | Entity field by name. | `NURswgvml007`
 `metric.label` | string | Metric field by name. | `Memory Free, Bytes`
-`condition` | string | Rule condition | `value < 75`
-`delay_expired` | boolean | Delay interval status.<br>Set to `true` if **On Open** notification executed after being deferred.| `true`
-`repeat_count` | integer | Number of consecutive `true` results. | `0`
 `rule_filter` | string | Filter expression. | `entity != 'nurswghbs001'`
-`severity` | string | Alert severity. | `WARNING`
 `window` | string | Window type and duration. | `length(1)`
+`condition` | string | Rule condition. | `value < 75`
 `threshold` | string | Override condition. | `max() > 20`
+`repeat_count` | integer | Number of consecutive `true` results. | `4`
+`severity` | string | Alert severity. | `WARNING`
+`delay_expired` | boolean | Delay interval status.<br>`true` if notification executed after delay.| `true`
 
 ## Series Fields
 
@@ -73,13 +73,15 @@ Notes:
 `window_first_datetime` | UTC | Time of the earliest command in the window
 `timestamp` | n/a | Time of the command that caused the window status event, in Unix time (milliseconds).
 `now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.
-`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.
-`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`.
+`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
+`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
 
-> Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
-> Fields ending with `_datetime` contain time in [ISO format](../shared/date-format.md) UTC time zone, for example `2017-05-30T06:05:39Z`.
-> If **Check On Exit** option is enabled for a time-based window, some of the events are caused by exiting commands in which case the `timestamp` placeholder contains the time of the command being removed (oldest command), rounded to seconds.
-> The `now` object fields can be accessed with dot notation syntax, for example `now.day_of_week == 'Thursday'`.
+Notes:
+
+* Fields ending with `_time` contain time in server time zone, for example `2017-05-30 14:05:39 PST`.
+* Fields ending with `_datetime` contain time in ISO format in UTC time zone, for example `2017-05-30T06:05:39Z`.
+* If **Check On Exit** option is enabled for a time-based window, some of the events are caused by _exiting_ commands in which case the `timestamp` placeholder contains the time of the removed command (oldest command), rounded to seconds.
+> The [`now`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.day_of_week == 'Thursday'`.
 
 ## Details Tables
 
