@@ -13,8 +13,8 @@
 
 ## Database Schema
 
-The Widget configuration syntax provides a way to load and display data for time series stored in a database. Series values
-change over time and their history is visualized with different types of graphs.
+Widget configuration syntax provides a way to load and display time series data stored in a database. As series values
+change over time, portals visualize their history with [various graphs](https://axibase.com/products/axibase-time-series-database/visualization/widgets/).
 
 ```ls
 [widget]
@@ -26,7 +26,7 @@ change over time and their history is visualized with different types of graphs.
 # Series 2 settings
 ```
 
-Each series is identified by a composite key which consists of a **metric**, **entity**, and optional name/value pairs called **series tags**, or simply **tags**.
+Each series is identified by a composite key which consists of a **metric**, **entity**, and optional name/value pairs called **series tags** which are often referred to as simply **tags**.
 
 ```ls
 [series]
@@ -41,24 +41,22 @@ Each series is identified by a composite key which consists of a **metric**, **e
 ```
 
 * An **entity** is a physical or logical object being monitored such as `nurswgvml007` (computer name).
-
 * A **metric** represents the name of a measurable numeric attribute such as `cpu_busy` or `temperature`.
+* **Series tags** are optional. Tags provide an additional level of detail for measurements such as a disk mount point for the `df.bytes.percentused` metric.
 
-* **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point for the `df.bytes.percentused` metric.
-
-An entity can be instrumented and measured using a variety of metrics, just as the same metric can be collected for multiple entities.
+An entity can be instrumented and measured for multiple metrics, just as the same metric can be collected for multiple entities.
 
 ## Exploring Series
 
-Available series can be searched on the **Series** tab in the main menu.
+Search available series from the **Series** tab in the main menu.
 
-Alternatively, if the entity is already known, the metrics and series can be explored via a portal containing drop-down selectors.
+Alternatively, for known entities, explore metrics and series via portals containing [drop-down list](https://axibase.com/products/axibase-time-series-database/visualization/widgets/dropdown/) selectors.
 
 [![](./resources/button.png)](https://apps.axibase.com/chartlab/d6e73e37/2)
 
 ## Selecting Specific Series
 
-To display values for a specific series, specify the exact series key in the `[series]` section:
+To display values for a specific series, specify the exact series key at the configuration `[series]` level:
 
 ```ls
 # Series without Tags
@@ -95,7 +93,7 @@ entity = nurswgvml006
   mount = /
 ```
 
-The above configuration matches all series with `mount=/` tag, **including** series that can have other tags.
+The above configuration matches all series with `mount=/` tag, **including** series that have other tags.
 
 To disable partial tag match, use the `exact-match = true | false` setting:
 
@@ -108,7 +106,7 @@ exact-match = true
   mount = /
 ```
 
-When partial match is disabled, the database returns series with exactly the same combination of tags as specified in
+When partial match is disabled, ATSD returns series with exactly the same combination of tags as specified in
 the request.
 
 The partial match, while making the configuration compact, can produce undetermined results if the partial key matches multiple
@@ -122,14 +120,14 @@ entity = nurswgvml006
   fstype = ext4
 ```
 
-In the above example, the response contains three different series with the same file system type ext4 but with different
+In the above example, the response contains three different series with the same file system type `ext4` but with different
 mount points: `/`, `/boot/`, `/media/datadrive`.
 
-The resulting series is merged from 3 underlying different series and provides a meaningless result in this case.
+The resulting series is merged from three underlying series and provides a meaningless result.
 
 [![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/7)
 
-To control how multiple matched series are processed, use the `multiple-series = true | false` setting.
+To control how multiple matched series are processed, use the `multiple-series` setting.
 
 ```ls
 # Display all series with tag fstype=ext4 without merging
@@ -139,7 +137,7 @@ multiple-series = true
     fstype = ext4
 ```
 
-The `multiple-series` setting can be used to display all series without specifying any tags in widget configuration at all:
+Use the `multiple-series` setting to display all series without specifying any tags in the widget configuration:
 
 ```ls
 # Display all series without merging
@@ -150,13 +148,9 @@ multiple-series = true
 The default value of the `multiple-series` setting is `true` in the following cases:
 
 * Multiple entities are specified, for example `entity = nur1, nur2`
-
 * Multiple tag values are specified, for example `[tags] mount = /, /tmp`
-
-* Entity name contains wildcard, for example `entity = nur*`
-
-* Tag value contains wildcard, for example `[tags] mount = /t*`
-
+* Entity name contains a [wildcard character](https://axibase.com/products/axibase-time-series-database/visualization/widgets/wildcards/), for example `entity = nur*`
+* Tag value contains a [wildcard character](https://axibase.com/products/axibase-time-series-database/visualization/widgets/wildcards/), for example `[tags] mount = /t*`
 * `entity-expression`, `entity-group`, or `tag-expression` is present
 
 ![](./resources/multiple-series-1.png)
@@ -192,7 +186,7 @@ tag-expression = tags.mount NOT LIKE '/m*'
 
 ## Merging Series
 
-Joining multiple series with different tags into one series is useful when some of the tags can be ignored.
+Joining multiple series with different tags into one series is useful when certain tags can be ignored.
 <!-- markdownlint-disable MD107 -->
 
 ```txt
@@ -216,12 +210,10 @@ In the previous example, the underlying series do not overlap and can be merged 
 ```
 
 <!-- markdownlint-enable MD107 -->
-Examples:
+**Examples**:
 
-* `/media/datadrive` file system re-mounted on a larger disk but the mount point remains the same.
-
-* Containers with different identifiers launched on schedule to perform a daily task with the same name.
-
+* `/media/datadrive` file system re-mounted on a larger disk without change to mount point.
+* Containers with different identifiers launched on schedule to perform identically named daily tasks.
 * Measurements recorded for scientific experiments and tags contain experiment ID and input parameters.
 
 ![](./resources/multiple-series-off.png)
@@ -230,7 +222,7 @@ Examples:
 
 ## Selecting Series for Multiple Entities
 
-The `[widget]` syntax provides a number of options to select series for multiple entities and the same metric:
+`[widget]` syntax provides a number of options to select series for multiple entities with same metric:
 
 ```ls
 # Select specific entity by name
@@ -255,7 +247,7 @@ entity-expression = tags.app = 'ATSD'
 entity-group = nur-collectors
 ```
 
-Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) documentation for details on entity filters.
+Refer to the [Data API Documentation](../api/data/filter-entity.md#entity-filter-fields) for details on entity filters.
 
 ```ls
 # Retrieve series for entities starting with nurswgvml00
@@ -272,7 +264,7 @@ Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) docum
 
 ## Retrieving Series from the Database
 
-As an alternative to enumerating the `[series]` manually or using wildcards, the widget syntax provides the `getSeries()` and `getTags()` functions to retrieve series lists from the metadata endpoints.
+As an alternative to defining a `[series]` manually or using wildcards, widget syntax supports the [`getSeries()`](https://github.com/axibase/charts/blob/master/syntax/functions.md#getseries) and [`getTags()`](https://github.com/axibase/charts/blob/master/syntax/functions.md#gettags) functions to retrieve series lists from the metadata endpoints.
 
 `getTags()` function:
 
@@ -304,9 +296,9 @@ endfor
 
 ## Controlling Displayed Series
 
-The `series-limit = int` setting enables limiting the number of possible series returned by the database for wildcard queries.
-Since the limit is applied to matched series before sorting, the results can vary between requests, which makes the setting
-useful when exploring the dataset to prevent the widgets from loading too many series into browser memory.
+The `series-limit` setting limits the number of possible series returned by the database for wildcard queries.
+Because the limit is applied to matched series before sorting, results can vary between requests which makes the setting
+useful when exploring a dataset by preventing a widget from loading excessive series into browser memory.
 
 ```ls
 entity = *
@@ -316,7 +308,7 @@ series-limit = 10
     fstype = ext4
 ```
 
-For a more flexible visibility control on the client, use the display and enabled settings.
+For more flexible client visibility control, use the `display` and `enabled` settings.
 
 ```ls
 entity = *
@@ -328,7 +320,7 @@ display = value == top(1) || value == bottom(1)
 
 ![](./resources/series-display-1.png)
 
-In addition, the `limit = int` setting can reduce the number of samples displayed for each series. It makes queries
+Additionally, the `limit` setting reduces the number of samples displayed for each series. This makes queries
 execute faster when loading data for high-frequency series from the server, in particular during design and validation stages.
 
 [![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/13/)
