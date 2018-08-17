@@ -1,6 +1,6 @@
 # Axibase Time Series Database Installation
 
-## Docker Images
+## Container Images
 
 [![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
 
