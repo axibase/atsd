@@ -27,12 +27,12 @@
 
 ---
 
-## AWS EMRFS
+## AWS Elastic MapReduce (EMR)
 
 ![](../images/aws3.png) ![](../images/emrfs.png)
 
 * **Mode**: Distributed
-* **File System**: AWS S3
+* **File System**: AWS EMRFS / S3
 * **Edition**: Enterprise
 
 [![](../images/install.png)](./aws-emr-s3.md)
