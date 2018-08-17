@@ -10,7 +10,7 @@ This document helps you submit a well-prepared support ticket to ensure Axibase 
 
 * Contact us at `support-atsd@axibase.com`.
 
-Use the below guidelines to attach relevant details to the ticket. Skip sections `2-6` if not applicable.
+Use the below guidelines to attach relevant details to the ticket. Skip sections `2-7` if not applicable.
 
 ## 1. Database Information
 
@@ -122,8 +122,30 @@ WITH INTERPOLATE(1 MINUTE)
 
 ## 5. Portal Configuration
 
-Attach this if the problem is related to charts and portals.
+Attach the following inputs if the problem is related to charts, widgets, and portals.
 
 1. Screenshot of the affected portal.
 
-2. Portal configuration text.
+2. Portal configuration text from the **Portals > Configure** page.
+
+3. Series query response [captured](https://github.com/axibase/charts/blob/master/troubleshooting/capture_response.md) using Developer Tools in the browser.
+
+## 6. Client Libraries
+
+1. API Client name and version.
+
+2. Execution environment such as Python version and dependency module versions.
+
+3. Error message reported by the client application.
+
+## 7. JDBC Driver
+
+1. Driver version.
+
+2. JVM version of the Java application executing the driver.
+
+3. [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-url) including any [connection properties](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) specified when connecting to the database.
+
+4. Java stack trace of the issue encountered by the driver
+
+5. Error messages received by the hosting application.
