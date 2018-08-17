@@ -277,9 +277,9 @@ Rule Errors can occur in case of invalid or malformed expressions. The **Alerts 
 
 ### Action Logging
 
-Webhook, Email and Script actions log their status as ATSD messages. To view action logs, select the option in the split-button.
+Webhook, Email and Script actions log their status as ATSD messages. To view action logs, select the option in the left menu.
 
-![](./images/action-log-split-button.png)
+![](./images/action-log-menu.png)
 
 * Email Notification Log
 
