@@ -50,4 +50,4 @@ View the monthly [Change Log](./changelogs/README.md) for an overview of new fea
 
 ## Roadmap
 
-[Contact us](https://axibase.com/feedback/) if you are interested in learning more about the ATSD road map.
+[Contact us](https://axibase.com/feedback/) if you are interested in learning more about the ATSD Roadmap.
