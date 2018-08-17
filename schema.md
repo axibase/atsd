@@ -38,6 +38,8 @@ tags:   part=Enclosure
 
 Series values change over time and their history can be analyzed with SQL and visualized with graphs.
 
+![](./images/time-offset.png)
+
 [![](./images/button.png)](https://apps.axibase.com/chartlab/075941a0/2/)
 
 The [Selecting Series Overview](./portals/selecting-series.md) contains additional examples on how to retrieve series from the database for visualization purposes.
@@ -51,6 +53,8 @@ date         time       type   source    message
 2018-05-20   00:00:00   etl    cp-data   backup job started
 2018-05-20   00:42:00   etl    cp-data   backup job completed
 ```
+
+![](./images/messages-portal.png)
 
 [![](./images/button.png)](https://apps.axibase.com/chartlab/007721aa)
 
@@ -73,8 +77,10 @@ CREATE TABLE disk_info (
 );
 ```
 
+![](./images/properties-portal.png)
+
 [![](./images/button.png)](https://apps.axibase.com/chartlab/6d918310/2)
 
 ## Resources
 
-* [Getting Started](./tutorials/getting-started.md) tutorial
+* [Getting Started](./tutorials/getting-started.md) Tutorial
