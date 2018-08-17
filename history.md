@@ -18,8 +18,8 @@ Our progress to date is published in publicly available [change logs](./changelo
 
 ### 2013
 
-**Q2**: [Core storage functionality](./schema#series) for time series data.<br>
-**Q4**: Support for [`property`](./schema#properties) and [`message`](./schema#messages) data types.
+**Q2**: [Core storage functionality](./schema.md#series) for time series data.<br>
+**Q4**: Support for [`property`](./schema.md#properties) and [`message`](./schema.md#messages) data types.
 
 ### 2014
 
