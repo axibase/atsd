@@ -132,7 +132,7 @@ db_message_last(S interval, S type, S source[, S tags, [S entity]])
 > If the `type`, `source`, or `tags` fields are set to empty string, they are ignored when matching messages.
 > If the `entity` is not specified, the request retrieves messages for the current entity.
 
-The returned object contains `type`, `source`, and `tags.{name}` fields of string type and the `date` field of long data type. The `date` field is returned as Unix milliseconds.
+The returned object contains `type`, `source`, and `tags.{name}` fields of string type and the `date` field of long data type. The `date` field is returned as Unix time in milliseconds.
 
   Example:
 

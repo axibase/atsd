@@ -119,7 +119,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 
 | Name | Type | Description |
 | --- | --- | --- |
-|  `cell(rowIndex, colIndex)`  |  String  |  Return content from the specified cell.  |
+|  `cell(rowIndex, colIndex)`  |  String  |  Returns content from the specified cell.  |
 |  `notEmptyLeft(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located to the left from the specified cell.  |
 |  `notEmptyUp(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located in the current or prior row in the specified column.  |
 

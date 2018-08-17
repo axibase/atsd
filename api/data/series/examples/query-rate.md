@@ -22,7 +22,7 @@ Rate at 14:10:21:
 ```ls
 (2416575751447 - 2416571149884)/(2016-06-27T14:10:21.000Z - 2016-06-27T14:10:06.000Z) =
   = 4601563 / 15000 milliseconds = 306.77 per millisecond
-  Return 306.77 * (1*SECOND / 1*MILLISECOND) = 306770
+  Returns 306.77 * (1*SECOND / 1*MILLISECOND) = 306770
 ```
 
 ## Request

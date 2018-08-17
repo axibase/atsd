@@ -6,25 +6,22 @@ Date functions operate on dates, timestamps, and intervals.
 
 ## Reference
 
+* [`date_parse`](#date_parse)
+* [`date_format`](functions-format.md#date_format)
+* [`elapsed_minutes`](#elapsed_minutes)
+* [`elapsedTime`](#elapsedtime)
+* [`formatInterval`](functions-format.md#formatinterval)
+* [`formatIntervalShort`](functions-format.md#formatintervalshort)
 * [`now`](#now)
+* [`milliseconds`](#milliseconds)
+* [`seconds`](#seconds)
+* [`to_datetime`](#to_datetime)
 * [`today`](#today)
 * [`tomorrow`](#tomorrow)
 * [`yesterday`](#yesterday)
 * [`window_length_time`](#window_length_time)
 * [`window_length_count`](#window_length_count)
 * [`windowStartTime`](#windowstarttime)
-* [`milliseconds`](#milliseconds)
-* [`seconds`](#seconds)
-* [`elapsedTime`](#elapsedtime)
-* [`elapsed_minutes`](#elapsed_minutes)
-* [`date_parse`](#date_parse)
-* [`to_datetime`](#to_datetime)
-
-## Related Formatting Functions
-
-* [`date_format`](functions-format.md#date_format)
-* [`formatInterval`](functions-format.md#formatinterval)
-* [`formatIntervalShort`](functions-format.md#formatintervalshort)
 
 ### `now`
 
@@ -41,6 +38,12 @@ Access `DateTime` object fields using dot notation.
 now.dayOfWeek == 4  
 ```
 
+When printed as text, for example with `${now}` placeholder, the [`DateTime`](object-datetime.md) object is ISO date with time zone information.
+
+```txt
+2018-08-17T15:13:16.946Z[Etc/UTC]
+```
+
 **Examples**:
 
 ```javascript
@@ -51,10 +54,14 @@ now.day_of_week == 'Thursday' && now.hourOfDay == 15
 ```javascript
 // returns true if difference between current Unix time (long, milliseconds) and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
 (now.millis - create_ms) > 15*60000
+```
 
+```javascript
 // returns the same result as above using the elapsedTime function
 elapsedTime(create_ms) > 15*60000
+```
 
+```javascript
 // returns the same result as above using the elapsed_minutes function
 elapsed_minutes(create_ms) > 15
 ```

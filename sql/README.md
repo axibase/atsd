@@ -2395,7 +2395,7 @@ GROUP BY tu.entity
 
 #### DATE_FORMAT
 
-The `date_format` function formats Unix millisecond time to a string in user-defined date format and optional time zone. See supported time pattern letters [here](../shared/time-pattern.md).
+The `date_format` function formats Unix time in milliseconds to a string in user-defined date format and optional time zone. See supported time pattern letters [here](../shared/time-pattern.md).
 
 ```java
 date_format(long milliseconds[, string time_format[, string time_zone]])

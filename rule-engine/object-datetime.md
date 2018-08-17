@@ -2,7 +2,15 @@
 
 ## Overview
 
-`DateTime` object represents a specific date and time. The object provides fields and functions to extract various calendar units. Access `DateTime` objects using [Window Field](#window-fields) syntax or via [`to_datetime`](./functions-date.md#to_datetime) function.
+`DateTime` object represents a specific date and time. The object provides fields and functions to extract various calendar units.
+
+The `DateTime` objects can be retrieved from [window fields](#window-fields) such as `now`, or be calling the [`to_datetime`](./functions-date.md#to_datetime) function.
+
+When printed as text, for example using placeholders such as `${now}`, the `DateTime` object is formatted as ISO date with time zone information.
+
+```text
+2018-08-17T15:13:16.946Z[Etc/UTC]
+```
 
 ## Time Zone
 
@@ -35,7 +43,7 @@ The table below enumerates available `DateTime` object fields and demonstrates t
 |`yearOfCentury`|`18`|
 |`yearOfEra`|`2018`|
 |`centuryOfEra`|`20`|
-|`millis`|`1515861922303`|
+|`millis`|`1515861922303`<br>Unix time in milliseconds.|
 |`next_workday`|`DateTime('2018-01-16T00:00Z[UTC]')`|
 |`previous_workday`|`DateTime('2018-01-12T00:00Z[UTC]')`|
 |`next_non_working_day`|`DateTime('2018-01-14T00:00Z[UTC]')`|
@@ -47,9 +55,7 @@ The table below enumerates available `DateTime` object fields and demonstrates t
 |`is_workday()`|`false`|
 |`is_workday('usa')`|`false`|
 
-The `millis` field returns time in Unix milliseconds.
-
-`next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` fields are based on the calendar specified in `default.holiday.calendar` server property.
+`next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` fields are based on the [workday calendar](workday-calendar.md) specified in `default.holiday.calendar` server property.
 
 ## Window Fields
 

@@ -50,7 +50,7 @@ Returns the largest integer that is less than or equal to `x`.
 pow(double x, double y) double
 ```
 
-Return `x` raised to the power of `y`.
+Returns `x` raised to the power of `y`.
 
 ## `round`
 
