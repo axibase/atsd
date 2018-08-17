@@ -14,19 +14,19 @@
 ## Database Schema
 
 Widget configuration syntax provides a way to load and display time series data stored in a database. As series values
-change over time, portals visualize their history with [various graphs](https://axibase.com/products/axibase-time-series-database/visualization/widgets/).
+change over time, their history can be visualized on portals with [various widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/).
 
 ```ls
 [widget]
   type = chart
-# Widget settings
+  # widget settings
   [series]
-# Series 1 settings
+  # series 1 settings
   [series]
-# Series 2 settings
+  # series 2 settings
 ```
 
-Each series is identified by a composite key which consists of a **metric**, **entity**, and optional name/value pairs called **series tags** which are often referred to as simply **tags**.
+Each series is identified by a composite key which consists of a **metric**, **entity**, and optional name/value pairs called **series tags**.
 
 ```ls
 [series]
@@ -40,11 +40,11 @@ Each series is identified by a composite key which consists of a **metric**, **e
     fstype = ext4
 ```
 
-* An **entity** is a physical or logical object being monitored such as `nurswgvml007` (computer name).
+* An **entity** is a physical or logical object such as `nurswgvml007` (hostname) or `br-1705` (equipment).
 * A **metric** represents the name of a measurable numeric attribute such as `cpu_busy` or `temperature`.
-* **Series tags** are optional. Tags provide an additional level of detail for measurements such as a disk mount point for the `df.bytes.percentused` metric.
+* **Series tags** provide an additional level of detail for measurements such as a disk mount point or process Id. The series tags are optional.
 
-An entity can be instrumented and measured for multiple metrics, just as the same metric can be collected for multiple entities.
+An entity can be instrumented and monitored with multiple metrics, just as the same metric can be collected for multiple entities.
 
 ## Exploring Series
 
@@ -264,7 +264,7 @@ Refer to the [Data API Documentation](../api/data/filter-entity.md#entity-filter
 
 ## Retrieving Series from the Database
 
-As an alternative to defining a `[series]` manually or using wildcards, widget syntax supports the [`getSeries()`](https://github.com/axibase/charts/blob/master/syntax/functions.md#getseries) and [`getTags()`](https://github.com/axibase/charts/blob/master/syntax/functions.md#gettags) functions to retrieve series lists from the metadata endpoints.
+As an alternative to defining a `[series]` manually or using wildcards, widget syntax supports the [`getSeries()`](https://github.com/axibase/charts/blob/master/syntax/functions.md#getseries) and [`getTags()`](https://github.com/axibase/charts/blob/master/syntax/functions.md#gettags) functions to retrieve series lists from the server.
 
 `getTags()` function:
 
@@ -308,7 +308,7 @@ series-limit = 10
     fstype = ext4
 ```
 
-For more flexible client visibility control, use the `display` and `enabled` settings.
+To control which series are displayed, use the `display` and `enabled` filter settings which are evaluated on the client.
 
 ```ls
 entity = *
