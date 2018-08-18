@@ -7,14 +7,14 @@
 
 ## Requirements
 
-* Minimum RAM: `2` GB
+* Minimum RAM: `4` GB
 * See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Installation Process
 
-### Add `backports` Repository
+### Add `backports` Repository (only for Debian `8.x`)
 
-**Required only for Debian `8.x` (jessie).**
+This step is required **only for Debian `8.x` (jessie).**
 
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'

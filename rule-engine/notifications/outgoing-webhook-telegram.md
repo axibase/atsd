@@ -36,7 +36,7 @@ Use this token to access the HTTP API:
 
 Prepare a request URL for accepting notifications from Telegram servers.
 
-* Follow the path **Settings > Users > Create Webhook User** in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Telegram.
+* Navigate to **Settings > Users > Create Webhook User** in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting requests from Telegram servers.
 
   ![](../../administration/images/webhook-user.png)
 
@@ -50,18 +50,23 @@ https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?co
 
 ## Set Webhook
 
-Set up a webhook based on the SSL certificate installed in ATSD.
+Setup a webhook based on the SSL certificate installed in ATSD:
 
-* If ATSD has a CA-signed SSL certificate
+* [CA-signed](../../administration/ssl-ca-signed.md) SSL certificates are trusted by Telegram servers by default and no further configuration is required.
+* In case of self-signed certificates, establish trust by uploading certificates to Telegram servers.
 
-  Set webhook by specifying the webhook URL
+### CA-signed SSL certificate
+
+Set webhook by specifying the webhook URL.
+  
+Update `url=` with webhook user credentials created in the previous step.
 
 ```bash
 curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
     https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
 
-* If ATSD runs on a self-signed SSL certificate
+### Self-signed SSL certificate
 
   Export the [self-signed](../../administration/ssl-self-signed.md) SSL certificate in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate):
 
@@ -74,6 +79,8 @@ openssl pkcs12 -in /opt/atsd/atsd/conf/server.keystore.p12 -out /opt/atsd/atsd/c
 ```
 
 Set webhook by specifying the webhook URL and attaching the`server.keystore.pem` file.
+
+Update `url=`  with webhook user credentials created in the previous step.
 
 ```sh
 curl -F "url=https://username:password@atsd_hostname:8443/api/v1/messages/webhook/telegram?command.message=message.text" \

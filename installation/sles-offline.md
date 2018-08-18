@@ -11,7 +11,7 @@ and copying them to the target server with similar characteristics for offline i
 
 ## Requirements
 
-* Minimum RAM: `2` GB
+* Minimum RAM: `4` GB
 * See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Check Dependencies

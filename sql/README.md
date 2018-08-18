@@ -2910,13 +2910,13 @@ WHERE datetime >= NOW - 1*MINUTE
 
 | **Function** | **Description** |
 |:---|:---|
-| `UPPER(s)` | Converts characters in a specified string to upper case. |
-| `LOWER(s)` | Converts characters in a specified string to lower case. |
-| `REPLACE(s-1, s-2, s-3)` | Replaces all occurrences of `s-2` with `s-3` in a specified string `s-1`.<br>If `s-2` is not found, the function returns the original string `s-1`.|
-| `LENGTH(s)` | Number of characters in a specified string. |
-| `CONCAT(s-1, s-2 [, s-N] )` | Concatenates multiple strings into one string. <br>`NULL` and `NaN` values are concatenated as empty strings.<br>The function also accepts numeric values which are converted to strings using `#.##` pattern. |
-| `LOCATE(s-1, s-2 [, start])` | Searches for the **first** string `s-1` in the second string `s-2`.<br>Returns the position at which `s-1` is found in `s-2`, after the optional `start` position. <br>The first character has a position of 1. The function returns 0 if string `s-1` is not found. |
-| `SUBSTR(str, start[, length])` | Substring of `str` starting at `start` position with maximum length of `length`. <br>The first character has a position of 1. <br>`start` position of 0 is processed similarly to position 1.<br>If `length` is not specified or is 0, the function returns the substring beginning with `start` position.|
+| `UPPER(s)` | Converts characters in a specified string to upper case.<br>If entity is `abc`, `UPPER(entity)` = `ABC`.|
+| `LOWER(s)` | Converts characters in a specified string to lower case.<br>If tag `t1` value is `ABc`, `LOWER(tags.t1)` = `abc`.|
+| `REPLACE(s-1, s-2, s-3)` | Replaces all occurrences of `s-2` with `s-3` in a specified string `s-1`.<br>If `s-2` is not found, the function returns the original string `s-1`.<br>If entity is `abcabc`, `REPLACE(entity,'ab','R')` = `RcRc`.|
+| `LENGTH(s)` | Number of characters in a specified string.<br>If entity is `abc`, `LENGTH(entity)` = `3`.|
+| `CONCAT(s-1, s-2 [, s-N] )` | Concatenates multiple strings into one string. <br>`NULL` and `NaN` values are concatenated as empty strings.<br>Also accepts numeric values which are converted to strings using `#.##` pattern.<br>If entity is `abc`, `CONCAT(entity,'-f-',3.1517)` = `abc-f-3.15`.|
+| `LOCATE(s-1, s-2 [, start])` | Searches for the **first** string `s-1` in the second string `s-2`.<br>Returns the position at which `s-1` is found in `s-2`, after the optional `start` position. <br>The first character has a position of `1`. The function returns `0` if string `s-1` is not found.<br>If entity is `abc`, `LOCATE(entity,'b')` = `2`.|
+| `SUBSTR(str, start[, length])` | Substring of `str` starting at `start` position with maximum length of `length`. <br>The first character has a position of `1`. <br>`start` position of `0` is processed similarly to position `1`.<br>If `length` is not specified or is `0`, the function returns the substring beginning with `start` position.<br>If entity is `abc`, `SUBSTR(entity,2)` = `bc`.|
 
 ```sql
 SELECT datetime, UPPER(REPLACE(entity, 'nurswg', '')) AS "entity", value,

@@ -8,7 +8,7 @@
 
 ## Requirements
 
-* Minimum RAM: `2` GB
+* Minimum RAM: `4` GB
 * See [Requirement Specifications](./requirements.md) for additional information.
 
 ## Configuration

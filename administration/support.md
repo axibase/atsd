@@ -1,16 +1,22 @@
 # Support
 
+## Support Options
+
+* **Commercial** Support:
+
+  Open a ticket in our [Support Desk](https://axibase.zendesk.com/home) to expedite processing.
+
+* **Community** Support:
+
+  Contact us at `support-atsd@axibase.com`.
+
+## Overview
+
 This document helps you submit a well-prepared support ticket to ensure Axibase staff can resolve it faster.
 
-**Commercial** Support:
+Use the below guidelines to attach relevant details to the ticket.
 
-* Open a ticket in our [Support Desk](https://axibase.zendesk.com/home) to expedite processing.
-
-**Community** Support:
-
-* Contact us at `support-atsd@axibase.com`.
-
-Use the below guidelines to attach relevant details to the ticket. Skip sections `2-7` if not applicable.
+Section `1` is **required**. Skip sections `2` - `8` if not applicable.
 
 ## 1. Database Information
 
@@ -74,51 +80,51 @@ HBase and HDFS log files are accessible from the **Settings > Diagnostics > Serv
 
 4. CSV Export of the below query generated in the [SQL Console](../sql/sql-console.md). Modify the `datetime` condition to match the hour when the issue occurred.
 
-```sql
-SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr,
-  t6.value AS hbs_scan, t7.value AS hsess, t8.value AS hpool, t9.value AS hpool_pct, t10.value AS jvm_com_vs,
-  t11.value AS jvm_fr_pmem, t12.value AS jvm_fr_swap, t13.value AS max_file, t14.value AS mem_free, t15.value AS mem_max,
-  t16.value AS mem_used, t17.value AS mem_used_pct, t18.value AS open_file, t19.value AS proc_load, t20.value AS sys_cpu_load,
-  t21.value AS sys_loadavg, t22.value AS tot_phys_mem, t23.value AS tot_swap, t24.value AS mtr_gets, t25.value AS mtr_reads,
-  t26.value AS mtr_recv, t27.value AS mtr_writes, t28.value AS net_cmd_ign, t29.value AS net_cmd_malf, t30.value AS non_pers,
-  t31.value AS ser_pool_active, t32.value AS ser_queue, t33.value AS ser_rejc
-  FROM api_command_malformed_per_second t1
-  JOIN disabled_metric_received_per_second t2
-  JOIN expired_metric_received_per_second t3
-  JOIN filtered_metric_received_per_second t4
-  JOIN forward_metric_received_per_second t5
-  JOIN using entity hbase_scans_per_second t6
-  JOIN http.sessions t7
-  JOIN http.thread_pool_used t8
-  JOIN http.thread_pool_used_percent t9
-  JOIN jvm_committed_virtual_memory_size t10
-  JOIN jvm_free_physical_memory_size t11
-  JOIN jvm_free_swap_space_size t12
-  JOIN jvm_max_file_descriptor_count t13
-  JOIN jvm_memory_free t14
-  JOIN jvm_memory_max t15
-  JOIN jvm_memory_used t16
-  JOIN jvm_memory_used_percent t17
-  JOIN jvm_open_file_descriptor_count t18
-  JOIN jvm_process_cpu_load t19
-  JOIN jvm_system_cpu_load t20
-  JOIN jvm_system_load_average t21
-  JOIN jvm_total_physical_memory_size t22
-  JOIN jvm_total_swap_space_size t23
-  JOIN metric_gets_per_second t24
-  JOIN metric_reads_per_second t25
-  JOIN metric_received_per_second t26
-  JOIN metric_writes_per_second t27
-  JOIN network_command_ignored_per_second t28
-  JOIN network_command_malformed_per_second t29
-  JOIN non_persistent_metric_received_per_second t30
-  JOIN series_pool_active_count t31
-  JOIN series_queue_size t32
-  JOIN series_rejected_count t33
-WHERE t1.entity = 'atsd'
-  AND t1.datetime BETWEEN '2018-05-01T08:00:00Z' AND '2018-05-01T09:00:00Z'
-WITH INTERPOLATE(1 MINUTE)
-```
+    ```sql
+    SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr,
+    t6.value AS hbs_scan, t7.value AS hsess, t8.value AS hpool, t9.value AS hpool_pct, t10.value AS jvm_com_vs,
+    t11.value AS jvm_fr_pmem, t12.value AS jvm_fr_swap, t13.value AS max_file, t14.value AS mem_free, t15.value AS mem_max,
+    t16.value AS mem_used, t17.value AS mem_used_pct, t18.value AS open_file, t19.value AS proc_load, t20.value AS sys_cpu_load,
+    t21.value AS sys_loadavg, t22.value AS tot_phys_mem, t23.value AS tot_swap, t24.value AS mtr_gets, t25.value AS mtr_reads,
+    t26.value AS mtr_recv, t27.value AS mtr_writes, t28.value AS net_cmd_ign, t29.value AS net_cmd_malf, t30.value AS non_pers,
+    t31.value AS ser_pool_active, t32.value AS ser_queue, t33.value AS ser_rejc
+    FROM api_command_malformed_per_second t1
+    JOIN disabled_metric_received_per_second t2
+    JOIN expired_metric_received_per_second t3
+    JOIN filtered_metric_received_per_second t4
+    JOIN forward_metric_received_per_second t5
+    JOIN using entity hbase_scans_per_second t6
+    JOIN http.sessions t7
+    JOIN http.thread_pool_used t8
+    JOIN http.thread_pool_used_percent t9
+    JOIN jvm_committed_virtual_memory_size t10
+    JOIN jvm_free_physical_memory_size t11
+    JOIN jvm_free_swap_space_size t12
+    JOIN jvm_max_file_descriptor_count t13
+    JOIN jvm_memory_free t14
+    JOIN jvm_memory_max t15
+    JOIN jvm_memory_used t16
+    JOIN jvm_memory_used_percent t17
+    JOIN jvm_open_file_descriptor_count t18
+    JOIN jvm_process_cpu_load t19
+    JOIN jvm_system_cpu_load t20
+    JOIN jvm_system_load_average t21
+    JOIN jvm_total_physical_memory_size t22
+    JOIN jvm_total_swap_space_size t23
+    JOIN metric_gets_per_second t24
+    JOIN metric_reads_per_second t25
+    JOIN metric_received_per_second t26
+    JOIN metric_writes_per_second t27
+    JOIN network_command_ignored_per_second t28
+    JOIN network_command_malformed_per_second t29
+    JOIN non_persistent_metric_received_per_second t30
+    JOIN series_pool_active_count t31
+    JOIN series_queue_size t32
+    JOIN series_rejected_count t33
+    WHERE t1.entity = 'atsd'
+    AND t1.datetime BETWEEN '2018-05-01T08:00:00Z' AND '2018-05-01T09:00:00Z'
+    WITH INTERPOLATE(1 MINUTE)
+    ```
 
 ## 5. Portal Configuration
 
@@ -126,26 +132,56 @@ Attach the following inputs if the problem is related to charts, widgets, and po
 
 1. Screenshot of the affected portal.
 
-2. Portal configuration text from the **Portals > Configure** page.
+1. Portal configuration text from the **Portals > Configure** page.
 
-3. Series query response [captured](https://github.com/axibase/charts/blob/master/troubleshooting/capture_response.md) using Developer Tools in the browser.
+1. Series query response [captured](https://github.com/axibase/charts/blob/master/troubleshooting/capture_response.md) using Developer Tools in the browser.
 
 ## 6. Client Libraries
 
 1. API Client name and version.
 
-2. Execution environment such as Python version and dependency module versions.
+1. Execution environment such as Python version and dependency module versions.
 
-3. Error message reported by the client application.
+1. Error message reported by the client application.
 
 ## 7. JDBC Driver
 
 1. Driver version.
 
-2. JVM version of the Java application executing the driver.
+    The driver version can be obtained from the [release artifact](https://github.com/axibase/atsd-jdbc/releases) file name, for example `atsd-jdbc-1.4.0-DEPS.jar` or the `POM` file.
 
-3. [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-url) including any [connection properties](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) specified when connecting to the database.
+    ```xml
+    <dependency>
+        <groupId>com.axibase</groupId>
+        <artifactId>atsd-jdbc</artifactId>
+        <version>1.4.0</version>
+    </dependency>
+    ```
 
-4. Java stack trace of the issue encountered by the driver
+1. Confirm that the driver version is [compatible](https://github.com/axibase/atsd-jdbc#compatibility) with the ATSD version.
 
-5. Error messages received by the hosting application.
+1. JVM version of the Java application executing the driver.
+
+1. [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-url) including any [connection properties](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) specified when connecting to the database.
+
+1. Java stack trace of the issue encountered by the driver
+
+1. Error messages received by the hosting application.
+
+## 8. SQL Queries
+
+Provide the following details if an SQL query returns unexpected errors or incomplete/wrong results.
+
+1. SQL query text.
+
+1. Query results in CSV format exported in the [SQL console](../sql/sql-console.md#export) or using the [SQL bash client](../sql/client/README.md).
+
+    ```bash
+    ./sql.sh -i query.sql -f csv -o results.csv
+    ```
+
+    Compress the CSV file to a zip/gzip archive to reduce the attachment size.
+
+1. SQL query plan screenshot from the **SQL > Query Statistics** page.
+
+    ![](./images/sql-query-plan.png)
