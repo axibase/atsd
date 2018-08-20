@@ -12,7 +12,7 @@
 | [`FIRST`](../../rule-engine/functions-statistical.md#first) | First value of selected samples.
 | [`LAST`](../../rule-engine/functions-statistical.md#last) | Final value of selected samples.
 | [`DELTA`](../../rule-engine/functions-statistical.md#delta) | Difference between consecutive values of selected samples.
-| [`COUNTER`](../../sql/examples/aggregate-counter.md#counter-function) | Difference between consecutive values of selected samples.<br>Negative values 
+| [`COUNTER`](../../sql/examples/aggregate-counter.md#counter-function) | Difference between consecutive values of selected samples.<br>Negative values
 | `PERCENTILE_999` | 99.9% Percentile
 | `PERCENTILE_995` | 99.5% Percentile
 | `PERCENTILE_99` | 99% Percentile
@@ -35,6 +35,6 @@
 | [`THRESHOLD_COUNT`](../../api/data/series/examples/query-aggr-threshold.md#description) | Number threshold violations by selected samples.
 | [`THRESHOLD_DURATION`](../../api/data/series/examples/query-aggr-threshold.md#description) | Time of threshold violations by selected samples.
 | [`THRESHOLD_PERCENT`](../../api/data/series/examples/query-aggr-threshold.md#description) | Percentage of samples which violate threshold from selected samples.
-| [`MIN_VALUE_TIME`](../../sql/README#min_value_time) | Unix time with millisecond granularity for maximum value of selected samples.
-| [`MAX_VALUE_TIME`](../../sql/README#max_value_time) | Unix time with millisecond granularity for minimum value of selected samples.
+| [`MIN_VALUE_TIME`](../../sql/README#min-value-time) | Unix time with millisecond granularity for maximum value of selected samples.
+| [`MAX_VALUE_TIME`](../../sql/README#max-value-time) | Unix time with millisecond granularity for minimum value of selected samples.
 | [`DETAIL`](../../api/data/series/downsample.md#algorithm) | Downsampling algorithm which filters duplicate samples from selected samples.
