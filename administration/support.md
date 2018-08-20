@@ -148,7 +148,7 @@ Attach the following inputs if the problem is related to charts, widgets, and po
 
 1. Driver version.
 
-    The driver version can be obtained from the [release artifact](https://github.com/axibase/atsd-jdbc/releases) file name, for example `atsd-jdbc-1.4.0-DEPS.jar` or the `POM` file.
+    The driver version can be obtained from the [`atsd-jdbc-*.jar`](https://github.com/axibase/atsd-jdbc/releases) file name, for example `atsd-jdbc-1.4.0-DEPS.jar` or from the `POM` file.
 
     ```xml
     <dependency>
@@ -160,13 +160,11 @@ Attach the following inputs if the problem is related to charts, widgets, and po
 
 1. Confirm that the driver version is [compatible](https://github.com/axibase/atsd-jdbc#compatibility) with the ATSD version.
 
-1. JVM version of the Java application executing the driver.
-
 1. [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-url) including any [connection properties](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) specified when connecting to the database.
 
-1. Java stack trace of the issue encountered by the driver
+1. JVM version of the Java application executing the driver.
 
-1. Error messages received by the hosting application.
+1. Java stack trace of the exception intercepted by the Java application.
 
 ## 8. SQL Queries
 
@@ -180,7 +178,7 @@ Provide the following details if an SQL query returns unexpected errors or incom
     ./sql.sh -i query.sql -f csv -o results.csv
     ```
 
-    Compress the CSV file to a zip/gzip archive to reduce the attachment size.
+    Compress the CSV file to a `zip` or `gzip` archive to reduce the attachment size.
 
 1. SQL query plan screenshot from the **SQL > Query Statistics** page.
 
