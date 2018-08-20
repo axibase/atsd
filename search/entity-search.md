@@ -9,8 +9,8 @@ The entity search interface finds entities by name, entity tag, and last insert 
 Search text can consist of multiple keywords.
 
 * Keywords containing a colon are treated as **tag** filters, for example `example-tag:example-value` finds entities with tag `example-tag` set to `example-value`.
-* Reserved keywords `min-date` and `max-date` filter entities by **last insert date**.
-* The remaining keywords match **entity names**.
+* Reserved keywords `min-date` and `max-date` filter entities by [ISO format](../shared/date-format.md) **last insert date**.
+* Remaining keywords match **entity names**.
 
 ## Wildcards
 
