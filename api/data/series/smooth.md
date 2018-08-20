@@ -25,25 +25,25 @@ This example performs moving average smoothing with a `1 HOUR` rolling window.
 
 There are three groups of parameters:
 
-* [**Common Parameters**](#common-parameters): Common to all smoothing methods.
-* [**Function Specific Parameters**](#function-specific-parameters): Specific to a given smoothing method.
-* [**Window Parameters**](#window-parameters): Define rolling window boundaries.
+* [**General Parameters**](#general-parameters): Common to all smoothing methods.
+* [**Window Parameters**](#window-parameters): Define rolling window behavior.
+* [**Smoothing Parameters**](#smoothing-parameters): Define smoothing algorithm boundaries.
 
-### Common Parameters
+### General Parameters
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `type` | string | **[Required]** Smoothing function.<br>Available functions: [`AVG`](#average), [`WAVG`](#weighted-average), [`WTAVG`](#weighted-time-average), [`EMA`](#exponential-moving-average). |
 | `order` | integer | Controls the smoothing order in the sequence of other [transformations](./query.md#transformations).<br>Default: `0`.|
 
-### Function Specific Parameters
+### Window Parameters
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `count` | number | Specifies the number of series samples in [count based window](#count-based-window). |
 | `interval` | object | Specifies [time based window](#time-based-window) duration `count` and time `unit`.<br>For example: `"interval": {"count": 1, "unit": "HOUR"}`.<br>Supported time units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
 
-### Window Parameters
+### Smoothing Parameters
 
 Each smoothing method except for the `EMA` uses either [count based](#count-based-window) or [time based](#time-based-window) window. [Smoothing Process](#smoothing-process) describes how series samples are grouped into a window.
 
@@ -66,11 +66,11 @@ For each series sample the following steps are executed sequentially:
     * Calculated numerical value if function-specific calculation conditions are satisfied.
     * `NaN` if function-specific calculation conditions are not satisfied and `generateNaNs = true`.
     * No value if function-specific calculation conditions are not satisfied and `generateNaNs = false`.
-1. Returned values retain the timestamp from the underlying series.
-1. Newly or original calculated samples are added to the rolling window.
-1. Upon window overflow, oldest samples are removed.
+    * Returned values **retain** the timestamp of the underlying series.
+1. Selected samples are chronologically appended to the rolling window.
+1. Outdated samples are chronologically removed from the rolling window.
     * [Time based](#time-based-window) and [count based](#count-based-window) windows define window overflow differently.
-1. After processing all series samples,  smoothing function writes final value for the window as last sample.
+1. Steps one through four are repeated for all series samples. **After processing all series samples**,  smoothing function writes final value for the window as last sample. This operation only occurs one time.
 
 ## Time Based Window
 
