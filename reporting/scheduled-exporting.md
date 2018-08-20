@@ -1,6 +1,6 @@
 # Scheduled Exporting
 
-Scheduled exporting operations perform historial data and forecast export to a local file system in CSV or Excel formats, as well as the delivery of produced reports to email subscribers.
+Scheduled exporting operations perform historical data and forecast export to a local file system in CSV or Excel formats, as well as the delivery of produced reports to email subscribers.
 
 ## Scheduled Exporting Settings
 
