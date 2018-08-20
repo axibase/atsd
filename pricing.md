@@ -39,7 +39,7 @@ Subscription Terms:
 * Deployed by the customer on-premise or in the cloud.
 * Total subscription charge is calculated by multiplying the above per-node fee by the number of nodes in the cluster.
 
-Permanent License options available:
+Perpetual License options available:
 
 * User-specified node count.
 * Single-node option.
