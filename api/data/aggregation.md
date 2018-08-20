@@ -10,9 +10,9 @@
 | `SUM`| Sum of selected samples.
 | `COUNT`| Number of selected samples.
 | `FIRST`| First value of selected samples.
-| `LAST`| Final value of selected samples.
-| `DELTA`| Difference between consecutive values of selected samples.
-| `COUNTER` | Difference between consecutive values of selected samples.<br>Negative values
+| `LAST`| Last value of selected samples.
+| `DELTA`| Difference between last and first values in selected samples.
+| `COUNTER` | Sum of positive differences between consecutive values of selected samples.
 | `PERCENTILE_999` | 99.9% Percentile
 | `PERCENTILE_995` | 99.5% Percentile
 | `PERCENTILE_99` | 99% Percentile
@@ -32,9 +32,8 @@
 | `INTERCEPT` | Linear regression intercept of selected samples.
 | `WAVG` | Weighted average of selected samples.
 | `WTAVG` | Weighted time average of selected samples.
-| `THRESHOLD_COUNT` | Number threshold violations by selected samples.
-| `THRESHOLD_DURATION` | Time of threshold violations by selected samples.
+| `THRESHOLD_COUNT` | Number of threshold violations in selected samples.
+| `THRESHOLD_DURATION` | Cumulative duration of threshold violations in selected samples.
 | `THRESHOLD_PERCENT` | Percentage of samples which violate threshold from selected samples.
-| `MIN_VALUE_TIME` | Unix time with millisecond granularity for maximum value of selected samples.
-| `MAX_VALUE_TIME` | Unix time with millisecond granularity for minimum value of selected samples.
-| `DETAIL` | Downsampling algorithm which filters duplicate samples from selected samples.
+| `MIN_VALUE_TIME` | Unix time in milliseconds for maximum value in selected samples.
+| `MAX_VALUE_TIME` | Unix time in milliseconds for minimum value in selected samples.
