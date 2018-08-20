@@ -102,7 +102,7 @@ function install_checkers {
 
 function install_checkers_in_non_doc_project {
     if [ "$TRAVIS_JOB_NUMBER" = "$TRAVIS_BUILD_NUMBER.1" ]; then
-        nvm install 8 && nvm use 8
+        nvm install 10 && nvm use 10
         install_checkers
     else
         export ENABLE_CHECK=false
