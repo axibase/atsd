@@ -28,6 +28,7 @@ Enterprise Edition supports a scale-out deployment model.
 | [Cluster replication](./administration/replication.md) |  | ![](./images/ok.svg) |
 | [Cloudera Distribution Hadoop](./installation/cloudera.md) |  | ![](./images/ok.svg) |
 | [AWS Elastic MapReduce](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
+| <span style="color: #8db600; font-weight: bold">Pricing</span> | [`$240/month`](pricing.md#standard-edition) | [`$960/month`](pricing.md#enterprise-edition) |
 
 ## Tools
 
@@ -35,6 +36,7 @@ Enterprise Edition supports a scale-out deployment model.
 |---|:---:|:---:|
 | [Axibase Collector](https://axibase.com/docs/axibase-collector/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [JDBC driver](https://github.com/axibase/atsd-jdbc) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [API Clients](api/clients/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Data Applications](https://apps.axibase.com/) |  | ![](./images/ok.svg) |
 | [ChartLab](https://apps.axibase.com/chartlab/) |  | ![](./images/ok.svg) |
 
@@ -42,4 +44,4 @@ Enterprise Edition supports a scale-out deployment model.
 
 |  | **Standard Edition** | **Enterprise Edition** |
 |---|:---:|:---:|
-| [Technical Support](./administration/support.md) | `optional` | ![](./images/ok.svg) |
+| [Technical Support](./administration/support.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
