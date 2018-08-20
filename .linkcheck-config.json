@@ -88,7 +88,7 @@
             "pattern": "https://catalog.data.gov/dataset/american-fitness-index-ranking-2010-present"
         },
         {
-            "pattern": "https://ec.europa.eu/"
+            "pattern": "https://ec.europa.eu"
         },
         {
             "pattern": "https://crt.sh"
@@ -98,5 +98,17 @@
         },
         {
             "pattern": "https://apps.axibase.com/performance/"
+        },
+        {
+            "pattern": "https://mesos.apache.org/documentation/latest/architecture/"
+        },
+        {
+            "pattern": "https://zookeeper.apache.org/"
+        },
+        {
+            "pattern": "https://mesos.apache.org/documentation/latest/docker-containerizer/"
+        },
+        {
+            "pattern": "https://mesos.apache.org/"
         }
     ]}

@@ -109,21 +109,26 @@ convert(1000 * 1000, 'M') // 1.0
 ## `date_format`
 
 ```javascript
-date_format(long t, string p, string z) string
+date_format(long t [, string p, string z]) string
 ```
 
-Converts timestamp `t` to a string according to the specified [date pattern](../shared/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`.
+Converts timestamp `t` to a string according to the specified [date pattern](../shared/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`. If the date pattern and the time zone are not specified, the input time `t` is formatted with the default ISO format in the UTC time zone.
 
-The input timestamp is specified as Unix time in milliseconds.
+The input timestamp contains Unix time in milliseconds.
 
-Related date parsing function: [`date_parse`](functions-date.md#date_parse).
-
-Example:
+Examples:
 
 ```javascript
-/* Return formatted time string  "2018-01-09 15:23:40:000 Europe/Berlin" */
+/* Returns current time minus 1 hour formatted as "2018-01-09T15:23:40:00Z" */
+date_format(now.millis - 3600000L)
+```
+
+```javascript
+/* Returns formatted time string  "2018-01-09 15:23:40:00 Europe/Berlin" */
 date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```
+
+> Related date parsing function: [`date_parse`](functions-date.md#date_parse).
 
 ## `formatInterval`
 

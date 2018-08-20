@@ -8,9 +8,9 @@ Enterprise Edition supports a scale-out deployment model.
 
 |  | **Standard Edition** | **Enterprise Edition** |
 |---|:---:|:---:|
-| [Compression](./administration/compaction/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Data Compression](./administration/compaction/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Portal Server](./portals/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| [Charts Library](https://axibase.com/products/axibase-time-series-database/visualization/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [Declarative Graphics](https://axibase.com/products/axibase-time-series-database/visualization/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Rule Engine](./rule-engine/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Email Alerts](./rule-engine/email.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Slack/TG/HipChat Webhooks](./rule-engine/notifications/README.md) | ![](././images/ok.svg) | ![](./images/ok.svg) |
@@ -25,8 +25,9 @@ Enterprise Edition supports a scale-out deployment model.
 | [LDAP Authentication](./administration/user-authorization.md) |  | ![](./images/ok.svg) |
 | [Forecasts](./forecasting/README.md) | | ![](./images/ok.svg) |
 | [Versioning](./versioning/README.md) |  | ![](./images/ok.svg) |
-| [Clustering](./installation/cloudera.md) |  | ![](./images/ok.svg) |
-| [AWS EMR](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
+| [Cluster replication](./administration/replication.md) |  | ![](./images/ok.svg) |
+| [Cloudera Distribution Hadoop](./installation/cloudera.md) |  | ![](./images/ok.svg) |
+| [AWS Elastic MapReduce](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
 
 ## Tools
 

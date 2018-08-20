@@ -79,7 +79,7 @@ SELECT * FROM jvm_memory_used
 ### Issue 4375
 
 The `CURRENT_TIMESTAMP` function returns current database date and time in [ISO format](../../shared/date-format.md) similar to the [`NOW`](../../sql/README.md#reserved-words)
-function which returns current database time in Unix milliseconds.
+function which returns current database time as Unix time in milliseconds.
 
 The [`DBTIMEZONE`](../../sql/README.md#dbtimezone) function returns the current database time zone name or GMT offset.
 

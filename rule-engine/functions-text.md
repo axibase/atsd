@@ -381,7 +381,7 @@ Counts how many times the substring `p` appears in input string `s`.
 Example:
 
 ```javascript
-// Return 2
+// Returns 2
 countMatches("hello world", "o")
 ```
 

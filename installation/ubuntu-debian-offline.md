@@ -12,7 +12,7 @@ and copying them to the target server for offline installation.
 
 ## Requirements
 
-* Minimum RAM: `2` GB
+* Minimum RAM: `4` GB
 * See [Requirements](./requirements.md) for additional information.
 
 ## Installation Steps

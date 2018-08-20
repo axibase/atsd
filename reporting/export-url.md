@@ -23,51 +23,51 @@ https://atsd_hostname:8443/export?settings={"m":"cpu_used","e":"nurswgvml001","s
 
 | Field | Description | Example |
 | --- | --- | --- |
-|  `m`  |  Metric name  |  `"m":"metric"`  |
-|  `e`  |  Entity name  | `"e":"entity"`  |
-|  `g`  |  Entity group  |  `"g":"group"`  |
-|  `tags`  |  Tags array  |  `"tags":[{"k":"key1","v":"value11"},{"k":"key2","v":"value2"}]`  |
+|  `m`  |  Metric Name  |  `"m":"metric"`  |
+|  `e`  |  Entity Name  | `"e":"entity"`  |
+|  `g`  |  [Entity Group](../configuration/entity_groups.md)  |  `"g":"group"`  |
+|  `tags`  |  Tags Array  |  `"tags":[{"k":"key1","v":"value11"},{"k":"key2","v":"value2"}]`  |
 |  `si`  |  Selection Interval  | `si":"1-WEEK"`  |
-|  `et`  |  End time  |  `"et":"today"`  |
+|  `et`  |  End Time  |  `"et":"today"`  |
 |  `l` |  Limit  |  `"l":1000`  |
-|  `f`  |  Export Format (CSV, HTML)  |  `"f":"CSV"`  |
-|  `t`  |  Export Type (DATA, FORECAST)  |  `"t":"DATA"`  |
+|  `f`  |  Export Format: `CSV` or `HTML`  |  `"f":"CSV"`  |
+|  `t`  |  Export Type: `DATA` or `FORECAST`  |  `"t":"DATA"`  |
 |  `ai`  |  Aggregation Interval  |  `"ai":"1-HOUR"`  |
 |  `a`  |  Aggregation Functions  |  `"a":["AVG", "MIN"]`  |
-|  `i`  |  Interpolation (LINEAR, STEP)  |  `"i" : "LINEAR"`  |
+|  `i`  |  Interpolation: `LINEAR` or `STEP`  |  `"i" : "LINEAR"`  |
 
 ## Aggregation Functions
 
-* AVG
-* MIN
-* MAX
-* SUM
-* COUNT
-* STANDARD_DEVIATION
-* WAVG
-* WTAVG
-* PERCENTILE_50
-* PERCENTILE_75
-* PERCENTILE_90
-* PERCENTILE_95
-* PERCENTILE_99
-* PERCENTILE_995
-* PERCENTILE_999
+* `AVG`
+* `MIN`
+* `MAX`
+* `SUM`
+* `COUNT`
+* `STANDARD_DEVIATION`
+* `WAVG`
+* `WTAVG`
+* `PERCENTILE_50`
+* `PERCENTILE_75`
+* `PERCENTILE_90`
+* `PERCENTILE_95`
+* `PERCENTILE_99`
+* `PERCENTILE_995`
+* `PERCENTILE_999`
 
 ## Interval Time Units
 
-* SECOND
-* MINUTE
-* HOUR
-* DAY
-* WEEK
-* MONTH
-* QUARTER
-* YEAR
+* `SECOND`
+* `MINUTE`
+* `HOUR`
+* `DAY`
+* `WEEK`
+* `MONTH`
+* `QUARTER`
+* `YEAR`
 
 ## Interpolation Functions
 
-Interpolation functions can insert missing intervals in returned aggregated data:
+Interpolation functions insert missing intervals in returned aggregated data:
 
 | Function Name | Description |
 | --- | --- |

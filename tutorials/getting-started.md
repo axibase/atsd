@@ -4,43 +4,12 @@ This introduction guides you through the first steps of using Axibase Time Serie
 
 ## Contents
 
-### Introduction
-
-1. [Preparation](#preparation)
-1. [Introduction](#introduction)
-1. [Writing Data](#writing-data)
-1. [Viewing Statistics](#viewing-statistics)
-1. [Inserting Initial Data](#inserting-initial-data)
-1. [Visualizing Data](#visualizing-data)
-1. [Adding Metadata](#adding-metadata)
-
-### Inserting Data
-
-1. [Network Commands](./getting-started-insert.md#network-commands)
-1. [REST API](./getting-started-insert.md#rest-api)
-1. [CSV Files](./getting-started-insert.md#csv-files)
-
-### Portals
-
-1. [Creating Portals](./getting-started-portal.md#creating-portals)
-1. [Adding Widgets](./getting-started-portal.md#adding-widgets)
-1. [Metadata](./getting-started-portal.md#metadata)
-
-### Exporting Data
-
-1. [Export Form](./getting-started-export.md#export-form)
-1. [API Client](./getting-started-export.md#api-client)
-
-### SQL
-
-1. [SQL Console](./getting-started-sql.md#sql-console)
-
-### Alerting
-
-1. [Creating Rules](./getting-started-alert.md#creating-rules)
-1. [Email Alerts](./getting-started-alert.md#email-alerts)
-1. [Slack Alerts](./getting-started-alert.md#slack-alerts)
-1. [Summary](./getting-started-alert.md#summary)
+1. Introduction
+1. [Inserting Data](./getting-started-insert.md)
+1. [Portals](./getting-started-portal.md)
+1. [Exporting Data](./getting-started-export.md)
+1. [SQL](./getting-started-sql.md)
+1. [Alerting](./getting-started-alert.md)
 
 ## Preparation
 

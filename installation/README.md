@@ -1,6 +1,6 @@
 # Axibase Time Series Database Installation
 
-## Docker Images
+## Container Images
 
 [![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
 
@@ -27,12 +27,12 @@
 
 ---
 
-## AWS EMRFS
+## AWS Elastic MapReduce (EMR)
 
 ![](../images/aws3.png) ![](../images/emrfs.png)
 
 * **Mode**: Distributed
-* **File System**: AWS S3
+* **File System**: AWS EMRFS / S3
 * **Edition**: Enterprise
 
 [![](../images/install.png)](./aws-emr-s3.md)

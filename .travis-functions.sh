@@ -64,7 +64,7 @@ function stylecheck {
 
 function validate_anchors() {
     if [ "$ENABLE_CHECK" = "true" ]; then
-        remark -f -q --no-stdout -u validate-links .
+        remark -f -q --no-stdout -u "validate-links=repository:\"${TRAVIS_REPO_SLUG}\"" .
     else
         echo "Anchors validation will be skipped"
     fi
