@@ -35,6 +35,6 @@
 | [`THRESHOLD_COUNT`](../../api/data/series/examples/query-aggr-threshold.md#description) | Number threshold violations by selected samples.
 | [`THRESHOLD_DURATION`](../../api/data/series/examples/query-aggr-threshold.md#description) | Time of threshold violations by selected samples.
 | [`THRESHOLD_PERCENT`](../../api/data/series/examples/query-aggr-threshold.md#description) | Percentage of samples which violate threshold from selected samples.
-| [`MIN_VALUE_TIME`](../../sql/README.md#min-value-time) | Unix time with millisecond granularity for maximum value of selected samples.
-| [`MAX_VALUE_TIME`](../../sql/README.md#max-value-time) | Unix time with millisecond granularity for minimum value of selected samples.
+| [`MIN_VALUE_TIME`](../../sql/README.md#min_value_time) | Unix time with millisecond granularity for maximum value of selected samples.
+| [`MAX_VALUE_TIME`](../../sql/README.md#max_value_time) | Unix time with millisecond granularity for minimum value of selected samples.
 | [`DETAIL`](../../api/data/series/downsample.md#algorithm) | Downsampling algorithm which filters duplicate samples from selected samples.
