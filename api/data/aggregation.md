@@ -34,6 +34,6 @@
 | `WTAVG` | Weighted time average of selected samples.
 | `THRESHOLD_COUNT` | Number of threshold violations in selected samples.
 | `THRESHOLD_DURATION` | Cumulative duration of threshold violations in selected samples.
-| `THRESHOLD_PERCENT` | Percentage of samples which violate threshold from selected samples.
+| `THRESHOLD_PERCENT` | Percentage of selected samples which violate threshold.
 | `MIN_VALUE_TIME` | Unix time in milliseconds for maximum value in selected samples.
 | `MAX_VALUE_TIME` | Unix time in milliseconds for minimum value in selected samples.
