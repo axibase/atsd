@@ -6,16 +6,16 @@ ATSD Standard Edition (SE) is available on the following subscription plans:
 
 | Server RAM |  Price per Month |
 |---|---:|
-| `<= 16 GiB` | `US$ 240` |
+| `≤ 16 GiB` | `US$ 240` |
 | `> 16 GiB` | `US$ 480` |
 
 Subscription Terms:
 
 * No contract required.
 * No termination fee.
-* Minimum subscription term: **1 month**.
+* Minimum subscription term: 1 month.
 * Pricing based on annual billing. Add 30% in case of monthly cycle.
-* <span style="color: green; font-weight: bold">Unlimited</span> disk, CPU, read/write throughput, users, and series.
+* <span style="color: #8db600; font-weight: bold">Unlimited</span> disk, CPU, read/write throughput, users, and series.
 * Included: Term licenses, technical support, product upgrades.
 * Deployed by the customer on-premise or in the cloud.
 * Server RAM is the amount of memory allocated to the ATSD server.
@@ -32,9 +32,9 @@ Subscription Terms:
 
 * No contract required.
 * No termination fee.
-* Minimum subscription term: **1 month**.
+* Minimum subscription term: 1 month.
 * Pricing based on annual billing. Add 30% in case of monthly cycle.
-* <span style="color: green; font-weight: bold">Unlimited</span> memory, disk, CPU, read/write throughput, users, metrics, series.
+* <span style="color: #8db600; font-weight: bold">Unlimited</span> memory, disk, CPU, read/write throughput, users, metrics, series.
 * Included: Term licenses, technical support, product upgrades.
 * Deployed by the customer on-premise or in the cloud.
 * Total subscription charge is calculated by multiplying the above per-node fee by the number of nodes in the cluster.
