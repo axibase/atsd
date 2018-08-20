@@ -26,24 +26,24 @@ Returns the number of message records matching the specified interval `i`, messa
 db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
 ```
 
-Returns the most recent [message](../api/data/messages/query.md) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See [Matching Rules](#matching-rules).
+Returns the most recent [message](../api/data/messages/query.md) record for the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See [Matching Rules](#matching-rules).
 
-### Message Fields
+The record [fields](../api/data/messages/query.md#fields) can be accessed using dot notation, for example:
 
-[Fields](../api/data/messages/query.md#fields) of a returned object can be invoked using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
+```javascript
+db_message_last('1 hour', 'webhook', 'github').timestamp
+```
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `entity` | string | Entity of last message.
-|`type`       |  string   | Message type. |
-|`source`       |  string   | Message source. |
-|`tags`          | object  | Object with `name=value` fields.<br>Matches records that contain tags specified in the request object.<br>The matching records can include additional tags, not listed in the object. |
-|`severity`     |  string   | Severity [name](../api/data/severity.md).  <br>Matches records with the specified severity.|
-|`timestamp`   |  string   | Unix time with millisecond granularity of last message.|
-| `message` | string | Text of last message.
-| `date` | string | `null`.
-
-> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead in Unix time with millisecond granularity.
+| `entity` | string | Entity name. |
+| `type`       |  string   | Message type. |
+| `source`       |  string   | Message source. |
+| `tags`          | map  | Message tags.|
+| `severity`     |  string   | Message severity [code](../api/data/severity.md). |
+| `timestamp`   |  string   | Record time as Unix time in milliseconds.|
+| `message` | string | Message text. |
+| `date` | string | `null`. Use `timestamp` field instead. |
 
 ## `db_messages`
 
