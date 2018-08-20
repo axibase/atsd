@@ -30,7 +30,7 @@ An array of query objects containing the following filtering fields:
 |`minSeverity`  |  string   | Minimum [code or name](../../../api/data/severity.md) severity filter. <br>Can be specified as a string or as a number. |
 |`expression` | string | Include messages that match a filter [expression](../../../api/meta/expression.md).<br>The expression can include fields: `type`, `source`, `tags`, `tags.{name}`, `message`,`severity`.<br>Example: `message LIKE 'Starting*'`.<br>Supported wildcards: `*` and `?`.|
 
-* `severity`, `minSeverity`, and `severities` fields are case-**insensitive**.
+* `severity`, `minSeverity`, and `severities` fields are case **insensitive**.
 
 #### Expression
 
