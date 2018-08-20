@@ -2,69 +2,69 @@
 
 ## Overview
 
-The metric search interface can find metrics by name or specific metric tag values.
+The metric search interface finds metrics by name or metric tag values.
 
 ## Syntax
 
-A keyword without a colon is considered a metric name filter, a keyword containing a colon is treated as a tag name.
+Search text can consist of multiple keywords.
 
-```ls
-name-filter [tag-name-1:tag-value-2] [tag-name-2:tag-value-2]
-```
-
-The `*` wildcard is automatically appended to the `name-filter`, thereby including metrics with a name **starting** with the specified text.
-
-If the search expression contains a tag name, such tags are displayed in the results table.
+* Keywords containing a colon are treated as **tag** filters, for example `example-tag:example-value` finds metrics with tag `example-tag` set to `example-value`
+* Reserved keywords `min-date` and `max-date` filter entities by **last insert date** specified as literal date in `yyyy-MM-dd` or ISO [format](../shared/date-format.md) or as a [calendar keyword](../shared/calendar.md).
+* Remaining keywords match **metric names**.
 
 ## Wildcards
 
-* `*` matches any number of characters.
-* `?` matches any one character.
+Name patterns support the following wildcard symbols:
 
-## Match
+* `*` Matches any number of characters.
+* `?` Matches any one character.
 
-Metric names, tag names and tag values are matched in case-insensitive manner.
+Wildcard `*` is automatically appended to the end of name patterns when performing searches, thereby matching any metrics which contain a name that **begins** with the specified text.
+
+Multiple keywords are evaluated as boolean `AND` conditions.
+
+Metric names, tag names, and tag values are matched on a  **case-insensitive** basis.
 
 ## Examples
 
-* Find metrics starting with `cpu`
+* Find metrics which begin with keyword `cpu`:
 
-```ls
-cpu
-```
+  ```ls
+  cpu
+  ```
 
-* Find metrics starting with `cpu`
+  **Identical query**:
 
-```ls
-cpu*
-```
+  ```ls
+  cpu*
+  ```
 
-* Find metrics containing `cpu`
+* Find metrics which contain keyword `cpu`:
 
-```ls
-*cpu*
-```
+  ```ls
+  *cpu*
+  ```
 
-* Find metrics with tag `frequency` set to `Daily`
+* Find metrics with tag `frequency` set to `Daily`:
 
-```ls
-frequency:Daily
-```
+  ```ls
+  frequency:Daily
+  ```
 
-* Find metrics with any value for tag `frequency` (display `frequency` column)
+* Find metrics with any value for tag `frequency` and display `frequency` column:
 
-```ls
-frequency:*
-```
+  ```ls
+  frequency:*
+  ```
 
-* Find metrics with non-empty value for tag `frequency`
+* Find metrics with non-empty value for tag `frequency`:
 
-```ls
-frequency:
-```
+  ```ls
+  frequency:
+  ```
 
-* Find metrics starting with `cpu` **and** tag `frequency` set to `Daily`
+* Find metrics which begin with keyword `cpu` **and** contain tag `frequency` set to `Daily`:
 
-```ls
-cpu frequency:Daily
-```
+  ```ls
+  cpu frequency:Daily
+  ```
