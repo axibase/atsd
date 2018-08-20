@@ -101,5 +101,14 @@
         },
         {
             "pattern": "https://mesos.apache.org/documentation/latest/architecture/"
+        },
+        {
+            "pattern": "https://zookeeper.apache.org/"
+        },
+        {
+            "pattern": "https://mesos.apache.org/documentation/latest/docker-containerizer/"
+        },
+        {
+            "pattern": "https://mesos.apache.org/"
         }
     ]}
