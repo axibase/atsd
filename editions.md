@@ -28,6 +28,7 @@ Enterprise Edition supports a scale-out deployment model.
 | [Cluster replication](./administration/replication.md) |  | ![](./images/ok.svg) |
 | [Cloudera Distribution Hadoop](./installation/cloudera.md) |  | ![](./images/ok.svg) |
 | [AWS Elastic MapReduce](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
+| Pricing | [`$240/month`](pricing.md#standard-edition) | [`$960/month`](pricing.md#enterprise-edition) |
 
 ## Tools
 
