@@ -8,9 +8,9 @@ Supported algorithms for auto-regressive time series extrapolation are **Holt-Wi
 
 **Forecasting Example with Abnormal Deviation**:
 
-![](./resources/forecasts.png)
+![](./resources/forecasts-1.png)
 
-![](./resources/forecasts_2.png)
+![](./resources/forecasts-2.png)
 
 ## Reference
 
