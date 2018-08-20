@@ -38,7 +38,7 @@ Returns the most recent [message](../api/data/messages/query.md) record matching
 |`type`       |  string   | Message type. |
 |`source`       |  string   | Message source. |
 |`tags`          | object  | Object with `name=value` fields.<br>Matches records that contain tags specified in the request object.<br>The matching records can include additional tags, not listed in the object. |
-|`severity`     |  string   | Severity [name](../../../api/data/severity.md).  <br>Matches records with the specified severity.|
+|`severity`     |  string   | Severity [name](../api/data/severity.md).  <br>Matches records with the specified severity.|
 |`timestamp`   |  string   | Unix time with millisecond granularity of last message.|
 | `message` | string | Text of last message.
 | `date` | string | `null`.
