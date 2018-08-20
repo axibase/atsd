@@ -9,7 +9,7 @@ The metric search interface finds metrics by name or metric tag values.
 Search text can consist of multiple keywords.
 
 * Keywords containing a colon are treated as **tag** filters, for example `example-tag:example-value` finds metrics with tag `example-tag` set to `example-value`
-* Reserved keywords `min-date` and `max-date` filter entities by [ISO format](../shared/date-format.md) **last insert date**.
+* Reserved keywords `min-date` and `max-date` filter metrics by [ISO format](../shared/date-format.md) **last insert date**.
 * Remaining keywords match **metric names**.
 
 ```ls
