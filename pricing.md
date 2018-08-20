@@ -2,7 +2,7 @@
 
 ## Standard Edition
 
-ATSD Standard Edition (SE) is available on the following subscription plans.
+ATSD Standard Edition (SE) is available on the following subscription plans:
 
 | Server RAM |  Price per Month |
 |---|---:|
@@ -16,13 +16,13 @@ Subscription Terms:
 * Minimum subscription term: **1 month**.
 * Pricing based on annual billing. Add `30%` in case of monthly cycle.
 * **Unlimited** disk, CPU, read/write throughput, users, and series.
-* Included: term licenses, technical support, product upgrades.
+* Included: Term licenses, technical support, product upgrades.
 * Deployed by the customer on-premise or in the cloud.
 * Server RAM is the amount of memory allocated to the ATSD server.
 
 ## Enterprise Edition
 
-ATSD Enterprise Edition (SE) is available on the following subscription plans, as well as on the perpetual license.
+ATSD Enterprise Edition (SE) is available on the following subscription plan, as well as a Permanent License:
 
 | Price per Month |
 |---:|
@@ -35,11 +35,11 @@ Subscription Terms:
 * Minimum subscription term: **1 month**.
 * Pricing based on annual billing. Add `30%` in case of monthly cycle.
 * **Unlimited** memory, disk, CPU, read/write throughput, users, metrics, series.
-* Included: term licenses, technical support, product upgrades.
+* Included: Term licenses, technical support, product upgrades.
 * Deployed by the customer on-premise or in the cloud.
 * Total subscription charge is calculated by multiplying the above per-node fee by the number of nodes in the cluster.
 
-Perpetual License options available:
+Permanent License options available:
 
 * User-specified node count.
 * Single-node option.
@@ -54,4 +54,4 @@ Perpetual License options available:
 ## Other
 
 * Special terms available for **education**, **non-profit**, and **startup companies** with up to 100 employees.
-* Contact our [sales](https://axibase.com/feedback/) for a custom quote.
+* Contact our [sales team](https://axibase.com/feedback/) for a custom quote.
