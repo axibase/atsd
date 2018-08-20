@@ -1,41 +1,40 @@
 # Scheduled Exporting
 
-Scheduled exporting enables exporting of historical data and forecasts to the local file system in CSV or Excel formats, as well as delivery of produced reports to email subscribers.
+Scheduled exporting operations perform historial data and forecast export to a local file system in CSV or Excel formats, as well as the delivery of produced reports to email subscribers.
 
 ## Scheduled Exporting Settings
 
 ### Schedule
 
-Scheduled exporting can be controlled via `cron` expression. See [Scheduling](../shared/scheduling.md) for example and instructions about scheduling export jobs.
+Control scheduled export operations via `cron` expression. See [Scheduling](../shared/scheduling.md) for example and instructions about scheduling export jobs.
 
-Concurrent execution for the same job is not allowed.
+Concurrent executions for the same job are not allowed.
 
-Export job settings in the server.properties file:
+Export job settings are located in `/opt/atsd/atsd/conf/server.properties`:
 
-* `export.worker.count (default = 8)` – number of export jobs that can be executed at the same time
-* `export.worker.queue (default = 8)` – number of export jobs that can be queued for execution
+* `export.worker.count (default = 8)`: Number of simultaneously executable export jobs.
+* `export.worker.queue (default = 8)`: Number of export jobs that can be queued for execution.
 
-If new jobs are added for executing when the queue is full, such jobs are rejected.
+If a new job is queued for execution while the queue is already full, the job is rejected.
 
 ### Export Job Logging
 
-Each export job execution is logged in ATSD. Messages are saved to track the status. Below are their parameters.
+Each export job execution is logged in ATSD. Messages are saved to track the status. Logging parameters are enumerated below.
 
-The administrator can create rules to be informed if jobs are not executed according to schedule.
+The administrator can create rules to notify if a job is not executed according to schedule.
 
-`entity= atsd`
-common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
+`entity=atsd` common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 
-|  | Status | Severity | Name | Message | Start Time | End Time |
+|  Event | Status | Severity | Name | Message | Start Time | End Time |
 | --- | --- | --- | --- | --- | --- | --- |
-|  on job start  |  `status=started`  |  `severity=INFO`  |  `name={job_name}`  |  `message=Job started`  |  `start_time={start_time_iso}`  |  |
-|  on job complete  |  `status=complete`  |  `severity=INFO`  |  `name={job_name}`  |  `message=Job completed`  |  `start_time={start_time_iso}`  |  `end_time={start_time_iso}`  |
-|  on job queued  |  `status=queued`  |  `severity=WARN`  |  `name={job_name}`  |  `message=Job queued`  |  `start_time={start_time_iso}`  |  |
-|  on job blocked *  |  `status=blocked`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job blocked`  |  `start_time={start_time_iso}`  |  |
-|  on job rejected  |  `status=rejected`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job rejected`  |  `start_time={start_time_iso}`  |  |
-|  on job failed  |  `status=failed`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job failed`  |  `start_time={start_time_iso}`  |  `end_time={start_time_iso}`  |
+|  Job start  |  `status=started`  |  `severity=INFO`  |  `name={job_name}`  |  `message=Job started`  |  `start_time={start_time_iso}`  |  |
+|  Job complete  |  `status=complete`  |  `severity=INFO`  |  `name={job_name}`  |  `message=Job completed`  |  `start_time={start_time_iso}`  |  `end_time={start_time_iso}`  |
+|  Job queued  |  `status=queued`  |  `severity=WARN`  |  `name={job_name}`  |  `message=Job queued`  |  `start_time={start_time_iso}`  |  |
+|  Job blocked `*`  |  `status=blocked`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job blocked`  |  `start_time={start_time_iso}`  |  |
+|  Job rejected  |  `status=rejected`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job rejected`  |  `start_time={start_time_iso}`  |  |
+|  Job failed  |  `status=failed`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job failed`  |  `start_time={start_time_iso}`  |  `end_time={start_time_iso}`  |
 
-> * Raised when the job starts while the previous instance of the same job is still running.
+> `*` Raised when a job starts while the previous instance of the same job is still running.
 
 ### Dataset
 
@@ -43,20 +42,20 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 | --- | --- |
 |  Name  |  Export job name.  |
 |  Data Type  |  Type of data exported.<br>Allowed values: `History`, `Forecast`.  |
-|  Metric  |  Metric name for which data is exported. Data can be exported for one metric at a time.  |
-|  Entity  |  If selected, exported data is limited to the specified entity. Supersedes the **Entity Group** field.  |
-|  Entity Group  |  If selected, exported data is limited to entities contained in the specified entity group. Supersedes **Entity Expression** field.  |
-|  Entity Expression  |  An expression to filter selected data by entity name and entity tags. For example: `name LIKE 'nur*' AND tags.environment = 'prod'`  |
-|  Value Filter  |  Expression to fetch only detailed samples that satisfy a condition. For example, `value != 0`. Value Filter is applied before aggregation and therefore impacts aggregated statistics values. To filter deleted values, use the `Double.isNaN(value)` syntax.  |
-|  Selection Interval  |  Time frame of exported data. End of the Selection Interval can be optionally specified in End Time field. By default End Time is set to current time. Selection Interval setting is ignored if both Start Time and End Time fields are set.  |
-|  Start Time  |  Start time of the selection interval. This field supports [calendar](../shared/calendar.md) keywords, for example `previous_day`. If not defined, Start Time is calculated as End Time minus Selection Interval.  |
-|  End Time  |  End time of the selection interval. This field supports [calendar](../shared/calendar.md) keywords, for example `next_day`. If not defined, End Time is calculated as Start Time plus Selection Interval. If Start Time is not defined, End Time is set to current time.  |
-|  Versioning  |  Display value history for metric that is enabled for Versioning. Versioning is displayed only for detailed, non-aggregated, samples.  |
-|  Revisions Only  |  Filters displayed versions only for samples with values changes. Excludes samples without versions.  |
-|  Version Filter  |  Expression to filter value history (versions) by version value, status, source, or time. For example: `(version_status = 'Deleted' or version_source LIKE '*user*') AND value > 0`. To filter by version time, use the `date()` function. For example, `version_time > date('2015-08-11T16:00:00Z') or version_time > date('current_day')`. The `date()` function accepts [calendar](../shared/calendar.md) keywords.  |
+|  Metric  |  Metric name for which data is exported.<br>Data is exported for one metric at a time.  |
+|  Entity  |  If selected, exported data is limited to the specified entity.<br>Supersedes the **Entity Group** field.  |
+|  Entity Group  |  If selected, exported data is limited to entities contained in the specified entity group.<br>Supersedes **Entity Expression** field.  |
+|  Entity Expression  |  An expression to filter selected data by entity name and entity tags.<br>For example: `name LIKE 'nur*' AND tags.environment = 'prod'`  |
+|  Value Filter  |  Expression defines a condition for which to check when fetching detailed samples.<br>For example, `value != 0`.<br>Value Filter is applied before aggregation and therefore impacts aggregated statistics values.<br>To filter deleted values, use `Double.isNaN(value)` syntax.  |
+|  Selection Interval  |  Time period of exported data.<br>Optionally define the end of this period in the End Time field.<br>The default value is current time.<br>The Selection Interval setting is ignored if both the Start Time and End Time fields are set.  |
+|  Start Time  |  Start time of the selection interval.<br>This field supports [calendar](../shared/calendar.md) keywords, for example `previous_day`.<br>If not defined, Start Time is calculated as End Time minus Selection Interval.  |
+|  End Time  |  End time of the selection interval.<br>This field supports [calendar](../shared/calendar.md) keywords, for example `next_day`.<br>If not defined, End Time is calculated as Start Time plus Selection Interval.<br>If Start Time is not defined, End Time is set to current time.  |
+|  Versioning  |  Display value history for metrics with enabled Versioning.<br>Versioning is displayed only for detailed, non-aggregated samples.  |
+|  Revisions Only  |  Filters samples by versions with value changes.<br>Excludes samples without versions.  |
+|  Version Filter  |  Expression to filter value history (versions) by version value, status, source, or time.<br>For example: `(version_status = 'Deleted' or version_source LIKE '*user*') AND value > 0`.<br>To filter by version time, use the `date()` function.<br>For example, `version_time > date('2015-08-11T16:00:00Z') or version_time > date('current_day')`.<br>`date()` function accepts [calendar](../shared/calendar.md) keywords.  |
 |  Aggregate  |  Enable period aggregations based on selected detailed samples, after the optional Value Filter is applied.  |
 |  Aggregation Period  |  Period of time over which detailed samples are aggregated.  |
-|  Interpolation  |  Insert missing periods in aggregated results. The period is considered missing if it contains no detailed samples. Supported options: `STEP` – value of missing period equals value of the previous period; `LINEAR` – value is linearly interpolated between previous and next available value; `NONE` – missing periods are not inserted.  |
+|  Interpolation  |  Insert missing periods in aggregated results.<br>The period is considered missing if it contains no detailed samples.<br>Supported options:<br>`STEP` – Value of missing period equals value of the previous period.<br>`LINEAR` – Value is linearly interpolated between previous and next available value.<br>`NONE` – missing periods are not inserted.  |
 |  Aggregate Statistics  |  One or multiple aggregation functions: average, minimum, maximum, sum, count, standard deviation, weighted average, weighted time average, median (percentile 50), first, last, percentile 50/75/90/95/99/99.5/99.9, `MinValueTime`, `MaxValueTime`.  |
 
 ### Output
