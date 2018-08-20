@@ -22,7 +22,7 @@ Subscription Terms:
 
 ## Enterprise Edition
 
-ATSD Enterprise Edition (SE) is available on the following subscription plan, as well as a Permanent License:
+ATSD Enterprise Edition (SE) is available on the following subscription plan, as well as a Perpetual License:
 
 | Price per Month |
 |---:|
