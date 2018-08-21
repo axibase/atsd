@@ -32,7 +32,7 @@ The implemented smoothing functions - `AVG`, `WAVG`, `WTAVG`, and `EMA` - differ
 |:---|:---|:---|
 | `type` | string | **[Required]** Smoothing function.<br>Available functions: [`AVG`](#average), [`WAVG`](#weighted-average), [`WTAVG`](#weighted-time-average), [`EMA`](#exponential-moving-average). |
 | `count` | number | Number of samples in the count-based rolling window. |
-| `interval` | object | Duration of the time-based window specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 3, "unit": "HOUR"}`.|
+| `interval` | object | Duration of the time-based window specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 3, "unit": "HOUR"}`. <br>Allowed units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
 | `minimumCount` | number | Minimum number of samples in the window to apply the smoothing function.<br>Default value is `1` for time-based windows, and `count` for count-based windows.<br>If the window is incomplete (sample count is below minimum), the smoothing function returns `incompleteValue` for the current timestamp. |
 | `incompleteValue` | string | Number to return for the current timestamp if the sample count is below `minimumCount` (incomplete window). Possible values: `null` (default), `NaN`, or a constant numeric value. `null` values are omitted from the response.|
 
