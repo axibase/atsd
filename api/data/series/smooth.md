@@ -13,7 +13,7 @@ For each timestamp in the underlying series, the smoothed value is calculated in
 * A sequence of preceding samples up to the current timestamp is retrieved from the underlying series. This sequence ends with the current sample and is called a **rolling window**.
 * A new value at the current timestamp is calculated by applying a smoothing function to the retrieved sequence.
 
-The size of the rolling window is based on either time duration or the number of samples. Window size controlled by the `interval` and `count` settings. The smoothing function is defined in the `type` field.
+The size of the rolling window is based on either time duration or the number of samples. Window size is controlled by the `interval` and `count` settings.
 
 The example below calculates the simple moving average with a 15 minute rolling window.
 
