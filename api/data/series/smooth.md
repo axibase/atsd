@@ -31,8 +31,8 @@ The implemented smoothing functions - `AVG`, `WAVG`, `WTAVG`, and `EMA` - differ
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `type` | string | **[Required]** Smoothing function.<br>Available functions: [`AVG`](#average), [`WAVG`](#weighted-average), [`WTAVG`](#weighted-time-average), [`EMA`](#exponential-moving-average). |
-| `count` | number | Number of samples in the [count-based rolling window](#count-based-window). |
-| `interval` | object | Duration of the [time-based window](#time-based-window) specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count":3, "unit":"HOUR"}`.|
+| `count` | number | Number of samples in the count-based rolling window. |
+| `interval` | object | Duration of the time-based window specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 3, "unit": "HOUR"}`.|
 | `minimumCount` | number | Minimum number of samples in the window to apply the smoothing function.<br>Default value is `1` for time-based windows, and `count` for count-based windows.<br>If the window is incomplete (sample count is below minimum), the smoothing function returns `incompleteValue` for the current timestamp. |
 | `incompleteValue` | string | Number to return for the current timestamp if the sample count is below `minimumCount` (incomplete window). Possible values: `null` (default), `NaN`, or a constant numeric value. `null` values are omitted from the response.|
 
@@ -69,7 +69,11 @@ Calculates average value within rolling window. Sum of values divided by number 
 
 Window values:
 
-![window values](./images/n-values.png)
+![window values](./images/n-values-with-dot.svg)
+
+Calculation formula:
+
+![AVG formula](./images/avg.svg)
 
 ### Weighted Average
 
@@ -79,11 +83,11 @@ Calculates weighted average where the weight of the value equals sample index.
 
 Window values:
 
-![window values](./images/n-values.png)
+![window values](./images/n-values-with-dot.svg)
 
 Calculation formula:
 
-![WAVG formula](./images/wavg.png)
+![WAVG formula](./images/wavg.svg)
 
 ### Weighted Time Average
 
@@ -93,15 +97,13 @@ Calculates weighted average where the weight of the sample value is equal to the
 
 Window samples, with timestamps are measured in milliseconds:
 
-![window samples](./images/n-samples.png)
+![window samples](./images/n-samples-with-dot.svg)
 
 Calculation formula:
 
-![WTAVG formula](./images/wtavg.png)
+![WTAVG formula](./images/wtavg.svg)
 
-![WTAVG weight](./images/wtavg-weight.png)
-
-The function returns sample value `v1` if `n = 1`.
+The function returns sample value ![v one](./images/value-1.svg) if ![n equals 1](./images/n-equals-1.svg).
 
 ### Exponential Moving Average
 
@@ -120,33 +122,33 @@ Calculates [exponentially smoothed](https://en.wikipedia.org/wiki/Exponential_sm
 
 Input series samples:
 
-![series samples](./images/n-samples.png)
+![series samples](./images/n-samples-with-dot.svg)
 
 The smoothed series contains samples with the same timestamps:
 
-![smoothed series](./images/smoothed.png)
+![smoothed series](./images/smoothed.svg)
 
 * Calculations using `factor`
 
-    ![EMA first value](./images/ema1.png)
+    ![EMA first value](./images/ema1.svg)
 
-    ![EMA recurrent formula](./images/ema-evenly.png)
+    ![EMA recurrent formula](./images/ema-evenly.svg)
 
-    where ![alpha](./images/alpha.png) is the value of smoothing `factor`.
+    where ![alpha](./images/alpha.svg) is the value of smoothing `factor`.
 
 * Calculations using `range`
 
     The calculation applies the same formulas (1) and (2) using `factor` calculated based on series timestamps and the specified `range`:
 
-    ![EMA smoothing factor](./images/smoothingFactor.png)
+    ![EMA smoothing factor](./images/smoothingFactor.svg)
 
-    where ![range](./images/tau.png) is the value of `range`.
+    where ![range](./images/tau.svg) is the value of `range`.
 
     For regular series, `range` can be calculated from `factor`:
 
-    ![range through factor](./images/rangeViaFactor.png)
+    ![range through factor](./images/rangeViaFactor.svg)
 
-    where ![delta](./images/Delta.png) is the time interval between consecutive samples, measured in milliseconds.
+    where ![delta](./images/Delta.svg) is the time interval between consecutive samples, measured in milliseconds.
 
     If interval between samples is `1000` milliseconds, and smoothing factor is `0.5`, the `range` is `1443`.
 
