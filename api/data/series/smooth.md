@@ -6,16 +6,16 @@
 
 ## Overview
 
-Smoothing is a transformation that reduces the noise in an underlying time series. Unlike [period aggregation](aggregate.md) which returns a new regularized series, smoothing retains the original timestamps.
+Smoothing is a transformation that reduces the noise in an underlying time series. Unlike [period aggregation](aggregate.md) which returns a new regularized series, smoothing maintains the original timestamps.
 
 For each timestamp in the underlying series, the smoothed value is calculated in two steps:
 
 * A sequence of preceding samples up to the current timestamp is retrieved from the underlying series. This sequence ends with the current sample and is called a **rolling window**.
-* New value at the current timestamp is calculated by applying a smoothing function to the retrieved sequence.
+* A new value at the current timestamp is calculated by applying a smoothing function to the retrieved sequence.
 
-The size of the rolling window can be based on duration or the number of samples and is controlled with the `interval` and `count` settings. The smoothing function is set in the `type` field.
+The size of the rolling window is based on either time duration or the number of samples. Window size controlled by the `interval` and `count` settings. The smoothing function is defined in the `type` field.
 
-The example below calculates simple moving average using a 15-minute rolling window.
+The example below calculates the simple moving average with a 15 minute rolling window.
 
 ```json
 "smooth": {
@@ -24,21 +24,21 @@ The example below calculates simple moving average using a 15-minute rolling win
 }
 ```
 
-The implemented smoothing functions - `AVG`, `WAVG`, `WTAVG`, and `EMA` - differ by how they assign weight to samples in the sliding window. While simple average `AVG` assigns equal weight to all samples, the weighted average functions take the sample index or the distance between samples into account and typically assign greater weight to the most recent samples.
+There are four implemented smoothing functions: `AVG`, `WAVG`, `WTAVG`, and `EMA`. These functions differ in how they assign weight to samples in the sliding window. Simple average `AVG` assigns equal weight to all samples. Weighted average functions take the sample index or distance between samples into account and typically assign greater weight to more recent samples.
 
 ## Fields
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `type` | string | **[Required]** Smoothing function.<br>Available functions: [`AVG`](#average), [`WAVG`](#weighted-average), [`WTAVG`](#weighted-time-average), [`EMA`](#exponential-moving-average). |
-| `count` | number | Number of samples in the count-based rolling window. |
-| `interval` | object | Duration of the time-based window specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 3, "unit": "HOUR"}`. <br>Allowed units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
-| `minimumCount` | number | Minimum number of samples in the window to apply the smoothing function.<br>Default value is `1` for time-based windows, and `count` for count-based windows.<br>If the window is incomplete (sample count is below minimum), the smoothing function returns `incompleteValue` for the current timestamp. |
-| `incompleteValue` | string | Number to return for the current timestamp if the sample count is below `minimumCount` (incomplete window). Possible values: `null` (default), `NaN`, or a constant numeric value. `null` values are omitted from the response.|
+| `count` | number | Number of samples in a **count-based** rolling window. |
+| `interval` | object | Duration of a **time-based** window specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 3, "unit": "HOUR"}`. <br>Supported units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
+| `minimumCount` | number | Minimum number of samples in a window required to apply the smoothing function.<br>Default value is `1` for **time-based** windows, and `count` for **count-based** windows.<br>If a window is incomplete, the sample count is below minimum, the smoothing function returns `incompleteValue` for the current timestamp. |
+| `incompleteValue` | string | Number returned in an incomplete window for the current timestamp if the sample count is below `minimumCount`.<br>Possible values: `null` (default), `NaN`, or a constant numeric value.<br>`null` values are omitted from the response.|
 
 > Parameters `count` and `interval` are ignored by the `EMA` function which weighs all loaded samples.
 
-The longer the time window, the more smooth is the returned series.
+The longer the time window, the more smoothing is performed on the returned series.
 
 ![](./images/smooth-avg.png)
 
@@ -50,10 +50,10 @@ The ordered sequence is called the **rolling window** or a **sliding window**. I
 For each series sample the following steps are executed sequentially:
 
 1. If the sample value is `NaN`, include the sample in the response unchanged. Skip remaining steps.
-1. Append the sample at the end of the window.
+1. Append the sample to the end of the window.
 1. Remove outdated samples:
-   * For time-based windows. Remove any samples with timestamp equal or earlier than current timestamp minus the interval.
-   * For count-based windows. Remove the first (oldest) sample if window length exceeds `count`.
+   * For **time-based** windows: Remove any samples with timestamp equal to or earlier than the current timestamp minus the interval.
+   * For **count-based** windows: Remove the first (oldest) sample if window length exceeds `count`.
 1. If the number of samples is below `minimumCount`, return the value specified in the `incompleteValue` parameter.
 1. Return the value calculated by the smoothing function.
 
@@ -79,7 +79,7 @@ Calculation formula:
 
 `type = WAVG`
 
-Calculates weighted average where the weight of the value equals sample index.
+Calculates weighted average where the weight of the value equals the sample index.
 
 Window values:
 
@@ -93,9 +93,9 @@ Calculation formula:
 
 `type = WTAVG`.
 
-Calculates weighted average where the weight of the sample value is equal to the distance between the first timestamp and the sample timestamp.
+Calculates weighted average where the weight of the sample value is equal to the distance between the first timestamp and the current sample timestamp.
 
-Window samples, with timestamps are measured in milliseconds:
+Window samples, with timestamps measured in milliseconds:
 
 ![window samples](./images/n-samples-with-dot.svg)
 
@@ -103,7 +103,7 @@ Calculation formula:
 
 ![WTAVG formula](./images/wtavg.svg)
 
-The function returns sample value ![v one](./images/value-1.svg) if ![n equals 1](./images/n-equals-1.svg).
+The function returns sample value (![v one](./images/value-1.svg)) if ![n equals 1](./images/n-equals-1.svg).
 
 ### Exponential Moving Average
 
@@ -138,7 +138,7 @@ The smoothed series contains samples with the same timestamps:
 
 * Calculations using `range`
 
-    The calculation applies the same formulas (1) and (2) using `factor` calculated based on series timestamps and the specified `range`:
+    The calculation applies the same formulas `(1)` and `(2)`, using a `factor` calculated based on series timestamps and the specified `range`:
 
     ![EMA smoothing factor](./images/smoothingFactor.svg)
 
@@ -150,7 +150,7 @@ The smoothed series contains samples with the same timestamps:
 
     where ![delta](./images/Delta.svg) is the time interval between consecutive samples, measured in milliseconds.
 
-    If interval between samples is `1000` milliseconds, and smoothing factor is `0.5`, the `range` is `1443`.
+    If the interval between samples is `1000` milliseconds, and smoothing factor is `0.5`, the `range` is `1443`.
 
 #### References
 
