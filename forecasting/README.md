@@ -237,7 +237,7 @@ Load forecasts into charts by setting `data-type = forecast` in the `[series]` s
 List of widget and series settings applicable to forecast data:
 
 |Name|Description|Example|
-|---|---|---|---|
+|---|---|---|
 |`data-type`|Data type for the current series.<br>Possible values: `history`, `forecast`, `forecast_deviation`, `lower_confidence`, `upper_confidence`.<br><br>Example: `data-type = forecast`|[![](../images/button.png)](https://apps.axibase.com/chartlab/f80b8e53)|
 |`forecast-name`|Unique forecast identifier.<br>Useful when creating multiple forecasts for the same series.<br>Usually used to view imported forecasts generated with external tools.<br>If no forecast name is set, the default forecast is loaded.<br><br>Example: `forecast-name = hw5`|[![](../images/button.png)](https://apps.axibase.com/chartlab/92b7e471/3/)|
 |`forecast-style`|CSS styles applied to forecasts in `column` and `column-stack` modes.<br><br>Example: `forecast-style = stroke: magenta;`|[![](../images/button.png)](https://apps.axibase.com/chartlab/37c39d18/3/)|
