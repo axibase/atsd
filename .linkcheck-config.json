@@ -110,5 +110,35 @@
         },
         {
             "pattern": "https://mesos.apache.org/"
+        },
+        {
+            "pattern": "https://java.com/en/"
+        },
+        {
+            "pattern": "https://www.census.gov/2010census/data/"
+        },
+        {
+            "pattern": "https://www.uscis.gov/news/fact-sheets/naturalization-fact-sheet"
+        },
+        {
+            "pattern": "https://www.census.gov/main/www/cen2000.html"
+        },
+        {
+            "pattern": "http://www.aei.org/publication/team-obama-sorry-america-the-new-normal-may-be-here-to-stay/"
+        },
+        {
+            "pattern": "https://www.census.gov/foreign-trade/balance/country.xlsx"
+        },
+        {
+            "pattern": "https://www.census.gov/foreign-trade/balance/index.html"
+        },
+        {
+            "pattern": "https://www.state.gov/documents/organization/249770.pdf"
+        },
+        {
+            "pattern": "https://www.state.gov/s/d/rm/rls/perfrpt/2015/html/249727.htm"
+        },
+        {
+            "pattern": "https://www.oracle.com/technetwork/java/javase/9all-relnotes-3704433.html#JDK-8189131"
         }
     ]}
