@@ -8,7 +8,7 @@
 * [statsd](statsd/README.md)
 * [graphite](graphite/README.md)
 * [java-metrics](java-metrics/README.md)
-* [nmon](nmon/README.md)
+* [`nmon`](nmon/README.md)
 * [Axibase Collector](https://axibase.com/docs/axibase-collector)
 * [Spring Boot](spring-boot/README.md)
 
