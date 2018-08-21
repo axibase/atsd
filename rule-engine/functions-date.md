@@ -207,12 +207,14 @@ Parses the input string `d` into a [`DateTime`](object-datetime.md) object accor
 
 The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`.
+> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` and differs from the time zone (offset) `z`.
 
-Access fields of the `DateTime` object using the following functions:
+Access fields of the [`DateTime`](object-datetime.md#fields) object using dot notation:
 
 ```javascript
 date_parse("2018-01-13T16:45:22.303Z").day_of_week
+date_parse("2018-01-13T16:45:22.303Z").millis
+date_parse("2018-01-13T16:45:22.303Z").next_workday
 ```
 
 **Examples**:

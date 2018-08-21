@@ -109,10 +109,12 @@ convert(1000 * 1000, 'M') // 1.0
 ## `date_format`
 
 ```javascript
-date_format(long t [, string p, string z]) string
+date_format(long t [, string p [, string z]]) string
 ```
 
-Converts timestamp `t` to a string according to the specified [date pattern](../shared/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`. If the date pattern and the time zone are not specified, the input time `t` is formatted with the default ISO format in the UTC time zone.
+Converts timestamp `t` to a string according to the specified [date pattern](../shared/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`.
+If both the date pattern and the time zone are not specified, the input time `t` is formatted with the default ISO format in the UTC time zone.
+If time zone is not specified, the input time `t` is formatted using pattern `p` in server time zone.
 
 The input timestamp contains Unix time in milliseconds.
 
