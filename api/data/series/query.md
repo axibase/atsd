@@ -150,6 +150,7 @@ Examples:
 | [group](group.md) | Merge multiple series into one series. |
 | [rate](rate.md) | Compute difference between consecutive samples per unit of time (rate period). |
 | [aggregate](aggregate.md) | Group detailed values into periods and calculate statistics for each period. |
+| [smooth](smooth.md) | [Smooth](https://en.wikipedia.org/wiki/Smoothing) time series. |
 | [downsample](downsample.md) | Reduce time series cardinality by filtering out some samples. |
 
 The default processing sequence is as follows:
@@ -158,7 +159,8 @@ The default processing sequence is as follows:
 2. [group](group.md)
 3. [rate](rate.md)
 4. [aggregate](aggregate.md)
-5. [downsample](downsample.md)
+5. [smooth](smooth.md)
+6. [downsample](downsample.md)
 
 The [interpolate](interpolate.md) transformation, if requested, is applied to detailed data before the values are passed to subsequent stages.
 
