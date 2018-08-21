@@ -61,27 +61,28 @@ Notes:
 
 ## Date Fields
 
-**Name**|**Time Zone**|**Description**
+**Name**|**Data Type**|**Description**
 :---|---|:---
-`alert_open_time` | Server | Time when the window changed status to `OPEN`
-`alert_open_datetime` | UTC | Time when the window changed status to `OPEN`
-`received_time` | Server | Time when the current command is received by the server
-`received_datetime` | UTC | Time when the current command is received by the server
-`event_time` | Server | Time of the current command
-`event_datetime` | UTC | Time of the current command
-`window_first_time` | Server | Time of the earliest command in the window
-`window_first_datetime` | UTC | Time of the earliest command in the window
-`timestamp` | n/a | Time of the command that caused the window status event, in Unix time (milliseconds).
-`now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.
-`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
-`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
+`now` | `DateTime` | Current server time.
+`open_time` | `DateTime` | Time when the window changed status to `OPEN`, or when the condition evaluated to `true` for the first time.
+`repeat_time` | `DateTime` | Last time when the condition evaluated to `true`, equal to `open_time` when the status changes to `OPEN`.
+`cancel_time` | `DateTime` | Time when the window changed status to `CANCEL`, or when the condition evaluated to `false` for the first time.
+`change_time` | `DateTime` | Last time when the window changed status.
+`add_time` | `DateTime` | Last time when command was added to window.
+`remove_time` | `DateTime` | Last time when command was removed from the window.
+`update_time` | `DateTime` | Last time when command was added or removed from the window.
+`command_time` | `DateTime` | Time of the command that was last added or removed from the window.
+`command_first_time` | `DateTime` | Time of the command with the smallest timestamp in the window. `null` if the window is empty.
+`command_last_time` | `DateTime` | Time of the command with the largest timestamp in the window. `null` if the window is empty.
+`alert_duration` | `string` | Interval between current time and `open_time`, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
+`alert_duration_interval` | `string` | Interval between current time and `open_time`, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
 
 Notes:
 
-* Fields ending with `_time` contain time in server time zone, for example `2017-05-30 14:05:39 PST`.
-* Fields ending with `_datetime` contain time in ISO format in UTC time zone, for example `2017-05-30T06:05:39Z`.
-* If **Check On Exit** option is enabled for a time-based window, some of the events are caused by _exiting_ commands in which case the `timestamp` placeholder contains the time of the removed command (oldest command), rounded to seconds.
-> The [`now`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.day_of_week == 'Thursday'`.
+* [`DateTime`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.millis`.
+* `DateTime` object fields that begin with `command_` contain the command timestamps, otherwise the fields are set based on server time.
+* `DateTime` object fields can be `null` if the event has not yet occurred or if the window is empty.
+* If **Check On Exit** option is enabled and the status change is caused by a removed command, the `command_time` field contains the timestamp of the removed command (oldest command), rounded to seconds.
 
 ## Details Tables
 

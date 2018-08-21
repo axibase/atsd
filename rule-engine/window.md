@@ -48,7 +48,7 @@ Response actions can be triggered whenever window status changes as well as at s
 
 ### Status Events
 
-| Previous State | New Status | Previous Condition Value | New Condition Value | Trigger Name |
+| Previous Status | New Status | Previous Condition Value | New Condition Value | Trigger Name |
 | --- | --- | --- | --- | --- |
 | `CANCEL` | `OPEN` | `false` | `true` | `On Open` |
 | `OPEN`  | `REPEAT` | `true` | `true` | `On Repeat` |

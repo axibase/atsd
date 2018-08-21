@@ -22,9 +22,9 @@ To create a new `DateTime` object from Unix time in milliseconds, use the [`to_d
 
 ## Fields
 
-The table below enumerates available `DateTime` object fields and demonstrates the returned values for `2018-01-13T16:45:22.303Z` (Saturday).
+The table below enumerates available `DateTime` object fields and their values for `2018-01-13T16:45:22.303Z` (Saturday).
 
-|**Method**| **Value** |
+|**Method**| **Value for `2018-01-13T16:45:22.303Z`** |
 |:---|---:|
 |`day_of_week`|`Saturday`|
 |`year`|`2018`|
@@ -55,7 +55,7 @@ The table below enumerates available `DateTime` object fields and demonstrates t
 |`is_workday()`|`false`|
 |`is_workday('usa')`|`false`|
 
-`next_workday`, `previous_workday`, `next_non_working_day`, `previous_non_working_day` fields are based on the [workday calendar](workday-calendar.md) specified in `default.holiday.calendar` server property.
+Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` are calculated based on the [workday calendar](workday-calendar.md) specified in `default.holiday.calendar` server property.
 
 ## Window Fields
 
