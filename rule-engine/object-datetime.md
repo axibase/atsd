@@ -2,14 +2,14 @@
 
 ## Overview
 
-`DateTime` objects represent a specific date and time. The object provides fields and functions to extract various calendar units.
+`DateTime` objects represent a specific date and time. The object provides fields to extract various calendar units and functions to perform calendar arithmetic.
 
-Retrieve `DateTime` objects from [window fields](#window-fields) using syntax such as `now`, or by calling the [`to_datetime`](./functions-date.md#to_datetime) function.
+Retrieve `DateTime` objects from [window fields](#window-fields) such as `now` or `command_time`, or by instantiating new objects using [`to_datetime`](./functions-date.md#to_datetime) function.
 
-When printed as text, for example using placeholders such as `${now}`, a `DateTime` object is returned in [ISO format](../shared/date-format.md) with time zone information.
+When printed as text, a `DateTime` object is formatted as [ISO date](../shared/date-format.md) with additional time zone information.
 
-```text
-2018-08-17T15:13:16.946Z[Etc/UTC]
+```ls
+${now} --> 2018-08-17T15:13:16.946Z[Etc/UTC]
 ```
 
 ## Time Zone
