@@ -113,7 +113,7 @@ Calculates [exponentially smoothed](https://en.wikipedia.org/wiki/Exponential_sm
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `factor` | number | Smoothing factor. A number within the `(0, 1)` range.<br>A [smaller smoothing factor](https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_exponential_smoothing) decreases variance.<br>Default value: `0.5`|
+| `factor` | number | Smoothing factor. A number within the `(0, 1)` range.<br>A [smaller smoothing factor](https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_exponential_smoothing) decreases variance.<br>Default value: `0.25`|
 | `range` | number | Controls steepness of the smoothing function.<br> Typically used to smooth irregular series. <br>A larger range decreases variance.
 
 ![](./images/smooth-ema.png)
