@@ -45,21 +45,21 @@ Each window maintains a set of continuously updated fields which can be used in 
 Notes:
 
 * The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
-* Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
+* Alert `severity` value is inherited from message `severity` when **Logging: Severity** is set to **Undefined**.
 
 ## Properties Fields
 
 |**Name**|**Type**|**Description**|
 |---|---|---|
-| `type` | string | Property type (same as `tags.type`). |
-| `keys` | map | Property keys. To retrieve key value, use `keys.{name}`. |
-| `properties` | map | Property tags. To retrieve tag value, use `properties.{name}`. |
+| `type` | string | Property type, same as `tags.type`. |
+| `keys` | map | Property keys.<br>To retrieve key value, use `keys.{name}`. |
+| `properties` | map | Property tags.<br>To retrieve tag value, use `properties.{name}`. |
 
-Notes:
-
-* The `tags` field for the `property` command contains the `keys` map and the `type` field.
+> The `tags` field for the `property` command contains the `keys` map and the `type` field.
 
 ## Date Fields
+
+<!-- markdownlint-disable MD102 -->
 
 **Name**|**Data Type**|**Description**
 :---|---|:---
@@ -72,12 +72,14 @@ Notes:
 `remove_time` | `DateTime` | Last time when command was removed from the window.
 `update_time` | `DateTime` | Last time when command was added or removed from the window.
 `command_time` | `DateTime` | Time of the command that was last added or removed from the window.
-`command_first_time` | `DateTime` | Time of the command with the smallest timestamp in the window. `null` if the window is empty.
-`command_last_time` | `DateTime` | Time of the command with the largest timestamp in the window. `null` if the window is empty.
-`alert_duration` | `string` | Interval between current time and `open_time`, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
-`alert_duration_interval` | `string` | Interval between current time and `open_time`, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
+`command_first_time` | `DateTime` | Time of the command with the smallest timestamp in the window.<br>`null` if the window is empty.
+`command_last_time` | `DateTime` | Time of the command with the largest timestamp in the window.<br>`null` if the window is empty.
+`alert_duration` | `string` | Interval between current time and `open_time`, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.<br>Returns an empty string **On Open** status.
+`alert_duration_interval` | `string` | Interval between current time and `open_time`, formatted as `alert_duration` with units, for example `1m:45s`.<br>Returns an empty string **On Open** status.
 
-Notes:
+<!-- markdownlint-enable MD102 -->
+
+**Notes**:
 
 * [`DateTime`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.millis`.
 * `DateTime` object fields that begin with `command_` contain the command timestamps, otherwise the fields are set based on server time.

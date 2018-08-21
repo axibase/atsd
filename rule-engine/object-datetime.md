@@ -2,11 +2,11 @@
 
 ## Overview
 
-`DateTime` object represents a specific date and time. The object provides fields and functions to extract various calendar units.
+`DateTime` objects represent a specific date and time. The object provides fields and functions to extract various calendar units.
 
-The `DateTime` objects can be retrieved from [window fields](#window-fields) such as `now`, or be calling the [`to_datetime`](./functions-date.md#to_datetime) function.
+Retrieve `DateTime` objects from [window fields](#window-fields) using syntax such as `now`, or by calling the [`to_datetime`](./functions-date.md#to_datetime) function.
 
-When printed as text, for example using placeholders such as `${now}`, the `DateTime` object is formatted as ISO date with time zone information.
+When printed as text, for example using placeholders such as `${now}`, a `DateTime` object is returned in [ISO format](../shared/date-format.md) with time zone information.
 
 ```text
 2018-08-17T15:13:16.946Z[Etc/UTC]
@@ -14,7 +14,7 @@ When printed as text, for example using placeholders such as `${now}`, the `Date
 
 ## Time Zone
 
-By default, the `DateTime` object is initialized in **server** time zone.
+By default, a `DateTime` object is initialized in **server** time zone.
 
 To change the time zone of an existing `DateTime` object, invoke the [`to_timezone(tz)`](#to_timezone-function) function which returns a modified `DateTime` object in a custom [time zone](../shared/timezone-list.md).
 
@@ -88,9 +88,9 @@ now.add(1, 'hour')
 
 If count argument `c` is negative, the interval is subtracted from the current `DateTime` object.
 
-Fractional count argument `c` is rounded down to the nearest integer.
+Fractional count argument `c` is rounded **down** to the nearest integer.
 
-The [time unit](../api/data/series/time-unit.md) `u` is **case-insensitive** and supports both singular and plural forms of  units.
+The [time unit](../api/data/series/time-unit.md) `u` is **case-insensitive** and supports both singular and plural units (`hour`/`HOUR`/`hours`/`HOURS`).
 
 The new `DateTime` object inherits the time zone of the original object.
 
@@ -110,11 +110,11 @@ now.add(-10, 'years').day_of_week
 is_weekday( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object is a weekday.
-Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
-If country cannot be resolved by country code, returns `true` if day of week is not Saturday or Sunday.
-If country code is not specified, the database uses the `default.holiday.calendar` server property.
-By default `default.holiday.calendar` resolves country code from the `user.country` system property.
+* Returns `true` if the `DateTime` object is a weekday.
+* Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
+* If country cannot be resolved by country code, returns `true` if day of week is not Saturday or Sunday.
+* If country code is not specified, the database uses the `default.holiday.calendar` server property.
+* By default `default.holiday.calendar` resolves country code from the `user.country` system property.
 
 ### `is_weekend` Function
 
@@ -122,11 +122,11 @@ By default `default.holiday.calendar` resolves country code from the `user.count
 is_weekend( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object is a weekend day.
-Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
-If country cannot be resolved by country code, returns `true` if day of week is Saturday or Sunday.
-If country code is not specified, the database uses the `default.holiday.calendar` server property.
-By default `default.holiday.calendar` resolves country code from the `user.country` system property.
+* Returns `true` if the `DateTime` object is a weekend day.
+* Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
+* If country cannot be resolved by country code, returns `true` if day of week is Saturday or Sunday.
+* If country code is not specified, the database uses the `default.holiday.calendar` server property.
+* By default `default.holiday.calendar` resolves country code from the `user.country` system property.
 
 ### `is_workday` Function
 
@@ -134,9 +134,10 @@ By default `default.holiday.calendar` resolves country code from the `user.count
 is_workday( [string c] ) boolean
 ```
 
-Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](workday-calendar.md). Accepts optional calendar key parameter `c`. If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
-
-The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.
+* Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](workday-calendar.md).
+* Accepts optional calendar key parameter `c`.
+* If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
+* The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.
 
 ```javascript
 // returns true if average exceeds 10 on a working day, taking observed holidays into account
@@ -157,7 +158,7 @@ AND NOT now.add(2, 'day').is_workday()
 to_timezone(string tz) DateTime
 ```
 
-Returns a new `DateTime` object based on server time but modified to the specified [time zone](../shared/timezone-list.md) `tz`.
+* Returns a new `DateTime` object based on server time but modified to the specified [time zone](../shared/timezone-list.md) `tz`.
 
 ```javascript
 now.to_timezone('Europe/Berlin').next_workday
