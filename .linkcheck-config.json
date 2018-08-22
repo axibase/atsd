@@ -134,11 +134,8 @@
         },
         {
             "pattern": "https://www.state.gov/documents/organization/249770.pdf"
-        },
-        {
-            "pattern": "https://www.state.gov/s/d/rm/rls/perfrpt/2015/html/249727.htm"
-        },
-        {
-            "pattern": "https://www.oracle.com/technetwork/java/javase/9all-relnotes-3704433.html#JDK-8189131"
         }
+        ,{ "pattern": "https://www.state.gov/s/d/rm/rls/perfrpt/2015/html/249727.htm" }
+        ,{ "pattern": "https://www.oracle.com/technetwork/java/javase/9all-relnotes-3704433.html#JDK-8189131" }
+        ,{ "pattern": "https://www.panynj.gov/port/pdf/port-trade-statistics-summary-2001-2011.pdf" }
     ]}
