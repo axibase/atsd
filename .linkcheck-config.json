@@ -1,10 +1,10 @@
 {
     "ignorePatterns": [
         {
-            "pattern": "https://kafka.apache.org/"
+            "pattern": "https://.*\.apache.org"
         },
         {
-            "pattern": "https://himawari8.nict.go.jp/"
+            "pattern": "https://himawari8.nict.go.jp"
         },
         {
             "pattern": "https://catalog.data.gov/dataset/employment-figures-f55ae"
@@ -19,19 +19,10 @@
             "pattern": "https://www.maersk.com/en/hardware/triple-e"
         },
         {
-            "pattern": "https://aqicn.org/map/china/"
+            "pattern": "https://aqicn.org/map/china"
         },
         {
             "pattern": "https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"
-        },
-        {
-            "pattern": "http://activemq.apache.org"
-        },
-        {
-            "pattern": "http://activemq.apache.org/jmx.html"
-        },
-        {
-            "pattern": "https://db.apache.org/derby/"
         },
         {
             "pattern": "http://www.bom.gov.au:80/fwo/IDV60801/IDV60801.94693.json"
@@ -46,34 +37,7 @@
             "pattern": "https://catalog.data.gov/dataset/mva-vehicle-sales-counts-by-month-for-cy-2002-2015"
         },
         {
-            "pattern": "https://tomcat.apache.org/"
-        },
-        {
-            "pattern": "http://activemq.apache.org/jmx.html"
-        },
-        {
             "pattern": "https://java.sun.com/products/JavaManagement/download.html"
-        },
-        {
-            "pattern": "https://freemarker.apache.org/docs/ref_builtins_string.html#ref_builtin_split"
-        },
-        {
-            "pattern": "http://commons.apache.org/proper/commons-math/javadocs/api-3.3/org/apache/commons/math3/stat/correlation/PearsonsCorrelation.html"
-        },
-        {
-            "pattern": "https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeCsv%28java.io.Writer,%20java.lang.String%29"
-        },
-        {
-            "pattern": "https://commons.apache.org/proper/commons-dbcp/configuration.html"
-        },
-        {
-            "pattern": "https://hbase.apache.org/book.html#backuprestore"
-        },
-        {
-            "pattern": "https://hbase.apache.org/"
-        },
-        {
-            "pattern": "https://www.apache.org/licenses/LICENSE-2.0"
         },
         {
             "pattern": "https://apps.axibase.com/meters/"
@@ -100,18 +64,6 @@
             "pattern": "https://apps.axibase.com/performance/"
         },
         {
-            "pattern": "https://mesos.apache.org/documentation/latest/architecture/"
-        },
-        {
-            "pattern": "https://zookeeper.apache.org/"
-        },
-        {
-            "pattern": "https://mesos.apache.org/documentation/latest/docker-containerizer/"
-        },
-        {
-            "pattern": "https://mesos.apache.org/"
-        },
-        {
             "pattern": "https://java.com/en/"
         },
         {
@@ -127,7 +79,7 @@
             "pattern": "http://www.aei.org/publication/team-obama-sorry-america-the-new-normal-may-be-here-to-stay/"
         },
         {
-            "pattern": "https://www.census.gov/foreign-trade/balance/country.xlsx"
+            "pattern": "https://www.census.gov"
         },
         {
             "pattern": "https://www.census.gov/foreign-trade/balance/index.html"
@@ -139,8 +91,5 @@
         ,{ "pattern": "https://www.oracle.com/technetwork/java/javase/9all-relnotes-3704433.html#JDK-8189131" }
         ,{ "pattern": "https://www.panynj.gov/port/pdf/port-trade-statistics-summary-2001-2011.pdf" }
         ,{ "pattern": "https://www.airnowapi.org/" }
-        
-        
-        
        
     ]}
