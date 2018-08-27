@@ -27,7 +27,7 @@
 | 4798 | rule engine | Feature | Outgoing webhooks: add support for [proxy and reverse-proxy](../../rule-engine/notifications/README.md#network-settings) network connections to external cloud services. |
 | [4796](#issue-4796) | rule engine | Feature | Portal: add Freemarker functions to check user role and group membership. |
 | [4795](#issue-4795) | rule engine | Feature | Implement [`BETWEEN AND`](../../rule-engine/operators.md#text-operators) clause. |
-| [4794](#issue-4794) | rule engine | Feature | Implement [`random selector`](../../rule-engine/functions.md#distribution) functions. |
+| [4794](#issue-4794) | rule engine | Feature | Implement [`random selector`](../../rule-engine/functions.md#random) functions. |
 | [4793](#issue-4793) | rule engine | Feature | Implement statistical functions [with interval/count](../../rule-engine/functions.md#statistical): `avg('1 minute')`, `max(10)`. |
 | [4792](#issue-4792) | rule engine | Feature | Implement statistical functions [with conditions](../../rule-engine/functions.md#statistical): `countIf`, `sumIf`, `avgIf`. |
 | [4785](#issue-4785) | rule engine | Feature | Implement [`AWS SQS`](../../rule-engine/notifications/aws-sqs.md) notification. |
