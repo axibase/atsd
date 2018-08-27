@@ -8,15 +8,15 @@ These functions attach custom portals to outgoing webhooks. For instance, invoke
 
 ```javascript
 addPortal(string portal)
-addPortal(string portal, string entity / List<?> entities)
-addPortal(string portal, string entity / List<?> entities, string comment)
-addPortal(string portal, string entity / List<?> entities, string comment, [] additionalParams)
+addPortal(string portal, string entity / [object] entities)
+addPortal(string portal, string entity / [object] entities, string comment)
+addPortal(string portal, string entity / [object] entities, string comment, map additionalParams)
 ```
 
-* `portal` (**required**): Name of the pre-configured portal. If asterisk `*` is specified, all portals for the given entity are attached to the notification. If the portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, for example `tcollector - Linux` becomes `tcollectorlinux` and the function returns the first matching portal.
+* `portal` (**required**): Portal name. If wildcard `*` is specified, all portals for the given entity are attached to the notification. If the portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, for example `tcollector - Linux` becomes `tcollectorlinux` and the function returns the first matching portal.
 * `entity` or `entities`: Entities for which the portal is generated. Required if the portal type is [template](../portals/portals-overview.md#template-portals).
-  * `entity`: Entity name `string` is converted to `entity` URL parameter (`&entity=test_e`). If entity is not found by name, the entity is matched by case-insensitive label.
-  * `entities`: `List<?>` are converted to `entities` URL parameter as comma-separated list (`&entities=test_e,test_e1,test_e2`). If the element object type is `Entity`, the list consists of `entity.name` fields.
+  * `entity`: Entity name is converted to `entity` URL parameter (`&entity=test_e`). If entity is not found by name, the entity is matched by case-insensitive label.
+  * `entities`: `[object] entities` are converted to `entities` URL parameter as comma-separated list (`&entities=test_e,test_e1,test_e2`). If the element object type is `Entity`, the list consists of `entity.name` fields.
 * `comment`: Chart caption. If not specified or empty, a default caption is generated as `${portalName} for ${ifEmpty(entity_label, entity)}` and can be retrieved with special placeholder `$caption`. The default comment contains links to the portal, entity and rule for [Email](email.md) notifications, [Slack](notifications/slack.md) and [Discord](notifications/discord.md) webhooks.
 * `additionalParams`: Map with request parameters are passed to the template portal.
 

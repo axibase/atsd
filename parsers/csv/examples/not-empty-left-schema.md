@@ -11,7 +11,7 @@ Date;        Sensor Name;   Measurement;    10:00;  10:15;  10:30;   10:45
 ## Parser Settings
 
 `Timestamp Pattern:  yyyy-MM-ddHH:mm`      # Used to parse Measurement Time column values
-`Delimiter: Semicolon (;)`                     # Non-default delimiter
+`Delimiter: semi-colon (;)`                     # Non-default delimiter
 
 ## Schema
 

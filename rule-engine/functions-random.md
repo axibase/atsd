@@ -28,12 +28,12 @@ Returns a normally distributed double number, with a mean value of `0.0` and sta
 ## `randomItem`
 
 ```javascript
-randomItem([] c) string
+randomItem([object] c | map m) string
 ```
 
 Returns a random element from a collection or map using the **uniform** distribution.
 
-The probability of each element to be selected is `1/c.size()`.
+The probability of each element to be selected is `1/c.size()` or `1/m.size()` respectively.
 
 Returns the selected element converted to string format. For maps, the returned object is a `key-value` object.
 
@@ -80,14 +80,14 @@ randomItem(collection('oncall-person'))
 
 ### Key-Value Map
 
-`Key-value` maps are provided by the [`replacementTable`](functions-lookup.md#replacementtable) function.
+Key-value maps can be loaded with the [`replacementTable`](functions-lookup.md#replacementtable) function.
 
 > Replacement tables are listed on the **Data > Replacement Tables** page.
 
 Assuming the replacement table contains the following rows and the second entry is randomly selected:
 
 ```elm
-John Doe=(800) 555-0100
+John Doe  =(800) 555-0100
 Mary Jones=(800) 555-0200
 Jack Smith=(800) 555-0300
 ```
@@ -116,7 +116,7 @@ selKey = selItem.key
 ## `randomKey`
 
 ```javascript
-randomKey([] m) string
+randomKey(map m) string
 ```
 
 Returns a random element from the specified map `m` of objects using **uniform** distribution.

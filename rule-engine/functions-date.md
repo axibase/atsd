@@ -117,18 +117,18 @@ Returns time when the first command is received by the window, in Unix time with
 ### `milliseconds`
 
 ```javascript
-milliseconds(string d [,string p [,string z]]) long
+milliseconds(string date [,string pattern [,string zone]]) long
 ```
 
-Parses the date string `d` into Unix time with millisecond granularity according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the date string `date` into Unix time in milliseconds according to the specified [date pattern](../shared/time-pattern.md) `pattern` and [time zone](../shared/timezone-list.md) `zone` (or offset from UTC).
 
-Returns `0` if date `d` is `null` or empty.
+Returns `0` if `date` is `null` or empty.
 
 Available time zones and offsets are listed in [time zones](../shared/timezone-list.md).
 
 The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> Function raises an error if the time zone or offset from UTC is specified in the date string `d` and differs from the time zone or offset `z`.
+> Function raises an error if the time zone or offset from UTC is specified in the date string `date` and differs from the time zone or offset `zone`.
 
 **Example**:
 
@@ -141,28 +141,28 @@ timestamp - milliseconds(property('docker.container::startedAt')) >  5*60000
 ### `seconds`
 
 ```javascript
-seconds(string d [,string p [,string z]]) long
+seconds(string date [,string pattern [,string zone]]) long
 ```
 
-Provides the same arguments as the [`milliseconds`](#milliseconds) function with the result in Unix seconds instead of milliseconds.
+Accepts the same arguments as the [`milliseconds`](#milliseconds) function with the result in Unix time measured in seconds instead of milliseconds.
 
 ### `elapsedTime`
 
 ```javascript
-elapsedTime(long t) long
+elapsedTime(long time) long
 ```
 
 ```javascript
-elapsedTime(string d) long
+elapsedTime(string date) long
 ```
 
-Calculates the number of **milliseconds** between the current time and time `t` specified in milliseconds (Unix time) or date `d` specified in the following format:
+Calculates the number of **milliseconds** between the current time `time` specified as Unix time in milliseconds or date `date` specified in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
 ```
 
-Function returns `0` if the date `d` is `null` or empty.
+Function returns `0` if `date` is `null` or empty.
 
 **Example**:
 
@@ -186,28 +186,28 @@ formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 ### `elapsed_minutes`
 
 ```javascript
-elapsed_minutes(long t) long
+elapsed_minutes(long time) long
 ```
 
 ```javascript
-elapsed_minutes(string d) long
+elapsed_minutes(string date) long
 ```
 
-Calculates the number of **minutes** between the current time and time `t` or date `d`.
+Calculates the number of **minutes** between the current Unix time `time` in milliseconds or date `date`.
 
 Returns the same result as the `elapsedTime` function divided by `60000`.
 
 ### `date_parse`
 
 ```javascript
-date_parse(string d [,string p [,string z]]) DateTime
+date_parse(string date [,string pattern [,string zone]]) DateTime
 ```
 
-Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) `p` and [time zone](../shared/timezone-list.md) `z` or offset from UTC.
+Parses the input string `date` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) `pattern` and [time zone](../shared/timezone-list.md) `zone` or offset from UTC.
 
 The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> The function raises an error if the time zone (or offset from UTC) is specified in the date string `d` and differs from the time zone (offset) `z`.
+> The function raises an error if the time zone (or offset from UTC) is specified in `date` and differs from the time zone (offset) `zone`.
 
 Access fields of the [`DateTime`](object-datetime.md#fields) object using dot notation:
 
@@ -263,11 +263,11 @@ date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS Z
 ### `to_datetime`
 
 ```javascript
-to_datetime(long t [, string tz]) DateTime
+to_datetime(long time [, string zone]) DateTime
 ```
 
-Returns [`DateTime`](object-datetime.md) object initialized from Unix time in milliseconds `t` in the  **server** time zone.
-If the optional [time zone](../shared/timezone-list.md) argument `tz` is specified, the `DateTime` is initialized in the user-defined time zone.
+Returns [`DateTime`](object-datetime.md) object initialized from Unix time in milliseconds `time` in the  **server** time zone.
+If the optional [time zone](../shared/timezone-list.md) argument `zone` is specified, the `DateTime` is initialized in the user-defined time zone.
 
 **Example**:
 

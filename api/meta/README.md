@@ -70,7 +70,7 @@ Cross-domain requests are allowed.
 * To validate JSON received from a client, launch the `netcat` utility in server mode, reconfigure the client to send data to `netcat` port, and dump the incoming data to file:
 
 ```bash
-nc -lk localhost 20088 > json-in.log &
+nc -lk -p 20088 > json-in.log &
 ```
 
 ```bash

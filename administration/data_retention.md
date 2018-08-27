@@ -201,7 +201,7 @@ The expired data is deleted from the database on a schedule which is synchronize
 
 ![](./images/retention-scheduled-tasks.png)
 
-The optimal sequence of tasks is as follows:
+The optimal sequence of tasks is:
 
 1. `delete.schedule`
 2. `expired.series.removal.schedule`

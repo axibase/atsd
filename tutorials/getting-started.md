@@ -141,7 +141,7 @@ Open **Metrics** from the left menu and search for `temperature`. The search bar
 
 The **Metric Editor** provides more built-in fields than those available for entities because the concept of a metric is shared by many domains. As such, a more diverse range of fields such as units, precision, and seasonality are commonly required, among others.
 
-Set **Label** to `Temperature` and set the remaining fields as follows:
+Set **Label** to `Temperature` and set the remaining fields:
 
 ```elm
 units = Celsius

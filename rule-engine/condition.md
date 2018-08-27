@@ -8,7 +8,7 @@ The expression can include command fields, literal values, window/entity/metric 
 
 When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of **On Open** triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of `On Cancel` triggers.
 
-Note that [`Overrides`](overrides.md) take precedence over the condition.
+[`Overrides`](overrides.md) take precedence over the condition.
 
 ## Fields
 
@@ -33,7 +33,7 @@ Refer to [operators](operators.md).
 
 ## Collections
 
-The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](functions.md#lookup) functions.
+The collections (lists of items) can be defined inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](functions.md#lookup) functions.
 
 ## Functions
 
@@ -109,18 +109,22 @@ The condition is `true` when all values in the window are equal `50`.
 max() - min() = 0 && avg() = 50
 ```
 
-### Multiple Metrics
+### Calculated Metrics
 
-If metrics are submitted with the same `series` command, their last value can be accessed with the [`value(string n)`](functions-value.md) function.
+If multiple metrics are submitted with the same `series` command, their last value can be accessed with the [`value(str metric)`](functions-value.md) function.
 
 ```javascript
 value > 90 AND value('disk_used') < 1000000000
 ```
 
-Alternatively, the metric last value can be retrieved with the [`db_last`](functions-series.md#db_laststring-m) and [`db_statistic`](functions-series.md#db_statistic) functions.
+Alternatively, the metric value can be retrieved with the [`db_last`](functions-series.md#db_last) and [`db_statistic`](functions-series.md#db_statistic) functions.
 
 ```javascript
 value > 90 AND db_last('io_nodes_used_precent') < 80
+```
+
+```javascript
+avg() > 90 AND db_statistic('avg', '15 minute', 'io_nodes_used_precent') < 80
 ```
 
 ### Schedule-based (Time condition)

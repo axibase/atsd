@@ -56,34 +56,34 @@ Converts string `s` to lowercase letters.
 ## `truncate`
 
 ```javascript
-truncate(string s, integer i) string
+truncate(string s, integer maxLength) string
 ```
 
-Truncates `s` to the specified number of characters and returns the string as the result if string `s` length exceeds `i` characters.
+Truncates `s` to the specified number of characters and returns the string as the result if string `s` length exceeds `maxLength` characters.
 
 ## `startsWith`
 
 ```javascript
-startsWith(string s, string w) boolean
+startsWith(string s, string pfx) boolean
 ```
 
-Returns `true` if `s` starts with `w`.
+Returns `true` if `s` starts with `pfx` prefix.
 
 ## `endsWith`
 
 ```javascript
-endsWith(string s, string w) boolean
+endsWith(string s, string sfx) boolean
 ```
 
-Returns `true` if `s` ends with `w`.
+Returns `true` if `s` ends with `sfx`.
 
 ## `split`
 
 ```javascript
-split(string s, string p) [string]
+split(string s, string sep) [string]
 ```
 
-Splits string `s` into a collection of strings using separator `p`.
+Splits string `s` into a collection of strings using separator `sep`.
 
 ```javascript
 // Returns ['Hello', 'world']
@@ -109,10 +109,10 @@ authors.size() == 0 ? 'n/a' : authors[0]
 ## `list`
 
 ```javascript
-list(string s[, string p]) [string]
+list(string s[, string sep]) [string]
 ```
 
-Splits string `s` using separator `p` (default is comma ',') into an array of string values, discards duplicate items by retaining only the first occurrence of each element.
+Splits string `s` using separator `sep` (default is comma ',') into an array of string values, discards duplicate items by retaining only the first occurrence of each element.
 
 Unlike the `split()` function, `list()` does not support double quotes as escape characters.
 
@@ -143,12 +143,12 @@ ifEmpty(tags.location, 'N/A')
 ## `coalesce`
 
 ```javascript
-coalesce([string] c) string
+coalesce([string] strColl) string
 ```
 
-Returns first non-empty string from the collection or array of strings `c`.
+Returns first non-empty string from the collection of strings `strColl`.
 
-Returns an empty string if all elements of `c` are `null` or empty.
+Returns an empty string if all elements of `strColl` are `null` or empty.
 
 Examples:
 
@@ -171,86 +171,86 @@ coalesce([entity.label, entity])
 ## `keepAfter`
 
 ```javascript
-keepAfter(string s, string p) string
+keepAfter(string s, string sub) string
 ```
 
-Removes part of the string `s` before the first occurrence of the given substring `p`.
+Removes part of the string `s` before the first occurrence of the given substring `sub`.
 
-Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
+Returns the original string `s` unchanged, if `sub` is empty or `null` or if `sub` is not found.
 
 Example:
 
 ```javascript
 // Returns 'new.world'
-keepAfter("hello.new.world", ".")
+keepAfter('hello.new.world', '.')
 ```
 
 ## `keepAfterLast`
 
 ```javascript
-keepAfterLast(string s, string p) string
+keepAfterLast(string s, string sub) string
 ```
 
-Removes the part of string `s` before the last occurrence of the given substring `p`.
+Removes the part of string `s` before the last occurrence of the given substring `sub`.
 
-Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
+Returns the original string `s` unchanged, if `sub` is empty or `null` or if `sub` is not found.
 
 Example:
 
 ```javascript
 // Returns 'world'
-keepAfterLast("hello.new.world", ".")
+keepAfterLast('hello.new.world', '.')
 ```
 
 ## `keepBefore`
 
 ```javascript
-keepBefore(string s, string p) string
+keepBefore(string s, string sub) string
 ```
 
-Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
+Removes part of the string `s` that starts with the first occurrence of the given substring `sub`.
 
-Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
+Returns the original string `s` unchanged, if `sub` is empty or `null` or if `sub` is not found.
 
 Example:
 
 ```javascript
 // Returns 'hello'
-keepBefore("hello.new.world", ".")
+keepBefore('hello.new.world', '.')
 ```
 
 ## `keepBeforeLast`
 
 ```javascript
-keepBeforeLast(string s, string p) string
+keepBeforeLast(string s, string sub) string
 ```
 
-Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
+Removes part of the string `s` that starts with the last occurrence of the given substring `sub`.
 
-Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
+Returns the original string `s` unchanged, if `sub` is empty or `null` or if `sub` is not found.
 
 Example:
 
 ```javascript
 // Returns 'hello.new'
-keepBeforeLast("hello.new.world", ".")
+keepBeforeLast('hello.new.world', '.')
 ```
 
 ## `replace`
 
 ```javascript
-replace(string s, string p, string r) string
+replace(string s, string sub, string rep) string
 ```
 
-Replaces all occurrences of the given substring `p` in the original string `s` with a second substring `r`.
+Replaces all occurrences of the given substring `sub` in the original string `s` with a second substring `rep`.
 
-Returns the original string `s` unchanged, if `p` is empty or `null` or if `p` is not found.
+Returns the original string `s` unchanged, if `sub` is empty or `null` or if `sub` is not found.
 
 Examples:
 
 ```javascript
 // Returns 'hello.ne2.2orld'
-replace("hello.new.world", "w", "2")
+replace('hello.new.world', 'w', '2')
 ```
 
 ## `capFirst`
@@ -265,7 +265,7 @@ Example:
 
 ```javascript
 // Returns 'Hello world'
-capFirst("hello world")
+capFirst('hello world')
 ```
 
 ## `capitalize`
@@ -280,45 +280,45 @@ Example:
 
 ```javascript
 // Returns 'Hello World'
-capitalize("hello world")
+capitalize('hello world')
 ```
 
 ## `removeBeginning`
 
 ```javascript
-removeBeginning(string s, string r) string
+removeBeginning(string s, string pfx) string
 ```
 
-Removes substring `r` from the beginning of string `s`.
+Removes substring `pfx` from the beginning of string `s`.
 
 Examples:
 
 ```javascript
 // Returns 'llo world'
-removeBeginning("hello world", "he")
+removeBeginning('hello world', 'he')
 ```
 
 ```javascript
 // Returns 'hello world'
-removeBeginning("hello world", "be")
+removeBeginning('hello world', 'be')
 ```
 
 ## `removeEnding`
 
 ```javascript
-removeEnding(string s, string r) string
+removeEnding(string s, string sfx) string
 ```
 
-Removes given substring `r` from the end of string `s`.
+Removes given substring `sfx` from the end of string `s`.
 
 ```javascript
 // Returns 'hello wor'
-removeEnding("hello world", "ld")
+removeEnding('hello world', 'ld')
 ```
 
 ```javascript
 // Returns 'hello world'
-removeEnding("hello world", "LD")
+removeEnding('hello world', 'LD')
 ```
 
 ## `urlencode`
@@ -327,11 +327,11 @@ removeEnding("hello world", "LD")
 urlencode(string s) string
 ```
 
-Replaces special characters in string `s` with URL-safe characters using percent-encoding ("%" followed by 2 digits).
+Replaces special characters in string `s` with URL-safe characters using percent-encoding (`%` followed by `2` digits).
 
 ```javascript
 // Returns 'hello%20world'
-urlencode("hello world")
+urlencode('hello world')
 ```
 
 ## `jsonencode`
@@ -354,7 +354,7 @@ Example:
 
 ```javascript
 // Returns 'hello > world'
-htmlDecode("hello &gt; world")
+htmlDecode('hello &gt; world')
 ```
 
 ## `unquote`
@@ -373,91 +373,91 @@ unquote('"hello world"')
 ## `countMatches`
 
 ```javascript
-countMatches(string s, string p) int
+countMatches(string s, string sub) int
 ```
 
-Counts how many times the substring `p` appears in input string `s`.
+Counts how many times the substring `sub` appears in input string `s`.
 
 Example:
 
 ```javascript
 // Returns 2
-countMatches("hello world", "o")
+countMatches('hello world', 'o')
 ```
 
 ## `abbreviate`
 
 ```javascript
-abbreviate(string s, integer n) string
+abbreviate(string s, integer maxLength) string
 ```
 
-Truncates string `s` using ellipses to hide extraneous text. `n` is the maximum length of the output string.
+Truncates string `s` using ellipses to hide extraneous text. `maxLength` is the maximum length of the output string.
 
 The minimum length of the output string is `4` characters: `1` character is string `s` plus `3` characters used for ellipses (`...`).
 
-Integer `n` must be set greater than 3 otherwise an exception is raised.
+Integer `maxLength` must be set greater than `3` otherwise an exception is raised.
 
 ```javascript
 // Returns 'hel...'
-abbreviate("hello world", 6)
+abbreviate('hello world', 6)
 ```
 
 ```javascript
 // Returns 'hello...'
-abbreviate("hello world", 8)
+abbreviate('hello world', 8)
 ```
 
 ```javascript
 // Returns 'hello world'
-abbreviate("hello world", 100)
+abbreviate('hello world', 100)
 ```
 
 ```javascript
 // IllegalArgumentException
-abbreviate("abcdefg", 3)
+abbreviate('abcdefg', 3)
 ```
 
 ## `indexOf`
 
 ```javascript
-indexOf(string s, string p[, int i]) integer
+indexOf(string s, string sub[, int index]) integer
 ```
 
-Returns the integer index starting with `0` of the first occurrence of substring `p` contained in string `s` starting with index `i`.
+Returns the integer index starting with `0` of the first occurrence of substring `sub` contained in string `s` starting with `index`.
 
-Returns `-1` if the substring `p` is not found.
+Returns `-1` if the substring `sub` is not found.
 
 Examples:
 
 ```javascript
 // Returns 0
-indexOf("hello world", "h")
+indexOf('hello world', 'h')
 ```
 
 ```javascript
 // Returns -1
-indexOf("hello world", "Z")
+indexOf('hello world', 'Z')
 ```
 
 ```javascript
 // Returns 8
-indexOf("hello world", "o", 5)
+indexOf('hello world', 'o', 5)
 ```
 
 ```javascript
 // Returns -1
-indexOf("hello world", "o", 10)
+indexOf('hello world', 'o', 10)
 ```
 
 ## `locate`
 
 ```javascript
-locate(string s, string p[, int i]) integer
+locate(string s, string sub[, int index]) integer
 ```
 
-Returns the integer index starting with `0` of the first occurrence of substring `p` contained in string `s` starting with index `i`.
+Returns the integer index starting with `0` of the first occurrence of substring `sub` contained in string `s` starting with `index`.
 
-Returns `-1` if the substring `p` is not found.
+Returns `-1` if the substring `sub` is not found.
 
 ## `trim`
 
@@ -483,13 +483,13 @@ Returns the length of string `s`. If string `s` is `null`, function returns -1.
 ## `concat`
 
 ```javascript
-concat([string] c [, string s]) string
+concat([string] strColl [, string sep]) string
 ```
 
-Joins the elements of the collection `c` into a single string containing the elements separated by the optional delimiter `s`.
+Joins the elements of the collection `strColl` into a single string containing the elements separated by the optional separator `sep`.
 
-* The default delimiter is comma (`,`).
-* The delimiter is inserted between the elements.
+* The default separator is comma (`,`).
+* The separator is inserted between the elements.
 * `null` objects or empty strings within the collection are represented by empty strings.
 
 ```javascript
@@ -505,10 +505,10 @@ concat(['a', null, 'b'], '-')
 ## `concatLines`
 
 ```javascript
-concatLines([string] c) string
+concatLines([string] strColl) string
 ```
 
-Joins the elements of the collection `c` into a single string containing the elements separated by line breaks `\n`.
+Joins the elements of the collection `strColl` into a single string containing the elements separated by line breaks `\n`.
 
 * `null` objects or empty strings within the collection are represented by empty lines.
 

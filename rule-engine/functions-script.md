@@ -525,7 +525,7 @@ Python [script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engin
 #### Function
 
 ```javascript
-${scriptOut('daily_referer_requests.py', [])}
+${scriptOut('daily_referer_requests.py')}
 ```
 
 #### Command

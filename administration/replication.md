@@ -191,9 +191,9 @@ Output contains a list of ATSD tables, all starting with `atsd_`.
 
 ## Replication for New Tables
 
-New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as follows:
+New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as described below.
 
-> MASTER: Only complete this process on the master machine.
+> MASTER: Only complete this process on the MASTER server.
 
 Write the table schema to a file:
 

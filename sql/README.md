@@ -75,7 +75,7 @@ WHERE datetime >= '2017-06-15T00:00:00Z'    -- WHERE clause
   LIMIT 1                          -- other clauses
 ```
 
-The statement can end with a semicolon character.
+The statement can end with a semi-colon character.
 
 ### Processing Sequence
 
@@ -539,7 +539,7 @@ WHERE datetime >= CURRENT_HOUR
 
 An `entity.groups` column contains a list of entity groups to which the entity belongs.
 
-The column can be specified in the `SELECT` expression to print out the ordered list of entity group names, separated by semi-colons.
+The column can be specified in the `SELECT` expression to print out the ordered list of entity group names, separated by semi-colon.
 
 ```sql
 SELECT datetime, entity, value, entity.groups

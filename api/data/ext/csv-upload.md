@@ -91,10 +91,10 @@ The response contains a JSON object containing parsing results.
 | `fileCount` | File count. The count can be greater than `1` if the uploaded file is an archive. |
 | `fileSize` | Size of the uploaded file, in bytes. |
 
-In case of error, the response object is returned as follows:
+In case of error, the response object includes error information.
 
 ```json
-{"error":"IllegalArgumentException: Configuration with name = 'parser-12' not found"}
+{ "error": "IllegalArgumentException: Configuration with name = 'parser-12' not found" }
 ```
 
 ## Processing

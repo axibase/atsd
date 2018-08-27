@@ -16,44 +16,44 @@ These functions check user permissions as part of the rule notification logic an
 
 The boolean functions below return `true` if the user is valid and allowed to execute the given action. Otherwise, the function returns `false`.
 
-As an alternative to `if/else` syntax, set the optional `err` parameter to `true`, which causes the function to stop processing altogether in case of insufficient permissions.
+As an alternative to `if/else` syntax, set the optional `err` parameter to `true`, which causes the function to raise error and stop processing altogether in case of insufficient permissions.
 
 ## `userInGroup`
 
 ```javascript
-userInGroup(string u, string g [, boolean err]) boolean
+userInGroup(string user, string group [, boolean err]) boolean
 ```
 
-Returns `true` if the user `u` exists, is enabled, and belongs to the specified user group `g`.
+Returns `true` if the `user` exists, is enabled, and belongs to the specified user `group`.
 
 ## `userHasRole`
 
 ```javascript
-userHasRole(string u, string r [, boolean err]) boolean
+userHasRole(string user, string role [, boolean err]) boolean
 ```
 
-Returns `true` if the user `u` exists, is enabled, and has the specified role [`r`](../administration/user-authorization.md#role-based-access-control).
+Returns `true` if the `user` exists, is enabled, and has the specified [`role`](../administration/user-authorization.md#role-based-access-control).
 
 ## `userAllowEntity`
 
 ```javascript
-userAllowEntity(string u, string e [, boolean err]) boolean
+userAllowEntity(string user, string entity [, boolean err]) boolean
 ```
 
-Returns `true` if the user `u` exists, is enabled, has [READ](../administration/user-authorization.md#entity-permissions) permission for the specified entity `e`.
+Returns `true` if the `user` exists, is enabled, and has [`READ`](../administration/user-authorization.md#entity-permissions) permission for the specified `entity`.
 
 ## `userAllowEntityGroup`
 
 ```javascript
-userAllowEntityGroup(string u, string g [, boolean err]) boolean
+userAllowEntityGroup(string user, string entityGroup [, boolean err]) boolean
 ```
 
-Returns `true` if the user `u` exists, is enabled, and has [READ](../administration/user-authorization.md#entity-permissions) permission to the specified entity group `g`.
+Returns `true` if the `user` exists, is enabled, and has [`READ`](../administration/user-authorization.md#entity-permissions) permission to the specified `entityGroup`.
 
 ## `userAllowPortal`
 
 ```javascript
-userAllowPortal(string u, string p [, boolean err]) boolean
+userAllowPortal(string user, string portal [, boolean err]) boolean
 ```
 
-Returns `true` if the user `u` exists, is enabled, and has permissions to view the specified portal `p`.
+Returns `true` if the user `user` exists, is enabled, and has permissions to view the specified `portal`.

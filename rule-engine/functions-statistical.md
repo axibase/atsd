@@ -156,13 +156,13 @@ first() double
 
 Returns first series value. Same as `first(0)`.
 
-## `first(integer i)`
+## `first(integer index)`
 
 ```javascript
-first(integer i) double
+first(integer index) double
 ```
 
-Returns `i`-th value from start. First value has index of `0`.
+Returns `n`-th value from start. First value has index of `0`.
 
 ## `last`
 
@@ -172,13 +172,13 @@ last() double
 
 Returns last value. Same as `last(0)`.
 
-## `last(integer i)`
+## `last(integer index)`
 
 ```javascript
-last(integer i) double
+last(integer index) double
 ```
 
-Returns `i`-th value from final value. Last value has index of `0`.
+Returns `n`-th value from last value. Last value has index of `0`.
 
 ## `diff`
 
@@ -196,15 +196,15 @@ diff(integer i) double
 
 Calculates difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
 
-## `diff(string i)`
+## `diff(string interval)`
 
 ```javascript
-diff(string i) double
+diff(string interval) double
 ```
 
 Calculates difference between the last value and value at `currentTime - interval`.
 
-Interval `i` specified as `count unit`, for example `5 minute`.
+`interval` specified as `count unit`, for example `5 minute`.
 
 ## `delta`
 
@@ -241,10 +241,10 @@ Forecasts the number of minutes until the sample value reaches the specified thr
 ## `threshold_linear_time`
 
 ```javascript
-threshold_linear_time(double t) double
+threshold_linear_time(double threshold) double
 ```
 
-Forecasts the number of minutes until the sample value reaches the specified threshold `t` based on linear extrapolation.
+Forecasts the number of minutes until the sample value reaches the specified `threshold` based on linear extrapolation.
 
 ## `rate_per_second`
 
@@ -305,10 +305,10 @@ Calculates `slope_per_second()/3600`.
 ## `countIf`
 
 ```javascript
-countIf(string c [, string i | integer n]) long
+countIf(string condition [, string interval | integer n]) long
 ```
 
-Counts elements matching the specified condition `c` within interval `i` or within the last `n` samples.
+Counts elements matching the specified `condition` within `interval` or within the last `n` samples.
 
 Examples:
 
@@ -325,25 +325,25 @@ countIf('value > 5', 10)
 ## `avgIf`
 
 ```javascript
-avgIf(string c [, string i | integer n]) double
+avgIf(string condition [, string interval | integer n]) double
 ```
 
-Calculates average of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
+Calculates average of elements matching the specified `condition` within `interval` or within the last `n` samples.
 
 ## `sumIf`
 
 ```javascript
-sumIf(string c [, string i | integer n]) double
+sumIf(string condition [, string interval | integer n]) double
 ```
 
-Sums elements matching the specified condition `c` within interval `i` or within the last `n` samples.
+Sums elements matching the specified `condition` within `interval` or within the last `n` samples.
 
 ## Interval Selection
 
-By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `c` or interval `i` - in which case the function calculates the result based on the most recent samples.
+By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `n` or `interval` - in which case the function calculates the result based on the most recent samples.
 
 ```javascript
-avg([string i | integer c]) double
+avg([string interval | integer n]) double
 ```
 
 * `avg(5)`: Average value for the last 5 samples.

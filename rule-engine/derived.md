@@ -24,7 +24,7 @@ Command templates can include plaintext and [placeholders](placeholders.md).
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-Calculated metrics can reference other metrics using [`db_last`](functions-series.md#db_laststring-m), [`db_statistic`](functions-series.md#db_statistic), and [`value`](functions-value.md#value) functions.
+Calculated metrics can reference other metrics using [`db_last`](functions-series.md#db_last), [`db_statistic`](functions-series.md#db_statistic), and [`value`](functions-value.md#value) functions.
 
 ```bash
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}

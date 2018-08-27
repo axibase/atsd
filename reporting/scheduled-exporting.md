@@ -76,7 +76,7 @@ The administrator can create rules to notify if a job is not executed according 
 
 | Field | Description |
 | --- | --- |
-|  Email Subscribers  |  List of email addresses separated by commas, white spaces, or semicolons, to which the exported files are sent as attachments.  |
+|  Email Subscribers  |  List of email addresses separated by commas, white spaces, or semi-colons, to which the exported files are sent as attachments.  |
 |  Email Subject  |  Email subject.<br>Supports placeholders: `${ENTITY}, ${ENTITY.tagName}, ${METRIC}, ${METRIC.tagName}, ${yyyy-MM-dd}`.  |
 
 Clicking **Test** exports the first file, displays the file name, and provides a link to download the file.

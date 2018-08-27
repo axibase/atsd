@@ -3,14 +3,14 @@
 ## `last_open`
 
 ```javascript
-last_open() object
+last_open() AlertHistory
 ```
 
 Retrieves the most recent [`AlertHistory`](logging.md#logging-to-database) record with `OPEN` or `REPEAT` status for the current window.
 
 If no records match, the function returns an `AlertHistory` object with default values such as `0` timestamp, `NaN` value, etc.
 
-To use this function, enable [Alert History](logging.md#logging-to-database) logging on the **Logging** tab. Check the **Log to Alert History** option and enable either `On Open` / `On Repeat` triggers.
+To call this function, enable [Alert History](logging.md#logging-to-database) logging on the **Logging** tab. Check the **Log to Alert History** option and enable either `On Open` / `On Repeat` triggers.
 
 ### `AlertHistory` Object
 

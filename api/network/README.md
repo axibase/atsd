@@ -357,7 +357,7 @@ $ echo -e "debug my_command e:station_1 m:temperature=32.2" \
 To review a sequence of commands sent by the client, launch the `netcat` utility in server mode, reconfigure the client to send data to the `netcat` port.
 
 ```bash
-nc -lk 0.0.0.0 2081 > command-in.log &
+nc -lk -p 2081 > command-in.log &
 ```
 
 ```bash

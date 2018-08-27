@@ -12,7 +12,7 @@
 ## Parser Settings
 
 * Timestamp Pattern:  `yyyy.MM.dd HH:mm:ss`      # Used to parse Measurement Time column values
-* Delimiter: `Semicolon (;)`                         # Non-default delimiter
+* Delimiter: `semi-colon (;)`                         # Non-default delimiter
 
 ## Schema
 

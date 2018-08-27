@@ -15,18 +15,18 @@ The `db_message_count` and `db_message_last` functions can be used to verify the
 ## `db_message_count`
 
 ```javascript
-db_message_count(string i, string g, string s[, string t | [] t[, string e[, string p]]]) long
+db_message_count(string interval, string type, string source[, string tags | map tags[, string entity[, string expression]]]) long
 ```
 
-Returns the number of message records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See matching rules [below](#matching-rules).
+Returns the number of message records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See matching rules [below](#matching-rules).
 
 ## `db_message_last`
 
 ```javascript
-db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
+db_message_last(string interval, string type, string source[, string tags | map tags[, string entity[, string expression]]]) Message
 ```
 
-Returns the most recent [message](../api/data/messages/query.md) record for the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`. See [Matching Rules](#matching-rules).
+Returns the most recent [message](../api/data/messages/query.md) record for the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See [Matching Rules](#matching-rules).
 
 The record [fields](../api/data/messages/query.md#fields) can be accessed using dot notation, for example:
 
@@ -48,54 +48,54 @@ db_message_last('1 hour', 'webhook', 'github').timestamp
 ## `db_messages`
 
 ```javascript
-db_messages(string i, string g, string s[, string t | [] t[, string e[, string p]]]) [object]
+db_messages(string interval, string type, string source[, string tags | map tags[, string entity[, string expression]]]) [Message]
 ```
 
-Returns a list of [message](../api/data/messages/query.md) records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
+Returns a list of [message](../api/data/messages/query.md) records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`.
 
 The messages are ordered by time similar to the **Message Search** page. See [Matching Rules](#matching-rules).
 
 If no messages are found, an empty `[]` list is returned.
 
-To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method. The first indexed element is `0`.
+To access the `n`-th element in the list, use square brackets `[index]` or `get(index)` method. The first indexed element is `0`.
 
-[Fields](../api/data/messages/query.md#fields-1) of a returned object can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
+[Fields](../api/data/messages/query.md#fields-1) of the returned Message objects can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
 
-> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead as Unix time in milliseconds.
+> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field as Unix time in milliseconds.
 
 ## Matching Rules
 
 ### Interval
 
-* Selection interval `i` is specified in `count [units](../shared/calendar.md#interval-units)`, for example, `1 hour`.
+* Selection `interval` is specified in `count [units](../shared/calendar.md#interval-units)`, for example, `1 hour`.
 * End of selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
 
 ### Type
 
-* If the message type argument `g` is specified as `null` or an empty string `''`, all types are matched.
+* If the message `type` argument is specified as `null` or an empty string `''`, all types are matched.
 
 ### Source
 
-* If the message source argument `s` is specified as `null` or an empty string `''`, all sources are matched.
+* If the message `source` argument is specified as `null` or an empty string `''`, all sources are matched.
 
 ### Entity
 
-* If the entity argument `e` is not specified, the **current** entity in the window is used for matching.
-* If the entity argument `e` is specified as `null` or empty string `''` or `*` wildcard, all entities are matched.
+* If the `entity` argument is not specified, the **current** entity in the window is used for matching.
+* If the `entity` argument is specified as `null` or empty string `''` or `*` wildcard, all entities are matched.
 
 ### Tags
 
-* If tags argument `t` is specified as `null` or an empty string `''`, all tags are matched.
-* To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
-* Tags argument `t` matches records that include the specified tags but can also include other tags.
-* Tags argument `t` can be specified as follows:
+* If `tags` argument is specified as `null` or an empty string `''`, all tags are matched.
+* To match records with empty tags use `'tags.isEmpty() = true'` or `'tags.size() = 0'` in `expression`.
+* `tags` argument matches records that include the specified tags but can also include other tags.
+* `tags` argument can be specified as follows:
   * String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
-  * Map: `["tag1":"value1", "tag2":"value2"]`
+  * Map: `['tag1':'value1', 'tag2':'value2']`
   * The `tags` field representing the grouping tags of the current window.
 
 ### Expression
 
-* The expression `p` can include the following fields and supports wildcards in field values:
+* The `expression` field can include the following fields and supports wildcards in field values:
   * `message`
   * `type`
   * `source`

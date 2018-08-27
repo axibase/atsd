@@ -12,10 +12,10 @@ Each window maintains a set of continuously updated fields which can be used in 
 `rule` | string | Rule name. | `memory_low`
 `metric` | string | Metric name. | `memory_free`
 `entity` | string | Entity name. | `nurswgvml007`
-`tags` | map | Command tags, serialized as `{key1=val1;key2=val2}`. | `{memtype=buffered}`
+`tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `[memtype: buffered]`
 `tags.memtype` | string | Command tag by name. | `buffered`
 `entity.displayName` | string | Entity label, if not empty. Otherwise, entity name. | `NURswgvml007`
-`entity.tags` | map | Entity tags, serialized as `{key1=val1;key2=val2}`. | `{version=community}`
+`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `[version: std]`
 `entity.tags.version` | string | Entity tag by name. | `community`
 `entity.label` | string | Entity field by name. | `NURswgvml007`
 `metric.label` | string | Metric field by name. | `Memory Free, Bytes`
@@ -52,8 +52,8 @@ Notes:
 |**Name**|**Type**|**Description**|
 |---|---|---|
 | `type` | string | Property type, same as `tags.type`. |
-| `keys` | map | Property keys.<br>To retrieve key value, use `keys.{name}`. |
-| `properties` | map | Property tags.<br>To retrieve tag value, use `properties.{name}`. |
+| `keys` | map | Property keys, serialized as `[key1: val1, key2: val2]`.<br>To retrieve key value, use `keys.{name}`. |
+| `properties` | map | Property tags, serialized as `[key1: val1, key2: val2]`.<br>To retrieve tag value, use `properties.{name}`. |
 
 > The `tags` field for the `property` command contains the `keys` map and the `type` field.
 
@@ -74,6 +74,7 @@ Notes:
 `command_time` | `DateTime` | Time of the command that was last added or removed from the window.
 `command_first_time` | `DateTime` | Time of the command with the smallest timestamp in the window.<br>`null` if the window is empty.
 `command_last_time` | `DateTime` | Time of the command with the largest timestamp in the window.<br>`null` if the window is empty.
+`window_duration` | `long` | Difference between `command_last_time` and `command_first_time` measured in milliseconds.<br>`0` if the window is empty.
 `alert_duration` | `string` | Interval between current time and `open_time`, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.<br>Returns an empty string **On Open** status.
 `alert_duration_interval` | `string` | Interval between current time and `open_time`, formatted as `alert_duration` with units, for example `1m:45s`.<br>Returns an empty string **On Open** status.
 

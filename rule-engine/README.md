@@ -215,7 +215,7 @@ The same condition can be generalized with a ratio as well.
 avg() / db_statistic('avg', '1 hour', 'page_views_per_minute') > 2
 ```
 
-As an alternative, use the [`value(metric)`](functions-value.md) function to access the last value for metrics submitted within the same `series` command or parsed from the same row in CSV files.
+As an alternative, use the [`value()`](functions-value.md) function to access the last value for metrics submitted within the same `series` command or parsed from the same row in CSV files.
 
 ```javascript
 value > 75 && value('page_views_per_minute') < 1000

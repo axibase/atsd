@@ -77,20 +77,20 @@ Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous
 ### `add` Function
 
 ```javascript
-add(number c, string u) DateTime
+add(number count, string unit) DateTime
 ```
 
-Returns a [`DateTime`](object-datetime.md) object created by adding an interval to the current `DateTime` object. The interval is specified as count `c` of [time units](../api/data/series/time-unit.md) `u`.
+Returns a [`DateTime`](object-datetime.md) object created by adding an interval to the current `DateTime` object. The interval is specified as `count` of [time `units`](../api/data/series/time-unit.md).
 
 ```javascript
 now.add(1, 'hour')
 ```
 
-If count argument `c` is negative, the interval is subtracted from the current `DateTime` object.
+If `count` is negative, the interval is subtracted from the current `DateTime` object.
 
-Fractional count argument `c` is rounded **down** to the nearest integer.
+Fractional `count` is rounded **down** to the nearest integer.
 
-The [time unit](../api/data/series/time-unit.md) `u` is **case-insensitive** and supports both singular and plural units (`hour`/`HOUR`/`hours`/`HOURS`).
+The [time `unit`](../api/data/series/time-unit.md) is **case-insensitive** and supports both singular and plural units (`hour`/`HOUR`/`hours`/`HOURS`).
 
 The new `DateTime` object inherits the time zone of the original object.
 
@@ -107,11 +107,11 @@ now.add(-10, 'years').day_of_week
 ### `is_weekday` Function
 
 ```javascript
-is_weekday( [string c] ) boolean
+is_weekday( [string code] ) boolean
 ```
 
 * Returns `true` if the `DateTime` object is a weekday.
-* Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
+* Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country `code`.
 * If country cannot be resolved by country code, returns `true` if day of week is not Saturday or Sunday.
 * If country code is not specified, the database uses the `default.holiday.calendar` server property.
 * By default `default.holiday.calendar` resolves country code from the `user.country` system property.
@@ -119,11 +119,11 @@ is_weekday( [string c] ) boolean
 ### `is_weekend` Function
 
 ```javascript
-is_weekend( [string c] ) boolean
+is_weekend( [string code] ) boolean
 ```
 
 * Returns `true` if the `DateTime` object is a weekend day.
-* Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country code `c`.
+* Accepts optional [ISO-3166 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country `code`.
 * If country cannot be resolved by country code, returns `true` if day of week is Saturday or Sunday.
 * If country code is not specified, the database uses the `default.holiday.calendar` server property.
 * By default `default.holiday.calendar` resolves country code from the `user.country` system property.
@@ -131,12 +131,12 @@ is_weekend( [string c] ) boolean
 ### `is_workday` Function
 
 ```javascript
-is_workday( [string c] ) boolean
+is_workday( [string calendarKey] ) boolean
 ```
 
 * Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](workday-calendar.md).
-* Accepts optional calendar key parameter `c`.
-* If calendar `c` is not specified, the database uses the `default.holiday.calendar` server property.
+* Accepts optional calendar key argument `calendarKey`.
+* If `calendarKey` is not specified, the database uses the `default.holiday.calendar` server property.
 * The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.
 
 ```javascript
@@ -155,10 +155,10 @@ AND NOT now.add(2, 'day').is_workday()
 ### `to_timezone` Function
 
 ```javascript
-to_timezone(string tz) DateTime
+to_timezone(string zone) DateTime
 ```
 
-* Returns a new `DateTime` object based on server time but modified to the specified [time zone](../shared/timezone-list.md) `tz`.
+* Returns a new `DateTime` object based on server time but modified to the specified [time `zone`](../shared/timezone-list.md).
 
 ```javascript
 now.to_timezone('Europe/Berlin').next_workday
