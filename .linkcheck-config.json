@@ -92,5 +92,7 @@
         ,{ "pattern": "https://www.panynj.gov/port/pdf/port-trade-statistics-summary-2001-2011.pdf" }
         ,{ "pattern": "https://www.airnowapi.org/" }
         ,{ "pattern": "https://web.stanford.edu/group/recessiontrends/cgi-bin/web/sites/all/themes/barron/pdf/IncomeWealthDebt_fact_sheet.pdf" }
-       
+        ,{ "pattern": "https://www.iowa.gov/" }
+        ,{ "pattern": "https://cms.montgomerycollege.edu/EDU/Department.aspx?id=45574" }
+         
     ]}
