@@ -94,5 +94,8 @@
         ,{ "pattern": "https://web.stanford.edu/group/recessiontrends/cgi-bin/web/sites/all/themes/barron/pdf/IncomeWealthDebt_fact_sheet.pdf" }
         ,{ "pattern": "https://www.iowa.gov/" }
         ,{ "pattern": "https://cms.montgomerycollege.edu/EDU/Department.aspx?id=45574" }
+        ,{ "pattern": "http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmptranslate.html" }
+        
+        
          
     ]}
