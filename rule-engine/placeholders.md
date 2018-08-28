@@ -8,13 +8,13 @@ Placeholders are expressions that can be used to include details and context inf
 
 ## Syntax
 
-The placeholder is declared with the dollar sign `$` and curly braces `{}` containing an expression.
+The placeholder is declared with the dollar sign `$` and curly brackets `{}` containing an expression.
 
 ```bash
 ${expression}
 ```
 
-When the response action is triggered, the expression between the braces is resolved to a concrete value based on the window context.
+When the response action is triggered, the expression between the curly brackets is resolved to a concrete value based on the window context.
 
 The replacements in the original input text, such as email subject, are performed _in-place_ where each placeholder is substituted with the value of its expression, converted to a string.
 

@@ -76,7 +76,7 @@ Message functions retrieve message counts or specific messages from the database
 
 ## Database Series
 
-Series functions retrieve series values from the database. Data can requested for series, other then the current series in the window. The functions are commonly used to retrieve data for other metrics and entities in order to calculate derived or calculated metrics.
+Series functions retrieve series values from the database. Data can requested for series, other then the current series in the window. The functions are commonly used to calculate derived metrics.
 
 * [`db_last`](functions-series.md#db_last)
 * [`db_statistic`](functions-series.md#db_statistic)
