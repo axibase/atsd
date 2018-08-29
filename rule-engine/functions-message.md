@@ -67,7 +67,7 @@ To access the `n`-th element in the list, use square brackets `[index]` or `get(
 
 ### Interval
 
-* Selection `interval` is specified in `count [units](../shared/calendar.md#interval-units)`, for example, `1 hour`.
+* Selection `interval` is specified in <code>count [units](../shared/calendar.md#interval-units)</code>, for example, `1 hour`.
 * End of selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
 
 ### Type
