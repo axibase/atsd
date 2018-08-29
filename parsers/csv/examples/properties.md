@@ -11,7 +11,7 @@
 
 `Timestamp Pattern:  dd.MM.yyyy HH:mm`      # Used to parse Measurement Time column values
 
-`Delimiter: Semicolon (;)`      # Non-default delimiter
+`Delimiter: semi-colon (;)`      # Non-default delimiter
 
 ## Schema
 

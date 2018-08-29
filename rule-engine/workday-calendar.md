@@ -93,7 +93,7 @@ The calendar file can include days for any number of years.
 
 ### Importing Calendar
 
-Navigate to **Data Entry > Workday Calendars**. Attach a JSON file and click **Import**.
+Open the **Data Entry > Workday Calendars** page. Attach a JSON file and click **Import**.
 
 ![](./images/holiday-calendars.png)
 

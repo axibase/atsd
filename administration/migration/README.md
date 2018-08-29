@@ -468,7 +468,7 @@ When running Map/Reduce jobs specified in the next section, the system can encou
 Container [...2] is running beyond virtual memory limits... Killing container.
 ```
 
-In case of this error, adjust Map-Reduce [settings](mr-settings.md) and retry the job by appending the `-r` setting as follows `.DeleteTaskMigration -m 2 -r`.
+In case of this error, adjust Map-Reduce [settings](mr-settings.md) and retry the job by appending the `-r` setting, for example `.DeleteTaskMigration -m 2 -r`.
 
 In case of other errors, review job logs for the application ID displayed above:
 

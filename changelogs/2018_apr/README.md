@@ -18,7 +18,7 @@
 5246 | rule engine | Bug | [`flattenJson`](../../rule-engine/functions-table.md#flattenjson) function must ignore empty arrays.
 5240 | rule engine | Bug | [`db_last`](../../rule-engine/functions-series.md#db_last) function fails to load records older than 1 hour.
 5237 | rule engine | Feature | Add support for multi-line expressions in the rule editor.
-5236 | rule engine | Bug | Log error when records are not found by [`db_last`](../../rule-engine/functions-series.md#db_laststring-m) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions.
+5236 | rule engine | Bug | Log error when records are not found by [`db_last`](../../rule-engine/functions-series.md#db_last) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions.
 5229 | api-rest | Bug | `GENERAL_ERROR` not displayed in **Settings** > **Diagnostics** > **Security Incidents** for unauthorized user.
 5228 | UI | Feature | `User` and `Method` columns added to the incoming webhook page on **Settings** > **Diagnostics** > **Webhook Requests**.
 5224 | sql | Bug | Scheduled SQL query with [store](../../sql/scheduled-sql-store.md) option causes `NumberFormatException` on `NaN` value.

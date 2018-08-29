@@ -73,7 +73,7 @@ collectd.NURSWGDKR002.memory.memory-free 31384133632.0 1436867460
 Launch `nc` in server mode to record incoming commands to the `test.txt` file.
 
 ```sh
-nc -lk 8081 > test.txt &
+nc -lk -p 8081 > test.txt &
 ```
 
 Substitute `--whisper-base`, the path, `atsd_hostname`, and `atsd_tcp_port` with actual parameters and launch the migration script.

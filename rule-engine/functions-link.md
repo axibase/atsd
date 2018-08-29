@@ -39,14 +39,14 @@ Alternatively, manually assemble inline links using syntax supported by the webh
 ## `getEntityLink`
 
 ```javascript
-getEntityLink(string e [, boolean m [, string f]]) string
+getEntityLink(string entity [, boolean matchLabel [, string format]]) string
 ```
 
-Returns the URL to the **Entity Editor** page for entity `e` on the target ATSD instance. The function URL encoded the entity name if necessary.
+Returns the URL to the **Entity Editor** page for entity `entity` on the target ATSD instance. The function URL encoded the entity name if necessary.
 
-If the match entity parameter `m` is set to `true`, the entity is matched by label if it cannot found by name.
+If the match entity parameter `matchLabel` is set to `true`, the entity is matched by label if it cannot found by name.
 
-Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
+Optional `format` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
 Example:
 
@@ -69,16 +69,16 @@ serverLink + '/entity/' + urlencode(entity)
 ## `getPropertyLink`
 
 ```javascript
-getPropertyLink(string e, string t [, boolean m [, string f]])) string
+getPropertyLink(string entity, string type [, boolean matchLabel [, string format]]) string
 ```
 
-Returns the URL to the property table for entity `e` and property type `t` on the target database server.
+Returns the URL to the property table for entity `entity` and property type `type` on the target database server.
 
-If the match entity parameter `m` is set to `true`, the entity is matched by label if it cannot be found by name.
+If the match entity parameter `matchLabel` is set to `true`, the entity is matched by label if it cannot be found by name.
 
-Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
+Optional `format` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as the value of type `t` in inline mode.
+The link name is set to property type `type` in inline mode.
 
 Example:
 
@@ -95,38 +95,38 @@ Returned inline link:
 ## `getRuleLink`
 
 ```javascript
-getRuleLink([string f]) string
+getRuleLink([string format]) string
 ```
 
 Returns the URL to the current rule.
 
-Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
+Optional `format` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as rule name in inline mode.
+The link name is set to rule name in inline mode.
 
 ## `getCsvExportLink`
 
 ```javascript
-getCsvExportLink([string f]) string
+getCsvExportLink([string format]) string
 ```
 
 Returns the URL to the **CSV** file with historical statistics for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
+Optional `format` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
-Displayed as **CSV Export** link in inline mode.
+The link name is set to **CSV Export** link in inline mode.
 
 > Available only in rules with `Series` data type.
 
 ## `getHtmlExportLink`
 
 ```javascript
-getHtmlExportLink([string f]) string
+getHtmlExportLink([string format]) string
 ```
 
 Returns the URL to the **Data > Export** page for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
+Optional `format` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
 Displayed as **HTML Export** link in inline mode.
 
@@ -135,12 +135,12 @@ Displayed as **HTML Export** link in inline mode.
 ## `getChartLink`
 
 ```javascript
-getChartLink([string f]) string
+getChartLink([string format]) string
 ```
 
 Returns the URL to the default portal for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
+Optional `format` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
 
 Displayed as **Default** link in inline mode.
 
@@ -161,12 +161,12 @@ The following inline link is returned:
 ## `addLink`
 
 ```javascript
-addLink(string l, string u) string
+addLink(string label, string url) string
 ```
 
-Returns the URL `u` with a short name `l` based on the current endpoint settings.
+Returns the URL `url` with a short name `label`, formatted based on the current endpoint settings.
 
-If no settings are available, the function returns the original URL `u`.
+If the endpoint settings are not available, the function returns the original URL `url`.
 
 Examples:
 

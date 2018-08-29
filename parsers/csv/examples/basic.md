@@ -21,7 +21,7 @@ For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** f
 ### Syntax
 
 * Schema is a JavaScript program that consists of one or multiple statements.
-* Each statement must end with a semicolon (`;`).
+* Each statement must end with a semi-colon (`;`).
 * A statement can consist of multiple function invocations, chained with a period (`.`).
 * Regular JavaScript comment characters are supported.
 * String literals such as constant metric or entity names must be enclosed in single or double quotes.

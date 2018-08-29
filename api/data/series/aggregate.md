@@ -110,7 +110,7 @@ Configure this behavior with an interpolation function which fills a missing per
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `type`  | string | **[Required]** Interpolation [function](#interpolation-functions). |
-| `value` | number | **[Required by `value` function]** Constant number used to set as the value for empty periods. |
+| `value` | number | **[Required by `value` function]** Constant number returned for empty periods. |
 | `extend`  | boolean | Add missing periods at the beginning and end of the selection interval.<br>Default: `false`. |
 
 Values added by the `extend` setting are determined as follows:

@@ -257,14 +257,14 @@ WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
 
 In situations where the `text` column is used to annotate a missing or an invalid numeric value, use the `ISNULL` function to return the consolidated value in one column.
 
-The datatype of the `ISNULL` function is determined based on the datatypes of its arguments as follows:
+The data type of the `ISNULL` function is determined based on the data types of its arguments:
 
 * `ISNULL(string, string)`: `string`
 * `ISNULL(number, number)`: `number`
 * `ISNULL(string, number)`: `java_object`
 * `ISNULL(number, string)`: `java_object`
 
-If both arguments are numeric and their datatypes are different, the returned datatype is based on the argument with the higher numeric precedence.
+If both arguments are numeric and their data types are different, the returned data type is based on the argument with the higher numeric precedence.
 
 #### Query
 

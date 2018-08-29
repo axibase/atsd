@@ -12,11 +12,11 @@ Custom mail client formatting options such as [header and footer](../administrat
 
 ## Enable Notifications
 
-Navigate to the **Email Notifications** tab.
+Open the **Email Notifications** tab.
 
 ![](./images/email-tab-rule.png)
 
-Set `Enabled` status and enter one or more email addresses separated by comma, semicolon, or whitespace.
+Set `Enabled` status and enter one or more email addresses separated by comma, semi-colon, or whitespace.
 
 Set toggle to **Yes** to subscribe to notifications initiated by `OPEN`, `REPEAT`, or `CANCEL` triggers.
 

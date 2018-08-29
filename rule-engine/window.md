@@ -18,7 +18,7 @@ Count-based windows accumulate up to the specified number of samples. Samples ar
 
 ### `time` Windows
 
-Time-based windows store samples received within the specified time interval. There is no limit to the number of sample stored in time-based windows.
+Time-based windows store samples received within the specified time interval. There is no limit to the number of samples stored in time-based windows.
 
 The start of the interval is initially set to current time minus the window length, and is constantly incremented as time passes, thus these windows are sometimes referred to as **sliding** windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
 
@@ -48,7 +48,7 @@ Response actions can be triggered whenever window status changes as well as at s
 
 ### Status Events
 
-| Previous State | New Status | Previous Condition Value | New Condition Value | Trigger Name |
+| Previous Status | New Status | Previous Condition Value | New Condition Value | Trigger Name |
 | --- | --- | --- | --- | --- |
 | `CANCEL` | `OPEN` | `false` | `true` | `On Open` |
 | `OPEN`  | `REPEAT` | `true` | `true` | `On Repeat` |

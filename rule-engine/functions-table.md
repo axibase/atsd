@@ -18,14 +18,14 @@ Table functions perform various operations on strings, lists, and maps to create
 ## `addTable` for map
 
 ```javascript
-addTable([] m, string f) string
+addTable(map, string format) string
 ```
 
-Prints the input map `m` as a two-column table in the specified format `f`.
+Prints the input key-value `map` as a two-column table in the specified `format`.
 
 The first column in the table contains map keys, whereas the second column contains their corresponding map values.
 
-The input map `m` typically refers to map fields such as `tags`, `entity.tags`, or `variables`.
+The input `map` typically references fields such as `tags`, `entity.tags`, or `variables`.
 
 Supported formats:
 
@@ -35,7 +35,7 @@ Supported formats:
 * `csv`
 * `html`
 
-Returns an empty string if map `m` is `null` or has no records.
+Returns an empty string if `map` is `null` or has no records.
 
 Ignores map records with empty or `null` values.
 
@@ -125,10 +125,10 @@ os=Linux
 ## `addTable` for maps
 
 ```javascript
-addTable([[] m], string f[, [string h]]) string
+addTable([map], string format[, [string header]]) string
 ```
 
-Prints a collection of maps `m` as a multi-column table in the specified format `f`, with optional header `h`.
+Prints a collection of maps `map` as a multi-column table in the specified `format`, with optional `header`.
 
 The first column in the table contains unique keys from all maps in the collection, whereas the second and subsequent columns contain map values for the corresponding key in the first column.
 
@@ -217,22 +217,22 @@ jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
 ## `addTable` for list
 
 ```javascript
-addTable([[string]] c, string f[, [string] | boolean h]) string
+addTable([[string]] strList, string format[, [string] header | boolean addHeader]) string
 ```
 
-Prints `c` (list of lists) as a multi-column table in the specified format `f`. Each nested list in the parent list `c` is serialized into its own row in the table.
+Prints list of lists `strList` as a multi-column table in the specified `format`. Each nested list in the parent list `strList` is serialized into a separate row in the table.
 
 The number of elements in each collection must be the same.
 
 The default table header is `Value-1, ..., Value-N`.
 
- Use header argument `h` to customize the header.
+Use header arguments to customize the header.
 
-If `h` is specified as a collection, its elements replace the default header. The size of the header collection must be the same as the number of cells in each row.
+If the third argument is specified as a collection of strings, its elements replace the default header. The size of the header collection must be the same as the number of cells in each row.
 
-If `h` argument is specified as a boolean value `true`, the first row in the table is used as a header.
+If `addHeader` argument is specified as a boolean value `true`, the first row in the table is used as a header.
 
-Returns an empty string if the list `c` is empty.
+The function returns an empty string if `strList` is empty.
 
 Examples:
 
@@ -383,10 +383,10 @@ See additional [examples](#examples).
 ## `jsonToMaps`
 
 ```javascript
-jsonToMaps(string s) [map]
+jsonToMaps(string inStr) [map]
 ```
 
-Parses input string `s` into a JSON document and returns a collection of maps containing keys and values from the JSON document.
+Parses string `inStr` into a JSON document and returns a collection of maps containing keys and values from the JSON document.
 
 The collection contains as many maps as there are leaf objects in the JSON document. Each map contains keys and values of the leaf object itself as well as keys and values from the parent objects.
 
@@ -451,10 +451,10 @@ See additional examples [below](#examples).
 ## `jsonToLists`
 
 ```javascript
-jsonToLists(string s) [[string]]
+jsonToLists(string inStr) [[string]]
 ```
 
-Parses input string `s` into a JSON document and returns a collection of string lists of the same size containing field values from this JSON document.
+Parses string `inStr` into a JSON document and returns a collection of string lists of the same size containing field values from this JSON document.
 
 The first list in the collection contains all possible key names in the leaf objects and their parents.
 
@@ -520,14 +520,14 @@ See additional examples [below](#examples).
 ## `flattenJson`
 
 ```javascript
-flattenJson(string j) map
+flattenJson(string jsonStr) map
 ```
 
-Converts the string representation of JSON document `j` into a map consisting of keys and values.
+Converts the string representation of JSON document `jsonStr` into a map consisting of keys and values.
 
 Processing rules:
 
-* String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function raises an exception.
+* String `jsonStr` is parsed into a JSON object. If `jsonStr` is not a valid JSON document, the function raises an exception.
 * The JSON object is traversed to locate fields with primitive data types: `number`, `string`, and `boolean`.
 * The field value is added to the map with a key set to its full name, created by appending the field local name to the full name of its parent object using `.` as a separator.
 * If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).

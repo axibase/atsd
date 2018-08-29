@@ -74,7 +74,7 @@ There are two options to obtain Chat ID:
 
 ## Configure Webhook in ATSD
 
-* Navigate to **Alerts > Outgoing Webhooks** page.
+* Open the **Alerts > Outgoing Webhooks** page.
 * Click an existing `TELEGRAM` template, or click **Create** and select `TELEGRAM`.
 * Specify the unique `Name` of the notification.
 

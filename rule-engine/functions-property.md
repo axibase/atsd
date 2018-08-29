@@ -16,14 +16,14 @@ A set of convenience methods to retrieve and compare property keys and tags usin
 ## `property`
 
 ```javascript
-property([string e, ]string s[, string d]) string
+property([string entity, ] string expr [, string date]) string
 ```
 
-Returns the first value in the list of strings returned by the `property_values(string s)` function.
+Returns the first value in the list of strings returned by the `property_values(expr)` function.
 
-By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the entity `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+An optional start date `date` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the `entity` argument must also be specified.
 
 Returns an empty string if no matching property records are found.
 
@@ -41,18 +41,18 @@ property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ## `property_values`
 
 ```javascript
-property_values([string e, ]string s[, string d]) [string]
+property_values([string entity, ] string expr [, string date]) [string]
 ```
 
-Returns a list of property tag values for the given entity for the specified [property search](property-search.md) expression `s`.
+Returns a list of property tag values for the given entity for the specified [property search](property-search.md) expression `expr`.
 
-By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the entity `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-Optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+Optional start date `date` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the entity `entity` argument must also be specified.
 
 The function returns an empty list if the entity, property or tag is not found.
 
-To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with `0` for the first element).
+To access the `n`-th string in the collection, use square brackets `[index]` or `get(index)` method (starting with `0` for the first element).
 
 Examples:
 
@@ -86,61 +86,61 @@ property_values('nurswgvml007', 'docker.container::image', 'today')
 
 ## `property_compare_except`
 
-* `property_compare_except([string k])`
+* `property_compare_except([string key])`
 
 ```javascript
-property_compare_except([string k]) map
+property_compare_except([string key]) map
 ```
 
-  Compares previous and current property tags and returns a difference map containing a list of changed tag values.
+Compares properties in the previous and the current `property` command, ignoring changes in the optional list of key names, and returns a map containing a list of changed keys. The function is supported by rules with `property` data type.
 
-  Sample difference map:
+Sample difference map:
 
 ```txt
-{inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
+{args='-Xloggc:/home/axibase/gc_100.log' -> '-Xloggc:/home/axibase/gc_712.log'}
 ```
 
-  The map includes tags that are not present in new property tags and deleted tags.
-  If the difference map is empty, no identified changes are present.
-  This comparison is case-insensitive.
+The map includes keys that are present in one command and absent in the other command.
+The map is empty if no differences among the commands are present.
+The values are compared in **case-insensitive** manner.
 
 ```java
-NOT property_compare_except (['name', '*time']).isEmpty()
+NOT property_compare_except (['pid', '*time']).isEmpty()
 ```
 
-  Returns `true` if property tags have changed except for the `name` tag and any tags that end with `time`.
+  Returns `true` if property tags have changed except for the `pid` tag and any tags that end with `time`.
 
 * `property_compare_except([string c], [string e])`
 
 ```javascript
-property_compare_except([string c], [string e]) map
+property_compare_except([string key], [string previousValue]) map
 ```
 
-  Same as `property_compare_except(keys)` with a list `e` of previous values that are excluded from the difference map.
+  Same as `property_compare_except([string key])` with a list of previous values that are excluded from the difference map.
 
 ```java
-NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
+NOT property_compare_except(['pid', '*time'], ['*Xloggc*']).isEmpty()
 ```
 
-Returns `true` if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` ignores changes such as:
+Returns `true` if property tags have changed, except for the `pid` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` ignores changes such as:
 
 ```txt
-{inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
+{args='-Xloggc:/home/axibase/gc_100.log' -> '-Xloggc:/home/axibase/gc_712.log'}
 ```
 
 ## `property_map`
 
 ```javascript
-property_map([string e,] string s[, string d]) map
+property_map([string entity,] string expression [, string date]) map
 ```
 
-Returns a map containing keys and tags for the specified [property search](property-search.md) expression `s`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
+Returns a map containing keys and tags for the specified [property search](property-search.md) `expression`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
-By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-Optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must be specified as well.
+Optional start `date` argument controls which property records to include. If specified, only property records received **on or after** the start date are included. The start `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the `entity` argument must be specified as well.
 
-Search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
+Search `expression` can include only the property type (without key and tag parts). Omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
 
 Supported syntax options:
 
@@ -171,14 +171,14 @@ property_map('nurswgvml007','configuration::', 'today')
 ## `property_maps`
 
 ```javascript
-property_maps([string e,] string s[, string d]) [map]
+property_maps([string entity,] string expression [, string date]) [map]
 ```
 
-Returns a list of maps, each map containing keys and tags for the specified [property search](property-search.md) expression `s`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
+Returns a list of maps, each map containing keys and tags for the specified [property search](property-search.md) `expression`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
-By default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-Optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity argument `e` must be specified as well.
+Optional start `date` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the `entity` argument must be specified as well.
 
 Search expression `s` can include only the property type without key-value pairs. Omit `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case the function returns all keys and tags.
 
@@ -191,7 +191,7 @@ Supported syntax options:
 
 Returns an empty list if the entity, property or tag is not found.
 
-To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
+To access the `n`-th map in the list, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
 Examples:
 
@@ -219,14 +219,14 @@ property_maps('nurswgvml007','configuration::', 'yesterday')
 ## `getPropertyTypes`
 
 ```javascript
-getPropertyTypes(string e[, string s[, string d]]) [string]
+getPropertyTypes(string entity [, string startDate[, string endDate]]) [string]
 ```
 
-Returns a sorted set of property types for the specified entity `e`.
+Returns a sorted set of property types for the specified `entity`.
 
-Optional start date `s` and end date `d` arguments control the time range for selecting property records. The dates `s` and `d` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords).
+Optional start `startDate` and `endDate` arguments control the time range for selecting property records. The dates can be specified as an [ISO format](../shared/date-format.md) string or a [calendar keyword](../shared/calendar.md#keywords).
 
-To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
+To access the `n`-th string in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
 Examples:
 

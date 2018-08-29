@@ -11,10 +11,10 @@ These functions return the results of a user-defined SQL query.
 ## `executeSqlQuery`
 
 ```javascript
-executeSqlQuery(string q) collection[collection[string]]
+executeSqlQuery(string query) collection[collection[string]]
 ```
 
-Returns the result of SQL query `q`. The first row contains headers consisting of column labels.
+Returns the result of SQL `query`. The first row contains headers consisting of column labels.
 
 The response is limited to 1,000 rows.
 

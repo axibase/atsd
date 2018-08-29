@@ -28,7 +28,7 @@ message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
 | `e`         | string       | **[Required]** Entity name. |
-| `t`         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../api/data/severity.md). |
+| `t`         | string       | Tags, including reserved tags: `type`, `source`, [`severity`](../../shared/severity.md). |
 | `m`         | string       | Message text. |
 | `p`         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the message is processed only by the rule engine. |
 | `s`         | integer      | Unix time in seconds. |
@@ -43,7 +43,7 @@ Special tags supported by the `message` command:
 |:---|:---|
 | `type` | Message type. |
 | `source` | Message source. |
-| `severity` | Criticality level in [numeric or text format](../../api/data/severity.md). |
+| `severity` | Message severity as an integer or text [code](../../shared/severity.md). |
 
 The `type` and `source` tags are indexed and including them in the message command is recommended for faster retrieval times.
 

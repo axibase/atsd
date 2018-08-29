@@ -16,7 +16,7 @@
     ![](./images/system.png)
 
 * Open **Team Info**.
-* Navigate to the invitation URL, click **Enable**.
+* Open the invitation URL, click **Enable**.
 
     ![](./images/invite_url.png)
 

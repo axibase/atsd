@@ -88,7 +88,9 @@ Returns the smallest of two numbers: `x` and `y`.
 cbrt(double x) double
 ```
 
-Returns `∛` of `x`.
+<!-- markdownlint-disable MD101 -->
+Returns cube root ∛ of `x`.
+<!-- markdownlint-enable MD101 -->
 
 ## `sqrt`
 

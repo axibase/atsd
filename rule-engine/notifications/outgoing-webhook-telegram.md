@@ -36,7 +36,7 @@ Use this token to access the HTTP API:
 
 Prepare a request URL for accepting notifications from Telegram servers.
 
-* Navigate to **Settings > Users > Create Webhook User** in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting requests from Telegram servers.
+* Open the **Settings > Users > Create Webhook User** page in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting requests from Telegram servers.
 
   ![](../../administration/images/webhook-user.png)
 
@@ -119,7 +119,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 
 ### Configure Webhook
 
-* Navigate to **Alerts > Rules** and select the new or imported rule.
+* Open the  **Alerts > Rules** page and select the new or imported rule.
 * Open **Webhooks** tab.
 * Select the webhook from the **Endpoint** drop-down list.
 * Enable the `OPEN`, `REPEAT` triggers.

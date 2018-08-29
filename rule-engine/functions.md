@@ -24,7 +24,7 @@ Functions can be referenced in a [filter expression](filters.md#filter-expressio
 * **Condition**:
 
     ```javascript
-    avg() > 80
+    avg() > 80 && db_statistic('avg', '15 minute', 'metric-2')
     ```
 
 * **Placeholder**:
@@ -76,16 +76,18 @@ Message functions retrieve message counts or specific messages from the database
 
 ## Database Series
 
-Series functions retrieve series values from the database whereas the series can be different from the series in the current window.
+Series functions retrieve series values from the database. Data can requested for series, other then the current series in the window. The functions are commonly used to calculate derived metrics.
 
-* [`db_last`](functions-series.md#db_laststring-m)
+* [`db_last`](functions-series.md#db_last)
 * [`db_statistic`](functions-series.md#db_statistic)
+
+> See also [value](#value) functions.
 
 ## Alert History
 
 * [`last_open`](functions-alert-history.md#last_open)
 
-## Database SQL
+## SQL Query
 
 SQL functions return the results of user-defined SQL queries.
 
@@ -104,13 +106,6 @@ Date functions perform various operations on dates, timestamps and intervals.
 * [`milliseconds`](functions-date.md#milliseconds)
 * [`seconds`](functions-date.md#seconds)
 * [`date_parse`](functions-date.md#date_parse)
-
-## Distribution
-
-* [`random`](functions-random.md#random)
-* [`randomNormal`](functions-random.md#randomnormal)
-* [`randomItem`](functions-random.md#randomitem)
-* [`randomKey`](functions-random.md#randomkey)
 
 ## Forecast
 
@@ -191,6 +186,13 @@ Property functions retrieve and compare property keys and tags.
 * [`property_map`](functions-property.md#property_map)
 * [`property_maps`](functions-property.md#property_maps)
 * [`getPropertyTypes`](functions-property.md#getpropertytypes)
+
+## Random
+
+* [`random`](functions-random.md#random)
+* [`randomNormal`](functions-random.md#randomnormal)
+* [`randomItem`](functions-random.md#randomitem)
+* [`randomKey`](functions-random.md#randomkey)
 
 ## Rule
 
@@ -310,7 +312,9 @@ Text functions transform and compare strings.
 
 ## Value
 
-[Value](functions-value.md) functions retrieve values for other metrics contained in the same command.
+Value functions retrieve values for other metrics contained in the same command.
+
+* [`value`](functions-value.md)
 
 ## Web Query
 

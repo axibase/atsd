@@ -26,7 +26,7 @@ This is a one time task.
 
 ### Upload the nmon File
 
-* Navigate to **Data > `nmon` Parsers**
+* Open the **Data > `nmon` Parsers** page.
 * At the bottom of the page, click **Upload** to import your `nmon` file or archive of `nmon` files using the default `nmon` parser.
 * Keep a note of the hostname for which you have just uploaded the data.
 
@@ -37,7 +37,7 @@ You can learn more about uploading `nmon` files into ATSD
 
 ### View the Data
 
-* Navigate to the below URL. Replace `atsd_hostname` with your ATSD URL, **hostname** with the hostname for which you have uploaded the `nmon` file, and `portal_id` with your portal ID:
+* Open the below URL. Replace `atsd_hostname` with your ATSD URL, **hostname** with the hostname for which you have uploaded the `nmon` file, and `portal_id` with your portal ID:
 
     `https://atsd_hostname:8443/portal/tabs?entity=hostname&id=portal_id`
 

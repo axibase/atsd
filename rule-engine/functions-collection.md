@@ -33,10 +33,10 @@ collection('oncall-emails')
 ## `collection`
 
 ```javascript
-collection(string s) [string]
+collection(string name) [string]
 ```
 
-Returns an array of strings contained in collection `s`.
+Returns an array of strings contained in collection identified by `name`.
 
 Named collections are listed on the **Data > Named Collections** page.
 
@@ -54,11 +54,12 @@ author = (authors.size() == 0) ? 'n/a' : authors[0]
 string s IN (string a[, string b[...]]) boolean
 ```
 
-Returns `true` if `s` is contained in the collection of strings enclosed in round brackets.
+Returns `true` if string `s` equals one of the strings enclosed in round brackets and separated by comma.
 
 Examples:
 
 ```javascript
+// Returns true if entity is nurswgvml007
 entity IN ('nurswgvml007', 'nurswgvml008')
 ```
 
@@ -72,7 +73,7 @@ tags.location IN ('NUR', 'SVL')
 string s LIKE (string a[, string b[...]]) boolean
 ```
 
-Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection can contain string literals and variables.
+Returns `true` if string `s` matches any pattern in the collection of strings enclosed in round brackets and separated by comma. The patterns support `?` and `*` wildcards. The collection can contain string literals and variables.
 
 Examples:
 
@@ -91,12 +92,12 @@ tags.location LIKE ('NUR*', entity.tags.location)
 ## `likeAny`
 
 ```javascript
-likeAny(string s, [string] c) boolean
+likeAny(string s, [string] strcoll) boolean
 ```
 
-Returns `true` if string `s` matches any element in the string collection `c`.
+Returns `true` if string `s` matches any element in the string collection `strcoll`.
 
-Load collection `c` from a named collection or initialize collection `c` from an array of strings. The elements of the collection can include patterns with `?` and `*` wildcards.
+Load collection `strcoll` from a named collection or initialize collection `strcoll` from an array of strings. The elements of the collection can include patterns with `?` and `*` wildcards.
 
 Examples:
 
@@ -115,12 +116,12 @@ likeAny(tags.request_ip, collection('ip_white_list'))
 ## `matchList`
 
 ```javascript
-matchList(string s, string c) boolean
+matchList(string s, string name) boolean
 ```
 
-Returns `true` if `s` is contained in collection `c`.
+Returns `true` if `s` matches one of the elements in the collection identified by `name`.
 
-Collection `c` can include patterns with `?` and `*` wildcards.
+The collection can include patterns with `?` and `*` wildcards.
 
 Example:
 
@@ -131,10 +132,10 @@ matchList(tags.request_ip, 'ip_white_list')
 ## `matches`
 
 ```javascript
-matches(string p, [string] c) boolean
+matches(string pattern, [string] strcoll) boolean
 ```
 
-Returns `true` if one of the elements in collection `c` matches the specified pattern `p`.
+Returns `true` if one of the elements in collection `strcoll` matches the specified `pattern`.
 
 The pattern supports `?` and `*` wildcards.
 
@@ -150,7 +151,7 @@ matches('*atsd*', property_values('docker.container::image'))
 [string].contains(string s) boolean
 ```
 
-Returns `true` if `s` is contained in the specified collection.
+Returns `true` if string `s` is contained in the specified collection.
 
 Example:
 
@@ -166,7 +167,7 @@ collection('ip_white_list').contains(tags.request_ip)
 
 Returns the number of elements in the collection.
 
-> Apply this function to any type of collection (string, number) as well as maps such as `entity.tags`.
+> The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
 
 Examples:
 
@@ -186,7 +187,7 @@ entity.tags.size()
 
 Returns `true` if the number of elements in the collection is zero.
 
-> Apply this function to any type of collection (string, number) as well as maps such as `entity.tags`.
+> The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
 
 Example:
 
@@ -197,10 +198,10 @@ collection('ip_white_list').isEmpty()
 ## `replacementTable`
 
 ```javascript
-replacementTable(string s) map
+replacementTable(string name) map
 ```
 
-Retrieves the replacement table identified by name `s` as a key-value map.
+Retrieves the replacement table identified by `name` as a key-value map.
 
 If the table is not found, the function returns an empty map.
 
@@ -227,12 +228,12 @@ randomItem(replacementTable('oncall-emails'))
 ## `excludeKeys`
 
 ```javascript
-excludeKeys([] m, [] c) map
+excludeKeys(map, [string] strcoll) map
 ```
 
-Returns a copy of the input map `m` without the keys specified in collection `c`.
+Returns a copy of the input key-value `map` without the keys specified in collection `strcoll`.
 
-The keys in collection `c` can contain wildcards `?` and `*` to remove multiple matching keys from the map.
+The keys in `strcoll` can contain wildcards `?` and `*` to remove multiple matching keys from the map.
 
 Examples:
 

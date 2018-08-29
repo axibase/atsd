@@ -104,10 +104,10 @@ stateMap = ['CA': 0.8, 'WA': 0.2]
 ```
 
 ```javascript
-stateMap = ["CA": 0.8, "WA": 0.2]
+countryMap = ['USA': 'North America', 'Brazil': 'South America']
 ```
 
-> Both single and double quotes can be used to specify map keys and values.
+Use single quotes to enclose keys and values.
 
 ### function
 

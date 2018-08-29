@@ -13,7 +13,7 @@
 
 This section demonstrates how to retrieve data from the database using the interactive data export form.
 
-Navigate to **Data > Export**.
+Open the **Data > Export* page.
 
 ![](./resources/data-export.png)
 

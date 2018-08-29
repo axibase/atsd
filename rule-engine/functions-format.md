@@ -21,10 +21,10 @@ Date formatting functions:
 ## `formatNumber`
 
 ```javascript
-formatNumber(double x, string s) string
+formatNumber(double x, string pattern) string
 ```
 
-Formats number `x` with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) pattern `s` using the server locale (US/US).
+Formats number `x` with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) `pattern` using the server locale (US/US).
 
 Example:
 
@@ -77,10 +77,10 @@ Examples:
 ## `convert`
 
 ```javascript
-convert(number x, string s) string
+convert(number x, string unit) string
 ```
 
-Divides the number `x` by the specified measurement unit `s` and formats the returned string with one fractional digit.
+Divides the number `x` by the specified measurement `unit` and formats the returned string with one fractional digit.
 
 The unit is case-insensitive and can be one of the following:
 
@@ -109,14 +109,12 @@ convert(1000 * 1000, 'M') // 1.0
 ## `date_format`
 
 ```javascript
-date_format(long t [, string p [, string z]]) string
+date_format(long time [, string pattern [, string zone]]) string
 ```
 
-Converts timestamp `t` to a string according to the specified [date pattern](../shared/time-pattern.md) `p` and the [time zone](../shared/timezone-list.md) `z`.
-If both the date pattern and the time zone are not specified, the input time `t` is formatted with the default ISO format in the UTC time zone.
-If time zone is not specified, the input time `t` is formatted using pattern `p` in server time zone.
-
-The input timestamp contains Unix time in milliseconds.
+Converts timestamp `time`, specified as Unix time in milliseconds, to a string according to the specified [date `pattern`](../shared/time-pattern.md) and the [time `zone`](../shared/timezone-list.md).
+If neither the date pattern nor the time zone are specified, the input time `t` is formatted with the default ISO format in the UTC time zone.
+If time zone is not specified, the input time `t` is formatted using `pattern` in the **server** time zone.
 
 Examples:
 

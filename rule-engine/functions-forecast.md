@@ -17,10 +17,10 @@ forecast() double
 
 Returns forecast value for the entity, metric, and tags in the current window.
 
-## `forecast(string n)`
+## `forecast(string name)`
 
 ```javascript
-forecast(string n) double
+forecast(string name) double
 ```
 
 Returns named forecast value for the entity, metric, and tags in the current window, for example `forecast('ltm')` .
@@ -36,26 +36,26 @@ Returns forecast standard deviation.
 ## `forecast_deviation`
 
 ```javascript
-forecast_deviation(double n) double
+forecast_deviation(number a) double
 ```
 
-Returns difference between a number `n` (such as the last value) and the forecast value (returned by `forecast()` function), divided by the forecast standard deviation.
+Returns difference between a number `a` (such as the last value) and the forecast value (returned by `forecast()` function), divided by the forecast standard deviation.
 
 The formula is:
 
 ```javascript
-(n - forecast())/forecast_stdev()
+(a - forecast())/forecast_stdev()
 ```
 
 ## `thresholdTime`
 
 ```javascript
-thresholdTime(number min, number max [, string i]) long
+thresholdTime(number min, number max [, string interval]) long
 ```
 
-Returns Unix time in milliseconds when the [stored forecast value](../forecasting/README.md) is outside of the `(min, max)` range for the first time during time interval `i`.
+Returns Unix time in milliseconds when the [stored forecast value](../forecasting/README.md) is outside of the `(min, max)` range for the first time during time interval `interval`.
 
-The interval `i` is specified as count and [unit](../api/data/series/time-unit.md), for example `1 WEEK`. If the time interval `i` is not specified, the function checks all available forecast values in the future.
+`interval` is specified as count and [unit](../api/data/series/time-unit.md), for example `1 WEEK`. If `interval` is not specified, the function checks all forecast values in the future.
 
 Thresholds `min` and `max` are ignored by the function if either is set to `null`. If both `min` and `max` are specified, the following rules apply:
 

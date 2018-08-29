@@ -25,24 +25,24 @@ Named collections are listed on the **Data > Named Collections** page.
 ## `entity_tag`
 
 ```javascript
-entity_tag(string e, string t) string
+entity_tag(string entity, string name) string
 ```
 
-Returns value of tag `t` for entity `e`.
+Returns value of tag `name` for entity `entity`.
 
 If the tag or the entity is not found, an empty string is returned.
 
 ## `entity_tags`
 
 ```javascript
-entity_tags(string e [, boolean f]) map
+entity_tags(string entity [, boolean format]) map
 ```
 
-Returns entity tags for entity `e` as a map.
+Returns entity tags for entity `entity` as a map.
 
 If the entity is not found, the function returns an empty map.
 
-If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using the applicable entity tag templates which are listed on the **Settings > Tag Templates** page.
+If the optional format argument `format` is set to `true`, the tag names in the map are converted to labels using the applicable entity tag templates which are listed on the **Settings > Tag Templates** page.
 
 To exclude specific tags from the results, use the `excludeKeys()` function:
 
@@ -87,24 +87,24 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 ## `entity_label`
 
 ```javascript
-entity_label(string e) string
+entity_label(string entity) string
 ```
 
-Returns label for entity `e`.
+Returns label for entity `entity`.
 
-If the entity is not found or the entity does not have a label, the input string `e` is returned.
+If the entity is not found or the entity does not have a label, the argument `entity` is returned.
 
 ## `getEntity`
 
 ```javascript
-getEntity(string e[,boolean l]) object
+getEntity(string entity [,boolean matchLabel]) Entity
 ```
 
-Retrieves an entity object by name. If `l` set to `true` entity is searched by label if `e` is not found by name. By default `l` is `false`.
+Retrieves an entity object by name. If `matchLabel` set to `true` entity is searched by label if `entity` is not found by name. By default `matchLabel` is `false`.
 
-Access object [fields](entity-fields.md) using dot notation, for example `getEntity('nurswgvml007').label`.
+Access `Entity` object [fields](entity-fields.md) using dot notation, for example `getEntity('nurswgvml007').label`.
 
-The function returns `null` if the entity `e` is not found.
+The function returns `null` if the entity is not found.
 
 Example:
 
@@ -116,16 +116,16 @@ getEntity('nurswgvml007').interpolate
 ## `getEntities`
 
 ```javascript
-getEntities(string m, string s, string e, string p) [object]
+getEntities(string metric, string startDate, string endDate, string expr) [Entity]
 ```
 
-Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`.
+Returns a list of [Entity](entity-fields.md) **objects** with last insert date for metric `metric` between `startDate` and `endDate` and matching the specified expression `expr`.
 
-Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). Refer to entity [fields](entity-fields.md) using dot notation.
+Expression `expr` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). Refer to entity [fields](entity-fields.md) using dot notation.
 
-Start date `s` and end date `e` are [ISO format](../shared/date-format.md) dates or a [calendar keyword](../shared/calendar.md#keywords).
+Start date `startDate` and end date `endDate` are [ISO format](../shared/date-format.md) dates or a [calendar keyword](../shared/calendar.md#keywords).
 
-To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
+To access the `n`-th object in the list, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
 Examples:
 
@@ -156,28 +156,30 @@ getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app 
 ## `getEntityCount`
 
 ```javascript
-getEntityCount(string m, string s, string e, object p) integer
+getEntityCount(string metric, string startDate, string endDate, string expr) integer
 ```
 
-Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`, for `integer` length. Identical to `getEntity(m,s,e,p).size()`.
+Returns a count of [Entity](entity-fields.md) **objects** with last insert date for metric `metric` between `startDate` and `endDate` and matching the specified expression `expr`.
+
+Identical to `getEntity(metric, startDate, endDate, expr).size()`.
 
 ## `getEntityName`
 
 ```javascript
-getEntityName(string e) string
+getEntityName(string entity) string
 ```
 
-Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner.
+Returns normalized (lowercase) entity name for input string `entity`. The function searches for entity by name `entity` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `entity` in a case-insensitive manner.
 
-If the entity cannot be found, the function returns the original input string `e`.
+If the entity cannot be found, the function returns the original `entity` argument.
 
 ## `collection`
 
 ```javascript
-collection(string s) [string]
+collection(string name) [string]
 ```
 
-Retrieves a list of strings for the specified named collection `s`. Named collections are defined on the **Data > Named Collections** page.
+Retrieves a list of strings for the specified collection identified by `name`. Named collections are defined on the **Data > Named Collections** page.
 
 If no collection is found, the function returns an empty list.
 
@@ -196,14 +198,14 @@ collection('dc-locations').contains(tags.location)
 ## `lookup`
 
 ```javascript
-lookup(string s, string k[, boolean b]) string
+lookup(string name, string key[, boolean def]) string
 ```
 
-Returns the value for key `k` from the replacement table `s`.
+Returns the value for key `key` from the replacement table identified by `name`.
 
 The function returns an empty string if the table is not found or if the table does not contain the specified key.
 
-If the optional boolean `b` parameter is specified and is set to `true`, the function returns the original key `k` in case the table is not found or if the key is not found.
+If the optional boolean `def` parameter is specified and is set to `true`, the function returns the original argument key in case the table is not found or if the key is not found.
 
 Example:
 
@@ -215,20 +217,20 @@ lookup('on-call', 'john.doe', true)
 ## `replacementTable`
 
 ```javascript
-replacementTable(string s) map
+replacementTable(string name) map
 ```
 
-Retrieves the replacement table identified by name `s` as a key-value map.
+Retrieves the replacement table identified by `name` as a key-value map.
 
 If the table is not found, the function returns an empty map.
 
 ## `property`
 
 ```javascript
-property(string s) string
+property(string expr) string
 ```
 
-Retrieves tag value for the entity in the current window given the [property search](property-search.md) expression `s`.
+Retrieves tag value for the entity in the current window given the [property search](property-search.md) expression `expr`.
 
 The function returns an empty string if the expression matches no properties.
 

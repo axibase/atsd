@@ -24,8 +24,8 @@ An array of query objects containing the following fields:
 |:---|:---|:---|
 | `rules`       | array | Array of rules which produced the alerts.        |
 | `metrics`     | array | Array of metric names to filter alerts. |
-| `severities`  | array | Array of [severity names](../../../api/data/severity.md)   |
-| `minSeverity` |  string   | Minimal severity [name](../../../api/data/severity.md) filter.  |
+| `severities`  | array | Array of [severity names](../../../shared/severity.md)   |
+| `minSeverity` |  string   | Minimal severity [name](../../../shared/severity.md) filter.  |
 | `acknowledged` |  boolean   | Acknowledgement status. If set, filters alerts for the specified status. |
 
 > Note that the `tags` filter is not supported.
@@ -60,7 +60,7 @@ An array of matching alert objects containing the following fields:
 | `entity` | string | Entity name. |
 | `metric` | string | Metric name.  |
 | `rule` | string | Rule name. |
-| `severity`  | string | [Severity](../../../api/data/severity.md) name.  |
+| `severity`  | string | [Severity](../../../shared/severity.md) name.  |
 | `tags` | object | Object containing `name=value` pairs, for example `tags: {"path": "/", "name": "sda"}` |
 | `repeatCount` | integer | Number of times when the expression evaluated to `true` sequentially.  |
 | `textValue` | string | Text value.  |

@@ -18,47 +18,48 @@ The current window is excluded from matching.
 ## `rule_open`
 
 ```javascript
-rule_open(string r[, string e[, string p]]) boolean
+rule_open(string rule [, string entity [, string expression]]) boolean
 ```
 
-Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified rule `r`, entity `e` and expression `p` to match other windows.
+Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified `rule`, `entity` and `expression` to match other windows.
 
 Returns `true` if a matching window is found, `false` otherwise.
 
 ## `rule_window`
 
 ```javascript
-rule_window(string r[, string e[, string p]]) object
+rule_window(string rule [, string entity [, string expression]]) Window
 ```
 
-Returns the first matching window for the specified rule `r`, entity `e` and expression `p` to match other windows.
+Returns the **first** matching [`Window`](window-fields.md#base-fields) object for the specified `rule`, `entity` and `expression` to match other windows.
 
 Returns `null` if no matching windows are found.
 
 Window [fields](window-fields.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_window('jvm_derived').entity`. In addition, the matched window provides the `lastText` field which contains the last message text received by the window.
 
-> Note:
-> * `entity` and `tags` are the same as in the last window command.
-> * If minimum interval is not set then `min_interval_expired = true`.
-> * `threshold`: the threshold value matched by the last command.
+Notes:
+
+* `entity` and `tags` are the same as in the last window command.
+* If minimum interval is not set then `min_interval_expired = true`.
+* `threshold`: the threshold value matched by the last command.
 
 ---
 
 Applies the following match conditions
 
 * Entity:
-  * If the entity argument `e` is not specified, the **current** entity in the window is used for matching.
-  * If the entity argument `e` is specified as `null` or empty string `''`, all entities are matched.
+  * If the `entity` is not specified, the **current** entity in the window is used for matching.
+  * If the `entity` is specified as `null` or empty string `''`, all entities are matched.
 
 * Expression:
-  * The expression `p` can include the following fields and supports wildcards in field values:
+  * The `expression` can include the following fields and supports wildcards in field values:
 
     |**Name**|**Description**|
     |---|---|
     |message |The text value, which is equal to `message` field in case of `message` command.|
     |tags and `tags.{name}`/`tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
-  * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
+  * The `expression` can include window [fields](window.md#window-fields) as placeholders.
 
 ### `rule_open` Examples
 
@@ -171,14 +172,14 @@ rule_window('slack-bot-cmd-confirm', entity, 'tags.event.user!="' + tags.event.u
 ## `rule_windows`
 
 ```javascript
-rule_windows(string r, string p) [object]
+rule_windows(string rule, string expression) [Window]
 ```
 
-Returns the collection of windows for the specified rule `r`, expression `p` and the same entity as in the current window.
+Returns the collection of [Window](window.md#window-fields) objects for the specified `rule`, `expression` and the same entity as in the current window.
 
 The following match conditions apply:
 
-* The expression `p` can include the following fields and supports wildcards in field values:
+* The `expression` can include the following fields and supports wildcards in field values:
 
     |**Name**|**Description**|
     |---|---|
@@ -186,16 +187,17 @@ The following match conditions apply:
     |tags and `tags.{name}`/`tags['name']`|Command tags.|
     |status|Window [status](README.md#window-status).|
 
-* The expression `p` can include window [fields](window.md#window-fields) as placeholders.
+* The `expression` can include window [fields](window.md#window-fields) as placeholders.
 
-To access the `n`-th element in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element).
+To access the `n`-th window in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element).
 
 Access window [fields](window-fields.md#base-fields) except `repeat_interval` via dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`. In addition, the matched windows provide the `lastText` field which contains the last message text received by the window.
 
-> Note:
-> * `tags` are the same as in the last window command;
-> * if minimum interval is not set then `min_interval_expired = true`;
-> * `threshold`: the threshold matched by the last command.
+Notes:
+
+* `tags` are the same as in the last window command;
+* if minimum interval is not set then `min_interval_expired = true`;
+* `threshold`: the threshold matched by the last command.
 
 Examples:
 

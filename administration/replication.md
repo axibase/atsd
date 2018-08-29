@@ -191,9 +191,9 @@ Output contains a list of ATSD tables, all starting with `atsd_`.
 
 ## Replication for New Tables
 
-New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as follows:
+New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as described below.
 
-> MASTER: Only complete this process on the master machine.
+> MASTER: Only complete this process on the MASTER server.
 
 Write the table schema to a file:
 
@@ -255,7 +255,7 @@ ink.java:replicateEntries(158)) - Total replicated: 1
 
 > MASTER: Only complete this process on the master machine.
 
-Open ATSD web interface and navigate to the **Alert > Rules** page.
+Open the **Alert > Rules** page in the ATSD web interface.
 
 ![](./images/replication_1.png)
 

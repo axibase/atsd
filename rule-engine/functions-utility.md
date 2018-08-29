@@ -99,10 +99,10 @@ Input | Type | Result
 ## `printObject`
 
 ```javascript
-printObject(object o, string f) string
+printObject(object obj, string format) string
 ```
 
-Prints the input object `o` as a two-column table in the specified format `f`.
+Prints the input object `obj` as a two-column table in the specified `format`.
 
 Supported formats:
 
@@ -120,7 +120,7 @@ Object `o` can be an `Entity` or a `Window` object which can be retrieved as fol
 * [`rule_window`](functions-rules.md#rule_window)
 * [`rule_windows`](functions-rules.md#rule_windows)
 
-Returns an empty string if the object `o` is `null`.
+Returns an empty string if `ojb` is `null`.
 
 Examples:
 
@@ -175,10 +175,10 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 ## `getURLHost`
 
 ```javascript
-getURLHost(string u) string
+getURLHost(string url) string
 ```
 
-Retrieves the **host** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
+Retrieves the **host** from URL specified in string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -190,12 +190,12 @@ getURLHost('https://example.org/en/products?type=database&status=1')
 ## `getURLPort`
 
 ```javascript
-getURLPort(string u) integer
+getURLPort(string url) integer
 ```
 
-Retrieves the **port** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
+Retrieves the **port** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
-If the URL `u` does not contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
+If `url` does not contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
 
 Example:
 
@@ -207,10 +207,10 @@ getURLPort('https://example.org/en/products?type=database&status=1')
 ## `getURLProtocol`
 
 ```javascript
-getURLProtocol(string u) string
+getURLProtocol(string url) string
 ```
 
-Retrieves the **protocol** from URL string `u`. If the URL `u` is `null`, empty or invalid, exception is thrown.
+Retrieves the **protocol** from URL string `url`. If `url` is `null`, empty or invalid, exception is thrown.
 
 Example:
 
@@ -222,10 +222,10 @@ getURLProtocol('https://example.org/en/products?type=database&status=1')
 ## `getURLPath`
 
 ```javascript
-getURLPath(string u) string
+getURLPath(string url) string
 ```
 
-Retrieves the **path** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
+Retrieves the **path** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -237,10 +237,10 @@ getURLPath('https://example.org/en/products?type=database&status=1')
 ## `getURLQuery`
 
 ```javascript
-getURLQuery(string u) string
+getURLQuery(string url) string
 ```
 
-Retrieves the **query string** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
+Retrieves the **query string** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -252,10 +252,10 @@ getURLQuery('https://example.org/en/products?type=database&status=1')
 ## `getURLUserInfo`
 
 ```javascript
-getURLUserInfo(string u) string
+getURLUserInfo(string url) string
 ```
 
-Retrieves the user credential part `username:password` from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
+Retrieves the user credential part `username:password` from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 

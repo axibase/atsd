@@ -12,10 +12,10 @@ Each window maintains a set of continuously updated fields which can be used in 
 `rule` | string | Rule name. | `memory_low`
 `metric` | string | Metric name. | `memory_free`
 `entity` | string | Entity name. | `nurswgvml007`
-`tags` | map | Command tags, serialized as `{key1=val1;key2=val2}`. | `{memtype=buffered}`
+`tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `[memtype: buffered]`
 `tags.memtype` | string | Command tag by name. | `buffered`
 `entity.displayName` | string | Entity label, if not empty. Otherwise, entity name. | `NURswgvml007`
-`entity.tags` | map | Entity tags, serialized as `{key1=val1;key2=val2}`. | `{version=community}`
+`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `[version: std]`
 `entity.tags.version` | string | Entity tag by name. | `community`
 `entity.label` | string | Entity field by name. | `NURswgvml007`
 `metric.label` | string | Metric field by name. | `Memory Free, Bytes`
@@ -45,43 +45,47 @@ Each window maintains a set of continuously updated fields which can be used in 
 Notes:
 
 * The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
-* Alert `severity` value is inherited from message `severity` when the **Logging: Severity** is set to **Undefined**.
+* Alert `severity` value is inherited from message `severity` when **Logging: Severity** is set to **Undefined**.
 
 ## Properties Fields
 
 |**Name**|**Type**|**Description**|
 |---|---|---|
-| `type` | string | Property type (same as `tags.type`). |
-| `keys` | map | Property keys. To retrieve key value, use `keys.{name}`. |
-| `properties` | map | Property tags. To retrieve tag value, use `properties.{name}`. |
+| `type` | string | Property type, same as `tags.type`. |
+| `keys` | map | Property keys, serialized as `[key1: val1, key2: val2]`.<br>To retrieve key value, use `keys.{name}`. |
+| `properties` | map | Property tags, serialized as `[key1: val1, key2: val2]`.<br>To retrieve tag value, use `properties.{name}`. |
 
-Notes:
-
-* The `tags` field for the `property` command contains the `keys` map and the `type` field.
+> The `tags` field for the `property` command contains the `keys` map and the `type` field.
 
 ## Date Fields
 
-**Name**|**Time Zone**|**Description**
+<!-- markdownlint-disable MD102 -->
+
+**Name**|**Data Type**|**Description**
 :---|---|:---
-`alert_open_time` | Server | Time when the window changed status to `OPEN`
-`alert_open_datetime` | UTC | Time when the window changed status to `OPEN`
-`received_time` | Server | Time when the current command is received by the server
-`received_datetime` | UTC | Time when the current command is received by the server
-`event_time` | Server | Time of the current command
-`event_datetime` | UTC | Time of the current command
-`window_first_time` | Server | Time of the earliest command in the window
-`window_first_datetime` | UTC | Time of the earliest command in the window
-`timestamp` | n/a | Time of the command that caused the window status event, in Unix time (milliseconds).
-`now` | Server | Current server time as a [`DateTime`](object-datetime.md) object.
-`alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`. Returns an empty string **On Open** status.
-`alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`. Returns an empty string **On Open** status.
+`now` | `DateTime` | Current server time.
+`open_time` | `DateTime` | Time when the window changed status to `OPEN`, or when the condition evaluated to `true` for the first time.
+`repeat_time` | `DateTime` | Last time when the condition evaluated to `true`, equal to `open_time` when the status changes to `OPEN`.
+`cancel_time` | `DateTime` | Time when the window changed status to `CANCEL`, or when the condition evaluated to `false` for the first time.
+`change_time` | `DateTime` | Last time when the window changed status.
+`add_time` | `DateTime` | Last time when command was added to window.
+`remove_time` | `DateTime` | Last time when command was removed from the window.
+`update_time` | `DateTime` | Last time when command was added or removed from the window.
+`command_time` | `DateTime` | Time of the command that was last added or removed from the window.
+`command_first_time` | `DateTime` | Time of the command with the smallest timestamp in the window.<br>`null` if the window is empty.
+`command_last_time` | `DateTime` | Time of the command with the largest timestamp in the window.<br>`null` if the window is empty.
+`window_duration` | `long` | Difference between `command_last_time` and `command_first_time` measured in milliseconds.<br>`0` if the window is empty.
+`alert_duration` | `string` | Interval between current time and `open_time`, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.<br>Returns an empty string **On Open** status.
+`alert_duration_interval` | `string` | Interval between current time and `open_time`, formatted as `alert_duration` with units, for example `1m:45s`.<br>Returns an empty string **On Open** status.
 
-Notes:
+<!-- markdownlint-enable MD102 -->
 
-* Fields ending with `_time` contain time in server time zone, for example `2017-05-30 14:05:39 PST`.
-* Fields ending with `_datetime` contain time in ISO format in UTC time zone, for example `2017-05-30T06:05:39Z`.
-* If **Check On Exit** option is enabled for a time-based window, some of the events are caused by _exiting_ commands in which case the `timestamp` placeholder contains the time of the removed command (oldest command), rounded to seconds.
-> The [`now`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.day_of_week == 'Thursday'`.
+**Notes**:
+
+* [`DateTime`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.millis`.
+* `DateTime` object fields that begin with `command_` contain the command timestamps, otherwise the fields are set based on server time.
+* `DateTime` object fields can be `null` if the event has not yet occurred or if the window is empty.
+* If **Check On Exit** option is enabled and the status change is caused by a removed command, the `command_time` field contains the timestamp of the removed command (oldest command), rounded to seconds.
 
 ## Details Tables
 

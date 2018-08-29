@@ -58,7 +58,7 @@ ATSD is a modular systems which includes the following components in addition to
 * Insert rows using [JDBC driver](https://github.com/axibase/atsd-jdbc/blob/master/insert.md).
 * Use API clients or storage drivers.
 * Install pre-integrated collectors/agents.
-* Deploy [Axibase Collectors](https://axibase.com/docs/axibase-collector/).
+* Deploy [Axibase Collectors](https://axibase.com/docs/axibase-collector/) to copy data from relational databases, plant historians, and IT infrastructure using open and proprietary protocols.
 
 ## Line Protocols
 

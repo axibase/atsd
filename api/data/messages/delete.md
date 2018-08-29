@@ -50,7 +50,7 @@ echo "enable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 echo "major_compact 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-The response for the above commands looks as follows:
+The sample response for the above commands is provided below.
 
 ```txt
 HBase Shell; enter 'help<RETURN>' for list of supported commands.

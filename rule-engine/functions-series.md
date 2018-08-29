@@ -6,6 +6,10 @@ These functions retrieve series records from the database at any stage of the ru
 
 The `db_last` and `db_statistic` functions retrieve the last stored value or calculate statistics from other stored values. The queried series can be different from the series in the current window.
 
+Related functions:
+
+* [`value`](functions-value.md)
+
 ## Reference
 
 * [`db_last`](#db_last)
@@ -13,35 +17,21 @@ The `db_last` and `db_statistic` functions retrieve the last stored value or cal
 
 ## `db_last`
 
-Retrieves the most recent value stored in the database for the specified series, regardless of the date of storage.
-
-Returns `Double.NaN` if no matching series is found.
-
-### `db_last(string m)`
-
 ```javascript
-db_last(string m) number
+db_last(string metric [, string entity [, string tags | map tags]]) number
 ```
 
-Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window.
+Retrieves the most recent (last) value stored in the database for the specified series. Returns `Double.NaN` if no matching series is found.
 
-Example:
+The `metric` argument specifies the name of the metric for which to retrieve the value. If no other arguments are specified, the data is loaded for same entity and tags as defined in the current window.
 
 ```javascript
 value > 60 && db_last('temperature') < 30
 ```
 
-> As an alternative, if the specified metric is received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command without querying the database.
+As an alternative, if the specified metric is received in the same `series` command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command **without** querying the database.
 
-### `db_last(string m, string e)`
-
-```javascript
-db_last(string m, string e) number
-```
-
-Retrieves the last value for the specified metric `m` and entity `e`.
-
-Specify entity `e` as a string literal value or with an `entity` field, in which case it represents the name of the entity in the current window.
+To load data for an entity, other than the entity in the current window, specify `entity` name as a literal string or a field in the second argument.
 
 Example:
 
@@ -50,110 +40,87 @@ value > 60 && db_last('temperature', 'sensor-01') < 30
 ```
 
 ```javascript
-// same as db_last('temperature')
-value > 60 && db_last('temperature', entity) < 30
+value > 60 && db_last('temperature', tags.target) < 30
 ```
 
-### `db_last(string m, string e, string t | [] t)`
-
-```javascript
-db_last(string m, string e, string t) number
-```
-
-```javascript
-db_last(string m, string e, [] t) number
-```
-
-Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`.
-
-Tags argument `t` can be specified as follows:
+To retrieve data for different series tags, specify them in the third argument:
 
 * Empty string `''` for no series tags.
 * String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
-* Map: `["tag1":"value1","tag2":"value2"]`
+* Key-value map: `['tag1':'value1','tag2':'value2']`
 * The `tags` field representing the grouping tags of the current window.
+
+```javascript
+db_last(string metric, string entity, string tags) number
+```
+
+```javascript
+db_last(string metric, string entity, map tags) number
+```
 
 Example:
 
 ```javascript
-value > 60 && db_last('temperature', 'sensor-01', 'stage=heating') < 30
+value > 60 && db_last('temperature', 'sensor-01', 'stage=heating,unit=c') < 30
 ```
 
 ## `db_statistic`
 
-Requires two arguments: `s` and `i`.
-
-Argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to all values within the selection interval.
-
-Argument `i` is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to current time.
-
-Returns `Double.NaN` if no matching series are found or if no records are present within the selection interval.
-
-### `db_statistic(string s, string i)`
-
 ```javascript
-db_statistic(string s, string i) number
+db_statistic(string function, string interval, [ string metric, [string entity, [string tags | map tags]]]) number
 ```
 
-Retrieves an aggregated value from the database for the same metric, entity and tags as defined in the current window.
+Returns the result of a statistical function applied to historical values loaded from the database. The function returns `Double.NaN` if no matching series are found or if no records are present within the selection interval.
 
-Example:
+The `function` argument accepts a [statistical function](../api/data/aggregation.md) name such as `avg` applied to all values within the selection interval.
 
-```javascript
-value > 60 && db_statistic('avg', '3 hour') > 30
-```
+The `interval` argument is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to **current time**.
 
-### `db_statistic(string s, string i, string m)`
+If no other arguments are provided, the data is loaded for same metric, entity and tags as defined in the current window.
 
 ```javascript
-db_statistic(string s, string i, string m) number
+avg() > 60 && db_statistic('avg', '3 hour') > 30
 ```
 
-Retrieves an aggregated value from the database for the specified metric `m` and the same entity and series tags as defined in the current window.
-
-Example:
+To load data for a metric, other than the metric in the current window, specify `metric` name as a literal string or a field in the third argument.
 
 ```javascript
-value > 60 && db_statistic('avg', '3 hour', 'temperature') < 50
+avg() > 60 && db_statistic('avg', '3 hour', 'temperature') < 50
 ```
 
-### `db_statistic(string s, string i, string m, string e)`
+To load data for an entity, other than the entity in the current window, specify `entity` name as a literal string or a field in the fourth argument.
 
 ```javascript
-db_statistic(string s, string i, string m, string e) number
+avg() > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01') < 50
 ```
 
-Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity can either be specified as a string or as `entity` to invoke current entity in the window.
-
-Example:
-
-```javascript
-value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01') < 50
-```
-
-### `db_statistic(string s, string i, string m, string e, string t | [] t)`
-
-```javascript
-db_statistic(string s, string i, string m, string e, string t) number
-```
-
-```javascript
-db_statistic(string s, string i, string m, string e, [] t) number
-```
-
-Retrieves an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`.
-
-The tags argument `t` can be specified as follows:
+To retrieve data for different series tags, specify them in the third argument:
 
 * Empty string `''` for no series tags.
 * String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
-* Map: `["tag1":"value1","tag2":"value2"]`
+* Key-value map: `['tag1':'value1','tag2':'value2']`
 * The `tags` field representing the grouping tags of the current window.
 
-Example:
+```javascript
+db_last(string metric, string entity, string tags) number
+```
 
 ```javascript
-value > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', '') < 50
+db_last(string metric, string entity, map tags) number
+```
+
+Examples:
+
+```javascript
+avg() > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', 'stage=heating,unit=c') < 50
+```
+
+```javascript
+avg() > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', ['stage':'heating', 'unit':'c']) < 50
+```
+
+```javascript
+avg() > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', tags) < 50
 ```
 
 ## Series Match Examples

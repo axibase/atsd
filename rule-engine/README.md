@@ -1,8 +1,8 @@
 # Rule Engine
 
-The rule engine enables automation of repetitive tasks based on real-time statistical analysis of incoming data.
+The rule engine automates repetitive tasks based on real-time statistical analysis of incoming data.
 
-Such tasks include triggering an outgoing webhook, executing a Python script, sending an [email](email.md)/[Slack](notifications/README.md) alert, or generating derived statistics.
+Such tasks include triggering an outgoing [webhook](notifications/README.md), executing a Python [script](scripts.md), sending an [email](email.md)/[Slack](notifications/README.md) alert, or generating [derived](derived.md) statistics.
 
 ![](./images/rule_actions_list.png)
 
@@ -44,6 +44,8 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 * [Rule Filter](filters.md) accepts data that satisfies the metric, entity, and tag filters specified in the rule.
 
+![Filter tab](./images/overview-filter-tab.png)
+
 ## Grouping
 
 Once the sample passes through the filter chain, the sample is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
@@ -60,12 +62,13 @@ If the **Group by Entity** option is cleared, the `entity` field is ignored for 
 
 The rule engine supports two types of windows:
 
-* Count-based
-* Time-based
+* **Count-based**
 
-**Count-based** windows accumulate up to the specified number of samples. The samples are sorted in the order received, with the most recently received sample being placed at the end of the array. When the window reaches the limit, the first sample (oldest by arrival time) is removed from the window to free up space at the end of the array for an incoming sample.
+  Count-based windows accumulate up to the specified number of samples. The samples are sorted in the order received, with the most recently received sample being placed at the end of the array. When the window reaches the limit, the first sample (oldest by arrival time) is removed from the window to free up space at the end of the array for an incoming sample.
 
-**Time-based** windows store samples that are timestamped within the specified interval of time, ending with the current time. The time-based window does not limit how many samples can be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
+* **Time-based**
+
+  Time-based windows store samples that are timestamped within the specified interval of time, ending with the current time. The time-based window does not limit how many samples can be held by the window and its time range is continuously updated. Old records are automatically removed from the window once they are outside of the time range.
 
 ## Condition Checking
 
@@ -215,7 +218,7 @@ The same condition can be generalized with a ratio as well.
 avg() / db_statistic('avg', '1 hour', 'page_views_per_minute') > 2
 ```
 
-As an alternative, use the [`value(metric)`](functions-value.md) function to access the last value for metrics submitted within the same `series` command or parsed from the same row in CSV files.
+As an alternative, use the [`value()`](functions-value.md) function to access the last value for metrics submitted within the same `series` command or parsed from the same row in CSV files.
 
 ```javascript
 value > 75 && value('page_views_per_minute') < 1000

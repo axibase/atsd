@@ -199,7 +199,7 @@ sudo systemctl daemon-reload
 
 Download [`scollector executable`](http://bosun.org/scollector/) for Windows.
 
-Navigate to the directory with the `exe` file and create a `scollector.toml` file in notepad.
+Change to the directory with the `exe` file and create a `scollector.toml` file in notepad.
 
 > Ensure the name of the file is `scollector.toml` and not `scollector.toml.txt`
 
