@@ -88,7 +88,7 @@ Returns the smallest of two numbers: `x` and `y`.
 cbrt(double x) double
 ```
 
-Returns `∛` of `x`.
+Returns cube root ∛ of `x`.
 
 ## `sqrt`
 

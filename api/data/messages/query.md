@@ -25,9 +25,9 @@ An array of query objects containing the following filtering fields:
 |`type`       |  string   | Message type. |
 |`source`       |  string   | Message source. |
 |`tags`          | object  | Object with `name=value` fields.<br>Matches records that contain tags specified in the request object.<br>The matching records can include additional tags, not listed in the object. |
-|`severity`     |  string   | Severity [name](../../../api/data/severity.md).  <br>Matches records with the specified severity.|
-|`severities`   |  array   | An array of severity [codes or names](../../../api/data/severity.md).  <br>Matches records with one of the specified severities.<br>Array elements can be specified as a string or as a number.|
-|`minSeverity`  |  string   | Minimum [code or name](../../../api/data/severity.md) severity filter. <br>Can be specified as a string or as a number. |
+|`severity`     |  string   | Severity [name](../../../shared/severity.md).  <br>Matches records with the specified severity.|
+|`severities`   |  array   | An array of severity [codes or names](../../../shared/severity.md).  <br>Matches records with one of the specified severities.<br>Array elements can be specified as a string or as a number.|
+|`minSeverity`  |  string   | Minimum [code or name](../../../shared/severity.md) severity filter. <br>Can be specified as a string or as a number. |
 |`expression` | string | Include messages that match a filter [expression](../../../api/meta/expression.md).<br>The expression can include fields: `type`, `source`, `tags`, `tags.{name}`, `message`,`severity`.<br>Example: `message LIKE 'Starting*'`.<br>Supported wildcards: `*` and `?`.|
 
 * `severity`, `minSeverity`, and `severities` fields are case **insensitive**.
@@ -79,7 +79,7 @@ An array of matching message objects containing the following fields:
 |`type` | string | Message type. |
 |`source` | string | Message source. |
 |`entity` | string | Entity name. |
-|`severity` | string | Message [severity](../../../api/data/severity.md) name. |
+|`severity` | string | Message [severity](../../../shared/severity.md) code. |
 |`tags` | object |  Object containing `name=value` fields, for example `tags: {"path": "/", "name": "sda"}`. |
 |`message` | string | Message text. |
 |`date` | string | Message record creation date in [ISO format](../../../shared/date-format.md#supported-formats). |

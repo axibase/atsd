@@ -40,7 +40,7 @@ db_message_last('1 hour', 'webhook', 'github').timestamp
 | `type`       |  string   | Message type. |
 | `source`       |  string   | Message source. |
 | `tags`          | map  | Message tags.|
-| `severity`     |  string   | Message severity [code](../api/data/severity.md). |
+| `severity`     |  string   | Message severity [code](../shared/severity.md). |
 | `timestamp`   |  string   | Record time as Unix time in milliseconds.|
 | `message` | string | Message text. |
 | `date` | string | `null`. Use `timestamp` field instead. |

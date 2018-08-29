@@ -55,7 +55,7 @@ An array of matching alert objects containing the following fields:
 | `rule` | string | Rule name. |
 | `ruleExpression` | string | Rule expression. |
 | `ruleFilter` | string | Rule filter. |
-| `severity`  | string | [Severity](../../../api/data/severity.md) code.  |
+| `severity`  | string | [Severity](../../../shared/severity.md) code.  |
 | `tags` | string | Concatenated `name=value` pairs, for example `file_system=/dev/sda1;mount_point=/` |
 | `repeatCount` | integer | Number of times when the expression evaluated to `true` sequentially.  |
 | `alert` | string | Alert message.  |

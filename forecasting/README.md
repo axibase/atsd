@@ -96,8 +96,8 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 Tool | Description | Example
 --|--|--
-Calculate Parameters | Click **Calculate Parameters** to calculate algorithm constants. | ![](./images/calculate-parameters.png)
-Run | Execute the forecast job.<br>Use this tool to test a forecast.<br>ATSD returns the number of calculated forecasts. | ![](./images/forecast-run.png)
+Calculate Parameters | Click **Calculate Parameters** to calculate algorithm parameters. | ![](./images/calculate-parameters.png)
+Run | Execute the forecast job.<br>Use this tool to test a forecast.<br>The response contains the number of calculated forecasts. | ![](./images/forecast-run.png)
 Export | Export forecast data in CSV format.| ![](./resources/forecasts_14.png)
 Show Meta| Display parameters used to calculate the forecast.<br>Metadata is stored with the forecast.<br>Collection interval is an interval within the real data extracted to build the forecast. | ![](./images/show-meta.png)
 

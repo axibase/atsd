@@ -36,7 +36,7 @@ An array of message objects.
 | `source` | string | Message source. |
 | `entity` | string | **[Required]** Entity name. |
 | `date` | string | [ISO date](../../../shared/date-format.md#supported-formats), for example `2016-05-25T00:15:00Z`.<br>Set to current server time if omitted. |
-| `severity` | string | [Severity](../severity.md) name. |
+| `severity` | string | [Severity](../../../shared/severity.md) name. |
 | `tags` | object | An object containing `name=value` pairs, for example tags: `{"path": "/", "name": "sda"}`. |
 | `message` | string | Message text. |
 | `persist` | boolean | Persist message in the database.<br>Default: `true`.<br>If disabled, the message is only processed by the rule-engine. |

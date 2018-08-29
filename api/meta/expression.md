@@ -8,8 +8,8 @@
 | `label` | Entity or metric label. |
 | `{field-name}` | Entity or metric field by name, such as `createdDate` or `retentionDays`. |
 | `tags.{name}` | Value of tag with name `name`, for example, `tags.location` or `tags.table`. |
-| `message`| Message text in [messages methods](../../api/data/messages/README.md).|
-| `severity`|Message severity [name](../../api/data/severity.md) in [messages methods](../../api/data/messages/README.md).|
+| `message`| Message text in the [messages methods](../../api/data/messages/README.md).|
+| `severity`|Message severity [code](../../shared/severity.md) in the [messages methods](../../api/data/messages/README.md).|
 
 * All tags are string variables.
 * Tag names are case-**insensitive**, for example, `tags.location` and `tags.Location` are equal.

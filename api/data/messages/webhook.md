@@ -187,7 +187,7 @@ Use these parameters to set message fields to literal values.
 | `entity` | Message entity. |
 | `date` | Message date and time in [ISO format](../../../shared/date-format.md#supported-formats). |
 | `message` | Message text. |
-| `severity` | Message severity specified as an [integer](../severity.md) or as a string constant. |
+| `severity` | Message severity as an integer or text [code](../../../shared/severity.md). |
 | `datetimePattern` | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [date pattern](../../../shared/time-pattern.md). |
 
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
@@ -209,7 +209,7 @@ Command parameters set message field values from JSON field values.
 | `command.entity` | Message entity.  |
 | `command.date` | Message time in [ISO format](../../../shared/date-format.md#supported-formats), Unix time milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
 | `command.message` | Message text. |
-| `command.severity` | Message severity specified as an [integer](../severity.md) or as a constant. |
+| `command.severity` | Message severity as an integer or text [code](../../../shared/severity.md). |
 
 `/api/v1/messages/webhook/jenkins?command.entity=server&command.type=event`
 
@@ -237,7 +237,7 @@ Header parameters set message field values from header values.
 | `header.date` | Message date and time in [ISO format](../../../shared/date-format.md#supported-formats). |
 | `header.message` | Message text. |
 | `header.tag.{name}` | Message tag. |
-| `header.severity` | Message severity specified as an [integer](../severity.md) or as a constant. |
+| `header.severity` | Message severity as an integer or text [code](../../../shared/severity.md). |
 
 `/api/v1/messages/webhook/github?header.tag.event=X-GitHub-Event`
 
