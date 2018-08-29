@@ -69,7 +69,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 ## Create Webhook in ATSD
 
-* Navigate to **Alerts > Outgoing Webhooks**.
+* Open the **Alerts > Outgoing Webhooks** page.
 * Click an existing `DISCORD` template, or click **Create** and select the `DISCORD` type.
 * Specify the unique `Name` of the notification.
 
@@ -115,12 +115,12 @@ location /api/webhooks {
 
 * Create a new rule or import an existing rule for a built-in metric as described below.
 * Download the file [rules.xml](./resources/rules.xml).
-* Navigate to **Alerts > Rules > Import**.
+* Open the **Alerts > Rules > Import** page.
 * Check **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
 ### Configure Webhook
 
-* Navigate to **Alerts > Rules** and select the imported rule.
+* Open the **Alerts > Rules** page and select the imported rule.
 * Open the **Webhooks** tab.
 * Select Discord from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.

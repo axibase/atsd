@@ -39,7 +39,7 @@
 
 ### Overview
 
-This document describes the configuration of a CSV Parser to read the CSV file above and insert the data into ATSD. To create a new CSV parser, navigate to the **Data > CSV Parsers** page.
+This document describes the configuration of a CSV Parser to read the CSV file above and insert the data into ATSD. To create a new CSV parser, open the **Data > CSV Parsers** page.
 
 ![](./images/parsers-page.png)
 

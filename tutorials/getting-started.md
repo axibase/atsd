@@ -110,7 +110,7 @@ At this stage, you have collected temperature observations from the chemical rea
 
 To better organize the data, classify the `br-1905` entity and clarify what kind of temperature the device collects.
 
-Navigate to **Entities** from the left menu in the ATSD web interface and search for `br-1905`. The search bar supports [wildcards](../search/entity-search.md#wildcards) and partial matching.
+Open the **Entities** page from the left menu in the ATSD web interface and search for `br-1905`. The search bar supports [wildcards](../search/entity-search.md#wildcards) and partial matching.
 
 ![](./resources/entity-search.png)
 

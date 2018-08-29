@@ -8,13 +8,11 @@ At the end of the installation process the log displays the ATSD IP address and 
 
 ![](./images/atsd_install_shell.png )
 
-Access the ATSD web interface from the secure port.
+Access the database web interface on the HTTPS protocol, port `8443`.
 
 ```txt
 https://192.0.2.116:8443
 ```
-
-Open your browser and navigate to port `8443` on the target server.
 
 ## Administrator Account
 

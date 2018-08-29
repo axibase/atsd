@@ -255,7 +255,7 @@ ink.java:replicateEntries(158)) - Total replicated: 1
 
 > MASTER: Only complete this process on the master machine.
 
-Open ATSD web interface and navigate to the **Alert > Rules** page.
+Open the **Alert > Rules** page in the ATSD web interface.
 
 ![](./images/replication_1.png)
 

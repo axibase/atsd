@@ -14,7 +14,7 @@ It can be also created **programmatically** by specifying a boolean criteria aga
 
 The parent group, if specified, restricts possible members to members of the parent group.
 
-Navigate to **Settings > Entity Groups** to configure a new or existing entity group.
+Open the **Settings > Entity Groups** page to configure a new or existing entity group.
 
 ![](./images/settings-entity-groups.png)
 

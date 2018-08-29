@@ -12,7 +12,7 @@ Custom mail client formatting options such as [header and footer](../administrat
 
 ## Enable Notifications
 
-Navigate to the **Email Notifications** tab.
+Open the **Email Notifications** tab.
 
 ![](./images/email-tab-rule.png)
 
