@@ -95,7 +95,8 @@
         ,{ "pattern": "https://www.iowa.gov/" }
         ,{ "pattern": "https://cms.montgomerycollege.edu/EDU/Department.aspx?id=45574" }
         ,{ "pattern": "http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmptranslate.html" }
-        
-        
+        ,{ "pattern": "https://www.boi.org.il/en/Pages/Default.aspx"}
+        ,{ "pattern": "https://www.boi.org.il/en/DataAndStatistics/Pages/Default.aspx"}
+        ,{ "pattern": "https://www.boi.org.il/en/DataAndStatistics"}
          
     ]}
