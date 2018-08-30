@@ -156,10 +156,10 @@ first() double
 
 Returns first series value. Same as `first(0)`.
 
-## `first(integer index)`
+## `first(int index)`
 
 ```csharp
-first(integer index) double
+first(int index) double
 ```
 
 Returns `n`-th value from start. First value has index of `0`.
@@ -172,10 +172,10 @@ last() double
 
 Returns last value. Same as `last(0)`.
 
-## `last(integer index)`
+## `last(int index)`
 
 ```csharp
-last(integer index) double
+last(int index) double
 ```
 
 Returns `n`-th value from last value. Last value has index of `0`.
@@ -188,10 +188,10 @@ diff() double
 
 Calculates difference between `last` and `first` values. Same as `last() - first()`.
 
-## `diff(integer i)`
+## `diff(int i)`
 
 ```csharp
-diff(integer i) double
+diff(in i) double
 ```
 
 Calculates difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
@@ -217,7 +217,7 @@ Calculates difference between `last` and `first` values. Same as `diff()`.
 ## `new_maximum`
 
 ```javascript
-new_maximum() boolean
+new_maximum() bool
 ```
 
 Returns `true` if last value is greater than any previous value.
@@ -225,7 +225,7 @@ Returns `true` if last value is greater than any previous value.
 ## `new_minimum`
 
 ```javascript
-new_minimum() boolean
+new_minimum() bool
 ```
 
 Returns `true` if last value is smaller than any previous value.

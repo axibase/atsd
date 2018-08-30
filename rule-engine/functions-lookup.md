@@ -156,7 +156,7 @@ getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app 
 ## `getEntityCount`
 
 ```csharp
-getEntityCount(string metric, string startDate, string endDate, string expr) integer
+getEntityCount(string metric, string startDate, string endDate, string expr) int
 ```
 
 Returns a count of [Entity](entity-fields.md) **objects** with last insert date for metric `metric` between `startDate` and `endDate` and matching the specified expression `expr`.

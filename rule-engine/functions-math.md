@@ -127,7 +127,7 @@ Returns the base 10 logarithm of `x`.
 ## `signum`
 
 ```csharp
-signum(double x) integer
+signum(double x) int
 ```
 
 Returns the `signum` function of the argument: `0` if the argument is `0`, `1` if the argument is greater than `1`, `-1` if the argument is less than `0`.

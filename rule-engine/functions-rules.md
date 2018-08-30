@@ -18,7 +18,7 @@ The current window is excluded from matching.
 ## `rule_open`
 
 ```csharp
-rule_open(string rule [, string entity [, string expression]]) boolean
+rule_open(string rule [, string entity [, string expression]]) bool
 ```
 
 Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified `rule`, `entity` and `expression` to match other windows.

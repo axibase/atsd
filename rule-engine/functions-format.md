@@ -36,7 +36,7 @@ formatNumber(3.14159, '#.##')
 ## `formatBytes`
 
 ```csharp
-formatBytes(number x, boolean si) string
+formatBytes(number x, bool si) string
 ```
 
 Returns the total number of bytes `x` in human-readable format. Identifies the largest possible unit (from Byte to Exabyte) such that the number `x` is equal to or exceeds `1` such unit. Units are decimal-based (`1000`) if the `si` parameter is set to `true`, and binary (`1024`) otherwise.
