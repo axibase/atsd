@@ -38,8 +38,8 @@ Alternatively, manually assemble inline links using syntax supported by the webh
 
 ## `getEntityLink`
 
-```javascript
-getEntityLink(string entity [, boolean matchLabel [, string format]]) string
+```csharp
+getEntityLink(string entity [, bool matchLabel [, string format]]) string
 ```
 
 Returns the URL to the **Entity Editor** page for entity `entity` on the target ATSD instance. The function URL encoded the entity name if necessary.
@@ -68,8 +68,8 @@ serverLink + '/entity/' + urlencode(entity)
 
 ## `getPropertyLink`
 
-```javascript
-getPropertyLink(string entity, string type [, boolean matchLabel [, string format]]) string
+```csharp
+getPropertyLink(string entity, string type [, bool matchLabel [, string format]]) string
 ```
 
 Returns the URL to the property table for entity `entity` and property type `type` on the target database server.
@@ -94,7 +94,7 @@ Returned inline link:
 
 ## `getRuleLink`
 
-```javascript
+```csharp
 getRuleLink([string format]) string
 ```
 
@@ -106,7 +106,7 @@ The link name is set to rule name in inline mode.
 
 ## `getCsvExportLink`
 
-```javascript
+```csharp
 getCsvExportLink([string format]) string
 ```
 
@@ -120,7 +120,7 @@ The link name is set to **CSV Export** link in inline mode.
 
 ## `getHtmlExportLink`
 
-```javascript
+```csharp
 getHtmlExportLink([string format]) string
 ```
 
@@ -134,7 +134,7 @@ Displayed as **HTML Export** link in inline mode.
 
 ## `getChartLink`
 
-```javascript
+```csharp
 getChartLink([string format]) string
 ```
 
@@ -160,7 +160,7 @@ The following inline link is returned:
 
 ## `addLink`
 
-```javascript
+```csharp
 addLink(string label, string url) string
 ```
 

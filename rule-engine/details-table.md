@@ -8,7 +8,7 @@ Decimal numbers presented in the table are rounded to 5 significant digits, exce
 
 ## Syntax
 
-```java
+```csharp
 detailsTable(string format)
 ```
 

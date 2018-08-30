@@ -17,7 +17,7 @@ Related functions:
 
 ## `db_last`
 
-```javascript
+```csharp
 db_last(string metric [, string entity [, string tags | map tags]]) number
 ```
 
@@ -50,11 +50,11 @@ To retrieve data for different series tags, specify them in the third argument:
 * Key-value map: `['tag1':'value1','tag2':'value2']`
 * The `tags` field representing the grouping tags of the current window.
 
-```javascript
+```csharp
 db_last(string metric, string entity, string tags) number
 ```
 
-```javascript
+```csharp
 db_last(string metric, string entity, map tags) number
 ```
 
@@ -66,7 +66,7 @@ value > 60 && db_last('temperature', 'sensor-01', 'stage=heating,unit=c') < 30
 
 ## `db_statistic`
 
-```javascript
+```csharp
 db_statistic(string function, string interval, [ string metric, [string entity, [string tags | map tags]]]) number
 ```
 

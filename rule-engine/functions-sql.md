@@ -10,7 +10,7 @@ These functions return the results of a user-defined SQL query.
 
 ## `executeSqlQuery`
 
-```javascript
+```csharp
 executeSqlQuery(string query) collection[collection[string]]
 ```
 
@@ -35,7 +35,8 @@ executeSqlQuery('SELECT datetime, value FROM http.sessions WHERE datetime > curr
 ```
 
 ```javascript
-executeSqlQuery("SELECT entity, avg(value) AS \"Average Value\" FROM jvm_memory_used WHERE datetime > current_hour GROUP BY entity")
+executeSqlQuery("SELECT entity, avg(value) AS \"Average Value\" " +
+                "FROM jvm_memory_used WHERE datetime > current_hour GROUP BY entity")
 ```
 
 ```css

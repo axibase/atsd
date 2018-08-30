@@ -52,7 +52,8 @@ now.day_of_week == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
-// returns true if difference between current Unix time (long, milliseconds) and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
+// returns true if difference between current Unix time (long, milliseconds)
+// and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
 (now.millis - create_ms) > 15*60000
 ```
 
@@ -116,7 +117,7 @@ Returns time when the first command is received by the window, in Unix time with
 
 ### `milliseconds`
 
-```javascript
+```csharp
 milliseconds(string date [,string pattern [,string zone]]) long
 ```
 
@@ -140,7 +141,7 @@ timestamp - milliseconds(property('docker.container::startedAt')) >  5*60000
 
 ### `seconds`
 
-```javascript
+```csharp
 seconds(string date [,string pattern [,string zone]]) long
 ```
 
@@ -148,11 +149,11 @@ Accepts the same arguments as the [`milliseconds`](#milliseconds) function with 
 
 ### `elapsedTime`
 
-```javascript
+```csharp
 elapsedTime(long time) long
 ```
 
-```javascript
+```csharp
 elapsedTime(string date) long
 ```
 
@@ -185,11 +186,11 @@ formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 
 ### `elapsed_minutes`
 
-```javascript
+```csharp
 elapsed_minutes(long time) long
 ```
 
-```javascript
+```csharp
 elapsed_minutes(string date) long
 ```
 
@@ -199,7 +200,7 @@ Returns the same result as the `elapsedTime` function divided by `60000`.
 
 ### `date_parse`
 
-```javascript
+```csharp
 date_parse(string date [,string pattern [,string zone]]) DateTime
 ```
 
@@ -262,7 +263,7 @@ date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS Z
 
 ### `to_datetime`
 
-```javascript
+```csharp
 to_datetime(long time [, string zone]) DateTime
 ```
 

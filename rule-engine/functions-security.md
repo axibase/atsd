@@ -20,40 +20,40 @@ As an alternative to `if/else` syntax, set the optional `err` parameter to `true
 
 ## `userInGroup`
 
-```javascript
-userInGroup(string user, string group [, boolean err]) boolean
+```csharp
+userInGroup(string user, string group [, bool err]) bool
 ```
 
 Returns `true` if the `user` exists, is enabled, and belongs to the specified user `group`.
 
 ## `userHasRole`
 
-```javascript
-userHasRole(string user, string role [, boolean err]) boolean
+```csharp
+userHasRole(string user, string role [, bool err]) bool
 ```
 
 Returns `true` if the `user` exists, is enabled, and has the specified [`role`](../administration/user-authorization.md#role-based-access-control).
 
 ## `userAllowEntity`
 
-```javascript
-userAllowEntity(string user, string entity [, boolean err]) boolean
+```csharp
+userAllowEntity(string user, string entity [, bool err]) bool
 ```
 
 Returns `true` if the `user` exists, is enabled, and has [`READ`](../administration/user-authorization.md#entity-permissions) permission for the specified `entity`.
 
 ## `userAllowEntityGroup`
 
-```javascript
-userAllowEntityGroup(string user, string entityGroup [, boolean err]) boolean
+```csharp
+userAllowEntityGroup(string user, string entityGroup [, bool err]) bool
 ```
 
 Returns `true` if the `user` exists, is enabled, and has [`READ`](../administration/user-authorization.md#entity-permissions) permission to the specified `entityGroup`.
 
 ## `userAllowPortal`
 
-```javascript
-userAllowPortal(string user, string portal [, boolean err]) boolean
+```csharp
+userAllowPortal(string user, string portal [, bool err]) bool
 ```
 
 Returns `true` if the user `user` exists, is enabled, and has permissions to view the specified `portal`.

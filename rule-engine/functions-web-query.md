@@ -17,7 +17,7 @@ These functions execute an HTTP request to an external web service and return a 
 
 ## `queryConfig`
 
-```javascript
+```csharp
 queryConfig(string n, [map p]) response
 ```
 
@@ -74,7 +74,7 @@ The target URL receives the following JSON payload sent as `application/json`:
 
 ## `queryGet`
 
-```javascript
+```csharp
 queryGet(string u, [map c]) response
 ```
 
@@ -92,7 +92,7 @@ queryGet("https://ipinfo.io/1.1.1.1/json").content
 
 ## `queryPost`
 
-```javascript
+```csharp
 queryPost(string u, [map c]) response
 ```
 

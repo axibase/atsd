@@ -17,8 +17,8 @@ The current window is excluded from matching.
 
 ## `rule_open`
 
-```javascript
-rule_open(string rule [, string entity [, string expression]]) boolean
+```csharp
+rule_open(string rule [, string entity [, string expression]]) bool
 ```
 
 Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified `rule`, `entity` and `expression` to match other windows.
@@ -27,7 +27,7 @@ Returns `true` if a matching window is found, `false` otherwise.
 
 ## `rule_window`
 
-```javascript
+```csharp
 rule_window(string rule [, string entity [, string expression]]) Window
 ```
 
@@ -66,10 +66,11 @@ Applies the following match conditions
 ```javascript
 /* Evaluates to `true` if the average value of samples in the current window exceeds 10
 and if the 'disk_used_check' rule is open for the same entity. */
-  avg() > 10 && rule_open('disk_used_check')
+avg() > 10 && rule_open('disk_used_check')
 
 /* Match using Message Fields. */
-  rule_open('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
+rule_open('disk_used_check', 'nurswgvml007',
+          'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
 
 Assume the following windows have status `REPEAT` and the function is called from the rule `test_rule_open`:
@@ -160,18 +161,20 @@ and if the first window for 'disk_used_check' rule in the same entity has any ot
 avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'OPEN'
 
 /* Match using Message Fields. */
-rule_window('disk_used_check', 'nurswgvml007', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
+rule_window('disk_used_check', 'nurswgvml007',
+            'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 
 /* Match using wildcard. */
 rule_window('jvm_derived', 'nurswgvml007', "tags.container-name LIKE 'axi*'").repeat_count
 
 /* Used the same entity as in the current window. */
-rule_window('slack-bot-cmd-confirm', entity, 'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
+rule_window('slack-bot-cmd-confirm', entity,
+            'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
 ```
 
 ## `rule_windows`
 
-```javascript
+```csharp
 rule_windows(string rule, string expression) [Window]
 ```
 
@@ -207,7 +210,8 @@ with the same value for 'tags.host' as at the current window. */
 rule_windows('jvm_derived',"tags.host='" + tags.host + "'")
 
 /* Match with tags, message and status.*/
-rule_windows('slack-bot-cmd-confirm', 'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
+rule_windows('slack-bot-cmd-confirm',
+             'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
 
 /* Access to window fields. */
 rule_windows('jvm_derived',"tags.port='22'").lastText
