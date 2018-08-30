@@ -56,7 +56,7 @@ SELECT * FROM jvm_memory_used
   AND datetime > NOW - 10*HOUR
 ```
 
-The correct syntax is to use round :
+The correct syntax is to use round brackets:
 
 ```sql
 SELECT * FROM jvm_memory_used
