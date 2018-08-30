@@ -481,13 +481,18 @@ ssh -i /home/axibase/.ssh/def.key ${host} "osqueryi \"${query}\""
 #### Function
 
 ```javascript
-${scriptOut('osquery.sh', ['example.org', "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '0.0.0.0';"])}
+${scriptOut('osquery.sh',
+            ['example.org',
+            "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports " +
+            "JOIN processes USING (pid) WHERE listening_ports.address = '0.0.0.0';"])}
 ```
 
 #### Command
 
 ```sh
-ssh -i /home/axibase/.ssh/def.key example.org 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
+ssh -i /home/axibase/.ssh/def.key example.org \
+      'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports \
+      JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
 
 #### Output

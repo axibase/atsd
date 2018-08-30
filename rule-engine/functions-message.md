@@ -15,7 +15,9 @@ The `db_message_count` and `db_message_last` functions can be used to verify the
 ## `db_message_count`
 
 ```javascript
-db_message_count(string interval, string type, string source[, string tags | map tags[, string entity[, string expression]]]) long
+db_message_count(string interval, string type, string source
+                          [, string tags | map tags
+                                    [, string entity[, string expression]]]) long
 ```
 
 Returns the number of message records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See matching rules [below](#matching-rules).
@@ -23,7 +25,9 @@ Returns the number of message records matching the specified `interval`, message
 ## `db_message_last`
 
 ```javascript
-db_message_last(string interval, string type, string source[, string tags | map tags[, string entity[, string expression]]]) Message
+db_message_last(string interval, string type, string source
+                          [, string tags | map tags
+                                    [, string entity[, string expression]]]) Message
 ```
 
 Returns the most recent [message](../api/data/messages/query.md) record for the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See [Matching Rules](#matching-rules).
@@ -48,7 +52,9 @@ db_message_last('1 hour', 'webhook', 'github').timestamp
 ## `db_messages`
 
 ```javascript
-db_messages(string interval, string type, string source[, string tags | map tags[, string entity[, string expression]]]) [Message]
+db_messages(string interval, string type, string source
+                          [, string tags | map tags
+                                    [, string entity[, string expression]]]) [Message]
 ```
 
 Returns a list of [message](../api/data/messages/query.md) records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`.
@@ -121,7 +127,8 @@ for 'type=compaction', any source, any tags and all entities. */
 db_message_count('1 hour', 'compaction', '',  '', '*')
 
 /* Counts messages with the same text as in the last command, but from different users. */
-db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity, 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
+db_message_count('1 minute', 'webhook', 'slack', 'event.type=' + tags.event.type, entity,
+                 'message=' + message + 'AND tags.event.user!=' + tags.event.user)
 ```
 
 ### `db_message_last` Examples
@@ -135,7 +142,8 @@ avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 
 ```javascript
 /* Retrieves the last message with text beginning 'docker start sftp*'. */
-db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
+db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message',
+                'slack', 'message LIKE "docker start sftp*"')
 
 /* Returns the most recent message within 1 day for the current entity,
 containing tag 'api_app_id=583' and regardless of type or source. */

@@ -34,7 +34,8 @@ property('docker.container::image')
 ```
 
 ```javascript
-/* Returns the most recent value if it received later than 2018-01-16T15:38:04.000Z, otherwise returns an empty string */
+/* Returns the most recent value if it received later than 2018-01-16T15:38:04.000Z,
+otherwise returns an empty string */
 property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
 
@@ -164,7 +165,8 @@ property_map('nurswgvml007','configuration::')
 ```
 
 ```javascript
-/* Returns map if the most recent property record received later than 00:00:00 of the current day, otherwise returns an empty map */
+/* Returns map if the most recent property record received later than 00:00:00 of the current day,
+otherwise returns an empty map */
 property_map('nurswgvml007','configuration::', 'today')
 ```
 
