@@ -6,14 +6,16 @@
 | --- | :--- | :--- |
 | RAM | `4+` GB | `16+` GB |
 | Processor | `10+` GHz | `10+` GHz |
-| Disk Type | Magnetic or SSD | SSD |
+| Disk Type | Magnetic or SSD | Magnetic or SSD |
 
-> Processor capacity is calculated as the number of CPU cores multiplied by clock speed, for example `4` x `2.5` GHz = `10` GHz.
+> To calculate the available CPU capacity, multiply the number of cores by CPU clock speed, for example `4` x `2.5` GHz = `10` GHz.
 
 ## Disk Space
 
 * Application files: `5` GB.
-* Data Files: `10` GB **minimum**. This total depends on the amount of collected data, [compression](../administration/compaction/README.md), [retention](../administration/data_retention.md), and replication settings.
+* Data Files: `10` GB **minimum**. 
+
+> The required disk space depends on the amount of collected data, [compression](../administration/compaction/README.md), and [retention](../administration/data_retention.md) settings.
 
 ## Processor Architecture
 

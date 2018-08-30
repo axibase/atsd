@@ -181,7 +181,7 @@ To setup the server and client on separate servers, refer to the [How to Config
 
 #### Configure Sensu to send data to ATSD
 
-To send data into ATSD, you need a TCP handler, for example:
+To send data into ATSD, defined a TCP handler.
 
 [Official Sensu Handler guide.](https://sensuapp.org/docs/latest/getting-started-with-handlers)
 
@@ -200,7 +200,7 @@ To send data into ATSD, you need a TCP handler, for example:
 }
 ```
 
-Including the `"only_check_output"` `mutator` is crucial. Without it the Sensu server is going to send the entire JSON output doc into ATSD, with all the metadata and not just the necessary Graphite output.
+Including the `"only_check_output"` `mutator` is crucial. Without it the Sensu server is going to send the entire JSON output doc into ATSD, with the metadata and not just the necessary Graphite output.
 
 You have to find and download a check plugin (or write one yourself).
 A large variety of Sensu community plugins, mainly written in Ruby, is available here: [https://github.com/sensu-plugins](https://github.com/sensu-plugins)

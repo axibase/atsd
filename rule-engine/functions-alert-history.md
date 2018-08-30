@@ -55,8 +55,8 @@ To call this function, enable [Alert History](logging.md#logging-to-database) lo
     last_open().timestamp > 0 && value > last_open().value
     ```
 
-* Check if the user variable named `place` has changed compared to the previous `OPEN`/`REPEAT` record.
+* Check if the user variable named `location` has changed compared to the previous `OPEN`/`REPEAT` record.
 
     ```javascript
-    last_open().place != place
+    last_open().location != location
     ```

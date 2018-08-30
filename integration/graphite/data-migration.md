@@ -31,7 +31,7 @@ migrate.py [-h] [--whisper-base BASE] [-R] path atsd_hostname atsd_tcp_port
 
 ## Examples
 
-Base path to the Whisper database directory is set with `-R` to migrate all the data and metrics.
+Base path to the Whisper database directory is set with `-R` to migrate the data for all metrics.
 
 Command:
 

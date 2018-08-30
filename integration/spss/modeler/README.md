@@ -26,7 +26,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Create Data Source
 
-* Create a new stream. A stream is a configuration that includes all the steps to load and analyze the data in the SPSS Modeler.
+* Create a new stream. A stream is a configuration that records the steps to load and analyze the data in the SPSS Modeler.
 
 * Select the **Sources** tab from the bottom panel and choose **Database**
 

@@ -48,7 +48,7 @@ kb = 1024
 curtime = 1515758392702
 ```
 
-> Classify large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
+> Classify large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is `[-2147483647, 2147483648]`.
 
 ![](./images/variables-large-integers.png)
 
@@ -90,11 +90,13 @@ stateList = ["CA", "WA"]
 
 To check the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with `0` for the first element).
 
 ```javascript
+// define variable 'authors'
 authors = split(tags.authors, ',')
-  authors.size() == 0 ? 'n/a' : authors[0]
+// define variable 'author'
+author  = authors.size() == 0 ? 'n/a' : authors[0]
 ```
 
 ### map
@@ -141,9 +143,9 @@ Variables can be included in a condition.
 
 ## Execution
 
-Variables are evaluated for each incoming command regardless of the window status.
+Depending on the sequence of boolean checks in the condition which refers to a variable, such variable may be evaluated for **each** incoming or existing command regardless of the window status.
 
-If the variable invokes an external function such as [`scriptOut`](functions-script.md) it must execute quickly (less than a few seconds). Avoid invoking long-running functions in variables.
+If such variable invokes an external function such as [`scriptOut`](functions-script.md), such function must execute quickly, within a few seconds. Avoid calling long-running functions in variables.
 
 The current value of a variable can be accessed on the **Window Details** page.
 

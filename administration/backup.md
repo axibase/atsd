@@ -1,6 +1,6 @@
 # Backup and Restore
 
-This document describes how to backup [configuration records](#configuration-records) and [data](#data) in ATSD.
+This document describes how to backup and replicate [configuration records](#configuration-records) and [data](#data) in ATSD.
 
 ## Configuration Records
 
@@ -80,9 +80,23 @@ Upload the selected backup files by clicking **Choose Files**. If needed, select
 
 ## Data
 
-### Replication
+### Command Replication
 
-To replicate data to another database instance, follow the instructions in the [Replication](./replication.md) guide.
+To copy the received **data** commands to another ATSD instance, configure the destination on the **Settings > Replication** page.
+
+![](./images/command-replication.png)
+
+Replication status can be monitored with the built-in metrics:
+
+* `replication_successful_commands`
+* `replication_discarded_commands`
+* `replication_rejected_commands`
+
+![](./images/command-replicate-metrics.png)
+
+### Cluster Replication
+
+To replicate all changes in the underlying database to another database instance, follow the instructions in the [Replication](./replication.md) guide.
 
 ### Base Directory Copy
 

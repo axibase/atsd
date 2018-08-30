@@ -252,7 +252,7 @@ Comments are not allowed after the statement termination character `;`.
 
 ### Predefined Columns
 
-Virtual tables have the same pre-defined columns since all the underlying data is physically stored in a single partitioned table.
+Virtual tables have the same pre-defined columns since the underlying data is physically stored in a single partitioned table.
 
 #### Series Columns
 

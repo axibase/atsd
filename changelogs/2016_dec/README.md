@@ -170,7 +170,7 @@ WITH time = last_time
   ORDER BY sum(value) desc
 ```
 
-The above query scans data with a start date determined as the earliest of all the matching series.
+The above query scans data with a start date determined as the earliest of the matching series.
 For example, if you have 3 series with the following last insert dates:
 
 * A: 2016-12-21

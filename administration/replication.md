@@ -1,22 +1,15 @@
 # Replication
 
-This document describes how to configure ATSD replication.
+This guide describes how to configure master-to-slave replication at the HBase level where all changes on the master cluster are replayed on the slave cluster.
 
-The replication process is from master to slave, meaning where all transactions on the master
-cluster are replayed to the slave cluster.
-
-In the guide `atsd_master` is the hostname of the master host and
-`atsd_slave` is the hostname of the slave host.
-
-> Note: This guide applies only on new ATSD installations.
-Executing this guide on an existing ATSD installation leads to the
-loss of all stored data on both the master and slave machines.
-> Note: If master loses connection with slave, it accumulates all the
-data and events for the duration of the connection loss and starts
-transferring the accumulated data once connection with slave is
-re-established. No data is lost in the process.
+`atsd_master` is the hostname of the HBase Master host on the _master_ cluster and
+`atsd_slave` is the hostname of the HBase Master on the _slave_ cluster.
 
 ## Requirements
+
+This guide applies only on new ATSD installations.
+Executing this guide on an existing ATSD installation leads to the
+loss of all stored data on both the master and slave machines.
 
 Both the master and slave machines must have static a IP addresses in the
 local network.
@@ -294,3 +287,7 @@ echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 The output contains the same amount of rows as on the master:
 
 ![](./images/atsd_rule_table_scan1.png "atsd_rule_table_scan")
+
+## Recovery
+
+If the master loses connection to the slave, it buffers the transactions for the duration of the connection loss and replays them once the connection is re-established. No data is lost in the process.

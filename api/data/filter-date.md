@@ -69,13 +69,19 @@ Last hour, rounded:
 "startDate":"previous_hour", "endDate": "current_hour"
 ```
 
-All the data until now:
+All available records until current time:
 
 ```json
 "startDate":"1970-01-01T00:00:00Z", "endDate":"now"
 ```
 
-All the data:
+Future records:
+
+```json
+"startDate":"now", "endDate":"9999-12-31T23.59.59.999Z"
+```
+
+All available records:
 
 ```json
 "startDate":"1970-01-01T00:00:00.000Z", "endDate":"9999-12-31T23.59.59.999Z"

@@ -25,7 +25,7 @@ Prints the input key-value `map` as a two-column table in the specified `format`
 
 The first column in the table contains map keys, whereas the second column contains their corresponding map values.
 
-The input `map` typically references fields such as `tags`, `entity.tags`, or `variables`.
+The input `map` typically consists of maps such as `tags`, `entity.tags`, or `variables`.
 
 Supported formats:
 

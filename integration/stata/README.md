@@ -254,7 +254,7 @@ SELECT entity, datetime, value FROM inflation.cpi.composite.price
 
 ## Script File
 
-* [Link to the `do` file](./resources/script.do) that contains all the steps.
+* [Link to the `do` file](./resources/script.do) that contains the recorded transformations.
 
 ## Reference
 

@@ -14,14 +14,14 @@ detailsTable(string format)
 
 ## Contents
 
-* entity name
-* entity label
-* entity tags
-* window placeholders
-* command tags
-* values
-* statistical functions
-* variables
+* Entity name
+* Entity label
+* Entity tags
+* Window placeholders
+* Command tags
+* Value
+* Statistical functions
+* User-defined variables
 
 ## Formats
 

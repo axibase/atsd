@@ -4,7 +4,7 @@
 
 Creates a metric with specified fields and tags or replaces the fields and tags of an existing metric.
 
-In case of an existing metric, all the current metric tags are replaced with metric tags specified in the request.
+If the metric exists, the current metric tags are replaced with metric tags specified in the request.
 
 If the replace request for an existing metric does not contain any tags, current metric tags are deleted.
 
