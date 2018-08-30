@@ -46,6 +46,8 @@ By default, the database contains pre-defined 2018 workday calendars for several
 
 Calendars can be modified and maintained by appending dates for prior and future years without database restart.
 
+[ATSD update](../administration/update-manual.md) mechanism does not include calendars updating. You must download the required calendars from the table below and [import](#importing-calendar) them if the database misses calendars after update.
+
  **Country** | **Calendar Key** | **Download**
 ----|----|----
 Australia | `aus` | [download](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/calendars/aus.json)
