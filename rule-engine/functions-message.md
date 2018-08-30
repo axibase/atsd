@@ -14,7 +14,7 @@ The `db_message_count` and `db_message_last` functions can be used to verify the
 
 ## `db_message_count`
 
-```javascript
+```csharp
 db_message_count(string interval, string type, string source
                           [, string tags | map tags
                                     [, string entity[, string expression]]]) long
@@ -24,7 +24,7 @@ Returns the number of message records matching the specified `interval`, message
 
 ## `db_message_last`
 
-```javascript
+```csharp
 db_message_last(string interval, string type, string source
                           [, string tags | map tags
                                     [, string entity[, string expression]]]) Message
@@ -51,7 +51,7 @@ db_message_last('1 hour', 'webhook', 'github').timestamp
 
 ## `db_messages`
 
-```javascript
+```csharp
 db_messages(string interval, string type, string source
                           [, string tags | map tags
                                     [, string entity[, string expression]]]) [Message]

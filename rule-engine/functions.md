@@ -43,8 +43,8 @@ Functions can accept arguments and return values in one of the following data ty
 |---|:---|:---|
 | `double` | double number | `percentile(99.5)` |
 | `long` | long number | `elapsedTime(1515758392702)` |
-| `integer` | integer number | `round(value, 1)` |
-| `boolean` | boolean | `scriptOut('dsk.sh', [true])` |
+| `int` | integer number | `round(value, 1)` |
+| `bool` | boolean | `scriptOut('dsk.sh', [true])` |
 | `string` | string | `startsWith(entity, 'NUR')` |
 | `[]` | collection | `randomItem([1, 2, 3])` |
 | `[string]` | collection of strings | `coalesce([tags.location, 'SVL'])` |

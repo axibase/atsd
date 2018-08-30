@@ -15,7 +15,7 @@ A set of convenience methods to retrieve and compare property keys and tags usin
 
 ## `property`
 
-```javascript
+```csharp
 property([string entity, ] string expr [, string date]) string
 ```
 
@@ -41,7 +41,7 @@ property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 
 ## `property_values`
 
-```javascript
+```csharp
 property_values([string entity, ] string expr [, string date]) [string]
 ```
 
@@ -89,7 +89,7 @@ property_values('nurswgvml007', 'docker.container::image', 'today')
 
 * `property_compare_except([string key])`
 
-```javascript
+```csharp
 property_compare_except([string key]) map
 ```
 
@@ -131,7 +131,7 @@ Returns `true` if property tags have changed, except for the `pid` tag, any tags
 
 ## `property_map`
 
-```javascript
+```csharp
 property_map([string entity,] string expression [, string date]) map
 ```
 
@@ -172,7 +172,7 @@ property_map('nurswgvml007','configuration::', 'today')
 
 ## `property_maps`
 
-```javascript
+```csharp
 property_maps([string entity,] string expression [, string date]) [map]
 ```
 
@@ -220,7 +220,7 @@ property_maps('nurswgvml007','configuration::', 'yesterday')
 
 ## `getPropertyTypes`
 
-```javascript
+```csharp
 getPropertyTypes(string entity [, string startDate[, string endDate]]) [string]
 ```
 

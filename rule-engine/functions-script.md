@@ -15,7 +15,7 @@ Script functions execute a named `bash` or Python script located in the `/opt/at
 
 ## Syntax
 
-```java
+```csharp
 scriptOut(string file [, array arguments])
 ```
 

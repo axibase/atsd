@@ -110,7 +110,7 @@ Value count.
 
 ## `percentile`
 
-```javascript
+```csharp
 percentile(double n) double
 ```
 
@@ -156,10 +156,10 @@ first() double
 
 Returns first series value. Same as `first(0)`.
 
-## `first(integer index)`
+## `first(int index)`
 
-```javascript
-first(integer index) double
+```csharp
+first(int index) double
 ```
 
 Returns `n`-th value from start. First value has index of `0`.
@@ -172,10 +172,10 @@ last() double
 
 Returns last value. Same as `last(0)`.
 
-## `last(integer index)`
+## `last(int index)`
 
-```javascript
-last(integer index) double
+```csharp
+last(int index) double
 ```
 
 Returns `n`-th value from last value. Last value has index of `0`.
@@ -188,17 +188,17 @@ diff() double
 
 Calculates difference between `last` and `first` values. Same as `last() - first()`.
 
-## `diff(integer i)`
+## `diff(int i)`
 
-```javascript
-diff(integer i) double
+```csharp
+diff(int i) double
 ```
 
 Calculates difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
 
 ## `diff(string interval)`
 
-```javascript
+```csharp
 diff(string interval) double
 ```
 
@@ -217,7 +217,7 @@ Calculates difference between `last` and `first` values. Same as `diff()`.
 ## `new_maximum`
 
 ```javascript
-new_maximum() boolean
+new_maximum() bool
 ```
 
 Returns `true` if last value is greater than any previous value.
@@ -225,14 +225,14 @@ Returns `true` if last value is greater than any previous value.
 ## `new_minimum`
 
 ```javascript
-new_minimum() boolean
+new_minimum() bool
 ```
 
 Returns `true` if last value is smaller than any previous value.
 
 ## `threshold_time`
 
-```javascript
+```csharp
 threshold_time(double t) double
 ```
 
@@ -240,7 +240,7 @@ Forecasts the number of minutes until the sample value reaches the specified thr
 
 ## `threshold_linear_time`
 
-```javascript
+```csharp
 threshold_linear_time(double threshold) double
 ```
 
@@ -304,8 +304,8 @@ Calculates `slope_per_second()/3600`.
 
 ## `countIf`
 
-```javascript
-countIf(string condition [, string interval | integer n]) long
+```csharp
+countIf(string condition [, string interval | int n]) long
 ```
 
 Counts elements matching the specified `condition` within `interval` or within the last `n` samples.
@@ -324,16 +324,16 @@ countIf('value > 5', 10)
 
 ## `avgIf`
 
-```javascript
-avgIf(string condition [, string interval | integer n]) double
+```csharp
+avgIf(string condition [, string interval | int n]) double
 ```
 
 Calculates average of elements matching the specified `condition` within `interval` or within the last `n` samples.
 
 ## `sumIf`
 
-```javascript
-sumIf(string condition [, string interval | integer n]) double
+```csharp
+sumIf(string condition [, string interval | int n]) double
 ```
 
 Sums elements matching the specified `condition` within `interval` or within the last `n` samples.
@@ -342,8 +342,8 @@ Sums elements matching the specified `condition` within `interval` or within the
 
 By default, statistical functions calculate results based on all samples stored in a window. The range of samples can be adjusted by passing an optional argument - specified as sample count `n` or `interval` - in which case the function calculates the result based on the most recent samples.
 
-```javascript
-avg([string interval | integer n]) double
+```csharp
+avg([string interval | int n]) double
 ```
 
 * `avg(5)`: Average value for the last 5 samples.

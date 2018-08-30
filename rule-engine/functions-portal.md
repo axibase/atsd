@@ -6,7 +6,7 @@ These functions attach custom portals to outgoing webhooks. For instance, invoke
 
 ## Syntax
 
-```javascript
+```csharp
 addPortal(string portal)
 addPortal(string portal, string entity / [object] entities)
 addPortal(string portal, string entity / [object] entities, string comment)

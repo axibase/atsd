@@ -19,7 +19,7 @@ Returns forecast value for the entity, metric, and tags in the current window.
 
 ## `forecast(string name)`
 
-```javascript
+```csharp
 forecast(string name) double
 ```
 
@@ -35,7 +35,7 @@ Returns forecast standard deviation.
 
 ## `forecast_deviation`
 
-```javascript
+```csharp
 forecast_deviation(number a) double
 ```
 
@@ -49,7 +49,7 @@ The formula is:
 
 ## `thresholdTime`
 
-```javascript
+```csharp
 thresholdTime(number min, number max [, string interval]) long
 ```
 

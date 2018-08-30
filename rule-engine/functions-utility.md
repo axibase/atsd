@@ -15,7 +15,7 @@
 
 ## `ifEmpty`
 
-```javascript
+```csharp
 ifEmpty(object a, object b) object
 ```
 
@@ -33,8 +33,8 @@ ifEmpty('hello', 'world')
 
 ## `toBoolean`
 
-```javascript
-toBoolean(object a) boolean
+```csharp
+toBoolean(object a) bool
 ```
 
 Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string `true`, `yes`, `on`, `1` (case-**IN**sensitive) or if `a` is equal to the number `1`.
@@ -73,8 +73,8 @@ toBoolean('On')
 
 ## `toNumber`
 
-```javascript
-toNumber(object a) number
+```csharp
+toNumber(object a) double
 ```
 
 Converts the input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
@@ -98,7 +98,7 @@ Input | Type | Result
 
 ## `printObject`
 
-```javascript
+```csharp
 printObject(object obj, string format) string
 ```
 
@@ -174,7 +174,7 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 
 ## `getURLHost`
 
-```javascript
+```csharp
 getURLHost(string url) string
 ```
 
@@ -189,8 +189,8 @@ getURLHost('https://example.org/en/products?type=database&status=1')
 
 ## `getURLPort`
 
-```javascript
-getURLPort(string url) integer
+```csharp
+getURLPort(string url) int
 ```
 
 Retrieves the **port** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
@@ -206,7 +206,7 @@ getURLPort('https://example.org/en/products?type=database&status=1')
 
 ## `getURLProtocol`
 
-```javascript
+```csharp
 getURLProtocol(string url) string
 ```
 
@@ -221,7 +221,7 @@ getURLProtocol('https://example.org/en/products?type=database&status=1')
 
 ## `getURLPath`
 
-```javascript
+```csharp
 getURLPath(string url) string
 ```
 
@@ -236,7 +236,7 @@ getURLPath('https://example.org/en/products?type=database&status=1')
 
 ## `getURLQuery`
 
-```javascript
+```csharp
 getURLQuery(string url) string
 ```
 
@@ -251,7 +251,7 @@ getURLQuery('https://example.org/en/products?type=database&status=1')
 
 ## `getURLUserInfo`
 
-```javascript
+```csharp
 getURLUserInfo(string url) string
 ```
 

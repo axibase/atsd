@@ -17,8 +17,8 @@ The current window is excluded from matching.
 
 ## `rule_open`
 
-```javascript
-rule_open(string rule [, string entity [, string expression]]) boolean
+```csharp
+rule_open(string rule [, string entity [, string expression]]) bool
 ```
 
 Checks if there is at least one window with the `OPEN` or `REPEAT` [status](README.md#window-status) for the specified `rule`, `entity` and `expression` to match other windows.
@@ -27,7 +27,7 @@ Returns `true` if a matching window is found, `false` otherwise.
 
 ## `rule_window`
 
-```javascript
+```csharp
 rule_window(string rule [, string entity [, string expression]]) Window
 ```
 
@@ -174,7 +174,7 @@ rule_window('slack-bot-cmd-confirm', entity,
 
 ## `rule_windows`
 
-```javascript
+```csharp
 rule_windows(string rule, string expression) [Window]
 ```
 

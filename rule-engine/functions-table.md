@@ -17,7 +17,7 @@ Table functions perform various operations on strings, lists, and maps to create
 
 ## `addTable` for map
 
-```javascript
+```csharp
 addTable(map, string format) string
 ```
 
@@ -124,7 +124,7 @@ os=Linux
 
 ## `addTable` for maps
 
-```javascript
+```csharp
 addTable([map], string format[, [string header]]) string
 ```
 
@@ -216,8 +216,8 @@ jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
 
 ## `addTable` for list
 
-```javascript
-addTable([[string]] strList, string format[, [string] header | boolean addHeader]) string
+```csharp
+addTable([[string]] strList, string format[, [string] header | bool addHeader]) string
 ```
 
 Prints list of lists `strList` as a multi-column table in the specified `format`. Each nested list in the parent list `strList` is serialized into a separate row in the table.
@@ -332,15 +332,15 @@ datetime=value
 
 ## `jsonPathFilter`
 
-```json
-jsonPathFilter(s, jp) [object]
+```csharp
+jsonPathFilter(string s, string jp) [object]
 ```
 
 Parses input string `s` into a JSON document and returns a list of objects matching the [`JSONPath` expression](https://github.com/json-path/JsonPath).
 
 Examples:
 
-```javascript
+```json
 {
   "data": [
     {
@@ -382,7 +382,7 @@ See additional [examples](#examples).
 
 ## `jsonToMaps`
 
-```javascript
+```csharp
 jsonToMaps(string inStr) [map]
 ```
 
@@ -450,7 +450,7 @@ See additional examples [below](#examples).
 
 ## `jsonToLists`
 
-```javascript
+```csharp
 jsonToLists(string inStr) [[string]]
 ```
 
@@ -519,7 +519,7 @@ See additional examples [below](#examples).
 
 ## `flattenJson`
 
-```javascript
+```csharp
 flattenJson(string jsonStr) map
 ```
 
