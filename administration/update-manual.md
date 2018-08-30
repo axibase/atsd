@@ -39,6 +39,7 @@ ll target
 ```sh
 atsd.<revision number>.jar
 atsd-hbase.<revision number>.jar
+calendars
 ```
 
 ## Stop ATSD
@@ -65,6 +66,10 @@ rm -rf /opt/atsd/atsd/bin/atsd*jar
 mv atsd* /opt/atsd/atsd/bin/
 ```
 
+```sh
+mkdir -p calendars/
+mv calendars/* /opt/atsd/atsd/conf/calendars/
+```
 ## Start ATSD
 
 ```sh
