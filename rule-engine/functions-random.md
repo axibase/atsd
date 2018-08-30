@@ -27,7 +27,7 @@ Returns a normally distributed double number, with a mean value of `0.0` and sta
 
 ## `randomItem`
 
-```javascript
+```csharp
 randomItem([object] c | map m) string
 ```
 
@@ -115,7 +115,7 @@ selKey = selItem.key
 
 ## `randomKey`
 
-```javascript
+```csharp
 randomKey(map m) string
 ```
 

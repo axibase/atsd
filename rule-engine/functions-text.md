@@ -39,7 +39,7 @@ These functions compare and transform strings, `null`-safe: returns `null` or `f
 
 ## `upper`
 
-```javascript
+```csharp
 upper(string s) string
 ```
 
@@ -47,7 +47,7 @@ Converts string `s` to uppercase letters.
 
 ## `lower`
 
-```javascript
+```csharp
 lower(string s) string
 ```
 
@@ -55,8 +55,8 @@ Converts string `s` to lowercase letters.
 
 ## `truncate`
 
-```javascript
-truncate(string s, integer maxLength) string
+```csharp
+truncate(string s, int maxLength) string
 ```
 
 Truncates `s` to the specified number of characters and returns the string as the result if string `s` length exceeds `maxLength` characters.
@@ -64,7 +64,7 @@ Truncates `s` to the specified number of characters and returns the string as th
 ## `startsWith`
 
 ```javascript
-startsWith(string s, string pfx) boolean
+startsWith(string s, string pfx) bool
 ```
 
 Returns `true` if `s` starts with `pfx` prefix.
@@ -72,14 +72,14 @@ Returns `true` if `s` starts with `pfx` prefix.
 ## `endsWith`
 
 ```javascript
-endsWith(string s, string sfx) boolean
+endsWith(string s, string sfx) bool
 ```
 
 Returns `true` if `s` ends with `sfx`.
 
 ## `split`
 
-```javascript
+```csharp
 split(string s, string sep) [string]
 ```
 
@@ -108,7 +108,7 @@ authors.size() == 0 ? 'n/a' : authors[0]
 
 ## `list`
 
-```javascript
+```csharp
 list(string s[, string sep]) [string]
 ```
 
@@ -125,7 +125,7 @@ list('hello "brave new world" hello', ' ')
 
 ## `ifEmpty`
 
-```javascript
+```csharp
 ifEmpty(string a, string b) object
 ```
 
@@ -142,7 +142,7 @@ ifEmpty(tags.location, 'N/A')
 
 ## `coalesce`
 
-```javascript
+```csharp
 coalesce([string] strColl) string
 ```
 
@@ -170,7 +170,7 @@ coalesce([entity.label, entity])
 
 ## `keepAfter`
 
-```javascript
+```csharp
 keepAfter(string s, string sub) string
 ```
 
@@ -187,7 +187,7 @@ keepAfter('hello.new.world', '.')
 
 ## `keepAfterLast`
 
-```javascript
+```csharp
 keepAfterLast(string s, string sub) string
 ```
 
@@ -204,7 +204,7 @@ keepAfterLast('hello.new.world', '.')
 
 ## `keepBefore`
 
-```javascript
+```csharp
 keepBefore(string s, string sub) string
 ```
 
@@ -221,7 +221,7 @@ keepBefore('hello.new.world', '.')
 
 ## `keepBeforeLast`
 
-```javascript
+```csharp
 keepBeforeLast(string s, string sub) string
 ```
 
@@ -238,7 +238,7 @@ keepBeforeLast('hello.new.world', '.')
 
 ## `replace`
 
-```javascript
+```csharp
 replace(string s, string sub, string rep) string
 ```
 
@@ -255,7 +255,7 @@ replace('hello.new.world', 'w', '2')
 
 ## `capFirst`
 
-```javascript
+```csharp
 capFirst(string s) string
 ```
 
@@ -270,7 +270,7 @@ capFirst('hello world')
 
 ## `capitalize`
 
-```javascript
+```csharp
 capitalize(string s) string
 ```
 
@@ -285,7 +285,7 @@ capitalize('hello world')
 
 ## `removeBeginning`
 
-```javascript
+```csharp
 removeBeginning(string s, string pfx) string
 ```
 
@@ -305,7 +305,7 @@ removeBeginning('hello world', 'be')
 
 ## `removeEnding`
 
-```javascript
+```csharp
 removeEnding(string s, string sfx) string
 ```
 
@@ -323,7 +323,7 @@ removeEnding('hello world', 'LD')
 
 ## `urlencode`
 
-```javascript
+```csharp
 urlencode(string s) string
 ```
 
@@ -336,7 +336,7 @@ urlencode('hello world')
 
 ## `jsonencode`
 
-```javascript
+```csharp
 jsonencode(string s) string
 ```
 
@@ -344,7 +344,7 @@ Escapes special JSON characters in string `s` such as double quotes with a backs
 
 ## `htmlDecode`
 
-```javascript
+```csharp
 htmlDecode(string s) string
 ```
 
@@ -359,7 +359,7 @@ htmlDecode('hello &gt; world')
 
 ## `unquote`
 
-```javascript
+```csharp
 unquote(string s) string
 ```
 
@@ -372,7 +372,7 @@ unquote('"hello world"')
 
 ## `countMatches`
 
-```javascript
+```csharp
 countMatches(string s, string sub) int
 ```
 
@@ -387,8 +387,8 @@ countMatches('hello world', 'o')
 
 ## `abbreviate`
 
-```javascript
-abbreviate(string s, integer maxLength) string
+```csharp
+abbreviate(string s, int maxLength) string
 ```
 
 Truncates string `s` using ellipses to hide extraneous text. `maxLength` is the maximum length of the output string.
@@ -419,8 +419,8 @@ abbreviate('abcdefg', 3)
 
 ## `indexOf`
 
-```javascript
-indexOf(string s, string sub[, int index]) integer
+```csharp
+indexOf(string s, string sub[, int index]) int
 ```
 
 Returns the integer index starting with `0` of the first occurrence of substring `sub` contained in string `s` starting with `index`.
@@ -451,8 +451,8 @@ indexOf('hello world', 'o', 10)
 
 ## `locate`
 
-```javascript
-locate(string s, string sub[, int index]) integer
+```csharp
+locate(string s, string sub[, int index]) int
 ```
 
 Returns the integer index starting with `0` of the first occurrence of substring `sub` contained in string `s` starting with `index`.
@@ -461,7 +461,7 @@ Returns `-1` if the substring `sub` is not found.
 
 ## `trim`
 
-```javascript
+```csharp
 trim(string s) string
 ```
 
@@ -474,7 +474,7 @@ trim(" hello world    ")
 
 ## `length`
 
-```javascript
+```csharp
 length(string s) string
 ```
 
@@ -482,7 +482,7 @@ Returns the length of string `s`. If string `s` is `null`, function returns -1.
 
 ## `concat`
 
-```javascript
+```csharp
 concat([string] strColl [, string sep]) string
 ```
 
@@ -504,7 +504,7 @@ concat(['a', null, 'b'], '-')
 
 ## `concatLines`
 
-```javascript
+```csharp
 concatLines([string] strColl) string
 ```
 

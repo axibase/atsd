@@ -20,7 +20,7 @@ Date formatting functions:
 
 ## `formatNumber`
 
-```javascript
+```csharp
 formatNumber(double x, string pattern) string
 ```
 
@@ -35,7 +35,7 @@ formatNumber(3.14159, '#.##')
 
 ## `formatBytes`
 
-```javascript
+```csharp
 formatBytes(number x, boolean si) string
 ```
 
@@ -76,7 +76,7 @@ Examples:
 
 ## `convert`
 
-```javascript
+```csharp
 convert(number x, string unit) string
 ```
 
@@ -108,7 +108,7 @@ convert(1000 * 1000, 'M') // 1.0
 
 ## `date_format`
 
-```javascript
+```csharp
 date_format(long time [, string pattern [, string zone]]) string
 ```
 
@@ -132,7 +132,7 @@ date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ",
 
 ## `formatInterval`
 
-```javascript
+```csharp
 formatInterval(long interval) string
 ```
 
@@ -151,7 +151,7 @@ formatInterval(elapsedTime(milliseconds(tags.last_updated)))
 
 ## `formatIntervalShort`
 
-```javascript
+```csharp
 formatIntervalShort(long interval) string
 ```
 

@@ -22,7 +22,7 @@ These functions perform basic numeric operations on the input number and return 
 
 ## `abs`
 
-```javascript
+```csharp
 abs(double x) double
 ```
 
@@ -30,7 +30,7 @@ Returns the absolute value of `x`.
 
 ## `ceil`
 
-```javascript
+```csharp
 ceil(double x) long
 ```
 
@@ -38,7 +38,7 @@ Returns the smallest integer that is greater than or equal to `x`.
 
 ## `floor`
 
-```javascript
+```csharp
 floor(double x) long
 ```
 
@@ -46,7 +46,7 @@ Returns the largest integer that is less than or equal to `x`.
 
 ## `pow`
 
-```javascript
+```csharp
 pow(double x, double y) double
 ```
 
@@ -54,7 +54,7 @@ Returns `x` raised to the power of `y`.
 
 ## `round`
 
-```javascript
+```csharp
 round(double x[, int y]) long
 ```
 
@@ -68,7 +68,7 @@ If `y` is less than `0`, the number is rounded to the left of the decimal point 
 
 ## `max`
 
-```javascript
+```csharp
 max(double x, double y) double
 ```
 
@@ -76,7 +76,7 @@ Returns the greater of two numbers: `x` and `y`.
 
 ## `min`
 
-```javascript
+```csharp
 min(double x, double y) double
 ```
 
@@ -84,7 +84,7 @@ Returns the smallest of two numbers: `x` and `y`.
 
 ## `cbrt`
 
-```javascript
+```csharp
 cbrt(double x) double
 ```
 
@@ -94,7 +94,7 @@ Returns cube root ∛ of `x`.
 
 ## `sqrt`
 
-```javascript
+```csharp
 sqrt(double x) double
 ```
 
@@ -102,7 +102,7 @@ Returns `√` of `x`.
 
 ## `exp`
 
-```javascript
+```csharp
 exp(double x) double
 ```
 
@@ -110,7 +110,7 @@ Returns Euler constant `e` (2.718281828459045) raised to the power of `x`.
 
 ## `log`
 
-```javascript
+```csharp
 log(double x) double
 ```
 
@@ -118,7 +118,7 @@ Returns the natural logarithm (base `e = 2.718281828459045`) of `x`.
 
 ## `log10`
 
-```javascript
+```csharp
 log10(double x) double
 ```
 
@@ -126,7 +126,7 @@ Returns the base 10 logarithm of `x`.
 
 ## `signum`
 
-```javascript
+```csharp
 signum(double x) integer
 ```
 

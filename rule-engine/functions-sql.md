@@ -10,7 +10,7 @@ These functions return the results of a user-defined SQL query.
 
 ## `executeSqlQuery`
 
-```javascript
+```csharp
 executeSqlQuery(string query) collection[collection[string]]
 ```
 

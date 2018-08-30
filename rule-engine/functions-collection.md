@@ -32,7 +32,7 @@ collection('oncall-emails')
 
 ## `collection`
 
-```javascript
+```csharp
 collection(string name) [string]
 ```
 
@@ -50,8 +50,8 @@ author = (authors.size() == 0) ? 'n/a' : authors[0]
 
 ## `IN`
 
-```javascript
-string s IN (string a[, string b[...]]) boolean
+```csharp
+string s IN (string a[, string b[...]]) bool
 ```
 
 Returns `true` if string `s` equals one of the strings enclosed in round brackets and separated by comma.
@@ -69,8 +69,8 @@ tags.location IN ('NUR', 'SVL')
 
 ## `LIKE`
 
-```javascript
-string s LIKE (string a[, string b[...]]) boolean
+```csharp
+string s LIKE (string a[, string b[...]]) bool
 ```
 
 Returns `true` if string `s` matches any pattern in the collection of strings enclosed in round brackets and separated by comma. The patterns support `?` and `*` wildcards. The collection can contain string literals and variables.
@@ -91,8 +91,8 @@ tags.location LIKE ('NUR*', entity.tags.location)
 
 ## `likeAny`
 
-```javascript
-likeAny(string s, [string] strcoll) boolean
+```csharp
+likeAny(string s, [string] strcoll) bool
 ```
 
 Returns `true` if string `s` matches any element in the string collection `strcoll`.
@@ -115,8 +115,8 @@ likeAny(tags.request_ip, collection('ip_white_list'))
 
 ## `matchList`
 
-```javascript
-matchList(string s, string name) boolean
+```csharp
+matchList(string s, string name) bool
 ```
 
 Returns `true` if `s` matches one of the elements in the collection identified by `name`.
@@ -131,8 +131,8 @@ matchList(tags.request_ip, 'ip_white_list')
 
 ## `matches`
 
-```javascript
-matches(string pattern, [string] strcoll) boolean
+```csharp
+matches(string pattern, [string] strcoll) bool
 ```
 
 Returns `true` if one of the elements in collection `strcoll` matches the specified `pattern`.
@@ -147,8 +147,8 @@ matches('*atsd*', property_values('docker.container::image'))
 
 ## `contains`
 
-```javascript
-[string].contains(string s) boolean
+```csharp
+[string].contains(string s) bool
 ```
 
 Returns `true` if string `s` is contained in the specified collection.
@@ -161,8 +161,8 @@ collection('ip_white_list').contains(tags.request_ip)
 
 ## `size`
 
-```javascript
-[].size() integer
+```csharp
+[].size() int
 ```
 
 Returns the number of elements in the collection.
@@ -181,8 +181,8 @@ entity.tags.size()
 
 ## `isEmpty`
 
-```javascript
-[].isEmpty() boolean
+```csharp
+[].isEmpty() bool
 ```
 
 Returns `true` if the number of elements in the collection is zero.
@@ -197,7 +197,7 @@ collection('ip_white_list').isEmpty()
 
 ## `replacementTable`
 
-```javascript
+```csharp
 replacementTable(string name) map
 ```
 
@@ -227,7 +227,7 @@ randomItem(replacementTable('oncall-emails'))
 
 ## `excludeKeys`
 
-```javascript
+```csharp
 excludeKeys(map, [string] strcoll) map
 ```
 

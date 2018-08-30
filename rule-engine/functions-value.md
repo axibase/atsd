@@ -19,7 +19,7 @@ Related functions:
 
 ## `value`
 
-```java
+```csharp
 value(string metric) number
 ```
 

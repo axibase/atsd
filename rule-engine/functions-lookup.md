@@ -24,7 +24,7 @@ Named collections are listed on the **Data > Named Collections** page.
 
 ## `entity_tag`
 
-```javascript
+```csharp
 entity_tag(string entity, string name) string
 ```
 
@@ -34,8 +34,8 @@ If the tag or the entity is not found, an empty string is returned.
 
 ## `entity_tags`
 
-```javascript
-entity_tags(string entity [, boolean format]) map
+```csharp
+entity_tags(string entity [, bool format]) map
 ```
 
 Returns entity tags for entity `entity` as a map.
@@ -86,7 +86,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 
 ## `entity_label`
 
-```javascript
+```csharp
 entity_label(string entity) string
 ```
 
@@ -96,8 +96,8 @@ If the entity is not found or the entity does not have a label, the argument `en
 
 ## `getEntity`
 
-```javascript
-getEntity(string entity [,boolean matchLabel]) Entity
+```csharp
+getEntity(string entity [,bool matchLabel]) Entity
 ```
 
 Retrieves an entity object by name. If `matchLabel` set to `true` entity is searched by label if `entity` is not found by name. By default `matchLabel` is `false`.
@@ -115,7 +115,7 @@ getEntity('nurswgvml007').interpolate
 
 ## `getEntities`
 
-```javascript
+```csharp
 getEntities(string metric, string startDate, string endDate, string expr) [Entity]
 ```
 
@@ -155,7 +155,7 @@ getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app 
 
 ## `getEntityCount`
 
-```javascript
+```csharp
 getEntityCount(string metric, string startDate, string endDate, string expr) integer
 ```
 
@@ -165,7 +165,7 @@ Identical to `getEntity(metric, startDate, endDate, expr).size()`.
 
 ## `getEntityName`
 
-```javascript
+```csharp
 getEntityName(string entity) string
 ```
 
@@ -175,7 +175,7 @@ If the entity cannot be found, the function returns the original `entity` argume
 
 ## `collection`
 
-```javascript
+```csharp
 collection(string name) [string]
 ```
 
@@ -197,8 +197,8 @@ collection('dc-locations').contains(tags.location)
 
 ## `lookup`
 
-```javascript
-lookup(string name, string key[, boolean def]) string
+```csharp
+lookup(string name, string key[, bool def]) string
 ```
 
 Returns the value for key `key` from the replacement table identified by `name`.
@@ -216,7 +216,7 @@ lookup('on-call', 'john.doe', true)
 
 ## `replacementTable`
 
-```javascript
+```csharp
 replacementTable(string name) map
 ```
 
@@ -226,7 +226,7 @@ If the table is not found, the function returns an empty map.
 
 ## `property`
 
-```javascript
+```csharp
 property(string expr) string
 ```
 

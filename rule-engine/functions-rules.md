@@ -17,7 +17,7 @@ The current window is excluded from matching.
 
 ## `rule_open`
 
-```javascript
+```csharp
 rule_open(string rule [, string entity [, string expression]]) boolean
 ```
 
@@ -27,7 +27,7 @@ Returns `true` if a matching window is found, `false` otherwise.
 
 ## `rule_window`
 
-```javascript
+```csharp
 rule_window(string rule [, string entity [, string expression]]) Window
 ```
 
@@ -174,7 +174,7 @@ rule_window('slack-bot-cmd-confirm', entity,
 
 ## `rule_windows`
 
-```javascript
+```csharp
 rule_windows(string rule, string expression) [Window]
 ```
 
