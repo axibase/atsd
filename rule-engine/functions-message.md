@@ -142,7 +142,7 @@ avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 
 ```javascript
 /* Retrieves the last message with text beginning 'docker start sftp*'. */
-db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 
+db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message',
                 'slack', 'message LIKE "docker start sftp*"')
 
 /* Returns the most recent message within 1 day for the current entity,
