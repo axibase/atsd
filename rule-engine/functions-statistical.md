@@ -191,7 +191,7 @@ Calculates difference between `last` and `first` values. Same as `last() - first
 ## `diff(int i)`
 
 ```csharp
-diff(in i) double
+diff(int i) double
 ```
 
 Calculates difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
