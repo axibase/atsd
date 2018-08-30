@@ -122,7 +122,7 @@ Open the **Filters** section and enable **Display Versions** on the **Data > Exp
 version_source LIKE 'col*'
 ```
 
-    ![](./resources/5.png)
+   ![](./resources/5.png)
 
 * Match using date function.
 
@@ -130,7 +130,7 @@ version_source LIKE 'col*'
 version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
 ```
 
-    ![](./resources/6.png)
+   ![](./resources/6.png)
 
 * Match using exact value.
 
@@ -138,7 +138,7 @@ version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
 version_status = 'OK'
 ```
 
-    ![](./resources/7.png)
+   ![](./resources/7.png)
 
 * Display only modified values.
 
