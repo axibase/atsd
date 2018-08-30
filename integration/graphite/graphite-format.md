@@ -6,13 +6,13 @@ The `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory 
 
 `graphite.conf` contains patterns used to parse incoming metrics:
 
-`pattern =` is used to match incoming metrics.
+`pattern =` matches incoming metrics.
 
-`atsd-pattern =` is used to convert a graphite metric name into an ATSD metric name, entity, and tags.
+`atsd-pattern =` converts a graphite metric name into an ATSD metric name, entity, and tags.
 
 If a metric name matches the regular expression `pattern`, the metric is parsed according to `atsd-pattern`.
 
-> NOTE: every `\` in `pattern` must be duplicated.
+> Duplicate all `\` characters in `pattern`.
 
 `graphite.conf` is parsed from top to bottom, meaning that metric names are matched to patterns in the same order they are placed in the file. Matching stops as soon as a `pattern` in satisfied.
 
@@ -23,22 +23,22 @@ If a metric name has less tokens than `atsd-pattern`, but still satisfies `patte
 If there is no `atsd-pattern` for an incoming metric name, then everything before the first period is recorded as the entity and the rest is recorded as the metric. If there are no periods in the metric name, then the default entity is set to `graphite`, and the metric name is recorded as the metric.
 <!-- markdownlint-enable MD106 -->
 
-`metric` – metric token; multiple occurrences are combined.
+`metric`: Metric token; multiple occurrences are combined.
 
-`entity` – entity token to replace the default entity (`graphite`); multiple occurrences are combined.
+`entity`: Entity token to replace the default entity (`graphite`); multiple occurrences are combined.
 
-`tag:tag_name` – token for the tag named `tag_name`.
+`tag:tag_name`: Token for the tag named `tag_name`.
 
-`metrics` – any number of metric tokens; can be used once per pattern.
+`metrics`: Any number of metric tokens; can be used once per pattern.
 
-String constants:
+**String constants**:
 
-String constants in brackets(tokens) are replaced.
+String constants in round brackets (tokens) are replaced.
 
-String constants without brackets(tokens) are added.
+String constants without round brackets (tokens) are added.
 
-> NOTE: Empty tokens are omitted.
-> NOTE: Empty `atsd-pattern` drops all incoming metrics that satisfy `pattern`.
+> Empty tokens are omitted.<br>
+> Empty `atsd-pattern` drops all incoming metrics that satisfy `pattern`.
 
 ### Examples
 

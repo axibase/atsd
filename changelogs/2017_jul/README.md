@@ -31,7 +31,7 @@
 | 4117 | SQL | Bug | Fixed a defect with some [metric columns](../../sql/README.md#metric-columns) not accessible in [`WHERE`](../../sql/README.md#where-clause)/[`HAVING`](../../sql/README.md#having-filter) filters, for example `WHERE metric.units = 'Celcius'`. |
 | 3888 | SQL | Bug | Fixed a defect with some [entity columns](../../sql/README.md#entity-columns) not accessible in [`WHERE`](../../sql/README.md#where-clause)/[`HAVING`](../../sql/README.md#having-filter) filters, for example `WHERE entity.label = 'SVL'`. |
 | [4286](#issue-4286) | sql | Feature | Formalize boolean logic in SQL queries. |
-| [4403](#issue-4403) | sql | Bug | Added syntax validation for the [`IN`](../../sql/README.md#where-clause) clause to require enclosing brackets. |
+| [4403](#issue-4403) | sql | Bug | Added syntax validation for the [`IN`](../../sql/README.md#where-clause) clause to require enclosing within round brackets. |
 | [4377](#issue-4377) | sql | Feature | Add support for selecting all columns in [inline views](../../sql/README.md#inline-views). |
 | [4361](#issue-4361) | sql | Feature | Add support for compressed CSV files in scheduled [SQL query export](../../sql/scheduled-sql.md) |
 | [3918](#issue-3918) | api-rest | Bug | Replace `last=true` with `limit=1` in Series [Get](../../api/data/series/get.md) method. |
@@ -56,7 +56,7 @@ SELECT * FROM jvm_memory_used
   AND datetime > NOW - 10*HOUR
 ```
 
-The correct syntax is to use brackets:
+The correct syntax is to use round brackets:
 
 ```sql
 SELECT * FROM jvm_memory_used

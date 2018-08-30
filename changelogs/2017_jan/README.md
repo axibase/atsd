@@ -319,7 +319,7 @@ GROUP BY t1.tags, t1.period(1 year)
 
 ### Issue 3751
 
-Addressed an error for `entityExpression` in [series](../../api/data/series/query.md) query method when `isEmpty()` is specified with brackets.
+Addressed an error for `entityExpression` in [series](../../api/data/series/query.md) query method when `isEmpty()` is specified with round brackets.
 
 ```json
 [{
