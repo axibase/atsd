@@ -52,7 +52,8 @@ now.day_of_week == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
-// returns true if difference between current Unix time (long, milliseconds) and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
+// returns true if difference between current Unix time (long, milliseconds)
+// and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
 (now.millis - create_ms) > 15*60000
 ```
 
