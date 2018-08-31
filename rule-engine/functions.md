@@ -65,6 +65,7 @@ Collection functions and operators check if the collection contains the specifie
 * [`isEmpty`](functions-collection.md#isempty)
 * [`collection`](functions-collection.md#collection)
 * [`excludeKeys`](functions-collection.md#excludekeys)
+* [`replacementTable`](functions-collection.md#replacementtable)
 
 ## Database Message
 
@@ -97,15 +98,24 @@ SQL functions return the results of user-defined SQL queries.
 
 Date functions perform various operations on dates, timestamps and intervals.
 
+* [`date_parse`](functions-date.md#date_parse)
+* [`elapsed_minutes`](functions-date.md#elapsed_minutes)
+* [`elapsedTime`](functions-date.md#elapsedtime)
 * [`now`](functions-date.md#now)
+* [`milliseconds`](functions-date.md#milliseconds)
+* [`seconds`](functions-date.md#seconds)
+* [`to_datetime`](functions-date.md#to_datetime)
+* [`today`](functions-date.md#today)
+* [`tomorrow`](functions-date.md#tomorrow)
+* [`yesterday`](functions-date.md#yesterday)
 * [`window_length_time`](functions-date.md#window_length_time)
 * [`window_length_count`](functions-date.md#window_length_count)
 * [`windowStartTime`](functions-date.md#windowstarttime)
-* [`elapsedTime`](functions-date.md#elapsedtime)
-* [`elapsed_minutes`](functions-date.md#elapsed_minutes)
-* [`milliseconds`](functions-date.md#milliseconds)
-* [`seconds`](functions-date.md#seconds)
-* [`date_parse`](functions-date.md#date_parse)
+* [`add`](object-datetime.md#add-function)
+* [`is_weekday`](object-datetime.md#is_weekday-function)
+* [`is_weekend`](object-datetime.md#is_weekend-function)
+* [`is_workday`](object-datetime.md#is_workday-function)
+* [`to_timezone`](object-datetime.md#to_timezone-function)
 
 ## Forecast
 
@@ -151,6 +161,7 @@ Lookup functions retrieve records from replacement tables, collections, and othe
 * [`collection`](functions-lookup.md#collection)
 * [`lookup`](functions-lookup.md#lookup)
 * [`replacementTable`](functions-lookup.md#replacementtable)
+* [`property`](functions-lookup.md#property)
 
 ## Mathematical
 
@@ -204,7 +215,7 @@ The rule functions check the status of windows created by other rules.
 
 ## Script
 
-Execute the predefined script and return its output.
+Executes the predefined script and return its output.
 
 * [`scriptOut`](functions-script.md)
 

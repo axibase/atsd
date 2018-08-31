@@ -117,7 +117,7 @@ NOT property_compare_except (['pid', '*time']).isEmpty()
 property_compare_except([string key], [string previousValue]) map
 ```
 
-  Same as `property_compare_except([string key])` with a list of previous values that are excluded from the difference map.
+Same as `property_compare_except([string key])` with a list of previous values that are excluded from the difference map.
 
 ```java
 NOT property_compare_except(['pid', '*time'], ['*Xloggc*']).isEmpty()
