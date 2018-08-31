@@ -8,10 +8,12 @@
 
 ## Security
 
-```diff
+<!-- markdownlint-disable MD032 -->
+::: danger
 * Note that image and file attachments in Discord messages cannot be securely shared at this time (API v6).
 * The attachments, even if sent to a private server, are accessible by any unauthorized user via the URL.
-```
+:::
+<!-- markdownlint-enable MD032 -->
 
 ## Prerequisites
 

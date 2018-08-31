@@ -98,5 +98,6 @@
         ,{ "pattern": "https://www.boi.org.il/en/Pages/Default.aspx"}
         ,{ "pattern": "https://www.boi.org.il/en/DataAndStatistics/Pages/Default.aspx"}
         ,{ "pattern": "https://www.boi.org.il/en/DataAndStatistics"}
+        ,{ "pattern": "https://catalog.data.gov/dataset/nyc-social-media-usage-555a2"}
          
     ]}

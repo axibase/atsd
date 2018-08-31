@@ -2,7 +2,7 @@
 
 ## Overview
 
-Functions are predefined procedures that calculate a value or perform a task. Functions are called by name with arguments passed in brackets and separated by comma. Function names are **case-sensitive**.
+Functions are predefined procedures that calculate a value or perform a task. Functions are called by name with arguments passed in round brackets and separated by comma. Function names are **case-sensitive**.
 
 ```javascript
 /* Returns true if the create_ms date is a working day. */
@@ -35,7 +35,7 @@ Functions can be referenced in a [filter expression](filters.md#filter-expressio
 
 ## Arguments
 
-The parameters passed to the function in brackets are called arguments.
+The parameters passed to the function in round brackets are called arguments.
 
 Functions can accept arguments and return values in one of the following data types:
 
