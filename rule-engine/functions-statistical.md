@@ -140,6 +140,13 @@ stdev() double
 
 Returns standard deviation. Aliases: `stdev`, `std_dev`.
 
+### `stdev`
+
+```javascript
+  stdev() double
+```
+Standard deviation.
+
 ## `intercept`
 
 ```javascript
