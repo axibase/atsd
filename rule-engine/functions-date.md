@@ -157,7 +157,7 @@ elapsedTime(long time) long
 elapsedTime(string date) long
 ```
 
-Calculates the number of **milliseconds** between the current time `time` specified as Unix time in milliseconds or date `date` specified in the following format:
+Calculates the number of **milliseconds** between the current time and `time` specified as Unix time in milliseconds or date `date` specified in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
@@ -194,7 +194,7 @@ elapsed_minutes(long time) long
 elapsed_minutes(string date) long
 ```
 
-Calculates the number of **minutes** between the current Unix time `time` in milliseconds or date `date`.
+Calculates the number of **minutes** between the current Unix time and `time` in milliseconds or date `date`.
 
 Returns the same result as the `elapsedTime` function divided by `60000`.
 
