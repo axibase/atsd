@@ -78,7 +78,7 @@ The target URL receives the following JSON payload sent as `application/json`:
 queryGet(string u, [map c]) response
 ```
 
-Executes a `GET` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
+Executes a `GET` request to the specified [request URL](#request-url) `u` and returns a `WebRequestResult` [response object](#response-object).
 
 The configuration map `c` can contain the following fields:
 
@@ -96,7 +96,7 @@ queryGet("https://ipinfo.io/1.1.1.1/json").content
 queryPost(string u, [map c]) response
 ```
 
-Executes a `POST` request to the specified [request URL](#request-url) `u` and return a `WebRequestResult` [response object](#response-object).
+Executes a `POST` request to the specified [request URL](#request-url) `u` and returns a `WebRequestResult` [response object](#response-object).
 
 The configuration map `c` can contain the following fields:
 
