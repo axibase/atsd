@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD101 -->
+
 # Functions Reference
 
 Name | Type | Description

@@ -143,8 +143,9 @@ Returns standard deviation. Aliases: `stdev`, `std_dev`.
 ### `stdev`
 
 ```javascript
-  stdev() double
+stdev() double
 ```
+
 Standard deviation.
 
 ## `intercept`
