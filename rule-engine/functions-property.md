@@ -19,7 +19,7 @@ A set of convenience methods to retrieve and compare property keys and tags usin
 property([string entity, ] string expr [, string date]) string
 ```
 
-Returns the first value in the list of strings returned by the `property_values(expr)` function.
+Returns the first value in the list of strings returned by the `property_values()` function.
 
 By default, the search is performed for the current entity that is initialized in the rule window. If the entity `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 

@@ -143,9 +143,9 @@ If the purpose of a rule is to create derived series, without any alerting, set 
 
 ### Moving Average, Last `n` Count
 
-* **Window Size**: `count = 10`
-* **Condition**: `true`
-* **Derived Command**:
+* Window Size: `count = 10`
+* Condition: `true`
+* Derived Command:
 
   ```bash
   series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
@@ -153,9 +153,9 @@ If the purpose of a rule is to create derived series, without any alerting, set 
 
 ### Moving Average, Last `n` Time
 
-* **Window Size**: `time = 10 minute`
-* **Condition**: `true`
-* **Derived Command**:
+* Window Size: `time = 10 minute`
+* Condition: `true`
+* Derived Command:
 
   ```bash
   series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
@@ -163,10 +163,10 @@ If the purpose of a rule is to create derived series, without any alerting, set 
 
 ### Roll Up (All Matching Entities)
 
-* **Window Type**: `time:  1 minute`
-* **Group by Entity**: Not Enabled
-* **Condition**: `true`
-* **Derived Command**:
+* Window Type: `time:  1 minute`
+* Group by Entity: Not Enabled
+* Condition: `true`
+* Derived Command:
 
   ```bash
   series e:total m:${metric}_sum=${sum()}
@@ -174,9 +174,9 @@ If the purpose of a rule is to create derived series, without any alerting, set 
 
 ### Reverse / Inverse Metric
 
-* **Window Type**: `count = 1`
-* **Condition**: `true`
-* **Derived Command**:
+* Window Type: `count = 1`
+* Condition: `true`
+* Derived Command:
 
   ```bash
   series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
@@ -188,9 +188,9 @@ If the purpose of a rule is to create derived series, without any alerting, set 
 
 ### Ratio / Percentage
 
-* **Window Type**: `count =  1`
-* **Condition**: `true`
-* **Derived Command**:
+* Window Type: `count =  1`
+* Condition: `true`
+* Derived Command:
 
   ```bash
   series e:${entity} m:${metric}_percent=${100 * value/value('total')} $  {commandTags}
@@ -198,9 +198,9 @@ If the purpose of a rule is to create derived series, without any alerting, set 
 
 ### Message to Series
 
-* **Window Type**: `count = 1`
-* **Condition**: `true`
-* **Derived Command**:
+* Window Type: `count = 1`
+* Condition: `true`
+* Derived Command:
 
   ```bash
   series e:${entity} m:job_execution_time=$  {tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
