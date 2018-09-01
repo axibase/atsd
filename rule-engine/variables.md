@@ -143,7 +143,7 @@ Variables can be included in a condition.
 
 ## Execution
 
-Depending on the sequence of boolean checks in the condition which refers to a variable, such variable may be evaluated for **each** incoming or existing command regardless of the window status.
+Depending on the sequence of boolean checks in the condition which refers to a variable, such variable can be evaluated for **each** command.
 
 If such variable invokes an external function such as [`scriptOut`](functions-script.md), such function must execute quickly, within a few seconds. Avoid calling long-running functions in variables.
 
