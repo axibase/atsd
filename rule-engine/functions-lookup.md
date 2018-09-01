@@ -224,20 +224,22 @@ Retrieves the replacement table identified by `name` as a key-value map.
 
 If the table is not found, the function returns an empty map.
 
-## `property`
-
-```csharp
-property(string expr) string
+```javascript
+// .keySet() returns a collection of keys in the replacement table
+replacementTable('oncall-emails').keySet()
 ```
-
-Retrieves tag value for the entity in the current window given the [property search](property-search.md) expression `expr`.
-
-The function returns an empty string if the expression matches no properties.
-
-Example:
 
 ```javascript
-property('docker.container::image')
+// .values() returns a collection of values in the replacement table
+replacementTable('oncall-emails').values()
 ```
 
-Refer to [property functions](functions-property.md#property) for additional syntax options.
+```javascript
+// returns a random value in the replacement table
+randomItem(replacementTable('oncall-emails').values())
+```
+
+```javascript
+// returns a random key-value object from the replacement table
+randomItem(replacementTable('oncall-emails'))
+```

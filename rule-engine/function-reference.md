@@ -1,17 +1,17 @@
 <!-- markdownlint-disable MD101 -->
 
-# Functions Reference
+# Function Reference
 
 Name | Type | Description
 ---|---|---
 [`abs`](functions-math.md#abs)| Mathematical | Returns the absolute value of the argument.
 [`abbreviate`](functions-text.md#abbreviate)| Text | Truncates string using ellipses to hide extraneous text.
 [`add`](object-datetime.md#add-function) |Date| Returns a [`DateTime`](object-datetime.md) object created by adding an interval.
-[`addLink`](functions-link.md#addlink)| Link | Returns the URL with a formatted short name.
-[`addPortal`](functions-portal.md#portal-functions) | Portal | Attaches custom portals to outgoing webhooks.
-[`addTable for list`](functions-table.md#addtable-for-list)| Table | Prints list of lists as a multi-column table in the specified format.
-[`addTable for map`](functions-table.md#addtable-for-map)| Table | Prints the input key-value map as a two-column table in the specified format.
-[`addTable for maps`](functions-table.md#addtable-for-maps)| Table | Prints a collection of maps as a multi-column table in the specified format.
+[`addLink`](functions-link.md#addlink)| Content | Returns the URL with a formatted short name.
+[`addPortal`](functions-portal.md#portal-functions) | Content | Attaches portal screenshots to email and webhook notifications.
+[`addTable for list`](functions-table.md#addtable-for-list)| Collection | Prints list of lists as a multi-column table in the specified format.
+[`addTable for map`](functions-table.md#addtable-for-map)| Collection | Prints the input key-value map as a two-column table in the specified format.
+[`addTable for maps`](functions-table.md#addtable-for-maps)| Collection | Prints a collection of maps as a multi-column table in the specified format.
 [`avg`](functions-statistical.md#avg)| Statistical | Calculates average value.
 [`avgIf`](functions-statistical.md#avgif)| Statistical | Calculates average of elements matching the specified condition.
 [`capFirst`](functions-text.md#capfirst)| Text | Capitalizes the first letter in the string.
@@ -19,7 +19,7 @@ Name | Type | Description
 [`cbrt`](functions-math.md#cbrt)| Mathematical | Returns cube root ∛ of the argument.
 [`ceil`](functions-math.md#ceil)| Mathematical | Returns the smallest integer that is greater than or equal to the argument.
 [`coalesce`](functions-text.md#coalesce)| Text | Returns first non-empty string from the collection of strings.
-[`collection`](functions-collection.md#collection) | Collection, Lookup | Returns an array of strings contained in Named Collection.
+[`collection`](functions-collection.md#collection) | Database | Returns an array of strings contained in Named Collection.
 [`concat`](functions-text.md#concat)| Text | Joins the elements of the collection into a single string.
 [`concatLines`](functions-text.md#concatlines)| Text | Joins the elements of the collection into a single string with line breaks `\n`.
 [`contains`](functions-collection.md#contains)| Collection | Returns `true` if string on the right is contained in the specified collection.
@@ -29,13 +29,13 @@ Name | Type | Description
 [`countMatches`](functions-text.md#countmatches)| Text | Counts how many times the substring appears in input string.
 [`date_format`](functions-format.md#date_format)| Formatting | Converts Unix time in milliseconds to a string.
 [`date_parse`](functions-date.md#date_parse)| Date | Parses the input string into a [`DateTime`](object-datetime.md) object.
-[`db_last`](functions-series.md#db_last)| Database Series | Retrieves the most recent value stored in the database for the target series.
-[`db_statistic`](functions-series.md#db_statistic)| Database Series | Returns the result of a statistical function for historical values.
-[`db_message_count`](functions-message.md#db_message_count)| Database Message | Returns the number of message records matching the specified parameters.
-[`db_message_last`](functions-message.md#db_message_last)| Database Message | Returns the most recent message record for the specified parameters.
-[`db_messages`](functions-message.md#db_messages)| Database Message | Returns a list of message records matching the specified parameters.
+[`db_last`](functions-series.md#db_last)| Database | Retrieves the most recent value stored in the database for the target series.
+[`db_statistic`](functions-series.md#db_statistic)| Database | Returns the result of a statistical function for historical values.
+[`db_message_count`](functions-message.md#db_message_count)| Database | Returns the number of message records matching the specified parameters.
+[`db_message_last`](functions-message.md#db_message_last)| Database | Returns the most recent message record for the specified parameters.
+[`db_messages`](functions-message.md#db_messages)| Database | Returns a list of message records matching the specified parameters.
 [`delta`](functions-statistical.md#delta)| Statistical | Calculates difference between `last` and `first` values.
-[`detailsTable`](details-table.md)| Table | Assembles a table consisting of window and command fields.
+[`detailsTable`](details-table.md)| Collection | Assembles a table consisting of window and command fields.
 [`diff`](functions-statistical.md#diff)| Statistical | Calculates difference between `last` and `first` values.
 [`elapsed_minutes`](functions-date.md#elapsed_minutes)| Date | Calculates the number of minutes between the current and specified time.
 [`elapsedTime`](functions-date.md#elapsedtime)| Date | Calculates the number of milliseconds between the current and specified time.
@@ -44,29 +44,29 @@ Name | Type | Description
 [`entity_tag`](functions-lookup.md#entity_tag)| Lookup | Returns value of the specified tag name for the specified entity.
 [`entity_tags`](functions-lookup.md#entity_tags)| Lookup | Returns entity tags for the specified entity as a map.
 [`excludeKeys`](functions-collection.md#excludekeys)| Collection | Returns a copy of the input map without the keys in the input collection.
-[`executeSqlQuery`](functions-sql.md#executesqlquery)| SQL Query | Returns the result of SQL query.
+[`executeSqlQuery`](functions-sql.md#executesqlquery)| Database | Returns the result of SQL query.
 [`exp`](functions-math.md#exp)| Mathematical | Returns Euler constant `e` (2.7) raised to the power of the argument.
 [`first`](functions-statistical.md#first)| Statistical | Returns first series value.
-[`flattenJson`](functions-table.md#flattenjson)| Table | Converts the string representation of JSON document into a map.
+[`flattenJson`](functions-json.md#flattenjson)| Collection | Converts the string representation of JSON document into a map.
 [`floor`](functions-math.md#floor)| Mathematical | Returns the largest integer that is less than or equal to the argument.
 [`forecast`](functions-forecast.md#forecast)| Forecast | Returns forecast value for the entity, metric, and tags in the current window.
-[`forecast_deviation`](functions-forecast.md#forecast_deviation)| Forecast | Returns difference between a number and the forecast value, divided by the forecast standard deviation.
-[`forecast_stdev`](functions-forecast.md#forecast_stdev)| Forecast | Returns forecast standard deviation.
+[`forecast_deviation`](functions-forecast.md#forecast_deviation)| Database | Returns difference between a number and the forecast value, divided by the forecast standard deviation.
+[`forecast_stdev`](functions-forecast.md#forecast_stdev)| Database | Returns forecast standard deviation.
 [`formatBytes`](functions-format.md#formatbytes)| Formatting | Returns the total number of bytes in human-readable format.
 [`formatInterval`](functions-format.md#formatinterval)| Formatting | Converts milliseconds interval to a formatted interval.
 [`formatIntervalShort`](functions-format.md#formatintervalshort)| Formatting | Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
 [`formatNumber`](functions-format.md#formatnumber)| Formatting | Formats number with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) using the server locale.
-[`getEntities`](functions-lookup.md#getentities)| Lookup | Returns a list of [Entity](entity-fields.md) **objects** matching the given parameters.
-[`getEntity`](functions-lookup.md#getentity)| Lookup | Retrieves an entity object by name.
-[`getEntityCount`](functions-lookup.md#getentitycount)| Lookup | Returns a count of [Entity](entity-fields.md) **objects** matching the given parameters.
-[`getEntityLink`](functions-link.md#getentitylink)| Link | Returns the URL to the **Entity Editor** page for the specified entity.
-[`getEntityName`](functions-lookup.md#getentityname)| Lookup | Returns normalized (lowercase) entity name for the specified entity.
-[`getChartLink`](functions-link.md#getchartlink)| Link | Returns the URL to the default portal for the current metric, entity, and tags.
-[`getCsvExportLink`](functions-link.md#getcsvexportlink)| Link | Returns the URL to the **CSV** file for the current metric, entity, and tags.
-[`getHtmlExportLink`](functions-link.md#gethtmlexportlink)| Link | Returns the URL to the **Export** page for the current metric, entity, and tags.
-[`getPropertyLink`](functions-link.md#getpropertylink)| Link | Returns the URL to the property table for the given entity and property type.
+[`getEntities`](functions-lookup.md#getentities)| Database | Returns a list of [Entity](entity-fields.md) **objects** matching the given parameters.
+[`getEntity`](functions-lookup.md#getentity)| Database | Retrieves an entity object by name.
+[`getEntityCount`](functions-lookup.md#getentitycount)| Database | Returns a count of [Entity](entity-fields.md) **objects** matching the given parameters.
+[`getEntityLink`](functions-link.md#getentitylink)| Content | Returns the URL to the **Entity Editor** page for the specified entity.
+[`getEntityName`](functions-lookup.md#getentityname)| Database | Returns normalized (lowercase) entity name for the specified entity.
+[`getChartLink`](functions-link.md#getchartlink)| Content | Returns the URL to the default portal for the current metric, entity, and tags.
+[`getCsvExportLink`](functions-link.md#getcsvexportlink)| Content | Returns the URL to the **CSV** file for the current metric, entity, and tags.
+[`getHtmlExportLink`](functions-link.md#gethtmlexportlink)| Content | Returns the URL to the **Export** page for the current metric, entity, and tags.
+[`getPropertyLink`](functions-link.md#getpropertylink)| Content | Returns the URL to the property table for the given entity and property type.
 [`getPropertyTypes`](functions-property.md#getpropertytypes)| Property | Returns a sorted set of property types for the specified entity.
-[`getRuleLink`](functions-link.md#getrulelink)| Link | Returns the URL to the current rule.
+[`getRuleLink`](functions-link.md#getrulelink)| Content | Returns the URL to the current rule.
 [`getURLHost`](functions-utility.md#geturlhost)| Utility | Retrieves the **host** from URL specified in string url.
 [`getURLPath`](functions-utility.md#geturlpath)| Utility | Retrieves the **path** from URL string.
 [`getURLPort`](functions-utility.md#geturlport)| Utility | Retrieves the **port** from URL string.
@@ -83,15 +83,15 @@ Name | Type | Description
 [`is_weekend`](object-datetime.md#is_weekend-function)| Date | Returns `true` if the [`DateTime`](object-datetime.md) object is a weekend day.
 [`is_workday`](object-datetime.md#is_workday-function)| Date | Returns `true` if the [`DateTime`](object-datetime.md) object is a working day.
 [`jsonencode`](functions-text.md#jsonencode)| Text | Escapes special JSON characters with a backslash.
-[`jsonPathFilter`](functions-table.md#jsonpathfilter)| Table | Returns a list of objects matching the [`JSONPath` expression](https://github.com/json-path/JsonPath).
-[`jsonToLists`](functions-table.md#jsontolists)| Table | Returns a collection of string lists containing field values from the JSON.
-[`jsonToMaps`](functions-table.md#jsontomaps)| Table | Returns a collection of maps containing keys and values from the JSON.
+[`jsonPathFilter`](functions-json.md#jsonpathfilter)| Collection | Returns a list of objects matching the [`JSONPath` expression](https://github.com/json-path/JsonPath).
+[`jsonToLists`](functions-json.md#jsontolists)| Collection | Returns a collection of string lists containing field values from the JSON.
+[`jsonToMaps`](functions-json.md#jsontomaps)| Collection | Returns a collection of maps containing keys and values from the JSON.
 [`keepAfter`](functions-text.md#keepafter)| Text | Removes part of string before the first occurrence of the given substring.
 [`keepAfterLast`](functions-text.md#keepafterlast)| Text | Removes part of string before the last occurrence of the given substring.
 [`keepBefore`](functions-text.md#keepbefore)| Text | Removes part of string after the first occurrence of the given substring.
 [`keepBeforeLast`](functions-text.md#keepbeforelast)| Text | Removes part of string after the last occurrence of the given substring.
 [`last`](functions-statistical.md#last)| Statistical | Returns last value.
-[`last_open`](functions-alert-history.md#last_open)| Alert History | Retrieves the most recent open AlertHistory record for the current window.
+[`last_open`](functions-alert-history.md#last_open)| Database | Retrieves the most recent open AlertHistory record for the current window.
 [`length`](functions-text.md#length)| Text | Returns the length of string.
 [`LIKE`](functions-collection.md#like) | Collection | Returns `true` if string on the left matches any pattern in the list on the right.
 [`likeAny`](functions-collection.md#likeany) | Collection | Returns `true` if string matches any element in the string collection.
@@ -116,11 +116,11 @@ Name | Type | Description
 [`percentile`](functions-statistical.md#percentile)| Statistical | Calculates `n`-th percentile.
 [`pow`](functions-math.md#pow)| Mathematical | Returns the first specified number raised to the power of the second number.
 [`printObject`](functions-utility.md#printobject)| Utility | Prints the input object as a two-column table in the specified format.
-[`property`](functions-lookup.md#property)| Lookup, Property | Retrieves tag value for the given [property search](property-search.md) expression.
-[`property_compare_except`](functions-property.md#property_compare_except)| Property | Compares properties in the previous and the current `property` command.
-[`property_map`](functions-property.md#property_map)| Property | Returns a map with keys and tags for the given [property search](property-search.md) expression.
-[`property_maps`](functions-property.md#property_maps)| Property | Returns a list of maps for the given property search expression.
-[`property_values`](functions-property.md#property_values)| Property | Returns a list of tag values for the given [property search](property-search.md) expression.
+[`property`](functions-property.md#property)| Database | Retrieves tag value for the given [property search](property-search.md) expression.
+[`property_compare_except`](functions-property.md#property_compare_except)| Database | Compares properties in the previous and the current `property` command.
+[`property_map`](functions-property.md#property_map)| Database | Returns a map with keys and tags for the given [property search](property-search.md) expression.
+[`property_maps`](functions-property.md#property_maps)| Database | Returns a list of maps for the given property search expression.
+[`property_values`](functions-property.md#property_values)| Database | Returns a list of tag values for the given [property search](property-search.md) expression.
 [`queryConfig`](functions-web-query.md#queryconfig)| Web Query | Executes an HTTP request using a predefined [outgoing webhook](notifications/README.md).
 [`queryGet`](functions-web-query.md#queryget)| Web Query | Executes a `GET` request to the specified [request URL](functions-web-query.md#request-url).
 [`queryPost`](functions-web-query.md#querypost)| Web Query | Executes a `POST` request to the specified [request URL](functions-web-query.md#request-url).
@@ -134,7 +134,7 @@ Name | Type | Description
 [`removeBeginning`](functions-text.md#removebeginning)| Text | Removes substring from the beginning of the given string.
 [`removeEnding`](functions-text.md#removeending)| Text | Removes given substring from the end of the target string.
 [`replace`](functions-text.md#replace)| Text | Replaces all occurrences of the 1-st string in the original string with the 2-nd string.
-[`replacementTable`](functions-collection.md#replacementtable)| Collection, Lookup | Retrieves the Replacement Table as a key-value map.
+[`replacementTable`](functions-collection.md#replacementtable)| Database | Retrieves the Replacement Table as a key-value map.
 [`round`](functions-math.md#round)| Mathematical | Returns the specified number rounded to the specified precision.
 [`rule_open`](functions-rules.md#rule_open)| Rule | Checks if there is at least one open window for the specified arguments.
 [`rule_window`](functions-rules.md#rule_window)| Rule | Returns the **first** matching [`Window`](window-fields.md#base-fields) object for the specified arguments.
@@ -155,7 +155,7 @@ Name | Type | Description
 [`sumIf`](functions-statistical.md#sumif)| Statistical | Sums elements matching the specified condition.
 [`threshold_linear_time`](functions-statistical.md#threshold_linear_time)| Statistical | Forecasts the minutes until the value reaches the threshold based on linear extrapolation.
 [`threshold_time`](functions-statistical.md#threshold_time)| Statistical | Forecasts the minutes until the value reaches the threshold based on extrapolation of the difference between the last and first value.
-[`thresholdTime`](functions-forecast.md#thresholdtime)| Forecast | Returns time when the [forecast value](../forecasting/README.md) is outside of the `(min, max)` range.
+[`thresholdTime`](functions-forecast.md#thresholdtime)| Database | Returns time when the [forecast value](../forecasting/README.md) is outside of the `(min, max)` range.
 [`to_datetime`](functions-date.md#to_datetime)| Date | Returns [`DateTime`](object-datetime.md) object in the server time zone from Unix milliseconds.
 [`to_timezone`](object-datetime.md#to_timezone-function)| Date | Returns a new [`DateTime`](object-datetime.md) object modified to the specified [time zone](../shared/timezone-list.md).
 [`toBoolean`](functions-utility.md#toboolean)| Utility | Converts the input string or number to a boolean value.

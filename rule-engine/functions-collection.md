@@ -27,7 +27,6 @@ collection('oncall-emails')
 * [`contains`](#contains)
 * [`size`](#size)
 * [`isEmpty`](#isempty)
-* [`replacementTable`](#replacementtable)
 * [`excludeKeys`](#excludekeys)
 
 ## `collection`
@@ -193,36 +192,6 @@ Example:
 
 ```javascript
 collection('ip_white_list').isEmpty()
-```
-
-## `replacementTable`
-
-```csharp
-replacementTable(string name) map
-```
-
-Retrieves the replacement table identified by `name` as a key-value map.
-
-If the table is not found, the function returns an empty map.
-
-```javascript
-// .keySet() returns a collection of keys in the replacement table
-replacementTable('oncall-emails').keySet()
-```
-
-```javascript
-// .values() returns a collection of values in the replacement table
-replacementTable('oncall-emails').values()
-```
-
-```javascript
-// returns a random value in the replacement table
-randomItem(replacementTable('oncall-emails').values())
-```
-
-```javascript
-// returns a random key-value object from the replacement table
-randomItem(replacementTable('oncall-emails'))
 ```
 
 ## `excludeKeys`

@@ -51,9 +51,11 @@ Functions can accept arguments and return values in one of the following data ty
 | `[k: v]` | key-value map | `randomKey(['john.doe': 0.8, 'mary.jones': 0.2])` |
 | `object` | object | `rule_window('disk_check').status` |
 
-## Collection
+## Function Reference
 
-Collection functions and operators check if the collection contains the specified element.
+The [reference](function-reference.md) contains an alphabetical list of all functions implemented in the rule engine.
+
+## Collection
 
 * [`IN`](functions-collection.md#in)
 * [`LIKE`](functions-collection.md#like)
@@ -63,11 +65,39 @@ Collection functions and operators check if the collection contains the specifie
 * [`contains`](functions-collection.md#contains)
 * [`size`](functions-collection.md#size)
 * [`isEmpty`](functions-collection.md#isempty)
-* [`collection`](functions-collection.md#collection)
 * [`excludeKeys`](functions-collection.md#excludekeys)
-* [`replacementTable`](functions-collection.md#replacementtable)
+* [`jsonPathFilter`](functions-json.md#jsonpathfilter)
+* [`jsonToMaps`](functions-json.md#jsontomaps)
+* [`jsonToLists`](functions-json.md#jsontolists)
+* [`flattenJson`](functions-json.md#flattenjson)
 
-## Database Message
+## Content
+
+### Tables
+
+* [`addTable for map`](functions-table.md#addtable-for-map)
+* [`addTable for maps`](functions-table.md#addtable-for-maps)
+* [`addTable for list`](functions-table.md#addtable-for-list)
+
+### Links
+
+* [`getEntityLink`](functions-link.md#getentitylink)
+* [`getPropertyLink`](functions-link.md#getpropertylink)
+* [`getRuleLink`](functions-link.md#getrulelink)
+* [`getCsvExportLink`](functions-link.md#getcsvexportlink)
+* [`getHtmlExportLink`](functions-link.md#gethtmlexportlink)
+* [`getChartLink`](functions-link.md#getchartlink)
+* [`addLink`](functions-link.md#addlink)
+
+### Portal
+
+Portal functions attach portal screenshots to email and webhooks notifications.
+
+* [`addPortal`](functions-portal.md#portal-functions)
+
+## Database
+
+### Messages
 
 Message functions retrieve message counts or specific messages from the database.
 
@@ -75,28 +105,63 @@ Message functions retrieve message counts or specific messages from the database
 * [`db_message_last`](functions-message.md#db_message_last)
 * [`db_messages`](functions-message.md#db_messages)
 
-## Database Series
+### Properties
 
-Series functions retrieve series values from the database. Data can requested for series, other then the current series in the window. The functions are commonly used to calculate derived metrics.
+Property functions retrieve and compare property keys and tags.
+
+* [`property`](functions-property.md#property)
+* [`property_values`](functions-property.md#property_values)
+* [`property_compare_except`](functions-property.md#property_compare_except)
+* [`property_map`](functions-property.md#property_map)
+* [`property_maps`](functions-property.md#property_maps)
+* [`getPropertyTypes`](functions-property.md#getpropertytypes)
+
+### Series
+
+Series functions retrieve series values and statistics for any metric or entity from the database.
 
 * [`db_last`](functions-series.md#db_last)
 * [`db_statistic`](functions-series.md#db_statistic)
 
 > See also [value](#value) functions.
 
-## Alert History
+### Forecasts
+
+Forecast functions retrieve forecast values from the database.
+
+* [`forecast`](functions-forecast.md#forecast)
+* [`forecast_stdev`](functions-forecast.md#forecast_stdev)
+* [`forecast_deviation`](functions-forecast.md#forecast_deviation)
+* [`thresholdTime`](functions-forecast.md#thresholdtime)
+
+### Alert History
 
 * [`last_open`](functions-alert-history.md#last_open)
 
-## SQL Query
+### SQL Query
 
 SQL functions return the results of user-defined SQL queries.
 
 * [`executeSqlQuery`](functions-sql.md#executesqlquery)
 
+### Lookup
+
+Lookup functions retrieve records from replacement tables, named collections, and other database tables.
+
+* [`collection`](functions-lookup.md#collection)
+* [`lookup`](functions-lookup.md#lookup)
+* [`replacementTable`](functions-lookup.md#replacementtable)
+* [`getEntity`](functions-lookup.md#getentity)
+* [`getEntities`](functions-lookup.md#getentities)
+* [`getEntityCount`](functions-lookup.md#getentitycount)
+* [`entity_tag`](functions-lookup.md#entity_tag)
+* [`entity_tags`](functions-lookup.md#entity_tags)
+* [`entity_label`](functions-lookup.md#entity_label)
+* [`getEntityName`](functions-lookup.md#getentityname)
+
 ## Date
 
-Date functions perform various operations on dates, timestamps and intervals.
+Date functions perform various calendar operations on timestamps and intervals.
 
 * [`date_parse`](functions-date.md#date_parse)
 * [`elapsed_minutes`](functions-date.md#elapsed_minutes)
@@ -117,18 +182,9 @@ Date functions perform various operations on dates, timestamps and intervals.
 * [`is_workday`](object-datetime.md#is_workday-function)
 * [`to_timezone`](object-datetime.md#to_timezone-function)
 
-## Forecast
-
-Forecast functions retrieve forecast values and variance from the database.
-
-* [`forecast`](functions-forecast.md#forecast)
-* [`forecast_stdev`](functions-forecast.md#forecast_stdev)
-* [`forecast_deviation`](functions-forecast.md#forecast_deviation)
-* [`thresholdTime`](functions-forecast.md#thresholdtime)
-
 ## Formatting
 
-These functions format dates and numbers to strings according to the specified pattern.
+Formatting functions convert dates and numbers to strings according to the specified pattern.
 
 * [`convert`](functions-format.md#convert)
 * [`formatNumber`](functions-format.md#formatnumber)
@@ -136,32 +192,6 @@ These functions format dates and numbers to strings according to the specified p
 * [`date_format`](functions-format.md#date_format)
 * [`formatInterval`](functions-format.md#formatinterval)
 * [`formatIntervalShort`](functions-format.md#formatintervalshort)
-
-## Link
-
-* [`getEntityLink`](functions-link.md#getentitylink)
-* [`getPropertyLink`](functions-link.md#getpropertylink)
-* [`getRuleLink`](functions-link.md#getrulelink)
-* [`getCsvExportLink`](functions-link.md#getcsvexportlink)
-* [`getHtmlExportLink`](functions-link.md#gethtmlexportlink)
-* [`getChartLink`](functions-link.md#getchartlink)
-* [`addLink`](functions-link.md#addlink)
-
-## Lookup
-
-Lookup functions retrieve records from replacement tables, collections, and other entities.
-
-* [`entity_tag`](functions-lookup.md#entity_tag)
-* [`entity_tags`](functions-lookup.md#entity_tags)
-* [`entity_label`](functions-lookup.md#entity_label)
-* [`getEntity`](functions-lookup.md#getentity)
-* [`getEntities`](functions-lookup.md#getentities)
-* [`getEntityCount`](functions-lookup.md#getentitycount)
-* [`getEntityName`](functions-lookup.md#getentityname)
-* [`collection`](functions-lookup.md#collection)
-* [`lookup`](functions-lookup.md#lookup)
-* [`replacementTable`](functions-lookup.md#replacementtable)
-* [`property`](functions-lookup.md#property)
 
 ## Mathematical
 
@@ -181,23 +211,6 @@ Math functions perform basic numeric operations on the input number and return a
 * [`log10`](functions-math.md#log10)
 * [`signum`](functions-math.md#signum)
 
-## Portal
-
-Portal functions allow attaching custom portals to email and outgoing webhooks.
-
-* [`addPortal`](functions-portal.md#portal-functions)
-
-## Property
-
-Property functions retrieve and compare property keys and tags.
-
-* [`property`](functions-property.md#property)
-* [`property_values`](functions-property.md#property_values)
-* [`property_compare_except`](functions-property.md#property_compare_except)
-* [`property_map`](functions-property.md#property_map)
-* [`property_maps`](functions-property.md#property_maps)
-* [`getPropertyTypes`](functions-property.md#getpropertytypes)
-
 ## Random
 
 * [`random`](functions-random.md#random)
@@ -205,9 +218,9 @@ Property functions retrieve and compare property keys and tags.
 * [`randomItem`](functions-random.md#randomitem)
 * [`randomKey`](functions-random.md#randomkey)
 
-## Rule
+## Window
 
-The rule functions check the status of windows created by other rules.
+The window functions find and check windows created by other rules.
 
 * [`rule_open`](functions-rules.md#rule_open)
 * [`rule_window`](functions-rules.md#rule_window)
@@ -215,7 +228,7 @@ The rule functions check the status of windows created by other rules.
 
 ## Script
 
-Executes the predefined script and return its output.
+Executes the predefined script and returns its output.
 
 * [`scriptOut`](functions-script.md)
 
@@ -229,7 +242,7 @@ Executes the predefined script and return its output.
 
 ## Statistical
 
-Univariate statistical functions listed below perform a calculation on the array of numeric values stored in the window.
+Univariate statistical functions perform calculations on numeric values stored in the window.
 
 * [`avg`](functions-statistical.md#avg)
 * [`mean`](functions-statistical.md#mean)
@@ -262,16 +275,6 @@ Univariate statistical functions listed below perform a calculation on the array
 * [`countIf`](functions-statistical.md#countif)
 * [`avgIf`](functions-statistical.md#avgif)
 * [`sumIf`](functions-statistical.md#sumif)
-
-## Table
-
-* [`addTable for map`](functions-table.md#addtable-for-map)
-* [`addTable for maps`](functions-table.md#addtable-for-maps)
-* [`addTable for list`](functions-table.md#addtable-for-list)
-* [`jsonPathFilter`](functions-table.md#jsonpathfilter)
-* [`jsonToMaps`](functions-table.md#jsontomaps)
-* [`jsonToLists`](functions-table.md#jsontolists)
-* [`flattenJson`](functions-table.md#flattenjson)
 
 ## Text
 
@@ -323,13 +326,13 @@ Text functions transform and compare strings.
 
 ## Value
 
-Value functions retrieve values for other metrics contained in the same command.
+Value functions retrieve values for other metrics received in the same command.
 
 * [`value`](functions-value.md)
 
 ## Web Query
 
-Web Query functions allow to perform requests to external web services.
+Web Query functions perform requests to external web services.
 
 * [`queryConfig`](functions-web-query.md#queryconfig)
 * [`queryGet`](functions-web-query.md#queryget)
