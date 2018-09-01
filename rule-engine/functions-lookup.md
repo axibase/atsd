@@ -2,7 +2,7 @@
 
 ## Overview
 
-These functions retrieve collections and maps of strings from replacement tables, collections, and other entities.
+These functions retrieve collections and maps of strings from named collections, replacement tables, and other database tables.
 
 Replacement tables are listed on the **Data > Replacement Tables** page.
 
@@ -10,6 +10,9 @@ Named collections are listed on the **Data > Named Collections** page.
 
 ## Reference
 
+* [`collection`](#collection)
+* [`lookup`](#lookup)
+* [`replacementTable`](#replacementtable)
 * [`entity_tag`](#entity_tag)
 * [`entity_tags`](#entity_tags)
 * [`entity_label`](#entity_label)
@@ -17,10 +20,81 @@ Named collections are listed on the **Data > Named Collections** page.
 * [`getEntities`](#getentities)
 * [`getEntityCount`](#getentitycount)
 * [`getEntityName`](#getentityname)
-* [`collection`](#collection)
-* [`lookup`](#lookup)
-* [`replacementTable`](#replacementtable)
-* [`property`](#property)
+
+## `collection`
+
+```csharp
+collection(string name) [string]
+```
+
+Retrieves a list of strings for the specified collection identified by `name`. Named collections are listed on the **Data > Named Collections** page.
+
+If no collection is found, the function returns an empty list.
+
+```javascript
+tags.location NOT IN collection('dc-locations')
+```
+
+```javascript
+collection('dc-locations').contains(tags.location)
+```
+
+To check the size of the list, use the `.size()` method.
+
+To access the `n`-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with `0` for the first element).
+
+```javascript
+author = (authors.size() == 0) ? 'n/a' : authors[0]
+```
+
+## `lookup`
+
+```csharp
+lookup(string name, string key[, bool def]) string
+```
+
+Returns the value for key `key` from the replacement table identified by `name`.
+
+The function returns an empty string if the table is not found or if the table does not contain the specified key.
+
+If the optional boolean `def` parameter is specified and is set to `true`, the function returns the original argument key in case the table is not found or if the key is not found.
+
+Example:
+
+```javascript
+/* Returns 'john.doe' if the 'on-call' table does not contain an entry for 'john.doe' */
+lookup('on-call', 'john.doe', true)
+```
+
+## `replacementTable`
+
+```csharp
+replacementTable(string name) map
+```
+
+Retrieves the replacement table identified by `name` as a key-value map.
+
+If the table is not found, the function returns an empty map.
+
+```javascript
+// .keySet() returns a collection of keys in the replacement table
+replacementTable('oncall-emails').keySet()
+```
+
+```javascript
+// .values() returns a collection of values in the replacement table
+replacementTable('oncall-emails').values()
+```
+
+```javascript
+// returns a random value in the replacement table
+randomItem(replacementTable('oncall-emails').values())
+```
+
+```javascript
+// returns a random key-value object from the replacement table
+randomItem(replacementTable('oncall-emails'))
+```
 
 ## `entity_tag`
 
@@ -172,74 +246,3 @@ getEntityName(string entity) string
 Returns normalized (lowercase) entity name for input string `entity`. The function searches for entity by name `entity` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `entity` in a case-insensitive manner.
 
 If the entity cannot be found, the function returns the original `entity` argument.
-
-## `collection`
-
-```csharp
-collection(string name) [string]
-```
-
-Retrieves a list of strings for the specified collection identified by `name`. Named collections are defined on the **Data > Named Collections** page.
-
-If no collection is found, the function returns an empty list.
-
-To access the `n`-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with `0` for the first element).
-
-Examples:
-
-```javascript
-tags.location NOT IN collection('dc-locations')
-```
-
-```javascript
-collection('dc-locations').contains(tags.location)
-```
-
-## `lookup`
-
-```csharp
-lookup(string name, string key[, bool def]) string
-```
-
-Returns the value for key `key` from the replacement table identified by `name`.
-
-The function returns an empty string if the table is not found or if the table does not contain the specified key.
-
-If the optional boolean `def` parameter is specified and is set to `true`, the function returns the original argument key in case the table is not found or if the key is not found.
-
-Example:
-
-```javascript
-/* Returns 'john.doe' if the 'on-call' table does not contain an entry for 'john.doe' */
-lookup('on-call', 'john.doe', true)
-```
-
-## `replacementTable`
-
-```csharp
-replacementTable(string name) map
-```
-
-Retrieves the replacement table identified by `name` as a key-value map.
-
-If the table is not found, the function returns an empty map.
-
-```javascript
-// .keySet() returns a collection of keys in the replacement table
-replacementTable('oncall-emails').keySet()
-```
-
-```javascript
-// .values() returns a collection of values in the replacement table
-replacementTable('oncall-emails').values()
-```
-
-```javascript
-// returns a random value in the replacement table
-randomItem(replacementTable('oncall-emails').values())
-```
-
-```javascript
-// returns a random key-value object from the replacement table
-randomItem(replacementTable('oncall-emails'))
-```

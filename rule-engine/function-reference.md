@@ -19,7 +19,7 @@ Name | Type | Description
 [`cbrt`](functions-math.md#cbrt)| Mathematical | Returns cube root ∛ of the argument.
 [`ceil`](functions-math.md#ceil)| Mathematical | Returns the smallest integer that is greater than or equal to the argument.
 [`coalesce`](functions-text.md#coalesce)| Text | Returns first non-empty string from the collection of strings.
-[`collection`](functions-collection.md#collection) | Database | Returns an array of strings contained in Named Collection.
+[`collection`](functions-lookup.md#collection) | Database | Returns an array of strings contained in Named Collection.
 [`concat`](functions-text.md#concat)| Text | Joins the elements of the collection into a single string.
 [`concatLines`](functions-text.md#concatlines)| Text | Joins the elements of the collection into a single string with line breaks `\n`.
 [`contains`](functions-collection.md#contains)| Collection | Returns `true` if string on the right is contained in the specified collection.
@@ -91,7 +91,7 @@ Name | Type | Description
 [`keepBefore`](functions-text.md#keepbefore)| Text | Removes part of string after the first occurrence of the given substring.
 [`keepBeforeLast`](functions-text.md#keepbeforelast)| Text | Removes part of string after the last occurrence of the given substring.
 [`last`](functions-statistical.md#last)| Statistical | Returns last value.
-[`last_open`](functions-alert-history.md#last_open)| Database | Retrieves the most recent open AlertHistory record for the current window.
+[`last_open`](functions-alert-history.md#last_open)| Database | Retrieves the most recent Alert History record for the current window.
 [`length`](functions-text.md#length)| Text | Returns the length of string.
 [`LIKE`](functions-collection.md#like) | Collection | Returns `true` if string on the left matches any pattern in the list on the right.
 [`likeAny`](functions-collection.md#likeany) | Collection | Returns `true` if string matches any element in the string collection.
@@ -134,7 +134,7 @@ Name | Type | Description
 [`removeBeginning`](functions-text.md#removebeginning)| Text | Removes substring from the beginning of the given string.
 [`removeEnding`](functions-text.md#removeending)| Text | Removes given substring from the end of the target string.
 [`replace`](functions-text.md#replace)| Text | Replaces all occurrences of the 1-st string in the original string with the 2-nd string.
-[`replacementTable`](functions-collection.md#replacementtable)| Database | Retrieves the Replacement Table as a key-value map.
+[`replacementTable`](functions-lookup.md#replacementtable)| Database | Retrieves the Replacement Table as a key-value map.
 [`round`](functions-math.md#round)| Mathematical | Returns the specified number rounded to the specified precision.
 [`rule_open`](functions-rules.md#rule_open)| Rule | Checks if there is at least one open window for the specified arguments.
 [`rule_window`](functions-rules.md#rule_window)| Rule | Returns the **first** matching [`Window`](window-fields.md#base-fields) object for the specified arguments.

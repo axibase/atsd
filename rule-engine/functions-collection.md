@@ -10,7 +10,7 @@ Create a collection by declaring the elements inline, enclosed in square bracket
 ['john.doe@example.org', 'mary.jones@example.org']
 ```
 
-Alternatively, load a collection using the `collection()` function or another [lookup](functions-lookup.md) function.
+Alternatively, load a named collection using the `collection()` function or another [lookup](functions-lookup.md) function.
 
 ```javascript
 collection('oncall-emails')
@@ -18,7 +18,6 @@ collection('oncall-emails')
 
 ## Reference
 
-* [`collection`](#collection)
 * [`IN`](#in)
 * [`LIKE`](#like)
 * [`likeAny`](#likeany)
@@ -28,24 +27,6 @@ collection('oncall-emails')
 * [`size`](#size)
 * [`isEmpty`](#isempty)
 * [`excludeKeys`](#excludekeys)
-
-## `collection`
-
-```csharp
-collection(string name) [string]
-```
-
-Returns an array of strings contained in collection identified by `name`.
-
-Named collections are listed on the **Data > Named Collections** page.
-
-To access the size of the array, use the `.size()` method.
-
-To access the `n`-th element in a collection, use square brackets like with the `[index]` or `get(index)` method. Index begins with `0` on the first element.
-
-```javascript
-author = (authors.size() == 0) ? 'n/a' : authors[0]
-```
 
 ## `IN`
 

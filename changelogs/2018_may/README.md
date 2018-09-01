@@ -25,8 +25,8 @@
 5301 | rule engine    | Feature | Implement [`db_messages`](../../rule-engine/functions-message.md#db_messages) function.
 5286 | rule engine    | Bug     | Custom test message with markdown cannot be sent when testing [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications) webhook.
 5282 | sql            | Bug     | [Scheduled SQL](../../sql/scheduled-sql.md#sql-scheduler) placeholder fails to correctly resolve placeholders.
-5281 | rule engine    | Bug     | [`jsonToLists`](../../rule-engine/functions-table.md#jsontolists) function fails to serialize JSON to columns.
-5278 | rule engine    | Feature | Remove common prefix in [`jsonToLists`](../../rule-engine/functions-table.md#jsontolists) function.
+5281 | rule engine    | Bug     | [`jsonToLists`](../../rule-engine/functions-json.md#jsontolists) function fails to serialize JSON to columns.
+5278 | rule engine    | Feature | Remove common prefix in [`jsonToLists`](../../rule-engine/functions-json.md#jsontolists) function.
 5266 | rule engine    | Bug     | [Webhooks](../../rule-engine/notifications/README.md) are not initialized in imported rules.
 5241 | rule engine    | Feature | Implement [rule error](../../rule-engine/README.md#rule-errors) monitoring.
 5234 | api-rest       | Bug     | Change error processing in series [query](../../api/data/series/query.md#series-query) in cases when an exception is raised in the middle of response streaming.

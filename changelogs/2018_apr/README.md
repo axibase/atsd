@@ -15,14 +15,14 @@
 5250 | rule engine | Bug | Some errors not displayed in the rule engine.
 5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration not cloned.
 5247 | rule engine | Bug | Validation error when trying to rename cloned [webhook](../../rule-engine/notifications/README.md) configuration.
-5246 | rule engine | Bug | [`flattenJson`](../../rule-engine/functions-table.md#flattenjson) function must ignore empty arrays.
+5246 | rule engine | Bug | [`flattenJson`](../../rule-engine/functions-json.md#flattenjson) function must ignore empty arrays.
 5240 | rule engine | Bug | [`db_last`](../../rule-engine/functions-series.md#db_last) function fails to load records older than 1 hour.
 5237 | rule engine | Feature | Add support for multi-line expressions in the rule editor.
 5236 | rule engine | Bug | Log error when records are not found by [`db_last`](../../rule-engine/functions-series.md#db_last) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions.
 5229 | api-rest | Bug | `GENERAL_ERROR` not displayed in **Settings** > **Diagnostics** > **Security Incidents** for unauthorized user.
 5228 | UI | Feature | `User` and `Method` columns added to the incoming webhook page on **Settings** > **Diagnostics** > **Webhook Requests**.
 5224 | sql | Bug | Scheduled SQL query with [store](../../sql/scheduled-sql-store.md) option causes `NumberFormatException` on `NaN` value.
-5223 | rule engine | Feature | Implement [`jsonToMaps`](../../rule-engine/functions-table.md#jsontomaps) function to converts string lists to a collection of maps.
+5223 | rule engine | Feature | Implement [`jsonToMaps`](../../rule-engine/functions-json.md#jsontomaps) function to converts string lists to a collection of maps.
 5221 | security | Feature | Implement a form to create and install a self-signed certificate.
 5218 | sql | Feature | Support configurable limit for `LIKE` filter in `atsd_series` [queries](../../sql/README.md#atsd_series-table).
 5217 | rule engine | Feature | Simplify [Slack webhook](../../rule-engine/notifications/slack.md) configuration.
