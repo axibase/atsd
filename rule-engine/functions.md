@@ -51,289 +51,299 @@ Functions can accept arguments and return values in one of the following data ty
 | `[k: v]` | key-value map | `randomKey(['john.doe': 0.8, 'mary.jones': 0.2])` |
 | `object` | object | `rule_window('disk_check').status` |
 
-## Function Reference
-
-The [reference](function-reference.md) contains an alphabetical list of all functions implemented in the rule engine.
-
 ## Collection
 
-* [`IN`](functions-collection.md#in)
-* [`LIKE`](functions-collection.md#like)
-* [`likeAny`](functions-collection.md#likeany)
-* [`matchList`](functions-collection.md#matchlist)
-* [`matches`](functions-collection.md#matches)
-* [`contains`](functions-collection.md#contains)
-* [`size`](functions-collection.md#size)
-* [`isEmpty`](functions-collection.md#isempty)
-* [`excludeKeys`](functions-collection.md#excludekeys)
-* [`jsonPathFilter`](functions-json.md#jsonpathfilter)
-* [`jsonToMaps`](functions-json.md#jsontomaps)
-* [`jsonToLists`](functions-json.md#jsontolists)
-* [`flattenJson`](functions-json.md#flattenjson)
+Name | Description
+---|---
+[`contains`](functions-collection.md#contains)| Returns `true` if string on the right is contained in the specified collection.
+[`excludeKeys`](functions-collection.md#excludekeys)| Returns a copy of the input map without the keys in the input collection.
+[`flattenJson`](functions-json.md#flattenjson)| Converts the string representation of JSON document into a map.
+[`IN`](functions-collection.md#in) | Returns `true` if string on the left is contained in the list of strings on the right.
+[`isEmpty`](functions-collection.md#isempty)| Returns `true` if the number of elements in the collection is zero.
+[`jsonPathFilter`](functions-json.md#jsonpathfilter)| Returns a list of objects matching the [`JSONPath` expression](https://github.com/json-path/JsonPath).
+[`jsonToLists`](functions-json.md#jsontolists)| Returns a collection of string lists containing field values from the JSON.
+[`jsonToMaps`](functions-json.md#jsontomaps)| Returns a collection of maps containing keys and values from the JSON.
+[`LIKE`](functions-collection.md#like) | Returns `true` if string on the left matches any pattern in the list on the right.
+[`likeAny`](functions-collection.md#likeany) | Returns `true` if string matches any element in the string collection.
+[`matches`](functions-collection.md#matches)| Returns `true` if one of the elements in collection matches the given pattern.
+[`matchList`](functions-collection.md#matchlist)| Returns `true` if string matches one of the elements in the collection.
+[`size`](functions-collection.md#size)| Returns the number of elements in the collection.
 
 ## Content
 
 ### Tables
 
-* [`addTable for map`](functions-table.md#addtable-for-map)
-* [`addTable for maps`](functions-table.md#addtable-for-maps)
-* [`addTable for list`](functions-table.md#addtable-for-list)
+Name | Description
+---|---
+[`addTable for list`](functions-table.md#addtable-for-list)| Prints list of lists as a multi-column table in the specified format.
+[`addTable for map`](functions-table.md#addtable-for-map)| Prints the input key-value map as a two-column table in the specified format.
+[`addTable for maps`](functions-table.md#addtable-for-maps)| Prints a collection of maps as a multi-column table in the specified format.
+[`detailsTable`](details-table.md)| Assembles a table consisting of window and command fields.
 
 ### Links
 
-* [`getEntityLink`](functions-link.md#getentitylink)
-* [`getPropertyLink`](functions-link.md#getpropertylink)
-* [`getRuleLink`](functions-link.md#getrulelink)
-* [`getCsvExportLink`](functions-link.md#getcsvexportlink)
-* [`getHtmlExportLink`](functions-link.md#gethtmlexportlink)
-* [`getChartLink`](functions-link.md#getchartlink)
-* [`addLink`](functions-link.md#addlink)
+Name | Description
+---|---
+[`addLink`](functions-link.md#addlink)| Returns the URL with a formatted short name.
+[`getEntityLink`](functions-link.md#getentitylink)| Returns the URL to the **Entity Editor** page for the specified entity.
+[`getChartLink`](functions-link.md#getchartlink)| Returns the URL to the default portal for the current metric, entity, and tags.
+[`getCsvExportLink`](functions-link.md#getcsvexportlink)| Returns the URL to the **CSV** file for the current metric, entity, and tags.
+[`getHtmlExportLink`](functions-link.md#gethtmlexportlink)| Returns the URL to the **Export** page for the current metric, entity, and tags.
+[`getPropertyLink`](functions-link.md#getpropertylink)| Returns the URL to the property table for the given entity and property type.
+[`getRuleLink`](functions-link.md#getrulelink)| Returns the URL to the current rule.
 
 ### Portal
 
-Portal functions attach portal screenshots to email and webhooks notifications.
-
-* [`addPortal`](functions-portal.md#portal-functions)
+Name | Description
+---|---
+[`addPortal`](functions-portal.md#portal-functions) | Attaches portal screenshots to email and webhook notifications.
 
 ## Database
 
 ### Messages
 
-Message functions retrieve message counts or specific messages from the database.
-
-* [`db_message_count`](functions-message.md#db_message_count)
-* [`db_message_last`](functions-message.md#db_message_last)
-* [`db_messages`](functions-message.md#db_messages)
+Name | Description
+---|---
+[`db_message_count`](functions-message.md#db_message_count)| Returns the number of message records matching the specified parameters.
+[`db_message_last`](functions-message.md#db_message_last)| Returns the most recent message record for the specified parameters.
+[`db_messages`](functions-message.md#db_messages)| Returns a list of message records matching the specified parameters.
 
 ### Properties
 
-Property functions retrieve and compare property keys and tags.
-
-* [`property`](functions-property.md#property)
-* [`property_values`](functions-property.md#property_values)
-* [`property_compare_except`](functions-property.md#property_compare_except)
-* [`property_map`](functions-property.md#property_map)
-* [`property_maps`](functions-property.md#property_maps)
-* [`getPropertyTypes`](functions-property.md#getpropertytypes)
+Name | Description
+---|---
+[`getPropertyTypes`](functions-property.md#getpropertytypes)| Returns a sorted set of property types for the specified entity.
+[`property`](functions-property.md#property)| Retrieves tag value for the given [property search](property-search.md) expression.
+[`property_compare_except`](functions-property.md#property_compare_except)| Compares properties in the previous and the current `property` command.
+[`property_map`](functions-property.md#property_map)| Returns a map with keys and tags for the given [property search](property-search.md) expression.
+[`property_maps`](functions-property.md#property_maps)| Returns a list of maps for the given property search expression.
+[`property_values`](functions-property.md#property_values)| Returns a list of tag values for the given [property search](property-search.md) expression.
 
 ### Series
 
-Series functions retrieve series values and statistics for any metric or entity from the database.
-
-* [`db_last`](functions-series.md#db_last)
-* [`db_statistic`](functions-series.md#db_statistic)
+Name | Description
+---|---
+[`db_last`](functions-series.md#db_last)| Retrieves the most recent value stored in the database for the target series.
+[`db_statistic`](functions-series.md#db_statistic)| Returns the result of a statistical function for historical values.
 
 > See also [value](#value) functions.
 
 ### Forecasts
 
-Forecast functions retrieve forecast values from the database.
-
-* [`forecast`](functions-forecast.md#forecast)
-* [`forecast_stdev`](functions-forecast.md#forecast_stdev)
-* [`forecast_deviation`](functions-forecast.md#forecast_deviation)
-* [`thresholdTime`](functions-forecast.md#thresholdtime)
+Name | Description
+---|---
+[`forecast`](functions-forecast.md#forecast)| Returns forecast value for the entity, metric, and tags in the current window.
+[`forecast_deviation`](functions-forecast.md#forecast_deviation)| Returns difference between a number and the forecast value, divided by the forecast standard deviation.
+[`forecast_stdev`](functions-forecast.md#forecast_stdev)| Returns forecast standard deviation.
+[`thresholdTime`](functions-forecast.md#thresholdtime)| Returns time when the [forecast value](../forecasting/README.md) is outside of the `(min, max)` range.
 
 ### Alert History
 
-* [`last_open`](functions-alert-history.md#last_open)
+Name | Description
+---|---
+[`last_open`](functions-alert-history.md#last_open)| Retrieves the most recent Alert History record for the current window.
 
 ### SQL Query
 
-SQL functions return the results of user-defined SQL queries.
-
-* [`executeSqlQuery`](functions-sql.md#executesqlquery)
+Name | Description
+---|---
+[`executeSqlQuery`](functions-sql.md#executesqlquery)| Returns the result of SQL query.
 
 ### Lookup
 
-Lookup functions retrieve records from replacement tables, named collections, and other database tables.
-
-* [`collection`](functions-lookup.md#collection)
-* [`lookup`](functions-lookup.md#lookup)
-* [`replacementTable`](functions-lookup.md#replacementtable)
-* [`getEntity`](functions-lookup.md#getentity)
-* [`getEntities`](functions-lookup.md#getentities)
-* [`getEntityCount`](functions-lookup.md#getentitycount)
-* [`entity_tag`](functions-lookup.md#entity_tag)
-* [`entity_tags`](functions-lookup.md#entity_tags)
-* [`entity_label`](functions-lookup.md#entity_label)
-* [`getEntityName`](functions-lookup.md#getentityname)
+Name | Description
+---|---
+[`collection`](functions-lookup.md#collection) | Returns an array of strings contained in Named Collection.
+[`entity_label`](functions-lookup.md#entity_label)| Returns label for the specified entity.
+[`entity_tag`](functions-lookup.md#entity_tag)| Returns value of the specified tag name for the specified entity.
+[`entity_tags`](functions-lookup.md#entity_tags)| Returns entity tags for the specified entity as a map.
+[`getEntities`](functions-lookup.md#getentities)| Returns a list of [Entity](entity-fields.md) **objects** matching the given parameters.
+[`getEntity`](functions-lookup.md#getentity)| Retrieves an entity object by name.
+[`getEntityCount`](functions-lookup.md#getentitycount)| Returns a count of [Entity](entity-fields.md) **objects** matching the given parameters.
+[`getEntityName`](functions-lookup.md#getentityname)| Returns normalized (lowercase) entity name for the specified entity.
+[`lookup`](functions-lookup.md#lookup)| Returns the value for the the specified key from the Replacement Table.
+[`replacementTable`](functions-lookup.md#replacementtable)| Retrieves the Replacement Table as a key-value map.
 
 ## Date
 
-Date functions perform various calendar operations on timestamps and intervals.
-
-* [`date_parse`](functions-date.md#date_parse)
-* [`elapsed_minutes`](functions-date.md#elapsed_minutes)
-* [`elapsedTime`](functions-date.md#elapsedtime)
-* [`now`](functions-date.md#now)
-* [`milliseconds`](functions-date.md#milliseconds)
-* [`seconds`](functions-date.md#seconds)
-* [`to_datetime`](functions-date.md#to_datetime)
-* [`today`](functions-date.md#today)
-* [`tomorrow`](functions-date.md#tomorrow)
-* [`yesterday`](functions-date.md#yesterday)
-* [`window_length_time`](functions-date.md#window_length_time)
-* [`window_length_count`](functions-date.md#window_length_count)
-* [`windowStartTime`](functions-date.md#windowstarttime)
-* [`add`](object-datetime.md#add-function)
-* [`is_weekday`](object-datetime.md#is_weekday-function)
-* [`is_weekend`](object-datetime.md#is_weekend-function)
-* [`is_workday`](object-datetime.md#is_workday-function)
-* [`to_timezone`](object-datetime.md#to_timezone-function)
+Name | Description
+---|---
+[`add`](object-datetime.md#add-function) |Returns a [`DateTime`](object-datetime.md) object created by adding an interval.
+[`date_parse`](functions-date.md#date_parse)|  Parses the input string into a [`DateTime`](object-datetime.md) object.
+[`elapsed_minutes`](functions-date.md#elapsed_minutes)|  Calculates the number of minutes between the current and specified time.
+[`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
+[`is_weekday`](object-datetime.md#is_weekday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekday.
+[`is_weekend`](object-datetime.md#is_weekend-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekend day.
+[`is_workday`](object-datetime.md#is_workday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a working day.
+[`milliseconds`](functions-date.md#milliseconds)|  Parses the date string into Unix time in milliseconds.
+[`now`](functions-date.md#now)|  Returns the current time as a [`DateTime`](object-datetime.md) object.
+[`seconds`](functions-date.md#seconds)|  Parses the date string into Unix time in seconds.
+[`to_datetime`](functions-date.md#to_datetime)|  Returns [`DateTime`](object-datetime.md) object in the server time zone from Unix milliseconds.
+[`to_timezone`](object-datetime.md#to_timezone-function)|  Returns a new [`DateTime`](object-datetime.md) object modified to the specified [time zone](../shared/timezone-list.md).
+[`today`](functions-date.md#today)|  Returns the current day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
+[`tomorrow`](functions-date.md#tomorrow)|  Returns the following day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
+[`window_length_count`](functions-date.md#window_length_count)|  Returns the length of a count-based window.
+[`window_length_time`](functions-date.md#window_length_time)|  Returns the length of a time-based window in seconds.
+[`windowStartTime`](functions-date.md#windowstarttime)|  Returns time when the first command is received by the window.
+[`yesterday`](functions-date.md#yesterday)|  Returns the previous day at midnight, `00:00:00`, as a [`DateTime`](object-datetime.md) object.
 
 ## Formatting
 
-Formatting functions convert dates and numbers to strings according to the specified pattern.
-
-* [`convert`](functions-format.md#convert)
-* [`formatNumber`](functions-format.md#formatnumber)
-* [`formatBytes`](functions-format.md#formatbytes)
-* [`date_format`](functions-format.md#date_format)
-* [`formatInterval`](functions-format.md#formatinterval)
-* [`formatIntervalShort`](functions-format.md#formatintervalshort)
+Name | Description
+---|---
+[`convert`](functions-format.md#convert)| Divides the number by the unit and formats with one fractional digit.
+[`date_format`](functions-format.md#date_format)| Converts Unix time in milliseconds to a string.
+[`formatBytes`](functions-format.md#formatbytes)| Returns the total number of bytes in human-readable format.
+[`formatInterval`](functions-format.md#formatinterval)| Converts milliseconds interval to a formatted interval.
+[`formatIntervalShort`](functions-format.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
+[`formatNumber`](functions-format.md#formatnumber)| Formats number with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) using the server locale.
 
 ## Mathematical
 
-Math functions perform basic numeric operations on the input number and return a number as the result.
-
-* [`abs`](functions-math.md#abs)
-* [`ceil`](functions-math.md#ceil)
-* [`floor`](functions-math.md#floor)
-* [`pow`](functions-math.md#pow)
-* [`round`](functions-math.md#round)
-* [`max`](functions-math.md#max)
-* [`min`](functions-math.md#min)
-* [`sqrt`](functions-math.md#sqrt)
-* [`cbrt`](functions-math.md#cbrt)
-* [`exp`](functions-math.md#exp)
-* [`log`](functions-math.md#log)
-* [`log10`](functions-math.md#log10)
-* [`signum`](functions-math.md#signum)
+Name | Description
+---|---
+[`abs`](functions-math.md#abs)|  Returns the absolute value of the argument.
+[`cbrt`](functions-math.md#cbrt)|  Returns cube root `∛` of the argument.
+[`ceil`](functions-math.md#ceil)|  Returns the smallest integer that is greater than or equal to the argument.
+[`exp`](functions-math.md#exp)|  Returns Euler constant `e` (2.7) raised to the power of the argument.
+[`floor`](functions-math.md#floor)|  Returns the largest integer that is less than or equal to the argument.
+[`log`](functions-math.md#log)|  Returns the natural logarithm (base `e = 2.7`) of the argument.
+[`log10`](functions-math.md#log10)|  Returns the base 10 logarithm of the argument.
+[`max`](functions-math.md#max)|  Returns the greater of two numbers.
+[`min`](functions-math.md#min)|  Returns the smallest of two numbers.
+[`pow`](functions-math.md#pow)|  Returns the first specified number raised to the power of the second number.
+[`round`](functions-math.md#round)|  Returns the specified number rounded to the specified precision.
+[`signum`](functions-math.md#signum)|  Returns the `signum` function of the argument.
+[`sqrt`](functions-math.md#sqrt)|  Returns `√` of the argument.
 
 ## Random
 
-* [`random`](functions-random.md#random)
-* [`randomNormal`](functions-random.md#randomnormal)
-* [`randomItem`](functions-random.md#randomitem)
-* [`randomKey`](functions-random.md#randomkey)
+Name | Description
+---|---
+[`random`](functions-random.md#random)| Returns a uniformly distributed double number.
+[`randomItem`](functions-random.md#randomitem)| Returns a random element from a collection or map.
+[`randomKey`](functions-random.md#randomkey)| Returns a random element from the map of objects.
+[`randomNormal`](functions-random.md#randomnormal)| Returns a normally distributed double number.
 
 ## Window
 
-The window functions find and check windows created by other rules.
-
-* [`rule_open`](functions-rules.md#rule_open)
-* [`rule_window`](functions-rules.md#rule_window)
-* [`rule_windows`](functions-rules.md#rule_windows)
+Name | Description
+---|---
+[`rule_open`](functions-rules.md#rule_open)| Checks if there is at least one open window for the specified arguments.
+[`rule_window`](functions-rules.md#rule_window)| Returns the **first** matching [`Window`](window-fields.md#base-fields) object for the specified arguments.
+[`rule_windows`](functions-rules.md#rule_windows)| Returns the collection of [`Window`](window.md#window-fields) objects for the specified arguments.
 
 ## Script
 
-Executes the predefined script and returns its output.
-
-* [`scriptOut`](functions-script.md)
+Name | Description
+---|---
+[`scriptOut`](functions-script.md)| Executes the predefined script and return its output.
 
 ## Security
 
-* [`userInGroup`](functions-security.md#useringroup)
-* [`userHasRole`](functions-security.md#userhasrole)
-* [`userAllowEntity`](functions-security.md#userallowentity)
-* [`userAllowEntityGroup`](functions-security.md#userallowentitygroup)
-* [`userAllowPortal`](functions-security.md#userallowportal)
+Name | Description
+---|---
+[`userAllowEntity`](functions-security.md#userallowentity)| Returns `true` if the specified user has [`READ`](../administration/user-authorization.md#entity-permissions) permission for the given entity.
+[`userAllowEntityGroup`](functions-security.md#userallowentitygroup)|  Returns `true` if the user has [`READ`](../administration/user-authorization.md#entity-permissions) permission to the given entity group.
+[`userAllowPortal`](functions-security.md#userallowportal)| Returns `true` if the specified user has permissions to view the given portal.
+[`userHasRole`](functions-security.md#userhasrole)| Returns `true` if the specified user has the specified [`role`](../administration/user-authorization.md#role-based-access-control).
+[`userInGroup`](functions-security.md#useringroup)| Returns `true` if the specified user belongs to the specified user group.
 
 ## Statistical
 
-Univariate statistical functions perform calculations on numeric values stored in the window.
-
-* [`avg`](functions-statistical.md#avg)
-* [`mean`](functions-statistical.md#mean)
-* [`sum`](functions-statistical.md#sum)
-* [`min`](functions-statistical.md#min)
-* [`max`](functions-statistical.md#max)
-* [`wavg`](functions-statistical.md#wavg)
-* [`wtavg`](functions-statistical.md#wtavg)
-* [`count`](functions-statistical.md#count)
-* [`percentile`](functions-statistical.md#percentile)
-* [`median`](functions-statistical.md#median)
-* [`variance`](functions-statistical.md#variance)
-* [`stdev`](functions-statistical.md#stdev)
-* [`intercept`](functions-statistical.md#intercept)
-* [`first`](functions-statistical.md#first)
-* [`last`](functions-statistical.md#last)
-* [`diff`](functions-statistical.md#diff)
-* [`delta`](functions-statistical.md#delta)
-* [`new_maximum`](functions-statistical.md#new_maximum)
-* [`new_minimum`](functions-statistical.md#new_minimum)
-* [`threshold_time`](functions-statistical.md#threshold_time)
-* [`threshold_linear_time`](functions-statistical.md#threshold_linear_time)
-* [`rate_per_second`](functions-statistical.md#rate_per_second)
-* [`rate_per_minute`](functions-statistical.md#rate_per_minute)
-* [`rate_per_hour`](functions-statistical.md#rate_per_hour)
-* [`slope`](functions-statistical.md#slope)
-* [`slope_per_second`](functions-statistical.md#slope_per_second)
-* [`slope_per_minute`](functions-statistical.md#slope_per_minute)
-* [`slope_per_hour`](functions-statistical.md#slope_per_hour)
-* [`countIf`](functions-statistical.md#countif)
-* [`avgIf`](functions-statistical.md#avgif)
-* [`sumIf`](functions-statistical.md#sumif)
+Name | Description
+---|---
+[`avg`](functions-statistical.md#avg)| Calculates average value.
+[`avgIf`](functions-statistical.md#avgif)| Calculates average of elements matching the specified condition.
+[`count`](functions-statistical.md#count)| Value count.
+[`countIf`](functions-statistical.md#countif)| Counts elements matching the specified condition.
+[`delta`](functions-statistical.md#delta)| Calculates difference between `last` and `first` values.
+[`diff`](functions-statistical.md#diff)| Calculates difference between `last` and `first` values.
+[`first`](functions-statistical.md#first)| Returns first series value.
+[`intercept`](functions-statistical.md#intercept)| Calculates linear regression intercept.
+[`last`](functions-statistical.md#last)| Returns last value.
+[`max`](functions-statistical.md#max)| Returns maximum value.
+[`min`](functions-statistical.md#min)| Returns minimum value.
+[`mean`](functions-statistical.md#mean)| Calculates average value.
+[`median`](functions-statistical.md#median)| Returns 50% percentile (median).
+[`new_maximum`](functions-statistical.md#new_maximum)| Returns `true` if last value is greater than any previous value.
+[`new_minimum`](functions-statistical.md#new_minimum)| Returns `true` if last value is smaller than any previous value.
+[`percentile`](functions-statistical.md#percentile)| Calculates `n`-th percentile.
+[`rate_per_hour`](functions-statistical.md#rate_per_hour)| Calculates the hourly difference between last and first value input.
+[`rate_per_minute`](functions-statistical.md#rate_per_minute)| Calculates the difference between last and first value per minute.
+[`rate_per_second`](functions-statistical.md#rate_per_second)| Calculates the difference between last and first value per second.
+[`slope`](functions-statistical.md#slope)| Calculates linear regression slope.
+[`slope_per_hour`](functions-statistical.md#slope_per_hour)| Calculates `slope_per_second()/3600`.
+[`slope_per_minute`](functions-statistical.md#slope_per_minute)| Calculates `slope_per_second()/60`.
+[`slope_per_second`](functions-statistical.md#slope_per_second)| Calculates linear regression slope.
+[`stdev`](functions-statistical.md#stdev)| Standard deviation.
+[`sum`](functions-statistical.md#sum)| Sums all included values.
+[`sumIf`](functions-statistical.md#sumif)| Sums elements matching the specified condition.
+[`threshold_linear_time`](functions-statistical.md#threshold_linear_time)| Forecasts the minutes until the value reaches the threshold based on linear extrapolation.
+[`threshold_time`](functions-statistical.md#threshold_time)| Forecasts the minutes until the value reaches the threshold based on extrapolation of the difference between the last and first value.
+[`variance`](functions-statistical.md#variance)| Calculates variance.
+[`wavg`](functions-statistical.md#wavg)| Calculates weighted average.
+[`wtavg`](functions-statistical.md#wtavg)| Calculates weighted time average.
 
 ## Text
 
-Text functions transform and compare strings.
-
-* [`upper`](functions-text.md#upper)
-* [`lower`](functions-text.md#lower)
-* [`truncate`](functions-text.md#truncate)
-* [`startsWith`](functions-text.md#startswith)
-* [`endsWith`](functions-text.md#endswith)
-* [`split`](functions-text.md#split)
-* [`list`](functions-text.md#list)
-* [`ifEmpty`](functions-text.md#ifempty)
-* [`coalesce`](functions-text.md#coalesce)
-* [`keepAfter`](functions-text.md#keepafter)
-* [`keepAfterLast`](functions-text.md#keepafterlast)
-* [`keepBefore`](functions-text.md#keepbefore)
-* [`keepBeforeLast`](functions-text.md#keepbeforelast)
-* [`replace`](functions-text.md#replace)
-* [`capFirst`](functions-text.md#capfirst)
-* [`capitalize`](functions-text.md#capitalize)
-* [`removeBeginning`](functions-text.md#removebeginning)
-* [`removeEnding`](functions-text.md#removeending)
-* [`urlencode`](functions-text.md#urlencode)
-* [`jsonencode`](functions-text.md#jsonencode)
-* [`htmlDecode`](functions-text.md#htmldecode)
-* [`unquote`](functions-text.md#unquote)
-* [`countMatches`](functions-text.md#countmatches)
-* [`abbreviate`](functions-text.md#abbreviate)
-* [`indexOf`](functions-text.md#indexof)
-* [`locate`](functions-text.md#locate)
-* [`trim`](functions-text.md#trim)
-* [`length`](functions-text.md#length)
-* [`concat`](functions-text.md#concat)
-* [`concatLines`](functions-text.md#concatlines)
+Name | Description
+---|---
+[`abbreviate`](functions-text.md#abbreviate)| Truncates string using ellipses to hide extraneous text.
+[`capFirst`](functions-text.md#capfirst)| Capitalizes the first letter in the string.
+[`capitalize`](functions-text.md#capitalize)| Capitalizes the first letter in all words in the string.
+[`coalesce`](functions-text.md#coalesce)| Returns first non-empty string from the collection of strings.
+[`concat`](functions-text.md#concat)| Joins the elements of the collection into a single string.
+[`concatLines`](functions-text.md#concatlines)| Joins the elements of the collection into a single string with line breaks `\n`.
+[`countMatches`](functions-text.md#countmatches)| Counts how many times the substring appears in input string.
+[`endsWith`](functions-text.md#endswith)| Returns `true` if string ends with the specified prefix.
+[`htmlDecode`](functions-text.md#htmldecode)| Replaces HTML entities in string with their corresponding characters.
+[`indexOf`](functions-text.md#indexof)| Returns the index of the first occurrence of substring in the target string.
+[`jsonencode`](functions-text.md#jsonencode)| Escapes special JSON characters with a backslash.
+[`keepAfter`](functions-text.md#keepafter)| Removes part of string before the first occurrence of the given substring.
+[`keepAfterLast`](functions-text.md#keepafterlast)| Removes part of string before the last occurrence of the given substring.
+[`keepBefore`](functions-text.md#keepbefore)| Removes part of string after the first occurrence of the given substring.
+[`keepBeforeLast`](functions-text.md#keepbeforelast)| Removes part of string after the last occurrence of the given substring.
+[`length`](functions-text.md#length)| Returns the length of string.
+[`list`](functions-text.md#list)| Splits string into an array, discards duplicate items.
+[`locate`](functions-text.md#locate)| Returns the index of the first occurrence of substring in the target string.
+[`lower`](functions-text.md#lower)| Converts string to lowercase letters.
+[`removeBeginning`](functions-text.md#removebeginning)| Removes substring from the beginning of the given string.
+[`removeEnding`](functions-text.md#removeending)| Removes given substring from the end of the target string.
+[`replace`](functions-text.md#replace)| Replaces all occurrences of the 1-st string in the original string with the 2-nd string.
+[`split`](functions-text.md#split)| Splits string into a collection of strings using the specified separator.
+[`startsWith`](functions-text.md#startswith)| Returns `true` if string starts with the specified prefix.
+[`trim`](functions-text.md#trim)| Removes leading and trailing non-printable characters.
+[`truncate`](functions-text.md#truncate)| Truncates string to the specified number of characters.
+[`unquote`](functions-text.md#unquote)| Removes leading and trailing quotation marks from input string.
+[`upper`](functions-text.md#upper)| Converts string to uppercase letters.
+[`urlencode`](functions-text.md#urlencode)| Replaces special characters with URL-safe characters using percent-encoding.
 
 ## Utility
 
-* [`ifEmpty`](functions-utility.md#ifempty)
-* [`toBoolean`](functions-utility.md#toboolean)
-* [`toNumber`](functions-utility.md#tonumber)
-* [`printObject`](functions-utility.md#printobject)
-* [`getURLHost`](functions-utility.md#geturlhost)
-* [`getURLPort`](functions-utility.md#geturlport)
-* [`getURLProtocol`](functions-utility.md#geturlprotocol)
-* [`getURLPath`](functions-utility.md#geturlpath)
-* [`getURLQuery`](functions-utility.md#geturlquery)
-* [`getURLUserInfo`](functions-utility.md#geturluserinfo)
+Name | Description
+---|---
+[`getURLHost`](functions-utility.md#geturlhost)| Retrieves the **host** from URL specified in string url.
+[`getURLPath`](functions-utility.md#geturlpath)| Retrieves the **path** from URL string.
+[`getURLPort`](functions-utility.md#geturlport)| Retrieves the **port** from URL string.
+[`getURLProtocol`](functions-utility.md#geturlprotocol)| Retrieves the **protocol** from URL string.
+[`getURLQuery`](functions-utility.md#geturlquery)| Retrieves the **query string** from URL string.
+[`getURLUserInfo`](functions-utility.md#geturluserinfo)| Retrieves the user credential part `username:password` from URL string.
+[`ifEmpty`](functions-text.md#ifempty)| Returns the second string if the first is either `null` or an empty string.
+[`printObject`](functions-utility.md#printobject)| Prints the input object as a two-column table in the specified format.
+[`toBoolean`](functions-utility.md#toboolean)| Converts the input string or number to a boolean value.
+[`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
 
 ## Value
 
-Value functions retrieve values for other metrics received in the same command.
-
-* [`value`](functions-value.md)
+Name | Description
+---|---
+[`value`](functions-value.md) | Retrieves the value for the metric.
 
 ## Web Query
 
-Web Query functions perform requests to external web services.
-
-* [`queryConfig`](functions-web-query.md#queryconfig)
-* [`queryGet`](functions-web-query.md#queryget)
-* [`queryPost`](functions-web-query.md#querypost)
+Name | Description
+---|---
+[`queryConfig`](functions-web-query.md#queryconfig)| Executes an HTTP request using a predefined [outgoing webhook](notifications/README.md).
+[`queryGet`](functions-web-query.md#queryget)| Executes a `GET` request to the specified [request URL](functions-web-query.md#request-url).
+[`queryPost`](functions-web-query.md#querypost)| Executes a `POST` request to the specified [request URL](functions-web-query.md#request-url).
