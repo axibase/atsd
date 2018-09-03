@@ -200,6 +200,8 @@ Name | Description
 
 ## Mathematical
 
+<!-- markdownlint-disable MD101 -->
+
 Name | Description
 ---|---
 [`abs`](functions-math.md#abs)|  Returns the absolute value of the argument.
@@ -215,6 +217,8 @@ Name | Description
 [`round`](functions-math.md#round)|  Returns the specified number rounded to the specified precision.
 [`signum`](functions-math.md#signum)|  Returns the `signum` function of the argument.
 [`sqrt`](functions-math.md#sqrt)|  Returns `√` of the argument.
+
+<!-- markdownlint-enable MD101 -->
 
 ## Random
 
