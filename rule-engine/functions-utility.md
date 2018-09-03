@@ -172,6 +172,44 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 ...
 ```
 
+## `samples`
+
+```java
+samples([int limit]) map
+```
+
+Retrieves the map of samples:
+
+```javascript
+{ timestamp: value }
+```
+
+Limit can be:
+
+1. Zero or omitted: return all samples.
+
+2. Positive: return up to the specified number of samples from **start** (earliest values first).
+
+3. Negative: return up to the specified number of samples from **end** (latest values first).
+
+The map can be divided using the following functions:
+
+### `values`
+
+```java
+values([int limit]) [number]
+```
+
+Retrieves only values.
+
+### `timestamps`
+
+```java
+timestamps([int limit]) [long]
+```
+
+Retrieves only timestamps.
+
 ## `getURLHost`
 
 ```csharp
