@@ -21,6 +21,7 @@ Add the following line to `/etc/apt/sources.list.d/backports.list`.
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
 ```
+
 :::
 <!-- markdownlint-disable MD032 -->
 
@@ -31,8 +32,9 @@ Add the following line to `/etc/apt/sources.list` to enable [Java 8](https://pac
 ```ls
 deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
+
 :::
-<!-- markdownlint-disable MD032 -->
+<!-- markdownlint-disable MD031 MD032 -->
 
 ### Update Repositories
 

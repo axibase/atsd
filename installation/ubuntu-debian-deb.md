@@ -38,6 +38,7 @@ Add `backports` repository.
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
 ```
+
 :::
 <!-- markdownlint-disable MD032 -->
 
@@ -50,6 +51,7 @@ Add the following line to `/etc/apt/sources.list` to enable [Java 8](https://pac
 ```ls
 deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
+
 :::
 <!-- markdownlint-disable MD032 -->
 
@@ -61,9 +63,11 @@ sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname net-t
 
 <!-- markdownlint-disable MD032 -->
 ::: tip Debian `8.x`
+
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
 ```
+
 :::
 <!-- markdownlint-disable MD032 -->
 
