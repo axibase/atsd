@@ -50,13 +50,13 @@ The Zookeeper client port is specified in:
 ### HBase 1.0.x
 
 ```sh
-curl -O https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
+curl -O https://www.axibase.com/public/atsd-cluster.tar.gz
 ```
 
 ## Extract Files
 
 ```sh
-sudo tar -xzvf atsd_ee_hbase_1.0.3.tar.gz -C /opt
+sudo tar -xzvf atsd-cluster.tar.gz -C /opt
 ```
 
 ```sh

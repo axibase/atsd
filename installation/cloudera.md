@@ -48,13 +48,13 @@ The Zookeeper client port is specified in:
 ### CDH (Cloudera Distribution Hadoop) 5.5.x
 
 ```sh
-curl -O https://axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
+curl -O https://axibase.com/public/atsd-cluster.tar.gz
 ```
 
 ### Extract Files
 
 ```sh
-sudo tar -xzvf atsd_ee_hbase_1.0.3.tar.gz -C /opt
+sudo tar -xzvf atsd-cluster.tar.gz -C /opt
 ```
 
 ```sh
@@ -441,13 +441,13 @@ Download the latest ATSD release, or a specific version based on the link provid
 
 ```sh
 cd ~
-curl -O https://axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
+curl -O https://axibase.com/public/atsd-cluster.tar.gz
 ```
 
 Extract the files.
 
 ```sh
-tar -xvf atsd_ee_hbase_1.0.3.tar.gz
+tar -xvf atsd-cluster.tar.gz
 ```
 
 Stop the ATSD process.
