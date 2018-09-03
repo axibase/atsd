@@ -34,7 +34,7 @@ The **end time** in time-based windows is not bound. As such, the window accepts
 :::
 <!-- markdownlint-disable MD031 MD032 -->
 
-Example: 5-second window with sample count that varies from two to four.
+Example: 5-second window with sample count that varies from one to four.
 
 ![](./resources/window-time.svg)
 

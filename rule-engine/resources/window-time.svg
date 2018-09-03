@@ -11,81 +11,36 @@
 
 <rect id="win" width="300" height="50" rx="5" ry="5" x="100" y="10" style="stroke-width:1;stroke:silver;" fill="white" />
 
-<g id="r1" transform="translate(500,20)">
-    <rect id="r1c" width="30" height="30" rx="5" ry="5" class="evt"></rect>
-</g>
-<g id="r2" transform="translate(500,20)">
-    <rect id="r2c" width="30" height="30" rx="5" ry="5" class="evt"></rect>
-</g>
-<g id="r3" transform="translate(500,20)">
-    <rect id="r3c" width="30" height="30" rx="5" ry="5" class="evt"></rect>
-</g>
-<g id="r4" transform="translate(500,20)">
-    <rect id="r4c" width="30" height="30" rx="5" ry="5" class="evt"></rect>
-</g>
- 
-  <animateTransform attributeName="transform" xlink:href="#r1"
-  from="500 20"
-  to="0 20" 
-  begin="0s"
-  dur="7s"
-  repeatCount="indefinite" />  
+<rect id="r1" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+  <animate attributeType="XML" attributeName="x" from="500" to="0" dur="6s" repeatCount="indefinite"/> 
+  <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
+    begin="0s" dur="6s"
+    values="0.1 ; 1 ; 0.1"
+    keyTimes="0 ; 0.2 ; 0.8"/>    
+</rect>
 
-  <animate 
-  xlink:href="#r1c"
-  attributeType="CSS" attributeName="opacity" calcMode="discrete"
-  dur="7s"
-  begin="0s"
-  values="0.1 ; 1 ; 0.1"
-  keyTimes="0 ; 0.2 ; 0.8"
-  repeatCount="indefinite"/>
-    
-  <animateTransform attributeName="transform" xlink:href="#r2"
-  from="500 20"
-  to="0 20" 
-  begin="1s"
-  dur="7s"
-  repeatCount="indefinite" />   
-          
-  <animate 
-  xlink:href="#r2c"
-  attributeType="CSS" attributeName="opacity" calcMode="discrete"
-  dur="7s"
-  begin="1s"
-  values="0.1 ; 1 ; 0.1"
-  keyTimes="0 ; 0.20 ; 0.8"
-  repeatCount="indefinite"/>    
+<rect id="r2" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+  <animate attributeType="XML" attributeName="x" from="500" to="0" begin="1s" dur="6s" repeatCount="indefinite"/> 
+  <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
+    begin="1s" dur="6s"
+    values="0.1 ; 1 ; 0.1"
+    keyTimes="0 ; 0.2 ; 0.8"/>    
+</rect>
 
-  <animateTransform attributeName="transform" xlink:href="#r3"
-  from="500 20"
-  to="0 20" 
-  begin="3s"
-  dur="7s"
-  repeatCount="indefinite" />   
-  
-  <animate 
-  xlink:href="#r3c"
-  attributeType="CSS" attributeName="opacity" calcMode="discrete"
-  dur="7s"
-  begin="3s"
-  values="0.1 ; 1 ; 0.1"
-  keyTimes="0 ; 0.20 ; 0.8"
-  repeatCount="indefinite"/>    
+<rect id="r3" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+  <animate attributeType="XML" attributeName="x" from="500" to="0" begin="3s" dur="6s" repeatCount="indefinite"/> 
+  <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
+    begin="3s" dur="6s"
+    values="0.1 ; 1 ; 0.1"
+    keyTimes="0 ; 0.2 ; 0.8"/>    
+</rect>
 
-  <animateTransform attributeName="transform" xlink:href="#r4"
-  from="500 20"
-  to="0 20" 
-  begin="4s"
-  dur="7s"
-  repeatCount="indefinite" />   
-  
-  <animate 
-  xlink:href="#r4c"
-  attributeType="CSS" attributeName="opacity" calcMode="discrete"
-  dur="7s"
-  begin="4s"
-  values="0.1 ; 1 ; 0.1"
-  keyTimes="0 ; 0.20 ; 0.8"
-  repeatCount="indefinite"/>      
+<rect id="r4" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+  <animate attributeType="XML" attributeName="x" from="500" to="0" begin="6s" dur="6s" repeatCount="indefinite"/> 
+  <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
+    begin="6s" dur="6s"
+    values="0.1 ; 1 ; 0.1"
+    keyTimes="0 ; 0.2 ; 0.8"/>    
+</rect>
   
 </svg>
