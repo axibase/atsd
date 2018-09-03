@@ -7,7 +7,7 @@ See the `write_atsd` plugin [documentation](https://github.com/axibase/atsd-coll
 
 ## Installation
 
-### Ubuntu 14.04
+### Ubuntu `14.04`
 
 Download package
 
@@ -21,7 +21,7 @@ Install package
 sudo dpkg -i collectd_ubuntu_14.04_amd64.deb
 ```
 
-### Ubuntu 16.04
+### Ubuntu `16.04`
 
 Download package
 
