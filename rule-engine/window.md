@@ -8,9 +8,7 @@ Windows are displayed on the **Alerts > Rule Windows** page.
 
 ![](./images/rule-windows.png)
 
-## Window Length
-
-### Count-based Windows
+## Count-based Windows
 
 Count-based windows accumulate up to the specified number of time-value samples. Samples are sorted **by command timestamp**, with the most recent sample placed at the end of the array. When the window becomes full, the first sample (**oldest** by command time) is removed from the window to free up space for an incoming sample.
 
@@ -20,25 +18,25 @@ Example: Count-based window with 3 samples
 
 Once the window reaches the limit of 3 samples, its size remains constant.
 
-### Time-based Windows
+## Time-based Windows
 
 Time-based windows store all samples received within the specified time interval and are referred to as **sliding** windows. There is no limit to the number of samples stored in such windows.
 
-The start time of the window is initially set to **current time** minus the interval duration, and is constantly incremented as time passes. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window. Otherwise, the command is ignored.
-
 Old commands are automatically removed from the window once their timestamp is earlier than the window start time.
 
-<!-- markdownlint-enable MD032 -->
-:::tip End Time
-The **end time** in time-based windows is not bound. As such, the window accepts commands with future timestamps unless they are discarded with the [Time filter](filters.md#time-offset-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
-:::
-<!-- markdownlint-disable MD031 MD032 -->
-
-Example: 5-second window with sample count that varies from one to four.
+Example: 5-second window with variable sample count.
 
 ![](./resources/window-time.svg)
 
-The number of samples is not limited and varies over time. Such windows can become empty if no commands arrive within a certain period of time.
+The number of samples is not limited and varies over time from one to four. Such windows can become empty if no commands arrive within a certain period of time.
+
+<!-- markdownlint-enable MD032 -->
+:::tip End Time
+The **start time** of the window is initially set to **current time** minus the interval duration, and is constantly incremented as time passes. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window. Otherwise, the command is ignored.
+
+The **end time** in time-based windows is not bound. As such, the window accepts commands with future timestamps unless they are discarded with the [Time filter](filters.md#time-offset-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## Window Status
 

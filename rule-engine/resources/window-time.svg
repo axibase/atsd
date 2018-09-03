@@ -9,9 +9,9 @@
       ]]>
   </style>  
 
-<rect id="win" width="300" height="50" rx="5" ry="5" x="100" y="10" style="stroke-width:1;stroke:silver;" fill="white" />
+<rect id="win" width="300" height="50" rx="3" ry="3" x="100" y="10" style="stroke-width:1;stroke:silver;" fill="white" />
 
-<rect id="r1" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+<rect id="r1" width="30" height="30" rx="3" ry="3" x="500" y="20" class="evt">
   <animate attributeType="XML" attributeName="x" from="500" to="0" dur="6s" repeatCount="indefinite"/> 
   <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
     begin="0s" dur="6s"
@@ -19,7 +19,7 @@
     keyTimes="0 ; 0.2 ; 0.8"/>    
 </rect>
 
-<rect id="r2" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+<rect id="r2" width="30" height="30" rx="3" ry="3" x="500" y="20" class="evt">
   <animate attributeType="XML" attributeName="x" from="500" to="0" begin="1s" dur="6s" repeatCount="indefinite"/> 
   <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
     begin="1s" dur="6s"
@@ -27,7 +27,7 @@
     keyTimes="0 ; 0.2 ; 0.8"/>    
 </rect>
 
-<rect id="r3" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+<rect id="r3" width="30" height="30" rx="3" ry="3" x="500" y="20" class="evt">
   <animate attributeType="XML" attributeName="x" from="500" to="0" begin="3s" dur="6s" repeatCount="indefinite"/> 
   <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
     begin="3s" dur="6s"
@@ -35,7 +35,7 @@
     keyTimes="0 ; 0.2 ; 0.8"/>    
 </rect>
 
-<rect id="r4" width="30" height="30" rx="5" ry="5" x="500" y="20" class="evt">
+<rect id="r4" width="30" height="30" rx="3" ry="3" x="500" y="20" class="evt">
   <animate attributeType="XML" attributeName="x" from="500" to="0" begin="6s" dur="6s" repeatCount="indefinite"/> 
   <animate attributeType="CSS" attributeName="opacity" calcMode="discrete" repeatCount="indefinite"
     begin="6s" dur="6s"
