@@ -43,7 +43,11 @@ Example:
 queryConfig("Slack", ["username":"ATSD BOT", "channels":"devops", "text":"Hello, Slack!"])
 ```
 
-> Note only first channel in "channels" parameter receives notification.
+<!-- markdownlint-enable MD032 -->
+:::tip Channels
+Only first channel in the `channels` parameter receives notification.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## [Telegram](./notifications/telegram.md)
 

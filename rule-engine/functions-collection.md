@@ -147,7 +147,11 @@ collection('ip_white_list').contains(tags.request_ip)
 
 Returns the number of elements in the collection.
 
-> The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 Examples:
 
@@ -167,7 +171,11 @@ entity.tags.size()
 
 Returns `true` if the number of elements in the collection is zero.
 
-> The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
+<!-- markdownlint-enable MD032 -->
+:::tip Data Types
+The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 Example:
 

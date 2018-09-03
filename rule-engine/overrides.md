@@ -20,7 +20,11 @@ The rules are processed from **top to bottom**. If the rule filter matches the g
 
 In case no matching rules are found for the given window, the default condition, as specified on the **Overview** tab, is evaluated.
 
-> Note that the **Depends On** condition, when enabled on the **Overview** tab, is checked for both the override rule and the default condition.
+<!-- markdownlint-enable MD032 -->
+:::tip Depended Rules
+The **Depends On** condition, when enabled on the **Condition** tab, is checked for both the override rule and the default condition.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ![](./images/override-columns.png)
 

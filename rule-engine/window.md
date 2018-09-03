@@ -106,9 +106,13 @@ Time-based windows store samples received within the specified time interval. Th
 
 The start of the interval is initially set to current time minus the window length, and is constantly incremented as time passes, thus these windows are sometimes referred to as **sliding** windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
 
-> The **end** time in time-based windows is not set. As such, the window accepts commands with future timestamps unless they are discarded with the [Time filter](filters.md#time-offset-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
-
 Old commands are automatically removed from the window once their timestamp is earlier than the defined window start time.
+
+<!-- markdownlint-enable MD032 -->
+:::tip End Time
+The **end time** in time-based windows is not bound. As such, the window accepts commands with future timestamps unless they are discarded with the [Time filter](filters.md#time-offset-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ![Time Based Window](./images/time_based_window3.png)
 

@@ -129,7 +129,11 @@ Available time zones and offsets are listed in [time zones](../shared/timezone-l
 
 The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> Function raises an error if the time zone or offset from UTC is specified in the date string `date` and differs from the time zone or offset `zone`.
+<!-- markdownlint-enable MD032 -->
+:::tip Warning
+The function raises an error if the time zone or offset from UTC is specified in the date string `date` and differs from the time zone or offset `zone`.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 **Example**:
 
@@ -208,7 +212,11 @@ Parses the input string `date` into a [`DateTime`](object-datetime.md) object ac
 
 The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
-> The function raises an error if the time zone (or offset from UTC) is specified in `date` and differs from the time zone (offset) `zone`.
+<!-- markdownlint-enable MD032 -->
+:::tip Warning
+The function raises an error if the time zone (or offset from UTC) is specified in `date` and differs from the time zone (offset) `zone`.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 Access fields of the [`DateTime`](object-datetime.md#fields) object using dot notation:
 

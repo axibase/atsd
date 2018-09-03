@@ -67,7 +67,11 @@ To access the `n`-th element in the list, use square brackets `[index]` or `get(
 
 [Fields](../api/data/messages/query.md#fields-1) of the returned Message objects can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
 
-> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field as Unix time in milliseconds.
+<!-- markdownlint-enable MD032 -->
+:::tip Message Date
+That `date` field in the message object is `null`. The record time is stored in the `timestamp` field as Unix time in milliseconds.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## Matching Rules
 

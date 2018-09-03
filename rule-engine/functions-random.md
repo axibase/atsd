@@ -82,7 +82,7 @@ randomItem(collection('oncall-person'))
 
 Key-value maps can be loaded with the [`replacementTable`](functions-lookup.md#replacementtable) function.
 
-> Replacement tables are listed on the **Data > Replacement Tables** page.
+The replacement tables are listed on the **Data > Replacement Tables** page.
 
 Assuming the replacement table contains the following rows and the second entry is randomly selected:
 
@@ -133,7 +133,7 @@ An input map can be obtained using the `replacementTable()` lookup function.
 randomKey(replacementTable('oncall-person'))
 ```
 
-> Replacement tables are listed on the **Data > Replacement Tables** page.
+Replacement tables are listed on the **Data > Replacement Tables** page.
 
 Assuming the table contains the following records, the second element has a 20% chance of being selected:
 

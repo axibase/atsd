@@ -18,14 +18,14 @@ These functions execute an HTTP request to an external web service and return a 
 ## `queryConfig`
 
 ```csharp
-queryConfig(string n, [map p]) response
+queryConfig(string name, map params) response
 ```
 
-Executes an HTTP request using a predefined [outgoing webhook](notifications/README.md), identified by name `n` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
+Executes an HTTP request using a predefined [outgoing webhook](notifications/README.md), identified by `name` (case-sensitive) and returns a `WebRequestResult` [response object](#response-object).
 
-> The webhook `n` must be listed as `enabled` on the **Alerts > Outgoing Webhooks** page.
+The webhook `name` must be listed as `enabled` on the **Alerts > Outgoing Webhooks** page.
 
-Parameters and placeholders defined in the webhook are replaced using the input map `p`.
+Parameters and placeholders defined in the webhook are replaced using the input map `params`.
 
 Available parameters for built-in webhook types are enumerated [here](params-map.md).
 
@@ -33,7 +33,7 @@ Available parameters for built-in webhook types are enumerated [here](params-map
 
 The form-based webhook defines parameters that can be modified in the rule editor.
 
-The values for such parameters are retrieved from the input map `p`. Unknown parameters in map `p` are ignored.
+The values for such parameters are retrieved from the input map `params`. Unknown parameters in map `params` are ignored.
 
 ![query config form](./images/query-config-form.png)
 
@@ -53,7 +53,7 @@ channel=devops&repository=atsd-site
 
 The JSON document defined in the webhook can include placeholders using `${name}` syntax.
 
-Such placeholders are substituted with corresponding parameter values from the input map `p`. Unknown parameters in the map `p` are ignored.
+Such placeholders are substituted with corresponding parameter values from the input map `params`. Unknown parameters in the map `params` are ignored.
 
 ![query config json](./images/query-config-json.png)
 
@@ -75,12 +75,12 @@ The target URL receives the following JSON payload sent as `application/json`:
 ## `queryGet`
 
 ```csharp
-queryGet(string u, [map c]) response
+queryGet(string url, map config) response
 ```
 
-Executes a `GET` request to the specified [request URL](#request-url) `u` and returns a `WebRequestResult` [response object](#response-object).
+Executes a `GET` request to the specified [request URL](#request-url) `url` and returns a `WebRequestResult` [response object](#response-object).
 
-The configuration map `c` can contain the following fields:
+The configuration map `config` can contain the following fields:
 
 * `headers`: Map of request headers keys and values.
 * `params`: Map of request parameters appended to query string.
@@ -93,12 +93,12 @@ queryGet("https://ipinfo.io/1.1.1.1/json").content
 ## `queryPost`
 
 ```csharp
-queryPost(string u, [map c]) response
+queryPost(string url, map config) response
 ```
 
-Executes a `POST` request to the specified [request URL](#request-url) `u` and returns a `WebRequestResult` [response object](#response-object).
+Executes a `POST` request to the specified [request URL](#request-url) `url` and returns a `WebRequestResult` [response object](#response-object).
 
-The configuration map `c` can contain the following fields:
+The configuration map `config` can contain the following fields:
 
 * `contentType`: Content type of the request. Default is `application/json`.
 * `content`: Request body text.

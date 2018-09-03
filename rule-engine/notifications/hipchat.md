@@ -150,7 +150,7 @@ It can take a few seconds for the first commands to arrive and to trigger notifi
 
 ## Examples
 
-> Note that the alert color depends on the severity level specified in the **Logging** tab.
+The alert color depends on the severity level specified in the **Logging** tab.
 
 * Warning alert:
 

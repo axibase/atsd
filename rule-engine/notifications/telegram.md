@@ -115,7 +115,11 @@ location /bot {
 |Web Page Preview|If enabled, displays short previews for URLs in the message.|
 |Details Table Format|The default format for the alerts detail table.|
 
-> Note parse mode is set to [markdown](https://core.telegram.org/bots/api#markdown-style) by default.
+<!-- markdownlint-enable MD032 -->
+:::tip Markdown
+Parse mode is set to [markdown](https://core.telegram.org/bots/api#markdown-style) by default.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## Reacting to Bot Messages
 

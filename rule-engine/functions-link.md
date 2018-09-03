@@ -116,7 +116,11 @@ Optional `format` parameter creates an [inline link](links.md#inline-links) in o
 
 The link name is set to **CSV Export** link in inline mode.
 
-> Available only in rules with `Series` data type.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+Supported only in rules with `Series` data type.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## `getHtmlExportLink`
 
@@ -130,7 +134,11 @@ Optional `format` parameter creates an [inline link](links.md#inline-links) in o
 
 Displayed as **HTML Export** link in inline mode.
 
-> Available only in rules with `Series` data type.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+Supported only in rules with `Series` data type.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## `getChartLink`
 
@@ -144,7 +152,11 @@ Optional `format` parameter creates an [inline link](links.md#inline-links) in o
 
 Displayed as **Default** link in inline mode.
 
-> Available only for rules with `Series` data type.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+Supported only in rules with `Series` data type.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 Example:
 

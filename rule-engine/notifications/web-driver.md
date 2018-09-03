@@ -4,13 +4,18 @@
 
 There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/) and [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/).
 
-> If you are installing the Web Driver in a Docker container, log in as `root` and install `wget` prior to switching to the `axibase` user
->
-> ```elm
-> docker exec -it -u root atsd bash
-> apt-get update && apt-get install wget
-> su axibase
-> ```
+<!-- markdownlint-enable MD032 -->
+:::warning Linux Container
+If you are installing the Web Driver in a Linux container, log in as `root` and install `wget` prior to switching to the `axibase` user
+
+```elm
+docker exec -it -u root atsd bash
+apt-get update && apt-get install wget
+su axibase
+```
+
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## Option 1: PhantomJS
 

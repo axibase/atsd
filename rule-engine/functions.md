@@ -19,8 +19,6 @@ Functions can be referenced in a [filter expression](filters.md#filter-expressio
     lower(tags.location) = 'nur'
     ```
 
-    > [Filter expression](filters.md#filter-expression) cannot include [statistical functions](functions-statistical.md) which require access to the window object.
-
 * **Condition**:
 
     ```javascript
@@ -42,14 +40,28 @@ Functions can accept arguments and return values in one of the following data ty
 | **Notation** | **Name** | **Example** |
 |---|:---|:---|
 | `double` | double number | `percentile(99.5)` |
-| `long` | long number | `elapsedTime(1515758392702)` |
-| `int` | integer number | `round(value, 1)` |
-| `bool` | boolean | `scriptOut('dsk.sh', [true])` |
+| `long` | long number | `elapsedTime(last_open().timestamp)` |
+| `int` | integer number | `round(avg(), 1)` |
+| `number` | any number | `abs(value)` |
+| `bool` | boolean | `formatBytes(avg(), true)` |
 | `string` | string | `startsWith(entity, 'NUR')` |
-| `[]` | collection | `randomItem([1, 2, 3])` |
+| `[number]` | collection of numbers | `randomItem([1, 2, 3])` |
 | `[string]` | collection of strings | `coalesce([tags.location, 'SVL'])` |
 | `[k: v]` | key-value map | `randomKey(['john.doe': 0.8, 'mary.jones': 0.2])` |
-| `object` | object | `rule_window('disk_check').status` |
+| `map` | key-value map | `addTable(tags, 'html')`
+| `object` | object | `to_timezone(now, 'US/Pacific')` |
+
+Optional arguments are annotated with square brackets.
+
+```csharp
+date_format(long time [, string pattern]) string
+```
+
+If the argument can of different data types, such types are enumerated with `|` symbol.
+
+```csharp
+db_last(string metric, string entity, string tags | map tags) number
+```
 
 ## Collection
 
@@ -126,7 +138,11 @@ Name | Description
 [`db_last`](functions-series.md#db_last)| Retrieves the most recent value stored in the database for the target series.
 [`db_statistic`](functions-series.md#db_statistic)| Returns the result of a statistical function for historical values.
 
-> See also [value](#value) functions.
+<!-- markdownlint-enable MD032 -->
+:::tip Related Functions
+See [value](#value) functions.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ### Forecasts
 
@@ -254,6 +270,12 @@ Name | Description
 [`userInGroup`](functions-security.md#useringroup)| Returns `true` if the specified user belongs to the specified user group.
 
 ## Statistical
+
+<!-- markdownlint-enable MD032 -->
+:::warning Scope
+[Statistical functions](functions-statistical.md)> are not supported in the [filter expression](filters.md#filter-expression).
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 Name | Description
 ---|---
