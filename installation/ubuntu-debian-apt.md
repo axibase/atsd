@@ -16,23 +16,23 @@
 
 <!-- markdownlint-enable MD032 -->
 ::: tip Debian `8.x`
-Add the following line to `/etc/apt/sources.list.d/backports.list`.
+Add `backports` repository to `/etc/apt/sources.list.d/backports.list` file.
 
 ```sh
-sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
+deb http://ftp.debian.org/debian jessie-backports main
 ```
-:::
-<!-- markdownlint-disable MD032 -->
 
-<!-- markdownlint-enable MD032 -->
+:::
+
 ::: tip Ubuntu `18.04`
 Add the following line to `/etc/apt/sources.list` to enable [Java 8](https://packages.ubuntu.com/bionic/amd64/openjdk-8-jdk/download) packages.
 
 ```ls
 deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
+
 :::
-<!-- markdownlint-disable MD032 -->
+<!-- markdownlint-disable MD031 MD032 -->
 
 ### Update Repositories
 
