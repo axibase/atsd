@@ -2,31 +2,31 @@
 
 ## Overview
 
-A window is an in-memory structure created by Rule Engine for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
+A window is an in-memory structure created by the rule engine for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
 
-Windows are accessible on the **Alerts > Rule Windows** page.
+Windows are displayed on the **Alerts > Rule Windows** page.
 
 ![](./images/rule-windows.png)
 
 ## Window Length
 
-### `count` Windows
+### Count-based Windows
 
-Count-based windows accumulate up to the specified number of samples. Samples are sorted **by command timestamp**, with the most recent sample placed at the end of the array. When the window is full, the first (**oldest** by command time) sample is removed from the window to free up space at the end of the array for an incoming sample.
+Count-based windows accumulate up to the specified number of time-value samples. Samples are sorted **by command timestamp**, with the most recent sample placed at the end of the array. When the window becomes full, the first sample (**oldest** by command time) is removed from the window to free up space for an incoming sample.
+
+Example: Count-based window with 3 samples
 
 ![](./resources/window-count.svg)
 
-<br/>
+Once the window reaches the limit of 3 samples, its size remains constant.
 
-![Count Based Window](./images/count_based_window3.png "count_based_window")
+### Time-based Windows
 
-### `time` Windows
+Time-based windows store all samples received within the specified time interval and are referred to as **sliding** windows. There is no limit to the number of samples stored in such windows.
 
-Time-based windows store samples received within the specified time interval. There is no limit to the number of samples stored in time-based windows.
+The start time of the window is initially set to **current time** minus the interval duration, and is constantly incremented as time passes. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window. Otherwise, the command is ignored.
 
-The start of the interval is initially set to current time minus the window length, and is constantly incremented as time passes, thus these windows are sometimes referred to as **sliding** windows. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window.
-
-Old commands are automatically removed from the window once their timestamp is earlier than the defined window start time.
+Old commands are automatically removed from the window once their timestamp is earlier than the window start time.
 
 <!-- markdownlint-enable MD032 -->
 :::tip End Time
@@ -34,7 +34,11 @@ The **end time** in time-based windows is not bound. As such, the window accepts
 :::
 <!-- markdownlint-disable MD031 MD032 -->
 
-![Time Based Window](./images/time_based_window3.png)
+Example: 5-second window with sample count that varies from two to four.
+
+![](./resources/window-time.svg)
+
+The number of samples is not limited and varies over time. Such windows can become empty if no commands arrive within a certain period of time.
 
 ## Window Status
 
@@ -107,3 +111,13 @@ To evaluate the rule on schedule, regardless of external commands, create rules 
 ## Window Fields
 
 Windows expose a set of continuously updated [window fields](window-fields.md) which can be included in the [condition](condition.md) expression, the [filter](filters.md) expression and user-defined [variables](variables.md).
+
+## Window Diagrams
+
+### Count-based Window Diagram
+
+![Count Based Window](./images/count_based_window3.png)
+
+### Time-based Window Diagram
+
+![Time Based Window](./images/time_based_window3.png)
