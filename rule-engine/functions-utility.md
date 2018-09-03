@@ -188,27 +188,89 @@ Limit can be:
 
 1. Zero or omitted: return all samples.
 
-2. Positive: return up to the specified number of samples from **start** (earliest values first).
+2. Positive: return up to the specified number of samples from **start** (earliest samples first).
 
-3. Negative: return up to the specified number of samples from **end** (latest values first).
+3. Negative: return up to the specified number of samples from **end** (latest samples first).
 
-The map can be divided using the following functions:
+The map can be divided using [`values`](#values) and [`timestamps`](#timestamps) functions.
 
-### `values`
+Example:
+
+```javascript
+samples(5) = ${samples(5)}
+samples(-5) = ${samples(5)}
+samples(0) = ${samples(0)}
+```
+
+For window with `count = 10` produces:
+
+```javascript
+TO BE DONE (issue #5654)
+```
+
+## `values`
 
 ```java
 values([int limit]) [number]
 ```
 
-Retrieves only values.
+Retrieves values of samples in the window.
 
-### `timestamps`
+Limit can be:
+
+1. Zero or omitted: return all values.
+
+2. Positive: return up to the specified number of values from **start** (earliest values first).
+
+3. Negative: return up to the specified number of values from **end** (latest values first).
+
+The whole samples map is available via [`samples`](#samples) function.
+
+Example:
+
+```javascript
+values(5) = ${values(5)}
+values(-5) = ${values(5)}
+values(0) = ${values(0)}
+```
+
+For window with `count = 10` produces:
+
+```javascript
+TO BE DONE (issue #5654)
+```
+
+## `timestamps`
 
 ```java
 timestamps([int limit]) [long]
 ```
 
-Retrieves only timestamps.
+Retrieves timestamps of samples in the window.
+
+Limit can be:
+
+1. Zero or omitted: return all timestamps.
+
+2. Positive: return up to the specified number of timestamps from **start** (earliest timestamps first).
+
+3. Negative: return up to the specified number of timestamps from **end** (latest timestamps first).
+
+The whole samples map is available via [`samples`](#samples) function.
+
+Example:
+
+```javascript
+timestamps(5) = ${timestamps(5)}
+timestamps(-5) = ${timestamps(5)}
+timestamps(0) = ${timestamps(0)}
+```
+
+For window with `count = 10` produces:
+
+```javascript
+TO BE DONE (issue #5654)
+```
 
 ## `getURLHost`
 
