@@ -138,21 +138,12 @@ Returns `true` if there is some data for metric and entity inserted in the last
 ### `getProperty`
 
 ```javascript
-getProperty('entity', 'property_type', 'tagKey')
+getProperty('entity', 'property_type', 'tag_name_')
 ```
 
 Returns a string collection.
 
-Retrieves a collection of property objects for a specified entity, property type, and tag.
-
-```ls
-<#if isMetricCollected("nmon.processes.blocked", "${entity}") >
-    [series]
-        label = blocked
-        entity = ${entity}
-        metric = nmon.processes.blocked
-</#if>
-```
+Retrieves a collection of property objects for a specified entity, property type, and tag name.
 
 ### `getSeriesProperties`
 

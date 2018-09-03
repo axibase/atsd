@@ -4,6 +4,14 @@
 
 A set of convenience methods to retrieve and compare property keys and tags using [property search](property-search.md) syntax.
 
+[Property](../schema.md#properties) is a collection of arbitrary key-value pairs describing a given entity, grouped by user-defined `type`.
+
+Property record consists of:
+
+* Type
+* Keys
+* Tags
+
 ## Reference
 
 * [`property`](#property)
@@ -16,12 +24,18 @@ A set of convenience methods to retrieve and compare property keys and tags usin
 ## `property`
 
 ```csharp
-property([string entity, ] string expr [, string date]) string
+property([string entity, ] string expression [, string date]) string
 ```
 
-Returns the first value in the list of strings returned by the `property_values()` function.
+Returns tag value for the specified [property](../schema.md#properties) [search](property-search.md) `expression`. If the expression matches multiple records, the function returns tag value for the most recent record.
 
-By default, the search is performed for the current entity that is initialized in the rule window. If the entity `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+The basic `expression` contains property type and tag name, separate by two semi-colons.
+
+```ls
+{property_type}::{tag_name}
+```
+
+By default, the search is performed for the current entity that is initialized in the rule window. If the `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
 An optional start date `date` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the `entity` argument must also be specified.
 
@@ -42,14 +56,14 @@ property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ## `property_values`
 
 ```csharp
-property_values([string entity, ] string expr [, string date]) [string]
+property_values([string entity, ] string expression [, string date]) [string]
 ```
 
-Returns a list of property tag values for the given entity for the specified [property search](property-search.md) expression `expr`.
+Returns a list of property tag values for the given entity for the specified [property](../schema.md#properties) [search](property-search.md) `expression`.
 
-By default, the search is performed for the current entity that is initialized in the rule window. If the entity `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+By default, the search is performed for the current entity that is initialized in the rule window. If the `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-Optional start date `date` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the entity `entity` argument must also be specified.
+Optional start `date` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the entity `entity` argument must also be specified.
 
 The function returns an empty list if the entity, property or tag is not found.
 
@@ -93,7 +107,7 @@ property_values('nurswgvml007', 'docker.container::image', 'today')
 property_compare_except([string key]) map
 ```
 
-Compares properties in the previous and the current `property` command, ignoring changes in the optional list of key names, and returns a map containing a list of changed keys. The function is supported by rules with `property` data type.
+Compares tags in the previous and the current `property` command, ignoring optional list of `key` names, and returns a map containing a list of changed keys. The function is supported by rules with `property` data type.
 
 Sample difference map:
 
@@ -135,20 +149,20 @@ Returns `true` if property tags have changed, except for the `pid` tag, any tags
 property_map([string entity,] string expression [, string date]) map
 ```
 
-Returns a map containing keys and tags for the specified [property search](property-search.md) `expression`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
+Returns a map containing keys and tags for the specified [property](../schema.md#properties) [search](property-search.md) `expression`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
 By default, the search is performed for the current entity that is initialized in the rule window. If `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
 Optional start `date` argument controls which property records to include. If specified, only property records received **on or after** the start date are included. The start `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the `entity` argument must be specified as well.
 
-Search `expression` can include only the property type (without key and tag parts). Omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
+Search `expression` can include only the property type (without key and tag parts). Omit the `{tag_name}` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
 
 Supported syntax options:
 
-* `<property_type>`
-* `<property_type>:[<key>=<value>[,<key>=<value>]]:`
-* `<property_type>:[<key>=<value>[,<key>=<value>]]:*`
-* `<property_type>:[<key>=<value>[,<key>=<value>]]:*abc*`
+* `{property_type}`
+* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:`
+* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*`
+* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*abc*`
 
 Returns an empty map if the entity, property or tag is not found.
 
@@ -176,7 +190,7 @@ property_map('nurswgvml007','configuration::', 'today')
 property_maps([string entity,] string expression [, string date]) [map]
 ```
 
-Returns a list of maps, each map containing keys and tags for the specified [property search](property-search.md) `expression`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
+Returns a list of maps, each map containing keys and tags for the specified [property](../schema.md#properties) [search](property-search.md) `expression`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
 By default, the search is performed for the current entity that is initialized in the rule window. If the `entity` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
@@ -186,10 +200,10 @@ Search expression `s` can include only the property type without key-value pairs
 
 Supported syntax options:
 
-* `<property_type>`
-* `<property_type>:[<key>=<value>[,<key>=<value>]]:`
-* `<property_type>:[<key>=<value>[,<key>=<value>]]:*`
-* `<property_type>:[<key>=<value>[,<key>=<value>]]:*abc*`
+* `{property_type}`
+* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:`
+* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*`
+* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*abc*`
 
 Returns an empty list if the entity, property or tag is not found.
 
@@ -224,7 +238,7 @@ property_maps('nurswgvml007','configuration::', 'yesterday')
 getPropertyTypes(string entity [, string startDate[, string endDate]]) [string]
 ```
 
-Returns a sorted set of property types for the specified `entity`.
+Returns a sorted set of [property](../schema.md#properties) types for the specified `entity`.
 
 Optional start `startDate` and `endDate` arguments control the time range for selecting property records. The dates can be specified as an [ISO format](../shared/date-format.md) string or a [calendar keyword](../shared/calendar.md#keywords).
 

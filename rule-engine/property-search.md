@@ -1,16 +1,16 @@
 # Property Search Syntax
 
 ```ls
-<property_type>:[<key>=<value>[,<key>=<value>]]:<tag_name>
+{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:{tag_name}
 ```
 
 The above expression returns tag values for the specified property type, optional key-value pairs, and the tag name.
 
-* `<property_type>` is required.
-* `<key>=<value>` section is optional. Multiple key-value pairs must be separated by comma. <br>`<value>` supports `?` and `*` wildcards.
-* `<tag_name>` is required, supports `?` and `*` wildcards.
+* `{property_type}` is required.
+* `{key_name}={key_value}` section is optional. Multiple key-value pairs must be separated by comma. <br>`{key_value}` supports `?` and `*` wildcards.
+* `{tag_name}` is required, supports `?` and `*` wildcards.
 
-The returned set contains only distinct values.
+The returned set contains distinct tag values.
 
 ## Examples
 
