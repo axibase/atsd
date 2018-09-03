@@ -149,6 +149,6 @@ User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.messa
 
     ![](./images/outgoing_webhook_slack_21.png)
 
-* It can take a few seconds for the commands to arrive and trigger the notifications. The rule creates new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+* It can take a few seconds for the commands to arrive and trigger the notifications. The rule creates new windows based on incoming `message` commands. Refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
     ![](./images/outgoing_webhook_telegram_3.png)

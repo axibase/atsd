@@ -146,7 +146,7 @@ CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_i
 
 * The rule creates new windows when new commands are received by the database.
 
-It can take a few seconds for the first commands to arrive and to trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+It can take a few seconds for the first commands to arrive and to trigger notifications. Refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Examples
 

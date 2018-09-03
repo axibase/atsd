@@ -57,7 +57,7 @@ Optional arguments are annotated with square brackets.
 date_format(long time [, string pattern]) string
 ```
 
-If the argument can of different data types, such types are enumerated with `|` symbol.
+If the argument can be of different data types, such types are enumerated with `|` symbol.
 
 ```csharp
 db_last(string metric, string entity, string tags | map tags) number
