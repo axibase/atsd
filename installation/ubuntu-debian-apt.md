@@ -2,8 +2,8 @@
 
 ## Supported Versions
 
-* Ubuntu `16.04`
-* Debian `8.x`/`9.x`
+* Ubuntu `16.04`, `18.04`
+* Debian `8.x`, `9.x`
 
 ## Requirements
 
@@ -12,13 +12,29 @@
 
 ## Installation Process
 
-### Add `backports` Repository (only for Debian `8.x`)
+### Add Repositories
 
-This step is required **only for Debian `8.x` (jessie).**
+<!-- markdownlint-enable MD032 -->
+::: tip Debian `8.x`
+Add the following line to `/etc/apt/sources.list.d/backports.list`.
 
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
 ```
+
+:::
+<!-- markdownlint-disable MD032 -->
+
+<!-- markdownlint-enable MD032 -->
+::: tip Ubuntu `18.04`
+Add the following line to `/etc/apt/sources.list` to enable [Java 8](https://packages.ubuntu.com/bionic/amd64/openjdk-8-jdk/download) packages.
+
+```ls
+deb http://security.ubuntu.com/ubuntu bionic-security main universe
+```
+
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ### Update Repositories
 
@@ -48,11 +64,13 @@ Install ATSD.
 sudo apt-get update && sudo apt-get install atsd
 ```
 
-On Debian `8.x` (jessie)
-
+<!-- markdownlint-enable MD032 -->
+::: tip On Debian `8.x`
 ```sh
 sudo apt-get update && sudo apt-get -t jessie-backports install atsd
 ```
+:::
+<!-- markdownlint-disable MD032 -->
 
 It can take up to five minutes to initialize the database.
 

@@ -7,8 +7,8 @@ and copying them to the target server for offline installation.
 
 ## Supported Versions
 
-* Ubuntu `16.04`
-* Debian `8.x`/`9.x`
+* Ubuntu `16.04`, `18.04`
+* Debian `8.x`, `9.x`
 
 ## Requirements
 
