@@ -8,6 +8,10 @@ Review hardware and OS [requirements](./requirements.md) to ensure compatibility
 
 By installing Axibase Time Series Database you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
 
+After the trial period, ATSD requires an [active subscription](../pricing.md) or a perpetual licence for proper functioning.
+
+---
+
 ## Container Images
 
 [![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
@@ -63,6 +67,10 @@ By installing Axibase Time Series Database you agree to the following **[License
 
 After installation, review the [Getting Started Guide](../tutorials/getting-started.md) to explore ATSD features.
 
+---
+
 ## Technical Support
 
-Email our support at **support-atsd@axibase.com** with installation questions.
+Contact us at `support-atsd@axibase.com` with installation questions.
+
+Make sure to attach [relevant details](../administration/support.md) to your ticket.
