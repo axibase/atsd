@@ -209,7 +209,7 @@ samples() =${samples()}
 
 For window with `count = 5` produces:
 
-```javascript
+```ls
 samples(-3) = [(2018-09-04T07:34:17Z[Etc/UTC],0.44), (2018-09-04T07:34:02Z[Etc/UTC],0.29), (2018-09-04T07:33:47Z[Etc/UTC],0.38)]
 
 samples(3) = [(2018-09-04T07:33:17Z[Etc/UTC],0.29), (2018-09-04T07:33:32Z[Etc/UTC],0.22), (2018-09-04T07:33:47Z[Etc/UTC],0.38)]
@@ -245,10 +245,10 @@ values() =${values()}
 
 For window with `count = 5` produces:
 
-```javascript
-values(-3) = ${values(-3)}
-values(3) = ${values(3)}
-values() =${values()}
+```ls
+values(-3) = [0.38, 0.22, 0.29]
+values(3) = [0.48, 0.37, 0.29]
+values() =[0.48, 0.37, 0.29, 0.22, 0.38]
 ```
 
 ## `timestamps`
@@ -279,7 +279,7 @@ timestamps() =${timestamps()}
 
 For window with `count = 5` produces:
 
-```javascript
+```ls
 timestamps(-3) = [2018-09-04T07:32:32Z[Etc/UTC], 2018-09-04T07:32:17Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC]]
 
 timestamps(3) = [2018-09-04T07:31:32Z[Etc/UTC], 2018-09-04T07:31:47Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC]]
