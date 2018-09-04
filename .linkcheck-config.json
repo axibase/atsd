@@ -101,4 +101,7 @@
         ,{ "pattern": "https://catalog.data.gov/dataset/nyc-social-media-usage-555a2"}
         ,{ "pattern": "https://www.water-research.net/" }
         ,{ "pattern": "https://data.maryland.gov/api/views/.*"}
+        ,{ "pattern": "https://www.ssb.no/statistikkbanken/selectvarval/Define.asp.*"}
+
+        
     ]}
