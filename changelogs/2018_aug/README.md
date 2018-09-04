@@ -24,10 +24,10 @@ Issue| Category   | Type   | Subject
 5614|rule engine|Bug|Rule Engine: `NullPointerException` during Test if [**Load History**](../../administration/logging.md) enabled.
 5611|rule engine|Bug|Rule Engine: Exception on saving [alert history](../../administration/logging.md) for newly created entity.
 5609|rule engine|Bug|Rule Engine: set [`window_first_time`](../../rule-engine/window-fields.md#date-fields) to empty string if not available.
-5608|rule engine|Bug|Rule Engine: window name substition or invalid window [grouping](../../rule-engine/window-fields.md#date-fields).
+5608|rule engine|Bug|Rule Engine: window name substitution or invalid window [grouping](../../rule-engine/window-fields.md#date-fields).
 5607|sql|Bug|SQL: incorrect metadata returned by the [`/api/sql`](../../sql/api.md#sql-query-api-endpoint) endpoint.
 5604|rule engine|Bug|Rule Engine: alert history is not [logged](../../administration/logging.md) if message is empty.
-5603|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): standartize button style and locations.
+5603|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): standardize button style and locations.
 5602|rule editor|Bug|Rule Editor: [Logging](../../administration/logging.md) status is incorrectly shown as `Disabled` if only alert history is turned on.
 5601|rule engine|Bug|Rule Engine: initialize [`now`](../../rule-engine/functions-date.md#now) object to command time in filter log.
 5599|rule engine|Bug|Rule Engine: validate email address in [Email Action](../../rule-engine/email.md#email-action).
@@ -42,7 +42,7 @@ Issue| Category   | Type   | Subject
 5584|api-rest|Bug|Data API: [Property Query](../../api/data/properties/query.md#properties-query) with limit is slow.
 5582|rule editor|Bug|Rule Editor: validator doesn't allow reference to 'rule' in [variables](../../rule-engine/variables.md#variables).
 5580|rule engine|Bug|Rule Engine: [variable](../../rule-engine/variables.md#variables) validation misleading.
-5579|sql|Feature|Add timezone support to [`MINUTE()`](../../sql#minute) function.
+5579|sql|Feature|Add time zone support to [`MINUTE()`](../../sql/README.md#minute) function.
 5577|rule engine|Bug|Rule Engine: [`IN`](../../rule-engine/functions-collection.md#in) operator fails to work on string function result.
 5575|api-rest|Feature|Data API: [Series Query](../../api/data/series/query.md#series-query) - implement smooth transformation.
 5573|rule editor|Feature|Rule Engine: response action [logging](../../administration/logging.md).
@@ -59,15 +59,15 @@ Issue| Category   | Type   | Subject
 5556|entity_views|Feature|[Entity View](../../configuration/entity_views.md#entity-views) portal: add `server-aggregate=true` to the multi-entity portal.
 5555|UI|Bug|[Entity Group](../../configuration/entity_groups.md#entity-groups) editor error.
 5554|security|Bug|Users: Add [LDAP](../../installation/ldap/jxplorer.md) support in Resource Viewer User form.
-5553|sql|Feature|SQL: add support for optional custom timezone in [`EXTRACT`](../../sql/README.md#extract) date functions.
+5553|sql|Feature|SQL: add support for optional custom time zone in [`EXTRACT`](../../sql/README.md#extract) date functions.
 5552|client|Support|Python [client](../../api/clients/README.md): refactor access log report.
 5548|rule engine|Feature|Rule Engine: implement `DateTime` [`to_timezone`](../../rule-engine/object-datetime.md#to_timezone-function) function.
 5547|UI|Feature|[Rule Editor](../../rule-engine/README.md): alert on page exit with unsaved changes in Firefox.
 5546|client|Feature|Python [client](../../api/clients/README.md): set user-agent in api requests.
-5545|core|Feature|Modify Server header in HTTP [responses](../../api#database-api).
+5545|core|Feature|Modify Server header in HTTP [responses](../../api/README.md#database-api).
 5544|api-rest|Bug|[Series Query](../../api/data/series/query.md#series-query): invalid JSON returned.
 5543|entity|Bug|Entity Group: implement [`hasProperty`](../../configuration/functions-entity-groups-expression.md#hasproperty) function.
-5542|sql|Feature|SQL: Implement [`WITH TIMEZONE`](../../sql#with-timezone) clause to override the default server timezone applied to query.
+5542|sql|Feature|SQL: Implement [`WITH TIMEZONE`](../../sql/README.md#with-timezone) clause to override the default server time zone applied to query.
 5541|entity|Feature|[Entity Group](../../configuration/entity_groups.md#entity-groups): refactor form.
 5540|entity|Bug|[Entity Group](../../configuration/entity_groups.md#entity-groups): cannot delete a group.
 5539|core|Bug|[Date format](../../shared/date-format.md) inconsistencies.
@@ -85,8 +85,8 @@ Issue| Category   | Type   | Subject
 5517|rule engine|Feature|Rule Engine: Implement [`DateTime.add`](../../rule-engine/object-datetime.md#add-function) method.
 5497|rule engine|Bug|Rule Engine: [property command](../../api/network/property.md#property-command) sent from **Data Entry** form is not processed.
 5496|message|Bug|[Message](../../api/data/messages/insert.md#description) collision: add hash to row key to eliminate collision between records.
-5494|sql|Feature|SQL: boolean functions in [`WHERE`](../../sql#where-clause) and [`HAVING`](../../sql#having-filter) clauses.
-5492|sql|Feature|SQL: implement [calendar](../../sql#calendar-expressions) arithmetic for `time` and `datetime` column values.
+5494|sql|Feature|SQL: boolean functions in [`WHERE`](../../sql/README.md#where-clause) and [`HAVING`](../../sql/README.md#having-filter) clauses.
+5492|sql|Feature|SQL: implement [calendar](../../sql/README.md#calendar-expressions) arithmetic for `time` and `datetime` column values.
 5490|sql|Bug|`ClassCastException` in [SQL](../../sql/README.md) query.
 5482|versioning|Bug|[Versioning](../../versioning/README.md): attempt to insert versioned value for a non-versioned metric must cause a validation error.
 5478|client|Feature|Python3 [client](../../api/clients/README.md) migration.
@@ -96,7 +96,7 @@ Issue| Category   | Type   | Subject
 5448|rule engine|Feature|Rule Engine: Implement [`last_open()`](../../rule-engine/functions-alert-history.md#last_open) function to access window.
 5437|UI|Feature|Series value [editor](../../versioning/README.md#modifying-values).
 5415|client|Bug|ATSD [API JAVA](../../api/clients/README.md): set `User-Agent` through `ClinentManager Factory`.
-5173|core|Bug|Codestyle: Replace Calendar usage with JSR-310 API.
+5173|core|Bug|Code style: Replace Calendar usage with JSR-310 API.
 5038|rule engine|Feature|[Rule Editor](../../rule-engine/README.md): implement **Filter Log** page.
 4814|sql|Bug|SQL: Interpolation [`PREVIOUS`](../../sql/README.md#interpolation-function) with `fill=false`.
 4560|UI|Feature|UI: entity search by [last insert date](../../rule-engine/entity-fields.md#entity-object-fields).
