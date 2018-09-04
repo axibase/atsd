@@ -46,7 +46,11 @@ nohup ./scollector-linux-amd64 &
 
 This section describes how to configure scollector start under a `sudo` user.
 
-> Note that `init` scripts for systems without `systemd` do not support daemon stopping and do not check if service is already running.
+<!-- markdownlint-enable MD032 -->
+:::warning Note
+`init` scripts for systems without `systemd` do not support daemon stopping and do not check if service is already running.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 #### Ubuntu 14.04
 

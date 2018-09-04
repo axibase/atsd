@@ -138,7 +138,7 @@ Diagram example:
 
 ![](./resources/join_preview.png)
 
-> Note to preview data right-click **step** icon and select **Preview > Quick Launch**
+To preview data right-click **step** icon and select **Preview > Quick Launch**
 
 ### Merge Tables
 

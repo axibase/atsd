@@ -593,7 +593,11 @@ GROUP BY PERIOD(2 WEEK)
 | 2016-09-26 Monday | 987        |
 ```
 
-> Note that empty periods and periods with a start date outside of the requested timespan are NOT included in the result set.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+Empty periods and periods with a start date outside of the requested timespan are NOT included in the result set.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 As an alternative to a `CALENDAR` alignment, specify `START_TIME` as the second argument to the `PERIOD` function to align periods to the beginning of the timespan.
 

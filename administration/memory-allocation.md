@@ -41,7 +41,11 @@ Examples:
 * `-Xmx1024M`: 1024 megabytes
 * `-Xmx2G`: 2 gigabytes.
 
-> Note that no space character must be present between the number and the unit.
+<!-- markdownlint-enable MD032 -->
+:::warning Note
+No space character must be present between the number and the unit.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ```txt
 export JAVA_OPTS="-server -Xmx2048M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"

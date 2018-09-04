@@ -48,4 +48,8 @@ keytool -importcert -keystore /opt/atsd/atsd/conf/server.keystore -storepass pas
 
 ![](./resources/add_cert.png)
 
-> Note that the `cacerts` keystore file has a default password of `changeit` (see [Jxplorer documentation](http://jxplorer.org/help/Setting_a_Keystore_Password.htm)).
+<!-- markdownlint-enable MD032 -->
+:::warning Note
+`cacerts` keystore file has a default password of `changeit` (see [Jxplorer documentation](http://jxplorer.org/help/Setting_a_Keystore_Password.htm)).
+:::
+<!-- markdownlint-disable MD031 MD032 -->

@@ -125,8 +125,14 @@ WHERE metric = 'mpstat.cpu_busy'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
 
-> The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
-> Note that `LIKE` operator is case-**sensitive**.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+`LIKE` operator is case-**sensitive**.
+:::
+:::tip Note
+The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ### WHERE Clause
 
@@ -549,7 +555,11 @@ WHERE entity LIKE 'nurswgvml00%'
 ORDER BY datetime
 ```
 
-> Note that `LIKE` operator is case-**sensitive**.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+`LIKE` operator is case-**sensitive**.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ```ls
 | datetime             | entity       | value | entity.groups                            |
@@ -2065,7 +2075,11 @@ The `ON` condition can be modified with the `USING entity` instruction in which 
 | `FROM tbl_1 t1`<br>`JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
 | `FROM tbl_1 t1`<br>`FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
 
-> Note that self-joins (table is merged with itself) is not supported.
+<!-- markdownlint-enable MD032 -->
+:::warning Note
+Self-joins (table is merged with itself) is not supported.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ### JOIN Results
 
@@ -2271,7 +2285,11 @@ GROUP BY PERIOD(1 MINUTE), server
 | 2017-06-16T13:01:00Z | nurswgvml007 | 3.5     | 252451.0 |
 ```
 
-> Note that records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+Records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ### JOIN with `atsd_series` table
 

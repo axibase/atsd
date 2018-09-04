@@ -24,7 +24,11 @@ Expand the **Portals** tab in the top menu of the ATSD web interface. Pre-define
 
 ![](./images/atsd_portal.png "ATSD Host")
 
-> Note **Data Tables** portal can be empty for a few minutes after start
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+The **Data Tables** portal can be empty for a few minutes after start.
+:::
+<!-- markdownlint-disable MD031 MD032 -->
 
 ## Reboot Verification
 
