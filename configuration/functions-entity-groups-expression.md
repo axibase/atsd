@@ -3,6 +3,7 @@
 ## Reference
 
 * [`collection`](#collection)
+* [`hasProperty`](#hasproperty)
 * [`list`](#list)
 * [`likeAll`](#likeall)
 * [`likeAny`](#likeany)
