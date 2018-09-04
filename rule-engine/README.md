@@ -18,8 +18,6 @@ Example
 IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
-![](./resources/window-count.svg)
-
 A rule [condition](condition.md) can operate on a single metric or correlate multiple metrics using [`value`](functions-value.md), [`database`](functions-series.md), and [`rule`](functions-rules.md) functions.
 
 ```javascript
@@ -33,6 +31,8 @@ The incoming data is consumed by the rule engine independently of the persistenc
 ![](./images/atsd_rule_engine.png)
 
 The data is maintained in [windows](window.md) which are `in-memory` structures initialized for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
+
+![](./resources/window-count.svg)
 
 The processing pipeline consists of the following stages:
 
