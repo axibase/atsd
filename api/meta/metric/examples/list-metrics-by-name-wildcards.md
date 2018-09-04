@@ -9,32 +9,32 @@ The wildcards are evaluated when the operator is `LIKE`.
 
 ## Expression Examples
 
-* List metrics whose names **start with** the specified text `disk`
+* List metrics with names that **begin with** `disk`
 
 ```javascript
 name LIKE 'disk*'
 ```
 
-* List metrics whose names **end with** the specified text
+* List metrics with names that **end with** `percent`
 
 ```javascript
 name LIKE '*percent'
 ```
 
-* List metrics whose names **contain** the specified text
+* List metrics with names that **contain** `used`
 
 ```javascript
 name LIKE '*used*'
 ```
 
-* List metrics whose names **match** any single character in a specific position
+* List metrics with names that **match** any single character in a specific position
 
 ```javascript
 // matches disk_used
 name LIKE 'disk?used'
 ```
 
-* List metrics whose names **start with** the specified text and **match** any single character in a specific position
+* List metrics with names that **begin with** the specified text and **match** any single character in a specific position
 
 ```javascript
 // matches disk_used, disk_used_percent

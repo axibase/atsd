@@ -632,7 +632,7 @@ SELECT tags."hello""world"
 
 Table and column aliases can be unquoted or enclosed in double quotation marks.
 
-Unquoted alias must start with letter `[a-zA-Z]`, followed by a letter, digit or underscore.
+Unquoted alias must begin with letter `[a-zA-Z]`, followed by a letter, digit or **underscore**.
 
 The `AS` keyword is optional.
 

@@ -64,7 +64,7 @@ The default logger named `atsd.alert.default` is available even if undefined in 
 
 ## Custom File Logger
 
-Custom logger names must start with `atsd.alert.` and specify a unique file name, including roll-over pattern, that is different from file names used by other loggers. Similarly, custom loggers must specify unique appender names.
+Custom logger names must begin with `atsd.alert.` and have a unique file name and a roll-over pattern. Similarly, custom loggers must specify unique appender names.
 
 Create multiple custom loggers to customize alert logging for various rules.
 

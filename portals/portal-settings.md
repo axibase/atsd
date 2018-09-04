@@ -146,7 +146,7 @@ A hash symbol in the middle of a line (preceded by any character other than tab 
 
 ### Multi-line Comments
 
-Multi-line comments start with /* and end with */.
+Multi-line comments begin with /* and end with */.
 
 Any text between /* and */ is ignored.
 

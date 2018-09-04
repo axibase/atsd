@@ -90,7 +90,7 @@ Refer to [Date Format Specifications](../../shared/date-format.md) rules and exa
 * The decimal separator is a period (`.`).
 * No thousands separator is allowed.
 * No digit grouping is allowed.
-* Negative numbers must start with a negative sign (`-`).
+* Negative numbers must begin with a negative sign (`-`).
 * Not-a-Number is the literal string `NaN` unless specified [otherwise](series/insert.md#fields).
 
 ### Strings

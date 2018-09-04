@@ -53,7 +53,7 @@ location nur
 | `OR` | One of the conditions must be satisfied. | `location OR nur` |
 | `NOT` | The condition must not be satisfied. | `location NOT nur` |
 
-> An expression cannot start with the `NOT` operator.
+> An expression cannot begin with the `NOT` operator.
 
 ### Wildcards
 

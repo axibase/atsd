@@ -225,7 +225,7 @@ echo -e "series e:station_1 m:temperature=32.2 d:2016-05-15T00:10:00Z\nseries e:
 
 ### Line Syntax
 
-A command must start with a name such as `series` followed by space-separated fields each identified with a prefix, followed by `:` colon, and `name=value`.
+A command must begin with a name such as `series` followed by space-separated fields each identified with a prefix, followed by `:` colon, and `name=value`.
 
 ```ls
 command-name field-prefix:[field-name=]field-value

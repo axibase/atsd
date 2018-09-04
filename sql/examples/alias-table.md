@@ -4,7 +4,7 @@ A table alias is typically used in `JOIN` queries to provide a convenient way of
 
 Similar to column aliases, a table alias can be unquoted or enclosed in quotes or double-quotes.
 
-An unquoted `alias` must start with a letter `[a-zA-Z]`, followed a by letter, digit, or underscore.
+An unquoted `alias` must begin with a letter `[a-zA-Z]`, followed a by letter, digit, or **underscore**.
 
 ## Query
 

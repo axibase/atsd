@@ -130,7 +130,7 @@ Example for `columns=date,t:disk,value`.
 /api/v1/series/csv/nurswgvml006/df_used?limit=2&startDate=current_hour&endDate=now&t:disk=*&columns=time,t:disk,value
 ```
 
-Note that the tag column names in the header _do not_ start with the `t:` prefix.
+Note that the tag column names in the header _do not_ begin with the `t:` prefix.
 
 ```ls
 time,disk,value

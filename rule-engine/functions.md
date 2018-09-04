@@ -273,7 +273,7 @@ Name | Description
 
 <!-- markdownlint-enable MD032 -->
 :::warning Scope
-[Statistical functions](functions-statistical.md)> are not supported in the [filter expression](filters.md#filter-expression).
+[Statistical functions](functions-statistical.md) are not supported in the [filter expression](filters.md#filter-expression).
 :::
 <!-- markdownlint-disable MD031 MD032 -->
 

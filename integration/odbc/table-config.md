@@ -12,7 +12,7 @@ This document describes how to reconfigure the ODBC data source if the list of t
 
 * Modify or append `tables` property to the DSN URL to filter metrics by name in the Query
   Builder. For example, `tables=%` displays all ATSD metrics as tables whereas `tables=infla%`
-  shows only metrics that start with the characters `infla`.
+  shows only metrics that begin with `infla`.
 
 ```txt
 jdbc:atsd://atsd_hostname:8443;tables=%

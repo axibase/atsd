@@ -252,7 +252,7 @@ New environmental variables:
 
 The `tags` parameter in [Entity Group: Get Entities](../../api/meta/entity-group/get-entities.md#query-parameters), [Entities: List](../../api/meta/entity/list.md#query-parameters), [Metrics: List](../../api/meta/metric/list.md#query-parameters) now accepts wildcards to control the list of tags in the response.
 
-* Retrieve members of the `docker-images` group. Add entity tags that start with `env.` to the response.
+* Retrieve members of the `docker-images` group. Add entity tags that begin with `env.` to the response.
 
 ```ls
 /api/v1/entity-groups/docker-images/entities?tags=env.*

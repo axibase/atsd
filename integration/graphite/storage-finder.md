@@ -179,7 +179,7 @@ ATSD_CONF = {
            {'com.axibase.*': 'com.axibase.*'}]}
 ```
 
-Below two entity folders are shown. One filters out only the entity `com.axibase`. The other one filters out entities that start with `com.axibase`.
+Below two entity folders are shown. One filters out only the entity `com.axibase`. The other one filters out entities that begin with `com.axibase`.
 
 ![](./resources/02.png)
 

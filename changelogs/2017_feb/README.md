@@ -148,7 +148,7 @@ Title: "ORO.csv"
 20130101,0200,828.13
 ```
 
-* Example 2. Skip 8 lines (empty and prefixed with `:`) to start with the line.
+* Example 2. Skip 8 lines (empty and prefixed with `:`) to start processing the following line.
 
 ```txt
 .A ORO 20160312 PS DH0000 /LSH 2325491

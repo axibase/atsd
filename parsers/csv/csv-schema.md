@@ -125,7 +125,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 
 ### Notes
 
-* Row and column indexes start with 1.
+* Row and column indexes begin with `1`.
 * Row index of the active cell can be referenced with the `row` parameter.
 * Column index of the active cell can be referenced with the `col` parameter.
 * Relative index is specified with `+/-`, for example `col+1`.
