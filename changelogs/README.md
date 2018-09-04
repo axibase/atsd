@@ -4,12 +4,13 @@ Follow development in the **Change Tracker Portal** and review details in the **
 
 ![](./images/change-tracker-portal1.png)
 
-[![](./images/button.png)](https://apps.axibase.com/chartlab/fc42f948)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/fc42f948/2/)
 
 ## Year 2018
 
 | **Month** | **Change Log** | **Features** | **Bugs**
 |---|---|---|---|
+| Aug | [View](2018_aug/README.md) | `47` | `47` |
 | Jul | [View](2018_jul/README.md) | `30` | `57` |
 | Jun | [View](2018_jun/README.md) | `23` | `23` |
 | May | [View](2018_may/README.md) | `15` | `24` |
