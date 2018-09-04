@@ -12,6 +12,9 @@
 * [`getURLQuery`](#geturlquery)
 * [`getURLUserInfo`](#geturluserinfo)
 * [`printObject`](#printobject)
+* [`samples`](#samples)
+* [`values`](#values)
+* [`timestamps`](#timestamps)
 
 ## `ifEmpty`
 
@@ -178,11 +181,13 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 samples([int limit]) map
 ```
 
-Retrieves the map of samples:
+Retrieves the map of the samples:
 
 ```javascript
-{ timestamp: value }
+{ date: value }
 ```
+
+Where `date` is an ISO datetime in the UTC timezone.
 
 Limit can be:
 
@@ -197,15 +202,19 @@ The map can be divided using [`values`](#values) and [`timestamps`](#timestamps)
 Example:
 
 ```javascript
-samples(5) = ${samples(5)}
-samples(-5) = ${samples(5)}
-samples(0) = ${samples(0)}
+samples(-3) = ${samples(-3)}
+samples(3) = ${samples(3)}
+samples() =${samples()}
 ```
 
-For window with `count = 10` produces:
+For window with `count = 5` produces:
 
 ```javascript
-TO BE DONE (issue #5654)
+samples(-3) = [(2018-09-04T07:34:17Z[Etc/UTC],0.44), (2018-09-04T07:34:02Z[Etc/UTC],0.29), (2018-09-04T07:33:47Z[Etc/UTC],0.38)]
+
+samples(3) = [(2018-09-04T07:33:17Z[Etc/UTC],0.29), (2018-09-04T07:33:32Z[Etc/UTC],0.22), (2018-09-04T07:33:47Z[Etc/UTC],0.38)]
+
+samples() =[(2018-09-04T07:33:17Z[Etc/UTC],0.29), (2018-09-04T07:33:32Z[Etc/UTC],0.22), (2018-09-04T07:33:47Z[Etc/UTC],0.38), (2018-09-04T07:34:02Z[Etc/UTC],0.29), (2018-09-04T07:34:17Z[Etc/UTC],0.44)]
 ```
 
 ## `values`
@@ -229,15 +238,17 @@ The whole samples map is available via [`samples`](#samples) function.
 Example:
 
 ```javascript
-values(5) = ${values(5)}
-values(-5) = ${values(5)}
-values(0) = ${values(0)}
+values(-3) = ${values(-3)}
+values(3) = ${values(3)}
+values() =${values()}
 ```
 
-For window with `count = 10` produces:
+For window with `count = 5` produces:
 
 ```javascript
-TO BE DONE (issue #5654)
+values(-3) = ${values(-3)}
+values(3) = ${values(3)}
+values() =${values()}
 ```
 
 ## `timestamps`
@@ -246,7 +257,7 @@ TO BE DONE (issue #5654)
 timestamps([int limit]) [long]
 ```
 
-Retrieves timestamps of samples in the window.
+Retrieves the ISO datetimes in the UTC timezone of the samples in the window.
 
 Limit can be:
 
@@ -261,15 +272,19 @@ The whole samples map is available via [`samples`](#samples) function.
 Example:
 
 ```javascript
-timestamps(5) = ${timestamps(5)}
-timestamps(-5) = ${timestamps(5)}
-timestamps(0) = ${timestamps(0)}
+timestamps(-3) = ${timestamps(-3)}
+timestamps(3) = ${timestamps(3)}
+timestamps() =${timestamps()}
 ```
 
-For window with `count = 10` produces:
+For window with `count = 5` produces:
 
 ```javascript
-TO BE DONE (issue #5654)
+timestamps(-3) = [2018-09-04T07:32:32Z[Etc/UTC], 2018-09-04T07:32:17Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC]]
+
+timestamps(3) = [2018-09-04T07:31:32Z[Etc/UTC], 2018-09-04T07:31:47Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC]]
+
+timestamps() =[2018-09-04T07:31:32Z[Etc/UTC], 2018-09-04T07:31:47Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC], 2018-09-04T07:32:17Z[Etc/UTC], 2018-09-04T07:32:32Z[Etc/UTC]]
 ```
 
 ## `getURLHost`
