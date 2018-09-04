@@ -187,7 +187,7 @@ Retrieves the map of the samples:
 { date: value }
 ```
 
-Where `date` is an ISO datetime in the UTC timezone.
+Where `date` is an ISO datetime in the UTC time zone.
 
 Limit can be:
 
@@ -223,7 +223,7 @@ samples() =[(2018-09-04T07:33:17Z[Etc/UTC],0.29), (2018-09-04T07:33:32Z[Etc/UTC]
 values([int limit]) [number]
 ```
 
-Retrieves values of samples in the window.
+Retrieves an array of the values of the samples in the current window.
 
 Limit can be:
 
@@ -257,7 +257,7 @@ values() =[0.48, 0.37, 0.29, 0.22, 0.38]
 timestamps([int limit]) [long]
 ```
 
-Retrieves the ISO datetimes in the UTC timezone of the samples in the window.
+Retrieves an array of ISO dates in the UTC timezone of the samples in the current window.
 
 Limit can be:
 
