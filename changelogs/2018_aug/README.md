@@ -52,7 +52,7 @@ Issue| Category   | Type   | Subject
 5558|rule editor|Bug|Validate [Entity Name Filter](../../rule-engine/filters.md#entity-names-filter).
 5557|rule engine|Bug|Entity comparison must be case-insensitive in [**Filter**](../../rule-engine/filters.md).
 5556|entity_views|Feature|[Entity View](../../configuration/entity_views.md#entity-views) portal: add `server-aggregate=true` to the multi-entity portal.
-5554|security|Bug|Add [LDAP](../../installation/ldap/jxplorer.md) selector to the Resource Viewer User wizard.
+5554|security|Bug|Add [LDAP](../../installation/ldap/jxplorer.md) switch to the Resource Viewer User wizard.
 5553|sql|Feature|Add support for optional custom time zone in [`EXTRACT`](../../sql/README.md#extract) date functions.
 5548|rule engine|Feature|Implement `DateTime` [`to_timezone`](../../rule-engine/object-datetime.md#to_timezone-function) function.
 5547|UI|Feature|Rule Editor: add alert on page exit with unsaved changes in Firefox.
