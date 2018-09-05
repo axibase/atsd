@@ -93,10 +93,12 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`jvm_max_file_descriptor_count` |The maximum number of file descriptors.|
 |`jvm_open_file_descriptor_count` | Number of open file descriptors.|
 |`disk_totalspace` |Total size of the file system where ATSD service is installed, in bytes.|
-|`disk_unallocatedspace` |Available space on the file system where ATSD service is installed, in bytes.|
-|`disk_usablespace` |Used space on the file system where ATSD service is installed, in bytes.|
-|`table_region_count` |Number of regions in the given data table.|
-|`table_region_server_count` |Number of region servers assign to process the given data table.|
+|`disk_unallocatedspace` |Space available (free) on the file system where ATSD service is installed, in bytes.|
+|`disk_usablespace` |Space available (free) **to ATSD** on the file system where ATSD service is installed, in bytes.|
+|`disk_tmp_totalspace` |Total size of the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the the file system where ATSD service is installed.|
+|`disk_tmp_unallocatedspace` |Space available (free) on the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the the file system where ATSD service is installed.|
+|`disk_tmp_usablespace` |Space available (free) **to ATSD** on the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the the file system where ATSD service is installed.|
+|`table_region_server_count` |Number of region servers assigned to process the given data table.|
 |`table_size` |Total size on disk for the given table, in megabytes.|
 
 ### General
