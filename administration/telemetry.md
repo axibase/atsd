@@ -2,7 +2,7 @@
 
 ## Overview
 
-ATSD contains modules that are designed to improve user experience and enhance product quality while delivering timely notifications to customer about new database releases.
+ATSD contains modules that are designed to improve user experience and enhance product quality while delivering timely notifications to customer about new database releases. The modules collect usage information that helps us prioritize product development with the customer priorities in mind.
 
 ## Version Check
 

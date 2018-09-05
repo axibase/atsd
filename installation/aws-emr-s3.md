@@ -1,4 +1,4 @@
-# Installation: Amazon EMRFS
+# Installation: Amazon Elastic MapReduce (EMR)
 
 ## Overview
 
@@ -17,7 +17,7 @@ The minimum cluster size supported by this installation option is **two** EC2 in
 
 ## Create S3 Bucket
 
-Create the S3 bucket prior to installation.  The bucket, named `atsd` in the example below, stores the `hbase-root` directory and contains both metadata and HFiles.
+Create the S3 bucket prior to installation. The bucket, named `atsd` in the example below, stores the `hbase-root` directory and contains both metadata and HFiles.
 
 ```bash
 aws s3 mb s3://atsd

@@ -1,5 +1,11 @@
 # Installation: Cloudera / CDH
 
+<!-- markdownlint-disable MD032 -->
+::: tip New deployment option
+ATSD on [AWS Elastic MapReduce (EMR)](aws-emr-s3.md).
+:::
+<!-- markdownlint-disable MD032 -->
+
 ## Create User
 
 Create an `axibase` user on the server where you plan to install ATSD.
