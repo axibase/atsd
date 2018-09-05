@@ -105,6 +105,6 @@ Issue| Category    | Type    | Subject
 5560|UI|Feature|UI: Database [form](https://axibase.com/docs/axibase-collector/jobs/jdbc-data-source.html#jdbc-data-source) improvements.
 5529|core|Bug|Core: Retrieve ATSD version through [ATSD API JAVA](../../api/clients/README.md) client.
 5525|core|Feature|Core: set custom `User-Agent` header for request sent by the [ATSD API JAVA](../../api/clients/README.md) client.
-5416|UI|Bug|UI: After [login](https://axibase.com/docs/axibase-collector/installation.html#login) collector redirects to favicon.
+5416|UI|Bug|UI: After [login](https://axibase.com/docs/axibase-collector/installation.html#login) collector redirects to `favicon` image.
 5148|core|Feature|Send failure percentage as message tag on [`PARTIAL_FAILURE`](https://axibase.com/docs/axibase-collector/monitoring.html#monitoring).
 5131|core|Bug|Duplicate [storage driver](https://axibase.com/docs/axibase-collector/atsd-server-connection.html#storage-driver-configuration) created on container restart.
