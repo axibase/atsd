@@ -73,4 +73,4 @@ After installation, review the [Getting Started Guide](../tutorials/getting-star
 
 Contact us at `support-atsd@axibase.com` with installation questions.
 
-Make sure to attach [relevant details](../administration/support.md) to your ticket.
+Attach [relevant details](../administration/support.md) to your ticket.

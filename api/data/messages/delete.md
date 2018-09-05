@@ -14,13 +14,13 @@ Messages expire based on the **insertion** time (time when the database received
 
 ## Modify Retention
 
-Open the terminal on the ATSD server.
+Open the console on the ATSD server.
 
 Open `/opt/atsd/atsd/conf/server.properties` file.
 
-Calculate the desired retention interval in seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
+Calculate the new retention interval in seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
 
-Set `messages.timeToLive` setting to the desired value.
+Add `messages.timeToLive` setting with the new value.
 
 ```elm
 messages.timeToLive = 1209600
