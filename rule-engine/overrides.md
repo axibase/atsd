@@ -24,7 +24,7 @@ In case no matching rules are found for the given window, the default condition,
 :::tip Depended Rules
 The **Depends On** condition, when enabled on the **Condition** tab, is checked for both the override rule and the default condition.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ![](./images/override-columns.png)
 

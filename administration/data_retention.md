@@ -68,7 +68,7 @@ Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token 
 :::warning Note
 Existing data already stored in the database for a disabled metric is not removed from disk automatically.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### Disable Persistence
 
@@ -90,7 +90,7 @@ Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_
 :::warning Note
 Existing data already stored in the database for a non-persistent metric is not removed from disk automatically.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### Set Persistence Filter
 
@@ -114,7 +114,7 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 :::warning Note
 Existing data already stored in the database is **not** removed from disk automatically, even if the series no longer matches the filter.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 #### Filter Examples
 

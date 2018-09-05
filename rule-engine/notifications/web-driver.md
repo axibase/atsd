@@ -15,7 +15,7 @@ su axibase
 ```
 
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## Option 1: PhantomJS
 

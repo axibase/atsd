@@ -8,7 +8,7 @@ The univariate statistical functions listed below perform calculations on an arr
 :::warning Warning
 The functions cannot be invoked in [filter](filters.md#filter-expression) expressions.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Functions such as [`countIf`](#countif), [`avgIf`](#avgif), and [`sumIf`](#sumif) perform calculations on a **subset** of matching values in the current window based on a boolean condition.
 

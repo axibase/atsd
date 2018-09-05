@@ -106,7 +106,7 @@ To make SQL query results visible to non-authenticated visitors, check **Guest A
 :::tip Note
 Guest access to Data API is not required in this case.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## HTTP Basic Authorization Examples
 

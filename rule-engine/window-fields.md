@@ -59,7 +59,7 @@ Notes:
 :::tip Property `tags`
 The `tags` field for the `property` command contains the `keys` map and the `type` field.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## Date Fields
 

@@ -75,7 +75,7 @@ Displayed as **Default** link in inline mode.
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Example:
 
@@ -97,7 +97,7 @@ Displayed as **CSV Export** link in inline mode.
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Example:
 
@@ -119,7 +119,7 @@ Displayed as an **HTML Export** link in inline mode.
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Example:
 

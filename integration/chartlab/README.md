@@ -26,7 +26,7 @@ The widgets can be configured to load data from the following sources:
 :::tip Note
 Your ATSD instance must be publicly accessible on a DNS/IP address.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 * Log in to ATSD server via SSH.
 

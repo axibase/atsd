@@ -1,17 +1,15 @@
 # Editing Configuration Files
 
-The Configuration File Editor allows the editing of ATSD configuration
-files in the web interface. Only files that are located in the
+The configuration file editor is located on the **Settings > Configuration Files** page and allows the editing of configuration
+files in the web interface.
+
+<!-- markdownlint-enable MD032 -->
+:::warning
+Only files located in the
 `/opt/atsd/atsd/conf` directory can be edited.
+:::
+<!-- markdownlint-disable MD032 -->
 
-This is especially useful and convenient when editing `graphite.conf` to
-support new metrics that are being written in graphite format.
+Modifying files via the user interface is useful for files that are automatically reloaded, such as `logback.xml` to adjust [logging levels](./logging.md#applying-changes) or `graphite.conf` to customize command [mapping rules](../integration/graphite/graphite-format.md).
 
-The Configuration Files Editor can be found under the **Settings >
-Configuration Files**:
-
-![](./images/configuration_files_new.png "configuration_files")
-
-Configuration Files Editor:
-
-![](./images/configuration_files_editor_new.png "configuration_files_editor")
+![](./images/config-editor.png "configuration_files_editor")

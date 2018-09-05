@@ -597,7 +597,7 @@ GROUP BY PERIOD(2 WEEK)
 :::tip Note
 Empty periods and periods with a start date outside of the requested timespan are NOT included in the result set.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 As an alternative to a `CALENDAR` alignment, specify `START_TIME` as the second argument to the `PERIOD` function to align periods to the beginning of the timespan.
 

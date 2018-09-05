@@ -31,12 +31,12 @@ Example: 5-second window with variable sample count.
 The number of samples is not limited and varies over time from one to four. Such windows can become empty if no commands arrive within a certain period of time.
 
 <!-- markdownlint-enable MD032 -->
-:::tip End Time
-The **start time** of the window is initially set to **current time** minus the interval duration, and is constantly incremented as time passes. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window. Otherwise, the command is ignored.
+:::tip Window Boundaries
+The **start time** of the time-based window is initially set to **current time minus the interval duration**, and is constantly incremented as time passes. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window. Otherwise, the command is ignored.
 
-The **end time** in time-based windows is not bound. As such, the window accepts commands with future timestamps unless they are discarded with the [Time filter](filters.md#time-offset-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
+The **end time** in time-based windows is not bound. As such, the window accepts commands with future timestamps unless they are discarded with the [Time Offset filter](filters.md#time-offset-filter) or [filter expression](filters.md#filter-expression) such as `timestamp < now.millis + 60000`.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## Window Status
 

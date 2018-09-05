@@ -107,7 +107,7 @@ Configure this behavior with an interpolation function which fills a missing per
 :::tip Note
 Missing period values are interpolated from aggregate values of neighboring periods and not from raw values.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 #### Interpolation Fields
 

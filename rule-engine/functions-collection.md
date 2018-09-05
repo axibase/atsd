@@ -151,7 +151,7 @@ Returns the number of elements in the collection.
 :::tip Note
 The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Examples:
 
@@ -175,7 +175,7 @@ Returns `true` if the number of elements in the collection is zero.
 :::tip Data Types
 The function can be applied to a collection containing elements of any type (string, number) as well as maps such as `entity.tags`.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Example:
 

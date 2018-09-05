@@ -32,7 +32,7 @@ deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
 
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### Update Repositories
 

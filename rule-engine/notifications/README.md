@@ -94,7 +94,7 @@ Configure when to execute the webhook by enabling triggers for `Open`, `Repeat`,
 :::tip Multiple Endpoints
 The rule can be programmed to send notifications to multiple endpoints for the same event.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### Jitter Control
 

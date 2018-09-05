@@ -4,7 +4,7 @@ Database properties are displayed on the **Settings > Server Properties** page.
 
 ![](./images/settings-server-properties.png)
 
-Properties are grouped into multiple tables. Each parameter has a tooltip which describes the setting. Tooltips appear on mouseover.
+Properties are grouped into multiple section. Each property has a tooltip which describes the setting.
 
 ![](./images/tooltip.png)
 
@@ -24,11 +24,11 @@ To reset a property to the default value, leave the value blank and click **Save
 
 Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
 
-Modify server properties highlighted in grey in the `/opt/atsd/atsd/conf/server.properties` file. These modifications require a **database restart**.
+Disabled properties highlighted in grey or blue-grey must be modified in the `/opt/atsd/atsd/conf/server.properties` file. These modifications require a [database restart](./restarting.md).
 
 ![](./images/cannot-modify.png)
 
-These properties can be also be changed on the **Settings > Configuration Files** page by Administrator users, however a **database restart** is still required.
+The `server.properties` file can also be changed on the [**Settings > Configuration Files**](./editing-configuration-files.md) page by users with administrative permissions, however a [database restart](./restarting.md) is still required.
 
 ## Configuring Scheduled Tasks
 
@@ -61,7 +61,7 @@ Property | Default Value | Description
 `htable.executor.maxPoolSize` | `32` | Maximum number of worker threads performing HBase queries such as scans. This pool does not include series and properties write threads.
 `last.insert.cache.max.size` | `100000` | Maximum number of series records kept in the `Last Insert` cache. If the limit is reached by the cache, records older than ten minutes, based on received time, are removed. If the cache remains more than 75% full, messages older than one minute are removed.|
 `last.insert.write.period.seconds` | `15` | Interval at which updated series from the `Last Insert` cache are persisted to the database.
-**`messages.timeToLive`** | `31536000` | Number of seconds after which records are deleted from the `atsd_message` table. This TTL is based on the insertion time, not the record timestamp. The default is 365 days.|
+**`messages.timeToLive`** | `31536000` | Number of seconds after which records are deleted from the `atsd_message` table. The retention is based on the insertion time, not the record timestamp. The default is 365 days (`365*24*3600`).|
 `properties.batch.size` | `512` | Number of property records sent to HBase in each `PUT` command. |
 `properties.queue.limit` | `8192` | Maximum number of property records waiting in memory to be inserted into HBase. |
 `properties.queue.pool.size` | `4` | Maximum number of work threads sending property records into HBase. |

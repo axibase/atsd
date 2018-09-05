@@ -119,7 +119,7 @@ location /bot {
 :::tip Markdown
 Parse mode is set to [markdown](https://core.telegram.org/bots/api#markdown-style) by default.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## Reacting to Bot Messages
 

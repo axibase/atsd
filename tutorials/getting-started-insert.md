@@ -11,7 +11,7 @@
 
 ## Network Commands
 
-In the previous section you inserted data manually using the built-in web interface forms. Proceed by inserting data in network command format.
+In the previous section you inserted data manually using the web interface. Proceed by inserting data in network command format.
 
 [Network commands](../api/network/README.md) provide a compact [syntax](../api/network/README.md#syntax) to insert both time series data as well as metadata.
 
@@ -19,7 +19,7 @@ In the previous section you inserted data manually using the built-in web interf
 command_name field_prefix:[field_name=]field_value
 ```
 
-Open command prompt and send these commands into ATSD.
+Open the terminal and send these commands into ATSD.
 
 ```bash
 echo -e "series e:br-1905 m:temperature=25" \
@@ -35,17 +35,17 @@ Refresh the **Series Statistics** page and **Entity Editor** to verify that the 
 
 ![](./resources/network-entity-command.png)
 
-Insert and validate commands on **Data > Data Entry** for convenience.
+You can also insert the same network commands on the **Data > Data Entry** page for convenience.
 
 ![](./resources/network-commands-data.png)
 
 ## REST API
 
-Unlike network commands, the REST API has endpoints to both insert data as well as query data via JSON requests.
+While the network commands are optimized for writing data, the [REST API](../api/data/README.md) provides endpoints to both write and read data by sending HTTP requests in JSON format.
 
 ### Sending Values at a Specific Time
 
-Open command prompt and send a single value with a specific `datetime` into the [Series: Insert](../api/data/series/insert.md) endpoint. Replace `<username>` with your username.
+Open the terminal and send a single observation with a specific `datetime` into the [Series: Insert](../api/data/series/insert.md) endpoint. Replace `<username>` with your username.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \
@@ -55,21 +55,22 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
   --data '[{"entity": "br-1905", "metric": "temperature", "data": [{ "d": "2018-06-01T14:00:00Z", "v": 17.0 }]}]'
 ```
 
-The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. The array `data` can contain any number of `d:v` objects.
+The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. The array `data` can contain any number of samples.
 
 ```json
 [{
   "entity": "br-1905",
   "metric": "temperature",
   "data": [
-    { "d": "2018-06-01T14:00:00Z", "v": 17.0 }
+    { "d": "2018-06-01T14:00:00Z", "v": 17.0 },
+    { "d": "2018-06-01T14:05:00Z", "v": 17.5 }
   ]
 }]
 ```
 
 ### Sending Values at the Current Time
 
-Send a modified version, where the datetime is set to present time using the `date -u +"%Y-%m-%dT%H:%M:%SZ"` `bash` function.
+Send a modified version, where the datetime is set to present time using the `date -u +"%Y-%m-%dT%H:%M:%SZ"` command.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \

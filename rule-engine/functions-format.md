@@ -76,7 +76,7 @@ Examples:
 :::tip Unexpected Inputs
 If the `x` argument is a string or an object that cannot be parsed into a number, the function returns the original value `x`.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## `convert`
 
@@ -136,7 +136,7 @@ date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ",
 :::tip Related Functions
 View a corresponding date parsing function [`date_parse`](functions-date.md#date_parse)
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## `formatInterval`
 

@@ -57,7 +57,7 @@ Request to insert versioned value for a **non-versioned** metric causes a valida
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Example:
 
@@ -75,7 +75,7 @@ Add versioned samples by opening the form at **Data > Data Entry > Series** and 
 :::tip Note
 **Metric** field must reference an existing metric with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### CSV Parser using Default Tags
 
@@ -95,7 +95,7 @@ Request to insert versioned value for a **non-versioned** metric causes a valida
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### CSV Parser using Renamed Columns
 
@@ -110,7 +110,7 @@ Request to insert versioned value for a **non-versioned** metric causes a valida
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## View Versions
 

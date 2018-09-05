@@ -71,7 +71,7 @@ To access the `n`-th element in the list, use square brackets `[index]` or `get(
 :::tip Message Date
 That `date` field in the message object is `null`. The record time is stored in the `timestamp` field as Unix time in milliseconds.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## Matching Rules
 

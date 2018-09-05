@@ -142,7 +142,7 @@ Name | Description
 :::tip Related Functions
 See [value](#value) functions.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### Forecasts
 
@@ -275,7 +275,7 @@ Name | Description
 :::warning Scope
 [Statistical functions](functions-statistical.md) are not supported in the [filter expression](filters.md#filter-expression).
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Name | Description
 ---|---

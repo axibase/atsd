@@ -135,7 +135,7 @@ Returns `b` if `a` is either `null` or an empty string.
 :::tip Unexpected Inputs
 The function accepts arguments of any data type, such as objects and numbers.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Examples:
 

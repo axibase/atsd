@@ -29,7 +29,7 @@ now.is_workday()
 :::warning Warning
 The function raises an error if no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve this problem.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### SQL Queries
 

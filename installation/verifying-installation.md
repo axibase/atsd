@@ -28,7 +28,7 @@ Expand the **Portals** tab in the top menu of the ATSD web interface. Pre-define
 :::tip Note
 The **Data Tables** portal can be empty for a few minutes after start.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## Reboot Verification
 

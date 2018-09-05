@@ -120,7 +120,7 @@ The link name is set to **CSV Export** link in inline mode.
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## `getHtmlExportLink`
 
@@ -138,7 +138,7 @@ Displayed as **HTML Export** link in inline mode.
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ## `getChartLink`
 
@@ -156,7 +156,7 @@ Displayed as **Default** link in inline mode.
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Example:
 

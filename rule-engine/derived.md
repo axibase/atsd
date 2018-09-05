@@ -98,7 +98,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 :::warning `timestamp` Value
 If **Check on Exit** is turned on, some status change events are caused by oldest commands being removed from the window. In such cases the `timestamp` field contains the time of the existing command, rounded to seconds.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 To round the input time to seconds, use `s:` seconds parameter and [`floor`](functions.md#mathematical) function:
 

@@ -32,7 +32,7 @@ An array of query objects containing the following fields:
 :::tip Note
 `tags` filter is not supported.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 #### Entity Filter Fields
 

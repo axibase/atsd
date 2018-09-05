@@ -133,7 +133,7 @@ The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:m
 :::tip Warning
 The function raises an error if the time zone or offset from UTC is specified in the date string `date` and differs from the time zone or offset `zone`.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 **Example**:
 
@@ -216,7 +216,7 @@ The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:m
 :::tip Warning
 The function raises an error if the time zone (or offset from UTC) is specified in `date` and differs from the time zone (offset) `zone`.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 Access fields of the [`DateTime`](object-datetime.md#fields) object using dot notation:
 

@@ -86,7 +86,13 @@ To adjust tracing level, add a logging declaration containing the full class nam
 
 Logging properties can be modified in the `logback.xml` file located in the `/opt/atsd/atsd/conf` directory or using the **Settings > Configuration Files** editor.
 
-Database restart is **not** required. The changes are scanned and automatically applied every 60 seconds, as specified in the `scanPeriod` tag.
+<!-- markdownlint-enable MD032 -->
+:::tip
+Database restart is **not** required. The changes in `logback.xml` are automatically applied every 60 seconds, as specified in the `scanPeriod` tag.
+:::
+<!-- markdownlint-disable MD032 -->
+
+![](./images/config-editor.png "configuration_files_editor")
 
 ## Command Logging
 

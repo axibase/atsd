@@ -132,7 +132,7 @@ WHERE metric = 'mpstat.cpu_busy'
 :::tip Note
 The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### WHERE Clause
 
@@ -559,7 +559,7 @@ ORDER BY datetime
 :::tip Note
 `LIKE` operator is case-**sensitive**.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ```ls
 | datetime             | entity       | value | entity.groups                            |
@@ -2079,7 +2079,7 @@ The `ON` condition can be modified with the `USING entity` instruction in which 
 :::warning Note
 Self-joins (table is merged with itself) is not supported.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### JOIN Results
 
@@ -2289,7 +2289,7 @@ GROUP BY PERIOD(1 MINUTE), server
 :::tip Note
 Records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
 :::
-<!-- markdownlint-disable MD031 MD032 -->
+<!-- markdownlint-disable MD032 -->
 
 ### JOIN with `atsd_series` table
 
