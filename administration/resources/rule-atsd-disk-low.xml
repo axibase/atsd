@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><rules>
+<rule>
+<name>atsd_disk_low</name>
+<metric>disk_unallocatedspace</metric>
+<tagsGroupingStrategy>ALL_TAGS</tagsGroupingStrategy>
+<expression><![CDATA[disk_used_pct > 75]]></expression>
+<window>length(1)</window>
+<severity>WARNING</severity>
+<alertOpenMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity.displayName}	${tags}	${value}]]></alertOpenMessage>
+<alertMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity.displayName}	${tags}	${value}]]></alertMessage>
+<alertMessageAsOpen>true</alertMessageAsOpen>
+<alertCancellationMessage><![CDATA[${received_datetime}	${status}	${severity}	${rule}	${metric}	${entity.displayName}	${tags}	${value}]]></alertCancellationMessage>
+<alertCancellationMessageAsOpen>true</alertCancellationMessageAsOpen>
+<alertStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</alertStrategy>
+<userExpressions>
+<expression><![CDATA[db_last('disk_totalspace') AS disk_total]]></expression>
+<expression><![CDATA[disk_total - value AS disk_used]]></expression>
+<expression><![CDATA[100 * (disk_used / disk_total) AS disk_used_pct]]></expression>
+<expression><![CDATA[100 * (value / disk_total) AS disk_free_pct]]></expression>
+</userExpressions>
+<lastUpdated>1536156469184</lastUpdated>
+<enabled>true</enabled>
+<disableEntityGrouping>false</disableEntityGrouping>
+<leavingEvents>true</leavingEvents>
+<loadHistory>false</loadHistory>
+<scriptAsOpen>true</scriptAsOpen>
+<alertCancellationScriptAsOpen>true</alertCancellationScriptAsOpen>
+<logOutput>false</logOutput>
+<owner></owner>
+<description><![CDATA[Alert when disk_used above 75% of disk_totalspace]]></description>
+<actionStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</actionStrategy>
+<entityFilter>atsd</entityFilter>
+<timeFilter>
+<intervalCount>0</intervalCount>
+<intervalUnit>SECOND</intervalUnit>
+</timeFilter>
+<discardPreviousValues>true</discardPreviousValues>
+<emailNotification>
+<disabled>false</disabled>
+<rule-name>atsd_disk_low</rule-name>
+<repeat-interval>
+<type>INTERVAL</type>
+<intervalCount>6</intervalCount>
+<intervalUnit>HOUR</intervalUnit>
+</repeat-interval>
+<name>Email Notification id=806</name>
+<use-in-threshold-only>false</use-in-threshold-only>
+<first-details>false</first-details>
+<repeat-details>false</repeat-details>
+<cancel-details>false</cancel-details>
+<first-screenshot>false</first-screenshot>
+<repeat-screenshot>false</repeat-screenshot>
+<cancel-screenshot>false</cancel-screenshot>
+<repeat-as-open>true</repeat-as-open>
+<cancel-as-open>true</cancel-as-open>
+<recipients>user@example.org</recipients>
+<first-subject>[${status}] ${rule} for ${entity.displayName} ${tags}. Disk used is ${disk_used_pct}%. Disk free is ${formatBytes(value, false)}. ${alert_duration}</first-subject>
+<repeat-subject>[${status}] ${rule} for ${entity.displayName} ${tags}. Disk used is ${disk_used_pct}%. Disk free is ${formatBytes(value, false)}. ${alert_duration}</repeat-subject>
+<cancel-subject>[${status}] ${rule} for ${entity.displayName} ${tags}. Disk used is ${disk_used_pct}%. Disk free is ${formatBytes(value, false)}. ${alert_duration}</cancel-subject>
+<merge>false</merge>
+<priority>0</priority>
+<body-first>&lt;pre&gt;&#13;
+Disk Total: ${formatBytes(disk_total, false)}&#13;
+Disk Used: ${formatBytes(disk_used, false)}&#13;
+Disk Used, %: ${disk_used_pct}&#13;
+Disk Free, %: ${disk_free_pct}&#13;
+&lt;/pre&gt;&#13;
+&#13;
+Chart: ${chartLink}&#13;
+&lt;br&gt;&#13;
+Rule: ${ruleLink}</body-first>
+<body-repeat>&lt;pre&gt;&#13;
+Disk Total: ${formatBytes(disk_total, false)}&#13;
+Disk Used: ${formatBytes(disk_used, false)}&#13;
+Disk Used, %: ${disk_used_pct}&#13;
+Disk Free, %: ${disk_free_pct}&#13;
+&lt;/pre&gt;&#13;
+&#13;
+Chart: ${chartLink}&#13;
+&lt;br&gt;&#13;
+Rule: ${ruleLink}</body-repeat>
+<body-cancel>&lt;pre&gt;&#13;
+Disk Total: ${formatBytes(disk_total, false)}&#13;
+Disk Used: ${formatBytes(disk_used, false)}&#13;
+Disk Used, %: ${disk_used_pct}&#13;
+Disk Free, %: ${disk_free_pct}&#13;
+&lt;/pre&gt;&#13;
+&#13;
+Chart: ${chartLink}&#13;
+&lt;br&gt;&#13;
+Rule: ${ruleLink}</body-cancel>
+</emailNotification>
+<ruleTable/>
+<derivedCommandEnabled>false</derivedCommandEnabled>
+<derivedCommandStrategy>
+<type>ALL</type>
+<intervalCount>5</intervalCount>
+<intervalUnit>MINUTE</intervalUnit>
+</derivedCommandStrategy>
+<alertOpenMessageEnabled>false</alertOpenMessageEnabled>
+<alertMessageEnabled>false</alertMessageEnabled>
+<alertCancellationMessageEnabled>false</alertCancellationMessageEnabled>
+<alertOpenScriptEnabled>false</alertOpenScriptEnabled>
+<scriptEnabled>false</scriptEnabled>
+<alertCancellationScriptEnabled>false</alertCancellationScriptEnabled>
+</rule>
+</rules>

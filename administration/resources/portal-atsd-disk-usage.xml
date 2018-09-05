@@ -1,0 +1,117 @@
+<list>
+  <com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
+    <portalConfig>
+      <name>ATSD Disk Usage</name>
+      <enabled>true</enabled>
+      <showInMenu>true</showInMenu>
+      <displayIndex>0</displayIndex>
+      <content>[configuration]
+  offset-right = 0
+  height-units = 3
+  width-units = 5
+  entity = atsd
+  legend-position = top
+  timespan = 5 day
+  markers = false
+  label-format = metric:tagValue
+  pointer-position = hidden
+  rotate-ticks = 0
+  min-range = 0
+
+[group]
+  widgets-per-row = 3
+  width-units = 1.67
+  #timespan = 12 hour
+
+[widget]
+  type = chart
+  title = Data Tables
+  label-format = tags.table
+  format = megabytes
+
+  [series]
+    metric = table_size
+    [tags]
+      &quot;table&quot; = *
+      
+[widget]
+  type = chart
+  title = ATSD FS
+  format = byte
+  mode = stack
+  label-format = label
+  [series]
+    metric = disk_totalspace
+    alias = tot
+    display = false
+  [series]
+    value = value(&apos;tot&apos;) - value(&apos;usable&apos;)
+    label = Used
+    color = green        
+  [series]
+    metric = disk_unallocatedspace 
+    alias = usable
+    label = Free
+    color = silver  
+      
+[widget]
+  type = chart
+  title = ATSD /tmp
+  format = byte
+  mode = stack
+  label-format = label
+  [series]
+    metric = disk_tmp_totalspace
+    alias = tot
+    display = false
+  [series]
+    value = value(&apos;tot&apos;) - value(&apos;usable&apos;)
+    label = Used
+    color = green        
+  [series]
+    metric = disk_tmp_unallocatedspace 
+    alias = usable
+    label = Free
+    color = silver      
+
+[group]
+  widgets-per-row = 5    
+      
+[widget]
+  type = chart
+  title = Command Writes Per Second
+  label-format = javascript:keepBefore(metric,&apos;_&apos;)
+  statistics = median
+
+  [series]
+    metric = metric_writes_per_second
+  [series]
+    metric = message_writes_per_second
+  [series]
+    metric = property_writes_per_second
+      
+list metrics = jvm_open_file_descriptor_count,
+      index.directory_size, 
+      index.series_count,
+      entity.count,
+      last.entity.count,
+      metric.count,
+      last.metric.count,
+      last.series.count,
+      delete.tasks.count
+endlist
+      
+for m in metrics
+[widget]
+  type = chart
+  title = @{m}
+  [series]
+    metric = @{m}      
+endfor
+   </content>
+      <lastModified>2018-09-05 12:49:24.334 UTC</lastModified>
+      <guestAccess>false</guestAccess>
+    </portalConfig>
+    <groupsAssignedToPortal/>
+  </com.axibase.tsd.service.portal.PortalServiceImpl_-PortalConfigAndAssignedEntityGroups>
+</list>

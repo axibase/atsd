@@ -6,6 +6,8 @@ The metrics are updated at a regular interval and can be used to monitor
 the database state and the status of its individual components, such as the
 amount of data received, memory usage, and read/write throughput.
 
+Example: [Disk Space monitoring](data_retention.md#disk-space-monitoring)
+
 You can access the metrics using the following methods:
 
 * [JMX in JSON format](monitoring-metrics/json.md)
@@ -20,7 +22,7 @@ You can access the metrics using the following methods:
 
 ## Example
 
-Retrieving a full list of collected metrics in JSON:
+Retrieving the list of collected metrics in JSON format.
 
 ```elm
 https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
@@ -147,3 +149,9 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`property_reads_per_second` | Number of property records read. |
 |`property_received_per_second` | Number of `property` commands received.|
 |`property_writes_per_second` |Number of properties records written. |
+
+## Database Statistics
+
+The daily summary for all metrics collected by the database are displayed on the **Settings > Diagnostics > Database Statistics** page.
+
+![](./images/portal-database-statistics-1.png)

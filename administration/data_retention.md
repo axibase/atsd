@@ -34,7 +34,21 @@ The **Top Inserts** table is accessible on the **Settings > Receive Statistics**
 
 ![](./images/retention-top-inserts.png)
 
-You can refer to this view to identify series with the largest amount of data being inserted.
+Review these rankings to identify series with the largest amount of inserted data.
+
+## Disk Space Monitoring
+
+### Disk Usage Portal
+
+Import the [Disk Usage](./resources/portal-atsd-disk-usage.xml) portal on the **Portals > Configure > Import** page.
+
+![](./images/portal-disk-usage.png)
+
+### Disk Usage Alerting
+
+Import the [Disk Alert](./resources/rule-atsd-disk-low.xml) rule on the **Alerts > Rules > Import** page to receive an email notification when space usage exceeds 75%.
+
+![](./images/rule-disk-usage.png)
 
 ## Retention Settings
 
