@@ -647,11 +647,11 @@ fields, as opposed to tags because fields provide validation, dictionaries, and 
 Fix added to support the execution of queries with arithmetic expressions nearly as fast as queries without such expressions:
 
 ```sql
-select avg(value+0) from mpstat.cpu_busy
+SELECT avg(value+0) FROM mpstat.cpu_busy
 ```
 
 ```sql
-select avg(value) from mpstat.cpu_busy
+SELECT avg(value) FROM mpstat.cpu_busy
 ```
 
 ### Issue 3592

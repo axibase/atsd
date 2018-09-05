@@ -21,7 +21,7 @@ Pentaho Data Integration at `https://community.hitachivantara.com/community/prod
 To complete this exercise, sample data must be available in your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the **Commands** tab.
+2. Open **Metrics > Data Entry**, open the **Commands** tab.
 3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
@@ -138,7 +138,7 @@ Diagram example:
 
 ![](./resources/join_preview.png)
 
-To preview data right-click **step** icon and select **Preview > Quick Launch**
+To preview data right-click **step** and open **Preview > Quick Launch**
 
 ### Merge Tables
 

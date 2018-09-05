@@ -20,7 +20,7 @@ Upon initial access to the ATSD web interface, setup an administrator account.
 
 ## Portals
 
-Expand the **Portals** tab in the top menu of the ATSD web interface. Pre-defined **ATSD** portal displays application, operating system, and usage metrics for the database itself and the server where ATSD is running.
+Open the **Portals** tab in the top menu of the ATSD web interface. Pre-defined **ATSD** portal displays application, operating system, and usage metrics for the database itself and the server where ATSD is running.
 
 ![](./images/atsd_portal.png "ATSD Host")
 

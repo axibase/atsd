@@ -323,7 +323,7 @@ Successful user authentication requests are stored in the database and can be re
 
 ### Issue 3269
 
-Speed up SQL queries that select more than 1 row with descending `datetime` order.
+Speed up SQL queries that select more than one row with descending `datetime` order.
 
 ```sql
 SELECT *

@@ -4,7 +4,7 @@
 
 Entity views are customized tabular formats for displaying key attributes for entities of the same type, typically belonging to the same entity group.
 
-Enabled views are listed under the **Entity Views** tab in the main menu.
+Enabled views are listed on the **Entity Views** tab in the main menu.
 
 ![](./images/entity_views_5.png)
 

@@ -157,7 +157,7 @@ Add support for selecting all columns with an asterisk (`*`) symbol in inline vi
 ```sql
 SELECT TableauSQL.datetime AS datetime,
   TableauSQL.value AS value
-FROM ( select * from table_size ) TableauSQL
+FROM ( SELECT * FROM table_size ) TableauSQL
   LIMIT 10
 ```
 

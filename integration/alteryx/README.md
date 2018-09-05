@@ -62,8 +62,7 @@ jdbc:atsd://atsd_hostname:8443;missingMetric=error;tables=infla%
 
   ![](./images/odbc_quotes.png)
 
-* Select the name you specified for DSN during bridge configuration from the **Data
-  Source Name** list and click **OK**.
+* Select the name specified for DSN during bridge configuration from the **Data Source Name** list, click **OK**.
 
   ![](./images/dsn_list.png)
 
@@ -76,7 +75,7 @@ After creating a connection, open the **Choose Table or Specify Query** dialog.
 This allows you build a query by choosing a table or entering query
 text manually.
 
-* Table names visible in the **Tables** tab satisfy the `tables` pattern
+* Table names visible on the **Tables** tab satisfy the `tables` pattern
   specified in the DSN URL. Click **Refresh** to reload the list, if
   necessary.
 

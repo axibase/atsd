@@ -4,7 +4,7 @@
 
 **SQL Console** is a web-based interface to submit [SQL queries](../sql/README.md) to the database and display the results. The results can be exported into CSV, JSON, and Excel files or [reinserted](#store) as a derived series in ad-hoc and continuous modes.
 
-**SQL Console** is located at **SQL > Console**.
+**SQL Console** is located on **SQL > Console**.
 
 The page has three components:
 

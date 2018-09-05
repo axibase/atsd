@@ -11,7 +11,7 @@
 5256 | security | Bug | Security Incidents page not displaying the latest incidents.
 5254 | api-rest | Bug | Return errors in JSON format in [webhook](../../api/data/messages/webhook.md) method.
 5253 | security | Bug | Fix credentials error in newly created [webhook](../../administration/user-authorization.md#webhook-user).
-5252 | security | Feature | `Path` column added to table at **Settings** > **Diagnostics** > **Security Incidents** page.
+5252 | security | Feature | `Path` column added to table on **Settings** > **Diagnostics** > **Security Incidents** page.
 5250 | rule engine | Bug | Some errors not displayed in the rule engine.
 5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration not cloned.
 5247 | rule engine | Bug | Validation error when trying to rename cloned [webhook](../../rule-engine/notifications/README.md) configuration.

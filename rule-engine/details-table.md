@@ -33,7 +33,7 @@ detailsTable(string format)
 
 ## Examples
 
-The examples below are written to a log file via the **Logging** tab and maintain the original numeric precision.
+The examples below are written to a log file on the **Logging** tab and maintain the original numeric precision.
 
 ### `ascii`
 

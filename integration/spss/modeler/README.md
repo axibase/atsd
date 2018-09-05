@@ -28,7 +28,7 @@ these commands on the **Metrics > Data Entry** page.
 
 * Create a new stream. A stream is a configuration that records the steps to load and analyze the data in the SPSS Modeler.
 
-* Select the **Sources** tab from the bottom panel and choose **Database**
+* Open the **Sources** tab from the bottom panel and choose **Database**
 
   ![](./images/modeler_1.png)
 
@@ -72,7 +72,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_11.png)
 
-* Click **Filter** tab and click arrows in the Filter column to disable the `time`, `text` and `metric` columns.
+* Open the **Filter** tab and click the arrows in the Filter column to disable the `time`, `text` and `metric` columns.
 
   ![](./images/modeler_12.png)
 
@@ -90,7 +90,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Join Tables
 
-* Select the **Record Ops** tab in the bottom panel, choose the **Merge** node and add it to the stream
+* Open the **Record Ops** tab in the bottom panel, choose the **Merge** node and add it to the stream
 
   ![](./images/modeler_16.png)
 
@@ -126,7 +126,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Calculate Weighted Price
 
-* Select the **Field Ops** tab in the bottom panel, choose the **Derive** shape and add it to the stream.
+* Open the **Field Ops** tab in the bottom panel, choose the **Derive** shape and add it to the stream.
 
   ![](./images/modeler_24.png)
 
@@ -149,7 +149,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Calculate Weighted Inflation per Year
 
-* Select the **Record Ops** tab, choose the **Aggregate** shape and add it to the stream.
+* Open the **Record Ops** tab, choose the **Aggregate** shape and add it to the stream.
 
   ![](./images/modeler_28.png)
 
@@ -179,7 +179,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Add Entity Field
 
-* Select the **Field Ops** tab, choose the **Derive** shape and add it to the stream
+* Open the **Field Ops** tab, choose the **Derive** shape and add it to the stream
 
   ![](./images/modeler_34.png)
 
@@ -187,7 +187,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_35.png)
 
-* Right-click the **Derive** shape and select **Edit...**
+* Right-click the **Derive** shape and click **Edit...**
   * Set the **Derive field** to **entity**
   * Set field type to **Categorical**
   * Add formula **"bls.gov"**
@@ -202,7 +202,7 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Export Results
 
-* Select the **Export** tab, choose the **Database** shape and add it to the stream
+* Open the **Export** tab, choose the **Database** shape and add it to the stream
 
   ![](./images/modeler_38.png)
 
