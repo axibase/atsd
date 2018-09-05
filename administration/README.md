@@ -31,7 +31,7 @@
 * [Enable Swap](./swap-space.md)
 * [Setup Replication](./replication.md)
 * [Change Data Directory](./change-data-directory.md)
-* [Configuration Files](./editing-configuration-files.md)
+* [Configuration Files](./configuration-files.md)
 * [Logging](./logging.md#logging)
 * [Metric Persistence Filter](./metric-persistence-filter.md)
 * [Compaction](./compaction.md)

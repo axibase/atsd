@@ -28,7 +28,7 @@ Disabled properties highlighted in grey or blue-grey must be modified in the `/o
 
 ![](./images/cannot-modify.png)
 
-The `server.properties` file can also be changed on the [**Settings > Configuration Files**](./editing-configuration-files.md) page by users with administrative permissions, however a [database restart](./restarting.md) is still required.
+The `server.properties` file can also be changed on the [**Settings > Configuration Files**](./configuration-files.md) page by users with administrative permissions, however a [database restart](./restarting.md) is still required.
 
 ## Configuring Scheduled Tasks
 

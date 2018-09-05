@@ -279,13 +279,14 @@ const administrationMenu = [
     ['restarting.md', 'Restarting'],
     ['update.md', 'Updating'],
     ['logging.md', 'Logging'],
+    ['server-properties.md', 'Server Properties'],
     {
         title: "Configuration", children: [
+            ['configuration-files.md', 'Configuration Files'],
             ['mail-client.md', 'Mail Client'],
             ['timezone.md', 'Time Zone'],
             ['memory-allocation.md', 'Memory Allocation'],
             ['swap-space.md', 'Swap Space'],
-            ['editing-configuration-files.md', 'Configuration Files'],
             ['networking-settings.md', 'Network Settings'], 
             ['change-base-directory.md', 'Custom Base Directory'],
             ['change-data-directory.md', 'Custom Data Directory'],

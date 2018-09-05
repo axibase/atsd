@@ -113,7 +113,7 @@
 * [Directory Owner](administration/change-owner.md)
 * [Compaction Test](administration/compaction-test.md)
 * [Compaction](administration/compaction.md)
-* [Configuration Files](administration/editing-configuration-files.md)
+* [Configuration Files](administration/configuration-files.md)
 * [Network Settings](administration/networking-settings.md)
 * [Logging](administration/logging.md)
 * [Metric Persistence Filter](administration/metric-persistence-filter.md)

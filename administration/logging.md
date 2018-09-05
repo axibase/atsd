@@ -84,7 +84,7 @@ To adjust tracing level, add a logging declaration containing the full class nam
 
 ## Applying Changes
 
-Logging properties can be modified in the `logback.xml` file located in the `/opt/atsd/atsd/conf` directory or using the [**Settings > Configuration Files**](./editing-configuration-files.md) editor.
+Logging properties can be modified in the `logback.xml` file located in the `/opt/atsd/atsd/conf` directory or using the [**Settings > Configuration Files**](./configuration-files.md) editor.
 
 <!-- markdownlint-enable MD032 -->
 :::tip

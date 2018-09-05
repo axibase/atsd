@@ -24,7 +24,7 @@
 | 3963 | client | Bug | Replace `last` with `cache` parameter in series query method within the Java API client. |
 | 4005 | sql | Bug | Fix ArrayIndexOutOfBoundsException error in external serializer. |
 | 4008 | sql | Feature | Implement a custom serializer for external sorting. |
-| 3924 | UI | Feature | Add syntax highlighting to configuration files in the [Configuration Files Editor](../../administration/editing-configuration-files.md). |
+| 3924 | UI | Feature | Add syntax highlighting to configuration files in the [Configuration Files Editor](../../administration/configuration-files.md). |
 | 3852 | sql | Feature | Add support for [column alias](../../sql/examples/alias-column.md) for columns created with [`CASE`](../../sql/README.md#case-expression) expression. |
 | 4034 | sql | Bug | Incorrect filtering of rows with multiple [`LIKE` expressions](../../sql/README.md#like-expression) combined with OR operator. |
 | 4030 | sql | Bug | Add support for metric [`LIKE` expression](../../sql/README.md#like-expression) in `FROM atsd_series` queries. |

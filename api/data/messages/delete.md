@@ -8,9 +8,9 @@ The ability to delete specific message records via the Data API is not implement
 
 The messages are deleted from the database by background tasks once their **insertion time** is older than current time minus the time-to-live (TTL) interval.
 
-The TTL interval (or retention interval) is displayed on the [**Settings > Server Properties**](../../../administration/server-properties.md) page, under the `messages.timeToLive` setting. The setting is specified in **seconds**.
+The retention interval is set with the `messages.timeToLive` setting on the [**Settings > Server Properties**](../../../administration/server-properties.md) page. The setting is specified in **seconds**. The default interval is `31536000` (`365 * 24 * 3600` = 1 year).
 
-The message expires based on its **insertion** time (time when the database received the message), and not based on the message **record** time.
+Messages expire based on the **insertion** time (time when the database received the message), as opposed to the message **record** time.
 
 ## Modify Retention
 
