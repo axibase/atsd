@@ -2,7 +2,7 @@
 
 ATSD provides scripts to control database services.
 
-Use these scripts to stop, start, and update the database.
+Use these scripts to stop and start the database.
 
 ## Permissions
 
@@ -16,22 +16,18 @@ su axibase
 
 The scripts are located in the `/opt/atsd/bin` directory.
 
-| **Name** | **Description** | **Arguments** | **Example** |
-|---|:---|---|---|
-| `/opt/atsd/bin/atsd-all.sh` | Start, stop, and get status of all services. | start, stop, status  |
-| `/opt/atsd/bin/atsd-tsd.sh` | Start, stop, and get status of ATSD. | start, stop, status |
-| `/opt/atsd/bin/atsd-hbase.sh` | Start, stop, and get status of HBase. | start, stop, status  |
-| `/opt/atsd/bin/atsd-dfs.sh` | Start, stop, and get status of HDFS. | start, stop, status  |
-| `/opt/atsd/bin/update.sh` | [Update ATSD](update.md) in interactive mode.<br>`-t` Upgrade and restart ATSD.<br>`-a` Upgrade and restart ATSD, HBase, and HDFS.| -a, -t  |
+| **Name** | **Description** | **Arguments** |
+|---|:---|---|
+| `/opt/atsd/bin/atsd-all.sh` | Start, stop, and check status of **all** services. | start, stop, status |
+| `/opt/atsd/bin/atsd-tsd.sh` | Start, stop, and check status of ATSD. | start, stop, status |
+| `/opt/atsd/bin/atsd-hbase.sh` | Start, stop, and check status of HBase. | start, stop, status  |
+| `/opt/atsd/bin/atsd-dfs.sh` | Start, stop, and check status of HDFS. | start, stop, status  |
+| `/opt/atsd/bin/update.sh` | [Update ATSD](update.md) in interactive mode.<br>`-t` Upgrade and restart ATSD.<br>`-a` Upgrade and restart ATSD, HBase, and HDFS.| `-a`, `-t` |
 
 Examples
 
 ```sh
 /opt/atsd/bin/atsd-tsd.sh status
-```
-
-```sh
-/opt/atsd/bin/update.sh
 ```
 
 ## Processes
@@ -63,17 +59,27 @@ Run the `jps` utility to display Java processes running under the current user.
 | HBase | HMaster |
 | ATSD | Server |
 
-> HBase installed in the ATSD Docker container is configured to run in non-distributed mode without `HRegionServer` and `HQuorumPeer` processes.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+ATSD is configured to run without `HRegionServer` and `HQuorumPeer` processes in Docker containers.
+:::
+<!-- markdownlint-disable MD032 -->
 
 ## Restarting All Services
 
-The script stops ATSD, HBase, and HDFS.
+Stop all components: ATSD, HBase, and HDFS.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-The script starts HDFS, HBase, and ATSD.
+Check that there is sufficient disk space.
+
+```sh
+df -h
+```
+
+Start all components: HDFS, HBase, and ATSD.
 
 ```sh
 /opt/atsd/bin/atsd-all.sh start
@@ -81,7 +87,7 @@ The script starts HDFS, HBase, and ATSD.
 
 ### Docker Container
 
-To restart and update an ATSD instance running in a Docker container, open a `bash` session.
+To restart or update an ATSD instance running in a Docker container, open a `bash` session.
 
 ```elm
 docker exec -it atsd bash
@@ -90,8 +96,18 @@ docker exec -it atsd bash
 Execute scripts as usual.
 
 ```sh
+/opt/atsd/bin/atsd-all.sh status
+```
+
+```sh
 /opt/atsd/bin/update.sh
 ```
+
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+ATSD is configured to run without `HRegionServer` and `HQuorumPeer` processes in Docker containers.
+:::
+<!-- markdownlint-disable MD032 -->
 
 ## Stopping Services
 
@@ -134,7 +150,7 @@ The `jps` output displays only HDFS processes at this stage.
 25587 NameNode
 ```
 
-Stop remaining HBase processes if any of the them are still running.
+Stop remaining HBase processes if any of them are still running.
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh stop regionserver
@@ -156,7 +172,19 @@ kill 11345
 
 ## Starting Services
 
-Run `jps` to check which processes are running.
+### Check System
+
+Check that no ATSD processes are running.
+
+```sh
+jps
+```
+
+Check that there is sufficient disk space.
+
+```sh
+df -h
+```
 
 ### Start HDFS
 
@@ -237,7 +265,7 @@ If `jps` output is incomplete, the `atsd-all.sh` script stops the startup proced
 nurswgvml007 atsdService: * [ATSD] DataNode is not running.
 ```
 
-* Solution: Stop all ATSD services. Remove the `/tmp/hsperfdata_axibase` directory.
+* Solution: Stop all ATSD services. Delete the `/tmp/hsperfdata_axibase` directory.
 
 #### Temporary Files
 
