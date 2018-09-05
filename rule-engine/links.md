@@ -29,7 +29,7 @@ The URLs are automatically [inlined](#inline-links) in email notifications and i
 ${serverLink}
 ```
 
-Link to the ATSD server specified in `server.url` property on the **Settings > Server Properties > Other** page.
+Link to the ATSD server specified in `server.url` property on the [**Settings > Server Properties**](../administration/server-properties.md) page.
 
 Example:
 

@@ -20,7 +20,7 @@ Section `1` is **required**. Skip sections `2` - `8` if not applicable.
 
 ## 1. Database Information
 
-Open **Settings > Server Properties** page.
+Open [**Settings > Server Properties**](./server-properties.md) page.
 
 Click **Export Configuration**.
 

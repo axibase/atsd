@@ -8,7 +8,7 @@ Execute the below steps as `root` or a user with `sudo` privileges.
 
 ## Identify Custom Directories
 
-Log in to ATSD and open the **Settings > Server Properties** page.
+Log in to ATSD and open the [**Settings > Server Properties**](./server-properties.md) page.
 
 Review the following properties and identify files and directories located outside of the base directory `/opt/atsd`.
 

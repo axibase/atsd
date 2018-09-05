@@ -1,6 +1,6 @@
-# Database Properties
+# Server Properties
 
-Database properties are displayed on the **Settings > Server Properties** page.
+Server properties are displayed on the **Settings > Server Properties** page.
 
 ![](./images/settings-server-properties.png)
 

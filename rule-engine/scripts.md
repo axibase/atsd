@@ -164,7 +164,7 @@ Only **one** script can be executed for each trigger. If you need to execute mul
 
 ### Timeout
 
-The script must complete within the specified timeout. The default timeout is set with the `system.commands.timeout.seconds` property on the **Settings > Server Properties** page. The limit is **15 seconds** by default.
+The script must complete within the specified timeout. The default timeout is set with the `system.commands.timeout.seconds` property on the [**Settings > Server Properties**](../administration/server-properties.md) page. The limit is **15 seconds** by default.
 
 To customize the timeout for scripts invoked by this rule, adjust the **Timeout, seconds** drop-down list on the **Scripts** tab. The limit applies to all scripts launched by the rule: the named scripts and scripts executed with the [`scriptOut`](functions-script.md) function.
 
@@ -184,7 +184,7 @@ Scripts are executed under the `axibase` user context.
 
 Ensure that the `axibase` user has permissions to execute the script and that the script has the `+x` execution bit.
 
-To disable script execution in the rule engine, set `system.commands.enabled` property to `No` on the **Settings > Server Properties** page.
+To disable script execution in the rule engine, set `system.commands.enabled` property to `No` on the [**Settings > Server Properties**](../administration/server-properties.md) page.
 
 ### Logging
 

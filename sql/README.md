@@ -3245,7 +3245,7 @@ ORDER BY entity, tags.file_system, datetime
 
 If `{n}` is zero or negative, the results are processed using the local file system.
 
-This clause overrides the conditional allocation of shared memory established with the **Settings > Server Properties**:`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
+This clause overrides the conditional allocation of shared memory established with the [**Settings > Server Properties**](../administration/server-properties.md):`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
 
 The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 

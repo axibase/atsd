@@ -4,19 +4,41 @@
 
 The ability to delete specific message records via the Data API is not implemented.
 
-## TTL
+## Message Retention
 
-The messages are deleted from the database by background tasks once their insertion time is older than current time minus the time-to-live (TTL) interval.
+The messages are deleted from the database by background tasks once their **insertion time** is older than current time minus the time-to-live (TTL) interval.
 
-The TTL is displayed on the **Settings > Server Properties** page, under the `messages.timeToLive` setting. The setting is specified in seconds.
+The TTL interval (or retention interval) is displayed on the [**Settings > Server Properties**](../../../administration/server-properties.md) page, under the `messages.timeToLive` setting. The setting is specified in **seconds**.
 
-The message expiration time is calculated based on its **insertion** time, and not based on its **record** time.
+The message expires based on its **insertion** time (time when the database received the message), and not based on the message **record** time.
 
-## Modifying the Default TTL
+## Modify Retention
 
-Convert the TTL to seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
+Open the terminal on the ATSD server.
 
-Log in to the ATSD server.
+Open `/opt/atsd/atsd/conf/server.properties` file.
+
+Calculate the desired retention interval in seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
+
+Set `messages.timeToLive` setting to the desired value.
+
+```elm
+messages.timeToLive = 1209600
+```
+
+To avoid the restart, modify HBase settings as described below.
+
+Alternatively, [restart](../../../administration/restarting.md) the ATSD process. Restarting HBase and HDFS is not necessary.
+
+```sh
+/opt/atsd/bin/atsd-tsd.sh stop
+```
+
+```sh
+/opt/atsd/bin/atsd-tsd.sh start
+```
+
+### Modify HBase Settings
 
 Modify the `TTL` attribute of the `atsd_message` table in HBase by executing the below commands.
 

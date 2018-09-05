@@ -25,7 +25,7 @@ Retrieves a list of entities matching the specified filters.
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `tags` |string|Comma-separated list of entity tag names to include in the response, for example: `app,OS,location`.<br>Specify `*` wildcard to include all entity tags.<br>Use wildcard as part of name pattern, for example `loc*`, to include matching entity tags.<br>Default: no tags are included.|
-| `addInsertTime` | boolean| Include calculated field [`lastInsertDate`](#fields), which requires additional processing, in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
+| `addInsertTime` | boolean| Include calculated field [`lastInsertDate`](#fields), which requires additional processing, in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the [**Settings > Server Properties**](../../../administration/server-properties.md) page which is set to `true` by default.|
 | `limit` |integer|Maximum number of entities to retrieve, ordered by name. Default: `0` (unlimited).|
 
 #### Expression

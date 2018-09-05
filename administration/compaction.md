@@ -40,4 +40,4 @@ A change in codec requires an ATSD restart.
 
 The compression can be also enabled for the raw column family using the `hbase.compression.type.raw` setting.
 
-To verify that the codec is set correctly, review the settings on the **Settings > Server Properties** page.
+To verify that the codec is set correctly, review the settings on the [**Settings > Server Properties**](./server-properties.md) page.

@@ -173,7 +173,7 @@ valid command   - possibly stored if present in buffer
 ...
 ```
 
-The above behavior can be modified by changing the `input.disconnect.on.error` setting to `No` on the **Settings > Server Properties** page.
+The above behavior can be modified by changing the `input.disconnect.on.error` setting to `No` on the [**Settings > Server Properties**](../../administration/server-properties.md) page.
 
 This causes the database to maintain a client connection even if one of the received commands is malformed or unknown.
 

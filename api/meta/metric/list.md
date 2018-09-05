@@ -20,7 +20,7 @@ Retrieves a list of metrics matching the specified filters.
 | `limit` |integer|Maximum number of metrics to retrieve, ordered by name.<br>Default: `0`, unlimited.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response.<br>Use wildcard as part of name pattern, for example `cpu_*`, to include matching metric tags.<br>Default: no tags are included.|
-| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the **Settings > Server Properties** page which is set to `true` by default.|
+| `addInsertTime` | boolean| Controls whether [`lastInsertDate`](#fields) field is included in the response.<br>The default value is inherited from the `default.addInsertTime` setting on the [**Settings > Server Properties**](../../../administration/server-properties.md) page which is set to `true` by default.|
 
 #### Expression
 
