@@ -32,7 +32,7 @@
 | [3325](#issue-3325)     | sql             | Bug             | Allowed for columns other than `value` and `*` in the `COUNT` function.
 | 3698 | administrator       | Support     | Increased the default maximum Java heap value from 512 MB to 1 GB. This change is required to accommodate increased requirements for in-memory processing by the SQL engine. |
 | [3690](#issue-3690) | security    | Feature | Modified how role/membership/permission changes are applied. When changes are made to a user account, current active sessions are now automatically invalidated. The user cannot continue using sessions with previously cached `ACLs`. |
-| [3688](#issue-3688) | sql         | Feature     | Added support for `GROUP BY value` to calculate unique occurrences of the `value` over the specified timespan. This is useful for metrics that measure discrete characteristics, such as status codes, error codes, digital states etc. |
+| [3688](#issue-3688) | sql         | Feature     | Added support for `GROUP BY value` to calculate unique occurrences of the `value` over the specified timespan. This is helpful for metrics that measure discrete characteristics, such as status codes, error codes, digital states etc. |
 | 3679 | email       | Feature     | Cleaned up the email notification template to hide irrelevant statistics if the sample in the window is less than 1. |
 | 3678 | UI          | Bug     | Placed the Name and Label fields on separate lines in the metric and entity forms to account for long names. |
 | [3675](#issue-3675) | sql         | Feature     | Added the capability to replace numeric [`NaN`](../../sql/README.md#null) with another integer with the `ISNULL` function.|
@@ -410,7 +410,7 @@ Recently added to the [`docker`](https://axibase.com/docs/axibase-collector/jobs
 
 ![Figure 1](./Images/Figure16.png)
 
-This capability is useful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
+This capability is helpful to purge ATSD of containers that no longer exist in Docker, for instance containers that existed only for a few minutes during image build stage, or containers
 that executed short-term tasks before being removed with the `docker rm` command. Containers with a `deleted` status are initially retained in ATSD for the specified time interval (for
 example 50 days in the above image). The status of these containers is marked as `deleted`, as shown in the image below.
 

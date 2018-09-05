@@ -10,6 +10,6 @@ Only files located in the
 :::
 <!-- markdownlint-disable MD032 -->
 
-Modifying files via the user interface is useful for files that are automatically reloaded, such as `logback.xml` to adjust [logging levels](./logging.md#applying-changes) or `graphite.conf` to customize command [mapping rules](../integration/graphite/graphite-format.md).
+Modifying files via the user interface is helpful for files that are automatically reloaded, such as `logback.xml` to adjust [logging levels](./logging.md#applying-changes) or `graphite.conf` to customize command [mapping rules](../integration/graphite/graphite-format.md).
 
 ![](./images/config-editor.png "configuration_files_editor")
