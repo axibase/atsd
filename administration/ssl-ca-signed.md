@@ -8,6 +8,8 @@ The following instructions assume that you have obtained certificate files in `P
 * `atsd.company.com.ca-bundle`: Intermediate and `root` CA SSL certificates
 * `atsd.company.com.key`: Private key file
 
+To automate the SSL certificate renewal, consider deploying [Let's Encrypt](ssl-lets-encrypt.md) certificates.
+
 ## Combine Chained Certificates
 
 Combine the SSL certificates into one file to create a full certificate chain containing both the DNS and intermediate certificates.
