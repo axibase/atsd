@@ -221,6 +221,16 @@ If **Series Retention Days** is set to **1 year** in the example below, the data
 
 The data is deleted by a [background task](#scheduled-tasks) which is executed once a day during off-peak hours.
 
+## Delete Entities
+
+Utilize [ATSD Python client](https://github.com/axibase/atsd-api-python#data-removal-and-cleanup) to delete entities matching specific conditions.
+
+For example, run the [`entities_expression_delete.py`](https://github.com/axibase/atsd-api-python/blob/master/examples/entities_expression_delete.py) script to delete entities which are not collecting any data.
+
+```sh
+python3 entities_expression_delete.py
+```
+
 ## Scheduled Tasks
 
 The expired data is deleted from the database on a schedule which is synchronized with other data management tasks.
@@ -319,7 +329,7 @@ Note that series and properties removed with these methods are masked with [Dele
 
 ## Deleting with API Clients
 
-* Refer to Python client [examples](https://github.com/axibase/atsd-api-python#record-cleanup)
+Refer to ATSD Python client [record cleanup examples](https://github.com/axibase/atsd-api-python#data-removal-and-cleanup).
 
 ## Summarizing Expiring Data
 

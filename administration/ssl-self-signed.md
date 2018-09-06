@@ -13,7 +13,7 @@ There are two options to create and import self-signed certificates into ATSD:
 * [Web Interface](#web-interface)
 * [Endpoint Request](#endpoint-request)
 
-The certificates are installed without an ATSD restart.
+The certificates are installed without restarting the database.
 
 ### Web Interface
 

@@ -46,7 +46,7 @@ Export the current properties, as well as operating system settings and metrics,
 
 ## Property Reference
 
-**Bold** property names can only be modified in the `server.properties` file by a qualified user and require a database restart.
+**Bold** property names can only be modified in the `server.properties` file by a qualified user and require a [database restart](./restarting.md).
 
 ### HBase
 

@@ -35,7 +35,7 @@ sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
   -w "\n%{http_code}\n"
 ```
 
-The certificates are installed and activated **without** an ATSD restart.
+The certificates are installed and activated **without** restarting the database.
 
 ### Deploy Keystore File
 

@@ -48,7 +48,7 @@ WHERE time >= current_year
 
 By default, the database contains pre-defined 2018 workday calendars for several countries.
 
-Calendars can be modified and maintained by appending dates for prior and future years without database restart.
+Calendars can be modified and maintained by appending dates for prior and future years without [restarting the database](../administration/restarting.md).
 
 Once installed, the calendars are **not** updated as part of the database update process. To install new calendars, download them from the table below and [import](#importing-calendar) the files into your ATSD instance.
 

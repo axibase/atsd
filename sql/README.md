@@ -90,7 +90,11 @@ The statement can end with a semi-colon character.
 
 ### SELECT Expression
 
-The SELECT expression consists of one or multiple columns and expressions applied to the query results.
+The `SELECT` expression contains one or multiple columns and expressions applied to the query results.
+
+```sql
+SELECT column1, UPPER(column2), 100 * column3
+```
 
 ### Query
 
