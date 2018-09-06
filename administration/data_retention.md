@@ -28,13 +28,21 @@ To view daily changes in tabular format, open the ATSD portal in the top menu. T
 
 ## Space Usage Breakdown
 
-While the breakdown of space usage within the `atsd_d` is not available, the database provides a top-N view consisting of most frequently collected series.
+While the breakdown of space usage within data tables is not available, the database maintains top-N rankings consisting of most frequently collected series and messages.
 
-The **Top Inserts** table is accessible on the **Settings > Receive Statistics** page.
+Review these rankings to identify the sources with the largest amount of inserted data.
 
-![](./images/retention-top-inserts.png)
+### Top Metrics
 
-Review these rankings to identify series with the largest amount of inserted data.
+The **Top Inserts** table for series is accessible on the **Settings > Receive Statistics > Series** page.
+
+![](./images/receive_statistics_series.png)
+
+### Top Message Types
+
+The **Top Inserts** table for messages is accessible on the **Settings > Receive Statistics > Series** page.
+
+![](./images/receive_statistics_messages.png)
 
 ## Disk Space Monitoring
 
