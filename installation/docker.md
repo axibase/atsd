@@ -74,6 +74,7 @@ Web interface is now accessible on port `8443` (HTTPS).
 |`JAVA_OPTS` | No | Additional arguments passed to ATSD JVM process. |
 |`HADOOP_OPTS` | No | Additional arguments passed to Hadoop/HDFS JVM processes. |
 |`HBASE_OPTS` | No | Additional arguments passed to HBase JVM processes. |
+|`HDFS_FORMAT`| No | If `true`, command `hdfs namenode -format` is executed during startup. Required when volumes mounting is used for data directories. Directories, mounted to `/opt/atsd/hdfs-data-name`, `/opt/atsd/hdfs-data` and `/opt/atsd/hdfs-cache`, must be empty. |
 
 View additional launch examples [here](#start-container).
 
