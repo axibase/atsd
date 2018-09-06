@@ -1,14 +1,32 @@
 # Condition
 
-A condition is a boolean expression which is evaluated when data is received by or removed from the window. For example, the condition `value > 50` returns `true` if the last received value exceeds 50.
+A condition is a boolean expression which is evaluated when data is received by or removed from the window.
+
+For example, the following condition returns `true` if the last received value exceeds `50`.
+
+```javascript
+value > 50
+```
 
 The condition consists of one or multiple boolean checks combined with [boolean operators](operators.md#boolean-operators) `AND` (`&&`), `OR` (`||`), and `NOT` (`!`).
 
-The expression can include command fields, literal values, window/entity/metric fields, user-defined variables and [functions](functions.md).
+The expression can include command fields, window/entity/metric fields, user-defined variables, literal values, and [functions](functions.md).
 
-When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of **On Open** triggers. Once the condition becomes `false`, the window resets back to the `CANCEL` status executing a corresponding set of `On Cancel` triggers.
+<!-- markdownlint-enable MD032 -->
+:::warning Note
+[`Override`](overrides.md) rules take precedence over the condition.
+:::
+<!-- markdownlint-disable MD032 -->
 
-[`Overrides`](overrides.md) take precedence over the condition.
+## Status
+
+When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of **On Open** triggers.
+
+Once the condition becomes `false`, the window reverts to the `CANCEL` status executing a corresponding set of `On Cancel` triggers.
+
+## Check On Exit
+
+By default the condition is checked when new commands are added to the window. If the **Check on Exit** option is turned on for a [time-based](window.md#time-based-windows) window, the condition is additionally re-evaluated when the expired samples are removed from the window.
 
 ## Fields
 
@@ -127,10 +145,13 @@ value > 90 AND db_last('io_nodes_used_precent') < 80
 avg() > 90 AND db_statistic('avg', '15 minute', 'io_nodes_used_precent') < 80
 ```
 
-### Schedule-based (Time condition)
+### Calendar Checks
 
-The condition is `true` if the average exceeds `90` at any time or if the average exceeds `50` during the working hours (between `08:00:00` and `17:59:59`).
+The condition returns `true` if the average exceeds `90` at any time or if the average exceeds `50` during the working hours (between `08:00:00` and `17:59:59` on working days). The expression relies on the [`now`](window-fields.md#date-fields) object for calendar checks.
 
 ```javascript
-avg() > 90 || avg() > 50 && now.hourOfDay BETWEEN 8 AND 17
+avg() > 90 ||
+avg() > 50
+  && now.hourOfDay BETWEEN 8 AND 17
+  && now.is_workday()
 ```

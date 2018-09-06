@@ -116,7 +116,7 @@ tags['mount-point'] NOT LIKE '*u113452*'
 
 ## Time Offset Filter
 
-If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter can be used to ignore delayed and out-of-order data.
+If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter can be used to ignore delayed and future data.
 
 ![](./images/filter-time.png)
 
@@ -124,7 +124,7 @@ Set count to `0` to disable the filter.
 
 ## Out-of-Order Filter
 
-The filter discards commands timestamped earlier than the time of the previous command in the given window.
+The filter discards commands timestamped **earlier** than the time of the most recent command in the given window.
 
 ![](./images/filter-out-of-order.png)
 

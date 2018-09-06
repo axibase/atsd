@@ -96,7 +96,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 
 <!-- markdownlint-enable MD032 -->
 :::warning timestamp Value
-If **Check on Exit** is turned on, some status change events are caused by oldest commands being removed from the window. In such cases the `timestamp` field contains the time of the existing command, rounded to seconds.
+If the **Check on Exit** setting is turned on, some status change events are caused by oldest commands being removed from the window. In such cases the `timestamp` field contains the time of the **exiting** command, rounded to seconds.
 :::
 <!-- markdownlint-disable MD032 -->
 
