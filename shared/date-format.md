@@ -2,7 +2,7 @@
 
 ## Supported Formats
 
-ATSD supports [ISO 8601 date and time format](https://www.iso.org/iso-8601-date-and-time-format.html) to express date and time in a universally recognized and utilized format.
+ATSD supports [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) as a universally recognized format when parsing dates.
 
 |**Format**|**Description**|
 |:---|:---|
@@ -16,11 +16,12 @@ ATSD supports [ISO 8601 date and time format](https://www.iso.org/iso-8601-date-
 * `mm`: two digit minute in hour (`00`-`59`).
 * `ss`: two digit second in minute (`00`-`59`).
 * `S`: fractional seconds, up to nine (`9`) digits.
+* `hh`: two digit UTC time zone offset in hours (`00`-`11`).
 
 ## Time Zone
 
-* Time zone must be specified as `Z` for the UTC time zone or as UTC offset in hours and minutes: `±hh:mm`, `±hhmm`. The colon character separating hours and minutes is optional.
-* Positive offset `+hh:mm` applies to time zones that are ahead of or in line with UTC. Negative offset `-hh:mm` applies if the time zone is behind UTC.
+* Time zone must be specified as `Z` for the UTC time zone or as UTC offset in hours and minutes: `±hh:mm`, `±hhmm`. The colon (`:`) separator is optional.
+* Positive offset `+hh:mm` applies to time zones that are **ahead** of or in line with UTC. Negative offset `-hh:mm` applies if the time zone is **behind** UTC.
 * For example, Japan Standard Time (JST) has an offset of `+09:00` from UTC (ahead). The Pacific Standard Time (PST) has an offset of `-07:00` from UTC (behind).
 
 ## Time Precision
@@ -44,8 +45,8 @@ Valid timestamps:
 
 Invalid timestamps that cause a parsing error:
 
-* `2016-06-09T16:15:04` - Time zone must be specified.
+* `2016-06-09T16:15:04` - Time zone is missing.
 * `2016-06-09T16:15Z` - Seconds are missing.
 * `2016-06-09 16:15:04Z` - `T` separator is missing.
 * `2016-06-09 16:15:04` - Time zone and `T` separator are missing.
-* `2016-06-09T16:15:04PST` - Time zone [names and identifiers](./timezone-list.md) are not supported.
+* `2016-06-09T16:15:04PST` - Time zone [names](./timezone-list.md) are not supported.
