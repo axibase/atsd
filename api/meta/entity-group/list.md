@@ -4,8 +4,6 @@
 
 Retrieves a list of entity groups.
 
-Membership in entity groups with non-empty expression is managed by the server. Adding/removing members of expression-based groups is not supported.
-
 ## Request
 
 | **Method** | **Path** |

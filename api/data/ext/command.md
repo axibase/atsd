@@ -14,6 +14,13 @@ Supported Network API commands:
 
 The method returns a JSON object containing the counters of failed, successful, and total commands.
 
+## Authorization
+
+* `API_DATA_WRITE` role is required to send `series`, `property`, and `message` commands.
+* `API_META_WRITE` role is required to send `metric` and `entity` commands.
+
+In addition, the user must have [`write` permissions](../../../administration/user-authorization.md#entity-permissions) for the entity specified in the commands.
+
 ## Multiple Commands
 
 Multiple commands, separated by a line feed character, can be submitted in one request in which case the commands are parsed, validated and processed sequentially.
@@ -32,11 +39,11 @@ The processing behavior is different from the **Data Entry** page, which stops p
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| commit   | boolean   | Store the commands synchronously and return the response after the commands have been committed to the underlying storage.<br>Default: `false`.|
+| `commit`   | boolean   | Store the commands synchronously and return the response after the commands have been stored.<br>Default: `false`.|
 
 ### Payload
 
-List of network commands (series, metric, property, etc.), separated by line feed.
+List of network commands, separated by line breaks.
 
 ## Response
 
