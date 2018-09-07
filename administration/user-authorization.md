@@ -21,20 +21,22 @@ Authenticated users are allowed to access protected resources based on their rol
 | --- | --- |
 | `USER` | View information on all pages except configuration and settings pages. <br>Includes `API_DATA_READ` and `API_META_READ` roles. |
 | `EDITOR` | View and edit information on all pages except settings pages. <br>Includes `USER` role. |
-| `ENTITY_GROUP_ADMIN` | Edit [Entity Groups](../configuration/entity_groups.md). <br>Includes `USER` role. |
+| `ENTITY_GROUP_ADMIN` | Edit [entity groups](../configuration/entity_groups.md). <br>Includes `USER` role. |
 | `ADMIN` | View and edit information on all pages. <br>Includes all roles. |
 
 ## Entity Permissions
 
-Permissions to read and write data for entities in a particular Entity Group are granted at the **User Group level**.
+Permissions to read and write data for entities in a particular entity group are granted at the **User Group** level.
 
-> Granting permissions to a particular entity is **not supported**. To facilitate access controls, an entity must be added to an Entity Group.
+:::tip Note
+Granting permissions to specific entities is **not supported**. To facilitate access controls, an entity must be added to an entity group.
+:::
 
 Effective permissions are calculated as the union of all user groups permissions given to groups to which the user belongs.
 
-To read data for an entity, the user must have the `API_DATA_READ` role and be a member of the user group with `read` permission to the Entity Group containing the target entity.
+To read data for an entity, the user must have the `API_DATA_READ` role and be a member of the user group with `read` permission to the entity group containing the target entity.
 
-To insert or modify data for an entity, the user must have the `API_DATA_WRITE` role and be a member of the User Group with `write` permission to the Entity Group containing the target entity.
+To insert or modify data for an entity, the user must have the `API_DATA_WRITE` role and be a member of the User Group with `write` permission to the entity group containing the target entity.
 
 ![](./images/entity_group_permission.png)
 
@@ -60,7 +62,7 @@ Users without `All Entities: Read` permission are allowed to query Data API usin
 
 ## Entity View Permissions
 
-The user is authorized to access an [Entity View](../configuration/entity_views.md) if the user has `read` permissions to one of the Entity Groups to which the view is linked.
+The user is authorized to access an [Entity View](../configuration/entity_views.md) if the user has `read` permissions to one of the entity groups to which the view is linked.
 
 The permissions to access all entity views is automatically granted to users with `ADMIN` role.
 

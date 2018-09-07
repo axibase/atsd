@@ -216,7 +216,9 @@ Converts `s` to lowercase letters.
 
 Returns the number of elements in the collection.
 
-> This function can be applied to collections of any type (string, number) as well as maps.
+:::tip Note
+The function can be applied to collections of any type (string, number) as well as to maps.
+:::
 
 Examples:
 
@@ -232,7 +234,9 @@ tags.size() > 1
 
 Returns `true` if the number of elements in the collection is zero.
 
-> This function can be applied to collections of any type (string, number) as well as maps.
+:::tip Note
+The function can be applied to collections of any type (string, number) as well as maps.
+:::
 
 Example:
 

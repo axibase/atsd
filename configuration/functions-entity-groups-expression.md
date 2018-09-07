@@ -345,7 +345,9 @@ collection('ip_white_list').contains(tags.request_ip)
 
 Returns the number of elements in the collection.
 
-> This function can be applied to collections of any type (string, number) as well as to maps.
+:::tip
+This function can be applied to collections of any type (string, number) as well as to maps.
+:::
 
 Examples:
 
@@ -361,7 +363,9 @@ collection('ip_white_list').size()
 
 Returns `true` if the number of elements in the collection is zero.
 
-> This function can be applied to collections of any type (string, number) as well as to maps.
+:::tip
+This function can be applied to collections of any type (string, number) as well as to maps.
+:::
 
 Example:
 

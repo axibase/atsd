@@ -56,7 +56,7 @@ jdbc:atsd://atsd_hostname:8443;missingMetric=error
 jdbc:atsd://atsd_hostname:8443;missingMetric=error;tables=infla%
 ```
 
-> Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
+Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
 
 * Check (enable) the **Strip Quote** and **Strip Escape** options, click **OK**.
 

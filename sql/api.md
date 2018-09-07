@@ -43,7 +43,9 @@ Use this query for validation in connection pool implementations such as [Apache
 | `encodeTags` | boolean | If set to `true`, the `tags` column is encoded in JSON format for safe parsing on the client. |
 | `datetimeAsNumber` | boolean | If set to `true`, the `datetime` column contains Unix time in milliseconds, similar to the `time` column. |
 
-> As an alternative, submit the query as a text payload with the `Content-Type` header set to `text/plain` and other parameters included in the query string.
+:::tip
+As an alternative, submit the query as a text payload with the `Content-Type` header set to `text/plain` and other parameters included in the query string.
+:::
 
 #### limit parameter versus LIMIT clause
 

@@ -11,20 +11,15 @@ This guide applies only on new ATSD installations.
 Executing this guide on an existing ATSD installation leads to the
 loss of all stored data on both the master and slave machines.
 
-Both the master and slave machines must have static a IP addresses in the
-local network.
+Both the master and slave machines must have static a IP addresses in the local network.
 
-Both machines must have identical hardware configurations. Review [ATSD
-Requirements](../installation/requirements.md).
+Both machines must have identical hardware configurations. Review [ATSD Requirements](../installation/requirements.md).
 
-The same versions of ATSD must be installed on both machines. [See ATSD
-installation
-guides.](../installation/README.md "ATSD Install Guides")
+The same versions of ATSD must be installed on both machines. See [ATSD installation guides.](../installation/README.md)
 
 ## Installation
 
-**MASTER & SLAVE: Complete this process on both machines
-– master and slave.**
+**Complete this process on both machines – master and slave.**
 
 Stop ATSD and all components:
 
@@ -44,8 +39,8 @@ master_ip    master_hostname
 slave_ip     slave_hostname
 ```
 
-> Note: the following lines must not be contained in the `hosts` file.
-This is the case for both master and slave.
+:::warning Note
+Remove the following mappings, if present, from the `hosts` file on both the master and slave.
 
 ```elm
 127.0.1.1    atsd_master
@@ -54,6 +49,8 @@ This is the case for both master and slave.
 ```elm
 127.0.1.1    atsd_slave
 ```
+
+:::
 
 Example of a correct `hosts` file:
 
@@ -186,7 +183,7 @@ Output contains a list of ATSD tables, all starting with `atsd_`.
 
 New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as described below.
 
-> MASTER: Only complete this process on the MASTER server.
+> MASTER: Complete this step on the MASTER server.
 
 Write the table schema to a file:
 
@@ -200,7 +197,7 @@ Copy table schema file to the slave machine:
 scp atsd_new_schema.txt atsd_slave:/tmp
 ```
 
-> SLAVE: Only complete this process on the slave machine.
+> SLAVE: Complete this step on the slave machine.
 
 Create the new table in the slave database:
 
@@ -208,7 +205,7 @@ Create the new table in the slave database:
 /opt/atsd/hbase/bin/hbase shell < /tmp/atsd_new_schema.txt
 ```
 
-> MASTER: Only complete this process on the master machine.
+> MASTER: Complete this step on the master machine.
 
 Enable replication for the new table:
 
@@ -223,7 +220,7 @@ instructions below.
 
 ### Option 1
 
-> SLAVE: Only complete this process on the slave machine.
+> SLAVE: Complete this step on the slave machine.
 
 Check HBase logs for replication activity:
 
@@ -246,7 +243,7 @@ ink.java:replicateEntries(158)) - Total replicated: 1
 
 ### Option 2
 
-> MASTER: Only complete this process on the master machine.
+> MASTER: Complete this step on the master machine.
 
 Open the **Alert > Rules** page in the ATSD web interface.
 
@@ -275,7 +272,7 @@ Output:
 
 ![](./images/atsd_rule_table_scan1.png)
 
-> SLAVE: Only complete this process on the slave machine.
+> SLAVE: Complete this step on the slave machine.
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:

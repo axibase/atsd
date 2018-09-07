@@ -17,7 +17,9 @@ To calculate the available CPU capacity, multiply the number of cores by CPU clo
 * Application files: `5` GB.
 * Data Files: `10` GB **minimum**.
 
-> The required disk space depends on the amount of collected data, [compression](../administration/compaction/README.md), and [retention](../administration/data_retention.md) settings.
+:::tip Note
+The required disk space depends on the amount of collected data, [compression](../administration/compaction/README.md), and [retention](../administration/data_retention.md) settings.
+:::
 
 ## Processor Architecture
 

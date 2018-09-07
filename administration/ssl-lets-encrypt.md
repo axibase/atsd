@@ -42,15 +42,17 @@ sudo apt install certbot
 
 ### HTTP-01 Challenge
 
-> The `HTTP-01` challenge verifies your full control of the server by sending it a request on port 80.
+:::tip Note
+The `HTTP-01` challenge verifies your full control of the server by sending it a request on port `80`.
+:::
 
-Ensure that port `80` is open and not bound to any process on the server where certbot is running.
+Ensure that port `80` is open and not bound to any process on the server where `certbot` is running.
 
 ```sh
 sudo netstat -nao | grep ":80\s"
 ```
 
-Create a working directory for certbot which is required in standalone mode.
+Create a working directory for `certbot` which is required in standalone mode.
 
 ```sh
 sudo mkdir -p /var/www/certbot
@@ -91,7 +93,9 @@ drwxr-xr-x 2 root root 4096 Mar 17 12:03 atsd.example.org
 
 ### DNS Challenge
 
-> The `DNS` challenge verifies your full control of the server by reading a `TXT` record from the DNS registrar that you create as part of the challenge.
+:::tip Note
+The `DNS` challenge verifies your full control of the server by reading a `TXT` record from the DNS registrar that you create as part of the challenge.
+:::
 
 ```sh
 sudo certbot --preferred-challenges dns --manual certonly

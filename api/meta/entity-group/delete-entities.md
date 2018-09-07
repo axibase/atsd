@@ -6,7 +6,9 @@ Removes the specified members from the entity group.
 
 To delete all entities from the group, submit an empty array `[]` with the [set entities](set-entities.md) method.
 
-> Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
+:::warning Note
+Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
+:::
 
 ## Request
 

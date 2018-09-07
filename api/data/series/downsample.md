@@ -37,7 +37,9 @@ The configuration excludes samples that are within `±10` of an interpolated val
 | [`gap`](#gap) | object | Maximum distance between subsequent samples in the transformed series. Specified as count and [time unit](time-unit.md).<br>Default: `none`.|
 | `order` | integer | Controls the order of downsampling in the sequence of other [transformations](./query.md#transformations).<br>Default: `0`.|
 
-> The `difference` and `ratio` parameters **cannot** be specified simultaneously.
+:::tip
+The `difference` and `ratio` parameters **cannot** be specified simultaneously.
+:::
 
 ## Gap
 
@@ -99,7 +101,9 @@ When the `ratio` parameter is set, the algorithms calculate several multiples.
 
 The sample is classified as a duplicate if all multiples do not exceed the specified `ratio`.
 
-> To avoid division by zero, the algorithm compares `x/ratio > y` instead of `x/y > ratio`.
+:::tip Note
+To avoid division by zero, the algorithm compares `x/ratio > y` instead of `x/y > ratio`.
+:::
 
 ### Difference Check
 
