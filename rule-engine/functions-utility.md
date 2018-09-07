@@ -181,13 +181,13 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 samples([int limit]) map
 ```
 
-Retrieves the map of the samples:
+Retrieves an ordered by datetime (ascending) map of the samples:
 
 ```javascript
-{ date: value }
+(datetime, value)
 ```
 
-Where `date` is an ISO datetime in the UTC time zone.
+Where `datetime` is [DateTime](./object-datetime.md#datetime-object) object.
 
 Limit can be:
 
@@ -197,25 +197,59 @@ Limit can be:
 
 3. Negative: return up to the specified number of samples from **end** (latest samples first).
 
-The map can be divided using [`values`](#values) and [`timestamps`](#timestamps) functions.
+If the number is specified and exceeds the window length, the function returns all samples in the window.
+
+To retrieve sample timestamps and values separately, use [`timestamps`](#timestamps) and [`values`](#values) functions.
 
 Example:
 
-```javascript
-samples(-3) = ${samples(-3)}
-samples(3) = ${samples(3)}
-samples() =${samples()}
-```
+* Samples in the window:
 
-For window with `count = 5` produces:
+    |       datetime       |   value  |
+    |:---------------------|---------:|
+    | 2018-09-07T10:42:53Z | 159924.0 |
+    | 2018-09-07T10:43:23Z | 159912.0 |
+    | 2018-09-07T10:43:53Z | 160152.0 |
+    | 2018-09-07T10:44:23Z | 159988.0 |
+    | 2018-09-07T10:44:25Z | 76168.0  |
 
-```ls
-samples(-3) = [(2018-09-04T07:34:17Z[Etc/UTC],0.44), (2018-09-04T07:34:02Z[Etc/UTC],0.29), (2018-09-04T07:33:47Z[Etc/UTC],0.38)]
+* Expression:
 
-samples(3) = [(2018-09-04T07:33:17Z[Etc/UTC],0.29), (2018-09-04T07:33:32Z[Etc/UTC],0.22), (2018-09-04T07:33:47Z[Etc/UTC],0.38)]
+    ```javascript
+    samples() = ${samples()}
+    samples(-1) = ${samples(-1)}
+    samples(3) = ${samples(3)}
+    samples(-2)_formatted = [
+        @foreach{item: samples(-2)}
+            (@{date_format(item.key.millis, "yyyy-MM-dd HH:mm:ss")}, @{item.value}),
+        @end{}
+    ]
+    ```
 
-samples() =[(2018-09-04T07:33:17Z[Etc/UTC],0.29), (2018-09-04T07:33:32Z[Etc/UTC],0.22), (2018-09-04T07:33:47Z[Etc/UTC],0.38), (2018-09-04T07:34:02Z[Etc/UTC],0.29), (2018-09-04T07:34:17Z[Etc/UTC],0.44)]
-```
+* Result:
+
+    ```ls
+    samples() = [
+        (2018-09-07T10:42:53Z[Etc/UTC],159924.0),
+        (2018-09-07T10:43:23Z[Etc/UTC],159912.0),
+        (2018-09-07T10:43:53Z[Etc/UTC],160152.0),
+        (2018-09-07T10:44:23Z[Etc/UTC],159988.0),
+        (2018-09-07T10:44:25Z[Etc/UTC],76168.0)
+    ]
+    samples(-1) = [
+        (2018-09-07T10:44:25Z[Etc/UTC],76168.0)
+    ]
+    samples(3) = [
+        (2018-09-07T10:42:53Z[Etc/UTC],159924.0),
+        (2018-09-07T10:43:23Z[Etc/UTC],159912.0),
+        (2018-09-07T10:43:53Z[Etc/UTC],160152.0)
+    ]
+    samples(-2)_formatted = [
+        (2018-09-07 10:44:25, 76168.0),
+        (2018-09-07 10:44:23, 159988.0),
+    ]
+    ```
+    See [Iteration](./control-flow.md#iteration) for more information about `@foreach`.
 
 ## `values`
 
@@ -233,23 +267,43 @@ Limit can be:
 
 3. Negative: return up to the specified number of values from **end** (latest values first).
 
+If the number is specified and exceeds the window length, the function returns all samples in the window.
+
 The whole samples map is available via [`samples`](#samples) function.
 
 Example:
 
-```javascript
-values(-3) = ${values(-3)}
-values(3) = ${values(3)}
-values() =${values()}
-```
+* Samples in the window:
 
-For window with `count = 5` produces:
+    |       datetime       |   value  |
+    |:---------------------|---------:|
+    | 2018-09-07T10:42:53Z | 159924.0 |
+    | 2018-09-07T10:43:23Z | 159912.0 |
+    | 2018-09-07T10:43:53Z | 160152.0 |
+    | 2018-09-07T10:44:23Z | 159988.0 |
+    | 2018-09-07T10:44:25Z | 76168.0  |
 
-```ls
-values(-3) = [0.38, 0.22, 0.29]
-values(3) = [0.48, 0.37, 0.29]
-values() =[0.48, 0.37, 0.29, 0.22, 0.38]
-```
+* Expression:
+
+    ```javascript
+    values() =${values()}
+    values(-1) = ${values(-1)}
+    values(3) = ${values(3)}
+    ```
+
+* Result:
+
+    ```ls
+    values() =[
+        159924.0, 159912.0, 160152.0, 159988.0, 76168.0
+    ]
+    values(-1) = [
+        76168.0
+    ]
+    values(3) = [
+        159924.0, 159912.0, 160152.0
+    ]
+    ```
 
 ## `timestamps`
 
@@ -267,25 +321,59 @@ Limit can be:
 
 3. Negative: return up to the specified number of timestamps from **end** (latest timestamps first).
 
+If the number is specified and exceeds the window length, the function returns all samples in the window.
+
 The whole samples map is available via [`samples`](#samples) function.
 
 Example:
 
-```javascript
-timestamps(-3) = ${timestamps(-3)}
-timestamps(3) = ${timestamps(3)}
-timestamps() =${timestamps()}
-```
+* Samples in the window:
 
-For window with `count = 5` produces:
+    |       datetime       |   value  |
+    |:---------------------|---------:|
+    | 2018-09-07T10:42:53Z | 159924.0 |
+    | 2018-09-07T10:43:23Z | 159912.0 |
+    | 2018-09-07T10:43:53Z | 160152.0 |
+    | 2018-09-07T10:44:23Z | 159988.0 |
+    | 2018-09-07T10:44:25Z | 76168.0  |
 
-```ls
-timestamps(-3) = [2018-09-04T07:32:32Z[Etc/UTC], 2018-09-04T07:32:17Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC]]
+* Expression:
 
-timestamps(3) = [2018-09-04T07:31:32Z[Etc/UTC], 2018-09-04T07:31:47Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC]]
+    ```javascript
+    timestamps() =${timestamps()}
+    timestamps(-1) = ${timestamps(-1)}
+    timestamps(3) = ${timestamps(3)}
+    timestamps(-2)_formatted = [
+        @foreach{item: timestamps(-2)}
+            @{date_format(item.millis, "yyyy-MM-dd HH:mm:ss")},
+        @end{}
+    ]
+    ```
+    See [Iteration](./control-flow.md#iteration) for more information about `@foreach`.
 
-timestamps() =[2018-09-04T07:31:32Z[Etc/UTC], 2018-09-04T07:31:47Z[Etc/UTC], 2018-09-04T07:32:02Z[Etc/UTC], 2018-09-04T07:32:17Z[Etc/UTC], 2018-09-04T07:32:32Z[Etc/UTC]]
-```
+* Result:
+
+    ```ls
+    timestamps() =[
+        2018-09-07T10:42:53Z[Etc/UTC],
+        2018-09-07T10:43:23Z[Etc/UTC],
+        2018-09-07T10:43:53Z[Etc/UTC],
+        2018-09-07T10:44:23Z[Etc/UTC],
+        2018-09-07T10:44:25Z[Etc/UTC]
+    ]
+    timestamps(-1) = [
+        2018-09-07T10:44:25Z[Etc/UTC]
+    ]
+    timestamps(3) = [
+        2018-09-07T10:42:53Z[Etc/UTC],
+        2018-09-07T10:43:23Z[Etc/UTC],
+        2018-09-07T10:43:53Z[Etc/UTC]
+    ]
+    timestamps(-2)_formatted = [
+        2018-09-07 10:44:25,
+        2018-09-07 10:44:23,
+    ]
+    ```
 
 ## `getURLHost`
 
