@@ -66,7 +66,11 @@ Total Objects: 1
 
 Store the `atsd-hbase.$REVISION.jar` in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
-> When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
+:::
+<!-- markdownlint-disable MD032 -->
 
 ## Launch Cluster
 
@@ -189,13 +193,11 @@ status
 
 ## Install ATSD
 
-Log in to the server where you plan to install ATSD.
+Log in to the server where you plan to install ATSD. For testing and development, you can co-install ATSD on the HMaster node.
 
 ```bash
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP
 ```
-
-> For testing and development, install ATSD on the HMaster node.
 
 Verify that [JDK 8](../administration/migration/install-java-8.md) is installed on the server.
 

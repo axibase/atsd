@@ -24,7 +24,11 @@ Logs are rolled over and archived according to the retention settings in the `/o
 
 ## HBase Log Files
 
-> HBase Log Files section is visible in single-node ATSD installations.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+**HBase Log Files** section is visible in single-node ATSD installations.
+:::
+<!-- markdownlint-disable MD032 -->
 
 |**Log Name**|**Description**|
 |---|:---|
@@ -36,7 +40,11 @@ Logs are rolled over and archived according to the retention settings in the `/o
 
 ## HDFS Log Files
 
-> HDFS Log Files section is visible in single-node ATSD installations running in pseudo-distributed mode.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+**HDFS Log Files** section is visible in single-node ATSD installations running in pseudo-distributed mode.
+:::
+<!-- markdownlint-disable MD032 -->
 
 |**Log Name**|**Description**|
 |---|:---|

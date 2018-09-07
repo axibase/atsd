@@ -26,7 +26,7 @@ command = "exit"
 exit
 ```
 
-> Response
+Response:
 
 ```txt
 Goodbye

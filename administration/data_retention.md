@@ -297,7 +297,11 @@ Series can be re-inserted for a new metric with the same name without any collis
 
 ### Deleting Series
 
-> Only one series can be deleted at a time.
+<!-- markdownlint-enable MD032 -->
+:::tip Note
+Only one series can be deleted at a time.
+:::
+<!-- markdownlint-disable MD032 -->
 
 Locate the series.
 

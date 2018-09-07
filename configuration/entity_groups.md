@@ -152,4 +152,4 @@ Once an entity group belongs to an entity view, it is available directly from th
 
 ![](./images/entity-views-menu.png)
 
-> For more information about configuring entity views, see [Entity View Documentation](./entity_views.md#settings)
+For more information about configuring entity views, see [Entity Views Documentation](./entity_views.md#settings)

@@ -129,7 +129,7 @@ The dialog window provides several tools to configure insertion:
 
 * **Schedule**: Creates a [scheduled query](scheduled-sql.md) with the **Store** option set to **Enabled** based on the current query.
 
-> Refer to [Scheduled Store Documentation](scheduled-sql-store.md) for more details.
+Refer to [Scheduled Store Documentation](scheduled-sql-store.md) for more details.
 
 ### Query Plan
 

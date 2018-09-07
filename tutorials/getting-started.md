@@ -93,7 +93,7 @@ Click **all** in the timespan control to view all available data or use the mous
 
 Take a moment to become familiar with [time chart](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) controls.
 
-> The default portal consists of a single time chart for one series. You can create [portals](../portals/README.md) with a custom layout and any number of widgets.
+The default portal consists of a single time chart for one series. You can create [portals](../portals/README.md) with a custom layout and any number of widgets.
 
 ## Adding Metadata
 
@@ -131,7 +131,7 @@ building = A
 
 Entity tags provide an extensible mechanism to make a universal database specific to the current domain.
 
-> Once tags are defined, click **Create Tag Template** to save the current tag schema as template which can be assigned to entities sharing the same tags.
+Define tags and click **Create Tag Template** to save the current tag schema as template which can be assigned to entities sharing the same tags.
 
 ### Describing Metrics
 

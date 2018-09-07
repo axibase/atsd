@@ -26,7 +26,7 @@ command = "time"
 time
 ```
 
-> Response
+Response:
 
 ```txt
 1426260311663

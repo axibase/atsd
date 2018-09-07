@@ -14,8 +14,6 @@ Once enabled, the database tracks changes made to stored values with the followi
 |  Version Source  |  User-defined field to track the source of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
 |  Version Status  |  User-defined field to classify change events. <br> Set to `invalid` for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
-> The ability to specify custom fields with server-side business logic such as change locking, is under development.
-
 ## Enabling Versioning
 
 Versioning is **disabled** by default.
