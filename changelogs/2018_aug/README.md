@@ -31,8 +31,8 @@ Issue| Category   | Type   | Subject
 5598|rule engine|Bug|[Filter](../../rule-engine/filters.md#filters) fields type and source are lost when rule is cloned.
 5597|rule engine|Feature|Add [details](../../rule-engine/details-table.md) to rule windows with `CANCEL` status.
 5596|csv|Bug|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): empty line in the middle causes issues for fixed width parser.
-5594|rule engine|Feature|Make time zone and date pattern optional in [`date_format`](../../rule-engine/functions-format.md#date_format) function.
-5593|rule engine|Feature|Validate patterns specified in [date format](../../rule-engine/functions-format.md#date_format) and [parse](../../rule-engine/functions-date.md#date_parse) functions.
+5594|rule engine|Feature|Make time zone and date pattern optional in [`date_format`](../../rule-engine/functions-date.md#date_format) function.
+5593|rule engine|Feature|Validate patterns specified in [date format](../../rule-engine/functions-date.md#date_format) and [date parse](../../rule-engine/functions-date.md#date_parse) functions.
 5590|export|Bug|[Export](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) page: gracefully handle client disconnect.
 5587|api-rest|Bug|Data API: [Series Query](../../api/data/series/query.md#series-query) with small `limit` and `time=all` is slow.
 5584|api-rest|Bug|Data API: [Property Query](../../api/data/properties/query.md#properties-query) with `limit` is slow.

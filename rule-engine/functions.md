@@ -183,9 +183,12 @@ Name | Description
 Name | Description
 ---|---
 [`add`](object-datetime.md#add-function) |Returns a [`DateTime`](object-datetime.md) object created by adding an interval.
+[`date_format`](functions-date.md#date_format)| Converts Unix time in milliseconds or a [`DateTime`](object-datetime.md) object to a string.
 [`date_parse`](functions-date.md#date_parse)|  Parses the input string into a [`DateTime`](object-datetime.md) object.
 [`elapsed_minutes`](functions-date.md#elapsed_minutes)|  Calculates the number of minutes between the current and specified time.
 [`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
+[`formatInterval`](functions-format.md#formatinterval)| Converts milliseconds interval to a formatted interval.
+[`formatIntervalShort`](functions-format.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
 [`is_weekday`](object-datetime.md#is_weekday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekday.
 [`is_weekend`](object-datetime.md#is_weekend-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekend day.
 [`is_workday`](object-datetime.md#is_workday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a working day.
@@ -206,10 +209,7 @@ Name | Description
 Name | Description
 ---|---
 [`convert`](functions-format.md#convert)| Divides the number by the unit and formats with one fractional digit.
-[`date_format`](functions-format.md#date_format)| Converts Unix time in milliseconds to a string.
 [`formatBytes`](functions-format.md#formatbytes)| Returns the total number of bytes in human-readable format.
-[`formatInterval`](functions-format.md#formatinterval)| Converts milliseconds interval to a formatted interval.
-[`formatIntervalShort`](functions-format.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
 [`formatNumber`](functions-format.md#formatnumber)| Formats number with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) using the server locale.
 
 ## Mathematical

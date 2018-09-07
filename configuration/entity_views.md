@@ -156,13 +156,13 @@ The following functions are available in the **Formatting** section:
 * [`convert`](../rule-engine/functions-format.md#convert)
 * [`formatNumber`](../rule-engine/functions-format.md#formatnumber)
 * [`formatBytes`](../rule-engine/functions-format.md#formatbytes)
-* [`date_format`](../rule-engine/functions-format.md#date_format)
-* [`formatInterval`](../rule-engine/functions-format.md#formatinterval)
-* [`formatIntervalShort`](../rule-engine/functions-format.md#formatintervalshort)
 
 #### Date Functions
 
 * [`elapsedTime`](../rule-engine/functions-date.md#elapsedtime)
+* [`date_format`](../rule-engine/functions-date.md#date_format)
+* [`formatInterval`](../rule-engine/functions-date.md#formatinterval)
+* [`formatIntervalShort`](../rule-engine/functions-date.md#formatintervalshort)
 
 ## Dynamic Filters
 

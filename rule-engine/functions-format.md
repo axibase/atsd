@@ -12,11 +12,11 @@ Number formatting functions:
 * [`formatBytes`](#formatbytes)
 * [`convert`](#convert)
 
-Date formatting functions:
+Related date formatting functions:
 
-* [`date_format`](#date_format)
-* [`formatInterval`](#formatinterval)
-* [`formatIntervalShort`](#formatintervalshort)
+* [`date_format`](functions-date.md#date_format)
+* [`formatInterval`](functions-date.md#formatinterval)
+* [`formatIntervalShort`](functions-date.md#formatintervalshort)
 
 ## `formatNumber`
 
@@ -106,69 +106,4 @@ Examples:
 // same as formatNumber(20480/1024, '#.#')
 convert(20480, 'KiB') // 20.0
 convert(1000 * 1000, 'M') // 1.0
-```
-
-## `date_format`
-
-```csharp
-date_format(long time [, string pattern [, string zone]]) string
-```
-
-Converts timestamp `time`, specified as Unix time in milliseconds, to a string according to the specified [date `pattern`](../shared/time-pattern.md) and the [time `zone`](../shared/timezone-list.md).
-If neither the date pattern nor the time zone are specified, the input time `t` is formatted with the default ISO format in the UTC time zone.
-If time zone is not specified, the input time `t` is formatted using `pattern` in the **server** time zone.
-
-Examples:
-
-```javascript
-/* Returns current time minus 1 hour formatted as "2018-01-09T15:23:40:00Z" */
-date_format(now.millis - 3600000L)
-```
-
-```javascript
-/* Returns formatted time string  "2018-01-09 15:23:40:00 Europe/Berlin" */
-date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
-```
-
-:::tip Related Functions
-View a corresponding date parsing function [`date_parse`](functions-date.md#date_parse)
-:::
-
-## `formatInterval`
-
-```csharp
-formatInterval(long interval) string
-```
-
-Converts interval in Unix time measured in milliseconds to a formatted interval consisting of non-zero years, days, hours, minutes, and seconds.
-
-Examples:
-
-```javascript
-/* Returns formatted interval: 2y 139d 16h 47m 15s */
-formatInterval(75228435000L)
-```
-
-```javascript
-formatInterval(elapsedTime(milliseconds(tags.last_updated)))
-```
-
-## `formatIntervalShort`
-
-```csharp
-formatIntervalShort(long interval) string
-```
-
-Converts interval measured in milliseconds to a formatted interval consisting of up to the two highest subsequent non-zero time units, where the unit comprises years, days, hours, minutes, and seconds.
-
-Examples:
-
-```javascript
-/* Returns formatted interval: 2y 139d */
-formatIntervalShort(75228435000L)
-```
-
-```javascript
-/* Assuming current time of 2017-08-15T00:01:30Z, returns a short interval of elapsed time: 1m 30s */
-formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))
 ```
