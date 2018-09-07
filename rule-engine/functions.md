@@ -187,8 +187,8 @@ Name | Description
 [`date_parse`](functions-date.md#date_parse)|  Parses the input string into a [`DateTime`](object-datetime.md) object.
 [`elapsed_minutes`](functions-date.md#elapsed_minutes)|  Calculates the number of minutes between the current and specified time.
 [`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
-[`formatInterval`](functions-format.md#formatinterval)| Converts milliseconds interval to a formatted interval.
-[`formatIntervalShort`](functions-format.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
+[`formatInterval`](functions-date.md#formatinterval)| Converts milliseconds interval to a formatted interval.
+[`formatIntervalShort`](functions-date.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
 [`is_weekday`](object-datetime.md#is_weekday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekday.
 [`is_weekend`](object-datetime.md#is_weekend-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekend day.
 [`is_workday`](object-datetime.md#is_workday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a working day.
