@@ -25,11 +25,9 @@ now.is_workday()
 !tomorrow.is_workday('kor')
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Warning
 The function raises an error if no dates are found in the specified calendar for the given year. Update the calendar by adding dates to resolve this problem.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### SQL Queries
 

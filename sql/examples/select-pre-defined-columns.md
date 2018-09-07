@@ -14,11 +14,9 @@ entity.tags.location
 entity.tags."loc-area"
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Tag names containing special characters must be quoted.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Fields
 

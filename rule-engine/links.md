@@ -71,11 +71,9 @@ Link to the default portal for the current metric, entity, and tags.
 
 Displayed as **Default** link in inline mode.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Example:
 
@@ -93,11 +91,9 @@ Link to the **CSV** file with historical statistics for the current metric, enti
 
 Displayed as **CSV Export** link in inline mode.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Example:
 
@@ -115,11 +111,9 @@ Link to the **Data > Export** page for the current metric, entity, and tags.
 
 Displayed as an **HTML Export** link in inline mode.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Supported only in rules with `Series` data type.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Example:
 

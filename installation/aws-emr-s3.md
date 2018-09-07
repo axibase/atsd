@@ -66,11 +66,9 @@ Total Objects: 1
 
 Store the `atsd-hbase.$REVISION.jar` in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Launch Cluster
 

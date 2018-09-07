@@ -29,7 +29,6 @@ wget https://www.axibase.com/public/atsd_amd64.deb
 
 ### Add Repositories
 
-<!-- markdownlint-enable MD032 -->
 ::: tip Debian 8.x
 Add `backports` repository to `/etc/apt/sources.list.d/backports.list` file.
 
@@ -47,7 +46,6 @@ deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
 
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Update Repositories and Install Dependencies
 

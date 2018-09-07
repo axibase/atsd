@@ -138,11 +138,9 @@ Name | Description
 [`db_last`](functions-series.md#db_last)| Retrieves the most recent value stored in the database for the target series.
 [`db_statistic`](functions-series.md#db_statistic)| Returns the result of a statistical function for historical values.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Related Functions
 See [value](#value) functions.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Forecasts
 
@@ -271,11 +269,9 @@ Name | Description
 
 ## Statistical
 
-<!-- markdownlint-enable MD032 -->
 :::warning Scope
 [Statistical functions](functions-statistical.md) are not supported in the [filter expression](filters.md#filter-expression).
 :::
-<!-- markdownlint-disable MD032 -->
 
 Name | Description
 ---|---

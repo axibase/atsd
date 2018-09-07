@@ -55,11 +55,9 @@ Notes:
 | `keys` | map | Property keys, serialized as `[key1: val1, key2: val2]`.<br>To retrieve key value, use `keys.{name}`. |
 | `properties` | map | Property tags, serialized as `[key1: val1, key2: val2]`.<br>To retrieve tag value, use `properties.{name}`. |
 
-<!-- markdownlint-enable MD032 -->
 :::tip Property tags
 The `tags` field for the `property` command contains the `keys` map and the `type` field.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Date Fields
 

@@ -86,11 +86,9 @@ Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token 
 2018-03-29 05:56:21,087;DISABLED_METRIC;series e:nurswgvml502 ms:1522302980000 t:collector=bosun.org/cmd/scollector/collectors.c_ipcount_linux t:os=linux m:scollector.collector.duration=0.003668194
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Existing data already stored in the database for a disabled metric is not removed from disk automatically.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Disable Persistence
 
@@ -108,11 +106,9 @@ Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_
 2018-03-29 05:56:21,518;NON_PERSISTENT_METRIC;series e:nurswgvml010 ms:1522302981000 t:remote=192.0.2.1 m:ntp.stratum=2
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Existing data already stored in the database for a non-persistent metric is not removed from disk automatically.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Set Persistence Filter
 
@@ -132,11 +128,9 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 2018-03-29 05:56:28,075;FILTERED_METRIC;series e:nurswgvmw016 ms:1522302699000 t:method=copy t:site=DefaultWebSite m:iis.requests=0
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Existing data already stored in the database is **not** removed from disk automatically, even if the series no longer matches the filter.
 :::
-<!-- markdownlint-disable MD032 -->
 
 #### Filter Examples
 
@@ -297,11 +291,9 @@ Series can be re-inserted for a new metric with the same name without any collis
 
 ### Deleting Series
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Only one series can be deleted at a time.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Locate the series.
 

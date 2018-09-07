@@ -14,7 +14,6 @@
 
 ### Add Repositories
 
-<!-- markdownlint-enable MD032 -->
 ::: tip Debian 8.x
 Add `backports` repository to `/etc/apt/sources.list.d/backports.list` file.
 
@@ -32,7 +31,6 @@ deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
 
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Update Repositories
 
@@ -62,7 +60,6 @@ Install ATSD.
 sudo apt-get update && sudo apt-get install atsd
 ```
 
-<!-- markdownlint-enable MD032 -->
 ::: tip On Debian 8.x
 
 ```sh
@@ -70,7 +67,6 @@ sudo apt-get update && sudo apt-get -t jessie-backports install atsd
 ```
 
 :::
-<!-- markdownlint-disable MD032 -->
 
 It can take up to five minutes to initialize the database.
 

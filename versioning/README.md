@@ -48,14 +48,12 @@ To insert versioned samples, use a [series](../api/network/series.md) command wi
 series e:{entity} m:{metric}={number} t:$version_status={status} t:$version_source={source} d:{iso-date}
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Request to insert versioned value for a **non-versioned** metric causes a validation error.
 :::
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Example:
 
@@ -69,11 +67,9 @@ Add versioned samples by opening the form at **Data > Data Entry > Series** and 
 
 ![](./resources/8.png)
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 **Metric** field must reference an existing metric with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### CSV Parser using Default Tags
 
@@ -86,14 +82,12 @@ $version_source={source}
 
 ![](./resources/2.png)
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Request to insert versioned value for a **non-versioned** metric causes a validation error.
 :::
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### CSV Parser using Renamed Columns
 
@@ -101,14 +95,12 @@ To extract versioning fields from CSV content, add the version tags to the **Tag
 
 ![](./resources/3.png)
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Request to insert versioned value for a **non-versioned** metric causes a validation error.
 :::
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## View Versions
 

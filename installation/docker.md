@@ -30,11 +30,9 @@ docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/ud
 
 The password is subject to the following [requirements](../administration/user-authentication.md#password-requirements). If the password contains special characters `$`, `&`, `#`, or `!`, escape them with backslash `\`.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 For installation on Kubernetes refer to this [guide](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html).
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Check Installation
 

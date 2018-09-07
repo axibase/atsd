@@ -4,7 +4,6 @@
 
 The default certificate installed in ATSD is generated for DNS name (`commonName`) `atsd`. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name (fully qualified hostname) at which the ATSD server is accessible.
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Once replaced, the new certificate does not eliminate security warnings in user browsers and requires passing `--insecure` parameter when connecting to the database using `curl` and similar tools to skip certificate validation.
 :::
@@ -15,7 +14,6 @@ Once replaced, the new certificate does not eliminate security warnings in user 
 * To automate the SSL certificate renewal, consider deploying [Let's Encrypt](ssl-lets-encrypt.md) certificates.
 
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Create and Import Certificate
 

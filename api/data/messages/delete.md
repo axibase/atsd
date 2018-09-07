@@ -42,11 +42,9 @@ Alternatively, [restart](../../../administration/restarting.md) the ATSD process
 
 Modify the `TTL` attribute of the `atsd_message` table in HBase by executing the below commands.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 The procedure is different in distributed installations.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ```sh
 echo "disable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell

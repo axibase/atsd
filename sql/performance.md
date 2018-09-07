@@ -77,11 +77,9 @@ The following message tags are available for filtering and grouping:
 | `user`   | User initiating the query. |
 | `query`  | Query text. |
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Messages for **scheduled** queries include additional tags `query_name`, `query_id`, `output_path`, `email_subject`, and `email_subscribers`.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Query Performance
 

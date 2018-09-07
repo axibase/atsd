@@ -72,11 +72,9 @@ Examples:
 
 <!-- markdownlint-enable MD107 -->
 
-<!-- markdownlint-enable MD032 -->
 :::tip Unexpected Inputs
 If the `x` argument is a string or an object that cannot be parsed into a number, the function returns the original value `x`.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## `convert`
 
@@ -132,11 +130,9 @@ date_format(now.millis - 3600000L)
 date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::tip Related Functions
 View a corresponding date parsing function [`date_parse`](functions-date.md#date_parse)
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## `formatInterval`
 

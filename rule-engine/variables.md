@@ -48,11 +48,9 @@ kb = 1024
 curtime = 1515758392702
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::tip Big Integers
 Define large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a 32-bit integer can hold is limited to `[-2147483647, 2147483648]`.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ![](./images/variables-large-integers.png)
 

@@ -12,11 +12,9 @@ The condition consists of one or multiple boolean checks combined with [boolean 
 
 The expression can include command fields, window/entity/metric fields, user-defined variables, literal values, and [functions](functions.md).
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 [`Override`](overrides.md) rules take precedence over the condition.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Status
 

@@ -131,11 +131,9 @@ ifEmpty(string a, string b) object
 
 Returns `b` if `a` is either `null` or an empty string.
 
-<!-- markdownlint-enable MD032 -->
-:::tip Unexpected Inputs
-The function accepts arguments of any data type, such as objects and numbers.
+:::tip Accepted data types
+The function also accepts arguments of any data type, such as objects and numbers.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Examples:
 

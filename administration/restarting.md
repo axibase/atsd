@@ -59,11 +59,9 @@ Run the `jps` utility to display Java processes running under the current user.
 | HBase | HMaster |
 | ATSD | Server |
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 ATSD is configured to run without `HRegionServer` and `HQuorumPeer` processes in Docker containers.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Restarting All Services
 
@@ -103,11 +101,9 @@ Execute scripts as usual.
 /opt/atsd/bin/update.sh
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 ATSD is configured to run without `HRegionServer` and `HQuorumPeer` processes in Docker containers.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Stopping Services
 

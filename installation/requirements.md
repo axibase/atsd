@@ -8,11 +8,9 @@
 | Processor | `10+` GHz | `10+` GHz |
 | Disk Type | Magnetic or SSD | Magnetic or SSD |
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 To calculate the available CPU capacity, multiply the number of cores by CPU clock speed, for example `4` x `2.5` GHz = `10` GHz.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Disk Space
 

@@ -22,11 +22,9 @@ The widgets can be configured to load data from the following sources:
 
 ## Connecting ChartLab to Custom ATSD
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Your ATSD instance must be publicly accessible on a DNS/IP address.
 :::
-<!-- markdownlint-disable MD032 -->
 
 * Log in to ATSD server via SSH.
 

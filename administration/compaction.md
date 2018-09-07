@@ -30,11 +30,9 @@ The following compression codecs are supported.
 * `gz`
 * `lzo`
 
-<!-- markdownlint-enable MD032 -->
 :::tip lzo
 The `lzo` codec requires installation of additional packages on the HBase region servers.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Changing the existing codec is supported however the change is applied only to new files and files re-written by HBase during a major compaction.
 
