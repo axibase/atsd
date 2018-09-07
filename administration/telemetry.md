@@ -16,7 +16,7 @@ No information about named records (such as entity names or configuration object
 
 ## Referrer
 
-When opening ATSD documentation links in the ATSD user interface, the browser may send HTTP referrer information `axibase.com` which contains the remote address, the hostname, and the URL.
+When opening external documentation links in the ATSD web interface, the browser transmits HTTP referrer header containing the ATSD URL to `axibase.com`.
 
 ## Support Notification
 

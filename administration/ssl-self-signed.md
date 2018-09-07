@@ -17,8 +17,6 @@ Once replaced, the new certificate does not eliminate security warnings in user 
 :::
 <!-- markdownlint-disable MD032 -->
 
-
-
 ## Create and Import Certificate
 
 There are two options to create and import self-signed certificates into ATSD:
