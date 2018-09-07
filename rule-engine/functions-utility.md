@@ -187,7 +187,7 @@ Retrieves an ordered by datetime (ascending) map of the samples:
 (datetime, value)
 ```
 
-Where `datetime` is [DateTime](./object-datetime.md#datetime-object) object.
+Where `datetime` is [`DateTime`](./object-datetime.md#datetime-object) object.
 
 Limit can be:
 
@@ -311,15 +311,15 @@ Example:
 timestamps([int limit]) [long]
 ```
 
-Retrieves an array of ISO dates in the UTC timezone of the samples in the current window.
+Retrieves an array of [`DateTime`](./object-datetime.md#datetime-object) objects of the samples in the current window.
 
 Limit can be:
 
-1. Zero or omitted: return all timestamps.
+1. Zero or omitted: return all `DateTimes`.
 
-2. Positive: return up to the specified number of timestamps from **start** (earliest timestamps first).
+2. Positive: return up to the specified number of `DateTimes` from **start** (earliest `DateTimes` first).
 
-3. Negative: return up to the specified number of timestamps from **end** (latest timestamps first).
+3. Negative: return up to the specified number of `DateTimes` from **end** (latest `DateTimes` first).
 
 If the number is specified and exceeds the window length, the function returns all samples in the window.
 
