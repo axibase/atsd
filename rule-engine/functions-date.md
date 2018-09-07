@@ -179,7 +179,7 @@ elapsedTime("2017-08-15T00:00:00Z")
 elapsedTime(milliseconds(tags.last_updated))
 ```
 
-Format the interval in milliseconds with [`formatInterval`](functions-format.md#formatinterval) or [`formatintervalshort`](functions-format.md#formatintervalshort).
+Format the interval in milliseconds with [`formatInterval`](functions-date.md#formatinterval) or [`formatintervalshort`](functions-date.md#formatintervalshort).
 
 ```javascript
 /* Returns interval in short notation, for example 2y 201d */
