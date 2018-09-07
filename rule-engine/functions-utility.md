@@ -221,7 +221,7 @@ Example:
     samples(3) = ${samples(3)}
     samples(-2)_formatted = [
         @foreach{item: samples(-2)}
-            (@{date_format(item.key.millis, "yyyy-MM-dd HH:mm:ss")}, @{item.value}),
+            (@{date_format(item.key, "yyyy-MM-dd HH:mm:ss")}, @{item.value}),
         @end{}
     ]
     ```
@@ -345,7 +345,7 @@ Example:
     timestamps(3) = ${timestamps(3)}
     timestamps(-2)_formatted = [
         @foreach{item: timestamps(-2)}
-            @{date_format(item.millis, "yyyy-MM-dd HH:mm:ss")},
+            @{date_format(item, "yyyy-MM-dd HH:mm:ss")},
         @end{}
     ]
     ```
