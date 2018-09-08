@@ -44,8 +44,8 @@ Example of a correct `hosts` file:
 
 ```elm
 127.0.0.1    localhost
-172.0.0.4    atsd_p
-172.0.0.5    atsd_s
+192.0.2.0    atsd_p
+192.0.2.1    atsd_s
 ```
 
 Enable replication in the `hbase-site.xml` file:
