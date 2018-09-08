@@ -118,7 +118,8 @@
 * [Logging](administration/logging.md)
 * [Metric Persistence Filter](administration/metric-persistence-filter.md)
 * [Monitoring](administration/monitoring.md)
-* [Replication](administration/replication.md)
+* [Command Replication](administration/command-replication.md)
+* [HBase Replication](administration/hbase-replication.md)
 * [Restarting](administration/restarting.md)
 
 ## Integrations

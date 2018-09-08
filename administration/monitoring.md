@@ -88,6 +88,18 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |`jvm_total_physical_memory_size` | Amount of physical memory on the server, in bytes. |
 |`jvm_total_swap_space_size` | Amount of swap space on the server, in bytes.|
 
+### Replication
+
+| **Metric** | **Description** |
+|:--- | :--- |
+|`replication_successful_commands` | Number of commands successfully transmitted to the target ATSD server.|
+|`replication_discarded_commands` | Number of commands discarded due to errors.|
+|`replication_rejected_commands`| Number of commands rejected because the receiving target server was too slow. |
+
+:::tip Note
+Replication metrics are incrementing integer counter which are reset on database restart.
+:::
+
 ### Disk & File
 
 | **Metric** | **Description** |

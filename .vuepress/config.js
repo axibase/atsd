@@ -291,16 +291,17 @@ const administrationMenu = [
             ['change-base-directory.md', 'Custom Base Directory'],
             ['change-data-directory.md', 'Custom Data Directory'],
             ['change-owner.md', 'Directory Owner'],
-            ['replication.md', 'Replication'],          
+            ['command-replication.md', 'Command Replication'],  
+            ['hbase-replication.md', 'HBase Replication'],
         ]
     },
     {
         title: "Data Management", children: [
+            ['data_retention.md', 'Data Retention'], 
+            ['metric-persistence-filter.md', 'Persistence Filters'],
             ['compaction.md', 'Compaction'],
             ['compaction-test.md', 'Compaction Test'],
-            ['compaction/', 'Compression Tests'],     
-            ['data_retention.md', 'Data Retention'],       
-            ['metric-persistence-filter.md', 'Persistence Filters'],
+            ['compaction/', 'Compression Tests'],               
             ['migration/', 'Migration'],
         ]
     },

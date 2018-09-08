@@ -1,21 +1,24 @@
-# Replication
+# HBase Replication
 
-This guide describes how to configure master-to-slave replication at the HBase level where all changes on the master cluster are replayed on the slave cluster.
+This guide describes how to configure master-to-slave replication at the HBase level so that all changes on the master cluster are replayed on the slave cluster.
 
 `atsd_master` is the hostname of the HBase Master host on the _master_ cluster and
 `atsd_slave` is the hostname of the HBase Master on the _slave_ cluster.
 
+:::tip Related Feature
+To replicate the incoming data commands, enable [Command Replication](command-replication.md) option instead.
+:::
+
 ## Requirements
 
-This guide applies only on new ATSD installations.
-Executing this guide on an existing ATSD installation leads to the
-loss of all stored data on both the master and slave machines.
+:::warn
+This guide contains steps to be performed only on new ATSD installations.
+Executing these steps on an existing installation leads to the loss of stored data on both the master and slave machines.
+:::
 
-Both the master and slave machines must have static a IP addresses in the local network.
-
-Both machines must have identical hardware configurations. Review [ATSD Requirements](../installation/requirements.md).
-
-The same versions of ATSD must be installed on both machines. See [ATSD installation guides.](../installation/README.md)
+* Both the master and slave machines must have static IP addresses on the local network.
+* Both machines must have identical hardware configurations that adhere to [requirements](../installation/requirements.md).
+* The same ATSD versions must be installed on both machines.
 
 ## Installation
 

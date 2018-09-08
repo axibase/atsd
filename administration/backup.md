@@ -23,11 +23,11 @@ The database performs a regular backup of the `/opt/atsd/atsd/conf` directory an
 * [User Groups](./collector-account.md#create-user-group)
 * [Outgoing Webhooks](../rule-engine/notifications/webhook.md)
 
-Configuration backup **does not** include [data tables](./data_retention.md#data-tables) containing series, property, or message records. Refer to [Data](#data) section for data backup options.
+Configuration backup **does not** include [data tables](./data_retention.md#data-tables) containing series, property, or message records. Refer to [Data](#data) section for data backup and replication options.
 
-The database performs a [scheduled backup](#scheduled-backup) each day at a specified time.
+The database performs a [scheduled backup](#scheduled-backup) of the above configuration types on a daily basis.
 
-To reduce the amount of used disk space, backups of `metric` and `entity` types only contain records with non-default settings such as custom tags, labels, or field values.
+To reduce the amount of used disk space, backups of `metric` and `entity` types contain only records with non-default settings such as custom tags, labels, or field values.
 
 ### Manual Backup
 
@@ -82,21 +82,11 @@ Upload the selected backup files by clicking **Choose Files**. If needed, select
 
 ### Command Replication
 
-To copy the received **data** commands to another ATSD instance, configure the destination on the **Settings > Replication** page.
+To replicate incoming data commands to another ATSD instance, follow the instructions in the [Command Replication](./command-replication.md) guide.
 
-![](./images/command-replication.png)
+### HBase Replication
 
-Replication status can be monitored with the built-in metrics:
-
-* `replication_successful_commands`
-* `replication_discarded_commands`
-* `replication_rejected_commands`
-
-![](./images/command-replicate-metrics.png)
-
-### Cluster Replication
-
-To replicate all changes in the underlying database to another database instance, follow the instructions in the [Replication](./replication.md) guide.
+To replicate all changes in the underlying database to another database instance, follow the instructions in the [HBase Replication](./hbase-replication.md) guide.
 
 ### Base Directory Copy
 

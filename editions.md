@@ -25,10 +25,10 @@ Enterprise Edition supports a scale-out deployment model.
 | [LDAP Authentication](./administration/user-authorization.md) |  | ![](./images/ok.svg) |
 | [Forecasts](./forecasting/README.md) | | ![](./images/ok.svg) |
 | [Versioning](./versioning/README.md) |  | ![](./images/ok.svg) |
-| [Cluster replication](./administration/replication.md) |  | ![](./images/ok.svg) |
-| [Command replication](./administration/backup.md#command-replication) |  | ![](./images/ok.svg) |
-| [Cloudera Distribution Hadoop](./installation/cloudera.md) |  | ![](./images/ok.svg) |
-| [AWS Elastic MapReduce](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
+| [Cluster replication](./administration/hbase-replication.md) |  | ![](./images/ok.svg) |
+| [Command replication](./administration/command-replication.md) |  | ![](./images/ok.svg) |
+| [Cloudera DH Deployment](./installation/cloudera.md) |  | ![](./images/ok.svg) |
+| [AWS EMR Deployment](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
 
 ## Tools
 
