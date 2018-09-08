@@ -1,9 +1,11 @@
 # HBase Replication
 
-This guide describes how to configure master-to-slave replication at the HBase level so that all changes on the master cluster are replayed on the slave cluster.
+This guide describes how to configure replication at the HBase level to replay all changes from the primary cluster on the secondary cluster.
 
-`atsd_master` is the hostname of the HBase Master host on the _master_ cluster and
-`atsd_slave` is the hostname of the HBase Master on the _slave_ cluster.
+For the purpose of this document:
+
+* `primary_hmaster_hostname` is the hostname of the HBase Master host on the _primary_ cluster.
+* `primary_secondary_hostname` is the hostname of the HBase Master on the _secondary_ cluster.
 
 :::tip Related Feature
 To replicate the incoming data commands, enable [Command Replication](command-replication.md) option instead.
@@ -12,59 +14,41 @@ To replicate the incoming data commands, enable [Command Replication](command-re
 ## Requirements
 
 :::warn
-This guide contains steps to be performed only on new ATSD installations.
-Executing these steps on an existing installation leads to the loss of stored data on both the master and slave machines.
+The replication can be enabled only for new ATSD installations.
+Executing these steps leads to the loss of previously stored data on both the master and secondary clusters.
 :::
 
-* Both the master and slave machines must have static IP addresses on the local network.
-* Both machines must have identical hardware configurations that adhere to [requirements](../installation/requirements.md).
-* The same ATSD versions must be installed on both machines.
+* Both the primary and secondary servers must satisfy OS and hardware [requirements](../installation/requirements.md).
+* The same HBase and ATSD co-processor versions must be installed on both servers.
+* The secondary cluster must have no ATSD servers connected to it to prevent collisions.
 
 ## Installation
 
-**Complete this process on both machines – master and slave.**
+**Complete this step on both servers – primary and secondary.**
 
-Stop ATSD and all components:
+Stop ATSD and HBase components:
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-Change `/etc/hosts` to form:
-
-```sh
-sudo nano /etc/hosts
-```
+Add HMaster IP addresses to `/etc/hosts` file:
 
 ```elm
 127.0.0.1    localhost
-master_ip    master_hostname
-slave_ip     slave_hostname
+primary_hmaster_ip    primary_hmaster_hostname
+secondary_hmaster_ip     secondary_hmaster_hostname
 ```
-
-:::warning Note
-Remove the following mappings, if present, from the `hosts` file on both the master and slave.
-
-```elm
-127.0.1.1    atsd_master
-```
-
-```elm
-127.0.1.1    atsd_slave
-```
-
-:::
 
 Example of a correct `hosts` file:
 
 ```elm
 127.0.0.1    localhost
-172.30.0.66    atsd_master
-172.30.0.78    atsd_slave
+172.0.0.4    atsd_p
+172.0.0.5    atsd_s
 ```
 
-Add the `hbase.replication` property to the `configuration` tag in the
-`hbase-site.xml` file:
+Enable replication in the `hbase-site.xml` file:
 
 ```xml
 <property>
@@ -73,8 +57,7 @@ Add the `hbase.replication` property to the `configuration` tag in the
 </property>
 ```
 
-**SLAVE: Only complete this process on the slave
-machine.**
+**SECONDARY: Complete this process on the secondary HMaster server.**
 
 Edit the `atsd-all.sh` file to disable ATSD startup:
 
@@ -126,8 +109,7 @@ The output contains a list of ATSD tables, all starting with `atsd_`:
 
 ![](./images/atsd_tables.png "atsd_tables")
 
-**MASTER: Only complete this process on the
-master machine.**
+**PRIMARY: Complete this step on the primary HMaster server.**
 
 Start Hadoop and HBase:
 
@@ -142,7 +124,7 @@ Start Hadoop and HBase:
 Add replication peer.
 
 ```sh
-echo "add_peer '1', \"atsd_slave:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
+echo "add_peer '1', \"secondary_hmaster_hostname:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
 ```
 
 Ensure that the peer is set.
@@ -153,7 +135,7 @@ echo "list_peers" | /opt/atsd/hbase/bin/hbase shell
 
 ```txt
 PEER_ID CLUSTER_KEY STATE
-1 atsd_slave:2181:/hbase ENABLED
+1 secondary_hmaster_hostname:2181:/hbase ENABLED
 1 row(s) in 0.0930 seconds
 ```
 
@@ -163,8 +145,7 @@ Run replication configuration script:
 /opt/atsd/hbase_util/configure_replication.sh master
 ```
 
-This command truncates all ATSD tables and enables replication on all
-ATSD column families.
+This command **truncates** all ATSD tables and enables replication on all ATSD column families.
 
 Start ATSD:
 
@@ -172,58 +153,59 @@ Start ATSD:
 /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-Verify that ATSD tables are present: list tables
+Verify that ATSD tables are present:
 
 ```sh
 echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
-Output contains a list of ATSD tables, all starting with `atsd_`.
+Output contains a list of replicated ATSD tables, all starting with `atsd_`.
 
-![](./images/atsd_tables.png "atsd_tables")
+![](./images/atsd_tables.png)
 
 ## Replication for New Tables
 
-New tables created in the source cluster are not automatically replicated. Configure the replication for new tables as described below.
+New tables created as part of product upgrades in the primary cluster are not automatically replicated. Enable replication for new tables manually as described below.
 
-> MASTER: Complete this step on the MASTER server.
+`atsd_new_table` is the name of the new table.
+
+**PRIMARY: Complete this step on the primary HMaster server.**
 
 Write the table schema to a file:
 
 ```sh
-/opt/atsd/hbase_util/configure_replication.sh schema atsd_new > atsd_new_schema.txt
+/opt/atsd/hbase_util/configure_replication.sh schema atsd_new_table > ts_schema.txt
 ```
 
-Copy table schema file to the slave machine:
+Copy table schema file to the secondary HMaster server.
 
 ```sh
-scp atsd_new_schema.txt atsd_slave:/tmp
+scp ts_schema.txt secondary_hmaster_hostname:/tmp
 ```
 
-> SLAVE: Complete this step on the slave machine.
+**SECONDARY: Complete this step on the secondary HMaster server.**
 
-Create the new table in the slave database:
+Create new tables in the secondary cluster:
 
 ```sh
-/opt/atsd/hbase/bin/hbase shell < /tmp/atsd_new_schema.txt
+/opt/atsd/hbase/bin/hbase shell < /tmp/ts_schema.txt
 ```
 
-> MASTER: Complete this step on the master machine.
+**PRIMARY: Complete this step on the primary HMaster server.**
 
 Enable replication for the new table:
 
 ```sh
-/opt/atsd/hbase_util/configure_replication.sh flag atsd_new
+/opt/atsd/hbase_util/configure_replication.sh flag atsd_new_table
 ```
 
-Verify that the new table is being replicated using the verification
-instructions below.
+Verify that the new table is being replicated using the verification instructions below.
 
 ## Verifying Replication
 
 ### Option 1
 
-> SLAVE: Complete this step on the slave machine.
+**SECONDARY: Complete this step on the secondary HMaster server.**
 
 Check HBase logs for replication activity:
 
@@ -231,7 +213,7 @@ Check HBase logs for replication activity:
 tail -n 1000 /opt/atsd/hbase/logs/hbase-axibase-regionserver-atsd_slave.log | grep replicated
 ```
 
-The output contains replication activity and the of amount tables replicated on the slave machine:
+The output contains replication activity and the of amount tables replicated in the secondary cluster:
 
 ```txt
 2015-07-17 16:39:22,926 INFO  regionserver.ReplicationSink (ReplicationS
@@ -246,7 +228,7 @@ ink.java:replicateEntries(158)) - Total replicated: 1
 
 ### Option 2
 
-> MASTER: Complete this step on the master machine.
+**PRIMARY: Complete this step on the primary HMaster server.**
 
 Open the **Alert > Rules** page in the ATSD web interface.
 
@@ -271,11 +253,9 @@ table:
 echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-Output:
-
 ![](./images/atsd_rule_table_scan1.png)
 
-> SLAVE: Complete this step on the slave machine.
+**SECONDARY: Complete this step on the secondary HMaster server.**
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:
@@ -284,10 +264,10 @@ table:
 echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
-The output contains the same amount of rows as on the master:
+The output contains the same amount of rows as in the primary cluster:
 
 ![](./images/atsd_rule_table_scan1.png "atsd_rule_table_scan")
 
 ## Recovery
 
-If the master loses connection to the slave, it buffers the transactions for the duration of the connection loss and replays them once the connection is re-established. No data is lost in the process.
+If the primary cluster loses connection to the secondary cluster, it buffers the transactions for the duration of the connection loss and replays them once the connection is re-established. No data is lost in the process.

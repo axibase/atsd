@@ -94,7 +94,7 @@ https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics
 |:--- | :--- |
 |`replication_successful_commands` | Number of commands successfully transmitted to the target ATSD server.|
 |`replication_discarded_commands` | Number of commands discarded due to errors.|
-|`replication_rejected_commands`| Number of commands rejected because the receiving target server was too slow. |
+|`replication_rejected_commands`| Number of commands rejected because the receiving target server is too slow. |
 
 :::tip Note
 Replication metrics are incrementing integer counter which are reset on database restart.
