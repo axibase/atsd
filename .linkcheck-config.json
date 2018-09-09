@@ -76,5 +76,6 @@
         ,{ "pattern": "https://data.maryland.gov/api/views/.*"}
         ,{ "pattern": "https://www.ssb.no/statistikkbanken/selectvarval/Define.asp.*"}
         ,{ "pattern": "https://www.portoflosangeles.org/.*"}
-        
+        ,{ "pattern": "https://cdec.water.ca.gov/cgi-progs/queryF?s=ORO&d=13-Feb-2017+02:57&span=1week"}
+
     ]}
