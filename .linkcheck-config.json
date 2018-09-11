@@ -78,4 +78,7 @@
         ,{ "pattern": "https://www.portoflosangeles.org/.*"}
         ,{ "pattern": "https://cdec.water.ca.gov/cgi-progs/.*"}
         ,{ "pattern": "https://cdec.water.ca.gov/index.html"}
+        ,{ "pattern": "https://nylottery.ny.gov/wps/portal/.*"}
+        
+        
     ]}
