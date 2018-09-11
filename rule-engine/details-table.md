@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `detailsTable` function assembles a table consisting of window and command fields printed in the specified format.
+The `detailsTable` function prints a two-column table consisting of window and command fields in the specified format.
 
 Decimal numbers presented in the table are rounded to 5 significant digits, except on the **Logging** and **Derived Commands** tabs.
 
@@ -11,6 +11,14 @@ Decimal numbers presented in the table are rounded to 5 significant digits, exce
 ```csharp
 detailsTable(string format)
 ```
+
+## Formats
+
+* `markdown`
+* `ascii`
+* `html`
+* `property`
+* `csv`
 
 ## Contents
 
@@ -22,14 +30,6 @@ detailsTable(string format)
 * Value
 * Statistical functions
 * User-defined variables
-
-## Formats
-
-* `markdown`
-* `ascii`
-* `html`
-* `property`
-* `csv`
 
 ## Examples
 

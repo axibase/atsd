@@ -145,9 +145,15 @@ Variables can be included in a condition.
 
 ## Execution
 
-Depending on the sequence of boolean checks in the condition which refers to a variable, such variable can be evaluated for **each** command.
+Depending on the sequence of boolean checks in the condition, referenced variables can be evaluated for **each** incoming or exiting command.
 
-If such variable invokes an external function such as [`scriptOut`](functions-script.md), such function must execute quickly, within a few seconds. Avoid calling long-running functions in variables.
+If the window status is `OPEN` or `REPEAT`, all variables are evaluated regardless of condition.
+
+If a variable invokes an external function such as [`scriptOut`](functions-script.md), such function must execute quickly, within a few seconds.
+
+:::warning
+Avoid calling long-running functions in variables.
+:::
 
 The current value of a variable can be accessed on the **Window Details** page.
 

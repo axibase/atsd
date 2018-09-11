@@ -9,6 +9,7 @@ Table functions perform various operations on strings, lists, and maps to create
 * [`addTable` for map](#addtable-for-map)
 * [`addTable` for maps](#addtable-for-maps)
 * [`addTable` for list](#addtable-for-list)
+* [`addTable` for objects](#addtable-for-objects)
 
 ## `addTable` for map
 
@@ -123,13 +124,13 @@ os=Linux
 addTable([map], string format[, [string header]]) string
 ```
 
-Prints a collection of maps `map` as a multi-column table in the specified `format`, with optional `header`.
+Prints a collection of maps as a multi-column table in the specified `format`, with optional `header`.
 
 The first column in the table contains unique keys from all maps in the collection, whereas the second and subsequent columns contain map values for the corresponding key in the first column.
 
 The default table header is 'Name, Value-1, ..., Value-N'.
 
-If the header argument `h` is specified as a collection of strings, it replaces the default header. The number of elements in the header collection must be the same as the number of maps plus `1`.
+If the header argument is specified as a collection of strings, it replaces the default header. The number of elements in the header collection must be the same as the number of maps plus `1`.
 
 Examples:
 
@@ -323,4 +324,28 @@ addTable(executeSqlQuery(query), 'property', false)
 datetime=value
 2018-01-31T12:00:13.242Z=37
 2018-01-31T12:00:28.253Z=36
+```
+
+## `addTable` for objects
+
+```csharp
+addTable([object], string format [, [string] header]) string
+```
+
+Prints a collection of objects as a multi-column table in the specified `format`.
+
+Each column in the table contains values extracted from the object field with a corresponding name.
+
+If the header is not specified, the default table header consists of unique field names extracted from all objects in the collection.
+
+* `csv` format example for [`db_messages`](functions-message.md#db_messages) function.
+
+```javascript
+addTable(db_messages('1 hour', 'webhook', 'jenkins', ['build.phase':'STARTED', 'name': 'AxibaseTSD'], null), 'csv')
+```
+
+```csv
+entity,severity,source,tags,timestamp,type
+jenkins,UNDEFINED,jenkins,"{name=AxibaseTSD, build.number=8558, build.phase=STARTED}",1536600727499,webhook
+jenkins,UNDEFINED,jenkins,"{name=AxibaseTSD, build.number=8557, build.phase=STARTED}",1536598385820,webhook
 ```

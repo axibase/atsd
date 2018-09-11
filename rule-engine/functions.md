@@ -88,9 +88,10 @@ Name | Description
 Name | Description
 ---|---
 [`addTable for list`](functions-table.md#addtable-for-list)| Prints list of lists as a multi-column table in the specified format.
-[`addTable for map`](functions-table.md#addtable-for-map)| Prints the input key-value map as a two-column table in the specified format.
+[`addTable for map`](functions-table.md#addtable-for-map)| Prints a key-value map as a two-column table in the specified format.
 [`addTable for maps`](functions-table.md#addtable-for-maps)| Prints a collection of maps as a multi-column table in the specified format.
-[`detailsTable`](details-table.md)| Assembles a table consisting of window and command fields.
+[`addTable for objects`](functions-table.md#addtable-for-objects)| Prints a collection of objects as a multi-column table in the specified format.
+[`detailsTable`](details-table.md)| Prints a two-column table consisting of window and command fields in the specified format.
 
 ### Links
 
