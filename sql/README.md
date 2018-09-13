@@ -1117,7 +1117,7 @@ AND datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY, '
 
 ### Local Time Boundaries
 
-To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix time with millisecond granularity.
+To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix time with millisecond precision.
 
 ```sql
 SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') AS local_datetime, value
@@ -2534,7 +2534,7 @@ GROUP BY PERIOD(1 hour)
 
 #### DATE_PARSE
 
-The `date_parse` function parses the date and time string into Unix time with millisecond granularity.
+The `date_parse` function parses the date and time string into Unix time with millisecond precision.
 
 ```java
 date_parse(string datetime[, string time_format[, string time_zone]])
@@ -2724,7 +2724,7 @@ YEAR (datetime | time | datetime expression [, timezone])
 
 #### CURRENT_TIMESTAMP
 
-The `CURRENT_TIMESTAMP` function returns current database time in [ISO format](../shared/date-format.md). The function is analogous to the `NOW` functions which returns current database time (Unix time, millisecond granularity).
+The `CURRENT_TIMESTAMP` function returns current database time in [ISO format](../shared/date-format.md). The function is analogous to the `NOW` functions which returns current database time (Unix time, millisecond precision).
 
 ```sql
 SELECT CURRENT_TIMESTAMP
