@@ -31,7 +31,7 @@ series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_b
 ```
 
 ```bash
-series e:${entity} m:${metric}_percent=${value / value('total') * 100.0} ms:${command_time}
+series e:${entity} m:${metric}_percent=${value / value('total') * 100.0} ms:${command_time.millis}
 ```
 
 ### Tags
@@ -39,7 +39,7 @@ series e:${entity} m:${metric}_percent=${value / value('total') * 100.0} ms:${co
 A special placeholder `${commandTags}` is provided to print out all command tags in the [Network API](../api/network/series.md#syntax) syntax. Use it to append all tags to the command without knowing tag names in advance.
 
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${command_time}
+series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${command_time.millis}
 ```
 
 The above expression transforms the input command into a derived command as follows:
@@ -88,20 +88,20 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.milli
 
 #### Received Time
 
-To store a derived command with the same time as an incoming command, set `ms:` millisecond parameter to [`${command_time}`](window-fields.md#date-fields). This placeholder represents the time of the command that triggered the window status event.
+To store a derived command with the same time as an incoming command, set `ms:` millisecond parameter to [`${command_time.millis}`](window-fields.md#date-fields). This placeholder represents the timestamp of the command that triggered the window status event.
 
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${command_time}
+series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${command_time.millis}
 ```
 
 :::warning command_time Value
-If the **Check on Exit** setting is turned on, some status change events are caused by oldest commands being removed from the window. In such cases the `command_time` field contains the time of the **exiting** command, rounded to seconds.
+If **Check On Exit** setting is enabled and the status change is caused by a removed command, the `command_time` field contains the timestamp of the exiting command (oldest command), rounded to seconds.
 :::
 
 To round the input time to seconds, use `s:` seconds parameter and [`floor`](functions.md#mathematical) function:
 
 ```bash
-series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(command_time/1000)}
+series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(command_time.millis/1000)}
 ```
 
 ## Frequency
