@@ -113,7 +113,7 @@ Returns the length of a count-based window.
 windowStartTime() long
 ```
 
-Returns time when the first command is received by the window, in Unix time with millisecond granularity.
+Returns time when the first command is received by the window, in Unix time with millisecond precision.
 
 ### `milliseconds`
 
