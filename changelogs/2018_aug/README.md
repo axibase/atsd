@@ -21,7 +21,7 @@ Issue| Category   | Type   | Subject
 5615|rule engine|Bug|[`last_open()`](../../rule-engine/functions-alert-history.md#last_open) function overloads the database.
 5614|rule engine|Bug|`NullPointerException` encountered during rule test if [**Load History**](../../administration/logging.md) is enabled.
 5611|rule engine|Bug|Exception raised when saving [alert history](../../administration/logging.md) for newly created entity.
-5609|rule engine|Bug|Set [`window_first_time`](../../rule-engine/window-fields.md#date-fields) field to empty string if the window is empty.
+5609|rule engine|Bug|Set [`command_first_time`](../../rule-engine/window-fields.md#date-fields) field to empty string if the window is empty.
 5607|sql|Bug|Incorrect metadata returned by the [`/api/sql`](../../sql/api.md#sql-query-api-endpoint) endpoint if the column alias contains line breaks.
 5604|rule engine|Bug|Alert history not [logged](../../administration/logging.md) if message text is empty.
 5603|rule editor|Bug|Standardize button style and placements in the rule editor.

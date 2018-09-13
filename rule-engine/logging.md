@@ -51,7 +51,7 @@ The default logger named `atsd.alert.default` is available even if undefined in 
     </triggeringPolicy>
 
     <!-- Pattern. The fields can include both pre-defined fields such as %date{ISO8601}, %level, %thread, %logger, %message%n
-         as well as placeholders referenced with %X{name}, for example %X{entity} or %X{alert_open_datetime}.
+         as well as placeholders referenced with %X{name}, for example %X{entity} or %X{open_time}.
          Available placeholders are listed below. -->
     <encoder>
         <pattern>%message%n</pattern>
@@ -82,7 +82,7 @@ Create multiple custom loggers to customize alert logging for various rules.
         <maxFileSize>10Mb</maxFileSize>
     </triggeringPolicy>
     <encoder>
-        <pattern>%X{rule},%X{entity},%X{alert_open_datetime},%message%n</pattern>
+        <pattern>%X{rule},%X{entity},%X{open_time},%message%n</pattern>
     </encoder>
 </appender>
 <logger name="atsd.alert.custom" level="INFO" additivity="false">
@@ -92,14 +92,14 @@ Create multiple custom loggers to customize alert logging for various rules.
 
 ## File Placeholders
 
-Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syntax, for example `%X{entity}` or `%X{alert_open_datetime}`.
+Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syntax, for example `%X{entity}` or `%X{open_time}`.
 
 ### Base Fields
 
 **Name**|**Example**
 :---|:---
 `alert_duration` | `00:00:05:12`
-`alert_duration_interval` |
+`alert_duration_interval` | `1m:0s`
 `alert_message` | `Alert open.`
 `alert_type` | `OPEN`
 `columns` | `{memkb = round(value/1024)}` - variables
@@ -123,22 +123,24 @@ Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syn
 `status` | `OPEN`
 `tags.tag_name` | `nurswgvml003`
 `tags` | `host=nurswgvml003`
-`timestamp` | `145678784500` (Unix time in milliseconds)
+`update_time` | `2018-09-13T12:03Z[Etc/UTC]`
 `value` | `3103100000`
 `window` | `length(1)`
 `threshold` | `max() > 20`
 
-### Date Fields
+### [Date Fields](./window-fields.md#date-fields)
 
-Date fields ending with `_time` contain date in the local server time zone, for example `2017-05-30 14:05:39 PST`.
-
-Date fields ending with `_datetime` contain date in [ISO format](../shared/date-format.md) in UTC time zone, for example `2017-05-30T06:05:39Z`.
-
-* `alert_open_time`
-* `alert_open_datetime`
-* `received_time`
-* `received_datetime`
-* `event_time`
-* `event_datetime`
-* `window_first_time`
-* `window_first_datetime`
+* `now`
+* `open_time`
+* `repeat_time`
+* `cancel_time`
+* `change_time`
+* `add_time`
+* `remove_time`
+* `update_time`
+* `command_time`
+* `command_first_time`
+* `command_last_time`
+* `window_duration`
+* `alert_duration`
+* `alert_duration_interval`

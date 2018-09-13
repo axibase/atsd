@@ -96,13 +96,11 @@ for key, value in sorted(os.environ.items()):
 alert_duration=00:00:00:29
 alert_duration_interval=29s
 alert_message=
-alert_open_datetime=2018-07-03T09:38:00Z
-alert_open_time=2018-07-03 09:38:00
+open_time=2018-07-03T09:38:00Z[Etc/UTC]
 alert_type=REPEAT
 entity=atsd
 entity_tags=app=ATSD;environment=dev;loc_area=NUR
-event_datetime=2018-07-03T09:38:30Z
-event_time=2018-07-03 09:38:30
+command_time=2018-09-13T12:17:45Z[Etc/UTC]
 condition=value >= 0
 message=
 metric=timer_15s
@@ -111,8 +109,7 @@ min_interval_expired=
 mx=0.42857142857142855
 open_value=0
 properties=
-received_datetime=2018-07-03T09:38:30Z
-received_time=2018-07-03 09:38:30
+update_time=2018-09-13T12:03Z[Etc/UTC]
 repeat_count=2
 repeat_interval=14
 rule_expression=value >= 0
@@ -125,8 +122,7 @@ status=REPEAT
 tags=host=NURSWGVML007;disk=/
 tags.host=NURSWGVML007
 value=0
-window_first_datetime=2018-07-03T09:38:00Z
-window_first_time=2018-07-03 09:38:00
+command_first_time=2018-09-13T12:03Z[Etc/UTC]
 window=length(5)
 ```
 

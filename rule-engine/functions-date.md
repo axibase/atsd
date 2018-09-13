@@ -138,7 +138,7 @@ The function raises an error if the time zone or offset from UTC is specified in
 ```javascript
 /* Returns true if the difference between the event time and start
 time (ISO) retrieved from the property record is greater than 5 minutes. */
-timestamp - milliseconds(property('docker.container::startedAt')) >  5*60000
+command_time - milliseconds(property('docker.container::startedAt')) >  5*60000
 ```
 
 ### `seconds`
