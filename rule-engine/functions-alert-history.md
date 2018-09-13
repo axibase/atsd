@@ -14,6 +14,8 @@ To call this function, enable [Alert History](logging.md#logging-to-database) lo
 
 ### `AlertHistory` Object
 
+<!-- markdownlint-disable MD102 -->
+
 **Field** | **Type** | **Description** | **Example**
 ----|-----|-----|------
 `rule` | `string` | Rule name. | `CPU high alert`
@@ -24,7 +26,7 @@ To call this function, enable [Alert History](logging.md#logging-to-database) lo
 `type` | `string` | Message type | `web`
 `source` | `string` | Message source | `access.log`
 `keys` | `string` | Command tags or property keys | `{"docker-host":"nurswghbs001"}`
-`timestamp` | `long `| Command time in Unix time with millisecond granularity.<br>Default: `0` | `1533109937000`
+`timestamp` | `long`| Command time in Unix time with millisecond granularity.<br>Default: `0` | `1533109937000`
 `message` | `string` | Message text | `Application restarted`
 `value` | `double` | Command value.<br>Default: `NaN`. | `85.2`
 `open_value` | `double` | Open value.<br>Default: `NaN`. | `82.7`
@@ -47,6 +49,8 @@ To call this function, enable [Alert History](logging.md#logging-to-database) lo
 `window` | `string` | Window duration. | `time(5 minute)`
 `repeat_count` | `integer` | Alert repeat counter.<br>Default: `0` | `5`
 `{user-variable-name}` | `string` | User-defined variable value. | `last_open().valueCnt`: `2`
+
+<!-- markdownlint-enable MD102 -->
 
 ## Examples
 
