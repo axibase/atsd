@@ -42,47 +42,47 @@ detailsTable('ascii')
 ```
 
 ```txt
-+-------------------+------------------------------+
-| Name              | Value                        |
-+-------------------+------------------------------+
-| name              | atsd                         |
-| label             | Axibase Time Series Database |
-| app               | ATSD                         |
-| host              | NURSWGVML007                 |
-| metric            | jvm_memory_used_percent      |
-| metric_label      | JVM Memory Used, %           |
-| expression        | avg() > 0                    |
-| window            | time(1 minute)               |
-| severity          | warning                      |
-| alert_type        | OPEN                         |
-| timezone          | GMT (+00:00)                 |
-| command_time | 2018-09-13T12:18Z[Etc/UTC]          |
-| command_first_time        | 2018-09-13T12:18Z[Etc/UTC]          |
-| update_time     | 2018-09-13T12:18:00.007Z[Etc/UTC]          |
-| open_time   | 2018-09-13T12:18:00.007Z[Etc/UTC]         |
-| value             | 22.72808635185156            |
-| status            | OPEN                         |
-| tags.host         | NURSWGVML007                 |
-| count             | 3                            |
-| sum               | 62.80243733055981            |
-| avg               | 20.93414577685327            |
-| first             | 18.97742859958052            |
-| last              | 22.72808635185156            |
-| diff              | 3.7506577522710387           |
-| max               | 22.72808635185156            |
-| min               | 18.97742859958052            |
-| variance          | 3.5367305603537185           |
-| stddev            | 1.8806197277370347           |
-| wavg              | 21.559255402231774           |
-| wtavg             | 22.10622632443797            |
-| percentile_50     | 21.09692237912773            |
-| percentile_75     | 22.72808635185156            |
-| percentile_90     | 22.72808635185156            |
-| percentile_95     | 22.72808635185156            |
-| percentile_99     | 22.72808635185156            |
-| slope             | 1.2502e-4                    |
-| intercept         | -1.8922e8                    |
-+-------------------+------------------------------+
++-------------------+-----------------------------------+
+| Name              | Value                             |
++-------------------+-----------------------------------+
+| name              | atsd                              |
+| label             | Axibase Time Series Database      |
+| app               | ATSD                              |
+| host              | NURSWGVML007                      |
+| metric            | jvm_memory_used_percent           |
+| metric_label      | JVM Memory Used, %                |
+| expression        | avg() > 0                         |
+| window            | time(1 minute)                    |
+| severity          | warning                           |
+| alert_type        | OPEN                              |
+| timezone          | GMT (+00:00)                      |
+| command_time      | 2018-09-13T12:18Z[Etc/UTC]        |
+| command_first_time| 2018-09-13T12:18Z[Etc/UTC]        |
+| update_time       | 2018-09-13T12:18:00.007Z[Etc/UTC] |
+| open_time         | 2018-09-13T12:18:00.007Z[Etc/UTC] |
+| value             | 22.72808635185156                 |
+| status            | OPEN                              |
+| tags.host         | NURSWGVML007                      |
+| count             | 3                                 |
+| sum               | 62.80243733055981                 |
+| avg               | 20.93414577685327                 |
+| first             | 18.97742859958052                 |
+| last              | 22.72808635185156                 |
+| diff              | 3.7506577522710387                |
+| max               | 22.72808635185156                 |
+| min               | 18.97742859958052                 |
+| variance          | 3.5367305603537185                |
+| stddev            | 1.8806197277370347                |
+| wavg              | 21.559255402231774                |
+| wtavg             | 22.10622632443797                 |
+| percentile_50     | 21.09692237912773                 |
+| percentile_75     | 22.72808635185156                 |
+| percentile_90     | 22.72808635185156                 |
+| percentile_95     | 22.72808635185156                 |
+| percentile_99     | 22.72808635185156                 |
+| slope             | 1.2502e-4                         |
+| intercept         | -1.8922e8                         |
++-------------------+-----------------------------------+
 ```
 
 ### `markdown`
