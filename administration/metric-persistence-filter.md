@@ -280,7 +280,7 @@ To stop storing such series, create a collection with filter patterns on the **D
 
 ![](./images/metric_persistence_filter_3.png "names_collections")
 
-Open the **Metric Editor** and create a filter expression to ignore matching series.
+Open metric editor and enter a filter expression to ignore matching series.
 
 ```javascript
 !likeAny(tags.command, collection('ignore-collector-process-commands'))

@@ -31,7 +31,7 @@ Install and activate the bridge as follows:
 * Skip the welcome page.
 * Accept the license agreement.
 * Choose the directory containing the downloaded license file.
-* Select the **Complete** option.
+* Select **Complete**.
 * Confirm and finish the installation.
 
 ## Configure ODBC Data Source
@@ -40,11 +40,11 @@ Open **Start**, type `ODBC` and launch the ODBC Data Source Manager from an Admi
 
 ![](./images/ODBC_1.png)
 
-Open **System DSN** tab, click **Add...**
+Open the **System DSN** tab, click **Add...**
 
 ![](./images/openlink_ODBC_1.png)
 
-Choose the **OpenLink Lite for JDK 1.5 (Unicode)** option, click **Finish**
+Choose **OpenLink Lite for JDK 1.5 (Unicode)**, click **Finish**
 
 ![](./images/openlink_ODBC_2.png)
 

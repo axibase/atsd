@@ -98,7 +98,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_17.png)
 
-* Select **Merge** shape. A link appears between the source and the **Merge** shapes.
+* Select the **Merge** shape. A link appears between the source and the **Merge** shapes.
 
   ![](./images/modeler_18.png)
 
@@ -210,15 +210,15 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](./images/modeler_39.png)
 
-* Right-click the **Database** shape and select **Edit...**
-  * Choose **Data source**
+* Right-click the **Database** shape and select **Edit...**.
+  * Choose **Data source**.
   * Type `inflation.cpi.composite.price` in **Table name**. This is the name of the new metric inserted into ATSD.
-  * Select the **Insert into table** option
-  * Set **Quote table and column names** to **Never**
+  * Select **Insert into table**.
+  * Set **Quote table and column names** to **Never**.
 
   ![](./images/modeler_40.png)
 
-* Click **Advanced...**
+* Click **Advanced...**.
 
   ![](./images/modeler_41.png)
 

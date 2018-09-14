@@ -39,7 +39,7 @@ The results can also be exported [on schedule](../reporting/scheduled-exporting.
 
 The database provides a build-in API Client to test REST API endpoints. This section shows how to export data using the [series query](../api/data/series/query.md) endpoint.
 
-Open **Data > API Client** page.
+Open the **Data > API Client** page.
 
 ![](./resources/getting-started-3_2.png)
 

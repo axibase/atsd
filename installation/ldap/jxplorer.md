@@ -22,7 +22,7 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 ![](./resources/confirm_exception.png)
 
-* Open **Preferences > Advanced > Certificates > View Certificates** page.
+* Open the **Preferences > Advanced > Certificates > View Certificates** page.
 
 ![](./resources/view_certificates.png)
 

@@ -34,7 +34,7 @@ these commands on the **Metrics > Data Entry** page.
   ![](./images/input_data.png)
 
 * Choose **Other Databases > ODBC...** in the **Input Data** configuration window.
-* Open **ODBC Connection** dialog.
+* Open the **ODBC Connection** dialog.
 
   ![](./images/choose_odbc.png)
 

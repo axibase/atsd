@@ -221,7 +221,7 @@ Remove old jar files from the local file system on each HBase Region Server.
 
 #### Remove Coprocessor Settings
 
-Open the **Clusters > Cluster > HBase-2** in Cloudera Manager.
+Open the **Clusters > Cluster > HBase-2** tab in Cloudera Manager.
 
 Open the **Configuration** tab.
 

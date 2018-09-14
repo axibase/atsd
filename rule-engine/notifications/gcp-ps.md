@@ -28,7 +28,7 @@ The response status code and response content is recorded in `atsd.log` if the *
 
 ## Configure GCP Pub/Sub Webhook
 
-* Open **Alerts > Outgoing Webhooks** page.
+* Open the **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `GCP-PS` type.
 * Fill out the **Name** field.
 * Enter the **Project ID**, **Topic**, **Service Account** and select **Private Key Alias**.

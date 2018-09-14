@@ -79,11 +79,11 @@ The License Manager window appears after the installation wizard exits. If the w
 
   ![](./images/ODBC_1.png)
 
-* Open **System DSN** tab, click **Add...**.
+* Open the **System DSN** tab, click **Add...**.
 
   ![](./images/ODBC_2.png)
 
-* Choose the **ODBC-JDBC Gateway**, click **Finish**.
+* Select **ODBC-JDBC Gateway**, click **Finish**.
 
   ![](./images/ODBC_3.png)
 

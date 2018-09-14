@@ -204,7 +204,7 @@ SPSS provides two alternatives to aggregate data by period.
 
 Create a new metric in ATSD to store new series calculated in SPSS.
 
-* Log in to ATSD, open the **Metrics** > **Data entry** page and send a `metric` command.
+* Log in to ATSD, open the **Metrics > Data entry** page and send a `metric` command.
 
 ```ls
 metric m:cpi_price

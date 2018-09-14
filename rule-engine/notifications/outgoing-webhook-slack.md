@@ -56,7 +56,7 @@ Slack Bot is a special account created for automation purposes.
 
 * Perform the following actions to prepare a **Request URL** for accepting notifications from Slack servers.
 
-  Open the **Settings > Users > Create Webhook User** wizard in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Slack.
+  Open the **Settings > Users > Create Webhook User** page in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Slack.
 
   ![](./images/outgoing_webhook_slack_user.png)
 

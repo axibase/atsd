@@ -37,7 +37,7 @@ The response status code and response content is recorded in `atsd.log` if the *
 
 ## Configure AWS SQS Webhook
 
-* Open **Alerts > Outgoing Webhooks** page.
+* Open the **Alerts > Outgoing Webhooks** page.
 * Click **Create** and select the `AWS-SQS` type.
 * Fill out the **Name**, **Region**, **Access Key Id**, and **Secret Access Key** fields.
 * Enter the **Queue Path**.

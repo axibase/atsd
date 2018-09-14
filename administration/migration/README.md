@@ -63,7 +63,7 @@ Allocate additional disk space, if necessary.
 
 Log in to the ATSD web interface.
 
-Open the **SQL > SQL Console**.
+Open the **SQL > SQL Console** page.
 
 Count rows for the previously selected metric and compare the results.
 

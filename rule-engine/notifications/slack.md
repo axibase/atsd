@@ -99,7 +99,7 @@ When sending messages to either a public or private channel you can just use the
 
 ## Configure Webhook in ATSD
 
-* Open **Alerts > Webhooks** page.
+* Open the **Alerts > Webhooks** page.
 * Click an existing `SLACK` template, or click **Create** below and select the `SLACK` type.
 * Specify the unique **Name** of the notification.
 
@@ -118,7 +118,7 @@ When sending messages to either a public or private channel you can just use the
 
 ## Proxy Settings
 
-If the Slack API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the Slack API server is not accessible from the ATSD server, open the **Network Settings** section and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Slack:
 

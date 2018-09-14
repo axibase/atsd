@@ -120,7 +120,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 ### Configure Webhook
 
 * Open the  **Alerts > Rules** page and select the new or imported rule.
-* Open **Webhooks** tab.
+* Open the **Webhooks** tab.
 * Select the webhook from the **Endpoint** drop-down list.
 * Enable the `OPEN`, `REPEAT` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) if needed, for example:

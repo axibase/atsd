@@ -33,7 +33,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 ## Configure Database Connection
 
 * Create new **Transformation** by selecting **File > New > Transformation**
-* Open **View** pane.
+* Open the **View** pane.
 
 ![](./resources/view_pane.png)
 
@@ -163,7 +163,7 @@ Diagram example:
 ### Remove Redundant Columns
 
 * Open the **Design** pane.
-* Locate the **Select values** option in the `Transform` category.
+* Click **Select values** in the `Transform` category.
 * Drag and drop it to **Transformation** pane.
 * Connect **Select values** to **Merge Join**.
 * Configure **Select values** as shown in the screenshot below:
