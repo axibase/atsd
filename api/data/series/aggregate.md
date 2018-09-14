@@ -17,7 +17,7 @@ The aggregation process is implemented as follows:
 |:---|:---|:---|
 | `type`  | string        | **[Required]** [Statistical function](../aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
 | `types` | array          | Array of [statistical functions](../aggregation.md).<br>Either `type` or `types` field are required in each query. |
-| `period`  | object     | Regular [period](#period) specified with count and time unit, for example `{ "count": 1, "unit": "HOUR" }`. |
+| `period`  | object     | Regular [period](#period) specified with count and time unit, for example<br>`{ "count": 1, "unit": "HOUR" }`. |
 | `interpolate`  | object  | Fill values in empty periods using an [interpolation function](#interpolation) such as `PREVIOUS` or `LINEAR`.   |
 | `threshold`    | object  | Object containing the minimum and maximum range for `THRESHOLD_*` functions.  |
 | `calendar`     | object  | Calendar settings for `THRESHOLD_*` functions. |
@@ -33,9 +33,12 @@ The aggregation process is implemented as follows:
 | `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | `count`  | number | Number of time units contained in the period. |
 | `align` | string | Alignment of the period start/end time.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Default: `CALENDAR`.|
-| `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on **Settings > System Information**.|
+| `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information**.|
 
-Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
+**Examples**:
+
+* `{ "count": 1, "unit": "HOUR" }`
+* `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
 ### calendar
 

@@ -5,7 +5,7 @@
 | **Issue**     | **Category**        | **Type**     | **Subject**                                                          |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
 | 3614      |   sql           | Feature  | Support for arithmetic expressions in the `COUNT` function. |
-| 3612      |   test          | Support  | API tests for [property(path)](../../api/data/filter-entity.md#supported-functions) function. |
+| 3612      |   test          | Support  | API tests for [`property(path)`](../../api/data/filter-entity.md#supported-functions) function. |
 | 3609      |   sql           | Bug      | Server errors inconsistent when queries are executed via an [`/sql`](../../sql/api.md) endpoint. |
 | 3606      |   api-rest      | Bug      | `entityExpression` not applied in [property query](../../api/data/properties/query.md) method. |
 | 3605      |   UI            | Bug      | Removed header capitalization from the embedded property widget. |
@@ -19,7 +19,7 @@
 |  3619     | UI              |  Bug     | Fixed **Set Persistence** button in the **Metric Editor**.  |
 |  3616     | api-rest        |  Bug     | Corrected 500 error code returned for pre-flight cross-domain `OPTION` requests. |
 |  3613     | portal          |  Bug     | Portal not assigned to entity group when imported from an XML file. |
-|  3553     | rule engine     |  Feature | **Refactored Actions** tab in the Rule Editor to correctly handle non-printable characters in script arguments. |
+|  3553     | rule engine     |  Feature | Refactored the **Actions** tab in rule editor to correctly handle non-printable characters in script arguments. |
 |  3526     | core            |  Bug     | Addressed an issue with `Append` operations introduced with series counters. Removed the feature due to unstable HBase `Append` performance under heavy load. |
 |  3319     | api-rest        |  Support | Added tests for [NodeJS API client](https://github.com/axibase/atsd-api-nodejs). |
 |  2369     | portal          |  Support | Implemented Docker container portals: docker host overview, docker host counter breakdown, and docker container detail. |
@@ -50,7 +50,7 @@
 |  3577     |jdbc             |  Bug     | Fixed issue with connection leakage when querying PI Server via JDBC. |
 | 3589      | collectd        | Feature  | `Exec` plugin for [collectd](https://github.com/axibase/atsd-collectd-plugin) to capture `lvs` command output.|
 | 3599      | docker          | Feature  | Store container `ENV` parameters into a dedicated property type. |
-| 3597      | administrator           | Feature  | Added an Admin page to view and drop command `resender` cache. |
+| 3597      | administrator           | Feature  | Added the Admin page to view and drop command `resender` cache. |
 | 3595      | json            | Bug      | Added heuristics to handle Socrata dataset fields. |
 | 3593      | json            | Feature  | Extend JSON to be able to parse the [BLS](https://www.bls.gov/developers/api_signature_v2.htm) JSON format. |
 | 3569      | json            | Feature  | Fixed error when parsing dates in `Socrata` configurations. |

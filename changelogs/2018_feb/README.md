@@ -23,7 +23,7 @@ Issue| Category    | Type    | Subject
 5014 | rule engine | Bug | [HipChat](../../rule-engine/notifications/hipchat.md) webhook: inline links in portal description message.
 5013 | rule engine | Bug | System [command](../../rule-engine/scripts.md) execution error not registered in Rule Errors.
 5012 | entity_views | Bug | **Entity Tag** [link](../../configuration/entity_views.md#links) not applied to **Entity Tag** column.
-5011 | rule editor | Bug | Table cells on **Test** tab are missing.
+5011 | rule editor | Bug | Table cells on the **Test** tab are missing.
 5009 | entity_views | Bug | Allow empty values if default value is blank in dictionary columns.
 5008 | data-in | Support | [collectd](../../integration/collectd/README.md#collectd): installation and configuration.
 5005 | entity_views | Bug | Add validation and display error message at runtime for [**Entity Expression**](../../configuration/entity_views.md#settings) field.

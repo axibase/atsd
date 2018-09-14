@@ -128,7 +128,7 @@ If the HipChat API server is not accessible from the ATSD server, open the **Net
 
 ### Configure Webhook
 
-* Open **Alerts > Rules** page and select a rule.
+* Open the **Alerts > Rules** page and select a rule.
 * Open the **Webhooks** tab.
 * Select HipChat from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.

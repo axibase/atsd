@@ -17,7 +17,7 @@ For non-distributed installations, refer to the following [migration guide](READ
 
 The migration procedure requires up to 30% of the current `atsd_d` table size to store new records before old data can be deleted.
 
-Open **Clusters > Cluster > HDFS > Status** page in Cloudera Manager.
+Open the **Clusters > Cluster > HDFS > Status** page in Cloudera Manager.
 
 Be sure that enough configured capacity is available in HDFS.
 

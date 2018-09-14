@@ -2,7 +2,7 @@
 
 ## Description
 
-Query for all dates. Select last message with `LIMIT = 1`. The database can store messages dated `1970-01-01T00:00:00.001Z` and later.
+Query for all dates. Select last message with `limit` parameter set to `1`. The database can store messages dated `1970-01-01T00:00:00.001Z` and later.
 
 ## Request
 

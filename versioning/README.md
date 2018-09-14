@@ -67,7 +67,7 @@ series e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1 d
 
 ### Data Entry Form
 
-Add versioned samples by opening the form on **Data > Data Entry > Series** and specifying versioning tags:
+Add versioned samples by opening the form on the **Data > Data Entry > Series** page and specifying versioning tags:
 
 ![](./resources/8.png)
 

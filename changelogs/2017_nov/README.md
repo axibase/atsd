@@ -234,7 +234,7 @@ LIMIT 10
 
 ### Issue 4707
 
-* Add group action to **Settings > Users** page to Enable/Disable multiple users at once.
+* Add group action to the **Settings > Users** page to Enable/Disable multiple users at once.
 * Implement a consistent style to highlight fields with tooltips.
 * Auto-size sub-menu panels in the top menu.
 

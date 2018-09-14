@@ -191,7 +191,7 @@ This causes the expired data, older than current time minus the specified retent
 
 #### Group Editor
 
-To apply this setting to multiple metrics at once, open the Metrics tab and enter a pattern for matching multiple metrics by name.
+To apply this setting to multiple metrics at once, open the **Metrics** tab and enter a pattern for matching multiple metrics by name.
 
 ![](./images/retention-metrics-search.png)
 

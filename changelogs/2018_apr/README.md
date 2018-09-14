@@ -11,7 +11,7 @@
 5256 | security | Bug | Security Incidents page not displaying the latest incidents.
 5254 | api-rest | Bug | Return errors in JSON format in [webhook](../../api/data/messages/webhook.md) method.
 5253 | security | Bug | Fix credentials error in newly created [webhook](../../administration/user-authorization.md#webhook-user).
-5252 | security | Feature | `Path` column added to table on **Settings** > **Diagnostics** > **Security Incidents** page.
+5252 | security | Feature | `Path` column added to table on the **Settings > Diagnostics > Security Incidents** page.
 5250 | rule engine | Bug | Some errors not displayed in the rule engine.
 5249 | rule engine | Bug | AWS API [webhook](../../rule-engine/notifications/aws-api.md) configuration not cloned.
 5247 | rule engine | Bug | Validation error when trying to rename cloned [webhook](../../rule-engine/notifications/README.md) configuration.
@@ -19,8 +19,8 @@
 5240 | rule engine | Bug | [`db_last`](../../rule-engine/functions-series.md#db_last) function fails to load records older than 1 hour.
 5237 | rule engine | Feature | Add support for multi-line expressions in the rule editor.
 5236 | rule engine | Bug | Log error when records are not found by [`db_last`](../../rule-engine/functions-series.md#db_last) and [`db_statistic`](../../rule-engine/functions-series.md#db_statistic) functions.
-5229 | api-rest | Bug | `GENERAL_ERROR` not displayed in **Settings** > **Diagnostics** > **Security Incidents** for unauthorized user.
-5228 | UI | Feature | `User` and `Method` columns added to the incoming webhook page on **Settings** > **Diagnostics** > **Webhook Requests**.
+5229 | api-rest | Bug | `GENERAL_ERROR` not displayed in **Settings > Diagnostics > Security Incidents** for unauthorized user.
+5228 | UI | Feature | `User` and `Method` columns added to the incoming webhook page on **Settings > Diagnostics > Webhook Requests**.
 5224 | sql | Bug | Scheduled SQL query with [store](../../sql/scheduled-sql-store.md) option causes `NumberFormatException` on `NaN` value.
 5223 | rule engine | Feature | Implement [`jsonToMaps`](../../rule-engine/functions-json.md#jsontomaps) function to converts string lists to a collection of maps.
 5221 | security | Feature | Implement a form to create and install a self-signed certificate.

@@ -123,7 +123,7 @@ Open **Data > CSV File Upload**, attach the `temperature.csv` file and process i
 
 ![](./resources/csv_upload.png)
 
-Open **CSV Tasks** page and check the number of processed rows is `6`.
+Open the **CSV Tasks** page and check the number of processed rows is `6`.
 
 ![](./resources/csv_upload_report.png)
 

@@ -159,7 +159,7 @@ To process incoming messages, configure an [outgoing webhook](outgoing-webhook-s
 
 ### Configure Webhook
 
-* Open **Alerts > Rules** page and select a rule.
+* Open the **Alerts > Rules** page and select a rule.
 * Open the **Webhooks** tab.
 * Select Slack from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
