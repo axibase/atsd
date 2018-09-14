@@ -205,20 +205,20 @@ Example:
 
 * Samples in the window:
 
-    |       datetime       |   value  |
-    |:---------------------|---------:|
-    | 2018-09-07T10:42:53Z | 159924.0 |
-    | 2018-09-07T10:43:23Z | 159912.0 |
-    | 2018-09-07T10:43:53Z | 160152.0 |
-    | 2018-09-07T10:44:23Z | 159988.0 |
-    | 2018-09-07T10:44:25Z | 76168.0  |
+    |       datetime       |    value  |
+    |:---------------------|----------:|
+    | 2018-09-14T07:18:18Z | 152220.0  |
+    | 2018-09-14T07:18:48Z | 152252.0  |
+    | 2018-09-14T07:19:18Z | 152260.0  |
+    | 2018-09-14T07:19:48Z | 152480.0  |
+    | 2018-09-14T07:20:07Z | 2491420.0 |
 
 * Expression:
 
     ```javascript
-    samples() = ${samples()}
-    samples(-1) = ${samples(-1)}
-    samples(3) = ${samples(3)}
+    samples() =${addTable(samples(), 'markdown')}
+    samples(3) =${addTable(samples(3), 'markdown')}
+    samples(-1) =${addTable(samples(-1), 'markdown')}
     samples(-2)_formatted = [
         @foreach{item: samples(-2)}
             (@{date_format(item.key, "yyyy-MM-dd HH:mm:ss")}, @{item.value}),
@@ -226,30 +226,38 @@ Example:
     ]
     ```
 
+    See [Iteration](./control-flow.md#iteration) for more information about `@foreach`.
+
 * Result:
 
-    ```ls
-    samples() = [
-        (2018-09-07T10:42:53Z[Etc/UTC],159924.0),
-        (2018-09-07T10:43:23Z[Etc/UTC],159912.0),
-        (2018-09-07T10:43:53Z[Etc/UTC],160152.0),
-        (2018-09-07T10:44:23Z[Etc/UTC],159988.0),
-        (2018-09-07T10:44:25Z[Etc/UTC],76168.0)
-    ]
-    samples(-1) = [
-        (2018-09-07T10:44:25Z[Etc/UTC],76168.0)
-    ]
-    samples(3) = [
-        (2018-09-07T10:42:53Z[Etc/UTC],159924.0),
-        (2018-09-07T10:43:23Z[Etc/UTC],159912.0),
-        (2018-09-07T10:43:53Z[Etc/UTC],160152.0)
-    ]
-    samples(-2)_formatted = [
-        (2018-09-07 10:44:25, 76168.0),
-        (2018-09-07 10:44:23, 159988.0),
-    ]
-    ```
-    See [Iteration](./control-flow.md#iteration) for more information about `@foreach`.
+    samples() =
+   | key | left | right | value |
+   |:-|:-|:-|:-|
+   | 2018-09-14T07:18:18Z[Etc/UTC] | 2018-09-14T07:18:18Z[Etc/UTC] | 152220.0 | 152220.0 |
+   | 2018-09-14T07:18:48Z[Etc/UTC] | 2018-09-14T07:18:48Z[Etc/UTC] | 152252.0 | 152252.0 |
+   | 2018-09-14T07:19:18Z[Etc/UTC] | 2018-09-14T07:19:18Z[Etc/UTC] | 152260.0 | 152260.0 |
+   | 2018-09-14T07:19:48Z[Etc/UTC] | 2018-09-14T07:19:48Z[Etc/UTC] | 152480.0 | 152480.0 |
+   | 2018-09-14T07:20:07Z[Etc/UTC] | 2018-09-14T07:20:07Z[Etc/UTC] | 2491420.0 | 2491420.0 |
+
+   samples(3) =
+   | key | left | right | value |
+   |:-|:-|:-|:-|
+   | 2018-09-14T07:18:18Z[Etc/UTC] | 2018-09-14T07:18:18Z[Etc/UTC] | 152220.0 | 152220.0 |
+   | 2018-09-14T07:18:48Z[Etc/UTC] | 2018-09-14T07:18:48Z[Etc/UTC] | 152252.0 | 152252.0 |
+   | 2018-09-14T07:19:18Z[Etc/UTC] | 2018-09-14T07:19:18Z[Etc/UTC] | 152260.0 | 152260.0 |
+
+   samples(-1) =
+   | key | left | right | value |
+   |:-|:-|:-|:-|
+   | 2018-09-14T07:20:07Z[Etc/UTC] | 2018-09-14T07:20:07Z[Etc/UTC] | 2491420.0 | 2491420.0 |
+
+   ```ls
+   samples(-2)_formatted = [
+       (2018-09-14 07:19:48, 152480.0),
+
+       (2018-09-14 07:20:07, 2491420.0),
+   ]
+   ```
 
 ## `values`
 
@@ -275,35 +283,42 @@ Example:
 
 * Samples in the window:
 
-    |       datetime       |   value  |
-    |:---------------------|---------:|
-    | 2018-09-07T10:42:53Z | 159924.0 |
-    | 2018-09-07T10:43:23Z | 159912.0 |
-    | 2018-09-07T10:43:53Z | 160152.0 |
-    | 2018-09-07T10:44:23Z | 159988.0 |
-    | 2018-09-07T10:44:25Z | 76168.0  |
+    |       datetime       |    value  |
+    |:---------------------|----------:|
+    | 2018-09-14T07:18:18Z | 152220.0  |
+    | 2018-09-14T07:18:48Z | 152252.0  |
+    | 2018-09-14T07:19:18Z | 152260.0  |
+    | 2018-09-14T07:19:48Z | 152480.0  |
+    | 2018-09-14T07:20:07Z | 2491420.0 |
 
 * Expression:
 
     ```javascript
-    values() =${values()}
-    values(-1) = ${values(-1)}
-    values(3) = ${values(3)}
+    values() =${addTable(values(), 'markdown')}
+    values(3) =${addTable(values(3), 'markdown')}
+    values(-1) =${addTable(values(-1), 'markdown')}
     ```
 
 * Result:
 
-    ```ls
-    values() =[
-        159924.0, 159912.0, 160152.0, 159988.0, 76168.0
-    ]
-    values(-1) = [
-        76168.0
-    ]
-    values(3) = [
-        159924.0, 159912.0, 160152.0
-    ]
-    ```
+    values() =
+    | Value |
+    |:-|
+    | 152220.0 |
+    | 152252.0 |
+    | 152260.0 |
+    | 152480.0 |
+    | 2491420.0 |
+    values(3) =
+    | Value |
+    |:-|
+    | 152220.0 |
+    | 152252.0 |
+    | 152260.0 |
+    values(-1) =
+    | Value |
+    |:-|
+    | 2491420.0 |
 
 ## `timestamps`
 
@@ -329,23 +344,23 @@ Example:
 
 * Samples in the window:
 
-    |       datetime       |   value  |
-    |:---------------------|---------:|
-    | 2018-09-07T10:42:53Z | 159924.0 |
-    | 2018-09-07T10:43:23Z | 159912.0 |
-    | 2018-09-07T10:43:53Z | 160152.0 |
-    | 2018-09-07T10:44:23Z | 159988.0 |
-    | 2018-09-07T10:44:25Z | 76168.0  |
+    |       datetime       |   value   |
+    |:---------------------|----------:|
+    | 2018-09-14T07:18:18Z | 152220.0  |
+    | 2018-09-14T07:18:48Z | 152252.0  |
+    | 2018-09-14T07:19:18Z | 152260.0  |
+    | 2018-09-14T07:19:48Z | 152480.0  |
+    | 2018-09-14T07:20:07Z | 2491420.0 |
 
 * Expression:
 
     ```javascript
-    timestamps() =${timestamps()}
-    timestamps(-1) = ${timestamps(-1)}
-    timestamps(3) = ${timestamps(3)}
+    timestamps() =${addTable(timestamps(), 'markdown')}
+    timestamps(3) =${addTable(timestamps(3), 'markdown')}
+    timestamps(-1) =${addTable(timestamps(-1), 'markdown')}
     timestamps(-2)_formatted = [
         @foreach{item: timestamps(-2)}
-            @{date_format(item, "yyyy-MM-dd HH:mm:ss")},
+            (@{date_format(item, "yyyy-MM-dd HH:mm:ss")}),
         @end{}
     ]
     ```
@@ -353,25 +368,30 @@ Example:
 
 * Result:
 
+    timestamps() =
+    | Value |
+    |:-|
+    | 2018-09-14T07:18:18Z[Etc/UTC] |
+    | 2018-09-14T07:18:48Z[Etc/UTC] |
+    | 2018-09-14T07:19:18Z[Etc/UTC] |
+    | 2018-09-14T07:19:48Z[Etc/UTC] |
+    | 2018-09-14T07:20:07Z[Etc/UTC] |
+    timestamps(3) =
+    | Value |
+    |:-|
+    | 2018-09-14T07:18:18Z[Etc/UTC] |
+    | 2018-09-14T07:18:48Z[Etc/UTC] |
+    | 2018-09-14T07:19:18Z[Etc/UTC] |
+    timestamps(-1) =
+    | Value |
+    |:-|
+    | 2018-09-14T07:20:07Z[Etc/UTC] |
+
     ```ls
-    timestamps() =[
-        2018-09-07T10:42:53Z[Etc/UTC],
-        2018-09-07T10:43:23Z[Etc/UTC],
-        2018-09-07T10:43:53Z[Etc/UTC],
-        2018-09-07T10:44:23Z[Etc/UTC],
-        2018-09-07T10:44:25Z[Etc/UTC]
-    ]
-    timestamps(-1) = [
-        2018-09-07T10:44:25Z[Etc/UTC]
-    ]
-    timestamps(3) = [
-        2018-09-07T10:42:53Z[Etc/UTC],
-        2018-09-07T10:43:23Z[Etc/UTC],
-        2018-09-07T10:43:53Z[Etc/UTC]
-    ]
     timestamps(-2)_formatted = [
-        2018-09-07 10:44:25,
-        2018-09-07 10:44:23,
+        (2018-09-14 07:19:48),
+
+        (2018-09-14 07:20:07),
     ]
     ```
 
