@@ -25,19 +25,29 @@
 * [Tableau](tableau/README.md)
 * [Axibase ER](aer/README.md)
 
-## System Integration
-
-* [Examples](https://axibase.com/use-cases/integrations/)
-
 ## Drivers
 
 * [JDBC](https://github.com/axibase/atsd-jdbc)
 * [ODBC](odbc/README.md)
 
-## Data Applications
+## Sample Data Applications
 
 * [Cross Filter](./data-applications/cross-filter.md)
 * [Power Meter Reporter](./data-applications/power-meter-reporter.md)
 * [Data Slider](./data-applications/data-slider.md)
 * [Performance Viewer](./data-applications/performance-viewer.md)
 * [Data Monitor](./data-applications/data-monitor.md)
+
+## Sample System Integrations
+
+* [ActiveMQ](https://axibase.com/use-cases/integrations#activemq)
+* [Amazon Web Services](https://axibase.com/use-cases/integrations#aws)
+* [Apache Kafka](https://axibase.com/use-cases/integrations#kafka)
+* [cAdvisor](https://axibase.com/use-cases/integrations#cadvisor)
+* [Docker](https://axibase.com/use-cases/integrations#docker)
+* [GitHub](https://axibase.com/use-cases/integrations#github)
+* [IBM Tivoli Monitoring](https://axibase.com/use-cases/integrations#ibm)
+* [Marathon](https://axibase.com/use-cases/integrations#marathon)
+* [Socrata](https://axibase.com/use-cases/integrations#socrata)
+* [Zookeeper](https://axibase.com/use-cases/integrations#zookeeper)
+* [More Integrations](https://axibase.com/use-cases/integrations/)
