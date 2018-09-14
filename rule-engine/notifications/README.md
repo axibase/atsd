@@ -80,7 +80,7 @@ The webhook request is successful if the endpoint returns HTTP `2xx` status code
 
 ## Enabling Notifications
 
-Open **Alerts > Rules** page.
+Open the **Alerts > Rules** page.
 
 Select a rule by name, open the **Webhooks** tab in the rule editor.
 

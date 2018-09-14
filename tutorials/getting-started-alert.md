@@ -35,7 +35,7 @@ Return to **Data Entry** and submit a few commands with values greater than `50`
 series e:br-1905 m:temperature=55
 ```
 
-Open **Alerts > Open Alerts** page in the main menu to view currently opened alerts.
+Open the **Alerts > Open Alerts** page in the main menu to view currently opened alerts.
 
 ![](./resources/rule-open-alerts.png)
 

@@ -7,7 +7,7 @@ collected in ATSD and makes them available for querying in reports.
 
 In order for the Axibase Server to group ATSD metrics into virtual tables, metrics need to be tagged with the `table` tag.
 
-## Enable the "table" Tag in the Metrics List
+## Enable the `table` Tag in the Metrics List
 
 * Log in to ATSD.
 * Open the **Settings > Server Properties** page.
@@ -15,18 +15,18 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 
 ![Server Properties](./metric-table-tags.png)
 
-* Click **Apply Changes** and open the Metrics tab to verify that the `table` tag is visible in the Metrics list.
+* Click **Apply Changes** and open the **Metrics** tab to verify that the `table` tag is visible in the Metrics list.
 
 ![Metrics List: table tag](./metrics-table-tag.png)
 
-## Apply the "table" Tag to Metrics
+## Apply the `table` Tag to Metrics
 
-* Enter partial metric name in the Name Mask to filter Metric list by name. `*` and `?` wildcards are supported.
-* Set Page Size (Display on Page) to 1000.
+* Enter partial metric name in the Search Bar to filter Metric list by name. `*` and `?` wildcards are supported.
+* Set Page Size (Display on Page) to `1000`.
 
 ![Metric List: filter](./metric-list-filter.png)
 
-* Click checkbox to select filtered metrics.
+* Click the appropriate checkbox to define filtered metrics.
 * Ensure that grouped metrics have the same tags. For example, group `df.disk_used`, `df.disk_used_percent`, and other `df.*` metrics into one table since their shared tags are `file_system` and `mount_point`.
 * Enter a name that describes this group of selected metrics and click [Apply].
 
@@ -44,8 +44,8 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 
 * Log in to the Axibase Server.
 * Open the **Admin > Warehouse Tools** page.
-* Select the **Reload Schema Cache** action.
-* Select **View Schema Cache** and verify that new metric groups are present as tables.
+* Select **Reload Schema Cache**.
+* Click **View Schema Cache** and verify that new metric groups are present as tables.
 
 ## Configure ATSD Proxy
 

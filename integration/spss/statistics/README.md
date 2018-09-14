@@ -30,7 +30,7 @@ Analyze | Apply statistical functions to the dataset.
 ## Load Sample Data into ATSD
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the **Commands** tab.
+2. Open **Metrics > Data Entry**, open the **Commands** tab.
 3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
@@ -57,7 +57,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
   * Do not open any existing data file.
   * Select the **Edit** menu.
   * Select the **Options** menu.
-  * Select the **Language** tab.
+  * Open the **Language** tab.
   * In the section labeled **Character Encoding for Data and Syntax**, select **Locale writing system**
 
 #### Option 1: Load Prices and Weights As Separate Datasets
@@ -204,7 +204,7 @@ SPSS provides two alternatives to aggregate data by period.
 
 Create a new metric in ATSD to store new series calculated in SPSS.
 
-* Log in to ATSD, open **Metrics** > **Data entry** page and send a `metric` command.
+* Log in to ATSD, open the **Metrics > Data entry** page and send a `metric` command.
 
 ```ls
 metric m:cpi_price

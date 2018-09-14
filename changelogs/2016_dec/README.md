@@ -2,81 +2,81 @@
 
 ## ATSD
 
-| **Issue**     | **Category**        | **Type**     | **Subject**                                                                    |
+| **Issue** | **Category**| **Type** | **Subject**|
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
-| [3737](#issue-3737) | sql         | Bug     | Fixed issue with long scan, followed by a timeout for an entity that does not collect the specified metric. |
-| [3735](#issue-3735) | sql         | Bug     | Math functions do not accept arithmetic expressions in the `WHERE` clause. Updated error message to read `IllegalArgumentException: Aggregate functions are not supported in the WHERE clause`. |
-| 3731 | api-rest    | Bug     | Fixed issue with property queries (`addMeta`:`true`) not returning metadata if the property type is set to `$entity_tags`. |
-| 3729 | api-rest    | Bug     | Updated error URL and message text for requests to non-existent URLs. |
+| [3737](#issue-3737) | sql | Bug | Fixed issue with long scan, followed by a timeout for an entity that does not collect the specified metric. |
+| [3735](#issue-3735) | sql | Bug | Math functions do not accept arithmetic expressions in the `WHERE` clause. Updated error message to read `IllegalArgumentException: Aggregate functions are not supported in the WHERE clause`. |
+| 3731 | api-rest| Bug | Fixed issue with property queries (`addMeta`:`true`) not returning metadata if the property type is set to `$entity_tags`. |
+| 3729 | api-rest| Bug | Updated error URL and message text for requests to non-existent URLs. |
 | [3727](#issue-3727) | api-network | Feature | Optimized TCP handler for faster processing of `series` commands streamed by a single TCP client. |
-| [3725](#issue-3725) | sql         | Bug     | Optimized queries with `ORDER BY` and `LIMIT` clauses. |
-| [3719](#issue-3719) | sql         | Feature | Optimized [windowing](../../sql/README.md#last_time-syntax) queries by narrowing the requested timespan based on minimum last insert date. |
-| 3718 | UI          | Bug     | Changed metric form to prevent users from saving metric names without metric name validation. |
-| 3715 | UI          | Feature | Updated styles on the account create page displayed post-installation. |
-| 3714 | UI          | Bug     | Fixed errors with the Decimal Precision input in the [SQL Console](../../sql/sql-console.md). |
-| [3713](#issue-3713) | sql         | Bug     | Fixed number format error raised in queries with the `WHERE` clause. |
-| [3703](#issue-3703) | sql         | Feature | Added capability to display first/last sample time in windowing queries. |
-| [3697](#issue-3697) | sql         | Feature | Modified processing sequence to ensure that the `HAVING` filter is applied after period interpolation. |
-| [3696](#issue-3696) | sql         | Bug     | Fixed issue with `ORDER BY [column-index]`. |
-| [3694](#issue-3694) | sql         | Bug     | Optimized execution of `JOIN` queries by applying tag filters to all tables. |
-| 3693 | UI          | Bug     | Fixed navigation issue between Query console and Query Plan. |
-| [3689](#issue-3689) | sql         | Feature | Added support for the `SELECT 1` validation query. |
-| 3687 | UI          | Bug     | Corrected User Group link on the Admin menu. |
-| [3672](#issue-3672) | sql         | Feature | Added new details to query plan: start and end dates for each HBase scan and scans to atsd_li table. |
-| [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql/README.md#lookup) function to translate the key into a value using the specified replacement table. |
-| [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case-expression) expression. |
-| 3710     | install         | Feature         | Added support for an embedded collector account with `All Entities: Read` and `All Entities: Write` permission.                                      |
-| [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile is specified in denominator.                              |
-| [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.                          |
-| [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
-| [3325](#issue-3325)     | sql             | Bug             | Allowed for columns other than `value` and `*` in the `COUNT` function.
-| 3698 | administrator       | Support     | Increased the default maximum Java heap value from 512 MB to 1 GB. This change is required to accommodate increased requirements for in-memory processing by the SQL engine. |
-| [3690](#issue-3690) | security    | Feature | Modified how role/membership/permission changes are applied. When changes are made to a user account, current active sessions are now automatically invalidated. The user cannot continue using sessions with previously cached `ACLs`. |
-| [3688](#issue-3688) | sql         | Feature     | Added support for `GROUP BY value` to calculate unique occurrences of the `value` over the specified timespan. This is helpful for metrics that measure discrete characteristics, such as status codes, error codes, digital states etc. |
-| 3679 | email       | Feature     | Cleaned up the email notification template to hide irrelevant statistics if the sample in the window is less than 1. |
-| 3678 | UI          | Bug     | Placed the Name and Label fields on separate lines in the metric and entity forms to account for long names. |
-| [3675](#issue-3675) | sql         | Feature     | Added the capability to replace numeric [`NaN`](../../sql/README.md#null) with another integer with the `ISNULL` function.|
-| 3662 | csv         | Support     | Identified an issue with schema-based CSV parsers. A schema-based CSV parser fails if ATSD is launched under Java 8+.|
-| [3650](#issue-3650) | UI          | Feature | Consolidated multiple pages under the **Settings** menu into one page. |
-| 3646 | UI          | Bug     | Return `4xx` error number instead of `500` on the **SQL Query Plan** page if the query is no longer found by id, which occurs when the server is restarted, or the query plan is evicted from cache. |
-| 3642 | api-rest    | Bug     | Not all entities for the metric are visible on the **Entities** page. |
-| [3631](#issue-3631) | sql         | Bug     | `NaN` numbers and `null` strings interpolated consistently (using the `PREVIOUS` function), similar to the PI server. |
+| [3725](#issue-3725) | sql | Bug | Optimized queries with `ORDER BY` and `LIMIT` clauses. |
+| [3719](#issue-3719) | sql | Feature | Optimized [windowing](../../sql/README.md#last_time-syntax) queries by narrowing the requested timespan based on minimum last insert date. |
+| 3718 | UI| Bug | Changed metric form to prevent users from saving metric names without metric name validation. |
+| 3715 | UI| Feature | Updated styles on the account create page displayed post-installation. |
+| 3714 | UI| Bug | Fixed errors with the Decimal Precision input in the [SQL Console](../../sql/sql-console.md). |
+| [3713](#issue-3713) | sql | Bug | Fixed number format error raised in queries with the `WHERE` clause. |
+| [3703](#issue-3703) | sql | Feature | Added capability to display first/last sample time in windowing queries. |
+| [3697](#issue-3697) | sql | Feature | Modified processing sequence to ensure that the `HAVING` filter is applied after period interpolation. |
+| [3696](#issue-3696) | sql | Bug | Fixed issue with `ORDER BY [column-index]`. |
+| [3694](#issue-3694) | sql | Bug | Optimized execution of `JOIN` queries by applying tag filters to all tables. |
+| 3693 | UI| Bug | Fixed navigation issue between Query console and Query Plan. |
+| [3689](#issue-3689) | sql | Feature | Added support for the `SELECT 1` validation query. |
+| 3687 | UI| Bug | Corrected User Group link on the Admin menu. |
+| [3672](#issue-3672) | sql | Feature | Added new details to query plan: start and end dates for each HBase scan and scans to atsd_li table. |
+| [3555](#issue-3555) | sql | Feature | Implemented [`LOOKUP`](../../sql/README.md#lookup) function to translate the key into a value using the specified replacement table. |
+| [3421](#issue-3421) | sql | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql/README.md#case-expression) expression. |
+| 3710 | install | Feature | Added support for an embedded collector account with `All Entities: Read` and `All Entities: Write` permission.|
+| [3704](#issue-3704) | sql | Bug | Fixed 50% percentile division error where percentile is specified in denominator.|
+| [3702](#issue-3702) | sql | Bug | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.|
+| [3701](#issue-3701) | sql | Feature | Optimized processing of partitioning queries using the Last Insert table.|
+| [3325](#issue-3325) | sql | Bug | Allowed for columns other than `value` and `*` in the `COUNT` function.
+| 3698 | administrator | Support | Increased the default maximum Java heap value from 512 MB to 1 GB. This change is required to accommodate increased requirements for in-memory processing by the SQL engine. |
+| [3690](#issue-3690) | security| Feature | Modified how role/membership/permission changes are applied. When changes are made to a user account, current active sessions are now automatically invalidated. The user cannot continue using sessions with previously cached `ACLs`. |
+| [3688](#issue-3688) | sql | Feature | Added support for `GROUP BY value` to calculate unique occurrences of the `value` over the specified timespan. This is useful for metrics that measure discrete characteristics, such as status codes, error codes, digital states etc. |
+| 3679 | email | Feature | Cleaned up the email notification template to hide irrelevant statistics if the sample in the window is less than 1. |
+| 3678 | UI| Bug | Placed the Name and Label fields on separate lines in the metric and entity forms to account for long names. |
+| [3675](#issue-3675) | sql | Feature | Added the capability to replace numeric [`NaN`](../../sql/README.md#null) with another integer with the `ISNULL` function.|
+| 3662 | csv | Support | Identified an issue with schema-based CSV parsers. A schema-based CSV parser fails if ATSD is launched under Java 8+.|
+| [3650](#issue-3650) | UI| Feature | Consolidated multiple pages under the **Settings** menu into one page. |
+| 3646 | UI| Bug | Return `4xx` error number instead of `500` on the **SQL Query Plan** page if the query is no longer found by id, which occurs when the server is restarted, or the query plan is evicted from cache. |
+| 3642 | api-rest| Bug | Not all entities for the metric are visible on the **Entities** page. |
+| [3631](#issue-3631) | sql | Bug | `NaN` numbers and `null` strings interpolated consistently (using the `PREVIOUS` function), similar to the PI server. |
 | 3552 | rule engine | Feature | Implemented the `coalesce` function in the rule engine to substitute missing tags, for example `coalesce([entity.label, entity.tags.name])`. |
-| [3516](#issue-3516) | sql         | Feature     | `IS NULL` operator supports `metric.label`. |
-| [3515](#issue-3515) | sql         | Feature     | `IS NULL` operator supports metric tags. |
-| [3463](#issue-3463) | sql         | Bug     | `WITH INTERPOLATE` correctly interpolates the `text` column in JOIN queries. |
-| [3677](#issue-3677)      | sql             | Feature      | Added support for `date_format` function in `WHERE`, `GROUP BY` and `ORDER BY` clauses . |
-| [3674](#issue-3674)      | sql             | Bug      | Fixed slow execution time for queries with table aliases. |
-| [3673](#issue-3673)      | sql             | Bug      | Added `WEEK` interval type in the `PERIOD` function. |
-| 3671      | metric          | Bug      | Fixed issues with values being discarded if Min Value and Max Value are specified and Invalid Action set to `NO ACTION`. |
-| [3670](#issue-3670)      | sql             | Bug      | Fixed incorrect results with `ROW_MEMORY_THRESHOLD OPTION` compared to temporary table processing. |
-| [3665](#issue-3665)      | sql             | Bug      | Added error message in case of excessive tag combinations fetched by a query. |
-| 3660      | jdbc            | Bug      | Hide unused driver properties in DbVisualizer . |
-| 3647      | core            | Bug      | Fixed error log download issue if the file is modified during the download process. |
-| [3645](#issue-3645)      | rule engine     | Feature  | Exclude unused statistics from the details table in the email notification. |
-| 3640      | api-rest        | Bug      | Fixed NullPointerException in alert-history-entity query. |
-| 3618      | api-rest        | Bug      | Fixed incorrect status code in case an invalid entity expression is submitted. |
-| 3617      | UI              | Bug      | Corrected date parsing issue on Export Data page. |
-| [3615](#issue-3615)      | api-network     | Feature  | Added the new fields `minValue` and `maxValue` to the Metric class. |
-| [3601](#issue-3601)      | sql             | Bug      | Optimized execution time for queries with arithmetic expressions. |
-| 3600      | sql             | Bug      | Fixed different results of aggregation functions with and without the `LIMIT` clause. |
-| [3592](#issue-3592)      | security        | Feature  | Added Trust SSL Certificate field to LDAP configuration form. |
-| [3583](#issue-3583)      | security        | Feature  | Added **Create Accounts** integration feature to LDAP. |
-| 3582      | security        | Feature  | Enabled copying user account attributes from ATSD into LDAP. |
-| 3570      | api-network     | Bug      | Corrected failure to insert metric command for a re-created metric.   |
-| 3560      | api-network     | Feature  | Added new field `Units` to the **Metric** class. |
-| [3470](#issue-3470)      | sql             | Feature  | Added support for `text` column in the `SELECT` expression and the `WHERE` clause. |
-| [3465](#issue-3465)      | api-rest        | Feature  | Added `addMeta` series and property methods in Data API. |
-| [3438](#issue-3438)      | security        | Feature  | Modified Enterprise Edition to support LDAP authentication. |
-| [3309](#issue-3309)      | grafana        | Support  | Implemented ATSD storage driver for Grafana `3.x`. |
+| [3516](#issue-3516) | sql | Feature | `IS NULL` operator supports `metric.label`. |
+| [3515](#issue-3515) | sql | Feature | `IS NULL` operator supports metric tags. |
+| [3463](#issue-3463) | sql | Bug | `WITH INTERPOLATE` correctly interpolates the `text` column in JOIN queries. |
+| [3677](#issue-3677)| sql | Feature| Added support for `date_format` function in `WHERE`, `GROUP BY` and `ORDER BY` clauses . |
+| [3674](#issue-3674)| sql | Bug| Fixed slow execution time for queries with table aliases. |
+| [3673](#issue-3673)| sql | Bug| Added `WEEK` interval type in the `PERIOD` function. |
+| 3671| metric| Bug| Fixed issues with values being discarded if Min Value and Max Value are specified and Invalid Action set to `NO ACTION`. |
+| [3670](#issue-3670)| sql | Bug| Fixed incorrect results with `ROW_MEMORY_THRESHOLD OPTION` compared to temporary table processing. |
+| [3665](#issue-3665)| sql | Bug| Added error message in case of excessive tag combinations fetched by a query. |
+| 3660| jdbc| Bug| Hide unused driver properties in DbVisualizer . |
+| 3647| core| Bug| Fixed error log download issue if the file is modified during the download process. |
+| [3645](#issue-3645)| rule engine | Feature| Exclude unused statistics from the details table in the email notification. |
+| 3640| api-rest| Bug| Fixed NullPointerException in alert-history-entity query. |
+| 3618| api-rest| Bug| Fixed incorrect status code in case an invalid entity expression is submitted. |
+| 3617| UI| Bug| Corrected date parsing issue on Export Data page. |
+| [3615](#issue-3615)| api-network | Feature| Added the new fields `minValue` and `maxValue` to the Metric class. |
+| [3601](#issue-3601)| sql | Bug| Optimized execution time for queries with arithmetic expressions. |
+| 3600| sql | Bug| Fixed different results of aggregation functions with and without the `LIMIT` clause. |
+| [3592](#issue-3592)| security| Feature| Added Trust SSL Certificate field to LDAP configuration form. |
+| [3583](#issue-3583)| security| Feature| Added **Create Accounts** integration feature to LDAP. |
+| 3582| security| Feature| Enabled copying user account attributes from ATSD into LDAP. |
+| 3570| api-network | Bug| Corrected failure to insert metric command for a re-created metric. |
+| 3560| api-network | Feature| Added new field `Units` to the **Metric** class. |
+| [3470](#issue-3470)| sql | Feature| Added support for `text` column in the `SELECT` expression and the `WHERE` clause. |
+| [3465](#issue-3465)| api-rest| Feature| Added `addMeta` series and property methods in Data API. |
+| [3438](#issue-3438)| security| Feature| Modified Enterprise Edition to support LDAP authentication. |
+| [3309](#issue-3309)| grafana| Support| Implemented ATSD storage driver for Grafana `3.x`. |
 
 ---
 
 ## Charts
 
-| **Issue**     | **Category**        | **Type**     | **Subject**                                                                    |
+| **Issue** | **Category**| **Type** | **Subject**|
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
-| 3523      | property        | Bug      | Set format-number to `false` by default to allow users enable it explicitly at the widget or column level. |
+| 3523| property| Bug| Set format-number to `false` by default to allow users enable it explicitly at the widget or column level. |
 
 ### Issue 3737
 
@@ -645,11 +645,11 @@ fields, as opposed to tags because fields provide validation, dictionaries, and 
 Fix added to support the execution of queries with arithmetic expressions nearly as fast as queries without such expressions:
 
 ```sql
-select avg(value+0) from mpstat.cpu_busy
+SELECT avg(value+0) FROM mpstat.cpu_busy
 ```
 
 ```sql
-select avg(value) from mpstat.cpu_busy
+SELECT avg(value) FROM mpstat.cpu_busy
 ```
 
 ### Issue 3592

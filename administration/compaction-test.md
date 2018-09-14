@@ -6,9 +6,9 @@ Perform this compaction test to calculate ATSD storage efficiency and estimate d
 
 ## Instructions
 
-* Open **Settings > Diagnostics > Compaction** page.
+* Open the **Settings > Diagnostics > Compaction** page.
 * Initiate the compaction task. Refresh the page until the task is completed.
-* Open **Settings > Storage > Database Tables** page. Take note of the `d` table size in the **Store File Size (MB)** column of the Summary table.
+* Open the **Settings > Storage > Database Tables** page. Take note of the `d` table size in the **Store File Size (MB)** column of the Summary table.
 * Insert the dataset with a reasonable amount of data, for example 1+ million samples or 50+ megabytes in CSV format.
 * Execute the compaction again on the **Compaction** page.
 * Reload the **Database Tables** page and calculate the difference in the **Store File Size (MB)** value.

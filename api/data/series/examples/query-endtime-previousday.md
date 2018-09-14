@@ -2,9 +2,9 @@
 
 ## Description
 
-Select data between 00:00 today and 00:00 yesterday using [calendar](../../../../shared/calendar.md) keywords.
+Select data between `00:00` today and `00:00` yesterday using [calendar](../../../../shared/calendar.md) keywords.
 
-Note that DAY, WEEK, MONTH, QUARTER, and YEAR start times are computed according to server time zone in calendar calculations.
+Note that `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` start times are computed according to server time zone in calendar calculations.
 
 ## Request
 

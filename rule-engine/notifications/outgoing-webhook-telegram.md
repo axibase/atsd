@@ -120,7 +120,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 ### Configure Webhook
 
 * Open the  **Alerts > Rules** page and select the new or imported rule.
-* Open **Webhooks** tab.
+* Open the **Webhooks** tab.
 * Select the webhook from the **Endpoint** drop-down list.
 * Enable the `OPEN`, `REPEAT` triggers.
 * Customize the alert message using [placeholders](../placeholders.md) if needed, for example:
@@ -139,11 +139,11 @@ User ${tags.message.from.first_name} ${tags.message.from.last_name}/${tags.messa
 
     ![](./images/outgoing_webhook_telegram_2.png)
 
-* Open **Alerts > Incoming Webhooks** page and check that a request from Telegram servers has been received.
+* Open the **Alerts > Incoming Webhooks** page and check that a request from Telegram servers has been received.
 
     ![](./images/outgoing_webhook_telegram_4.png)
 
-* If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which displays an error in case the user credentials are mis-configured.
+* If the request is not visible, check the **Settings > Diagnostics > Security Incidents** page which displays an error in case the user credentials are mis-configured.
 
     ![](./images/outgoing_webhook_slack_20.png)
 

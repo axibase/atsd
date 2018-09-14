@@ -84,7 +84,7 @@ The permission to view all portals is automatically granted to users with `ADMIN
 
 To simplify the process of creating user account for typical use cases, the database provides wizards to create a **webhook** user, a **collector** user, and a **resource viewer** user.
 
-To create a new user with a wizard, open the **Settings > Users** page and select one of the **Create User** options from the split-button located below the **Users** table.
+To create a new user with a wizard, open the **Settings > Users** page and click one of the **Create User** options from the split-button located below the **Users** table.
 
 ### Webhook User
 

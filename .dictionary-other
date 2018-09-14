@@ -71,6 +71,7 @@ executables
 ext4
 façade
 failover
+favicon
 Float(16|32|64)
 format
 freemarker
