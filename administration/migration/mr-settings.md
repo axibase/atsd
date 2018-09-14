@@ -1,4 +1,4 @@
-# Map-Reduce Settings
+# MapReduce Settings
 
 ## Check Memory
 
@@ -8,7 +8,7 @@ Check available server memory.
 cat /proc/meminfo | grep "MemTotal"
 ```
 
-If the server has less than 8 gigabytes of available physical memory, leave the default settings in place.
+If the server has less than `8` GB of available physical memory, do not modify the default settings.
 
 ## Increase Memory Allocations
 
@@ -18,7 +18,7 @@ Edit `/opt/atsd/hadoop/etc/hadoop/mapred-site.xml` file.
 
 * Set `mapreduce.map.java.opts` and `mapreduce.reduce.java.opts` to 80% of `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
 
-Sample memory configuration for a server with 16 GB of RAM:
+Sample memory configuration for a server with `16` GB of RAM:
 
 ```xml
 <property>
