@@ -93,7 +93,7 @@ static void atsdTCPReport() {
 ```java
 static void login() {
     meter.mark();
-    System.out.println("method `login` was called!");
+    System.out.println("method `login` invoked");
 }
 ```
 

@@ -39,9 +39,11 @@ The interpolation process performed by the database is outlined below:
 | `PREVIOUS`  | Set interpolated value equal to the previous value. |
 | `AUTO`  | Apply the interpolation function specified by the metric [`interpolate`](../../meta/metric/list.md#fields) setting. Default: `LINEAR`.  |
 
-> Detailed values with timestamps equal to interpolated timestamps are included in the response unchanged.
-> The `LINEAR` function returns an interpolated value only if both the preceding and the following value is present.
-> The `PREVIOUS` function requires a preceding value. The last detailed value is used to calculate a final interpolated value in the response.
+Notes:
+
+* Detailed values with timestamps **equal** to interpolated timestamps are included in the response **unchanged**.
+* The `LINEAR` function returns an interpolated value only if both the preceding and the following value is present.
+* The `PREVIOUS` function requires a preceding value. The last detailed value is used to calculate a final interpolated value in the response.
 
 ### `boundary`
 

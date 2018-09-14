@@ -26,7 +26,7 @@ command = "version"
 version
 ```
 
-> Response
+Response:
 
 ```txt
 19320

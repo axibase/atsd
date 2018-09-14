@@ -23,14 +23,13 @@ Download `deb` package to the target server:
 wget https://www.axibase.com/public/atsd_amd64.deb
 ```
 
-> Alternatively, distribution files are published on [`https://axibase.com/public/atsd_deb_latest.htm`](https://axibase.com/public/atsd_deb_latest.htm).
+> The distribution files are also published on [`https://axibase.com/public/atsd_deb_latest.htm`](https://axibase.com/public/atsd_deb_latest.htm).
 
 ## Installation Steps
 
 ### Add Repositories
 
-<!-- markdownlint-enable MD032 -->
-::: tip Debian `8.x`
+::: tip Debian 8.x
 Add `backports` repository to `/etc/apt/sources.list.d/backports.list` file.
 
 ```sh
@@ -39,7 +38,7 @@ deb http://ftp.debian.org/debian jessie-backports main
 
 :::
 
-::: tip Ubuntu `18.04`
+::: tip Ubuntu 18.04
 Add `bionic-security` repository to `/etc/apt/sources.list` to enable [Java 8](https://packages.ubuntu.com/bionic/amd64/openjdk-8-jdk/download) packages.
 
 ```ls
@@ -47,7 +46,6 @@ deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
 
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Update Repositories and Install Dependencies
 
@@ -56,7 +54,7 @@ sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname net-t
 ```
 
 <!-- markdownlint-disable MD032 -->
-::: tip Debian `8.x`
+::: tip Debian 8.x
 
 ```sh
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'

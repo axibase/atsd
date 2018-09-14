@@ -14,8 +14,7 @@
 
 ### Add Repositories
 
-<!-- markdownlint-enable MD032 -->
-::: tip Debian `8.x`
+::: tip Debian 8.x
 Add `backports` repository to `/etc/apt/sources.list.d/backports.list` file.
 
 ```sh
@@ -24,7 +23,7 @@ deb http://ftp.debian.org/debian jessie-backports main
 
 :::
 
-::: tip Ubuntu `18.04`
+::: tip Ubuntu 18.04
 Add the following line to `/etc/apt/sources.list` to enable [Java 8](https://packages.ubuntu.com/bionic/amd64/openjdk-8-jdk/download) packages.
 
 ```ls
@@ -32,7 +31,6 @@ deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ```
 
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Update Repositories
 
@@ -62,13 +60,13 @@ Install ATSD.
 sudo apt-get update && sudo apt-get install atsd
 ```
 
-<!-- markdownlint-enable MD032 -->
-::: tip On Debian `8.x`
+::: tip On Debian 8.x
+
 ```sh
 sudo apt-get update && sudo apt-get -t jessie-backports install atsd
 ```
+
 :::
-<!-- markdownlint-disable MD032 -->
 
 It can take up to five minutes to initialize the database.
 

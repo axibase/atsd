@@ -14,7 +14,9 @@ entity.tags.location
 entity.tags."loc-area"
 ```
 
-> Tag names containing special characters must be quoted.
+:::tip Note
+Tag names containing special characters must be quoted.
+:::
 
 ### Fields
 

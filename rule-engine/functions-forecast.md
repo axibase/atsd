@@ -104,7 +104,7 @@ thresholdTime(null, 95, '7 DAY')
 ```javascript
 /* Returns 1531234800000 (2018-Jul-10 15:00).
 First time when the forecast 90 exceeds 'max' threshold 80.
-Forecast 80 on 2018-Jul-09 15:00 was ignored as not exceeding the threshold. */
+Forecast 80 on 2018-Jul-09 15:00 is ignored as not exceeding the threshold. */
 thresholdTime(null, 80, '7 DAY')
 ```
 

@@ -24,7 +24,9 @@ Logs are rolled over and archived according to the retention settings in the `/o
 
 ## HBase Log Files
 
-> HBase Log Files section is visible in single-node ATSD installations.
+:::tip Note
+**HBase Log Files** section is visible in single-node ATSD installations.
+:::
 
 |**Log Name**|**Description**|
 |---|:---|
@@ -36,7 +38,9 @@ Logs are rolled over and archived according to the retention settings in the `/o
 
 ## HDFS Log Files
 
-> HDFS Log Files section is visible in single-node ATSD installations running in pseudo-distributed mode.
+:::tip Note
+**HDFS Log Files** section is visible in single-node ATSD installations running in pseudo-distributed mode.
+:::
 
 |**Log Name**|**Description**|
 |---|:---|
@@ -86,11 +90,9 @@ To adjust tracing level, add a logging declaration containing the full class nam
 
 Logging properties can be modified in the `logback.xml` file located in the `/opt/atsd/atsd/conf` directory or using the [**Settings > Configuration Files**](./configuration-files.md) editor.
 
-<!-- markdownlint-enable MD032 -->
 :::tip
 Database restart is **not** required. The changes in `logback.xml` are automatically applied every 60 seconds, as specified in the `scanPeriod` tag.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ![](./images/config-editor.png "configuration_files_editor")
 

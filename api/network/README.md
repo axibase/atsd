@@ -303,7 +303,7 @@ The timestamp field records the time of an observation or an event as determined
 |`s`|integer|Unix time in seconds|
 |`d`|string|[ISO date](../../shared/date-format.md).|
 
-Supported `d` field formats:
+Supported `d` field [formats](../../shared/date-format.md):
 
 |**Format**|**Description**|
 |:---|:---|

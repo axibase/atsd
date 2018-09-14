@@ -8,7 +8,7 @@ Review hardware and OS [requirements](./requirements.md) to ensure compatibility
 
 By installing Axibase Time Series Database you agree to the following **[License](../axibase_tsd_se_license.pdf)** terms.
 
-After the trial period, ATSD requires an [active subscription](../pricing.md) or a perpetual licence for proper functioning.
+After the trial period, ATSD requires an [active subscription](../pricing.md) or a perpetual license for proper functioning.
 
 ---
 
@@ -73,4 +73,4 @@ After installation, review the [Getting Started Guide](../tutorials/getting-star
 
 Contact us at `support-atsd@axibase.com` with installation questions.
 
-Make sure to attach [relevant details](../administration/support.md) to your ticket.
+Attach [relevant details](../administration/support.md) to your ticket.

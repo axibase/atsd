@@ -2,9 +2,7 @@
 
 ## Overview
 
-These functions retrieve message records from the database at any stage of the rule evaluation process.
-
-The `db_message_count` and `db_message_last` functions can be used to verify the existence of or establish a correlation between time series and messages.
+The `db_message_count` and `db_message_last` functions retrieve message records from the database and can be used to check the existence of events or to correlate time series and messages.
 
 ## Reference
 
@@ -22,6 +20,22 @@ db_message_count(string interval, string type, string source
 
 Returns the number of message records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See matching rules [below](#matching-rules).
 
+```javascript
+/*
+  Returns message count for the same type, source, tags, and entity as in the current message.
+  The current message is excluded.
+*/
+db_message_count('15 minute', type, source, tags, entity)
+```
+
+```javascript
+/*
+  Returns message count for the same type, source, entity as in the current command and ANY tags.
+  The current message is excluded.
+*/
+db_message_count('12 hour', type, source, null, entity)
+```
+
 ## `db_message_last`
 
 ```csharp
@@ -31,6 +45,14 @@ db_message_last(string interval, string type, string source
 ```
 
 Returns the most recent [message](../api/data/messages/query.md) record for the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See [Matching Rules](#matching-rules).
+
+```javascript
+/*
+  Returns the most recent message for the same type, source as in the current window and ANY entity and tags.
+  The current message is excluded.
+*/
+db_message_last('15 minute', type, source)
+```
 
 The record [fields](../api/data/messages/query.md#fields) can be accessed using dot notation, for example:
 
@@ -57,21 +79,21 @@ db_messages(string interval, string type, string source
                                     [, string entity[, string expression]]]) [Message]
 ```
 
-Returns a list of [message](../api/data/messages/query.md) records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`.
+Returns a list of [message](../api/data/messages/query.md) records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See [Matching Rules](#matching-rules).
 
-The messages are ordered by time similar to the **Message Search** page. See [Matching Rules](#matching-rules).
+If no message is found, an empty `[]` list is returned.
 
-If no messages are found, an empty `[]` list is returned.
+The messages in the list are sorted by time in the ascending order, with the most recent message at the start of the list.
 
-To access the `n`-th element in the list, use square brackets `[index]` or `get(index)` method. The first indexed element is `0`.
+* To access the `n`-th element in the list, use square brackets `[index]` or `get(index)` method.
+* To access the first (most recent) record use index `0`, for example `db_messages('1 hour', type, source)[0]`.
+* The first (most recent) record can be also retrieved with the `db_message_last` function.
 
 [Fields](../api/data/messages/query.md#fields-1) of the returned Message objects can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Message Date
 That `date` field in the message object is `null`. The record time is stored in the `timestamp` field as Unix time in milliseconds.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Matching Rules
 

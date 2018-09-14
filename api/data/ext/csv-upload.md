@@ -14,7 +14,9 @@ This method supports processing of the uploaded attached file as data as well as
 
 * Maximum file size is **1 gigabyte**.
 
-> If the input file is larger than 1 GB, consider to compress it to reduce size to the threshold or splitting it into multiple smaller files, uploaded separately.
+:::tip
+If the input file is larger than 1 GB, consider to compress it to reduce size to the threshold or splitting it into multiple smaller files, uploaded separately.
+:::
 
 ## Date Limits
 
@@ -146,4 +148,6 @@ curl --insecure -X POST --user username:password \
   -T csv-3120.csv "https://atsd_hostname:8443/api/v1/csv?config=parser-3120&wait=true"
 ```
 
-> Ensure that request parameter values in query string are URL-encoded, for example `&time=now%20-%201%20*%20hour`
+:::tip Note
+Request parameter values in the query string must be URL-encoded, for example `&time=now%20-%201%20*%20hour`.
+:::

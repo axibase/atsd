@@ -28,13 +28,21 @@ To view daily changes in tabular format, open the ATSD portal in the top menu. T
 
 ## Space Usage Breakdown
 
-While the breakdown of space usage within the `atsd_d` is not available, the database provides a top-N view consisting of most frequently collected series.
+While the breakdown of space usage within data tables is not available, the database maintains top-N rankings consisting of most frequently collected series and messages.
 
-The **Top Inserts** table is accessible on the **Settings > Receive Statistics** page.
+Review these rankings to identify the sources with the largest amount of inserted data.
 
-![](./images/retention-top-inserts.png)
+### Top Metrics
 
-Review these rankings to identify series with the largest amount of inserted data.
+The **Top Inserts** table for series is accessible on the **Settings > Receive Statistics > Series** page.
+
+![](./images/receive_statistics_series.png)
+
+### Top Message Types
+
+The **Top Inserts** table for messages is accessible on the **Settings > Receive Statistics > Series** page.
+
+![](./images/receive_statistics_messages.png)
 
 ## Disk Space Monitoring
 
@@ -78,11 +86,9 @@ Discarded commands for disabled metrics are logged with `DISABLED_METRIC` token 
 2018-03-29 05:56:21,087;DISABLED_METRIC;series e:nurswgvml502 ms:1522302980000 t:collector=bosun.org/cmd/scollector/collectors.c_ipcount_linux t:os=linux m:scollector.collector.duration=0.003668194
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Existing data already stored in the database for a disabled metric is not removed from disk automatically.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Disable Persistence
 
@@ -100,11 +106,9 @@ Discarded commands for non-persistent metrics are logged with a `NON_PERSISTENT_
 2018-03-29 05:56:21,518;NON_PERSISTENT_METRIC;series e:nurswgvml010 ms:1522302981000 t:remote=192.0.2.1 m:ntp.stratum=2
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Existing data already stored in the database for a non-persistent metric is not removed from disk automatically.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Set Persistence Filter
 
@@ -124,11 +128,9 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 2018-03-29 05:56:28,075;FILTERED_METRIC;series e:nurswgvmw016 ms:1522302699000 t:method=copy t:site=DefaultWebSite m:iis.requests=0
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Existing data already stored in the database is **not** removed from disk automatically, even if the series no longer matches the filter.
 :::
-<!-- markdownlint-disable MD032 -->
 
 #### Filter Examples
 
@@ -221,6 +223,16 @@ If **Series Retention Days** is set to **1 year** in the example below, the data
 
 The data is deleted by a [background task](#scheduled-tasks) which is executed once a day during off-peak hours.
 
+## Delete Entities
+
+Utilize [ATSD Python client](https://github.com/axibase/atsd-api-python#data-removal-and-cleanup) to delete entities matching specific conditions.
+
+For example, run the [`entities_expression_delete.py`](https://github.com/axibase/atsd-api-python/blob/master/examples/entities_expression_delete.py) script to delete entities which are not collecting any data.
+
+```sh
+python3 entities_expression_delete.py
+```
+
 ## Scheduled Tasks
 
 The expired data is deleted from the database on a schedule which is synchronized with other data management tasks.
@@ -279,7 +291,9 @@ Series can be re-inserted for a new metric with the same name without any collis
 
 ### Deleting Series
 
-> Only one series can be deleted at a time.
+:::tip Note
+Only one series can be deleted at a time.
+:::
 
 Locate the series.
 
@@ -319,7 +333,7 @@ Note that series and properties removed with these methods are masked with [Dele
 
 ## Deleting with API Clients
 
-* Refer to Python client [examples](https://github.com/axibase/atsd-api-python#record-cleanup)
+Refer to ATSD Python client [record cleanup examples](https://github.com/axibase/atsd-api-python#data-removal-and-cleanup).
 
 ## Summarizing Expiring Data
 

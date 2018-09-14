@@ -156,7 +156,7 @@ Entities collecting `nmon` data are automatically added to the `nmon-linux` and 
 
 Entities collecting `nmon` data are also automatically assigned predefined `nmon` portals.
 
-Predefined AIX and Linux `nmon` portals cover a variety of key metrics and have been designed to provide useful insight into the performance of the target server.
+Predefined AIX and Linux `nmon` portals cover a variety of key metrics and have been designed to provide visibility into the performance of the target server.
 
 Custom portals can be created using [HTML5 Widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization") to visualize any combination of collected [`nmon` metrics](./format.md).
 

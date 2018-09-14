@@ -121,11 +121,9 @@ chmod +x atsd-test.sh
 
 Execute the test script by specifying the ATSD container name.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Default Port
 If the public port in the `docker run` command above is not `8443`, change the `ATSD_PORT` variable in the script header.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ```sh
 ./atsd-test.sh atsd_test

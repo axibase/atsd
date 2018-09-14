@@ -45,7 +45,9 @@ property e:nurswg t:disk-config k:fs_type=NFS v:initiator=Pre-fetch
 | `ms`        | integer          | Unix time in milliseconds. |
 | `d`         | string           | Time in [ISO format](../../shared/date-format.md). |
 
-> If time fields are omitted, the record is inserted with the current server time.
+:::tip Note
+If time fields are omitted, the record is inserted with the current server time.
+:::
 
 ### ABNF Syntax
 

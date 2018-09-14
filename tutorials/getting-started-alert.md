@@ -53,7 +53,9 @@ To receive alert notifications via email, configure the [Mail Client](../adminis
 
 Open the rule editor and enable [alerts](../rule-engine/email.md) on the **Email Notifications** tab as illustrated below.
 
-> To send portal screenshots, configure the [Web Driver](../rule-engine/notifications/web-driver.md).
+:::tip Note
+To enable sending portal screenshots, configure the [Web Driver](../rule-engine/notifications/web-driver.md).
+:::
 
 ![](./resources/alert-email.png)
 

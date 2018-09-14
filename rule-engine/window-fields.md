@@ -55,11 +55,9 @@ Notes:
 | `keys` | map | Property keys, serialized as `[key1: val1, key2: val2]`.<br>To retrieve key value, use `keys.{name}`. |
 | `properties` | map | Property tags, serialized as `[key1: val1, key2: val2]`.<br>To retrieve tag value, use `properties.{name}`. |
 
-<!-- markdownlint-enable MD032 -->
-:::tip Property `tags`
+:::tip Property tags
 The `tags` field for the `property` command contains the `keys` map and the `type` field.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Date Fields
 
@@ -89,7 +87,7 @@ The `tags` field for the `property` command contains the `keys` map and the `typ
 * [`DateTime`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.millis`.
 * `DateTime` object fields that begin with `command_` contain the command timestamps, otherwise the fields are set based on server time.
 * `DateTime` object fields can be `null` if the event has not yet occurred or if the window is empty.
-* If **Check On Exit** option is enabled and the status change is caused by a removed command, the `command_time` field contains the timestamp of the removed command (oldest command), rounded to seconds.
+* If **Check On Exit** setting is enabled and the status change is caused by a removed command, the `command_time` field contains the timestamp of the exiting command (oldest command), rounded to seconds.
 
 ## Details Tables
 

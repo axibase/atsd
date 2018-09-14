@@ -141,7 +141,7 @@ WHERE entity = 'nurswgvml007'
 
 ### Issue 4050
 
-The `date_parse` function parses the literal timestamp string into Unix time with millisecond granularity.
+The `date_parse` function parses the literal timestamp string into Unix time with millisecond precision.
 
 ```javascript
 date_parse(string datetime[, string time_format[, string time_zone]])

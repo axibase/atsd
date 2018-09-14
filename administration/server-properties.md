@@ -24,7 +24,7 @@ To reset a property to the default value, leave the value blank and click **Save
 
 Modifications performed on the **Server Properties** page apply instantly after clicking **Save**.
 
-Disabled properties highlighted in grey or blue-grey must be modified in the `/opt/atsd/atsd/conf/server.properties` file. These modifications require a [database restart](./restarting.md).
+Disabled properties highlighted in grey or blue and grey cannot be changed in the user interface and must be modified in the `/opt/atsd/atsd/conf/server.properties` file. These modifications require a [database restart](./restarting.md).
 
 ![](./images/cannot-modify.png)
 
@@ -46,7 +46,7 @@ Export the current properties, as well as operating system settings and metrics,
 
 ## Property Reference
 
-**Bold** property names can only be modified in the `server.properties` file by a qualified user and require a database restart.
+**Bold** property names can only be modified in the `server.properties` file by a qualified user and require a [database restart](./restarting.md).
 
 ### HBase
 

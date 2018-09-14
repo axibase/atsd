@@ -291,16 +291,17 @@ const administrationMenu = [
             ['change-base-directory.md', 'Custom Base Directory'],
             ['change-data-directory.md', 'Custom Data Directory'],
             ['change-owner.md', 'Directory Owner'],
-            ['replication.md', 'Replication'],          
+            ['command-replication.md', 'Command Replication'],  
+            ['hbase-replication.md', 'HBase Replication'],
         ]
     },
     {
         title: "Data Management", children: [
+            ['data_retention.md', 'Data Retention'], 
+            ['metric-persistence-filter.md', 'Persistence Filters'],
             ['compaction.md', 'Compaction'],
             ['compaction-test.md', 'Compaction Test'],
-            ['compaction/', 'Compression Tests'],     
-            ['data_retention.md', 'Data Retention'],       
-            ['metric-persistence-filter.md', 'Persistence Filters'],
+            ['compaction/', 'Compression Tests'],               
             ['migration/', 'Migration'],
         ]
     },
@@ -375,6 +376,9 @@ module.exports = {
         searchMaxSuggestions: 10,
 
         ...githubSettings
+    },
+    markdown: {
+        slugify
     }
 }
 
@@ -389,4 +393,23 @@ function loadFromEnv(setting, varName) {
             module.exports[setting] = value;
         }
     }
+}
+
+const rControl = /[\u0000-\u001f]/g
+const rSpecial = /[\s~`!@#$%^&*()\-+=[\]{}|\\;:"'<>,.?/]+/g
+
+function slugify (str) {
+  return str
+    // Remove control characters
+    .replace(rControl, '')
+    // Replace special characters
+    .replace(rSpecial, '-')
+    // Remove continous separators
+    .replace(/\-{2,}/g, '-')
+    // Remove prefixing and trailing separtors
+    .replace(/^\-+|\-+$/g, '')
+    // ensure it doesn't start with a number (#121)
+    .replace(/^(\d)/, '_$1')
+    // lowercase
+    .toLowerCase()
 }

@@ -30,7 +30,9 @@ docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/ud
 
 The password is subject to the following [requirements](../administration/user-authentication.md#password-requirements). If the password contains special characters `$`, `&`, `#`, or `!`, escape them with backslash `\`.
 
-> For installation on Kubernetes refer to this [guide](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html).
+:::tip Note
+For installation on Kubernetes refer to this [guide](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html).
+:::
 
 ## Check Installation
 
@@ -100,6 +102,48 @@ docker run -d --name=atsd \
   --publish 9081:8081 \
   --publish 9082:8082/udp \
   axibase/atsd:latest
+```
+
+## Custom Data Directories
+
+To start container with [data directories](../administration/change-data-directory.md) mounted on custom external volumes, specify the volumes in the `run` command.
+
+```bash
+docker run -d --name=atsd \
+  -p 9088:8088 -p 9443:8443 -p 9081:8081 -p 9082:8082/udp \
+  -v /path/to/hdfs-cache:/opt/atsd/hdfs-cache \
+  -v /path/to/hdfs-data:/opt/atsd/hdfs-data \
+  -v /path/to/hdfs-data-name:/opt/atsd/hdfs-data-name \
+  axibase/atsd:latest
+```
+
+Stop **all** ATSD processes after ATSD start error is display in container logs.
+
+```txt
+ls: Call From 2c206c3a3f0c... to localhost:8020 failed on connection exception
+[ATSD] HDFS is not available.
+```
+
+```bash
+docker exec atsd /opt/atsd/bin/atsd-all.sh stop
+```
+
+Grant ownership of the base directory `/opt/atsd` to the `axibase` user.
+
+```bash
+docker exec -u root atsd chown -R axibase:axibase /opt/atsd
+```
+
+Format the new data directory.
+
+```bash
+docker exec -u axibase atsd /opt/atsd/hadoop/bin/hdfs namenode -format
+```
+
+Start ATSD.
+
+```bash
+docker exec atsd /opt/atsd/bin/atsd-all.sh start
 ```
 
 ## Troubleshooting

@@ -185,10 +185,10 @@ Compression for CSV report files can be selected on the **SQL > Scheduled Querie
 
 ![](./Images/4320.png)
 
-> Live Search Search
+Live Search Search
 
 ### Issue 4226
 
-> The `COALESCE` function returns the first argument that is not `NULL` or `NaN`.
+The `COALESCE` function returns the first argument that is not `NULL` or `NaN`.
 
 ![](./Images/4226.png)

@@ -48,11 +48,9 @@ kb = 1024
 curtime = 1515758392702
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::tip Big Integers
 Define large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a 32-bit integer can hold is limited to `[-2147483647, 2147483648]`.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ![](./images/variables-large-integers.png)
 
@@ -147,9 +145,15 @@ Variables can be included in a condition.
 
 ## Execution
 
-Depending on the sequence of boolean checks in the condition which refers to a variable, such variable can be evaluated for **each** command.
+Depending on the sequence of boolean checks in the condition, referenced variables can be evaluated for **each** incoming or exiting command.
 
-If such variable invokes an external function such as [`scriptOut`](functions-script.md), such function must execute quickly, within a few seconds. Avoid calling long-running functions in variables.
+If the window status is `OPEN` or `REPEAT`, all variables are evaluated regardless of condition.
+
+If a variable invokes an external function such as [`scriptOut`](functions-script.md), such function must execute quickly, within a few seconds.
+
+:::warning
+Avoid calling long-running functions in variables.
+:::
 
 The current value of a variable can be accessed on the **Window Details** page.
 

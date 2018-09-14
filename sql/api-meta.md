@@ -4,7 +4,7 @@
 
 Retrieves SQL query result metadata in JSON format without executing the query.
 
-> The metadata is provided even if one of the metrics referenced in the query does not exist in the database. In this case, the metric value column is of the default `float` datatype.
+The metadata is available even for metrics that do not exist in the database. In this case, the metric value column is of the default `float` datatype.
 
 ## Authorization
 

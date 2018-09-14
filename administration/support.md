@@ -6,9 +6,9 @@
 
   Open a ticket in our [Support Desk](https://axibase.zendesk.com/home) to expedite processing.
 
-* **Community** Support:
+* **Trial Period** Support:
 
-  Contact us at `support-atsd@axibase.com`.
+  Email us at `support-atsd@axibase.com`.
 
 ## Overview
 

@@ -5,9 +5,9 @@
 Issue| Category   | Type   | Subject
 -----|-------------|---------|----------------------
 5651|rule engine|Bug|Validator ignores [property functions](../../rule-engine/functions.md#properties) and [derived commands](../../rule-engine/derived.md).
-5649|installation|Feature|Validation [installation](../../installation/README.md#linux-packages) on `Ubuntu 18.04`.
+5649|installation|Feature|Validate [installation](../../installation/README.md#linux-packages) on `Ubuntu 18.04`.
 5641|rule editor|Feature|Add **View Alert Log** links to [**Logging**](../../rule-engine/logging.md#alert-logging) tab.
-5640|rule engine|Feature|Serialize Alert History record as map in [details](../../rule-engine/details-table.md#details-table) table.
+5640|rule engine|Feature|Serialize Alert History record as map in the [details](../../rule-engine/details-table.md#details-table) table.
 5639|rule engine|Feature|Add context to [script](../../rule-engine/functions-script.md#script-functions) execution log.
 5629|rule engine|Feature|Modify the default map-to-string serialization format.
 5628|rule engine|Bug|Validator fails to check metric name specified in the [`value()`](../../rule-engine/functions.md#value) function.
@@ -21,18 +21,18 @@ Issue| Category   | Type   | Subject
 5615|rule engine|Bug|[`last_open()`](../../rule-engine/functions-alert-history.md#last_open) function overloads the database.
 5614|rule engine|Bug|`NullPointerException` encountered during rule test if [**Load History**](../../administration/logging.md) is enabled.
 5611|rule engine|Bug|Exception raised when saving [alert history](../../administration/logging.md) for newly created entity.
-5609|rule engine|Bug|Set [`window_first_time`](../../rule-engine/window-fields.md#date-fields) field to empty string if not available.
+5609|rule engine|Bug|Set [`window_first_time`](../../rule-engine/window-fields.md#date-fields) field to empty string if the window is empty.
 5607|sql|Bug|Incorrect metadata returned by the [`/api/sql`](../../sql/api.md#sql-query-api-endpoint) endpoint if the column alias contains line breaks.
 5604|rule engine|Bug|Alert history not [logged](../../administration/logging.md) if message text is empty.
 5603|rule editor|Bug|Standardize button style and placements in the rule editor.
 5602|rule editor|Bug|[Logging](../../administration/logging.md) status is incorrectly shown as `Disabled`.
 5601|rule engine|Bug|Correctly initialize [`now`](../../rule-engine/functions-date.md#now) object in the filter log.
 5599|rule engine|Bug|Validate email addresses in [Email Action](../../rule-engine/email.md#email-action).
-5598|rule engine|Bug|[Filter](../../rule-engine/filters.md#filters) fields type and source are lost when rule is cloned.
+5598|rule engine|Bug|Type and source [filters](../../rule-engine/filters.md#filters) are lost when rule is cloned.
 5597|rule engine|Feature|Add [details](../../rule-engine/details-table.md) to rule windows with `CANCEL` status.
 5596|csv|Bug|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): empty line in the middle causes issues for fixed width parser.
-5594|rule engine|Feature|Make time zone and date pattern optional in [`date_format`](../../rule-engine/functions-format.md#date_format) function.
-5593|rule engine|Feature|Validate patterns specified in [date format](../../rule-engine/functions-format.md#date_format) and [parse](../../rule-engine/functions-date.md#date_parse) functions.
+5594|rule engine|Feature|Make time zone and date pattern optional in [`date_format`](../../rule-engine/functions-date.md#date_format) function.
+5593|rule engine|Feature|Validate patterns specified in [date format](../../rule-engine/functions-date.md#date_format) and [date parse](../../rule-engine/functions-date.md#date_parse) functions.
 5590|export|Bug|[Export](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) page: gracefully handle client disconnect.
 5587|api-rest|Bug|Data API: [Series Query](../../api/data/series/query.md#series-query) with small `limit` and `time=all` is slow.
 5584|api-rest|Bug|Data API: [Property Query](../../api/data/properties/query.md#properties-query) with `limit` is slow.
@@ -41,7 +41,7 @@ Issue| Category   | Type   | Subject
 5577|rule engine|Bug|[`IN`](../../rule-engine/functions-collection.md#in) operator fails to work on string function result.
 5575|api-rest|Feature|Data API: [Series Query](../../api/data/series/smooth.md) - implement smooth transformation.
 5573|rule editor|Feature|Implement response action [logging](../../administration/logging.md).
-5572|message|Feature|Data API: [expression](../../api/meta/expression.md#expression-syntax) does not support `type` and `source` fields.
+5572|message|Feature|Data API: add support for `type` and `source` fields in [expression](../../api/meta/expression.md#expression-syntax).
 5568|rule editor|Bug|Rule Editor: List files without executable permissions in the [**Scripts**](../../rule-engine/scripts.md#script) drop-down.
 5567|client|Feature|Python [client](../../api/clients/README.md): disable default logging.
 5565|core|Feature|[Backup](../../administration/backup.md#backup-and-restore) configuration resources.
@@ -69,7 +69,7 @@ Issue| Category   | Type   | Subject
 5535|entity|Bug|[Entity Group](../../configuration/entity_groups.md#entity-groups): wrong entities included.
 5534|security|Feature|[Users](../../administration/user-authentication.md#user-authentication): Implement Create Resource Viewer User wizard.
 5533|metric|Bug|Metric Search: implement search by all criteria [fields](../../search/README.md#syntax).
-5531|rule engine|Bug|`500` error with attempt to change alert [status](../../rule-engine/README.md).
+5531|rule engine|Bug|`500` error raised on alert [status](../../rule-engine/README.md) change.
 5530|rule engine|Bug|Rule Engine: [details table](../../rule-engine/details-table.md#details-table) unavailable.
 5527|UI|Feature|Implement a more compact drop-down list on several pages.
 5524|entity|Feature|[Entity Group](../../configuration/entity_groups.md#entity-groups): implement parent groups.
@@ -105,6 +105,6 @@ Issue| Category    | Type    | Subject
 5560|UI|Feature|UI: Database [form](https://axibase.com/docs/axibase-collector/jobs/jdbc-data-source.html#jdbc-data-source) improvements.
 5529|core|Bug|Core: Retrieve ATSD version through [ATSD API JAVA](../../api/clients/README.md) client.
 5525|core|Feature|Core: set custom `User-Agent` header for request sent by the [ATSD API JAVA](../../api/clients/README.md) client.
-5416|UI|Bug|UI: After [login](https://axibase.com/docs/axibase-collector/installation.html#login) collector redirects to favicon.
+5416|UI|Bug|UI: After [login](https://axibase.com/docs/axibase-collector/installation.html#login) collector redirects to `favicon` image.
 5148|core|Feature|Send failure percentage as message tag on [`PARTIAL_FAILURE`](https://axibase.com/docs/axibase-collector/monitoring.html#monitoring).
 5131|core|Bug|Duplicate [storage driver](https://axibase.com/docs/axibase-collector/atsd-server-connection.html#storage-driver-configuration) created on container restart.

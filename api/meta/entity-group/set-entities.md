@@ -8,7 +8,9 @@ All existing members that are not included in the request are removed from membe
 
 If the array in the request is empty, all entities are **removed** from the group and are replaced with an empty list.
 
-> Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
+:::warning Note
+Membership in expression-based groups is managed by the server. Adding and removing members of such groups is not supported.
+:::
 
 ## Request
 

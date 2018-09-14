@@ -28,11 +28,9 @@ An array of query objects containing the following fields:
 | `minSeverity` |  string   | Minimal severity [name](../../../shared/severity.md) filter.  |
 | `acknowledged` |  boolean   | Acknowledgement status. If set, filters alerts for the specified status. |
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 `tags` filter is not supported.
 :::
-<!-- markdownlint-disable MD032 -->
 
 #### Entity Filter Fields
 

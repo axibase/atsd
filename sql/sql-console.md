@@ -42,7 +42,13 @@ The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed b
 `MMM-dd, eee` | `May-15, Tue` | `May-15, Tue`
 `MMM-dd, eeee` | `May-15, Tuesday` | `May-15, Tuesday`
 
-> The database time zone can be [modified](../administration/timezone.md) by an administrator.
+:::tip
+The database time zone can be [modified](../administration/timezone.md) by an administrator.
+:::
+
+:::tip
+To modify the default time zone for a specific query, apply the [`WITH TIMEZONE`](README.md#with-timezone) clause.
+:::
 
 ### Decimal Precision
 
@@ -129,7 +135,7 @@ The dialog window provides several tools to configure insertion:
 
 * **Schedule**: Creates a [scheduled query](scheduled-sql.md) with the **Store** option set to **Enabled** based on the current query.
 
-> Refer to [Scheduled Store Documentation](scheduled-sql-store.md) for more details.
+Refer to [Scheduled Store Documentation](scheduled-sql-store.md) for more details.
 
 ### Query Plan
 

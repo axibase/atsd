@@ -1,20 +1,8 @@
 {
     "ignorePatterns": [
-        {
-            "pattern": "https?://.*\\.apache.org"
-        },
-        {
-            "pattern": "https://himawari8.nict.go.jp"
-        },
-        {
-            "pattern": "https://catalog.data.gov/dataset/employment-figures-f55ae"
-        },
-        {
-            "pattern": "https://catalog.data.gov/dataset/per-capita-electricity-consumption-7b888"
-        },
-        {
-            "pattern": "https://catalog.data.gov/dataset/mva-vehicle-sales-counts-by-month-for-cy-2002-2015"
-        },
+         { "pattern": "https?://.*\\.apache.org" }
+        ,{ "pattern": "https://catalog.data.gov/dataset/.*"}
+        ,{ "pattern": "https://himawari8.nict.go.jp" },
         {
             "pattern": "https://www.maersk.com/en/hardware/triple-e"
         },
@@ -34,22 +22,10 @@
             "pattern": "https://www.oracle.com/us/products/enterprise-manager/index.html"
         },
         {
-            "pattern": "https://catalog.data.gov/dataset/mva-vehicle-sales-counts-by-month-for-cy-2002-2015"
-        },
-        {
             "pattern": "https://java.sun.com/products/JavaManagement/download.html"
         },
         {
             "pattern": "https://apps.axibase.com/meters/"
-        },
-        {
-            "pattern": "https://catalog.data.gov/dataset/food-insecurity-rates-2009-present"
-        },
-        {
-            "pattern": "https://catalog.data.gov/dataset/solar-photovoltaic-pv-incentive-program-completed-projects-by-city-and-contractor-beginnin"
-        },
-        {
-            "pattern": "https://catalog.data.gov/dataset/american-fitness-index-ranking-2010-present"
         },
         {
             "pattern": "https://ec.europa.eu"
@@ -95,13 +71,14 @@
         ,{ "pattern": "https://www.iowa.gov/" }
         ,{ "pattern": "https://cms.montgomerycollege.edu/EDU/Department.aspx?id=45574" }
         ,{ "pattern": "http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmptranslate.html" }
-        ,{ "pattern": "https://www.boi.org.il/en/Pages/Default.aspx"}
-        ,{ "pattern": "https://www.boi.org.il/en/DataAndStatistics/Pages/Default.aspx"}
-        ,{ "pattern": "https://www.boi.org.il/en/DataAndStatistics"}
-        ,{ "pattern": "https://catalog.data.gov/dataset/nyc-social-media-usage-555a2"}
+        ,{ "pattern": "https://www.boi.org.il/.*"}
         ,{ "pattern": "https://www.water-research.net/" }
         ,{ "pattern": "https://data.maryland.gov/api/views/.*"}
         ,{ "pattern": "https://www.ssb.no/statistikkbanken/selectvarval/Define.asp.*"}
-
+        ,{ "pattern": "https://www.portoflosangeles.org/.*"}
+        ,{ "pattern": "https://cdec.water.ca.gov/cgi-progs/.*"}
+        ,{ "pattern": "https://cdec.water.ca.gov/index.html"}
+        ,{ "pattern": "https://nylottery.ny.gov/wps/portal/.*"}
+        
         
     ]}

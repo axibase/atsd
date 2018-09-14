@@ -298,7 +298,7 @@ endfor
 
 The `series-limit` setting limits the number of possible series returned by the database for wildcard queries.
 Because the limit is applied to matched series before sorting, results can vary between requests which makes the setting
-useful when exploring a dataset by preventing a widget from loading excessive series into browser memory.
+helpful when exploring a dataset by preventing a widget from loading excessive series into browser memory.
 
 ```ls
 entity = *

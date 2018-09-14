@@ -88,9 +88,10 @@ Name | Description
 Name | Description
 ---|---
 [`addTable for list`](functions-table.md#addtable-for-list)| Prints list of lists as a multi-column table in the specified format.
-[`addTable for map`](functions-table.md#addtable-for-map)| Prints the input key-value map as a two-column table in the specified format.
+[`addTable for map`](functions-table.md#addtable-for-map)| Prints a key-value map as a two-column table in the specified format.
 [`addTable for maps`](functions-table.md#addtable-for-maps)| Prints a collection of maps as a multi-column table in the specified format.
-[`detailsTable`](details-table.md)| Assembles a table consisting of window and command fields.
+[`addTable for objects`](functions-table.md#addtable-for-objects)| Prints a collection of objects as a multi-column table in the specified format.
+[`detailsTable`](details-table.md)| Prints a two-column table consisting of window and command fields in the specified format.
 
 ### Links
 
@@ -138,11 +139,9 @@ Name | Description
 [`db_last`](functions-series.md#db_last)| Retrieves the most recent value stored in the database for the target series.
 [`db_statistic`](functions-series.md#db_statistic)| Returns the result of a statistical function for historical values.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Related Functions
 See [value](#value) functions.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### Forecasts
 
@@ -185,9 +184,12 @@ Name | Description
 Name | Description
 ---|---
 [`add`](object-datetime.md#add-function) |Returns a [`DateTime`](object-datetime.md) object created by adding an interval.
+[`date_format`](functions-date.md#date_format)| Converts Unix time in milliseconds or a [`DateTime`](object-datetime.md) object to a string.
 [`date_parse`](functions-date.md#date_parse)|  Parses the input string into a [`DateTime`](object-datetime.md) object.
 [`elapsed_minutes`](functions-date.md#elapsed_minutes)|  Calculates the number of minutes between the current and specified time.
 [`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
+[`formatInterval`](functions-date.md#formatinterval)| Converts milliseconds interval to a formatted interval.
+[`formatIntervalShort`](functions-date.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
 [`is_weekday`](object-datetime.md#is_weekday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekday.
 [`is_weekend`](object-datetime.md#is_weekend-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekend day.
 [`is_workday`](object-datetime.md#is_workday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a working day.
@@ -208,10 +210,7 @@ Name | Description
 Name | Description
 ---|---
 [`convert`](functions-format.md#convert)| Divides the number by the unit and formats with one fractional digit.
-[`date_format`](functions-format.md#date_format)| Converts Unix time in milliseconds to a string.
 [`formatBytes`](functions-format.md#formatbytes)| Returns the total number of bytes in human-readable format.
-[`formatInterval`](functions-format.md#formatinterval)| Converts milliseconds interval to a formatted interval.
-[`formatIntervalShort`](functions-format.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
 [`formatNumber`](functions-format.md#formatnumber)| Formats number with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) using the server locale.
 
 ## Mathematical
@@ -271,11 +270,9 @@ Name | Description
 
 ## Statistical
 
-<!-- markdownlint-enable MD032 -->
 :::warning Scope
 [Statistical functions](functions-statistical.md) are not supported in the [filter expression](filters.md#filter-expression).
 :::
-<!-- markdownlint-disable MD032 -->
 
 Name | Description
 ---|---

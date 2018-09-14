@@ -4,7 +4,9 @@ Update ATSD to the latest version by running the `update.sh` script.
 The script automates the process of downloading the latest distribution files,
 copying files to target directories, and gracefully restarting ATSD services.
 
-> Access to axibase.com from the target server is required to download installation files. If the server is not connected to the Internet, switch to the [manual update](update-manual.md) option.
+:::tip Note
+Access to `https://axibase.com` from the target server is required to download installation files. If the server is not connected to the Internet, switch to the [manual update](update-manual.md) option.
+:::
 
 ## Migration
 

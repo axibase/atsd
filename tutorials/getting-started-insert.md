@@ -19,7 +19,7 @@ In the previous section you inserted data manually using the web interface. Proc
 command_name field_prefix:[field_name=]field_value
 ```
 
-Open the terminal and send these commands into ATSD.
+Open the console and send these commands into ATSD.
 
 ```bash
 echo -e "series e:br-1905 m:temperature=25" \
@@ -45,7 +45,7 @@ While the network commands are optimized for writing data, the [REST API](../api
 
 ### Sending Values at a Specific Time
 
-Open the terminal and send a single observation with a specific `datetime` into the [Series: Insert](../api/data/series/insert.md) endpoint. Replace `<username>` with your username.
+Open the console and send a single observation with a specific `datetime` into the [Series: Insert](../api/data/series/insert.md) endpoint. Replace `<username>` with your username.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/series/insert \

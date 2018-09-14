@@ -14,8 +14,6 @@ Once enabled, the database tracks changes made to stored values with the followi
 |  Version Source  |  User-defined field to track the source of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#modifying-values).|
 |  Version Status  |  User-defined field to classify change events. <br> Set to `invalid` for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
-> The ability to specify custom fields with server-side business logic such as change locking, is under development.
-
 ## Enabling Versioning
 
 Versioning is **disabled** by default.
@@ -50,14 +48,12 @@ To insert versioned samples, use a [series](../api/network/series.md) command wi
 series e:{entity} m:{metric}={number} t:$version_status={status} t:$version_source={source} d:{iso-date}
 ```
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Request to insert versioned value for a **non-versioned** metric causes a validation error.
 :::
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 Example:
 
@@ -71,11 +67,9 @@ Add versioned samples by opening the form on the **Data > Data Entry > Series** 
 
 ![](./resources/8.png)
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 **Metric** field must reference an existing metric with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### CSV Parser using Default Tags
 
@@ -88,14 +82,12 @@ $version_source={source}
 
 ![](./resources/2.png)
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Request to insert versioned value for a **non-versioned** metric causes a validation error.
 :::
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ### CSV Parser using Renamed Columns
 
@@ -103,14 +95,12 @@ To extract versioning fields from CSV content, add the version tags to the **Tag
 
 ![](./resources/3.png)
 
-<!-- markdownlint-enable MD032 -->
 :::warning Note
 Request to insert versioned value for a **non-versioned** metric causes a validation error.
 :::
 :::tip Note
 If the command refers to a new metric, the metric is created automatically with **Versioning** set to **Yes**.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## View Versions
 

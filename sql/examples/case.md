@@ -172,7 +172,7 @@ GROUP BY entity
 
 ### Switch-case Construct
 
-> This example also demonstrates the usage of multiple comparison expressions (`'2012' OR '2018'`).
+This example also demonstrates the usage of multiple comparison expressions (`'2012' OR '2018'`).
 
 ```sql
 SELECT date_format(time, 'yyyy'),

@@ -1,6 +1,6 @@
 # Editions
 
-Axibase Time Series Database is available in two editions: **Standard** and **Enterprise**.
+Axibase Time Series Database is available in two editions, **Standard** and **Enterprise**, which are available in two [licensing models](./licensing.md): Subscription and Perpetual.
 
 Enterprise Edition supports a scale-out deployment model.
 
@@ -25,10 +25,10 @@ Enterprise Edition supports a scale-out deployment model.
 | [LDAP Authentication](./administration/user-authorization.md) |  | ![](./images/ok.svg) |
 | [Forecasts](./forecasting/README.md) | | ![](./images/ok.svg) |
 | [Versioning](./versioning/README.md) |  | ![](./images/ok.svg) |
-| [Cluster replication](./administration/replication.md) |  | ![](./images/ok.svg) |
-| [Cloudera Distribution Hadoop](./installation/cloudera.md) |  | ![](./images/ok.svg) |
-| [AWS Elastic MapReduce](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
-| Pricing | [From $240](pricing.md#standard-edition) | [From $960](pricing.md#enterprise-edition) |
+| [Cluster replication](./administration/hbase-replication.md) |  | ![](./images/ok.svg) |
+| [Command replication](./administration/command-replication.md) |  | ![](./images/ok.svg) |
+| [Cloudera DH Deployment](./installation/cloudera.md) |  | ![](./images/ok.svg) |
+| [AWS EMR Deployment](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
 
 ## Tools
 
@@ -39,6 +39,13 @@ Enterprise Edition supports a scale-out deployment model.
 | [API Clients](api/clients/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [Data Applications](https://apps.axibase.com/) |  | ![](./images/ok.svg) |
 | [ChartLab](https://apps.axibase.com/chartlab/) |  | ![](./images/ok.svg) |
+
+## Pricing
+
+|  | **Standard Edition** | **Enterprise Edition** |
+|---|:---:|:---:|
+| Subscription | [From $240](pricing.md#standard-edition) | [From $960](pricing.md#enterprise-edition) |
+| Perpetual License |  | ![](./images/ok.svg) |
 
 ## Support Services
 

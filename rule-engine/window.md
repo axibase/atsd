@@ -2,9 +2,9 @@
 
 ## Overview
 
-A window is an in-memory structure created by the rule engine for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
+A window is an in-memory structure created by the rule engine for each unique combination of metric, entity, and [grouping](grouping.md) tags extracted from incoming commands.
 
-Windows are displayed on the **Alerts > Rule Windows** page.
+Windows are displayed on the **Alerts > Rule Windows** page and provide access to [fields](window-fields.md).
 
 ![](./images/rule-windows.png)
 
@@ -12,11 +12,11 @@ Windows are displayed on the **Alerts > Rule Windows** page.
 
 Count-based windows accumulate up to the specified number of time-value samples. Samples are sorted **by command timestamp**, with the most recent sample placed at the end of the array. When the window becomes full, the first sample (**oldest** by command time) is removed from the window to free up space for an incoming sample.
 
-Example: Count-based window with 3 samples
+Example: Count-based window with three samples
 
 ![](./resources/window-count.svg)
 
-Once the window reaches the limit of 3 samples, its size remains constant.
+Once the above window reaches the limit of three samples, its size remains constant.
 
 ## Time-based Windows
 
@@ -30,19 +30,17 @@ Example: 5-second window with variable sample count.
 
 The number of samples is not limited and varies over time from one to four. Such windows can become empty if no commands arrive within a certain period of time.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Window Boundaries
 The **start time** of the time-based window is initially set to **current time minus the interval duration**, and is constantly incremented as time passes. If the timestamp of the incoming command is equal to or greater than the window start time, the command is added to the window. Otherwise, the command is ignored.
 
 The **end time** in time-based windows is not bound. As such, the window accepts commands with future timestamps unless they are discarded with the [Time Offset filter](filters.md#time-offset-filter) or [filter expression](filters.md#filter-expression) such as `timestamp < now.millis + 60000`.
 :::
-<!-- markdownlint-disable MD032 -->
 
 ## Window Status
 
 Response actions are triggered on window status changes.
 
-As new data is received and old data is removed from the window, the rule engine re-evaluates the condition which can cause the status of the current window to change, triggering response actions.
+As new data is received and old data is removed from the window, the rule engine re-evaluates the [condition](condition.md) which can cause the status of the current window to change, triggering response actions.
 
 ### Initial Status
 

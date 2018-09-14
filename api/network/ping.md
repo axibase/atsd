@@ -27,7 +27,7 @@ command = "ping"
 ping
 ```
 
-> Response
+Response:
 
 ```txt
 ok

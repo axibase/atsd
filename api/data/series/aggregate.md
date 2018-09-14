@@ -106,11 +106,9 @@ By default, if the period does not contain any detailed values, the period is ex
 
 Configure this behavior with an interpolation function which fills a missing period with data calculated based on previous and next period aggregate values.
 
-<!-- markdownlint-enable MD032 -->
 :::tip Note
 Missing period values are interpolated from aggregate values of neighboring periods and not from raw values.
 :::
-<!-- markdownlint-disable MD032 -->
 
 #### Interpolation Fields
 
