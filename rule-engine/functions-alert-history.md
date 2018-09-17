@@ -24,7 +24,14 @@ To call this function, enable [Alert History](logging.md#logging-to-database) lo
 `type` | string | Message type | `web`
 `source` | string | Message source | `access.log`
 `keys` | string | Command tags or property keys | `{"docker-host":"nurswghbs001"}`
-`timestamp` | long | Command time in Unix time with millisecond precision.<br>Default: `0` | `1533109937000`
+`command_time` | DateTime | Timestamp of the command that caused the alert when Alert History was written.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `2018-09-12T21:33:42+01:00[Europe/Berlin]`
+`add_time` | DateTime | Server time when command was last added to the window when Alert History was written.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `2018-09-12T21:33:47.116+01:00[Europe/Berlin]`
+`remove_time` | DateTime | Server time when command was last removed from the window when Alert History was written. `null` if no command was removed from the window.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `null`
+`update_time` | DateTime | Server time when command was last added or removed from the window when Alert History was written.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `2018-09-12T21:34:04.951+01:00[Europe/Berlin]`
+`open_time` | DateTime | Server time when window status changed to `OPEN` when Alert History was written. `null` if status was not changed to `OPEN`.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `2018-09-12T21:33:42.246+01:00[Europe/Berlin]`
+`repeat_time` | DateTime | Last time when condition evaluated to `true` when Alert History was written. `null` if status was not changed to `REPEAT`.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `2018-09-12T21:33:58.298+01:00[Europe/Berlin]`
+`cancel_time` | DateTime | Time when the window changed status to CANCEL, or when the condition evaluated to false for the first time when Alert History was written. `null` if status was not changed to `CANCEL`.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `2018-09-12T21:33:39.278+01:00[Europe/Berlin]`
+`change_time` | DateTime | Time when the window changed status when the condition evaluated to false for the first time when Alert History was written. `null` if status was not changed.<br>Default: `1970-00-00T00:00:00Z[UTC]` | `2018-09-12T21:33:47.116+01:00[Europe/Berlin]`
 `message` | string | Message text | `Application restarted`
 `value` | double | Command value.<br>Default: `NaN`. | `85.2`
 `open_value` | double | Open value.<br>Default: `NaN`. | `82.7`
@@ -46,13 +53,13 @@ To call this function, enable [Alert History](logging.md#logging-to-database) lo
 * Check if sixty minutes passed since the last `OPEN`/`REPEAT` status, or if no previous record is found.
 
     ```javascript
-    elapsed_minutes(last_open().timestamp) > 60
+    elapsed_minutes(last_open().command_time) > 60
     ```
 
 * Check if the last command value exceeds the value in the previous `OPEN`/`REPEAT` record.
 
     ```javascript
-    last_open().timestamp > 0 && value > last_open().value
+    last_open().command_time > 0 && value > last_open().value
     ```
 
 * Check if the user variable named `location` has changed compared to the previous `OPEN`/`REPEAT` record.

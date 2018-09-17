@@ -163,7 +163,7 @@ avg() > 90
 To reduce distortions caused by a small number of outliers, use percentiles instead of averages.
 
 ```javascript
-percetile(75) > 90
+percentile(75) > 90
 ```
 
 Alternatively, use the `minimum` or a low percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that the last-N consecutive samples are above the threshold.
