@@ -67,7 +67,7 @@ Total Objects: 1
 Store the `atsd-hbase.$REVISION.jar` in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
 :::tip Note
-When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
+When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed from the file name to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is upgraded.
 :::
 
 ## Launch Cluster
@@ -95,6 +95,10 @@ aws emr create-cluster          \
   }]'              \
 )
 ```
+
+:::tip Note
+Currently supported AWS EMR releases are `5.0.0` to `5.3.1`.
+:::
 
 ### Specify Network Parameters
 
