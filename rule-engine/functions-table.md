@@ -33,12 +33,12 @@ Supported formats:
 
 <!-- markdownlint-disable MD032 -->
 ::: tip Default format
-* [Messaging Webhooks](./notifications.md#messaging-webhooks) - `ascii`
-* [Email Actions](./email.md#email-action) - `html`. 
+* [Messaging Webhooks](./notifications/README.md#messaging-webhooks) - `ascii`
+* [Email Actions](./email.md#email-action) - `html`.
 :::
 
 :::warning
-Format is **required** for [Integration Webhooks](./notifications.md#integration-webhooks).
+Format is **required** for [Integration Webhooks](./notifications/README.md#integration-webhooks).
 :::
 <!-- markdownlint-enable MD032 -->
 
