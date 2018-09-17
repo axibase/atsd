@@ -39,6 +39,7 @@
         ,{ "pattern": "https://cdec.water.ca.gov/cgi-progs/.*"}
         ,{ "pattern": "https://cdec.water.ca.gov/index.html"}
         ,{ "pattern": "https://nylottery.ny.gov/wps/portal/.*"}
+        ,{ "pattern": "https://www.worldhunger.org/hunger-in-america-2016-united-states-hunger-poverty-facts/"}
         
         
     ]}
