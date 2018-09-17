@@ -205,7 +205,7 @@ elapsed_minutes(string timestamp) long
 ```
 
 Calculates the number of **minutes** between the current time and `timestamp` specified as Unix time in milliseconds, [`DateTime`](object-datetime.md) object, or date specified in the following format:
-                                                                  
+
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
 ```
