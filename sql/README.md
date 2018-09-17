@@ -1901,7 +1901,7 @@ The above query retrieves all records for the 'm-1' metric, even though it retur
 
 ## Inline Views
 
-Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be processed by the parent query.
+Inline view is a subquery specified in the `FROM` clause instead of a table. It defines a virtual table to be processed by the parent query.
 
 ```sql
 -- parent query

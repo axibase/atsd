@@ -37,6 +37,10 @@ The `configuration-export.json` file contains key database and operating system 
 
 Review the sample [configuration file](./resources/configuration-export.json).
 
+:::warning Note
+If the database fails to start, provide the `.tar.gz` archive of the `/opt/atsd/atsd/conf` directory.
+:::
+
 ## 2. Database Log Files
 
 The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **Settings > Diagnostics > Server Logs** page.
