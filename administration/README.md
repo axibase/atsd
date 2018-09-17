@@ -1,4 +1,4 @@
-# Administration
+# Administrationads
 
 * [Email Client](./mail-client.md)
 * [Time Zone](./timezone.md)
