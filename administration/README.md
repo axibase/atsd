@@ -1,39 +1,85 @@
 # Administration
 
-## Axibase Collector
+## Portals
 
+* [Portals](../portals/README.md)
+
+## Forecasts
+
+* [Data Forecasting](../forecasting/README.md)
+
+## User Management
+
+* [User Authentication](./user-authentication.md)
+* [User Authorization](./user-authorization.md)
 * [Collector Account](./collector-account.md)
 * [Collector R/W Account](./collector-account.md)
 
-## Compaction
+## SSL
 
+* [CA-Signed Certificate](./ssl-ca-signed.md)
+* [`Let's Encrypt` Certificate](./ssl-lets-encrypt.md)
+* [Self-Signed Certificate](./ssl-self-signed.md)
+
+## Restarting
+
+* [Restart ATSD](./restarting.md)
+
+## Updating
+
+* [Automated Update](./update.md)
+* [Manual Update](./update-manual.md)
+
+## Logging
+
+* [ATSD Logs](./logging.md)
+
+## Server Properties
+
+* [Server Properties](./server-properties.md)
+
+## Configuration
+
+* [Configuration Files](./configuration-files.md)
+* [Mail Client](./mail-client.md)
+* [Time Zone](./timezone.md)
+* [Memory Allocation](./memory-allocation.md)
+* [Swap Space](./swap-space.md)
+* [Networking Settings](./networking-settings.md)
+* [Change Base Directory](./change-base-directory.md)
+* [Change Data Directory](./change-data-directory.md)
+* [Directory Owner](./change-owner.md)
+* [Command Replication](./command-replication.md)
+* [HBase Replication](./hbase-replication.md)
+
+## Data Management
+
+* [Data Retention](./data_retention.md)
+* [Persistence Filters](./metric-persistence-filter.md)
 * [Compaction](./compaction.md)
 * [Compaction Test](./compaction-test.md)
 * [Compression Tests](./compaction/README.md)
 
+## Monitoring
+
+* [Overview](./monitoring.md)
+* [JMX Metrics](./monitoring-metrics/jmx.md)
+* [JSON Metrics](./monitoring-metrics/json.md)
+* [File Metrics](./monitoring-metrics/file.md)
+* [Alerting](./monitoring-metrics/rule-engine.md)
+* [Portals](./monitoring-metrics/portals.md)
+* [Ingestion Statistics](./monitoring-metrics/ingestion-statistics.md)
+* [Database Tables](./monitoring-metrics/database-tables.md)
+* [I/O Tests](./monitoring-metrics/io-tests.md)
+* [HBase Write Test](./monitoring-metrics/hbase-write-test.md)
+
 ## Database
 
 * [Backup](./backup.md)
-* [Change Base Directory](./change-base-directory.md)
-* [Change Data Directory](./change-data-directory.md)
-* [Change Owner](./change-owner.md)
-* [Command Replication](./command-replication.md)
-* [Configuration Files](./configuration-files.md)
-* [Data Retention](./data_retention.md)
-* [Enabling Swap Space](./swap-space.md)
-* [HBase Replication](./hbase-replication.md)
-* [Logging](./logging.md)
-* [Email Client](./mail-client.md)
-* [Memory Allocation](./memory-allocation.md)
-* [Metric Persistence Filter](./metric-persistence-filter.md)
 * [Monitoring](./monitoring.md)
-* [Networking Settings](./networking-settings.md)
 * [Password Obfuscation](./passwords-obfuscation.md)
-* [Restarting](./restarting.md)
-* [Server Properties](./server-properties.md)
 * [Support](./support.md)
 * [Telemetry](./telemetry.md)
-* [Time Zone](./timezone.md)
 
 ## Migration
 
@@ -44,45 +90,6 @@
 * [MapReduce Settings](./migration/mr-settings.md)
 * [Data Reporter](./migration/reporter.md)
 
-## Monitoring Metrics
+## Support
 
-* [Database Tables](./monitoring-metrics/database-tables.md)
-* [Local File System](./monitoring-metrics/file.md)
-* [HBase Write Test](./monitoring-metrics/hbase-write-test.md)
-* [Incoming Data](./monitoring-metrics/ingestion-statistics.md)
-* [I/O Tests](./monitoring-metrics/io-tests.md)
-* [JMX](./monitoring-metrics/jmx.md)
-* [JSON](./monitoring-metrics/json.md)
-* [ATSD Portals](./monitoring-metrics/portals.md)
-* [Rule Engine](./monitoring-metrics/rule-engine.md)
-
-## SSL
-
-* [CA-Signed Certificate](./ssl-ca-signed.md)
-* [`Let's Encrypt` Certificate](./ssl-lets-encrypt.md)
-* [Self-Signed Certificate](./ssl-self-signed.md)
-
-## Update
-
-* [Automated Update](./update.md)
-* [Manual Update](./update-manual.md)
-
-## Users
-
-* [User Authentication](./user-authentication.md)
-  * [Authentication Mechanisms](./user-authentication.md#authentication-mechanisms)
-  * [User Account Types](./user-authentication.md#user-account-types)
-  * [Password Requirements](./user-authentication.md#password-requirements)
-  * [Built-In Account](./user-authentication.md#built-in-account)
-  * [Changing Password](./user-authentication.md#changing-password)
-  * [Resetting Password](./user-authentication.md#resetting-password)
-  * [Guest API Access](./user-authentication.md#guest-access-to-data-api)
-  * [HTTP Basic Authorization Examples](./user-authentication.md#http-basic-authorization-examples)
-* [User Authorization](./user-authorization.md)
-  * [Role Based Access Control](./user-authorization.md#role-based-access-control)
-    * [API Roles](./user-authorization.md#api-roles)
-    * [Web Interface Roles](./user-authorization.md#user-interface-roles)
-  * [Entity Permissions](./user-authorization.md#entity-permissions)
-    * [All Entities Permissions](./user-authorization.md#all-entities-permissions)
-    * [Inserting Data for New Entities](./user-authorization.md#inserting-data-for-new-entities)
-    * [Wildcard Requests](./user-authorization.md#wildcard-requests)
+* [Support](./support.md)
