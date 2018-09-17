@@ -14,7 +14,7 @@ Table functions perform various operations on strings, lists, and maps to create
 ## `addTable` for map
 
 ```csharp
-addTable(map, string format) string
+addTable(map[, string format]) string
 ```
 
 Prints the input key-value `map` as a two-column table in the specified `format`.
@@ -30,6 +30,17 @@ Supported formats:
 * `property`
 * `csv`
 * `html`
+
+<!-- markdownlint-disable MD032 -->
+::: tip Default format
+* [Messaging Webhooks](./notifications.md#messaging-webhooks) - `ascii`
+* [Email Actions](./email.md#email-action) - `html`. 
+:::
+
+:::warning
+Format is **required** for [Integration Webhooks](./notifications.md#integration-webhooks).
+:::
+<!-- markdownlint-enable MD032 -->
 
 Returns an empty string if `map` is `null` or has no records.
 
