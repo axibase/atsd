@@ -12,7 +12,7 @@ Access to `https://axibase.com` from the target server is required to download i
 
 ATSD for HBase 1.2.5, released in August 2017.
 
-If **Settings > System Information** page on your current instance displays HBase version `0.94.x`, execute the migration procedure depending on the installation mode:
+If the **Settings > System Information** page on your current instance displays HBase version `0.94.x`, execute the migration procedure depending on the installation mode:
 
 * [Cluster](migration/cluster.md)
 * [Container](migration/container.md)

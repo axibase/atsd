@@ -9,7 +9,7 @@
 | [4416](#issue-4416) | api-network | Feature | `Invalid Action (a)` string field added to the [`metric`](../../api/network/metric.md#metric-command) command
 | 4409 | export | Bug | Added `metrics.unit` to the list of fields in the backup XML files. |
 | 4400 | sql | Bug | Fixed illegal syntax error when querying table names containing dots. |
-| [4398](#issue-4398) | UI | Feature | Refactored the **[Metrics]** tab to improve usability. |
+| [4398](#issue-4398) | UI | Feature | Refactored the **Metrics** tab to improve usability. |
 | 4359 | forecast | Bug |  Fixed a [Forecast](../../forecasting/README.md) calculation error if the settings specify an [calendar](../../shared/calendar.md) keyword in the future.|
 | 4390 | sql | Bug | Fixed [`CAST`](../../sql/README.md#reserved-words) conversion error with the built-in `time` column. |
 | [4375](#issue-4375) | sql | Feature | Added support for [`CURRENT_TIMESTAMP`](../../sql/README.md#current_timestamp) and [`DBTIMEZONE`](../../sql/README.md#dbtimezone) functions. |
@@ -157,7 +157,7 @@ Add support for selecting all columns with an asterisk (`*`) symbol in inline vi
 ```sql
 SELECT TableauSQL.datetime AS datetime,
   TableauSQL.value AS value
-FROM ( select * from table_size ) TableauSQL
+FROM ( SELECT * FROM table_size ) TableauSQL
   LIMIT 10
 ```
 

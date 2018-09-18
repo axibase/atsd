@@ -10,19 +10,19 @@
 5419 | UI | Feature | UI: Apply DST offset to **Time Zone** drop-down lists.
 5413 | rule engine | Feature | Rule Engine: Implement [`toNumber`](../../rule-engine/functions-utility.md#tonumber) function for `null`-safe number parsing.
 5412 | api-rest | Feature | [Series Get](../../api/data/series/get.md) method: Implement period alignment parameter.
-5411 | message | Bug | [Message Table TTL](../../api/data/messages/delete.md#message-retention) specified in `server.properties` is ignored.
+5411 | message | Bug | [Message Table TTL](../../api/data/messages/delete.md#modify-hbase-settings) specified in `server.properties` is ignored.
 5407 | UI | Bug | UI: Type field auto-complete is broken on **Data Entry** page.
 5405 | rule engine | Feature | [Script](../../rule-engine/scripts.md): Pass window fields into scripts as named variables.
 5403 | rule editor | Bug | Rule Engine: [Entity Filter](../../rule-engine/filters.md#entity-names-filter) dual list replaced with auto-complete text input field.
 5402 | UI | Feature | UI: Rename **Web Notifications** as [**Outgoing Webhooks**](../../rule-engine/notifications/README.md).
 5401 | UI | Feature | UI: Move **Webhook Requests** to **Alerts** menu.
-5399 | test | Bug | API Tests: Message tests fail if [`messages.timeToLive`](../../api/data/messages/delete.md#message-retention) is too low.
+5399 | test | Bug | API Tests: Message tests fail if [`messages.timeToLive`](../../api/data/messages/delete.md#modify-hbase-settings) is too low.
 5397 | administration | Bug | `IllegalArgumentException` raised for [backup upload](../../administration/backup.md).
 5396 | security | Bug | [Security](../../administration/user-authentication.md): JSON response duplicated in case of authentication failure.
 5394 | client | Bug | ATSD [Java client](https://github.com/axibase/atsd-api-java): Do not catch `Throwable` errors.
 5393 | api-rest | Feature | API: Add `addInsertTime` parameter for [entities](../../api/meta/entity/list.md#query-parameters) API requests.
 5387 | search | Bug | [Search](../../api/meta/misc/search.md): Full re-index fails on disk space shortage.
-5384 | administrator | Feature | Monitoring: Add **Database Statistics** page with main database metrics.
+5384 | administrator | Feature | Monitoring: Added the **Database Statistics** page with main database metrics.
 5381 | log_aggregator | Feature | Aggregation Log Filter: Add support for multiple collectors.
 5380 | sql | Bug | SQL: [`date_format`](../../sql/examples/datetime-format.md#date_format-function) function returns incorrect time zone format.
 5379 | search | Bug | Search: Shutdown during full search index rebuild.

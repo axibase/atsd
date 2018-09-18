@@ -143,7 +143,7 @@ series e:test_e m:test_m=2
 
 The value causes the condition to evaluate to `true`, which in turn triggers the notification.
 
-To verify that an alert is raised, open **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
+To verify that an alert is raised, open the **Alerts > Open Alerts** page and check that an alert for the `test_m` metric is present in the **Alerts** table.
 
 ![](./images/pagerduty_alert_open.png)
 

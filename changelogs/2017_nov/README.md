@@ -234,7 +234,7 @@ LIMIT 10
 
 ### Issue 4707
 
-* Add group action to **Settings > Users** page to Enable/Disable multiple users at once.
+* Add group action to the **Settings > Users** page to Enable/Disable multiple users at once.
 * Implement a consistent style to highlight fields with tooltips.
 * Auto-size sub-menu panels in the top menu.
 
@@ -323,7 +323,7 @@ Successful user authentication requests are stored in the database and can be re
 
 ### Issue 3269
 
-Speed up SQL queries that select more than 1 row with descending `datetime` order.
+Speed up SQL queries that select more than one row with descending `datetime` order.
 
 ```sql
 SELECT *

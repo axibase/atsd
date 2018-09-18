@@ -94,7 +94,7 @@ There are two options to obtain Chat ID:
 
 ## Proxy Settings
 
-If the Telegram API server is inaccessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the Telegram API server is inaccessible from the ATSD server, open the **Network Settings** section and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Telegram:
 
@@ -136,7 +136,7 @@ To process incoming messages, configure an [outgoing webhook](outgoing-webhook-t
 
 ### Configure Webhook
 
-* Open **Alerts > Rules** page and select a rule.
+* Open the **Alerts > Rules** page and select a rule.
 * Open the **Webhooks** tab.
 * Select Telegram from the **Endpoint** drop-down list.
 * Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.

@@ -23,7 +23,7 @@
 To complete this exercise, load sample data into your ATSD instance.
 
 1. Log into the ATSD web interface
-2. Open **Metrics > Data Entry**, select the **Commands** tab.
+2. Open **Metrics > Data Entry**, open the **Commands** tab.
 3. Copy the [`series` commands](./resources/commands.txt) into the form and click **Submit**.
 
 ![](./resources/metrics_entry.png)
@@ -34,7 +34,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 
 ## Configure Database Connection
 
-* Select the **Data** tab in the properties pane on the right.
+* Open the **Data** tab in the properties pane on the right.
 
 ![](./resources/data_pane.png)
 
@@ -111,8 +111,8 @@ Design a query visually with **SQL Query Designer**:
 
 ## Import Data
 
-* Select **Data** tab in the properties pane on the right
-* Select **Add Data Sources** button in the toolbar and choose `JDBC`
+* Open the **Data** tab in the properties pane on the right
+* Click **Add Data Sources** in the toolbar and choose `JDBC`
 * Click **ATSD Connection**
 * Click **Add Query** in the **Available Queries** list
 

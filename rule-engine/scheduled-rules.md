@@ -87,5 +87,5 @@ Use the [`last_open`](./functions-alert-history.md#last_open) function to compar
 
 ```javascript
 // Check if OPEN / REPEAT occured more than 1 day ago
-elapsed_minutes(last_open().timestamp) > 24*60
+elapsed_minutes(last_open().command_time) > 24*60
 ```

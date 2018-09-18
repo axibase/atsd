@@ -11,7 +11,7 @@ To record alert history, check **Log to Alert History** on the **Logging** tab, 
 Status changes are stored in the database and can be inspected on the **Alerts > Alert History** page, retrieved with [Data API: Alert History Query](../api/data/alerts/history-query.md), and checked with the `last_open` function.
 
 ```javascript
-elapsed_minutes(last_open().timestamp) > 60
+elapsed_minutes(last_open().command_time) > 60
 ```
 
 ## Logging to Files

@@ -56,7 +56,7 @@ Slack Bot is a special account created for automation purposes.
 
 * Perform the following actions to prepare a **Request URL** for accepting notifications from Slack servers.
 
-  Open the **Settings > Users > Create Webhook User** wizard in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Slack.
+  Open the **Settings > Users > Create Webhook User** page in ATSD and create a [webhook](../../api/data/messages/webhook.md#webhook-user-wizard) user for accepting data from Slack.
 
   ![](./images/outgoing_webhook_slack_user.png)
 
@@ -111,7 +111,7 @@ https://username:password@atsd_hostname:8443/api/v1/messages/webhook/slack?comma
 
 ### Configure Webhook
 
-* Open **Alerts > Rules** page and select a rule.
+* Open the **Alerts > Rules** page and select a rule.
 * Open the **Webhooks** tab.
 * Select the notification from the **Endpoint** drop-down.
 * Enable the `OPEN`, `REPEAT` triggers.
@@ -136,11 +136,11 @@ Received `${message}` from <@${tags.event.user}>
   * less-than sign, `<` replaced with `&lt;`
   * greater-than sign, `>` replaced with `&gt;`
 
-* Open **Alerts > Incoming Webhooks** page and check that a request from Slack servers has been received.
+* Open the **Alerts > Incoming Webhooks** page and check that a request from Slack servers has been received.
 
     ![](./images/outgoing_webhook_slack_19.png)
 
-* If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which displays an error in case the user credentials are mis-configured.
+* If the request is not visible, check the **Settings > Diagnostics > Security Incidents** page which displays an error in case the user credentials are mis-configured.
 
     ![](./images/outgoing_webhook_slack_20.png)
 

@@ -152,14 +152,18 @@ Accepts the same arguments as the [`milliseconds`](#milliseconds) function with 
 ### `elapsedTime`
 
 ```csharp
-elapsedTime(long time) long
+elapsedTime(long timestamp) long
 ```
 
 ```csharp
-elapsedTime(string date) long
+elapsedTime(DateTime timestamp) long
 ```
 
-Calculates the number of **milliseconds** between the current time and `time` specified as Unix time in milliseconds or date `date` specified in the following format:
+```csharp
+elapsedTime(string timestamp) long
+```
+
+Calculates the number of **milliseconds** between the current time and `timestamp` specified as Unix time in milliseconds, [`DateTime`](object-datetime.md) object, or date specified in the following format:
 
 ```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
@@ -189,14 +193,24 @@ formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 ### `elapsed_minutes`
 
 ```csharp
-elapsed_minutes(long time) long
+elapsed_minutes(long timestamp) long
 ```
 
 ```csharp
-elapsed_minutes(string date) long
+elapsed_minutes(DateTime timestamp) long
 ```
 
-Calculates the number of **minutes** between the current Unix time and `time` in milliseconds or date `date`.
+```csharp
+elapsed_minutes(string timestamp) long
+```
+
+Calculates the number of **minutes** between the current time and `timestamp` specified as Unix time in milliseconds, [`DateTime`](object-datetime.md) object, or date specified in the following format:
+
+```txt
+yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
+```
+
+Function returns `0` if `date` is `null` or empty.
 
 Returns the same result as the `elapsedTime` function divided by `60000`.
 

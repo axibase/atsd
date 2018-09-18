@@ -114,7 +114,7 @@ Open the **Entities** page from the left menu in the ATSD web interface and sear
 
 ![](./resources/entity-search.png)
 
-Open the **Entity Editor** to describe entities using custom tags that are specific for the given domain or industry.
+Open the entity editor to describe entities using custom tags that are specific for the given domain or industry.
 
 Set **Label** to `BR-1905`, time zone to `US/Pacific` and set some custom tags:
 

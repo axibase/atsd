@@ -67,7 +67,7 @@ Total Objects: 1
 Store the `atsd-hbase.$REVISION.jar` in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
 :::tip Note
-When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
+When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed from the file name to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is upgraded.
 :::
 
 ## Launch Cluster
@@ -95,6 +95,10 @@ aws emr create-cluster          \
   }]'              \
 )
 ```
+
+:::tip Note
+Currently supported AWS EMR releases are `5.0.0` to `5.3.1`.
+:::
 
 ### Specify Network Parameters
 
@@ -308,9 +312,9 @@ If necessary, add security group rules to open inbound access to ports `8081`, `
 
 ATSD requires a license file when connected to an HBase cluster.
 
-Open **Settings > License** page and generate a license request.
+Open the **Settings > License** page and generate a license request.
 
-Once the license file is processed by Axibase, start ATSD, open **Settings > License** page and import the license.
+Once the license file is processed by Axibase, start ATSD, open the **Settings > License** page and import the license.
 
 ```bash
 ./atsd/atsd/bin/start-atsd.sh

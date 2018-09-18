@@ -6,17 +6,17 @@ This means that you can upload any `nmon` file or an archive of `nmon` files in
 
 ![](./resources/nmon_adhoc_process.gif)
 
-## Visualizing Data in nmon Files
+## Visualizing Data in `nmon` Files
 
-### Download nmon Portals
+### Download `nmon` Portals
 
-`nmon` Linux: [nmon_Linux](https://axibase.com/public/nmon_Linux.xml)
+`nmon` Linux: [`nmon_Linux`](https://axibase.com/public/nmon_Linux.xml)
 
-`nmon` AIX: [nmon_AIX.xml](https://axibase.com/public/nmon_AIX.xml)
+`nmon` AIX: [`nmon_AIX.xml`](https://axibase.com/public/nmon_AIX.xml)
 
-#### Import the portal
+#### Import the Portal
 
-This is a one time task.
+This is a one-time task.
 
 * Open the **Portals > Configure** page.
 * At the bottom of the page click **Import** and select either the downloaded `nmon_AIX` or `nmon_Linux` portal. If you are collecting data from AIX systems, choose `nmon_AIX`. If you are collecting data from Linux systems, choose `nmon_Linux`.

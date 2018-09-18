@@ -69,7 +69,7 @@ None.
 
 ### Screenshots
 
-Metric editor page before and after the renaming operation:
+Metric Editor page before and after the renaming operation:
 
 ![Metric name is `old_name`](../../../images/metric_rename_old_name.png)
 

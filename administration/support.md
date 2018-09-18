@@ -37,6 +37,14 @@ The `configuration-export.json` file contains key database and operating system 
 
 Review the sample [configuration file](./resources/configuration-export.json).
 
+:::warning Note
+If the database fails to start, provide the `.tar.gz` archive of the `/opt/atsd/atsd/conf` directory instead.
+:::
+
+:::tip Note
+For distributed installations, attach output of the `status` command in HBase shell.
+:::
+
 ## 2. Database Log Files
 
 The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **Settings > Diagnostics > Server Logs** page.
@@ -54,13 +62,17 @@ The files in the `/opt/atsd/atsd/logs/` directory can be downloaded from the **S
 
 ## 3. Extended Log Files
 
+:::tip Note
 HBase and HDFS log files are accessible from the **Settings > Diagnostics > Server Logs** page if ATSD is running in [standalone](../installation/packages.md) mode.
+:::
 
-1. Archive (`.tar.gz`) of the local `/opt/atsd/hbase/logs/` directory or from the HBase `HRegion` Servers.
+1. Archive (`.tar.gz`) of the `/opt/atsd/hbase/logs/` directory if ATSD is running in [standalone](../installation/packages.md) mode.
 
-2. Archive (`.tar.gz`) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes.
+2. Archive (`.tar.gz`) of the `/var/log/hbase/` directory from the HBase HMaster server if ATSD is running in distributed mode.
 
-3. Archive (`.tar.gz`) of the most recent `java_pid<pid>.hprof` heap dump file in the `/opt/atsd/atsd/logs` directory, if such file is present.
+3. Archive (`.tar.gz`) of the `/opt/atsd/hadoop/logs/` directory if ATSD is running in [standalone](../installation/packages.md) mode.
+
+4. Archive (`.tar.gz`) of the most recent `java_pid<pid>.hprof` heap dump file in the `/opt/atsd/atsd/logs` directory, if such file is present.
 
 ## 4. Performance Statistics
 

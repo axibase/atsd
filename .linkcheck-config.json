@@ -2,67 +2,27 @@
     "ignorePatterns": [
          { "pattern": "https?://.*\\.apache.org" }
         ,{ "pattern": "https://catalog.data.gov/dataset/.*"}
-        ,{ "pattern": "https://himawari8.nict.go.jp" },
-        {
-            "pattern": "https://www.maersk.com/en/hardware/triple-e"
-        },
-        {
-            "pattern": "https://aqicn.org/map/china"
-        },
-        {
-            "pattern": "https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"
-        },
-        {
-            "pattern": "http://www.bom.gov.au:80/fwo/IDV60801/IDV60801.94693.json"
-        },
-        {
-            "pattern": "http://www.bom.gov.au"
-        },
-        {
-            "pattern": "https://www.oracle.com/us/products/enterprise-manager/index.html"
-        },
-        {
-            "pattern": "https://java.sun.com/products/JavaManagement/download.html"
-        },
-        {
-            "pattern": "https://apps.axibase.com/meters/"
-        },
-        {
-            "pattern": "https://ec.europa.eu"
-        },
-        {
-            "pattern": "https://crt.sh"
-        },
-        {
-            "pattern": "https://apps.axibase.com/data-monitor/"
-        },
-        {
-            "pattern": "https://apps.axibase.com/performance/"
-        },
-        {
-            "pattern": "https://java.com/en/"
-        },
-        {
-            "pattern": "https://www.census.gov/2010census/data/"
-        },
-        {
-            "pattern": "https://www.uscis.gov/news/fact-sheets/naturalization-fact-sheet"
-        },
-        {
-            "pattern": "https://www.census.gov/main/www/cen2000.html"
-        },
-        {
-            "pattern": "http://www.aei.org/publication/team-obama-sorry-america-the-new-normal-may-be-here-to-stay/"
-        },
-        {
-            "pattern": "https://www.census.gov"
-        },
-        {
-            "pattern": "https://www.census.gov/foreign-trade/balance/index.html"
-        },
-        {
-            "pattern": "https://www.state.gov/documents/organization/249770.pdf"
-        }
+        ,{ "pattern": "https://himawari8.nict.go.jp" }
+        ,{ "pattern": "https://www.maersk.com/en/hardware/triple-e"}
+        ,{ "pattern": "https://aqicn.org/map/china"}
+        ,{ "pattern": "https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"}
+        ,{ "pattern": "http://www.bom.gov.au:80/fwo/IDV60801/IDV60801.94693.json"}
+        ,{ "pattern": "http://www.bom.gov.au"}
+        ,{ "pattern": "https://www.oracle.com/us/products/enterprise-manager/index.html"}
+        ,{ "pattern": "https://java.sun.com/products/JavaManagement/download.html"}
+        ,{ "pattern": "https://apps.axibase.com/meters/"}
+        ,{ "pattern": "https://ec.europa.eu"}
+        ,{ "pattern": "https://crt.sh"}
+        ,{ "pattern": "https://apps.axibase.com/data-monitor/"}
+        ,{ "pattern": "https://apps.axibase.com/performance/"}
+        ,{ "pattern": "https://java.com/en/"}
+        ,{ "pattern": "https://www.census.gov/2010census/data/"}
+        ,{ "pattern": "https://www.uscis.gov/news/fact-sheets/naturalization-fact-sheet"}
+        ,{ "pattern": "https://www.census.gov/main/www/cen2000.html"}
+        ,{ "pattern": "http://www.aei.org/publication/team-obama-sorry-america-the-new-normal-may-be-here-to-stay/"}
+        ,{ "pattern": "https://www.census.gov"}
+        ,{ "pattern": "https://www.census.gov/foreign-trade/balance/index.html"}
+        ,{ "pattern": "https://www.state.gov/documents/organization/249770.pdf"}
         ,{ "pattern": "https://www.state.gov/s/d/rm/rls/perfrpt/2015/html/249727.htm" }
         ,{ "pattern": "https://www.oracle.com/technetwork/java/javase/9all-relnotes-3704433.html#JDK-8189131" }
         ,{ "pattern": "https://www.panynj.gov/port/pdf/port-trade-statistics-summary-2001-2011.pdf" }
@@ -79,6 +39,7 @@
         ,{ "pattern": "https://cdec.water.ca.gov/cgi-progs/.*"}
         ,{ "pattern": "https://cdec.water.ca.gov/index.html"}
         ,{ "pattern": "https://nylottery.ny.gov/wps/portal/.*"}
+        ,{ "pattern": "https://www.worldhunger.org/hunger-in-america-2016-united-states-hunger-poverty-facts/"}
         
         
     ]}

@@ -91,7 +91,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
 ## Proxy Settings
 
-If the Discord API server is not accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../notifications/README.md#network-settings).
+If the Discord API server is not accessible from the ATSD server, open the **Network Settings** section and specify [proxy parameters](../notifications/README.md#network-settings).
 
 NGINX API Gateway Path for Discord:
 
