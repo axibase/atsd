@@ -40,7 +40,7 @@ ifEmpty('hello', 'world')
 toBoolean(object a) bool
 ```
 
-Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string `true`, `yes`, `on`, `1` (case-**IN**sensitive) or if `a` is equal to the number `1`.
+Converts an input string or number `a` to boolean value. The function returns `true` if input `a` is the string `true`, `yes`, `on` (**case-insensitive**), or equal to the number `1`.
 
 Value table:
 
@@ -80,7 +80,7 @@ toBoolean('On')
 toNumber(object a) double
 ```
 
-Converts the input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
+Converts input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
 If `a` cannot be parsed as a number, the function returns `Double.NaN`.
 
 Value table:
@@ -105,7 +105,7 @@ Input | Type | Result
 printObject(object obj, string format) string
 ```
 
-Prints the input object `obj` as a two-column table in the specified `format`.
+Prints input object `obj` as a two-column table in the specified `format`.
 
 Supported formats:
 
@@ -115,9 +115,9 @@ Supported formats:
 * `csv`
 * `html`
 
-The first column in the table contains field names, whereas the second column contains corresponding field values.
+The first column in the table contains field names, the second column contains the corresponding field values.
 
-Object `o` can be an `Entity` or a `Window` object which can be retrieved as follows:
+Object `o` can be an `Entity` or a `Window` object. Retrieve such objects using an applicable function:
 
 * [`getEntity`](functions-lookup.md#getentity)
 * [`rule_window`](functions-rules.md#rule_window)
@@ -181,7 +181,7 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 samples([int limit]) map
 ```
 
-Retrieves an ordered by datetime (ascending) map of the samples:
+Retrieves a map ordered by ascending datetime of included samples:
 
 ```javascript
 (datetime, value)
@@ -189,29 +189,29 @@ Retrieves an ordered by datetime (ascending) map of the samples:
 
 Where `datetime` is [`DateTime`](./object-datetime.md#datetime-object) object.
 
-Limit can be:
+Returned samples based on value of `limit` argument
 
-1. Zero or omitted: return all samples.
+1. Zero or omitted: All samples.
 
-2. Positive: return up to the specified number of samples from **start** (earliest samples first).
+2. Positive: Up to the specified number of samples from **start**, earliest samples first.
 
-3. Negative: return up to the specified number of samples from **end** (latest samples first).
+3. Negative: Up to the specified number of samples from **end**, latest samples first.
 
-If the number is specified and exceeds the window length, the function returns all samples in the window.
+If the number specified exceeds window length, the function returns all window samples.
 
-To retrieve sample timestamps and values separately, use [`timestamps`](#timestamps) and [`values`](#values) functions.
+To separately retrieve sample timestamps and values, use [`timestamps`](#timestamps) and [`values`](#values) functions.
 
 Example:
 
-* Samples in the window:
+* Window samples:
 
-    |       datetime       |    value  |
+    |       `datetime`       |    `value`  |
     |:---------------------|----------:|
-    | 2018-09-14T07:18:18Z | 152220.0  |
-    | 2018-09-14T07:18:48Z | 152252.0  |
-    | 2018-09-14T07:19:18Z | 152260.0  |
-    | 2018-09-14T07:19:48Z | 152480.0  |
-    | 2018-09-14T07:20:07Z | 2491420.0 |
+    | `2018-09-14T07:18:18Z` | 152220.0  |
+    | `2018-09-14T07:18:48Z` | 152252.0  |
+    | `2018-09-14T07:19:18Z` | 152260.0  |
+    | `2018-09-14T07:19:48Z` | 152480.0  |
+    | `2018-09-14T07:20:07Z` | 2491420.0 |
 
 * Expression:
 
@@ -226,11 +226,11 @@ Example:
     ]
     ```
 
-    See [Iteration](./control-flow.md#iteration) for more information about `@foreach`.
+    See [Control Flow Documentation](./control-flow.md#iteration) for more information about the `@foreach` template.
 
 * Result:
 
-    samples() =
+    **samples()**:
    | key | left | right | value |
    |:-|:-|:-|:-|
    | `2018-09-14T07:18:18Z[Etc/UTC]` | `2018-09-14T07:18:18Z[Etc/UTC]` | 152220.0 | 152220.0 |
@@ -239,14 +239,14 @@ Example:
    | `2018-09-14T07:19:48Z[Etc/UTC]` | `2018-09-14T07:19:48Z[Etc/UTC]` | 152480.0 | 152480.0 |
    | `2018-09-14T07:20:07Z[Etc/UTC]` | `2018-09-14T07:20:07Z[Etc/UTC]` | 2491420.0 | 2491420.0 |
 
-   samples(3) =
+   **samples(3)**:
    | key | left | right | value |
    |:-|:-|:-|:-|
    | `2018-09-14T07:18:18Z[Etc/UTC]` | `2018-09-14T07:18:18Z[Etc/UTC]` | 152220.0 | 152220.0 |
    | `2018-09-14T07:18:48Z[Etc/UTC]` | `2018-09-14T07:18:48Z[Etc/UTC]` | 152252.0 | 152252.0 |
    | `2018-09-14T07:19:18Z[Etc/UTC]` | `2018-09-14T07:19:18Z[Etc/UTC]` | 152260.0 | 152260.0 |
 
-   samples(-1) =
+   **samples(-1)**:
    | key | left | right | value |
    |:-|:-|:-|:-|
    | `2018-09-14T07:20:07Z[Etc/UTC]` | `2018-09-14T07:20:07Z[Etc/UTC]` | 2491420.0 | 2491420.0 |
@@ -267,21 +267,21 @@ values([int limit]) [number]
 
 Retrieves an array of the values of the samples in the current window.
 
-Limit can be:
+Returned samples based on value of `limit` argument
 
-1. Zero or omitted: return all values.
+1. Zero or omitted: All samples.
 
-2. Positive: return up to the specified number of values from **start** (earliest values first).
+2. Positive: Up to the specified number of samples from **start**, earliest samples first.
 
-3. Negative: return up to the specified number of values from **end** (latest values first).
+3. Negative: Up to the specified number of samples from **end**, latest samples first.
 
-If the number is specified and exceeds the window length, the function returns all samples in the window.
+If the number specified exceeds window length, the function returns all window samples.
 
-The whole samples map is available via [`samples`](#samples) function.
+Complete samples map is available via [`samples`](#samples) function.
 
 Example:
 
-* Samples in the window:
+* Window samples:
 
     |       datetime       |    value  |
     |:---------------------|----------:|
@@ -301,7 +301,7 @@ Example:
 
 * Result:
 
-    values() =
+    **values()**
     | Value |
     |:-|
     | 152220.0 |
@@ -309,13 +309,15 @@ Example:
     | 152260.0 |
     | 152480.0 |
     | 2491420.0 |
-    values(3) =
+
+    **values(3)**
     | Value |
     |:-|
     | 152220.0 |
     | 152252.0 |
     | 152260.0 |
-    values(-1) =
+
+    **values(-1)**
     | Value |
     |:-|
     | 2491420.0 |
@@ -328,21 +330,21 @@ timestamps([int limit]) [long]
 
 Retrieves an array of [`DateTime`](./object-datetime.md#datetime-object) objects of the samples in the current window.
 
-Limit can be:
+Returned samples based on value of `limit` argument
 
-1. Zero or omitted: return all `DateTimes`.
+1. Zero or omitted: All samples.
 
-2. Positive: return up to the specified number of `DateTimes` from **start** (earliest `DateTimes` first).
+2. Positive: Up to the specified number of samples from **start**, earliest samples first.
 
-3. Negative: return up to the specified number of `DateTimes` from **end** (latest `DateTimes` first).
+3. Negative: Up to the specified number of samples from **end**, latest samples first.
 
-If the number is specified and exceeds the window length, the function returns all samples in the window.
+If the number specified exceeds window length, the function returns all window samples.
 
-The whole samples map is available via [`samples`](#samples) function.
+Complete samples map is available via [`samples`](#samples) function.
 
 Example:
 
-* Samples in the window:
+* Window samples:
 
     |       datetime       |   value   |
     |:---------------------|----------:|
@@ -368,7 +370,7 @@ Example:
 
 * Result:
 
-    timestamps() =
+    **timestamps()**
     | Value |
     |:-|
     | `2018-09-14T07:18:18Z[Etc/UTC]` |
@@ -376,13 +378,15 @@ Example:
     | `2018-09-14T07:19:18Z[Etc/UTC]` |
     | `2018-09-14T07:19:48Z[Etc/UTC]` |
     | `2018-09-14T07:20:07Z[Etc/UTC]` |
-    timestamps(3) =
+
+    **timestamps(3)**
     | Value |
     |:-|
     | `2018-09-14T07:18:18Z[Etc/UTC]` |
     | `2018-09-14T07:18:48Z[Etc/UTC]` |
     | `2018-09-14T07:19:18Z[Etc/UTC]` |
-    timestamps(-1) =
+
+    **timestamps(-1)**
     | Value |
     |:-|
     | `2018-09-14T07:20:07Z[Etc/UTC]` |
@@ -401,7 +405,7 @@ Example:
 getURLHost(string url) string
 ```
 
-Retrieves the **host** from URL specified in string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **host** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -416,9 +420,9 @@ getURLHost('https://example.org/en/products?type=database&status=1')
 getURLPort(string url) int
 ```
 
-Retrieves the **port** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **port** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
-If `url` does not contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
+If `url` contains no port, the function returns the default value for the protocol, for example port `443` for `HTTPS` and port `80` for `HTTP`.
 
 Example:
 
@@ -433,7 +437,7 @@ getURLPort('https://example.org/en/products?type=database&status=1')
 getURLProtocol(string url) string
 ```
 
-Retrieves the **protocol** from URL string `url`. If `url` is `null`, empty or invalid, exception is thrown.
+Retrieves **protocol** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -448,7 +452,7 @@ getURLProtocol('https://example.org/en/products?type=database&status=1')
 getURLPath(string url) string
 ```
 
-Retrieves the **path** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **path** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -463,7 +467,7 @@ getURLPath('https://example.org/en/products?type=database&status=1')
 getURLQuery(string url) string
 ```
 
-Retrieves the **query string** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **query string** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -478,7 +482,7 @@ getURLQuery('https://example.org/en/products?type=database&status=1')
 getURLUserInfo(string url) string
 ```
 
-Retrieves the user credential part `username:password` from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves the user credential portion of the `username:password` key-value pair from the URL string specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
