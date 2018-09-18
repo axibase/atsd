@@ -209,12 +209,15 @@ Example:
 
     ```javascript
     samples()
+
     ${addTable(samples(), 'markdown')}
 
     samples(3)
+
     ${addTable(samples(3), 'markdown')}
 
     samples(-1)
+
     ${addTable(samples(-1), 'markdown')}
 
     samples(-2)_formatted
@@ -228,6 +231,7 @@ Example:
 * Result:
 
     samples()
+
     | **key** | **value**  |
     |:---|:--- |
     | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
@@ -237,6 +241,7 @@ Example:
     | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
 
     samples(3)
+
     | **key** | **value**  |
     |:---|:--- |
     | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
@@ -244,6 +249,7 @@ Example:
     | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
 
     samples(-1)
+
     | **key** | **value**  |
     |:---|:--- |
     | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
@@ -288,18 +294,22 @@ Example:
 
     ```javascript
     values()
+
     ${addTable(values(), 'markdown')}
 
     values(3)
+
     ${addTable(values(3), 'markdown')}
 
     values(-1)
+
     ${addTable(values(-1), 'markdown')}
     ```
 
 * Result:
 
     values()
+
     | **Value**  |
     |:--- |
     | 164292.0 |
@@ -309,6 +319,7 @@ Example:
     | 1177004.0 |
 
     values(3)
+
     | **Value**  |
     |:--- |
     | 164292.0 |
@@ -316,6 +327,7 @@ Example:
     | 164308.0 |
 
     values(-1)
+
     | **Value**  |
     |:--- |
     | 1177004.0 |
@@ -354,15 +366,19 @@ Example:
 
     ```javascript
     timestamps()
+
     ${addTable(timestamps(), 'markdown')}
 
     timestamps(3)
+
     ${addTable(timestamps(3), 'markdown')}
 
     timestamps(-1)
+
     ${addTable(timestamps(-1), 'markdown')}
 
     timestamps(-2)_formatted
+
     @foreach{item: timestamps(-2)}
         (@{date_format(item, "yyyy-MM-dd HH:mm:ss")}),
     @end{}
@@ -372,6 +388,7 @@ Example:
 * Result:
 
     timestamps()
+
     | **Value**  |
     |:--- |
     | `2018-09-18T13:43:36Z[Etc/UTC]` |
@@ -381,6 +398,7 @@ Example:
     | `2018-09-18T13:45:32Z[Etc/UTC]` |
 
     timestamps(3)
+
     | **Value**  |
     |:--- |
     | `2018-09-18T13:43:36Z[Etc/UTC]` |
@@ -388,6 +406,7 @@ Example:
     | `2018-09-18T13:44:36Z[Etc/UTC]` |
 
     timestamps(-1)
+
     | **Value**  |
     |:--- |
     | `2018-09-18T13:45:32Z[Etc/UTC]` |
