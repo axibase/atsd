@@ -378,7 +378,6 @@ Example:
     ${addTable(timestamps(-1), 'markdown')}
 
     timestamps(-2)_formatted
-
     @foreach{item: timestamps(-2)}
         (@{date_format(item, "yyyy-MM-dd HH:mm:ss")}),
     @end{}
