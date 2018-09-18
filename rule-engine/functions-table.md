@@ -14,7 +14,7 @@ Table functions perform various operations on strings, lists, and maps to create
 ## `addTable` for map
 
 ```csharp
-addTable(map, string format) string
+addTable(map[, string format]) string
 ```
 
 Prints the input key-value `map` as a two-column table in the specified `format`.
@@ -31,6 +31,17 @@ Supported formats:
 * `csv`
 * `html`
 
+<!-- markdownlint-disable MD032 -->
+::: tip Default format
+* [Messaging Webhooks](./notifications/README.md#messaging-webhooks) - `ascii`
+* [Email Actions](./email.md#email-action) - `html`.
+:::
+
+:::warning
+Format is **required** for [Integration Webhooks](./notifications/README.md#integration-webhooks).
+:::
+<!-- markdownlint-enable MD032 -->
+
 Returns an empty string if `map` is `null` or has no records.
 
 Ignores map records with empty or `null` values.
@@ -44,7 +55,7 @@ Examples:
 * `markdown` format
 
 ```javascript
-addTable(property_map('nurswgvml007','disk::', 'today'), 'markdown')
+addTable(property_map('nurswgvml007','disk::*', 'today'), 'markdown')
 ```
 
 ```ls
@@ -121,7 +132,7 @@ os=Linux
 ## `addTable` for maps
 
 ```csharp
-addTable([map], string format[, [string header]]) string
+addTable([map][, string format[, [string header]]]) string
 ```
 
 Prints a collection of maps as a multi-column table in the specified `format`, with optional `header`.
@@ -134,7 +145,7 @@ If the header argument is specified as a collection of strings, it replaces the 
 
 Examples:
 
-`property_maps('nurswgvml007','jfs::', 'today')` returns the following collection:
+`property_maps('nurswgvml007','jfs::*', 'today')` returns the following collection:
 
 ```ls
 [
@@ -149,7 +160,7 @@ Examples:
 * `markdown` format
 
 ```javascript
-addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
+addTable(property_maps('nurswgvml007','jfs::*', 'today'), 'markdown')
 ```
 
 ```markdown
@@ -162,7 +173,7 @@ addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
 * `csv` format
 
 ```javascript
-addTable(property_maps('nurswgvml007','jfs::', 'today'), 'csv')
+addTable(property_maps('nurswgvml007','jfs::*', 'today'), 'csv')
 ```
 
 ```ls
@@ -174,7 +185,7 @@ jfs_filespace_%used,12.7,0.0,34.9,7.5,0.0
 * `ascii` format
 
 ```javascript
-addTable(property_maps('nurswgvml007','jfs::', 'today'), 'ascii', ['property', 'root', 'dev', 'mount', 'run', 'var'])
+addTable(property_maps('nurswgvml007','jfs::*', 'today'), 'ascii', ['property', 'root', 'dev', 'mount', 'run', 'var'])
 ```
 
 ```ls
@@ -189,7 +200,7 @@ addTable(property_maps('nurswgvml007','jfs::', 'today'), 'ascii', ['property', '
 * `html` format
 
 ```javascript
-addTable(property_maps('nurswgvml007','jfs::', 'today'), 'html')
+addTable(property_maps('nurswgvml007','jfs::*', 'today'), 'html')
 ```
 
 ```html
@@ -202,7 +213,7 @@ addTable(property_maps('nurswgvml007','jfs::', 'today'), 'html')
 * `property` format
 
 ```javascript
-addTable(property_maps('nurswgvml007','jfs::', 'today'), 'property')
+addTable(property_maps('nurswgvml007','jfs::*', 'today'), 'property')
 ```
 
 ```ls
@@ -213,7 +224,7 @@ jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
 ## `addTable` for list
 
 ```csharp
-addTable([[string]] strList, string format[, [string] header | bool addHeader]) string
+addTable([[string]] strList[, string format[, [string] header | bool addHeader]]) string
 ```
 
 Prints list of lists `strList` as a multi-column table in the specified `format`. Each nested list in the parent list `strList` is serialized into a separate row in the table.
@@ -329,7 +340,7 @@ datetime=value
 ## `addTable` for objects
 
 ```csharp
-addTable([object], string format [, [string] header]) string
+addTable([object][, string format[, [string] header]]) string
 ```
 
 Prints a collection of objects as a multi-column table in the specified `format`.
