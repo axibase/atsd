@@ -319,6 +319,16 @@ const administrationMenu = [
             ['monitoring-metrics/hbase-write-test.md', 'HBase Write Test'],
         ]
     },
+    {
+        title: "Migration", children: [
+            ['migration/cluster.md', 'Cluster Migration'],
+            ['migration/container.md','Container Migration'],
+            ['migration/README.md','Database Migration'],
+            ['migration/install-java-8.md','Install Java 8'],
+            ['migration/mr-settings.md','MapReduce Settings'],
+            ['migration/reporter.md','Data Reporter'],
+        ]
+    },
     ['support.md', "Support"],
 ]
 

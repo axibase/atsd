@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DataTableReporter is a Map-Reduce job that identifies the largest daily rows in the `atsd_d` table to estimate the RAM required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
+The DataTableReporter is a MapReduce job that identifies the largest daily rows in the `atsd_d` table to estimate the RAM required for the migration Map-Reduce job. The number of records can be particularly high in series with many tag combinations under the same metric and entity (high-cardinality series).
 
 The reporter scans the `atsd_d` table and estimates the physical memory required to process the data during the migration.
 
