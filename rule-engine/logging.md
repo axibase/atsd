@@ -149,5 +149,5 @@ The following fields contain interval between current time and `open_time`:
 * `alert_duration_interval`, for example `1h:8m:59s`
 
 ::: warning
-If [DateTime](./object-datetime.md#datetime-object) object representing the field is `null`, such field formatted as empty string.
+If [`DateTime`](./object-datetime.md#datetime-object) object representing the field is `null`, such field formatted as empty string.
 :::
