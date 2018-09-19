@@ -323,7 +323,7 @@ const administrationMenu = [
         title: "Migration", children: [
             ['migration/cluster.md', 'Cluster Migration'],
             ['migration/container.md','Container Migration'],
-            ['migration/README.md','Database Migration'],
+            ['migration/','Database Migration'],
             ['migration/install-java-8.md','Install Java 8'],
             ['migration/mr-settings.md','MapReduce Settings'],
             ['migration/reporter.md','Data Reporter'],
