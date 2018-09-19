@@ -42,47 +42,47 @@ detailsTable('ascii')
 ```
 
 ```txt
-+-------------------+------------------------------+
-| Name              | Value                        |
-+-------------------+------------------------------+
-| name              | atsd                         |
-| label             | Axibase Time Series Database |
-| app               | ATSD                         |
-| host              | NURSWGVML007                 |
-| metric            | jvm_memory_used_percent      |
-| metric_label      | JVM Memory Used, %           |
-| expression        | avg() > 0                    |
-| window            | time(1 minute)               |
-| severity          | warning                      |
-| alert_type        | OPEN                         |
-| timezone          | GMT (+00:00)                 |
-| window_first_time | 2017-12-17 11:04:07          |
-| event_time        | 2017-12-17 11:04:37          |
-| received_time     | 2017-12-17 11:04:37          |
-| alert_open_time   | 2017-12-17 11:04:37          |
-| value             | 22.72808635185156            |
-| status            | OPEN                         |
-| tags.host         | NURSWGVML007                 |
-| count             | 3                            |
-| sum               | 62.80243733055981            |
-| avg               | 20.93414577685327            |
-| first             | 18.97742859958052            |
-| last              | 22.72808635185156            |
-| diff              | 3.7506577522710387           |
-| max               | 22.72808635185156            |
-| min               | 18.97742859958052            |
-| variance          | 3.5367305603537185           |
-| stddev            | 1.8806197277370347           |
-| wavg              | 21.559255402231774           |
-| wtavg             | 22.10622632443797            |
-| percentile_50     | 21.09692237912773            |
-| percentile_75     | 22.72808635185156            |
-| percentile_90     | 22.72808635185156            |
-| percentile_95     | 22.72808635185156            |
-| percentile_99     | 22.72808635185156            |
-| slope             | 1.2502e-4                    |
-| intercept         | -1.8922e8                    |
-+-------------------+------------------------------+
++-------------------+-----------------------------------+
+| Name              | Value                             |
++-------------------+-----------------------------------+
+| name              | atsd                              |
+| label             | Axibase Time Series Database      |
+| app               | ATSD                              |
+| host              | NURSWGVML007                      |
+| metric            | jvm_memory_used_percent           |
+| metric_label      | JVM Memory Used, %                |
+| expression        | avg() > 0                         |
+| window            | time(1 minute)                    |
+| severity          | warning                           |
+| alert_type        | OPEN                              |
+| timezone          | GMT (+00:00)                      |
+| command_time      | 2018-09-13T12:18Z[Etc/UTC]        |
+| command_first_time| 2018-09-13T12:18Z[Etc/UTC]        |
+| update_time       | 2018-09-13T12:18:00.007Z[Etc/UTC] |
+| open_time         | 2018-09-13T12:18:00.007Z[Etc/UTC] |
+| value             | 22.72808635185156                 |
+| status            | OPEN                              |
+| tags.host         | NURSWGVML007                      |
+| count             | 3                                 |
+| sum               | 62.80243733055981                 |
+| avg               | 20.93414577685327                 |
+| first             | 18.97742859958052                 |
+| last              | 22.72808635185156                 |
+| diff              | 3.7506577522710387                |
+| max               | 22.72808635185156                 |
+| min               | 18.97742859958052                 |
+| variance          | 3.5367305603537185                |
+| stddev            | 1.8806197277370347                |
+| wavg              | 21.559255402231774                |
+| wtavg             | 22.10622632443797                 |
+| percentile_50     | 21.09692237912773                 |
+| percentile_75     | 22.72808635185156                 |
+| percentile_90     | 22.72808635185156                 |
+| percentile_95     | 22.72808635185156                 |
+| percentile_99     | 22.72808635185156                 |
+| slope             | 1.2502e-4                         |
+| intercept         | -1.8922e8                         |
++-------------------+-----------------------------------+
 ```
 
 ### `markdown`
@@ -105,10 +105,10 @@ detailsTable('markdown')
 | severity | warning |
 | alert_type | OPEN |
 | timezone | GMT (+00:00) |
-| window_first_time | 2017-12-17 11:04:07 |
-| event_time | 2017-12-17 11:04:37 |
-| received_time | 2017-12-17 11:04:37 |
-| alert_open_time | 2017-12-17 11:04:37 |
+| command_time | 2018-09-13T12:18Z[Etc/UTC] |
+| command_first_time | 2018-09-13T12:18Z[Etc/UTC] |
+| update_time | 2018-09-13T12:18:00.007Z[Etc/UTC] |
+| open_time | 2018-09-13T12:18:00.007Z[Etc/UTC] |
 | value | 22.72808635185156 |
 | status | OPEN |
 | tags.host | NURSWGVML007 |
@@ -152,10 +152,10 @@ window,time(1 minute)
 severity,warning
 alert_type,OPEN
 timezone,GMT (+00:00)
-window_first_time,2017-12-17 11:04:07
-event_time,2017-12-17 11:04:37
-received_time,2017-12-17 11:04:37
-alert_open_time,2017-12-17 11:04:37
+command_time,2018-09-13T12:18Z[Etc/UTC]
+command_first_time,2018-09-13T12:18Z[Etc/UTC]
+update_time,2018-09-13T12:18:00.007Z[Etc/UTC]
+open_time,2018-09-13T12:18:00.007Z[Etc/UTC]
 value,22.72808635185156
 status,OPEN
 tags.host,NURSWGVML007
@@ -199,10 +199,10 @@ detailsTable('html')
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">severity</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">warning</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">alert_type</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">OPEN</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">timezone</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">GMT (+00:00)</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">window_first_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2017-12-17 11:04:07</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">event_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2017-12-17 11:04:37</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">received_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2017-12-17 11:04:37</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">alert_open_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2017-12-17 11:04:37</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">command_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2018-09-13T12:18Z[Etc/UTC]</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">command_first_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2018-09-13T12:18Z[Etc/UTC]</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">update_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2018-09-13T12:18:00.007Z[Etc/UTC]</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">open_time</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">2018-09-13T12:18:00.007Z[Etc/UTC]</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">value</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">status</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">OPEN</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">tags.host</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">NURSWGVML007</td></tr>
@@ -247,10 +247,10 @@ window=time(1 minute)
 severity=warning
 alert_type=OPEN
 timezone=GMT (+00:00)
-window_first_time=2017-12-17 11:04:07
-event_time=2017-12-17 11:04:37
-received_time=2017-12-17 11:04:37
-alert_open_time=2017-12-17 11:04:37
+command_time=2018-09-13T12:18Z[Etc/UTC]
+command_first_time=2018-09-13T12:18Z[Etc/UTC]
+update_time=2018-09-13T12:18:00.007Z[Etc/UTC]
+open_time=2018-09-13T12:18:00.007Z[Etc/UTC]
 value=22.72808635185156
 status=OPEN
 tags.host=NURSWGVML007

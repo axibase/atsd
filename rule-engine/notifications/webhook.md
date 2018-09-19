@@ -72,8 +72,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
   "alert_duration": "00:00:00:00",
   "alert_duration_interval": "",
   "alert_message": "",
-  "alert_open_datetime": "2017-12-01T13:30:28Z",
-  "alert_open_time": "2017-12-01 13:30:28 GMT",
+  "open_time": "2018-08-01T07:51:17Z[Etc/UTC]",
   "alert_type": "OPEN",
   "count": 1,
   "entity": "3a9ba2b3ae95531ae819877fa325fa36cedee6271eea0e089c7430f923b24e1a",
@@ -98,8 +97,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
     "image-repotags": "ibmcom/db2express-c:latest",
     "status": "running"
   },
-  "event_datetime": "2017-12-01T13:30:22Z",
-  "event_time": "2017-12-01 13:30:22 GMT",
+  "command_time": "2018-09-13T12:17:45Z[Etc/UTC]",
   "expression": "value != 0 && entity.tags.status != 'exited' && entity.tags.status != 'deleted'",
   "message": "",
   "metric": "docker.tcp-connect-status",
@@ -118,8 +116,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
   "min_interval_expired": "",
   "open_value": 1,
   "properties": "",
-  "received_datetime": "2017-12-01T13:30:28Z",
-  "received_time": "2017-12-01 13:30:28.73 GMT",
+  "update_time": "2018-09-13T12:03Z[Etc/UTC]",
   "repeat_count": 0,
   "repeat_interval": "",
   "rule": "docker-tcp-check_clone",
@@ -137,7 +134,6 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
   },
   "value": 1,
   "window": "length(1)",
-  "window_first_datetime": "2017-12-01T13:30:22Z",
-  "window_first_time": "2017-12-01 13:30:22 GMT"
+  "command_first_time": "2018-09-13T12:03Z[Etc/UTC]"
 }
 ```
