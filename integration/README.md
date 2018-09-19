@@ -59,7 +59,7 @@
 * [nginx Web Server Monitoring](https://axibase.com/docs/axibase-collector/jobs/examples/nginx/)
 * [nginx PLUS Web Server Monitoring](https://axibase.com/docs/axibase-collector/jobs/examples/nginx-plus/)
 * [Oracle Enterprise Manager](https://axibase.com/docs/axibase-collector/jobs/examples/oracle-enterprise-manager/)
-* [PI Server](https://axibase.com/docs/axibase-collector/jobs/examples/pi/)
+* [OSISoft PI](https://axibase.com/docs/axibase-collector/jobs/examples/pi/)
 * [PostgreSQL](https://axibase.com/docs/axibase-collector/jobs/examples/postgres/)
 * [Socrata](https://axibase.com/use-cases/integrations#socrata)
 * [SolarWinds](https://axibase.com/docs/axibase-collector/jobs/examples/solarwinds/)
