@@ -40,9 +40,7 @@ ifEmpty('hello', 'world')
 toBoolean(object a) bool
 ```
 
-Converts an input string or number `a` to boolean value. The function returns `true` if input `a` is the string `true`, `yes`, `on` (**case-insensitive**), or equal to the number `1`.
-
-Value table:
+Converts an input string or number `a` to boolean value. The function returns `true` if input `a` is the string `true`, `yes`, `on` (**case-insensitive**), or equal to the number `1`. Otherwise, the functions returns `false`. Refer to the value table below for additional examples:
 
 Input | Type | Result
 ----|---|---
@@ -81,7 +79,7 @@ toNumber(object a) double
 ```
 
 Converts input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
-If `a` cannot be parsed as a number, the function returns `Double.NaN`.
+If `a` cannot be parsed as a number, and neither of the aforementioned criteria are met, the function returns `Double.NaN`.
 
 Value table:
 
@@ -115,9 +113,9 @@ Supported formats:
 * `csv`
 * `html`
 
-The first column in the table contains field names, the second column contains the corresponding field values.
+The first column contains field names, the second column contains the corresponding field values.
 
-Object `o` can be an `Entity` or a `Window` object. Retrieve such objects using an applicable function:
+Object `o` can be an `Entity` or `Window` object. Retrieve such objects using the applicable function:
 
 * [`getEntity`](functions-lookup.md#getentity)
 * [`rule_window`](functions-rules.md#rule_window)
@@ -181,9 +179,9 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 samples([int limit]) map
 ```
 
-Retrieves a map ordered by ascending datetime of included samples, where each sample is an object containing two fields: command time and a numeric value. The time is [`DateTime`](./object-datetime.md#datetime-object) object.
+Retrieves a map ordered by ascending datetime of included samples. Each sample is an object with two fields: command time and a numeric value. Time is a [`DateTime`](./object-datetime.md#datetime-object) object.
 
-Returned samples based on value of `limit` argument
+Samples returned based on the value of `limit` argument
 
 * Zero or omitted: All samples.
 * Positive: Up to the specified number of samples from **start**, earliest samples first.
@@ -191,7 +189,7 @@ Returned samples based on value of `limit` argument
 
 If the number specified exceeds window length, the function returns all window samples.
 
-To separately retrieve sample timestamps and values, use [`timestamps`](#timestamps) and [`values`](#values) functions.
+To retrieve sample timestamps and values separately, use [`timestamps`](#timestamps) and [`values`](#values) functions.
 
 Example:
 
@@ -230,7 +228,7 @@ Example:
 
 * Result:
 
-    samples()
+    `samples()`
 
     | **key** | **value**  |
     |:---|:--- |
@@ -240,7 +238,7 @@ Example:
     | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
     | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
 
-    samples(3)
+    `samples(3)`
 
     | **key** | **value**  |
     |:---|:--- |
@@ -248,7 +246,7 @@ Example:
     | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
     | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
 
-    samples(-1)
+    `samples(-1)`
 
     | **key** | **value**  |
     |:---|:--- |
@@ -266,9 +264,9 @@ Example:
 values([int limit]) [number]
 ```
 
-Retrieves a list of numeric sample values. The list is order by ascending command time of the sample. Values are floating-point numbers (`double`).
+Retrieves a list of numeric sample values. The list is ordered by ascending command time of the sample. Values are floating-point numbers (`double`).
 
-Returned samples based on value of `limit` argument
+Samples returned based on the value of `limit` argument
 
 * Zero or omitted: All samples.
 * Positive: Up to the specified number of samples from **start**, earliest samples first.
@@ -308,7 +306,7 @@ Example:
 
 * Result:
 
-    values()
+    `values()`
 
     | **Value**  |
     |:--- |
@@ -318,7 +316,7 @@ Example:
     | 164308.0 |
     | 1177004.0 |
 
-    values(3)
+    `values(3)`
 
     | **Value**  |
     |:--- |
@@ -326,7 +324,7 @@ Example:
     | 164292.0 |
     | 164308.0 |
 
-    values(-1)
+    `values(-1)`
 
     | **Value**  |
     |:--- |
@@ -386,7 +384,7 @@ Example:
 
 * Result:
 
-    timestamps()
+    `timestamps()`
 
     | **Value**  |
     |:--- |
@@ -396,7 +394,7 @@ Example:
     | `2018-09-18T13:45:06Z[Etc/UTC]` |
     | `2018-09-18T13:45:32Z[Etc/UTC]` |
 
-    timestamps(3)
+    `timestamps(3)`
 
     | **Value**  |
     |:--- |
@@ -404,7 +402,7 @@ Example:
     | `2018-09-18T13:44:06Z[Etc/UTC]` |
     | `2018-09-18T13:44:36Z[Etc/UTC]` |
 
-    timestamps(-1)
+    `timestamps(-1)`
 
     | **Value**  |
     |:--- |
