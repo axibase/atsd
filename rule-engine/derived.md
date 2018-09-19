@@ -95,7 +95,7 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${command_time.m
 ```
 
 :::warning command_time Value
-If **Check On Exit** setting is enabled and the status change is caused by a removed command, the `command_time` field contains the timestamp of the exiting command (oldest command), rounded to seconds.
+If **Check On Exit** setting is enabled and the condition check is caused by a removed command, the `command_time` field contains the timestamp of the exiting command (oldest command), rounded to seconds.
 :::
 
 To round the input time to seconds, use `s:` seconds parameter and [`floor`](functions.md#mathematical) function:
