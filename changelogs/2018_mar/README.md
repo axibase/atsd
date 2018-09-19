@@ -62,15 +62,15 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5141 | [jdbc](https://axibase.com/docs/axibase-collector/jobs/jdbc.html) | Support | Timestamp format error in JDBC job.
+5141 | [`jdbc`](https://axibase.com/docs/axibase-collector/jobs/jdbc.html) | Support | Timestamp format error in JDBC job.
 5140 | UI | Bug | Empty page on opening simon console.
 5114 | core | Bug | Collector CPU is abnormally high.
 5099 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | Entity create error.
 5089 | UI | Bug | Add **Execution Time** column to job list.
 5084 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | Job without pool is hanging.
-5079 | [json](https://axibase.com/docs/axibase-collector/jobs/json.html) | Bug | Not all commands arrive in ATSD.
+5079 | [`json`](https://axibase.com/docs/axibase-collector/jobs/json.html) | Bug | Not all commands arrive in ATSD.
 5074 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | Cloud front metrics not collected.
 5071 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | 403 error caused by pagination.
-5069 | [jmx](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Bug | Non-existing attributes in log.
+5069 | [`jmx`](https://axibase.com/docs/axibase-collector/jobs/jmx.html) | Bug | Non-existing attributes in log.
 5062 | [`aws`](https://axibase.com/docs/axibase-collector/jobs/aws.html) | Bug | AWS region issues.
-5056 | [docker](https://axibase.com/docs/axibase-collector/jobs/docker.html) | Feature | Extract Apache Mesos container labels.
+5056 | [`docker`](https://axibase.com/docs/axibase-collector/jobs/docker.html) | Feature | Extract Apache Mesos container labels.

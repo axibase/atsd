@@ -79,6 +79,7 @@ The `tags` field for the `property` command contains the `keys` map and the `typ
 `window_duration` | `long` | Difference between `command_last_time` and `command_first_time` measured in milliseconds.<br>`0` if the window is empty.
 `alert_duration` | `string` | Interval between current time and `open_time`, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.<br>Returns an empty string **On Open** status.
 `alert_duration_interval` | `string` | Interval between current time and `open_time`, formatted as `alert_duration` with units, for example `1m:45s`.<br>Returns an empty string **On Open** status.
+`is_exiting` | `bool` | `true` if **Check On Exit** setting is enabled and the condition check is caused by a removed command.
 
 <!-- markdownlint-enable MD102 -->
 
@@ -87,7 +88,7 @@ The `tags` field for the `property` command contains the `keys` map and the `typ
 * [`DateTime`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.millis`.
 * `DateTime` object fields that begin with `command_` contain the command timestamps, otherwise the fields are set based on server time.
 * `DateTime` object fields can be `null` if the event has not yet occurred or if the window is empty.
-* If **Check On Exit** setting is enabled and the status change is caused by a removed command, the `command_time` field contains the timestamp of the exiting command (oldest command), rounded to seconds.
+* If **Check On Exit** setting is enabled and the condition check is caused by a removed command, the `command_time` field contains the timestamp of the exiting command (oldest command), rounded to seconds.
 
 ## Details Tables
 

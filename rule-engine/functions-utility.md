@@ -181,21 +181,13 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 samples([int limit]) map
 ```
 
-Retrieves a map ordered by ascending datetime of included samples:
-
-```javascript
-(datetime, value)
-```
-
-Where `datetime` is [`DateTime`](./object-datetime.md#datetime-object) object.
+Retrieves a map ordered by ascending datetime of included samples, where each sample is an object containing two fields: command time and a numeric value. The time is [`DateTime`](./object-datetime.md#datetime-object) object.
 
 Returned samples based on value of `limit` argument
 
-1. Zero or omitted: All samples.
-
-2. Positive: Up to the specified number of samples from **start**, earliest samples first.
-
-3. Negative: Up to the specified number of samples from **end**, latest samples first.
+* Zero or omitted: All samples.
+* Positive: Up to the specified number of samples from **start**, earliest samples first.
+* Negative: Up to the specified number of samples from **end**, latest samples first.
 
 If the number specified exceeds window length, the function returns all window samples.
 
@@ -205,59 +197,68 @@ Example:
 
 * Window samples:
 
-    |       `datetime`       |    `value`  |
-    |:---------------------|----------:|
-    | `2018-09-14T07:18:18Z` | 152220.0  |
-    | `2018-09-14T07:18:48Z` | 152252.0  |
-    | `2018-09-14T07:19:18Z` | 152260.0  |
-    | `2018-09-14T07:19:48Z` | 152480.0  |
-    | `2018-09-14T07:20:07Z` | 2491420.0 |
+    | **`datetime`** | **`value`**  |
+    |:---|:--- |
+    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
 
 * Expression:
 
     ```javascript
-    samples() =${addTable(samples(), 'markdown')}
-    samples(3) =${addTable(samples(3), 'markdown')}
-    samples(-1) =${addTable(samples(-1), 'markdown')}
-    samples(-2)_formatted = [
-        @foreach{item: samples(-2)}
-            (@{date_format(item.key, "yyyy-MM-dd HH:mm:ss")}, @{item.value}),
-        @end{}
-    ]
+    samples()
+
+    ${addTable(samples(), 'markdown')}
+
+    samples(3)
+
+    ${addTable(samples(3), 'markdown')}
+
+    samples(-1)
+
+    ${addTable(samples(-1), 'markdown')}
+
+    samples(-2)_formatted
+    @foreach{item: samples(-2)}
+        (@{date_format(item.key, "yyyy-MM-dd HH:mm:ss")}, @{item.value}),
+    @end{}
     ```
 
     See [Control Flow Documentation](./control-flow.md#iteration) for more information about the `@foreach` template.
 
 * Result:
 
-    **samples()**:
-   | key | left | right | value |
-   |:-|:-|:-|:-|
-   | `2018-09-14T07:18:18Z[Etc/UTC]` | `2018-09-14T07:18:18Z[Etc/UTC]` | 152220.0 | 152220.0 |
-   | `2018-09-14T07:18:48Z[Etc/UTC]` | `2018-09-14T07:18:48Z[Etc/UTC]` | 152252.0 | 152252.0 |
-   | `2018-09-14T07:19:18Z[Etc/UTC]` | `2018-09-14T07:19:18Z[Etc/UTC]` | 152260.0 | 152260.0 |
-   | `2018-09-14T07:19:48Z[Etc/UTC]` | `2018-09-14T07:19:48Z[Etc/UTC]` | 152480.0 | 152480.0 |
-   | `2018-09-14T07:20:07Z[Etc/UTC]` | `2018-09-14T07:20:07Z[Etc/UTC]` | 2491420.0 | 2491420.0 |
+    samples()
 
-   **samples(3)**:
-   | key | left | right | value |
-   |:-|:-|:-|:-|
-   | `2018-09-14T07:18:18Z[Etc/UTC]` | `2018-09-14T07:18:18Z[Etc/UTC]` | 152220.0 | 152220.0 |
-   | `2018-09-14T07:18:48Z[Etc/UTC]` | `2018-09-14T07:18:48Z[Etc/UTC]` | 152252.0 | 152252.0 |
-   | `2018-09-14T07:19:18Z[Etc/UTC]` | `2018-09-14T07:19:18Z[Etc/UTC]` | 152260.0 | 152260.0 |
+    | **key** | **value**  |
+    |:---|:--- |
+    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
 
-   **samples(-1)**:
-   | key | left | right | value |
-   |:-|:-|:-|:-|
-   | `2018-09-14T07:20:07Z[Etc/UTC]` | `2018-09-14T07:20:07Z[Etc/UTC]` | 2491420.0 | 2491420.0 |
+    samples(3)
 
-   ```ls
-   samples(-2)_formatted = [
-       (2018-09-14 07:19:48, 152480.0),
+    | **key** | **value**  |
+    |:---|:--- |
+    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
 
-       (2018-09-14 07:20:07, 2491420.0),
-   ]
-   ```
+    samples(-1)
+
+    | **key** | **value**  |
+    |:---|:--- |
+    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
+
+    ```ls
+    samples(-2)_formatted
+    (2018-09-18 13:45:06, 164308.0),
+    (2018-09-18 13:45:32, 1177004.0),
+    ```
 
 ## `values`
 
@@ -265,15 +266,13 @@ Example:
 values([int limit]) [number]
 ```
 
-Retrieves an array of the values of the samples in the current window.
+Retrieves a list of numeric sample values. The list is order by ascending command time of the sample. Values are floating-point numbers (`double`).
 
 Returned samples based on value of `limit` argument
 
-1. Zero or omitted: All samples.
-
-2. Positive: Up to the specified number of samples from **start**, earliest samples first.
-
-3. Negative: Up to the specified number of samples from **end**, latest samples first.
+* Zero or omitted: All samples.
+* Positive: Up to the specified number of samples from **start**, earliest samples first.
+* Negative: Up to the specified number of samples from **end**, latest samples first.
 
 If the number specified exceeds window length, the function returns all window samples.
 
@@ -283,44 +282,55 @@ Example:
 
 * Window samples:
 
-    |       datetime       |    value  |
-    |:---------------------|----------:|
-    | 2018-09-14T07:18:18Z | 152220.0  |
-    | 2018-09-14T07:18:48Z | 152252.0  |
-    | 2018-09-14T07:19:18Z | 152260.0  |
-    | 2018-09-14T07:19:48Z | 152480.0  |
-    | 2018-09-14T07:20:07Z | 2491420.0 |
+    | **`datetime`** | **`value`**  |
+    |:---|:--- |
+    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
 
 * Expression:
 
     ```javascript
-    values() =${addTable(values(), 'markdown')}
-    values(3) =${addTable(values(3), 'markdown')}
-    values(-1) =${addTable(values(-1), 'markdown')}
+    values()
+
+    ${addTable(values(), 'markdown')}
+
+    values(3)
+
+    ${addTable(values(3), 'markdown')}
+
+    values(-1)
+
+    ${addTable(values(-1), 'markdown')}
     ```
 
 * Result:
 
-    **values()**
-    | Value |
-    |:-|
-    | 152220.0 |
-    | 152252.0 |
-    | 152260.0 |
-    | 152480.0 |
-    | 2491420.0 |
+    values()
 
-    **values(3)**
-    | Value |
-    |:-|
-    | 152220.0 |
-    | 152252.0 |
-    | 152260.0 |
+    | **Value**  |
+    |:--- |
+    | 164292.0 |
+    | 164292.0 |
+    | 164308.0 |
+    | 164308.0 |
+    | 1177004.0 |
 
-    **values(-1)**
-    | Value |
-    |:-|
-    | 2491420.0 |
+    values(3)
+
+    | **Value**  |
+    |:--- |
+    | 164292.0 |
+    | 164292.0 |
+    | 164308.0 |
+
+    values(-1)
+
+    | **Value**  |
+    |:--- |
+    | 1177004.0 |
 
 ## `timestamps`
 
@@ -332,11 +342,9 @@ Retrieves an array of [`DateTime`](./object-datetime.md#datetime-object) objects
 
 Returned samples based on value of `limit` argument
 
-1. Zero or omitted: All samples.
-
-2. Positive: Up to the specified number of samples from **start**, earliest samples first.
-
-3. Negative: Up to the specified number of samples from **end**, latest samples first.
+* Zero or omitted: All samples.
+* Positive: Up to the specified number of samples from **start**, earliest samples first.
+* Negative: Up to the specified number of samples from **end**, latest samples first.
 
 If the number specified exceeds window length, the function returns all window samples.
 
@@ -346,57 +354,66 @@ Example:
 
 * Window samples:
 
-    |       datetime       |   value   |
-    |:---------------------|----------:|
-    | 2018-09-14T07:18:18Z | 152220.0  |
-    | 2018-09-14T07:18:48Z | 152252.0  |
-    | 2018-09-14T07:19:18Z | 152260.0  |
-    | 2018-09-14T07:19:48Z | 152480.0  |
-    | 2018-09-14T07:20:07Z | 2491420.0 |
+    | **`datetime`** | **`value`**  |
+    |:---|:--- |
+    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
+    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
+    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
 
 * Expression:
 
     ```javascript
-    timestamps() =${addTable(timestamps(), 'markdown')}
-    timestamps(3) =${addTable(timestamps(3), 'markdown')}
-    timestamps(-1) =${addTable(timestamps(-1), 'markdown')}
-    timestamps(-2)_formatted = [
-        @foreach{item: timestamps(-2)}
-            (@{date_format(item, "yyyy-MM-dd HH:mm:ss")}),
-        @end{}
-    ]
+    timestamps()
+
+    ${addTable(timestamps(), 'markdown')}
+
+    timestamps(3)
+
+    ${addTable(timestamps(3), 'markdown')}
+
+    timestamps(-1)
+
+    ${addTable(timestamps(-1), 'markdown')}
+
+    timestamps(-2)_formatted
+    @foreach{item: timestamps(-2)}
+        (@{date_format(item, "yyyy-MM-dd HH:mm:ss")}),
+    @end{}
     ```
     See [Iteration](./control-flow.md#iteration) for more information about `@foreach`.
 
 * Result:
 
-    **timestamps()**
-    | Value |
-    |:-|
-    | `2018-09-14T07:18:18Z[Etc/UTC]` |
-    | `2018-09-14T07:18:48Z[Etc/UTC]` |
-    | `2018-09-14T07:19:18Z[Etc/UTC]` |
-    | `2018-09-14T07:19:48Z[Etc/UTC]` |
-    | `2018-09-14T07:20:07Z[Etc/UTC]` |
+    timestamps()
 
-    **timestamps(3)**
-    | Value |
-    |:-|
-    | `2018-09-14T07:18:18Z[Etc/UTC]` |
-    | `2018-09-14T07:18:48Z[Etc/UTC]` |
-    | `2018-09-14T07:19:18Z[Etc/UTC]` |
+    | **Value**  |
+    |:--- |
+    | `2018-09-18T13:43:36Z[Etc/UTC]` |
+    | `2018-09-18T13:44:06Z[Etc/UTC]` |
+    | `2018-09-18T13:44:36Z[Etc/UTC]` |
+    | `2018-09-18T13:45:06Z[Etc/UTC]` |
+    | `2018-09-18T13:45:32Z[Etc/UTC]` |
 
-    **timestamps(-1)**
-    | Value |
-    |:-|
-    | `2018-09-14T07:20:07Z[Etc/UTC]` |
+    timestamps(3)
+
+    | **Value**  |
+    |:--- |
+    | `2018-09-18T13:43:36Z[Etc/UTC]` |
+    | `2018-09-18T13:44:06Z[Etc/UTC]` |
+    | `2018-09-18T13:44:36Z[Etc/UTC]` |
+
+    timestamps(-1)
+
+    | **Value**  |
+    |:--- |
+    | `2018-09-18T13:45:32Z[Etc/UTC]` |
 
     ```ls
-    timestamps(-2)_formatted = [
-        (2018-09-14 07:19:48),
-
-        (2018-09-14 07:20:07),
-    ]
+    timestamps(-2)_formatted
+    (2018-09-18 13:45:06),
+    (2018-09-18 13:45:32),
     ```
 
 ## `getURLHost`

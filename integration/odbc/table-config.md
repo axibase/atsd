@@ -6,7 +6,7 @@ This document describes how to reconfigure the ODBC data source if the list of t
 
 ![](./images/table_config_1.png)
 
-* Open **System DSN** tab, select ATSD data source and click **Configure...**
+* Open the **System DSN** tab, select ATSD data source and click **Configure...**
 
 ![](./images/table_config_2.png)
 

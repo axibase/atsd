@@ -40,7 +40,7 @@ Functions can accept arguments and return values in one of the following data ty
 | **Notation** | **Name** | **Example** |
 |---|:---|:---|
 | `double` | double number | `percentile(99.5)` |
-| `long` | long number | `elapsedTime(last_open().timestamp)` |
+| `long` | long number | `elapsedTime(last_open().command_time)` |
 | `int` | integer number | `round(avg(), 1)` |
 | `number` | any number | `abs(value)` |
 | `bool` | boolean | `formatBytes(avg(), true)` |

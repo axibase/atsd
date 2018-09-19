@@ -1,8 +1,8 @@
 # Logging
 
-The database logs are located in the `/opt/atsd/atsd/logs` directory.
+Database logs are located in the `/opt/atsd/atsd/logs` directory.
 
-The log files can be also downloaded from the **Settings > Server Logs** page.
+Log files can be also downloaded from the **Settings > Server Logs** page.
 
 Logs are rolled over and archived according to the retention settings in the `/opt/atsd/atsd/conf/logback.xml` file.
 

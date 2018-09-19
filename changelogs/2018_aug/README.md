@@ -71,7 +71,7 @@ Issue| Category   | Type   | Subject
 5533|metric|Bug|Metric Search: implement search by all criteria [fields](../../search/README.md#syntax).
 5531|rule engine|Bug|`500` error raised on alert [status](../../rule-engine/README.md) change.
 5530|rule engine|Bug|Rule Engine: [details table](../../rule-engine/details-table.md#details-table) unavailable.
-5527|UI|Feature|Implement a compact drop-down on select pages.
+5527|UI|Feature|Implement a more compact drop-down list on several pages.
 5524|entity|Feature|[Entity Group](../../configuration/entity_groups.md#entity-groups): implement parent groups.
 5523|entity_views|Feature|[Entity View](../../configuration/entity_views.md#entity-views): support for multiple entity groups.
 5522|rule engine|Bug|Rule Engine: `DictionaryNotFound` exception logged if tags autocomplete used in [rules](../../rule-engine/README.md) with `message` or `property` datatype.

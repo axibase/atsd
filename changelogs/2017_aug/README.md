@@ -58,7 +58,7 @@
 | 4424 | UI | Bug | Fix XML serialization in backup and export XML files if the database is using a file encoding other than UTF-8. |
 | 4407 | search | Bug | Fix a memory leak in HBase region servers during full search indexing. |
 | [4386](#issue-4386) | sql | Feature | Add support for querying `datetime` column using standard Timestamp format `yyyy-MM-dd[ HH:mm:SS]`. |
-| [4382](#issue-4382) | UI | Feature | Unique Values tab added to the **Series Statistics** page. |
+| [4382](#issue-4382) | UI | Feature | The unique **Values** tab added to the **Series Statistics** page. |
 | [4460](#issue-4460) | UI | Feature | Display request execution time in the built-in API client. |
 | [4415](#issue-4415) | UI | Feature | Refactor metric and entity list editors to support group actions.   |
 | 4408 | UI | Bug | Refactor Metrics and Entity tabs. |
