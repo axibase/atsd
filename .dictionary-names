@@ -59,7 +59,7 @@ HMaster
 Holt-Winters
 Horton
 HQuorumPeer
-HRegionServer[s]?
+HRegion(Server[s]?)?
 IndexNotFoundException
 IndexOutOfBoundsException
 iptables
@@ -104,6 +104,7 @@ OpenJDK
 OpenLink
 OpenSUSE
 OpenView
+OSISoft
 osquery
 PagerDuty
 Pearson
