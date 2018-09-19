@@ -123,14 +123,15 @@ Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syn
 `status` | `OPEN`
 `tags.tag_name` | `nurswgvml003`
 `tags` | `host=nurswgvml003`
-`command_time.millis` | `145678784500` (Unix time in milliseconds)
+`command_time` | `2018-09-19T11:15:15.011Z`
 `value` | `3103100000`
 `window` | `length(1)`
 `threshold` | `max() > 20`
 
-### [Date Fields](./window-fields.md#date-fields)
+### Date Fields
 
-* `now`
+The following [Date Fields](./window-fields.md#date-fields) contain date in [ISO format](../shared/date-format.md) in UTC time zone, for example `2018-09-19T11:15:15.011Z`:
+
 * `open_time`
 * `repeat_time`
 * `cancel_time`
@@ -141,6 +142,12 @@ Include placeholders in the `encoder:pattern` tag using the `%X{field-name}` syn
 * `command_time`
 * `command_first_time`
 * `command_last_time`
-* `window_duration`
-* `alert_duration`
-* `alert_duration_interval`
+
+The following fields contain interval between current time and `open_time`:
+
+* `alert_duration`, for example `00:01:11:44`
+* `alert_duration_interval`, for example `1h:8m:59s`
+
+::: warning
+If [DateTime](./object-datetime.md#datetime-object) object representing the field is `null`, such field formatted as empty string.
+:::
