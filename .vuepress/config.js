@@ -301,8 +301,7 @@ const administrationMenu = [
             ['metric-persistence-filter.md', 'Persistence Filters'],
             ['compaction.md', 'Compaction'],
             ['compaction-test.md', 'Compaction Test'],
-            ['compaction/', 'Compression Tests'],               
-            ['migration/', 'Migration'],
+            ['compaction/', 'Compression Tests'],
         ]
     },
     {
