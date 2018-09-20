@@ -143,7 +143,7 @@ If the purpose of a rule is to create derived series, without any alerting, set 
 
 ## Examples
 
-### Moving Average, Last `n` Count
+### Moving Average, Last `N` Count
 
 * Window Size: `count = 10`
 * Condition: `true`
@@ -153,7 +153,7 @@ If the purpose of a rule is to create derived series, without any alerting, set 
   series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
   ```
 
-### Moving Average, Last `n` Time
+### Moving Average, Last `N` Time
 
 * Window Size: `time = 10 minute`
 * Condition: `true`

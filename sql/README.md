@@ -1699,7 +1699,7 @@ ORDER BY entity, datetime
 | nurswgvml502 | 2017-06-18T12:00:01Z | 13.7  |
 ```
 
-* Apply an aggregate function to last-N records.
+* Apply an aggregate function to last `N` records.
 
 ```sql
 SELECT entity,

@@ -37,10 +37,10 @@ ifEmpty('hello', 'world')
 ## `toBoolean`
 
 ```csharp
-toBoolean(object a) bool
+toBoolean(string | number obj) bool
 ```
 
-Converts an input string or number `a` to boolean value. The function returns `true` if input `a` is the string `true`, `yes`, `on` (**case-insensitive**), or equal to the number `1`. Otherwise, the functions returns `false`. Refer to the value table below for additional examples:
+Converts a string or number `obj` to boolean value. The function returns `true` if `obj` is the string `true`, `yes`, `on` (**case-insensitive**), or equal to the number `1`. Otherwise, the functions returns `false`. Refer to the value table below for additional examples:
 
 Input | Type | Result
 ----|---|---
@@ -75,11 +75,11 @@ toBoolean('On')
 ## `toNumber`
 
 ```csharp
-toNumber(object a) double
+toNumber(string a) double
 ```
 
-Converts input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
-If `a` cannot be parsed as a number, and neither of the aforementioned criteria are met, the function returns `Double.NaN`.
+Converts string `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
+If `a` cannot be parsed as a number, the function returns `Double.NaN`.
 
 Value table:
 
@@ -179,84 +179,61 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 samples([int limit]) map
 ```
 
-Retrieves a map which is ordered by the ascending datetime of the included samples. Each sample is an object with two fields: command time and a numeric value. Time is a [`DateTime`](./object-datetime.md#datetime-object) object. The function returns a variable number of samples based on the value of the `limit` argument.
+Retrieves an ordered map of time series samples from the current window. Each sample object in the map contains two fields: `key` which stores command time as a [`DateTime`](./object-datetime.md#datetime-object) object, and `value` which contains the numeric value.
 
-`limit` | Samples Returned
-:--|:--
-Omitted **or** `0` | All samples.
-`> 0` | Up to the specified number of samples from **start**, earliest samples first.
-`< 0` | Up to the specified number of samples from **end**, latest samples first.
+The samples are sorted by command time in ascending order, with the oldest sample placed at the beginning of the map.
 
-If the number specified exceeds window length, the function returns all window samples.
+An optional `limit` argument can be specified to return a subset of samples:
 
-To retrieve sample timestamps and values separately, use [`timestamps`](#timestamps) and [`values`](#values) functions.
+* If `limit` is positive, the function returns the first `N` samples.
+* If `limit` is negative, the function returns the last `N` samples.
 
-Example:
+To retrieve sample times and values separately, use [`timestamps`](#timestamps) and [`values`](#values) functions respectively.
 
-* Window samples:
+Window samples:
 
-    | **`datetime`** | **`value`**  |
-    |:---|:--- |
-    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
+| `key` | `value` |
+|:---|---:|
+| `2018-09-18T13:43:36Z[Etc/UTC]` | 10.0 |
+| `2018-09-18T13:44:06Z[Etc/UTC]` | 40.0 |
+| `2018-09-18T13:44:36Z[Etc/UTC]` | 50.0 |
+| `2018-09-18T13:45:06Z[Etc/UTC]` | 85.0 |
+| `2018-09-18T13:45:32Z[Etc/UTC]` | 90.0 |
 
-* Expression:
+Expression examples:
 
-    ```javascript
-    samples()
+```bash
+${addTable(samples(2), 'markdown')}
+```
 
-    ${addTable(samples(), 'markdown')}
+```markdown
+| **key** | **value**  |
+|:---|:--- |
+| `2018-09-18T13:43:36Z[Etc/UTC]` | 10.0 |
+| `2018-09-18T13:44:06Z[Etc/UTC]` | 40.0 |
+```
 
-    samples(3)
+```bash
+${addTable(samples(-1), 'csv')}
+```
 
-    ${addTable(samples(3), 'markdown')}
+```txt
+key,value
+2018-09-18T13:45:32Z[Etc/UTC],90
+```
 
-    samples(-1)
+```javascript
+@foreach{item: samples(-2)}
+    - @{date_format(item.key, "yyyy-MM-dd HH:mm:ss")} = @{item.value}
+@end{}
+```
 
-    ${addTable(samples(-1), 'markdown')}
+```txt
+- 2018-09-18 13:45:06 = 85.0
+- 2018-09-18 13:45:32 = 90.0
+```
 
-    samples(-2)_formatted
-    @foreach{item: samples(-2)}
-        (@{date_format(item.key, "yyyy-MM-dd HH:mm:ss")}, @{item.value}),
-    @end{}
-    ```
-
-    See [Control Flow Documentation](./control-flow.md#iteration) for more information about the `@foreach` template.
-
-* Result:
-
-    `samples()`
-
-    | **key** | **value**  |
-    |:---|:--- |
-    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
-
-    `samples(3)`
-
-    | **key** | **value**  |
-    |:---|:--- |
-    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
-
-    `samples(-1)`
-
-    | **key** | **value**  |
-    |:---|:--- |
-    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
-
-    ```ls
-    samples(-2)_formatted
-    (2018-09-18 13:45:06, 164308.0),
-    (2018-09-18 13:45:32, 1177004.0),
-    ```
+> Refer to [Control Flow](./control-flow.md#iteration) overview for more information about the `@foreach` template.
 
 ## `values`
 
@@ -264,71 +241,12 @@ Example:
 values([int limit]) [number]
 ```
 
-Retrieves a list of numeric sample values. The list is ordered by ascending command time of the sample. Values are floating-point numbers (`double`).
+Retrieves a list of numeric sample values in the current window. The list is sorted by command time in the ascending order. Values are floating-point numbers (`double`).
 
-Returns a variable number of samples based on the value of the `limit` argument:
+An optional `limit` argument can be specified to return a subset of values:
 
-* Zero or omitted: All samples.
-* Positive: Up to the specified number of samples from **start**, earliest samples first.
-* Negative: Up to the specified number of samples from **end**, latest samples first.
-
-If the number specified exceeds window length, the function returns all window samples.
-
-Complete samples map is available via [`samples`](#samples) function.
-
-Example:
-
-* Window samples:
-
-    | **`datetime`** | **`value`**  |
-    |:---|:--- |
-    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
-
-* Expression:
-
-    ```javascript
-    values()
-
-    ${addTable(values(), 'markdown')}
-
-    values(3)
-
-    ${addTable(values(3), 'markdown')}
-
-    values(-1)
-
-    ${addTable(values(-1), 'markdown')}
-    ```
-
-* Result:
-
-    `values()`
-
-    | **Value**  |
-    |:--- |
-    | 164292.0 |
-    | 164292.0 |
-    | 164308.0 |
-    | 164308.0 |
-    | 1177004.0 |
-
-    `values(3)`
-
-    | **Value**  |
-    |:--- |
-    | 164292.0 |
-    | 164292.0 |
-    | 164308.0 |
-
-    `values(-1)`
-
-    | **Value**  |
-    |:--- |
-    | 1177004.0 |
+* If `limit` is positive, the function returns values in the first `N` samples.
+* If `limit` is negative, the function returns values in the last `N` samples.
 
 ## `timestamps`
 
@@ -336,83 +254,12 @@ Example:
 timestamps([int limit]) [long]
 ```
 
-Retrieves an array of [`DateTime`](./object-datetime.md#datetime-object) objects of the samples in the current window.
+Retrieves a list of sample command times in the current window. Each time  is a [`DateTime`](./object-datetime.md#datetime-object) object. The list is sorted by command time in the ascending order.
 
-Returns a variable number of samples based on the value of the `limit` argument:
+An optional `limit` argument can be specified to return a subset of times:
 
-* Zero or omitted: All samples.
-* Positive: Up to the specified number of samples from **start**, earliest samples first.
-* Negative: Up to the specified number of samples from **end**, latest samples first.
-
-If the number specified exceeds window length, the function returns all window samples.
-
-Complete samples map is available via [`samples`](#samples) function.
-
-Example:
-
-* Window samples:
-
-    | **`datetime`** | **`value`**  |
-    |:---|:--- |
-    | `2018-09-18T13:43:36Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:06Z[Etc/UTC]` | 164292.0 |
-    | `2018-09-18T13:44:36Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:06Z[Etc/UTC]` | 164308.0 |
-    | `2018-09-18T13:45:32Z[Etc/UTC]` | 1177004.0 |
-
-* Expression:
-
-    ```javascript
-    timestamps()
-
-    ${addTable(timestamps(), 'markdown')}
-
-    timestamps(3)
-
-    ${addTable(timestamps(3), 'markdown')}
-
-    timestamps(-1)
-
-    ${addTable(timestamps(-1), 'markdown')}
-
-    timestamps(-2)_formatted
-    @foreach{item: timestamps(-2)}
-        (@{date_format(item, "yyyy-MM-dd HH:mm:ss")}),
-    @end{}
-    ```
-    See [Iteration](./control-flow.md#iteration) for more information about `@foreach`.
-
-* Result:
-
-    `timestamps()`
-
-    | **Value**  |
-    |:--- |
-    | `2018-09-18T13:43:36Z[Etc/UTC]` |
-    | `2018-09-18T13:44:06Z[Etc/UTC]` |
-    | `2018-09-18T13:44:36Z[Etc/UTC]` |
-    | `2018-09-18T13:45:06Z[Etc/UTC]` |
-    | `2018-09-18T13:45:32Z[Etc/UTC]` |
-
-    `timestamps(3)`
-
-    | **Value**  |
-    |:--- |
-    | `2018-09-18T13:43:36Z[Etc/UTC]` |
-    | `2018-09-18T13:44:06Z[Etc/UTC]` |
-    | `2018-09-18T13:44:36Z[Etc/UTC]` |
-
-    `timestamps(-1)`
-
-    | **Value**  |
-    |:--- |
-    | `2018-09-18T13:45:32Z[Etc/UTC]` |
-
-    ```ls
-    timestamps(-2)_formatted
-    (2018-09-18 13:45:06),
-    (2018-09-18 13:45:32),
-    ```
+* If `limit` is positive, the function returns sample times in the first `N` samples.
+* If `limit` is negative, the function returns sample times in the last `N` samples.
 
 ## `getURLHost`
 

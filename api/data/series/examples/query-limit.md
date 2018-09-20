@@ -8,7 +8,7 @@ The limit applies to each series separately.
 
 Samples for each series are always sorted by time in ascending order.
 
-`limit` of N returns the last N values.
+`limit` of N returns the last `N` values.
 
 ## Request
 
