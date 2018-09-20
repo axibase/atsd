@@ -81,7 +81,7 @@ The condition is `true` when the last value is greater than `75` and smaller tha
 value > 75 && value < 90
 ```
 
-### Last-N Average
+### Last `N` Average
 
 For a count-based window with the length of 5 samples, the condition is `true` when average of values in the window is greater than `75`.
 
@@ -91,7 +91,7 @@ avg() > 75
 
 The number of values in the window is less than `5` from the time the window is started and until it reaches the maximum capacity as new data arrives. For example, the `avg()` function returns the same result as `value` when the first sample arrives.
 
-### Latest-N Average
+### Latest `N` Average
 
 For a time-based window with a duration of 5 minutes, the condition is `true` when the average of values with timestamps greater than the current time minus window duration exceeds `75`.
 

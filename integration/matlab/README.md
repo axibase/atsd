@@ -109,7 +109,7 @@ The _Database Browser_ displays a set of tables matching the expression:
 
 ![](./resources/database_browser.png)
 
-Select one or more columns to open the Data Preview window displaying the first N rows of the result set (10 by default).
+Select one or more columns to open the Data Preview window displaying the first `N` rows of the result set (10 by default).
 
 An example with the `datetime`, `value`, and `text` fields selected:
 
