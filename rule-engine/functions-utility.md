@@ -181,7 +181,7 @@ samples([int limit]) map
 
 Retrieves a map ordered by ascending datetime of included samples. Each sample is an object with two fields: command time and a numeric value. Time is a [`DateTime`](./object-datetime.md#datetime-object) object.
 
-Samples returned based on the value of `limit` argument
+Returns a variable number of samples based on the value of the `limit` argument:
 
 * Zero or omitted: All samples.
 * Positive: Up to the specified number of samples from **start**, earliest samples first.
@@ -266,7 +266,7 @@ values([int limit]) [number]
 
 Retrieves a list of numeric sample values. The list is ordered by ascending command time of the sample. Values are floating-point numbers (`double`).
 
-Samples returned based on the value of `limit` argument
+Returns a variable number of samples based on the value of the `limit` argument:
 
 * Zero or omitted: All samples.
 * Positive: Up to the specified number of samples from **start**, earliest samples first.
@@ -338,7 +338,7 @@ timestamps([int limit]) [long]
 
 Retrieves an array of [`DateTime`](./object-datetime.md#datetime-object) objects of the samples in the current window.
 
-Returned samples based on value of `limit` argument
+Returns a variable number of samples based on the value of the `limit` argument:
 
 * Zero or omitted: All samples.
 * Positive: Up to the specified number of samples from **start**, earliest samples first.
