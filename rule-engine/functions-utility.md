@@ -179,13 +179,13 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 samples([int limit]) map
 ```
 
-Retrieves a map ordered by ascending datetime of included samples. Each sample is an object with two fields: command time and a numeric value. Time is a [`DateTime`](./object-datetime.md#datetime-object) object.
+Retrieves a map which is ordered by the ascending datetime of the included samples. Each sample is an object with two fields: command time and a numeric value. Time is a [`DateTime`](./object-datetime.md#datetime-object) object. The function returns a variable number of samples based on the value of the `limit` argument.
 
-Returns a variable number of samples based on the value of the `limit` argument:
-
-* Zero or omitted: All samples.
-* Positive: Up to the specified number of samples from **start**, earliest samples first.
-* Negative: Up to the specified number of samples from **end**, latest samples first.
+`limit` | Samples Returned
+:--|:--
+Omitted **or** `0` | All samples.
+`> 0` | Up to the specified number of samples from **start**, earliest samples first.
+`< 0` | Up to the specified number of samples from **end**, latest samples first.
 
 If the number specified exceeds window length, the function returns all window samples.
 
