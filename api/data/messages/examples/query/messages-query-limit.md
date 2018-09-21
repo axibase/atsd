@@ -2,7 +2,7 @@
 
 ## Description
 
-Apply limit to select the last `n` messages.
+Apply limit to select the last `N` messages.
 
 ## Request
 

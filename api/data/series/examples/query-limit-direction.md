@@ -6,7 +6,7 @@ The `direction` parameter orders samples by time for the purpose of limiting the
 
 Samples for each series are always sorted by time in **ascending** order regardless of the direction.
 
-With `limit` specified, `ASC` returns first N values ordered by time. `DESC` returns last N values ordered by time.
+With `limit` specified, `ASC` returns first `N` values ordered by time. `DESC` returns last `N` values ordered by time.
 
 ## Request
 

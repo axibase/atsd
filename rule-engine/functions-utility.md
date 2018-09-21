@@ -12,6 +12,9 @@
 * [`getURLQuery`](#geturlquery)
 * [`getURLUserInfo`](#geturluserinfo)
 * [`printObject`](#printobject)
+* [`samples`](#samples)
+* [`values`](#values)
+* [`timestamps`](#timestamps)
 
 ## `ifEmpty`
 
@@ -34,12 +37,10 @@ ifEmpty('hello', 'world')
 ## `toBoolean`
 
 ```csharp
-toBoolean(object a) bool
+toBoolean(string | number obj) bool
 ```
 
-Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is a string `true`, `yes`, `on`, `1` (case-**IN**sensitive) or if `a` is equal to the number `1`.
-
-Value table:
+Converts a string or number `obj` to boolean value. The function returns `true` if `obj` is the string `true`, `yes`, `on` (**case-insensitive**), or equal to the number `1`. Otherwise, the functions returns `false`. Refer to the value table below for additional examples:
 
 Input | Type | Result
 ----|---|---
@@ -74,10 +75,10 @@ toBoolean('On')
 ## `toNumber`
 
 ```csharp
-toNumber(object a) double
+toNumber(string a) double
 ```
 
-Converts the input object `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
+Converts string `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
 If `a` cannot be parsed as a number, the function returns `Double.NaN`.
 
 Value table:
@@ -102,7 +103,7 @@ Input | Type | Result
 printObject(object obj, string format) string
 ```
 
-Prints the input object `obj` as a two-column table in the specified `format`.
+Prints input object `obj` as a two-column table in the specified `format`.
 
 Supported formats:
 
@@ -112,9 +113,9 @@ Supported formats:
 * `csv`
 * `html`
 
-The first column in the table contains field names, whereas the second column contains corresponding field values.
+The first column contains field names, the second column contains the corresponding field values.
 
-Object `o` can be an `Entity` or a `Window` object which can be retrieved as follows:
+Object `o` can be an `Entity` or `Window` object. Retrieve such objects using the applicable function:
 
 * [`getEntity`](functions-lookup.md#getentity)
 * [`rule_window`](functions-rules.md#rule_window)
@@ -172,13 +173,101 @@ printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
 ...
 ```
 
+## `samples`
+
+```java
+samples([int limit]) map
+```
+
+Retrieves an ordered map of time series samples from the current window. Each sample object in the map contains two fields: `key` which stores command time as a [`DateTime`](./object-datetime.md#datetime-object) object, and `value` which contains the numeric value.
+
+The samples are sorted by command time in ascending order, with the oldest sample placed at the beginning of the map.
+
+An optional `limit` argument can be specified to return a subset of samples:
+
+* If `limit` is positive, the function returns the first `N` samples.
+* If `limit` is negative, the function returns the last `N` samples.
+
+To retrieve sample times and values separately, use [`timestamps`](#timestamps) and [`values`](#values) functions respectively.
+
+Window samples:
+
+| `key` | `value` |
+|:---|---:|
+| `2018-09-18T13:43:36Z[Etc/UTC]` | 10.0 |
+| `2018-09-18T13:44:06Z[Etc/UTC]` | 40.0 |
+| `2018-09-18T13:44:36Z[Etc/UTC]` | 50.0 |
+| `2018-09-18T13:45:06Z[Etc/UTC]` | 85.0 |
+| `2018-09-18T13:45:32Z[Etc/UTC]` | 90.0 |
+
+Expression examples:
+
+```bash
+${addTable(samples(2), 'markdown')}
+```
+
+```markdown
+| **key** | **value**  |
+|:---|:--- |
+| `2018-09-18T13:43:36Z[Etc/UTC]` | 10.0 |
+| `2018-09-18T13:44:06Z[Etc/UTC]` | 40.0 |
+```
+
+```bash
+${addTable(samples(-1), 'csv')}
+```
+
+```txt
+key,value
+2018-09-18T13:45:32Z[Etc/UTC],90
+```
+
+```javascript
+@foreach{item: samples(-2)}
+    - @{date_format(item.key, "yyyy-MM-dd HH:mm:ss")} = @{item.value}
+@end{}
+```
+
+```txt
+- 2018-09-18 13:45:06 = 85.0
+- 2018-09-18 13:45:32 = 90.0
+```
+
+> Refer to [Control Flow](./control-flow.md#iteration) overview for more information about the `@foreach` template.
+
+## `values`
+
+```java
+values([int limit]) [number]
+```
+
+Retrieves a list of numeric sample values in the current window. The list is sorted by command time in the ascending order. Values are floating-point numbers (`double`).
+
+An optional `limit` argument can be specified to return a subset of values:
+
+* If `limit` is positive, the function returns values in the first `N` samples.
+* If `limit` is negative, the function returns values in the last `N` samples.
+
+## `timestamps`
+
+```java
+timestamps([int limit]) [long]
+```
+
+Retrieves a list of sample command times in the current window. Each time  is a [`DateTime`](./object-datetime.md#datetime-object) object. The list is sorted by command time in the ascending order.
+
+An optional `limit` argument can be specified to return a subset of times:
+
+* If `limit` is positive, the function returns sample times in the first `N` samples.
+* If `limit` is negative, the function returns sample times in the last `N` samples.
+
 ## `getURLHost`
 
 ```csharp
 getURLHost(string url) string
 ```
 
-Retrieves the **host** from URL specified in string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **host** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -193,9 +282,9 @@ getURLHost('https://example.org/en/products?type=database&status=1')
 getURLPort(string url) int
 ```
 
-Retrieves the **port** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **port** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
-If `url` does not contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
+If `url` contains no port, the function returns the default value for the protocol, for example port `443` for `HTTPS` and port `80` for `HTTP`.
 
 Example:
 
@@ -210,7 +299,7 @@ getURLPort('https://example.org/en/products?type=database&status=1')
 getURLProtocol(string url) string
 ```
 
-Retrieves the **protocol** from URL string `url`. If `url` is `null`, empty or invalid, exception is thrown.
+Retrieves **protocol** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -225,7 +314,7 @@ getURLProtocol('https://example.org/en/products?type=database&status=1')
 getURLPath(string url) string
 ```
 
-Retrieves the **path** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **path** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -240,7 +329,7 @@ getURLPath('https://example.org/en/products?type=database&status=1')
 getURLQuery(string url) string
 ```
 
-Retrieves the **query string** from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves **query string** from the URL specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -255,7 +344,7 @@ getURLQuery('https://example.org/en/products?type=database&status=1')
 getURLUserInfo(string url) string
 ```
 
-Retrieves the user credential part `username:password` from URL string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
+Retrieves the user credential portion of the `username:password` key-value pair from the URL string specified by the string `url`. If `url` is `null`, empty or invalid, an exception is thrown.
 
 Example:
 

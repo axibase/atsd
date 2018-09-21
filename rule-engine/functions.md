@@ -354,6 +354,9 @@ Name | Description
 [`getURLUserInfo`](functions-utility.md#geturluserinfo)| Retrieves the user credential part `username:password` from URL string.
 [`ifEmpty`](functions-text.md#ifempty)| Returns the second string if the first is either `null` or an empty string.
 [`printObject`](functions-utility.md#printobject)| Prints the input object as a two-column table in the specified format.
+[`samples`](functions-utility.md#samples)| Retrieves a map of the samples in the current window
+[`values`](functions-utility.md#values)| Retrieves a list of the values of the samples in the current window
+[`timestamps`](functions-utility.md#timestamps)| Retrieves a list of the dates of the samples in the current window
 [`toBoolean`](functions-utility.md#toboolean)| Converts the input string or number to a boolean value.
 [`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
 
