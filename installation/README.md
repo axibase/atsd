@@ -26,7 +26,7 @@ After the trial period, ATSD requires an [active subscription](../pricing.md) or
 
 ## Linux Packages
 
-![](../images/redhat1.png) ![](../images/centos.png) ![](../images/ubuntu2.png) ![](../images/debian1.png) ![](../images/sles.png)
+![](../images/redhat1.png) ![](../images/centos.png) ![](../images/ubuntu2.png) ![](../images/debian1.png) ![](../images/suse-logo-4.png)
 
 * **Supported Distributions**: RedHat, CentOS, Ubuntu, Debian, SLES
   * RPM/DEB Packages
@@ -41,7 +41,7 @@ After the trial period, ATSD requires an [active subscription](../pricing.md) or
 
 ## AWS Elastic MapReduce (EMR)
 
-![](../images/aws3.png) ![](../images/emrfs.png)
+![](../images/aws-logo-1.png) ![](../images/emrfs-2.png)
 
 * **Mode**: Distributed
 * **File System**: AWS EMRFS / S3
@@ -53,7 +53,7 @@ After the trial period, ATSD requires an [active subscription](../pricing.md) or
 
 ## Cloudera Distribution Hadoop
 
-![](../images/cloudera2.png) ![](../images/hadoop2.png)
+![](../images/cloudera-1.png) ![](../images/hadoop2.png)
 
 * **Mode**: Distributed
 * **File System**: HDFS
