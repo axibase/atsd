@@ -41,7 +41,7 @@ After the trial period, ATSD requires an [active subscription](../pricing.md) or
 
 ## AWS Elastic MapReduce (EMR)
 
-![](../images/aws-logo-1.png) ![](../images/emrfs-2.png)
+![](../images/aws-logo-4.png) ![](../images/emrfs-2.png)
 
 * **Mode**: Distributed
 * **File System**: AWS EMRFS / S3
@@ -53,7 +53,7 @@ After the trial period, ATSD requires an [active subscription](../pricing.md) or
 
 ## Cloudera Distribution Hadoop
 
-![](../images/cloudera-1.png) ![](../images/hadoop2.png)
+![](../images/cloudera-5.png) ![](../images/hadoop2.png)
 
 * **Mode**: Distributed
 * **File System**: HDFS
