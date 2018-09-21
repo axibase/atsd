@@ -21,4 +21,5 @@ ATSD provides the following built-in facilities to export data:
 * [Pentaho Report Designer](../integration/pentaho/report-designer/README.md)
 * [Stata](../integration/stata/README.md)
 * [Tableau](../integration/tableau/README.md)
+* [TIBCO Spotfire](../integration/spotfire/README.md)
 * Other tools supporting [JDBC](https://github.com/axibase/atsd-jdbc) or [ODBC-JDBC](../integration/odbc/README.md) connectivity.

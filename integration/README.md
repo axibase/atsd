@@ -23,7 +23,8 @@
 * [SPSS Statistics](spss/statistics/README.md)
 * [Stata](stata/README.md)
 * [Tableau](tableau/README.md)
-* [Axibase ER](aer/README.md)
+* [TIBCO Spotfire](spotfire/README.md)
+* [Axibase Enterprise Reporter](aer/README.md)
 
 ## Drivers
 

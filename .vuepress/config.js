@@ -1,7 +1,7 @@
 const githubSettings = {
     docsRepo: 'axibase/atsd',
     editLinks: true,
-    editLinkText: 'Help us improve this page!'
+    editLinkText: 'Have a suggestion?'
 }
 
 const portalsMenu = [
@@ -62,6 +62,7 @@ const integrationMenu = [
             'spss/statistics/',
             'stata/',
             'tableau/',
+            'spotfire/',
             'aer/',
         ]
     },

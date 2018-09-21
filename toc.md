@@ -134,6 +134,7 @@
 * [Pentaho Report Designer](integration/pentaho/report-designer/README.md)
 * [Stata](integration/stata/README.md)
 * [Tableau](integration/tableau/README.md)
+* [TIBCO Spotfire](integration/spotfire/README.md)
 * [ODBC](integration/odbc/README.md)
 
 ## Data Collection Examples
