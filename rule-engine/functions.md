@@ -127,10 +127,11 @@ Name | Description
 ---|---
 [`getPropertyTypes`](functions-property.md#getpropertytypes)| Returns a sorted set of property types for the specified entity.
 [`property`](functions-property.md#property)| Retrieves tag value for the given [property search](property-search.md) expression.
-[`property_compare_except`](functions-property.md#property_compare_except)| Compares properties in the previous and the current `property` command.
 [`property_map`](functions-property.md#property_map)| Returns a map with keys and tags for the given [property search](property-search.md) expression.
 [`property_maps`](functions-property.md#property_maps)| Returns a list of maps for the given property search expression.
 [`property_values`](functions-property.md#property_values)| Returns a list of tag values for the given [property search](property-search.md) expression.
+[`property_compare`](functions-property.md#property_compare)| Compares properties in the previous and the current `property` command.
+[`property_compare_except`](functions-property.md#property_compare_except)| Compares properties in the previous and the current `property` command with name and value filters.
 
 ### Series
 

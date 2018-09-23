@@ -4,7 +4,7 @@
 
 A set of convenience methods to retrieve and compare property keys and tags using [property search](property-search.md) syntax.
 
-[Property](../schema.md#properties) is a collection of arbitrary key-value pairs describing a given entity, grouped by user-defined `type`.
+[Property](../schema.md#properties) is a collection of arbitrary key-value pairs describing a given entity, grouped by a user-defined `type`.
 
 Property record consists of:
 
@@ -16,11 +16,11 @@ Property record consists of:
 
 * [`property`](#property)
 * [`property_values`](#property_values)
-* [`property_compare`](#property_compare)
-* [`property_compare_except`](#property_compare_except)
 * [`property_map`](#property_map)
 * [`property_maps`](#property_maps)
 * [`getPropertyTypes`](#getpropertytypes)
+* [`property_compare`](#property_compare)
+* [`property_compare_except`](#property_compare_except)
 
 ## `property`
 
@@ -98,72 +98,6 @@ property_values('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.
 ```javascript
 /* Returns property tag values received later than 00:00:00 of the current day */
 property_values('nurswgvml007', 'docker.container::image', 'today')
-```
-
-## `property_compare`
-
-```csharp
-property_compare() map
-```
-
-Compares tags in the received `property` command with the previous (stored) command, and returns a map containing a list of changed keys and the value difference. The value difference is a string created using the `'old)value' -> 'new_value'` pattern.
-
-:::tip Scope
-The function is supported by rules with `property` data type.
-:::
-
-Current command tags:
-
-```txt
-{"state": "Running", "location": "NUR", "process_id": "730"}
-```
-
-Previous command tags:
-
-```txt
-{"state": "Stopped", "location": "NUR", "exit_code": "-1"}
-```
-
-`property_compare()` difference map:
-
-```txt
-{"state": "'Running -> Stopped'", "process_id": "'730' -> ''", "exit_code": "'' -> '-1'"}
-```
-
-The map includes keys that are present in one command and absent in the other command.
-The map is empty if no differences among the commands are present.
-The values are compared in **case-insensitive** manner.
-
-## `property_compare_except`
-
-```csharp
-property_compare_except([string name]) map
-```
-
-The function compares property tags similar to the `property_compare()` function, while ignoring changes in tags which match one of the patterns in the argument list.
-
-```java
-NOT property_compare_except (['pid', '*time']).isEmpty()
-```
-
-The above example returns `true` if at least one property tag has changed except for the `pid` tag and any tags that end with `time`.
-
-* `property_compare_except([string c], [string e])`
-
-```javascript
-property_compare_except([string name], [string prevVal]) map
-```
-
-Same as above, while ignoring changes in tags with **previous** values that match one of the `prevVal` patterns.
-
-```java
-NOT property_compare_except(['pid', '*time'], ['*Xloggc*']).isEmpty()
-```
-
-The above example returns `true` if at least one property tag has changed, except for the `pid` tag, any tags that end with `time`, and any tags with previous value containing `Xloggc`. The pattern `*Xloggc*` ignores changes such as:
-
-```txt
-{"args": "'-Xloggc:gc_100.log' -> '-Xloggc:gc_712.log'"}
 ```
 
 ## `property_map`
@@ -288,4 +222,80 @@ getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
 ```javascript
 /* Returns property types received after 00:00:00 of the previous day and before 00:00:00 of the current day*/
 getPropertyTypes('nurswgvml007','yesterday', 'today')
+```
+
+## `property_compare`
+
+```csharp
+property_compare() map
+```
+
+Compares tags in the received `property` command with the previous (stored) command, and returns a map containing a list of changed keys and their value difference. The value difference is a string created using the `'old_value' -> 'new_value'` pattern.
+
+* The map includes keys that are present in one command and absent in the other command.
+* The map is empty if no differences are present.
+* The values are compared in **case-insensitive** manner.
+
+:::tip Scope
+The function is supported by rules with `property` data type.
+:::
+
+Current command tags:
+
+```txt
+{"state": "Running", "location": "NUR", "process_id": "730"}
+```
+
+Previous command tags:
+
+```txt
+{"state": "Stopped", "location": "NUR", "exit_code": "-1"}
+```
+
+`property_compare()` difference map:
+
+```txt
+{"state": "'Running -> Stopped'", "process_id": "'730' -> ''", "exit_code": "'' -> '-1'"}
+```
+
+To check the map for changes in a particular tag, use the `.containsKey()` or the `.get()` function.
+
+```javascript
+property_compare().get('state') != null
+```
+
+```javascript
+property_compare().containsKey('state')
+```
+
+## `property_compare_except`
+
+```csharp
+property_compare_except([string name]) map
+```
+
+The function compares property tags similar to the `property_compare()` function above, while ignoring changes in tags which match one of the patterns in the argument
+
+```java
+NOT property_compare_except (['pid', '*time']).isEmpty()
+```
+
+The above example returns `true` if at least one property tag has changed except for the `pid` tag and any tags that end with `time`.
+
+* `property_compare_except([string c], [string e])`
+
+```javascript
+property_compare_except([string name], [string prevVal]) map
+```
+
+Same as above, while ignoring changes in tags with **previous** values that match one of the `prevVal` patterns.
+
+```java
+NOT property_compare_except(['pid', '*time'], ['*Xloggc*']).isEmpty()
+```
+
+The above example returns `true` if at least one property tag has changed, except for the `pid` tag, any tags that end with `time`, and any tags with previous value containing `Xloggc`. The pattern `*Xloggc*` ignores changes such as:
+
+```txt
+{"args": "'-Xloggc:gc_100.log' -> '-Xloggc:gc_712.log'"}
 ```
