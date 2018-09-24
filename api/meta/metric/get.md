@@ -15,6 +15,7 @@ Retrieves properties and tags for the specified metric.
 | **Name** | **Description** |
 |:---|:---|
 | `metric` | **[Required]** Metric name. |
+| `statistics` | Controls whether lastInsertDate field is included in the response. The default value is `true` |
 
 ## Response
 
