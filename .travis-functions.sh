@@ -22,7 +22,8 @@ function spellcheck {
             yaspeller_exit_code=$?
             if [ "$1" != "--single" ]; then
                 list_modified_md_files | xargs -d '\n' -n1 spellchecker --language=en-US --plugins spell repeated-words syntax-mentions syntax-urls --ignore "[A-Zx0-9./_-]+" "[u0-9a-fA-F]+" "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z" "[0-9dhms:-]+" "(metric|entity|tag|[emtv])[:0-9]*" --dictionaries .spelling --files {}
-            else 
+                return $(($? | $yaspeller_exit_code))
+            else
                 return $yaspeller_exit_code
             fi
         fi
