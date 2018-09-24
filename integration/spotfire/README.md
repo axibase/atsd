@@ -8,7 +8,7 @@
 
 Download the ATSD [JDBC driver](https://github.com/axibase/atsd-jdbc/releases) with dependencies `atsd-jdbc-1.x.x-DEPS.jar` to the Spotfire server.
 
-Copy the JAR file to the `tomcat/lib` folder in the Spotfire base directory directory.
+Copy the JAR file to the `tomcat/lib` folder in the Spotfire base directory.
 
 :::tip NOTE
 On Windows, the Spotfire `7.14.0` server base directory is located in the `C:\tibco\tss\7.14.0` directory.
