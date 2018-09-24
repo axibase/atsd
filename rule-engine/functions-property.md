@@ -232,7 +232,7 @@ property_compare() map
 
 Compares tags in the received `property` command with the previous (stored) command, and returns a map containing a list of changed keys and their value difference. The value difference is a string created using the `'old_value' -> 'new_value'` pattern.
 
-* The map includes keys that are present in one command and absent in the other command.
+* The map includes changed keys as well as keys that are present in one command and absent in the other command.
 * The map is empty if no differences are present.
 * The values are compared in **case-insensitive** manner.
 
@@ -242,19 +242,19 @@ The function is supported by rules with `property` data type.
 
 Current command tags:
 
-```txt
+```json
 {"state": "Running", "location": "NUR", "process_id": "730"}
 ```
 
 Previous command tags:
 
-```txt
+```json
 {"state": "Stopped", "location": "NUR", "exit_code": "-1"}
 ```
 
 `property_compare()` difference map:
 
-```txt
+```json
 {"state": "'Running -> Stopped'", "process_id": "'730' -> ''", "exit_code": "'' -> '-1'"}
 ```
 
@@ -296,6 +296,6 @@ NOT property_compare_except(['pid', '*time'], ['*Xloggc*']).isEmpty()
 
 The above example returns `true` if at least one property tag has changed, except for the `pid` tag, any tags that end with `time`, and any tags with previous value containing `Xloggc`. The pattern `*Xloggc*` ignores changes such as:
 
-```txt
+```json
 {"args": "'-Xloggc:gc_100.log' -> '-Xloggc:gc_712.log'"}
 ```
