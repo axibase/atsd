@@ -178,7 +178,7 @@ The endpoints listed below are accessible under the `/api/v1/` context path, for
 | **Name** | **Method** / **Path** / **Description** |
 |:---|:---|
 | [insert](./messages/insert.md) | `POST` `/messages/insert` <br>Inserts an array of messages.|
-| [webhook](./messages/webhook.md) | `POST` \| `GET` `/messages/webhook/*` <br>Creates message from an HTTP request with optional JSON payload and insert it.|
+| [webhook](./messages/webhook.md) | `POST` or `GET` `/messages/webhook/*` <br>Creates message from an HTTP request with optional JSON payload and insert it.|
 | [query](./messages/query.md) | `POST` `/messages/query` <br>Retrieves message records for the specified filters.|
 | [delete](./messages/delete.md) | `-` `-` `-` <br>Executes administrative actions to delete message records. |
 | [count](./messages/count.md) | `POST` `/messages/stats/query` <br>Calculates the number of messages per period.|
