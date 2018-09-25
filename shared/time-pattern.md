@@ -70,7 +70,6 @@ To print day number of week starting from Monday, use the `u` pattern.
 
 ## Examples
 
-```ls
 | Date and Time Pattern          | Result                               |
 |--------------------------------|--------------------------------------|
 | `yyyy.MM.dd G 'at' HH:mm:ss z` | 2001.07.04 AD at 12:08:56 PDT        |
@@ -84,4 +83,3 @@ To print day number of week starting from Monday, use the `u` pattern.
 | `yyyy-MM-ddTHH:mm:ss.SSSZ`     | 2001-07-04T12:08:56.235-0700         |
 | `yyyy-MM-ddTHH:mm:ss.SSSXXX`   | 2001-07-04T12:08:56.235-07:00        |
 | `YYYY-'W'ww-u`                 | 2001-W27-3                           |
-```
