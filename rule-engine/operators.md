@@ -4,7 +4,7 @@
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `OR` | Boolean `OR`, also `\|\|`. |
+| `OR` | Boolean `OR`, also &vert;&vert;. |
 | `AND` | Boolean `AND`, also `&&`. |
 | `NOT` | Boolean `NOT`, also `!`. |
 
