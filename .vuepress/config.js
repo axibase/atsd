@@ -343,6 +343,17 @@ const csvParsers = [
     'uploading-csv-files.md',
 ]
 
+const gettingStartedMenu = [
+    { title: "Getting Started", children: [
+        ["getting-started.html",        "1. Introduction"   ],
+        ["getting-started-insert.html", "2. Inserting Data" ],
+        ["getting-started-portal.html", "3. Portals"        ],
+        ["getting-started-export.html", "4. Exporting Data" ],
+        ["getting-started-sql.html",    "5. SQL"            ],
+        ["getting-started-alert.html",  "6. Alerting"       ],
+    ]},
+];
+
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
@@ -376,7 +387,7 @@ module.exports = {
             '/search/': [],
             '/shared/': [],
             '/sql/': sqlMenu,
-            '/tutorials/': [],
+            '/tutorials/': gettingStartedMenu,
             '/versioning/': [],
             // Keep it last
             '/': landingPageMenu,
