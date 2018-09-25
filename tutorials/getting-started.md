@@ -1,3 +1,7 @@
+---
+sidebarDepth: 0
+---
+
 # Getting Started
 
 This introduction guides you through the first steps of using Axibase Time Series Database (ATSD).
