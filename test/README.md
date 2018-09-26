@@ -1,7 +1,5 @@
 # Test anchors links
 
-# Exsangue quid
-
 ## Violentia vera ultro in undis Delphica ducis
 
 Lorem [markdownum](#html) vitta Martius data; **bella rore superi** teneros quae,
@@ -21,7 +19,7 @@ inde, nulla, erat legit. Deripit novi, cum digna natam, et genetrixque
 Iphigenia, prima!
 
 
-<a name="html></a> `markdownum`
+<a name="htm"></a> `markdownum`
 
 - Nec dubitaret at pariter dixit viximus cruor
 - Gravis salici vates oblitis conbibitur aliquid caput
