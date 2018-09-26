@@ -1,3 +1,3 @@
 # Test relative
 
-[Markdownum](README.md#html)
+[Markdown](README.md#html)
