@@ -182,32 +182,24 @@ const landingPageMenu = [
 const networkApiMenu = [
     ['', 'Overview'],
     {
-        title: "Data Commands", children: [
+        title: "Commands", children: [
             ['series.md', 'series'],
             ['property.md', 'property'],
             ['message.md', 'message'],
             ['csv.md', 'csv'],
+            ['entity.md', 'entity'],
+            ['metric.md', 'metric'],    
+            ['ping.md', 'ping'],
+            ['time.md', 'time'],
+            ['version.md', 'version'],
+            ['exit.md', 'exit'],            
             ['nmon.md', 'nmon'],
             ['picomp2.md', 'picomp2'],
             ['tcollector.md', 'tcollector'],
             ['graphite.md', 'Graphite'],
             ['statsd.md', 'StatsD'],
         ]
-    },
-    {
-        title: "Meta Commands", children: [
-            ['entity.md', 'entity'],
-            ['metric.md', 'metric'],
-        ]
-    },
-    {
-        title: "Control Commands", children: [
-            ['ping.md', 'ping'],
-            ['time.md', 'time'],
-            ['version.md', 'version'],
-            ['exit.md', 'exit'],
-        ]
-    },
+    }
 ]
 
 const ruleEngineMenu = [
