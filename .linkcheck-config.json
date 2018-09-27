@@ -40,6 +40,12 @@
         ,{ "pattern": "https://cdec.water.ca.gov/index.html"}
         ,{ "pattern": "https://nylottery.ny.gov/wps/portal/.*"}
         ,{ "pattern": "https://www.worldhunger.org/hunger-in-america-2016-united-states-hunger-poverty-facts/"}
+        ,{ "pattern": "https://www.irs.gov/pub/irs-pdf/f8854.pdf"}
+        ,{ "pattern": "https://www.irs.gov/uac/newsroom/path-act-tax-related-provisions"}
+        ,{ "pattern": "https://www.irs.gov/uac/newsroom/filing-season-statistics-for-week-ending-march-31-2017"}
+        ,{ "pattern":"https://www.irs.gov/uac/2017-and-prior-year-filing-season-statistics"}
+        ,{ "pattern":"https://www.irs.gov/newsroom/2018-and-prior-year-filing-season-statistics"}
+        
         
         
     ]}
