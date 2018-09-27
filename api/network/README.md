@@ -4,57 +4,24 @@ Network API provides a set of plain text commands for inserting numeric time ser
 
 You can use `netcat`, `telnet`, `bash pseudo-device files`, or a programming language such as [Java](examples/AtsdTcpClient.java) that implements the TCP/UDP stack.
 
-## Supported Commands
-
-### Data Commands
-
-* [series](series.md)
-* [property](property.md)
-* [message](message.md)
-* [csv](csv.md)
-* [nmon](nmon.md)
-
-### Meta Commands
-
-* [entity](entity.md)
-* [metric](metric.md)
-
-### Control Commands
-
-* [ping](ping.md)
-* [debug](#enable-debug-mode)
-* [time](time.md)
-* [version](version.md)
-* [exit](exit.md)
-
-### Extended Data Commands
-
-* [tcollector](extended-commands.md#tcollector)
-* [statsd](extended-commands.md#statsd)
-* [graphite](extended-commands.md#graphite)
-
 ## Ports
 
-By default, the database server listens for incoming commands on the following ports:
+The database accepts incoming commands on the following ports:
 
-* `8081` TCP
-* `8082` UDP
+* TCP `8081`
+* UDP `8082`
+* HTTP `8088` `POST /api/v1/command`
+* HTTP `8443` `POST /api/v1/command`
 
-## Encryption
+## Security
 
-To encrypt TCP traffic, setup an [SSH tunnel](../../integration/nmon/ssh-tunneling.md) or create a VPN connection.
+Authentication and authorization are supported by the [`/api/v1/command`](../../api/data/ext/command.md) endpoint.
 
-## Authentication
-
-Authentication and authorization are not supported for plain text commands received over TCP and UDP protocols.
-
-Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text commands over HTTP/HTTPS protocols with authentication and authorization enabled.
-
-## Connection
+## Sending Commands
 
 ### Single Command
 
-To send a single command, connect to an ATSD server, send the command in plain text, and stop the connection.
+To send a single command, connect to an ATSD server, send the command in plain text, and close the connection.
 
 * `netcat`: `echo`
 
@@ -76,7 +43,7 @@ echo -e "series e:station_3 m:temperature=32.2 m:humidity=81.4" > /dev/tcp/atsd_
 
 > `/dev/tcp/host/port` and `/dev/udp/host/port` are `bash` pseudo-device files which can be used in redirection.
 
-* telnet: one line
+* `telnet`: one line
 
 ```bash
 telnet atsd_hostname 8081 << EOF
@@ -84,7 +51,7 @@ series e:station_4 m:temperature=32.2 m:humidity=81.4
 EOF
 ```
 
-* telnet: session
+* `telnet`: session
 
 ```ls
 $ telnet atsd_hostname 8081
@@ -96,7 +63,7 @@ series e:station_5 m:temperature=32.2 m:humidity=81.4
 Connection closed by foreign host.
 ```
 
-* java: socket
+* `java`: socket
 
 ```java
 Socket s = new Socket("atsd_hostname", 8081);
@@ -105,7 +72,7 @@ writer.println("series e:station_6 m:temperature=32.2");
 s.close();
 ```
 
-The above examples insert timestamped **temperature** and **humidity** metric samples for **station** entities.
+The above examples insert timestamped **temperature** and **humidity** metric samples for various **station** entities.
 
 ### Multiple Commands
 
