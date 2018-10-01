@@ -57,17 +57,17 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-|0001|plugin| Feature | Remove suggestions based on [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) due to low match quality.
-|0002|plugin| Feature | Add settings descriptions.
-|0003|plugin| Feature | Add dark theme icon.
-|0004|plugin| Feature | Validator: Clear diagnostic messages when a file is closed.
-|0005|plugin| Feature | Validator: Warn on `[tag]` usage. Suggest `[tags]`.
+|0011|plugin| Feature | Remove suggestions based on [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) due to low match quality.
+|0010|plugin| Feature | Add settings descriptions.
+|0009|plugin| Feature | Add dark theme icon.
+|0008|plugin| Feature | Validator: Clear diagnostic messages when a file is closed.
+|0007|plugin| Feature | Validator: Warn on `[tag]` usage. Suggest `[tags]`.
 |0006|plugin| Feature | Validator: Add [`var`](https://github.com/axibase/charts/blob/master/syntax/control-structures.md#var--endvar) object check.
-|0007|plugin| Bug | Validator: Error caused by whitespace between setting name and value.
-|0008|plugin| Bug | Incorrect diagnostic message severity levels.
-|0009|plugin| Bug| Validator: Incorrect warning for `[tag]` usage.
-|0010|plugin| Bug| Validator: Erroneous [Freemarker](../../portals/freemarker.md) and [`script/endscript`](https://github.com/axibase/charts/blob/master/syntax/control-structures.md#script--endscript) warnings.
-|0011|plugin| Feature | Remove errors from console when a file is closed.
+|0005|plugin| Bug | Validator: Error caused by whitespace between setting name and value.
+|0004|plugin| Bug | Incorrect diagnostic message severity levels.
+|0003|plugin| Bug| Validator: Incorrect warning for `[tag]` usage.
+|0002|plugin| Bug| Validator: Erroneous [Freemarker](../../portals/freemarker.md) and [`script/endscript`](https://github.com/axibase/charts/blob/master/syntax/control-structures.md#script--endscript) warnings.
+|0001|plugin| Feature | Remove errors from console when a file is closed.
 
 ## Collector
 
