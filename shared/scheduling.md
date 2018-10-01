@@ -28,12 +28,11 @@ Field Control Symbols:
 
 | **Name** | **Description** |
 |---|---|
-| * | Any value |
-| ? | No specific value |
-| R | Random value within allowed value range |
-| , | Value list separator |
-| - | Range of values |
-| / | Step values |
+| `*` | Any value |
+| `?` | No specific value |
+| `,` | Value list separator |
+| `-` | Range of values |
+| `/` | Step values |
 
 For example, `0 0 8 * * ?` executes at `08:00:00` every day.
 
@@ -41,17 +40,15 @@ Field Constraints:
 
 | **Name** | **Allowed Values** |
 |:---|:---|
-| `second` | `0-59`, `R` |
-| `minute` | `0-59`, `R` |
-| `hour` | `0-23`, `R` |
+| `second` | `0-59` |
+| `minute` | `0-59` |
+| `hour` | `0-23` |
 | `day-of-month` | `1-31`, `?` |
 | `month` | `1-12` or `JAN-DEC` |
 | `day-of-week` | `1-7` or `MON-SUN`, `?`  |
 
 * If a value is set in `day-of-week`, `day-of-month` must be set to `?`. For example `0 0 6 ? * MON`.
 * If a value is set in `day-of-month`, `day-of-week` must be set to `?`. For example `0 0 6 */2 * ?`.
-
-Second, minute, and hour fields support **R** (random) symbol to randomize execution time.
 
 ## Time Zone
 
@@ -68,8 +65,6 @@ The time zone is displayed on the **Settings > System Information** page.
 | `0/10 * * * * ?` | `0/10` | `*` | `*` | `*` | `*` | `?` | Every ten seconds. |
 | `0 0/1 * * * ?`  | `0` | `0/1` | `*` | `*` | `*` | `?` | Every minute. |
 | `0 0 0 * * ?`    | `0` | `0` | `0` | `*` | `*` | `?` | Every day at 00:00. |
-| `R 0/5 * * * ?`  | `R` | `0/5` | `*` | `*` | `*` | `?` | Every five minutes at a random second. |
-| `R R 2 * * ?`    | `R` | `R` | `1` | `*` | `*` | `?` | At a random minute and second past the second hour. |
 | `0 5,35 * * * ?` | `0` | `5,35` | `*` | `*` | `*` | `?` | Every hour at the fifth and thirty-fifth minute. |
 | `0 0 6 ? * MON`  | `0` | `0` | `6` | `?` | `*` | `MON` | Every Monday at 06:00. |
 | `0 5 0 * 8 ?`    | `0` | `5` | `0` | `*` | `8` | `?` | At 00:05 every day in August. |
