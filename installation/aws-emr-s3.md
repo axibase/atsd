@@ -33,17 +33,27 @@ aws s3 ls --summarize --human-readable --recursive s3://atsd
 
 ## Download Distribution Files
 
+* Amazon EMR `5.0.x` - `5.3.x` with HBase `1.2.x`
+
 ```bash
 curl -o atsd-cluster.tar.gz https://axibase.com/public/atsd-cluster.tar.gz
 ```
+
+* Amazon EMR `5.12.x` - `5.17.x` with HBase `1.4.x`
+
+```bash
+curl -o atsd-cluster.tar.gz https://axibase.com/public/aws/atsd-cluster-1.4.x.tar.gz
+```
+
+Refer to AWS [EMR Release Matrix](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/images/emr-releases-5x.png) for more information.
+
+## Extract and Upload Co-processor File
 
 ```bash
 tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 ```
 
-## Upload Co-processor File
-
-The `atsd-hbase.$REVISION.jar` file contains ATSD co-processors and filters.
+The `atsd-hbase.$REVISION.jar` file contains ATSD HBase co-processors and filters.
 
 By uploading the `.jar` file to S3, Java classes in this file are automatically available to all region servers when they are started.
 
@@ -67,12 +77,14 @@ Total Objects: 1
 Store the `atsd-hbase.$REVISION.jar` in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
 
 :::tip Note
-When uploading the `.jar` file to `hbase.rootdir/lib` directory, the revision is removed from the file name to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is upgraded.
+When uploading the `.jar` file to `hbase.rootdir/lib` directory, the command removes the revision from the file name to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
 :::
 
 ## Launch Cluster
 
 Copy the AWS CLI cluster launch command into an editor.
+
+Specify the correct EMR release label, for example `emr-5.3.1` for HBase `1.2.x` or `emr-5.17.1` for HBase `1.4.x`.
 
 ```bash
 export CLUSTER_ID=$(            \
@@ -95,10 +107,6 @@ aws emr create-cluster          \
   }]'              \
 )
 ```
-
-:::tip Note
-Currently supported AWS EMR releases are `5.0.0` to `5.3.1`.
-:::
 
 ### Specify Network Parameters
 
