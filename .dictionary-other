@@ -167,6 +167,7 @@ refer[r]?er
 regex
 regularization
 reindex
+repeatable
 roadmap
 runtime
 satisfiable
@@ -217,6 +218,7 @@ uncheck
 uncomment
 uneditable
 unescape
+unhandled
 univariate
 unneeded
 unpickling
