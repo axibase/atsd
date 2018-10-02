@@ -46,4 +46,5 @@
         ,{ "pattern":"https://www.irs.gov/uac/2017-and-prior-year-filing-season-statistics"}
         ,{ "pattern":"https://www.irs.gov/newsroom/2018-and-prior-year-filing-season-statistics"}
         ,{ "pattern":"https://www.ecy.wa.gov/"}
+        ,{ "pattern":"https://nces.ed.gov/programs/coe/indicator_coi.asp"}
     ]}
