@@ -163,6 +163,7 @@ const restApiMenu = [
             `/api/meta/misc/search`,
             `/api/meta/misc/ping`,
             `/api/meta/misc/permissions`,
+            `/api/meta/misc/portal`,
             `/api/meta/misc/version`,
         ]
     },
