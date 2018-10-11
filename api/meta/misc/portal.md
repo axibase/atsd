@@ -21,7 +21,7 @@ The user requesting the portal must be granted the `API_DATA_READ` role and corr
 | `entity` | string   | Entity name. Required for template portals.|
 | `width` | integer   | Screenshot width, in pixels. Default: `900`. |
 | `height` | integer   | Screenshot height, in pixels. Default: `600`. |
-| `theme` | string   | Portal theme.<br>Possible values: `default`, `black`.<br>Default: `default`. |
+| `theme` | string   | Portal theme.<br>Possible values: `Default`, `Black`.<br>Default value is set in portal configuration. |
 
 Additional request parameters are passed to the target portal and are accessible using the `${parameter_name}` syntax.
 
