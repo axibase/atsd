@@ -282,3 +282,4 @@ The endpoints are accessed under context path `/api/v1/`, for example `/api/v1/v
 | [ping](../meta/misc/ping.md) | `GET` `/ping` <br> Returns HTTP `200 OK` status code to check connectivity and authentication.|
 | [permissions](../meta/misc/permissions.md)| `GET` `/permissions` <br>  Returns roles and permissions for the current user.|
 | [series search](../meta/misc/search.md) | `GET` `/search` <br> Search series by an expression.|
+| [portal export](../meta/misc/portal.md) | `GET` `/portal/export` <br> Export portal screenshot as PNG file.|
