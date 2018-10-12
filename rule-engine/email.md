@@ -219,7 +219,7 @@ Decimal numbers are rounded to five significant digits for readability.
 ### Portals
 
 :::tip Web Driver
-To attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured on the ATSD server. 
+To attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured on the ATSD server.
 :::
 
 To attach a screenshot of the default portal for the given metric, entity and tags, enable **Series Chart**.
