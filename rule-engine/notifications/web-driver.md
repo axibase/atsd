@@ -2,10 +2,10 @@
 
 ## Overview
 
-There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/) and [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/).
+The database supports two types of web drivers: [PhantomJS](http://phantomjs.org/) and [Chrome](https://sites.google.com/a/chromium.org/chromedriver/). Web driver is a programmable browser that allows emulating user actions and capturing web pages as if there are displayed to a real user.
 
 :::warning Linux Container
-If you are installing the Web Driver in a Linux container, log in as `root` and install `wget` prior to switching to the `axibase` user.
+If you are installing the web driver in a Linux container, log in as `root` and install `wget` prior to switching to the `axibase` user.
 
 ```elm
 docker exec -it -u root atsd bash
@@ -44,12 +44,6 @@ drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
 * Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties** `webdriver.phantomjs.path`.
 
     ![](./images/webdriver.phantomjs.path.png)
-
-* Open the **Alerts > Outgoing Webhooks** page. Create and test a webhook such as [Telegram](telegram.md) or [Slack](slack.md). Verify that screenshot is successfully sent to the chat client by the database.
-
-* Review Web Driver settings on the **Settings > System Information** page. Verify that no error is displayed.
-
-    ![](./images/webdriver-settings_1.png)
 
 ## Option 2: Chrome Driver
 
@@ -125,8 +119,16 @@ sudo mv chromedriver /usr/bin/chromedriver
 
     ![](./images/webdriver-google.png)
 
-* Open the **Alerts > Outgoing Webhooks** page. Create and test a webhook such as Telegram or Slack. Verify that screenshot is successfully sent to the chat client.
+## Test Web Driver
 
-* Review Web Driver settings on the **Settings > System Information** page. Verify that no error is displayed.
+* Review web driver settings on the **Settings > System Information** page. Verify that no error is displayed.
 
-    ![](./images/webdriver-settings_2.png)
+    ![](./images/webdriver-settings_1.png)
+
+* Open the **Alerts > Outgoing Webhooks** page.
+
+* Create an outgoing webhook that supports sending screenshots such as [Telegram](telegram.md) or [Slack](slack.md). Verify that a screenshot is successfully delivered to the chat client.
+
+* Alternatively, enable the built-in [Email Client](../../administration/mail-client.md).
+
+* Create a sample rule in the Rule Engine and attach a portal on the [Email](../email.md#portals) tab. Verify that the delivered email message contains the portal screenshot.

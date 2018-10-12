@@ -218,7 +218,11 @@ Decimal numbers are rounded to five significant digits for readability.
 
 ### Portals
 
-To attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured. To attach default portal for the metric, entity and tags to the outgoing message, enable **Series Chart**.
+:::tip Web Driver
+To attach screenshots, a [web driver](notifications/web-driver.md) must be installed and configured on the ATSD server. 
+:::
+
+To attach a screenshot of the default portal for the given metric, entity and tags, enable **Series Chart**.
 
 ![](./images/email-screenshot-enable.png)
 
@@ -230,7 +234,7 @@ abs(forecast_deviation(median())) > 2 && (median() < 200 || median() > 600)
 
 ![](./images/email-screenshot-series.png)
 
-If a rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) these metrics can be included in the screenshot on the right axis.
+If a rule correlates multiple metrics using [database functions](functions-series.md) or [rules functions](functions-rules.md) these metrics are included in the screenshot on the right axis.
 
 ```javascript
 avg() > 10 && db_last('memfree') < 500000
@@ -242,7 +246,7 @@ To attach additional portals, select them from the **Additional Portal** drop-do
 
 ![](./images/email-screenshot-portals.png)
 
-If a portal is a [template](../portals/portals-overview.md#template-portals), placeholders such as entity, metric, tags are set based on the current window fields.
+If the additional portal is a [template](../portals/portals-overview.md#template-portals) portal, placeholders such as entity, metric, tags are set based on the current window fields.
 
 ## Monitoring
 

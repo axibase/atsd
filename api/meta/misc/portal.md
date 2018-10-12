@@ -4,7 +4,13 @@
 
 Generates a screenshot of the specified [portal](../../../portals/README.md) in PNG format.
 
-The user requesting the portal must be granted the `API_DATA_READ` role and corresponding [Portal and Entity](../../../administration/user-authorization.md) permissions.
+## Permissions
+
+The user requesting the portal must be granted the `API_DATA_READ` role and corresponding [Portal](../../../administration/user-authorization.md#portal-permissions) and [Entity](../../../administration/user-authorization.md#entity-permissions) permissions.
+
+## Web Driver
+
+The method requires a [web driver](../../../rule-engine/notifications/web-driver.md) to be installed and enabled on the ATSD server.
 
 ## Request
 
@@ -39,7 +45,11 @@ GET /api/v1/portal/export?id=22
 GET /api/v1/portal/export?name=Docker%20Host&entity=nurswgvml007
 ```
 
+```elm
+GET /api/v1/portal/export?id=100&width=1400&height=900
+```
+
 ```bash
 curl 'https://atsd_hostname:8443/api/v1/portal/export?id=202' \
-  --insecure --include --user {username}:{password} > portal.png
+  --insecure --user {username}:{password} > portal.png
 ```
