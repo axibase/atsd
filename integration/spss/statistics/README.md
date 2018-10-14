@@ -93,7 +93,7 @@ SELECT T0."value" AS price,  T1."datetime" AS datetime, T1."value" AS weight, T1
 FROM "inflation.cpi.categories.price" T0
   OUTER JOIN "inflation.cpi.categories.weight" T1
 WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
-  WITH INTERPOLATE (1 YEAR, PREVIOUS, INNER, EXTEND)
+  WITH INTERPOLATE (1 YEAR, PREVIOUS, INNER, TRUE)
 ```
 
 ![](./images/merged_import/step_3.png)

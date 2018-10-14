@@ -486,7 +486,7 @@ The administrative interface in ATSD has been simplified by consolidating multip
 ```sql
 SELECT datetime, value FROM 'interpTest'
 WHERE datetime BETWEEN '2016-11-22T17:50:00Z' AND '2016-11-22T17:55:00Z'
-WITH INTERPOLATE(15 SECOND, LINEAR, OUTER, EXTEND)
+WITH INTERPOLATE(15 SECOND, LINEAR, OUTER, TRUE)
 ```
 
 ### Issue 3516
@@ -516,7 +516,7 @@ SELECT t1.datetime, t1.entity, t1.value, t2.value, t3.value, t4.value, t5.value,
   JOIN 'SV7.Unit_BatchID' t5
   JOIN 'SV7.Unit_Procedure' t6
 WHERE t1.datetime >= '2016-10-04T02:00:00Z' AND t2.datetime <= '2016-10-04T02:10:00Z'
-WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
+WITH INTERPOLATE(60 SECOND, AUTO, OUTER, TRUE, START_TIME)
 ```
 
 ### Issue 3677

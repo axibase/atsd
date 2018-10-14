@@ -105,7 +105,7 @@ FROM "BA:ACTIVE.1"
 WHERE entity = 'default'
   AND datetime >= '2016-08-24T14:45:00Z' AND datetime <= '2016-08-24T16:45:00Z'
   AND tags.status IS NULL
-WITH INTERPOLATE(15 MINUTE, LINEAR, OUTER, EXTEND)
+WITH INTERPOLATE(15 MINUTE, LINEAR, OUTER, TRUE)
   ORDER BY datetime
 ```
 
@@ -201,7 +201,7 @@ SELECT t1.datetime, t1.entity, t1.value, t2.value, t3.value, t4.value, t5.value,
   JOIN "SV6.Unit_Procedure" t6
 WHERE t1.datetime >= '2016-10-04T02:00:00Z' AND t2.datetime <= '2016-10-04T02:10:00Z'
   AND entity = 'br-1470'
-WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
+WITH INTERPOLATE(60 SECOND, AUTO, OUTER, TRUE, START_TIME)
 ```
 
 ### Results
@@ -237,7 +237,7 @@ SELECT t1.datetime, t1.entity, t1.value, t2.value, t3.value, t4.value, t5.value,
 WHERE t1.datetime >= '2016-10-04T02:00:00Z' AND t2.datetime <= '2016-10-04T02:10:00Z'
   AND entity = 'br-1470'
   AND t5.text = '1414'
-WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
+WITH INTERPOLATE(60 SECOND, AUTO, OUTER, TRUE, START_TIME)
 ```
 
 ```ls

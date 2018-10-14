@@ -218,7 +218,7 @@ SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', metric.timeZone) AS 
   WHERE entity = 'nurswgvml007'
     AND date_format(time, 'yyyy-MM-dd HH:mm:ss', metric.timeZone) >= '2017-05-01 12:00:00'
     AND date_format(time, 'yyyy-MM-dd HH:mm:ss', metric.timeZone)  < '2017-05-03 12:00:00'
-  WITH INTERPOLATE(1 DAY, LINEAR, INNER, NONE, CALENDAR, metric.timeZone)
+  WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, metric.timeZone)
 ```
 
 ### Issue 2766

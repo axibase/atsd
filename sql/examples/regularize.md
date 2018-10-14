@@ -247,7 +247,7 @@ Missing periods at the end of the selection interval that cannot be interpolated
 SELECT datetime, value FROM metric1
   WHERE entity = 'e1'
 AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
-  WITH INTERPOLATE(30 SECOND, LINEAR, INNER, EXTEND)
+  WITH INTERPOLATE(30 SECOND, LINEAR, INNER, TRUE)
 ```
 
 The value at 08:00:00 is set to first raw value at 08:00:18 because the prior value at 02:00:05 is not available in the `INNER` mode.

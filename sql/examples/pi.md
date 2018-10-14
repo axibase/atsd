@@ -154,7 +154,7 @@ WHERE t1.metric LIKE 'tv6.pack%'
     WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800')
   )
   AND t1.entity = 'br-1211'
-WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, EXTEND, START_TIME)
+WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, TRUE, START_TIME)
   ORDER BY t1.metric, t1.datetime
 ```
 
@@ -205,7 +205,7 @@ WHERE t1.metric LIKE 'tv6.pack%'
       WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800')
   )
   AND t1.entity = 'br-1211'
-WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, EXTEND, START_TIME)
+WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, TRUE, START_TIME)
   ORDER BY t1.metric, t1.datetime
 ```
 
@@ -268,7 +268,7 @@ WHERE t1.metric LIKE 'tv6.pack%'
     WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800')
   )
   AND t1.entity = 'br-1211'
-WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, EXTEND, START_TIME)
+WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, TRUE, START_TIME)
   GROUP BY t1.metric, t4.text
 ORDER BY t1.metric, t4.text
 ```
@@ -285,4 +285,106 @@ ORDER BY t1.metric, t4.text
 | tv6.pack:r04 | Proc1          | 20.8          | 23.4          | 24.9          |
 | tv6.pack:r04 | Proc2          | 20.3          | 20.7          | 21.0          |
 | tv6.pack:r04 | Proc3          | 21.2          | 21.2          | 21.2          |
+```
+
+## Integrated Example
+
+### Numeric PI Tags
+
+```txt
+series d:2018-10-12T01:58:12Z e:BR-001 m:AX.Temperature=90.4
+series d:2018-10-12T02:00:05Z e:BR-001 m:AX.Temperature=97.7
+series d:2018-10-12T02:00:35Z e:BR-001 m:AX.Temperature=77.1
+series d:2018-10-12T02:02:28Z e:BR-001 m:AX.Temperature=84.2
+series d:2018-10-12T02:04:15Z e:BR-001 m:AX.Temperature=65.2
+series d:2018-10-12T02:05:28Z e:BR-001 m:AX.Temperature=50.3
+series d:2018-10-12T02:07:42Z e:BR-001 m:AX.Temperature=60.1
+series d:2018-10-12T02:08:28Z e:BR-001 m:AX.Temperature=80.3
+series d:2018-10-12T02:09:16Z e:BR-001 m:AX.Temperature=87.1
+series d:2018-10-12T02:11:11Z e:BR-001 m:AX.Temperature=99.9
+
+series d:2018-10-12T02:00:14Z e:BR-001 m:AX.Pressure=47.7
+series d:2018-10-12T02:00:55Z e:BR-001 m:AX.Pressure=37.1
+series d:2018-10-12T02:02:18Z e:BR-001 m:AX.Pressure=44.2
+series d:2018-10-12T02:04:25Z e:BR-001 m:AX.Pressure=35.2
+series d:2018-10-12T02:05:18Z e:BR-001 m:AX.Pressure=40.3
+series d:2018-10-12T02:07:22Z e:BR-001 m:AX.Pressure=42.1
+series d:2018-10-12T02:08:28Z e:BR-001 m:AX.Pressure=46.3
+series d:2018-10-12T02:09:26Z e:BR-001 m:AX.Pressure=27.1
+series d:2018-10-12T02:10:11Z e:BR-001 m:AX.Pressure=49.9
+```
+
+### Operations PI Tags (Discrete Manufacturing)
+
+```txt
+series d:2018-10-12T01:52:05Z e:BR-001 m:AX.Elapsed_Time=0
+series d:2018-10-12T02:00:31Z e:BR-001 m:AX.Elapsed_Time=506
+series d:2018-10-12T02:00:34Z e:BR-001 m:AX.Elapsed_Time=0
+series d:2018-10-12T02:01:21Z e:BR-001 m:AX.Elapsed_Time=47
+series d:2018-10-12T02:01:25Z e:BR-001 m:AX.Elapsed_Time=0
+series d:2018-10-12T02:02:21Z e:BR-001 m:AX.Elapsed_Time=56
+series d:2018-10-12T02:04:14Z e:BR-001 m:AX.Elapsed_Time=169
+series d:2018-10-12T02:05:01Z e:BR-001 m:AX.Elapsed_Time=216
+series d:2018-10-12T02:09:05Z e:BR-001 m:AX.Elapsed_Time=460
+series d:2018-10-12T02:09:09Z e:BR-001 m:AX.Elapsed_Time=0
+series d:2018-10-12T02:10:00Z e:BR-001 m:AX.Elapsed_Time=51
+
+series d:2018-10-12T01:52:05Z e:BR-001 x:AX.Unit_BatchID="1413"
+series d:2018-10-12T02:00:34Z e:BR-001 x:AX.Unit_BatchID="Inactive"
+series d:2018-10-12T02:01:25Z e:BR-001 x:AX.Unit_BatchID="1414"
+series d:2018-10-12T02:09:05Z e:BR-001 x:AX.Unit_BatchID="Inactive"
+series d:2018-10-12T02:09:09Z e:BR-001 x:AX.Unit_BatchID="1415"
+
+series d:2018-10-12T01:57:08Z e:BR-001 x:AX.Unit_Procedure="1413-Proc3"
+series d:2018-10-12T02:00:34Z e:BR-001 x:AX.Unit_Procedure="Inactive"
+series d:2018-10-12T02:01:25Z e:BR-001 x:AX.Unit_Procedure="1414-Proc1"
+series d:2018-10-12T02:04:15Z e:BR-001 x:AX.Unit_Procedure="1414-Proc2"
+series d:2018-10-12T02:07:52Z e:BR-001 x:AX.Unit_Procedure="1414-Proc3"
+series d:2018-10-12T02:09:05Z e:BR-001 x:AX.Unit_Procedure="Inactive"
+series d:2018-10-12T02:09:09Z e:BR-001 x:AX.Unit_Procedure="1415-Proc1"
+```
+
+```sql
+SELECT t1.entity, t1.metric, t1.datetime,
+  t1.value,
+  t2.value AS "Elapsed Time",
+  t3.text AS "Unit Batch Id",
+  t4.text AS "Unit Procedure"
+FROM atsd_series t1
+  JOIN "ax.Elapsed_Time" t2
+  JOIN "ax.Unit_BatchID" t3
+  JOIN "ax.Unit_Procedure" t4
+WHERE 
+  -- t1.metric IN ('ax.temperature', 'ax.pressure')
+  t1.metric IN metrics('br-001')
+  AND t1.datetime BETWEEN (
+    SELECT datetime FROM "AX.Unit_BatchID"
+    WHERE entity = 'br-001' AND (text = '1413' OR LAG(text)='1413')
+  )
+  AND t1.entity = 'br-001'
+WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, TRUE, START_TIME)
+ORDER BY t1.metric, t1.datetime
+```
+
+```ls
+| t1.entity  | t1.metric       | t1.datetime               | t1.value  | Elapsed Time  | Unit Batch Id  | Unit Procedure |
+|------------|-----------------|---------------------------|-----------|---------------|----------------|----------------|
+| br-001     | ax.pressure     | 2018-10-12T01:52:05.000Z  | 47.7      | 0.0           | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T01:53:05.000Z  | 47.7      | 60.0          | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T01:54:05.000Z  | 47.7      | 120.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T01:55:05.000Z  | 47.7      | 180.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T01:56:05.000Z  | 47.7      | 240.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T01:57:05.000Z  | 47.7      | 300.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T01:58:05.000Z  | 47.7      | 360.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T01:59:05.000Z  | 47.7      | 420.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.pressure     | 2018-10-12T02:00:05.000Z  | 47.7      | 480.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:52:05.000Z  | 90.4      | 0.0           | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:53:05.000Z  | 90.4      | 60.0          | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:54:05.000Z  | 90.4      | 120.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:55:05.000Z  | 90.4      | 180.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:56:05.000Z  | 90.4      | 240.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:57:05.000Z  | 90.4      | 300.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:58:05.000Z  | 90.4      | 360.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T01:59:05.000Z  | 93.8      | 420.0         | 1413           | 1413-Proc3     |
+| br-001     | ax.temperature  | 2018-10-12T02:00:05.000Z  | 97.7      | 480.0         | 1413           | 1413-Proc3     |
 ```

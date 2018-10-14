@@ -210,7 +210,7 @@ WHERE t1.metric IN metrics('br-1470')
   AND t1.metric NOT LIKE 'sv7%'
   AND t1.datetime BETWEEN '2016-10-04T02:00:00Z' AND '2016-10-04T02:10:00Z'
   AND t1.entity = 'br-1470'
-WITH INTERPOLATE(180 second, AUTO, OUTER, EXTEND, START_TIME)
+WITH INTERPOLATE(180 second, AUTO, OUTER, TRUE, START_TIME)
   ORDER BY t1.metric, t1.datetime
 ```
 
