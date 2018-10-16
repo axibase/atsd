@@ -354,7 +354,7 @@ FROM atsd_series t1
   JOIN "ax.Elapsed_Time" t2
   JOIN "ax.Unit_BatchID" t3
   JOIN "ax.Unit_Procedure" t4
-WHERE 
+WHERE
   -- t1.metric IN ('ax.temperature', 'ax.pressure')
   t1.metric IN metrics('br-001')
   AND t1.datetime BETWEEN (
