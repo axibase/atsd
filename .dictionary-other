@@ -186,6 +186,7 @@ serializer
 servlet
 setWebhook
 severities
+sidebarDepth
 significand
 snmp
 stateful
