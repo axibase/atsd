@@ -4,7 +4,7 @@ The following fields can be accessed using dot notation, for example `getEntity(
 
 |**Name**|**Description** |
 |:---|:---|
-| `created`                  | Entity creation timestamp in Unix time measured in milliseconds.|
+| `created`                  | Entity creation time as Unix time with millisecond precision.|
 | `enabled`                  | Enabled status. Incoming data for disabled entities is discarded.|
 | `id`                       | Internal entity identifier.|
 | `interpolate`              | `LINEAR` / `PREVIOUS`. Interpolation mode supported by the `INTERPOLATE` clause in SQL. |

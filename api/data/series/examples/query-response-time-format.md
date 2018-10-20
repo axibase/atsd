@@ -2,7 +2,7 @@
 
 ## Description
 
-Query detailed data for the specified time range and return data in Unix time milliseconds.
+Query detailed data for the specified time range and return data in Unix time with millisecond precision.
 
 ## Request
 

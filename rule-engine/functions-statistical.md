@@ -100,7 +100,7 @@ wtavg() double
 
 Calculates weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
 
-Time measured in Unix seconds.
+Times are rounded to Unix seconds.
 
 ## `count`
 

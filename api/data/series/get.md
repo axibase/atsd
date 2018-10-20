@@ -117,7 +117,7 @@ The response in CSV format contains the header row followed by data rows.
 
 The default header is `time,entity,metric,requested tags,value` and contains the following columns.
 
-* `time`: Unix time in milliseconds.
+* `time`: Value time as Unix time with millisecond precision.
 * `date`: Value time in [ISO format](../../../shared/date-format.md#supported-formats).
 * `entity`: Entity name.
 * `metric`: Metric name.

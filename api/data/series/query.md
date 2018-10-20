@@ -199,7 +199,7 @@ The response contains an array of series objects, each containing series identif
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `t` | integer | Unix time in milliseconds.|
+| `t` | integer | Sample Unix time with millisecond precision.|
 | `d` | string | Sample time in [ISO format](../../../shared/date-format.md#supported-formats). |
 | `v` | number | Numeric sample value at time `t`/`d`. <br>The field is set to `null` if the value is Not a Number: `{"d":"2017-09-14T17:00:03.000Z","v":null}`|
 | `x` | string | Text sample value at time `t`/`d`. |
