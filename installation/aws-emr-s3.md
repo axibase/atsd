@@ -47,21 +47,23 @@ curl -o atsd-cluster.tar.gz https://axibase.com/public/aws/atsd-cluster-1.4.x.ta
 
 Refer to AWS [EMR Release Matrix](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/images/emr-releases-5x.png) for more information.
 
-## Extract and Upload Co-processor File
+## Deploy Co-processor
 
 ```bash
 tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 ```
 
-The `atsd-hbase.$REVISION.jar` file contains ATSD HBase co-processors and filters.
+:::tip Co-processors
+The `atsd-hbase.$REVISION.jar` file contains ATSD-specific filters and tasks invoked by HBase Region Servers for optimized data processing.
+:::
 
-By uploading the `.jar` file to S3, Java classes in this file are automatically available to all region servers when they are started.
+Copy the file to HBase `lib` directory in S3 to make its classes automatically available to region servers at start time.
 
 ```bash
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
 ```
 
-Verify that the `.jar` file is stored in S3:
+Verify that the JAR file is stored in S3.
 
 ```bash
 aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
@@ -74,17 +76,15 @@ Total Objects: 1
   Total Size: 555.1 KiB
 ```
 
-Store the `atsd-hbase.$REVISION.jar` in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase. By default this directory resolves to `hbase.rootdir/lib`.
+Now the `atsd-hbase.$REVISION.jar` is stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase which resolves to `hbase.rootdir/lib` by default.
 
 :::tip Note
-When uploading the `.jar` file to `hbase.rootdir/lib` directory, the command removes the revision from the file name to avoid changing `coprocessor.jar` setting in ATSD when the `.jar` file is replaced.
+When uploading the JAR file to `hbase.rootdir/lib` directory, the command removes the revision from the file name to avoid changing `coprocessor.jar` setting in ATSD when the JAR file is replaced.
 :::
 
 ## Launch Cluster
 
 Copy the AWS CLI cluster launch command into an editor.
-
-Specify the correct EMR release label, for example `emr-5.3.1` for HBase `1.2.x` or `emr-5.17.1` for HBase `1.4.x`.
 
 ```bash
 export CLUSTER_ID=$(            \
@@ -108,6 +108,13 @@ aws emr create-cluster          \
 )
 ```
 
+### Choose EMR Version
+
+Replace `emr-5.3.1` release label with the correct version:
+
+* `emr-5.3.1` for HBase `1.2.x`
+* `emr-5.17.1` for HBase `1.4.x`
+
 ### Specify Network Parameters
 
 Replace `<key-name>` and `<subnet>` parameters.
@@ -122,20 +129,22 @@ The `<subnet>` parameter is required when launching particular instance types. T
 
 ![](./images/aws-cli-export.png "AWS CLI export")
 
-### Specify Initial Cluster Size
+### Set Cluster Size
 
-Adjust EC2 instance types and total instance count for the `RegionServers` group as needed. Review [AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
+Adjust EC2 instance types and total instance count for the `RegionServers` group as needed. Review [AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional settings.
 
-If needed, adjust the cluster size at runtime.
+:::tip Tip
+Cluster size can be adjusted **at runtime**, without restarting the service.
+:::
 
-The minimum number of nodes in each instance group is `1`, therefore the smallest cluster can have two EC2 instances:
+The minimum number of nodes in each instance group is `1`, therefore the smallest EMR cluster can have **two** EC2 instances:
 
 ```bash
 Name=Master,InstanceCount=1,InstanceGroupType=MASTER,InstanceType=m4.large        \
 Name=Region,InstanceCount=1,InstanceGroupType=CORE,InstanceType=m4.large          \
 ```
 
-### Enable Consistent S3 View
+### Enable Consistent View
 
 For long-running production clusters, enable [EMR Consistent View](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html), which identifies inconsistencies in S3 object listings and resolves them using retries with exponential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
 
@@ -145,9 +154,11 @@ Checks are enabled by adding the `Consistent` setting to the launch command.
 --emrfs Consistent=true,Args=[fs.s3.consistent.metadata.tableName=EmrFSMetadata]   \
 ```
 
-Note that the EMR service does not automatically remove the specified DynamoDB table when a cluster is stopped. Delete the DynamoDB table manually after the cluster is shutdown. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
+:::warning Avoid DynamoDB table name conflicts
+Note that the EMR service does not automatically remove the specified DynamoDB table when a cluster is stopped. Delete the table manually after the cluster is deleted. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
 
 ![](./images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
+:::
 
 ## Launch Cluster
 
@@ -188,13 +199,13 @@ hbase-rest start/running, process 7842
 hbase-master start/running, process 7987
 ```
 
-Verify HBase version (1.2.3+) and re-run the status command until the cluster becomes operational.
+Verify HBase version (`1.2.x` or `1.4.x`) and re-run the status command until the cluster becomes operational.
 
 ```bash
 echo "status" | hbase shell
 ```
 
-Wait until the cluster initializes and the `Master is initializing` error is no longer visible.
+Wait until the cluster initializes and the `Master is initializing` message is no longer visible.
 
 ```txt
 status
@@ -219,7 +230,7 @@ javac -version
 java version
 ```
 
-Change to a volume with at least 10 GB of available disk space.
+Change to a volume with at least **10 GB** of available disk space.
 
 ```bash
 df -h
@@ -229,11 +240,7 @@ df -h
 cd /mnt
 ```
 
-Download ATSD distribution files.
-
-```bash
-curl -o atsd-cluster.tar.gz https://axibase.com/public/atsd-cluster.tar.gz
-```
+Download ATSD distribution files as described [above](#download-distribution-files). Extract the files from archive.
 
 ```bash
 tar -xvf atsd-cluster.tar.gz
@@ -307,6 +314,56 @@ It can take ATSD several minutes to create tables after initializing the system.
 ```
 
 Log in to the ATSD web interface on `https://atsd_hostname:8443`. Modify the URL if the port is customized.
+
+## Upgrading
+
+### Replace Co-processor File
+
+Download the [archive](#download-distribution-files) containing the latest ATSD version to the machine with access to S3. Choose the correct download URL based on your Amazon EMR version.
+
+Copy the co-processor `jar` file as described in the [installation](#deploy-co-processor) procedure.
+
+Restart the [HBase cluster](https://aws.amazon.com/premiumsupport/knowledge-center/restart-service-emr/).
+
+### Replace ATSD Executable File
+
+Log in to the server where ATSD is installed.
+
+Download the latest ATSD distribution files as described [above](#download-distribution-files). Extract the files from archive.
+
+```bash
+tar -xvf atsd-cluster.tar.gz
+```
+
+Stop ATSD.
+
+```bash
+/path/to/atsd/atsd/bin/stop-atsd.sh
+```
+
+Execute `jps` to make sure that the ATSD java process is not running.
+
+```bash
+jps
+```
+
+Delete the old ATSD executable JAR file from the ATSD `bin` directory.
+
+```bash
+rm -v /path/to/atsd/atsd/bin/atsd*.jar
+```
+
+Copy the latest ATSD executable JAR file to the ATSD `bin` directory.
+
+```bash
+cp -v atsd/atsd/bin/atsd.$REVISION.jar /path/to/atsd/atsd/bin/
+```
+
+Start ATSD.
+
+```bash
+/path/to/atsd/atsd/bin/start-atsd.sh
+```
 
 ## Troubleshooting
 
