@@ -13,8 +13,8 @@ The result is an obfuscated string with `OBF:` prefix which can be specified in 
 Sample `server.properties` file with obfuscated passwords:
 
 ```txt
-https.keyStorePassword=OBF:1s3g1zlo1y0y1rpg1ri31vv11vu91rib1rp61y0s1zlu1s3m
-https.keyManagerPassword=OBF:1s3g1zlo1y0y1rpg1ri31vv11vu91rib1rp61y0s1zlu1s3m
+https.keyStorePassword=OBF:1s3g****
+https.keyManagerPassword=OBF:1s3g****
 ```
 
 ## Deobfuscation

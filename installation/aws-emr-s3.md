@@ -54,7 +54,7 @@ tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 ```
 
 :::tip Co-processors
-The `atsd-hbase.$REVISION.jar` file contains ATSD-specific filters and tasks invoked by HBase Region Servers for optimized data processing.
+The `atsd-hbase.$REVISION.jar` file contains ATSD filters and procedures invoked by ATSD on HBase Region Servers for optimized data processing.
 :::
 
 Copy the file to HBase `lib` directory in S3 to make its classes automatically available to region servers at start time.
@@ -70,7 +70,7 @@ aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
 ```
 
 ```txt
-2017-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
+2018-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
 
 Total Objects: 1
   Total Size: 555.1 KiB
@@ -246,7 +246,7 @@ Download ATSD distribution files as described [above](#download-distribution-fil
 tar -xvf atsd-cluster.tar.gz
 ```
 
-Set Path to Java 8 in the ATSD start script.
+Set path to Java 8 in the ATSD start script.
 
 ```bash
 JP=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"` \
@@ -254,18 +254,49 @@ JP=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"` \
   && echo $JP
 ```
 
-Set Path to ATSD coprocessor file.
+If installing ATSD on an HMaster node where ports are already in use, change the default ATSD port numbers to `9081`, `9082`, `9084`, `9088`, and `9443`, respectively.
+
+```bash
+sed -i 's/=.*80/=90/g; s/=.*8443/=9443/g' atsd/atsd/conf/server.properties \
+  && grep atsd/atsd/conf/server.properties -e "port"
+```
+
+Set path to ATSD coprocessor file.
 
 ```bash
 echo "coprocessors.jar=s3://atsd/hbase-root/lib/atsd-hbase.jar" >> atsd/atsd/conf/server.properties \
   && grep atsd/atsd/conf/server.properties -e "coprocessors.jar"
 ```
 
-If installing ATSD on an HMaster node where ports are potentially already in use, redefine default ATSD port numbers to `9081`, `9082`, `9084`, `9088`, and `9443`, respectively.
+Check `server.properties` file to verify that `coprocessors.jar` setting and port numbers are set correctly.
 
 ```bash
-sed -i 's/=.*80/=90/g; s/=.*8443/=9443/g' atsd/atsd/conf/server.properties \
-  && grep atsd/atsd/conf/server.properties -e "port"
+cat atsd/atsd/conf/server.properties
+```
+
+Sample `server.properties` file.
+
+```txt
+#
+# HBase settings
+#
+hbase.compression.type = gz
+hbase.table.prefix=atsd_
+messages.timeToLive=31536000
+
+#
+# Network Settings
+#
+input.port = 9081
+udp.input.port = 9082
+pickle.port = 9084
+http.port = 9088
+https.port=9443
+https.keyStorePassword=****
+https.keyManagerPassword=****
+https.trustStorePassword=
+
+coprocessors.jar=s3://atsd/hbase-root/lib/atsd-hbase.jar
 ```
 
 Check memory usage and increase ATSD JVM memory to 50% of total physical memory installed in the server, if available.
@@ -306,14 +337,14 @@ It can take ATSD several minutes to create tables after initializing the system.
 
 ```txt
 ...
-2017-08-31 22:10:37,890;INFO;main;org.springframework.web.servlet.DispatcherServlet;FrameworkServlet 'dispatcher': initialization completed in 3271 ms
+2018-08-31 22:10:37,890;INFO;main;org.springframework.web.servlet.DispatcherServlet;FrameworkServlet 'dispatcher': initialization completed in 3271 ms
 ...
-2017-08-31 22:10:37,927;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SelectChannelConnector@0.0.0.0:9088
-2017-08-31 22:10:37,947;INFO;main;org.eclipse.jetty.util.ssl.SslContextFactory;Enabled Protocols [TLSv1, TLSv1.1, TLSv1.2] of [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2]
-2017-08-31 22:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:9443
+2018-08-31 22:10:37,927;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SelectChannelConnector@0.0.0.0:9088
+2018-08-31 22:10:37,947;INFO;main;org.eclipse.jetty.util.ssl.SslContextFactory;Enabled Protocols [TLSv1, TLSv1.1, TLSv1.2] of [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2]
+2018-08-31 22:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:9443
 ```
 
-Log in to the ATSD web interface on `https://atsd_hostname:8443`. Modify the URL if the port is customized.
+Log in to the ATSD web interface at `https://atsd_hostname:8443`. Modify the URL if the port is customized.
 
 ## Upgrading
 
@@ -341,7 +372,7 @@ Stop ATSD.
 /path/to/atsd/atsd/bin/stop-atsd.sh
 ```
 
-Execute `jps` to make sure that the ATSD java process is not running.
+Run `jps` to ensure that the ATSD java process is not running.
 
 ```bash
 jps
@@ -417,16 +448,34 @@ Caused by: java.net.UnknownHostException: ip-10-204-21-10.example.com
 ### Missing ATSD Coprocessor File
 
 ```txt
-2017-09-01 13:44:30,386;INFO;main;com.axibase.tsd.hbase.SchemaBean;Set path to coprocessor: table 'atsd_d', coprocessor com.axibase.tsd.hbase.coprocessor.CompactEndpoint, path to jar s3://atsd/hbase-root/lib/atsd-hbase.jar
-2017-09-01 13:44:30,387;INFO;main;com.axibase.tsd.hbase.SchemaBean;Set path to coprocessor: table 'atsd_d', coprocessor com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint, path to jar s3://atsd/hbase-root/lib/atsd-hbase.jar
+com.axibase.tsd.hbase.SchemaBean;Set path to coprocessor: table 'atsd_d', coprocessor com.axibase.tsd.hbase.coprocessor.CompactEndpoint, path to jar s3://atsd/hbase-root/lib/atsd-hbase.jar
+com.axibase.tsd.hbase.SchemaBean;Set path to coprocessor: table 'atsd_d', coprocessor com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint, path to jar s3://atsd/hbase-root/lib/atsd-hbase.jar
 ...
-2017-09-01 13:44:30,474;WARN;main;org.springframework.context.support.ClassPathXmlApplicationContext;Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'series.batch.size' defined in URL [jar:file:/mnt/atsd/atsd/bin/atsd.17245.jar!/applicationContext-properties.xml]: Cannot resolve reference to bean 'seriesPollerHolder' while setting bean property 'updateAction'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'seriesPollerHolder': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverOptionDaoImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'schemaBean': Invocation of init method failed; nested exception is org.apache.hadoop.hbase.DoNotRetryIOException: org.apache.hadoop.hbase.DoNotRetryIOException: No such file or directory: 'hbase-root/lib/atsd-hbase.jar' Set hbase.table.sanity.checks to false at conf or table descriptor if you want to bypass sanity checks
+org.springframework.context.support.ClassPathXmlApplicationContext;Exception encountered during context initialization - cancelling refresh attempt:
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'series.batch.size' defined in URL
+ [jar:file:/mnt/atsd/atsd/bin/atsd.17245.jar!/applicationContext-properties.xml]:
+ Cannot resolve reference to bean 'seriesPollerHolder' while setting bean property 'updateAction';
+ nested exception is org.springframework.beans.factory.BeanCreationException:
+  Error creating bean with name 'seriesPollerHolder': Injection of resource dependencies failed;
+ nested exception is org.springframework.beans.factory.BeanCreationException:
+  Error creating bean with name 'serverOptionDaoImpl': Injection of resource dependencies failed;
+ nested exception is org.springframework.beans.factory.BeanCreationException:
+  Error creating bean with name 'schemaBean': Invocation of init method failed;
+ nested exception is org.apache.hadoop.hbase.DoNotRetryIOException: org.apache.hadoop.hbase.DoNotRetryIOException:
+  No such file or directory: 'hbase-root/lib/atsd-hbase.jar'
+  Set hbase.table.sanity.checks to false at conf or table descriptor if you want to bypass sanity checks
 ```
 
 Check the `coprocessors.jar` setting.
 
 ```bash
-grep atsd/atsd/conf/server.properties -e "coprocessors.jar"
+cat atsd/atsd/conf/server.properties
+```
+
+Sample setting:
+
+```txt
+coprocessors.jar=s3://atsd/hbase-root/lib/atsd-hbase.jar
 ```
 
 Check that the file is present in S3.
@@ -436,16 +485,79 @@ aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
 ```
 
 ```txt
-2017-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
+2018-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
 
 Total Objects: 1
   Total Size: 555.1 KiB
 ```
 
-If necessary, copy the file.
+If necessary, copy or replace the file.
 
 ```bash
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
 ```
 
-Restart the HBase cluster, both HMaster and Region Servers, restart ATSD.
+Restart the HBase cluster: both HMaster and Region Servers.
+
+Restart ATSD.
+
+### Incorrect Path to ATSD Coprocessor File
+
+```txt
+com.axibase.tsd.hbase.SchemaBean;Path to jar file for coprocessor com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint
+  of table atsd_d is modified to s3://atsd/hbase-root/lib/atsd-hbase.jar
+com.axibase.tsd.hbase.SchemaBean;Table description should be modified. Disabling table atsd_d
+  org.apache.hadoop.hbase.client.HBaseAdmin;Started disable of atsd_d
+```
+
+```txt
+com.axibase.tsd.hbase.SchemaBean;Error while updating schema, check hbase configuration
+  org.apache.hadoop.hbase.TableNotEnabledException: atsd_d
+```
+
+Check `coprocessors.jar` setting in the `server.properties` file.
+
+```bash
+cat atsd/atsd/conf/server.properties
+```
+
+Verify that the `coprocessors.jar` is correctly set.
+
+```txt
+coprocessors.jar=s3://atsd/hbase-root/lib/atsd-hbase.jar
+```
+
+Check that the file is present in S3.
+
+```bash
+aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
+```
+
+Sample `server.properties` file:
+
+```txt
+#
+# HBase settings
+#
+hbase.compression.type = gz
+hbase.table.prefix=atsd_
+messages.timeToLive=31536000
+
+#
+# Network Settings
+#
+input.port = 9081
+udp.input.port = 9082
+pickle.port = 9084
+http.port = 9088
+https.port=9443
+https.keyStorePassword=****
+https.keyManagerPassword=****
+https.trustStorePassword=
+
+coprocessors.jar=s3://atsd/hbase-root/lib/atsd-hbase.jar
+```
+
+Restart the HBase cluster: both HMaster and Region Servers.
+
+Restart ATSD.
