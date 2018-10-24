@@ -96,11 +96,11 @@ The `SELECT` expression contains one or multiple columns and expressions applied
 SELECT column1, UPPER(column2), 100 * column3
 ```
 
-### Query
+### Tables
 
-#### Virtual Table
+#### Virtual Tables
 
-The `FROM` query can reference virtual tables that correspond to metric names.
+The `FROM` query can reference virtual tables that correspond to **metric** names. The list of metrics is displayed on the **Metrics** tab in the main menu.
 
 A virtual table represents a subset of records for the given metric stored by the database in the shared physical table.
 
@@ -111,8 +111,6 @@ WHERE datetime >= '2017-06-15T00:00:00Z'
 ```
 
 In the example above, the `"mpstat.cpu_busy"` table contains records for the `mpstat.cpu_busy` metric.
-
-> Virtual tables are currently supported only for series. Access to properties, messages, and alerts is currently not available.
 
 #### `atsd_series` Table
 
@@ -135,6 +133,53 @@ WHERE metric = 'mpstat.cpu_busy'
 :::tip Note
 The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
 :::
+
+#### `atsd_entity` Table
+
+The `atsd_entity` is a metadata table which provides access to the list of entities and their [fields](../api/meta/metric/list.md#fields).
+
+```sql
+SELECT name, label, date_format(creationTime)
+  FROM atsd_entity
+WHERE creationTime > now - 1*week
+  ORDER BY creationTime DESC
+LIMIT 10
+```
+
+```ls
+| name       | label                    | date_format(creationTime) |
+|------------|--------------------------|---------------------------|
+| 412366f9d  | JENKINS_AxibaseAPI       | 2018-10-24T14:53:34Z      |
+| dfbbbf412  | atsd_package_validation  | 2018-10-24T14:46:09Z      |
+```
+
+The `atsd_entity` table can be used to retrieve both the list of entities as well as unique entity tags.
+
+```sql
+SELECT tags."site" AS Site
+  FROM atsd_entity
+WHERE tags."site" != ''
+  GROUP BY tags."site"
+```
+
+#### `atsd_metric` Table
+
+The `atsd_metric` is a metadata table which provides access to the list of metrics and their [fields](../api/meta/metric/list.md#fields).
+
+```sql
+SELECT name, label, date_format(creationTime)
+  FROM atsd_metric
+WHERE label IS NOT NULL
+  ORDER BY creationTime DESC
+LIMIT 10
+```
+
+```ls
+| name      | label            | date_format(creationTime) |
+|-----------|------------------|---------------------------|
+| cpu_busy  | CPU Busy, %      | 2018-07-05T15:18:00Z      |
+| membuf    | Memory Buffered  | 2018-02-12T12:36:54Z      |
+```
 
 ### WHERE Clause
 
