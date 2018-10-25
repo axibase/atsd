@@ -37,8 +37,8 @@ The `d` datetime field can be specified in [ISO format](../../shared/date-format
 
 |**Format**|**Description**|
 |:---|:---|
-|`yyyy-MM-dd'T'HH:mm:ss[.S]'Z'`|`Z` denotes UTC time zone.<br>`2016-06-09T16:15:04.005Z`|
-|`yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm`|Time zone offset.<br>`2016-06-09T12:15:04-04:00`|
+|`yyyy-MM-ddTHH:mm:ss[.S]Z`|`Z` denotes UTC time zone.<br>`2016-06-09T16:15:04.005Z`|
+|`yyyy-MM-ddTHH:mm:ss[.S]±hh[:]mm`|Time zone offset.<br>`2016-06-09T12:15:04-04:00`|
 
 ### ABNF Syntax
 

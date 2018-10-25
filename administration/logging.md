@@ -161,7 +161,7 @@ The `%date{ISO8601}` token formats the date in ISO8601 format in local time zone
 2018-06-28 14:11:55,841
 ```
 
-To customize the date pattern or the time zone, use the following pattern `%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX",UTC}`.
+To customize the date pattern or the time zone, use the following pattern `%d{"yyyy-MM-ddTHH:mm:ss.SSSXXX",UTC}`.
 
 ```txt
 2018-06-28T17:20:00.000Z

@@ -116,7 +116,7 @@ WHERE entity = 'nurswgvml007'
 If the server time zone is `Europe/Berlin`, for example, `current_day` in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
 
 ```sql
-SELECT datetime, date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS local_datetime, value
+SELECT datetime, date_format(time, 'yyyy-MM-ddTHH:mm:ssZZ') AS local_datetime, value
   FROM m1
 WHERE datetime >= current_day
 ```
@@ -148,10 +148,10 @@ The following example selects data between `0h:0m:0s` of the previous day and `0
 
 ```sql
 SELECT value, datetime,
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ss.SSSZZ', 'UTC') AS "iso_z_dt",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'UTC') AS "UTC_1_dt",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZ', 'UTC') AS "UTC_2_dt",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'US/Pacific') AS "PST_dt"
+  date_format(time, 'yyyy-MM-ddTHH:mm:ss.SSSZZ', 'UTC') AS "iso_z_dt",
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'UTC') AS "UTC_1_dt",
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssZ', 'UTC') AS "UTC_2_dt",
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'US/Pacific') AS "PST_dt"
 FROM "cpu_busy"
   WHERE entity = 'nurswgvml007'
 AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific') AND endtime(CURRENT_DAY, 'US/Pacific')

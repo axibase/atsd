@@ -6,12 +6,13 @@ ATSD supports [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)
 
 |**Format**|**Description**|
 |:---|:---|
-|`yyyy-MM-dd'T'HH:mm:ss[.S]'Z'`|`Z` denotes UTC time zone. |
-|`yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm`|Time zone offset.|
+|`yyyy-MM-ddTHH:mm:ss[.S]Z`|`Z` denotes UTC time zone. |
+|`yyyy-MM-ddTHH:mm:ss[.S]±hh[:]mm`|Time zone offset.|
 
 * `yyyy`: four digit year
 * `mm`: two digit month starting with `01` for January (`01`-`12`).
 * `dd`: two digit day of month starting with `01` (`01`-`31`).
+* `T`: literal value separating between date and time.
 * `HH`: two digit hour in day (`00`-`23`).
 * `mm`: two digit minute in hour (`00`-`59`).
 * `ss`: two digit second in minute (`00`-`59`).

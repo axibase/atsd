@@ -36,7 +36,7 @@ The `date_format` function can print out the `time` column as well as any numeri
 ```sql
 SELECT time,
   date_format(time),
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z''','UTC'),
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssZ','UTC'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-07:00'),
@@ -53,7 +53,7 @@ FROM "mpstat.cpu_busy"
 ```
 
 ```ls
-| time           | date_format(time)         | date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z''', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss')  | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-07:00')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PDT')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'US/Pacific')  | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'PST') |
+| time           | date_format(time)         | date_format(time, 'yyyy-MM-ddTHH:mm:ssZ', 'UTC')          | date_format(time, 'yyyy-MM-dd HH:mm:ss')  | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-07:00')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZ', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PST')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'PDT')  | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'US/Pacific')  | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'UTC')  | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'PST') |
 |----------------|---------------------------|-----------------------------------------------------------|-------------------------------------------|--------------------------------------------------|--------------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|------------------------------------------------------|------------------------------------------------------|------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------|
 | 1528761607000  | 2018-06-12T00:00:07.000Z  | 2018-06-12T00:00:07+0000                                  | 2018-06-12 00:00:07                       | 2018-06-11 17:00:07                              | 2018-06-11 17:00:07                                    | 2018-06-12 00:00:07 Z                               | 2018-06-11 17:00:07 -07:00                          | 2018-06-12 00:00:07 UTC                              | 2018-06-11 17:00:07 America/Los_Angeles              | 2018-06-11 17:00:07 America/Dawson                   | 2018-06-11 17:00:07 US/Pacific                              | 2018-06-12 00:00:07 UTC                            | 2018-06-11 17:00:07 PDT                           |
 ```
@@ -63,7 +63,7 @@ FROM "mpstat.cpu_busy"
 |------------------------------------------------------------|------------------------------------------|
 | time                                                       | 1528761607000                            |
 | date_format(time)                                          | 2018-06-12T00:00:07.000Z                 |
-| date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z''', 'UTC')   | 2018-06-12T00:00:07+0000                 |
+| date_format(time, 'yyyy-MM-ddTHH:mm:ssZ', 'UTC')           | 2018-06-12T00:00:07+0000                 |
 | date_format(time, 'yyyy-MM-dd HH:mm:ss')                   | 2018-06-12 00:00:07                      |
 | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST')            | 2018-06-11 17:00:07                      |
 | date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-07:00')      | 2018-06-11 17:00:07                      |

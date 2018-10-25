@@ -763,8 +763,6 @@ A literal value containing single quotes can be escaped by doubling the single q
 ```sql
 -- literal = a'b
 WHERE entity LIKE '%a''b%'
--- literal = yyyy-mm-dd'T'HH:mm:ss'Z'
-SELECT date_format(time, 'yyyy-mm-dd''T''HH:mm:ss''Z''')
 ```
 
 ### NULL
@@ -1070,7 +1068,7 @@ The `datetime` column accepts literal dates in one of the following formats:
 
 | **Format** | **Time Zone** | **Examples** |
 |---|---|---|
-| `yyyy-MM-dd'T'HH:mm:ss[.S](Z\|±hh[:]mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00`<br>`2017-12-10T15:30:00-0500` |
+| `yyyy-MM-ddTHH:mm:ss[.S](Z\|±hh[:]mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00`<br>`2017-12-10T15:30:00-0500` |
 | `yyyy-MM-dd HH:mm:ss[.S]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
 | `yyyy[-MM[-dd]]`| Database  | `2017`<br>`2017-12`<br>`2017-12-15` |
 
@@ -1144,8 +1142,8 @@ The calendar expressions are evaluated according to the database [time zone](../
 
 ```sql
 SELECT value, datetime,
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'UTC') AS "UTC_datetime",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'US/Pacific') AS "PST_datetime"
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'UTC') AS "UTC_datetime",
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'US/Pacific') AS "PST_datetime"
 FROM "mpstat.cpu_busy"
   WHERE entity = 'nurswgvml007'
 AND datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY, 'US/Pacific')
@@ -2482,7 +2480,7 @@ Examples:
 ```sql
 SELECT entity, datetime, metric.timeZone AS "Metric TZ", entity.timeZone AS "Entity TZ",
   date_format(time) AS "default",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS "ISO Format",
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssZZ') AS "ISO Format",
   date_format(time, 'yyyy-MM-dd HH:mm:ss') AS "Local Database",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PDT') AS "PDT",
@@ -2506,7 +2504,7 @@ FROM "mpstat.cpu_busy"
 | time                                                      | 1468411675000              |
 | date_format(time)                                         | 2017-07-13T12:07:55.000Z   |
 | date_format(time+60000)                                   | 2017-07-13T12:08:55.000Z   |
-| date_format(time,'yyyy-MM-dd''T''HH:mm:ss.SSS''Z'','UTC') | 2017-07-13T12:07:55.000Z   |
+| date_format(time,'yyyy-MM-ddTHH:mm:ss.SSSZ,'UTC')         | 2017-07-13T12:07:55.000Z   |
 | date_format(time,'yyyy-MM-dd HH:mm:ss')                   | 2017-07-13 12:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','PST')             | 2017-07-13 05:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')       | 2017-07-13 04:07:55        |
@@ -2587,7 +2585,7 @@ The `date_parse` function parses the date and time string into Unix time with mi
 date_parse(string datetime [, string time_format [, string time_zone]])
 ```
 
-* The default `time_format` is [ISO format](../shared/date-format.md): `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../shared/time-pattern.md).
+* The default `time_format` is [ISO format](../shared/date-format.md): `yyyy-MM-ddTHH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../shared/time-pattern.md).
 * The default `time_zone` is the database time zone.
 
 ```sql
@@ -2595,7 +2593,7 @@ date_parse(string datetime [, string time_format [, string time_zone]])
 date_parse('2017-03-31T12:36:03.283Z')
 
 /* Parse date using the ISO format, without milliseconds */
-date_parse('2017-03-31T12:36:03Z', 'yyyy-MM-dd''T''HH:mm:ssZZ')
+date_parse('2017-03-31T12:36:03Z', 'yyyy-MM-ddTHH:mm:ssZZ')
 
 /* Parse date using the database time zone. */
 date_parse('31.03.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS')
@@ -2620,7 +2618,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 
 The `DATEADD` function performs calendar arithmetic by adding or subtracting an interval to the specified time column and returns the modified value in the same datatype as the input column.
 
-* The interval is specified as a product of`datePart` and `dateCount`. For example, an interval of 3 days is set with arguments `DAY` and `3`.
+* The interval is specified as a product of `datePart` and `dateCount`. For example, an interval of 3 days is set with arguments `DAY` and `3`.
 * The `datePart` argument can be `YEAR`, `QUARTER`, `MONTH`, `WEEK`, `DAY`, `HOUR`, `MINUTE`, or `SECOND`.
 * To subtract an interval, set `dateCount` to a negative integer.
 * The column name or expression to which the interval is added is specified as the third argument. It can refer to a column name, such as  `datetime` or `time`, or an expression returning Unix time measured in milliseconds, or a date string in [ISO format](../shared/date-format.md).
@@ -2632,7 +2630,7 @@ DATEADD(string datePart, int dateCount, long time | string datetime [, string ti
 
 ```sql
 SELECT datetime, DATEADD(DAY, -6, datetime) AS "week_ago"
-  FROM cpu_busy
+  FROM "mpstat.cpu_busy"
 LIMIT 3
 ```
 
@@ -2654,8 +2652,8 @@ ENDTIME(calendarExpression, string timeZone)
 
 ```sql
 SELECT value, datetime,
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'UTC') AS "UTC_datetime",
-  date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'US/Pacific') AS "PST_datetime"
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'UTC') AS "UTC_datetime",
+  date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'US/Pacific') AS "PST_datetime"
 FROM "mpstat.cpu_busy"
   WHERE entity = 'nurswgvml007'
   -- select data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST time zone

@@ -4,8 +4,8 @@
 
 Supported [ISO date](../../../../../shared/date-format.md#supported-formats) formats:
 
-* `yyyy-MM-dd'T'HH:mm:ss[.S]'Z'`
-* `yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm`
+* `yyyy-MM-ddTHH:mm:ss[.S]Z`
+* `yyyy-MM-ddTHH:mm:ss[.S]±hh[:]mm`
 
 Milliseconds are optional.
 

@@ -127,7 +127,7 @@ Returns `0` if `date` is `null` or empty.
 
 Available time zones and offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
+The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-ddTHH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
 :::tip Warning
 The function raises an error if the time zone or offset from UTC is specified in the date string `date` and differs from the time zone or offset `zone`.
@@ -222,7 +222,7 @@ date_parse(string date [,string pattern [,string zone]]) DateTime
 
 Parses the input string `date` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) `pattern` and [time zone](../shared/timezone-list.md) `zone` or offset from UTC.
 
-The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-dd'T'HH:mm:ss[.S]Z` and the default time zone is the server time zone.
+The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-ddTHH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
 :::tip Warning
 The function raises an error if the time zone (or offset from UTC) is specified in `date` and differs from the time zone (offset) `zone`.

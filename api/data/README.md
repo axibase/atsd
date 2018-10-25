@@ -76,8 +76,8 @@ Supported date input patterns:
 
 | Pattern | Example |
 |---|---|
-| `yyyy-MM-dd'T'HH:mm:ss[.S]'Z'` | `Z` denotes UTC time zone.<br>`2018-05-15T00:00:00Z`<br>`2018-05-15T00:00:00.002Z` |
-| `yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm` | Offset from UTC time zone in hours and minutes.<br>`2018-05-15T00:00:00-05:00`<br>`2018-05-15T00:00:00-0500` |
+| `yyyy-MM-ddTHH:mm:ss[.S]Z` | `Z` denotes UTC time zone.<br>`2018-05-15T00:00:00Z`<br>`2018-05-15T00:00:00.002Z` |
+| `yyyy-MM-ddTHH:mm:ss[.S]±hh[:]mm` | Offset from UTC time zone in hours and minutes.<br>`2018-05-15T00:00:00-05:00`<br>`2018-05-15T00:00:00-0500` |
 
 Refer to [Date Format](../../shared/date-format.md) specification and examples.
 

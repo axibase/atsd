@@ -274,8 +274,8 @@ Supported `d` field [formats](../../shared/date-format.md):
 
 |**Format**|**Description**|
 |:---|:---|
-|`yyyy-MM-dd'T'HH:mm:ss[.S]'Z'`|`Z` denotes UTC time zone. |
-|`yyyy-MM-dd'T'HH:mm:ss[.S]±hh[:]mm`|Time zone offset.|
+|`yyyy-MM-ddTHH:mm:ss[.S]Z`|`Z` denotes UTC time zone. |
+|`yyyy-MM-ddTHH:mm:ss[.S]±hh[:]mm`|Time zone offset.|
 
 `d` field examples:
 

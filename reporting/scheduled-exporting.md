@@ -70,7 +70,7 @@ The administrator can create rules to notify if a job is not executed according 
 |  Entity Tags  |  List of entity tags included as columns in the exported file.  |
 |  Metric Tags  |  List of metric tags included as columns in the exported file.  |
 |  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed without any formatting.  |
-|  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or [ISO format](../shared/date-format.md) (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
+|  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or [ISO format](../shared/date-format.md) (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-ddTHH:mm:ssZ`  |
 
 ### Distribution
 

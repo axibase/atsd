@@ -147,7 +147,7 @@ The `date_parse` function parses the literal timestamp string into Unix time wit
 date_parse(string datetime[, string time_format[, string time_zone]])
 ```
 
-* The default `time_format` is [ISO format](../../shared/date-format.md): `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`.
+* The default `time_format` is [ISO format](../../shared/date-format.md): `yyyy-MM-ddTHH:mm:ss.SSSZZ`.
 * The default `time_zone` is the server time zone.
 
 ```java
@@ -155,7 +155,7 @@ date_parse(string datetime[, string time_format[, string time_zone]])
 date_parse("2017-03-31T12:36:03.283Z")
 
 /* Parse date using the ISO format, without milliseconds */
-date_parse("2017-03-31T12:36:03Z", "yyyy-MM-dd'T'HH:mm:ssZZ")
+date_parse("2017-03-31T12:36:03Z", "yyyy-MM-ddTHH:mm:ssZZ")
 
 /* Parse date using the server time zone. */
 date_parse("31.03.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS")

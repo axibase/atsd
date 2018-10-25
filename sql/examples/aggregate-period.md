@@ -59,7 +59,7 @@ The server time zone is "Europe/Berlin".
 * Default time zone. The day periods are aligned to 0:00 server time zone which is 2 hours ahead of UTC.
 
 ```sql
-SELECT datetime, date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS local_datetime,
+SELECT datetime, date_format(time, 'yyyy-MM-ddTHH:mm:ssZZ') AS local_datetime,
   MIN(value), MAX(value), COUNT(value), FIRST(value), LAST(value)
 FROM m1
   GROUP BY PERIOD(1 DAY)
@@ -75,7 +75,7 @@ FROM m1
 * User-defined time zone. The day periods are aligned to 0:00 UTC time.
 
 ```sql
-SELECT datetime, date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS local_datetime,
+SELECT datetime, date_format(time, 'yyyy-MM-ddTHH:mm:ssZZ') AS local_datetime,
   MIN(value), MAX(value), COUNT(value), FIRST(value), LAST(value)
 FROM m1
   GROUP BY PERIOD(1 DAY, 'UTC')
