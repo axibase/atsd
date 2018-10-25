@@ -2584,7 +2584,7 @@ GROUP BY PERIOD(1 hour)
 The `date_parse` function parses the date and time string into Unix time with millisecond precision.
 
 ```java
-date_parse(string datetime[, string time_format[, string time_zone]])
+date_parse(string datetime [, string time_format [, string time_zone]])
 ```
 
 * The default `time_format` is [ISO format](../shared/date-format.md): `yyyy-MM-dd'T'HH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../shared/time-pattern.md).
@@ -2614,6 +2614,34 @@ date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', '+01:00')
 
 /* Time zone (offset) specified in the timestamp must be the same as provided in the third argument. */
 date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ', 'Europe/Berlin')
+```
+
+#### DATEADD
+
+The `DATEADD` function performs calendar arithmetic by adding or subtracting an interval to the specified time column and returns the modified value in the same datatype as the input column.
+
+* The interval is specified as a product of`datePart` and `dateCount`. For example, an interval of 3 days is set with arguments `DAY` and `3`.
+* The `datePart` argument can be `YEAR`, `QUARTER`, `MONTH`, `WEEK`, `DAY`, `HOUR`, `MINUTE`, or `SECOND`.
+* To subtract an interval, set `dateCount` to a negative integer.
+* The column name or expression to which the interval is added is specified as the third argument. It can refer to a column name, such as  `datetime` or `time`, or an expression returning Unix time measured in milliseconds, or a date string in [ISO format](../shared/date-format.md).
+* An optional [time zone name](../shared/timezone-abnf.md) can be specified as the last argument to perform calendar calculations in a user-defined time zone. By the default, the database time zone is used.
+
+```sql
+DATEADD(string datePart, int dateCount, long time | string datetime [, string timeZone])
+```
+
+```sql
+SELECT datetime, DATEADD(DAY, -6, datetime) AS "week_ago"
+  FROM cpu_busy
+LIMIT 3
+```
+
+```ls
+| datetime              | week_ago             |
+|-----------------------|----------------------|
+| 2013-06-17T07:29:04Z  | 2013-06-11T07:29:04Z |
+| 2013-06-17T07:29:20Z  | 2013-06-11T07:29:20Z |
+| 2013-06-17T07:29:36Z  | 2013-06-11T07:29:36Z |
 ```
 
 #### `ENDTIME`
