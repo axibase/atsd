@@ -2472,7 +2472,7 @@ date_format(long milliseconds[, string time_format[, string time_zone]])
 
 If the `time_format` argument is not provided, [ISO format](../shared/date-format.md) is applied.
 
-The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
+The `time_zone` parameter accepts GMT offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
 
 In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database time zone is applied.
 
@@ -2504,8 +2504,8 @@ FROM "mpstat.cpu_busy"
 
 ```ls
 | entity       | datetime                 | Metric TZ  | Entity TZ   | default                  | ISO Format             | Local Database        | GMT Offset          | PDT                 | PDT t/z                   | AUTO: CST                 |
-|--------------|--------------------------|------------|-------------|--------------------------|----------------------|-----------------------|---------------------|---------------------|---------------------------|---------------------------|
-| nurswgvml006 | 2017-04-06T11:03:19.000Z | US/Eastern | US/Mountain | 2017-04-06T11:03:19.000Z | 2017-04-06T11:03:19Z | 2017-04-06 11:03:19   | 2017-04-06 03:03:19 | 2017-04-06 04:03:19 | 2017-04-06 04:03:19-07:00 | 2017-04-06 05:03:19-06:00 |
+|--------------|--------------------------|------------|-------------|--------------------------|------------------------|-----------------------|---------------------|---------------------|---------------------------|---------------------------|
+| nurswgvml006 | 2017-04-06T11:03:19.000Z | US/Eastern | US/Mountain | 2017-04-06T11:03:19.000Z | 2017-04-06T11:03:19Z   | 2017-04-06 11:03:19   | 2017-04-06 03:03:19 | 2017-04-06 04:03:19 | 2017-04-06 04:03:19-07:00 | 2017-04-06 05:03:19-06:00 |
 ```
 
 ```ls
@@ -2514,7 +2514,7 @@ FROM "mpstat.cpu_busy"
 | time                                                      | 1468411675000              |
 | date_format(time)                                         | 2017-07-13T12:07:55.000Z   |
 | date_format(time+60000)                                   | 2017-07-13T12:08:55.000Z   |
-| date_format(time,'yyyy-MM-ddTHH:mm:ss.SSSZ,'UTC')         | 2017-07-13T12:07:55.000Z   |
+| date_format(time,'yyyy-MM-ddTHH:mm:ss.SSSZ','UTC')        | 2017-07-13T12:07:55.000Z   |
 | date_format(time,'yyyy-MM-dd HH:mm:ss')                   | 2017-07-13 12:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','PST')             | 2017-07-13 05:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')       | 2017-07-13 04:07:55        |
@@ -2572,7 +2572,7 @@ SELECT datetime, date_format(time, 'eee') AS "day of week", avg(value), count(va
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime >= previous_week AND datetime < current_week
-  AND CAST(date_format(time, 'H') AS number) BETWEEN 8 AND 17
+  AND HOUR(time) BETWEEN 8 AND 17
   AND is_weekday(time, 'USA')
 GROUP BY PERIOD(1 hour)
 ```
@@ -3248,7 +3248,7 @@ ORDER BY datetime DESC
 
 #### ISNULL
 
-The `ISNULL` function returns `arg2` if `arg1` is `NULL` or `NaN` (Non-A-Number) in the case of numeric expressions.
+The `ISNULL` function returns `arg2` if `arg1` is `NULL` or `NaN` (Not-A-Number) in the case of numeric expressions.
 
 ```sql
 ISNULL(arg1, arg2)
@@ -3260,7 +3260,7 @@ The function accepts arguments with different data types, for example numbers an
 
 #### COALESCE
 
-The `COALESCE` function returns the first argument that is not `NULL` and not `NaN` (Non-A-Number) in case of numeric expressions.
+The `COALESCE` function returns the first argument that is not `NULL` and not `NaN` (Not-A-Number) in case of numeric expressions.
 
 ```sql
 COALESCE(arg1, arg2, ..., argN)
@@ -3329,7 +3329,7 @@ This clause overrides the conditional allocation of shared memory established wi
 
 The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 
-> The row count threshold is applied to the number of rows selected from the underlying table, and not the number rows returned to the client.
+> The row count threshold is applied to the number of rows selected from the underlying table, and not the number of rows returned to the client.
 
 **Example**. Temporary Table Grouping and In-Memory Ordering
 
