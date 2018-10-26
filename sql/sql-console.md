@@ -32,11 +32,11 @@ The table below provides examples of how `2018-05-15 16:30 (UTC)` is displayed b
 
 **Date Format** | **Time zone: UTC** | **Time zone: Local**
 ---|---|---
-`Default` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`
-`yyyy-MM-ddT HH:mm:ss.SSSZ` | `2018-05-15T16:30:00.000Z` | `2018-05-15T12:30:00.000Z`
-`yyyy-MM-ddT HH:mm:ssZ` | `2018-05-15T16:30:00Z` | `2018-05-15T12:30:00Z`
-`yyyy-MM-ddT HH:mm:ss.SSS` | `2018-05-15 16:30:00.000` | `2018-05-15 12:30:00.000`
-`yyyy-MM-ddT HH:mm:ss` | `2018-05-15 16:30:00` | `2018-05-15 12:30:00`
+`Default` | `2018-05-15T16:30:00.000Z` | `2018-05-15T11:30:00.000-05:00`
+`yyyy-MM-ddT HH:mm:ss.SSSZ` | `2018-05-15T16:30:00.000Z` | `2018-05-15T11:30:00.000-05:00`
+`yyyy-MM-ddT HH:mm:ssZ` | `2018-05-15T16:30:00Z` | `2018-05-15T11:30:00-05:00`
+`yyyy-MM-ddT HH:mm:ss.SSS` | `2018-05-15 16:30:00.000` | `2018-05-15 11:30:00.000`
+`yyyy-MM-ddT HH:mm:ss` | `2018-05-15 16:30:00` | `2018-05-15 11:30:00`
 `yyyy-MM-dd` | `2018-05-15` | `2018-05-15`
 `MMM-dd` | `May-15` | `May-15`
 `MMM-dd, eee` | `May-15, Tue` | `May-15, Tue`
