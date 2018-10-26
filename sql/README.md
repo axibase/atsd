@@ -123,6 +123,7 @@ WHERE metric = 'mpstat.cpu_busy'
   -- WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user')
   -- WHERE metric LIKE 'mpstat.cpu%'
   -- WHERE metric IN metrics('nurswgvml007')
+  -- WHERE metric IN metrics('entity-1', 'entity-2')
   AND entity = 'nurswgvml007'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
@@ -179,6 +180,15 @@ LIMIT 10
 |-----------|------------------|---------------------------|
 | cpu_busy  | CPU Busy, %      | 2018-07-05T15:18:00Z      |
 | membuf    | Memory Buffered  | 2018-02-12T12:36:54Z      |
+```
+
+The list of metrics can be filtered by name or fields, as well as using the [`metrics()`](#metrics) function to retrieve metrics collected by the specified entity or multiple entities.
+
+```sql
+SELECT name, label, date_format(lastInsertTime)
+  FROM atsd_metric
+WHERE name IN metrics('entity-1', 'entity-2')
+  ORDER BY name
 ```
 
 ### WHERE Clause
@@ -3122,10 +3132,10 @@ The `LEAD` function operates similarly to the `LAG` function.
 #### METRICS
 
 ```sql
-METRICS(string entityName)
+METRICS(string entityName [, string entityName2])
 ```
 
-The `METRICS` function is supported in queries to the `atsd_series` table and retrieves all metrics collected by the specified entity.
+The `METRICS` function is supported in queries to the `atsd_series`, `atsd_metric`, `atsd_entity` tables and retrieves all metrics collected by the specified entity or multiple entities.
 
 The list of metrics can be additionally filtered in the `WHERE` clause.
 
@@ -3133,6 +3143,7 @@ The list of metrics can be additionally filtered in the `WHERE` clause.
 SELECT metric, datetime, value
   FROM atsd_series
 WHERE metric IN metrics('nurswgvml007')
+  -- WHERE metric IN metrics('entity-1', 'entity-2')
   AND metric LIKE 'mpstat.cpu%'
   -- AND metric NOT LIKE 'df.%'
   AND datetime >= CURRENT_HOUR
