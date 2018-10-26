@@ -2514,7 +2514,7 @@ FROM "mpstat.cpu_busy"
 | time                                                      | 1468411675000              |
 | date_format(time)                                         | 2017-07-13T12:07:55.000Z   |
 | date_format(time+60000)                                   | 2017-07-13T12:08:55.000Z   |
-| date_format(time,'yyyy-MM-ddTHH:mm:ss.SSSZ','UTC')         | 2017-07-13T12:07:55.000Z   |
+| date_format(time,'yyyy-MM-ddTHH:mm:ss.SSSZ','UTC')        | 2017-07-13T12:07:55.000Z   |
 | date_format(time,'yyyy-MM-dd HH:mm:ss')                   | 2017-07-13 12:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','PST')             | 2017-07-13 05:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')       | 2017-07-13 04:07:55        |
