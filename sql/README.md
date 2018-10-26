@@ -2514,7 +2514,7 @@ FROM "mpstat.cpu_busy"
 | time                                                      | 1468411675000              |
 | date_format(time)                                         | 2017-07-13T12:07:55.000Z   |
 | date_format(time+60000)                                   | 2017-07-13T12:08:55.000Z   |
-| date_format(time,'yyyy-MM-ddTHH:mm:ss.SSSZ,'UTC')         | 2017-07-13T12:07:55.000Z   |
+| date_format(time,'yyyy-MM-ddTHH:mm:ss.SSSZ','UTC')         | 2017-07-13T12:07:55.000Z   |
 | date_format(time,'yyyy-MM-dd HH:mm:ss')                   | 2017-07-13 12:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','PST')             | 2017-07-13 05:07:55        |
 | date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')       | 2017-07-13 04:07:55        |
@@ -2572,7 +2572,7 @@ SELECT datetime, date_format(time, 'eee') AS "day of week", avg(value), count(va
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime >= previous_week AND datetime < current_week
-  AND CAST(date_format(time, 'H') AS number) BETWEEN 8 AND 17
+  AND HOUR(time) BETWEEN 8 AND 17
   AND is_weekday(time, 'USA')
 GROUP BY PERIOD(1 hour)
 ```
@@ -3329,7 +3329,7 @@ This clause overrides the conditional allocation of shared memory established wi
 
 The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 
-> The row count threshold is applied to the number of rows selected from the underlying table, and not the number rows returned to the client.
+> The row count threshold is applied to the number of rows selected from the underlying table, and not the number of rows returned to the client.
 
 **Example**. Temporary Table Grouping and In-Memory Ordering
 
