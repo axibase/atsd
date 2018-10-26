@@ -3248,7 +3248,7 @@ ORDER BY datetime DESC
 
 #### ISNULL
 
-The `ISNULL` function returns `arg2` if `arg1` is `NULL` or `NaN` (Non-A-Number) in the case of numeric expressions.
+The `ISNULL` function returns `arg2` if `arg1` is `NULL` or `NaN` (Not-A-Number) in the case of numeric expressions.
 
 ```sql
 ISNULL(arg1, arg2)
@@ -3260,7 +3260,7 @@ The function accepts arguments with different data types, for example numbers an
 
 #### COALESCE
 
-The `COALESCE` function returns the first argument that is not `NULL` and not `NaN` (Non-A-Number) in case of numeric expressions.
+The `COALESCE` function returns the first argument that is not `NULL` and not `NaN` (Not-A-Number) in case of numeric expressions.
 
 ```sql
 COALESCE(arg1, arg2, ..., argN)
