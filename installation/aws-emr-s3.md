@@ -340,7 +340,11 @@ It can take ATSD several minutes to create tables after initializing the system.
 2018-08-31 22:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:9443
 ```
 
-Log in to the ATSD web interface at `https://atsd_hostname:8443`. Modify the URL if the port is customized.
+Log in to the ATSD web interface at `https://atsd_hostname:8443`. Modify the URL if the HTTPS port is customized.
+
+Open the **Settings > System Information** page and verify that the co-processor file is compatible with the ATSD version.
+
+![](./images/coprocessor-check.png)
 
 ## Upgrading
 
@@ -391,6 +395,12 @@ Start ATSD.
 ```bash
 /path/to/atsd/atsd/bin/start-atsd.sh
 ```
+
+Log in to the ATSD web interface.
+
+Open the **Settings > System Information** page and verify that the co-processor file is compatible with the ATSD version.
+
+![](./images/coprocessor-check.png)
 
 ## Troubleshooting
 
