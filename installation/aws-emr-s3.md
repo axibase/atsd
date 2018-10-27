@@ -63,7 +63,9 @@ Copy the file to HBase `lib` directory in S3 to make its classes automatically a
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
 ```
 
-Verify that the JAR file is stored in S3.
+> The `cp` command removes the revision from the `atsd-hbase.$REVISION.jar` file to avoid changing `coprocessor.jar` setting in the `server.properties` file each time when the JAR file is replaced.
+
+Verify that the copied file is stored as `atsd-hbase.jar` in the `hbase-root/lib` directory in S3.
 
 ```bash
 aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
@@ -76,11 +78,7 @@ Total Objects: 1
   Total Size: 555.1 KiB
 ```
 
-Now the `atsd-hbase.$REVISION.jar` is stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase which resolves to `hbase.rootdir/lib` by default.
-
-:::tip Note
-When uploading the JAR file to `hbase.rootdir/lib` directory, the command removes the revision from the file name to avoid changing `coprocessor.jar` setting in ATSD when the JAR file is replaced.
-:::
+Now the `atsd-hbase.jar` is stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase which resolves to `hbase.rootdir/lib` by default.
 
 ## Launch Cluster
 
