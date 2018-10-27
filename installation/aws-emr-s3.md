@@ -13,8 +13,6 @@ The document describes how to deploy ATSD on HBase with [AWS S3](https://docs.aw
 * Increased resilience based on AWS S3 reliability and durability.
 * Read-only cluster replicas.
 
-The minimum cluster size supported by this installation option is **two** EC2 instances, one of which is shared by the HBase Master and ATSD.
-
 ## Create S3 Bucket
 
 Create the S3 bucket prior to installation. The bucket, named `atsd` in the example below, stores the `hbase-root` directory and contains both metadata and HFiles.
@@ -25,7 +23,7 @@ aws s3 mb s3://atsd
 
 If necessary, the `hbase-root` directory is created by HBase when the cluster is started for the first time. The directory is **not deleted** when the cluster is stopped.
 
-Check the contents of the bucket prior to launching the cluster.
+Check the contents of the S3 bucket prior to launching the cluster.
 
 ```bash
 aws s3 ls --summarize --human-readable --recursive s3://atsd
@@ -49,21 +47,23 @@ Refer to AWS [EMR Release Matrix](https://docs.aws.amazon.com/emr/latest/Release
 
 ## Deploy Co-processor
 
+Extract `atsd-hbase.$REVISION.jar` from the archive.
+
 ```bash
 tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 ```
 
 :::tip Co-processors
-The `atsd-hbase.$REVISION.jar` file contains ATSD filters and procedures invoked by ATSD on HBase Region Servers for optimized data processing.
+The `atsd-hbase.$REVISION.jar` file contains ATSD filters and procedures invoked by ATSD on each node in the HBase cluster for optimized data processing.
 :::
 
-Copy the file to HBase `lib` directory in S3 to make its classes automatically available to region servers at start time.
+To make ATSD packages loadable by region servers at start time, copy the JAR file to the directory specified in the HBase configuration variable `hbase.dynamic.jars.dir` which is set to `hbase.rootdir/lib` by default. If the HBase root directory is `s3://atsd/hbase-root`, the target directory is `s3://atsd/hbase-root/lib`.
 
 ```bash
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
 ```
 
-> The `cp` command removes the revision from the `atsd-hbase.$REVISION.jar` file to avoid changing `coprocessor.jar` setting in the `server.properties` file each time when the JAR file is replaced.
+> The `cp` command removes the revision from the `atsd-hbase.$REVISION.jar` file to avoid changing `coprocessor.jar` setting in the `server.properties` file each time when the JAR file is upgraded.
 
 Verify that the copied file is stored as `atsd-hbase.jar` in the `hbase-root/lib` directory in S3.
 
@@ -77,8 +77,6 @@ aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
 Total Objects: 1
   Total Size: 555.1 KiB
 ```
-
-Now the `atsd-hbase.jar` is stored in a directory identified by the `hbase.dynamic.jars.dir` setting in HBase which resolves to `hbase.rootdir/lib` by default.
 
 ## Launch Cluster
 
@@ -153,7 +151,7 @@ Checks are enabled by adding the `Consistent` setting to the launch command.
 ```
 
 :::warning Avoid DynamoDB table name conflicts
-Note that the EMR service does not automatically remove the specified DynamoDB table when a cluster is stopped. Delete the table manually after the cluster is deleted. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collisions (default table name is `EmrFSMetadata`.
+The EMR service does not automatically remove the specified DynamoDB table when a cluster is stopped. Delete the table manually after the cluster is deleted. When running multiple clusters concurrently, ensure that each cluster uses a different DynamoDB table name to avoid collision. The default table name is `EmrFSMetadata`.
 
 ![](./images/dynamo-metadata-emr.png "Dynamo EMR Metadata")
 :::
