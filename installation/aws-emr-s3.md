@@ -57,7 +57,7 @@ tar -xvf atsd-cluster.tar.gz atsd/atsd-hbase*jar
 The `atsd-hbase.$REVISION.jar` file contains ATSD filters and procedures invoked by ATSD on each node in the HBase cluster for optimized data processing.
 :::
 
-To make ATSD packages loadable by region servers at start time, copy the JAR file to the directory specified in the HBase configuration variable `hbase.dynamic.jars.dir` which is set to `hbase.rootdir/lib` by default. If the HBase root directory is `s3://atsd/hbase-root`, the target directory is `s3://atsd/hbase-root/lib`.
+To make ATSD packages loadable by region servers at start time, copy the JAR file to the directory specified in the HBase configuration variable `hbase.dynamic.jars.dir` which is set to `hbase.rootdir/lib` by default. If the HBase `root` directory is `s3://atsd/hbase-root`, the target directory is `s3://atsd/hbase-root/lib`.
 
 ```bash
 aws s3 cp atsd/atsd-hbase.*.jar s3://atsd/hbase-root/lib/atsd-hbase.jar
