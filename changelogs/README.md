@@ -2,14 +2,15 @@
 
 Follow development in the **Change Tracker Portal** and review details in the **Change Logs** below.
 
-![](./images/change-tracker-portal-september-1.png)
+![](./images/change-tracker-portal-october.png)
 
-[![](./images/button-1.png)](https://apps.axibase.com/chartlab/faa43621)
+[![](./images/button-1.png)](https://apps.axibase.com/chartlab/5dd8b00e#fullscreen)
 
 ## Year 2018
 
 | **Month** | **Change Log** | **Features** | **Bugs**
 |---|---|---:|---:|
+| October | [View](2018_oct/README.md) | `14` | `29` |
 | September | [View](2018_sep/README.md) | `27` | `35` |
 | August | [View](2018_aug/README.md) | `47` | `47` |
 | July | [View](2018_jul/README.md) | `30` | `57` |
