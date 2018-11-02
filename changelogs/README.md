@@ -47,4 +47,4 @@ Follow development in the **Change Tracker Portal** and review details in the **
 | **Month** | **Features** | **Bugs** | &nbsp;
 |---|---|---:|---:|
 | December | `41` | `45` | [↗](2016_dec/README.md)
-| November| `20` | `15` | [↗](2016_nov/README.md) 
+| November| `20` | `15` | [↗](2016_nov/README.md)
