@@ -8,43 +8,43 @@ Follow development in the **Change Tracker Portal** and review details in the **
 
 ## Year 2018
 
-| **Month** | **Change Log** | **Features** | **Bugs**
+| **Month** | **Features** | **Bugs** | &nbsp;
 |---|---|---:|---:|
-| October | [View](2018_oct/README.md) | `14` | `29` |
-| September | [View](2018_sep/README.md) | `27` | `35` |
-| August | [View](2018_aug/README.md) | `47` | `47` |
-| July | [View](2018_jul/README.md) | `30` | `57` |
-| June | [View](2018_jun/README.md) | `23` | `23` |
-| May | [View](2018_may/README.md) | `15` | `24` |
-| April | [View](2018_apr/README.md) | `14` | `33` |
-| March | [View](2018_mar/README.md) | `17` | `46` |
-| February | [View](2018_feb/README.md) | `28` | `47` |
-| January | [View](2018_jan/README.md) | `32` | `38` |
+| October  | `14` | `29` | [↗](2018_oct/README.md)
+| September  | `27` | `35` | [↗](2018_sep/README.md)
+| August | `47` | `47` | [↗](2018_aug/README.md)
+| July | `30` | `57` | [↗](2018_jul/README.md)
+| June | `23` | `23` | [↗](2018_jun/README.md)
+| May | `15` | `24` | [↗](2018_may/README.md)
+| April | `14` | `33` | [↗](2018_apr/README.md)
+| March | `17` | `46` | [↗](2018_mar/README.md)
+| February | `28` | `47` | [↗](2018_feb/README.md)
+| January | `32` | `38` | [↗](2018_jan/README.md)
 
 ---
 
 ## Year 2017
 
-| **Month** | **Change Log** | **Features** | **Bugs**
+| **Month** | **Features** | **Bugs** | &nbsp;
 |---|---|---:|---:|
-| December | [View](2017_dec/README.md) | `35` | `35` |
-| November | [View](2017_nov/README.md) | `27` | `18` |
-| October | [View](2017_oct/README.md) | `31` | `38` |
-| September | [View](2017_sep/README.md) | `20` | `33` |
-| August | [View](2017_aug/README.md) | `29` | `42` |
-| July | [View](2017_jul/README.md) | `17` | `14` |
-| June | [View](2017_jun/README.md) | `16` | `28` |
-| May | [View](2017_may/README.md) | `11` | `36` |
-| April | [View](2017_apr/README.md) | `24` | `39` |
-| March | [View](2017_mar/README.md) | `29` | `44` |
-| February | [View](2017_feb/README.md) | `18` | `49` |
-| January | [View](2017_jan/README.md) | `26` | `42` |
+| December | `35` | `35` | [↗](2017_dec/README.md)
+| November | `27` | `18` | [↗](2017_nov/README.md)
+| October | `31` | `38` | [↗](2017_oct/README.md)
+| September | `20` | `33` | [↗](2017_sep/README.md)
+| August | `29` | `42` | [↗](2017_aug/README.md)
+| July | `17` | `14` | [↗](2017_jul/README.md)
+| June | `16` | `28` | [↗](2017_jun/README.md)
+| May | `11` | `36` | [↗](2017_may/README.md)
+| April | `24` | `39` | [↗](2017_apr/README.md)
+| March | `29` | `44` | [↗](2017_mar/README.md)
+| February | `18` | `49` | [↗](2017_feb/README.md)
+| January | `26` | `42` | [↗](2017_jan/README.md)
 
 ---
 
 ## Year 2016
 
-| **Month** | **Change Log** | **Features** | **Bugs**
+| **Month** | **Features** | **Bugs** | &nbsp;
 |---|---|---:|---:|
-| December | [View](2016_dec/README.md) | `41` | `45` |
-| November | [View](2016_nov/README.md) | `20` | `15` |
+| December | `41` | `45` | [↗](2016_dec/README.md)
+| November| `20` | `15` | [↗](2016_nov/README.md) 
