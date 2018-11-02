@@ -60,4 +60,4 @@
 5739 | json | Bug | [JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html): `NullPointerException` for file processing in **Run** mode. |
 5738 | json | Bug | [JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html): File is deleted during test without selecting **Delete Files on Upload**. |
 5718 | pi | Bug | [PI Job](https://axibase.com/docs/axibase-collector/jobs/pi.html): JSP test error. |
-5129 | http | Feature | [HTTP Job](https://axibase.com/docs/axibase-collector/jobs/http.hmtl#http): Collect SSL certificate expiration days and SSL certificate status. |
+5129 | http | Feature | [HTTP Job](https://axibase.com/docs/axibase-collector/jobs/http.html): Collect SSL certificate expiration days and SSL certificate status. |
