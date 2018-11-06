@@ -4,26 +4,23 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-5752 | core | Bug | [Messages](../../api/data/README.md#messages): Message with `null` tag value promoted to rule engine window. |
-5751 | sql | Bug | SQL: [Query statistics](../../sql/query-statistics.md) shows inconsistent duration. |
+5752 | core | Bug | [Messages](../../api/data/README.md#messages): Messages with `null` tag value passed to rule engine. |
 5749 | sql | Bug | SQL: [`METRICS`](../../sql/README.md#metrics) function only reads first argument. |
 5746 | UI | Bug | [SQL Console](../../sql/sql-console.md): Column types inferred incorrectly for functions which retain argument type. |
 5745 | sql | Bug | SQL: [`LEAD`](../../sql/README.md#lead) and [`LAG`](../../sql/README.md#lag) functions return incorrect column data type for `datetime` column. |
-5744 | core | Bug | HBase error after ATSD upgrade. |
-5737 | sql | Bug | SQL: Return correct data types for [metadata tables](../../sql/scheduled-sql-metadata.md). |
-5735 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc/blob/master/README.md): Support for `java_long` data type. |
-5733 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc/blob/master/README.md): Update default columns for metatables. |
+5737 | sql | Bug | SQL: Return correct data types for [metadata tables](../../sql/README.md#tables): `atsd_metric` and `atsd_entity`. |
+5735 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc/blob/master/README.md): Unsupported `java_long` data type in Spotfire. |
+5733 | jdbc | Feature | [JDBC Driver](https://github.com/axibase/atsd-jdbc/blob/master/README.md): Update default columns for [metadata tables](../../sql/README.md#tables): `atsd_metric` and `atsd_entity`. |
 5732 | core | Bug | [ATSD cluster](../../installation/hbase-cluster.md) start failure. |
 5731 | core | Bug | [License](../../licensing.md) check ignores node count. |
 5729 | sql | Feature | SQL: Add support for [`creationTime`](../../sql/README.md#entity-columns) column. |
-5728 | jdbc | Feature | JDBC: Add support for [`atsd_entity`](../../sql/README.md#atsd_entity-table) and [`atsd_metric`](../../sql/README.md#atsd_metric-table) tables in JDBC driver. |
+5728 | jdbc | Feature | JDBC: Add support for [`atsd_entity`](../../sql/README.md#atsd_entity-table) and [`atsd_metric`](../../sql/README.md#atsd_metric-table) metadata tables in JDBC driver. |
 5727 | sql | Bug | [SQL](../../sql/): Incorrect arithmetic operator precedence. |
-5726 | sql | Feature | [SQL](../../sql/): Select data from metatables. |
+5726 | sql | Feature | [SQL](../../sql/): implement [metadata tables](../../sql/README.md#tables): `atsd_metric` and `atsd_entity`. |
 5725 | installation | Bug | [Docker Installation](../../installation/images.md): `LicenseServiceImpl` error. |
 5723 | sql | Bug | [SQL](../../sql/): `NullPointerException` on Compare. |
-5722 | client | Bug | [Python client](https://github.com/axibase/atsd-api-python/blob/master/README.md) ETL example. |
 5721 | client | Feature | Python client: Add [`export_portals_for_docker_hosts`](https://github.com/axibase/atsd-api-python/blob/master/README.md#reports) method. |
-5720 | api-rest | Feature | [Data API](../../api/data/): Implement method to export portal as PNG image. |
+5720 | api-rest | Feature | [Data API](../../api/meta/misc/portal.md): Implement method to export portal as PNG image. |
 5719 | core | Bug | Metric List: Slow response time. |
 5717 | rule engine | Bug | [Rule Engine](../../rule-engine/): Rule threshold notifications are not properly exported. |
 5716 | rule editor | Bug | [Rule Engine](../../rule-engine/): Long URL after rule clone. |
@@ -55,7 +52,6 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 5743 | core | Feature | [Storage Driver](https://axibase.com/docs/axibase-collector/atsd-server-connection.html): Enforce ATSD compatibility. |
-5742 | core | Feature | Check [ATSD](../../README.md) version for compatibility with [Collector](https://axibase.com/docs/axibase-collector/). |
 5741 | json | Bug | [JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html): **Delete on Upload** option fails. |
 5739 | json | Bug | [JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html): `NullPointerException` for file processing in **Run** mode. |
 5738 | json | Bug | [JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html): File is deleted during test without selecting **Delete Files on Upload**. |
