@@ -189,11 +189,11 @@ const networkApiMenu = [
             ['message.md', 'message'],
             ['csv.md', 'csv'],
             ['entity.md', 'entity'],
-            ['metric.md', 'metric'],    
+            ['metric.md', 'metric'],
             ['ping.md', 'ping'],
             ['time.md', 'time'],
             ['version.md', 'version'],
-            ['exit.md', 'exit'],            
+            ['exit.md', 'exit'],
             ['nmon.md', 'nmon'],
             ['picomp2.md', 'picomp2'],
             ['tcollector.md', 'tcollector'],
@@ -266,7 +266,7 @@ const administrationMenu = [
     {
         title: "SSL", children: [
             ['ssl-ca-signed.md', 'CA-signed Certificate'],
-            ['ssl-lets-encrypt.md', 'Let\'s Encrypt'],            
+            ['ssl-lets-encrypt.md', 'Let\'s Encrypt'],
             ['ssl-self-signed.md', 'Self-signed Certificate'],
         ]
     },
@@ -281,17 +281,17 @@ const administrationMenu = [
             ['timezone.md', 'Time Zone'],
             ['memory-allocation.md', 'Memory Allocation'],
             ['swap-space.md', 'Swap Space'],
-            ['networking-settings.md', 'Network Settings'], 
+            ['networking-settings.md', 'Network Settings'],
             ['change-base-directory.md', 'Custom Base Directory'],
             ['change-data-directory.md', 'Custom Data Directory'],
             ['change-owner.md', 'Directory Owner'],
-            ['command-replication.md', 'Command Replication'],  
+            ['command-replication.md', 'Command Replication'],
             ['hbase-replication.md', 'HBase Replication'],
         ]
     },
     {
         title: "Data Management", children: [
-            ['data_retention.md', 'Data Retention'], 
+            ['data_retention.md', 'Data Retention'],
             ['metric-persistence-filter.md', 'Persistence Filters'],
             ['compaction.md', 'Compaction'],
             ['compaction-test.md', 'Compaction Test'],
@@ -359,7 +359,11 @@ module.exports = {
     themeConfig: {
         nav: topNavMenu,
         logo: '/images/axibase_logo_site.png',
-
+        algolia: {
+          appId: 'BH4D9OD16A',
+          apiKey: 'd46fb51356528c83c9c1c427e6d7206d',
+          indexName: 'axibase'
+        },
         sidebarDepth: 1,
         sidebar: {
             '/administration/compaction/': [],

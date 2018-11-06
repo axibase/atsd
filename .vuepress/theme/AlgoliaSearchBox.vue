@@ -13,8 +13,8 @@ export default {
   methods: {
     initialize () {
       Promise.all([
-        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
-        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
+        import(/* webpackChunkName: "docsearch" */ 'docsearch.js@2/dist/cdn/docsearch.min.js'),
+        import(/* webpackChunkName: "docsearch" */ 'docsearch.js@2/dist/cdn/docsearch.min.css')
       ]).then(([docsearch]) => {
         docsearch = docsearch.default
         docsearch(Object.assign(this.options, {
