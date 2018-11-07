@@ -47,4 +47,7 @@
         ,{ "pattern": "https://fas.org/.*"}
         ,{ "pattern": "https://data.worldbank.org/country/saudi-arabia"}
         ,{ "pattern": "https://www.washingtonpost.com/.*"}
+        ,{ "pattern": "https://www.niddk.nih.gov/health-information/health-statistics/overweight-obesity"}
+        ,{ "pattern": "https://www.senate.gov/*"}
+        ,{ "pattern": "https://www.finance.senate.gov/*"}
     ]}
