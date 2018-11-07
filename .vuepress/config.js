@@ -2,7 +2,7 @@ const githubSettings = {
     docsRepo: 'axibase/atsd',
     editLinks: true,
     editLinkText: 'Have a suggestion?'
-}
+};
 
 const portalsMenu = [
     ['', 'Overview'],
@@ -10,7 +10,7 @@ const portalsMenu = [
     'portal-settings.md',
     'portals-overview.md',
     'selecting-series.md',
-]
+];
 
 const topNavMenu = [
     { text: 'Install', link: '/installation/', highlighted: true },
@@ -20,7 +20,7 @@ const topNavMenu = [
     { text: 'Rule Engine', link: '/rule-engine/' },
     { text: 'Configure', link: '/administration/' },
     { text: 'Integrate', link: '/integration/' }
-]
+];
 
 const installationMenu = [
     ['', 'Overview'],
@@ -201,7 +201,7 @@ const networkApiMenu = [
             ['statsd.md', 'StatsD'],
         ]
     }
-]
+];
 
 const ruleEngineMenu = [
     ['', 'Overview'],
@@ -360,9 +360,12 @@ module.exports = {
         nav: topNavMenu,
         logo: '/images/axibase_logo_site.png',
         algolia: {
-          appId: 'BH4D9OD16A',
-          apiKey: 'd46fb51356528c83c9c1c427e6d7206d',
-          indexName: 'axibase'
+            appId: 'BH4D9OD16A',
+            apiKey: 'd46fb51356528c83c9c1c427e6d7206d',
+            indexName: 'axibase',
+            algoliaOptions: {
+                facetFilters: ["tags:atsd"]
+            }
         },
         sidebarDepth: 1,
         sidebar: {
