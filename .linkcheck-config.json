@@ -1,7 +1,7 @@
 {
     "ignorePatterns": [
          { "pattern": "https?://.*\\.apache.org" }
-        ,{ "pattern": "https://catalog.data.gov/dataset/.*"}
+        ,{ "pattern": "https://catalog.data.gov/*"}
         ,{ "pattern": "https://himawari8.nict.go.jp" }
         ,{ "pattern": "https://www.maersk.com/en/hardware/triple-e"}
         ,{ "pattern": "https://aqicn.org/map/china"}
@@ -50,4 +50,5 @@
         ,{ "pattern": "https://www.niddk.nih.gov/health-information/health-statistics/overweight-obesity"}
         ,{ "pattern": "https://www.senate.gov/*"}
         ,{ "pattern": "https://www.finance.senate.gov/*"}
+        ,{ "pattern": "http://www.sao.ru/"}
     ]}
