@@ -1,6 +1,7 @@
 # collectd
 
 collectd is a system statistics daemon that collects operating system performance metrics.
+
 collectd can be configured to stream data into ATSD via TCP or UDP protocol using the `write_atsd` plugin.
 
 See the `write_atsd` plugin [documentation](https://github.com/axibase/atsd-collectd-plugin/blob/master/docs/README.write_atsd.md) for details.
@@ -73,7 +74,11 @@ setsebool -P collectd_tcp_network_connect on
 
 ## Configuration
 
-Edit `/ect/collect.conf` by replacing `atsd_hostname` with ATSD IP address or host name, specify protocol and port. Example
+Edit the `/etc/collect.conf` file which contains data collection settings.
+
+Modify `AtsdUrl` field by specifying the target ATSD host name or IP address.
+
+Modify the protocol, TCP or UDP, and the port number, if necessary, for example:
 
 ```xml
 ...
@@ -86,24 +91,32 @@ Edit `/ect/collect.conf` by replacing `atsd_hostname` with ATSD IP address or ho
 ...
 ```
 
-Description of `write_atsd` plugin options is provided below
+```ls
+AtsdUrl "tcp://atsd.example.org:8081"
+```
 
- **Setting**      | **Required** | **Description**                                                                                                                                        | **Default Value**
-------------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------
- `AtsdUrl`        | no           | Protocol to transfer data: `tcp` or `udp`, hostname and port of target ATSD server                                                                     | `tcp://localhost:8081`
- `Entity`         | no           | Default entity under which all metrics are stored. By default (if setting is left commented out), entity is set to the server hostname.      | `hostname`
-  `ShortHostname` | no           | Convert entity from fully qualified domain name to short name                                                                                          | `false`
- `Prefix`         | no           | Metric prefix to group `collectd` metrics                                                                                                              | `collectd`
- `Cache`          | no           | Name of read plugins whose metrics are cached. Cache feature is used to save disk space in the database by not resending the same values.          | `-`
- `Interval`       | no           | Time in seconds during which values within the threshold are not sent.                                                                                 | `-`
- `Threshold`      | no           | Deviation threshold, in %, from the previously sent value. If threshold is exceeded, then the value is sent regardless of the cache interval.          | `-`
- `StoreRates`     | no           | If set to `true`, convert counter values to rates. If set to `false` counter values are stored without changes, for example, as an increasing integer number.               | `true`
+```ls
+AtsdUrl "udp://192.0.2.106:8082"
+```
 
-More information about collectd configuration in [collectd.conf.5](https://collectd.org/documentation/manpages/collectd.conf.5.shtml) manual page.
+## Plugin Settings
+
+ **Setting**      | **Description**
+------------------|:----------------------------------------
+ `AtsdUrl`        | **[Required]** Protocol to transfer data: `tcp` or `udp`<br>Hostname and [port](../../administration/server-properties.md#network) of the target ATSD server.<br>Default ports: `8081` TCP, `8082` UDP.                                                                <br>Default: `tcp://192.0.2.106:8081`
+ `Entity`         | Default entity under which all metrics are stored. By default (if setting is left commented out), entity is set to the server hostname.      <br>Default:  `hostname`
+  `ShortHostname` | Convert entity from fully qualified domain name to short name                                                                                          <br>Default:  `false`
+ `Prefix`         | Metric prefix to group `collectd` metrics                                                                                                              <br>Default:  `collectd`
+ `Cache`          | Name of read plugins whose metrics are cached. Cache feature is used to save disk space in the database by not resending the same values.          | `-`
+ `Interval`       | Time in seconds during which values within the threshold are not sent.                                                                                 <br>Default:  `-`
+ `Threshold`      | Deviation threshold, in %, from the previously sent value. If threshold is exceeded, then the value is sent regardless of the cache interval.          <br>Default:  `-`
+ `StoreRates`     | If set to `true`, convert counter values to rates. If set to `false` counter values are stored without changes, for example, as an increasing integer number.               <br>Default:  `true`
+
+More information about collectd configuration is provided in [collectd.conf.5](https://collectd.org/documentation/manpages/collectd.conf.5.shtml) manual page.
 
 ## Auto-Start
 
-Enable auto-start for `collectd`.
+Enable auto-start for the `collectd-axibase` service.
 
 On Ubuntu `14.04`:
 
@@ -121,6 +134,16 @@ On Ubuntu `16.04`, CentOS `7.x` and RHEL `7.x`
 
 ```sh
 sudo systemctl enable collectd-axibase
+```
+
+## Manual Start
+
+```sh
+sudo service collectd-axibase start
+```
+
+```sh
+sudo service collectd-axibase status
 ```
 
 ## collectd Portal
