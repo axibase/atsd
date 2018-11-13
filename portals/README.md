@@ -1,6 +1,6 @@
 # Portals
 
-Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created using the [Axibase Charts](https://github.com/axibase/charts#axibase-charts) and presented in a [grid](portal-settings.md#layout) layout.
+Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created using the [Axibase Charts](https://axibase.com/docs/charts) and presented in a [grid](portal-settings.md#layout) layout.
 
 The Charts library implements a simple yet powerful syntax, closely integrated with the ATSD [schema](../schema.md) for building real-time dashboards in a declarative way.
 

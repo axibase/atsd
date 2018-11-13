@@ -43,7 +43,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-5566 | core | Bug | Duplicate requests triggered by Charts when period switches in [`auto`](https://github.com/axibase/charts/blob/master/widgets/treemap/README.md#mode) mode. |
+5566 | core | Bug | Duplicate requests triggered by Charts when period switches in [`auto`](https://axibase.com/docs/charts/widgets/treemap#mode) mode. |
 
 ---
 
