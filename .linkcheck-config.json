@@ -51,5 +51,5 @@
         ,{ "pattern": "https://www.senate.gov/*"}
         ,{ "pattern": "https://www.finance.senate.gov/*"}
         ,{ "pattern": "http://www.sao.ru/"}
-        ,{ "pattern": "https://www.bea.gov/regional/bearfacts/pdf.cfm?fips=15000&areatype=STATE&geotype=3"}
+        ,{ "pattern": "https://www.bea.gov/.*"}
     ]}
