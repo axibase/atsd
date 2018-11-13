@@ -51,4 +51,5 @@
         ,{ "pattern": "https://www.senate.gov/*"}
         ,{ "pattern": "https://www.finance.senate.gov/*"}
         ,{ "pattern": "http://www.sao.ru/"}
+        ,{ "pattern": "https://www.bea.gov/.*"}
     ]}
