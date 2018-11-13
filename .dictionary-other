@@ -188,6 +188,7 @@ serializer
 servlet
 setWebhook
 severities
+sidebar
 sidebarDepth
 significand
 snmp
