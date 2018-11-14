@@ -23,6 +23,6 @@ Cross Filter is built with [Go](https://golang.org/) using the [ATSD GO Client](
   * List of metrics and their API queries which are displayed as columns.
     * API queries contain user-defined intervals from which the last value is retrieved and displayed in the tables and charts.
 * Dataset update interval is also defined in the configuration.
-* **Metric Filters** charts display the distribution of last insert values for each entity on a [histogram](https://github.com/axibase/charts/blob/master/widgets/histogram/README.md). Each histogram displays one of the metrics contained in the table.
+* **Metric Filters** charts display the distribution of last insert values for each entity on a [histogram](https://axibase.com/docs/charts/widgets/histogram/). Each histogram displays one of the metrics contained in the table.
 * Each widget acts as a filter for both the table and other widgets. Selecting a tag in **Tag Filters** charts filters the table and other widgets to display only entities containing the selected tag.
 * Further filter entities by selecting specific entity groups, displaying only the entities contained in the group as long as it satisfies other currently active filters.

@@ -146,7 +146,7 @@ Attach the following inputs if the problem is related to charts, widgets, and po
 
 1. Portal configuration text from the **Portals > Configure** page.
 
-1. Series query response [captured](https://github.com/axibase/charts/blob/master/troubleshooting/capture_response.md) using Developer Tools in the browser.
+1. Series query response [captured](https://axibase.com/docs/charts/troubleshooting/capture_response.html) using Developer Tools in the browser.
 
 ## 6. Client Libraries
 

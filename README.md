@@ -42,7 +42,7 @@ ATSD is a modular systems which includes the following components in addition to
 * [Rule Engine](./rule-engine/README.md)
 * [SQL Engine](./sql/README.md)
 * [Portal Server](./portals/README.md)
-* [Charts Library](https://github.com/axibase/charts)
+* [Charts Library](https://axibase.com/docs/charts)
 * [Search Service](./search/README.md)
 * [REST API](./api/data/README.md) Server
 * [Network API](./api/network/README.md) Server

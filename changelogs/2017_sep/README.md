@@ -57,7 +57,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4543 | core | Feature | Add support for [user-defined](https://github.com/axibase/charts/tree/master/syntax/udf.md) functions. |
+| 4543 | core | Feature | Add support for [user-defined functions](https://axibase.com/docs/charts/syntax/udf.html). |
 
 ---
 

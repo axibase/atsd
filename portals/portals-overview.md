@@ -29,13 +29,13 @@
 | Type | Portal type: **regular** or **template**. See type descriptions [below](#portal-types).  |
 | Display Index | Applicable to template portals. The order in which portals are listed on multiple-portal pages. |
 | Theme | Graphics style to render the widgets: Default or Black. Custom themes can be installed as described [below](#portal-themes).|
-| Content | Portal [configuration](#configure-portal) text specified using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax. |
+| Content | Portal [configuration](#configure-portal) text specified using the [Charts](https://axibase.com/docs/charts) syntax. |
 
 ## Configure Portal
 
 ### Syntax
 
-The portal is configured using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax which is a domain-specific language for assembling visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
+The portal is configured using the [Charts](https://axibase.com/docs/charts) syntax which is a domain-specific language for assembling visualizations in a declarative manner. The basic components of the syntax are **sections** and **settings**.
 
 * **Section** is enclosed in square brackets, for example, `[widget]`. The section includes settings and nested sections. The section ends when another section is specified.
 * **Setting** includes name and value, separated by equal sign, for example, `timespan = 1 hour`.
