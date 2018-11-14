@@ -52,4 +52,5 @@
         ,{ "pattern": "https://www.finance.senate.gov/*"}
         ,{ "pattern": "http://www.sao.ru/"}
         ,{ "pattern": "https://www.bea.gov/.*"}
+        ,{ "pattern": "https://www.nato.int/*"}
     ]}
