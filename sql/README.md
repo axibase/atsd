@@ -3008,14 +3008,12 @@ WHERE datetime >= NOW - 1*MINUTE
 
 Function | Description
 :--|:--
-`SIN(num)` | Sine of angle measuring `num` radians.
-`COS(num)` | Cosine of angle measuring `num` radians.
-`TAN(num)` | Tangent of angle measuring `num` radians
+`SIN(num)` | Sine of the specified angle in radians.
+`COS(num)` | Cosine of the specified angle in radians.
+`TAN(num)` | Tangent of the specified angle in radians.
 `ASIN(num)` | Arcsine value, inverse of sine function `num`.
 `ACOS(num)` | Arccosine value, inverse of cosine function `num`.
 `ATAN(num)` | Arctangent value, inverse of tangent function `num`.
-
-> Undefined expressions return [`NaN`](#not-a-number-nan).
 
 ```sql
 SELECT value, SIN(value), COS(value), TAN(value), ASIN(value), ACOS(value), ATAN(value)
@@ -3034,6 +3032,8 @@ WHERE datetime < NOW
 | 0.00  | 0.00       | 1.00       | 0.00       | 0.00        | 1.57        | 0.00        |
 | 0.17  | 0.17       | 0.98       | 0.18       | 0.18        | 1.40        | 0.17        |
 ```
+
+> Arguments for `ACOS` and `ASIN` functions must be on the interval `[-1, 1]`, inclusively.<br>Out of range arguments return `NaN`
 
 ### String Functions
 
