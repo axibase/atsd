@@ -3015,7 +3015,7 @@ Function | Description
 `ACOS(num)` | Arccosine value, inverse of cosine function `num`.
 `ATAN(num)` | Arctangent value, inverse of tangent function `num`.
 
-> Undefined expressions return [`NaN`](#not-a-number).
+> Undefined expressions return [`NaN`](#not-a-number-nan).
 
 ```sql
 SELECT value, SIN(value), COS(value), TAN(value), ASIN(value), ACOS(value), ATAN(value)
