@@ -53,4 +53,5 @@
         ,{ "pattern": "http://www.sao.ru/"}
         ,{ "pattern": "https://www.bea.gov/.*"}
         ,{ "pattern": "https://www.nato.int/*"}
+        ,{ "pattern": "https://maven-badges.herokuapp.com/maven-central/com.axibase/*"}
     ]}
