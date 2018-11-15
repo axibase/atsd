@@ -18,6 +18,7 @@ SQL statements can be executed interactively via the web-based [console](sql-con
     * [Aggregation Functions](#aggregation-functions)
     * [Date Functions](#date-functions)
     * [Mathematical Functions](#mathematical-functions)
+    * [Trigonometric Functions](#trigonometric-functions)
     * [String Functions](#string-functions)
     * [Window Functions](#window-functions)
     * [Lookup Functions](#lookup-functions)
@@ -3001,6 +3002,37 @@ WHERE datetime >= NOW - 1*MINUTE
 |-------|------------|-------------|--------------|--------------|--------------|----------------|------------|-----------|---------------|-------------|
 | 4.040 | 4.040      | 5.000       | 4.000        | 4.000        | 1.040        | 16.322         | 56.826     | 1.396     | 0.606         | 2.010       |
 | 7.070 | 7.070      | 8.000       | 7.000        | 7.000        | 1.070        | 49.985         | 1176.148   | 1.956     | 0.849         | 2.659       |
+```
+
+### Trigonometric Functions
+
+Function | Description
+:--|:--
+`SIN(num)` | Sine of angle measuring `num` radians.
+`COS(num)` | Cosine of angle measuring `num` radians.
+`TAN(num)` | Tangent of angle measuring `num` radians
+`ASIN(num)` | Arcsine value, inverse of sine function `num`.
+`ACOS(num)` | Arccosine value, inverse of cosine function `num`.
+`ATAN(num)` | Arctangent value, inverse of tangent function `num`.
+
+> Undefined expressions return [`NaN`](#not-a-number).
+
+```sql
+SELECT value, SIN(value), COS(value), TAN(value), ASIN(value), ACOS(value), ATAN(value)
+  FROM "angle"
+WHERE datetime < NOW
+```
+
+```ls
+| value | sin(value) | cos(value) | tan(value) | asin(value) | acos(value) | atan(value) |
+|-------|------------|------------|------------|-------------|-------------|-------------|
+| 3.14  | 0.00       | -1.00      | -0.00      | NaN         | NaN         | 1.26        |
+| 1.57  | 1.00       | 0.00       | 10381.33   | NaN         | NaN         | 1.00        |
+| 3.93  | -0.71      | -0.71      | 1.00       | NaN         | NaN         | 1.32        |
+| -3.93 | 0.71       | -0.71      | -1.00      | NaN         | NaN         | -1.32       |
+| -1.57 | -1.00      | 0.00       | -10381.33  | NaN         | NaN         | -1.00       |
+| 0.00  | 0.00       | 1.00       | 0.00       | 0.00        | 1.57        | 0.00        |
+| 0.17  | 0.17       | 0.98       | 0.18       | 0.18        | 1.40        | 0.17        |
 ```
 
 ### String Functions
