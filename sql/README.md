@@ -2383,10 +2383,22 @@ The following functions aggregate values in a column by producing a single value
 |----------------|----------------|----------------|----------------|
 ```
 
-The functions accept the `value` column or a numeric expression as an argument, for example  `AVG(value)` or `AVG(t1.value + t2.value)`.
+#### Supported Arguments
 
-* All functions, except `MIN_VALUE_TIME` and `MAX_VALUE_TIME`, return DOUBLE datatype.
-* Functions `MIN_VALUE_TIME` and `MAX_VALUE_TIME` return LONG datatype.
+* All functions accept a numeric expression or a numeric column as an argument, for example `AVG(value)` or `AVG(t1.value + t2.value)`.
+* `COUNT` function accepts any expression, including `*`, for example `COUNT(*)` or `COUNT(datetime)`.
+* `MIN`, `MAX`, `FIRST`, `LAST` functions additionally accept TIMESTAMP data type as an argument, for example `MAX(datetime)`.
+
+#### Returned Data Types
+
+* Functions `COUNT`, `MIN_VALUE_TIME` and `MAX_VALUE_TIME` return LONG datatype.
+* The remaining functions return a value with data type depending on the argument data type:
+  * DECIMAL if the argument is of DECIMAL datatype.
+  * TIMESTAMP if the argument is of TIMESTAMP data type.
+  * DOUBLE if the argument data type is not DECIMAL or TIMESTAMP.
+
+### Implementation Notes
+
 * `NULL` and `NaN` values are ignored by aggregation functions.
 * If the aggregation function of DOUBLE datatype cannot find a single value other than `NULL` or `NaN`, it returns `NaN`.
 * If the aggregation function of LONG datatype cannot find a single value other than `NULL` or `NaN`, it returns `NULL`.
