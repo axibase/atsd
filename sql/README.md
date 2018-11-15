@@ -2976,11 +2976,13 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 
 ### Mathematical Functions
 
+<!-- markdownlint-disable MD101 -->
+
 | **Function** | **Description** |
 |:---|:---|
 | `ABS(num)` | Absolute value of the specified number. |
 | `CEIL(num)` | Smallest integer that is greater than or equal to the specified number. |
-| `EXP(num)` | `e` (2.718281828459045) raised to the power of the specified number. |
+| `EXP(num)` | Mathematical constant `e` (2.718281828459045) raised to the power of the specified number. |
 | `FLOOR(num)` | Largest integer that is less than or equal to the specified number. |
 | `LN(num)` | Natural logarithm of the specified number. |
 | `LOG(num, m)`  | Base-`num` logarithm of the numerical argument `m`. |
@@ -2989,6 +2991,8 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 | `POWER(num, m)`  | Number raised to the power `m`. |
 | `ROUND(num [,m])` | Number rounded to `m` decimal places. |
 | `SQRT(num)` | Square root of the specified number. |
+
+<!-- markdownlint-enable MD101 -->
 
 ```sql
 SELECT value, ABS(value), CEIL(value), EXP(value), FLOOR(value), LN(value), LOG(10, value), MOD(value, 3), PI(), POWER(value, 2), ROUND(value), SQRT(value)
