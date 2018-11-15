@@ -2980,12 +2980,12 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 |:---|:---|
 | `ABS(num)` | Absolute value of the specified number. |
 | `CEIL(num)` | Smallest integer that is greater than or equal to the specified number. |
-| `EXP(num)` | `e` (2.71828183) raised to the power of the specified number. |
+| `EXP(num)` | `e` (2.718281828459045) raised to the power of the specified number. |
 | `FLOOR(num)` | Largest integer that is less than or equal to the specified number. |
 | `LN(num)` | Natural logarithm of the specified number. |
 | `LOG(num, m)`  | Base-`num` logarithm of the numerical argument `m`. |
 | `MOD(num, m)` | Remainder of the first numerical argument divided by `m`.|
-| `PI()` | The value of &pi;. No arguments accepted.
+| `PI()` | The value of `π` (3.141592653589793). No arguments accepted.
 | `POWER(num, m)`  | Number raised to the power `m`. |
 | `ROUND(num [,m])` | Number rounded to `m` decimal places. |
 | `SQRT(num)` | Square root of the specified number. |
