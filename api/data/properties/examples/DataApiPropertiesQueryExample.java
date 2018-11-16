@@ -1,12 +1,13 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 
 public class DataApiPropertiesQueryExample {
@@ -29,50 +30,50 @@ public class DataApiPropertiesQueryExample {
         conn.setRequestMethod("POST");
         conn.setRequestProperty("charset", "utf-8");
         conn.setRequestProperty("Accept-Encoding", "gzip");
-        conn.setRequestProperty( "Content-Type", "application/json");
+        conn.setRequestProperty("Content-Type", "application/json");
 
         String authString = userName + ":" + password;
-        String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
+        String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes(StandardCharsets.UTF_8));
         conn.setRequestProperty("Authorization", "Basic " + authEncoded);
-        byte[] payload = query.getBytes();
+        byte[] payload = query.getBytes(StandardCharsets.UTF_8);
 
         conn.setRequestProperty("Content-Length", Integer.toString(payload.length));
         conn.setUseCaches(false);
 
-        DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-        wr.write(payload);
+        try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream())) {
+            wr.write(payload);
 
-        System.out.println("Request sent");
+            System.out.println("Request sent");
 
-        int code = conn.getResponseCode();
+            int code = conn.getResponseCode();
 
-        System.out.println("Response code: " + code);
+            System.out.println("Response code: " + code);
 
-        if (code == HttpURLConnection.HTTP_OK) {
-            InputStreamReader reader;
-            if ("gzip".equals(conn.getContentEncoding())) {
-                reader = new InputStreamReader(new GZIPInputStream(conn.getInputStream()));
+            if (code == HttpURLConnection.HTTP_OK) {
+                InputStreamReader reader;
+                if ("gzip".equals(conn.getContentEncoding())) {
+                    reader = new InputStreamReader(new GZIPInputStream(conn.getInputStream()), StandardCharsets.UTF_8);
+                } else {
+                    reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8);
+                }
+                JSONTokener tokener = new JSONTokener(reader);
+                JSONArray resultArray = new JSONArray(tokener);
+
+                for (int i = 0; i < resultArray.length(); i++) {
+                    JSONObject prop = (JSONObject) resultArray.get(i);
+
+                    System.out.println("property: entity= " + prop.get("entity") + " : type= " + prop.get("type") + " : date= " + prop.get("date"));
+
+                    JSONObject key = (JSONObject) prop.get("key");
+                    JSONObject tags = (JSONObject) prop.get("tags");
+                    System.out.println("    key = " + key);
+                    System.out.println("    tags= " + tags);
+                }
+
             } else {
-                reader = new InputStreamReader(conn.getInputStream(), "utf-8");
+                System.out.println(conn.getResponseMessage());
             }
-            JSONParser parser = new JSONParser();
-            JSONArray resultArray = (JSONArray)parser.parse(reader);
-
-            for (int i = 0; i < resultArray.size(); i++){
-                JSONObject prop = (JSONObject)resultArray.get(i);
-
-                System.out.println("property: entity= " + prop.get("entity") + " : type= " + prop.get("type") + " : date= " + prop.get("date"));
-
-                JSONObject key = (JSONObject)prop.get("key");
-                JSONObject tags = (JSONObject)prop.get("tags");
-                System.out.println("    key = " + key);
-                System.out.println("    tags= " + tags);
-            }
-
-        } else {
-            System.out.println(conn.getResponseMessage());
         }
-
     }
 
 

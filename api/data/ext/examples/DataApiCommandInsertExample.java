@@ -3,8 +3,10 @@ import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DataApiCommandInsertExample {
 
@@ -35,37 +37,30 @@ public class DataApiCommandInsertExample {
         conn.setDoOutput(true);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("charset", "utf-8");
-        conn.setRequestProperty( "Content-Type", "text/plain");
+        conn.setRequestProperty("Content-Type", "text/plain");
 
         String authString = userName + ":" + password;
-        String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
+        String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes(StandardCharsets.UTF_8));
         conn.setRequestProperty("Authorization", "Basic " + authEncoded);
 
-        String commandString = "";
-        for (String cmd : commands) {
-            commandString += cmd + "\n";
-        }
-        byte[] payload = commandString.getBytes();
-
-        conn.setRequestProperty("Content-Length", Integer.toString(payload.length));
+        String commandString = commands.stream().collect(Collectors.joining(System.lineSeparator()));
+        byte[] payload = commandString.getBytes(StandardCharsets.UTF_8);
         conn.setUseCaches(false);
 
-        DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-        wr.write(payload);
+        try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream())) {
+            wr.write(payload);
 
-        System.out.println("Request sent");
+            System.out.println("Request sent");
 
-        int code = conn.getResponseCode();
+            int code = conn.getResponseCode();
 
-        System.out.println("Response code: " + code);
+            System.out.println("Response code: " + code);
 
-        if (code == HttpURLConnection.HTTP_OK) {
-            System.out.println("Commands sent");
-        } else {
-            System.out.println(conn.getResponseMessage());
+            if (code == HttpURLConnection.HTTP_OK) {
+                System.out.println("Commands sent");
+            } else {
+                System.out.println(conn.getResponseMessage());
+            }
         }
-
     }
-
-
 }

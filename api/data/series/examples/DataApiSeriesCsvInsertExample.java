@@ -3,6 +3,7 @@ import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class DataApiSeriesCsvInsertExample {
 
@@ -11,7 +12,7 @@ public class DataApiSeriesCsvInsertExample {
         String databaseUrl = "http://10.102.0.6:8088";
         String userName = "axibase";
         String password = "********";
-		
+
         String host = InetAddress.getLocalHost().getHostName();
         String header = "time,runtime.memory.free,runtime.memory.max,runtime.memory.total";
         String dataRow = System.currentTimeMillis() + "," + Runtime.getRuntime().freeMemory() + "," + Runtime.getRuntime().maxMemory() + "," + Runtime.getRuntime().totalMemory();
@@ -27,31 +28,31 @@ public class DataApiSeriesCsvInsertExample {
         conn.setDoOutput(true);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("charset", "utf-8");
-        conn.setRequestProperty( "Content-Type", "text/csv");
+        conn.setRequestProperty("Content-Type", "text/csv");
 
         String authString = userName + ":" + password;
-        String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
+        String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes(StandardCharsets.UTF_8));
         conn.setRequestProperty("Authorization", "Basic " + authEncoded);
 
-        byte[] payload = csvContent.getBytes();
-
-        conn.setRequestProperty("Content-Length", Integer.toString(payload.length));
+        byte[] payload = csvContent.getBytes(StandardCharsets.UTF_8);
         conn.setUseCaches(false);
 
-        DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-        wr.write(payload);
+        try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream())) {
+            wr.write(payload);
 
-        System.out.println("Request sent");
+            System.out.println("Request sent");
 
-        int code = conn.getResponseCode();
+            int code = conn.getResponseCode();
 
-        System.out.println("Response code: " + code);
+            System.out.println("Response code: " + code);
 
-        if (code == HttpURLConnection.HTTP_OK) {
-            System.out.println("Commands sent");
-        } else {
-            System.out.println(conn.getResponseMessage());
+            if (code == HttpURLConnection.HTTP_NO_CONTENT) {
+                System.out.println("Commands sent");
+            } else {
+                System.out.println(conn.getResponseMessage());
+            }
         }
+
 
     }
 
