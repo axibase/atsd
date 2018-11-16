@@ -2999,7 +2999,7 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 | `LN(num)` | Natural logarithm of the specified number. |
 | `LOG(num, m)`  | Base-`num` logarithm of the numerical argument `m`. |
 | `MOD(num, m)` | Remainder of the first numerical argument divided by `m`.|
-| `PI()` | The value of `π` (3.141592653589793). No arguments accepted. | 
+| `PI()` | The value of &pi; (3.141592653589793). No arguments accepted. | 
 | `POWER(num, m)`  | Number raised to the power `m`. |
 | `ROUND(num [,m])` | Number rounded to `m` decimal places. |
 | `SQRT(num)` | Square root of the specified number. |
