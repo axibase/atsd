@@ -9,9 +9,9 @@ public class DataApiSeriesCsvInsertExample {
 
     public static void main(String[] args) throws Exception {
 
-        String databaseUrl = "http://localhost:8088";
+        String databaseUrl = "http://10.102.0.6:8088";
         String userName = "axibase";
-        String password = "axibase";
+        String password = "********";
 
         String host = InetAddress.getLocalHost().getHostName();
         String header = "time,runtime.memory.free,runtime.memory.max,runtime.memory.total";
