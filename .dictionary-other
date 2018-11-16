@@ -6,6 +6,8 @@ aliased
 amd64
 analytics
 appender[s]?
+arccosine
+arcsine
 ascii
 asynchronously
 atsd-hbase

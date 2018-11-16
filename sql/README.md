@@ -18,6 +18,7 @@ SQL statements can be executed interactively via the web-based [console](sql-con
     * [Aggregation Functions](#aggregation-functions)
     * [Date Functions](#date-functions)
     * [Mathematical Functions](#mathematical-functions)
+    * [Trigonometric Functions](#trigonometric-functions)
     * [String Functions](#string-functions)
     * [Window Functions](#window-functions)
     * [Lookup Functions](#lookup-functions)
@@ -2987,33 +2988,65 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 
 ### Mathematical Functions
 
+<!-- markdownlint-disable MD101 -->
+
 | **Function** | **Description** |
 |:---|:---|
 | `ABS(num)` | Absolute value of the specified number. |
 | `CEIL(num)` | Smallest integer that is greater than or equal to the specified number. |
+| `EXP(num)` | Mathematical constant `e` (2.718281828459045) raised to the power of the specified number. |
 | `FLOOR(num)` | Largest integer that is less than or equal to the specified number. |
-| `ROUND(num [,m])` | Number rounded to `m` decimal places. |
-| `MOD(num, m)` | Remainder of the first numerical argument divided by `m`.|
-| `POWER(num, m)`  | Number raised to the power `m`. |
-| `EXP(num)` | `e` (2.71828183) raised to the power of the specified number. |
 | `LN(num)` | Natural logarithm of the specified number. |
 | `LOG(num, m)`  | Base-`num` logarithm of the numerical argument `m`. |
-| `SQRT(num)` | √ of the specified number. |
+| `MOD(num, m)` | Remainder of the first numerical argument divided by `m`.|
+| `PI()` | The value of `π` (3.141592653589793). No arguments accepted.
+| `POWER(num, m)`  | Number raised to the power `m`. |
+| `ROUND(num [,m])` | Number rounded to `m` decimal places. |
+| `SQRT(num)` | Square root of the specified number. |
+
+<!-- markdownlint-enable MD101 -->
 
 ```sql
-SELECT value, ABS(value), CEIL(value), FLOOR(value), ROUND(value), MOD(value, 3),
-  POWER(value, 2), EXP(value), LN(value), LOG(10, value), SQRT(value)
-  FROM "mpstat.cpu_busy"
+SELECT value, ABS(value), CEIL(value), EXP(value), FLOOR(value), LN(value), LOG(10, value), MOD(value, 3), PI(), POWER(value, 2), ROUND(value), SQRT(value)
+  FROM "cpu_busy"
 WHERE datetime >= NOW - 1*MINUTE
   AND entity = 'nurswgvml007'
 ```
 
 ```ls
-| value | ABS(value) | CEIL(value) | FLOOR(value) | ROUND(value) | MOD(value,3) | POWER(value,2) | EXP(value) | LN(value) | LOG(10,value) | SQRT(value) |
-|-------|------------|-------------|--------------|--------------|--------------|----------------|------------|-----------|---------------|-------------|
-| 4.040 | 4.040      | 5.000       | 4.000        | 4.000        | 1.040        | 16.322         | 56.826     | 1.396     | 0.606         | 2.010       |
-| 7.070 | 7.070      | 8.000       | 7.000        | 7.000        | 1.070        | 49.985         | 1176.148   | 1.956     | 0.849         | 2.659       |
+| value | abs(value) | ceil(value) | exp(value) | floor(value) | ln(value) | log(10, value) | mod(value, 3) | pi() | power(value, 2) | round(value) | sqrt(value) |
+|-------|------------|-------------|------------|--------------|-----------|----------------|---------------|------|-----------------|--------------|-------------|
+| 8.00  | 8.00       | 8.00        | 2980.96    | 8.00         | 2.08      | 0.90           | 2.00          | 3.14 | 64.00           | 8.00         | 2.83        |
+
 ```
+
+### Trigonometric Functions
+
+Function | Description
+:--|:--
+`DEGREE(num)` | Convert specified radian value to degrees.
+`RAD(num)` | Convert specified degree value to radians.
+`SIN(num)` | Sine of the specified angle in radians.
+`COS(num)` | Cosine of the specified angle in radians.
+`TAN(num)` | Tangent of the specified angle in radians.
+`ASIN(num)` | Arcsine value, inverse of sine function `num`.
+`ACOS(num)` | Arccosine value, inverse of cosine function `num`.
+`ATAN(num)` | Arctangent value, inverse of tangent function `num`.
+
+```sql
+SELECT value, DEGREES(pi()/2), RADIANS(180), SIN(value), COS(value), TAN(value), ASIN(SIN(value)), ACOS(COS(value)), ATAN(value)
+  FROM "angle"
+WHERE datetime < now
+```
+
+```ls
+| value | degrees(pi() / 2) | radians(180) | sin(value) | cos(value) | tan(value) | asin(sin(value)) | acos(cos(value)) | atan(value) |
+|-------|-------------------|--------------|------------|------------|------------|------------------|------------------|-------------|
+| 1.57  | 90.00             | 3.14         | 1.00       | 0.00       | 10381.33   | 1.57             | 1.57             | 1.00        |
+
+```
+
+> Arguments for `ACOS()` and `ASIN()` functions must be on the interval `[-1, 1]`, inclusively.<br>Out of range arguments return `NaN`
 
 ### String Functions
 
