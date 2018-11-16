@@ -2999,7 +2999,7 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 | `LN(num)` | Natural logarithm of the specified number. |
 | `LOG(num, m)`  | Base-`num` logarithm of the numerical argument `m`. |
 | `MOD(num, m)` | Remainder of the first numerical argument divided by `m`.|
-| `PI()` | The value of `π` (3.141592653589793). No arguments accepted.
+| `PI()` | The value of `π` (3.141592653589793). No arguments accepted. | 
 | `POWER(num, m)`  | Number raised to the power `m`. |
 | `ROUND(num [,m])` | Number rounded to `m` decimal places. |
 | `SQRT(num)` | Square root of the specified number. |
@@ -3016,37 +3016,33 @@ WHERE datetime >= NOW - 1*MINUTE
 ```ls
 | value | abs(value) | ceil(value) | exp(value) | floor(value) | ln(value) | log(10, value) | mod(value, 3) | pi() | power(value, 2) | round(value) | sqrt(value) |
 |-------|------------|-------------|------------|--------------|-----------|----------------|---------------|------|-----------------|--------------|-------------|
-| 8.00  | 8.00       | 8.00        | 2980.96    | 8.00         | 2.08      | 0.90           | 2.00          | 3.14 | 64.00           | 8.00         | 2.83        |
-
+| 19.590 | 19.590     | 20.000      | 321980003.291  | 19.000       | 2.975     | 1.292          | 1.590         | 3.142 | 383.768         | 20.000       | 4.426       |
 ```
 
 ### Trigonometric Functions
 
 Function | Description
 :--|:--
-`DEGREE(num)` | Convert specified radian value to degrees.
-`RAD(num)` | Convert specified degree value to radians.
-`SIN(num)` | Sine of the specified angle in radians.
-`COS(num)` | Cosine of the specified angle in radians.
-`TAN(num)` | Tangent of the specified angle in radians.
-`ASIN(num)` | Arcsine value, inverse of sine function `num`.
-`ACOS(num)` | Arccosine value, inverse of cosine function `num`.
-`ATAN(num)` | Arctangent value, inverse of tangent function `num`.
+`DEGREE(num)` | Convert specified radian value to degrees.<br>1 <small>rad</small> = 180&deg;/&pi; = 57.2958&deg;
+`RAD(num)` | Convert specified degree value to radians.<br>1&deg; * &pi;/180&deg; = 0.0174533 <small>rad</small>
+`SIN(num)` | The `SIN()` function returns the sine of the specified angle.<br>Argument `num` is the measure of the angle in radians.
+`COS(num)` | The `COS()` function returns the cosine of the specified angle.<br>Argument `num` is the measure of the angle in radians.
+`TAN(num)` | The `TAN()` function returns the tangent of the specified angle.<br>Argument `num` is the measure of the angle in radians.
+`ASIN(num)` | The `ASIN()` function returns the arcsine <small>sin<sup>-1</sup></small> of the specified sine value.<br>Argument `num` must be on the interval `[-1,1]`, inclusively.<br>Out of range arguments returns [`NaN`](#not-a-number-nan).
+`ACOS(num)` | THE `ACOS` function returns the arccosine <small>cos<sup>-1</sup></small> of the specified cosine value.<br>Argument `num` must be on the interval `[-1,1]`, inclusively.<br>Out of range arguments returns [`NaN`](#not-a-number-nan).
+`ATAN(num)` | The `ATAN()` function returns the arctangent <small>tan<sup>-1</sup></small> of the specified tangent value.
 
 ```sql
-SELECT value, DEGREES(pi()/2), RADIANS(180), SIN(value), COS(value), TAN(value), ASIN(SIN(value)), ACOS(COS(value)), ATAN(value)
+SELECT value, DEGREES(value), DEGREES(pi()/2), SIN(RADIANS(45)), RADIANS(180), SIN(value), COS(value), TAN(value), ASIN(SIN(value)), ACOS(COS(value)), ATAN(value)
   FROM "angle"
 WHERE datetime < now
 ```
 
 ```ls
-| value | degrees(pi() / 2) | radians(180) | sin(value) | cos(value) | tan(value) | asin(sin(value)) | acos(cos(value)) | atan(value) |
-|-------|-------------------|--------------|------------|------------|------------|------------------|------------------|-------------|
-| 1.57  | 90.00             | 3.14         | 1.00       | 0.00       | 10381.33   | 1.57             | 1.57             | 1.00        |
-
+| value | degrees(value) | degrees(pi() / 2) | sin(radians(45)) | radians(180) | sin(value) | cos(value) | tan(value) | asin(sin(value)) | acos(cos(value)) | atan(value) |
+|-------|----------------|-------------------|------------------|--------------|------------|------------|------------|------------------|------------------|-------------|
+| 3.142 | 180.000        | 90.000            | 0.707            | 3.142        | 0.000      | -1.000     | 0.000     | 0.000            | 3.142            | 1.263       |
 ```
-
-> Arguments for `ACOS()` and `ASIN()` functions must be on the interval `[-1, 1]`, inclusively.<br>Out of range arguments return `NaN`
 
 ### String Functions
 
