@@ -6,9 +6,7 @@
 
 ## Increase Network Buffers
 
-If you anticipate insertion rates with bursts of more than 100K samples per second, adjust receiving buffers.
-
-* Refer to [Networking Settings](../administration/networking-settings.md).
+Increase [receiving buffers](../administration/networking-settings.md) if you anticipate insertion rates with bursts of more than 100K samples per second.
 
 ## Verify System Time
 
@@ -18,22 +16,16 @@ If you anticipate insertion rates with bursts of more than 100K samples per seco
 
 * Synchronize system time and setup NTP to keep server time accurate.
 
-## Enable Swap Memory
+## Allocated Memory
 
-* See [Enabling Swap Space](../administration/swap-space.md).
-
-## Increase Java Memory Allocations
-
-* See [Allocating Memory](../administration/memory-allocation.md).
+* [Enable swap space](../administration/swap-space.md).
+* Increase memory to [Java processes](../administration/memory-allocation.md).
 
 ## Relocate ATSD
 
 * Relocate ATSD to a [different file system](../administration/change-base-directory.md), if the `/opt/atsd` directory does not provide sufficient free space.
 
-## Setup Mail Client
+## Setup Notifications
 
 * Configure the built-in [Mail Client](../administration/mail-client.md) for email notifications.
-
-## Setup Webhooks
-
-* Configure outgoing webhook notifications for [Slack](../rule-engine/notifications/slack.md), [Discord](../rule-engine/notifications/discord.md), [HipChat](../rule-engine/notifications/hipchat.md), and [Telegram](../rule-engine/notifications/telegram.md).
+* Configure outgoing webhooks for [Slack](../rule-engine/notifications/slack.md), [Discord](../rule-engine/notifications/discord.md), [HipChat](../rule-engine/notifications/hipchat.md), and [Telegram](../rule-engine/notifications/telegram.md).
