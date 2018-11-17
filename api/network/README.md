@@ -11,7 +11,7 @@ The database accepts incoming commands on the following ports:
 * TCP `8081`
 * UDP `8082`
 * HTTP `8088` `POST /api/v1/command`
-* HTTP `8443` `POST /api/v1/command`
+* HTTPS `8443` `POST /api/v1/command`
 
 ## Security
 

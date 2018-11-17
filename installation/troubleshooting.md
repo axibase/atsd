@@ -8,11 +8,12 @@ Verify that the target server meets hardware and OS [requirements](./requirement
 
 ATSD listens on the following ports by default:
 
-* `1099/tcp`: JMX
-* `8081/tcp`: Network API (TCP)
-* `8082/udp`: Network API (UDP)
-* `8088/tcp`: Web Interface/API (HTTP)
-* `8443/tcp`: Web Interface/API (HTTPS)
+* `8443/tcp`: Web Interface / [REST API](../api/data/README.md) (HTTPS)
+* `8088/tcp`: Web Interface / [REST API](../api/data/README.md) (HTTP)
+* `8084/udp`: [Python pickle format](../integration/graphite/pickle-protocol.md)
+* `8082/udp`: [Network API](../api/network/README.md)
+* `8081/tcp`: [Network API](../api/network/README.md)
+* `1099/tcp`: [JMX](../administration/monitoring-metrics/jmx.md)
 
 In case you are not able to connect to an ATSD network service, check that the service is listening and the firewall allows access to the target port.
 
@@ -56,3 +57,9 @@ Review the following log files for errors:
 `Package Not Found` error is displayed when attempting an installation of ATSD deb package on 32-bit architecture.
 
 Retry installation on a supported [architecture](./requirements.md).
+
+## Technical Support
+
+Contact us at `support-atsd@axibase.com` with installation questions.
+
+Attach [relevant details](../administration/support.md) to your ticket.
