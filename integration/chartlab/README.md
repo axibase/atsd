@@ -2,11 +2,14 @@
 
 ## Overview
 
-ChartLab is a publicly hosted Node application that makes it easy to build charts using the visualization library implemented in ATSD.
+ChartLab is a Node application that makes it easy for end users to build and share charts using the visualization library implemented in ATSD.
 
-The public ChartLab is hosted at the following URL: `https://apps.axibase.com/chartlab`.
+Public ChartLab examples are hosted at the following URLs:
 
-ChartLab provides a simple web interface to view and save portal and widget examples. Each example consists of one or multiple widgets built with the ATSD charts library. The widgets act as API clients and load series, properties and messages from ATSD Data API endpoints.
+* [`https://apps.axibase.com/chartlab`](https://apps.axibase.com/chartlab)
+* [`https://trends.axibase.com`](https://trends.axibase.com)
+
+ChartLab provides a simple web interface to view and save portal and widget examples. Each example consists of one or multiple widgets built with the ATSD charts library. The widgets act as API clients and load series, properties and messages from ATSD REST API endpoints.
 
 ## Authentication and Authorization
 

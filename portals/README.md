@@ -1,6 +1,6 @@
 # Portals
 
-Portal is a collection of time-series [widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/) created using the [Axibase Charts](https://axibase.com/docs/charts) and presented in a [grid](portal-settings.md#layout) layout.
+Portal is a collection of time-series [widgets](https://axibase.com/docs/charts/widgets/) created using the [Axibase Charts](https://axibase.com/docs/charts) and presented in a [grid](portal-settings.md#layout) layout.
 
 The Charts library implements a simple yet powerful syntax, closely integrated with the ATSD [schema](../schema.md) for building real-time dashboards in a declarative way.
 
@@ -9,7 +9,20 @@ Syntax Examples:
 * [70 lines](https://apps.axibase.com/chartlab/3230deb6/8/)
 * [200 lines](https://apps.axibase.com/chartlab/2ef08f32)
 
-The power user, on the other hand, can leverage [inheritance](https://axibase.com/products/axibase-time-series-database/visualization/widgets/inheritance), [wildcards](https://axibase.com/products/axibase-time-series-database/visualization/widgets/wildcards/), [control structures](https://axibase.com/products/axibase-time-series-database/visualization/widgets/control-structures), [computed series](https://axibase.com/products/axibase-time-series-database/visualization/widgets/computed-metrics), [display filters](https://axibase.com/products/axibase-time-series-database/visualization/widgets/display-filters), and other [advanced features](https://axibase.com/products/axibase-time-series-database/visualization/) to create data-driven applications such as [data sliders](https://apps.axibase.com/slider/energinet-2017/?slide=1), [cross-filters](https://apps.axibase.com/cross-filter/?table=Linux%20Performance), [statistic viewers](https://apps.axibase.com/chartlab/cde99874/2/#fullscreen) etc.
+The power user, on the other hand, can leverage [inheritance](https://axibase.com/docs/charts/configuration/inheritance.html), [wildcards](https://axibase.com/products/axibase-time-series-database/visualization/widgets/wildcards/), [control structures](https://axibase.com/products/axibase-time-series-database/visualization/widgets/control-structures), [computed series](https://axibase.com/products/axibase-time-series-database/visualization/widgets/computed-metrics), [display filters](https://axibase.com/products/axibase-time-series-database/visualization/widgets/display-filters), and other [advanced features](https://axibase.com/products/axibase-time-series-database/visualization/) to create data-driven applications such as [data sliders](https://apps.axibase.com/slider/energinet-2017/?slide=1), [cross-filters](https://apps.axibase.com/cross-filter/?table=Linux%20Performance), [statistic viewers](https://apps.axibase.com/chartlab/cde99874/2/#fullscreen) etc.
+
+## VSCode Plugin
+
+The [Axibase Charts plugin](https://marketplace.visualstudio.com/items?itemName=Axibase.axibasecharts-syntax) for the Microsoft [VSCode editor](https://code.visualstudio.com/) is a design tool that simplifies portal development and data exploration.
+
+The [plugin](https://marketplace.visualstudio.com/items?itemName=Axibase.axibasecharts-syntax) implements the following functionality:
+
+* Syntax Validation
+* Syntax Highlighting
+* Settings Reference
+* Live Preview
+* Code Formatting
+* Auto-completion
 
 ## Custom Portals
 
@@ -39,7 +52,7 @@ ATSD contains built-in portals which are listed on the [Portals](portals-overvie
 
 The built-in portals can be customized by changing their configuration text and used as a foundation when developing custom portals.
 
-## Built-in Portal Gallery
+## Built-in Portal Examples
 
 |  |  |  |
 | --- | --- | --- |
