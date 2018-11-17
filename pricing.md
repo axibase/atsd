@@ -4,7 +4,7 @@
 
 ATSD Standard Edition (SE) is available on the following subscription plans:
 
-| Server RAM |  Price per Month |
+| Server RAM |  Monthly Price |
 |---|---:|
 | `≤ 16 GiB` | `US$ 240` |
 | `> 16 GiB` | `US$ 480` |
@@ -22,7 +22,7 @@ ATSD Standard Edition (SE) is available on the following subscription plans:
 
 ATSD Enterprise Edition (EE) is available on the following subscription plan, as well as a **Perpetual License**:
 
-| Server RAM |  Price per Month |
+| Server RAM |  Monthly Price |
 |---|---:|
 | `Unlimited` | `US$ 960` |
 

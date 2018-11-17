@@ -44,7 +44,7 @@ Enterprise Edition supports a scale-out deployment model.
 
 |  | **Standard Edition** | **Enterprise Edition** |
 |---|:---:|:---:|
-| Subscription | [From $240](pricing.md#standard-edition) | [From $960](pricing.md#enterprise-edition) |
+| Subscription | [$240 per month](pricing.md#standard-edition) | [$960 per month](pricing.md#enterprise-edition) |
 | Perpetual License |  | ![](./images/ok.svg) |
 
 ## Support Services
