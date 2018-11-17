@@ -52,7 +52,7 @@ sudo service atsd stop
 sudo service atsd start
 ```
 
-If running ATSD on a shared server with a heavy workload, edit `/etc/systemd/system/atsd.service` and replace default `Type` parameter setting `oneshot` with `forking`.
+If running ATSD on a shared server with a heavy workload, edit `/etc/systemd/system/atsd.service`. Set the `Type` parameter to `forking`.
 
 ```yaml
 [Service]
