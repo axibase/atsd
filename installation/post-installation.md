@@ -16,7 +16,7 @@ Increase [receiving buffers](../administration/networking-settings.md) if you an
 
 * Synchronize system time and setup NTP to keep server time accurate.
 
-## Allocated Memory
+## Allocate Memory
 
 * [Enable swap space](../administration/swap-space.md).
 * Increase memory to [Java processes](../administration/memory-allocation.md).
