@@ -95,7 +95,7 @@ In the upper right corner select **detail** data type to view detailed values in
 
 Click **all** in the timespan control to view all available data or use the mouse wheel to zoom and pan the time axis to a shorter time interval.
 
-Take a moment to become familiar with [time chart](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) controls.
+Take a moment to become familiar with [Time Chart](https://axibase.com/docs/charts/widgets/time-chart/) controls.
 
 The default portal consists of a single time chart for one series. You can create [portals](../portals/README.md) with a custom layout and any number of widgets.
 

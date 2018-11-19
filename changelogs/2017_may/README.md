@@ -63,7 +63,7 @@
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|----------------------
-| [4153](#issue-4153) | box | Bug | Fixed an auto-scaling error for aggregated series in the [Box Widget](https://axibase.com/products/axibase-time-series-database/visualization/widgets/box-chart-widget/#tab-id-1). |
+| [4153](#issue-4153) | box | Bug | Fixed an auto-scaling error for aggregated series in the [Box Chart](https://axibase.com/docs/charts/widgets/box-chart/). |
 | 4124 | refactoring | Bug | Optimize series-label rendering. |
 
 ---
