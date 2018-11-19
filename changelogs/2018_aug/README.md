@@ -96,7 +96,7 @@ Issue| Category   | Type   | Subject
 
 Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
-5588|widget-settings|Feature|Add [smooth](https://axibase.com/docs/charts/widgets/shared#series-settings) settings.
+5588|widget-settings|Feature|Add [smoothing](https://axibase.com/docs/charts/widgets/shared/#smoothing) settings.
 
 ## Collector
 

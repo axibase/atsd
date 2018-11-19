@@ -43,8 +43,8 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4699 | core | Bug | Prevent duplicate series from being displayed when creating derived series from wildcard series.  |
-| [4611](#issue-4611) | bar | Feature | Add support for `multiple-column` setting.|
+| 4699 | core | Bug | Prevent duplicate series from being displayed when creating derived series from [wildcard](https://axibase.com/docs/charts/syntax/wildcards.html#wildcards) series.  |
+| [4611](#issue-4611) | bar | Feature | Add support for [`multiple-column`](https://axibase.com/docs/charts/widgets/bar-chart/#multiple-column) setting.|
 | 4683| external | Feature | Update client adapter for external JavaScript libraries. |
 | 4690 | widgets | Feature | Speed up series filtering in dependent charts. |
 | 4678 | api | Feature | Upgrade JavaScript adapter for external charting libraries. |

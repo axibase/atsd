@@ -40,15 +40,15 @@
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
-| 3481| widget-settings | Feature | Implemented a JavaScript replacement for the Freemarker `getSeries` method. |
+| 3481| widget-settings | Feature | Implemented JavaScript replacement for the Freemarker [`getSeries()`](https://axibase.com/docs/charts/syntax/functions.html#getseries) method. |
 | 3078 | widget-settings | Feature | Added support for new series settings [`exact-match`](https://axibase.com/docs/charts/widgets/property-table/#exact-match) and [`interpolate-extend`](https://axibase.com/docs/charts/widgets/shared/#interpolate-extend). |
-| [3754](#issue-3754)          | bar             | Bug     | Columns not created for series with statistic and wildcard matches.                          |
-| [3654](#issue-3654)          | widget-settings | Feature | Support for meta fields in label-format.                                           |
+| [3754](#issue-3754)          | bar             | Bug     | Columns not created for series with [statistic](https://axibase.com/docs/charts/syntax/value_functions.html#statistical-functions) and [wildcard](https://axibase.com/docs/charts/syntax/wildcards.html#wildcards) matches.                          |
+| [3654](#issue-3654)          | widget-settings | Feature | Support for meta fields in [`label-format`](https://axibase.com/docs/charts/syntax/label-formatting.html#label-formatting).                                           |
 | [3636](#issue-3636)          | data-loading    | Bug     | Series not displayed if requested for the entity group or with the entity expression.                                         |
 | [3143](#issue-3143)          | table           | Bug     | Value and time columns of series with shorter periods are not displayed.         |
 | 2928 | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://axibase.com/docs/charts/widgets/time-chart/#fill-value) to prevent collision.|
-| [2528](#issue-2528) | property        | Feature | Implemented support for the `column-label-format` setting to transform column headers. |
-| [1926](#issue-1926) | box             | Feature | Added mouse-over tooltips for box charts. |
+| [2528](#issue-2528) | property        | Feature | Implemented support for the [`column-label-format`](https://axibase.com/docs/charts/widgets/bar-chart/#column-label-format) setting to transform column headers. |
+| [1926](#issue-1926) | box             | Feature | Added mouse-over [`tooltip`](https://axibase.com/docs/charts/widgets/shared/#tooltip) setting for [Box Chart](https://axibase.com/docs/charts/widgets/box-chart/). |
 
 ---
 

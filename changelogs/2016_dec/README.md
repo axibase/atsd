@@ -76,7 +76,7 @@
 
 | **Issue** | **Category**| **Type** | **Subject**|
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
-| 3523| property| Bug| Set format-number to `false` by default to allow users enable it explicitly at the widget or column level. |
+| 3523| property| Bug| Set [`format-numbers`](https://axibase.com/docs/charts/widgets/property-table/#format-numbers) to `false` by default to allow users to enable it explicitly at the `[widget]` or [`[column]`](https://axibase.com/docs/charts/widgets/property-table/#column-settings) level. |
 
 ### Issue 3737
 
