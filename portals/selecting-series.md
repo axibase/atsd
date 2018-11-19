@@ -14,7 +14,7 @@
 ## Database Schema
 
 Widget configuration syntax provides a way to load and display time series data stored in a database. As series values
-change over time, their history can be visualized on portals with [various widgets](https://axibase.com/products/axibase-time-series-database/visualization/widgets/).
+change over time, their history can be visualized on portals with [various widgets](https://axibase.com/docs/charts/#widgets).
 
 ```ls
 [widget]
@@ -50,9 +50,9 @@ An entity can be instrumented and monitored with multiple metrics, just as the s
 
 Search available series from the **Series** tab in the main menu.
 
-Alternatively, for known entities, explore metrics and series via portals containing [drop-down list](https://axibase.com/products/axibase-time-series-database/visualization/widgets/dropdown/) selectors.
+Alternatively, for known entities, explore metrics and series via portals containing [drop-down list](https://axibase.com/docs/charts/configuration/drop-down-lists.html#drop-down-lists) selectors.
 
-[![](./resources/button.png)](https://apps.axibase.com/chartlab/d6e73e37/2)
+[![](../images/new-button.png)](https://apps.axibase.com/chartlab/d6e73e37/2)
 
 ## Selecting Specific Series
 
@@ -149,8 +149,8 @@ The default value of the `multiple-series` setting is `true` in the following ca
 
 * Multiple entities are specified, for example `entity = nur1, nur2`
 * Multiple tag values are specified, for example `[tags] mount = /, /tmp`
-* Entity name contains a [wildcard character](https://axibase.com/products/axibase-time-series-database/visualization/widgets/wildcards/), for example `entity = nur*`
-* Tag value contains a [wildcard character](https://axibase.com/products/axibase-time-series-database/visualization/widgets/wildcards/), for example `[tags] mount = /t*`
+* Entity name contains a [wildcard character](https://axibase.com/docs/charts/syntax/wildcards.html#wildcards), for example `entity = nur*`
+* Tag value contains a [wildcard character](https://axibase.com/docs/charts/syntax/wildcards.html#wildcards), for example `[tags] mount = /t*`
 * `entity-expression`, `entity-group`, or `tag-expression` is present
 
 ![](./resources/multiple-series-1.png)

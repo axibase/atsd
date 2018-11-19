@@ -314,7 +314,7 @@ metricTag('alias', 'tag_name') – return metric tag value for series with the s
 metricTag('tag_name') – return metric tag value for the current series
 ```
 
-Refer to [metadata](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/) documentation for additional examples.
+Refer to [Meta Data](https://axibase.com/docs/charts/configuration/meta-data.html) documentation for additional examples.
 
 [ChartLab](https://apps.axibase.com/chartlab/2b15e6f9)
 
