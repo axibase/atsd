@@ -33,7 +33,7 @@ Expand **Portals** from the top menu and click **Create**
     [configuration]
       height-units = 2
       width-units = 2
-      time-span = 24 hour
+      timespan = 24 hour
       update-interval = 5 second
 
     [group]
