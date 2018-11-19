@@ -64,7 +64,7 @@
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|----------------------
 | [4153](#issue-4153) | box | Bug | Fixed an auto-scaling error for aggregated series in the [Box Chart](https://axibase.com/docs/charts/widgets/box-chart/). |
-| 4124 | refactoring | Bug | Optimize series-label rendering. |
+| 4124 | refactoring | Bug | Optimize [`series-labels`](https://axibase.com/docs/charts/widgets/pie-chart/#series-labels) rendering. |
 
 ---
 

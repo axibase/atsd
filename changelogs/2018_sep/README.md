@@ -66,7 +66,7 @@
 |0005|plugin| Bug | Validator: Error caused by whitespace between setting name and value.
 |0004|plugin| Bug | Incorrect diagnostic message severity levels.
 |0003|plugin| Bug| Validator: Incorrect warning for `[tag]` usage.
-|0002|plugin| Bug| Validator: Erroneous [Freemarker](../../portals/freemarker.md) and [`script/endscript`](https://axibase.com/docs/charts/syntax/control-structures.html#script) warnings.
+|0002|plugin| Bug| Validator: Erroneous [Freemarker](../../portals/freemarker.md) and [`script`](https://axibase.com/docs/charts/syntax/control-structures.html#script) warnings.
 |0001|plugin| Feature | Remove errors from console when a file is closed.
 
 ## Collector

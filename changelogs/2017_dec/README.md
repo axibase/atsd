@@ -77,7 +77,7 @@
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4805    | api    | Feature    | Interpolation field in series configuration. |
+| 4805    | api    | Feature    | [Interpolation field](https://axibase.com/docs/charts/configuration/aggregators.html#interpolation-functions) in series configuration. |
 
 ---
 

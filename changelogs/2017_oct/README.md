@@ -77,7 +77,7 @@
 | 4594 | installation | Support | Speed up collector installation and start-up. |
 | 4065 | installation | Support | Print detailed information during the startup process. |
 | 4582 | docker | Feature | Add shutdown hook in collector to update docker host status on shutdown. |
-| 4596 | docker | Feature | Validate atsd_url and collector password in the `entrypoint` script prior to starting the collector. |
+| 4596 | docker | Feature | Validate `atsd_url` and collector password in the `entrypoint` script prior to starting Collector. |
 | 4577 | core | Bug | Update packages to latest stable versions without known security issues. |
 
 ---
@@ -87,7 +87,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4626 | time-chart | Bug | Prevent duplicate series from being displayed after incremental data is loaded. |
-| 4601 | widget-settings | Bug | Rename `getValueAtPoint` function as `getValueForDate`. |
+| 4601 | widget-settings | Bug | Rename `getValueAtPoint()` function as [`getValueForDate()`](https://axibase.com/docs/charts/syntax/udf.html#getvaluefordate). |
 | 2185 | time-chart | Feature | Speed up rendering of column-stack charts with many series. |
 
 ---
