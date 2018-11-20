@@ -55,10 +55,10 @@
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
-| 4126 | box | Feature | Add **Last** to the tooltip in box chart |
-| 4122 | widget-settings | Bug | Remove colon suffix in labels when `add-meta` is used and `legend-last-value = false` |
+| 4126 | box | Feature | Add **Last** to [Box Chart](https://axibase.com/docs/charts/widgets/box-chart/) tooltip. |
+| 4122 | widget-settings | Bug | Remove colon suffix in labels when [`add-meta`](https://axibase.com/docs/charts/widgets/shared/#add-meta) is used and `legend-last-value = false` |
 | [4043](#issue-4043) | widget-settings | Bug | Fix color assignment for wildcard series. |
-| [3850](#issue-3850) | widget-settings | Bug | Fix `end-time` calculation to increment month if it has fewer days than the current month. |
+| [3850](#issue-3850) | widget-settings | Bug | Fix [`end-time`](https://axibase.com/docs/charts/widgets/shared/#end-time) calculation to increment month if it has fewer days than the current month. |
 
 ---
 

@@ -20,7 +20,7 @@ We have over a decade of experience in infrastructure management systems, big da
 ### 2014
 
 * **Q1**: Addition of [REST API](./api/data/README.md) and [Network API](./api/network/README.md).
-* **Q2**: Introduction of [Charts](https://axibase.com/products/axibase-time-series-database/visualization/) and [Portals](./portals/README.md).
+* **Q2**: Introduction of [Charts](https://axibase.com/docs/charts/) and [Portals](./portals/README.md).
 * **Q3**: Release and integration of [Axibase Collector](https://axibase.com/docs/axibase-collector/)
 
 ### 2015

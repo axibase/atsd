@@ -48,10 +48,11 @@
         ,{ "pattern": "https://data.worldbank.org/country/saudi-arabia"}
         ,{ "pattern": "https://www.washingtonpost.com/.*"}
         ,{ "pattern": "https://www.niddk.nih.gov/health-information/health-statistics/overweight-obesity"}
-        ,{ "pattern": "https://www.senate.gov/*"}
-        ,{ "pattern": "https://www.finance.senate.gov/*"}
+        ,{ "pattern": "https://www.senate.gov/.*"}
+        ,{ "pattern": "https://www.finance.senate.gov/.*"}
         ,{ "pattern": "http://www.sao.ru/"}
         ,{ "pattern": "https://www.bea.gov/.*"}
-        ,{ "pattern": "https://www.nato.int/*"}
-        ,{ "pattern": "https://maven-badges.herokuapp.com/maven-central/com.axibase/*"}
+        ,{ "pattern": "https://www.nato.int/.*"}
+        ,{ "pattern": "https://maven-badges.herokuapp.com/maven-central/com.axibase/.*"}
+        ,{ "pattern": "https://www.britannica.com/.*"}
     ]}

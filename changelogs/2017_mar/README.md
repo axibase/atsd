@@ -47,8 +47,8 @@
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
-| [4006](#issue-4006) | widget-settings | Feature | Add fixed-fraction formatter. |
-| [3997](#issue-3997) | time-chart | Bug | Change legend style for forecast series. |
+| [4006](#issue-4006) | widget-settings | Feature | Add [`fixed`](https://axibase.com/docs/charts/syntax/format-settings.html#fixed) fraction formatter. |
+| [3997](#issue-3997) | time-chart | Bug | Change legend style for [forecast](../../forecasting/README.md#charts) series. |
 | [3956](#issue-3956) | data-loading | Bug | Treat [tags] containing comma as separate tag values. |
 | [3975](#issue-3975) | widget-settings | Feature | Implement `tag-expression` setting to filter series by tag values. |
 | 3970 | treemap         | Bug     | Fixed `display = false` behavior.                                                         |
@@ -314,7 +314,7 @@ metricTag('alias', 'tag_name') – return metric tag value for series with the s
 metricTag('tag_name') – return metric tag value for the current series
 ```
 
-Refer to [metadata](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/) documentation for additional examples.
+Refer to [Meta Data](https://axibase.com/docs/charts/configuration/meta-data.html) documentation for additional examples.
 
 [ChartLab](https://apps.axibase.com/chartlab/2b15e6f9)
 

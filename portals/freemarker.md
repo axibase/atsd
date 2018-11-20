@@ -382,7 +382,7 @@ width-units = 1
 [widget]
 type = chart
 title = CPU Used
-time-span = 1 hour
+timespan = 1 hour
 max-range = 100
 
 [series]

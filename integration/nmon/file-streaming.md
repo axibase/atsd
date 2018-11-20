@@ -158,9 +158,9 @@ Entities collecting `nmon` data are also automatically assigned predefined `nmon
 
 Predefined AIX and Linux `nmon` portals cover a variety of key metrics and have been designed to provide visibility into the performance of the target server.
 
-Custom portals can be created using [HTML5 Widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization") to visualize any combination of collected [`nmon` metrics](./format.md).
+Custom portals can be created using [HTML5 Widgets](https://axibase.com/docs/charts/ "Visualization") to visualize any combination of collected [`nmon` metrics](./format.md).
 
-[![](./resources/widget-bar-2.png "widget bar 2")](https://axibase.com/products/axibase-time-series-database/visualization/widgets/)
+[![](./resources/widget-bar-2.png "widget bar 2")](https://axibase.com/docs/charts/widgets/)
 
 #### Predefined nmon AIX Portal
 
@@ -171,4 +171,4 @@ Custom portals can be created using [HTML5 Widgets](https://axibase.com/products
 ![](./resources/nmon-linux-portal.png "nmon linux portal")
 
 Once `nmon` data is streamed into ATSD and predefined portals are working, you can use the [Rule Engine](../../rule-engine "Rule Engine") and
-[Forecasting](../../forecasting/README.md) tools for analyzing and planning capacity. Custom portals can be created using [HTML5 widgets](https://axibase.com/products/axibase-time-series-database/visualization/ "Visualization").
+[Forecasting](../../forecasting/README.md) tools for analyzing and planning capacity. Custom portals can be created using [HTML5 widgets](https://axibase.com/docs/charts/ "Visualization").

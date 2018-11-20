@@ -76,17 +76,17 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [3958](#issue-3958) | core   | Bug | Improved performance of legend rendering.                                    |
-| [3921](#issue-3921) | widget-settings | Bug     | Added an `escape()` method to `list` and `var` arrays to escape commas in elements.|
+| [3921](#issue-3921) | widget-settings | Bug     | Added [`escape()`](https://axibase.com/docs/charts/syntax/functions.html#list-escape) method to `list` and `var` arrays to escape commas in elements.|
 | 3917 | widget-settings | Bug     | Added the ability to escape commas and backslashes in settings which contain a list.|
-| [3897](#issue-3897) | table      | Feature | Added an `auto-height` setting.|
+| [3897](#issue-3897) | table      | Feature | Added [`auto-height`](https://axibase.com/docs/charts/widgets/shared-table/#auto-height) setting.|
 | 3896| table      | Feature | Added a setting to hide table headers.|
 | 3791| table      | Bug     | Fixed slider un-focus behavior after data update.|
-| 3908 | table          | Bug     | Fixed row sorting when conditional `display: none` style is used.                                      |
+| 3908 | table          | Bug     | Fixed row sorting when conditional [`display: none`](https://axibase.com/docs/charts/configuration/display-filters.html#display-filters) style is used.                                      |
 | [3901](#issue-3901) | portal    | Support | Added ability to hide rows if no alert is raised for all metrics in a row.          |
-| [3792](#issue-3792) | box       | Feature | Implemented class **Metro**.                                                            |
+| [3792](#issue-3792) | box       | Feature | Implemented [`metro`](https://axibase.com/docs/charts/widgets/box-chart/#class) class setting.                                                            |
 | 3839 | time-chart  | Bug     | Negative style not applied to marker color. |
 | 3836 | bar         | Bug     | Remove on-load animation in bar and pie widgets. |
-| 3794 | box         | Bug     | Fix tooltip issues. |
+| 3794 | box         | Bug     | Fix [`tooltip`](https://axibase.com/docs/charts/widgets/shared/#tooltip) issues. |
 
 ----
 
