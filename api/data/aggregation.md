@@ -61,4 +61,4 @@ The `COUNTER` function returns the sum of positive differences between consecuti
 
 * If the previous period contains no values, the calculation starts with the first value in the current period.
 * If there is only one value in the current period and the previous period is empty, the function returns `null` which is included in the response.
-* If all the differences between consecutive samples were non-negative, the result of the `COUNTER` function is equal to the `DELTA` function.
+* If all the differences between consecutive samples are non-negative, the result of the `COUNTER` function is equal to the `DELTA` function.
