@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Upload CSV files](uploading-csv-files.md) via HTTP API or manually through the web interface.
+Upload CSV files via [REST API](../../api/data/ext/csv-upload.md) or manually through the web interface.
 
 ![](./resources/csv.gif)
 
