@@ -252,6 +252,8 @@ sudo certbot renew --deploy-hook "/opt/certbot/deploy-atsd.sh"
 
 The certbot skips the renewal if the certificate is valid for more than 30 days.
 
+<!-- markdownlint-disable MD102 -->
+
 ```txt
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
@@ -266,6 +268,8 @@ No renewals were attempted.
 No hooks were run.
 -------------------------------------------------------------------------------
 ```
+
+<!-- markdownlint-enable MD102 -->
 
 The `--force-renewal` option forces the certbot to request new certificates.
 
