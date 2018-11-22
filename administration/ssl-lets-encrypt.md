@@ -4,7 +4,7 @@
 
 [Let's Encrypt](https://letsencrypt.org) is a certificate authority (CA) established by the [EFF Foundation](https://www.eff.org/) in 2016 to automate the SSL certificate issuance process.
 
-Background information is available in the [SSL Certificate Guide for Java Developers](https://axibase.com/use-cases/tutorials/workshop/lets-encrypt.html).
+Background information is available in the [SSL Certificate Guide for Java Developers](https://axibase.com/use-cases/workshop/lets-encrypt.html).
 
 This instruction describes the process of installing and renewing SSL certificates in ATSD using [EFF Certbot](https://certbot.eff.org) agent.
 
@@ -252,6 +252,8 @@ sudo certbot renew --deploy-hook "/opt/certbot/deploy-atsd.sh"
 
 The certbot skips the renewal if the certificate is valid for more than 30 days.
 
+<!-- markdownlint-disable MD102 -->
+
 ```txt
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
@@ -266,6 +268,8 @@ No renewals were attempted.
 No hooks were run.
 -------------------------------------------------------------------------------
 ```
+
+<!-- markdownlint-enable MD102 -->
 
 The `--force-renewal` option forces the certbot to request new certificates.
 
