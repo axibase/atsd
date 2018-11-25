@@ -62,3 +62,9 @@ The `COUNTER` function returns the sum of positive differences between consecuti
 * If the previous period contains no values, the calculation starts with the first value in the current period.
 * If there is only one value in the current period and the previous period is empty, the function returns `null` which is included in the response.
 * If all the differences between consecutive samples are non-negative, the result of the `COUNTER` function is equal to the `DELTA` function.
+
+### `PERCENTILE`
+
+* The percentile [calculation method](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) uses `N+1` as the sample size and performs linear interpolation between consecutive values.
+* `PERCENTILE_100` is equal to `MAX`.
+* `PERCENTILE_0` is not valid.

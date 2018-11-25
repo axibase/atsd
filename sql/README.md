@@ -2424,9 +2424,11 @@ The `COUNT(*)` function returns the number of rows in the result set, whereas th
 
 #### PERCENTILE
 
-The `PERCENTILE` function accepts `percentile` parameter (0 to 100) as the first argument and a numeric expression as the second argument, for example `PERCENTILE(75, value)`.
+The `PERCENTILE` function accepts `percentile` parameter within the `[0 to 100]` range as the first argument and a numeric expression as the second argument, for example `PERCENTILE(75, value)`.
 
-`PERCENTILE(0, value)` is equal to `MIN(value)` whereas `PERCENTILE(100, value)` is equal to `MAX(value)`.
+Note that `PERCENTILE(100, value)` is equal to `MAX(value)`, however `PERCENTILE(0, value)` is not allowed.
+
+The percentile [calculation method](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) uses `N+1` as the sample size and performs linear interpolation between consecutive values.
 
 #### FIRST
 
