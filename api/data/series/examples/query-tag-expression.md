@@ -1,17 +1,23 @@
-# Series Query: Match Records using Tag Expression with Wildcard
+# Series Query: Match Records using Tag Expressions
 
 ## Description
 
-The `tagExpression` provides a more flexible filtering option compared to the `tags` object. The `tagExpression` can refer to multiple tags in one condition, it can negate the condition, it can apply value transformation such as case-insensitive match.
+The `tagExpression` is a boolean expression that provides a flexible filtering option compared to the `tags` object.
+
+The `tagExpression` can refer to multiple tags in one condition, negate the condition, or modify the tag value for case-insensitive match.
 
 ## Examples
 
 | **Expression** | **Description** |
 |---|---|
 | `tags.location = 'abc'` | Include series with `location` tag equal `abc`. |
+| `tags.location IN ('abc', 'cde')` | Include series with `location` tag equal `abc` or `cde`. |
+| `tags.location NOT IN ('abc', 'cde')` | Include series with `location` tag other than `abc` or `cde`. |
 | `tags.location LIKE '*abc'` | Include series with `location` tag ending with `abc`. |
 | `tags.location LIKE '*abc' OR tags.mode = 'desktop'` | Include series either with `location` tag ending with `abc` or `mode` tag equal to `desktop`. |
-| `tags.location LIKE '*abc' AND NOT tags.mode = 'mobile'` | Include series with `location` tag ending with `abc` AND `mode` tag not equal to `mobile`. |
+| `tags.location LIKE '*abc' AND tags.mode != 'mobile'` | Include series with `location` tag ending with `abc` AND `mode` tag not equal to `mobile`. |
+
+> Note that string comparison is case-sensitive. Apply the `LOWER` function to match case-insensitive values if necessary.
 
 ## Request
 

@@ -92,13 +92,17 @@ The query contains **filter** fields to find time series in the database, **tran
 #### Tag Expression
 
 * The `tagExpression` can refer to series tags by name using `tags.{name}` syntax.
-* The series record must satisfy both the `tags` object and the `tagExpression` to be included in the results.
-* Supported operators: `LIKE`, `NOT LIKE`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
+* The series record must satisfy both the `tags` object and the `tagExpression` condition to be included in the results.
+* Supported operators: `LIKE`, `NOT LIKE`, `IN`, `NOT IN`, `=`, `!=`, `>=`, `>`, `<=`, `<`.
 * Supported functions: `LOWER`.
 * Wildcards `?` and `*` are supported by `LIKE` and `NOT LIKE` operators. Symbols `?` and `*` are treated as regular characters when used with comparison operators `=`, `!=`, `>=`, `>`, `<=`, `<`.
 
 ```json
 "tagExpression": "tags.file_system LIKE '/dev/sda*'"
+```
+
+```json
+"tagExpression": "tags.file_system NOT IN ('/dev/sda1', '/dev/sda2')"
 ```
 
 ### Date Filter
