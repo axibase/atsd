@@ -856,7 +856,13 @@ Changing the case of a tag value condition `tags.file_system = '/DEV/mapper/vg_n
 
 ## Arithmetic Operators
 
-Arithmetic operators, including `+`, `-`, `*`, `/`, and `%` (modulo) can be applied to one or multiple numeric columns.
+Arithmetic operators, including `+`, `-`, `*`, `/`, and `%` (modulo) can be applied to numeric columns or literal number.
+
+> The modulo operator `%` returns the remainder of one number divided by another, for instance `14 % 3` (= 2).
+
+:::tip Note
+Arithmetic calculations are performed with `double` precision.
+:::
 
 ```sql
 SELECT datetime, SUM(value), SUM(value + 100) / 2
@@ -872,7 +878,7 @@ SELECT AVG(metric1.value*2), SUM(metric1.value + metric2.value)
 WHERE metric1.datetime >= NOW - 10*MINUTE
 ```
 
-The modulo operator `%` returns the remainder of one number divided by another, for instance `14 % 3` (= 2).
+
 
 ## Match Expressions
 
