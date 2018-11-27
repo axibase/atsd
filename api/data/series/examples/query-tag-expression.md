@@ -30,7 +30,7 @@ POST /api/v1/series/query
         "endDate":   "2016-02-22T13:35:00Z",
         "entity": "nurswgvml007",
         "metric": "df.disk_used_percent",
-        "taxExpression": "file_system LIKE '/dev*'"
+        "tagExpression": "tags.file_system LIKE '/dev*'"
     }
 ]
 ```
