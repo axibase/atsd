@@ -878,8 +878,6 @@ SELECT AVG(metric1.value*2), SUM(metric1.value + metric2.value)
 WHERE metric1.datetime >= NOW - 10*MINUTE
 ```
 
-
-
 ## Match Expressions
 
 ### IN Expression
