@@ -4,7 +4,7 @@
 
 * Row numbers are unique for each partition
 * Rank is the same for rows with the same values in ordered columns. In this case, rank is assigned based on `round(value)` result. Rank contains gaps and is not consecutive.
-* Dense rank is the same for rows with the same values in ordered columns. Dense rank is assigned based on `round(value)` result. Dense rank is continuosly incrementing and has no gaps.
+* Dense rank is the same for rows with the same values in ordered columns. Dense rank is assigned based on `round(value)` result. Dense rank is continuously incrementing and has no gaps.
 
 ### Query
 

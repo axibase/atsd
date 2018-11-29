@@ -1734,7 +1734,7 @@ The `{ordering columns [direction]}` can refer to any column of the `FROM` claus
 Example | Description
 ---|---
 `ROW_NUMBER(entity ORDER BY time)` | Partition rows by `entity` column.<br>Sort rows within each partition by `time` in ascending order.
-`ROW_NUMBER(entity, tags ORDER BY time DESC)` | Partition rows by `entity` and `tags` columns so that each partition contains rows for only one series.<br>Sort rows within each partition by `time` in descending order.
+`ROW_NUMBER(entity, tags ORDER BY time DESC)` | Partition rows by `entity` and `tags` columns in such a way that each partition contains rows for only one series.<br>Sort rows within each partition by `time` in descending order.
 `ROW_NUMBER(value ORDER BY value DESC)` | Partition rows by `value` column.<br>Sort rows by decreasing `value` column values.
 `ROW_NUMBER(entity ORDER BY AVG(value))` | Partition rows by `entity` column.<br>Sort rows within each partition by average value in each period.<br>Aggregate functions in `{ordering columns}` are allowed when partitioning is applied to grouped rows.
 
