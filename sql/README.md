@@ -738,15 +738,16 @@ For aliased columns, the underlying column and table names, or expression text, 
 ```ls
 |-------------|-------------|-------------|-------------|
 | AND         | AS          | ASC         | BETWEEN     |
-| BY          | CASE        | CAST        | DESC        |
-| ELSE        | ESCAPE      | FROM        | GROUP       |
-| HAVING      | IN          | INNER       | INTERPOLATE |
-| ISNULL      | JOIN        | LAG         | LAST_TIME   |
-| LEAD        | LIKE        | LIMIT       | LOOKUP      |
-| NOT         | OFFSET      | OPTION      | OR          |
-| ORDER       | OUTER       | PERIOD      | REGEX       |
-| ROW_NUMBER  | SELECT      | THEN        | USING       |
-| VALUE       | WHEN        | WHERE       | WITH        |
+| BY          | CASE        | CAST        | DENSE_RANK  |
+| DESC        | ELSE        | ESCAPE      | FROM        |
+| GROUP       | HAVING      | IN          | INNER       |
+| INTERPOLATE | ISNULL      | JOIN        | LAG         |
+| LAST_TIME   | LEAD        | LIKE        | LIMIT       |
+| LOOKUP      | NOT         | OFFSET      | OPTION      |
+| OR          | ORDER       | OUTER       | PERIOD      |
+| RANK        | REGEX       | ROW_NUMBER  | SELECT      |
+| THEN        | USING       | VALUE       | WHEN        |
+| WHERE       | WITH        |             |             |
 |-------------|-------------|-------------|-------------|
 ```
 
@@ -1696,11 +1697,11 @@ HAVING AVG(value) > 10 OR MAX(value) > 90
 
 ## Partitioning
 
-Partitioning is implemented with the `ROW_NUMBER` function, which returns the sequential number of a row within a partition, starting with 1 for the first row in each partition.
+Partitioning is implemented with the `ROW_NUMBER` function, which returns the sequential number of a row within a partition, starting with `1` for the first row in each partition.
 
 A partition is a subset of all rows within the result set, grouped by an entity or series tags. Each row in the result set can belong to only one partition.
 
-For example, a result set partitioned by entity and ordered by time has the following row numbers:
+For example, a result set, partitioned by entity and ordered by time, has the following row numbers:
 
 ```ls
 |--------------|----------------------|-------| ROW_NUMBER
@@ -1714,29 +1715,62 @@ For example, a result set partitioned by entity and ordered by time has the foll
 | nurswgvml011 | 2017-06-18T12:00:29Z | 0.0   |     3
 ```
 
+::: Difference between Partitioning and Grouping
+Unlike the `GROUP BY` clause, partitioning does not reduce the row count. Roll-up functions applied in the `GROUP BY` clause are called _aggregate_ functions, whereas the functions applied to partitions are called _windowing_ or _analytical_ functions.
+:::
+
 ### ROW_NUMBER Syntax
 
 ```sql
 ROW_NUMBER({partitioning columns} ORDER BY {ordering columns [direction]})
 ```
 
-The `{partitioning columns}` clause is one or multiple columns for splitting the rows, for example `entity`, `tags`, or `entity, tags`.
+The `{partitioning columns}` clause must contain one or multiple columns for splitting the rows, for example `entity`, `tags`, or `entity, tags`.
 
-The `{ordering columns [direction]}` can be any columns of the `FROM` clause with an optional `ASC/DESC` direction.
+> Since the combination of the `entity` and `tags` columns constitutes the primary key of the series, the `ROW_NUMBER(entity, tags ...)` expression effectively creates a partition for **each** series.
 
-Examples:
+The `{ordering columns [direction]}` can refer to any column of the `FROM` clause with an optional `ASC/DESC` sorting direction.
 
-* `ROW_NUMBER(entity ORDER BY time)`
+Example | Description
+---|---
+`ROW_NUMBER(entity ORDER BY time)` | Partition rows by `entity` column.<br>Sort rows within each partition by `time` in ascending order.
+`ROW_NUMBER(entity, tags ORDER BY time DESC)` | Partition rows by `entity` and `tags` columns so that each partition contains rows for only one series.<br>Sort rows within each partition by `time` in descending order.
+`ROW_NUMBER(value ORDER BY value DESC)` | Partition rows by `value` column.<br>Sort rows by decreasing `value` column values.
+`ROW_NUMBER(entity ORDER BY AVG(value))` | Partition rows by `entity` column.<br>Sort rows within each partition by average value in each period.<br>Aggregate functions in `{ordering columns}` are allowed when partitioning is applied to grouped rows.
 
-* `ROW_NUMBER(entity, tags ORDER BY time DESC)`
+### Partition Ordering
 
-* `ROW_NUMBER(value ORDER BY value DESC)`
+Each row in the partition is assigned an ordinal row number, starting with `1`, which can be used to filter sorted rows within each partition.
 
-* `ROW_NUMBER(entity, tags ORDER BY time DESC, AVG(value))`
+```sql
+WITH ROW_NUMBER(entity ORDER BY value) <= 10
+```
 
-The `ROW_NUMBER(entity, tags ...)` grouping effectively creates a partition for each series.
+The row numbers can be accessed in the `SELECT` expression using the `row_number()`, `rank()` and `dense_rank()` functions which return an ordinal integer number for each row, starting with `1`. The numbers are assigned **separately** within each partition, **after** the rows in each partition are sorted according to the `{ordering columns [direction]}` clause.
 
-The assigned row numbers can be used to filter rows within each partition for the following use cases:
+Function | Description
+---|---
+`row_number()` | Continuously incrementing, unique row number assigned to each row in the partition.<br>Row numbers are unique within each partition.
+`rank()` | Incrementing rank number assigned to each row in the partition.<br>Rows with the same values in the sorted columns are assigned the same rank.<br>The rank is incremented by the number of rows with the same values, in which case the sequence of `rank()` numbers has gaps and is not consecutive.
+`dense_rank()` | Same as `rank()` function except `dense_rank()` numbers are continuously incremented and thus are consecutive.
+
+```sql
+WITH ROW_NUMBER(entity, tags ORDER BY value DESC) > 0
+```
+
+```txt
+| value  | row_number()  | rank()  | dense_rank() |
+|--------|---------------|---------|--------------|
+| 80     | 1             | 1       | 1            |
+| 80     | 2             | 1       | 1            |
+| 79     | 3             | 3       | 2            |
+| 79     | 4             | 3       | 2            |
+| 78     | 5             | 5       | 3            |
+| 77     | 6             | 6       | 4            |
+| 76     | 7             | 7       | 5            |
+```
+
+#### Partitioning Examples
 
 * Return maximum (`ORDER BY value DESC`) or most recent (`ORDER BY time DESC`) records from each partition.
 

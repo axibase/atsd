@@ -83,6 +83,7 @@
 
 * [Partitioning using Row Number Function](partition-row-number.md)
 * [`Top-N` Query using Row Number Function](partition-row-number-top-N-tags.md)
+* [Row number, Rank, and Dense Rank Functions](partition-rank.md)
 * [Last Time](last-time.md)
 
 ## Subquery
