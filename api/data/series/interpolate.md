@@ -132,7 +132,7 @@ With default `INNER` mode, values outside of the selection interval are ignored.
 
 ![](./images/linear1.png)
 
-[![](./images/button.png)](https://apps.axibase.com/chartlab/cebdf97a)
+[![](../../../images/button.png)](https://apps.axibase.com/chartlab/cebdf97a)
 
 ### `LINEAR` Function: 30 Minute Period
 
@@ -193,7 +193,7 @@ With default `INNER` mode, values outside of the selection interval are ignored.
 
 ![](./images/previous1.png)
 
-[![](./images/button.png)](https://apps.axibase.com/chartlab/127d547c)
+[![](../../../images/button.png)](https://apps.axibase.com/chartlab/127d547c)
 
 ### `LINEAR` Interpolation with `OUTER` Boundary
 
