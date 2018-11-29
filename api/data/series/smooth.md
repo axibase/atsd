@@ -2,7 +2,7 @@
 
 ![](./images/smooth-all.png)
 
-[![](../../../images/button.png)](https://apps.axibase.com/chartlab/3734bd35/4)
+[![](./images/button.png)](https://apps.axibase.com/chartlab/3734bd35/4)
 
 ## Overview
 
