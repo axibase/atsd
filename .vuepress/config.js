@@ -346,8 +346,7 @@ const forecastMenu = [
 
 const csvParsers = [
     ['', 'Overview'],
-    'csv-schema.md',
-    'uploading-csv-files.md',
+    'csv-schema.md'
 ]
 
 const gettingStartedMenu = [
