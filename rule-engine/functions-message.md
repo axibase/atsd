@@ -18,7 +18,11 @@ db_message_count(string interval, string type, string source
                                     [, string entity[, string expression]]]) long
 ```
 
-Returns the number of message records matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See matching rules [below](#matching-rules).
+Returns the number of messages matching the specified `interval`, message `type`, message `source`, `tags`, `entity`, and `expression`. See matching rules [below](#matching-rules).
+
+:::tip Note
+End of the selection interval is set to the **timestamp of the last command** in the window (not **current** time).
+:::
 
 ```javascript
 /*
@@ -26,6 +30,14 @@ Returns the number of message records matching the specified `interval`, message
   The current message is excluded.
 */
 db_message_count('15 minute', type, source, tags, entity)
+```
+
+```javascript
+/*
+  Returns message count for the same type, source, and entity as in the current message and specific tags
+  The current message is excluded.
+*/
+db_message_count('15 minute', type, source, ['api_app_id':'583'])
 ```
 
 ```javascript
@@ -100,7 +112,7 @@ That `date` field in the message object is `null`. The record time is stored in 
 ### Interval
 
 * Selection `interval` is specified in <code>count [units](../shared/calendar.md#interval-units)</code>, for example, `1 hour`.
-* End of selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
+* End of the selection interval is set to the **timestamp of the last command** in the window (not **current** time). As a result, the current command is excluded from counting.
 
 ### Type
 
@@ -117,13 +129,13 @@ That `date` field in the message object is `null`. The record time is stored in 
 
 ### Tags
 
-* If `tags` argument is specified as `null` or an empty string `''`, all tags are matched.
-* To match records with empty tags use `'tags.isEmpty() = true'` or `'tags.size() = 0'` in `expression`.
-* `tags` argument matches records that include the specified tags but can also include other tags.
 * `tags` argument can be specified as follows:
-  * String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
+  * String containing `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
   * Map: `['tag1':'value1', 'tag2':'value2']`
   * The `tags` field representing the grouping tags of the current window.
+* If `tags` is specified as `null` or an empty string `''`, all tags are matched.
+* To match records with empty tags use `'tags.isEmpty() = true'` or `'tags.size() = 0'` in `expression`.
+* `tags` argument matches records containing the specified tags but can also include other tags.
 
 ### Expression
 
