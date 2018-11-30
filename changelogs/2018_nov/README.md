@@ -4,8 +4,8 @@
 
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
-5800 | rule editor | Bug | [Rule Editor](../../rule-engine/): **Test** tab not displaying error. |
-5799 | license | Bug | License: Put incoming commands to `command_discarded.log` if license expired. |
+5800 | rule editor | Bug | [Rule Editor](../../rule-engine/): **Test** tab does not display error. |
+5799 | license | Bug | License: Record incoming commands in `command_discarded.log` if license expired. |
 5798 | license | Bug | License: `NullPointerException` in license check. |
 5797 | sql | Bug | SQL: Column alias partially unsupported in the [`WHERE`](../../sql/README.md#where-clause) clause. |
 5796 | api rest | Feature | [Series Query](../../api/data/series/query.md#series-query): Implement support for `IN`/`NOT IN` in `tagExpression`. |
@@ -13,7 +13,7 @@
 5789 | sql | Feature | SQL: Implement offset and default for [`LAG`](../../sql/examples/pi.md#new-lag-and-lead-functions) and [`LEAD`](../../sql/examples/pi.md#new-lag-and-lead-functions) functions. |
 5786 | administrator | Bug | Core: Version Check not performed. |
 5781 | portal | Bug | [Portals](../../portals/README.md#portals): Icon setting does not work for **View By Name**. |
-5774 | UI | Bug | UI: Remove number formatting from **Data Entry** command field. |
+5774 | UI | Bug | UI: Erroneous number formatting from **Data Entry** command field. |
 5770 | sql | Feature | SQL: Implement [`PI()`](../../sql/README.md#mathematical-functions) function.  |
 5769 | jdbc | Bug | [JDBC](https://github.com/axibase/atsd-jdbc/): Conflicting headers set on request. |
 5768 | sql | Bug | [SQL](../../sql/): Error message if query is missing or duplicate. |
