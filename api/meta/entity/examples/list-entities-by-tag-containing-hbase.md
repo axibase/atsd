@@ -34,5 +34,5 @@ name LIKE 'nur*' AND lower(tags.app) LIKE '*hbase*'
 }]
 ```
 
-* `lower(text)` is a built-in utility string function.
+* `lower(text)` is a built-in string function.
 * Java string functions can be used to modify the value, for example: `tags.app.toLowerCase()`

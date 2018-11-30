@@ -15,7 +15,7 @@ sidebarDepth: 0
 
 ## Creating Rules
 
-Open the **Alerts > Rules** page and click **Create** to configure an alert rule for the `temperature` metric using the built-in [Rule Engine](../rule-engine/README.md).
+Open the **Alerts > Rules** page and click **Create** to configure an alert rule for the `temperature` metric using the [Rule Engine](../rule-engine/README.md).
 
 ![](./resources/getting-started-4_1.png)
 
@@ -69,7 +69,7 @@ Save the rule and insert a few samples on the **Data Entry** page again. ATSD se
 
 ## Slack Alerts
 
-To receive alerts in [Slack](../rule-engine/notifications/slack.md) create a [bot](../rule-engine/notifications/slack.md#create-bot) user and configure the built-in [`SLACK`](../rule-engine/notifications/slack.md#configure-webhook-in-atsd) webhook.
+To receive alerts in [Slack](../rule-engine/notifications/slack.md) create a [bot](../rule-engine/notifications/slack.md#create-bot) user and configure the [`SLACK`](../rule-engine/notifications/slack.md#configure-webhook-in-atsd) webhook.
 
 Open the rule editor and enable alerts on the **Webhooks** tab as illustrated below.
 

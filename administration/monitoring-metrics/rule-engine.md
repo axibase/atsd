@@ -5,18 +5,13 @@ deviations.
 
 For example:
 
-Monitoring the `metric_received_per_second` metric can be done based on
-its forecast. In the example below, a forecast is generated for the
- `metric_received_per_second` metric using the built-in Forecasting
-tool. Based on the forecast a rule is created with the following
-expression:
+Monitoring the `metric_received_per_second` metric can be done by comparing incoming samples with the forecast. Based on this forecast, a rule condition can be expressed without hardcoding any thresholds:
 
 ```javascript
-abs(forecast_deviation(wavg())) > 2
+abs(forecast_deviation(avg())) > 2
 ```
 
-This rule raises an alert if the absolute forecast deviates from the
-15 minute weighted average by more than 2 standard deviations.
+The above condition triggers an alert if the 15 minute moving average deviates from the forecast by more than 2 standard deviations.
 
 Email notifications can be setup for alerts delivered when the rule is triggered.
 

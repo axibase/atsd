@@ -6,7 +6,7 @@ They can be programmed to send an alert to Slack, update a bug tracker, start a 
 
 ## Messaging Webhooks
 
-The built-in webhook types for messaging and collaboration services deliver alerts and charts to targeted subscribers.
+Webhooks for messaging and collaboration services deliver alerts and charts to targeted subscribers.
 
 | Type | Send Message | Send Chart | Integration Model | Hosting Model |
 | --- | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Enter a name by which the webhook is listed on the **Webhooks** tab in the rule 
 
 ### Payload
 
-The payload is determined by the webhook type. Typically the payload is text content in the form of a JSON document or form fields. Some built-in webhook types support sending chart screenshots as image files in addition to text content.
+The payload is determined by the webhook type. Typically the payload is text content in the form of a JSON document or form fields. Some webhook types support sending chart screenshots as image files in addition to text content.
 
 ### Web Driver
 

@@ -1,6 +1,6 @@
 # Monitoring Metrics using JMX
 
-ATSD provides a built-in JMX server which allows remote JMX clients to retrieve ATSD metrics using the JMX protocol.
+ATSD includes a built-in JMX server which allows remote JMX clients to retrieve ATSD metrics using the JMX protocol.
 
 ## Setup JMX in ATSD
 

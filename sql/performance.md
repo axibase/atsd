@@ -66,7 +66,7 @@ Each query is assigned a unique identifier for correlating starting and closing 
 
 ## Query Control Messages
 
-Execution events are also stored as messages with type=`sql` and source=`api|console|scheduled` for monitoring query performance using the built-in Rule Engine.
+Execution events are also stored as messages with type=`sql` and source=`api|console|scheduled` for monitoring query performance using the Rule Engine.
 
 The following message tags are available for filtering and grouping:
 

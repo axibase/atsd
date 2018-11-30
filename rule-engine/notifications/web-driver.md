@@ -129,6 +129,6 @@ sudo mv chromedriver /usr/bin/chromedriver
 
 * Create an outgoing webhook that supports sending screenshots such as [Telegram](telegram.md) or [Slack](slack.md). Verify that a screenshot is successfully delivered to the chat client.
 
-* Alternatively, enable the built-in [Email Client](../../administration/mail-client.md).
+* Alternatively, enable the [Mail Client](../../administration/mail-client.md).
 
 * Create a sample rule in the Rule Engine and attach a portal on the [Email](../email.md#portals) tab. Verify that the delivered email message contains the portal screenshot.

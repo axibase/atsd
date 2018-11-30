@@ -27,7 +27,7 @@ The webhook `name` must be listed as `enabled` on the **Alerts > Outgoing Webhoo
 
 Parameters and placeholders defined in the webhook are replaced using the input map `params`.
 
-Available parameters for built-in webhook types are enumerated [here](params-map.md).
+Available parameters for webhook types are enumerated [here](params-map.md).
 
 ### Content Type is Form
 

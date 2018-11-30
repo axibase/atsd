@@ -14,7 +14,7 @@ Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 
 ### Overview
 
-Schema-based parsers are JavaScript programs that traverse an underlying CSV file in left-right, top-down directions and convert cells into [series](../../../api/network/series.md), property, or message commands. These programs support built-in [functions](../csv-schema.md#schema-functions) which look up cells by row and column index, to validate their contents and modify their values as they assemble commands.
+Schema-based parsers are JavaScript programs that traverse an underlying CSV file in left-right, top-down directions and convert cells into [series](../../../api/network/series.md), property, or message commands. These programs support lookup [functions](../csv-schema.md#schema-functions) which locate cells by row and column index, to validate their contents and modify their values as they assemble commands.
 
 For a schema-based parser, only **Name**, **Schema** and **Timestamp Pattern** fields are mandatory. The **Schema** field contains the JavaScript program code implementing parsing logic.
 

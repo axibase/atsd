@@ -2,9 +2,15 @@
 
 ## Overview
 
-ATSD includes built-in forecasting algorithms that predict future series values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithm used.
+ATSD includes a range of univariate forecasting algorithms that predict future series values based on historical data.
 
-Supported algorithms for auto-regressive time series extrapolation are **Holt-Winters** and **ARIMA**.
+Supported algorithms:
+
+* **Holt-Winters**
+* **ARIMA**
+* **Singular Spectrum Analysis**
+
+The accuracy of predictions depends on the frequency of data collection, the selection interval, and the algorithm parameters.
 
 **Forecasting Example with Abnormal Deviation**:
 

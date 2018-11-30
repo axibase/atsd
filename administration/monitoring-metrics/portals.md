@@ -6,6 +6,6 @@ A daily summary of all ATSD metrics is presented on the **Settings > Diagnostics
 
 ![](../images/portal-database-statistics-2.png)
 
-Additionally, the key database metrics are displayed in the built-in **ATSD** portal listed under the **Portals** tab in the top menu.
+Additionally, the key database metrics are displayed in the pre-installed **ATSD** portal listed under the **Portals** tab in the top menu.
 
 ![](./images/atsd_portal.png "atsd_default_portal")

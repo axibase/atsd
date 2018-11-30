@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following tests estimate the amount of disk space required to store the same dataset containing 10+ million `time:value` samples in different databases.
+The following tests estimate the amount of disk space required to store the [1-minute OHLC dataset](#dataset) containing 10+ million `time:value` samples in different databases.
 
 ## Results
 

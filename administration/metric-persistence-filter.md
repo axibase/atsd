@@ -29,7 +29,7 @@ Logical operators: `AND`, `OR`, `NOT` as well as `&&` , `||`, `!`
 
 ### Functions
 
-The following built-in functions can be used in the filter expression:
+The following functions can be used in the filter expression:
 
 * [`collection`](#collection)
 * [`list`](#list)

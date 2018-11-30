@@ -6,7 +6,7 @@ By default, ATSD compaction runs every night.
 
 To trigger the compaction manually, open the **Settings > Storage > Compaction** page and click **Start ATSD Compaction**.
 
-The space savings in ATSD are achieved by its built-in compression codes as well as by the file system compression in the underlying storage system (HBase).
+The space savings in ATSD are achieved by its compression codes as well as by the file system compression in the underlying storage system (HBase).
 
 ## ATSD Compression
 
