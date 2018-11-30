@@ -9,7 +9,8 @@ Follow development in the **Change Tracker Portal** and review details in the **
 ## Year 2018
 
 | **Month** | **Features** | **Bugs** | &nbsp;
-|---|---|---|---:|
+|---|---:|---:|---|
+| October  | `9` | `18` | [↗](2018_oct/README.md)
 | October  | `13` | `26` | [↗](2018_oct/README.md)
 | September  | `27` | `35` | [↗](2018_sep/README.md)
 | August | `47` | `47` | [↗](2018_aug/README.md)
@@ -26,7 +27,7 @@ Follow development in the **Change Tracker Portal** and review details in the **
 ## Year 2017
 
 | **Month** | **Features** | **Bugs** | &nbsp;
-|---|---|---|---:|
+|---|---:|---:|---|
 | December | `35` | `35` | [↗](2017_dec/README.md)
 | November | `27` | `18` | [↗](2017_nov/README.md)
 | October | `31` | `38` | [↗](2017_oct/README.md)
@@ -45,6 +46,6 @@ Follow development in the **Change Tracker Portal** and review details in the **
 ## Year 2016
 
 | **Month** | **Features** | **Bugs** | &nbsp;
-|---|---|---|---:|
+|---|---:|---:|---|
 | December | `41` | `45` | [↗](2016_dec/README.md)
 | November| `20` | `15` | [↗](2016_nov/README.md)
