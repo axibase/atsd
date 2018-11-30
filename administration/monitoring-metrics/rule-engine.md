@@ -5,7 +5,7 @@ deviations.
 
 For example:
 
-Monitoring the `metric_received_per_second` metric can be done by comparing incoming samples with the forecast. Based on this forecast, a rule condition can be expressed without hard-coding any thresholds:
+Monitoring the `metric_received_per_second` metric can be done by comparing incoming samples with the forecast. Based on this forecast, a rule condition can be expressed without hard coding any thresholds:
 
 ```javascript
 abs(forecast_deviation(avg())) > 2
