@@ -2,7 +2,7 @@
 
 Follow development in the **Change Tracker Portal** and review details in the **Change Logs** below.
 
-![](./images/change-tracker-oct.png)
+![](./images/change-tracker-nov.png)
 
 [![](./images/button-1.png)](https://apps.axibase.com/chartlab/5dd8b00e#fullscreen)
 
