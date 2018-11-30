@@ -1719,7 +1719,7 @@ For example, a result set, partitioned by entity and ordered by time, has the fo
 Unlike the `GROUP BY` clause, partitioning does not reduce the row count. Roll-up functions applied in the `GROUP BY` clause are called _aggregate_ functions, whereas the functions applied to partitions are called _windowing_ or _analytical_ functions.
 :::
 
-### ROW_NUMBER Syntax
+### ROW_NUMBER
 
 ```sql
 ROW_NUMBER({partitioning columns} ORDER BY {ordering columns [direction]})
@@ -1727,14 +1727,14 @@ ROW_NUMBER({partitioning columns} ORDER BY {ordering columns [direction]})
 
 The `{partitioning columns}` clause must contain one or multiple columns for splitting the rows, for example `entity`, `tags`, or `entity, tags`.
 
-> Since the combination of the `entity` and `tags` columns constitutes the primary key of the series, the `ROW_NUMBER(entity, tags ...)` expression effectively creates a partition for **each** series.
+> Since the combination of the `metric`, `entity` and `tags` columns constitutes the primary key of the series, the `ROW_NUMBER(metric, entity, tags ...)` expression effectively creates a partition for **each** series.
 
 The `{ordering columns [direction]}` can refer to any column of the `FROM` clause with an optional `ASC/DESC` sorting direction.
 
 Example | Description
 ---|---
 `ROW_NUMBER(entity ORDER BY time)` | Partition rows by `entity` column.<br>Sort rows within each partition by `time` in ascending order.
-`ROW_NUMBER(entity, tags ORDER BY time DESC)` | Partition rows by `entity` and `tags` columns in such a way that each partition contains rows for only one series.<br>Sort rows within each partition by `time` in descending order.
+`ROW_NUMBER(metric, entity, tags ORDER BY time DESC)` | Partition rows by `entity` and `tags` columns in such a way that each partition contains rows for only one series.<br>Sort rows within each partition by `time` in descending order.
 `ROW_NUMBER(value ORDER BY value DESC)` | Partition rows by `value` column.<br>Sort rows by decreasing `value` column values.
 `ROW_NUMBER(entity ORDER BY AVG(value))` | Partition rows by `entity` column.<br>Sort rows within each partition by average value in each period.<br>Aggregate functions in `{ordering columns}` are allowed when partitioning is applied to grouped rows.
 
@@ -3116,11 +3116,22 @@ AND LOWER(tags.file_system) LIKE '%root'
 
 #### LAG
 
-The `LAG` function allows you access the previous row of the same result set. If the previous row does not exist, the function returns `NULL`.
+The `LAG` function allows you access a column in a preceding row of the result set.
 
 ```sql
-LAG(columnName)
+LAG(columnName [, int offset [, defaultValue]])
 ```
+
+Example:
+
+```sql
+LAG(value)
+```
+
+* The default `offset` is `1`.
+* If the requested row does not exist, the function returns `NULL`, or `notFoundValue` if specified.
+* The returned data type is determined similar to the [`ISNULL`](#isnull) function.
+* If the result set is partitioned with the [`ROW_NUMBER`](#row_number) clause, the function can lookup rows only within the **same** partition as the current row.
 
 ```sql
 SELECT date_format(datetime, 'yyyy') AS "Date",
@@ -3200,13 +3211,24 @@ WHERE entity = 'nurswgvml007'
 
 #### LEAD
 
-The `LEAD` function allows you access the next row of the same result set. If the next row does not exist, the function returns `NULL`.
+The `LEAD` function allows you access a column in a subsequent row of the result set.
 
 ```sql
-LEAD(columnName)
+LEAD(columnName [, int offset [, defaultValue]])
 ```
 
-The `LEAD` function operates similarly to the `LAG` function.
+Example:
+
+```sql
+LEAD(value)
+```
+
+* The default `offset` is `1`.
+* If the requested row does not exist, the function returns `NULL`, or `notFoundValue` if specified.
+* The returned data type is determined similar to the [`ISNULL`](#isnull) function.
+* If the result set is partitioned with the [`ROW_NUMBER`](#row_number) clause, the function can lookup rows only within the **same** partition as the current row.
+
+The `LEAD` function operates similarly to the [`LAG`](#lag) function except that it searches for subsequent rows as opposed to previous rows.
 
 ### Lookup Functions
 
