@@ -19,7 +19,7 @@
 | 3913 | sql | Feature | Add support [`CASE`](../../sql/README.md#case-expression) expression as part of another expression. |
 | 3888 | sql | Bug | Add support for entity fields `label`, `timeZone` in the `WHERE` clause. |
 | 3881 | sql | Bug | Fixed NullPointerException in queries with aggregation of metrics with decimal datatype. |
-| 3842 | sql | Feature | Add support for column alias in [`CAST`](../../sql/README.md#cast) and [ROW_NUMBER](../../sql/README.md#row_number-syntax) functions. |
+| 3842 | sql | Feature | Add support for column alias in [`CAST`](../../sql/README.md#cast) and [ROW_NUMBER](../../sql/README.md#row_number) functions. |
 | 3838 | sql | Bug | Add support for column alias in `ORDER BY` clause |
 | 3963 | client | Bug | Replace `last` with `cache` parameter in series query method within the Java API client. |
 | 4005 | sql | Bug | Fix ArrayIndexOutOfBoundsException error in external serializer. |
