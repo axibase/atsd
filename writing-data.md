@@ -24,7 +24,7 @@ Upload [CSV](https://axibase.com/docs/atsd/parsers/csv/) files including `.zip` 
 * [JSON](https://axibase.com/docs/axibase-collector/jobs/json.html)
 * [Kafka](https://axibase.com/docs/axibase-collector/jobs/kafka.html)
 * [OVPM](https://axibase.com/docs/axibase-collector/jobs/ovpm.html)
-* [OsiSoft PI](https://axibase.com/docs/axibase-collector/jobs/pi.html)
+* [OSISoft PI](https://axibase.com/docs/axibase-collector/jobs/pi.html)
 * [SNMP](https://axibase.com/docs/axibase-collector/jobs/snmp.html)
 * [Socrata](https://axibase.com/docs/axibase-collector/jobs/socrata.html)
 * [TCP](https://axibase.com/docs/axibase-collector/jobs/tcp.html)
