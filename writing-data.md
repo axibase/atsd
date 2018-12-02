@@ -10,13 +10,13 @@
 
 ![](./images/extensive-api.png)
 
-ATSD server provides [REST API](./api/data/README.md) and [Network API](./api/network/README.md) to insert time series, properties, and messages, as well as to collect and manage metadata for target systems, devices, and sensors.
+ATSD server provides [REST API](./api/data/README.md) and [Network API](./api/network/README.md) to insert time series, properties, and messages, as well as to collect and manage series [metadata](./api/meta/README.md).
 
-## CSV and `nmon` Parsers
+## CSV Parsers
 
 ![](./images/nmon-parser.png)
 
-Upload [CSV](https://axibase.com/docs/atsd/parsers/csv/) and [`nmon`](https://axibase.com/docs/atsd/integration/nmon/parser.html) files including `.zip` and `tar.gz` archives directly into the database for bulk import. Stream data into ATSD in CSV format with [Network API](./api/network/README.md).
+Upload [CSV](https://axibase.com/docs/atsd/parsers/csv/) files including `.zip` and `tar.gz` archives directly into the database for bulk import. Stream data in CSV format into ATSD with [Network API](./api/network/README.md).
 
 ## Axibase Collector
 
