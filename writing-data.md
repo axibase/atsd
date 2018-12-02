@@ -1,20 +1,10 @@
 # Writing Data into ATSD
 
-* [API](./api/README.md)
-* [Axibase Collector Integrated Tools](https://axibase.com/docs/axibase-collector/jobs/examples/)
-* [ATSD Integrated Tools](./integration/README.md)
-* [CSV](./parsers/csv/README.md)
-* [Java Logging](https://axibase.com/docs/axibase-collector/jobs/examples/vmware/)
+## REST and Network API
 
-## Extensive API
-
-![](./images/extensive-api.png)
-
-ATSD server provides [REST API](./api/data/README.md) and [Network API](./api/network/README.md) to insert time series, properties, and messages, as well as to collect and manage series [metadata](./api/meta/README.md).
+ATSD server provides [REST API](./api/data/README.md) and [Network API](./api/network/README.md) to insert time series, properties, and messages, as well as to manage series [metadata](./api/meta/README.md).
 
 ## CSV Parsers
-
-![](./images/nmon-parser.png)
 
 Upload [CSV](https://axibase.com/docs/atsd/parsers/csv/) files including `.zip` and `tar.gz` archives directly into the database for bulk import. Stream data in CSV format into ATSD with [Network API](./api/network/README.md).
 
@@ -22,11 +12,11 @@ Upload [CSV](https://axibase.com/docs/atsd/parsers/csv/) files including `.zip` 
 
 ![](./images/axibase-collector.png)
 
-[Axibase Collector](https://axibase.com/docs/axibase-collector/) is an ETL solution for scheduled data collection from external sources with an emphasis on automation.
+[Axibase Collector](https://axibase.com/docs/axibase-collector/) is an ETL tool for scheduled data collection from external sources.
 
 Use Collector to retrieve structured and unstructured data from a wide variety of sources such as relational databases, web services, and Java applications.
 
-### Protocols Supported by Axibase Collector
+### Axibase Collector Integrations
 
 * [AWS](https://axibase.com/docs/axibase-collector/jobs/aws.html)
 * [Docker](https://axibase.com/docs/axibase-collector/jobs/docker.html)
@@ -38,7 +28,7 @@ Use Collector to retrieve structured and unstructured data from a wide variety o
 * [JSON](https://axibase.com/docs/axibase-collector/jobs/json.html)
 * [Kafka](https://axibase.com/docs/axibase-collector/jobs/kafka.html)
 * [OVPM](https://axibase.com/docs/axibase-collector/jobs/ovpm.html)
-* [PI](https://axibase.com/docs/axibase-collector/jobs/pi.html)
+* [OsiSoft PI](https://axibase.com/docs/axibase-collector/jobs/pi.html)
 * [SNMP](https://axibase.com/docs/axibase-collector/jobs/snmp.html)
 * [Socrata](https://axibase.com/docs/axibase-collector/jobs/socrata.html)
 * [TCP](https://axibase.com/docs/axibase-collector/jobs/tcp.html)
