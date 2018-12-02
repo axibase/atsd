@@ -12,11 +12,7 @@ Upload [CSV](https://axibase.com/docs/atsd/parsers/csv/) files including `.zip` 
 
 ![](./images/axibase-collector.png)
 
-[Axibase Collector](https://axibase.com/docs/axibase-collector/) is an ETL tool for scheduled data collection from external sources.
-
-Use Collector to retrieve structured and unstructured data from a wide variety of sources such as relational databases, web services, and Java applications.
-
-### Axibase Collector Integrations
+[Axibase Collector](https://axibase.com/docs/axibase-collector/) is an ETL tool for scheduled data collection from structured and unstructured data sources.
 
 * [AWS](https://axibase.com/docs/axibase-collector/jobs/aws.html)
 * [Docker](https://axibase.com/docs/axibase-collector/jobs/docker.html)
