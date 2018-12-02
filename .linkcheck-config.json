@@ -56,4 +56,5 @@
         ,{ "pattern": "https://maven-badges.herokuapp.com/maven-central/com.axibase/.*"}
         ,{ "pattern": "https://www.britannica.com/.*"}
         ,{ "pattern": "https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf"}
+        ,{ "pattern": "http://www.mva.maryland.gov/"}
     ]}
