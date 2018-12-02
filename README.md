@@ -60,7 +60,7 @@ ATSD is a modular systems which includes the following components in addition to
 * Install pre-integrated collectors/agents.
 * Deploy [Axibase Collectors](https://axibase.com/docs/axibase-collector/).
 
-> For more information about inserting data, review the [Writing Data Snapshot](./writing-data.md).
+> For more information about inserting data, refer to [Writing Data](./writing-data.md).
 
 ## Line Protocols
 
