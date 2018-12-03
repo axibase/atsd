@@ -3063,17 +3063,18 @@ WHERE datetime >= NOW - 1*MINUTE
 
 Function | Description
 :--|:--
-`DEGREE(num)` | Convert specified radian value to degrees.<br>1 <small>rad</small> = 180&deg;/&pi; = 57.2958&deg;
-`RAD(num)` | Convert specified degree value to radians.<br>1&deg; * &pi;/180&deg; = 0.0174533 <small>rad</small>
-`SIN(num)` | The `SIN()` function returns the sine of the specified angle.<br>Argument `num` is the measure of the angle in radians.
-`COS(num)` | The `COS()` function returns the cosine of the specified angle.<br>Argument `num` is the measure of the angle in radians.
-`TAN(num)` | The `TAN()` function returns the tangent of the specified angle.<br>Argument `num` is the measure of the angle in radians.
-`ASIN(num)` | The `ASIN()` function returns the arcsine <small>sin<sup>-1</sup></small> of the specified sine value.<br>Argument `num` must be on the interval `[-1,1]`, inclusively.<br>Out of range arguments return [`NaN`](#not-a-number-nan).
-`ACOS(num)` | THE `ACOS` function returns the arccosine <small>cos<sup>-1</sup></small> of the specified cosine value.<br>Argument `num` must be on the interval `[-1,1]`, inclusively.<br>Out of range arguments return [`NaN`](#not-a-number-nan).
-`ATAN(num)` | The `ATAN()` function returns the arctangent <small>tan<sup>-1</sup></small> of the specified tangent value.
+`DEGREES(num)` | Convert specified radian value to degrees.<br>1 <small>rad</small> = 180&deg;/&pi; = 57.2958&deg;
+`RADIANS(num)` | Convert specified degree value to radians.<br>1&deg; * &pi;/180&deg; = 0.0174533 <small>rad</small>
+`SIN(num)` | Sine of the specified angle.<br>`num` is the angle in **radians**.
+`COS(num)` | Cosine of the specified angle.<br>`num` is the angle in **radians**.
+`TAN(num)` | Tangent of the specified angle.<br>`num` is the angle in **radians**.
+`ASIN(num)` | Arcsine <small>sin<sup>-1</sup></small> of the specified sine value.<br>Argument `num` must be on the interval `[-1,1]`.<br>Out of range arguments return [`NaN`](#not-a-number-nan).
+`ACOS(num)` | Arccosine <small>cos<sup>-1</sup></small> of the specified cosine value.<br>Argument `num` must be on the interval `[-1,1]`.<br>Out of range arguments return [`NaN`](#not-a-number-nan).
+`ATAN(num)` | Arctangent <small>tan<sup>-1</sup></small> of the specified tangent value.
 
 ```sql
-SELECT value, DEGREES(value), DEGREES(pi()/2), SIN(RADIANS(45)), RADIANS(180), SIN(value), COS(value), TAN(value), ASIN(SIN(value)), ACOS(COS(value)), ATAN(value)
+SELECT value, DEGREES(value), DEGREES(pi()/2), SIN(RADIANS(45)), RADIANS(180),
+  SIN(value), COS(value), TAN(value), ASIN(SIN(value)), ACOS(COS(value)), ATAN(value)
   FROM "angle"
 WHERE datetime < now
 ```
