@@ -156,5 +156,5 @@ docker exec atsd /opt/atsd/bin/atsd-all.sh start
 
 ## Post-installation Steps
 
-* [Basic configuration](post-installation.md).
-* [Getting Started guide](../tutorials/getting-started.md).
+* [Basic Configuration](post-installation.md)
+* [Getting Started Guide](../tutorials/getting-started.md)
