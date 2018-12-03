@@ -65,6 +65,7 @@ The `COUNTER` function returns the sum of positive differences between consecuti
 
 ### `PERCENTILE`
 
-* The percentile [calculation method](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) uses `N+1` as the sample size and performs linear interpolation between consecutive values.
+* The percentile function returns the value which is greater than the specified percentage of values in the given period.
+* The percentile [calculation method](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) uses `N+1` as the input array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
 * `PERCENTILE_100` is equal to `MAX`.
 * `PERCENTILE_0` is not valid.
