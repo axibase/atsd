@@ -58,5 +58,6 @@
         ,{ "pattern": "https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf"}
         ,{ "pattern": "http://www.mva.maryland.gov/"}
         ,{ "pattern": "https://www.odh.ohio.gov/healthstats/vitalstats/deathstat.aspx"}
+        ,{ "pattern": "https://sd24.senate.ca.gov/news.*"}
 
     ]}
