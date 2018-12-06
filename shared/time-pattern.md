@@ -98,5 +98,5 @@ To print day number of week starting from Monday, use the `u` pattern.
 | `2018-12-20`                     | `yyyy-MM-dd`                       |
 | `2018-Dec-20`                    | `yyyy-MMM-dd`                      |
 | `2018-December-20`               | `yyyy-MMMM-dd`                     |
-| `20-Dec-18`                      | `dd-MMMM-yy`                       |
+| `20-Dec-18`                      | `dd-MMM-yy`                       |
 | `12/20/18 07:00:00 PM`           | `MM/dd/yy hh:mm:ss a`              |
