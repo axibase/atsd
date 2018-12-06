@@ -1,4 +1,4 @@
-# Date and Time Pattern letters
+# Date and Time Patterns
 
 ## Pattern Letters
 
@@ -68,7 +68,7 @@
 Note: localized day of week pattern (`e`) prints day number of week in US locale starting from Sunday.
 To print day number of week starting from Monday, use the `u` pattern.
 
-## Examples
+## Formatting Examples
 
 | Date and Time Pattern          | Result                               |
 |--------------------------------|--------------------------------------|
@@ -83,3 +83,20 @@ To print day number of week starting from Monday, use the `u` pattern.
 | `yyyy-MM-ddTHH:mm:ss.SSSZ`     | 2001-07-04T12:08:56.235-0700         |
 | `yyyy-MM-ddTHH:mm:ss.SSSXXX`   | 2001-07-04T12:08:56.235-07:00        |
 | `YYYY-'W'ww-u`                 | 2001-W27-3                           |
+
+## Parsing Examples
+
+| Date and Time Value              | Parse Pattern                      |
+|----------------------------------|------------------------------------|
+| `2018-12-20T19:00:00.032Z`       | `yyyy-MM-ddTHH:mm:ss.SSSZ`         |
+| `2018-12-20T19:00:00.032-05:00`  | `yyyy-MM-ddTHH:mm:ss.SSSXXX`       |
+| `2018-12-20T19:00:00`            | `yyyy-MM-ddTHH:mm:ss`              |
+| `2018-12-20 19:00:00`            | `yyyy-MM-dd HH:mm:ss`              |
+| `20181220190000`                 | `yyyyMMddHHmmss`                   |
+| `1181220190000032`               | `'1'yyMMddHHmmssSSS`               |
+| `2018-12-20 19:00`               | `yyyy-MM-dd HH:mm`                 |
+| `2018-12-20`                     | `yyyy-MM-dd`                       |
+| `2018-Dec-20`                    | `yyyy-MMM-dd`                      |
+| `2018-December-20`               | `yyyy-MMMM-dd`                     |
+| `20-Dec-18`                      | `dd-MMMM-yy`                       |
+| `12/20/18 07:00:00 PM`           | `MM/dd/yy hh:mm:ss a`              |
