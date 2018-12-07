@@ -60,6 +60,7 @@ message NOT LIKE 'Access*' && tags.ip = '192.0.2.1'
 #### Date Filter Fields
 
 * [**Required**]
+* Date conditions are applied to the `date` field.
 * Refer to [date filter](../filter-date.md).
 
 #### Result Filter Fields
@@ -76,13 +77,13 @@ An array of matching message objects containing the following fields:
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
+|`date` | string | Message record creation date in [ISO format](../../../shared/date-format.md#supported-formats). |
 |`type` | string | Message type. |
 |`source` | string | Message source. |
 |`entity` | string | Entity name. |
 |`severity` | string | Message [severity](../../../shared/severity.md) code. |
 |`tags` | object |  Object containing `name=value` fields, for example `tags: {"path": "/", "name": "sda"}`. |
 |`message` | string | Message text. |
-|`date` | string | Message record creation date in [ISO format](../../../shared/date-format.md#supported-formats). |
 
 ### Errors
 
@@ -104,12 +105,9 @@ POST /api/v1/messages/query
 [{
   "entity": "nurswgvml007",
   "type": "logger",
-  "limit": 5,
+  "limit": 10,
   "endDate": "now",
-  "interval": {
-    "count": 30,
-    "unit": "MINUTE"
-  }
+  "interval": { "count": 1, "unit": "HOUR" }
 }]
 ```
 

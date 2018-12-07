@@ -1,12 +1,12 @@
 # Severity
 
-| **Code** | **Name** | **Alias**|
-|:---|:---|:--|
-| `0` | `UNDEFINED` ||
-| `1` | `UNKNOWN` ||
-| `2` | `NORMAL` | `INFO` |
-| `3` | `WARNING` | `WARN` |
-| `4` | `MINOR` | |
-| `5` | `MAJOR` | |
-| `6` | `CRITICAL` | `ERROR` |
-| `7` | `FATAL` | |
+| **Name** | **Alias**| **Code** |
+|:---|:---|--:|
+| `UNDEFINED` || `0` |
+| `UNKNOWN` || `1` |
+| `NORMAL` | `INFO` | `2` |
+| `WARNING` | `WARN` | `3` |
+| `MINOR` | | `4` |
+| `MAJOR` | | `5` |
+| `CRITICAL` | `ERROR` | `6` |
+| `FATAL` | | `7` |
