@@ -1,30 +1,34 @@
 # Examples
 
-## Selecting Records
+## Selecting Columns
 
 * [All Columns](select-all-columns.md)
 * [Defined Columns](select-pre-defined-columns.md)
 * [All Series Tags](select-all-tags.md)
 * [Text Value Column](select-text-value.md)
-* [Field Columns](select-field-columns.md)
+* [Metadata Columns](select-field-columns.md)
 * [Entity Tag Columns](select-entity-tag-columns.md)
-* [Entity Metadata](select-metadata.md)
 * [Metric Tag Columns](select-metric-tag-columns.md)
+* [Entity Metadata](select-metadata.md)
+* [Column Alias](alias-column.md)
+* [Escape Quotes](select-escape-quote.md)
+* [Interval Number](select-interval-number.md)
+
+## Selecting Tables
+
+* [Table Alias](alias-table.md)
+* [`atsd_series` Table](select-atsd_series.md)
+
+## Modifying Columns
+
+* [Date Format](datetime-format.md)
+* [Date Extract Functions](date-extract.md)
+* [Date Utility Functions](date-functions.md)
 * [Computed Columns](select-computed-columns.md)
 * [Mathematical Functions](select-math.md)
 * [String Functions](string-functions.md)
 * [LOOKUP Function](lookup.md)
 * [CASE Expression](case.md)
-* [Interval Number](select-interval-number.md)
-* [Column Alias](alias-column.md)
-* [Table Alias](alias-table.md)
-* [Escape Quotes](select-escape-quote.md)
-* [`atsd_series` Table](select-atsd_series.md)
-* [Date Format](datetime-format.md)
-* [Date Extract Functions](date-extract.md)
-* [Date Utility Functions](date-functions.md)
-* [Limit Row Count](limit.md)
-* [Limit by Partition](limit-partition.md)
 
 ## Filtering Records
 
@@ -36,6 +40,8 @@
 * [Filter by Entity Tag](filter-by-entity-tag.md)
 * [Filter by Entity Group](filter-by-entity-group.md)
 * [Filter Not-a-Number](filter-not-a-number.md)
+* [Limit Row Count](limit.md)
+* [Limit by Partition](limit-partition.md)
 
 ## Ordering Records
 

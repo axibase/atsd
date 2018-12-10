@@ -7,7 +7,7 @@ SELECT datetime, value
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime >= '2016-06-18T20:00:00Z'
-  AND datetime  < '2016-06-18T21:00:00.000Z'
+  AND datetime  < '2016-06-18T21:00:00Z'
 ```
 
 ```ls
@@ -16,6 +16,25 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:11.000Z | 28.0  |
 | 2016-06-18T20:00:27.000Z | 6.1   |
 | 2016-06-18T20:00:43.000Z | 6.1   |
+```
+
+## Query with ISO format. Exclude Upper Range
+
+```sql
+SELECT datetime, value
+  FROM "mpstat.cpu_busy"
+WHERE entity = 'nurswgvml007'
+  AND datetime BETWEEN '2016-06-18T20:00:00Z'
+                   AND '2016-06-18T20:00:43Z' EXCL
+```
+
+> The `EXCL` excludes upper range.
+
+```ls
+| datetime                 | value |
+|--------------------------|-------|
+| 2016-06-18T20:00:11.000Z | 28.0  |
+| 2016-06-18T20:00:27.000Z | 6.1   |
 ```
 
 ## Query with Local Format

@@ -15,7 +15,9 @@ END AS "Unit Batch Number"
     JOIN "TV6.Unit_BatchID" t5
     JOIN "TV6.Unit_Procedure" t6
 WHERE t1.metric = 'tv6.pack:r01'
-  AND t1.datetime BETWEEN (SELECT datetime FROM "TV6.Unit_BatchID" WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800'))
+  AND t1.datetime BETWEEN (
+    SELECT datetime FROM "TV6.Unit_BatchID" WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800')
+  )
   AND t1.entity = 'br-1211'
 WITH INTERPOLATE(60 SECOND, AUTO, OUTER, TRUE, START_TIME)
   ORDER BY t1.datetime
