@@ -986,15 +986,34 @@ test_expr BETWEEN lower_expr [ INCL | EXCL ] AND upper_expr [ INCL | EXCL ]
 When selecting dates, the `EXCL` instruction allows excluding records or aggregation periods from the selection interval.
 
 ```sql
--- includes samples and periods recorded exactly at 01:00:00
-datetime BETWEEN '2018-12-15T00:00:00Z'
-     AND BETWEEN '2018-12-15T01:00:00Z'
+-- includes samples and periods recorded exactly at 12:00 and 13:00
+SELECT datetime, value FROM timer_15m
+  WHERE datetime BETWEEN '2018-12-10 12:00:00'
+                     AND '2018-12-10 13:00:00'
+```
+
+```txt
+| datetime                  | value |
+|---------------------------|-------|
+| 2018-12-10T12:00:00.000Z  | 0     |
+| 2018-12-10T12:15:00.000Z  | 0     |
+| 2018-12-10T12:30:00.000Z  | 0     |
+| 2018-12-10T12:45:00.000Z  | 0     |
+| 2018-12-10T13:00:00.000Z  | 0     |
 ```
 
 ```sql
--- ignores samples and periods recorded exactly at 01:00:00
-datetime BETWEEN '2018-12-15T00:00:00Z'
-     AND BETWEEN '2018-12-15T01:00:00Z' EXCL
+-- ignores samples and periods recorded exactly at 12:00 and 13:00
+  WHERE datetime BETWEEN '2018-12-10 12:00:00' EXCL
+                     AND '2018-12-10 13:00:00' EXCL
+```
+
+```txt
+| datetime                  | value |
+|---------------------------|-------|
+| 2018-12-10T12:15:00.000Z  | 0     |
+| 2018-12-10T12:30:00.000Z  | 0     |
+| 2018-12-10T12:45:00.000Z  | 0     |
 ```
 
 ## CASE Expression
