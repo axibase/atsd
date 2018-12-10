@@ -6,7 +6,8 @@
 SELECT datetime, value
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
-  AND datetime >= '2016-06-18T20:00:00Z' AND datetime < '2016-06-18T21:00:00.000Z'
+  AND datetime >= '2016-06-18T20:00:00Z'
+  AND datetime  < '2016-06-18T21:00:00.000Z'
 ```
 
 ```ls
@@ -23,7 +24,8 @@ WHERE entity = 'nurswgvml007'
 SELECT datetime, value
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
-  AND datetime >= '2016-06-18 20:00:00' AND datetime < '2016-06-18 21:00:00.000'
+  AND datetime >= '2016-06-18 20:00:00'
+  AND datetime  < '2016-06-18 21:00:00.000'
 ```
 
 ```ls
@@ -40,7 +42,8 @@ WHERE entity = 'nurswgvml007'
 SELECT datetime, count(value)
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
-  AND datetime >= '2016-06' AND datetime < '2016-07'
+  AND datetime >= '2016-06'
+  AND datetime  < '2016-07'
   GROUP BY PERIOD(1 DAY)
 ```
 
@@ -79,7 +82,8 @@ LIMIT 5
 SELECT time, value
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
-  AND time >= 1466100000000 AND time < 1466200000000
+  AND time >= 1466100000000
+  AND time  < 1466200000000
 ```
 
 ```ls
@@ -118,7 +122,7 @@ If the server time zone is `Europe/Berlin`, for example, `current_day` in the be
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-ddTHH:mm:ssZZ') AS local_datetime, value
   FROM m1
-WHERE datetime >= current_day
+WHERE datetime >= CURRENT_DAY
 ```
 
 ```ls
@@ -142,9 +146,9 @@ series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 
 ## Query with End Time Syntax in Custom Time Zone
 
-With the `endtime()` function, specify a user-defined [time zone](../../shared/timezone-list.md) to evaluate [calendar](../../shared/calendar.md) keywords and expressions.
+The `endtime()` function allows specifying a user-defined [time zone](../../shared/timezone-list.md) to evaluate [calendar](../../shared/calendar.md) keywords and expressions.
 
-The following example selects data between `0h:0m:0s` of the previous day and `0h:0m:0s` of the current day in PST time zone, even though the server runs in UTC time zone.
+The following example selects data between `0h:0m:0s` of the previous day and `0h:0m:0s` of the current day in PST time zone, even though the database runs in UTC time zone.
 
 ```sql
 SELECT value, datetime,
@@ -154,8 +158,9 @@ SELECT value, datetime,
   date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'US/Pacific') AS "PST_dt"
 FROM "cpu_busy"
   WHERE entity = 'nurswgvml007'
-AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific') AND endtime(CURRENT_DAY, 'US/Pacific')
-  ORDER BY datetime
+AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific')
+                 AND endtime(CURRENT_DAY, 'US/Pacific')
+ORDER BY datetime
 LIMIT 3
 ```
 
@@ -189,31 +194,42 @@ SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vi
 
 ## Query Using `BETWEEN`
 
-The `BETWEEN` operator selects samples recorded between the start and end of the defined interval. `BETWEEN` is an inclusive operator, thus the interval start and end dates are included in the result.
+The `BETWEEN` operator matches samples recorded between the start and end of the defined date range. Since `BETWEEN` is an inclusive operator, the samples recorded at start and end dates are included in the result.
 
-The expression `datetime BETWEEN t1 and t2` is equivalent to `datetime >= t1 and datetime <= t2`.
+:::tip `BETWEEN` is inclusive
 
-To emulate a half-open `[)` interval subtract `1` millisecond from the `AND` value.
+`datetime BETWEEN t1 AND t2` is equivalent to `datetime >= t1 AND datetime <= t2`.
+
+:::
+
+To emulate a half-open `[)` interval, add `EXCL` instruction to the upper range value.
 
 ```sql
-SELECT datetime, value
-  FROM "mpstat.cpu_busy"
-WHERE entity = 'nurswgvml007'
-  AND datetime BETWEEN '2016-06-18T20:00:00.000Z' AND '2016-06-18T20:59:59.999Z'
+datetime BETWEEN '2016-06-18T20:00:00Z'
+             AND '2016-06-18T21:00:00Z' EXCL
 ```
 
-The above condition is equivalent to:
+As alternative to `EXCL`, subtract `1` millisecond from the upper range value.
 
 ```sql
-datetime >= '2016-06-18T20:00:00.000Z' AND datetime < '2016-06-18T21:00:00.000Z'
+datetime BETWEEN '2016-06-18T20:00:00.000Z'
+             AND '2016-06-18T20:59:59.999Z'
+```
+
+The above conditions are equivalent to:
+
+```sql
+datetime >= '2016-06-18T20:00:00Z'
+AND
+datetime  < '2016-06-18T21:00:00Z'
 ```
 
 ```ls
-| datetime                 | value |
-|--------------------------|-------|
-| 2016-06-18T20:00:11.000Z | 28.0  |
-| 2016-06-18T20:00:27.000Z | 6.1   |
-| 2016-06-18T20:00:43.000Z | 6.1   |
+| datetime             | value |
+|----------------------|-------|
+| 2016-06-18T20:00:11Z | 28.0  |
+| 2016-06-18T20:00:27Z | 6.1   |
+| 2016-06-18T20:00:43Z | 6.1   |
 ```
 
 ## Query using `BETWEEN` Subquery
@@ -238,9 +254,11 @@ series d:2017-04-03T01:15:00Z e:nurswgvml007 x:maintenance-rfc=RFC12-stop
 SELECT datetime, value
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
-  AND datetime BETWEEN (SELECT datetime FROM "maintenance-rfc"
-  WHERE entity = 'nurswgvml007'
-ORDER BY datetime)
+  AND datetime BETWEEN (
+    SELECT datetime FROM "maintenance-rfc"
+      WHERE entity = 'nurswgvml007'
+      ORDER BY datetime
+  )
 ```
 
 ```ls
@@ -258,9 +276,11 @@ ORDER BY datetime)
 SELECT datetime, value
   FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
-  AND datetime BETWEEN (SELECT datetime FROM "maintenance-rfc"
-  WHERE entity = 'nurswgvml007'
-ORDER BY datetime)
+  AND datetime BETWEEN (
+    SELECT datetime FROM "maintenance-rfc"
+      WHERE entity = 'nurswgvml007'
+      ORDER BY datetime
+  )
 ```
 
 ```ls
@@ -273,7 +293,11 @@ ORDER BY datetime)
 
 ```sql
 -- outer query
-WHERE t1.datetime BETWEEN (SELECT datetime FROM "TV6.Unit_BatchID" WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800'))
+WHERE t1.datetime BETWEEN (
+  SELECT datetime FROM "TV6.Unit_BatchID"
+    WHERE entity = 'br-1211'
+      AND (text = '800' OR LAG(text)='800')
+)
 ```
 
 ```ls

@@ -431,6 +431,7 @@ The `time` and `datetime` columns contain the same value (record time) in differ
 ```sql
 SELECT datetime, entity, count(*)   -- 'time' column in SELECT
   FROM "df.disk_used"
+  -- By default BETWEEN is inclusive of upper range. Use BETWEEN a AND b EXCL to override.
 WHERE datetime BETWEEN '2017-06-15' AND '2017-06-15' -- 'datetime' column in WHERE
   GROUP BY time, entity             -- 'time' column in GROUP BY
 ```
@@ -889,7 +890,7 @@ The `IN` expression returns `true` if the value on the left is equal to one of t
 valueLeft [NOT] IN (valueRight [, valueRight])
 ```
 
-The `IN` operator provides an alternative to multiple OR conditions.
+The `IN` operator provides an alternative to multiple `OR` conditions.
 
 ```sql
 SELECT datetime, entity, value
@@ -962,6 +963,38 @@ Special constructs such as `(?i)` can be applied to enable a [case-**insensitive
 
 ```sql
 WHERE entity REGEX '(?i)Nurswgvml00.*'
+```
+
+## BETWEEN Expression
+
+The `BETWEEN` operator is inclusive by default and returns true if the test expression satisfies either the lower range, the upper range or is between the ranges.
+
+The `INCL` and `EXCL` are provided to override the default behavior.
+
+```sql
+test_expr BETWEEN lower_expr [ INCL | EXCL ] AND upper_expr [ INCL | EXCL ]
+```
+
+```sql
+-- returns TRUE
+10 BETWEEN 1 AND 10
+
+-- returns FALSE
+10 BETWEEN 1 AND 10 EXCL
+```
+
+When selecting dates, the `EXCL` instruction allows excluding records or aggregation periods from the selection interval.
+
+```sql
+-- includes samples and periods recorded exactly at 01:00:00
+datetime BETWEEN '2018-12-15T00:00:00Z'
+     AND BETWEEN '2018-12-15T01:00:00Z'
+```
+
+```sql
+-- ignores samples and periods recorded exactly at 01:00:00
+datetime BETWEEN '2018-12-15T00:00:00Z'
+     AND BETWEEN '2018-12-15T01:00:00Z' EXCL
 ```
 
 ## CASE Expression
@@ -1078,30 +1111,69 @@ END AS "Tax Day"
 
 ## Interval Condition
 
-An interval condition determines the selection interval and is specified in the `WHERE` clause using the `datetime` or `time` columns.
+An interval condition determines the date range for the retrieved samples and is specified in the `WHERE` clause using the `datetime` or `time` column.
+
+The `datetime` column accepts literal dates whereas the `time` column accepts Unix time in milliseconds. Both columns support [calendar expressions](../shared/calendar.md#keywords).
+
+```sql
+SELECT datetime, entity, value
+  FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2017-12-10T00:00:00Z'
+                   AND '2017-12-10T01:00:00Z'
+   -- time BETWEEN 1512864000000 AND 1512867600000
+   -- datetime >= NOW - 1*DAY
+```
+
+The above query selects samples recorded between `00:00` and `01:00` on `December 10, 2017` in the UTC time zone. This includes samples recorded exactly at `00:00:00` and `01:00:00` because the `BETWEEN` operator is inclusive by default.
+
+:::tip `BETWEEN` is inclusive
+
+`column BETWEEN a AND b` is equivalent to `column >= a AND column <= b`.
+
+:::
+
+To exclude the end of the selection interval, add the `EXCL` instruction to override the default `BETWEEN` behavior.
+
+```sql
+SELECT datetime, entity, value
+  FROM "mpstat.cpu_busy"
+  -- Exclude samples recorded at '2017-12-10T01:00:00Z'
+WHERE datetime BETWEEN '2017-12-10T00:00:00Z'
+                   AND '2017-12-10T01:00:00Z' EXCL
+```
 
 The `datetime` column accepts literal dates in one of the following formats:
 
-| **Format** | **Time Zone** | **Examples** |
+| **Format** | **Time Zone or UTC Offset** | **Examples** |
 |---|---|---|
 | `yyyy-MM-ddTHH:mm:ss[.S](Z\|±hh[:]mm)` | As specified | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z`<br>`2017-12-10T15:30:00-05:00`<br>`2017-12-10T15:30:00-0500` |
-| `yyyy-MM-dd HH:mm:ss[.S]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
-| `yyyy[-MM[-dd]]`| Database  | `2017`<br>`2017-12`<br>`2017-12-15` |
+| `yyyy-MM-dd HH:mm:ss[.S]`| Database or [query](#with-timezone)  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
+| `yyyy[-MM[-dd]]`| Database or [query](#with-timezone)  | `2017`<br>`2017-12`<br>`2017-12-15` |
 
 The UTC time zone is specified as the `Z` letter or as the zero UTC offset `+00:00` (`+0000`).
 
 ```sql
 SELECT datetime, entity, value
   FROM "mpstat.cpu_busy"
-WHERE datetime BETWEEN '2017-12-10T14:00:15Z' AND '2017-12-10T14:30:00.077Z'
--- WHERE datetime BETWEEN '2017-12-10 14:00:15' AND '2017-12-11 14:30:00.077'
--- WHERE datetime = '2017'
+WHERE datetime BETWEEN '2017-12-10T14:00:15Z'
+                   AND '2017-12-10T14:30:00.077Z'
+  -- WHERE datetime BETWEEN '2017-12-10 14:00:15' AND '2017-12-11 14:30:00.077'
+  -- WHERE datetime = '2017'
 ```
 
-If the time zone is not specified in the literal date, the **database** time zone is used to convert strings into date objects.
+If the time zone is not specified, the literal date value is interpreted using the **database** time zone.
 
 ```sql
-WHERE datetime BETWEEN '2017-12-10 14:00:15' AND '2017-12-11 14:30:00.077'
+WHERE datetime BETWEEN '2017-12-10 14:00:15'
+                   AND '2017-12-11 14:30:00.077'
+```
+
+The default timezone applied to literal dates in the query can be set explicitly using the [`WITH TIMEZONE`](#with-timezone) clause.
+
+```sql
+WHERE datetime BETWEEN '2017-12-10 14:00:15'
+                   AND '2017-12-11 14:30:00.077'
+  WITH TIMEZONE = 'US/Pacific'
 ```
 
 Literal date values specified using short formats are expanded to the complete date by setting missing units to the first value in the allowed range.
@@ -1118,8 +1190,6 @@ SELECT time, entity, value
 WHERE time >= 1500300000000
 -- 1500300000000 is equal to 2017-07-17 14:00:00 UTC
 ```
-
-The `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to `time >= 'a' AND time <= 'b'`.
 
 ### Optimizing Interval Queries
 
@@ -2722,7 +2792,8 @@ SELECT value, datetime,
   date_format(time, 'yyyy-MM-ddTHH:mm:ssz', 'US/Pacific') AS "PST_datetime"
 FROM "mpstat.cpu_busy"
   WHERE entity = 'nurswgvml007'
-  -- select data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST time zone
+  -- Select data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST time zone
+  -- By default BETWEEN is inclusive of upper range. Use BETWEEN a AND b EXCL to override.
 AND datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY, 'US/Pacific')
   ORDER BY datetime
 ```
@@ -3467,5 +3538,5 @@ While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabil
 * Subqueries are supported only by the `BETWEEN` operator applied to the `time` and `datetime` columns.
 * `UNION`, `EXCEPT` and `INTERSECT` operators are not supported. Query [`atsd_series`](examples/select-atsd_series.md) table as a `UNION ALL` alternative.
 * In case of division by zero, the database returns `NaN` according to the IEEE 754-2008 standard instead of terminating processing with a computational error.
-* The `WITH` operator is supported only in the following clauses: `WITH ROW_NUMBER`, `WITH INTERPOLATE`.
+* The `WITH` operator is supported only in the following clauses: `WITH ROW_NUMBER`, `WITH INTERPOLATE`, `WITH LAST_TIME`, `WITH TIMEZONE`.
 * The `DISTINCT` operator is not supported and can be emulated with the `GROUP BY` clause in specific cases.
