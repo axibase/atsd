@@ -1188,7 +1188,7 @@ WHERE datetime BETWEEN '2017-12-10 14:00:15'
                    AND '2017-12-11 14:30:00.077'
 ```
 
-The default timezone applied to literal dates in the query can be set explicitly using the [`WITH TIMEZONE`](#with-timezone) clause.
+The default time zone applied to literal dates in the query can be set explicitly using the [`WITH TIMEZONE`](#with-timezone) clause.
 
 ```sql
 WHERE datetime BETWEEN '2017-12-10 14:00:15'
@@ -3076,7 +3076,7 @@ SELECT DBTIMEZONE,
   AVG(value), COUNT(value)
 FROM "mpstat.cpu_busy"
   WHERE datetime >= '2018-08-01' AND datetime < '2018-08-03'
-  -- override the default server timezone from UTC to US/Pacific
+  -- change the default database time zone from UTC to US/Pacific
   WITH TIMEZONE = 'US/Pacific'
 GROUP BY PERIOD(1 DAY)
 ```
