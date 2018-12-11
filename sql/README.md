@@ -959,7 +959,7 @@ WHERE entity = 'nurswgvml007'
    AND tags.file_system REGEX '.*map.*|.*mnt.*|.*dev.*'
 ```
 
-Special constructs such as `(?i)` can be applied to enable a [case-**insensitive** match](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) as an example.
+Special instructions such as `(?i)` for [case-**insensitive** match](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) can be added to customize the matching rules.
 
 ```sql
 WHERE entity REGEX '(?i)Nurswgvml00.*'
@@ -967,12 +967,12 @@ WHERE entity REGEX '(?i)Nurswgvml00.*'
 
 ## BETWEEN Expression
 
-The `BETWEEN` operator is inclusive by default and returns true if the test expression satisfies either the lower range, the upper range or is between the ranges.
+The `BETWEEN` operator is inclusive by default and returns `true` if the test expression satisfies the lower range, the upper range, or is between the ranges.
 
-The `INCL` and `EXCL` are provided to override the default behavior.
+The optional `INCL` and `EXCL` instructions override the default inclusion rules.
 
 ```sql
-test_expr BETWEEN lower_expr [ INCL | EXCL ] AND upper_expr [ INCL | EXCL ]
+test_expr BETWEEN lower_range [ INCL | EXCL ] AND lower_range [ INCL | EXCL ]
 ```
 
 ```sql
@@ -983,10 +983,25 @@ test_expr BETWEEN lower_expr [ INCL | EXCL ] AND upper_expr [ INCL | EXCL ]
 10 BETWEEN 1 AND 10 EXCL
 ```
 
-When selecting dates, the `EXCL` instruction allows excluding records or aggregation periods from the selection interval.
+The `EXCL` instruction can be used to exclude the range boundaries, in particular the end of the date selection interval.
 
 ```sql
--- includes samples and periods recorded exactly at 12:00 and 13:00
+-- Ignores samples and periods recorded exactly at 12:00 and 13:00
+SELECT datetime, value FROM timer_15m
+  WHERE datetime BETWEEN '2018-12-10 12:00:00' EXCL
+                     AND '2018-12-10 13:00:00' EXCL
+```
+
+```txt
+| datetime                  | value |
+|---------------------------|-------|
+| 2018-12-10T12:15:00.000Z  | 0     |
+| 2018-12-10T12:30:00.000Z  | 0     |
+| 2018-12-10T12:45:00.000Z  | 0     |
+```
+
+```sql
+-- Includes samples and periods recorded exactly at 12:00 and 13:00
 SELECT datetime, value FROM timer_15m
   WHERE datetime BETWEEN '2018-12-10 12:00:00'
                      AND '2018-12-10 13:00:00'
@@ -1000,20 +1015,6 @@ SELECT datetime, value FROM timer_15m
 | 2018-12-10T12:30:00.000Z  | 0     |
 | 2018-12-10T12:45:00.000Z  | 0     |
 | 2018-12-10T13:00:00.000Z  | 0     |
-```
-
-```sql
--- ignores samples and periods recorded exactly at 12:00 and 13:00
-  WHERE datetime BETWEEN '2018-12-10 12:00:00' EXCL
-                     AND '2018-12-10 13:00:00' EXCL
-```
-
-```txt
-| datetime                  | value |
-|---------------------------|-------|
-| 2018-12-10T12:15:00.000Z  | 0     |
-| 2018-12-10T12:30:00.000Z  | 0     |
-| 2018-12-10T12:45:00.000Z  | 0     |
 ```
 
 ## CASE Expression
