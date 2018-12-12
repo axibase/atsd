@@ -90,7 +90,7 @@
 * [Partitioning using Row Number Function](partition-row-number.md)
 * [`Top-N` Query using Row Number Function](partition-row-number-top-N-tags.md)
 * [Row Number, Rank, and Dense Rank Functions](partition-rank.md)
-* [Lag and Lead Functions](partition-row-number.md)
+* [Lag and Lead Functions](partition-lag.md)
 * [Last Time](last-time.md)
 
 ## Subquery
