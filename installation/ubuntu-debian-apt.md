@@ -92,3 +92,17 @@ Web interface is now accessible on port `8443` (HTTPS).
 
 * [Basic configuration](post-installation.md).
 * [Getting Started guide](../tutorials/getting-started.md).
+
+## Excluding ATSD Package from Upgrades
+
+To temporarily exclude the `atsd` package from `apt` upgrades, enable holding for the package:
+
+```sh
+sudo apt-mark hold atsd
+```
+
+To re-enable upgrades for the `atsd` package:
+
+```sh
+sudo apt-mark unhold atsd
+```
