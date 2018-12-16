@@ -75,11 +75,11 @@ detailsTable('ascii')
 | stddev            | 1.8806197277370347                |
 | wavg              | 21.559255402231774                |
 | wtavg             | 22.10622632443797                 |
-| percentile_50     | 21.09692237912773                 |
-| percentile_75     | 22.72808635185156                 |
-| percentile_90     | 22.72808635185156                 |
-| percentile_95     | 22.72808635185156                 |
-| percentile_99     | 22.72808635185156                 |
+| percentile(50)     | 21.09692237912773                 |
+| percentile(75)     | 22.72808635185156                 |
+| percentile(90)     | 22.72808635185156                 |
+| percentile(95)     | 22.72808635185156                 |
+| percentile(99)     | 22.72808635185156                 |
 | slope             | 1.2502e-4                         |
 | intercept         | -1.8922e8                         |
 +-------------------+-----------------------------------+
@@ -124,11 +124,11 @@ detailsTable('markdown')
 | stddev | 1.8806197277370347 |
 | wavg | 21.559255402231774 |
 | wtavg | 22.10622632443797 |
-| percentile_50 | 21.09692237912773 |
-| percentile_75 | 22.72808635185156 |
-| percentile_90 | 22.72808635185156 |
-| percentile_95 | 22.72808635185156 |
-| percentile_99 | 22.72808635185156 |
+| percentile(50) | 21.09692237912773 |
+| percentile(75) | 22.72808635185156 |
+| percentile(90) | 22.72808635185156 |
+| percentile(95) | 22.72808635185156 |
+| percentile(99) | 22.72808635185156 |
 | slope | 1.2502e-4 |
 | intercept | -1.8922e8 |
 ```
@@ -171,11 +171,11 @@ variance,3.5367305603537185
 stddev,1.8806197277370347
 wavg,21.559255402231774
 wtavg,22.10622632443797
-percentile_50,21.09692237912773
-percentile_75,22.72808635185156
-percentile_90,22.72808635185156
-percentile_95,22.72808635185156
-percentile_99,22.72808635185156
+percentile(50),21.09692237912773
+percentile(75),22.72808635185156
+percentile(90),22.72808635185156
+percentile(95),22.72808635185156
+percentile(99),22.72808635185156
 slope,1.2502e-4
 intercept,-1.8922e8
 ```
@@ -218,11 +218,11 @@ detailsTable('html')
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">stddev</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">1.8806197277370347</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">wavg</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">21.559255402231774</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">wtavg</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.10622632443797</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile_50</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">21.09692237912773</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile_75</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile_90</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile_95</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile_99</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile(50)</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">21.09692237912773</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile(75)</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile(90)</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile(95)</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
+<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">percentile(99)</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">22.72808635185156</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">slope</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">1.2502e-4</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">intercept</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">-1.8922e8</td></tr>
 </tbody></table>
@@ -266,11 +266,11 @@ variance=3.5367305603537185
 stddev=1.8806197277370347
 wavg=21.559255402231774
 wtavg=22.10622632443797
-percentile_50=21.09692237912773
-percentile_75=22.72808635185156
-percentile_90=22.72808635185156
-percentile_95=22.72808635185156
-percentile_99=22.72808635185156
+percentile(50)=21.09692237912773
+percentile(75)=22.72808635185156
+percentile(90)=22.72808635185156
+percentile(95)=22.72808635185156
+percentile(99)=22.72808635185156
 slope=1.2502e-4
 intercept=-1.8922e8
 ```

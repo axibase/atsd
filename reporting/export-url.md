@@ -46,13 +46,7 @@ https://atsd_hostname:8443/export?settings={"m":"cpu_used","e":"nurswgvml001","s
 * `STANDARD_DEVIATION`
 * `WAVG`
 * `WTAVG`
-* `PERCENTILE_50`
-* `PERCENTILE_75`
-* `PERCENTILE_90`
-* `PERCENTILE_95`
-* `PERCENTILE_99`
-* `PERCENTILE_995`
-* `PERCENTILE_999`
+* `PERCENTILE(n)`
 
 ## Interval Time Units
 
