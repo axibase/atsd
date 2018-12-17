@@ -2,6 +2,7 @@ ActiveMQ
 Alteryx
 Amazon
 Ambari
+André
 Apache2
 ArrayIndexOutOfBoundsException
 ATSD
@@ -28,6 +29,7 @@ collectl
 CoprocessorRegion
 Cupertino
 DataNode[s]?
+Dataplot
 DataTableReporter
 DbVisualizer
 Debian
@@ -36,6 +38,7 @@ Dockerfile
 DynamoDB
 EBS
 Eckner
+EstimationType
 Euler
 Fabrica
 FileNotFoundException
@@ -48,6 +51,7 @@ grafana
 Graphite
 GraphQL
 Griffiths
+Guava
 Hadoop
 HBase
 HBase-2
@@ -61,6 +65,7 @@ Horton
 HQuorumPeer
 HRegion[s]?
 HRegionServer[s]?
+Hyndman
 IndexNotFoundException
 IndexOutOfBoundsException
 iptables
@@ -76,11 +81,12 @@ kafka
 Kerberos
 Kibot
 Kubernetes
+Kusto
 Linux
 Levenshtein
 Lucene
 MacOS
-MatLab
+Mat[lL]ab
 MapReduce
 Maven
 Mesos
@@ -90,6 +96,7 @@ MySQL
 Nagios
 NameNode
 NaN
+NaNStrategy
 netcat
 netstat
 nginx
@@ -99,6 +106,7 @@ NodeJS
 NodeManager
 NullPointerException
 NumberFormatException
+NumPy
 OAuth
 Oct
 OoM
@@ -121,6 +129,7 @@ ResourceManager
 ResultSet
 RHEL
 Salesforce
+SciPy
 scollector
 scollector-Linux
 scollector-MS

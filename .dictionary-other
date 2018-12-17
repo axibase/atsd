@@ -166,6 +166,8 @@ preconfigure[d]?
 prepend(ed)?
 programmatically
 ps
+quantile[s]?
+quartile[s]?
 rad
 refactor(ed|ing)?
 refer[r]?er
