@@ -264,7 +264,7 @@ Refer to the [Data API Documentation](../api/data/filter-entity.md#entity-filter
 
 ## Retrieving Series from the Database
 
-As an alternative to defining a `[series]` manually or using wildcards, widget syntax supports the [`getSeries()`](https://axibase.com/docs/charts/syntax/functions.html#getseries) and [`getTags()`](https://axibase.com/docs/charts/syntax/functions.html#gettags) functions to retrieve series lists from the server.
+As an alternative to defining a `[series]` manually or using wildcards, widget syntax supports the [`getSeries()`](https://axibase.com/docs/charts/syntax/api-functions.html#getseries) and [`getTags()`](https://axibase.com/docs/charts/syntax/api-functions.html#gettags) functions to retrieve series lists from the server.
 
 `getTags()` function:
 

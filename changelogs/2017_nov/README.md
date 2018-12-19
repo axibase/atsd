@@ -48,7 +48,7 @@
 | 4683| external | Feature | Update client adapter for external JavaScript libraries. |
 | 4690 | widgets | Feature | Speed up series filtering in dependent charts. |
 | 4678 | api | Feature | Upgrade JavaScript adapter for external charting libraries. |
-| 4630 | api | Feature | Implement [`previous()`](https://axibase.com/docs/charts/syntax/functions.html#previous) function. |
+| 4630 | api | Feature | Implement [`previous()`](https://axibase.com/docs/charts/syntax/value-functions.html#previous) function. |
 
 ---
 

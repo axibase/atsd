@@ -76,7 +76,7 @@
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [3958](#issue-3958) | core   | Bug | Improved performance of legend rendering.                                    |
-| [3921](#issue-3921) | widget-settings | Bug     | Added [`escape()`](https://axibase.com/docs/charts/syntax/functions.html#list-escape) method to `list` and `var` arrays to escape commas in elements.|
+| [3921](#issue-3921) | widget-settings | Bug     | Added [`escape()`](https://axibase.com/docs/charts/syntax/control-structures.html#listescape) method to `list` and `var` arrays to escape commas in elements.|
 | 3917 | widget-settings | Bug     | Added the ability to escape commas and backslashes in settings which contain a list.|
 | [3897](#issue-3897) | table      | Feature | Added [`auto-height`](https://axibase.com/docs/charts/widgets/shared-table/#auto-height) setting.|
 | 3896| table      | Feature | Added a setting to hide table headers.|
