@@ -36,7 +36,7 @@ cd tcollector
 Start tcollector from the installation directory. Replace `atsd_hostname` with the ATSD hostname or IP address.
 
 ```sh
-sudo ./tcollector start --host atsd_hostname --port 8081
+sudo ./tcollector.py start --host atsd_hostname --port 8081
 ```
 
 ### Auto-Start
@@ -52,17 +52,22 @@ Replace `atsd_hostname` with the ATSD hostname or IP address.
 
 #### Ubuntu 14.04
 
-Download [init script](./resources/tcollector) and copy it into `/etc/init.d` directory.
-Set `TCOLLECTOR_HOME` variable to tcollector home directory, for example
+Download the tcollector [init](https://raw.githubusercontent.com/axibase/atsd/master/integration/tcollector/resources/tcollector) script and copy it to the `/etc/init.d/tcollector` path.
 
 ```sh
-TCOLLECTOR_HOME=/home/axibase/tcollector
+sudo curl https://raw.githubusercontent.com/axibase/atsd/master/integration/tcollector/resources/tcollector -o /etc/init.d/tcollector
 ```
 
 Make the script executable.
 
 ```sh
 sudo chmod u+x /etc/init.d/tcollector
+```
+
+Set `TCOLLECTOR_HOME` variable to the tcollector home directory.
+
+```sh
+TCOLLECTOR_HOME=/home/axibase/tcollector
 ```
 
 Enable auto-start for tcollector.
@@ -79,7 +84,8 @@ sudo service tcollector start
 
 #### CentOS 6.x and RHEL 6.x
 
-Download [init script](./resources/tcollector) and copy it into `/etc/init.d` directory.
+Download the tcollector [init](https://raw.githubusercontent.com/axibase/atsd/master/integration/tcollector/resources/tcollector) script and copy it to the `/etc/init.d/tcollector` path.
+
 Set `TCOLLECTOR_HOME` variable to tcollector home directory, for example
 
 ```sh
@@ -169,6 +175,10 @@ User=user_name
 
 Replace `user_name` with user name.
 
+## Logs
+
+Logs are located at `/var/log/tcollector.log`.
+
 ## Entity Group and Portal
 
 Entities collecting tcollector data are automatically grouped into the `tcollector - linux` entity group.
@@ -181,7 +191,7 @@ properties('tcollector').size() > 0
 
 A default portal is assigned to the tcollector entity group called: `tcollector - Linux`.
 
-Launch live tcollector portal in Axibase Chart Lab.
+View sample tcollector portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/bdad4416/3/)
 

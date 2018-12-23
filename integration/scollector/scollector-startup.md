@@ -89,6 +89,12 @@ Enable scollector launch when the system is started.
 sudo update-rc.d scollector defaults 90 10
 ```
 
+Start scollector.
+
+```sh
+sudo service scollector start
+```
+
 #### CentOS 6.x and RHEL 6.x
 
 Change to the scollector installation directory.
