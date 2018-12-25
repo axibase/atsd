@@ -24,7 +24,7 @@ The certificates can be either [uploaded](#upload-certificates-to-atsd) into ATS
 
 ### Upload Certificates to ATSD
 
-If the certificate files are in `PEM` format, you can upload them to ATSD using `curl`.
+If the certificate files are in `PEM` format, upload them to ATSD using `curl`.
 
 Alternatively, create a PKCS12 keystore as described [below](#deploy-keystore-file).
 

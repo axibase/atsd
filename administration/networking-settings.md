@@ -1,7 +1,6 @@
 # Networking Settings
 
-Change networking settings if you’re anticipating a high data insertion rate via UDP protocol with bursts of 100,000
-packets per second or more.
+Change networking settings if you are anticipating a high data insertion rate via UDP protocol with bursts of 100,000 packets per second or more.
 
 ## Increase Receiving Buffer
 

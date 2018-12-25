@@ -523,7 +523,7 @@ INFO mapreduce.LastInsertMigration: Map-reduce job success, files from outputFol
 ...
 INFO mapreduce.LastInsertMigration: Files from outputFolder 1609980393918240854 are loaded in table atsd_li. Start deleting outputFolder.
 WARN mapreduce.LastInsertMigration: Deleting outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 failed!
-WARN mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 not needed any more, and you can delete this outputFolder via hdfs cli.
+WARN mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 not needed any more. Delete this outputFolder via hdfs cli.
 INFO mapreduce.LastInsertMigration: Last Insert table migration job took 37 seconds.
 ```
 

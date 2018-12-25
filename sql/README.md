@@ -3201,7 +3201,7 @@ AND LOWER(tags.file_system) LIKE '%root'
 
 #### LAG
 
-The `LAG` function allows you access a column in a preceding row of the result set.
+The `LAG` function provides access to a preceding row at a specified offset from the current position.
 
 ```sql
 LAG(columnName [, int offset [, defaultValue]])
@@ -3296,7 +3296,7 @@ WHERE entity = 'nurswgvml007'
 
 #### LEAD
 
-The `LEAD` function allows you access a column in a subsequent row of the result set.
+The `LEAD` function provides access to a following row at a specified offset from the current position.
 
 ```sql
 LEAD(columnName [, int offset [, defaultValue]])

@@ -27,7 +27,7 @@ Auto Test Example Results:
 | Entities count | Number of unique entities to store. |
 | Metrics count | Number of unique metrics to store. |
 | Series count | Total number of series to store. |
-| Tags count | Number of tags in each series. Set it to an estimated number of tags that are normally present in your series. |
+| Tags count | Number of tags in each series. Set it to an estimated number of tags that are normally present in the series. |
 | Batch size | Size of each test batch. |
 | Thread count | Number of threads used for each test. |
 | Start time | Start timestamp for the generated series. |

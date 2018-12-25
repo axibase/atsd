@@ -43,7 +43,7 @@ sudo apt install certbot
 ### HTTP-01 Challenge
 
 :::tip Note
-The `HTTP-01` challenge verifies your full control of the server by sending it a request on port `80`.
+The `HTTP-01` challenge verifies administrative control of the server by sending an HTTP request on port `80`.
 :::
 
 Ensure that port `80` is open and not bound to any process on the server where `certbot` is running.
@@ -123,8 +123,8 @@ dns-01 challenge for atsd.example.org
 
 -------------------------------------------------------------------------------
 NOTE: The IP of this machine will be publicly logged as having requested this
-certificate. If you're running certbot in manual mode on a machine that is not
-your server, please ensure you're okay with that.
+certificate. If you are running certbot in manual mode on a machine that is not
+your server, please ensure you are okay with that.
 
 Are you OK with your IP being logged?
 -------------------------------------------------------------------------------
