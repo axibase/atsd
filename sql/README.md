@@ -2544,12 +2544,12 @@ The `COUNT(*)` function returns the number of rows in the result set, whereas th
 
 The `PERCENTILE` function calculates the number which is greater than the specified _percentage_ of values in the given period.
 
-The function accepts `percentile` parameter within the `(0, 100]` range as the first argument and a numeric expression as the second argument, for example `PERCENTILE(99.9, value)`.
+The function accepts `percentile` parameter within the `[0, 100]` range as the first argument and a numeric expression as the second argument, for example `PERCENTILE(99.9, value)`.
 
-* `PERCENTILE(100, value)` is equal to `MAX(value)`
-* `PERCENTILE(0, value)` is not allowed and returns `NaN`.
+* `PERCENTILE(100, value)` equals `MAX(value)`
+* `PERCENTILE(0, value)` equals `MIN(value)`.
 
-The percentile [calculation method](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) uses `N+1` as the input array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
+The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
 
 #### FIRST_VALUE
 

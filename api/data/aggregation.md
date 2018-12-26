@@ -13,7 +13,7 @@
 | `LAST`| Last value.
 | `DELTA`| Difference between the last and the first value.
 | `COUNTER` | Sum of positive differences between consecutive values.
-| `PERCENTILE(n)` | `n`-th [percentile](#percentile), for example `PERCENTILE(75)` or `PERCENTILE(99.5)`.<br>`n` is a decimal number between `(0, 100]`.
+| `PERCENTILE(n)` | `n`-th [percentile](#percentile), for example `PERCENTILE(75)` or `PERCENTILE(99.5)`.<br>`n` is a decimal number between `[0, 100]`.
 | `MEDIAN` | Median value, same as 50% percentile.
 | `STANDARD_DEVIATION` | Standard deviation.
 | `SLOPE` | Linear regression slope.
@@ -54,10 +54,10 @@ The `COUNTER` function returns the sum of positive differences between consecuti
 ### `PERCENTILE`
 
 * The `percentile(n)` function returns the number which is greater than the specified percentage `n` of values in the given period.
-* The `n` parameter must be within the `(0, 100]` range.
+* The `n` parameter must be within the `[0, 100]` range.
 * `PERCENTILE(100)` = `MAX`.
 * `PERCENTILE(97.5)` is equal to `97.5%` percentile.
 * `PERCENTILE(50)` = `MEDIAN`.
-* `PERCENTILE(0)` is not valid.
-* The [calculation method](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
+* `PERCENTILE(0)` = `MIN`.
+* The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
 * `NaN` values are ignored from the input array.

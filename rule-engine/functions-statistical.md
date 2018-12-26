@@ -116,7 +116,7 @@ Value count.
 percentile(double n) double
 ```
 
-Calculates `n`-th percentile. The [returned value](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) is equal or greater than `n` percent of samples and smaller than `100-n` samples. `n` can be a fractional number within the `(0, 100]` range.
+Calculates `n`-th percentile according to the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values. `n` must be a fractional number within the `[0, 100]` range.
 
 ## `median`
 
