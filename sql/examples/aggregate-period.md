@@ -60,32 +60,32 @@ The server time zone is "Europe/Berlin".
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-ddTHH:mm:ssZZ') AS local_datetime,
-  MIN(value), MAX(value), COUNT(value), FIRST(value), LAST(value)
+  MIN(value), MAX(value), COUNT(value), FIRST_VALUE(value), LAST_VALUE(value)
 FROM m1
   GROUP BY PERIOD(1 DAY)
 ```
 
 ```ls
-| datetime             | local_datetime            | min(value) | max(value) | count(value) | first(value) | last(value) |
-|----------------------|---------------------------|------------|------------|--------------|--------------|-------------|
-| 2017-04-13T22:00:00Z | 2017-04-14T00:00:00+02:00 | 21         | 21         | 1            | 21           | 21          |
-| 2017-04-14T22:00:00Z | 2017-04-15T00:00:00+02:00 | 0          | 23         | 6            | 22           | 3           |
+| datetime             | local_datetime            | min(value) | max(value) | count(value) | first_value(value) | last_value(value) |
+|----------------------|---------------------------|------------|------------|--------------|--------------------|-------------------|
+| 2017-04-13T22:00:00Z | 2017-04-14T00:00:00+02:00 | 21         | 21         | 1            | 21                 | 21                |
+| 2017-04-14T22:00:00Z | 2017-04-15T00:00:00+02:00 | 0          | 23         | 6            | 22                 | 3                 |
 ```
 
 * User-defined time zone. The day periods are aligned to 0:00 UTC time.
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-ddTHH:mm:ssZZ') AS local_datetime,
-  MIN(value), MAX(value), COUNT(value), FIRST(value), LAST(value)
+  MIN(value), MAX(value), COUNT(value), FIRST_VALUE(value), LAST_VALUE(value)
 FROM m1
   GROUP BY PERIOD(1 DAY, 'UTC')
 ```
 
 ```ls
-| datetime             | local_datetime            | min(value) | max(value) | count(value) | first(value) | last(value) |
-|----------------------|---------------------------|------------|------------|--------------|--------------|-------------|
-| 2017-04-14T00:00:00Z | 2017-04-14T02:00:00+02:00 | 21         | 23         | 3            | 21           | 23          |
-| 2017-04-15T00:00:00Z | 2017-04-15T02:00:00+02:00 | 0          | 3          | 4            | 0            | 3           |
+| datetime             | local_datetime            | min(value) | max(value) | count(value) | first_value(value) | last_value(value) |
+|----------------------|---------------------------|------------|------------|--------------|--------------------|-------------------|
+| 2017-04-14T00:00:00Z | 2017-04-14T02:00:00+02:00 | 21         | 23         | 3            | 21                 | 23                |
+| 2017-04-15T00:00:00Z | 2017-04-15T02:00:00+02:00 | 0          | 3          | 4            | 0                  | 3                 |
 ```
 
 * Data
@@ -104,15 +104,15 @@ series e:e1 d:2017-04-15T03:00:00Z m:m1=3
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'US/Pacific') AS local_datetime,
-  MIN(value), MAX(value), COUNT(value), FIRST(value), LAST(value)
+  MIN(value), MAX(value), COUNT(value), FIRST_VALUE(value), LAST_VALUE(value)
 FROM tmz1
   GROUP BY PERIOD(1 DAY, 'US/Pacific')
 ```
 
 ```ls
-| datetime            | local_datetime          | min(value) | max(value) | count(value) | first(value) | last(value) |
-|---------------------|-------------------------|------------|------------|--------------|--------------|-------------|
-| 2017-04-14 07:00:00 | 2017-04-14 00:00:00 PDT | 0.0        | 23.0       | 7            | 21.0         | 3.0         |
+| datetime            | local_datetime          | min(value) | max(value) | count(value) | first_value(value) | last_value(value) |
+|---------------------|-------------------------|------------|------------|--------------|--------------------|-------------------|
+| 2017-04-14 07:00:00 | 2017-04-14 00:00:00 PDT | 0.0        | 23.0       | 7            | 21.0               | 3.0               |
 ```
 
 * Data

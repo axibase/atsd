@@ -1,6 +1,6 @@
-# Aggregate Functions: FIRST and LAST
+# Aggregate Functions: FIRST_VALUE and LAST_VALUE
 
-FIRST and LAST functions return the first and last value within a set of the grouped records which are sorted by time in ascending order.
+`FIRST_VALUE` and `LAST_VALUE` functions return the first and last value within a set of the grouped records which are sorted by time in ascending order.
 
 ## Data
 
@@ -23,7 +23,7 @@ series e:e-agr-3 m:m-agr=90  d:2017-07-03T09:00:00Z <- first numeric value withi
 
 ```sql
 SELECT datetime, count(value), count(*),
-  first(value), last(value)
+  FIRST_VALUE(value), LAST_VALUE(value)
 FROM "m-agr"
   GROUP BY PERIOD(1 DAY)
 ```
@@ -31,18 +31,18 @@ FROM "m-agr"
 * Results
 
 ```ls
-| datetime             | count(value) | count(*) | first(value) | last(value) |
-|----------------------|--------------|----------|--------------|-------------|
-| 2017-07-01T00:00:00Z | 3            | 3        | 30           | 20          |
-| 2017-07-02T00:00:00Z | 4            | 4        | 40           | 70          |
-| 2017-07-03T00:00:00Z | 2            | 3        | 90           | 80          |
+| datetime            | count(value) | count(*) | first_value(value) | last_value(value) |
+|---------------------|--------------|----------|--------------------|-------------------|
+| 2017-07-01 00:00:00 |            3 |        3 |                 30 |                20 |
+| 2017-07-02 00:00:00 |            4 |        4 |                 40 |                70 |
+| 2017-07-03 00:00:00 |            2 |        3 |                 90 |                80 |
 ```
 
 ## Query: GROUP BY entity
 
 ```sql
 SELECT entity, count(value), count(*),
-  first(value), last(value)
+  FIRST_VALUE(value), LAST_VALUE(value)
 FROM "m-agr"
   GROUP BY entity
 ```
@@ -50,10 +50,10 @@ FROM "m-agr"
 * Results
 
 ```ls
-| entity  | count(value) | count(*) | first(value) | last(value) |
-|---------|--------------|----------|--------------|-------------|
-| e-agr-1 | 2            | 3        | 10           | 40          |
-| e-agr-2 | 3            | 3        | 20           | 80          |
-| e-agr-3 | 3            | 3        | 30           | 90          |
-| e-agr-4 | 1            | 1        | 70           | 70          |
+| entity  | count(value) | count(*) | first_value(value) | last_value(value) |
+|---------|--------------|----------|--------------------|-------------------|
+| e-agr-1 |            2 |        3 |                 10 |                40 |
+| e-agr-2 |            3 |        3 |                 20 |                80 |
+| e-agr-3 |            3 |        3 |                 30 |                90 |
+| e-agr-4 |            1 |        1 |                 70 |                70 |
 ```

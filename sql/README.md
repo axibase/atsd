@@ -2495,7 +2495,7 @@ The following functions aggregate values in a column by producing a single value
 ```ls
 |----------------|----------------|----------------|----------------|
 | AVG            | CORREL         | COUNT          | COUNTER        |
-| DELTA          | FIRST          | LAST           | MAX            |
+| DELTA          | FIRST_VALUE    | LAST_VALUE     | MAX            |
 | MAX_VALUE_TIME | MEDIAN         | MIN            | MIN_VALUE_TIME |
 | PERCENTILE     | SUM            | STDDEV         | WAVG           |
 | WTAVG          |                |                |                |
@@ -2506,7 +2506,7 @@ The following functions aggregate values in a column by producing a single value
 
 * All functions accept a numeric expression or a numeric column as an argument, for example `AVG(value)` or `AVG(t1.value + t2.value)`.
 * `COUNT` function accepts any expression, including `*`, for example `COUNT(*)` or `COUNT(datetime)`.
-* `MIN`, `MAX`, `FIRST`, `LAST` functions additionally accept TIMESTAMP data type as an argument, for example `MAX(datetime)`.
+* `MIN`, `MAX`, `FIRST_VALUE`, `LAST_VALUE` functions also accept arguments of `TIMESTAMP` data type, for example `MAX(datetime)`.
 
 #### Returned Data Types
 
@@ -2551,13 +2551,13 @@ The function accepts `percentile` parameter within the `(0, 100]` range as the f
 
 The percentile [calculation method](https://commons.apache.org/proper/commons-math/javadocs/api-3.0/org/apache/commons/math3/stat/descriptive/rank/Percentile.html) uses `N+1` as the input array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
 
-#### FIRST
+#### FIRST_VALUE
 
-The `FIRST` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
+The `FIRST_VALUE` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
 
-#### LAST
+#### LAST_VALUE
 
-The `LAST` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
+The `LAST_VALUE` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
 
 #### MIN_VALUE_TIME
 
