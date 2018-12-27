@@ -2496,9 +2496,9 @@ The following functions aggregate values in a column by producing a single value
 |----------------|----------------|----------------|----------------|
 | AVG            | CORREL         | COUNT          | COUNTER        |
 | DELTA          | FIRST_VALUE    | LAST_VALUE     | MAX            |
-| MAX_VALUE_TIME | MEDIAN         | MIN            | MIN_VALUE_TIME |
-| PERCENTILE     | SUM            | STDDEV         | WAVG           |
-| WTAVG          |                |                |                |
+| MAX_VALUE_TIME | MEDIAN         | MEDIAN_ABS_DEV | MIN            |
+| MIN_VALUE_TIME | PERCENTILE     | SUM            | STDDEV         |
+| WAVG           | WTAVG          |                |                |
 |----------------|----------------|----------------|----------------|
 ```
 
@@ -2567,6 +2567,14 @@ The `MIN_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype
 
 The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **maximum** value.
 
+#### MEDIAN_ABS_DEV
+
+The `MEDIAN_ABS_DEV` function returns median absolute deviation and provides a robust (resilient to outliers) estimate of the variance.
+
+```javascript
+median(ABS(expr - median(expr))
+```
+
 #### CORREL
 
 The `CORREL` correlation function accepts two numeric expressions as arguments (or two value columns in a `JOIN` query) and calculates the [Pearson correlation](http://commons.apache.org/proper/commons-math/javadocs/api-3.3/org/apache/commons/math3/stat/correlation/PearsonsCorrelation.html) coefficient between them.
@@ -2578,16 +2586,16 @@ SELECT tu.entity,
   CORREL(tu.value, ts.value) AS "CORR-user-sys",
   CORREL(tu.value, tw.value) AS "CORR-user-iowait",
   CORREL(ts.value, tw.value) AS "CORR-sys-iowait",
-  stddev(tu.value),
-  stddev(ts.value),
-  stddev(tw.value)
+  STDDEV(tu.value),
+  STDDEV(ts.value),
+  STDDEV(tw.value)
 FROM "mpstat.cpu_user" tu JOIN "mpstat.cpu_system" ts JOIN "mpstat.cpu_iowait" tw
   WHERE tu.datetime >= NOW - 5 * MINUTE
 GROUP BY tu.entity
 ```
 
 ```ls
-| tu.entity    | CORR-user-sys | CORR-user-iowait | CORR-sys-iowait | stddev(tu.value) | stddev(ts.value) | stddev(tw.value) |
+| tu.entity    | CORR-user-sys | CORR-user-iowait | CORR-sys-iowait | STDDEV(tu.value) | STDDEV(ts.value) | STDDEV(tw.value) |
 |--------------|---------------|------------------|-----------------|------------------|------------------|------------------|
 | nurswgvml007 | 0.92          | NaN              | NaN             | 7.64             | 2.50             | 0.00             |
 | nurswgvml006 | -0.13         | 0.10             | 0.27            | 7.26             | 0.60             | 2.57             |
