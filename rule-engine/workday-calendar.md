@@ -44,7 +44,7 @@ WHERE time >= current_year
 
 ## Built-in Calendars
 
-By default, the database contains pre-defined 2018 workday calendars for several countries.
+By default, the database contains pre-defined workday calendars for several countries for years 2018-2019.
 
 Calendars can be modified and maintained by appending dates for prior and future years without [restarting the database](../administration/restarting.md).
 
