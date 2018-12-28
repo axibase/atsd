@@ -16,6 +16,7 @@
 | `PERCENTILE(n)` | `n`-th [percentile](#percentile), for example `PERCENTILE(75)` or `PERCENTILE(99.5)`.<br>`n` is a decimal number between `[0, 100]`.
 | `MEDIAN` | Median value, same as 50% percentile.
 | `STANDARD_DEVIATION` | Standard deviation.
+| `MEDIAN_ABS_DEV` | Median absolute deviation: `median(abs(value - median(value)))`.
 | `SLOPE` | Linear regression slope.
 | `INTERCEPT` | Linear regression intercept.
 | `WAVG` | Weighted average.

@@ -29,6 +29,7 @@ The group process is implemented as follows:
 * `PERCENTILE(n)`
 * `MEDIAN`
 * `STANDARD_DEVIATION`
+* `MEDIAN_ABS_DEV`
 * `FIRST`
 * `LAST`
 * `MIN_VALUE_TIME`
