@@ -7,7 +7,7 @@
 |5805|sql|bug|SQL: [PERCENTILE](../../sql/README.md#percentile) accepts invalid input in case of decimal metric.
 |5777|forecast|bug|[Series Query](../../api/data/series/query.md): timestamps misaligned in forecast.
 |5778|forecast|bug|[Series Query](../../api/data/series/query.md): caterpillar script error.
-|5807|core|bug|Core: Invalid datetime parsing for 2-digit year without separator.
+|5807|core|bug|Core: Invalid datetime [parsing](../../sql/README.md#local-time-boundaries) for 2-digit year without separator.
 |5808|api-rest|bug|[Alerts Query](../../api/data/alerts/query.md): entity match needs to be case-**in**sensitive.
 |5810|sql|feature|SQL: implement inclusive/exclusive comparison for [`BETWEEN`](../../sql/README.md#between-expression) operator .
 |5792|sql|feature|SQL: implement [`RANK`](../../sql/README.md#partition-ordering) and [`DENSE_RANK`](../../sql/README.md#partition-ordering) analytic function.
