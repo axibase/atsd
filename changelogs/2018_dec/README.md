@@ -26,7 +26,6 @@
 |5762|core|feature|Stored interval functionality.
 |5812|core|bug|[Workday Calendar](../../rule-engine/workday-calendar.md): Update calendars for year 2019.
 
-
 ## Charts
 
 **Issue**| **Category**    | **Type**    | **Subject**
