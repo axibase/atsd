@@ -10,7 +10,8 @@ Follow development in the **Change Tracker Portal** and review details in the **
 
 | **Month** | **Features** | **Bugs** | &nbsp;
 |---|---:|---:|---|
-| October  | `9` | `18` | [↗](2018_oct/README.md)
+| December  | `9` | `15` | [↗](2018_dec/README.md)
+| November  | `9` | `18` | [↗](2018_nov/README.md)
 | October  | `13` | `26` | [↗](2018_oct/README.md)
 | September  | `27` | `35` | [↗](2018_sep/README.md)
 | August | `47` | `47` | [↗](2018_aug/README.md)
