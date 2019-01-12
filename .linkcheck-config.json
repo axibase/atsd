@@ -60,4 +60,5 @@
         ,{ "pattern": "https://www.odh.ohio.gov/healthstats/vitalstats/deathstat.aspx"}
         ,{ "pattern": "https://sd24.senate.ca.gov/news.*"}
         ,{ "pattern": "https://www.highcharts.com/"}
+        ,{ "pattern": "https://data.cityofnewyork.us/.*"}
     ]}
