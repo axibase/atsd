@@ -62,9 +62,11 @@
         ,{ "pattern": "https://www.highcharts.com/"}
         ,{ "pattern": "https://data.cityofnewyork.us/.*"}
         ,{ "pattern": "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/percenti.htm"}
+        ,{ "pattern": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm"}
         ,{ "pattern": "https://faculty.history.wisc.edu/sommerville/351/dutch%20republic.htm"}
         ,{ "pattern": "https://www.opec.org/opec_web/en/press_room/4749.htm"}
         ,{ "pattern": "http://www.rubincenter.org/meria/2005/06/Duffield%20pdf.pdf"}
-
+        ,{ "pattern": "http://ops-alaska.com/time/gangale_converter/calendar_clock.htm"}
+        ,{ "pattern": "http://www.killedbypolice.net/"}
         
     ]}
