@@ -117,13 +117,13 @@ See additional examples [below](#examples).
 jsonToLists(string inStr) [[string]]
 ```
 
-Parses string `inStr` into a JSON document and returns a collection of string lists of the same size containing field values from this JSON document.
+Parses string `inStr` as a JSON document and converts it to a collection of lists. The first list is the **header** with field names, the remaining lists contain field values from the JSON document. Field values are returned as strings.
 
 The first list in the collection contains all possible key names in the leaf objects and their parents.
 
 The key names are created by concatenating the current field name with field names of its parents using `.` as a separator and `[i]` as an index suffix for array elements.
 
-Attempts to shorten key names by removing any common prefix.
+The function attempts to shorten key names by removing any common prefix.
 
 The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in the iterated object, the list on the given index contains an empty string.
 
@@ -140,12 +140,14 @@ Examples:
 }
 ```
 
-Output lists:
+Output is a collection of **three** lists even though the input document contains an array with **two** elements. The first list is the header.
 
 ```ls
-[[d, v],
- [2018-04-24, 1],
- [2018-04-25, 2]]
+[
+  [d, v],
+  [2018-04-24, 1],
+  [2018-04-25, 2]
+]
 ```
 
 * No prefix is discarded
