@@ -86,7 +86,7 @@ POST /api/v1/series/query
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","truncate":true,"order":0},
+    "group":{"type":"SUM","truncate":true},
 "data":[
     {"d":"2016-06-25T08:00:15.000Z","v":16.0},
     {"d":"2016-06-25T08:00:30.000Z","v":16.0},

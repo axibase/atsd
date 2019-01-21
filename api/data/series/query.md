@@ -157,7 +157,7 @@ Examples:
 | [smooth](smooth.md) | [Smooth](https://en.wikipedia.org/wiki/Smoothing) time series. |
 | [downsample](downsample.md) | Reduce time series cardinality by filtering out some samples. |
 
-The default processing sequence is as follows:
+The default transformation sequence is as follows:
 
 1. [interpolate](interpolate.md)
 2. [group](group.md)
@@ -165,10 +165,15 @@ The default processing sequence is as follows:
 4. [aggregate](aggregate.md)
 5. [smooth](smooth.md)
 6. [downsample](downsample.md)
+7. forecast
 
 The [interpolate](interpolate.md) transformation, if requested, is applied to detailed data before the values are passed to subsequent stages.
 
-The default transformation sequence can be modified by adding an `order` field in each transformation object, in which case the stages are executed in ascending order based on the `order` field.
+The default sequence can be modified by adding an `transformationOrder` field.
+
+```json
+"transformationOrder": ["group", "forecast"]
+```
 
 ## Control Fields
 
@@ -181,6 +186,7 @@ The default transformation sequence can be modified by adding an `order` field i
 | `requestId` | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |
 | `timeFormat` |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
 | `addMeta` | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
+| `transformationOrder` |array| List of transformation names such as `interpolate`, `aggregate` to control the order in which the transformations are applied to data.<br>Example: `"transformationOrder": ["group", "forecast"]` |
 
 ## Response
 

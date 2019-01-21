@@ -4,7 +4,7 @@
 
 Group merges multiple series into one. If group is applied after aggregation, it merges aggregate values.
 
-The sequence can be controlled with the `order` parameter.
+The sequence can be controlled with the `transformationOrder` parameter.
 
 Default order is to aggregate first and group second.
 
@@ -27,13 +27,11 @@ POST /api/v1/series/query
     "metric": "disk_used",
     "aggregate": {
       "type": "DELTA",
-      "period": { "count": 1, "unit": "MINUTE" },
-      "order": 0
+      "period": { "count": 1, "unit": "MINUTE" }
     },
     "group": {
       "type": "SUM",
-      "period": { "count": 1, "unit": "MINUTE" },
-      "order": 1
+      "period": { "count": 1, "unit": "MINUTE" }
     }
   }
 ]
@@ -65,8 +63,7 @@ POST /api/v1/series/query
         "count": 1,
         "unit": "MINUTE",
         "align": "CALENDAR"
-      },
-      "order": 1
+      }
     },
     "data": [
       {

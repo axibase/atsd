@@ -70,7 +70,7 @@ POST /api/v1/series/query
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"order":0},
+    "group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true}},
 "data":[
     {"d":"2016-06-25T08:00:05.000Z","v":11.0},
     {"d":"2016-06-25T08:00:10.000Z","v":13.0},
@@ -119,7 +119,7 @@ e-3 entity has no impact on `extend` and `truncate`.
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entityGroup":"e-entities","type":"HISTORY",
 "aggregate":{"type":"DETAIL"},
-"group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"truncate":true,"order":0},
+"group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"truncate":true},
 "data":[
     {"d":"2016-06-25T08:00:05.000Z","v":11.0},
     {"d":"2016-06-25T08:00:10.000Z","v":13.0},

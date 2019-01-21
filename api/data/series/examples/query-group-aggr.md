@@ -70,7 +70,7 @@ POST /api/v1/series/query
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"},"order":0},
+    "group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
 "data":[
     {"d":"2016-06-25T08:00:00.000Z","v":15.0},
     {"d":"2016-06-25T08:00:10.000Z","v":21.0},

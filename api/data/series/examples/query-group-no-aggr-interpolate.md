@@ -68,7 +68,7 @@ POST /api/v1/series/query
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false},"order":0},
+    "group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false}},
 "data":[
     {"d":"2016-06-25T08:00:00.000Z","v":12.0},
     {"d":"2016-06-25T08:00:05.000Z","v":14.0},

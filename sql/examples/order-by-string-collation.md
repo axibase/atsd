@@ -1,4 +1,4 @@
-﻿# `ORDER` BY String (Collation)
+﻿# ORDER By String (Collation)
 
 Ordering of strings is based on their Unicode value, with `NULL` having the lowest value.
 

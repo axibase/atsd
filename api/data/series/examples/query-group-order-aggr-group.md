@@ -66,14 +66,13 @@ POST /api/v1/series/query
     "endDate":   "2016-06-25T08:01:00Z",
     "entities": ["e-1", "e-2"],
     "metric": "m-1",
+    "transformationOrder": ["aggregate", "group"],
     "aggregate": {
       "type": "COUNT",
-      "period": {"count": 10, "unit": "SECOND"},
-      "order": 0
+      "period": {"count": 10, "unit": "SECOND"}
     },
     "group": {
-      "type": "SUM",
-      "order": 1
+      "type": "SUM"
     }
   }
 ]
@@ -85,8 +84,9 @@ POST /api/v1/series/query
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
+"transformationOrder":["AGGREGATE","GROUP"],
 "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
-"group":{"type":"SUM","order":1},
+"group":{"type":"SUM"},
 "data":[
     {"d":"2016-06-25T08:00:00.000Z","v":3.0},
     {"d":"2016-06-25T08:00:10.000Z","v":3.0},

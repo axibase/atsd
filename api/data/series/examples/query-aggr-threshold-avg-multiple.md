@@ -34,12 +34,10 @@ POST /api/v1/series/query
       "period": { "count": 10, "unit": "MINUTE" },
       "threshold": { "max": 95 },
       "type": "THRESHOLD_PERCENT",
-      "interpolate": { "type": "VALUE", "value": 100 },
-      "order": 0
+      "interpolate": { "type": "VALUE", "value": 100 }
     },
     "group": {
-        "type": "AVG",
-        "order": 1
+        "type": "AVG"
       }
   }
 ]
@@ -52,7 +50,7 @@ POST /api/v1/series/query
     "entities":["nurswgvml006","nurswgvml007","nurswgvml102"],"type":"HISTORY",
     "aggregate":{"type":"THRESHOLD_PERCENT","period":{"count":10,"unit":"MINUTE","align":"CALENDAR"},
     "threshold":{"max":95.0}},
-    "group":{"type":"AVG","order":1},
+    "group":{"type":"AVG"},
 "data":[
     {"d":"2016-02-19T13:00:00.000Z","v":88.88533333333334},
     {"d":"2016-02-19T13:10:00.000Z","v":100.0},

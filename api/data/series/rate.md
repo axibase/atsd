@@ -12,7 +12,6 @@ Used to compute rate of change when the underlying metric measures a continuousl
 |:---|:---|:---|
 | `period` | object | Rate period. Supports NANOSECOND time unit. |
 | `counter` | boolean | If `true`, negative differences between consecutive samples are ignored.<br>Default: `true`. |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate`, `aggregate`, and `downsample` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`, `downsample`. Default: `0`.  |
 
 ## Request
 

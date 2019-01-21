@@ -22,7 +22,6 @@ The aggregation process is implemented as follows:
 | `threshold`    | object  | Object containing the minimum and maximum range for `THRESHOLD_*` functions.  |
 | `calendar`     | object  | Calendar settings for `THRESHOLD_*` functions. |
 | `workingMinutes` | object | Working minutes settings for `THRESHOLD_*` functions.  |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`.<br>Default: `0`. |
 
 ### Period
 

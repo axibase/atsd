@@ -17,7 +17,6 @@ The group process is implemented as follows:
 | `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
 | `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
 | `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established.<br>Default: `false`.  |
-| `order`         | integer           | Controls the processing sequence of the `group`, `rate`, `aggregate`, and `downsample` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`, `downsample`. Default: `0`.  |
 
 ## Grouping Functions
 
@@ -121,7 +120,7 @@ On the other hand, the `SUM` returns `3 = (3 + null->0)` at `2016-06-25T08:00:05
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","order":0},
+    "group":{"type":"SUM"},
   "data":[
     {"d":"2016-06-25T08:00:00Z","v":12.0},
     {"d":"2016-06-25T08:00:05Z","v":3.0},
@@ -190,7 +189,7 @@ Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","truncate":true,"order":0},
+    "group":{"type":"SUM","truncate":true},
 "data":[
     {"d":"2016-06-25T08:00:15Z","v":16.0},
     {"d":"2016-06-25T08:00:30Z","v":16.0},
@@ -242,7 +241,7 @@ An opposite operation to truncation, extend adds missing values at the beginning
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"order":0},
+    "group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true}},
 "data":[
     {"d":"2016-06-25T08:00:05Z","v":11.0},
     {"d":"2016-06-25T08:00:10Z","v":13.0},
@@ -298,7 +297,7 @@ Response:
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false},"order":0},
+    "group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false}},
 "data":[
     {"d":"2016-06-25T08:00:00Z","v":12.0},
     {"d":"2016-06-25T08:00:05Z","v":14.0},
@@ -401,7 +400,7 @@ To split values into periods, specify a period.
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"DETAIL"},
-    "group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"},"order":0},
+    "group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
 "data":[
     {"d":"2016-06-25T08:00:00Z","v":15.0},
     {"d":"2016-06-25T08:00:10Z","v":21.0},
@@ -458,12 +457,10 @@ The timestamps used for grouping combine period start times from the underlying 
     "metric": "m-1",
     "aggregate": {
       "type": "COUNT",
-      "period": {"count": 10, "unit": "SECOND"},
-        "order": 0
+      "period": {"count": 10, "unit": "SECOND"}
     },
     "group": {
-      "type": "SUM",
-        "order": 1
+      "type": "SUM"
     }
   }
 ]
@@ -472,7 +469,7 @@ The timestamps used for grouping combine period start times from the underlying 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
 "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
-"group":{"type":"SUM","order":1},
+"group":{"type":"SUM"},
 "data":[
     {"d":"2016-06-25T08:00:00Z","v":3.0},
     {"d":"2016-06-25T08:00:10Z","v":3.0},
@@ -527,13 +524,11 @@ The grouped `SUM` series is then aggregated into periods.
     "metric": "m-1",
     "aggregate": {
       "type": "COUNT",
-      "period": {"count": 10, "unit": "SECOND"},
-        "order": 1
+      "period": {"count": 10, "unit": "SECOND"}
     },
     "group": {
       "type": "SUM",
-      "period": {"count": 1, "unit": "MILLISECOND"},
-        "order": 0
+      "period": {"count": 1, "unit": "MILLISECOND"}
     }
   }
 ]
@@ -552,7 +547,7 @@ The grouped `SUM` series is then aggregated into periods.
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
     "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
-    "group":{"type":"SUM","period":{"count":1,"unit":"MILLISECOND","align":"CALENDAR"},"order":0},
+    "group":{"type":"SUM","period":{"count":1,"unit":"MILLISECOND","align":"CALENDAR"}},
 "data":[
     {"d":"2016-06-25T08:00:00Z","v":2.0},
     {"d":"2016-06-25T08:00:10Z","v":2.0},

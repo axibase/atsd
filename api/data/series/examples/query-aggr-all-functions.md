@@ -76,8 +76,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -110,8 +109,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -144,8 +142,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -178,8 +175,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -212,8 +208,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -246,8 +241,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -280,8 +274,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -314,8 +307,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -348,8 +340,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -382,8 +373,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -416,8 +406,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -450,8 +439,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -484,8 +472,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -518,8 +505,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -552,8 +538,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -586,8 +571,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -620,8 +604,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -654,8 +637,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -688,8 +670,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
@@ -722,8 +703,7 @@ POST /api/v1/series/query
     "threshold": {
       "min": 10.0,
       "max": 90.0
-    },
-    "order": 0
+    }
   },
   "data": [{
     "d": "2018-12-27T14:10:00.000Z",
