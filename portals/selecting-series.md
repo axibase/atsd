@@ -109,80 +109,7 @@ exact-match = true
 When partial match is disabled, ATSD returns series with exactly the same combination of tags as specified in
 the request.
 
-The partial match, while making the configuration compact, can produce undetermined results if the partial key matches multiple
-series where only one series is expected:
-
-```ls
-# Series with Tags
-metric = df.bytes.percentused
-entity = nurswgvml006
-[tags]
-  fstype = ext4
-```
-
-In the above example, the response contains three different series with the same file system type `ext4` but with different
-mount points: `/`, `/boot/`, `/media/datadrive`.
-
-The resulting series is merged from three underlying series and provides a meaningless result.
-
-[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/7)
-
-To control how multiple matched series are processed, use the `multiple-series` setting.
-
-```ls
-# Display all series with tag fstype=ext4 without merging
-multiple-series = true
-[series]
-  [tags]
-    fstype = ext4
-```
-
-Use the `multiple-series` setting to display all series without specifying any tags in the widget configuration:
-
-```ls
-# Display all series without merging
-multiple-series = true
-[series]
-```
-
-The default value of the `multiple-series` setting is `true` in the following cases:
-
-* Multiple entities are specified, for example `entity = nur1, nur2`
-* Multiple tag values are specified, for example `[tags] mount = /, /tmp`
-* Entity name contains a [wildcard character](https://axibase.com/docs/charts/syntax/wildcards.html#wildcards), for example `entity = nur*`
-* Tag value contains a [wildcard character](https://axibase.com/docs/charts/syntax/wildcards.html#wildcards), for example `[tags] mount = /t*`
-* `entity-expression`, `entity-group`, or `tag-expression` is present
-
-![](./resources/multiple-series-1.png)
-
-```ls
-# Select series using tag value wildcards: 'multiple-series' set to true (enabled)
-[tags]
-  fstype = ext4
-  mount = *media*
-
-# Select series with any value for the specified tag: 'multiple-series' set to true (enabled)
-[tags]
-  fstype = ext4
-  mount = *
-
-# Select series with any value for the specified tag: 'multiple-series' set to false (disabled)
-[tags]
-  fstype = ext4
-
-# Select series with tag values from the specified list: 'multiple-series' set to true (enabled)
-[tags]
-  fstype = cifs, autofs
-
-# Select series with tag values matching specified wildcard patterns: 'multiple-series' set to true (enabled)
-[tags]
-  fstype = cifs, auto*
-
-# Select series with tags matching an expression: multiple-series set to true (enabled)
-tag-expression = tags.mount NOT LIKE '/m*'
-```
-
-![](./resources/select-tags.png)
+Each series request in the configuration can match multiple  series. To control how multiple matching series are processed, use the [`merge-series`](https://axibase.com/docs/charts/widgets/shared/#merge-series) setting.
 
 ## Merging Series
 
@@ -218,7 +145,7 @@ In the previous example, the underlying series do not overlap and can be merged 
 
 ![](./resources/multiple-series-off.png)
 
-[![](./resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/15/)
+[![](./resources/button.png)](https://apps.axibase.com/chartlab/37064521/3/)
 
 ## Selecting Series for Multiple Entities
 
