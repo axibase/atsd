@@ -65,8 +65,22 @@
 | ]      | Optional section end          |                    |                                                |
 ```
 
-Note: localized day of week pattern (`e`) prints day number of week in US locale starting from Sunday.
-To print day number of week starting from Monday, use the `u` pattern.
+> Localized day of week pattern (`e`) prints day number of week in US locale starting from Sunday.
+> To print day number of week starting from Monday, use the `u` pattern.
+
+## Named Patterns
+
+```txt
+| Pattern      | Date                          |
+|--------------|-------------------------------|
+| iso8601      | 2001-07-04T12:08:56.235-07:00 |
+| tivoli       | 1010704120856235              |
+| unix_millis  | 994273736235                  |
+| unix_seconds | 994273736                     |
+```
+
+> Named patterns and pattern letters cannot be mixed.
+> Named patterns are case-insensitive.
 
 ## Formatting Examples
 
