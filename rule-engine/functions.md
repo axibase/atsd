@@ -194,6 +194,7 @@ Name | Description
 [`is_weekday`](object-datetime.md#is_weekday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekday.
 [`is_weekend`](object-datetime.md#is_weekend-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekend day.
 [`is_workday`](object-datetime.md#is_workday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a working day.
+[`is_exceptionday`](object-datetime.md#is_exception-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a working weekend or a holiday working day.
 [`milliseconds`](functions-date.md#milliseconds)|  Parses the date string into Unix time in milliseconds.
 [`now`](functions-date.md#now)|  Returns the current time as a [`DateTime`](object-datetime.md) object.
 [`seconds`](functions-date.md#seconds)|  Parses the date string into Unix time in seconds.

@@ -54,6 +54,7 @@ The table below enumerates available `DateTime` object fields and their values f
 |`is_weekend('usa')`|`true`|
 |`is_workday()`|`false`|
 |`is_workday('usa')`|`false`|
+|`is_exceptionday('usa')`|`false`|
 
 Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` are calculated based on the [workday calendar](workday-calendar.md) specified in `default.holiday.calendar` server property.
 
@@ -72,6 +73,7 @@ Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous
 * [`is_weekday`](#is_weekday-function)
 * [`is_weekend`](#is_weekend-function)
 * [`is_workday`](#is_workday-function)
+* [`is_exceptionday`](#is_exception-function)
 * [`to_timezone`](#to_timezone-function)
 
 ### `add` Function
@@ -147,9 +149,21 @@ avg() > 10 && is_workday('usa')
 ```javascript
 // returns true 2 days before the first non-working day, typically on Thursdays
 now.hourOfDay = 12 AND
-now.is_workday()
-AND now.add(1, 'day').is_workday()
-AND NOT now.add(2, 'day').is_workday()
+  now.is_workday()
+  AND now.add(1, 'day').is_workday()
+  AND NOT now.add(2, 'day').is_workday()
+```
+
+### `is_exceptionday` Function
+
+```javascript
+is_exceptionday( [string code] ) boolean
+```
+
+The convenience function returns `true` if a working day is classified as a holiday or if a weekend day becomes a working day.
+
+```javascript
+now.is_weekend() && now.is_workday() || now.is_weekday() && !now.is_workday()
 ```
 
 ### `to_timezone` Function
