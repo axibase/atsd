@@ -132,12 +132,13 @@ The query contains **filter** fields to find time series in the database, **tran
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `valueFilter` | string | Boolean expression applied to detailed samples, for example, `value > 100`. Samples that satisfy the condition are included in the result. The `value` field in the expression refers to the current sample value. |
+| `valueFilter` | string | Boolean expression applied to each `time:value` sample. Samples that satisfy the condition are included in the result.<br>Available fields: `value` and `date`.<br>The `value` field in the expression refers to the current sample value.<br>The `date` field represents sample timestamp as an instance of the [DateTime](../../../rule-engine/object-datetime.md) object.|
 
 Value Filter Processing Rules:
 
 * The value filter is applied **before** series transformations (interpolation, aggregation, etc).
 * In case of a versioned metric in `versioned=true` mode, the filter checks only the last value recorded for the given time. If the last value satisfies the filter, all versions for that time are included.
+* The `date` fields is an instance of the [DateTime](../../../rule-engine/object-datetime.md) object and can be tested with various date functions.
 
 Examples:
 
@@ -145,6 +146,8 @@ Examples:
 * `value > 2 && value <= 3`: Retrieves samples within the specified range.
 * `Math.sin(value) < 0.5`: [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported.
 * `Double.isNaN(value)`: Only `NaN` values and deleted values pass this check.
+* `date.is_weekday()`: Retrieves samples recorded on [week days](../../../rule-engine/object-datetime.md#is_weekday-function) within the selection interval.
+* `!date.is_exceptionday()`: Retrieves samples recorded on [regular calendar](../../../rule-engine/object-datetime.md##is_exception-function) days.
 
 ## Transformations
 
