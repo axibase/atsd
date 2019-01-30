@@ -301,6 +301,7 @@ Name | Description
 [`slope_per_hour`](functions-statistical.md#slope_per_hour)| Calculates `slope_per_second()/3600`.
 [`slope_per_minute`](functions-statistical.md#slope_per_minute)| Calculates `slope_per_second()/60`.
 [`slope_per_second`](functions-statistical.md#slope_per_second)| Calculates linear regression slope.
+[`median_abs_dev`](functions-statistical.md#median_abs_dev)|Median absolute deviation.
 [`stdev`](functions-statistical.md#stdev)| Standard deviation.
 [`sum`](functions-statistical.md#sum)| Sums all included values.
 [`sumIf`](functions-statistical.md#sumif)| Sums elements matching the specified condition.
