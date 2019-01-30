@@ -25,6 +25,7 @@ Functions such as [`countIf`](#countif), [`avgIf`](#avgif), and [`sumIf`](#sumif
 * [`variance`](#variance)
 * [`stdev`](#stdev)
 * [`intercept`](#intercept)
+* [`median_abs_dev`](#median_abs_dev)
 * [`first`](#first)
 * [`last`](#last)
 * [`diff`](#diff)
@@ -149,6 +150,25 @@ intercept() double
 ```
 
 Calculates linear regression intercept.
+
+## `median_abs_dev`
+
+```javascript
+median_abs_dev() double
+```
+
+Returns a robust estimate of the variance calculated according to the following formula:
+
+```java
+median(abs(value - median(value)))
+```
+
+Examples:
+
+```javascript
+median_abs_dev('5 minute')
+median_abs_dev(10)
+```
 
 ## `first`
 
