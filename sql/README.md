@@ -333,7 +333,7 @@ Virtual tables have the same pre-defined columns since the underlying data is ph
 |`metric.interpolate` |string| Metric interpolation setting.|
 |`metric.tags.{name}` |string| Metric tag value. Returns `NULL` if the specified tag does not exist for this metric.|
 |`metric.tags`    |string   | All metric tags, concatenated to `name1=value;name2=value` format.|
-|`metric.tags.*`  |string   | Expands to multiple columns, each column containing a separate metric tag.|
+|`metric.tags.*`  |-   | Expands to multiple columns, each column containing a separate metric tag.|
 |`metric.dataType`|string   | [Data Type](../api/meta/metric/list.md#data-types).|
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
@@ -346,6 +346,7 @@ Virtual tables have the same pre-defined columns since the underlying data is ph
 |`metric.maxValue`| double | Maximum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
 |`metric.invalidValueAction` | string | [Invalid Action](../api/meta/metric/list.md#invalid-actions) type.|
 |`metric.units`| string | Measurement units. |
+|`metric.*`| - | Expands to multiple columns for each metric field, as well as the `metric.tags` column.  |
 
 #### Entity Columns
 
@@ -356,9 +357,11 @@ Virtual tables have the same pre-defined columns since the underlying data is ph
 |`entity.interpolate` |string| Entity interpolation setting.|
 |`entity.tags.{name}` |string| Entity tag value. Returns `NULL` if the specified tag does not exist for this entity.|
 |`entity.tags`    |string   | All entity tags, concatenated to `name1=value;name2=value` format.|
+|`entity.tags.*`  |-   | Expands to multiple columns, each column containing a separate entity tag.|
 |`entity.groups`  |string   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
 |`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
 |`entity.creationTime`| long | Entity creation time as Unix time with millisecond precision.|
+|`entity.*`| - | Expands to multiple columns for each entity field, as well as the `entity.tags` column.  |
 
 New columns can be created by applying functions and arithmetic expressions to existing columns. The computed columns can be included both in the `SELECT` expression, as well as in the `WHERE`, `HAVING`, and `ORDER BY` clauses.
 
