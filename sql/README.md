@@ -1782,7 +1782,7 @@ HAVING AVG(value) > 10 OR MAX(value) > 90
 
 Partitioning is implemented with the `ROW_NUMBER` function, which returns the sequential number of a row within a partition, starting with `1` for the first row in each partition.
 
-A partition is a subset of all rows within the result set, grouped by an entity or series tags. Each row in the result set can belong to only one partition.
+A partition is a subset of all rows within the result set, grouped by an entity or series tags. Each row in the result set can belong to only one partition. The partition includes only rows that satisfy the `WITH ROW_NUMBER` condition.
 
 For example, a result set, partitioned by entity and ordered by time, has the following row numbers:
 
@@ -1821,6 +1821,28 @@ Example | Description
 `ROW_NUMBER(value ORDER BY value DESC)` | Partition rows by `value` column.<br>Sort rows by decreasing `value` column values.
 `ROW_NUMBER(entity ORDER BY AVG(value))` | Partition rows by `entity` column.<br>Sort rows within each partition by average value in each period.<br>Aggregate functions in `{ordering columns}` are allowed when partitioning is applied to grouped rows.
 
+### Partition Condition
+
+The partition includes rows that satisfy the `WITH ROW_NUMBER` condition which compares the row number with a constant value or the current row number.
+
+* Top-N rows. Includes only rows from `1` to `5` with largest values.
+
+```sql
+WITH ROW_NUMBER(entity ORDER BY value DESC) <= 5
+```
+
+* Accumulating Window. Includes all rows. Applies analytical functions to all rows from first to current.
+
+```sql
+WITH ROW_NUMBER(entity ORDER BY time) > 0
+```
+
+* Sliding Window. Includes all rows. Applies analytical functions to the `10` preceding rows.
+
+```sql
+WITH ROW_NUMBER(entity ORDER BY time) BETWEEN 10 PRECEDING AND CURRENT ROW
+```
+
 ### Partition Ordering
 
 Each row in the partition is assigned an ordinal row number, starting with `1`, which can be used to filter sorted rows within each partition.
@@ -1855,25 +1877,46 @@ WITH ROW_NUMBER(entity, tags ORDER BY value DESC) > 0
 
 #### Partitioning Examples
 
-* Return maximum (`ORDER BY value DESC`) or most recent (`ORDER BY time DESC`) records from each partition.
+* Return the largest values (`ORDER BY value DESC`) for each partition.
 
 ```sql
 SELECT entity, datetime, value
   FROM "mpstat.cpu_busy"
-WHERE datetime >= '2017-06-18T12:00:00Z' AND datetime < '2017-06-18T12:00:30Z'
-  WITH ROW_NUMBER(entity ORDER BY time) <= 1
+WHERE datetime BETWEEN '2018-06-18T12:00:00Z' AND '2018-06-18T13:00:00Z' EXCL
+  WITH ROW_NUMBER(entity ORDER BY time DESC) <= 1
 ORDER BY entity, datetime
 ```
 
 ```ls
-| entity       | datetime             | value |
-|--------------|----------------------|-------|
-| nurswgvml006 | 2017-06-18T12:00:05Z | 66.0  |
-| nurswgvml007 | 2017-06-18T12:00:03Z | 18.2  |
-| nurswgvml010 | 2017-06-18T12:00:14Z | 0.5   |
-| nurswgvml011 | 2017-06-18T12:00:10Z | 100.0 |
-| nurswgvml102 | 2017-06-18T12:00:02Z | 0.0   |
-| nurswgvml502 | 2017-06-18T12:00:01Z | 13.7  |
+| entity       | datetime            | value |
+|--------------|---------------------|-------|
+| nurswgvml006 | 2018-06-18 12:45:58 |  29.5 |
+| nurswgvml007 | 2018-06-18 12:58:55 | 100.0 |
+| nurswgvml010 | 2018-06-18 12:55:04 | 100.0 |
+| nurswgvml301 | 2018-06-18 12:22:02 |  11.2 |
+| nurswgvml501 | 2018-06-18 12:09:01 |  29.2 |
+| nurswgvml502 | 2018-06-18 12:59:32 | 100.0 |
+```
+
+* Return most recent records (`ORDER BY time DESC`) for each partition.
+
+```sql
+SELECT entity, datetime, value
+  FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2018-06-18T12:00:00Z' AND '2018-06-18T13:00:00Z' EXCL
+  WITH ROW_NUMBER(entity ORDER BY time DESC) <= 1
+ORDER BY entity, datetime
+```
+
+```ls
+| entity       | datetime            | value |
+|--------------|---------------------|-------|
+| nurswgvml006 | 2018-06-18 12:59:50 |   1.2 |
+| nurswgvml007 | 2018-06-18 12:59:59 |  65.0 |
+| nurswgvml010 | 2018-06-18 12:59:52 |   3.0 |
+| nurswgvml301 | 2018-06-18 12:59:46 |   1.0 |
+| nurswgvml501 | 2018-06-18 12:59:58 |   6.2 |
+| nurswgvml502 | 2018-06-18 12:59:48 |   2.6 |
 ```
 
 * Apply an aggregate function to last `N` records.
@@ -1896,6 +1939,34 @@ GROUP BY entity
 | nurswgvml301 | 0.4        |
 | nurswgvml502 | 3.9        |
 ```
+
+* Calculate sliding window statistics.
+
+```sql
+SELECT datetime, value, AVG(value), COUNT(value)
+  FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2018-06-18T12:00:00Z' AND '2018-06-18T13:00:00Z' EXCL
+  AND entity = 'nurswgvml007'
+  WITH ROW_NUMBER(entity ORDER BY time) BETWEEN 5 PRECEDING AND CURRENT ROW
+ORDER BY entity, datetime
+```
+
+```ls
+| datetime            | value | avg(value) | count(value) |
+|---------------------|-------|------------|--------------|
+| 2018-06-18 12:00:13 |  12.2 |       12.2 |            1 |
+| 2018-06-18 12:00:29 |   7.1 |        9.7 |            2 |
+| 2018-06-18 12:00:45 |   8.0 |        9.1 |            3 |
+| 2018-06-18 12:01:01 |   7.9 |        8.8 |            4 |
+| 2018-06-18 12:01:17 |  27.3 |       12.5 |            5 |
+| 2018-06-18 12:01:33 |   8.1 |       11.7 |            5 |
+| 2018-06-18 12:01:49 |   8.1 |       11.9 |            5 |
+| 2018-06-18 12:02:05 |   6.1 |       11.5 |            5 |
+| 2018-06-18 12:02:21 |   9.2 |       11.7 |            5 |
+| 2018-06-18 12:02:37 |  16.0 |        9.5 |            5 |
+```
+
+---
 
 The `ROW_NUMBER` function can be included after the `WHERE` clause, as well as after the `GROUP BY` clause, in which case the function is applied to grouped rows.
 
@@ -1935,7 +2006,7 @@ WITH ROW_NUMBER(entity, tags ORDER BY period(15 minute)) <= 2
 | nurswgvml007 | /dev/mapper/vg_nurswgvml007-lv_root | 2017-01-09T00:15:00Z | 9005158    | 60           | 9071668      | 9010264   |
 ```
 
-The `row_number()` column, without arguments, can be included in the `SELECT` expression and in the `ORDER BY` clause.
+The `row_number()` column can be included in the `SELECT` expression and in the `ORDER BY` clause without specifying arguments required by the `WITH ROW_NUMBER` clause itself.
 
 ```sql
 SELECT datetime, entity, value, row_number()
