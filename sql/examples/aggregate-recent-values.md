@@ -1,4 +1,4 @@
-# Aggregate - Sliding Window
+# Aggregate - Recent Values
 
 ## Window without Series Tag Grouping
 

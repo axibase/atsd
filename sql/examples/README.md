@@ -58,7 +58,7 @@
 * [Counter Aggregator](aggregate-counter.md)
 * [Maximum Value Time](aggregate-max-value-time.md)
 * [Period Aggregation](aggregate-period.md)
-* [Sliding Window Statistics](aggregate-sliding-window.md)
+* [Recent Values Aggregation](aggregate-recent-values.md)
 
 ## Grouping
 
@@ -91,6 +91,7 @@
 * [`Top-N` Query using Row Number Function](partition-row-number-top-N-tags.md)
 * [Row Number, Rank, and Dense Rank Functions](partition-rank.md)
 * [Lag and Lead Functions](partition-lag.md)
+* [Sliding and Accumulating Windows](partition-window.md)
 * [Last Time](last-time.md)
 
 ## Subquery
