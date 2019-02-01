@@ -132,13 +132,13 @@ The query contains **filter** fields to find time series in the database, **tran
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `valueFilter` | string | Boolean expression applied to each `time:value` sample. Samples that satisfy the condition are included in the result.<br>Available fields: `value` and `date`.<br>The `value` field in the expression refers to the current sample value.<br>The `date` field represents sample timestamp as an instance of the [DateTime](../../../rule-engine/object-datetime.md) object.|
+| `valueFilter` | string | Boolean expression applied to each `time:value` sample. Samples that satisfy the condition are included in the result.<br>Available fields: `value` and `date`.<br>The `value` field in the expression refers to the current sample value.<br>The `date` field represents sample timestamp as an instance of the [`DateTime`](../../../rule-engine/object-datetime.md) object.|
 
 Value Filter Processing Rules:
 
 * The value filter is applied **before** series transformations (interpolation, aggregation, etc).
 * In case of a versioned metric in `versioned=true` mode, the filter checks only the last value recorded for the given time. If the last value satisfies the filter, all versions for that time are included.
-* The `date` fields is an instance of the [DateTime](../../../rule-engine/object-datetime.md) object and can be tested with various date functions.
+* The `date` fields is an instance of the [`DateTime`](../../../rule-engine/object-datetime.md) object and can be tested with various date functions.
 
 Examples:
 
