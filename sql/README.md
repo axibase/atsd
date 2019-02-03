@@ -2686,7 +2686,7 @@ GROUP BY tu.entity
 
 #### DATE_FORMAT
 
-The `date_format` function formats Unix time in milliseconds to a string in user-defined date format and optional time zone. See supported time pattern letters [here](../shared/time-pattern.md).
+The `date_format` function converts Unix time in milliseconds to a string according to the specified [time format](../shared/time-pattern.md) in the optional time zone.
 
 ```java
 date_format(long milliseconds[, string time_format[, string time_zone]])
@@ -2694,9 +2694,9 @@ date_format(long milliseconds[, string time_format[, string time_zone]])
 
 If the `time_format` argument is not provided, [ISO format](../shared/date-format.md) is applied.
 
-The `time_zone` parameter accepts GMT offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
+The `time_zone` parameter accepts GMT offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) to format dates in a time zone other than the database time zone.
 
-In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database time zone is applied.
+The `time_zone` parameter can be set to `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is set, the database time zone is applied.
 
 Examples:
 

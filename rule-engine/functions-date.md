@@ -121,7 +121,7 @@ Returns time when the first command is received by the window, in Unix time with
 milliseconds(string date [,string pattern [,string zone]]) long
 ```
 
-Parses the date string `date` into Unix time in milliseconds according to the specified [date pattern](../shared/time-pattern.md) `pattern` and [time zone](../shared/timezone-list.md) `zone` (or offset from UTC).
+Parses the date string `date` into Unix time in milliseconds according to the specified [date pattern](../shared/time-pattern.md) and [time zone](../shared/timezone-list.md) (or offset from UTC).
 
 Returns `0` if `date` is `null` or empty.
 
@@ -220,7 +220,7 @@ Returns the same result as the `elapsedTime` function divided by `60000`.
 date_parse(string date [,string pattern [,string zone]]) DateTime
 ```
 
-Parses the input string `date` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) `pattern` and [time zone](../shared/timezone-list.md) `zone` or offset from UTC.
+Parses the input string `date` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](../shared/time-pattern.md) and [time zone](../shared/timezone-list.md) or offset from UTC.
 
 The default pattern is [ISO format](../shared/date-format.md) `yyyy-MM-ddTHH:mm:ss[.S]Z` and the default time zone is the server time zone.
 
@@ -303,7 +303,7 @@ date_format(long time | DateTime date
                    [, string zone]]) string
 ```
 
-Converts timestamp `time`, specified as Unix time in milliseconds or a [`DateTime`](object-datetime.md) object, to a string according to the specified [date `pattern`](../shared/time-pattern.md) and the [time `zone`](../shared/timezone-list.md).
+Converts timestamp `time`, specified as Unix time in milliseconds or a [`DateTime`](object-datetime.md) object, to a string according to the specified [date pattern](../shared/time-pattern.md) and the [time zone](../shared/timezone-list.md).
 If neither the date pattern nor the time zone are specified, the input time is formatted with the default ISO format in the **UTC time zone**.
 If time zone is not specified, the input time `t` is formatted using `pattern` in the **server** time zone.
 
