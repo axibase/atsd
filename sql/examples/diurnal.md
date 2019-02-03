@@ -9,7 +9,7 @@ The date_format function can be used in the `WHERE`, `GROUP BY`, and `HAVING` cl
 * `u`: weekday number, starting with 1 for Monday
 * `HH`: hour of the day, 2 digit, 00 to 23.
 
-For additional patterns, refer to [`Time Patterns`](../../shared/time-pattern.md).
+For additional patterns, refer to [time patterns](../../shared/time-pattern.md).
 
 ## Example: Filter by calendar
 

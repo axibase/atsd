@@ -70,6 +70,8 @@
 
 ## Named Patterns
 
+Named patterns are built-in date formats that can be conveniently applied to a date object without specifying pattern letters.
+
 ```txt
 | Pattern      | Date                          |
 |--------------|-------------------------------|
