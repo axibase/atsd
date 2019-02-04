@@ -86,7 +86,7 @@ Returns the smallest of two numbers: `x` and `y`.
 ## `mod`
 
 ```csharp
-min(number x, number y) double
+mod(number x, number y) double
 ```
 
 Returns the remainder (modulus) of number `x` divided by number `y`.
