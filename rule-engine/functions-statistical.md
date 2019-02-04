@@ -19,6 +19,7 @@ Functions such as [`countIf`](#countif), [`avgIf`](#avgif), and [`sumIf`](#sumif
 * [`max`](#max)
 * [`wavg`](#wavg)
 * [`wtavg`](#wtavg)
+* [`ema`](#ema)
 * [`count`](#count)
 * [`percentile`](#percentile)
 * [`median`](#median)
@@ -91,7 +92,7 @@ Returns maximum value.
 wavg() double
 ```
 
-Calculates weighted average. Weight is the sample index which starts from `0` for the first sample.
+Calculates weighted average. Weight is the sample index which starts from `0` for the first sample. The function assigns more weight to more recent samples, based on the sample order.
 
 ## `wtavg`
 
@@ -99,9 +100,25 @@ Calculates weighted average. Weight is the sample index which starts from `0` fo
 wtavg() double
 ```
 
-Calculates weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
+Calculates weighted **time** average where sample weight is calculated according to the following formula:
+
+```javascript
+w = (sample.time - first.time)/(last.time - first.time + 1)
+```
 
 Times are rounded to Unix seconds.
+
+The function assigns more weight to more recent samples, based on the difference between sample time and window start.
+
+## `ema`
+
+```javascript
+ema([double factor]) double
+```
+
+Calculates [exponential moving average](../api/data/series/smooth.md#exponential-moving-average) from values present in the window. The optional smoothing `factor` must be within the `(0, 1)` range. the default `factor` is `0.25`.
+
+The function assigns more weight to more recent samples.
 
 ## `count`
 
@@ -109,7 +126,7 @@ Times are rounded to Unix seconds.
 count() long
 ```
 
-Value count.
+Returns the number of samples in the window.
 
 ## `percentile`
 

@@ -17,6 +17,19 @@ random() double
 
 Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.
 
+The mean value is `0.5`. The range of values is `[0, 1)`.
+
+To generate a sample for a customized mean and value range, use the following formula:
+
+```javascript
+customMean + (random()-0.5)*customRange
+```
+
+```javascript
+# Generate a random value from a uniform distribution with a mean of 10 in the [9, 11) range.
+10 + (random()-0.5)*2
+```
+
 ## `randomNormal`
 
 ```javascript
@@ -24,6 +37,18 @@ randomNormal() double
 ```
 
 Returns a normally distributed double number, with a mean value of `0.0` and standard deviation `1.0`.
+
+To generate a sample for a customized mean and deviation, use the following formula:
+
+```javascript
+customMean + randomNormal()*customStdDev
+```
+
+```javascript
+# Generate a random value from a normal distribution with a mean of 10 and standard deviation of 2.
+# 68.2% of values will be in the [8, 12] range.
+10 + randomNormal()*2
+```
 
 ## `randomItem`
 
