@@ -13,6 +13,7 @@ These functions perform basic numeric operations on the input number and return 
 * [`round`](#round)
 * [`max`](#max)
 * [`min`](#min)
+* [`mod`](#mod)
 * [`cbrt`](#cbrt)
 * [`sqrt`](#sqrt)
 * [`exp`](#exp)
@@ -81,6 +82,16 @@ min(double x, double y) double
 ```
 
 Returns the smallest of two numbers: `x` and `y`.
+
+## `mod`
+
+```csharp
+min(number x, number y) double
+```
+
+Returns the remainder (modulus) of number `x` divided by number `y`.
+
+This function provides an alternative to `x % y` syntax which is **not** supported.
 
 ## `cbrt`
 
