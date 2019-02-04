@@ -73,7 +73,7 @@ Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous
 * [`is_weekday`](#is_weekday-function)
 * [`is_weekend`](#is_weekend-function)
 * [`is_workday`](#is_workday-function)
-* [`is_exceptionday`](#is_exception-function)
+* [`is_exceptionday`](#is_exceptionday-function)
 * [`to_timezone`](#to_timezone-function)
 
 ### `add` Function

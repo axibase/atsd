@@ -75,10 +75,10 @@ Named patterns are built-in date formats that can be conveniently applied to a d
 ```txt
 | Pattern      | Date                          |
 |--------------|-------------------------------|
-| iso8601      | 2001-07-04T12:08:56.235-07:00 |
+| iso          | 2001-07-04T12:08:56.235-07:00 |
 | tivoli       | 1010704120856235              |
-| unix_millis  | 994273736235                  |
-| unix_seconds | 994273736                     |
+| milliseconds | 994273736235                  |
+| seconds      | 994273736.235                 |
 ```
 
 > Named patterns and pattern letters cannot be mixed.
@@ -109,10 +109,10 @@ Named patterns are built-in date formats that can be conveniently applied to a d
 | `2018-12-20T19:00:00`            | `yyyy-MM-ddTHH:mm:ss`              |
 | `2018-12-20 19:00:00`            | `yyyy-MM-dd HH:mm:ss`              |
 | `20181220190000`                 | `yyyyMMddHHmmss`                   |
-| `1181220190000032`               | `'1'yyMMddHHmmssSSS`               |
+| `1181220190000032`               | `tivoli`                           |
 | `2018-12-20 19:00`               | `yyyy-MM-dd HH:mm`                 |
 | `2018-12-20`                     | `yyyy-MM-dd`                       |
 | `2018-Dec-20`                    | `yyyy-MMM-dd`                      |
 | `2018-December-20`               | `yyyy-MMMM-dd`                     |
-| `20-Dec-18`                      | `dd-MMM-yy`                       |
+| `20-Dec-18`                      | `dd-MMM-yy`                        |
 | `12/20/18 07:00:00 PM`           | `MM/dd/yy hh:mm:ss a`              |
