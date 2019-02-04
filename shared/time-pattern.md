@@ -73,10 +73,10 @@
 ```txt
 | Pattern      | Date                          |
 |--------------|-------------------------------|
-| iso8601      | 2001-07-04T12:08:56.235-07:00 |
+| iso          | 2001-07-04T12:08:56.235-07:00 |
 | tivoli       | 1010704120856235              |
-| unix_millis  | 994273736235                  |
-| unix_seconds | 994273736                     |
+| milliseconds | 994273736235                  |
+| seconds      | 994273736.235                 |
 ```
 
 > Named patterns and pattern letters cannot be mixed.
@@ -107,7 +107,7 @@
 | `2018-12-20T19:00:00`            | `yyyy-MM-ddTHH:mm:ss`              |
 | `2018-12-20 19:00:00`            | `yyyy-MM-dd HH:mm:ss`              |
 | `20181220190000`                 | `yyyyMMddHHmmss`                   |
-| `1181220190000032`               | `'1'yyMMddHHmmssSSS`               |
+| `1181220190000032`               | `tivoli`               |
 | `2018-12-20 19:00`               | `yyyy-MM-dd HH:mm`                 |
 | `2018-12-20`                     | `yyyy-MM-dd`                       |
 | `2018-Dec-20`                    | `yyyy-MMM-dd`                      |
