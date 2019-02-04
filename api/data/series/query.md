@@ -147,7 +147,7 @@ Examples:
 * `Math.sin(value) < 0.5`: [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported.
 * `Double.isNaN(value)`: Only `NaN` values and deleted values pass this check.
 * `date.is_weekday()`: Retrieves samples recorded on [week days](../../../rule-engine/object-datetime.md#is_weekday-function) within the selection interval.
-* `!date.is_exceptionday()`: Retrieves samples recorded on [regular calendar](../../../rule-engine/object-datetime.md##is_exceptionday-function) days.
+* `!date.is_exceptionday()`: Retrieves samples recorded on [regular calendar](../../../rule-engine/object-datetime.md#is_exceptionday-function) days.
 
 ## Transformations
 
