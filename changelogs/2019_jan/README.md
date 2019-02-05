@@ -29,7 +29,7 @@
 **Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
 |5865|time-chart|Bug|[Smooth](https://axibase.com/docs/charts/widgets/shared/#smoothing) series not displayed if `multiple-series = true`.
-|5859|widget-settings|Bug|Chartlab: wrong `forecast-score-interval` setting conversion to series query field.
+|5859|widget-settings|Bug|ChartLab: wrong `forecast-score-interval` setting conversion to series query field.
 |5853|forecast|Bug|Series [legend](https://axibase.com/docs/charts/widgets/shared/#legend) incorrect for multiple forecast series.
 |5848|widget-settings|Feature|Widget settings: add support for [`filter`](https://axibase.com/docs/charts/widgets/shared/#filter) setting.
 |5842|widget-settings|Feature|Widget settings: [`transformation-order`](https://axibase.com/docs/charts/widgets/shared/#transformation-order) setting.
