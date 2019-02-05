@@ -11,7 +11,7 @@
 |5854|portal|Bug|Portal: portal error in HTML report with [`percentile`](https://axibase.com/docs/charts/configuration/aggregators.html#percentile) statistics.
 |5852|rule engine|Feature|Rule Engine: implement [`is_exceptionday`](../../rule-engine/object-datetime.md#is_exceptionday-function) function.
 |5850|forecast|Bug|Forecast: [HW](../../forecasting/README.md#overview) fails on series with 1 day selection interval.
-|5847|csv|Bug|CSV: [parser](../../parsers/csv/README.md) doesn't ignore first empty lines.
+|5847|csv|Bug|CSV: [parser](../../parsers/csv/README.md) does not ignore first empty lines.
 |5843|api-rest|Bug|API: `NPE` in [version](../../api/data/series/versions.md) query.
 |5840|csv|Bug|[CSV](../../parsers/csv/README.md) upload: high CPU and slow throughput.
 |5838|core|Bug|Core: reclassify `atsd_forecast` as a data table.
@@ -24,7 +24,6 @@
 |5519|core|Bug|Core: review scheduled tasks.
 |4418|sql|Feature|SQL: wildcard for [`entity`](../../sql/README.md#entity-columns) and [`metric`](../../sql/README.md#metric-columns) fields.
 
-
 ## Charts
 
 **Issue**| **Category**    | **Type**    | **Subject**
@@ -34,4 +33,3 @@
 |5853|forecast|Bug|Series [legend](https://axibase.com/docs/charts/widgets/shared/#legend) incorrect for multiple forecast series.
 |5848|widget-settings|Feature|Widget settings: add support for [`filter`](https://axibase.com/docs/charts/widgets/shared/#filter) setting.
 |5842|widget-settings|Feature|Widget settings: [`transformation-order`](https://axibase.com/docs/charts/widgets/shared/#transformation-order) setting.
-
