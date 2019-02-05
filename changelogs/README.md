@@ -2,9 +2,16 @@
 
 Follow development in the **Change Tracker Portal** and review details in the **Change Logs** below.
 
-![](./images/change-tracker-nov.png)
+![](./images/change-tracker-jan.png)
 
 [![](./images/button-1.png)](https://apps.axibase.com/chartlab/5dd8b00e#fullscreen)
+
+## Year 2019
+
+| **Month** | **Features** | **Bugs** | &nbsp;
+|---|---:|---:|---|
+| January | `6` | `18` | [↗](2019_jan/README.md)
+---
 
 ## Year 2018
 
