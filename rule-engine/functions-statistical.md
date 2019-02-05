@@ -174,7 +174,7 @@ Calculates linear regression intercept.
 median_abs_dev() double
 ```
 
-Returns median absolute deviation, a robust estimate of the variance calculated according to the following formula:
+Returns median absolute deviation, a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) estimate (resistant to outliers) of the variance calculated according to the following formula:
 
 ```java
 median(abs(value - median(value)))

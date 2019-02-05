@@ -2645,7 +2645,7 @@ The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype
 
 <!-- markdownlint-disable MD102 -->
 
-The `MEDIAN_ABS_DEV` function returns median absolute deviation and provides a robust (resilient to outliers) estimate of the variance.
+The `MEDIAN_ABS_DEV` function returns median absolute deviation and provides a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) (resistant to outliers) estimate of the variance.
 
 <!-- markdownlint-enable MD102 -->
 
