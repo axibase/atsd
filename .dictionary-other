@@ -171,6 +171,7 @@ ps
 quantile[s]?
 quartile[s]?
 rad
+reclassify
 refactor(ed|ing)?
 refer[r]?er
 regex
