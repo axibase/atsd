@@ -43,6 +43,13 @@ We have over a decade of experience in infrastructure management systems, big da
 ### 2018
 
 * **Q1**: [ATSD Sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image).
+* **Q3**: Customizable transformation [pipeline](./api/data/series/query.md#transformations) in REST API Series Query.
+* **Q4**: Forecast algorithms based on Principal Component Analysis models.
+
+### 2019
+
+* **Q1**: [ATSD ODBC driver](https://github.com/axibase/atsd-odbc).
+* **Q1**: Interval data record for process analysis.
 
 ## Change Log
 
