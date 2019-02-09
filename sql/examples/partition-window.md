@@ -1,6 +1,6 @@
 # Partition - Windows
 
-## Query - Accumulating Window
+## Query - Unbound Window
 
 ```sql
 SELECT datetime, value, AVG(value), COUNT(value)

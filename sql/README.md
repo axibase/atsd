@@ -373,7 +373,7 @@ WHERE t1.datetime >= '2017-06-15T00:00:00Z'
   AND cpu_sysusr > 10
 ```
 
-The list of all predefined columns can be requested with the `SELECT *` syntax, except for aggregation queries with the `GROUP BY` clause.
+The list of all predefined columns can be requested with the `SELECT *` syntax, except for queries with the `GROUP BY` aggregation clause.
 
 ```sql
 SELECT * FROM "mpstat.cpu_busy" WHERE datetime > current_minute LIMIT 1
@@ -732,18 +732,20 @@ For aliased columns, the underlying column and table names, or expression text, 
 ```ls
 |-------------|-------------|-------------|-------------|
 | AND         | AS          | ASC         | BETWEEN     |
-| BY          | CASE        | CAST        | DENSE_RANK  |
-| DESC        | ELSE        | ESCAPE      | FROM        |
-| GROUP       | HAVING      | IN          | INNER       |
-| INTERPOLATE | ISNULL      | JOIN        | LAG         |
-| LAST_TIME   | LEAD        | LIKE        | LIMIT       |
-| LOOKUP      | NOT         | OFFSET      | OPTION      |
-| OR          | ORDER       | OUTER       | PERIOD      |
-| RANK        | REGEX       | ROW_NUMBER  | SELECT      |
-| THEN        | USING       | VALUE       | WHEN        |
-| WHERE       | WITH        |             |             |
+| BY          | CASE        | CAST        | CURRENT ROW |
+| DENSE_RANK  | DESC        | ELSE        | ESCAPE      |
+| FROM        | GROUP       | HAVING      | IN          |
+| INNER       | INTERPOLATE | ISNULL      | JOIN        |
+| LAG         | LAST_TIME   | LEAD        | LIKE        |
+| LIMIT       | LOOKUP      | NOT         | OFFSET      |
+| OPTION      | OR          | ORDER       | OUTER       |
+| PERIOD      | PRECEDING   | RANK        | REGEX       |
+| ROW_NUMBER  | SELECT      | THEN        | USING       |
+| VALUE       | WHEN        | WHERE       | WITH        |
 |-------------|-------------|-------------|-------------|
 ```
+
+CURRENT ROW
 
  The reserved words also include [calendar](../shared/calendar.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
 
@@ -796,7 +798,7 @@ Assuming tags.status is `NULL`:
 
 Since the `WHERE` clause selects only rows that evaluate to `true`, conditions such as `tags.{name} = 'a' OR tags.{name} != 'a'` ignore rows with undefined `{name}` tag because both expressions evaluate to `NULL` and (`NULL` OR `NULL`) still returns `NULL`.
 
-`NULL` and `NaN` values are ignored by aggregate functions.
+`NULL` and `NaN` values are ignored by [aggregate](#aggregate-functions) and [analytical](#analytical-functions) functions.
 
 Logical expressions treat `NaN` as `NULL`. Refer to the truth tables above for more details on how `NULL` is evaluated by logical operators.
 
@@ -1406,7 +1408,7 @@ Date aggregation is a special type of `GROUP BY` operation that involves groupin
 
 ### Period
 
-Period is a repeating time interval used to group values occurred within each interval into sets to apply aggregation functions to each set separately.
+Period is a repeating time interval used to group values occurred within each interval into sets to apply [aggregate](#aggregate-functions) functions to each set separately.
 
 Period syntax:
 
@@ -1752,10 +1754,10 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 ### HAVING filter
 
-The `HAVING` clause filters grouped rows. It eliminates grouped rows that do not match the specified condition which can contain one or multiple aggregation functions.
+The `HAVING` clause filters grouped rows. It eliminates grouped rows that do not match the specified condition which can contain one or multiple [aggregate](#aggregate-functions) functions.
 
 ```sql
-HAVING aggregation_function operator value
+HAVING aggregate_function operator value
 ```
 
 ```sql
@@ -1784,7 +1786,7 @@ Partitioning is implemented with the `ROW_NUMBER` function, which returns the se
 
 A partition is a subset of all rows within the result set, grouped by an entity or series tags. Each row in the result set can belong to only one partition. The partition includes only rows that satisfy the `WITH ROW_NUMBER` condition.
 
-For example, a result set, partitioned by entity and ordered by time, has the following row numbers:
+Sample result set, partitioned by entity and ordered by time:
 
 ```ls
 |--------------|----------------------|-------| ROW_NUMBER
@@ -1821,6 +1823,21 @@ Example | Description
 `ROW_NUMBER(value ORDER BY value DESC)` | Partition rows by `value` column.<br>Sort rows by decreasing `value` column values.
 `ROW_NUMBER(entity ORDER BY AVG(value))` | Partition rows by `entity` column.<br>Sort rows within each partition by average value in each period.<br>Aggregate functions in `{ordering columns}` are allowed when partitioning is applied to grouped rows.
 
+### Analytical Functions
+
+| **Name** | **Description** | **Example** |
+|:---|:---|:---|
+| `COUNT` | Count of samples. | `COUNT(value)` |
+| `SUM` | Sum of values. | `SUM(value)` |
+| `MIN` | Minimum of values. | `MIN(value)` |
+| `MAX` | Maximum of values. | `MAX(value)` |
+| `AVG` | Average of values. | `AVG(value)` |
+| `WAVG` | [Weighted average](../api/data/series/smooth.html#weighted-average) of values. | `WAVG(value)` |
+| `WTAVG` | [Time-weighted average](../api/data/series/smooth.html#weighted-time-average) of values. | `WTAVG(value)` |
+| `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, value)` |
+
+For an unbound window `ROW_NUMBER(...) > 0`, an analytical function is applied to **all** rows in the partition. For a sliding window, the function is applied to a subset of rows matching the row number condition.
+
 ### Partition Condition
 
 The partition includes rows that satisfy the `WITH ROW_NUMBER` condition which compares the row number with a constant value or the current row number.
@@ -1831,13 +1848,13 @@ The partition includes rows that satisfy the `WITH ROW_NUMBER` condition which c
 WITH ROW_NUMBER(entity ORDER BY value DESC) <= 5
 ```
 
-* Accumulating Window. Includes all rows. Applies analytical functions to all rows from first to current.
+* **Unbound** Window. Includes all rows. Applies analytical functions to all rows from first to current.
 
 ```sql
 WITH ROW_NUMBER(entity ORDER BY time) > 0
 ```
 
-* Sliding Window. Includes all rows. Applies analytical functions to the `10` preceding rows.
+* **Sliding** Window. Includes all rows. Applies analytical functions to the `10` preceding rows.
 
 ```sql
 WITH ROW_NUMBER(entity ORDER BY time) BETWEEN 10 PRECEDING AND CURRENT ROW
@@ -1919,11 +1936,11 @@ ORDER BY entity, datetime
 | nurswgvml502 | 2018-06-18 12:59:48 |   2.6 |
 ```
 
-* Apply an aggregate function to last `N` records.
+* Apply an analytical function to last `N` records.
 
 ```sql
 SELECT entity,
-    AVG(value) --average is calculated for top-10 rows in each partition
+    AVG(value) --average is calculated from last 10 rows in each partition
   FROM "mpstat.cpu_busy"
 WHERE datetime >= CURRENT_HOUR
   WITH ROW_NUMBER(entity ORDER BY time DESC) <= 10
@@ -1940,7 +1957,7 @@ GROUP BY entity
 | nurswgvml502 | 3.9        |
 ```
 
-* Calculate sliding window statistics.
+* Calculate sliding window statistics using analytical functions.
 
 ```sql
 SELECT datetime, value, AVG(value), COUNT(value)
@@ -1964,6 +1981,36 @@ ORDER BY entity, datetime
 | 2018-06-18 12:02:05 |   6.1 |       11.5 |            5 |
 | 2018-06-18 12:02:21 |   9.2 |       11.7 |            5 |
 | 2018-06-18 12:02:37 |  16.0 |        9.5 |            5 |
+```
+
+* Calculate statistics for an unbound window using analytical functions.
+
+```sql
+SELECT value, AVG(value) AS "SimpleAvg", WAVG(value) AS "WeightedAvg", EMA(0.10, value) AS "ExpAvg-0.10"
+  FROM timer_1m
+WHERE datetime BETWEEN '2019-02-09T00:30:00Z' AND '2019-02-09T02:30:00Z'
+  WITH INTERPOLATE(5 minute, linear)
+WITH ROW_NUMBER(entity, tags ORDER BY time) > 0
+```
+
+View [Chartlab](https://apps.axibase.com/chartlab/1c960c81/3/) example.
+
+```txt
+| value | SimpleAvg | WeightedAvg | ExpAvg-0.10 |
+|-------|-----------|-------------|-------------|
+| 30.00 |     30.00 |       30.00 |       30.00 |
+| 35.00 |     32.50 |       33.33 |       30.50 |
+| 40.00 |     35.00 |       36.67 |       31.45 |
+| 45.00 |     37.50 |       40.00 |       32.80 |
+| 50.00 |     40.00 |       43.33 |       34.52 |
+| 55.00 |     42.50 |       46.67 |       36.57 |
+|  0.00 |     36.43 |       35.00 |       32.91 |
+|  5.00 |     32.50 |       28.33 |       30.12 |
+| 10.00 |     30.00 |       24.67 |       28.11 |
+| 15.00 |     28.50 |       22.91 |       26.80 |
+| 20.00 |     27.73 |       22.42 |       26.12 |
+| 25.00 |     27.50 |       22.82 |       26.01 |
+| 30.00 |     27.69 |       23.85 |       26.41 |
 ```
 
 ---
@@ -2486,7 +2533,7 @@ WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:
 | null                 | null         | null | 2017-06-16T13:00:27Z | nurswgvml006 | 73620 |
 ```
 
-To regularize the merged series in join queries, apply interpolation or period aggregation using a statistical function.
+To regularize the merged series in join queries, apply interpolation or period aggregation using an [aggregate](#aggregate-functions) function.
 
 * Interpolation
 
@@ -2562,7 +2609,7 @@ ORDER BY base.datetime
 
 ## Functions
 
-### Aggregation Functions
+### Aggregate Functions
 
 The following functions aggregate values in a column by producing a single value from a list of values appearing in a column.
 
@@ -2592,10 +2639,10 @@ The following functions aggregate values in a column by producing a single value
 
 ### Implementation Notes
 
-* `NULL` and `NaN` values are ignored by aggregation functions.
-* If the aggregation function of DOUBLE datatype cannot find a single value other than `NULL` or `NaN`, it returns `NaN`.
-* If the aggregation function of LONG datatype cannot find a single value other than `NULL` or `NaN`, it returns `NULL`.
-* Nested aggregation functions such as `AVG(MAX(value))` are not supported.
+* `NULL` and `NaN` values are ignored by aggregate functions.
+* If the aggregate function of DOUBLE datatype cannot find a single value other than `NULL` or `NaN`, it returns `NaN`.
+* If the aggregate function of LONG datatype cannot find a single value other than `NULL` or `NaN`, it returns `NULL`.
+* Nested aggregate functions such as `AVG(MAX(value))` are not supported.
 
 ```sql
 SELECT entity, AVG(value), MAX(value), COUNT(*), PERCENTILE(80, value)

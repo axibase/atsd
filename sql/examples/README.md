@@ -91,7 +91,8 @@
 * [`Top-N` Query using Row Number Function](partition-row-number-top-N-tags.md)
 * [Row Number, Rank, and Dense Rank Functions](partition-rank.md)
 * [Lag and Lead Functions](partition-lag.md)
-* [Sliding and Accumulating Windows](partition-window.md)
+* [Sliding and Unbound Windows](partition-window.md)
+* [Smoothing](partition-smoothing.md)
 * [Last Time](last-time.md)
 
 ## Subquery
