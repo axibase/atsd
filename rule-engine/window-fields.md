@@ -8,7 +8,6 @@ Each window maintains a set of continuously updated fields which can be used in 
 
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
-`status` | string | Window status. | `OPEN`, `REPEAT`, or `CANCEL`
 `rule` | string | Rule name. | `memory_low`
 `metric` | string | Metric name. | `memory_free`
 `entity` | string | Entity name. | `nurswgvml007`
@@ -21,11 +20,13 @@ Each window maintains a set of continuously updated fields which can be used in 
 `metric.label` | string | Metric field by name. | `Memory Free, Bytes`
 `rule_filter` | string | Filter expression. | `entity != 'nurswghbs001'`
 `window` | string | Window type and duration. | `length(1)`
-`condition` | string | Rule condition. | `value < 75`
-`threshold` | string | Override condition. | `max() > 20`
-`repeat_count` | integer | Number of consecutive `true` results. | `4`
-`severity` | string | Alert severity. | `WARNING`
-`delay_expired` | boolean | Delay interval status.<br>`true` if notification executed after delay.| `true`
+`before_status` | string | Window status **before** the condition is evaluated.<br>**Accessible** in condition. | `OPEN`, `REPEAT`, or `CANCEL`
+`status` | string | Window status assigned **after** the condition is evaluated.<br>**Not accessible** in condition. | `OPEN`, `REPEAT`, or `CANCEL`
+`condition` | string | Rule condition.<br>**Not accessible** in condition. | `value < 75`
+`threshold` | string | Override condition.<br>**Not accessible** in condition. | `max() > 20`
+`repeat_count` | integer | Number of consecutive `true` results.<br>**Not accessible** in condition. | `4`
+`severity` | string | Alert severity.<br>**Not accessible** in condition. | `WARNING`
+`delay_expired` | boolean | Delay expiration status.<br>Set to `true` if notifications triggered after delay.<br>**Not accessible** in condition. | `true`
 
 ## Series Fields
 

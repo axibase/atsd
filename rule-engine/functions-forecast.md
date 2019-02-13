@@ -6,32 +6,92 @@
 
 * [`forecast`](#forecast)
 * [`forecast_stdev`](#forecast_stdev)
+* [`forecast_score_stdev`](#forecast_score_stdev)
+* [`forecast_score_deviation`](#forecast_score_deviation)
 * [`forecast_deviation`](#forecast_deviation)
 * [`thresholdTime`](#thresholdtime)
 
 ## `forecast()`
 
-```javascript
-forecast() double
-```
-
-Returns forecast value for the entity, metric, and tags in the current window.
-
-## `forecast(string name)`
-
 ```csharp
-forecast(string name) double
+forecast([string name]) object
 ```
 
-Returns named forecast value for the entity, metric, and tags in the current window, for example `forecast('ltm')` .
+Returns forecast object for the entity, metric, and tags in the current window. The object contains neighboring forecast periods based on `time` field calculated by subtracting 50% of the forecast period from the window center (`windowTime`).
+
+If the `name` is specified, the forecast object is retrieved for the named forecast settings.
+
+The object contains the following fields:
+
+* `previous` - Previous period value.
+* `next` - Next period value.
+* `min` - Minimum of the previous and the next period values.
+* `max` - Maximum of the previous and the next period values.
+* `linear` - Linearly interpolated value between previous and next periods based on `time` field.
+* `windowTime` - Window center time calculated as average of first and last timestamps in the current window.
+* `time` - Forecast time calculated as `windowTime - 0.50*forecast_series_period`.
+* `previousTime` - Previous period start time.
+* `nextTime` - Next period start time.
+
+| **Parameter** | **Time** | **Date**  |
+|---:|---|---|
+| `command.time` | `1550082342000` | `2019-02-13 18:25:56` |
+| `previousTime` | `1550080800000` | `2019-02-13 18:00:00` |
+| `nextTime` | `1550081700000` | `2019-02-13 18:15:00` |
+| `windowTime` | `1550081922000` | `2019-02-13 18:18:42` |
+| `time` | `1550081472000` | `2019-02-13 18:11:12` |
+
+The `violates()` function in the forecast object returns `true` if the input value deviates by more than the specified delta from the `min` and `max` range. The delta must be a non-negative number.
+
+```javascript
+violates(double a, double delta) {
+  return a < min - delta || a > max + delta;
+}
+```
+
+![](./images/forecast-interpolate.png)
+
+[![](../images/button.png)](https://apps.axibase.com/chartlab/4d42110e/12/)
+
+Example:
+
+```javascript
+violates(avg(), 10)
+```
 
 ## `forecast_stdev`
 
-```javascript
+```csharp
 forecast_stdev() double
 ```
 
 Returns forecast standard deviation.
+
+## `forecast_score_stdev`
+
+Returns the standard deviation of aggregated values from the best fitting forecast model values within the scoring interval.
+
+Scoring is a procedure that identifies parameters that produce the best fitting forecast with the smallest standard deviation from observed aggregated values.
+
+```csharp
+forecast_score_stdev(string forecastName) double
+```
+
+## `forecast_score_deviation`
+
+```csharp
+forecast_score_deviation(string forecastName, double a) double
+```
+
+Returns the difference between a number `a` (such as the last value, or moving average `avg()`) and the `forecast().linear` value, divided by the forecast score standard deviation.
+
+The function returns `NaN` if either forecast or forecast score standard deviation cannot be retrieved, or if the standard deviation is zero.
+
+The formula is:
+
+```javascript
+(a - forecast(name).linear/forecast_score_stdev(name)
+```
 
 ## `forecast_deviation`
 
@@ -39,12 +99,10 @@ Returns forecast standard deviation.
 forecast_deviation(number a) double
 ```
 
-Returns difference between a number `a` (such as the last value) and the forecast value (returned by `forecast()` function), divided by the forecast standard deviation.
-
-The formula is:
+Returns difference between a number `a` and the `forecast().linear` value, divided by the forecast standard deviation.
 
 ```javascript
-(a - forecast())/forecast_stdev()
+(a - forecast().linear)/forecast_stdev()
 ```
 
 ## `thresholdTime`

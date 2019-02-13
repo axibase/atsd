@@ -5,7 +5,7 @@
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 |5866|rule engine|Feature|Rule Engine: implement [`median_abs_dev()`](../../rule-engine/functions-statistical.md#median_abs_dev) function.
-|5864|forecast|Bug|Rule Engine: validate [`forecast()`](../../rule-engine/functions-forecast.md#forecast) function arguments.
+|5864|forecast|Bug|Rule Engine: validate `forecast` function arguments.
 |5862|forecast|Bug|[Forecast](../../forecasting/README.md): scheduled task error.
 |5856|forecast|Bug|Forecast: scheduled [PCA](../../forecasting/README.md#overview) task error.
 |5854|portal|Bug|Portal: portal error in HTML report with [`percentile`](https://axibase.com/docs/charts/configuration/aggregators.html#percentile) statistics.

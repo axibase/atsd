@@ -117,13 +117,13 @@ Use the split-button on the **Data > Forecasts** page to add [Exceptions](calend
 
 * Access pre-computed forecasts using [forecast](../rule-engine/functions-forecast.md) functions.
 * Use forecast values as [thresholds](../rule-engine/README.md#forecast-thresholds) to trigger response actions if observed values deviate from forecast values by some amount.
-* Compare forecast values to [statistical function](../rule-engine/functions.md#statistical) values such as moving averages or weighted averages.
+* Compare forecast values to simple, weighted, and exponential [moving averages](../rule-engine/functions.md#statistical).
 
 ```javascript
-abs(avg() - forecast()) > 25
+abs(avg() - forecast().linear) > 25
 ```
 
-This expression compares the actual [average value](../rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](../rule-engine/functions-math.md#abs) of the difference exceeds 25.
+This expression compares the moving [average](../rule-engine/functions-statistical.md#avg) of some metric to the forecast and alerts if the [absolute difference](../rule-engine/functions-math.md#abs) exceeds 25.
 
 ```javascript
 thresholdTime(null, 90, '1 DAY') != null

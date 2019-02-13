@@ -24,7 +24,7 @@ The example below calculates the simple moving average with a 15 minute rolling 
 }
 ```
 
-There are four implemented smoothing functions: `AVG`, `WAVG`, `WTAVG`, and `EMA`. These functions differ in how they assign weight to samples in the sliding window. Simple average `AVG` assigns equal weight to all samples. Weighted average functions take the sample index or distance between samples into account and typically assign greater weight to more recent samples.
+The implemented smoothing functions differ in how they assign weight to samples in the sliding window. Simple average `AVG` assigns equal weight to all samples. Weighted average functions take the sample index or time distance between samples into account and assign greater weight to more recent samples.
 
 ## Fields
 
