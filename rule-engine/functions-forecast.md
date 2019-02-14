@@ -83,14 +83,14 @@ forecast_score_stdev(string forecastName) double
 forecast_score_deviation(string forecastName, double a) double
 ```
 
-Returns the difference between a number `a` (such as the last value, or moving average `avg()`) and the `forecast().linear` value, divided by the forecast score standard deviation.
+Returns the difference between a number `a` (such as the last value, or moving average `avg()`) and the `forecast().interpolated` value, divided by the forecast score standard deviation.
 
 The function returns `NaN` if either forecast or forecast score standard deviation cannot be retrieved, or if the standard deviation is zero.
 
 The formula is:
 
 ```javascript
-(a - forecast(name).linear/forecast_score_stdev(name)
+(a - forecast(name).interpolated/forecast_score_stdev(name)
 ```
 
 ## `forecast_deviation`
@@ -99,10 +99,10 @@ The formula is:
 forecast_deviation(number a) double
 ```
 
-Returns difference between a number `a` and the `forecast().linear` value, divided by the forecast standard deviation.
+Returns difference between a number `a` and the `forecast().interpolated` value, divided by the forecast standard deviation.
 
 ```javascript
-(a - forecast().linear)/forecast_stdev()
+(a - forecast().interpolated)/forecast_stdev()
 ```
 
 ## `thresholdTime`

@@ -120,7 +120,7 @@ Use the split-button on the **Data > Forecasts** page to add [Exceptions](calend
 * Compare forecast values to simple, weighted, and exponential [moving averages](../rule-engine/functions.md#statistical).
 
 ```javascript
-abs(avg() - forecast().linear) > 25
+abs(avg() - forecast().interpolated) > 25
 ```
 
 This expression compares the moving [average](../rule-engine/functions-statistical.md#avg) of some metric to the forecast and alerts if the [absolute difference](../rule-engine/functions-math.md#abs) exceeds 25.

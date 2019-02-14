@@ -190,17 +190,22 @@ avg('5 minute') - avg() > 20 && avg('5 minute') / avg() > 1.1
 
 ### Forecast Thresholds
 
-The  `forecast` function returns an estimated value for the current series based on the Holt-Winters or ARIMA [forecasting](../forecasting/README.md) algorithms.
-The condition fires if the window average deviates from the expected value by more than `25%` in any direction.
+The  [`forecast`](./functions-forecast.md#forecast) function retrieves a pre-calculated [forecast](../forecasting/README.md) for the current series. The forecast object fields can be compared to raise an alert if the moving average deviates from the expected value by more than the specified threshold.
 
 ```javascript
-abs(avg() - forecast()) > 25
+abs(avg() - forecast().interpolated) > 25
 ```
 
-Similarly, the `forecast_deviation` function can be utilized to compare actual and expected values as a ratio of standard deviation.
+For convenience the actual value can be compared with the forecast [range](./functions-forecast.md#forecast).
 
 ```javascript
-abs(forecast_deviation(avg())) > 2
+forecast().violates(avg(), 25)
+```
+
+Alternatively, the [`forecast_deviation`](./functions-forecast.md#forecast_deviation) function can be utilized to compare actual and expected values as a ratio of the standard deviation.
+
+```javascript
+abs(forecast_deviation(avg())) > 3.0
 ```
 
 ### Correlation Thresholds
