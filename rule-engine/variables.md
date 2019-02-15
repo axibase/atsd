@@ -133,15 +133,31 @@ server = upper(keepBefore(entity, ':'))
 annotation = tags.note == null ? 'N/A' : tags.note
 ```
 
-## Cross-Reference
+## References
+
+Variables can be included in the condition expression.
+
+![](./images/variables-refer-indirect.png)
 
 The variables can refer to other variables declared in the same rule.
 
 ![](./images/variables-reference.png)
 
-Variables can be included in a condition.
+The order of variables is important. The dependent variables must be declared after the referenced variables.
 
-![](./images/variables-refer-indirect.png)
+```javascript
+// Incorrect order
+b = a * 2
+a = 10
+```
+
+Variable `b` refers to variable `a` and therefore must be declared after `a`.
+
+```javascript
+// Correct order
+a = 10
+b = a * 2
+```
 
 ## Execution
 
