@@ -103,9 +103,39 @@ The messages in the list are sorted by time in the ascending order, with the mos
 
 [Fields](../api/data/messages/query.md#fields-1) of the returned Message objects can be accessed using dot notation, for example `db_messages('1 hour', 'webhook', '')[0].timestamp`.
 
+```json
+{
+  "entity": "nurswgvml007",
+  "type": "backup",
+  "source": "rm",
+  "severity": "UNDEFINED",
+  "tags": {
+    "exit_code": "0",
+    "source_dir": "/app/backup/dev_axibase/svn"
+  },
+  "timestamp": 1548991802674,
+  "message": "rm complete svn_dev"
+}
+```
+
 :::tip Message Date
-That `date` field in the message object is `null`. The record time is stored in the `timestamp` field as Unix time in milliseconds.
+The `date` field in the message object is `null`. The record time is stored in the `timestamp` field as Unix time in milliseconds.
 :::
+
+To print all message fields as a table in notifications, use the [`addTable`](functions-table.md#addtable-for-objects) function:
+
+```javascript
+addTable(msgs, null, 'markdown')
+```
+
+To print specific messages, iterate through the list manually:
+
+```javascript
+| date | type | source | message |
+|--------|------|--------|---------|
+@foreach{m : msgs}|@{date_format(m.timestamp, "HH:mm:ss")}|@{m.type}|@{m.source}| @{truncate(m.message, 128)} |
+@end{}
+```
 
 ## Matching Rules
 

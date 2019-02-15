@@ -6,12 +6,21 @@
 
 ## Overview
 
-Smoothing is a transformation that reduces the noise in an underlying time series. Unlike [period aggregation](aggregate.md) which returns a new regularized series, smoothing maintains the original timestamps.
+Smoothing is a transformation that reduces the noise in an underlying time series. Unlike [period aggregation](aggregate.md) which returns series with new timestamps set to period start times, the smoothing transformation retains the original timestamps.
 
 For each timestamp in the underlying series, the smoothed value is calculated in two steps:
 
-* A sequence of preceding samples up to the current timestamp is retrieved from the underlying series. This sequence ends with the current sample and is called a **rolling window**.
-* A new value at the current timestamp is calculated by applying a smoothing function to the retrieved sequence.
+* A sequence of preceding samples up to the current timestamp is retrieved from the underlying series. This sequence ends with the current sample and is called a **rolling** (or sliding) window.
+* A new value at the current timestamp is calculated by applying a smoothing function, such as average, to the retrieved sequence.
+
+Supported smoothing functions:
+
+* `AVG`: Average
+* `COUNT`: Count
+* `SUM`: Sum
+* `WAVG`: Weighted Average
+* `WTAVG`: Weighted-time Average
+* `EMA`: Exponential Moving Average
 
 The size of the rolling window is based on either time duration or the number of samples. Window size is controlled by the `interval` and `count` settings.
 
@@ -30,10 +39,10 @@ The implemented smoothing functions differ in how they assign weight to samples 
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `type` | string | **[Required]** Smoothing function.<br>Available functions: [`AVG`](#average), [`WAVG`](#weighted-average), [`WTAVG`](#weighted-time-average), [`EMA`](#exponential-moving-average). |
+| `type` | string | **[Required]** Smoothing function.<br>Available functions: [`AVG`](#average), [`COUNT`](#count), [`SUM`](#sum), [`WAVG`](#weighted-average), [`WTAVG`](#weighted-time-average), [`EMA`](#exponential-moving-average). |
 | `count` | number | Number of samples in a **count-based** rolling window. |
 | `interval` | object | Duration of a **time-based** window specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 3, "unit": "HOUR"}`. <br>Supported units: `MILLISECOND`, `SECOND`, `MINUTE`, `HOUR`.|
-| `minimumCount` | number | Minimum number of samples in a window required to apply the smoothing function.<br>Default value is `1` for **time-based** windows, and `count` for **count-based** windows.<br>If a window is incomplete, the sample count is below minimum, the smoothing function returns `incompleteValue` for the current timestamp. |
+| `minimumCount` | number | Minimum number of samples in a window required to apply the smoothing function.<br>Default value is `1`.<br>If a window is incomplete (count is below minimum), the smoothing function returns `incompleteValue` for the current timestamp. |
 | `incompleteValue` | string | Number returned in an incomplete window for the current timestamp if the sample count is below `minimumCount`.<br>Possible values: `null` (default), `NaN`, or a constant numeric value.<br>`null` values are omitted from the response.|
 
 > Parameters `count` and `interval` are ignored by the `EMA` function which weighs all loaded samples.
@@ -74,6 +83,18 @@ Window values:
 Calculation formula:
 
 ![AVG formula](./images/avg.svg)
+
+### Count
+
+`type = COUNT`
+
+Calculates the count of values in the rolling window.
+
+### Sum
+
+`type = SUM`
+
+Calculates the sum of values in the rolling window.
 
 ### Weighted Average
 

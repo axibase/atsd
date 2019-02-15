@@ -54,3 +54,26 @@ The following example prints an entity link for each entity in the `servers` col
 * @{getEntityLink(srv)}
 @end{}
 ```
+
+Note that each `@` declaration is replaced with text line including line breaks. Position statements properly to avoid extra lines.
+
+```javascript
+/*
+Generates a malformed markdown table since `@foreach{m : msgs}` will be replaced with emoty line.
+*/
+| date | type | source |
+|--------|------|--------|
+@foreach{m : msgs}
+|@{date_format(m.timestamp, "HH:mm:ss")}|@{m.type}|@{m.source}|
+@end{}
+```
+
+```javascript
+/*
+Generates a proper markdown table.
+*/
+| date | type | source | message |
+|--------|------|--------|---------|
+@foreach{m : msgs}|@{date_format(m.timestamp, "HH:mm:ss")}|@{m.type}|@{m.source}| @{truncate(m.message, 128)} |
+@end{}
+```
