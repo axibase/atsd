@@ -69,18 +69,18 @@ Returns forecast standard deviation.
 
 ## `forecast_score_stdev`
 
-Returns the standard deviation of aggregated values from the best fitting forecast model values within the scoring interval.
+Returns the standard deviation of actual aggregated values from the best fitting forecast values within the scoring interval.
 
 Scoring is a procedure that identifies parameters that produce the best fitting forecast with the smallest standard deviation from observed aggregated values.
 
 ```csharp
-forecast_score_stdev(string forecastName) double
+forecast_score_stdev(string name) double
 ```
 
 ## `forecast_score_deviation`
 
 ```csharp
-forecast_score_deviation(string forecastName, double a) double
+forecast_score_deviation(string name, double a) double
 ```
 
 Returns the difference between a number `a` (such as the last value, or moving average `avg()`) and the `forecast().interpolated` value, divided by the forecast score standard deviation.

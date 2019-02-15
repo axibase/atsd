@@ -148,10 +148,11 @@ See [value](#value) functions.
 
 Name | Description
 ---|---
-[`forecast`](functions-forecast.md#forecast)| Returns forecast value for the entity, metric, and tags in the current window.
-[`forecast_deviation`](functions-forecast.md#forecast_deviation)| Returns difference between a number and the forecast value, divided by the forecast standard deviation.
+[`forecast`](functions-forecast.md#forecast)| Returns forecast object for the entity, metric, and tags in the current window.
+[`forecast_deviation`](functions-forecast.md#forecast_deviation)| Returns difference between a number and the interpolated forecast value, divided by the forecast standard deviation.
+[`forecast_score_stdev`](functions-forecast.md#forecast_score_stdev)| Returns the standard deviation for forecast values from actual values within the scoring interval.
 [`forecast_stdev`](functions-forecast.md#forecast_stdev)| Returns forecast standard deviation.
-[`thresholdTime`](functions-forecast.md#thresholdtime)| Returns time when the [forecast value](../forecasting/README.md) is outside of the `(min, max)` range.
+[`thresholdTime`](functions-forecast.md#thresholdtime)| Returns the estimated time when the forecast value is outside of the `(min, max)` range.
 
 ### Alert History
 
