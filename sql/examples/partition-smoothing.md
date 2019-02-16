@@ -18,7 +18,7 @@ WHERE datetime BETWEEN '2019-02-09T00:30:00Z' AND '2019-02-09T02:30:00Z'
 WITH ROW_NUMBER(entity, tags ORDER BY time) > 0
 ```
 
-View [Chartlab](https://apps.axibase.com/chartlab/1c960c81/3/) example.
+View [ChartLab](https://apps.axibase.com/chartlab/1c960c81/3/) example.
 
 ### Results
 
