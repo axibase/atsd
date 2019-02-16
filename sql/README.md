@@ -2688,11 +2688,17 @@ The `MIN_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype
 
 The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **maximum** value.
 
+#### STDDEV
+
+The `STDDEV` function standard deviation calculated as the root of sum of squared deviations divided by `n - 1` (sample size).
+
+![](../api/data/series/images/st_dev_sample.svg)
+
 #### MEDIAN_ABS_DEV
 
 <!-- markdownlint-disable MD102 -->
 
-The `MEDIAN_ABS_DEV` function returns median absolute deviation and provides a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) (resistant to outliers) estimate of the variance.
+The `MEDIAN_ABS_DEV` function returns [median absolute deviation](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm) which represents a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) (resistant to outliers) estimate of the variance.
 
 <!-- markdownlint-enable MD102 -->
 

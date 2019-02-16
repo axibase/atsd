@@ -1,7 +1,6 @@
 # Monitoring Metrics using Rule Engine
 
-Rule Engine can monitor ATSD metrics to raise alerts in case of abnormal
-deviations.
+Rule Engine can monitor ATSD metrics to raise alerts in case of abnormal deviations.
 
 For example:
 

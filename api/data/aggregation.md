@@ -15,8 +15,8 @@
 | `COUNTER` | Sum of positive differences between consecutive values.
 | `PERCENTILE(n)` | `n`-th [percentile](#percentile), for example `PERCENTILE(75)` or `PERCENTILE(99.5)`.<br>`n` is a decimal number between `[0, 100]`.
 | `MEDIAN` | Median value, same as 50% percentile.
-| `STANDARD_DEVIATION` | Standard deviation.
-| `MEDIAN_ABS_DEV` | Median absolute deviation: `median(abs(value - median(value)))`.
+| `STANDARD_DEVIATION` | Standard deviation calculated as an [unbiased](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm) estimator of variance for the `n - 1` sample.
+| `MEDIAN_ABS_DEV` | [Median absolute deviation](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm) calculated as `median(abs(value - median(value)))`.
 | `SLOPE` | Linear regression slope.
 | `INTERCEPT` | Linear regression intercept.
 | `WAVG` | Weighted average.
@@ -51,6 +51,12 @@ The `COUNTER` function returns the sum of positive differences between consecuti
 * If the previous period contains no values, the calculation starts with the first value in the current period.
 * If there is only one value in the current period and the previous period is empty, the function returns `null` which is included in the response.
 * If all the differences between consecutive samples are non-negative, the result of the `COUNTER` function is equal to the `DELTA` function.
+
+### `STANDARD_DEVIATION`
+
+Standard deviation is calculated as an [unbiased](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm) estimator of variance for the `n - 1` sample.
+
+![](./series/images/st_dev_sample.svg)
 
 ### `PERCENTILE`
 

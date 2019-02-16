@@ -158,7 +158,11 @@ Calculates variance.
 stdev() double
 ```
 
-Returns standard deviation. Aliases: `stdev`, `std_dev`.
+Alias: `std_dev`.
+
+Returns standard deviation calculated as an [unbiased](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm) estimator of variance for the `n - 1` sample.
+
+![](../api/data/series/images/st_dev_sample.svg)
 
 ## `intercept`
 
@@ -174,9 +178,9 @@ Calculates linear regression intercept.
 median_abs_dev() double
 ```
 
-Returns median absolute deviation, a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) estimate (resistant to outliers) of the variance calculated according to the following formula:
+Returns [median absolute deviation](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm), a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) estimate (resistant to outliers) of the variance calculated according to the following formula:
 
-```java
+```csharp
 median(abs(value - median(value)))
 ```
 
