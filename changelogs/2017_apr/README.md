@@ -32,7 +32,7 @@
 | [2911](#issue-2911) | UI | Feature | Show user-specified parameters on the **Data > CSV Tasks** page. |
 | [3739](#issue-3739) | sql | Feature | Add options for sending empty or failed results for scheduled SQL reports. |
 | 2880 | UI | Bug | Add HTML-escaping for all forms in the web interface. |
-| 4000 | sql | Bug | Standardize `NaN` and `NULL` processing in aggregation functions: [`min_value_time`](../../sql/README.md#aggregation-functions) and [`max_value_time`](../../sql/README.md#aggregation-functions). |
+| 4000 | sql | Bug | Standardize `NaN` and `NULL` processing in aggregation functions: [`min_value_time`](../../sql/README.md#aggregate-functions) and [`max_value_time`](../../sql/README.md#aggregate-functions). |
 | [4057](#issue-4057) | sql | Feature | Add support for conditions containings multiple expressions in `CASE`. |
 | [4083](#issue-4083) | sql | Feature | Allow `metric LIKE` condition in [`atsd_series`](../../sql/README.md#atsd_series-table) queries. |
 | 4082 | sql | Bug | Fix issued with failing query cancellation requests. |

@@ -1832,8 +1832,8 @@ Example | Description
 | `MIN` | Minimum of values. | `MIN(value)` |
 | `MAX` | Maximum of values. | `MAX(value)` |
 | `AVG` | Average of values. | `AVG(value)` |
-| `WAVG` | [Weighted average](../api/data/series/smooth.html#weighted-average) of values. | `WAVG(value)` |
-| `WTAVG` | [Time-weighted average](../api/data/series/smooth.html#weighted-time-average) of values. | `WTAVG(value)` |
+| `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(value)` |
+| `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(value)` |
 | `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, value)` |
 
 For an unbound window `ROW_NUMBER(...) > 0`, an analytical function is applied to **all** rows in the partition. For a sliding window, the function is applied to a subset of rows matching the row number condition.
@@ -1993,7 +1993,7 @@ WHERE datetime BETWEEN '2019-02-09T00:30:00Z' AND '2019-02-09T02:30:00Z'
 WITH ROW_NUMBER(entity, tags ORDER BY time) > 0
 ```
 
-View [Chartlab](https://apps.axibase.com/chartlab/1c960c81/3/) example.
+View [ChartLab](https://apps.axibase.com/chartlab/1c960c81/3/) example.
 
 ```txt
 | value | SimpleAvg | WeightedAvg | ExpAvg-0.10 |

@@ -71,7 +71,7 @@ Decimal Precision | `mx` | `num` | `ct`
 `1` | 65.2 | 123.456 | 2279
 `2` | 65.20 | 123.456 | 2279
 
-Seen in the example above, rounding applies only to the `mx` column which contains decimal values. The `num` and `ct` columns are not rounded because they contain string literals and integer values calculated by the [`COUNT`](README.md#aggregation-functions) function, respectively.
+Seen in the example above, rounding applies only to the `mx` column which contains decimal values. The `num` and `ct` columns are not rounded because they contain string literals and integer values calculated by the [`COUNT`](README.md#aggregate-functions) function, respectively.
 
 ### Theme
 

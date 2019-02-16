@@ -17,7 +17,7 @@ Issue| Category    | Type    | Subject
 5025 | rule engine | Bug | Modify [`alert_duration`](../../rule-engine/window-fields.md#date-fields) value.
 5024 | rule engine | Feature | Implement wildcards in key section of the [property search](../../rule-engine/property-search.md#property-search-syntax) expression.
 5022 | entity_views | Bug | Export to XML incomplete.
-5021 | sql | Bug | [`LAST(datetime)`](../../sql/README.md#aggregation-functions) displays Unix time instead of `datetime` format.
+5021 | sql | Bug | [`LAST(datetime)`](../../sql/README.md#aggregate-functions) displays Unix time instead of `datetime` format.
 5017 | rule engine | Bug | Display [window details](../../rule-engine/window.md#window-fields) even if window is in [`CANCEL`](../../rule-engine/window.md#cancel-status) status.
 5015 | rule engine | Bug | Quote escaping with [backslash](../../rule-engine/variables.md#string).
 5014 | rule engine | Bug | [HipChat](../../rule-engine/notifications/hipchat.md) webhook: inline links in portal description message.
