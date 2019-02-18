@@ -2616,10 +2616,10 @@ The following functions aggregate values in a column by producing a single value
 ```ls
 |----------------|----------------|----------------|----------------|
 | AVG            | CORREL         | COUNT          | COUNTER        |
-| DELTA          | FIRST_VALUE    | LAST_VALUE     | MAX            |
-| MAX_VALUE_TIME | MEDIAN         | MEDIAN_ABS_DEV | MIN            |
-| MIN_VALUE_TIME | PERCENTILE     | SUM            | STDDEV         |
-| WAVG           | WTAVG          |                |                |
+| COVAR          | DELTA          | FIRST_VALUE    | LAST_VALUE     |
+| MAX            | MAX_VALUE_TIME | MEDIAN         | MEDIAN_ABS_DEV |
+| MIN            | MIN_VALUE_TIME | PERCENTILE     | SUM            |
+| STDDEV         | WAVG           | WTAVG          |                |
 |----------------|----------------|----------------|----------------|
 ```
 
@@ -2690,9 +2690,15 @@ The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype
 
 #### STDDEV
 
-The `STDDEV` function standard deviation calculated as the root of sum of squared deviations divided by `n - 1` (sample size).
+The `STDDEV` function calculates standard deviation as the root of sum of squared deviations divided by `n - 1` (sample size).
 
 ![](../api/data/series/images/st_dev_sample.svg)
+
+An optional second argument controls whether the variance is divided by `n - 1` (sample) or `n` (population).
+
+```javascript
+STDDEV(expr [, SAMPLE | POPULATION])
+```
 
 #### MEDIAN_ABS_DEV
 
@@ -2713,26 +2719,35 @@ The `CORREL` correlation function accepts two numeric expressions as arguments (
 > If one of the variables is constant (its standard deviation is 0), the `CORREL` function returns `NaN`.
 
 ```sql
-SELECT tu.entity,
-  CORREL(tu.value, ts.value) AS "CORR-user-sys",
-  CORREL(tu.value, tw.value) AS "CORR-user-iowait",
-  CORREL(ts.value, tw.value) AS "CORR-sys-iowait",
-  STDDEV(tu.value),
-  STDDEV(ts.value),
-  STDDEV(tw.value)
-FROM "mpstat.cpu_user" tu JOIN "mpstat.cpu_system" ts JOIN "mpstat.cpu_iowait" tw
-  WHERE tu.datetime >= NOW - 5 * MINUTE
-GROUP BY tu.entity
+SELECT tA.entity,
+  CORREL(tA.value, tB.value) AS "CORR-AB",
+  COVAR(tA.value, tB.value) AS "COVAR-AB"
+FROM "mpstat.cpu_user" tA JOIN "mpstat.cpu_system" tB
+  WHERE tA.datetime BETWEEN '2019-02-18T10:00:00Z' AND '2019-02-18T10:30:00Z' EXCL
+GROUP BY tA.entity
 ```
 
 ```ls
-| tu.entity    | CORR-user-sys | CORR-user-iowait | CORR-sys-iowait | STDDEV(tu.value) | STDDEV(ts.value) | STDDEV(tw.value) |
-|--------------|---------------|------------------|-----------------|------------------|------------------|------------------|
-| nurswgvml007 | 0.92          | NaN              | NaN             | 7.64             | 2.50             | 0.00             |
-| nurswgvml006 | -0.13         | 0.10             | 0.27            | 7.26             | 0.60             | 2.57             |
-| nurswgvml010 | 0.76          | -0.09            | 0.03            | 7.42             | 0.44             | 1.10             |
-| nurswgvml502 | 0.59          | -0.14            | -0.08           | 0.53             | 0.53             | 0.59             |
-| nurswgvml301 | -0.17         | -0.11            | -0.17           | 0.32             | 0.42             | 0.64             |
+| tA.entity    | CORR-AB | COVAR-AB |
+|--------------|---------|----------|
+| nurswgvml007 |    0.37 |     9.46 |
+| nurswgvml006 |    0.62 |     0.62 |
+| nurswgvml010 |    0.86 |     3.07 |
+| nurswgvml501 |    0.34 |     1.05 |
+| nurswgvml502 |    0.43 |     0.26 |
+| nurswgvml301 |    0.18 |     0.14 |
+```
+
+### COVAR
+
+The `COVAR` function calculates the covariance between the pair of variables.
+
+![](../api/data/series/images/covar_sample.svg)
+
+An optional second argument controls whether the covariance is divided by `n - 1` (sample) or `n` (population).
+
+```javascript
+COVAR(expr1, expr2 [, SAMPLE | POPULATION])
 ```
 
 ### Date Functions
