@@ -16,7 +16,7 @@ You can request a new license on the **Settings > License** page.
 
 ## Container Images
 
-[![](../images/docker2.png)](https://hub.docker.com/r/axibase/atsd/) [![](../images/redhat1.png)](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) [![](../images/kub.png)](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)
+![](../images/docker2.png) ![](../images/redhat1.png) ![](../images/kub.png)
 
 * **Image Registry**: Docker Hub, RedHat Container Catalog, Kubernetes
 * **Mode**: Non-Distributed

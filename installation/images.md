@@ -8,11 +8,11 @@ docker run -d --name=atsd \
   axibase/atsd:latest
 ```
 
-## Additional Images
+## Installation Guides
 
 | **Distribution** | **Format** | **Installation Guide** |
 | :--- | --- | :---: |
-| Docker | Official Image | [View](docker.md)|
-| RedHat Docker | Certified Image | [View](docker-redhat.md)|
+| Docker | [Official](https://hub.docker.com/r/axibase/atsd/) Image | [View](docker.md)|
+| RedHat Docker | [Certified](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/atsd) Image | [View](docker-redhat.md)|
 | Kubernetes | Official Image | [View](https://axibase.com/docs/axibase-collector/installation-on-kubernetes.html)|
 | ATSD Sandbox | Official Image | [View](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image)
