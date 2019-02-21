@@ -238,7 +238,7 @@ The default baseline can be adjusted for particular series using the [Overrides]
 
 ### Alert Storms
 
-To prevent repeat notifications when the compared value oscillates around the threshold, make the threshold conditional upon the window status. Once the window becomes open, the threshold can be reduced so that the window reverts to closed status after a substantial change in the compared value.
+To prevent repeat notifications when the compared value oscillates around the threshold, make the threshold conditional upon the window status. Once the window becomes open, the threshold is adjusted to cancel the alert only after a substantial change in the compared value.
 
 ```javascript
 /*

@@ -2690,7 +2690,7 @@ The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype
 
 #### STDDEV
 
-The `STDDEV` function calculates standard deviation as the root of sum of squared deviations divided by `n - 1` (sample size).
+The `STDDEV` function calculates standard deviation as the square `root` of sum of squared deviations divided by `n - 1` (sample size).
 
 ![](../api/data/series/images/st_dev_sample.svg)
 
@@ -3280,7 +3280,7 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 | `PI()` | The value of &pi; (3.141592653589793). No arguments accepted. |
 | `POWER(num, m)`  | Number raised to the power `m`. |
 | `ROUND(num [,m])` | Number rounded to `m` decimal places. |
-| `SQRT(num)` | Square root of the specified number. |
+| `SQRT(num)` | Square `root` of the specified number. |
 
 <!-- markdownlint-enable MD101 -->
 
