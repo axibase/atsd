@@ -36,7 +36,7 @@ If the input file is larger than 1 GB, consider to compress it to reduce size to
 
 |**Header**|**Value**|
 |:---|:---|
-| `Content-Type` | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed ZIP file and archive (`.zip`)<br>`application/gzip` or `application/x-gzip`:w for compressed GZIP file (`.gz`) or archive (`.tar.gz`).|
+| `Content-Type` | `text/csv`: for plain text CSV file.<br>`application/zip`: for compressed ZIP file and archive (`.zip`)<br>`application/gzip` or `application/x-gzip`: for compressed GZIP file (`.gz`) or archive (`.tar.gz`).|
 
 #### Multi-part Mode
 
