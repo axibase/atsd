@@ -41,6 +41,19 @@ You can request a new license on the **Settings > License** page.
 
 ---
 
+## Microsoft Windows
+
+![](./images/windows-server.png)
+
+* **Supported Versions**: Windows Server 2019
+* **Mode**: Non-Distributed using Windows Subsystem for Linux
+* **File System**: `ext4` (Local)
+* **Edition**: Standard
+
+[![](../images/install.png)](./windows.md)
+
+---
+
 ## AWS Elastic MapReduce (EMR)
 
 ![](../images/aws-logo-4.png) ![](../images/emrfs-2.png)
