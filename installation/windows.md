@@ -28,62 +28,90 @@ Restart the server when prompted.
 Download [Ubuntu 16.04](https://docs.microsoft.com/en-us/windows/wsl/install-manual) distribution.
 
 ```powershell
-Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile Ubuntu.appx -UseBasicParsing
+curl.exe -L -o ubuntu1604.zip https://aka.ms/wsl-ubuntu-1604
 ```
 
 Extract the archive containing the distribution.
 
 ```powershell
-Rename-Item ~/Ubuntu.appx ~/Ubuntu.zip
-```
-
-```powershell
-Expand-Archive ~/Ubuntu.zip ~/Ubuntu
+Expand-Archive ubuntu1604.zip ubuntu1604
 ```
 
 Open the Linux subsystem by running the `ubuntu.exe` executable.
 
 ```powershell
-~/Ubuntu/ubuntu.exe
+./ubuntu1604/ubuntu.exe
 ```
 
-Follow the below steps to install ATSD on Linux.
+When accessing WSL for the first time, the system prompts you to create a UNIX account with administrative privileges (member of `sudo` group). Enter `axibase`/`axibase` or other credentials to proceed with the installation.
 
-## Download ATSD
+:::tip Linux Versions
+If the installed Linux version is not Ubuntu 16.04, refer to the corresponding installation [instructions](./packages.md).
+:::
 
-While in the Linux terminal, download the ATSD `deb` package.
+### Update Repositories
+
+```sh
+sudo apt-get update
+```
+
+### Install Dependencies
+
+Install Java 8 and the necessary network utilities.
+
+```sh
+sudo apt-get install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
+```
+
+## Download ATSD Package
+
+Download the ATSD `deb` package.
 
 ```bash
 wget https://www.axibase.com/public/atsd_amd64.deb
 ```
 
-### Update Repositories and Install Dependencies
-
-```sh
-sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
-```
+> The latest ATSD `deb` packages with version numbers are listed on [`https://axibase.com/public/atsd_deb_latest.htm`](https://axibase.com/public/atsd_deb_latest.htm).
 
 ### Install ATSD
 
-Install the database by following the prompts.
+Install the database by following the prompts. Select `<Yes>` to enable auto-start.
 
 ```sh
 sudo dpkg -i atsd_amd64.deb
 ```
 
-Open another PowerShell terminal, login into WSL by executing `ubuntu.exe` and watch the database start process.
+The installation script completes with the following messages:
 
-```sh
-tail -f /opt/atsd/atsd/logs/start.log
+```txt
+[ATSD] ATSD user interface:
+[ATSD] http://10.0.0.5:8088
+[ATSD] https://10.0.0.5:8443
+[ATSD] ATSD start completed. Time: 2019-02-22 11:00:00.
+[ATSD] -- complete --
+[ATSD] All steps completed.
+[ATSD] Current user: root.
 ```
 
-Check for **ATSD server started** message at the end of the `start.log`.
+Watch the database start-up progress using `atsd.log` log file.
+
+```sh
+tail -F /opt/atsd/atsd/logs/atsd.log
+```
+
+Check for **ATSD server started** message at the end of the `atsd.log`.
+
+```txt
+2019-02-22 11:00:00,000;INFO;main;com.axibase.tsd.Server;ATSD server started
+```
 
 Web interface is now accessible on port `8443` (HTTPS) at `https://localhost:8443/`.
 
 ## Troubleshooting
 
 * Review [Troubleshooting Guide](troubleshooting.md).
+
+The Linux file system is available in the `./ubuntu1604/rootfs/` directory.
 
 ## Validation
 

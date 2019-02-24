@@ -15,34 +15,28 @@
 If the target server is not connected to public repositories to install dependencies with APT,
 use the [Offline Installation Guide](ubuntu-debian-offline.md) to complete installation.
 
-## Download
-
-Download `deb` package to the target server:
-
-```bash
-wget https://www.axibase.com/public/atsd_amd64.deb
-```
-
-> The distribution files are also published on [`https://axibase.com/public/atsd_deb_latest.htm`](https://axibase.com/public/atsd_deb_latest.htm).
-
 ## Installation Steps
 
 ### Add Repositories
 
-::: tip Debian 8.x
-Add `backports` repository to `/etc/apt/sources.list.d/backports.list` file.
-
-```sh
-deb http://ftp.debian.org/debian jessie-backports main
-```
-
-:::
+* Required for Ubuntu 18.04
 
 ::: tip Ubuntu 18.04
 Add `bionic-security` repository to `/etc/apt/sources.list` to enable [Java 8](https://packages.ubuntu.com/bionic/amd64/openjdk-8-jdk/download) packages.
 
 ```ls
-deb http://security.ubuntu.com/ubuntu bionic-security main universe
+sudo sh -c 'echo deb http://security.ubuntu.com/ubuntu bionic-security main universe >> /etc/apt/sources.list'
+```
+
+:::
+
+* Required for Debian 8.x
+
+::: tip Debian 8.x
+Add `backports` repository to `/etc/apt/sources.list.d/backports.list` file.
+
+```sh
+sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
 ```
 
 :::
@@ -50,18 +44,26 @@ deb http://security.ubuntu.com/ubuntu bionic-security main universe
 ### Update Repositories and Install Dependencies
 
 ```sh
-sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
+sudo apt-get update
 ```
 
-<!-- markdownlint-disable MD032 -->
-::: tip Debian 8.x
+### Install Dependencies
+
+Install Java 8 and the necessary network utilities.
 
 ```sh
-sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
+sudo apt-get install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
 ```
 
-:::
-<!-- markdownlint-disable MD032 -->
+## Download ATSD Package
+
+Download the latest ATSD `deb` package.
+
+```bash
+wget https://www.axibase.com/public/atsd_amd64.deb
+```
+
+> The latest ATSD `deb` packages with version numbers are listed on [`https://axibase.com/public/atsd_deb_latest.htm`](https://axibase.com/public/atsd_deb_latest.htm).
 
 ### Install ATSD
 
