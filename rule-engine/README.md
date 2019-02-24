@@ -190,7 +190,7 @@ avg('5 minute') - avg() > 20 && avg('5 minute') / avg() > 1.1
 
 ### Forecast Thresholds
 
-The  [`forecast`](./functions-forecast.md#forecast) function retrieves a pre-calculated [forecast](../forecasting/README.md) for the current series. The forecast object fields can be compared to raise an alert if the moving average deviates from the expected value by more than the specified threshold.
+The  [`forecast`](./functions-forecast.md#forecast) function retrieves a precalculated [forecast](../forecasting/README.md) for the current series. The forecast object fields can be compared to raise an alert if the moving average deviates from the expected value by more than the specified threshold.
 
 ```javascript
 abs(avg() - forecast().interpolated) > 25
