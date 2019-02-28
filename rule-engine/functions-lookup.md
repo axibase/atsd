@@ -21,7 +21,7 @@ Named collections are listed on the **Data > Named Collections** page.
 * [`getEntityCount`](#getentitycount)
 * [`getEntityName`](#getentityname)
 
-## `collection`
+### `collection`
 
 ```csharp
 collection(string name) [string]
@@ -47,7 +47,7 @@ To access the `n`-th element in the collection, use square brackets `[index]` or
 author = (authors.size() == 0) ? 'n/a' : authors[0]
 ```
 
-## `lookup`
+### `lookup`
 
 ```csharp
 lookup(string name, string key[, bool def]) string
@@ -66,7 +66,7 @@ Example:
 lookup('on-call', 'john.doe', true)
 ```
 
-## `replacementTable`
+### `replacementTable`
 
 ```csharp
 replacementTable(string name) map
@@ -96,7 +96,7 @@ randomItem(replacementTable('oncall-emails').values())
 randomItem(replacementTable('oncall-emails'))
 ```
 
-## `entity_tag`
+### `entity_tag`
 
 ```csharp
 entity_tag(string entity, string name) string
@@ -106,7 +106,7 @@ Returns value of tag `name` for entity `entity`.
 
 If the tag or the entity is not found, an empty string is returned.
 
-## `entity_tags`
+### `entity_tags`
 
 ```csharp
 entity_tags(string entity [, bool format]) map
@@ -158,7 +158,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 ...
 ```
 
-## `entity_label`
+### `entity_label`
 
 ```csharp
 entity_label(string entity) string
@@ -168,7 +168,7 @@ Returns label for entity `entity`.
 
 If the entity is not found or the entity does not have a label, the argument `entity` is returned.
 
-## `getEntity`
+### `getEntity`
 
 ```csharp
 getEntity(string entity [,bool matchLabel]) Entity
@@ -187,7 +187,7 @@ Example:
 getEntity('nurswgvml007').interpolate
 ```
 
-## `getEntities`
+### `getEntities`
 
 ```csharp
 getEntities(string metric, string startDate, string endDate, string expr) [Entity]
@@ -227,7 +227,7 @@ getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
 getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
 ```
 
-## `getEntityCount`
+### `getEntityCount`
 
 ```csharp
 getEntityCount(string metric, string startDate, string endDate, string expr) int
@@ -237,7 +237,7 @@ Returns a count of [Entity](entity-fields.md) **objects** with last insert date 
 
 Identical to `getEntity(metric, startDate, endDate, expr).size()`.
 
-## `getEntityName`
+### `getEntityName`
 
 ```csharp
 getEntityName(string entity) string

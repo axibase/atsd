@@ -21,7 +21,7 @@ These functions perform basic numeric operations on the input number and return 
 * [`log10`](#log10)
 * [`signum`](#signum)
 
-## `abs`
+### `abs`
 
 ```csharp
 abs(double x) double
@@ -29,7 +29,7 @@ abs(double x) double
 
 Returns the absolute value of `x`.
 
-## `ceil`
+### `ceil`
 
 ```csharp
 ceil(double x) long
@@ -37,7 +37,7 @@ ceil(double x) long
 
 Returns the smallest integer that is greater than or equal to `x`.
 
-## `floor`
+### `floor`
 
 ```csharp
 floor(double x) long
@@ -45,7 +45,7 @@ floor(double x) long
 
 Returns the largest integer that is less than or equal to `x`.
 
-## `pow`
+### `pow`
 
 ```csharp
 pow(double x, double y) double
@@ -53,7 +53,7 @@ pow(double x, double y) double
 
 Returns `x` raised to the power of `y`.
 
-## `round`
+### `round`
 
 ```csharp
 round(double x[, int y]) long
@@ -67,7 +67,7 @@ The precision is `0` if omitted.
 
 If `y` is less than `0`, the number is rounded to the left of the decimal point by the indicated number of places.
 
-## `max`
+### `max`
 
 ```csharp
 max(double x, double y) double
@@ -75,7 +75,7 @@ max(double x, double y) double
 
 Returns the greater of two numbers: `x` and `y`.
 
-## `min`
+### `min`
 
 ```csharp
 min(double x, double y) double
@@ -83,7 +83,7 @@ min(double x, double y) double
 
 Returns the smallest of two numbers: `x` and `y`.
 
-## `mod`
+### `mod`
 
 ```csharp
 mod(number x, number y) double
@@ -93,7 +93,7 @@ Returns the remainder (modulus) of number `x` divided by number `y`.
 
 This function provides an alternative to `x % y` syntax which is **not** supported.
 
-## `cbrt`
+### `cbrt`
 
 ```csharp
 cbrt(double x) double
@@ -103,7 +103,7 @@ cbrt(double x) double
 Returns cube root ∛ of `x`.
 <!-- markdownlint-enable MD101 -->
 
-## `sqrt`
+### `sqrt`
 
 ```csharp
 sqrt(double x) double
@@ -111,7 +111,7 @@ sqrt(double x) double
 
 Returns `√` of `x`.
 
-## `exp`
+### `exp`
 
 ```csharp
 exp(double x) double
@@ -119,7 +119,7 @@ exp(double x) double
 
 Returns Euler constant `e` (2.718281828459045) raised to the power of `x`.
 
-## `log`
+### `log`
 
 ```csharp
 log(double x) double
@@ -127,7 +127,7 @@ log(double x) double
 
 Returns the natural logarithm (base `e = 2.718281828459045`) of `x`.
 
-## `log10`
+### `log10`
 
 ```csharp
 log10(double x) double
@@ -135,7 +135,7 @@ log10(double x) double
 
 Returns the base 10 logarithm of `x`.
 
-## `signum`
+### `signum`
 
 ```csharp
 signum(double x) int

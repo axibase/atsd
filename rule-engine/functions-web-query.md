@@ -15,7 +15,7 @@ These functions execute an HTTP request to an external web service and return a 
 * [Response Object](#response-object)
 * [Examples](#examples)
 
-## `queryConfig`
+### `queryConfig`
 
 ```csharp
 queryConfig(string name, map params) response
@@ -72,7 +72,7 @@ The target URL receives the following JSON payload sent as `application/json`:
 }
 ```
 
-## `queryGet`
+### `queryGet`
 
 ```csharp
 queryGet(string url, map config) response
@@ -90,7 +90,7 @@ The configuration map `config` can contain the following fields:
 queryGet("https://ipinfo.io/1.1.1.1/json").content
 ```
 
-## `queryPost`
+### `queryPost`
 
 ```csharp
 queryPost(string url, map config) response

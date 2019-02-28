@@ -37,7 +37,7 @@ These functions compare and transform strings, `null`-safe: returns `null` or `f
 * [`concat`](#concat)
 * [`concatLines`](#concatlines)
 
-## `upper`
+### `upper`
 
 ```csharp
 upper(string s) string
@@ -45,7 +45,7 @@ upper(string s) string
 
 Converts string `s` to uppercase letters.
 
-## `lower`
+### `lower`
 
 ```csharp
 lower(string s) string
@@ -53,7 +53,7 @@ lower(string s) string
 
 Converts string `s` to lowercase letters.
 
-## `truncate`
+### `truncate`
 
 ```csharp
 truncate(string s, int maxLength) string
@@ -61,7 +61,7 @@ truncate(string s, int maxLength) string
 
 Truncates `s` to the specified number of characters and returns the string as the result if string `s` length exceeds `maxLength` characters.
 
-## `startsWith`
+### `startsWith`
 
 ```javascript
 startsWith(string s, string pfx) bool
@@ -69,7 +69,7 @@ startsWith(string s, string pfx) bool
 
 Returns `true` if `s` starts with `pfx` prefix.
 
-## `endsWith`
+### `endsWith`
 
 ```javascript
 endsWith(string s, string sfx) bool
@@ -77,7 +77,7 @@ endsWith(string s, string sfx) bool
 
 Returns `true` if `s` ends with `sfx`.
 
-## `split`
+### `split`
 
 ```csharp
 split(string s, string sep) [string]
@@ -106,7 +106,7 @@ authors = split(tags.authors, ',')
 authors.size() == 0 ? 'n/a' : authors[0]
 ```
 
-## `list`
+### `list`
 
 ```csharp
 list(string s[, string sep]) [string]
@@ -123,7 +123,7 @@ Example:
 list('hello "brave new world" hello', ' ')
 ```
 
-## `ifEmpty`
+### `ifEmpty`
 
 ```csharp
 ifEmpty(string a, string b) object
@@ -142,7 +142,7 @@ Examples:
 ifEmpty(tags.location, 'N/A')
 ```
 
-## `coalesce`
+### `coalesce`
 
 ```csharp
 coalesce([string] strColl) string
@@ -170,7 +170,7 @@ If both fields are empty, an empty string is returned. */
 coalesce([entity.label, entity])
 ```
 
-## `keepAfter`
+### `keepAfter`
 
 ```csharp
 keepAfter(string s, string sub) string
@@ -187,7 +187,7 @@ Example:
 keepAfter('hello.new.world', '.')
 ```
 
-## `keepAfterLast`
+### `keepAfterLast`
 
 ```csharp
 keepAfterLast(string s, string sub) string
@@ -204,7 +204,7 @@ Example:
 keepAfterLast('hello.new.world', '.')
 ```
 
-## `keepBefore`
+### `keepBefore`
 
 ```csharp
 keepBefore(string s, string sub) string
@@ -221,7 +221,7 @@ Example:
 keepBefore('hello.new.world', '.')
 ```
 
-## `keepBeforeLast`
+### `keepBeforeLast`
 
 ```csharp
 keepBeforeLast(string s, string sub) string
@@ -238,7 +238,7 @@ Example:
 keepBeforeLast('hello.new.world', '.')
 ```
 
-## `replace`
+### `replace`
 
 ```csharp
 replace(string s, string sub, string rep) string
@@ -255,7 +255,7 @@ Examples:
 replace('hello.new.world', 'w', '2')
 ```
 
-## `capFirst`
+### `capFirst`
 
 ```csharp
 capFirst(string s) string
@@ -270,7 +270,7 @@ Example:
 capFirst('hello world')
 ```
 
-## `capitalize`
+### `capitalize`
 
 ```csharp
 capitalize(string s) string
@@ -285,7 +285,7 @@ Example:
 capitalize('hello world')
 ```
 
-## `removeBeginning`
+### `removeBeginning`
 
 ```csharp
 removeBeginning(string s, string pfx) string
@@ -305,7 +305,7 @@ removeBeginning('hello world', 'he')
 removeBeginning('hello world', 'be')
 ```
 
-## `removeEnding`
+### `removeEnding`
 
 ```csharp
 removeEnding(string s, string sfx) string
@@ -323,7 +323,7 @@ removeEnding('hello world', 'ld')
 removeEnding('hello world', 'LD')
 ```
 
-## `urlencode`
+### `urlencode`
 
 ```csharp
 urlencode(string s) string
@@ -336,7 +336,7 @@ Replaces special characters in string `s` with URL-safe characters using percent
 urlencode('hello world')
 ```
 
-## `jsonencode`
+### `jsonencode`
 
 ```csharp
 jsonencode(string s) string
@@ -344,7 +344,7 @@ jsonencode(string s) string
 
 Escapes special JSON characters in string `s` such as double quotes with a backslash to safely include the string within a JSON object.
 
-## `htmlDecode`
+### `htmlDecode`
 
 ```csharp
 htmlDecode(string s) string
@@ -359,7 +359,7 @@ Example:
 htmlDecode('hello &gt; world')
 ```
 
-## `unquote`
+### `unquote`
 
 ```csharp
 unquote(string s) string
@@ -372,7 +372,7 @@ Removes leading and trailing double and single quotation marks from string `s`.
 unquote('"hello world"')
 ```
 
-## `countMatches`
+### `countMatches`
 
 ```csharp
 countMatches(string s, string sub) int
@@ -387,7 +387,7 @@ Example:
 countMatches('hello world', 'o')
 ```
 
-## `abbreviate`
+### `abbreviate`
 
 ```csharp
 abbreviate(string s, int maxLength) string
@@ -419,7 +419,7 @@ abbreviate('hello world', 100)
 abbreviate('abcdefg', 3)
 ```
 
-## `indexOf`
+### `indexOf`
 
 ```csharp
 indexOf(string s, string sub[, int index]) int
@@ -451,7 +451,7 @@ indexOf('hello world', 'o', 5)
 indexOf('hello world', 'o', 10)
 ```
 
-## `locate`
+### `locate`
 
 ```csharp
 locate(string s, string sub[, int index]) int
@@ -461,7 +461,7 @@ Returns the integer index starting with `0` of the first occurrence of substring
 
 Returns `-1` if the substring `sub` is not found.
 
-## `trim`
+### `trim`
 
 ```csharp
 trim(string s) string
@@ -474,7 +474,7 @@ Removes leading and trailing non-printable characters.
 trim(" hello world    ")
 ```
 
-## `length`
+### `length`
 
 ```csharp
 length(string s) string
@@ -482,7 +482,7 @@ length(string s) string
 
 Returns the length of string `s`. If string `s` is `null`, function returns -1.
 
-## `concat`
+### `concat`
 
 ```csharp
 concat([string] strColl [, string sep]) string
@@ -504,7 +504,7 @@ concat(['a', 'b'], ':')
 concat(['a', null, 'b'], '-')
 ```
 
-## `concatLines`
+### `concatLines`
 
 ```csharp
 concatLines([string] strColl) string

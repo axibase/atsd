@@ -11,7 +11,7 @@ Table functions perform various operations on strings, lists, and maps to create
 * [`addTable` for list](#addtable-for-list)
 * [`addTable` for objects](#addtable-for-objects)
 
-## `addTable` for map
+### `addTable` for map
 
 ```csharp
 addTable(map[, string format]) string
@@ -129,7 +129,7 @@ cpu_count=1
 os=Linux
 ```
 
-## `addTable` for maps
+### `addTable` for maps
 
 ```csharp
 addTable([map][, string format[, [string header]]]) string
@@ -221,7 +221,7 @@ id=/=/dev=/mnt/u113452=/run=/var/lib/lxcfs
 jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
 ```
 
-## `addTable` for list
+### `addTable` for list
 
 ```csharp
 addTable([[string]] strList[, string format[, [string] header | bool addHeader]]) string
@@ -337,7 +337,7 @@ datetime=value
 2018-01-31T12:00:28.253Z=36
 ```
 
-## `addTable` for objects
+### `addTable` for objects
 
 ```csharp
 addTable([object][, string format[, [string] header]]) string

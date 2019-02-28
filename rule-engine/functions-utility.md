@@ -2,6 +2,7 @@
 
 ## Reference
 
+* [`agent_to_host`](#agent_to_host)
 * [`ifEmpty`](#ifempty)
 * [`toBoolean`](#toboolean)
 * [`toNumber`](#tonumber)
@@ -15,6 +16,24 @@
 * [`samples`](#samples)
 * [`values`](#values)
 * [`timestamps`](#timestamps)
+
+## `agent_to_host`
+
+```csharp
+agent_to_host(string a) string
+```
+
+Extracts hostname from the ITM agent name, typically consisting of optional instance, hostname, and [ITM product code](http://www-01.ibm.com/support/docview.wss?uid=swg21265222).
+
+Examples:
+
+```javascript
+/*
+  Primary:HOST_01:NT   ->   HOST_01
+  HOST_02:LZ           ->   HOST_02
+*/
+agent_to_host(entity)
+```
 
 ## `ifEmpty`
 

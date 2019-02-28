@@ -22,7 +22,7 @@ Property record consists of:
 * [`property_compare`](#property_compare)
 * [`property_compare_except`](#property_compare_except)
 
-## `property`
+### `property`
 
 ```csharp
 property([string entity, ] string expression [, string date]) string
@@ -54,7 +54,7 @@ otherwise returns an empty string */
 property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
 
-## `property_values`
+### `property_values`
 
 ```csharp
 property_values([string entity, ] string expression [, string date]) [string]
@@ -100,7 +100,7 @@ property_values('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.
 property_values('nurswgvml007', 'docker.container::image', 'today')
 ```
 
-## `property_map`
+### `property_map`
 
 ```csharp
 property_map([string entity,] string expression [, string date]) map
@@ -141,7 +141,7 @@ otherwise returns an empty map */
 property_map('nurswgvml007','configuration::', 'today')
 ```
 
-## `property_maps`
+### `property_maps`
 
 ```csharp
 property_maps([string entity,] string expression [, string date]) [map]
@@ -189,7 +189,7 @@ property_maps('nurswgvml007','configuration::')
 property_maps('nurswgvml007','configuration::', 'yesterday')
 ```
 
-## `getPropertyTypes`
+### `getPropertyTypes`
 
 ```csharp
 getPropertyTypes(string entity [, string startDate[, string endDate]]) [string]
@@ -224,7 +224,7 @@ getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
 getPropertyTypes('nurswgvml007','yesterday', 'today')
 ```
 
-## `property_compare`
+### `property_compare`
 
 ```csharp
 property_compare() map
@@ -268,7 +268,7 @@ property_compare().get('state') != null
 property_compare().containsKey('state')
 ```
 
-## `property_compare_except`
+### `property_compare_except`
 
 ```csharp
 property_compare_except([string name]) map

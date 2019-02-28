@@ -46,7 +46,7 @@ Functions such as [`countIf`](#countif), [`avgIf`](#avgif), and [`sumIf`](#sumif
 * [`avgIf`](#avgif)
 * [`sumIf`](#sumif)
 
-## `avg`
+### `avg`
 
 ```javascript
 avg() double
@@ -54,7 +54,7 @@ avg() double
 
 Calculates average value. For example, `avg()` for a `5-minute` time-based window returns the average value for all samples received within this period of time.
 
-## `mean`
+### `mean`
 
 ```javascript
 mean() double
@@ -62,7 +62,7 @@ mean() double
 
 Calculates average value. Same as `avg()`.
 
-## `sum`
+### `sum`
 
 ```javascript
 sum() double
@@ -70,7 +70,7 @@ sum() double
 
 Sums all included values.
 
-## `min`
+### `min`
 
 ```javascript
 min() double
@@ -78,7 +78,7 @@ min() double
 
 Returns minimum value.
 
-## `max`
+### `max`
 
 ```javascript
 max() double
@@ -86,7 +86,7 @@ max() double
 
 Returns maximum value.
 
-## `wavg`
+### `wavg`
 
 ```javascript
 wavg() double
@@ -94,7 +94,7 @@ wavg() double
 
 Calculates weighted average. Weight is the sample index which starts from `0` for the first sample. The function assigns more weight to more recent samples, based on the sample order.
 
-## `wtavg`
+### `wtavg`
 
 ```javascript
 wtavg() double
@@ -110,7 +110,7 @@ Times are rounded to Unix seconds.
 
 The function assigns more weight to more recent samples, based on the difference between sample time and window start.
 
-## `ema`
+### `ema`
 
 ```javascript
 ema([double factor]) double
@@ -120,7 +120,7 @@ Calculates [exponential moving average](../api/data/series/smooth.md#exponential
 
 The function assigns more weight to more recent samples.
 
-## `count`
+### `count`
 
 ```javascript
 count() long
@@ -128,7 +128,7 @@ count() long
 
 Returns the number of samples in the window.
 
-## `percentile`
+### `percentile`
 
 ```csharp
 percentile(double n) double
@@ -136,7 +136,7 @@ percentile(double n) double
 
 Calculates `n`-th percentile according to the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values. `n` must be a fractional number within the `[0, 100]` range.
 
-## `median`
+### `median`
 
 ```javascript
 median() double
@@ -144,7 +144,7 @@ median() double
 
 Returns 50% percentile (median). Same as `percentile(50)`.
 
-## `variance`
+### `variance`
 
 ```javascript
 variance() double
@@ -152,7 +152,7 @@ variance() double
 
 Calculates variance.
 
-### `stdev`
+#### `stdev`
 
 ```javascript
 stdev() double
@@ -164,7 +164,7 @@ Returns standard deviation calculated as an [unbiased](https://www.itl.nist.gov/
 
 ![](../api/data/series/images/st_dev_sample.svg)
 
-## `intercept`
+### `intercept`
 
 ```javascript
 intercept() double
@@ -172,7 +172,7 @@ intercept() double
 
 Calculates linear regression intercept.
 
-## `median_abs_dev`
+### `median_abs_dev`
 
 ```javascript
 median_abs_dev() double
@@ -191,7 +191,7 @@ median_abs_dev('5 minute')
 median_abs_dev(10)
 ```
 
-## `first`
+### `first`
 
 ```javascript
 first() double
@@ -199,7 +199,7 @@ first() double
 
 Returns first series value. Same as `first(0)`.
 
-## `first(int index)`
+### `first(int index)`
 
 ```csharp
 first(int index) double
@@ -207,7 +207,7 @@ first(int index) double
 
 Returns `n`-th value from start. First value has index of `0`.
 
-## `last`
+### `last`
 
 ```javascript
 last() double
@@ -215,7 +215,7 @@ last() double
 
 Returns last value. Same as `last(0)`.
 
-## `last(int index)`
+### `last(int index)`
 
 ```csharp
 last(int index) double
@@ -223,7 +223,7 @@ last(int index) double
 
 Returns `n`-th value from last value. Last value has index of `0`.
 
-## `diff`
+### `diff`
 
 ```javascript
 diff() double
@@ -231,7 +231,7 @@ diff() double
 
 Calculates difference between `last` and `first` values. Same as `last() - first()`.
 
-## `diff(int i)`
+### `diff(int i)`
 
 ```csharp
 diff(int i) double
@@ -239,7 +239,7 @@ diff(int i) double
 
 Calculates difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
 
-## `diff(string interval)`
+### `diff(string interval)`
 
 ```csharp
 diff(string interval) double
@@ -249,7 +249,7 @@ Calculates difference between the last value and value at `currentTime - interva
 
 `interval` specified as `count unit`, for example `5 minute`.
 
-## `delta`
+### `delta`
 
 ```javascript
 delta() double
@@ -257,7 +257,7 @@ delta() double
 
 Calculates difference between `last` and `first` values. Same as `diff()`.
 
-## `new_maximum`
+### `new_maximum`
 
 ```javascript
 new_maximum() bool
@@ -265,7 +265,7 @@ new_maximum() bool
 
 Returns `true` if last value is greater than any previous value.
 
-## `new_minimum`
+### `new_minimum`
 
 ```javascript
 new_minimum() bool
@@ -273,7 +273,7 @@ new_minimum() bool
 
 Returns `true` if last value is smaller than any previous value.
 
-## `threshold_time`
+### `threshold_time`
 
 ```csharp
 threshold_time(double t) double
@@ -281,7 +281,7 @@ threshold_time(double t) double
 
 Forecasts the number of minutes until the sample value reaches the specified threshold `t` based on extrapolation of the difference between the last and first value.
 
-## `threshold_linear_time`
+### `threshold_linear_time`
 
 ```csharp
 threshold_linear_time(double threshold) double
@@ -289,7 +289,7 @@ threshold_linear_time(double threshold) double
 
 Forecasts the number of minutes until the sample value reaches the specified `threshold` based on linear extrapolation.
 
-## `rate_per_second`
+### `rate_per_second`
 
 ```javascript
 rate_per_second() double
@@ -297,7 +297,7 @@ rate_per_second() double
 
 Calculates the difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in Unix seconds.
 
-## `rate_per_minute`
+### `rate_per_minute`
 
 ```javascript
 rate_per_minute() double
@@ -305,7 +305,7 @@ rate_per_minute() double
 
 Calculates the difference between last and first value per minute. Same as `rate_per_second()/60`.
 
-## `rate_per_hour`
+### `rate_per_hour`
 
 ```javascript
 rate_per_hour() double
@@ -313,7 +313,7 @@ rate_per_hour() double
 
 Calculates the hourly difference between last and first value input. Same as `rate_per_second()/3600`.
 
-## `slope`
+### `slope`
 
 ```javascript
 slope() double
@@ -321,7 +321,7 @@ slope() double
 
 Calculates linear regression slope.
 
-## `slope_per_second`
+### `slope_per_second`
 
 ```javascript
 slope_per_second() double
@@ -329,7 +329,7 @@ slope_per_second() double
 
 Calculates linear regression slope.
 
-## `slope_per_minute`
+### `slope_per_minute`
 
 ```javascript
 slope_per_minute() double
@@ -337,7 +337,7 @@ slope_per_minute() double
 
 Calculates `slope_per_second()/60`.
 
-## `slope_per_hour`
+### `slope_per_hour`
 
 ```javascript
 slope_per_hour() double
@@ -345,7 +345,7 @@ slope_per_hour() double
 
 Calculates `slope_per_second()/3600`.
 
-## `countIf`
+### `countIf`
 
 ```csharp
 countIf(string condition [, string interval | int n]) long
@@ -365,7 +365,7 @@ countIf('value > 10')
 countIf('value > 5', 10)
 ```
 
-## `avgIf`
+### `avgIf`
 
 ```csharp
 avgIf(string condition [, string interval | int n]) double
@@ -373,7 +373,7 @@ avgIf(string condition [, string interval | int n]) double
 
 Calculates average of elements matching the specified `condition` within `interval` or within the last `n` samples.
 
-## `sumIf`
+### `sumIf`
 
 ```csharp
 sumIf(string condition [, string interval | int n]) double

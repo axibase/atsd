@@ -18,7 +18,7 @@ The boolean functions below return `true` if the user is valid and allowed to ex
 
 As an alternative to `if/else` syntax, set the optional `err` parameter to `true`, which causes the function to raise error and stop processing altogether in case of insufficient permissions.
 
-## `userInGroup`
+### `userInGroup`
 
 ```csharp
 userInGroup(string user, string group [, bool err]) bool
@@ -26,7 +26,7 @@ userInGroup(string user, string group [, bool err]) bool
 
 Returns `true` if the `user` exists, is enabled, and belongs to the specified user `group`.
 
-## `userHasRole`
+### `userHasRole`
 
 ```csharp
 userHasRole(string user, string role [, bool err]) bool
@@ -34,7 +34,7 @@ userHasRole(string user, string role [, bool err]) bool
 
 Returns `true` if the `user` exists, is enabled, and has the specified [`role`](../administration/user-authorization.md#role-based-access-control).
 
-## `userAllowEntity`
+### `userAllowEntity`
 
 ```csharp
 userAllowEntity(string user, string entity [, bool err]) bool
@@ -42,7 +42,7 @@ userAllowEntity(string user, string entity [, bool err]) bool
 
 Returns `true` if the `user` exists, is enabled, and has [`READ`](../administration/user-authorization.md#entity-permissions) permission for the specified `entity`.
 
-## `userAllowEntityGroup`
+### `userAllowEntityGroup`
 
 ```csharp
 userAllowEntityGroup(string user, string entityGroup [, bool err]) bool
@@ -50,7 +50,7 @@ userAllowEntityGroup(string user, string entityGroup [, bool err]) bool
 
 Returns `true` if the `user` exists, is enabled, and has [`READ`](../administration/user-authorization.md#entity-permissions) permission to the specified `entityGroup`.
 
-## `userAllowPortal`
+### `userAllowPortal`
 
 ```csharp
 userAllowPortal(string user, string portal [, bool err]) bool

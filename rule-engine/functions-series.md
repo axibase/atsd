@@ -15,7 +15,7 @@ Related functions:
 * [`db_last`](#db_last)
 * [`db_statistic`](#db_statistic)
 
-## `db_last`
+### `db_last`
 
 ```csharp
 db_last(string metric [, string entity [, string tags | map tags]]) number
@@ -64,7 +64,7 @@ Example:
 value > 60 && db_last('temperature', 'sensor-01', 'stage=heating,unit=c') < 30
 ```
 
-## `db_statistic`
+### `db_statistic`
 
 ```csharp
 db_statistic(string function, string interval, [ string metric, [string entity, [string tags | map tags]]]) number

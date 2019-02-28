@@ -10,7 +10,7 @@ The `db_message_count` and `db_message_last` functions retrieve message records 
 * [`db_message_last`](#db_message_last)
 * [`db_messages`](#db_messages)
 
-## `db_message_count`
+### `db_message_count`
 
 ```csharp
 db_message_count(string interval, string type, string source
@@ -48,7 +48,7 @@ db_message_count('15 minute', type, source, ['api_app_id':'583'])
 db_message_count('12 hour', type, source, null, entity)
 ```
 
-## `db_message_last`
+### `db_message_last`
 
 ```csharp
 db_message_last(string interval, string type, string source
@@ -83,7 +83,7 @@ db_message_last('1 hour', 'webhook', 'github').timestamp
 | `message` | string | Message text. |
 | `date` | string | `null`. Use `timestamp` field instead. |
 
-## `db_messages`
+### `db_messages`
 
 ```csharp
 db_messages(string interval, string type, string source

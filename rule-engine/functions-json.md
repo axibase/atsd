@@ -11,7 +11,7 @@ Table functions perform various operations on JSON documents.
 * [`jsonToLists`](#jsontolists)
 * [`flattenJson`](#flattenjson)
 
-## `jsonPathFilter`
+### `jsonPathFilter`
 
 ```csharp
 jsonPathFilter(string s, string jp) [object]
@@ -55,7 +55,7 @@ Output:
 
 See additional [examples](#examples).
 
-## `jsonToMaps`
+### `jsonToMaps`
 
 ```csharp
 jsonToMaps(string inStr) [map]
@@ -111,7 +111,7 @@ Output:
 
 See additional examples [below](#examples).
 
-## `jsonToLists`
+### `jsonToLists`
 
 ```csharp
 jsonToLists(string inStr) [[string]]
@@ -170,7 +170,7 @@ Output:
 
 See additional examples [below](#examples).
 
-## `flattenJson`
+### `flattenJson`
 
 ```csharp
 flattenJson(string jsonStr) map

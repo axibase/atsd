@@ -17,7 +17,7 @@ Related functions:
 * [`db_last`](functions-series.md#db_last)
 * [`db_statistic`](functions-series.md#db_statistic)
 
-## `value`
+### `value`
 
 ```csharp
 value(string metric) number

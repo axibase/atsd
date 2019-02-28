@@ -12,6 +12,7 @@ Date functions operate on dates, timestamps, and intervals.
 * [`elapsedTime`](#elapsedtime)
 * [`formatInterval`](#formatinterval)
 * [`formatIntervalShort`](#formatintervalshort)
+* [`formatSecondOffset`](#formatsecondoffset)
 * [`now`](#now)
 * [`milliseconds`](#milliseconds)
 * [`seconds`](#seconds)
@@ -295,7 +296,7 @@ If the optional [time zone](../shared/timezone-list.md) argument `zone` is speci
 to_datetime(create_ms, 'America/Chicago').is_workday()
 ```
 
-## `date_format`
+### `date_format`
 
 ```csharp
 date_format(long time | DateTime date
@@ -328,7 +329,7 @@ date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ",
 Related date parsing function: [`date_parse`](functions-date.md#date_parse)
 :::
 
-## `formatInterval`
+### `formatInterval`
 
 ```csharp
 formatInterval(long interval) string
@@ -347,7 +348,7 @@ formatInterval(75228435000L)
 formatInterval(elapsedTime(milliseconds(tags.last_updated)))
 ```
 
-## `formatIntervalShort`
+### `formatIntervalShort`
 
 ```csharp
 formatIntervalShort(long interval) string
@@ -365,4 +366,28 @@ formatIntervalShort(75228435000L)
 ```javascript
 /* Assuming current time of 2017-08-15T00:01:30Z, returns a short interval of elapsed time: 1m 30s */
 formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))
+```
+
+### `formatSecondOffset`
+
+```csharp
+formatSecondOffset(int interval) string
+```
+
+Converts UTC offset in seconds to time zone pattern '±hh:mm'. The input seconds are negative for time zones ahead of UTC, such as `Europe/Vienna`.
+
+Examples:
+
+```javascript
+/* Returns 00:00 */
+formatSecondOffset(0)
+```
+
+```javascript
+/* Returns +02:00 */
+formatSecondOffset(-7200)
+```
+
+```javascript
+${formatSecondOffset(column('TMZDIFF'))}
 ```

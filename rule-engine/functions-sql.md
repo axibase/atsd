@@ -8,7 +8,7 @@ These functions return the results of a user-defined SQL query.
 
 * [`executeSqlQuery`](#executesqlquery)
 
-## `executeSqlQuery`
+### `executeSqlQuery`
 
 ```csharp
 executeSqlQuery(string query) collection[collection[string]]

@@ -9,7 +9,7 @@
 * [`randomItem`](#randomitem)
 * [`randomKey`](#randomkey)
 
-## `random`
+### `random`
 
 ```javascript
 random() double
@@ -30,7 +30,7 @@ customMean + (random()-0.5)*customRange
 10 + (random()-0.5)*2
 ```
 
-## `randomNormal`
+### `randomNormal`
 
 ```javascript
 randomNormal() double
@@ -50,7 +50,7 @@ customMean + randomNormal()*customStdDev
 10 + randomNormal()*2
 ```
 
-## `randomItem`
+### `randomItem`
 
 ```csharp
 randomItem([object] c | map m) string
@@ -138,7 +138,7 @@ selItem = randomItem(replacementTable('oncall-person'))
 selKey = selItem.key
 ```
 
-## `randomKey`
+### `randomKey`
 
 ```csharp
 randomKey(map m) string

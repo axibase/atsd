@@ -28,7 +28,7 @@ collection('oncall-emails')
 * [`isEmpty`](#isempty)
 * [`excludeKeys`](#excludekeys)
 
-## `IN`
+### `IN`
 
 ```csharp
 string s IN (string a[, string b[...]]) bool
@@ -47,7 +47,7 @@ entity IN ('nurswgvml007', 'nurswgvml008')
 tags.location IN ('NUR', 'SVL')
 ```
 
-## `LIKE`
+### `LIKE`
 
 ```csharp
 string s LIKE (string a[, string b[...]]) bool
@@ -69,7 +69,7 @@ tags.version LIKE ('1.2.*', '1.3.?')
 tags.location LIKE ('NUR*', entity.tags.location)
 ```
 
-## `likeAny`
+### `likeAny`
 
 ```csharp
 likeAny(string s, [string] strcoll) bool
@@ -93,7 +93,7 @@ likeAny(tags.location, ['NUR', 'SVL*'])
 likeAny(tags.request_ip, collection('ip_white_list'))
 ```
 
-## `matchList`
+### `matchList`
 
 ```csharp
 matchList(string s, string name) bool
@@ -109,7 +109,7 @@ Example:
 matchList(tags.request_ip, 'ip_white_list')
 ```
 
-## `matches`
+### `matches`
 
 ```csharp
 matches(string pattern, [string] strcoll) bool
@@ -125,7 +125,7 @@ Example:
 matches('*atsd*', property_values('docker.container::image'))
 ```
 
-## `contains`
+### `contains`
 
 ```csharp
 [string].contains(string s) bool
@@ -139,7 +139,7 @@ Example:
 collection('ip_white_list').contains(tags.request_ip)
 ```
 
-## `size`
+### `size`
 
 ```csharp
 [].size() int
@@ -161,7 +161,7 @@ collection('ip_white_list').size()
 entity.tags.size()
 ```
 
-## `isEmpty`
+### `isEmpty`
 
 ```csharp
 [].isEmpty() bool
@@ -179,7 +179,7 @@ Example:
 collection('ip_white_list').isEmpty()
 ```
 
-## `excludeKeys`
+### `excludeKeys`
 
 ```csharp
 excludeKeys(map, [string] strcoll) map

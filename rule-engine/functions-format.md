@@ -18,7 +18,7 @@ Related date formatting functions:
 * [`formatInterval`](functions-date.md#formatinterval)
 * [`formatIntervalShort`](functions-date.md#formatintervalshort)
 
-## `formatNumber`
+### `formatNumber`
 
 ```csharp
 formatNumber(double x, string pattern) string
@@ -33,7 +33,7 @@ Example:
 formatNumber(3.14159, '#.##')
 ```
 
-## `formatBytes`
+### `formatBytes`
 
 ```csharp
 formatBytes(number x, bool si) string
@@ -76,7 +76,7 @@ Examples:
 If the `x` argument is a string or an object that cannot be parsed into a number, the function returns the original value `x`.
 :::
 
-## `convert`
+### `convert`
 
 ```csharp
 convert(number x, string unit) string

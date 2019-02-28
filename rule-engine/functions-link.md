@@ -36,7 +36,7 @@ Alternatively, manually assemble inline links using syntax supported by the webh
 * [`getChartLink`](#getchartlink)
 * [`addLink`](#addlink)
 
-## `getEntityLink`
+### `getEntityLink`
 
 ```csharp
 getEntityLink(string entity [, bool matchLabel [, string format]]) string
@@ -66,7 +66,7 @@ Alternatively assemble the above URL manually:
 serverLink + '/entity/' + urlencode(entity)
 ```
 
-## `getPropertyLink`
+### `getPropertyLink`
 
 ```csharp
 getPropertyLink(string entity, string type [, bool matchLabel [, string format]]) string
@@ -92,7 +92,7 @@ Returned inline link:
 [configuration](https://atsd_hostname:8443/entities/nurswgvml007/properties?type=configuration)
 ```
 
-## `getRuleLink`
+### `getRuleLink`
 
 ```csharp
 getRuleLink([string format]) string
@@ -104,7 +104,7 @@ Optional `format` parameter creates an [inline link](links.md#inline-links) in o
 
 The link name is set to rule name in inline mode.
 
-## `getCsvExportLink`
+### `getCsvExportLink`
 
 ```csharp
 getCsvExportLink([string format]) string
@@ -120,7 +120,7 @@ The link name is set to **CSV Export** link in inline mode.
 Supported only in rules with `Series` data type.
 :::
 
-## `getHtmlExportLink`
+### `getHtmlExportLink`
 
 ```csharp
 getHtmlExportLink([string format]) string
@@ -136,7 +136,7 @@ Displayed as **HTML Export** link in inline mode.
 Supported only in rules with `Series` data type.
 :::
 
-## `getChartLink`
+### `getChartLink`
 
 ```csharp
 getChartLink([string format]) string
@@ -164,7 +164,7 @@ The following inline link is returned:
 [Default](https://atsd_hostname:8443/portals/series?metric=docker&entity=nurswgvml007...)
 ```
 
-## `addLink`
+### `addLink`
 
 ```csharp
 addLink(string label, string url) string

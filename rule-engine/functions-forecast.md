@@ -11,7 +11,7 @@
 * [`forecast_deviation`](#forecast_deviation)
 * [`thresholdTime`](#thresholdtime)
 
-## `forecast()`
+### `forecast()`
 
 ```csharp
 forecast([string name]) object
@@ -59,7 +59,7 @@ Example:
 violates(avg(), 10)
 ```
 
-## `forecast_stdev`
+### `forecast_stdev`
 
 ```csharp
 forecast_stdev() double
@@ -67,7 +67,7 @@ forecast_stdev() double
 
 Returns forecast standard deviation.
 
-## `forecast_score_stdev`
+### `forecast_score_stdev`
 
 Returns the standard deviation of actual aggregated values from the best fitting forecast values within the scoring interval.
 
@@ -77,7 +77,7 @@ Scoring is a procedure that identifies parameters that produce the best fitting 
 forecast_score_stdev(string name) double
 ```
 
-## `forecast_score_deviation`
+### `forecast_score_deviation`
 
 ```csharp
 forecast_score_deviation(string name, double a) double
@@ -93,7 +93,7 @@ The formula is:
 (a - forecast(name).interpolated/forecast_score_stdev(name)
 ```
 
-## `forecast_deviation`
+### `forecast_deviation`
 
 ```csharp
 forecast_deviation(number a) double
@@ -105,7 +105,7 @@ Returns difference between a number `a` and the `forecast().interpolated` value,
 (a - forecast().interpolated)/forecast_stdev()
 ```
 
-## `thresholdTime`
+### `thresholdTime`
 
 ```csharp
 thresholdTime(number min, number max [, string interval]) long

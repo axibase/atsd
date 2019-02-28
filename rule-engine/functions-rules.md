@@ -15,7 +15,7 @@ The current window is excluded from matching.
 * [rule_window](#rule_window)
 * [rule_windows](#rule_windows)
 
-## `rule_open`
+### `rule_open`
 
 ```csharp
 rule_open(string rule [, string entity [, string expression]]) bool
@@ -25,7 +25,7 @@ Checks if there is at least one window with the `OPEN` or `REPEAT` [status](READ
 
 Returns `true` if a matching window is found, `false` otherwise.
 
-## `rule_window`
+### `rule_window`
 
 ```csharp
 rule_window(string rule [, string entity [, string expression]]) Window
@@ -172,7 +172,7 @@ rule_window('slack-bot-cmd-confirm', entity,
             'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
 ```
 
-## `rule_windows`
+### `rule_windows`
 
 ```csharp
 rule_windows(string rule, string expression) [Window]
