@@ -2351,7 +2351,7 @@ The syntax follows the SQL-92 notation for enumerating the compared columns.
 ```sql
 FROM tbl t1
    JOIN tbl t2
-     ON  t1.time AND t2.time
+     ON  t1.time = t2.time
      AND t1.entity = t2.entity
      AND t1.tags = t2.tags
 ```
@@ -2360,15 +2360,15 @@ The `ON` condition can compare only the predefined columns: `entity`, `time`, ``
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `FROM tbl_1 t1`<br>`JOIN tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
-| `FROM tbl_1 t1`<br>`FULL OUTER JOIN tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
+| `FROM tbl_1 t1`<br>`JOIN tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl t2`<br>`ON t1.time = t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
+| `FROM tbl_1 t1`<br>`FULL OUTER JOIN tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time = t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
 
 The `ON` condition can be modified with the `USING entity` instruction in which case series `tags` are ignored, and records are joined on `entity` and `time` columns instead.
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `FROM tbl_1 t1`<br>`JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
-| `FROM tbl_1 t1`<br>`FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
+| `FROM tbl_1 t1`<br>`JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>`ON t1.time = t2.time`<br>`AND t1.entity = t2.entity` |
+| `FROM tbl_1 t1`<br>`FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time = t2.time`<br>`AND t1.entity = t2.entity` |
 
 :::warning Note
 Self-joins (table is merged with itself) is not supported.
