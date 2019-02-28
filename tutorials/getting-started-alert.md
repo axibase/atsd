@@ -21,17 +21,29 @@ Open the **Alerts > Rules** page and click **Create** to configure an alert rul
 
 ![](./resources/getting-started-4_2.png)
 
-The following [condition](../rule-engine/condition.md) evaluates to `true` and creates an alert if the average value for the last three samples exceeds `50`:
+Specify any name for the new rule on the **Overview** tab.
+
+![](./resources/rule-editor-overview.png)
+
+Open the **Filter** tab and enter `temperature` in the **Metric** field.
+
+![](./resources/rule-editor-filter.png)
+
+Open the **Windows** tab and configure the data arrays to contain the most recent `3` samples.
+
+![](./resources/rule-editor-window.png)
+
+Click on the **Condition** tab and enter the following expression in the **Condition** field.
 
 ```java
 avg() > 50
 ```
 
-![](./resources/rule-overview.png)
+The above [condition](../rule-engine/condition.md) evaluates to `true` and creates an alert if the average value exceeds `50`.
 
-Open the **Filter** tab in the rule editor to allow out-of-order values and to disable the [Time Filter](../rule-engine/filters.md#time-offset-filter) by setting the grace interval to `0`. Otherwise the rule engine ignores measurements timestamped earlier than `1 minute` from current time.
+![](./resources/rule-editor-condition.png)
 
-> [Import the rule](https://axibase.com/use-cases/tutorials/shared/import-rule.html) from XML file [`temperature_rule.xml`](./resources/temperature_rule.xml).
+Click **Save** to save and activate the rule.
 
 Return to **Data Entry** and submit a few commands with values greater than `50`.
 
