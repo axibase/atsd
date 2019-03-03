@@ -33,7 +33,7 @@ Open the **Windows** tab and configure the data arrays to contain the most recen
 
 ![](./resources/rule-editor-window.png)
 
-Click on the **Condition** tab and enter the following expression in the **Condition** field.
+Open the **Condition** tab and enter the following expression in the **Condition** field.
 
 ```java
 avg() > 50

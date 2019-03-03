@@ -745,9 +745,7 @@ For aliased columns, the underlying column and table names, or expression text, 
 |-------------|-------------|-------------|-------------|
 ```
 
-CURRENT ROW
-
- The reserved words also include [calendar](../shared/calendar.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
+ The reserved words also include [calendar keywords](../shared/calendar.md#keywords) such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
 
 ## Literals
 

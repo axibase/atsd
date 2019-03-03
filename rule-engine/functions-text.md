@@ -131,14 +131,19 @@ ifEmpty(string a, string b) object
 
 Returns `b` if `a` is either `null` or an empty string.
 
-:::tip Accepted data types
-The function also accepts arguments of any data type, such as objects and numbers.
+If the number of arguments is more than two, consider the `coalesce`[#coalesce] function.
+
+:::tip Allowed data types
+The function accepts arguments of any data type, such as objects and numbers.
 :::
 
 Examples:
 
 ```javascript
-/* Returns 'N/A' if tags.location is null or empty. Otherwise returns the value of `location` tag. */
+/*
+  Returns the value of the 'location' tag.
+  This this tags is null or empty, returns N/A.
+*/
 ifEmpty(tags.location, 'N/A')
 ```
 

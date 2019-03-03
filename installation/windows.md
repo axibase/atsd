@@ -43,7 +43,7 @@ Open the Linux subsystem by running the `ubuntu.exe` executable.
 ./ubuntu1604/ubuntu.exe
 ```
 
-When accessing WSL for the first time, the system prompts you to create a UNIX account with administrative privileges (member of `sudo` group). Enter `axibase`/`axibase` or other credentials to proceed with the installation.
+When accessing WSL for the first time, the system prompts you to create a Unix account with administrative privileges (member of `sudo` group). Enter `axibase`/`axibase` or other credentials to proceed with the installation.
 
 :::tip Linux Versions
 If the installed Linux version is not Ubuntu 16.04, refer to the corresponding installation [instructions](./packages.md).
@@ -85,8 +85,8 @@ The installation script completes with the following messages:
 
 ```txt
 [ATSD] ATSD user interface:
-[ATSD] http://10.0.0.5:8088
-[ATSD] https://10.0.0.5:8443
+[ATSD] http://192.0.2.1:8088
+[ATSD] https://192.0.2.1:8443
 [ATSD] ATSD start completed. Time: 2019-02-22 11:00:00.
 [ATSD] -- complete --
 [ATSD] All steps completed.

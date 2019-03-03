@@ -159,6 +159,7 @@ Examples:
 | [aggregate](aggregate.md) | Group detailed values into periods and calculate statistics for each period. |
 | [smooth](smooth.md) | [Smooth](https://en.wikipedia.org/wiki/Smoothing) time series. |
 | [downsample](downsample.md) | Reduce time series cardinality by filtering out some samples. |
+| [forecast](forecast.md) | Predict future values based on trends and recurring patterns. |
 
 The default transformation sequence is as follows:
 
@@ -168,7 +169,7 @@ The default transformation sequence is as follows:
 4. [aggregate](aggregate.md)
 5. [smooth](smooth.md)
 6. [downsample](downsample.md)
-7. forecast
+7. [forecast](forecast.md)
 
 The [interpolate](interpolate.md) transformation, if requested, is applied to detailed data before the values are passed to subsequent stages.
 
