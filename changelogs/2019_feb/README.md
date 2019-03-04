@@ -55,7 +55,7 @@
 |5889|forecast|Bug|[Forecast](../../api/data/series/forecast.md): series logging insufficient to reproduce the query.
 |5887|data-in|Bug|[Data Entry](../../tutorials/getting-started.md#writing-data): Null error instead actual error.
 |5886|rule engine|Feature|Rule Engine: change logic of the [`forecast(name)`](../../rule-engine/functions-forecast.md#forecast) function..
-|5885|api-rest|Feature|Series Query: implement additional functions - [`COUNT`](../../api/data/aggregation.md), `SUM`(../../api/data/aggregation.md).
+|5885|api-rest|Feature|Series Query: implement additional functions - [`COUNT`](../../api/data/aggregation.md), [`SUM`](../../api/data/aggregation.md).
 |5884|rule engine|Bug|Rule Engine: [Test](../../rule-engine/notifications/README.md#testing-notifications) results misleading on check on exit.
 |5883|rule editor|Feature|[Rule Editor](../../rule-engine/README.md): group columns in the results table.
 |5881|sql|Feature|SQL: implement [`WAVG`](../../sql/README.md#analytical-functions) and [`EMA`](../../sql/README.md#analytical-functions) window functions.
