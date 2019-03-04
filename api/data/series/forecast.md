@@ -39,8 +39,8 @@ The horizon fields specify the length of the forecasting interval. One of the du
 |:---|:---|:---|
 | `interval` | object | Forecast length specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 3, "unit": "DAY"}`. |
 | `length` | number | Forecast length specified as the number of samples. The frequency of the forecast samples is the same as the frequency of the input samples. |
-| `endDate` | string | End date until the forecast must be extrapolated. Must be greater then the end date of the selection interval.<br>[ISO format](../../shared/date-format.md) date or [calendar](../../shared/calendar.md) keyword. |
-| `startDate` | string | Start date for the forecast interval. If not set, the forecast starts after the last sample in the input series.<br>[ISO format](../../shared/date-format.md) date or [calendar](../../shared/calendar.md) keyword. |
+| `endDate` | string | End date until the forecast must be extrapolated. Must be greater then the end date of the selection interval.<br>[ISO format](../../../shared/date-format.md) date or [calendar](../../../shared/calendar.md) keyword. |
+| `startDate` | string | Start date for the forecast interval. If not set, the forecast starts after the last sample in the input series.<br>[ISO format](../../../shared/date-format.md) date or [calendar](../../../shared/calendar.md) keyword. |
 
 The forecast samples are generated starting with the timestamp following the [last sample](https://apps.axibase.com/chartlab/d33a9bc4) in the input series and not the end of the selection interval itself.
 
