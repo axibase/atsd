@@ -35,7 +35,7 @@ echo -e "entity e:br-1905 t:serial_number=N12002" \
   > /dev/tcp/atsd_hostname/8081
 ```
 
-Refresh the **Series Statistics** page and **Entity Editor** to verify that the temperature sample is received and the entity tag `series_number` is set by the database.
+Refresh the **Series Statistics** page and **Entity Editor** to verify that the temperature sample is received and the entity tag `series_number` is set.
 
 ![](./resources/network-entity-command.png)
 
@@ -112,39 +112,44 @@ Create a CSV file `temperature.csv`.
 
 ```txt
 date,asset,temperature
-2018-Jun-01 00:00:00,BR-1905,32.5
-2018-Jun-01 00:30:00,BR-1905,31.5
-2018-Jun-01 01:00:00,BR-1905,30.0
-2018-Jun-01 01:30:00,BR-1905,29.0
-2018-Jun-01 02:00:00,BR-1905,25.0
+2019-Mar-01 00:00:00,BR-1905,32.5
+2019-Mar-01 00:30:00,BR-1905,31.5
+2019-Mar-01 01:00:00,BR-1905,30.0
+2019-Mar-01 01:30:00,BR-1905,29.0
+2019-Mar-01 02:00:00,BR-1905,25.0
+2019-Mar-01 02:30:00,BR-1905,22.5
+2019-Mar-01 03:00:00,BR-1905,21.5
+2019-Mar-01 03:30:00,BR-1905,20.0
+2019-Mar-01 04:00:00,BR-1905,21.3
+2019-Mar-01 04:30:00,BR-1905,21.5
+2019-Mar-01 05:00:00,BR-1905,21.9
+2019-Mar-01 05:30:00,BR-1905,21.3
+2019-Mar-01 06:00:00,BR-1905,20.1
+2019-Mar-01 06:30:00,BR-1905,22.2
+2019-Mar-01 07:00:00,BR-1905,22.5
+2019-Mar-01 07:30:00,BR-1905,22.7
+2019-Mar-01 08:00:00,BR-1905,22.1
+2019-Mar-01 08:30:00,BR-1905,21.2
+2019-Mar-01 09:00:00,BR-1905,20.5
+2019-Mar-01 09:30:00,BR-1905,20.7
+2019-Mar-01 10:00:00,BR-1905,20.9
+2019-Mar-01 10:30:00,BR-1905,21.5
 ```
 
-Open **Data > CSV Parsers** and select **Import** from the split-button located at the bottom of the page.
+Open **Data > CSV Parser Wizard** and attach the file. Alternatively, copy the file contents into the 'Paste tabular data' area.
 
-Attach [`temperature_parser.xml`](./resources/temperature_parser.xml) and [import the parser](https://axibase.com/use-cases/tutorials/shared/import-csv-parser.html).
+![](./resources/csv-wizard-1.png)
 
-Open **Data > CSV File Upload**, attach the `temperature.csv` file and process it with the newly created `temperature_parser`.
+Proceed through the **Add File > Parse > Model > Upload** steps and click **Upload File** to store the records in the database.
 
-![](./resources/csv_upload.png)
+![](./resources/csv-wizard-2.png)
 
-Open the **CSV Tasks** page and check the number of processed rows is `6`.
+Review summary information about the uploaded records.
 
-![](./resources/csv_upload_report.png)
+![](./resources/csv-wizard-3.png)
 
-For this basic example, the parser maps file columns to series command fields based on column names specified in the header. The parser performs the following specific actions:
+Explore default charts, forecasts and sample SQL queries prepared for the imported series.
 
-* `date` column is mapped to `datetime` field and parsed with `yyyy-MMM-dd HH:mm:ss` pattern in UTC time zone which is set explicitly.
-* `asset` column is mapped to `entity` field.
-* The remaining columns, including `temperature`, are automatically classified as metric columns.
-
-```javascript
-date = '2018-Jun-01 00:00:00' -> datetime = '2018-06-01T00:00:00Z'
-asset = 'BR-1905'             -> entity = 'br-1905'
-temperature = 32.5            -> metric (temperature) = 32.5
-```
-
-Refresh the **Series Statistics** page to check that the values from the CSV file are present in the database.
-
-Refer to [CSV Parser Documentation](../parsers/csv/README.md) for more examples.
+![](./resources/csv-wizard-4.png)
 
 Continue to [Part 3: Portals](getting-started-portal.md).

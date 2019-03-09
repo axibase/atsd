@@ -69,11 +69,11 @@ Click the **Statistics** icon to view summary information about the series.
 
 ## Inserting Initial Data
 
-To populate the database with initial temperature readings, open the **Commands** tab and submit these commands, created using loops.
+To populate the database with initial temperature readings, open the **Commands** tab and submit multiple `series` commands created using an iterator.
 
 ```ls
 <#list 1..20 as i>
-series s:${(nowSeconds - i * 600)?c} e:br-1905 m:temperature=${(60 - 2*i)?c}
+series s:${nowSeconds - i * 600} e:br-1905 m:temperature=${60 - 2*i}
 </#list>
 ```
 

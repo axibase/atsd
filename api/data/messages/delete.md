@@ -1,26 +1,22 @@
 # Messages: delete
 
-## Description
+## Overview
 
-The ability to delete specific message records via the Data API is not implemented.
+The Data API does not support deleting specific message records.
 
-## Message Retention
+Instead the database automatically deletes expired messages records. The message expires when its **insertion time** is older than current time minus the Time to Live (TTL) interval.
 
-The messages are deleted from the database by background tasks once their **insertion time** is older than current time minus the time-to-live (TTL) interval.
+> Expiration is based on the **insertion** time (time when the database received the message), as opposed to the message **record** time.
 
-The retention interval is set with the `messages.timeToLive` setting on the [**Settings > Server Properties**](../../../administration/server-properties.md) page. The setting is specified in **seconds**. The default interval is `31536000` (`365 * 24 * 3600` = 1 year).
+## Retention Settings
 
-Messages expire based on the **insertion** time (time when the database received the message), as opposed to the message **record** time.
+The TTL interval is set with the `messages.timeToLive` setting on the [**Settings > Server Properties**](../../../administration/server-properties.md) page. The setting is specified in **seconds**. The default interval is `31536000` (`365 * 24 * 3600` = 1 year).
 
-## Modify Retention
-
-Open the console on the ATSD server.
-
-Open `/opt/atsd/atsd/conf/server.properties` file.
+To modify the TTL, open the **Settings > Configuration File** page or the the `/opt/atsd/atsd/conf/server.properties` file.
 
 Calculate the new retention interval in seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
 
-Add `messages.timeToLive` setting with the new value.
+Add or modify `messages.timeToLive` setting with the new value.
 
 ```elm
 messages.timeToLive = 1209600
@@ -141,8 +137,6 @@ major_compact 'atsd_message'
 
 ## Deleting All Messages
 
-Truncate the `atsd_message` table to remove all records from the table.
+Open the **Settings > Storage > Clear Messages** page.
 
-```sh
-echo "truncate 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
-```
+Click **Clear Messages** to remove all message records.
