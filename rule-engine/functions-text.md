@@ -131,7 +131,7 @@ ifEmpty(string a, string b) object
 
 Returns `b` if `a` is either `null` or an empty string.
 
-If the number of arguments is more than two, consider the `coalesce`[#coalesce] function.
+If the number of arguments is more than two, consider the [`coalesce`](#coalesce) function.
 
 :::tip Allowed data types
 The function accepts arguments of any data type, such as objects and numbers.
