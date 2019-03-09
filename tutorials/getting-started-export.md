@@ -55,7 +55,7 @@ Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field val
 
 ```json
 [{
-  "startDate": "2018-06-01T00:00:00Z",
+  "startDate": "2019-03-01T00:00:00Z",
   "endDate":   "now",
   "entity": "br-1905",
   "metric": "temperature"
@@ -75,9 +75,9 @@ The response document contains the series key and the array of `time:value` samp
       "type": "DETAIL"
     },
     "data": [
-      { "d": "2018-06-01T20:10:00.000Z", "v": 15 },
-      { "d": "2018-06-01T20:20:00.000Z", "v": 10.8 },
-      { "d": "2018-06-01T20:30:00.000Z", "v": 24 }
+      { "d": "2019-03-01T20:10:00.000Z", "v": 15 },
+      { "d": "2019-03-01T20:20:00.000Z", "v": 10.8 },
+      { "d": "2019-03-01T20:30:00.000Z", "v": 24 }
     ]
   }
 ]
@@ -87,7 +87,7 @@ Execute another request to retrieve [interpolated](../api/data/series/interpolat
 
 ```json
 [{
-  "startDate": "2018-06-01T00:00:00Z",
+  "startDate": "2019-03-01T00:00:00Z",
   "endDate":   "now",
   "entity": "br-1905",
   "metric": "temperature",

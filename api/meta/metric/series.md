@@ -82,7 +82,7 @@ curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
         "file_system": "192.0.2.2:/home/store/share",
         "mount_point": "/mnt/share"
     },
-    "lastInsertDate": "2015-12-25T14:09:49.000Z"
+    "lastInsertDate": "2018-12-25T14:09:49.000Z"
 }]
 ```
 

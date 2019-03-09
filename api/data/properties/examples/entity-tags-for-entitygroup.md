@@ -35,7 +35,7 @@ POST /api/v1/properties/query
             "ip": "192.0.2.2",
             "os": "Linux"
         },
-        "date": "2015-09-08T09:37:13Z"
+        "date": "2018-09-08T09:37:13Z"
     },
     {
         "type": "$entity_tags",
@@ -46,7 +46,7 @@ POST /api/v1/properties/query
             "ip": "192.0.2.5",
             "os": "Linux"
         },
-        "date": "2015-09-08T09:37:13Z"
+        "date": "2018-09-08T09:37:13Z"
     },
     {
         "type": "$entity_tags",
@@ -60,7 +60,7 @@ POST /api/v1/properties/query
             "loc_code": "nur,nur",
             "os": "Linux"
         },
-        "date": "2015-09-08T09:37:13Z"
+        "date": "2018-09-08T09:37:13Z"
     }
 ]
 ```

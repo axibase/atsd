@@ -69,7 +69,7 @@ POST /api/v1/command
 series e:DL1866 m:speed=650 m:altitude=12300
 property e:abc001 t:disk k:name=sda v:size=203459 v:fs_type=nfs
 series e:DL1867 m:speed=450 m:altitude=12100
-message e:server001 d:2015-03-04T12:43:20+00:00 t:subject="my subject" m:"Hello, world"
+message e:server001 d:2018-03-04T12:43:20+00:00 t:subject="my subject" m:"Hello, world"
 ```
 
 ### Response

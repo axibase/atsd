@@ -66,7 +66,7 @@ curl "https://atsd_hostname:8443/api/v1/entity-groups/nur-entities-name/entities
     {
         "name": "nurswgvml003",
         "enabled": true,
-        "lastInsertDate": "2015-09-04T15:43:36.000Z",
+        "lastInsertDate": "2018-09-04T15:43:36.000Z",
         "tags": {
             "app": "Shared NFS/CIFS disk, ntp server",
             "ip": "192.0.2.2",

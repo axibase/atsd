@@ -46,7 +46,7 @@ POST /api/v1/properties/query
            "shdlib": "13964",
            "size": "1733508"
        },
-       "date": "2015-02-05T16:55:02Z"
+       "date": "2018-02-05T16:55:02Z"
    }
 ]
 ```

@@ -18,8 +18,8 @@ Used to compute rate of change when the underlying metric measures a continuousl
 ```json
 [
   {
-    "startDate": "2015-03-05T10:00:00Z",
-    "endDate": "2015-03-05T12:00:00Z",
+    "startDate": "2018-03-05T10:00:00Z",
+    "endDate": "2018-03-05T12:00:00Z",
     "entity": "nurswgvml007",
     "metric": "net.tx_bytes",
     "tags": {
@@ -58,8 +58,8 @@ if (value1 > value0) {
 ```json
 [
   {
-    "startDate": "2015-09-03T12:00:00Z",
-    "endDate": "2015-09-03T12:05:00Z",
+    "startDate": "2018-09-03T12:00:00Z",
+    "endDate": "2018-09-03T12:05:00Z",
     "timeFormat": "iso",
     "entity": "e-nano",
     "metric": "m-nano",
@@ -93,9 +93,9 @@ if (value1 > value0) {
       "counter": true
     },
     "data": [
-      {"d":"2015-09-03T12:00:00.002Z","v":0.7},
-      {"d":"2015-09-03T12:00:00.003Z","v":0.1},
-      {"d":"2015-09-03T12:00:00.004Z","v":0.4}
+      {"d":"2018-09-03T12:00:00.002Z","v":0.7},
+      {"d":"2018-09-03T12:00:00.003Z","v":0.1},
+      {"d":"2018-09-03T12:00:00.004Z","v":0.4}
     ]
   }
 ]

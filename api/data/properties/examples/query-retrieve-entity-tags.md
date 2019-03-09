@@ -38,7 +38,7 @@ POST /api/v1/properties/query
         "loc_code": "nur,nur",
         "os": "Linux"
     },
-    "date": "2015-09-08T09:06:32Z"
+    "date": "2018-09-08T09:06:32Z"
   }
 ]
 ```

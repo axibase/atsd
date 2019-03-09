@@ -38,7 +38,7 @@ POST /api/v1/properties/query
            "disk_transfers_per_second": "59.1",
            "disk_write_kb/s": "236.3"
        },
-       "date": "2015-02-05T16:55:02Z"
+       "date": "2018-02-05T16:55:02Z"
    },
    {
        "type": "disk",
@@ -53,7 +53,7 @@ POST /api/v1/properties/query
            "disk_transfers_per_second": "0.0",
            "disk_write_kb/s": "0.0"
        },
-       "date": "2015-02-05T16:55:02Z"
+       "date": "2018-02-05T16:55:02Z"
    }
 ]
 ```

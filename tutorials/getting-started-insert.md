@@ -56,7 +56,7 @@ curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure -w "%{http_code}\n" \
   --user <username> \
   --header "Content-Type: application/json" \
-  --data '[{"entity": "br-1905", "metric": "temperature", "data": [{ "d": "2018-06-01T14:00:00Z", "v": 17.0 }]}]'
+  --data '[{"entity": "br-1905", "metric": "temperature", "data": [{ "d": "2019-03-01T14:00:00Z", "v": 17.0 }]}]'
 ```
 
 The payload transmitted to the database is a JSON document containing the series key and an array of `datetime:value` samples. The array `data` can contain any number of samples.
@@ -66,8 +66,8 @@ The payload transmitted to the database is a JSON document containing the series
   "entity": "br-1905",
   "metric": "temperature",
   "data": [
-    { "d": "2018-06-01T14:00:00Z", "v": 17.0 },
-    { "d": "2018-06-01T14:05:00Z", "v": 17.5 }
+    { "d": "2019-03-01T14:00:00Z", "v": 17.0 },
+    { "d": "2019-03-01T14:05:00Z", "v": 17.5 }
   ]
 }]
 ```

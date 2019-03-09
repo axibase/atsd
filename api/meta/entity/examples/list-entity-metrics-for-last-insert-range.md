@@ -7,7 +7,7 @@ List metrics for entity `nurswgvml007` with `lastInsertDate` within the specifie
 ### URI
 
 ```elm
-GET /api/v1/entities/nurswgvml007/metrics?minInsertDate=2012-01-01T00:00:00Z&maxInsertDate=2015-10-30T00:00:00Z
+GET /api/v1/entities/nurswgvml007/metrics?minInsertDate=2012-01-01T00:00:00Z&maxInsertDate=2018-10-30T00:00:00Z
 ```
 
 ## Response
@@ -22,7 +22,7 @@ GET /api/v1/entities/nurswgvml007/metrics?minInsertDate=2012-01-01T00:00:00Z&max
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",
-    "lastInsertDate": "2015-10-09T17:12:31.000Z",
+    "lastInsertDate": "2018-10-09T17:12:31.000Z",
     "versioned": false,
     "interpolate": "LINEAR"
   }

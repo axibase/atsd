@@ -35,8 +35,8 @@ POST /api/v1/series/insert
 ```json
 [
     {
-        "startDate": "2015-02-22T13:37:00Z",
-        "endDate": "2016-06-22T13:40:00Z",
+        "startDate": "2018-02-22T13:37:00Z",
+        "endDate": "2018-06-22T13:40:00Z",
         "forecastName":"cpu_busy_local",
         "type": "FORECAST_DEVIATION",
         "entity": "nurswgvml007",

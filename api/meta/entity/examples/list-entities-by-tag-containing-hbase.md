@@ -20,7 +20,7 @@ name LIKE 'nur*' AND lower(tags.app) LIKE '*hbase*'
 [{
     "name": "nurswgvml006",
     "enabled": true,
-    "lastInsertDate": "2015-09-04T15:43:36.000Z",
+    "lastInsertDate": "2018-09-04T15:43:36.000Z",
     "tags": {
         "app": "Hadoop/HBase"
     }

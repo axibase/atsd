@@ -27,7 +27,7 @@ Retrieve the five most recent values for the `temperature` series.
 SELECT entity, metric, datetime, value
   FROM "temperature"
 WHERE entity = 'br-1905'
-  AND datetime >= '2018-06-01T00:00:00Z'
+  AND datetime >= '2019-03-01T00:00:00Z'
 ORDER BY datetime DESC
   LIMIT 5
 ```
@@ -44,7 +44,7 @@ SELECT entity.label AS "asset", entity.tags.model AS "model",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'US/Pacific') AS "date", value
   FROM "temperature"
 WHERE entity = 'br-1905'
-  AND datetime >= '2018-06-01T00:00:00Z'
+  AND datetime >= '2019-03-01T00:00:00Z'
 ORDER BY datetime DESC
   LIMIT 5
 ```
@@ -52,11 +52,11 @@ ORDER BY datetime DESC
 ```txt
 | asset    | model   | metric       | units    | date                 | value |
 |----------|---------|--------------|----------|----------------------|-------|
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:53  | 25.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:47  | 32.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:15  | 20.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:08  | 31.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:02  | 31.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:53  | 25.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:47  | 32.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:15  | 20.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:08  | 31.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:02  | 31.0  |
 ```
 
 [Regularize](../sql/README.md#regularization) a series with a step-like interpolation function:
@@ -67,7 +67,7 @@ SELECT entity.label AS "asset", entity.tags.model AS "model",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'US/Pacific') AS "date", value
   FROM "temperature"
 WHERE entity = 'br-1905'
-  AND datetime >= '2018-06-01T00:00:00Z'
+  AND datetime >= '2019-03-01T00:00:00Z'
 WITH INTERPOLATE(15 SECOND, PREVIOUS)
 ORDER BY datetime DESC
   LIMIT 5
@@ -76,11 +76,11 @@ ORDER BY datetime DESC
 ```txt
 | asset    | model   | metric       | units    | date                 | value |
 |----------|---------|--------------|----------|----------------------|-------|
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:49:00  | 25.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:45  | 20.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:30  | 20.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:15  | 20.0  |
-| BR-1905  | 4520-1  | temperature  | Celsius  | 2018-06-04 02:48:00  | 30.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:49:00  | 25.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:45  | 20.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:30  | 20.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:15  | 20.0  |
+| BR-1905  | 4520-1  | temperature  | Celsius  | 2019-03-04 02:48:00  | 30.0  |
 ```
 
 Review the [SQL syntax](../sql/README.md) and experiment by executing custom queries based on the provided [examples](../sql/examples/README.md).

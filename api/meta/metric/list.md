@@ -159,7 +159,7 @@ curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
     "lastInsertDate": "2016-05-19T00:15:02.000Z",
     "versioned": true,
     "interpolate":"LINEAR",
-    "createdDate": "2015-10-03T07:03:45.558Z"
+    "createdDate": "2018-10-03T07:03:45.558Z"
   },
   {
     "name": "temperature",

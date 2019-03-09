@@ -77,9 +77,9 @@ property e:server-001 t:disk-config k:mount_point=/ k:name=sda1 v:size_gb=192 v:
 ```
 
 ```ls
-property e:server-001 t:operating_system v:type=Linux d:2015-03-04T12:43:20Z
+property e:server-001 t:operating_system v:type=Linux d:2018-03-04T12:43:20Z
 ```
 
 ```ls
-property e:server-001 t:$entity_tags v:location=SVL d:2015-03-04T12:43:20Z
+property e:server-001 t:$entity_tags v:location=SVL d:2018-03-04T12:43:20Z
 ```

@@ -216,13 +216,13 @@ tail -n 1000 /opt/atsd/hbase/logs/hbase-axibase-regionserver-atsd_slave.log | gr
 The output contains replication activity and the of amount tables replicated in the secondary cluster:
 
 ```txt
-2015-07-17 16:39:22,926 INFO  regionserver.ReplicationSink (ReplicationS
+2018-07-17 16:39:22,926 INFO  regionserver.ReplicationSink (ReplicationS
 ink.java:replicateEntries(158)) - Total replicated: 4
-2015-07-17 16:39:24,019 INFO  regionserver.ReplicationSink (ReplicationS
+2018-07-17 16:39:24,019 INFO  regionserver.ReplicationSink (ReplicationS
 ink.java:replicateEntries(158)) - Total replicated: 1
-2015-07-17 16:39:25,083 INFO  regionserver.ReplicationSink (ReplicationS
+2018-07-17 16:39:25,083 INFO  regionserver.ReplicationSink (ReplicationS
 ink.java:replicateEntries(158)) - Total replicated: 1
-2015-07-17 16:39:31,122 INFO  regionserver.ReplicationSink (ReplicationS
+2018-07-17 16:39:31,122 INFO  regionserver.ReplicationSink (ReplicationS
 ink.java:replicateEntries(158)) - Total replicated: 1
 ```
 

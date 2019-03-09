@@ -58,7 +58,7 @@ If the command refers to a new metric, the metric is created automatically with 
 Example:
 
 ```ls
-series e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1 d:2018-03-20T15:25:40Z
+series e:e-vers m:m-vers=13 t:$version_status=OK t:$version_source=collector-1 d:2019-03-20T15:25:40Z
 ```
 
 ### Data Entry Form
@@ -136,7 +136,7 @@ version_source LIKE 'col*'
 * Match using date function.
 
 ```ls
-version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
+version_time > date('2019-03-01 10:41:00') AND version_time < date('now')
 ```
 
    ![](./resources/6.png)

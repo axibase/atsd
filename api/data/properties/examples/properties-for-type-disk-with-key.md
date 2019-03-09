@@ -39,7 +39,7 @@ POST /api/v1/properties/query
            "disk_transfers_per_second": "59.5",
            "disk_write_kb/s": "238.2"
        },
-       "date": "2015-02-05T16:55:02Z"
+       "date": "2018-02-05T16:55:02Z"
    }
 ]
 ```

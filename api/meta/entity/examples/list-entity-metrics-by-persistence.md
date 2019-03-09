@@ -29,7 +29,7 @@ persistent=false
     "retentionDays": 0,
     "seriesRetentionDays": 0,
     "invalidAction": "NONE",
-    "lastInsertDate": "2015-10-09T17:12:31.000Z",
+    "lastInsertDate": "2018-10-09T17:12:31.000Z",
     "versioned": false,
     "interpolate": "LINEAR"
   }

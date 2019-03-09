@@ -6,8 +6,8 @@
 
 ```csv
 Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
-2015-10-15 00:00,Sensor-0001,PV120000-XG1,       35.5,    40.0,     760
-2015-10-15 00:00,Sensor-0020,PV120000-XG1,       20.4,    60.8,     745
+2018-10-15 00:00,Sensor-0001,PV120000-XG1,       35.5,    40.0,     760
+2018-10-15 00:00,Sensor-0020,PV120000-XG1,       20.4,    60.8,     745
 ```
 
 ## Parser Configuration
@@ -63,7 +63,7 @@ The collection must contain numeric values for which series commands are created
 
 The `addSeries` function returns a series object with setter functions to populate various command fields from cell values. The `row` and `col` fields are set to the row and column index of the current, or active, cell.
 
-* `timestamp(cell(row, 1))`: Timestamp is located in the first column of the current row: `2015-10-15 00:00`. The text value is parsed using the [**Timestamp Pattern**](#timestamp-pattern).
+* `timestamp(cell(row, 1))`: Timestamp is located in the first column of the current row: `2018-10-15 00:00`. The text value is parsed using the [**Timestamp Pattern**](#timestamp-pattern).
 * `entity(cell(row, 2))`: Entity name is located in the second column of the current row: `Sensor-0001`.
 * `tag('model',cell(row, 3))`: The value of tag with constant name `model` is located in the third column of the current row: `PV120000-XG1`.
 * `metric(cell(1, col))`: Metric name is located in the active column in the first row: `Temperature`, `Humidity`, `Pressure`.
@@ -75,6 +75,6 @@ The `addSeries` function returns a series object with setter functions to popula
 The series commands produced by the above schema program are shown below.
 
 ```ls
-series e:sensor-0001 d:2015-11-15T00:00:00Z m:temperature=35.5 m:humidity=40.0 m:pressure=760 t:model=PV120000-XG1
-series e:sensor-0020 d:2015-11-15T00:00:00Z m:temperature=20.4 m:humidity=60.8 m:pressure=745 t:model=PV120000-XG1
+series e:sensor-0001 d:2018-11-15T00:00:00Z m:temperature=35.5 m:humidity=40.0 m:pressure=760 t:model=PV120000-XG1
+series e:sensor-0020 d:2018-11-15T00:00:00Z m:temperature=20.4 m:humidity=60.8 m:pressure=745 t:model=PV120000-XG1
 ```

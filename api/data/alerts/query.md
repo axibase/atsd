@@ -130,9 +130,9 @@ curl https://atsd_hostname:8443/api/v1/alerts/query \
         "severity": "CRITICAL",
         "rule": "disk_low",
         "acknowledged": false,
-        "openDate": "2015-05-12T13:39:37Z",
+        "openDate": "2018-05-12T13:39:37Z",
         "openValue": 61.3998,
-        "lastEventDate": "2015-05-12T14:57:42Z",
+        "lastEventDate": "2018-05-12T14:57:42Z",
         "value": 61.3651
     }
 ]

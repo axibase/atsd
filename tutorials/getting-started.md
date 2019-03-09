@@ -107,10 +107,10 @@ At this stage, you have collected temperature observations from the chemical rea
 
 | Date                  | Value |
 |-----------------------|-------|
-| 2018-06-01T13:23:25Z  | 20    |
-| 2018-06-01T13:23:59Z  | 22    |
-| 2018-06-01T13:24:16Z  | 30    |
-| 2018-06-01T13:24:24Z  | 22    |
+| 2019-03-01T13:23:25Z  | 20    |
+| 2019-03-01T13:23:59Z  | 22    |
+| 2019-03-01T13:24:16Z  | 30    |
+| 2019-03-01T13:24:24Z  | 22    |
 
 To better organize the data, classify the `br-1905` entity and clarify what kind of temperature the device collects.
 

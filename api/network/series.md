@@ -109,7 +109,7 @@ series e:server001 m:cpu_used=72.0 m:memory_used=94.5 ms:1425482080000
 * Same as the above, using ISO8601 date.
 
 ```ls
-series e:server001 m:cpu_used=72.0 m:memory_used=94.5 d:2015-03-04T15:14:40Z
+series e:server001 m:cpu_used=72.0 m:memory_used=94.5 d:2018-03-04T15:14:40Z
 ```
 
 * Insert the numeric value `20.5` for the metric `disk_used_percent` from the entity `server001` and the two tags `mount_point` and `disk_name`. The value is inserted with the current server time since the date is not specified in the command.
