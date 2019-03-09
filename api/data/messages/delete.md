@@ -12,7 +12,7 @@ Instead the database automatically deletes expired messages records. The message
 
 The TTL interval is set with the `messages.timeToLive` setting on the [**Settings > Server Properties**](../../../administration/server-properties.md) page. The setting is specified in **seconds**. The default interval is `31536000` (`365 * 24 * 3600` = 1 year).
 
-To modify the TTL, open the **Settings > Configuration File** page or the the `/opt/atsd/atsd/conf/server.properties` file.
+To modify the TTL, open the **Settings > Configuration File** page or the `/opt/atsd/atsd/conf/server.properties` file.
 
 Calculate the new retention interval in seconds, for example 14 days is `14 * 24 * 3600 = 1209600`.
 

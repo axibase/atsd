@@ -39,7 +39,7 @@ getEntityCount('temperature', 'now - 1*DAY', 'now - 1*HOUR', '') > 0
 
 ## Custom Schedule
 
-To restrict the rule checks to specific times of the day, include [`now`](window-fields.md#date-fields) in the condition.
+To check the rule condition during specific times of the day, refer to the [`now`](window-fields.md#date-fields) field in the condition.
 
 [`now`](window-fields.md#date-fields) represents current server time as a [`DateTime`](object-datetime.md) object which provides access to calendar properties such as a hour of the day or day of week.
 

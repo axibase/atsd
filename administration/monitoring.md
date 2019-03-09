@@ -109,9 +109,9 @@ Replication metrics are incrementing integer counter which are reset on database
 |`disk_totalspace` |Total size of the file system where ATSD service is installed, in bytes.|
 |`disk_unallocatedspace` |Space available (free) on the file system where ATSD service is installed, in bytes.|
 |`disk_usablespace` |Space available (free) **to ATSD** on the file system where ATSD service is installed, in bytes.|
-|`disk_tmp_totalspace` |Total size of the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the the file system where ATSD service is installed.|
-|`disk_tmp_unallocatedspace` |Space available (free) on the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the the file system where ATSD service is installed.|
-|`disk_tmp_usablespace` |Space available (free) **to ATSD** on the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the the file system where ATSD service is installed.|
+|`disk_tmp_totalspace` |Total size of the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the file system where ATSD service is installed.|
+|`disk_tmp_unallocatedspace` |Space available (free) on the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the file system where ATSD service is installed.|
+|`disk_tmp_usablespace` |Space available (free) **to ATSD** on the `/tmp` file system, in bytes.<br>The metric is collected if `/tmp` file system is different from the file system where ATSD service is installed.|
 |`table_region_server_count` |Number of region servers assigned to process the given data table.|
 |`table_size` |Total size on disk for the given table, in megabytes.|
 

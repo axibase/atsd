@@ -53,7 +53,7 @@
 | 3874 | api-network | Bug | Data API: `series` command fails to overwrite value when inserted in batch with [append](../../api/network/series.md#text-append) option. |
 | [4454](#issue-4454) | api-rest | Feature | Standardize period alignment when period is measured in years. |
 | 4453 | security | Bug | User without necessary entity permissions can view series records on the Search tab. |
-| 4445 | message | Bug | Fixed a bug which caused [message retention](../../api/data/messages/delete.md#description) to not work. |
+| 4445 | message | Bug | Fixed a bug which caused [message retention](../../api/data/messages/delete.md) to not work. |
 | 4434 | security | Feature | Add option for administrators to impersonate another user account. The **Impersonate** button is available on the user settings page. |
 | 4424 | UI | Bug | Fix XML serialization in backup and export XML files if the database is using a file encoding other than UTF-8. |
 | 4407 | search | Bug | Fix a memory leak in HBase region servers during full search indexing. |

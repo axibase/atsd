@@ -178,7 +178,7 @@ Name | Description
 [`getEntity`](functions-lookup.md#getentity)| Retrieves an entity object by name.
 [`getEntityCount`](functions-lookup.md#getentitycount)| Returns a count of [Entity](entity-fields.md) **objects** matching the given parameters.
 [`getEntityName`](functions-lookup.md#getentityname)| Returns normalized (lowercase) entity name for the specified entity.
-[`lookup`](functions-lookup.md#lookup)| Returns the value for the the specified key from the Replacement Table.
+[`lookup`](functions-lookup.md#lookup)| Returns the value for the specified key from the Replacement Table.
 [`replacementTable`](functions-lookup.md#replacementtable)| Retrieves the Replacement Table as a key-value map.
 
 ## Date
@@ -192,7 +192,7 @@ Name | Description
 [`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
 [`formatInterval`](functions-date.md#formatinterval)| Converts milliseconds interval to a formatted interval.
 [`formatIntervalShort`](functions-date.md#formatintervalshort)| Converts milliseconds interval to a formatted interval consisting of up to the two highest subsequent non-zero time units.
-[`formatSecondOffset`](functions-date.md#formatsecondoffset)| Converts UTC offset in seconds to time zone pattern '±hh:mm'.
+[`formatSecondOffset`](functions-date.md#formatsecondoffset)| Converts UTC offset in seconds to time zone pattern `±hh:mm`.
 [`is_weekday`](object-datetime.md#is_weekday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekday.
 [`is_weekend`](object-datetime.md#is_weekend-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a weekend day.
 [`is_workday`](object-datetime.md#is_workday-function)|  Returns `true` if the [`DateTime`](object-datetime.md) object is a working day.

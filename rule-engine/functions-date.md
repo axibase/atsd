@@ -374,7 +374,7 @@ formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))
 formatSecondOffset(int interval) string
 ```
 
-Converts UTC offset in seconds to time zone pattern '±hh:mm'. The input seconds are negative for time zones ahead of UTC, such as `Europe/Vienna`.
+Converts UTC offset in seconds to time zone pattern `±hh:mm`. The input seconds are negative for time zones ahead of UTC, such as `Europe/Vienna`.
 
 Examples:
 
