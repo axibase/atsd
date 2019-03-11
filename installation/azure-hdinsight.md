@@ -51,7 +51,7 @@ The document describes how to deploy ATSD on [Azure HDInsight](https://docs.micr
 * Connect to the ATSD VM via SSH.
 
   ```bash
-  ssh axibase@atsd_vm_hostname
+  ssh axibase@atsd_hostname
   ```
 
 * Download ATSD distribution files to the ATSD VM.
@@ -66,21 +66,21 @@ The document describes how to deploy ATSD on [Azure HDInsight](https://docs.micr
   tar xzvf atsd-cluster.tar.gz -C .
   ```
 
-* Lookup the hostname or IP address of an active HDInsight node on the cluster summary page.
+* Lookup the hostname or IP address of an active HDInsight node on the cluster Overview page, for example `192.0.2.1`.
+
+  ![](./images/atsd_public_ip_address.png)
 
 * Copy coprocessor file `atsd-hbase.$REVISION.jar` from the ATSD VM to the cluster VM via SCP.
 
   ```bash
-  scp ./atsd/atsd-hbase.*.jar axibase@cluster_hostname:/home/axibase/atsd-hbase.jar
+  scp ./atsd/atsd-hbase.*.jar axibase@192.0.2.1:/home/axibase/atsd-hbase.jar
   ```
 
-* Connect to the cluster via SSH from the ATSD VM. The cluster's IP address is accessible on the Overview page.
+* Connect to the cluster via SSH from the ATSD VM.
 
   ```bash
-  ssh axibase@cluster_ip_address
+  ssh axibase@192.0.2.1
   ```
-
-  ![](./images/atsd_public_ip_address.png)
 
 * Copy `atsd-hbase.$REVISION.jar` file into the `/hbase/lib/` directory in HDFS.
 
@@ -173,7 +173,7 @@ The document describes how to deploy ATSD on [Azure HDInsight](https://docs.micr
   ```
 
   ```bash
-  64 bytes from zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net (10.0.0.11): icmp_seq=1 ttl=64 time=0.763 ms
+  64 bytes from zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net (192.0.2.1): icmp_seq=1 ttl=64 time=0.763 ms
   ```
 
 * Open `./atsd/atsd/conf/hadoop.properties` file and set the properties to the values retrieved from the cluster.
