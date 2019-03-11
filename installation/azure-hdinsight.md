@@ -25,7 +25,7 @@ The document describes how to deploy ATSD on [Azure HDInsight](https://docs.micr
 * Open the **Home > Virtual Machines** page in the Azure portal.
 * Click **Add** button to create a Linux VM.
 * Select `Ubuntu 16.04` or another [supported](requirements.md#operating-systems) Linux distribution in the **Image** field.
-* Select a VM type with with `16+` gigabytes of [memory](requirements.md) in the **Size** field. `8` GB is sufficient for a test installation.
+* Select a VM type with `16+` gigabytes of [memory](requirements.md) in the **Size** field. `8` GB is sufficient for a test installation.
 
   ![](./images/atsd_vm_creation.png)
 
