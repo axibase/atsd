@@ -67,7 +67,7 @@ Refresh the **Open Alerts** page to verify that the alert for `temperature-too-h
 
 To receive alert notifications via email, configure the [Mail Client](../administration/mail-client.md) on **Settings > Mail Client** page.
 
-Open the **Alerts > Rule** page and re-open the `temperature-too-high` rule created previously.
+Open the **Alerts > Rules** page and re-open the `temperature-too-high` rule created previously.
 
 Enable [alerts](../rule-engine/email.md) on the **Email Notifications** tab as illustrated below.
 

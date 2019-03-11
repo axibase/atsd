@@ -99,7 +99,7 @@ When sending messages to either a public or private channel you can just use the
 
 ## Configure Webhook in ATSD
 
-* Open the **Alerts > Webhooks** page.
+* Open the **Alerts > Outgoing Webhooks** page.
 * Click an existing `SLACK` template, or click **Create** below and select the `SLACK` type.
 * Specify the unique **Name** of the notification.
 
