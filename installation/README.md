@@ -56,7 +56,7 @@ You can request a new license on the **Settings > License** page.
 
 ## AWS Elastic MapReduce (EMR)
 
-![](../images/aws-logo.png) ![](../images/emrfs-2.png)
+![](./images/aws-logo.png) ![](../images/emrfs-2.png)
 
 * **Mode**: Distributed
 * **File System**: AWS EMRFS / S3
@@ -68,10 +68,10 @@ You can request a new license on the **Settings > License** page.
 
 ## Azure HDInsight
 
-![](../images/azure.png) ![](../images/emrfs-2.png)
+![](./images/azure-logo.png)
 
 * **Mode**: Distributed
-* **File System**: Azure
+* **File System**: Azure Storage
 * **Edition**: Enterprise
 
 [![](../images/install.png)](./azure-hdinsight.md)

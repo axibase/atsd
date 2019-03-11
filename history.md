@@ -30,26 +30,27 @@ We have over a decade of experience in infrastructure management systems, big da
 
 ### 2016
 
-* **Q1**: Official [Docker Images](https://axibase.com/docs/atsd/installation/docker.html)
-* **Q2**: [SQL](https://axibase.com/docs/atsd/sql/sql-console.html) for data retrieval operations.
+* **Q1**: Official [Docker Images](./installation/docker.md)
+* **Q2**: [SQL](./sql/sql-console.md) for data retrieval operations.
 
 ### 2017
 
-* **Q1**: Native [compaction](https://axibase.com/docs/atsd/administration/compaction.html).
-* **Q2**: [Amazon Elastic MapReduce (EMR)](https://axibase.com/docs/atsd/installation/aws-emr-s3.html) integration.
-* **Q3**: Support for [Outgoing Webhooks](https://axibase.com/docs/atsd/rule-engine/notifications/) using [Rule Engine](https://axibase.com/docs/atsd/rule-engine/).
-* **Q4**: Support for [Incoming Webhooks](https://axibase.com/docs/atsd/rule-engine/incoming-webhooks.html).
+* **Q1**: Native [compaction](./administration/compaction.md).
+* **Q2**: [Amazon Elastic MapReduce (EMR)](./installation/aws-emr-s3.md) integration.
+* **Q3**: Support for [Outgoing Webhooks](./rule-engine/notifications/README.md) using [Rule Engine](./rule-engine/README.md).
+* **Q4**: Support for [Incoming Webhooks](./rule-engine/incoming-webhooks.md).
 
 ### 2018
 
 * **Q1**: [ATSD Sandbox](https://github.com/axibase/dockers/tree/atsd-sandbox#atsd-sandbox-docker-image).
 * **Q3**: Customizable transformation [pipeline](./api/data/series/query.md#transformations) in REST API Series Query.
-* **Q4**: Forecast algorithms based on Principal Component Analysis models.
+* **Q4**: Forecasting algorithms based on Principal Component Analysis (PCA).
 
 ### 2019
 
 * **Q1**: [ATSD ODBC driver](https://github.com/axibase/atsd-odbc).
-* **Q1**: Interval data record for process analysis.
+* **Q1**: Interval data type for process analysis.
+* **Q2**: [Azure HDInsight](./installation/azure-hdinsight.md) integration.
 
 ## Change Log
 
