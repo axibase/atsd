@@ -50,35 +50,37 @@ The document describes how to deploy ATSD on [Azure HDInsight](https://docs.micr
 
 * Connect to the ATSD VM via SSH.
 
-```bash
-ssh axibase@atsd_vm_hostname
-```
+  ```bash
+  ssh axibase@atsd_vm_hostname
+  ```
 
 * Download ATSD distribution files to the ATSD VM.
 
-```bash
-curl -O https://axibase.com/public/atsd-cluster.tar.gz
-```
+  ```bash
+  curl -O https://axibase.com/public/atsd-cluster.tar.gz
+  ```
 
 * Extract the archive.
 
-```bash
-tar xzvf atsd-cluster.tar.gz -C .
-```
+  ```bash
+  tar xzvf atsd-cluster.tar.gz -C .
+  ```
 
 * Lookup the hostname or IP address of an active HDInsight node on the cluster summary page.
 
 * Copy coprocessor file `atsd-hbase.$REVISION.jar` from the ATSD VM to the cluster VM via SCP.
 
-```bash
-scp ./atsd/atsd-hbase.*.jar axibase@cluster_hostname:/home/axibase/atsd-hbase.jar
-```
+  ```bash
+  scp ./atsd/atsd-hbase.*.jar axibase@cluster_hostname:/home/axibase/atsd-hbase.jar
+  ```
 
-* Connect to the cluster via SSH from the ATSD VM.
+* Connect to the cluster via SSH from the ATSD VM. The cluster's IP address is accessible on the Overview page.
 
-```bash
-ssh axibase@cluster_hostname
-```
+  ```bash
+  ssh axibase@cluster_ip_address
+  ```
+
+  ![](./images/atsd_public_ip_address.png)
 
 * Copy `atsd-hbase.$REVISION.jar` file into the `/hbase/lib/` directory in HDFS.
 
@@ -133,20 +135,20 @@ ssh axibase@cluster_hostname
 
 * Verify that HBase is available:
 
-```bash
-echo "status" | hbase shell
-```
+  ```bash
+  echo "status" | hbase shell
+  ```
 
-The sample output is presented below. Check that the count of dead servers is zero.
+  The sample output is presented below. Check that the count of dead servers is zero.
 
-```txt
-HBase Shell; enter 'help<RETURN>' for list of supported commands.
-Type "exit<RETURN>" to leave the HBase Shell
-Version 1.1.2.2.6.5.3006-29, r1c7fdea305d6153591b318f14cabdb37ef2eb152, Fri Feb  1 02:51:33 UTC 2019
+  ```txt
+  HBase Shell; enter 'help<RETURN>' for list of supported commands.
+  Type "exit<RETURN>" to leave the HBase Shell
+  Version 1.1.2.2.6.5.3006-29, r1c7fdea305d6153591b318f14cabdb37ef2eb152, Fri Feb  1 02:51:33 UTC 2019
 
-status
-1 active master, 2 backup masters, 2 servers, 0 dead, 22.5000 average load
-```
+  status
+  1 active master, 2 backup masters, 2 servers, 0 dead, 22.5000 average load
+  ```
 
 * Exit the SSH session with the cluster VM.
 
@@ -176,52 +178,52 @@ status
 
 * Open `./atsd/atsd/conf/hadoop.properties` file and set the properties to the values retrieved from the cluster.
 
-```properties
-zookeeper.znode.parent=/hbase-unsecure
-hbase.zookeeper.quorum = zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk0-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk6-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net
-```
+  ```properties
+  zookeeper.znode.parent=/hbase-unsecure
+  hbase.zookeeper.quorum = zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk0-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk6-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net
+  ```
 
 * Open `./atsd/atsd/conf/server.properties` and add `coprocessors.jar` setting.
 
-```properties
-coprocessors.jar=wasb:///hbase/lib/atsd-hbase.jar
-```
+  ```properties
+  coprocessors.jar=wasb:///hbase/lib/atsd-hbase.jar
+  ```
 
 * Increase Java memory allocation. Open `atsd/atsd/conf/atsd-env.sh` file and increase `-Xmx` setting to 50% of total physical memory installed in the VM.
 
-```txt
-JAVA_OPTS="-server -Xmx8000M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
-```
+  ```txt
+  JAVA_OPTS="-server -Xmx8000M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
+  ```
 
 * Start ATSD
 
-```bash
-./atsd/atsd/bin/start-atsd.sh
-```
+  ```bash
+  ./atsd/atsd/bin/start-atsd.sh
+  ```
 
 * Watch the `atsd.log`.
 
-```bash
-tail -F -n 100 ./atsd/atsd/logs/atsd.log
-```
+  ```bash
+  tail -F -n 100 ./atsd/atsd/logs/atsd.log
+  ```
 
-It can take ATSD several minutes to create tables after initializing the system.
+  It can take ATSD several minutes to create tables after initializing the system.
 
-```txt
-...
-2018-08-31 22:10:37,890;INFO;main;org.springframework.web.servlet.DispatcherServlet;FrameworkServlet 'dispatcher': initialization completed in 3271 ms
-...
-2019-03-11 12:10:37,927;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SelectChannelConnector@0.0.0.0:8088
-2019-03-11 12:10:37,947;INFO;main;org.eclipse.jetty.util.ssl.SslContextFactory;Enabled Protocols [TLSv1, TLSv1.1, TLSv1.2] of [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2]
-2019-03-11 12:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:8443
-```
+  ```txt
+  ...
+  2018-08-31 22:10:37,890;INFO;main;org.springframework.web.servlet.DispatcherServlet;FrameworkServlet 'dispatcher': initialization completed in 3271 ms
+  ...
+  2019-03-11 12:10:37,927;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SelectChannelConnector@0.0.0.0:8088
+  2019-03-11 12:10:37,947;INFO;main;org.eclipse.jetty.util.ssl.SslContextFactory;Enabled Protocols [TLSv1, TLSv1.1, TLSv1.2] of [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2]
+  2019-03-11 12:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:8443
+  ```
 
 * Log in to ATSD web interface on the HTTPS port.
 
-```bash
-https://atsd_hostname_:8443
-```
+  ```bash
+  https://atsd_hostname_:8443
+  ```
 
 * Open the **Settings > System Information** page and verify that the co-processor file is compatible with the ATSD version.
 
-![](./images/coprocessor-check.png)
+  ![](./images/coprocessor-check.png)
