@@ -2,177 +2,226 @@
 
 ## Overview
 
-The document describes how to deploy ATSD on  [Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/) cluster
+The document describes how to deploy ATSD on [Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/), a fully managed HBase cluster service available on the Microsoft Azure cloud platform.
+
+## Requirements
+
+* Azure HDInsight, version `3.6`.
 
 ## Create HDInsight Cluster
 
-* Create [Apache HBase cluster on HDInsight in Azure Virtual Network](https://docs.microsoft.com/en-us/azure/hdinsight/hbase/apache-hbase-provision-vnet).  The cluster named `axibase-cluster` in the example below.
+* Create an HDInsight cluster in the [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/hdinsight/hbase/apache-hbase-provision-vnet).
+
   ![](./images/hdinsight_cluster_create.png)
 
-* To ensure that Hbase version is `1.1.2` click the **Edit Template** button and verify that `clusterversion` set to version `3.6`.
+* Specify `axibase` in the **SSH User Name** field.
+
+* Click the **Edit Template** button. Ensure that `clusterVersion` is set to `3.6`.
 
   ![](./images/hdi_version.png)
 
 ## Create ATSD VM
 
-* Go to **Home > Virtual Machines**. Click **Add** button to create a Linux VM.
+* Open the **Home > Virtual Machines** page in the Azure portal.
+* Click **Add** button to create a Linux VM.
+* Select `Ubuntu 16.04` or another [supported](requirements.md#operating-systems) Linux distribution in the **Image** field.
+* Select a VM type with with `16+` gigabytes of [memory](requirements.md) in the **Size** field. `8` GB is sufficient for a test installation.
 
- ![](./images/atsd_vm_creation.png)
+  ![](./images/atsd_vm_creation.png)
 
-* Go to **Networking** tab abd place VM in the same Virtual Network with cluster. It's required that VM has the same location as network.
+* Open the **Networking** tab and place the VM in the **same** virtual network as the HDInsight cluster created earlier.
 
- ![](./images/atsd_vm_vnettpng)
+  ![](./images/atsd_vm_vnet.png)
 
-* Ensure that ssh port is open.
+* Ensure that SSH port to the ATSD VM is open.
 
-![](./images/atsd_vm_ssh.png)
+  ![](./images/atsd_vm_ssh.png)
 
-* Click **Review + Create** button and check all preferences once again.
+* Click **Review + Create** button and check the settings.
 
-![](./images/atsd_vm_summary.png)
+  ![](./images/atsd_vm_summary.png)
 
-* After creation, navigate to the VM. Go to **Networking** page and **Add inbound port rule** and open ATSD network ports to make the ATSD available by public IP address.
+* Once the VM is created, open the VM resource page.
+* Open the **Networking** page and click **Add inbound port rule** for ports `8081,8088,8443` to ensure that ATSD is reachable on these ports. The ports can be [modified](../administration/server-properties.md#networking) if necessary.
 
-![](./images/atsd_vm_ports.png)
+  ![](./images/atsd_vm_ports.png)
 
-> In the next commands `clusterhost` is used for connection to active namenode of HDInsight cluster and `atsdhost` is for VM where ATSD is installing. Both hostname can be replaced with `Public Ip address` that can be found on the Overview page of the cluster and VM as well. SSH user for both hosts is `axibase`.
+## Configure Cluster
 
-## Install ATSD
-
-* Connect with VM by ssh
+* Connect to the ATSD VM via SSH.
 
 ```bash
-ssh axibase@atsdhost
+ssh axibase@atsd_vm_hostname
 ```
 
-* Install [Java 8](https://axibase.com/docs/atsd/administration/migration/install-java-8.html) on your VM.
-
-### Download Distribution Files
-
-* Download cluster version of atsd.
+* Download ATSD distribution files to the ATSD VM.
 
 ```bash
 curl -O https://axibase.com/public/atsd-cluster.tar.gz
 ```
 
-* Extract archive.
+* Extract the archive.
 
 ```bash
 tar xzvf atsd-cluster.tar.gz -C .
 ```
 
-### Deploy Co-processor
+* Lookup the hostname or IP address of an active HDInsight node on the cluster summary page.
 
-:::tip Co-processors
-The `atsd-hbase.$REVISION.jar` file contains ATSD filters and procedures invoked by ATSD on each node in the HBase cluster for optimized data processing.
-:::
-
-* Copy coprocessors to cluster via scp.
+* Copy coprocessor file `atsd-hbase.$REVISION.jar` from the ATSD VM to the cluster VM via SCP.
 
 ```bash
-scp ./atsd/atsd-hbase.*.jar axibase@clusterhost:/home/axibase/atsd-hbase.jar
+scp ./atsd/atsd-hbase.*.jar axibase@cluster_hostname:/home/axibase/atsd-hbase.jar
 ```
 
-* Connect to cluster by ssh
+* Connect to the cluster via SSH from the ATSD VM.
 
 ```bash
-ssh axibase@clusterhost
+ssh axibase@cluster_hostname
 ```
 
-* Put co-processors to `hbase.dynamic.jars.dir` distributed directory which is `/hbase/lib/` by default.
+* Copy `atsd-hbase.$REVISION.jar` file into the `/hbase/lib/` directory in HDFS.
 
-  * The directory does not exist by default, hence it must be created.
+  * Create the `/hbase/lib/` directory in HDFS.
 
   ```bash
   hdfs dfs -mkdir /hbase/lib
   ```
 
-  * Copy coprocessors from the local filesystem to distributed filesystem directory.
+  * Copy `atsd-hbase.$REVISION.jar` from the local file system to HDFS.
 
   ```bash
   hdfs dfs -put atsd-hbase.jar /hbase/lib
   ```
 
-  * Ensure that file has been copied.
+  * Check that the file is present in HDFS.
 
     ```bash
     hdfs dfs -ls /hbase/lib/
     ```
 
-    The output must like the following:
-
-    ```bash
+    ```txt
       Found 1 items
       -rw-r--r--   1 axibase supergroup     668613 2019-03-11 09:00   /hbase/lib/atsd-hbase.jar
     ```
 
-## Set up ATSD
+* Retrieve `hbase.zookeeper.quorum` setting from `hbase-site.xml` configuration file. This setting is required for subsequent ATSD setup.
 
-For following set up  get `hbase.zookeeper.quorum` and `zookeeper.znode.parent` from `hbase-site.xml` configuration file. You c or by searching the settings using `grep` utility or  find it in Amabari UI available on `clusterhost` on HTTP port on the **Hbase>Configs>Advanced hbase-site**.
+  ```bash
+  cat /etc/hbase/conf/hbase-site.xml | grep hbase.zookeeper.quorum -A1
+  ```
 
-![](./images/ambari_ui_hbase_site.png)
+  ```xml
+  <name>hbase.zookeeper.quorum</name>
+  <value>
+    zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,
+    zk0-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,
+    zk6-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net
+  </value>
+  ```
 
-```bash
-cat /etc/hbase/conf/hbase-site.xml | grep hbase.zookeeper.quorum -A1
-```
+* Retrieve `zookeeper.znode.parent` setting from `hbase-site.xml` configuration file. This setting is also required for subsequent ATSD setup.
 
-The output must like this:
+  ```bash
+  cat /etc/hbase/conf/hbase-site.xml | grep zookeeper.znode.parent -A1
+  ```
 
-```xml
-<name>hbase.zookeeper.quorum</name>
-<value>zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk0-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk6-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net</value>
+  ```xml
+  <name>zookeeper.znode.parent</name>
+  <value>/hbase-unsecure</value>
+  ```
 
-```
-
-* Save the value to the file.
-
-* Repeat the operation for `zookeeper.znode.parent` setting.
-
-```bash
-cat /etc/hbase/conf/hbase-site.xml | grep zookeeper.znode.parent -A1
-```
-
-* Log back to ATSD VM.
-
-* Verify that zookeper hosts available from your VM
+* Verify that HBase is available:
 
 ```bash
-ping zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net
+echo "status" | hbase shell
 ```
 
-The output must like this
+The sample output is presented below. Check that the count of dead servers is zero.
 
-```bash
+```txt
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 1.1.2.2.6.5.3006-29, r1c7fdea305d6153591b318f14cabdb37ef2eb152, Fri Feb  1 02:51:33 UTC 2019
+
+status
+1 active master, 2 backup masters, 2 servers, 0 dead, 22.5000 average load
+```
+
+* Exit the SSH session with the cluster VM.
+
+## Install ATSD
+
+* Install [JDK 8](../administration/migration/install-java-8.md) on the ATSD VM.
+
+* Verify that JDK 8 is installed on the server.
+
+  ```bash
+  javac -version
+  ```
+
+  ```bash
+  java version
+  ```
+
+* Check that one of Zookeeper hosts listed in the `hbase.zookeeper.quorum` is accessible.
+
+  ```bash
+  ping zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net
+  ```
+
+  ```bash
   64 bytes from zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net (10.0.0.11): icmp_seq=1 ttl=64 time=0.763 ms
-```
+  ```
 
-* Open `./atsd/atsd/conf/hadoop.properties` file and  set the properties to retrieved values.
+* Open `./atsd/atsd/conf/hadoop.properties` file and set the properties to the values retrieved from the cluster.
 
 ```properties
-hbase.zookeeper.quorum = zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk0-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk6-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net
 zookeeper.znode.parent=/hbase-unsecure
+hbase.zookeeper.quorum = zk2-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk0-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net,zk6-axibas.pcilr0ohf5bu3fprrcr3ndmx1d.cx.internal.cloudapp.net
 ```
 
-* Open `./atsd/atsd/conf/server.properties` and set `coprocessors.jar` to `wasb:///hbase/lib/atsd-hbase.jar` value.
+* Open `./atsd/atsd/conf/server.properties` and add `coprocessors.jar` setting.
 
 ```properties
 coprocessors.jar=wasb:///hbase/lib/atsd-hbase.jar
 ```
 
-* Start atsd
+* Increase Java memory allocation. Open `atsd/atsd/conf/atsd-env.sh` file and increase `-Xmx` setting to 50% of total physical memory installed in the VM.
+
+```txt
+JAVA_OPTS="-server -Xmx8000M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
+```
+
+* Start ATSD
 
 ```bash
 ./atsd/atsd/bin/start-atsd.sh
 ```
 
-* Ensure that atsd has been started. The message `ATSD Server started` must appear in the log within several minutes.
+* Watch the `atsd.log`.
 
 ```bash
-tail -f -n 100 ./atsd/atsd/logs/atsd.log
+tail -F -n 100 ./atsd/atsd/logs/atsd.log
 ```
 
-* Log in in ATSD UI using open ports
+It can take ATSD several minutes to create tables after initializing the system.
+
+```txt
+...
+2018-08-31 22:10:37,890;INFO;main;org.springframework.web.servlet.DispatcherServlet;FrameworkServlet 'dispatcher': initialization completed in 3271 ms
+...
+2019-03-11 12:10:37,927;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SelectChannelConnector@0.0.0.0:8088
+2019-03-11 12:10:37,947;INFO;main;org.eclipse.jetty.util.ssl.SslContextFactory;Enabled Protocols [TLSv1, TLSv1.1, TLSv1.2] of [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2]
+2019-03-11 12:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:8443
+```
+
+* Log in to ATSD web interface on the HTTPS port.
 
 ```bash
-https://atsdhost:8443
+https://atsd_hostname_:8443
 ```
+
+* Open the **Settings > System Information** page and verify that the co-processor file is compatible with the ATSD version.
+
+![](./images/coprocessor-check.png)
