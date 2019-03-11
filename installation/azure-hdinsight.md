@@ -42,7 +42,7 @@ The document describes how to deploy ATSD on [Azure HDInsight](https://docs.micr
   ![](./images/atsd_vm_summary.png)
 
 * Once the VM is created, open the VM resource page.
-* Open the **Networking** page and click **Add inbound port rule** for ports `8081,8088,8443` to ensure that ATSD is reachable on these ports. The ports can be [modified](../administration/server-properties.md#networking) if necessary.
+* Open the **Networking** page and click **Add inbound port rule** for ports `8081,8088,8443` to ensure that ATSD is reachable on these ports. The ports can be [modified](../administration/server-properties.md#network) if necessary.
 
   ![](./images/atsd_vm_ports.png)
 
