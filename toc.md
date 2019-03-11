@@ -79,10 +79,11 @@
   * [SUSE Linux Enterprise Server (rpm)](installation/sles-rpm.md)
   * [Docker (image)](installation/docker.md)
   * [Other](installation/other-distributions.md)
-* Cluster Distributions
-  * [Cloudera Hadoop Distribution (CDH)](installation/cloudera.md)
 * Cloud Services
   * [AWS EMR](installation/aws-emr-s3.md)
+  * [Azure HDInsight](installation/azure-hdinsight.md)
+* Cluster Distributions
+  * [Cloudera Hadoop Distribution (CDH)](installation/cloudera.md)
 * [Uninstalling](installation/uninstalling.md)
 * [Updating](administration/update.md)
 

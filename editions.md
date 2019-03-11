@@ -27,8 +27,9 @@ Enterprise Edition supports a scale-out deployment model.
 | [Versioning](./versioning/README.md) |  | ![](./images/ok.svg) |
 | [Cluster replication](./administration/hbase-replication.md) |  | ![](./images/ok.svg) |
 | [Command replication](./administration/command-replication.md) |  | ![](./images/ok.svg) |
-| [Cloudera DH Deployment](./installation/cloudera.md) |  | ![](./images/ok.svg) |
 | [AWS EMR Deployment](./installation/aws-emr-s3.md) |  | ![](./images/ok.svg) |
+| [Azure HDInsight Deployment](./installation/azure-hdinsight.md) |  | ![](./images/ok.svg) |
+| [Cloudera DH Deployment](./installation/cloudera.md) |  | ![](./images/ok.svg) |
 
 ## Tools
 
@@ -36,8 +37,9 @@ Enterprise Edition supports a scale-out deployment model.
 |---|:---:|:---:|
 | [Axibase Collector](https://axibase.com/docs/axibase-collector/) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [JDBC driver](https://github.com/axibase/atsd-jdbc) | ![](./images/ok.svg) | ![](./images/ok.svg) |
+| [ODBC driver](https://github.com/axibase/atsd-odbc) | ![](./images/ok.svg) | ![](./images/ok.svg) |
 | [API Clients](api/clients/README.md) | ![](./images/ok.svg) | ![](./images/ok.svg) |
-| [Data Applications](https://apps.axibase.com/) |  | ![](./images/ok.svg) |
+| [Data Apps](https://apps.axibase.com/) |  | ![](./images/ok.svg) |
 | [ChartLab](https://apps.axibase.com/chartlab/) |  | ![](./images/ok.svg) |
 
 ## Pricing
