@@ -74,7 +74,7 @@ Logging settings are controlled with `maxFileSize`, `maxHistory`, and `totalSize
 
 ### Maximum File Size
 
-The setting specifies the maximum size of the main log file before the file is rolled over and compressed. The archive name contains the date when it was created and an index within that day. The index starts at `0` for the first archive within the daily period. Supported size units: `MB` and `GB`.
+The setting specifies the maximum size of the main log file before the file is rolled over and compressed. The archive name contains the creation date and an index within that date. The index starts at `0` for the first archive within the daily period. Supported size units: `MB` and `GB`.
 
 ```xml
 <maxFileSize>100MB</maxFileSize>

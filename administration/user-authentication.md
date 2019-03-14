@@ -38,14 +38,14 @@ curl https://atsd_hostname:8443/api/v1/series/query \
   -d '[{"metric":"mpstat.cpu_busy", "entity":"nurswgvml007", "startDate":"previous_day", "endDate": "now"}]' > response.json
 ```
 
-Requests authenticated with **Basic Authentication** are subject to the permission checks as the underlying user account.
+Requests authenticated with **Basic Authentication** are subject to the same permission checks as the underlying user account.
 
 ### Token Authentication
 
 An HTTP request to a specific API URL starting with `/api/` can be authenticated by providing a valid API token in the request. The token must be included in the `Authorization` header with type `Bearer`.
 
 ```sh
-  --header "Authorization: Bearer <API-TOKEN>"
+--header "Authorization: Bearer <API-TOKEN>"
 ```
 
 Unlike in **Basic Authentication**, the API token enables access only to a **specific** URL, containing the path and optional query parameters, and a **specific** HTTP method that are fixed at the time the token is created.
@@ -66,7 +66,7 @@ curl https://atsd_hostname:8443/api/v1/csv?config=base-parser \
 
 IP address restrictions set for the token, override any IP address restrictions set for the underlying user account.
 
-Requests authenticated with **Token Authentication** are subject to the permission checks as the underlying user account.
+Requests authenticated with **Token Authentication** are subject to the same permission checks as the underlying user account.
 
 ## User Account Types
 

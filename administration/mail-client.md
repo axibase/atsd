@@ -43,7 +43,7 @@ The example below provides information on how to send emails via the [GMail SMTP
 
 ![](./images/mail-client-gmail.png)
 
-To [enable access](https://support.google.com/mail/answer/7126229?p=BadCredentials) from 'less secure apps', configure your account as follows:
+To [enable access](https://support.google.com/mail/answer/7126229?p=BadCredentials) from `less secure apps`, configure your account as follows:
 
 ![](./images/google-smtp.png)
 
