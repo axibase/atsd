@@ -62,6 +62,10 @@ The default logger named `atsd.alert.default` is available even if undefined in 
 </logger>
 ```
 
+:::warning Warning
+The maximum value supported by `FixedWindowRollingPolicy` for `maxIndex` is `20`.
+:::
+
 ## Custom File Logger
 
 Custom logger names must begin with `atsd.alert.` and have a unique file name and a roll-over pattern. Similarly, custom loggers must specify unique appender names.

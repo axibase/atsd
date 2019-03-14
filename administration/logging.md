@@ -25,7 +25,7 @@ Logs are rolled over and archived according to the retention settings in the `/o
 ## HBase Log Files
 
 :::tip Note
-**HBase Log Files** section is visible in single-node ATSD installations.
+**HBase Log Files** section is visible in non-distributed installations where ATSD is co-located with HBase.
 :::
 
 |**Log Name**|**Description**|
@@ -39,7 +39,7 @@ Logs are rolled over and archived according to the retention settings in the `/o
 ## HDFS Log Files
 
 :::tip Note
-**HDFS Log Files** section is visible in single-node ATSD installations running in pseudo-distributed mode.
+**HDFS Log Files** section is visible in non-distributed installations where ATSD is co-located with HDFS.
 :::
 
 |**Log Name**|**Description**|
@@ -58,8 +58,12 @@ Logs are rolled over and archived according to the retention settings in the `/o
 To increase the number of files stored by a given logger, increase the value in the `maxIndex` tag.
 
 ```xml
-<maxIndex>20</maxIndex>
+<maxIndex>10</maxIndex>
 ```
+
+:::warning Warning
+The maximum value supported by `FixedWindowRollingPolicy` for `maxIndex` is `20`.
+:::
 
 ### File Size
 
@@ -126,6 +130,10 @@ The data command is printed out in the [Network API](../api/network/README.md) s
 
 The retention settings for received commands can be modified by increasing the `maxIndex` or `maxFileSize` tags in the `logback.xml` file.
 
+:::warning Warning
+The maximum value supported by `FixedWindowRollingPolicy` for `maxIndex` is `20`.
+:::
+
 ```xml
 <!-- command.log -->
 <appender name="commandsLogRoller" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -134,7 +142,7 @@ The retention settings for received commands can be modified by increasing the `
     <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
         <fileNamePattern>../logs/command.%i.log.zip</fileNamePattern>
         <minIndex>1</minIndex>
-        <maxIndex>20</maxIndex>
+        <maxIndex>10</maxIndex>
     </rollingPolicy>
 
     <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
