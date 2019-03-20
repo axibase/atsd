@@ -47,10 +47,28 @@ Connection to atsd_hostname 8081 port [tcp/tproxy] succeeded!
 
 ## Review Logs
 
-Review the following log files for errors:
+Review the following log files for errors.
 
 * Startup log: `/opt/atsd/atsd/logs/start.log`
 * Application log: `/opt/atsd/atsd/logs/atsd.log`
+
+```sh
+tail -n 200 -f /opt/atsd/atsd/logs/atsd.log
+```
+
+If ATSD is launched in a Docker container, run:
+
+```bash
+docker exec -it atsd tail -f /opt/atsd/atsd/logs/atsd.log
+```
+
+To view ATSD, HBase, and HDFS files in the same stream, enumerate the paths.
+
+```sh
+tail -F /opt/atsd/atsd/logs/atsd.log \
+  /opt/atsd/hbase/logs/* \
+  /opt/atsd/hadoop/logs/*
+```
 
 ## 32-bit Error
 

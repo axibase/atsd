@@ -42,6 +42,8 @@ If no arguments are required, invoke the script without arguments or by passing 
 scriptOut('check_service.sh')
 ```
 
+The script must execute within a [timeout](scripts.md#timeout).
+
 ## Variables
 
 As an alternative to passing arguments, the script can access window fields and user-defined variables as [environment variables](scripts.md#environment-variables).

@@ -148,6 +148,12 @@ docker exec atsd /opt/atsd/bin/atsd-all.sh start
 
 ## Troubleshooting
 
+* Check application logs.
+
+```bash
+docker exec -it atsd tail -f /opt/atsd/atsd/logs/atsd.log
+```
+
 * Review [Troubleshooting Guide](troubleshooting.md).
 
 ## Validation
