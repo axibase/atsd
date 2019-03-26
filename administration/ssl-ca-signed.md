@@ -28,10 +28,12 @@ If the certificate files are in `PEM` format, upload them to ATSD using `curl`.
 
 Alternatively, create a PKCS12 keystore as described [below](#deploy-keystore-file).
 
-Replace `{USR}` with the username, `{PWD}` with the password and `{HOST}` with the hostname or IP address of the target ATSD server in the command below.
+Replace `atsd.example.org` with the DNS name or IP address of the ATSD server and update the [API token](./user-authentication.md#token-authentication) value.
 
 ```sh
-sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
+sudo curl https://atsd.example.org:8443/api/certificates/import/atsd \
+  --insecure \
+  --header "Authorization: Bearer ubFPnLvPJK3vOOlAjvQVtdkMkY1gfRscSi9k" \
   -F "privkey=@atsd.company.com.key" \
   -F "fullchain=@atsd.company.com.fullchain" \
   -w "\n%{http_code}\n"

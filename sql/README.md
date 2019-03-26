@@ -664,11 +664,11 @@ Columns referenced in the `SELECT` expression must be included in the `GROUP BY`
 
 ## Identifiers
 
-Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#reserved-words), a function name, or a special character including space, `.`, `+`, `-`, `*`, `/`, `,`, `"`, `'`.
+Use **double quotation marks** to enquote a table name, column name, tag name or an alias if it contains a reserved column name, a [keyword](#reserved-words), a function name, or a special character including space, `.`, `+`, `-`, `*`, `/`, `,`, `"`, `'`.
 
 ```sql
 -- Special character
-SELECT entity.tags."file-system" FROM "disk.io"
+SELECT entity.tags."file-system" FROM "disk.io" WHERE tags."disk.name"
 
 -- Reserved column name
 SELECT value*5 AS "value"

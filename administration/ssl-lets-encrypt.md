@@ -152,48 +152,54 @@ $ sudo ls /etc/letsencrypt/live/atsd.example.org
 cert.pem  chain.pem  fullchain.pem  privkey.pem  README
 ```
 
-### Create ATSD User
+### Create API Token
 
-The user account is required to upload certificates into ATSD, both during the initial installation and as part of subsequent renewals.
+Log in to the ATSD as an administrator.
 
-Log in to ATSD web interface.
+Click on user icon in the top right corner.
 
-Open the **Settings > Users** page and click **Create**.
+Click **API Tokens**.
 
-* Specify `certbot` as the username (or a username of your choice).
-* Assign Role `USER` to the user.
-* Do not grant user any group membership.
-* Add IP address of the certbot server, for example `192.0.2.1`, to the list **Allowed IPs**.
+![](./images/lets-encrypt-api-token.png)
 
-![certbot upload](./images/certbot-user.png)
+Click **Issue Token**, select `POST` method and enter the following URL to sign. 
+
+```txt
+/api/certificates/import/atsd
+```
+
+Add IP address of the certbot server, for example `192.0.2.1`, to the list **Allowed IPs**.
+
+![](./images/lets-encrypt-issue-token.png)
+
+Copy the sample `curl` command displayed on the token details page for your reference.
+
+```bash
+curl --request POST "https://atsd.example.org:8443/api/certificates/import/atsd" \
+ --insecure --header "Authorization: Bearer ubFPnLvPJK3vOOlAjvQVtdkMkY1gfRscSi9k"
+```
 
 ### Upload Certificate Files into ATSD
 
-Upload the certificates files (private key and the certificate chain) into ATSD using `curl`.
+The certificates files can be uploaded into ATSD using `curl`.
 
-Replace `{username}` with the username, `{password}` with the password and `{atsd_hostname}` with the hostname or IP address of the target ATSD server in the command below.
-
-Replace `atsd.example.org` below with the actual DNS name.
+Replace `atsd.example.org` with the DNS name or IP address of the ATSD server and update the [API token](./user-authentication.md#token-authentication) value.
 
 ```sh
-sudo curl -k -u {username}:{password} https://{atsd_hostname}:8443/admin/certificates/import/atsd \
+sudo curl https://atsd.example.org:8443/api/certificates/import/atsd \
+  --insecure \
+  --header "Authorization: Bearer ubFPnLvPJK3vOOlAjvQVtdkMkY1gfRscSi9k" \
   -F "privkey=@/etc/letsencrypt/live/atsd.example.org/privkey.pem" \
   -F "fullchain=@/etc/letsencrypt/live/atsd.example.org/fullchain.pem" \
   -w "\n%{http_code}\n"
 ```
 
-Example command:
+The certificate installation process is implemented as follows:
 
-```sh
-sudo curl -k -u username:password https://192.0.2.6:8443/admin/certificates/import/atsd \
-  -F "privkey=@/etc/letsencrypt/live/atsd.cert.org/privkey.pem" \
-  -F "fullchain=@/etc/letsencrypt/live/atsd.cert.org/fullchain.pem" \
-  -w "\n%{http_code}\n"
-```
-
-ATSD accepts the files, validates the certificates and automatically reloads the SSL context without restarting the database itself.
-
-The server responds with an HTTP `2xx` status code if the installation is successful.
+* `curl` uploads the certificate files into ATSD.
+* The database validates the certificate files.
+* If certificates are valid, the SSL server is reloaded without restarting the database itself.
+* The HTTP response code is `2xx` if the installation is successful.
 
 ## Renew Certificate
 
@@ -206,23 +212,23 @@ Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. T
 ```sh
 #!/bin/bash
 
-USR=certbot
-PWD=**********
 HOST=192.0.2.6
 PORT=8443
 DNS=atsd.example.org
 
 echo "Uploading private key and certificate for ${DNS}"
 
-curl -k -u $USR:$PWD https://$HOST:$PORT/admin/certificates/import/atsd \
+curl https://$HOST:$PORT/api/certificates/import/atsd \
+  --insecure \
+  --header "Authorization: Bearer ubFPnLvPJK3vOOlAjvQVtdkMkY1gfRscSi9k" \
   -F "privkey=@/etc/letsencrypt/live/${DNS}/privkey.pem" \
   -F "fullchain=@/etc/letsencrypt/live/${DNS}/fullchain.pem" \
   -w "\n%{http_code}\n"
 ```
 
-Replace the parameters `USR`,`PWD`, `HOST`, `PORT`, and `DNS` with the actual settings.
+Replace the parameters `HOST`, `PORT`, and `DNS` with the actual values.
 
-Protect the file by ensuring that `root` privileges are required for reading and executing the file.
+Protect the `deploy-atsd.sh` file by ensuring that `root` privileges are required to read and execute the file.
 
 ```sh
 sudo chown root:root deploy-atsd.sh
