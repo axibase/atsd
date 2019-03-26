@@ -2,18 +2,22 @@
 
 Groups multiple input series into one series and applies a statistical function to grouped values.
 
-The group process is implemented as follows:
+The transformation is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
-1. a. Group multiple series if `period` is specified in the query.<br>Split each series `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
-1. b. Group multiple series if `period` is not specified.<br> Multiple series samples are grouped at all unique timestamps in the input series. Each group has an ordered list of pairs: `[timestamp | samples of several series with given timestamp]`.
+
+    a. Group multiple series if `period` is specified in the query.<br>Split each series `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
+
+    b. Group multiple series if `period` is not specified.<br> Multiple series samples are grouped at all unique timestamps in the input series. Each group has an ordered list of pairs: `[timestamp | samples of several series with given timestamp]`.
+
 1. Interpolate grouped series according to the `interpolate` field.
 1. Truncate grouped series if `truncate` field is `true`.
 1. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a `time:value` array, where time is the period start time and value is the result of the statistical function.
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
-| `type`          | string          | **[Required]** Grouping [function](#grouping-functions) applied to values of the input series. |
+| `type`  | string        | **[type or types is Required]** [Statistical function](#grouping-functions) applied to values with the same timestamp or within the same period, if the period is specified.<br>The `type` can be set to `DETAIL` in which case no grouping is performed and the underlying series is returned unchanged. |
+| `types` | array          | **[type or types is Required]** Array of [statistical functions](#grouping-functions). Each function in the array produces a separate grouped series. If one of the functions is set to `DETAIL`, its result contains the underlying series. |
 | `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
 | `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
 | `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established.<br>Default: `false`.  |

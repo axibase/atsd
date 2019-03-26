@@ -2,12 +2,12 @@
 
 ## Overview
 
-Aggregate Processor splits an interval into periods and calculates statistics for each period. If no period is specified in the request, statistics are computed for the entire interval.
+Aggregate Processor splits an interval into periods and calculates statistics for each period.
 
 The aggregation process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` into each series separately. <br>`startDate` is inclusive and `endDate` is exclusive.
-2. Split each series `time:value` array into periods based on an [alignment](period.md#alignment) parameter.<br>If `period` parameter is not specified, all series data belongs to a single period from `startDate` until `endDate`.
+2. Allocate `time:value` samples to periods based on a period [alignment](period.md#alignment) parameter.<br>If period is not specified in the request, statistics are computed for the entire selection interval.
 3. Discard periods whose start time is earlier than `startDate`.
 4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified `time:value` array for each series where `time` is the period start time and `value` is the result of the statistical function.
 
@@ -15,10 +15,15 @@ The aggregation process is implemented as follows:
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `type`  | string        | **[Required]** [Statistical function](../aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
-| `types` | array          | Array of [statistical functions](../aggregation.md).<br>Either `type` or `types` field are required in each query. |
+| `type`  | string        | **[type or types is Required]** [Statistical function](../aggregation.md) applied to detailed values in each period, such as `AVG` or `COUNT`.<br>The field can also be set to `DETAIL` in which case no aggregation is performed and the underlying series is returned unchanged. |
+| `types` | array          | **[type or types is Required]** Array of [statistical functions](../aggregation.md). Each function in the array produces a separate aggregated series. If one of the functions is set to `DETAIL`, its result contains the underlying series. |
 | `period`  | object     | Regular [period](#period) specified with count and time unit, for example<br>`{ "count": 1, "unit": "HOUR" }`. |
-| `interpolate`  | object  | Fill values in empty periods using an [interpolation function](#interpolation) such as `PREVIOUS` or `LINEAR`.   |
+| `interpolate`  | object  | Fill values in empty periods using an [interpolation function](#interpolation) such as `PREVIOUS` or `LINEAR`. |
+
+### Threshold Function Fields
+
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
 | `threshold`    | object  | Object containing the minimum and maximum range for `THRESHOLD_*` functions.  |
 | `calendar`     | object  | Calendar settings for `THRESHOLD_*` functions. |
 | `workingMinutes` | object | Working minutes settings for `THRESHOLD_*` functions.  |
@@ -39,7 +44,7 @@ The aggregation process is implemented as follows:
 * `{ "count": 1, "unit": "HOUR" }`
 * `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
-### calendar
+### Calendar
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
@@ -47,7 +52,7 @@ The aggregation process is implemented as follows:
 
 Example: `{ "name": "au-nsw-calendar" }`.
 
-### threshold
+### Threshold
 
 * Either `min` or `max` is **required**.
 
