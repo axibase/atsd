@@ -156,13 +156,13 @@ cert.pem  chain.pem  fullchain.pem  privkey.pem  README
 
 Log in to the ATSD as an administrator.
 
-Click on user icon in the top right corner.
+Click the user icon in the top right corner.
 
 Click **API Tokens**.
 
 ![](./images/lets-encrypt-api-token.png)
 
-Click **Issue Token**, select `POST` method and enter the following URL to sign. 
+Click **Issue Token**, select `POST` method and enter the following URL to sign.
 
 ```txt
 /api/certificates/import/atsd
