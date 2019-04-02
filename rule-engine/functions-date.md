@@ -4,6 +4,8 @@
 
 Date functions operate on dates, timestamps, and intervals.
 
+View the list of available window date fields [here](./window-fields.md#date-fields).
+
 ## Reference
 
 * [`date_parse`](#date_parse)
@@ -246,38 +248,38 @@ date_parse(property('config::deleted')).is_workday()
 
 ```javascript
 /* Uses the server time zone to construct a DateTime object. */
-date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS")
+date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS")
 ```
 
 ```javascript
 /* Uses the offset specified in the datetime string to construct a DateTime object. */
-date_parse("31.01.2017 12:36:03:283 -08:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ")
+date_parse("31.01.2017 12:36:03.283 -08:00", "dd.MM.yyyy HH:mm:ss.SSS ZZ")
 ```
 
 ```javascript
 /* Uses the time zone specified in the datetime string to construct a DateTime object. */
-date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ")
+date_parse("31.01.2017 12:36:03.283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss.SSS ZZZ")
 ```
 
 ```javascript
 /* Constructs a DateTime object from the time zone provided as the third argument. */
-date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS", "Europe/Berlin")
+date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "Europe/Berlin")
 ```
 
 ```javascript
 /* Constructs a DateTime object from the UTC offset provided as the third argument. */
-date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS", "+01:00")
+date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "+01:00")
 ```
 
 ```javascript
 /* Time zone (offset) specified in the datetime must be the same as provided in the third argument. */
-date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+date_parse("31.01.2017 12:36:03.283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss.SSS ZZZ", "Europe/Berlin")
 ```
 
 ```javascript
 /* These expressions lead to exceptions. */
-date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ", "Europe/Berlin")
-date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+date_parse("31.01.2017 12:36:03.283 +01:00", "dd.MM.yyyy HH:mm:ss.SSS ZZ", "Europe/Berlin")
+date_parse("31.01.2017 12:36:03.283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss.SSS ZZZ", "Europe/Berlin")
 ```
 
 ### `to_datetime`
@@ -305,15 +307,23 @@ date_format(long time | DateTime date
 ```
 
 Converts timestamp `time`, specified as Unix time in milliseconds or a [`DateTime`](object-datetime.md) object, to a string according to the specified [date pattern](../shared/time-pattern.md) and the [time zone](../shared/timezone-list.md).
+
 If neither the date pattern nor the time zone are specified, the input time is formatted with the default ISO format in the **UTC time zone**.
 If time zone is not specified, the input time `t` is formatted using `pattern` in the **server** time zone.
 
 Examples:
 
 ```javascript
-/* Returns current time minus 1 hour formatted as "2018-01-09T15:23:40:00Z" */
+/* Returns current time minus 1 hour formatted as "2018-01-09T15:23:40.000Z" */
 date_format(now.millis - 3600000L)
 ```
+
+```javascript
+/* Returns command time formatted as "Jan-09 15:23:40.022" in Pacific Standard Time */
+date_format(command_time, "MMM-dd HH:mm:ss.SSS", "US/Pacific")
+```
+
+> [`command_time`](./window-fields.md#date-fields) is a [`DateTime`](object-datetime.md) object containing the time of the command that was last added or removed from the window.
 
 ```javascript
 /* Returns current time formatted as "Jan-09 15:23" in server time zone */
@@ -321,8 +331,8 @@ date_format(now, "MMM-dd HH:mm")
 ```
 
 ```javascript
-/* Returns formatted time string  "2018-01-09 15:23:40:00 Europe/Berlin" */
-date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
+/* Returns formatted time string  "2018-01-09 15:23:40.00 Europe/Berlin" */
+date_format(milliseconds('2018-01-09T14:23.40Z'), "yyyy-MM-dd HH:mm:ss.SSS ZZZ", "Europe/Berlin")
 ```
 
 :::tip Related Functions

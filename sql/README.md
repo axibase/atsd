@@ -262,7 +262,7 @@ Operators with the same precedence level within an expression are processed from
 | DECIMAL | - |
 | DOUBLE | - |
 | FLOAT | - |
-| INTEGER | - |
+| INTEGER | INT |
 | BIGINT | LONG |
 | SMALLINT | SHORT |
 | VARCHAR | STRING |
@@ -312,55 +312,55 @@ Virtual tables have the same pre-defined columns since the underlying data is ph
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-|`metric`         |string   | Metric name, same as virtual table name.|
-|`entity`         |string   | Entity name.|
+|`metric`         |varchar   | Metric name, same as virtual table name.|
+|`entity`         |varchar   | Entity name.|
 |`value`          |number   | Series numeric value.|
-|`text`           |string   | Series text value.|
-|`tags.{name}`    |string   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
-|`tags`           |string   | All series tags, concatenated to `name1=value;name2=value` format.|
-|`tags.*`         |string   | Expands to multiple columns, each column containing a separate series tag.|
+|`text`           |varchar   | Series text value.|
+|`tags.{name}`    |varchar   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
+|`tags`           |varchar   | All series tags, concatenated to `name1=value;name2=value` format.|
+|`tags.*`         |varchar   | Expands to multiple columns, each column containing a separate series tag.|
 |`datetime`       |timestamp | Sample time in [ISO format](../shared/date-format.md), for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period **start** time in [ISO format](../shared/date-format.md), same as `date_format(PERIOD(...))`.|
-|`time`           |long     | Sample time Unix time with millisecond precision, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
+|`time`           |bigint     | Sample time Unix time with millisecond precision, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
 
 #### Metric Columns
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-|`metric.name`    |string   | Metric name.|
-|`metric.label`   |string   | Metric label.|
-|`metric.description` |string| Metric description.|
-|`metric.timeZone`|string   | Metric time zone.|
-|`metric.interpolate` |string| Metric interpolation setting.|
-|`metric.tags.{name}` |string| Metric tag value. Returns `NULL` if the specified tag does not exist for this metric.|
-|`metric.tags`    |string   | All metric tags, concatenated to `name1=value;name2=value` format.|
+|`metric.name`    |varchar   | Metric name.|
+|`metric.label`   |varchar   | Metric label.|
+|`metric.description` |varchar| Metric description.|
+|`metric.timeZone`|varchar   | Metric time zone.|
+|`metric.interpolate` |varchar| Metric interpolation setting.|
+|`metric.tags.{name}` |varchar| Metric tag value. Returns `NULL` if the specified tag does not exist for this metric.|
+|`metric.tags`    |varchar   | All metric tags, concatenated to `name1=value;name2=value` format.|
 |`metric.tags.*`  |-   | Expands to multiple columns, each column containing a separate metric tag.|
-|`metric.dataType`|string   | [Data Type](../api/meta/metric/list.md#data-types).|
+|`metric.dataType`|varchar   | [Data Type](../api/meta/metric/list.md#data-types).|
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
-|`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
-|`metric.creationTime`| long | Metric creation time as Unix time with millisecond precision.|
-|`metric.lastInsertTime`| long | Last time a value is received for this metric by **any** series, measured as Unix time with millisecond precision.|
+|`metric.filter`  |varchar   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
+|`metric.creationTime`| bigint | Metric creation time as Unix time with millisecond precision.|
+|`metric.lastInsertTime`| bigint | Last time a value is received for this metric by **any** series, measured as Unix time with millisecond precision.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
 |`metric.versioning`|boolean | If set to `true`, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
 |`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
 |`metric.maxValue`| double | Maximum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
-|`metric.invalidValueAction` | string | [Invalid Action](../api/meta/metric/list.md#invalid-actions) type.|
-|`metric.units`| string | Measurement units. |
+|`metric.invalidValueAction` | varchar | [Invalid Action](../api/meta/metric/list.md#invalid-actions) type.|
+|`metric.units`| varchar | Measurement units. |
 |`metric.*`| - | Expands to multiple columns for each metric field, as well as the `metric.tags` column.  |
 
 #### Entity Columns
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-|`entity.label`   |string   | Entity label.|
-|`entity.timeZone`|string   | Entity time zone.|
-|`entity.interpolate` |string| Entity interpolation setting.|
-|`entity.tags.{name}` |string| Entity tag value. Returns `NULL` if the specified tag does not exist for this entity.|
-|`entity.tags`    |string   | All entity tags, concatenated to `name1=value;name2=value` format.|
+|`entity.label`   |varchar   | Entity label.|
+|`entity.timeZone`|varchar   | Entity time zone.|
+|`entity.interpolate` |varchar| Entity interpolation setting.|
+|`entity.tags.{name}` |varchar| Entity tag value. Returns `NULL` if the specified tag does not exist for this entity.|
+|`entity.tags`    |varchar   | All entity tags, concatenated to `name1=value;name2=value` format.|
 |`entity.tags.*`  |-   | Expands to multiple columns, each column containing a separate entity tag.|
-|`entity.groups`  |string   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
+|`entity.groups`  |varchar   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
 |`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
-|`entity.creationTime`| long | Entity creation time as Unix time with millisecond precision.|
+|`entity.creationTime`| bigint | Entity creation time as Unix time with millisecond precision.|
 |`entity.*`| - | Expands to multiple columns for each entity field, as well as the `entity.tags` column.  |
 
 New columns can be created by applying functions and arithmetic expressions to existing columns. The computed columns can be included both in the `SELECT` expression, as well as in the `WHERE`, `HAVING`, and `ORDER BY` clauses.
@@ -449,12 +449,12 @@ WHERE t1.datetime BETWEEN '2017-06-15T13:00:00Z' AND '2017-06-15T13:10:00Z'
 
 ### Series Value Columns
 
-Each series sample can contain a:
+Each series sample contains:
 
 * Numeric value, accessible with the `value` column.
 * String value, accessible with the `text` column.
 
-The text value can be inserted with [`series`](../api/network/series.md#fields) command and the series [insert](../api/data/series/insert.md) method in Data API.
+The `text` value can be inserted with [`series`](../api/network/series.md#fields) command and the series [insert](../api/data/series/insert.md) method in Data API.
 
 ```ls
 series d:2017-10-13T08:00:00Z e:sensor-1 m:temperature=20.3
@@ -465,7 +465,8 @@ series d:2017-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-543
 ```sql
 SELECT entity, metric, datetime, value, text
   FROM atsd_series
-WHERE metric IN ('temperature', 'status') AND datetime >= '2017-06-15T08:00:00Z'
+WHERE metric IN ('temperature', 'status')
+  AND datetime >= '2017-06-15T08:00:00Z'
 ```
 
 ```ls
@@ -480,7 +481,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2017-06-15T08:00:00Z'
 
 If the `value` column in an `atsd_series` query returns numbers for metrics with different [data types](../api/meta/metric/list.md#data-types), the prevailing data type is determined based on the following rules:
 
-1. If all data types are integers (`short`, `integer`, `long`), the prevailing integer type is returned.
+1. If all data types are integers (`short`, `integer`, `bigint`), the prevailing integer type is returned.
 2. If all data types are decimals (`float`, `double`, `decimal`), the prevailing decimal type is returned.
 3. If the data types contain both integers and decimals, the `decimal` type is returned.
 
@@ -777,9 +778,11 @@ The `NULL` literal represents `null`, or unknown value. Scalar expressions with 
 
 Likewise, numeric and string operators, except `IS NULL` and `IS NOT NULL`, return `NULL` if any operand is `NULL`.
 
-`IS NULL` and `IS NOT NULL` operators are supported for `tags.{name}` and `tags.entity.{name}` columns in the `WHERE` clause.
+The `IS NULL expr` operator returns `true` if the expression is `NULL` or `NaN`.
 
-Assuming tags.status is `NULL`:
+The `IS NOT NULL expr` operator returns `true` if the expression is neither `NULL` nor `NaN`.
+
+Assuming the `tags.status` column is `NULL`, or has no value:
 
 | **Result** | **Expression** |
 |:---|:---|
@@ -807,10 +810,10 @@ The database returns special values if the computation result cannot be represen
 The returned values follow [IEEE 754-2008](https://standards.ieee.org/findstds/standard/754-2008.html) standard.
 
 * `NaN` for indeterminate results such as `0/0` (zero divided by zero).
-* `NaN` for illegal values
-* Signed Infinity for `x/0` where x != 0
+* `NaN` for illegal values.
+* Signed Infinity for `x/0` where x != 0.
 
-Since the `long` (`bigint`) data type does not allow for a special `Infinity` constant, the returned Double `Infinity` constant, when cast to `long`, is replaced with the `Long.MAX_VALUE` or `Long.MIN_VALUE` value.
+Because the `BIGINT` data type does not support `Infinity` constant, the returned Double `Infinity` constant, when cast to `BIGINT`, is replaced with `9,223,372,036,854,775,807` or `-9,223,372,036,854,775,808` depending on sign.
 
 ```sql
 SELECT value, SQRT(value-1), value/0, 1/0, -1/0, 1/0-1/0
@@ -825,6 +828,12 @@ LIMIT 1
 ```
 
 The result of comparing `NaN` with another number is indeterminate (`NULL`).
+
+The `NaN` can be compared similar to `NULL` using `IS` operator:
+
+```sql
+AND value IS NOT NULL
+```
 
 ### Case Sensitivity
 
@@ -1028,9 +1037,9 @@ END
 
 Each `search_expression` must return a boolean (`true`/`false`) value.
 
-The `result_expression` can be a number, a string, or an expression. Result expressions return values of different data types.
+The `result_expression` can be a literal value (number, text) or an expression. Result expressions in the same `CASE` construct are allowed to return values of different data types.
 
->If the data types are different (such as a number and a string), the database classifies the column with `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
+>If the data types are different (such as a number and a varchar), the database classifies the column with `JAVA_OBJECT` to the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
 
 If no `search_expression` is matched and the `ELSE` condition is not specified, the `CASE` expression returns `NULL`.
 
@@ -2194,27 +2203,52 @@ The above query retrieves all records for the 'm-1' metric, even though it retur
 
 ## Inline Views
 
-Inline view is a subquery specified in the `FROM` clause instead of a table. It defines a virtual table to be processed by the parent query.
+Inline view is a subquery specified in the `FROM` clause instead of a table.
 
 ```sql
--- parent query
-SELECT env, MAX(avg_val)
+-- parent (or outer) query
+SELECT expr FROM (
+  -- subquery (or inner / nested query)
+  SELECT expr ...
+)
+```
+
+The subquery defines a virtual table to be processed by the parent query. The virtual table can be assigned an alias.
+
+```sql
+SELECT tent.env AS environment, MAX(tent.avg_val) AS max_entity
 FROM (
-  -- subquery acting as table
+  -- subquery acting as virtual table
   SELECT entity, entity.tags.environment AS env, avg(value) AS avg_val
-    FROM "cpu_busy"
+    FROM "mpstat.cpu_busy"
     WHERE datetime >= CURRENT_DAY
   GROUP BY entity
-)
-GROUP BY env
+) tent
+GROUP BY tent.env
 ```
 
 ```ls
-| env  | max(avg_val) |
-|------|--------------|
-| prod |         24.1 |
-| test |          8.2 |
+| environment | max_entity |
+|-------------|------------|
+| prod        |     15.402 |
+| test        |     42.601 |
 ```
+
+The built-in columns such as `entity` or `datetime` must be without table prefix to be accessible in the parent query.
+
+```sql
+SELECT entity, datetime, max_val
+FROM (
+  -- rename table prefix using alias
+  SELECT td.entity AS "entity", td.datetime AS "datetime", MAX(td.value) AS max_val
+  FROM "disk_used" td
+    WHERE td.entity IN ('nurswgvml006', 'nurswgvml007') AND
+      td.datetime BETWEEN '2019-03-29T00:00:00Z' AND '2019-03-29T00:05:00Z'
+    GROUP BY td.entity, PERIOD(3 MINUTE)
+)
+```
+
+The subquery can expose columns only of numeric and text data types.
 
 The example below calculates hourly maximum from which the parent query computes a daily average (average hourly maximum).
 
@@ -2629,7 +2663,7 @@ The following functions aggregate values in a column by producing a single value
 
 #### Returned Data Types
 
-* Functions `COUNT`, `MIN_VALUE_TIME` and `MAX_VALUE_TIME` return LONG datatype.
+* Functions `COUNT`, `MIN_VALUE_TIME` and `MAX_VALUE_TIME` return `BIGINT` datatype.
 * The remaining functions return a value with data type depending on the argument data type:
   * DECIMAL if the argument is of DECIMAL datatype.
   * TIMESTAMP if the argument is of TIMESTAMP data type.
@@ -2638,8 +2672,8 @@ The following functions aggregate values in a column by producing a single value
 ### Implementation Notes
 
 * `NULL` and `NaN` values are ignored by aggregate functions.
-* If the aggregate function of DOUBLE datatype cannot find a single value other than `NULL` or `NaN`, it returns `NaN`.
-* If the aggregate function of LONG datatype cannot find a single value other than `NULL` or `NaN`, it returns `NULL`.
+* If the aggregate function of `DOUBLE` datatype cannot find a single value other than `NULL` or `NaN`, it returns `NaN`.
+* If the aggregate function of `BIGINT` datatype cannot find a single value other than `NULL` or `NaN`, it returns `NULL`.
 * Nested aggregate functions such as `AVG(MAX(value))` are not supported.
 
 ```sql
@@ -2680,11 +2714,11 @@ The `LAST_VALUE` function returns the value of the last sample (or the value of 
 
 #### MIN_VALUE_TIME
 
-The `MIN_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **minimum** value.
+The `MIN_VALUE_TIME` function returns Unix time in milliseconds (`BIGINT` datatype) of the first occurrence of the **minimum** value.
 
 #### MAX_VALUE_TIME
 
-The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`LONG` datatype) of the first occurrence of the **maximum** value.
+The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`BIGINT` datatype) of the first occurrence of the **maximum** value.
 
 #### STDDEV
 
@@ -2755,7 +2789,7 @@ COVAR(expr1, expr2 [, SAMPLE | POPULATION])
 The `date_format` function converts Unix time in milliseconds to a string according to the specified [time format](../shared/time-pattern.md) in the optional time zone.
 
 ```java
-date_format(long milliseconds[, string time_format[, string time_zone]])
+date_format(bigint milliseconds[, varchar time_format[, varchar time_zone]])
 ```
 
 If the `time_format` argument is not provided, [ISO format](../shared/date-format.md) is applied.
@@ -2880,7 +2914,7 @@ GROUP BY PERIOD(1 hour)
 The `date_parse` function parses the date and time string into Unix time with millisecond precision.
 
 ```java
-date_parse(string datetime [, string time_format [, string time_zone]])
+date_parse(varchar datetime [, varchar time_format [, varchar time_zone]])
 ```
 
 * The default `time_format` is [ISO format](../shared/date-format.md): `yyyy-MM-ddTHH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../shared/time-pattern.md).
@@ -2923,7 +2957,7 @@ The `DATEADD` function performs calendar arithmetic by adding or subtracting an 
 * An optional [time zone name](../shared/timezone-abnf.md) can be specified as the last argument to perform calendar calculations in a user-defined time zone. By the default, the database time zone is used.
 
 ```sql
-DATEADD(string datePart, int dateCount, long time | string datetime [, string timeZone])
+DATEADD(varchar datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
 ```
 
 ```sql
@@ -2945,7 +2979,7 @@ LIMIT 3
 The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md), which can be different from the database time zone.
 
 ```sql
-ENDTIME(calendarExpression, string timeZone)
+ENDTIME(calendarExpression, varchar timeZone)
 ```
 
 ```sql
@@ -3330,7 +3364,7 @@ WHERE datetime < now
 | `REPLACE(s-1, s-2, s-3)` | Replaces all occurrences of `s-2` with `s-3` in a specified string `s-1`.<br>If `s-2` is not found, the function returns the original string `s-1`.<br>Example: if `entity` is `abca` ⇒ `REPLACE(entity,'a','R')`=`RbcR`.|
 | `LENGTH(s)` | Number of characters in a specified string.<br>Example: if `entity` is `abc` ⇒ `LENGTH(entity)`=`3`.|
 | `CONCAT(s-1, s-2 [, s-N] )` | Concatenates multiple strings into one string. <br>`NULL` and `NaN` values are concatenated as empty strings.<br>Also accepts numeric values which are converted to strings using `#.##` pattern.<br>Example: if `entity` is `abc` ⇒ `CONCAT(entity,'-f-',3.1517)`=`abc-f-3.15`.|
-| `LOCATE(s-1, s-2 [, start])` | Searches for the **first** string `s-1` in the second string `s-2`.<br>Returns the position at which `s-1` is found in `s-2`, after the optional `start` position. <br>The first character has a position of `1`. The function returns `0` if string `s-1` is not found.<br>Example: if `entity` is `abc` ⇒ `LOCATE(entity,'b')`=`2`.|
+| `LOCATE(s-1, s-2 [, start])` | Searches for the **first** string `s-1` in the second string `s-2`.<br>Returns the position at which `s-1` is found in `s-2`, after the optional `start` position. <br>The first character has a position of `1`. The function returns `0` if string `s-1` is not found.<br>Example: if `entity` is `abc` ⇒ `LOCATE('b', entity)` is `2`.|
 | `SUBSTR(str, start[, length])` | Substring of `str` starting at `start` position with maximum length of `length`. <br>The first character has a position of `1`. <br>`start` position of `0` is processed similarly to position `1`.<br>If `length` is not specified or is `0`, the function returns the substring beginning with `start` position.<br>Example: if `entity` is `abc` ⇒ `SUBSTR(entity,2)`=`bc`.|
 
 ```sql
@@ -3356,7 +3390,7 @@ AND LOWER(tags.file_system) LIKE '%root'
 The `LAG` function provides access to a preceding row at a specified offset from the current position.
 
 ```sql
-LAG(columnName [, int offset [, defaultValue]])
+LAG(varchar columnName [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -3451,7 +3485,7 @@ WHERE entity = 'nurswgvml007'
 The `LEAD` function provides access to a following row at a specified offset from the current position.
 
 ```sql
-LEAD(columnName [, int offset [, defaultValue]])
+LEAD(varchar columnName [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -3472,7 +3506,7 @@ The `LEAD` function operates similarly to the [`LAG`](#lag) function except that
 #### METRICS
 
 ```sql
-METRICS(string entityName [, string entityName2])
+METRICS(varchar entityName [, varchar entityName2])
 ```
 
 The `METRICS` function is supported in queries to the `atsd_series`, `atsd_metric`, `atsd_entity` tables and retrieves all metrics collected by the specified entity or multiple entities.
@@ -3511,7 +3545,7 @@ ORDER BY datetime
 The `LOOKUP` function translates the key into a corresponding value using the specified replacement table. The function returns a string if the replacement table exists and the key is found, and returns `NULL` otherwise. The key comparison is case-sensitive.
 
 ```sql
-LOOKUP(string replacementTable, string key)
+LOOKUP(varchar replacementTable, varchar key)
 ```
 
 If the key is numeric, such as in the `LOOKUP('table-1', value)` case, the number is formatted with `#.##` pattern to remove fractional `.0` parts from integer values stored as decimals.
@@ -3536,7 +3570,7 @@ If the searched key is a number provided by the `value` column or an arithmetic 
 1.2345  -> 1.23
 ```
 
-For `DIGSTRING(int code)`
+For `DIGSTRING(integer code)`
 
 ```sql
 SELECT datetime, entity, value, LOOKUP('pi-system', value)

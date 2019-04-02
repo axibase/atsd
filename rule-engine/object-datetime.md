@@ -12,6 +12,13 @@ When printed as text, a `DateTime` object is formatted as [ISO date](../shared/d
 ${now} --> 2018-08-17T15:13:16.946Z[Etc/UTC]
 ```
 
+To format the `DateTime` object using a different pattern or time zone, use the [`date_format`](./functions-date.md#date_format) function.
+
+```javascript
+// Jan-09 15:23
+date_format(command_time, "MMM-dd HH:mm", "US/Pacific")
+```
+
 ## Time Zone
 
 By default, a `DateTime` object is initialized in **server** time zone.

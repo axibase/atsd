@@ -12,6 +12,8 @@ Property record consists of:
 * Keys
 * Tags
 
+The optional `merge` parameter below is set to `true` by default. If set to `false` explicitly, it causes values received before the latest update to be ignored from search.
+
 ## Reference
 
 * [`property`](#property)
@@ -25,7 +27,7 @@ Property record consists of:
 ### `property`
 
 ```csharp
-property([string entity, ] string expression [, string date]) string
+property([string entity, ] string expression [, string date [, boolean merge]]) string
 ```
 
 Returns tag value for the specified [property](../schema.md#properties) [search](property-search.md) `expression`. If the expression matches multiple records, the function returns tag value for the most recent record.
@@ -57,7 +59,7 @@ property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ### `property_values`
 
 ```csharp
-property_values([string entity, ] string expression [, string date]) [string]
+property_values([string entity, ] string expression [, string date [, boolean merge]]) [string]
 ```
 
 Returns a list of property tag values for the given entity for the specified [property](../schema.md#properties) [search](property-search.md) `expression`.
@@ -103,7 +105,7 @@ property_values('nurswgvml007', 'docker.container::image', 'today')
 ### `property_map`
 
 ```csharp
-property_map([string entity,] string expression [, string date]) map
+property_map([string entity,] string expression [, string date [, boolean merge]]) map
 ```
 
 Returns a map containing keys and tags for the specified [property](../schema.md#properties) [search](property-search.md) `expression`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
@@ -144,7 +146,7 @@ property_map('nurswgvml007','configuration::', 'today')
 ### `property_maps`
 
 ```csharp
-property_maps([string entity,] string expression [, string date]) [map]
+property_maps([string entity,] string expression [, string date [, boolean merge]]) [map]
 ```
 
 Returns a list of maps, each map containing keys and tags for the specified [property](../schema.md#properties) [search](property-search.md) `expression`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
@@ -227,7 +229,7 @@ getPropertyTypes('nurswgvml007','yesterday', 'today')
 ### `property_compare`
 
 ```csharp
-property_compare() map
+property_compare([boolean merge]) map
 ```
 
 Compares tags in the received `property` command with the previous (stored) command, and returns a map containing a list of changed keys and their value difference. The value difference is a string created using the `'old_value' -> 'new_value'` pattern.
@@ -271,7 +273,7 @@ property_compare().containsKey('state')
 ### `property_compare_except`
 
 ```csharp
-property_compare_except([string name]) map
+property_compare_except([string name [, boolean merge]]) map
 ```
 
 The function compares property tags similar to the `property_compare()` function above, while ignoring changes in tags which match one of the patterns in the argument

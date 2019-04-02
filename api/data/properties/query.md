@@ -51,14 +51,27 @@ An array of query objects containing the following filtering fields:
 * [**Required**]
 * Refer to [date filter](../filter-date.md).
 
+#### Record Filter
+
+The filter applies if `exactMatch` is `false` and multiple records matched the query. The filter compares the timestamp of the record with the maximum timestamp of all matched records.
+
+| **Name**  | **Type** | **Description**  |
+|:---|:---|:---|
+| `last` | boolean | Includes records with the timestamp equal the maximum timestamp of matched records.<br>Default: `false`.|
+| `offset` | integer | Includes records based on difference, in milliseconds, between maximum timestamp of matched records and timestamp of the current record.<br>The record is included in results if its timestamp is greater than or equal maximum timestamp less the `offset`.<br>Offset of `0` is equivalent to `last=true`.<br>Default: `-1` (not applied).|
+
+#### Field Filter
+
+| **Name**  | **Type** | **Description**  |
+|:---|:---|:---|
+| `merge` | boolean | Returns all tag values within the record.<br>If set to `false`, only tag values with update time equal to the row timestamp are included.<br>Default: `false`.|
+
 #### Control Fields
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `limit`   | integer | Maximum number of records to be returned. Default: 0.<br>Limit is not applied if the parameter value <= 0. |
-| `last` | boolean | Returns only records with the update time equal to the maximum update time of matched records.<br>Default: `false`. |
-| `offset` | integer | Exclude records based on difference, in milliseconds, between maximum update time of matched records and update time of the current record. Default: -1 (not applied).<br>If `offset >=0` and the difference exceeds `offset`, the record is excluded from results. <br>`offset=0` is equivalent to `last=true`.|
-| `addMeta` | boolean | Include metric and entity metadata (field, tags) under the `meta` object in response.<br>Default: `false`.|
+| `limit`   | integer | Maximum number of rows returned.<br>Default: `0` (no limit).<br>The parameter is ignored if the value is negative or `0`. |
+| `addMeta` | boolean | Include metric and entity metadata fields under the `meta` object in response.<br>Default: `false`.|
 
 ## Response
 
