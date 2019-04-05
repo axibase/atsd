@@ -323,7 +323,7 @@ date_format(now.millis - 3600000L)
 date_format(command_time, "MMM-dd HH:mm:ss.SSS", "US/Pacific")
 ```
 
-> [`command_time`](./window-fields.md#date-fields) is a [`DateTime`](object-datetime.md) object containing the time of the command that was last added or removed from the window.
+> [`command_time`](./window-fields.md#date-fields) is a [`DateTime`](object-datetime.md) object containing the time of the command that last added or removed from the window.
 
 ```javascript
 /* Returns current time formatted as "Jan-09 15:23" in server time zone */
