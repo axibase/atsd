@@ -66,7 +66,6 @@ The `tags` field for the `property` command contains the `keys` map and the `typ
 
 **Name**|**Data Type**|**Description**
 :---|---|:---
-`now` | `DateTime` | Current server time.
 `open_time` | `DateTime` | Time when the window changed status to `OPEN`, or when the condition evaluated to `true` for the first time.
 `repeat_time` | `DateTime` | Last time when the condition evaluated to `true`, equal to `open_time` when the status changes to `OPEN`.
 `cancel_time` | `DateTime` | Time when the window changed status to `CANCEL`, or when the condition evaluated to `false` for the first time.
@@ -92,7 +91,16 @@ The `tags` field for the `property` command contains the `keys` map and the `typ
 * `DateTime` object fields can be `null` if the event has not yet occurred or if the window is empty.
 * If **Check On Exit** setting is enabled and the condition check is caused by a removed command, the `command_time` field contains the timestamp of the **exiting command** (oldest command), rounded to seconds.
 
-## Details Tables
+## Current Time Fields
+
+**Name**|**Data Type**|**Description**
+:---|---|:---
+| `now` | `DateTime` | Current server time. |
+| `today` | `DateTime` | `00:00` (midnight) of the **current day** in server time zone. |
+| `yesterday` | `DateTime` | `00:00` (midnight) of the **previous day** in server time zone. |
+| `tomorrow` | `DateTime` | `00:00` (midnight) of the **next day** in server time zone. |
+
+## Detail Tables
 
 The built-in `details` table contains entity name, entity label, entity tags, command tags, and user-defined variables. Use this data structure to print out full alert information.
 
