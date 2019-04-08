@@ -21,6 +21,7 @@ The transformation is implemented as follows:
 | `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
 | `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
 | `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established.<br>Default: `false`.  |
+| `place`      | object           | Divide grouped series into several groups based on constraint and objective function specified in the [Placement](#placement) object.  |
 
 ## Grouping Functions
 
@@ -559,4 +560,398 @@ The grouped `SUM` series is then aggregated into periods.
     {"d":"2016-06-25T08:00:40Z","v":1.0},
     {"d":"2016-06-25T08:00:50Z","v":1.0}
 ]}]
+```
+
+## Placement
+
+Divide grouped series into several groups based on constraint and objective function specified in the Place object. ATSD supports two types of placement:
+
+* Exact solution of some kind of optimal partitioning problem: [Optimal Partitioning](#optimal-partitioning).
+
+* Approximate solution of a variant of packing problem: [Approximate Packing](#approximate-packing).
+
+### Place Object Fields
+
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
+| `count`  | string | Maximum count of subgroups, response may contain less than maximum. |
+| `entities` | array | List of entities. Each entity contains numeric characteristics of a subgroup. |
+| `entityGroup` | string | Another way to specify entities by [entity group](../../../api/meta/entity-group/README.md) name. |
+| `entityExpression`  | string | [Expression](../../../api/data/filter-entity.md) which determines set of entities. |
+| `constraint` | string | Boolean MVEL expression that series from each subgroup must satisfy, for example max() < 10. |
+| `minimize` | string | Function calcuated for each subgroup. Sum calculated values over all subgroups is minimised. |
+| `method` | string | The algorithm used to solve [Approximate Packing](#approximate-packing) problem. Admissible values: `greedy_simple` (default), or `greedy_correlations`.|
+
+### Functions Available in the Placement Context
+
+* stdev()
+* median_abs_dev()
+* max()
+* min()
+* sum()
+* count()
+* median()
+* avg()
+* percentile(p)
+
+### Optimal Partitioning
+
+The problem is to find the best partition of given group of time series into no more then specified number of subgroups.
+
+Maximum count of subgroups is value of the `count` parameter. The best is a partition which satisfies the constraints and for which value of objective function is minimal. To check constraints and evaluate objective function the following calculations are performed:
+
+* Calculate aggregated series for each subgroup. Use specified `type`, `period`, `interpolate`, and `truncate` to perform aggregation.
+
+* Calculate boolean `constraint` expression for each aggregated series. If for any subgroup the expression is evaluated to `false` then reject the partition. The `constraint` expression could use the following [functions](#functions-available-in-the-placement-context) which are evaluated for aggregated series values.
+
+* For each subgroup calculate value of the `minimize` expression. This expression can use the same [functions](#functions-available-in-the-placement-context).
+
+* Value of objective function is sum of values calculated on the previous step.
+
+* If objective function reaches minimum on several partitions then select one of partitions with the least cardinality.
+
+#### Algorithm Complexity
+
+To exactly determine the optimal partitioning we need loop over all partitions of given set of cardinality N into no more then K subsets. So total count of possible partitions equals to sum of [Stirling](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind) numbers S(N, K) + S(N, K - 1) + ... + S(N, K).
+This sum grows extremely fast, for example, count of partions of 20 series into no more then 7 subgroups equals to `31_415_584_940_850`. ATSD implements the algorithm for number of grouped series < 64, but returns wrong result if number of partitions exceeds `Long.MAX_VALUE`. As we see the problem became computationally intractible already for N > 19 and K > 6.
+`(TODO: throw an Exception if number of partitions exceeds 100_000.)`
+
+#### Query Example
+
+```json
+[{
+  "startDate": "2019-02-01T00:00:00Z",
+  "endDate":   "2019-08-08T00:00:00Z",
+  "entity": "*",
+  "metric": "cpu_usage",
+  "group": {
+    "type": "SUM",
+    "period": {"count": 1, "unit": "HOUR"},
+    "interpolate": {"extend": false, "type": "NONE"},
+    "place": {
+      "count": 3,
+      "constraint": "max() < 10",
+      "minimize": "stdev()"
+    }
+  },
+  "limit": 2
+}]
+```
+
+#### Response
+
+The response contains information about series in each subgroup, minimal value of objective function in the `totalScore` field, value calculated for each group in the `groupScore` field, and aggregated series for each subgroup as the `data`.
+
+```json
+[
+  {
+    "entity": "*",
+    "metric": "lp_usage",
+    "exactMatch": false,
+    "type": "HISTORY",
+    "meta": {
+      "groupScore": 0.0021842975376114887,
+      "series": [
+        {"entity": "lp_1", "tags": {}, "label": "lp_1"},
+        {"entity": "lp_2", "tags": {}, "label": "lp_2"},
+        {"entity": "lp_3", "tags": {}, "label": "lp_3"}
+      ],
+      "name": "lp_1 lp_2 lp_3",
+      "totalScore": 0.0021842975376114887
+    },
+    "transformationOrder": ["GROUP"],
+    "group": {
+      "series": [
+        {"entity": "lp_1", "tags": {}, "label": "lp_1"},
+        {"entity": "lp_2", "tags": {}, "label": "lp_2"},
+        {"entity": "lp_3", "tags": {}, "label": "lp_3"}
+      ],
+      "groupScore": 0.0021842975376114887,
+      "totalScore": 0.0021842975376114887,
+      "type": "SUM",
+      "period": {"count": 1, "unit": "HOUR", "align": "CALENDAR"},
+      "interpolate": {"type": "NONE", "extend": false},
+      "truncate": false,
+      "place": {"count": 3, "constraint": "max() < 10", "minimize": "stdev()"}
+    },
+    "data": [
+      {"d": "2019-02-07T22:00:00.000Z", "v": 4.998999189242195},
+      {"d": "2019-02-07T23:00:00.000Z", "v": 5.000519124198814}
+    ]
+  },
+  {
+    "entity": "*",
+    "metric": "lp_usage",
+    "exactMatch": false,
+    "type": "HISTORY",
+    "meta": {
+      "groupScore": 0,
+      "series": [
+        {"entity": "lp_6", "tags": {}, "label": "lp_6"},
+        {"entity": "lp_7", "tags": {}, "label": "lp_7"}
+      ],
+      "name": "lp_6 lp_7",
+      "totalScore": 0.0021842975376114887
+    },
+    "transformationOrder": ["GROUP"],
+    "group": {
+      "series": [
+        {"entity": "lp_6", "tags": {}, "label": "lp_6"},
+        {"entity": "lp_7", "tags": {}, "label": "lp_7"}
+      ],
+      "groupScore": 0,
+      "totalScore": 0.0021842975376114887,
+      "type": "SUM",
+      "period": {"count": 1, "unit": "HOUR", "align": "CALENDAR"},
+      "interpolate": {"type": "NONE", "extend": false},
+      "truncate": false,
+      "place": {"count": 3, "constraint": "max() < 10", "minimize": "stdev()"}
+    },
+    "data": [
+      {"d": "2019-02-07T22:00:00.000Z", "v": 5},
+      {"d": "2019-02-07T23:00:00.000Z", "v": 5}
+    ]
+  },
+  {
+    "entity": "*",
+    "metric": "lp_usage",
+    "exactMatch": false,
+    "type": "HISTORY",
+    "meta": {
+      "groupScore": 0,
+      "series": [
+        {"entity": "lp_4", "tags": {},"label": "lp_4"},
+        {"entity": "lp_5", "tags": {}, "label": "lp_5"}
+      ],
+      "name": "lp_4 lp_5",
+      "totalScore": 0.0021842975376114887
+    },
+    "transformationOrder": ["GROUP"],
+    "group": {
+      "series": [
+        {"entity": "lp_4", "tags": {},"label": "lp_4"},
+        {"entity": "lp_5", "tags": {}, "label": "lp_5"}
+      ],
+      "groupScore": 0,
+      "totalScore": 0.0021842975376114887,
+      "type": "SUM",
+      "period": {"count": 1, "unit": "HOUR", "align": "CALENDAR"},
+      "interpolate": {"type": "NONE", "extend": false},
+      "truncate": false,
+      "place": {"count": 3, "constraint": "max() < 10", "minimize": "stdev()"}
+    },
+    "data": [
+      {"d": "2019-02-07T22:00:00.000Z", "v": 5},
+      {"d": "2019-02-07T23:00:00.000Z", "v": 5}
+    ]
+  }
+]
+```
+
+### Approximate Packing
+
+The problem is to divide group of series into several subgroups, so that series in each subgroup satisfy the `constraint`.
+
+This problem is similar with the [Optimal Partitioning](#optimal-partitioning), but objective function is not used, and the `constraint` expression may use variables to refer numeric subgroup parameters and parameters of series in the subgroup.
+
+ATSD uses entity tags to pass subgroup parameters and series parameters to the `constraint`.
+
+So each subgroup has dedicated entity, and parameters of the subgroup must be stored in ATSD as the entity tags with numeric values. Each value is available in the `constraint` expression by the tag name.
+
+#### Subgroup Parameters Example
+
+Let there are entities with tags `cpu_limit` and  `memory_limit`:
+
+```ls
+| entity name\ tags | cpu_limit | memory_limit |
+|-------------------|-----------|--------------|
+| lp_group_1        |        10 |           20 |
+| lp_group_2        |         8 |           40 |
+| lp_group_3        |        12 |           10 |
+| lp_group_4        |        14 |           20 |
+| lp_group_5        |         8 |           10 |
+```
+
+The `constraint` expression may use the variable `cpu_limit`:
+
+```json
+"constraint": "max() < cpu_limit"
+```
+
+When the expression is evaluated for the subgroup corresponding to entity `lp_group_1` the value of `cpu_limit` is 10.
+
+Each series also may store series numeric parameters in tags of series entity.
+This parameters are available in the `constraint` expression by tag name prepended by the prefix `entity.`.
+
+#### Series Parameters Example
+
+Let series entities have tag `memory_allocated`:
+
+```ls
+| entity name\ tags | memory_allocated |
+|-------------------|------------------|
+| lp_1              |                4 |
+| lp_2              |                4 |
+| lp_3              |                4 |
+| lp_4              |                8 |
+| lp_5              |                4 |
+| lp_6              |                2 |
+| lp_7              |                4 |
+```
+
+// TODO - rename prefix `entity.` -> `series.`
+
+The following `constraint` means that sum of `memory_allocated` parameters of all series in given subgroup is less then 14:
+
+```json
+"constraint": "sum(entity.memory_allocated) < 14"
+```
+
+Another example. Let series `lp_2, lp_3, lp_6` are placed in a group dedicated to entity `lp_group_1`. Then following constraint means that maximal value of aggregated series computed for `lp_2, lp_3, lp_6` is less than `cpu_limit = 10`, and sum of memory allocated to each series `sum(entity.memory_allocated) = 4 + 4 + 2` is 
+less that `memory_limit = 20`.
+
+```json
+"constraint": "max() < cpu_limit && sum(entity.memory_allocated) < memory_limit"
+```
+
+#### Approximate Packing Complexity
+
+Exact solution of the Approximate Packing problem requires consider each of
+![complexity](./images/complexity.png)
+possible assignment of N series to K subgroups. This became computationally unfeasible soon, for small values of N and K. ATSD implements two approximate algorithms to solve the problem.
+
+#### Approximate Packing Algorithm
+
+The algorithm works as follows.
+
+* Sort entities.
+* Form a subgroup for each entity in order.
+* Collect all not placed series into special subgroup.
+
+The second step depends on selected `method`.
+
+#### Method `greedy_simple`
+
+In this case all series are sorted in the beginning of the algorithm.
+Algorithm iterates over all not yet placed series and tries to append series to current group. Then not placed series are considered the step is completed.
+
+#### Method `greedy_correlations`
+
+Select first series in the subgroup arbitrarily.
+
+If some series already are placed in the subgroup then calculate aggregation function, specified in the `type` parameter for them. Then calculate correlations between aggregated series and each not yet placed series, and sort series in increasing order of correlations. Iterate over series starting from series with the least correlation, and try to append series to the subgroup. As some series appended, repeat all calculations: recalculate aggregated series, correlations coefficients, and try to add next series to the subgroup. The step is completed if no more series could be added to the subgroup.
+
+#### Approximate Query Example
+
+```json
+[{
+  "startDate": "2019-02-01T00:00:00Z",
+  "endDate":   "2019-02-08T00:00:00Z",
+  "entity": "*",
+  "metric": "lp_usage",
+  "group": {
+    "type": "SUM",
+    "period": {"count": 1, "unit": "HOUR"},
+    "interpolate": {"extend": true, "type": "LINEAR"},
+    "place": {
+      "entities": ["lp_group_1", "lp_group_2", "lp_group_3", "lp_group_4", "lp_group_5"],
+      "constraint": "max() < cpu_limit && sum(entity.memory_allocated) < memory_limit",
+      "method": "greedy_correlations"
+    }
+  }
+}]
+```
+
+#### Approximate Query Response
+
+```json
+[
+  {
+    "entity": "*",
+    "metric": "lp_usage",
+    "exactMatch": false,
+    "type": "HISTORY",
+    "meta": {
+      "groupScore": 0,
+      "series": [
+        {"entity": "lp_1", "tags": {}, "label": "lp_1"},
+        {"entity": "lp_2", "tags": {}, "label": "lp_2"},
+        {"entity": "lp_3", "tags": {}, "label": "lp_3"},
+        {"entity": "lp_5", "tags": {}, "label": "lp_5"}
+      ],
+      "name": "lp_1 lp_2 lp_3 lp_5",
+      "group-entity": "lp_group_1",
+      "grouping-tags": {"cpu_limit": "10", "memory_limit": "20"},
+      "totalScore": 0
+    },
+    "transformationOrder": ["GROUP"],
+    "group": {
+      "series": [ 
+        {"entity": "lp_1", "tags": {}, "label": "lp_1"},
+        {"entity": "lp_2", "tags": {}, "label": "lp_2"},
+        {"entity": "lp_3", "tags": {}, "label": "lp_3"},
+        {"entity": "lp_5", "tags": {}, "label": "lp_5"}
+      ],
+      "groupScore": 0,
+      "totalScore": 0,
+      "entity": "lp_group_1",
+      "tags": {"cpu_limit": "10", "memory_limit": "20"},
+      "type": "SUM",
+      "period": {"count": 1, "unit": "HOUR", "align": "CALENDAR"},
+      "interpolate": {"type": "LINEAR", "extend": true},
+      "truncate": false,
+      "place": {
+          "count": 0, 
+          "constraint": "max() < cpu_limit && sum(entity.memory_allocated) < memory_limit"
+      }
+    },
+    "data": [
+      {"d": "2019-02-07T23:00:00.000Z", "v": 9.000519124198814},
+      {"d": "2019-02-08T00:00:00.000Z", "v": 9.000519124198814}
+    ]
+  },
+  {
+    "entity": "*",
+    "metric": "lp_usage",
+    "exactMatch": false,
+    "type": "HISTORY",
+    "meta": {
+      "groupScore": 0,
+      "series": [
+        {"entity": "lp_4", "tags": {}, "label": "lp_4"},
+        {"entity": "lp_6", "tags": {}, "label": "lp_6"},
+        {"entity": "lp_7", "tags": {}, "label": "lp_7"}
+      ],
+      "name": "lp_4 lp_6 lp_7",
+      "group-entity": "lp_group_2",
+      "grouping-tags": {"cpu_limit": "8", "memory_limit": "40"},
+      "totalScore": 0
+    },
+    "transformationOrder": ["GROUP"],
+    "group": {
+      "series": [
+        {"entity": "lp_4", "tags": {}, "label": "lp_4"},
+        {"entity": "lp_6", "tags": {}, "label": "lp_6"},
+        {"entity": "lp_7", "tags": {}, "label": "lp_7"}
+      ],
+      "groupScore": 0,
+      "totalScore": 0,
+      "entity": "lp_group_2",
+      "tags": {"cpu_limit": "8", "memory_limit": "40"},
+      "type": "SUM",
+      "period": {"count": 1, "unit": "HOUR", "align": "CALENDAR"},
+      "interpolate": {"type": "LINEAR", "extend": true },
+      "truncate": false,
+      "place": {
+        "count": 0,
+        "constraint": "max() < cpu_limit && sum(entity.memory_allocated) < memory_limit"
+      }
+    },
+    "data": [
+      {"d": "2019-02-07T23:00:00.000Z", "v": 6},
+      {"d": "2019-02-08T00:00:00.000Z", "v": 6}
+    ]
+  },
+  ...
+]
 ```
