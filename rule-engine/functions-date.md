@@ -201,11 +201,11 @@ formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 elapsedTime(DateTime a, DateTime b) long
 ```
 
-Subtracts date `b` from date `a` and returns the interval in milliseconds. If one of the dates is `null`, the function returns `Long.MAX_VALUE` which is `9223372036854775807`.
+Subtracts date `a` from date `b` and returns the interval in milliseconds. If one of the dates is `null`, the function returns `Long.MAX_VALUE` which is `9223372036854775807`.
 
 ```javascript
-/* How many milliseconds passed between the time of the command and the time it was received */
-elapsedTime(add_time, command_time)
+/* How many milliseconds passed between the time of the command and the time it was added */
+elapsedTime(command_time, add_time)
 ```
 
 ### `elapsed_minutes`
