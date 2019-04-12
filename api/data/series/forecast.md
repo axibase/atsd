@@ -27,7 +27,9 @@ The example below produces a forecast for the next day using the Holt-Winters al
 
 For graphical examples, refer to [Forecasting](https://axibase.com/docs/charts/widgets/shared/#forecasting) settings in Axibase Charts.
 
-The forecast algorithms require for the input series to be regularized which requires an [`aggregation`](aggregate.md) or [`interpolation`](interpolate.md) transformation as in the example below.
+## Regularization
+
+The forecast algorithms need the input series to be regularized which requires a preceding [`aggregation`](aggregate.md), [`interpolation`](interpolate.md), or a [`group`](group.md) transformation as in the example below.
 
 ```json
 [{
@@ -47,6 +49,35 @@ The forecast algorithms require for the input series to be regularized which req
     "range": {"min": 0, "max": 100}
   }
 }]
+```
+
+* Aggregation
+
+```json
+"aggregate": {
+  "type": "AVG",
+  "period": { "count": 1, "unit": "HOUR" },
+  "interpolate" : { "type": "LINEAR" }  
+}
+```
+
+* Interpolation
+
+```json
+"interpolate" : {
+  "function": "LINEAR",
+  "period": { "count": 1, "unit": "HOUR" }
+}
+```
+
+* Grouping
+
+```json
+"group": {
+  "type": "SUM",
+  "period": { "count": 1, "unit": "HOUR"},
+  "interpolate": { "type": "PREVIOUS" }
+}
 ```
 
 ## Request Fields

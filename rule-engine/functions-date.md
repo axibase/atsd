@@ -378,6 +378,11 @@ df.format(add_time)          ->      2019-4월-12 14:20:00
 
 ![](./images/date_formatter.png)
 
+```javascript
+// format and add backticks for markdown
+df = NumberFormatter('`HH:mm:ss.SSS`')
+```
+
 ### `formatInterval`
 
 ```csharp

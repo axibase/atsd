@@ -184,7 +184,7 @@ Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is 
     "metric": "m-1",
     "group": {
       "type": "SUM",
-        "truncate": true
+      "truncate": true
     }
   }
 ]
@@ -282,18 +282,16 @@ The `interpolate` function is applied to two consecutive samples of the same ser
 Query:
 
 ```json
-[
-  {
+[{
     "startDate": "2016-06-25T08:00:00Z",
     "endDate":   "2016-06-25T08:01:00Z",
     "entities": ["e-1", "e-2"],
     "metric": "m-1",
     "group": {
       "type": "SUM",
-        "interpolate": { "type": "PREVIOUS" }
+      "interpolate": { "type": "PREVIOUS" }
     }
-  }
-]
+}]
 ```
 
 Response:

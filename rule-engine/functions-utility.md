@@ -99,11 +99,14 @@ toBoolean('On')
 ## `toNumber`
 
 ```csharp
-toNumber(string a) double
+toNumber(string a [, number defaultValue]) double
 ```
 
-Converts string `a` to floating-point number. If `a` is `null` or an empty string, the function returns `0.0`.
-If `a` cannot be parsed as a number, the function returns `Double.NaN`.
+Converts string `a` to decimal number.
+
+If the input is `null` or an empty string, the function returns `0.0` or the default value, if specified.
+
+If the input cannot be parsed as a number, the function returns `Double.NaN` or the default value, if specified.
 
 Value table:
 

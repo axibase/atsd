@@ -27,7 +27,7 @@ Related date formatting functions and objects:
 ### `formatNumber`
 
 ```csharp
-formatNumber(double x, string pattern) string
+formatNumber(number x, string pattern) string
 ```
 
 Formats number `x` with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) `pattern` using the server locale (US/US).
@@ -73,6 +73,11 @@ nf.format(3.1415)      ->       3.14
 ```
 
 ![](./images/number_formatter.png)
+
+```javascript
+// format and add backticks for markdown
+nf = NumberFormatter('`#,##0.0`')
+```
 
 ### `formatPrecision`
 
