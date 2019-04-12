@@ -110,7 +110,7 @@ The **Text** field supports [control flow](control-flow.md#control-flow) syntax 
 | Repeat Interval | Interval for sending `REPEAT` status notifications.<br>If **Repeat Interval** is set in time units, the exact interval can vary because the `REPEAT` notifications are triggered by incoming data.<br>In particular, `REPEAT` notifications are not sent if the incoming data flow ceases. |
 | Subject | Custom subject text, specified for each status separately.<br>The subject can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. <br>Note that the maximum allowed length of the subject is limited to several hundred characters in most email clients.|
 | Text | Custom message text, specified for each status separately.<br>The text can include placeholders with built-in fields, functions, and expressions, for example: `${round(avg())}`. |
-| Attach Details | Include a [summary table](window-fields.md#details-tables) with window statistics and action links. |
+| Attach Details | Include a [summary table](window-fields.md#detail-tables) with window statistics and action links. |
 | Attach Portals | One or more portal screenshots attached to the message as inline images.<br>If a portal is a template, placeholders such as entity, metric, tags are resolved from the window fields.<br> **Series Chart**: attach a screenshot containing series monitored by this rule. |
 
 ## Grouping
