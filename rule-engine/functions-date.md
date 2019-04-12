@@ -357,10 +357,10 @@ Related date parsing function: [`date_parse`](functions-date.md#date_parse)
 ### `DateFormatter`
 
 ```csharp
-DateFormatter(string pattern [, string timezone [, local]])
+DateFormatter(string pattern [, string timezone [, string locale]])
 ```
 
-Unlike functions, which convert an input `DateTime` or Unix milliseconds to a string, the `DateFormatter` is an object which is configured once as a variable and re-used to format any input into string using the same pattern, [timezone](../shared/timezone-list.md) and [locale](./locales.md).
+Unlike functions, which convert an input `DateTime` or Unix milliseconds to a string, the `DateFormatter` is an object which is configured once as a variable and re-used to format any input into string using the same pattern, [timezone](../shared/timezone-list.md) and [locale](./locales.md). Locale matching is **case-insensitive**.
 
 The formatter object provides two methods: `format()` and `print()` which return the same result.
 
