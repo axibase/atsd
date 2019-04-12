@@ -230,7 +230,6 @@ Compares tags in the received `property` command with the previous (stored) comm
 
 * The map includes changed keys as well as keys that are present in one command and absent in the other command.
 * The map is empty if no differences are present.
-* The values are compared in **case-insensitive** manner.
 
 :::tip Scope
 The function is supported by rules with `property` data type.

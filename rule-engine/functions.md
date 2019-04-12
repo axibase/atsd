@@ -69,6 +69,11 @@ Name | Description
 ---|---
 [`contains`](functions-collection.md#contains)| Returns `true` if string on the right is contained in the specified collection.
 [`excludeKeys`](functions-collection.md#excludekeys)| Returns a copy of the input map without the keys in the input collection.
+[`copyList`](functions-collection.md#copylist)| Copy a list.
+[`copyMap`](functions-collection.md#copymap)| Copy a map.
+[`createMap`](functions-collection.md#createmap)| Create a new map.
+[`compareMaps`](functions-collection.md#comparemaps)| Compare two maps.
+[`mergeMaps`](functions-collection.md#mergemaps)| Merge two maps.
 [`flattenJson`](functions-json.md#flattenjson)| Converts the string representation of JSON document into a map.
 [`IN`](functions-collection.md#in) | Returns `true` if string on the left is contained in the list of strings on the right.
 [`isEmpty`](functions-collection.md#isempty)| Returns `true` if the number of elements in the collection is zero.
@@ -367,11 +372,6 @@ Name | Description
 [`toBoolean`](functions-utility.md#toboolean)| Converts the input string or number to a boolean value.
 [`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
 [`agent_to_host`](functions-utility.md#agent_to_host)| Extract hostname from ITM agent name.
-[`copyList`](functions-utility.md#copylist)| Copy a list.
-[`copyMap`](functions-utility.md#copymap)| Copy a map.
-[`createMap`](functions-utility.md#createmap)| Create a new map.
-[`compareMaps`](functions-utility.md#comparemaps)| Compare two maps.
-[`mergeMaps`](functions-utility.md#mergemaps)| Merge two maps.
 
 ## Value
 

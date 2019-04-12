@@ -26,6 +26,11 @@ collection('oncall-emails')
 * [`contains`](#contains)
 * [`size`](#size)
 * [`isEmpty`](#isempty)
+* [`copyList`](#copylist)
+* [`copyMap`](#copymap)
+* [`createMap`](#createmap)
+* [`compareMaps`](#comparemaps)
+* [`mergeMaps`](#mergemaps)
 * [`excludeKeys`](#excludekeys)
 
 ### `IN`
@@ -178,6 +183,50 @@ Example:
 ```javascript
 collection('ip_white_list').isEmpty()
 ```
+
+## `compareMaps`
+
+```csharp
+compareMaps(map a, map b [, boolean ignoreEmpty])
+```
+
+Compares two maps and returns a map consisting of keys with differences in values. The difference is a string created using the `'old_value' -> 'new_value'` pattern.
+
+The values are compared in **case-insensitive** manner.
+
+If `ignoreEmpty` argument is `false`, the returned map contains keys that are present in one map and absent in the other map.
+
+## `copyList`
+
+```csharp
+copyList(list a) list
+```
+
+Returns a copy of the input list.
+
+## `copyMap`
+
+```csharp
+copyMap(map a) map
+```
+
+Returns a copy of the input map.
+
+## `createMap`
+
+```csharp
+createMap() map
+```
+
+Returns an empty map.
+
+## `mergeMaps`
+
+```csharp
+mergeMaps(map a, map b) map
+```
+
+Returns a **new** map consisting of entries from both maps `a` and `b`. If the key is present in both maps, the key from map `b` overrides the key in map `a`.
 
 ### `excludeKeys`
 
