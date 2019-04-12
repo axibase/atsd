@@ -13,7 +13,7 @@ View the list of available window date fields [here](./window-fields.md#date-fie
 * [`DateFormatter`](#dateformatter)
 * [`elapsed_minutes`](#elapsed_minutes)
 * [`elapsedTime`](#elapsedtime)
-* [`elapsedTime for DateTime`](#elapsedtime_for_datetime)
+* [`elapsedTime for DateTime`](#elapsedtime-for-datetime)
 * [`formatInterval`](#formatinterval)
 * [`formatIntervalShort`](#formatintervalshort)
 * [`formatSecondOffset`](#formatsecondoffset)
@@ -204,7 +204,7 @@ elapsedTime(DateTime a, DateTime b) long
 Subtracts date `b` from date `a` and returns the interval in milliseconds. If one of the dates is `null`, the function returns `Long.MAX_VALUE` which is `9223372036854775807`.
 
 ```javascript
-/* How many milliseconds passed between the time of the command and the time it was received */
+/* How many milliseconds passed between the time of the command and the time it has been received */
 elapsedTime(add_time, command_time)
 ```
 
@@ -357,10 +357,10 @@ Related date parsing function: [`date_parse`](functions-date.md#date_parse)
 ### `DateFormatter`
 
 ```csharp
-DateFormatter(string pattern [, string timezone [, local]])
+DateFormatter(string pattern [, string timezone [, string locale]])
 ```
 
-Unlike functions, which convert an input `DateTime` or Unix milliseconds to a string, the `DateFormatter` is an object which is configured once as a variable and re-used to format any input into string using the same pattern, [timezone](../shared/timezone-list.md) and [locale](./locales.md).
+Unlike functions, which convert an input `DateTime` or Unix milliseconds to a string, the `DateFormatter` is an object which is configured once as a variable and re-used to format any input into string using the same pattern, [time zone](../shared/timezone-list.md) and [locale](./locales.md). Locale matching is **case-insensitive**.
 
 The formatter object provides two methods: `format()` and `print()` which return the same result.
 
