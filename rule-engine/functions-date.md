@@ -373,7 +373,7 @@ df = DateFormatter('yyyy-MMM-dd HH:mm:ss', 'Asia/Seoul', 'KOREAN')
 
 ```javascript
 // formatter is used to format dates
-df.format(add_time)          ->      2019-Jan-01 14:00:00
+df.format(add_time)          ->      2019-4월-12 14:20:00
 ```
 
 ![](./images/date_formatter.png)

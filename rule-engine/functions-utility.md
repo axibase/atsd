@@ -3,6 +3,11 @@
 ## Reference
 
 * [`agent_to_host`](#agent_to_host)
+* [`copyList`](#copylist)
+* [`copyMap`](#copymap)
+* [`createMap`](#createmap)
+* [`compareMaps`](#comparemaps)
+* [`mergeMaps`](#mergemaps)
 * [`ifEmpty`](#ifempty)
 * [`toBoolean`](#toboolean)
 * [`toNumber`](#tonumber)
@@ -116,7 +121,7 @@ Input | Type | Result
 `0` | number | `0.0`
 `1` | number | `1.0`
 
-## compareMaps
+## `compareMaps`
 
 ```csharp
 compareMaps(map a, map b [, boolean ignoreEmpty])

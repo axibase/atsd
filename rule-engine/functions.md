@@ -187,6 +187,7 @@ Name | Description
 ---|---
 [`add`](object-datetime.md#add-function) |Returns a [`DateTime`](object-datetime.md) object created by adding an interval.
 [`date_format`](functions-date.md#date_format)| Converts Unix time in milliseconds or a [`DateTime`](object-datetime.md) object to a string.
+[`DateFormatter`](functions-date.md#dateformatter)| Creates a formatter object to convert Unix times in milliseconds or [`DateTime`](object-datetime.md) objects to strings.
 [`date_parse`](functions-date.md#date_parse)|  Parses the input string into a [`DateTime`](object-datetime.md) object.
 [`elapsed_minutes`](functions-date.md#elapsed_minutes)|  Calculates the number of minutes between the current and specified time.
 [`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
@@ -216,6 +217,7 @@ Name | Description
 [`convert`](functions-format.md#convert)| Divides the number by the unit and formats with one fractional digit.
 [`formatBytes`](functions-format.md#formatbytes)| Returns the total number of bytes in human-readable format.
 [`formatNumber`](functions-format.md#formatnumber)| Formats number with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) using the server locale.
+[`NumberFormatter`](functions-format.md#numberformatter)| Creates a formatter object to convert numbers to strings.
 
 ## Mathematical
 
@@ -365,6 +367,11 @@ Name | Description
 [`toBoolean`](functions-utility.md#toboolean)| Converts the input string or number to a boolean value.
 [`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
 [`agent_to_host`](functions-utility.md#agent_to_host)| Extract hostname from ITM agent name.
+[`copyList`](functions-utility.md#copylist)| Copy a list.
+[`copyMap`](functions-utility.md#copymap)| Copy a map.
+[`createMap`](functions-utility.md#createmap)| Create a new map.
+[`compareMaps`](functions-utility.md#comparemaps)| Compare two maps.
+[`mergeMaps`](functions-utility.md#mergemaps)| Merge two maps.
 
 ## Value
 
