@@ -10,8 +10,10 @@ View the list of available window date fields [here](./window-fields.md#date-fie
 
 * [`date_parse`](#date_parse)
 * [`date_format`](#date_format)
+* [`DateFormatter`](#dateformatter)
 * [`elapsed_minutes`](#elapsed_minutes)
 * [`elapsedTime`](#elapsedtime)
+* [`elapsedTime for DateTime`](#elapsedtime_for_datetime)
 * [`formatInterval`](#formatinterval)
 * [`formatIntervalShort`](#formatintervalshort)
 * [`formatSecondOffset`](#formatsecondoffset)
@@ -193,6 +195,19 @@ Format the interval in milliseconds with [`formatInterval`](functions-date.md#fo
 formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 ```
 
+### `elapsedTime for DateTime`
+
+```csharp
+elapsedTime(DateTime a, DateTime b) long
+```
+
+Subtracts date `b` from date `a` and returns the interval in milliseconds. If one of the dates is `null`, the function returns `Long.MAX_VALUE` which is `9223372036854775807`.
+
+```javascript
+/* How many milliseconds passed between the time of the command and the time it was received */
+elapsedTime(add_time, command_time)
+```
+
 ### `elapsed_minutes`
 
 ```csharp
@@ -339,13 +354,39 @@ date_format(milliseconds('2018-01-09T14:23.40Z'), "yyyy-MM-dd HH:mm:ss.SSS ZZZ",
 Related date parsing function: [`date_parse`](functions-date.md#date_parse)
 :::
 
+### `DateFormatter`
+
+```csharp
+DateFormatter(string pattern [, string timezone [, local]])
+```
+
+Unlike functions, which convert an input `DateTime` or Unix milliseconds to a string, the `DateFormatter` is an object which is configured once as a variable and re-used to format any input into string using the same pattern, [timezone](../shared/timezone-list.md) and [locale](./locales.md).
+
+The formatter object provides two methods: `format()` and `print()` which return the same result.
+
+Example:
+
+```javascript
+// formatter is initialized as variable
+df = DateFormatter('yyyy-MMM-dd HH:mm:ss', 'Asia/Seoul', 'KOREAN')
+```
+
+```javascript
+// formatter is used to format dates
+df.format(add_time)          ->      2019-Jan-01 14:00:00
+```
+
+![](./images/date_formatter.png)
+
 ### `formatInterval`
 
 ```csharp
 formatInterval(long interval) string
 ```
 
-Converts interval in Unix time measured in milliseconds to a formatted interval consisting of non-zero years, days, hours, minutes, and seconds.
+Converts interval in Unix time measured in milliseconds to a string consisting of **non-zero** time units, where the unit is year, day, hour, minute, and second.
+
+If the interval is less than one second, the function returns `0s`.
 
 Examples:
 
@@ -364,7 +405,9 @@ formatInterval(elapsedTime(milliseconds(tags.last_updated)))
 formatIntervalShort(long interval) string
 ```
 
-Converts interval measured in milliseconds to a formatted interval consisting of up to the two highest subsequent non-zero time units, where the unit comprises years, days, hours, minutes, and seconds.
+Converts interval in Unix time measured in milliseconds to a string consisting of up to the **two** highest subsequent non-zero time units, where the unit is year, day, hour, minute, and second.
+
+If the interval is less than one second, the function returns `0s`.
 
 Examples:
 

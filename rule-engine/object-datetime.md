@@ -33,6 +33,21 @@ To compare the date with current time, use the [`elapsedTime`](./functions-date.
 elapsedTime(add_time) < 5*60000
 ```
 
+To calculate the interval between the two `DateTime` objects, the [`elapsedTime`](./functions-date.md#elapsedtime) function.
+
+```javascript
+// Return the number of milliseconds between add_time and command_time
+elapsedTime(add_time, command_time) < 5*60000
+```
+
+The `DateTime` objects can be compared in boolean conditions, for example in the notification [control flow](./control-flow.md) statements.
+
+```java
+@if{command_time > add_time}
+Command has future timestamp: `${command_time}` / `${add_time}` / `${now}`
+@end{}
+```
+
 ## Time Zone
 
 By default, a `DateTime` object is initialized in **server** time zone.
