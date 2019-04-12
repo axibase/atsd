@@ -1,4 +1,4 @@
-# Window Fields
+# Window and Command Fields
 
 ## Overview
 
@@ -6,18 +6,11 @@ Each window maintains a set of continuously updated fields which can be used in 
 
 ## Base Fields
 
+## Window Fields
+
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
 `rule` | string | Rule name. | `memory_low`
-`metric` | string | Metric name. | `memory_free`
-`entity` | string | Entity name. | `nurswgvml007`
-`tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `[memtype: buffered]`
-`tags.memtype` | string | Command tag by name. | `buffered`
-`entity.displayName` | string | Entity label, if not empty. Otherwise, entity name. | `NURswgvml007`
-`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `[version: std]`
-`entity.tags.version` | string | Entity tag by name. | `community`
-`entity.label` | string | Entity field by name. | `NURswgvml007`
-`metric.label` | string | Metric field by name. | `Memory Free, Bytes`
 `rule_filter` | string | Filter expression. | `entity != 'nurswghbs001'`
 `window` | string | Window type and duration. | `length(1)`
 `before_status` | string | Window status **before** the condition is evaluated.<br>**Accessible** in condition. | `OPEN`, `REPEAT`, or `CANCEL`
@@ -27,15 +20,31 @@ Each window maintains a set of continuously updated fields which can be used in 
 `repeat_count` | integer | Number of consecutive `true` results.<br>**Not accessible** in condition. | `4`
 `severity` | string | Alert severity.<br>**Not accessible** in condition. | `WARNING`
 `delay_expired` | boolean | Delay expiration status.<br>Set to `true` if notifications triggered after delay.<br>**Not accessible** in condition. | `true`
+`metric` | string | Metric name. | `memory_free`
+`metric.label` | string | Metric field by name. | `Memory Free, Bytes`
+`window_entity` | string | Entity name if [grouping](grouping.md) by entity is enabled. | `nurswgvml007`
+`window_tags` | map | Windows tags if [grouping](grouping.md) by tags is enabled, serialized as `[key1: val1, key2: val2]`. | `[location: SVL]`
 
-## Series Fields
+## Command Fields
+
+**Name**|**Type**|**Description**|**Example**
+:---|---|---|:---
+`entity` | string | Entity specified in the command. | `nurswgvml007`
+`entity.displayName` | string | Entity label, if not empty. Otherwise, entity name. | `NURswgvml007`
+`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `[version: std]`
+`entity.tags.version` | string | Entity tag by name. | `community`
+`entity.label` | string | Entity field by name. | `NURswgvml007`
+`tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `[memtype: buffered]`
+`tags.memtype` | string | Command tag by name. | `buffered`
+
+### Series Fields
 
 |**Name**|**Type**|**Description**|**Example**|
 |---|---|---|--|
 | `value` | number | Last value | `3.1415` |
 | `open_value` | number | First value | `1.0` |
 
-## Message Fields
+### Message Fields
 
 |**Name**|**Type**|**Description**|
 |---|---|---|
@@ -48,7 +57,7 @@ Notes:
 * The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
 * Alert `severity` value is inherited from message `severity` when **Logging: Severity** is set to **Undefined**.
 
-## Properties Fields
+### Properties Fields
 
 |**Name**|**Type**|**Description**|
 |---|---|---|

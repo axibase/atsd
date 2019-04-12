@@ -2,49 +2,19 @@
 
 ## Short List
 
-The list is comprised of time zone identifiers consisting of up to 3 characters.
+Supported short time zone identifiers consisting of 3 characters. Other short identifiers such as `PST` are no longer accepted due to possible conflicts.
 
 | **Offset** | **Time Zone ID** | **Time Zone Name** |
 |:---|:---|:---|
-| GMT-10:00 | HST | Hawaii Standard Time |
-| GMT-08:00 | AST | Alaska Standard Time |
-| GMT-07:00 | MST | Mountain Standard Time |
-| GMT-07:00 | PNT | Mountain Standard Time |
-| GMT-07:00 | PST | Pacific Standard Time |
-| GMT-05:00 | CST | Central Standard Time |
-| GMT-05:00 | EST | Eastern Standard Time |
-| GMT-04:00 | IET | Eastern Standard Time |
-| GMT-04:00 | PRT | Atlantic Standard Time |
-| GMT-03:00 | AGT | Argentine Time |
-| GMT-03:00 | BET | Brasilia Time |
-| GMT-02:30 | CNT | Newfoundland Standard Time |
 | GMT+00:00 | GMT | Greenwich Mean Time |
-| GMT+00:00 | UCT | Coordinated Universal Time |
 | GMT+00:00 | UTC | Coordinated Universal Time |
-| GMT+01:00 | GB  | Greenwich Mean Time |
+| GMT+00:00 | UCT | Coordinated Universal Time |
 | GMT+01:00 | WET | Western European Time |
-| GMT+02:00 | ART | Eastern European Time |
-| GMT+02:00 | CAT | Central African Time |
 | GMT+02:00 | CET | Central European Time |
-| GMT+02:00 | ECT | Central European Time |
 | GMT+02:00 | MET | Middle Europe Time |
-| GMT+03:00 | EAT | Eastern African Time |
 | GMT+03:00 | EET | Eastern European Time |
-| GMT+04:00 | NET | Armenia Time |
-| GMT+05:00 | PLT | Pakistan Time |
-| GMT+05:30 | IST | India Standard Time |
-| GMT+06:00 | BST | Bangladesh Time |
-| GMT+07:00 | VST | Indochina Time |
-| GMT+08:00 | CTT | China Standard Time |
-| GMT+08:00 | PRC | China Standard Time |
-| GMT+09:00 | JST | Japan Standard Time |
-| GMT+09:00 | ROK | Korea Standard Time |
-| GMT+09:30 | ACT | Australian Central Standard Time (Northern Territory) |
-| GMT+11:00 | AET | Australian Eastern Standard Time (New South Wales) |
-| GMT+11:00 | SST | Solomon Is. Time |
-| GMT+13:00 | NST | New Zealand Standard Time |
-| GMT+13:00 | NZ  | New Zealand Standard Time |
-| GMT+14:00 | MIT | West Samoa Standard Time |
+| GMT+08:00 | PRC | China Time |
+| GMT+09:00 | ROK | Korea Time |
 
 ## Full List
 
