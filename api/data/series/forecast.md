@@ -27,6 +27,28 @@ The example below produces a forecast for the next day using the Holt-Winters al
 
 For graphical examples, refer to [Forecasting](https://axibase.com/docs/charts/widgets/shared/#forecasting) settings in Axibase Charts.
 
+The forecast algorithms require for the input series to be regularized which requires an [`aggregation`](aggregate.md) or [`interpolation`](interpolate.md) transformation as in the example below.
+
+```json
+[{
+  "startDate": "2019-04-01T00:00:00Z",
+  "endDate": "2019-04-12T00:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "aggregate": {
+    "type": "AVG",
+    "period": { "count": 1, "unit": "HOUR" }
+  },
+  "forecast": {
+    "horizon": {
+      "interval": { "count": 1, "unit": "DAY" }
+    },
+    "hw": { "auto": true },
+    "range": {"min": 0, "max": 100}
+  }
+}]
+```
+
 ## Request Fields
 
 The request fields described below must be included inside the `forecast` object.
@@ -78,6 +100,7 @@ Examples:
 |:---|:---|:---|
 | `include` | array | Include input series, forecast, and reconstructed series into response.<br>Allowed values: `FORECAST`, `HISTORY`, `RECONSTRUCTED`.<br>Default value: `FORECAST`.|
 | `scoreInterval` | object | Interval for scoring the produced forecasts in auto-parameter mode. Specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 1, "unit": "DAY"}`.<br>For SSA, the default value is the minimum of the horizon interval and `1/3` of the input series duration.<br>For ARIMA and Holt-Winters the default value is `1/4` of the input series duration.|
+| `range` | object | Minimum and maximum value range.<br>If forecast value exceeds `max`, such value is replaced with `max`. If forecast value is below `min`, such value is replaced with `min`. |
 
 Examples:
 
@@ -90,6 +113,12 @@ Examples:
 ```json
 "forecast": {
   "scoreInterval": {"count": 1, "unit": "DAY"}
+}
+```
+
+```json
+"forecast": {
+  "range": {"min": 0, "max": 100}
 }
 ```
 
