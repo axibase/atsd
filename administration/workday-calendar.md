@@ -12,10 +12,10 @@ Each calendar is assigned a unique key which can be accessed in the rule engine 
 
 ### Rule Engine
 
-* [`is_workday`](object-datetime.md#is_workday-function) function
-* [`is_weekday`](object-datetime.md#is_weekday-function) function
-* [`is_weekend`](object-datetime.md#is_weekend-function) function
-* [`DateTime`](object-datetime.md#fields) fields: `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day`.
+* [`is_workday`](../rule-engine/object-datetime.md#is_workday-function) function
+* [`is_weekday`](../rule-engine/object-datetime.md#is_weekday-function) function
+* [`is_weekend`](../rule-engine/object-datetime.md#is_weekend-function) function
+* [`DateTime`](../rule-engine/object-datetime.md#fields) fields: `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day`.
 
 ```javascript
 now.is_workday()
@@ -46,7 +46,7 @@ WHERE time >= current_year
 
 By default, the database contains pre-defined workday calendars for several countries for years 2018-2019.
 
-Calendars can be modified and maintained by appending dates for prior and future years without [restarting the database](../administration/restarting.md).
+Calendars can be modified and maintained by appending dates for prior and future years without restarting the database.
 
 Once installed, the calendars are **not** updated as part of the database update process. To install new calendars, download them from the table below and [import](#importing-calendar) the files into your ATSD instance.
 
