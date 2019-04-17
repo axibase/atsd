@@ -79,10 +79,10 @@ The `tags` field for the `property` command contains the `keys` map and the `typ
 `repeat_time` | `DateTime` | Last time when the condition evaluated to `true`, equal to `open_time` when the status changes to `OPEN`.
 `cancel_time` | `DateTime` | Time when the window changed status to `CANCEL`, or when the condition evaluated to `false` for the first time.
 `change_time` | `DateTime` | Last time when the window changed status.
-`add_time` | `DateTime` | Last time when command was added to window.
-`remove_time` | `DateTime` | Last time when command was removed from the window.
-`update_time` | `DateTime` | Last time when command was added or removed from the window.
-`command_time` | `DateTime` | Time of the command that was last added or removed from the window.
+`add_time` | `DateTime` | Last time when command added to window.
+`remove_time` | `DateTime` | Last time when command removed from the window.
+`update_time` | `DateTime` | Last time when command added or removed from the window.
+`command_time` | `DateTime` | Time of the most recently added or removed command.
 `command_first_time` | `DateTime` | Time of the command with the smallest timestamp in the window.<br>`null` if the window is empty.
 `command_last_time` | `DateTime` | Time of the command with the largest timestamp in the window.<br>`null` if the window is empty.
 `window_duration` | `long` | Difference between `command_last_time` and `command_first_time` measured in milliseconds.<br>`0` if the window is empty.

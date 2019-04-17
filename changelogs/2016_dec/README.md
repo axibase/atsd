@@ -256,7 +256,7 @@ Previous result:
 | date_format(period(1 MONTH)) | sum(value) | count(value) |
 |------------------------------|------------|--------------|
 | 2016-09-01T00:00:00.000Z     | 537.0      | 4.0          |
-| 2016-10-01T00:00:00.000Z     | 0.0        | 0.0          | <- this period was added by interpolation set in period(1 MONTH, VALUE 0), after HAVING.
+| 2016-10-01T00:00:00.000Z     | 0.0        | 0.0          | <- this period added by interpolation set in period(1 MONTH, VALUE 0), after HAVING.
 | 2016-11-01T00:00:00.000Z     | 234.0      | 4.0          |
 ```
 

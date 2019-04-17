@@ -19,6 +19,7 @@ backend
 backticks
 Base64
 Base64-encoded
+bigint
 bioreactor
 boolean
 cancelled
@@ -241,6 +242,7 @@ untrusted
 url
 url-encoded
 validator
+varchar
 version(ed|ing)
 vs
 vscode

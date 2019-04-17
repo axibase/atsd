@@ -182,7 +182,7 @@ To print specific messages, iterate through the list manually:
 ### `db_message_count` Examples
 
 ```javascript
-/* Checks if the average exceeds 20 and the 'compaction' message was not received
+/* Checks if the average exceeds 20 and the 'compaction' message is not received
 within the last hour for the current entity. */
 avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
 
