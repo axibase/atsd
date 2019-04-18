@@ -6,7 +6,7 @@ Inserts a property record with specified type, keys, and tags for a given entity
 
 Entity, property type, and property keys (`k:` fields) form a composite primary key of the property record in the database, whereas tags (`v:` fields) are stored as additional attributes.
 
-When a property record is inserted into the database, it overwrites an existing record with the same composite primary key: **entity+type[+key]**.
+When inserted into the database, the property record overwrites specific tags of the stored record with the same primary key: **entity+type[+key]**.
 
 ## Syntax
 
@@ -19,6 +19,7 @@ property e:${entity} t:${type} k:${key-1}=${value} k:${key-2}=${value} v:${tag-1
 * Tag names can duplicate key names, for example `{tag-1}` can be equal to `{key-1}`.
 * At least one tag is required, for example, command `property e:e1 t:t1 k:k1=v1` is not valid.
 * Tags with empty values are ignored, for example `t2` is ignored in command `property e:e1 t:t1 v:t1=v1 v:t2=""`.
+* To delete a stored tag, specify `null`, for example `property e:e1 t:t1 v:t1=null v:t2=v2`.
 
 ```ls
 # input command
@@ -82,4 +83,10 @@ property e:server-001 t:operating_system v:type=Linux d:2018-03-04T12:43:20Z
 
 ```ls
 property e:server-001 t:$entity_tags v:location=SVL d:2018-03-04T12:43:20Z
+```
+
+Delete the `fs_type` tag.
+
+```ls
+property e:server-001 t:disk-config k:mount_point=/ k:name=sda1 v:fs_type=null
 ```

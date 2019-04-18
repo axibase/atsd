@@ -10,18 +10,24 @@ Number formatting functions:
 
 * [`formatNumber`](#formatnumber)
 * [`formatBytes`](#formatbytes)
+* [`formatPrecision`](#formatprecision)
 * [`convert`](#convert)
 
-Related date formatting functions:
+Number formatting objects:
+
+* [`NumberFormatter`](#numberformatter)
+
+Related date formatting functions and objects:
 
 * [`date_format`](functions-date.md#date_format)
 * [`formatInterval`](functions-date.md#formatinterval)
 * [`formatIntervalShort`](functions-date.md#formatintervalshort)
+* [`DateFormatter`](functions-date.md#dateformatter)
 
 ### `formatNumber`
 
 ```csharp
-formatNumber(double x, string pattern) string
+formatNumber(number x, string pattern) string
 ```
 
 Formats number `x` with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) `pattern` using the server locale (US/US).
@@ -31,6 +37,64 @@ Example:
 ```javascript
 // returns 3.14
 formatNumber(3.14159, '#.##')
+```
+
+```txt
+1234.5678    #.##        ->    1234.56
+1234.5678    #.###       ->    1234.567
+1234.5678    #,###.###   ->   1,234.567
+   0.5678    #.##        ->        .56
+   0.5678    0.##        ->       0.56
+  10         #.#         ->      10
+  10         #.0         ->      10.0  
+```
+
+### `NumberFormatter`
+
+```csharp
+NumberFormatter(string pattern [, string locale])
+```
+
+Unlike functions, which convert an input number to a string, the `NumberFormatter` is an object which is configured once as a variable and re-used to format any number into string using the same pattern and [locale](./locales.md).
+
+The formatter object provides two methods: `format()` and `print()` which return the same result.
+
+Example:
+
+```javascript
+// formatter is initialized as variable
+nf = NumberFormatter('0.00')
+```
+
+```javascript
+// formatter is used to format numbers
+nf.format(10)          ->      10.00
+nf.format(3.1415)      ->       3.14
+```
+
+![](./images/number_formatter.png)
+
+```javascript
+// format and add backticks for markdown
+nf = NumberFormatter('`#,##0.0`')
+```
+
+### `formatPrecision`
+
+```csharp
+formatPrecision(double x, int digits) string
+```
+
+Formats number `x` based on [`toPrecision`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision) rules.
+
+The `digits` must be between `1` and `100`.
+
+Example:
+
+```javascript
+formatPrecision(3.14159265, 3)     // 3.14
+formatPrecision(3.14159265, 4)     // 3.142
+formatPrecision(10, 4)             // 10.00
 ```
 
 ### `formatBytes`

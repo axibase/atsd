@@ -114,16 +114,17 @@ By default, the search is performed for the current entity that is initialized i
 
 Optional start `date` argument controls which property records to include. If specified, only property records received **on or after** the start date are included. The start `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the `entity` argument must be specified as well.
 
-Search `expression` can include only the property type (without key and tag parts). Omit the `{tag_name}` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags are returned.
+To load all keys and tags, use `*` wildcard instead of specific tag name.
 
 Supported syntax options:
 
-* `{property_type}`
-* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:`
+* `{property_type}::*`
+* `{property_type}::{tag_name}`
 * `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*`
+* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:{tag_name}`
 * `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*abc*`
 
-Returns an empty map if the entity, property or tag is not found.
+Returns an empty map if the entity, property or searched tag is not found.
 
 Examples:
 
@@ -134,13 +135,13 @@ property_map('configuration::cpu*')
 
 ```javascript
 /* Returns map of the 'configuration' type for the entity 'nurswgvml007' */
-property_map('nurswgvml007','configuration::')
+property_map('nurswgvml007','configuration::*')
 ```
 
 ```javascript
 /* Returns map if the most recent property record received later than 00:00:00 of the current day,
 otherwise returns an empty map */
-property_map('nurswgvml007','configuration::', 'today')
+property_map('nurswgvml007','configuration::*', 'today')
 ```
 
 ### `property_maps`
@@ -155,16 +156,9 @@ By default, the search is performed for the current entity that is initialized i
 
 Optional start `date` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start `date` can be an [ISO format](../shared/date-format.md) date or a [calendar keyword](../shared/calendar.md#keywords). If `date` is specified, the `entity` argument must be specified as well.
 
-Search expression `s` can include only the property type without key-value pairs. Omit `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case the function returns all keys and tags.
+Search expression `s` can include only the property type without key-value pairs.
 
-Supported syntax options:
-
-* `{property_type}`
-* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:`
-* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*`
-* `{property_type}:[{key_name}={key_value}[,{key_name}={key_value}]]:*abc*`
-
-Returns an empty list if the entity, property or tag is not found.
+Refer to [`property_map`](#property_map) function above for more syntax options.
 
 To access the `n`-th map in the list, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element.
 
@@ -236,7 +230,6 @@ Compares tags in the received `property` command with the previous (stored) comm
 
 * The map includes changed keys as well as keys that are present in one command and absent in the other command.
 * The map is empty if no differences are present.
-* The values are compared in **case-insensitive** manner.
 
 :::tip Scope
 The function is supported by rules with `property` data type.

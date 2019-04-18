@@ -2,11 +2,11 @@
 
 ## Overview
 
-`DateTime` objects represent a specific date and time. The object provides fields to extract various calendar units and functions to perform calendar arithmetic.
+A `DateTime` object represents a specific date and time. The object provides fields to extract calendar units and functions to perform calendar arithmetic.
 
-Retrieve `DateTime` objects from [window fields](#window-fields) such as `now` or `command_time`, or by instantiating new objects using [`to_datetime`](./functions-date.md#to_datetime) function.
+`DateTime` objects can be retrieved from [window fields](./window-fields.md#date-fields) and by creating new objects using the [`to_datetime`](./functions-date.md#to_datetime) function. In addition, special date objects such as `now` are available to access the current server time.
 
-When printed as text, a `DateTime` object is formatted as [ISO date](../shared/date-format.md) with additional time zone information.
+When printed as text, a `DateTime` object is formatted as [ISO date](../shared/date-format.md) with additional time zone details.
 
 ```ls
 ${now} --> 2018-08-17T15:13:16.946Z[Etc/UTC]
@@ -17,6 +17,35 @@ To format the `DateTime` object using a different pattern or time zone, use the 
 ```javascript
 // Jan-09 15:23
 date_format(command_time, "MMM-dd HH:mm", "US/Pacific")
+```
+
+To compare two dates, use the `millis` field.
+
+```javascript
+// Check the difference between open and command times
+command_time.millis - open_time.millis > 15000
+```
+
+To compare the date with current time, use the [`elapsedTime`](./functions-date.md#elapsedtime) function.
+
+```javascript
+// Check if any command arrived within the 5 minutes
+elapsedTime(add_time) < 5*60000
+```
+
+To calculate the interval between the two `DateTime` objects, the [`elapsedTime`](./functions-date.md#elapsedtime) function.
+
+```javascript
+// Return the number of milliseconds between add_time and command_time
+elapsedTime(add_time, command_time) < 5*60000
+```
+
+The `DateTime` objects can be compared in boolean conditions, for example in the notification [control flow](./control-flow.md) statements.
+
+```java
+@if{command_time > add_time}
+Command has future timestamp: `${command_time}` / `${add_time}` / `${now}`
+@end{}
 ```
 
 ## Time Zone
@@ -64,15 +93,6 @@ The table below enumerates available `DateTime` object fields and their values f
 |`is_exceptionday('usa')`|`false`|
 
 Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` are calculated based on the [workday calendar](workday-calendar.md) specified in `default.holiday.calendar` server property.
-
-## Window Fields
-
-|**Field**| **Description** |
-|:---|---:|
-| `now` | `DateTime` object that contains **current** server time. |
-| `today` | `DateTime` object that contains **midnight** of the **current day** in server time zone. |
-| `yesterday` | `DateTime` object that contains **midnight** of the **previous day** in server time zone. |
-| `tomorrow` | `DateTime` object that contains **midnight** of the **next day** in server time zone. |
 
 ## Functions
 

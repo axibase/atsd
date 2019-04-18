@@ -4,7 +4,7 @@ Response actions support the following syntax options for conditional processing
 
 ## Conditional Processing
 
-Use `@if/@else/@end` syntax for conditional processing.
+Use `@if/@else/@end` syntax (orb tags) for conditional processing.
 
 `@if` and `@else` branches accept boolean conditions.
 

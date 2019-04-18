@@ -69,6 +69,11 @@ Name | Description
 ---|---
 [`contains`](functions-collection.md#contains)| Returns `true` if string on the right is contained in the specified collection.
 [`excludeKeys`](functions-collection.md#excludekeys)| Returns a copy of the input map without the keys in the input collection.
+[`copyList`](functions-collection.md#copylist)| Copy a list.
+[`copyMap`](functions-collection.md#copymap)| Copy a map.
+[`createMap`](functions-collection.md#createmap)| Create a new map.
+[`compareMaps`](functions-collection.md#comparemaps)| Compare two maps.
+[`mergeMaps`](functions-collection.md#mergemaps)| Merge two maps.
 [`flattenJson`](functions-json.md#flattenjson)| Converts the string representation of JSON document into a map.
 [`IN`](functions-collection.md#in) | Returns `true` if string on the left is contained in the list of strings on the right.
 [`isEmpty`](functions-collection.md#isempty)| Returns `true` if the number of elements in the collection is zero.
@@ -187,6 +192,7 @@ Name | Description
 ---|---
 [`add`](object-datetime.md#add-function) |Returns a [`DateTime`](object-datetime.md) object created by adding an interval.
 [`date_format`](functions-date.md#date_format)| Converts Unix time in milliseconds or a [`DateTime`](object-datetime.md) object to a string.
+[`DateFormatter`](functions-date.md#dateformatter)| Creates a formatter object to convert Unix times in milliseconds or [`DateTime`](object-datetime.md) objects to strings.
 [`date_parse`](functions-date.md#date_parse)|  Parses the input string into a [`DateTime`](object-datetime.md) object.
 [`elapsed_minutes`](functions-date.md#elapsed_minutes)|  Calculates the number of minutes between the current and specified time.
 [`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
@@ -216,6 +222,7 @@ Name | Description
 [`convert`](functions-format.md#convert)| Divides the number by the unit and formats with one fractional digit.
 [`formatBytes`](functions-format.md#formatbytes)| Returns the total number of bytes in human-readable format.
 [`formatNumber`](functions-format.md#formatnumber)| Formats number with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) using the server locale.
+[`NumberFormatter`](functions-format.md#numberformatter)| Creates a formatter object to convert numbers to strings.
 
 ## Mathematical
 
