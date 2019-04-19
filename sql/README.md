@@ -3154,7 +3154,7 @@ SELECT DBTIMEZONE
 
 #### IS_WORKDAY
 
-The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../rule-engine/workday-calendar.md), which is typically the three-letter country code such as `USA`.
+The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`.
 
 ```sql
 IS_WORKDAY(datetime | time | datetime expression, calendar_key [, timezone])
@@ -3162,7 +3162,7 @@ IS_WORKDAY(datetime | time | datetime expression, calendar_key [, timezone])
 
 Notes:
 
-* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in the **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../rule-engine/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and the calendar key is `USA`, the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for the list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday. Thus, the function returns `false`, though the date is a Wednesday.
+* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in the **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../administration/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and the calendar key is `USA`, the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for the list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday. Thus, the function returns `false`, though the date is a Wednesday.
 * The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
 
 ```sql
@@ -3197,7 +3197,7 @@ is_workday(time, 'USA', 'US/Pacific')
 
 #### IS_WEEKDAY
 
-The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../rule-engine/workday-calendar.md), which is typically the three-letter country code such as `USA`. Weekdays are Monday to Friday in the USA and Sunday to Thursday in Israel, for example.
+The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`. Weekdays are Monday to Friday in the USA and Sunday to Thursday in Israel, for example.
 
 Unlike the `IS_WORKDAY`, the `IS_WEEKDAY` function **ignores** observed holidays.
 

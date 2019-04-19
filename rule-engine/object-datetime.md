@@ -92,7 +92,7 @@ The table below enumerates available `DateTime` object fields and their values f
 |`is_workday('usa')`|`false`|
 |`is_exceptionday('usa')`|`false`|
 
-Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` are calculated based on the [workday calendar](workday-calendar.md) specified in `default.holiday.calendar` server property.
+Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` are calculated based on the [workday calendar](../administration/workday-calendar.md) specified in `default.holiday.calendar` server property.
 
 ## Functions
 
@@ -163,7 +163,7 @@ is_weekend( [string code] ) boolean
 is_workday( [string calendarKey] ) boolean
 ```
 
-* Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](workday-calendar.md).
+* Returns `true` if the `DateTime` object is a working day based on the observed [workday calendar](../administration/workday-calendar.md).
 * Accepts optional calendar key argument `calendarKey`.
 * If `calendarKey` is not specified, the database uses the `default.holiday.calendar` server property.
 * The function throws an exception if no workday calendar is found, or if the workday calendar contains no date for the given year.

@@ -24,7 +24,7 @@
 |5816|forecast|bug|[Forecasts](../../forecasting/README.md): abnormal starting values in ARIMA and Holt-Winters reconstructed series.
 |5811|sql|bug|SQL console: `datetime` column in `atsd_interval` table is not formatted.
 |5762|core|feature|Stored interval functionality.
-|5812|core|bug|[Workday Calendar](../../rule-engine/workday-calendar.md): Update calendars for year 2019.
+|5812|core|bug|[Workday Calendar](../../administration/workday-calendar.md): Update calendars for year 2019.
 
 ## Charts
 

@@ -293,6 +293,7 @@ const administrationMenu = [
             ['configuration-files.md', 'Configuration Files'],
             ['mail-client.md', 'Mail Client'],
             ['timezone.md', 'Time Zone'],
+            ['workday-calendar.md', 'Workday Calendar'],
             ['memory-allocation.md', 'Memory Allocation'],
             ['swap-space.md', 'Swap Space'],
             ['networking-settings.md', 'Network Settings'],

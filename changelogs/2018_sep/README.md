@@ -17,7 +17,7 @@
 5691|installation|Bug|Installation: Failure to create Administrator account upon [container](../../installation/images.md) launch.
 5688||Bug|Web: Static resource URL with `jsessionid` returns `404` error.
 5686|rule engine|Bug|Rule Engine: Erroneous arguments resolve during function validation if [`collection`](../../administration/metric-persistence-filter.md#collection) literal is used.
-5682|core|Bug|Core: JSON serialization of `DateTime` object throws exception if [calendar](../../rule-engine/workday-calendar.md) not found.
+5682|core|Bug|Core: JSON serialization of `DateTime` object throws exception if [calendar](../../administration/workday-calendar.md) not found.
 5681|security|Bug|[License](../../licensing.md): Upload issue.
 5680|rule engine|Bug|Rule Engine: `openValue` is not persisted in [Alert History](../../rule-engine/functions-alert-history.md#alerthistory-object).
 5679|security|Feature|Add SAN to [self-signed certificates](../../administration/ssl-self-signed.md).
