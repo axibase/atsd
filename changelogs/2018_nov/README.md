@@ -27,7 +27,7 @@
 5690 | UI | Feature | UI: Multiple enhancements. |
 5648 | log_aggregator | Bug | Aggregation Logger: No need to create HTTP/HTTPS connection.  |
 5352 | security | Bug | [Security](../../administration/user-authentication.md#http-basic-authorization-examples): User cannot log in through HTTP if logged in through HTTPS. |
-5086 | sql | Feature | SQL: [`ENDTIME`](../../sql/README.md#endtime) calculations to align with [`CALENDAR`](../../rule-engine/workday-calendar.md#workday-calendar). |
+5086 | sql | Feature | SQL: [`ENDTIME`](../../sql/README.md#endtime) calculations to align with [`CALENDAR`](../../administration/workday-calendar.md#workday-calendar). |
 4294 | sql | Bug | SQL: [`OUTER JOIN`](../../sql/examples/outer-join.md#outer-join) includes rows for excluded entities. |
 4180 | sql | Bug | SQL: filter by tag not applied in [`OUTER JOIN`](../../sql/examples/outer-join.md#outer-join). |
 4033 | sql | Feature | SQL: [`BETWEEN`](../../sql/README.md#interval-subqueries) subquery with multiple intervals for the same series key. |

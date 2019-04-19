@@ -25,7 +25,7 @@
 5475 | security | Bug | `NullPointerException` raised on [password change](../../administration/user-authentication.md#password-requirements).|
 5473 | api-rest | Bug | [Messages: `query`](../../api/data/messages/query.md): incorrect wildcard evaluation.|
 5471 | api-rest | Feature | Data API: [Series: `query`](../../api/data/series/aggregate.md) - Implement aggregation without period.|
-5470 | core | Feature | Rule Engine: implement [**Workday Calendars**](../../rule-engine/workday-calendar.md).|
+5470 | core | Feature | Rule Engine: implement [**Workday Calendars**](../../administration/workday-calendar.md).|
 5469 | rule editor | Feature | UI: Show logging action status on **Rules** page|
 5468 | core | Bug | Switch to [strict mode](https://docs.oracle.com/javase/8/docs/api/java/time/format/ResolverStyle.html) when parsing dates.|
 5467 | administration | Feature | Implement the ability to download HBase/HDFS [Log Files](../../administration/logging.md) on single-node installations.|

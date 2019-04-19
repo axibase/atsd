@@ -77,9 +77,9 @@ now.is_workday('USA') &&
 NOT now.add(1, 'day').is_workday('USA')
 ```
 
-Typically, this rule is triggered by the database each Friday evening, but fires on Thursday instead when Friday is an observed holiday based on the observed built-in or custom [Workday Calendar](./workday-calendar.md).
+Typically, this rule is triggered by the database each Friday evening, but fires on Thursday instead when Friday is an observed holiday based on the observed built-in or custom [Workday Calendar](../administration/workday-calendar.md).
 
-By default the database contains predefined 2018 Workday Calendars for [several countries](./workday-calendar.md#built-in-calendars) but also supports the addition of [custom calendars](./workday-calendar.md#custom-calendars).
+By default the database contains predefined 2018 Workday Calendars for [several countries](../administration/workday-calendar.md#built-in-calendars) but also supports the addition of [custom calendars](../administration/workday-calendar.md#custom-calendars).
 
 ### Previous Alerts
 
