@@ -121,7 +121,7 @@ Open the **Filters** section and enable **Display Versions** on the **Data > Exp
 |**Name**|**Description**|
 |---|---|
 |**Revisions Only** |Displays only modified values.|
-|**Version Filter**| An expression to filter version history.<br>The expression can contain the `version_source`, `version_status` and `version_time` fields.<br>The `version_time` field supports [calendar](../shared/calendar.md) syntax using the `date()` function.<br> The `version_source` and `version_status` fields support wildcards.<br> To view the deleted values use `Double.isNaN(value)` method in the [Value Filter](../reporting/ad-hoc-exporting.md#ad-hoc-export-settings) field.|
+|**Version Filter**| An expression to filter version history.<br>The expression can contain the `version_source`, `version_status` and `version_time` fields.<br>The `version_time` field supports [calendar](../shared/calendar.md) syntax using the `date()` function.<br> The `version_source` and `version_status` fields support wildcards.<br> To view the deleted values use `Double.isNaN(value)` method in the [Sample Filter](../reporting/ad-hoc-exporting.md#ad-hoc-export-settings) field.|
 
 **Examples**:
 

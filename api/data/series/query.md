@@ -128,17 +128,17 @@ The query contains **filter** fields to find time series in the database, **tran
 | `versioned` | boolean |Returns version status, source, and change date if the metric is versioned.<br>Default: `false`. |
 | `versionFilter` | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2018-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
 
-### Value Filter
+### Sample Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `valueFilter` | string | Boolean expression applied to each `time:value` sample. Samples that satisfy the condition are included in the result.<br>Available fields: `value` and `date`.<br>The `value` field in the expression refers to the current sample value.<br>The `date` field represents sample timestamp as an instance of the [`DateTime`](../../../rule-engine/object-datetime.md) object.|
+| `sampleFilter` | string | Boolean expression applied to each `time:value` sample. Samples that satisfy the condition are included in the result.<br>Available fields: `value` and `date`.<br>The `value` field in the expression refers to the numeric value of the sample.<br>The `date` field represents sample timestamp as an instance of the [`DateTime`](../../../rule-engine/object-datetime.md) object.|
 
-Value Filter Processing Rules:
+Sample Filter Processing Rules:
 
-* The value filter is applied **before** series transformations (interpolation, aggregation, etc).
-* In case of a versioned metric in `versioned=true` mode, the filter checks only the last value recorded for the given time. If the last value satisfies the filter, all versions for that time are included.
-* The `date` fields is an instance of the [`DateTime`](../../../rule-engine/object-datetime.md) object and can be tested with various date functions.
+* The filter is applied **before** series transformations (interpolation, aggregation, etc).
+* In case of a versioned metric in `versioned=true` mode, the filter checks only the last sample recorded for the given time. If the last sample satisfies the filter, all versions for that time are included.
+* The `date` field is an instance of the [`DateTime`](../../../rule-engine/object-datetime.md) object and can be tested with various date functions.
 
 Examples:
 
