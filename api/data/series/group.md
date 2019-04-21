@@ -57,7 +57,7 @@ Values added by `extend` setting are determined as follows:
 
 | **Type** | **Description** |
 |:---|:---|
-| `NONE` | No interpolation. Periods without any raw values are excluded from results. |
+| `NONE` | No interpolation. Periods without any detailed values are excluded from results. |
 | `PREVIOUS` | Set value for the period based on the previous period value. |
 | `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
@@ -273,7 +273,7 @@ Since `extend` is performed prior to truncation, `truncate` setting has no effec
 
 ### Interpolation
 
-Interpolation fills the gaps in the raw series. Its behavior depends on the `period` parameter specified in the group processor.
+Interpolation fills the gaps in the detailed series. Its behavior depends on the `period` parameter specified in the group processor.
 
 #### `period` parameter is not specified
 

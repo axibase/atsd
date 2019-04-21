@@ -1,8 +1,10 @@
 # Control Flow
 
-Response actions support the following syntax options for conditional processing and iteration.
+Response actions support `@foreach` and `@if/@else` statements for iteration and branching and a special function `cancelAction()` for conditional processing.
 
-## Conditional Processing
+Control statements that begin with `@` must be terminated by `@end{}`.
+
+## Branching
 
 Use `@if/@else/@end` syntax (orb tags) for conditional processing.
 
@@ -59,7 +61,7 @@ Note that each `@` declaration is replaced with text line including line breaks.
 
 ```javascript
 /*
-Generates a malformed markdown table since `@foreach{m : msgs}` will be replaced with emoty line.
+Generates a malformed markdown table since `@foreach{m : msgs}` will be replaced with empty line.
 */
 | date | type | source |
 |--------|------|--------|
@@ -75,5 +77,15 @@ Generates a proper markdown table.
 | date | type | source | message |
 |--------|------|--------|---------|
 @foreach{m : msgs}|@{date_format(m.timestamp, "HH:mm:ss")}|@{m.type}|@{m.source}| @{truncate(m.message, 128)} |
+@end{}
+```
+
+## Conditional Processing
+
+The `cancelAction()` function can be placed in the notification text or field to terminate processing without executing the action.
+
+```javascript
+@if{strategy NOT IN ('StartOrder')}
+  @{cancelAction()}
 @end{}
 ```

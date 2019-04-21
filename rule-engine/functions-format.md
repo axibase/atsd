@@ -23,6 +23,7 @@ Related date formatting functions and objects:
 * [`formatInterval`](functions-date.md#formatinterval)
 * [`formatIntervalShort`](functions-date.md#formatintervalshort)
 * [`DateFormatter`](functions-date.md#dateformatter)
+* [`IntervalFormatter`](functions-date.md#intervalformatter)
 
 ### `formatNumber`
 

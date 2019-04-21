@@ -37,7 +37,7 @@ Query response:
 |:---|:---|---:|
 | `POST` | `/api/v1/series/query` | `application/json` |
 
-The request payload is a JSON document containing an array of query objects.
+The request payload is a JSON array containing query objects.
 
 ```sh
 [{

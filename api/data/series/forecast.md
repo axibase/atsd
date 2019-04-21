@@ -4,13 +4,13 @@
 
 Forecasting is a transformation that predicts future values by extracting trends and recurring patterns from historical data.
 
-Unlike other transformations, the **forecast** returns samples ahead of the selection interval.
-
 Supported forecasting algorithms:
 
 * `Holt-Winters`
 * `ARIMA` (Auto-Regressive Integrated Moving Average).
 * `SSA` (Singular Spectrum Analysis).
+
+Unlike other transformations, the **forecast** returns samples ahead of the selection interval.
 
 The example below produces a forecast for the next day using the Holt-Winters algorithm with auto-detected parameters.
 

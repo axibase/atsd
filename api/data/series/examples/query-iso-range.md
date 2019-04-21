@@ -2,7 +2,7 @@
 
 ## Description
 
-Query detailed (raw) data for the specified time range, identified with `startDate` and `endDate`.
+Query detailed data for the specified time range, identified with `startDate` and `endDate`.
 
 `startDate` is inclusive and `endDate` is exclusive, meaning that samples timestamped exactly at `startDate` is included in the response. Samples timestamped exactly at `endDate` is **not** included in the response.
 

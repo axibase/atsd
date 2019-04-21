@@ -111,7 +111,7 @@ By default, if the period does not contain any detailed values, the period is ex
 Configure this behavior with an interpolation function which fills a missing period with data calculated based on previous and next period aggregate values.
 
 :::tip Note
-Missing period values are interpolated from aggregate values of neighboring periods and not from raw values.
+Missing period values are interpolated from aggregate values of neighboring periods and not from detailed values.
 :::
 
 #### Interpolation Fields
@@ -131,7 +131,7 @@ Values added by the `extend` setting are determined as follows:
 
 | **Type** | **Description** |
 |:---|:---|
-| `NONE` | No interpolation. Periods without raw values are excluded from results. |
+| `NONE` | No interpolation. Periods without detailed values are excluded from results. |
 | `PREVIOUS` | Set value for the period based on the previous period value. |
 | `NEXT` | Set value for the period based on the next period value. |
 | `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |

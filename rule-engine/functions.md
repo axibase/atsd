@@ -193,6 +193,7 @@ Name | Description
 [`add`](object-datetime.md#add-function) |Returns a [`DateTime`](object-datetime.md) object created by adding an interval.
 [`date_format`](functions-date.md#date_format)| Converts Unix time in milliseconds or a [`DateTime`](object-datetime.md) object to a string.
 [`DateFormatter`](functions-date.md#dateformatter)| Creates a formatter object to convert Unix times in milliseconds or [`DateTime`](object-datetime.md) objects to strings.
+[`IntervalFormatter`](functions-date.md#intervalformatter)| Creates a formatter object to convert the interval between two dates to a string.
 [`date_parse`](functions-date.md#date_parse)|  Parses the input string into a [`DateTime`](object-datetime.md) object.
 [`elapsed_minutes`](functions-date.md#elapsed_minutes)|  Calculates the number of minutes between the current and specified time.
 [`elapsedTime`](functions-date.md#elapsedtime)|  Calculates the number of milliseconds between the current and specified time.
@@ -358,6 +359,7 @@ Name | Description
 
 Name | Description
 ---|---
+[`cancelAction`](control-flow.md#conditional-processing)| Cancel the current action based on a condition.
 [`getURLHost`](functions-utility.md#geturlhost)| Retrieves the **host** from URL specified in string url.
 [`getURLPath`](functions-utility.md#geturlpath)| Retrieves the **path** from URL string.
 [`getURLPort`](functions-utility.md#geturlport)| Retrieves the **port** from URL string.
@@ -377,7 +379,7 @@ Name | Description
 
 Name | Description
 ---|---
-[`value`](functions-value.md) | Retrieves the value for the metric.
+[`value`](functions-value.md) | Retrieves value for the metric in the same `series` command.
 
 ## Web Query
 

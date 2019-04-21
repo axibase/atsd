@@ -7,7 +7,7 @@
     {
         "entity": "duckduckgo",
         "metric": "direct.queries",
-        "forecastName": "DuckDuckGo1",
+        "forecastName": "ddg-1",
         "type": "FORECAST",
         "startDate": "2018-05-01T00:00:00Z",
         "endDate": "2018-07-30T00:00:00Z"
@@ -26,7 +26,7 @@
         "aggregate": {
             "type": "DETAIL"
         },
-        "forecastName": "DuckDuckGo1",
+        "forecastName": "ddg-1",
         "meta": {
             "timestamp": "2018-06-26T00:00:00Z",
             "averagingInterval": 86400000,

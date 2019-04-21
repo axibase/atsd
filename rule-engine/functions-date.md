@@ -14,6 +14,7 @@ View the list of available window date fields [here](./window-fields.md#date-fie
 * [`elapsed_minutes`](#elapsed_minutes)
 * [`elapsedTime`](#elapsedtime)
 * [`elapsedTime for DateTime`](#elapsedtime-for-datetime)
+* [`IntervalFormatter`](#intervalformatter)
 * [`formatInterval`](#formatinterval)
 * [`formatIntervalShort`](#formatintervalshort)
 * [`formatSecondOffset`](#formatsecondoffset)
@@ -360,9 +361,15 @@ Related date parsing function: [`date_parse`](functions-date.md#date_parse)
 DateFormatter(string pattern [, string timezone [, string locale]])
 ```
 
-Unlike functions, which convert an input `DateTime` or Unix milliseconds to a string, the `DateFormatter` is an object which is configured once as a variable and re-used to format any input into string using the same pattern, [time zone](../shared/timezone-list.md) and [locale](./locales.md). Locale matching is **case-insensitive**.
+The `DateFormatter` can be configured once as a variable and re-used in actions to format the dates using the specified pattern, [time zone](../shared/timezone-list.md) and [locale](./locales.md). Locale matching is **case-insensitive**.
 
-The formatter object provides two methods: `format()` and `print()` which return the same result.
+The formatter implements a `format()` method that format the date argument as a string.
+
+```csharp
+format(DateTime from | long milliseconds)
+```
+
+A convenience method `f()` accepting the same arguments is provided for brevity.
 
 Example:
 
@@ -380,7 +387,41 @@ df.format(add_time)          ->      2019-4월-12 14:20:00
 
 ```javascript
 // format and add backticks for markdown
-df = NumberFormatter('`HH:mm:ss.SSS`')
+df = DateFormatter('`HH:mm:ss.SSS`')
+```
+
+### `IntervalFormatter`
+
+```csharp
+IntervalFormatter(string pattern)
+```
+
+The `IntervalFormatter` can be configured once as a variable and re-used in actions to format the duration between two dates using the specified pattern.
+
+Supported patterns:
+
+* `short`
+* `default`
+* `milliseconds...years`
+
+The formatter implements a `format()` method that returns the interval between the `from` and `to` dates as a string.
+
+```csharp
+format(DateTime from, DateTime to)
+```
+
+A convenience method `f()` accepting the same arguments is provided for brevity.
+
+Example:
+
+```javascript
+// formatter is initialized as variable
+inf = IntervalFormatter('default')
+```
+
+```javascript
+// formatter is used to format dates
+inf.format(add_time, command_time)          ->      5s 15ms
 ```
 
 ### `formatInterval`

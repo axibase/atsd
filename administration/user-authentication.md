@@ -42,19 +42,19 @@ Requests authenticated with **Basic Authentication** are subject to the same per
 
 ### Token Authentication
 
-An HTTP request to a specific API URL starting with `/api/` can be authenticated by providing a valid API token in the request. The token must be included in the `Authorization` header with type `Bearer`.
+An HTTP request to a specific API URL starting with `/api/` can be authenticated by providing a previously issued API token in the request. The token must be included in the `Authorization` header with type `Bearer`.
 
 ```sh
 --header "Authorization: Bearer <API-TOKEN>"
 ```
 
-Unlike in **Basic Authentication**, the API token enables access only to a **specific** URL, containing the path and optional query parameters, and a **specific** HTTP method that are fixed at the time the token is created.
+The token allows access to a **specific** URL, consisting of path and query parameters. The URL and the HTTP method are fixed at the time the token is created. The order of query parameters and the URL-encoding scheme is not important.
 
-The users can issue and revoke API tokens on their account settings page. The tokens can be set to automatically expire and be subject to IP address restrictions.
+Users can issue and revoke tokens on the Account Settings page. The tokens can be set to automatically expire and be subject to IP address restrictions.
 
   ![portal guest](./images/token-details.png)
 
-This type of authentication does not require sharing username and password credentials with client programs and is suited for automation scripts that need to execute specific actions such as uploading a CSV file.
+Token authentication does not require sharing username and password with client programs and is suited for automation scripts that need to execute a limited set of actions such as uploading a CSV file.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/csv?config=base-parser \
@@ -64,7 +64,7 @@ curl https://atsd_hostname:8443/api/v1/csv?config=base-parser \
   --form "data=@daily.csv"
 ```
 
-IP address restrictions set for the token, override any IP address restrictions set for the underlying user account.
+IP address restrictions set for the token override any IP address restrictions set for the underlying user account.
 
 Requests authenticated with **Token Authentication** are subject to the same permission checks as the underlying user account.
 

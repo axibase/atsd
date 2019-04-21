@@ -16,7 +16,7 @@ POST /api/v1/series/insert
         "entity": "nurswgvml007",
         "metric": "mpstat.cpu_busy",
         "type": "FORECAST",
-        "forecastName": "arima",
+        "forecastName": "mfa-1",
         "data": [
             {
                 "t": 1462427361327,
