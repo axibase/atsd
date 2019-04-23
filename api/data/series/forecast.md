@@ -86,12 +86,12 @@ In this case ATSD itself selects aggregation period.
 * Auto-aggregation
 
 ```json
-  "forecast": {
-    "autoAggregate": true,
-    "aggregationFunction": "COUNT",
-    "horizon": {"length": 10},
-    "ssa": {}
-  }
+"forecast": {
+  "autoAggregate": true,
+  "aggregationFunction": "COUNT",
+  "horizon": {"length": 10},
+  "ssa": {}
+}
 ```
 
 ## Request Fields
