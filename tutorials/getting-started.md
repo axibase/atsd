@@ -73,7 +73,7 @@ To populate the database with initial temperature readings, open the **Commands*
 
 ```ls
 <#list 1..20 as i>
-series s:${nowSeconds - i * 600} e:br-1905 m:temperature=${60 - 2*i}
+series s:${(nowSeconds - i * 600)?c} e:br-1905 m:temperature=${(60 - 2*i)?c}
 </#list>
 ```
 
