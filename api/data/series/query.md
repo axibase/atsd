@@ -105,6 +105,15 @@ The query contains **filter** fields to find time series in the database, **tran
 "tagExpression": "tags.file_system NOT IN ('/dev/sda1', '/dev/sda2')"
 ```
 
+### Filter by the Latest Timestamp in Series
+
+| **Field** | **Type** | **Description** |
+|---|---|---|
+| `minInsertDate` |string|Include series if timestamp of the latest sample is equal or greater than `minInsertDate`.<br>[ISO format](../../../shared/date-format.md#supported-formats) date or a [calendar](../../../shared/calendar.md) keyword, for example `2017-10-01T00:00:00Z` or `current_day`.|
+| `maxInsertDate` |string|Include series if timestamp of the latest sample is less than `maxInsertDate`.<br>[ISO format](../../../shared/date-format.md#supported-formats) date or a [calendar](../../../shared/calendar.md) expression for example `2017-10-01T00:00:00Z` or `now - 1*DAY`.|
+
+If both parameters are specified then include series if timestamp of the latest series sample satisfies both conditions.
+
 ### Date Filter
 
 * [**Required**]
