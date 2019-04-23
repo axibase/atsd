@@ -80,6 +80,20 @@ The forecast algorithms need the input series to be regularized which requires a
 }
 ```
 
+Another possibility is to request auto-aggregation with specified aggregation function.
+In this case ATSD itself selects aggregation period.
+
+* Auto-aggregation
+
+```json
+  "forecast": {
+    "autoAggregate": true,
+    "aggregationFunction": "COUNT",
+    "horizon": {"length": 10},
+    "ssa": {}
+  }
+```
+
 ## Request Fields
 
 The request fields described below must be included inside the `forecast` object.
@@ -124,6 +138,13 @@ Examples:
   }
 }
 ```
+
+### Regularization Fields
+
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
+| `autoAggregate` | boolean | Set to `true` to perform auto-aggregation.<br>Default value: `false`. |
+| `aggregationFunction` | string | [Aggregation function](../aggregation.md) to use if auto-aggregation requested.<br>Default value: `AVG`. |
 
 ### Control Fields
 
