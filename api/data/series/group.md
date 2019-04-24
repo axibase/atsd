@@ -28,8 +28,7 @@ The transformation is implemented as follows:
 
 1. Truncate each multi-value series if `truncate` field is `true`.
 
-1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series. In other words, there is one aggregated series per subgroup and statistical function. Statistical functions are provided via `type`, or `types` parameters. To build aggregated series evaluate a statistical function on set of samples for each pair in a multi-value series.
-Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series. The `aggregated value` is value of statistical function applied to the `samples`.
+1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series. In other words, there is one aggregated series per subgroup and statistical function. Statistical functions are provided via `type`, or `types` parameters. To build aggregated series evaluate a statistical function on set of samples for each pair in a multi-value series. Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series. The `aggregated value` is value of statistical function applied to the `samples`.
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
@@ -901,8 +900,7 @@ Algorithm iterates over all not yet placed series and insert series into current
 
 1. Select first series in subgroup: iterate over all not placed series sorted by series names and select first series that meets the `constraint`.
 
-2. Some series are already placed in the subgroup. Calculate aggregation function, specified in the `type` parameter for them. Then calculate correlations between aggregated series and each not yet placed series. Sort not placed series in increasing order of correlations. Iterate over series starting from series with the least correlation, and try to append series to the subgroup. As some series appended, repeat all calculations: recalculate aggregated series, correlations coefficients,
-and try to add next series to the subgroup. The step is completed if no more series can be added to the subgroup.
+2. Some series are already placed in the subgroup. Calculate aggregation function, specified in the `type` parameter for them. Then calculate correlations between aggregated series and each not yet placed series. Sort not placed series in increasing order of correlations. Iterate over series starting from series with the least correlation, and try to append series to the subgroup. As some series appended, repeat all calculations: recalculate aggregated series, correlations coefficients, and try to add next series to the subgroup. The step is completed if no more series can be added to the subgroup.
 
 #### Approximate Query Example
 
