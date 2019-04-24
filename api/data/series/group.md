@@ -63,8 +63,7 @@ and for each specified tag name either both series have the same value of the ta
 
 ### Grouping Example
 
-Let there are series for metric `abc`,
-and following entities and tags:
+Consider series for metric `abc`, with following entities and tags:
 
 ```ls
 | index | entity | tag-name-1  | tag-name-2  |
@@ -84,7 +83,7 @@ Query grouping by entity and tag with name `tag-name-1`:
 "groupByEntityAndTags": ["tag-1-name"]
 ```
 
-Resul contains 4 groups: {1, 3}, {2, 4}, {5}, {6, 7}.
+Result contains 4 groups: {1, 3}, {2, 4}, {5}, {6, 7}.
 View full [example](examples/query-group-by-entity-and-tags.md) for more details.
 
 ## Grouping Functions
@@ -635,12 +634,12 @@ ATSD performs two types of placement: [Partitioning](#partitioning) and [Packing
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `count`  | integer | Maximum count of subgroups, response may contain less than maximum. |
+| `count`  | integer | Maximum count of subgroups, response can contain less than maximum. |
 | `entities` | array | Entities are used as means of providing group specific information. Tags of an entity contain numeric characteristics of a subgroup. |
 | `entityGroup` | string | Another way to specify entities via [entity group](../../../api/meta/entity-group/README.md) name. |
-| `entityExpression`  | string | Select entities which match to [expression](../../../api/data/filter-entity.md#entityExpression-syntax). |
+| `entityExpression`  | string | Select entities which match to [expression](../../../api/data/filter-entity.md#entityexpression-syntax). |
 | `constraint` | string | Boolean MVEL expression that series from each subgroup must satisfy, for example max() < 10. |
-| `minimize` | string | Function calcuated for each subgroup. Partitioning into subgroups is performed so to minimised sum of function's values. |
+| `minimize` | string | Function calcuated for each subgroup. Partitioning into subgroups is performed to minimise sum of function's values. |
 | `method` | string | The algorithm used to solve [Packing](#packing) problem. Admissible values: `greedy_simple` (default), or `greedy_correlations`.|
 
 ### Functions Available in the Place Context
@@ -665,7 +664,7 @@ To find exact solution of the partitioning problem ATSD loops over all possible 
 
 * Calculate aggregated series for each subgroup, using specified `type`, `period`, `interpolate`, and `truncate` settings.
 
-* Evaluate boolean `constraint` expression for each aggregated series. Reject the partition if expression is `false` for some subgroup. The `constraint` expression could apply the [statistical functions](#functions-available-in-the-place-context) to aggregated series.
+* Evaluate boolean `constraint` expression for each aggregated series. Reject the partition if expression is `false` for some subgroup. The `constraint` expression can apply the [statistical functions](#functions-available-in-the-place-context) to aggregated series.
 
 * For each subgroup calculate value of the `minimize` expression, which can use the same [statistical functions](#functions-available-in-the-place-context).
 
@@ -815,15 +814,15 @@ The response contains information about each subgroup: keys of grouped series, v
 
 ### Packing
 
-The problem is to divide series into the smallest number of subgroups, so that each subgroup meets the `constraint`.
+The problem is to divide series into the smallest number of subgroups, and each subgroup meets the `constraint`.
 
-Objective function is not used in this problem, but the `constraint` expression may use numeric parameters specific for each subgroup, and numeric parameters specific for each series.
+Objective function is not used in this problem, but the `constraint` expression can use numeric parameters specific for each subgroup, and numeric parameters specific for each series.
 
-Each entity specified in the `entities`, or `entityGroup`, or `entityExpression` holds numeric parameters of single subgroup as values of its tags. Tese values are available in the `constraint` expression by the tag names.
+Each entity specified in the `entities`, or `entityGroup`, or `entityExpression` holds numeric parameters of single subgroup as values of its tags. These values are available in the `constraint` expression by the tag names.
 
 #### Subgroup Parameters Example
 
-Let there are entities with tags `cpu_limit` and  `memory_limit`:
+Consider there are entities with tags `cpu_limit` and  `memory_limit`:
 
 ```ls
 | entity name\ tags | cpu_limit | memory_limit |
@@ -835,7 +834,7 @@ Let there are entities with tags `cpu_limit` and  `memory_limit`:
 | lp_group_5        |         8 |           10 |
 ```
 
-The `constraint` expression may use the variable `cpu_limit`:
+The `constraint` expression can use the variable `cpu_limit`:
 
 ```json
 "constraint": "max() < cpu_limit"
@@ -843,12 +842,12 @@ The `constraint` expression may use the variable `cpu_limit`:
 
 When the expression is evaluated for the subgroup corresponding to the entity `lp_group_3` the value of `cpu_limit` is 12.
 
-Each series also may store numeric parameters in tags of series entity.
+Each series also can store numeric parameters in tags of series entity.
 To refer these parameters in the `constraint` expression use tag name prepended by the `series.` prefix.
 
 #### Series Parameters Example
 
-Let series entities have tag `memory_allocated`:
+Following series entities have tag `memory_allocated`:
 
 ```ls
 | entity name\ tags | memory_allocated |
@@ -870,13 +869,13 @@ The following `constraint` asserts that sum of `memory_allocated` parameters of 
 
 #### Subgroup and Series Parameters Example
 
-Let series with entities `lp_2, lp_3, lp_6` are placed in a group dedicated to entity `lp_group_1`. Consider the constraint:
+Series with entities `lp_2, lp_3, lp_6` are placed in a group dedicated to entity `lp_group_1`. Consider the constraint:
 
 ```json
 "constraint": "max() < cpu_limit && sum(series.memory_allocated) < memory_limit"
 ```
 
-It asserts that maximal value of aggregated series computed for `lp_2, lp_3, lp_6` is less than `cpu_limit = 10`, and sum of memory allocated to each series `sum(series.memory_allocated) = 4 + 4 + 2` is
+It asserts that maximum value of aggregated series computed for `lp_2, lp_3, lp_6` is less than `cpu_limit = 10`, and sum of memory allocated to each series `sum(series.memory_allocated) = 4 + 4 + 2` is
 less that `memory_limit = 20`.
 
 #### Packing Algorithm
@@ -885,12 +884,14 @@ Exact solution of the Packing problem requires consider each of
 ![complexity](./images/complexity.png)
 possible assignment of N series to K subgroups.
 This became computationally unfeasible for small values of N and K.
-ATSD uses simple euristic algorithm to solve the problem.
+ATSD uses simple heuristic algorithm to solve the problem.
 The algorithm works as follows.
 
 1. Sort entities by name.
+
 2. Consider each entity in order, and build subgroup for the entity.
-3. If all entities were considered, and still there are unplaced series,
+
+3. If all entities are considered, and still there are unplaced series,
 then put them into special subgroup.
 
 How subgroup is formed for given entity depends on value of the `method` setting.
@@ -903,19 +904,16 @@ Algorithm iterates over all not yet placed series and insert series into current
 
 #### Method `greedy_correlations`
 
-1. Select first series in subgroup:
-iterate over all not placed series sorted by series names
-and select first series that meets the `constraint`.
+1. Select first series in subgroup: iterate over all not placed series sorted by series names and select first series that meets the `constraint`.
 
-2. Some series are already placed in the subgroup.
-Calculate aggregation function, specified in the `type` parameter for them.
+2. Some series are already placed in the subgroup. Calculate aggregation function, specified in the `type` parameter for them.
 Then calculate correlations between aggregated series and each not yet placed series.
 Sort not placed series in increasing order of correlations.
 Iterate over series starting from series with the least correlation, and try to append series to the subgroup.
 As some series appended, repeat all calculations:
 recalculate aggregated series, correlations coefficients,
 and try to add next series to the subgroup.
-The step is completed if no more series could be added to the subgroup.
+The step is completed if no more series can be added to the subgroup.
 
 #### Approximate Query Example
 
