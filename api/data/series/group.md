@@ -6,29 +6,32 @@ The transformation is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
 
-1. Divide collected series into several groups according to the value of the `groupByEntityAndTags` parameter.
+1. Distribute collected series into several groups according to the value of the `groupByEntityAndTags` parameter.
 
 1. Split each group into several subgroups based on the `place` settings.
 
 1. Create multi-value series for each subgroup. Multi-value series is a list of pairs: `(timestamp, samples of several series)` ordered by timestamps. The way series is constructed depends on the `period` setting.
 
-    a. The `period` is specified in the query.
-    <br>
-    Split each series `time:value` array into periods based on the `period`  parameter.
-    Discard periods with start time earlier than `startDate` or greater than `endDate`.
-    For each period create the pair
-    `(the period start time, all samples of all series within the period)`
-    and add it to multi-valued series.
+  a. The `period` is specified in the query.
+  <br>
+  Split each series `time:value` array into periods based on the `period`  parameter.
+  Discard periods with start time earlier than `startDate` or greater than `endDate`.
+  For each period create the pair
+  `(timestamp, collection of samples)`
+  and add it to the multi-valued series.
+  The `timestamp` equals to the period start time.
+  The `collection of samples` consists of multiple series samples within the period.
+  Thus a series sample belongs to the `collection of samples` if its timestamp belongs to the period.
 
-    b. The `period` is not specified.
-    <br>
-    In this case timestamps of multi-value series is set of all timestamps of all series in the subgroup. And the multi-value series consists of all pairs `(timestamp, all samples of all series with given timestamp)`.
-
+  b. The `period` is not specified.
+  <br>
+  In this case the multi-value series consists of pairs `(timestamp, multiple series samples with given timestamp)`, for each `timestamp` presented in that group of series.
+  
 1. Interpolate each multi-value series according to the `interpolate` field.
 
 1. Truncate each multi-value series if `truncate` field is `true`.
 
-1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series. In other words, there is one aggregated series per subgroup and statistical function. Statistical functions are provided via `type`, or `types` parameters. To build aggregated series evaluate a statistical function on set of samples for each pair in a multi-value series. Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series. The `aggregated value` is value of statistical function applied to the `samples`.
+1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series. In other words,  one aggregated series per subgroup and statistical function. Statistical functions are provided via `type`, or `types` parameters. To build aggregated series evaluate a statistical function on set of samples for each pair in a multi-value series. Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series. The `aggregated value` is value of statistical function applied to the `samples`.
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
