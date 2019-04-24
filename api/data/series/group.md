@@ -28,12 +28,8 @@ The transformation is implemented as follows:
 
 1. Truncate each multi-value series if `truncate` field is `true`.
 
-1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series.
-In other words, there is one aggregated series per subgroup and statistical function.
-Statistical functions are provided via `type`, or `types` parameters.
-To build aggregated series evaluate a statistical function on set of samples for each pair in a multi-value series.
-Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series.
-The `aggregated value` is value of statistical function applied to the `samples`.
+1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series. In other words, there is one aggregated series per subgroup and statistical function. Statistical functions are provided via `type`, or `types` parameters. To build aggregated series evaluate a statistical function on set of samples for each pair in a multi-value series.
+Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series. The `aggregated value` is value of statistical function applied to the `samples`.
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
@@ -84,7 +80,7 @@ Query grouping by entity and tag with name `tag-name-1`:
 ```
 
 Result contains 4 groups: {1, 3}, {2, 4}, {5}, {6, 7}.
-View full [example](examples/query-group-by-entity-and-tags.md) for more details.
+View full [example](../../../api/data/series/examples/query-group-by-entity-and-tags.md) for more details.
 
 ## Grouping Functions
 
@@ -644,15 +640,15 @@ ATSD performs two types of placement: [Partitioning](#partitioning) and [Packing
 
 ### Functions Available in the Place Context
 
-* stdev()
-* median_abs_dev()
-* max()
-* min()
-* sum()
-* count()
-* median()
-* avg()
-* percentile(p)
+* `stdev()`
+* `median_abs_dev()`
+* `max()`
+* `min()`
+* `sum()`
+* `count()`
+* `median()`
+* `avg()`
+* `percentile(p)`
 
 ### Partitioning
 
@@ -677,7 +673,7 @@ The solution is a partition which minimizes the objective function. If objective
 Algorithm loops over all partitions of set of cardinality N into no more then K subsets.
 Total count of partitions equals to sum S(N, 1) + S(N, 2) + ... + S(N, K)
 of [Stirling](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind) numbers.
-This sum grows extremely fast, for example, there are `16_244_652_278_171` partions of 20 series into no more then 7 subgroups.
+This sum grows extremely fast, for example, there are `16_244_652_278_171` partitions of 20 series into no more then 7 subgroups.
 Implementation of the algorithm expects that number of grouped series does not exceeds 64, and throws an error if number of partitions exceeds `1_000_000`.
 
 #### Query Example
@@ -891,8 +887,7 @@ The algorithm works as follows.
 
 2. Consider each entity in order, and build subgroup for the entity.
 
-3. If all entities are considered, and still there are unplaced series,
-then put them into special subgroup.
+3. If all entities are considered, and still there are unplaced series, then put them into special subgroup.
 
 How subgroup is formed for given entity depends on value of the `method` setting.
 
@@ -906,14 +901,8 @@ Algorithm iterates over all not yet placed series and insert series into current
 
 1. Select first series in subgroup: iterate over all not placed series sorted by series names and select first series that meets the `constraint`.
 
-2. Some series are already placed in the subgroup. Calculate aggregation function, specified in the `type` parameter for them.
-Then calculate correlations between aggregated series and each not yet placed series.
-Sort not placed series in increasing order of correlations.
-Iterate over series starting from series with the least correlation, and try to append series to the subgroup.
-As some series appended, repeat all calculations:
-recalculate aggregated series, correlations coefficients,
-and try to add next series to the subgroup.
-The step is completed if no more series can be added to the subgroup.
+2. Some series are already placed in the subgroup. Calculate aggregation function, specified in the `type` parameter for them. Then calculate correlations between aggregated series and each not yet placed series. Sort not placed series in increasing order of correlations. Iterate over series starting from series with the least correlation, and try to append series to the subgroup. As some series appended, repeat all calculations: recalculate aggregated series, correlations coefficients,
+and try to add next series to the subgroup. The step is completed if no more series can be added to the subgroup.
 
 #### Approximate Query Example
 
