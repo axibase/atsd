@@ -672,10 +672,10 @@ The solution is a partition which minimizes the objective function. If objective
 
 #### Partitioning Algorithm Complexity
 
-Algorithm loops over all partitions of set of cardinality N into no more then K subsets.
+Algorithm loops over all partitions of set of cardinality N into no more than K subsets.
 Total count of partitions equals to sum S(N, 1) + S(N, 2) + ... + S(N, K)
 of [Stirling](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind) numbers.
-This sum grows extremely fast, for example, there are `16_244_652_278_171` partitions of 20 series into no more then 7 subgroups.
+This sum grows extremely fast, for example, there are `16_244_652_278_171` partitions of 20 series into no more than 7 subgroups.
 Implementation of the algorithm expects that number of grouped series does not exceeds 64, and throws an error if number of partitions exceeds `1_000_000`.
 
 #### Query Example
@@ -812,7 +812,7 @@ The response contains information about each subgroup: keys of grouped series, v
 
 ### Packing
 
-The problem is to divide series into the smallest number of subgroups, and each subgroup meets the `constraint`.
+The problem is to divide series into the smallest number of subgroups, where each subgroup meets the `constraint`.
 
 Objective function is not used in this problem, but the `constraint` expression can use numeric parameters specific for each subgroup, and numeric parameters specific for each series.
 
@@ -859,7 +859,7 @@ Following series entities have tag `memory_allocated`:
 | lp_7              |                4 |
 ```
 
-The following `constraint` asserts that sum of `memory_allocated` parameters of all series in a subgroup is less then 14:
+The following `constraint` asserts that sum of `memory_allocated` parameters of all series in a subgroup is less than 14:
 
 ```json
 "constraint": "sum(series.memory_allocated) < 14"
@@ -878,7 +878,7 @@ less that `memory_limit = 20`.
 
 #### Packing Algorithm
 
-Exact solution of the Packing problem requires consider each of
+Exact solution of the Packing problem requires to consider each of
 ![complexity](./images/complexity.png)
 possible assignment of N series to K subgroups.
 This became computationally unfeasible for small values of N and K.
