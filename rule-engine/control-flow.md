@@ -2,7 +2,7 @@
 
 Response actions support `@foreach` and `@if/@else` statements for iteration and branching and a special function `cancelAction()` for conditional processing.
 
-Control statements that begin with `@` must be terminated by `@end{}`.
+Control statements that begin with `@` must be completed with `@end{}`.
 
 ## Branching
 
@@ -61,12 +61,12 @@ Note that each `@` declaration is replaced with text line including line breaks.
 
 ```javascript
 /*
-Generates a malformed markdown table since `@foreach{m : msgs}` will be replaced with empty line.
+The example produces a malformed markdown table since `@foreach{m : msgs}` is replaced with empty line.
 */
 | date | type | source |
 |--------|------|--------|
 @foreach{m : msgs}
-|@{date_format(m.timestamp, "HH:mm:ss")}|@{m.type}|@{m.source}|
+|@{m.dt}|@{m.type}|@{m.source}|
 @end{}
 ```
 
@@ -76,7 +76,7 @@ Generates a proper markdown table.
 */
 | date | type | source | message |
 |--------|------|--------|---------|
-@foreach{m : msgs}|@{date_format(m.timestamp, "HH:mm:ss")}|@{m.type}|@{m.source}| @{truncate(m.message, 128)} |
+@foreach{m : msgs}|@{m.dt}|@{m.type}|@{m.source}| @{truncate(m.message, 128)} |
 @end{}
 ```
 
@@ -86,6 +86,6 @@ The `cancelAction()` function can be placed in the notification text or field to
 
 ```javascript
 @if{strategy NOT IN ('StartOrder')}
-  @{cancelAction()}
+  ${cancelAction()}
 @end{}
 ```
