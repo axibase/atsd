@@ -82,7 +82,7 @@ Generates a proper markdown table.
 
 ## Conditional Processing
 
-The `cancelAction()` function can be placed in the notification text or field to terminate processing without executing the action.
+The `cancelAction()` function can be called in the notification text to cancel the action.
 
 ```javascript
 @if{strategy NOT IN ('StartOrder')}
