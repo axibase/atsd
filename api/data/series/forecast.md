@@ -80,6 +80,21 @@ The forecast algorithms need the input series to be regularized which requires a
 }
 ```
 
+* Auto-aggregation
+
+As an alternative to manually specified period, the forecast can be generated in auto-aggregation mode in which case the period is determined automatically based on the mean sampling period.
+
+```json
+"forecast": {
+  "autoAggregate": true,
+  "aggregationFunction": "AVG",
+  "horizon": {
+    "interval": { "count": 1, "unit": "DAY" }
+  },
+  "ssa": {}
+}
+```
+
 ## Request Fields
 
 The request fields described below must be included inside the `forecast` object.
@@ -124,6 +139,13 @@ Examples:
   }
 }
 ```
+
+### Regularization Fields
+
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
+| `autoAggregate` | boolean | Set to `true` to perform auto-aggregation.<br>For Holt-Winters and ARIMA the period is determined based on lowest standard deviation. For SSA, the period is based on mean sampling interval.<br>Default value: `false`. |
+| `aggregationFunction` | string | [Aggregation function](../aggregation.md) applied if auto-aggregation is enabled.<br>Default value: `AVG`. |
 
 ### Control Fields
 
