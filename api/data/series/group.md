@@ -1,67 +1,69 @@
 # Group Processor
 
-Groups multiple input series and applies a statistical function to grouped values.
+The transformation groups multiple input series and applies a statistical function to grouped values, producing new series.
 
 The transformation is implemented as follows:
 
-1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
+1. Load detailed data for each series separately (input series).
 
-1. Distribute collected series into several groups according to the value of the `groupByEntityAndTags` parameter.
+1. Combine input series into groups based on the `groupByEntityAndTags` setting.
 
-1. Split each group into several subgroups based on the `place` settings.
+1. Split each group into subgroups based on the `place` setting.
 
 1. Create multi-value series for each subgroup. Multi-value series is a list of pairs: `(timestamp, samples of several series)` ordered by timestamps. The way series is constructed depends on the `period` setting.
 
-  a. The `period` is specified in the query.
-  <br>
-  Split each series `time:value` array into periods based on the `period`  parameter.
-  Discard periods with start time earlier than `startDate` or greater than `endDate`.
-  For each period create the pair
-  `(timestamp, collection of samples)`
-  and add it to the multi-valued series.
-  The `timestamp` equals to the period start time.
-  The `collection of samples` consists of multiple series samples within the period.
-  Thus a series sample belongs to the `collection of samples` if its timestamp belongs to the period.
+    a. The `period` is specified explicitly in the query.
+    <br>
+    Split each series `time:value` array into periods.
+    Discard periods with start time earlier than `startDate` or greater than `endDate`.
+    For each period create the pair
+    `(timestamp, collection of samples)`
+    and add it to the multi-valued series.
+    The `timestamp` equals to the period start time.
+    The `collection of samples` consists of multiple series samples within the period.
+    Thus a series sample belongs to the `collection of samples` if its timestamp belongs to the period.
 
-  b. The `period` is not specified.
-  <br>
-  In this case the multi-value series consists of pairs `(timestamp, multiple series samples with given timestamp)`, for each `timestamp` presented in that group of series.
+    b. The `period` is not specified.
+    <br>
+    In this case the multi-value series consists of pairs `(timestamp, multiple series samples with given timestamp)`, for each `timestamp` present in the input series within the subgroup.
   
 1. Interpolate each multi-value series according to the `interpolate` field.
 
 1. Truncate each multi-value series if `truncate` field is `true`.
 
-1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series. In other words,  one aggregated series per subgroup and statistical function. Statistical functions are provided via `type`, or `types` parameters. To build aggregated series evaluate a statistical function on set of samples for each pair in a multi-value series. Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series. The `aggregated value` is value of statistical function applied to the `samples`.
+1. Calculate aggregated series for each specified [statistical function](../../../api/data/aggregation.md), and each multi-value series. Statistical functions are set in the `type`, or `types` setting. To build aggregated series, the statistical function is applied to the samples for each pair in a multi-value series. Thus aggregated series contains sample `(timestamp, aggregated value)` per each pair `(timestamp, samples)` of multi-value series. The `aggregated value` is value of the statistical function applied to the `samples`.
 
-| **Parameter** | **Type** | **Description**  |
+## Fields
+
+| **Name** | **Type** | **Description**  |
 |:---|:---|:---|
-| `groupByEntityAndTags`  | array        | Array of tag names. It determines how series are [grouped](#series-grouping).<br>Default: `null`.|
+| `groupByEntityAndTags`  | array        | Array of tag names which determines how series are [grouped](#series-grouping).<br>Default: `null`.|
 | `type`  | string        | **[type or types is Required]** [Statistical function](#grouping-functions) applied to values with the same timestamp or within the same period, if the period is specified.<br>The `type` can be set to `DETAIL` in which case no grouping is performed and the underlying series is returned unchanged. |
 | `types` | array          | **[type or types is Required]** Array of [statistical functions](#grouping-functions). Each function in the array produces a separate grouped series. If one of the functions is set to `DETAIL`, its result contains the underlying series. |
 | `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
 | `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
 | `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established.<br>Default: `false`.  |
-| `place`      | object           | Divide grouped series into several subgroups based on constraint and objective function specified in the [Place](#place) object. <br>Default: `null`. |
+| `place`      | object           | Allocate grouped series to subgroups based on constraints and the objective function specified in the [place](#place) object. <br>Default: `null`. |
 
 ## Series Grouping
 
-If the `groupByEntityAndTags` parameter is not provided, then all series are collected into single group. That is default behavior.
+If the `groupByEntityAndTags` setting is **not set** in the request, all input series are placed into a **single** group.
 
-If array of tag names is empty
+If the array is **empty**, the input series are placed in the same group if they have the **same** entity.
 
 ```json
 "groupByEntityAndTags": []
 ```
 
-then put two series in the same group if and only if they have the same entity.
+If the array of tag names is **not empty**, any two series belong to the same group if and only if they have the same entity, and for each specified tag name either both series have the same value of the tag, or both do not have the tag.
 
-If array of tag names is not empty,
-then put two series in the same group if and only if they have the same entity,
-and for each specified tag name either both series have the same value of the tag, or both do not have the tag.
+```json
+"groupByEntityAndTags": ["tag-name-1", "tag-name-2"]
+```
 
 ### Grouping Example
 
-Consider series for metric `abc`, with following entities and tags:
+Consider a set of series with the following entities and tags:
 
 ```ls
 | index | entity | tag-name-1  | tag-name-2  |
@@ -75,14 +77,20 @@ Consider series for metric `abc`, with following entities and tags:
 | 7     | e-2    |             | tag-value-1 |
 ```
 
-Query grouping by entity and tag with name `tag-name-1`:
+The request groups series by entity and tag with name `tag-name-1`:
 
 ```json
 "groupByEntityAndTags": ["tag-1-name"]
 ```
 
-Result contains 4 groups: {1, 3}, {2, 4}, {5}, {6, 7}.
-View full [example](../../../api/data/series/examples/query-group-by-entity-and-tags.md) for more details.
+The result contains `4` groups:
+
+* `{1, 3}` - Same entity `e-1` and no `tag-1-name`
+* `{2, 4}` - Same entity `e-1` and same `tag-1-name` value
+* `{5}` - Only one series with a different `tag-name-1` value
+* `{6, 7}` - Same entity `e-2` and no `tag-1-name`
+
+View the full [example](../../../api/data/series/examples/query-group-by-entity-and-tags.md) for more details.
 
 ## Grouping Functions
 
@@ -625,20 +633,20 @@ The grouped `SUM` series is then aggregated into periods.
 
 ## Place
 
-The `place` setting specifies how to divide grouped series into several subgroups based on constraint and objective function.
-ATSD performs two types of placement: [Partitioning](#partitioning) and [Packing](#packing).
+The `place` setting specifies how to place grouped series into subgroups based on constraints and the objective function.
+The operation supports two placement types: [partitioning](#partitioning) and [packing](#packing).
 
-### Place Object Fields
+### Place Fields
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `count`  | integer | Maximum count of subgroups, response can contain less than maximum. |
-| `entities` | array | Entities are used as means of providing group specific information. Tags of an entity contain numeric characteristics of a subgroup. |
-| `entityGroup` | string | Another way to specify entities via [entity group](../../../api/meta/entity-group/README.md) name. |
-| `entityExpression`  | string | Select entities which match to [expression](../../../api/data/filter-entity.md#entityexpression-syntax). |
-| `constraint` | string | Boolean MVEL expression that series from each subgroup must satisfy, for example max() < 10. |
-| `minimize` | string | Function calcuated for each subgroup. Partitioning into subgroups is performed to minimise sum of function's values. |
-| `method` | string | The algorithm used to solve [Packing](#packing) problem. Admissible values: `greedy_simple` (default), or `greedy_correlations`.|
+| `count`  | integer | Maximum number of subgroups. The response can contain less than the maximum. |
+| `constraint` | string | Boolean expression that series in each subgroup must satisfy, for example `max() < 10`. |
+| `minimize` | string | Objective function calculated for each subgroup. Partitioning into subgroups is performed to minimize the **sum** of function values. |
+| `method` | string | The algorithm used to solve the [packing](#packing) problem. Allowed values: `greedy_simple` (default), or `greedy_correlations`.|
+| `entities` | array | Entities containing group-specific information using entity tags with numeric characteristics of a subgroup. |
+| `entityGroup` | string | Alternative to `entities` setting using an [entity group](../../../api/meta/entity-group/README.md) name. |
+| `entityExpression`  | string | Alternative to `entities` setting using an [expression](../../../api/data/filter-entity.md#entityexpression-syntax). |
 
 ### Functions Available in the Place Context
 
@@ -654,29 +662,29 @@ ATSD performs two types of placement: [Partitioning](#partitioning) and [Packing
 
 ### Partitioning
 
-The  problem is to find the best partition of given group of time series into no more than specified number of subgroups.
+The partitioning algorithm finds the best partitioning of a given group of time series into no more than the specified number of subgroups.
 
-Maximum count of subgroups is value of the `count` parameter. The best is a partition which satisfies the `constraint` and for which value of objective function is minimal. Objective function is sum of values of the `minimize` expression over all subgroups.
+The best partitioning is determined such that it satisfies the `constraint` and for which the objective function value is minimal. Objective function is the sum of values of the `minimize` formula over all subgroups.
 
-To find exact solution of the partitioning problem ATSD loops over all possible partitions, and calculate objective functions for each partition as follows:
+The maximum number of subgroups is limited by the `count` setting.
 
-* Calculate aggregated series for each subgroup, using specified `type`, `period`, `interpolate`, and `truncate` settings.
+To find the exact solution the algorithm iterates over all possible partitioning, and calculates the objective function for each partitioning as follows:
 
-* Evaluate boolean `constraint` expression for each aggregated series. Reject the partition if expression is `false` for some subgroup. The `constraint` expression can apply the [statistical functions](#functions-available-in-the-place-context) to aggregated series.
+* Create aggregated series for each subgroup, using the specified `type`, `period`, `interpolate`, and `truncate` settings.
 
-* For each subgroup calculate value of the `minimize` expression, which can use the same [statistical functions](#functions-available-in-the-place-context).
+* Check boolean `constraint` expression for each aggregated series. Discard the partitionings for which the `constraint` is `false` for one of the subgroups. The `constraint` expression can include [statistical functions](#functions-available-in-the-place-context) applied to aggregated series.
 
-* Calculate value of objective function as sum of values calculated on the previous step.
+* For each subgroup calculate the value of the `minimize` expression, which can also reference the same [statistical functions](#functions-available-in-the-place-context).
 
-The solution is a partition which minimizes the objective function. If objective function reaches minimum on several partitions then select one of them with the least count of subgroups.
+* Calculate the value of the objective function as sum of values calculated at the previous step.
+
+The partitioning with the lowest objective function and the smallest number of subgroups is selected as the best partitioning.
 
 #### Partitioning Algorithm Complexity
 
-Algorithm loops over all partitions of set of cardinality N into no more than K subsets.
-Total count of partitions equals to sum S(N, 1) + S(N, 2) + ... + S(N, K)
-of [Stirling](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind) numbers.
-This sum grows extremely fast, for example, there are `16_244_652_278_171` partitions of 20 series into no more than 7 subgroups.
-Implementation of the algorithm expects that number of grouped series does not exceeds 64, and throws an error if number of partitions exceeds `1_000_000`.
+The algorithm checks **all** combinations of the `N` input series subject to the `count` limit. The total number of combinations equals `S(N, 1) + S(N, 2) + ... + S(N, count)` where `S` is the [Stirling](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind) number.
+This sum grows extremely fast, for example, there are over `16` trillion combinations to check if the number of input series is `20` and they are allocated to no more than `7` subgroups.
+The implementation expects `N` to not exceed `64`, and throws an error if number of partitions exceeds `1,000,000`.
 
 #### Query Example
 
@@ -702,7 +710,7 @@ Implementation of the algorithm expects that number of grouped series does not e
 
 #### Response
 
-The response contains information about each subgroup: keys of grouped series, value of the `minimize` expression for the subgroup as `groupScore`, value of objective function as `totalScore`, and aggregated series for the subgroup as the `data`.
+The response contains information about each subgroup: grouped series keys, the `minimize` expression value for the subgroup as `groupScore`, the objective function value as `totalScore`, and aggregated series for the subgroup as the `data`.
 
 ```json
 [
@@ -812,54 +820,54 @@ The response contains information about each subgroup: keys of grouped series, v
 
 ### Packing
 
-The problem is to divide series into the smallest number of subgroups, where each subgroup meets the `constraint`.
+The packing algorithm divides series into the smallest number of subgroups, where each subgroup satisfies the `constraint`.
 
-Objective function is not used in this problem, but the `constraint` expression can use numeric parameters specific for each subgroup, and numeric parameters specific for each series.
+The objective function is **ignored** by the packing algorithm, but the `constraint` expression can use numeric parameters specific for each subgroup, and numeric parameters specific for each series.
 
 Each entity specified in the `entities`, or `entityGroup`, or `entityExpression` holds numeric parameters of single subgroup as values of its tags. These values are available in the `constraint` expression by the tag names.
 
 #### Subgroup Parameters Example
 
-Consider there are entities with tags `cpu_limit` and  `memory_limit`:
+Assume the following entities with tags `cpu_limit` and  `memory_limit`.
 
 ```ls
-| entity name\ tags | cpu_limit | memory_limit |
-|-------------------|-----------|--------------|
-| lp_group_1        |        10 |           20 |
-| lp_group_2        |         8 |           40 |
-| lp_group_3        |        12 |           10 |
-| lp_group_4        |        14 |           20 |
-| lp_group_5        |         8 |           10 |
+| entity name/tags | cpu_limit | memory_limit |
+|------------------|-----------|--------------|
+| lp_group_1       |        10 |           20 |
+| lp_group_2       |         8 |           40 |
+| lp_group_3       |        12 |           10 |
+| lp_group_4       |        14 |           20 |
+| lp_group_5       |         8 |           10 |
 ```
 
-The `constraint` expression can use the variable `cpu_limit`:
+The `constraint` expression can reference the `cpu_limit` variable which resolves to the `cpu_limit` entity tag for the given entity.
 
 ```json
 "constraint": "max() < cpu_limit"
 ```
 
-When the expression is evaluated for the subgroup corresponding to the entity `lp_group_3` the value of `cpu_limit` is 12.
+When the above expression is evaluated for the subgroup corresponding to the entity `lp_group_3`, the value of `cpu_limit` is `12`.
 
-Each series also can store numeric parameters in tags of series entity.
-To refer these parameters in the `constraint` expression use tag name prepended by the `series.` prefix.
+Each series can also store numeric parameters in series entity tags.
+To reference these parameters in the `constraint` expression use tag name prepended by the `series.` prefix.
 
 #### Series Parameters Example
 
 Following series entities have tag `memory_allocated`:
 
 ```ls
-| entity name\ tags | memory_allocated |
-|-------------------|------------------|
-| lp_1              |                4 |
-| lp_2              |                4 |
-| lp_3              |                4 |
-| lp_4              |                8 |
-| lp_5              |                4 |
-| lp_6              |                2 |
-| lp_7              |                4 |
+| entity name/tags | memory_allocated |
+|------------------|------------------|
+| lp_1             |                4 |
+| lp_2             |                4 |
+| lp_3             |                4 |
+| lp_4             |                8 |
+| lp_5             |                4 |
+| lp_6             |                2 |
+| lp_7             |                4 |
 ```
 
-The following `constraint` asserts that sum of `memory_allocated` parameters of all series in a subgroup is less than 14:
+The following `constraint` checks that sum of `memory_allocated` parameters of all series in a subgroup is less than 14:
 
 ```json
 "constraint": "sum(series.memory_allocated) < 14"
@@ -867,43 +875,39 @@ The following `constraint` asserts that sum of `memory_allocated` parameters of 
 
 #### Subgroup and Series Parameters Example
 
-Series with entities `lp_2, lp_3, lp_6` are placed in a group dedicated to entity `lp_group_1`. Consider the constraint:
+Series with entities `lp_2, lp_3, lp_6` are placed in a group associated with entity `lp_group_1`. Consider the constraint:
 
 ```json
 "constraint": "max() < cpu_limit && sum(series.memory_allocated) < memory_limit"
 ```
 
-It asserts that maximum value of aggregated series computed for `lp_2, lp_3, lp_6` is less than `cpu_limit = 10`, and sum of memory allocated to each series `sum(series.memory_allocated) = 4 + 4 + 2` is
-less that `memory_limit = 20`.
+It checks that maximum value of aggregated series computed for `lp_2, lp_3, lp_6` is less than `cpu_limit` which equals `10`, and sum of memory allocated to each series `sum(series.memory_allocated) = 4 + 4 + 2` is
+less that `memory_limit` which equals `20`.
 
 #### Packing Algorithm
 
-Exact solution of the Packing problem requires to consider each of
+The exact solution of the packing algorithm requires checking
 ![complexity](./images/complexity.png)
-possible assignment of N series to K subgroups.
-This became computationally unfeasible for small values of N and K.
-ATSD uses simple heuristic algorithm to solve the problem.
-The algorithm works as follows.
+combinations of placing `N` series into `K` subgroups.
+This is computationally unfeasible if `N` and `K` are sufficiently large.
+As a workaround, the database applies the following heuristics:
 
 1. Sort entities by name.
+2. Check each entity, and build a subgroup for the given entity.
+3. If all entities are checked and there are still unassigned series, place them into a special subgroup.
 
-2. Consider each entity in order, and build subgroup for the entity.
-
-3. If all entities are considered, and still there are unplaced series, then put them into special subgroup.
-
-How subgroup is formed for given entity depends on value of the `method` setting.
+The subgroup containing unassigned series is formed depends on the `method` setting.
 
 #### Method `greedy_simple`
 
-First of all, sort series lexicographically by name.
-(Series name is concatenation of series entity and tags.)
-Algorithm iterates over all not yet placed series and insert series into current group if the `constraint` is not violated.
+The method sorts series lexicographically by key which contains entity and tags.
+Unassigned series are iterated and inserted into the current group if the `constraint` is not violated.
 
 #### Method `greedy_correlations`
 
-1. Select first series in subgroup: iterate over all not placed series sorted by series names and select first series that meets the `constraint`.
+1. Select the first series in the subgroup. Iterate over unassigned series sorted by series name and select the first series that satisfies the `constraint`.
 
-2. Some series are already placed in the subgroup. Calculate aggregation function, specified in the `type` parameter for them. Then calculate correlations between aggregated series and each not yet placed series. Sort not placed series in increasing order of correlations. Iterate over series starting from series with the least correlation, and try to append series to the subgroup. As some series appended, repeat all calculations: recalculate aggregated series, correlations coefficients, and try to add next series to the subgroup. The step is completed if no more series can be added to the subgroup.
+2. For series that are already assigned to subgroups calculate the aggregation function, specified in the `type` parameter. Calculate correlations between assigned series and unassigned series (both aggregated). Sort unassigned series by correlation in the ascending order. Iterate over unassigned series starting with series with the lowest correlation, and add the series to the subgroup. With the series added, repeat all calculations: recalculate aggregated series, the correlations coefficients, and add next series to the subgroup. The step is completed if no more series can be added to the subgroup.
 
 #### Approximate Query Example
 
