@@ -377,6 +377,7 @@ curl https://atsd_hostname:8443/api/v1/series/query \
 ### Group
 
 * [Group Order](examples/query-group-order.md)
+* [Group by Entity and Tags](examples/query-group-by-entity-and-tags.md)
 * [Group Without Aggregation](examples/query-group-no-aggr.md)
 * [Group Without Aggregation: Truncate](examples/query-group-no-aggr-truncate.md)
 * [Group Without Aggregation: Extend](examples/query-group-no-aggr-extend.md)

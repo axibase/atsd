@@ -230,6 +230,7 @@ typeahead
 un-acknowledge[d]?
 unarchive
 unary
+unassigned
 unauthenticated
 uncheck
 uncomment
@@ -253,6 +254,7 @@ webhook[s]?
 whitelist
 whitespace
 wildcard
+workaround
 workspace
 xlsx
 xml
