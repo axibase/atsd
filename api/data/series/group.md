@@ -662,23 +662,23 @@ The operation supports two placement types: [partitioning](#partitioning) and [p
 
 ### Partitioning
 
-The partitioning algorithm finds the best partitioning of a given group of time series into no more than the specified number of subgroups.
+The algorithm finds the best partitioning of a given group of time series into no more than the specified number of subgroups.
 
-The best partitioning is determined such that it satisfies the `constraint` and for which the objective function value is minimal. Objective function is the sum of values of the `minimize` formula over all subgroups.
+The best combination is determined such that each group satisfies the `constraint` condition and the objective function value is minimal. Objective function is the sum of values of the `minimize` formula for all subgroups.
 
 The maximum number of subgroups is limited by the `count` setting.
 
-To find the exact solution the algorithm iterates over all possible partitioning, and calculates the objective function for each partitioning as follows:
+To find the exact solution the algorithm iterates over all possible combinations, and calculates the objective function for each combination as follows:
 
 * Create aggregated series for each subgroup, using the specified `type`, `period`, `interpolate`, and `truncate` settings.
 
-* Check boolean `constraint` expression for each aggregated series. Discard the partitionings for which the `constraint` is `false` for one of the subgroups. The `constraint` expression can include [statistical functions](#functions-available-in-the-place-context) applied to aggregated series.
+* Check boolean `constraint` expression for each aggregated series. Discard the partitions for which the `constraint` is `false` for one of the subgroups. The `constraint` expression can include [statistical functions](#functions-available-in-the-place-context) applied to aggregated series.
 
 * For each subgroup calculate the value of the `minimize` expression, which can also reference the same [statistical functions](#functions-available-in-the-place-context).
 
 * Calculate the value of the objective function as sum of values calculated at the previous step.
 
-The partitioning with the lowest objective function and the smallest number of subgroups is selected as the best partitioning.
+The combination with the lowest objective function value and the smallest number of subgroups is selected as the best partitioning.
 
 #### Partitioning Algorithm Complexity
 
@@ -888,7 +888,7 @@ less that `memory_limit` which equals `20`.
 
 The exact solution of the packing algorithm requires checking
 ![complexity](./images/complexity.png)
-combinations of placing `N` series into `K` subgroups.
+combinations where `N` is the number of series and `K` is the maximum number of subgroups.
 This is computationally unfeasible if `N` and `K` are sufficiently large.
 As a workaround, the database applies the following heuristics:
 

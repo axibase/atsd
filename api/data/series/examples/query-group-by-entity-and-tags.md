@@ -2,7 +2,10 @@
 
 ## Description
 
-Group multiple input series by entity, and tag name and calculate aggregated series for each group. This example demonstrates how series are grouped, what are keys of aggregated series, and how information about grouped series is represented in response. All series have the same single sample with value 1, because series values are not essential in this example.
+* Groups multiple input series by entity and tag name.
+* Calculates aggregated series for each group.
+
+This example demonstrates how series are grouped, what are the keys of aggregated series, and how information about grouped series is represented in the response. All series in this example have a single value `1`.
 
 ## Series
 
