@@ -7,33 +7,33 @@
 6227|core|Bug|Excessive [logging](../../administration/logging.md) hides diagnostics.
 6221|rule engine|Bug|Rule Engine: corrupted window state is shown on [**Rule Window**](../../rule-engine/README.md#rule-windows) form for subsequent commands with same timestamp.
 6213|rule editor|Bug|Rule Engine: can not set [variable](../../rule-engine/variables.md#variables) value to `notify_time`.
-6212|client|Bug|[Python API Client](../../api/clients/README.md#python): tests failing.
+6212|client|Bug|[Python API Client](https://github.com/axibase/atsd-api-python): tests failing.
 6206|sql|Feature|[Scheduled SQL](../../sql/scheduled-sql.md#sql-scheduler): query results in HTML format without form.
 6204|api-network|Bug|Non-descriptive error [logged](../../administration/logging.md) when TCP handler receives an invalid command.
-6201|rule editor|Bug|[Rule Enginge](../../rule-engine/README.md): HTTP 500 code when trying to access variable from another rule.
+6201|rule editor|Bug|[Rule Engine](../../rule-engine/README.md): HTTP 500 code when trying to access variable from another rule.
 6200|rule editor|Bug|Rule Engine: [`coalesce`](../../rule-engine/functions-text.md#coalesce) function with 4 arguments throws an error in variable field.
 6196|administrator|Bug|[Server Properties](../../administration/server-properties.md#server-properties): EOL and whitespace not trimmed in `hadoop.properties`.
-6195|rule engine|Bug|[Rule Enginge](../../rule-engine/README.md): create a separate queue for each action handler.
+6195|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): create a separate queue for each action handler.
 6194|security|Bug|[API Tokens](../../administration/user-authentication.md#token-authentication): match URL considering different ways of URL encoding.
 6187|rule engine|Bug|Rule Engine: [derived command](../../rule-engine/derived.md#derived-commands) causes an error at runtime if it contains line breaks.
 6186|rule engine|Bug|Rule Engine: [derived commands](../../rule-engine/derived.md#derived-commands) error hidden.
 6185|security|Bug|Security: wrong HTTP codes when trying to get [token](../../administration/user-authentication.md#token-authentication).
 6183|rule engine|Bug|Rule Engine: [**Log to Alert History**](../../rule-engine/logging.md#logging-to-database) setting is ignored.
-6181|rule engine|Feature|[Rule Enginge](../../rule-engine/README.md): customizable action execution delay.
+6181|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): customizable action execution delay.
 6179|UI|Bug|UI: Unsupported patterns suggested in time autocomplete.
-6175|rule editor|Bug|[Rule Enginge](../../rule-engine/README.md): update function names for syntax highlighting.
+6175|rule editor|Bug|[Rule Engine](../../rule-engine/README.md): update function names for syntax highlighting.
 6173|email|Bug|[Mail Client](../../administration/mail-client.md#mail-client): infinite loading with wrong server name.
-6172|rule engine|Bug|[Rule Enginge](../../rule-engine/README.md): empty window when saving rule without name or condition.
+6172|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): empty window when saving rule without name or condition.
 6171|api-rest|Feature|Series Query: implement [`autoAggregate`](../../api/data/series/forecast.md#regularization-fields) setting for forecasts.
-6170|rule engine|Feature|[Rule Enginge](../../rule-engine/README.md): function changes.
+6170|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): function changes.
 6168|UI|Feature|[Forecast View](../../tutorials/getting-started.md#viewing-statistics): grouping support.
 6164|rule engine|Feature|Rule Engine: new [utility](../../rule-engine/functions.md#utility) functions.
 6155|rule engine|Feature|Rule Engine: add parameter to [`value`](../../rule-engine/functions-value.md#value-functions) function to return a default if metric is not present in the command.
-6154|rule engine|Feature|[Rule Enginge](../../rule-engine/README.md): property processing on incremental updates.
+6154|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): property processing on incremental updates.
 6152|rule editor|Bug|Rule Editor: error not raised if [variable](../../rule-engine/variables.md#variables) is declared multiple times.
-6150|rule editor|Bug|[Rule Enginge](../../rule-engine/README.md): rule validation hangs.
-6149|forecast|Bug|Forecast Dao: read [stored forecasts](../../forecasting/README.md#data-forecasting) with the same tag.
-6147|rule engine|Bug|[Rule Enginge](../../rule-engine/README.md): unreadable expression on condition evaluation exception.
+6150|rule editor|Bug|[Rule Engine](../../rule-engine/README.md): rule validation hangs.
+6149|forecast|Bug|Forecast: read [stored forecasts](../../forecasting/README.md#data-forecasting) with the same tag.
+6147|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): unreadable expression on condition evaluation exception.
 6146|api-rest|Feature|Series Query: implement [grouping](../../api/data/series/group.md#fields) by entity and specified series tags.
 6144|forecast|Bug|Forecast: unstable [SSA](../../api/data/series/forecast.md#ssa-fields) calculation.
 6142|forecast|Bug|[**Forecast Settings**](../../forecasting/README.md#data-forecasting): series is not available for forecasting if it's last insert time is bigger than now.
@@ -72,7 +72,7 @@
 5965|api-rest|Feature|Series Query: extend [grouping](../../api/data/series/group.md#fields) transformation to group series based on correlation and constraints.
 5958|csv|Bug|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): model stage - entity field inconsistent.
 5939|csv|Bug|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): multiple fixes.
-5687|rule engine|Feature|[Rule Enginge](../../rule-engine/README.md): optimize performance of events exiting window.
+5687|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): optimize performance of events exiting window.
 
 ## Charts
 
