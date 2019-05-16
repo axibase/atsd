@@ -8,12 +8,12 @@
 |5864|forecast|Bug|Rule Engine: validate `forecast` function arguments.
 |5862|forecast|Bug|[Forecast](../../forecasting/README.md): scheduled task error.
 |5856|forecast|Bug|Forecast: scheduled [PCA](../../forecasting/README.md#overview) task error.
-|5854|portal|Bug|Portal: portal error in HTML report with [`percentile`](https://axibase.com/docs/charts/configuration/aggregators.html#percentile) statistics.
+|5854|portal|Bug|Portal: HTML report error with [`percentile`](https://axibase.com/docs/charts/configuration/aggregators.html#percentile) statistics.
 |5852|rule engine|Feature|Rule Engine: implement [`is_exceptionday`](../../rule-engine/object-datetime.md#is_exceptionday-function) function.
 |5850|forecast|Bug|Forecast: [HW](../../forecasting/README.md#overview) fails on series with 1 day selection interval.
 |5847|csv|Bug|CSV: [parser](../../parsers/csv/README.md) fails to ignore first empty lines.
 |5843|api-rest|Bug|API: Fix `NPE` in [version](../../api/data/series/versions.md) query.
-|5840|csv|Bug|[CSV](../../parsers/csv/README.md) file upload: high CPU and slow throughput.
+|5840|csv|Bug|[CSV](../../parsers/csv/README.md) file upload: high CPU load and low throughput.
 |5838|core|Bug|Core: classify `atsd_forecast` as a data table.
 |5835|sql|Bug|SQL: slow [`atsd_entity`](../../sql/README.md#atsd_entity-table) query if number of entities is large.
 |5834|UI|Feature|UI: update Freemarker dependency.
