@@ -2,7 +2,7 @@
 
 Follow development in the **Change Tracker Portal** and review details in the **Change Logs** below.
 
-![](./images/change-tracker-mar.png)
+![](./images/change-tracker-apr.png)
 
 [![](./images/button-1.png)](https://apps.axibase.com/chartlab/5dd8b00e#fullscreen)
 
@@ -10,7 +10,8 @@ Follow development in the **Change Tracker Portal** and review details in the **
 
 | **Month** | **Features** | **Bugs** | &nbsp;
 |---|---:|---:|---|
-| March | `25` | `42` | [↗](2019_feb/README.md)
+| April | `26` | `54` | [↗](2019_apr/README.md)
+| March | `25` | `42` | [↗](2019_mar/README.md)
 | February | `28` | `62` | [↗](2019_feb/README.md)
 | January | `6` | `18` | [↗](2019_jan/README.md)
 ---
