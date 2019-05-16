@@ -374,6 +374,8 @@ Name | Description
 [`toBoolean`](functions-utility.md#toboolean)| Converts the input string or number to a boolean value.
 [`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
 [`agent_to_host`](functions-utility.md#agent_to_host)| Extract hostname from ITM agent name.
+[`sendTcpMessage`](functions-utility.md#sendtcpmessage)| Sends TCP message to a remote server.
+[`sendTcpMessageReply`](functions-utility.md#sendtcpmessagereply)| Sends TCP message to a remote server and read a reply. 
 
 ## Value
 

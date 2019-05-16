@@ -16,6 +16,8 @@
 * [`samples`](#samples)
 * [`values`](#values)
 * [`timestamps`](#timestamps)
+* [`sendTcpMessage`](#sendtcpmessage)
+* [`sendTcpMessageReply`](#sendtcpmessagereply)
 
 ## `agent_to_host`
 
@@ -374,4 +376,61 @@ getURLUserInfo('https://example.org/en/products?type=database&status=1')
 
 /* Returns "john.doe:secret" */
 getURLUserInfo('https://john.doe:secret@example.org/en/products?type=database&status=1')
+```
+
+## `sendTcpMessage`
+
+```csharp
+sendTcpMessage(string host, int port, string message) int
+```
+
+The function sends the specified message to a remote server, identified with the hostname and port, via the TCP protocol. The response status code is an integer:
+
+Status | Description
+---|---
+`0` | Connection established successfully.
+`1` | Connection Error
+`2` | No Route To Host
+`3` | Unknown Host
+`4` | Socket Timeout
+`5` | Other Error
+
+```sh
+${sendTcpMessage('example.org', 9001, "hello world")}
+```
+
+```sh
+${sendTcpMessage('example.org', 9001, entity + ' alert')}
+```
+
+## `sendTcpMessageReply`
+
+```csharp
+sendTcpMessageReply(string host, int port, string message [, timeout]) TcpReply
+```
+
+The function sends the specified message to a remote server, identified with the hostname and port, via the TCP protocol. After the message is sent, the function awaits a response from the server, for up to `30` seconds. The default timeout can be customized using the optional `timeout` argument specified in seconds.  
+
+The function returns a `TcpReply` object containing the following fields:
+
+* `status` - Response status integer.
+* `response` - Response text received from the remote server.
+* `execTime` - Execution time in milliseconds.
+
+Status | Description
+---|---
+`0` | Connection established successfully.
+`1` | Connection Error
+`2` | No Route To Host
+`3` | Unknown Host
+`4` | Socket Timeout
+`5` | Other Error
+
+```sh
+${sendTcpMessageRepy('example.org', 9001, order + '
+')}
+```
+
+```txt
+TcpReply(status=4, response=Order 123 received OK, execTime=250)
 ```

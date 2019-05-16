@@ -4,7 +4,7 @@
 
 Inserts a property record with specified type, keys, and tags for a given entity.
 
-Entity, property type, and property keys (`k:` fields) form a composite primary key of the property record in the database, whereas tags (`v:` fields) are stored as additional attributes.
+The primary key of the property record consists of the entity, property type, and property keys (`k:` fields). The tags (`v:` fields) are stored as additional attributes.
 
 When inserted into the database, the property record overwrites specific tags of the stored record with the same primary key: **entity+type[+key]**.
 
@@ -16,16 +16,30 @@ property e:${entity} t:${type} k:${key-1}=${value} k:${key-2}=${value} v:${tag-1
 
 * Entity name, property type, key names, and tag names are case-**insensitive** and are converted to lower case when stored.
 * Key values and tag values are case-**sensitive** and are stored as submitted.
-* Tag names can duplicate key names, for example `{tag-1}` can be equal to `{key-1}`.
-* At least one tag is required, for example, command `property e:e1 t:t1 k:k1=v1` is not valid.
-* Tags with empty values are ignored, for example `t2` is ignored in command `property e:e1 t:t1 v:t1=v1 v:t2=""`.
-* To delete a stored tag, specify `null`, for example `property e:e1 t:t1 v:t1=null v:t2=v2`.
 
 ```ls
-# input command
+# Input command
 property e:nurSWG t:DISK-config k:FS_type=NFS v:Initiator=Pre-fetch
-# stored record
+
+# Stored record after names are normalized
 property e:nurswg t:disk-config k:fs_type=NFS v:initiator=Pre-fetch
+```
+
+## Empty Values
+
+* At least one non-empty tag is required. For example, commands  `property e:e1 t:t1 k:k1=v1` and `property e:e1 t:t1 v:t1=""` are invalid.
+* Empty tags are not stored.
+* Empty tags delete stored tags, if present, with the same name.
+
+```ls
+# Stored record
+property e:nurswg t:cpu v:status=Err v:start_time=12:05 v:message=NaN
+
+# Property command
+property e:nurswg t:cpu v:status=OK  v:message="" v:conn_time=12:10
+
+# Modified record
+property e:nurswg t:cpu v:status=OK  v:start_time=12:05 v:conn_time=12:10
 ```
 
 ## Reserved Property Types
@@ -88,5 +102,5 @@ property e:server-001 t:$entity_tags v:location=SVL d:2018-03-04T12:43:20Z
 Delete the `fs_type` tag.
 
 ```ls
-property e:server-001 t:disk-config k:mount_point=/ k:name=sda1 v:fs_type=null
+property e:server-001 t:disk-config k:mount_point=/ k:name=sda1 v:fs_type=""
 ```
