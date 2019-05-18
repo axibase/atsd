@@ -12,7 +12,7 @@ Windows are displayed on the **Alerts > Rule Windows** page and provide access t
 
 Count-based windows accumulate up to the specified number of time-value samples. Samples are sorted **by command timestamp**, with the most recent sample placed at the end of the array. When the window becomes full, the first sample (**oldest** by command time) is removed from the window to free up space for an incoming sample.
 
-Example: Count-based window with three samples
+Example: Count-based window with three samples.
 
 ![](./resources/window-count.svg)
 
@@ -40,11 +40,11 @@ The **end time** in time-based windows is not bound. As such, the window accepts
 
 Response actions are triggered on window status changes.
 
-As new data is received and old data is removed from the window, the rule engine re-evaluates the [condition](condition.md) which can cause the status of the current window to change, triggering response actions.
+As new commands are received and expired commands are removed from the window, the rule engine re-evaluates the [condition](condition.md) which can cause the status of the current window to change, triggering response actions.
 
 ### Initial Status
 
-New windows are created based on incoming data, no historical data is loaded from the database unless the **Load History** setting is turned on.
+New windows are created from incoming commands. No historical data is loaded from the database unless the **Load History** setting is turned on.
 
 The window for the given [grouping](grouping.md) key is created when the first matching command is received by the rule engine.
 
@@ -52,7 +52,7 @@ New windows are assigned initial status of `CANCEL` which is then updated based 
 
 ### Triggers
 
-Response actions can be triggered whenever window status changes as well as at scheduled intervals when the status is `REPEAT`. Triggers for each action type are configured and executed separately.
+Response actions can be triggered whenever window status changes as well as at scheduled intervals when the status is `REPEAT`. Triggers for each action are configured and executed separately.
 
 ### Status Events
 
@@ -85,7 +85,9 @@ A window assumes the `CANCEL` status when the condition changes from `true` to `
 
 ## Life Cycle
 
-When a rule is deleted or modified with the rule editor, all windows for the given rule are dropped. Windows are re-created when new matching commands are received by the database.
+When a rule is saved after changing the filters, grouping fields or the condition, all windows for the given rule are removed. Changes in notifications do no affect current windows.
+
+Windows are re-created when new matching commands are received by the database.
 
 Newly created windows contain only **new commands**, unless **Load History** setting is enabled. Such windows load historical values received over the same interval as the window duration, or the same number of commands as the window length.
 

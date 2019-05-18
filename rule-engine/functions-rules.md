@@ -2,12 +2,18 @@
 
 ## Overview
 
-These functions check windows created by other rules. Matching windows can contain data for series that differ from the series in the current window. Use these functions for correlation purposes.
+The below functions check the status and attributes of windows created by other rules which typically contain data for different metrics, properties, and messages. Use these functions for correlation purposes.
 
 Windows are matched using [grouping](grouping.md) tags, irrespective of tags present in the last command.
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression returns `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
 
 The current window is excluded from matching.
+
+:::tip Optimization Note
+If the referenced rule has many variables declared, enable the **Preserve Context** option in the referenced rule to avoid re-calculating the variables.
+
+![](./images/preserve-context.png)
+:::
 
 ## Reference
 

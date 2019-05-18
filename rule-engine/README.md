@@ -15,13 +15,17 @@ IF condition THEN action-1 ... action-N
 Example
 
 ```javascript
-IF percentile(75) > 300 THEN alert_slack_channel
+IF percentile(75) > 300 THEN send_message_to_slack
 ```
 
 A rule [condition](condition.md) can operate on a single metric or correlate multiple metrics using [`value`](functions-value.md), [`database`](functions-series.md), and [`rule`](functions-rules.md) functions.
 
 ```javascript
-max() > 1.5 && value('temperature') > 50
+max() > 5 && value('temperature') > 50
+```
+
+```javascript
+avg() > 75 && !rule_open('backup_active')
 ```
 
 ## Processing Pipeline
@@ -47,7 +51,7 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 * **Input Filter**. All samples are discarded if the **Settings > Input Settings > Rule Engine** option is disabled.
 
-* **Status Filter**. Samples are discarded for metrics and entities that are disabled.
+* **Status Filter**. Samples are discarded for **disabled** metrics and entities.
 
 * [Rule Filter](filters.md) accepts data that satisfies the metric, entity, and tag filters specified in the rule.
 
@@ -55,7 +59,7 @@ The incoming data samples are processed by a chain of filters prior to the group
 
 ## Grouping
 
-Once the sample passes through the filter chain, the sample is allocated to matching [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
+After passing through the filters, each sample is allocated to a matching [window](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples in working memory.
 
 The commands can be associated with windows in a 1-to-1 fashion by enabling the **All Tags** setting or by enumerating all tags as the [grouping](grouping.md) tags.
 
@@ -73,10 +77,7 @@ The rule engine supports two types of windows:
 
 ## Condition Checking
 
-[Windows](window.md) are continuously updated as new samples are added and old samples are
-removed.
-
-When a window is updated, the rule engine checks the [condition](condition.md) and triggers various response actions based on the condition result.
+The rule engine evaluates the [condition](condition.md) each time a new sample is added or an expired samples is removed from the [window](window.md).
 
 Condition example:
 
@@ -84,9 +85,11 @@ Condition example:
 avg() > 80
 ```
 
+Response actions are triggered based on the condition result: `true` or `false`.
+
 ### Window Status
 
-[Windows](window.md) are stateful. When the condition for a given window changes to `true`, the window is initialized in memory with the status `OPEN`.
+[Windows](window.md) are stateful. When the condition for a given window changes from `false` to `true`, the window status changes from `CANCEL` to `OPEN`.
 
 On subsequent `true` evaluations, the status transitions to `REPEAT`.
 
@@ -96,11 +99,11 @@ The current window status is displayed on the **Alerts > Rule Windows** page.
 
 ![](./images/rule-windows.png)
 
-Windows are updated when the commands `enter` or `exit` the windows. Scheduled rules that are checked at a regular interval, regardless of incoming data, can be constructed using the built-in [`timer`](scheduled-rules.md) metrics.
+Windows are updated when the commands `enter` or `exit` the windows. Scheduled rules that are checked at a regular interval, regardless of commands, can be constructed using the built-in [`timer`](scheduled-rules.md) metrics.
 
 ## Actions
 
-Actions are triggered on window status changes, for example upon window `OPEN` status or every N-th `REPEAT` status occurrence.
+Actions are triggered on window status changes, for example when the window becomes `OPEN` or on every N-th `REPEAT` occurrence.
 
 Supported response actions:
 
@@ -110,7 +113,11 @@ Supported response actions:
 * [Generate derived metrics](derived.md)
 * [Log alert to file](logging.md)
 
-Triggers for the above actions can be configured independently, for example to send email every 6 hours yet to log events for all repeat occurrences.
+Actions are configured and executed independently, for example a **daily** email alert can be combined with **hourly** chat notifications and continuous logging on all repeat occurrences.
+
+Each action type implements a dedicated thread pool to isolate slow executions from other actions triggered by the same rule. The pool executes pending actions in the order received.
+
+To prioritize actions initiated by a particular rule, enable the **Instant Action** option on the **Windows** tab in which case the action is executed without going through the queue.
 
 ## Correlation
 
@@ -323,3 +330,23 @@ Webhook, Email and Script actions log their status as ATSD messages. To view act
 * Script Action Log
 
 ![](./images/script-log.png)
+
+### Latency and Tracing
+
+To monitor the latency between incoming commands and response actions, add time checkpoints by declaring variables set to `now`.
+
+The execution times for each [stage](window-fields.md#date-fields) can be included in the notification message for tracing.
+
+![](./images/trace_now_variables.png)
+
+```markdown
+|           | time                   | delta, ms                              |
+|-----------|------------------------|---------------------------------------:|
+| add_time  | `${df.f(add_time)}`    | `-`                                    |
+| var_start | `${df.f(var_start)}`   | `${elapsedTime(add_time, var_start)}`  |
+| var_end   | `${df.f(var_end)}`     | `${elapsedTime(var_start, var_end)}`   |
+| act_start | `${df.f(notify_time)}` | `${elapsedTime(var_end, notify_time)}` |
+| now       | `${df.f(now)}`         | `${elapsedTime(notify_time, now)}`     |
+```
+
+![](./images/trace_table.png)

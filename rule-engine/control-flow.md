@@ -85,7 +85,7 @@ Generates a proper markdown table.
 The `cancelAction()` function can be called in the notification text to cancel the action.
 
 ```javascript
-@if{strategy NOT IN ('StartOrder')}
+@if{strategy != 'StartOrder'}
   ${cancelAction()}
 @end{}
 ```
