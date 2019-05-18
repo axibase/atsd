@@ -4,19 +4,19 @@
 
 Filters determine which commands are processed by the given rule.
 
-Commands that satisfy all filters are added to the rule [windows](window.md) for further processing such as updating statistics and evaluating the alert [condition](condition.md).
+Commands that satisfy all filters are allocated to matching [windows](window.md).
 
 | **Filter** | **Description** |
 |---|---|
-| Data Type | Accepts commands of the specified type: `series`, `property`, or `message`. |
-| Metric Name | Accepts `series` commands with the specified metric name. |
-| Type/Source | Accepts `message` commands with the specified type and source tags. |
-| Type | Accepts `property` commands with the specified property type. |
-| Entity Names | Accepts commands for the specified list of entity names or name patterns. |
-| Entity Group | Accepts commands for entities that belong to one of selected groups. |
-| Expression | Accepts commands for which the filter expression returns `true`. |
-| Time Offset | Accepts commands with a timestamp that deviates by **less** than the specified interval from the current server time. |
-| Out-of-order | Accepts commands with a timestamp that is equal or greater than the timestamp of the previous command. |
+| Data Type | Allow commands of the specified type: `series`, `property`, or `message`. |
+| Metric | Allow `series` commands with the specified metric name. |
+| Type/Source | Allow `message` commands with the specified type and source tags. |
+| Type | Allow `property` commands with the specified property type. |
+| Entity Names | Allow commands for the specified list of entity names or name patterns. |
+| Entity Group | Allow commands for entities that belong to one of the selected groups. |
+| Expression | Allow commands for which the filter expression returns `true`. |
+| Time Offset | Allow commands timestamped close to current server time. |
+| Out-of-order | Allow ordered commands. |
 
 ## Data Type Filter
 
@@ -26,17 +26,15 @@ The filter checks that the command is of the specified data type: `series`, `pro
 
 ## Metric, Type, Source Filter
 
-The filter is specific to each data type and accepts commands that match values in the respective fields.
-
 * The **Metric** filter applies to `series` commands.
 * The **Type** filter applies to `property` commands.
-* The **Type** and **Source** filter applies to `message` commands.
+* The **Type** and **Source** filters apply to `message` commands.
 
 ![](./images/filter-type-source.png)
 
 ## Entity Names Filter
 
-Specify one or more entity names or patterns to restrict a rule to specific entities. Separate multiple names or patterns with whitespace. Patterns support `*` wildcard characters.
+Specify one or more entity names or patterns to allow commands only from specific entities. Separate multiple names or patterns with whitespace. Patterns support `*` wildcard characters.
 
 ![](./images/filter-entity.png)
 
@@ -114,9 +112,18 @@ Use square brackets if the tag name contains special characters such as `-,+,=`.
 tags['mount-point'] NOT LIKE '*u113452*'
 ```
 
+To allow commands only during specific times of the date, check the built-in [`now`](object-datetime.md) object.
+
+```javascript
+// Active on Fridays between [09:00-19:00) server time
+now.day_of_week == 'Friday'
+  && now.hourOfDay BETWEEN 9 AND 18
+  && /* remaining checks */
+```
+
 ## Time Offset Filter
 
-If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current server time. This filter can be used to ignore delayed and future data.
+If set to a positive value, the filter discards commands with a timestamp that deviates by more than specified `grace` interval from the current **server** time. This filter can be used to ignore historical and future data.
 
 ![](./images/filter-time.png)
 
