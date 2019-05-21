@@ -58,6 +58,11 @@ now.day_of_week == 'Thursday' && now.hourOfDay == 15
 ```
 
 ```javascript
+// true when current time is between 09:45 and 17:45
+now.timeOfDay BETWEEN '09:45' and '17:45'
+```
+
+```javascript
 // returns true if difference between current Unix time (long, milliseconds)
 // and create_ms (long, Unix time in milliseconds) exceeds 15 minutes
 (now.millis - create_ms) > 15*60000

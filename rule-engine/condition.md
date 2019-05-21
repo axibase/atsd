@@ -148,8 +148,18 @@ avg() > 90 AND db_statistic('avg', '15 minute', 'io_nodes_used_precent') < 80
 The condition returns `true` if the average exceeds `90` at any time or if the average exceeds `50` during the working hours (between `08:00:00` and `17:59:59` on working days). The expression relies on the [`now`](window-fields.md#date-fields) object for calendar checks.
 
 ```javascript
-avg() > 90 ||
-avg() > 50
+avg() > 90
+  || avg() > 50
   && now.hourOfDay BETWEEN 8 AND 17
   && now.is_workday()
+```
+
+```javascript
+// rule active between 09:45 and 17:45
+avg() > 90 && now.timeOfDay BETWEEN '09:45' and '17:45'
+```
+
+```javascript
+// rule active between 20:00 and 06:00
+avg() > 90 && (now.timeOfDay >= '20:00' || now.timeOfDay < '06:00')
 ```

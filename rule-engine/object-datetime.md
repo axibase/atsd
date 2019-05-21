@@ -48,6 +48,12 @@ Command has future timestamp: `${command_time}` / `${add_time}` / `${now}`
 @end{}
 ```
 
+To activate the rule during specific hours of the day, use the `timeOfDay` field:
+
+```javascript
+now.is_workday() && now.timeOfDay BETWEEN '09:30' and '16:30'
+```
+
 ## Time Zone
 
 By default, a `DateTime` object is initialized in **server** time zone.
@@ -75,6 +81,7 @@ The table below enumerates available `DateTime` object fields and their values f
 |`millisOfDay`|`60322303`|
 |`minuteOfDay`|`1005`|
 |`secondOfDay`|`60322`|
+|`timeOfDay`|`16:45:22.303`|
 |`weekyear`|`2018`|
 |`yearOfCentury`|`18`|
 |`yearOfEra`|`2018`|
