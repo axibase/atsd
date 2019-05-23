@@ -375,7 +375,7 @@ Name | Description
 [`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
 [`agent_to_host`](functions-utility.md#agent_to_host)| Extract hostname from ITM agent name.
 [`sendTcpMessage`](functions-utility.md#sendtcpmessage)| Sends TCP message to a remote server.
-[`sendTcpMessageReply`](functions-utility.md#sendtcpmessagereply)| Sends TCP message to a remote server and read a reply. 
+[`sendTcpMessageReply`](functions-utility.md#sendtcpmessagereply)| Sends TCP message to a remote server and read a reply.
 
 ## Value
 
