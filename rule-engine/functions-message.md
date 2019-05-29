@@ -125,7 +125,7 @@ The `date` field in the message object is `null`. The record time is stored in t
 To print all message fields as a table in notifications, use the [`addTable`](functions-table.md#addtable-for-objects) function:
 
 ```javascript
-addTable(msgs, null, 'markdown')
+addTable(msgs, 'markdown')
 ```
 
 To print specific messages, iterate through the list manually:
