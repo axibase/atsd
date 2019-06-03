@@ -7,7 +7,7 @@
 6280|core|Bug|[ATSD](../../installation/README.md) startup failed.
 6277|security|Bug|Security: [log](../../administration/logging.md#logging) series key in human-readable format.
 6274|UI|Bug|Users: cannot fill [user group](../../administration/user-authorization.md#entity-permissions) with members.
-6273|administartor|Bug|[User Group](../../administration/user-authorization.md#entity-permissions): unable to delete group.
+6273|administrator|Bug|[User Group](../../administration/user-authorization.md#entity-permissions): unable to delete group.
 6272|administrator|Bug|[User Group](../../administration/user-authorization.md#entity-permissions): warn about group duplicate.
 6271|sql|Bug|[Scheduled SQL Queries](../../sql/scheduled-sql.md#sql-scheduler): encoding issue.
 6266|administrator|Feature|Security: log [audit](https://axibase.com/use-cases/integrations/it-infra/#%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D0%B5%D0%BC%D1%8B%D1%85-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2) events on record create / delete.
@@ -23,11 +23,11 @@
 6245|rule engine|Bug|Rule Engine: [**Log to Alert History**](../../rule-engine/logging.md#logging-to-database) setting is not serialized.
 6244|data-in|Feature|[Property](../../api/data/properties/insert.md#properties-insert): empty tag value must delete stored tag.
 6243|portal|Feature|UI: add metric viewer links to **Entity** and **Metric** editors.
-6242|UI|Bug|Entity editor: all [timezones](../../shared/timezone-list.md#time-zones) are highlighted as red.
+6242|UI|Bug|Entity editor: all [time zones](../../shared/timezone-list.md#time-zones) are highlighted as red.
 6240|forecast|Bug|Absence of message about wrong filling tag-value form under calculation of [forecast](../../forecasting/README.md#data-forecasting).
 6239|forecast|Bug|Wrong name of table in which [forecast](../../forecasting/README.md#data-forecasting) calculated by Holt-Winters algorithm is saved.
 6235|api-network|Bug|[TCP](../../rule-engine/functions-utility.md#sendtcpmessagereply): cannot read the response.
-6234|api-network|Bug|Network API: [property](../../api/data/properties/insert.md#properties-insert) command with empty tags is not recognozed as non-valid.
+6234|api-network|Bug|Network API: [property](../../api/data/properties/insert.md#properties-insert) command with empty tags is not recognized as non-valid.
 6233|rule engine|Bug|Rule Engine: [`sendTcpMessageReply`](../../rule-engine/functions-utility.md#sendtcpmessagereply) function to send string to remote server/port via TCP and read response.
 6224|api-rest|Bug|Mismatch of requested [forecast](../../api/data/series/forecast.md#forecasting) series with received in response.
 6223|rule engine|Bug|Rule Engine: [**Load History**](../../rule-engine/window.md#life-cycle) tags filtering works incorrectly.
