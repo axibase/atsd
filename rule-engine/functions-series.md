@@ -14,6 +14,7 @@ Related functions:
 
 * [`db_last`](#db_last)
 * [`db_statistic`](#db_statistic)
+* [`db_baseline`](#db_baseline)
 
 ### `db_last`
 
@@ -122,6 +123,41 @@ avg() > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', ['stage'
 ```javascript
 avg() > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01', tags) < 50
 ```
+
+### `db_baseline`
+
+```csharp
+db_baseline(string statFunc, int count, string period [, string windowLength]) number
+```
+
+Returns the averaged value (baseline) for the data stored in the rule window.
+
+The algorithm of calculating the baseline is as follows:
+
+1) Regularize historical data into periods, each of `windowLength` duration, with the last period ending with the timestamp of the last command.
+2) Load samples for N (`count`) previous windows, excluding the last window. The distance between the previous windows is set with `period`.
+3) Apply statistical function `statFunc`, such as `avg` or `median`, to the filtered values.
+
+> If the `windowLength` is not set explicitly, the length of the window equals **Window Size** for time-based windows, or is calculated as the difference between first and last command for count-based windows.
+
+Example:
+
+```csharp
+// Last command time is 2019-01-20 10:08:00
+// Period is 1 day and count is 5
+// Windows are [10:03 - 10:08) on 01-15, ... , 01-19
+// The result is 4.0
+
+db_baseline('avg', '5 day', '1 day', '5 minute')
+```
+
+| Window | Window Average |
+|---|---|---:|
+| `2019-01-15 [10:03-10:08)` | `10.0` |
+| `2019-01-16 [10:03-10:08)` | `0.0` |
+| `2019-01-17 [10:03-10:08)` | `0.0` |
+| `2019-01-18 [10:03-10:08)` | `10.0` |
+| `2019-01-19 [10:03-10:08)` | `0.0` |
 
 ## Series Match Examples
 

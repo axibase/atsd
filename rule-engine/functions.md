@@ -144,6 +144,7 @@ Name | Description
 ---|---
 [`db_last`](functions-series.md#db_last)| Retrieves the most recent value stored in the database for the target series.
 [`db_statistic`](functions-series.md#db_statistic)| Returns the result of a statistical function for historical values.
+[`db_baseline`](functions-series.md#db_baseline)| Returns the expected (baseline) value for same periods in the past.
 
 :::tip Related Functions
 See [value](#value) functions.

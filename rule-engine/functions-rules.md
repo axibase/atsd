@@ -9,12 +9,6 @@ For example, if the window is grouped by entity and tags `t1` and `t2` and the e
 
 The current window is excluded from matching.
 
-:::tip Optimization Note
-If the referenced rule has many variables declared, enable the **Preserve Context** option in the referenced rule to avoid re-calculating the variables.
-
-![](./images/preserve-context.png)
-:::
-
 ## Reference
 
 * [rule_open](#rule_open)

@@ -127,7 +127,7 @@ max() - min() = 0 && avg() = 50
 
 ### Calculated Metrics
 
-If multiple metrics are submitted with the same `series` command, their last value can be accessed with the [`value(str metric)`](functions-value.md) function.
+If multiple metrics are submitted with the same `series` command, their last value can be accessed with the [`value(<name>)`](functions-value.md) function.
 
 ```javascript
 value > 90 AND value('disk_used') < 1000000000
