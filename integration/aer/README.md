@@ -40,7 +40,7 @@ To control which metrics to expose in Axibase Server, use the `table` metric tag
 ## Add Metrics
 
 * Open the **Metrics** tab in the main menu.
-* Search metrics by name. `*` and `?` wildcards are supported.
+* [Search](../../search/metric-search.md) metrics by name. `*` and `?` wildcards are supported.
 * Click the checkbox in the top left corner to select all matching metrics or use the checkbox in each row to include or exclude specific metrics.
 
   ![Metric List: filter](./metric-search.png)
@@ -49,7 +49,7 @@ To control which metrics to expose in Axibase Server, use the `table` metric tag
 
   ![](./jvm_tag.png)
 
-* Search metrics by name as before, add ` table:*` keyword to view the changes.
+* Search metrics by name as before, add `table:*` keyword to view the changes.
 
   ![](./jvm_tag_table.png)
 
