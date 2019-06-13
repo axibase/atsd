@@ -2,57 +2,88 @@
 
 ## Overview
 
-ATSD adapter in Axibase Enterprise Reporter and Axibase Fabrica creates a hierarchical representation of metrics
+ATSD adapter in Axibase Enterprise Reporter, Axibase Fabrica, and Axibase SitCenter (hereinafter **Axibase Server**) creates a hierarchical representation of metrics
 collected in ATSD and makes them available for querying in reports.
 
 In order for the Axibase Server to group ATSD metrics into virtual tables, metrics need to be tagged with the `table` tag.
 
-## Enable the `table` Tag in the Metrics List
+## Setup Integration User
 
 * Log in to ATSD.
-* Open the **Settings > Server Properties** page.
-* Add the `table` tag to the `metric.display.tags` property.
+* Open the **Settings > User Groups** page, click **Create**.
+* Create a group called **Integration Users Read** with `All Entities Read` permission.
 
-![Server Properties](./metric-table-tags.png)
+  ![](./user-group.png)
 
-* Click **Apply Changes** and open the **Metrics** tab to verify that the `table` tag is visible in the Metrics list.
+* Open the **Settings > Users** page, click **Create**.
+* Create a user with roles `API_DATA_READ` and `API_META_READ` and check the selection to make it member of the **Integration Users Read** group.
+* Optionally, specify the IP address of the Axibase Server from which the user is allowed to connect.
 
-![Metrics List: table tag](./metrics-table-tag.png)
+  ![](./user.png)
 
-## Apply the `table` Tag to Metrics
+## Configure ATSD Adapter
 
-* Enter partial metric name in the Search Bar to filter Metric list by name. `*` and `?` wildcards are supported.
-* Set Page Size (Display on Page) to `1000`.
+* Log in to Axibase Server.
+* Open the **Admin > Adapters** page, click **Add**.
+* Enter the ATSD hostname or IP address as well as user credentials.
 
-![Metric List: filter](./metric-list-filter.png)
+  ![](./atsd-adapter.png)
 
-* Click the appropriate checkbox to define filtered metrics.
-* Ensure that grouped metrics have the same tags. For example, group `df.disk_used`, `df.disk_used_percent`, and other `df.*` metrics into one table since their shared tags are `file_system` and `mount_point`.
-* Enter a name that describes this group of selected metrics and click [Apply].
+* Select **Protocol**. By default, ATSD listens on port 8443/HTTPS and port 8088/HTTP.
+* Click **Validate** and save the adapter if there are no errors.
 
-![Metric List: apply tag](./metric-table-tag-apply.png)
+## Configure Metric Visibility
 
-* Verify that selected metrics have the `table` tag set.
+The ATSD typically contains many metrics of which only a small subset needs to be accessed in Axibase Server.
+To control which metrics to expose in Axibase Server, use the `table` metric tag.
 
-![Metric List: applied tag](./metric-table-tag-applied.png)
+## Add Metrics
 
-* Repeat the process to group metrics into tables.
+* Open the **Metrics** tab in the main menu.
+* Search metrics by name. `*` and `?` wildcards are supported.
+* Click the checkbox in the top left corner to select all matching metrics or use the checkbox in each row to include or exclude specific metrics.
 
-![Metric List: tag all](./metric-table-tag-all.png)
+  ![Metric List: filter](./metric-search.png)
 
-## Discover Metric Tables in the Axibase Server
+* Click **Edit** to apply the `table` tag to similar metrics. These metrics are displayed under the corresponding table name in Axibase Server.
+
+  ![](./jvm_tag.png)
+
+* Search metrics by name as before, add ` table:*` keyword to view the changes.
+
+  ![](./jvm_tag_table.png)
+
+> Ensure that series under metrics grouped into one table have the same tags.
+
+* Repeat the process to group more metrics into tables.
+
+  ![Metric List: tag all](./metric-table-tag-all.png)
+
+## Discover Metrics in Axibase Server
 
 * Log in to the Axibase Server.
 * Open the **Admin > Warehouse Tools** page.
 * Select **Reload Schema Cache**.
 * Click **View Schema Cache** and verify that new metric groups are present as tables.
 
+  ![](./view_schema.png)
+
+* Click the table name to check the list of metrics.
+
+  ![](./view_schema_jvm_table.png)
+
+* Open **Designer** tab, search for an entity collecting the metrics. In the example above, search for `atsd` entity. Follow the prompts to view the report.
+
+  ![](./designer.png)
+
 ## Configure ATSD Proxy
 
-Configure the Axibase Server to serve as an ATSD proxy to ensure that widgets stored in the Axibase Server can optionally query data in ATSD transparently. In this configuration, the Axibase Server redirects an API request received from the client, and executes the request.
+> This step optional
 
-* Open the **Admin > Settings** page in the Axibase Server and expand the **SERVER** section.
-* Enter a full URL to ATSD into the `REDIRECT URL` field, including username and password as follows: `schema://username:password@atsd_hostname:atsd_port`
+Configure the Axibase Server to serve as an ATSD proxy to ensure that widgets stored in the Axibase Server can query all data in ATSD transparently. In this configuration, the Axibase Server redirects an API request received from the browser directly into ATSD and returns the ATSD response unmodified.
+
+* Open the **Admin > Settings** page in Axibase Server and expand the **SERVER** section.
+* Enter a full URL to ATSD into the `REDIRECT URL` field, including username and password of the integration user as follows: `schema://username:password@atsd_hostname:atsd_port`
 
 Example:
 
