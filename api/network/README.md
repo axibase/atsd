@@ -301,7 +301,7 @@ Date limits:
 ### Enable Debug Mode
 
 By default, ATSD does not return acknowledgements to the client after processing data commands.
-Include the `debug` command at the start of the line to instruct the server to respond with `ok` for each processed command.
+Include the `debug` command at the start of the line to instruct the server to respond with `ok` or error message for each processed command.
 
 * `debug` with valid command
 
@@ -316,7 +316,7 @@ ok
 ```ls
 $ echo -e "debug my_command e:station_1 m:temperature=32.2" \
   | nc -w 1 atsd_hostname 8081
->no response, connection closed
+Invalid command: my_command e:station_1 m:temperature=32.2
 ```
 
 ### Review Client Commands
