@@ -1,4 +1,4 @@
-# Series Query: End Time Syntax Example - Current Day
+# Series Query: Calendar Expression Example - Current Day
 
 ## Description
 

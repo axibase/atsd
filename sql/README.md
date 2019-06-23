@@ -1213,6 +1213,13 @@ WHERE time >= 1500300000000
 -- 1500300000000 is equal to 2017-07-17 14:00:00 UTC
 ```
 
+To round the dates to the nearest calendar period, use the [`date_round`](#date_round) function.
+
+```sql
+WHERE datetime >= date_round(now, 5 MINUTE)
+  AND datetime  < date_round(now + 5*minute, 5 MINUTE)
+```
+
 ### Optimizing Interval Queries
 
 Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause can be inefficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
@@ -1420,7 +1427,7 @@ Period is a repeating time interval used to group values occurred within each in
 Period syntax:
 
 ```sql
-GROUP BY PERIOD({count} {unit} [, option])
+GROUP BY PERIOD(int count varchar unit [, option])
 ```
 
 `option` = `interpolate` | `align` | `extend` | `timezone`
@@ -2388,7 +2395,7 @@ FROM tbl t1
      AND t1.tags = t2.tags
 ```
 
-The `ON` condition can compare only the predefined columns: `entity`, `time`, ``datetime`, and `tags`. Since the virtual tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
+The `ON` condition can compare only the predefined columns: `entity`, `time`, `datetime`, and `tags`. Since the virtual tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
@@ -2944,6 +2951,23 @@ date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', '+01:00')
 
 /* Time zone (offset) specified in the timestamp must be the same as provided in the third argument. */
 date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ', 'Europe/Berlin')
+```
+
+#### DATE_ROUND
+
+The `date_round` function rounds the input date to the start of the containing [calendar period](#calendar-alignment). The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../shared/calendar.md#keywords).
+
+```java
+date_round(varchar date | bigint time, int count varchar unit)
+```
+
+```java
+date_round(calendar_expression, int count varchar unit)
+```
+
+```sql
+-- assuming current time is 15:39, the interval is [15:35, 15:40)
+WHERE datetime >= date_round(now, 5 MINUTE) AND datetime < date_round(now + 5*minute, 5 MINUTE)
 ```
 
 #### DATEADD

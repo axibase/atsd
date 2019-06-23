@@ -1,4 +1,4 @@
-# Series Query: End Time Syntax Example - Previous Day
+# Series Query: Calendar Expression Syntax Example - Previous Day
 
 ## Description
 

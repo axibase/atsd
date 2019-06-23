@@ -185,7 +185,9 @@ Name | Description
 [`getEntityCount`](functions-lookup.md#getentitycount)| Returns a count of [Entity](entity-fields.md) **objects** matching the given parameters.
 [`getEntityName`](functions-lookup.md#getentityname)| Returns normalized (lowercase) entity name for the specified entity.
 [`lookup`](functions-lookup.md#lookup)| Returns the value for the specified key from the Replacement Table.
-[`replacementTable`](functions-lookup.md#replacementtable)| Retrieves the Replacement Table as a key-value map.
+[`replacementTable`](functions-lookup.md#replacementtable)| Returns the Replacement Table as a key-value map.
+[`get_group_emails`](functions-lookup.md#get_group_emails)| Returns the list of email addresses for the members of the specified user group.
+[`subscribers`](functions-lookup.md#subscribers)| Returns the list of email addresses for topic subscribers.
 
 ## Date
 

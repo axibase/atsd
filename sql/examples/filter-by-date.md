@@ -113,7 +113,7 @@ WHERE entity = 'nurswgvml007'
 | 1466100035000 | 4.0   |
 ```
 
-## Query with End Time Syntax
+## Query using Calendar Expressions
 
 Both `time` and `datetime` columns support [calendar](../../shared/calendar.md) keywords.
 
@@ -131,8 +131,6 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:27.000Z | 6.1   |
 | 2016-06-18T20:00:43.000Z | 6.1   |
 ```
-
-## Query with End Time Syntax
 
 [Calendar](../../shared/calendar.md) keywords are calculated based on current server time and [time zone](../../shared/timezone-list.md).
 
@@ -163,7 +161,7 @@ series e:e1 d:2017-04-15T01:00:00Z m:m1=1
 series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 ```
 
-## Query with End Time Syntax in Custom Time Zone
+## Query with Calendar Expression Evaluated in Custom Time Zone
 
 The `endtime()` function allows specifying a user-defined [time zone](../../shared/timezone-list.md) to evaluate [calendar](../../shared/calendar.md) keywords and expressions.
 
@@ -249,6 +247,24 @@ datetime  < '2016-06-18T21:00:00Z'
 | 2016-06-18T20:00:11Z | 28.0  |
 | 2016-06-18T20:00:27Z | 6.1   |
 | 2016-06-18T20:00:43Z | 6.1   |
+```
+
+## Query Using Rounded Dates
+
+```sql
+SELECT datetime, value
+  FROM "mpstat.cpu_busy"
+  WHERE entity = 'nurswgvml007'
+    AND datetime >= date_round(now, 5 MINUTE)
+    AND datetime  < date_round(now + 15*minute, 5 MINUTE)
+```
+
+```ls
+| utc_time            | local_datetime      | value  |
+|---------------------|---------------------|--------|
+| 2017-05-01 10:00:15 | 2017-05-01 12:00:15 | 4.9500 |
+| 2017-05-01 10:00:31 | 2017-05-01 12:00:31 | 3.0000 |
+| 2017-05-01 10:00:47 | 2017-05-01 12:00:47 | 3.0900 |
 ```
 
 ## Query using `BETWEEN` Subquery

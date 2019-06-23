@@ -20,6 +20,8 @@ Named collections are listed on the **Data > Named Collections** page.
 * [`getEntities`](#getentities)
 * [`getEntityCount`](#getentitycount)
 * [`getEntityName`](#getentityname)
+* [`get_group_emails`](#get_group_emails)
+* [`subscribers`](#subscribers)
 
 ### `collection`
 
@@ -246,3 +248,33 @@ getEntityName(string entity) string
 Returns normalized (lowercase) entity name for input string `entity`. The function searches for entity by name `entity` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `entity` in a case-insensitive manner.
 
 If the entity cannot be found, the function returns the original `entity` argument.
+
+### `get_group_emails`
+
+```csharp
+get_group_emails(string user_group) list
+```
+
+Returns the list of email addresses of active (non-locked) members of the specified user group.
+
+```csharp
+${get_group_emails('Dev Ops')}
+```
+
+### `subscribers`
+
+```csharp
+subscribers(string topic_name_1 [, string topic_name_2]) list
+```
+
+Returns the list of email addresses for users who have subscribed to the specified topic on their personal user account pages.
+
+![](./images/user-topics.png)
+
+```csharp
+${subscribers('docker', 'audit')}
+```
+
+The list of topics is managed by an administrator as a replacement table at `https://atsd:8443/replacement-tables/%24topics`.
+
+![](./images/topic-list.png)

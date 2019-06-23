@@ -1,4 +1,4 @@
-# Series Query: End Time Syntax
+# Series Query: Calendar Expression Syntax
 
 ## Description
 
