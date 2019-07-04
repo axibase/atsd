@@ -53,7 +53,7 @@
 6319|api-network|Bug|TCP: no response from [`debug`](../../api/network/message.md#troubleshooting) command on tag values with line separator.
 6320|core|Bug|Replace SSL library to handle more SSL connections.
 6321|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): [webhook](../../rule-engine/notifications/README.md#outgoing-webhooks) settings are not saved for rules with opened windows.
-6322|administrator|Feature|Rest API: denial-of-service and client monitor.
+6322|administrator|Feature|REST API: denial-of-service and client monitor.
 6323|message|Bug|[Messages](../../api/data/messages/query.md#messages-query): wrong tag column order.
 6325|rule engine|Bug|Rule Search: search for substring in rule names.
 6329|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): cryptic [validation](../../rule-engine/variables.md#variables) error.
