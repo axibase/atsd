@@ -649,3 +649,24 @@ GROUP BY PERIOD(1 hour)
 | 2018-07-04 09:00  | 2018-07-04 02:00  | Wed          | Wed                | false        | false         |
 | 2018-07-04 10:00  | 2018-07-04 03:00  | Wed          | Wed                | false        | false         |
 ```
+
+## Query using Workday Offset
+
+The `WORKDAY` function allows shifting of the input date by the specified number of working days.
+
+```sql
+SELECT value,
+  date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS "T-0",
+  date_format(workday(time, -1, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "T-1",
+  date_format(workday(time, -2, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "T-2"
+FROM "mpstat.cpu_busy"
+WHERE datetime between '2019-07-08 15:00:00' and '2019-07-08 15:10:00'
+  AND entity = 'nurswgvml007'
+  LIMIT 1
+```
+
+```ls
+| value | T-0                      | T-1                      | T-2                      |
+|-------|--------------------------|--------------------------|--------------------------|
+| 63.27 | Mon 2019-Jul-08 15:00:10 | Fri 2019-Jul-05 15:00:10 | Wed 2019-Jul-03 15:00:10 |
+```

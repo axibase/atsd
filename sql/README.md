@@ -70,13 +70,13 @@ The statement can end with a semi-colon character.
 
 ### Processing Sequence
 
-* **FROM** retrieves records from virtual tables.
-* **JOIN** merges records from different tables.
-* **WHERE** filters out records.
-* **GROUP BY** assigns records to buckets (groups, sets).
-* **HAVING** filters out the buckets.
-* **SELECT** creates rows containing columns.
-* **ORDER BY** applies sorting to rows.
+* **FROM** retrieves rows from virtual tables.
+* **JOIN** merges rows from different tables.
+* **WHERE** filters rows.
+* **GROUP BY** assigns rows to groups.
+* **HAVING** filters groups.
+* **SELECT** chooses columns or creates new columns to include in each row.
+* **ORDER BY** sorts rows by value of its columns.
 * **LIMIT** selects a subset of rows.
 
 ### SELECT Expression
@@ -2115,6 +2115,19 @@ WHERE datetime >= CURRENT_MONTH
 WITH time >= last_time - 1*HOUR
 ```
 
+## WITH Clauses
+
+Multiple `WITH` clauses can be combined using comma.
+
+```sql
+WITH ROW_NUMBER(symbol ORDER BY time) < 2, TIMEZONE = 'Europe/Vienna'
+```
+
+* `WITH ROW_NUMBER`
+* `WITH TIMEZONE`
+* `WITH LAST_TIME`
+* `WITH INTERPOLATE`
+
 ## Ordering
 
 The default sort order is undefined. Row ordering can be performed by adding the `ORDER BY` clause consisting of column name, column number (starting with 1), or an expression followed by direction (ASC or DESC).
@@ -3258,6 +3271,40 @@ GROUP BY PERIOD(1 day)
 | 2018-05-27  | Sun          | 7           | false         | false         | true             | true            |
 | 2018-05-28  | Mon          | 1           | false (!)     | true          | true             | true            | <-- Memorial Day
 | 2018-05-29  | Tue          | 2           | true          | true          | true             | true            |
+```
+
+#### `WORKDAY`
+
+The `WORKDAY` function shifts the input date by the specified number of working `days`. The shift is backward if the `days` parameter is negative. Refer to [`IS_WORKDAY`](#is_workday) function for working day definitions.
+
+```sql
+WORKDAY(datetime | time | datetime expression, days[, calendar_key[, timezone]])
+```
+
+The time part of the day remains unchanged.
+
+Example: two working days before current day.
+
+```sql
+--> July 09 (Tuesday) returns July 5th (Friday)
+--> July 08 (Monday) returns July 3rd (Wednesay, because July 4th is not a working day)
+WORKDAY(datetime, -2, 'usa')
+```
+
+```sql
+SELECT value,
+  date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS base,  
+  date_format(WORKDAY(datetime, -1, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-1",
+  date_format(WORKDAY(datetime, -2, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-2"
+FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2019-07-08 15:00:00' and '2019-07-08 15:01:00'
+  AND entity = 'nurswgvml007'
+```
+
+```txt
+|   value | base                     | base-1                   | base-2                   |
+|---------|--------------------------|--------------------------|--------------------------|
+| 63.2700 | Mon 2019-Jul-08 15:00:10 | Fri 2019-Jul-05 15:00:10 | Wed 2019-Jul-03 15:00:10 |
 ```
 
 #### `WITH TIMEZONE`
