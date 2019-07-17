@@ -71,5 +71,7 @@
         ,{ "pattern": "https://vision2030.gov.sa/en/node/125"}
         ,{ "pattern": "https://www.sacbee.com/news/.*"}
         ,{ "pattern": "https://www.fresnobee.com/news/.*"}
+        ,{ "pattern": "https://www.timeanddate.com/weather/.*"}
+        ,{ "pattern": "https://www.comodo.com"}
     ]
 }
