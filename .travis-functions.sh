@@ -37,7 +37,7 @@ function linkcheck {
         if [ ! -f ".linkcheck-config.json" ]; then
             wget https://raw.githubusercontent.com/axibase/atsd/master/.linkcheck-config.json
         fi
-        list_modified_md_files | xargs -d '\n' -n1 markdown-link-check -c .linkcheck-config.json
+        list_modified_md_files | xargs -d '\n' -n1 markdown-link-check -v -c .linkcheck-config.json
     else
         echo "Link checking will be skipped"
     fi
