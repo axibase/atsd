@@ -68,6 +68,7 @@ db_last(string metric, string entity, string tags | map tags) number
 Name | Description
 ---|---
 [`contains`](functions-collection.md#contains)| Returns `true` if string on the right is contained in the specified collection.
+[`collection_contains`](functions-collection.md#collection_contains)| Returns `true` if the specified collection contains the value.
 [`excludeKeys`](functions-collection.md#excludekeys)| Returns a copy of the input map without the keys in the input collection.
 [`copyList`](functions-collection.md#copylist)| Copy a list.
 [`copyMap`](functions-collection.md#copymap)| Copy a map.

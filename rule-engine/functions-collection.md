@@ -24,6 +24,7 @@ collection('oncall-emails')
 * [`matchList`](#matchlist)
 * [`matches`](#matches)
 * [`contains`](#contains)
+* [`collection_contains`](#collection_contains)
 * [`size`](#size)
 * [`isEmpty`](#isempty)
 * [`copyList`](#copylist)
@@ -142,6 +143,22 @@ Example:
 
 ```javascript
 collection('ip_white_list').contains(tags.request_ip)
+```
+
+```javascript
+collection_contains(object v, [] c) boolean
+```
+
+### `collection_contains`
+
+Returns `true` if the specified collection contains the value. The match is case-sensitive.
+
+```javascript
+collection_contains(string name, string value) boolean
+```
+
+```javascript
+collection_contains('os_whitelist', os_name)
 ```
 
 ### `size`
