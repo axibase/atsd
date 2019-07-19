@@ -170,13 +170,25 @@ collection('ip_white_list').contains(tags.request_ip)
 collection_contains(object v, [] c) boolean
 ```
 
-Returns `true`, if collection `c` contains object `v`. The collection `c` can be specified inline as an array of strings or reference a named collection.
+Returns `true`, if collection `c` contains object `v`.
 
 Examples:
 
 ```javascript
-NOT collection_contains(tags['os'], collection('ignore_os'))
+collection_contains(os_name, ['linux', 'unix'])
 ```
+
+An overloaded function that accepts the name and value and returns `true` if the specified collection contains the value.
+
+```javascript
+collection_contains(string name, string value) boolean
+```
+
+```javascript
+collection_contains('os_whitelist', os_name)
+```
+
+The match is case-sensitive in both cases.
 
 ### `collection_intersects`
 
