@@ -18,6 +18,7 @@
 * [`timestamps`](#timestamps)
 * [`sendTcpMessage`](#sendtcpmessage)
 * [`sendTcpMessageReply`](#sendtcpmessagereply)
+* [`lock`](#lock)
 
 ## `agent_to_host`
 
@@ -433,4 +434,34 @@ ${sendTcpMessageRepy('example.org', 9001, order + '
 
 ```txt
 TcpReply(status=4, response=Order 123 received OK, execTime=250)
+```
+
+## `lock`
+
+```csharp
+lock(string key, long interval_millis) boolean
+```
+
+Create a named lock on the server for the specified duration of time in milliseconds. If an action triggered by another rule attempts to acquire the same lock within the lock interval, the function returns `false`.
+
+The function can be used to ensure that some action is executed only once.
+
+Example:
+
+```javascript
+/*
+Send TCP message (cmd) to the target server
+and ensure that the SAME command is not sent to the server
+within 15 seconds.
+*/
+@if{lock(cmd, 15000)}
+${sendTcpMessageReply('example.org', 9092, cmd)}
+@end{}
+```
+
+The `atsd.log` records lock acquisition attempts with relevant rule details.
+
+```txt
+2019-07-03T08:10:21.742Z;INFO;sendNotificationsExecutor-2;com.axibase.tsd.service.el.ElFunctionsServiceImpl;Lock 'call-01' acquired by rule 'call_order', window {"metric":"property","entity":"nur","tags":{}}: locked until 2019-07-03T08:10:36.742Z
+2019-07-03T08:10:21.806Z;INFO;sendNotificationsExecutor-18;com.axibase.tsd.service.el.ElFunctionsServiceImpl;Lock 'call-01' not acquired by rule 'call_order', window {"metric":"property","entity":"nur","tags":{}}: locked until 2019-07-03T08:10:36.742Z
 ```

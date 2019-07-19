@@ -12,6 +12,7 @@ Named collections are listed on the **Data > Named Collections** page.
 
 * [`collection`](#collection)
 * [`lookup`](#lookup)
+* [`lookup_row`](#lookup_row)
 * [`replacementTable`](#replacementtable)
 * [`entity_tag`](#entity_tag)
 * [`entity_tags`](#entity_tags)
@@ -67,6 +68,24 @@ Example:
 /* Returns 'john.doe' if the 'on-call' table does not contain an entry for 'john.doe' */
 lookup('on-call', 'john.doe', true)
 ```
+
+### `lookup_row`
+
+```csharp
+lookup_row(string name, string key) map
+```
+
+Retrieves the row object from the replacement table identified by `name` for the specified key.
+
+The replacement table must be of `CSV` type. The first column is designated as the primary key and the key match is case-sensitive.
+
+![](./images/lookup_row_table.png)
+
+The function throws an error if the replacement table is not found and returns an empty map if the key is not found.
+
+The response object contains fields that correspond to the columns in the replacement table. The first primary key column is not included in the response object.
+
+![](./images/lookup_row.png)
 
 ### `replacementTable`
 

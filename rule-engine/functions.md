@@ -184,7 +184,8 @@ Name | Description
 [`getEntity`](functions-lookup.md#getentity)| Retrieves an entity object by name.
 [`getEntityCount`](functions-lookup.md#getentitycount)| Returns a count of [Entity](entity-fields.md) **objects** matching the given parameters.
 [`getEntityName`](functions-lookup.md#getentityname)| Returns normalized (lowercase) entity name for the specified entity.
-[`lookup`](functions-lookup.md#lookup)| Returns the value for the specified key from the Replacement Table.
+[`lookup`](functions-lookup.md#lookup)| Returns the value for the specified key from the replacement table.
+[`lookup_row`](functions-lookup.md#lookup_row)| Returns the row object for the specified key from the replacement table of `CSV` type.
 [`replacementTable`](functions-lookup.md#replacementtable)| Returns the Replacement Table as a key-value map.
 [`get_group_emails`](functions-lookup.md#get_group_emails)| Returns the list of email addresses for the members of the specified user group.
 [`subscribers`](functions-lookup.md#subscribers)| Returns the list of email addresses for topic subscribers.
@@ -379,6 +380,7 @@ Name | Description
 [`agent_to_host`](functions-utility.md#agent_to_host)| Extract hostname from ITM agent name.
 [`sendTcpMessage`](functions-utility.md#sendtcpmessage)| Sends TCP message to a remote server.
 [`sendTcpMessageReply`](functions-utility.md#sendtcpmessagereply)| Sends TCP message to a remote server and read a reply.
+[`lock`](functions-utility.md#lock)| Acquire a named lock to prevent duplicate actions.
 
 ## Value
 
