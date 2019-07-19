@@ -73,5 +73,6 @@
         ,{ "pattern": "https://www.fresnobee.com/news/.*"}
         ,{ "pattern": "https://www.timeanddate.com/weather/.*"}
         ,{ "pattern": "https://www.comodo.com"}
+        ,{ "pattern": "https://www.youtube.com/.*"}
     ]
 }
