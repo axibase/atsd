@@ -6,6 +6,7 @@
 * [`ifEmpty`](#ifempty)
 * [`toBoolean`](#toboolean)
 * [`toNumber`](#tonumber)
+* [`check_range`](#check_range)
 * [`getURLHost`](#geturlhost)
 * [`getURLPort`](#geturlport)
 * [`getURLProtocol`](#geturlprotocol)
@@ -119,6 +120,35 @@ Input | Type | Result
 `[]` | array | `NaN`
 `0` | number | `0.0`
 `1` | number | `1.0`
+
+## `check_range`
+
+```csharp
+check_range(object in, number min, number max, number default) double
+```
+
+The function converts the input argument `in` to a number and checks if it satisfies the minimum and maximum constraints. The constraints are inclusive. If one of the constraints is violated, the function raises an error.
+
+If `in` is not a valid number, the value `default` is returned.
+
+Example:
+
+```javascript
+check_range(in, 0, 100, 25)
+```
+
+Input `in` | Type | Result
+---:|---|---:
+`null` | - | `25`
+`""` | string | `25`
+`NaN` | number | `25`
+`8` | number | `8`
+`"8"` | string | `8`
+`0` | number | `0`
+`50` | number | `50`
+`100` | number | `100`
+`-10` | number | Error
+`200` | number | Error
 
 ## `printObject`
 

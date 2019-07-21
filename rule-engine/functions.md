@@ -378,6 +378,7 @@ Name | Description
 [`timestamps`](functions-utility.md#timestamps)| Retrieves a list of the dates of the samples in the current window
 [`toBoolean`](functions-utility.md#toboolean)| Converts the input string or number to a boolean value.
 [`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
+[`check_range`](functions-utility.md#check_range)| Checks the input number is within the minimum and maximum range.
 [`agent_to_host`](functions-utility.md#agent_to_host)| Extract hostname from ITM agent name.
 [`sendTcpMessage`](functions-utility.md#sendtcpmessage)| Sends TCP message to a remote server.
 [`sendTcpMessageReply`](functions-utility.md#sendtcpmessagereply)| Sends TCP message to a remote server and read a reply.
