@@ -151,14 +151,16 @@ collection_contains(object v, [] c) boolean
 
 ### `collection_contains`
 
-Returns `true` if the specified collection contains the value. The match is case-sensitive.
+Returns `true` if the specified collection contains the value. The match is case-sensitive. Note that the name of the collection is specified as the **second** argument.
+
+The function raises an error if the specified collection is not found.
 
 ```javascript
-collection_contains(string name, string value) boolean
+collection_contains(string value, string name) boolean
 ```
 
 ```javascript
-collection_contains('os_whitelist', os_name)
+collection_contains(os_name, 'os_whitelist')
 ```
 
 ### `size`
