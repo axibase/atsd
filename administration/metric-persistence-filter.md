@@ -181,11 +181,11 @@ collection_contains(os_name, ['linux', 'unix'])
 An overloaded function that accepts the name and value and returns `true` if the specified collection contains the value.
 
 ```javascript
-collection_contains(string name, string value) boolean
+collection_contains(string value, string name) boolean
 ```
 
 ```javascript
-collection_contains('os_whitelist', os_name)
+collection_contains(os_name, 'os_whitelist')
 ```
 
 The match is case-sensitive in both cases.
