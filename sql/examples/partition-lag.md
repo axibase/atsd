@@ -22,7 +22,7 @@ ORDER BY entity, tags, datetime
 | car-1   | 2018-12-01 04:00:00  | 200   |
 ```
 
-## Query - LAG
+## LAG
 
 ```sql
 SELECT entity, datetime, value,
@@ -47,7 +47,7 @@ ORDER BY entity, tags, datetime
 | car-1   | 2018-12-01 04:00:00  | 200    | 120         | 50             | 50                |
 ```
 
-## Query - LEAD
+## LEAD
 
 ```sql
 SELECT entity, datetime, value,
@@ -72,7 +72,7 @@ ORDER BY entity, tags, datetime
 | car-1   | 2018-12-01 04:00:00  | 200    |              |                 | -1                 |
 ```
 
-## Query - LAG without Partitioning
+## LAG without Partitioning
 
 ```sql
 SELECT entity, datetime, value,
@@ -104,7 +104,7 @@ ORDER BY entity, tags, datetime
 | car-2   | 2018-12-01 04:00:00  | 400    | 400         | 100            | 100               |
 ```
 
-## Query - LAG with Partitioning
+## LAG with Partitioning
 
 ```sql
 SELECT entity, datetime, value, row_number(),
@@ -135,6 +135,36 @@ ORDER BY entity, tags, datetime
 | car-2   | 2018-12-01 02:00:00  | 200    | 3             | 100         |                | -1                |
 | car-2   | 2018-12-01 03:00:00  | 400    | 4             | 200         | 50             | 50                |
 | car-2   | 2018-12-01 04:00:00  | 400    | 5             | 400         | 100            | 100               |
+```
+
+## Reference to absolute value with FIRST_VALUE
+
+```sql
+SELECT entity, datetime, value, row_number(),
+  LAG(value),
+  FIRST_VALUE(value)
+  FROM "distance"
+WHERE datetime BETWEEN '2018-12-01T00:00:00Z' AND '2018-12-01T05:00:00Z' EXCL
+  -- enable partitioning
+  WITH ROW_NUMBER(entity, tags ORDER BY time) > 0
+ORDER BY entity, tags, datetime
+```
+
+### Results
+
+```txt
+| entity | datetime            | value | row_number() | lag(value) | first_value(value) |
+|--------|---------------------|-------|--------------|------------|--------------------|
+| car-1  | 2018-12-01 00:00:00 |     0 |            1 |            |                  0 |
+| car-1  | 2018-12-01 01:00:00 |    50 |            2 |          0 |                  0 |
+| car-1  | 2018-12-01 02:00:00 |   100 |            3 |         50 |                  0 |
+| car-1  | 2018-12-01 03:00:00 |   120 |            4 |        100 |                  0 |
+| car-1  | 2018-12-01 04:00:00 |   200 |            5 |        120 |                  0 |
+| car-2  | 2018-12-01 00:00:00 |    50 |            1 |            |                 50 |
+| car-2  | 2018-12-01 01:00:00 |   100 |            2 |         50 |                 50 |
+| car-2  | 2018-12-01 02:00:00 |   200 |            3 |        100 |                 50 |
+| car-2  | 2018-12-01 03:00:00 |   400 |            4 |        200 |                 50 |
+| car-2  | 2018-12-01 04:00:00 |   400 |            5 |        400 |                 50 |
 ```
 
 ## LAG with Partitioning and `atsd_series` Table

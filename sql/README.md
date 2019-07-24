@@ -2670,7 +2670,7 @@ The following functions aggregate values in a column by producing a single value
 ```ls
 |----------------|----------------|----------------|----------------|
 | AVG            | CORREL         | COUNT          | COUNTER        |
-| COVAR          | DELTA          | FIRST_VALUE    | LAST_VALUE     |
+| COVAR          | DELTA          | FIRST          | LAST           |
 | MAX            | MAX_VALUE_TIME | MEDIAN         | MEDIAN_ABS_DEV |
 | MIN            | MIN_VALUE_TIME | PERCENTILE     | SUM            |
 | STDDEV         | WAVG           | WTAVG          |                |
@@ -2681,7 +2681,7 @@ The following functions aggregate values in a column by producing a single value
 
 * All functions accept a numeric expression or a numeric column as an argument, for example `AVG(value)` or `AVG(t1.value + t2.value)`.
 * `COUNT` function accepts any expression, including `*`, for example `COUNT(*)` or `COUNT(datetime)`.
-* `MIN`, `MAX`, `FIRST_VALUE`, `LAST_VALUE` functions also accept arguments of `TIMESTAMP` data type, for example `MAX(datetime)`.
+* In addition to numbers, the `MIN`, `MAX`, `FIRST`, and `LAST` functions accept the `TIMESTAMP` data type, for example `MAX(datetime)`.
 
 #### Returned Data Types
 
@@ -2726,13 +2726,13 @@ The function accepts `percentile` parameter within the `[0, 100]` range as the f
 
 The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
 
-#### FIRST_VALUE
+#### FIRST
 
-The `FIRST_VALUE` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
+The `FIRST` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
 
-#### LAST_VALUE
+#### LAST
 
-The `LAST_VALUE` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
+The `LAST` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
 
 #### MIN_VALUE_TIME
 
@@ -3283,7 +3283,7 @@ The `WORKDAY` function shifts the input date by the specified number of working 
 WORKDAY(datetime | time | datetime expression, days[, calendar_key[, timezone]])
 ```
 
-The time part of the day remains unchanged.
+The time part of the day remains unchanged. If the `days` argument is `0` and the input date is **not** a working day, the function returns `NULL`.
 
 Example: two working days before current day.
 
@@ -3573,6 +3573,22 @@ LEAD(value)
 * If the result set is partitioned with the [`ROW_NUMBER`](#row_number) clause, the function can access rows only within the **same** partition as the current row.
 
 The `LEAD` function operates similarly to the [`LAG`](#lag) function except that it searches for subsequent rows as opposed to previous rows.
+
+#### FIRST_VALUE
+
+The `FIRST_VALUE` function returns the first row within the partition.
+
+```sql
+FIRST_VALUE(varchar columnName)
+```
+
+Example:
+
+```sql
+FIRST_VALUE(value)
+```
+
+The function operates similar to `LAG(expr, offset)` where `offset` is the number of rows minus `1`.
 
 ### Lookup Functions
 
