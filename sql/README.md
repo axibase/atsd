@@ -318,7 +318,7 @@ Virtual tables have the same pre-defined columns since the underlying data is ph
 |`text`           |varchar   | Series text value.|
 |`tags.{name}`    |varchar   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
 |`tags`           |varchar   | All series tags, concatenated to `name1=value;name2=value` format.|
-|`tags.*`         |varchar   | Expands to multiple columns, each column containing a separate series tag.|
+|`tags.*`         |varchar   | Expands to multiple columns, each column containing a separate series tag.<br>Tag columns, if present, are sorted by name.|
 |`datetime`       |timestamp | Sample time in [ISO format](../shared/date-format.md), for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period **start** time in [ISO format](../shared/date-format.md), same as `date_format(PERIOD(...))`.|
 |`time`           |bigint     | Sample time Unix time with millisecond precision, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period **start** time.|
 
@@ -333,7 +333,7 @@ Virtual tables have the same pre-defined columns since the underlying data is ph
 |`metric.interpolate` |varchar| Metric interpolation setting.|
 |`metric.tags.{name}` |varchar| Metric tag value. Returns `NULL` if the specified tag does not exist for this metric.|
 |`metric.tags`    |varchar   | All metric tags, concatenated to `name1=value;name2=value` format.|
-|`metric.tags.*`  |-   | Expands to multiple columns, each column containing a separate metric tag.|
+|`metric.tags.*`  |-   | Expands to multiple columns, each column containing a separate metric tag.<br>Tag columns, if present, are sorted by name.|
 |`metric.dataType`|varchar   | [Data Type](../api/meta/metric/list.md#data-types).|
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
@@ -357,7 +357,7 @@ Virtual tables have the same pre-defined columns since the underlying data is ph
 |`entity.interpolate` |varchar| Entity interpolation setting.|
 |`entity.tags.{name}` |varchar| Entity tag value. Returns `NULL` if the specified tag does not exist for this entity.|
 |`entity.tags`    |varchar   | All entity tags, concatenated to `name1=value;name2=value` format.|
-|`entity.tags.*`  |-   | Expands to multiple columns, each column containing a separate entity tag.|
+|`entity.tags.*`  |-   | Expands to multiple columns, each column containing a separate entity tag.<br>Tag columns, if present, are sorted by name.|
 |`entity.groups`  |varchar   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
 |`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
 |`entity.creationTime`| bigint | Entity creation time as Unix time with millisecond precision.|
@@ -487,9 +487,9 @@ If the `value` column in an `atsd_series` query returns numbers for metrics with
 
 ### Series Tag Columns
 
-Tag values are referenced in the `SELECT` expression by specifying `tags.*`, `tags`, or `tags.{tag-name}` as the column name.
+To include tags in the `SELECT` expression, specify `tags.*`, `tags`, or `tags.{tag-name}` as the column name.
 
-`tags` is a collection whose elements can be accessed by name. When specified in the `SELECT` expression, `tags.*` creates a column for each element in the collection.
+Specific tags can be accessed by name such as `tags.{tag-name}`. When specified in the `SELECT` expression, `tags.*` creates a column for each element in the collection. The columns are ordered by name.
 
 If the property is not present, the `tags.{tag-name}` expression returns `NULL`.
 
@@ -575,9 +575,11 @@ GROUP BY entity
 
 Metric tag values can be included in `SELECT` expressions by specifying `metric.tags.*`, `metric.tags`, or `metric.tags.{tag-name}` as the column name.
 
-`metric.tags` is a map object whose properties can be accessed with the `{tag-name}` key.
+To refer to a specific metric tag, use the `metric.tags.{tag-name}` syntax.
 
-If there is no record for the specified key, the `metric.tags.{tag-name}` expression returns `NULL`.
+If there is no value for the specified tag, the `metric.tags.{tag-name}` expression returns `NULL`.
+
+The expression `metric.tags.*` expands to multiple columns which are sorted by name.
 
 Metric tag columns are supported only in a `SELECT` expression.
 
