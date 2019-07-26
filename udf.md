@@ -378,6 +378,111 @@
 
 </details>
 
+## Пример - фунция `wavg`
+
+На этот раз посчитаем долю занятых кресел и для каждого самолета в отдельности и для 10 минутных интервалов с помощью функции `wavg`.
+
+<details><summary>API запрос</summary>
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "metrics": ["flight.load_pct", "flight.capacity"],
+  "entity": "*",
+  "evaluate": {
+    "expression": "wavg(A, B, '10 minute')"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "udf",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 0.6
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 0.7
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 0.9
+      }
+    ]
+  },
+  {
+    "metric": "udf",
+    "entity": "airplane-2",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 0.8
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": null
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 0.6
+      }
+    ]
+  },
+  {
+    "metric": "udf",
+    "entity": "airplane-3",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 0.7
+      }
+    ]
+  },
+  {
+    "metric": "udf",
+    "entity": "airplane-4",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 0.5
+      }
+    ]
+  }
+]
+```
+
+</details>
+
 ## Пример - применение математической функции к каждому элементу ряда
 
 Возьмем один из рядов с метрикой `flight.capacity` и вычислим квадратный корень для каждого значения в этом ряду.
