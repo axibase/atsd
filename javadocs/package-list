@@ -1,0 +1,6 @@
+com.axibase.tsd.service.el.series
+com.axibase.tsd.service.el.series.context
+com.axibase.tsd.service.el.series.exceptions
+com.axibase.tsd.service.el.series.models
+com.axibase.tsd.service.el.series.operations
+com.axibase.tsd.service.el.series.utils
