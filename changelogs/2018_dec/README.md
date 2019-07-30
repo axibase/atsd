@@ -16,7 +16,7 @@
 |5086|sql|feature|SQL: `endtime` calculations to align with `CALENDAR`.
 |5819|license|bug|[License](../../licensing.md): previous licenses ignored on ATSD restart.
 |5821|license|bug|[License](../../licensing.md): add new fields to licence request and version check.
-|5822|sql|feature|SQL: implement aliases for [`FIRST_VALUE`](../../sql/README.md#first_value) and [`LAST_VALUE`](../../sql/README.md#last_value) functions.
+|5822|sql|feature|SQL: implement aliases for [`FIRST`](../../sql/README.md#first) (`FIRST_VALUE`) and [`LAST`](../../sql/README.md#last)(`LAST_VALUE`) functions.
 |5824|statistics|bug|SQL [`PERCENTILE`](../../sql/README.md#percentile): allow 0-percentile.
 |5825|sql|feature|SQL: implement [`MEDIAN_ABS_DEV`](../../sql/README.md#median_abs_dev) aggregation function.
 |5817|forecast|bug|[Forecasts](../../forecasting/README.md): remove malformed leading samples from Holt-Winters reconstructed series.
