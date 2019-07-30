@@ -74,9 +74,7 @@
         ,{ "pattern": "https://www.timeanddate.com/weather/.*"}
         ,{ "pattern": "https://www.comodo.com"}
         ,{ "pattern": "https://www.youtube.com/.*"}
-        ,{ "pattern": "https://duck.co/blog/post/176/-why-duckduckgo-is-giving-away-shirts"}
-        ,{ "pattern": "https://www.techrepublic.com/blog/decision-central/process-300-million-transactions-a-day-without-going-crazy/"}
-        ,{ "pattern": "https://api.slack.com/apps"}
+        ,{ "pattern": "https://www.youtu.be/.*"}
         ,{ "pattern": "https://www.statisticshowto.datasciencecentral.com/.*"}
     ]
 }
