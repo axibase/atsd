@@ -3309,6 +3309,16 @@ WHERE datetime BETWEEN '2019-07-08 15:00:00' and '2019-07-08 15:01:00'
 | 63.2700 | Mon 2019-Jul-08 15:00:10 | Fri 2019-Jul-05 15:00:10 | Wed 2019-Jul-03 15:00:10 |
 ```
 
+#### `WORKDAY_COUNT`
+
+The `WORKDAY_COUNT` function returns the number of working days between the two input dates according to the specified calendar.
+
+```sql
+WORKDAY_COUNT(datetime | time | datetime fromDate, datetime | time | datetime toDate [, calendar_key[, timezone]])
+```
+
+If the `toDate` precedes the `fromDate`, the difference is negative.
+
 #### `WITH TIMEZONE`
 
 The `WITH TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
