@@ -198,3 +198,4 @@ curl https://atsd_hostname:8443/api/v1/properties/query \
 `13` | Password Reset Required
 `14` | Wrong IP Address
 `15` | Access Denied
+`16` | Authorization Token Expired
