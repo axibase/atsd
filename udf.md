@@ -1778,3 +1778,362 @@
 ```
 
 </details>
+
+## Использование пользовательских MVEL библиотек
+
+Можно определить собственные библиотеки MVEL функций и сохранить их для последующего использования.
+Для этого предназначен редактор MVEL скриптов доступный по пути `/mvel-scripts`.
+
+Тестовые данные приведены для 2019-07-01 в 14 часов по UTC. В таблице указаны минуты.
+
+| метр:сущн:тэги | 00 | 01 | 02 | 03 | 04 | 05 |
+|----------------|----|----|----|----|----|----|
+| m1:e1          |  1 |  1 |  7 |  3 |  4 |  2 |
+| m1:e1:tn=tv1   |  3 |  1 |  2 |  4 |  7 |  9 |
+
+## Пример - использование пользовательской функции в основном контексте
+
+Пользуясь редактором MVEL скриптов, создадим и сохраним два файла.
+
+В файле `test-lib-1.mvel` - определим функцию, возвращающую первый ряд из переданной коллекции.
+
+```text
+def getFirstSeriesOfCollection(collection) {
+  return collection.firstSeries();
+}
+```
+
+В файле `test-lib-2.mvel` - определим функцию, вызывающую функцию  определенную в предыдущей библиотеке.
+
+```text
+def generateSeries(collection) {
+  return getFirstSeriesOfCollection(collection);
+}
+```
+
+Теперь в запросе можно подключить эти библиотеки и использовать определенные там функции.
+
+<details><summary>API запрос</summary>
+
+```json
+[{
+  "startDate": "2019-07-01T14:00:00Z",
+  "endDate":   "2019-07-01T15:00:00Z",
+  "metric": "m1",
+  "entity": "e1",
+  "evaluate": {
+    "libs": ["test-lib-1.mvel", "test-lib-2.mvel"],
+    "expression": "generateSeries(m1);"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "m1",
+    "entity": "e1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-07-01T14:00:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-07-01T14:01:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-07-01T14:02:00.000Z",
+        "v": 7
+      },
+      {
+        "d": "2019-07-01T14:03:00.000Z",
+        "v": 3
+      },
+      {
+        "d": "2019-07-01T14:04:00.000Z",
+        "v": 4
+      },
+      {
+        "d": "2019-07-01T14:05:00.000Z",
+        "v": 2
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+## Пример - использование пользовательской функции в контексте ряда при вызове метода `calculateForEach()`
+
+Пользовательские MVEL функции также доступны в контексте ряда,
+при оценивании выражения переданного в методы `calculate()`, `calculateForEach()`.
+Для примера создадим и сохраним в файле `test-series-context-lib-1.mvel` функцию, складывающую текущее значение ряда со значением ряда через 1 минуту. Обратите внимание, что в теле этой функции используются переменные и методы доступные в контексте ряда:
+
+```text
+def transform() {
+  return v + value(time_add("1 minute"));
+}
+```
+
+Используем эту функцию для преобразования каждого ряда в коллекции.
+
+<details><summary>API запрос</summary>
+
+```json
+[{
+  "startDate": "2019-07-01T14:00:00Z",
+  "endDate":   "2019-07-01T15:00:00Z",
+  "metric": "m1",
+  "entity": "e1",
+  "evaluate": {
+    "libs": ["test-series-context-lib-1.mvel"],
+    "expression": "A.calculateForEach('transform()');"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "m1",
+    "entity": "e1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-07-01T14:00:00.000Z",
+        "v": 2
+      },
+      {
+        "d": "2019-07-01T14:01:00.000Z",
+        "v": 8
+      },
+      {
+        "d": "2019-07-01T14:02:00.000Z",
+        "v": 10
+      },
+      {
+        "d": "2019-07-01T14:03:00.000Z",
+        "v": 7
+      },
+      {
+        "d": "2019-07-01T14:04:00.000Z",
+        "v": 6
+      },
+      {
+        "d": "2019-07-01T14:05:00.000Z",
+        "v": null
+      }
+    ]
+  },
+  {
+    "metric": "m1",
+    "entity": "e1",
+    "tags": {
+      "tn": "tv1"
+    },
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-07-01T14:00:00.000Z",
+        "v": 4
+      },
+      {
+        "d": "2019-07-01T14:01:00.000Z",
+        "v": 3
+      },
+      {
+        "d": "2019-07-01T14:02:00.000Z",
+        "v": 6
+      },
+      {
+        "d": "2019-07-01T14:03:00.000Z",
+        "v": 11
+      },
+      {
+        "d": "2019-07-01T14:04:00.000Z",
+        "v": 16
+      },
+      {
+        "d": "2019-07-01T14:05:00.000Z",
+        "v": null
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+## Пример - использование пользовательской функции в контексте ряда при вызове метода `calculate()`
+
+Сохраним в файле `test-series-context-lib-2.mvel` функцию, переворачивающую ряд задом наперед:
+
+```text
+def revert() {
+  Iterator timeIt = series.timestamps().iterator();
+  Iterator valueIt = series.samples().descendingMap().values().iterator();
+  Map result = new TreeMap();
+  while (timeIt.hasNext() && valueIt.hasNext()) {
+    result.put(timeIt.next(), valueIt.next());
+  }
+  return result;
+}
+```
+
+Перевернем первый ряд в коллекции.
+
+<details><summary>API запрос</summary>
+
+```json
+[{
+  "startDate": "2019-07-01T14:00:00Z",
+  "endDate":   "2019-07-01T15:00:00Z",
+  "metric": "m1",
+  "entity": "e1",
+  "evaluate": {
+    "libs": ["test-series-context-lib-2.mvel"],
+    "expression": "A.firstSeries().calculate('revert()');"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "m1",
+    "entity": "e1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-07-01T14:00:00.000Z",
+        "v": 2
+      },
+      {
+        "d": "2019-07-01T14:01:00.000Z",
+        "v": 4
+      },
+      {
+        "d": "2019-07-01T14:02:00.000Z",
+        "v": 3
+      },
+      {
+        "d": "2019-07-01T14:03:00.000Z",
+        "v": 7
+      },
+      {
+        "d": "2019-07-01T14:04:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-07-01T14:05:00.000Z",
+        "v": 1
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+## Пример - использование пользовательской функции в контексте `MultiCollection` при вызове метода `calculateForEach()`
+
+Cохраним в файле `test-multi-series-context-lib-1.mvel` функцию, которая по очереди возвращает значения первого и второго рядов данной `MultiCollection`.
+
+```text
+def alternate() {
+  return tIndex % 2 == 0 ? A : B;
+}
+```
+
+Используем эту функцию чтобы чередовать значения первого и второго тестовых рядов.
+
+<details><summary>API запрос</summary>
+
+```json
+[{
+  "startDate": "2019-07-01T14:00:00Z",
+  "endDate":   "2019-07-01T15:00:00Z",
+  "metric": "m1",
+  "entity": "e1",
+  "evaluate": {
+    "libs": ["test-multi-series-context-lib-1.mvel"],
+    "expression": "A.toMultiCollection().calculateForEach('alternate()');"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "udf",
+    "entity": "udf-0",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-07-01T14:00:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-07-01T14:01:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-07-01T14:02:00.000Z",
+        "v": 7
+      },
+      {
+        "d": "2019-07-01T14:03:00.000Z",
+        "v": 4
+      },
+      {
+        "d": "2019-07-01T14:04:00.000Z",
+        "v": 4
+      },
+      {
+        "d": "2019-07-01T14:05:00.000Z",
+        "v": 9
+      }
+    ]
+  }
+]
+```
+
+</details>
