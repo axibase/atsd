@@ -771,6 +771,62 @@
 
 </details>
 
+## Пример - использование переменной и функции определенных в главном контексте в выражении переданном в метод `calculateForEach()`
+
+В основном выражении можно определять переменные и функции,
+которые доступны в выражениях передаваемых в методы `calculate()` и `calculateForEach()`.
+
+В этом примере определяется переменная `period` и функция `transform()`,
+которые затем используются в выражении передаваемом методу `calculateForEach()`.
+
+<details><summary>API запрос</summary>
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "metric": "flight.load_pct",
+  "entity": "*",
+  "evaluate": {
+    "expression": "delta = '10 minute'; def transform(period) {v + value(time_add(period))} A.firstSeries().calculateForEach('transform(delta)')"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 1.2999999999999998
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 1.6
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": null
+      }
+    ]
+  }
+]
+```
+
+</details>
+
 ## Еще тестовые данные
 
 Все данные для 2019-06-14 в 14 часов по UTC. В таблице указаны минуты.
