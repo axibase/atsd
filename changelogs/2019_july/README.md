@@ -42,7 +42,7 @@
 6384|UI|Bug|Metrics: create page does not work.
 6385|message|Feature|**Message Search**: add entity link and row to form copy.
 6386|UI|Bug|[SQL Console](../../sql/sql-console.md): open link in new tab to prevent unsaved alert.
-6388|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): false change alert.
+6388|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): incorrect change alert.
 6390|sql|Bug|SQL: slow query performance with [`JOIN`](../../sql/README.md#joins) - [date condition](../../sql/README.md#multiple-intervals) not passed to filter.
 6392|metric|Feature|**Message Search** history suggest.
 6396|sql|Bug|SQL: [console](../../sql/sql-console.md) is not showing results for queries that run more than 2 minutes.
@@ -50,13 +50,13 @@
 6400|rule editor|Feature|[Rule Editor](../../rule-engine/README.md): easy access to collections and replacement tables.
 6401|rule engine|Bug|[Rule Editor](../../rule-engine/README.md): unexpected **Time Open** and **Time Cancel** in Test results.
 6404|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): continue cell validation after first error.
-6408|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): false alert.
+6408|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): incorrect alert.
 6412|UI|Bug|UI: [topic](../../rule-engine/email.md#topic-watchers) table broken.
-6415|sql|Feature|SQL: allow [`first_value`](../../sql/README.md#first_value) and [`last_value`](../../sql/README.md#last_value) functions to get first and last row in the partition.
+6415|sql|Feature|SQL: allow [`first_value`](../../sql/README.md#first_value) and `last_value` functions to get first and last row in the partition.
 6416|sql|Bug|SQL: [`min`](../../sql/README.md#aggregate-functions)  and [`max`](../../sql/README.md#aggregate-functions) datetime with period show incorrect value.
 6418|sql|Feature|SQL: [workday](../../sql/README.md#is_workday) function behavior when increment is `0`.
 6419|csv|Bug|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): apply request parameters for series parser.
-6421|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): rule remains in `REPEAT` status despite being deactivated by date filter. 
+6421|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): rule remains in `REPEAT` status despite being deactivated by date filter.
 6422|sql|Bug|SQL: columns not accessible in queries to [`atsd_entity`](../../sql/README.md#atsd_entity-table).
 6423|sql|Feature|SQL: function to count the number of working days between two input dates.
 6425|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): add custom tag with static value.
@@ -66,12 +66,12 @@
 
  Issue| Category    | Type    | Subject
 ------|-------------|---------|--------
-5869|forecast|Bug|Forecast: [style](https://axibase.com/docs/charts/widgets/time-chart/#forecast-style) should applied to forecasts with any mode, not only `column` or `column-stack`.
-6231|chartlab|Feature|Chartlab Upgrade: migrate to Monaco editor.
+5869|forecast|Bug|Forecast: [style](https://axibase.com/docs/charts/widgets/time-chart/#forecast-style) must be applied to forecasts with any mode, not only `column` or `column-stack`.
+6231|chartlab|Feature|ChartLab Upgrade: migrate to Monaco editor.
 6269|core|Bug|Charts: NMON Portal is not loaded.
 6393|widget-settings|Bug|[`label-format`](https://axibase.com/docs/charts/widgets/shared/#label-format) is not applied to derived series.
-6406|chartlab|Bug|Chartlab: post-upgrade issues.
-6411|chartlab|Bug|Chartlab: enhancements.
+6406|chartlab|Bug|ChartLab: post-upgrade issues.
+6411|chartlab|Bug|ChartLab: enhancements.
 
 ## Collector
 
