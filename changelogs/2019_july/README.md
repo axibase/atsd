@@ -67,11 +67,11 @@
  Issue| Category    | Type    | Subject
 ------|-------------|---------|--------
 5869|forecast|Bug|Forecast: [style](https://axibase.com/docs/charts/widgets/time-chart/#forecast-style) must be applied to forecasts with any mode, not only `column` or `column-stack`.
-6231|chartlab|Feature|ChartLab Upgrade: migrate to Monaco editor.
+6231|chart lab|Feature|ChartLab Upgrade: migrate to Monaco editor.
 6269|core|Bug|Charts: NMON Portal is not loaded.
 6393|widget-settings|Bug|[`label-format`](https://axibase.com/docs/charts/widgets/shared/#label-format) is not applied to derived series.
-6406|chartlab|Bug|ChartLab: post-upgrade issues.
-6411|chartlab|Bug|ChartLab: enhancements.
+6406|chart lab|Bug|ChartLab: post-upgrade issues.
+6411|chart lab|Bug|ChartLab: enhancements.
 
 ## Collector
 
