@@ -46,7 +46,7 @@
 6390|sql|Bug|SQL: slow query performance with [`JOIN`](../../sql/README.md#joins) - [date condition](../../sql/README.md#multiple-intervals) not passed to filter.
 6392|metric|Feature|**Message Search** history suggest.
 6396|sql|Bug|SQL: [console](../../sql/sql-console.md) is not showing results for queries that run more than 2 minutes.
-6398|sql|Bug|SQL: define tags columns [ordering](../../sql/README.md#collation).
+6398|sql|Bug|SQL: define tags columns [ordering](../../sql/README.md#series-tag-columns).
 6400|rule editor|Feature|[Rule Editor](../../rule-engine/README.md): easy access to collections and replacement tables.
 6401|rule engine|Bug|[Rule Editor](../../rule-engine/README.md): unexpected **Time Open** and **Time Cancel** in Test results.
 6404|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): continue cell validation after first error.
@@ -78,7 +78,7 @@
 Issue| Category    | Type    | Subject
 ------|-------------|---------|--------
 6347|kafka|Bug|[Kafka Job](https://axibase.com/docs/axibase-collector/jobs/kafka.html#kafka-job): `NullPointerException` on using non-existing JSON field for time in `JSON` mode.
-6371|json|Bug|[JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html#json-job): cyrillic symbols presented as question marks on HBS.
-6377|file|Bug|[File Job](https://axibase.com/docs/axibase-collector/jobs/file.html#file-job): `NullPointerException` with attempt to clone configuration.
+6371|json|Bug|[JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html#json-job): cyrillic symbols presented as question marks if JVM locale is not UTF-8.
+6377|file|Bug|[File Job](https://axibase.com/docs/axibase-collector/jobs/file.html#file-job): `NullPointerException` on attempt to clone configuration.
 6413|json|Bug|[JSON Job](https://axibase.com/docs/axibase-collector/jobs/json.html#json-job): `NullPointerException` on attempt to launch Viewer for unsaved configuration.
 6428|UI|Bug|UI: font is downloaded instead of redirect in incognito mode.
