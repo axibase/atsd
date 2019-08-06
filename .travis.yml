@@ -8,7 +8,7 @@ install:
 script:
   - print_modified_markdown_files
   - spellcheck
-  - if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]]; then linkcheck; fi
+  - linkcheck
   - stylecheck
   - validate_anchors
 cache:
