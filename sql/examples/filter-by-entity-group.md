@@ -58,3 +58,22 @@ ORDER BY datetime
 | 2016-07-14T15:00:10.000Z | nurswgvml011 | 100.0 | VMware VMs;nmon-linux;nmon-linux-beta;nur-collectors;scollector-nur;solarwind-vmware-vm;solarwinds-base;tcollector - linux                                                   |
 | 2016-07-14T15:00:13.000Z | nurswgvml102 | 2.0   | VMware VMs;nmon-linux;nmon-linux-beta;nur-collectors;solarwind-vmware-vm;tcollector - linux                                                                                  |
 ```
+
+## Check Expression in Entity Group
+
+```sql
+SELECT entity, REPLACE(entity, 'nurswgvml', '') AS sfx, count(value)
+  FROM cpu_busy
+WHERE datetime > current_hour
+  AND is_entity_in_group(sfx, 'nur-hbase')
+GROUP BY entity
+```
+
+```txt
+| entity       | sfx | count(value) |
+|--------------|-----|--------------|
+| nurswgvml010 | 010 |          156 |
+| nurswgvml501 | 501 |          156 |
+| nurswgvml502 | 502 |          156 |
+| nurswgvml301 | 301 |           80 |
+```

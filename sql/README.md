@@ -652,6 +652,16 @@ ORDER BY datetime
 | 2017-06-15T15:00:21Z | nurswgvml102 | 4.0   | java-loggers;network-rtr                 |
 ```
 
+To check that a string expression matches one of the entity names in the specified group, use the `is_entity_in_group()` function.
+
+```sql
+SELECT entity, AVG(value)
+  FROM "mpstat.cpu_busy"
+WHERE datetime > current_hour
+  AND is_entity_in_group(REPLACE(entity, 'nur', ''), 'nur-hbase')
+GROUP BY entity
+```
+
 ### Group By Columns
 
 In a `GROUP BY` query, `datetime` and `PERIOD()` columns return the same value (the period start time) in [ISO format](../shared/date-format.md). In this case, `date_format(PERIOD(5 MINUTE))` can be replaced with `datetime` in the `SELECT` expression.
@@ -3715,6 +3725,22 @@ ORDER BY datetime DESC
 | date       | value | tags.city | tags.state | region      | population | cases_per_pop |
 |------------|-------|-----------|------------|-------------|------------|---------------|
 | 2017-10-01 | 131.0 | Boston    | MA         | New-England | 667137     | 0.2           |
+```
+
+#### IS_ENTITY_IN_GROUP
+
+The `IS_ENTITY_IN_GROUP` function returns `true` if `arg1` matches one of the entity names in the specified entity group.
+
+```sql
+IS_ENTITY_IN_GROUP(expr, <group-name>)
+```
+
+```sql
+SELECT entity, AVG(value)
+  FROM "mpstat.cpu_busy"
+WHERE datetime > current_hour
+  AND is_entity_in_group(REPLACE(entity, 'nur', ''), 'nur-hbase')
+GROUP BY entity
 ```
 
 ### Other Functions
