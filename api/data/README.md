@@ -180,8 +180,8 @@ The endpoints listed below are accessible under the `/api/v1/` context path, for
 | [insert](./messages/insert.md) | `POST` `/messages/insert` <br>Inserts an array of messages.|
 | [webhook](./messages/webhook.md) | `POST` or `GET` `/messages/webhook/*` <br>Creates message from an HTTP request with optional JSON payload and insert it.|
 | [query](./messages/query.md) | `POST` `/messages/query` <br>Retrieves message records for the specified filters.|
-| [delete](./messages/delete.md) | `-` `-` `-` <br>Executes administrative actions to delete message records. |
-| [count](./messages/count.md) | `POST` `/messages/stats/query` <br>Calculates the number of messages per period.|
+| [delete](./messages/delete.md) | `-` `-` `-` <br>Deletes message records. |
+| [stats](./messages/stats.md) | `POST` `/messages/stats/query` <br>Calculates the number and maximum severity of messages per period.|
 
 ### Properties
 

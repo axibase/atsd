@@ -2,7 +2,7 @@
 
 ## Description
 
-Calculates the number of messages per period and return the data in the format of [`series`](../series/query.md) query.
+Calculates the number of messages per period and returns the data in the same format as [`series`](../series/query.md) query.
 
 If period aggregation is enabled, the series contains the number of messages in each period. Otherwise, the series contains the total number of messages within the specified interval.
 
