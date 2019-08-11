@@ -1,8 +1,8 @@
 # SQL
 
-ATSD supports SQL for retrieving time series data stored in the database.
+ATSD supports SQL for retrieving, inserting, and deleting time series data stored in the database.
 
-SQL statements can be executed interactively via the web-based [console](sql-console.md), on [schedule](#scheduler), and using the [JDBC](https://github.com/axibase/atsd-jdbc) driver.
+SQL statements can be executed via the web-based [console](sql-console.md), on [schedule](#scheduler), or using the [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers.
 
 * [Syntax](#syntax)
   * [SELECT Expression](#select-expression)
@@ -18,7 +18,7 @@ SQL statements can be executed interactively via the web-based [console](sql-con
   * [CASE Expression](#case-expression)
   * [Processing Sequence](#processing-sequence)
   * [Keywords](#reserved-words)
-* [Processing Sequence](#processing-sequence)
+* [Processing Sequence](#select-processing-sequence)
 * [Grouping](#grouping)
 * [Date Aggregation](#date-aggregation)
 * [Interpolation](#interpolation)
@@ -38,20 +38,21 @@ SQL statements can be executed interactively via the web-based [console](sql-con
 
 ## Syntax
 
+The SQL statement begins with one of the following keywords: `SELECT`, `INSERT`, `UPDATE`, `DELETE` and can end with a semi-colon character.
+
+### `SELECT` Syntax
+
 The `SELECT` statement consists of a `SELECT` expression, a `FROM` query, a `WHERE` clause, and other clauses for filtering, grouping, and ordering the results.
 
 ```sql
 SELECT { * | { expr [ .* | [ AS ] alias ] } }
-  FROM table [[ AS ] alias ]
-    [ { INNER | [ FULL ] OUTER } JOIN [ USING ENTITY ] table [[ AS ] alias ] [ ON joinExpr ] ]
-[ WHERE expr(boolean) ]
-  [ WITH ROW_NUMBER expr ]
+  FROM "<table-name>" [[ AS ] alias ]
+    [ { INNER | [ FULL ] OUTER } JOIN [ USING ENTITY ] "<table-name>" [[ AS ] alias ] [ ON joinExpr ] ]
+[ WHERE booleanExpr ]
+  [ WITH withExpr ]
 [ GROUP BY expr [, ...] ]
-  [ HAVING expr(boolean) ]
-  [ WITH ROW_NUMBER expr ]
-[ WITH LAST_TIME expr ]
-[ WITH INTERPOLATE expr ]
-[ WITH TIMEZONE expr ]
+  [ HAVING booleanExpr ]
+  [ WITH withExpr ]
 [ ORDER BY expr [{ ASC | DESC }] [, ...] ]
 [ LIMIT count [ OFFSET skip ]]
   [ OPTION(expr) [...]]
@@ -60,15 +61,88 @@ SELECT { * | { expr [ .* | [ AS ] alias ] } }
 Example:
 
 ```sql
-SELECT datetime, entity, value     -- SELECT expression
-  FROM "mpstat.cpu_busy"           -- query
+SELECT datetime, entity, value*2            -- SELECT expression
+  FROM "mpstat.cpu_busy"                    -- table (metric)
 WHERE datetime >= '2017-06-15T00:00:00Z'    -- WHERE clause
-  LIMIT 1                          -- other clauses
+  LIMIT 1                                   -- other clauses
 ```
 
-The statement can end with a semi-colon character.
+### `INSERT` Syntax
 
-### Processing Sequence
+```sql
+INSERT INTO "<table-name>" (column_1 [, column_N])
+  VALUES (expr_1 [, expr_N])
+```
+
+The column name can be one of the pre-defined [series columns](#series-columns), for example: `datetime`, `entity`, `value`, `tags.<name>`.
+
+The `time` and `datetime` column values can be specified as a literal date or a [calendar expression](../shared/calendar.md#keywords).
+
+Example:
+
+```sql
+INSERT INTO "df.disk_used" (entity, datetime, value, tags.mount_point, tags.file_system)
+  VALUES ('nurswgvml007', '2019-02-01 00:00:05', 99.83, '/app', '/dev/sdb1')
+```
+
+```sql
+INSERT INTO "mpstat.cpu_busy" (entity, datetime, value)
+  VALUES ('nurswgvml007', now, 0.10)
+```
+
+To insert values for multiple metrics, use the built-in `atsd_series` table in which case metric names are extracted from numeric columns:
+
+```sql
+INSERT INTO atsd_series (metric_1 [, metric_N], column_1 [, column_N])
+  VALUES ('<metric_1_value>' [, '<metric_2_value>'], expr_1 [, expr_N])
+```
+
+Example:
+
+```sql
+INSERT INTO atsd_series ("mpstat.cpu_busy", "mpstat.cpu_user", entity, datetime)
+  VALUES (0.10, 0.02, 'nurswgvml007', now)
+```
+
+### `UPDATE` Syntax
+
+```sql
+UPDATE "<table-name>" SET column_1 = expr_1 [, column_N = expr_N]
+```
+
+The column name can be one of the pre-defined [series columns](#series-columns), for example: `datetime`, `entity`, `value`, `tags.<name>`.
+
+The `time` and `datetime` column values can be specified as a literal date or a [calendar expression](../shared/calendar.md#keywords).
+
+If the previous value is not found, a new value is inserted with the specified timestamp.
+
+Example:
+
+```sql
+UPDATE "df.disk_used" SET entity = 'nurswgvml007',
+  datetime = '2019-02-01 00:00:05', value = 99.83,
+  tags.mount_point = '/app', tags.file_system = '/dev/sdb1'
+```
+
+```sql
+UPDATE "mpstat.cpu_busy" SET entity = 'nurswgvml007', datetime = now, value = 0.10
+```
+
+### `DELETE` Syntax
+
+```sql
+DELETE FROM table
+  WHERE booleanExpr
+```
+
+Example:
+
+```sql
+DELETE FROM "mpstat.cpu_busy"
+WHERE datetime BETWEEN '2017-06-15T00:00:00Z' AND '2017-06-16T00:00:00Z' EXCL
+```
+
+### `SELECT` Processing Sequence
 
 * **FROM** retrieves rows from virtual tables.
 * **JOIN** merges rows from different tables.
@@ -85,6 +159,7 @@ The `SELECT` expression contains one or multiple columns and expressions applied
 
 ```sql
 SELECT column1, UPPER(column2), 100 * column3
+  FROM ...
 ```
 
 ### Tables
@@ -2129,16 +2204,29 @@ WITH time >= last_time - 1*HOUR
 
 ## WITH Clauses
 
-Multiple `WITH` clauses can be combined using comma.
+The `withExpr` starts with `WITH` keyword and can contain the following expressions:
 
 ```sql
-WITH ROW_NUMBER(symbol ORDER BY time) < 2, TIMEZONE = 'Europe/Vienna'
+withExpr = ROW_NUMBER expr | LAST_TIME expr | INTERPOLATE expr | TIMEZONE expr
 ```
 
-* `WITH ROW_NUMBER`
-* `WITH TIMEZONE`
-* `WITH LAST_TIME`
-* `WITH INTERPOLATE`
+```sql
+WITH ROW_NUMBER(entity ORDER BY time) < 2
+```
+
+```sql
+WITH TIMEZONE = 'Europe/Vienna'
+```
+
+Multiple `WITH` clauses in the same query can be combined using comma.
+
+```sql
+withExpr [, withExpr]
+```
+
+```sql
+WITH ROW_NUMBER(entity ORDER BY time) < 2, TIMEZONE = 'Europe/Vienna'
+```
 
 ## Ordering
 
