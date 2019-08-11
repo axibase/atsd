@@ -1,4 +1,4 @@
-# Messages: count
+# Messages: stats
 
 ## Description
 
@@ -24,7 +24,7 @@ An array of query objects containing the following filtering fields:
 
 Refer to message [query](query.md#message-filter-fields) fields.
 
-#### Message Counter Fields
+#### Calculation Fields
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
