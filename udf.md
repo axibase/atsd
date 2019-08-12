@@ -55,6 +55,349 @@
 | 2019-06-14 14:25:00 | airplane-4 |      500 |      0.5 |        250 |
 | 2019-06-14 14:25:00 | airplane-2 |      300 |      0.6 |        180 |
 
+## Пример - объединение коллекций и рядов
+
+MVEL выражение `[x, y]` создает список из `x` и `y`, а выражение `{x, y}` создает массив.
+Любое из этих выражений можно использовать, чтобы объединить коллекции или ряды между собой.
+
+<details><summary>API запрос - массив коллекций</summary>
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "metrics": ["flight.capacity", "flight.load_pct"],
+  "entity": "*",
+  "evaluate": {
+    "expression": "{flight.capacity, flight.load_pct}"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 100
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 100
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 100
+      }
+    ]
+  },
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-2",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:05:00.000Z",
+        "v": 300
+      },
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 300
+      }
+    ]
+  },
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-3",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:15:00.000Z",
+        "v": 100
+      }
+    ]
+  },
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-4",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 500
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 0.6
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 0.7
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 0.9
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-2",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:05:00.000Z",
+        "v": 0.8
+      },
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 0.6
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-3",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:15:00.000Z",
+        "v": 0.7
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-4",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 0.5
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+<details><summary>API запрос - список рядов</summary>
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "metrics": ["flight.capacity", "flight.load_pct"],
+  "entity": "*",
+  "evaluate": {
+    "expression": "[flight.capacity.seriesList(), flight.load_pct.seriesList()]"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 100
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 100
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 100
+      }
+    ]
+  },
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-2",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:05:00.000Z",
+        "v": 300
+      },
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 300
+      }
+    ]
+  },
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-3",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:15:00.000Z",
+        "v": 100
+      }
+    ]
+  },
+  {
+    "metric": "flight.capacity",
+    "entity": "airplane-4",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 500
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 0.6
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 0.7
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 0.9
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-2",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:05:00.000Z",
+        "v": 0.8
+      },
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 0.6
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-3",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:15:00.000Z",
+        "v": 0.7
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-4",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:25:00.000Z",
+        "v": 0.5
+      }
+    ]
+  }
+]
+```
+
+</details>
+
 ## Пример - сопоставление рядов, арифметические операции
 
 Посчитаем долю занятых кресел по всем рейсам,
