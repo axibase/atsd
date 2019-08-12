@@ -398,6 +398,140 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 </details>
 
+## Пример - фильтрация коллекции по сущности
+
+Коллекцию можно отфильтровать по ключам рядов.
+Например отфильтруем ряды по сущности.
+
+<details><summary>API запрос - фильтрация по сущности</summary>
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "metric": "flight.load_pct",
+  "entity": "*",
+  "evaluate": {
+    "expression": "flight.load_pct.filter('entity == \"airplane-1\" || entity == \"airplane-3\"')"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 0.6
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 0.7
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 0.9
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-3",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:15:00.000Z",
+        "v": 0.7
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+Выражение передаваемое в метод `filter(expression)` можно присвоить переменной
+или определить как функцию:
+
+<details><summary>API запрос - фильтрация с использованием функции</summary>
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "metric": "flight.load_pct",
+  "entity": "*",
+  "evaluate": {
+    "expression": "def match(){entity == 'airplane-1' || entity == 'airplane-3'} flight.load_pct.filter('match()')"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-1",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 0.6
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 0.7
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 0.9
+      }
+    ]
+  },
+  {
+    "metric": "flight.load_pct",
+    "entity": "airplane-3",
+    "tags": {},
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:15:00.000Z",
+        "v": 0.7
+      }
+    ]
+  }
+]
+```
+
+</details>
+
 ## Пример - сопоставление рядов, арифметические операции
 
 Посчитаем долю занятых кресел по всем рейсам,
@@ -1778,6 +1912,109 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   {
     "metric": "m1",
     "entity": "",
+    "tags": {
+      "tn": "tv1"
+    },
+    "type": "HISTORY",
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-06-14T14:00:00.000Z",
+        "v": 2
+      },
+      {
+        "d": "2019-06-14T14:04:00.000Z",
+        "v": 4
+      },
+      {
+        "d": "2019-06-14T14:06:00.000Z",
+        "v": -4
+      },
+      {
+        "d": "2019-06-14T14:07:00.000Z",
+        "v": 8
+      },
+      {
+        "d": "2019-06-14T14:09:00.000Z",
+        "v": 11
+      },
+      {
+        "d": "2019-06-14T14:10:00.000Z",
+        "v": 5
+      },
+      {
+        "d": "2019-06-14T14:11:00.000Z",
+        "v": -1
+      },
+      {
+        "d": "2019-06-14T14:14:00.000Z",
+        "v": 7
+      },
+      {
+        "d": "2019-06-14T14:19:00.000Z",
+        "v": 10
+      },
+      {
+        "d": "2019-06-14T14:20:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-06-14T14:21:00.000Z",
+        "v": 7
+      },
+      {
+        "d": "2019-06-14T14:23:00.000Z",
+        "v": 2
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+## Пример - фильтрация коллекции по тэгам
+
+Отфильтруем результат предыдущего примера, оставив только ряды у которых значение тэга `tn` равно `tv1`.
+
+<details><summary>API запрос - фильтрация по тэгу</summary>
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "name": "A",
+  "metric": "m1",
+  "entity": "e1",
+    "series": [
+    {
+      "name": "B",
+      "metric": "m1",
+      "entity": "e2"
+    },
+    {
+      "name": "C",
+      "metric": "m2",
+      "entity": "e1"
+    }
+  ],
+  "evaluate": {
+    "expression": "def match(){tags['tn'] == 'tv1'} join('tags', A, B, C).calculateForEach('A + B - C').filter('match()')"
+  }
+}]
+```
+
+</details>
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "udf",
+    "entity": "udf-0",
     "tags": {
       "tn": "tv1"
     },
