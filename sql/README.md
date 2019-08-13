@@ -3492,6 +3492,7 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 | `MOD(num, m)` | Remainder of the first numerical argument divided by `m`.|
 | `PI()` | The value of &pi; (3.141592653589793). No arguments accepted. |
 | `POWER(num, m)`  | Number raised to the power `m`. |
+| `RANDOM()` | Uniformly distributed random number between 0 and 1. |
 | `ROUND(num [,m])` | Number rounded to `m` decimal places. |
 | `SQRT(num)` | Square `root` of the specified number. |
 
