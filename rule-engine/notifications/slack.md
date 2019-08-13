@@ -35,7 +35,7 @@ If necessary, create new channel as described [here](https://get.slack.help/hc/e
 
 Slack Bot is a special account created for automation purposes.
 
-* Open [Slack Apps](https://api.slack.com/apps/)
+* Open [Slack Apps](https://api.slack.com/apps)
 
    ![](./images/outgoing_webhook_slack_1.png)
 
