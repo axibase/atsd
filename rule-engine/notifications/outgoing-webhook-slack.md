@@ -18,7 +18,7 @@ The ATSD can then be programmed to respond to received commands by means of send
 
 Slack Bot is a special account created for automation purposes.
 
-* Open [Slack Apps](https://api.slack.com/apps/)
+* Open [Slack Apps](https://api.slack.com/apps)
 
    ![](./images/outgoing_webhook_slack_1.png)
 

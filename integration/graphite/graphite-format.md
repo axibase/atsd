@@ -183,7 +183,7 @@ To setup the server and client on separate servers, refer to the [How to Config
 
 To send data into ATSD, defined a TCP handler.
 
-[Official Sensu Handler guide.](https://sensuapp.org/docs/latest/getting-started-with-handlers)
+[Official Sensu Handler guide.](https://docs.sensu.io/sensu-core/1.8/guides/intro-to-handlers/)
 
 ```json
 {

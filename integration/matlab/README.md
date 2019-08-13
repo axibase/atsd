@@ -269,8 +269,8 @@ insert(conn_atsd, 'inflation.cpi.composite.price', colnames, payload);
 MATLAB functions:
 
 * [`database`](https://www.mathworks.com/help/database/ug/database.html)
-* [`exec`](https://www.mathworks.com/help/database/ug/exec.html)
-* [`fetch`](https://www.mathworks.com/help/database/ug/fetch.html)
+* [`exec`](https://www.mathworks.com/help/database/ug/database.odbc.connection.exec.html?s_tid=doc_ta)
+* [`fetch`](https://www.mathworks.com/help/database/ug/database.odbc.connection.fetch.html?s_tid=doc_ta)
 * [`cell2mat`](https://www.mathworks.com/help/matlab/ref/cell2mat.html)
 * [`repmat`](https://www.mathworks.com/help/matlab/ref/repmat.html)
 * [`sum`](https://www.mathworks.com/help/matlab/ref/sum.html)

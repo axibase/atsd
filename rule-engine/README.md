@@ -301,7 +301,7 @@ As a result, the query triggers actions only when it returns at least one row.
 
 ### Open Alerts
 
-Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrieved with [`/alert/query`](../api/data/alerts/README.md) Data API query and incorporated into portals using the [Alert Console](https://axibase.com/docs/charts/widgets/alert-console/) widget.
+Open alerts are displayed on the **Alerts > Open Alerts** page and can be retrieved with [`/alert/query`](../api/data/alerts/README.md) Data API query and incorporated into portals using the [Alert Table](https://axibase.com/docs/charts/widgets/alert-table/) widget.
 
 ![](./images/open-alerts.png)
 
