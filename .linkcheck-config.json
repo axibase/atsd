@@ -76,5 +76,6 @@
         ,{ "pattern": "https://www.youtube.com/.*"}
         ,{ "pattern": "https://www.youtu.be/.*"}
         ,{ "pattern": "https://www.statisticshowto.datasciencecentral.com/.*"}
+        ,{ "pattern": "https://stats.oecd.org/Index.aspx.*"}
     ]
 }
