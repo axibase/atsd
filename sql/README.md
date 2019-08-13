@@ -16,7 +16,6 @@ SQL statements can be executed via the web-based [console](sql-console.md), on [
   * [Arithmetic Operators](#arithmetic-operators)
   * [Match Expressions](#match-expressions)
   * [CASE Expression](#case-expression)
-  * [Processing Sequence](#processing-sequence)
   * [Keywords](#reserved-words)
 * [Processing Sequence](#select-processing-sequence)
 * [Grouping](#grouping)

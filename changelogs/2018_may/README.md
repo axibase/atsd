@@ -18,7 +18,7 @@
 5315 | message        | Bug     | Fix incorrect [wildcard](../../search/entity-search.md#syntax) match on the message search page.
 5313 | client         | Bug     | [Python Client](https://github.com/axibase/atsd-api-python#axibase-time-series-database-client-for-python): [Message model](https://github.com/axibase/atsd-api-python#inserting-data) standardized.
 5310 | message        | Feature | Modify filter processing for tag wildcards and empty tag values on message search page.
-5309 | api-rest       | Bug     | `NullPointerException` raised on [message insert](../../api/data/messages/README.md#data-api-messages-methods) when a tag is set to `null`.
+5309 | api-rest       | Bug     | `NullPointerException` raised on [message insert](../../api/data/messages/README.md#data-api-message-methods) when a tag is set to `null`.
 5308 | installation   | Feature | Install [Python 3](https://www.python.org/download/releases/3.0/) on [ATSD Sandbox](https://github.com/axibase/dockers/blob/atsd-sandbox/README.md#overview) by default.
 5307 | csv            | Bug     | `NullPointerException` raised on CSV parser form in test mode.
 5306 | api-rest       | Feature | Add revision field to [version](../../api/meta/misc/version.md) endpoint output.

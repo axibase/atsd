@@ -45,7 +45,7 @@
 6298|rule engine|Bug|[Rule](../../rule-engine/README.md) import from XML fails.
 6300|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): testing errors are propagated to open windows.
 6302|message|Feature|UI: Message Search form - add counters to the [`type`](../../api/data/messages/query.md#message-filter-fields) drop-down.
-6304|message|Bug|[Message Receive Statistics](../../administration/data_retention.md#top-message-types): message [counted](../../api/data/messages/stats.md#messages-count) twice if it is inserted with **Data Entry** form.
+6304|message|Bug|[Message Receive Statistics](../../administration/data_retention.md#top-message-types): message [counted](../../api/data/messages/stats.md#messages-stats) twice if it is inserted with **Data Entry** form.
 6308|core|Bug|Core: ATSD does not [start](../../installation/README.md#axibase-time-series-database-installation) if no network interfaces are present.
 6310|UI|Feature|Security: implement user creation wizard for Integration user.
 6313|administrator|Bug|[Server Properties](../../administration/server-properties.md#server-properties): apply default value if empty value is set.
