@@ -60,7 +60,7 @@
 MVEL выражение `[x, y]` создает список из `x` и `y`, а выражение `{x, y}` создает массив.
 Любое из этих выражений можно использовать, чтобы объединить коллекции или ряды между собой.
 
-<details><summary>API запрос - массив коллекций</summary>
+API запрос - массив коллекций
 
 ```json
 [{
@@ -73,8 +73,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -229,7 +227,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 </details>
 
-<details><summary>API запрос - список рядов</summary>
+API запрос - список рядов
 
 ```json
 [{
@@ -242,8 +240,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -407,7 +403,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 Например отфильтруем ряды по сущности.
 Пример фильтрации по тэгам приведен для других данных (с тэгами).
 
-<details><summary>API запрос - фильтрация по сущности</summary>
+API запрос - фильтрация по сущности
 
 ```json
 [{
@@ -420,8 +416,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -473,7 +467,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 Выражение передаваемое в метод `filter(expression)` можно присвоить переменной
 или определить как функцию:
 
-<details><summary>API запрос - фильтрация с использованием функции</summary>
+API запрос - фильтрация с использованием функции
 
 ```json
 [{
@@ -486,8 +480,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -541,7 +533,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 Посчитаем долю занятых кресел по всем рейсам,
 то есть отношение суммы всех занятых кресел (по всем рейсам) к сумме всех посадочных мест (по всем рейсам).
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -564,8 +556,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -595,7 +585,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Посчитаем долю занятых кресел для каждой сущности (самолета) в отдельности.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -608,8 +598,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -684,7 +672,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Посчитаем долю занятых кресел для 10 минутных интервалов.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -697,8 +685,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -736,7 +722,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Посчитаем долю занятых кресел и для каждого самолета в отдельности и для 10 минутных интервалов.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -759,8 +745,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -863,7 +847,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 На этот раз посчитаем долю занятых кресел и для каждого самолета в отдельности и для 10 минутных интервалов с помощью функции `wavg`.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -876,8 +860,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -968,7 +950,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Возьмем один из рядов с метрикой `flight.capacity` и вычислим квадратный корень для каждого значения в этом ряду.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -981,8 +963,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1021,7 +1001,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 Найдем значение метрики `flight.capacity` во время `2019-06-14 14:15:00` по `UTC`,
 или `2019-06-14 17:15:00` по `MSK` для каждого самолета.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1035,8 +1015,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1112,7 +1090,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 Найдем интерполированное значение метрики `flight.load_percent` в
 `2019-06-14 17:15:00` по `MSK` для каждого самолета.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1126,8 +1104,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1203,7 +1179,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Выведем значение метрики `flight.load_percent` с 10 минутной задержкой.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1217,8 +1193,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1260,7 +1234,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 В этом примере определяется переменная `period` и функция `transform()`,
 которые затем используются в выражении передаваемом методу `calculateForEach()`.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1273,8 +1247,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1321,7 +1293,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Найдем сколько четных чисел в каждом ряду.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1334,8 +1306,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1382,7 +1352,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Найдем сколько раз значение первого ряда было больше значения второго ряда.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1396,8 +1366,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1427,7 +1395,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Для каждого ряда разобьем время на 10 минутные интервалы и найдем последнee значение ряда на интервале.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1441,8 +1409,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1506,7 +1472,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 Для каждого ряда разобьем время на 5 минутные интервалы.
 Для четных интервалов вернем 111, для нечетных найдем разницу между временем первого значения на интервале и началом интервала.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1520,8 +1486,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1567,7 +1531,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Для каждого значения ряда посчитаем его разность с наибольшим из предшествующих значений.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1581,8 +1545,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1717,7 +1679,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 То же самое, что в предыдущем примере, но только для второго ряда и для 10 минутных интервалов. То есть для каждого значения ряда посчитаем его разность с наибольшим из предшествующих значений на том же интервале.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1731,8 +1693,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1821,7 +1781,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Разобьем ряды по тэгам, так что получится 2 группы по 3 ряда в каждой, и вычтем ряд с метрикой m2 из суммы рядов с метрикой m1.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -1847,8 +1807,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -1984,7 +1942,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 Отфильтруем результат предыдущего примера, оставив только ряды у которых значение тэга `tn` равно `tv1`.
 При оценивании выражения переданного в функцию `filter` тэги доступны как значение переменной `tags`.
 
-<details><summary>API запрос - фильтрация по тэгу</summary>
+API запрос - фильтрация по тэгу
 
 ```json
 [{
@@ -2010,8 +1968,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2085,45 +2041,49 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 ## Доступ к объекту DateTime
 
-При оценивании MVEL выражения в методах `calculate(...)` объектов `Series`, `SeriesColletion`, `MultiCollection`
+При оценивании MVEL выражения в методах `calculate(...)`, `calculateForEach(...)` объектов `Series`, `SeriesColletion`, `MultiCollection`
 можно получить объект `DateTime`, следующими методами:
 
 ```java
- /**
-  * If expression is evaluated for each timestamp.
-  * Return {@link DateTime} implementation for current timestamp {@link #t},
-  * country specified in the {@code default.holiday.calendar} server property,
-  * and server timezone.
+/**
+ * Return {@link DateTime} implementation for current timestamp {@link #t},
+ * calendar specified in the {@code default.holiday.calendar} server property,
+ * and timezone specified in the query (server timezone by default).
  */
  d
 ```
 
 ```java
- /**
-  * If expression is evaluated for each timestamp.
-  * Return {@link DateTime} implementation for current timestamp {@link #t},
-  * specified country's holiday calendar,
-  * and server timezone.
+/**
+ * Return {@link DateTime} implementation for current timestamp {@link #t},
+ * specified holiday calendar,
+ * and timezone specified in the query (server timezone by default).
  */
- d(String country)
+ d(String calendar)
 ```
 
 ```java
- /**
-  * Return {@link DateTime} implementation for specified timestamp,
-  * country specified in the {@code default.holiday.calendar} server property,
-  * and server timezone.
- */
+    /**
+     * Return {@link DateTime} implementation for specified timestamp,
+     * calendar specified in the {@code default.holiday.calendar} server property,
+     * and timezone specified in the query (server timezone by default).
+     */
  d(long timestamp)
 ```
 
 ```java
-  /**
-   * Return {@link DateTime} implementation for specified timestamp,
-   * specified country's holiday calendar,
-   * and server timezone.
-   */
-  public DateTime d(long timestamp, String country)
+/**
+ * Return {@link DateTime} implementation for specified timestamp,
+ * specified holiday calendar,
+ * and timezone specified in the query (server timezone by default).
+ */
+
+  public DateTime d(long timestamp, String calendar)
+```
+
+```java
+/** Return DateTime object for specified parameters. */
+d(long timestamp, String calendar, TimeZone timezone) {
 ```
 
 ## Метрики для демонстрации использование DateTime
@@ -2139,7 +2099,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Заменить значение метрики в нерабочий день на 0, используя календарь `default.holiday.calendar`.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2152,8 +2112,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2199,7 +2157,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 То же самое, что в предыдущем примере, но с использованием календаря указанного в запросе.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2212,8 +2170,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2259,7 +2215,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Найти число рабочих дней, используя календарь по умолчанию.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2273,8 +2229,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2304,7 +2258,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 То же самое, что в предыдущем примере, но с использованием указанного календаря.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2317,8 +2271,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2371,7 +2323,7 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
 
 Посчитаем количество значений ряда за день в указанной временной зоне.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2385,8 +2337,6 @@ MVEL выражение `[x, y]` создает список из `x` и `y`, а
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2454,7 +2404,7 @@ def generateSeries(collection) {
 
 Теперь в запросе можно подключить эти библиотеки и использовать определенные там функции.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2468,8 +2418,6 @@ def generateSeries(collection) {
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2529,7 +2477,7 @@ def transform() {
 
 Используем эту функцию для преобразования каждого ряда в коллекции.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2543,8 +2491,6 @@ def transform() {
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2645,7 +2591,7 @@ def revert() {
 
 Перевернем первый ряд в коллекции.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2659,8 +2605,6 @@ def revert() {
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
@@ -2718,7 +2662,7 @@ def alternate() {
 
 Используем эту функцию чтобы чередовать значения первого и второго тестовых рядов.
 
-<details><summary>API запрос</summary>
+API запрос
 
 ```json
 [{
@@ -2732,8 +2676,6 @@ def alternate() {
   }
 }]
 ```
-
-</details>
 
 <details><summary>Ответ сервера</summary>
 
