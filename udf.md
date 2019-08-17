@@ -959,7 +959,7 @@ API запрос
   "metric": "flight.capacity",
   "entity": "airplane-1",
   "evaluate": {
-    "expression": "A.firstSeries().calculateForEach('Math.sqrt(v)')"
+    "expression": "A.firstSeries().forEach('Math.sqrt(v)')"
   }
 }]
 ```
@@ -1188,7 +1188,7 @@ API запрос
   "metric": "flight.load_pct",
   "entity": "airplane-1",
   "evaluate": {
-    "expression": "flight.load_pct.calculateForEach('value(time_add(\"-10 minute\"))')",
+    "expression": "flight.load_pct.forEach('value(time_add(\"-10 minute\"))')",
     "timezone": "UTC"
   }
 }]
@@ -1226,13 +1226,13 @@ API запрос
 
 </details>
 
-## Пример - использование переменной и функции определенных в главном контексте в выражении переданном в метод `calculateForEach()`
+## Пример - использование переменной и функции определенных в главном контексте в выражении переданном в метод `forEach()`
 
 В основном выражении можно определять переменные и функции,
-которые доступны в выражениях передаваемых в методы `calculate()` и `calculateForEach()`.
+которые доступны в выражениях передаваемых в методы `calculate()` и `forEach()`.
 
 В этом примере определяется переменная `period` и функция `transform()`,
-которые затем используются в выражении передаваемом методу `calculateForEach()`.
+которые затем используются в выражении передаваемом методу `forEach()`.
 
 API запрос
 
@@ -1243,7 +1243,7 @@ API запрос
   "metric": "flight.load_pct",
   "entity": "*",
   "evaluate": {
-    "expression": "delta = '10 minute'; def transform(period) {v + value(time_add(period))} A.firstSeries().calculateForEach('transform(delta)')"
+    "expression": "delta = '10 minute'; def transform(period) {v + value(time_add(period))} A.firstSeries().forEach('transform(delta)')"
   }
 }]
 ```
@@ -1348,7 +1348,7 @@ API запрос
 
 </details>
 
-## Пример - `calculateForEach(expr)` - `expr` оценивается для каждого элемента ряда
+## Пример - `forEach(expr)` - `expr` оценивается для каждого элемента ряда
 
 Найдем сколько раз значение первого ряда было больше значения второго ряда.
 
@@ -1362,7 +1362,7 @@ API запрос
   "metric": "m1",
   "entity": "e1",
   "evaluate": {
-    "expression": "A.toMultiCollection().calculateForEach('A > B ? 1 : 0').seriesSum()"
+    "expression": "A.toMultiCollection().forEach('A > B ? 1 : 0').seriesSum()"
   }
 }]
 ```
@@ -1541,7 +1541,7 @@ API запрос
   "metric": "m1",
   "entity": "e1",
   "evaluate": {
-    "expression": "A.calculateForEach('if (memory.isEmpty()) {memory.put(\"max\", v); return Double.NaN;} max = memory.get(\"max\"); if (v > max) {memory.put(\"max\", v);} return v - max;')"
+    "expression": "A.forEach('if (memory.isEmpty()) {memory.put(\"max\", v); return Double.NaN;} max = memory.get(\"max\"); if (v > max) {memory.put(\"max\", v);} return v - max;')"
   }
 }]
 ```
@@ -1675,7 +1675,7 @@ API запрос
 
 </details>
 
-## Пример - `calculateForEach(expr, period)` - `expr` оценивается для каждого элемента ряда в контексте текущего интервала
+## Пример - `forEach(expr, period)` - `expr` оценивается для каждого элемента ряда в контексте текущего интервала
 
 То же самое, что в предыдущем примере, но только для второго ряда и для 10 минутных интервалов. То есть для каждого значения ряда посчитаем его разность с наибольшим из предшествующих значений на том же интервале.
 
@@ -1689,7 +1689,7 @@ API запрос
   "metric": "m1",
   "entity": "e1",
   "evaluate": {
-    "expression": "A.seriesList().get(1).calculateForEach('if (sIndex == 0) {memory.put(\"max\", v); return Double.NaN;} max = memory.get(\"max\"); if (v > max) {memory.put(\"max\", v);} return v - max;', '10 minute')"
+    "expression": "A.seriesList().get(1).forEach('if (sIndex == 0) {memory.put(\"max\", v); return Double.NaN;} max = memory.get(\"max\"); if (v > max) {memory.put(\"max\", v);} return v - max;', '10 minute')"
   }
 }]
 ```
@@ -1803,7 +1803,7 @@ API запрос
     }
   ],
   "evaluate": {
-    "expression": "join('tags', A, B, C).calculateForEach('A + B - C')"
+    "expression": "join('tags', A, B, C).forEach('A + B - C')"
   }
 }]
 ```
@@ -1964,7 +1964,7 @@ API запрос - фильтрация по тэгу
     }
   ],
   "evaluate": {
-    "expression": "def match(){tags['tn'] == 'tv1'} join('tags', A, B, C).calculateForEach('A + B - C').filter('match()')"
+    "expression": "def match(){tags['tn'] == 'tv1'} join('tags', A, B, C).forEach('A + B - C').filter('match()')"
   }
 }]
 ```
@@ -2041,7 +2041,7 @@ API запрос - фильтрация по тэгу
 
 ## Доступ к объекту DateTime
 
-При оценивании MVEL выражения в методах `calculate(...)`, `calculateForEach(...)` объектов `Series`, `SeriesColletion`, `MultiCollection`
+При оценивании MVEL выражения в методах `calculate(...)`, `forEach(...)` объектов `Series`, `SeriesColletion`, `MultiCollection`
 можно получить объект `DateTime`, следующими методами:
 
 ```java
@@ -2108,7 +2108,7 @@ API запрос
   "entity": "e1",
   "metric": "m",
   "evaluate": {
-    "expression": "m.calculateForEach('if (d.is_workday()) return v; return 0;')"
+    "expression": "m.forEach('if (d.is_workday()) return v; return 0;')"
   }
 }]
 ```
@@ -2166,7 +2166,7 @@ API запрос
   "entity": "e1",
   "metric": "m",
   "evaluate": {
-    "expression": "m.calculateForEach('if (d(\"usa\").is_workday()) return v; return 0;')"
+    "expression": "m.forEach('if (d(\"usa\").is_workday()) return v; return 0;')"
   }
 }]
 ```
@@ -2463,10 +2463,10 @@ API запрос
 
 </details>
 
-## Пример - использование пользовательской функции в контексте ряда при вызове метода `calculateForEach()`
+## Пример - использование пользовательской функции в контексте ряда при вызове метода `forEach()`
 
 Пользовательские MVEL функции также доступны в контексте ряда,
-при оценивании выражения переданного в методы `calculate()`, `calculateForEach()`.
+при оценивании выражения переданного в методы `calculate()`, `forEach()`.
 Для примера создадим и сохраним в файле `test-series-context-lib-1.mvel` функцию, складывающую текущее значение ряда со значением ряда через 1 минуту. Обратите внимание, что в теле этой функции используются переменные и методы доступные в контексте ряда:
 
 ```text
@@ -2487,7 +2487,7 @@ API запрос
   "entity": "e1",
   "evaluate": {
     "libs": ["test-series-context-lib-1.mvel"],
-    "expression": "A.calculateForEach('transform()');"
+    "expression": "A.forEach('transform()');"
   }
 }]
 ```
@@ -2650,7 +2650,7 @@ API запрос
 
 </details>
 
-## Пример - использование пользовательской функции в контексте `MultiCollection` при вызове метода `calculateForEach()`
+## Пример - использование пользовательской функции в контексте `MultiCollection` при вызове метода `forEach()`
 
 Cохраним в файле `test-multi-series-context-lib-1.mvel` функцию, которая по очереди возвращает значения первого и второго рядов данной `MultiCollection`.
 
@@ -2672,7 +2672,7 @@ API запрос
   "entity": "e1",
   "evaluate": {
     "libs": ["test-multi-series-context-lib-1.mvel"],
-    "expression": "A.toMultiCollection().calculateForEach('alternate()');"
+    "expression": "A.toMultiCollection().forEach('alternate()');"
   }
 }]
 ```
