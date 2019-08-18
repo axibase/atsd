@@ -185,3 +185,21 @@ series d:2019-07-01T14:02:00Z e:e1 m:m1=2 t:tn=tv1
 series d:2019-07-01T14:03:00Z e:e1 m:m1=4 t:tn=tv1
 series d:2019-07-01T14:04:00Z e:e1 m:m1=7 t:tn=tv1
 series d:2019-07-01T14:05:00Z e:e1 m:m1=9 t:tn=tv1
+
+дни в мае 2019 года, в 14:00 дня по UTC.
+
+|метр:сущн|8 Wed|9 Thu<br>VictoryDay|10 Fri<br> additional holiday|11 Sat|27 Mon<br>USA Memorial Day|
+|---------|-----|-------------------|-----------------------------|------|--------------------------|
+|m:e1     |   1 |                 2 |                           3 |    4 |                        5 |
+|m:e2     |  11 |                22 |                          33 |   44 |                       55 |
+
+series d:2019-05-08T14:00:00Z e:e1 m:m=1
+series d:2019-05-09T14:00:00Z e:e1 m:m=2
+series d:2019-05-10T14:00:00Z e:e1 m:m=3
+series d:2019-05-11T14:00:00Z e:e1 m:m=4
+series d:2019-05-27T14:00:00Z e:e1 m:m=5
+series d:2019-05-08T14:00:00Z e:e2 m:m=11
+series d:2019-05-09T14:00:00Z e:e2 m:m=22
+series d:2019-05-10T14:00:00Z e:e2 m:m=33
+series d:2019-05-11T14:00:00Z e:e2 m:m=44
+series d:2019-05-27T14:00:00Z e:e2 m:m=55
