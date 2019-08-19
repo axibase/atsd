@@ -41,7 +41,7 @@
 6384|UI|Bug|Metrics: create page does not work.
 6385|message|Feature|**Message Search**: add context links.
 6386|UI|Bug|[SQL Console](../../sql/sql-console.md): open statistics link in new tab to avoid unsaved changes alert.
-6388|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): false change alert.
+6388|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): erroneous on-change alert.
 6390|sql|Bug|SQL: slow query performance with [`JOIN`](../../sql/README.md#joins) - [date condition](../../sql/README.md#multiple-intervals) not passed to filter.
 6392|metric|Feature|**Message Search** history suggest.
 6396|sql|Bug|SQL: [console](../../sql/sql-console.md) is not showing results for queries that run more than 2 minutes.
