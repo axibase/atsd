@@ -2353,7 +2353,7 @@ GROUP BY tent.env
 | test        |     42.601 |
 ```
 
-The built-in columns such as `entity` or `datetime` must be without table prefix to be accessible in the parent query.
+The built-in columns such as `entity` or `datetime` must be listed _without_ table prefix to be accessible in the parent query.
 
 ```sql
 SELECT entity, datetime, max_val
@@ -2425,6 +2425,16 @@ SELECT datetime, MAX(value) AS "5-min Peak" FROM (
     GROUP BY PERIOD(5 MINUTE)
 )
 GROUP BY PERIOD (1 HOUR)
+```
+
+If the `SELECT` statement in the outer query returns all columns, the inline `SELECT` must return specific columns.
+
+```sql
+SELECT * FROM (
+  SELECT datetime, t1.entity e1, -- SELECT * not allowed
+     ...
+) WHERE e1 IS NOT NULL
+ORDER BY datetime DESC
 ```
 
 ## Joins

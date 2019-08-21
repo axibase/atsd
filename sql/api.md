@@ -2,7 +2,7 @@
 
 ## Description
 
-This endpoint executes an SQL query and returns the results in CSV or JSON format, with the optional inclusion of result metadata.
+This endpoint executes an SQL query and returns the results in CSV or JSON format, with optional metadata.
 
 To retrieve result set metadata without query execution, submit the query to the [`/api/sql/meta`](api-meta.md) endpoint.
 
@@ -10,7 +10,7 @@ To retrieve result set metadata without query execution, submit the query to the
 
 The result set is filtered by the database based on the entity `read` [permissions](../administration/user-authorization.md#entity-permissions) granted to the user.
 
-Thus, the same query executed by users with different entity permissions produces different results.
+Therefore the same query executed by users with different entity permissions produces different results.
 
 Scheduled queries are executed with full `All Entities: Read` permissions.
 

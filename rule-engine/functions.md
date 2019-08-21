@@ -107,6 +107,7 @@ Name | Description
 [`getEntityLink`](functions-link.md#getentitylink)| Returns the URL to the **Entity Editor** page for the specified entity.
 [`getChartLink`](functions-link.md#getchartlink)| Returns the URL to the default portal for the current metric, entity, and tags.
 [`getCsvExportLink`](functions-link.md#getcsvexportlink)| Returns the URL to the **CSV** file for the current metric, entity, and tags.
+[`getPortalLink`](functions-link.md#getportallink)| Returns the URL to the portal and entity.
 [`getHtmlExportLink`](functions-link.md#gethtmlexportlink)| Returns the URL to the **Export** page for the current metric, entity, and tags.
 [`getPropertyLink`](functions-link.md#getpropertylink)| Returns the URL to the property table for the given entity and property type.
 [`getRuleLink`](functions-link.md#getrulelink)| Returns the URL to the current rule.

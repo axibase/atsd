@@ -13,6 +13,7 @@ Related functions:
 ## Reference
 
 * [`db_last`](#db_last)
+* [`db_statistics`](#db_statistics)
 * [`db_statistic`](#db_statistic)
 * [`db_baseline`](#db_baseline)
 
@@ -65,6 +66,60 @@ Example:
 value > 60 && db_last('temperature', 'sensor-01', 'stage=heating,unit=c') < 30
 ```
 
+### `db_statistics`
+
+```csharp
+db_statistics(string interval, [ string metric, [string entity, [string tags | map tags]]]) number
+```
+
+Returns an object with all descriptive statistic functions that can be retrieved with the [`db_statistic`](#db_statistic) function. The functions can be accessed by name as the object fields.
+
+```javascript
+avg() > 60 && db_statistics('3 hour', 'temperature').avg > 30
+```
+
+The object can be initialized once as a local variable and re-used in the expression.
+
+```javascript
+// stats = db_statistics('3 hour', 'temperature')
+avg() > 60 && stats.avg > 30 && stats.max < 90
+```
+
+Function names:
+
+```txt
+- min
+- max
+- avg
+- count
+- sum
+- median
+- stdDev
+- first
+- last
+- delta
+- counter
+- wavg
+- wtavg
+- minValueTime
+- maxValueTime
+- slope
+- intercept
+- percentile99_9 (percentile 99.9)
+- percentile99_5 (percentile 99.5)
+- percentile99
+- percentile95
+- percentile90
+- percentile75
+- percentile50
+- percentile25
+- percentile10
+- percentile5
+- percentile1
+- percentile0_5 (percentile 0.5)
+- percentile0_1 (percentile 0.1)
+```
+
 ### `db_statistic`
 
 ```csharp
@@ -75,7 +130,7 @@ Returns the result of a statistical function applied to historical values loaded
 
 The `function` argument accepts a [statistical function](../api/data/aggregation.md) name such as `avg` applied to all values within the selection interval.
 
-The `interval` argument is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to **current time**.
+The `interval` argument is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to **current time**. The loaded interval is `(current_time - interval, current_time]`.
 
 If no other arguments are provided, the data is loaded for same metric, entity and tags as defined in the current window.
 

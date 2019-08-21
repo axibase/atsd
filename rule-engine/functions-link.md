@@ -29,6 +29,7 @@ Alternatively, manually assemble inline links using syntax supported by the webh
 ## Reference
 
 * [`getEntityLink`](#getentitylink)
+* [`getPortalLink`](#getportallink)
 * [`getPropertyLink`](#getpropertylink)
 * [`getRuleLink`](#getrulelink)
 * [`getCsvExportLink`](#getcsvexportlink)
@@ -91,6 +92,20 @@ Returned inline link:
 ```elm
 [configuration](https://atsd_hostname:8443/entities/nurswgvml007/properties?type=configuration)
 ```
+
+### `getPortalLink`
+
+```csharp
+getPortalLink(string portalName, string entityName) string
+```
+
+Returns the URL to the specified portal for the given entity.
+
+```javascript
+getPortalLink('vm-stats', 'nurswgvml007')
+```
+
+The link name is set to portal name in inline mode.
 
 ### `getRuleLink`
 
