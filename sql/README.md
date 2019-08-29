@@ -3871,11 +3871,12 @@ The function accepts arguments with different data types, for example numbers an
 
 ### CAST
 
-The `CAST` function transforms a string into a number, or a number into a string.
+The `CAST` function transforms a string into a number, or a number into a string or timestamp.
 
 ```sql
-CAST(inputString AS number)
-CAST(inputNumber AS string)
+CAST(inputString AS NUMBER)
+CAST(inputNumber AS STRING)
+CAST(inputNumber AS TIMESTAMP)
 ```
 
 The returned number can be used in arithmetic expressions, whereas the returned string can be passed as an argument into string functions.
