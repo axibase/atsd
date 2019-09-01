@@ -3029,13 +3029,13 @@ log(Object obj, String... objName)
 def demo() {
   log('Test log()', 'string');
   log(42, 'number');
-  log(A, 'collection');
+  log(A, 'series collection');
   mc = A.toMultiCollection();
   log(mc, 'multi-collection');
   mc.calculate("
     log(A, 'series');
     log(A.samples(), 'map');
-    log(A.values(), 'collection');
+    log(A.values(), 'double collection');
     log(A.valuesArray(), 'double array');
     log(A.timestamps(), 'navigable set');
     log(true, 'boolean');
@@ -3076,7 +3076,11 @@ API запрос
     "mvel": {
       "string": "Test log()",
       "number": "42",
-      "collection": "[1.0, 1.0, 7.0, 3.0, 4.0, 2.0]",
+      "series collection": "SeriesCollection{
+  Series{key=SeriesKey{metric=m1, entity=e1, tags={}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null}, samples={1561989600000=1.0, 1561989660000=1.0, 1561989720000=7.0, 1561989780000=3.0, 1561989840000=4.0, 1561989900000=2.0}, isScalar=false},
+  Series{key=SeriesKey{metric=m1, entity=e1, tags={tn=tv1}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null}, samples={1561989600000=3.0, 1561989660000=1.0, 1561989720000=2.0, 1561989780000=4.0, 1561989840000=7.0, 1561989900000=9.0}, isScalar=false},
+}
+",
       "multi-collection": "MultiCollection{
     groups = {
         SeriesKey{metric=, entity=, tags={}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null} = {
@@ -3088,15 +3092,16 @@ API запрос
 ",
       "series": "Series{key=SeriesKey{metric=m1, entity=e1, tags={}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null}, samples={1561989600000=1.0, 1561989660000=1.0, 1561989720000=7.0, 1561989780000=3.0, 1561989840000=4.0, 1561989900000=2.0}, isScalar=false}",
       "map": "{1561989600000=1.0, 1561989660000=1.0, 1561989720000=7.0, 1561989780000=3.0, 1561989840000=4.0, 1561989900000=2.0}",
+      "double collection": "[1.0, 1.0, 7.0, 3.0, 4.0, 2.0]",
       "double array": "[1.0, 1.0, 7.0, 3.0, 4.0, 2.0]",
       "navigable set": "[1561989600000, 1561989660000, 1561989720000, 1561989780000, 1561989840000, 1561989900000]",
       "boolean": "true",
-      "object-9": "1561989600000",
-      "object-10": "1561989660000",
-      "object-11": "1561989720000",
-      "object-12": "1561989780000",
-      "object-13": "1561989840000",
-      "object-14": "1561989900000"
+      "object-10": "1561989600000",
+      "object-11": "1561989660000",
+      "object-12": "1561989720000",
+      "object-13": "1561989780000",
+      "object-14": "1561989840000",
+      "object-15": "1561989900000"
     },
     "transformationOrder": [
       "EVALUATE"
