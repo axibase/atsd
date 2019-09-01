@@ -55,6 +55,28 @@
 | 2019-06-14 14:25:00 | airplane-4 |      500 |      0.5 |        250 |
 | 2019-06-14 14:25:00 | airplane-2 |      300 |      0.6 |        180 |
 
+<details><summary>Series-команды для закладки данных</summary>
+
+```text
+series d:2019-06-14T14:00:00Z e:airplane-1 m:flight.capacity=100
+series d:2019-06-14T14:05:00Z e:airplane-2 m:flight.capacity=300
+series d:2019-06-14T14:10:00Z e:airplane-1 m:flight.capacity=100
+series d:2019-06-14T14:15:00Z e:airplane-3 m:flight.capacity=100
+series d:2019-06-14T14:20:00Z e:airplane-1 m:flight.capacity=100
+series d:2019-06-14T14:25:00Z e:airplane-4 m:flight.capacity=500
+series d:2019-06-14T14:25:00Z e:airplane-2 m:flight.capacity=300
+
+series d:2019-06-14T14:00:00Z e:airplane-1 m:flight.load_pct=0.6
+series d:2019-06-14T14:05:00Z e:airplane-2 m:flight.load_pct=0.8
+series d:2019-06-14T14:10:00Z e:airplane-1 m:flight.load_pct=0.7
+series d:2019-06-14T14:15:00Z e:airplane-3 m:flight.load_pct=0.7
+series d:2019-06-14T14:20:00Z e:airplane-1 m:flight.load_pct=0.9
+series d:2019-06-14T14:25:00Z e:airplane-4 m:flight.load_pct=0.5
+series d:2019-06-14T14:25:00Z e:airplane-2 m:flight.load_pct=0.6
+```
+
+</details>
+
 ## Пример - объединение коллекций и рядов
 
 MVEL выражение `[x, y]` создает список из `x` и `y`, а выражение `{x, y}` создает массив.
@@ -1289,6 +1311,38 @@ API запрос
 | m1:e1          |  1 |  1 |  7 |  3 |  4 |  2 |  1 |  8 |  0 |  2 |  7 |  5 |
 | m1:e1:tn=tv1   |  3 |  1 |  2 |  4 |  7 |  9 |  1 |  0 |  5 |  4 |  3 |  8 |
 
+<details><summary>Series-команды для закладки данных</summary>
+
+```text
+series d:2019-06-14T14:00:00Z e:e1 m:m1=1
+series d:2019-06-14T14:04:00Z e:e1 m:m1=1
+series d:2019-06-14T14:06:00Z e:e1 m:m1=7
+series d:2019-06-14T14:07:00Z e:e1 m:m1=3
+series d:2019-06-14T14:09:00Z e:e1 m:m1=4
+series d:2019-06-14T14:10:00Z e:e1 m:m1=2
+series d:2019-06-14T14:11:00Z e:e1 m:m1=1
+series d:2019-06-14T14:14:00Z e:e1 m:m1=8
+series d:2019-06-14T14:19:00Z e:e1 m:m1=0
+series d:2019-06-14T14:20:00Z e:e1 m:m1=2
+series d:2019-06-14T14:21:00Z e:e1 m:m1=7
+series d:2019-06-14T14:23:00Z e:e1 m:m1=5
+
+series d:2019-06-14T14:00:00Z e:e1 m:m1=3 t:tn=tv1
+series d:2019-06-14T14:04:00Z e:e1 m:m1=1 t:tn=tv1
+series d:2019-06-14T14:06:00Z e:e1 m:m1=2 t:tn=tv1
+series d:2019-06-14T14:07:00Z e:e1 m:m1=4 t:tn=tv1
+series d:2019-06-14T14:09:00Z e:e1 m:m1=7 t:tn=tv1
+series d:2019-06-14T14:10:00Z e:e1 m:m1=9 t:tn=tv1
+series d:2019-06-14T14:11:00Z e:e1 m:m1=1 t:tn=tv1
+series d:2019-06-14T14:14:00Z e:e1 m:m1=0 t:tn=tv1
+series d:2019-06-14T14:19:00Z e:e1 m:m1=5 t:tn=tv1
+series d:2019-06-14T14:20:00Z e:e1 m:m1=4 t:tn=tv1
+series d:2019-06-14T14:21:00Z e:e1 m:m1=3 t:tn=tv1
+series d:2019-06-14T14:23:00Z e:e1 m:m1=8 t:tn=tv1
+```
+
+</details>
+
 ## Пример - `calculate(expr)` - `expr` оценивается один раз
 
 Найдем сколько четных чисел в каждом ряду.
@@ -1777,6 +1831,90 @@ API запрос
 | m2:e1          |  8 |  6 |  7 |  8 |  0 |  9 |  9 |  1 |  4 |  1 |  5 |  8 |
 | m2:e1:tn=tv1   |  4 |  1 |  8 |  2 |  5 |  5 |  6 |  0 |  2 |  8 |  3 |  9 |
 
+<details><summary>Series-команды для закладки данных</summary>
+
+```text
+series d:2019-06-14T14:00:00Z e:e1 m:m1=1
+series d:2019-06-14T14:04:00Z e:e1 m:m1=1
+series d:2019-06-14T14:06:00Z e:e1 m:m1=7
+series d:2019-06-14T14:07:00Z e:e1 m:m1=3
+series d:2019-06-14T14:09:00Z e:e1 m:m1=4
+series d:2019-06-14T14:10:00Z e:e1 m:m1=2
+series d:2019-06-14T14:11:00Z e:e1 m:m1=1
+series d:2019-06-14T14:14:00Z e:e1 m:m1=8
+series d:2019-06-14T14:19:00Z e:e1 m:m1=0
+series d:2019-06-14T14:20:00Z e:e1 m:m1=2
+series d:2019-06-14T14:21:00Z e:e1 m:m1=7
+series d:2019-06-14T14:23:00Z e:e1 m:m1=5
+
+series d:2019-06-14T14:00:00Z e:e1 m:m1=3 t:tn=tv1
+series d:2019-06-14T14:04:00Z e:e1 m:m1=1 t:tn=tv1
+series d:2019-06-14T14:06:00Z e:e1 m:m1=2 t:tn=tv1
+series d:2019-06-14T14:07:00Z e:e1 m:m1=4 t:tn=tv1
+series d:2019-06-14T14:09:00Z e:e1 m:m1=7 t:tn=tv1
+series d:2019-06-14T14:10:00Z e:e1 m:m1=9 t:tn=tv1
+series d:2019-06-14T14:11:00Z e:e1 m:m1=1 t:tn=tv1
+series d:2019-06-14T14:14:00Z e:e1 m:m1=0 t:tn=tv1
+series d:2019-06-14T14:19:00Z e:e1 m:m1=5 t:tn=tv1
+series d:2019-06-14T14:20:00Z e:e1 m:m1=4 t:tn=tv1
+series d:2019-06-14T14:21:00Z e:e1 m:m1=3 t:tn=tv1
+series d:2019-06-14T14:23:00Z e:e1 m:m1=8 t:tn=tv1
+
+series d:2019-06-14T14:00:00Z e:e2 m:m1=7
+series d:2019-06-14T14:04:00Z e:e2 m:m1=1
+series d:2019-06-14T14:06:00Z e:e2 m:m1=5
+series d:2019-06-14T14:07:00Z e:e2 m:m1=4
+series d:2019-06-14T14:09:00Z e:e2 m:m1=8
+series d:2019-06-14T14:10:00Z e:e2 m:m1=3
+series d:2019-06-14T14:11:00Z e:e2 m:m1=7
+series d:2019-06-14T14:14:00Z e:e2 m:m1=2
+series d:2019-06-14T14:19:00Z e:e2 m:m1=4
+series d:2019-06-14T14:20:00Z e:e2 m:m1=9
+series d:2019-06-14T14:21:00Z e:e2 m:m1=4
+series d:2019-06-14T14:23:00Z e:e2 m:m1=7
+
+series d:2019-06-14T14:00:00Z e:e2 m:m1=3 t:tn=tv1
+series d:2019-06-14T14:04:00Z e:e2 m:m1=4 t:tn=tv1
+series d:2019-06-14T14:06:00Z e:e2 m:m1=2 t:tn=tv1
+series d:2019-06-14T14:07:00Z e:e2 m:m1=6 t:tn=tv1
+series d:2019-06-14T14:09:00Z e:e2 m:m1=9 t:tn=tv1
+series d:2019-06-14T14:10:00Z e:e2 m:m1=1 t:tn=tv1
+series d:2019-06-14T14:11:00Z e:e2 m:m1=4 t:tn=tv1
+series d:2019-06-14T14:14:00Z e:e2 m:m1=7 t:tn=tv1
+series d:2019-06-14T14:19:00Z e:e2 m:m1=7 t:tn=tv1
+series d:2019-06-14T14:20:00Z e:e2 m:m1=5 t:tn=tv1
+series d:2019-06-14T14:21:00Z e:e2 m:m1=7 t:tn=tv1
+series d:2019-06-14T14:23:00Z e:e2 m:m1=3 t:tn=tv1
+
+series d:2019-06-14T14:00:00Z e:e1 m:m2=8
+series d:2019-06-14T14:04:00Z e:e1 m:m2=6
+series d:2019-06-14T14:06:00Z e:e1 m:m2=7
+series d:2019-06-14T14:07:00Z e:e1 m:m2=8
+series d:2019-06-14T14:09:00Z e:e1 m:m2=0
+series d:2019-06-14T14:10:00Z e:e1 m:m2=9
+series d:2019-06-14T14:11:00Z e:e1 m:m2=9
+series d:2019-06-14T14:14:00Z e:e1 m:m2=1
+series d:2019-06-14T14:19:00Z e:e1 m:m2=4
+series d:2019-06-14T14:20:00Z e:e1 m:m2=1
+series d:2019-06-14T14:21:00Z e:e1 m:m2=5
+series d:2019-06-14T14:23:00Z e:e1 m:m2=8
+
+series d:2019-06-14T14:00:00Z e:e1 m:m2=4 t:tn=tv1
+series d:2019-06-14T14:04:00Z e:e1 m:m2=1 t:tn=tv1
+series d:2019-06-14T14:06:00Z e:e1 m:m2=8 t:tn=tv1
+series d:2019-06-14T14:07:00Z e:e1 m:m2=2 t:tn=tv1
+series d:2019-06-14T14:09:00Z e:e1 m:m2=5 t:tn=tv1
+series d:2019-06-14T14:10:00Z e:e1 m:m2=5 t:tn=tv1
+series d:2019-06-14T14:11:00Z e:e1 m:m2=6 t:tn=tv1
+series d:2019-06-14T14:14:00Z e:e1 m:m2=0 t:tn=tv1
+series d:2019-06-14T14:19:00Z e:e1 m:m2=2 t:tn=tv1
+series d:2019-06-14T14:20:00Z e:e1 m:m2=8 t:tn=tv1
+series d:2019-06-14T14:21:00Z e:e1 m:m2=3 t:tn=tv1
+series d:2019-06-14T14:23:00Z e:e1 m:m2=9 t:tn=tv1
+```
+
+</details>
+
 ## Пример - сопоставление рядов из 3 коллекций по тэгам
 
 Разобьем ряды по тэгам, так что получится 2 группы по 3 ряда в каждой, и вычтем ряд с метрикой m2 из суммы рядов с метрикой m1.
@@ -2095,6 +2233,23 @@ d(long timestamp, String calendar, TimeZone timezone) {
 |m:e1     |   1 |                 2 |                           3 |    4 |                        5 |
 |m:e2     |  11 |                22 |                          33 |   44 |                       55 |
 
+<details><summary>Series-команды для закладки данных</summary>
+
+```text
+series d:2019-05-08T14:00:00Z e:e1 m:m=1
+series d:2019-05-09T14:00:00Z e:e1 m:m=2
+series d:2019-05-10T14:00:00Z e:e1 m:m=3
+series d:2019-05-11T14:00:00Z e:e1 m:m=4
+series d:2019-05-27T14:00:00Z e:e1 m:m=5
+series d:2019-05-08T14:00:00Z e:e2 m:m=11
+series d:2019-05-09T14:00:00Z e:e2 m:m=22
+series d:2019-05-10T14:00:00Z e:e2 m:m=33
+series d:2019-05-11T14:00:00Z e:e2 m:m=44
+series d:2019-05-27T14:00:00Z e:e2 m:m=55
+```
+
+</details>
+
 ## Пример - использование `DateTime` для текущего времени и календаря по умолчанию
 
 Заменить значение метрики в нерабочий день на 0, используя календарь `default.holiday.calendar`.
@@ -2409,6 +2564,30 @@ API запрос
 | 2019-07-25T00:18:00Z |        1 |
 | 2019-07-25T00:21:00Z |        1 |
 
+<details><summary>Series-команды для закладки данных</summary>
+
+```text
+series d:2019-07-24T00:00:00Z e:e m:m=1
+series d:2019-07-24T03:00:00Z e:e m:m=1
+series d:2019-07-24T06:00:00Z e:e m:m=1
+series d:2019-07-24T09:00:00Z e:e m:m=1
+series d:2019-07-24T12:00:00Z e:e m:m=1
+series d:2019-07-24T15:00:00Z e:e m:m=1
+series d:2019-07-24T18:00:00Z e:e m:m=1
+series d:2019-07-24T21:00:00Z e:e m:m=1
+
+series d:2019-07-25T00:00:00Z e:e m:m=1
+series d:2019-07-25T03:00:00Z e:e m:m=1
+series d:2019-07-25T06:00:00Z e:e m:m=1
+series d:2019-07-25T09:00:00Z e:e m:m=1
+series d:2019-07-25T12:00:00Z e:e m:m=1
+series d:2019-07-25T15:00:00Z e:e m:m=1
+series d:2019-07-25T18:00:00Z e:e m:m=1
+series d:2019-07-25T21:00:00Z e:e m:m=1
+```
+
+</details>
+
 ## Пример - разбиения ряда на интервалы в указанной временной зоне
 
 Посчитаем количество значений ряда за день в указанной временной зоне.
@@ -2471,6 +2650,25 @@ API запрос
 |----------------|----|----|----|----|----|----|
 | m1:e1          |  1 |  1 |  7 |  3 |  4 |  2 |
 | m1:e1:tn=tv1   |  3 |  1 |  2 |  4 |  7 |  9 |
+
+<details><summary>Series-команды для закладки данных</summary>
+
+```text
+series d:2019-07-01T14:00:00Z e:e1 m:m1=1
+series d:2019-07-01T14:01:00Z e:e1 m:m1=1
+series d:2019-07-01T14:02:00Z e:e1 m:m1=7
+series d:2019-07-01T14:03:00Z e:e1 m:m1=3
+series d:2019-07-01T14:04:00Z e:e1 m:m1=4
+series d:2019-07-01T14:05:00Z e:e1 m:m1=2
+series d:2019-07-01T14:00:00Z e:e1 m:m1=3 t:tn=tv1
+series d:2019-07-01T14:01:00Z e:e1 m:m1=1 t:tn=tv1
+series d:2019-07-01T14:02:00Z e:e1 m:m1=2 t:tn=tv1
+series d:2019-07-01T14:03:00Z e:e1 m:m1=4 t:tn=tv1
+series d:2019-07-01T14:04:00Z e:e1 m:m1=7 t:tn=tv1
+series d:2019-07-01T14:05:00Z e:e1 m:m1=9 t:tn=tv1
+```
+
+</details>
 
 ## Пример - использование пользовательской функции в основном контексте
 
@@ -2803,6 +3001,130 @@ API запрос
       {
         "d": "2019-07-01T14:05:00.000Z",
         "v": 9
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+## Пример - просмотр объектов - метод `log()`
+
+С помощью функции
+
+```java
+log(Object obj, String... objName)
+```
+
+можно посмотреть объекты создаваемые в процессе оценивания MVEL-выражения.
+Все описания объектов находятся в поле `mvel` ответа.
+Необязательный параметр `objName` задает имя поля в котором будет храниться описание
+объекта `obj`.
+По умолчанию генерируется имя `object-n`.
+
+Для удобства просмотра сохраним MVEL-выражение в файле `log-demo.mvel`:
+
+```groovy
+def demo() {
+  log('Test log()', 'string');
+  log(42, 'number');
+  log(A, 'collection');
+  mc = A.toMultiCollection();
+  log(mc, 'multi-collection');
+  mc.calculate("
+    log(A, 'series');
+    log(A.samples(), 'map');
+    log(A.values(), 'collection');
+    log(A.valuesArray(), 'double array');
+    log(A.timestamps(), 'navigable set');
+    log(true, 'boolean');
+    return A.forEach('
+       log(t);
+       return v;
+    ');
+  ");
+}
+```
+
+API запрос
+
+```json
+[
+  {
+    "startDate": "2019-07-01T14:00:00Z",
+    "endDate": "2019-07-01T15:00:00Z",
+    "metric": "m1",
+    "entity": "e1",
+    "evaluate": {
+      "libs": ["log-demo.mvel"],
+      "expression": "demo()"
+    }
+  }
+]
+```
+
+<details><summary>Ответ сервера</summary>
+
+```json
+[
+  {
+    "metric": "m1",
+    "entity": "e1",
+    "tags": {},
+    "type": "HISTORY",
+    "mvel": {
+      "string": "Test log()",
+      "number": "42",
+      "collection": "[1.0, 1.0, 7.0, 3.0, 4.0, 2.0]",
+      "multi-collection": "MultiCollection{
+    groups = {
+        SeriesKey{metric=, entity=, tags={}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null} = {
+            A = Series{key=SeriesKey{metric=m1, entity=e1, tags={}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null}, samples={1561989600000=1.0, 1561989660000=1.0, 1561989720000=7.0, 1561989780000=3.0, 1561989840000=4.0, 1561989900000=2.0}, isScalar=false},
+            B = Series{key=SeriesKey{metric=m1, entity=e1, tags={tn=tv1}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null}, samples={1561989600000=3.0, 1561989660000=1.0, 1561989720000=2.0, 1561989780000=4.0, 1561989840000=7.0, 1561989900000=9.0}, isScalar=false},
+        },
+    }
+}
+",
+      "series": "Series{key=SeriesKey{metric=m1, entity=e1, tags={}, aggregation=DETAIL, groupAggregation=DETAIL, type=HISTORY, forecast=null}, samples={1561989600000=1.0, 1561989660000=1.0, 1561989720000=7.0, 1561989780000=3.0, 1561989840000=4.0, 1561989900000=2.0}, isScalar=false}",
+      "map": "{1561989600000=1.0, 1561989660000=1.0, 1561989720000=7.0, 1561989780000=3.0, 1561989840000=4.0, 1561989900000=2.0}",
+      "double array": "[1.0, 1.0, 7.0, 3.0, 4.0, 2.0]",
+      "navigable set": "[1561989600000, 1561989660000, 1561989720000, 1561989780000, 1561989840000, 1561989900000]",
+      "boolean": "true",
+      "object-9": "1561989600000",
+      "object-10": "1561989660000",
+      "object-11": "1561989720000",
+      "object-12": "1561989780000",
+      "object-13": "1561989840000",
+      "object-14": "1561989900000"
+    },
+    "transformationOrder": [
+      "EVALUATE"
+    ],
+    "data": [
+      {
+        "d": "2019-07-01T14:00:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-07-01T14:01:00.000Z",
+        "v": 1
+      },
+      {
+        "d": "2019-07-01T14:02:00.000Z",
+        "v": 7
+      },
+      {
+        "d": "2019-07-01T14:03:00.000Z",
+        "v": 3
+      },
+      {
+        "d": "2019-07-01T14:04:00.000Z",
+        "v": 4
+      },
+      {
+        "d": "2019-07-01T14:05:00.000Z",
+        "v": 2
       }
     ]
   }

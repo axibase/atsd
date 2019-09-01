@@ -1,6 +1,28 @@
 Команды для отправки данных для примеров в ATSD.
 
 
+Метрики flight.capacity и flight.load_pct содержат данные по загрузке авиарейсов - для каждого рейса известна вместимость самолета и доля занятых кресел (даты - в UTC).
+
+series d:2019-06-14T14:00:00Z e:airplane-1 m:flight.capacity=100
+series d:2019-06-14T14:05:00Z e:airplane-2 m:flight.capacity=300
+series d:2019-06-14T14:10:00Z e:airplane-1 m:flight.capacity=100
+series d:2019-06-14T14:15:00Z e:airplane-3 m:flight.capacity=100
+series d:2019-06-14T14:20:00Z e:airplane-1 m:flight.capacity=100
+series d:2019-06-14T14:25:00Z e:airplane-4 m:flight.capacity=500
+series d:2019-06-14T14:25:00Z e:airplane-2 m:flight.capacity=300
+
+series d:2019-06-14T14:00:00Z e:airplane-1 m:flight.load_pct=0.6
+series d:2019-06-14T14:05:00Z e:airplane-2 m:flight.load_pct=0.8
+series d:2019-06-14T14:10:00Z e:airplane-1 m:flight.load_pct=0.7
+series d:2019-06-14T14:15:00Z e:airplane-3 m:flight.load_pct=0.7
+series d:2019-06-14T14:20:00Z e:airplane-1 m:flight.load_pct=0.9
+series d:2019-06-14T14:25:00Z e:airplane-4 m:flight.load_pct=0.5
+series d:2019-06-14T14:25:00Z e:airplane-2 m:flight.load_pct=0.6
+
+
+
+
+
 Все данные для 2019-06-14 в 14 часов по UTC. В таблице указаны минуты.
 | метр:сущн:тэги | 00 | 04 | 06 | 07 | 09 | 10 | 11 | 14 | 19 | 20 | 21 | 23 |
 |----------------|----|----|----|----|----|----|----|----|----|----|----|----|
