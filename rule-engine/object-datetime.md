@@ -87,6 +87,7 @@ The table below enumerates available `DateTime` object fields and their values f
 |`yearOfEra`|`2018`|
 |`centuryOfEra`|`20`|
 |`millis`|`1515861922303`<br>Unix time in milliseconds.|
+|`iso`|`2018-01-13T16:45:22.303Z`<br>ISO-8601 date.|
 |`next_workday`|`DateTime('2018-01-16T00:00Z[UTC]')`|
 |`previous_workday`|`DateTime('2018-01-12T00:00Z[UTC]')`|
 |`next_non_working_day`|`DateTime('2018-01-14T00:00Z[UTC]')`|
