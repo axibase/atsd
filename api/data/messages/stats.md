@@ -31,6 +31,7 @@ Refer to message [query](query.md#message-filter-fields) fields.
 |`metric`|string | [**Required**] Must be set to `message-count`. |
 |`groupKeys`|array | Array of message tags used for grouping: `type`, `source`, `entity`, etc, for example `"groupKeys": ["entity", "type"]` |
 |`aggregate`|object | Period [aggregator](../../../api/data/series/aggregate.md). Only `COUNT` type is supported. <br>`"aggregate":{"type":"COUNT", "period":{"count":1,"unit":"HOUR"}}` |
+|`tagExpression`|string | Expression to filter messages with access to fields: `message`, `type`, `source`, `severity`, and `tags.<name>`. |
 
 #### Entity Filter Fields
 
