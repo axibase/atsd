@@ -2788,7 +2788,7 @@ The following functions aggregate values in a column by producing a single value
 
 * All functions accept a numeric expression or a numeric column as an argument, for example `AVG(value)` or `AVG(t1.value + t2.value)`.
 * `COUNT` function accepts any expression, including `*`, for example `COUNT(*)` or `COUNT(datetime)`.
-* In addition to numbers, the `MIN`, `MAX`, `FIRST`, and `LAST` functions accept the `TIMESTAMP` data type, for example `MAX(datetime)`.
+* In addition to numbers, the `MIN`, `MAX`, `FIRST`, and `LAST` aggregate functions accept the `TIMESTAMP` data type, for example `MAX(datetime)`.
 
 #### Returned Data Types
 
@@ -2835,11 +2835,13 @@ The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/
 
 #### FIRST
 
-The `FIRST` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
+`FIRST` is an aggregate function that returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
+
+> Note that `FIRST_VALUE` is an **analytical** function.
 
 #### LAST
 
-The `LAST` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
+`LAST` is an aggregate function that returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
 
 #### MIN_VALUE_TIME
 
@@ -3694,7 +3696,7 @@ The `LEAD` function operates similarly to the [`LAG`](#lag) function except that
 
 #### FIRST_VALUE
 
-The `FIRST_VALUE` function returns the first row within the partition.
+The `FIRST_VALUE` is an analytical function that returns the first row within the partition.
 
 ```sql
 FIRST_VALUE(varchar columnName)
@@ -3951,12 +3953,10 @@ The [**Store** option](scheduled-sql-store.md) allows for query results to be st
 
 ## SQL Compatibility
 
-While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabilities.md#database-capabilities) between SQL dialect implemented in ATSD and SQL specification standards are numerous, the following exceptions to widely used constructs are worth mentioning:
+While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabilities.md#database-capabilities) between SQL dialect implemented in ATSD and SQL specification standards are numerous, the following exceptions to DML syntax are worth mentioning:
 
-* Self-joins are not supported.
 * `LEFT OUTER JOIN` and `RIGHT OUTER JOIN` queries are not supported.
 * Subqueries are supported only by the `BETWEEN` operator applied to the `time` and `datetime` columns.
-* `UNION`, `EXCEPT` and `INTERSECT` operators are not supported. Query [`atsd_series`](examples/select-atsd_series.md) table as a `UNION ALL` alternative.
+* `UNION`, `EXCEPT` and `INTERSECT` operators are not supported.
 * In case of division by zero, the database returns `NaN` according to the IEEE 754-2008 standard instead of terminating processing with a computational error.
 * The `WITH` operator is supported only in the following clauses: `WITH ROW_NUMBER`, `WITH INTERPOLATE`, `WITH LAST_TIME`, `WITH TIMEZONE`.
-* The `DISTINCT` operator is not supported and can be emulated with the `GROUP BY` clause in specific cases.
