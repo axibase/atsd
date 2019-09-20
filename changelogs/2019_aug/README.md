@@ -45,7 +45,7 @@
 6471|UI|Bug|UI: broken links to portals, entity views, forecasts if id > 999.
 6472|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): user variables with `null` values are converted to empty strings in [notifications](../../rule-engine/notifications/README.md).
 6473|csv|Bug|[CSV Parser Wizard](../../tutorials/getting-started-insert.md#csv-files): illegal timestamp pattern generated if several timestamp columns exist and one of the timestamps is of optimized type.
-6476|sql|Feature|[SQL](../../sql/README.md): trunc function.
+6476|sql|Feature|[SQL](../../sql/README.md): [`trunc`](../../sql/README.md#mathematical-functions) function.
 6477|api-rest|Bug|Search entities by expression: entity cache is not used.
 6478|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): incorrect rule link for [`rule_window`](../../rule-engine/functions-rules.md#rule_window) function.
 6479|sql|Bug|[SQL](../../sql/README.md): [`WITH TIMEZONE`](../../sql/README.md#with-timezone) option not supported by [`DELETE`](../../sql/README.md#delete-syntax).
@@ -64,7 +64,7 @@
 6498|entity|Bug|Entity Group: synchronization fails if one of group has errors.
 6499|UI|Feature|UI: replacement table multi-line description and number formatting.
 6500|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): [calendar expression](../../shared/calendar.md) fails in **Test** mode.
-6504|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): add vars hint on [`rule_window`](../../rule-engine/functions-rules.md#rule_window) property access error.
+6504|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): add variables hint on [`rule_window`](../../rule-engine/functions-rules.md#rule_window) property access error.
 6506|rule editor|Feature|[Rule Editor](../../rule-engine/README.md): allow to run **Test** for multiple enumerated entities.
 6508|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): preserve **Test** form fields on **Save**.
 6513|UI|Bug|UI: cannot update [Entity Group](../../configuration/entity_groups.md) with expression that matches multiple (100k) entities.
@@ -86,7 +86,7 @@
 6458|table|Bug|[Series Table](https://axibase.com/docs/charts/widgets/series-table/#series-table): updates are stopped unexpectedly.
 6461|visual design|Feature|Integrate Blueprint icons.
 6474|chart lab|Feature|ChartLab: editor issues and formatting enhancements.
-6475|widget-settings|Feature|Add support for expr block.
+6475|widget-settings|Feature|Add support for `expr` block.
 6497|property|Bug|[Property Widget](https://axibase.com/docs/charts/widgets/property-table/): sort by column not working.
 
 ## Collector
