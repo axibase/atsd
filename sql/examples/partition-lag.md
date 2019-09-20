@@ -51,9 +51,9 @@ ORDER BY entity, tags, datetime
 
 ```sql
 SELECT entity, datetime, value,
-  LAG(value),
-  LAG(value, 3),
-  LAG(value, 3, -1)
+  LEAD(value),
+  LEAD(value, 3),
+  LEAD(value, 3, -1)
   FROM "distance"
 WHERE datetime BETWEEN '2018-12-01T00:00:00Z' AND '2018-12-01T05:00:00Z' EXCL
   AND entity = 'car-1'
