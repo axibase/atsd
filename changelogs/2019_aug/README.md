@@ -6,14 +6,14 @@
 ------|-------------|---------|--------
 4210|export|Feature|[Export](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting): simplified method to export and import series data.
 4799|UI|Bug|UI: font alternatives.
-5961|sql|Feature|[SQL](../../sql/README.md): series output format.
-5962|sql|Feature|[SQL](../../sql/README.md): support for non-parameterized [`INSERT`](../../sql/README.md#insert-syntax).
+5961|sql|Feature|[SQL](../../sql/README.md): output query results in REST API format for chart display.
+5962|sql|Feature|[SQL](../../sql/README.md): non-parameterized [`INSERT`](../../sql/README.md#insert-syntax).
 5977|csv|Bug|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): ignore numeric column options in entity column drop-down.
 6074|UI|Feature|[Export](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting): result fields in HTML format.
 6079|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): create filter for time columns.
-6153|api-rest|Feature|[Series Query](../../api/data/series/query.md): `vwap` calculation and MVEL UDF.
+6153|api-rest|Feature|[Series Query](../../api/data/series/query.md): user-defined functions.
 6217|rule editor|Bug|UI: form edit alert on `Ctrl-C`.
-6248|export|Bug|Mismatch of default interval unit value on [forecast jobs](../../forecasting/README.md#data-forecasting) page and [export](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) page if `StarDate` and `EndDate` are specified.
+6248|export|Bug|Mismatch of default interval unit value on [forecast jobs](../../forecasting/README.md#data-forecasting) page and [export](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) pages.
 6256|export|Bug|[Forecast](../../forecasting/README.md#data-forecasting): incorrect data type on export form page.
 6346|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): create new alert endpoint in ATSD UI.
 6350|UI|Feature|[SQL](../../sql/README.md): [`DELETE`](../../sql/README.md#delete-syntax) statement.
@@ -61,7 +61,7 @@
 6493|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): `NullPointerException` in rule **Test** mode if command value is `NaN`.
 6495|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): [`now`](../../rule-engine/window-fields.md#current-time-fields) object is not initialized to current time in **Test** mode.
 6496|entity|Bug|UI: [Entity Group](../../configuration/entity_groups.md) editor.
-6498|entity|Bug|Entity Group: synchronization fails if one of group has errors.
+6498|entity|Bug|Entity Group: synchronization fails if one of the groups has an invalid expression.
 6499|UI|Feature|UI: replacement table multi-line description and number formatting.
 6500|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): [calendar expression](../../shared/calendar.md) fails in **Test** mode.
 6504|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): add variables hint on [`rule_window`](../../rule-engine/functions-rules.md#rule_window) property access error.
