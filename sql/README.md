@@ -3749,6 +3749,17 @@ ORDER BY datetime
 | mpstat.cpu_steal  | 2017-04-06T16:00:18Z | 0.0   |
 ```
 
+#### COLLECTION
+
+The `COLLECTION` function retrieves the list of strings for the specified **Named Collection**. The list can be checked for matching using `IN` and `NOT IN` operators.
+
+```sql
+SELECT * FROM "df.disk_used"
+  WHERE datetime > now - 1 * DAY
+  AND tags.file_system NOT IN collection('fs_ignore')
+ORDER BY datetime
+```
+
 #### LOOKUP
 
 The `LOOKUP` function translates the key into a corresponding value using the specified replacement table. The function returns a string if the replacement table exists and the key is found, and returns `NULL` otherwise. The key comparison is case-sensitive.

@@ -72,13 +72,15 @@ value > 60 && db_last('temperature', 'sensor-01', 'stage=heating,unit=c') < 30
 db_statistics(string interval, [ string metric, [string entity, [string tags | map tags]]]) number
 ```
 
-Returns an object with all descriptive statistic functions that can be retrieved with the [`db_statistic`](#db_statistic) function. The functions can be accessed by name as the object fields.
+Returns an object with all statistics that can be retrieved with the [`db_statistic`](#db_statistic) function. The statistics can be accessed by name as the object fields.
 
 ```javascript
 avg() > 60 && db_statistics('3 hour', 'temperature').avg > 30
 ```
 
-The object can be initialized once as a local variable and re-used in the expression.
+> The query must match only **one** series.
+
+The object can be initialized as a local variable and re-used in the expression.
 
 ```javascript
 // stats = db_statistics('3 hour', 'temperature')
@@ -120,6 +122,18 @@ Function names:
 - percentile0_1 (percentile 0.1)
 ```
 
+### `db_multi_statistics`
+
+```csharp
+db_multi_statistics(string interval, [ string metric, [string entity, [string tags | map tags]]]) number
+```
+
+Returns an object with the same statistics as the [`db_statistics`](#db_statistics) function except `delta`, `counter`, `wavg`, `wtavg`, `slope`, and `intercept`. The statistics are calculated from **all** matching series unlike `db_statistics` which allows only one series.
+
+```javascript
+avg() > 60 && db_multi_statistics('3 hour', 'temperature').max > 50
+```
+
 ### `db_statistic`
 
 ```csharp
@@ -127,6 +141,8 @@ db_statistic(string function, string interval, [ string metric, [string entity, 
 ```
 
 Returns the result of a statistical function applied to historical values loaded from the database. The function returns `Double.NaN` if no matching series are found or if no records are present within the selection interval.
+
+> The query must match only **one** series.
 
 The `function` argument accepts a [statistical function](../api/data/aggregation.md) name such as `avg` applied to all values within the selection interval.
 
