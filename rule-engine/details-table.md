@@ -9,7 +9,7 @@ Decimal numbers presented in the table are rounded to 5 significant digits, exce
 ## Syntax
 
 ```csharp
-detailsTable(string format)
+detailsTable(string format [, section])
 ```
 
 ## Formats
@@ -19,6 +19,14 @@ detailsTable(string format)
 * `html`
 * `property`
 * `csv`
+
+## Sections
+
+* `overview`
+* `entity`
+* `metric`
+* `statistics`
+* `variables`
 
 ## Contents
 
