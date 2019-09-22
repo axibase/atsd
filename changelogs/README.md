@@ -10,7 +10,8 @@ Follow development in the **Change Tracker Portal** and review details in the **
 
 | **Month** | **Features** | **Bugs** | &nbsp;
 |---|---:|---:|---|
-| July | `21` | `47` | [↗](2019_july/README.md)
+| August | `35` | `45` | [↗](2019_aug/README.md)
+| July | `21` | `47` | [↗](2019_jul/README.md)
 | June | `24` | `44` | [↗](2019_june/README.md)
 | May | `14` | `27` | [↗](2019_may/README.md)
 | April | `26` | `54` | [↗](2019_apr/README.md)
