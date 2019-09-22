@@ -12,6 +12,8 @@ Decimal numbers presented in the table are rounded to 5 significant digits, exce
 detailsTable(string format [, section])
 ```
 
+The optional `section` parameters can be used to control which fields to include in the table.
+
 ## Formats
 
 * `markdown`
