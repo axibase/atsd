@@ -219,7 +219,7 @@ Example:
 // Windows are (10:03 - 10:08] on 01-15, ... , 01-19
 // The result is 4.0
 
-db_baseline('avg', '5 day', '1 day', '5 minute')
+db_baseline('avg', 5, '1 day', '5 minute')
 ```
 
 | Window | Window Average |
