@@ -230,6 +230,8 @@ db_baseline('avg', 5, '1 day', '5 minute')
 | `2019-01-18 (10:03-10:08]` | `10.0` |
 | `2019-01-19 (10:03-10:08]` | `0.0` |
 
+* Chartlab [example](https://apps.axibase.com/chartlab/1e8ed72e)
+
 ## Series Match Examples
 
 Both `db_last` and `db_statistic` functions search the database for matching series based on the specified `metric`/`entity`/`tags` filter and return a numeric value for the first matched series. If the series in the current window has tags which are not collected by the specified metric and entity, those tags are excluded from the filter.
