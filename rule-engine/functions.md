@@ -384,6 +384,7 @@ Name | Description
 [`sendTcpMessage`](functions-utility.md#sendtcpmessage)| Sends TCP message to a remote server.
 [`sendTcpMessageReply`](functions-utility.md#sendtcpmessagereply)| Sends TCP message to a remote server and read a reply.
 [`lock`](functions-utility.md#lock)| Acquire a named lock to prevent duplicate actions.
+[`unlock`](functions-utility.md#unlock)| Release a named lock that prevents duplicate actions.
 
 ## Value
 

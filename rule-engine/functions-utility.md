@@ -20,6 +20,7 @@
 * [`sendTcpMessage`](#sendtcpmessage)
 * [`sendTcpMessageReply`](#sendtcpmessagereply)
 * [`lock`](#lock)
+* [`unlock`](#unlock)
 
 ## `agent_to_host`
 
@@ -494,4 +495,18 @@ The `atsd.log` records lock acquisition attempts with relevant rule details.
 ```txt
 2019-07-03T08:10:21.742Z;INFO;sendNotificationsExecutor-2;com.axibase.tsd.service.el.ElFunctionsServiceImpl;Lock 'call-01' acquired by rule 'call_order', window {"metric":"property","entity":"nur","tags":{}}: locked until 2019-07-03T08:10:36.742Z
 2019-07-03T08:10:21.806Z;INFO;sendNotificationsExecutor-18;com.axibase.tsd.service.el.ElFunctionsServiceImpl;Lock 'call-01' not acquired by rule 'call_order', window {"metric":"property","entity":"nur","tags":{}}: locked until 2019-07-03T08:10:36.742Z
+```
+
+## `unlock`
+
+```csharp
+unclock(string key) boolean
+```
+
+The function releases a previously acquired lock. The result is `true` if an active lock is found for the specified key and the lock is released.
+
+```javascript
+@if{unlock(entity)}
+Actions for `${entity}` were unlocked.
+@end{}
 ```

@@ -175,47 +175,45 @@ rule_window('slack-bot-cmd-confirm', entity,
 ### `rule_windows`
 
 ```csharp
-rule_windows(string rule, string expression) [Window]
+rule_windows(string rule, string entities, string expression) [Window]
 ```
 
-Returns the collection of [Window](window.md#window-fields) objects for the specified `rule`, `expression` and the same entity as in the current window.
+Returns the collection of [Window](window.md#window-fields) objects for the specified `rule`, list of entities, and `expression`.
 
-The following match conditions apply:
+```javascript
+rule_windows('backup_start', [entity], "status != 'CANCEL'")
+```
 
-* The `expression` can include the following fields and supports wildcards in field values:
+* To find windows for the same entity, pass it as a single element of the collection.
 
-    |**Name**|**Description**|
-    |---|---|
-    |message |The text value, which is equal to `message` field in case of `message` command.|
-    |tags and `tags.{name}`/`tags['name']`|Command tags.|
-    |status|Window [status](README.md#window-status).|
+```javascript
+rule_windows('backup_start', [entity], null)
+```
 
-* The `expression` can include window [fields](window.md#window-fields) as placeholders.
+* To omit the entity or expression condition, pass `null` as an argument.
 
-To access the `n`-th window in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element).
+```javascript
+rule_windows('backup_start', null, "status != 'CANCEL'")
+```
 
-Access window [fields](window-fields.md#base-fields) except `repeat_interval` via dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`. In addition, the matched windows provide the `lastText` field which contains the last message text received by the window.
-
-Notes:
-
-* `tags` are the same as in the last window command;
-* if minimum interval is not set then `min_interval_expired = true`;
-* `threshold`: the threshold matched by the last command.
+* The `expression` can refer to all [fields](./window-fields.md) of the checked windows via dot notation. The `tags` and `threshold` fields are set based on the last processed command.
+* To find only active windows, use `"status != 'CANCEL'"` as the expression.
+* To access the `n`-th window in the collection, use square brackets `[index]` or `get(index)` method, starting with `0` for the first element), for example `rule_windows('jvm_derived', [entity], 'status="CANCEL"')[0].entity`.
 
 Examples:
 
 ```javascript
 /* Returns open windows of 'jvm_derived' rule
 with the same value for 'tags.host' as at the current window. */
-rule_windows('jvm_derived',"tags.host='" + tags.host + "'")
+rule_windows('jvm_derived', [entity], "tags.host='" + tags.host + "'")
 
 /* Match with tags, message and status.*/
-rule_windows('slack-bot-cmd-confirm',
+rule_windows('slack-bot-cmd-confirm', null,
              'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
 
 /* Access to window fields. */
-rule_windows('jvm_derived',"tags.port='22'").lastText
+rule_windows('jvm_derived', [entity], "tags.port='22'").lastText
 
 /* Match using Message Fields. */
-rule_windows('jvm_derived', 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
+rule_windows('jvm_derived', [entity], 'tags.source="' + source +'" AND tags.type="' + type +'" AND message="' + message +'"')
 ```
