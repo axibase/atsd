@@ -1942,22 +1942,28 @@ For an unbound window `ROW_NUMBER(...) > 0`, an analytical function is applied t
 
 The partition includes rows that satisfy the `WITH ROW_NUMBER` condition which compares the row number with a constant value or the current row number.
 
-* Top-N rows. Includes only rows from `1` to `5` with largest values.
+* Top-N rows. Includes rows `1` to `5` with largest values.
 
 ```sql
 WITH ROW_NUMBER(entity ORDER BY value DESC) <= 5
 ```
 
-* **Unbound** Window. Includes all rows. Applies analytical functions to all rows from first to current.
+* **Unbound** window. Includes all rows. Applies analytical functions to all rows from first to current.
 
 ```sql
 WITH ROW_NUMBER(entity ORDER BY time) > 0
 ```
 
-* **Sliding** Window. Includes all rows. Applies analytical functions to the `10` preceding rows.
+* **Sliding** count-based window. Includes all rows. Applies analytical functions to the `10` preceding rows.
 
 ```sql
 WITH ROW_NUMBER(entity ORDER BY time) BETWEEN 10 PRECEDING AND CURRENT ROW
+```
+
+* **Sliding** time-based window. Includes all rows. Applies analytical functions to the preceding rows in the 5-minute interval.
+
+```sql
+WITH ROW_NUMBER(entity ORDER BY time) BETWEEN 5 MINUTE PRECEDING AND CURRENT ROW
 ```
 
 ### Partition Ordering
