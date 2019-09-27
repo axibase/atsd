@@ -175,7 +175,7 @@ rule_window('slack-bot-cmd-confirm', entity,
 ### `rule_windows`
 
 ```csharp
-rule_windows(string rule, string entities, string expression) [Window]
+rule_windows(string rule, [string] entities, string expression) [Window]
 ```
 
 Returns the collection of [Window](window.md#window-fields) objects for the specified `rule`, list of entities, and `expression`.
