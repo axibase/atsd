@@ -296,7 +296,8 @@ Name | Description
 ---|---
 [`avg`](functions-statistical.md#avg)| Calculates average value.
 [`avgIf`](functions-statistical.md#avgif)| Calculates average of elements matching the specified condition.
-[`count`](functions-statistical.md#count)| Value count.
+[`count`](functions-statistical.md#count)| Value count. The function ignores `NaN` values.
+[`countNaN`](functions-statistical.md#countnan)| `NaN` count. A sum of `count` and `countNaN` is equal to the number of samples in the window.
 [`countIf`](functions-statistical.md#countif)| Counts elements matching the specified condition.
 [`delta`](functions-statistical.md#delta)| Calculates difference between `last` and `first` values.
 [`diff`](functions-statistical.md#diff)| Calculates difference between `last` and `first` values.

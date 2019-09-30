@@ -21,6 +21,7 @@ Functions such as [`countIf`](#countif), [`avgIf`](#avgif), and [`sumIf`](#sumif
 * [`wtavg`](#wtavg)
 * [`ema`](#ema)
 * [`count`](#count)
+* [`countNaN`](#countnan)
 * [`percentile`](#percentile)
 * [`median`](#median)
 * [`variance`](#variance)
@@ -126,7 +127,15 @@ The function assigns more weight to more recent samples.
 count() long
 ```
 
-Returns the number of samples in the window.
+Returns the number of samples in the window, excluding samples with `NaN` value.
+
+### `countNaN`
+
+```javascript
+countNaN() long
+```
+
+Returns the number of `NaN` samples in the window.
 
 ### `percentile`
 
