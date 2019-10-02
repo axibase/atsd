@@ -64,8 +64,8 @@
 6439|table|Bug|Table Widgets: button icons are not vertically aligned.
 6542|table|Bug|Table Widgets: derived column became broken if [`label`](https://axibase.com/docs/charts/widgets/shared/#label) is specified.
 6546|widget-settings|Bug|Settings: [`auto-scale`](https://axibase.com/docs/charts/widgets/time-chart/#auto-scale) and [`max-range-force`](https://axibase.com/docs/charts/widgets/shared/#max-range-force).
-6557|chartlab|Bug|[Calendar](https://axibase.com/docs/charts/widgets/calendar-chart/): add missing validator rules.
-6567|chartlab|Support|ChartLab and Language Server: obsolete syntax in widget snippets.
+6557|chart lab|Bug|[Calendar](https://axibase.com/docs/charts/widgets/calendar-chart/): add missing validator rules.
+6567|chart lab|Support|ChartLab and Language Server: obsolete syntax in widget snippets.
 6575|treemap|Bug|[Treemap](https://axibase.com/docs/charts/widgets/treemap/): add validation rules.
 
 ## Collector
