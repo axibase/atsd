@@ -104,7 +104,7 @@ wtavg() double
 Calculates weighted **time** average where sample weight is calculated according to the following formula:
 
 ```javascript
-w = (sample.time - first.time)/(last.time - first.time + 1)
+w = (command_time.millis - time_first())/(time_last() - time_first() + 1)
 ```
 
 Times are rounded to Unix seconds.
@@ -304,7 +304,7 @@ Forecasts the number of minutes until the sample value reaches the specified `th
 rate_per_second() double
 ```
 
-Calculates the difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in Unix seconds.
+Calculates the difference between last and first value per second. Same as `diff()/(time_last()-time_first())`. Time measured in Unix seconds.
 
 ### `rate_per_minute`
 
@@ -312,7 +312,7 @@ Calculates the difference between last and first value per second. Same as `diff
 rate_per_minute() double
 ```
 
-Calculates the difference between last and first value per minute. Same as `rate_per_second()/60`.
+Calculates the difference between last and first value per minute. Same as `rate_per_second()*60`.
 
 ### `rate_per_hour`
 
@@ -320,7 +320,7 @@ Calculates the difference between last and first value per minute. Same as `rate
 rate_per_hour() double
 ```
 
-Calculates the hourly difference between last and first value input. Same as `rate_per_second()/3600`.
+Calculates the hourly difference between last and first value input. Same as `rate_per_second()*3600`.
 
 ### `slope`
 
