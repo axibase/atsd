@@ -4,17 +4,17 @@
 
  Issue| Category    | Type    | Subject
 ------|-------------|---------|--------
-3049|sql|Feature|[SQL](../../sql/README.md): [math](../../sql/README.md#mathematical-functions) functions.
+3049|sql|Feature|[SQL](../../sql/README.md): Additional [math](../../sql/README.md#mathematical-functions) functions.
 5772|UI|Feature|[CSV Parser Wizard](../../tutorials/getting-started-insert.md#csv-files): implement wizard-based parser UI.
 5858|odbc|Feature|[ODBC](https://github.com/axibase/atsd-odbc/releases) driver.
-6225|UI|Feature|[Rule Engine](../../rule-engine/README.md): save notification state when user switches [webhook](../../rule-engine/notifications/README.md).
-6251|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): add support for [`orb tags`](../../rule-engine/control-flow.md) and [`expression`](../../rule-engine/condition.md) context to [Email](../../rule-engine/email.md) recipients input.
+6225|UI|Feature|[Rule Engine](../../rule-engine/README.md): save notification state on [webhook](../../rule-engine/notifications/README.md) switch.
+6251|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): add support for [`control flow`](../../rule-engine/control-flow.md) tags and [`expression`](../../rule-engine/condition.md) context to [Email](../../rule-engine/email.md) recipients input.
 6278|rule editor|Bug|[Rule Engine](../../rule-engine/README.md): [`expression`](../../rule-engine/condition.md) syntax is not highlighted in [Email](../../rule-engine/email.md) recipients.
 6425|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): add custom tag with static value.
 6460|message|Bug|Message stats: flexible filtering using [`tagExpression`](../../api/data/messages/stats.md#calculation-fields).
 6480|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): unable to show alert details if a [variable](../../rule-engine/condition.md#variables) has `null` value.
 6488|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): optional parameter for [`detailsTable`](../../rule-engine/details-table.md) to print only local variables.
-6492|sql|Bug|[SQL](../../sql/README.md): strange result with `LIMIT 1` during write activity.
+6492|sql|Bug|[SQL](../../sql/README.md): unexpected result with `LIMIT 1` during write activity.
 6503|rule engine|Bug|[Rule Editor](../../rule-engine/README.md): message search direction in [webhook](../../rule-engine/notifications/README.md) test.
 6507|rule editor|Feature|[Rule Editor](../../rule-engine/README.md): add local [variables](../../rule-engine/condition.md#variables) to auto-complete.
 6509|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): [variable](../../rule-engine/condition.md#variables) writer in **Test** mode.
@@ -37,7 +37,7 @@
 6545|UI|Feature|UI: standardise page titles.
 6551|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): error message not specific.
 6552|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): allow [`db_statistics`](../../rule-engine/functions-series.md#db_statistics) to calculate statistics for multiple series.
-6553|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): always date filter column.
+6553|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): add Date filter column.
 6555|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): functions missing in auto-complete.
 6556|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): `BETWEEN` operator fails when used in user [variables](../../rule-engine/condition.md#variables).
 6559|sql|Feature|[SQL](../../sql/README.md): add function to [access](../../sql/README.md#collection) **Named Collection**.
@@ -50,10 +50,10 @@
 6571|sql|Bug|[SQL](../../sql/README.md): unexpected column order in [`OUTER`](../../sql/README.md#outer-join) query.
 6576|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): user [variable](../../rule-engine/condition.md#variables) is not accessible in [property-based](../../rule-engine/filters.md#data-type-filter) window.
 6577|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): [`db_message_last`](../../rule-engine/functions-message.md#db_message_last) returns not the last message.
-6581|rule editor|Feature|[Rule Editor](../../rule-engine/README.md): add syntax highlight to [`condition`](../../rule-engine/condition.md) script fields.
+6581|rule editor|Feature|[Rule Editor](../../rule-engine/README.md): add syntax highlighting to [`condition`](../../rule-engine/condition.md) script fields.
 6593|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): [`unlock`](../../rule-engine/functions-utility.md#unlock) function.
 6597|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): statistics are empty for window with size 1.
-6598|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): HTTP 500 error on [property-based](../../rule-engine/filters.md#data-type-filter) [time](../../rule-engine/window.md#time-based-windows) window when opening for view it after time exceeds.
+6598|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): HTTP 500 error on [property-based](../../rule-engine/filters.md#data-type-filter) [time](../../rule-engine/window.md#time-based-windows) window.
 
 ## Charts
 
@@ -73,5 +73,5 @@
 Issue| Category    | Type    | Subject
 ------|-------------|---------|--------
 6344|core|Bug|Core: prevent memory leak.
-6456|mqtt|Bug|[MQTT](https://axibase.com/docs/axibase-collector/jobs/mqtt.html):JSON configuration enhancement.
+6456|mqtt|Bug|[MQTT](https://axibase.com/docs/axibase-collector/jobs/mqtt.html): JSON configuration enhancement.
 6587|administrator|Feature|Administration: show time sync with storage as alert.
