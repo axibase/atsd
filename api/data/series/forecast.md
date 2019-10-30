@@ -240,7 +240,7 @@ Examples:
 
 ### Baseline Fields
 
-One of fields `period` or `count` must be proided to determine which samples of input series are used to calculate baseline value for given timestamp.
+One of fields `period` or `count` must be provided to determine which samples of input series are used to calculate baseline value for given timestamp.
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
