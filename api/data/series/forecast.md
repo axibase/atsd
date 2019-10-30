@@ -215,7 +215,7 @@ The fields described below must be included in the `forecast.arima` object.
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `auto` | boolean | Generate a forecast using most optimal settings.<br>If set to `true`, parameters `p` and `d` are detected automatically based on the lowest standard deviation within the score interval.<br>If set to `false`, parameters `p` and `d` are required. |
-| `arima-auto-regression-interval` | object | Alternative parameter for `p` where `p` is calculated as `auto-regression-interval / interval`.<br>Specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 1, "unit": "DAY"}`.|
+| `autoRegressionInterval` | object | Alternative parameter for `p` where `p` is calculated as `auto-regression-interval / interval`.<br>Specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 1, "unit": "DAY"}`.|
 | `p` | number | Auto-regression parameter. |
 | `d` | number | Integration parameter.<br>Possible values: `0` or `1`. |
 
