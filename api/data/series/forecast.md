@@ -244,7 +244,7 @@ One of fields `period` or `count` must be provided to determine which samples of
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `period` | object | Baseline value for time `t` is an averaged value of input series for times `t - period`, `t - 2 * period`, `t - 3 * period`, ... It is expected that input series is regular and its inter-sample time interval divides the `period`. Specified with `count` and time [`unit`](time-unit.md). |
+| `period` | object | Baseline value for time `t` is an averaged value of input series for times `t - period`, `t - 2 * period`, `t - 3 * period`, ... It is expected that input series is regular and its inter-sample time interval divides the `period`. Specified with `count` and time [`unit`](time-unit.md). For example: `{"count": 1, "unit": "DAY"}`. |
 | `count` | number | Another way to specify the `period`: `period = count * spacing`, where `spacing` is inter-sample time interval of input series.|
 | `function` | String | [Aggregation function](./../aggregation.md) used to average values of input series. |
 
