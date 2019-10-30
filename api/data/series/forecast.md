@@ -259,15 +259,6 @@ Examples:
 }
 ```
 
-```json
-"forecast": {
-  "arima": {
-    "p": 2,
-    "d": 0
-  }
-}
-```
-
 ### SSA Fields
 
 The fields described below must be included in the `forecast.ssa` object.
