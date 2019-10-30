@@ -9,6 +9,7 @@ Supported forecasting algorithms:
 * `Holt-Winters`
 * `ARIMA` (Auto-Regressive Integrated Moving Average).
 * `SSA` (Singular Spectrum Analysis).
+* `baseline`
 
 Unlike other transformations, the **forecast** returns samples ahead of the selection interval.
 
@@ -224,6 +225,36 @@ Examples:
 "forecast": {
   "arima": {
     "auto": true
+  }
+}
+```
+
+```json
+"forecast": {
+  "arima": {
+    "p": 2,
+    "d": 0
+  }
+}
+```
+
+### Baseline Fields
+
+One of fields `period` or `count` must be proided to determine which samples of input series are used to calculate baseline value for given timestamp.
+
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
+| `period` | object | Baseline value for time `t` is an averaged value of input series for times `t - period`, `t - 2 * period`, `t - 3 * period`, ... It is expected that input series is regular and its inter-sample time interval divides the `period`. Specified with `count` and time [`unit`](time-unit.md). |
+| `count` | number | Anather way to speify the `period`: `period = count * spacing`, there `spacing` is inter-sample time interval of input series.|
+| `function` | String | [Aggregation function](./../aggregation.md) used to average values of input series. |
+
+Examples:
+
+```json
+"forecast": {
+  "baseline": {
+    "period": {"count": 1, "unit": "DAY"},
+    "function": "AVG"
   }
 }
 ```
