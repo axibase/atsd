@@ -9,6 +9,7 @@ Supported forecasting algorithms:
 * `Holt-Winters`
 * `ARIMA` (Auto-Regressive Integrated Moving Average).
 * `SSA` (Singular Spectrum Analysis).
+* `baseline`
 
 Unlike other transformations, the **forecast** returns samples ahead of the selection interval.
 
@@ -214,7 +215,7 @@ The fields described below must be included in the `forecast.arima` object.
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | `auto` | boolean | Generate a forecast using most optimal settings.<br>If set to `true`, parameters `p` and `d` are detected automatically based on the lowest standard deviation within the score interval.<br>If set to `false`, parameters `p` and `d` are required. |
-| `arima-auto-regression-interval` | object | Alternative parameter for `p` where `p` is calculated as `auto-regression-interval / interval`.<br>Specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 1, "unit": "DAY"}`.|
+| `autoRegressionInterval` | object | Alternative parameter for `p` where `p` is calculated as `auto-regression-interval / interval`.<br>Specified with `count` and time [`unit`](time-unit.md).<br>For example: `{"count": 1, "unit": "DAY"}`.|
 | `p` | number | Auto-regression parameter. |
 | `d` | number | Integration parameter.<br>Possible values: `0` or `1`. |
 
@@ -233,6 +234,27 @@ Examples:
   "arima": {
     "p": 2,
     "d": 0
+  }
+}
+```
+
+### Baseline Fields
+
+| **Name** | **Type**  | **Description**   |
+|:---|:---|:---|
+| `period` | object |  The setting determines which input series samples are used to calculate baseline value for the given timestamp. Baseline value at timestamp `t` is calculated as averaged value of input series for timestamps `t - period`, `t - 2 * period`, ... The input series must be regular (or regularized with an aggregator) and the sampling interval must be divisible by `period`. Specified with `count` and time [`units`](time-unit.md). For example: `{"count": 1, "unit": "DAY"}`. |
+| `count` | number | Alternative way to specify the `period`: `period = count * spacing`, where `spacing` is the sampling interval.|
+| `function` | String | [Aggregation function](./../aggregation.md) used to average values of input series. |
+
+> Either `period` or `count` setting is required.
+
+Example:
+
+```json
+"forecast": {
+  "baseline": {
+    "period": {"count": 1, "unit": "DAY"},
+    "function": "AVG"
   }
 }
 ```
