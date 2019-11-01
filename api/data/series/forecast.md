@@ -240,15 +240,15 @@ Examples:
 
 ### Baseline Fields
 
-One of fields `period` or `count` must be provided to determine which samples of input series are used to calculate baseline value for given timestamp.
-
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| `period` | object | Baseline value for time `t` is an averaged value of input series for times `t - period`, `t - 2 * period`, `t - 3 * period`, ... It is expected that input series is regular and its inter-sample time interval divides the `period`. Specified with `count` and time [`unit`](time-unit.md). For example: `{"count": 1, "unit": "DAY"}`. |
-| `count` | number | Another way to specify the `period`: `period = count * spacing`, where `spacing` is inter-sample time interval of input series.|
+| `period` | object |  The setting determines which input series samples are used to calculate baseline value for the given timestamp. Baseline value at timestamp `t` is calculated as averaged value of input series for timestamps `t - period`, `t - 2 * period`, ... The input series must be regular (or regularized with an aggregator) and the sampling interval must be divisible by `period`. Specified with `count` and time [`units`](time-unit.md). For example: `{"count": 1, "unit": "DAY"}`. |
+| `count` | number | Alternative way to specify the `period`: `period = count * spacing`, where `spacing` is the sampling interval.|
 | `function` | String | [Aggregation function](./../aggregation.md) used to average values of input series. |
 
-Examples:
+> Either `period` or `count` setting is required.
+
+Example:
 
 ```json
 "forecast": {
