@@ -467,6 +467,14 @@ ${sendTcpMessageRepy('example.org', 9001, order + '
 TcpReply(status=4, response=Order 123 received OK, execTime=250)
 ```
 
+## `sendUdpMessage`
+
+Same as `sendTcpMessage` function using UDP as the protocol.
+
+## `sendUdpMessageReply`
+
+Same as `sendTcpMessageReply` function using UDP as the protocol.
+
 ## `lock`
 
 ```csharp
