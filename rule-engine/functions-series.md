@@ -230,7 +230,7 @@ db_baseline('avg', 5, '1 day', '5 minute')
 | `2019-01-18 (10:03-10:08]` | `10.0` |
 | `2019-01-19 (10:03-10:08]` | `0.0` |
 
-* Chartlab [example](https://apps.axibase.com/chartlab/1e8ed72e)
+* ChartLab [example](https://apps.axibase.com/chartlab/1e8ed72e)
 
 ## Series Match Examples
 
