@@ -146,7 +146,7 @@ Returns the result of a statistical function applied to historical values loaded
 
 The `function` argument accepts a [statistical function](../api/data/aggregation.md) name such as `avg` applied to all values within the selection interval.
 
-The `interval` argument is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to **current time**. The loaded interval is `(current_time - interval, current_time]`.
+The `interval` argument is the duration of the selection interval specified in 'count [units](../shared/calendar.md#interval-units)', for example, '1 hour'. The end of the selection interval is set to **current time**. The loaded interval is `(current_timestamp - interval, current_timestamp]`.
 
 If no other arguments are provided, the data is loaded for same metric, entity and tags as defined in the current window.
 
