@@ -24,7 +24,7 @@
 6624|portal|Bug|[Portal](../../portals/README.md): HTTP Error 400 on new portal creation page.
 6627|csv|Feature|[CSV Tasks](../../parsers/csv/README.md#uploading-csv-files): add information about number of sent commands and send messages on start of file processing and end of file processing.
 6628|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): allow to modify tag key and value for non-mapped tags.
-6630|portal|Bug|[Portal](../../portals/README.md): Phantomjs cannot make a portal screenshot.
+6630|portal|Bug|[Portal](../../portals/README.md): PhantomJS cannot make a portal screenshot.
 6631|rule engine|Feature|[Rule Engine](../../rule-engine/README.md): cache `min` and `max` for [`property`](../../api/network/property.md) commands in `command.log` ZIP files during testing.
 6633|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): [script](../../rule-engine/scripts.md) error non-descriptive.
 6634|administrator|Bug|[Log](../../administration/logging.md) messages: minimize print out of stack traces where not needed.
