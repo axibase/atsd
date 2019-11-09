@@ -3294,7 +3294,7 @@ SELECT CURRENT_TIMESTAMP
 SELECT entity, datetime, value
   FROM "mpstat.cpu_busy"
 -- same as   datetime > NOW - 1 * DAY
-WHERE datetime > CURRENT_TIME - 1 * DAY
+WHERE datetime > CURRENT_TIMESTAMP - 1 * DAY
 ```
 
 #### DBTIMEZONE
