@@ -202,7 +202,7 @@ The number of metrics retrieved with the `metric LIKE (expr)` condition is subje
 
 #### `atsd_entity` Table
 
-The `atsd_entity` is a metadata table which provides access to the list of entities and their [fields](../api/meta/metric/list.md#fields).
+The `atsd_entity` is a metadata table which provides access to the list of entities and their [fields](../api/meta/entity/list.md#fields).
 
 ```sql
 SELECT name, label, date_format(creationTime)
