@@ -20,7 +20,7 @@
 6617|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): escape [placeholders](../../rule-engine/placeholders.md#placeholders) present in the incoming command.
 6620|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): add Locale support for old parsers.
 6622|csv|Bug|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): writes data into HBase even if data insertion is disabled.
-6623|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): add **Remove Prefix** setting in csv parsers.
+6623|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): add **Remove Prefix** setting in CSV parsers.
 6624|portal|Bug|[Portal](../../portals/README.md): HTTP Error 400 when creating a new portal.
 6627|csv|Feature|[CSV Tasks](../../parsers/csv/README.md#uploading-csv-files): store messages with the number of processed commands and messages at the beginning and end of file processing.
 6628|csv|Feature|[CSV Parser](../../parsers/csv/README.md#uploading-csv-files): allow to modify tag key and value for non-mapped tags.
