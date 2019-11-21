@@ -3311,7 +3311,7 @@ SELECT DBTIMEZONE
 The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`.
 
 ```sql
-IS_WORKDAY(datetime | time | datetime expression, calendar_key [, timezone])
+IS_WORKDAY(datetime | time | datetime expression [, calendar_key [, timezone]])
 ```
 
 Notes:
@@ -3356,7 +3356,7 @@ The `IS_WEEKDAY` function returns `true` if the given date is a regular work day
 Unlike the `IS_WORKDAY`, the `IS_WEEKDAY` function **ignores** observed holidays.
 
 ```sql
-IS_WEEKDAY(datetime | time | datetime expression, calendar_key [, timezone])
+IS_WEEKDAY(datetime | time | datetime expression [, calendar_key [, timezone]])
 ```
 
 ```sql
