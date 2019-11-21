@@ -6,7 +6,7 @@ Calendar syntax implements convenient [keywords](#keywords) and [date arithmetic
 
 For example, if the current time is `December 15, 2017 15:28:00`, the keyword `current_day` evaluates to `December 15, 2017 00:00:00` and the expression `current_hour - 1 * day` returns `December 14, 2017 15:00:00`.
 
-Calendar [keywords](#keywords) are evaluated based on the current **server** time and the **server** [time zone](timezone-list.md).
+Calendar [keywords](#keywords) are evaluated based on the current **server** time, [time zone](timezone-list.md), and working calendar.
 
 Date arithmetic such as adding or subtracting an interval is implemented using [expressions](#expressions).
 
@@ -60,6 +60,7 @@ Date arithmetic such as adding or subtracting an interval is implemented using [
 | `previous_hour` | | 00:00 of the previous hour |
 | `current_day` | today | 00:00:00 of the current day |
 | `previous_day` | yesterday | 00:00:00 of the previous day |
+| `current_working_day` | today | 00:00:00 of the current day if such day is working.<br>Otherwise, `00:00:00` of the most recent working day. |
 | `previous_working_day` | | 00:00:00 of the previous working day |
 | `previous_vacation_day` | | 00:00:00 of the previous vacation day |
 | `first_day` | | 00:00:00 of the first day of the current month |

@@ -3436,7 +3436,7 @@ If the `toDate` precedes the `fromDate`, the difference is negative.
 
 #### `WITH TIMEZONE`
 
-The `WITH TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
+The `TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
 
 ```sql
 WITH TIMEZONE = timezone
@@ -3492,6 +3492,37 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 |-------------|-----------------------|-----------------------|-----------------------|-------------|--------------|
 | Etc/UTC     | 2018-08-01 07:00 UTC  | 2018-08-01 07:00 UTC  | 2018-08-01 00:00 PDT  | 2821.5      | 48           |
 | Etc/UTC     | 2018-08-01 07:00 UTC  | 2018-08-02 07:00 UTC  | 2018-08-02 00:00 PDT  | 2862.5      | 48           |
+```
+
+#### `WITH WORKDAY_CALENDAR`
+
+The `WORKDAY_CALENDAR` clause overrides the default **workday calendar** applied in date functions and [calendar keywords](../shared/calendar.md#keywords).
+
+```sql
+WITH WORKDAY_CALENDAR = 'us_fin'
+```
+
+```sql
+SELECT date_format(time, 'yyyy-MM-dd EEEE') AS dt,
+  IS_WORKDAY(time),
+  COUNT(value)
+FROM "cpu_busy"
+  WHERE datetime >= '2019-05-03' AND datetime < '2019-05-09'
+  AND entity = 'nurswgvml007'
+  -- AND IS_WORKDAY(datetime)
+  WITH WORKDAY_CALENDAR = 'gbr'
+GROUP BY PERIOD(1 DAY)
+```
+
+```ls
+| dt                   | is_workday(time, 'gbr') | count(value) |
+|----------------------|-------------------------|--------------|
+| 2019-05-03 Friday    | true                    |         5397 |
+| 2019-05-04 Saturday  | false                   |         5397 |
+| 2019-05-05 Sunday    | false                   |         5397 |
+| 2019-05-06 Monday    | false                   |         5394 | <-- May Day Bank Holiday
+| 2019-05-07 Tuesday   | true                    |         5394 |
+| 2019-05-08 Wednesday | true                    |         5397 |
 ```
 
 ### Mathematical Functions
@@ -3858,6 +3889,20 @@ SELECT entity, AVG(value)
 WHERE datetime > current_hour
   AND is_entity_in_group(REPLACE(entity, 'nur', ''), 'nur-hbase')
 GROUP BY entity
+```
+
+#### PROPERTY
+
+The function retrieves the first matching property value for the specified entity and property [search](../rule-engine/property-search.md) expression. The function operates similar to the [`property()`](../rule-engine/functions-property.md#property) function in the rule engine.
+
+```java
+property(string entity, string expression [, long time | string datetime [, boolean merge]]) string
+```
+
+```sql
+SELECT entity, property(entity, 'location::site') AS site
+FROM "mpstat.cpu_busy"
+WHERE time > now - 5*minute
 ```
 
 ### Other Functions
