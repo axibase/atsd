@@ -27,6 +27,18 @@ ${addTable(entity.tags, 'ascii')}
 @end{}
 ```
 
+Multiple checks example:
+
+```javascript
+@if{!allow_action}
+Action blocked **by calendar**.
+@else{!lock(action_command, 300000)}
+Action is already **locked**.
+@else{}
+${sendTcpMessageReply(host, port, action_command, 5)}
+@end{}
+```
+
 ## Iteration
 
 Use the `@foreach` template to iterate over a collection.
