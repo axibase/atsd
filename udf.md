@@ -1270,6 +1270,23 @@ API запрос
 }]
 ```
 
+Так же можно передавать MVEL функцию и ее аргументы не как строку, которая оценивается методами `calculate()` и `forEach()`, а как апгументы этих методов.
+В данном случае вместо `forEach('transform(delta)')` можно вызвать метод `forEach` так: `forEach(transform, delta)`.
+
+API запрос
+
+```json
+[{
+  "startDate": "2019-06-14T00:00:00Z",
+  "endDate":   "2019-06-15T00:00:00Z",
+  "metric": "flight.load_pct",
+  "entity": "*",
+  "evaluate": {
+    "expression": "delta = '10 minute'; def transform(period) {v + value(time_add(period))} A.firstSeries().forEach(transform, delta)"
+  }
+}]
+```
+
 <details><summary>Ответ сервера</summary>
 
 ```json
@@ -2893,6 +2910,23 @@ API запрос
   }
 }]
 ```
+
+Так же вместо строки, которая будет оценена методом `calculate` можно перередать объект - саму MVEL функцию, которая будет выполнена. Т.е. вместо `calculate('revert()')` можно вызвать `calculate(revert)`:
+
+```json
+[{
+  "startDate": "2019-07-01T14:00:00Z",
+  "endDate":   "2019-07-01T15:00:00Z",
+  "metric": "m1",
+  "entity": "e1",
+  "evaluate": {
+    "libs": ["test-series-context-lib-2.mvel"],
+    "expression": "A.firstSeries().calculate(revert);"
+  }
+}]
+```
+
+ Если бы у функции `revert` были аргументы, то их можно было бы передать, как аргументы функции `calculate` следующие за `revert`.  
 
 <details><summary>Ответ сервера</summary>
 
