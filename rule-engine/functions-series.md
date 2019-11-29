@@ -47,23 +47,21 @@ value > 60 && db_last('temperature', tags.target) < 30
 
 To retrieve data for different series tags, specify them in the third argument:
 
-* Empty string `''` for no series tags.
+* `'tag1=value1'` to select series with `tag1` equal to `value1`.
+* `'tag1=*'` to select series with `tag1` containing any value.
+* Empty string `''` to select series without any series tags.
 * String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
-* Key-value map: `['tag1':'value1','tag2':'value2']`
+* Key-value map: `['tag1':'value1','tag2':'value2']`.
 * The `tags` field representing the grouping tags of the current window.
-
-```csharp
-db_last(string metric, string entity, string tags) number
-```
-
-```csharp
-db_last(string metric, string entity, map tags) number
-```
 
 Example:
 
 ```javascript
 value > 60 && db_last('temperature', 'sensor-01', 'stage=heating,unit=c') < 30
+```
+
+```javascript
+value > 60 && db_last('temperature', 'sensor-01', ['stage' : 'heating', 'unit': 'c']) < 30
 ```
 
 ### `db_statistics`
@@ -134,6 +132,12 @@ Returns an object with the same statistics as the [`db_statistics`](#db_statisti
 avg() > 60 && db_multi_statistics('3 hour', 'temperature').max > 50
 ```
 
+The tag value supports wildcards which can be used to select multiple series:
+
+```javascript
+value > 60 && db_last('temperature', 'sensor-01', ['stage' : '*']) < 30
+```
+
 ### `db_statistic`
 
 ```csharp
@@ -168,6 +172,8 @@ avg() > 60 && db_statistic('avg', '3 hour', 'temperature', 'sensor-01') < 50
 
 To retrieve data for different series tags, specify them in the third argument:
 
+* `'tag1=value1'` to select series with `tag1` equal to `value1`.
+* `'tag1=*'` to select series with `tag1` containing any value.
 * Empty string `''` for no series tags.
 * String containing one or multiple `name=value` pairs separated by comma: `'tag1=value1,tag2=value2'`.
 * Key-value map: `['tag1':'value1','tag2':'value2']`

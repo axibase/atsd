@@ -1935,6 +1935,8 @@ Example | Description
 | `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(value)` |
 | `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(value)` |
 | `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, value)` |
+| `REGR_INTERCEPT` | Slope of the linear regression line. | `REGR_INTERCEPT(value, time)` |
+| `REGR_SLOPE` | Intercept of the linear regression line. | `REGR_SLOPE(value, time)*(time+3*60000)` |
 
 For an unbound window `ROW_NUMBER(...) > 0`, an analytical function is applied to **all** rows in the partition. For a sliding window, the function is applied to a subset of rows matching the row number condition.
 
@@ -2919,6 +2921,43 @@ An optional second argument controls whether the covariance is divided by `n - 1
 COVAR(expr1, expr2 [, SAMPLE | POPULATION])
 ```
 
+### REGR_INTERCEPT
+
+The `REGR_INTERCEPT` and `REGR_SLOPE` functions calculate linear coefficients based on the ordinary-least-squares method.
+
+`y` is the dependent variable, and `x` is the independent variable.
+
+```javascript
+REGR_INTERCEPT(y, x)
+```
+
+```javascript
+REGR_SLOPE(y, x)
+```
+
+```sql
+SELECT entity, date_format(LAST(time), 'yyyy-MM-dd HH:mm:ss') AS dt,
+  FIRST(value) AS first_val, LAST(value) AS last_val,
+  REGR_INTERCEPT(value, time) + REGR_SLOPE(value, time)*(LAST(time)+12*60*60000) AS exp_value
+FROM "df.disk_used_percent"
+ WHERE datetime > NOW - 12*HOUR
+ AND entity LIKE 'nurswgvml%' AND tags.mount_point = '/'
+ GROUP BY entity, tags
+```
+
+```ls
+| entity       | dt                  | first_val | last_val | exp_value |
+|--------------|---------------------|-----------|----------|-----------|
+| nurswgvml007 | 2019-11-29 13:10:36 |     67.27 |    69.61 |     71.01 |
+| nurswgvml010 | 2019-11-29 13:10:36 |     58.20 |    60.20 |     58.51 |
+| nurswgvml501 | 2019-11-29 13:10:34 |     31.63 |    31.64 |     31.65 |
+| nurswgvml502 | 2019-11-29 13:10:38 |     69.33 |    69.34 |     69.39 |
+| nurswgvml301 | 2019-11-29 13:10:38 |     39.28 |    39.29 |     39.29 |
+| nurswgvml006 | 2019-11-29 13:10:34 |     47.15 |    47.21 |     47.27 |
+```
+
+The functions can be used as aggregate and analytical functions.
+
 ### Date Functions
 
 #### DATE_FORMAT
@@ -3439,7 +3478,7 @@ If the `toDate` precedes the `fromDate`, the difference is negative.
 The `TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
 
 ```sql
-WITH TIMEZONE = timezone
+WITH  = timezone
 ```
 
 ```sql
@@ -3471,6 +3510,8 @@ The same query in the default **database** time zone (UTC) produces the followin
 | Etc/UTC     | 2018-08-02 00:00 UTC  | 2018-08-02 00:00 UTC  | 2018-08-01 17:00 PDT  | 2855.5      | 48           |
 ```
 
+In case of nested queries, the `TIMEZONE` specified in the outer query is inherited by inner queries.
+
 Absent the `WITH TIMEZONE` clause, each function must be individually programmed to account for the custom time zone. In the below example, the time zone adjustments are necessary in the `date_format` function, the `GROUP BY PERIOD` clause, and the selection interval.
 
 ```sql
@@ -3496,7 +3537,7 @@ GROUP BY PERIOD(1 DAY, 'US/Pacific')
 
 #### `WITH WORKDAY_CALENDAR`
 
-The `WORKDAY_CALENDAR` clause overrides the default **workday calendar** applied in date functions and [calendar keywords](../shared/calendar.md#keywords).
+The `WORKDAY_CALENDAR` clause overrides the default **workday calendar** applied in date functions and [calendar keywords](../shared/calendar.md#keywords). The installed calendars are listed on the **Data > Workday Calendars** page.
 
 ```sql
 WITH WORKDAY_CALENDAR = 'us_fin'
@@ -3524,6 +3565,8 @@ GROUP BY PERIOD(1 DAY)
 | 2019-05-07 Tuesday   | true                    |         5394 |
 | 2019-05-08 Wednesday | true                    |         5397 |
 ```
+
+In case of nested queries, the `WORKDAY_CALENDAR` specified in the outer query is inherited by inner queries.
 
 ### Mathematical Functions
 
