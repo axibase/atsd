@@ -164,6 +164,9 @@ Examples:
 * `Double.isNaN(value)`: Only `NaN` values and deleted values pass this check.
 * `date.is_weekday()`: Retrieves samples recorded on [week days](../../../rule-engine/object-datetime.md#is_weekday-function) within the selection interval.
 * `!date.is_exceptionday()`: Retrieves samples recorded on [regular calendar](../../../rule-engine/object-datetime.md#is_exceptionday-function) days.
+* `date.hourOfDay >= 14`: Retrieves samples recorded at `14:00` or later each day.
+* `date.timeOfDay BETWEEN '14:00' AND '15:00'`: Retrieves samples recorded between `14:00` and `15:00` (inclusive) each day.
+* `filter_by_time_of_day('14:00', '15:00')`: Retrieves samples recorded between `14:00` and `15:00` (inclusive) each day using a filter function.
 
 ## Transformations
 
@@ -207,6 +210,7 @@ The default sequence can be modified by adding an `transformationOrder` field.
 | `timeFormat` |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
 | `addMeta` | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
 | `transformationOrder` |array| List of transformation names such as `interpolate`, `aggregate` to control the order in which the transformations are applied to data.<br>Example: `"transformationOrder": ["group", "forecast"]` |
+| `timezone` | string | [Time zone ID](../../../shared/timezone-list.md) applied in transformations for calendar alignment and keyword evaluation. |
 
 ## Response
 
