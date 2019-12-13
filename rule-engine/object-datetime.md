@@ -78,6 +78,7 @@ The table below enumerates available `DateTime` object fields and their values f
 |`millisOfSecond`|`303`|
 |`dayOfYear`|`13`|
 |`weekOfWeekyear`|`2`|
+|`nanoOfDay`|`60322303000000L`|
 |`millisOfDay`|`60322303`|
 |`minuteOfDay`|`1005`|
 |`secondOfDay`|`60322`|
@@ -87,6 +88,7 @@ The table below enumerates available `DateTime` object fields and their values f
 |`yearOfEra`|`2018`|
 |`centuryOfEra`|`20`|
 |`millis`|`1515861922303`<br>Unix time in milliseconds.|
+|`epochNano`|`1515861922303000000L`|
 |`iso`|`2018-01-13T16:45:22.303Z`<br>ISO-8601 date.|
 |`next_workday`|`DateTime('2018-01-16T00:00Z[UTC]')`|
 |`previous_workday`|`DateTime('2018-01-12T00:00Z[UTC]')`|
@@ -100,7 +102,7 @@ The table below enumerates available `DateTime` object fields and their values f
 |`is_workday('usa')`|`false`|
 |`is_exceptionday('usa')`|`false`|
 
-Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` are calculated based on the [workday calendar](../administration/workday-calendar.md) specified in `default.holiday.calendar` server property.
+Fields `next_workday`, `previous_workday`, `next_non_working_day`, and `previous_non_working_day` are calculated based on the [workday calendar](../administration/workday-calendar.md) specified in Rule Overview settings. Default value inherits `default.holiday.calendar` server property.
 
 ## Functions
 
