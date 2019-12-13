@@ -79,7 +79,6 @@ elapsedTime(create_ms) > 15*60000
 elapsed_minutes(create_ms) > 15
 ```
 
-
 ### `precise_now`
 
 ```javascript
