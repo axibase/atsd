@@ -19,6 +19,7 @@ View the list of available window date fields [here](./window-fields.md#date-fie
 * [`formatIntervalShort`](#formatintervalshort)
 * [`formatSecondOffset`](#formatsecondoffset)
 * [`now`](#now)
+* [`precise_now`](#precise_now)
 * [`milliseconds`](#milliseconds)
 * [`seconds`](#seconds)
 * [`to_datetime`](#to_datetime)
@@ -76,6 +77,21 @@ elapsedTime(create_ms) > 15*60000
 ```javascript
 // returns the same result as above using the elapsed_minutes function
 elapsed_minutes(create_ms) > 15
+```
+
+### `precise_now`
+
+```javascript
+precise_now DateTime
+```
+
+Returns the current time as a [`DateTime`](object-datetime.md) object with nanosecond precision.
+
+**Examples**:
+
+```javascript
+// calculates elapsed time with high precision
+precise_now.epochNano - date_parse(properties.write_time, 'yyMMddHHmmssSSSSSS', 'UTC').epochNano
 ```
 
 ### `today`
