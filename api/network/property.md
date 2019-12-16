@@ -59,6 +59,7 @@ property e:nurswg t:cpu v:status=OK  v:start_time=12:05 v:conn_time=12:10
 | `s`         | integer          | Unix time in seconds. |
 | `ms`        | integer          | Unix time in milliseconds. |
 | `d`         | string           | Time in [ISO format](../../shared/date-format.md). |
+| `p`         | boolean      | Persist message in the database.<br>Default: `true`.<br>If set to `false`, the property is processed only by the rule engine. |
 
 :::tip Note
 If time fields are omitted, the record is inserted with the current server time.
@@ -70,7 +71,7 @@ Rules inherited from [Base ABNF](base-abnf.md).
 
 ```elm
 ; entity, type and at least one tag is required
-command = "property" MSP entity type *(MSP key) 1*(MSP tag) [MSP time]
+command = "property" MSP entity type *(MSP key) 1*(MSP tag) [MSP time] [MSP persist]
 entity = "e:" NAME
 type = "t:" NAME
 key = "k:" NAME "=" VALUE
@@ -79,6 +80,7 @@ time = time-millisecond / time-second / time-iso
 time-millisecond = "ms:" POSITIVE_INTEGER
 time-second = "s:" POSITIVE_INTEGER
 time-iso = "d:" ISO_DATE
+persist = "p:" BOOLEAN
 ```
 
 ## Limits
