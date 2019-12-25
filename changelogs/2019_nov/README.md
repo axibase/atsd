@@ -62,7 +62,7 @@
  Issue| Category    | Type    | Subject
 ------|-------------|---------|--------
 6376|calculation|Bug|Derived series: allow usage of [`getValueForDate`](https://axibase.com/docs/charts/syntax/udf.html#getvaluefordate) in `value` setting of `[series]`.
-6548|core|Bug|Settings: add support for user-defined [timezones](https://axibase.com/docs/charts/widgets/shared/#timezone).
+6548|core|Bug|Settings: add support for user-defined [time zones](https://axibase.com/docs/charts/widgets/shared/#timezone).
 6605|portal|Feature|Portal: grid display.
 6609|widget-settings|Feature|Calendar expression: [`current_working_day`](https://axibase.com/docs/charts/syntax/calendar.html#previous-time).
 6651|configuration|Feature|Allow user to write string literals in [`var`](https://axibase.com/docs/charts/syntax/control-structures.html#var) declarations without quotes.
