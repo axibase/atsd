@@ -74,5 +74,8 @@
         ,{ "pattern": "https://stats.oecd.org/Index.aspx"}
         ,{ "pattern": "https://mysql.com"}
         ,{ "pattern": "https://web.archive.org"}
+        ,{ "pattern": "https://hetzner.de"}
+        ,{ "pattern": "http://adsabs.harvard.edu"}
+        ,{ "pattern": "https://www.campop.geog.cam.ac.uk/research/projects/transport/onlineatlas/railways.pdf"}
     ]
 }
