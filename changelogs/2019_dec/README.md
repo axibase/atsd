@@ -21,12 +21,12 @@
 6703|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): data availability triggered despite report filter.
 6708|UI|Bug|Replacement Table: formatting issues in CSV format.
 6713|sql|Bug|[SQL](../../sql/README.md): add line numbers or query substring in error messages.
-6716|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): alerts not closed when testing multiple days with **ActivateOn** filter.
+6716|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): alerts not closed when testing multiple days with **Activate On** filter.
 6721|api-rest|Feature|REST API: intraday [filter](../../api/data/series/query.md#sample-filter) function for series query.
 6722|UI|Bug|SQL Query Plan: move **Query Console** and **Cancel Query** buttons to the top.
 6723|UI|Bug|[SQL Console](../../sql/sql-console.md): disable **Store** button after it is clicked once.
 6725|rule editor|Feature|[Rule Engine](../../rule-engine/README.md): **Test** enhancements.
-6730|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): speed up mock RE data loading for rules with **ActivateOn** filter.
+6730|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): speed up mock RE data loading for rules with **Activate On** filter.
 6733|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): cannot compare [`entity.label`](../../rule-engine/placeholders.md#syntax) to string.
 6734|api-rest|Bug|REST API: return entity metadata if entity is specified in the [group](../../api/data/series/group.md) request.
 6737|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): track state for wildcard entities produces incorrect portal and CSV links.
@@ -43,7 +43,7 @@
 6757|portal|Bug|[Portal](../../portals/README.md#portals): function error.
 6758|portal|Bug|[Portal](../../portals/README.md#portals): portal image in email is broken.
 6760|core|Bug|Series schema: incorrect dictionary value returned.
-6761|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): сan not use [`date_format`](../../rule-engine/functions-date.md#date_format) on calendar in **Webhooks** tab.
+6761|rule engine|Bug|[Rule Engine](../../rule-engine/README.md): can not use [`date_format`](../../rule-engine/functions-date.md#date_format) on calendar in **Webhooks** tab.
 6765|rule editor|Bug|[Rule Editor](../../rule-engine/README.md): message [search](../../search/README.md#search) condition incorrect.
 6766|rule engine|Bug|[Rule Error](../../rule-engine/README.md#rule-errors): entity missing in details.
 6768|rule engine|Feature|[Rule Editor](../../rule-engine/README.md): configurable entity filter on [filter](../../rule-engine/filters.md#filter-expression) results page.
