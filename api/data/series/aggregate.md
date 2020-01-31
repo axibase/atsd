@@ -20,7 +20,7 @@ The aggregation process is implemented as follows:
 | `period`  | object     | Regular [period](#period) specified with count and time unit, for example<br>`{ "count": 1, "unit": "HOUR" }`. |
 | `interpolate`  | object  | Fill values in empty periods using an [interpolation function](#interpolation) such as `PREVIOUS` or `LINEAR`. |
 
-### Threshold Function Fields
+### [Threshold Function](./examples/query-aggr-threshold.md#series-query-threshold-aggregators) Fields
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
