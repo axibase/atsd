@@ -64,10 +64,11 @@ Notes:
 | `type` | string | Property type, same as `tags.type`. |
 | `keys` | map | Property keys, serialized as `[key1: val1, key2: val2]`.<br>To retrieve key value, use `keys.{name}`. |
 | `properties` | map | Property tags, serialized as `[key1: val1, key2: val2]`.<br>To retrieve tag value, use `properties.{name}`. |
+| `properties_all` | map | All property tags for the current entity and type. Initialized from database and incrementally updated with matching `property` command. |
+| `properties_previous` | map | Property tags before changed by the current `property` command. |
 
-:::tip Property tags
-The `tags` field for the `property` command contains the `keys` map and the `type` field.
-:::
+* The `tags` field for the `property` command contains the `keys` map and the `type` field.
+* The `properties_all` field is loaded from the database at the window initialization time, beginning with the **Start Date** set on the **Windows** tab.
 
 ## Date Fields
 
