@@ -85,40 +85,44 @@ The object can be initialized as a local variable and re-used in the expression.
 avg() > 60 && stats.avg > 30 && stats.max < 90
 ```
 
-Function names:
+The object contains the following fields:
 
 ```txt
-- min
-- max
-- avg
-- count
-- sum
-- median
-- stdDev
-- first
-- last
-- delta
-- counter
-- wavg
-- wtavg
-- minValueTime
-- maxValueTime
-- slope
-- intercept
-- percentile99_9 (percentile 99.9)
-- percentile99_5 (percentile 99.5)
-- percentile99
-- percentile95
-- percentile90
-- percentile75
-- percentile50
-- percentile25
-- percentile10
-- percentile5
-- percentile1
-- percentile0_5 (percentile 0.5)
-- percentile0_1 (percentile 0.1)
+- min                // Minimum value
+- max                // Maximum value
+- avg                // Average value
+- count              // Sample count
+- sum                // Sum of values
+- median             // Median value (50% percentile)
+- stdDev             // Standard deviation
+- first              // First sample value (ordered by time)
+- last               // Last sample value  (ordered by time)
+- delta              // Difference between the first and last values
+- counter            // Sum of positive differences between consecutive sample values
+- wavg               // Count-weighted average (most recent samples weigh more)
+- wtavg              // Time-weighted average  (most recent samples weigh more)
+- slope              // Linear regression slope
+- intercept          // Linear regression intercept
+- percentile99_9     // 99.9% percentile
+- percentile99_5     // 99.5% percentile
+- percentile99       // 99.0% percentile
+- percentile95       // 95.0% percentile
+- percentile90       // 90.0% percentile
+- percentile75       // 75.0% percentile
+- percentile50       // 50.0% percentile (same as median)
+- percentile25       // 25.0% percentile
+- percentile10       // 10.0% percentile
+- percentile5        //  5.0% percentile
+- percentile1        //  1.0% percentile
+- percentile0_5      //  0.5% percentile
+- percentile0_1      //  0.1% percentile
+- firstTime          // Timestamp, in Unix milliseconds, of the first sample
+- lastTime           // Timestamp, in Unix milliseconds, of the last sample
+- minValueTime       // Timestamp, in Unix milliseconds, of the first occurrence of minimum value
+- maxValueTime       // Timestamp, in Unix milliseconds, of the first occurrence of maximum value
 ```
+
+Fields that cannot be calculated are set to `NaN`.
 
 ### `db_multi_statistics`
 
