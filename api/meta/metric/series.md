@@ -27,6 +27,7 @@ Each series is identified by metric name, entity name, and optional series tags.
 | `minInsertDate` |string|Filter series with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in [ISO format](../../../shared/date-format.md#supported-formats) or using [calendar](../../../shared/calendar.md) keywords.|
 | `maxInsertDate` |string|Filter series with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in [ISO format](../../../shared/date-format.md#supported-formats) or using [calendar](../../../shared/calendar.md) keywords.|
 | `addMeta` | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response.<br>Default: `false`.|
+| `limit` |integer|Maximum number of series to retrieve, ordered by name.<br>Default: `1000`.|
 
 ## Response
 
