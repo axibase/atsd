@@ -29,13 +29,19 @@ Each window maintains a set of continuously updated fields which can be used in 
 
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
-`entity` | string | Entity specified in the command. | `nurswgvml007`
-`entity.displayName` | string | Entity label, if not empty. Otherwise, entity name. | `NURswgvml007`
-`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `[version: std]`
-`entity.tags.version` | string | Entity tag by name. | `community`
-`entity.label` | string | Entity field by name. | `NURswgvml007`
-`tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `[memtype: buffered]`
+`entity` | string | Entity specified in the command. | `entity LIKE 'nur*'`
+`tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `tags.size() != 0`
 `tags.memtype` | string | Command tag by name. | `buffered`
+`entity.displayName` | string | Entity label, or entity name if label is empty. | `entity.displayName LIKE '*swg*'`
+`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `entity.tags.size() > 0`
+`entity.tags.version` | string | Entity tag by name. | `entity.tags.location = 'DC1'`
+`entity.label` | string | Entity label. | `entity.label == '*abc*'`
+`entity.enabled` | boolean | Entity label. | `entity.enabled ? 'ON' : 'OFF'`
+`entity.interpolate` | string | Interpolation mode. | `entity.interpolate == 'LINEAR'`
+`entity.timeZone` | string | Entity time zone. | `entity.timeZone != 'US/Eastern'`
+`entity.creationTime` | long | Entity creation time as Unix time with millisecond precision. | `elapsed_minutes(entity.creationTime) > 24*60`
+`entity.lastInsertTime` | long | Unix time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
+
 
 ### Series Fields
 
