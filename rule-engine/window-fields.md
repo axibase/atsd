@@ -43,7 +43,6 @@ Each window maintains a set of continuously updated fields which can be used in 
 `entity.creationTime` | `DateTime` | Entity creation time as `DateTime` object. | `elapsed_minutes(entity.creationTime.millis) > 24*60`
 `entity.lastInsertTime` | long | Unix time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
 
-
 ### Series Fields
 
 |**Name**|**Type**|**Description**|**Example**|

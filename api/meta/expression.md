@@ -69,7 +69,6 @@ tags.ip LIKE '192.*1'
 createdDate > '2020-05-01T00:00:00Z'
 ```
 
-
 ## Utility Functions
 
 | **Function**   | **Description**  |
