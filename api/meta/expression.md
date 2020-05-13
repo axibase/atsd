@@ -10,6 +10,7 @@
 | `tags.{name}` | Value of tag with name `name`, for example, `tags.location` or `tags.table`. |
 | `message`| Message text in the [messages methods](../../api/data/messages/README.md).|
 | `severity`|Message severity [code](../../shared/severity.md) in the [messages methods](../../api/data/messages/README.md).|
+| `createdDate` | Entity creation date. Represented as `ISO8601` string. Empty string for not specified date. |
 
 * All tags are string variables.
 * Tag names are case-**insensitive**, for example, `tags.location` and `tags.Location` are equal.
@@ -61,6 +62,13 @@ name LIKE 'nur*' AND tags.os = 'Linux'
 ```javascript
 tags.ip LIKE '192.*1'
 ```
+
+* Returns records with `createdDate` later than `2020-05-01T00:00:00Z`.
+
+```javascript
+createdDate > '2020-05-01T00:00:00Z'
+```
+
 
 ## Utility Functions
 

@@ -21,6 +21,7 @@ Each window maintains a set of continuously updated fields which can be used in 
 `severity` | string | Alert severity.<br>**Not accessible** in condition. | `WARNING`
 `delay_expired` | boolean | Delay expiration status.<br>Set to `true` if notifications triggered after delay.<br>**Not accessible** in condition. | `true`
 `metric` | string | Metric name. | `memory_free`
+`metric.creationTime` | `DateTime` | Metric creation time as `DateTime` object. | `elapsed_minutes(metric.creationTime.millis) > 24*60`
 `metric.label` | string | Metric field by name. | `Memory Free, Bytes`
 `window_entity` | string | Entity name if [grouping](grouping.md) by entity is enabled. | `nurswgvml007`
 `window_tags` | map | Windows tags if [grouping](grouping.md) by tags is enabled, serialized as `[key1: val1, key2: val2]`. | `[location: SVL]`
@@ -39,7 +40,7 @@ Each window maintains a set of continuously updated fields which can be used in 
 `entity.enabled` | boolean | Entity label. | `entity.enabled ? 'ON' : 'OFF'`
 `entity.interpolate` | string | Interpolation mode. | `entity.interpolate == 'LINEAR'`
 `entity.timeZone` | string | Entity time zone. | `entity.timeZone != 'US/Eastern'`
-`entity.creationTime` | long | Entity creation time as Unix time with millisecond precision. | `elapsed_minutes(entity.creationTime) > 24*60`
+`entity.creationTime` | `DateTime` | Entity creation time as `DateTime` object. | `elapsed_minutes(entity.creationTime.millis) > 24*60`
 `entity.lastInsertTime` | long | Unix time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
 
 
