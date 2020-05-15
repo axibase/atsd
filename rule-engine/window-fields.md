@@ -32,16 +32,6 @@ Each window maintains a set of continuously updated fields which can be used in 
 `entity` | string | Entity specified in the command. | `entity LIKE 'nur*'`
 `tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `tags.size() != 0`
 `tags.memtype` | string | Command tag by name. | `buffered`
-`entity.displayName` | string | Entity label, or entity name if label is empty. | `entity.displayName LIKE '*swg*'`
-`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `entity.tags.size() > 0`
-`entity.tags.version` | string | Entity tag by name. | `entity.tags.location = 'DC1'`
-`entity.label` | string | Entity label. | `entity.label == '*abc*'`
-`entity.enabled` | boolean | Entity label. | `entity.enabled ? 'ON' : 'OFF'`
-`entity.interpolate` | string | Interpolation mode. | `entity.interpolate == 'LINEAR'`
-`entity.timeZone` | string | Entity time zone. | `entity.timeZone != 'US/Eastern'`
-`entity.creationTime` | long | Entity creation time as Unix time with millisecond precision. | `elapsed_minutes(entity.creationTime) > 24*60`
-`entity.lastInsertTime` | long | Unix time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
-
 
 ### Series Fields
 
@@ -75,6 +65,20 @@ Notes:
 
 * The `tags` field for the `property` command contains the `keys` map and the `type` field.
 * The `properties_all` field is loaded from the database at the window initialization time, beginning with the **Start Date** set on the **Windows** tab.
+
+## Entity Fields
+
+**Name**|**Type**|**Description**|**Example**
+:---|---|---|:---
+`entity.displayName` | string | Entity label, or entity name if label is empty. | `entity.displayName LIKE '*swg*'`
+`entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `entity.tags.size() > 0`
+`entity.tags.version` | string | Entity tag by name. | `entity.tags.location = 'DC1'`
+`entity.label` | string | Entity label. | `entity.label == '*abc*'`
+`entity.enabled` | boolean | Entity label. | `entity.enabled ? 'ON' : 'OFF'`
+`entity.interpolate` | string | Interpolation mode. | `entity.interpolate == 'LINEAR'`
+`entity.timeZone` | string | Entity time zone. | `entity.timeZone != 'US/Eastern'`
+`entity.creationTime` | DateTime | Entity creation time. | `entity.creationTime > '2020-05-01'`
+`entity.lastInsertTime` | DateTime | Time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
 
 ## Date Fields
 
