@@ -22,6 +22,7 @@ Supported fields:
 * name
 * label
 * enabled
+* createdDate
 * tags.tag-name or tags['tag-name']
 
 ### Supported Functions
