@@ -382,6 +382,8 @@ Name | Description
 [`timestamps`](functions-utility.md#timestamps)| Retrieves a list of the dates of the samples in the current window
 [`toBoolean`](functions-utility.md#toboolean)| Converts the input string or number to a boolean value.
 [`toNumber`](functions-utility.md#tonumber)| Converts the input object to floating-point number.
+[`toLong`](functions-utility.md#tonumber)| Converts the input object to long number.
+[`trim_zero`](functions-utility.md#trim_zero)| Formats the number to decimal representation without exponent and trailing zeros.
 [`check_range`](functions-utility.md#check_range)| Checks the input number is within the minimum and maximum range.
 [`agent_to_host`](functions-utility.md#agent_to_host)| Extract hostname from ITM agent name.
 [`sendTcpMessage`](functions-utility.md#sendtcpmessage)| Sends TCP message to a remote server.

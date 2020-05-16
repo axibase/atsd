@@ -70,10 +70,10 @@ Notes:
 
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
-`entity.displayName` | string | Entity label, or entity name if label is empty. | `entity.displayName LIKE '*swg*'`
 `entity.tags` | map | Entity tags, serialized as `[key1: val1, key2: val2]`. | `entity.tags.size() > 0`
-`entity.tags.version` | string | Entity tag by name. | `entity.tags.location = 'DC1'`
+`entity.tags.<name>` | string | Entity tag by name. | `entity.tags.location = 'DC1'`
 `entity.label` | string | Entity label. | `entity.label == '*abc*'`
+`entity.displayName` | string | Entity label, or entity name if label is empty. | `entity.displayName LIKE '*swg*'`
 `entity.enabled` | boolean | Entity label. | `entity.enabled ? 'ON' : 'OFF'`
 `entity.interpolate` | string | Interpolation mode. | `entity.interpolate == 'LINEAR'`
 `entity.timeZone` | string | Entity time zone. | `entity.timeZone != 'US/Eastern'`

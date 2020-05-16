@@ -6,6 +6,8 @@
 * [`ifEmpty`](#ifempty)
 * [`toBoolean`](#toboolean)
 * [`toNumber`](#tonumber)
+* [`toLong`](#tolong)
+* [`trim_zero`](#trim_zero)
 * [`check_range`](#check_range)
 * [`getURLHost`](#geturlhost)
 * [`getURLPort`](#geturlport)
@@ -121,6 +123,22 @@ Input | Type | Result
 `[]` | array | `NaN`
 `0` | number | `0.0`
 `1` | number | `1.0`
+
+## `toLong`
+
+```csharp
+toLong(object a [, long defaultValue]) long
+```
+
+Converts an input object to a long integer number.
+
+## `trim_zero`
+
+```csharp
+trim_zero(object a) string
+```
+
+Formats the input number to a decimal representation without an exponent field and by stripping trailing zeros from fractional numbers.
 
 ## `check_range`
 

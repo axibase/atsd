@@ -18,12 +18,12 @@
 
 Supported fields:
 
-* id
-* name
-* label
-* enabled
-* createdDate
-* tags.tag-name or tags['tag-name']
+* `id`
+* `name`
+* `label`
+* `enabled`
+* `createdDate`
+* `tags.<name>` or `tags['<name>']`
 
 ### Supported Functions
 
@@ -69,6 +69,12 @@ name LIKE 'nurswgvml*'
 Match entities whose label does not contain the 'nur' substring.
 */
 label NOT LIKE '*nur*'
+```
+
+#### Creation Date
+
+```javascript
+creationDate >= '2020-03-15'
 ```
 
 #### Enabled/Disabled Entity Match
