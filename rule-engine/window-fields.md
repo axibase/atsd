@@ -60,7 +60,7 @@ Notes:
 | `type` | string | Property type, same as `tags.type`. |
 | `keys` | map | Property keys, serialized as `[key1: val1, key2: val2]`.<br>To retrieve key value, use `keys.{name}`. |
 | `properties` | map | Property tags, serialized as `[key1: val1, key2: val2]`.<br>To retrieve tag value, use `properties.{name}`. |
-| `properties_all` | map | All property tags for the current entity and type. Initialized from database and incrementally updated with matching `property` command. |
+| `properties_all` | map | All property tags for the current entity and type. Initialized from database and subsequently updated with matching `property` command. |
 | `properties_previous` | map | Property tags before changed by the current `property` command. |
 
 * The `tags` field for the `property` command contains the `keys` map and the `type` field.
@@ -77,8 +77,8 @@ Notes:
 `entity.enabled` | boolean | Entity label. | `entity.enabled ? 'ON' : 'OFF'`
 `entity.interpolate` | string | Interpolation mode. | `entity.interpolate == 'LINEAR'`
 `entity.timeZone` | string | Entity time zone. | `entity.timeZone != 'US/Eastern'`
-`entity.creationTime` | DateTime | Entity creation time. | `entity.creationTime > '2020-05-01'`
-`entity.lastInsertTime` | DateTime | Time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
+`entity.creationTime` | `DateTime` | Entity creation time. | `entity.creationTime > '2020-05-01'`
+`entity.lastInsertTime` | `DateTime` | Time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
 
 ## Date Fields
 
