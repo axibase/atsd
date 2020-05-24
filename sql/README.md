@@ -817,19 +817,16 @@ For aliased columns, the underlying column and table names, or expression text, 
 ### Reserved Words
 
 ```ls
-|-------------|-------------|-------------|-------------|
-| AND         | AS          | ASC         | BETWEEN     |
-| BY          | CASE        | CAST        | CURRENT ROW |
-| DENSE_RANK  | DESC        | ELSE        | ESCAPE      |
-| FROM        | GROUP       | HAVING      | IN          |
-| INNER       | INTERPOLATE | ISNULL      | JOIN        |
-| LAG         | LAST_TIME   | LEAD        | LIKE        |
-| LIMIT       | LOOKUP      | NOT         | OFFSET      |
-| OPTION      | OR          | ORDER       | OUTER       |
-| PERIOD      | PRECEDING   | RANK        | REGEX       |
-| ROW_NUMBER  | SELECT      | THEN        | USING       |
-| VALUE       | WHEN        | WHERE       | WITH        |
-|-------------|-------------|-------------|-------------|
+AND AS ASC AUTO BETWEEN BY CALENDAR CASE CAST CURRENT DAYOFMONTH
+DAYOFWEEK DAYOFYEAR DBTIMEZONE DELETE DENSE_RANK DESC DETAIL
+DISTINCT ELSE END ENDTIME END_TIME ENTITY ESCAPE EXCL EXTEND
+FALSE FIRST_VALUE_TIME FLOAT FROM FULL GROUP GROUPS HAVING IN
+INCL INNER INTEGER INTERPOLATE IS ISNULL JOIN LAG LAST_TIME
+LEAD LIKE LIMIT LINEAR LOOKUP MAPDB METRIC NAN NEXT NO NONE
+NOT NULL NUMBER OFFSET ON OPTION OR ORDER OUTER PERIOD POPULATION
+PRECEDING PREVIOUS RANK REGEX ROW ROW_MEMORY_THRESHOLD ROW_NUMBER
+SAMPLE SELECT START_TIME STEP STRING THEN TIME TIMESTAMP TIMEZONE
+TRUE USING VALUE WEEKOFYEAR WHEN WHERE WITH WORKDAY_CALENDAR YES
 ```
 
  The reserved words also include [calendar keywords](../shared/calendar.md#keywords) such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
