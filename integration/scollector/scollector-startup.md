@@ -205,23 +205,20 @@ sudo systemctl daemon-reload
 
 ## Windows
 
-Download [`scollector executable`](http://bosun.org/scollector/) for Windows.
+Download scollector executable for Windows.
 
-Change to the directory with the `exe` file and create a `scollector.toml` file in notepad.
+* 64-bit [`executable`](scollector-windows-amd64.exe)
+* 32-bit [`executable`](https://axibase.com/public/scollector-windows-386.exe)
 
-> Ensure the name of the file is `scollector.toml` and not `scollector.toml.txt`
-
-Add `Host` setting to `scollector.toml`:
+Change to the download directory and create a `scollector.toml` file containing the `Host` setting.
 
 ```toml
 Host = "http://username:password@atsd_hostname:8088/"
 ```
 
-scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure HTTPS endpoint.
+Specify user credentials for a data collector account. If necessary, create an account with the **Settings > Users > Create Collector User** wizard.
 
-```toml
-Host = "https://username:password@atsd_hostname:8443/"
-```
+Because scollector does not support untrusted SSL certificates, the above example uses the HTTP endpoint. If you installed a signed SSL certificate into ATSD, you can change the setting to the HTTPS endpoint running on the `8443` port by default.
 
 Open the prompt as Administrator and create an scollector service with automated startup:
 
@@ -237,10 +234,9 @@ scollector-windows-amd64.exe -winsvc=start
 
 If the service exits a few seconds after startup, check the following:
 
-* `scollector.toml` file does not exist in the same directory.
-* `scollector.toml` file is not valid or is empty.
-* `Host` parameter value is specified without double quotes.
+* `scollector.toml` file exists in the same directory as the executable file.
+* `scollector.toml` file is valid and is not empty.
 
-Open Windows event log and review the scollector service startup error.
+Open Windows event log and review the scollector service messages.
 
 If the service is running but there are no `scollector` metrics in ATSD, verify the protocol, URL, and user credentials specified in the `scollector.toml` file.

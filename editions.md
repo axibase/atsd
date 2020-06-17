@@ -42,13 +42,6 @@ Enterprise Edition supports a scale-out deployment model.
 | [Data Apps](https://apps.axibase.com/) |  | ![](./images/ok.svg) |
 | [ChartLab](https://apps.axibase.com/chartlab/) |  | ![](./images/ok.svg) |
 
-## Pricing
-
-|  | **Standard Edition** | **Enterprise Edition** |
-|---|:---:|:---:|
-| Subscription | [$240 per month](pricing.md#standard-edition) | [$960 per month](pricing.md#enterprise-edition) |
-| Perpetual License |  | ![](./images/ok.svg) |
-
 ## Support Services
 
 |  | **Standard Edition** | **Enterprise Edition** |

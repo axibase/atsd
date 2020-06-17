@@ -190,8 +190,7 @@ const landingPageMenu = [
     'architecture.md',
     'schema.md',
     'history.md',
-    'licensing.md',
-    'pricing.md',
+    'licensing.md'
 ];
 
 const networkApiMenu = [
