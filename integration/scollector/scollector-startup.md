@@ -207,10 +207,10 @@ sudo systemctl daemon-reload
 
 Download scollector executable for Windows.
 
-* 64-bit [`executable`](https://axibase.com/public/scollector-windows-amd64.exe)
-* 32-bit [`executable`](https://axibase.com/public/scollector-windows-386.exe)
+* 64-bit [`executable`](https://axibase.com/public/scollector-windows-amd64.zip)
+* 32-bit [`executable`](https://axibase.com/public/scollector-windows-386.zip)
 
-Change to the download directory and create a `scollector.toml` file containing the `Host` setting.
+Expand the archive, change to the directory containing `exe` file and create a `scollector.toml` file containing the `Host` setting.
 
 ```toml
 Host = "http://username:password@atsd_hostname:8088/"
