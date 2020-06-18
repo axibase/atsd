@@ -207,7 +207,7 @@ sudo systemctl daemon-reload
 
 Download scollector executable for Windows.
 
-* 64-bit [`executable`](scollector-windows-amd64.exe)
+* 64-bit [`executable`](https://axibase.com/public/scollector-windows-amd64.exe)
 * 32-bit [`executable`](https://axibase.com/public/scollector-windows-386.exe)
 
 Change to the download directory and create a `scollector.toml` file containing the `Host` setting.
