@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -18,9 +17,7 @@ jobs:
       with:
         node-version: 10
     - name: Install checkers
-      run: source .travis-functions.sh && install_checkers
-    - name: Print modified files
-      run: print_modified_markdown_files
+      run: cat .travis-function >> ~/.bashrc && source .travis-functions.sh && install_checkers
     - name: Print modified files
       run: print_modified_markdown_files
     - name: Spellcheck
