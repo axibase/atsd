@@ -1,0 +1,31 @@
+name: ATSD docs CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: axibase/checkout@v2
+    - name: Use Node.js 10
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10
+    - name: Install checkers
+      run: source .travis-functions.sh && install_checkers
+    - name: Print modified files
+      run: print_modified_markdown_files
+    - name: Print modified files
+      run: print_modified_markdown_files
+    - name: Spellcheck
+      run: spellcheck
+    - name: Stylecheck
+      run: stylecheck
+    - name: Validate anchors
+      run: validate_anchors
