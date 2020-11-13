@@ -15,12 +15,12 @@ jobs:
       fail-fast: false
       matrix:
         linter: [spelling_retext, spelling_yandex, links, style, anchors]
-    
+
     steps:
-     - uses: axibase/checkout@v2
-       with:
-         fetch-depth: 0
-     - name: Running ${{ matrix.linter }} linter
-       uses: axibase/docs-linter@v1
-       with:
-         linter: ${{ matrix.linter }}
+      - uses: axibase/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Running ${{ matrix.linter }} linter
+        uses: axibase/docs-linter@v1
+        with:
+          linter: ${{ matrix.linter }}
