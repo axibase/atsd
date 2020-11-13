@@ -22,7 +22,7 @@ jobs:
     - name: Install checkers
       run: cat .travis-functions.sh >> ~/.bashrc && source .travis-functions.sh && install_checkers
     - name: Print modified files
-      run: echo ~/.bashrc && print_modified_markdown_files
+      run: cat ~/.bashrc && print_modified_markdown_files
     - name: Spellcheck
       run: spellcheck
     - name: Stylecheck
