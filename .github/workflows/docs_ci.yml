@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron: "0 3 * * *"
 
 jobs:
   build:
@@ -22,7 +24,7 @@ jobs:
     - name: Install checkers
       run: cat .travis-functions.sh >> ~/.bash_profile && source .travis-functions.sh && install_checkers
     - name: Print modified files
-      run: cat ~/.bash_profile && print_modified_markdown_files
+      run: print_modified_markdown_files
     - name: Spellcheck
       run: spellcheck
     - name: Stylecheck
