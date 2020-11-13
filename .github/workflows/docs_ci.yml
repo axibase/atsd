@@ -20,9 +20,9 @@ jobs:
       with:
         node-version: 10
     - name: Install checkers
-      run: cat .travis-functions.sh >> ~/.profile && source .travis-functions.sh && install_checkers
+      run: cat .travis-functions.sh >> ~/.bash_profile && source .travis-functions.sh && install_checkers
     - name: Print modified files
-      run: cat ~/.profile && print_modified_markdown_files
+      run: cat ~/.bash_profile && print_modified_markdown_files
     - name: Spellcheck
       run: spellcheck
     - name: Stylecheck
