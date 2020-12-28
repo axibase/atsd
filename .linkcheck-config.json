@@ -77,5 +77,6 @@
         ,{ "pattern": "https://hetzner.de"}
         ,{ "pattern": "http://adsabs.harvard.edu"}
         ,{ "pattern": "https://www.campop.geog.cam.ac.uk/research/projects/transport/onlineatlas/railways.pdf"}
+        ,{ "pattern": "https://www.researchgate.net" }
     ]
 }
