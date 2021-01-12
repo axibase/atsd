@@ -189,7 +189,6 @@ const landingPageMenu = [
     'editions.md',
     'architecture.md',
     'schema.md',
-    'history.md',
     'licensing.md'
 ];
 

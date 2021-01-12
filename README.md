@@ -1,39 +1,31 @@
 # Introduction
 
-**Axibase Time Series Database** is a non-relational database optimized for collecting, storing, and analyzing temporal data from IT infrastructure, industrial equipment, smart meters, and IoT devices.
+**Axibase Time Series Database** is a special-purpose database optimized for collecting and analyzing time-series data from IT infrastructure, industrial equipment, and financial markets.
 
 ![](./images/atsd-title.png)
 
 ## Technology Stack
 
-ATSD requires a Java 8 runtime environment and is supported on major Linux distributions in 64-bit mode.
+ATSD is supported on major Linux distributions in 64-bit mode.
 
-ATSD relies on [Apache HBase](https://hbase.apache.org/) as a distributed key-value store and can be deployed on top of file systems such as [Hadoop Distributed File System](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), [Azure Storage](./installation/azure-hdinsight.md), and `ext4`(local).
+In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on top of file systems such as [Hadoop](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and [Azure Storage](./installation/azure-hdinsight.md).
 
 ![](./images/technology-stack-image.png)
 
 ## Compute Scalability
 
-A single-node ATSD instance can process up to 200,000 metrics per second with millisecond accuracy and handle out-of-order sample writes without any loss of numeric precision.
-
-The number of metrics inserted per second can be increased by adding region servers to the underlying HBase cluster.
+A single-node ATSD instance can process up to 200,000 metrics per second without any loss of numeric precision. It can handle out-of-order writes and microsecond precision.
 
 ## Storage Scalability
 
-Storage efficiency ultimately determines how many metrics and individual series can be stored in the system.
-
-Compared to traditional databases, ATSD requires up to **50 times** less disk space. Refer to [compression tests](./administration/compaction/README.md) for more details.
-
-The storage capacity can be scaled by adding data nodes to the underlying HDFS cluster. With ATSD on [AWS EMR](./installation/aws-emr-s3.md), storage capacity is right-sized automatically, independent of  processing capacity.
+Compared to [relational databases](./administration/compaction/README.md), ATSD requires up to **50 times** less disk space.
 
 ## Use Cases
 
 * High-performance metrics backend.
 * Consolidated statistics repository.
 * Centralized monitoring system.
-* EDM database.
-* Data Lake component for time series data.
-* Econometrics data store.
+* Financial last trade and order statistics datastore.
 
 ## Components
 
@@ -118,7 +110,7 @@ series d:2018-05-20T00:16:00Z e:SVL2   m:Temperature=25.1
 ...
 ```
 
-By separating inserted data into **metadata** and **time series** data, each type of information is stored and processed separately and thus, more efficiently. Both types of data are readily available and can be accessed in SQL queries and REST API requests.
+By separating **metadata** and **time series** data, each type of information is stored more efficiently. Both types of data are readily available and can be accessed in SQL queries and REST API requests.
 
 ```sql
 SELECT datetime, value, entity
