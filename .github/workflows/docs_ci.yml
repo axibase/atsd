@@ -4,30 +4,21 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
   schedule:
     - cron: "0 3 * * *"
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l {0}
-
+    strategy:
+      matrix:
+        linter: [links, spelling, style, anchors]
+    
     steps:
-    - uses: axibase/checkout@v2
-    - name: Use Node.js 10
-      uses: axibase/setup-node@v1
-      with:
-        node-version: 10
-    - name: Install checkers
-      run: cat .travis-functions.sh >> ~/.bash_profile && source .travis-functions.sh && install_checkers
-    - name: Print modified files
-      run: print_modified_markdown_files
-    - name: Spellcheck
-      run: spellcheck
-    - name: Stylecheck
-      run: stylecheck
-    - name: Validate anchors
-      run: validate_anchors
+     - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Running ${{ matrix.linter }} linter
+        uses: raipc/docs-check-action@v0.5
+        with:
+          linter: ${{ matrix.linter }}
