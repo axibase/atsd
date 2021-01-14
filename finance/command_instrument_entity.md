@@ -33,4 +33,3 @@ entity e:ru000a102az7_[tqcb] l:"TQCB:RU000A102AZ7" t:symbol=RU000A102AZ7 t:class
 * `scale`
 * `currency`
 * `trade_currency`
-

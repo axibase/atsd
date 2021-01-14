@@ -1,6 +1,6 @@
 # Statistics
 
-To insert a Level 1 statistics such as best bid or offer or daily volume into the database, send the command in the specified format to TCP port `8091` or UDP port `8092`. 
+To insert a Level 1 statistics such as best bid or offer or daily volume into the database, send the command in the specified format to TCP port `8091` or UDP port `8092`.
 
 ```bash
 echo -e "TQBR,GAZP,1610622170591,5,0=674451,9=199,5=4534,1=674450,4=477227,10=227.05" > /dev/tcp/atsd_hostname/8091

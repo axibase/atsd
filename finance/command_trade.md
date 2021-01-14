@@ -1,8 +1,8 @@
 # Trades
 
-To insert a trade into the database, send the command in the specified format to TCP port `8085` or UDP port `8086`. 
+To insert a trade into the database, send the command in the specified format to TCP port `8085` or UDP port `8086`.
 
-```
+```bash
 echo -e "19351405492193896,1588286697000,974890,SPBXM,RDS.A.SPB,quik,B,48,33.38," > /dev/tcp/atsd_hostname/8085
 ```
 
@@ -10,19 +10,19 @@ The commands must be terminated by line break. Multiple commands can be sent ove
 
 ## Format
 
-```
+```bash
 trade_num,unix_time,microseconds,class,symbol,exchange,side,quantity,price,order_num[,session][,field-1,..field-N]
 ```
 
 ## Examples
 
-```
+```ls
 3177336248,1588230831048,469,TQBR,GAZP,MOEX,B,123,195.36,1150996,N
 ```
 
 The trade time is `2020-04-30T07:13:51.048469Z`
 
-```
+```ls
 19351405492176528,1588283343000,645713,IOB,SMSN,LSE,B,1,33.32,
 ```
 

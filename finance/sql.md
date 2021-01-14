@@ -382,7 +382,6 @@ ORDER BY datetime
 |`entity.versionTime`| bigint | Change time as Unix time with millisecond precision. Last time when entity tags or fields are modified.|
 |`entity.groups`| varchar | List of groups to which the instrument belongs.|
 
-
 Specific tags can be accessed by name such as `entity.tags.{name}`. If the field is not present, the `tags.{tag-name}` expression returns `NULL`. To filter records with or without specified series tags, use the `IS NOT NULL` or `IS NULL` operators.
 
 The `entity.groups` column can be referenced in the `WHERE` clause to filter results based on group membership.
@@ -831,7 +830,7 @@ The above query selects samples recorded between `13:00` and `14:00` on `2020-12
 To exclude the end of the selection interval, add the `EXCL` instruction to override the default `BETWEEN` behavior.
 
 ```sql
-  AND datetime BETWEEN '2020-12-23T13:00:00Z' AND '2020-12-23T14:00:00Z' EXCL
+AND datetime BETWEEN '2020-12-23T13:00:00Z' AND '2020-12-23T14:00:00Z' EXCL
 ```
 
 The `datetime` column accepts literal dates in one of the following formats:
@@ -1175,7 +1174,7 @@ ORDER BY MAX(price) DESC, symbol
 Column numbers can be used instead of column names. The number must be a positive integer representing the position of the column in the `SELECT` expression.
 
 ```sql
-  ORDER BY 2 DESC, 1
+ORDER BY 2 DESC, 1
 ```
 
 In combination with `LIMIT`, ordering can be used to execute the **top-N** queries.
