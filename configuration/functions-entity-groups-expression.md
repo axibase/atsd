@@ -201,7 +201,7 @@ property('nurswgvml007','cpu::cpu.idle%') < property('cpu::cpu.idle%')
 properties(string t) map
 ```
 
-Returns the most resent `tag=value` map for property type `t`. Tag value can be accessed via the dot notation.
+Returns`tag=value` map for property type `t`. Tag value can be accessed via the dot notation.
 
 Examples:
 

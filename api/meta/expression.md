@@ -56,10 +56,26 @@ tags.location != ''
 name LIKE 'nur*' AND tags.os = 'Linux'
 ```
 
+* Returns records with `location` tag matching one of the specified patterns.
+
+```javascript
+NOT likeAny(tags.location, ['nur*', 'sv?', '*dbl*'])
+```
+
 * Returns records with the tag `ip` starting with `192.` and ending with `1`
 
 ```javascript
 tags.ip LIKE '192.*1'
+```
+
+* Returns records with the tag `location` equal to one of the listed strings.
+
+```javascript
+tags.location IN ('NUR', 'SVL')
+```
+
+```javascript
+properties('security_definitions').primary_board = 'INAV'
 ```
 
 ## Utility Functions
@@ -69,6 +85,8 @@ tags.ip LIKE '192.*1'
 | `list`       | `list('svl,nyc,sfo')`<br>Returns a collection of strings. <br>Splits a string by delimiter (default is comma).          |
 | `likeAll`    | `likeAll(entity.hostname, collection('hostname_ignore'))`<br>Returns `true`, if every element in the collection of patterns matches the first string argument.        |
 | `likeAny`    | `likeAny(entity.location, list('svl,nyc,sfo'))`<br>Returns `true`, if at least one element in the collection of patterns matches the first string argument. |
+| `startsWithAny` | `startsWithAny(name, ['a', 'b'])`<br>Returns `true`, if the first argument starts with one of the strings in the collection. |
+| `properties` | `properties('def').site = 'XSD'` | Returns `tag=value` map for property of the specified type. |
 | `upper`      | `upper('svl')`<br>Converts the argument to upper case.  |
 | `lower`      | `lower('SFO')`<br>Converts the argument to lower case.  |
 | `collection` | `collection('ip_address_ignore')`<br>Returns a pre-defined named collection by name.  |
