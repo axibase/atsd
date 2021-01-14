@@ -17,19 +17,17 @@ class,symbol,unix_time,microseconds,key=value[,key=value]
 ## Example
 
 ```
-TQBR,GAZP,1610622170591,5,0=674451,1=674450,4=477227,5=4534,9=199,10=227.05
+TQBR,GAZP,1610622170591,5,4=477227,5=4534,9=199,10=227.05
 ```
 
 The event time is `2021-01-14T11:02:50.591005Z`
 
 |Code|Name|Value|
 |---:|:---|---:|
-|0 | rptseq | 674451 |
-|1 | rptseq_st | 674450 |
-|4 | biddeptht | 477227 |
-|5 | numbids | 4534 |
-|9 | biddepth | 199 |
-|10 | bid | 227.05 |
+|4 | `biddeptht` | 477227 |
+|5 | `numbids` | 4534 |
+|9 | `biddepth` | 199 |
+|10 | `bid` | 227.05 |
 
 ## Fields
 
@@ -38,7 +36,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 |class|string|yes|TQBR| Order book system identifier where trade is executed such as `SETS`/`SEAQ`/`IOB` for LSE or `TQBR`/`TQCB`/`CETS` for MOEX.|
 |symbol|string|yes|GAZP| Security symbol.|
 |unix_time|long|yes|1588230831048| Transaction time in UNIX milliseconds.|
-|microseconds|int|yes|469| Microsecond part of the transaction time. <br>0 if sub-millisecond precision is not supported by exchange.|
+|microseconds|integer|yes|469| Microsecond part of the transaction time. <br>0 if sub-millisecond precision is not supported by exchange.|
 |key|integer|yes|10|Field [code](./statistics.md)|
 |value|various|yes|227.05|Field value|
 

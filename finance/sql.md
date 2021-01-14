@@ -2,7 +2,7 @@
 
 ATSD supports SQL for retrieving trades and  stored in the `atsd_trade` table.
 
-SQL statements can be executed via the web-based [console](sql-console.md), on [schedule](#scheduler), or using the [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers.
+SQL statements can be executed via the web-based console, on schedule, or using the [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers.
 
 * [Syntax](#syntax)
   * [SELECT Expression](#select-expression)
@@ -243,7 +243,7 @@ The clause can be built from multiple conditions, each comparing values using op
 * String operators: `<, >, <=, >=, =, <>, !=, LIKE, REGEX, IS`.
 
 > The operators `!=` and `<>` cannot be applied to columns `time` and `datetime`.
-> The operators `<, >, <=, >=` perform [lexicographical comparison](examples/filter-operators-string.md) when applied to string values.
+> The operators `<, >, <=, >=` perform lexicographical comparison when applied to string values.
 
 The result of evaluating a condition is a boolean value. Multiple conditions can be combined using the logical operators `AND`, `OR`, and `NOT`.
 
@@ -340,8 +340,6 @@ Comments are not allowed after the statement termination character `;`.
 
 ### Trade Columns
 
-datetime	trade_num	price	quantity	symbol	class	exchange	side	session	order_num
-
 |**Name**|**Type**|**Required**|**Description**|
 |:---|:---|---|:---|
 |`datetime`         |timestamp   | Yes | Datetime of the trade with microsecond precision.|
@@ -350,7 +348,7 @@ datetime	trade_num	price	quantity	symbol	class	exchange	side	session	order_num
 |`quantity`           |bigint   | Yes | Quantity of instruments (or lots) in the trade.|
 |`symbol`    |varchar   | Yes | Instrument symbol (ticker).|
 |`class`           |varchar   | Yes | Instrument board, class, or section on the exchange.|
-|`exchange`         |varchar   | Yes | Ibstrument exchange.|
+|`exchange`         |varchar   | Yes | Instrument exchange.|
 |`side`       |varchar | No | Direction of the trade (initiator's side): `B` (buy), `S` (sell), or `NULL`.|
 |`session`           |varchar     | No | Trading session code. `O` - opening auction, `N` - normal trading, `L` - closing auction crossing, `E` - closing auction post-crossing.|
 |`order_num`           |varchar   | No | Order number which initiated the trade.|
@@ -1190,7 +1188,7 @@ ORDER BY MAX(price) DESC
 
 ### Collation
 
-Strings are ordered [lexicographically](examples/order-by-string-collation.md), based on Unicode values. `NULL` has the lowest possible value and is listed first when sorted in ascending order.
+Strings are ordered lexicographically based on Unicode values. `NULL` has the lowest possible value and is listed first when sorted in ascending order.
 
 | **ATSD** | **MySQL** | **PostgreSQL** | **Oracle** |
 | ---- | ---- | ---- | ---- |
@@ -1454,7 +1452,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 
 #### DATE_ROUND
 
-The function rounds the input date to the start of the containing [calendar period](#calendar-alignment). The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../shared/calendar.md#keywords).
+The function rounds the input date to the start of the containing calendar period. The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../shared/calendar.md#keywords).
 
 ```javascript
 date_round(varchar date | bigint time, int count varchar unit)
@@ -2180,7 +2178,3 @@ This clause overrides the conditional allocation of shared memory set in [**Sett
 The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 
 > The row count threshold is applied to the number of rows selected from the underlying table, and not the number of rows returned to the client.
-
-**Example**. Temporary Table Grouping and In-Memory Ordering
-
-![Temp Table Grouping and In-Memory Ordering](./images/in-memory-ordering.png)
