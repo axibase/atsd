@@ -21,13 +21,13 @@
 | `last` | 16 | DECIMAL | Last | Last trade price |
 | `qty` | 17 | LONG | Lots in the last | Volume of the last trade, expressed in lots |
 | `value` | 18 | DECIMAL | Value of the last | Value of the last trade in the current trading session, expressed in the currency of settlement |
-| `time` | 19 | TIME | Time of the last | Time when the last trade was concluded |
+| `time` | 19 | TIME | Time of the last | Time of the last trade |
 | `change` | 20 | DECIMAL | Last to Previous day change | Difference between the Last Price and the Previous day Last Price |
 | `priceminusprevwa` | 21 | DECIMAL | Last price to previous WA price | Difference between the last price and the weighted average price of the previous trading session |
 | `min_curr_last_ti` | 22 | TIME | Min. cur. price change time | Change time of the minimum current price |
 | `min_curr_last` | 23 | DECIMAL | Minimum current price | Minimum current price |
 | `currentvalue` | 24 | DECIMAL | Current Value | Last index value |
-| `changetime` | 25 | TIME | Change Time | Time when index value was last changed |
+| `changetime` | 25 | TIME | Change Time | Time when index value changed |
 | `waprice` | 26 | DECIMAL | WA | Weighted-average price |
 | `yield` | 27 | DECIMAL | Yield for the last | Yield, based on the trade price |
 | `starttime` | 28 | TIME | Auction start time | Actual auction start time |
@@ -36,9 +36,9 @@
 | `auctvolume` | 31 | LONG | Auction trade volume | Total volume of all trades, expressed in number of securities. Shows expected volume during the auction and the final volume once it finishes. |
 | `prevdate` | 32 | DATE | Date of the last trading session | Date of the previous trading day |
 | `duration` | 33 | LONG | Duration | Duration |
-| `imbalance` | 34 | DECIMAL | Imbalance | Total volume of orders that will be left unmatched if the auction ends with currently expected price |
+| `imbalance` | 34 | DECIMAL | Imbalance | Total volume of orders that are left unmatched if the auction ends with currently expected price |
 | `plannedtime` | 35 | TIME | Planned Auction Time | Auction start time according to the trading schedule |
-| `accruedint` | 36 | DECIMAL | Accrued interest | Annualized yield to maturity calculated for the settlement date for this security |
+| `accruedint` | 36 | DECIMAL | Accrued interest |  |
 | `assured` | 37 | BOOLEAN | Prevention of uncovered trading for security | |
 | `auctprice` | 38 | DECIMAL | Auction price | Auction price. Displays the expected price of the auction with all the currently registered orders during the auction. Displays the actual auction price after the auction. |
 | `highbid` | 39 | DECIMAL | Best bid | Best bid price during the trading session |

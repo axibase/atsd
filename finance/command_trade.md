@@ -33,7 +33,7 @@ The trade time is `2020-04-30T21:49:03.645713Z`
 |Name|Type|Required|Example|Description|
 |:---|:---|:---|:---|:---|
 |trade_num|long|yes|3177336248| Trade number assigned by the exchange.|
-|unix_time|long|yes|1588230831048| Transaction time in UNIX milliseconds.|
+|unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
 |microseconds|integer|yes|469| Microsecond part of the trade time. <br>0 if sub-millisecond precision is not supported by exchange.|
 |class|string|yes|TQBR| Order book system identifier where trade is executed such as `SETS`/`SEAQ`/`IOB` for LSE or `TQBR`/`TQCB`/`CETS` for MOEX.|
 |symbol|string|yes|GAZP| Security symbol.|

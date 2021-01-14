@@ -66,7 +66,7 @@ ORDER BY datetime
 ### Instruments
 
 ```sql
-SELECT tags.class_code AS "class", tags.symbol AS "symbol", tags.cfi_code AS "CFI", tags.isin AS "ISIN", tags.cusip_code AS "CUSIP", 
+SELECT tags.class_code AS "class", tags.symbol AS "symbol", tags.cfi_code AS "CFI", tags.isin AS "ISIN", tags.cusip_code AS "CUSIP",
   COALESCE(tags.stock_code, REPLACE(tags.symbol, '-RM', '')) AS "code", tags.short_name AS "name"
   FROM atsd_entity
 WHERE tags.class_code != '' AND tags.class_code != 'SPBOPT' AND tags.class_code NOT REGEX '(E|L|P|RP).*|M.*{3}|...Q'
@@ -76,7 +76,6 @@ WHERE tags.class_code != '' AND tags.class_code != 'SPBOPT' AND tags.class_code 
 ```ls
 | class     | symbol      | CFI    | ISIN         | CUSIP     | code    | name                         |
 |-----------|-------------|--------|--------------|-----------|---------|------------------------------|
-| SPBXM     | 1COV@DE.SPB | ESVUFB | DE0006062144 |           | 1COV@DE | Covestro AG                  |
 | SPBXM     | A.SPB       | ESVUFN | US00846U1016 |           | A       | Agilent Technologies, Inc.   |
 | STOCK_USA | A.US        |        | US00846U1016 | 00846U101 | A       | AGILENT TECH INC             |
 | SPBXM     | AA.SPB      | ESVUFR | US0138721065 |           | AA      | Alcoa Corporation            |
@@ -133,7 +132,7 @@ Example:
 SELECT datetime, trade_num, price, quantity   -- SELECT expression
   FROM atsd_trade                             -- table name
 WHERE class = 'TQBR' AND symbol = 'GAZP'      -- WHERE clause
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ORDER BY datetime, trade_num                  -- other clauses
   LIMIT 100
 ```
@@ -169,7 +168,7 @@ The `atsd_entity` contains trade records.
 SELECT *
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 LIMIT 10
 ```
 
@@ -249,7 +248,7 @@ The result of evaluating a condition is a boolean value. Multiple conditions can
 
 ```sql
 WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
-  AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00' 
+  AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
   AND amount > 100000
 ```
 
@@ -310,7 +309,7 @@ The `NUMBER` (parent type for all numeric data types) and `STRING` type can be u
 The `BOOLEAN` type is produced by including boolean comparisons in the `SELECT` expression.
 
 ```sql
-SELECT datetime, price, quantity, quantity>10 FROM atsd_trade 
+SELECT datetime, price, quantity, quantity>10 FROM atsd_trade
 ```
 
 ```ls
@@ -357,9 +356,9 @@ The above columns can be requested with the `SELECT *` syntax, except for querie
 
 ```sql
 SELECT *, ROUND(price*quantity*entity.tags.lot, 1) AS amt
-  FROM atsd_trade 
+  FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ORDER BY datetime
 ```
 
@@ -380,7 +379,7 @@ ORDER BY datetime
 |`entity.tags.{name}` |varchar| Entity tag value. Returns `NULL` if the specified tag does not exist for this entity.|
 |`entity.tags`    |varchar   | All entity tags, concatenated to `name1=value;name2=value` format.|
 |`entity.creationTime`| bigint | Creation time as Unix time with millisecond precision.|
-|`entity.versionTime`| bigint | Change time as Unix time with millisecond precision. Last time when entity tags or fields were modified.|
+|`entity.versionTime`| bigint | Change time as Unix time with millisecond precision. Last time when entity tags or fields are modified.|
 |`entity.groups`| varchar | List of groups to which the instrument belongs.|
 
 
@@ -403,9 +402,9 @@ New columns can be created by applying functions and arithmetic expressions to e
 
 ```sql
 SELECT datetime, price, quantity, ROUND(price*quantity*entity.tags.lot, 1) AS amt
-  FROM atsd_trade 
+  FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ORDER BY datetime
 ```
 
@@ -432,7 +431,7 @@ SELECT price/10 AS "price"
 SELECT side AS "select"
 
 -- Function name: avg
-SELECT "avg" 
+SELECT "avg"
 ```
 
 Double quotes in identifiers can be escaped by doubling the quote symbol.
@@ -457,7 +456,7 @@ The `AS` keyword is optional.
 SELECT quantity*price*entity.tags.lot AS "amt", datetime "d-t"
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
   ORDER BY "d-t"
 ```
 
@@ -549,7 +548,7 @@ Because the `BIGINT` data type does not support `Infinity` constant, the returne
 SELECT price, SQRT(-1*price), price/0, 1/0, -1/0, 1/0-1/0
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 LIMIT 1
 ```
 
@@ -577,7 +576,7 @@ AND sqrt(price-100) IS NOT NULL
 ```sql
 SELECT * FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP' AND side = 's' AND entity.tags.name LIKE 'Ga%'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 LIMIT 1
 ```
 
@@ -595,7 +594,7 @@ Arithmetic calculations are performed with `double` precision.
 SELECT datetime, SUM(quantity), SUM(price*quantity*entity.tags.lot) AS amount
   FROM atsd_trade
 WHERE class = 'FQBR' AND side = 's' AND symbol LIKE 'Aa%'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
   GROUP BY period(5 MINUTE)
 ```
 
@@ -614,7 +613,7 @@ The `IN` operator provides an alternative to multiple `OR` conditions.
 ```sql
 SELECT * FROM atsd_trade
 WHERE class = 'TQBR' AND symbol IN('GAZP', 'SIBN')
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ```
 
 ### LIKE Expression
@@ -630,7 +629,7 @@ The comparison is case-**sensitive**, including **entity and metric** names whic
 ```sql
 SELECT * FROM atsd_trade
 WHERE class = 'FQBR' AND symbol LIKE 'AA%'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ```
 
 Wildcard symbols present in the pattern can be escaped with a backslash `\` which serves as the default escape character.
@@ -656,7 +655,7 @@ The `REGEX` expression matches column value against a [regular expression](https
 ```sql
 SELECT * FROM atsd_trade
 WHERE class = 'FQBR' AND symbol REGEX '.*AA.*|.*GOO.*'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ```
 
 `REGEX` can be used to match one of multiple conditions as an alternative to multiple `LIKE` expressions.
@@ -736,7 +735,7 @@ SELECT *, CASE
     WHEN class = 'SPBFUT' THEN price*quantity
     ELSE price*quantity*entity.tags.lot
   END AS amount
-  FROM atsd_trade 
+  FROM atsd_trade
 WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
 AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
 ORDER BY datetime
@@ -776,9 +775,9 @@ SELECT datetime, class, symbol, price, quantity, CASE
     WHEN 'SPQR' THEN 0
     ELSE price*quantity*entity.tags.lot
   END AS amount_2
-  FROM atsd_trade 
+  FROM atsd_trade
 WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
-AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00' 
+AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
 ORDER BY datetime
 ```
 
@@ -815,9 +814,9 @@ An interval condition determines the date range for the retrieved samples and is
 The `datetime` column accepts literal dates and supports [calendar expressions](../shared/calendar.md#keywords).
 
 ```sql
-SELECT * FROM atsd_trade 
+SELECT * FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23T13:00:00Z' AND '2020-12-23T14:00:00Z' 
+  AND datetime BETWEEN '2020-12-23T13:00:00Z' AND '2020-12-23T14:00:00Z'
    -- datetime >= NOW - 1*DAY
 ```
 
@@ -934,7 +933,7 @@ The `GROUP BY` clause groups records into rows that have matching values for the
 SELECT exchange, class, symbol, max(price)
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 GROUP BY exchange, class, symbol
 ```
 
@@ -975,7 +974,7 @@ PERIOD(1 DAY, 'US/Eastern')
 SELECT datetime, exchange, class, symbol, max(price)
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 GROUP BY exchange, class, symbol, PERIOD(15 MINUTE)
 ```
 
@@ -1002,7 +1001,7 @@ HAVING aggregate_function operator value
 SELECT datetime, exchange, class, symbol, max(price)
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 GROUP BY exchange, class, symbol, PERIOD(15 MINUTE)
   HAVING max(price) > 212.50
 ```
@@ -1029,7 +1028,7 @@ Sample result set, partitioned by symbol and ordered by time:
 SELECT datetime, symbol, price, quantity, trade_num, ROW_NUMBER()
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol IN ('GAZP', 'SIBN')
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:05:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:05:00'
 WITH ROW_NUMBER(symbol ORDER BY time) <= 3
 ```
 
@@ -1271,7 +1270,7 @@ The following functions aggregate values in a column by producing a single value
 SELECT datetime, symbol, open(), high(), low(), close(), volume(), ROUND(vwap(), entity.tags.scale) AS "vwap", count()
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol IN ('GAZP', 'SIBN')
-  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:10:00' 
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:10:00'
   GROUP BY exchange, class, symbol, period(5 minute)
 ```
 
@@ -1516,7 +1515,7 @@ It returns an index, starting with `1`, of the current time interval in queries 
 ```sql
 SELECT datetime, trade_num, INTERVAL_NUMBER()
   FROM atsd_trade
-WHERE class = 'TQBR' AND symbol LIKE 'AF%' 
+WHERE class = 'TQBR' AND symbol LIKE 'AF%'
   AND (datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:00:05' OR datetime BETWEEN '2020-12-23 10:05:00' AND '2020-12-23 10:05:05')
 ORDER BY datetime, trade_num
 ```
@@ -1747,7 +1746,7 @@ WORKDAY(datetime, -2, 'usa')
 
 ```sql
 SELECT value,
-  date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS base,  
+  date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS base,
   date_format(WORKDAY(datetime, -1, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-1",
   date_format(WORKDAY(datetime, -2, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-2"
 ...
@@ -1822,8 +1821,8 @@ SELECT date_format(time, 'yyyy-MM-dd EEEE') AS dt,
   IS_WORKDAY(datetime),
   high()
     FROM atsd_trade
-  WHERE class = 'TQBR' AND symbol = 'GAZP' 
-    AND datetime BETWEEN '2020-12-23 00:00:00' AND '2020-12-31 19:10:00' 
+  WHERE class = 'TQBR' AND symbol = 'GAZP'
+    AND datetime BETWEEN '2020-12-23 00:00:00' AND '2020-12-31 19:10:00'
     GROUP BY exchange, class, symbol, period(1 day)
   WITH WORKDAY_CALENDAR = 'moex', TIMEZONE = 'Europe/Moscow'
 ```
@@ -1912,7 +1911,7 @@ LAG(value)
 SELECT datetime, close(), LAG(close())
     FROM atsd_trade
   WHERE class = 'TQBR' AND symbol = 'GAZP'
-    AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:30:00' 
+    AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:30:00'
     GROUP BY exchange, class, symbol, period(5 minute)
 ```
 
@@ -2018,7 +2017,7 @@ IN_SESSION([varchar session_type][, varchar auction_stage])
 * `auction_stage`: `OPENING`, `CLOSING`
 
 ```sql
-SELECT datetime, trade_num, price, quantity, side, session 
+SELECT datetime, trade_num, price, quantity, side, session
   FROM atsd_trade
 WHERE class = 'TQBR' AND symbol = 'GAZP'
   AND datetime between '2021-01-13 00:00:00' and '2021-01-16 00:00:00'
@@ -2097,7 +2096,7 @@ property(string entity, string expression [, long time | string datetime [, bool
 ```
 
 ```sql
-SELECT symbol, CONCAT(symbol, '_[', class, ']') AS ent, 
+SELECT symbol, CONCAT(symbol, '_[', class, ']') AS ent,
   property(CONCAT(symbol, '_[', class, ']'), 'security_definitions::currency') AS curr
 ```
 

@@ -5,6 +5,7 @@ aggregator[s]?
 aliased
 amd64
 analytics
+annualized
 appender[s]?
 arccosine
 arcsine
@@ -22,6 +23,7 @@ Base64-encoded
 bigint
 bioreactor
 boolean
+buyback
 cancelled
 Cancelling
 cancelling
