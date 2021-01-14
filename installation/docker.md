@@ -14,14 +14,14 @@
 ## Start Container
 
 ```bash
-docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
+docker run -d -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   axibase/atsd:latest
 ```
 
 To automatically create an [account](../administration/collector-account.md) for data collection agents, replace `username` and `password` credential variables in the command below.
 
 ```bash
-docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
+docker run -d --name=atsd -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   --env COLLECTOR_USER_NAME=username \
   --env COLLECTOR_USER_PASSWORD=password \
   --env COLLECTOR_USER_TYPE=api-rw \
@@ -81,10 +81,19 @@ View additional launch examples [here](#start-container).
 
 ## Exposed Ports
 
-* 8088 – HTTP
-* 8443 – HTTPS
+* 8443 – HTTPS UI and REST API
 * 8081 – [TCP network commands](../api/network/README.md#network-api)
 * 8082 – [UDP network commands](../api/network/README.md#udp-datagrams)
+
+Additional ports:
+
+* 8088 - HTTP UI and REST API
+* 1099 – JMX
+* 8084 - Graphite commands
+* 8085 - TCP trade commands
+* 8086 - UDP trade commands
+* 8091 - TCP statistics commands
+* 8092 - UDP statistics commands
 
 ## Port Mappings
 
@@ -92,58 +101,15 @@ Change port mappings in the launch command in case of port allocation error.
 
 ```txt
 Cannot start container <container_id>: failed to create endpoint atsd on network bridge:
-Bind for 0.0.0.0:8088 failed: port is already allocated
+Bind for 0.0.0.0:8443 failed: port is already allocated
 ```
 
 ```bash
 docker run -d --name=atsd \
-  --publish 9088:8088 \
   --publish 9443:8443 \
   --publish 9081:8081 \
   --publish 9082:8082/udp \
   axibase/atsd:latest
-```
-
-## Custom Data Directories
-
-To start container with [data directories](../administration/change-data-directory.md) mounted on custom external volumes, specify the volumes in the `run` command.
-
-```bash
-docker run -d --name=atsd \
-  -p 9088:8088 -p 9443:8443 -p 9081:8081 -p 9082:8082/udp \
-  -v /path/to/hdfs-cache:/opt/atsd/hdfs-cache \
-  -v /path/to/hdfs-data:/opt/atsd/hdfs-data \
-  -v /path/to/hdfs-data-name:/opt/atsd/hdfs-data-name \
-  axibase/atsd:latest
-```
-
-Stop **all** ATSD processes after ATSD start error is display in container logs.
-
-```txt
-ls: Call From 2c206c3a3f0c... to localhost:8020 failed on connection exception
-[ATSD] HDFS is not available.
-```
-
-```bash
-docker exec atsd /opt/atsd/bin/atsd-all.sh stop
-```
-
-Grant ownership of the base directory `/opt/atsd` to the `axibase` user.
-
-```bash
-docker exec -u root atsd chown -R axibase:axibase /opt/atsd
-```
-
-Format the new data directory.
-
-```bash
-docker exec -u axibase atsd /opt/atsd/hadoop/bin/hdfs namenode -format
-```
-
-Start ATSD.
-
-```bash
-docker exec atsd /opt/atsd/bin/atsd-all.sh start
 ```
 
 ## Troubleshooting
