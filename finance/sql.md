@@ -344,7 +344,7 @@ Comments are not allowed after the statement termination character `;`.
 |`datetime`         |timestamp   | Yes | Datetime of the trade with microsecond precision.|
 |`trade_num`         |varchar   | Yes | Trade number assigned by the exchange.|
 |`price`          |number   | Yes | Trade price (can be negative).|
-|`quantity`           |bigint   | Yes | Quantity of instruments (or lots) in the trade.|
+|`quantity`           |bigint   | Yes | Quantity of securities (or lots) in the trade.|
 |`symbol`    |varchar   | Yes | Instrument symbol (ticker).|
 |`class`           |varchar   | Yes | Instrument board, class, or section on the exchange.|
 |`exchange`         |varchar   | Yes | Instrument exchange.|
@@ -383,6 +383,30 @@ ORDER BY datetime
 |`entity.groups`| varchar | List of groups to which the instrument belongs.|
 
 Specific tags can be accessed by name such as `entity.tags.{name}`. If the field is not present, the `tags.{tag-name}` expression returns `NULL`. To filter records with or without specified series tags, use the `IS NOT NULL` or `IS NULL` operators.
+
+Commonly used instrument tags:
+
+* `class_code`
+* `symbol`
+* `name`
+* `short_name`
+* `lot`
+* `step`
+* `scale`
+* `face_value`
+* `currency`
+* `trade_currency`
+* `isin`
+* `cfi_code`
+* `cusip_code`
+* `regnumber`
+* `issue_size`
+* `exchange_link`
+* `list_level`
+* `mat_date`
+* `couponperiod`
+* `couponvalue`
+* `nextcoupon`
 
 The `entity.groups` column can be referenced in the `WHERE` clause to filter results based on group membership.
 
@@ -733,7 +757,7 @@ If no `search_expression` is matched and the `ELSE` condition is not specified, 
 SELECT *, CASE
     WHEN class = 'SPBFUT' THEN price*quantity
     ELSE price*quantity*entity.tags.lot
-  END AS amount
+  END AS amt
   FROM atsd_trade
 WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
 AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
@@ -741,7 +765,7 @@ ORDER BY datetime
 ```
 
 ```ls
-| datetime            |           trade_num | price | quantity | symbol | class  | exchange | side | session | order_num | amount |
+| datetime            |           trade_num | price | quantity | symbol | class  | exchange | side | session | order_num |    amt |
 |---------------------|--------------------:|------:|---------:|--------|--------|----------|------|---------|----------:|-------:|
 | 2020-12-28 14:55:02 |          3450805704 | 207.1 |       88 | GAZP   | TQBR   | MOEX     | S    | N       |   5059247 | 182248 |
 | 2020-12-28 14:55:02 |          3450805705 | 207.1 |       53 | GAZP   | TQBR   | MOEX     | S    | N       |   5060356 | 109763 |
@@ -768,12 +792,12 @@ END
 SELECT datetime, class, symbol, price, quantity, CASE
     WHEN class = 'SPBFUT' THEN price*quantity
     ELSE price*quantity*entity.tags.lot
-  END AS amount,
+  END AS amt,
   CASE class
     WHEN 'SPBFUT' THEN price*quantity
     WHEN 'SPQR' THEN 0
     ELSE price*quantity*entity.tags.lot
-  END AS amount_2
+  END AS amt_2
   FROM atsd_trade
 WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
 AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
@@ -781,7 +805,7 @@ ORDER BY datetime
 ```
 
 ```ls
-| datetime            | class  | symbol | price | quantity | amount | amount_2 |
+| datetime            | class  | symbol | price | quantity | amt | amt_2 |
 |---------------------|--------|--------|------:|---------:|-------:|---------:|
 | 2020-12-28 14:55:02 | TQBR   | GAZP   | 207.1 |       88 | 182248 |   182248 |
 | 2020-12-28 14:55:02 | TQBR   | GAZP   | 207.1 |       53 | 109763 |   109763 |
@@ -1052,7 +1076,7 @@ Unlike the `GROUP BY` clause, partitioning does not reduce the row count. Roll-u
 ROW_NUMBER({partitioning columns} ORDER BY {ordering columns [direction]})
 ```
 
-The `{partitioning columns}` clause must contain one or multiple columns for splitting the rows, for example `symbol`, `class`, `entity.tags.name`, or multiple columns such as `class, symbol`.
+The `{partitioning columns}` clause must contain one or multiple columns for splitting the rows, for example `symbol`, `class`, `entity.tags.<tag-name>`, or multiple columns such as `class, symbol`.
 
 The `{ordering columns [direction]}` can refer to any column of the `FROM` clause with an optional `ASC/DESC` sorting direction.
 
