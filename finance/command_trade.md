@@ -79,3 +79,24 @@ The trade time is `2020-04-30T21:49:03.645713Z`
 | p | 11 | AFTER_AUCTION_TRADE | Yes |
 | C | 12 | CLOSING | Yes |
 | NA | 13 | NON_ACTIVE | No |
+
+## Logging
+
+Incoming trades are logged in `statistics.log` file by default. The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files > logback.xml** page.
+
+Invalid commands are logger in `command_malformed.log` file.
+
+```xml
+<appender name="trade.csv.appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>../logs/trades.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>../logs/trades.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+        <maxFileSize>200MB</maxFileSize>
+        <maxHistory>10</maxHistory>
+        <totalSizeCap>10GB</totalSizeCap>
+    </rollingPolicy>
+    <encoder class="com.axibase.tsd.log.LogbackEncoder">
+        <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX",UTC};%message%n</pattern>
+    </encoder>
+</appender>
+```

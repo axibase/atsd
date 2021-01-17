@@ -33,3 +33,7 @@ entity e:ru000a102az7_[tqcb] l:"TQCB:RU000A102AZ7" t:symbol=RU000A102AZ7 t:class
 * `scale`
 * `currency`
 * `trade_currency`
+
+## Logging
+
+Incoming commands are logged in `command.log` file by default.

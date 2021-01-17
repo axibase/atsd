@@ -93,5 +93,5 @@
 | `initialmarginonbuy` | 88 | DECIMAL | Collateral for buying | Underlying collateral for buying futures-style option |
 | `initialmarginonsell` | 89 | DECIMAL | Collateral for uncovered selling | Underlying collateral for uncovered selling futures-style option |
 | `initialmarginsyntetic` | 90 | DECIMAL | Collateral for uncovered options | Underlying collateral for one uncovered position in options |
-| `lowlimitpx` | 91 | DECIMAL | Lower price limit.  | Lower price limit. Futures and calendar spreads оnly.|
-| `highlimitpx` | 92 | DECIMAL | Upper price limit. | Upper price limit. Futures and calendar spreads оnly. |
+| `lowlimitpx` | 91 | DECIMAL | Lower price limit.  | Lower price limit. Futures and calendar spreads.|
+| `highlimitpx` | 92 | DECIMAL | Upper price limit. | Upper price limit. Futures and calendar spreads. |

@@ -53,3 +53,24 @@ The event time is `2021-01-14T11:02:50.591005Z`
 * If the value of `microseconds` field exceeds 1000, it is added to milliseconds. `1588283343000,645713` is the same as `1588283343645,713`.
 
 * When sending multiple commands over the same connection, separate commands with a `\n` line break.
+
+## Logging
+
+Incoming commands are logged in `statistics.log` file by default. The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files > logback.xml** page.
+
+Invalid commands are logger in `command_malformed.log` file.
+
+```xml
+<appender name="statistics.csv.appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <file>../logs/statistics.log</file>
+  <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>../logs/statistics.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+      <maxFileSize>200MB</maxFileSize>
+      <maxHistory>10</maxHistory>
+      <totalSizeCap>10GB</totalSizeCap>
+  </rollingPolicy>
+  <encoder class="com.axibase.tsd.log.LogbackEncoder">
+      <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX",UTC};%message%n</pattern>
+  </encoder>
+</appender>
+```

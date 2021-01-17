@@ -36,3 +36,7 @@ property e:gazp_[tqbr] t:security_definitions ms:1610604976193 v:symbol=GAZP v:s
 * `minpriceincrement`
 * `currency`
 * `settlcurrency`
+
+## Logging
+
+Incoming commands are logged in `command.log` file by default.

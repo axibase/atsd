@@ -26,7 +26,7 @@ Collections operator: `IN`, for example `tags.location IN ('SVL', 'NUR')`
 
 ## Wildcards
 
-The wildcards apply to `LIKE` operator and function patterns except where regex is used.
+The wildcards apply to `LIKE` operator and function patterns except where regular expressions are used (`regex`, `regexAny`).
 
 Wildcard `*` means zero or more characters.
 
@@ -103,7 +103,7 @@ properties('security_definitions').primary_board = 'INAV'
 | `likeAny`    | `likeAny(entity.location, list('svl,nyc,sfo'))`<br>Returns `true` if at least one element in the collection of patterns matches the first string argument. |
 | `matches`    | `matches('*00*5*', [tags.location])`<br>Returns `true` if at least one element in the collection matches the pattern in the first string argument. |
 | `startsWithAny` | `startsWithAny(name, ['a', 'b'])`<br>Returns `true` if the first argument starts with one of the strings in the collection. |
-| `regexAny`    | `regexAny(name, ['.*a(bc){2,3}$'])`<br>Returns `true` if the first string argument matches at least one of the **regex** patterns in the collection. |
+| `regexAny`    | `regexAny(name, ['.*a(bc){2,3}$'])`<br>Returns `true` if the first string argument matches at least one of the **regular expression** patterns in the collection. |
 | `properties` | `properties('def').site = 'XSD'` | Returns `tag=value` map for property of the specified type. |
 | `upper`      | `upper('svl')`<br>Converts the argument to upper case.  |
 | `lower`      | `lower('SFO')`<br>Converts the argument to lower case.  |
