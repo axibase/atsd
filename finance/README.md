@@ -1,31 +1,15 @@
 # Introduction
 
-**Axibase Time Series Database** is a special-purpose database optimized for collecting and analyzing time-series data from IT infrastructure, industrial equipment, and [financial markets](./finance/README.md).
-
-![](./images/atsd-title.png)
+**Axibase Time Series Database** FINANCE edition is optimized for storing and analyzing financial market data.
 
 ## Technology Stack
 
-ATSD is supported on major Linux distributions in 64-bit mode.
-
-In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on top of file systems such as [Hadoop](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and [Azure Storage](./installation/azure-hdinsight.md).
-
-![](./images/technology-stack-image.png)
+ATSD is supported on major Linux distributions in 64-bit mode. In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on top of file systems such as [Hadoop](./installation/cloudera.md) (HDFS), [Amazon EMRFS](./installation/aws-emr-s3.md), and [Azure Storage](./installation/azure-hdinsight.md).
 
 ## Compute Scalability
 
-A single-node ATSD instance can process up to 200,000 metrics per second without any loss of numeric precision. It can handle out-of-order writes and microsecond precision.
+A single-node ATSD instance can process up to 100,000 trades and Level 1 statistics per second.
 
-## Storage Scalability
-
-Compared to [relational databases](./administration/compaction/README.md), ATSD requires up to **50 times** less disk space.
-
-## Use Cases
-
-* High-performance metrics backend.
-* Consolidated statistics repository.
-* Centralized monitoring system.
-* Financial last trade and order statistics datastore.
 
 ## Components
 

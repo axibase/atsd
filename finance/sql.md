@@ -2200,3 +2200,7 @@ This clause overrides the conditional allocation of shared memory set in [**Sett
 The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 
 > The row count threshold is applied to the number of rows selected from the underlying table, and not the number of rows returned to the client.
+
+### `trade.max.instruments.per.scan`
+
+The query is limited to retrieve data for up 100 instruments by default. To modify the limit, change `trade.max.instruments.per.scan` setting in **Admin > Configuration > Server Properties**.
