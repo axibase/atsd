@@ -2,7 +2,7 @@
 
 ## Endpoint
 
-```
+```elm
 POST /api/v1/trades/upload
 ```
 
@@ -28,7 +28,7 @@ The parameters can be set as follows:
 ### Response
 
 ```json
- {"file": "<name>", "size": "<size in bytes>", "job_id": "uuid of the job"}
+{"file": "<name>", "size": "<size in bytes>", "job_id": "uuid of the job"}
 ```
 
 ## Examples
@@ -55,7 +55,7 @@ curl --insecure --request POST 'https://atsd_hostname:8443/api/v1/trades/upload'
 
 ### PowerShell
 
-For Powershell 6.1+:
+For PowerShell 6.1+:
 
 ```powershell
 powershell -file upload.ps1 -path trade_commands.zip
@@ -76,7 +76,7 @@ $Form = @{
 Invoke-RestMethod -Uri $Uri -Headers $Headers -Method Post -Form $Form
 ```
 
-To create a zip archive for uploading:
+To create a ZIP archive for uploading:
 
 ```powershell
 param([string]$src, [string]$dst)

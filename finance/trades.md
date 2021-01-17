@@ -19,14 +19,14 @@ Retrieves trades for the instrument in CSV format.
 | `exchange` | Exchange. |
 | `startDate` | **[Required]** Start date in [ISO format](../shared/date-format.md#supported-formats) or [calendar](../shared/calendar.md) expression.  |
 | `endDate` | **[Required]** End date in [ISO format](../shared/date-format.md#supported-formats) or [calendar](../shared/calendar.md) expression. |
-| `timezone` | Timezone for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
+| `timezone` | Time zone for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 | `workdayCalendar` | Workday calendar for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 
 ## Response
 
 ### Header
 
-```
+```csv
 datetime,trade_num,side,quantity,price,order_num,session
 ```
 
