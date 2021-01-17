@@ -85,7 +85,9 @@ Re-enable tombstone protection.
 echo "alter 'atsd_trade_instrument', NAME => 'd', KEEP_DELETED_CELLS => true" | /opt/atsd/hbase/bin/hbase shell
 ```
 
+<!-- markdownlint-disable MD101 -->
 Verify that protection is enabled: `KEEP_DELETED_CELLS => 'TRUE'`
+<!-- markdownlint-enable MD101 -->
 
 ```bash
 echo "describe 'atsd_trade_instrument'" | /opt/atsd/hbase/bin/hbase shell
