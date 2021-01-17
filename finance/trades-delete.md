@@ -4,7 +4,7 @@
 
 Deletes trades for the instrument.
 
-The deleted trades are not physically removed from the database until a corresponding [administrative action](#physical-deletion) is permformed against the `atsd_trade` table.
+The deleted trades are not physically removed from the database until a corresponding [administrative action](#physical-deletion) is performed against the `atsd_trade` table.
 
 ## Request
 

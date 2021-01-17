@@ -25,7 +25,7 @@ Compared to [relational databases](./administration/compaction/README.md), ATSD 
 * High-performance metrics backend.
 * Consolidated statistics repository.
 * Centralized monitoring system.
-* Financial last trade and order statistics datastore.
+* Financial last trade and order statistics data store.
 
 ## Components
 
