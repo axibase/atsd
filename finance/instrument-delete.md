@@ -20,12 +20,23 @@ Deletes the instrument and all its trades.
 }
 ```
 
-To delete **all** instruments for the class, omit the `symbol` parameter and add `multipleInstruments` set to `true` to the payload.
+To delete **all** instruments for the class, omit the `symbol` parameter and add `multipleInstruments` parameter set to `true`.
 
 ```json
 {
   "class": "<class-name>",
-  "multipleInstruments": "true",
+  "multipleInstruments": true,
+  "exchange": "<exchange>"
+}
+```
+
+To delete the underlying entity for the instrument add `deleteEntity` parameter set to `true`.
+
+```json
+{
+  "class": "<class-name>",
+  "symbol": "<symbol>",
+  "deleteEntity": true | false,
   "exchange": "<exchange>"
 }
 ```

@@ -1250,7 +1250,6 @@ LIMIT 1
 
 The above query retrieves all trades, even though it returns only 1 record as instructed by the `LIMIT` clause.
 
-
 ## Inline Views
 
 Inline view is a subquery specified in the `FROM` clause instead of a table.
