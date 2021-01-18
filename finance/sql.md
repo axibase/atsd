@@ -1250,6 +1250,43 @@ LIMIT 1
 
 The above query retrieves all trades, even though it returns only 1 record as instructed by the `LIMIT` clause.
 
+
+## Inline Views
+
+Inline view is a subquery specified in the `FROM` clause instead of a table.
+
+```sql
+-- parent (or outer) query
+SELECT expr FROM (
+  -- subquery (or inner / nested query)
+  SELECT expr ...
+)
+```
+
+The subquery defines a virtual table processed by the parent query. The virtual table can be assigned an alias.
+
+```sql
+SELECT tbl.symbol AS sym,
+    AVG(tbl.daily_volume) AS avg_daily_volume,
+    MAX(tbl.daily_volume) AS max_daily_volume,
+  COUNT(tbl.daily_volume) AS trading_days
+FROM (
+  SELECT CURRENT_TIMESTAMP AS time, symbol, volume() AS daily_volume
+    FROM atsd_trade
+    WHERE datetime >= NOW-7*DAY
+      AND class = 'TQBR' AND symbol IN('GAZP', 'SIBN')
+  GROUP BY symbol, class, exchange, PERIOD(1 DAY)
+) tbl
+GROUP BY tbl.symbol
+```
+
+```ls
+| sym  | avg_daily_volume | max_daily_volume | trading_days |
+|------|-----------------:|-----------------:|-------------:|
+| GAZP |          5656367 |          6440023 |            6 |
+| SIBN |           192863 |           347828 |            6 |
+```
+
 ## Functions
 
 ### Aggregate Functions
