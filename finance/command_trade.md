@@ -62,23 +62,25 @@ The trade time is `2020-04-30T21:49:03.645713Z`
 
 * When sending multiple commands over the same connection, separate commands with a `\n` line break.
 
+* To correct fields in an existing trade, submit a new command for the same `trade_num` and instrument identifier fields.
+
 ## Trading Session Codes
 
 | Code | Identifier | Description | Trade Stage |
 |:---|---:|:---|---|
-| S | 1 | OPENING_AUCTION_CALL | No |
-| O | 2 | OPENING_AUCTION | Yes |
-| N | 3 | REGULAR_TRADING | Yes |
-| L | 4 | CLOSING_AUCTION | Yes |
-| E | 5 | CLOSING_AUCTION_POST_CROSSING | Yes |
-| I | 6 | DISCRETE_AUCTION | Yes |
-| D | 7 | DARK_POOL_AUCTION | Yes |
-| A | 8 | AUCTION_ORDER_ENTRY | No |
-| a | 9 | AUCTION_TRADE_CONCLUSION | No |
-| b | 10 | AUCTION_BOOKBUILDING | No |
-| p | 11 | AFTER_AUCTION_TRADE | Yes |
-| C | 12 | CLOSING | Yes |
-| NA | 13 | NON_ACTIVE | No |
+| S | 1 | `OPENING_AUCTION_CALL` | No |
+| O | 2 | `OPENING_AUCTION` | Yes |
+| N | 3 | `REGULAR_TRADING` | Yes |
+| L | 4 | `CLOSING_AUCTION` | Yes |
+| E | 5 | `CLOSING_AUCTION_POST_CROSSING` | Yes |
+| I | 6 | `DISCRETE_AUCTION` | Yes |
+| D | 7 | `DARK_POOL_AUCTION` | Yes |
+| A | 8 | `AUCTION_ORDER_ENTRY` | No |
+| a | 9 | `AUCTION_TRADE_CONCLUSION` | No |
+| b | 10 | `AUCTION_BOOKBUILDING` | No |
+| p | 11 | `AFTER_AUCTION_TRADE` | Yes |
+| C | 12 | `CLOSING` | Yes |
+| NA | 13 | `NON_ACTIVE` | No |
 
 ## Logging
 

@@ -14,19 +14,26 @@ The deleted trades are not physically removed from the database until a correspo
 
 ### Payload
 
+| **Field Name** | **Description** |
+|:---|:---|
+| `symbol` | **[Required]** Symbol. |
+| `class` | **[Required]** Class. |
+| `exchange` | **[Required]** Exchange. |
+| `startDate` | **[Required]** Start date in [ISO format](../shared/date-format.md#supported-formats).  |
+| `endDate` | **[Required]** End date in [ISO format](../shared/date-format.md#supported-formats). `endDate` is inclusive. |
+| `multipleInstruments` | Omit the `symbol` parameter and add `multipleInstruments` set to `true` to delete trades for **all** instruments within the class. |
+
 ```json
 {
-  "class": "<class-name>",
   "symbol": "<symbol>",
+  "class": "<class-name>",
   "exchange": "<exchange>",
   "startDate": "<start date in ISO format>",
   "endDate": "<end date in ISO format>"
 }
 ```
 
-`endDate` is inclusive.
-
-To delete trades for **all** instruments within the class, omit the `symbol` parameter and add `multipleInstruments` set to `true` to the payload.
+To delete trades for **all** instruments within the class.
 
 ```json
 {

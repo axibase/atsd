@@ -12,6 +12,14 @@ Deletes the instrument and all its trades.
 
 ### Payload
 
+| **Field Name** | **Description** |
+|:---|:---|
+| `symbol` | **[Required]** Symbol. |
+| `class` | **[Required]** Class. |
+| `exchange` | **[Required]** Exchange. |
+| `multipleInstruments` | Omit the `symbol` parameter and add `multipleInstruments` set to `true` to delete trades for **all** instruments within the class. |
+| `deleteEntity` | Delete the underlying entity. Default is `false`. |
+
 ```json
 {
   "class": "<class-name>",
@@ -63,10 +71,8 @@ curl --insecure --request POST 'https://atsd_hostname:8443/api/v1/instruments/de
 --header 'Content-Type: application/json' \
 --data-raw '{
   "class":    "TQBR",
-  "symbol":   "GAZP",
-  "exchange": "MOEX",
-  "startDate": "2020-12-12T00:00:00.000+03:00",
-  "endDate":   "2020-12-12T59:59:59.999+03:00"
+  "symbol":   "TEST",
+  "exchange": "MOEX"
 }'
 ```
 
