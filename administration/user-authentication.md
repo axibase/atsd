@@ -50,6 +50,16 @@ An HTTP request to a specific API URL starting with `/api/` can be authenticated
 
 The token allows access to a **specific** URL, consisting of path and query parameters. The URL and the HTTP method are fixed at the time the token is created. The order of query parameters and the URL-encoding scheme is not important.
 
+To allow access to a variable URL with placeholders, where parameter value or path parts can be substituted at request time, use the `<>` syntax.
+
+```ls
+/api/v1/portal/export?id=<>
+# allows querying:
+  - /api/v1/portal/export?id=1
+  - /api/v1/portal/export?id=2
+  - /api/v1/portal/export?id=abc
+```
+
 Users can issue and revoke tokens on the Account Settings page. The tokens can be set to automatically expire and be subject to IP address restrictions.
 
   ![portal guest](./images/token-details.png)

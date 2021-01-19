@@ -1,6 +1,6 @@
 # Introduction
 
-**Axibase Time Series Database** is a special-purpose database optimized for collecting and analyzing time-series data from IT infrastructure, industrial equipment, and financial markets.
+**Axibase Time Series Database** is a special-purpose database optimized for collecting and analyzing time-series data from IT infrastructure, industrial equipment, and [financial markets](./finance/README.md).
 
 ![](./images/atsd-title.png)
 
@@ -25,7 +25,7 @@ Compared to [relational databases](./administration/compaction/README.md), ATSD 
 * High-performance metrics backend.
 * Consolidated statistics repository.
 * Centralized monitoring system.
-* Financial last trade and order statistics datastore.
+* Financial last trade and order statistics data store.
 
 ## Components
 

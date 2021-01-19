@@ -5,7 +5,7 @@
 Issue| Category   | Type   | Subject
 -----|-------------|---------|----------------------
 5651|rule engine|Bug|Validator ignores [property functions](../../rule-engine/functions.md#properties) and [derived commands](../../rule-engine/derived.md).
-5649|installation|Feature|Validate [installation](../../installation/README.md#linux-packages) on `Ubuntu 18.04`.
+5649|installation|Feature|Validate installation on `Ubuntu 18.04`.
 5641|rule editor|Feature|Add **View Alert Log** links to [**Logging**](../../rule-engine/logging.md#alert-logging) tab.
 5640|rule engine|Feature|Serialize Alert History record as map in the [details](../../rule-engine/details-table.md#details-table) table.
 5639|rule engine|Feature|Add context to [script](../../rule-engine/functions-script.md#script-functions) execution log.
