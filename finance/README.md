@@ -41,6 +41,8 @@ ATSD provides a platform for processing and persisting data from consolodated an
 
 ## Security Types
 
+The extensible instrument schema allows clients to store tick and reference data for any asset class, including:
+
 * Equities
 * Futures
 * Options
@@ -48,6 +50,7 @@ ATSD provides a platform for processing and persisting data from consolodated an
 * Currencies / FX
 * ETFs/ETNs
 * Indices
+* Commodities
 
 ## Installation
 
