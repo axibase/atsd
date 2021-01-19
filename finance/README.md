@@ -62,7 +62,7 @@ Installation on [Docker](docker.md):
 docker run -d --name=atsd --env=JAVA_OPTS="-Dprofile=FINANCE" axibase/atsd:latest && docker logs -f atsd
 ```
 
-## Quik Start
+## Quick Start
 
 * Send [trades](command-trade-insert.md)
 * Send [quotes and statistics](command-statistics-insert.md)

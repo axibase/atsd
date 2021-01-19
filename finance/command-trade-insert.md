@@ -3,7 +3,7 @@
 To insert a trade into the database, send the command in the specified format to TCP port `8085` or UDP port `8086`.
 
 ```bash
-echo -e "19351405492193896,1588286697000,974890,SPBXM,RDS.A.SPB,quik,B,48,33.38," > /dev/tcp/atsd_hostname/8085
+echo -e "19351405492193896,1588286697000,974890,TQBR,GAZP,MOEX,B,48,33.38," > /dev/tcp/atsd_hostname/8085
 ```
 
 The commands must be terminated by line break. Multiple commands can be sent over the same connection.
