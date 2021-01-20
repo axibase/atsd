@@ -8,6 +8,8 @@ echo -e "19351405492193896,1588286697000,974890,TQBR,GAZP,MOEX,B,48,33.38," > /d
 
 The commands must be terminated by line break. Multiple commands can be sent over the same connection.
 
+Timestamp precision is microseconds.
+
 ## Format
 
 ```bash

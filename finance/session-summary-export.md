@@ -19,7 +19,7 @@ Retrieves session summary statistics for the instrument in JSON format.
 ```json
 {
   "entity": "gazp_[tqbr]"
-]
+}
 ```
 
 ## Response
