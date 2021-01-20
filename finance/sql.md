@@ -2102,7 +2102,7 @@ In the example above, `in_session(DAY, OPENING)` equates to `[09:50 - 10:00)` in
 
 #### STAT
 
-The function returns the **current** value of the specified instrument market [statistic](./statistics.md).
+The function returns the **current** value of the specified instrument market [statistic](./statistics-fields.md).
 
 ```javascript
 STAT.<stat-name>
@@ -2125,7 +2125,7 @@ WITH ROW_NUMBER(symbol ORDER BY datetime) <= 1
 
 #### SEC_DEF
 
-The function returns the **current** value of the specified instrument [security definitions](./security_definitions.md).
+The function returns the **current** value of the specified instrument [security definitions](./security_definitions-fields.md).
 
 ```javascript
 SEC_DEF.<stat-name>

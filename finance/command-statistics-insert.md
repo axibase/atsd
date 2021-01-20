@@ -37,7 +37,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 |symbol|string|yes|GAZP| Security symbol.|
 |unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
 |microseconds|integer|yes|469| Microsecond part of the transaction time. <br>0 if sub-millisecond precision is not supported by exchange.|
-|key|integer|yes|10|Field [code](./statistics.md)|
+|key|integer|yes|10|Field [code](./statistics-fields.md)|
 |value|various|yes|227.05|Field value|
 
 ## Notes
