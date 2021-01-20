@@ -1,4 +1,4 @@
-# Statistics
+# Statistics Fields
 
 | Name | Code | Type | Short Name | Description |
 |----------|-----:|----------|--------|---------|
