@@ -120,6 +120,15 @@ ATSD является нереляционной базой и поддержи�
 
 ### Установка FAST консьюмеров
 
+```bash
+curl -O https://www.axibase.com/public/moex-consumer.tar.gz
+tar -xzf moex-consumer.tar.gz /opt/moex-consumer
+/opt/moex-consumer/install.sh
+systemctl start moex-consumer-asts-fond
+systemctl start moex-consumer-asts-fx
+systemctl start moex-consumer-spectra
+```
+
 ### Установка ATSD
 
 ```bash
