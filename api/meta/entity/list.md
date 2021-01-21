@@ -76,6 +76,7 @@ tags.size() == 0 && name.length() == 64
 | `interpolate` | string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`.|
 | `timeZone` | string | Time Zone ID, for example EST.<br>Refer to the [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in entity-specific time zone.|
 | `createdDate` | string | Date of entity creation in [ISO format](../../../shared/date-format.md#supported-formats).|
+| `versionDate` | string | Date of entity change in [ISO format](../../../shared/date-format.md#supported-formats).|
 | `lastInsertDate` | string |Last time a value is received by the database for this entity in [ISO format](../../../shared/date-format.md#supported-formats). |
 | `tags` | object | Entity tags, as requested with the `tags` parameter. |
 
@@ -161,6 +162,7 @@ curl https://atsd_hostname:8443/api/v1/entities?expression=label!=%22%22%20and%2
     "enabled": true,
     "timeZone": "PST",
     "lastInsertDate": "2016-10-28T08:37:05.000Z",
+    "versionDate":    "2020-10-28T08:37:05.000Z",
     "interpolate": "LINEAR",
     "label": "NURswgdkl001"
   }
