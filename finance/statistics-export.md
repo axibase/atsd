@@ -14,7 +14,7 @@ Retrieves statistics for the instrument in JSON format.
 
 | **Name** | **Description** |
 |:---|:---|
-| `typy` | **[Required]** Set to `statistics`. |
+| `type` | **[Required]** Set to `statistics`. |
 | `entity` | **[Required]** Set to `<symbol>_[<class_code>]`. |
 | `startDate` | **[Required]** Set to `1970-01-01T00:00:00Z`.  |
 | `endDate` | **[Required]** Set to `NOW`. |
