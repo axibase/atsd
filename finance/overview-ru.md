@@ -133,6 +133,24 @@ ATSD является нереляционной базой и поддержи�
 
 ### Установка FAST консьюмеров
 
+```bash
+curl -O https://www.axibase.com/public/moex-consumer.tar.gz
+tar -xzf moex-consumer.tar.gz /opt/moex-consumer
+/opt/moex-consumer/install.sh
+```
+
+В конфигурационных файлах `/opt/moex-consumer/spectra/config/application.properties`, `/opt/moex-consumer/asts-fond/config/application.properties`, `/opt/moex-consumer/asts-fx/config/application.properties` следует заменить значение параметра ifs на имена сетевых интерфейсов, у которых есть доступ к соответствующим виртуальным сетям.
+
+Пример: `ifs=vlan233,vlan243` -> `ifs=eth1,eth2`
+
+Параметры `atsd.host`, `atsd.port.tcp`, `atsd.port.udp` позволяют указать ATSD, на которую будут отправлены команды. Данные параметры необходимы в случае распределённой инсталляции.
+
+```bash
+systemctl start moex-consumer-asts-fond
+systemctl start moex-consumer-asts-fx
+systemctl start moex-consumer-spectra
+```
+
 ### Установка ATSD
 
 ```bash
