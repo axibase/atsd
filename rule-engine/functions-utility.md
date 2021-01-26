@@ -523,10 +523,19 @@ The `atsd.log` records lock acquisition attempts with relevant rule details.
 2019-07-03T08:10:21.806Z;INFO;sendNotificationsExecutor-18;com.axibase.tsd.service.el.ElFunctionsServiceImpl;Lock 'call-01' not acquired by rule 'call_order', window {"metric":"property","entity":"nur","tags":{}}: locked until 2019-07-03T08:10:36.742Z
 ```
 
+To prevent the action from executing twice on the same day, enable Alert Logging and invoke the `last_open()` function:
+
+```javascript
+@if{!lock(cmd, 15000) || date_format(last_open().open_time, 'yyyy-MM-dd') != date_format(now, 'yyyy-MM-dd')}
+${cancelAction()}
+@end{}
+# execute action or send notification
+```
+
 ## `unlock`
 
 ```csharp
-unclock(string key) boolean
+unlock(string key) boolean
 ```
 
 The function releases a previously acquired lock. The result is `true` if an active lock is found for the specified key and the lock is released.

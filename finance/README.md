@@ -1,16 +1,14 @@
 # Introduction
 
-**Axibase Time Series Database** FINANCE edition is optimized for storing and real-time processing of financial market data such as trades, quotes, and session summaries.
+**Axibase Time Series Database** is a scalable platform for storing and analyzing financial market data such as trades, quotes, and session summaries.
 
-ATSD provides customers easy-to-use querying tools and APIs to perform quantitative research, analyze transaction costs as well as backtest trading algorithms. Unlike traditional tick databases which are updated on `T+1` basis, ATSD is capable of ingesting streaming data from real-time feeds.
+ATSD provides customers easy-to-use querying tools and APIs to perform quantitative research, analyze transaction costs as well as backtest trading algorithms. Unlike traditional tick stores which are updated on `T+1` basis, ATSD is optimized for streaming data from self-aggregated, consolodated, and direct exchange feeds available to the client.
 
-## Data
+Supported data types include:
 
-ATSD provides a platform for processing and persisting data from consolodated and direct exchange feeds available to the customer.
-
-* Trades
+* Last sale / trades
 * Level 1 Quotes
-* Auctions and Imbalance
+* Auction and Imbalance Statistics
 * Order Book Summary
 * Day and Session Summary
 * Reference Data

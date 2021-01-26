@@ -95,3 +95,7 @@
 | `initialmarginsyntetic` | 90 | DECIMAL | Collateral for uncovered options | Underlying collateral for one uncovered position in options |
 | `lowlimitpx` | 91 | DECIMAL | Lower price limit.  | Lower price limit. Futures and calendar spreads.|
 | `highlimitpx` | 92 | DECIMAL | Upper price limit. | Upper price limit. Futures and calendar spreads. |
+| `national_bid` | 93 | DECIMAL | National best bid price. | NBBO bid price. |
+| `national_offer` | 94 | DECIMAL | National best offer price. | NBBO offer price. |
+| `national_biddepth` | 95 | LONG | National best bid size. | NBBO bid size in shares. |
+| `national_offerdepth` | 96 | LONG | National best offer size. | NBBO offer size in shares. |
