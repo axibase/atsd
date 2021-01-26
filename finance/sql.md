@@ -2102,10 +2102,10 @@ In the example above, `in_session(DAY, OPENING)` equates to `[09:50 - 10:00)` in
 
 #### STAT
 
-The function returns the **current** value of the specified instrument market [statistic](./statistics-fields.md).
+The function returns the **current** value of the specified instrument market [statistic](./statistics-fields.md). The function can be invoked when querying data from `atsd_trade`, `atsd_entity`, or `atsd_session_summary` table.
 
 ```javascript
-STAT.<stat-name>
+STAT.<statistic-name> or STAT('<statistic-name>')
 ```
 
 ```sql
@@ -2121,6 +2121,25 @@ WITH ROW_NUMBER(symbol ORDER BY datetime) <= 1
 |----------------------------|-----------:|------:|---------:|------|---------|---------:|-----------:|--------------:|
 | 2021-01-13 20:42:48.966669 | 3480323979 | 227.2 |        2 | S    | N       |   227.24 |     227.32 |   13450782366 |
 | 2021-01-13 20:43:02.745879 | 3480324062 |  5773 |        2 | B    | N       |   5773.5 |       5774 |   11481563954 |
+```
+
+```sql
+SELECT tags.symbol, stat.last AS last_price, ROUND(stat.last*tags.issue_size/1000000, 0) AS mkt_cap_mln
+FROM atsd_entity
+WHERE tags.class_code = 'TQBR' AND IS_INSTRUMENT_IN_INDEX('moexbc')
+ORDER BY mkt_cap_mln DESC
+```
+
+```ls
+| tags.symbol | last_price | mkt_cap_mln |
+|-------------|-----------:|------------:|
+| SBER        |     268.46 |     5795232 |
+| ROSN        |     492.65 |     5221192 |
+| GAZP        |     215.31 |     5097144 |
+| GMKN        |      26170 |     4141284 |
+| NVTK        |     1358.8 |     4125733 |
+| LKOH        |       5738 |     3975664 |
+| PLZL        |      14816 |     2016004 |
 ```
 
 #### SEC_DEF
