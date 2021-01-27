@@ -11,7 +11,7 @@ The commands must be terminated by line break. Multiple commands can be sent ove
 ## Format
 
 ```bash
-class,symbol,unix_time,microseconds,key=value[,key=value]
+class,symbol,unix_time,fractions,key=value[,key=value]
 ```
 
 ## Example
@@ -36,7 +36,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 |class|string|yes|TQBR| Order book system identifier where trade is executed such as `SETS`/`SEAQ`/`IOB` for LSE or `TQBR`/`TQCB`/`CETS` for MOEX.|
 |symbol|string|yes|GAZP| Security symbol.|
 |unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
-|microseconds|integer|yes|469| Microsecond part of the transaction time. <br>0 if sub-millisecond precision is not supported by exchange.|
+|fractions|integer|yes|469| Microsecond/nanosecond part of the transaction time. <br>0 if sub-millisecond precision is not supported by exchange.|
 |key|integer|yes|10|Field [code](./statistics-fields.md)|
 |value|various|yes|227.05|Field value|
 
@@ -50,7 +50,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 
 * New instruments are automatically registered as entities with name `<symbol>_[<class>]`, for example `gazp_[tqbr]` for class `TQBR` and symbol `GAZP`.
 
-* If the value of `microseconds` field exceeds 1000, it is added to milliseconds. `1588283343000,645713` is the same as `1588283343645,713`.
+* If the number of digits in `fractions` field exceeds 3, it is treated as nanoseconds, microseconds otherwise. `0003` will count as 3 nanoseconds, while `3` as 3000 nanoseconds.
 
 * When sending multiple commands over the same connection, separate commands with a `\n` line break.
 

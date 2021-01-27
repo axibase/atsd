@@ -1,6 +1,6 @@
 # SQL
 
-ATSD supports SQL for retrieving trades and  stored in the `atsd_trade` table.
+ATSD supports SQL for retrieving trades, session summaries, and instrument definitions stored in specialized tables.
 
 SQL statements can be executed via the web-based console, on schedule, or using the [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers.
 
