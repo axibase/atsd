@@ -66,6 +66,6 @@ docker run -d --name=atsd --env=JAVA_OPTS="-Dprofile=FINANCE" axibase/atsd:lates
 * Send [quotes and statistics](command-statistics-insert.md)
 * Send [reference](command-instrument-entity.md) data
 
-## Licensing
+## Pricing
 
-ATSD subscription license allows for no-charge usage of the standalone version, including for production purposes. The scale-out version requires a paid license.
+Standlone version is free of charge, including for production purposes. The scale-out version requires an active support agreement.
