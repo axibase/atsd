@@ -8,17 +8,18 @@ on:
     - cron: "0 3 * * *"
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         linter: [links, spelling, style, anchors]
     
     steps:
-     - uses: actions/checkout@v2
+     - uses: axibase/checkout@v2
        with:
          fetch-depth: 0
      - name: Running ${{ matrix.linter }} linter
-       uses: raipc/docs-check-action@v0.5
+       uses: axibase/docs-linter@v1
        with:
          linter: ${{ matrix.linter }}
