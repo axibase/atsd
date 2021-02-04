@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        linter: [links, spelling, style, anchors, spelling_yandex]
+        linter: [links, spelling_retext, style, anchors, spelling_yandex]
     
     steps:
      - uses: axibase/checkout@v2
