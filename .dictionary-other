@@ -17,9 +17,7 @@ atsd_li
 auth
 autocomplete
 backend
-backfilling
 backtest
-backtesting
 backticks
 Base64
 Base64-encoded
@@ -254,9 +252,7 @@ varchar
 version(ed|ing)
 vs
 vscode
-vwap
 walkthrough
-waprice
 webdriver
 webhook[s]?
 whitelist
