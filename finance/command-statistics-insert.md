@@ -3,10 +3,10 @@
 To insert a Level 1 statistics such as best bid or offer or daily volume into the database, send the command in the specified format to TCP port `8091` or UDP port `8092`.
 
 ```bash
-echo -e "TQBR,GAZP,1610622170591,5,0=674451,9=199,5=4534,1=674450,4=477227,10=227.05" > /dev/tcp/atsd_hostname/8091
+echo -e "TQBR,GAZP,1610622170591,5,0=674451,9=199,5=4534,1=674450,4=477227,10=227.05" | gzip > /dev/tcp/atsd_hostname/8091
 ```
 
-The commands must be terminated by line break. Multiple commands can be sent over the same connection.
+The commands must be terminated by line break. Multiple commands can be sent over the same connection. The content must be compressed with `gzip`.
 
 ## Format
 
@@ -50,7 +50,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 
 * New instruments are automatically registered as entities with name `<symbol>_[<class>]`, for example `gazp_[tqbr]` for class `TQBR` and symbol `GAZP`.
 
-* If the number of digits in `fractions` field exceeds 3, it is treated as nanoseconds, microseconds otherwise. `0003` will count as 3 nanoseconds, while `3` as 3000 nanoseconds.
+* If the number of digits in `fractions` field exceeds 3, it is treated as nanoseconds, microseconds otherwise. `0003` counts as 3 nanoseconds, while `3` as 3000 nanoseconds.
 
 * When sending multiple commands over the same connection, separate commands with a `\n` line break.
 
