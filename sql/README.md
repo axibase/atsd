@@ -3670,7 +3670,7 @@ LAG(value)
 ```
 
 * The default `offset` is `1`.
-* If the requested row does not exist, the function returns `NULL`, or `notFoundValue` if specified.
+* If the requested row does not exist, the function returns `NULL`, or `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
 * If the result set is partitioned with the [`ROW_NUMBER`](#row_number) clause, the function can access rows only within the **same** partition as the current row.
 
@@ -3765,7 +3765,7 @@ LEAD(value)
 ```
 
 * The default `offset` is `1`.
-* If the requested row does not exist, the function returns `NULL`, or `notFoundValue` if specified.
+* If the requested row does not exist, the function returns `NULL`, or `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
 * If the result set is partitioned with the [`ROW_NUMBER`](#row_number) clause, the function can access rows only within the **same** partition as the current row.
 

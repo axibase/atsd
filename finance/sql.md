@@ -349,7 +349,7 @@ Comments are not allowed after the statement termination character `;`.
 |`class`           |varchar   | Yes | Instrument board, class, or section on the exchange.|
 |`exchange`         |varchar   | Yes | Instrument exchange.|
 |`side`       |varchar | No | Direction of the trade (initiator's side): `B` (buy), `S` (sell), or `NULL`.|
-|`session`           |varchar     | No | Trading session code. `O` - opening auction, `N` - normal trading, `L` - closing auction crossing, `E` - closing auction post-crossing.|
+|`session`           |varchar     | No | Trading [session code](sessions.md). `O` - opening auction, `N` - normal trading, `L` - closing auction crossing, `E` - closing auction post-crossing.|
 |`order_num`           |varchar   | No | Order number which initiated the trade.|
 
 The above columns can be requested with the `SELECT *` syntax, except for queries with the `GROUP BY` aggregation clause.
@@ -1962,7 +1962,7 @@ LAG(value)
 ```
 
 * The default `offset` is `1`.
-* If the requested row does not exist, the function returns `NULL`, or `notFoundValue` if specified.
+* If the requested row does not exist, the function returns `NULL`, or the `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
 * If the result set is partitioned with the [`ROW_NUMBER`](#row_number) clause, the function can access rows only within the **same** partition as the current row.
 
@@ -2004,7 +2004,7 @@ LEAD(value)
 ```
 
 * The default `offset` is `1`.
-* If the requested row does not exist, the function returns `NULL`, or `notFoundValue` if specified.
+* If the requested row does not exist, the function returns `NULL`, or `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
 * If the result set is partitioned with the [`ROW_NUMBER`](#row_number) clause, the function can access rows only within the **same** partition as the current row.
 
