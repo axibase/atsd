@@ -99,3 +99,4 @@
 | `national_offer` | 94 | DECIMAL | National best offer price. | NBBO offer price. |
 | `national_biddepth` | 95 | LONG | National best bid size. | NBBO bid size in shares. |
 | `national_offerdepth` | 96 | LONG | National best offer size. | NBBO offer size in shares. |
+| `settlpriceopen` | 97 | LONG | Settlement price at the start of the session. | |
