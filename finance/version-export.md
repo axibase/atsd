@@ -42,6 +42,6 @@ GET /api/v1/entities/gazp_[tqbr]/versions
 
 To retrieve entity tags and fields at the time of the change, append the `version` parameter to the [`get`](../api/meta/entity/get.md) request.
 
-```
+```elm
 GET /api/v1/entities/gazp_[tqbr]?version=2020-07-10T08:03:44.094Z
 ```

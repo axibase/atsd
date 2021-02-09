@@ -78,5 +78,8 @@
         ,{ "pattern": "http://adsabs.harvard.edu"}
         ,{ "pattern": "https://www.campop.geog.cam.ac.uk/research/projects/transport/onlineatlas/railways.pdf"}
         ,{ "pattern": "https://www.researchgate.net" }
+        ,{ "pattern": "https://www.hipchat.com" }
+        ,{ "pattern": "https://support.discordapp.com/hc/en-us/articles" }
+        ,{ "pattern": "https://axibase.zendesk.com" }
     ]
 }

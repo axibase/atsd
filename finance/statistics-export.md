@@ -21,7 +21,6 @@ Retrieves statistics for the instrument in JSON format.
 | `timezone` | Time zone for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 | `workdayCalendar` | Workday calendar for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 
-
 ```json
 [{
   "type": "statistics",

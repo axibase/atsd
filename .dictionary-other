@@ -17,6 +17,7 @@ atsd_li
 auth
 autocomplete
 backend
+backtest
 backticks
 Base64
 Base64-encoded

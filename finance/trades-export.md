@@ -30,7 +30,7 @@ Retrieves trades for the instrument in CSV format.
 datetime,trade_num,side,quantity,price,order_num,session
 ```
 
-Refer to [insert](command_trade.md#fields) command for field descriptions.
+Refer to [insert](command-trade-insert.md#fields) command for field descriptions.
 
 `side`, `order_num`, `session` are printed as empty strings if not available.
 
