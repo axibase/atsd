@@ -23,16 +23,16 @@
 | `value` | 18 | DECIMAL | Value of the last | Value of the last trade in the current trading session, expressed in the currency of settlement |
 | `time` | 19 | TIME | Time of the last | Time of the last trade |
 | `change` | 20 | DECIMAL | Last to Previous day change | Difference between the Last Price and the Previous day Last Price |
-| `priceminusprevwa` | 21 | DECIMAL | Last price to previous WA price | Difference between the last price and the weighted average price of the previous trading session |
+| `priceminusprevwa` | 21 | DECIMAL | Last price to previous WAP price | Difference between the last price and the weighted average price of the previous trading session |
 | `min_curr_last_ti` | 22 | TIME | Min. cur. price change time | Change time of the minimum current price |
 | `min_curr_last` | 23 | DECIMAL | Minimum current price | Minimum current price |
 | `currentvalue` | 24 | DECIMAL | Current Value | Last index value |
 | `changetime` | 25 | TIME | Change Time | Time when index value changed |
-| `waprice` | 26 | DECIMAL | WA | Weighted-average price |
+| `waprice` | 26 | DECIMAL | WAP | Weighted-average price reported by the exchange |
 | `yield` | 27 | DECIMAL | Yield for the last | Yield, based on the trade price |
 | `starttime` | 28 | TIME | Auction start time | Actual auction start time |
-| `lcurrentprice` | 29 | DECIMAL | Current price | Official current price, calculated as the WA price of the trades concluded during the last 10 minutes of the trading session |
-| `yieldatwaprice` | 30 | DECIMAL | Yield, based on the WA price | Yield, based on the WA price |
+| `lcurrentprice` | 29 | DECIMAL | Current price | Official current price, calculated as the VWAP price of the trades concluded during the last 10 minutes of the trading session |
+| `yieldatwaprice` | 30 | DECIMAL | Yield, based on the WAP price | Yield, based on the WAP price |
 | `auctvolume` | 31 | LONG | Auction trade volume | Total volume of all trades, expressed in number of securities. Shows expected volume during the auction and the final volume once it finishes. |
 | `prevdate` | 32 | DATE | Date of the last trading session | Date of the previous trading day |
 | `duration` | 33 | LONG | Duration | Duration |
@@ -100,3 +100,20 @@
 | `national_biddepth` | 95 | LONG | National best bid size. | NBBO bid size in shares. |
 | `national_offerdepth` | 96 | LONG | National best offer size. | NBBO offer size in shares. |
 | `settlpriceopen` | 97 | LONG | Settlement price at the start of the session. | |
+| `vwap` | 98 | DECIMAL | Volume weighted average price. | |
+| `underlying_bid` | 99 | DECIMAL | Underlying instrument bid | |
+| `underlying_offer` | 100 | DECIMAL | Underlying instrument offer | |
+| `underlying_last` | 101 | DECIMAL | Underlying instrument last trade price | |
+| `root_bid` | 102 | DECIMAL | Root instrument bid | |
+| `root_offer` | 103 | DECIMAL | Root instrument offer | |
+| `root_last` | 104 | DECIMAL | Root instrument last trade price | |
+| `custom_num_01` | 254 | DECIMAL | Custom numeric field 1 | |
+| `custom_num_02` | 253 | DECIMAL | Custom numeric field 2 | |
+| `custom_num_03` | 252 | DECIMAL | Custom numeric field 3 | |
+| `custom_num_04` | 251 | DECIMAL | Custom numeric field 4 | |
+| `custom_num_05` | 250 | DECIMAL | Custom numeric field 5 | |
+| `custom_num_06` | 249 | DECIMAL | Custom numeric field 6 | |
+| `custom_num_07` | 248 | DECIMAL | Custom numeric field 7 | |
+| `custom_num_08` | 247 | DECIMAL | Custom numeric field 8 | |
+| `custom_num_09` | 246 | DECIMAL | Custom numeric field 9 | |
+| `custom_num_10` | 245 | DECIMAL | Custom numeric field 10 | |

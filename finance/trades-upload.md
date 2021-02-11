@@ -1,10 +1,14 @@
 # Trade File Upload
 
-## Endpoint
+## Description
 
-```elm
-POST /api/v1/trades/upload
-```
+Upload file with [trade commands](command-trade-insert.md) for backfilling.
+
+## Request
+
+| **Method** | **Path** |
+|:---|:---|
+| `POST` | `/api/v1/trades/upload` |
 
 ### Request Parameters
 
