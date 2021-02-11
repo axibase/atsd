@@ -13,11 +13,12 @@ const portalsMenu = [
 ];
 
 const topNavMenu = [
-    { text: 'Install', link: '/installation/', highlighted: true },
+    { text: 'New: Finance Edition', link: '/finance/' },
     { text: "REST API", link: '/api/data/' },
     { text: "Network API", link: '/api/network/' },
     { text: 'SQL', link: '/sql/' },
     { text: 'Rule Engine', link: '/rule-engine/' },
+    { text: 'Install', link: '/installation/', highlighted: true },
     { text: 'Configure', link: '/administration/' },
     { text: 'Integrate', link: '/integration/' }
 ];
@@ -359,6 +360,32 @@ const gettingStartedMenu = [
     ]},
 ];
 
+const financeMenu = [
+    ['', 'Overview'],
+    ['sql.md', 'SQL'],
+    {
+        title: "Reading Data", children: [
+            ['trades-export.md', 'Trades'],
+            ['ohlcv-export.md', 'OHLCV'],
+            ['statistics-export.md', 'Statistics'],
+            ['session-summary-export.md', 'EOD / Sessions'],
+            ['version-export.md', 'Reference Versions'],
+        ]
+    },    
+    {
+        title: "Writing Data", children: [
+            ['command-trade-insert.md', 'Trades Insert'],
+            ['trades-upload.md', 'Trades Backfill'],
+            ['trades-delete.md', 'Trades Delete'],
+            ['command-statistics-insert.md', 'Statistics Insert'],
+            ['session-summary-import.md', 'EOD / Sessions Insert'],
+            ['command-instrument-entity.md', 'Instrument Insert'],
+            ['instrument-delete.md', 'Instrument Delete'],
+            ['command-security-definitions.md', 'Security Definitions Insert'],
+        ]
+    }
+];
+
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
@@ -367,7 +394,7 @@ module.exports = {
     head: [
         ['link', { rel: 'shortcut icon', href: '/favicon.ico' }]
     ],
-    staticFilesExtensionsTest: /(?:tcollector|\.(?:pdf|xlsx?|xml|txt|csv|str|java|json|sql|sps|yxmd|htm|prpt|do|tdc|jsonld|ktr|service|sh|ya?ml|lua|properties|conf(?:ig)?))$/,
+    staticFilesExtensionsTest: /(?:tcollector|\.(?:pdf|xlsx?|xml|txt|csv|str|java|json|sql|sps|yxmd|htm|py|prpt|do|tdc|jsonld|ktr|service|sh|ya?ml|lua|properties|conf(?:ig)?))$/,
     themeConfig: {
         nav: topNavMenu,
         logo: '/images/axibase_logo_site.png',
@@ -388,6 +415,7 @@ module.exports = {
             '/api/network/': networkApiMenu,
             '/api/': [],
             '/changelogs/': [],
+            '/finance/': financeMenu,
             '/forecasting/': forecastMenu,
             '/installation/': installationMenu,
             '/integration/': integrationMenu,
