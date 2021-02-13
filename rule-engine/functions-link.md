@@ -179,6 +179,26 @@ The following inline link is returned:
 [Default](https://atsd_hostname:8443/portals/series?metric=docker&entity=nurswgvml007...)
 ```
 
+### `getOHLCVChartLink`
+
+```csharp
+getOHLCVChartLink(string format) // extracts symbol and class code from entity
+getOHLCVChartLink(string format, string symbol, string class)
+getOHLCVChartLink(string format, string symbol, string class, string interval)
+getOHLCVChartLink(string format, string symbol, string class, string interval, string period)
+getOHLCVChartLink(string format, string symbol, string class, map options) // options can contain `interval`, `period`, `startDate`, and `endDate`
+```
+
+Returns the URL to the built-in OHLCV portal .
+
+Optional `format` parameter creates an [inline link](links.md#inline-links) in one of supported formats: `html`, `markdown`, and `pipe` (used by Slack).
+
+Example:
+
+```javascript
+getOHLCVChartLink('markdown', 'GAZP', 'TQBR')
+```
+
 ### `addLink`
 
 ```csharp

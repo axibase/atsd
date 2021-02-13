@@ -106,6 +106,7 @@ Name | Description
 [`addLink`](functions-link.md#addlink)| Returns the URL with a formatted short name.
 [`getEntityLink`](functions-link.md#getentitylink)| Returns the URL to the **Entity Editor** page for the specified entity.
 [`getChartLink`](functions-link.md#getchartlink)| Returns the URL to the default portal for the current metric, entity, and tags.
+[`getOHLCVChartLink`](functions-link.md#getohlcvchartlink)| Returns the URL to the default OHLCV portal.
 [`getCsvExportLink`](functions-link.md#getcsvexportlink)| Returns the URL to the **CSV** file for the current metric, entity, and tags.
 [`getPortalLink`](functions-link.md#getportallink)| Returns the URL to the portal and entity.
 [`getHtmlExportLink`](functions-link.md#gethtmlexportlink)| Returns the URL to the **Export** page for the current metric, entity, and tags.
@@ -116,7 +117,8 @@ Name | Description
 
 Name | Description
 ---|---
-[`addPortal`](functions-portal.md#portal-functions) | Attaches portal screenshots to email and webhook notifications.
+[`addPortal`](functions-portal.md#addportal) | Attaches portal screenshots to email and webhook notifications.
+[`addOHLCVPortal`](functions-portal.md#addohlcvportal) | Attaches OHLCV portal screenshots to email and webhook notifications.
 
 ## Database
 
