@@ -12,7 +12,7 @@ SUM(price*quantity) / SUM(quantity)
 
 Данная формула снижает зависимость ценового показателя от сделок с небольшим количеством ценных бумаг и существенным отклонением по цене сделки, в частности от цены закрытия (цены последней сделки).
 
-Московская биржа в соответствии с Правилами проведения торгов производит расчет нескольких юридически-значимых [ценовых показателей](https://www.moex.com/s1194), включая [`waprice`](https://fs.moex.com/files/21269). Расчет `waprice` производится с начала торговой сессии и за торговый день.
+Московская биржа в соответствии с Правилами проведения торгов производит расчет нескольких юридически-значимых [ценовых показателей](https://www.moex.com/s1194), включая [`waprice`](https://fs.moex.com/files/21269). Расчет `waprice` производится нарастающим итогом с начала сессии в течение торгового дня.
 
 Особенность расчета заключается в том, что несмотря на трансляцию `waprice` для каждого режима по отдельности, значение средневзвешенной цены основывается на сделках из **всех режимов торгов**. В частности, в расчет `waprice` включен режим **РПС с ЦК**, в котором регистрируются крупные сделки с существенным отклонением от текущей цены основного режима (в среднем на `0.59%`).
 
@@ -51,7 +51,7 @@ OR market = 'RPST' AND class NOT IN('SPEQ')
 | RPST   | GAZP   | PTEQ  | RUB      | RUB            | 0.01 |   1 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT SEC_DEF.marketcode AS market, tags.symbol AS symbol, tags.class_code AS class, tags.currency AS currency, tags.trade_currency AS trade_currency, tags."step" AS "step", tags.lot AS lot
@@ -117,7 +117,7 @@ ORDER BY 1, 3
 | OZON   |   483270 |  2338023976 |    4838 |      4838 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT symbol, voltoday, valtoday, waprice,
@@ -147,7 +147,7 @@ ORDER BY valtoday DESC
 | 2021-01-12 | KTSBP  | 0.282 |  0.282 | 0.282 |  0.2815 |     0.282 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd') AS dt, symbol, low, high, last, waprice,
@@ -197,7 +197,7 @@ ORDER BY valtoday DESC
 
 Рассчитав средневзвешенное отклонение `price_to_pre` по объему сделки получаем `0.59%` по модулю. При этом средневзвешенное значение `after_to_pre` составляет `0.07%`, что демонстрирует отсутствие существенного влияния на сделки в основном режиме.
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT symbol, pre_class_2 AS p_class, pre_dt_2 AS p_dt, pre_price_2 AS p_price, pre_qty_2 AS p_qty,
@@ -242,7 +242,7 @@ ORDER BY ABS(price_to_pre) DESC
 | SMAL  |       190533 |       171341 |       556615 | 2021-01-04        |           667 |           278 |
 ```
 
-<details><summary>Посмотреть SQL запрос с использованием таблицы atsd_session_summary</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос с использованием таблицы atsd_session_summary</summary>
 
 ```sql
 SELECT class,
@@ -262,7 +262,7 @@ ORDER BY avg(svaltoday) DESC
 
 </details>
 
-<details><summary>Посмотреть SQL запрос с использованием таблицы atsd_trade</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос с использованием таблицы atsd_trade</summary>
 
 ```sql
 SELECT class,
@@ -301,7 +301,7 @@ ORDER BY avg(svaltoday) DESC
 | 2021-01-18 12:18:22 | 3496965665 | LKOH   |   5820 | 325227420 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT datetime, trade_num, symbol, price, round(price*quantity*entity.tags.lot, 0) AS trade_val
@@ -331,7 +331,7 @@ WHERE class = 'PTEQ'
 |          10 |   614658518 |        363 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT DATE_FORMAT(time, 'HH') AS hour_of_day, round(SUM(price*quantity*entity.tags.lot), 0) AS svaltoday, count(*) AS snumtrades
@@ -364,7 +364,7 @@ ORDER BY svaltoday DESC
 | MAGN   | 1833622282 |        101221 |       3852148 |       476 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT symbol, amount(), median(price*quantity)*entity.tags.lot AS med_trade_val, avg(price*quantity)*entity.tags.lot AS avg_trade_val, count(*) AS numtrades
@@ -388,19 +388,12 @@ WHERE class = 'PTEQ'
 - Средневзвешенная цена с момента начала торгов по текущий момент
 - Средневзвешенная цена последних сделок
 - Средневзвешенная цена сделок за интервал
+- Средневзвешенная цена сделок за скользящий интервал
 - Средневзвешенная цена сделок за календарный период
 
-Простейшими алгоритмами реагирования на средневзвешенную цену может быть покупка инструмента при существенном изменении последней цены от `waprice` (возврат к среднему) или наоборот приобретение при рывке вверх (momentum или импульс).
+![](../images/waprice_tcsg_2.png)
 
-```javascript
-if ( last/waprice < 0.950 || last/waprice > 1.020 ) { // buy
-```
-
-Также `waprice` может учитываться при участии в аукционе закрытия основной сессии:
-
-```javascript
-if ( auctprice/last > 1.005 && auctprice > waprice ) { // sell
-```
+[View in Chartlab](https://apps.axibase.com/chartlab/1cd4a0b9/3/)
 
 1) Средневзвешенная цена по методологии биржи (для нескольких режимов) за основую сессию:
 
@@ -410,7 +403,7 @@ if ( auctprice/last > 1.005 && auctprice > waprice ) { // sell
 | GAZP   |  224.96 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT symbol,
@@ -443,7 +436,7 @@ WITH TIMEZONE = 'Europe/Moscow', WORKDAY_CALENDAR = 'moex'
 | TQBR  | GAZP   | 38340730 |  8624636076 |  224.96 |    224.95 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT class, symbol, voltoday, valtoday, waprice,
@@ -475,7 +468,7 @@ WITH ROW_NUMBER(class, symbol ORDER BY datetime DESC) <= 1
 | TQBR  | GAZP   | 38340730 |  8624636076 |   224.95 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT class, symbol, volume() AS voltoday, round(amount(),0) AS valtoday,
@@ -511,7 +504,7 @@ GROUP BY exchange, class, symbol
 | 2021-02-10T15:06:20.916 | TQBR  | 3591180971 |      144 | 224.75 |      323640 |  225.71 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT datetime, class, trade_num, quantity, price, trade_value, waprice FROM (
@@ -534,37 +527,36 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-4) Средневзвешенная цена последних сделок
+4) Средневзвешенная цена последних N сделок
 
 ```json
 | datetime                |  trade_num |  price | quantity |   vwap |
 |-------------------------|-----------:|-------:|---------:|-------:|
-| 2021-02-10T09:59:40.000 | 3590016595 | 227.98 |        3 | 227.98 |
-| 2021-02-10T09:59:40.000 | 3590016596 | 227.98 |        1 | 227.98 |
-| 2021-02-10T09:59:40.000 | 3590016597 | 227.98 |       10 | 227.98 |
-| 2021-02-10T09:59:40.000 | 3590016598 | 227.98 |       20 | 227.98 |
-...
-| 2021-02-10T10:00:05.028 | 3590019598 | 228.28 |       50 | 228.24 |
-| 2021-02-10T10:00:05.028 | 3590019599 | 228.28 |       73 | 228.24 |
-| 2021-02-10T10:00:05.035 | 3590019603 | 228.12 |        1 | 228.24 |
-| 2021-02-10T10:00:05.052 | 3590019609 | 228.12 |       16 | 228.24 |
-| 2021-02-10T10:00:05.052 | 3590019610 | 228.12 |       64 | 228.23 |
-| 2021-02-10T10:00:05.073 | 3590019612 | 228.13 |        5 | 228.22 |
-| 2021-02-10T10:00:05.205 | 3590019626 | 228.13 |       97 | 228.19 |
-| 2021-02-10T10:00:05.205 | 3590019627 | 228.11 |       54 | 228.18 |
-| 2021-02-10T10:00:05.205 | 3590019628 | 228.09 |       28 | 228.17 |
-| 2021-02-10T10:00:05.206 | 3590019629 | 228.09 |        1 | 228.17 |
+| 2021-02-10 09:59:40.000 | 3590016595 | 227.98 |        3 | 227.98 |
+| 2021-02-10 10:00:02.030 | 3590018668 | 228.00 |      197 | 227.99 |
+| 2021-02-10 10:00:02.503 | 3590018816 | 228.22 |       25 |    228 |
+| 2021-02-10 10:00:02.953 | 3590018972 | 228.21 |      100 | 228.01 |
+| 2021-02-10 10:00:04.169 | 3590019403 | 228.23 |      318 | 228.03 |
+| 2021-02-10 10:00:05.023 | 3590019596 | 228.27 |       17 | 228.04 |
+| 2021-02-10 10:00:05.052 | 3590019609 | 228.12 |       16 | 228.05 |
+| 2021-02-10 10:00:07.317 | 3590020095 | 228.23 |       64 | 228.06 |
+| 2021-02-10 10:00:08.241 | 3590020187 | 228.11 |      300 | 228.07 |
+| 2021-02-10 10:00:11.276 | 3590020671 | 228.05 |        1 | 228.08 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
-SELECT datetime, trade_num, price, quantity,
-    ROUND(ROUND(SUM(price*quantity)/SUM(quantity)/entity.tags."step", 0)*entity.tags."step", entity.tags.scale) AS vwap
+SELECT datetime, trade_num, price, quantity, vwap
+FROM (
+SELECT datetime, class, symbol, trade_num, price, quantity,
+    ROUND(ROUND(SUM(price*quantity)/SUM(quantity)/entity.tags."step", 0)*entity.tags."step", entity.tags.scale) AS vwap,
+    LAG(vwap) AS vwap_lag
  FROM atsd_trade
 WHERE symbol = 'GAZP' AND class = 'TQBR'
   AND datetime BETWEEN '2021-02-10' AND '2021-02-11' EXCL
-  WITH ROW_NUMBER(symbol ORDER BY datetime, trade_num) BETWEEN 10 PRECEDING AND CURRENT ROW
+  WITH ROW_NUMBER(symbol ORDER BY datetime, trade_num) BETWEEN 100 PRECEDING AND CURRENT ROW
+) WHERE (vwap != vwap_lag OR vwap_lag IS NULL)
 WITH TIMEZONE = 'Europe/Moscow'
 ```
 
@@ -578,7 +570,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 | 2021-02-10T10:00:14.537144 | 228.07 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT max(datetime) AS last_trade_dt, ROUND(vwap(), entity.tags.scale) AS vwap
@@ -591,7 +583,43 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-6) Средневзвешенная цена сделок за календарный периоды
+
+6) Средневзвешенная цена сделок за скользящий интервал
+
+```json
+| datetime                |  trade_num |  price | quantity |   vwap |
+|-------------------------|-----------:|-------:|---------:|-------:|
+| 2021-02-10 09:59:40.000 | 3590016595 | 227.98 |        3 | 227.98 |
+| 2021-02-10 10:00:02.030 | 3590018668 | 228.00 |      197 | 227.99 |
+| 2021-02-10 10:00:02.503 | 3590018816 | 228.22 |       25 |    228 |
+| 2021-02-10 10:00:03.944 | 3590019324 | 228.22 |       50 | 228.01 |
+| 2021-02-10 10:00:04.169 | 3590019403 | 228.23 |      318 | 228.02 |
+| 2021-02-10 10:00:05.028 | 3590019598 | 228.28 |       50 | 228.03 |
+| 2021-02-10 10:00:07.317 | 3590020095 | 228.23 |       64 | 228.04 |
+| 2021-02-10 10:00:11.413 | 3590020681 | 228.21 |       20 | 228.05 |
+| 2021-02-10 10:00:17.660 | 3590021549 | 228.17 |       47 | 228.06 |
+| 2021-02-10 10:00:19.556 | 3590021980 | 228.01 |      337 | 228.05 |
+```
+
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
+
+```sql
+SELECT datetime, trade_num, price, quantity, vwap
+FROM (
+SELECT datetime, class, symbol, trade_num, price, quantity,
+    ROUND(ROUND(SUM(price*quantity)/SUM(quantity)/entity.tags."step", 0)*entity.tags."step", entity.tags.scale) AS vwap,
+    LAG(vwap) AS vwap_lag
+ FROM atsd_trade
+WHERE symbol = 'GAZP' AND class = 'TQBR'
+  AND datetime BETWEEN '2021-02-10' AND '2021-02-11' EXCL
+  WITH ROW_NUMBER(symbol ORDER BY datetime, trade_num) BETWEEN 10 MINUTE PRECEDING AND CURRENT ROW
+) WHERE (vwap != vwap_lag OR vwap_lag IS NULL)
+WITH TIMEZONE = 'Europe/Moscow'
+```
+
+</details>
+
+7) Средневзвешенная цена сделок за календарные периоды
 
 ```json
 | datetime            |   vwap |
@@ -603,7 +631,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 | 2021-02-10T10:04:00 | 227.60 |
 ```
 
-<details><summary>Посмотреть SQL запрос</summary>
+<details style="margin-left:20px"><summary>Посмотреть SQL запрос</summary>
 
 ```sql
 SELECT datetime, ROUND(vwap(), entity.tags.scale) AS vwap
