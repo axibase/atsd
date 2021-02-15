@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 Measurement Time,   Sensor Name,     Measurement,   Value
 2015-10-15 00:00,   Sensor-0001,     Temperature,    35.5
 2015-10-15 00:00,   Sensor-0001,        Humidity,    40.0

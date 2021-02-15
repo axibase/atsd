@@ -272,7 +272,7 @@ addTable(executeSqlQuery(query), 'markdown', true)
 addTable([['2018-01-31T12:00:13.242Z', '37'], ['2018-01-31T12:00:28.253Z', '36']], 'csv', ['date', 'count'])
 ```
 
-```csv
+```txt
 date,count
 2018-01-31T12:00:13.242Z,37
 2018-01-31T12:00:28.253Z,36
@@ -355,7 +355,7 @@ If the header is not specified, the default table header consists of unique fiel
 addTable(db_messages('1 hour', 'webhook', 'jenkins', ['build.phase':'STARTED', 'name': 'AxibaseTSD'], null), 'csv')
 ```
 
-```csv
+```txt
 entity,severity,source,tags,timestamp,type
 jenkins,UNDEFINED,jenkins,"{name=AxibaseTSD, build.number=8558, build.phase=STARTED}",1536600727499,webhook
 jenkins,UNDEFINED,jenkins,"{name=AxibaseTSD, build.number=8557, build.phase=STARTED}",1536598385820,webhook

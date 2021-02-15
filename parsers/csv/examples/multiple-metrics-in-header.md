@@ -4,7 +4,7 @@
 
 <!-- markdownlint-disable MD107 -->
 
-```csv
+```txt
           rundate,  this_period,    last_period,                 group_name,           model,     sensor_name,  temperature,  humidity,    pressure,  precipitation
 10-Nov-2014 09:00,       201410,         201310,    Other Reporting Sensors,    PV120000-XG1,     Sensor-0001,         35.5,      40.0,         760,             80
 17-Nov-2015 09:00,       201510,         201410,    Other Reporting Sensors,    PV120000-XG1,     Sensor-0001,         20.4,      60.8,         745,             77

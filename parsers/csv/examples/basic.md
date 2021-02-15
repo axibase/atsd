@@ -4,7 +4,7 @@
 
 ![](../../images/example-csv-1.png)
 
-```csv
+```txt
 Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 2018-10-15 00:00,Sensor-0001,PV120000-XG1,       35.5,    40.0,     760
 2018-10-15 00:00,Sensor-0020,PV120000-XG1,       20.4,    60.8,     745

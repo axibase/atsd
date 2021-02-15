@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 2015-10-15, Sensor-0001,      Status, Sensor-0020,      Status
      00:00,        35.5,      provis,        20.4,          ok
      00:10,        35.6,          ok,        20.5,          ok

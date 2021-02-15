@@ -212,7 +212,7 @@ Download scollector executable for Windows.
 
 Expand the archive, change to the directory containing `exe` file and create a `scollector.toml` file containing the `Host` setting.
 
-```toml
+```txt
 Host = "http://username:password@atsd_hostname:8088/"
 ```
 

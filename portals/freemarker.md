@@ -218,7 +218,7 @@ atsd_last("nurswgvml007", "cpu_busy")
 
 The returned value is formatted according to server locale. For example 13325 is formatted as 13,325. To remove formatting append `?c` at the end of the function or assigned variable.
 
-```freemarker
+```txt
 <#assign total = atsd_last("nurswgvml007", "disk_size", "mount_point=/,file_system=/dev/mapper/vg_nurswgvml007-lv_root") >
   total-value = ${total?c}
 ```

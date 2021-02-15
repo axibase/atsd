@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 Date;        Sensor Name;   Measurement;    10:00;  10:15;  10:30;   10:45
 2015-10-15;  Sensor-0001;   temperature;     35.5;   20.4;   35.6;    20.5
 2015-10-15;  Sensor-0020;      humidity;     40.0;   60.8;       ;

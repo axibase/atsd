@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 2015-10-15, Sensor-0001, model, PV120000-XG1, temperature, 35.5, 2015-10-15, Sensor-0020, model, PV120000-XG1, humidity, 40.0
 ```
 

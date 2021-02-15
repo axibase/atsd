@@ -47,7 +47,7 @@ PATCH /api/v1/replacement-tables/csv/status_codes
 
 #### Payload
 
-```csv
+```txt
 -1,Error
 0,Unknown
 1,Ok

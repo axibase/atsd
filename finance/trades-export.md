@@ -26,7 +26,7 @@ Retrieves trades for the instrument in CSV format.
 
 ### Header
 
-```csv
+```txt
 datetime,trade_num,side,quantity,price,order_num,session
 ```
 
@@ -57,7 +57,7 @@ curl https://atsd_hostname:8443/api/v1/trades?class=TQBR&symbol=GAZP&startDate=2
 
 ### Response
 
-```csv
+```txt
 datetime,trade_num,side,quantity,price,order_num,session
 2020-04-20T10:00:00.000000Z,3177336248,B,123,195.36,1150996,N
 ```

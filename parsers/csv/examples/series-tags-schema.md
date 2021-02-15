@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 Sensor Name,          Address,     City,  State,    Zip, Status,        model,        Date,    Temperature,    Humidity
 Sensor-0001,  3109 N BROADWAY,  CHICAGO,     IL,  60657,     Ok, PV120000-XG1,  10/15/2015,           35.5,        40.0
 Sensor-0020,  3109 N BROADWAY,  CHICAGO,     IL,  60657,     Ok, PV120000-XG1,  10/15/2015,           20.4,        60.8

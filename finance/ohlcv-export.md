@@ -41,13 +41,13 @@ Retrieves aggregated period statistics for the instrument in CSV format.
 
 Default:
 
-```csv
+```txt
 datetime,open,high,low,close,volume
 ```
 
 All:
 
-```csv
+```txt
 datetime,open,high,low,close,volume,count,vwap,amount
 ```
 
@@ -74,7 +74,7 @@ curl https://atsd_hostname:8443/api/v1/trades?class=TQBR&symbol=GAZP&startDate=2
 
 ### Response
 
-```csv
+```txt
 datetime,open,high,low,close,volume
 2020-04-20T10:00:00.000000Z,8.0,12.0,7.0,10,14200
 ```

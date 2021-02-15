@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 2015.10.15 00:00:00;    Sensor-0001;        measurements;  model;        PV120000-XG1
                    ;    Sensor-0020;        measurements;  model;        PV120000-XG1
                    ;    Sensor-0300;        measurements;  model;        PV120000-XG1

@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 2015.10.15 00:00:00;    Sensor-0001;        measurements;  model; PV120000-XG1
 2015.10.15 00:10:00;    Sensor-0002;        measurements;  model; PV120000-XG1
 ```

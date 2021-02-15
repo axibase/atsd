@@ -41,7 +41,7 @@ Minutely trade statistics are available for IBM stock traded on the New York Sto
 
 The data is provided in the commonly used OHLCV [format](http://www.kibot.com/support.aspx#data_format).
 
-```csv
+```txt
 Date,Time,Open,High,Low,Close,Volume
 01/02/1998,09:30,104.5,104.5,104.5,104.5,67000
 ...

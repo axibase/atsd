@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 2015-10-15;    Sensor-0001;     "temperature changed";      type;   application
 2015-10-16;    Sensor-0002;        "humidity changed";      type;   application;    source; cron;   model; PV120000-XG1
 ```

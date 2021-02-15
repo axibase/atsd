@@ -216,7 +216,7 @@ timeout 3 traceroute example.org
 
 #### Output
 
-```txtsh
+```txt
 traceroute to example.org (192.0.2.1), 30 hops max, 60 byte packets
  1  NURSWGVML102(192.0.2.1)  0.149 ms  0.059 ms  0.032 ms
 ...

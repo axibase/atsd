@@ -82,7 +82,7 @@ curl https://atsd_hostname:8443/api/v1/replacement-tables/csv \
 
 ### Link Header
 
-```csv
+```txt
 <data:application/csvm+json;base64,
 eyJAY29udGV4dCI6WyJodHRwOi8vd3d3LnczLm9yZy9ucy9jc3Z3Il0sInVybCI6Imh0dHBzOi8v
 ZTI1Y2ZjMjVjOGRiOjg0NDMvYXBpL3YxL3JlcGxhY2VtZW50LXRhYmxlcy9jc3YiLCJAdHlwZSI6
@@ -149,7 +149,7 @@ Metadata after Base64 decoding:
 
 ### Response
 
-```csv
+```txt
 Name
 status_codes
 ```

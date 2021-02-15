@@ -2,7 +2,7 @@
 
 ## Input File
 
-```csv
+```txt
 "Station Name","HALIFAX INTL A"
 "Province","NOVA SCOTIA"
       Date,   Temperature, "Temperature Flag",    Humidity, "Humidity Flag",  Pressure, "Pressure Flag"
