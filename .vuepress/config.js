@@ -387,7 +387,7 @@ const financeMenu = [
 ];
 
 const financeMenuRu = [
-    ['', "Обзор"],
+    ['', "Общая информация"],
     ['../sql.md', 'SQL'],
     {
         title: "Reading Data", children: [
