@@ -218,7 +218,7 @@ WHERE symbol LIKE '%'
  AND class IN ('TQBR', 'PTEQ', 'PSEQ')
  AND datetime BETWEEN '2021-02-04 10:00:00' AND '2021-02-04 18:40:00'
 WITH TIMEZONE = 'Europe/Moscow', ROW_NUMBER(symbol ORDER BY datetime, trade_num) BETWEEN 2 PRECEDING AND CURRENT ROW
-) WHERE (pre_class != 'TQBR' AND class != 'PTEQ')
+) WHERE (pre_class != 'TQBR' AND class = 'TQBR')
 ORDER BY ABS(price_to_pre) DESC
 ```
 
@@ -391,7 +391,7 @@ WHERE class = 'PTEQ'
 - Средневзвешенная цена сделок за скользящий интервал
 - Средневзвешенная цена сделок за календарный период
 
-![](../../images/waprice_tcsg_2.png)
+![](../images/waprice_tcsg_2.png)
 
 [View in Chartlab](https://apps.axibase.com/chartlab/1cd4a0b9/3/)
 
