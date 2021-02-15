@@ -387,7 +387,7 @@ const financeMenu = [
 ];
 
 const financeMenuRu = [
-    ["overview.html", "Overview"],
+    ["overview.html", "Основное"],
     ['../sql.md', 'SQL'],
     {
         title: "Reading Data", children: [
@@ -408,6 +408,11 @@ const financeMenuRu = [
             ['../command-instrument-entity.md', 'Instrument Insert'],
             ['../instrument-delete.md', 'Instrument Delete'],
             ['../command-security-definitions.md', 'Security Definitions Insert'],
+        ]
+    },
+    {
+        title: "Примеры", children: [
+            ['./notes/moex_waprice.md', 'Расчет waprice на МБ']
         ]
     }
 ];
