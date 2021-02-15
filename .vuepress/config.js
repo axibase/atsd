@@ -386,6 +386,32 @@ const financeMenu = [
     }
 ];
 
+const financeMenuRu = [
+    ["overview.html", "Overview"],
+    ['../sql.md', 'SQL'],
+    {
+        title: "Reading Data", children: [
+            ['../trades-export.md', 'Trades'],
+            ['../ohlcv-export.md', 'OHLCV'],
+            ['../statistics-export.md', 'Statistics'],
+            ['../session-summary-export.md', 'EOD / Sessions'],
+            ['../version-export.md', 'Reference Versions'],
+        ]
+    },    
+    {
+        title: "Writing Data", children: [
+            ['../command-trade-insert.md', 'Trades Insert'],
+            ['../trades-upload.md', 'Trades Backfill'],
+            ['../trades-delete.md', 'Trades Delete'],
+            ['../command-statistics-insert.md', 'Statistics Insert'],
+            ['../session-summary-import.md', 'EOD / Sessions Insert'],
+            ['../command-instrument-entity.md', 'Instrument Insert'],
+            ['../instrument-delete.md', 'Instrument Delete'],
+            ['../command-security-definitions.md', 'Security Definitions Insert'],
+        ]
+    }
+];
+
 module.exports = {
     base: '/docs/atsd/',
     title: 'Axibase Time Series Database',
@@ -415,6 +441,7 @@ module.exports = {
             '/api/network/': networkApiMenu,
             '/api/': [],
             '/changelogs/': [],
+            '/finance/ru/': financeMenuRu,
             '/finance/': financeMenu,
             '/forecasting/': forecastMenu,
             '/installation/': installationMenu,
