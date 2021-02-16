@@ -58,7 +58,7 @@ Setup a webhook based on the SSL certificate installed in ATSD:
 ### CA-signed SSL certificate
 
 Set webhook by specifying the webhook URL.
-  
+
 Update `url=` with webhook user credentials created in the previous step.
 
 ```bash

@@ -152,9 +152,9 @@ ORDER BY valtoday DESC
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd') AS dt, symbol, low, high, last, waprice,
   ROUND(valtoday/voltoday/entity.tags."step",0)*entity.tags."step" AS vwap_calc
-FROM atsd_session_summary 
+FROM atsd_session_summary
 WHERE class = 'TQBR'
-  AND datetime BETWEEN '2021-01-01' AND '2021-02-13' 
+  AND datetime BETWEEN '2021-01-01' AND '2021-02-13'
   AND type = 'Day'
   AND (waprice > high OR waprice < low)
 ORDER BY valtoday DESC
@@ -348,7 +348,6 @@ ORDER BY svaltoday DESC
 
 Таблица: Top 10 акций по объему сделок в режиме PTEQ с 01.01.2021 по 13.02.2021.
 
-
 ```json
 | symbol |   amount() | med_trade_val | avg_trade_val | numtrades |
 |--------|-----------:|--------------:|--------------:|----------:|
@@ -393,9 +392,9 @@ WHERE class = 'PTEQ'
 
 ![](./images/waprice_tcsg_2.png)
 
-[View in Chartlab](https://apps.axibase.com/chartlab/1cd4a0b9/3/)
+[Открыть график в ChartLab](https://apps.axibase.com/chartlab/1cd4a0b9/3/)
 
-1) Средневзвешенная цена по методологии биржи (для нескольких режимов) за основую сессию:
+* Средневзвешенная цена по методологии биржи (для нескольких режимов) за основую сессию:
 
 ```json
 | symbol | waprice |
@@ -425,7 +424,7 @@ WITH TIMEZONE = 'Europe/Moscow', WORKDAY_CALENDAR = 'moex'
 
 </details>
 
-2) Средневзвешенная цена отдельно по режимам используя итоги, за основую сессию:
+* Средневзвешенная цена отдельно по режимам используя итоги, за основую сессию:
 
 ```json
 | class | symbol | voltoday |    valtoday | waprice |      vwap |
@@ -457,7 +456,7 @@ WITH ROW_NUMBER(class, symbol ORDER BY datetime DESC) <= 1
 
 </details>
 
-3) Средневзвешенная цена отдельно по режимам используя таблицу сделок, за основую сессию:
+* Средневзвешенная цена отдельно по режимам используя таблицу сделок, за основую сессию:
 
 ```json
 | class | symbol | voltoday |    valtoday |     vwap |
@@ -486,7 +485,7 @@ GROUP BY exchange, class, symbol
 
 </details>
 
-4) Средневзвешенная цена с момента начала торгов по текущий момент. Данный расчет производит значения в моменты времени эквивалентно `waprice` в потоке MSS в FAST.
+* Средневзвешенная цена с момента начала торгов по текущий момент. Данный расчет производит значения в моменты времени эквивалентно `waprice` в потоке MSS в FAST.
 
 ```json
 | datetime                | class |  trade_num | quantity |  price | trade_value | waprice |
@@ -527,7 +526,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-4) Средневзвешенная цена последних N сделок
+* Средневзвешенная цена последних N сделок
 
 ```json
 | datetime                |  trade_num |  price | quantity |   vwap |
@@ -562,7 +561,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-5) Средневзвешенная цена сделок за последний интервал
+* Средневзвешенная цена сделок за последний интервал
 
 ```json
 | last_trade_dt              |   vwap |
@@ -583,8 +582,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-
-6) Средневзвешенная цена сделок за скользящий интервал
+* Средневзвешенная цена сделок за скользящий интервал
 
 ```json
 | datetime                |  trade_num |  price | quantity |   vwap |
@@ -619,7 +617,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-7) Средневзвешенная цена сделок за календарные периоды
+* Средневзвешенная цена сделок за календарные периоды
 
 ```json
 | datetime            |   vwap |

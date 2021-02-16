@@ -3446,7 +3446,7 @@ WORKDAY(datetime, -2, 'usa')
 
 ```sql
 SELECT value,
-  date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS base,  
+  date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS base,
   date_format(WORKDAY(datetime, -1, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-1",
   date_format(WORKDAY(datetime, -2, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-2"
 FROM "mpstat.cpu_busy"

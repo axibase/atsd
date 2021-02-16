@@ -459,7 +459,7 @@ ${sendTcpMessage('example.org', 9001, entity + ' alert')}
 sendTcpMessageReply(string host, int port, string message [, timeout]) TcpReply
 ```
 
-The function sends the specified message to a remote server, identified with the hostname and port, via the TCP protocol. After the message is sent, the function awaits a response from the server, for up to `30` seconds. The default timeout can be customized using the optional `timeout` argument specified in seconds.  
+The function sends the specified message to a remote server, identified with the hostname and port, via the TCP protocol. After the message is sent, the function awaits a response from the server, for up to `30` seconds. The default timeout can be customized using the optional `timeout` argument specified in seconds.
 
 The function returns a `TcpReply` object containing the following fields:
 

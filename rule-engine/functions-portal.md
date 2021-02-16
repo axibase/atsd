@@ -80,8 +80,8 @@ addOHLCVPortal(string symbol, string class, string comment, map options)
 
 The `options` object supports the following settings:
 
-- Dimensions `['width': number, 'height': number]`, for example ``.
-- Interval and aggregation `interval`, `period`, `startDate`, and `endDate`.
+* Dimensions `['width': number, 'height': number]`, for example ``.
+* Interval and aggregation `interval`, `period`, `startDate`, and `endDate`.
 
 ### Examples
 

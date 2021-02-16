@@ -71,7 +71,7 @@ To control which metrics to expose in Axibase Server, use the `table` metric tag
 * Click the table name to check the list of metrics.
 
   ![](./view_schema_jvm_table.png)
-  
+
 <!-- markdownlint-disable MD102 -->
 
 * Open **Designer** tab, search for an entity collecting the metrics. In the example above, search for `atsd` entity. Follow the prompts to view the report.

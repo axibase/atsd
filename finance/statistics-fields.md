@@ -104,9 +104,9 @@
 | `underlying_bid` | 99 | DECIMAL | Underlying instrument bid | |
 | `underlying_offer` | 100 | DECIMAL | Underlying instrument offer | |
 | `underlying_last` | 101 | DECIMAL | Underlying instrument last trade price | |
-| `root_bid` | 102 | DECIMAL | Root instrument bid | |
-| `root_offer` | 103 | DECIMAL | Root instrument offer | |
-| `root_last` | 104 | DECIMAL | Root instrument last trade price | |
+| `root_bid` | 102 | DECIMAL | root instrument bid | |
+| `root_offer` | 103 | DECIMAL | root instrument offer | |
+| `root_last` | 104 | DECIMAL | root instrument last trade price | |
 | `custom_num_01` | 254 | DECIMAL | Custom numeric field 1 | |
 | `custom_num_02` | 253 | DECIMAL | Custom numeric field 2 | |
 | `custom_num_03` | 252 | DECIMAL | Custom numeric field 3 | |

@@ -26,7 +26,7 @@ The transformation is implemented as follows:
     b. The `period` is not specified.
     <br>
     In this case the multi-value series consists of pairs `(timestamp, multiple series samples with given timestamp)`, for each `timestamp` present in the input series within the subgroup.
-  
+
 1. Interpolate each multi-value series according to the `interpolate` field.
 
 1. Truncate each multi-value series if `truncate` field is `true`.

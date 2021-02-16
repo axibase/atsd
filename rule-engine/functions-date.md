@@ -42,7 +42,7 @@ Access `DateTime` object fields using dot notation.
 
 ```javascript
 // returns true on Thursdays
-now.dayOfWeek == 4  
+now.dayOfWeek == 4
 ```
 
 When printed as text, for example with `${now}` placeholder, the [`DateTime`](object-datetime.md) object is ISO date with time zone information.

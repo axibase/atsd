@@ -33,14 +33,14 @@ Supported fields:
 * Lookup Functions
   * [`entity_tags`](../../configuration/functions-entity-groups-expression.md#entity_tags)
 * Collection Functions
-  * [`collection`](../../configuration/functions-entity-groups-expression.md#collection)  
+  * [`collection`](../../configuration/functions-entity-groups-expression.md#collection)
   * [`likeAll`](../../configuration/functions-entity-groups-expression.md#likeall)
   * [`likeAny`](../../configuration/functions-entity-groups-expression.md#likeany)
-  * [`matches`](../../configuration/functions-entity-groups-expression.md#matches)  
+  * [`matches`](../../configuration/functions-entity-groups-expression.md#matches)
   * [`collection_contains`](../../configuration/functions-entity-groups-expression.md#collection_contains)
   * [`contains`](../../configuration/functions-entity-groups-expression.md#contains)
   * [`size`](../../configuration/functions-entity-groups-expression.md#size)
-  * [`isEmpty`](../../configuration/functions-entity-groups-expression.md#isempty)  
+  * [`isEmpty`](../../configuration/functions-entity-groups-expression.md#isempty)
   * [`IN`](../../configuration/functions-entity-groups-expression.md#in)
 * Text Functions
   * [`upper`](../../configuration/functions-entity-groups-expression.md#upper)

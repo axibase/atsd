@@ -41,7 +41,7 @@ ATSD standalone version is fully functional and is free of charge, including for
 
 ## API Clients
 
-* Open source API clients for [Python](https://github.com/axibase/atsd-api-python) and [Java](https://github.com/axibase/atsd-api-java) 
+* Open source API clients for [Python](https://github.com/axibase/atsd-api-python) and [Java](https://github.com/axibase/atsd-api-java)
 
 ## Installation
 

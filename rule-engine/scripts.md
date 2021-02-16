@@ -239,7 +239,7 @@ KT1_TEMS_SECURE='YES'
 `TEMS` restart is required to activate this setting.
 
 #### Configuration
-  
+
 * Create the `disk_cleanup.sh` file in `/opt/atsd/atsd/conf/script` directory.
 
 ```bash

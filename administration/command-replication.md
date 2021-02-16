@@ -64,7 +64,7 @@ Portal Configuration:
   server-aggregate = true
   display-panels = true
   expand-panels = true
-  
+
 [group]
   widgets-per-row = 1
 
@@ -98,7 +98,7 @@ Portal Configuration:
 
   [series]
     metric = metric_received_per_second
-  
+
   [series]
     metric = property_received_per_second
 

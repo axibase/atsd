@@ -58,7 +58,7 @@ The forecast algorithms need the input series to be regularized which requires a
 "aggregate": {
   "type": "AVG",
   "period": { "count": 1, "unit": "HOUR" },
-  "interpolate" : { "type": "LINEAR" }  
+  "interpolate" : { "type": "LINEAR" }
 }
 ```
 
