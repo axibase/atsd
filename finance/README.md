@@ -39,6 +39,10 @@ ATSD standalone version is fully functional and is free of charge, including for
 * Trade execution reporting
 * Market surveillance
 
+## API Clients
+
+* Open source API clients for [Python](https://github.com/axibase/atsd-api-python) and [Java](https://github.com/axibase/atsd-api-java) 
+
 ## Installation
 
 ATSD is supported on major Linux distributions in 64-bit mode. In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on file systems such as [Hadoop](../installation/cloudera.md) (HDFS), [Amazon EMRFS](../installation/aws-emr-s3.md), and [Azure Storage](../installation/azure-hdinsight.md).
