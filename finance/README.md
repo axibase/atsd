@@ -1,6 +1,12 @@
 # Introduction
 
-**Axibase Time Series Database** is a scalable platform for storing and analyzing financial market data such as trades, quotes, EOD, session, and auction statistics.
+**Axibase Time Series Database** is a scalable platform for storing and analyzing financial market data such as trades and quotes, as well as end-of-day, session, and auction statistics.
+
+## Key Features
+
+* Parallel query engine optimized for common data access patterns
+* Extended [SQL](sql.md) syntax with fast OHLCV and VWAP aggregators
+* Flexible filtering based on reference data, trading schedules, and index composition
 
 ## Supported Data Types
 
@@ -12,8 +18,8 @@
 
 ## Insertion Modes
 
-* Streaming using FAST, SBE, or plain text
-* Bulk upload from files
+* Real-time streaming using FAST, SBE, plain text
+* Scheduled upload from archives
 
 ## Asset Classes
 
@@ -21,25 +27,25 @@
 * Futures
 * Options
 * Bonds
-* Currencies / FX
+* Currencies
 * ETFs/ETNs
 * Indices
-* Commodities
 
 ## Use Cases
 
 * Quantitative research
 * Strategy backtesting
 * Auction arbitrage
-* ETF NAV arbitrage
 * Index arbitrage
-* Non-transparent ETF/ETN decomposition
+* ETF arbitrage
+* Non-transparent ETF decomposition
 * Trade execution reporting
 * Market surveillance
 
 ## API Clients
 
 * Open source API clients for [Python](https://github.com/axibase/atsd-api-python) and [Java](https://github.com/axibase/atsd-api-java)
+* Open source [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers
 
 ## Installation
 
