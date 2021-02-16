@@ -14,8 +14,8 @@ Retrieves records from the session summary table in CSV format.
 
 | **Name** | **Required** | **Description** | **Example** |
 |-----------|--------------|----------------|--------------|
-| `startDate`  | yes | Start date in [ISO format](../shared/date-format.md#supported-formats), inclusive | `"2021-01-01T00:00:00Z"` |   
-| `endDate`  | yes | End date in [ISO format](../shared/date-format.md#supported-formats), exclusive | `"2022-01-01T00:00:00Z"` |  
+| `startDate`  | yes | Start date in [ISO format](../shared/date-format.md#supported-formats), inclusive | `"2021-01-01T00:00:00Z"` |
+| `endDate`  | yes | End date in [ISO format](../shared/date-format.md#supported-formats), exclusive | `"2022-01-01T00:00:00Z"` |
 | `stages` | no | Array of stage identifiers. All stages are retrieved if not specified | `["O", "N"]`
 | `sessions` | no | Array of session types. All session types are retrieved if not specified | `["DAY"]`
 | `instruments` | no | Array of instrument filter objects. Wildcards supported to match multiple instruments. Disjunction operation is applied to multiple items. All instruments are retrieved if not specified | `[{"symbol" : "A*", "class": "TQBR"}]`
