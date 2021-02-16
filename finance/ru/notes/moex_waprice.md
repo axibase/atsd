@@ -31,12 +31,16 @@ SUM(price*quantity) / SUM(quantity)
 
 При расчете `waprice` биржа руководствуется Пунктом 2 Приложения 2 к Положению 437-П Банка России и исходя из критерия "рыночных сделок" применяет фильтр режимов торгов, которые включаются для расчета средневзвешенной цены. Список режимов обновляется в [Уведомлениях](https://fs.moex.com/files/10215/), [Изменениях](https://fs.moex.com/files/9957/) и по состоянию на 14.12.2021, выражение для фильтра режимов выглядит следующим образом:
 
+<!-- markdownlint-disable MD107 -->
+
 ```sql
    market = 'FOND' AND class NOT IN('AUCT','AUBB','EQDP')
 OR market = 'FNDT' AND class NOT IN('TQDB')
 OR market = 'RPS'  AND class     IN('PSDB','PSDE','PSEO','PSEQ','PSEU','PSGO','PSIF','PSOB','PSQI','PSSD','PSTC','PSTD','PSTF','PSYO','IRK2')
 OR market = 'RPST' AND class NOT IN('SPEQ')
 ```
+
+<!-- markdownlint-enable MD107 -->
 
 Например, для наиболее ликвидных акций список включенных режимов, за вычетом устаревших режимов [отчетности](https://www.moex.com/n32174), состоит из основного режима TQBR и пяти дополнительных режимов:
 
@@ -394,7 +398,7 @@ WHERE class = 'PTEQ'
 
 [Открыть график в ChartLab](https://apps.axibase.com/chartlab/1cd4a0b9/3/)
 
-* Средневзвешенная цена по методологии биржи (для нескольких режимов) за основую сессию:
+- Средневзвешенная цена по методологии биржи (для нескольких режимов) за основую сессию:
 
 ```json
 | symbol | waprice |
@@ -424,7 +428,7 @@ WITH TIMEZONE = 'Europe/Moscow', WORKDAY_CALENDAR = 'moex'
 
 </details>
 
-* Средневзвешенная цена отдельно по режимам используя итоги, за основую сессию:
+- Средневзвешенная цена отдельно по режимам используя итоги, за основую сессию:
 
 ```json
 | class | symbol | voltoday |    valtoday | waprice |      vwap |
@@ -456,7 +460,7 @@ WITH ROW_NUMBER(class, symbol ORDER BY datetime DESC) <= 1
 
 </details>
 
-* Средневзвешенная цена отдельно по режимам используя таблицу сделок, за основую сессию:
+- Средневзвешенная цена отдельно по режимам используя таблицу сделок, за основую сессию:
 
 ```json
 | class | symbol | voltoday |    valtoday |     vwap |
@@ -485,7 +489,7 @@ GROUP BY exchange, class, symbol
 
 </details>
 
-* Средневзвешенная цена с момента начала торгов по текущий момент. Данный расчет производит значения в моменты времени эквивалентно `waprice` в потоке MSS в FAST.
+- Средневзвешенная цена с момента начала торгов по текущий момент. Данный расчет производит значения в моменты времени эквивалентно `waprice` в потоке MSS в FAST.
 
 ```json
 | datetime                | class |  trade_num | quantity |  price | trade_value | waprice |
@@ -561,7 +565,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-* Средневзвешенная цена сделок за последний интервал
+- Средневзвешенная цена сделок за последний интервал
 
 ```json
 | last_trade_dt              |   vwap |
@@ -582,7 +586,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-* Средневзвешенная цена сделок за скользящий интервал
+- Средневзвешенная цена сделок за скользящий интервал
 
 ```json
 | datetime                |  trade_num |  price | quantity |   vwap |
@@ -617,7 +621,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-* Средневзвешенная цена сделок за календарные периоды
+- Средневзвешенная цена сделок за календарные периоды
 
 ```json
 | datetime            |   vwap |
