@@ -530,7 +530,7 @@ WITH TIMEZONE = 'Europe/Moscow'
 
 </details>
 
-* Средневзвешенная цена последних N сделок
+- Средневзвешенная цена последних N сделок
 
 ```json
 | datetime                |  trade_num |  price | quantity |   vwap |
