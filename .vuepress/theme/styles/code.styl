@@ -44,3 +44,11 @@
     display block
     margin 0 -1.5rem
     padding 0 1.5rem
+
+
+@supports (width:max-content)
+  .content:not(.custom)
+    pre, pre[class*="language-"]
+      box-sizing: border-box;
+      width: max-content;
+      min-width: 100%;
