@@ -104,7 +104,7 @@ export default {
 .nav-links
   display inline-block
   a
-    line-height 1.4rem
+    line-height 1.4em
     color inherit
     &:hover, &.router-link-active
       color $accentColor
@@ -112,10 +112,10 @@ export default {
     cursor: pointer
     position relative
     display inline-block
-    margin-left 1.5rem
-    line-height 2rem
+    margin-left 1.5em
+    line-height 2em
   .repo-link
-    margin-left 1.5rem
+    margin-left 1.5em
 
 @media (max-width: $MQMobile)
   .nav-links

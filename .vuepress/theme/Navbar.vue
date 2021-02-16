@@ -42,7 +42,8 @@ export default {
 @import './styles/config.styl'
 
 .navbar
-  padding 0.7rem 1.5rem
+  font-size: 16px
+  padding 0.7em 1.5em
   line-height $navbarHeight - 1.4rem
   position relative
   a, span, img
@@ -50,18 +51,18 @@ export default {
   .logo
     height $navbarHeight - 1.4rem
     min-width $navbarHeight - 1.4rem
-    margin-right 0.8rem
+    margin-right 0.5rem
     vertical-align top
   .site-name
-    font-size 1.3rem
+    font-size 1.5rem
     font-weight 600
     color $textColor
     position relative
   .links
-    font-size 0.9rem
+    font-size 0.9em
     position absolute
-    right 1.5rem
-    top 0.7rem
+    right 1.5em
+    top 0.7em
 
 @media (max-width: $MQMobile)
   .navbar

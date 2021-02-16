@@ -136,39 +136,40 @@ export default {
 @import './styles/config.styl'
 
 .search-box
+  font-size: 16px
   display inline-block
   position relative
-  margin-left 1.5rem
+  margin-left 1.5em
   input
     cursor pointer
-    width 10rem
+    width 10em
     color lighten($textColor, 25%)
     display inline-block
     border 1px solid darken($borderColor, 10%)
-    border-radius 2rem
-    font-size 0.9rem
-    line-height 2rem
-    padding 0 0.5rem 0 2rem
+    border-radius 2em
+    font-size 0.9em
+    line-height 2em
+    padding 0 0.5em 0 2em
     outline none
     transition all .2s ease
-    background #fff url(./search.svg) 0.6rem 0.5rem no-repeat
-    background-size 1rem
+    background #fff url(./search.svg) 0.6em 0.5em no-repeat
+    background-size 1em
     &:focus
       cursor auto
       border-color $accentColor
   .suggestions
     background #fff
-    width 20rem
+    width 20em
     position absolute
-    top 1.5rem
+    top 1.5em
     right 0
     border 1px solid darken($borderColor, 10%)
     border-radius 6px
-    padding 0.4rem
+    padding 0.4em
     list-style-type none
   .suggestion
     line-height 1.4
-    padding 0.4rem 0.6rem
+    padding 0.4em 0.6em
     border-radius 4px
     a
       color lighten($textColor, 35%)
@@ -187,10 +188,10 @@ export default {
     width 0
     border-color transparent
     position relative
-    left 1rem
+    left 1em
     &:focus
       left 0
-      width 10rem
+      width 10em
 
 @media (max-width: $MQMobile)
   .search-box
@@ -201,7 +202,7 @@ export default {
 @media (max-width: $MQMobileNarrow)
   .search-box
     .suggestions
-      width calc(100vw - 4rem)
+      width calc(100vw - 4em)
     input:focus
-      width 8rem
+      width 8em
 </style>
