@@ -2,11 +2,9 @@
 
 **Axibase Time Series Database** is a scalable platform for storing and analyzing financial market data such as trades, quotes, EOD, session, and auction statistics.
 
-ATSD standalone version is fully functional and is free of charge, including for production purposes.
-
 ## Supported Data Types
 
-* Trades / last sale
+* Trades / Last sale
 * Level 1 Quotes
 * Auction and Imbalance Statistics
 * EOD (End-of-Day) and Session Summary
@@ -14,10 +12,10 @@ ATSD standalone version is fully functional and is free of charge, including for
 
 ## Insertion Modes
 
+* Streaming using FAST, SBE, or plain text
 * Bulk upload from files
-* Streaming real-time
 
-## Instrument Types
+## Asset Classes
 
 * Equities
 * Futures
@@ -52,3 +50,5 @@ Installation on [Docker](../installation/docker.md):
 ```bash
 docker run -d --name=atsd --env=JAVA_OPTS="-Dprofile=FINANCE" axibase/atsd:latest && docker logs -f atsd
 ```
+
+ATSD standalone version is free of charge, including for production purposes.

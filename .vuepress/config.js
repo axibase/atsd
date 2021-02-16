@@ -369,6 +369,7 @@ const financeMenu = [
             ['ohlcv-export.md', 'OHLCV'],
             ['statistics-export.md', 'Statistics'],
             ['session-summary-export.md', 'EOD / Sessions'],
+            ['session-summary-last.md', 'Session Summary'],
             ['version-export.md', 'Reference Versions'],
         ]
     },    
@@ -395,6 +396,7 @@ const financeMenuRu = [
             ['../ohlcv-export.md', 'OHLCV'],
             ['../statistics-export.md', 'Statistics'],
             ['../session-summary-export.md', 'EOD / Sessions'],
+            ['../session-summary-last.md', 'Session Summary'],
             ['../version-export.md', 'Reference Versions'],
         ]
     },    
