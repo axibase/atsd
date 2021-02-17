@@ -167,6 +167,7 @@ Examples:
 * `date.hourOfDay >= 14`: Retrieves samples recorded at `14:00` or later each day.
 * `date.timeOfDay BETWEEN '14:00' AND '15:00'`: Retrieves samples recorded between `14:00` and `15:00` (inclusive) each day.
 * `filter_by_time_of_day('14:00', '15:00')`: Retrieves samples recorded between `14:00` and `15:00` (inclusive) each day using a filter function.
+* `date.to_timezone('US/Eastern') BETWEEN '09:30' AND '16:00' && date.to_timezone('US/Eastern').is_weekday('nyse')`
 
 ## Transformations
 
