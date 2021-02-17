@@ -1,7 +1,5 @@
 const githubSettings = {
     docsRepo: 'axibase/atsd',
-    editLinks: true,
-    editLinkText: 'Have a suggestion?'
 };
 
 const portalsMenu = [
