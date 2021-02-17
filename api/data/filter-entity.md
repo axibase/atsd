@@ -23,6 +23,7 @@ Supported fields:
 * `label`
 * `enabled`
 * `createdDate`
+* `versionDate`
 * `tags.<name>` or `tags['<name>']`
 
 ### Supported Functions
