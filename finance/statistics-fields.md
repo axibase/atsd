@@ -102,13 +102,15 @@
 | `national_biddepth` | 95 | LONG | National best bid size. | NBBO bid size in shares. |
 | `national_offerdepth` | 96 | LONG | National best offer size. | NBBO offer size in shares. |
 | `settlpriceopen` | 97 | LONG | Settlement price at the start of the session. | |
-| `vwap` | 98 | DECIMAL | Volume weighted average price. | |
+| `vwap` | 98 | DECIMAL | Volume weighted average price. | For FAST consumers, calculated as `valtoday/voltoday`|
 | `underlying_bid` | 99 | DECIMAL | Underlying instrument bid | |
 | `underlying_offer` | 100 | DECIMAL | Underlying instrument offer | |
 | `underlying_last` | 101 | DECIMAL | Underlying instrument last trade price | |
 | `root_bid` | 102 | DECIMAL | Root instrument bid | |
 | `root_offer` | 103 | DECIMAL | Root instrument offer | |
 | `root_last` | 104 | DECIMAL | Root instrument last trade price | |
+| `openinterest` | 105 | LONG | Open Interest | For FAST consumers, a copy of `numcontracts`|
+| `close` | 106 | DECIMAL | Closing price | For FAST consumers, a copy of `last`|
 | `custom_num_01` | 254 | DECIMAL | Custom numeric field 1 | |
 | `custom_num_02` | 253 | DECIMAL | Custom numeric field 2 | |
 | `custom_num_03` | 252 | DECIMAL | Custom numeric field 3 | |
