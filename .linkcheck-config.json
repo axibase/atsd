@@ -81,5 +81,6 @@
         ,{ "pattern": "https://www.hipchat.com" }
         ,{ "pattern": "https://support.discordapp.com/hc/en-us/articles" }
         ,{ "pattern": "https://axibase.zendesk.com" }
+        ,{ "pattern": "https://www.npmjs.com/package/atsd-api" }
     ]
 }
