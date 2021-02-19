@@ -19,17 +19,21 @@
         </span>
       </p>
     </div>
+    <div v-if="remarkConfig" class="content comments-block">
+      <Remark42Comments ref="comments" />
+    </div>
     <slot name="bottom"/>
   </div>
 </template>
 
 <script>
 import OutboundLink from "./OutboundLink.vue";
+import Remark42Comments from "./Remark42Comments.vue";
 import { resolvePage, normalize, outboundRE, endingSlashRE, isExternal } from "./util";
 
 export default {
-  components: { OutboundLink },
-  props: ["sidebarItems"],
+  components: { OutboundLink, Remark42Comments },
+  props: ["sidebarItems", "remarkConfig"],
   computed: {
     prev() {
       const prev = this.$page.frontmatter.prev;
@@ -85,6 +89,12 @@ export default {
         this.$site.themeConfig.editLinkText ||
         `Edit this page`
       );
+    }
+  },
+
+  methods: {
+    destroyComments() {
+      this.$refs.comments.destroy();
     }
   }
 };
