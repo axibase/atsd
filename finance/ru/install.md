@@ -68,7 +68,7 @@ systemctl start moex-consumer-spectra
 sudo vim /etc/sysctl.conf
 ```
 
-```
+```text
 # Increase the maximum total buffer-space allocatable
 net.ipv4.udp_mem = 65536 131072 262144
 
