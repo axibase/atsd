@@ -4,7 +4,7 @@
 
 ### Java для ATSD
 
-Для ATSD установите Java 8 согласно [инструкции](../administration/migration/install-java-8.md).
+Для ATSD установите Java 8 согласно [инструкции](../../administration/migration/install-java-8.md).
 
 Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
 
@@ -156,10 +156,10 @@ sudo sysctl -w net.core.netdev_max_backlog=50000
 Для проверки, что все сделки были корректно заложены, настройте отправку файлов со сделками (снэпшоты) на сервер ATSD для восполнения потерь.
 
 Создайте токен для доступа к сервису закладки снэпшотов. Откройте **Admin > Users > Create Token**.
-Укажите `/api/v1/trades/upload` в поле URL, метод POST и нажмите **Issue Token**.
+Укажите `/api/v1/trades/upload` в поле **URL**, метод `POST` и нажмите **Issue Token**.
 Укажите полученный токен в поле `TOKEN` в файле `/opt/moex-consumer/scripts/moex-consumer-env.sh`.
 
-Добавьте скрипны для отправки снэпшотов по окончании торгового дня.
+Добавьте скрипты для отправки снэпшотов по окончании торгового дня.
 
 ```sh
 crontab -e
