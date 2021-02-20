@@ -24,7 +24,7 @@ systemctl start moex-consumer-asts-fx
 systemctl start moex-consumer-spectra
 ```
 
-## Требования к операционной системе и аппаратным ресурсам
+## Требования к операционной системе
 
 ## Архитектура Процессора
 
@@ -36,6 +36,8 @@ systemctl start moex-consumer-spectra
 * RedHat Enterprise Linux `7.x`
 * CentOS `7.x`
 * Debian `8.x`, `9.x`
+
+## Требования к аппаратным ресурсам
 
 ## ЦПУ и ОЗУ
 

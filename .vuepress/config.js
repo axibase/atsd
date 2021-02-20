@@ -417,7 +417,7 @@ const financeMenuRu = [
     },
     {
         title: "Установка", children: [
-            ['./install.md', 'Дистрибутивы и требованияы']
+            ['./install.md', 'Дистрибутивы и требования']
         ]
     }
 ];
