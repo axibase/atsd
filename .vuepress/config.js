@@ -414,6 +414,11 @@ const financeMenuRu = [
         title: "Примеры", children: [
             ['./notes/moex_waprice.md', 'Расчет waprice на МБ']
         ]
+    },
+    {
+        title: "Установка", children: [
+            ['./install.md', 'Дистрибутивы и требованияы']
+        ]
     }
 ];
 
