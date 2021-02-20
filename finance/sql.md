@@ -1084,16 +1084,17 @@ The `{ordering columns [direction]}` can refer to any column of the `FROM` claus
 
 | **Name** | **Description** | **Example** |
 |:---|:---|:---|
-| `COUNT` | Count of values. | `COUNT(value)` |
-| `SUM` | Sum of values. | `SUM(value)` |
-| `MIN` | Minimum of values. | `MIN(value)` |
-| `MAX` | Maximum of values. | `MAX(value)` |
-| `AVG` | Average of values. | `AVG(value)` |
-| `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(value)` |
-| `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(value)` |
-| `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, value)` |
-| `REGR_INTERCEPT` | Slope of the linear regression line. | `REGR_INTERCEPT(value, time)` |
-| `REGR_SLOPE` | Intercept of the linear regression line. | `REGR_SLOPE(value, time)*(time+3*60000)` |
+| `COUNT` | Count of values. | `COUNT(price)` |
+| `SUM` | Sum of values. | `SUM(price)` |
+| `MIN` | Minimum of values. | `MIN(price)` |
+| `MAX` | Maximum of values. | `MAX(price)` |
+| `AVG` | Average of values. | `AVG(price)` |
+| `PRODUCT` | Product of values. | `PRODUCT(price)` |
+| `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(price)` |
+| `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(price)` |
+| `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, price)` |
+| `REGR_INTERCEPT` | Slope of the linear regression line. | `REGR_INTERCEPT(price, time)` |
+| `REGR_SLOPE` | Intercept of the linear regression line. | `REGR_SLOPE(price, time)*(time+3*60000)` |
 
 For an unbound window `ROW_NUMBER(...) > 0`, an analytical function is applied to **all** rows in the partition. For a sliding window, the function is applied to a subset of rows matching the row number condition.
 
@@ -1300,7 +1301,7 @@ The following functions aggregate values in a column by producing a single value
 | MAX_VALUE_TIME | MEDIAN         | MIN            | AMOUNT         |
 | MIN_VALUE_TIME | OPEN           | PERCENTILE     | SUM            |
 | STDDEV         | VOLUME         | VWAP           | WAVG           |
-| WTAVG          | BETA           |                |                |
+| WTAVG          | BETA           | PRODUCT        |                |
 |----------------|----------------|----------------|----------------|
 ```
 
@@ -1362,6 +1363,10 @@ The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/
 `FIRST` is an aggregate function that returns the price of the first trade (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
 
 > Note that `FIRST_VALUE` is an **analytical** function.
+
+#### PRODUCT
+
+`PRODUCT` is an aggregate function that multiplies the values of numeric expression `expr` and returns the product.
 
 #### LAST
 
@@ -2046,6 +2051,18 @@ IS_ENTITY_IN_GROUP(expr, varchar groupName)
 
 ```sql
 WHERE is_entity_in_group(CONCAT(symbol, '_[', class, ']'), 'watch_list_1')
+```
+
+#### TO_ENTITY
+
+This utility function returns an entity name for the specified `symbol` and `class`. Same as `CONCAT(symbol, '_[', class, ']')`.
+
+```javascript
+TO_ENTITY(varchar symbol, varchar class)
+```
+
+```sql
+WHERE is_entity_in_group(TO_ENTITY(symbol, class), 'watch_list_1')
 ```
 
 #### IS_INSTRUMENT_IN_INDEX

@@ -1929,6 +1929,7 @@ Example | Description
 | `MIN` | Minimum of values. | `MIN(value)` |
 | `MAX` | Maximum of values. | `MAX(value)` |
 | `AVG` | Average of values. | `AVG(value)` |
+| `PRODUCT` | Product of values. | `PRODUCT(values)` |
 | `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(value)` |
 | `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(value)` |
 | `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, value)` |
@@ -2837,6 +2838,10 @@ The function accepts `percentile` parameter within the `[0, 100]` range as the f
 * `PERCENTILE(0, value)` equals `MIN(value)`.
 
 The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
+
+#### PRODUCT
+
+`PRODUCT` is an aggregate function that multiplies the values of numeric expression `expr` and returns the product.
 
 #### FIRST
 
