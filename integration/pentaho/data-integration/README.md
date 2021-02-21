@@ -300,15 +300,3 @@ SELECT entity, datetime, value FROM inflation.cpi.composite.price
 ## Transformation File
 
 * [Link to the `ktr` file](./resources/transformation.ktr) containing this transformation.
-
-## Reference
-
-PDI tools applied in this transformation:
-
-* [Join Rows (cartesian product)](https://wiki.pentaho.com/display/EAI/Join+Rows+%28Cartesian+product%29)
-* [Merge Join](https://wiki.pentaho.com/display/EAI/Merge+Join)
-* [Calculator](https://wiki.pentaho.com/display/EAI/Calculator)
-* [Insert / Update](https://wiki.pentaho.com/display/EAI/Insert+-+Update)
-* [Group by](https://wiki.pentaho.com/display/EAI/Group+By)
-* [Add constants](https://wiki.pentaho.com/display/EAI/Add+Constants)
-* [Add sequence](https://wiki.pentaho.com/display/EAI/Add+sequence)
