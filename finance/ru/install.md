@@ -4,13 +4,9 @@
 
 ### Java для ATSD
 
-Для ATSD установите Java 8 согласно [инструкции](../../administration/migration/install-java-8.md).
+Установите Java 8 согласно [инструкции](../../administration/migration/install-java-8.md).
 
-Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
-
-```sh
-sudo su axibase
-```
+Добавьте `JAVA_HOME` в параметры окружения пользователя в `.bashrc`.
 
 ```sh
 jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
@@ -20,7 +16,7 @@ jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
 
 ### Java для консьюмеров
 
-Установите Java 15 SDKMAN.  
+Установите Java 15 SDKMAN.
 
 ```sh
 curl -s "https://get.sdkman.io" | bash
@@ -60,7 +56,7 @@ systemctl start moex-consumer-spectra
 
 ## Операционная система
 
-* Ubuntu `18.04`
+* Ubuntu `16.04`, `18.04`
 * RedHat Enterprise Linux `7.x`
 * CentOS `7.x`
 * Debian `8.x`, `9.x`
@@ -81,8 +77,8 @@ systemctl start moex-consumer-spectra
 
 ## Дисковое пространство
 
-* Установочные файлы: `10` GB.
-* Данные: `50` GB **минимум**.
+* Установочные файлы и дневные лог файлы: `20` GB
+* Исторические данные в ATSD: `100` GB и более.
 
 :::tip Подсказка
 Заранее предусмотрите расширяемость диска без необходимости переустановки.
