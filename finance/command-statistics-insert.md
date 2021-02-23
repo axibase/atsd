@@ -56,9 +56,9 @@ The event time is `2021-01-14T11:02:50.591005Z`
 
 ## Logging
 
-Incoming commands are logged in `statistics.log` file by default. The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files** page.
+Incoming statistics are logged in `statistics.log` file by default. The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files** page.
 
-Invalid commands are logger in `command_malformed.log` file.
+Invalid commands are logged in `command_malformed.log` file.
 
 ```xml
 <appender name="statistics.csv.appender" class="ch.qos.logback.core.rolling.RollingFileAppender">

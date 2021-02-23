@@ -2053,6 +2053,18 @@ IS_ENTITY_IN_GROUP(expr, varchar groupName)
 WHERE is_entity_in_group(CONCAT(symbol, '_[', class, ']'), 'watch_list_1')
 ```
 
+#### ENTITY_TAG
+
+The function returns tag value for the specified entity name and tag name.
+
+```sql
+ENTITY_TAG(varchar entity, varchar tagName)
+```
+
+```sql
+SELECT price, entity_tag(to_entity('AKH1', 'SPBFUT'), 'base_instrument')
+```
+
 #### TO_ENTITY
 
 This utility function returns an entity name for the specified `symbol` and `class`. Same as `CONCAT(symbol, '_[', class, ']')`.

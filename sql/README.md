@@ -3925,7 +3925,7 @@ ORDER BY datetime DESC
 The `IS_ENTITY_IN_GROUP` function returns `true` if `arg1` matches one of the entity names in the specified entity group.
 
 ```sql
-IS_ENTITY_IN_GROUP(expr, <group-name>)
+IS_ENTITY_IN_GROUP(varchar entity, varchar groupName)
 ```
 
 ```sql
@@ -3934,6 +3934,18 @@ SELECT entity, AVG(value)
 WHERE datetime > current_hour
   AND is_entity_in_group(REPLACE(entity, 'nur', ''), 'nur-hbase')
 GROUP BY entity
+```
+
+#### ENTITY_TAG
+
+The function returns tag value for the specified entity name and tag name.
+
+```sql
+ENTITY_TAG(varchar entity, varchar tagName)
+```
+
+```sql
+SELECT value, entity_tag('nurswgvml007', 'site')
 ```
 
 #### PROPERTY

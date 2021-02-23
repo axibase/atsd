@@ -25,7 +25,7 @@ The parameters can be set as follows:
 
 The file can be attached as `multipart/form-data` element or as text content in payload.
 
-The content must start with a header containing `datetime`, `symbol`, `class`, `exchange`, `type`, `stage`  columns and at least one [statistics](statistics-fields.md) column name.
+The content must start with a header containing `datetime`, `symbol`, `class`, `exchange`, `type`, [`stage`](command-trade-insert.md#trading-session-codes) columns and at least one [statistics](statistics-fields.md) column name.
 
 ```txt
 datetime,exchange,class,symbol,type,stage,open,high,low,closeprice,voltoday,vwap
