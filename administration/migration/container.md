@@ -78,7 +78,7 @@ The number of records must match the results after the migration.
 
 ## Install Java 8
 
-[Install Oracle JDK 8](install-java-8.md#oracle-jdk) on the ATSD server as described. `root` permissions are necessary to upgrade Java.
+[Install Open JDK 8](install-java-8.md) on the ATSD server as described. `root` permissions are necessary to upgrade Java.
 
 Exit from the `root` session and log in to the container as the `axibase` user.
 

@@ -8,11 +8,7 @@ sudo adduser axibase
 
 ## Install Java
 
-Install Oracle JDK or Open JDK on the ATSD server.
-
-### Oracle JDK Installation
-
-[Oracle JDK 7 Downloads](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+Install Open JDK on the ATSD server.
 
 ### Open JDK Installation
 
