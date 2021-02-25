@@ -15,11 +15,18 @@
 * Auction and Imbalance Statistics
 * EOD (End-of-Day) and Session Summary
 * Reference Data
+* Generic time-series
 
 ## Insertion Modes
 
 * Real-time streaming using FAST, SBE, plain text
-* Scheduled upload from archives
+* Scheduled upload from daily archives
+
+## Data Sources
+
+* Consolidated feeds
+* Direct exchange feeds
+* Files
 
 ## Asset Classes
 
@@ -31,13 +38,16 @@
 * ETFs/ETNs
 * Indices
 
+## Forecasting Algorithms
+
+* ARIMA
+* SVD / SSA
+
 ## Use Cases
 
 * Quantitative research
 * Strategy backtesting
-* Auction arbitrage
-* Index arbitrage
-* ETF arbitrage
+* Auction/Index/ETF arbitrage
 * Non-transparent ETF decomposition
 * Trade execution reporting
 * Market surveillance
@@ -51,10 +61,10 @@
 
 ATSD is supported on major Linux distributions in 64-bit mode. In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on file systems such as [Hadoop](../installation/cloudera.md) (HDFS), [Amazon EMRFS](../installation/aws-emr-s3.md), and [Azure Storage](../installation/azure-hdinsight.md).
 
-Installation on [Docker](../installation/docker.md):
-
 ```bash
-docker run -d --name=atsd --env=JAVA_OPTS="-Dprofile=FINANCE" axibase/atsd:latest && docker logs -f atsd
+curl -O https://axibase.com/public/atsd.fin.latest.tar.gz | tar -xz
+tar -xzf atsd.fin.latest.tar.gz
+./atsd/bin/atsd-tsd.sh start
 ```
 
 ATSD standalone version is free of charge, including for production purposes.

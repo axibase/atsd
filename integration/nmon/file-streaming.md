@@ -14,11 +14,6 @@ Currently, `nmon` is primarily supported on AIX and Linux systems. It can monito
 
 AIX systems have `nmon` installed by default.
 
-## nmon Resources
-
-* [IBM](https://www.ibm.com/developerworks/aix/library/au-nmon_analyser/index.html)
-* [`nmon` SourceForge](http://nmon.sourceforge.net/pmwiki.php?n=Main.HomePage)
-
 ### Install nmon
 
 Create `nmon` directories:
