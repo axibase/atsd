@@ -13,7 +13,7 @@
       <component :is="$page.frontmatter.layout"/>
     </div>
     <Home v-else-if="$page.frontmatter.home"/>
-    <Page v-else :sidebar-items="sidebarItems">
+    <Page v-else :sidebar-items="sidebarItems" :remark-config="remarkConfig" ref="page">
       <slot name="page-top" slot="top"/>
       <slot name="page-bottom" slot="bottom"/>
     </Page>
@@ -68,6 +68,9 @@ export default {
         this.$site,
         this.$localePath
       )
+    },
+    remarkConfig() {
+      return this.$site.themeConfig.remark42Config;
     },
     pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass
@@ -127,6 +130,11 @@ export default {
 
   beforeDestroy () {
     updateMetaTags(null, this.currentMetaTags)
+  },
+
+  beforeRouteLeave(to, from, next) {
+    this.$refs.page.destroyComments();
+    next();
   },
 
   methods: {

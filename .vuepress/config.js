@@ -471,13 +471,20 @@ module.exports = {
             '': [],
         },
 
+        remark42Config:{
+            host: "https://axibase.com/comments",
+            site_id: "docs_atsd",
+            components: ["embed"],
+            show_email_subscription: true,
+        },
+
         searchMaxSuggestions: 10,
 
         ...githubSettings
     },
     markdown: {
         slugify
-    }
+    },
 }
 
 loadFromEnv("ga", "GA_API_KEY");
