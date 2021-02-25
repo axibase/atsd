@@ -20,7 +20,7 @@
       </p>
     </div>
     <div v-if="remarkConfig" class="content comments-block">
-      <Remark42Comments ref="comments" />
+      <Remark42Comments ref="comments" :config="remarkConfig" />
     </div>
     <slot name="bottom"/>
   </div>
