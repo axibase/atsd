@@ -2,7 +2,7 @@ export default function ({siteData}) {
     var remarkConfig = siteData.themeConfig.remark42Config;
 
     if (remarkConfig && typeof window !== "undefined") {
-        window.remark_config = remarkConfig;
+        window.remark_config = { ...remarkConfig };
 
         (function (c) {
             for (var i = 0; i < c.length; ++i) {
