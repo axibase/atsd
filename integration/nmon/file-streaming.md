@@ -14,7 +14,7 @@ Currently, `nmon` is primarily supported on AIX and Linux systems. It can monito
 
 AIX systems have `nmon` installed by default.
 
-### Install nmon
+## Install nmon
 
 Create `nmon` directories:
 
@@ -30,13 +30,13 @@ sudo chown -R `whoami` /opt/nmon
 cd /opt/nmon
 ```
 
-#### Option 1: install nmon from repositories – Ubuntu/Debian
+### Option 1: install nmon from repositories – Ubuntu/Debian
 
 ```sh
 sudo apt-get install nmon
 ```
 
-#### Option 2: install nmon from Axibase GitHub
+### Option 2: install nmon from Axibase GitHub
 
 * Download `nmon` from Axibase repository on GitHub. See releases and branches available for download: [https://github.com/axibase/nmon/releases](https://github.com/axibase/nmon/releases "Available `nmon` releases") and [https://github.com/axibase/nmon/branches](https://github.com/axibase/nmon/branches "Available `nmon` branches").
 
@@ -67,7 +67,7 @@ sudo chmod 774 nmon
 chmod +x nmon
 ```
 
-#### Option 3: install nmon from binaries
+### Option 3: install nmon from binaries
 
 * Download the appropriate `nmon` binary: [http://nmon.sourceforge.net/pmwiki.php?n=Site.Download](http://nmon.sourceforge.net/pmwiki.php?n=Site.Download "nmon Binaries")
 
@@ -94,13 +94,13 @@ mv nmon_linux_x86_64 nmon
 sudo chmod 774 nmon
 ```
 
-#### Download Sender Script from Axibase GitHub
+## Download Sender Script from Axibase GitHub
 
 ```sh
 wget https://github.com/axibase/nmon/blob/master/nmon_sender_telnet.sh
 ```
 
-#### Test nmon with Sender Script – Installed from Repositories
+### Test nmon with Sender Script – Installed from Repositories
 
 ```sh
 /usr/bin/nmon -F `hostname`.nmon -s 2 -c 30
@@ -114,7 +114,7 @@ wget https://github.com/axibase/nmon/blob/master/nmon_sender_telnet.sh
 nmon
 ```
 
-#### Test nmon with Sender Script – Installed from Axibase GitHub or Binaries
+### Test nmon with Sender Script – Installed from Axibase GitHub or Binaries
 
 ```sh
 ./nmon -F `hostname`.nmon -s 2 -c 30
@@ -128,11 +128,11 @@ nmon
 nmon
 ```
 
-#### Setup nmon File Streaming
+## Setup nmon File Streaming
 
 Set up `crontab` to collect data continuously from `nmon` daemon and the appended data is sent into ATSD.
 
-#### Setup nmon File Streaming with Sender Script – Installed from Repositories
+### Setup nmon File Streaming with Sender Script – Installed from Repositories
 
 ```txt
 0 0 * * * /usr/bin/nmon -f -s 60 -c 1440 -T -m /opt/nmon/nmon_logs/
@@ -157,11 +157,11 @@ Custom portals can be created using [HTML5 Widgets](https://axibase.com/docs/cha
 
 [![](./resources/widget-bar-2.png "widget bar 2")](https://axibase.com/docs/charts/widgets/)
 
-#### Predefined nmon AIX Portal
+## Predefined nmon AIX Portal
 
 ![](./resources/portal-4.png "portal 4")
 
-##### Predefined nmon Linux Portal
+## Predefined nmon Linux Portal
 
 ![](./resources/nmon-linux-portal.png "nmon linux portal")
 
