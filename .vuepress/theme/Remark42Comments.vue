@@ -3,6 +3,7 @@ export default {
     data() {
         return { remark42Instance: null };
     },
+    props: ["config"],
     render(h) {
         return h("div", {class: "remark-comments-wrapper" }, [
             h("div", { ref: "comments", attrs: { id: "remark42" } })
@@ -39,7 +40,7 @@ export default {
                 this.destroy();
                 this.remark42Instance = window.REMARK42.createInstance({
                     node: this.$refs.comments,
-                    ...remark_config
+                    ...this.$props.config
                 });
             }
         },

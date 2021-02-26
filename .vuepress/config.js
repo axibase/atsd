@@ -476,6 +476,13 @@ module.exports = {
             site_id: "docs_atsd",
             components: ["embed"],
             show_email_subscription: true,
+            __colors__: {
+                "--color8": "#216abb",
+                "--color9": "#216abb",
+                "--color15": "#216abb",
+                "--color33": "#467fbd",
+                "--color47": "rgba(6, 77, 212, 0.4)",
+            }
         },
 
         searchMaxSuggestions: 10,
