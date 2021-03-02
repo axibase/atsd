@@ -8,6 +8,8 @@ echo -e "entity e:gazp_[tqbr] t:symbol=GAZP t:class_code=TQBR t:lot=100" > /dev/
 
 The commands must be terminated by line break. Multiple commands can be sent over the same connection.
 
+Refer to [`Network API Overview`](../api/network/README.md) for details on how to send network commands.
+
 ## Format
 
 ```bash
@@ -36,4 +38,32 @@ entity e:ru000a102az7_[tqcb] t:symbol=RU000A102AZ7 t:class_code=TQCB t:name="Ð’Ð
 
 ## Logging
 
-Incoming commands are logged in `command.log` file by default.
+Network commands are [logged](../administration/logging.md) in `command.log` file located in the `./atsd/logs` directory.
+
+```sh
+# search today's archives and the current command.log sorted by time
+ls -rt command.$(date '+%Y-%m-%d').* command.log | xargs zgrep -ih "entity e:.*t:clas"
+```
+
+## Validating Results
+
+* UI:
+
+```elm
+https://atsd_hostname:8443/entities/GAZP_[TQBR]
+```
+
+* SQL:
+
+```sql
+SELECT name, label, date_format(creationTime, 'iso') AS createdDate, date_format(versionTime, 'iso') AS versionDate,
+  tags.class_code, tags.symbol, tags.name, tags.short_name, tags.lot, tags."step", tags.scale, tags.currency, tags.trade_currency
+FROM atsd_entity
+  WHERE tags.class_code = 'TQBR' AND tags.symbol = 'GAZP'
+```
+
+* API using [`entity get`](../api/meta/entity/get.md) endpoint:
+
+```elm
+GET /api/v1/entities/GAZP_[GAZP]
+```

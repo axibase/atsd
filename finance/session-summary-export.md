@@ -47,7 +47,7 @@ datetime,entity,stage,high,low
 ## Example
 
 ```sh
-$ curl --request POST 'http://atsd_hostname:8443/api/v1/trade-session-summary/export' \
+$ curl --request POST 'https://atsd_hostname:8443/api/v1/trade-session-summary/export' \
 --insecure --include --user {username}:{password} \
 --header 'Content-Type: application/json' \
 --data-raw '{

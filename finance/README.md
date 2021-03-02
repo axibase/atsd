@@ -42,6 +42,7 @@
 
 * ARIMA
 * SVD / SSA
+* Holt-Winters
 
 ## Use Cases
 

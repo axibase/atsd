@@ -26,7 +26,7 @@ SQL statements can be executed via the web-based console, on schedule, using the
 
 ## Overview
 
-### Tick Data (Trades)
+### Last Sale (Trades)
 
 ```sql
 SELECT datetime, trade_num, price, quantity, side

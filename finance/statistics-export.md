@@ -107,3 +107,14 @@ Retrieves statistics for the instrument in JSON format.
   }
 ]
 ```
+
+## SQL Alternative
+
+```sql
+SELECT *
+  FROM atsd_session_summary
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND type = 'Day' AND stage IN ('O', 'N')
+  AND datetime between '2021-02-15' and '2021-02-17'
+ORDER BY datetime
+```

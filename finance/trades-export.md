@@ -61,3 +61,15 @@ curl https://atsd_hostname:8443/api/v1/trades?class=TQBR&symbol=GAZP&startDate=2
 datetime,trade_num,side,quantity,price,order_num,session
 2020-04-20T10:00:00.000000Z,3177336248,B,123,195.36,1150996,N
 ```
+
+### SQL Alternative
+
+```sql
+SELECT symbol, class, datetime, trade_num, price, quantity, session, side, order_num
+  FROM atsd_trade
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
+  --AND datetime BETWEEN current_day and now
+ORDER BY datetime, trade_num
+  LIMIT 100
+```

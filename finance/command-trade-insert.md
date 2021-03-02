@@ -86,7 +86,14 @@ The trade time is `2020-04-30T21:49:03.645713Z`
 
 ## Logging
 
-Incoming trades are logged in `trades.log` file by default. The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files** page.
+Trade commands are [logged](../administration/logging.md) in `trade.log` file located in the `./atsd/logs` directory.
+
+```sh
+# search today's archives and the current statistics.log sorted by time
+ls -rt trade.$(date '+%Y-%m-%d').* trade.log | xargs zgrep -ih "TQBR,GAZP"
+```
+
+The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files** page.
 
 Invalid commands are logged in `command_malformed.log` file.
 
@@ -103,4 +110,42 @@ Invalid commands are logged in `command_malformed.log` file.
         <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss.SSSXXX",UTC};%message%n</pattern>
     </encoder>
 </appender>
+```
+
+
+## Validating Results
+
+* UI **Trade Viewer** page, instrument overview page.
+
+* SQL using [`atsd_trade`](./sql.md#atsd_trade-table) table:
+
+```sql
+SELECT symbol, class, datetime, trade_num, price, quantity, session, side, order_num
+  FROM atsd_trade
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
+  --AND datetime BETWEEN current_day and now
+ORDER BY datetime, trade_num
+  LIMIT 100
+```
+
+```sql
+SELECT datetime, open(), high(), low(), close(), volume(), vwap()
+  FROM atsd_trade
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime between '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
+GROUP BY exchange, class, symbol, PERIOD(1 MINUTE)
+  ORDER BY datetime
+```
+
+* API [`trades export`](./trades-export.md) endpoint:
+
+```elm
+GET /api/v1/trades?class=TQBR&symbol=GAZP&startDate=2020-12-23T10:00:00Z&endDate=2020-12-24T11:00:00Z
+```
+
+* API [`ohlcv export`](./ohlcv-export.md) endpoint:
+
+```elm
+GET /api/v1/ohlcv?class=TQBR&symbol=GAZP&startDate=2020-12-23T00:00:00Z&endDate=2020-12-24T00:00:00Z&period=15%20MINUTE
 ```

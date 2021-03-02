@@ -78,3 +78,14 @@ curl https://atsd_hostname:8443/api/v1/trades?class=TQBR&symbol=GAZP&startDate=2
 datetime,open,high,low,close,volume
 2020-04-20T10:00:00.000000Z,8.0,12.0,7.0,10,14200
 ```
+
+### SQL Alternative
+
+```sql
+SELECT datetime, open(), high(), low(), close(), volume(), vwap()
+  FROM atsd_trade
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime between '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
+GROUP BY exchange, class, symbol, PERIOD(1 MINUTE)
+  ORDER BY datetime
+```
