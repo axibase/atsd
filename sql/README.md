@@ -2589,7 +2589,6 @@ Note that the `t1.entity` column below contains rows with `null` values even tho
 |-----------------------|---------------|-----------|-----------------------|---------------|-----------|----------------------------------------|
 | 2018-03-09T07:07:05Z  | nurswghbs001  | 4.4       | null                  | null          | null      | null                                   |
 | null                  | null          | null      | 2018-03-09T07:07:42Z  | nurswghbs001  | 248909.0  | file_system=/dev/md2;mount_point=/     |
-
 ```
 
 ### Inner `JOIN`

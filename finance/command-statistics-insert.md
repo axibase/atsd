@@ -219,7 +219,7 @@ FROM atsd_entity
 
 * API using [`property query`](../api/data/properties/query.md) endpoint:
 
-```
+```elm
 POST /api/v1/properties/query
 ```
 

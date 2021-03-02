@@ -112,7 +112,6 @@ Invalid commands are logged in `command_malformed.log` file.
 </appender>
 ```
 
-
 ## Validating Results
 
 * UI **Trade Viewer** page, instrument overview page.

@@ -271,7 +271,6 @@ TradeHistory         |PAGE
 name                 |rows                |reserved          |data              |index_size        |unused
 ---------------------|--------------------|------------------|------------------|------------------|------------------
 TradeHistory         |2045514             |93968 KB          |45008 KB          |48704 KB          |256 KB
-
 ```
 
 ### Execute SQL scripts for the **Universal Table** Schema

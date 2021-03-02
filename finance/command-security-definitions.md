@@ -39,7 +39,6 @@ property e:gazp_[tqbr] t:security_definitions ms:1610604976193 v:symbol=GAZP v:s
 * `currency`
 * `settlcurrency`
 
-
 ## Logging
 
 Network commands are [logged](../administration/logging.md) in `command.log` file located in the `./atsd/logs` directory.
@@ -123,7 +122,7 @@ FROM atsd_entity
 
 * API using [`property query`](../api/data/properties/query.md) endpoint:
 
-```
+```elm
 POST /api/v1/properties/query
 ```
 

@@ -22,7 +22,7 @@ Logs are rolled over and archived according to the retention settings in the `/o
 |`err.log`| Standard error. |
 |`alert.log`| Alert log. |
 
-Execute the following command to search the current logging file and its today's archives sorted by file modification time:
+To search the current logging file and today's archives sorted by file modification time:
 
 ```sh
 ls -rt atsd.$(date '+%Y-%m-%d').* atsd.log | xargs zgrep -ih "<pattern>"

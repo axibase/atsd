@@ -163,7 +163,6 @@ If all series tag values are guaranteed to be numeric or `null`, the values can 
 | e-3    | 20           | U+0032    |
 | e-3    | 3            | U+0033    |
 | e-3    | 30           | U+0033    |
-
 ```
 
 ```sql

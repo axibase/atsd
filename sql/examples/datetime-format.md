@@ -75,7 +75,6 @@ FROM "mpstat.cpu_busy"
 | date_format(time, 'yyyy-MM-dd HH:mm:ss ZZZ', 'US/Pacific') | 2018-06-11 17:00:07 US/Pacific           |
 | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'UTC')          | 2018-06-12 00:00:07 UTC                  |
 | date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'PST')          | 2018-06-11 17:00:07 PDT                  |
-
 ```
 
 ## `AUTO` Time Zone

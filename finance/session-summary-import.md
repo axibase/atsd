@@ -184,7 +184,7 @@ ORDER BY datetime
 
 * API using [`trade-session-summary/export`](./session-summary-export.md) endpoint:
 
-```
+```elm
 POST /api/v1/trade-session-summary/export
 ```
 

@@ -36,7 +36,6 @@ Since both `aggregate` and `group` objects support interpolation functions, chan
 | 2016-01-04T08:29:40.000Z | 16.01 |
 | 2016-01-04T08:44:18.000Z | 16.26 |
 | 2016-01-04T08:59:04.000Z | 16.47 |
-
 ```
 
 ### Aggregated Data
