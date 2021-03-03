@@ -382,7 +382,8 @@ const financeMenu = [
             ['instrument-delete.md', 'Instrument Delete'],
             ['command-security-definitions.md', 'Security Definitions Insert'],
         ]
-    }
+    },
+    ['./install.md', 'Installation']
 ];
 
 const financeMenuRu = [
