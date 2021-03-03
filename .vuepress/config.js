@@ -434,6 +434,15 @@ module.exports = {
     staticFilesExtensionsTest: /(?:tcollector|\.(?:pdf|xlsx?|xml|txt|csv|str|java|json|sql|sps|yxmd|htm|py|prpt|do|tdc|jsonld|ktr|service|sh|ya?ml|lua|properties|conf(?:ig)?))$/,
     themeConfig: {
         nav: topNavMenu,
+        navByPath: {
+            "/finance/": [],
+            "/": topNavMenu,
+            "": [],
+        },
+        homePageByPath: {
+            "/finance/": "/finance/" ,
+            "": "/",
+        },
         logo: '/images/axibase_logo_site.png',
         algolia: {
             appId: 'BH4D9OD16A',

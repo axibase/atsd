@@ -28,9 +28,10 @@ import NavLink from './NavLink.vue'
 
 export default {
   components: { OutboundLink, NavLink, DropdownLink },
+  props: ["pageNav"],
   computed: {
     userNav () {
-      return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
+      return this.pageNav || this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
     },
     nav () {
       const { locales } = this.$site

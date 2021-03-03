@@ -132,6 +132,44 @@ export function resolveSidebarItems (page, route, site, localePath) {
   }
 }
 
+
+export function resolveHomeURL (page, route, site, localePath) {
+  const { themeConfig } = site
+
+  const localeConfig = localePath && themeConfig.locales
+    ? themeConfig.locales[localePath] || themeConfig
+    : themeConfig
+
+    const homepageConfig = localeConfig.homePageByPath || themeConfig.homePageByPath
+    if (!homepageConfig) {
+      return "";
+    } else {
+    const { config } = resolveMatchingConfig(route, homepageConfig)
+    return config || "";
+  }
+}
+
+export function resolveNavbarItems (page, route, site, localePath) {
+  const pageNavbarConfig = page.frontmatter.navbar
+  if (pageNavbarConfig === false) {
+    return [];
+  }
+
+  const { themeConfig } = site
+
+  const localeConfig = localePath && themeConfig.locales
+    ? themeConfig.locales[localePath] || themeConfig
+    : themeConfig
+
+  const navbarConfig = localeConfig.navByPath || themeConfig.navByPath
+  if (!navbarConfig) {
+    return null
+  } else {
+    const { config } = resolveMatchingConfig(route, navbarConfig)
+    return config || []
+  }
+}
+
 function resolveHeaders (page) {
   const headers = groupHeaders(page.headers || [])
   return [{

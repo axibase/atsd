@@ -1,7 +1,7 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-    <router-link :to="$localePath" class="home-link">
+    <router-link :to="homePath" class="home-link">
       <img class="logo"
         v-if="$site.themeConfig.logo"
         :src="$withBase($site.themeConfig.logo)">
@@ -12,7 +12,7 @@
       </span>
     </router-link>
     <div class="links">
-      <NavLinks class="can-hide"/>
+      <NavLinks class="can-hide" :pageNav="navbarItems" />
       <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
       <SearchBox v-else-if="$site.themeConfig.search !== false"/>
     </div>
@@ -27,12 +27,17 @@ import NavLinks from './NavLinks.vue'
 
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
+  props: ["navbarItems", "homeURL"],
   computed: {
     algolia () {
       return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
     },
     isAlgoliaSearch () {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    },
+
+    homePath() {
+      return this.homeURL || this.$localePath;
     }
   }
 }
