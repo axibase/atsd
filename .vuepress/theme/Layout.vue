@@ -3,7 +3,7 @@
     :class="pageClasses"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd">
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
+    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" :navbar-items="navbarItems" :homeURL="homeURL"/>
     <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
     <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
       <slot name="sidebar-top" slot="top"/>
@@ -28,7 +28,7 @@ import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import { pathToComponentName } from '@app/util'
-import { resolveSidebarItems } from './util'
+import { resolveSidebarItems, resolveNavbarItems, resolveHomeURL } from './util'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
@@ -60,6 +60,22 @@ export default {
         frontmatter.sidebar !== false &&
         this.sidebarItems.length
       )
+    },
+    navbarItems () {
+      return resolveNavbarItems(
+        this.$page,
+        this.$route,
+        this.$site,
+        this.$localePath
+      );
+    },
+    homeURL () {
+      return resolveHomeURL(
+        this.$page,
+        this.$route,
+        this.$site,
+        this.$localePath
+      );
     },
     sidebarItems () {
       return resolveSidebarItems(
