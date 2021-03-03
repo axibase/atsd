@@ -31,17 +31,15 @@ To calculate the available CPU capacity, multiply the number of cores by CPU clo
 * Daily log files: `20` GB.
 * Market data: `200` GB.
 
-
 ### File System
 
 The standalone version is supported on local ext4 file system.
- 
-In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on file systems such as [Hadoop](../installation/cloudera.md) (HDFS), [Amazon EMRFS](../installation/aws-emr-s3.md), and [Azure Storage](../installation/azure-hdinsight.md).
 
+In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on file systems such as [Hadoop](../installation/cloudera.md) (HDFS), [Amazon EMRFS](../installation/aws-emr-s3.md), and [Azure Storage](../installation/azure-hdinsight.md).
 
 ## Install Java
 
-Install [Java 8](../../administration/migration/install-java-8.md).
+Install [Java 8](../administration/migration/install-java-8.md).
 
 Add the `JAVA_HOME` path to the user environment in `.bashrc`.
 
@@ -106,7 +104,7 @@ net.core.netdev_max_backlog=50000
 net.ipv4.conf.all.rp_filter = 0
 ```
 
-Apply changes:
+Apply changes.
 
 ```bash
 sudo sysctl -p

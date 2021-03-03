@@ -70,7 +70,7 @@ tar -xzf atsd.moex.latest.tar.gz
 
 Произведите запуск приложения.
 
-```
+```sh
 ./atsd/bin/atsd-tsd.sh start
 ```
 
@@ -85,7 +85,7 @@ tar -xzf moex-consumer.tar.gz /opt/moex-consumer
 
 Запустите установочный скрипт.
 
-```
+```sh
 /opt/moex-consumer/install.sh
 ```
 

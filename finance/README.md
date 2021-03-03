@@ -4,9 +4,9 @@
 
 ## Key Features
 
-* Parallel query engine optimized for common data access patterns
-* Extended [SQL](sql.md) syntax with fast OHLCV and VWAP aggregators
-* Flexible filtering based on reference data, trading schedules, and index composition
+* Parallel query engine for fast data access
+* Extended [SQL](sql.md) syntax with OHLCV and VWAP aggregators
+* Flexible filtering based on reference data, trading calendars, and index composition
 
 ## Supported Data Types
 
@@ -63,3 +63,7 @@
 ATSD is supported on major Linux distributions in 64-bit mode. Refer to installation [instructions](./install.md) for hardware requirements and details.
 
 ATSD standalone version is free of charge, including for production purposes.
+
+## Getting Started
+
+Contact `support-atsd@axibase.com` for assistance with installation and data source integration. Provide links to or attach sample data files as well as identify the preferred programming environment: Java or Python.
