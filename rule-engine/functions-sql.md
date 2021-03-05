@@ -66,7 +66,7 @@ addTable(executeSqlQuery(query), 'ascii', true)
 queryToMap(string query, string keyColumn) map
 ```
 
-Returns the result of SQL `query` as a map where key is `keyColumn` value and value is a map consisting of other columns' values. Value datatypes are based on SQL data types. 
+Returns the result of SQL `query` as a map where key is `keyColumn` value and value is a map consisting of other column values. Value datatypes are based on SQL data types.
 
 The response is limited to **1,000** rows. An exception is thrown if row count exceeds the limit.
 
@@ -82,7 +82,7 @@ if (qr.size() > 0 && toNumber(qr['nurswgvml007']['av']) > 10) {
 ```
 
 ```java
-{ 
+{
   'nurswgvml007': { 'av': 10.2, 'mv': 16.0 },
   'nurswgvml010': { 'av': 24.2, 'mv': 32.4 },
   'nurswgvml012': { 'av': 15.0, 'mv': 20.0 }
