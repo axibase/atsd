@@ -12,12 +12,12 @@ These functions return the results of a user-defined SQL query.
 ### `executeSqlQuery`
 
 ```csharp
-executeSqlQuery(string query) collection[collection[string]]
+executeSqlQuery(string query [, int limit]) collection[collection[string]]
 ```
 
 Returns the result of SQL `query`. The first row consists of column labels. The function results are typically passed to [`addTable`](./functions-table.md) function for rendering.
 
-The response is limited to **1,000** rows. An exception is thrown if row count exceeds the limit.
+The response is limited to **1,000** rows by default. An exception is thrown if row count exceeds the limit.
 
 Examples:
 
@@ -63,12 +63,12 @@ addTable(executeSqlQuery(query), 'ascii', true)
 ### `queryToMap`
 
 ```csharp
-queryToMap(string query, string keyColumn) map
+queryToMap(string query, string keyColumn [, int limit]) map
 ```
 
 Returns the result of SQL `query` as a map where key is `keyColumn` value and value is a map consisting of other column values. Value datatypes are based on SQL data types.
 
-The response is limited to **1,000** rows. An exception is thrown if row count exceeds the limit.
+The response is limited to **1,000** rows by default. An exception is thrown if row count exceeds the limit.
 
 Examples:
 
