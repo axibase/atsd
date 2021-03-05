@@ -176,7 +176,8 @@ Name | Description
 
 Name | Description
 ---|---
-[`executeSqlQuery`](functions-sql.md#executesqlquery)| Returns the result of SQL query.
+[`executeSqlQuery`](functions-sql.md#executesqlquery)| Returns the result of SQL query as list of rows.
+[`queryToMap`](functions-sql.md#querytomap)| Returns the result of SQL query as a map.
 
 ### Lookup
 
