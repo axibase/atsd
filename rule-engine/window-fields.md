@@ -31,7 +31,10 @@ Each window maintains a set of continuously updated fields which can be used in 
 :---|---|---|:---
 `entity` | string | Entity specified in the command. | `entity LIKE 'nur*'`
 `tags` | map | Command tags, serialized as `[key1: val1, key2: val2]`. | `tags.size() != 0`
-`tags.memtype` | string | Command tag by name. | `buffered`
+`tags.<name>` | string | Command tag by name. | `tags.memtype != 'buffered'`
+`command_time` | [`DateTime`](object-datetime.md) | Time of the most recently added or removed command.
+`command_first_time` | [`DateTime`](object-datetime.md) | Time of the command with the smallest timestamp in the window.<br>`null` if the window is empty.
+`command_last_time` | [`DateTime`](object-datetime.md) | Time of the command with the largest timestamp in the window.<br>`null` if the window is empty.
 
 ### Series Fields
 
@@ -77,8 +80,8 @@ Notes:
 `entity.enabled` | boolean | Entity label. | `entity.enabled ? 'ON' : 'OFF'`
 `entity.interpolate` | string | Interpolation mode. | `entity.interpolate == 'LINEAR'`
 `entity.timeZone` | string | Entity time zone. | `entity.timeZone != 'US/Eastern'`
-`entity.creationTime` | `DateTime` | Entity creation time. | `entity.creationTime > '2020-05-01'`
-`entity.lastInsertTime` | `DateTime` | Time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
+`entity.creationTime` | [`DateTime`](object-datetime.md) | Entity creation time. | `entity.creationTime > '2020-05-01'`
+`entity.lastInsertTime` | [`DateTime`](object-datetime.md) | Time of the most recent series insert for any metric of the entity. | `elapsed_minutes(entity.lastInsertTime) < 15`
 
 ## Date Fields
 
@@ -86,17 +89,14 @@ Notes:
 
 **Name**|**Data Type**|**Description**
 :---|---|:---
-`open_time` | `DateTime` | Time when the window changed status to `OPEN`, or when the condition evaluated to `true` for the first time.
-`repeat_time` | `DateTime` | Last time when the condition evaluated to `true`, equal to `open_time` when the status changes to `OPEN`.
-`cancel_time` | `DateTime` | Time when the window changed status to `CANCEL`, or when the condition evaluated to `false` for the first time.
-`change_time` | `DateTime` | Last time when the window changed status.
-`add_time` | `DateTime` | Last time when command added to window.
-`remove_time` | `DateTime` | Last time when command removed from the window.
-`update_time` | `DateTime` | Last time when command added or removed from the window.
-`command_time` | `DateTime` | Time of the most recently added or removed command.
-`command_first_time` | `DateTime` | Time of the command with the smallest timestamp in the window.<br>`null` if the window is empty.
-`command_last_time` | `DateTime` | Time of the command with the largest timestamp in the window.<br>`null` if the window is empty.
-`previous_add_time` | `DateTime` | Previous command `add_time`.
+`add_time` | [`DateTime`](object-datetime.md) | Last time when command added to window.
+`previous_add_time` | [`DateTime`](object-datetime.md) | Previous command `add_time`.
+`open_time` | [`DateTime`](object-datetime.md) | Time when the window changed status to `OPEN`, or when the condition evaluated to `true` for the first time.
+`repeat_time` | [`DateTime`](object-datetime.md) | Last time when the condition evaluated to `true`, equal to `open_time` when the status changes to `OPEN`.
+`cancel_time` | [`DateTime`](object-datetime.md) | Time when the window changed status to `CANCEL`, or when the condition evaluated to `false` for the first time.
+`change_time` | [`DateTime`](object-datetime.md) | Last time when the window changed status.
+`remove_time` | [`DateTime`](object-datetime.md) | Last time when command removed from the window.
+`update_time` | [`DateTime`](object-datetime.md) | Last time when command added or removed from the window.
 `window_duration` | `long` | Difference between `command_last_time` and `command_first_time` measured in milliseconds.<br>`0` if the window is empty.
 `alert_duration` | `string` | Interval between current time and `open_time`, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.<br>Returns an empty string **On Open** status.
 `alert_duration_interval` | `string` | Interval between current time and `open_time`, formatted as `alert_duration` with units, for example `1m:45s`.<br>Returns an empty string **On Open** status.
@@ -107,19 +107,19 @@ Notes:
 **Notes**:
 
 * [`DateTime`](object-datetime.md) object fields can be accessed with dot notation syntax, for example `now.millis`.
-* To format the `DateTime` object using a custom pattern or time zone, use the [`date_format`](./functions-date.md#date_format) function.
-* `DateTime` object fields that begin with `command_` contain the command timestamps, otherwise the fields are set based on server time.
-* `DateTime` object fields can be `null` if the event has not yet occurred or if the window is empty.
+* To format the [`DateTime`](object-datetime.md) object using a custom pattern or time zone, use the [`date_format`](./functions-date.md#date_format) function.
+* [`DateTime`](object-datetime.md) object fields that begin with `command_` contain the command timestamps, otherwise the fields are set based on server time.
+* [`DateTime`](object-datetime.md) object fields can be `null` if the event has not yet occurred or if the window is empty.
 * If **Check On Exit** setting is enabled and the condition check is caused by a removed command, the `command_time` field contains the timestamp of the **exiting command** (oldest command), rounded to seconds.
 
 ## Current Time Fields
 
 **Name**|**Data Type**|**Description**
 :---|---|:---
-| `now` | `DateTime` | Current server time. |
-| `today` | `DateTime` | `00:00` (midnight) of the **current day** in server time zone. |
-| `yesterday` | `DateTime` | `00:00` (midnight) of the **previous day** in server time zone. |
-| `tomorrow` | `DateTime` | `00:00` (midnight) of the **next day** in server time zone. |
+| `now` | [`DateTime`](object-datetime.md) | Current server time. |
+| `today` | [`DateTime`](object-datetime.md) | `00:00` (midnight) of the **current day** in server time zone. |
+| `yesterday` | [`DateTime`](object-datetime.md) | `00:00` (midnight) of the **previous day** in server time zone. |
+| `tomorrow` | [`DateTime`](object-datetime.md) | `00:00` (midnight) of the **next day** in server time zone. |
 
 ## Detail Tables
 
