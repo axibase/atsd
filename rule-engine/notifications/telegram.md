@@ -2,14 +2,16 @@
 
 ## Overview
 
-`TELEGRAM` [webhook](../notifications/README.md) provides a capability to send alert messages, alert detail tables, and charts to Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
+`TELEGRAM` webhook allows sending text messages and chart screenshots to Telegram groups and channels using the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Reference
 
 * [Prerequisites](#prerequisites)
-* [Create Bot](#create-bot)
-* [Add Bot to Group or Channel](#add-bot-to-group-or-channel)
-* [Get Chat Id](#get-chat-id)
+* [Bot API Token](#bot-api-token)
+* [Sending Messages to User](#sending-messages-to-user)
+* [Sending Messages to Group](#sending-messages-to-group)
+* [Sending Messages to Private Channel](#sending-messages-to-private-channel)
+* [Sending Messages to Public Channel](#sending-messages-to-public-channel)
 * [Configure Webhook in ATSD](#configure-webhook-in-atsd)
 * [Proxy Settings](#proxy-settings)
 * [Webhook Settings](#webhook-settings)
@@ -19,78 +21,81 @@
 
 ## Prerequisites
 
-Install and configure the [Web Driver](web-driver.md) to send chart screenshots into Telegram.
+Configure the [Web Driver](web-driver.md) to be able to send chart screenshots.
 
-## Create Bot
+## Get Bot API Token
 
-* Search for the `BotFather` user in the Telegram client.
-* Start a conversation with the [BotFather](https://telegram.me/botfather) user.
+* Start a conversation with the built-in [BotFather](https://telegram.me/botfather) user.
+* Send the `/mybots` command to view existing bots and their API tokens.
+* Alternartively, create a new bot with the `/newbot` command.
+* Take note of the bot API token.
 
-    ![](./images/botfather.png)
+## Sending Messages to User
 
-* Send the `/newbot` command and complete the guided process to create a bot user and obtain its access token. The bot username must end with `_bot` and cannot contain dash `-` symbol.
+* Open `https://api.telegram.org/bot<BOT_API_TOKEN>/getUpdates` link.
+* Send a direct message to the bot, or ask another user to message the bot.
+* Refresh the `getUpdates` link above and take note of `chat.id` for the user's private conversation with the bot.
 
-```txt
-Use this token to access the HTTP API:
-5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
-```
+  ![](./images/tg_user_chat_id.png)
 
-* Store the API token for future reference.
-
-## Add Bot to Group or Channel
-
-If necessary, create a new [group](https://telegram.org/faq#q-how-do-i-create-a-grou) or [channel](https://telegram.org/faq_channels#q-what-39s-a-channel).
-
-### Add Bot to Group
+## Sending Messages to Group
 
 * Click **Group Settings > Add Members**.
+* Enter the bot name, select the bot, click **Invite**.
+* Open `https://api.telegram.org/bot<BOT_API_TOKEN>/getUpdates` link.
+* Send a message to the group.
+* Refresh the `getUpdates` link above and take note of `chat.id` for the group. The chat id for groups is a negative number.
 
-   ![](./images/telegram_3.png)
+  ![](./images/tg_group_chat_id.png)
 
-* Specify the name of the newly created bot, for example, `@atsd_bot`.
+## Sending Messages to Private Channel
 
-   ![](./images/telegram_4.png)
+* Click **Channel Settings > Manage Channel**.
+* In the **Manage Channel** window, click **Administrators > ADD ADMINISTRATOR**.
+* Enter the bot name, and confirm the action.
+* Review permissions, ensure that only **Post messages** is enabled.
 
-* Select the bot and click **Invite**.
+  ![](./images/telegram_channel_permissions.png)
 
-To add bot to private or public channel refer to these [Instructions](telegram-add-bot-to-channel.md).
+* Open `https://api.telegram.org/bot<BOT_API_TOKEN>/getUpdates` link.
+* Send a message to the private channel.
+* Refresh the `getUpdates` link above and take note of `chat.id` for the channel. The chat id for private channels is a negative number.
 
-## Get Chat ID
+  ![](./images/tg_private_channel_chat_id.png)
 
-Chat ID is required for the outgoing Telegram webhook to function properly.
+## Sending Messages to Public Channel
 
-There are two options to obtain Chat ID:
+* Click **Channel Settings > Manage Channel**.
+* In the **Manage Channel** window, click **Administrators > ADD ADMINISTRATOR**.
+* Enter the bot name, and confirm the action.
+* Review permissions, ensure that only **Post messages** is enabled.
 
-* [`getUpdates` API method](#view-updates)
-* [Telegram Web](telegram-get-chat-id.md)
-
-### View Updates
-
-* Send any message to the channel or start conversation with the bot via direct message chat. No action is required for the group.
-* Open `https://api.telegram.org/botBOT_TOKEN/getUpdates` link, replace `BOT_TOKEN` parameter with actual access token value.
-* Review the **Chat Object** and copy the `id` value.
-
-    ![](./images/chat_object.png)
+  ![](./images/telegram_channel_permissions.png)
 
 ## Configure Webhook in ATSD
 
-* Open the **Alerts > Outgoing Webhooks** page.
+* Open the **Rule Engine > Outgoing Webhooks** page.
 * Click an existing `TELEGRAM` template, or click **Create** and select `TELEGRAM`.
 * Specify the unique `Name` of the notification.
 
     ![](./images/telegram_2.png)
 
 * Enter the `BOT_TOKEN` value into the **Bot API Token** field.
-* Enter the chat id into the **Chat ID** field.
-* Select **Test Portal** to verify screenshot delivery.
+* Specify **Chat ID**:
+  - Enter channel name as `@channel_name` for public channels
 
-  ![](./images/telegram_12.png)
+    ![](./images/tg_conf_channel.png)
 
-* Click **Test**.
+  - Enter chat id for private channels, groups, and users
+
+    ![](./images/tg_conf_group.png)
+
+* Click **Test** to send a sample message.
+* If [Web Driver](web-driver.md) is installed, select **Test Portal** to verify chart delivery.
 
   ![](./images/telegram_1.png)
 
-* If the test succeeds, check **Enable** and click **Save**.
+* Click **Save**.
 
 ## Proxy Settings
 
@@ -109,7 +114,7 @@ location /bot {
 |**Setting**|**Description**|
 |---|---|
 |Bot API Token|Unique authentication token assigned to the bot.|
-|Chat ID|Unique identifier for the target chat or the target channel.|
+|Chat ID|Chat id in case of group, user, or private channel.<br>Channel name with `@` prefix in case of public channel. |
 |Text|Message text to be sent. Leave the field blank to make the field editable in the rule editor.|
 |Notifications|If enabled, delivers the message with an audio notification.|
 |Web Page Preview|If enabled, displays short previews for URLs in the message.|
