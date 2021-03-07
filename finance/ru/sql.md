@@ -349,7 +349,7 @@ Comments are not allowed after the statement termination character `;`.
 |`class`           |varchar   | Yes | Instrument board, class, or section on the exchange.|
 |`exchange`         |varchar   | Yes | Instrument exchange.|
 |`side`       |varchar | No | Direction of the trade (initiator's side): `B` (buy), `S` (sell), or `NULL`.|
-|`session`           |varchar     | No | Trading [session code](sessions.md). `O` - opening auction, `N` - normal trading, `L` - closing auction crossing, `E` - closing auction post-crossing.|
+|`session`           |varchar     | No | Trading [session code](../sessions.md). `O` - opening auction, `N` - normal trading, `L` - closing auction crossing, `E` - closing auction post-crossing.|
 |`order_num`           |varchar   | No | Order number which initiated the trade.|
 
 The above columns can be requested with the `SELECT *` syntax, except for queries with the `GROUP BY` aggregation clause.
