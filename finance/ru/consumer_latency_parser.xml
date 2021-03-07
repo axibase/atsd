@@ -1,0 +1,199 @@
+<list>
+  <com.axibase.tsd.model.csv.WizardBasedCsvConfiguration>
+    <lastModifiedAt>1614006783264</lastModifiedAt>
+    <name>consumer_latency</name>
+    <enabled>true</enabled>
+    <delimiter>,</delimiter>
+    <recordDelimiter>&#xd;</recordDelimiter>
+    <padding></padding>
+    <comment>#</comment>
+    <textQualifier>&quot;</textQualifier>
+    <decimalSeparator>.</decimalSeparator>
+    <groupingSeparator>,</groupingSeparator>
+    <skipLines>0</skipLines>
+    <processEvents>false</processEvents>
+    <ignoreParseErrors>true</ignoreParseErrors>
+    <timeZone>Europe/Moscow</timeZone>
+    <header/>
+    <metricPrefix>consumer_latency.</metricPrefix>
+    <timestampLocale>ENGLISH</timestampLocale>
+    <commandType>SERIES</commandType>
+    <columns class="java.util.Arrays$ArrayList">
+      <a class="com.axibase.tsd.service.csv.WizardBasedCsvColumn-array">
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_TIMESTAMP</semanticType>
+          <column>date</column>
+          <key>dd-MM-yyyy</key>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_ENTITY</semanticType>
+          <format>dma-vm</format>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>count</column>
+          <key>count</key>
+          <numberFormat>#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>min</column>
+          <key>min</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p0.1</column>
+          <key>p0.1</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p1</column>
+          <key>p1</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p5</column>
+          <key>p5</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p10</column>
+          <key>p10</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p25</column>
+          <key>p25</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p50</column>
+          <key>p50</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p75</column>
+          <key>p75</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p90</column>
+          <key>p90</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p95</column>
+          <key>p95</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p99</column>
+          <key>p99</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>p99.9</column>
+          <key>p99.9</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_METRIC</semanticType>
+          <column>max</column>
+          <key>max</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_TAGS</semanticType>
+          <column>file</column>
+          <key>file</key>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_TAGS</semanticType>
+          <column>from</column>
+          <key>from</key>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_TAGS</semanticType>
+          <column>to</column>
+          <key>to</key>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_TAGS</semanticType>
+          <column>action</column>
+          <key>action</key>
+          <numberFormat>#,#.#</numberFormat>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_TAGS</semanticType>
+          <column>type</column>
+          <key>type</key>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+        <com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+          <semanticType class="com.axibase.tsd.model.csv.csvtype.SeriesSemanticType">SERIES_TAGS</semanticType>
+          <column>directory</column>
+          <key>directory</key>
+        </com.axibase.tsd.service.csv.WizardBasedCsvColumn>
+      </a>
+    </columns>
+    <encoding>UTF-8</encoding>
+    <headerType>FIRST_LINE</headerType>
+    <ignoredNanPatterns/>
+    <nullPatterns class="empty-set"/>
+    <csvExampleInOriginalEncoding>ZGF0ZSxkaXJlY3RvcnksZmlsZSxmcm9tLHRvLGFjdGlvbix0eXBlLGNvdW50LG1pbixwMC4xLHAx
+LHA1LHAxMCxwMjUscDUwLHA3NSxwOTAscDk1LHA5OSxwOTkuOSxtYXgNCjE4LTAyLTIwMjEsbG9n
+cyx0cmFkZXMsZW50cnksc2VuZGluZywsLDIxNTAzNTUsMjEwLDI0NSwyNjEsMjc5LDI4OSwzMTEs
+MzUwLDQ3Niw5NzMsMTc2MCw2NzEwLDE4NTcyLDM1MDMzNA0KMTgtMDItMjAyMSxsb2dzLHRyYWRl
+cyxlbnRyeSxzZW5kaW5nLDAsLDIxNTAzNTUsMjEwLDI0NSwyNjEsMjc5LDI4OSwzMTEsMzUwLDQ3
+Niw5NzMsMTc2MCw2NzEwLDE4NTcyLDM1MDMzNA0KMTgtMDItMjAyMSxsb2dzLHRyYWRlcyxlbnRy
+eSxzZW5kaW5nLCx6LDIxNTAzNTUsMjEwLDI0NSwyNjEsMjc5LDI4OSwzMTEsMzUwLDQ3Niw5NzMs
+MTc2MCw2NzEwLDE4NTcyLDM1MDMzNA0KMTgtMDItMjAyMSxsb2dzLHRyYWRlcyxlbnRyeSxzZW5k
+aW5nLDAseiwyMTUwMzU1LDIxMCwyNDUsMjYxLDI3OSwyODksMzExLDM1MCw0NzYsOTczLDE3NjAs
+NjcxMCwxODU3MiwzNTAzMzQNCjE4LTAyLTIwMjEsbG9ncyx0cmFkZXMsc2VuZGluZyxyZWNlaXZl
+LCwsMjE1MDM1NSwtMjc5MiwtMjY3MywtMjUxNiwtMjE4OSwtMTg2OSwtNjgzLDI0Miw0NDksNzc3
+LDExNDQsMzY5OCw5NjE2LDExMTY3MzcNCjE4LTAyLTIwMjEsbG9ncyx0cmFkZXMsc2VuZGluZyxy
+ZWNlaXZlLDAsLDIxNTAzNTUsLTI3OTIsLTI2NzMsLTI1MTYsLTIxODksLTE4NjksLTY4MywyNDIs
+NDQ5LDc3NywxMTQ0LDM2OTgsOTYxNiwxMTE2NzM3DQoxOC0wMi0yMDIxLGxvZ3MsdHJhZGVzLHNl
+bmRpbmcscmVjZWl2ZSwseiwyMTUwMzU1LC0yNzkyLC0yNjczLC0yNTE2LC0yMTg5LC0xODY5LC02
+ODMsMjQyLDQ0OSw3NzcsMTE0NCwzNjk4LDk2MTYsMTExNjczNw0KMTgtMDItMjAyMSxsb2dzLHRy
+YWRlcyxzZW5kaW5nLHJlY2VpdmUsMCx6LDIxNTAzNTUsLTI3OTIsLTI2NzMsLTI1MTYsLTIxODks
+LTE4NjksLTY4MywyNDIsNDQ5LDc3NywxMTQ0LDM2OTgsOTYxNiwxMTE2NzM3DQoxOC0wMi0yMDIx
+LGxvZ3MsdHJhZGVzLHJlY2VpdmUscHJvY2VzcywsLDIxNTAzNTUsMzEsNjAsOTEsMTM0LDE2NCwy
+MzEsMzUzLDYyNCwxMjIxLDIwODYsNjE2Miw2Mjk2MCwxMDc3ODgxDQoxOC0wMi0yMDIxLGxvZ3Ms
+dHJhZGVzLHJlY2VpdmUscHJvY2VzcywwLCwyMTUwMzU1LDMxLDYwLDkxLDEzNCwxNjQsMjMxLDM1
+Myw2MjQsMTIyMSwyMDg2LDYxNjIsNjI5NjAsMTA3Nzg4MQ0KMTgtMDItMjAyMSxsb2dzLHRyYWRl
+cyxyZWNlaXZlLHByb2Nlc3MsLHosMjE1MDM1NSwzMSw2MCw5MSwxMzQsMTY0LDIzMSwzNTMsNjI0
+LDEyMjEsMjA4Niw2MTYyLDYyOTYwLDEwNzc4ODENCjE4LTAyLTIwMjEsbG9ncyx0cmFkZXMscmVj
+ZWl2ZSxwcm9jZXNzLDAseiwyMTUwMzU1LDMxLDYwLDkxLDEzNCwxNjQsMjMxLDM1Myw2MjQsMTIy
+MSwyMDg2LDYxNjIsNjI5NjAsMTA3Nzg4MQ0KMTgtMDItMjAyMSxsb2dzLHRyYWRlcyxlbnRyeSxw
+cm9jZXNzLCwsMjE1MDM1NSwtMjQyMSwtMjEyNywtMTg4MiwtMTQ1MCwtMTAzNywzNzMsOTg5LDE1
+NTYsMjk4Miw0OTI0LDEyMzYyLDc0Njg4LDExMjg2MTANCjE4LTAyLTIwMjEsbG9ncyx0cmFkZXMs
+ZW50cnkscHJvY2VzcywwLCwyMTUwMzU1LC0yNDIxLC0yMTI3LC0xODgyLC0xNDUwLC0xMDM3LDM3
+Myw5ODksMTU1NiwyOTgyLDQ5MjQsMTIzNjIsNzQ2ODgsMTEyODYxMA0KMTgtMDItMjAyMSxsb2dz
+LHRyYWRlcyxlbnRyeSxwcm9jZXNzLCx6LDIxNTAzNTUsLTI0MjEsLTIxMjcsLTE4ODIsLTE0NTAs
+LTEwMzcsMzczLDk4OSwxNTU2LDI5ODIsNDkyNCwxMjM2Miw3NDY4OCwxMTI4NjEwDQoxOC0wMi0y
+MDIxLGxvZ3MsdHJhZGVzLGVudHJ5LHByb2Nlc3MsMCx6LDIxNTAzNTUsLTI0MjEsLTIxMjcsLTE4
+ODIsLTE0NTAsLTEwMzcsMzczLDk4OSwxNTU2LDI5ODIsNDkyNCwxMjM2Miw3NDY4OCwxMTI4NjEw
+DQoxOC0wMi0yMDIxLGxvZ3MsdHJhZGVzLHNlbmRpbmcscHJvY2VzcywsLDIxNTAzNTUsLTI3MDYs
+LTI0NDgsLTIyMTcsLTE4MTYsLTE0MzYsLTExMCw2MDMsMTAxOCwxODU5LDMwOTUsNzY5Niw3MDUw
+MywxMTI4MjE1DQoxOC0wMi0yMDIxLGxvZ3MsdHJhZGVzLHNlbmRpbmcscHJvY2VzcywwLCwyMTUw
+MzU1LC0yNzA2LC0yNDQ4LC0yMjE3LC0xODE2LC0xNDM2LC0xMTAsNjAzLDEwMTgsMTg1OSwzMDk1
+LDc2OTYsNzA1MDMsMTEyODIxNQ0KMTgtMDItMjAyMSxsb2dzLHRyYWRlcyxzZW5kaW5nLHByb2Nl
+c3MsLHosMjE1MDM1NSwtMjcwNiwtMjQ0OCwtMjIxNywtMTgxNiwtMTQzNiwtMTEwLDYwMywxMDE4
+LDE4NTksMzA5NSw3Njk2LDcwNTAzLDExMjgyMTUNCjE4LTAyLTIwMjEsbG9ncyx0cmFkZXMsc2Vu
+ZGluZyxwcm9jZXNzLDAseiwyMTUwMzU1LC0yNzA2LC0yNDQ4LC0yMjE3LC0xODE2LC0xNDM2LC0x
+MTAsNjAzLDEwMTgsMTg1OSwzMDk1LDc2OTYsNzA1MDMsMTEyODIxNQ==</csvExampleInOriginalEncoding>
+    <stopCondition>NONE</stopCondition>
+    <maxColumns>256</maxColumns>
+  </com.axibase.tsd.model.csv.WizardBasedCsvConfiguration>
+</list>
