@@ -88,7 +88,7 @@ date,directory,file,from,to,action,type,count,min,p0.1,p1,p5,p10,p25,p50,p75,p90
 ## Создание токена аутентификации
 
 * Откройте страницу **Admin > API Tokens > Issue Token**.
-* Выберите метод POST и укажите `/api/v1/csv?config=consumer_latency` в поле URLs.
+* Выберите метод `POST` и укажите `/api/v1/csv?config=consumer_latency` в поле URLs.
 
   ![](./images/latency-parser-token.png)
 
