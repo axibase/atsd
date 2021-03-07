@@ -29,19 +29,19 @@ SQL statements can be executed via the web-based console, on schedule, using the
 ### Last Sale (Trades)
 
 ```sql
-SELECT datetime, trade_num, price, quantity
+SELECT datetime, trade_num, price, quantity, side
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime between '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
 ORDER BY datetime, trade_num
 ```
 
 ```ls
-| datetime                   |  trade_num |  price | quantity |
-|----------------------------|-----------:|-------:|---------:|
-| 2021-01-13 14:00:06.859843 | 1367042482 | 843.67 |      100 |
-| 2021-01-13 14:00:11.573151 | 1367352219 | 843.63 |      100 |
-| 2021-01-13 14:00:18.013559 | 1368945732 | 844.20 |       16 |
+| datetime            |  trade_num |  price | quantity | side |
+|---------------------|-----------:|-------:|---------:|------|
+| 2021-01-13 14:00:00 | 3479380384 | 228.61 |       25 | S    |
+| 2021-01-13 14:00:00 | 3479380396 | 228.64 |        7 | B    |
+| 2021-01-13 14:00:00 | 3479380415 | 228.61 |        1 | S    |
 ```
 
 ### OHLCV Data (Intraday Bars)
@@ -49,20 +49,18 @@ ORDER BY datetime, trade_num
 ```sql
 SELECT datetime, open(), high(), low(), close(), volume(), vwap()
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime between '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
 GROUP BY exchange, class, symbol, PERIOD(1 MINUTE)
 ORDER BY datetime
 ```
 
 ```ls
-| datetime            | open() | high() |  low() | close() | volume() | vwap() |
-|---------------------|-------:|-------:|-------:|--------:|---------:|-------:|
-| 2021-01-13 14:00:00 | 843.67 | 844.38 | 843.02 |  843.88 |      910 | 843.71 |
-| 2021-01-13 14:01:00 | 843.95 | 845.36 | 843.95 |  844.56 |      895 | 844.69 |
-| 2021-01-13 14:02:00 | 845.48 | 845.48 | 844.83 |  844.97 |      503 | 845.10 |
-| 2021-01-13 14:03:00 | 845.25 | 845.35 | 844.21 |  844.65 |      996 | 845.01 |
-| 2021-01-13 14:04:00 | 844.85 | 846.97 | 844.85 |  846.96 |     1178 | 846.31 |
+| datetime            | open() | high() |  low() | close() | volume() |               vwap() |
+|---------------------|-------:|-------:|-------:|--------:|---------:|---------------------:|
+| 2021-01-13 14:00:00 | 228.61 |  228.8 | 228.58 |  228.78 |     3201 | 228.7387253983130272 |
+| 2021-01-13 14:01:00 | 228.78 | 228.96 | 228.78 |  228.91 |     3409 | 228.8678028747433265 |
+| 2021-01-13 14:02:00 | 228.91 | 228.95 | 228.91 |  228.94 |      429 | 228.9186013986013986 |
 ```
 
 ### Instruments
@@ -92,15 +90,19 @@ WHERE tags.class_code != '' AND tags.class_code != 'SPBOPT' AND tags.class_code 
 ```sql
 SELECT datetime, type, stage, auctprice, auctvolume, bid, offer, last --*
   FROM atsd_session_summary
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-11' AND '2021-01-13'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2021-01-11' AND '2021-01-12'
 ```
 
 ```ls
-| datetime            | type | stage |   open |  close | voltoday |
-|---------------------|------|-------|-------:|-------:|---------:|
-| 2021-01-11T00:00:00 | Day  | NA    | 849.40 | 811.19 | 59554100 |
-| 2021-01-12T00:00:00 | Day  | NA    | 831.00 | 849.44 | 46270700 |
+| datetime                | type    | stage | auctprice | auctvolume |    bid |  offer |   last |
+|-------------------------|---------|-------|----------:|-----------:|-------:|-------:|-------:|
+| 2021-01-11 09:59:34.077 | Day     | O     |    225.17 |     202400 | 225.05 | 225.17 |        |
+| 2021-01-11 18:39:59.763 | Day     | N     |     227.4 |            | 228.29 |  228.3 | 228.29 |
+| 2021-01-11 18:45:14.387 | Day     | L     |     227.4 |    1966810 |  227.4 |  220.3 |  227.4 |
+| 2021-01-11 18:50:00.449 | Day     | E     |     227.4 |      10880 |  227.4 |        |  227.4 |
+| 2021-01-11 19:04:54.005 | Evening | O     |     227.4 |      28200 |  227.4 | 227.75 |  227.4 |
+| 2021-01-11 23:50:00.001 | Evening | N     |           |            |  227.6 | 227.67 |  227.6 |
 ```
 
 ## Syntax
@@ -129,8 +131,8 @@ Example:
 ```sql
 SELECT datetime, trade_num, price, quantity   -- SELECT expression
   FROM atsd_trade                             -- table name
-WHERE class = 'IEXG' AND symbol = 'TSLA'      -- WHERE clause
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'      -- WHERE clause
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ORDER BY datetime, trade_num                  -- other clauses
   LIMIT 100
 ```
@@ -165,17 +167,17 @@ The `atsd_entity` contains trade records.
 ```sql
 SELECT *
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 LIMIT 10
 ```
 
 ```ls
 | datetime                   |  trade_num |  price | quantity | symbol | class | exchange | side | session | order_num |
-|----------------------------|-----------:|-------:|---------:|--------|-------|----------|-----:|---------|----------:|
-| 2021-01-13 14:00:06.859843 | 1367042482 | 843.67 |      100 | TSLA   | IEXG  | IEX      |      | N       |           |
-| 2021-01-13 14:00:11.573151 | 1367352219 | 843.63 |      100 | TSLA   | IEXG  | IEX      |      | N       |           |
-| 2021-01-13 14:00:18.013559 | 1368945732 | 844.20 |       16 | TSLA   | IEXG  | IEX      |      | N       |           |
+|----------------------------|-----------:|-------:|---------:|--------|-------|----------|------|---------|----------:|
+| 2020-12-23 10:00:00.555528 | 3440599864 |    209 |      675 | GAZP   | TQBR  | MOEX     | S    | N       |     89121 |
+| 2020-12-23 10:00:00.749217 | 3440600021 | 209.07 |        2 | GAZP   | TQBR  | MOEX     | B    | N       |     97818 |
+| 2020-12-23 10:00:00.768890 | 3440600141 |    209 |        1 | GAZP   | TQBR  | MOEX     | S    | N       |    100265 |
 ```
 
 #### `atsd_session_summary` Table
@@ -185,15 +187,24 @@ The `atsd_entity` contains instrument statistics at the end of each session and 
 ```sql
 SELECT *
   FROM atsd_session_summary
-WHERE class = 'IEXG' AND symbol IN ('TSLA', 'AAPL')
-  AND datetime BETWEEN '2021-01-11' AND '2021-01-13'
+WHERE class = 'TQBR' AND symbol IN ('GAZP', 'SIBN')
+  AND datetime BETWEEN '2021-01-11' AND '2021-01-12'
 ```
 
 ```ls
-| datetime            | exchange | class     | symbol  | type | stage |  close | close_adj | closeprice |   high |    low |   open |  voltoday |
-|---------------------|----------|-----------|---------|------|-------|-------:|----------:|-----------:|-------:|-------:|-------:|----------:|
-| 2021-01-11T00:00:00 | QUIK     | STOCK_USA | AAPL.US | Day  | NA    | 128.98 |    128.78 |     128.98 | 130.17 | 128.50 | 129.19 | 100620900 |
-| 2021-01-12T00:00:00 | QUIK     | STOCK_USA | AAPL.US | Day  | NA    | 128.80 |    128.60 |     128.80 | 129.69 | 126.86 |  128.5 |  91951100 |
+| datetime                   | exchange | class | symbol | type    | stage | accruedint | action | admittedquote | auctnumtrades | auctprice | auctvalue | auctvolume |    bid | biddepth | biddeptht | change | chngclose | duration |   high | highbid | imbalance |   last | lastbid | lastoffer | lcloseprice | lcurrentprice |    low | lowoffer | marketprice | marketprice2 | marketpricetoday | marketvolb | marketvols | min_curr_last | min_curr_last_ti | nfaprice | numbids | numoffers | numtrades |  offer | offerdepth | offerdeptht |   open | openperiodprice | plannedtime | prevadmittedquot | prevdate | prevlegalclosepr | prevprice | prevwaprice | priceminusprevwa |  qty |  rptseq | rptseq_st | settledate1 | starttime | time     | tradingsession |    valtoday |   value |  voltoday | waprice |
+|----------------------------|----------|-------|--------|---------|-------|-----------:|-------:|--------------:|--------------:|----------:|----------:|-----------:|-------:|---------:|----------:|-------:|----------:|---------:|-------:|--------:|----------:|-------:|--------:|----------:|------------:|--------------:|-------:|---------:|------------:|-------------:|-----------------:|-----------:|-----------:|--------------:|------------------|---------:|--------:|----------:|----------:|-------:|-----------:|------------:|-------:|----------------:|-------------|-----------------:|---------:|-----------------:|----------:|------------:|-----------------:|-----:|--------:|----------:|------------:|-----------|----------|----------------|------------:|--------:|----------:|--------:|
+| 2021-01-11 09:59:31.126000 | MOEX     | TQBR  | SIBN   | Day     | O     |            |      1 |               |            28 |    335.15 | 1270218.5 |       3790 | 335.05 |       33 |     14096 |        |           |          | 335.15 |   337.5 |     -1220 |        |         |           |             |               | 335.15 |   326.85 |             |              |                  |        920 |            |               |                  |          |     404 |       342 |        28 | 335.15 |        122 |       13537 | 335.15 |          335.15 | 09:50:00    |                  |          |                  |           |             |                  |      |     968 |       961 |             | 06:50:00  |          | S              |     1270219 |         |      3790 |  335.15 |
+| 2021-01-11 09:59:34.077000 | MOEX     | TQBR  | GAZP   | Day     | O     |            |      1 |               |           184 |    225.17 |  45574408 |     202400 | 225.05 |        1 |    221133 |        |           |          | 225.17 |   233.7 |      -900 |        |         |           |             |               | 225.17 |      210 |             |              |                  |      19080 |       8960 |               |                  |          |    1564 |      1229 |       184 | 225.17 |         90 |      214926 | 225.17 |          225.17 | 09:50:00    |                  |          |                  |           |             |                  |      |    4066 |      4058 |             | 06:50:00  |          | S              |    45574408 |         |    202400 |  225.17 |
+| 2021-01-11 18:39:59.191000 | MOEX     | TQBR  | SIBN   | Day     | N     |          0 |      0 |         334.3 |               |     334.3 |           |            | 335.85 |       40 |     52295 |     -1 |        -1 |        0 | 339.15 |  394.75 |           |  334.3 |  335.85 |       336 |       334.3 |        334.55 | 330.85 |    276.5 |       333.8 |       335.85 |           335.85 |            |            |         335.9 | 15:38:00         |   334.55 |    1371 |      1310 |     10823 |    336 |       4947 |       66958 | 335.15 |          335.15 |             |              337 | 20210108 |              337 |       337 |      334.15 |             0.15 |    3 |  171415 |    171397 |    20210113 |           | 18:45:29 | N              |   820814868 |   10080 |   2443970 |  335.85 |
+| 2021-01-11 18:39:59.763000 | MOEX     | TQBR  | GAZP   | Day     | N     |          0 |      0 |         227.4 |               |     227.4 |           |            | 228.29 |       53 |    682210 |    2.8 |      4.24 |        0 |    231 |  244.01 |           | 228.29 |   227.6 |    227.67 |       227.4 |        227.57 | 221.81 |   205.26 |      222.75 |       227.11 |           227.11 |            |            |        228.24 | 15:39:00         |   227.57 |    5000 |      5468 |    135884 |  228.3 |      26093 |      978784 |        |          225.17 |             |           224.05 | 20210108 |           224.05 |    225.49 |      222.86 |             5.43 |   10 | 1644129 |   1644119 |    20210113 |           | 18:39:58 | N              | 23986825379 |   22829 | 105622030 |   227.1 |
+| 2021-01-11 18:45:09.322000 | MOEX     | TQBR  | SIBN   | Day     | L     |            |      2 |               |           103 |     334.3 |  28535848 |      85360 |  334.3 |      622 |       622 |   -2.7 |      -2.7 |          |        |         |      6220 |  334.3 |         |           |             |               |        |          |             |              |                  |         10 |      85190 |         335.9 | 15:38:00         |          |       4 |       954 |     10821 | 324.25 |       8536 |       65661 |        |                 | 18:40:01    |                  |          |                  |           |             |             0.15 |   12 |  171347 |    171342 |    20210113 | 15:40:01  | 18:45:09 | L              |   820597573 |   40116 |   2443320 |  335.85 |
+| 2021-01-11 18:45:14.387000 | MOEX     | TQBR  | GAZP   | Day     | L     |            |      2 |               |           261 |     227.4 | 447252594 |    1966810 |  227.4 |     1859 |      1859 |   1.91 |      3.35 |          |        |         |     18590 |  227.4 |         |           |             |        228.26 |        |          |             |              |                  |     752380 |     839340 |        228.26 | 15:40:00         |   228.26 |       1 |      4975 |    136145 |  220.3 |      84778 |     1211457 |        |                 | 18:40:01    |                  |          |                  |           |             |             4.54 | 2266 | 1483464 |   1483459 |    20210113 | 15:40:01  | 18:45:14 | L              | 24434077973 | 5152884 | 107588840 |  227.11 |
+| 2021-01-11 18:50:00.364000 | MOEX     | TQBR  | SIBN   | Day     | E     |            |      0 |               |             2 |     334.3 |    217295 |        650 |  334.3 |      919 |       919 |   -2.7 |      -2.7 |          |        |         |           |  334.3 |         |           |       334.3 |        334.55 |        |          |             |              |                  |            |            |         334.3 | 15:46:00         |   334.55 |       9 |           |     10823 |        |            |             |        |                 |             |                  |          |                  |           |             |             0.15 |   57 |  171374 |    171370 |    20210113 | 15:45:09  | 18:45:29 | E              |   820814868 |  190551 |   2443970 |         |
+| 2021-01-11 18:50:00.449000 | MOEX     | TQBR  | GAZP   | Day     | E     |            |      2 |               |            19 |     227.4 |   2474112 |      10880 |  227.4 |    29589 |     29589 |   1.91 |      3.35 |          |        |         |           |  227.4 |         |           |       227.4 |         227.4 |        |          |             |              |                  |       5000 |            |         227.4 | 15:46:00         |    227.4 |      61 |           |    136164 |        |            |             |        |                 |             |                  |          |                  |           |             |             4.54 |    5 | 1483734 |   1483728 |    20210113 | 15:45:14  | 18:49:55 | E              | 24436552085 |   11370 | 107599720 |         |
+| 2021-01-11 19:00:01.772000 | MOEX     | TQBR  | SIBN   | Evening | S     |            |      0 |               |               |     334.3 |           |            |        |          |           |        |           |          | 339.15 |  394.75 |           |  334.3 |  335.85 |       336 |       334.3 |        334.55 | 330.85 |    276.5 |             |              |                  |            |            |               |                  |   334.55 |         |           |     10823 |        |            |             | 335.15 |          335.15 |             |                  |          |              337 |       337 |             |             0.15 |      |  171390 |    171386 |             |           | 18:45:29 |                |   820814868 |         |   2443970 |  335.85 |
+| 2021-01-11 19:04:54.005000 | MOEX     | TQBR  | GAZP   | Evening | O     |            |      1 |               |            39 |     227.4 |   6412680 |      28200 |  227.4 |     4632 |     57075 |   1.91 |      3.35 |          |    231 |  244.01 |     46320 |  227.4 |  228.29 |     228.3 |       227.4 |         227.4 | 221.81 |   205.26 |             |              |                  |        640 |       1020 |         227.4 | 15:46:00         |    227.4 |     445 |       447 |    136203 | 227.75 |        600 |       74480 | 225.17 |           227.4 | 19:00:01    |                  |          |           224.05 |    225.49 |             |             4.54 |    1 | 1485164 |   1485157 |    20210113 | 16:00:01  | 19:04:54 | S              | 24442964765 |    2274 | 107627920 |  227.11 |
+| 2021-01-11 23:50:00.001000 | MOEX     | TQBR  | GAZP   | Evening | N     |            |      1 |               |               |           |           |            |  227.6 |       65 |    224239 |   2.11 |      3.55 |          |        |         |           |  227.6 |   227.6 |    227.67 |             |        227.57 |        |          |             |              |                  |            |            |        227.57 | 20:50:00         |   227.57 |    1818 |      1783 |    147615 | 227.67 |        370 |      209039 |        |                 |             |                  |          |                  |           |             |             4.74 |   10 | 1644110 |   1644101 |    20210113 |           | 23:49:58 | N              | 25599191061 |   22760 | 112708870 |  227.13 |
 ```
 
 #### `atsd_entity` Table
@@ -211,8 +222,10 @@ WHERE tags.class_code != '' AND tags.symbol LIKE 'AA%'
 ```ls
 | name                | created                 | tags.isin    |
 |---------------------|-------------------------|--------------|
-| tsla_[iexg]         | 2020-03-29T12:19:14.048 | US88160R1014 |
-| tsla.us_[stock_usa] | 2020-01-06T19:05:00.071 | US88160R1014 |
+| aa.spb_[spbxm]      | 2020-03-29T12:19:14.048 | US0138721065 |
+| aa.us_[stock_usa]   | 2020-01-06T19:05:00.071 | US0138721065 |
+| aadr.us_[stock_usa] | 2020-06-09T16:43:53.455 | US00768Y2063 |
+| aaic.us_[stock_usa] | 2020-10-27T16:30:02.435 | US0413562051 |
 ```
 
 ### WHERE Clause
@@ -234,8 +247,8 @@ The clause can be built from multiple conditions, each comparing values using op
 The result of evaluating a condition is a boolean value. Multiple conditions can be combined using the logical operators `AND`, `OR`, and `NOT`.
 
 ```sql
-WHERE (class = 'IEXG' AND symbol = 'TSLA' OR class = 'STOCK_USA' AND symbol LIKE 'TSLA%')
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
+  AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
   AND amount > 100000
 ```
 
@@ -342,19 +355,19 @@ Comments are not allowed after the statement termination character `;`.
 The above columns can be requested with the `SELECT *` syntax, except for queries with the `GROUP BY` aggregation clause.
 
 ```sql
-SELECT *, CAST(ISNULL(entity.tags.lot, 1) AS number)*price AS amt
+SELECT *, ROUND(price*quantity*entity.tags.lot, 1) AS amt
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ORDER BY datetime
 ```
 
 ```ls
-| datetime                   |  trade_num |  price | quantity | symbol | class | exchange | session |    amt |
-|----------------------------|-----------:|-------:|---------:|--------|-------|----------|---------|-------:|
-| 2021-01-13 14:00:06.859843 | 1367042482 | 843.67 |      100 | TSLA   | IEXG  | IEX      | N       | 843.67 |
-| 2021-01-13 14:00:11.573151 | 1367352219 | 843.63 |      100 | TSLA   | IEXG  | IEX      | N       | 843.63 |
-| 2021-01-13 14:00:18.013559 | 1368945732 | 844.20 |       16 | TSLA   | IEXG  | IEX      | N       | 844.20 |
+| datetime            |  trade_num |  price | quantity | symbol | class | exchange | side | session | order_num |       amt |
+|---------------------|-----------:|-------:|---------:|--------|-------|----------|------|---------|----------:|----------:|
+| 2020-12-23 10:00:00 | 3440599864 |    209 |      675 | GAZP   | TQBR  | MOEX     | S    | N       |     89121 | 1410750.0 |
+| 2020-12-23 10:00:00 | 3440600021 | 209.07 |        2 | GAZP   | TQBR  | MOEX     | B    | N       |     97818 |    4181.4 |
+| 2020-12-23 10:00:00 | 3440600141 |    209 |        1 | GAZP   | TQBR  | MOEX     | S    | N       |    100265 |    2090.0 |
 ```
 
 ### Entity Columns
@@ -411,19 +424,19 @@ entity.groups NOT IN ('group-1', 'group-1') -- instrument does NOT belong to any
 New columns can be created by applying functions and arithmetic expressions to existing columns. The computed columns can be included both in the `SELECT` expression, as well as in the `WHERE`, `HAVING`, and `ORDER BY` clauses.
 
 ```sql
-SELECT datetime, price, quantity, price*quantity AS amt
+SELECT datetime, price, quantity, ROUND(price*quantity*entity.tags.lot, 1) AS amt
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ORDER BY datetime
 ```
 
 ```ls
-| datetime                   |  price | quantity |      amt |
-|----------------------------|-------:|---------:|---------:|
-| 2021-01-13 14:00:06.859843 | 843.67 |      100 | 84367.00 |
-| 2021-01-13 14:00:11.573151 | 843.63 |      100 | 84363.00 |
-| 2021-01-13 14:00:18.013559 | 844.20 |       16 | 13507.20 |
+| datetime            |  price | quantity |       amt |
+|---------------------|-------:|---------:|----------:|
+| 2020-12-23 10:00:00 |    209 |      675 | 1410750.0 |
+| 2020-12-23 10:00:00 | 209.07 |        2 |    4181.4 |
+| 2020-12-23 10:00:00 |    209 |        1 |    2090.0 |
 ```
 
 ## Identifiers
@@ -465,8 +478,8 @@ The `AS` keyword is optional.
 ```sql
 SELECT quantity*price*entity.tags.lot AS "amt", datetime "d-t"
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
   ORDER BY "d-t"
 ```
 
@@ -489,14 +502,14 @@ TRUE USING VALUE WEEKOFYEAR WHEN WHERE WITH WORKDAY_CALENDAR YES
 
 ## Literals
 
-The literal is a constant value specified in the query, such as `'TSLA'`, `112`, or `'2020-08-15T00:00:00Z'`. The database supports literals for `string`, `timestamp`, and `number` data types, as well as the `NULL` literal.
+The literal is a constant value specified in the query, such as `'GAZP'`, `112`, or `'2020-08-15T00:00:00Z'`. The database supports literals for `string`, `timestamp`, and `number` data types, as well as the `NULL` literal.
 
 ```sql
 -- string literal
-WHERE symbol = 'TSLA'
+WHERE symbol = 'GAZP'
 
 -- timestamp literal
-WHERE datetime >= '2021-01-13 14:00:00'
+WHERE datetime >= '2020-08-15T00:00:00Z'
 
 -- number literal
 WHERE quantity < 75
@@ -557,15 +570,15 @@ Because the `BIGINT` data type does not support `Infinity` constant, the returne
 ```sql
 SELECT price, SQRT(-1*price), price/0, 1/0, -1/0, 1/0-1/0
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 LIMIT 1
 ```
 
 ```ls
-|  price | sqrt(-1 * price) | price / 0 |    1 / 0 |    -1 / 0 | 1 / 0 - 1 / 0 |
-|-------:|-----------------:|----------:|---------:|----------:|--------------:|
-| 843.67 |              NaN |  Infinity | Infinity | -Infinity |           NaN |
+| price | sqrt(-1 * price) | price / 0 |    1 / 0 |    -1 / 0 | 1 / 0 - 1 / 0 |
+|------:|-----------------:|----------:|---------:|----------:|--------------:|
+| 220.1 |              NaN |  Infinity | Infinity | -Infinity |           NaN |
 ```
 
 The result of comparing `NaN` with another number is indeterminate (`NULL`).
@@ -585,8 +598,8 @@ AND sqrt(price-100) IS NOT NULL
 
 ```sql
 SELECT * FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA' AND side = 's' AND entity.tags.name LIKE 'Ga%'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP' AND side = 's' AND entity.tags.name LIKE 'Ga%'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 LIMIT 1
 ```
 
@@ -603,8 +616,8 @@ Arithmetic calculations are performed with `double` precision.
 ```sql
 SELECT datetime, SUM(quantity), SUM(price*quantity*entity.tags.lot) AS amount
   FROM atsd_trade
-WHERE class = 'IEXG' AND session = 'X' AND symbol LIKE 'TS%'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'FQBR' AND side = 's' AND symbol LIKE 'Aa%'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
   GROUP BY period(5 MINUTE)
 ```
 
@@ -622,8 +635,8 @@ The `IN` operator provides an alternative to multiple `OR` conditions.
 
 ```sql
 SELECT * FROM atsd_trade
-WHERE class = 'IEXG' AND symbol IN('TSLA', 'AAPL')
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol IN('GAZP', 'SIBN')
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ```
 
 ### LIKE Expression
@@ -638,22 +651,22 @@ The comparison is case-**sensitive**, including **entity and metric** names whic
 
 ```sql
 SELECT * FROM atsd_trade
-WHERE class = 'IEXG' AND symbol LIKE 'AA%'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'FQBR' AND symbol LIKE 'AA%'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ```
 
 Wildcard symbols present in the pattern can be escaped with a backslash `\` which serves as the default escape character.
 
 ```sql
 -- Default escape character
-WHERE class = 'IEXG' AND entity.tags.name LIKE '%a\_b%'
+WHERE class = 'FQBR' AND entity.tags.name LIKE '%a\_b%'
 ```
 
 The escape character can be customized by adding an `ESCAPE` clause after the `LIKE` expression.
 
 ```sql
 -- Custom escape character
-WHERE class = 'IEXG' AND entity.tags.name LIKE '%a~_b%' ESCAPE '~'
+WHERE class = 'FQBR' AND entity.tags.name LIKE '%a~_b%' ESCAPE '~'
 ```
 
 In the example above, the underscore is evaluated as a regular character (not as a wildcard) because the underscore preceded by an `~` escape character.
@@ -664,15 +677,15 @@ The `REGEX` expression matches column value against a [regular expression](https
 
 ```sql
 SELECT * FROM atsd_trade
-WHERE class = 'IEXG' AND symbol REGEX 'AA.*|.*GOO.*'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'FQBR' AND symbol REGEX '.*AA.*|.*GOO.*'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 ```
 
 `REGEX` can be used to match one of multiple conditions as an alternative to multiple `LIKE` expressions.
 
 ```sql
-WHERE exchange = 'IEX'
-  AND (symbol LIKE 'AA%'
+WHERE exchange = 'MOEX'
+  AND (symbol LIKE '%AA%'
     OR symbol LIKE '%GOO%')
 ```
 
@@ -703,17 +716,17 @@ test_expr BETWEEN lower_range [ INCL | EXCL ] AND lower_range [ INCL | EXCL ]
 The `EXCL` instruction can be used to exclude the end of the date selection interval.
 
 ```sql
--- Excludes trades recorded exactly at 14:00 and 14:05
+-- Excludes trades recorded exactly at 12:00 and 13:00
 SELECT * FROM atsd_trade ...
-  WHERE datetime BETWEEN '2021-01-13 14:00:00' EXCL
-                     AND '2021-01-13 14:05:00' EXCL
+  WHERE datetime BETWEEN '2020-12-10 12:00:00' EXCL
+                     AND '2020-12-10 13:00:00' EXCL
 ```
 
 ```sql
--- Includes trades recorded exactly at 14:00 and 14:05
+-- Includes trades recorded exactly at 12:00 and 13:00
 SELECT * FROM atsd_trade ...
-  WHERE datetime BETWEEN '2021-01-13 14:00:00'
-                     AND '2021-01-13 14:05:00'
+  WHERE datetime BETWEEN '2020-12-10 12:00:00'
+                     AND '2020-12-10 13:00:00'
 ```
 
 ## CASE Expression
@@ -742,19 +755,25 @@ If no `search_expression` is matched and the `ELSE` condition is not specified, 
 
 ```sql
 SELECT *, CASE
-    WHEN symbol = 'TSLA' THEN 1 ELSE 0 END AS sign
+    WHEN class = 'SPBFUT' THEN price*quantity
+    ELSE price*quantity*entity.tags.lot
+  END AS amt
   FROM atsd_trade
-WHERE (class = 'IEXG' AND symbol = 'TSLA' OR class = 'IEXG' AND symbol LIKE 'AAP%')
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
+AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
 ORDER BY datetime
 ```
 
 ```ls
-| datetime                   |  trade_num |  price | quantity | symbol | class | exchange | session | sign |
-|----------------------------|-----------:|-------:|---------:|--------|-------|----------|---------|-----:|
-| 2021-01-13 14:00:00.743616 | 1366704097 | 130.86 |       93 | AAPL   | IEXG  | IEX      | N       |    0 |
-| 2021-01-13 14:00:02.372185 | 1366805446 | 130.86 |      100 | AAPL   | IEXG  | IEX      | N       |    0 |
-| 2021-01-13 14:00:06.859843 | 1367042482 | 843.67 |      100 | TSLA   | IEXG  | IEX      | N       |    1 |
+| datetime            |           trade_num | price | quantity | symbol | class  | exchange | side | session | order_num |    amt |
+|---------------------|--------------------:|------:|---------:|--------|--------|----------|------|---------|----------:|-------:|
+| 2020-12-28 14:55:02 |          3450805704 | 207.1 |       88 | GAZP   | TQBR   | MOEX     | S    | N       |   5059247 | 182248 |
+| 2020-12-28 14:55:02 |          3450805705 | 207.1 |       53 | GAZP   | TQBR   | MOEX     | S    | N       |   5060356 | 109763 |
+| 2020-12-28 14:55:02 |          3450805706 | 207.1 |       88 | GAZP   | TQBR   | MOEX     | S    | N       |   5060726 | 182248 |
+| 2020-12-28 14:55:02 |          3450805707 | 207.1 |       17 | GAZP   | TQBR   | MOEX     | S    | N       |   5062244 |  35207 |
+| 2020-12-28 14:55:02 | 1896042054740370035 | 20920 |        1 | GZH1   | SPBFUT | MOEX     | S    | N       |           |  20920 |
+| 2020-12-28 14:55:05 |          3450805890 | 207.1 |        1 | GAZP   | TQBR   | MOEX     | B    | N       |   5063012 |   2071 |
+| 2020-12-28 14:55:06 | 1896042054740370036 | 20919 |       10 | GZH1   | SPBFUT | MOEX     | S    | N       |           | 209190 |
 ```
 
 ### Simple `CASE` Expression
@@ -771,26 +790,29 @@ END
 
 ```sql
 SELECT datetime, class, symbol, price, quantity, CASE
-    WHEN symbol = 'TSLA' THEN 1
-    ELSE 0
-  END AS sign,
-  CASE symbol
-    WHEN 'TSLA' THEN 1
-    WHEN 'AAPL' THEN 0
-    ELSE -1
-  END AS sign_2
+    WHEN class = 'SPBFUT' THEN price*quantity
+    ELSE price*quantity*entity.tags.lot
+  END AS amt,
+  CASE class
+    WHEN 'SPBFUT' THEN price*quantity
+    WHEN 'SPQR' THEN 0
+    ELSE price*quantity*entity.tags.lot
+  END AS amt_2
   FROM atsd_trade
-WHERE (class = 'IEXG' AND symbol = 'TSLA' OR class = 'SPBFUT' AND symbol LIKE 'AAP%')
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE (class = 'TQBR' AND symbol = 'GAZP' OR class = 'SPBFUT' AND symbol LIKE 'GZ%')
+AND datetime between '2020-12-28 14:55:00' and '2020-12-28 14:59:00'
 ORDER BY datetime
 ```
 
 ```ls
-| datetime                   | class | symbol |  price | quantity | sign | sign_2 |
-|----------------------------|-------|--------|-------:|---------:|-----:|-------:|
-| 2021-01-13 14:00:00.743616 | IEXG  | AAPL   | 130.86 |       93 |    0 |      0 |
-| 2021-01-13 14:00:02.372185 | IEXG  | AAPL   | 130.86 |      100 |    0 |      0 |
-| 2021-01-13 14:00:06.859843 | IEXG  | TSLA   | 843.67 |      100 |    1 |      1 |
+| datetime            | class  | symbol | price | quantity | amt | amt_2 |
+|---------------------|--------|--------|------:|---------:|-------:|---------:|
+| 2020-12-28 14:55:02 | TQBR   | GAZP   | 207.1 |       88 | 182248 |   182248 |
+| 2020-12-28 14:55:02 | TQBR   | GAZP   | 207.1 |       53 | 109763 |   109763 |
+| 2020-12-28 14:55:02 | TQBR   | GAZP   | 207.1 |       88 | 182248 |   182248 |
+| 2020-12-28 14:55:02 | TQBR   | GAZP   | 207.1 |       17 |  35207 |    35207 |
+| 2020-12-28 14:55:02 | SPBFUT | GZH1   | 20920 |        1 |  20920 |    20920 |
+| 2020-12-28 14:55:05 | TQBR   | GAZP   | 207.1 |        1 |   2071 |     2071 |
 ```
 
 The `CASE` expressions can be nested by using `CASE` within the `result_expression`:
@@ -816,9 +838,9 @@ The `datetime` column accepts literal dates and supports [calendar expressions](
 
 ```sql
 SELECT * FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
-   -- datetime >= NOW - 15*MINUTE
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23T13:00:00Z' AND '2020-12-23T14:00:00Z'
+   -- datetime >= NOW - 1*DAY
 ```
 
 The above query selects samples recorded between `13:00` and `14:00` on `2020-12-23` in the UTC time zone. This includes trades recorded exactly at `13:00` and `14:00` because the `BETWEEN` operator is inclusive by default.
@@ -832,46 +854,46 @@ The above query selects samples recorded between `13:00` and `14:00` on `2020-12
 To exclude the end of the selection interval, add the `EXCL` instruction to override the default `BETWEEN` behavior.
 
 ```sql
-AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00' EXCL
+AND datetime BETWEEN '2020-12-23T13:00:00Z' AND '2020-12-23T14:00:00Z' EXCL
 ```
 
 The `datetime` column accepts literal dates in one of the following formats:
 
 | **Format** | **Time Zone or UTC Offset** | **Examples** |
 |---|---|---|
-| `yyyy-MM-ddTHH:mm:ss[.S](Z\|±hh[:]mm)` | As specified | `2021-01-13T15:30:00.077Z`<br>`2021-01-13T15:30:00Z`<br>`2021-01-13T15:30:00-05:00`<br>`2021-01-13T15:30:00-0500` |
-| `yyyy-MM-dd HH:mm:ss[.S]`| Database or [query](#with-timezone)  | `2021-01-13 15:30:00.077`<br>`2021-01-13 15:30:00` |
+| `yyyy-MM-ddTHH:mm:ss[.S](Z\|±hh[:]mm)` | As specified | `2020-12-10T15:30:00.077Z`<br>`2020-12-10T15:30:00Z`<br>`2020-12-10T15:30:00-05:00`<br>`2020-12-10T15:30:00-0500` |
+| `yyyy-MM-dd HH:mm:ss[.S]`| Database or [query](#with-timezone)  | `2020-12-10 15:30:00.077`<br>`2020-12-10 15:30:00` |
 | `yyyy[-MM[-dd]]`| Database or [query](#with-timezone)  | `2020`<br>`2020-12`<br>`2020-12-15` |
 
 The UTC time zone is specified as the `Z` letter or as the zero UTC offset `+00:00` (`+0000`).
 
 ```sql
-WHERE datetime BETWEEN '2021-01-13T14:00:15Z'
-                   AND '2021-01-13T14:30:00.077Z'
-  -- WHERE datetime BETWEEN '2021-01-13 14:00:15' AND '2021-01-13 14:30:00.077'
-  -- WHERE datetime = '2021'
+WHERE datetime BETWEEN '2020-12-10T14:00:15Z'
+                   AND '2020-12-10T14:30:00.077Z'
+  -- WHERE datetime BETWEEN '2020-12-10 14:00:15' AND '2020-12-11 14:30:00.077'
+  -- WHERE datetime = '2020'
 ```
 
 If the time zone is not specified, and not set in the SQL console, the literal date value is interpreted using the **database** time zone.
 
 ```sql
-WHERE datetime BETWEEN '2021-01-13 14:00:15'
-                   AND '2021-01-13 14:30:00.077'
+WHERE datetime BETWEEN '2020-12-10 14:00:15'
+                   AND '2020-12-11 14:30:00.077'
 ```
 
 The default time zone applied to literal dates in the query can be set explicitly using the [`WITH TIMEZONE`](#with-timezone) clause.
 
 ```sql
-WHERE datetime BETWEEN '2021-01-13 14:00:15'
-                   AND '2021-01-13 14:30:00.077'
-  WITH TIMEZONE = 'US/Eastern'
+WHERE datetime BETWEEN '2020-12-10 14:00:15'
+                   AND '2020-12-11 14:30:00.077'
+  WITH TIMEZONE = 'US/Pacific'
 ```
 
 Literal date values specified using short formats are expanded to the complete date by setting missing units to the first value in the allowed range.
 
-* `'2021-02-13' == '2021-02-13 00:00:00'`
-* `'2021-02'    == '2021-02-01 00:00:00'`
-* `'2021'       == '2021-01-01 00:00:00'`
+* `'2020-05-23' == '2020-05-23 00:00:00'`
+* `'2020-05'    == '2020-05-01 00:00:00'`
+* `'2020'       == '2020-01-01 00:00:00'`
 
 To round the dates to the nearest calendar period, use the [`date_round`](#date_round) function.
 
@@ -887,11 +909,11 @@ Using the [`date_format`](#date_format) and [`EXTRACT`](#extract) functions in t
 * `WHERE` Clause
 
 ```sql
-WHERE date_format(time, 'yyyy') > '2021'   -- Slow: full scan with string comparison.
-WHERE YEAR(time) > 2021                    -- Slow: full scan with number comparison.
-WHERE datetime >= '2021'                   -- Fast: date range scan using an indexed column.
-WHERE datetime BETWEEN '2021' AND '2022'   -- Fast: date range scan using an indexed column.
-WHERE datetime >= '2021-01-01T00:00:00Z'   -- Fast: date range scan using an indexed column.
+WHERE date_format(time, 'yyyy') > '2020'   -- Slow: full scan with string comparison.
+WHERE YEAR(time) > 2020                    -- Slow: full scan with number comparison.
+WHERE datetime >= '2020'                   -- Fast: date range scan using an indexed column.
+WHERE datetime BETWEEN '2020' AND '2021'   -- Fast: date range scan using an indexed column.
+WHERE datetime >= '2020-01-01T00:00:00Z'   -- Fast: date range scan using an indexed column.
 ```
 
 * `GROUP BY` Clause
@@ -922,8 +944,8 @@ WHERE datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY,
 Multiple intervals can be selected using the `OR` operator.
 
 ```sql
-AND (datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
-  OR datetime BETWEEN '2021-01-13 16:00:00' AND '2021-01-13 16:05:00')
+AND (datetime BETWEEN '2020-04-02 12:00:00' AND '2020-04-02 12:05:00'
+  OR datetime BETWEEN '2020-04-02 16:00:00' AND '2020-04-02 16:05:00')
 ```
 
 ## Grouping
@@ -931,17 +953,17 @@ AND (datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
 The `GROUP BY` clause groups records into rows that have matching values for the specified grouping columns.
 
 ```sql
-SELECT exchange, class, symbol, max(price), high()
+SELECT exchange, class, symbol, max(price)
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 GROUP BY exchange, class, symbol
 ```
 
 ```ls
-| exchange | class | symbol | max(price) | high() |
-|----------|-------|--------|-----------:|-------:|
-| IEX      | IEXG  | TSLA   |     846.97 | 846.97 |
+| exchange | class | symbol | max(price) |
+|----------|-------|--------|-----------:|
+| MOEX     | TQBR  | GAZP   |      220.1 |
 ```
 
 ## Date Aggregation
@@ -974,18 +996,18 @@ PERIOD(1 DAY, 'US/Eastern')
 ```sql
 SELECT datetime, exchange, class, symbol, max(price)
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 15:00:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 GROUP BY exchange, class, symbol, PERIOD(15 MINUTE)
 ```
 
 ```ls
 | datetime            | exchange | class | symbol | max(price) |
 |---------------------|----------|-------|--------|-----------:|
-| 2021-01-13 14:00:00 | IEX      | IEXG  | TSLA   |     852.17 |
-| 2021-01-13 14:15:00 | IEX      | IEXG  | TSLA   |     855.45 |
-| 2021-01-13 14:30:00 | IEX      | IEXG  | TSLA   |     854.98 |
-| 2021-01-13 14:45:00 | IEX      | IEXG  | TSLA   |     855.20 |
+| 2020-12-23 10:00:00 | MOEX     | TQBR  | GAZP   |     210.68 |
+| 2020-12-23 10:15:00 | MOEX     | TQBR  | GAZP   |     210.44 |
+| 2020-12-23 10:30:00 | MOEX     | TQBR  | GAZP   |     212.46 |
+| 2020-12-23 10:45:00 | MOEX     | TQBR  | GAZP   |     212.75 |
 ```
 
 In grouping queries, the `datetime` returns the same value as `date_format(PERIOD())`.
@@ -999,18 +1021,18 @@ HAVING aggregate_function operator value
 ```
 
 ```sql
-SELECT datetime, exchange, class, symbol, high(), volume()
+SELECT datetime, exchange, class, symbol, max(price)
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 15:00:00'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 11:00:00'
 GROUP BY exchange, class, symbol, PERIOD(15 MINUTE)
-  HAVING volume() > 20000
+  HAVING max(price) > 212.50
 ```
 
 ```ls
-| datetime            | exchange | class | symbol | high() | volume() |
-|---------------------|----------|-------|--------|-------:|---------:|
-| 2021-01-13 14:15:00 | IEX      | IEXG  | TSLA   | 855.45 |    22607 |
+| datetime            | exchange | class | symbol | max(price) |
+|---------------------|----------|-------|--------|-----------:|
+| 2020-12-23 10:45:00 | MOEX     | TQBR  | GAZP   |     212.75 |
 ```
 
 ```sql
@@ -1028,20 +1050,20 @@ Sample result set, partitioned by symbol and ordered by time:
 ```sql
 SELECT datetime, symbol, price, quantity, trade_num, ROW_NUMBER()
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol IN ('TSLA', 'AAPL')
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol IN ('GAZP', 'SIBN')
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:05:00'
 WITH ROW_NUMBER(symbol ORDER BY time) <= 3
 ```
 
 ```ls
-| datetime                   | symbol |  price | quantity |  trade_num | row_number() |
-|----------------------------|--------|-------:|---------:|-----------:|-------------:|
-| 2021-01-13 14:00:00.743616 | AAPL   | 130.86 |       93 | 1366704097 |            1 |
-| 2021-01-13 14:00:02.372185 | AAPL   | 130.86 |      100 | 1366805446 |            2 |
-| 2021-01-13 14:00:08.738940 | AAPL   | 130.85 |      300 | 1367123702 |            3 |
-| 2021-01-13 14:00:06.859843 | TSLA   | 843.67 |      100 | 1367042482 |            1 |
-| 2021-01-13 14:00:11.573151 | TSLA   | 843.63 |      100 | 1367352219 |            2 |
-| 2021-01-13 14:00:18.013559 | TSLA   | 844.20 |       16 | 1368945732 |            3 |
+| datetime            | symbol |  price | quantity |  trade_num | row_number() |
+|---------------------|--------|-------:|---------:|-----------:|-------------:|
+| 2020-12-23 10:00:00 | GAZP   |    209 |      675 | 3440599864 |            1 |
+| 2020-12-23 10:00:00 | GAZP   | 209.07 |        2 | 3440600021 |            2 |
+| 2020-12-23 10:00:00 | GAZP   |    209 |        1 | 3440600141 |            3 |
+| 2020-12-23 10:00:03 | SIBN   |  316.5 |        3 | 3440600993 |            1 |
+| 2020-12-23 10:00:03 | SIBN   |  316.5 |        1 | 3440600995 |            2 |
+| 2020-12-23 10:00:04 | SIBN   |  316.7 |        2 | 3440601203 |            3 |
 ```
 
 ::: Difference between Partitioning and Grouping
@@ -1252,7 +1274,7 @@ FROM (
   SELECT CURRENT_TIMESTAMP AS time, symbol, volume() AS daily_volume
     FROM atsd_trade
     WHERE datetime >= NOW-7*DAY
-      AND class = 'IEXG' AND symbol IN('TSLA', 'AAPL')
+      AND class = 'TQBR' AND symbol IN('GAZP', 'SIBN')
   GROUP BY symbol, class, exchange, PERIOD(1 DAY)
 ) tbl
 GROUP BY tbl.symbol
@@ -1261,8 +1283,8 @@ GROUP BY tbl.symbol
 ```ls
 | sym  | avg_daily_volume | max_daily_volume | trading_days |
 |------|-----------------:|-----------------:|-------------:|
-| AAPL |       2316148.25 |       3008728.00 |            4 |
-| TSLA |        870421.25 |       1107682.00 |            4 |
+| GAZP |          5656367 |          6440023 |            6 |
+| SIBN |           192863 |           347828 |            6 |
 ```
 
 ## Functions
@@ -1307,18 +1329,18 @@ The following functions aggregate values in a column by producing a single value
 ```sql
 SELECT datetime, symbol, open(), high(), low(), close(), volume(), ROUND(vwap(), entity.tags.scale) AS "vwap", count()
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol IN ('TSLA', 'AAPL')
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 15:00:00'
-GROUP BY exchange, class, symbol, PERIOD(30 minute)
+WHERE class = 'TQBR' AND symbol IN ('GAZP', 'SIBN')
+  AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:10:00'
+  GROUP BY exchange, class, symbol, period(5 minute)
 ```
 
 ```ls
-| datetime                   | symbol | open() | high() |  low() | close() | volume() |   vwap | count(*) |
-|----------------------------|--------|-------:|-------:|-------:|--------:|---------:|-------:|---------:|
-| 2021-01-13 14:00:00.000000 | AAPL   | 130.86 | 131.15 | 130.75 |  130.93 |    69484 | 131.00 |      539 |
-| 2021-01-13 14:30:00.000000 | AAPL   | 130.93 | 131.14 | 130.85 |  131.01 |    79941 | 131.00 |      654 |
-| 2021-01-13 14:00:00.000000 | TSLA   | 843.67 | 855.45 | 843.02 |  853.88 |    41161 | 851.00 |      614 |
-| 2021-01-13 14:30:00.000000 | TSLA   | 854.06 | 855.20 | 849.95 |  855.20 |    31446 | 853.00 |      490 |
+| datetime            | symbol | open() | high() |  low() | close() | volume() |   vwap | count(*) |
+|---------------------|--------|-------:|-------:|-------:|--------:|---------:|-------:|---------:|
+| 2020-12-23 10:00:00 | GAZP   |    209 | 210.68 |    208 |  210.44 |   379880 | 210.00 |     4174 |
+| 2020-12-23 10:05:00 | GAZP   |  210.4 | 210.59 |  208.8 |  209.62 |   197414 | 209.58 |     2493 |
+| 2020-12-23 10:00:00 | SIBN   |  316.5 | 317.55 |    316 |  317.25 |     2189 | 316.91 |      136 |
+| 2020-12-23 10:05:00 | SIBN   | 317.25 | 317.25 | 315.75 |  316.65 |     1854 | 316.48 |      133 |
 ```
 
 #### COUNT
@@ -1393,19 +1415,23 @@ BETA(varchar exchange, varchar class, varchar symbol, period)
 ```
 
 ```sql
-SELECT symbol, beta('IEX', 'IEXG', 'TSLA', 60 MINUTE) AS bt
+SELECT symbol, beta('MOEX', 'TQBR', 'LKOH', 60 MINUTE) AS bt
+            -- beta('MOEX', 'RTSIDX', 'MOEXBC', 60 MINUTE)
   FROM atsd_trade
-WHERE exchange = 'IEX' AND class = 'IEXG' AND symbol = 'SPY'
-  AND datetime BETWEEN '2021-01-11 00:00:00' AND '2021-01-14 00:00:00'
+WHERE exchange = 'MOEX' AND class = 'TQBR' AND symbol = 'GAZP'
+  AND datetime BETWEEN '2021-01-01 00:00:00' AND '2021-01-13 00:00:00' EXCL
 GROUP BY exchange, class, symbol, PERIOD(1 day)
 ```
 
 ```ls
 | datetime                   |      bt |
 |----------------------------|--------:|
+| 2021-01-04 00:00:00.000000 | 0.98867 |
+| 2021-01-05 00:00:00.000000 | 0.99990 |
+| 2021-01-06 00:00:00.000000 | 0.64504 |
+| 2021-01-08 00:00:00.000000 | 1.59111 |
 | 2021-01-11 00:00:00.000000 | 1.20144 |
 | 2021-01-12 00:00:00.000000 | 1.03975 |
-| 2021-01-13 00:00:00.000000 | 1.59111 |
 ```
 
 ### Date Functions
@@ -1478,13 +1504,13 @@ date_parse('31.03.2017 12:36:03.283 -08:00', 'dd.MM.yyyy HH:mm:ss.SSS ZZ')
 date_parse('31.03.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ')
 
 /* Parse date using the time zone provided as the third argument. */
-date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', 'US/Eastern')
+date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', 'Europe/Berlin')
 
 /* Parse date using the UTC offset provided as the third argument. */
 date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', '+01:00')
 
 /* Time zone (offset) specified in the timestamp must be the same as provided in the third argument. */
-date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ', 'US/Eastern')
+date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ', 'Europe/Berlin')
 ```
 
 #### DATE_ROUND
@@ -1522,6 +1548,14 @@ DATEADD(varchar datePart, integer dateCount, bigint time | varchar datetime [, v
 SELECT datetime, DATEADD(DAY, -6, datetime) AS "week_ago"
 ```
 
+```ls
+| datetime              | week_ago             |
+|-----------------------|----------------------|
+| 2013-06-17T07:29:04Z  | 2013-06-11T07:29:04Z |
+| 2013-06-17T07:29:20Z  | 2013-06-11T07:29:20Z |
+| 2013-06-17T07:29:36Z  | 2013-06-11T07:29:36Z |
+```
+
 #### `ENDTIME`
 
 The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md), which can be different from the database time zone.
@@ -1545,20 +1579,22 @@ It returns an index, starting with `1`, of the current time interval in queries 
 ```sql
 SELECT datetime, trade_num, INTERVAL_NUMBER()
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol LIKE 'TS%'
-  AND (datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00' OR datetime BETWEEN '2021-01-13 15:00:00' AND '2021-01-13 15:05:00')
+WHERE class = 'TQBR' AND symbol LIKE 'AF%'
+  AND (datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:00:05' OR datetime BETWEEN '2020-12-23 10:05:00' AND '2020-12-23 10:05:05')
 ORDER BY datetime, trade_num
 ```
 
 ```ls
-| datetime                   |  trade_num | interval_number() |
-|----------------------------|-----------:|------------------:|
-| 2021-01-13 14:00:00.173062 | 1366653354 |                 1 |
-| 2021-01-13 14:00:02.514746 | 1366810091 |                 1 |
-| 2021-01-13 14:00:02.536401 | 1366810795 |                 1 |
-| 2021-01-13 15:00:00.307262 | 1609612535 |                 2 |
-| 2021-01-13 15:00:00.666739 | 1609677774 |                 2 |
-| 2021-01-13 15:00:03.474033 | 1609887099 |                 2 |
+| datetime            |  trade_num | interval_number() |
+|---------------------|-----------:|------------------:|
+| 2020-12-23 10:00:04 | 3440601369 |                 1 |
+| 2020-12-23 10:00:04 | 3440601370 |                 1 |
+| 2020-12-23 10:00:04 | 3440601386 |                 1 |
+| 2020-12-23 10:00:04 | 3440601387 |                 1 |
+| 2020-12-23 10:05:01 | 3440630088 |                 2 |
+| 2020-12-23 10:05:02 | 3440630182 |                 2 |
+| 2020-12-23 10:05:04 | 3440630301 |                 2 |
+| 2020-12-23 10:05:04 | 3440630302 |                 2 |
 ```
 
 #### EXTRACT
@@ -1574,25 +1610,25 @@ The `datepart` argument can be `YEAR`, `QUARTER`, `MONTH`, `DAY`, `HOUR`, `MINUT
 The evaluation is based on the **database** time zone unless a custom [time zone](../shared/timezone-list.md) is specified. The date argument can refer to the `time` or `datetime` columns and [calendar](../shared/calendar.md) keywords and expressions..
 
 ```sql
-SELECT now, date_format(now),
-  EXTRACT(year FROM now) AS "year",
-  EXTRACT(quarter FROM now) AS "quarter",
-  EXTRACT(month FROM now) AS "month",
-  EXTRACT(day FROM now) AS "day",
-  EXTRACT(hour FROM now) AS "hour",
-  EXTRACT(minute FROM now) AS "minute",
-  EXTRACT(second FROM now) AS "second",
+SELECT datetime,
+  EXTRACT(year FROM datetime) AS "year",
+  EXTRACT(quarter FROM datetime) AS "quarter",
+  EXTRACT(month FROM datetime) AS "month",
+  EXTRACT(day FROM datetime) AS "day",
+  EXTRACT(hour FROM datetime) AS "hour",
+  EXTRACT(minute FROM datetime) AS "minute",
+  EXTRACT(second FROM datetime) AS "second",
   EXTRACT(day FROM now - 1*DAY) AS "prev_day",
   EXTRACT(month FROM now + 1*MONTH) AS "next_month",
-  date_format(now, 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul') AS "date_local",
-  EXTRACT(day FROM now, 'Asia/Seoul') AS "day_local"
+  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Asia/Seoul') AS "date_local",
+  EXTRACT(day FROM datetime, 'Asia/Seoul') AS "day_local"
 ...
 ```
 
 ```ls
-|           now | date_format(now)              | year | quarter | month | day | hour | minute | second | prev_day | next_month | date_local          | day_local |
-|--------------:|-------------------------------|-----:|--------:|------:|----:|-----:|-------:|-------:|---------:|-----------:|---------------------|----------:|
-| 1615153064146 | 2021-03-07T16:37:44.146-05:00 | 2021 |       1 |     3 |   7 |   16 |     37 |     44 |        6 |          4 | 2021-03-08 06:37:44 |         8 |
+| datetime             | year | quarter | month | day | hour | minute | second | prev_day | next_month | date_local          | day_local |
+|----------------------|------|---------|-------|-----|------|--------|--------|----------|------------|---------------------|-----------|
+| 2018-08-05T21:00:04Z | 2018 | 3       | 8     | 5   | 21   | 0      | 4      | 6        | 9          | 2018-08-06 06:00:04 | 6         |
 ```
 
 #### SECOND
@@ -1773,7 +1809,8 @@ WORKDAY(datetime, -2, 'usa')
 ```
 
 ```sql
-SELECT date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS base,
+SELECT value,
+  date_format(time, 'EEE yyyy-MMM-dd HH:mm:ss') AS base,
   date_format(WORKDAY(datetime, -1, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-1",
   date_format(WORKDAY(datetime, -2, 'usa'), 'EEE yyyy-MMM-dd HH:mm:ss') as "base-2"
 ...
@@ -1781,9 +1818,9 @@ WHERE datetime BETWEEN '2019-07-08 15:00:00' and '2019-07-08 15:01:00'
 ```
 
 ```txt
-| base                     | base-1                   | base-2                   |
-|--------------------------|--------------------------|--------------------------|
-| Mon 2019-Jul-08 15:00:10 | Fri 2019-Jul-05 15:00:10 | Wed 2019-Jul-03 15:00:10 |
+|   value | base                     | base-1                   | base-2                   |
+|---------|--------------------------|--------------------------|--------------------------|
+| 63.2700 | Mon 2019-Jul-08 15:00:10 | Fri 2019-Jul-05 15:00:10 | Wed 2019-Jul-03 15:00:10 |
 ```
 
 #### `WORKDAY_COUNT`
@@ -1810,7 +1847,7 @@ SELECT DBTIMEZONE,
   date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "period_start_utc",
   date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "period_start_local"
 ...
-  WHERE datetime >= '2018-08-01' AND datetime < '2018-08-03'
+  WHERE datetime >= '2020-08-01' AND datetime < '2020-08-03'
   -- change the default database time zone from UTC to US/Pacific
   WITH TIMEZONE = 'US/Pacific'
 ```
@@ -1840,29 +1877,29 @@ Absent the `WITH TIMEZONE` clause, each function must be individually programmed
 The `WORKDAY_CALENDAR` clause overrides the default **workday calendar** applied in date functions and [calendar keywords](../shared/calendar.md#keywords). The installed calendars are listed on the **Data > Workday Calendars** page.
 
 ```javascript
-WITH WORKDAY_CALENDAR = 'nyse'
+WITH WORKDAY_CALENDAR = 'moex'
 ```
 
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd EEEE') AS dt,
-  IS_WORKDAY(datetime), high()
-FROM atsd_trade
-  WHERE class = 'IEXG' AND symbol = 'TSLA'
-    AND datetime BETWEEN '2021-02-20 00:00:00' AND '2021-03-03 00:00:00'
-    GROUP BY exchange, class, symbol, PERIOD(1 day)
-  WITH WORKDAY_CALENDAR = 'nyse', TIMEZONE = 'US/Eastern'
+  IS_WORKDAY(datetime),
+  high()
+    FROM atsd_trade
+  WHERE class = 'TQBR' AND symbol = 'GAZP'
+    AND datetime BETWEEN '2020-12-23 00:00:00' AND '2020-12-31 19:10:00'
+    GROUP BY exchange, class, symbol, period(1 day)
+  WITH WORKDAY_CALENDAR = 'moex', TIMEZONE = 'Europe/Moscow'
 ```
 
 ```ls
 | dt                   | is_workday(datetime) | high() |
 |----------------------|----------------------|-------:|
-| 2021-02-22 Monday    | true                 | 768.33 |
-| 2021-02-23 Tuesday   | true                 | 713.16 |
-| 2021-02-24 Wednesday | true                 | 744.97 |
-| 2021-02-25 Thursday  | true                 | 737.19 |
-| 2021-02-26 Friday    | true                 | 706.70 |
-| 2021-03-01 Monday    | true                 | 718.94 |
-| 2021-03-02 Tuesday   | true                 | 720.84 |
+| 2020-12-23 Wednesday | true                 | 212.78 |
+| 2020-12-24 Thursday  | true                 | 209.96 |
+| 2020-12-25 Friday    | true                 | 206.73 |
+| 2020-12-28 Monday    | true                 | 207.86 |
+| 2020-12-29 Tuesday   | true                 |    210 |
+| 2020-12-30 Wednesday | true                 | 213.38 |
 ```
 
 In case of nested queries, the `WORKDAY_CALENDAR` specified in the outer query is inherited by inner queries.
@@ -1937,19 +1974,20 @@ LAG(value)
 ```sql
 SELECT datetime, close(), LAG(close())
     FROM atsd_trade
-  WHERE class = 'IEXG' AND symbol = 'TSLA'
-    AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
-  GROUP BY exchange, class, symbol, PERIOD(1 minute)
+  WHERE class = 'TQBR' AND symbol = 'GAZP'
+    AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:30:00'
+    GROUP BY exchange, class, symbol, period(5 minute)
 ```
 
 ```ls
 | datetime            | close() | lag(close()) |
 |---------------------|--------:|-------------:|
-| 2021-01-13 14:00:00 |  843.88 |              |
-| 2021-01-13 14:01:00 |  844.56 |       843.88 |
-| 2021-01-13 14:02:00 |  844.97 |       844.56 |
-| 2021-01-13 14:03:00 |  844.65 |       844.97 |
-| 2021-01-13 14:04:00 |  846.96 |       844.65 |
+| 2020-12-23 10:00:00 |  210.44 |              |
+| 2020-12-23 10:05:00 |  209.62 |       210.44 |
+| 2020-12-23 10:10:00 |  209.92 |       209.62 |
+| 2020-12-23 10:15:00 |  209.79 |       209.92 |
+| 2020-12-23 10:20:00 |  209.76 |       209.79 |
+| 2020-12-23 10:25:00 |  210.29 |       209.76 |
 ```
 
 The function can be referenced in the `WHERE` clause to filter rows based on previous row values.
@@ -2000,7 +2038,7 @@ The function operates similar to `LAG(expr, offset)` where `offset` is the numbe
 The function retrieves the list of strings for the specified **Named Collection**. The list can be checked for matching using `IN` and `NOT IN` operators.
 
 ```sql
-WHERE class = 'IEXG' AND symbol IN collection('fs_watch')
+WHERE class = 'TQBR' AND symbol IN collection('fs_watch')
 ```
 
 #### IS_ENTITY_IN_GROUP
@@ -2024,7 +2062,7 @@ ENTITY_TAG(varchar entity, varchar tagName)
 ```
 
 ```sql
-SELECT price, entity_tag(to_entity('TSLA', 'IEXG'), 'base_instrument')
+SELECT price, entity_tag(to_entity('AKH1', 'SPBFUT'), 'base_instrument')
 ```
 
 #### TO_ENTITY
@@ -2050,9 +2088,9 @@ IS_INSTRUMENT_IN_INDEX(varchar indexName)
 ```sql
 SELECT datetime, symbol, close()
     FROM atsd_trade
-  WHERE IS_INSTRUMENT_IN_INDEX('SPSICM')
-    AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
-  GROUP BY exchange, class, symbol, period(1 DAY)
+  WHERE IS_INSTRUMENT_IN_INDEX('moexbc')
+    AND datetime BETWEEN '2020-12-23 10:00:00' AND '2020-12-23 10:30:00'
+    GROUP BY exchange, class, symbol, period(1 DAY)
 ```
 
 #### IN_SESSION
@@ -2069,20 +2107,24 @@ IN_SESSION([varchar session_type][, varchar auction_stage])
 ```sql
 SELECT datetime, trade_num, price, quantity, side, session
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol = 'TSLA'
+WHERE class = 'TQBR' AND symbol = 'GAZP'
   AND datetime between '2021-01-13 00:00:00' and '2021-01-16 00:00:00'
-  AND in_session(MORNING)
+  AND in_session(DAY, OPENING)
+-- WITH ROW_NUMBER(date_format(time, 'yyyy-MM-dd') ORDER BY datetime) <= 3
 WITH ROW_NUMBER(PERIOD(1 DAY) ORDER BY datetime) <= 3
 ```
 
-In the example above, `in_session(MORNING)` evaluates to `[08:00 - 09:30)` interval in local time.
+In the example above, `in_session(DAY, OPENING)` equates to `[09:50 - 10:00)` interval in local time.
 
 ```ls
-| datetime                   | trade_num |  price | quantity | session |
-|----------------------------|----------:|-------:|---------:|---------|
-| 2021-01-13 08:00:17.160711 |   1998356 | 846.55 |       34 | X       |
-| 2021-01-13 08:00:17.364592 |   2004062 | 846.71 |        2 | X       |
-| 2021-01-13 08:00:20.528352 |   2014315 | 846.77 |       34 | X       |
+| datetime            |  trade_num |  price | quantity | side | session |
+|---------------------|-----------:|-------:|---------:|------|---------|
+| 2021-01-12 09:59:34 | 3472377178 | 30.307 |        1 | S    | O       |
+| 2021-01-12 09:59:34 | 3472377179 | 30.307 |        1 | S    | O       |
+| 2021-01-12 09:59:34 | 3472377180 | 30.307 |        1 | B    | O       |
+| 2021-01-13 09:59:51 | 3478378727 |   31.1 |        1 | S    | O       |
+| 2021-01-13 09:59:51 | 3478378728 |   31.1 |        2 | S    | O       |
+| 2021-01-13 09:59:51 | 3478378729 |   31.1 |        4 | S    | O       |
 ```
 
 ![](./images/class_session.png)
@@ -2096,18 +2138,37 @@ STAT.<statistic-name> or STAT('<statistic-name>')
 ```
 
 ```sql
-SELECT datetime, trade_num, price, quantity, stat.bid, stat.offer
+SELECT datetime, trade_num, price, quantity, side, session, stat.bid, stat.offer, stat.valtoday
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol IN ('TSLA', 'AAPL')
-  AND datetime BETWEEN '2021-01-13 14:00:00' AND '2021-01-13 14:05:00'
+WHERE class = 'TQBR' AND symbol IN ('GAZP', 'LKOH')
+  AND datetime BETWEEN NOW-1*MINUTE AND NOW
 WITH ROW_NUMBER(symbol ORDER BY datetime) <= 1
 ```
 
+```ls
+| datetime                   |  trade_num | price | quantity | side | session | stat.bid | stat.offer | stat.valtoday |
+|----------------------------|-----------:|------:|---------:|------|---------|---------:|-----------:|--------------:|
+| 2021-01-13 20:42:48.966669 | 3480323979 | 227.2 |        2 | S    | N       |   227.24 |     227.32 |   13450782366 |
+| 2021-01-13 20:43:02.745879 | 3480324062 |  5773 |        2 | B    | N       |   5773.5 |       5774 |   11481563954 |
+```
+
 ```sql
-SELECT tags.symbol, stat.last AS last_price, ROUND(stat.last*tags.issue_size/1000000000, 0) AS mkt_cap_mln
-  FROM atsd_entity
-WHERE tags.class_code = 'IEXG' AND IS_INSTRUMENT_IN_INDEX('SPSICM')
-  ORDER BY mkt_cap_bln DESC
+SELECT tags.symbol, stat.last AS last_price, ROUND(stat.last*tags.issue_size/1000000, 0) AS mkt_cap_mln
+FROM atsd_entity
+WHERE tags.class_code = 'TQBR' AND IS_INSTRUMENT_IN_INDEX('moexbc')
+ORDER BY mkt_cap_mln DESC
+```
+
+```ls
+| tags.symbol | last_price | mkt_cap_mln |
+|-------------|-----------:|------------:|
+| SBER        |     268.46 |     5795232 |
+| ROSN        |     492.65 |     5221192 |
+| GAZP        |     215.31 |     5097144 |
+| GMKN        |      26170 |     4141284 |
+| NVTK        |     1358.8 |     4125733 |
+| LKOH        |       5738 |     3975664 |
+| PLZL        |      14816 |     2016004 |
 ```
 
 #### SEC_DEF
@@ -2121,9 +2182,16 @@ SEC_DEF.<stat-name>
 ```sql
 SELECT datetime, trade_num, price, quantity, side, session, sec_def.roundlot
   FROM atsd_trade
-WHERE class = 'IEXG' AND symbol IN ('TSLA', 'AAPL')
+WHERE class = 'TQBR' AND symbol IN ('GAZP', 'LKOH')
   AND datetime BETWEEN NOW-1*MINUTE AND NOW
 WITH ROW_NUMBER(symbol ORDER BY datetime) <= 1
+```
+
+```ls
+| datetime                   |  trade_num |  price | quantity | side | session | sec_def.roundlot |
+|----------------------------|-----------:|-------:|---------:|------|---------|-----------------:|
+| 2021-01-13 20:51:22.615036 | 3480327810 | 227.51 |      150 | B    | N       |               10 |
+| 2021-01-13 20:51:16.817808 | 3480327726 |   5775 |        1 | B    | N       |                1 |
 ```
 
 #### PROPERTY

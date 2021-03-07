@@ -388,7 +388,7 @@ const financeMenu = [
 
 const financeMenuRu = [
     ['', "Общая информация"],
-    ['../sql.md', 'SQL'],
+    ['./sql.md', 'SQL'],
     {
         title: "Reading Data", children: [
             ['../trades-export.md', 'Trades'],
@@ -419,6 +419,11 @@ const financeMenuRu = [
     {
         title: "Установка", children: [
             ['./install.md', 'Дистрибутивы и требования']
+        ]
+    },
+    {
+        title: "Мониторинг", children: [
+            ['./latency_monitoring.md', 'Мониторинг данных']
         ]
     }
 ];

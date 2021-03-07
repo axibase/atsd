@@ -9,3 +9,6 @@
 | `L` | `CLOSING_AUCTION` | Closing Auction |
 | `E` | `CLOSING_AUCTION_POST_CROSSING` | Closing Auction Post-Crossing |
 | `C` | `CLOSING_AUCTION` | Closed, or End-of-Day |
+| `M` | `PRE_MARKET` | Pre-market Trade |
+| `V` | `AFTER_MARKET` | After-market Trade |
+| `X` | `EXTENDED_TRADING` | Extended Period Trade |

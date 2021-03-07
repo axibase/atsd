@@ -1,12 +1,20 @@
 # Trades
 
-To insert a trade into the database, send the command in the specified format to TCP port `8085` or UDP port `8086`.
+The **Trade CSV** endpoint provides a simple alternative to FAST, SBE, and other binary protocols which are supported using dedicated data feed consumers.
+
+To insert a trade into the database in a plain text format, send the command in the specified format to TCP port `8085` or UDP port `8086`.
 
 ```bash
-echo -e "19351405492193896,1588286697000,974890,TQBR,GAZP,MOEX,B,48,33.38," > /dev/tcp/atsd_hostname/8085
+echo -e "2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96" > /dev/tcp/atsd_hostname/8085
 ```
 
 The commands must be terminated by line break. Multiple commands can be sent over the same connection.
+
+To insert a file containing a header and multiple lines:
+
+```bash
+tail -n +2 trades.csv > /dev/tcp/localhost/8085
+```
 
 Timestamp precision is microseconds.
 
@@ -19,16 +27,10 @@ trade_num,unix_time,microseconds,class,symbol,exchange,side,quantity,price,order
 ## Examples
 
 ```ls
-3177336248,1588230831048,469,TQBR,GAZP,MOEX,B,123,195.36,1150996,N
+2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96
 ```
 
-The trade time is `2020-04-30T07:13:51.048469Z`
-
-```ls
-19351405492176528,1588283343000,645713,IOB,SMSN,LSE,B,1,33.32,
-```
-
-The trade time is `2020-04-30T21:49:03.645713Z`
+The trade time is `2021-03-01T13:00:02.208492Z`
 
 ## Fields
 
@@ -36,15 +38,15 @@ The trade time is `2020-04-30T21:49:03.645713Z`
 |:---|:---|:---|:---|:---|
 |trade_num|long|yes|3177336248| Trade number assigned by the exchange.|
 |unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
-|microseconds|integer|yes|469| Microsecond part of the trade time. <br>0 if sub-millisecond precision is not supported by exchange.|
-|class|string|yes|TQBR| Order book system identifier where trade is executed such as `SETS`/`SEAQ`/`IOB` for LSE or `TQBR`/`TQCB`/`CETS` for MOEX.|
-|symbol|string|yes|GAZP| Security symbol.|
-|exchange|string|no|MOEX| Exchange [identifier](https://www.iso20022.org/market-identifier-codes), such as `NYSE`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
-|side|string|no|B| Trade direction: `B` (buy), `S` (sell), or empty, based on the direction of the initiating (taker) order.|
-|quantity|long|yes|123| Quantity in the trade. Non-negative.|
+|microseconds|integer|yes|469| Microsecond part of the trade time. <br>0 if sub-millisecond precision is not provided by data feed.|
+|class|string|yes|IEXG| Order book (market) system identifier where trade is executed such as `IEXG` for IEX exchange, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX.|
+|symbol|string|yes|TSLA| Security symbol.|
+|exchange|string|no|IEX| Exchange [identifier](https://www.iso20022.org/market-identifier-codes), such as `IEX`, `NYSE`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
+|side|string|no|B| Trade direction: `B` (buy), `S` (sell), or empty, if not available in the data feed. Typically based on the direction of the initiating (taker) order.|
+|quantity|long|yes|123| Size of the trade. Non-negative.|
 |price|decimal|yes|195.36| Price of the trade. Can be negative.|
 |order_num|long|no|1150996| Order number which initiated the trade (taker).|
-|session|string|no|E| Exchange-specific [trading session and auction code](#trading-session-codes), such as `N` or `O`.|
+|session|string|no|E| Exchange-specific [trading session and auction code](#trading-session-codes), such as `N` (normal) or `X` (extended).|
 
 ## Notes
 
@@ -54,7 +56,7 @@ The trade time is `2020-04-30T21:49:03.645713Z`
 
 * Class, exchange, and symbol fields are case-insensitive.
 
-* New instruments are automatically registered as entities with name `<symbol>_[<class>]`, for example `gazp_[tqbr]` for class `TQBR` and symbol `GAZP`.
+* New instruments are automatically registered as entities with name `<symbol>_[<class>]`, for example `tsla_[iexg]` for class `IEXG` and symbol `TSLA`.
 
 * If the value of `microseconds` field exceeds 1000, it is added to milliseconds. `1588283343000,645713` is the same as `1588283343645,713`.
 
@@ -83,6 +85,9 @@ The trade time is `2020-04-30T21:49:03.645713Z`
 | p | 11 | `AFTER_AUCTION_TRADE` | Yes |
 | C | 12 | `CLOSING` | Yes |
 | NA | 13 | `NON_ACTIVE` | No |
+| M | 14 | `PRE_MARKET` | Yes |
+| V | 15 | `AFTER_MARKET` | Yes |
+| X | 16 | `EXTENDED_TRADING` | Yes |
 
 ## Logging
 
@@ -90,7 +95,7 @@ Trade commands are [logged](../administration/logging.md) in `trade.log` file lo
 
 ```sh
 # search today's archives and the current statistics.log sorted by time
-ls -rt trade.$(date '+%Y-%m-%d').* trade.log | xargs zgrep -ih "TQBR,GAZP"
+ls -rt trade.$(date '+%Y-%m-%d').* trade.log | xargs zgrep -ih "IEXG,TSLA"
 ```
 
 The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files** page.
@@ -121,7 +126,7 @@ Invalid commands are logged in `command_malformed.log` file.
 ```sql
 SELECT symbol, class, datetime, trade_num, price, quantity, session, side, order_num
   FROM atsd_trade
-WHERE class = 'TQBR' AND symbol = 'GAZP'
+WHERE class = 'IEXG' AND symbol = 'TSLA'
   AND datetime BETWEEN '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
   --AND datetime BETWEEN current_day and now
 ORDER BY datetime, trade_num
@@ -131,7 +136,7 @@ ORDER BY datetime, trade_num
 ```sql
 SELECT datetime, open(), high(), low(), close(), volume(), vwap()
   FROM atsd_trade
-WHERE class = 'TQBR' AND symbol = 'GAZP'
+WHERE class = 'IEXG' AND symbol = 'TSLA'
   AND datetime between '2021-01-13 14:00:00' and '2021-01-13 14:05:00'
 GROUP BY exchange, class, symbol, PERIOD(1 MINUTE)
   ORDER BY datetime
@@ -140,11 +145,11 @@ GROUP BY exchange, class, symbol, PERIOD(1 MINUTE)
 * API [`trades export`](./trades-export.md) endpoint:
 
 ```elm
-GET /api/v1/trades?class=TQBR&symbol=GAZP&startDate=2020-12-23T10:00:00Z&endDate=2020-12-24T11:00:00Z
+GET /api/v1/trades?class=IEXG&symbol=TSLA&startDate=2020-12-23T10:00:00Z&endDate=2020-12-24T11:00:00Z
 ```
 
 * API [`ohlcv export`](./ohlcv-export.md) endpoint:
 
 ```elm
-GET /api/v1/ohlcv?class=TQBR&symbol=GAZP&startDate=2020-12-23T00:00:00Z&endDate=2020-12-24T00:00:00Z&period=15%20MINUTE
+GET /api/v1/ohlcv?class=IEXG&symbol=TSLA&startDate=2020-12-23T00:00:00Z&endDate=2020-12-24T00:00:00Z&period=15%20MINUTE
 ```
