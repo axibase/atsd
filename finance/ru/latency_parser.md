@@ -146,7 +146,7 @@ java -Xmx16G -cp commons-math3-3.6.1.jar:. ConsumerLatencyParser $base_dir/logge
 java -Xmx16G -cp commons-math3-3.6.1.jar:. ConsumerLatencyParser $base_dir/logger_fx/logs/ orders $dt $work_dir/logger_fx_orders_$dt.csv
 java -Xmx16G -cp commons-math3-3.6.1.jar:. ConsumerLatencyParser $base_dir/logger_fx/logs/ statistics $dt $work_dir/logger_fx_statistics_$dt.csv
 
-for file in logger_hc_jdk_trades_$dt.csv logger_hc_jdk_orders_$dt.csv logger_hc_jdk_statistics_$dt.csv logger_futures_trades_$dt.csv logger_futures_orders_$dt.csv logger_futures_index_$dt.csv logger_futures_statistics_$dt.csv logger_fx_trades_$dt.csv logger_fx_orders_$dt.csv logger_fx_statistics_$dt.csv 
+for file in logger_hc_jdk_trades_$dt.csv logger_hc_jdk_orders_$dt.csv logger_hc_jdk_statistics_$dt.csv logger_futures_trades_$dt.csv logger_futures_orders_$dt.csv logger_futures_index_$dt.csv logger_futures_statistics_$dt.csv logger_fx_trades_$dt.csv logger_fx_orders_$dt.csv logger_fx_statistics_$dt.csv
 do
  curl "https://atsd_hostname:8443/api/v1/csv?config=consumer_latency" \
   --insecure --header "Authorization: Bearer <TOKEN>" \
@@ -163,7 +163,7 @@ echo "Done parsing files for $dt at $(date)"
 /path/to/consumer_latency_parser_directory/run_cl_parser.sh 15-02-2021
 ```
 
-Добавьте запуск скрипта в планировщик `cron` после окончания ежедневной процедуры архивации и копирования архивов. 
+Добавьте запуск скрипта в планировщик `cron` после окончания ежедневной процедуры архивации и копирования архивов.
 
 ```bash
 30 0 * * * /path/to/consumer_latency_parser_directory/run_cl_parser.sh &> /path/to/consumer_latency_parser_directory/cl_parser.log
