@@ -2,7 +2,7 @@
 
 ATSD supports SQL for retrieving trades, statistics, session summaries, and reference data.
 
-SQL statements can be executed via the web-based console, on schedule, using the [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers, or by submitting the query to the [API endpoint](../sql/api.md).
+SQL statements can be executed via the web-based console, on schedule, using the [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers, or by submitting the query to the [API endpoint](../../sql/api.md).
 
 * [Syntax](#syntax)
   * [SELECT Expression](#select-expression)
@@ -209,7 +209,7 @@ WHERE class = 'TQBR' AND symbol IN ('GAZP', 'SIBN')
 
 #### `atsd_entity` Table
 
-The `atsd_entity` contains instruments and their [fields](../api/meta/entity/list.md#fields).
+The `atsd_entity` contains instruments and their [fields](../../api/meta/entity/list.md#fields).
 
 The instruments have two required tags: `class_code` and `symbol`.
 
@@ -498,7 +498,7 @@ SAMPLE SELECT START_TIME STEP STRING THEN TIME TIMESTAMP TIMEZONE
 TRUE USING VALUE WEEKOFYEAR WHEN WHERE WITH WORKDAY_CALENDAR YES
 ```
 
- The reserved words also include [calendar keywords](../shared/calendar.md#keywords) such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
+ The reserved words also include [calendar keywords](../../shared/calendar.md#keywords) such as `NOW`, `PREVIOUS_HOUR` and [interval units](../../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
 
 ## Literals
 
@@ -834,7 +834,7 @@ END AS "Tax Day"
 
 An interval condition determines the date range for the retrieved samples and is specified in the `WHERE` clause using the `datetime` column.
 
-The `datetime` column accepts literal dates and supports [calendar expressions](../shared/calendar.md#keywords).
+The `datetime` column accepts literal dates and supports [calendar expressions](../../shared/calendar.md#keywords).
 
 ```sql
 SELECT * FROM atsd_trade
@@ -926,14 +926,14 @@ GROUP BY PERIOD(1 YEAR)                    -- Fast: built-in date aggregation
 
 ### Calendar Expressions
 
-The `datetime` columns supports [calendar](../shared/calendar.md) keywords and expressions.
+The `datetime` columns supports [calendar](../../shared/calendar.md) keywords and expressions.
 
 ```sql
 WHERE datetime >= NOW - 15 * MINUTE
   AND datetime < CURRENT_MINUTE
 ```
 
-The calendar expressions are evaluated according to the database [time zone](../shared/timezone-list.md) which can be customized using the [`ENDTIME`](#endtime) function.
+The calendar expressions are evaluated according to the database [time zone](../../shared/timezone-list.md) which can be customized using the [`ENDTIME`](#endtime) function.
 
 ```sql
 WHERE datetime BETWEEN ENDTIME(YESTERDAY, 'US/Pacific') AND ENDTIME(CURRENT_DAY, 'US/Pacific')
@@ -980,7 +980,7 @@ Period syntax:
 GROUP BY PERIOD(int count varchar unit [, timezone])
 ```
 
-* `timezone` = [Time Zone ID](../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
+* `timezone` = [Time Zone ID](../../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
 
 ```sql
 PERIOD(5 MINUTE)
@@ -990,7 +990,7 @@ PERIOD(1 DAY, 'US/Eastern')
 | **Name** | **Description** |
 |:---|:---|
 | `count` | [**Required**] Number of time units contained in the period. |
-| `unit` | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| `unit` | [**Required**] [Time unit](../../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
 | `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
 
 ```sql
@@ -1090,9 +1090,9 @@ The `{ordering columns [direction]}` can refer to any column of the `FROM` claus
 | `MAX` | Maximum of values. | `MAX(price)` |
 | `AVG` | Average of values. | `AVG(price)` |
 | `PRODUCT` | Product of values. | `PRODUCT(price)` |
-| `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(price)` |
-| `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(price)` |
-| `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, price)` |
+| `WAVG` | [Weighted average](../../api/data/series/smooth.md#weighted-average) of values. | `WAVG(price)` |
+| `WTAVG` | [Time-weighted average](../../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(price)` |
+| `EMA` | [Exponential moving average](../../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, price)` |
 | `REGR_INTERCEPT` | Slope of the linear regression line. | `REGR_INTERCEPT(price, time)` |
 | `REGR_SLOPE` | Intercept of the linear regression line. | `REGR_SLOPE(price, time)*(time+3*60000)` |
 
@@ -1394,7 +1394,7 @@ The `MAX_VALUE_TIME` function returns Unix time in milliseconds (`BIGINT` dataty
 
 The `STDDEV` function calculates standard deviation as the square `root` of sum of squared deviations divided by `n - 1` (sample size).
 
-![](../api/data/series/images/st_dev_sample.svg)
+![](../../api/data/series/images/st_dev_sample.svg)
 
 An optional second argument controls whether the variance is divided by `n - 1` (sample) or `n` (population).
 
@@ -1438,15 +1438,15 @@ GROUP BY exchange, class, symbol, PERIOD(1 day)
 
 #### DATE_FORMAT
 
-The `date_format` function converts Unix time in milliseconds to a string according to the specified [time format](../shared/time-pattern.md) in the optional time zone.
+The `date_format` function converts Unix time in milliseconds to a string according to the specified [time format](../../shared/time-pattern.md) in the optional time zone.
 
 ```javascript
 date_format(bigint milliseconds[, varchar time_format[, varchar time_zone]])
 ```
 
-If the `time_format` argument is not provided, [ISO format](../shared/date-format.md) is applied.
+If the `time_format` argument is not provided, [ISO format](../../shared/date-format.md) is applied.
 
-The `time_zone` parameter accepts GMT offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) to format dates in a time zone other than the database time zone.
+The `time_zone` parameter accepts GMT offset in the format of `GMT-hh:mm` or a [time zone name](../../shared/timezone-abnf.md) to format dates in a time zone other than the database time zone.
 
 Examples:
 
@@ -1484,7 +1484,7 @@ The function parses the date and time string into Unix time with millisecond pre
 date_parse(varchar datetime [, varchar time_format [, varchar time_zone]])
 ```
 
-* The default `time_format` is [ISO format](../shared/date-format.md): `yyyy-MM-ddTHH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../shared/time-pattern.md).
+* The default `time_format` is [ISO format](../../shared/date-format.md): `yyyy-MM-ddTHH:mm:ss.SSSZZ`. See supported pattern letters on [Date and Time Letter Patterns](../../shared/time-pattern.md).
 * The default `time_zone` is the database time zone.
 
 ```sql
@@ -1515,7 +1515,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 
 #### DATE_ROUND
 
-The function rounds the input date to the start of the containing calendar period. The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../shared/calendar.md#keywords).
+The function rounds the input date to the start of the containing calendar period. The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../../shared/calendar.md#keywords).
 
 ```javascript
 date_round(varchar date | bigint time, int count varchar unit)
@@ -1537,8 +1537,8 @@ The `DATEADD` function performs calendar arithmetic by adding or subtracting an 
 * The interval is specified as a product of `datePart` and `dateCount`. For example, an interval of 3 days is set with arguments `DAY` and `3`.
 * The `datePart` argument can be `YEAR`, `QUARTER`, `MONTH`, `WEEK`, `DAY`, `HOUR`, `MINUTE`, or `SECOND`.
 * To subtract an interval, set `dateCount` to a negative integer.
-* The column name or expression to which the interval is added is specified as the third argument. It can refer to a column name, such as  `datetime` or `time`, or an expression returning Unix time measured in milliseconds, or a date string in [ISO format](../shared/date-format.md).
-* An optional [time zone name](../shared/timezone-abnf.md) can be specified as the last argument to perform calendar calculations in a user-defined time zone. By the default, the database time zone is used.
+* The column name or expression to which the interval is added is specified as the third argument. It can refer to a column name, such as  `datetime` or `time`, or an expression returning Unix time measured in milliseconds, or a date string in [ISO format](../../shared/date-format.md).
+* An optional [time zone name](../../shared/timezone-abnf.md) can be specified as the last argument to perform calendar calculations in a user-defined time zone. By the default, the database time zone is used.
 
 ```javascript
 DATEADD(varchar datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
@@ -1558,7 +1558,7 @@ SELECT datetime, DATEADD(DAY, -6, datetime) AS "week_ago"
 
 #### `ENDTIME`
 
-The `ENDTIME` function evaluates the specified [calendar](../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../shared/timezone-list.md), which can be different from the database time zone.
+The `ENDTIME` function evaluates the specified [calendar](../../shared/calendar.md) keywords as well as literal dates in the user-defined [time zone](../../shared/timezone-list.md), which can be different from the database time zone.
 
 ```javascript
 ENDTIME(calendarExpression, varchar timeZone)
@@ -1607,7 +1607,7 @@ EXTRACT(datepart FROM datetime | time | datetime expression [, timezone])
 
 The `datepart` argument can be `YEAR`, `QUARTER`, `MONTH`, `DAY`, `HOUR`, `MINUTE`, or `SECOND`.
 
-The evaluation is based on the **database** time zone unless a custom [time zone](../shared/timezone-list.md) is specified. The date argument can refer to the `time` or `datetime` columns and [calendar](../shared/calendar.md) keywords and expressions..
+The evaluation is based on the **database** time zone unless a custom [time zone](../../shared/timezone-list.md) is specified. The date argument can refer to the `time` or `datetime` columns and [calendar](../../shared/calendar.md) keywords and expressions..
 
 ```sql
 SELECT datetime,
@@ -1697,7 +1697,7 @@ YEAR (datetime | time | datetime expression [, timezone])
 
 #### CURRENT_TIMESTAMP
 
-The `CURRENT_TIMESTAMP` function returns current database time in [ISO format](../shared/date-format.md). The function is analogous to the `NOW` functions which returns current database time (Unix time, millisecond precision).
+The `CURRENT_TIMESTAMP` function returns current database time in [ISO format](../../shared/date-format.md). The function is analogous to the `NOW` functions which returns current database time (Unix time, millisecond precision).
 
 ```sql
 SELECT CURRENT_TIMESTAMP
@@ -1713,7 +1713,7 @@ SELECT DBTIMEZONE
 
 #### IS_WORKDAY
 
-The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`.
+The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`.
 
 ```javascript
 IS_WORKDAY(datetime | time | datetime expression [, calendar_key [, timezone]])
@@ -1721,7 +1721,7 @@ IS_WORKDAY(datetime | time | datetime expression [, calendar_key [, timezone]])
 
 Notes:
 
-* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in the **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../administration/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and the calendar key is `USA`, the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for the list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday. Thus, the function returns `false`, though the date is a Wednesday.
+* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in the **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../../administration/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and the calendar key is `USA`, the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for the list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday. Thus, the function returns `false`, though the date is a Wednesday.
 * The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
 
 ```sql
@@ -1754,7 +1754,7 @@ is_workday(time, 'USA', 'US/Pacific')
 
 #### IS_WEEKDAY
 
-The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`. Weekdays are Monday to Friday in the USA and Sunday to Thursday in Israel, for example.
+The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`. Weekdays are Monday to Friday in the USA and Sunday to Thursday in Israel, for example.
 
 Unlike the `IS_WORKDAY`, the `IS_WEEKDAY` function **ignores** observed holidays.
 
@@ -1835,7 +1835,7 @@ If the `toDate` precedes the `fromDate`, the difference is negative.
 
 #### `WITH TIMEZONE`
 
-The `TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../shared/timezone-list.md) applies to **all** date transformations performed by the query.
+The `TIMEZONE` clause overrides the default **database** time zone applied in period aggregation, interpolation, and date functions. The custom [time zone](../../shared/timezone-list.md) applies to **all** date transformations performed by the query.
 
 ```javascript
 WITH TIMEZONE varchar timezone
@@ -1874,7 +1874,7 @@ Absent the `WITH TIMEZONE` clause, each function must be individually programmed
 
 #### `WITH WORKDAY_CALENDAR`
 
-The `WORKDAY_CALENDAR` clause overrides the default **workday calendar** applied in date functions and [calendar keywords](../shared/calendar.md#keywords). The installed calendars are listed on the **Data > Workday Calendars** page.
+The `WORKDAY_CALENDAR` clause overrides the default **workday calendar** applied in date functions and [calendar keywords](../../shared/calendar.md#keywords). The installed calendars are listed on the **Data > Workday Calendars** page.
 
 ```javascript
 WITH WORKDAY_CALENDAR = 'moex'
@@ -2127,11 +2127,11 @@ In the example above, `in_session(DAY, OPENING)` equates to `[09:50 - 10:00)` in
 | 2021-01-13 09:59:51 | 3478378729 |   31.1 |        4 | S    | O       |
 ```
 
-![](./images/class_session.png)
+![](../images/class_session.png)
 
 #### STAT
 
-The function returns the **current** value of the specified instrument market [statistic](./statistics-fields.md). The function can be invoked when querying data from `atsd_trade`, `atsd_entity`, or `atsd_session_summary` table.
+The function returns the **current** value of the specified instrument market [statistic](../statistics-fields.md). The function can be invoked when querying data from `atsd_trade`, `atsd_entity`, or `atsd_session_summary` table.
 
 ```javascript
 STAT.<statistic-name> or STAT('<statistic-name>')
@@ -2173,7 +2173,7 @@ ORDER BY mkt_cap_mln DESC
 
 #### SEC_DEF
 
-The function returns the **current** value of the specified instrument [security definitions](./security_definitions-fields.md).
+The function returns the **current** value of the specified instrument [security definitions](../security_definitions-fields.md).
 
 ```javascript
 SEC_DEF.<stat-name>
@@ -2196,7 +2196,7 @@ WITH ROW_NUMBER(symbol ORDER BY datetime) <= 1
 
 #### PROPERTY
 
-The function retrieves the first matching property value for the specified entity and property [search](../rule-engine/property-search.md) expression. The function operates similar to the [`property()`](../rule-engine/functions-property.md#property) function in the rule engine.
+The function retrieves the first matching property value for the specified entity and property [search](../../rule-engine/property-search.md) expression. The function operates similar to the [`property()`](../../rule-engine/functions-property.md#property) function in the rule engine.
 
 ```javascript
 property(string entity, string expression [, long time | string datetime [, boolean merge]]) string
@@ -2279,7 +2279,7 @@ ORDER BY price DESC, quantity
 
 If `{n}` is zero or negative, the results are processed using the local file system.
 
-This clause overrides the conditional allocation of shared memory set in [**Settings > Server Properties**](../administration/server-properties.md):`sql.tmp.storage.max_rows_in_memory` setting which is `50*1024` rows by default.
+This clause overrides the conditional allocation of shared memory set in [**Settings > Server Properties**](../../administration/server-properties.md):`sql.tmp.storage.max_rows_in_memory` setting which is `50*1024` rows by default.
 
 The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, the query results are processed using the local file system which can increase response time during heavy read activity.
 
