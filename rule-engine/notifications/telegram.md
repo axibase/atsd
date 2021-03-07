@@ -23,11 +23,11 @@
 
 Configure the [Web Driver](web-driver.md) to be able to send chart screenshots.
 
-## Get Bot API Token
+## Bot API Token
 
 * Start a conversation with the built-in [BotFather](https://telegram.me/botfather) user.
 * Send the `/mybots` command to view existing bots and their API tokens.
-* Alternartively, create a new bot with the `/newbot` command.
+* Alternatively, create a new bot with the `/newbot` command.
 * Take note of the bot API token.
 
 ## Sending Messages to User
@@ -82,11 +82,11 @@ Configure the [Web Driver](web-driver.md) to be able to send chart screenshots.
 
 * Enter the `BOT_TOKEN` value into the **Bot API Token** field.
 * Specify **Chat ID**:
-  - Enter channel name as `@channel_name` for public channels
+  * Enter channel name as `@channel_name` for public channels
 
     ![](./images/tg_conf_channel.png)
 
-  - Enter chat id for private channels, groups, and users
+  * Enter chat id for private channels, groups, and users
 
     ![](./images/tg_conf_group.png)
 
