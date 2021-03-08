@@ -16,7 +16,7 @@ apt-get install openjdk-8-jdk
 yum install java-1.8.0-openjdk-devel
 ```
 
-In case the package is not available, install OpenJDK 8 by downloading the binary, configuring an alternative package repository, or using an alternative package manager, e.g. [SDKMAN](https://sdkman.io/):
+In case the package is not available, install OpenJDK 8 by downloading the binary, configuring an alternative package repository, or using an alternative package manager such as [SDKMAN](https://sdkman.io/):
 
 ```sh
 # non-root privileges required
@@ -28,7 +28,7 @@ sdk use java 8.0.282-librca
 
 ## Update Alternatives for Java Executables
 
-Review available Java installations and select Java 8 as the default option. Suitable only for Java versions installed using system package manager.
+Review available Java installations and select Java 8 as the default option. Applies only to Java versions installed using the system package manager (`apt`or `yum`).
 
 * Ubuntu, Debian
 
