@@ -8,9 +8,9 @@ To insert a trade into the database in a plain text format, send the command in 
 echo -e "2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96" > /dev/tcp/atsd_hostname/8085
 ```
 
-The commands must be terminated by line break. Multiple commands can be sent over the same connection.
+Multiple commands can be sent over the same connection. Each commands must be terminated by line break.
 
-To insert a file containing a header and multiple lines:
+To insert a file containing trades in CSV format:
 
 ```bash
 tail -n +2 trades.csv > /dev/tcp/localhost/8085
@@ -18,7 +18,7 @@ tail -n +2 trades.csv > /dev/tcp/localhost/8085
 
 Timestamp precision is microseconds.
 
-## Format
+## Fields
 
 ```bash
 trade_num,unix_time,microseconds,class,symbol,exchange,side,quantity,price,order_num[,session][,field-1,..field-N]
@@ -39,9 +39,9 @@ The trade time is `2021-03-01T13:00:02.208492Z`
 |trade_num|long|yes|3177336248| Trade number assigned by the exchange.|
 |unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
 |microseconds|integer|yes|469| Microsecond part of the trade time. <br>0 if sub-millisecond precision is not provided by data feed.|
-|class|string|yes|IEXG| Order book (market) system identifier where trade is executed such as `IEXG` for IEX exchange, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX.|
+|class|string|yes|IEXG| Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `IEXG` for IEX exchange, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX.|
 |symbol|string|yes|TSLA| Security symbol.|
-|exchange|string|no|IEX| Exchange [identifier](https://www.iso20022.org/market-identifier-codes), such as `IEX`, `NYSE`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
+|exchange|string|no|IEX| Exchange or trading venue name, such as `IEX`, `NYSE`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
 |side|string|no|B| Trade direction: `B` (buy), `S` (sell), or empty, if not available in the data feed. Typically based on the direction of the initiating (taker) order.|
 |quantity|long|yes|123| Size of the trade. Non-negative.|
 |price|decimal|yes|195.36| Price of the trade. Can be negative.|

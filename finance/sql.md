@@ -26,6 +26,14 @@ SQL statements can be executed via the web-based console, on schedule, using the
 
 ## Overview
 
+Each instrument in the database is uniquely identified by a composite key consisting of `exchange`, `class`, and `symbol` columns.
+
+* `exchange` - Exchange or trading venue name such as `NASDAQ`, `NYSE`, `IEX`.
+* `class` - Market code, such as `XNGS`, `XNYS`, `IEXG`.
+* `symbol` - Instrument ticker.
+
+For example, Tesla Inc. common shares traded on the IEX (Investor Exchange) are identified as `IEX` (exchange), `IEXG` (class), `TSLA` (symbol).
+
 ### Last Sale (Trades)
 
 ```sql
@@ -68,29 +76,26 @@ ORDER BY datetime
 ### Instruments
 
 ```sql
-SELECT tags.class_code AS "class", tags.symbol AS "symbol", tags.cfi_code AS "CFI", tags.isin AS "ISIN", tags.cusip_code AS "CUSIP",
+SELECT tags.class_code AS "class", tags.symbol AS "symbol", tags.cfi_code AS "CFI", tags.isin AS "ISIN",
   COALESCE(tags.stock_code, REPLACE(tags.symbol, '-RM', '')) AS "code", tags.short_name AS "name"
   FROM atsd_entity
-WHERE tags.class_code != '' AND tags.class_code != 'SPBOPT' AND tags.class_code NOT REGEX '(E|L|P|RP).*|M.*{3}|...Q'
+WHERE tags.symbol LIKE 'TSLA%'
   ORDER BY "symbol"
 ```
 
 ```ls
-| class     | symbol      | CFI    | ISIN         | CUSIP     | code    | name                         |
-|-----------|-------------|--------|--------------|-----------|---------|------------------------------|
-| SPBXM     | A.SPB       | ESVUFN | US00846U1016 |           | A       | Agilent Technologies, Inc.   |
-| STOCK_USA | A.US        |        | US00846U1016 | 00846U101 | A       | AGILENT TECH INC             |
-| SPBXM     | AA.SPB      | ESVUFR | US0138721065 |           | AA      | Alcoa Corporation            |
-| STOCK_USA | AA.US       |        | US0138721065 | 013872106 | AA      | ALCOA CORP                   |
-| FQBR      | AAL-RM      | ESXXXX | US02376R1023 |           | AAL     | AmAirlines                   |
-| SPBXM     | AAL.SPB     | ESVUFR | US02376R1023 |           | AAL     | American Airlines Group Inc. |
-| STOCK_USA | AAL.US      |        | US02376R1023 | 02376R102 | AAL     | AMERICAN AIRLINE             |
+| class     | symbol  | CFI    | ISIN         | code | name        |
+|-----------|---------|--------|--------------|------|-------------|
+| IEXG      | TSLA    |        | US88160R1014 | TSLA | TESLA INC   |
+| FQBR      | TSLA-RM | ESXXXX | US88160R1014 | TSLA | Tesla       |
+| PBXM      | TSLA.S  | ESVUFR | US88160R1014 | TSLA | Tesla, Inc. |
+| STOCK_USA | TSLA.US |        | US88160R1014 | TSLA | TESLA INC   |
 ```
 
 ### Session Summary
 
 ```sql
-SELECT datetime, type, stage, auctprice, auctvolume, bid, offer, last --*
+SELECT datetime, type, stage, auctprice, auctvolume, bid, offer, last
   FROM atsd_session_summary
 WHERE class = 'IEXG' AND symbol = 'TSLA'
   AND datetime BETWEEN '2021-01-11' AND '2021-01-13'
@@ -334,8 +339,8 @@ Comments are not allowed after the statement termination character `;`.
 |`quantity`           |bigint   | Yes | Quantity of securities (or lots) in the trade.|
 |`symbol`    |varchar   | Yes | Instrument symbol (ticker).|
 |`class`           |varchar   | Yes | Instrument board, class, or section on the exchange.|
-|`exchange`         |varchar   | Yes | Instrument exchange.|
-|`side`       |varchar | No | Direction of the trade (initiator's side): `B` (buy), `S` (sell), or `NULL`.|
+|`exchange`         |varchar   | Yes | Exchange where the trade is processed.|
+|`side`       |varchar | No | Direction of the trade: `B` (buy), `S` (sell), or `NULL`.|
 |`session`           |varchar     | No | Trading [session code](sessions.md). `O` - opening auction, `N` - normal trading, `L` - closing auction crossing, `E` - closing auction post-crossing.|
 |`order_num`           |varchar   | No | Order number which initiated the trade.|
 
