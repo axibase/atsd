@@ -51,12 +51,11 @@ jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
 
 ### Java для консьюмеров
 
-Установите Java 15 SDKMAN.
+Установите Java 15 через менеджер пакетов.
 
 ```sh
 curl -s "https://get.sdkman.io" | bash
-sdk install java 15.0.0-librca
-bash bin/run_asts_java15.sh
+sdk install java 15.0.2-librca
 ```
 
 ## Установка ATSD
@@ -81,6 +80,12 @@ tar -xzf atsd.moex.latest.tar.gz
 ```bash
 curl -O https://www.axibase.com/public/moex-consumer.tar.gz
 tar -xzf moex-consumer.tar.gz /opt/moex-consumer
+```
+
+Присвойте переменной окружения `JAVA_HOME` путь к версии Java, используемой консьюмером.
+
+```sh
+sdk use java 15.0.2-librca
 ```
 
 Запустите установочный скрипт.
@@ -147,17 +152,25 @@ sudo sysctl -p
 
 При установке ATSD на сервере, отличном от сервера консьюмеров, также увеличьте размеры сетевых буферов.
 
+```bash
+sudo vim /etc/sysctl.conf
+```
+
 ```sh
-sudo sysctl -w net.ipv4.udp_mem="65536 131072 262144"
-sudo sysctl -w net.core.rmem_default=25165824
-sudo sysctl -w net.core.rmem_max=25165824
-sudo sysctl -w net.ipv4.tcp_rmem="20480 12582912 25165824"
-sudo sysctl -w net.ipv4.udp_rmem_min=16384
-sudo sysctl -w net.core.wmem_default=25165824
-sudo sysctl -w net.core.wmem_max=25165824
-sudo sysctl -w net.ipv4.tcp_wmem="20480 12582912 25165824"
-sudo sysctl -w net.ipv4.udp_wmem_min=16384
-sudo sysctl -w net.core.netdev_max_backlog=50000
+net.ipv4.udp_mem = 65536 131072 262144
+net.core.rmem_default = 25165824
+net.core.rmem_max = 25165824
+net.ipv4.tcp_rmem = 20480 12582912 25165824
+net.ipv4.udp_rmem_min = 16384
+net.core.wmem_default = 25165824
+net.core.wmem_max = 25165824
+net.ipv4.tcp_wmem = 20480 12582912 25165824
+net.ipv4.udp_wmem_min = 16384
+net.core.netdev_max_backlog = 50000
+```
+
+```bash
+sudo sysctl -p
 ```
 
 ## Отправка снэпшотов сделок
@@ -180,4 +193,54 @@ crontab -e
 12 1 * * 1-6 /opt/moex-consumer/scripts/daily_trades_upload.sh asts-fond
 20 1 * * 1-6 /opt/moex-consumer/scripts/daily_trade_snapshot_upload.sh asts-fx
 22 1 * * 1-6 /opt/moex-consumer/scripts/daily_trade_snapshot_upload.sh asts-fond
+```
+
+## Синхронизация с сервером точного времени Московской биржи
+
+<!-- markdownlint-disable MD104 -->
+Проверьте доступность NTP сервера. В случае недоступности обратитесь к хостинг-провайдеру.
+
+```bash
+ping 91.203.252.12
+```
+
+Установите `ntpd` в качестве NTP клиента по умолчанию.
+
+```bash
+sudo timedatectl set-ntp no
+sudo apt update && sudo apt install ntp
+```
+
+Пропишите NTP сервера биржи в качестве единственных источников точного времени, закомментировав пулы умолчанию.
+
+```bash
+sudo vim /etc/ntp.conf
+```
+
+```text
+server 91.203.252.12
+server 91.203.254.12
+
+#pool 0.ubuntu.pool.ntp.org iburst
+#pool 1.ubuntu.pool.ntp.org iburst
+#pool 2.ubuntu.pool.ntp.org iburst
+#pool 3.ubuntu.pool.ntp.org iburst
+```
+
+Перезапустите сервис `ntpd`.
+
+```bash
+sudo service ntp restart
+```
+
+Проверьте, что время синхронизировано
+
+```bash
+ntpstat
+```
+
+```text
+synchronised to NTP server (91.203.254.12) at stratum 3
+   time correct to within 5 ms
+   polling server every 64 s
 ```
