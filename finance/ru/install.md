@@ -195,8 +195,9 @@ crontab -e
 22 1 * * 1-6 /opt/moex-consumer/scripts/daily_trade_snapshot_upload.sh asts-fond
 ```
 
-## Сихронизация с сервером точного времени Московской биржи
+## Синхронизация с сервером точного времени Московской биржи
 
+<!-- markdownlint-disable MD104 -->
 Проверьте доступность NTP сервера. В случае недоступности обратитесь к хостинг-провайдеру.
 
 ```bash
@@ -205,7 +206,7 @@ ping 91.203.252.12
 
 Установите `ntpd` в качестве NTP клиента по умолчанию.
 
-```
+```bash
 sudo timedatectl set-ntp no
 sudo apt update && sudo apt install ntp
 ```
