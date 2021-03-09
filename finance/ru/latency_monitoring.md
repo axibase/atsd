@@ -8,7 +8,6 @@ ATSD предоставляет набор метрик, правил реаги
 
   ![](./images/consumer_latency_realtime.png)
 
-
 Встроенный портал **Latency: Key Classes**.
 
 ![](./images/latency_key_classes.png)
