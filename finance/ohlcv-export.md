@@ -69,7 +69,7 @@ GET /api/v1/ohlcv?class=IEXG&symbol=TSLA&startDate=2021-01-13T19%3A00%3A00Z&endD
 GET /api/v1/ohlcv?class=IEXG&symbol=TSLA&startDate=2021-01-13T14%3A00%3A00-05%3A00&endDate=2021-01-13T14%3A05%3A00-05%3A00&period=1%20MINUTE
 ```
 
-* 1-hour barse for the current trading day
+* 1-hour bars for the current trading day
 
 ```elm
 GET /api/v1/ohlcv?class=IEXG&symbol=TSLA&startDate=current_working_day&endDate=now&period=1%20HOUR
