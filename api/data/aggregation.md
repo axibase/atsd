@@ -66,7 +66,6 @@ Standard deviation is calculated as an unbiased estimator of variance for the `n
 > For more details on unbiased estimator and median absolute deviation refer to NIST Engineering Handbook, sections 6.3.2 and 3.5.6 respectively.
 :::
 
-
 ### `PERCENTILE`
 
 * The `percentile(n)` function returns the number which is greater than the specified percentage `n` of values in the given period.
