@@ -1,6 +1,6 @@
 # Sessions
 
-A session code is specified in the [Trade](./command-trade-insert.md) message to flag the transaction as occuring during a particular trading or settlement regime.
+A session code is specified in the [Trade](./command-trade-insert.md) message to mark the transaction executed during a particular trading or settlement regime.
 
 The codes are specific to each venue with most exchanges offering pre-market, regular, after-market, and auction sessions.
 
