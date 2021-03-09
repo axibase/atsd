@@ -39,9 +39,9 @@ The trade time is `2021-03-01T13:00:02.208492Z`
 |trade_num|long|yes|3177336248| Trade number assigned by the exchange.|
 |unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
 |microseconds|integer|yes|469| Microsecond part of the trade time. <br>0 if sub-millisecond precision is not provided by data feed.|
-|class|string|yes|IEXG| Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `IEXG` for IEX exchange, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX.|
+|class|string|yes|IEXG| Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `XNGS` for NASDAQ, `XNYS`/`ARCX` for NYSE, `IEXG` for IEX, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX. |
 |symbol|string|yes|TSLA| Security symbol.|
-|exchange|string|no|IEX| Exchange or trading venue name, such as `IEX`, `NYSE`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
+|exchange|string|no|IEX| Exchange or trading venue name, such as `NASDAQ`, `NYSE`, `IEX`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
 |side|string|no|B| Trade direction: `B` (buy), `S` (sell), or empty, if not available in the data feed. Typically based on the direction of the initiating (taker) order.|
 |quantity|long|yes|123| Size of the trade. Non-negative.|
 |price|decimal|yes|195.36| Price of the trade. Can be negative.|

@@ -29,8 +29,8 @@ SQL statements can be executed via the web-based console, on schedule, using the
 Each instrument in the database is uniquely identified by a composite key consisting of `exchange`, `class`, and `symbol` columns.
 
 * `exchange` - Exchange or trading venue name such as `NASDAQ`, `NYSE`, `IEX`.
-* `class` - Market code, such as `XNGS`, `XNYS`, `IEXG`.
-* `symbol` - Instrument ticker.
+* `class` - Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `XNGS`, `XNYS`, `IEXG`.
+* `symbol` - Instrument ticker such as `TSLA`.
 
 For example, Tesla Inc. common shares traded on the IEX (Investor Exchange) are identified as `IEX` (exchange), `IEXG` (class), `TSLA` (symbol).
 

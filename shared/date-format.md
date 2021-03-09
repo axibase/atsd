@@ -25,14 +25,6 @@ ATSD supports [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)
 * Positive offset `+hh:mm` applies to time zones that are **ahead** of or in line with UTC. Negative offset `-hh:mm` applies if the time zone is **behind** UTC.
 * For example, Japan Standard Time (JST) has an offset of `+09:00` from UTC (ahead). The Pacific Standard Time (PST) has an offset of `-07:00` from UTC (behind).
 
-## Time Precision
-
-The fractional second part `[.S]` is optional and can have a resolution of nanoseconds (up to **nine** (`9`) digits of a decimal fraction)).
-
-However only the milliseconds (three (`3`) digits) are retained in the database.
-
-* `2016-06-24T20:00:45.003000005+00:00` is stored as `2016-06-24T20:00:45.003+00:00`.
-
 ## Examples
 
 Valid timestamps:
