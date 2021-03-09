@@ -15,8 +15,8 @@
 | `COUNTER` | Sum of positive differences between consecutive values.
 | `PERCENTILE(n)` | `n`-th [percentile](#percentile), for example `PERCENTILE(75)` or `PERCENTILE(99.5)`.<br>`n` is a decimal number between `[0, 100]`.
 | `MEDIAN` | Median value, same as 50% percentile.
-| `STANDARD_DEVIATION` | Standard deviation calculated as an [unbiased](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm) estimator of variance for the `n - 1` sample.
-| `MEDIAN_ABS_DEV` | [Median absolute deviation](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm) calculated as `median(abs(value - median(value)))`.
+| `STANDARD_DEVIATION` | Standard deviation calculated as an unbiased estimator of variance for the `n - 1` sample.
+| `MEDIAN_ABS_DEV` | Median absolute deviation calculated as `median(abs(value - median(value)))`.
 | `SLOPE` | Linear regression slope.
 | `INTERCEPT` | Linear regression intercept.
 | `WAVG` | Weighted average.
@@ -26,6 +26,10 @@
 | `THRESHOLD_PERCENT` | Percentage which violate threshold.
 | `MIN_VALUE_TIME` | Unix time in milliseconds of the first maximum value.
 | `MAX_VALUE_TIME` | Unix time in milliseconds of the first minimum value.
+
+:::tip References
+> For more details on unbiased estimator and median absolute deviation refer to NIST Engineering Handbook, sections 6.3.2 and 3.5.6 respectively.
+:::
 
 ## Implementation Notes
 
@@ -54,9 +58,14 @@ The `COUNTER` function returns the sum of positive differences between consecuti
 
 ### `STANDARD_DEVIATION`
 
-Standard deviation is calculated as an [unbiased](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm) estimator of variance for the `n - 1` sample.
+Standard deviation is calculated as an unbiased estimator of variance for the `n - 1` sample as described in the NIST Engineering Handbook, Section 6.3.2.
 
 ![](./series/images/st_dev_sample.svg)
+
+:::tip References
+> For more details on unbiased estimator and median absolute deviation refer to NIST Engineering Handbook, sections 6.3.2 and 3.5.6 respectively.
+:::
+
 
 ### `PERCENTILE`
 
@@ -66,5 +75,5 @@ Standard deviation is calculated as an [unbiased](https://www.itl.nist.gov/div89
 * `PERCENTILE(97.5)` is equal to `97.5%` percentile.
 * `PERCENTILE(50)` = `MEDIAN`.
 * `PERCENTILE(0)` = `MIN`.
-* The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
+* The function implements the `R6` method as described in the NIST Engineering Handbook, Section 2.6.2, which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
 * `NaN` values are ignored from the input array.

@@ -2836,7 +2836,7 @@ The function accepts `percentile` parameter within the `[0, 100]` range as the f
 * `PERCENTILE(100, value)` equals `MAX(value)`
 * `PERCENTILE(0, value)` equals `MIN(value)`.
 
-The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
+The function implements the `R6` method as described in the NIST Engineering Handbook, Section 2.6.2, which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values.
 
 #### PRODUCT
 
@@ -2876,7 +2876,7 @@ STDDEV(expr [, SAMPLE | POPULATION])
 
 <!-- markdownlint-disable MD102 -->
 
-The `MEDIAN_ABS_DEV` function returns [median absolute deviation](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm) which represents a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) (resistant to outliers) estimate of the variance.
+The `MEDIAN_ABS_DEV` function returns median absolute deviation which represents a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) estimate of the variance.
 
 <!-- markdownlint-enable MD102 -->
 

@@ -143,7 +143,7 @@ Returns the number of `NaN` samples in the window.
 percentile(double n) double
 ```
 
-Calculates `n`-th percentile according to the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values. `n` must be a fractional number within the `[0, 100]` range.
+Calculates `n`-th percentile according to the `R6` method as described in the NIST Engineering Handbook, Section 2.6.2, which uses `N+1` as the array size (`N` is the number of samples in the period) and performs linear interpolation between consecutive values. `n` must be a fractional number within the `[0, 100]` range.
 
 ### `median`
 
@@ -169,7 +169,7 @@ stdev() double
 
 Alias: `std_dev`.
 
-Returns standard deviation calculated as an [unbiased](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm) estimator of variance for the `n - 1` sample.
+Returns standard deviation calculated as an unbiased estimator of variance for the `n - 1` sample.
 
 ![](../api/data/series/images/st_dev_sample.svg)
 
@@ -187,7 +187,7 @@ Calculates linear regression intercept.
 median_abs_dev() double
 ```
 
-Returns [median absolute deviation](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm), a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) estimate (resistant to outliers) of the variance calculated according to the following formula:
+Returns median absolute deviation, a [`robust`](http://www.stats.ox.ac.uk/~ripley/StatMethods/Robust.pdf) (resistant to outliers) estimate of the variance calculated according to the following formula:
 
 ```csharp
 median(abs(value - median(value)))

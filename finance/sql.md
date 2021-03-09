@@ -1339,7 +1339,7 @@ The function accepts `percentile` parameter within the `[0, 100]` range as the f
 * `PERCENTILE(100, price)` equals `MAX(price)`
 * `PERCENTILE(0, price)` equals `MIN(price)`.
 
-The function implements the [`R6`](https://www.itl.nist.gov/div898/handbook/prc/section2/prc262.htm) method which uses `N+1` as the array size (`N` is the number of values in the period) and performs linear interpolation between consecutive values.
+The function implements the `R6` method as described in the NIST Engineering Handbook, Section 2.6.2, which uses `N+1` as the array size (`N` is the number of values in the period) and performs linear interpolation between consecutive values.
 
 #### FIRST
 
