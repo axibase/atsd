@@ -39,7 +39,8 @@
       left: -490px;
     
     &:before
-      background: #ddd;
+      background: #ddd
+      box-shadow: 0 14px 6px -12px rgba(0,0,0,0.2) inset
 
   &:nth-child(even)
     margin-right: 30%;
@@ -49,6 +50,7 @@
     
     &:before
       background: #fefefe;
+      box-shadow: 0 14px 6px -12px rgba(0,0,0,0.3) inset
 
   &:before
     content: ''
@@ -64,6 +66,7 @@
     position: absolute;
     width: 480px;
     top: -48px;
-    border: 2px solid silver;
     border-radius 4px
-    box-shadow  0 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow  0 0 8px rgba(0, 0, 0, 0.2),
+                0 0 2px rgba(0, 0, 0, 0.2),
+                2px 2px 4px rgba(0, 0, 0, 0.2)
