@@ -3,7 +3,7 @@
 To insert Level 1 statistics such as best bid or offer or daily volume, send the command with one or multiple statistics [fields](./statistics-fields.md) in the specified format to port `8091` (TCP) or port `8092` (UDP).
 
 ```bash
-echo -e "TQBR,GAZP,1610622170591,5,0=674451,9=199,5=4534,1=674450,4=477227,10=227.05" | gzip > /dev/tcp/atsd_hostname/8091
+echo -e "IEXG,TSLA,1610622170591,5,9=199,10=845.15" | gzip > /dev/tcp/atsd_hostname/8091
 ```
 
 The content **must be compressed** with `gzip`.
@@ -17,25 +17,23 @@ class,symbol,unix_time,fractions,key=value[,key=value]
 ## Example
 
 ```ls
-TQBR,GAZP,1610622170591,5,4=477227,5=4534,9=199,10=227.05
+IEXG,TSLA,1610622170591,5,9=199,10=845.15
 ```
 
 The event time is `2021-01-14T11:02:50.591005Z`
 
 |Code|Name|Value|
 |---:|:---|---:|
-|4 | `biddeptht` | 477227 |
-|5 | `numbids` | 4534 |
 |9 | `biddepth` | 199 |
-|10 | `bid` | 227.05 |
+|10 | `bid` | 845.15 |
 
 ## Fields
 
 |Name|Type|Required|Example|Description|
 |:---|:---|:---|:---|:---|
-|class|string|yes|TQBR| Order book system identifier where trade is executed such as `SETS`/`SEAQ`/`IOB` for LSE or `TQBR`/`TQCB`/`CETS` for MOEX.|
-|symbol|string|yes|GAZP| Security symbol.|
-|unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
+|class|string|yes|TQBR| Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `XNGS` for NASDAQ, `XNYS`/`ARCX` for NYSE, `IEXG` for IEX, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX. |
+|symbol|string|yes|TSLA| Security symbol.|
+|unix_time|long|yes|1610622170591| Transaction time in Unix milliseconds.|
 |fractions|integer|yes|469| Microsecond/nanosecond part of the transaction time. <br>0 if sub-millisecond precision is not supported by exchange.|
 |key|integer|yes|10|Field [code](./statistics-fields.md)|
 |value|various|yes|227.05|Field value|
@@ -48,7 +46,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 
 * Class and symbol fields are case-insensitive.
 
-* New instruments are automatically registered as entities with name `<symbol>_[<class>]`, for example `gazp_[tqbr]` for class `TQBR` and symbol `GAZP`.
+* New instruments are automatically registered as entities with name `<symbol>_[<class>]`, for example `tsla_[iexg]` for class `IEXG` and symbol `TSLA`.
 
 * If the number of digits in `fractions` field exceeds 3, it is treated as nanoseconds, microseconds otherwise. `0003` counts as 3 nanoseconds, while `3` as 3000 nanoseconds.
 
@@ -60,7 +58,7 @@ Statistics commands are [logged](../administration/logging.md) in `statistics.lo
 
 ```sh
 # search today's archives and the current statistics.log sorted by time
-ls -rt statistics.$(date '+%Y-%m-%d').* statistics.log | xargs zgrep -ih "TQBR,GAZP" | grep -E ",(7|10)="
+ls -rt statistics.$(date '+%Y-%m-%d').* statistics.log | xargs zgrep -ih "IEXG,TSLA" | grep -E ",(9|10)="
 ```
 
 The logging [settings](../administration/logging.md) can be configured on **Admin > Configuration > Configuration Files** page.
@@ -87,7 +85,7 @@ Invalid commands are logged in `command_malformed.log` file.
 * UI:
 
 ```elm
-https://atsd_hostname:8443/financial/instrument/properties/statistics?entity=GAZP_[TQBR]
+https://atsd_hostname:8443/financial/instrument/properties/statistics?entity=TSLA_[IEXG]
 ```
 
 * SQL using [`STAT`](./sql.md#stat) function accessible in `atsd_trade`, `atsd_entity`, `atsd_session_summary` tables:
@@ -214,7 +212,7 @@ SELECT name,
   STAT.yieldatprevwapr,
   STAT.yieldatwaprice
 FROM atsd_entity
-  WHERE tags.class_code = 'TQBR' AND tags.symbol = 'GAZP'
+  WHERE tags.class_code = 'IEXG' AND tags.symbol = 'TSLA'
 ```
 
 * API using [`property query`](../api/data/properties/query.md) endpoint:
@@ -226,7 +224,7 @@ POST /api/v1/properties/query
 ```json
 [{
   "type": "statistics",
-  "entity": "gazp_[tqbr]",
+  "entity": "tsla_[iexg]",
   "startDate": "1970-01-01T00:00:00Z",
   "endDate":   "now",
   "merge": true
