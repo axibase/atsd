@@ -1,6 +1,6 @@
 # Instrument Security Definitions
 
-To insert metadata about an instrument into the database, send the [`property`](../api/network/property.md) command with type `security_definitions` to TCP port `8081` or UDP port `8082`.
+To insert metadata about an instrument into the database, send the [`property`](../api/network/property.md) command with type `security_definitions` to port `8081` (TCP) or port `8082` (UDP).
 
 ```bash
 echo -e "property e:gazp_[tqbr] t:security_definitions ms:1610604976193 v:symbol=GAZP v:tradingsessionid=TQBR v:roundlot=10" > /dev/tcp/atsd_hostname/8081

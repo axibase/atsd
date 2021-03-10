@@ -1,6 +1,6 @@
 # Instrument Entity Tags
 
-To insert instrument tags, send the [`entity`](../api/network/entity.md) command to TCP port `8081` or UDP port `8082`.
+To insert instrument tags, send the [`entity`](../api/network/entity.md) command to port `8081` (TCP) or port `8082` (UDP).
 
 ```bash
 echo -e "entity e:gazp_[tqbr] t:symbol=GAZP t:class_code=TQBR t:lot=100" > /dev/tcp/atsd_hostname/8081

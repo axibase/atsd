@@ -1,12 +1,12 @@
 # Statistics
 
-To insert Level 1 statistics such as best bid or offer or daily volume, send the command with one or multiple statistics [fields](./statistics-fields.md) in the specified format to TCP port `8091` or UDP port `8092`.
+To insert Level 1 statistics such as best bid or offer or daily volume, send the command with one or multiple statistics [fields](./statistics-fields.md) in the specified format to  to port `8091` (TCP) or port `8092` (UDP).
 
 ```bash
 echo -e "TQBR,GAZP,1610622170591,5,0=674451,9=199,5=4534,1=674450,4=477227,10=227.05" | gzip > /dev/tcp/atsd_hostname/8091
 ```
 
-The commands must be terminated by line break. Multiple commands can be sent over the same connection. The content **must be compressed** with `gzip`.
+The content **must be compressed** with `gzip`.
 
 ## Format
 
@@ -44,7 +44,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 
 * Class and exchange fields can contain alphanumeric characters and one of the following characters: `.`, `-`, `_`, `[`, `]`, `+`, `/`. Whitespace characters are not allowed.
 
-* Symbol field can contain alphanumeric characters and one of the following characters: `.`, `-`, `_`, `[`, `]`, `+`, `/`, `@`. Whitespace characters are not allowed.
+* Symbol field can contain alphanumeric characters and one of the following characters: `.`, `-`, `_`, `[`, `]`, `+`, `/`, `@`, '+'. Whitespace characters are not allowed.
 
 * Class and symbol fields are case-insensitive.
 
@@ -52,7 +52,7 @@ The event time is `2021-01-14T11:02:50.591005Z`
 
 * If the number of digits in `fractions` field exceeds 3, it is treated as nanoseconds, microseconds otherwise. `0003` counts as 3 nanoseconds, while `3` as 3000 nanoseconds.
 
-* When sending multiple commands over the same connection, separate commands with a `\n` line break.
+* When sending multiple commands over the same connection, separate commands with a line break.
 
 ## Logging
 
