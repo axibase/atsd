@@ -445,7 +445,8 @@ module.exports = {
             "": [],
         },
         homePageByPath: {
-            "/finance/": "/finance/" ,
+            "/finance/ru/": "/finance/ru/",
+            "/finance/": "/finance/",
             "": "/",
         },
         logo: '/images/axibase_logo_site.png',
