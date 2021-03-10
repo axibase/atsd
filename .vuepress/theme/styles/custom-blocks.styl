@@ -26,3 +26,44 @@
       color darken(red, 40%)
     a
       color $textColor
+
+.feature-highlight
+  min-height: 240px;
+  position: relative;
+  padding: 40px;
+
+  &:nth-child(odd)
+    margin-left: 30%;
+
+    img
+      left: -490px;
+    
+    &:before
+      background: #ddd;
+
+  &:nth-child(even)
+    margin-right: 30%;
+
+    img
+      right: -490px;
+    
+    &:before
+      background: #fefefe;
+
+  &:before
+    content: ''
+    position: absolute;
+    left: -100%;
+    width: 200vw;
+    display: block;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+
+  img
+    position: absolute;
+    width: 480px;
+    top: -48px;
+    border: 2px solid silver;
+    border-radius 4px
+    box-shadow  0 0 8px rgba(0, 0, 0, 0.2);
