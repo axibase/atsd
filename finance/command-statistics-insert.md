@@ -1,6 +1,6 @@
 # Statistics
 
-To insert Level 1 statistics such as best bid or offer or daily volume, send the command with one or multiple statistics [fields](./statistics-fields.md) in the specified format to  to port `8091` (TCP) or port `8092` (UDP).
+To insert Level 1 statistics such as best bid or offer or daily volume, send the command with one or multiple statistics [fields](./statistics-fields.md) in the specified format to port `8091` (TCP) or port `8092` (UDP).
 
 ```bash
 echo -e "TQBR,GAZP,1610622170591,5,0=674451,9=199,5=4534,1=674450,4=477227,10=227.05" | gzip > /dev/tcp/atsd_hostname/8091
