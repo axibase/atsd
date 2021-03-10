@@ -13,6 +13,8 @@ Multiple commands can be sent over the same connection. Each commands must be te
 To insert a file containing trades in CSV format:
 
 ```bash
+# skip header with tail -n +2
+# tar -xOzf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
 tail -n +2 trades.csv > /dev/tcp/localhost/8085
 ```
 
@@ -52,7 +54,7 @@ The trade time is `2021-03-01T13:00:02.208492Z`
 
 * Class and exchange fields can contain alphanumeric characters and one of the following characters: `.`, `-`, `_`, `[`, `]`, `+`, `/`. Whitespace characters are not allowed.
 
-* Symbol field can contain alphanumeric characters and one of the following characters: `.`, `-`, `_`, `[`, `]`, `+`, `/`, `@`. Whitespace characters are not allowed.
+* Symbol field can contain alphanumeric characters and one of the following characters: `.`, `-`, `_`, `[`, `]`, `+`, `/`, `@`, `=`. Whitespace characters are not allowed.
 
 * Class, exchange, and symbol fields are case-insensitive.
 
@@ -66,7 +68,7 @@ The trade time is `2021-03-01T13:00:02.208492Z`
 
 * When sending multiple commands over the same connection, separate commands with a `\n` line break.
 
-* To correct fields in an existing trade, submit a new command for the same `trade_num` and instrument identifier fields.
+* To modify an existing trade, send a new command with the same `trade_num` and instrument identifier fields.
 
 ## Trading Session Codes
 
