@@ -1,24 +1,20 @@
 # Trades
 
-The **Trade CSV** endpoint provides a simple alternative to FAST, SBE, and other binary protocols which are supported using dedicated data feed consumers.
+The **Trade CSV** endpoint provides a simple alternative to FAST, SBE, and other binary protocols implemented by dedicated data feed consumers.
 
-To insert a trade into the database in a plain text format, send the command in the specified format to TCP port `8085` or UDP port `8086`.
+To insert a trade into the database, send the trade command in plain text to port `8085` (TCP) or port `8086` (UDP).
 
 ```bash
 echo -e "2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96" > /dev/tcp/atsd_hostname/8085
 ```
 
-Multiple commands can be sent over the same connection. Each commands must be terminated by line break.
-
-To insert a file containing trades in CSV format:
+To insert a file with multiple trades commands:
 
 ```bash
-# skip header with tail -n +2
+# skip header: tail -n +2
 # tar -xOzf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
 tail -n +2 trades.csv > /dev/tcp/localhost/8085
 ```
-
-Timestamp precision is microseconds.
 
 ## Fields
 
@@ -26,13 +22,23 @@ Timestamp precision is microseconds.
 trade_num,unix_time,microseconds,class,symbol,exchange,side,quantity,price,order_num[,session][,field-1,..field-N]
 ```
 
-## Examples
+Timestamp precision is microseconds.
+
+## Example
 
 ```ls
 2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96
 ```
 
-The trade time is `2021-03-01T13:00:02.208492Z`
+* `trade_num`: `2415548`
+* `timestamp`: `2021-03-01T13:00:02.208492Z`
+* `class`: `IEXG`
+* `symbol`: `TSLA`
+* `exchange`: `IEX`
+* `quantity`: `5`
+* `price`: `688.57`
+* `session`: `X`
+* `saleCondition`: `96` (custom field)
 
 ## Fields
 
@@ -66,7 +72,7 @@ The trade time is `2021-03-01T13:00:02.208492Z`
 
 * Field specified after the `session` field are not stored in the database however are logged in the `trades.log` file and can be used for latency monitoring and tracing.
 
-* When sending multiple commands over the same connection, separate commands with a `\n` line break.
+* When sending multiple commands over the same connection, separate commands with a line break.
 
 * To modify an existing trade, send a new command with the same `trade_num` and instrument identifier fields.
 
