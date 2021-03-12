@@ -21,13 +21,15 @@ highlightedFeatures:
 footer: (c) Axibase, 2021
 ---
 
-
-
 <article class="feature-highlight">
 
 ## Интеграция с Московской Биржей
 
+<div class="feature-images">
+
 ![](./images/moex-tqbr-schedule.png)
+
+</div>
 
 * Получение данных с Фондового, Денежного, Валютного и Срочного рынков
 * Запись сделок, заявок, котировок, статистик и референтных данных по всем режимам торгов
@@ -44,7 +46,11 @@ footer: (c) Axibase, 2021
 
 ## SQL
 
+<div class="feature-images">
+
 ![](./images/auto-complete-class.png)
+
+</div>
 
 * SQL движок с [расширенным синтаксисом](../sql.md) для фильтрации данных по сессиям, аукционам, торговым календарям и принадлежности к индексам
 * Интерактивная SQL консоль с автодополнением и синтаксисными подсказками
@@ -57,7 +63,12 @@ footer: (c) Axibase, 2021
 
 ## Референтные данные
 
-  ![](./images/moex-version-bonds.png)
+<div class="feature-images">
+
+![](./images/trade_instrument_editor_sm.png)
+![](./images/moex-version-bonds.png)
+
+</div>
 
 * В дополнение к торговым данным осуществляется хранение параметров инструментов для последующего использования при анализе. В качестве источника могут выступать потоки спецификации инструментов FAST, а также ISS, НКК и внутренние системы
 * Версионированное хранение референтных данных позволяет сохранять **историю** изменений таких параметров как:
@@ -74,7 +85,11 @@ footer: (c) Axibase, 2021
 
 ## Индексный калькулятор
 
+<div class="feature-images">
+
 ![](./images/moex-index.png)
+
+</div>
 
 * Расчет индексов на основании исторических сделок и поступающих сделок в соответствии с методологией Московской Биржи, включая:
 
@@ -93,7 +108,11 @@ footer: (c) Axibase, 2021
 
 ## Trade Viewer
 
+<div class="feature-images">
+
 ![](./images/moex-trade-viewer.png)
+
+</div>
 
 * Удобный подбор инструментов из различных потоков с фильтрами по расписанию
 * Выгрузка данных в CSV или переход в интерактивную SQL консоль
@@ -102,7 +121,11 @@ footer: (c) Axibase, 2021
 </article>
 <article class="feature-highlight">
 
+<div class="feature-images">
+
 ![](./images/moex-latency.png)
+
+</div>
 
 ## Консьюмеры
 

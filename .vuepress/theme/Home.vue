@@ -103,7 +103,6 @@ export default {
       &:hover
         background-color lighten($accentColor, 10%)
   .features
-    border-top 1px solid $borderColor
     padding 1.2rem 0
     margin-bottom: 120px;
     margin-top 2.5rem

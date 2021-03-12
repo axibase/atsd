@@ -35,10 +35,8 @@
   &:nth-child(odd)
     margin-left: 30%;
 
-    img
+    .feature-images
       left: -490px
-      &:nth-of-type(2)
-        left: -450px
     
     &:before
       background: #f5f5f5
@@ -47,7 +45,7 @@
   &:nth-child(even)
     margin-right: 30%;
 
-    img
+    .feature-images
       right: -490px;
     
     &:before
@@ -64,17 +62,18 @@
     top: 0;
     z-index: -1;
 
-  img
+  .feature-images
     position: absolute;
-    width: 480px;
     top: -48px;
+    width: 480px;
+
+
+  img
+    width: 480px;
     border-radius 4px
     box-shadow  0 0 8px rgba(0, 0, 0, 0.2),
                 0 0 2px rgba(0, 0, 0, 0.2),
                 2px 2px 4px rgba(0, 0, 0, 0.2)
-
-    &:nth-child(2)
-      top: 120px
 
     &:hover
       z-index 1000
