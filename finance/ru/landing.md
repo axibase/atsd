@@ -1,5 +1,5 @@
 ---
-# /* yasperller ignore:start */
+# /* yaspeller ignore:start */
 home: true
 heroText: Axibase Time Series Database
 tagline: Структурированное хранение и анализ биржевой информации
@@ -19,7 +19,7 @@ highlightedFeatures:
       - Удобный подбор инструментов из различных потоков с фильтрами по расписанию
       - Выгрузка данных в CSV или переход в интерактивную SQL консоль
 footer: (c) Axibase, 2021
-# /* yasperller ignore:end */
+# /* yaspeller ignore:end */
 ---
 <!-- markdownlint-disable MD002 MD041 MD012 -->
 <article class="feature-highlight">
@@ -52,7 +52,7 @@ footer: (c) Axibase, 2021
 
 </div>
 
-* SQL движок с [расширенным синтаксисом](../sql.md) для фильтрации данных по сессиям, аукционам, торговым календарям и принадлежности к индексам <!-- yaspeller ignore --> 
+* SQL движок с [расширенным синтаксисом](../sql.md) для фильтрации данных по сессиям, аукционам, торговым календарям и принадлежности к индексам <!-- yaspeller ignore -->
 * Интерактивная SQL консоль с автодополнением и синтаксисными подсказками
 * Создание SQL отчетов по расписанию с распространением на email, файловую систему или HTML страницу
 * Драйверы [JDBC](https://github.com/axibase/atsd-jdbc), [ODBC](https://github.com/axibase/atsd-odbc), ODBC-QUIK
