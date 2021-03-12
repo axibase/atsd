@@ -1,4 +1,5 @@
 ---
+# /* yasperller ignore:start */
 home: true
 heroText: Axibase Time Series Database
 tagline: Структурированное хранение и анализ биржевой информации
@@ -19,15 +20,16 @@ highlightedFeatures:
       - Удобный подбор инструментов из различных потоков с фильтрами по расписанию
       - Выгрузка данных в CSV или переход в интерактивную SQL консоль
 footer: (c) Axibase, 2021
+# /* yasperller ignore:end */
 ---
-
+<!-- markdownlint-disable MD002 MD041 MD012 -->
 <article class="feature-highlight">
 
 ## Интеграция с Московской Биржей
 
 <div class="feature-images">
 
-![](./images/moex-tqbr-schedule.png)
+![](./images/moex-tqbr-schedule.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -38,7 +40,7 @@ footer: (c) Axibase, 2021
 * Учет детального расписания торгов на основе календаря биржи, включая расписание этапов аукционов открытия и закрытия
 * Высокопроизводительные [консьюмеры](#консьюмеры) для FAST
 * Утилиты для подгрузки и проверки референтных данных из ISS
-* С 2020 года ATSD является сертифицированной [брокерской системой](https://www.moex.com/a1198) для подключения к ТКС ASTS.
+* С 2020 года ATSD является сертифицированной [брокерской системой](https://www.moex.com/a1198) для подключения к ТКС ASTS. <!-- yaspeller ignore -->
 
 
 </article>
@@ -52,7 +54,7 @@ footer: (c) Axibase, 2021
 
 </div>
 
-* SQL движок с [расширенным синтаксисом](../sql.md) для фильтрации данных по сессиям, аукционам, торговым календарям и принадлежности к индексам
+* SQL движок с [расширенным синтаксисом](../sql.md) для фильтрации данных по сессиям, аукционам, торговым календарям и принадлежности к индексам <!-- yaspeller ignore --> 
 * Интерактивная SQL консоль с автодополнением и синтаксисными подсказками
 * Создание SQL отчетов по расписанию с распространением на email, файловую систему или HTML страницу
 * Драйверы [JDBC](https://github.com/axibase/atsd-jdbc), [ODBC](https://github.com/axibase/atsd-odbc), ODBC-QUIK
@@ -65,8 +67,8 @@ footer: (c) Axibase, 2021
 
 <div class="feature-images">
 
-![](./images/trade_instrument_editor_sm.png)
-![](./images/moex-version-bonds.png)
+![](./images/trade_instrument_editor_sm.png) <!-- yaspeller ignore -->
+![](./images/moex-version-bonds.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -87,7 +89,7 @@ footer: (c) Axibase, 2021
 
 <div class="feature-images">
 
-![](./images/moex-index.png)
+![](./images/moex-index.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -110,7 +112,7 @@ footer: (c) Axibase, 2021
 
 <div class="feature-images">
 
-![](./images/moex-trade-viewer.png)
+![](./images/moex-trade-viewer.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -125,7 +127,7 @@ footer: (c) Axibase, 2021
 
 <div class="feature-images">
 
-![](./images/moex-latency.png)
+![](./images/moex-latency.png) <!-- yaspeller ignore -->
 
 </div>
 
