@@ -449,6 +449,7 @@ module.exports = {
             "/finance/": "/finance/",
             "": "/",
         },
+        trackNavURL: "/tracknav/",
         logo: '/images/axibase_logo_site.png',
         algolia: {
             appId: 'BH4D9OD16A',

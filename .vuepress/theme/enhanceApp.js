@@ -1,4 +1,4 @@
-export default function ({siteData}) {
+export default function ({siteData, router}) {
     var remarkConfig = siteData.themeConfig.remark42Config;
 
     if (remarkConfig && typeof window !== "undefined") {
@@ -13,5 +13,24 @@ export default function ({siteData}) {
                 (d.head || d.body).appendChild(s);
             }
         })(remarkConfig.components || ["embed"]);
+    }
+
+    if (siteData.themeConfig.trackNavURL) {
+        var trackNav = siteData.themeConfig.trackNavURL;
+        router.afterEach((to, from) => {
+            try {
+                var isInitial = from.name === null && from.fullPath === "/";
+                if (isInitial) return;
+
+                var fromParam = encodeURIComponent(siteData.base + from.fullPath.slice(1));
+                var toParam = encodeURIComponent(siteData.base + to.fullPath.slice(1));
+                var xhr = new XMLHttpRequest();
+                xhr.onerror = function () {};
+                xhr.open("POST", `${trackNav}?from=${fromParam}&to=${toParam}`, true);
+                xhr.send(null);
+            } catch (e) {
+                // NOP
+            }
+        });
     }
 }
