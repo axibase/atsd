@@ -121,13 +121,14 @@ footer: (c) Axibase, 2021
 </article>
 <article class="feature-highlight">
 
+## Консьюмеры
+
 <div class="feature-images">
 
 ![](./images/moex-latency.png)
 
 </div>
 
-## Консьюмеры
 
 MOEX консьюмеры устанавливаются отдельно в зоне колокации биржи и предназначены для получения биржевых данных по протоколу FAST с последующей записью в АТСД с минимальной задержкой
 
