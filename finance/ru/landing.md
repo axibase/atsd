@@ -42,7 +42,6 @@ footer: (c) Axibase, 2021
 * Утилиты для подгрузки и проверки референтных данных из ISS
 * С 2020 года ATSD является сертифицированной [брокерской системой](https://www.moex.com/a1198) для подключения к ТКС ASTS. <!-- yaspeller ignore -->
 
-
 </article>
 <article class="feature-highlight">
 
@@ -83,7 +82,6 @@ footer: (c) Axibase, 2021
 
 </article>
 <article class="feature-highlight">
-
 
 ## Индексный калькулятор
 
@@ -130,7 +128,6 @@ footer: (c) Axibase, 2021
 ![](./images/moex-latency.png) <!-- yaspeller ignore -->
 
 </div>
-
 
 MOEX консьюмеры устанавливаются отдельно в зоне колокации биржи и предназначены для получения биржевых данных по протоколу FAST с последующей записью в АТСД с минимальной задержкой
 
