@@ -36,10 +36,12 @@
     margin-left: 30%;
 
     img
-      left: -490px;
+      left: -490px
+      &:nth-of-type(2)
+        left: -450px
     
     &:before
-      background: #ddd
+      background: #f5f5f5
       box-shadow: 0 14px 6px -12px rgba(0,0,0,0.2) inset
 
   &:nth-child(even)
@@ -55,7 +57,7 @@
   &:before
     content: ''
     position: absolute;
-    left: -100%;
+    left: -100vw;
     width: 200vw;
     display: block;
     height: 100%;
@@ -70,3 +72,9 @@
     box-shadow  0 0 8px rgba(0, 0, 0, 0.2),
                 0 0 2px rgba(0, 0, 0, 0.2),
                 2px 2px 4px rgba(0, 0, 0, 0.2)
+
+    &:nth-child(2)
+      top: 120px
+
+    &:hover
+      z-index 1000

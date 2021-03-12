@@ -2,7 +2,7 @@
   <div class="home-wrapper">
     <div class="home">
       <div class="hero-bg"></div>
-      <div class="hero-bg-mask"></div>
+      <!-- <div class="hero-bg-mask"></div> -->
       <div class="hero">
         <img v-if="data.heroImage" :src="$withBase(data.heroImage)" alt="hero">
         <h1>{{ data.heroText || $title || 'Hello' }}</h1>
@@ -66,7 +66,7 @@ export default {
     width: 100vw;
     height: 500px;
   .hero-bg
-    background: url(../public/images/landing_bg.jpg);
+    background: url(../public/images/main_logo.png);
     width: 100vw;
     height: 500px;
     position: absolute;
@@ -74,9 +74,7 @@ export default {
     top: 50px;
     z-index: -1;
     background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-color: #2b2e2c;
+    background-position-x 50%
   .hero
     height 300px
     padding 80px 0
@@ -91,7 +89,7 @@ export default {
       max-width 35rem
       font-size 1.6rem
       line-height 1.3
-      color darken(whitesmoke, 40%)
+      color darken(whitesmoke, 20%)
     .action-button
       display inline-block
       font-size 1.2rem
@@ -131,6 +129,15 @@ export default {
     border-top 1px solid $borderColor
     text-align center
     color lighten($textColor, 25%)
+
+@supports(background-blend-mode: multiply)
+  .home
+    .hero-bg
+      background-blend-mode multiply
+      background: linear-gradient(105deg, #222 0% 15%, #444 35%, rgba(255,255,255,0) 70% 100%),
+                  url(../public/images/main_logo.png);
+      background-position-x 0, -60%
+      background-size auto 100%
 
 @media (max-width: $MQMobile)
   .home
