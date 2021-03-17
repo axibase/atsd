@@ -400,16 +400,16 @@ const financeMenuRu = [
     },    
     {
         title: "Запись данных", children: [
-            ['command-trade-insert.md', 'Сделки'],
-            ['trades-upload.md', 'Сделки (сверка)'],
-            ['command-statistics-insert-quotes.md', 'Котировки'],
-            ['command-statistics-insert.md', 'Статистики'],
-            ['session-summary-import-ohlcv.md', 'OHLCV'],
-            ['session-summary-import.md', 'Сессии'],
-            ['command-instrument-entity.md', 'Референтные данные'],
+            ['../command-trade-insert.md', 'Сделки'],
+            ['../trades-upload.md', 'Сделки (сверка)'],
+            ['../command-statistics-insert-quotes.md', 'Котировки'],
+            ['../command-statistics-insert.md', 'Статистики'],
+            ['../session-summary-import-ohlcv.md', 'OHLCV'],
+            ['../session-summary-import.md', 'Сессии'],
+            ['../command-instrument-entity.md', 'Референтные данные'],
             ['../command-security-definitions.md', 'Параметры инструментов'],
-            ['trades-delete.md', 'Удаление сделок'],
-            ['instrument-delete.md', 'Удаление инструментов']
+            ['../trades-delete.md', 'Удаление сделок'],
+            ['../instrument-delete.md', 'Удаление инструментов']
         ]
     },
     {

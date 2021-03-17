@@ -68,7 +68,7 @@ java -Xmx16G -cp commons-math3-3.6.1.jar:. ConsumerLatencyParser /path/to/logger
 head /tmp/logger_futures_15-02-2021.csv
 ```
 
-```csv
+```txt
 date,directory,file,from,to,action,type,count,min,p0.1,p1,p5,p10,p25,p50,p75,p90,p95,p99,p99.9,max
 15-02-2021,logger_futures,trades,entry,sending,,,2139592,-516,-309,-70,416,845,2084,3808,6209,13188,20324,59189,207505,932111
 15-02-2021,logger_futures,trades,entry,sending,0,,2139592,-516,-309,-70,416,845,2084,3808,6209,13188,20324,59189,207505,932111
