@@ -2,7 +2,7 @@
 
 ## Description
 
-The endpoint accepts a daily file archive containing [trade](command-trade-insert.md) commands by comparing trades in the database with trades in the file. It is primarily used for backfilling of missing trades at the end of the trading session, particularly if the trades are streamed over the UDP protocol. The operation is executed asynchronously. 
+The endpoint accepts a daily file archive containing [trade](command-trade-insert.md) commands by comparing trades in the database with trades in the file. It is primarily used for backfilling of missing trades at the end of the trading session, particularly if the trades are streamed over the UDP protocol. The operation is executed asynchronously.
 
 ## Request
 
@@ -19,7 +19,7 @@ The endpoint accepts a daily file archive containing [trade](command-trade-inser
 |`include` | - | Comma separated list of market identifier [codes](https://www.iso20022.org/market-identifier-codes) to **process**. |
 |`exclude` | - | Comma separated list of market identifier [codes](https://www.iso20022.org/market-identifier-codes) to **discard**. |
 | `exchange` | - | Exchange name applied to commands with empty exchange field. |
-| `insert` | `true` | Insert missing trades into the database. If disabled, missing trades will only be logged. |
+| `insert` | `true` | Insert missing trades into the database. If disabled, missing trades are logged without insertion. |
 | `add_new_instruments` | `false` | Insert trades for an instrument which is not yet present in the database. |
 | `on_mismatch` | report | Action to perform if the trade in file differs from a corresponding trade in the database.<br>Possible values: `ignore`,`report`,`update`.<br>`ignore`: ignore the difference.<br>`report`: log mismatched trades to log file.<br>`update`: log to file and overwrite the trade in the database.
 | `debug` | `false` | Log mismatched or missing trades to `logs/snapshot_${job_id}.log` file. |
