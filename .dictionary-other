@@ -19,6 +19,7 @@ auth
 autocomplete
 backend
 backfilling
+backfill
 backtest
 backtesting
 backticks
