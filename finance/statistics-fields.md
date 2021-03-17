@@ -245,5 +245,5 @@ SELECT name,
   STAT.yieldatprevwapr,
   STAT.yieldatwaprice
 FROM atsd_entity
-  WHERE tags.class_code = 'TQBR' AND tags.symbol = 'GAZP'
+  WHERE tags.class_code = 'IEXG' AND tags.symbol = 'TSLA'
 ```

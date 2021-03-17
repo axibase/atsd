@@ -86,13 +86,13 @@ The `options` object supports the following settings:
 ### Examples
 
 ```javascript
-addOHLCVPortal('GAZP', 'TQBR', ['width': 800, 'height': 400])
+addOHLCVPortal('TSLA', 'IEXG', ['width': 800, 'height': 400])
 ```
 
 ```javascript
-addOHLCVPortal('GAZP', 'TQBR', ['interval': '7 DAY', 'period': '1 HOUR'])
+addOHLCVPortal('TSLA', 'IEXG', ['interval': '7 DAY', 'period': '1 HOUR'])
 ```
 
 ```javascript
-addOHLCVPortal('GAZP', 'TQBR', ['startDate': 'previous_working_day', 'endDate': `now`])
+addOHLCVPortal('TSLA', 'IEXG', ['startDate': 'previous_working_day', 'endDate': `now`])
 ```

@@ -1,8 +1,8 @@
-# OHLCV
+# Export OHLCV
 
 ## Description
 
-Retrieves OHLCV and VWAP period statistics (time bars) for the instrument in CSV format.
+Calculates OHLCV and VWAP period statistics (time bars) from raw trades and returns data in CSV format.
 
 ## Request
 

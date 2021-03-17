@@ -1,4 +1,4 @@
-# Trades
+# Delete Instrument
 
 ## Description
 
@@ -54,7 +54,7 @@ To delete the underlying entity for the instrument add `deleteEntity` parameter 
 Deleted instruments are logged in `deleted_instruments.log` file using the format:
 
 ```txt
-2021-01-17T13:06:14.985Z;Instrument(id=4509, symbol=GAZP, class=TQBR, exchange=MOEX)
+2021-01-17T13:06:14.985Z;Instrument(id=4509, symbol=TSLA, class=IEXG, exchange=IEX)
 ```
 
 Deleted trades are [logged](./trades-delete.md#logging) in `deleted_trades.log` file.
@@ -67,12 +67,12 @@ Deleted trades are [logged](./trades-delete.md#logging) in `deleted_trades.log` 
 
 ```bash
 curl --insecure --request POST 'https://atsd_hostname:8443/api/v1/instruments/delete' \
---header 'Authorization: Bearer <token>' \
+--header 'Authorization: Bearer ****' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "class":    "TQBR",
-  "symbol":   "TEST",
-  "exchange": "MOEX"
+  "class":    "IEXG",
+  "symbol":   "ZTEST",
+  "exchange": "IEX"
 }'
 ```
 

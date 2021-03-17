@@ -1,4 +1,4 @@
-# Trades
+# Import Session Summary
 
 ## Description
 
@@ -14,7 +14,7 @@ Insert session summary records in CSV format.
 
 | Name | Default Value | Description |
 |---|---|---|
-| `add_new_instruments` | `false` | Insert trades for the instrument if the instrument is not yet created in ATSD |
+| `add_new_instruments` | `false` | Insert records for the instrument if the instrument is not yet created in ATSD |
 
 The parameters can be set as follows:
 
@@ -49,7 +49,7 @@ curl --insecure --include --user {username}:{password} -X POST \
 * UI. Only last day's records are displayed:
 
 ```elm
-https://atsd_hostname:8443/financial/instrument/properties/statistics?entity=GAZP_[TQBR]
+https://atsd_hostname:8443/financial/instrument/properties/statistics?entity=TSLA_[IEXG]
 ```
 
 * SQL using [`atsd_session_summary`](./sql.md#atsd_trade-table) table:

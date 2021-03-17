@@ -1,4 +1,4 @@
-# Statistics
+# Export Statistics
 
 ## Description
 
@@ -24,7 +24,7 @@ Retrieves statistics for the instrument in JSON format.
 ```json
 [{
   "type": "statistics",
-  "entity": "gazp_[tqbr]",
+  "entity": "tsla_[iexg]",
   "startDate": "1970-01-01T00:00:00Z",
   "endDate":   "now",
   "merge": true
@@ -39,7 +39,7 @@ Retrieves statistics for the instrument in JSON format.
 [
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {},
     "tags": {
       "accruedint": "0",
@@ -113,7 +113,7 @@ Retrieves statistics for the instrument in JSON format.
 ```sql
 SELECT *
   FROM atsd_session_summary
-WHERE class = 'TQBR' AND symbol = 'GAZP'
+WHERE class = 'IEXG' AND symbol = 'TSLA'
   AND type = 'Day' AND stage IN ('O', 'N')
   AND datetime between '2021-02-15' and '2021-02-17'
 ORDER BY datetime

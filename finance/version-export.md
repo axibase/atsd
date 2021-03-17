@@ -1,6 +1,8 @@
-# Version History
+# Export Version History
 
 ## Description
+
+The endpoint lists modification dates of reference data for the specified instrument.
 
 List change dates for the specified entity.
 
@@ -21,7 +23,7 @@ The response contains timestamps, sorted in ascending order. The last timestamp 
 Example:
 
 ```elm
-GET /api/v1/entities/gazp_[tqbr]/versions
+GET /api/v1/entities/tsla_[iexg]/versions
 ```
 
 ## Response
@@ -43,5 +45,5 @@ GET /api/v1/entities/gazp_[tqbr]/versions
 To retrieve entity tags and fields at the time of the change, append the `version` parameter to the [`get`](../api/meta/entity/get.md) request.
 
 ```elm
-GET /api/v1/entities/gazp_[tqbr]?version=2020-07-10T08:03:44.094Z
+GET /api/v1/entities/tsla_[iexg]?version=2020-07-10T08:03:44.094Z
 ```

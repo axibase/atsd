@@ -18,7 +18,7 @@ Retrieves session summary statistics for the instrument in JSON format.
 
 ```json
 {
-  "entity": "gazp_[tqbr]"
+  "entity": "tsla_[iexg]"
 }
 ```
 
@@ -32,7 +32,7 @@ The payload contains statistics at the end of last session and auction stage, id
 [
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {},
     "tags": {
       "accruedint": "0",
@@ -101,7 +101,7 @@ The payload contains statistics at the end of last session and auction stage, id
   },
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {
       "session": "DAY",
       "stage": "O"
@@ -144,7 +144,7 @@ The payload contains statistics at the end of last session and auction stage, id
   },
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {
       "session": "DAY",
       "stage": "N"
@@ -197,7 +197,7 @@ The payload contains statistics at the end of last session and auction stage, id
   },
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {
       "session": "DAY",
       "stage": "L"
@@ -244,7 +244,7 @@ The payload contains statistics at the end of last session and auction stage, id
   },
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {
       "session": "DAY",
       "stage": "E"
@@ -286,7 +286,7 @@ The payload contains statistics at the end of last session and auction stage, id
   },
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {
       "session": "EVENING",
       "stage": "O"
@@ -346,7 +346,7 @@ The payload contains statistics at the end of last session and auction stage, id
   },
   {
     "type": "statistics",
-    "entity": "gazp_[tqbr]",
+    "entity": "tsla_[iexg]",
     "key": {
       "session": "EVENING",
       "stage": "N"

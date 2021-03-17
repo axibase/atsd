@@ -1,4 +1,4 @@
-# Statistics
+# Export Session Summary
 
 ## Description
 

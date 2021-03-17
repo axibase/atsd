@@ -196,7 +196,7 @@ Optional `format` parameter creates an [inline link](links.md#inline-links) in o
 Example:
 
 ```javascript
-getOHLCVChartLink('markdown', 'GAZP', 'TQBR')
+getOHLCVChartLink('markdown', 'TSLA', 'IEXG')
 ```
 
 ### `addLink`

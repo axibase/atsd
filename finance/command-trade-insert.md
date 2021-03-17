@@ -1,4 +1,4 @@
-# Trades
+# Insert Trades
 
 The endpoint consumes a stream of trades in CSV format on port `8085` (TCP) or port `8086` (UDP). It provides a simple alternative to binary protocols such as FAST, SBE, and proprietary specifications.
 
@@ -16,6 +16,8 @@ tail -n +2 trades.csv > /dev/tcp/localhost/8085
 ```bash
 tar -xOzf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
 ```
+
+The endpoint is primarily used by market data consumer applications.
 
 ## Fields
 

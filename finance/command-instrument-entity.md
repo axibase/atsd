@@ -1,4 +1,4 @@
-# Reference Data
+# Insert Reference Data
 
 To insert instrument reference data, send the [`entity`](../api/network/entity.md) command to port `8081` (TCP) or port `8082` (UDP).
 

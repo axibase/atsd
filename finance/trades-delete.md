@@ -1,4 +1,4 @@
-# Trades
+# Delete Trades
 
 ## Description
 
@@ -57,9 +57,9 @@ trade_command
 ```
 
 ```txt
-2021-01-17T12:23:53.312Z;2020-12-12T11:00:00Z;Instrument(id=32, symbol=GAZP, class=TQBR, exchange=MOEX)
-3406495814,1607773266798,435,TQBR,GAZP,MOEX,S,1,199,293,N
-3406495817,1607773286767,32,TQBR,GAZP,MOEX,B,1,202.8,282,N
+2021-01-17T12:23:53.312Z;2020-12-12T11:00:00Z;Instrument(id=32, symbol=TSLA, class=IEXG, exchange=IEX)
+3406495814,1607773266798,435,IEXG,TSLA,IEX,S,1,199,293,N
+3406495817,1607773286767,32,IEXG,TSLA,IEX,B,1,202.8,282,N
 ```
 
 ## Example
@@ -73,9 +73,9 @@ curl --insecure --request POST 'https://atsd_hostname:8443/api/v1/trades/delete'
 --header 'Authorization: Bearer <token>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "class":    "TQBR",
-  "symbol":   "GAZP",
-  "exchange": "MOEX",
+  "class":    "IEXG",
+  "symbol":   "TSLA",
+  "exchange": "IEX",
   "startDate": "2020-12-12T00:00:00.000+03:00",
   "endDate":   "2020-12-12T59:59:59.999+03:00"
 }'

@@ -3,7 +3,7 @@
 To insert metadata about an instrument into the database, send the [`property`](../api/network/property.md) command with type `security_definitions` to port `8081` (TCP) or port `8082` (UDP).
 
 ```bash
-echo -e "property e:gazp_[tqbr] t:security_definitions ms:1610604976193 v:symbol=GAZP v:tradingsessionid=TQBR v:roundlot=10" > /dev/tcp/atsd_hostname/8081
+echo -e "property e:tsla_[iexg] t:security_definitions ms:1610604976193 v:symbol=TSLA v:tradingsessionid=IEXG v:roundlot=10" > /dev/tcp/atsd_hostname/8081
 ```
 
 The commands of type `security_definitions` are processed by the `security_definition_update` rule in the rule engine and are converted to entity commands.
@@ -21,7 +21,7 @@ property e:<symbol>_[<class>] t:security_definitions ms:<unix_time> v:key=value 
 ## Example
 
 ```ls
-property e:gazp_[tqbr] t:security_definitions ms:1610604976193 v:symbol=GAZP v:securitytype=CS v:eveningsessiontradingallowed=1 v:securityid=RU0007661625 v:facevalue=5 v:encodedshortsecuritydesc="ГАЗПРОМ ао" v:securityidsource=4 v:lotdivider=1 v:pricetype=2 v:currency=RUB v:cficode=ESXXXX v:tradingsessionid=TQBR v:tradingsessionsubid=NA v:sec_scale=2 v:product=5 v:securitydesc=Gazprom v:minpriceincrement=0.01 v:statesecurityid=1-02-00028-A v:settlcurrency=RUB v:encodedsecuritydesc="""Газпром"" (ПАО) ао" v:sendercompid=MOEX v:settldate=20210118 v:ordernote=1 v:couponperiod=0 v:marketcode=FNDT v:nosharesissued=23673512900 v:securitytradingstatus=18 v:roundlot=10
+property e:tsla_[iexg] t:security_definitions ms:1610604976193 v:symbol=TSLA v:tradingsessionid=IEXG v:sec_scale=2 v:minpriceincrement=0.01 v:settldate=2021011 v:roundlot=10
 ```
 
 ## Required Tags
@@ -53,7 +53,7 @@ ls -rt command.$(date '+%Y-%m-%d').* command.log | xargs zgrep -ih "property .* 
 * UI:
 
 ```elm
-https://atsd_hostname:8443/financial/instrument/properties/security_definitions?entity=GAZP_[TQBR]
+https://atsd_hostname:8443/financial/instrument/properties/security_definitions?entity=TSLA_[IEXG]
 ```
 
 * SQL using [`SEC_DEF`](./sql.md#sec_def) function accessible in `atsd_trade`, `atsd_entity`, `atsd_session_summary` tables:
@@ -117,7 +117,7 @@ SELECT name,
     SEC_DEF.tradingsessionsubid,
     SEC_DEF.underlyingsymbol
 FROM atsd_entity
-  WHERE tags.class_code = 'TQBR' AND tags.symbol = 'GAZP'
+  WHERE tags.class_code = 'IEXG' AND tags.symbol = 'TSLA'
 ```
 
 * API using [`property query`](../api/data/properties/query.md) endpoint:
@@ -129,7 +129,7 @@ POST /api/v1/properties/query
 ```json
 [{
   "type": "security_definitions",
-  "entity": "gazp_[tqbr]",
+  "entity": "tsla_[iexg]",
   "startDate": "1970-01-01T00:00:00Z",
   "endDate":   "now",
   "merge": true
