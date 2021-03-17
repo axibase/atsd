@@ -1,47 +1,10 @@
 # Installation
 
-## Requirements
-
-### Operating System
-
-* Ubuntu `16.04`, `18.04`
-* RedHat Enterprise Linux `7.x`
-* CentOS `7.x`
-* Debian `8.x`, `9.x`
-
-### Processor Architecture
-
-* `x86_64` / `64`-bit
-
-### CPU and Memory
-
-| Ресурс | Количество
-| --- | :--- |
-| RAM | `16+` GB |
-| CPU | `10+` GHz |
-| Disk Type | SSD |
-
-:::tip Note
-To calculate the available CPU capacity, multiply the number of cores by CPU clock speed, for example `4` x `2.5` GHz = `10` GHz.
-:::
-
-### Disks
-
-* Application files: `2` GB.
-* Daily log files: `20` GB.
-* Market data: `200` GB.
-
-### File System
-
-The standalone version is supported on local ext4 file system.
-
-In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on file systems such as [Hadoop](../installation/cloudera.md) (HDFS), [Amazon EMRFS](../installation/aws-emr-s3.md), and [Azure Storage](../installation/azure-hdinsight.md).
-
 ## Install Java
 
 Install [Java 8](../administration/migration/install-java-8.md).
 
-Add the `JAVA_HOME` path to the user environment in `.bashrc`.
+Add `JAVA_HOME` path to the user environment in `.bashrc`.
 
 ```sh
 jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
@@ -64,7 +27,42 @@ Start the database.
 ./atsd/bin/atsd-tsd.sh start
 ```
 
-## Network Settings
+## Requirements
+
+### Operating System
+
+* Ubuntu `16.04`, `18.04`
+* RedHat Enterprise Linux `7.x`
+* CentOS `7.x`
+* Debian `8.x`, `9.x`
+
+### Processor Architecture
+
+* `x86_64` / `64`-bit
+
+### CPU and Memory
+
+* RAM: `16+` GB
+* CPU: `10+` GHz
+
+:::tip Note
+To calculate the available CPU capacity, multiply the number of cores by CPU clock speed, for example `4` x `2.5` GHz = `10` GHz.
+:::
+
+### Disks
+
+* Disk Type: SSD
+* Application files: `2` GB.
+* Daily log files: `20` GB.
+* Market data: `200` GB.
+
+### File System
+
+The standalone version is supported on local `ext4` file system.
+
+In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on file systems such as [Hadoop](../installation/cloudera.md) (HDFS), [Amazon EMRFS](../installation/aws-emr-s3.md), and [Azure Storage](../installation/azure-hdinsight.md).
+
+### Network Settings
 
 Increase network buffers and disable Reverse Path Filtering.
 

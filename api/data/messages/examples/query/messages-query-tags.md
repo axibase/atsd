@@ -43,7 +43,7 @@ POST /api/v1/messages/query
       "name": "sda",
       "path": "/"
     },
-    "message": "NURSWGVML007 ssh: error: connect_to localhost port 8881: failed.",
+    "message": "NURSWGVML007 ssh: error: connect_to port 8881: failed.",
     "date": "2016-06-16T08:56:37.432Z"
   }
 ]

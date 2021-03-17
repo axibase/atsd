@@ -366,21 +366,21 @@ const financeMenu = [
             ['trades-export.md', 'Trades'],
             ['ohlcv-export.md', 'OHLCV'],
             ['statistics-export.md', 'Statistics'],
-            ['session-summary-export.md', 'EOD / Sessions'],
-            ['session-summary-last.md', 'Session Summary'],
-            ['version-export.md', 'Reference Versions'],
+            ['session-summary-export.md', 'Session Summary'],
+            ['version-export.md', 'Reference Versions']
         ]
     },    
     {
         title: "Writing Data", children: [
-            ['command-trade-insert.md', 'Trades Insert'],
-            ['trades-upload.md', 'Trades Backfill'],
-            ['trades-delete.md', 'Trades Delete'],
-            ['command-statistics-insert.md', 'Statistics Insert'],
-            ['session-summary-import.md', 'EOD / Sessions Insert'],
-            ['command-instrument-entity.md', 'Instrument Insert'],
-            ['instrument-delete.md', 'Instrument Delete'],
-            ['command-security-definitions.md', 'Security Definitions Insert'],
+            ['command-trade-insert.md', 'Insert Trades'],
+            ['trades-upload.md', 'Backfill Trades'],
+            ['command-statistics-insert-quotes.md', 'Insert Quotes'],
+            ['command-statistics-insert.md', 'Insert Statistics'],
+            ['session-summary-import-ohlcv.md', 'Insert OHLCV'],
+            ['session-summary-import.md', 'Insert Session Summary'],
+            ['command-instrument-entity.md', 'Insert Reference Data'],
+            ['trades-delete.md', 'Delete Trades'],
+            ['instrument-delete.md', 'Delete Instrument']
         ]
     },
     ['./install.md', 'Installation']
@@ -390,30 +390,31 @@ const financeMenuRu = [
     ['', "Общая информация"],
     ['./sql.md', 'SQL'],
     {
-        title: "Reading Data", children: [
-            ['../trades-export.md', 'Trades'],
+        title: "Экспорт данных", children: [
+            ['../trades-export.md', 'Сделки'],
             ['../ohlcv-export.md', 'OHLCV'],
-            ['../statistics-export.md', 'Statistics'],
-            ['../session-summary-export.md', 'EOD / Sessions'],
-            ['../session-summary-last.md', 'Session Summary'],
-            ['../version-export.md', 'Reference Versions'],
+            ['../statistics-export.md', 'Статистики'],
+            ['../session-summary-export.md', 'Сессии'],
+            ['../version-export.md', 'Версионирование']
         ]
     },    
     {
-        title: "Writing Data", children: [
-            ['../command-trade-insert.md', 'Trades Insert'],
-            ['../trades-upload.md', 'Trades Backfill'],
-            ['../trades-delete.md', 'Trades Delete'],
-            ['../command-statistics-insert.md', 'Statistics Insert'],
-            ['../session-summary-import.md', 'EOD / Sessions Insert'],
-            ['../command-instrument-entity.md', 'Instrument Insert'],
-            ['../instrument-delete.md', 'Instrument Delete'],
-            ['../command-security-definitions.md', 'Security Definitions Insert'],
+        title: "Запись данных", children: [
+            ['command-trade-insert.md', 'Сделки'],
+            ['trades-upload.md', 'Сделки (сверка)'],
+            ['command-statistics-insert-quotes.md', 'Котировки'],
+            ['command-statistics-insert.md', 'Статистики'],
+            ['session-summary-import-ohlcv.md', 'OHLCV'],
+            ['session-summary-import.md', 'Сессии'],
+            ['command-instrument-entity.md', 'Референтные данные'],
+            ['../command-security-definitions.md', 'Параметры инструментов'],
+            ['trades-delete.md', 'Удаление сделок'],
+            ['instrument-delete.md', 'Удаление инструментов']
         ]
     },
     {
         title: "Примеры", children: [
-            ['./notes/moex_waprice.md', 'Расчет waprice на МБ']
+            ['./notes/moex_waprice.md', 'Расчет waprice']
         ]
     },
     {

@@ -1,19 +1,20 @@
 # Trades
 
-The **Trade CSV** endpoint provides a simple alternative to FAST, SBE, and other binary protocols implemented by dedicated data feed consumers.
-
-To insert a trade into the database, send the trade command in plain text to port `8085` (TCP) or port `8086` (UDP).
+The endpoint consumes a stream of trades in CSV format on port `8085` (TCP) or port `8086` (UDP). It provides a simple alternative to binary protocols such as FAST, SBE, and proprietary specifications.
 
 ```bash
 echo -e "2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96" > /dev/tcp/atsd_hostname/8085
 ```
 
-To insert a file with multiple trades commands:
+To insert multiple commands from file:
 
 ```bash
-# skip header: tail -n +2
-# tar -xOzf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
+# Skip header with tail
 tail -n +2 trades.csv > /dev/tcp/localhost/8085
+```
+
+```bash
+tar -xOzf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
 ```
 
 ## Fields
@@ -22,7 +23,21 @@ tail -n +2 trades.csv > /dev/tcp/localhost/8085
 trade_num,unix_time,microseconds,class,symbol,exchange,side,quantity,price,order_num[,session][,field-1,..field-N]
 ```
 
-Timestamp precision is microseconds.
+## Fields
+
+|Name|Type|Required|Example|Description|
+|:---|:---|:---|:---|:---|
+|trade_num|long|yes|3177336248| Trade number assigned by the exchange.|
+|unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
+|microseconds|integer|yes|469| Microsecond part of the trade time. <br>0 if sub-millisecond precision is not provided by data feed.|
+|class|string|yes|IEXG| Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `XNGS` for NASDAQ, `XNYS`/`ARCX` for NYSE, `IEXG` for IEX, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX. |
+|symbol|string|yes|TSLA| Instrument symbol.|
+|exchange|string|no|IEX| Exchange or trading venue name, such as `NASDAQ`, `NYSE`, `IEX`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
+|side|string|no|B| Trade direction: `B` (buy), `S` (sell), or empty, if not available in the data feed. Typically based on the direction of the initiating (taker) order.|
+|quantity|long|yes|123| Size of the trade. Non-negative.|
+|price|decimal|yes|195.36| Price of the trade. Can be negative.|
+|order_num|long|no|1150996| Order number which initiated the trade (taker).|
+|session|string|no|E| Exchange-specific [trading session and auction code](#trading-session-codes), such as `N` (normal) or `X` (extended).|
 
 ## Example
 
@@ -40,22 +55,6 @@ Timestamp precision is microseconds.
 * `session`: `X`
 * `saleCondition`: `96` (custom field)
 
-## Fields
-
-|Name|Type|Required|Example|Description|
-|:---|:---|:---|:---|:---|
-|trade_num|long|yes|3177336248| Trade number assigned by the exchange.|
-|unix_time|long|yes|1588230831048| Transaction time in Unix milliseconds.|
-|microseconds|integer|yes|469| Microsecond part of the trade time. <br>0 if sub-millisecond precision is not provided by data feed.|
-|class|string|yes|IEXG| Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `XNGS` for NASDAQ, `XNYS`/`ARCX` for NYSE, `IEXG` for IEX, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX. |
-|symbol|string|yes|TSLA| Security symbol.|
-|exchange|string|no|IEX| Exchange or trading venue name, such as `NASDAQ`, `NYSE`, `IEX`, `LSE`, `MOEX`, or a market data provider name. If empty, `trade.exchange.default.value` is used.|
-|side|string|no|B| Trade direction: `B` (buy), `S` (sell), or empty, if not available in the data feed. Typically based on the direction of the initiating (taker) order.|
-|quantity|long|yes|123| Size of the trade. Non-negative.|
-|price|decimal|yes|195.36| Price of the trade. Can be negative.|
-|order_num|long|no|1150996| Order number which initiated the trade (taker).|
-|session|string|no|E| Exchange-specific [trading session and auction code](#trading-session-codes), such as `N` (normal) or `X` (extended).|
-
 ## Notes
 
 * Class and exchange fields can contain alphanumeric characters and one of the following characters: `.`, `-`, `_`, `[`, `]`, `+`, `/`. Whitespace characters are not allowed.
@@ -64,7 +63,7 @@ Timestamp precision is microseconds.
 
 * Class, exchange, and symbol fields are case-insensitive.
 
-* New instruments are automatically registered as entities with name `<symbol>_[<class>]`, for example `tsla_[iexg]` for class `IEXG` and symbol `TSLA`.
+* New instruments are automatically registered with entity name `<symbol>_[<class>]`, for example `tsla_[iexg]` for class `IEXG` and symbol `TSLA`.
 
 * If the value of `microseconds` field exceeds 1000, it is added to milliseconds. `1588283343000,645713` is the same as `1588283343645,713`.
 

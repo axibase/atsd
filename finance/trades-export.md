@@ -32,13 +32,9 @@ datetime,trade_num,side,quantity,price,order_num,session
 
 Refer to [insert](command-trade-insert.md#fields) command for field descriptions.
 
-`side`, `order_num`, `session` are printed as empty strings if not available.
+Optional fields such as `side`, `order_num`, `session` are printed as empty strings if not available.
 
-## Example
-
-### Request
-
-#### URI
+## Examples
 
 * Interval between `2021-01-13 19:00:00` and `2021-01-13 19:05:00` in UTC time zone.
 
@@ -58,18 +54,12 @@ GET /api/v1/trades?class=IEXG&symbol=TSLA&startDate=2021-01-13T14%3A00%3A00-05%3
 GET /api/v1/trades?class=IEXG&symbol=TSLA&startDate=current_working_day&endDate=now
 ```
 
-#### Payload
-
-None.
-
-#### curl
+### curl Example
 
 ```bash
 curl "https://atsd_hostname:8443/api/v1/trades?class=IEXG&symbol=TSLA&startDate=2021-01-13%2014%3A00%3A00-05%3A00&endDate=2021-01-13%2014%3A05%3A00-05%3A00" \
- --insecure --include --user {username}:{password}
+ --insecure --include --header "Authorization: Bearer ****"
 ```
-
-### Response
 
 ```txt
 datetime,trade_num,side,quantity,price,order_num,session
@@ -78,7 +68,7 @@ datetime,trade_num,side,quantity,price,order_num,session
 2021-01-13T19:00:18.013559Z,1368945732,,16,844.2,,N
 ```
 
-### SQL Alternative
+## SQL Alternative
 
 ```sql
 SELECT symbol, class, datetime, trade_num, price, quantity, session, side, order_num

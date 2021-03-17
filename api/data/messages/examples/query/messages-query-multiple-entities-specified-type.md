@@ -34,7 +34,7 @@ POST /api/v1/messages/query
     "type": "application",
     "source": "default",
     "severity": "NORMAL",
-    "message": "NURSWGVML007 ssh: error: connect_to localhost port 8881: failed.",
+    "message": "NURSWGVML007 ssh: error: connect_to port 8881: failed.",
     "date": "2016-06-20T06:59:42.059Z"
   },
   {
@@ -42,7 +42,7 @@ POST /api/v1/messages/query
     "type": "application",
     "source": "default",
     "severity": "NORMAL",
-    "message": "NURSWGVML007 ssh: error: connect_to localhost port 8882: failed.",
+    "message": "NURSWGVML007 ssh: error: connect_to port 8882: failed.",
     "date": "2016-06-20T06:59:42.059Z"
   }
 ]

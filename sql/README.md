@@ -3464,6 +3464,10 @@ WHERE datetime BETWEEN '2019-07-08 15:00:00' and '2019-07-08 15:01:00'
 | 63.2700 | Mon 2019-Jul-08 15:00:10 | Fri 2019-Jul-05 15:00:10 | Wed 2019-Jul-03 15:00:10 |
 ```
 
+#### `WEEKDAY`
+
+The function shifts the input date by the specified number of regular work days. The implementation is comparable to `WORKDAY` function.
+
 #### `WORKDAY_COUNT`
 
 The `WORKDAY_COUNT` function returns the number of working days between the two input dates according to the specified calendar.

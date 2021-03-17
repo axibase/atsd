@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves OHLCV and VWAP period statistics (candlesticks, bars) for the instrument in CSV format.
+Retrieves OHLCV and VWAP period statistics (time bars) for the instrument in CSV format.
 
 ## Request
 
@@ -83,7 +83,7 @@ None.
 
 ```bash
 curl "https://atsd_hostname:8443/api/v1/ohlcv?class=IEXG&symbol=TSLA&startDate=2021-01-13T19%3A00%3A00Z&endDate=2021-01-13T19%3A05%3A00Z&period=1%20MINUTE" \
- --insecure --include --user {username}:{password}
+ --insecure --include --header "Authorization: Bearer ****"
 ```
 
 ### Response

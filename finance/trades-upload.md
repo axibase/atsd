@@ -2,7 +2,7 @@
 
 ## Description
 
-Upload file with [trade commands](command-trade-insert.md) for backfilling.
+The endpoint accepts a daily file archive containing [trade](command-trade-insert.md) commands by comparing trades in the database with trades in the file. It is primarily used for backfilling of missing trades at the end of the trading session, particularly if the trades are streamed over the UDP protocol. The operation is executed asynchronously. 
 
 ## Request
 
@@ -15,14 +15,14 @@ Upload file with [trade commands](command-trade-insert.md) for backfilling.
 | Name | Default Value | Description |
 |---|---|---|
 | `file` | - | Multipart file parameter |
-|`include` | - | Comma separated list of classes to process. |
-|`exclude` | - | Comma separated list of classes to discard. |
-| `exchange` | - | Default exchange applied to commands with empty exchange field. |
-| `insert` | `true` | Insert missing trades into HBase. If disabled, only check and report the number of missing trades. |
-| `add_new_instruments` | `false` | Insert trades for the instrument if the instrument is not yet created in ATSD |
-| `on_mismatch` | report | Action done on comparison of trades already stored in ATSD and loaded from file. Possible values: ignore,report,update. Ignore: do not compare columns other than trade_num. Report: log mismatched trades to log file. Update: log to file + update mismatched trades in ATSD
-| `debug` | `false` | Log mismatched or missing trades to a file `logs/snapshot_${job_id}.log`
-| `filename` | - | Required if file content is sent as body
+| `filename` | - | Required if file content is sent as body |
+|`include` | - | Comma separated list of market identifier [codes](https://www.iso20022.org/market-identifier-codes) to **process**. |
+|`exclude` | - | Comma separated list of market identifier [codes](https://www.iso20022.org/market-identifier-codes) to **discard**. |
+| `exchange` | - | Exchange name applied to commands with empty exchange field. |
+| `insert` | `true` | Insert missing trades into the database. If disabled, missing trades will only be logged. |
+| `add_new_instruments` | `false` | Insert trades for an instrument which is not yet present in the database. |
+| `on_mismatch` | report | Action to perform if the trade in file differs from a corresponding trade in the database.<br>Possible values: `ignore`,`report`,`update`.<br>`ignore`: ignore the difference.<br>`report`: log mismatched trades to log file.<br>`update`: log to file and overwrite the trade in the database.
+| `debug` | `false` | Log mismatched or missing trades to `logs/snapshot_${job_id}.log` file. |
 
 The parameters can be set as follows:
 
@@ -48,10 +48,10 @@ curl --insecure --header "Authorization: Bearer ****" \
 
 ```bash
 curl --insecure --request POST 'https://atsd_hostname:8443/api/v1/trades/upload' \
---header 'Authorization: Bearer NNNNNNNN' \
+--header 'Authorization: Bearer ****' \
 --form 'file=@/path/to/trade_commands.tar.gz' \
 --form 'insert=true' \
---form 'include=TQBR' \
+--form 'include=IEXG,XNGS' \
 --form 'add_new_instruments=false' \
 --form 'on_mismatch=UPDATE' \
 --form 'debug=true'
@@ -69,7 +69,7 @@ powershell -file upload.ps1 -path trade_commands.zip
 # upload.ps1
 param([string]$path)
 
-$Headers = @{Authorization = "Bearer NNNNNNNN"}
+$Headers = @{Authorization = "Bearer ****"}
 $Uri = 'https://atsd_hostname:9443/api/v1/trades/upload'
 
 $Form = @{

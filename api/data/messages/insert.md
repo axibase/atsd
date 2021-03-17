@@ -71,7 +71,7 @@ POST /api/v1/messages/insert
   {
     "entity": "nurswgvml007",
     "type": "application",
-    "message": "NURSWGVML007 ssh: error: connect_to localhost port 8881: failed.",
+    "message": "NURSWGVML007 ssh: error: connect_to port 8881: failed.",
     "severity": "MAJOR",
     "source": "atsd"
   }

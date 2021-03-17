@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert session summary records for the instrument in CSV format.
+Insert session summary records in CSV format.
 
 ## Request
 
@@ -28,9 +28,9 @@ The file can be attached as `multipart/form-data` element or as text content in 
 The content must start with a header containing `datetime`, `symbol`, `class`, `exchange`, `type`, [`stage`](command-trade-insert.md#trading-session-codes) columns and at least one [statistics](statistics-fields.md) column name.
 
 ```txt
-datetime,exchange,class,symbol,type,stage,open,high,low,closeprice,voltoday,vwap
-2021-02-10T20:45:00.000Z,CBOE,XCBO,VIX20210216P00035000,Day,C,10.22,10.74,10.01,10.50,34502,10.456
-2021-02-10T20:45:00.000Z,CBOE,XCBO,VIX20210216P00040000,Day,C,15.12,15.64,15.01,15.54,18103,15.482
+datetime,exchange,class,symbol,type,stage,close,openinterest
+2021-02-10T20:45:00.000Z,CBOE,XCBO,VIX20210216P00035000,Day,N,10.22,34502
+2021-02-10T20:45:00.000Z,CBOE,XCBO,VIX20210216P00040000,Day,N,15.12,18103
 ```
 
 ## Example
@@ -176,8 +176,8 @@ SELECT datetime, class, symbol, type, stage,
     yieldatprevwapr,
     yieldatwaprice
   FROM atsd_session_summary
-WHERE class = 'TQBR' AND symbol = 'GAZP'
-  AND type = 'Day' AND stage IN ('O', 'N')
+WHERE class = 'IEXG' AND symbol = 'TSLA'
+  AND type = 'Day' AND stage = 'N'
   AND datetime between '2021-02-15' and '2021-02-17'
 ORDER BY datetime
 ```
@@ -195,18 +195,10 @@ Payload:
     "startDate": "2021-02-15T00:00:00Z",
     "endDate":   "2021-02-17T00:00:00Z",
     "instruments": [{
-        "symbol" : "GAZP", "class" : "TQBR"
+        "symbol" : "TSLA", "class" : "IEXG"
     }],
     "stages": ["N", "O"],
     "sessions": ["DAY"],
     "fields": ["datetime", "entity", "stage", "open", "close", "high", "low", "voltoday"]
 }
-```
-
-```txt
-datetime,entity,stage,open,close,high,low,voltoday
-2021-02-15T06:59:36.000109Z,gazp_[tqbr],O,228.49,,228.49,228.49,153080
-2021-02-15T15:39:59.991927Z,gazp_[tqbr],N,,,,,54527050
-2021-02-16T06:59:42.001558Z,gazp_[tqbr],O,230,,230,230,355970
-2021-02-16T15:39:59.939592Z,gazp_[tqbr],N,230,,233.22,227.57,79795670
 ```

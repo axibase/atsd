@@ -1682,7 +1682,7 @@ SELECT DBTIMEZONE
 
 #### IS_WORKDAY
 
-The `IS_WORKDAY` function returns `true` if the given date is a working day based on holiday exceptions in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`.
+The `IS_WORKDAY` function returns `true` if the given date is a working day (trading day) based on holiday exceptions in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the trading venue name or the three-letter country code such as `usa`.
 
 ```javascript
 IS_WORKDAY(datetime | time | datetime expression [, calendar_key [, timezone]])
@@ -1690,40 +1690,48 @@ IS_WORKDAY(datetime | time | datetime expression [, calendar_key [, timezone]])
 
 Notes:
 
-* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in the **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../administration/workday-calendar.md) exception list. For example, if the date argument is `2018-07-04T00:00:00Z` and the calendar key is `USA`, the function checks the file `/opt/atsd/atsd/conf/calendars/usa.json` for the list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday. Thus, the function returns `false`, though the date is a Wednesday.
+* To determine if the date argument is a working day, the function converts the date to `yyyy-MM-dd` format in the **database** or user-defined `timezone` and checks if the date is present in the specified [Workday Calendar](../administration/workday-calendar.md) listed on the **Data > Workday Calendars** page. For example, if the date argument is `2018-07-04` and the calendar key is `nyse`, the function checks the file `/opt/atsd/atsd/conf/calendars/nyse.json` for the list of observed holidays. The date `2018-07-04` matches the Fourth of July holiday. Thus, the function returns `false`, though the date is a Wednesday.
 * The function raises an error if the calendar is not found or no exceptions are found for the given year (`2018` in the above case).
 
 ```sql
 SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date",
   date_format(datetime, 'eee') AS "Day of Week",
   date_format(datetime, 'u') AS "DoW Number",
-  is_workday(datetime, 'USA') AS "USA Work Day",
-  is_workday(datetime, 'ISR') AS "Israel Work Day"
+  is_workday(datetime, 'nyse') AS "NYSE Trading Day",
+  is_workday(datetime, 'isr') AS "Israel Work Day"
 ...
   WHERE datetime BETWEEN '2018-07-02' AND '2018-07-09'
 ```
 
 ```ls
-| Date       | Day of Week | DoW Number | USA Work Day | Israel Work Day |
-|------------|-------------|------------|--------------|-----------------|
-| 2018-07-02 | Mon         | 1          | true         | true            |
-| 2018-07-03 | Tue         | 2          | true         | true            |
-| 2018-07-04 | Wed         | 3          | false (!)    | true            | <-- 4th of July holiday observed in the USA
-| 2018-07-05 | Thu         | 4          | true         | true            |
-| 2018-07-06 | Fri         | 5          | true         | false           |
-| 2018-07-07 | Sat         | 6          | false        | false           |
-| 2018-07-08 | Sun         | 7          | false        | true            |
+| Date       | Day of Week | DoW Number | NYSE Work Day | Israel Work Day |
+|------------|-------------|------------|---------------|-----------------|
+| 2018-07-02 | Mon         | 1          | true          | true            |
+| 2018-07-03 | Tue         | 2          | true          | true            |
+| 2018-07-04 | Wed         | 3          | false (!)     | true            | <-- 4th of July holiday observed in the USA
+| 2018-07-05 | Thu         | 4          | true          | true            |
+| 2018-07-06 | Fri         | 5          | true          | false           |
+| 2018-07-07 | Sat         | 6          | false         | false           |
+| 2018-07-08 | Sun         | 7          | false         | true            |
 ```
 
 To check if the date argument is a working day in the **local** time zone, call the function with the custom time zone.
 
 ```sql
-is_workday(time, 'USA', 'US/Pacific')
+is_workday(time, 'nyse', 'US/Pacific')
+```
+
+Alternatively, specify the workday calendar in the `WITH` clause.
+
+```sql
+is_workday(datetime, 'nyse')
+...
+WITH WORKDAY_CALENDAR = 'nyse'
 ```
 
 #### IS_WEEKDAY
 
-The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the three-letter country code such as `USA`. Weekdays are Monday to Friday in the USA and Sunday to Thursday in Israel, for example.
+The `IS_WEEKDAY` function returns `true` if the given date is a regular work day in the specified [Workday Calendar](../administration/workday-calendar.md), which is typically the stock exchange name or the three-letter country code such as `usa`.
 
 Unlike the `IS_WORKDAY`, the `IS_WEEKDAY` function **ignores** observed holidays.
 
@@ -1761,15 +1769,15 @@ SELECT date_format(datetime, 'yyyy-MM-dd') AS "Date",
 
 #### `WORKDAY`
 
-The `WORKDAY` function shifts the input date by the specified number of working `days`. The shift is backward if the `days` parameter is negative. Refer to [`IS_WORKDAY`](#is_workday) function for working day definitions.
+The `WORKDAY` function shifts the input date by the specified number of working days. The shift is backward if the `days` parameter is negative. Refer to [`IS_WORKDAY`](#is_workday) function for working day definitions.
 
 ```javascript
-WORKDAY(datetime | time | datetime expression, days[, calendar_key[, timezone]])
+WORKDAY(datetime | time | datetime expression, days [, calendar_key[, timezone]])
 ```
 
 The time part of the day remains unchanged. If the `days` argument is `0` and the input date is **not** a working day, the function returns `NULL`.
 
-Example: two working days before current day.
+Example: two working days (`T-2`) before current day.
 
 ```sql
 --> July 09 (Tuesday) returns July 5th (Friday)
@@ -1790,6 +1798,10 @@ WHERE datetime BETWEEN '2019-07-08 15:00:00' and '2019-07-08 15:01:00'
 |--------------------------|--------------------------|--------------------------|
 | Mon 2019-Jul-08 15:00:10 | Fri 2019-Jul-05 15:00:10 | Wed 2019-Jul-03 15:00:10 |
 ```
+
+#### `WEEKDAY`
+
+The function shifts the input date by the specified number of regular work days. The implementation is comparable to `WORKDAY` function.
 
 #### `WORKDAY_COUNT`
 

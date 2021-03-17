@@ -19,7 +19,7 @@ POST /api/v1/messages/insert
     "entity": "nurswgvml007",
     "type": "application",
     "source": "atsd",
-    "message": "NURSWGVML007 ssh: error: connect_to localhost port 8882: failed.",
+    "message": "NURSWGVML007 ssh: error: connect_to port 8882: failed.",
     "tags": {"type": "hello", "source": "world"}
 }]
 ```
@@ -41,7 +41,7 @@ POST /api/v1/messages/query
     "type": "application",
     "source": "atsd",
     "severity": "NORMAL",
-    "message": "NURSWGVML007 ssh: error: connect_to localhost port 8882: failed.",
+    "message": "NURSWGVML007 ssh: error: connect_to port 8882: failed.",
     "date": "2016-06-15T09:42:32.886Z"
   }
 ]
