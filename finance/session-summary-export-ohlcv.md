@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves order book snapshots in CSV format.
+Retrieves **stored** OHLCV bars in CSV format. The stored bars are created by inserting OHLCV records using the [`OHLCV: insert`](`/api/v1/trade-session-summary/import`) endpoint.
 
 ## Request
 
@@ -21,7 +21,7 @@ Retrieves order book snapshots in CSV format.
 | `endDate`  | **[Required]** End date in [ISO format](../shared/date-format.md#supported-formats), exclusive | `"2022-01-01T00:00:00Z"` |
 | `session` | Session name.  All session types are retrieved if not specified. | `DAY` |
 | `stage` | Session stage. All stages are retrieved if not specified. | `O` |
-| `fields` | List of statistics to include in the response.<br>If specified, `datetime`, `symbol`, and at least one [statistics](statistics-fields.md) field must be present.<br>If not specified, `datetime,session,stage,symbol,class,exchange` + all statistics are returned. | `datetime,class,symbol,close,openinterest` |
+| `fields` | List of statistics to include in the response.<br>If specified, `datetime`, `symbol`, and at least one [statistics](statistics-fields.md) field must be present.<br>If not specified, `datetime,session,stage,symbol,class,exchange` + all statistics are returned. | `datetime,class,symbol,open,high,low,close,vwap,voltoday,numtrades` |
 
 :::tip Note
 `symbol`, `class`, `session`, and `stage` fields can enumerate multiple values specified as a comma-separated list `symbol=A,B` or multiple parameters in the query string `&symbol=A&symbol=B`.
@@ -30,7 +30,7 @@ Retrieves order book snapshots in CSV format.
 ## Example
 
 ```elm
-GET /api/v1/trades?class=XCBO&symbol=VIX20210216P00035000,VIX20210216P00040000&startDate=2021-02-10T00%3A00%3A00Z&endDate=2021-02-11T00%3A00%3A00Z&fields=datetime,class,symbol,close,openinterest
+GET /api/v1/trades?class=IEXG&symbol=TSLA&startDate=2021-02-10T00%3A00%3A00Z&endDate=2021-02-11T00%3A00%3A00Z&fields=datetime,class,symbol,open,high,low,close,vwap,voltoday,numtrades
 ```
 
 ```txt

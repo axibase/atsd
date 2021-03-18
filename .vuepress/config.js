@@ -364,21 +364,22 @@ const financeMenu = [
     {
         title: "Reading Data", children: [
             ['trades-export.md', 'Trades'],
-            ['ohlcv-export.md', 'OHLCV'],
-            ['statistics-export.md', 'Statistics'],
-            ['session-summary-export.md', 'Session Summary'],
+            ['ohlcv-export.md', 'Calculated OHLCV Bars'],
+            ['session-summary-export-ohlcv.md', 'Stored OHLCV Bars'],
+            ['statistics-export-quotes.md', 'Quotes'],
+            ['session-summary-export.md', 'Snapshots'],
+            ['reference-export.md', 'Reference Data'],
             ['version-export.md', 'Reference Versions']
         ]
     },    
     {
         title: "Writing Data", children: [
             ['command-trade-insert.md', 'Insert Trades'],
-            ['trades-upload.md', 'Backfill Trades'],
+            ['session-summary-import-ohlcv.md', 'Insert OHLCV Bars'],
             ['command-statistics-insert-quotes.md', 'Insert Quotes'],
-            ['command-statistics-insert.md', 'Insert Statistics'],
-            ['session-summary-import-ohlcv.md', 'Insert OHLCV'],
-            ['session-summary-import.md', 'Insert Session Summary'],
+            ['session-summary-import.md', 'Insert Snapshots'],
             ['command-instrument-entity.md', 'Insert Reference Data'],
+            ['trades-upload.md', 'Backfill Trades'],
             ['trades-delete.md', 'Delete Trades'],
             ['instrument-delete.md', 'Delete Instrument']
         ]
@@ -393,21 +394,20 @@ const financeMenuRu = [
         title: "Экспорт данных", children: [
             ['../trades-export.md', 'Сделки'],
             ['../ohlcv-export.md', 'OHLCV'],
-            ['../statistics-export.md', 'Статистики'],
-            ['../session-summary-export.md', 'Сессии'],
-            ['../version-export.md', 'Версионирование']
+            ['../statistics-export-quotes.md', 'Котировки'],
+            ['../session-summary-export.md', 'Снэпшоты'],
+            ['../reference-export.md', 'Референтные данные'],
+            ['../version-export.md', 'Версии реф. данных']
         ]
     },    
     {
         title: "Запись данных", children: [
             ['../command-trade-insert.md', 'Сделки'],
-            ['../trades-upload.md', 'Сделки (сверка)'],
-            ['../command-statistics-insert-quotes.md', 'Котировки'],
-            ['../command-statistics-insert.md', 'Статистики'],
             ['../session-summary-import-ohlcv.md', 'OHLCV'],
-            ['../session-summary-import.md', 'Сессии'],
+            ['../command-statistics-insert-quotes.md', 'Котировки'],
+            ['../session-summary-import.md', 'Снэпшоты'],
             ['../command-instrument-entity.md', 'Референтные данные'],
-            ['../command-security-definitions.md', 'Параметры инструментов'],
+            ['../trades-upload.md', 'Сделки (верификация)'],
             ['../trades-delete.md', 'Удаление сделок'],
             ['../instrument-delete.md', 'Удаление инструментов']
         ]

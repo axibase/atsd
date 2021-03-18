@@ -71,29 +71,11 @@ ORDER BY datetime
 * API using [`trade-session-summary/export`](./session-summary-export.md) endpoint:
 
 ```elm
-POST /api/v1/trade-session-summary/export
-```
-
-Payload:
-
-```json
-{
-    "startDate": "2021-03-12T00:00:00Z",
-    "endDate":   "2021-03-15T00:00:00Z",
-    "instruments": [{
-        "symbol" : "TSLA", "class" : "IEXG"
-    }],
-    "stages": ["N"],
-    "sessions": ["DAY"],
-    "fields": ["datetime", "entity", "stage", "open", "close", "high", "low"]
-}
+GET /api/v1/trades?class=XCBO&symbol=VIX20210216P00035000,VIX20210216P00040000&startDate=2021-02-10T00%3A00%3A00Z&endDate=2021-02-11T00%3A00%3A00Z&fields=datetime,class,symbol,close
 ```
 
 ```txt
-datetime,entity,stage,open,close,high,low
-2021-03-10T21:00:00Z,tsla_[iexg],N,700.3,668.06,717.85,655.06
-2021-03-11T21:00:00Z,tsla_[iexg],N,699.4,699.6,702.5,677.18
-2021-03-12T21:00:00Z,tsla_[iexg],N,670,693.73,694.88,666.1394
-2021-03-15T20:00:00Z,tsla_[iexg],N,694.09,707.94,713.18,684.04
-2021-03-16T20:00:00Z,tsla_[iexg],N,703.35,676.88,707.92,671
+datetime,class,symbol,close
+2021-02-10T20:45:00.000Z,XCBO,VIX20210216P00035000,10.22,34502
+2021-02-10T20:45:00.000Z,XCBO,VIX20210216P00040000,15.12,18103
 ```

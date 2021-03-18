@@ -17,7 +17,7 @@ Retrieves statistics for the instrument in JSON format.
 | `type` | **[Required]** Set to `statistics`. |
 | `entity` | **[Required]** Set to `<symbol>_[<class_code>]`. |
 | `startDate` | **[Required]** Set to `1970-01-01T00:00:00Z`.  |
-| `endDate` | **[Required]** Set to `NOW`. |
+| `endDate` | **[Required]** Set to `now`. |
 | `timezone` | Time zone for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 | `workdayCalendar` | Workday calendar for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 

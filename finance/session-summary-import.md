@@ -1,8 +1,10 @@
-# Import Session Summary
+# Insert Snapshots
 
 ## Description
 
-Insert session summary records in CSV format.
+Insert order book snapshots in CSV format.
+
+An order book snapshot describes the book state at a particular point of time during the trading day and may include a large set of current and intraday [statistics](statistics-fields.md). It is primarily used to capture the book state at the start and the end of trading sessions and auction stages.
 
 ## Request
 
@@ -14,9 +16,9 @@ Insert session summary records in CSV format.
 
 | Name | Default Value | Description |
 |---|---|---|
-| `add_new_instruments` | `false` | Insert records for the instrument if the instrument is not yet created in ATSD |
+| `add_new_instruments` | `false` | Insert records for instruments that are not present in the database |
 
-The parameters can be set as follows:
+The payload parameters can be set as follows:
 
 * Both file and parameters as `multipart/form-data` elements, or
 * Parameters in query string, file content in body
@@ -46,10 +48,16 @@ curl --insecure --include --user {username}:{password} -X POST \
 
 ## Validating Results
 
-* UI. Only last day's records are displayed:
+* API using [`trade-session-summary/export`](./session-summary-export.md) endpoint:
 
 ```elm
-https://atsd_hostname:8443/financial/instrument/properties/statistics?entity=TSLA_[IEXG]
+GET /api/v1/trades?class=XCBO&symbol=VIX20210216P00035000,VIX20210216P00040000&startDate=2021-02-10T00%3A00%3A00Z&endDate=2021-02-11T00%3A00%3A00Z
+```
+
+```txt
+datetime,class,symbol,close,openinterest
+2021-02-10T20:45:00.000Z,XCBO,VIX20210216P00035000,10.22,34502
+2021-02-10T20:45:00.000Z,XCBO,VIX20210216P00040000,15.12,18103
 ```
 
 * SQL using [`atsd_session_summary`](./sql.md#atsd_trade-table) table:
@@ -176,29 +184,8 @@ SELECT datetime, class, symbol, type, stage,
     yieldatprevwapr,
     yieldatwaprice
   FROM atsd_session_summary
-WHERE class = 'IEXG' AND symbol = 'TSLA'
+WHERE class = 'XCBO' AND symbol IN ('VIX20210216P00035000', 'VIX20210216P00040000')
   AND type = 'Day' AND stage = 'N'
-  AND datetime between '2021-02-15' and '2021-02-17'
+  AND datetime between '2021-02-10' AND '2021-02-11' EXCL
 ORDER BY datetime
-```
-
-* API using [`trade-session-summary/export`](./session-summary-export.md) endpoint:
-
-```elm
-POST /api/v1/trade-session-summary/export
-```
-
-Payload:
-
-```json
-{
-    "startDate": "2021-02-15T00:00:00Z",
-    "endDate":   "2021-02-17T00:00:00Z",
-    "instruments": [{
-        "symbol" : "TSLA", "class" : "IEXG"
-    }],
-    "stages": ["N", "O"],
-    "sessions": ["DAY"],
-    "fields": ["datetime", "entity", "stage", "open", "close", "high", "low", "voltoday"]
-}
 ```

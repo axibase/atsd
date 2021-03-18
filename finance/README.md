@@ -1,21 +1,21 @@
 # Introduction
 
-**Axibase Time Series Database** is a scalable platform for storing and analyzing financial market data such as trades and quotes, as well as end-of-day, session, and auction statistics.
+**Axibase Time Series Database** is a scalable platform for storing and analyzing financial market data such as trades, quotes, order book snapshots, and reference data.
 
 ## Key Features
 
-* Parallel query engine for fast data access
+* Parallel query engine for fast indexed data access
 * Extended [SQL](sql.md) syntax with OHLCV and VWAP aggregators
 * Flexible filtering based on reference data, trading calendars, and index composition
 
 ## Supported Data Types
 
-* Trades / Last sale
-* Level 1 Quotes
-* Auction and Imbalance Statistics
-* EOD (End-of-Day) and Session Summary
+* Trades
+* OHLCV Bars
+* Top-of-Book (Level 1) Quotes
+* Order Book Snapshots
 * Reference Data
-* Generic time-series
+* Generic Time Series
 
 ## Insertion Modes
 
@@ -40,8 +40,8 @@
 
 ## Forecasting Algorithms
 
-* ARIMA
 * SVD / SSA
+* ARIMA
 * Holt-Winters
 
 ## Use Cases
@@ -66,4 +66,4 @@ ATSD standalone version is free of charge, including for production purposes.
 
 ## Getting Started
 
-Contact `support-atsd@axibase.com` for assistance with installation and data source integration. Provide links to or attach sample data files as well as identify the preferred programming environment: Java or Python.
+Contact `support-atsd@axibase.com` for assistance with installation and data source integration.
