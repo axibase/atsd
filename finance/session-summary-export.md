@@ -12,16 +12,16 @@ An order book snapshot describes the book state for the specified instrument at 
 
 ### Query Parameters
 
-| **Name** | **Description** | **Example** |
-|-----------|----------------|--------------|
+| **Name** | **Description** |
+|-----------|----------------|
 | `symbol` | **[Required]** Symbol. |
 | `class` | **[Required]** Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `XNGS` for NASDAQ, `XNYS`/`ARCX` for NYSE, `IEXG` for IEX, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX. |
 | `exchange` | Exchange or trading venue name, such as `NASDAQ`, `NYSE`, `IEX`, `LSE`, `MOEX`. |
-| `startDate`  | **[Required]** Start date in [ISO format](../shared/date-format.md#supported-formats), inclusive | `"2021-01-01T00:00:00Z"` |
-| `endDate`  | **[Required]** End date in [ISO format](../shared/date-format.md#supported-formats), exclusive | `"2022-01-01T00:00:00Z"` |
-| `session` | Session name, one of `Morning`, `Day`, `Evening`.<br>Default value: `Day` | `Day` |
-| `stage` | Session [stage](./sessions.md).<br>Default value: `N` | `O` |
-| `fields` | List of statistics to include in the response.<br>If specified, `datetime`, `symbol`, and at least one [statistics](statistics-fields.md) field are required. | `datetime,class,symbol,close,openinterest` |
+| `startDate`  | **[Required]** Start date in [ISO format](../shared/date-format.md#supported-formats), inclusive |
+| `endDate`  | **[Required]** End date in [ISO format](../shared/date-format.md#supported-formats), exclusive |
+| `session` | Session name, one of `Morning`, `Day`, `Evening`.<br>Default value: `Day` |
+| `stage` | Session [stage](./sessions.md).<br>Default value: `N` |
+| `fields` | List of statistics to include in the response.<br>If specified, `datetime`, `symbol`, and at least one [statistics](statistics-fields.md) field are required. |
 
 :::tip Note
 `symbol`, `class`, `session`, and `stage` fields can enumerate multiple values specified as a comma-separated list `symbol=A,B` or multiple parameters in the query string `&symbol=A&symbol=B`.
