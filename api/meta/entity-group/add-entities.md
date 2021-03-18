@@ -74,7 +74,7 @@ POST /api/v1/entity-groups/nmon-aix/entities/add
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/add \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '["nurswgvml010", "nurswgvml011"]'
 ```

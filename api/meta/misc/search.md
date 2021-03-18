@@ -74,7 +74,7 @@ None.
 
 ```bash
 curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,dataType&entityTags=*&entityFields=timeZone' \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Response

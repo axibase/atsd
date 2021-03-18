@@ -154,7 +154,7 @@ GET /api/v1/series/json/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&end
 
 ```bash
 curl "https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&limit=3" \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Response

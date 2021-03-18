@@ -52,7 +52,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Response

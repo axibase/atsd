@@ -40,7 +40,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/replacement-tables/status_codes \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --request DELETE
 ```
 

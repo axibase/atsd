@@ -2,9 +2,9 @@
 
 ## Description
 
-Insert order book snapshots in CSV format.
+Insert one or multiple order book snapshots in CSV format.
 
-An order book snapshot describes the book state at a particular point of time during the trading day and can include a large set of current and intraday [statistics](statistics-fields.md). It is primarily used to capture the book state at the start and the end of trading sessions and auction stages.
+An order book snapshot describes the book state for the specified instrument at a particular point of time during the trading day. The snapshot can include a large set of current and intraday [statistics](statistics-fields.md) and is primarily used to capture the book state at the start and the end of trading sessions as well as during the auction stages.
 
 ## Request
 
@@ -27,12 +27,14 @@ The payload parameters can be set as follows:
 
 The file can be attached as `multipart/form-data` element or as text content in payload.
 
-The content must start with a header containing `datetime`, `symbol`, `class`, `exchange`, `type`, [`stage`](command-trade-insert.md#trading-session-codes) columns and at least one [statistics](statistics-fields.md) column name.
+The content must start with a header containing `datetime`, `symbol`, `class`, `exchange`, `session`, [`stage`](./sessions.md) columns and at least one [statistic](statistics-fields.md).
+
+`session` if one of `Morning`, `Day`, `Evening`. If not specified, session and stage are set to `Day` and `N` respectively.
 
 ```txt
-datetime,exchange,class,symbol,type,stage,close,openinterest
-2021-02-10T20:45:00.000Z,CBOE,XCBO,VIX20210216P00035000,Day,N,10.22,34502
-2021-02-10T20:45:00.000Z,CBOE,XCBO,VIX20210216P00040000,Day,N,15.12,18103
+datetime,exchange,class,symbol,session,stage,auctvolume,auctprice,imbalance
+2021-01-13T16:00:01.859-05:00,IEX,IEXG,TSLA,Day,E,34500,843.67,-8200
+2021-01-13T16:00:01.859-05:00,IEX,IEXG,AAPL,Day,E,50100,128.91,15400
 ```
 
 ## Example
@@ -40,10 +42,10 @@ datetime,exchange,class,symbol,type,stage,close,openinterest
 ### curl
 
 ```sh
-curl --insecure --include --user {username}:{password} -X POST \
-  -F 'data=@summary.csv' \
-  -F 'add_new_instruments=true' \
-  'https://atsd_hostname:8443/api/v1/trade-session-summary/import'
+curl "https://atsd_hostname:8443/api/v1/trade-session-summary/import" \
+  -F "data=@ohlcv-2021-03-21.csv" \
+  -F "add_new_instruments=true" \
+  -k --header "Authorization: Bearer ****"
 ```
 
 ## Validating Results
@@ -51,13 +53,13 @@ curl --insecure --include --user {username}:{password} -X POST \
 * API using [`trade-session-summary/export`](./session-summary-export.md) endpoint:
 
 ```elm
-GET /api/v1/trades?class=XCBO&symbol=VIX20210216P00035000,VIX20210216P00040000&startDate=2021-02-10T00%3A00%3A00Z&endDate=2021-02-11T00%3A00%3A00Z
+GET /api/v1/trade-session-summary/export?class=IEXG&symbol=TSLA,AAPL&stage=E&startDate=2021-01-13T00%3A00%3A00Z&endDate=2021-01-14T00%3A00%3A00Z&fields=datetime,class,symbol,session,stage,auctvolume,auctprice,imbalance
 ```
 
 ```txt
-datetime,class,symbol,close,openinterest
-2021-02-10T20:45:00.000Z,XCBO,VIX20210216P00035000,10.22,34502
-2021-02-10T20:45:00.000Z,XCBO,VIX20210216P00040000,15.12,18103
+datetime,class,symbol,session,stage,auctvolume,auctprice,imbalance
+2021-01-13T21:00:01.859Z,IEXG,TSLA,Day,E,34500,843.67,-8200
+2021-01-13T21:00:01.859Z,IEXG,AAPL,Day,E,50100,128.91,15400
 ```
 
 * SQL using [`atsd_session_summary`](./sql.md#atsd_trade-table) table:
@@ -184,8 +186,8 @@ SELECT datetime, class, symbol, type, stage,
     yieldatprevwapr,
     yieldatwaprice
   FROM atsd_session_summary
-WHERE class = 'XCBO' AND symbol IN ('VIX20210216P00035000', 'VIX20210216P00040000')
-  AND type = 'Day' AND stage = 'N'
-  AND datetime between '2021-02-10' AND '2021-02-11' EXCL
+WHERE class = 'IEXG' AND symbol IN ('TSLA', 'AAPL')
+  AND type = 'Day' AND stage = 'E'
+  AND datetime between '2021-01-13T00:00:00-05:00' AND '2021-01-14T00:00:00-05:00' EXCL
 ORDER BY datetime
 ```

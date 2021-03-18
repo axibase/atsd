@@ -56,7 +56,7 @@ DELETE /api/v1/entities/nurswgvml001
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml001 \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --request DELETE
 ```
 

@@ -5,14 +5,15 @@
 ## Key Features
 
 * Parallel query engine for fast indexed data access
-* Extended [SQL](sql.md) syntax with OHLCV and VWAP aggregators
-* Flexible filtering based on reference data, trading calendars, and index composition
+* Full-featured [SQL](sql.md) syntax with extensions
+* Real-time and historical price index calculators
+* Built-in data availability and data quality assurance tools
 
 ## Supported Data Types
 
 * Trades
 * OHLCV Bars
-* Top-of-Book (Level 1) Quotes
+* Level 1 Quotes
 * Order Book Snapshots
 * Reference Data
 * Generic Time Series
@@ -37,12 +38,6 @@
 * Currencies
 * ETFs/ETNs
 * Indices
-
-## Forecasting Algorithms
-
-* SVD / SSA
-* ARIMA
-* Holt-Winters
 
 ## Use Cases
 

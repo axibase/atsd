@@ -284,7 +284,7 @@ POST /api/v1/series/query
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/series/query \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   -d '[{"metric":"mpstat.cpu_busy", "entity":"nurswgvml007", "startDate":"previous_day", "endDate": "now"}]' > response.json
 ```

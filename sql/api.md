@@ -172,7 +172,7 @@ The `metadataFormat` parameter specifies how metadata is incorporated into a CSV
 
 ```bash
 curl https://atsd_hostname:8443/api/sql  \
-  --insecure --include --compressed \
+  -k --compressed \
   --user {username}:{password} \
   --data 'q=SELECT entity, value FROM "mpstat.cpu_busy" WHERE datetime > now - 1*MINUTE'
 ```
@@ -181,7 +181,7 @@ Use backslash `'\'` to escape single quotes in the query text.
 
 ```bash
 curl https://atsd_hostname:8443/api/sql  \
-  --insecure --include --compressed \
+  -k --compressed \
   --user {username}:{password} \
   --data 'q=SELECT * FROM "mpstat.cpu_busy" WHERE entity =  '\''nurswghbs001'\'' AND datetime between '\''2018-03-01T17:00:00Z'\'' AND '\''2018-03-02T17:00:00Z'\'''
 ```
@@ -190,7 +190,7 @@ Alternatively, encode the query text using URL encoding.
 
 ```bash
 curl https://atsd_hostname:8443/api/sql  \
-  --insecure --include --compressed \
+  -k --compressed \
   --user {username}:{password} \
   --data 'q=SELECT%20*%20FROM%20%22mpstat.cpu_busy%22%20WHERE%20entity%20%3D%20%27nurswghbs001%27%20AND%20datetime%20between%20%272018-03-01T17%3A00%3A00Z%27%20AND%20%272018-03-02T17%3A00%3A00Z%27'
 ```

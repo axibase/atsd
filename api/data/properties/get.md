@@ -49,7 +49,7 @@ GET /api/v1/properties/nurswgvml007/types/disk
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Response

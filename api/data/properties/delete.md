@@ -132,7 +132,7 @@ POST /api/v1/properties/delete
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/properties/delete \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '[{ "type":"disk", "entity":"nurswgvml007", "key":{"file_system":"/","name":"sda1"} }]'
 ```

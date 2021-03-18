@@ -98,7 +98,7 @@ POST /api/v1/alerts/history/query
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/alerts/history \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data @file.json
 ```

@@ -106,7 +106,7 @@ POST /api/v1/alerts/query
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/alerts/query \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '[{"metrics":["loadavg.5m","message"],"entity":"nurswgvml007","minSeverity":"CRITICAL"}]'
 ```

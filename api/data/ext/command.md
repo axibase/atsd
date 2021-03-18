@@ -88,7 +88,7 @@ message e:server001 d:2018-03-04T12:43:20+00:00 t:subject="my subject" m:"Hello,
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/command \
-  --insecure --include --user collector:******** \
+  -k --user collector:******** \
   --header "Content-Type: text/plain" \
   --data-binary $'series e:DL1866 m:speed=650 m:altitude=12300\nproperty e:abc001 t:disk k:name=sda v:size=203459 v:fs_type=nfs'
 ```

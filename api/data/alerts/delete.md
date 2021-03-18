@@ -55,7 +55,7 @@ POST /api/v1/alerts/delete
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/alerts/delete \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '[{"id":10},{"id":14}]'
 ```

@@ -62,7 +62,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Response

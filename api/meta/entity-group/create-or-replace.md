@@ -64,7 +64,7 @@ PUT /api/v1/entity-groups/nmon-collectors
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-collectors \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \
   --data '{"tags": {"collector": "nmon"}}'

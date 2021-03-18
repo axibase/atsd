@@ -57,7 +57,7 @@ PATCH /api/v1/metrics/cpu_busy
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \
   --data '{"label":"CPU Busy Average","tags":{"table":"CollectD CPU Total"}}'

@@ -39,7 +39,7 @@ GET /api/v1/permissions
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/permissions \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Response

@@ -58,7 +58,7 @@ POST /api/v1/metrics/cpu_busy/rename
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy/rename \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '{"name":"cpu_total_busy"}'
 ```

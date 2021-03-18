@@ -60,7 +60,7 @@ POST /api/v1/alerts/update
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/alerts/update \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '[{"id":10, "acknowledged": true},{"id":14, "acknowledged": true}]'
 ```

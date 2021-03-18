@@ -58,7 +58,7 @@ GET /api/v1/trades?class=IEXG&symbol=TSLA&startDate=current_working_day&endDate=
 
 ```bash
 curl "https://atsd_hostname:8443/api/v1/trades?class=IEXG&symbol=TSLA&startDate=2021-01-13%2014%3A00%3A00-05%3A00&endDate=2021-01-13%2014%3A05%3A00-05%3A00" \
- --insecure --include --header "Authorization: Bearer ****"
+ -k --header "Authorization: Bearer ****"
 ```
 
 ```txt

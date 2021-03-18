@@ -57,7 +57,7 @@ PATCH /api/v1/replacement-tables/csv/status_codes
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/status_codes \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --request PATCH \
   --header 'Content-Type: text/csv' \
   --data-binary @status_codes.csv
@@ -94,7 +94,7 @@ PATCH /api/v1/replacement-tables/json/status_codes
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/replacement-tables/status_codes \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \
   --data '{"author":"John Doe","keys":{"-1": "Error","0":"Unknown","1":"OK"}}'

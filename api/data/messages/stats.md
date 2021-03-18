@@ -98,7 +98,7 @@ POST /api/v1/messages/stats/query
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/messages/stats/query \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data @file.json
 ```

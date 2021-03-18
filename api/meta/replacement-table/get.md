@@ -82,7 +82,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/replacement-tables/json/status_codes \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Response
@@ -119,7 +119,7 @@ None.
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/replacement-tables/csv/status_codes \
-  --insecure --include --user {username}:{password}
+  -k --user {username}:{password}
 ```
 
 ### Link Header

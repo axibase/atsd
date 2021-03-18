@@ -62,7 +62,7 @@ POST /api/v1/entity-groups/nmon-aix/entities/delete
 
 ```bash
 curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/delete \
-  --insecure --include --user {username}:{password} \
+  -k --user {username}:{password} \
   --header "Content-Type: application/json" \
   --data '["nurswgvml010", "nurswgvml011"]'
 ```

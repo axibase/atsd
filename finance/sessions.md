@@ -1,8 +1,8 @@
-# Sessions
+# Session Stage
 
-A session code is specified in the [Trade](./command-trade-insert.md) message to mark the transaction executed during a particular trading or settlement regime.
+A session stage is specified in the [Trade](./command-trade-insert.md) command to mark the transaction executed during a particular trading or settlement regime.
 
-The codes are specific to each venue with most exchanges offering pre-market, regular, after-market, and auction sessions.
+The codes are specific to each trading venue.
 
 | Code | Name | Description |
 |---|---|---|
