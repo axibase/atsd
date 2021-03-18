@@ -47,7 +47,7 @@
 | `lowlimitpx` | 91 | DECIMAL | Lower price limit.|
 | `lowoffer` | 43 | DECIMAL |Best offer price during this trading session. |
 | `lowval` | 62 | DECIMAL | Lowest index value. |
-| `marketprice2` | 59 | DECIMAL | Market price (Calc 2). |
+| `marketprice2` | 59 | DECIMAL | Market price (Method 2). |
 | `marketprice` | 40 | DECIMAL | Previous day market price. |
 | `marketpricetoday` | 46 | DECIMAL | Today market price |
 | `marketvolb` | 57 | LONG | Total volume of market buy orders (MOO, MOC) during the auction. |
