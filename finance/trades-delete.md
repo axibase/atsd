@@ -1,8 +1,6 @@
 # Delete Trades
 
-## Description
-
-Deletes trades for the instrument.
+The endpoint deletes trades for the instrument.
 
 The deleted trades are not physically removed from the database until a corresponding [administrative action](#physical_deletion) is performed against the `atsd_trade` table.
 

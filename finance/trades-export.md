@@ -1,8 +1,6 @@
 # Export Trades
 
-## Description
-
-Retrieves trades for the instrument in CSV format.
+The endpoint retrieves trades for the instrument in CSV format.
 
 ## Request
 

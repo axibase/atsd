@@ -1,8 +1,6 @@
 # Statistics
 
-## Description
-
-Retrieves session summary statistics for the instrument in JSON format.
+The endpoint retrieves session summary statistics for the instrument in JSON format.
 
 ## Request
 

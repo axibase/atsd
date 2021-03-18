@@ -1,8 +1,6 @@
 # Export Quotes
 
-## Description
-
-Retrieves current top-of-book (Level 1) quotes for the instrument in JSON format.
+The endpoint retrieves current top-of-book (Level 1) quotes for the instrument in JSON format.
 
 ## Request
 

@@ -1,8 +1,6 @@
 # Import OHLCV Bars
 
-## Description
-
-Insert OHLCV bars in CSV format.
+The endpoint inserts OHLCV bars in CSV format.
 
 ## Request
 

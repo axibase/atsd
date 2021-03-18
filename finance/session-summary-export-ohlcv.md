@@ -1,8 +1,6 @@
 # Export Snapshots
 
-## Description
-
-Retrieves **stored** OHLCV bars in CSV format. The stored bars are created by inserting OHLCV records using the [`OHLCV: insert`](./session-summary-import-ohlcv.md) endpoint.
+The endpoint retrieves **stored** OHLCV bars in CSV format. The stored bars are created by inserting OHLCV records using the [`OHLCV: insert`](./session-summary-import-ohlcv.md) endpoint.
 
 ## Request
 

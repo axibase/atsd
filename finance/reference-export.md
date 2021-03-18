@@ -1,8 +1,6 @@
 # Export Reference Data
 
-## Description
-
-Retrieves instrument reference data in JSON format using the [`entity: get`](../api/meta/entity/get.md) endpoint.
+The endpoint retrieves instrument reference data in JSON format using the [`entity: get`](../api/meta/entity/get.md) endpoint.
 
 ## Request
 

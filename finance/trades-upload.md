@@ -1,7 +1,5 @@
 # Backfill Trades
 
-## Description
-
 The endpoint accepts a daily file archive containing [trade](command-trade-insert.md) commands. It is primarily used for backfilling of missing trades at the end of the trading session, particularly if the trades are streamed over the UDP protocol. The operation is executed asynchronously.
 
 ## Request

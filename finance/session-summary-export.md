@@ -1,8 +1,6 @@
 # Export Snapshots
 
-## Description
-
-Retrieves order book snapshots in CSV format.
+The endpoint retrieves order book snapshots in CSV format.
 
 An order book snapshot describes the book state for the specified instrument at a particular point of time during the trading day. The snapshot can include a large set of current and intraday [statistics](statistics-fields.md) and is primarily used to capture the book state at the start and the end of trading sessions as well as during the auction stages.
 

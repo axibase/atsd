@@ -1,8 +1,6 @@
 # Export Version History
 
-## Description
-
-The endpoint lists modification dates of reference data for the specified instrument.
+The endpoint retrieves reference data modification dates for the specified instrument.
 
 The response contains timestamps, sorted in ascending order.
 

@@ -1,8 +1,6 @@
 # Export Statistics
 
-## Description
-
-Retrieves statistics for the instrument in JSON format.
+The endpoint retrieves statistics for the instrument in JSON format.
 
 ## Request
 

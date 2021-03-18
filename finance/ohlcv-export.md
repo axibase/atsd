@@ -1,8 +1,6 @@
 # Export OHLCV
 
-## Description
-
-Calculates OHLCV and VWAP period statistics (time bars) from raw trades and returns data in CSV format.
+The endpoint calculates OHLCV and VWAP period statistics (time bars) from raw trades and returns data in CSV format.
 
 ## Request
 

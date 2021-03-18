@@ -1,8 +1,6 @@
 # Delete Instrument
 
-## Description
-
-Deletes the instrument and all its trades.
+The endpoint deletes the instrument and all its trades.
 
 ## Request
 
