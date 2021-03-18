@@ -4,9 +4,13 @@
 
 The endpoint lists modification dates of reference data for the specified instrument.
 
-List change dates for the specified entity.
+The response contains timestamps, sorted in ascending order.
 
-The response contains timestamps, sorted in ascending order. The last timestamp equals `versionDate` in the entity model.
+To retrieve reference data at the time of the change, append the `version` parameter to the [`entity: get`](./reference-export.md) request.
+
+```elm
+GET /api/v1/entities/tsla_[iexg]?version=2020-07-10T08:03:44.094Z
+```
 
 ## Request
 
@@ -38,12 +42,4 @@ GET /api/v1/entities/tsla_[iexg]/versions
   "2020-07-10T08:03:44.094Z",
   "2020-10-15T08:58:22.860Z"
 ]
-```
-
-> `2020-10-15T08:58:22.860Z` equals entity `versionDate`
-
-To retrieve entity tags and fields at the time of the change, append the `version` parameter to the [`get`](../api/meta/entity/get.md) request.
-
-```elm
-GET /api/v1/entities/tsla_[iexg]?version=2020-07-10T08:03:44.094Z
 ```
