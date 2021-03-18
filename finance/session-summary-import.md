@@ -4,7 +4,7 @@
 
 Insert order book snapshots in CSV format.
 
-An order book snapshot describes the book state at a particular point of time during the trading day and may include a large set of current and intraday [statistics](statistics-fields.md). It is primarily used to capture the book state at the start and the end of trading sessions and auction stages.
+An order book snapshot describes the book state at a particular point of time during the trading day and can include a large set of current and intraday [statistics](statistics-fields.md). It is primarily used to capture the book state at the start and the end of trading sessions and auction stages.
 
 ## Request
 

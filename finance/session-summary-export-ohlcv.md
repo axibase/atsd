@@ -2,7 +2,7 @@
 
 ## Description
 
-Retrieves **stored** OHLCV bars in CSV format. The stored bars are created by inserting OHLCV records using the [`OHLCV: insert`](`/api/v1/trade-session-summary/import`) endpoint.
+Retrieves **stored** OHLCV bars in CSV format. The stored bars are created by inserting OHLCV records using the [`OHLCV: insert`](./session-summary-import-ohlcv.md) endpoint.
 
 ## Request
 
