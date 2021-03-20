@@ -14,7 +14,7 @@ Enter user name and password for an administrator account.
 
 Download publicly available [IEX](https://iextrading.com/apiexhibita/) market data for four instruments: `TSLA`, `F`, `TM`, `ARKK` covering the period between January 1, 2021 and March 15, 2021.
 
-Download data files with instrument details, filterer trades and daily aggregates.
+Download data files with instrument details, filtered trades and daily aggregates.
 
 ```bash
 curl --remote-name-all https://axibase.com/files/{gs_reference.cmd,gs_eod_ohlcv.csv,gs_trades.csv.gz}
@@ -32,7 +32,7 @@ Insert trades.
 gunzip -c gs_trades.csv.gz > /dev/tcp/atsd_hostname/8085
 ```
 
-Insert eod-of-day aggregates. Replace `<username>` and `<password>` with account credentials specified above.
+Insert end-of-day aggregates. Replace `<username>` and `<password>` with account credentials specified above.
 
 ```bash
 curl -k "https://atsd_hostname:8443/api/v1/trade-session-summary/import" \
