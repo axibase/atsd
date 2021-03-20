@@ -115,4 +115,4 @@ sudo sysctl -p
 
 ## Support
 
-Please contact `support-atsd@axibase.com` with any installation and configuration questions.
+Contact `support-atsd@axibase.com` with any installation questions.

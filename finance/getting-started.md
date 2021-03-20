@@ -139,7 +139,7 @@ Open **Trade Viewer** in the side menu. Select one or multiple instruments to vi
 
 Click **Portals > Add** in the top menu. Create a new portal graphing the results of the above SQL query by copying the query text into the `sql...endsql` setting:
 
-```elm
+```ls
 [configuration]
   width-units = 1
   height-units = 2
@@ -190,7 +190,7 @@ AND datetime BETWEEN current_working_day AND now
 
 ## API
 
-In the url links below, replace `atsd_hostname` with the hostname where ATSD is installed.
+In the URL links below, replace `atsd_hostname` with the hostname where ATSD is installed.
 
 Also replace `<username>` and `<password>` with the correct credentials.
 
@@ -217,6 +217,3 @@ curl "https://atsd_hostname:8443/api/v1/ohlcv?class=IEXG&symbol=TSLA&startDate=2
 :::not
 Congratulations! You have **successfully** completed the **Getting Started** exercises.
 :::
-
-Contact us at `hello@axibase.com` with any questions. 
-
