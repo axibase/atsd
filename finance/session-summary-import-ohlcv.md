@@ -37,7 +37,7 @@ datetime,exchange,class,symbol,open,high,low,close,vwap,voltoday,numtrades
 
 ```sh
 curl "https://atsd_hostname:8443/api/v1/trade-session-summary/import" \
-  -F "data=@ohlcv-2021-03-21.csv" \
+  -F "data=@ohlcv-2021-03-13.csv" \
   -F "add_new_instruments=true" \
   -k --header "Authorization: Bearer ****"
 ```

@@ -61,4 +61,8 @@ ATSD standalone version is free of charge, including for production purposes.
 
 ## Getting Started
 
-Contact `support-atsd@axibase.com` for assistance with installation and data source integration.
+View our [Getting Started](./getting-started.md) guide.
+
+## Support
+
+For technical questions, please contact `support-atsd@axibase.com`.

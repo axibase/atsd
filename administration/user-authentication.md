@@ -54,10 +54,15 @@ To allow access to a variable URL with placeholders, where parameter value or pa
 
 ```ls
 /api/v1/portal/export?id=<>
-# allows querying:
+  Allows:
   - /api/v1/portal/export?id=1
   - /api/v1/portal/export?id=2
   - /api/v1/portal/export?id=abc
+
+/api/v1/csv/<>
+  Allows:
+  - /api/v1/csv/export
+  - /api/v1/csv/import
 ```
 
 Users can issue and revoke tokens on the Account Settings page. The tokens can be set to automatically expire and be subject to IP address restrictions.

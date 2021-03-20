@@ -78,6 +78,6 @@ Retry installation on a supported [architecture](./requirements.md).
 
 ## Technical Support
 
-Contact us at `support-atsd@axibase.com` with installation questions.
+Contact us at `support-atsd@axibase.com` with any technical questions.
 
 Attach [relevant details](../administration/support.md) to your ticket.

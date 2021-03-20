@@ -62,6 +62,11 @@ The standalone version is supported on local `ext4` file system.
 
 In scale-out mode ATSD is deployed on [Apache HBase](https://hbase.apache.org/) on file systems such as [Hadoop](../installation/cloudera.md) (HDFS), [Amazon EMRFS](../installation/aws-emr-s3.md), and [Azure Storage](../installation/azure-hdinsight.md).
 
+### Operating System Settings
+
+* Increase `ulimit` `nofile` parameter to at least `32768`.
+* Enable NTP. If co-located at the trading venue, synchronize with NTP servers operated by the exchange.
+
 ### Network Settings
 
 Increase network buffers and disable Reverse Path Filtering.
@@ -107,3 +112,7 @@ Apply changes.
 ```bash
 sudo sysctl -p
 ```
+
+## Support
+
+Please contact `support-atsd@axibase.com` with any installation and configuration questions.

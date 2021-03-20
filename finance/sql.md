@@ -34,7 +34,9 @@ Each instrument in the database is uniquely identified by a composite key consis
 
 For example, Tesla Inc. common shares traded on the IEX (Investor Exchange) are identified as `IEX` (exchange), `IEXG` (class), `TSLA` (symbol).
 
-### Last Sale (Trades)
+> Examples are based on publicly available market data provided by [IEX](https://iextrading.com/apiexhibita/).
+
+### Trades
 
 ```sql
 SELECT datetime, trade_num, price, quantity
@@ -52,7 +54,7 @@ ORDER BY datetime, trade_num
 | 2021-01-13 14:00:18.013559 | 1368945732 | 844.20 |       16 |
 ```
 
-### OHLCV Data (Intraday Bars)
+### OHLCV Aggregates (Bars)
 
 ```sql
 SELECT datetime, open(), high(), low(), close(), volume(), vwap()

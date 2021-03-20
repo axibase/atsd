@@ -102,6 +102,10 @@ systemctl start moex-consumer-asts-fx
 systemctl start moex-consumer-spectra
 ```
 
+### Настройка параметров операционной системы
+
+* Увеличьте параметр `ulimit` `nofile` до `32768` и выше.
+
 ## Оптимизация сетевого стека для консьюмеров
 
 Сконфигурируйте параметры сетевых буферов и отключите Reverse Path Filtering.

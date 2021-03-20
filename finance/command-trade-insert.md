@@ -14,7 +14,7 @@ tail -n +2 trades.csv > /dev/tcp/localhost/8085
 ```
 
 ```bash
-tar -xOzf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
+tar -xzOf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
 ```
 
 The endpoint is primarily used by market data consumer applications.

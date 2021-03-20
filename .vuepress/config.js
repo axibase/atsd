@@ -385,6 +385,7 @@ const financeMenu = [
         ]
     },
     ['./install.md', 'Installation']
+    ['./getting-started.md', 'Getting Started']
 ];
 
 const financeMenuRu = [
