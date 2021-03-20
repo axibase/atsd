@@ -2,19 +2,21 @@
 
 ## Install ATSD
 
-Install [the database](install.md).
+Install the [database](install.md).
 
 ## Create Account
 
-Log in to the database at `https://atsd_hostname:8443/`. Replace `atsd_hostname` with the hostname where ATSD is installed.
+Log in to the database at `https://atsd_hostname:8443/`.
 
-Enter user name and password for an administrator account.
+Replace `atsd_hostname` with the hostname of the ATSD server.
+
+Enter credentials for an administrator account.
 
 ## Insert Sample Data
 
 Download publicly available [IEX](https://iextrading.com/apiexhibita/) market data for four instruments: `TSLA`, `F`, `TM`, `ARKK` covering the period between January 1, 2021 and March 15, 2021.
 
-Download data files with instrument details, filtered trades and daily aggregates.
+Download files with instrument details, trades, and daily aggregates.
 
 ```bash
 curl --remote-name-all https://axibase.com/files/{gs_reference.cmd,gs_eod_ohlcv.csv,gs_trades.csv.gz}
@@ -32,7 +34,7 @@ Insert trades.
 gunzip -c gs_trades.csv.gz > /dev/tcp/atsd_hostname/8085
 ```
 
-Insert end-of-day aggregates. Replace `<username>` and `<password>` with account credentials specified above.
+Insert end-of-day aggregates. Replace `<username>` and `<password>` with the account credentials specified above.
 
 ```bash
 curl -k "https://atsd_hostname:8443/api/v1/trade-session-summary/import" \
@@ -131,13 +133,17 @@ Explore more examples on [SQL Overview](./sql.md) page including:
 
 ## Trade Viewer
 
-Open **Trade Viewer** in the side menu. Select one or multiple instruments to view and export raw trades or aggregates.
+Open **Trade Viewer** in the side menu.
+
+Select one or multiple instruments to view and export raw trades or aggregates.
 
 ![](./images/trade_viewer_iesg.png)
 
 ## Portals
 
-Click **Portals > Add** in the top menu. Create a new portal graphing the results of the above SQL query by copying the query text into the `sql...endsql` setting:
+Click **Portals > Add** in the top menu.
+
+Create a graph for the above SQL query by copying the query text into the `sql...endsql` setting:
 
 ```ls
 [configuration]
@@ -192,7 +198,7 @@ AND datetime BETWEEN current_working_day AND now
 
 In the URL links below, replace `atsd_hostname` with the hostname where ATSD is installed.
 
-Also replace `<username>` and `<password>` with the correct credentials.
+Replace `<username>` and `<password>` with the correct credentials.
 
 Alternatively, create [API tokens](../administration/user-authentication.md#token-authentication) on **Admin > API Tokens** page to access various endpoints.
 
@@ -214,6 +220,6 @@ curl "https://atsd_hostname:8443/api/v1/ohlcv?class=IEXG&symbol=TSLA&startDate=2
 
 ## Summary
 
-:::not
-Congratulations! You have **successfully** completed the **Getting Started** exercises.
+:::tip Congratulations!
+You have **successfully** completed the **Getting Started** exercises.
 :::
