@@ -1,6 +1,8 @@
 import java.io.*;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -15,15 +17,40 @@ public class ConsumerLatencyParser {
 		//statistics.19-02-2021.1.log.gz
 		return Integer.parseInt(name.split("\\.")[name.split("\\.").length-3]);
 	}
+	
+	private static DateTimeFormatter DTF_MIN = DateTimeFormatter.ofPattern("yyMMddHHmm");
+	
+	// not Thread-safe, but 40% faster
+	//210224180237044631 > 2102241802 37044631
+	private static String lastMinuteTime = null;
+	private static LocalDateTime lastLocalDateTime = null;
+	private static LocalDateTime parseMicro(String str) {
+		long nanos = 1000L*Integer.parseInt(str.substring(10));
+		String minPart = str.substring(0, 10);
+		if (minPart.equals(lastMinuteTime)) {
+			return lastLocalDateTime.plusNanos(nanos);
+		}
+			
+		lastMinuteTime = minPart;
+		lastLocalDateTime = DTF_MIN.parse(minPart, LocalDateTime::from);
+		return lastLocalDateTime.plusNanos(nanos);
+	}
 
 	public static void main(String[] args) throws Exception {
 
-		System.out.println("Start");
-		
 		String directory = args[0];
 		String filePrefix = args[1];
 		String date = args[2];
 		String csvPath = args.length > 3 ? args[3] : null;
+		
+		System.out.println("Start " + directory + " : " + filePrefix + " : " + date + " : " + csvPath);
+		
+		//24-02-2021
+		if (date.equals("-")) {
+			String prevMskDate = Instant.now().atZone(ZoneId.of("Europe/Moscow")).minusDays(1).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+			System.out.println("Use previous date " + prevMskDate + " in Europe/Moscow timezone");
+			date = prevMskDate;
+		}
 
 		int mode = args.length > 4 ? Integer.parseInt(args[4]) : 0;
 		if (mode <= 0) {
@@ -43,7 +70,8 @@ public class ConsumerLatencyParser {
 			throw new Exception("Invalid directory: " + directory);
 		}
 		
-		File[] files = new File(directory).listFiles(f -> f.getName().startsWith(filePrefix + "." + date + ".") && f.getName().endsWith(".log.gz") && f.length()>0);		
+		String namePrefix = filePrefix + "." + date + ".";
+		File[] files = new File(directory).listFiles(f -> f.getName().startsWith(namePrefix) && f.getName().endsWith(".log.gz") && f.length()>0);		
 		
 		if (files == null) {
 			throw new Exception("No files matched: " + directory + "/" + filePrefix + "." + date + ".*.log.gz");
@@ -104,19 +132,23 @@ public class ConsumerLatencyParser {
 			int indexMDEntryTime = -1;
 			int indexTradingSessionID = -1;
 
-			int lineCount = 0;
+			BufferedReader br = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(f))));
+			
 			long startTime = System.currentTimeMillis();
 			long lastLogTime = System.currentTimeMillis();
-
-			BufferedReader br = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(f))));
+			long lastLogCount = 0;
+			int lineCount = 0;
+			
 			String line = br.readLine();
 			do {
 				
 				lineCount++;
 				
 				if (System.currentTimeMillis() - lastLogTime > 10000) {
-					System.out.println("processing line " + lineCount + " : " + line);
+					double msgPerSec = ((lineCount-lastLogCount)/(System.currentTimeMillis() - lastLogTime))*1000L;
+					System.out.println("processing line " + lineCount + " : " + line + " : msg/sec: " + String.format("%.0f", msgPerSec));
 					lastLogTime = System.currentTimeMillis();
+					lastLogCount = lineCount;
 				}
 
 				if (header == null) {
@@ -142,7 +174,7 @@ public class ConsumerLatencyParser {
 					//only read
 					continue;
 				}
-				
+
 				String[] sp = line.split(",", -1);
 				if (sp.length != header.size()){
 					System.err.println("Mismatch in columns: " + header.size() + " : " + sp.length + " : " + line);
@@ -183,7 +215,7 @@ public class ConsumerLatencyParser {
 						}
 					}
 				}
-				
+
 				LocalDateTime sendingTime = getSendingTime(sp, indexSendingTime);
 
 				int minutes_of_day = sendingTime.getHour()*60 + sendingTime.getMinute();
@@ -224,14 +256,12 @@ public class ConsumerLatencyParser {
 						continue;
 					}
 				}
-				
-
 
 				LocalDateTime processTime = getTimeFromStandardFormat(sp, indexProcessTime);
 				LocalDateTime receiveTime = getTimeFromStandardFormat(sp, indexReceiveTime);
 				LocalDateTime lastUpdateTime = getTimeFromStandardFormat(sp, indexLastUpdateTime);
 				LocalDateTime entryTime = getEntryTime(sp, indexMDEntryDate, indexMDEntryTime, indexReceiveTime);
-				
+
 				if (mode >= 1) {
 					//only read and parse
 					continue;
@@ -384,7 +414,7 @@ public class ConsumerLatencyParser {
 		if (str.isEmpty()) {
 			return null;
 		}
-		return LocalDateTime.parse(str, DTF_MICRO);
+		return parseMicro(str);
 	}
 	
 	public static LocalDateTime getSendingTime(String[] sp, int idx) {
@@ -396,7 +426,7 @@ public class ConsumerLatencyParser {
 			return null;
 		}
 		if (str.length() == 18) {
-			return LocalDateTime.parse(str, DTF_MICRO);
+			return parseMicro(str);
 		} else if (str.length() == 17) {
 			return LocalDateTime.parse(str.substring(2), DTF_MILLI);
 		} else {
@@ -436,8 +466,10 @@ public class ConsumerLatencyParser {
 			// 70958834009 > 070958834009
 			timeStr = "0" + timeStr;
 			df = DTF_MICRO;
+			return parseMicro(dateStr + timeStr);
 		} else if (tlen == 12) {
 			df = DTF_MICRO;
+			return parseMicro(dateStr + timeStr);
 		} else if (tlen == 14) {
 			timeStr = "0" + timeStr;
 			df = DTF_NANO;

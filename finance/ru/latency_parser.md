@@ -124,7 +124,7 @@ dt=$1
 # dt format is dd-MM-yyyy
 
 if [ -z "$dt" ]; then
-  dt=`date -d '-1 day' '+%d-%m-%Y'`
+  dt=`TZ=":Europe/Moscow" date -d '-1 day' '+%d-%m-%Y'`
 fi
 
 work_dir=/path/to/consumer_latency_parser_directory
