@@ -85,10 +85,22 @@ WHERE class = 'IEXG' AND symbol = 'TSLA'
 View reference data:
 
 ```sql
-SELECT tags.symbol, tags.class_code, tags.figi, tags.type, tags.currency, tags.name
+SELECT tags.symbol, tags.class_code, tags.figi, tags.type, tags.region, tags.currency, tags.name
   FROM atsd_entity
 WHERE tags.class_code = 'IEXG' --AND tags.symbol IN ('TSLA', 'F', 'TM', 'ARKK')
   ORDER BY tags.symbol
+```
+
+View daily results for US auto manufacturers:
+
+```sql
+SELECT datetime, symbol, open, close, voltoday AS "volume",
+  numtrades, ROUND(valtoday/1000000, 0) AS "volume_$M"
+  FROM atsd_session_summary
+WHERE class = 'IEXG' AND entity.tags.region = 'US' AND entity.tags.industry = 'Autos'
+  AND datetime BETWEEN '2021-03-12 00:00:00' AND '2021-03-15 00:00:00'
+  WITH TIMEZONE = 'US/Eastern'
+  ORDER BY symbol, datetime
 ```
 
 Calculate the ratio between two instruments based on last trade price:
@@ -99,10 +111,10 @@ SELECT datetime,
   LAST(CASE symbol WHEN 'F' THEN price ELSE null END) last_F,
   ROUND(last_TSLA/last_F, 6) AS "TSLA/F"
 FROM atsd_trade
-WHERE class = 'IEXG' AND symbol IN ('TSLA', 'F')
-AND datetime BETWEEN '2021-03-05 14:00:00' AND '2021-03-05 14:05:00'
-WITH TIMEZONE = 'US/Eastern', ROW_NUMBER(1 ORDER BY time, trade_num) >= 0
-ORDER BY datetime, trade_num
+  WHERE class = 'IEXG' AND symbol IN ('TSLA', 'F')
+  AND datetime BETWEEN '2021-03-05 14:00:00' AND '2021-03-05 14:05:00'
+  WITH TIMEZONE = 'US/Eastern', ROW_NUMBER(1 ORDER BY time, trade_num) >= 0
+  ORDER BY datetime, trade_num
 ```
 
 Calculate 1-minute OHLCV bars of the above ratio:
@@ -118,10 +130,10 @@ FROM (
     LAST(CASE symbol WHEN 'F' THEN price ELSE null END) last_F,
     ROUND(last_TSLA/last_F, 6) AS "ratio"
   FROM atsd_trade
-  WHERE class = 'IEXG' AND symbol IN ('TSLA', 'F')
-  AND datetime BETWEEN '2021-03-05 14:00:00' AND '2021-03-05 14:05:00'
-  WITH ROW_NUMBER(1 ORDER BY time, trade_num) >= 0
-  ORDER BY datetime, trade_num
+    WHERE class = 'IEXG' AND symbol IN ('TSLA', 'F')
+    AND datetime BETWEEN '2021-03-05 14:00:00' AND '2021-03-05 14:05:00'
+    WITH ROW_NUMBER(1 ORDER BY time, trade_num) >= 0
+    ORDER BY datetime, trade_num
 ) GROUP BY PERIOD(1 MINUTE)
 WITH TIMEZONE = 'US/Eastern'
 ```
@@ -192,6 +204,28 @@ To view the chart based on real-time data, the interval condition can be modifie
 
 ```sql
 AND datetime BETWEEN current_working_day AND now
+```
+
+## Instrument Groups
+
+Open **Instrument Groups > Create** page and create an expression-based watch list which is populated and stays updated based on reference data.
+
+Click **Expression** tab and enter a filter expression.
+
+```sql
+tags.region = 'US' AND tags.industry = 'Autos'
+```
+
+![](./images/iexg_auto_entity_group.png)
+
+```sql
+SELECT datetime, symbol, open, close, voltoday AS "volume",
+  numtrades, ROUND(valtoday/1000000, 0) AS "volume_$M"
+  FROM atsd_session_summary
+WHERE class = 'IEXG' AND is_entity_in_group(to_entity(symbol, class), 'us-auto')
+  AND datetime BETWEEN '2021-03-12 00:00:00' AND '2021-03-15 00:00:00'
+  WITH TIMEZONE = 'US/Eastern'
+  ORDER BY symbol, datetime
 ```
 
 ## API
