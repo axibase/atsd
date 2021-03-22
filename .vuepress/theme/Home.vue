@@ -176,7 +176,7 @@ export default {
 
   .features
     padding 1.2rem 0
-    margin-bottom: 80px;
+    margin-bottom: 15px;
     margin-top 2.5rem
     display flex
     flex-wrap wrap

@@ -42,7 +42,7 @@ if false and (cres == true or eq(cres, 0)) and zip_size > 10000 then
 
 Для отправки архива скрипту `psf.ps1` потребуются права.
 
-Зайдите в интерфейс ATSD по ссылке `https://atsd_hostname:8443` и на странице **Admin > API Tokens** создайте токен для POST метода с URL `/api/v1/trades/upload`.
+Зайдите в интерфейс ATSD по ссылке `https://atsd_hostname:8443` и на странице **Admin > API Tokens** создайте токен для `POST` метода с URL `/api/v1/trades/upload`.
 
 ![](./images/trade_upload_api_token.png)
 
@@ -54,7 +54,7 @@ $Headers = @{Authorization = "Bearer <API_TOKEN>"}
 
 ## Повторная проверка
 
-Удалите csv,zip,log файлы из директории `EXPORT_DIR`.
+Удалите `csv`,`zip`,`log` файлы из директории `EXPORT_DIR`.
 
 Включите обратно отправку архива в скрипте `export_alltrades.lua`.
 
@@ -64,7 +64,7 @@ if (cres == true or eq(cres, 0)) and zip_size > 10000 then
 
 Запустите скрипт и проверьте директорию `EXPORT_DIR`. В директории должен остаться zip архив `all_trades_{date}.zip` и `upload_{date}.log` файлы, в последнем будет приведен номер задачи, полученный от ATSD, например:
 
-```
+```txt
 file                           size   jobId
 ----                           ----   -----
 all_trades_20210318.zip   392104756   f4574887-b549-40de-93c4-5ccb1e6ed23b
@@ -83,4 +83,3 @@ if true or utc_date.hour >= 21 then
 :::tip Поздравляем!
 Настройка успешно завершена.
 :::
-
