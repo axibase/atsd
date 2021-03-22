@@ -12,8 +12,8 @@ features:
 - title: Высокая скорость чтения
   details: Параллельный движок экспорта данных с различными критериями поиска.
 - title: Удобство SQL
-  details: Расширенный <a href="sql.html">SQL</a>](./sql.md) синтаксис с оптимизированными вычислениями.
-footer: Copyright © 2021 Axibase. Терминал QUIK© 2000-2021 ARQA Technologies 
+  details: Расширенный <a href="sql.html">SQL</a> синтаксис с оптимизированными вычислениями.
+footer: Copyright © 2021 Axibase. QUIK® is a registered trade mark by ARQA Technologies 
 # /* yaspeller ignore:end */
 ---
 <!-- markdownlint-disable MD002 MD041 MD012 -->
