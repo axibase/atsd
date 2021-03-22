@@ -4,7 +4,7 @@
 
 Установите ATSD согласно [инструкции](install.md), но **без установки** MOEX FAST консьюмеров.
 
-## Создайте директорию
+## Загрузка файлов
 
 Создайте рабочую директорию для скриптов и архивов, далее `EXPORT_DIR`.
 
@@ -14,7 +14,7 @@
 * [`psf.ps1`](https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/psf.ps1)
 * [`zipf.ps1`](https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/zipf.ps1)
 
-## Настройте Lua скрипт
+## Настройка Lua скрипта
 
 Укажите корректное значение для переменной `EXPORT_DIR`.
 
@@ -32,7 +32,7 @@ if true or utc_date.hour >= 21 then
 if false and (cres == true or eq(cres, 0)) and zip_size > 10000 then
 ```
 
-## Запустите Lua скрипт
+## Запуск Lua скрипта
 
 Добавьте `export_alltrades.lua` в загруженные скрипты в терминале Quik.
 

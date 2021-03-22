@@ -9,9 +9,9 @@ features:
 - title: История всех сделок
   details: Периодическое и поточное сохранение обезличенных сделок из терминала QUIK.
 - title: Высокая скорость чтения
-  details: Параллельный движок экспорта данных с различными критериями поиска.
+  details: Параллельный <a href="#отличие-от-стандартных-баз-данных" style="color:orange">движок</a> экспорта данных с различными критериями поиска.
 - title: Удобство SQL
-  details: Расширенный <a href="sql.html">SQL</a> синтаксис с оптимизированными вычислениями.
+  details: Расширенный <a href="sql.html" style="color:orange">SQL</a> синтаксис с оптимизированными вычислениями.
 footer: Copyright © 2021 Axibase. QUIK® is a registered trade mark by ARQA Technologies 
 # /* yaspeller ignore:end */
 ---
