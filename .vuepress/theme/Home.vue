@@ -92,7 +92,7 @@ export default {
     h1
       font-size 3rem
       text-shadow 1px 1px 2px #555
-      margin-top: 0px;
+      margin-top: 15px;
       width 60%;
     .description
       max-width 35rem
@@ -163,7 +163,7 @@ export default {
 
     .feature-images
       position: absolute;
-      top: -48px;
+      top: 48px;
       width: 480px;
 
 

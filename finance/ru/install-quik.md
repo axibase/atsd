@@ -8,7 +8,7 @@
 
 Создайте рабочую директорию для скриптов и архивов, далее `EXPORT_DIR`.
 
-Скопируйте в `EXPORT_DIR` скрипт Lua, а также скрипты Powershell для архивации файлов и отправки архивов в базу данных.
+Скопируйте в `EXPORT_DIR` скрипт Lua, а также скрипты PowerShell для архивации файлов и отправки архивов в базу данных.
 
 * [`export_alltrades.lua`](https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/export_alltrades.lua)
 * [`psf.ps1`](https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/psf.ps1)
@@ -18,7 +18,7 @@
 
 Укажите корректное значение для переменной `EXPORT_DIR`.
 
-Проверьте, что Powershell 7 расположен в `C:\Program Files\PowerShell\7\pwsh.exe`
+Проверьте, что PowerShell 7 расположен в `C:\Program Files\PowerShell\7\pwsh.exe`
 
 Временно отключите проверку времени.
 
@@ -34,7 +34,7 @@ if false and (cres == true or eq(cres, 0)) and zip_size > 10000 then
 
 ## Запуск Lua скрипта
 
-Добавьте `export_alltrades.lua` в загруженные скрипты в терминале Quik.
+Добавьте `export_alltrades.lua` в загруженные скрипты в терминале QUIK.
 
 Запустите скрипт и убедитесь что в целевой директории `EXPORT_DIR` появился `zip` архив.
 
@@ -46,7 +46,7 @@ if false and (cres == true or eq(cres, 0)) and zip_size > 10000 then
 
 ![](./images/trade_upload_api_token.png)
 
-В Powershell скрипте `psf.ps1` укажите значение токена вместо `<API_TOKEN>`.
+В PowerShell скрипте `psf.ps1` укажите значение токена вместо `<API_TOKEN>`.
 
 ```powershell
 $Headers = @{Authorization = "Bearer <API_TOKEN>"}
