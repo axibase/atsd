@@ -149,7 +149,9 @@ export default {
   },
 
   beforeRouteLeave(to, from, next) {
-    this.$refs.page.destroyComments();
+    if (this.$refs.page) {
+      this.$refs.page.destroyComments();
+    }
     next();
   },
 
