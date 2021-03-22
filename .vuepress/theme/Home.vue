@@ -84,7 +84,7 @@ export default {
     height 300px
     padding 80px 0
     color whitesmoke;
-    margin-left: -80px
+    margin-left: -80px;
     img
       max-height 280px
       display block
@@ -93,6 +93,7 @@ export default {
       font-size 3rem
       text-shadow 1px 1px 2px #555
       margin-top: 0px;
+      width 60%;
     .description
       max-width 35rem
       font-size 1.6rem

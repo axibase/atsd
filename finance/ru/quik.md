@@ -1,7 +1,7 @@
 ---
 # /* yaspeller ignore:start */
 home: true
-heroText: Оптимальное хранение<br>биржевых данных.
+heroText: Оптимальное хранение биржевых данных.
 tagline: 
 actionText: Интеграция с терминалом QUIK® →
 actionLink: ./install-quik.md
@@ -19,6 +19,12 @@ footer: Copyright © 2021 Axibase. QUIK® is a registered trade mark by ARQA Tec
 <article class="feature-highlight">
 
 ## Для чего нужна история обезличенных сделок
+
+<div class="feature-images">
+
+![](./images/auto-complete-class.png)
+
+</div>
 
 - Повышение качества обратного тестирования за счет проверки на сделках вместо OHLCV агрегатов
 - Разработка новых стратегий на альтернативных агрегатах (volume bars) и преобразованных рядах
