@@ -16,7 +16,7 @@
       <div class="features" v-if="data.features && data.features.length">
         <div class="feature" v-for="feature in data.features">
           <h2>{{ feature.title }}</h2>
-          <p>{{ feature.details }}</p>
+          <p><span v-html="feature.details"></span></p>
         </div>
       </div>
       <Content custom/>
