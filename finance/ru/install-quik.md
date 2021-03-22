@@ -16,7 +16,9 @@
 
 ## Настройте Lua скрипт
 
-Укажите корректное значение для переменной `EXPORT_DIR`. Проверьте, что Powershell 7 расположен в `C:\Program Files\PowerShell\7\pwsh.exe`
+Укажите корректное значение для переменной `EXPORT_DIR`.
+
+Проверьте, что Powershell 7 расположен в `C:\Program Files\PowerShell\7\pwsh.exe`
 
 Временно отключите проверку времени.
 
