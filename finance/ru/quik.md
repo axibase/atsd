@@ -1,8 +1,9 @@
 ---
 # /* yaspeller ignore:start */
 home: true
-heroText: Оптимальное хранение<br>биржевых данных.
-tagline: Интеграция с QUIK®
+heroText: Оптимальное хранение.
+heroText: биржевых данных.
+tagline: Интеграция с терминалом QUIK®
 actionText: Установка →
 actionLink: ./install-quik.md
 features:
@@ -11,7 +12,7 @@ features:
 - title: Высокая скорость чтения
   details: Параллельный движок экспорта сделок с различными критериями поиска.
 - title: Удобство SQL
-  details: Расширенный [SQL](./sql.md) синтаксис с ускоренными вычислениями.
+  details: Расширенный <a href="sql.html">SQL</a>](./sql.md) синтаксис с ускоренными вычислениями.
 footer: Copyright © 2021 Axibase. Терминал QUIK© 2000-2021 ARQA Technologies 
 # /* yaspeller ignore:end */
 ---

@@ -10,9 +10,9 @@
 
 Скопируйте в `EXPORT_DIR` скрипт Lua, а также скрипты Powershell для архивации файлов и отправки архивов в базу данных.
 
-* [`export_alltrades.lua`](export_alltrades.lua)
-* [`psf.ps1`](psf.ps1)
-* [`zipf.ps1`](zipf.ps1)
+* [`export_alltrades.lua`](https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/export_alltrades.lua)
+* [`psf.ps1`](https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/psf.ps1)
+* [`zipf.ps1`](https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/zipf.ps1)
 
 ## Настройте Lua скрипт
 
@@ -38,7 +38,7 @@ if false and (cres == true or eq(cres, 0)) and zip_size > 10000 then
 
 ## Получение API токена
 
-Для отправки архива скрипту [`psf.ps1`](psf.ps1) потребуются права.
+Для отправки архива скрипту `psf.ps1` потребуются права.
 
 Зайдите в интерфейс ATSD по ссылке `https://atsd_hostname:8443` и на странице **Admin > API Tokens** создайте токен для POST метода с URL `/api/v1/trades/upload`.
 
