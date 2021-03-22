@@ -1,7 +1,7 @@
 ---
 # /* yaspeller ignore:start */
 home: true
-heroText: <div style='margin-top: -20px;'>Оптимальное хранение<br>биржевых данных.</div>
+heroText: <div style='margin-top:-20px;'>Оптимальное хранение<br>биржевых данных.</div>
 tagline: 
 actionText: Интеграция с терминалом QUIK® →
 actionLink: ./install-quik.md
