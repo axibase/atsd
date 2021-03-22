@@ -62,7 +62,7 @@ $Headers = @{Authorization = "Bearer <API_TOKEN>"}
 if (cres == true or eq(cres, 0)) and zip_size > 10000 then
 ```
 
-Запустите скрипт и проверьте директорию `EXPORT_DIR`. В директории должен остаться zip архив `all_trades_{date}.zip` и `upload_{date}.log` файлы, в последнем будет приведен номер задачи, полученный от ATSD, например:
+Запустите скрипт и проверьте директорию `EXPORT_DIR`. В директории должен остаться архив `all_trades_{date}.zip` и `upload_{date}.log` файлы, в последнем будет приведен номер задачи, полученный от ATSD, например:
 
 ```txt
 file                           size   jobId
