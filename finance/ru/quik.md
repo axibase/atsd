@@ -1,8 +1,7 @@
 ---
 # /* yaspeller ignore:start */
 home: true
-heroText: Оптимальное хранение.
-heroText: биржевых данных.
+heroText: Оптимальное хранение биржевых данных.
 tagline: Интеграция с терминалом QUIK®
 actionText: Установка →
 actionLink: ./install-quik.md
