@@ -92,6 +92,7 @@ export default {
     h1
       font-size 3rem
       text-shadow 1px 1px 2px #555
+      margin-top: 0px;
     .description
       max-width 35rem
       font-size 1.6rem

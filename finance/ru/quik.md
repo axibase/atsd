@@ -1,13 +1,13 @@
 ---
 # /* yaspeller ignore:start */
 home: true
-heroText: <div style='margin-top:-20px;'>Оптимальное хранение<br>биржевых данных.</div>
+heroText: Оптимальное хранение<br>биржевых данных.
 tagline: 
 actionText: Интеграция с терминалом QUIK® →
 actionLink: ./install-quik.md
 features:
 - title: История всех сделок
-  details: Периодическое и поточное сохранение обезличенных сделок из терминала QUIK.
+  details: Периодическое и <a href="#поточное-копирование" style="color:orange">поточное</a> сохранение обезличенных сделок из терминала QUIK.
 - title: Высокая скорость чтения
   details: Параллельный <a href="#отличие-от-стандартных-баз-данных" style="color:orange">движок</a> экспорта данных с различными критериями поиска.
 - title: Удобство SQL
