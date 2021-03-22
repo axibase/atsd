@@ -1,9 +1,9 @@
 ---
 # /* yaspeller ignore:start */
 home: true
-heroText: Оптимальное хранение биржевых данных.
-tagline: Интеграция с терминалом QUIK®
-actionText: Установка →
+heroText: <div style='margin-top: -20px;'>Оптимальное хранение<br>биржевых данных.</div>
+tagline: 
+actionText: Интеграция с терминалом QUIK® →
 actionLink: ./install-quik.md
 features:
 - title: История всех сделок
