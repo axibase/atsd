@@ -8,7 +8,7 @@ Retention settings control database size by automatically removing old data as w
 |---|---|---|
 | Series | `atsd_d` | Not deleted. |
 | Properties | `atsd_properties` | Not deleted. |
-| Messages | `atsd_message` | [Deleted](../api/data/messages/delete.md) after 1 year. |
+| Messages | `atsd_messages` | [Deleted](../api/data/messages/delete.md) after 1 year. |
 
 ## Data Tables
 

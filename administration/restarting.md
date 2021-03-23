@@ -213,7 +213,7 @@ cat /opt/atsd/atsd/logs/atsd.log | grep -C 5 "TableExistsException"
 ```ls
 Caused by:
   org.apache.hadoop.ipc.RemoteException:
-  org.apache.hadoop.hbase.TableExistsException: atsd_message
+  org.apache.hadoop.hbase.TableExistsException: atsd_messages
 ```
 
 Remove the ephemeral `/hbase` directory from the Zookeeper cache.
