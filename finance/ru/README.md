@@ -171,11 +171,9 @@ footerActionLink: ./install.md
 - Запись эконометрической статистики и новостей, например из [US Fed FRED](https://fred.stlouisfed.org), WRDS
 
 ```sql
-SELECT date_format(time, 'yyyy') "Year", 
-  SUM(value/4) "Net Lending/Borrowing"
+SELECT datetime, value AS "Net Lending"
   FROM "ad01rc1q027sbea"
 GROUP BY period(1 year)
-  ORDER BY datetime DESC
 ```
 
 </article>
