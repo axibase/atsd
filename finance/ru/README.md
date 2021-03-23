@@ -6,11 +6,11 @@ tagline:
 actionText: Установка в зоне колокации →
 actionLink: ./install.md
 features:
-- title: Интеграция с Московской Биржей
-  details: Запись сделок, заявок, котировок, и референтных данных по всем режимам торгов
+- title: Интеграция с <a href="#интеграция-с-московской-биржей" style="color:orange">Московской Биржей</a>
+  details: Запись сделок, заявок, котировок, и референтных данных во всех режимах
 - title: Высокая скорость записи и чтения
   details: Параллельный <a href="#отличие-от-стандартных-баз-данных" style="color:orange">движок</a> обработки данных с различными критериями поиска.
-- title: Продвинутый SQL
+- title: Продвинутый SQL и распределенные вычисления
   details: Расширенный <a href="sql.html" style="color:orange">SQL</a> синтаксис с оптимизированными вычислениями.
 footer: Copyright © 2021 Axibase.
 footerActionText: Установка
@@ -64,7 +64,7 @@ footerActionLink: ./install.md
 </div>
 
 * Высокопроизводительные FAST консьюмеры, устанавливаемые в зоне колокации для сокращения задержки
-* Получение данных по двум взаимозаменяющим потокам (A и B)
+* Получение данных по двум взаимозаменяемым потокам (A и B)
 * Получение данных из инкрементальных (MSR, OLR, TLR, ISF) и снэпшотных (IDF, MSS, OLS, TLS) потоков
 * Восстановление через снэпшоты и инкрементальные обновления для предотвращения пробелов
 
@@ -90,7 +90,6 @@ footerActionLink: ./install.md
 
 <div class="feature-images">
 
-![](./images/trade_instrument_editor_sm.png) <!-- yaspeller ignore -->
 ![](./images/moex-version-bonds.png) <!-- yaspeller ignore -->
 
 </div>
@@ -114,7 +113,7 @@ footerActionLink: ./install.md
 
 * SQL движок со [специальным синтаксисом](../sql.md) для фильтрации данных по сессиям, аукционам, торговым календарям и принадлежности к индексам <!-- yaspeller ignore -->
 * Интерактивная SQL консоль с автодополнением и синтаксисными подсказками
-* Создание SQL отчетов по расписанию с доставкой по почте, публикацией на файловую систему или в интранет-портал
+* Создание SQL отчетов по расписанию с доставкой по почте, публикацией на файловой системе или в интранет-портале
 * Драйверы [JDBC](https://github.com/axibase/atsd-jdbc) и [ODBC](https://github.com/axibase/atsd-odbc)
 * Финансовые функции с оптимальным вычислением на сервере: OHLCV, VWAP, Beta, COVAR, CORREL
 
@@ -158,6 +157,7 @@ footerActionLink: ./install.md
 * API клиенты с открытым кодом для [Python](https://github.com/axibase/atsd-api-python) и [Java](https://github.com/axibase/atsd-api-java)
 
 </article>
+<article class="feature-highlight">
 
 ## Дополнительные интеграции
 
@@ -168,7 +168,7 @@ footerActionLink: ./install.md
 </div>
 
 * Получение данных от других торговых систем и распространителей консолидированной рыночной информации
-* Запись эконометрической статистики и новостей, например из [US Fed FRED](https://fred.stlouisfed.org), WRDS и т.д.
+* Запись эконометрической статистики и новостей, например из [US Fed FRED](https://fred.stlouisfed.org), WRDS
 
 ```sql
 SELECT date_format(time, 'yyyy') "Year", 
@@ -178,9 +178,16 @@ GROUP BY period(1 year)
   ORDER BY datetime DESC
 ```
 
+</article>
 <article class="feature-highlight">
 
 ## Отличие от хранения данных в файлах
+
+<div class="feature-images">
+
+![](../../images/technology-stack-image.png) <!-- yaspeller ignore -->
+
+</div>
 
 - Поиск по индексу значительно быстрее, чем последовательное чтение файлов
 - Дополнительное ускорение благодаря кэшированию и параллельному чтению
@@ -193,6 +200,12 @@ GROUP BY period(1 year)
 <article class="feature-highlight">
 
 ## Отличие от стандартных баз данных
+
+<div class="feature-images">
+
+![](../../images/atsd-title.png) <!-- yaspeller ignore -->
+
+</div>
 
 - В нереляционной СУБД ATSD устранены накладные расходы, присущие реляционной схеме
 - При этом реализованы ключевые элементы SQL DML для гибкой фильтрации и обработки результатов
