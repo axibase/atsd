@@ -6,7 +6,7 @@ tagline:
 actionText: Установка в зоне колокации →
 actionLink: ./install.md
 features:
-- title: Интеграция с <a href="#интеграция-с-московской-биржей" style="color:orange">Московской</a> Биржей
+- title: Интеграция с Московской Биржей
   details: Запись сделок, заявок, котировок, и референтных данных во всех режимах
 - title: Высокая скорость записи и чтения
   details: Параллельный <a href="#отличие-от-стандартных-баз-данных" style="color:orange">движок</a> обработки данных с различными критериями поиска.
@@ -183,7 +183,7 @@ GROUP BY period(1 year)
 
 <div class="feature-images">
 
-![](./images/arch_snippet.png) <!-- yaspeller ignore -->
+![](./images/seg_read.png) <!-- yaspeller ignore -->
 
 </div>
 
