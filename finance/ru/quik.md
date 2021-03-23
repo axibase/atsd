@@ -12,7 +12,9 @@ features:
   details: Параллельный <a href="#отличие-от-стандартных-баз-данных" style="color:orange">движок</a> экспорта данных с различными критериями поиска.
 - title: Удобство SQL
   details: Расширенный <a href="sql.html" style="color:orange">SQL</a> синтаксис с оптимизированными вычислениями.
-footer: Copyright © 2021 Axibase. QUIK® is a registered trade mark by ARQA Technologies 
+footer: Copyright © 2021 Axibase. QUIK® is a registered trade mark by ARQA Technologies
+footerActionText: Установка
+footerActionLink: ./install-quik.md
 # /* yaspeller ignore:end */
 ---
 <!-- markdownlint-disable MD002 MD041 MD012 -->

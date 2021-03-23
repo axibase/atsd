@@ -20,6 +20,9 @@
         </div>
       </div>
       <Content custom/>
+      <div v-if="data.footerActionText && data.footerActionLink" class="footer-action">
+        <NavLink class="action-button" :item="footerActionLink"/>
+      </div>
       <div class="footer" v-if="data.footer">
         {{ data.footer }}
       </div>
@@ -40,6 +43,12 @@ export default {
       return {
         link: this.data.actionLink,
         text: this.data.actionText
+      }
+    },
+    footerActionLink () {
+      return {
+        link: this.data.footerActionLink,
+        text: this.data.footerActionText
       }
     }
   }
@@ -99,6 +108,8 @@ export default {
       font-size 1.6rem
       line-height 1.3
       color darken(whitesmoke, 10%)
+
+  .hero, .footer-action
     .action-button
       display inline-block
       font-size 1.2rem
@@ -111,6 +122,14 @@ export default {
       border-bottom 1px solid darken($accentColor, 10%)
       &:hover
         background-color lighten($accentColor, 10%)
+
+  .footer-action
+    display flex
+    padding 4rem 0 3rem 0
+
+  .footer-action .action-button
+    display block
+    margin 0 auto;
 
   .feature-highlight
     min-height: 240px;
