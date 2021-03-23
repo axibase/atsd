@@ -4,8 +4,8 @@
 
 | Deployment Mode | Single Node | Distributed |
 | --- | :--- | :--- |
-| RAM | `4+` GB | `16+` GB |
-| Processor | `10+` GHz | `10+` GHz |
+| RAM | `4` GB | `16` GB |
+| Processor | `10` GHz | `10` GHz |
 | Disk Type | Magnetic or SSD | Magnetic or SSD |
 
 :::tip Note
@@ -14,8 +14,9 @@ To calculate the available CPU capacity, multiply the number of cores by CPU clo
 
 ## Disk Space
 
-* Application files: `5` GB.
-* Data Files: `10` GB **minimum**.
+* Application files: `2` GB.
+* Daily log files: `10` GB.
+* Data files: `100` GB.
 
 :::tip Note
 The required disk space depends on the amount of collected data, [compression](../administration/compaction/README.md), and [retention](../administration/data_retention.md) settings.

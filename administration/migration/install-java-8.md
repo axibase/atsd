@@ -50,6 +50,16 @@ alternatives --config java
 alternatives --config javac
 ```
 
+## Configure Environment
+
+Add `JAVA_HOME` path to the user environment in `.bashrc`.
+
+```sh
+jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
+  sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; \
+  echo $jp
+```
+
 ## Verify Installation
 
 Verify that Java 8 is set as the default executable and compiler.

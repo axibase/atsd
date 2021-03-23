@@ -1,16 +1,10 @@
 # Axibase Time Series Database Installation
 
-## Quick Start
+## Hardware Requirements
 
-On Linux 64-bit distributions:
+Review hardware and OS [requirements](./requirements.md) to ensure compatibility and high performance.
 
-```bash
-curl -O https://www.axibase.com/public/atsd.standalone.latest.tar.gz
-tar -xzf atsd.standalone.latest.tar.gz
-./atsd/bin/atsd-tsd.sh start
-```
-
-On [Docker](docker.md):
+## Install On [Docker](docker.md)
 
 ```bash
 docker run -d --name=atsd axibase/atsd:latest && docker logs -f atsd
@@ -18,41 +12,32 @@ docker run -d --name=atsd axibase/atsd:latest && docker logs -f atsd
 
 After installation, review the [Getting Started Guide](../tutorials/getting-started.md) to explore ATSD features.
 
-## Hardware Requirements
+## Install On Linux
 
-Review hardware and OS [requirements](./requirements.md) to ensure compatibility and high performance.
+Install [Java 8](../administration/migration/install-java-8.md).
 
-## Clusters
+Download and unpack installation files.
 
-### AWS Elastic MapReduce (EMR)
+```bash
+curl -O https://www.axibase.com/public/atsd.standalone.latest.tar.gz
+tar -xzf atsd.standalone.latest.tar.gz
+```
 
-* **Mode**: Distributed
-* **File System**: AWS EMRFS / S3
-* **Edition**: Enterprise
+Start the database.
 
-[Install](./aws-emr-s3.md)
+```bash
+./atsd/bin/atsd-tsd.sh start
+```
 
----
+## Install on Cluster
 
-### Azure HDInsight
+* [AWS Elastic MapReduce](./aws-emr-s3.md) (EMR) on AWS EMRFS and S3
+* [Azure HDInsight](./azure-hdinsight.md) on  Azure Storage
+* [Cloudera Distribution Hadoop](./cloudera.md) (CDH) on  HDFS
 
-* **Mode**: Distributed
-* **File System**: Azure Storage
-* **Edition**: Enterprise
+## Finance Edition
 
-[Install](./azure-hdinsight.md)
-
----
-
-### Cloudera Distribution Hadoop
-
-* **Mode**: Distributed
-* **File System**: HDFS
-* **Edition**: Enterprise
-
-[Install](./cloudera.md)
-
----
+* [ATSD Finance Edition](../finance/install.md) installation guide.
 
 ## Technical Support
 

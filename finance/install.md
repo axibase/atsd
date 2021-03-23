@@ -4,14 +4,6 @@
 
 Install [Java 8](../administration/migration/install-java-8.md).
 
-Add `JAVA_HOME` path to the user environment in `.bashrc`.
-
-```sh
-jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; \
-  sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; \
-  echo $jp
-```
-
 ## Install ATSD
 
 Download and unpack installation files.
@@ -42,8 +34,8 @@ Start the database.
 
 ### CPU and Memory
 
-* RAM: `16+` GB
-* CPU: `10+` GHz
+* RAM: `16` GB
+* CPU: `10` GHz
 
 :::tip Note
 To calculate the available CPU capacity, multiply the number of cores by CPU clock speed, for example `4` x `2.5` GHz = `10` GHz.
