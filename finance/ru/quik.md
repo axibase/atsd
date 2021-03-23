@@ -89,7 +89,7 @@ ATSD позволяет сохранять ежедневные данные т�
 
 <div class="feature-images">
 
-![](./images/lua_export_snippet.png) <!-- yaspeller ignore -->
+![](./images/lua_export_snippet_small.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -125,7 +125,7 @@ ATSD позволяет сохранять ежедневные данные т�
 
 <div class="feature-images">
 
-![](./images/moex-trade-viewer.png) <!-- yaspeller ignore -->
+![](./images/moex-trade-viewer-small.png) <!-- yaspeller ignore -->
 
 </div>
 
