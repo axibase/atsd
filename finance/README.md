@@ -57,18 +57,6 @@ footerActionLink: ./install.md
 </article>
 <article class="feature-highlight">
 
-## Supported Data Types
-
-- Trades
-- Quotes
-- Order Book Snapshots
-- OHLCV Bars
-- Reference Information
-- Alternative Time Series
-
-</article>
-<article class="feature-highlight">
-
 ## SQL Engine
 
 <div class="feature-images">
