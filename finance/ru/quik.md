@@ -1,6 +1,8 @@
 ---
 # /* yaspeller ignore:start */
-home: true
+landing: true
+title: Оптимальное хранение биржевых данных.
+description: Оптимальное хранение биржевых данных.
 heroText: Оптимальное хранение биржевых данных.
 tagline:
 actionText: Интеграция с терминалом QUIK® →

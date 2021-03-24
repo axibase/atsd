@@ -1,6 +1,8 @@
 ---
 # /* yaspeller ignore:start */
-home: true
+landing: true
+title: Надежное и оптимальное хранение биржевых данных
+description: Надежное и оптимальное хранение биржевых данных
 heroText: Надежное и оптимальное хранение биржевых данных
 tagline:
 actionText: Установка в DMA/co-location →
