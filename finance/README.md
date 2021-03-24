@@ -1,68 +1,142 @@
-# Introduction
+---
+# /* yaspeller ignore:start */
+landing: true
+title: Fast and reliable datastore for financial market data
+description: Fast and reliable datastore for financial market data
+heroText: Fast and reliable datastore for financial market data
+tagline: Treat your data as an asset
+actionText: Install on Linux →
+actionLink: ./install.md
+features:
+- title: Faster than files and relational DBs
+  details: Parallel query engine with indexed data access
+- title: Extended SQL
+  details: Full-featured <a href="sql.html" style="color:orange">SQL</a> syntax with advanced filtering and aggregations
+- title: Organize it
+  details: Consolidate quotes, trades, snapshots, and security details in one place
+footer: Copyright © 2021 Axibase
+footerActionText: Install ATSD on Linux Today
+footerActionLink: ./install.md
+# /* yaspeller ignore:end */
+---
+<!-- markdownlint-disable MD002 MD041 MD012 -->
+<article class="feature-highlight">
 
-**Axibase Time Series Database** is a scalable platform for storing and analyzing financial market data such as trades, quotes, order book snapshots, and reference data.
+## What you can do with ATSD
 
-## Key Features
+<div class="feature-images">
 
-* Parallel query engine for fast indexed data access
-* Full-featured [SQL](sql.md) syntax with extensions
-* Real-time and historical price index calculators
-* Built-in data availability and data quality assurance tools
+![](./images/trades_vs_bars.png) <!-- yaspeller ignore -->
+
+</div>
+
+- Strategy backtesting on high-frequency data
+- Quantitative and market microstructure research
+- Granular transaction cost analysis and rollup reporting
+- Market surveillance and anomaly detection
+- Non-transparent ETF/ETN decomposition
+
+</article>
+<article class="feature-highlight">
 
 ## Supported Data Types
 
-* Trades
-* OHLCV Bars
-* Level 1 Quotes
-* Order Book Snapshots
-* Reference Data
-* Generic Time Series
+- Trades
+- Quotes
+- Order Book Snapshots
+- OHLCV Bars
+- Reference Information
+- Alternative Time Series
 
-## Insertion Modes
+</article>
 
-* Real-time streaming using FAST, SBE, plain text
-* Scheduled upload from daily archives
+<article class="feature-highlight">
 
-## Data Sources
+## Streaming & Scheduled Market Data
 
-* Consolidated feeds
-* Direct exchange feeds
-* Files
+<div class="feature-images">
 
-## Asset Classes
+![](./images/stock_1.png) <!-- yaspeller ignore -->
 
-* Equities
-* Futures
-* Options
-* Bonds
-* Currencies
-* ETFs/ETNs
-* Indices
+</div>
 
-## Use Cases
+- FAST, SBE, and proprietary protocols
+- Plain text protocol
+- Consolidated and direct feeds
+- Built-in latency monitoring tools
+- End-of-day archives
+- ETL from institutional and retail financial data platforms
 
-* Quantitative research
-* Strategy backtesting
-* Auction/Index/ETF arbitrage
-* Non-transparent ETF decomposition
-* Trade execution reporting
-* Market surveillance
+</article>
+<article class="feature-highlight">
 
-## API Clients
+## SQL Engine
 
-* Open source API clients for [Python](https://github.com/axibase/atsd-api-python) and [Java](https://github.com/axibase/atsd-api-java)
-* Open source [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers
+<div class="feature-images">
 
-## Installation
+![](./ru/images/auto-complete-class.png)
 
-ATSD is supported on major Linux distributions in 64-bit mode. Refer to installation [instructions](./install.md) for hardware requirements and details.
+</div>
 
-ATSD standalone version is free of charge, including for production purposes.
+- Parallel [SQL](./sql.md) engine with syntax extensions
+- Advanced filtering by trading session, auction stage, index composition
+- Optimized aggregates for OHLCV and VWAP calculations
+- Interactive SQL console with auto-completion
+- API [endpoint](../sql/api.md) for programmatic integration
+- Scheduled SQL [reporting](../sql/scheduled-sql.md) with email, file, and web delivery
+- [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers
 
-## Getting Started
+</article>
+<article class="feature-highlight">
 
-Review our [Getting Started](./getting-started.md) guide.
+## REST API
 
-## Support
+<div class="feature-images">
 
-For technical questions, contact us at `support-atsd@axibase.com`.
+![](./images/frac_diff_2.png) <!-- yaspeller ignore -->
+
+</div>
+
+- Trades: [write](./command-trade-insert.md), [read](./trades-export.md)
+- OHLCV bars: [calculate](./ohlcv-export.md), [write](./session-summary-import-ohlcv.md), [read](./session-summary-export-ohlcv.md)
+- Quotes: [write](./command-statistics-insert-quotes.md), [read](./session-summary-import-ohlcv.md)
+- Snapshots: [write](./session-summary-import.md), [read](./session-summary-export.md)
+- Reference data: [write](./command-instrument-entity.md), [read](./reference-export.md)
+- API clients for [Python](https://github.com/axibase/atsd-api-python) and [Java](https://github.com/axibase/atsd-api-java)
+
+</article>
+<article class="feature-highlight">
+
+## Storing Data in ATSD vs Files
+
+<div class="feature-images">
+
+![](./ru/images/seg_read.png) <!-- yaspeller ignore -->
+
+</div>
+
+- Searching records by index is faster than reading files sequentially
+- Extra performance with caching and parallelized scans
+- Non-blocking writes enable multiple concurrent reads
+- Read visibility before transaction committed to disk with memory scans
+- Records can be inserted out-of-order and modified without overwriting archive
+- Filter, aggregate, sort, and create analytical windows close to data
+
+</article>
+<article class="feature-highlight">
+
+## ATSD vs Relational Databases
+
+<div class="feature-images">
+
+![](./images/atsd_db.png) <!-- yaspeller ignore -->
+
+</div>
+
+- Reduced overhead on critical read and write paths
+- Automated sharding of segmented tables
+- Parallelized scans
+- Optimal compression codecs to reduce the I/O and disk space usage
+- Aggregate and analytical functions optimized for financial data
+
+</article>
