@@ -12,7 +12,8 @@
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
     </div>
-    <Home v-else-if="$page.frontmatter.home"/>
+    <!-- Alias `home` with `landing` to prevent side-effects for home page, e.g. fixed title -->
+    <Home v-else-if="$page.frontmatter.home || $page.frontmatter.landing"/>
     <Page v-else :sidebar-items="sidebarItems" :remark-config="remarkConfig" ref="page">
       <slot name="page-top" slot="top"/>
       <slot name="page-bottom" slot="bottom"/>
@@ -57,6 +58,7 @@ export default {
       return (
         !frontmatter.layout &&
         !frontmatter.home &&
+        !frontmatter.landing &&
         frontmatter.sidebar !== false &&
         this.sidebarItems.length
       )
