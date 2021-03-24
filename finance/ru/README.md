@@ -26,7 +26,7 @@ footerActionLink: ./install.md
 
 <div class="feature-images">
 
-![](../images/trades_vs_bars.png) <!-- yaspeller ignore -->
+![](../images/stock_2.png) <!-- yaspeller ignore -->
 
 </div>
 
