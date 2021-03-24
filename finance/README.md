@@ -15,8 +15,8 @@ features:
 - title: Streaming and Batch Updates
   details: Consolidate quotes, trades, snapshots, and reference data in one place
 footer: Copyright © 2021 Axibase
-footerActionText: Install ATSD on Linux Today
-footerActionLink: ./install.md
+footerActionText: Getting Stared Guide
+footerActionLink: ./getting-started.md
 # /* yaspeller ignore:end */
 ---
 <!-- markdownlint-disable MD002 MD041 MD012 -->
