@@ -15,7 +15,7 @@
       </div>
       <div class="features" v-if="data.features && data.features.length">
         <div class="feature" v-for="feature in data.features">
-          <h2>{{ feature.title }}</h2>
+          <h2><span v-html="feature.title"></span></h2>
           <p><span v-html="feature.details"></span></p>
         </div>
       </div>
