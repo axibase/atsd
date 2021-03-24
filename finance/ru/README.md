@@ -12,7 +12,7 @@ features:
   details: <a href="#отличие-от-стандартных-баз-данных" style="color:orange">Параллельная обработка</a> запросов с кэшированием и поиском по индексу.
 - title: Продвинутый SQL и распределенные вычисления
   details: Расширенный <a href="sql.html" style="color:orange">SQL</a> синтаксис с оптимизированными вычислениями.
-footer: Copyright © 2021 Axibase.
+footer: Copyright © 2021 Axibase
 footerActionText: Установка
 footerActionLink: ./install.md
 # /* yaspeller ignore:end */
@@ -24,7 +24,7 @@ footerActionLink: ./install.md
 
 <div class="feature-images">
 
-![](./images/trades_vs_bars.png) <!-- yaspeller ignore -->
+![](../images/trades_vs_bars.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -202,7 +202,7 @@ GROUP BY period(1 year)
 
 <div class="feature-images">
 
-![](../../images/atsd-title.png) <!-- yaspeller ignore -->
+![](../images/atsd_db.png) <!-- yaspeller ignore -->
 
 </div>
 
