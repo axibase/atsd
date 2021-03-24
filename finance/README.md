@@ -9,11 +9,11 @@ actionText: Install on Linux →
 actionLink: ./install.md
 features:
 - title: Faster than files
-  details: Parallel query engine with indexed data access
+  details: Parallel query engine with time- and symbol-indexed data access
 - title: Full-featured SQL
   details: Extended <a href="sql.html" style="color:orange">SQL</a> syntax with advanced filtering and aggregations
 - title: Streaming and Batch Updates
-  details: Consolidate quotes, trades, snapshots, and security details in one place
+  details: Consolidate quotes, trades, snapshots, and reference data in one place
 footer: Copyright © 2021 Axibase
 footerActionText: Install ATSD on Linux Today
 footerActionLink: ./install.md
@@ -94,7 +94,7 @@ footerActionLink: ./install.md
 </article>
 <article class="feature-highlight">
 
-## Storing Data in ATSD vs Files
+## ATSD vs Files
 
 <div class="feature-images">
 
@@ -106,8 +106,8 @@ footerActionLink: ./install.md
 - Extra performance with caching and parallelized scans
 - Non-blocking writes enable multiple concurrent reads
 - Read visibility before transaction committed to disk with memory scans
-- Records can be inserted out-of-order and modified without overwriting archive
-- Filter, aggregate, sort, and create analytical windows close to data
+- Records can be inserted out-of-order and modified in-place
+- Filter, aggregate, sort without copying data to clients
 
 </article>
 <article class="feature-highlight">
@@ -123,7 +123,7 @@ footerActionLink: ./install.md
 - Reduced overhead on critical read and write paths
 - Automated sharding of segmented tables
 - Parallelized scans
-- Optimal compression codecs to reduce the I/O and disk space usage
+- Optimal compression codecs to reduce I/O and disk space usage
 - Aggregate and analytical functions optimized for financial data
 
 </article>
