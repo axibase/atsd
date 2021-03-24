@@ -141,6 +141,7 @@ lzo
 markdown
 Mesos-managed
 metatables
+microstructure
 millennial[s]?
 millis
 mis-configured
@@ -193,6 +194,7 @@ reindex
 repeatable
 repo
 roadmap
+rollup
 runtime
 satisfiable
 scalability
@@ -210,6 +212,7 @@ serializer
 servlet
 setWebhook
 severities
+sharding
 sidebar
 sidebarDepth
 significand

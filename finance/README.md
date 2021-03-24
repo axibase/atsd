@@ -8,11 +8,11 @@ tagline: Treat your data as an asset
 actionText: Install on Linux →
 actionLink: ./install.md
 features:
-- title: Faster than files and relational DBs
+- title: Faster than files
   details: Parallel query engine with indexed data access
-- title: Extended SQL
-  details: Full-featured <a href="sql.html" style="color:orange">SQL</a> syntax with advanced filtering and aggregations
-- title: Organize it
+- title: Full-featured SQL
+  details: Extended <a href="sql.html" style="color:orange">SQL</a> syntax with advanced filtering and aggregations
+- title: Streaming and Batch Updates
   details: Consolidate quotes, trades, snapshots, and security details in one place
 footer: Copyright © 2021 Axibase
 footerActionText: Install ATSD on Linux Today
@@ -39,19 +39,6 @@ footerActionLink: ./install.md
 </article>
 <article class="feature-highlight">
 
-## Supported Data Types
-
-- Trades
-- Quotes
-- Order Book Snapshots
-- OHLCV Bars
-- Reference Information
-- Alternative Time Series
-
-</article>
-
-<article class="feature-highlight">
-
 ## Streaming & Scheduled Market Data
 
 <div class="feature-images">
@@ -70,11 +57,23 @@ footerActionLink: ./install.md
 </article>
 <article class="feature-highlight">
 
+## Supported Data Types
+
+- Trades
+- Quotes
+- Order Book Snapshots
+- OHLCV Bars
+- Reference Information
+- Alternative Time Series
+
+</article>
+<article class="feature-highlight">
+
 ## SQL Engine
 
 <div class="feature-images">
 
-![](./ru/images/auto-complete-class.png)
+![](./ru/images/auto-complete-class.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -93,12 +92,12 @@ footerActionLink: ./install.md
 
 <div class="feature-images">
 
-![](./images/frac_diff_2.png) <!-- yaspeller ignore -->
+![](./images/frac_diff_3.png) <!-- yaspeller ignore -->
 
 </div>
 
 - Trades: [write](./command-trade-insert.md), [read](./trades-export.md)
-- OHLCV bars: [calculate](./ohlcv-export.md), [write](./session-summary-import-ohlcv.md), [read](./session-summary-export-ohlcv.md)
+- OHLCV bars: [calculate](./ohlcv-export.md), [write](./session-summary-import-ohlcv.md), [read](./session-summary-export-ohlcv.md) <!-- yaspeller ignore -->
 - Quotes: [write](./command-statistics-insert-quotes.md), [read](./session-summary-import-ohlcv.md)
 - Snapshots: [write](./session-summary-import.md), [read](./session-summary-export.md)
 - Reference data: [write](./command-instrument-entity.md), [read](./reference-export.md)
@@ -129,7 +128,7 @@ footerActionLink: ./install.md
 
 <div class="feature-images">
 
-![](./images/atsd_db.png) <!-- yaspeller ignore -->
+![](./images/atsd_db_2.png) <!-- yaspeller ignore -->
 
 </div>
 
