@@ -1,6 +1,8 @@
 ---
 # /* yaspeller ignore:start */
-home: true
+landing: true
+title: Fast and reliable datastore for financial market data
+description: Fast and reliable datastore for financial market data
 heroText: Fast and reliable datastore for financial market data
 tagline: Treat your data as an asset
 actionText: Install on Linux →
