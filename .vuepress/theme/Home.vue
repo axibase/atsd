@@ -80,7 +80,7 @@ export default {
   .hero-bg
     // Blue
     // background: #19325b url(../public/images/main_logo.png);
-    background: #111 url(../public/images/main_logo.png);
+    background: #111 url(../public/images/main_logo_2.png);
     background-position-x -60%
     background-size auto 100%
     width: 100vw;
