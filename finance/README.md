@@ -133,13 +133,13 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./images/chat_alerts_3.png) <!-- yaspeller ignore -->
+![](./images/chat_alerts_5.png) <!-- yaspeller ignore -->
 
 </div>
 
-- Built-in latency monitoring with data feed and market break-down
+- Built-in latency monitoring with break-down vy data feed and market
 - ETL collector for FTP/SCP/HTTP integrations with task control
-- Rule engine and scheduled SQL for pre-trade and nightly data checks
+- Rule engine and scheduled SQL for nightly and pre-trade checks
 - Alerting via messengers, webhooks, email
 
 </article>

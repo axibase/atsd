@@ -215,3 +215,19 @@ GROUP BY period(1 year)
 - Реализованные функции подсчета агрегатов учитывают специфику данных
 
 </article>
+<article class="feature-highlight">
+
+## Data Ops
+
+<div class="feature-images">
+
+![](../images/chat_alerts_5.png) <!-- yaspeller ignore -->
+
+</div>
+
+- Встроенные средства мониторинга
+- ETL коллектор для подгрузки и обработки файлов по FTP/SCP/HTTP
+- Движок правил и проверки по расписанию перед началом торгов
+- Уведомления в мессенджеры, вебхуки и на почту
+
+</article>
