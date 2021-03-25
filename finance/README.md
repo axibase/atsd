@@ -133,7 +133,7 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./images/chat_alerts_5.png) <!-- yaspeller ignore -->
+![](./images/chat_alerts_7.png) <!-- yaspeller ignore -->
 
 </div>
 
