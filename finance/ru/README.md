@@ -77,7 +77,7 @@ footerActionLink: ./install.md
 
 <div class="feature-images">
 
-![](./images/consumer_file_latency.png)
+![](./images/consumer_file_latency_2.png)
 
 </div>
 
@@ -204,7 +204,7 @@ GROUP BY period(1 year)
 
 <div class="feature-images">
 
-![](../images/atsd_db.png) <!-- yaspeller ignore -->
+![](../images/atsd_db_2.png) <!-- yaspeller ignore -->
 
 </div>
 

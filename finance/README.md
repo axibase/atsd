@@ -43,7 +43,7 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./images/stock_1.png) <!-- yaspeller ignore -->
+![](./images/stock_3.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -80,7 +80,7 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./images/frac_diff_3.png) <!-- yaspeller ignore -->
+![](./images/frac_diff_4.png) <!-- yaspeller ignore -->
 
 </div>
 
