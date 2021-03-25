@@ -186,7 +186,7 @@ GROUP BY period(1 year)
 
 <div class="feature-images">
 
-![](./images/seg_read.png) <!-- yaspeller ignore -->
+![](../images/read_write_parallel.png) <!-- yaspeller ignore -->
 
 </div>
 

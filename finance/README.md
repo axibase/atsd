@@ -98,7 +98,7 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./ru/images/seg_read.png) <!-- yaspeller ignore -->
+![](./images/read_write_parallel.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -125,5 +125,21 @@ footerActionLink: ./getting-started.md
 - Parallelized scans
 - Optimal compression codecs to reduce I/O and disk space usage
 - Aggregate and analytical functions optimized for financial data
+
+</article>
+<article class="feature-highlight">
+
+## Data Ops Included
+
+<div class="feature-images">
+
+![](./images/chat_alerts_3.png) <!-- yaspeller ignore -->
+
+</div>
+
+- Built-in latency monitoring with data feed and market break-down
+- ETL collector for FTP/SCP/HTTP integrations with task control
+- Rule engine and scheduled SQL for pre-trade and nightly data checks
+- Alerting via messengers, webhooks, email
 
 </article>

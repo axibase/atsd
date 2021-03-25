@@ -58,7 +58,7 @@ ATSD позволяет сохранять ежедневные данные т�
 
 <div class="feature-images">
 
-![](./images/auto-complete-class.png) <!-- yaspeller ignore -->
+![](../images/read_write_parallel.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -76,7 +76,7 @@ ATSD позволяет сохранять ежедневные данные т�
 
 <div class="feature-images">
 
-![](./images/old_ui_left_menu.png) <!-- yaspeller ignore -->
+![](./images/auto-complete-class.png) <!-- yaspeller ignore -->
 
 </div>
 
