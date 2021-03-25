@@ -61,6 +61,7 @@ dateadd
 datagram
 datagrams
 dataset[s]?
+datastore
 datatypes
 datetime
 DBs
@@ -291,3 +292,10 @@ Znode
 логировани(и|е|я|ю|ем)
 asts
 curr
+yaspeller
+heroText
+actionText
+actionLink
+footerActionText
+footerActionLink
+pre-trade

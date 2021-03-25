@@ -137,7 +137,7 @@ footerActionLink: ./getting-started.md
 
 </div>
 
-- Built-in latency monitoring with break-down vy data feed and market
+- Built-in latency monitoring with break-down by data feed and market
 - ETL collector for FTP/SCP/HTTP integrations with task control
 - Rule engine and scheduled SQL for nightly and pre-trade checks
 - Alerting via messengers, webhooks, email
