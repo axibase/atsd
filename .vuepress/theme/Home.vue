@@ -187,7 +187,7 @@ export default {
 
 
     img
-      width: 480px;
+      max-width: 480px;
       border-radius 4px
       box-shadow  0 0 8px rgba(0, 0, 0, 0.2),
                   0 0 2px rgba(0, 0, 0, 0.2),
