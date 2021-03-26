@@ -239,6 +239,7 @@ export default {
     padding-right 1.5rem
     .hero-bg, .hero-bg-mask
       height 300px
+      background-position-x: 630px;
     .hero-bg-mask
       background: linear-gradient(125deg, #000 0% 15%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0) 70% 100%)
       background-position: -300px -180px;
@@ -252,8 +253,9 @@ export default {
         margin 2rem auto 1.2rem
       h1
         font-size 1.4rem
+        width 100%
       h1, .action
-        margin 1.2rem auto
+        margin 1.2rem 0
       .description
         font-size 1.2rem
         width: 60%;
