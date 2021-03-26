@@ -26,7 +26,7 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./images/stock_2.png) <!-- yaspeller ignore -->
+![](./images/ohlc_1.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -43,7 +43,7 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./images/stock_3.png) <!-- yaspeller ignore -->
+![](./images/stock_5.png) <!-- yaspeller ignore -->
 
 </div>
 
@@ -61,7 +61,7 @@ footerActionLink: ./getting-started.md
 
 <div class="feature-images">
 
-![](./ru/images/auto-complete-class.png) <!-- yaspeller ignore -->
+![](./images/sql_2_iexg.png) <!-- yaspeller ignore -->
 
 </div>
 
