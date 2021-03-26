@@ -20,6 +20,10 @@
         </div>
       </div>
       <Content custom/>
+      <div v-if="data.resetStripes"></div>
+      <div class="contact-form" id="contact-us" v-if="data.contactUs">
+        <ContactUs :options="data.contactUs" />
+      </div>
       <div v-if="data.footerActionText && data.footerActionLink" class="footer-action">
         <NavLink class="action-button" :item="footerActionLink"/>
       </div>
@@ -32,9 +36,10 @@
 
 <script>
 import NavLink from './NavLink.vue'
+import ContactUs from './ContactUs.vue'
 
 export default {
-  components: { NavLink },
+  components: { NavLink, ContactUs },
   computed: {
     data () {
       return this.$page.frontmatter
@@ -131,9 +136,34 @@ export default {
     display block
     margin 0 auto;
 
+  .feature-highlight, .contact-form, .footer-action
+    position: relative;
+
+    &:before
+      content: ''
+      position: absolute;
+      left: -100vw;
+      width: 200vw;
+      display: block;
+      height: 100%;
+      top: 0;
+      z-index: -1;
+
+      background: #f5f5f5
+      box-shadow: 0 14px 6px -12px rgba(0,0,0,0.2) inset
+      // Inversion 
+      // background: #233453
+      // background: linear-gradient(-30deg, lighten(#233453, 20%),darken(#233453, 20%))
+      // background: #19325b
+      // background: linear-gradient(-30deg, lighten(#19325b, 20%),darken(#19325b, 20%))
+
+    &:nth-child(even):before
+      background: #fefefe;
+      box-shadow: 0 14px 6px -12px rgba(0,0,0,0.3) inset
+    
+
   .feature-highlight
     min-height: 240px;
-    position: relative;
     padding: 40px;
 
     &:nth-child(odd)
@@ -148,16 +178,7 @@ export default {
 
       .feature-images
         left: -490px
-      
-      &:before
-        background: #f5f5f5
-        box-shadow: 0 14px 6px -12px rgba(0,0,0,0.2) inset
-      // Inversion 
-      // background: #233453
-      // background: linear-gradient(-30deg, lighten(#233453, 20%),darken(#233453, 20%))
-      // background: #19325b
-      // background: linear-gradient(-30deg, lighten(#19325b, 20%),darken(#19325b, 20%))
-
+    
         
     &:nth-child(even)
       margin-right: 30%
@@ -165,20 +186,6 @@ export default {
 
       .feature-images
         right: -490px;
-      
-      &:before
-        background: #fefefe;
-        box-shadow: 0 14px 6px -12px rgba(0,0,0,0.3) inset
-
-    &:before
-      content: ''
-      position: absolute;
-      left: -100vw;
-      width: 200vw;
-      display: block;
-      height: 100%;
-      top: 0;
-      z-index: -1;
 
     .feature-images
       position: absolute;
@@ -219,6 +226,9 @@ export default {
     border-top 1px solid $borderColor
     text-align center
     color lighten($textColor, 25%)
+
+  .contact-form
+    padding 2rem 0
 
 @media (max-width: 1024px)
   .home
