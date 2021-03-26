@@ -30,7 +30,9 @@ tar -xzf atsd.moex.latest.tar.gz
 ./atsd/bin/atsd-tsd.sh start
 ```
 
-## Установка MOEX консьюмеров
+## Установка консьюмеров
+
+MOEX консьюмеры являются самостоятельными Java-приложениями, выполняющими функцию надежного и высокопроизводительного получения и декодирования FAST сообщений, получаемых от шлюзов FAST Московской биржи.
 
 Загрузите и распакуйте установочные файлы.
 
@@ -59,11 +61,11 @@ systemctl start moex-consumer-asts-fx
 systemctl start moex-consumer-spectra
 ```
 
-### Настройка параметров операционной системы
+## Настройка операционной системы
 
-* Увеличьте параметр `ulimit` `nofile` до `32768` и выше.
+Увеличьте параметр `ulimit` `nofile` до `32768` и выше.
 
-## Оптимизация сетевого стека для консьюмеров
+### Оптимизация сетевого стека для консьюмеров
 
 Сконфигурируйте параметры сетевых буферов и отключите Reverse Path Filtering.
 
@@ -109,7 +111,7 @@ net.ipv4.conf.all.rp_filter = 0
 sudo sysctl -p
 ```
 
-## Оптимизация сетевого стека для ATSD
+### Оптимизация сетевого стека для ATSD
 
 При установке ATSD на сервере, отличном от сервера консьюмеров, также увеличьте размеры сетевых буферов.
 
@@ -134,32 +136,12 @@ net.core.netdev_max_backlog = 50000
 sudo sysctl -p
 ```
 
-## Отправка снэпшотов сделок
+## Синхронизация времени
 
-Для проверки, что все сделки были корректно заложены, настройте отправку файлов со сделками (снэпшоты) на сервер ATSD для восполнения потерь.
-
-Создайте токен для доступа к сервису закладки снэпшотов. Откройте **Admin > Users > Create Token**.
-Укажите `/api/v1/trades/upload` в поле **URL**, метод `POST` и нажмите **Issue Token**.
-Укажите полученный токен в поле `TOKEN` в файле `/opt/moex-consumer/scripts/moex-consumer-env.sh`.
-
-Добавьте скрипты для отправки снэпшотов по окончании торгового дня.
-
-```sh
-crontab -e
-```
-
-```txt
-10 1 * * 1-6 /opt/moex-consumer/scripts/daily_trades_upload.sh spectra
-14 1 * * 1-6 /opt/moex-consumer/scripts/daily_trades_upload.sh asts-fx
-12 1 * * 1-6 /opt/moex-consumer/scripts/daily_trades_upload.sh asts-fond
-20 1 * * 1-6 /opt/moex-consumer/scripts/daily_trade_snapshot_upload.sh asts-fx
-22 1 * * 1-6 /opt/moex-consumer/scripts/daily_trade_snapshot_upload.sh asts-fond
-```
-
-## Синхронизация с сервером точного времени Московской биржи
+Для корректной работы систем, в частности встроенных средств мониторинга задержки, необходима синхронизация с сервером точного времени Московской биржи.
 
 <!-- markdownlint-disable MD104 -->
-Проверьте доступность NTP сервера. В случае недоступности обратитесь к хостинг-провайдеру.
+Проверьте доступность NTP сервера. В случае недоступности обратитесь к DMA-провайдеру.
 
 ```bash
 ping 91.203.252.12
@@ -194,7 +176,7 @@ server 91.203.254.12
 sudo service ntp restart
 ```
 
-Проверьте, что время синхронизировано
+Проверьте, что время синхронизировано.
 
 ```bash
 ntpstat
@@ -204,4 +186,26 @@ ntpstat
 synchronised to NTP server (91.203.254.12) at stratum 3
    time correct to within 5 ms
    polling server every 64 s
+```
+
+## Отправка снэпшотов сделок
+
+Для проверки, что все сделки были корректно заложены, настройте отправку файлов со сделками (снэпшоты) на сервер ATSD для восполнения потерь.
+
+Создайте токен для доступа к сервису закладки снэпшотов. Откройте **Admin > Users > Create Token**.
+Укажите `/api/v1/trades/upload` в поле **URL**, метод `POST` и нажмите **Issue Token**.
+Укажите полученный токен в поле `TOKEN` в файле `/opt/moex-consumer/scripts/moex-consumer-env.sh`.
+
+Добавьте скрипты для отправки снэпшотов по окончании торгового дня.
+
+```sh
+crontab -e
+```
+
+```txt
+10 1 * * 1-6 /opt/moex-consumer/scripts/daily_trades_upload.sh spectra
+14 1 * * 1-6 /opt/moex-consumer/scripts/daily_trades_upload.sh asts-fx
+12 1 * * 1-6 /opt/moex-consumer/scripts/daily_trades_upload.sh asts-fond
+20 1 * * 1-6 /opt/moex-consumer/scripts/daily_trade_snapshot_upload.sh asts-fx
+22 1 * * 1-6 /opt/moex-consumer/scripts/daily_trade_snapshot_upload.sh asts-fond
 ```
