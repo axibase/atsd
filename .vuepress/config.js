@@ -384,6 +384,7 @@ const financeMenu = [
             ['instrument-delete.md', 'Delete Instrument']
         ]
     },
+    ['./requirements.md', 'Requirements'],
     ['./install.md', 'Installation'],
     ['./getting-started.md', 'Getting Started']
 ];
