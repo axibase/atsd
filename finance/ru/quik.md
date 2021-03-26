@@ -5,7 +5,7 @@ title: Оптимальное хранение биржевых данных.
 description: Оптимальное хранение биржевых данных.
 heroText: Оптимальное хранение биржевых данных.
 tagline:
-actionText: Интеграция с терминалом QUIK® →
+actionText: Установка →
 actionLink: ./install-quik.md
 features:
 - title: История всех сделок
@@ -15,8 +15,21 @@ features:
 - title: Удобство SQL
   details: Расширенный <a href="sql.html" style="color:orange">SQL</a> синтаксис с оптимизированными вычислениями.
 footer: Copyright © 2021 Axibase. QUIK® by ARQA Technologies
-footerActionText: Установка
-footerActionLink: ./install-quik.md
+#footerActionText: Установка
+#footerActionLink: ./install-quik.md
+resetStripes: false # If last feature stripe in content is white (even number of highlighted features), set it to true
+contactUs:
+  title: Запросить демо-доступ
+  content: Trial request for financial version
+  submitText: Отправить
+  firstNameText: Имя
+  lastNameText: Фамилия
+  emailText: Email
+  companyText: Организация
+  # messageText: Message
+  errorText: Ошибка при отправке запроса
+  successText: Запрос отправлен
+
 # /* yaspeller ignore:end */
 ---
 <!-- markdownlint-disable MD002 MD041 MD012 -->
