@@ -110,7 +110,7 @@ footerActionLink: ./install.md
 
 <div class="feature-images">
 
-![](../images/sql_3_lkoh.png)
+![](../images/sql_3_lkoh.png) <!-- yaspeller ignore -->
 
 </div>
 
