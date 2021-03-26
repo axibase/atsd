@@ -15,8 +15,14 @@ features:
 - title: Streaming and Batch Updates
   details: Consolidate quotes, trades, snapshots, and reference data in one place
 footer: Copyright © 2021 Axibase
-footerActionText: Getting Stared Guide
-footerActionLink: ./getting-started.md
+#footerActionText: Getting Stared Guide
+#footerActionLink: ./getting-started.md
+
+resetStripes: false # If last feature stripe in content is white (even number of highlighted features), set it to true
+contactUs:
+  title: Request Trial
+  content: Trial request for financial version
+
 # /* yaspeller ignore:end */
 ---
 <!-- markdownlint-disable MD002 MD041 MD012 -->

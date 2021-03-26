@@ -16,19 +16,17 @@ features:
   details: Расширенный <a href="sql.html" style="color:orange">SQL</a> синтаксис с оптимизированными вычислениями.
 footer: Copyright © 2021 Axibase
 resetStripes: true # If last feature stripe in content is white (even number of highlighted features), set it to true
-# contactUs: true # Add default feedback form
 contactUs:
-  # title: Запросить демо-доступ
-  title: Request Trial
+  title: Запросить демо-доступ
   content: Trial request for financial version
-  # submitText: Отправить
-  # firstNameText: First Name
-  # lastNameText: Last Name
-  # emailText: E-Mail
-  # companyText: Organization
+  submitText: Отправить
+  firstNameText: Имя
+  lastNameText: Фамилия
+  emailText: Email
+  companyText: Организация
   # messageText: Message
-  # errorText: Something went wrong, please, try again later
-  # successText: Submitted successfully
+  errorText: Ошибка при отправке запроса
+  successText: Запрос отправлен
     
 # /* yaspeller ignore:end */
 ---
