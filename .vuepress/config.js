@@ -452,6 +452,10 @@ module.exports = {
             "/finance/": "/finance/",
             "": "/",
         },
+        feedback: {
+            title: "Contact Axibase",
+            url: "/feedback/"
+        },
         trackNavURL: "/tracknav/",
         logo: '/images/axibase_logo_site.png',
         algolia: {

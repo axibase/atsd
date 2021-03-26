@@ -15,8 +15,21 @@ features:
 - title: Продвинутый SQL и распределенные вычисления
   details: Расширенный <a href="sql.html" style="color:orange">SQL</a> синтаксис с оптимизированными вычислениями.
 footer: Copyright © 2021 Axibase
-footerActionText: Установка
-footerActionLink: ./install.md
+resetStripes: true # If last feature stripe in content is white (even number of highlighted features), set it to true
+# contactUs: true # Add default feedback form
+contactUs:
+  # title: Запросить демо-доступ
+  title: Request Trial
+  content: Trial request for financial version
+  # submitText: Отправить
+  # firstNameText: First Name
+  # lastNameText: Last Name
+  # emailText: E-Mail
+  # companyText: Organization
+  # messageText: Message
+  # errorText: Something went wrong, please, try again later
+  # successText: Submitted successfully
+    
 # /* yaspeller ignore:end */
 ---
 <!-- markdownlint-disable MD002 MD041 MD012 -->
