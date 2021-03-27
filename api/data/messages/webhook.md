@@ -509,7 +509,7 @@ Payload:
     "ssh_url": "git@github.com:axibase/atsd.git",
     "clone_url": "https://github.com/axibase/atsd.git",
     "svn_url": "https://github.com/axibase/atsd",
-    "homepage": "https://axibase.com/products/axibase-time-series-database/",
+    "homepage": "https://axibase.com/docs/atsd",
     "size": 78274,
     "stargazers_count": 37,
     "watchers_count": 37,

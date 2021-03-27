@@ -70,15 +70,6 @@ const integrationMenu = [
             'odbc/',
         ]
     },
-    {
-        title: 'Data Applications', children: [
-            ['data-applications/cross-filter.md','Cross Filter'],
-            ['data-applications/power-meter-reporter.md','Power Meter Reporter'],
-            ['data-applications/data-slider.md','Data Slider'],
-            ['data-applications/performance-viewer.md','Performance Viewer'],
-            ['data-applications/data-monitor.md','Data Monitor'],
-        ]
-    },
     
     ['/parsers/csv/', 'CSV Parsers'],
 
