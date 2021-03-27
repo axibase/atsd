@@ -14,7 +14,7 @@
 curl -O https://raw.githubusercontent.com/axibase/atsd/master/finance/ru/ConsumerLatencyParser.java
 ```
 
-Загрузите библиотеку [commons-math3-3.6.1.jar](https://mvnrepository.com/artifact/org.apache.commons/commons-math3/3.6.1).
+Загрузите библиотеку `commons-math3/3.6.1`.
 
 ```bash
 curl -O https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar

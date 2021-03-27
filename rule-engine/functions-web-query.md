@@ -233,7 +233,7 @@ Request payload:
 
 #### Post Message using REST API
 
-Posts message to Rocket.Chat group using [`sendMessage`](https://rocket.chat/docs/developer-guides/rest-api/chat/sendmessage/) REST API method.
+Posts message to Rocket.Chat group using `sendMessage` REST API method.
 
 ```javascript
 queryPost("https://chat_server:3000/api/v1/chat.sendMessage", [
