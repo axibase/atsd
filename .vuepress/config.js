@@ -445,7 +445,8 @@ module.exports = {
         },
         feedback: {
             title: "Contact Axibase",
-            url: "/eml_ping"
+            url: "/eml_ping",
+            method: "GET",
         },
         trackNavURL: "/tracknav/",
         logo: '/images/axibase_logo_site.png',
