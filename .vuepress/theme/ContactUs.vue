@@ -8,7 +8,7 @@
       <p class="send-status" v-if="sendStatus=='error'">
         {{ labels.errorText || "" }}
       </p>
-      <form :action="url" method="POST" ref="form" v-on:submit.prevent="sendForm">
+      <form :action="url" :method="method" ref="form" v-on:submit.prevent="sendForm">
         <p>
           <input name="firstName" required type="text" v-model="form.firstName" :placeholder="labels.firstNameText + '*'">
           <input name="lastName" required type="text" v-model="form.lastName" :placeholder="labels.lastNameText + '*'">
@@ -50,6 +50,11 @@ export default {
       return (this.options && this.options.url)
         || (this.$site.themeConfig.feedback && this.$site.themeConfig.feedback.url);
     },
+    method() {
+      return (this.options && this.options.method)
+        || (this.$site.themeConfig.feedback && this.$site.themeConfig.feedback.method)
+        || "POST";
+    },
     labels() {
       var defaults = {
         firstNameText: "First Name",
@@ -81,7 +86,7 @@ export default {
       let url = this.url + '?' + qs;
 
       let xhr = new XMLHttpRequest();
-      xhr.open("POST", url, true);
+      xhr.open(this.method, url, true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
       xhr.onload = () => {
         this.sendStatus = (xhr.status >= 400) ? "error" : "success";
