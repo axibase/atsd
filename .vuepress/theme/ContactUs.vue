@@ -10,22 +10,17 @@
       </p>
       <form :action="url" method="POST" ref="form" v-on:submit.prevent="sendForm">
         <p>
-          <input name="avia_1_1" required type="text" v-model="form.firstName" :placeholder="labels.firstNameText + '*'">
-          <input name="avia_2_1" required type="text" v-model="form.lastName" :placeholder="labels.lastNameText + '*'">
+          <input name="firstName" required type="text" v-model="form.firstName" :placeholder="labels.firstNameText + '*'">
+          <input name="lastName" required type="text" v-model="form.lastName" :placeholder="labels.lastNameText + '*'">
         </p>
         <p>
-          <input name="avia_3_1" required type="text" v-model="form.company" :placeholder="labels.companyText + '*'">
+          <input name="company" required type="text" v-model="form.company" :placeholder="labels.companyText + '*'">
         </p>
         <p>
-          <input name="avia_4_1" required type="email" v-model="form.email" :placeholder="labels.emailText + '*'">
+          <input name="email" required type="email" v-model="form.email" :placeholder="labels.emailText + '*'">
         </p>
         <p v-if="hasText">
-          <textarea required name="avia_5_1" v-model="form.message" :placeholder="labels.messageText + '*'"></textarea>
-        </p>
-        <p>
-          <input name="avia_6_1" type="hidden" value="">
-          <input name="avia_6_1" type="hidden" value="674443354">
-          <input name="avia_7_1" type="hidden" value="4">
+          <textarea required name="message" v-model="form.message" :placeholder="labels.messageText + '*'"></textarea>
         </p>
         <p>
           <button type="submit">{{ labels.submitText }}</button>
@@ -45,7 +40,7 @@ export default {
         lastName: "",
         company: "",
         email: "",
-        message: "",
+        message: this.options && this.options.content || "",
       }
     };
   },
@@ -81,18 +76,8 @@ export default {
       let form = this.$refs.form;
       if (!form && !form.checkValidity()) return;
 
-      let text = this.hasText ? this.form.message : this.options.content;
-      let params = [
-        this.form.firstName,
-        this.form.lastName,
-        this.form.company,
-        this.form.email,
-        text,
-        "",
-        "674443354",
-        "4"
-      ];
-      let qs = params.map((v, i) => `avia_${i+1}_ 1=${encodeURIComponent(v)}`).join('&');
+      let params = Object.keys(this.form);
+      let qs = params.map((name, i) => `${encodeURIComponent(name)}=${encodeURIComponent(this.form[name])}`).join('&');
       let url = this.url + '?' + qs;
 
       let xhr = new XMLHttpRequest();
