@@ -20,6 +20,7 @@ footer: Copyright © 2021 Axibase. QUIK® by ARQA Technologies
 resetStripes: false # If last feature stripe in content is white (even number of highlighted features), set it to true
 contactUs:
   title: Запросить демо-доступ
+  linkTitle: Демо-доступ
   content: Trial request for financial version
   submitText: Отправить
   firstNameText: Имя
