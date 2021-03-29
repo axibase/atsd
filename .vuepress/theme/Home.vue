@@ -11,7 +11,7 @@
         </p>
         <p class="action" v-if="data.actionText && data.actionLink">
           <NavLink class="action-button" :item="actionLink"/>
-          <a class="action-button contact-button nav-link" v-if="contactUsLink" :href="contactUsLink.link">
+          <a class="action-button contact-button nav-link" v-if="contactUsLink" :href="contactUsLink.link" @click="trackNavigationToContactUs">
             {{ contactUsLink.text }}
           </a>
         </p>
@@ -40,6 +40,7 @@
 <script>
 import NavLink from './NavLink.vue'
 import ContactUs from './ContactUs.vue'
+import { trackNavigation } from "./tracknav"
 
 export default {
   components: { NavLink, ContactUs },
@@ -64,6 +65,13 @@ export default {
         link: this.data.footerActionLink,
         text: this.data.footerActionText
       }
+    }
+  },
+  methods: {
+    trackNavigationToContactUs() {
+      let url = this.$site.themeConfig.trackNavURL;
+      const pageUrl = location.href;
+      trackNavigation(url, pageUrl, pageUrl, {"section": "contact-us"})
     }
   },
   mounted() {
