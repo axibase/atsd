@@ -11,6 +11,9 @@
         </p>
         <p class="action" v-if="data.actionText && data.actionLink">
           <NavLink class="action-button" :item="actionLink"/>
+          <a class="action-button contact-button nav-link" v-if="contactUsLink" :href="contactUsLink.link">
+            {{ contactUsLink.text }}
+          </a>
         </p>
       </div>
       <div class="features" v-if="data.features && data.features.length">
@@ -50,11 +53,27 @@ export default {
         text: this.data.actionText
       }
     },
+    contactUsLink () {
+      return this.data.contactUs && {
+        link: "#contact-us", // Keep `./` prefix, it is a hack to prevent adding `./html` to path
+        text: this.data.contactUs.linkTitle || this.data.contactUs.title || "Contact Us",
+      }
+    },
     footerActionLink () {
       return {
         link: this.data.footerActionLink,
         text: this.data.footerActionText
       }
+    }
+  },
+  mounted() {
+    if (typeof window !== "undefined") {
+      document.body.classList.add("no-x-overflow");
+    }
+  },
+  destroyed() {
+    if (typeof window !== "undefined") {
+      document.body.classList.remove("no-x-overflow");
     }
   }
 }
@@ -125,6 +144,7 @@ export default {
       transition background-color .1s ease
       box-sizing border-box
       border-bottom 1px solid darken($accentColor, 10%)
+      margin-right 0.8rem;
       &:hover
         background-color lighten($accentColor, 10%)
 
