@@ -55,7 +55,7 @@ export default {
     },
     contactUsLink () {
       return this.data.contactUs && {
-        link: "#contact-us", // Keep `./` prefix, it is a hack to prevent adding `./html` to path
+        link: "#contact-us",
         text: this.data.contactUs.linkTitle || this.data.contactUs.title || "Contact Us",
       }
     },
