@@ -69,7 +69,7 @@ curl -O https://www.axibase.com/public/atsd_ee_hbase_1.2.2.tar.gz
 ## Extract Files
 
 ```sh
-sudo tar -xzvf atsd_ee_hbase_1.2.2.tar.gz -C /opt
+sudo tar -xozvf atsd_ee_hbase_1.2.2.tar.gz -C /opt
 sudo chown -R axibase:axibase /opt/atsd
 ```
 

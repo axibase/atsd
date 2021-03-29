@@ -16,7 +16,7 @@ curl -O https://www.axibase.com/public/atsd-distrib.tar.gz
 ## Installation Commands
 
 ```sh
-sudo tar -xzvf atsd-distrib.tar.gz -C /opt/
+sudo tar -xozvf atsd-distrib.tar.gz -C /opt/
 ```
 
 ```sh

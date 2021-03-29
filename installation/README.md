@@ -20,7 +20,7 @@ Download and unpack installation files.
 
 ```bash
 curl -O https://www.axibase.com/public/atsd.standalone.latest.tar.gz
-tar -xzf atsd.standalone.latest.tar.gz
+tar -xozf atsd.standalone.latest.tar.gz
 ```
 
 Start the database.

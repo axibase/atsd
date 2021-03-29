@@ -56,7 +56,7 @@ curl -O https://www.axibase.com/public/atsd-cluster.tar.gz
 ## Extract Files
 
 ```sh
-sudo tar -xzvf atsd-cluster.tar.gz -C /opt
+sudo tar -xozvf atsd-cluster.tar.gz -C /opt
 ```
 
 ```sh

@@ -8,7 +8,7 @@ Download installation files.
 
 ```bash
 curl -O https://axibase.com/public/atsd.fin.latest.tar.gz
-tar -xzf atsd.fin.latest.tar.gz
+tar -xozf atsd.fin.latest.tar.gz
 ```
 
 Start the database.

@@ -21,7 +21,7 @@ sdk install java 15.0.2-librca
 
 ```bash
 curl -O https://www.axibase.com/public/atsd.moex.latest.tar.gz
-tar -xzf atsd.moex.latest.tar.gz
+tar -xozf atsd.moex.latest.tar.gz
 ```
 
 Произведите запуск базы.
