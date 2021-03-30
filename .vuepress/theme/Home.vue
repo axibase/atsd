@@ -280,11 +280,11 @@ export default {
       max-width 100%
       padding 0 2.5rem
 
-    
+  
 @media (max-width: 910px)
   .home
     .feature-highlight, .feature-highlight:nth-child(odd)
-      width: 640px
+      width: max-content
       max-width 100%
       margin: 0 auto
       padding 2rem 0.2rem 2rem 0.2rem
@@ -306,7 +306,15 @@ export default {
 
         img
           width 100%
-
+  
+@css {
+  @media (max-width: 910px) {
+    .home .feature-highlight,
+    .home .feature-highlight:nth-child(odd) {
+      max-width: min(100%, 480px);
+    }
+  }
+}
 
 @media (max-width: $MQMobileNarrow)
   .home
